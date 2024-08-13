@@ -1,0 +1,20 @@
+{
+    "name": "Atomic.UI.Tests.Stubs",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b1acaffa7b71424f965170f57ca7b1e1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

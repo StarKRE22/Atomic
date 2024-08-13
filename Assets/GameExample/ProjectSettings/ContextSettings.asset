@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76fb309170c43a099373e6806c27f2b, type: 3}
+  m_Name: ContextSettings
+  m_EditorClassIdentifier: 
+  <Inactive>k__BackingField: 0
+  categories:
+  - Name: Game
+    Namespace: Atomic.Contexts
+    DirectoryPath: Assets/GameExample/Scripts/Codegen
+    ClassSuffix: ContextAPI
+    Imports:
+    - Atomic.Entities
+    - Atomic.Elements
+    - System.Collections.Generic
+    - GameExample.Engine
+    items:
+    - id: 5
+      name: PlayerMap
+      type: Dictionary<TeamType, IContext>
+    - id: 10
+      name: GameCountdown
+      type: Countdown
+    - id: 13
+      name: CoinSystemData
+      type: CoinSystemData
+    - id: 7
+      name: WorldTransform
+      type: Transform
+  - Name: Player
+    Namespace: Atomic.Contexts
+    DirectoryPath: Assets/GameExample/Scripts/Codegen
+    ClassSuffix: ContextAPI
+    Imports:
+    - Atomic.Entities
+    - Atomic.Elements
+    - GameExample.Engine
+    - System.Collections.Generic
+    items:
+    - id: 3
+      name: MoveableUnitsFilter
+      type: IEntityFilter
+    - id: 4
+      name: InputMap
+      type: InputMap
+    - id: 2
+      name: Character
+      type: Const<IEntity>
+    - id: 6
+      name: Money
+      type: ReactiveVariable<int>
+    - id: 8
+      name: CameraData
+      type: CameraData
+    - id: 9
+      name: TeamType
+      type: Const<TeamType>

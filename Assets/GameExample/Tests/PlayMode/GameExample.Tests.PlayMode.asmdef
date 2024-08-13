@@ -1,0 +1,26 @@
+{
+    "name": "GameExample.Tests.PlayMode",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b9e0dee7c7d94d9ea2f454aba18c64b6",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:b051b84f8b68460d9199c8d9555c0be9",
+        "GUID:f06f28e7a0d24ff18d1b4e4acec49d4d",
+        "GUID:a953053e80bb4f599f6a51d42532f103"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

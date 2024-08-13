@@ -1,0 +1,23 @@
+{
+    "name": "GameExample",
+    "rootNamespace": "",
+    "references": [
+        "Atomic.Elements",
+        "Atomic.Entities",
+        "Atomic.Contexts",
+        "Atomic.UI",
+        "Atomic.Extensions",
+        "Unity.Mathematics",
+        "Unity.Burst",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
