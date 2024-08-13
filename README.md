@@ -2,8 +2,7 @@
 ![Stable](https://img.shields.io/badge/stable-5FBA27)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
 
-
-![Icon](https://github.com/user-attachments/assets/a0f94428-2680-4ffc-81fd-40bcc2bf125b)
+![изображение](https://github.com/user-attachments/assets/bd9b13da-fed3-41dc-b84e-ef87b3301dfa)
 # Atomic Framework
 
 
