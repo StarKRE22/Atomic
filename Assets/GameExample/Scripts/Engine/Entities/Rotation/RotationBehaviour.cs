@@ -20,8 +20,6 @@ namespace GameExample.Engine
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            Debug.Log($"CURROT {_rotation.Value}");
-
             RotationFunctions.RotateStep(
                 _rotation.Value,
                 _moveDirection.Value,
@@ -30,8 +28,6 @@ namespace GameExample.Engine
                 out quaternion newRotation
             );
             _rotation.Value = newRotation;
-            Debug.Log($"ROTATE {newRotation}");
-
         }
     }
 }
