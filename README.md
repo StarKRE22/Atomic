@@ -29,6 +29,15 @@ _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Ato
 - **Atomic.AI** — solution for developing AI (coming soon)
 
 ## Game Example
+A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. 
+
+> Note: Made without Odin Inspector!
+
 <img width="546" alt="изображение" src="https://github.com/user-attachments/assets/c7d114c8-f9bd-4c59-be36-2dc7ee3cdac9">
+
+
+
+
+
 
 
