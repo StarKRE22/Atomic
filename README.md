@@ -13,6 +13,14 @@ What is Unity Atomic?
 ---
 Atomic Framework is a solution that is designed for developing games in C# and Unity. The main idea of framework is reduce code complexity by separating state and behaviour of game code. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards procedural and reactive programming instead of OOP.
 
+## Installation
+
+_Option #1. Download source code with game example and tutorial_
+
+_Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.1.0/Atomic.unitypackage) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
+
+
+
 
 
 
