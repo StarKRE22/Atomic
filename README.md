@@ -30,7 +30,7 @@ _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Ato
 - **Atomic.AI** — solution for developing AI (coming soon)
 
 ## Game Example
-There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Game controls: WASD and keyboard arrows.
+There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
 
 > Note: Made without Odin Inspector!
 
