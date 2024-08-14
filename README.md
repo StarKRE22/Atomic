@@ -26,7 +26,7 @@ _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Ato
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution for developing game objects
 - **[Atomic.Context](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Context)** — solution for developing game systems
 - **[Atomic.UI](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/UI)** — solution for developing UI controllers
-- **[Atomic.Extensions](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Extensions)** — extra extensions
+- **[Atomic.Extensions](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Extensions)** — extra features
 - **Atomic.AI** — solution for developing AI (coming soon)
 
 ## Game Example
