@@ -21,6 +21,14 @@ _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Ato
 > There are many features that don't work by default. To make the most of the Atomic Framework, we recommend adding the [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) plugin to your project. In the future, we plan to move away from dependence on Odin Inspector and write our own tools for integration with Unity
 
 ## Framework modules
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — library with reactive data structures
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution for developing game objects
+- **[Atomic.Context](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Context)** — solution for developing game systems
+- **[Atomic.UI](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/UI)** — solution for developing UI controllers
+- **[Atomic.Extensions](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Extensions)** — extra extensions
+- **Atomic.AI** — solution for developing AI (coming soon)
 
+## Game Example
+<img width="546" alt="изображение" src="https://github.com/user-attachments/assets/c7d114c8-f9bd-4c59-be36-2dc7ee3cdac9">
 
 
