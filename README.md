@@ -39,7 +39,7 @@ There is a game example in project. A mini game for two players in which you nee
 There is a step-by-step tutorial in the project. It shows the key features of Atomic Framework and how mini-game was made step by step.
 
 ## Table of Contents
-Here you can see all the features that are in the atomic framework. I will add documentation on github from time to time to make it easier for developers to learn the framework.
+Here you can see all the features that are in the framework. We will add documentation on github from time to time to make it easier for developers to learn the framework.
 - [Atomic.Elements]
   - [Reactive Properties]
     - [ReactiveVariable]
