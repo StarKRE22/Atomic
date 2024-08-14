@@ -913,10 +913,8 @@ MonoBehaviour:
     teamType: 0
   gameTimePresenter:
     timeText: {fileID: 2065566189}
-  gameOverShower:
-    gameOverView: {fileID: 2091993988}
-  gameOverPresenter:
-    view: {fileID: 2091993988}
+  gameOverPopupShower:
+    gameOverPopup: {fileID: 1829814043}
 --- !u!114 &1797969570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,6 +931,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &1829814043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8053179254884800509, guid: 3ef7f6b561be747ac93632a68ea4b95b, type: 3}
+  m_PrefabInstance: {fileID: 5631703305868169300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1951024961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5329695835206873764, guid: 0e8e3e18f69ab4d2b951829203b543a1, type: 3}
@@ -965,17 +968,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5673230821875697821, guid: 3ef7f6b561be747ac93632a68ea4b95b, type: 3}
   m_PrefabInstance: {fileID: 5631703305868169300}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091993988 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2431740511830322697, guid: 3ef7f6b561be747ac93632a68ea4b95b, type: 3}
-  m_PrefabInstance: {fileID: 5631703305868169300}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7fa12864124ffa9ad608584a772085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2068115947761630308
 PrefabInstance:
   m_ObjectHideFlags: 0
