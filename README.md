@@ -39,6 +39,9 @@ There is a game example in project. A mini game for two players in which you nee
 ## Tutorial Walkthrough
 There is a step-by-step tutorial in the project. It shows the key features of Atomic Framework and how mini-game was made step by step.
 
+<img width="651" alt="изображение" src="https://github.com/user-attachments/assets/4a1655c4-475d-41e7-a699-21b917448b36">
+
+
 ## Table of Contents
 Here you can see all the features that are in the framework. We will add documentation on github from time to time to make it easier for developers to learn the framework.
 - [Atomic.Elements]
