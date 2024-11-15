@@ -1,0 +1,23 @@
+{
+    "name": "Atomic.UI.Tests.Playmode",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b1acaffa7b71424f965170f57ca7b1e1",
+        "GUID:67fe32e48aa2438aaf09dc7928750ef9",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:e9745f6a32442194c8dc5a43e9ab86f9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
