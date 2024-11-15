@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
+using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -12,14 +16,25 @@ namespace Atomic.Entities
         private const string ENTITY_CLASS = "IEntity";
         private const string AGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
 
-        public static void GenerateFile(IEntityAPIConfig config)
+        public static void GenerateFile(IEntityAPIConfiguration configuration)
         {
-            string ns = config.Namespace;
-            string className = config.ClassName;
-            IEnumerable<string> imports = config.GetImports();
-            IEnumerable<string> tags = config.GetTags();
-            IDictionary<string, Type> values = config.GetValues();
+            Debug.Log($"GENERATE CONFiG {configuration.GetType().Name}");
+
+            string directoryPath = configuration.DirectoryPath;
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
+
+            string className = configuration.ClassName;
+            string filePath = $"{directoryPath}/{className}.cs";
+
+            string ns = configuration.Namespace;
+            IEnumerable<string> imports = configuration.GetImports();
+            IEnumerable<string> tags = configuration.GetTags();
+            IDictionary<string, Type> values = configuration.GetValues();
+
             string content = GenerateContent(ns, className, imports, tags, values);
+            using StreamWriter writer = new StreamWriter(filePath);
+            writer.Write(content);
         }
 
         private static string GenerateContent(
@@ -84,12 +99,14 @@ namespace Atomic.Entities
             //Generate end of class:
             sb.AppendLine("    }");
             sb.AppendLine("}");
+
+            return sb.ToString();
         }
 
         private static void GenerateValue(StringBuilder sb, string name, Type type)
         {
             int id = new PropertyName(name).GetHashCode();
-            string typeName = type == null || type == typeof(object) ? "" : $"// {type.FullName}";
+            string typeName = type == null || type == typeof(object) ? "" : $"// {GetTypeName(type)}";
             sb.AppendLine($"\t\tpublic const int {name} = {id}; {typeName}");
         }
 
@@ -160,7 +177,7 @@ namespace Atomic.Entities
             }
             else
             {
-                string typeName = type.Name;
+                string typeName = GetTypeName(type);
 
                 //Get:
                 sb.AppendLine(AGRESSIVE_INLINING);
@@ -173,7 +190,7 @@ namespace Atomic.Entities
                 sb.AppendLine(
                     $"\t\tpublic static bool TryGet{valueName}(this {ENTITY_CLASS} obj, out {typeName} value) =>" +
                     $" obj.TryGetValue({valueName}, out value);");
-                
+
                 //Add:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
@@ -185,7 +202,7 @@ namespace Atomic.Entities
                 sb.AppendLine(AGRESSIVE_INLINING);
                 sb.AppendLine($"\t\tpublic static bool Has{valueName}(this {ENTITY_CLASS} obj) => " +
                               $"obj.HasValue({typeName});");
-                
+
                 //Del:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
@@ -195,16 +212,49 @@ namespace Atomic.Entities
                 //Set:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static void Set{valueName}(this {ENTITY_CLASS} obj, {type} value) => " +
+                sb.AppendLine($"\t\tpublic static void Set{valueName}(this {ENTITY_CLASS} obj, {typeName} value) => " +
                               $"obj.SetValue({valueName}, value);");
             }
         }
 
+        public static string GetTypeName(Type type)
+        {
+            if (type == typeof(int))
+                return "int";
 
+            if (type == typeof(float))
+                return "float";
+
+            if (type == typeof(bool))
+                return "bool";
+
+            if (type == typeof(string))
+                return "string";
+
+            string typeName = type.Name;
+            if (!type.IsGenericType)
+                return typeName;
+
+            Type[] genericTypes = type.GetGenericArguments();
+            int genericCount = genericTypes.Length;
+            StringBuilder genericArguments = new StringBuilder();
+
+            for (int i = 0; i < genericCount; i++)
+            {
+                Type genericType = genericTypes[i];
+                string genericName = GetTypeName(genericType);
+                genericArguments.Append(genericName);
+                
+                if (i < genericCount - 1) 
+                    genericArguments.Append(", ");
+            }
+
+            return $"{typeName[..typeName.IndexOf("`", StringComparison.Ordinal)]}"
+                   + $"<{genericArguments}>";
+        }
     }
 }
 #endif
-
 
 
 //

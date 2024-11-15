@@ -3,11 +3,14 @@ using System;
 using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
+using JetBrains.Annotations;
 using UnityEngine;
+// ReSharper disable RedundantNameQualifier
 
-namespace Atomic.API
+namespace SampleGame
 {
-    public sealed class SampleEntityAPIConfig : IEntityAPIConfig
+    [UsedImplicitly]
+    public sealed class SampleEntityAPIConfiguration : IEntityAPIConfiguration
     {
         public string Namespace => "SampleGame";
         public string ClassName => "TagAPI";
@@ -15,7 +18,8 @@ namespace Atomic.API
 
         public IEnumerable<string> GetImports()
         {
-            yield return "UnityEngine";
+            yield return nameof(UnityEngine);
+            yield return nameof(Atomic.Elements);
         }
 
         public IEnumerable<string> GetTags()

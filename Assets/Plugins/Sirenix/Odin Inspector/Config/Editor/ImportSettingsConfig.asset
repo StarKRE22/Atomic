@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bae1cf0fb645f197e54e0bd53a7b2f, type: 3}
-  m_Name: EntityValueSettings
+  m_Script: {fileID: 188390376, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: ImportSettingsConfig
   m_EditorClassIdentifier: 
-  local: 0
-  namespace: Atomic.Entities
-  directoryPath: Assets/Codegen
-  suffix: API
-  imports: []
-  categories:
-  - name: eddd
-    indexes: []
+  automateBeforeBuild: 1

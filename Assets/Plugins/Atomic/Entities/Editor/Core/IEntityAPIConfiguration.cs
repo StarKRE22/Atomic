@@ -4,14 +4,13 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public interface IEntityAPIConfig
+    public interface IEntityAPIConfiguration
     {
         string Namespace { get; }
         string ClassName { get; }
         string DirectoryPath { get; }
 
         IEnumerable<string> GetImports();
-
         IEnumerable<string> GetTags();
         IDictionary<string, Type> GetValues();
     }
