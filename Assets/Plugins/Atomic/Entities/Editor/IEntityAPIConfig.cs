@@ -1,9 +1,10 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 
-namespace Atomic.API
+namespace Atomic.Entities
 {
-    public interface IEntityAPIConfiguration
+    public interface IEntityAPIConfig
     {
         string Namespace { get; }
         string ClassName { get; }
@@ -15,3 +16,4 @@ namespace Atomic.API
         IDictionary<string, Type> GetValues();
     }
 }
+#endif

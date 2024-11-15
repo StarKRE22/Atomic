@@ -1,11 +1,13 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using Atomic.Elements;
+using Atomic.Entities;
 using UnityEngine;
 
 namespace Atomic.API
 {
-    public sealed class EntityAPIConfiguration : IEntityAPIConfiguration
+    public sealed class SampleEntityAPIConfig : IEntityAPIConfig
     {
         public string Namespace => "SampleGame";
         public string ClassName => "TagAPI";
@@ -37,3 +39,5 @@ namespace Atomic.API
         }
     }
 }
+
+#endif
