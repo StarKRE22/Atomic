@@ -1,6 +1,6 @@
 using Atomic.Entities;
 
-namespace DefaultNamespace
+namespace SampleGame
 {
     public sealed class CharacterInstaller : SceneEntityInstaller
     {
