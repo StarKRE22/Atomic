@@ -491,9 +491,7 @@ namespace Atomic.Entities
         private void AutoRefresh()
         {
             if (!this.autoRefresh || EditorApplication.isPlaying || EditorApplication.isCompiling)
-            {
                 return;
-            }
 
             try
             {
@@ -623,21 +621,6 @@ namespace Atomic.Entities
 
         #region Debug
 
-#if UNITY_EDITOR
-        public static ITagNameFormatter TagNameFormatter;
-        public static IValueNameFormatter ValueNameFormatter;
-
-        public interface ITagNameFormatter
-        {
-            string GetName(int id);
-        }
-
-        public interface IValueNameFormatter
-        {
-            string GetName(int id);
-        }
-#endif
-
 #if UNITY_EDITOR && ODIN_INSPECTOR
 
         [FoldoutGroup("Debug")]
@@ -709,7 +692,7 @@ namespace Atomic.Entities
 
                 foreach (int tag in tags)
                 {
-                    string name = TagNameFormatter?.GetName(tag) ?? tag.ToString();
+                    string name = EntityUtils.IdToString(tag);
                     _tagElememtsCache.Add(new TagElement(name, tag));
                 }
 
@@ -782,7 +765,7 @@ namespace Atomic.Entities
 
                 foreach ((int id, object value) in values)
                 {
-                    string name = ValueNameFormatter?.GetName(id) ?? id.ToString();
+                    string name = EntityUtils.IdToString(id);
                     _valueElementsCache.Add(new ValueElement(name, value, id));
                 }
 

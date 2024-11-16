@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using UnityEngine;
 
 #if UNITY_EDITOR
 namespace Atomic.Entities
@@ -97,16 +96,16 @@ namespace Atomic.Entities
             return sb.ToString();
         }
 
-        private static void GenerateValue(StringBuilder sb, string name, string type)
+        private static void GenerateValue(StringBuilder sb, string key, string type)
         {
-            int id = new PropertyName(name).GetHashCode();
-            string typeName = string.IsNullOrEmpty(type)  || type == "object" ? "" : $"// {type}";
-            sb.AppendLine($"\t\tpublic const int {name} = {id}; {typeName}");
+            int id = EntityUtils.NameToId(key);
+            string typeName = IsBaseType(type) ? "" : $"// {type}";
+            sb.AppendLine($"\t\tpublic const int {key} = {id}; {typeName}");
         }
-
+        
         private static void GenerateTag(StringBuilder sb, string tag)
         {
-            int id = new PropertyName(tag).GetHashCode();
+            int id = EntityUtils.NameToId(tag);
             sb.AppendLine($"\t\tpublic const int {tag} = {id};");
         }
 
@@ -131,7 +130,7 @@ namespace Atomic.Entities
         {
             sb.AppendLine();
 
-            if (string.IsNullOrEmpty(type) || type == "object")
+            if (IsBaseType(type))
             {
                 //Get:
                 sb.AppendLine(AGRESSIVE_INLINING);
@@ -207,6 +206,11 @@ namespace Atomic.Entities
                 sb.AppendLine($"\t\tpublic static void Set{name}(this {ENTITY_CLASS} obj, {type} value) => " +
                               $"obj.SetValue({name}, value);");
             }
+        }
+        
+        private static bool IsBaseType(string type)
+        {
+            return string.IsNullOrEmpty(type) || type == "object"; //TODO: Regex
         }
     }
 }
