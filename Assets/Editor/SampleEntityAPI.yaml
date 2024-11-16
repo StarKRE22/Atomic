@@ -1,0 +1,20 @@
+namespace: SampleGame
+
+className: EntityAPI
+directory: Assets/Scripts/Codegen
+
+imports:
+  - UnityEngine
+  - Atomic.Elements
+
+tags:
+  - Character
+  - Enemy
+  - Coin
+
+values:
+  - Health: IValue<int>
+  - Damage: IValue<int>
+  - Speed : IValue<float>
+  - Transform: Transform
+  - GameObject: GameObject

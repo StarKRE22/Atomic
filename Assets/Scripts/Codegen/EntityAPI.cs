@@ -6,11 +6,11 @@ using UnityEngine;
 using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using Elements;
+using Atomic.Elements;
 
 namespace SampleGame
 {
-	public static class TagAPI
+	public static class EntityAPI
 	{
 		///Tags
 		public const int Character = 294335127;
@@ -24,7 +24,6 @@ namespace SampleGame
 		public const int Speed = -823668238; // IValue<float>
 		public const int Transform = -180157682; // Transform
 		public const int GameObject = 1482111001; // GameObject
-		public const int Rigidbody = -2101481708; // Rigidbody
 
 
 		///Tag Extensions
@@ -57,7 +56,7 @@ namespace SampleGame
 		public static bool AddHealth(this IEntity obj, IValue<int> value) => obj.AddValue(Health, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasHealth(this IEntity obj) => obj.HasValue(IValue<int>);
+		public static bool HasHealth(this IEntity obj) => obj.HasValue(Health);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelHealth(this IEntity obj) => obj.DelValue(Health);
@@ -75,7 +74,7 @@ namespace SampleGame
 		public static bool AddDamage(this IEntity obj, IValue<int> value) => obj.AddValue(Damage, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasDamage(this IEntity obj) => obj.HasValue(IValue<int>);
+		public static bool HasDamage(this IEntity obj) => obj.HasValue(Damage);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelDamage(this IEntity obj) => obj.DelValue(Damage);
@@ -93,7 +92,7 @@ namespace SampleGame
 		public static bool AddSpeed(this IEntity obj, IValue<float> value) => obj.AddValue(Speed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasSpeed(this IEntity obj) => obj.HasValue(IValue<float>);
+		public static bool HasSpeed(this IEntity obj) => obj.HasValue(Speed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelSpeed(this IEntity obj) => obj.DelValue(Speed);
@@ -136,23 +135,5 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameObject(this IEntity obj, GameObject value) => obj.SetValue(GameObject, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Rigidbody GetRigidbody(this IEntity obj) => obj.GetValue<Rigidbody>(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRigidbody(this IEntity obj, out Rigidbody value) => obj.TryGetValue(Rigidbody, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddRigidbody(this IEntity obj, Rigidbody value) => obj.AddValue(Rigidbody, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRigidbody(this IEntity obj) => obj.HasValue(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRigidbody(this IEntity obj) => obj.DelValue(Rigidbody);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRigidbody(this IEntity obj, Rigidbody value) => obj.SetValue(Rigidbody, value);
     }
 }

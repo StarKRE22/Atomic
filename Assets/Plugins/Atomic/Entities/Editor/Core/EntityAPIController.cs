@@ -17,7 +17,28 @@ namespace Atomic.Entities
 
         public static void Generate()
         {
-            Debug.Log("GENERATE!");
+            GenerateByYaml();
+            GenerateByClass();
+            AssetDatabase.Refresh();
+        }
+
+        private static void GenerateByYaml()
+        {
+            // Найти все потенциальные YAML-файлы
+            string[] guids = AssetDatabase.FindAssets("EntityAPI");
+
+            // Список для хранения подходящих файлов
+            foreach (string filePath in guids
+                         .Select(AssetDatabase.GUIDToAssetPath)
+                         .Where(path => path.EndsWith("EntityAPI.yaml")))
+            {
+                IEntityAPIConfiguration configuration = new YamlAPIConfiguration(filePath);
+                EntityAPIGenerator.GenerateFile(configuration);
+            }
+        }
+
+        private static void GenerateByClass()
+        {
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
             foreach (Assembly assembly in assemblies)
             {
@@ -26,28 +47,14 @@ namespace Atomic.Entities
                 {
                     if (!type.IsInterface && !type.IsAbstract && typeof(IEntityAPIConfiguration).IsAssignableFrom(type))
                     {
-                        Debug.Log($"CONFIGURATION {type.FullName}");
+                        if (type == typeof(YamlAPIConfiguration))
+                            continue;
+
                         var configuration = (IEntityAPIConfiguration) Activator.CreateInstance(type);
                         EntityAPIGenerator.GenerateFile(configuration);
                     }
                 }
             }
-
-            //
-            // IEnumerable<IEntityAPIConfiguration> configurations = AppDomain
-            //     .CurrentDomain.GetAssemblies()
-            //     .First(it => it.FullName.Contains("Editor"))
-            //     .GetTypes()
-            //     .Where(type => typeof(IEntityAPIConfiguration).IsAssignableFrom(type)
-            //                    && !type.IsInterface
-            //                    && !type.IsAbstract
-            //     ).Select(it => (IEntityAPIConfiguration) Activator.CreateInstance(it));
-            //
-            // Debug.Log($"CONFIGURATIONS {configurations.Count()}");
-            // foreach (IEntityAPIConfiguration configuration in configurations)
-            //     EntityAPIGenerator.GenerateFile(configuration);
-            //
-            AssetDatabase.Refresh();
         }
     }
 }

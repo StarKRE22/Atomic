@@ -1,5 +1,4 @@
 #if UNITY_EDITOR
-using System;
 using System.Collections.Generic;
 
 namespace Atomic.Entities
@@ -8,11 +7,11 @@ namespace Atomic.Entities
     {
         string Namespace { get; }
         string ClassName { get; }
-        string DirectoryPath { get; }
+        string Directory { get; }
 
         IEnumerable<string> GetImports();
         IEnumerable<string> GetTags();
-        IDictionary<string, Type> GetValues();
+        IDictionary<string, string> GetValues();
     }
 }
 #endif

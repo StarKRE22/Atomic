@@ -1,10 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -18,9 +14,7 @@ namespace Atomic.Entities
 
         public static void GenerateFile(IEntityAPIConfiguration configuration)
         {
-            Debug.Log($"GENERATE CONFiG {configuration.GetType().Name}");
-
-            string directoryPath = configuration.DirectoryPath;
+            string directoryPath = configuration.Directory;
             if (!Directory.Exists(directoryPath))
                 Directory.CreateDirectory(directoryPath);
 
@@ -30,7 +24,7 @@ namespace Atomic.Entities
             string ns = configuration.Namespace;
             IEnumerable<string> imports = configuration.GetImports();
             IEnumerable<string> tags = configuration.GetTags();
-            IDictionary<string, Type> values = configuration.GetValues();
+            IDictionary<string, string> values = configuration.GetValues();
 
             string content = GenerateContent(ns, className, imports, tags, values);
             using StreamWriter writer = new StreamWriter(filePath);
@@ -42,7 +36,7 @@ namespace Atomic.Entities
             string className,
             IEnumerable<string> imports,
             IEnumerable<string> tags,
-            IDictionary<string, Type> values
+            IDictionary<string, string> values
         )
         {
             StringBuilder sb = new StringBuilder();
@@ -78,7 +72,7 @@ namespace Atomic.Entities
             sb.AppendLine();
             sb.AppendLine("\t\t///Values");
 
-            foreach ((string name, Type type) in values)
+            foreach ((string name, string type) in values)
                 GenerateValue(sb, name, type);
 
             //Generate tag extensions:
@@ -103,10 +97,10 @@ namespace Atomic.Entities
             return sb.ToString();
         }
 
-        private static void GenerateValue(StringBuilder sb, string name, Type type)
+        private static void GenerateValue(StringBuilder sb, string name, string type)
         {
             int id = new PropertyName(name).GetHashCode();
-            string typeName = type == null || type == typeof(object) ? "" : $"// {GetTypeName(type)}";
+            string typeName = string.IsNullOrEmpty(type)  || type == "object" ? "" : $"// {type}";
             sb.AppendLine($"\t\tpublic const int {name} = {id}; {typeName}");
         }
 
@@ -133,271 +127,87 @@ namespace Atomic.Entities
             sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {ENTITY_CLASS} obj) => obj.DelTag({tag});");
         }
 
-        private static void GenerateValueExtensions(StringBuilder sb, string valueName, Type type)
+        private static void GenerateValueExtensions(StringBuilder sb, string name, string type)
         {
             sb.AppendLine();
 
-            if (type == null || type == typeof(object))
+            if (string.IsNullOrEmpty(type) || type == "object")
             {
                 //Get:
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static object Get{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.GetValue({valueName});");
+                sb.AppendLine($"\t\tpublic static object Get{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.GetValue({name});");
 
                 //TryGet:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
                 sb.AppendLine(
-                    $"\t\tpublic static bool TryGet{valueName}(this {ENTITY_CLASS} obj, out object value) => " +
-                    $"obj.TryGetValue({valueName}, out value);");
+                    $"\t\tpublic static bool TryGet{name}(this {ENTITY_CLASS} obj, out object value) => " +
+                    $"obj.TryGetValue({name}, out value);");
 
                 //Add:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Add{valueName}(this {ENTITY_CLASS} obj, object value) => " +
-                              $"obj.AddValue({valueName}, value);");
+                sb.AppendLine($"\t\tpublic static bool Add{name}(this {ENTITY_CLASS} obj, object value) => " +
+                              $"obj.AddValue({name}, value);");
 
                 //Del:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Del{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.DelValue({valueName});");
+                sb.AppendLine($"\t\tpublic static bool Del{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.DelValue({name});");
 
                 //Set:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static void Set{valueName}(this {ENTITY_CLASS} obj, object value) => " +
-                              $"obj.SetValue({valueName}, value);");
+                sb.AppendLine($"\t\tpublic static void Set{name}(this {ENTITY_CLASS} obj, object value) => " +
+                              $"obj.SetValue({name}, value);");
 
                 //Has:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Has{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.HasValue({valueName});");
+                sb.AppendLine($"\t\tpublic static bool Has{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.HasValue({name});");
             }
             else
             {
-                string typeName = GetTypeName(type);
-
                 //Get:
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static {typeName} Get{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.GetValue<{typeName}>({valueName});");
+                sb.AppendLine($"\t\tpublic static {type} Get{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.GetValue<{type}>({name});");
 
                 //TryGet:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
                 sb.AppendLine(
-                    $"\t\tpublic static bool TryGet{valueName}(this {ENTITY_CLASS} obj, out {typeName} value) =>" +
-                    $" obj.TryGetValue({valueName}, out value);");
+                    $"\t\tpublic static bool TryGet{name}(this {ENTITY_CLASS} obj, out {type} value) =>" +
+                    $" obj.TryGetValue({name}, out value);");
 
                 //Add:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Add{valueName}(this {ENTITY_CLASS} obj, {typeName} value) => " +
-                              $"obj.AddValue({valueName}, value);");
+                sb.AppendLine($"\t\tpublic static bool Add{name}(this {ENTITY_CLASS} obj, {type} value) => " +
+                              $"obj.AddValue({name}, value);");
 
                 //Has:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Has{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.HasValue({typeName});");
+                sb.AppendLine($"\t\tpublic static bool Has{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.HasValue({name});");
 
                 //Del:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Del{valueName}(this {ENTITY_CLASS} obj) => " +
-                              $"obj.DelValue({valueName});");
+                sb.AppendLine($"\t\tpublic static bool Del{name}(this {ENTITY_CLASS} obj) => " +
+                              $"obj.DelValue({name});");
 
                 //Set:
                 sb.AppendLine();
                 sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static void Set{valueName}(this {ENTITY_CLASS} obj, {typeName} value) => " +
-                              $"obj.SetValue({valueName}, value);");
+                sb.AppendLine($"\t\tpublic static void Set{name}(this {ENTITY_CLASS} obj, {type} value) => " +
+                              $"obj.SetValue({name}, value);");
             }
-        }
-
-        public static string GetTypeName(Type type)
-        {
-            if (type == typeof(int))
-                return "int";
-
-            if (type == typeof(float))
-                return "float";
-
-            if (type == typeof(bool))
-                return "bool";
-
-            if (type == typeof(string))
-                return "string";
-
-            string typeName = type.Name;
-            if (!type.IsGenericType)
-                return typeName;
-
-            Type[] genericTypes = type.GetGenericArguments();
-            int genericCount = genericTypes.Length;
-            StringBuilder genericArguments = new StringBuilder();
-
-            for (int i = 0; i < genericCount; i++)
-            {
-                Type genericType = genericTypes[i];
-                string genericName = GetTypeName(genericType);
-                genericArguments.Append(genericName);
-                
-                if (i < genericCount - 1) 
-                    genericArguments.Append(", ");
-            }
-
-            return $"{typeName[..typeName.IndexOf("`", StringComparison.Ordinal)]}"
-                   + $"<{genericArguments}>";
         }
     }
 }
 #endif
-
-
-//
-//         internal static void Generate(ValueConfig valueConfig, int index, bool forceMode = true)
-//         {
-//             string suffix = valueConfig.suffix;
-//             string @namespace = valueConfig.@namespace;
-//             string directoryPath = valueConfig.directoryPath;
-//             string[] imports = valueConfig.imports;
-//
-//             if (!Directory.Exists(directoryPath))
-//             {
-//                 if (forceMode)
-//                 {
-//                     Directory.CreateDirectory(directoryPath);
-//                 }
-//             }
-//
-//             GenerateCategory(valueConfig.categories[index], @namespace, suffix, directoryPath, imports, forceMode);
-//
-//             EditorUtility.SetDirty(valueConfig);
-//             AssetDatabase.SaveAssets();
-//
-//             if (forceMode)
-//             {
-//                 AssetDatabase.Refresh();
-//             }
-//         }
-//
-//         internal static void Generate(ValueConfig valueConfig)
-//         {
-//             string suffix = valueConfig.suffix;
-//             string @namespace = valueConfig.@namespace;
-//             string directoryPath = valueConfig.directoryPath;
-//             string[] imports = valueConfig.imports;
-//
-//             if (!Directory.Exists(directoryPath))
-//             {
-//                 Directory.CreateDirectory(directoryPath);
-//             }
-//
-//             foreach (ValueConfig.Category category in valueConfig.categories)
-//             {
-//                 GenerateCategory(category, @namespace, suffix, directoryPath, imports, true);
-//             }
-//
-//             AssetDatabase.SaveAssets();
-//             AssetDatabase.Refresh();
-//         }
-//
-//         
-//         
-//         
-//          private const string NAMESPACE = "Atomic.Entities";
-//         private const string ENTITY_CLASS = "IEntity";
-//
-//         internal static void Generate(TagsConfig catalog, bool forceMode = true)
-//         {
-//             if (catalog == null)
-//             {
-//                 return;
-//             }
-//
-//             if (!forceMode && !File.Exists($"{catalog.directoryPath}/{catalog.className}.cs"))
-//             {
-//                 return;
-//             }
-//
-//             string directoryPath = catalog.directoryPath;
-//             if (!Directory.Exists(directoryPath))
-//             {
-//                 if (forceMode)
-//                 {
-//                     Directory.CreateDirectory(directoryPath);
-//                 }
-//             }
-//
-//             string selectedPath = $"{directoryPath}/{catalog.className}.cs";
-//             string @namespace = catalog.@namespace;
-//
-//             using StreamWriter writer = new StreamWriter(selectedPath);
-//             writer.WriteLine("/**");
-//             writer.WriteLine("* Code generation. Don't modify! ");
-//             writer.WriteLine("**/");
-//
-//             writer.WriteLine();
-//
-//             //Generate imports:
-//             writer.WriteLine("using UnityEngine;");
-//             writer.WriteLine($"using {NAMESPACE};");
-//             
-//             writer.WriteLine();
-//
-//             //Generate class:
-//             writer.WriteLine($"namespace {@namespace}");
-//             writer.WriteLine("{");
-//             writer.WriteLine($"    public static class {catalog.className}");
-//             writer.WriteLine("    {");
-//
-//             //Generate keys:
-//             writer.WriteLine("        ///Keys");
-//             var items = catalog.items;
-//             for (int i = 0, count = items.Count; i < count; i++)
-//             {
-//                 TagsConfig.Item item = items[i];
-//                 writer.WriteLine($"        public const int {item.type} = {item.id};");
-//             }
-//
-//             writer.WriteLine();
-//             writer.WriteLine();
-//
-//             //Generate extensions:
-//             writer.WriteLine("        ///Extensions");
-//             for (int i = 0, count = items.Count; i < count; i++)
-//             {
-//                 TagsConfig.Item item = items[i];
-//                 writer.WriteLine(
-//                     $"        public static bool Has{item.type}Tag(this {ENTITY_CLASS} obj) => obj.HasTag({item.type});");
-//
-//                 writer.WriteLine(
-//                     $"        public static bool Not{item.type}Tag(this {ENTITY_CLASS} obj) => !obj.HasTag({item.type});");
-//                 
-//                 writer.WriteLine(
-//                     $"        public static bool Add{item.type}Tag(this {ENTITY_CLASS} obj) => obj.AddTag({item.type});");
-//                 writer.WriteLine(
-//                     $"        public static bool Del{item.type}Tag(this {ENTITY_CLASS} obj) => obj.DelTag({item.type});");
-//
-//                 if (i < count - 1)
-//                 {
-//                     writer.WriteLine();
-//                 }
-//             }
-//
-//             writer.WriteLine("    }");
-//             writer.WriteLine("}");
-//
-//             EditorUtility.SetDirty(catalog);
-//             AssetDatabase.SaveAssets();
-//
-//             if (forceMode)
-//             {
-//                 AssetDatabase.Refresh();
-//             }
-//         }
-//     }
-//
