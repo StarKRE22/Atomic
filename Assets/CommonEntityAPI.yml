@@ -1,0 +1,16 @@
+entityType: IEntity
+aggressiveInlining: true
+
+namespace: SampleGame
+className: CommonEntityAPI
+directory: Assets/Scripts/Codegen
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- Transform: Transform
+- GameObject: GameObject
+- Name: string

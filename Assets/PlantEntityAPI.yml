@@ -1,15 +1,15 @@
-entityType: IEntity
+entityType: Plant
 aggressiveInlining: true
 
 namespace: SampleGame
-className: SampleEntityAPI
+className: PlantEntityAPI
 directory: Assets/Scripts/Codegen
  
 imports:
 - UnityEngine
-- Atomic.Elements
+- Atomic.Entities
 
 values:
-- Health: IValue<int>
-- Speed: IValue<float>
+- PlantState: int
+- Capacity: float
 - Transform: Transform

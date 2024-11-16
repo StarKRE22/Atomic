@@ -1,15 +1,18 @@
-using Atomic.Entities;
-
-namespace SampleGame
-{
-    public sealed class CharacterInstaller : SceneEntityInstaller
-    {
-        public override void Install(IEntity entity)
-        {
-            entity.AddValue("Transform", this.transform);
-            entity.AddValue("Health", 5);
-            entity.AddValue("Speed", 3);
-            entity.AddTag("Character");
-        }
-    }
-}
+// using Atomic.Elements;
+// using Atomic.Entities;
+//
+// namespace SampleGame
+// {
+//     public sealed class CharacterInstaller : SceneEntityInstaller
+//     {
+//         public override void Install(IEntity entity)
+//         {
+//             entity.AddHealth(new Const<int>(5));
+//             entity.AddSpeed(3.0f);
+//             entity.AddTransform(this.transform);
+//
+//             entity.AddValue("GameObject", this.gameObject);
+//             entity.AddTag("Character");
+//         }
+//     }
+// }
