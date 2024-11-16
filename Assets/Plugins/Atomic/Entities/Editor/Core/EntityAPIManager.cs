@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 
@@ -8,20 +10,20 @@ namespace Atomic.Entities
     {
         private const string ASSET_NAME = "EntityAPI";
         private const string ASSET_EXTENSION = "yaml";
-        
-        private static EntityAPIAsset[] _assets;
-        
+
+        private static List<EntityAPIAsset> _assets;
+
         static EntityAPIManager()
         {
             LoadAssets();
         }
-        
-        public static void Compile()
+
+        public static void CompileAPI()
         {
             if (_assets == null)
                 return;
 
-            for (int i = 0, cont = _assets.Length; i < cont; i++)
+            for (int i = 0, cont = _assets.Count; i < cont; i++)
             {
                 EntityAPIAsset asset = _assets[i];
                 IEntityAPIConfiguration configuration = asset.GetConfiguration();
@@ -31,12 +33,12 @@ namespace Atomic.Entities
             AssetDatabase.Refresh();
         }
 
-        public static void Refresh()
+        public static void RefreshAPI()
         {
             if (_assets == null)
                 return;
 
-            for (int i = 0, cont = _assets.Length; i < cont; i++)
+            for (int i = 0, cont = _assets.Count; i < cont; i++)
             {
                 EntityAPIAsset asset = _assets[i];
                 IEntityAPIConfiguration configuration = asset.GetConfiguration();
@@ -44,6 +46,20 @@ namespace Atomic.Entities
             }
         }
 
+        public static void CreateAPI()
+        {
+            string filePath = EditorUtility.SaveFilePanelInProject(
+                "Create Entity API...",
+                "SampleEntityAPI.yaml",
+                "yaml",
+                "Please enter a file name to save the asset to"
+            );
+
+            using StreamWriter writer = new StreamWriter(filePath);
+            writer.Write(GetAssetContent());
+            AssetDatabase.Refresh();
+        }
+        
         private static void LoadAssets()
         {
             string[] assetPaths = AssetDatabase.FindAssets(ASSET_NAME)
@@ -52,15 +68,33 @@ namespace Atomic.Entities
                 .ToArray();
 
             int count = assetPaths.Length;
-            _assets = new EntityAPIAsset[count];
-            
+            _assets = new List<EntityAPIAsset>(count);
+
             for (int i = 0; i < count; i++)
             {
                 string filePath = assetPaths[i];
-                EntityAPIAsset configuration = new EntityAPIAsset(filePath);
-                _assets[i] = configuration;
+                _assets.Add(new EntityAPIAsset(filePath));
             }
         }
+
+        private static string GetAssetContent() =>
+            "namespace: SampleGame\n" +
+            "className: SampleEntityAPI\n" +
+            "directory: Assets/Scripts/Codegen\n " +
+            "\n" +
+            "imports:\n" +
+            "- UnityEngine\n" +
+            "- Atomic.Entities\n" +
+            "\n" +
+            "tags:\n" +
+            "- Player\n" +
+            "- Enemy\n" +
+            "- Resource\n" +
+            "\n" +
+            "values:\n" +
+            "- Health: int\n" +
+            "- Speed: float\n" +
+            "- Transform: Transform\n";
     }
 }
 

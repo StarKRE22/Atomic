@@ -17,7 +17,7 @@ namespace SampleGame
 
 
 		///Values
-		public const int InteractionCountdown = -1150090393; // IValue<int>
+		public const int InteractionCountdown = -1150090393; // IValue<float>
 
 
 		///Tag Extensions
@@ -31,13 +31,13 @@ namespace SampleGame
 		///Value Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<int> GetInteractionCountdown(this IEntity obj) => obj.GetValue<IValue<int>>(InteractionCountdown);
+		public static IValue<float> GetInteractionCountdown(this IEntity obj) => obj.GetValue<IValue<float>>(InteractionCountdown);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetInteractionCountdown(this IEntity obj, out IValue<int> value) => obj.TryGetValue(InteractionCountdown, out value);
+		public static bool TryGetInteractionCountdown(this IEntity obj, out IValue<float> value) => obj.TryGetValue(InteractionCountdown, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddInteractionCountdown(this IEntity obj, IValue<int> value) => obj.AddValue(InteractionCountdown, value);
+		public static bool AddInteractionCountdown(this IEntity obj, IValue<float> value) => obj.AddValue(InteractionCountdown, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasInteractionCountdown(this IEntity obj) => obj.HasValue(InteractionCountdown);
@@ -46,6 +46,6 @@ namespace SampleGame
 		public static bool DelInteractionCountdown(this IEntity obj) => obj.DelValue(InteractionCountdown);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetInteractionCountdown(this IEntity obj, IValue<int> value) => obj.SetValue(InteractionCountdown, value);
+		public static void SetInteractionCountdown(this IEntity obj, IValue<float> value) => obj.SetValue(InteractionCountdown, value);
     }
 }

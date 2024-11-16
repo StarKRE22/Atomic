@@ -21,7 +21,7 @@ namespace Atomic.Entities
              if (currentTime - _currentTime > _syncPeriod)
              {
                  Debug.Log("REFRESH CONTROLLER");
-                 EntityAPIManager.Refresh();
+                 EntityAPIManager.RefreshAPI();
                  _currentTime = currentTime;
              }
         }

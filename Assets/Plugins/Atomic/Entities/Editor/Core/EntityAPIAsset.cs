@@ -15,6 +15,8 @@ namespace Atomic.Entities
         public IEntityAPIConfiguration GetConfiguration()
         {
             var snapshot = new Configuration();
+            if (!File.Exists(_filePath))
+                return snapshot;
             
             bool readImports = false;
             bool readTags = false;

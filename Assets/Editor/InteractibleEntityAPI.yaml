@@ -10,4 +10,4 @@ tags:
   - Interactible
   
 values:
-  - InteractionCountdown: IValue<int>
+  - InteractionCountdown: IValue<float>

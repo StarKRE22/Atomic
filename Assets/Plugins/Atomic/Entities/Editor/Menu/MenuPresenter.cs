@@ -7,15 +7,19 @@ namespace Atomic.Entities
         [MenuItem("Tools/Atomic/Entities/Compile API", priority = 7)]
         internal static void Compile()
         {
-            EntityAPIManager.Compile();
+            EntityAPIManager.CompileAPI();
         }
         
         [MenuItem("Tools/Atomic/Entities/Refresh API", priority = 7)]
         internal static void Refresh()
         {
-            EntityAPIManager.Refresh();
+            EntityAPIManager.RefreshAPI();
         }
-        
-        //TODO: CREATE YAML FILE
+
+        [MenuItem("Tools/Atomic/Entities/Create API", priority = 7)]
+        internal static void CreateAPI()
+        {
+            EntityAPIManager.CreateAPI();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Atomic.Entities
 {
     [CreateAssetMenu(
         fileName = "ScriptableEntityInstaller",
-        menuName = "Atomic/Entitites/New ScriptableEntityInstaller"
+        menuName = "Atomic/Entities/New ScriptableEntityInstaller"
     )]
     public class ScriptableEntityInstaller : ScriptableEntityInstallerBase
     {
