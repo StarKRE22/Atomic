@@ -19,7 +19,7 @@ namespace SampleGame
 
 
 		///Values
-		public const int Health = -915003867; // IValue<int>
+		public const int Health = -915003867; // int
 		public const int Damage = 375673178; // IValue<int>
 		public const int Speed = -823668238; // IValue<float>
 		public const int Transform = -180157682; // Transform
@@ -48,13 +48,13 @@ namespace SampleGame
 		///Value Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<int> GetHealth(this IEntity obj) => obj.GetValue<IValue<int>>(Health);
+		public static int GetHealth(this IEntity obj) => obj.GetValue<int>(Health);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetHealth(this IEntity obj, out IValue<int> value) => obj.TryGetValue(Health, out value);
+		public static bool TryGetHealth(this IEntity obj, out int value) => obj.TryGetValue(Health, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddHealth(this IEntity obj, IValue<int> value) => obj.AddValue(Health, value);
+		public static bool AddHealth(this IEntity obj, int value) => obj.AddValue(Health, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasHealth(this IEntity obj) => obj.HasValue(Health);
@@ -63,7 +63,7 @@ namespace SampleGame
 		public static bool DelHealth(this IEntity obj) => obj.DelValue(Health);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetHealth(this IEntity obj, IValue<int> value) => obj.SetValue(Health, value);
+		public static void SetHealth(this IEntity obj, int value) => obj.SetValue(Health, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<int> GetDamage(this IEntity obj) => obj.GetValue<IValue<int>>(Damage);
