@@ -7,6 +7,7 @@ namespace Atomic.Entities
         [MenuItem("Tools/Atomic/Entities/Generate API", priority = 7)]
         internal static void GenerateAPI()
         {
+            //TODO: SELECT YAML FILE
             EntityAPIController.Generate();
         }
     }

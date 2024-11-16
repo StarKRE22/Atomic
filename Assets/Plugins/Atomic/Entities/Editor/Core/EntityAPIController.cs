@@ -37,7 +37,7 @@ namespace Atomic.Entities
                          .Select(AssetDatabase.GUIDToAssetPath)
                          .Where(path => path.EndsWith("EntityAPI.yaml")))
             {
-                IEntityAPIConfiguration configuration = new YamlAPIConfiguration(filePath);
+                IEntityAPIConfiguration configuration = new EntityAPIConfiguration(filePath);
                 EntityAPIGenerator.GenerateFile(configuration);
             }
         }
@@ -52,7 +52,7 @@ namespace Atomic.Entities
                 {
                     if (!type.IsInterface && !type.IsAbstract && typeof(IEntityAPIConfiguration).IsAssignableFrom(type))
                     {
-                        if (type == typeof(YamlAPIConfiguration))
+                        if (type == typeof(EntityAPIConfiguration))
                             continue;
 
                         var configuration = (IEntityAPIConfiguration) Activator.CreateInstance(type);

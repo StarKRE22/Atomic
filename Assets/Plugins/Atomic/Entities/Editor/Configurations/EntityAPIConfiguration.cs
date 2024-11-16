@@ -1,31 +1,30 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed class YamlAPIConfiguration : IEntityAPIConfiguration
+    public sealed class EntityAPIConfiguration : IEntityAPIConfiguration
     {
-        public string Namespace { get; }
-        public string ClassName { get; }
-        public string Directory { get; }
+        public string Namespace { get; set; }
+        public string ClassName { get; set; }
+        public string Directory { get; set; }
 
         private readonly HashSet<string> imports = new();
         private readonly HashSet<string> tags = new();
         private readonly Dictionary<string, string> values = new();
 
-        public YamlAPIConfiguration(string filePath)
+        public EntityAPIConfiguration(string filePath)
         {
             bool readImports = false;
             bool readTags = false;
             bool readValues = false;
 
-            Debug.Log($"CREATE YAML {filePath}");
             foreach (string line in File.ReadLines(filePath))
             {
                 string trimmed = line.Trim();
 
-                if (string.IsNullOrWhiteSpace(trimmed)) 
+                if (string.IsNullOrWhiteSpace(trimmed))
                     continue;
 
                 if (trimmed.StartsWith("namespace:"))
@@ -34,7 +33,7 @@ namespace Atomic.Entities
                     this.ClassName = trimmed["className:".Length..].Trim();
                 else if (trimmed.StartsWith("directory:"))
                     this.Directory = trimmed["directory:".Length..].Trim();
-                
+
                 else if (trimmed.StartsWith("imports:"))
                 {
                     readImports = true;
@@ -71,6 +70,25 @@ namespace Atomic.Entities
                     }
                 }
             }
+        }
+
+        public void AddImport()
+        {
+        }
+
+        public void AddTag()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddValue()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<string> GetImports()
