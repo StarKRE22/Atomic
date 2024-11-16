@@ -8,45 +8,33 @@ namespace Atomic.Entities
     public static class EntityExtensions
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddTags(this IEntity entity, IEnumerable<int> tags)
+        public static void AddTags(this IEntity entity, in IEnumerable<int> tags)
         {
             if (tags == null)
-            {
                 return;
-            }
-            
-            foreach (int tag in tags)
-            {
+
+            foreach (int tag in tags) 
                 entity.AddTag(tag);
-            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IReadOnlyDictionary<int, object> values)
+        public static void AddValues(this IEntity entity, in IReadOnlyDictionary<int, object> values)
         {
             if (values == null)
-            {
                 return;
-            }
-            
-            foreach ((int key, object value) in values)
-            {
+
+            foreach ((int key, object value) in values) 
                 entity.AddValue(key, value);
-            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddBehaviours(this IEntity entity, IEnumerable<IEntityBehaviour> behaviours)
+        public static void AddBehaviours(this IEntity entity, in IEnumerable<IEntityBehaviour> behaviours)
         {
             if (behaviours == null)
-            {
                 return;
-            }
-            
-            foreach (IEntityBehaviour behaviour in behaviours)
-            {
+
+            foreach (IEntityBehaviour behaviour in behaviours) 
                 entity.AddBehaviour(behaviour);
-            }
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -61,12 +49,8 @@ namespace Atomic.Entities
         public static bool HasBehaviour<T>(this IEntity it) where T : IEntityBehaviour
         {
             foreach (IEntityBehaviour behaviour in it.Behaviours)
-            {
                 if (behaviour is T)
-                {
                     return true;
-                }
-            }
 
             return false;
         }
@@ -85,14 +69,12 @@ namespace Atomic.Entities
         public static bool TryGetBehaviour<T>(this IEntity it, out T result) where T : IEntityBehaviour
         {
             foreach (IEntityBehaviour behaviour in it.Behaviours)
-            {
                 if (behaviour is T tBehaviour)
                 {
                     result = tBehaviour;
                     return true;
                 }
-            }
-            
+
             result = default;
             return false;
         }
@@ -108,9 +90,7 @@ namespace Atomic.Entities
         {
             T behaviour = it.GetBehaviour<T>();
             if (behaviour == null)
-            {
                 return false;
-            }
 
             return it.DelBehaviour(behaviour);
         }
@@ -119,13 +99,8 @@ namespace Atomic.Entities
         public static bool HasAllTags(this IEntity obj, params int[] tags)
         {
             for (int i = 0, count = tags.Length; i < count; i++)
-            {
-                int tag = tags[i];
-                if (!obj.HasTag(tag))
-                {
+                if (!obj.HasTag(tags[i]))
                     return false;
-                }
-            }
 
             return true;
         }
@@ -134,13 +109,8 @@ namespace Atomic.Entities
         public static bool HasAnyTag(this IEntity obj, params int[] tags)
         {
             for (int i = 0, count = tags.Length; i < count; i++)
-            {
-                int tag = tags[i];
-                if (obj.HasTag(tag))
-                {
+                if (obj.HasTag(tags[i]))
                     return true;
-                }
-            }
 
             return false;
         }
@@ -179,10 +149,8 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DelComponent(this IEntity obj, int id)
         {
-            if (obj.DelValue(id, out var removed))
-            {
+            if (obj.DelValue(id, out var removed)) 
                 obj.DelBehaviour(removed as IEntityBehaviour);
-            }
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

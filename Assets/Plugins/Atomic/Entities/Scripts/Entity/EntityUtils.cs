@@ -10,7 +10,7 @@ namespace Atomic.Entities
         {
             return new PropertyName(name).GetHashCode();
         }
-
+        
         ///For debugging purposes only. Returns the string value representing the string in the Editor.
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string IdToString(int id)

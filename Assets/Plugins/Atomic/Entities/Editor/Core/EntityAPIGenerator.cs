@@ -68,7 +68,6 @@ namespace Atomic.Entities
             sb.AppendLine();
 
             //Generate imports:
-            sb.AppendLine("using UnityEngine;");
             sb.AppendLine($"using {NAMESPACE};");
             sb.AppendLine("using System.Runtime.CompilerServices;");
 

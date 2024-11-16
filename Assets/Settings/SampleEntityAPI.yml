@@ -4,7 +4,7 @@ directory: Assets/Scripts/Codegen
  
 imports:
 - UnityEngine
-- Atomic.Entities
+- Atomic.Elements
 
 tags:
 - Player
@@ -12,6 +12,6 @@ tags:
 - Resource
 
 values:
-- Health: int
-- Speed: float
+- Health: IValue<int>
+- Speed: IValue<float>
 - Transform: Transform

@@ -16,7 +16,7 @@ namespace Atomic.Entities
             EntityAPIManager.RefreshAPI();
         }
 
-        [MenuItem("Tools/Atomic/Entities/Create API", priority = 7)]
+        [MenuItem("Assets/Create/Atomic/Entities/Create API", priority = 7)]
         internal static void CreateAPI()
         {
             EntityAPIManager.CreateAPI();

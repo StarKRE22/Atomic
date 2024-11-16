@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -9,7 +10,6 @@ namespace Atomic.Entities
     public static class EntityAPIManager
     {
         private const string ASSET_NAME = "EntityAPI";
-        private const string ASSET_EXTENSION = "yaml";
 
         private static List<EntityAPIAsset> _assets;
 
@@ -20,17 +20,23 @@ namespace Atomic.Entities
 
         public static void CompileAPI()
         {
+            LoadAssets();
+
             if (_assets == null)
                 return;
-
+            
             for (int i = 0, cont = _assets.Count; i < cont; i++)
             {
                 EntityAPIAsset asset = _assets[i];
+                if (!asset.IsValid)
+                    continue;
+
                 IEntityAPIConfiguration configuration = asset.GetConfiguration();
                 EntityAPIGenerator.CreateFile(configuration);
             }
 
             AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
         }
 
         public static void RefreshAPI()
@@ -41,6 +47,9 @@ namespace Atomic.Entities
             for (int i = 0, cont = _assets.Count; i < cont; i++)
             {
                 EntityAPIAsset asset = _assets[i];
+                if (!asset.IsValid)
+                    continue;
+                
                 IEntityAPIConfiguration configuration = asset.GetConfiguration();
                 EntityAPIGenerator.UpdateFile(configuration);
             }
@@ -48,23 +57,25 @@ namespace Atomic.Entities
 
         public static void CreateAPI()
         {
-            string filePath = EditorUtility.SaveFilePanelInProject(
+            string filePath = EditorUtility.SaveFilePanel(
                 "Create Entity API...",
+                "Assets",
                 "SampleEntityAPI.yaml",
-                "yaml",
-                "Please enter a file name to save the asset to"
+                "yaml"
             );
 
             using StreamWriter writer = new StreamWriter(filePath);
             writer.Write(GetAssetContent());
+
             AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
         }
-        
+
         private static void LoadAssets()
         {
             string[] assetPaths = AssetDatabase.FindAssets(ASSET_NAME)
                 .Select(AssetDatabase.GUIDToAssetPath)
-                .Where(path => path.EndsWith($"{ASSET_NAME}.{ASSET_EXTENSION}"))
+                .Where(path => path.EndsWith($"{ASSET_NAME}.yaml") || path.EndsWith($"{ASSET_NAME}.yml"))
                 .ToArray();
 
             int count = assetPaths.Length;
@@ -73,6 +84,7 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 string filePath = assetPaths[i];
+                Debug.Log($"LOAD ASSET {filePath}");
                 _assets.Add(new EntityAPIAsset(filePath));
             }
         }

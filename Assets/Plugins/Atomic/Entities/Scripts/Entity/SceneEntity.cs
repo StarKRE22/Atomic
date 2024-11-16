@@ -55,7 +55,7 @@ namespace Atomic.Entities
         [PropertySpace(SpaceAfter = 8)]
 #endif
         [SerializeField, Space]
-        private List<SceneEntityInstallerBase> installPipeline;
+        private List<SceneEntityInstaller> installPipeline;
 
         [SerializeField, Space]
         private UnityEvent onInstalled;
@@ -172,7 +172,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.installPipeline.Count; i < count; i++)
                 {
-                    SceneEntityInstallerBase installer = this.installPipeline[i];
+                    SceneEntityInstaller installer = this.installPipeline[i];
                     if (installer != null)
                     {
                         installer.Install(this.entity);
@@ -506,11 +506,11 @@ namespace Atomic.Entities
 
         private void SetRefreshCallbackToInstallers()
         {
-            foreach (SceneEntityInstallerBase installer in this.installPipeline)
+            foreach (SceneEntityInstaller installer in this.installPipeline)
             {
-                if (installer != null)
+                if (installer != null && installer is SceneEntityInstallerDefault sceneInstaller)
                 {
-                    installer.mRefreshCallback = this.RefreshInEditMode;
+                    sceneInstaller.m_refreshCallback = this.RefreshInEditMode;
                 }
             }
         }

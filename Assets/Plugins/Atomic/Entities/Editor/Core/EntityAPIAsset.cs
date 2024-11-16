@@ -7,6 +7,8 @@ namespace Atomic.Entities
     {
         private readonly string _filePath;
 
+        public bool IsValid => File.Exists(_filePath);
+
         public EntityAPIAsset(string filePath)
         {
             _filePath = filePath;
