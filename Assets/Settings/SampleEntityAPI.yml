@@ -1,3 +1,6 @@
+entityType: IEntity
+aggressiveInlining: true
+
 namespace: SampleGame
 className: SampleEntityAPI
 directory: Assets/Scripts/Codegen

@@ -1,13 +1,13 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 
 namespace Atomic.Entities
 {
     [InitializeOnLoad]
-    public static class EntityAPIManager
+    internal static class EntityAPIManager
     {
         private const string ASSET_NAME = "EntityAPI";
 
@@ -24,7 +24,7 @@ namespace Atomic.Entities
 
             if (_assets == null)
                 return;
-            
+
             for (int i = 0, cont = _assets.Count; i < cont; i++)
             {
                 EntityAPIAsset asset = _assets[i];
@@ -49,7 +49,7 @@ namespace Atomic.Entities
                 EntityAPIAsset asset = _assets[i];
                 if (!asset.IsValid)
                     continue;
-                
+
                 IEntityAPIConfiguration configuration = asset.GetConfiguration();
                 EntityAPIGenerator.UpdateFile(configuration);
             }
@@ -65,7 +65,7 @@ namespace Atomic.Entities
             );
 
             using StreamWriter writer = new StreamWriter(filePath);
-            writer.Write(GetAssetContent());
+            writer.Write(EntityAPIUtils.AssetContent);
 
             AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
@@ -84,31 +84,12 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 string filePath = assetPaths[i];
-                Debug.Log($"LOAD ASSET {filePath}");
                 _assets.Add(new EntityAPIAsset(filePath));
             }
         }
-
-        private static string GetAssetContent() =>
-            "namespace: SampleGame\n" +
-            "className: SampleEntityAPI\n" +
-            "directory: Assets/Scripts/Codegen\n " +
-            "\n" +
-            "imports:\n" +
-            "- UnityEngine\n" +
-            "- Atomic.Entities\n" +
-            "\n" +
-            "tags:\n" +
-            "- Player\n" +
-            "- Enemy\n" +
-            "- Resource\n" +
-            "\n" +
-            "values:\n" +
-            "- Health: int\n" +
-            "- Speed: float\n" +
-            "- Transform: Transform\n";
     }
 }
+#endif
 
 //
 // public static void Generate()

@@ -2,7 +2,6 @@
 * Code generation. Don't modify! 
 **/
 
-using UnityEngine;
 using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -26,19 +25,40 @@ namespace SampleGame
 
 		///Tag Extensions
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasPlayerTag(this IEntity obj) => obj.HasTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool NotPlayerTag(this IEntity obj) => !obj.HasTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool AddPlayerTag(this IEntity obj) => obj.AddTag(Player);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelPlayerTag(this IEntity obj) => obj.DelTag(Player);
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasEnemyTag(this IEntity obj) => obj.HasTag(Enemy);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool NotEnemyTag(this IEntity obj) => !obj.HasTag(Enemy);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool AddEnemyTag(this IEntity obj) => obj.AddTag(Enemy);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelEnemyTag(this IEntity obj) => obj.DelTag(Enemy);
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasResourceTag(this IEntity obj) => obj.HasTag(Resource);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool NotResourceTag(this IEntity obj) => !obj.HasTag(Resource);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool AddResourceTag(this IEntity obj) => obj.AddTag(Resource);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelResourceTag(this IEntity obj) => obj.DelTag(Resource);
 
 

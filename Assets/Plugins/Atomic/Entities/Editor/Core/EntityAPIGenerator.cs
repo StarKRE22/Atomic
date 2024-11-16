@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Atomic.Entities
 {
-    public static class EntityAPIGenerator
+    internal static class EntityAPIGenerator
     {
         private const string NAMESPACE = "Atomic.Entities";
-        private const string ENTITY_CLASS = "IEntity";
         private const string AGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
 
         public static void CreateFile(IEntityAPIConfiguration configuration)
@@ -21,15 +20,17 @@ namespace Atomic.Entities
             string filePath = $"{directoryPath}/{className}.cs";
 
             string ns = configuration.Namespace;
-            IEnumerable<string> imports = configuration.GetImports();
-            IEnumerable<string> tags = configuration.GetTags();
+            IReadOnlyCollection<string> imports = configuration.GetImports();
+            IReadOnlyCollection<string> tags = configuration.GetTags();
             IDictionary<string, string> values = configuration.GetValues();
+            bool useInlining = configuration.AggressiveInlining;
+            string entityType = configuration.EntityType;
 
-            string content = GenerateContent(ns, className, imports, tags, values);
+            string content = GenerateContent(ns, className, imports, tags, values, entityType, useInlining);
             using StreamWriter writer = new StreamWriter(filePath);
             writer.Write(content);
         }
-        
+
         public static void UpdateFile(IEntityAPIConfiguration configuration)
         {
             string directoryPath = configuration.Directory;
@@ -42,11 +43,13 @@ namespace Atomic.Entities
                 return;
 
             string ns = configuration.Namespace;
-            IEnumerable<string> imports = configuration.GetImports();
-            IEnumerable<string> tags = configuration.GetTags();
+            IReadOnlyCollection<string> imports = configuration.GetImports();
+            IReadOnlyCollection<string> tags = configuration.GetTags();
             IDictionary<string, string> values = configuration.GetValues();
+            string entityType = configuration.EntityType;
+            bool useInlining = configuration.AggressiveInlining;
 
-            string content = GenerateContent(ns, className, imports, tags, values);
+            string content = GenerateContent(ns, className, imports, tags, values, entityType, useInlining);
             using StreamWriter writer = new StreamWriter(filePath);
             writer.Write(content);
         }
@@ -55,11 +58,15 @@ namespace Atomic.Entities
             string ns,
             string className,
             IEnumerable<string> imports,
-            IEnumerable<string> tags,
-            IDictionary<string, string> values
+            IReadOnlyCollection<string> tags,
+            IDictionary<string, string> values,
+            string entityType,
+            bool useInlining
         )
         {
             StringBuilder sb = new StringBuilder();
+            int tagsCount = tags.Count;
+            int valuesCount = values.Count;
 
             //Generate comments:
             sb.AppendLine("/**");
@@ -69,7 +76,9 @@ namespace Atomic.Entities
 
             //Generate imports:
             sb.AppendLine($"using {NAMESPACE};");
-            sb.AppendLine("using System.Runtime.CompilerServices;");
+
+            if (useInlining)
+                sb.AppendLine("using System.Runtime.CompilerServices;");
 
             foreach (string import in imports)
                 sb.AppendLine($"using {import};");
@@ -82,32 +91,44 @@ namespace Atomic.Entities
             sb.AppendLine("\t{");
 
             //Generate tags:
-            sb.AppendLine("\t\t///Tags");
-            foreach (string tag in tags)
-                GenerateTag(sb, tag);
+            if (tagsCount > 0)
+            {
+                sb.AppendLine("\t\t///Tags");
+                foreach (string tag in tags)
+                    GenerateTag(sb, tag);
+            }
 
             //Generate values:
-            sb.AppendLine();
-            sb.AppendLine();
-            sb.AppendLine("\t\t///Values");
+            if (valuesCount > 0)
+            {
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("\t\t///Values");
 
-            foreach ((string name, string type) in values)
-                GenerateValue(sb, name, type);
+                foreach ((string name, string type) in values)
+                    GenerateValue(sb, name, type);
+            }
 
             //Generate tag extensions:
-            sb.AppendLine();
-            sb.AppendLine();
-            sb.AppendLine("\t\t///Tag Extensions");
-            foreach (string tag in tags)
-                GenerateTagExtensions(sb, tag);
+            if (tagsCount > 0)
+            {
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("\t\t///Tag Extensions");
+                foreach (string tag in tags)
+                    GenerateTagExtensions(sb, tag, entityType, useInlining);
+            }
 
             //Generate value extensions:
-            sb.AppendLine();
-            sb.AppendLine();
-            sb.AppendLine("\t\t///Value Extensions");
+            if (valuesCount > 0)
+            {
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("\t\t///Value Extensions");
 
-            foreach (var (name, type) in values)
-                GenerateValueExtensions(sb, name, type);
+                foreach (var (name, type) in values)
+                    GenerateValueExtensions(sb, name, type, entityType, useInlining);
+            }
 
             //Generate end of class:
             sb.AppendLine("    }");
@@ -122,115 +143,128 @@ namespace Atomic.Entities
             string typeName = IsBaseType(type) ? "" : $"// {type}";
             sb.AppendLine($"\t\tpublic const int {key} = {id}; {typeName}");
         }
-        
+
         private static void GenerateTag(StringBuilder sb, string tag)
         {
             int id = EntityUtils.NameToId(tag);
             sb.AppendLine($"\t\tpublic const int {tag} = {id};");
         }
 
-        private static void GenerateTagExtensions(StringBuilder sb, string tag)
+        private static void GenerateTagExtensions(StringBuilder sb, string tag, string entity, bool useInlining)
         {
             sb.AppendLine();
 
             //Has:
-            sb.AppendLine($"\t\tpublic static bool Has{tag}Tag(this {ENTITY_CLASS} obj) => obj.HasTag({tag});");
+            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            sb.AppendLine($"\t\tpublic static bool Has{tag}Tag(this {entity} obj) => obj.HasTag({tag});");
 
             //Not:
-            sb.AppendLine($"\t\tpublic static bool Not{tag}Tag(this {ENTITY_CLASS} obj) => !obj.HasTag({tag});");
+            sb.AppendLine();
+            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            sb.AppendLine($"\t\tpublic static bool Not{tag}Tag(this {entity} obj) => !obj.HasTag({tag});");
 
             //Add:
-            sb.AppendLine($"\t\tpublic static bool Add{tag}Tag(this {ENTITY_CLASS} obj) => obj.AddTag({tag});");
+            sb.AppendLine();
+            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            sb.AppendLine($"\t\tpublic static bool Add{tag}Tag(this {entity} obj) => obj.AddTag({tag});");
 
             //Del:
-            sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {ENTITY_CLASS} obj) => obj.DelTag({tag});");
+            sb.AppendLine();
+            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {entity} obj) => obj.DelTag({tag});");
         }
 
-        private static void GenerateValueExtensions(StringBuilder sb, string name, string type)
+        private static void GenerateValueExtensions(
+            StringBuilder sb,
+            string name,
+            string type,
+            string entity,
+            bool useInlining
+        )
         {
             sb.AppendLine();
 
             if (IsBaseType(type))
             {
                 //Get:
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static object Get{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static object Get{name}(this {entity} obj) => " +
                               $"obj.GetValue({name});");
 
                 //TryGet:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
                 sb.AppendLine(
-                    $"\t\tpublic static bool TryGet{name}(this {ENTITY_CLASS} obj, out object value) => " +
+                    $"\t\tpublic static bool TryGet{name}(this {entity} obj, out object value) => " +
                     $"obj.TryGetValue({name}, out value);");
 
                 //Add:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Add{name}(this {ENTITY_CLASS} obj, object value) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Add{name}(this {entity} obj, object value) => " +
                               $"obj.AddValue({name}, value);");
 
                 //Del:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Del{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Del{name}(this {entity} obj) => " +
                               $"obj.DelValue({name});");
 
                 //Set:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static void Set{name}(this {ENTITY_CLASS} obj, object value) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static void Set{name}(this {entity} obj, object value) => " +
                               $"obj.SetValue({name}, value);");
 
                 //Has:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Has{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Has{name}(this {entity} obj) => " +
                               $"obj.HasValue({name});");
             }
             else
             {
                 //Get:
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static {type} Get{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static {type} Get{name}(this {entity} obj) => " +
                               $"obj.GetValue<{type}>({name});");
 
                 //TryGet:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
                 sb.AppendLine(
-                    $"\t\tpublic static bool TryGet{name}(this {ENTITY_CLASS} obj, out {type} value) =>" +
+                    $"\t\tpublic static bool TryGet{name}(this {entity} obj, out {type} value) =>" +
                     $" obj.TryGetValue({name}, out value);");
 
                 //Add:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Add{name}(this {ENTITY_CLASS} obj, {type} value) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Add{name}(this {entity} obj, {type} value) => " +
                               $"obj.AddValue({name}, value);");
 
                 //Has:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Has{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Has{name}(this {entity} obj) => " +
                               $"obj.HasValue({name});");
 
                 //Del:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static bool Del{name}(this {ENTITY_CLASS} obj) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static bool Del{name}(this {entity} obj) => " +
                               $"obj.DelValue({name});");
 
                 //Set:
                 sb.AppendLine();
-                sb.AppendLine(AGRESSIVE_INLINING);
-                sb.AppendLine($"\t\tpublic static void Set{name}(this {ENTITY_CLASS} obj, {type} value) => " +
+                if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+                sb.AppendLine($"\t\tpublic static void Set{name}(this {entity} obj, {type} value) => " +
                               $"obj.SetValue({name}, value);");
             }
         }
-        
+
         private static bool IsBaseType(string type)
         {
-            return string.IsNullOrEmpty(type) || type == "object"; //TODO: Regex
+            return string.IsNullOrEmpty(type) || type is "object" or "Object";
         }
     }
 }

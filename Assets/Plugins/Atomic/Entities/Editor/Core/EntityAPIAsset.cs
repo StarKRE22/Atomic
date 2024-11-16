@@ -1,9 +1,10 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityAPIAsset
+    internal sealed class EntityAPIAsset
     {
         private readonly string _filePath;
 
@@ -16,10 +17,10 @@ namespace Atomic.Entities
 
         public IEntityAPIConfiguration GetConfiguration()
         {
-            var snapshot = new Configuration();
+            var snapshot = new Snapshot();
             if (!File.Exists(_filePath))
                 return snapshot;
-            
+
             bool readImports = false;
             bool readTags = false;
             bool readValues = false;
@@ -37,6 +38,10 @@ namespace Atomic.Entities
                     snapshot.ClassName = trimmed["className:".Length..].Trim();
                 else if (trimmed.StartsWith("directory:"))
                     snapshot.Directory = trimmed["directory:".Length..].Trim();
+                else if (trimmed.StartsWith("entityType:"))
+                    snapshot.EntityType = trimmed["entityType:".Length..].Trim();
+                else if (trimmed.StartsWith("aggressiveInlining:"))
+                    snapshot.AggressiveInlining = trimmed["aggressiveInlining:".Length..].Trim() == "true";
 
                 else if (trimmed.StartsWith("imports:"))
                 {
@@ -77,31 +82,24 @@ namespace Atomic.Entities
 
             return snapshot;
         }
-        
-        private sealed class Configuration : IEntityAPIConfiguration
+
+        private sealed class Snapshot : IEntityAPIConfiguration
         {
             public string Namespace { get; set; }
             public string ClassName { get; set; }
             public string Directory { get; set; }
+            
+            public string EntityType { get; set; } = "IEntity";
+            public bool AggressiveInlining { get; set; } = true;
 
             public readonly HashSet<string> _imports = new();
             public readonly HashSet<string> _tags = new();
             public readonly Dictionary<string, string> _values = new();
 
-            public IEnumerable<string> GetImports()
-            {
-                return _imports;
-            }
-
-            public IEnumerable<string> GetTags()
-            {
-                return _tags;
-            }
-
-            public IDictionary<string, string> GetValues()
-            {
-                return _values;
-            }
+            public IReadOnlyCollection<string> GetImports() => _imports;
+            public IReadOnlyCollection<string> GetTags() => _tags;
+            public IDictionary<string, string> GetValues() => _values;
         }
     }
 }
+#endif

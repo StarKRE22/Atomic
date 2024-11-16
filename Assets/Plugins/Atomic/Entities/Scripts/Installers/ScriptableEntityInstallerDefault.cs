@@ -1,28 +1,21 @@
 #if ODIN_INSPECTOR
-using UnityEngine;
-
-#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
-#endif
+using UnityEngine;
 
 namespace Atomic.Entities
 {
     [CreateAssetMenu(
-        fileName = "ScriptableEntityInstaller",
-        menuName = "Atomic/Entities/New ScriptableEntityInstaller"
+        fileName = "Entity Installer",
+        menuName = "Atomic/Entities/Scriptable Entity Installer"
     )]
     public class ScriptableEntityInstallerDefault : ScriptableEntityInstaller
     {
-#if ODIN_INSPECTOR
         [HideInPlayMode]
-#endif
         [Header("Installers")]
         [SerializeReference]
         protected IEntityInstaller[] installers = default;
 
-#if ODIN_INSPECTOR
         [HideInPlayMode]
-#endif
         [Header("Behaviours")]
         [SerializeReference]
         protected IEntityBehaviour[] logics = default;

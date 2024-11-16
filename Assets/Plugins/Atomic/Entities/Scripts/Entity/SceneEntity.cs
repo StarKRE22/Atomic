@@ -17,7 +17,7 @@ namespace Atomic.Entities
 {
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public sealed class SceneEntity : MonoBehaviour, IEntity
+    public class SceneEntity : MonoBehaviour, IEntity
     {
         #region Main
 
@@ -60,7 +60,7 @@ namespace Atomic.Entities
         [SerializeField, Space]
         private UnityEvent onInstalled;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _sceneEntityMap.Add(entity, this);
 
@@ -70,11 +70,11 @@ namespace Atomic.Entities
             }
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             _sceneEntityMap.Remove(entity);
         }
-        
+
         public override string ToString()
         {
             return $"{base.ToString()}, {nameof(entity)}: {entity}";
@@ -410,7 +410,7 @@ namespace Atomic.Entities
             entity.Install();
             return entity;
         }
-        
+
         public static SceneEntity Instantiate(
             string name = null,
             IEnumerable<int> tags = null,
@@ -438,7 +438,7 @@ namespace Atomic.Entities
             {
                 return null;
             }
-            
+
             if (entity is SceneEntity sceneEntity)
             {
                 return sceneEntity;
@@ -460,7 +460,7 @@ namespace Atomic.Entities
                 result = null;
                 return false;
             }
-            
+
             if (entity is SceneEntity sceneEntity)
             {
                 result = sceneEntity;
@@ -508,9 +508,9 @@ namespace Atomic.Entities
         {
             foreach (SceneEntityInstaller installer in this.installPipeline)
             {
-                if (installer != null && installer is SceneEntityInstallerDefault sceneInstaller)
+                if (installer != null)
                 {
-                    sceneInstaller.m_refreshCallback = this.RefreshInEditMode;
+                    installer.m_refreshCallback = this.RefreshInEditMode;
                 }
             }
         }

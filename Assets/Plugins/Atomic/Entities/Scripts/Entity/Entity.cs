@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public sealed class Entity : IEntity
+    public class Entity : IEntity
     {
         private static int idGenerator;
 

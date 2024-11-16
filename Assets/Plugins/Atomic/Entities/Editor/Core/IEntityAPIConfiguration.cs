@@ -8,9 +8,12 @@ namespace Atomic.Entities
         string Namespace { get; }
         string ClassName { get; }
         string Directory { get; }
+        
+        string EntityType { get; }
+        bool AggressiveInlining { get; }
 
-        IEnumerable<string> GetImports();
-        IEnumerable<string> GetTags();
+        IReadOnlyCollection<string> GetImports();
+        IReadOnlyCollection<string> GetTags();
         IDictionary<string, string> GetValues();
     }
 }

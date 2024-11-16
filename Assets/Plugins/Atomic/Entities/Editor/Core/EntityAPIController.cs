@@ -1,10 +1,10 @@
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
 
 namespace Atomic.Entities
 {
     [InitializeOnLoad]
-    public static class EntityAPIController
+    internal static class EntityAPIController
     {
         private const float _syncPeriod = 2.5f;
         private static double _currentTime;
@@ -18,11 +18,12 @@ namespace Atomic.Entities
         private static void Update()
         {
             double currentTime = EditorApplication.timeSinceStartup;
-             if (currentTime - _currentTime > _syncPeriod)
-             {
-                 EntityAPIManager.RefreshAPI();
-                 _currentTime = currentTime;
-             }
+            if (currentTime - _currentTime > _syncPeriod)
+            {
+                EntityAPIManager.RefreshAPI();
+                _currentTime = currentTime;
+            }
         }
     }
 }
+#endif
