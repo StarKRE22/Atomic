@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Atomic.Entities
 {
@@ -70,7 +71,8 @@ namespace Atomic.Entities
                     if (readTags)
                         snapshot._tags.Add(item);
 
-                    if (readValues)
+                    if (readValues && Regex.IsMatch(item,
+                            @"^([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*((?:[a-zA-Z_][\w]*\.)*[a-zA-Z_][\w]*)(\?|\*|(\[,*\])|(<[^<>]+>))?$"))
                     {
                         string[] keyValue = item.Split(new[] {':'}, 2);
                         string key = keyValue[0].Trim();

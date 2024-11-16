@@ -9,11 +9,6 @@ imports:
 - UnityEngine
 - Atomic.Elements
 
-tags:
-- Player
-- Enemy
-- Resource
-
 values:
 - Health: IValue<int>
 - Speed: IValue<float>

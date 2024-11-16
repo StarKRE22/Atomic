@@ -11,55 +11,12 @@ namespace SampleGame
 {
 	public static class SampleEntityAPI
 	{
-		///Tags
-		public const int Player = -1615495341;
-		public const int Enemy = 979269037;
-		public const int Resource = 1172805184;
 
 
 		///Values
 		public const int Health = -915003867; // IValue<int>
 		public const int Speed = -823668238; // IValue<float>
 		public const int Transform = -180157682; // Transform
-
-
-		///Tag Extensions
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasPlayerTag(this IEntity obj) => obj.HasTag(Player);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool NotPlayerTag(this IEntity obj) => !obj.HasTag(Player);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddPlayerTag(this IEntity obj) => obj.AddTag(Player);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelPlayerTag(this IEntity obj) => obj.DelTag(Player);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasEnemyTag(this IEntity obj) => obj.HasTag(Enemy);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool NotEnemyTag(this IEntity obj) => !obj.HasTag(Enemy);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddEnemyTag(this IEntity obj) => obj.AddTag(Enemy);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelEnemyTag(this IEntity obj) => obj.DelTag(Enemy);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasResourceTag(this IEntity obj) => obj.HasTag(Resource);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool NotResourceTag(this IEntity obj) => !obj.HasTag(Resource);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddResourceTag(this IEntity obj) => obj.AddTag(Resource);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelResourceTag(this IEntity obj) => obj.DelTag(Resource);
 
 
 		///Value Extensions

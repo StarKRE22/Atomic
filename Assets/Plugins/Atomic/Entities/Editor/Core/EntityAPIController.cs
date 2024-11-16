@@ -6,7 +6,7 @@ namespace Atomic.Entities
     [InitializeOnLoad]
     internal static class EntityAPIController
     {
-        private const float _syncPeriod = 2.5f;
+        private const float _syncPeriod = 1.5f;
         private static double _currentTime;
         
         static EntityAPIController()
