@@ -1,8 +1,8 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-#if UNITY_EDITOR
 namespace Atomic.Entities
 {
     public static class EntityAPIGenerator
@@ -11,7 +11,7 @@ namespace Atomic.Entities
         private const string ENTITY_CLASS = "IEntity";
         private const string AGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
 
-        public static void GenerateFile(IEntityAPIConfiguration configuration)
+        public static void CreateFile(IEntityAPIConfiguration configuration)
         {
             string directoryPath = configuration.Directory;
             if (!Directory.Exists(directoryPath))
@@ -19,6 +19,27 @@ namespace Atomic.Entities
 
             string className = configuration.ClassName;
             string filePath = $"{directoryPath}/{className}.cs";
+
+            string ns = configuration.Namespace;
+            IEnumerable<string> imports = configuration.GetImports();
+            IEnumerable<string> tags = configuration.GetTags();
+            IDictionary<string, string> values = configuration.GetValues();
+
+            string content = GenerateContent(ns, className, imports, tags, values);
+            using StreamWriter writer = new StreamWriter(filePath);
+            writer.Write(content);
+        }
+        
+        public static void UpdateFile(IEntityAPIConfiguration configuration)
+        {
+            string directoryPath = configuration.Directory;
+            if (!Directory.Exists(directoryPath))
+                return;
+
+            string className = configuration.ClassName;
+            string filePath = $"{directoryPath}/{className}.cs";
+            if (!File.Exists(filePath))
+                return;
 
             string ns = configuration.Namespace;
             IEnumerable<string> imports = configuration.GetImports();

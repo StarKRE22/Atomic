@@ -4,11 +4,16 @@ namespace Atomic.Entities
 {
     public static class MenuPresenter
     {
-        [MenuItem("Tools/Atomic/Entities/Generate API", priority = 7)]
-        internal static void GenerateAPI()
+        [MenuItem("Tools/Atomic/Entities/Compile API", priority = 7)]
+        internal static void Compile()
         {
-            //TODO: SELECT YAML FILE
-            EntityAPIController.Generate();
+            EntityAPIManager.Compile();
+        }
+        
+        [MenuItem("Tools/Atomic/Entities/Refresh API", priority = 7)]
+        internal static void Refresh()
+        {
+            EntityAPIManager.Refresh();
         }
         
         //TODO: CREATE YAML FILE
