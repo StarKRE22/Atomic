@@ -20,7 +20,6 @@ namespace Atomic.Entities
             double currentTime = EditorApplication.timeSinceStartup;
              if (currentTime - _currentTime > _syncPeriod)
              {
-                 Debug.Log("REFRESH CONTROLLER");
                  EntityAPIManager.RefreshAPI();
                  _currentTime = currentTime;
              }
