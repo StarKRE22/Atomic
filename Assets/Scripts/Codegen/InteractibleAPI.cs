@@ -13,6 +13,7 @@ namespace SampleGame
 	public static class InteractibleAPI
 	{
 		///Tags
+		public const int Interactible = -2055148603;
 
 
 		///Values
@@ -20,6 +21,11 @@ namespace SampleGame
 
 
 		///Tag Extensions
+
+		public static bool HasInteractibleTag(this IEntity obj) => obj.HasTag(Interactible);
+		public static bool NotInteractibleTag(this IEntity obj) => !obj.HasTag(Interactible);
+		public static bool AddInteractibleTag(this IEntity obj) => obj.AddTag(Interactible);
+		public static bool DelInteractibleTag(this IEntity obj) => obj.DelTag(Interactible);
 
 
 		///Value Extensions

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -32,6 +33,8 @@ namespace Atomic.Entities
         
         public static void UpdateFile(IEntityAPIConfiguration configuration)
         {
+            Debug.Log($"UPDATE FILE {configuration.ClassName}");
+
             string directoryPath = configuration.Directory;
             if (!Directory.Exists(directoryPath))
                 return;

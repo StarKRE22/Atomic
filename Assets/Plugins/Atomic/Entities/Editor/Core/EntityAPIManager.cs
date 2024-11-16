@@ -3,37 +3,62 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
+    [InitializeOnLoad]
     public static class EntityAPIManager
     {
-        private static IEntityAPIConfiguration[] _configurations;
-
+        private const string ASSET_NAME = "EntityAPI";
+        private const string ASSET_EXTENSION = "yaml";
+        
+        private static EntityAPIAsset[] _assets;
+        
+        static EntityAPIManager()
+        {
+            LoadAssets();
+        }
+        
         public static void Compile()
         {
-            string[] files = AssetDatabase.FindAssets("EntityAPI")
-                .Select(AssetDatabase.GUIDToAssetPath)
-                .Where(path => path.EndsWith("EntityAPI.yaml"))
-                .ToArray();
+            if (_assets == null)
+                return;
 
-            int count = files.Length;
-            _configurations = new IEntityAPIConfiguration[count];
-            
-            for (int i = 0; i < count; i++)
+            for (int i = 0, cont = _assets.Length; i < cont; i++)
             {
-                string filePath = files[i];
-                var configuration = new EntityAPIConfiguration(filePath);
+                EntityAPIAsset asset = _assets[i];
+                IEntityAPIConfiguration configuration = asset.GetConfiguration();
                 EntityAPIGenerator.CreateFile(configuration);
-                _configurations[i] = configuration;
             }
-            
+
             AssetDatabase.Refresh();
         }
 
         public static void Refresh()
         {
-            for (int i = 0, cont = _configurations.Length; i < cont; i++)
+            if (_assets == null)
+                return;
+
+            for (int i = 0, cont = _assets.Length; i < cont; i++)
             {
-                IEntityAPIConfiguration configuration = _configurations[i];
+                EntityAPIAsset asset = _assets[i];
+                IEntityAPIConfiguration configuration = asset.GetConfiguration();
                 EntityAPIGenerator.UpdateFile(configuration);
+            }
+        }
+
+        private static void LoadAssets()
+        {
+            string[] assetPaths = AssetDatabase.FindAssets(ASSET_NAME)
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(path => path.EndsWith($"{ASSET_NAME}.{ASSET_EXTENSION}"))
+                .ToArray();
+
+            int count = assetPaths.Length;
+            _assets = new EntityAPIAsset[count];
+            
+            for (int i = 0; i < count; i++)
+            {
+                string filePath = assetPaths[i];
+                EntityAPIAsset configuration = new EntityAPIAsset(filePath);
+                _assets[i] = configuration;
             }
         }
     }

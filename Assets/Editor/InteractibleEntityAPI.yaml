@@ -7,5 +7,7 @@ imports:
   - Atomic.Elements
 
 tags:
+  - Interactible
+  
 values:
   - InteractionCountdown: IValue<int>

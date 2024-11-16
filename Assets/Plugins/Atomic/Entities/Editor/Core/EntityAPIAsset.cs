@@ -1,26 +1,26 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityAPIConfiguration : IEntityAPIConfiguration
+    public sealed class EntityAPIAsset
     {
-        public string Namespace { get; set; }
-        public string ClassName { get; set; }
-        public string Directory { get; set; }
+        private readonly string _filePath;
 
-        private readonly HashSet<string> imports = new();
-        private readonly HashSet<string> tags = new();
-        private readonly Dictionary<string, string> values = new();
-
-        public EntityAPIConfiguration(string filePath)
+        public EntityAPIAsset(string filePath)
         {
+            _filePath = filePath;
+        }
+
+        public IEntityAPIConfiguration GetConfiguration()
+        {
+            var snapshot = new Configuration();
+            
             bool readImports = false;
             bool readTags = false;
             bool readValues = false;
 
-            foreach (string line in File.ReadLines(filePath))
+            foreach (string line in File.ReadLines(_filePath))
             {
                 string trimmed = line.Trim();
 
@@ -28,11 +28,11 @@ namespace Atomic.Entities
                     continue;
 
                 if (trimmed.StartsWith("namespace:"))
-                    this.Namespace = trimmed["namespace:".Length..].Trim();
+                    snapshot.Namespace = trimmed["namespace:".Length..].Trim();
                 else if (trimmed.StartsWith("className:"))
-                    this.ClassName = trimmed["className:".Length..].Trim();
+                    snapshot.ClassName = trimmed["className:".Length..].Trim();
                 else if (trimmed.StartsWith("directory:"))
-                    this.Directory = trimmed["directory:".Length..].Trim();
+                    snapshot.Directory = trimmed["directory:".Length..].Trim();
 
                 else if (trimmed.StartsWith("imports:"))
                 {
@@ -56,54 +56,48 @@ namespace Atomic.Entities
                 {
                     string item = trimmed[1..].Trim();
                     if (readImports)
-                        this.imports.Add(item);
+                        snapshot._imports.Add(item);
 
                     if (readTags)
-                        this.tags.Add(item);
+                        snapshot._tags.Add(item);
 
                     if (readValues)
                     {
                         string[] keyValue = item.Split(new[] {':'}, 2);
                         string key = keyValue[0].Trim();
                         string value = keyValue[1].Trim();
-                        this.values.Add(key, value);
+                        snapshot._values.Add(key, value);
                     }
                 }
             }
-        }
 
-        public void AddImport()
-        {
+            return snapshot;
         }
-
-        public void AddTag()
+        
+        private sealed class Configuration : IEntityAPIConfiguration
         {
-            throw new NotImplementedException();
-        }
+            public string Namespace { get; set; }
+            public string ClassName { get; set; }
+            public string Directory { get; set; }
 
-        public void AddValue()
-        {
-            throw new NotImplementedException();
-        }
+            public readonly HashSet<string> _imports = new();
+            public readonly HashSet<string> _tags = new();
+            public readonly Dictionary<string, string> _values = new();
 
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
+            public IEnumerable<string> GetImports()
+            {
+                return _imports;
+            }
 
-        public IEnumerable<string> GetImports()
-        {
-            return this.imports;
-        }
+            public IEnumerable<string> GetTags()
+            {
+                return _tags;
+            }
 
-        public IEnumerable<string> GetTags()
-        {
-            return tags;
-        }
-
-        public IDictionary<string, string> GetValues()
-        {
-            return values;
+            public IDictionary<string, string> GetValues()
+            {
+                return _values;
+            }
         }
     }
 }

@@ -10,6 +10,6 @@ tags:
   - Moveable
     
 values:
-  - Position: float3Reactive
-  - MovementSpeed: Const<float>
-  - MovementDirection: float3Reactive
+  - Position: bool
+  - MovementSpeed: object
+  - MovementDirection: float
