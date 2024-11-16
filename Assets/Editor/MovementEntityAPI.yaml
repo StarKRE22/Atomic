@@ -1,0 +1,15 @@
+namespace: SampleGame
+className: MovementAPI
+directory: Assets/Scripts/Codegen
+
+imports:
+  - UnityEngine
+  - Atomic.Elements
+
+tags:
+  - Moveable
+    
+values:
+  - Position: float3Reactive
+  - MovementSpeed: Const<float>
+  - MovementDirection: float3Reactive

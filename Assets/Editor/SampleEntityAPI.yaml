@@ -1,5 +1,4 @@
 namespace: SampleGame
-
 className: EntityAPI
 directory: Assets/Scripts/Codegen
 
@@ -18,3 +17,4 @@ values:
   - Speed : IValue<float>
   - Transform: Transform
   - GameObject: GameObject
+  - Mana: IVariable<int>

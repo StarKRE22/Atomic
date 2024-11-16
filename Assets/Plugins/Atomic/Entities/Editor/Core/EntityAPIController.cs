@@ -12,7 +12,12 @@ namespace Atomic.Entities
     {
         static EntityAPIController()
         {
+            EditorApplication.update += Update;
             // CompilationPipeline.compilationFinished += Generate;
+        }
+
+        private static void Update()
+        {
         }
 
         public static void Generate()

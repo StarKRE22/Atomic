@@ -24,6 +24,7 @@ namespace SampleGame
 		public const int Speed = -823668238; // IValue<float>
 		public const int Transform = -180157682; // Transform
 		public const int GameObject = 1482111001; // GameObject
+		public const int Mana = -1058739956; // IVariable<int>
 
 
 		///Tag Extensions
@@ -135,5 +136,23 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameObject(this IEntity obj, GameObject value) => obj.SetValue(GameObject, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IVariable<int> GetMana(this IEntity obj) => obj.GetValue<IVariable<int>>(Mana);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetMana(this IEntity obj, out IVariable<int> value) => obj.TryGetValue(Mana, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddMana(this IEntity obj, IVariable<int> value) => obj.AddValue(Mana, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasMana(this IEntity obj) => obj.HasValue(Mana);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelMana(this IEntity obj) => obj.DelValue(Mana);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetMana(this IEntity obj, IVariable<int> value) => obj.SetValue(Mana, value);
     }
 }

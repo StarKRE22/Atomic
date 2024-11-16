@@ -1,0 +1,11 @@
+namespace: SampleGame
+className: InteractibleAPI
+directory: Assets/Scripts/Codegen
+
+imports:
+  - UnityEngine
+  - Atomic.Elements
+
+tags:
+values:
+  - InteractionCountdown: IValue<int>
