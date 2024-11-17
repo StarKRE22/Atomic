@@ -54,7 +54,7 @@ namespace Atomic.Contexts
             for (int i = 0, count = fields.Length; i < count; i++)
             {
                 FieldInfo field = fields[i];
-                InjectAttribute attribute = field.GetCustomAttribute<InjectAttribute>();
+                ContextInjectAttribute attribute = field.GetCustomAttribute<ContextInjectAttribute>();
                 if (attribute == null)
                 {
                     continue;
@@ -65,7 +65,7 @@ namespace Atomic.Contexts
 
                 if (value == null)
                 {
-                    Debug.LogError($"Can't resolve field with key {debugUtils.ConvertToName(valueId)}");
+                    Debug.LogError($"Can't resolve field with key {ContextUtils.IdToString(valueId)}");
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace Atomic.Contexts
             for (int i = 0, count = properties.Length; i < count; i++)
             {
                 PropertyInfo property = properties[i];
-                InjectAttribute attribute = property.GetCustomAttribute<InjectAttribute>();
+                ContextInjectAttribute attribute = property.GetCustomAttribute<ContextInjectAttribute>();
                 if (attribute == null)
                 {
                     continue;
@@ -95,7 +95,7 @@ namespace Atomic.Contexts
 
                 if (value == null)
                 {
-                    Debug.LogError($"Can't resolve property with key {debugUtils.ConvertToName(valueId)}");
+                    Debug.LogError($"Can't resolve property with key {ContextUtils.IdToString(valueId)}");
                 }
                 else
                 {
@@ -115,7 +115,7 @@ namespace Atomic.Contexts
             for (int i = 0, count = methods.Length; i < count; i++)
             {
                 MethodInfo method = methods[i];
-                if (method.IsDefined(typeof(ConstructAttribute)))
+                if (method.IsDefined(typeof(ContextInjectAttribute)))
                 {
                     context.InjectByMethod(target, method);
                 }
@@ -131,7 +131,7 @@ namespace Atomic.Contexts
             for (var i = 0; i < count; i++)
             {
                 ParameterInfo parameter = parameters[i];
-                InjectAttribute attribute = parameter.GetCustomAttribute<InjectAttribute>();
+                ContextInjectAttribute attribute = parameter.GetCustomAttribute<ContextInjectAttribute>();
                 if (attribute == null)
                 {
                     throw new Exception($"Exprected parameter {parameter.Name} with [Inject] attribute!");
@@ -142,7 +142,7 @@ namespace Atomic.Contexts
 
                 if (value == null)
                 {
-                    Debug.LogError($"Can't resolve parameter with key {debugUtils.ConvertToName(valueId)}");
+                    Debug.LogError($"Can't resolve parameter with key {ContextUtils.IdToString(valueId)}");
                 }
                 else
                 {

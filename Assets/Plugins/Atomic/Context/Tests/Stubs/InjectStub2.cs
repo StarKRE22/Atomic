@@ -4,8 +4,8 @@ namespace Atomic.Contexts
     {
         public string name;
 
-        [Construct]
-        public void Construct([Inject(1)] string name)
+        [ContextInject]
+        public void Construct([ContextInject(1)] string name)
         {
             this.name = name;
         }

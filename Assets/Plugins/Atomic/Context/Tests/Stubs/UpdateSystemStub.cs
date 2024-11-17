@@ -6,17 +6,17 @@ namespace Atomic.Contexts
         public bool fixedUpdated;
         public bool lateUpdated;
 
-        public void Update(IContext context, float deltaTime)
+        public void OnUpdate(IContext context, float deltaTime)
         {
             this.updated = true;
         }
 
-        public void FixedUpdate(IContext context, float deltaTime)
+        public void OnFixedUpdate(IContext context, float deltaTime)
         {
             this.fixedUpdated = true;
         }
 
-        public void LateUpdate(IContext context, float deltaTime)
+        public void OnLateUpdate(IContext context, float deltaTime)
         {
             this.lateUpdated = true;
         }

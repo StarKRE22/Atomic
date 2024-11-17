@@ -1,10 +1,15 @@
-using UnityEngine.Scripting.APIUpdating;
-
 namespace Atomic.Contexts
 {
-    [MovedFrom(true, null, null, "IFixedUpdateSystem")]
     public interface IContextFixedUpdate : IContextSystem
     {
-        void FixedUpdate(IContext context, float deltaTime);
+        void OnFixedUpdate(IContext context, float deltaTime);
+    }
+
+    public interface IContextFixedUpdate<in T> : IContextFixedUpdate where T : IContext
+    {
+        void OnFixedUpdate(T context, float deltaTime);
+        
+        void IContextFixedUpdate.OnFixedUpdate(IContext context, float deltaTime) => 
+            this.OnFixedUpdate((T) context, deltaTime);
     }
 }

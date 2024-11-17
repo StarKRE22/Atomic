@@ -52,7 +52,7 @@ namespace Atomic.Contexts
             for (int i = 0; i < count; i++)
             {
                 ParameterInfo parameter = parameters[i];
-                InjectAttribute attribute = parameter.GetCustomAttribute<InjectAttribute>();
+                ContextInjectAttribute attribute = parameter.GetCustomAttribute<ContextInjectAttribute>();
                 if (attribute == null)
                 {
                     throw new Exception($"Exprected parameter {parameter.Name} with [Inject] attribute!");
@@ -63,7 +63,7 @@ namespace Atomic.Contexts
 
                 if (value == null)
                 {
-                    Debug.LogError($"Can't resolve parameter with key {debugUtils.ConvertToName(valueId)}");
+                    Debug.LogError($"Can't resolve parameter with key {ContextUtils.IdToString(valueId)}");
                 }
                 else
                 {
@@ -75,22 +75,3 @@ namespace Atomic.Contexts
         }
     }
 }
-
-
-
-// for (var i = 0; i < count; i++)
-// {
-//
-// }
-//
-// // if (count == 0)
-// // {
-// //     ConstructorInfo defaultCtor = type.GetConstructor(Type.EmptyTypes);
-// //     if (defaultCtor != null)
-// //     {
-// //         return defaultCtor.Invoke(Array.Empty<object>());
-// //     }
-// // }
-//
-//
-// throw new Exception("Constructor is not found!");

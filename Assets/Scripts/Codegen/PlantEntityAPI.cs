@@ -22,57 +22,57 @@ namespace SampleGame
 		///Value Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static int GetPlantState(this Plant obj) => obj.GetValue<int>(PlantState);
+		public static int GetPlantState(this IPlant obj) => obj.GetValue<int>(PlantState);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPlantState(this Plant obj, out int value) => obj.TryGetValue(PlantState, out value);
+		public static bool TryGetPlantState(this IPlant obj, out int value) => obj.TryGetValue(PlantState, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddPlantState(this Plant obj, int value) => obj.AddValue(PlantState, value);
+		public static bool AddPlantState(this IPlant obj, int value) => obj.AddValue(PlantState, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasPlantState(this Plant obj) => obj.HasValue(PlantState);
+		public static bool HasPlantState(this IPlant obj) => obj.HasValue(PlantState);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelPlantState(this Plant obj) => obj.DelValue(PlantState);
+		public static bool DelPlantState(this IPlant obj) => obj.DelValue(PlantState);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPlantState(this Plant obj, int value) => obj.SetValue(PlantState, value);
+		public static void SetPlantState(this IPlant obj, int value) => obj.SetValue(PlantState, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static float GetCapacity(this Plant obj) => obj.GetValue<float>(Capacity);
+		public static float GetCapacity(this IPlant obj) => obj.GetValue<float>(Capacity);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCapacity(this Plant obj, out float value) => obj.TryGetValue(Capacity, out value);
+		public static bool TryGetCapacity(this IPlant obj, out float value) => obj.TryGetValue(Capacity, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddCapacity(this Plant obj, float value) => obj.AddValue(Capacity, value);
+		public static bool AddCapacity(this IPlant obj, float value) => obj.AddValue(Capacity, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCapacity(this Plant obj) => obj.HasValue(Capacity);
+		public static bool HasCapacity(this IPlant obj) => obj.HasValue(Capacity);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCapacity(this Plant obj) => obj.DelValue(Capacity);
+		public static bool DelCapacity(this IPlant obj) => obj.DelValue(Capacity);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCapacity(this Plant obj, float value) => obj.SetValue(Capacity, value);
+		public static void SetCapacity(this IPlant obj, float value) => obj.SetValue(Capacity, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Transform GetTransform(this Plant obj) => obj.GetValue<Transform>(Transform);
+		public static Transform GetTransform(this IPlant obj) => obj.GetValue<Transform>(Transform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTransform(this Plant obj, out Transform value) => obj.TryGetValue(Transform, out value);
+		public static bool TryGetTransform(this IPlant obj, out Transform value) => obj.TryGetValue(Transform, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddTransform(this Plant obj, Transform value) => obj.AddValue(Transform, value);
+		public static bool AddTransform(this IPlant obj, Transform value) => obj.AddValue(Transform, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTransform(this Plant obj) => obj.HasValue(Transform);
+		public static bool HasTransform(this IPlant obj) => obj.HasValue(Transform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTransform(this Plant obj) => obj.DelValue(Transform);
+		public static bool DelTransform(this IPlant obj) => obj.DelValue(Transform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTransform(this Plant obj, Transform value) => obj.SetValue(Transform, value);
+		public static void SetTransform(this IPlant obj, Transform value) => obj.SetValue(Transform, value);
     }
 }

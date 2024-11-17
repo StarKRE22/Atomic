@@ -1,10 +1,14 @@
-using UnityEngine.Scripting.APIUpdating;
-
 namespace Atomic.Contexts
 {
-    [MovedFrom(true, null, null, "ILateUpdateSystem")] 
     public interface IContextLateUpdate : IContextSystem
     {
-        void LateUpdate(IContext context, float deltaTime);
+        void OnLateUpdate(IContext context, float deltaTime);
+    }
+    
+    public interface IContextLateUpdate<in T> : IContextLateUpdate where T : IContext
+    {
+        void OnLateUpdate(T context, float deltaTime);
+        void IContextLateUpdate.OnLateUpdate(IContext context, float deltaTime) => 
+            this.OnLateUpdate((T) context, deltaTime);
     }
 }

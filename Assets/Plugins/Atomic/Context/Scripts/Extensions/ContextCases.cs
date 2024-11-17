@@ -23,8 +23,8 @@ namespace Atomic.Contexts
         {
             foreach (GameObject gameObject in scene.GetRootGameObjects())
             {
-                SceneContextInstallerBase[] installers = gameObject
-                    .GetComponentsInChildren<SceneContextInstallerBase>(includeInactive);
+                SceneContextInstaller[] installers = gameObject
+                    .GetComponentsInChildren<SceneContextInstaller>(includeInactive);
                 foreach (var installer in installers)
                 {
                     installer.Install(context);

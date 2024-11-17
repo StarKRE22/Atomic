@@ -46,7 +46,7 @@ namespace Atomic.Contexts
 
         [Space]
         [SerializeField]
-        public List<SceneContextInstallerBase> installers = new();
+        public List<SceneContextInstaller> installers = new();
 
         [Space]
         [SerializeField]
@@ -85,7 +85,7 @@ namespace Atomic.Contexts
 
             for (int i = 0, count = this.installers.Count; i < count; i++)
             {
-                SceneContextInstallerBase installer = this.installers[i];
+                SceneContextInstaller installer = this.installers[i];
                 if (installer != null)
                 {
                     installer.Install(this);
@@ -447,7 +447,7 @@ namespace Atomic.Contexts
 
                 foreach ((int id, object value) in values)
                 {
-                    string name = debugUtils.ConvertToName(id);
+                    string name = ContextUtils.IdToString(id);
                     _valueElementsCache.Add(new ValueElement(name, value, id));
                 }
 

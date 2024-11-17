@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Contexts
 {
     public abstract class SingletonSceneContext<T> : SceneContext where T : SceneContext
@@ -6,7 +8,14 @@ namespace Atomic.Contexts
         {
             get
             {
-                if (_instance == null) _instance = FindObjectOfType<T>();
+                if (_instance != null)
+                    return _instance;
+
+                _instance = FindObjectOfType<T>();
+                
+                if (_instance == null)
+                    throw new NullReferenceException("Can't find Scene context on scene!");
+
                 return _instance;
             }
         }

@@ -2,11 +2,13 @@ using Atomic.Entities;
 
 namespace SampleGame
 {
-    public sealed class PlantBehaviour : IEntityInit<Plant>
+    public sealed class PlantBehaviour : IEntityInit<IPlant>
     {
-        public void Init(Plant entity)
+        public void Init(IPlant entity)
         {
-            
+       
         }
     }
 }
+
+

@@ -19,10 +19,8 @@ namespace Atomic.Contexts
 
         private void Start()
         {
-            if (this.dependencyInjection)
-            {
+            if (this.dependencyInjection) 
                 this.context.Construct();
-            }
 
             this.context.Init();
             this.context.Enable();

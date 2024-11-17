@@ -1,4 +1,4 @@
-entityType: Plant
+entityType: IPlant
 aggressiveInlining: true
 
 namespace: SampleGame

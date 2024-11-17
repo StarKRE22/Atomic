@@ -401,7 +401,7 @@ namespace Atomic.Contexts
                 for (int i = 0; i < count; i++)
                 {
                     IContextUpdate update = _updateCache[i];
-                    update.Update(this, deltaTime);
+                    update.OnUpdate(this, deltaTime);
                 }
             }
 
@@ -425,7 +425,7 @@ namespace Atomic.Contexts
                 for (int i = 0; i < count; i++)
                 {
                     IContextFixedUpdate updateSystem = _fixedUpdateCache[i];
-                    updateSystem.FixedUpdate(this, deltaTime);
+                    updateSystem.OnFixedUpdate(this, deltaTime);
                 }
             }
 
@@ -449,7 +449,7 @@ namespace Atomic.Contexts
                 for (int i = 0; i < count; i++)
                 {
                     IContextLateUpdate updateSystem = _lateUpdateCache[i];
-                    updateSystem.LateUpdate(this, deltaTime);
+                    updateSystem.OnLateUpdate(this, deltaTime);
                 }
             }
 

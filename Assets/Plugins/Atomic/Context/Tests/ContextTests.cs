@@ -442,7 +442,7 @@ namespace Atomic.Contexts
             ctx.Inject(stub);
             
             //Assert:
-            Assert.AreEqual("Vasya", stub.name);
+            Assert.AreEqual("Vasya", stub.Name);
         }
 
         #endregion

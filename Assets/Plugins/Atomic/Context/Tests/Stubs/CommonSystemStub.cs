@@ -40,19 +40,19 @@ namespace Atomic.Contexts
             this.flowQueue.Append("D");
         }
 
-        public void Update(IContext context, float deltaTime)
+        public void OnUpdate(IContext context, float deltaTime)
         {
             this.updated = true;
             this.flowQueue.Append("U");
         }
 
-        public void FixedUpdate(IContext context, float deltaTime)
+        public void OnFixedUpdate(IContext context, float deltaTime)
         {
             this.fixedUpdated = true;
             this.flowQueue.Append("F");
         }
 
-        public void LateUpdate(IContext context, float deltaTime)
+        public void OnLateUpdate(IContext context, float deltaTime)
         {
             this.lateUpdated = true;
             this.flowQueue.Append("L");

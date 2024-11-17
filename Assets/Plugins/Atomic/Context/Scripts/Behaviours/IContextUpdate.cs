@@ -1,10 +1,13 @@
-using UnityEngine.Scripting.APIUpdating;
-
 namespace Atomic.Contexts
 {
-    [MovedFrom(true, null, null, "IUpdateSystem")] 
     public interface IContextUpdate : IContextSystem
     {
-        void Update(IContext context, float deltaTime);
+        void OnUpdate(IContext context, float deltaTime);
+    }
+
+    public interface IContextUpdate<in T> : IContextUpdate where T : IContext
+    {
+        void OnUpdate(T context, float deltaTime);
+        void IContextUpdate.OnUpdate(IContext context, float deltaTime) => this.OnUpdate((T) context, deltaTime);
     }
 }
