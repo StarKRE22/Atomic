@@ -2,7 +2,7 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class MenuPresenter
+    internal static class MenuPresenter
     {
         [MenuItem("Tools/Atomic/Entities/Compile API", priority = 7)]
         internal static void Compile()

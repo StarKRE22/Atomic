@@ -1,0 +1,16 @@
+contextType: IContext
+aggressiveInlining: true
+
+namespace: SampleGame
+className: CommonContextAPI
+directory: Assets/Scripts/Codegen
+
+imports:
+  - UnityEngine
+  - Atomic.Entities
+  - Atomic.Elements
+
+values:
+  - Transform: Transform
+  - GameObject: GameObject
+  - Name: string
