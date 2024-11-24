@@ -37,9 +37,37 @@ namespace Atomic.Entities
 
         private void CompileKeys()
         {
-            ValueConfig audioBank = this.target as ValueConfig;
-            ValueAPIGenerator.Generate(audioBank);
+            UpdateValueIndexesAndGenerate();
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
+        private static void UpdateValueIndexesAndGenerate()
+        {
+            var assets = AssetDatabase.FindAssets("t:" + nameof(ValueConfig));
+
+            for (var i = 0; i < assets.Length; i++)
+            {
+                var guid = assets[i];
+                var currentInnerIndex = 0;
+
+                var assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                var config = AssetDatabase.LoadAssetAtPath<ValueConfig>(assetPath);
+                for (var j = 0; j < config.categories.Count; j++)
+                {
+                    var configCategory = config.categories[j];
+                    for (var k = 0; k < configCategory.indexes.Count; k++)
+                    {
+                        var item = configCategory.indexes[k];
+                        item.id = currentInnerIndex + 10000 * i;
+                        currentInnerIndex++;
+                    }
+                }
+
+                ValueAPIGenerator.Generate(config);
+            }
+        }
+
     }
 }
 #endif

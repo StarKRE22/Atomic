@@ -51,9 +51,6 @@ namespace Atomic.Entities
             {
                 GenerateCategory(category, @namespace, suffix, directoryPath, imports, true);
             }
-
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
         }
 
         private static void GenerateCategory(ValueConfig.Category category,
