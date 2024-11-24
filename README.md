@@ -27,8 +27,6 @@ _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Ato
 - **[Atomic.Context](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Context)** — solution for developing game systems
 - **[Atomic.UI](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/UI)** — solution for developing UI controllers
 - **[Atomic.Extensions](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Extensions)** — extra features
-- **Atomic.AI** — solution for developing AI (coming soon)
-- **Atomic.Fusion** — solution for developing Mulitplayer with Photon Fusion 2
 
 ## Game Example
 There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
@@ -116,12 +114,6 @@ Here you can see all the features that are in the framework. We will add documen
 - [Atomic.Extensions]
   - [Entity Aspects]
   - [Condition and Action Assets] 
-- [Atomic.AI] (Coming Soon)
-  - [State Machine]
-  - [Behaviour Tree]
-  - [Utility AI]
-  - [Goal-Oriented Action Planning]
-  - [HTN-Planner]
 
 
 
