@@ -3,13 +3,16 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
 
-![изображение](https://github.com/user-attachments/assets/bd9b13da-fed3-41dc-b84e-ef87b3301dfa)
-# Atomic Framework
-Architectural framework for developing games in C# and Unity
+<img width="4096" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" />
+
+<!-- ![изображение](https://github.com/user-attachments/assets/bd9b13da-fed3-41dc-b84e-ef87b3301dfa)  -->
+
+<!-- # Atomic Framework -->
+
 
 What is Atomic?
 ---
-Atomic Framework is a solution designed for developing games in C# and Unity. The main idea of framework is reduce code complexity by separating state and behaviour of game code. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards procedural and reactive programming instead of OOP.
+Atomic is procedural framework for developing games in C# and Unity. The main idea of framework is reduce code complexity by separating reactive state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards procedural and reactive programming instead of OOP.
 
 ## Installation
 
