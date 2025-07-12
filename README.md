@@ -12,7 +12,7 @@
 
 What is Atomic?
 ---
-Atomic is a procedural framework for developing games in C# and Unity. The key idea is reduce code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards procedural and reactive programming instead of OOP.
+Atomic is a reactive procedural framework for developing games in C# and Unity. The key idea is reducing code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards static methods and reactive properties instead of OOP.
 
 ## Installation
 
