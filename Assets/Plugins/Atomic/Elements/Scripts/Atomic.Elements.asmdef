@@ -1,0 +1,22 @@
+{
+    "name": "Atomic.Elements",
+    "rootNamespace": "Atomic.Elements",
+    "references": [
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.mathematics",
+            "expression": "",
+            "define": "UNITY_MATHEMATICS"
+        }
+    ],
+    "noEngineReferences": false
+}

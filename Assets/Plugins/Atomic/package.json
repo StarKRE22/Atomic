@@ -1,0 +1,17 @@
+{
+  "name": "com.starkre.unity-atomic-experimental",
+  "author": "Igor Gulkin",
+  "displayName": "Unity Atomic",
+  "unity": "2022.3.1",
+  "version": "3.0.0",
+  "keywords": [
+    "atomic",
+    "experimental"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StarKRE22/unity-atomic.git#experimental"
+  },
+
+  "description": "Experimental concept of game object development"
+}
