@@ -9,12 +9,8 @@ namespace Atomic.Elements
         public static void InvokeAll(this IEnumerable<IAction> actions)
         {
             if (actions != null)
-            {
                 foreach (IAction action in actions)
-                {
                     action?.Invoke();
-                }    
-            }
         } 
     }
 }
