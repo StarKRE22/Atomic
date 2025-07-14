@@ -3,61 +3,70 @@ using SampleGame;
 
 namespace Atomic.Entities
 {
+    public interface IGenericEntityFactory : IGenericEntityFactory<string>
+    {
+    }
+
+    public interface IGenericEntityFactory<TKey>
+    {
+        void Add(in TKey key, in IEntityFactory factory);
+        void Remove(in TKey key);
+        IEntity Create(in TKey key);
+    }
+    
     public class GenericEntityFactory : GenericEntityFactory<string>, IGenericEntityFactory
     {
         public GenericEntityFactory()
         {
         }
 
-        public GenericEntityFactory(EntityPrototypeCatalog prototypeCatalog) :base(prototypeCatalog.GetEntities())
+        public GenericEntityFactory(ScriptableEntityFactoryCatalog factoryCatalog) :base(factoryCatalog.GetEntities())
         {
         }
 
-        public GenericEntityFactory(IEnumerable<KeyValuePair<string, IEntityFactory>> prototypes) : base(prototypes)
+        public GenericEntityFactory(IEnumerable<KeyValuePair<string, IEntityFactory>> factorys) : base(factorys)
         {
         }
 
-        public GenericEntityFactory(params KeyValuePair<string, IEntityFactory>[] prototype) : base(prototype)
+        public GenericEntityFactory(params KeyValuePair<string, IEntityFactory>[] factory) : base(factory)
         {
         }
     }
 
     public class GenericEntityFactory<TKey> : IGenericEntityFactory<TKey>
     {
-        private readonly Dictionary<TKey, IEntityFactory> _prototypes;
+        private readonly Dictionary<TKey, IEntityFactory> _factories;
 
         public GenericEntityFactory()
         {
-            _prototypes = new Dictionary<TKey, IEntityFactory>();
+            _factories = new Dictionary<TKey, IEntityFactory>();
         }
 
-        public GenericEntityFactory(in IEnumerable<KeyValuePair<TKey, IEntityFactory>> prototypes)
+        public GenericEntityFactory(in IEnumerable<KeyValuePair<TKey, IEntityFactory>> factorys)
         {
-            _prototypes = new Dictionary<TKey, IEntityFactory>(prototypes);
+            _factories = new Dictionary<TKey, IEntityFactory>(factorys);
         }
 
-        public GenericEntityFactory(params KeyValuePair<TKey, IEntityFactory>[] prototype)
+        public GenericEntityFactory(params KeyValuePair<TKey, IEntityFactory>[] factory)
         {
-            _prototypes = new Dictionary<TKey, IEntityFactory>(prototype);
+            _factories = new Dictionary<TKey, IEntityFactory>(factory);
         }
 
-        public GenericEntityFactory<TKey> Register(in TKey key, in IEntityFactory prototype)
+        public void Add(in TKey key, in IEntityFactory factory)
         {
-            _prototypes.Add(key, prototype);
-            return this;
+            _factories.Add(key, factory);
         }
 
-        public GenericEntityFactory<TKey> Unregister(in TKey key)
+        public void Remove(in TKey key)
         {
-            _prototypes.Remove(key);
-            return this;
+            _factories.Remove(key);
         }
 
         public IEntity Create(in TKey key)
         {
-            return !_prototypes.TryGetValue(key, out IEntityFactory prototype)
+            return !_factories.TryGetValue(key, out IEntityFactory factory)
                 ? throw new KeyNotFoundException($"Can't create entity with key: {key}")
-                : prototype.Create();
+                : factory.Create();
         }
     }
 }

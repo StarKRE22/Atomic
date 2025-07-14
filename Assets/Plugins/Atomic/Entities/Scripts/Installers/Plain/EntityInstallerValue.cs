@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [Serializable]
-    public sealed class ValueEntityInstaller : IEntityInstaller
+    public sealed class EntityInstallerValue : IEntityInstaller
     {
         [EntityValue]
         [SerializeField]
@@ -25,7 +25,7 @@ namespace Atomic.Entities
     [Serializable]
 
     [InlineProperty]
-    public class ValueEntityInstaller<T> : IEntityInstaller
+    public class EntityInstallerValue<T> : IEntityInstaller
     {
         [EntityValue]
         [HorizontalGroup]
@@ -39,11 +39,11 @@ namespace Atomic.Entities
 
         public T Value => this.value;
 
-        public ValueEntityInstaller()
+        public EntityInstallerValue()
         {
         }
 
-        public ValueEntityInstaller(T value)
+        public EntityInstallerValue(T value)
         {
             this.value = value;
         }

@@ -1,4 +1,3 @@
-#if ODIN_INSPECTOR
 using System;
 
 namespace Atomic.Entities
@@ -8,4 +7,3 @@ namespace Atomic.Entities
     {
     }
 }
-#endif

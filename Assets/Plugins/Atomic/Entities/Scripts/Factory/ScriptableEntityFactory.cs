@@ -7,7 +7,12 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public abstract class EntityPrototype : ScriptableObject, IEntityFactory
+    public interface IEntityFactory
+    {
+        IEntity Create();
+    }
+    
+    public abstract class ScriptableEntityFactory : ScriptableObject, IEntityFactory
     {
         public virtual string Name => this.name;
 

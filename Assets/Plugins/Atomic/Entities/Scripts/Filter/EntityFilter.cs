@@ -18,6 +18,7 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
 #endif
         private readonly HashSet<IEntity> entities = new();
+
         private readonly IEntityWorld world;
 
         private readonly Predicate<IEntity> predicate;
@@ -40,13 +41,13 @@ namespace Atomic.Entities
             this.world.OnAdded += this.Subscribe;
             this.world.OnDeleted += this.Unsubscribe;
 
-            foreach (IEntity entity in this.world.All)
+            foreach (IEntity entity in this.world)
                 this.Subscribe(entity);
         }
 
         public void Dispose()
         {
-            foreach (IEntity entity in this.world.All)
+            foreach (IEntity entity in this.world)
                 this.Unsubscribe(entity);
 
             this.world.OnAdded -= this.Subscribe;
@@ -73,7 +74,6 @@ namespace Atomic.Entities
             foreach (IEntity entity in entities)
                 results.Add(entity);
         }
-
 
         public bool Has(IEntity entity)
         {

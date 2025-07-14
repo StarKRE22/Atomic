@@ -3,15 +3,13 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial interface IEntityWorld : IEnumerable<IEntity>
+    public partial interface IEntityWorld : IReadOnlyCollection<IEntity>
     {
         event Action OnStateChanged;
         event Action<IEntity> OnAdded;
         event Action<IEntity> OnDeleted;
 
-        string Name { get; set; }
-        int Count { get; }
-        IReadOnlyCollection<IEntity> All { get; }
+        string Name { get; }
 
         bool Add(in IEntity entity);
         bool Has(in IEntity entity);

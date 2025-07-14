@@ -6,13 +6,13 @@ using UnityEngine;
 namespace SampleGame
 {
     [CreateAssetMenu(
-        fileName = "EntityPrototypeCatalog",
-        menuName = "Atomic/Entities/New EntityPrototypeCatalog"
+        fileName = "EntityFactoryCatalog",
+        menuName = "Atomic/Entities/New EntityFactoryCatalog"
     )]
-    public sealed class EntityPrototypeCatalog : ScriptableObject
+    public sealed class ScriptableEntityFactoryCatalog : ScriptableObject
     {
         [SerializeField]
-        private EntityPrototype[] _entities;
+        private ScriptableEntityFactory[] _entities;
 
         public IEnumerable<KeyValuePair<string, IEntityFactory>> GetEntities()
         {

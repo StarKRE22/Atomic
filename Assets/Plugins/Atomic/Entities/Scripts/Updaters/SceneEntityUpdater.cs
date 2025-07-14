@@ -34,7 +34,7 @@ namespace Atomic.Entities
 
                 entity.Init();
                 entity.Enable();
-                GlobalSceneEntityUpdater.AddEntity(entity);
+                SceneEntityLoop.AddEntity(entity);
             }
 
             this.started = true;
@@ -52,7 +52,7 @@ namespace Atomic.Entities
                     continue;
 
                 entity.Enable();
-                GlobalSceneEntityUpdater.AddEntity(entity);
+                SceneEntityLoop.AddEntity(entity);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Atomic.Entities
                     continue;
 
                 entity.Disable();
-                GlobalSceneEntityUpdater.DelEntity(entity);
+                SceneEntityLoop.DelEntity(entity);
             }
         }
 
@@ -84,7 +84,7 @@ namespace Atomic.Entities
                     continue;
 
                 entity.Dispose();
-                GlobalSceneEntityUpdater.DelEntity(entity);
+                SceneEntityLoop.DelEntity(entity);
             }
         }
 
@@ -103,7 +103,7 @@ namespace Atomic.Entities
             {
                 entity.Init();
                 entity.Enable();
-                GlobalSceneEntityUpdater.AddEntity(entity);
+                SceneEntityLoop.AddEntity(entity);
             }
             
             return true;
@@ -121,7 +121,7 @@ namespace Atomic.Entities
             {
                 entity.Disable();
                 entity.Dispose();
-                GlobalSceneEntityUpdater.DelEntity(entity);
+                SceneEntityLoop.DelEntity(entity);
             }
 
             return true;

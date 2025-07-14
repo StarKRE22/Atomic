@@ -2,6 +2,15 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
+    public interface IEntityPool
+    {
+        IEntity Rent();
+        void Return(IEntity entity);
+        
+        void Init(int initialCoint);
+        void Clear();
+    }
+    
     public class EntityPool : IEntityPool
     {
         private readonly Queue<IEntity> _queue = new();

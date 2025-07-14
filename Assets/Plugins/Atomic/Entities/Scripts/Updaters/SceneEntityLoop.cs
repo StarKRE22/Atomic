@@ -4,15 +4,16 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    internal sealed class GlobalSceneEntityUpdater : MonoBehaviour
+    [AddComponentMenu("Atomic/Entities/Entity Loop")]
+    public sealed class SceneEntityLoop : MonoBehaviour
     {
-        private static GlobalSceneEntityUpdater _instance;
+        private static SceneEntityLoop _instance;
         private static bool installed;
 
         private readonly HashSet<IEntity> entities = new();
         private readonly List<IEntity> _cache = new();
 
-        private static GlobalSceneEntityUpdater instance
+        private static SceneEntityLoop instance
         {
             get
             {
@@ -29,10 +30,8 @@ namespace Atomic.Entities
         public static void AddEntity(IEntity entity)
         {
 #if UNITY_EDITOR
-            if (EditorApplication.isPlaying)
-            {
+            if (EditorApplication.isPlaying) 
                 instance.entities.Add(entity);
-            }
 #else
             instance.entities.Add(entity);
 #endif
@@ -41,10 +40,8 @@ namespace Atomic.Entities
         public static void DelEntity(IEntity entity)
         {
 #if UNITY_EDITOR
-            if (EditorApplication.isPlaying)
-            {
+            if (EditorApplication.isPlaying) 
                 instance.entities.Remove(entity);
-            }
 #else
             instance.entities.Remove(entity);
 #endif
@@ -119,11 +116,11 @@ namespace Atomic.Entities
             installed = false;
         }
 #endif
-        private static GlobalSceneEntityUpdater CreateInstance()
+        private static SceneEntityLoop CreateInstance()
         {
-            GameObject go = new GameObject(nameof(GlobalSceneEntityUpdater));
+            GameObject go = new GameObject(nameof(SceneEntityLoop));
             DontDestroyOnLoad(go);
-            return go.AddComponent<GlobalSceneEntityUpdater>();
+            return go.AddComponent<SceneEntityLoop>();
         }
     }
 }

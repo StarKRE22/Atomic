@@ -125,7 +125,7 @@ namespace Atomic.Entities
             installer.Install(obj);
             return obj;
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallFromScene(this IEntity obj, Scene scene, bool includeInactive = true)
         {
@@ -133,17 +133,24 @@ namespace Atomic.Entities
             {
                 SceneEntityInstaller[] installers = gameObject
                     .GetComponentsInChildren<SceneEntityInstaller>(includeInactive);
-              
-                foreach (SceneEntityInstaller installer in installers) 
+
+                foreach (SceneEntityInstaller installer in installers)
                     installer.Install(obj);
             }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasTag(this IEntity entity, string tag) => entity.HasTag(NameToId(tag));
+        public static bool HasTag(this IEntity entity, string key) => entity.HasTag(NameToId(key));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddTag(this IEntity entity, string tag) => entity.AddTag(NameToId(tag));
+        public static bool AddTag(this IEntity entity, string key) => entity.AddTag(NameToId(key));
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTag(this IEntity entity, string key, out int id)
+        {
+            id = NameToId(key);
+            return entity.AddTag(id);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool DelTag(this IEntity entity, string tag) => entity.DelTag(NameToId(tag));
@@ -160,8 +167,22 @@ namespace Atomic.Entities
             entity.AddValue(NameToId(key), value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddValue(this IEntity entity, string key, object value, out int id)
+        {
+            id = NameToId(key);
+            entity.AddValue(id, value);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue<T>(this IEntity entity, string key, T value) where T : struct =>
             entity.AddValue(NameToId(key), value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddValue<T>(this IEntity entity, string key, T value, out int id) where T : struct
+        {
+            id = NameToId(key);
+            entity.AddValue(id, value);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool DelValue(this IEntity entity, string key) =>
@@ -174,7 +195,6 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetValue<T>(this IEntity entity, string key, T value) where T : struct =>
             entity.SetValue(NameToId(key), value);
-
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool HasValue(this IEntity entity, string key) => entity.HasValue(NameToId(key));
@@ -219,6 +239,7 @@ namespace Atomic.Entities
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DisposeValues(this IEntity entity)
         {
             var values = entity.GetValues();

@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-
 namespace Atomic.Entities
 {
     [Serializable]

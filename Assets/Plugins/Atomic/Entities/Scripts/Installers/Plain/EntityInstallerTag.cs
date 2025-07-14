@@ -7,7 +7,7 @@ namespace Atomic.Entities
 {
     [InlineProperty]
     [Serializable]
-    public sealed class TagEntityInstaller : IEntityInstaller
+    public sealed class EntityInstallerTag : IEntityInstaller
     {
         [EntityTag]
         [SerializeField]

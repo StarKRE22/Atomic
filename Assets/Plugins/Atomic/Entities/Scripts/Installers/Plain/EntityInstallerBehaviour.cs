@@ -7,18 +7,16 @@ namespace Atomic.Entities
 {
     [InlineProperty]
     [Serializable]
-    public class BehaviourEntityInstaller<T> : IEntityInstaller where T : IBehaviour
+    public class EntityInstallerBehaviour<T> : IEntityInstaller where T : IBehaviour
     {
         [SerializeField]
         protected T value;
 
-        public T Value => this.value;
-
-        public BehaviourEntityInstaller()
+        public EntityInstallerBehaviour()
         {
         }
 
-        public BehaviourEntityInstaller(T value)
+        public EntityInstallerBehaviour(T value)
         {
             this.value = value;
         }
