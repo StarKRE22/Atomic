@@ -1,6 +1,6 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 
-#if UNITY_EDITOR
 namespace Atomic.Events
 {
     public readonly struct EventDefinition

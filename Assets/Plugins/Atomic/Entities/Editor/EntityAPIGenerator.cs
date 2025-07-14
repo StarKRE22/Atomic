@@ -12,22 +12,22 @@ namespace Atomic.Entities
         private const string UNSAFE_SUFFIX = "Unsafe";
         private const string REF_MODIFIER = "ref";
 
-        public static void CreateFile(IEntityAPIConfiguration configuration)
+        public static void CreateFile(EntityAPIAsset.Settings settings)
         {
-            string directoryPath = configuration.Directory;
+            string directoryPath = settings.Directory;
             if (!Directory.Exists(directoryPath))
                 Directory.CreateDirectory(directoryPath);
 
-            string className = configuration.ClassName;
+            string className = settings.ClassName;
             string filePath = $"{directoryPath}/{className}.cs";
 
-            string ns = configuration.Namespace;
-            IReadOnlyCollection<string> imports = configuration.GetImports();
-            IReadOnlyCollection<string> tags = configuration.GetTags();
-            IDictionary<string, string> values = configuration.GetValues();
-            bool useInlining = configuration.AggressiveInlining;
-            bool unsafeAccess = configuration.UnsafeAccess;
-            string entityType = configuration.EntityType;
+            string ns = settings.Namespace;
+            IReadOnlyCollection<string> imports = settings.Imports;
+            IReadOnlyCollection<string> tags = settings.Tags;
+            IReadOnlyDictionary<string, string> values = settings.Values;
+            bool useInlining = settings.AggressiveInlining;
+            bool unsafeAccess = settings.UnsafeAccess;
+            string entityType = settings.EntityType;
 
             string content = GenerateContent(
                 ns,
@@ -44,24 +44,25 @@ namespace Atomic.Entities
             writer.Write(content);
         }
 
-        public static void UpdateFile(IEntityAPIConfiguration configuration)
+        public static void UpdateFile(EntityAPIAsset.Settings settings)
         {
-            string directoryPath = configuration.Directory;
+            string directoryPath = settings.Directory;
             if (!Directory.Exists(directoryPath))
                 return;
 
-            string className = configuration.ClassName;
+            string className = settings.ClassName;
             string filePath = $"{directoryPath}/{className}.cs";
             if (!File.Exists(filePath))
                 return;
 
-            string ns = configuration.Namespace;
-            IReadOnlyCollection<string> imports = configuration.GetImports();
-            IReadOnlyCollection<string> tags = configuration.GetTags();
-            IDictionary<string, string> values = configuration.GetValues();
-            string entityType = configuration.EntityType;
-            bool useInlining = configuration.AggressiveInlining;
-            bool unsafeAccess = configuration.UnsafeAccess;
+            string ns = settings.Namespace;
+            IReadOnlyCollection<string> imports = settings.Imports;
+            IReadOnlyCollection<string> tags = settings.Tags;
+            IReadOnlyDictionary<string, string> values = settings.Values;
+           
+            string entityType = settings.EntityType;
+            bool useInlining = settings.AggressiveInlining;
+            bool unsafeAccess = settings.UnsafeAccess;
 
             string content = GenerateContent(
                 ns,
@@ -82,7 +83,7 @@ namespace Atomic.Entities
             string className,
             IEnumerable<string> imports,
             IReadOnlyCollection<string> tags,
-            IDictionary<string, string> values,
+            IReadOnlyDictionary<string, string> values,
             string entityType,
             bool useInlining,
             bool unsafeAccess

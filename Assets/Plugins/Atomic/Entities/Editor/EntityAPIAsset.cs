@@ -1,12 +1,29 @@
 #if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Atomic.Entities
 {
+    //TODO: Добавлять комментарии!
     internal sealed class EntityAPIAsset
     {
+        internal struct Settings
+        {
+            public string Namespace;
+            public string ClassName;
+            public string Directory;
+
+            public string EntityType;
+            public bool AggressiveInlining;
+            public bool UnsafeAccess;
+
+            public HashSet<string> Imports;
+            public HashSet<string> Tags;
+            public Dictionary<string, string> Values;
+        }
+        
         private readonly string _filePath;
 
         public bool IsValid => File.Exists(_filePath);
@@ -16,11 +33,17 @@ namespace Atomic.Entities
             _filePath = filePath;
         }
 
-        public IEntityAPIConfiguration GetConfiguration()
+        public Settings GetSettings()
         {
-            var snapshot = new Snapshot();
-            if (!File.Exists(_filePath))
-                return snapshot;
+            if (!this.IsValid)
+                throw new Exception($"EntityAPIAsset {_filePath} is not valid!");
+                    
+            Settings settings = new Settings
+            {
+                Imports = new HashSet<string>(),
+                Tags = new HashSet<string>(),
+                Values = new Dictionary<string, string>()
+            };
 
             bool readImports = false;
             bool readTags = false;
@@ -34,17 +57,17 @@ namespace Atomic.Entities
                     continue;
 
                 if (trimmed.StartsWith("namespace:"))
-                    snapshot.Namespace = trimmed["namespace:".Length..].Trim();
+                    settings.Namespace = trimmed["namespace:".Length..].Trim();
                 else if (trimmed.StartsWith("className:"))
-                    snapshot.ClassName = trimmed["className:".Length..].Trim();
+                    settings.ClassName = trimmed["className:".Length..].Trim();
                 else if (trimmed.StartsWith("directory:"))
-                    snapshot.Directory = trimmed["directory:".Length..].Trim();
+                    settings.Directory = trimmed["directory:".Length..].Trim();
                 else if (trimmed.StartsWith("entityType:"))
-                    snapshot.EntityType = trimmed["entityType:".Length..].Trim();
+                    settings.EntityType = trimmed["entityType:".Length..].Trim();
                 else if (trimmed.StartsWith("aggressiveInlining:"))
-                    snapshot.AggressiveInlining = trimmed["aggressiveInlining:".Length..].Trim() == "true";
+                    settings.AggressiveInlining = trimmed["aggressiveInlining:".Length..].Trim() == "true";
                 else if (trimmed.StartsWith("unsafeAccess:"))
-                    snapshot.UnsafeAccess = trimmed["unsafeAccess:".Length..].Trim() == "true";
+                    settings.UnsafeAccess = trimmed["unsafeAccess:".Length..].Trim() == "true";
 
                 else if (trimmed.StartsWith("imports:"))
                 {
@@ -68,10 +91,10 @@ namespace Atomic.Entities
                 {
                     string item = trimmed[1..].Trim();
                     if (readImports)
-                        snapshot._imports.Add(item);
+                        settings.Imports.Add(item);
 
                     if (readTags)
-                        snapshot._tags.Add(item);
+                        settings.Tags.Add(item);
 
                     if (readValues && Regex.IsMatch(item,
                             @"^([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*((?:[a-zA-Z_][\w]*\.)*[a-zA-Z_][\w]*)(\?|\*|(\[,*\])|(<[^<>]+>))?$"))
@@ -79,38 +102,17 @@ namespace Atomic.Entities
                         string[] keyValue = item.Split(new[] {':'}, 2);
                         string key = keyValue[0].Trim();
                         string value = keyValue[1].Trim();
-                        snapshot._values.Add(key, value);
+                        settings.Values.Add(key, value);
                     }
                 }
             }
 
-            return snapshot;
+            return settings;
         }
 
-        
         private static string RemoveComments(string input)
         {
             return Regex.Replace(input, @"#.*?$", "", RegexOptions.Multiline).Trim();
-        }
-
-        //TODO: Добавлять комментарии!
-        private sealed class Snapshot : IEntityAPIConfiguration
-        {
-            public string Namespace { get; set; }
-            public string ClassName { get; set; }
-            public string Directory { get; set; }
-
-            public string EntityType { get; set; } = "IEntity";
-            public bool AggressiveInlining { get; set; } = true;
-            public bool UnsafeAccess { get; set; } = true;
-
-            public readonly HashSet<string> _imports = new();
-            public readonly HashSet<string> _tags = new();
-            public readonly Dictionary<string, string> _values = new();
-
-            public IReadOnlyCollection<string> GetImports() => _imports;
-            public IReadOnlyCollection<string> GetTags() => _tags;
-            public IDictionary<string, string> GetValues() => _values;
         }
     }
 }

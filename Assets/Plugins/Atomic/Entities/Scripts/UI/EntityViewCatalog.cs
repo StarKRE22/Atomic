@@ -5,8 +5,8 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [CreateAssetMenu(
-        fileName = "Entity View Catalog",
-        menuName = "Atomic/Entities/Entity View Catalog"
+        fileName = "EntityViewCatalog",
+        menuName = "Atomic/Entities/New EntityViewCatalog"
     )]
     public class EntityViewCatalog : ScriptableObject
     {

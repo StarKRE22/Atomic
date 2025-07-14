@@ -6,15 +6,13 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Atomic.Entities
+namespace Atomic.Events
 {
-    public sealed class EntityAPISettings : ScriptableObject
+    public sealed class EventAPISettings : ScriptableObject
     {
-        private const string DEFAULT_PATH = "Assets/Plugins/Atomic/Entities/Editor/API/EntityAPISettings.asset";
-
-        public static EntityAPISettings Instance => GetOrCreate();
+        public static EventAPISettings Instance => GetOrCreate();
         
-        private static EntityAPISettings _instance;
+        private static EventAPISettings _instance;
 
         [SerializeField]
         public bool autoRefresh = true;
@@ -25,16 +23,16 @@ namespace Atomic.Entities
         [SerializeField]
         public float autoRefreshPeriod = 1.0f;
 
-        private static EntityAPISettings GetOrCreate()
+        private static EventAPISettings GetOrCreate()
         {
             if (_instance != null)
                 return _instance;
 
-            string[] guids = AssetDatabase.FindAssets("t:" + nameof(EntityAPISettings));
+            string[] guids = AssetDatabase.FindAssets("t:" + nameof(EventAPISettings));
             if (guids.Length > 0)
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
-                EntityAPISettings settings = AssetDatabase.LoadAssetAtPath<EntityAPISettings>(assetPath);
+                EventAPISettings settings = AssetDatabase.LoadAssetAtPath<EventAPISettings>(assetPath);
                 _instance = settings;
             }
             else
@@ -45,11 +43,12 @@ namespace Atomic.Entities
             return _instance;
         }
 
-        private static EntityAPISettings Create()
+        private static EventAPISettings Create()
         {
-            EntityAPISettings settings = CreateInstance<EntityAPISettings>();
+            const string path = "Assets/Plugins/Atomic/Events/Editor/API/EventBusAPISettings.asset";
+            EventAPISettings settings = CreateInstance<EventAPISettings>();
 
-            AssetDatabase.CreateAsset(settings, DEFAULT_PATH);
+            AssetDatabase.CreateAsset(settings, path);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 

@@ -1,0 +1,22 @@
+header: EntityAPI
+entityType: IEntity
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: SampleGame
+className: SampleEntityAPI
+directory: Assets/Scripts/Codegen
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+
+tags:
+- Player
+- Enemy
+- Resource
+
+values:
+- Health: int
+- Speed: float
+- Transform: Transform

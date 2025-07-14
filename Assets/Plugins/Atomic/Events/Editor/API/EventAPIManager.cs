@@ -3,18 +3,52 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Atomic.Entities;
 using UnityEditor;
+using UnityEditor.ProjectWindowCallback;
+using UnityEngine;
 
 namespace Atomic.Events
 {
     [InitializeOnLoad]
     internal static class EventAPIManager
     {
+        private sealed class CreateEntityAPIAction : EndNameEditAction
+        {
+            public override void Action(int instanceId, string pathName, string resourceFile)
+            {
+                File.WriteAllText(pathName, EventAPITemplate.Value);
+                AssetDatabase.Refresh();
+
+                Object obj = AssetDatabase.LoadAssetAtPath<Object>(pathName);
+                ProjectWindowUtil.ShowCreatedAsset(obj);
+            }
+        }
+        
+        private static readonly EventAPISettings _settings;
+        private static double _currentTime;
         private static List<EventAPIAsset> _assets;
 
         static EventAPIManager()
         {
+            _settings = EventAPISettings.Instance;
+            _currentTime = EditorApplication.timeSinceStartup;
+            EditorApplication.update += Update;
             LoadAssets();
+
+        }
+
+        private static void Update()
+        {
+            if (!_settings.autoRefresh)
+                return;
+
+            double currentTime = EditorApplication.timeSinceStartup;
+            if (currentTime - _currentTime >= _settings.autoRefreshPeriod)
+            {
+                EventAPIManager.RefreshAPI();
+                _currentTime = currentTime;
+            }
         }
 
         public static void CompileAPI()

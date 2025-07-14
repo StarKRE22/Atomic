@@ -3,7 +3,7 @@ namespace Atomic.Entities
 {
     internal static class EntityAPITemplate
     {
-        internal const string Value =
+        internal const string Instance =
             "header: EntityAPI\n" +
             "entityType: IEntity\n" +
             "aggressiveInlining: true\n" +
