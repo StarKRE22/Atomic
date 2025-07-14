@@ -20,7 +20,7 @@ namespace Atomic.Elements
         /// Serializable key-value pair structure used for Unity serialization.
         /// </summary>
         [Serializable]
-        private struct Pair
+        internal struct Pair
         {
             public K key;
             public V value;

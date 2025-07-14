@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Atomic.Elements
 {
-    internal static partial class AtomicHelper
+    internal static class InternalUtils
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Dispose(ref Action action)

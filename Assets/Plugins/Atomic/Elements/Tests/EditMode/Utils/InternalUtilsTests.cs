@@ -21,7 +21,7 @@ namespace Atomic.Elements
         [TestCase(101, true)]
         public void IsPrime(int number, bool expected)
         {
-            Assert.AreEqual(expected, AtomicHelper.IsPrime(number), $"Failed for number: {number}");
+            Assert.AreEqual(expected, InternalUtils.IsPrime(number), $"Failed for number: {number}");
         }
         
         [TestCase(0, 2)]
@@ -40,7 +40,7 @@ namespace Atomic.Elements
         [TestCase(200, 211)]
         public void NextPrime(int input, int expected)
         {
-            Assert.AreEqual(expected, AtomicHelper.NextPrime(input), $"Failed for input: {input}");
+            Assert.AreEqual(expected, InternalUtils.NextPrime(input), $"Failed for input: {input}");
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Atomic.Elements
 #endif
         public void Invoke() => this.OnEvent?.Invoke();
 
-        public void Dispose() => AtomicHelper.Dispose(ref this.OnEvent);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
     }
 
 #if ODIN_INSPECTOR
@@ -47,7 +47,7 @@ namespace Atomic.Elements
 #endif
         public void Invoke(T arg) => this.OnEvent?.Invoke(arg);
 
-        public void Dispose() => AtomicHelper.Dispose(ref this.OnEvent);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
     }
 
 #if ODIN_INSPECTOR
@@ -68,7 +68,7 @@ namespace Atomic.Elements
 #endif
         public void Invoke(T1 arg1, T2 arg2) => this.OnEvent?.Invoke(arg1, arg2);
 
-        public void Dispose() => AtomicHelper.Dispose(ref this.OnEvent);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
     }
 
 #if ODIN_INSPECTOR
@@ -88,6 +88,6 @@ namespace Atomic.Elements
 #endif
         public void Invoke(T1 args1, T2 args2, T3 args3) => this.OnEvent?.Invoke(args1, args2, args3);
 
-        public void Dispose() => AtomicHelper.Dispose(ref this.OnEvent);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
     }
 }

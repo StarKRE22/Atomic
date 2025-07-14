@@ -48,7 +48,7 @@ namespace Atomic.Elements
 
         private void InvokeEvent(float value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => AtomicHelper.Dispose(ref this.OnValueChanged);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.value.ToString(CultureInfo.InvariantCulture);
     }

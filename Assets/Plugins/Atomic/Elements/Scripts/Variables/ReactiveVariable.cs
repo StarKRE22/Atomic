@@ -71,7 +71,7 @@ namespace Atomic.Elements
 
         public void Dispose()
         {
-            AtomicHelper.Dispose(ref this.OnValueChanged);
+            InternalUtils.Dispose(ref this.OnValueChanged);
         }
         
         public override string ToString()

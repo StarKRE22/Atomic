@@ -15,9 +15,15 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Elements
 {
+   /// <summary>
+    /// A reactive hash set that raises events when items are added, removed, or the entire set is modified.
+    /// Implements a custom internal hash-based storage system with support for efficient lookups and updates.
+    /// </summary>
+    /// <typeparam name="T">The element type.</typeparam>
     public partial class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable
     {
         private const int UNDEFINED_INDEX = -1;
+
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
         private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
 
@@ -28,81 +34,78 @@ namespace Atomic.Elements
             public bool exists;
         }
 
+        /// <inheritdoc/>
         public event StateChangedHandler OnStateChanged;
+
+        /// <inheritdoc/>
         public event AddItemHandler<T> OnItemAdded;
+
+        /// <inheritdoc/>
         public event RemoveItemHandler<T> OnItemRemoved;
 
+        /// <inheritdoc cref="ICollection{T}.Count" />
         public int Count => _count;
+
+        /// <inheritdoc/>
         public bool IsReadOnly => false;
 
         private Slot[] _slots;
         private int _count;
-
         private int[] _buckets;
         private int _freeList;
         private int _lastIndex;
 
-        public ReactiveHashSet() : this(0)
-        {
-        }
+        /// <summary>
+        /// Initializes an empty <see cref="ReactiveHashSet{T}"/>.
+        /// </summary>
+        public ReactiveHashSet() : this(0) { }
 
-        //+
-        public ReactiveHashSet(int capacity)
-        {
-            this.Initialize(capacity);
-        }
+        /// <summary>
+        /// Initializes the set with a predefined capacity.
+        /// </summary>
+        /// <param name="capacity">Initial number of slots to allocate.</param>
+        public ReactiveHashSet(int capacity) => this.Initialize(capacity);
 
-        //+
-        public ReactiveHashSet(params T[] elements) : this(elements.Length)
-        {
-            this.UnionWith(elements);
-        }
+        /// <summary>
+        /// Initializes the set with a collection of elements.
+        /// </summary>
+        /// <param name="elements">The initial elements to add.</param>
+        public ReactiveHashSet(params T[] elements) : this(elements.Length) => this.UnionWith(elements);
 
-        //+
-        public ReactiveHashSet(IReadOnlyCollection<T> elements) : this(elements.Count)
-        {
-            this.UnionWith(elements);
-        }
+        public ReactiveHashSet(IReadOnlyCollection<T> elements) : this(elements.Count) => this.UnionWith(elements);
 
-        //+
-        public ReactiveHashSet(IEnumerable<T> elements) : this(elements.Count())
-        {
-            this.UnionWith(elements);
-        }
+        public ReactiveHashSet(IEnumerable<T> elements) : this(elements.Count()) => this.UnionWith(elements);
 
-        //+
-        public bool Contains(T item)
-        {
-            return item != null && this.FindIndex(item, out _);
-        }
+        /// <summary>
+        /// Checks whether the set contains the given item.
+        /// </summary>
+        /// <param name="item">The item to look for.</param>
+        /// <returns>True if the item exists in the set; otherwise, false.</returns>
+        public bool Contains(T item) => item != null && this.FindIndex(item, out _);
 
-        //+
-        public bool IsEmpty()
-        {
-            return _count == 0;
-        }
+        /// <summary>
+        /// Returns true if the set has no elements.
+        /// </summary>
+        public bool IsEmpty() => _count == 0;
 
-        //+
-        public bool IsNotEmpty()
-        {
-            return _count > 0;
-        }
+        /// <summary>
+        /// Returns true if the set contains at least one element.
+        /// </summary>
+        public bool IsNotEmpty() => _count > 0;
 
-        //+
+        /// <inheritdoc/>
         public bool Add(T item)
         {
-            if (item == null)
-                return false;
+            if (item == null) return false;
 
-            if (!this.AddInternal(item))
-                return false;
+            if (!this.AddInternal(item)) return false;
 
             this.OnItemAdded?.Invoke(item);
             this.OnStateChanged?.Invoke();
             return true;
         }
 
-        //+
+        /// <inheritdoc/>
         public void UnionWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -131,21 +134,19 @@ namespace Atomic.Elements
             }
         }
 
-        //+
+        /// <inheritdoc/>
         public bool Remove(T item)
         {
-            if (item == null)
-                return false;
+            if (item == null) return false;
 
-            if (!this.RemoveInternal(item))
-                return false;
+            if (!this.RemoveInternal(item)) return false;
 
             this.OnItemRemoved?.Invoke(item);
             this.OnStateChanged?.Invoke();
             return true;
         }
 
-        //+
+        /// <inheritdoc/>
         public void Clear()
         {
             if (_count == 0)
@@ -184,17 +185,23 @@ namespace Atomic.Elements
             }
         }
 
-        //+
+        /// <inheritdoc/>
         public void Dispose()
         {
             this.Clear();
 
-            AtomicHelper.Dispose(ref this.OnItemAdded);
-            AtomicHelper.Dispose(ref this.OnItemRemoved);
-            AtomicHelper.Dispose(ref this.OnStateChanged);
+            InternalUtils.Dispose(ref this.OnItemAdded);
+            InternalUtils.Dispose(ref this.OnItemRemoved);
+            InternalUtils.Dispose(ref this.OnStateChanged);
         }
-
-        //+
+        
+        /// <summary>
+        /// Copies the elements of the set into the specified array, starting at the given index.
+        /// </summary>
+        /// <param name="array">Destination array.</param>
+        /// <param name="arrayIndex">Starting index in the destination array.</param>
+        /// <exception cref="ArgumentNullException">Thrown if the array is null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if the index is negative.</exception>
         public void CopyTo(T[] array, int arrayIndex = 0)
         {
             if (array == null)
@@ -211,25 +218,28 @@ namespace Atomic.Elements
             }
         }
 
-        //+
-        void ICollection<T>.Add(T item)
-        {
-            this.Add(item);
-        }
+        /// <summary>
+        /// Adds an item to the set. Part of <see cref="ICollection{T}"/>.
+        /// </summary>
+        /// <param name="item">The item to add.</param>
+        void ICollection<T>.Add(T item) => this.Add(item);
 
-        //+
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        /// <summary>
+        /// Returns an enumerator that iterates through the set.
+        /// </summary>
+        public Enumerator GetEnumerator() => new(this);
 
-        //+
-        public IEnumerator<T> GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        /// <inheritdoc/>
+        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
 
-        //+
+        /// <inheritdoc/>
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator(this);
+
+        /// <summary>
+        /// Removes all elements in the specified collection from the set.
+        /// </summary>
+        /// <param name="other">Collection of elements to remove.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public void ExceptWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -261,7 +271,11 @@ namespace Atomic.Elements
             }
         }
 
-        //+
+        /// <summary>
+        /// Modifies the current set to contain only elements that are also in a specified collection.
+        /// </summary>
+        /// <param name="other">Collection to intersect with.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public unsafe void IntersectWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -300,7 +314,12 @@ namespace Atomic.Elements
             }
         }
 
-        //+
+        /// <summary>
+        /// Modifies the current set to contain elements that are in either the set or the specified collection,
+        /// but not both.
+        /// </summary>
+        /// <param name="other">The collection to compare against.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public void SymmetricExceptWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -341,7 +360,14 @@ namespace Atomic.Elements
             }
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set is a proper (strict) subset of a specified collection.
+        /// </summary>
+        /// <param name="other">Collection to compare with the current set.</param>
+        /// <returns>
+        /// True if the current set is a proper subset of <paramref name="other"/>; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public bool IsProperSubsetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -356,14 +382,19 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!AtomicHelper.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
             return true;
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set is a subset of a specified collection.
+        /// </summary>
+        /// <param name="other">Collection to compare with the current set.</param>
+        /// <returns>True if the current set is a subset of <paramref name="other"/>.</returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public bool IsSubsetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -378,14 +409,21 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!AtomicHelper.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
             return true;
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set is a proper (strict) superset of a specified collection.
+        /// </summary>
+        /// <param name="other">Collection to compare with the current set.</param>
+        /// <returns>
+        /// True if the current set is a proper superset of <paramref name="other"/>; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -401,7 +439,14 @@ namespace Atomic.Elements
             return true;
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set is a superset of a specified collection.
+        /// </summary>
+        /// <param name="other">The collection to compare to the current set.</param>
+        /// <returns>
+        /// True if the current set is a superset of <paramref name="other"/>; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
         public bool IsSupersetOf(IEnumerable<T> other)
         {
             if (other == null)
@@ -417,7 +462,15 @@ namespace Atomic.Elements
             return true;
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set overlaps with the specified collection,
+        /// i.e., they share at least one common element.
+        /// </summary>
+        /// <param name="other">The collection to compare with the current set.</param>
+        /// <returns>
+        /// True if the current set and <paramref name="other"/> share at least one common element; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
         public bool Overlaps(IEnumerable<T> other)
         {
             if (other == null)
@@ -433,7 +486,14 @@ namespace Atomic.Elements
             return false;
         }
 
-        //+
+        /// <summary>
+        /// Determines whether the current set and the specified collection contain the same elements.
+        /// </summary>
+        /// <param name="other">The collection to compare with the current set.</param>
+        /// <returns>
+        /// True if both collections contain the same elements; otherwise, false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
         public bool SetEquals(IEnumerable<T> other)
         {
             if (other == null)
@@ -449,7 +509,12 @@ namespace Atomic.Elements
             return true;
         }
 
-        //+
+        /// <summary>
+        /// Replaces all elements in the current set with elements from the specified collection.
+        /// Triggers OnItemAdded and OnItemRemoved events for differences.
+        /// </summary>
+        /// <param name="other">The collection whose elements should replace the contents of the set.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="other"/> is null.</exception>
         public void ReplaceWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -479,7 +544,7 @@ namespace Atomic.Elements
                     continue;
 
                 T item = slot.value;
-                if (!AtomicHelper.Contains(other, item, s_comparer))
+                if (!InternalUtils.Contains(other, item, s_comparer))
                     removedItems[removedCount++] = item;
             }
 
@@ -506,7 +571,7 @@ namespace Atomic.Elements
 
         private void IncreaseCapacity()
         {
-            int size = AtomicHelper.NextPrime(_slots.Length);
+            int size = InternalUtils.NextPrime(_slots.Length);
             Array.Resize(ref _slots, size);
             Array.Resize(ref _buckets, size);
 
@@ -636,7 +701,7 @@ namespace Atomic.Elements
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = AtomicHelper.NextPrime(capacity);
+            int size = InternalUtils.NextPrime(capacity);
 
             _slots = new Slot[size];
             _buckets = new int[size];
@@ -650,7 +715,7 @@ namespace Atomic.Elements
         }
 
         //+
-        private struct Enumerator : IEnumerator<T>
+        public struct Enumerator : IEnumerator<T>
         {
             private readonly ReactiveHashSet<T> _set;
             private int _index;
