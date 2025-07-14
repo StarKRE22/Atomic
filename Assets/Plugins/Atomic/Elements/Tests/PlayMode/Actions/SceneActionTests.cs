@@ -13,11 +13,12 @@ namespace Atomic.Elements
             var a2 = new ActionStub();
             var a1 = new ActionStub();
 
-            var sceneAction = new GameObject().AddComponent<SceneAction>().Compose(null, a2, null, a1);
-            
+            var sceneAction = new GameObject().AddComponent<SceneAction>();
+            sceneAction.Construct(null, a2, null, a1);
+
             //Act:
             sceneAction.Invoke();
-            
+
             //Assert:
             Assert.IsTrue(a1.wasInvoke);
             Assert.IsTrue(a2.wasInvoke);
@@ -28,8 +29,8 @@ namespace Atomic.Elements
         {
             //Arrange:
             var sceneAction = new GameObject().AddComponent<SceneAction>();
-            sceneAction.Compose(null);
-            
+            sceneAction.Construct(null);
+
             //Act:
             sceneAction.Invoke();
         }

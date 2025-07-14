@@ -20,12 +20,12 @@ namespace Atomic.Elements
         }
         
         [Test]
-        public void ComposeAndInvoke()
+        public void ConstructAndInvoke()
         {
             //Arrange:
             bool wasAction = false;
             BaseAction action = new BaseAction();
-            action.Compose(() => wasAction = true);
+            action.Construct(() => wasAction = true);
             
             //Act:
             action.Invoke();
@@ -53,13 +53,13 @@ namespace Atomic.Elements
         }
         
         [Test]
-        public void ComposeAndInvoke()
+        public void ConstructAndInvoke()
         {
             //Arrange:
             string wasAction = string.Empty;
 
             BaseAction<string> action = new BaseAction<string>();
-            action.Compose(args => wasAction = args);
+            action.Construct(args => wasAction = args);
             
             //Act:
             action.Invoke("Vasya");
@@ -95,14 +95,14 @@ namespace Atomic.Elements
         }
         
         [Test]
-        public void ComposeAndInvoke()
+        public void ConstructAndInvoke()
         {
             //Arrange:
             string t1 = null;
             int t2 = -1;
             
             var action = new BaseAction<string, int>();
-            action.Compose((a1, a2) =>
+            action.Construct((a1, a2) =>
             {
                 t1 = a1;
                 t2 = a2;
@@ -146,7 +146,7 @@ namespace Atomic.Elements
         }
         
         [Test]
-        public void ComposeAndInvoke()
+        public void ConstructAndInvoke()
         {
             //Arrange:
             string t1 = null;
@@ -154,7 +154,7 @@ namespace Atomic.Elements
             bool t3 = false;
   
             var action = new BaseAction<string, int, bool>();
-            action.Compose((a1, a2, a3) =>
+            action.Construct((a1, a2, a3) =>
             {
                 t1 = a1;
                 t2 = a2;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Atomic.Elements
 {
-    public sealed class SceneActionRefTests
+    public sealed class SceneActionProxyTests
     {
         [Test]
         public void InvokeWhenSomeActionsAreNull()
@@ -13,8 +13,9 @@ namespace Atomic.Elements
             var a1 = new ActionStub();
 
             GameObject gameObject = new GameObject();
-            var sceneAction = gameObject.AddComponent<SceneAction>().Compose(null, a2, null, a1);
-            var sceneActionReference = new SceneActionRef(sceneAction);
+            var sceneAction = gameObject.AddComponent<SceneAction>();
+            sceneAction.Construct(null, a2, null, a1);
+            var sceneActionReference = new SceneActionProxy(sceneAction);
             
             //Act:
             sceneActionReference.Invoke();
@@ -28,7 +29,7 @@ namespace Atomic.Elements
         public void InvokeWhenValueIsNull()
         {
             //Arrange:
-            var sceneActionReference = new SceneActionRef();
+            var sceneActionReference = new SceneActionProxy();
             
             //Act:
             sceneActionReference.Invoke();

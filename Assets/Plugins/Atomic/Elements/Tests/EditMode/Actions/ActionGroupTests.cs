@@ -14,7 +14,7 @@ namespace Atomic.Elements
             var a3 = new ActionStub();
             var a4 = new ActionStub();
             
-            IAction actionGroup = new ActionGroup(a1, a2, a3, a4);
+            IAction actionGroup = new CompositeAction(a1, a2, a3, a4);
             
             //Act:
             actionGroup.Invoke();
@@ -35,10 +35,10 @@ namespace Atomic.Elements
             var a3 = new ActionStub();
             var a4 = new ActionStub();
             
-            var actionGroup = new ActionGroup();
+            var actionGroup = new CompositeAction();
             
             //Act:
-            actionGroup.Compose(a1, a2, a3, a4);
+            actionGroup.Construct(a1, a2, a3, a4);
             actionGroup.Invoke();
             
             //Assert:
