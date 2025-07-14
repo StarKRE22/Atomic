@@ -2,23 +2,65 @@ using System;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// Represents a parameterless reactive event that can be invoked and observed.
+    /// </summary>
+    /// <remarks>
+    /// Inherits from <see cref="IReactive"/> and <see cref="IAction"/> to support both reactive tracking and action-based invocation.
+    /// </remarks>
     public interface IEvent : IReactive, IAction
     {
+        /// <summary>
+        /// Occurs when the event is triggered.
+        /// </summary>
         event Action OnEvent;
     }
 
+    /// <summary>
+    /// Represents a reactive event with a single parameter that can be invoked and observed.
+    /// </summary>
+    /// <typeparam name="T">The type of the event parameter.</typeparam>
+    /// <remarks>
+    /// Inherits from <see cref="IReactive{T}"/> and <see cref="IAction{T}"/> to support reactive updates and invocation logic.
+    /// </remarks>
     public interface IEvent<T> : IReactive<T>, IAction<T>
     {
+        /// <summary>
+        /// Occurs when the event is triggered with the specified argument.
+        /// </summary>
         event Action<T> OnEvent;
     }
 
+    /// <summary>
+    /// Represents a reactive event with two parameters that can be invoked and observed.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <remarks>
+    /// Inherits from <see cref="IReactive{T1, T2}"/> and <see cref="IAction{T1, T2}"/> to support reactive tracking and action invocation.
+    /// </remarks>
     public interface IEvent<T1, T2> : IReactive<T1, T2>, IAction<T1, T2>
     {
+        /// <summary>
+        /// Occurs when the event is triggered with two arguments.
+        /// </summary>
         event Action<T1, T2> OnEvent;
     }
 
+    /// <summary>
+    /// Represents a reactive event with three parameters that can be invoked and observed.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    /// <remarks>
+    /// Inherits from <see cref="IReactive{T1, T2, T3}"/> and <see cref="IAction{T1, T2, T3}"/> to support reactive state and behavior.
+    /// </remarks>
     public interface IEvent<T1, T2, T3> : IReactive<T1, T2, T3>, IAction<T1, T2, T3>
     {
+        /// <summary>
+        /// Occurs when the event is triggered with three arguments.
+        /// </summary>
         event Action<T1, T2, T3> OnEvent;
     }
 }
