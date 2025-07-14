@@ -5,20 +5,22 @@ using UnityEngine;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// A reactive, serializable sorted dictionary (using <see cref="SortedList{TKey, TValue}"/>) that
+    /// raises events when items are added, changed, removed, or when the entire state changes.
+    /// </summary>
+    /// <typeparam name="K">The key type. Must implement <see cref="IComparable{K}"/>.</typeparam>
+    /// <typeparam name="V">The value type.</typeparam>
     [Serializable]
-    public class ReactiveSortedList<K, V> : IReactiveDictionary<K, V>, 
-        ISerializationCallbackReceiver where K : IComparable<K>
+    public class ReactiveSortedList<K, V> : IReactiveDictionary<K, V>,
+        ISerializationCallbackReceiver
+        where K : IComparable<K>
     {
-        private static readonly IEqualityComparer<V> equalityComparer = EqualityComparer.GetDefault<V>();
-
-        public event StateChangedHandler OnStateChanged;
-        public event SetItemHandler<K, V> OnItemChanged;
-        public event AddItemHandler<K, V> OnItemAdded;
-        public event RemoveItemHandler<K, V> OnItemRemoved;
-        public event ClearHandler OnCleared;
-
+        /// <summary>
+        /// Serializable key-value pair structure used for Unity serialization.
+        /// </summary>
         [Serializable]
-        public struct Pair
+        private struct Pair
         {
             public K key;
             public V value;
@@ -26,34 +28,75 @@ namespace Atomic.Elements
         
         [SerializeField]
         private Pair[] pairs;
+        
+        private static readonly IEqualityComparer<V> s_equalityComparer = EqualityComparer.GetDefault<V>();
+
+        /// <inheritdoc/>
+        public event StateChangedHandler OnStateChanged;
+
+        /// <inheritdoc/>
+        public event SetItemHandler<K, V> OnItemChanged;
+
+        /// <inheritdoc/>
+        public event AddItemHandler<K, V> OnItemAdded;
+
+        /// <inheritdoc/>
+        public event RemoveItemHandler<K, V> OnItemRemoved;
+
+        /// <summary>
+        /// Event triggered when the entire collection is cleared.
+        /// </summary>
+        public event ClearHandler OnCleared;
 
         private SortedList<K, V> list;
-        
-        public ICollection<K> Keys => this.list.Keys;
-        public ICollection<V> Values => this.list.Values;
-        IEnumerable<V> IReadOnlyDictionary<K, V>.Values => Values;
-        IEnumerable<K> IReadOnlyDictionary<K, V>.Keys => Keys;
 
-        
+        /// <summary>
+        /// Gets a collection containing the keys.
+        /// </summary>
+        public ICollection<K> Keys => this.list.Keys;
+
+        /// <summary>
+        /// Gets a collection containing the values.
+        /// </summary>
+        public ICollection<V> Values => this.list.Values;
+
+        IEnumerable<K> IReadOnlyDictionary<K, V>.Keys => this.Keys;
+        IEnumerable<V> IReadOnlyDictionary<K, V>.Values => this.Values;
+
+        /// <inheritdoc cref="ICollection{T}.Count" />
         public int Count => this.list.Count;
+
+        /// <inheritdoc/>
         public bool IsReadOnly => false;
 
-        public ReactiveSortedList()
-        {
-            this.list = new SortedList<K, V>();
-        }
+        /// <summary>
+        /// Initializes a new, empty <see cref="ReactiveSortedList{K, V}"/>.
+        /// </summary>
+        public ReactiveSortedList() => this.list = new SortedList<K, V>();
 
-        public ReactiveSortedList(int capacity = 0)
-        {
-            this.list = new SortedList<K, V>(capacity);
-        }
-        
+        /// <summary>
+        /// Initializes a new instance with the given initial capacity.
+        /// </summary>
+        /// <param name="capacity">The initial capacity of the list.</param>
+        public ReactiveSortedList(int capacity = 0) => this.list = new SortedList<K, V>(capacity);
+
+        /// <summary>
+        /// Gets or sets the value associated with the specified key.
+        /// Raises events if the value changes.
+        /// </summary>
+        /// <param name="key">The key of the value.</param>
         public V this[K key]
         {
-            get { return this.list[key]; }
-            set { this.Set(key, value); }
+            get => this.list[key];
+            set => this.Set(key, value);
         }
-        
+
+        /// <summary>
+        /// Sets the value for a key. If the key does not exist, it's added.
+        /// If the value is different, change events are raised.
+        /// </summary>
+        /// <param name="key">The key to set.</param>
+        /// <param name="value">The value to assign.</param>
         public void Set(K key, V value)
         {
             if (!this.list.TryGetValue(key, out V prev))
@@ -62,7 +105,7 @@ namespace Atomic.Elements
                 return;
             }
 
-            if (!equalityComparer.Equals(prev, value))
+            if (!s_equalityComparer.Equals(prev, value))
             {
                 this.list[key] = value;
                 this.OnStateChanged?.Invoke();
@@ -70,57 +113,49 @@ namespace Atomic.Elements
             }
         }
 
-        public IEnumerator<KeyValuePair<K, V>> GetEnumerator()
-        {
-            return this.list.GetEnumerator();
-        }
+        /// <inheritdoc/>
+        public IEnumerator<KeyValuePair<K, V>> GetEnumerator() => this.list.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        /// <inheritdoc/>
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
-        public int IndexOfKey(K key)
-        {
-            return this.list.IndexOfKey(key);
-        }
+        /// <summary>
+        /// Returns the index of the specified key.
+        /// </summary>
+        public int IndexOfKey(K key) => this.list.IndexOfKey(key);
 
-        public int IndexOfValue(V value)
-        {
-            return this.list.IndexOfValue(value);
-        }
-        
+        /// <summary>
+        /// Returns the index of the specified value.
+        /// </summary>
+        public int IndexOfValue(V value) => this.list.IndexOfValue(value);
+
+        /// <inheritdoc/>
         public void Add(K key, V value)
         {
             this.list.Add(key, value);
             this.OnItemAdded?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
         }
-        
+
+        /// <inheritdoc/>
         public bool Remove(K key)
         {
             if (!this.list.TryGetValue(key, out V value))
-            {
                 return false;
-            }
-            
-            this.list.Remove(key);
 
+            this.list.Remove(key);
             this.OnItemRemoved?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
             return true;
         }
 
-        public bool ContainsKey(K key)
-        {
-            return this.list.ContainsKey(key);
-        }
+        /// <inheritdoc cref="IReactiveDictionary{K,V}.ContainsKey" />
+        public bool ContainsKey(K key) => this.list.ContainsKey(key);
 
-        public bool TryGetValue(K key, out V value)
-        {
-            return this.list.TryGetValue(key, out value);
-        }
+        /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.TryGetValue" />
+        public bool TryGetValue(K key, out V value) => this.list.TryGetValue(key, out value);
 
+        /// <inheritdoc/>
         public void Clear()
         {
             if (this.list.Count > 0)
@@ -131,34 +166,37 @@ namespace Atomic.Elements
             }
         }
 
+        /// <inheritdoc/>
         public void Add(KeyValuePair<K, V> item)
         {
-            (K key, V value) = item;
-            this.Add(key, value);
+            this.Add(item.Key, item.Value);
         }
 
-        public bool Contains(KeyValuePair<K, V> item)
-        {
-            return ((ICollection<KeyValuePair<K, V>>) this.list).Contains(item);
-        }
+        /// <inheritdoc/>
+        public bool Contains(KeyValuePair<K, V> item) =>
+            ((ICollection<KeyValuePair<K, V>>) this.list).Contains(item);
 
-        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0)
-        {
+        /// <inheritdoc/>
+        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0) =>
             ((ICollection<KeyValuePair<K, V>>) this.list).CopyTo(array, arrayIndex);
-        }
 
+        /// <inheritdoc/>
         public bool Remove(KeyValuePair<K, V> item)
         {
             if (((ICollection<KeyValuePair<K, V>>) this.list).Remove(item))
             {
-                this.OnStateChanged?.Invoke();
                 this.OnItemRemoved?.Invoke(item.Key, item.Value);
+                this.OnStateChanged?.Invoke();
                 return true;
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Reconstructs the internal dictionary from serialized data.
+        /// Called automatically by Unity after deserialization.
+        /// </summary>
         public void OnAfterDeserialize()
         {
             this.list = new SortedList<K, V>();
@@ -168,10 +206,14 @@ namespace Atomic.Elements
                 Pair pair = this.pairs[i];
                 this.list[pair.key] = pair.value;
             }
-            
+
             this.OnStateChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Converts the internal sorted list into a serializable array of key-value pairs.
+        /// Called automatically by Unity before serialization.
+        /// </summary>
         public void OnBeforeSerialize()
         {
             this.pairs = new Pair[this.list.Count];

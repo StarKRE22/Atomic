@@ -5,19 +5,23 @@ using UnityEngine;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// A reactive sorted dictionary based on <see cref="SortedDictionary{K,V}"/>.
+    /// Emits events on add, remove, change, and clear operations.
+    /// Supports Unity serialization using a custom pair array.
+    /// </summary>
+    /// <typeparam name="K">The key type. Must be comparable.</typeparam>
+    /// <typeparam name="V">The value type.</typeparam>
     [Serializable]
-    public class ReactiveSortedDictionary<K, V> : IReactiveDictionary<K, V>, ISerializationCallbackReceiver
+    public class ReactiveSortedDictionary<K, V> :
+        IReactiveDictionary<K, V>,
+        ISerializationCallbackReceiver
     {
-        private static readonly IEqualityComparer<V> equalityComparer = EqualityComparer.GetDefault<V>();
-
-        public event StateChangedHandler OnStateChanged;
-        public event SetItemHandler<K, V> OnItemChanged;
-        public event AddItemHandler<K, V> OnItemAdded;
-        public event RemoveItemHandler<K, V> OnItemRemoved;
-        public event ClearHandler OnCleared;
-
+        /// <summary>
+        /// Serializable key-value pair used for Unity serialization.
+        /// </summary>
         [Serializable]
-        public struct Pair
+        private struct Pair
         {
             public K key;
             public V value;
@@ -26,37 +30,76 @@ namespace Atomic.Elements
         [SerializeField]
         private Pair[] pairs;
 
+        private static readonly IEqualityComparer<V> s_equalityComparer = EqualityComparer.GetDefault<V>();
+
+        /// <inheritdoc/>
+        public event StateChangedHandler OnStateChanged;
+
+        /// <inheritdoc/>
+        public event SetItemHandler<K, V> OnItemChanged;
+
+        /// <inheritdoc/>
+        public event AddItemHandler<K, V> OnItemAdded;
+
+        /// <inheritdoc/>
+        public event RemoveItemHandler<K, V> OnItemRemoved;
+
+        /// <summary>
+        /// Event triggered specifically when the dictionary is cleared.
+        /// </summary>
+        public event ClearHandler OnCleared;
+
         private SortedDictionary<K, V> dictionary;
 
+        /// <summary>
+        /// Gets a collection of the keys in the dictionary.
+        /// </summary>
         public ICollection<K> Keys => this.dictionary.Keys;
-        public ICollection<V> Values => this.dictionary.Values;
-        IEnumerable<V> IReadOnlyDictionary<K, V>.Values => Values;
-        IEnumerable<K> IReadOnlyDictionary<K, V>.Keys => Keys;
 
+        /// <summary>
+        /// Gets a collection of the values in the dictionary.
+        /// </summary>
+        public ICollection<V> Values => this.dictionary.Values;
+
+        IEnumerable<K> IReadOnlyDictionary<K, V>.Keys => this.Keys;
+        IEnumerable<V> IReadOnlyDictionary<K, V>.Values => this.Values;
+
+        /// <inheritdoc cref="IReactiveDictionary{K,V}.Count" />
         public int Count => this.dictionary.Count;
+
+        /// <inheritdoc/>
         public bool IsReadOnly => false;
 
-        public ReactiveSortedDictionary()
-        {
+        /// <summary>
+        /// Initializes an empty <see cref="ReactiveSortedDictionary{K,V}"/>.
+        /// </summary>
+        public ReactiveSortedDictionary() =>
             this.dictionary = new SortedDictionary<K, V>();
-        }
 
+        /// <summary>
+        /// Gets or sets the value associated with the specified key.
+        /// Triggers events if the value changes.
+        /// </summary>
+        /// <param name="key">The key of the value to get or set.</param>
         public V this[K key]
         {
             get => this.dictionary[key];
-            set { this.Set(key, value); }
+            set => this.Set(key, value);
         }
 
-        public IEnumerator<KeyValuePair<K, V>> GetEnumerator()
-        {
-            return this.dictionary.GetEnumerator();
-        }
+        /// <inheritdoc/>
+        public IEnumerator<KeyValuePair<K, V>> GetEnumerator() =>
+            this.dictionary.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        /// <inheritdoc/>
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
+        /// <summary>
+        /// Adds or updates the value for a given key.
+        /// Triggers <see cref="OnItemAdded"/> if new, or <see cref="OnItemChanged"/> if changed.
+        /// </summary>
+        /// <param name="key">The key to set.</param>
+        /// <param name="value">The value to assign.</param>
         public void Set(K key, V value)
         {
             if (!this.dictionary.TryGetValue(key, out V prev))
@@ -65,7 +108,7 @@ namespace Atomic.Elements
                 return;
             }
 
-            if (!equalityComparer.Equals(prev, value))
+            if (!s_equalityComparer.Equals(prev, value))
             {
                 this.dictionary[key] = value;
                 this.OnStateChanged?.Invoke();
@@ -73,6 +116,7 @@ namespace Atomic.Elements
             }
         }
 
+        /// <inheritdoc/>
         public void Add(K key, V value)
         {
             this.dictionary.Add(key, value);
@@ -80,30 +124,25 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
         }
 
+        /// <inheritdoc/>
         public bool Remove(K key)
         {
             if (!this.dictionary.TryGetValue(key, out V value))
-            {
                 return false;
-            }
-            
-            this.dictionary.Remove(key);
 
+            this.dictionary.Remove(key);
             this.OnItemRemoved?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
             return true;
         }
 
-        public bool ContainsKey(K key)
-        {
-            return this.dictionary.ContainsKey(key);
-        }
+        /// <inheritdoc cref="IReactiveDictionary{K,V}.ContainsKey" />
+        public bool ContainsKey(K key) => this.dictionary.ContainsKey(key);
 
-        public bool TryGetValue(K key, out V value)
-        {
-            return this.dictionary.TryGetValue(key, out value);
-        }
+        /// <inheritdoc cref="IDictionary{TKey,TValue}.TryGetValue" />
+        public bool TryGetValue(K key, out V value) => this.dictionary.TryGetValue(key, out value);
 
+        /// <inheritdoc/>
         public void Clear()
         {
             if (this.dictionary.Count > 0)
@@ -114,25 +153,21 @@ namespace Atomic.Elements
             }
         }
 
-        public void Add(KeyValuePair<K, V> item)
-        {
-            (K key, V value) = item;
-            this.Add(key, value);
-        }
+        /// <inheritdoc/>
+        public void Add(KeyValuePair<K, V> item) => this.Add(item.Key, item.Value);
 
-        public bool Contains(KeyValuePair<K, V> item)
-        {
-            return ((ICollection<KeyValuePair<K, V>>) this.dictionary).Contains(item);
-        }
+        /// <inheritdoc/>
+        public bool Contains(KeyValuePair<K, V> item) =>
+            ((ICollection<KeyValuePair<K, V>>)this.dictionary).Contains(item);
 
-        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0)
-        {
-            ((ICollection<KeyValuePair<K, V>>) this.dictionary).CopyTo(array, arrayIndex);
-        }
+        /// <inheritdoc/>
+        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0) =>
+            ((ICollection<KeyValuePair<K, V>>)this.dictionary).CopyTo(array, arrayIndex);
 
+        /// <inheritdoc/>
         public bool Remove(KeyValuePair<K, V> item)
         {
-            if (((ICollection<KeyValuePair<K, V>>) this.dictionary).Remove(item))
+            if (((ICollection<KeyValuePair<K, V>>)this.dictionary).Remove(item))
             {
                 this.OnItemRemoved?.Invoke(item.Key, item.Value);
                 this.OnStateChanged?.Invoke();
@@ -142,6 +177,9 @@ namespace Atomic.Elements
             return false;
         }
 
+        /// <summary>
+        /// Unity callback for deserialization. Reconstructs the dictionary from serialized pairs.
+        /// </summary>
         public void OnAfterDeserialize()
         {
             this.dictionary = new SortedDictionary<K, V>();
@@ -151,10 +189,13 @@ namespace Atomic.Elements
                 Pair pair = this.pairs[i];
                 this.dictionary[pair.key] = pair.value;
             }
-            
+
             this.OnStateChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Unity callback for serialization. Converts the dictionary to a serializable array.
+        /// </summary>
         public void OnBeforeSerialize()
         {
             this.pairs = new Pair[this.dictionary.Count];
