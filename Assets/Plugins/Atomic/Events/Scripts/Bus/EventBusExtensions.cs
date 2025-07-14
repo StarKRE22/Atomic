@@ -5,16 +5,16 @@ namespace Atomic.Events
 {
     public static class EventBusExtensions
     {
-        public static void Def(this IEventBus it, in string key) =>
+        public static void Declare(this IEventBus it, in string key) =>
             it.Declare(NameToId(in key));
         
-        public static void Def<T>(this IEventBus it, in string key) => 
+        public static void Declare<T>(this IEventBus it, in string key) => 
             it.Declare<T>(NameToId(in key));
         
-        public static void Def<T1, T2>(this IEventBus it, in string key) => 
+        public static void Declare<T1, T2>(this IEventBus it, in string key) => 
             it.Declare<T1, T2>(NameToId(in key));
 
-        public static void Def<T1, T2, T3>(this IEventBus it, in string key) =>
+        public static void Declare<T1, T2, T3>(this IEventBus it, in string key) =>
             it.Declare<T1, T2, T3>(NameToId(in key));
         
         public static Action Subscribe(this IEventBus it, in string key, in Action action) => 

@@ -47,7 +47,7 @@ namespace Atomic.Entities
             {
                 this.Precompile();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // ignored
             }

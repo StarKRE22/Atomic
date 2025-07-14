@@ -10,7 +10,7 @@ namespace Atomic.Entities
     {
         [SerializeField]
         private bool _dontDestroyOnLoad;
-        
+
         #region Instance
 
         public static T Instance
@@ -20,7 +20,11 @@ namespace Atomic.Entities
                 if (_instance != null)
                     return _instance;
 
+#if UNITY_2023_1_OR_NEWER
+                _instance = FindFirstObjectByType<T>();
+#else
                 _instance = FindObjectOfType<T>();
+#endif
 
                 return _instance == null
                     ? throw new Exception($"Scene Entity Sigleton of type {typeof(T).Name} is not found!")
@@ -35,7 +39,7 @@ namespace Atomic.Entities
             _instance = this as T;
             base.Awake();
 
-            if (_dontDestroyOnLoad) 
+            if (_dontDestroyOnLoad)
                 DontDestroyOnLoad(this.gameObject);
         }
 
@@ -68,11 +72,11 @@ namespace Atomic.Entities
                 singleton = go.GetComponentInChildren<T>();
                 if (!singleton)
                     continue;
-                
+
                 _singletons[scene] = singleton;
                 return singleton;
             }
-            
+
             ListPool<GameObject>.Release(gameObjects);
             throw new Exception($"Scene Entity Sigleton of type {typeof(T).Name} is not found!");
         }

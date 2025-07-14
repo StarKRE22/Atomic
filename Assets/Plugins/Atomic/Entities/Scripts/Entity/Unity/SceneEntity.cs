@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
 
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Atomic.Entities
 {

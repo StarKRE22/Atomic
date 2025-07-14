@@ -18,7 +18,7 @@ namespace Atomic.Entities
             add => _world.OnStateChanged += value;
             remove => _world.OnStateChanged -= value;
         }
-        
+
         private readonly EntityWorld _world = new();
 
 #if ODIN_INSPECTOR
@@ -35,7 +35,7 @@ namespace Atomic.Entities
         [Tooltip("If this option is enabled then EntityWorld scan inactive Entities on a scene also")]
         [SerializeField]
         private bool includeInactiveOnScan = true;
-        
+
         public string Name
         {
             get => this.name;
@@ -44,10 +44,18 @@ namespace Atomic.Entities
 
         private void Awake()
         {
-            if (!this.scanOnAwake) 
+            if (!this.scanOnAwake)
                 return;
+
+#if UNITY_2023_1_OR_NEWER
+            FindObjectsInactive includeInactive = this.includeInactiveOnScan
+                ? FindObjectsInactive.Include
+                : FindObjectsInactive.Exclude;
             
+            SceneEntity[] entities = FindObjectsByType<SceneEntity>(includeInactive, FindObjectsSortMode.None);
+#else
             SceneEntity[] entities = FindObjectsOfType<SceneEntity>(this.includeInactiveOnScan);
+#endif
             for (int i = 0, count = entities.Length; i < count; i++)
             {
                 SceneEntity entity = entities[i];

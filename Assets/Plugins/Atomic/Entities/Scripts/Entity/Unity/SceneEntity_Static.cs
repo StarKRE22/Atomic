@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -99,7 +100,7 @@ namespace Atomic.Entities
         }
 #endif
 
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallAll(Scene scene)
         {
             foreach (GameObject gameObject in scene.GetRootGameObjects())

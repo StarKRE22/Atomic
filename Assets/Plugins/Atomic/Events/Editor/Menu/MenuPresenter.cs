@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 
 namespace Atomic.Events
@@ -29,3 +30,4 @@ namespace Atomic.Events
         }
     }
 }
+#endif

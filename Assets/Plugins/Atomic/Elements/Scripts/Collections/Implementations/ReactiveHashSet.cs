@@ -573,10 +573,7 @@ namespace Atomic.Elements
         private bool AddInternal(T item)
         {
             if (this.FindIndex(item, out int index))
-            {
-                Debug.Log($"FOUND INDEX {item} {index}");
                 return false;
-            }
 
             if (_freeList >= 0)
             {

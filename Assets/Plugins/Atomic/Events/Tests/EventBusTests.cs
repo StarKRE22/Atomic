@@ -63,7 +63,7 @@ namespace Atomic.Events
             object wasTarget = null;
             
             var eventBus = new EventBus();
-            eventBus.Def<object>("Hello");
+            eventBus.Declare<object>("Hello");
             eventBus.Subscribe<object>("Hello", t =>
             {
                 wasTarget = t;

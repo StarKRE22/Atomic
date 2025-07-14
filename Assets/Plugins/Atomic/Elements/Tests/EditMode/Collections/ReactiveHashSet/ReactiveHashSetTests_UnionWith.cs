@@ -81,6 +81,7 @@ namespace Atomic.Elements
             Assert.IsTrue(set.Contains("Ivan"));
         }
 
+        //NUnit Framework error!
         [TestCaseSource(nameof(UnionWith_OnStateChangedCases))]
         public bool UnionWith_OnStateChanged(ReactiveHashSet<string> set, IEnumerable<string> items)
         {
