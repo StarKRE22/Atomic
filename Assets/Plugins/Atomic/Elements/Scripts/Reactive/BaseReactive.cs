@@ -26,7 +26,11 @@ namespace Atomic.Elements
             this.unsubscribe = unsubscribe;
         }
 
-        public void Subscribe(Action action) => this.subscribe?.Invoke(action);
+        public Subscription Subscribe(Action action)
+        {
+            this.subscribe?.Invoke(action);
+            return new Subscription(this, action);
+        }
 
         public void Unsubscribe(Action action) => this.unsubscribe?.Invoke(action);
     }
@@ -53,9 +57,10 @@ namespace Atomic.Elements
             this.unsubscribe = unsubscribe;
         }
 
-        public void Subscribe(Action<T> action)
+        public Subscription<T> Subscribe(Action<T> action)
         {
             this.subscribe.Invoke(action);
+            return new Subscription<T>(this, action);
         }
 
         public void Unsubscribe(Action<T> action)
@@ -86,7 +91,11 @@ namespace Atomic.Elements
             this.unsubscribe = unsubscribe;
         }
 
-        public void Subscribe(Action<T1, T2> action) => this.subscribe.Invoke(action);
+        public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
+        {
+            this.subscribe.Invoke(action);
+            return new Subscription<T1, T2>(this, action);
+        }
 
         public void Unsubscribe(Action<T1, T2> action) => this.unsubscribe.Invoke(action);
     }
@@ -113,7 +122,11 @@ namespace Atomic.Elements
             this.unsubscribe = unsubscribe;
         }
 
-        public void Subscribe(Action<T1, T2, T3> action) => this.subscribe.Invoke(action);
+        public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
+        {
+            this.subscribe.Invoke(action);
+            return new Subscription<T1, T2, T3>(this, action);
+        }
 
         public void Unsubscribe(Action<T1, T2, T3> action) => this.unsubscribe.Invoke(action);
     }

@@ -42,7 +42,7 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveFloat(float value) => new(value);
 
-        public void Subscribe(Action<float> listener) => this.OnValueChanged += listener;
+        public Subscription<float> Subscribe(Action<float> listener) => this.OnValueChanged += listener;
 
         public void Unsubscribe(Action<float> listener) => this.OnValueChanged -= listener;
 

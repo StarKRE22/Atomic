@@ -36,7 +36,7 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveVector2(Vector2 value) => new(value);
 
-        public void Subscribe(Action<Vector2> listener) => this.OnValueChanged += listener;
+        public Subscription<Vector2> Subscribe(Action<Vector2> listener) => this.OnValueChanged += listener;
 
         public void Unsubscribe(Action<Vector2> listener) => this.OnValueChanged -= listener;
 

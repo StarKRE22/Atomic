@@ -58,7 +58,7 @@ namespace Atomic.Elements
             this.unsubscribe = unsubscribe;
         }
         
-        public void Subscribe(Action<T> action) => this.subscribe.Invoke(action);
+        public Subscription<T> Subscribe(Action<T> action) => this.subscribe.Invoke(action);
 
         public void Unsubscribe(Action<T> action) => this.unsubscribe.Invoke(action);
 

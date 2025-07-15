@@ -40,7 +40,7 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveBool(bool value) => new(value);
 
-        public void Subscribe(Action<bool> listener) => this.OnValueChanged += listener;
+        public Subscription<bool> Subscribe(Action<bool> listener) => this.OnValueChanged += listener;
 
         public void Unsubscribe(Action<bool> listener) => this.OnValueChanged -= listener;
 

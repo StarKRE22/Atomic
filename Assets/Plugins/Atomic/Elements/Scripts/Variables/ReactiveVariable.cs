@@ -54,7 +54,7 @@ namespace Atomic.Elements
             return new ReactiveVariable<T>(value);
         }
         
-        public void Subscribe(Action<T> listener)
+        public Subscription<T> Subscribe(Action<T> listener)
         {
             this.OnValueChanged += listener;
         }

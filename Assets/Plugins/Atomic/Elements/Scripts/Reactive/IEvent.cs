@@ -63,4 +63,20 @@ namespace Atomic.Elements
         /// </summary>
         event Action<T1, T2, T3> OnEvent;
     }
+
+    /// <summary>
+    /// Represents a reactive event source that allows subscription, invocation, and direct event access.
+    /// Combines reactive observation and active triggering of events with four parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first event argument.</typeparam>
+    /// <typeparam name="T2">The type of the second event argument.</typeparam>
+    /// <typeparam name="T3">The type of the third event argument.</typeparam>
+    /// <typeparam name="T4">The type of the fourth event argument.</typeparam>
+    public interface IEvent<T1, T2, T3, T4> : IReactive<T1, T2, T3, T4>, IAction<T1, T2, T3, T4>
+    {
+        /// <summary>
+        /// Occurs when the event is raised with four arguments.
+        /// </summary>
+        event Action<T1, T2, T3, T4> OnEvent;
+    }
 }

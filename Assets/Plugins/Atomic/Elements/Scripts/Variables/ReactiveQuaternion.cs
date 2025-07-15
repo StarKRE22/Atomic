@@ -39,7 +39,7 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveQuaternion(Quaternion value) => new(value);
 
-        public void Subscribe(Action<Quaternion> listener) => this.OnValueChanged += listener;
+        public Subscription<Quaternion> Subscribe(Action<Quaternion> listener) => this.OnValueChanged += listener;
 
         public void Unsubscribe(Action<Quaternion> listener) => this.OnValueChanged -= listener;
 
