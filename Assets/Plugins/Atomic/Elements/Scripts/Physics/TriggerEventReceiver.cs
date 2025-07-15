@@ -7,6 +7,7 @@ namespace Atomic.Elements
     /// A MonoBehaviour that listens to Unity's OnTriggerEnter and OnTriggerExit events
     /// and exposes them as C# events for external subscription.
     /// </summary>
+    [AddComponentMenu("Atomic/Elements/Trigger Event Receiver")]
     public sealed class TriggerEventReceiver : MonoBehaviour
     {
         /// <summary>
@@ -18,6 +19,8 @@ namespace Atomic.Elements
         /// Invoked when a Collider exits the trigger zone of this GameObject.
         /// </summary>
         public event Action<Collider> OnExited;
+
+        public event Action<Collider> OnStay; 
 
         /// <summary>
         /// Unity callback when another Collider enters the trigger.
@@ -32,5 +35,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="other">The Collider that exited the trigger zone.</param>
         private void OnTriggerExit(Collider other) => this.OnExited?.Invoke(other);
+
+        private void OnTriggerStay(Collider other) => this.OnStay?.Invoke(other);
     }
 }

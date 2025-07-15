@@ -7,6 +7,7 @@ namespace Atomic.Elements
     /// A MonoBehaviour that listens for 2D trigger events on this GameObject.
     /// Exposes those events through C# delegates for external subscriptions.
     /// </summary>
+    [AddComponentMenu("Atomic/Elements/Trigger Event Receiver 2D")]
     public sealed class TriggerEventReceiver2D : MonoBehaviour
     {
         /// <summary>
@@ -18,6 +19,8 @@ namespace Atomic.Elements
         /// Invoked when a 2D collider exits the trigger area of this GameObject.
         /// </summary>
         public event Action<Collider2D> OnExited;
+
+        public event Action<Collider2D> OnStay; 
 
         /// <summary>
         /// Unity callback invoked when another 2D collider enters this trigger.
@@ -32,5 +35,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="other">The 2D collider that exited the trigger area.</param>
         private void OnTriggerExit2D(Collider2D other) => this.OnExited?.Invoke(other);
+
+        private void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
     }
 }

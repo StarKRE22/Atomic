@@ -15,7 +15,7 @@ namespace Atomic.Elements
             GameObject gameObject = new GameObject();
             var sceneAction = gameObject.AddComponent<SceneAction>();
             sceneAction.Construct(null, a2, null, a1);
-            var sceneActionReference = new SceneActionProxy(sceneAction);
+            var sceneActionReference = new SceneActionPointer(sceneAction);
             
             //Act:
             sceneActionReference.Invoke();
@@ -29,7 +29,7 @@ namespace Atomic.Elements
         public void InvokeWhenValueIsNull()
         {
             //Arrange:
-            var sceneActionReference = new SceneActionProxy();
+            var sceneActionReference = new SceneActionPointer();
             
             //Act:
             sceneActionReference.Invoke();

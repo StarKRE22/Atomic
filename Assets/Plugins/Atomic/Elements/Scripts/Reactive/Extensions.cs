@@ -30,7 +30,7 @@ namespace Atomic.Elements
         public static void Unsubscribe<T1, T2, T3>(this IReactive<T1, T2, T3> it, IAction<T1, T2, T3> action) => it.Unsubscribe(action.Invoke);
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SubscribeAll<T>(this IReactive<T> it, IEnumerable<IAction<T>> actions)
+        public static void SubscribeRange<T>(this IReactive<T> it, IEnumerable<IAction<T>> actions)
         {
             if (actions != null)
                 foreach (var action in actions)

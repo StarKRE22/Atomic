@@ -4,14 +4,14 @@ using UnityEngine;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// A proxy wrapper for invoking a <see cref="SceneAction"/> from outside the scene context.
+    /// A pointer wrapper for invoking a <see cref="SceneAction"/> from outside the scene context.
     /// </summary>
     /// <remarks>
     /// This class allows referencing and triggering a <see cref="SceneAction"/> as a serializable field,
     /// often useful in serialized action chains or as part of a logic asset.
     /// </remarks>
     [Serializable]
-    public sealed class SceneActionProxy : IAction
+    public sealed class SceneActionPointer : IAction
     {
         /// <summary>
         /// Reference to the actual <see cref="SceneAction"/> component to be invoked.
@@ -22,18 +22,18 @@ namespace Atomic.Elements
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public SceneActionProxy()
+        public SceneActionPointer()
         {
         }
 
         /// <summary>
-        /// Creates a new <see cref="SceneActionProxy"/> with the specified scene action.
+        /// Creates a new <see cref="SceneActionPointer"/> with the specified scene action.
         /// </summary>
         /// <param name="action">The <see cref="SceneAction"/> to wrap.</param>
-        public SceneActionProxy(SceneAction action) => this.action = action;
+        public SceneActionPointer(SceneAction action) => this.action = action;
 
         /// <summary>
-        /// Assigns a <see cref="SceneAction"/> to this proxy.
+        /// Assigns a <see cref="SceneAction"/> to this pointer.
         /// </summary>
         /// <param name="action">The scene action to assign.</param>
         public void Construct(SceneAction action) => this.action = action;
