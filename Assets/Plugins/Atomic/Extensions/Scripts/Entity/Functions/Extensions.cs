@@ -24,7 +24,7 @@ namespace Atomic.Extensions
                 if (creator != null)
                 {
                     Func<T, R> func = creator.Create(entity);
-                    expression.Append(func);
+                    expression.Add(func);
                 }
             }
         }

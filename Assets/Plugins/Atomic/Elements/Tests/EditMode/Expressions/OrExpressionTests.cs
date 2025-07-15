@@ -54,7 +54,7 @@ namespace Atomic.Elements
             //Pre-assert:
             Assert.IsFalse(orExpression.Value);
 
-            orExpression.Append(new Const<bool>(true));
+            orExpression.Add(new Const<bool>(true));
 
             //Assert:
             Assert.AreEqual(2, orExpression.Count);
@@ -167,7 +167,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            orExpression.Append(s => s == "Vasya");
+            orExpression.Add(s => s == "Vasya");
 
             //Assert:
             Assert.AreEqual(2, orExpression.Count);
@@ -282,7 +282,7 @@ namespace Atomic.Elements
             Assert.IsFalse(orExpression.Invoke("Vawsya", 10));
 
             //Act:
-            orExpression.Append((s, i) => s == "Vasya");
+            orExpression.Add((s, i) => s == "Vasya");
 
             //Assert:
             Assert.AreEqual(2, orExpression.Count);

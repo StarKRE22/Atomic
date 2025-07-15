@@ -44,6 +44,6 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes all actions in the group sequentially.
         /// </summary>
-        public void Invoke() => this.actions.InvokeAll();
+        public void Invoke() => this.actions.InvokeRange();
     }
 }

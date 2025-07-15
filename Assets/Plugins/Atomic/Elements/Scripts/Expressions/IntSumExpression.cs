@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class IntSumExpression : ExpressionBase<int>
+    public class IntSumExpression : AbstractExpression<int>
     {
         public IntSumExpression()
         {
@@ -34,7 +34,7 @@ namespace Atomic.Elements
     }
     
     [Serializable]
-    public class IntSumExpression<T> : ExpressionBase<T, int>
+    public class IntSumExpression<T> : AbstractExpression<T, int>
     {
         public IntSumExpression()
         {
@@ -64,7 +64,7 @@ namespace Atomic.Elements
     }
     
     [Serializable]
-    public class IntSumExpression<T1, T2> : ExpressionBase<T1, T2, int>
+    public class IntSumExpression<T1, T2> : AbstractExpression<T1, T2, int>
     {
         public IntSumExpression()
         {

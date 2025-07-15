@@ -7,18 +7,18 @@ namespace Atomic.Elements
     public static partial class Extensions
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AppendAll<T>(this IExpression<T> it, params Func<T>[] members)
+        public static void AddRange<T>(this IExpression<T> it, params Func<T>[] members)
         {
             for (int i = 0, count = members.Length; i < count; i++)
             {
                 Func<T> member = members[i];
                 if (member != null)
-                    it.Append(member);
+                    it.Add(member);
             }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AppendAll(
+        public static void AddRange(
             this IExpression<bool> expression,
             in IEnumerable<IFunction<bool>> predicates
         )
@@ -28,11 +28,11 @@ namespace Atomic.Elements
 
             foreach (IFunction<bool> predicate in predicates)
                 if (predicate != null)
-                    expression.Append(predicate.Invoke);
+                    expression.Add(predicate.Invoke);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AppendAll<T>(
+        public static void AddRange<T>(
             this IExpression<T, bool> expression,
             in IEnumerable<IFunction<T, bool>> predicates
         )
@@ -42,14 +42,14 @@ namespace Atomic.Elements
 
             foreach (IFunction<T, bool> predicate in predicates)
                 if (predicate != null)
-                    expression.Append(predicate.Invoke);
+                    expression.Add(predicate.Invoke);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Append<T, R>(this IExpression<T, R> it, IFunction<R> member) => it.Append(_ => member.Invoke());
+        public static void Add<T, R>(this IExpression<T, R> it, IFunction<R> member) => it.Add(_ => member.Invoke());
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Append<T>(this IExpression<T> it, IFunction<T> member) => it.Append(member.Invoke);
+        public static void Add<T>(this IExpression<T> it, IFunction<T> member) => it.Add(member.Invoke);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Remove<T>(this IExpression<T> it, IFunction<T> member) => it.Remove(member.Invoke);

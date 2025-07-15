@@ -14,7 +14,7 @@ namespace Atomic.Elements
 
         public StackExpression(T defaultValue = default) => _defaultValue = defaultValue;
 
-        public void Append(Func<T> member) => _conditions.Add(member);
+        public void Add(Func<T> member) => _conditions.Add(member);
 
         public void Remove(Func<T> member) => _conditions.Remove(member);
 

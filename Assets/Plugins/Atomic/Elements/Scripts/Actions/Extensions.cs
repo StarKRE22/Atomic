@@ -14,7 +14,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="actions">A sequence of actions to invoke.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InvokeAll(this IEnumerable<IAction> actions)
+        public static void InvokeRange(this IEnumerable<IAction> actions)
         {
             if (actions != null)
                 foreach (IAction action in actions)

@@ -44,7 +44,7 @@ namespace Atomic.Elements
             Assert.AreEqual(5, exp.Value);
             Assert.AreEqual(2, exp.Count);
 
-            exp.Append(new Const<float>(-1));
+            exp.Add(new Const<float>(-1));
 
             //Assert:
             Assert.AreEqual(3, exp.Count);
@@ -150,7 +150,7 @@ namespace Atomic.Elements
             Assert.AreEqual(5, exp.Invoke("Vasya"));
             Assert.AreEqual(2, exp.Count);
 
-            exp.Append(s => s == "Vasya" ? 5 : 0);
+            exp.Add(s => s == "Vasya" ? 5 : 0);
 
             //Assert:
             Assert.AreEqual(3, exp.Count);
@@ -250,7 +250,7 @@ namespace Atomic.Elements
             Assert.AreEqual(2, exp.Invoke("Vasya", 10));
             Assert.AreEqual(1, exp.Count);
     
-            exp.Append((s, i) => s == "Vasya" ? i : 0);
+            exp.Add((s, i) => s == "Vasya" ? i : 0);
     
             //Assert:
             Assert.AreEqual(2, exp.Count);

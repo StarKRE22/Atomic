@@ -61,7 +61,7 @@ namespace Atomic.Elements
             Assert.IsTrue(andExpression.Value);
             Assert.AreEqual(2, andExpression.Count);
 
-            andExpression.Append(new Const<bool>(false));
+            andExpression.Add(new Const<bool>(false));
 
             //Assert:
             Assert.AreEqual(3, andExpression.Count);
@@ -173,7 +173,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            andExpression.Append(s => s == "Petya");
+            andExpression.Add(s => s == "Petya");
 
             //Assert:
             Assert.AreEqual(2, andExpression.Count);
@@ -283,7 +283,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            andExpression.Append((s, i) => s == "Petya");
+            andExpression.Add((s, i) => s == "Petya");
 
             //Assert:
             Assert.AreEqual(2, andExpression.Count);

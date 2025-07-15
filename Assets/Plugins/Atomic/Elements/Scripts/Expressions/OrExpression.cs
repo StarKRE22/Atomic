@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class OrExpression : ExpressionBase<bool>, IPredicate
+    public class OrExpression : AbstractExpression<bool>, IPredicate
     {
         public OrExpression()
         {
@@ -33,7 +33,7 @@ namespace Atomic.Elements
     }
 
     [Serializable]
-    public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
+    public class OrExpression<T> : AbstractExpression<T, bool>, IPredicate<T>
     {
         public OrExpression()
         {
@@ -62,7 +62,7 @@ namespace Atomic.Elements
     }
     
     [Serializable]
-    public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
+    public class OrExpression<T1, T2> : AbstractExpression<T1, T2, bool>, IPredicate<T1, T2>
     {
         public OrExpression()
         {

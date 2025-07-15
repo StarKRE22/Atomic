@@ -6,7 +6,7 @@ namespace Atomic.Elements
     ///Represents a product of float members 
     
     [Serializable]
-    public class FloatMulExpression : ExpressionBase<float>
+    public class FloatMulExpression : AbstractExpression<float>
     {
         public FloatMulExpression()
         {
@@ -37,7 +37,7 @@ namespace Atomic.Elements
     
     
     [Serializable]
-    public class FloatMulExpression<T> : ExpressionBase<T, float>
+    public class FloatMulExpression<T> : AbstractExpression<T, float>
     {
         public FloatMulExpression()
         {
@@ -67,7 +67,7 @@ namespace Atomic.Elements
     }
     
     [Serializable]
-    public class FloatMulExpression<T1, T2> : ExpressionBase<T1, T2, float>
+    public class FloatMulExpression<T1, T2> : AbstractExpression<T1, T2, float>
     {
         public FloatMulExpression()
         {

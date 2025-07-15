@@ -30,7 +30,7 @@ namespace Atomic.Extensions
                 if (creator != null)
                 {
                     Func<bool> condition = creator.Create(obj);
-                    expression.Append(condition);
+                    expression.Add(condition);
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace Atomic.Extensions
                 if (creator != null)
                 {
                     Func<T, bool> condition = creator.Create(entity);
-                    expression.Append(condition);
+                    expression.Add(condition);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace Atomic.Extensions
                 if (creator != null)
                 {
                     Func<bool> condition = creator.Create(obj);
-                    expression.Append(_ => condition.Invoke());
+                    expression.Add(_ => condition.Invoke());
                 }
             }
         }

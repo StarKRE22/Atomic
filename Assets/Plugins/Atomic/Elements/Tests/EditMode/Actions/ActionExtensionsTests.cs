@@ -24,7 +24,7 @@ namespace Atomic.Elements
             };
             
             //Act"
-            collection.InvokeAll();
+            collection.InvokeRange();
             
 
             //Assert:
@@ -37,7 +37,7 @@ namespace Atomic.Elements
         [Test]
         public void WhenNullThenNothingHappened()
         {
-            Extensions.InvokeAll(null);
+            Extensions.InvokeRange(null);
         }
     }
 }
