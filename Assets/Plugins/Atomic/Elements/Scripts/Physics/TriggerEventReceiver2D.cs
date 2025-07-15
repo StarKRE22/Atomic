@@ -20,6 +20,10 @@ namespace Atomic.Elements
         /// </summary>
         public event Action<Collider2D> OnExited;
 
+        /// <summary>
+        /// Event triggered every frame while another collider remains within this 2D trigger collider.
+        /// This corresponds to Unity's <see cref="MonoBehaviour.OnTriggerStay(UnityEngine.Collider2D)"/> callback.
+        /// </summary>
         public event Action<Collider2D> OnStay; 
 
         /// <summary>
@@ -36,6 +40,11 @@ namespace Atomic.Elements
         /// <param name="other">The 2D collider that exited the trigger area.</param>
         private void OnTriggerExit2D(Collider2D other) => this.OnExited?.Invoke(other);
 
+        /// <summary>
+        /// Unity callback invoked every frame while another 2D collider remains within this trigger collider.
+        /// Triggers the <see cref="OnStay"/> event if any listeners are registered.
+        /// </summary>
+        /// <param name="other">The <see cref="Collider2D"/> currently staying inside the trigger.</param>
         private void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
     }
 }
