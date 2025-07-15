@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -11,7 +14,10 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of elements in the set.</typeparam>
     [Serializable]
-    public class ReactiveSortedSet<T> : IReactiveSet<T>, ISerializationCallbackReceiver
+    public class ReactiveSortedSet<T> : IReactiveSet<T>,
+#if UNITY_5_3_OR_NEWER
+        ISerializationCallbackReceiver
+#endif
     {
         /// <inheritdoc/>
         public event StateChangedHandler OnStateChanged;
@@ -35,11 +41,13 @@ namespace Atomic.Elements
         public int Count => this.set.Count;
 
         /// <inheritdoc/>
-        public bool IsReadOnly => ((ICollection<T>)this.set).IsReadOnly;
+        public bool IsReadOnly => ((ICollection<T>) this.set).IsReadOnly;
 
         private SortedSet<T> set;
 
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private List<T> items;
 
         /// <summary>

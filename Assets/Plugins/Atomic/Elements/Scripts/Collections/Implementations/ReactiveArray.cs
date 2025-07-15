@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -13,7 +16,9 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
     {
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private T[] items;
 
         private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
@@ -48,9 +53,18 @@ namespace Atomic.Elements
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {
-            get => this.items[index];
+            get
+            {
+                if (index < 0 || index >= this.items.Length)
+                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
+
+                return this.items[index];
+            }
             set
             {
+                if (index < 0 || index >= this.items.Length)
+                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
+                
                 ref T current = ref this.items[index];
 
                 if (s_equalityComparer.Equals(current, value))
@@ -60,6 +74,75 @@ namespace Atomic.Elements
                 this.OnStateChanged?.Invoke();
                 this.OnItemChanged?.Invoke(index, value);
             }
+        }
+        
+        /// <summary>
+        /// Resets all elements in the array to their default values.
+        /// </summary>
+        /// <remarks>
+        /// - Triggers <see cref="OnItemChanged"/> only for elements that were not already default.
+        /// - Triggers <see cref="OnStateChanged"/> once at the end, regardless of changes.
+        /// </remarks>
+        /// <example>
+        /// Clearing a reactive array of integers:
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(1, 2, 3);
+        /// array.Clear(); // All elements set to 0, OnItemChanged fired for all.
+        /// </code>
+        /// </example>
+        public void Clear()
+        {
+            int length = this.items.Length;
+            if (length == 0)
+                return;
+
+            for (int i = 0; i < length; i++)
+            {
+                ref T item = ref this.items[i];
+                if (s_equalityComparer.Equals(item, default)) 
+                    continue;
+                
+                item = default;
+                this.OnItemChanged?.Invoke(i, default);
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+        
+        /// <summary>
+        /// Replaces all elements in the array with values from the provided sequence.
+        /// Fires <see cref="OnItemChanged"/> for each changed item,
+        /// and <see cref="OnStateChanged"/> once at the end.
+        /// </summary>
+        /// <param name="newItems">The new values to assign. Must match the array length.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="newItems"/> is null.</exception>
+        /// <exception cref="ArgumentException">If <paramref name="newItems"/> has a different number of items than the array.</exception>
+        public void SetAll(IEnumerable<T> newItems)
+        {
+            if (newItems == null)
+                throw new ArgumentNullException(nameof(newItems));
+
+            using var enumerator = newItems.GetEnumerator();
+            int index = 0;
+
+            while (index < this.items.Length && enumerator.MoveNext())
+            {
+                T newValue = enumerator.Current;
+                ref T current = ref this.items[index];
+
+                if (!s_equalityComparer.Equals(current, newValue))
+                {
+                    current = newValue;
+                    this.OnItemChanged?.Invoke(index, newValue);
+                }
+
+                index++;
+            }
+
+            if (index != this.items.Length || enumerator.MoveNext())
+                throw new ArgumentException("Item count does not match array length.", nameof(newItems));
+
+            this.OnStateChanged?.Invoke();
         }
 
         /// <summary>

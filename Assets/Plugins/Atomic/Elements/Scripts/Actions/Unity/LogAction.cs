@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using UnityEngine;
 
@@ -42,3 +43,4 @@ namespace Atomic.Elements
         public void Invoke() => Debug.unityLogger.Log(_logType, _message);
     }
 }
+#endif

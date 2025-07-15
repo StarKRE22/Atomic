@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 // ReSharper disable FieldCanBeMadeReadOnly.Local
@@ -53,3 +54,4 @@ namespace Atomic.Elements
         }
     }
 }
+#endif

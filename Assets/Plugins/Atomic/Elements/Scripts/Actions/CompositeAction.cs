@@ -1,5 +1,8 @@
 using System;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
+
 // ReSharper disable NotAccessedField.Local
 
 #if ODIN_INSPECTOR
@@ -19,7 +22,9 @@ namespace Atomic.Elements
         /// Array of actions that belong to this group.
         /// These actions will be invoked in order when the group is triggered.
         /// </summary>
+#if UNITY_5_3_OR_NEWER
         [Space, SerializeReference]
+#endif
         private IAction[] actions;
 
         /// <summary>

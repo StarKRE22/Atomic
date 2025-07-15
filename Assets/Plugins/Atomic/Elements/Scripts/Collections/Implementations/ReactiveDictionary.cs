@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
     //TODO: ПЕРЕПИСАТЬ НА НАТИВНЫЙ СЛОВАРЬ!
-    
+
     /// <summary>
     /// A reactive wrapper around <see cref="Dictionary{K,V}"/> that raises events
     /// when the collection is changed (items added, removed, or updated).
@@ -16,18 +19,22 @@ namespace Atomic.Elements
     /// <typeparam name="V">The type of values in the dictionary.</typeparam>
     [Serializable]
     public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>,
+#if UNITY_5_3_OR_NEWER
         ISerializationCallbackReceiver
+#endif
     {
+#if UNITY_5_3_OR_NEWER
         [Serializable]
         internal struct Pair
         {
             public K key;
             public V value;
         }
-        
+
         [SerializeField]
         private Pair[] pairs;
-        
+#endif
+
         private static readonly IEqualityComparer<V> s_equalityComparer = EqualityComparer.GetDefault<V>();
 
         public event StateChangedHandler OnStateChanged;
@@ -49,14 +56,14 @@ namespace Atomic.Elements
         /// Gets a collection containing the values in the dictionary.
         /// </summary>
         public ICollection<V> Values => this.dictionary.Values;
-        
+
         IEnumerable<V> IReadOnlyDictionary<K, V>.Values => Values;
-        
+
         /// <summary>
         /// Gets the number of key/value pairs contained in the dictionary.
         /// </summary>
         public int Count => this.dictionary.Count;
-        
+
         /// <summary>
         /// Gets a value indicating whether the dictionary is read-only.
         /// </summary>
@@ -84,7 +91,6 @@ namespace Atomic.Elements
             set => this.Set(key, value);
         }
 
-       
         /// <summary>
         /// Adds a key/value pair to the dictionary.
         /// </summary>
@@ -96,7 +102,7 @@ namespace Atomic.Elements
             this.OnItemAdded?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Adds a <see cref="KeyValuePair{K,V}"/> to the dictionary.
         /// </summary>
@@ -141,7 +147,7 @@ namespace Atomic.Elements
 
             return false;
         }
-        
+
         /// <summary>
         /// Removes the specified key/value pair from the dictionary.
         /// </summary>
@@ -158,7 +164,7 @@ namespace Atomic.Elements
 
             return false;
         }
-        
+
         /// <summary>
         /// Sets the value associated with the specified key. If the key exists,
         /// the value is updated and <see cref="OnItemChanged"/> is triggered.
@@ -187,13 +193,13 @@ namespace Atomic.Elements
         /// <param name="key">The key to locate.</param>
         /// <returns>True if the key is found; otherwise, false.</returns>
         public bool ContainsKey(K key) => this.dictionary.ContainsKey(key);
-        
+
         /// <summary>
         /// Determines whether the dictionary contains the specified key/value pair.
         /// </summary>
         /// <param name="item">The key/value pair to locate.</param>
         /// <returns>True if the pair is found; otherwise, false.</returns>
-        public bool Contains(KeyValuePair<K, V> item) => 
+        public bool Contains(KeyValuePair<K, V> item) =>
             ((ICollection<KeyValuePair<K, V>>) this.dictionary).Contains(item);
 
         /// <summary>
@@ -216,13 +222,13 @@ namespace Atomic.Elements
                 this.OnStateChanged?.Invoke();
             }
         }
-        
+
         /// <summary>
         /// Copies the elements of the dictionary to an array, starting at a particular index.
         /// </summary>
         /// <param name="array">The destination array.</param>
         /// <param name="arrayIndex">The zero-based index in the array at which copying begins.</param>
-        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0) => 
+        public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0) =>
             ((ICollection<KeyValuePair<K, V>>) this.dictionary).CopyTo(array, arrayIndex);
 
         /// <summary>
@@ -233,6 +239,7 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Unity callback invoked after the object has been deserialized.
         /// Reconstructs the internal dictionary from the serialized pair array.
@@ -246,7 +253,7 @@ namespace Atomic.Elements
                 Pair pair = this.pairs[i];
                 this.dictionary[pair.key] = pair.value;
             }
-            
+
             this.OnStateChanged?.Invoke();
         }
 
@@ -268,5 +275,6 @@ namespace Atomic.Elements
                 };
             }
         }
+#endif
     }
 }

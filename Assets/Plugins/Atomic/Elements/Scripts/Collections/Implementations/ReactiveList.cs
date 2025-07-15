@@ -3,7 +3,10 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -15,7 +18,9 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveList<T> : IReactiveList<T>, IDisposable
     {
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private T[] items;
 
         private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();

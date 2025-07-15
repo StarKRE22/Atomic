@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 namespace Atomic.Elements
@@ -15,3 +16,4 @@ namespace Atomic.Elements
         public abstract void Invoke();
     }
 }
+#endif

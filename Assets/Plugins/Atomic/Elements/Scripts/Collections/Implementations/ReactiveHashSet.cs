@@ -3,7 +3,6 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 // ReSharper disable HeuristicUnreachableCode
@@ -11,6 +10,10 @@ using UnityEngine;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
+#endif
+
+#if UNITY_5_3_OR_NEWER
+using UnityEngine;
 #endif
 
 namespace Atomic.Elements
@@ -761,7 +764,7 @@ namespace Atomic.Elements
     }
 }
 
-#region Serialization
+#if UNITY_5_3_OR_NEWER
 
 namespace Atomic.Elements
 {
@@ -789,4 +792,4 @@ namespace Atomic.Elements
     }
 }
 
-#endregion
+#endif

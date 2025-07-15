@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -15,7 +18,9 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveSortedDictionary<K, V> :
         IReactiveDictionary<K, V>,
+#if UNITY_5_3_OR_NEWER
         ISerializationCallbackReceiver
+#endif
     {
         /// <summary>
         /// Serializable key-value pair used for Unity serialization.
@@ -26,8 +31,9 @@ namespace Atomic.Elements
             public K key;
             public V value;
         }
-
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private Pair[] pairs;
 
         private static readonly IEqualityComparer<V> s_equalityComparer = EqualityComparer.GetDefault<V>();
@@ -158,16 +164,16 @@ namespace Atomic.Elements
 
         /// <inheritdoc/>
         public bool Contains(KeyValuePair<K, V> item) =>
-            ((ICollection<KeyValuePair<K, V>>)this.dictionary).Contains(item);
+            ((ICollection<KeyValuePair<K, V>>) this.dictionary).Contains(item);
 
         /// <inheritdoc/>
         public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0) =>
-            ((ICollection<KeyValuePair<K, V>>)this.dictionary).CopyTo(array, arrayIndex);
+            ((ICollection<KeyValuePair<K, V>>) this.dictionary).CopyTo(array, arrayIndex);
 
         /// <inheritdoc/>
         public bool Remove(KeyValuePair<K, V> item)
         {
-            if (((ICollection<KeyValuePair<K, V>>)this.dictionary).Remove(item))
+            if (((ICollection<KeyValuePair<K, V>>) this.dictionary).Remove(item))
             {
                 this.OnItemRemoved?.Invoke(item.Key, item.Value);
                 this.OnStateChanged?.Invoke();

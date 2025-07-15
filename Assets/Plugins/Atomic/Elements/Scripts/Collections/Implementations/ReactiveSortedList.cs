@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -13,9 +16,12 @@ namespace Atomic.Elements
     /// <typeparam name="V">The value type.</typeparam>
     [Serializable]
     public class ReactiveSortedList<K, V> : IReactiveDictionary<K, V>,
+#if UNITY_5_3_OR_NEWER
         ISerializationCallbackReceiver
+#endif
         where K : IComparable<K>
     {
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Serializable key-value pair structure used for Unity serialization.
         /// </summary>
@@ -25,10 +31,11 @@ namespace Atomic.Elements
             public K key;
             public V value;
         }
-        
+
         [SerializeField]
         private Pair[] pairs;
-        
+#endif
+
         private static readonly IEqualityComparer<V> s_equalityComparer = EqualityComparer.GetDefault<V>();
 
         /// <inheritdoc/>
@@ -193,6 +200,7 @@ namespace Atomic.Elements
             return false;
         }
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Reconstructs the internal dictionary from serialized data.
         /// Called automatically by Unity after deserialization.
@@ -228,5 +236,6 @@ namespace Atomic.Elements
                 };
             }
         }
+#endif
     }
 }
