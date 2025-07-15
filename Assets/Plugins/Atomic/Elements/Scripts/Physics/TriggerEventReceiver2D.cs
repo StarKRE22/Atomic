@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using UnityEngine;
 
@@ -48,3 +49,4 @@ namespace Atomic.Elements
         private void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
     }
 }
+#endif
