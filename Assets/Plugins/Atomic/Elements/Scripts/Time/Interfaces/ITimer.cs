@@ -1,20 +1,26 @@
 namespace Atomic.Elements
 {
-    public interface IPlayable
+    public interface ITimer : 
+        IStartSource,
+        IStopSource,
+        IPlaySource,
+        IPauseSource,
+        IResumeSource,
+        IProgressSource,
+        IExpiredSource,
+        ITickSource
     {
-        bool IsPlaying();
-        bool Play();
     }
     
-    public interface ITimer : 
-        IStartable,
-        IStoppable,
-        IPlayable,
-        IPausable,
-        IResumable,
-        IProgressable,
-        IEndable,
-        ITickable
+    public interface ITimer<T> : 
+        IStartSource<T>,
+        IStopSource<T>,
+        IProgressSource, 
+        IExpiredSource<T>,
+        ITickSource, 
+        IValue<T>,
+        IPauseSource, 
+        IResumeSource
     {
     }
 }

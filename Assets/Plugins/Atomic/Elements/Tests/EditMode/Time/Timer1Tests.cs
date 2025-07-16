@@ -134,7 +134,7 @@ namespace Atomic.Elements
             object v1 = new object();
 
             timer.Start(v1);
-            timer.OnEnded += _ => wasComplete = true;
+            timer.OnExpired += _ => wasComplete = true;
 
             for (int i = 0; i < 20; i++)
             {
@@ -143,7 +143,7 @@ namespace Atomic.Elements
 
             //Pre-assert:
             Assert.IsTrue(wasComplete);
-            Assert.IsTrue(timer.IsEnded());
+            Assert.IsTrue(timer.IsExpired());
 
             //Act:
             object v2 = new object();
@@ -157,7 +157,7 @@ namespace Atomic.Elements
             Assert.AreEqual(v2, timer.Value);
 
             Assert.IsTrue(timer.IsPlaying());
-            Assert.IsFalse(timer.IsEnded());
+            Assert.IsFalse(timer.IsExpired());
             Assert.AreEqual(0, timer.GetCurrentTime());
         }
 
@@ -173,7 +173,7 @@ namespace Atomic.Elements
 
             //Act:
             timer.Start(v);
-            timer.OnEnded += _ => wasComplete = true;
+            timer.OnExpired += _ => wasComplete = true;
             timer.OnStarted += _ => wasStarted = true;
 
             for (int i = 0; i < 20; i++)
@@ -187,7 +187,7 @@ namespace Atomic.Elements
             Assert.AreEqual(v, timer.Value);
 
             Assert.IsTrue(timer.IsPlaying());
-            Assert.IsFalse(timer.IsEnded());
+            Assert.IsFalse(timer.IsExpired());
             Assert.AreEqual(0, timer.GetCurrentTime());
         }
 
@@ -202,7 +202,7 @@ namespace Atomic.Elements
             //Act:
             timer.Start("Vasya");
             timer.OnStateChanged += s => stateChanged = s;
-            timer.OnEnded += v => wasComplete = v;
+            timer.OnExpired += v => wasComplete = v;
 
             for (int i = 0; i < 20; i++)
             {
@@ -222,7 +222,7 @@ namespace Atomic.Elements
 
             Assert.IsFalse(timer.IsPlaying());
             Assert.IsFalse(timer.IsPaused());
-            Assert.IsTrue(timer.IsEnded());
+            Assert.IsTrue(timer.IsExpired());
         }
 
         [Test]
@@ -257,7 +257,7 @@ namespace Atomic.Elements
             timer.Tick(0.2f);
             timer.OnProgressChanged += _ => progressChanged = true;
             timer.OnCurrentTimeChanged += _ => timeChanged = true;
-            timer.OnEnded += _ => completed = true;
+            timer.OnExpired += _ => completed = true;
 
             timer.Pause();
 

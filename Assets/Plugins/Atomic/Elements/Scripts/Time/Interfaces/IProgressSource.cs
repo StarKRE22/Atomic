@@ -1,10 +1,11 @@
 namespace Atomic.Elements
 {
-    public interface IProgressable : ITimeable, IDurationable
+    public interface IProgressSource : ICurrentTimeSource, IDurationSource
     {
         event System.Action<float> OnProgressChanged; 
 
         float GetProgress();
+        
         void SetProgress(float progress);
     }
 }

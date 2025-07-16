@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Cycle : IStartable, IProgressable, ITickable, IPausable
+    public class Cycle : IStartSource, IProgressSource, ITickSource, IPauseSource
     {
         public enum State
         {

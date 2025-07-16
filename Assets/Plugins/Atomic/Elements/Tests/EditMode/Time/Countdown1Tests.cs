@@ -86,7 +86,7 @@ namespace Atomic.Elements
             countdown.Tick(deltaTime: 0.5f);
             countdown.Tick(deltaTime: 0.5f);
 
-            Assert.IsTrue(countdown.IsEnded());
+            Assert.IsTrue(countdown.IsExpired());
         }
 
         [Test]
@@ -146,7 +146,7 @@ namespace Atomic.Elements
             object v1 = new object();
 
             countdown.Start(v1);
-            countdown.OnEnded += _ => wasComplete = true;
+            countdown.OnExpired += _ => wasComplete = true;
 
             for (int i = 0; i < 20; i++)
             {
@@ -155,7 +155,7 @@ namespace Atomic.Elements
 
             //Pre-assert:
             Assert.IsTrue(wasComplete);
-            Assert.IsTrue(countdown.IsEnded());
+            Assert.IsTrue(countdown.IsExpired());
 
             //Act:
             object v2 = new object();
@@ -169,7 +169,7 @@ namespace Atomic.Elements
             Assert.AreEqual(v2, countdown.Value);
 
             Assert.IsTrue(countdown.IsPlaying());
-            Assert.IsFalse(countdown.IsEnded());
+            Assert.IsFalse(countdown.IsExpired());
             Assert.AreEqual(4, countdown.GetCurrentTime());
         }
 
@@ -185,7 +185,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.Start(v);
-            countdown.OnEnded += _ => wasComplete = true;
+            countdown.OnExpired += _ => wasComplete = true;
             countdown.OnStarted += _ => wasStarted = true;
 
             for (int i = 0; i < 20; i++)
@@ -199,7 +199,7 @@ namespace Atomic.Elements
             Assert.AreEqual(v, countdown.Value);
 
             Assert.IsTrue(countdown.IsPlaying());
-            Assert.IsFalse(countdown.IsEnded());
+            Assert.IsFalse(countdown.IsExpired());
             Assert.AreEqual(4, countdown.GetCurrentTime());
         }
 
@@ -214,7 +214,7 @@ namespace Atomic.Elements
             //Act:
             countdown.Start("Vasya");
             countdown.OnStateChanged += s => stateChanged = s;
-            countdown.OnEnded += v => wasComplete = v;
+            countdown.OnExpired += v => wasComplete = v;
 
             for (int i = 0; i < 20; i++)
             {
@@ -234,7 +234,7 @@ namespace Atomic.Elements
 
             Assert.IsFalse(countdown.IsPlaying());
             Assert.IsFalse(countdown.IsPaused());
-            Assert.IsTrue(countdown.IsEnded());
+            Assert.IsTrue(countdown.IsExpired());
         }
 
         [Test]
@@ -269,7 +269,7 @@ namespace Atomic.Elements
             countdown.Tick(0.2f);
             countdown.OnProgressChanged += _ => progressChanged = true;
             countdown.OnCurrentTimeChanged += _ => timeChanged = true;
-            countdown.OnEnded += _ => completed = true;
+            countdown.OnExpired += _ => completed = true;
 
             countdown.Pause();
 

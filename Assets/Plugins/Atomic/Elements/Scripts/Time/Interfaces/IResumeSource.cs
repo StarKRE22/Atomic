@@ -2,9 +2,10 @@ using System;
 
 namespace Atomic.Elements
 {
-    public interface IResumable
+    public interface IResumeSource
     {
         event Action OnResumed;
+        
         bool Resume();
     }
 }

@@ -25,10 +25,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Unsubscribes the associated action from the reactive source.
         /// </summary>
-        public void Dispose()
-        {
-            this.reactive?.Unsubscribe(this.action);
-        }
+        public void Dispose() => this.reactive?.Unsubscribe(this.action);
     }
 
     /// <summary>
@@ -55,10 +52,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Unsubscribes the associated action from the reactive source.
         /// </summary>
-        public void Dispose()
-        {
-            this.reactive?.Unsubscribe(this.action);
-        }
+        public void Dispose() => this.reactive?.Unsubscribe(this.action);
     }
 
     /// <summary>
@@ -86,10 +80,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Unsubscribes the associated action from the reactive source.
         /// </summary>
-        public void Dispose()
-        {
-            this.reactive?.Unsubscribe(this.action);
-        }
+        public void Dispose() => this.reactive?.Unsubscribe(this.action);
     }
 
     /// <summary>
@@ -118,10 +109,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Unsubscribes the associated action from the reactive source.
         /// </summary>
-        public void Dispose()
-        {
-            this.reactive?.Unsubscribe(this.action);
-        }
+        public void Dispose() => this.reactive?.Unsubscribe(this.action);
     }
 
     /// <summary>
@@ -151,9 +139,6 @@ namespace Atomic.Elements
         /// <summary>
         /// Unsubscribes the associated action from the reactive source.
         /// </summary>
-        public void Dispose()
-        {
-            this.reactive?.Unsubscribe(this.action);
-        }
+        public void Dispose() => this.reactive?.Unsubscribe(this.action);
     }
 }

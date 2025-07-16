@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Stopwatch : IStartable, ITimeable, ITickable, IPausable
+    public class Stopwatch : IStartSource, ICurrentTimeSource, ITickSource, IPauseSource
     {
         public enum State
         {

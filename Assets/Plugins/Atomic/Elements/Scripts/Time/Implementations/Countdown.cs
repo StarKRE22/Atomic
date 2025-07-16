@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Countdown : IStartable, IPausable, IEndable, IProgressable, ITickable
+    public class Countdown : IStartSource, IPauseSource, IExpiredSource, IProgressSource, ITickSource
     {
         public enum State
         {
@@ -22,7 +22,7 @@ namespace Atomic.Elements
         public event Action OnStopped;
         public event Action OnPaused;
         public event Action OnResumed;
-        public event Action OnEnded;
+        public event Action OnExpired;
 
         public event Action<State> OnStateChanged;
 
@@ -103,7 +103,7 @@ namespace Atomic.Elements
         public bool IsIdle() => this.currentState == State.IDLE;
         public bool IsPlaying() => this.currentState == State.PLAYING;
         public bool IsPaused() => this.currentState == State.PAUSED;
-        public bool IsEnded() => this.currentState == State.ENDED;
+        public bool IsExpired() => this.currentState == State.ENDED;
 
         public float GetDuration() => this.duration;
         public float GetCurrentTime() => this.currentTime;
@@ -133,9 +133,7 @@ namespace Atomic.Elements
         public bool Start()
         {
             if (this.currentState is not (State.IDLE or State.ENDED))
-            {
                 return false;
-            }
 
             this.currentTime = this.duration;
             this.currentState = State.PLAYING;
@@ -150,9 +148,7 @@ namespace Atomic.Elements
         public bool Play()
         {
             if (this.currentState is not (State.IDLE or State.ENDED))
-            {
                 return false;
-            }
 
             this.currentState = State.PLAYING;
             this.OnStateChanged?.Invoke(State.PLAYING);
@@ -166,9 +162,7 @@ namespace Atomic.Elements
         public bool Start(float currentTime)
         {
             if (this.currentState is not (State.IDLE or State.ENDED))
-            {
                 return false;
-            }
 
             this.currentTime = Mathf.Clamp(currentTime, 0, this.duration);
             this.currentState = State.PLAYING;
@@ -252,7 +246,7 @@ namespace Atomic.Elements
         {
             this.currentState = State.ENDED;
             this.OnStateChanged?.Invoke(State.ENDED);
-            this.OnEnded?.Invoke();
+            this.OnExpired?.Invoke();
 
             if (this.loop)
             {
@@ -289,9 +283,7 @@ namespace Atomic.Elements
         public void SetDuration(float duration)
         {
             if (duration < 0)
-            {
                 throw new Exception($"Duration can't be negative: {duration}!");
-            }
 
             if (Math.Abs(this.duration - duration) > float.Epsilon)
             {

@@ -22,7 +22,7 @@ namespace Atomic.Elements
         public event Action OnStopped;
         public event Action OnPaused;
         public event Action OnResumed;
-        public event Action OnEnded;
+        public event Action OnExpired;
 
         public event Action<State> OnStateChanged;
 
@@ -103,7 +103,7 @@ namespace Atomic.Elements
         public bool IsIdle() => this.currentState == State.IDLE;
         public bool IsPlaying() => this.currentState == State.PLAYING;
         public bool IsPaused() => this.currentState == State.PAUSED;
-        public bool IsEnded() => this.currentState == State.ENDED;
+        public bool IsExpired() => this.currentState == State.ENDED;
 
         public float GetDuration() => this.duration;
         public float GetCurrentTime() => this.currentTime;
@@ -251,7 +251,7 @@ namespace Atomic.Elements
         {
             this.currentState = State.ENDED;
             this.OnStateChanged?.Invoke(State.ENDED);
-            this.OnEnded?.Invoke();
+            this.OnExpired?.Invoke();
 
             if (this.loop)
             {

@@ -1,6 +1,6 @@
 namespace Atomic.Elements
 {
-    public interface ITickable
+    public interface ITickSource
     {
         void Tick(float deltaTime);
     }

@@ -2,15 +2,17 @@ using System;
 
 namespace Atomic.Elements
 {
-    public interface IStoppable
+    public interface IStopSource
     {
         event Action OnStopped;
+        
         bool Stop();
     }
     
-    public interface IStoppable<out T>
+    public interface IStopSource<out T>
     {
         event Action<T> OnStopped;
+       
         bool Stop();
     }
 }
