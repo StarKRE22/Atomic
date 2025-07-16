@@ -40,13 +40,17 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveBool(bool value) => new(value);
 
-        public Subscription<bool> Subscribe(Action<bool> listener) => this.OnValueChanged += listener;
+        public Subscription<bool> Subscribe(Action<bool> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<bool>(this, listener);
+        }
 
         public void Unsubscribe(Action<bool> listener) => this.OnValueChanged -= listener;
 
         private void InvokeEvent(bool value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.Value.ToString();
     }

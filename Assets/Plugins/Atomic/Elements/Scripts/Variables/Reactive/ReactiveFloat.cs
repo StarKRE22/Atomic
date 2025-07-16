@@ -42,13 +42,17 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveFloat(float value) => new(value);
 
-        public Subscription<float> Subscribe(Action<float> listener) => this.OnValueChanged += listener;
+        public Subscription<float> Subscribe(Action<float> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<float>(this, listener);
+        }
 
         public void Unsubscribe(Action<float> listener) => this.OnValueChanged -= listener;
 
         private void InvokeEvent(float value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.value.ToString(CultureInfo.InvariantCulture);
     }

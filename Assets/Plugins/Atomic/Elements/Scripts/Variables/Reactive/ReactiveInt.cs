@@ -40,13 +40,17 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveInt(int value) => new(value);
 
-        public Subscription<int> Subscribe(Action<int> listener) => this.OnValueChanged += listener;
+        public Subscription<int> Subscribe(Action<int> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<int>(this, listener);
+        }
 
         public void Unsubscribe(Action<int> listener) => this.OnValueChanged -= listener;
 
         private void InvokeEvent(int value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.Value.ToString();
     }

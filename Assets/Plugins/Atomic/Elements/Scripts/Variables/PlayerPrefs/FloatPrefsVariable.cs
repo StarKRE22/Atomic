@@ -41,7 +41,11 @@ namespace Atomic.Extensions
             this.defaultValue = defaultValue;
         }
 
-        public Subscription<float> Subscribe(Action<float> listener) => this.OnValueChanged += listener;
+        public Subscription<float> Subscribe(Action<float> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<float>(this, listener);
+        }
 
         public void Unsubscribe(Action<float> listener) => this.OnValueChanged -= listener;
     }

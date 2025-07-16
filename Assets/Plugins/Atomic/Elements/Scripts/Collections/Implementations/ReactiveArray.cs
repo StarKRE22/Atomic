@@ -161,8 +161,8 @@ namespace Atomic.Elements
         /// </summary>
         public void Dispose()
         {
-            InternalUtils.Dispose(ref this.OnItemChanged);
-            InternalUtils.Dispose(ref this.OnStateChanged);
+            AtomicUtils.Dispose(ref this.OnItemChanged);
+            AtomicUtils.Dispose(ref this.OnStateChanged);
         }
 
         /// <summary>

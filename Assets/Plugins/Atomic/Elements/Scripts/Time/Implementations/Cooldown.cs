@@ -1,5 +1,7 @@
 using System;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
@@ -8,7 +10,7 @@ namespace Atomic.Elements
     /// provides progress feedback, and raises events on state changes.
     /// </summary>
     [Serializable]
-    public sealed class Cooldown : IExpiredSource, IProgressSource
+    public sealed class Cooldown : IExpiredSource, IProgressSource, ICurrentTimeSource, IDurationSource
     {
         /// <summary>
         /// Invoked when the duration value changes.
@@ -77,10 +79,13 @@ namespace Atomic.Elements
         /// <param name="progress">The new progress value (0–1).</param>
         public void SetProgress(float progress)
         {
-            if (progress < 0)
-                throw new ArgumentOutOfRangeException(nameof(progress));
+            progress = progress switch
+            {
+                < 0 => 0,
+                > 1 => 1,
+                _ => progress
+            };
 
-            progress = Mathf.Clamp01(progress);
             float remainingTime = _duration * progress;
 
             _current = remainingTime;
@@ -111,7 +116,7 @@ namespace Atomic.Elements
             if (_current == 0)
                 return;
 
-            _current = Mathf.Max(0, _current - deltaTime);
+            _current = Math.Max(0, _current - deltaTime);
 
             this.OnCurrentTimeChanged?.Invoke(_current);
             this.OnProgressChanged?.Invoke(this.GetProgress());
@@ -163,7 +168,7 @@ namespace Atomic.Elements
             if (time < 0)
                 throw new ArgumentException($"Time can't be negative: {time}!", nameof(time));
 
-            float newTime = Mathf.Clamp(time, 0, _duration);
+            float newTime = Math.Clamp(time, 0, _duration);
             if (Math.Abs(newTime - _current) <= float.Epsilon)
                 return;
 

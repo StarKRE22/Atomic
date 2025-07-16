@@ -36,13 +36,17 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveVector2(Vector2 value) => new(value);
 
-        public Subscription<Vector2> Subscribe(Action<Vector2> listener) => this.OnValueChanged += listener;
+        public Subscription<Vector2> Subscribe(Action<Vector2> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<Vector2>(this, listener);
+        }
 
         public void Unsubscribe(Action<Vector2> listener) => this.OnValueChanged -= listener;
 
         private void InvokeEvent(Vector2 value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.Value.ToString();
     }

@@ -7,7 +7,15 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Countdown<T> : IStartSource<T>, IPauseSource, IExpiredSource<T>, IProgressSource, ITickSource, IValue<T>
+    public class Countdown<T> : 
+        IStartSource<T>,
+        IPauseSource, 
+        IExpiredSource<T>,
+        IProgressSource, 
+        ITickSource,
+        IValue<T>, 
+        ICurrentTimeSource,
+        IDurationSource
     {
         public enum State
         {

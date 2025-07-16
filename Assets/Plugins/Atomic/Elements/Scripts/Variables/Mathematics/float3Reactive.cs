@@ -44,7 +44,11 @@ namespace Atomic.Extensions
 
         public static implicit operator float3Reactive(float3 value) => new(value);
 
-        public Subscription<float3> Subscribe(Action<float3> listener) => this.OnValueChanged += listener;
+        public Subscription<float3> Subscribe(Action<float3> action)
+        {
+            this.OnValueChanged += action;
+            return new Subscription<float3>(this, action);
+        }
 
         public void Unsubscribe(Action<float3> listener) => this.OnValueChanged -= listener;
 

@@ -1,6 +1,6 @@
 namespace Atomic.Elements
 {
-    public interface IProgressSource : ICurrentTimeSource, IDurationSource
+    public interface IProgressSource 
     {
         event System.Action<float> OnProgressChanged; 
 

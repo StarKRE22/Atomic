@@ -8,7 +8,9 @@ namespace Atomic.Elements
         IResumeSource,
         IProgressSource,
         IExpiredSource,
-        ITickSource
+        ITickSource,
+        ICurrentTimeSource, 
+        IDurationSource
     {
     }
     
@@ -20,7 +22,9 @@ namespace Atomic.Elements
         ITickSource, 
         IValue<T>,
         IPauseSource, 
-        IResumeSource
+        IResumeSource,
+        ICurrentTimeSource, 
+        IDurationSource
     {
     }
 }

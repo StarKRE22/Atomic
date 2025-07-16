@@ -57,6 +57,7 @@ namespace Atomic.Elements
         public Subscription<T> Subscribe(Action<T> listener)
         {
             this.OnValueChanged += listener;
+            return new Subscription<T>(this, listener);
         }
 
         public void Unsubscribe(Action<T> listener)
@@ -71,7 +72,7 @@ namespace Atomic.Elements
 
         public void Dispose()
         {
-            InternalUtils.Dispose(ref this.OnValueChanged);
+            AtomicUtils.Dispose(ref this.OnValueChanged);
         }
         
         public override string ToString()

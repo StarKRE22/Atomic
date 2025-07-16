@@ -39,13 +39,17 @@ namespace Atomic.Elements
 
         public static implicit operator ReactiveQuaternion(Quaternion value) => new(value);
 
-        public Subscription<Quaternion> Subscribe(Action<Quaternion> listener) => this.OnValueChanged += listener;
+        public Subscription<Quaternion> Subscribe(Action<Quaternion> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<Quaternion>(this, listener);
+        }
 
         public void Unsubscribe(Action<Quaternion> listener) => this.OnValueChanged -= listener;
 
         private void InvokeEvent(Quaternion value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.Value.ToString();
     }

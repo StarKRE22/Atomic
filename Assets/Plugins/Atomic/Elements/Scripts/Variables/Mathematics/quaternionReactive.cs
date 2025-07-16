@@ -40,7 +40,11 @@ namespace Atomic.Extensions
 
         public static implicit operator quaternionReactive(quaternion value) => new(value);
 
-        public Subscription<quaternion> Subscribe(Action<quaternion> listener) => this.OnValueChanged += listener;
+        public Subscription<quaternion> Subscribe(Action<quaternion> listener)
+        {
+            this.OnValueChanged += listener;
+            return new Subscription<quaternion>(this, listener);
+        }
 
         public void Unsubscribe(Action<quaternion> listener) => this.OnValueChanged -= listener;
 
