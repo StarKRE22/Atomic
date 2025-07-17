@@ -8,7 +8,7 @@ namespace Atomic.Extensions
 {
     [MovedFrom(true, null, null, "ReactiveFloatEntityInstaller")]
     [Serializable]
-    public sealed class ReactiveFloat_EntityInstaller : ValueEntityInstaller<ReactiveFloat>
+    public sealed class ReactiveFloat_EntityInstaller : EntityInstallerValue<ReactiveFloat>
     {
     }
 }

@@ -9,7 +9,7 @@ namespace Atomic.Extensions
 {
     [MovedFrom(true, null, null, "TimerEntityInstaller")]
     [Serializable]
-    public sealed class Timer_EntityInstaller : ValueEntityInstaller<Timer>
+    public sealed class Timer_EntityInstaller : EntityInstallerValue<Timer>
     {
         [SerializeReference]
         private IEntityActionAsset[] completeActions = default;

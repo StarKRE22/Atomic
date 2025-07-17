@@ -8,7 +8,7 @@ using UnityEngine.Scripting.APIUpdating;
 namespace Atomic.Extensions
 {
     [Serializable]
-    public sealed class AndExpression_EntityInstaller : ValueEntityInstaller<AndExpression>
+    public sealed class AndExpression_EntityInstaller : EntityInstallerValue<AndExpression>
     {
         [SerializeReference]
         private IEntityPredicateAsset[] conditions = default;

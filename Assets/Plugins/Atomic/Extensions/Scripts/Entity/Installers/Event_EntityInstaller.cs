@@ -9,7 +9,7 @@ namespace Atomic.Extensions
 {
     [MovedFrom(true, null, null, "EventEntityInstaller")] 
     [Serializable]
-    public sealed class Event_EntityInstaller : ValueEntityInstaller<BaseEvent>
+    public sealed class Event_EntityInstaller : EntityInstallerValue<BaseEvent>
     {
         [SerializeReference]
         private IEntityActionAsset[] actions = default;

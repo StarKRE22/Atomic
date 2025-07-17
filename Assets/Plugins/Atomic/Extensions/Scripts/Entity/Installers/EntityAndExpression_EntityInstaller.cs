@@ -41,7 +41,7 @@ namespace Atomic.Extensions
         {
             AndExpression<IEntity> expression = new AndExpression<IEntity>();
             expression.AppendBy(this.baseConditions, entity);
-            expression.AppendAll(this.targetCondtions);
+            expression.AddRange(this.targetCondtions);
             expression.AppendBy(this.interactionConditions, entity);
 
             entity.AddValue(this.id, expression);

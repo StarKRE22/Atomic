@@ -8,7 +8,7 @@ namespace Atomic.Extensions
 {
     [MovedFrom(true, null, null, "ReactiveBoolEntityInstaller")]
     [Serializable]
-    public sealed class ReactiveBool_EntityInstaller : ValueEntityInstaller<ReactiveBool>
+    public sealed class ReactiveBool_EntityInstaller : EntityInstallerValue<ReactiveBool>
     {
     }
 }

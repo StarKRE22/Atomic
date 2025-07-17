@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [Serializable]
-    public sealed class EntityInstallerValue : IEntityInstaller
+    public class EntityInstallerValue : IEntityInstaller
     {
         [EntityValue]
         [SerializeField]

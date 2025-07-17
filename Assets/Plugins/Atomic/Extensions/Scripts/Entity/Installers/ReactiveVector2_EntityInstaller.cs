@@ -6,7 +6,7 @@ using Atomic.Entities;
 namespace Atomic.Extensions
 {
     [Serializable]
-    public sealed class ReactiveVector2_EntityInstaller : ValueEntityInstaller<ReactiveVector2>
+    public sealed class ReactiveVector2_EntityInstaller : EntityInstallerValue<ReactiveVector2>
     {
     }
 }
