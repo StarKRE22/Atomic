@@ -45,7 +45,7 @@ namespace Atomic.Events
 
         private static EventAPISettings Create()
         {
-            const string path = "Assets/Plugins/Atomic/Events/Editor/API/EventBusAPISettings.asset";
+            const string path = "Assets/Plugins/Atomic/Events/Editor/EventAPISettings.asset";
             EventAPISettings settings = CreateInstance<EventAPISettings>();
 
             AssetDatabase.CreateAsset(settings, path);

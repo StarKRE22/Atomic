@@ -130,25 +130,25 @@ namespace Atomic.Events
 
             sb.AppendLine();
 
-            //IsDefined:
+            //IsSubscribed:
             if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Is{name}Declared(this {busType} bus) => bus.IsDefined({name});");
+            sb.AppendLine($"\t\tpublic static bool Is{name}Subscribed(this {busType} bus) => bus.IsSubscribed({name});");
             
-            //Undef:
+            //Dispose:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Undeclare{name}(this {busType} bus) => bus.Undef({name});");
+            sb.AppendLine($"\t\tpublic static bool Dispose{name}(this {busType} bus) => bus.Dispose({name});");
 
-            //Def:
-            sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static void Declare{name}(this {busType} bus) => bus.Def{genericParams}({name});");
+            // //Def:
+            // sb.AppendLine();
+            // if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            // sb.AppendLine($"\t\tpublic static void Declare{name}(this {busType} bus) => bus.Def{genericParams}({name});");
 
             //Subscribe:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
             sb.AppendLine(
-                $"\t\tpublic static Action{genericParams} Subscribe{name}(this {busType} bus, Action{genericParams} action) => " +
+                $"\t\tpublic static Subscription{genericParams} Subscribe{name}(this {busType} bus, Action{genericParams} action) => " +
                 $"bus.Subscribe({name}, action);");
 
             //Unsubscribe:

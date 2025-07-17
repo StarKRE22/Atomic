@@ -7,6 +7,23 @@ namespace Atomic.Events
 {
     internal sealed class EventAPIAsset
     {
+        //TODO: Добавлять комментарии!
+        public sealed class Settings : IEventAPIConfig
+        {
+            public string Namespace { get; set; }
+            public string ClassName { get; set; }
+            public string Directory { get; set; }
+
+            public string EventBusType { get; set; } = "IEventBus";
+            public bool AggressiveInlining { get; set; } = true;
+
+            public readonly HashSet<string> _imports = new();
+            public readonly Dictionary<string, EventDefinition> _events = new();
+
+            public IReadOnlyCollection<string> GetImports() => _imports;
+            public IReadOnlyCollection<EventDefinition> GetEvents() => _events.Values;
+        }
+
         private readonly string _filePath;
 
         public bool IsValid => File.Exists(_filePath);
@@ -18,7 +35,7 @@ namespace Atomic.Events
 
         public IEventAPIConfig GetConfiguration()
         {
-            var snapshot = new Snapshot();
+            var snapshot = new Settings();
             if (!File.Exists(_filePath))
                 return snapshot;
 
@@ -59,19 +76,18 @@ namespace Atomic.Events
                     if (readImports)
                         snapshot._imports.Add(item);
 
-                    if (readEvents && Regex.IsMatch(item, @"^[A-Za-z_][A-Za-z0-9_]*\(\s*(?:[A-Za-z_][A-Za-z0-9_]*\s+[A-Za-z_][A-Za-z0-9_]*(?:,\s*)?)*\)$"))
+                    if (readEvents && Regex.IsMatch(item,
+                            @"^[A-Za-z_][A-Za-z0-9_]*\(\s*(?:[A-Za-z_][A-Za-z0-9_]*\s+[A-Za-z_][A-Za-z0-9_]*(?:,\s*)?)*\)$"))
                     {
-
                         if (ParseMethodSignature(item, out EventDefinition definition))
                             snapshot._events.Add(definition.name, definition);
-
                     }
                 }
             }
 
             return snapshot;
         }
-        
+
         private static bool ParseMethodSignature(string input, out EventDefinition definition)
         {
             const string pattern = @"^(?<methodName>[A-Za-z_][A-Za-z0-9_]*)\s*\((?<args>.*)\)$";
@@ -107,27 +123,10 @@ namespace Atomic.Events
             return true;
         }
 
-        
+
         private static string RemoveComments(string input)
         {
             return Regex.Replace(input, @"#.*?$", "", RegexOptions.Multiline).Trim();
-        }
-
-        //TODO: Добавлять комментарии!
-        private sealed class Snapshot : IEventAPIConfig
-        {
-            public string Namespace { get; set; }
-            public string ClassName { get; set; }
-            public string Directory { get; set; }
-
-            public string EventBusType { get; set; } = "IEventBus";
-            public bool AggressiveInlining { get; set; } = true;
-
-            public readonly HashSet<string> _imports = new();
-            public readonly Dictionary<string, EventDefinition> _events = new();
-
-            public IReadOnlyCollection<string> GetImports() => _imports;
-            public IReadOnlyCollection<EventDefinition> GetEvents() => _events.Values;
         }
     }
 }

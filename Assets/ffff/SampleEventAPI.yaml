@@ -1,0 +1,18 @@
+header: EventBusAPI
+entityType: IEventBus
+aggressiveInlining: true
+
+namespace: SampleGame
+className: SampleEventAPI
+directory: Assets/Scripts/Codegen
+ 
+imports:
+- UnityEngine
+- Atomic.Events
+- System
+
+events:
+- Hello()
+- Attack(GameObject target)
+- Spawn(GameObject prefab, Vector3 position, Quaternion rotation) 
+

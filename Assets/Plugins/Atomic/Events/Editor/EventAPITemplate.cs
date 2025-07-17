@@ -15,6 +15,7 @@ namespace Atomic.Events
             "imports:\n" +
             "- UnityEngine\n" +
             "- Atomic.Events\n" +
+            "- System\n" +
             "\n" +
             "events:\n" +
             "- Hello()\n" +

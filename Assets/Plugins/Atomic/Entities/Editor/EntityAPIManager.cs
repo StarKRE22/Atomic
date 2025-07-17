@@ -12,7 +12,7 @@ namespace Atomic.Entities
     [InitializeOnLoad]
     internal static class EntityAPIManager
     {
-        private sealed class CreateEntityAPIAction : EndNameEditAction
+        private sealed class CreateAPIAction : EndNameEditAction
         {
             public override void Action(int instanceId, string pathName, string resourceFile)
             {
@@ -101,7 +101,7 @@ namespace Atomic.Entities
             
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists(
                 0,
-                ScriptableObject.CreateInstance<CreateEntityAPIAction>(),
+                ScriptableObject.CreateInstance<CreateAPIAction>(),
                 fullPath,
                 icon,
                 null
