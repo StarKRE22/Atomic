@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
+// ReSharper disable NotAccessedField.Local
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -23,12 +24,18 @@ namespace Atomic.Events
 #endif
             internal string name;
 
+#if ODIN_INSPECTOR
+            [ShowInInspector, ReadOnly]
+#endif
+            internal int subscriptions;
+
             internal readonly int id;
 
-            public DebugEvent(string name, int id)
+            public DebugEvent(string name, int id, int subscriptions)
             {
                 this.name = name;
                 this.id = id;
+                this.subscriptions = subscriptions;
             }
             
             public sealed class Comparer : IComparer<DebugEvent>
@@ -57,14 +64,15 @@ namespace Atomic.Events
             {
                 _debugEventsCache.Clear();
 
-                IReadOnlyCollection<int> events = _eventBus?.DeclaredEvents;
+                IReadOnlyDictionary<int, Delegate> events = _eventBus?.Events;
                 if (events == null)
                     return _debugEventsCache;
 
-                foreach (int key in events)
+                foreach ((int key, Delegate del) in events)
                 {
-                    string name = EventBusUtils.IdToName(in key);
-                    _debugEventsCache.Add(new DebugEvent(name, key));
+                    string name = EventBusUtils.IdToName(key);
+                    int subscriptions = del.GetInvocationList().Length;
+                    _debugEventsCache.Add(new DebugEvent(name, key, subscriptions));
                 }
 
                 _debugEventsCache.Sort(_debugEventComparer);
@@ -78,12 +86,12 @@ namespace Atomic.Events
 
         private void Debug_UndeclareEvent(DebugEvent debugEvent)
         {
-            if (_eventBus != null) _eventBus.Undeclare(debugEvent.id);
+            if (_eventBus != null) _eventBus.Dispose(debugEvent.id);
         }
 
         private void Debug_UndeclareEventAt(int index)
         {
-            if (_eventBus != null) _eventBus.Undeclare(this.DebugEvents[index].id);
+            if (_eventBus != null) _eventBus.Dispose(this.DebugEvents[index].id);
         }
     }
 }

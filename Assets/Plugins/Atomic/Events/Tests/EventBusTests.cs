@@ -14,19 +14,6 @@ namespace Atomic.Events
         }
 
         [Test]
-        public void Declare_Then_Defined()
-        {
-            //Arrange:
-            var eventBus = new EventBus();
-            
-            //Act:
-            eventBus.Declare(1);
-            
-            //Assert:
-            Assert.IsTrue(eventBus.IsDeclared(1));
-        }
-
-        [Test]
         public void Subscribe_Then_Declared()
         {
             //Arrange:
@@ -36,7 +23,7 @@ namespace Atomic.Events
             eventBus.Subscribe(1, () => {});
             
             //Assert:
-            Assert.IsTrue(eventBus.IsDeclared(1));
+            Assert.IsTrue(eventBus.IsSubscribed(1));
         }
 
         [Test]
@@ -63,7 +50,6 @@ namespace Atomic.Events
             object wasTarget = null;
             
             var eventBus = new EventBus();
-            eventBus.Declare<object>("Hello");
             eventBus.Subscribe<object>("Hello", t =>
             {
                 wasTarget = t;
