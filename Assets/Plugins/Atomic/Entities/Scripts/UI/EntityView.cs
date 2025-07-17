@@ -10,24 +10,18 @@ namespace Atomic.Entities
 {
     [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
-    public class EntityView : MonoBehaviour
+    public class EntityView : EntityViewBase
     {
-        public virtual string Name => this.name;
         public IEntity Entity => _entity;
         
         [SerializeField]
         private List<EntityViewInstaller> _installers;
 
         private readonly List<IBehaviour> _behaviours = new();
+        
         private bool _installed;
 
-#if ODIN_INSPECTOR
-        [Title("Debug")]
-        [ShowInInspector, HideInEditorMode]
-#endif
-        private IEntity _entity;
-
-        public void Show(IEntity entity)
+        public override void Show(IEntity entity)
         {
             this.Install();
             _entity = entity;
@@ -35,7 +29,7 @@ namespace Atomic.Entities
             this.gameObject.SetActive(true);
         }
 
-        public void Hide()
+        public override void Hide()
         {
             this.gameObject.SetActive(false);
             _entity?.DelBehaviours(_behaviours);

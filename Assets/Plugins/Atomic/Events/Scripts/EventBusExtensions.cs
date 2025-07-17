@@ -28,5 +28,8 @@ namespace Atomic.Events
         
         public static void Invoke<T1, T2, T3>(this IEventBus it, string key, T1 arg1, T2 arg2, T3 arg3) => 
             it.Invoke(NameToId(key), arg1, arg2, arg3);
+        
+        public static void Unsubscribe(this IEventBus it, string key, Action action) => 
+            it.Unsubscribe(NameToId(key), action);
     }
 }

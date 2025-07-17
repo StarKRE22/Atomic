@@ -36,7 +36,6 @@ namespace Atomic.Entities
 
         public IEnumerator Iniitalize()
         {
-
             GameObject prefab = null;
             AsyncInstantiateOperation<GameObject> operation = InstantiateAsync(prefab, 2000);
             yield return operation;
