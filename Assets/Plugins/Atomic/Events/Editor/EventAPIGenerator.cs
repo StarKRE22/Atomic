@@ -130,9 +130,6 @@ namespace Atomic.Events
 
             sb.AppendLine();
 
-            //IsSubscribed:
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Is{name}Subscribed(this {busType} bus) => bus.IsSubscribed({name});");
             
             //Dispose:
             sb.AppendLine();
@@ -164,6 +161,11 @@ namespace Atomic.Events
             if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static void Invoke{name}(this {busType} bus{GetArgs(e)}) => " +
                           $"bus.Invoke({name}{GetArgsNames(e)});");
+            
+            //IsSubscribed:
+            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            sb.AppendLine($"\t\tpublic static bool IsSubscribed{name}(this {busType} bus) => bus.IsSubscribed({name});");
+
         }
 
         private static string GetGenericParams(EventDefinition e)

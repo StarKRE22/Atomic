@@ -20,8 +20,6 @@ namespace SampleGame
 
 		///Event Extensions
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsHelloSubscribed(this IEventBus bus) => bus.IsSubscribed(Hello);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DisposeHello(this IEventBus bus) => bus.Dispose(Hello);
@@ -34,9 +32,9 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void InvokeHello(this IEventBus bus) => bus.Invoke(Hello);
-
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsAttackSubscribed(this IEventBus bus) => bus.IsSubscribed(Attack);
+		public static bool IsSubscribedHello(this IEventBus bus) => bus.IsSubscribed(Hello);
+
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DisposeAttack(this IEventBus bus) => bus.Dispose(Attack);
@@ -49,9 +47,9 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void InvokeAttack(this IEventBus bus, GameObject target) => bus.Invoke(Attack, target);
-
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsSpawnSubscribed(this IEventBus bus) => bus.IsSubscribed(Spawn);
+		public static bool IsSubscribedAttack(this IEventBus bus) => bus.IsSubscribed(Attack);
+
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DisposeSpawn(this IEventBus bus) => bus.Dispose(Spawn);
@@ -64,5 +62,7 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void InvokeSpawn(this IEventBus bus, GameObject prefab, Vector3 position, Quaternion rotation) => bus.Invoke(Spawn, prefab, position, rotation);
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool IsSubscribedSpawn(this IEventBus bus) => bus.IsSubscribed(Spawn);
     }
 }

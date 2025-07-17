@@ -5,7 +5,7 @@ namespace Atomic.Events
 {
     public sealed class EventBus : IEventBus
     {
-        internal IReadOnlyDictionary<int, Delegate> Events => _events ;
+        internal IReadOnlyDictionary<int, Delegate> Events => _events;
 
         private readonly Dictionary<int, Delegate> _events = new();
 
@@ -46,7 +46,7 @@ namespace Atomic.Events
             _events[key] = action;
             return new Subscription<T1, T2, T3>(this, key, action);
         }
-        
+
         public bool IsSubscribed(int key)
         {
             return _events.ContainsKey(key);
@@ -58,26 +58,50 @@ namespace Atomic.Events
 
         public void Unsubscribe(int key, Action action)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
-                _events[key] = (Action) del - action;
+            if (!_events.TryGetValue(key, out Delegate del)) 
+                return;
+            
+            del = (Action) del - action;
+            if (del == null)
+                _events.Remove(key);
+            else
+                _events[key] = del;
         }
 
         public void Unsubscribe<T>(int key, Action<T> action)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
-                _events[key] = (Action<T>) del - action;
+            if (!_events.TryGetValue(key, out Delegate del)) 
+                return;
+            
+            del = (Action<T>) del - action;
+            if (del == null)
+                _events.Remove(key);
+            else
+                _events[key] = del;
         }
 
         public void Unsubscribe<T1, T2>(int key, Action<T1, T2> action)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
-                _events[key] = (Action<T1, T2>) del - action;
+            if (!_events.TryGetValue(key, out Delegate del)) 
+                return;
+            
+            del = (Action<T1, T2>) del - action;
+            if (del == null)
+                _events.Remove(key);
+            else
+                _events[key] = del;
         }
 
         public void Unsubscribe<T1, T2, T3>(int key, Action<T1, T2, T3> action)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
-                _events[key] = (Action<T1, T2, T3>) del - action;
+            if (!_events.TryGetValue(key, out Delegate del)) 
+                return;
+            
+            del = (Action<T1, T2, T3>) del - action;
+            if (del == null)
+                _events.Remove(key);
+            else
+                _events[key] = del;
         }
 
         #endregion
@@ -86,25 +110,25 @@ namespace Atomic.Events
 
         public void Invoke(int key)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
+            if (_events.TryGetValue(key, out Delegate del))
                 ((Action) del).Invoke();
         }
 
         public void Invoke<T>(int key, T arg)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
+            if (_events.TryGetValue(key, out Delegate del))
                 ((Action<T>) del).Invoke(arg);
         }
 
         public void Invoke<T1, T2>(int key, T1 arg1, T2 arg2)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
+            if (_events.TryGetValue(key, out Delegate del))
                 ((Action<T1, T2>) del).Invoke(arg1, arg2);
         }
 
         public void Invoke<T1, T2, T3>(int key, T1 arg1, T2 arg2, T3 arg3)
         {
-            if (_events.TryGetValue(key, out Delegate del)) 
+            if (_events.TryGetValue(key, out Delegate del))
                 ((Action<T1, T2, T3>) del).Invoke(arg1, arg2, arg3);
         }
 
