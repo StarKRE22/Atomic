@@ -17,11 +17,11 @@ namespace Atomic.Entities
             remove => this.Entity.OnTagDeleted -= value;
         }
         
-        public bool DelTag(in int key) => this.Entity.DelTag(in key);
+        public bool DelTag(int key) => this.Entity.DelTag(key);
         public int TagCount => Entity.TagCount;
 
-        public bool HasTag(in int key) => this.Entity.HasTag(in key);
-        public bool AddTag(in int key) => this.Entity.AddTag(in key);
+        public bool HasTag(int key) => this.Entity.HasTag(key);
+        public bool AddTag(int key) => this.Entity.AddTag(key);
         public void ClearTags() => this.Entity.ClearTags();
         
         public int[] GetTags() => Entity.GetTags();

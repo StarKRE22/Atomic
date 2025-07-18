@@ -1,3 +1,5 @@
+using Unity.Collections.LowLevel.Unsafe;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -28,5 +30,23 @@ namespace Atomic.Entities
         void OnUpdate(T entity, float deltaTime);
 
         void IUpdate.OnUpdate(IEntity entity, float deltaTime) => this.OnUpdate((T) entity, deltaTime);
+    }
+
+    /// <summary>
+    /// Generic version of <see cref="IUnsafeUpdate"/> providing unsafe, strongly-typed update logic for a specific <see cref="IEntity"/> type.
+    /// </summary>
+    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    public interface IUnsafeUpdate<in T> : IUpdate where T : IEntity
+    {
+        /// <inheritdoc/>
+        void IUpdate.OnUpdate(IEntity entity, float deltaTime) =>
+            this.OnUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
+
+        /// <summary>
+        /// Called during the main update phase for the strongly-typed entity.
+        /// </summary>
+        /// <param name="entity">The strongly-typed entity being updated.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnUpdate(T entity, float deltaTime);
     }
 }

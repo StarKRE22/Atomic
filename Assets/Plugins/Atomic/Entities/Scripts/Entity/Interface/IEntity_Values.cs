@@ -59,12 +59,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Sets or updates a value.
         /// </summary>
-        void SetValue(int key, in object value);
+        void SetValue(int key, object value);
 
         /// <summary>
         /// Sets or updates a value of specified struct type.
         /// </summary>
-        void SetValue<T>(int key, in T value) where T : struct;
+        void SetValue<T>(int key, T value) where T : struct;
 
         /// <summary>
         /// Checks whether a value with the given key exists.
@@ -74,12 +74,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Adds a value with the given key.
         /// </summary>
-        void AddValue(int key, in object value);
+        void AddValue(int key, object value);
 
         /// <summary>
         /// Adds a struct value with the given key.
         /// </summary>
-        void AddValue<T>(int key, in T value) where T : struct;
+        void AddValue<T>(int key, T value) where T : struct;
 
         /// <summary>
         /// Deletes a value by key.
@@ -99,7 +99,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies all key-value pairs into the provided array.
         /// </summary>
-        int GetValues(in KeyValuePair<int, object>[] results);
+        int GetValues(KeyValuePair<int, object>[] results);
 
         /// <summary>
         /// Enumerates all key-value pairs.

@@ -39,7 +39,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks if a specific behaviour exists.
         /// </summary>
-        bool HasBehaviour(in IBehaviour behaviour);
+        bool HasBehaviour(IBehaviour behaviour);
 
         /// <summary>
         /// Checks if a behaviour of the specified type exists.
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes a specific behaviour.
         /// </summary>
-        bool DelBehaviour(in IBehaviour behaviour);
+        bool DelBehaviour(IBehaviour behaviour);
 
         /// <summary>
         /// Removes a behaviour of the specified type.
@@ -69,7 +69,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies behaviours into the provided array.
         /// </summary>
-        int GetBehaviours(in IBehaviour[] results);
+        int GetBehaviours(IBehaviour[] results);
 
         /// <summary>
         /// Enumerates all behaviours.

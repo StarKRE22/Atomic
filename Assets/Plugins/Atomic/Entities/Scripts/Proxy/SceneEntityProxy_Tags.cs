@@ -19,9 +19,9 @@ namespace Atomic.Entities
 
         public int TagCount => _source.TagCount;
 
-        public bool HasTag(in int key) => _source.HasTag(in key);
-        public bool AddTag(in int key) => _source.AddTag(in key);
-        public bool DelTag(in int key) => _source.DelTag(in key);
+        public bool HasTag(int key) => _source.HasTag(key);
+        public bool AddTag(int key) => _source.AddTag(key);
+        public bool DelTag(int key) => _source.DelTag(key);
         public void ClearTags() => _source.ClearTags();
         
         public int[] GetTags() => _source.GetTags();

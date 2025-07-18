@@ -7,12 +7,26 @@ using Unity.Collections.LowLevel.Unsafe;
 
 namespace Atomic.Entities
 {
-    public unsafe partial class Entity
+    public partial class Entity
     {
+        /// <summary>
+        /// Invoked when a new value is added to the entity.
+        /// </summary>
         public event Action<IEntity, int> OnValueAdded;
+
+        /// <summary>
+        /// Invoked when a value is deleted from the entity.
+        /// </summary>
         public event Action<IEntity, int> OnValueDeleted;
+
+        /// <summary>
+        /// Invoked when a value is changed in the entity.
+        /// </summary>
         public event Action<IEntity, int> OnValueChanged;
 
+        /// <summary>
+        /// Gets the total number of values stored in the entity.
+        /// </summary>
         public int ValueCount => _valueCount;
 
         private ValueSlot[] _valueSlots;
@@ -23,13 +37,20 @@ namespace Atomic.Entities
         private int _valueFreeList;
         private int _valueLastIndex;
 
+        /// <summary>
+        /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The expected type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <returns>The value cast to type <typeparamref name="T"/>.</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
         public T GetValue<T>(int key)
         {
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
             uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
@@ -44,13 +65,20 @@ namespace Atomic.Entities
             throw this.ValueNotFoundException(in key);
         }
 
+        /// <summary>
+        /// Gets the value associated with the specified key by reference (unsafe, no boxing).
+        /// </summary>
+        /// <typeparam name="T">The expected struct type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <returns>A reference to the stored value.</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
         public ref T GetValueUnsafe<T>(int key)
         {
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
             uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
@@ -65,13 +93,19 @@ namespace Atomic.Entities
             throw this.ValueNotFoundException(in key);
         }
 
+        /// <summary>
+        /// Gets the value associated with the specified key as an object.
+        /// </summary>
+        /// <param name="key">The key associated with the value.</param>
+        /// <returns>The boxed value.</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
         public object GetValue(int key)
         {
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
             uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
@@ -85,6 +119,13 @@ namespace Atomic.Entities
             throw this.ValueNotFoundException(in key);
         }
 
+        /// <summary>
+        /// Tries to get a value by key and cast it to <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The expected type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The output value if found.</param>
+        /// <returns>True if the value is found; otherwise, false.</returns>
         public bool TryGetValue<T>(int key, out T value)
         {
             if (_valueCount == 0)
@@ -94,7 +135,7 @@ namespace Atomic.Entities
             }
 
             uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
@@ -112,6 +153,13 @@ namespace Atomic.Entities
             return false;
         }
 
+        /// <summary>
+        /// Tries to get a reference to a struct value by key (unsafe).
+        /// </summary>
+        /// <typeparam name="T">The struct type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The output value if found.</param>
+        /// <returns>True if the value is found; otherwise, false.</returns>
         public bool TryGetValueUnsafe<T>(int key, out T value)
         {
             if (_valueCount == 0)
@@ -121,7 +169,7 @@ namespace Atomic.Entities
             }
 
             uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
@@ -142,6 +190,12 @@ namespace Atomic.Entities
             return false;
         }
 
+        /// <summary>
+        /// Tries to get a value as an object by key.
+        /// </summary>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The output value if found.</param>
+        /// <returns>True if the value is found; otherwise, false.</returns>
         public bool TryGetValue(int key, out object value)
         {
             if (_valueCount == 0)
@@ -169,12 +223,20 @@ namespace Atomic.Entities
             return false;
         }
 
-        public bool HasValue(int key)
-        {
-            return this.FindValueIndex(key, out _);
-        }
+        /// <summary>
+        /// Checks whether the entity contains a value with the specified key.
+        /// </summary>
+        /// <param name="key">The key to check.</param>
+        /// <returns>True if a value exists for the key; otherwise, false.</returns>
+        public bool HasValue(int key) => this.FindValueIndex(key, out _);
 
-        public void AddValue<T>(int key, in T value) where T : struct
+        /// Adds a strongly-typed struct value to the entity.
+        /// </summary>
+        /// <typeparam name="T">The struct type of the value.</typeparam>
+        /// <param name="key">The key for the value.</param>
+        /// <param name="value">The value to add.</param>
+        /// <exception cref="ArgumentException">Thrown if a value with the same key already exists.</exception>
+        public void AddValue<T>(int key, T value) where T : struct
         {
             if (this.FindValueIndex(in key, out _))
                 throw ValueAlreadyAddedException(key);
@@ -183,7 +245,15 @@ namespace Atomic.Entities
             this.NotifyAboutValueAdded(in key);
         }
 
-        public void AddValue(int key, in object value)
+        /// <summary>
+        /// Adds a reference type value to the entity.
+        /// </summary>
+        /// <param name="key">The key for the value.</param>
+        /// <param name="value">The value to add.</param>
+        /// <exception cref="ArgumentException">Thrown if a value with the same key already exists.</exception>
+        /// <exception cref="ArgumentNullException">Thrown if the value is null.</exception>
+        /// <summary>
+        public void AddValue(int key, object value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -195,6 +265,11 @@ namespace Atomic.Entities
             this.NotifyAboutValueAdded(in key);
         }
 
+        /// <summary>
+        /// Deletes a value by key from the entity.
+        /// </summary>
+        /// <param name="key">The key associated with the value to delete.</param>
+        /// <returns>True if the value was successfully deleted; otherwise, false.</returns>
         public bool DelValue(int key)
         {
             if (!this.DelValueInternal(key))
@@ -204,7 +279,13 @@ namespace Atomic.Entities
             return true;
         }
 
-        public void SetValue(int key, in object value)
+        /// <summary>
+        /// Sets or updates a value of reference type.
+        /// </summary>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The new value.</param>
+        /// <exception cref="ArgumentNullException">Thrown if the value is null.</exception>
+        public void SetValue(int key, object value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -226,7 +307,13 @@ namespace Atomic.Entities
             this.NotifyAboutValueChanged(in key);
         }
 
-        public void SetValue<T>(int key, in T value) where T : struct
+        /// <summary>
+        /// Sets or updates a value of struct type.
+        /// </summary>
+        /// <typeparam name="T">The struct type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The new value.</param>
+        public void SetValue<T>(int key, T value) where T : struct
         {
             if (!this.FindValueIndex(in key, out int index))
             {
@@ -256,13 +343,16 @@ namespace Atomic.Entities
             tBoxing.value = value;
             this.NotifyAboutValueChanged(key);
         }
-
+        
+        /// <summary>
+        /// Clears all values from the entity.
+        /// </summary>
         public void ClearValues()
         {
             if (_valueCount == 0)
                 return;
 
-            int* removedItems = stackalloc int[_valueCount];
+            Span<int> removedItems = stackalloc int[_valueCount];
             int removedCount = 0;
 
             for (int i = 0; i < _valueLastIndex; i++)
@@ -287,15 +377,24 @@ namespace Atomic.Entities
 
             this.OnStateChanged?.Invoke();
         }
-
+        
+        /// <summary>
+        /// Returns an array of all key-value pairs stored in the entity.
+        /// </summary>
+        /// <returns>An array of key-value pairs.</returns>
         public KeyValuePair<int, object>[] GetValues()
         {
             var results = new KeyValuePair<int, object>[_valueCount];
-            this.GetValues(in results);
+            this.GetValues(results);
             return results;
         }
 
-        public int GetValues(in KeyValuePair<int, object>[] results)
+        /// <summary>
+        /// Copies all key-value pairs into the provided array.
+        /// </summary>
+        /// <param name="results">The array to copy values into.</param>
+        /// <returns>The number of copied items.</returns>
+        public int GetValues(KeyValuePair<int, object>[] results)
         {
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
@@ -314,11 +413,12 @@ namespace Atomic.Entities
 
             return count;
         }
-
-        public IEnumerator<KeyValuePair<int, object>> ValueEnumerator()
-        {
-            return new _ValueEnumerator(this);
-        }
+        
+        /// <summary>
+        /// Enumerates all key-value pairs stored in the entity.
+        /// </summary>
+        /// <returns>An enumerator over key-value pairs.</returns>
+        public IEnumerator<KeyValuePair<int, object>> ValueEnumerator() => new _ValueEnumerator(this);
 
         private bool FindValueIndex(in int key, out int index)
         {
@@ -420,7 +520,7 @@ namespace Atomic.Entities
 
         private void IncreaseValueCapacity()
         {
-            _valueCapacity = AtomicHelper.GetPrime(_valueCapacity + 1);
+            _valueCapacity = InternalUtils.GetPrime(_valueCapacity + 1);
             Array.Resize(ref _valueSlots, _valueCapacity);
             Array.Resize(ref _valueBuckets, _valueCapacity);
 
@@ -444,7 +544,7 @@ namespace Atomic.Entities
             int index = (int) ((uint) key % _valueCapacity);
             return ref _valueBuckets[index];
         }
-        
+
         private void InitializeValues(in IEnumerable<KeyValuePair<int, object>> values)
         {
             if (values == null)
@@ -456,7 +556,7 @@ namespace Atomic.Entities
             this.InitializeValues(values.Count());
 
             foreach ((int key, object value) in values)
-                this.AddValue(key, in value);
+                this.AddValue(key, value);
         }
 
         private void InitializeValues(in int capacity = 0)
@@ -464,7 +564,7 @@ namespace Atomic.Entities
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            _valueCapacity = AtomicHelper.GetPrime(capacity);
+            _valueCapacity = InternalUtils.GetPrime(capacity);
             _valueSlots = new ValueSlot[_valueCapacity];
             _valueBuckets = new int[_valueCapacity];
 
@@ -572,6 +672,7 @@ namespace Atomic.Entities
         private sealed class Boxing<T> : IBoxing
         {
             object IBoxing.Value => value;
+            
             Type IBoxing.Type => typeof(T);
 
             public T value;

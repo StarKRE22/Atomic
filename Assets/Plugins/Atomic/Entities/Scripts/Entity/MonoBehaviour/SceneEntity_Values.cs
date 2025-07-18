@@ -33,18 +33,18 @@ namespace Atomic.Entities
         public bool TryGetValueUnsafe<T>(int key, out T value) => this.Entity.TryGetValueUnsafe(key, out value);
         public bool TryGetValue(int key, out object value) => this.Entity.TryGetValue(key, out value);
 
-        public void AddValue(int key, in object value) => this.Entity.AddValue(key, in value);
-        public void AddValue<T>(int key, in T value) where T : struct => this.Entity.AddValue(key, in value);
+        public void AddValue(int key, object value) => this.Entity.AddValue(key, value);
+        public void AddValue<T>(int key, T value) where T : struct => this.Entity.AddValue(key, value);
 
-        public void SetValue(int key, in object value) => this.Entity.SetValue(key, in value);
-        public void SetValue<T>(int key, in T value) where T : struct => this.Entity.SetValue(key, in value);
+        public void SetValue(int key, object value) => this.Entity.SetValue(key, value);
+        public void SetValue<T>(int key, T value) where T : struct => this.Entity.SetValue(key, value);
 
         public bool DelValue(int key) => this.Entity.DelValue(key);
         public bool HasValue(int key) => this.Entity.HasValue(key);
         public void ClearValues() => this.Entity.ClearValues();
 
         public KeyValuePair<int, object>[] GetValues() => this.Entity.GetValues();
-        public int GetValues(in KeyValuePair<int, object>[] results) => this.Entity.GetValues(results);
+        public int GetValues(KeyValuePair<int, object>[] results) => this.Entity.GetValues(results);
         public IEnumerator<KeyValuePair<int, object>> ValueEnumerator() => this.Entity.ValueEnumerator();
     }
 }

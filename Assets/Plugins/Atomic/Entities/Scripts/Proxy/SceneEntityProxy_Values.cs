@@ -33,18 +33,18 @@ namespace Atomic.Entities
         public bool TryGetValueUnsafe<T>(int key, out T value) => _source.TryGetValueUnsafe(key, out value);
         public bool TryGetValue(int key, out object value) => _source.TryGetValue(key, out value);
 
-        public void AddValue(int key, in object value) => _source.AddValue(key, in value);
-        public void AddValue<T>(int key, in T value) where T : struct => _source.AddValue(key, in value);
+        public void AddValue(int key, object value) => _source.AddValue(key, value);
+        public void AddValue<T>(int key, T value) where T : struct => _source.AddValue(key, value);
 
-        public void SetValue(int key, in object value) => _source.SetValue(key, in value);
-        public void SetValue<T>(int key, in T value) where T : struct => _source.SetValue(key, in value);
+        public void SetValue(int key, object value) => _source.SetValue(key, value);
+        public void SetValue<T>(int key, T value) where T : struct => _source.SetValue(key, value);
 
         public bool DelValue(int key) => _source.DelValue(key);
         public bool HasValue(int key) => _source.HasValue(key);
         public void ClearValues() => _source.ClearValues();
         
         public KeyValuePair<int, object>[] GetValues() => _source.GetValues();
-        public int GetValues(in KeyValuePair<int, object>[] results) => _source.GetValues(results);
+        public int GetValues(KeyValuePair<int, object>[] results) => _source.GetValues(results);
         public IEnumerator<KeyValuePair<int, object>> ValueEnumerator() => _source.ValueEnumerator();
     }
 }

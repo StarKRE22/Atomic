@@ -25,14 +25,14 @@ namespace Atomic.Entities
         public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour => Entity.TryGetBehaviour(out behaviour);
 
         public IBehaviour[] GetBehaviours() => Entity.GetBehaviours();
-        public int GetBehaviours(in IBehaviour[] results) => Entity.GetBehaviours(in results);
+        public int GetBehaviours(IBehaviour[] results) => Entity.GetBehaviours(results);
         public IBehaviour GetBehaviourAt(in int index) => this.Entity.GetBehaviourAt(index);
         
-        public bool DelBehaviour(in IBehaviour behaviour) => this.Entity.DelBehaviour(in behaviour);
+        public bool DelBehaviour(IBehaviour behaviour) => this.Entity.DelBehaviour(behaviour);
         public bool DelBehaviour<T>() where T : IBehaviour => Entity.DelBehaviour<T>();
 
         public bool HasBehaviour<T>() where T : IBehaviour => Entity.HasBehaviour<T>();
-        public bool HasBehaviour(in IBehaviour behaviour) => this.Entity.HasBehaviour(in behaviour);
+        public bool HasBehaviour(IBehaviour behaviour) => this.Entity.HasBehaviour(behaviour);
         public void ClearBehaviours() => this.Entity.ClearBehaviours();
         
         public IEnumerator<IBehaviour> BehaviourEnumerator() => Entity.BehaviourEnumerator();

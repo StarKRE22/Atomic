@@ -2,15 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using static Atomic.Entities.AtomicHelper;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
     public partial class Entity
     {
+        /// <summary>
+        /// Invoked when a new tag is added to the entity.
+        /// </summary>
         public event Action<IEntity, int> OnTagAdded;
+        
+        /// <summary>
+        /// Invoked when a tag is deleted from the entity.
+        /// </summary>
         public event Action<IEntity, int> OnTagDeleted;
 
+        /// <summary>
+        /// Gets the total number of tags associated with the entity.
+        /// </summary>
         public int TagCount => _tagCount;
 
         private TagSlot[] _tagSlots;
@@ -20,12 +30,15 @@ namespace Atomic.Entities
         private int _tagFreeList;
         private int _tagLastIndex;
 
-        public bool HasTag(in int key)
-        {
-            return this.FindTagIndex(key, out _);
-        }
+        /// <summary>
+        /// Checks if the entity has a tag with the specified key.
+        /// </summary>
+        public bool HasTag(int key) => this.FindTagIndex(key, out _);
 
-        public bool AddTag(in int key)
+        /// <summary>
+        /// Adds a tag to the entity.
+        /// </summary>
+        public bool AddTag(int key)
         {
             if (!this.AddTagInternal(in key))
                 return false;
@@ -34,8 +47,11 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
             return true;
         }
-
-        public bool DelTag(in int key)
+        
+        /// <summary>
+        /// Deletes a tag from the entity.
+        /// </summary>
+        public bool DelTag(int key)
         {
             if (!this.DelTagInternal(in key))
                 return false;
@@ -45,6 +61,9 @@ namespace Atomic.Entities
             return true;
         }
 
+        /// <summary>
+        /// Returns an array containing all tag keys associated with the entity.
+        /// </summary>
         public int[] GetTags()
         {
             var results = new int[_tagCount];
@@ -52,6 +71,9 @@ namespace Atomic.Entities
             return results;
         }
 
+        /// <summary>
+        /// Fills the provided array with all tag keys.
+        /// </summary>
         public int GetTags(int[] results)
         {
             if (results == null)
@@ -69,13 +91,16 @@ namespace Atomic.Entities
             return count;
         }
 
-        public unsafe void ClearTags()
+        /// <summary>
+        /// Clears all tags from the entity.
+        /// </summary>
+        public void ClearTags()
         {
             if (_tagCount == 0)
                 return;
 
             int removeCount = 0;
-            int* removedTags = stackalloc int[_tagCount];
+            Span<int> removedTags = stackalloc int[_tagCount];
 
             for (int i = 0; i < _tagLastIndex; i++)
             {
@@ -100,11 +125,11 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        public IEnumerator<int> TagEnumerator()
-        {
-            return new _TagEnumerator(this);
-        }
-        
+        /// <summary>
+        /// Returns an enumerator over the tag keys of the entity.
+        /// </summary>
+        public IEnumerator<int> TagEnumerator() => new _TagEnumerator(this);
+
         private struct TagSlot
         {
             public int key;
@@ -250,7 +275,7 @@ namespace Atomic.Entities
             this.InitializeTags(tags.Count());
 
             foreach (int key in tags)
-                this.AddTag(in key);
+                this.AddTag(key);
         }
 
         private void InitializeTags(in int capacity = 0)

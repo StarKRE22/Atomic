@@ -7,6 +7,9 @@ namespace Atomic.Entities
 {
     public partial class Entity
     {
+        /// <summary>
+        /// Debug-only: Gets or sets the debug display name of the entity.
+        /// </summary>
         [ShowInInspector]
         [LabelText("Name")]
         private string DebugName
@@ -15,15 +18,25 @@ namespace Atomic.Entities
             set => this.Name = value;
         }
 
+        /// <summary>
+        /// Debug-only: Indicates whether the entity has been initialized.
+        /// </summary>
         [LabelText("Initialized")]
         [ShowInInspector]
         private bool DebugInitialized => this.Initialized;
 
+        /// <summary>
+        /// Debug-only: Indicates whether the entity is currently enabled.
+        /// </summary>
         [ShowInInspector]
         [LabelText("Enabled")]
         private bool DebugEnabled => this.Enabled;
-        
-        ///Tags
+
+        #region Tags
+
+        /// <summary>
+        /// Represents a debug view of a tag.
+        /// </summary>
         [InlineProperty]
         private readonly struct DebugTag : IComparable<DebugTag>
         {
@@ -43,6 +56,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Debug-only: Returns a sorted list of tag representations for display.
+        /// </summary>
         [Searchable]
         [LabelText("Tags")]
         [ShowInInspector, PropertyOrder(100)]
@@ -72,17 +88,14 @@ namespace Atomic.Entities
             }
         }
 
-        private void DebugDelTag(DebugTag debugTag)
-        {
-            this.DelTag(debugTag.id);
-        }
+        private void DebugDelTag(DebugTag debugTag) => this.DelTag(debugTag.id);
 
-        private void DebugDelTagAt(int index)
-        {
-           this.DelTag(this.DebugTags[index].id);
-        }
+        private void DebugDelTagAt(int index) => this.DelTag(this.DebugTags[index].id);
 
-        ///Values
+        #endregion
+
+        #region Values
+
         [InlineProperty]
         private struct DebugValue : IComparable<DebugValue>
         {
@@ -107,6 +120,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Debug-only: Returns a sorted list of values associated with the entity.
+        /// </summary>
         [Searchable]
         [LabelText("Values")]
         [ShowInInspector, PropertyOrder(100)]
@@ -140,19 +156,19 @@ namespace Atomic.Entities
             }
         }
 
-        private void DebugDelValue(DebugValue value)
-        {
-            this.DelValue(value.id);
-        }
+        private void DebugDelValue(DebugValue value) => this.DelValue(value.id);
 
-        private void DebugDelValueAt(int index)
-        {
-            this.DelValue(this.DebugValues[index].id);
-        }
+        private void DebugDelValueAt(int index) => this.DelValue(this.DebugValues[index].id);
 
-        ///Behaviours
+        #endregion
+
+        #region Behaviours
+
         private static readonly List<DebugBehaviour> _debugBehavioursCache = new();
 
+        /// <summary>
+        /// Represents a debug view of a behaviour.
+        /// </summary>
         [InlineProperty]
         private struct DebugBehaviour : IComparable<DebugBehaviour>
         {
@@ -173,6 +189,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Debug-only: Returns a sorted list of behaviours currently attached to the entity.
+        /// </summary>
         [Searchable]
         [LabelText("Behaviours")]
         [ShowInInspector, PropertyOrder(100)]
@@ -206,15 +225,11 @@ namespace Atomic.Entities
             }
         }
 
-        private void DebugDelBehaviour(DebugBehaviour behaviour)
-        {
-            this.DelBehaviour(behaviour.value);
-        }
+        private void DebugDelBehaviour(DebugBehaviour behaviour) => this.DelBehaviour(behaviour.value);
 
-        private void DebugDelBehaviourAt(int index)
-        {
-            this.DelBehaviour(this.DebugBehaviours[index].value);
-        }
+        private void DebugDelBehaviourAt(int index) => this.DelBehaviour(this.DebugBehaviours[index].value);
+
+        #endregion
     }
 }
 #endif

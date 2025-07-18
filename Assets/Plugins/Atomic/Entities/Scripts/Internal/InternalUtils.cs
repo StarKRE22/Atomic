@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Atomic.Entities
 {
-    internal static class AtomicHelper
+    internal static class InternalUtils
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Unsubscribe<T>(ref T del) where T : Delegate

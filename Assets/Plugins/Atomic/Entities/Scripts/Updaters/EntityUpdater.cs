@@ -38,7 +38,7 @@ namespace Atomic.Entities
         {
             if (_initialized)
             {
-                Debug.LogWarning("Entity Runner is already initialized!");
+                Debug.LogWarning("Entity Updater is already initialized!");
                 return;
             }
 
@@ -64,7 +64,7 @@ namespace Atomic.Entities
 
             if (!_initialized)
             {
-                Debug.LogWarning("Entity Runner is already disposed!");
+                Debug.LogWarning("Entity Updater is already disposed!");
                 return;
             }
 
@@ -83,13 +83,13 @@ namespace Atomic.Entities
             this.OnDisposed?.Invoke();
 
             //Auto unsubscribe events:
-            AtomicHelper.Unsubscribe(ref this.OnInitialized);
-            AtomicHelper.Unsubscribe(ref this.OnEnabled);
-            AtomicHelper.Unsubscribe(ref this.OnDisabled);
-            AtomicHelper.Unsubscribe(ref this.OnUpdated);
-            AtomicHelper.Unsubscribe(ref this.OnFixedUpdated);
-            AtomicHelper.Unsubscribe(ref this.OnLateUpdated);
-            AtomicHelper.Unsubscribe(ref this.OnDisposed);
+            InternalUtils.Unsubscribe(ref this.OnInitialized);
+            InternalUtils.Unsubscribe(ref this.OnEnabled);
+            InternalUtils.Unsubscribe(ref this.OnDisabled);
+            InternalUtils.Unsubscribe(ref this.OnUpdated);
+            InternalUtils.Unsubscribe(ref this.OnFixedUpdated);
+            InternalUtils.Unsubscribe(ref this.OnLateUpdated);
+            InternalUtils.Unsubscribe(ref this.OnDisposed);
         }
 
         public void Enable()
@@ -99,7 +99,7 @@ namespace Atomic.Entities
 
             if (_enabled)
             {
-                Debug.LogWarning("Entity Runner is already enabled!");
+                Debug.LogWarning("Entity Updater is already enabled!");
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace Atomic.Entities
         {
             if (!_enabled)
             {
-                Debug.LogWarning("Entity Runner is already disabled!");
+                Debug.LogWarning("Entity Updater is already disabled!");
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace Atomic.Entities
         {
             if (!_enabled)
             {
-                Debug.LogWarning("Update failed! Entity Runner is not enabled!");
+                Debug.LogWarning("Update failed! Entity Updater is not enabled!");
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace Atomic.Entities
         {
             if (!_enabled)
             {
-                Debug.LogWarning("Fixed update failed! Entity Runner is not enabled!");
+                Debug.LogWarning("Fixed update failed! Entity Updater is not enabled!");
                 return;
             }
 
@@ -187,7 +187,7 @@ namespace Atomic.Entities
         {
             if (!_enabled)
             {
-                Debug.LogWarning("Late update failed! Entity Runner is not enabled!");
+                Debug.LogWarning("Late update failed! Entity Updater is not enabled!");
                 return;
             }
 

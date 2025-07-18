@@ -24,17 +24,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether the entity has the given tag.
         /// </summary>
-        bool HasTag(in int key);
+        bool HasTag(int key);
 
         /// <summary>
         /// Adds a tag to the entity.
         /// </summary>
-        bool AddTag(in int key);
+        bool AddTag(int key);
 
         /// <summary>
         /// Removes a tag from the entity.
         /// </summary>
-        bool DelTag(in int key);
+        bool DelTag(int key);
 
         /// <summary>
         /// Removes all tags.
