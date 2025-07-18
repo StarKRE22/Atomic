@@ -10,7 +10,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Provides extension methods for <see cref="IEntity"/> to simplify operations such as adding/removing tags, values, and behaviours.
     /// </summary>
-    public static class EntityExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// Adds multiple tags to the entity.
