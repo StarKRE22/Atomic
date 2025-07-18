@@ -49,7 +49,7 @@ namespace Atomic.Elements
 
         private void InvokeEvent(Quaternion value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose() => AtomicUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
 
         public override string ToString() => this.Value.ToString();
     }

@@ -7,33 +7,59 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// Represents a looping cycle timer that tracks time progression and emits events on completion of each cycle.
+    /// </summary>
     [Serializable]
     public class Cycle
     {
+        /// <summary>
+        /// Represents the state of the cycle timer.
+        /// </summary>
         public enum State
         {
+            /// <summary>The timer is idle and not running.</summary>
             IDLE = 0,
+            /// <summary>The timer is currently running.</summary>
             PLAYING = 1,
+            /// <summary>The timer is paused.</summary>
             PAUSED = 2
         }
 
+        /// <summary>Raised when the timer starts.</summary>
         public event Action OnStarted;
+        
+        /// <summary>Raised when the timer stops.</summary>
         public event Action OnStopped;
+        
+        /// <summary>Raised when the timer is paused.</summary>
         public event Action OnPaused;
+        
+        /// <summary>Raised when the timer resumes from pause.</summary>
         public event Action OnResumed;
 
+        /// <summary>Raised when the cycle completes and starts over.</summary>
         public event Action OnCycle;
+        
+        /// <summary>Raised when the state of the timer changes.</summary>
         public event Action<State> OnStateChanged;
 
+        /// <summary>Raised when the current time changes.</summary>
         public event Action<float> OnCurrentTimeChanged;
+        
+        /// <summary>Raised when the progress changes.</summary>
         public event Action<float> OnProgressChanged;
+        
+        /// <summary>Raised when the duration is changed.</summary>
         public event Action<float> OnDurationChanged;
 
+        /// <summary>Gets the current state of the cycle timer.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         public State CurrentState => this.currentState;
 
+        /// <summary>Gets or sets the total duration of one cycle.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
@@ -43,6 +69,7 @@ namespace Atomic.Elements
             set => this.SetDuration(value);
         }
 
+        /// <summary>Gets or sets the current time within the current cycle.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
@@ -52,6 +79,7 @@ namespace Atomic.Elements
             set => this.SetCurrentTime(value);
         }
 
+        /// <summary>Gets or sets the progress of the current cycle (from 0 to 1).</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
@@ -60,7 +88,7 @@ namespace Atomic.Elements
             get => this.GetProgress();
             set => this.SetProgress(value);
         }
-        
+
         [SerializeField]
         private float duration;
 
@@ -70,20 +98,34 @@ namespace Atomic.Elements
         private float currentTime;
         private State currentState;
 
+        /// <summary>Initializes a new instance of the <see cref="Cycle"/> class.</summary>
         public Cycle()
         {
         }
 
+        /// <summary>Initializes a new instance of the <see cref="Cycle"/> class with a specified duration.</summary>
+        /// <param name="duration">The duration of each cycle.</param>
         public Cycle(float duration) => this.duration = duration;
 
+        /// <summary>Returns the current state of the timer.</summary>
         public State GetCurrentState() => this.currentState;
+      
+        /// <summary>Returns true if the timer is currently playing.</summary>
         public bool IsPlaying() => this.currentState == State.PLAYING;
+        
+        /// <summary>Returns true if the timer is currently paused.</summary>
         public bool IsPaused() => this.currentState == State.PAUSED;
+        
+        /// <summary>Returns true if the timer is idle.</summary>
         public bool IsIdle() => this.currentState == State.IDLE;
-
+        
+        /// <summary>Returns the total duration of the cycle.</summary>
         public float GetDuration() => this.duration;
+        
+        /// <summary>Returns the current time of the cycle.</summary>
         public float GetCurrentTime() => this.currentTime;
 
+        /// <summary>Starts the timer from the beginning.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -98,7 +140,9 @@ namespace Atomic.Elements
             this.OnStarted?.Invoke();
             return true;
         }
-
+        
+        /// <summary>Starts the timer from a specific current time.</summary>
+        /// <param name="currentTime">The time to start the cycle from.</param>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -113,7 +157,8 @@ namespace Atomic.Elements
             this.OnStarted?.Invoke();
             return true;
         }
-
+        
+        /// <summary>Plays the timer from idle state.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -128,6 +173,7 @@ namespace Atomic.Elements
             return true;
         }
         
+        /// <summary>Pauses the timer.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -141,7 +187,8 @@ namespace Atomic.Elements
             this.OnPaused?.Invoke();
             return true;
         }
-
+        
+        /// <summary>Resumes the timer from pause.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -155,7 +202,8 @@ namespace Atomic.Elements
             this.OnResumed?.Invoke();
             return true;
         }
-
+        
+        /// <summary>Stops the timer and resets current time.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -171,6 +219,8 @@ namespace Atomic.Elements
             return true;
         }
 
+        /// <summary>Updates the timer with the elapsed delta time.</summary>
+        /// <param name="deltaTime">The amount of time to advance the timer by.</param>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -185,7 +235,7 @@ namespace Atomic.Elements
             float progress = this.currentTime / this.duration;
             this.OnProgressChanged?.Invoke(progress);
 
-            if (progress >= 1) 
+            if (progress >= 1)
                 this.CompleteCycle();
         }
 
@@ -194,7 +244,9 @@ namespace Atomic.Elements
             this.SetCurrentTime(this.currentTime - this.duration);
             this.OnCycle?.Invoke();
         }
-        
+
+        /// <summary>Sets a new duration for the cycle.</summary>
+        /// <param name="duration">The new duration.</param>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -210,6 +262,8 @@ namespace Atomic.Elements
             }
         }
 
+        /// <summary>Sets the current time of the cycle.</summary>
+        /// <param name="time">The time to set.</param>
 #if ODIN_INSPECTOR
         [Button]
 #endif
@@ -225,7 +279,8 @@ namespace Atomic.Elements
                 this.OnCurrentTimeChanged?.Invoke(newTime);
             }
         }
-
+        
+        /// <summary>Gets the progress of the current cycle as a value between 0 and 1.</summary>
         public float GetProgress()
         {
             return this.currentState switch
@@ -235,6 +290,8 @@ namespace Atomic.Elements
             };
         }
 
+        /// <summary>Sets the progress of the current cycle.</summary>
+        /// <param name="progress">The progress to set (0 to 1).</param>
         public void SetProgress(float progress)
         {
             progress = Mathf.Clamp01(progress);

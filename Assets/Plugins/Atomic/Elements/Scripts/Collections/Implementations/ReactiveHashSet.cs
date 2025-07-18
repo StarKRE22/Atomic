@@ -193,9 +193,9 @@ namespace Atomic.Elements
         {
             this.Clear();
 
-            AtomicUtils.Dispose(ref this.OnItemAdded);
-            AtomicUtils.Dispose(ref this.OnItemRemoved);
-            AtomicUtils.Dispose(ref this.OnStateChanged);
+            InternalUtils.Dispose(ref this.OnItemAdded);
+            InternalUtils.Dispose(ref this.OnItemRemoved);
+            InternalUtils.Dispose(ref this.OnStateChanged);
         }
         
         /// <summary>
@@ -385,7 +385,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!AtomicUtils.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -412,7 +412,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!AtomicUtils.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -547,7 +547,7 @@ namespace Atomic.Elements
                     continue;
 
                 T item = slot.value;
-                if (!AtomicUtils.Contains(other, item, s_comparer))
+                if (!InternalUtils.Contains(other, item, s_comparer))
                     removedItems[removedCount++] = item;
             }
 
@@ -574,7 +574,7 @@ namespace Atomic.Elements
 
         private void IncreaseCapacity()
         {
-            int size = AtomicUtils.NextPrime(_slots.Length);
+            int size = InternalUtils.NextPrime(_slots.Length);
             Array.Resize(ref _slots, size);
             Array.Resize(ref _buckets, size);
 
@@ -704,7 +704,7 @@ namespace Atomic.Elements
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = AtomicUtils.NextPrime(capacity);
+            int size = InternalUtils.NextPrime(capacity);
 
             _slots = new Slot[size];
             _buckets = new int[size];

@@ -12,7 +12,7 @@ namespace Atomic.Elements
     /// while broadcasting progress and state changes.
     /// </summary>
     [Serializable]
-    public class Countdown
+    public class Countdown : ICountdown
     {
         /// <summary>
         /// Represents the state of the countdown.

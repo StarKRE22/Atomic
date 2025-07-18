@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Provides internal utility methods for delegate cleanup and common algorithmic operations.
     /// </summary>
-    internal static class AtomicUtils
+    internal static class InternalUtils
     {
         /// <summary>
         /// Safely removes all subscribers from the specified <see cref="Action"/> and sets it to null.

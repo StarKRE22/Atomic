@@ -10,7 +10,7 @@ namespace Atomic.Elements
     /// provides progress feedback, and raises events on state changes.
     /// </summary>
     [Serializable]
-    public sealed class Cooldown
+    public class Cooldown : ICooldown
     {
         /// <summary>
         /// Invoked when the duration value changes.
