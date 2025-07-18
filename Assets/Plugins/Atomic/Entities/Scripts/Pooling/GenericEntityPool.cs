@@ -19,7 +19,7 @@ namespace Atomic.Entities
     
     public class GenericEntityPool : GenericEntityPool<string>, IGenericEntityPool
     {
-        public GenericEntityPool(IGenericEntityFactory<string> factory) : base(factory)
+        public GenericEntityPool(IEntityFactoryRegistry<string> factoryRegistry) : base(factoryRegistry)
         {
         }
 
@@ -32,11 +32,11 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
 #endif
         private readonly Dictionary<TKey, Queue<IEntity>> _pools = new();
-        private readonly IGenericEntityFactory<TKey> _factory;
+        private readonly IEntityFactoryRegistry<TKey> _factoryRegistry;
 
-        protected GenericEntityPool(IGenericEntityFactory<TKey> factory)
+        protected GenericEntityPool(IEntityFactoryRegistry<TKey> factoryRegistry)
         {
-            _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+            _factoryRegistry = factoryRegistry ?? throw new ArgumentNullException(nameof(factoryRegistry));
         }
 
         public void Initialize(TKey key, in int count)
@@ -49,7 +49,7 @@ namespace Atomic.Entities
             
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _factory.Create(key);
+                IEntity entity = _factoryRegistry.Create(key);
                 this.OnCreate(entity);
                 pool.Enqueue(entity);
             }
@@ -65,7 +65,7 @@ namespace Atomic.Entities
 
             if (!pool.TryDequeue(out IEntity result))
             {
-                result = _factory.Create(key);
+                result = _factoryRegistry.Create(key);
                 this.OnCreate(result);
             }
 
