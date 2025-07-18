@@ -15,7 +15,7 @@ namespace Atomic.Elements
     public class Countdown : ICountdown
     {
         /// <summary>Raised when the countdown starts.</summary>
-        public event Action OnPlaying;
+        public event Action OnStarted;
 
         /// <summary>Raised when the countdown is stopped manually.</summary>
         public event Action OnStopped;
@@ -139,16 +139,16 @@ namespace Atomic.Elements
             this.Start(currentTime);
         }
 
-        public bool Start()
+        public void Start()
         {
             this.ResetTime();
-            return this.Play();
+            this.Play();
         }
 
-        public bool Start(float currentTime)
+        public void Start(float currentTime)
         {
             this.SetCurrentTime(currentTime);
-            return this.Play();
+            this.Play();
         }
 
         /// <summary>Plays the countdown without resetting time.</summary>
@@ -162,7 +162,7 @@ namespace Atomic.Elements
 
             this.currentState = CountdownState.PLAYING;
             this.OnStateChanged?.Invoke(CountdownState.PLAYING);
-            this.OnPlaying?.Invoke();
+            this.OnStarted?.Invoke();
             return true;
         }
 

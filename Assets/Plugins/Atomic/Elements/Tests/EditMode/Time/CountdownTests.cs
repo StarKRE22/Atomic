@@ -25,7 +25,7 @@ namespace Atomic.Elements
             CountdownState stateChanged = default;
             
             //Act:
-            countdown.OnPlaying += () => wasEvent = true;
+            countdown.OnStarted += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s; 
             countdown.Start();
 
@@ -45,7 +45,7 @@ namespace Atomic.Elements
             bool wasEvent = false;
             CountdownState stateChanged = default;
 
-            countdown.OnPlaying += () => wasEvent = true;
+            countdown.OnStarted += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s;
 
             //Act:
@@ -77,7 +77,7 @@ namespace Atomic.Elements
             CountdownState stateChanged = default;
 
             //Act:
-            countdown.OnPlaying += () => wasEvent = true;
+            countdown.OnStarted += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s;
             countdown.Start(3);
 
@@ -159,7 +159,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.OnStateChanged += s => stateChanged = s;
-            countdown.OnPlaying += () => wasStarted = true;
+            countdown.OnStarted += () => wasStarted = true;
             countdown.Start();
 
             //Assert:
@@ -385,7 +385,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.OnStopped += () => canceled = true;
-            countdown.OnPlaying += () => started = true;
+            countdown.OnStarted += () => started = true;
             countdown.ForceStart();
 
             //Assert:
@@ -418,7 +418,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.OnStopped += () => canceled = true;
-            countdown.OnPlaying += () => started = true;
+            countdown.OnStarted += () => started = true;
             countdown.ForceStart(5);
 
             //Assert:

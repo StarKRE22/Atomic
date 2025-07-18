@@ -9,7 +9,7 @@ namespace Atomic.Elements
     public interface ICountdown
     {
         /// <summary>Raised when the countdown starts.</summary>
-        event Action OnPlaying;
+        event Action OnStarted;
 
         /// <summary>Raised when the countdown is stopped manually.</summary>
         event Action OnStopped;
@@ -86,8 +86,9 @@ namespace Atomic.Elements
 #endif
         void ForceStart(float currentTime);
 
-        bool Start();
-        bool Start(float currentTime);
+        void Start();
+        
+        void Start(float currentTime);
 
         /// <summary>Plays the countdown without resetting time.</summary>
 #if ODIN_INSPECTOR

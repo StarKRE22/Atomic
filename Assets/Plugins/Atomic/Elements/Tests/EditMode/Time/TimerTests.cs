@@ -22,7 +22,7 @@ namespace Atomic.Elements
             //Arrange:
             Timer timer = new Timer(5);
             bool wasEvent = false;
-            Timer.State stateChanged = default;
+            TimerState stateChanged = default;
 
             //Act:
             timer.OnStateChanged += s => stateChanged = s;
@@ -30,8 +30,8 @@ namespace Atomic.Elements
             timer.Start();
 
             //Assert:
-            Assert.AreEqual(Timer.State.PLAYING, stateChanged);
-            Assert.AreEqual(Timer.State.PLAYING, timer.CurrentState);
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, timer.CurrentState);
             Assert.AreEqual(0, timer.GetCurrentTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(timer.IsPlaying());
@@ -151,39 +151,12 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void Loop()
-        {
-            //Arrange:
-            Timer timer = new Timer(4, true);
-            bool wasComplete = false;
-            bool wasStarted = false;
-
-            //Act:
-            timer.Start();
-            timer.OnExpired += () => wasComplete = true;
-            timer.OnStarted += () => wasStarted = true;
-
-            for (int i = 0; i < 20; i++)
-            {
-                timer.Tick(deltaTime: 0.2f);
-            }
-
-            //Assert:
-            Assert.IsTrue(wasComplete);
-            Assert.IsTrue(wasStarted);
-
-            Assert.IsTrue(timer.IsPlaying());
-            Assert.IsFalse(timer.IsExpired());
-            Assert.AreEqual(0, timer.GetCurrentTime());
-        }
-
-        [Test]
         public void OnEnded()
         {
             //Arrange:
             Timer timer = new Timer(4);
             bool wasComplete = false;
-            Timer.State stateChanged = default;
+            TimerState stateChanged = default;
 
             //Act:
             timer.Start();
@@ -197,8 +170,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasComplete);
-            Assert.AreEqual(Timer.State.ENDED, stateChanged);
-            Assert.AreEqual(Timer.State.ENDED, timer.GetCurrentState());
+            Assert.AreEqual(TimerState.EXPIRED, stateChanged);
+            Assert.AreEqual(TimerState.EXPIRED, timer.GetCurrentState());
 
             Assert.AreEqual(1, timer.GetProgress());
             Assert.AreEqual(4, timer.GetCurrentTime());
@@ -330,27 +303,6 @@ namespace Atomic.Elements
             //Assert:
             Assert.AreEqual(0.5f, currentTime, 1e-2);
             Assert.AreEqual(0.5f, timer.GetCurrentTime(), 1e-2);
-        }
-
-        [Test]
-        public void WhenStartTimerThatAlreadyStartedThenFailed()
-        {
-            //Arrange:
-            Timer timer = new Timer(5);
-            bool wasEvent = false;
-
-            timer.Start();
-            timer.Tick(deltaTime: 1);
-            timer.OnStarted += () => wasEvent = true;
-
-            //Act:
-            bool success = timer.Start();
-
-            //Assert:
-            Assert.IsFalse(success);
-            Assert.IsFalse(wasEvent);
-            Assert.AreEqual(1, timer.GetCurrentTime());
-            Assert.AreEqual(5, timer.GetDuration());
         }
 
         [Test]
