@@ -11,13 +11,8 @@ namespace Atomic.Entities
     /// An abstract base class for creating <see cref="IEntity"/> instances via Unity's <see cref="ScriptableObject"/>.
     /// Used as a factory to define and configure entity blueprints in the Unity Editor.
     /// </summary>
-    public abstract class ScriptableEntityFactory : ScriptableObject, IEntityFactory
+    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>
     {
-        /// <summary>
-        /// Gets the name of the entity factory, by default uses the ScriptableObject's name.
-        /// </summary>
-        public virtual string Name => this.name;
-
         /// <summary>
         /// The number of tags assigned during the precompilation step. Used to allocate internal storage.
         /// </summary>
@@ -52,7 +47,7 @@ namespace Atomic.Entities
         /// Creates a new <see cref="IEntity"/> instance using this factory's configuration.
         /// </summary>
         /// <returns>A new instance of <see cref="IEntity"/> with installed tags, values, and behaviors.</returns>
-        public IEntity Create()
+        public override IEntity Create()
         {
             Entity entity = new Entity(this.Name, _tagCount, _valueCount, _behaviourCount);
             this.Install(entity);
@@ -97,5 +92,15 @@ namespace Atomic.Entities
             _valueCount = entity.ValueCount;
             _behaviourCount = entity.BehaviourCount;
         }
+    }
+
+    public abstract class ScriptableEntityFactory<T> : ScriptableObject, IEntityFactory<T> where T : IEntity
+    {
+        /// <summary>
+        /// Gets the name of the entity factory, by default uses the ScriptableObject's name.
+        /// </summary>
+        public virtual string Name => this.name;
+
+        public abstract T Create();
     }
 }

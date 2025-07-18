@@ -22,7 +22,6 @@ namespace Atomic.Entities
     }
 
     [Serializable]
-
     [InlineProperty]
     public class EntityInstallerValue<T> : IEntityInstaller
     {

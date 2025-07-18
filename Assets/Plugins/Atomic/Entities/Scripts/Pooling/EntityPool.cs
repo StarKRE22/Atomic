@@ -2,30 +2,21 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public interface IEntityPool
-    {
-        IEntity Rent();
-        void Return(IEntity entity);
-        
-        void Init(int initialCoint);
-        void Clear();
-    }
-    
     public class EntityPool : IEntityPool
     {
         private readonly Queue<IEntity> _queue = new();
-        private readonly IEntityFactory _prototype;
+        private readonly IEntityFactory _factory;
 
-        public EntityPool(IEntityFactory prototype)
+        public EntityPool(IEntityFactory factory)
         {
-            _prototype = prototype;
+            _factory = factory;
         }
 
         public void Init(int count)
         {
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _prototype.Create();
+                IEntity entity = _factory.Create();
                 this.OnCreate(entity);
                 _queue.Enqueue(entity);
             }
@@ -43,7 +34,7 @@ namespace Atomic.Entities
         {
             if (!_queue.TryDequeue(out IEntity entity))
             {
-                entity = _prototype.Create();
+                entity = _factory.Create();
                 this.OnCreate(entity);
             }
 
