@@ -4,17 +4,17 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     ///Represents tag identifiers for categorization
-    public partial interface IEntity
+    public partial interface IEntity<E>
     {
         /// <summary>
         /// Event triggered when a tag is added.
         /// </summary>
-        event Action<IEntity, int> OnTagAdded;
+        event Action<IEntity<E>, int> OnTagAdded;
 
         /// <summary>
         /// Event triggered when a tag is deleted.
         /// </summary>
-        event Action<IEntity, int> OnTagDeleted;
+        event Action<IEntity<E>, int> OnTagDeleted;
 
         /// <summary>
         /// Number of tags associated with this entity.

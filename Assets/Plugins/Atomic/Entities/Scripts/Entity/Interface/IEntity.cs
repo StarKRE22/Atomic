@@ -11,7 +11,7 @@ namespace Atomic.Entities
     ///
     /// Designed for flexible state-driven architecture and modular logic composition.
     /// </summary>
-    public partial interface IEntity
+    public partial interface IEntity<E> where E : IEntity<E>
     {
         /// <summary>
         /// Unique identifier of the entity.

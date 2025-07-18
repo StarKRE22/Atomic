@@ -6,7 +6,7 @@ using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
-    public partial class Entity
+    public partial class Entity<E>
     {
         /// <summary>
         /// Invoked when a new tag is added to the entity.

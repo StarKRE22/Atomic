@@ -15,7 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity : MonoBehaviour, IEntity
+    public partial class SceneEntity<E> : MonoBehaviour, IEntity<E> where E : IEntity<E>
     {
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged
@@ -46,7 +46,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Internal access to the wrapped <see cref="Entity"/>. Will create one if missing.
         /// </summary>
-        internal Entity Entity
+        internal Entity<E> Entity
         {
             get
             {
@@ -110,9 +110,9 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
-        private List<SceneEntity> children;
+        private List<SceneEntity<E>> children;
 
-        private Entity _entity;
+        private Entity<E> _entity;
         private bool _installed;
         
         /// <summary>

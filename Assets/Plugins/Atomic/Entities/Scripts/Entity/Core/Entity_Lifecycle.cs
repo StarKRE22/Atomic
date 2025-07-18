@@ -4,7 +4,7 @@ using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
-    public partial class Entity
+    public partial class Entity<E>
     {
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
@@ -191,7 +191,7 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        private void EnableBehaviour(in IBehaviour behaviour)
+        private void EnableBehaviour(in IBehaviour<E> behaviour)
         {
             if (behaviour is IEnable entityEnable)
                 entityEnable.Enable(this.owner);
@@ -206,7 +206,7 @@ namespace Atomic.Entities
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DisableBehaviour(in IBehaviour behaviour)
+        private void DisableBehaviour(in IBehaviour<E> behaviour)
         {
             if (behaviour is IDisable entityDisable)
                 entityDisable.Disable(this.owner);

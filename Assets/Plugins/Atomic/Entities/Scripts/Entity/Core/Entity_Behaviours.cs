@@ -9,43 +9,43 @@ namespace Atomic.Entities
     /// <summary>
     /// Partial implementation of <see cref="IEntity"/> that manages attached behaviours.
     /// </summary>
-    public partial class Entity
+    public partial class Entity<E>
     {
         /// <summary>
         /// Static comparer used to compare behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IBehaviour> s_behaviourComparer =
-            EqualityComparer<IBehaviour>.Default;
+        private static readonly IEqualityComparer<IBehaviour<E>> s_behaviourComparer =
+            EqualityComparer<IBehaviour<E>>.Default;
 
         /// <summary>
         /// Shared pool used to temporarily store behaviour arrays.
         /// </summary>
-        private static readonly ArrayPool<IBehaviour> s_behaviourPool =
-            ArrayPool<IBehaviour>.Shared;
+        private static readonly ArrayPool<IBehaviour<E>> s_behaviourPool =
+            ArrayPool<IBehaviour<E>>.Shared;
 
         /// <summary>
         /// Invoked when a new behaviour is added.
         /// </summary>
-        public event Action<IEntity, IBehaviour> OnBehaviourAdded;
+        public event Action<Entity<E>, IBehaviour<E>> OnBehaviourAdded;
 
         /// <summary>
         /// Invoked when a behaviour is removed.
         /// </summary>
-        public event Action<IEntity, IBehaviour> OnBehaviourDeleted;
+        public event Action<IEntity, IBehaviour<E>> OnBehaviourDeleted;
 
         /// <summary>
         /// Total number of behaviours attached to this entity.
         /// </summary>
         public int BehaviourCount => _behaviourCount;
 
-        internal IBehaviour[] _behaviours;
+        internal IBehaviour<E>[] _behaviours;
         internal int _behaviourCount;
 
 
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
         /// </summary>
-        public bool HasBehaviour(IBehaviour behaviour)
+        public bool HasBehaviour(IBehaviour<E> behaviour)
         {
             if (behaviour == null)
                 return false;
@@ -60,7 +60,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether a behaviour of type <typeparamref name="T"/> is attached.
         /// </summary>
-        public bool HasBehaviour<T>() where T : IBehaviour
+        public bool HasBehaviour<T>() where T : IBehaviour<E>
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T)
@@ -72,7 +72,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Adds a new behaviour to the entity.
         /// </summary>
-        public void AddBehaviour(in IBehaviour behaviour)
+        public void AddBehaviour(IBehaviour<E> behaviour)
         {
             if (behaviour == null)
                 throw new ArgumentNullException(nameof(behaviour));
@@ -92,11 +92,11 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
-        public bool DelBehaviour<T>() where T : IBehaviour
+        public bool DelBehaviour<T>() where T : IBehaviour<E>
         {
             for (int i = 0; i < _behaviourCount; i++)
             {
-                IBehaviour behaviour = _behaviours[i];
+                IBehaviour<E> behaviour = _behaviours[i];
                 if (behaviour is T)
                     return this.DelBehaviour(behaviour);
             }
@@ -107,7 +107,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes a specific behaviour instance.
         /// </summary>
-        public bool DelBehaviour(IBehaviour behaviour)
+        public bool DelBehaviour(IBehaviour<E> behaviour)
         {
             if (behaviour == null)
                 return false;

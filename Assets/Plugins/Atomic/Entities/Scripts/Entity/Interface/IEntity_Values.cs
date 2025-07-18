@@ -4,22 +4,22 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     ///Represents entity state (key-value storage for data)
-    public partial interface IEntity
+    public partial interface IEntity<E>
     {
        /// <summary>
         /// Event triggered when a value is added.
         /// </summary>
-        event Action<IEntity, int> OnValueAdded;
+        event Action<IEntity<E>, int> OnValueAdded;
 
         /// <summary>
         /// Event triggered when a value is deleted.
         /// </summary>
-        event Action<IEntity, int> OnValueDeleted;
+        event Action<IEntity<E>, int> OnValueDeleted;
 
         /// <summary>
         /// Event triggered when a value is changed.
         /// </summary>
-        event Action<IEntity, int> OnValueChanged;
+        event Action<IEntity<E>, int> OnValueChanged;
 
         /// <summary>
         /// Number of values stored in this entity.

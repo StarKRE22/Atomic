@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public partial class Entity
+    public partial class Entity<E>
     {
         /// <summary>
         /// Debug-only: Gets or sets the debug display name of the entity.

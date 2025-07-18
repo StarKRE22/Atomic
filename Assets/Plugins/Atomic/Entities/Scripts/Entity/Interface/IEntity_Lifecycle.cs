@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     ///Represents a lifecycle management (initialization, update, disposal)
-    public partial interface IEntity
+    public partial interface IEntity<E>
     {
         /// <summary>
         /// Invoked when the entity is initialized.

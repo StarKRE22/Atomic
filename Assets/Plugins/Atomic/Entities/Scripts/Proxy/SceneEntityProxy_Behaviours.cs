@@ -19,7 +19,7 @@ namespace Atomic.Entities
 
         public int BehaviourCount => _source.BehaviourCount;
 
-        public void AddBehaviour(in IBehaviour behaviour) => _source.AddBehaviour(in behaviour);
+        public void AddBehaviour(IBehaviour behaviour) => _source.AddBehaviour(behaviour);
 
         public T GetBehaviour<T>() where T : IBehaviour => _source.GetBehaviour<T>();
         public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour => _source.TryGetBehaviour(out behaviour);

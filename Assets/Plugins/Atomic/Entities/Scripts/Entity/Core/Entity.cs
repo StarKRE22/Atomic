@@ -7,14 +7,18 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
+    public class Entity : Entity<Entity>
+    {
+    }
+
     /// <summary>
     /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
     /// </summary>
-    public partial class Entity : IEntity
+    public abstract partial class Entity<E> : IEntity<E> where E : IEntity<E>
     {
         private const int UNDEFINED_INDEX = -1;
 
-        private static readonly Dictionary<int, IEntity> s_entities = new();
+        private static readonly Dictionary<int, IEntity<E>> s_entities = new();
         private static int s_maxId = -1;
 
         /// <summary>
@@ -40,14 +44,14 @@ namespace Atomic.Entities
             set => this.name = value;
         }
 
-        private readonly IEntity owner;
+        private readonly IEntity<E> owner;
         private string name;
         private int id;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
         /// </summary>
-        public Entity()
+        protected Entity()
         {
             this.name = string.Empty;
             this.id = NextId();
@@ -61,7 +65,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with a specified owner.
         /// </summary>
-        public Entity(IEntity owner)
+        protected Entity(IEntity<E> owner)
         {
             this.name = string.Empty;
             this.id = NextId();
@@ -71,11 +75,11 @@ namespace Atomic.Entities
             this.InitializeValues();
             this.InitializeBehaviours();
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with a specified name.
         /// </summary>
-        public Entity(string name)
+        protected Entity(string name)
         {
             this.name = name;
             this.id = NextId();
@@ -90,12 +94,12 @@ namespace Atomic.Entities
         /// Initializes a new instance of the <see cref="Entity"/> class
         /// with optional collections of tags, values, behaviours, and a custom ID.
         /// </summary>
-        public Entity(
+        protected Entity(
             in string name = null,
             in IEnumerable<int> tags = null,
             in IEnumerable<KeyValuePair<int, object>> values = null,
-            in IEnumerable<IBehaviour> behaviours = null,
-            in IEntity owner = null,
+            in IEnumerable<IBehaviour<E>> behaviours = null,
+            in IEntity<E> owner = null,
             in int id = -1
         )
         {
@@ -202,7 +206,7 @@ namespace Atomic.Entities
         /// <param name="id">The entity ID.</param>
         /// <param name="entity">The found entity, if any.</param>
         /// <returns>True if the entity exists; otherwise, false.</returns>
-        public static bool Find(int id, out IEntity entity) => s_entities.TryGetValue(id, out entity);
+        public static bool Find(int id, out IEntity<E> entity) => s_entities.TryGetValue(id, out entity);
 
         /// <summary>
         /// Resets all static entity tracking information (used internally on play mode enter).

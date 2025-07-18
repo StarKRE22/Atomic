@@ -2,17 +2,17 @@ namespace Atomic.Entities
 {
     /// <summary>
     /// Abstract base class for singleton entities.
-    /// Ensures a single globally accessible instance of type <typeparamref name="T"/>.
+    /// Ensures a single globally accessible instance of type <typeparamref name="E"/>.
     /// </summary>
-    /// <typeparam name="T">The concrete entity singleton type.</typeparam>
-    public abstract class EntitySingleton<T> : Entity where T : EntitySingleton<T>, new()
+    /// <typeparam name="E">The concrete entity singleton type.</typeparam>
+    public abstract class EntitySingleton<E> : Entity<E> where E : EntitySingleton<E>, new()
     {
         /// <summary>
         /// The global instance of the singleton entity.
         /// Created on first access.
         /// </summary>
-        public static T Instance => _instance ??= new T();
+        public static E Instance => _instance ??= new E();
 
-        private static T _instance;
+        private static E _instance;
     }
 }

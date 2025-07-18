@@ -10,7 +10,7 @@ namespace Atomic.Entities
     /// Provides static factory and utility methods for working with <see cref="SceneEntity"/>.
     /// Includes creation, casting, and batch installation logic.
     /// </summary>
-    public partial class SceneEntity
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Stores a mapping between <see cref="IEntity"/> and its corresponding <see cref="SceneEntity"/>.

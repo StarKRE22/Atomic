@@ -7,22 +7,22 @@ using Unity.Collections.LowLevel.Unsafe;
 
 namespace Atomic.Entities
 {
-    public partial class Entity
+    public partial class Entity<E>
     {
         /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueAdded;
+        public event Action<IEntity<E>, int> OnValueAdded;
 
         /// <summary>
         /// Invoked when a value is deleted from the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueDeleted;
+        public event Action<IEntity<E>, int> OnValueDeleted;
 
         /// <summary>
         /// Invoked when a value is changed in the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueChanged;
+        public event Action<IEntity<E>, int> OnValueChanged;
 
         /// <summary>
         /// Gets the total number of values stored in the entity.
@@ -418,7 +418,7 @@ namespace Atomic.Entities
         /// Enumerates all key-value pairs stored in the entity.
         /// </summary>
         /// <returns>An enumerator over key-value pairs.</returns>
-        IEnumerator<KeyValuePair<int, object>> IEntity.GetValueEnumerator() => new ValueEnumerator(this);
+        IEnumerator<KeyValuePair<int, object>> IEntity<E>.GetValueEnumerator() => new ValueEnumerator(this);
         
         public ValueEnumerator GetValueEnumerator() => new(this);
 
@@ -612,14 +612,14 @@ namespace Atomic.Entities
 
         public struct ValueEnumerator : IEnumerator<KeyValuePair<int, object>>
         {
-            private readonly Entity _entity;
+            private readonly Entity<E> _entity;
             private int _index;
             private KeyValuePair<int, object> _current;
 
             public KeyValuePair<int, object> Current => _current;
             object IEnumerator.Current => _current;
 
-            public ValueEnumerator(Entity entity)
+            public ValueEnumerator(Entity<E> entity)
             {
                 _entity = entity;
                 _index = 0;

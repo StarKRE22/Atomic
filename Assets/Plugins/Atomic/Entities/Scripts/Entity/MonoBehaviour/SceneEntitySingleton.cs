@@ -10,8 +10,8 @@ namespace Atomic.Entities
     /// A base class for singleton scene entities. Ensures a single instance of the entity exists
     /// per scene or globally, depending on the <see cref="_dontDestroyOnLoad"/> flag.
     /// </summary>
-    /// <typeparam name="T">The concrete type of the singleton scene entity.</typeparam>
-    public abstract class SceneEntitySingleton<T> : SceneEntity where T : SceneEntitySingleton<T>
+    /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
+    public abstract class SceneEntitySingleton<E> : SceneEntity<E> where E : SceneEntitySingleton<E>
     {
         [SerializeField]
         private bool _dontDestroyOnLoad;
@@ -19,10 +19,10 @@ namespace Atomic.Entities
         #region Instance
 
         /// <summary>
-        /// Gets the singleton instance of type <typeparamref name="T"/> in the current scene or globally.
+        /// Gets the singleton instance of type <typeparamref name="E"/> in the current scene or globally.
         /// Throws an exception if no instance is found.
         /// </summary>
-        public static T Instance
+        public static E Instance
         {
             get
             {
@@ -30,18 +30,18 @@ namespace Atomic.Entities
                     return _instance;
 
 #if UNITY_2023_1_OR_NEWER
-                _instance = FindFirstObjectByType<T>();
+                _instance = FindFirstObjectByType<E>();
 #else
                 _instance = FindObjectOfType<T>();
 #endif
 
                 return _instance == null
-                    ? throw new Exception($"Scene Entity Sigleton of type {typeof(T).Name} is not found!")
+                    ? throw new Exception($"Scene Entity Sigleton of type {typeof(E).Name} is not found!")
                     : _instance;
             }
         }
 
-        private static T _instance;
+        private static E _instance;
 
         /// <summary>
         /// Assigns the singleton instance and optionally makes it persistent across scenes.
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         protected override void Awake()
         {
             if (_instance == null)
-                _instance = (T) this;
+                _instance = (E) this;
 
             base.Awake();
 
@@ -72,30 +72,30 @@ namespace Atomic.Entities
 
         #region Resolve
 
-        private static readonly Dictionary<Scene, T> _singletons = new();
+        private static readonly Dictionary<Scene, E> _singletons = new();
 
         /// <summary>
         /// Resolves the singleton instance for the scene containing the given component.
         /// </summary>
         /// <param name="component">The component whose scene will be used for lookup.</param>
         /// <returns>The singleton instance found in the component's scene.</returns>
-        public static T Resolve(in Component component) => Resolve(component.gameObject);
+        public static E Resolve(in Component component) => Resolve(component.gameObject);
 
         /// <summary>
         /// Resolves the singleton instance for the scene containing the given GameObject.
         /// </summary>
         /// <param name="gameObject">The GameObject whose scene will be used for lookup.</param>
         /// <returns>The singleton instance found in the GameObject's scene.</returns>
-        public static T Resolve(in GameObject gameObject) => Resolve(gameObject.scene);
+        public static E Resolve(in GameObject gameObject) => Resolve(gameObject.scene);
 
         /// <summary>
         /// Resolves the singleton instance for the given scene.
         /// </summary>
         /// <param name="scene">The scene to search for the singleton.</param>
         /// <returns>The singleton instance if found; otherwise, throws an exception.</returns>
-        public static T Resolve(Scene scene)
+        public static E Resolve(Scene scene)
         {
-            if (_singletons.TryGetValue(scene, out T singleton) && singleton)
+            if (_singletons.TryGetValue(scene, out E singleton) && singleton)
                 return singleton;
 
             List<GameObject> gameObjects = ListPool<GameObject>.Get();
@@ -103,7 +103,7 @@ namespace Atomic.Entities
             for (int i = 0, count = gameObjects.Count; i < count; i++)
             {
                 GameObject go = gameObjects[i];
-                singleton = go.GetComponentInChildren<T>();
+                singleton = go.GetComponentInChildren<E>();
                 if (!singleton)
                     continue;
 
@@ -112,7 +112,7 @@ namespace Atomic.Entities
             }
 
             ListPool<GameObject>.Release(gameObjects);
-            throw new Exception($"Scene Entity Sigleton of type {typeof(T).Name} is not found!");
+            throw new Exception($"Scene Entity Sigleton of type {typeof(E).Name} is not found!");
         }
 
         #endregion

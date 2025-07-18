@@ -10,7 +10,7 @@ namespace Atomic.Entities
     /// Provides gizmo drawing functionality for the <see cref="SceneEntity"/> component,
     /// allowing visual debugging in both play mode and edit mode.
     /// </summary>
-    public partial class SceneEntity
+    public partial class SceneEntity<E>
     {
         [Header("Gizmos")]
         [SerializeField]

@@ -7,12 +7,12 @@ namespace Atomic.Entities
     /// Provides value management functionality for the <see cref="SceneEntity"/>, allowing to set, get, check,
     /// and remove values associated with an entity. 
     /// </summary>
-    public partial class SceneEntity
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Invoked when a value is added to the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueAdded
+        public event Action<IEntity<E>, int> OnValueAdded
         {
             add => this.Entity.OnValueAdded += value;
             remove => this.Entity.OnValueAdded -= value;
@@ -21,7 +21,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a value is deleted from the entity.
         /// </summary>
-        public event Action<IEntity, int> OnValueDeleted
+        public event Action<IEntity<E>, int> OnValueDeleted
         {
             add => this.Entity.OnValueDeleted += value;
             remove => this.Entity.OnValueDeleted -= value;

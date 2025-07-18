@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntity
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Occurs when a behaviour is added to the entity.
@@ -31,7 +31,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Adds a behaviour to the entity.
         /// </summary>
-        public void AddBehaviour(in IBehaviour behaviour) => this.Entity.AddBehaviour(in behaviour);
+        public void AddBehaviour(IBehaviour behaviour) => this.Entity.AddBehaviour(behaviour);
 
         /// <summary>
         /// Gets a behaviour of the specified type.
