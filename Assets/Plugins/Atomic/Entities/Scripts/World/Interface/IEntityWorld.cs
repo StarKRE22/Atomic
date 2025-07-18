@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial interface IEntityWorld : IReadOnlyCollection<IEntity>
+    public partial interface IEntityWorld<T> : IReadOnlyCollection<T> where T : IEntity
     {
         event Action OnStateChanged;
         event Action<IEntity> OnAdded;
