@@ -1,15 +1,32 @@
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Defines a behavior that supports logic during the regular update cycle of an <see cref="IEntity"/>.
+    /// Called once per frame in the main game loop.
+    /// </summary>
     public interface IUpdate : IBehaviour
     {
-        void OnUpdate(in IEntity entity, in float deltaTime);
+        /// <summary>
+        /// Called during the main update phase.
+        /// </summary>
+        /// <param name="entity">The entity being updated.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnUpdate(IEntity entity, float deltaTime);
     }
 
+    /// <summary>
+    /// Generic version of <see cref="IUpdate"/> providing strongly-typed update logic for a specific <see cref="IEntity"/> type.
+    /// </summary>
+    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
     public interface IUpdate<in T> : IUpdate where T : IEntity
     {
-        void IUpdate.OnUpdate(in IEntity entity, in float deltaTime) =>
-            this.OnUpdate((T) entity, in deltaTime);
-        
-        void OnUpdate(T context, in float deltaTime);
+        /// <summary>
+        /// Called during the main update phase.
+        /// </summary>
+        /// <param name="entity">The strongly-typed entity being updated.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnUpdate(T entity, float deltaTime);
+
+        void IUpdate.OnUpdate(IEntity entity, float deltaTime) => this.OnUpdate((T) entity, deltaTime);
     }
 }

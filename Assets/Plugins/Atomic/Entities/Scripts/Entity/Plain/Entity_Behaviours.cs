@@ -73,7 +73,7 @@ namespace Atomic.Entities
             Add(ref _behaviours, ref _behaviourCount, in behaviour);
 
             if (this.initialized && behaviour is IInit initBehaviour)
-                initBehaviour.Init(in this.owner);
+                initBehaviour.Init(this.owner);
 
             if (this.enabled)
                 this.EnableBehaviour(in behaviour);
@@ -106,7 +106,7 @@ namespace Atomic.Entities
                 this.DisableBehaviour(in behaviour);
 
             if (this.initialized && behaviour is IDispose dispose)
-                dispose.Dispose(in this.owner);
+                dispose.Dispose(this.owner);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();

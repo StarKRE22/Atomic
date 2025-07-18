@@ -45,7 +45,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IInit initBehaviour)
-                    initBehaviour.Init(in this.owner);
+                    initBehaviour.Init(this.owner);
             
             this.initialized = true;
             this.OnInitialized?.Invoke();
@@ -61,7 +61,7 @@ namespace Atomic.Entities
             
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IDispose disposeBehaviour)
-                    disposeBehaviour.Dispose(in this.owner);
+                    disposeBehaviour.Dispose(this.owner);
 
             this.initialized = false;
             this.OnDisposed?.Invoke();
@@ -101,7 +101,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.updateCount && this.enabled; i++)
-                this.updates[i].OnUpdate(in this.owner, in deltaTime);
+                this.updates[i].OnUpdate(this.owner, deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -112,7 +112,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.fixedUpdateCount && this.enabled; i++)
-                this.fixedUpdates[i].OnFixedUpdate(in this.owner, in deltaTime);
+                this.fixedUpdates[i].OnFixedUpdate(this.owner, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -123,7 +123,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.lateUpdateCount && this.enabled; i++)
-                this.lateUpdates[i].OnLateUpdate(in this.owner, in deltaTime);
+                this.lateUpdates[i].OnLateUpdate(this.owner, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }
@@ -131,7 +131,7 @@ namespace Atomic.Entities
         private void EnableBehaviour(in IBehaviour behaviour)
         {
             if (behaviour is IEnable entityEnable)
-                entityEnable.Enable(in this.owner);
+                entityEnable.Enable(this.owner);
 
             if (behaviour is IUpdate update)
                 Add(ref this.updates, ref this.updateCount, in update);
@@ -146,7 +146,7 @@ namespace Atomic.Entities
         private void DisableBehaviour(in IBehaviour behaviour)
         {
             if (behaviour is IDisable entityDisable)
-                entityDisable.Disable(in this.owner);
+                entityDisable.Disable(this.owner);
 
             if (behaviour is IUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);

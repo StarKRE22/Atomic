@@ -21,43 +21,43 @@ namespace Atomic.Entities
 
         public readonly List<string> invokationList = new();
 
-        public void Init(in IEntity entity)
+        public void Init(IEntity entity)
         {
             this.initialized = true;
             this.invokationList.Add(nameof(Init));
         }
 
-        public void Enable(in IEntity entity)
+        public void Enable(IEntity entity)
         {
             this.enabled = true;
             this.invokationList.Add(nameof(Enable));
         }
 
-        public void Disable(in IEntity entity)
+        public void Disable(IEntity entity)
         {
             this.disabled = true;
             this.invokationList.Add(nameof(Disable));
         }
 
-        public void Dispose(in IEntity entity)
+        public void Dispose(IEntity entity)
         {
             this.disposed = true;
             this.invokationList.Add(nameof(Dispose));
         }
 
-        public void OnUpdate(in IEntity entity, in float deltaTime)
+        public void OnUpdate(IEntity entity, float deltaTime)
         {
             this.updated = true;
             this.invokationList.Add(nameof(OnUpdate));
         }
 
-        public void OnFixedUpdate(in IEntity entity, in float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             this.fixedUpdated = true;
             this.invokationList.Add(nameof(OnFixedUpdate));
         }
 
-        public void OnLateUpdate(in IEntity entity, in float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             this.lateUpdated = true;
             this.invokationList.Add(nameof(OnLateUpdate));
