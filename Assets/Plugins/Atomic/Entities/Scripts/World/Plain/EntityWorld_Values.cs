@@ -44,7 +44,7 @@ namespace Atomic.Entities
 
         private void AddValues(IEntity entity)
         {
-            using IEnumerator<KeyValuePair<int, object>> values = entity.ValueEnumerator();
+            using IEnumerator<KeyValuePair<int, object>> values = entity.GetValueEnumerator();
             while (values.MoveNext())
             {
                 (int key, _) = values.Current;
@@ -62,7 +62,7 @@ namespace Atomic.Entities
 
         private void RemoveValues(IEntity entity)
         {
-            using IEnumerator<KeyValuePair<int, object>> values = entity.ValueEnumerator();
+            using IEnumerator<KeyValuePair<int, object>> values = entity.GetValueEnumerator();
             while (values.MoveNext())
             {
                 (int key, _) = values.Current;

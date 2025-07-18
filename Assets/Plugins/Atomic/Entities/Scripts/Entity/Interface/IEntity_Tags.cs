@@ -54,6 +54,6 @@ namespace Atomic.Entities
         /// <summary>
         /// Enumerates all tag keys.
         /// </summary>
-        IEnumerator<int> TagEnumerator();
+        IEnumerator<int> GetTagEnumerator();
     }
 }

@@ -9,29 +9,51 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// MonoBehaviour wrapper for an <see cref="Entity"/> that can be installed from the Unity Scene.
+    /// Allows composition through Unity Inspector and automated setup via installers and child entities.
+    /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
     public partial class SceneEntity : MonoBehaviour, IEntity
     {
+        /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged
         {
             add => this.Entity.OnStateChanged += value;
             remove => this.Entity.OnStateChanged -= value;
         }
 
+        /// <inheritdoc cref="IEntity.Name"/>
         public string Name
         {
             get => this.Entity.Name;
             set => this.Entity.Name = value;
         }
 
+        /// <inheritdoc cref="IEntity.Id"/>
         public int Id
         {
-            get { return this.Entity.Id; }
-            set { this.Entity.Id = value; }
+            get => this.Entity.Id;
+            set => this.Entity.Id = value;
         }
 
+        /// <summary>
+        /// Indicates whether this entity has already been installed.
+        /// </summary>
         public bool Installed => _installed;
+        
+        /// <summary>
+        /// Internal access to the wrapped <see cref="Entity"/>. Will create one if missing.
+        /// </summary>
+        internal Entity Entity
+        {
+            get
+            {
+                if (_entity == null) this.CreateEntity();
+                return _entity;
+            }
+        }
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -92,16 +114,10 @@ namespace Atomic.Entities
 
         private Entity _entity;
         private bool _installed;
-
-        internal Entity Entity
-        {
-            get
-            {
-                if (_entity == null) this.CreateEntity();
-                return _entity;
-            }
-        }
-
+        
+        /// <summary>
+        /// Installs all configured installers and child entities into this SceneEntity.
+        /// </summary>
         public void Install()
         {
             if (_installed)
@@ -133,19 +149,25 @@ namespace Atomic.Entities
                 }
             }
         }
-
+        
         private void CreateEntity()
         {
             string entityName = this.overrideName ? this.entityName : this.name;
             _entity = new Entity(entityName, _tagCapacity, _valueCapacity, _behaviourCapacity, this);
             s_sceneEntities.TryAdd(_entity, this);
         }
-
+        
+        /// <summary>
+        /// Unity Awake callback. Automatically installs the entity if <c>installOnAwake</c> is true.
+        /// </summary>
         protected virtual void Awake()
         {
             if (this.installOnAwake) this.Install();
         }
 
+        /// <summary>
+        /// Unity OnDestroy callback. Optionally disposes values and cleans up subscriptions.
+        /// </summary>
         protected virtual void OnDestroy()
         {
             if (_entity == null)
@@ -156,16 +178,13 @@ namespace Atomic.Entities
             s_sceneEntities.Remove(_entity);
         }
 
-        public override string ToString()
-        {
-            return this.Entity.ToString();
-        }
+        /// <inheritdoc cref="object.ToString"/>
+        public override string ToString() => this.Entity.ToString();
 
-        public override bool Equals(object obj)
-        {
-            return obj is IEntity entity && this.Entity.Id == entity.Id;
-        }
+        /// <inheritdoc cref="object.Equals(object)"/>
+        public override bool Equals(object obj) => obj is IEntity entity && this.Entity.Id == entity.Id;
 
+        /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
 #if UNITY_EDITOR
@@ -182,14 +201,14 @@ namespace Atomic.Entities
 #endif
         }
 
-        public void Clear()
-        {
-            this.Entity.Clear();
-        }
+        /// <summary>
+        /// Clears the internal state of the entity.
+        /// </summary>
+        public void Clear() => this.Entity.Clear();
 
-        public void ResetInstall()
-        {
-            _installed = false;
-        }
+        /// <summary>
+        /// Marks the entity as not installed, allowing reinstallation.
+        /// </summary>
+        public void ResetInstalledFlag() => _installed = false;
     }
 }

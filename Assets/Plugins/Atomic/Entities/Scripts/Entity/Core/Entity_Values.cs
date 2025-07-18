@@ -418,7 +418,9 @@ namespace Atomic.Entities
         /// Enumerates all key-value pairs stored in the entity.
         /// </summary>
         /// <returns>An enumerator over key-value pairs.</returns>
-        public IEnumerator<KeyValuePair<int, object>> ValueEnumerator() => new _ValueEnumerator(this);
+        IEnumerator<KeyValuePair<int, object>> IEntity.GetValueEnumerator() => new ValueEnumerator(this);
+        
+        public ValueEnumerator GetValueEnumerator() => new(this);
 
         private bool FindValueIndex(in int key, out int index)
         {
@@ -608,7 +610,7 @@ namespace Atomic.Entities
                 : slot.value;
         }
 
-        private struct _ValueEnumerator : IEnumerator<KeyValuePair<int, object>>
+        public struct ValueEnumerator : IEnumerator<KeyValuePair<int, object>>
         {
             private readonly Entity _entity;
             private int _index;
@@ -617,7 +619,7 @@ namespace Atomic.Entities
             public KeyValuePair<int, object> Current => _current;
             object IEnumerator.Current => _current;
 
-            public _ValueEnumerator(Entity entity)
+            public ValueEnumerator(Entity entity)
             {
                 _entity = entity;
                 _index = 0;

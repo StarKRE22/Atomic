@@ -34,6 +34,6 @@ namespace Atomic.Entities
         
         public int GetBehaviours(IBehaviour[] results) => _source.GetBehaviours(results);
         public IBehaviour[] GetBehaviours() => _source.GetBehaviours();
-        public IEnumerator<IBehaviour> BehaviourEnumerator() => _source.BehaviourEnumerator();
+        public IEnumerator<IBehaviour> GetBehaviourEnumerator() => _source.GetBehaviourEnumerator();
     }
 }

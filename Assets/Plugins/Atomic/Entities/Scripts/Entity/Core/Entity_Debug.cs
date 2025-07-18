@@ -50,10 +50,7 @@ namespace Atomic.Entities
                 this.id = id;
             }
 
-            public int CompareTo(DebugTag other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(DebugTag other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -114,10 +111,7 @@ namespace Atomic.Entities
                 this.id = id;
             }
 
-            public int CompareTo(DebugValue other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(DebugValue other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -183,10 +177,7 @@ namespace Atomic.Entities
                 this.value = value;
             }
 
-            public int CompareTo(DebugBehaviour other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(DebugBehaviour other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>

@@ -74,6 +74,6 @@ namespace Atomic.Entities
         /// <summary>
         /// Enumerates all behaviours.
         /// </summary>
-        IEnumerator<IBehaviour> BehaviourEnumerator();
+        IEnumerator<IBehaviour> GetBehaviourEnumerator();
     }
 }

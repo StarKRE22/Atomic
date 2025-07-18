@@ -128,7 +128,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator over the tag keys of the entity.
         /// </summary>
-        public IEnumerator<int> TagEnumerator() => new _TagEnumerator(this);
+        IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
+        
+        public TagEnumerator GetTagEnumerator() => new(this);
 
         private struct TagSlot
         {
@@ -296,7 +298,7 @@ namespace Atomic.Entities
             _tagFreeList = UNDEFINED_INDEX;
         }
 
-        private struct _TagEnumerator : IEnumerator<int>
+        public struct TagEnumerator : IEnumerator<int>
         {
             private readonly Entity _entity;
             private int _index;
@@ -305,7 +307,7 @@ namespace Atomic.Entities
             public int Current => _current;
             object IEnumerator.Current => _current;
 
-            public _TagEnumerator(Entity entity)
+            public TagEnumerator(Entity entity)
             {
                 _entity = entity;
                 _index = 0;

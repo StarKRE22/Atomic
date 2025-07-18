@@ -26,6 +26,6 @@ namespace Atomic.Entities
         
         public int[] GetTags() => _source.GetTags();
         public int GetTags(int[] results) => _source.GetTags(results);
-        public IEnumerator<int> TagEnumerator() => _source.TagEnumerator();
+        public IEnumerator<int> GetTagEnumerator() => _source.GetTagEnumerator();
     }
 }

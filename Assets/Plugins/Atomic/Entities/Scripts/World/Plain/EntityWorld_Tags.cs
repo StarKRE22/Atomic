@@ -43,7 +43,7 @@ namespace Atomic.Entities
 
         private void AddTags(in IEntity entity)
         {
-            using IEnumerator<int> tags = entity.TagEnumerator();
+            using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
             {
                 int tag = tags.Current;
@@ -59,7 +59,7 @@ namespace Atomic.Entities
 
         private void RemoveTags(IEntity entity)
         {
-            using IEnumerator<int> tags = entity.TagEnumerator();
+            using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
             {
                 int tag = tags.Current;

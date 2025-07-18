@@ -59,7 +59,7 @@ namespace Atomic.Entities
 #endif
         private void RefreshInEditMode()
         {
-            this.ResetInstall();
+            this.ResetInstalledFlag();
 
             bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
             if (!isPrefab)

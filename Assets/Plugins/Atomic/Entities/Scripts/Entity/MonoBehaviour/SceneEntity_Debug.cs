@@ -5,26 +5,43 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Provides inspector-only debug UI for the <see cref="SceneEntity"/> including read-only state
+    /// and editable lists for tags, values, and behaviors.
+    /// </summary>
     public partial class SceneEntity
     {
+        /// <summary>
+        /// Gets the entity's name for display in the inspector.
+        /// </summary>
         [FoldoutGroup("Debug")]
         [ShowInInspector, ReadOnly]
         [LabelText("Name")]
         private string NameDebug => _entity?.Name ?? this.name;
 
+        /// <summary>
+        /// Indicates whether the entity has been initialized.
+        /// </summary>
         [FoldoutGroup("Debug")]
         [LabelText("Initialized")]
         [ShowInInspector, ReadOnly]
         private bool InitializedDebug => _entity?.Initialized ?? false;
-
+        
+        /// <summary>
+        /// Indicates whether the entity is currently enabled.
+        /// </summary>
         [FoldoutGroup("Debug")]
         [ShowInInspector, ReadOnly]
         [LabelText("Enabled")]
         private bool EnabledDebug => _entity?.Enabled ?? false;
 
-        ///Tags
+        #region Tags
+
         private static readonly List<TagElement> _tagElememtsCache = new();
 
+        /// <summary>
+        /// Represents a tag element with its display name and internal ID.
+        /// </summary>
         [InlineProperty]
         private struct TagElement : IComparable<TagElement>
         {
@@ -38,12 +55,12 @@ namespace Atomic.Entities
                 this.id = id;
             }
 
-            public int CompareTo(TagElement other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(TagElement other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
+        /// <summary>
+        /// Gets a sorted list of tag elements currently assigned to the entity.
+        /// </summary>
         [Searchable]
         [FoldoutGroup("Debug")]
         [LabelText("Tags")]
@@ -88,9 +105,15 @@ namespace Atomic.Entities
             if (_entity != null) this.DelTag(this.TagElememts[index].id);
         }
 
-        ///Values
+        #endregion
+
+        #region Values
+
         private static readonly List<ValueElement> _valueElementsCache = new();
 
+        /// <summary>
+        /// Represents a value element consisting of a name, object value, and internal key.
+        /// </summary>
         [InlineProperty]
         private struct ValueElement : IComparable<ValueElement>
         {
@@ -115,6 +138,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Gets a sorted list of values currently stored in the entity.
+        /// </summary>
         [Searchable]
         [FoldoutGroup("Debug")]
         [LabelText("Values")]
@@ -160,10 +186,15 @@ namespace Atomic.Entities
             if (_entity != null) this.DelValue(this.ValueElements[index].id);
         }
 
+        #endregion
 
-        ///Behaviours
+        #region Behaviours
+
         private static readonly List<BehaviourElement> _behaviourElementsCache = new();
 
+        /// <summary>
+        /// Represents a behaviour component with a name and IBehaviour instance.
+        /// </summary>
         [InlineProperty]
         private struct BehaviourElement : IComparable<BehaviourElement>
         {
@@ -178,19 +209,19 @@ namespace Atomic.Entities
                 this.value = value;
             }
 
-            public int CompareTo(BehaviourElement other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(BehaviourElement other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
+        /// <summary>
+        /// Gets a sorted list of behaviours currently attached to the entity.
+        /// </summary>
         [Searchable]
         [FoldoutGroup("Debug")]
         [LabelText("Behaviours")]
         [ShowInInspector, PropertyOrder(100)]
         [ListDrawerSettings(
-            CustomRemoveElementFunction = nameof(RemoveLogicElement),
-            CustomRemoveIndexFunction = nameof(RemoveLogicElementAt),
+            CustomRemoveElementFunction = nameof(RemoveBehaviourElement),
+            CustomRemoveIndexFunction = nameof(RemoveBehaviourElementAt),
             HideAddButton = true
         )]
         private List<BehaviourElement> BehaviourElements
@@ -218,25 +249,17 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveLogicElement(BehaviourElement behaviourElement)
+        private void RemoveBehaviourElement(BehaviourElement behaviourElement)
         {
             if (_entity != null) this.DelBehaviour(behaviourElement.value);
         }
 
-        private void RemoveLogicElementAt(int index)
+        private void RemoveBehaviourElementAt(int index)
         {
             if (_entity != null) this.DelBehaviour(this.BehaviourElements[index].value);
         }
 
-        ///Add Element 
-        [PropertySpace]
-        [FoldoutGroup("Debug")]
-        [Button("Install")]
-        [ShowInInspector, PropertyOrder(100), HideInEditorMode]
-        private void InstallDebug(IEntityInstaller installer)
-        {
-            installer?.Install(this);
-        }
+        #endregion
     }
 }
 #endif

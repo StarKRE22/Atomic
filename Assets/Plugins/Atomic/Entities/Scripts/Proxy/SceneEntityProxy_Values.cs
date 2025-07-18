@@ -45,6 +45,6 @@ namespace Atomic.Entities
         
         public KeyValuePair<int, object>[] GetValues() => _source.GetValues();
         public int GetValues(KeyValuePair<int, object>[] results) => _source.GetValues(results);
-        public IEnumerator<KeyValuePair<int, object>> ValueEnumerator() => _source.ValueEnumerator();
+        public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator() => _source.GetValueEnumerator();
     }
 }

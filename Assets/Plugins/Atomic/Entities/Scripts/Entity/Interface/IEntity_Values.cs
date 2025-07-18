@@ -104,6 +104,6 @@ namespace Atomic.Entities
         /// <summary>
         /// Enumerates all key-value pairs.
         /// </summary>
-        IEnumerator<KeyValuePair<int, object>> ValueEnumerator();
+        IEnumerator<KeyValuePair<int, object>> GetValueEnumerator();
     }
 }

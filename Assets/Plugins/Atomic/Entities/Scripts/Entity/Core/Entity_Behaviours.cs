@@ -216,9 +216,11 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator for iterating through behaviours.
         /// </summary>
-        public IEnumerator<IBehaviour> BehaviourEnumerator() => new _BehaviourEnumerator(this);
+        IEnumerator<IBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
+        
+        public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
-        private struct _BehaviourEnumerator : IEnumerator<IBehaviour>
+        public struct BehaviourEnumerator : IEnumerator<IBehaviour>
         {
             public IBehaviour Current => _current;
 
@@ -228,7 +230,7 @@ namespace Atomic.Entities
             private int _index;
             private IBehaviour _current;
 
-            public _BehaviourEnumerator(in Entity entity)
+            public BehaviourEnumerator(in Entity entity)
             {
                 _entity = entity;
                 _index = -1;

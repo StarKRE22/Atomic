@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Provides gizmo drawing functionality for the <see cref="SceneEntity"/> component,
+    /// allowing visual debugging in both play mode and edit mode.
+    /// </summary>
     public partial class SceneEntity
     {
         [Header("Gizmos")]
@@ -15,12 +19,20 @@ namespace Atomic.Entities
         [SerializeField]
         private bool _onlyEditModeGizmos;
 
+        /// <summary>
+        /// Called by Unity to draw gizmos in the scene view.
+        /// Will delegate to <see cref="OnDrawGizmosSelected"/> unless only selected drawing is enabled.
+        /// </summary>
         private void OnDrawGizmos()
         {
             if (!_onlySelectedGizmos)
                 this.OnDrawGizmosSelected();
         }
 
+        /// <summary>
+        /// Draws gizmos for this entity and its behaviours when selected.
+        /// Gizmos will only be drawn in edit mode if allowed by configuration.
+        /// </summary>
         private void OnDrawGizmosSelected()
         {
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
@@ -34,7 +46,7 @@ namespace Atomic.Entities
                 for (int i = 0; i < _entity._behaviourCount; i++)
                 {
                     IBehaviour behaviour = _entity._behaviours[i];
-                    if (behaviour is IGizmos gizmos) 
+                    if (behaviour is IGizmos gizmos)
                         gizmos.OnGizmosDraw(_entity);
                 }
             }
