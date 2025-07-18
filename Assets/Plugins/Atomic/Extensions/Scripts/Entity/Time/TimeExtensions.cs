@@ -7,20 +7,16 @@ namespace Atomic.Extensions
     public static class TimeExtensions
     {
         public static void SubscribeOnCompleteBy(
-            this IExpiredSource expiredProvider,
+            this Timer timer,
             in IEnumerable<IEntityActionAsset> actions,
             in IEntity entity
         )
         {
             if (actions == null)
-            {
                 return;
-            }
 
-            foreach (IEntityActionAsset asset in actions)
-            {
-                expiredProvider.OnExpired += asset.Create(entity);
-            }
+            foreach (IEntityActionAsset asset in actions) 
+                timer.OnExpired += asset.Create(entity);
         }
     }
 }

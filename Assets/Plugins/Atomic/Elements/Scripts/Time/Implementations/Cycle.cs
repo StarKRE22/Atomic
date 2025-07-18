@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Cycle : IStartSource, IProgressSource, ITickSource, IPauseSource
+    public class Cycle
     {
         public enum State
         {
@@ -32,18 +32,15 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public State CurrentState
-        {
-            get { return this.currentState; }
-        }
+        public State CurrentState => this.currentState;
 
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
         public float Duration
         {
-            get { return this.duration; }
-            set { this.SetDuration(value); }
+            get => this.duration;
+            set => this.SetDuration(value);
         }
 
 #if ODIN_INSPECTOR
@@ -51,8 +48,8 @@ namespace Atomic.Elements
 #endif
         public float CurrentTime
         {
-            get { return this.currentTime; }
-            set { this.SetCurrentTime(value); }
+            get => this.currentTime;
+            set => this.SetCurrentTime(value);
         }
 
 #if ODIN_INSPECTOR
@@ -60,8 +57,8 @@ namespace Atomic.Elements
 #endif
         public float Progress
         {
-            get { return this.GetProgress(); }
-            set { this.SetProgress(value); }
+            get => this.GetProgress();
+            set => this.SetProgress(value);
         }
         
         [SerializeField]
@@ -77,10 +74,7 @@ namespace Atomic.Elements
         {
         }
 
-        public Cycle(float duration)
-        {
-            this.duration = duration;
-        }
+        public Cycle(float duration) => this.duration = duration;
 
         public State GetCurrentState() => this.currentState;
         public bool IsPlaying() => this.currentState == State.PLAYING;
@@ -96,9 +90,7 @@ namespace Atomic.Elements
         public bool Start()
         {
             if (this.currentState is not State.IDLE)
-            {
                 return false;
-            }
 
             this.currentTime = 0;
             this.currentState = State.PLAYING;
@@ -113,9 +105,7 @@ namespace Atomic.Elements
         public bool Start(float currentTime)
         {
             if (this.currentState is not State.IDLE)
-            {
                 return false;
-            }
 
             this.currentTime = Mathf.Clamp(currentTime, 0, this.duration);
             this.currentState = State.PLAYING;
@@ -130,9 +120,7 @@ namespace Atomic.Elements
         public bool Play()
         {
             if (this.currentState is not State.IDLE)
-            {
                 return false;
-            }
 
             this.currentState = State.PLAYING;
             this.OnStateChanged?.Invoke(State.PLAYING);
@@ -146,9 +134,7 @@ namespace Atomic.Elements
         public bool Pause()
         {
             if (this.currentState != State.PLAYING)
-            {
                 return false;
-            }
 
             this.currentState = State.PAUSED;
             this.OnStateChanged?.Invoke(State.PAUSED);
@@ -162,9 +148,7 @@ namespace Atomic.Elements
         public bool Resume()
         {
             if (this.currentState != State.PAUSED)
-            {
                 return false;
-            }
 
             this.currentState = State.PLAYING;
             this.OnStateChanged?.Invoke(State.PLAYING);
@@ -178,9 +162,7 @@ namespace Atomic.Elements
         public bool Stop()
         {
             if (this.currentState == State.IDLE)
-            {
                 return false;
-            }
 
             this.currentTime = 0;
             this.currentState = State.IDLE;
@@ -195,9 +177,7 @@ namespace Atomic.Elements
         public void Tick(float deltaTime)
         {
             if (this.currentState != State.PLAYING)
-            {
                 return;
-            }
 
             this.currentTime = Mathf.Min(this.currentTime + deltaTime, this.duration);
             this.OnCurrentTimeChanged?.Invoke(this.currentTime);
@@ -205,10 +185,8 @@ namespace Atomic.Elements
             float progress = this.currentTime / this.duration;
             this.OnProgressChanged?.Invoke(progress);
 
-            if (progress >= 1)
-            {
+            if (progress >= 1) 
                 this.CompleteCycle();
-            }
         }
 
         private void CompleteCycle()
@@ -223,9 +201,7 @@ namespace Atomic.Elements
         public void SetDuration(float duration)
         {
             if (duration < 0)
-            {
                 return;
-            }
 
             if (Math.Abs(this.duration - duration) > float.Epsilon)
             {
@@ -240,9 +216,7 @@ namespace Atomic.Elements
         public void SetCurrentTime(float time)
         {
             if (time < 0)
-            {
                 return;
-            }
 
             float newTime = Mathf.Clamp(time, 0, this.duration);
             if (Math.Abs(newTime - this.duration) > float.Epsilon)

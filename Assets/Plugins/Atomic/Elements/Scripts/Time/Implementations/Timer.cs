@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     [Serializable]
-    public class Timer : ITimer
+    public class Timer
     {
         public enum State
         {

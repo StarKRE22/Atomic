@@ -25,10 +25,7 @@ namespace Atomic.Elements
 
         private int _endTick;
 
-        public FixedTimestamp(int endTick = -1)
-        {
-            _endTick = endTick;
-        }
+        public FixedTimestamp(int endTick = -1) => _endTick = endTick;
 
 #if ODIN_INSPECTOR
         [Button]
@@ -55,15 +52,9 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Stop()
-        {
-            _endTick = -1;
-        }
+        public void Stop() => _endTick = -1;
 
-        public float GetProgress(float duration)
-        {
-            return 1 - this.GetRemainingTime() / duration;
-        }
+        public float GetProgress(float duration) => 1 - this.GetRemainingTime() / duration;
 
         private float GetRemainingTime()
         {
@@ -71,31 +62,16 @@ namespace Atomic.Elements
             return ticks != -1 ? ticks * Time.fixedDeltaTime : default;
         }
 
-        private int GetRemainingTicks()
-        {
-            return _endTick > 0
-                ? Math.Max(0, _endTick - Mathf.RoundToInt(Time.fixedTime / Time.fixedDeltaTime))
-                : 0;
-        }
+        private int GetRemainingTicks() => _endTick > 0
+            ? Math.Max(0, _endTick - Mathf.RoundToInt(Time.fixedTime / Time.fixedDeltaTime))
+            : 0;
 
-        public bool IsIdle()
-        {
-            return _endTick == -1;
-        }
+        public bool IsIdle() => _endTick == -1;
 
-        public bool IsPlaying()
-        {
-            return _endTick > 0 && _endTick > CurrentTick();
-        }
+        public bool IsPlaying() => _endTick > 0 && _endTick > CurrentTick();
 
-        private static int CurrentTick()
-        {
-            return Mathf.RoundToInt(Time.fixedTime / Time.fixedDeltaTime);
-        }
+        private static int CurrentTick() => Mathf.RoundToInt(Time.fixedTime / Time.fixedDeltaTime);
 
-        public bool IsExpired()
-        {
-            return _endTick > 0 && _endTick <= CurrentTick();
-        }
+        public bool IsExpired() => _endTick > 0 && _endTick <= CurrentTick();
     }
 }

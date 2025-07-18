@@ -25,7 +25,7 @@ namespace Atomic.Elements
             Countdown.State stateChanged = default;
             
             //Act:
-            countdown.OnStarted += () => wasEvent = true;
+            countdown.OnPlaying += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s; 
             countdown.Start();
 
@@ -45,7 +45,7 @@ namespace Atomic.Elements
             bool wasEvent = false;
             Countdown.State stateChanged = default;
 
-            countdown.OnStarted += () => wasEvent = true;
+            countdown.OnPlaying += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s;
 
             //Act:
@@ -77,7 +77,7 @@ namespace Atomic.Elements
             Countdown.State stateChanged = default;
 
             //Act:
-            countdown.OnStarted += () => wasEvent = true;
+            countdown.OnPlaying += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s;
             countdown.Start(3);
 
@@ -155,44 +155,17 @@ namespace Atomic.Elements
             //Pre-assert:
             Assert.IsTrue(wasComplete);
             Assert.IsTrue(countdown.IsExpired());
-            Assert.AreEqual(Countdown.State.ENDED, countdown.GetCurrentState());
+            Assert.AreEqual(Countdown.State.EXPIRED, countdown.GetCurrentState());
 
             //Act:
             countdown.OnStateChanged += s => stateChanged = s;
-            countdown.OnStarted += () => wasStarted = true;
+            countdown.OnPlaying += () => wasStarted = true;
             countdown.Start();
 
             //Assert:
             Assert.IsTrue(wasStarted);
             Assert.AreEqual(Countdown.State.PLAYING, countdown.GetCurrentState());
             Assert.AreEqual(Countdown.State.PLAYING, stateChanged);
-
-            Assert.IsTrue(countdown.IsPlaying());
-            Assert.IsFalse(countdown.IsExpired());
-            Assert.AreEqual(4, countdown.GetCurrentTime());
-        }
-
-        [Test]
-        public void Loop()
-        {
-            //Arrange:
-            Countdown countdown = new Countdown(4, true);
-            bool wasComplete = false;
-            bool wasStarted = false;
-
-            //Act:
-            countdown.Start();
-            countdown.OnExpired += () => wasComplete = true;
-            countdown.OnStarted += () => wasStarted = true;
-
-            for (int i = 0; i < 20; i++)
-            {
-                countdown.Tick(deltaTime: 0.2f);
-            }
-
-            //Assert:
-            Assert.IsTrue(wasComplete);
-            Assert.IsTrue(wasStarted);
 
             Assert.IsTrue(countdown.IsPlaying());
             Assert.IsFalse(countdown.IsExpired());
@@ -220,8 +193,8 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasComplete);
 
-            Assert.AreEqual(Countdown.State.ENDED, stateChanged);
-            Assert.AreEqual(Countdown.State.ENDED, countdown.GetCurrentState());
+            Assert.AreEqual(Countdown.State.EXPIRED, stateChanged);
+            Assert.AreEqual(Countdown.State.EXPIRED, countdown.GetCurrentState());
             
             Assert.AreEqual(1, countdown.GetProgress());
             Assert.AreEqual(0, countdown.GetCurrentTime());
@@ -367,26 +340,6 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void WhenStartCountdownThatAlreadyStartedThenFailed()
-        {
-            //Arrange:
-            Countdown countdown = new Countdown(5);
-            bool wasEvent = false;
-
-            countdown.Start();
-            countdown.Tick(deltaTime: 1);
-            countdown.OnStarted += () => wasEvent = true;
-
-            //Act:
-            countdown.Start();
-
-            //Assert:
-            Assert.IsFalse(wasEvent);
-            Assert.AreEqual(4, countdown.GetCurrentTime());
-            Assert.AreEqual(5, countdown.GetDuration());
-        }
-
-        [Test]
         public void Stop()
         {
             //Arrange:
@@ -432,7 +385,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.OnStopped += () => canceled = true;
-            countdown.OnStarted += () => started = true;
+            countdown.OnPlaying += () => started = true;
             countdown.ForceStart();
 
             //Assert:
@@ -465,7 +418,7 @@ namespace Atomic.Elements
 
             //Act:
             countdown.OnStopped += () => canceled = true;
-            countdown.OnStarted += () => started = true;
+            countdown.OnPlaying += () => started = true;
             countdown.ForceStart(5);
 
             //Assert:

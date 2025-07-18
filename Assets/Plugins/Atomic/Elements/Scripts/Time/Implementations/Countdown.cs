@@ -8,18 +8,11 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// Represents a countdown timer that supports play, pause, stop, reset, and looping,
+    /// Represents a countdown timer that supports play, pause, stop, reset
     /// while broadcasting progress and state changes.
     /// </summary>
     [Serializable]
-    public class Countdown : 
-        IStartSource,
-        IPauseSource,
-        IExpiredSource,
-        IProgressSource,
-        ITickSource,
-        ICurrentTimeSource, 
-        IDurationSource
+    public class Countdown
     {
         /// <summary>
         /// Represents the state of the countdown.
@@ -33,21 +26,21 @@ namespace Atomic.Elements
             /// <summary>Temporarily paused.</summary>
             PAUSED = 2,
             /// <summary>Finished naturally or by time running out.</summary>
-            ENDED = 3
+            EXPIRED = 3
         }
 
         /// <summary>Raised when the countdown starts.</summary>
-        public event Action OnStarted;
-      
+        public event Action OnPlaying;
+
         /// <summary>Raised when the countdown is stopped manually.</summary>
         public event Action OnStopped;
-        
+
         /// <summary>Raised when the countdown is paused.</summary>
         public event Action OnPaused;
-        
+
         /// <summary>Raised when the countdown is resumed after pause.</summary>
         public event Action OnResumed;
-        
+
         /// <summary>Raised when the countdown reaches the end.</summary>
         public event Action OnExpired;
 
@@ -56,57 +49,47 @@ namespace Atomic.Elements
 
         /// <summary>Raised when the current time changes.</summary>
         public event Action<float> OnCurrentTimeChanged;
-        
+
         /// <summary>Raised when the total duration changes.</summary>
         public event Action<float> OnDurationChanged;
-        
+
         /// <summary>Raised when the progress changes.</summary>
         public event Action<float> OnProgressChanged;
 
+        /// <summary>Gets the current state of the countdown.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        /// <summary>Gets the current state of the countdown.</summary>
         public State CurrentState => this.currentState;
 
+        /// <summary>Gets or sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        /// <summary>Gets or sets the total duration of the countdown.</summary>
         public float Duration
         {
-            get { return this.duration; }
-            set { this.SetDuration(value); }
+            get => this.duration;
+            set => this.SetDuration(value);
         }
 
+        /// <summary>Gets or sets the current remaining time.</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        /// <summary>Gets or sets the current remaining time.</summary>
         public float CurrentTime
         {
-            get { return this.currentTime; }
-            set { this.SetCurrentTime(value); }
+            get => this.currentTime;
+            set => this.SetCurrentTime(value);
         }
 
+        /// <summary>Gets or sets the progress of the countdown (0–1).</summary>
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        /// <summary>Gets or sets the progress of the countdown (0–1).</summary>
         public float Progress
         {
-            get { return this.GetProgress(); }
-            set { this.SetProgress(value); }
-        }
-
-#if ODIN_INSPECTOR
-        [ShowInInspector, HideInEditorMode]
-#endif
-        /// <summary>Gets or sets whether the countdown should loop upon completion.</summary>
-        public bool Loop
-        {
-            get { return this.loop; }
-            set { this.loop = value; }
+            get => this.GetProgress();
+            set => this.SetProgress(value);
         }
 
 #if ODIN_INSPECTOR
@@ -114,12 +97,6 @@ namespace Atomic.Elements
 #endif
         [SerializeField]
         private float duration;
-
-#if ODIN_INSPECTOR
-        [HideInPlayMode]
-#endif
-        [SerializeField]
-        private bool loop;
 
         private float currentTime;
         private State currentState;
@@ -133,108 +110,81 @@ namespace Atomic.Elements
         /// Initializes a new instance of <see cref="Countdown"/> with a specific duration and optional looping.
         /// </summary>
         /// <param name="duration">The countdown duration.</param>
-        /// <param name="loop">Whether the countdown should loop.</param>
-        public Countdown(float duration, bool loop = false)
-        {
-            this.duration = duration;
-            this.loop = loop;
-        }
+        public Countdown(float duration) => this.duration = duration;
 
         /// <summary>Gets the current internal state.</summary>
-        public State GetCurrentState() => this.currentState; 
-      
+        public State GetCurrentState() => this.currentState;
+
         /// <summary>Returns true if the countdown has not started yet.</summary>
         public bool IsIdle() => this.currentState == State.IDLE;
-        
+
         /// <summary>Returns true if the countdown is running.</summary>
         public bool IsPlaying() => this.currentState == State.PLAYING;
-        
+
         /// <summary>Returns true if the countdown is paused.</summary>
         public bool IsPaused() => this.currentState == State.PAUSED;
-        
+
         /// <summary>Returns true if the countdown has finished.</summary>
-        public bool IsExpired() => this.currentState == State.ENDED;
+        public bool IsExpired() => this.currentState == State.EXPIRED;
 
         /// <summary>Gets the total duration.</summary>
         public float GetDuration() => this.duration;
-        
+
         /// <summary>Gets the current remaining time.</summary>
         public float GetCurrentTime() => this.currentTime;
 
+        /// <summary>Starts the countdown from full duration. Stops any current state first.</summary>
 #if ODIN_INSPECTOR
         [Title("Methods")]
         [Button]
 #endif
-        /// <summary>Starts the countdown from full duration. Stops any current state first.</summary>
         public void ForceStart()
         {
             this.Stop();
             this.Start();
         }
 
+        /// <summary>Starts the countdown from a specific current time. Stops any current state first.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Starts the countdown from a specific current time. Stops any current state first.</summary>
         public void ForceStart(float currentTime)
         {
             this.Stop();
             this.Start(currentTime);
         }
 
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        /// <summary>Starts the countdown from full duration.</summary>
         public bool Start()
         {
-            if (this.currentState is not (State.IDLE or State.ENDED))
-                return false;
-
-            this.currentTime = this.duration;
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
-            this.OnStarted?.Invoke();
-            return true;
+            this.ResetTime();
+            return this.Play();
         }
-        
-        
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        /// <summary>Starts the countdown from a specific time.</summary>
+
         public bool Start(float currentTime)
         {
-            if (this.currentState is not (State.IDLE or State.ENDED))
-                return false;
-
-            this.currentTime = Mathf.Clamp(currentTime, 0, this.duration);
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
-            this.OnStarted?.Invoke();
-            return true;
+            this.SetCurrentTime(currentTime);
+            return this.Play();
         }
-        
+
+        /// <summary>Plays the countdown without resetting time.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Plays the countdown without resetting time.</summary>
         public bool Play()
         {
-            if (this.currentState is not (State.IDLE or State.ENDED))
+            if (this.currentState is not (State.IDLE or State.EXPIRED))
                 return false;
 
             this.currentState = State.PLAYING;
             this.OnStateChanged?.Invoke(State.PLAYING);
-            this.OnStarted?.Invoke();
+            this.OnPlaying?.Invoke();
             return true;
         }
 
-
+        /// <summary>Pauses the countdown if it is currently playing.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Pauses the countdown if it is currently playing.</summary>
         public bool Pause()
         {
             if (this.currentState != State.PLAYING)
@@ -246,10 +196,10 @@ namespace Atomic.Elements
             return true;
         }
 
+        /// <summary>Resumes the countdown if it is currently paused.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Resumes the countdown if it is currently paused.</summary>
         public bool Resume()
         {
             if (this.currentState != State.PAUSED)
@@ -261,10 +211,10 @@ namespace Atomic.Elements
             return true;
         }
 
+        /// <summary>Stops the countdown and resets the current time to zero.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Stops the countdown and resets the current time to zero.</summary>
         public bool Stop()
         {
             if (this.currentState == State.IDLE)
@@ -277,10 +227,10 @@ namespace Atomic.Elements
             return true;
         }
 
+        /// <summary>Advances the countdown by deltaTime and triggers completion if needed.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Advances the countdown by deltaTime and triggers completion if needed.</summary>
         public void Tick(float deltaTime)
         {
             if (this.currentState != State.PLAYING)
@@ -292,19 +242,16 @@ namespace Atomic.Elements
             float progress = 1 - this.currentTime / this.duration;
             this.OnProgressChanged?.Invoke(progress);
 
-            if (progress >= 1) 
+            if (progress >= 1)
                 this.Complete();
         }
 
-        /// <summary>Completes the countdown and triggers looping if enabled.</summary>
+        /// <summary>Completes the countdown.</summary>
         private void Complete()
         {
-            this.currentState = State.ENDED;
-            this.OnStateChanged?.Invoke(State.ENDED);
+            this.currentState = State.EXPIRED;
+            this.OnStateChanged?.Invoke(State.EXPIRED);
             this.OnExpired?.Invoke();
-
-            if (this.loop) 
-                this.Start();
         }
 
         /// <summary>Gets the normalized progress (0–1) of the countdown.</summary>
@@ -313,15 +260,15 @@ namespace Atomic.Elements
             return this.currentState switch
             {
                 State.PLAYING or State.PAUSED => 1 - this.currentTime / this.duration,
-                State.ENDED => 1,
+                State.EXPIRED => 1,
                 _ => 0
             };
         }
 
+        /// <summary>Sets the current progress of the countdown (0–1).</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Sets the current progress of the countdown (0–1).</summary>
         public void SetProgress(float progress)
         {
             progress = Mathf.Clamp01(progress);
@@ -332,10 +279,10 @@ namespace Atomic.Elements
             this.OnProgressChanged?.Invoke(progress);
         }
 
+        /// <summary>Sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Sets the total duration of the countdown.</summary>
         public void SetDuration(float duration)
         {
             if (duration < 0)
@@ -348,10 +295,10 @@ namespace Atomic.Elements
             }
         }
 
+        /// <summary>Sets the current time remaining in the countdown.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Sets the current time remaining in the countdown.</summary>
         public void SetCurrentTime(float time)
         {
             if (time < 0)
@@ -366,10 +313,10 @@ namespace Atomic.Elements
             }
         }
 
+        /// <summary>Resets the current time to the full duration.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        /// <summary>Resets the current time to the full duration.</summary>
         public void ResetTime() => this.SetCurrentTime(this.duration);
     }
 }
