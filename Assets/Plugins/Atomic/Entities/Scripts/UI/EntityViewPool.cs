@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ namespace Atomic.Entities
 {
     [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
-    public sealed class EntityViewPool : MonoBehaviour
+    public class EntityViewPool : MonoBehaviour
     {
         [SerializeField]
         private Transform _container;
@@ -21,51 +20,43 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, EntityView> _prefabs = new();
+        private readonly Dictionary<string, EntityViewBase> _prefabs = new();
 
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, Queue<EntityView>> _pools = new();
+        private readonly Dictionary<string, Queue<EntityViewBase>> _pools = new();
 
         private void Awake()
         {
             for (int i = 0, count = _catalogs.Length; i < count; i++)
                 this.AddPrefabs(_catalogs[i]);
         }
-
-        public IEnumerator Iniitalize()
+        
+        public EntityViewBase Rent(string name)
         {
-            GameObject prefab = null;
-            AsyncInstantiateOperation<GameObject> operation = InstantiateAsync(prefab, 2000);
-            yield return operation;
-            GameObject entityViewCatalogs = operation.Result[0];
-        }
+            Queue<EntityViewBase> pool = this.GetPool(name);
+            if (pool.TryDequeue(out EntityViewBase view))
+                return view;
 
-        public EntityView Rent(string name)
-        {
-            Queue<EntityView> pool = this.GetPool(name);
-            if (pool.TryDequeue(out EntityView presenter))
-                return presenter;
-
-            if (!_prefabs.TryGetValue(name, out EntityView prefab))
+            if (!_prefabs.TryGetValue(name, out EntityViewBase prefab))
                 throw new KeyNotFoundException($"Entity view with name <{name}> was not present in Entity View Pool!");
 
             return Instantiate(prefab, _container);
         }
 
-        public void Return(string name, EntityView view)
+        public void Return(string name, EntityViewBase view)
         {
-            Queue<EntityView> pool = this.GetPool(name);
+            Queue<EntityViewBase> pool = this.GetPool(name);
             pool.Enqueue(view);
             view.transform.parent = _container;
         }
 
         public void Clear()
         {
-            foreach (Queue<EntityView> pool in _pools.Values)
+            foreach (Queue<EntityViewBase> pool in _pools.Values)
             {
-                foreach (EntityView view in pool)
+                foreach (EntityViewBase view in pool)
                     Destroy(view.gameObject);
 
                 pool.Clear();
@@ -74,28 +65,27 @@ namespace Atomic.Entities
             _pools.Clear();
         }
 
-        private Queue<EntityView> GetPool(string name)
+        private Queue<EntityViewBase> GetPool(string name)
         {
-            if (_pools.TryGetValue(name, out Queue<EntityView> pool))
+            if (_pools.TryGetValue(name, out Queue<EntityViewBase> pool))
                 return pool;
 
-            pool = new Queue<EntityView>();
+            pool = new Queue<EntityViewBase>();
             _pools.Add(name, pool);
             return pool;
         }
+
+        public void AddPrefab(string entityName, EntityViewBase prefab) => _prefabs.Add(entityName, prefab);
+
+        public void RemovePrefab(string entityName) => _prefabs.Remove(entityName);
 
         public void AddPrefabs(EntityViewCatalog catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {
-                (string key, EntityView value) = catalog.GetPrefab(i);
+                (string key, EntityViewBase value) = catalog.GetPrefab(i);
                 _prefabs.Add(key, value);
             }
-        }
-
-        public void AddPrefab(string entityName, EntityView prefab)
-        {
-            _prefabs.Add(entityName, prefab);
         }
 
         public void RemovePrefabs(EntityViewCatalog catalog)
@@ -105,11 +95,6 @@ namespace Atomic.Entities
                 (string key, _) = catalog.GetPrefab(i);
                 _prefabs.Remove(key);
             }
-        }
-
-        public void RemovePrefab(string entityName)
-        {
-            _prefabs.Remove(entityName);
         }
     }
 }

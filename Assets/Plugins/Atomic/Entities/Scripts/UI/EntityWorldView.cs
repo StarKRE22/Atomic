@@ -8,10 +8,10 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityWorldView : MonoBehaviour
     {
-        public event Action<IEntity, EntityView> OnViewAdded;
-        public event Action<IEntity, EntityView> OnViewRemoved; 
+        public event Action<IEntity, EntityViewBase> OnViewAdded;
+        public event Action<IEntity, EntityViewBase> OnViewRemoved; 
 
-        private readonly Dictionary<IEntity, EntityView> _activeViews = new();
+        private readonly Dictionary<IEntity, EntityViewBase> _activeViews = new();
 
         [SerializeField]
         private Transform _viewport;
@@ -21,16 +21,10 @@ namespace Atomic.Entities
 
         private IEntityWorld _world;
 
-        public EntityView GetView(IEntity entity)
-        {
-            return _activeViews[entity];
-        }
+        public EntityViewBase GetView(IEntity entity) => _activeViews[entity];
 
-        public IReadOnlyDictionary<IEntity, EntityView> GetAllViews()
-        {
-            return _activeViews;
-        }
-        
+        public Dictionary<IEntity, EntityViewBase> GetAllViews() => new(_activeViews);
+
         public void Show(IEntityWorld world)
         {
             this.Hide();
@@ -61,20 +55,25 @@ namespace Atomic.Entities
 
         protected virtual string GetEntityName(IEntity entity) => entity.Name;
 
+        protected virtual bool IsSpawnConditionMet(IEntity entity) => true;
+
         private void SpawnView(IEntity entity)
         {
+            if (!this.IsSpawnConditionMet(entity))
+                return;
+
             string name = this.GetEntityName(entity);
-            EntityView view = _viewPool.Rent(name);
-            view.transform.parent = _viewport;
-            
+            EntityViewBase view = _viewPool.Rent(name);
+            view.transform.SetParent(_viewport);
             view.Show(entity);
+            
             _activeViews.Add(entity, view);
             this.OnViewAdded?.Invoke(entity, view);
         }
 
         private void UnspawnView(IEntity entity)
         {
-            if (!_activeViews.Remove(entity, out EntityView view))
+            if (!_activeViews.Remove(entity, out EntityViewBase view))
                 return;
 
             view.Hide();

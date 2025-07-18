@@ -12,8 +12,6 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityView : EntityViewBase
     {
-        public IEntity Entity => _entity;
-        
         [SerializeField]
         private List<EntityViewInstaller> _installers;
 
@@ -21,31 +19,33 @@ namespace Atomic.Entities
         
         private bool _installed;
 
-        public override void Show(IEntity entity)
+        protected override void OnShow(IEntity entity)
         {
             this.Install();
-            _entity = entity;
-            _entity?.AddBehaviours(_behaviours);
-            this.gameObject.SetActive(true);
+            entity.AddBehaviours(_behaviours);
+            base.OnShow(entity);
         }
 
-        public override void Hide()
+        protected override void OnHide(IEntity entity)
         {
-            this.gameObject.SetActive(false);
-            _entity?.DelBehaviours(_behaviours);
-            _entity = null;
+            entity.DelBehaviours(_behaviours);
+            base.OnHide(entity);
         }
 
         public void AddBehaviour(IBehaviour behaviour)
         {
             _behaviours.Add(behaviour);
-            _entity?.AddBehaviour(behaviour);
+            
+            if (_isShown) 
+                _entity.AddBehaviour(behaviour);
         }
 
         public void DelBehaviour(IBehaviour behaviour)
         {
             _behaviours.Remove(behaviour);
-            _entity?.DelBehaviour(behaviour);
+
+            if (_isShown) 
+                _entity.DelBehaviour(behaviour);
         }
 
         private void Install()
@@ -67,16 +67,12 @@ namespace Atomic.Entities
         {
             if (_entity == null)
                 return;
-            
-            IReadOnlyCollection<IBehaviour> behaviours = _entity.GetBehaviours();
-            if (behaviours.Count == 0)
-                return;
 
             try
             {
-                foreach (IBehaviour behaviour in behaviours)
+                for (int i = 0, count = _behaviours.Count; i < count; i++)
                 {
-                    if (behaviour is IGizmos gizmos) 
+                    if (_behaviours[i] is IGizmos gizmos) 
                         gizmos.OnGizmosDraw(_entity);
                 }
             }
