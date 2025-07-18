@@ -22,7 +22,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(5);
             bool wasEvent = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             //Act:
             cycle.OnStarted += () => wasEvent = true;
@@ -31,8 +31,8 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasEvent);
-            Assert.AreEqual(Cycle.State.PLAYING, stateChanged);
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, stateChanged);
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
             Assert.AreEqual(0, cycle.GetCurrentTime());
             
             Assert.IsTrue(cycle.IsPlaying());
@@ -45,7 +45,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(5);
             bool wasEvent = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             //Act:
             cycle.OnStarted += () => wasEvent = true;
@@ -53,8 +53,8 @@ namespace Atomic.Elements
             cycle.Start(3);
         
             //Assert:
-            Assert.AreEqual(Cycle.State.PLAYING, stateChanged);
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, stateChanged);
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
             Assert.AreEqual(3, cycle.GetCurrentTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(cycle.IsPlaying());
@@ -66,7 +66,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(5);
             bool wasEvent = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             cycle.OnStarted += () => wasEvent = true;
             cycle.OnStateChanged += s => stateChanged = s;
@@ -77,8 +77,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(success);
-            Assert.AreEqual(Cycle.State.PLAYING, stateChanged);
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, stateChanged);
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
             Assert.AreEqual(2, cycle.GetCurrentTime());
             
             Assert.IsTrue(wasEvent);
@@ -153,7 +153,7 @@ namespace Atomic.Elements
             cycle.OnCycle += () => wasCycle = true;
             
             //Pre-Assert:
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
             
             for (int i = 0; i < 20; i++)
             {
@@ -162,7 +162,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasCycle);
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
         
             Assert.AreEqual(0, cycle.GetProgress());
             Assert.AreEqual(0, cycle.GetCurrentTime());
@@ -178,7 +178,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(1);
             bool wasPause = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             cycle.Start();
         
@@ -189,8 +189,8 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasPause);
-            Assert.AreEqual(Cycle.State.PAUSED, stateChanged);
-            Assert.AreEqual(Cycle.State.PAUSED, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PAUSED, stateChanged);
+            Assert.AreEqual(CycleState.PAUSED, cycle.GetCurrentState());
             Assert.IsTrue(cycle.IsPaused());
         }
 
@@ -250,7 +250,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(1);
             bool wasResume = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             cycle.Start();
             cycle.Pause();
@@ -265,8 +265,8 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasResume);
-            Assert.AreEqual(Cycle.State.PLAYING, stateChanged);
-            Assert.AreEqual(Cycle.State.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.PLAYING, stateChanged);
+            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
         
             Assert.IsFalse(cycle.IsPaused());
             Assert.IsTrue(cycle.IsPlaying());
@@ -285,7 +285,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsFalse(wasResume);
-            Assert.AreEqual(Cycle.State.IDLE, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.IDLE, cycle.GetCurrentState());
             Assert.IsFalse(cycle.IsPlaying());
             Assert.IsFalse(cycle.IsPaused());
         }
@@ -334,7 +334,7 @@ namespace Atomic.Elements
             //Arrange:
             Cycle cycle = new Cycle(5);
             bool wasStop = false;
-            Cycle.State stateChanged = default;
+            CycleState stateChanged = default;
         
             cycle.Start();
         
@@ -345,8 +345,8 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasStop);
-            Assert.AreEqual(Cycle.State.IDLE, cycle.GetCurrentState());
-            Assert.AreEqual(Cycle.State.IDLE, stateChanged);
+            Assert.AreEqual(CycleState.IDLE, cycle.GetCurrentState());
+            Assert.AreEqual(CycleState.IDLE, stateChanged);
         
             Assert.IsFalse(cycle.IsPlaying());
             Assert.IsTrue(cycle.IsIdle());

@@ -24,7 +24,7 @@ namespace Atomic.Elements
         event Action OnExpired;
 
         /// <summary>Raised when the state changes.</summary>
-        event Action<Countdown.State> OnStateChanged;
+        event Action<CountdownState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
         event Action<float> OnCurrentTimeChanged;
@@ -38,7 +38,7 @@ namespace Atomic.Elements
         /// <summary>Gets the current state of the countdown.</summary>
 #if ODIN_INSPECTOR
 #endif
-        Countdown.State CurrentState { get; }
+        CountdownState CurrentState { get; }
 
         /// <summary>Gets or sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
@@ -56,7 +56,7 @@ namespace Atomic.Elements
         float Progress { get; set; }
 
         /// <summary>Gets the current internal state.</summary>
-        Countdown.State GetCurrentState();
+        CountdownState GetCurrentState();
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
         bool IsIdle();

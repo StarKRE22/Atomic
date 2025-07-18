@@ -14,21 +14,6 @@ namespace Atomic.Elements
     [Serializable]
     public class Countdown : ICountdown
     {
-        /// <summary>
-        /// Represents the state of the countdown.
-        /// </summary>
-        public enum State
-        {
-            /// <summary>No activity yet.</summary>
-            IDLE = 0,
-            /// <summary>Currently running.</summary>
-            PLAYING = 1,
-            /// <summary>Temporarily paused.</summary>
-            PAUSED = 2,
-            /// <summary>Finished naturally or by time running out.</summary>
-            EXPIRED = 3
-        }
-
         /// <summary>Raised when the countdown starts.</summary>
         public event Action OnPlaying;
 
@@ -45,7 +30,7 @@ namespace Atomic.Elements
         public event Action OnExpired;
 
         /// <summary>Raised when the state changes.</summary>
-        public event Action<State> OnStateChanged;
+        public event Action<CountdownState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
         public event Action<float> OnCurrentTimeChanged;
@@ -60,7 +45,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public State CurrentState => this.currentState;
+        public CountdownState CurrentState => this.currentState;
 
         /// <summary>Gets or sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
@@ -99,7 +84,7 @@ namespace Atomic.Elements
         private float duration;
 
         private float currentTime;
-        private State currentState;
+        private CountdownState currentState;
 
         /// <summary>Initializes a new instance of <see cref="Countdown"/>.</summary>
         public Countdown()
@@ -113,19 +98,19 @@ namespace Atomic.Elements
         public Countdown(float duration) => this.duration = duration;
 
         /// <summary>Gets the current internal state.</summary>
-        public State GetCurrentState() => this.currentState;
+        public CountdownState GetCurrentState() => this.currentState;
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
-        public bool IsIdle() => this.currentState == State.IDLE;
+        public bool IsIdle() => this.currentState == CountdownState.IDLE;
 
         /// <summary>Returns true if the countdown is running.</summary>
-        public bool IsPlaying() => this.currentState == State.PLAYING;
+        public bool IsPlaying() => this.currentState == CountdownState.PLAYING;
 
         /// <summary>Returns true if the countdown is paused.</summary>
-        public bool IsPaused() => this.currentState == State.PAUSED;
+        public bool IsPaused() => this.currentState == CountdownState.PAUSED;
 
         /// <summary>Returns true if the countdown has finished.</summary>
-        public bool IsExpired() => this.currentState == State.EXPIRED;
+        public bool IsExpired() => this.currentState == CountdownState.EXPIRED;
 
         /// <summary>Gets the total duration.</summary>
         public float GetDuration() => this.duration;
@@ -172,11 +157,11 @@ namespace Atomic.Elements
 #endif
         public bool Play()
         {
-            if (this.currentState is not (State.IDLE or State.EXPIRED))
+            if (this.currentState is not (CountdownState.IDLE or CountdownState.EXPIRED))
                 return false;
 
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CountdownState.PLAYING;
+            this.OnStateChanged?.Invoke(CountdownState.PLAYING);
             this.OnPlaying?.Invoke();
             return true;
         }
@@ -187,11 +172,11 @@ namespace Atomic.Elements
 #endif
         public bool Pause()
         {
-            if (this.currentState != State.PLAYING)
+            if (this.currentState != CountdownState.PLAYING)
                 return false;
 
-            this.currentState = State.PAUSED;
-            this.OnStateChanged?.Invoke(State.PAUSED);
+            this.currentState = CountdownState.PAUSED;
+            this.OnStateChanged?.Invoke(CountdownState.PAUSED);
             this.OnPaused?.Invoke();
             return true;
         }
@@ -202,11 +187,11 @@ namespace Atomic.Elements
 #endif
         public bool Resume()
         {
-            if (this.currentState != State.PAUSED)
+            if (this.currentState != CountdownState.PAUSED)
                 return false;
 
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CountdownState.PLAYING;
+            this.OnStateChanged?.Invoke(CountdownState.PLAYING);
             this.OnResumed?.Invoke();
             return true;
         }
@@ -217,12 +202,12 @@ namespace Atomic.Elements
 #endif
         public bool Stop()
         {
-            if (this.currentState == State.IDLE)
+            if (this.currentState == CountdownState.IDLE)
                 return false;
 
             this.currentTime = 0;
-            this.currentState = State.IDLE;
-            this.OnStateChanged?.Invoke(State.IDLE);
+            this.currentState = CountdownState.IDLE;
+            this.OnStateChanged?.Invoke(CountdownState.IDLE);
             this.OnStopped?.Invoke();
             return true;
         }
@@ -233,7 +218,7 @@ namespace Atomic.Elements
 #endif
         public void Tick(float deltaTime)
         {
-            if (this.currentState != State.PLAYING)
+            if (this.currentState != CountdownState.PLAYING)
                 return;
 
             this.currentTime = Mathf.Max(0, this.currentTime - deltaTime);
@@ -249,8 +234,8 @@ namespace Atomic.Elements
         /// <summary>Completes the countdown.</summary>
         private void Complete()
         {
-            this.currentState = State.EXPIRED;
-            this.OnStateChanged?.Invoke(State.EXPIRED);
+            this.currentState = CountdownState.EXPIRED;
+            this.OnStateChanged?.Invoke(CountdownState.EXPIRED);
             this.OnExpired?.Invoke();
         }
 
@@ -259,8 +244,8 @@ namespace Atomic.Elements
         {
             return this.currentState switch
             {
-                State.PLAYING or State.PAUSED => 1 - this.currentTime / this.duration,
-                State.EXPIRED => 1,
+                CountdownState.PLAYING or CountdownState.PAUSED => 1 - this.currentTime / this.duration,
+                CountdownState.EXPIRED => 1,
                 _ => 0
             };
         }

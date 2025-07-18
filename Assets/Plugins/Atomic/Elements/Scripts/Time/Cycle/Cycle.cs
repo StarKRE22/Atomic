@@ -11,21 +11,8 @@ namespace Atomic.Elements
     /// Represents a looping cycle timer that tracks time progression and emits events on completion of each cycle.
     /// </summary>
     [Serializable]
-    public class Cycle
+    public class Cycle : ICycle
     {
-        /// <summary>
-        /// Represents the state of the cycle timer.
-        /// </summary>
-        public enum State
-        {
-            /// <summary>The timer is idle and not running.</summary>
-            IDLE = 0,
-            /// <summary>The timer is currently running.</summary>
-            PLAYING = 1,
-            /// <summary>The timer is paused.</summary>
-            PAUSED = 2
-        }
-
         /// <summary>Raised when the timer starts.</summary>
         public event Action OnStarted;
         
@@ -42,7 +29,7 @@ namespace Atomic.Elements
         public event Action OnCycle;
         
         /// <summary>Raised when the state of the timer changes.</summary>
-        public event Action<State> OnStateChanged;
+        public event Action<CycleState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
         public event Action<float> OnCurrentTimeChanged;
@@ -57,7 +44,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public State CurrentState => this.currentState;
+        public CycleState CurrentState => this.currentState;
 
         /// <summary>Gets or sets the total duration of one cycle.</summary>
 #if ODIN_INSPECTOR
@@ -96,7 +83,7 @@ namespace Atomic.Elements
         [ShowInInspector, ReadOnly]
 #endif
         private float currentTime;
-        private State currentState;
+        private CycleState currentState;
 
         /// <summary>Initializes a new instance of the <see cref="Cycle"/> class.</summary>
         public Cycle()
@@ -108,16 +95,16 @@ namespace Atomic.Elements
         public Cycle(float duration) => this.duration = duration;
 
         /// <summary>Returns the current state of the timer.</summary>
-        public State GetCurrentState() => this.currentState;
+        public CycleState GetCurrentState() => this.currentState;
       
         /// <summary>Returns true if the timer is currently playing.</summary>
-        public bool IsPlaying() => this.currentState == State.PLAYING;
+        public bool IsPlaying() => this.currentState == CycleState.PLAYING;
         
         /// <summary>Returns true if the timer is currently paused.</summary>
-        public bool IsPaused() => this.currentState == State.PAUSED;
+        public bool IsPaused() => this.currentState == CycleState.PAUSED;
         
         /// <summary>Returns true if the timer is idle.</summary>
-        public bool IsIdle() => this.currentState == State.IDLE;
+        public bool IsIdle() => this.currentState == CycleState.IDLE;
         
         /// <summary>Returns the total duration of the cycle.</summary>
         public float GetDuration() => this.duration;
@@ -131,12 +118,12 @@ namespace Atomic.Elements
 #endif
         public bool Start()
         {
-            if (this.currentState is not State.IDLE)
+            if (this.currentState is not CycleState.IDLE)
                 return false;
 
             this.currentTime = 0;
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CycleState.PLAYING;
+            this.OnStateChanged?.Invoke(CycleState.PLAYING);
             this.OnStarted?.Invoke();
             return true;
         }
@@ -148,12 +135,12 @@ namespace Atomic.Elements
 #endif
         public bool Start(float currentTime)
         {
-            if (this.currentState is not State.IDLE)
+            if (this.currentState is not CycleState.IDLE)
                 return false;
 
             this.currentTime = Mathf.Clamp(currentTime, 0, this.duration);
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CycleState.PLAYING;
+            this.OnStateChanged?.Invoke(CycleState.PLAYING);
             this.OnStarted?.Invoke();
             return true;
         }
@@ -164,11 +151,11 @@ namespace Atomic.Elements
 #endif
         public bool Play()
         {
-            if (this.currentState is not State.IDLE)
+            if (this.currentState is not CycleState.IDLE)
                 return false;
 
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CycleState.PLAYING;
+            this.OnStateChanged?.Invoke(CycleState.PLAYING);
             this.OnStarted?.Invoke();
             return true;
         }
@@ -179,11 +166,11 @@ namespace Atomic.Elements
 #endif
         public bool Pause()
         {
-            if (this.currentState != State.PLAYING)
+            if (this.currentState != CycleState.PLAYING)
                 return false;
 
-            this.currentState = State.PAUSED;
-            this.OnStateChanged?.Invoke(State.PAUSED);
+            this.currentState = CycleState.PAUSED;
+            this.OnStateChanged?.Invoke(CycleState.PAUSED);
             this.OnPaused?.Invoke();
             return true;
         }
@@ -194,11 +181,11 @@ namespace Atomic.Elements
 #endif
         public bool Resume()
         {
-            if (this.currentState != State.PAUSED)
+            if (this.currentState != CycleState.PAUSED)
                 return false;
 
-            this.currentState = State.PLAYING;
-            this.OnStateChanged?.Invoke(State.PLAYING);
+            this.currentState = CycleState.PLAYING;
+            this.OnStateChanged?.Invoke(CycleState.PLAYING);
             this.OnResumed?.Invoke();
             return true;
         }
@@ -209,12 +196,12 @@ namespace Atomic.Elements
 #endif
         public bool Stop()
         {
-            if (this.currentState == State.IDLE)
+            if (this.currentState == CycleState.IDLE)
                 return false;
 
             this.currentTime = 0;
-            this.currentState = State.IDLE;
-            this.OnStateChanged?.Invoke(State.IDLE);
+            this.currentState = CycleState.IDLE;
+            this.OnStateChanged?.Invoke(CycleState.IDLE);
             this.OnStopped?.Invoke();
             return true;
         }
@@ -226,7 +213,7 @@ namespace Atomic.Elements
 #endif
         public void Tick(float deltaTime)
         {
-            if (this.currentState != State.PLAYING)
+            if (this.currentState != CycleState.PLAYING)
                 return;
 
             this.currentTime = Mathf.Min(this.currentTime + deltaTime, this.duration);
@@ -285,7 +272,7 @@ namespace Atomic.Elements
         {
             return this.currentState switch
             {
-                State.PLAYING or State.PAUSED => this.currentTime / this.duration,
+                CycleState.PLAYING or CycleState.PAUSED => this.currentTime / this.duration,
                 _ => 0
             };
         }

@@ -169,9 +169,12 @@ namespace Atomic.Elements
                 throw new ArgumentException($"Time can't be negative: {time}!", nameof(time));
 
             float newTime = Math.Clamp(time, 0, _duration);
+            Debug.Log($"NEW TIME! {newTime}");
+
             if (Math.Abs(newTime - _current) <= float.Epsilon)
                 return;
 
+            Debug.Log($"NEW TIME CHANGED {newTime}");
             _current = newTime;
             this.OnCurrentTimeChanged?.Invoke(newTime);
             this.OnProgressChanged?.Invoke(this.GetProgress());
