@@ -8,7 +8,6 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class EntityPredicateAsset_Entity_HasTag : IEntityPredicateAsset_Entity
     {
-        [EntityTag]
         [SerializeField]
         private int tag;
         

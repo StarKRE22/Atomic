@@ -9,7 +9,6 @@ namespace Atomic.Entities
     [Serializable]
     public sealed class EntityInstallerTag : IEntityInstaller
     {
-        [EntityTag]
         [SerializeField]
         private string[] tags;
 

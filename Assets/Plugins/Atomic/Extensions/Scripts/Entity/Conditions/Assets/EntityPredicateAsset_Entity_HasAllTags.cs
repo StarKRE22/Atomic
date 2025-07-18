@@ -9,7 +9,6 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class EntityPredicateAsset_Entity_HasAllTags : IEntityPredicateAsset_Entity
     {
-        [EntityTag]
         [SerializeField]
         private int[] tags;
         

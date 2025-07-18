@@ -8,7 +8,6 @@ namespace Atomic.Entities
     [Serializable]
     public class EntityInstallerValue : IEntityInstaller
     {
-        [EntityValue]
         [SerializeField]
         private string key;
 
@@ -27,7 +26,6 @@ namespace Atomic.Entities
     [InlineProperty]
     public class EntityInstallerValue<T> : IEntityInstaller
     {
-        [EntityValue]
         [HorizontalGroup]
         [SerializeField]
         private string key;

@@ -20,7 +20,7 @@ namespace Atomic.Elements
         /// </summary>
         [SerializeField]
 #if ODIN_INSPECTOR
-        [SceneObjectsOnly]
+        [SceneObjectsOnly, Required]
 #endif
         private SceneAction action;
 

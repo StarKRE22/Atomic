@@ -15,7 +15,6 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class TagEntityAspect : IEntityAspect
     {
-        [EntityTag]
         [SerializeField]
         private int tag = -1;
 

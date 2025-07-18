@@ -99,14 +99,14 @@ namespace Atomic.Entities
         private string entityName;
 
 #if ODIN_INSPECTOR
-        [HideInPlayMode]
+        [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
         private List<SceneEntityInstaller> installers;
 
 #if ODIN_INSPECTOR
-        [HideInPlayMode]
+        [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]

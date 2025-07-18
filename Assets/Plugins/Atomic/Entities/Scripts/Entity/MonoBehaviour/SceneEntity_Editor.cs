@@ -10,8 +10,15 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Provides editor-time lifecycle support for the <see cref="SceneEntity"/>,
+    /// including auto-refresh, edit-mode installation, and simulated lifecycle events.
+    /// </summary>
     public partial class SceneEntity
     {
+        /// <summary>
+        /// Automatically gathers installers and child entities when the component is reset.
+        /// </summary>
         private void Reset()
         {
             this.installers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
@@ -19,11 +26,14 @@ namespace Atomic.Entities
             this.children.Remove(this);
         }
 
-        private void OnValidate()
-        {
-            this.AutoRefresh();
-        }
+        /// <summary>
+        /// Called when the script is loaded or a value is changed in the Inspector. Triggers auto-refresh if enabled.
+        /// </summary>
+        private void OnValidate() => this.AutoRefresh();
 
+        /// <summary>
+        /// Automatically refreshes the entity in Edit Mode if <c>installInEditMode</c> is true.
+        /// </summary>
         private void AutoRefresh()
         {
             if (!this.installInEditMode)
@@ -43,13 +53,22 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Sets refresh callbacks on all associated installers.
+        /// </summary>
         private void SetRefreshCallbackToInstallers()
         {
-            foreach (SceneEntityInstaller installer in this.installers)
+            for (int i = 0, count = this.installers.Count; i < count; i++)
+            {
+                SceneEntityInstaller installer = this.installers[i];
                 if (installer != null)
                     installer.refreshCallback = this.RefreshInEditMode;
+            }
         }
 
+        /// <summary>
+        /// Refreshes the entity's state in the Unity Editor, simulating the full entity lifecycle.
+        /// </summary>
 #if ODIN_INSPECTOR
         [FoldoutGroup("Debug")]
         [PropertyOrder(95)]
@@ -80,6 +99,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Simulates initialization of all entity behaviours in Edit Mode.
+        /// </summary>
         private void InitInEditMode()
         {
             if (_entity.Initialized)
@@ -90,6 +112,9 @@ namespace Atomic.Entities
                     dispose.Init(_entity);
         }
 
+        /// <summary>
+        /// Simulates enabling of all entity behaviours in Edit Mode.
+        /// </summary>
         private void EnableInEditMode()
         {
             if (_entity.Enabled)
@@ -100,6 +125,9 @@ namespace Atomic.Entities
                     dispose.Enable(_entity);
         }
 
+        /// <summary>
+        /// Simulates disabling of all entity behaviours in Edit Mode.
+        /// </summary>
         private void DisableInEditMode()
         {
             if (_entity is not {Enabled: true})
@@ -110,6 +138,9 @@ namespace Atomic.Entities
                     disable.Disable(_entity);
         }
 
+        /// <summary>
+        /// Simulates disposal of all entity behaviours in Edit Mode.
+        /// </summary>
         private void DisposeInEditMode()
         {
             if (_entity is not {Initialized: true})
@@ -122,10 +153,11 @@ namespace Atomic.Entities
             }
         }
 
-        private static bool IsEditModeSupported(IBehaviour behaviour)
-        {
-            return behaviour.GetType().IsDefined(typeof(EditModeBehaviourAttribute));
-        }
+        /// <summary>
+        /// Checks whether a behaviour is marked to support edit mode lifecycle.
+        /// </summary>
+        private static bool IsEditModeSupported(IBehaviour behaviour) => 
+            behaviour.GetType().IsDefined(typeof(EditModeBehaviourAttribute));
     }
 }
 

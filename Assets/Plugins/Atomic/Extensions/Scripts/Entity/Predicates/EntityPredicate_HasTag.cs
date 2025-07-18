@@ -15,7 +15,7 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class EntityPredicate_HasTag : IEntityPredicate
     {
-        [EntityTag, SerializeField]
+        [SerializeField]
         private int tag;
         
         public bool Invoke(IEntity entity)

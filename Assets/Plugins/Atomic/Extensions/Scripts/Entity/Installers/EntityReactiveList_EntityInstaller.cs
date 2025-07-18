@@ -10,7 +10,6 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class EntityReactiveList_EntityInstaller : IEntityInstaller
     {
-        [EntityValue]
         [SerializeField]
         private int id = -1;
 

@@ -16,7 +16,7 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class EntityAndExpression_EntityInstaller : IEntityInstaller
     {
-        [EntityValue, SerializeField]
+        [SerializeField]
         private int id = -1;
 
 #if ODIN_INSPECTOR

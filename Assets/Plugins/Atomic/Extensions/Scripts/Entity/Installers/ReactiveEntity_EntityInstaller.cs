@@ -17,7 +17,6 @@ namespace Atomic.Extensions
     [Serializable]
     public sealed class ReactiveEntity_EntityInstaller : IEntityInstaller
     {
-        [EntityValue]
 #if ODIN_INSPECTOR
         [HorizontalGroup]
 #endif

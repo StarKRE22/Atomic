@@ -15,7 +15,6 @@ namespace Atomic.Extensions
     [Serializable]
     public class ValueEntityAspect<T> : IEntityAspect
     {
-        [EntityValue]
 #if ODIN_INSPECTOR
         [HorizontalGroup]
 #endif

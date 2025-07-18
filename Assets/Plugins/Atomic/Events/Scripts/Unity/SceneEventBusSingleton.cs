@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Atomic.Events
 {
-    public abstract class SceneEventBusSingleton<T> : SceneEventBus where T : SceneEventBus
+    public abstract class SceneEventBusSingleton<T> : SceneEventBus where T : SceneEventBusSingleton<T>
     {
         [SerializeField]
         private bool _dontDestroyOnLoad;
@@ -36,12 +36,21 @@ namespace Atomic.Events
 
         protected virtual void Awake()
         {
-            _instance = this as T;
+            if (_instance == null) 
+                _instance = (T) this;
             
             if (_dontDestroyOnLoad)
                 DontDestroyOnLoad(this.gameObject);
         }
-        
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            
+            if (_instance == this) 
+                _instance = null;
+        }
+
         #region Resolve
 
         private static readonly Dictionary<Scene, T> _singletons = new();
