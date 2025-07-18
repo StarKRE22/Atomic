@@ -11,12 +11,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
-        public event Action<IEntity, int> OnTagAdded;
+        public event Action<IEntity<E>, int> OnTagAdded;
         
         /// <summary>
         /// Invoked when a tag is deleted from the entity.
         /// </summary>
-        public event Action<IEntity, int> OnTagDeleted;
+        public event Action<IEntity<E>, int> OnTagDeleted;
 
         /// <summary>
         /// Gets the total number of tags associated with the entity.
@@ -128,7 +128,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator over the tag keys of the entity.
         /// </summary>
-        IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
+        IEnumerator<int> IEntity<E>.GetTagEnumerator() => new TagEnumerator(this);
         
         public TagEnumerator GetTagEnumerator() => new(this);
 
@@ -270,7 +270,7 @@ namespace Atomic.Entities
         {
             if (tags == null)
             {
-                this.InitializeTags(0);
+                this.InitializeTags();
                 return;
             }
 
@@ -300,14 +300,14 @@ namespace Atomic.Entities
 
         public struct TagEnumerator : IEnumerator<int>
         {
-            private readonly Entity _entity;
+            private readonly Entity<E> _entity;
             private int _index;
             private int _current;
 
             public int Current => _current;
             object IEnumerator.Current => _current;
 
-            public TagEnumerator(Entity entity)
+            public TagEnumerator(Entity<E> entity)
             {
                 _entity = entity;
                 _index = 0;

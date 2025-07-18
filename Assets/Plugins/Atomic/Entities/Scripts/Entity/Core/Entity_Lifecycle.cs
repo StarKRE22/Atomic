@@ -9,20 +9,20 @@ namespace Atomic.Entities
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IUpdate> s_updateComparer =
-            EqualityComparer<IUpdate>.Default;
+        private static readonly IEqualityComparer<IUpdate<E>> s_updateComparer =
+            EqualityComparer<IUpdate<E>>.Default;
 
         /// <summary>
         /// Equality comparer for IFixedUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IFixedUpdate> s_fixedUpdateComparer =
-            EqualityComparer<IFixedUpdate>.Default;
+        private static readonly IEqualityComparer<IFixedUpdate<E>> s_fixedUpdateComparer =
+            EqualityComparer<IFixedUpdate<E>>.Default;
         
         /// <summary>
         /// Equality comparer for ILateUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<ILateUpdate> s_lateUpdateComparer =
-            EqualityComparer<ILateUpdate>.Default;
+        private static readonly IEqualityComparer<ILateUpdate<E>> s_lateUpdateComparer =
+            EqualityComparer<ILateUpdate<E>>.Default;
 
         /// <summary>
         /// Called when the entity has been initialized.
@@ -72,9 +72,9 @@ namespace Atomic.Entities
         private bool initialized;
         private bool enabled;
 
-        private IUpdate[] updates;
-        private IFixedUpdate[] fixedUpdates;
-        private ILateUpdate[] lateUpdates;
+        private IUpdate<E>[] updates;
+        private IFixedUpdate<E>[] fixedUpdates;
+        private ILateUpdate<E>[] lateUpdates;
 
         private int updateCount;
         private int fixedUpdateCount;
@@ -89,7 +89,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IInit initBehaviour)
+                if (_behaviours[i] is IInit<E> initBehaviour)
                     initBehaviour.Init(this.owner);
 
             this.initialized = true;
@@ -108,7 +108,7 @@ namespace Atomic.Entities
                 this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IDispose disposeBehaviour)
+                if (_behaviours[i] is IDispose<E> disposeBehaviour)
                     disposeBehaviour.Dispose(this.owner);
 
             this.initialized = false;
@@ -193,31 +193,31 @@ namespace Atomic.Entities
 
         private void EnableBehaviour(in IBehaviour<E> behaviour)
         {
-            if (behaviour is IEnable entityEnable)
+            if (behaviour is IEnable<E> entityEnable)
                 entityEnable.Enable(this.owner);
 
-            if (behaviour is IUpdate update)
+            if (behaviour is IUpdate<E> update)
                 Add(ref this.updates, ref this.updateCount, in update);
 
-            if (behaviour is IFixedUpdate fixedUpdate)
+            if (behaviour is IFixedUpdate<E> fixedUpdate)
                 Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
 
-            if (behaviour is ILateUpdate lateUpdate)
+            if (behaviour is ILateUpdate<E> lateUpdate)
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
         private void DisableBehaviour(in IBehaviour<E> behaviour)
         {
-            if (behaviour is IDisable entityDisable)
+            if (behaviour is IDisable<E> entityDisable)
                 entityDisable.Disable(this.owner);
 
-            if (behaviour is IUpdate update)
+            if (behaviour is IUpdate<E> update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
 
-            if (behaviour is IFixedUpdate fixedUpdate)
+            if (behaviour is IFixedUpdate<E> fixedUpdate)
                 Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
 
-            if (behaviour is ILateUpdate lateUpdate)
+            if (behaviour is ILateUpdate<E> lateUpdate)
                 Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }

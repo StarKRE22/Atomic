@@ -7,7 +7,8 @@ namespace Atomic.Entities
     /// Provides tag management functionality for the <see cref="SceneEntity"/>, allowing to add, remove,
     /// check, and enumerate tags associated with the entity.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
+
     {
         /// <summary>
         /// Invoked when a tag is added to the entity.

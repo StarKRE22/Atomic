@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
+    public abstract class SceneEntityInstaller<E> : MonoBehaviour, IEntityInstaller<E> where E : IEntity<E>
     {
 #if UNITY_EDITOR
         public Action refreshCallback;
 #endif
-        public abstract void Install(IEntity entity);
+        public abstract void Install(E entity);
 
         protected virtual void OnValidate()
         {
@@ -43,11 +43,5 @@ namespace Atomic.Entities
             return false;
 #endif
         }
-    }
-
-    public abstract class SceneEntityInstaller<T> : SceneEntityInstaller where T : class, IEntity
-    {
-        public sealed override void Install(IEntity entity) => this.Install((T) entity);
-        protected abstract void Install(T entity);
     }
 }

@@ -6,7 +6,8 @@ namespace Atomic.Entities
     /// Provides lifecycle and update phase event bindings for a <see cref="SceneEntity"/>,
     /// delegating lifecycle control and state to the internal <see cref="Entity"/> instance.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
+
     {
         /// <summary>
         /// Triggered when the entity is initialized.

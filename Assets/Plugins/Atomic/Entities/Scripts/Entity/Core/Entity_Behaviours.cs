@@ -26,12 +26,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a new behaviour is added.
         /// </summary>
-        public event Action<Entity<E>, IBehaviour<E>> OnBehaviourAdded;
+        public event Action<E, IBehaviour<E>> OnBehaviourAdded;
 
         /// <summary>
         /// Invoked when a behaviour is removed.
         /// </summary>
-        public event Action<IEntity, IBehaviour<E>> OnBehaviourDeleted;
+        public event Action<E, IBehaviour<E>> OnBehaviourDeleted;
 
         /// <summary>
         /// Total number of behaviours attached to this entity.
@@ -79,13 +79,13 @@ namespace Atomic.Entities
 
             InternalUtils.Add(ref _behaviours, ref _behaviourCount, in behaviour);
 
-            if (this.initialized && behaviour is IInit initBehaviour)
+            if (this.initialized && behaviour is IInit<E> initBehaviour)
                 initBehaviour.Init(this.owner);
 
             if (this.enabled)
                 this.EnableBehaviour(in behaviour);
 
-            this.OnBehaviourAdded?.Invoke(this, behaviour);
+            this.OnBehaviourAdded?.Invoke(this as E, behaviour);
             this.OnStateChanged?.Invoke();
         }
 
@@ -118,10 +118,10 @@ namespace Atomic.Entities
             if (this.enabled)
                 this.DisableBehaviour(in behaviour);
 
-            if (this.initialized && behaviour is IDispose dispose)
+            if (this.initialized && behaviour is IDispose<E> dispose)
                 dispose.Dispose(this.owner);
 
-            this.OnBehaviourDeleted?.Invoke(this, behaviour);
+            this.OnBehaviourDeleted?.Invoke(this as E, behaviour);
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -135,7 +135,7 @@ namespace Atomic.Entities
                 return;
 
             int removedCount = _behaviourCount;
-            IBehaviour[] removedBehaviours = s_behaviourPool.Rent(removedCount);
+            IBehaviour<E>[] removedBehaviours = s_behaviourPool.Rent(removedCount);
             Array.Copy(_behaviours, removedBehaviours, removedCount);
 
             _behaviourCount = 0;
@@ -143,7 +143,7 @@ namespace Atomic.Entities
             try
             {
                 for (int i = 0; i < removedCount; i++)
-                    this.OnBehaviourDeleted?.Invoke(this, removedBehaviours[i]);
+                    this.OnBehaviourDeleted?.Invoke(this as E, removedBehaviours[i]);
 
                 this.OnStateChanged?.Invoke();
             }
@@ -156,7 +156,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
-        public T GetBehaviour<T>() where T : IBehaviour
+        public T GetBehaviour<T>() where T : IBehaviour<E>
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T result)
@@ -168,7 +168,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Attempts to get the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
-        public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour
+        public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour<E>
         {
             for (int i = 0; i < _behaviourCount; i++)
             {
@@ -186,7 +186,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns the behaviour instance at the given index.
         /// </summary>
-        public IBehaviour GetBehaviourAt(in int index)
+        public IBehaviour<E> GetBehaviourAt(in int index)
         {
             if (index < 0 || index >= _behaviourCount)
                 throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
@@ -197,9 +197,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns a new array of all behaviours attached to this entity.
         /// </summary>
-        public IBehaviour[] GetBehaviours()
+        public IBehaviour<E>[] GetBehaviours()
         {
-            IBehaviour[] result = new IBehaviour[_behaviourCount];
+            IBehaviour<E>[] result = new IBehaviour<E>[_behaviourCount];
             this.GetBehaviours(result);
             return result;
         }
@@ -207,7 +207,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies all behaviours into the provided array.
         /// </summary>
-        public int GetBehaviours(IBehaviour[] results)
+        public int GetBehaviours(IBehaviour<E>[] results)
         {
             Array.Copy(_behaviours, results, _behaviourCount);
             return _behaviourCount;
@@ -216,21 +216,21 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator for iterating through behaviours.
         /// </summary>
-        IEnumerator<IBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
+        IEnumerator<IBehaviour<E>> IEntity<E>.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
         
         public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
-        public struct BehaviourEnumerator : IEnumerator<IBehaviour>
+        public struct BehaviourEnumerator : IEnumerator<IBehaviour<E>>
         {
-            public IBehaviour Current => _current;
+            public IBehaviour<E> Current => _current;
 
             object IEnumerator.Current => _current;
 
-            private readonly Entity _entity;
+            private readonly Entity<E> _entity;
             private int _index;
-            private IBehaviour _current;
+            private IBehaviour<E> _current;
 
-            public BehaviourEnumerator(in Entity entity)
+            public BehaviourEnumerator(Entity<E> entity)
             {
                 _entity = entity;
                 _index = -1;
@@ -261,7 +261,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the behaviour array with an optional capacity.
         /// </summary>
-        private void InitializeBehaviours(in IEnumerable<IBehaviour> behaviours)
+        private void InitializeBehaviours(IEnumerable<IBehaviour<E>> behaviours)
         {
             if (behaviours == null)
                 this.InitializeBehaviours();
@@ -269,7 +269,7 @@ namespace Atomic.Entities
             {
                 this.InitializeBehaviours(behaviours.Count());
 
-                foreach (IBehaviour behaviour in behaviours)
+                foreach (IBehaviour<E> behaviour in behaviours)
                     if (behaviour != null)
                         _behaviours[_behaviourCount++] = behaviour;
             }
@@ -279,6 +279,6 @@ namespace Atomic.Entities
         /// Initializes the behaviour array from a collection.
         /// </summary>
         private void InitializeBehaviours(in int capacity = 0) =>
-            _behaviours = new IBehaviour[capacity];
+            _behaviours = new IBehaviour<E>[capacity];
     }
 }

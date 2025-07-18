@@ -6,15 +6,15 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnInitialized"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityInitSubscription : IDisposable
+    public readonly struct InitSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action _callback;
 
         /// <summary>
         /// Creates a new subscription for the <see cref="IEntity.OnInitialized"/> event.
         /// </summary>
-        internal EntityInitSubscription(IEntity entity, Action callback)
+        internal InitSubscription(IEntity<E> entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
@@ -34,12 +34,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnEnabled"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityEnableSubscription : IDisposable
+    public readonly struct EnableSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action _callback;
 
-        internal EntityEnableSubscription(IEntity entity, Action callback)
+        internal EnableSubscription(IEntity<E> entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
@@ -59,12 +59,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnDisabled"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityDisableSubscription : IDisposable
+    public readonly struct DisableSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action _callback;
 
-        internal EntityDisableSubscription(IEntity entity, Action callback)
+        internal DisableSubscription(IEntity<E> entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
@@ -84,12 +84,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnDisposed"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityDisposeSubscription : IDisposable
+    public readonly struct DisposeSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action _callback;
 
-        internal EntityDisposeSubscription(IEntity entity, Action callback)
+        internal DisposeSubscription(IEntity<E> entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
@@ -109,12 +109,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnUpdated"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityUpdateSubscription : IDisposable
+    public readonly struct UpdateSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action<float> _callback;
 
-        internal EntityUpdateSubscription(IEntity entity, Action<float> callback)
+        internal UpdateSubscription(IEntity<E> entity, Action<float> callback)
         {
             _entity = entity;
             _callback = callback;
@@ -134,12 +134,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnFixedUpdated"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityFixedUpdateSubscription : IDisposable
+    public readonly struct FixedUpdateSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action<float> _callback;
 
-        internal EntityFixedUpdateSubscription(IEntity entity, Action<float> callback)
+        internal FixedUpdateSubscription(IEntity<E> entity, Action<float> callback)
         {
             _entity = entity;
             _callback = callback;
@@ -159,12 +159,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnLateUpdated"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityLateUpdateSubscription : IDisposable
+    public readonly struct LateUpdateSubscription<E> : IDisposable where E : IEntity<E>
     {
-        private readonly IEntity _entity;
+        private readonly IEntity<E> _entity;
         private readonly Action<float> _callback;
 
-        internal EntityLateUpdateSubscription(IEntity entity, Action<float> callback)
+        internal LateUpdateSubscription(IEntity<E> entity, Action<float> callback)
         {
             _entity = entity;
             _callback = callback;

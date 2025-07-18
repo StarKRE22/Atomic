@@ -7,7 +7,8 @@ namespace Atomic.Entities
     /// Provides value management functionality for the <see cref="SceneEntity"/>, allowing to set, get, check,
     /// and remove values associated with an entity. 
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
+
     {
         /// <summary>
         /// Invoked when a value is added to the entity.

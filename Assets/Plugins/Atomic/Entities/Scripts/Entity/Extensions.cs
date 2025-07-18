@@ -16,7 +16,7 @@ namespace Atomic.Entities
         /// Adds multiple tags to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddTags(this IEntity entity, IEnumerable<int> tags)
+        public static void AddTags<E>(this IEntity<E> entity, IEnumerable<int> tags) where E : IEntity<E>
         {
             if (tags == null)
                 return;
@@ -29,7 +29,8 @@ namespace Atomic.Entities
         /// Adds multiple values to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IReadOnlyDictionary<int, object> values)
+        public static void AddValues<E>(this IEntity<E> entity, IReadOnlyDictionary<int, object> values)
+            where E : IEntity<E>
         {
             if (values == null)
                 return;
@@ -42,25 +43,27 @@ namespace Atomic.Entities
         /// Adds multiple behaviours to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddBehaviours(this IEntity entity, IEnumerable<IBehaviour> behaviours)
+        public static void AddBehaviours<E>(this IEntity<E> entity, IEnumerable<IBehaviour<E>> behaviours)
+            where E : IEntity<E>
         {
             if (behaviours == null)
                 return;
 
-            foreach (IBehaviour behaviour in behaviours)
+            foreach (IBehaviour<E> behaviour in behaviours)
                 entity.AddBehaviour(behaviour);
         }
-        
+
         /// <summary>
         /// Removes multiple behaviours from the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DelBehaviours(this IEntity entity, IEnumerable<IBehaviour> behaviours)
+        public static void DelBehaviours<E>(this IEntity<E> entity, IEnumerable<IBehaviour<E>> behaviours)
+            where E : IEntity<E>
         {
             if (behaviours == null)
                 return;
 
-            foreach (IBehaviour behaviour in behaviours)
+            foreach (IBehaviour<E> behaviour in behaviours)
                 entity.DelBehaviour(behaviour);
         }
 
@@ -68,14 +71,16 @@ namespace Atomic.Entities
         /// Adds a behaviour of the specified type to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddBehaviour<T>(this IEntity entity) where T : IBehaviour, new() =>
-            entity.AddBehaviour(new T());
+        public static void AddBehaviour<T, E>(this IEntity<E> entity)
+            where T : IBehaviour<E>, new()
+            where E : IEntity<E>
+            => entity.AddBehaviour(new T());
 
         /// <summary>
         /// Checks if the entity contains all of the specified tags.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasAllTags(this IEntity entity, params int[] tags)
+        public static bool HasAllTags<E>(this IEntity<E> entity, params int[] tags) where E : IEntity<E>
         {
             for (int i = 0, count = tags.Length; i < count; i++)
                 if (!entity.HasTag(tags[i]))
@@ -88,7 +93,7 @@ namespace Atomic.Entities
         /// Checks if the entity contains any of the specified tags.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasAnyTag(this IEntity entity, params int[] tags)
+        public static bool HasAnyTag<E>(this IEntity<E> entity, params int[] tags) where E : IEntity<E>
         {
             for (int i = 0, count = tags.Length; i < count; i++)
                 if (entity.HasTag(tags[i]))
@@ -101,21 +106,21 @@ namespace Atomic.Entities
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified GameObject.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this GameObject gameObject, out IEntity entity) =>
+        public static bool TryGetEntity<E>(this GameObject gameObject, out IEntity<E> entity) where E : IEntity<E> =>
             gameObject.TryGetComponent(out entity);
 
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified Component.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this Component component, out IEntity entity) =>
+        public static bool TryGetEntity<E>(this Component component, out IEntity<E> entity) where E : IEntity<E> =>
             component.TryGetComponent(out entity);
 
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from a 2D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this Collision2D collision2D, out IEntity entity) =>
+        public static bool TryGetEntity<E>(this Collision2D collision2D, out IEntity<E> entity) where E : IEntity<E> =>
             collision2D.gameObject.TryGetComponent(out entity);
 
         /// <summary>
@@ -144,7 +149,7 @@ namespace Atomic.Entities
             entity = component.GetComponentInParent<IEntity>();
             return entity != null;
         }
-        
+
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
         /// </summary>
@@ -164,7 +169,7 @@ namespace Atomic.Entities
             entity = collision.gameObject.GetComponentInParent<IEntity>();
             return entity != null;
         }
-        
+
         /// <summary>
         /// Installs logic from an <see cref="IEntityInstaller"/> into the entity.
         /// </summary>
@@ -193,9 +198,10 @@ namespace Atomic.Entities
                 }
             }
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallFromScene<T>(this T obj, Scene scene, bool includeInactive = true) where T : class, IEntity
+        public static void InstallFromScene<T>(this T obj, Scene scene, bool includeInactive = true)
+            where T : class, IEntity
         {
             GameObject[] gameObjects = scene.GetRootGameObjects();
             for (int g = 0, count = gameObjects.Length; g < count; g++)
@@ -258,7 +264,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue(this IEntity entity, string key, object value) =>
             entity.AddValue(NameToId(key), value);
-        
+
         /// <summary>
         /// Adds a value to the entity and returns the corresponding ID.
         /// </summary>
@@ -275,7 +281,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue<T>(this IEntity entity, string key, T value) where T : struct =>
             entity.AddValue(NameToId(key), value);
-        
+
         /// <summary>
         /// Adds a strongly-typed value and retrieves its ID.
         /// </summary>
@@ -311,13 +317,13 @@ namespace Atomic.Entities
         /// Checks if the entity has a value with the given key.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasValue(this IEntity entity, string key) => entity.HasValue(NameToId(key));
+        public static bool HasValue<E>(this IEntity<E> entity, string key) => entity.HasValue(NameToId(key));
 
         /// <summary>
         /// Adds multiple tags by string identifiers.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddTags(this IEntity entity, IEnumerable<string> tags)
+        public static void AddTags<E>(this IEntity<E> entity, IEnumerable<string> tags)
         {
             if (tags == null)
                 return;
@@ -330,7 +336,7 @@ namespace Atomic.Entities
         /// Adds multiple values by string keys.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IReadOnlyDictionary<string, object> values)
+        public static void AddValues(this IEntity<E> entity, IReadOnlyDictionary<string, object> values)
         {
             if (values == null)
                 return;
@@ -369,7 +375,7 @@ namespace Atomic.Entities
         /// Disposes all disposable values stored in the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DisposeValues(this IEntity entity)
+        public static void DisposeValues<E>(this IEntity<E> entity) where E : IEntity<E>
         {
             KeyValuePair<int, object>[] pairs = entity.GetValues();
             for (int i = 0, count = pairs.Length; i < count; i++)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
     {
         /// <summary>
         /// Occurs when a behaviour is added to the entity.

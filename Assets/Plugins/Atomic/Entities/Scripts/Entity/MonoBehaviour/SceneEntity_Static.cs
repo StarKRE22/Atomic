@@ -10,25 +10,25 @@ namespace Atomic.Entities
     /// Provides static factory and utility methods for working with <see cref="SceneEntity"/>.
     /// Includes creation, casting, and batch installation logic.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
     {
         /// <summary>
         /// Stores a mapping between <see cref="IEntity"/> and its corresponding <see cref="SceneEntity"/>.
         /// </summary>
-        private static readonly Dictionary<IEntity, SceneEntity> s_sceneEntities = new();
+        private static readonly Dictionary<IEntity<E>, SceneEntity<E>> s_sceneEntities = new();
 
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static SceneEntity Create(
+        public static SceneEntity<E> Create(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
-            IEnumerable<IBehaviour> behaviours = null
+            IEnumerable<IBehaviour<E>> behaviours = null
         )
         {
             GameObject gameObject = new GameObject(name);
-            SceneEntity sceneEntity = gameObject.AddComponent<SceneEntity>();
+            SceneEntity<E> sceneEntity = gameObject.AddComponent<SceneEntity<E>>();
             sceneEntity.Name = name;
 
             sceneEntity.AddTags(tags);

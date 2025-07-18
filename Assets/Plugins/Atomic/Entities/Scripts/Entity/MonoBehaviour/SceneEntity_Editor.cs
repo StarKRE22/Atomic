@@ -14,7 +14,8 @@ namespace Atomic.Entities
     /// Provides editor-time lifecycle support for the <see cref="SceneEntity"/>,
     /// including auto-refresh, edit-mode installation, and simulated lifecycle events.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
+
     {
         /// <summary>
         /// Automatically gathers installers and child entities when the component is reset.
@@ -87,7 +88,7 @@ namespace Atomic.Entities
                 this.DisposeInEditMode();
             }
 
-            this.CreateEntity();
+            this.InitEntity();
             this.Install();
             this.Precompile();
 

@@ -9,7 +9,8 @@ namespace Atomic.Entities
     /// Provides optimization hints for <see cref="SceneEntity"/> by configuring expected capacities
     /// for tags, values, and behaviours to minimize runtime allocations.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity<E> where E : class
+
     {
         /// <summary>
         /// Initial tag capacity used to optimize tag allocation.

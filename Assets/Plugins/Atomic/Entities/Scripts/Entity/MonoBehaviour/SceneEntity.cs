@@ -15,7 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity<E> : MonoBehaviour, IEntity<E> where E : IEntity<E>
+    public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E> where E : class, IEntity<E>
     {
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged
@@ -50,7 +50,7 @@ namespace Atomic.Entities
         {
             get
             {
-                if (_entity == null) this.CreateEntity();
+                if (_entity == null) this.InitEntity();
                 return _entity;
             }
         }
@@ -103,7 +103,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
-        private List<SceneEntityInstaller> installers;
+        private List<SceneEntityInstaller<E>> installers;
 
 #if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
@@ -125,13 +125,14 @@ namespace Atomic.Entities
             
             _installed = true;
 
+            E me = this as E;
             if (this.installers != null)
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneEntityInstaller installer = this.installers[i];
+                    SceneEntityInstaller<E> installer = this.installers[i];
                     if (installer != null)
-                        installer.Install(this);
+                        installer.Install(me);
                     else
                         Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
                 }
@@ -141,7 +142,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.children.Count; i < count; i++)
                 {
-                    SceneEntity child = this.children[i];
+                    SceneEntity<E> child = this.children[i];
                     if (child != null)
                         child.Install();
                     else
@@ -150,12 +151,17 @@ namespace Atomic.Entities
             }
         }
         
-        private void CreateEntity()
+        private void InitEntity()
         {
             string entityName = this.overrideName ? this.entityName : this.name;
-            _entity = new Entity(entityName, _tagCapacity, _valueCapacity, _behaviourCapacity, this);
+            _entity = new E(entityName, _tagCapacity, _valueCapacity, _behaviourCapacity, this);
             s_sceneEntities.TryAdd(_entity, this);
         }
+
+        // private Entity<E> CreateEntity()
+        // {
+        //     
+        // }
         
         /// <summary>
         /// Unity Awake callback. Automatically installs the entity if <c>installOnAwake</c> is true.
@@ -182,7 +188,7 @@ namespace Atomic.Entities
         public override string ToString() => this.Entity.ToString();
 
         /// <inheritdoc cref="object.Equals(object)"/>
-        public override bool Equals(object obj) => obj is IEntity entity && this.Entity.Id == entity.Id;
+        public override bool Equals(object obj) => obj is IEntity<E> entity && this.Entity.Id == entity.Id;
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
