@@ -1,34 +1,61 @@
 using System;
-using System.Collections.Generic;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
 #endif
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// A simple serialized container for a value of type <typeparamref name="T"/>.
+    /// Implements <see cref="IVariable{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to store.</typeparam>
     [Serializable]
     public sealed class BaseVariable<T> : IVariable<T>
     {
-        private static readonly IEqualityComparer<T> equalityComparer = EqualityComparer.GetDefault<T>();
-        
+        /// <summary>
+        /// Gets or sets the stored value.
+        /// </summary>
         public T Value
         {
-            get { return this.value; }
-            set { if (!equalityComparer.Equals(this.value, value)) this.value = value; }
+            get => this.value;
+            set => this.value = value;
         }
 
+        /// <summary>
+        /// The serialized value.
+        /// </summary>
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private T value;
 
+        /// <summary>
+        /// Returns the stored value.
+        /// </summary>
         public T Invoke() => this.value;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseVariable{T}"/> class with the default value.
+        /// </summary>
         public BaseVariable() => this.value = default;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseVariable{T}"/> class with a specified value.
+        /// </summary>
+        /// <param name="value">The initial value.</param>
         public BaseVariable(T value) => this.value = value;
 
+        /// <summary>
+        /// Implicitly converts a value of type <typeparamref name="T"/> to a <see cref="BaseVariable{T}"/>.
+        /// </summary>
+        /// <param name="value">The value to wrap.</param>
         public static implicit operator BaseVariable<T>(T value) => new(value);
 
-        public override string ToString() => this.value.ToString();
+        /// <summary>
+        /// Returns a string that represents the current value.
+        /// </summary>
+        public override string ToString() => this.value?.ToString();
     }
 }

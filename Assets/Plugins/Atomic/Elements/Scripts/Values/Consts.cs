@@ -1,4 +1,6 @@
-using UnityEngine;
+#if UNITY_5_3_OR_NEWER
+using UnityEngine; 
+#endif
 
 namespace Atomic.Elements
 {
@@ -36,6 +38,7 @@ namespace Atomic.Elements
         /// </summary>
         public static readonly Const<float> HalfPI = PI / 2f;
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Degrees to radians conversion factor (≈0.01745).
         /// </summary>
@@ -45,6 +48,7 @@ namespace Atomic.Elements
         /// Radians to degrees conversion factor (≈57.2958).
         /// </summary>
         public static readonly Const<float> Rad2Deg = Mathf.Rad2Deg;
+#endif
 
         /// <summary>
         /// Euler's number e, the base of the natural logarithm (≈2.71828).
@@ -124,6 +128,7 @@ namespace Atomic.Elements
 
         // -------------------- Vectors (Unity Specific) --------------------
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Unit vector pointing upward (0, 1, 0).
         /// </summary>
@@ -195,5 +200,6 @@ namespace Atomic.Elements
         /// Fully transparent color (0, 0, 0, 0).
         /// </summary>
         public static readonly Const<Color> Transparent = Color.clear;
+#endif
     }
 }

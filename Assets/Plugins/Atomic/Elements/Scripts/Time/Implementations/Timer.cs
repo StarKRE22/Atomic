@@ -1,5 +1,8 @@
 using System;
-using UnityEngine;
+
+#if UNITY_5_3_OR_NEWER
+using UnityEngine; 
+#endif
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -88,7 +91,9 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [HideInPlayMode]
 #endif
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private float duration;
 
         private float currentTime;
@@ -280,7 +285,7 @@ namespace Atomic.Elements
             if (this.currentState != TimerState.PLAYING)
                 return;
 
-            this.currentTime = Mathf.Min(this.duration, this.currentTime + deltaTime);
+            this.currentTime = Math.Min(this.duration, this.currentTime + deltaTime);
             this.OnCurrentTimeChanged?.Invoke(this.currentTime);
 
             float progress = this.currentTime / this.duration;
@@ -319,7 +324,7 @@ namespace Atomic.Elements
 #endif
         public void SetProgress(float progress)
         {
-            progress = Mathf.Clamp01(progress);
+            progress = Math.Clamp(progress, 0, 1);
             this.currentTime = this.duration * progress;
             this.OnCurrentTimeChanged?.Invoke(this.currentTime);
             this.OnProgressChanged?.Invoke(progress);
@@ -356,7 +361,7 @@ namespace Atomic.Elements
             if (time < 0)
                 return;
 
-            float newTime = Mathf.Clamp(time, 0, this.duration);
+            float newTime = Math.Clamp(time, 0, this.duration);
             if (Math.Abs(newTime - this.currentTime) > float.Epsilon)
             {
                 this.currentTime = newTime;

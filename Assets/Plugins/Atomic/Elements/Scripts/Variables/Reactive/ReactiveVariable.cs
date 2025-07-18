@@ -1,29 +1,42 @@
 using System;
 using System.Collections.Generic;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
 
 namespace Atomic.Elements
 {
-    /// Represents a serialized read-write reactive property.
+    /// <summary>
+    /// Represents a serialized reactive variable that raises events when its value changes.
+    /// Implements <see cref="IReactiveVariable{T}"/> and <see cref="IDisposable"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the stored value.</typeparam>
     [Serializable]
     public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
     {
         private static readonly IEqualityComparer<T> equalityComparer = EqualityComparer.GetDefault<T>();
 
+        /// <inheritdoc/>
         public event Action<T> OnValueChanged;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
 #endif
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
+#endif
         private T value;
-        
+
+        /// <summary>
+        /// Gets or sets the current value.
+        /// When a new value is assigned that differs from the previous one, the <see cref="OnValueChanged"/> event is triggered.
+        /// </summary>
         public T Value
         {
-            get { return this.value; }
+            get => this.value;
             set
             {
                 if (!equalityComparer.Equals(this.value, value))
@@ -34,50 +47,58 @@ namespace Atomic.Elements
             }
         }
 
-        public T Invoke()
-        {
-            return this.value;
-        }
+        /// <summary>
+        /// Creates a new instance of <see cref="ReactiveVariable{T}"/> with the default value.
+        /// </summary>
+        public ReactiveVariable() => this.value = default;
 
-        public ReactiveVariable()
-        {
-            this.value = default;
-        }
+        /// <summary>
+        /// Creates a new instance of <see cref="ReactiveVariable{T}"/> with the specified initial value.
+        /// </summary>
+        /// <param name="value">Initial value to assign.</param>
+        public ReactiveVariable(T value) => this.value = value;
 
-        public ReactiveVariable(T value)
-        {
-            this.value = value;
-        }
+        /// <summary>
+        /// Implicitly converts a value to a <see cref="ReactiveVariable{T}"/>.
+        /// </summary>
+        /// <param name="value">The value to wrap.</param>
+        public static implicit operator ReactiveVariable<T>(T value) => new(value);
 
-        public static implicit operator ReactiveVariable<T>(T value)
-        {
-            return new ReactiveVariable<T>(value);
-        }
-        
+        /// <summary>
+        /// Returns the stored value. This is useful for functional-style invocation.
+        /// </summary>
+        public T Invoke() => this.value;
+
+        /// <summary>
+        /// Subscribes a listener to be notified when the value changes.
+        /// </summary>
+        /// <param name="listener">The callback to invoke on value change.</param>
+        /// <returns>A subscription that can be used to unsubscribe later.</returns>
         public Subscription<T> Subscribe(Action<T> listener)
         {
             this.OnValueChanged += listener;
             return new Subscription<T>(this, listener);
         }
 
-        public void Unsubscribe(Action<T> listener)
-        {
-            this.OnValueChanged -= listener;
-        }
+        /// <summary>
+        /// Unsubscribes a previously registered listener from value change notifications.
+        /// </summary>
+        /// <param name="listener">The listener to remove.</param>
+        public void Unsubscribe(Action<T> listener) => this.OnValueChanged -= listener;
 
-        private void InvokeEvent(T value)
-        {
-            this.OnValueChanged?.Invoke(value);
-        }
+        /// <summary>
+        /// Manually triggers the <see cref="OnValueChanged"/> event with the given value.
+        /// </summary>
+        private void InvokeEvent(T value) => this.OnValueChanged?.Invoke(value);
 
-        public void Dispose()
-        {
-            InternalUtils.Dispose(ref this.OnValueChanged);
-        }
-        
-        public override string ToString()
-        {
-            return this.Value?.ToString();
-        }
+        /// <summary>
+        /// Disposes the object by clearing all subscribed listeners.
+        /// </summary>
+        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+
+        /// <summary>
+        /// Returns a string representation of the current value.
+        /// </summary>
+        public override string ToString() => this.Value?.ToString();
     }
 }

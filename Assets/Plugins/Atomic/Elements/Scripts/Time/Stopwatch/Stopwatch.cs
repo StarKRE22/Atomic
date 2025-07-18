@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -210,7 +209,7 @@ namespace Atomic.Elements
 #endif
         public void SetCurrentTime(float time)
         {
-            float newTime = Mathf.Max(time, 0);
+            float newTime = Math.Max(time, 0);
             if (Math.Abs(currentTime - newTime) > float.Epsilon)
             {
                 this.currentTime = newTime;

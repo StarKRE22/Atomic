@@ -1,5 +1,8 @@
 using System;
-using UnityEngine;
+
+#if UNITY_5_3_OR_NEWER
+using UnityEngine; 
+#endif
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -76,13 +79,16 @@ namespace Atomic.Elements
             set => this.SetProgress(value);
         }
 
+#if UNITY_5_3_OR_NEWER
         [SerializeField]
-        private float duration;
-
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
 #endif
+#if ODIN_INSPECTOR
+        [HideInPlayMode]
+#endif
+        private float duration;
+        
         private float currentTime;
+        
         private CycleState currentState;
 
         /// <summary>Initializes a new instance of the <see cref="Cycle"/> class.</summary>
@@ -138,7 +144,7 @@ namespace Atomic.Elements
             if (this.currentState is not CycleState.IDLE)
                 return false;
 
-            this.currentTime = Mathf.Clamp(currentTime, 0, this.duration);
+            this.currentTime = Math.Clamp(currentTime, 0, this.duration);
             this.currentState = CycleState.PLAYING;
             this.OnStateChanged?.Invoke(CycleState.PLAYING);
             this.OnStarted?.Invoke();
@@ -216,7 +222,7 @@ namespace Atomic.Elements
             if (this.currentState != CycleState.PLAYING)
                 return;
 
-            this.currentTime = Mathf.Min(this.currentTime + deltaTime, this.duration);
+            this.currentTime = Math.Min(this.currentTime + deltaTime, this.duration);
             this.OnCurrentTimeChanged?.Invoke(this.currentTime);
 
             float progress = this.currentTime / this.duration;
@@ -259,7 +265,7 @@ namespace Atomic.Elements
             if (time < 0)
                 return;
 
-            float newTime = Mathf.Clamp(time, 0, this.duration);
+            float newTime = Math.Clamp(time, 0, this.duration);
             if (Math.Abs(newTime - this.duration) > float.Epsilon)
             {
                 this.currentTime = newTime;
@@ -281,7 +287,7 @@ namespace Atomic.Elements
         /// <param name="progress">The progress to set (0 to 1).</param>
         public void SetProgress(float progress)
         {
-            progress = Mathf.Clamp01(progress);
+            progress = Math.Clamp(progress, 0, 1);
             float newTime = this.duration * progress;
             this.currentTime = newTime;
             this.OnCurrentTimeChanged?.Invoke(newTime);

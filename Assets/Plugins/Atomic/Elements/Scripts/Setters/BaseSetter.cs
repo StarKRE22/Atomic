@@ -42,14 +42,14 @@ namespace Atomic.Elements
         /// <param name="action">The new action to assign.</param>
         public void Construct(Action<T> action) => this.action = action;
 
-#if UNITY_EDITOR  
-#if ODIN_INSPECTOR
-        [Button("Set Value")]
-#endif
         /// <summary>
         /// [Editor Only] Invokes the setter manually in the Unity Editor.
         /// </summary>
         /// <param name="value">The value to set through the composed action.</param>
+#if UNITY_EDITOR  
+#if ODIN_INSPECTOR
+        [Button("Set Value")]
+#endif
         private void Editor_SetValue(T value) => this.action?.Invoke(value);
 #endif
     }

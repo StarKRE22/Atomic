@@ -1,5 +1,6 @@
 #if UNITY_5_3_OR_NEWER
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Atomic.Elements
@@ -18,6 +19,9 @@ namespace Atomic.Elements
         /// Reference to the actual <see cref="SceneAction"/> component to be invoked.
         /// </summary>
         [SerializeField]
+#if ODIN_INSPECTOR
+        [SceneObjectsOnly]
+#endif
         private SceneAction action;
 
         /// <summary>
