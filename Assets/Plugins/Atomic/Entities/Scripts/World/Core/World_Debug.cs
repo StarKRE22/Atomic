@@ -1,16 +1,12 @@
 #if UNITY_EDITOR && ODIN_INSPECTOR
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld
+    public partial class World<E>
     {
-        private static readonly List<IEntity> s_debugCache = new();
-
 #if ODIN_INSPECTOR
         [ShowInInspector]
         [LabelText(nameof(Name))]
@@ -31,7 +27,7 @@ namespace Atomic.Entities
             get
             {
                 var result = new List<string>();
-                foreach (IEntity entity in _entities.Values)
+                foreach (E entity in _entities.Values)
                     result.Add($"{entity.Name}: {entity.InstanceID}");
 
                 return result;
@@ -44,9 +40,9 @@ namespace Atomic.Entities
             [HorizontalGroup, ShowInInspector]
             public string Name => _entity.ToString();
 
-            private IEntity _entity;
+            private E _entity;
 
-            public EntityDebug(IEntity entity) => _entity = entity;
+            public EntityDebug(E entity) => _entity = entity;
         }
     }
 }

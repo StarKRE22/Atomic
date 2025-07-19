@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld : IEntityWorld
+    public partial class World<E> : IWorld<E> where E : IEntity<E>
     {
         public event Action OnStateChanged;
 
-        public event Action<IEntity> OnAdded;
-        public event Action<IEntity> OnDeleted;
+        public event Action<E> OnAdded;
+        public event Action<E> OnDeleted;
 
         public string Name
         {
@@ -17,63 +17,57 @@ namespace Atomic.Entities
             set => _name = value;
         }
 
-        public IReadOnlyCollection<IEntity> All => _entities.Values;
+        public IReadOnlyCollection<E> All => _entities.Values;
         public int Count => _entities.Count;
 
-        private readonly Dictionary<int, IEntity> _entities = new();
-        private readonly List<IEntity> _cache = new();
+        private readonly Dictionary<int, E> _entities = new();
+        private readonly List<E> _cache = new();
 
         private string _name;
 
-        public EntityWorld()
-        {
-            _name = string.Empty;
-        }
+        public World() => _name = string.Empty;
 
-        public EntityWorld(params IEntity[] entities)
+        public World(params E[] entities)
         {
             _name = string.Empty;
             this.AddEntities(entities);
         }
 
-        public EntityWorld(in string name = null, params IEntity[] entities)
+        public World(string name = null, params E[] entities)
         {
             _name = name;
             this.AddEntities(entities);
         }
 
-        public EntityWorld(in string name, IEnumerable<IEntity> entities)
+        public World(string name, IEnumerable<E> entities)
         {
             _name = name;
             this.AddEntities(entities);
         }
 
-        public bool Has(in IEntity entity)
-        {
-            return _entities.ContainsKey(entity.InstanceID);
-        }
+        public bool Has(E entity) => _entities.ContainsKey(entity.InstanceID);
 
-        public IEntity[] GetAll()
+        public E[] GetAll()
         {
-            IEntity[] result = new IEntity[_entities.Count];
+            E[] result = new E[_entities.Count];
             this.GetAll(result);
             return result;
         }
 
-        public int GetAll(in IEntity[] results)
+        public int GetAll(E[] results)
         {
             _entities.Values.CopyTo(results, 0);
             return _entities.Count;
         }
 
-        public void CopyTo(ICollection<IEntity> results)
+        public void CopyTo(ICollection<E> results)
         {
             results.Clear();
-            foreach (IEntity entity in _entities.Values) 
+            foreach (E entity in _entities.Values) 
                 results.Add(entity);
         }
 
-        public bool Add(in IEntity entity)
+        public bool Add(E entity)
         {
             if (!_entities.TryAdd(entity.InstanceID, entity))
                 return false;
@@ -89,7 +83,7 @@ namespace Atomic.Entities
             return true;
         }
 
-        public bool Del(in IEntity entity)
+        public bool Del(E entity)
         {
             if (!_entities.Remove(entity.InstanceID))
                 return false;
@@ -119,7 +113,7 @@ namespace Atomic.Entities
             _values.Clear();
             _updater.Clear();
 
-            foreach (IEntity entity in _cache)
+            foreach (E entity in _cache)
             {
                 this.Unsubscribe(in entity);
                 this.OnDeleted?.Invoke(entity);
@@ -128,7 +122,7 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private void Subscribe(in IEntity entity)
+        private void Subscribe(in E entity)
         {
             entity.OnTagAdded += this.OnTagAdded;
             entity.OnTagDeleted += this.OnTagRemoved;
@@ -137,7 +131,7 @@ namespace Atomic.Entities
             entity.OnValueDeleted += this.OnValueRemoved;
         }
 
-        private void Unsubscribe(in IEntity entity)
+        private void Unsubscribe(in E entity)
         {
             entity.OnTagAdded -= this.OnTagAdded;
             entity.OnTagDeleted -= this.OnTagRemoved;
@@ -146,7 +140,7 @@ namespace Atomic.Entities
             entity.OnValueDeleted -= this.OnValueRemoved;
         }
 
-        public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
+        public IEnumerator<E> GetEnumerator() => _entities.Values.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

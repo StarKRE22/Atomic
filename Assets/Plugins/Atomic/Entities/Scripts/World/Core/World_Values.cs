@@ -2,14 +2,14 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld
+    public partial class World<E>
     {
-        private readonly Dictionary<int, List<IEntity>> _values = new();
+        private readonly Dictionary<int, List<E>> _values = new();
 
-        public bool GetWithValue(in int valueKey, out IEntity result)
+        public bool GetWithValue(int valueKey, out E result)
         {
-            result = null;
-            if (!_values.TryGetValue(valueKey, out List<IEntity> entities))
+            result = default;
+            if (!_values.TryGetValue(valueKey, out List<E> entities))
                 return false;
 
             if (entities.Count == 0)
@@ -19,11 +19,11 @@ namespace Atomic.Entities
             return true;
         }
 
-        public IReadOnlyList<IEntity> GetAllWithValue(in int valueKey)
+        public IReadOnlyList<E> GetAllWithValue(int valueKey)
         {
-            if (!_values.TryGetValue(valueKey, out List<IEntity> entities))
+            if (!_values.TryGetValue(valueKey, out List<E> entities))
             {
-                entities = new List<IEntity>();
+                entities = new List<E>();
                 _values.Add(valueKey, entities);
                 return entities;
             }
@@ -31,9 +31,9 @@ namespace Atomic.Entities
             return entities;
         }
 
-        public int GetAllWithValue(in int valueKey, in IEntity[] results)
+        public int GetAllWithValue(int valueKey, E[] results)
         {
-            if (!_values.TryGetValue(valueKey, out List<IEntity> entities))
+            if (!_values.TryGetValue(valueKey, out List<E> entities))
                 return 0;
 
             int count = entities.Count;
@@ -42,15 +42,15 @@ namespace Atomic.Entities
             return count;
         }
 
-        private void AddValues(IEntity entity)
+        private void AddValues(E entity)
         {
             using IEnumerator<KeyValuePair<int, object>> values = entity.GetValueEnumerator();
             while (values.MoveNext())
             {
                 (int key, _) = values.Current;
-                if (!_values.TryGetValue(key, out List<IEntity> entities))
+                if (!_values.TryGetValue(key, out List<E> entities))
                 {
-                    entities = new List<IEntity>();
+                    entities = new List<E>();
                     _values.Add(key, entities);
                 }
 
@@ -60,24 +60,24 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private void RemoveValues(IEntity entity)
+        private void RemoveValues(E entity)
         {
             using IEnumerator<KeyValuePair<int, object>> values = entity.GetValueEnumerator();
             while (values.MoveNext())
             {
                 (int key, _) = values.Current;
-                if (_tags.TryGetValue(key, out List<IEntity> entities))
+                if (_tags.TryGetValue(key, out List<E> entities))
                     entities.Remove(entity);
             }
             
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnValueAdded(IEntity entity, int valueKey)
+        private void OnValueAdded(E entity, int valueKey)
         {
-            if (!_values.TryGetValue(valueKey, out List<IEntity> entities))
+            if (!_values.TryGetValue(valueKey, out List<E> entities))
             {
-                entities = new List<IEntity>();
+                entities = new List<E>();
                 _values.Add(valueKey, entities);
             }
 
@@ -85,9 +85,9 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnValueRemoved(IEntity entity, int valueKey)
+        private void OnValueRemoved(E entity, int valueKey)
         {
-            if (_values.TryGetValue(valueKey, out List<IEntity> entities))
+            if (_values.TryGetValue(valueKey, out List<E> entities))
             {
                 entities.Remove(entity);
                 this.OnStateChanged?.Invoke();

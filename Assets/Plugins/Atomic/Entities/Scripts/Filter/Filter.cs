@@ -30,7 +30,7 @@ namespace Atomic.Entities
 #endif
         private readonly HashSet<E> entities = new();
 
-        private readonly IEntityWorld<E> world;
+        private readonly IWorld<E> world;
         private readonly Predicate<E> predicate;
         private readonly IFilter<E>.ITrigger[] triggers;
 
@@ -42,7 +42,7 @@ namespace Atomic.Entities
         /// <param name="triggers">Optional triggers that can invalidate entities or cause re-evaluation.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="world"/> or <paramref name="predicate"/> is null.</exception>
         public Filter(
-            in IEntityWorld<E> world,
+            in IWorld<E> world,
             in Predicate<E> predicate,
             params IFilter<E>.ITrigger[] triggers
         )

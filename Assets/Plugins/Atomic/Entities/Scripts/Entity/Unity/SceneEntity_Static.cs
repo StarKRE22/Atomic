@@ -60,52 +60,6 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Destroys the associated GameObject of a given <see cref="IEntity"/> if it is a <see cref="SceneEntity"/>.
-        /// </summary>
-        public static void Destroy(IEntity<E> entity, float t = 0)
-        {
-            if (entity is SceneEntity<E> sceneEntity)
-                Destroy(sceneEntity.gameObject, t);
-            else if (entity is SceneEntityProxy<E> entityProxy) 
-                Destroy(entityProxy.Source.gameObject, t);
-        }
-
-        /// <summary>
-        /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
-        /// </summary>
-        public static E Cast(IEntity<E> entity)
-        {
-            return entity switch
-            {
-                null => null,
-                E tEntity => tEntity,
-                SceneEntityProxy<E> tProxy => (E) tProxy.Source,
-                _ => throw new Exception("Can't convert entity to SceneEntity")
-            };
-        }
-
-        /// <summary>
-        /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
-        /// </summary>
-        public static bool TryCast(IEntity<E> entity, out E result)
-        {
-            if (entity is E sceneEntity)
-            {
-                result = sceneEntity;
-                return true;
-            }
-
-            if (entity is SceneEntityProxy<E> proxy)
-            {
-                result = (E) proxy.Source;
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        /// <summary>
         /// Installs all <see cref="SceneEntity"/> instances found in the given scene that are not yet installed.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -8,31 +8,33 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
-    public class EntityView : EntityViewBase
+    public abstract class View<E> : ViewBase<E> where E : IEntity<E>
     {
+#if ODIN_INSPECTOR
+        [SceneObjectsOnly]
+#endif
         [SerializeField]
-        private List<EntityViewInstaller> _installers;
+        private List<ViewInstaller<E>> _installers;
 
-        private readonly List<IBehaviour> _behaviours = new();
+        private readonly List<IBehaviour<E>> _behaviours = new();
         
         private bool _installed;
 
-        protected override void OnShow(IEntity entity)
+        protected override void OnShow(E entity)
         {
             this.Install();
             entity.AddBehaviours(_behaviours);
             base.OnShow(entity);
         }
 
-        protected override void OnHide(IEntity entity)
+        protected override void OnHide(E entity)
         {
             entity.DelBehaviours(_behaviours);
             base.OnHide(entity);
         }
 
-        public void AddBehaviour(IBehaviour behaviour)
+        public void AddBehaviour(IBehaviour<E> behaviour)
         {
             _behaviours.Add(behaviour);
             
@@ -40,7 +42,7 @@ namespace Atomic.Entities
                 _entity.AddBehaviour(behaviour);
         }
 
-        public void DelBehaviour(IBehaviour behaviour)
+        public void DelBehaviour(IBehaviour<E> behaviour)
         {
             _behaviours.Remove(behaviour);
 
@@ -57,7 +59,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = _installers.Count; i < count; i++)
             {
-                EntityViewInstaller installer = _installers[i];
+                ViewInstaller<E> installer = _installers[i];
                 if (installer != null)
                     installer.Install(this);
             }
@@ -71,10 +73,8 @@ namespace Atomic.Entities
             try
             {
                 for (int i = 0, count = _behaviours.Count; i < count; i++)
-                {
-                    if (_behaviours[i] is IGizmos gizmos) 
+                    if (_behaviours[i] is IGizmos<E> gizmos)
                         gizmos.OnGizmosDraw(_entity);
-                }
             }
             catch (Exception e)
             {

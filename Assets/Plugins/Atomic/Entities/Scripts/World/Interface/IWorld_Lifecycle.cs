@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public partial interface IEntityWorld
+    public partial interface IWorld<E>
     {
         event Action OnInitialized;
         event Action OnDisposed;

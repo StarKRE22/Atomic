@@ -3,18 +3,13 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [AddComponentMenu("Atomic/Entities/Entity World Runner")]
-    // [DefaultExecutionOrder(-1000)] cause breaks Unity LateUpdate()
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(SceneEntityWorld))]
-    public class SceneEntityWorldRunner : MonoBehaviour
+    public class SceneWorldUpdater<E> : MonoBehaviour where E : SceneEntity<E>
     {
-        private SceneEntityWorld world;
-        private bool started;
+        [SerializeField]
+        private SceneWorld<E> world;
 
-        private void Awake()
-        {
-            this.world = this.GetComponent<SceneEntityWorld>();
-        }
+        private bool started;
 
         private void OnEnable()
         {

@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld
+    public partial class World<E>
     {
         public event Action OnInitialized
         {
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         public bool Initialized => _updater.Initialized;
         public bool Enabled => _updater.Enabled;
 
-        private readonly Updater _updater = new();
+        private readonly Updater<E> _updater = new();
         
         public void Init() => _updater.Init();
         public void Enable() => _updater.Enable();

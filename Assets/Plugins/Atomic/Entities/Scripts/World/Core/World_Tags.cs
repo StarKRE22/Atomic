@@ -2,14 +2,14 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld
+    public partial class World<E>
     {
-        private readonly Dictionary<int, List<IEntity>> _tags = new();
+        private readonly Dictionary<int, List<E>> _tags = new();
 
-        public bool GetWithTag(in int tag, out IEntity result)
+        public bool GetWithTag(int tag, out E result)
         {
-            result = null;
-            if (!_tags.TryGetValue(tag, out List<IEntity> entities))
+            result = default;
+            if (!_tags.TryGetValue(tag, out List<E> entities))
                 return false;
 
             if (entities.Count == 0)
@@ -19,19 +19,19 @@ namespace Atomic.Entities
             return true;
         }
 
-        public IReadOnlyList<IEntity> GetAllWithTag(in int tag)
+        public IReadOnlyList<E> GetAllWithTag(int tag)
         {
-            if (_tags.TryGetValue(tag, out List<IEntity> entities)) 
+            if (_tags.TryGetValue(tag, out List<E> entities)) 
                 return entities;
             
-            entities = new List<IEntity>();
+            entities = new List<E>();
             _tags.Add(tag, entities);
             return entities;
         }
 
-        public int GetAllWithTag(in int tag, in IEntity[] results)
+        public int GetAllWithTag(int tag, E[] results)
         {
-            if (!_tags.TryGetValue(tag, out List<IEntity> entities))
+            if (!_tags.TryGetValue(tag, out List<E> entities))
                 return 0;
 
             int count = entities.Count;
@@ -41,15 +41,15 @@ namespace Atomic.Entities
             return count;
         }
 
-        private void AddTags(in IEntity entity)
+        private void AddTags(E entity)
         {
             using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
             {
                 int tag = tags.Current;
-                if (!_tags.TryGetValue(tag, out List<IEntity> entities))
+                if (!_tags.TryGetValue(tag, out List<E> entities))
                 {
-                    entities = new List<IEntity>();
+                    entities = new List<E>();
                     _tags.Add(tag, entities);
                 }
 
@@ -57,22 +57,22 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveTags(IEntity entity)
+        private void RemoveTags(E entity)
         {
             using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
             {
                 int tag = tags.Current;
-                if (_tags.TryGetValue(tag, out List<IEntity> entities))
+                if (_tags.TryGetValue(tag, out List<E> entities))
                     entities.Remove(entity);
             }
         }
 
-        private void OnTagAdded(IEntity entity, int tag)
+        private void OnTagAdded(E entity, int tag)
         {
-            if (!_tags.TryGetValue(tag, out List<IEntity> entities))
+            if (!_tags.TryGetValue(tag, out List<E> entities))
             {
-                entities = new List<IEntity>();
+                entities = new List<E>();
                 _tags.Add(tag, entities);
             }
 
@@ -80,9 +80,9 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnTagRemoved(IEntity obj, int tag)
+        private void OnTagRemoved(E obj, int tag)
         {
-            if (_tags.TryGetValue(tag, out List<IEntity> entities))
+            if (_tags.TryGetValue(tag, out List<E> entities))
             {
                 entities.Remove(obj);
                 this.OnStateChanged?.Invoke();

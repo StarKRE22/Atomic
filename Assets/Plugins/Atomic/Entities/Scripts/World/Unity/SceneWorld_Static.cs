@@ -2,18 +2,18 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityWorld
+    public partial class SceneWorld<E>
     {
-        public static SceneEntityWorld Create(
+        public static SceneWorld<E> Create(
             string name = null,
             bool scanEntities = false,
-            params IEntity[] entities
+            params E[] entities
         )
         {
             GameObject go = new GameObject(name);
             go.SetActive(false);
             
-            SceneEntityWorld world = go.AddComponent<SceneEntityWorld>();
+            SceneWorld<E> world = go.AddComponent<SceneWorld<E>>();
             world.Name = name;
             world.scanOnAwake = scanEntities;
 

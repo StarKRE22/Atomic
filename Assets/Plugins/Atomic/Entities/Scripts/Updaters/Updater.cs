@@ -120,7 +120,7 @@ namespace Atomic.Entities
             this.OnDisabled?.Invoke();
         }
 
-        public void OnUpdate(in float deltaTime)
+        public void OnUpdate(float deltaTime)
         {
             if (!_enabled)
             {
@@ -134,7 +134,7 @@ namespace Atomic.Entities
             this.OnUpdated?.Invoke(deltaTime);
         }
 
-        public void OnFixedUpdate(in float deltaTime)
+        public void OnFixedUpdate(float deltaTime)
         {
             if (!_enabled)
             {
@@ -148,7 +148,7 @@ namespace Atomic.Entities
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
-        public void OnLateUpdate(in float deltaTime)
+        public void OnLateUpdate(float deltaTime)
         {
             if (!_enabled)
             {
@@ -162,7 +162,7 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        public bool Add(in E entity)
+        public bool Add(E entity)
         {
             if (entity == null)
                 return false;
@@ -176,7 +176,7 @@ namespace Atomic.Entities
             return true;
         }
 
-        public bool Del(in E entity)
+        public bool Del(E entity)
         {
             if (entity == null)
                 return false;

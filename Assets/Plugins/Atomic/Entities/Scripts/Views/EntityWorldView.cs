@@ -8,10 +8,10 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityWorldView : MonoBehaviour
     {
-        public event Action<IEntity, EntityViewBase> OnViewAdded;
-        public event Action<IEntity, EntityViewBase> OnViewRemoved; 
+        public event Action<IEntity, ViewBase> OnViewAdded;
+        public event Action<IEntity, ViewBase> OnViewRemoved; 
 
-        private readonly Dictionary<IEntity, EntityViewBase> _activeViews = new();
+        private readonly Dictionary<IEntity, ViewBase> _activeViews = new();
 
         [SerializeField]
         private Transform _viewport;
@@ -21,9 +21,9 @@ namespace Atomic.Entities
 
         private IEntityWorld _world;
 
-        public EntityViewBase GetView(IEntity entity) => _activeViews[entity];
+        public ViewBase GetView(IEntity entity) => _activeViews[entity];
 
-        public Dictionary<IEntity, EntityViewBase> GetAllViews() => new(_activeViews);
+        public Dictionary<IEntity, ViewBase> GetAllViews() => new(_activeViews);
 
         public void Show(IEntityWorld world)
         {
@@ -63,7 +63,7 @@ namespace Atomic.Entities
                 return;
 
             string name = this.GetEntityName(entity);
-            EntityViewBase view = _viewPool.Rent(name);
+            ViewBase view = _viewPool.Rent(name);
             view.transform.SetParent(_viewport);
             view.Show(entity);
             
@@ -73,7 +73,7 @@ namespace Atomic.Entities
 
         private void UnspawnView(IEntity entity)
         {
-            if (!_activeViews.Remove(entity, out EntityViewBase view))
+            if (!_activeViews.Remove(entity, out ViewBase view))
                 return;
 
             view.Hide();

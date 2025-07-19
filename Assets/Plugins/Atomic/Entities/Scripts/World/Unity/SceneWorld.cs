@@ -11,7 +11,7 @@ namespace Atomic.Entities
     [AddComponentMenu("Atomic/Entities/Entity World")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1000)]
-    public partial class SceneEntityWorld : MonoBehaviour, IEntityWorld
+    public partial class SceneWorld<E> : MonoBehaviour, IWorld<E> where E : SceneEntity<E>
     {
         public event Action OnStateChanged
         {
@@ -19,7 +19,7 @@ namespace Atomic.Entities
             remove => _world.OnStateChanged -= value;
         }
 
-        private readonly EntityWorld _world = new();
+        private readonly World<E> _world = new();
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -52,13 +52,13 @@ namespace Atomic.Entities
                 ? FindObjectsInactive.Include
                 : FindObjectsInactive.Exclude;
             
-            SceneEntity[] entities = FindObjectsByType<SceneEntity>(includeInactive, FindObjectsSortMode.None);
+            E[] entities = FindObjectsByType<E>(includeInactive, FindObjectsSortMode.None);
 #else
             SceneEntity[] entities = FindObjectsOfType<SceneEntity>(this.includeInactiveOnScan);
 #endif
             for (int i = 0, count = entities.Length; i < count; i++)
             {
-                SceneEntity entity = entities[i];
+                E entity = entities[i];
                 if (!entity.Installed)
                     entity.Install();
 

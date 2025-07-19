@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class EntityViewBase : MonoBehaviour
+    public abstract class ViewBase<E> : MonoBehaviour where E : IEntity<E>
     {
 #if ODIN_INSPECTOR
         [Title("Debug")]
@@ -19,17 +19,17 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public IEntity Entity => _entity;
+        public E Entity => _entity;
 
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
         public bool IsShown => _isShown;
 
-        private protected IEntity _entity;
+        private protected E _entity;
         private protected bool _isShown;
         
-        public void Show(IEntity entity)
+        public void Show(E entity)
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
             _isShown = true;
@@ -40,13 +40,13 @@ namespace Atomic.Entities
         {
             this.OnHide(_entity);
             _isShown = false;
-            _entity = null;
+            _entity = default;
         }
 
-        protected virtual void OnShow(IEntity entity) => 
+        protected virtual void OnShow(E entity) => 
             this.gameObject.SetActive(true);
 
-        protected virtual void OnHide(IEntity entity) => 
+        protected virtual void OnHide(E entity) => 
             this.gameObject.SetActive(false);
     }
 }
