@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    [AddComponentMenu("Atomic/Entities/Entity Proxy")]
-    [DisallowMultipleComponent]
-    public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
-    {
-    }
+    // [AddComponentMenu("Atomic/Entities/Entity Proxy")]
+    // [DisallowMultipleComponent]
+    // public class SceneEntityProxy<E> : SceneEntityProxy<E> where E : SceneEntity<E>
+    // {
+    // }
 
-    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
+    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity<E> where E : class, IEntity<E>
     {
         public event Action OnStateChanged
         {
@@ -22,11 +22,7 @@ namespace Atomic.Entities
         [SerializeField]
         private E _source;
 
-        public int InstanceID
-        {
-            get { return _source.Id; }
-            set { _source.Id = value; }
-        }
+        public int InstanceID => _source.InstanceID;
 
         public string Name
         {
@@ -34,24 +30,13 @@ namespace Atomic.Entities
             set => _source.Name = value;
         }
         
-        public void Clear()
-        {
-            _source.Clear();
-        }
+        public void Clear() => _source.Clear();
 
-        public override bool Equals(object obj)
-        {
-            return obj is IEntity entity && _source.Id == entity.InstanceID;
-        }
+        public override bool Equals(object obj) => 
+            obj is IEntity<E> entity && _source.InstanceID == entity.InstanceID;
 
-        public override int GetHashCode()
-        {
-            return _source.GetHashCode();
-        }
+        public override int GetHashCode() => _source.GetHashCode();
 
-        private void Reset()
-        {
-            _source = this.GetComponentInParent<E>();
-        }
+        private void Reset() => _source = this.GetComponentInParent<E>();
     }
 }

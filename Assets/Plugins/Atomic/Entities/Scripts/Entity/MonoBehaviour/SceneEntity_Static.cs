@@ -77,7 +77,7 @@ namespace Atomic.Entities
             {
                 null => null,
                 SceneEntity<E> sceneEntity => sceneEntity,
-                SceneEntityProxy sceneEntityProxy => sceneEntityProxy.Source,
+                SceneEntityProxy<E> sceneEntityProxy => sceneEntityProxy.Source,
                 _ => throw new Exception("Can't convert entity to SceneEntity")
             };
         }
@@ -93,7 +93,7 @@ namespace Atomic.Entities
                 return true;
             }
 
-            if (entity is SceneEntityProxy proxy)
+            if (entity is SceneEntityProxy<E> proxy)
             {
                 result = proxy.Source;
                 return true;

@@ -46,17 +46,9 @@ namespace Atomic.Entities
             remove => _source.OnLateUpdated -= value;
         }
         
-        public bool Initialized
-        {
-            get => _source.Initialized;
-        }
+        public bool Initialized => _source.Initialized;
+        public bool Enabled => _source.Enabled;
 
-        public bool Enabled
-        {
-            get => _source.Enabled;
-            set => _source.Enabled = value;
-        }
-        
         public void Init() => _source.Init();
         public void Enable() => _source.Enable();
         public void Disable() => _source.Disable();

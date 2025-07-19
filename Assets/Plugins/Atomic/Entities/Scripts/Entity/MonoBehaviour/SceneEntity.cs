@@ -15,8 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public abstract partial class SceneEntity<E> : MonoBehaviour,
-        IEntity<E>, ISerializationCallbackReceiver where E : class, IEntity<E>
+    public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E>, ISerializationCallbackReceiver where E : class, IEntity<E>
     {
         private const int UNDEFINED_INDEX = -1;
 
