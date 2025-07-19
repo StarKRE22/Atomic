@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using System;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,8 +9,7 @@ namespace Atomic.Entities
     /// Provides gizmo drawing functionality for the <see cref="SceneEntity"/> component,
     /// allowing visual debugging in both play mode and edit mode.
     /// </summary>
-    public partial class SceneEntity<E> where E : class
-
+    public partial class SceneEntity<E>
     {
         [Header("Gizmos")]
         [SerializeField]
@@ -46,8 +44,8 @@ namespace Atomic.Entities
             {
                 for (int i = 0; i < _entity._behaviourCount; i++)
                 {
-                    IBehaviour behaviour = _entity._behaviours[i];
-                    if (behaviour is IGizmos gizmos)
+                    IBehaviour<E> behaviour = _entity._behaviours[i];
+                    if (behaviour is IGizmos<E> gizmos)
                         gizmos.OnGizmosDraw(_entity);
                 }
             }

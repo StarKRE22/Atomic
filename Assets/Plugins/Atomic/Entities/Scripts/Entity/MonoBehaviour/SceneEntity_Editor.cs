@@ -14,16 +14,15 @@ namespace Atomic.Entities
     /// Provides editor-time lifecycle support for the <see cref="SceneEntity"/>,
     /// including auto-refresh, edit-mode installation, and simulated lifecycle events.
     /// </summary>
-    public partial class SceneEntity<E> where E : class
-
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Automatically gathers installers and child entities when the component is reset.
         /// </summary>
         private void Reset()
         {
-            this.installers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
-            this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
+            this.installers = new List<SceneEntityInstaller<E>>(this.GetComponentsInChildren<SceneEntityInstaller<E>>());
+            this.children = new List<SceneEntity<E>>(this.GetComponentsInChildren<SceneEntity<E>>());
             this.children.Remove(this);
         }
 
@@ -61,7 +60,7 @@ namespace Atomic.Entities
         {
             for (int i = 0, count = this.installers.Count; i < count; i++)
             {
-                SceneEntityInstaller installer = this.installers[i];
+                SceneEntityInstaller<E> installer = this.installers[i];
                 if (installer != null)
                     installer.refreshCallback = this.RefreshInEditMode;
             }
@@ -108,8 +107,8 @@ namespace Atomic.Entities
             if (_entity.Initialized)
                 return;
 
-            foreach (IBehaviour behaviour in _entity.GetBehaviours())
-                if (behaviour is IInit dispose && IsEditModeSupported(behaviour))
+            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+                if (behaviour is IInit<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Init(_entity);
         }
 
@@ -121,8 +120,8 @@ namespace Atomic.Entities
             if (_entity.Enabled)
                 return;
 
-            foreach (IBehaviour behaviour in _entity.GetBehaviours())
-                if (behaviour is IEnable dispose && IsEditModeSupported(behaviour))
+            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+                if (behaviour is IEnable<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Enable(_entity);
         }
 
@@ -134,8 +133,8 @@ namespace Atomic.Entities
             if (_entity is not {Enabled: true})
                 return;
 
-            foreach (IBehaviour behaviour in _entity.GetBehaviours())
-                if (behaviour is IDisable disable && IsEditModeSupported(behaviour))
+            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+                if (behaviour is IDisable<E> disable && IsEditModeSupported(behaviour))
                     disable.Disable(_entity);
         }
 
@@ -147,9 +146,9 @@ namespace Atomic.Entities
             if (_entity is not {Initialized: true})
                 return;
 
-            foreach (IBehaviour behaviour in _entity.GetBehaviours())
+            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
             {
-                if (behaviour is IDispose dispose && IsEditModeSupported(behaviour))
+                if (behaviour is IDispose<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Dispose(_entity);
             }
         }
@@ -157,7 +156,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether a behaviour is marked to support edit mode lifecycle.
         /// </summary>
-        private static bool IsEditModeSupported(IBehaviour behaviour) => 
+        private static bool IsEditModeSupported(IBehaviour<E> behaviour) => 
             behaviour.GetType().IsDefined(typeof(EditModeBehaviourAttribute));
     }
 }

@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// Provides inspector-only debug UI for the <see cref="SceneEntity"/> including read-only state
     /// and editable lists for tags, values, and behaviors.
     /// </summary>
-    public partial class SceneEntity<E> where E : class
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Gets the entity's name for display in the inspector.
@@ -201,9 +201,9 @@ namespace Atomic.Entities
             [ShowInInspector, ReadOnly]
             public string name;
 
-            internal readonly IBehaviour value;
+            internal readonly IBehaviour<E> value;
 
-            public BehaviourElement(string name, IBehaviour value)
+            public BehaviourElement(string name, IBehaviour<E> value)
             {
                 this.name = name;
                 this.value = value;
@@ -230,11 +230,11 @@ namespace Atomic.Entities
             {
                 _behaviourElementsCache.Clear();
 
-                IReadOnlyCollection<IBehaviour> behaviours = _entity?.GetBehaviours();
+                IReadOnlyCollection<IBehaviour<E>> behaviours = _entity?.GetBehaviours();
                 if (behaviours == null)
                     return _behaviourElementsCache;
 
-                foreach (IBehaviour behaviour in behaviours)
+                foreach (IBehaviour<E> behaviour in behaviours)
                 {
                     string name = behaviour.GetType().Name;
                     _behaviourElementsCache.Add(new BehaviourElement(name, behaviour));

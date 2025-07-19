@@ -7,11 +7,6 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    //
-    // public class Entity : Entity<Entity>
-    // {
-    // }
-    
     /// <summary>
     /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
     /// </summary>
@@ -49,90 +44,90 @@ namespace Atomic.Entities
         private string name;
         private int id;
 
-        // /// <summary>
-        // /// Initializes a new instance of the <see cref="Entity"/> class.
-        // /// </summary>
-        // protected Entity()
-        // {
-        //     this.name = string.Empty;
-        //     this.id = NextId();
-        //     this.owner = this;
-        //
-        //     this.InitializeTags();
-        //     this.InitializeValues();
-        //     this.InitializeBehaviours();
-        // }
-        //
-        // /// <summary>
-        // /// Initializes a new instance of the <see cref="Entity"/> class with a specified owner.
-        // /// </summary>
-        // protected Entity(IEntity<E> owner)
-        // {
-        //     this.name = string.Empty;
-        //     this.id = NextId();
-        //     this.owner = owner;
-        //
-        //     this.InitializeTags();
-        //     this.InitializeValues();
-        //     this.InitializeBehaviours();
-        // }
-        //
-        // /// <summary>
-        // /// Initializes a new instance of the <see cref="Entity"/> class with a specified name.
-        // /// </summary>
-        // protected Entity(string name)
-        // {
-        //     this.name = name;
-        //     this.id = NextId();
-        //     this.owner = this;
-        //
-        //     this.InitializeTags();
-        //     this.InitializeValues();
-        //     this.InitializeBehaviours();
-        // }
-        //
-        // /// <summary>
-        // /// Initializes a new instance of the <see cref="Entity"/> class
-        // /// with optional collections of tags, values, behaviours, and a custom ID.
-        // /// </summary>
-        // protected Entity(
-        //     in string name = null,
-        //     in IEnumerable<int> tags = null,
-        //     in IEnumerable<KeyValuePair<int, object>> values = null,
-        //     in IEnumerable<IBehaviour<E>> behaviours = null,
-        //     in IEntity<E> owner = null,
-        //     in int id = -1
-        // )
-        // {
-        //     this.name = name ?? string.Empty;
-        //     this.id = id < 0 ? NextId() : id;
-        //     this.owner = owner ?? this;
-        //
-        //     this.InitializeTags(in tags);
-        //     this.InitializeValues(in values);
-        //     this.InitializeBehaviours(in behaviours);
-        // }
-        //
-        // /// <summary>
-        // /// Initializes a new instance of the <see cref="Entity"/> class with optional capacity settings and custom ID.
-        // /// </summary>
-        // public Entity(
-        //     in string name = null,
-        //     in int tagCapacity = 0,
-        //     in int valueCapacity = 0,
-        //     in int behaviourCapacity = 0,
-        //     in IEntity owner = null,
-        //     in int id = -1
-        // )
-        // {
-        //     this.name = name ?? string.Empty;
-        //     this.id = id < 0 ? NextId() : id;
-        //     this.owner = owner ?? this;
-        //
-        //     this.InitializeTags(in tagCapacity);
-        //     this.InitializeValues(in valueCapacity);
-        //     this.InitializeBehaviours(in behaviourCapacity);
-        // }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class.
+        /// </summary>
+        protected Entity()
+        {
+            this.name = string.Empty;
+            this.id = NextId();
+            this.owner = this;
+
+            this.InitializeTags();
+            this.InitializeValues();
+            this.InitializeBehaviours();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class with a specified owner.
+        /// </summary>
+        protected Entity(IEntity<E> owner)
+        {
+            this.name = string.Empty;
+            this.id = NextId();
+            this.owner = owner;
+
+            this.InitializeTags();
+            this.InitializeValues();
+            this.InitializeBehaviours();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class with a specified name.
+        /// </summary>
+        protected Entity(string name)
+        {
+            this.name = name;
+            this.id = NextId();
+            this.owner = this;
+
+            this.InitializeTags();
+            this.InitializeValues();
+            this.InitializeBehaviours();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class
+        /// with optional collections of tags, values, behaviours, and a custom ID.
+        /// </summary>
+        protected Entity(
+            string name = null,
+            IEnumerable<int> tags = null,
+            IEnumerable<KeyValuePair<int, object>> values = null,
+            IEnumerable<IBehaviour<E>> behaviours = null,
+            IEntity<E> owner = null,
+            int id = -1
+        )
+        {
+            this.name = name ?? string.Empty;
+            this.id = id < 0 ? NextId() : id;
+            this.owner = owner ?? this;
+
+            this.InitializeTags(tags);
+            this.InitializeValues(values);
+            this.InitializeBehaviours(behaviours);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class with optional capacity settings and custom ID.
+        /// </summary>
+        protected Entity(
+            string name = null,
+            int tagCapacity = 0,
+            int valueCapacity = 0,
+            int behaviourCapacity = 0,
+            IEntity<E> owner = null,
+            int id = -1
+        )
+        {
+            this.name = name ?? string.Empty;
+            this.id = id < 0 ? NextId() : id;
+            this.owner = owner ?? this;
+
+            this.InitializeTags(in tagCapacity);
+            this.InitializeValues(in valueCapacity);
+            this.InitializeBehaviours(in behaviourCapacity);
+        }
 
         ~Entity() => this.UnsubscribeAll();
 
@@ -221,6 +216,9 @@ namespace Atomic.Entities
             s_entities.Clear();
         }
     }
-    
 
+    // public class Entity : Entity<Entity>
+    // {
+    //     
+    // }
 }

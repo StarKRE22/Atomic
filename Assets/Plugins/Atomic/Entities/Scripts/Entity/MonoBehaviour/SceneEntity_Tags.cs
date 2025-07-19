@@ -7,13 +7,12 @@ namespace Atomic.Entities
     /// Provides tag management functionality for the <see cref="SceneEntity"/>, allowing to add, remove,
     /// check, and enumerate tags associated with the entity.
     /// </summary>
-    public partial class SceneEntity<E> where E : class
-
+    public partial class SceneEntity<E>
     {
         /// <summary>
         /// Invoked when a tag is added to the entity.
         /// </summary>
-        public event Action<IEntity, int> OnTagAdded
+        public event Action<IEntity<E>, int> OnTagAdded
         {
             add => this.Entity.OnTagAdded += value;
             remove => this.Entity.OnTagAdded -= value;
@@ -22,7 +21,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a tag is deleted from the entity.
         /// </summary>
-        public event Action<IEntity, int> OnTagDeleted
+        public event Action<IEntity<E>, int> OnTagDeleted
         {
             add => this.Entity.OnTagDeleted += value;
             remove => this.Entity.OnTagDeleted -= value;
@@ -66,8 +65,8 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator over the entity's tag keys.
         /// </summary>
-        IEnumerator<int> IEntity.GetTagEnumerator() => this.Entity.GetTagEnumerator();
+        IEnumerator<int> IEntity<E>.GetTagEnumerator() => this.Entity.GetTagEnumerator();
 
-        public Entity.TagEnumerator GetTagEnumerator() => this.Entity.GetTagEnumerator();
+        public Entity<E>.TagEnumerator GetTagEnumerator() => this.Entity.GetTagEnumerator();
     }
 }

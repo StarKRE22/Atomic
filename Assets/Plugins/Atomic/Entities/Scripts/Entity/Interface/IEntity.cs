@@ -1,9 +1,5 @@
 namespace Atomic.Entities
 {
-    // public interface IEntity : IEntity<IEntity>
-    // {
-    // }
-    
     /// <summary>
     /// Represents the entity based on the Entity-State-Behaviour pattern.
     /// 
@@ -32,4 +28,8 @@ namespace Atomic.Entities
         /// </summary>
         void Clear();
     }
+    
+    // public interface IEntity : IEntity<IEntity>
+    // {
+    // }
 }
