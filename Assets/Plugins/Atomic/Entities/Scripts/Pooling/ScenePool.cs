@@ -3,16 +3,22 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public class ScenePool<E> : IPool<E> where E : SceneEntity<E>
+    public abstract class ScenePool<E> : MonoBehaviour, IPool<E> where E : SceneEntity<E>
     {
-        private readonly E _prefab;
-        private readonly Transform _container;
+        [SerializeField]
+        private E _prefab;
+
+        [SerializeField]
+        private Transform _container;
+
+        [SerializeField]
+        private int _initialCount;
+        
         private readonly Stack<E> _stack = new();
 
-        public ScenePool(E prefab, Transform container)
+        private void Awake()
         {
-            _prefab = prefab;
-            _container = container;
+            this.Init(_initialCount);
         }
 
         public void Init(int count)
@@ -20,7 +26,7 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 E entity = SceneEntity<E>.Create(_prefab, _container);
-                this.OnCreate(entity);
+                this.OnSpawn(entity);
                 _stack.Push(entity);
             }
         }
@@ -30,7 +36,7 @@ namespace Atomic.Entities
             if (!_stack.TryPop(out E entity))
             {
                 entity = SceneEntity<E>.Create(_prefab, _container);
-                this.OnCreate(entity);
+                this.OnSpawn(entity);
             }
 
             this.OnRent(entity);
@@ -50,17 +56,17 @@ namespace Atomic.Entities
         {
             foreach (E entity in _stack)
             {
-                this.OnDestroy(entity);
-                GameObject.Destroy(entity);
+                this.OnUnspawn(entity);
+                Destroy(entity);
             }
 
             _stack.Clear();
         }
 
-        protected virtual void OnCreate(E entity) => 
+        protected virtual void OnSpawn(E entity) => 
             entity.gameObject.SetActive(false);
 
-        protected virtual void OnDestroy(E entity)
+        protected virtual void OnUnspawn(E entity)
         {
         }
 

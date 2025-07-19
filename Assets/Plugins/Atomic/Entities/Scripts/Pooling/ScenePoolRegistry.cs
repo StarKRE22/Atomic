@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public class ScenePoolRegistry<E> : IScenePoolRegistry<E> where E : SceneEntity<E>
+    public abstract class ScenePoolRegistry<E> : MonoBehaviour, IScenePoolRegistry<E> where E : SceneEntity<E>
     {
         private const string NUMBER_PATTERN = @"\s*\(\d+\)$";
 
@@ -24,10 +24,9 @@ namespace Atomic.Entities
 #endif
         private readonly Dictionary<string, Pool> pools = new();
 
-        private readonly Transform container;
-
-        public ScenePoolRegistry(Transform container) => this.container = container;
-
+        [SerializeField]
+        private Transform container;
+        
         public E Rent(E prefab) => this.Rent(prefab, Vector3.zero, Quaternion.identity);
 
         public E Rent(E prefab, Transform parent) => this.Rent(prefab, parent.position, parent.rotation);
@@ -52,7 +51,7 @@ namespace Atomic.Entities
             else
             {
                 entity = SceneEntity<E>.Create(prefab, position, rotation, parent);
-                this.OnCreate(entity);
+                this.OnSpawn(entity);
                 entity.name = entityName;
             }
 
@@ -88,11 +87,11 @@ namespace Atomic.Entities
 
             foreach (E entity in pool.queue)
             {
-                this.OnDestroy(entity);
-                GameObject.Destroy(entity);
+                this.OnDespawn(entity);
+                Destroy(entity);
             }
             
-            GameObject.Destroy(pool.go);
+            Destroy(pool.go);
         }
 
         public void Clear()
@@ -102,23 +101,23 @@ namespace Atomic.Entities
                 Pool pool = pair.Value;
                 foreach (E entity in pool.queue)
                 {
-                    this.OnDestroy(entity);
-                    GameObject.Destroy(entity);
+                    this.OnDespawn(entity);
+                    Destroy(entity);
                 }
 
-                GameObject.Destroy(pool.go);
+                Destroy(pool.go);
             }
 
             this.pools.Clear();
         }
 
-        protected virtual void OnCreate(E entity) => entity.gameObject.SetActive(false);
+        protected virtual void OnSpawn(E entity) => entity.gameObject.SetActive(false);
         
         protected virtual void OnRent(E entity) => entity.gameObject.SetActive(true);
 
         protected virtual void OnReturn(E entity) => entity.gameObject.SetActive(false);
 
-        protected virtual void OnDestroy(E entity)
+        protected virtual void OnDespawn(E entity)
         {
         }
         
