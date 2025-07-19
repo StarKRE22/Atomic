@@ -4,7 +4,7 @@ namespace Atomic.Entities
 {
     public class Pool<E> : IPool<E> where E : IEntity<E>
     {
-        private readonly Queue<E> _queue = new();
+        private readonly Stack<E> _stack = new();
         private readonly IFactory<E> _factory;
 
         public Pool(IFactory<E> factory) => _factory = factory;
@@ -15,21 +15,21 @@ namespace Atomic.Entities
             {
                 E entity = _factory.Create();
                 this.OnCreate(entity);
-                _queue.Enqueue(entity);
+                _stack.Push(entity);
             }
         }
 
         public void Clear()
         {
-            foreach (E entity in _queue) 
+            foreach (E entity in _stack) 
                 this.OnDestroy(entity);
 
-            _queue.Clear();
+            _stack.Clear();
         }
 
         public E Rent()
         {
-            if (!_queue.TryDequeue(out E entity))
+            if (!_stack.TryPop(out E entity))
             {
                 entity = _factory.Create();
                 this.OnCreate(entity);
@@ -41,10 +41,10 @@ namespace Atomic.Entities
 
         public void Return(E entity)
         {
-            if (!_queue.Contains(entity))
+            if (!_stack.Contains(entity))
             {
                 this.OnReturn(entity);
-                _queue.Enqueue(entity);
+                _stack.Push(entity);
             }
         }
 

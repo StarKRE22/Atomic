@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    // [AddComponentMenu("Atomic/Entities/Entity Proxy")]
-    // [DisallowMultipleComponent]
-    // public class SceneEntityProxy<E> : SceneEntityProxy<E> where E : SceneEntity<E>
-    // {
-    // }
-
     public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity<E> where E : SceneEntity<E>
     {
         public event Action OnStateChanged
@@ -32,8 +26,7 @@ namespace Atomic.Entities
         
         public void Clear() => _source.Clear();
 
-        public override bool Equals(object obj) => 
-            obj is IEntity<E> entity && _source.InstanceID == entity.InstanceID;
+        public override bool Equals(object obj) => obj is IEntity<E> entity && _source.InstanceID == entity.InstanceID;
 
         public override int GetHashCode() => _source.GetHashCode();
 

@@ -7,7 +7,7 @@ namespace Atomic.Entities
     {
         private readonly E _prefab;
         private readonly Transform _container;
-        private readonly Queue<E> _queue = new();
+        private readonly Stack<E> _stack = new();
 
         public ScenePool(E prefab, Transform container)
         {
@@ -21,15 +21,15 @@ namespace Atomic.Entities
             {
                 E entity = SceneEntity<E>.Create(_prefab, _container);
                 this.OnCreate(entity);
-                _queue.Enqueue(entity);
+                _stack.Push(entity);
             }
         }
 
         public E Rent()
         {
-            if (!_queue.TryDequeue(out SceneEntity entity))
+            if (!_stack.TryPop(out E entity))
             {
-                entity = SceneEntity.Create(_prefab, _container);
+                entity = SceneEntity<E>.Create(_prefab, _container);
                 this.OnCreate(entity);
             }
 
@@ -39,39 +39,35 @@ namespace Atomic.Entities
 
         public void Return(E entity)
         {
-            if (SceneEntity.TryCast(entity, out SceneEntity sceneEntity) && !_queue.Contains(sceneEntity))
+            if (!_stack.Contains(entity))
             {
-                this.OnReturn(sceneEntity);
-                _queue.Enqueue(sceneEntity);
+                this.OnReturn(entity);
+                _stack.Push(entity);
             }
         }
 
         public void Clear()
         {
-            foreach (SceneEntity entity in _queue)
+            foreach (E entity in _stack)
             {
                 this.OnDestroy(entity);
                 GameObject.Destroy(entity);
             }
 
-            _queue.Clear();
+            _stack.Clear();
         }
 
-        protected virtual void OnCreate(SceneEntity entity)
-        {
+        protected virtual void OnCreate(E entity) => 
             entity.gameObject.SetActive(false);
-        }
 
-        protected virtual void OnDestroy(SceneEntity entity)
+        protected virtual void OnDestroy(E entity)
         {
         }
 
-        protected virtual void OnRent(SceneEntity entity)
-        {
+        protected virtual void OnRent(E entity) => 
             entity.gameObject.SetActive(true);
-        }
 
-        protected virtual void OnReturn(SceneEntity entity)
+        protected virtual void OnReturn(E entity)
         {
             entity.gameObject.SetActive(false);
             entity.transform.SetParent(_container);
