@@ -15,7 +15,7 @@ namespace Atomic.Extensions
     [InlineProperty]
 #endif
     [Serializable]
-    public sealed class ReactiveEntity_EntityInstaller : IEntityInstaller
+    public sealed class ReactiveInstaller : IInstaller<>
     {
 #if ODIN_INSPECTOR
         [HorizontalGroup]

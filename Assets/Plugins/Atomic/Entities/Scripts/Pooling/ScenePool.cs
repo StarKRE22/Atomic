@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public class SceneEntityPool : IEntityPool
+    public class ScenePool<E> : IPool<E> where E : SceneEntity<E>
     {
-        private readonly SceneEntity _prefab;
+        private readonly E _prefab;
         private readonly Transform _container;
-        private readonly Queue<SceneEntity> _queue = new();
+        private readonly Queue<E> _queue = new();
 
-        public SceneEntityPool(SceneEntity prefab, Transform container)
+        public ScenePool(E prefab, Transform container)
         {
             _prefab = prefab;
             _container = container;
@@ -19,13 +19,13 @@ namespace Atomic.Entities
         {
             for (int i = 0; i < count; i++)
             {
-                SceneEntity entity = SceneEntity.Create(_prefab, _container);
+                E entity = SceneEntity<E>.Create(_prefab, _container);
                 this.OnCreate(entity);
                 _queue.Enqueue(entity);
             }
         }
 
-        public IEntity Rent()
+        public E Rent()
         {
             if (!_queue.TryDequeue(out SceneEntity entity))
             {
@@ -37,7 +37,7 @@ namespace Atomic.Entities
             return entity;
         }
 
-        public void Return(IEntity entity)
+        public void Return(E entity)
         {
             if (SceneEntity.TryCast(entity, out SceneEntity sceneEntity) && !_queue.Contains(sceneEntity))
             {

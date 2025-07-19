@@ -16,7 +16,7 @@ namespace Atomic.Entities
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
     public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E>, ISerializationCallbackReceiver 
-        where E : class, IEntity<E>
+        where E : SceneEntity<E>
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -79,14 +79,14 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
-        private List<SceneEntityInstaller<E>> installers;
+        private List<SceneInstaller<E>> installers;
 
 #if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
-        private List<SceneEntity<E>> children;
+        private List<E> children;
 
         /// <summary>
         /// Installs all configured installers and child entities into this SceneEntity.
@@ -103,7 +103,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneEntityInstaller<E> installer = this.installers[i];
+                    SceneInstaller<E> installer = this.installers[i];
                     if (installer != null)
                         installer.Install(entity);
                     else

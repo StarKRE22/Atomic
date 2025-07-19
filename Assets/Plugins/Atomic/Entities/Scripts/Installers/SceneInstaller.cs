@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class SceneEntityInstaller<E> : MonoBehaviour, IEntityInstaller<E> where E : IEntity<E>
+    public abstract class SceneInstaller<E> : MonoBehaviour, IInstaller<E> where E : IEntity<E>
     {
 #if UNITY_EDITOR
         public Action refreshCallback;

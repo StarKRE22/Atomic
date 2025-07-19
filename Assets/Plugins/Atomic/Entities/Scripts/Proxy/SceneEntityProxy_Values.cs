@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityProxy<E>
+    public partial class SceneEntityProxy<E> where E : SceneEntity<E>
     {
         public event Action<E, int> OnValueAdded
         {

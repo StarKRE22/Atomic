@@ -14,7 +14,7 @@ namespace Atomic.Extensions
     [InlineProperty]
 #endif
     [Serializable]
-    public sealed class EntityAndExpression_EntityInstaller : IEntityInstaller
+    public sealed class AndExpressionInstaller : IInstaller<>
     {
         [SerializeField]
         private int id = -1;

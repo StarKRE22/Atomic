@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [Serializable]
-    public sealed class Lifecycle_EntityInstaller : IEntityInstaller
+    public sealed class LifecycleInstaller : IInstaller<>
     {
         [Header("Init")]
         [SerializeReference]

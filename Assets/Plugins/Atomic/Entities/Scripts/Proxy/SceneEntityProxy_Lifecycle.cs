@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityProxy<E>
+    public partial class SceneEntityProxy<E> where E : SceneEntity<E>
     {
         public event Action OnInitialized
         {

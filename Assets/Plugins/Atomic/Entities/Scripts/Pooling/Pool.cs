@@ -2,21 +2,18 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public class EntityPool : IEntityPool
+    public class Pool<E> : IPool<E> where E : IEntity<E>
     {
-        private readonly Queue<IEntity> _queue = new();
-        private readonly IEntityFactory _factory;
+        private readonly Queue<E> _queue = new();
+        private readonly IFactory<E> _factory;
 
-        public EntityPool(IEntityFactory factory)
-        {
-            _factory = factory;
-        }
+        public Pool(IFactory<E> factory) => _factory = factory;
 
         public void Init(int count)
         {
             for (int i = 0; i < count; i++)
             {
-                IEntity entity = _factory.Create();
+                E entity = _factory.Create();
                 this.OnCreate(entity);
                 _queue.Enqueue(entity);
             }
@@ -24,15 +21,15 @@ namespace Atomic.Entities
 
         public void Clear()
         {
-            foreach (IEntity entity in _queue) 
+            foreach (E entity in _queue) 
                 this.OnDestroy(entity);
 
             _queue.Clear();
         }
 
-        public IEntity Rent()
+        public E Rent()
         {
-            if (!_queue.TryDequeue(out IEntity entity))
+            if (!_queue.TryDequeue(out E entity))
             {
                 entity = _factory.Create();
                 this.OnCreate(entity);
@@ -42,7 +39,7 @@ namespace Atomic.Entities
             return entity;
         }
 
-        public void Return(IEntity entity)
+        public void Return(E entity)
         {
             if (!_queue.Contains(entity))
             {
@@ -51,19 +48,19 @@ namespace Atomic.Entities
             }
         }
 
-        protected virtual void OnCreate(IEntity entity)
+        protected virtual void OnCreate(E entity)
         {
         }
         
-        protected virtual void OnDestroy(IEntity entity)
+        protected virtual void OnDestroy(E entity)
         {
         }
 
-        protected virtual void OnRent(IEntity entity)
+        protected virtual void OnRent(E entity)
         {
         }
 
-        protected virtual void OnReturn(IEntity entity)
+        protected virtual void OnReturn(E entity)
         {
         }
     }

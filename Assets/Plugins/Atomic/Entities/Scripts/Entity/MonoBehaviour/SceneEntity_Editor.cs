@@ -21,13 +21,13 @@ namespace Atomic.Entities
         /// </summary>
         private void Reset()
         {
-            this.installers = new List<SceneEntityInstaller<E>>(
-                this.GetComponentsInChildren<SceneEntityInstaller<E>>()
+            this.installers = new List<SceneInstaller<E>>(
+                this.GetComponentsInChildren<SceneInstaller<E>>()
             );
-            this.children = new List<SceneEntity<E>>(
-                this.GetComponentsInChildren<SceneEntity<E>>()
+            this.children = new List<E>(
+                this.GetComponentsInChildren<E>()
             );
-            this.children.Remove(this);
+            this.children.Remove(this as E);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Atomic.Entities
         {
             for (int i = 0, count = this.installers.Count; i < count; i++)
             {
-                SceneEntityInstaller<E> installer = this.installers[i];
+                SceneInstaller<E> installer = this.installers[i];
                 if (installer != null)
                     installer.refreshCallback = this.RefreshInEditMode;
             }

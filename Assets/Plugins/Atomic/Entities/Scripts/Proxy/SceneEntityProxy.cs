@@ -9,7 +9,7 @@ namespace Atomic.Entities
     // {
     // }
 
-    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity<E> where E : class, IEntity<E>
+    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity<E> where E : SceneEntity<E>
     {
         public event Action OnStateChanged
         {

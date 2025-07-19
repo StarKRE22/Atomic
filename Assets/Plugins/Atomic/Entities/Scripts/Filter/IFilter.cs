@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// Defines a filtered view over a collection of entities,
     /// supporting change tracking, querying, and data copying.
     /// </summary>
-    public interface IEntityFilter<E> : IDisposable, IEnumerable<E> where E : IEntity<E>
+    public interface IFilter<E> : IDisposable, IEnumerable<E> where E : IEntity<E>
     {
         /// <summary>
         /// Occurs when an entity enters the filter (i.e., matches the filter criteria).

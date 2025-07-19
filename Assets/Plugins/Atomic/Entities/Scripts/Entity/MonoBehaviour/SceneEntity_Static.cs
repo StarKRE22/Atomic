@@ -15,15 +15,15 @@ namespace Atomic.Entities
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static T Create<T>(
+        public static E Create(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
             IEnumerable<IBehaviour<E>> behaviours = null
-        ) where T : SceneEntity<E>
+        )
         {
             GameObject gameObject = new GameObject(name);
-            T sceneEntity = gameObject.AddComponent<T>();
+            E sceneEntity = gameObject.AddComponent<E>();
             sceneEntity.Name = name;
 
             sceneEntity.AddTags(tags);
@@ -37,9 +37,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Instantiates a prefab and installs the resulting <see cref="SceneEntity"/> under the specified parent.
         /// </summary>
-        public static T Create<T>(T prefab, Transform parent) where T : SceneEntity<E>
+        public static E Create(E prefab, Transform parent)
         {
-            T entity = Instantiate(prefab, parent);
+            E entity = Instantiate(prefab, parent);
             entity.Install();
             return entity;
         }
@@ -47,14 +47,14 @@ namespace Atomic.Entities
         /// <summary>
         /// Instantiates a prefab at the given position and rotation with optional parent, then installs it.
         /// </summary>
-        public static T Create<T>(
-            T prefab,
+        public static E Create(
+            E prefab,
             Vector3 position,
             Quaternion rotation,
             Transform parent = null
-        ) where T : SceneEntity<E>
+        )
         {
-            T entity = Instantiate(prefab, position, rotation, parent);
+            E entity = Instantiate(prefab, position, rotation, parent);
             entity.Install();
             return entity;
         }
@@ -73,13 +73,13 @@ namespace Atomic.Entities
         /// <summary>
         /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
         /// </summary>
-        public static T Cast<T>(IEntity<E> entity) where T : SceneEntity<T>
+        public static E Cast(IEntity<E> entity)
         {
             return entity switch
             {
                 null => null,
-                T tEntity => tEntity,
-                SceneEntityProxy<T> tProxy => (T) tProxy.Source,
+                E tEntity => tEntity,
+                SceneEntityProxy<E> tProxy => (E) tProxy.Source,
                 _ => throw new Exception("Can't convert entity to SceneEntity")
             };
         }
@@ -87,17 +87,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
         /// </summary>
-        public static bool TryCast<T>(IEntity<E> entity, out T result) where T : SceneEntity<T>
+        public static bool TryCast(IEntity<E> entity, out E result)
         {
-            if (entity is T sceneEntity)
+            if (entity is E sceneEntity)
             {
                 result = sceneEntity;
                 return true;
             }
 
-            if (entity is SceneEntityProxy<T> proxy)
+            if (entity is SceneEntityProxy<E> proxy)
             {
-                result = (T) proxy.Source;
+                result = (E) proxy.Source;
                 return true;
             }
 
@@ -115,10 +115,10 @@ namespace Atomic.Entities
             for (int g = 0, gameObjectCount = gameObjects.Length; g < gameObjectCount; g++)
             {
                 GameObject gameObject = gameObjects[g];
-                SceneEntity<E>[] entities = gameObject.GetComponentsInChildren<SceneEntity<E>>();
+                E[] entities = gameObject.GetComponentsInChildren<E>();
                 for (int e = 0, entityCount = entities.Length; e < entityCount; e++)
                 {
-                    SceneEntity<E> entity = entities[e];
+                    E entity = entities[e];
                     if (!entity.Installed)
                         entity.Install();
                 }

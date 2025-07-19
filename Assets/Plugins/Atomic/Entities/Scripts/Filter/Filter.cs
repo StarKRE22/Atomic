@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// Represents a dynamic filter over a set of entities in the world, based on a predicate and optional triggers.
     /// Automatically tracks entities that satisfy the predicate and invokes events on changes.
     /// </summary>
-    public class EntityFilter<E> : IEntityFilter<E> where E : IEntity<E> 
+    public class Filter<E> : IFilter<E> where E : IEntity<E> 
     {
         /// <inheritdoc />
         public event Action<E> OnAdded;
@@ -32,7 +32,7 @@ namespace Atomic.Entities
 
         private readonly IEntityWorld<E> world;
         private readonly Predicate<E> predicate;
-        private readonly IEntityFilter<E>.ITrigger[] triggers;
+        private readonly IFilter<E>.ITrigger[] triggers;
 
         /// <summary>
         /// Creates a new entity filter that watches a world for entities matching a predicate and responds to trigger changes.
@@ -41,10 +41,10 @@ namespace Atomic.Entities
         /// <param name="predicate">The predicate used to filter entities.</param>
         /// <param name="triggers">Optional triggers that can invalidate entities or cause re-evaluation.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="world"/> or <paramref name="predicate"/> is null.</exception>
-        public EntityFilter(
+        public Filter(
             in IEntityWorld<E> world,
             in Predicate<E> predicate,
-            params IEntityFilter<E>.ITrigger[] triggers
+            params IFilter<E>.ITrigger[] triggers
         )
         {
             this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
@@ -119,7 +119,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = this.triggers.Length; i < count; i++)
             {
-                IEntityFilter<E>.ITrigger trigger = this.triggers[i];
+                IFilter<E>.ITrigger trigger = this.triggers[i];
                 trigger.Subscribe(entity, this.Synchronize);
             }
 
@@ -138,7 +138,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = this.triggers.Length; i < count; i++)
             {
-                IEntityFilter<E>.ITrigger trigger = this.triggers[i];
+                IFilter<E>.ITrigger trigger = this.triggers[i];
                 trigger.Unsubscribe(entity, this.Synchronize);
             }
 

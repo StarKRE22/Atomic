@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Atomic.Extensions
 {
     [Serializable]
-    public sealed class EntityReactiveList_EntityInstaller : IEntityInstaller
+    public sealed class ReactiveListInstaller : IInstaller<>
     {
         [SerializeField]
         private int id = -1;

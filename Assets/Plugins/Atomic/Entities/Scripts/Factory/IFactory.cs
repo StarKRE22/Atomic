@@ -4,7 +4,7 @@ namespace Atomic.Entities
     /// Generic factory interface for creating instances of <see cref="IEntity"/> or its derived types.
     /// </summary>
     /// <typeparam name="T">The type of <see cref="IEntity"/> that the factory creates.</typeparam>
-    public interface IEntityFactory<out E> where E : IEntity<E>
+    public interface IFactory<out E> where E : IEntity<E>
     {
         /// <summary>
         /// Creates and returns a new instance of <typeparamref name="T"/>.

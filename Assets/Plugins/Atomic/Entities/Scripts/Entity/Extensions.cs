@@ -106,37 +106,37 @@ namespace Atomic.Entities
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified GameObject.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity<E>(this GameObject gameObject, out IEntity<E> entity) where E : IEntity<E> =>
+        public static bool TryGetEntity<E>(this GameObject gameObject, out E entity) where E : IEntity<E> =>
             gameObject.TryGetComponent(out entity);
 
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified Component.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity<E>(this Component component, out IEntity<E> entity) where E : IEntity<E> =>
+        public static bool TryGetEntity<E>(this Component component, out E entity) where E : IEntity<E> =>
             component.TryGetComponent(out entity);
 
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from a 2D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity<E>(this Collision2D collision2D, out IEntity<E> entity) where E : IEntity<E> =>
+        public static bool TryGetEntity<E>(this Collision2D collision2D, out E entity) where E : IEntity<E> =>
             collision2D.gameObject.TryGetComponent(out entity);
 
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from a 3D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity<E>(this Collision collision, out IEntity<E> entity)  where E : IEntity<E>  =>
+        public static bool TryGetEntity<E>(this Collision collision, out E entity) where E : IEntity<E> =>
             collision.gameObject.TryGetComponent(out entity);
 
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy of the GameObject.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent<E>(this GameObject gameObject, out IEntity<E> entity) where E : IEntity<E>
+        public static bool FindEntityInParent<E>(this GameObject gameObject, out E entity) where E : IEntity<E>
         {
-            entity = gameObject.GetComponentInParent<IEntity<E>>();
+            entity = gameObject.GetComponentInParent<E>();
             return entity != null;
         }
 
@@ -144,9 +144,9 @@ namespace Atomic.Entities
         /// Finds an <see cref="IEntity"/> in the parent hierarchy of the Component.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent<E>(this Component component, out IEntity<E> entity) where E : IEntity<E>
+        public static bool FindEntityInParent<E>(this Component component, out E entity) where E : IEntity<E>
         {
-            entity = component.GetComponentInParent<IEntity<E>>();
+            entity = component.GetComponentInParent<E>();
             return entity != null;
         }
 
@@ -154,9 +154,9 @@ namespace Atomic.Entities
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent<E>(this Collision2D collision2D, out IEntity<E> entity) where E : IEntity<E>
+        public static bool FindEntityInParent<E>(this Collision2D collision2D, out E entity) where E : IEntity<E>
         {
-            entity = collision2D.gameObject.GetComponentInParent<IEntity<E>>();
+            entity = collision2D.gameObject.GetComponentInParent<E>();
             return entity != null;
         }
 
@@ -164,36 +164,37 @@ namespace Atomic.Entities
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 3D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent<E>(this Collision collision, out IEntity<E> entity) where E : IEntity<E>
+        public static bool FindEntityInParent<E>(this Collision collision, out E entity) where E : IEntity<E>
         {
-            entity = collision.gameObject.GetComponentInParent<IEntity<E>>();
+            entity = collision.gameObject.GetComponentInParent<E>();
             return entity != null;
         }
 
         /// <summary>
-        /// Installs logic from an <see cref="IEntityInstaller"/> into the entity.
+        /// Installs logic from an <see cref="IInstaller{E}"/> into the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static E Install<E>(this E entity, IEntityInstaller<E> installer) where E : IEntity<E>
+        public static E Install<E>(this E entity, IInstaller<E> installer) where E : IEntity<E>
         {
             installer.Install(entity);
             return entity;
         }
 
         /// <summary>
-        /// Installs logic from <see cref="SceneEntityInstaller"/> components in the specified scene.
+        /// Installs logic from <see cref="SceneInstaller{E}"/> components in the specified scene.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallFromScene<E>(this E entity, Scene scene, bool includeInactive = true) where E : IEntity<E>
+        public static void InstallFromScene<E>(this E entity, Scene scene, bool includeInactive = true)
+            where E : IEntity<E>
         {
             GameObject[] gameObjects = scene.GetRootGameObjects();
             for (int g = 0, goCount = gameObjects.Length; g < goCount; g++)
             {
                 GameObject go = gameObjects[g];
-                var installers = go.GetComponentsInChildren<SceneEntityInstaller<E>>(includeInactive);
+                var installers = go.GetComponentsInChildren<SceneInstaller<E>>(includeInactive);
                 for (int i = 0, installerCount = installers.Length; i < installerCount; i++)
                 {
-                    SceneEntityInstaller<E> installer = installers[i];
+                    SceneInstaller<E> installer = installers[i];
                     installer.Install(entity);
                 }
             }
@@ -203,7 +204,8 @@ namespace Atomic.Entities
         /// Checks if the entity has the specified tag.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasTag<E>(this IEntity<E> entity, string key) where E : IEntity<E> => entity.HasTag(NameToId(key));
+        public static bool HasTag<E>(this IEntity<E> entity, string key) where E : IEntity<E> =>
+            entity.HasTag(NameToId(key));
 
         /// <summary>
         /// Adds a tag to the entity.
@@ -254,7 +256,7 @@ namespace Atomic.Entities
         /// Adds a value to the entity and returns the corresponding ID.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValue<E>(this IEntity<E> entity, string key, object value, out int id) 
+        public static void AddValue<E>(this IEntity<E> entity, string key, object value, out int id)
             where E : IEntity<E>
         {
             id = NameToId(key);
@@ -265,8 +267,8 @@ namespace Atomic.Entities
         /// Adds a strongly-typed value to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValue<T, E>(this IEntity<E> entity, string key, T value) 
-            where T : struct 
+        public static void AddValue<T, E>(this IEntity<E> entity, string key, T value)
+            where T : struct
             where E : IEntity<E> =>
             entity.AddValue(NameToId(key), value);
 
@@ -275,7 +277,7 @@ namespace Atomic.Entities
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue<T, E>(this IEntity<E> entity, string key, T value, out int id)
-            where T : struct 
+            where T : struct
             where E : IEntity<E>
         {
             id = NameToId(key);
@@ -286,7 +288,7 @@ namespace Atomic.Entities
         /// Removes a value from the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool DelValue<E>(this IEntity<E> entity, string key) 
+        public static bool DelValue<E>(this IEntity<E> entity, string key)
             where E : IEntity<E> =>
             entity.DelValue(NameToId(key));
 
@@ -294,7 +296,7 @@ namespace Atomic.Entities
         /// Sets a value in the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetValue<E>(this IEntity<E> entity, string key, object value) 
+        public static void SetValue<E>(this IEntity<E> entity, string key, object value)
             where E : IEntity<E> =>
             entity.SetValue(NameToId(key), value);
 
@@ -302,7 +304,7 @@ namespace Atomic.Entities
         /// Sets a strongly-typed value in the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetValue<T, E>(this IEntity<E> entity, string key, T value) 
+        public static void SetValue<T, E>(this IEntity<E> entity, string key, T value)
             where T : struct where E : IEntity<E> =>
             entity.SetValue(NameToId(key), value);
 
@@ -310,16 +312,14 @@ namespace Atomic.Entities
         /// Checks if the entity has a value with the given key.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasValue<E>(this IEntity<E> entity, string key) 
-            where E : IEntity<E> => 
+        public static bool HasValue<E>(this IEntity<E> entity, string key) where E : IEntity<E> =>
             entity.HasValue(NameToId(key));
 
         /// <summary>
         /// Adds multiple tags by string identifiers.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddTags<E>(this IEntity<E> entity, IEnumerable<string> tags)
-            where E : IEntity<E>
+        public static void AddTags<E>(this IEntity<E> entity, IEnumerable<string> tags) where E : IEntity<E>
         {
             if (tags == null)
                 return;
@@ -332,7 +332,7 @@ namespace Atomic.Entities
         /// Adds multiple values by string keys.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues<E>(this IEntity<E> entity, IReadOnlyDictionary<string, object> values) 
+        public static void AddValues<E>(this IEntity<E> entity, IReadOnlyDictionary<string, object> values)
             where E : IEntity<E>
         {
             if (values == null)

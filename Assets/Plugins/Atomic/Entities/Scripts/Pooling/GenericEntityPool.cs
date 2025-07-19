@@ -19,7 +19,7 @@ namespace Atomic.Entities
     
     public class GenericEntityPool : GenericEntityPool<string>, IGenericEntityPool
     {
-        public GenericEntityPool(IEntityFactoryRegistry<string> factoryRegistry) : base(factoryRegistry)
+        public GenericEntityPool(IFactoryRegistry<,> factoryRegistry) : base(factoryRegistry)
         {
         }
 
@@ -32,9 +32,9 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
 #endif
         private readonly Dictionary<TKey, Queue<IEntity>> _pools = new();
-        private readonly IEntityFactoryRegistry<TKey> _factoryRegistry;
+        private readonly IFactoryRegistry<,> _factoryRegistry;
 
-        protected GenericEntityPool(IEntityFactoryRegistry<TKey> factoryRegistry)
+        protected GenericEntityPool(IFactoryRegistry<,> factoryRegistry)
         {
             _factoryRegistry = factoryRegistry ?? throw new ArgumentNullException(nameof(factoryRegistry));
         }

@@ -6,14 +6,14 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify factories.</typeparam>
     /// <typeparam name="E">The type of entity created by the factories.</typeparam>
-    public interface IEntityFactoryRegistry<in TKey, E> where E : IEntity<E>
+    public interface IFactoryRegistry<in TKey, E> where E : IEntity<E>
     {
         /// <summary>
         /// Registers an entity factory with the specified key.
         /// </summary>
         /// <param name="key">The key to associate with the factory.</param>
         /// <param name="factory">The factory to register.</param>
-        void Add(TKey key, IEntityFactory<E> factory);
+        void Add(TKey key, IFactory<E> factory);
 
         /// <summary>
         /// Removes the entity factory associated with the specified key.

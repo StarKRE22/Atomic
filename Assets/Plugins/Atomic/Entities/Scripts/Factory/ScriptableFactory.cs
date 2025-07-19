@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity<E>
+    public abstract class ScriptableFactory<E> : ScriptableObject, IFactory<E> where E : IEntity<E>
     {
         /// <summary>
         /// Gets the name of the entity factory, by default uses the ScriptableObject's name.

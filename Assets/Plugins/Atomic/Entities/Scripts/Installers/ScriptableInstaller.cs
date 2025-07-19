@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public abstract class ScriptableEntityInstaller : ScriptableObject, IEntityInstaller
+    public abstract class ScriptableInstaller<E> : ScriptableObject, IInstaller<E> where E : IEntity<E>
     {
-        public abstract void Install(IEntity entity);
-        
+        public abstract void Install(E entity);
+
         protected static bool IsPlayMode()
         {
 #if UNITY_EDITOR
@@ -26,12 +26,5 @@ namespace Atomic.Entities
             return false;
 #endif
         }
-    }
-    
-    public abstract class ScriptableEntityInstaller<T> : ScriptableEntityInstaller where T : class, IEntity
-    {
-        public sealed override void Install(IEntity entity) => this.Install((T) entity);
-   
-        protected abstract void Install(T entity);
     }
 }
