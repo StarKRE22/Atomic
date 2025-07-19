@@ -87,13 +87,11 @@ namespace Atomic.Entities
                 this.DisposeInEditMode();
             }
 
-            this.InitEntity();
             this.Install();
             this.Precompile();
 
             if (!isPrefab)
             {
-                _entity.Name = this.name;
                 this.InitInEditMode();
                 this.EnableInEditMode();
             }
@@ -104,12 +102,12 @@ namespace Atomic.Entities
         /// </summary>
         private void InitInEditMode()
         {
-            if (_entity.Initialized)
+            if (this.Initialized)
                 return;
 
-            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+            foreach (IBehaviour<E> behaviour in GetBehaviours())
                 if (behaviour is IInit<E> dispose && IsEditModeSupported(behaviour))
-                    dispose.Init(_entity);
+                    dispose.Init(this);
         }
 
         /// <summary>
@@ -117,12 +115,12 @@ namespace Atomic.Entities
         /// </summary>
         private void EnableInEditMode()
         {
-            if (_entity.Enabled)
+            if (this.Enabled)
                 return;
 
-            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
                 if (behaviour is IEnable<E> dispose && IsEditModeSupported(behaviour))
-                    dispose.Enable(_entity);
+                    dispose.Enable(this);
         }
 
         /// <summary>
@@ -130,12 +128,12 @@ namespace Atomic.Entities
         /// </summary>
         private void DisableInEditMode()
         {
-            if (_entity is not {Enabled: true})
+            if (this is not {Enabled: true})
                 return;
 
-            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
                 if (behaviour is IDisable<E> disable && IsEditModeSupported(behaviour))
-                    disable.Disable(_entity);
+                    disable.Disable(this);
         }
 
         /// <summary>
@@ -143,13 +141,13 @@ namespace Atomic.Entities
         /// </summary>
         private void DisposeInEditMode()
         {
-            if (_entity is not {Initialized: true})
+            if (this is not {Initialized: true})
                 return;
 
-            foreach (IBehaviour<E> behaviour in _entity.GetBehaviours())
+            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
             {
                 if (behaviour is IDispose<E> dispose && IsEditModeSupported(behaviour))
-                    dispose.Dispose(_entity);
+                    dispose.Dispose(this);
             }
         }
 

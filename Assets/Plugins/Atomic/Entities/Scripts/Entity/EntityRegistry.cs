@@ -4,46 +4,50 @@ using UnityEditor;
 
 namespace Atomic.Entities
 {
-    public static class EntityRegistry<E> where E : IEntity<E>
+    public sealed class EntityRegistry<E> where E : IEntity<E>
     {
-        private const int UNDEFINED_INDEX = -1;
+        public static EntityRegistry<E> Instance => _instance ??= new EntityRegistry<E>();
+        private static EntityRegistry<E> _instance;
 
-        private static readonly Dictionary<int, IEntity<E>> s_entities = new();
-        private static int s_maxId = -1;
-        
-        internal static int NextId(IEntity<E> entity)
+        public event Action<IEntity<E>> OnAdded;
+        public event Action<IEntity<E>> OnRemoved;
+
+        private readonly Dictionary<int, IEntity<E>> _entities = new();
+        private readonly Stack<int> _recycledIds = new();
+        private int _lastId;
+
+        public bool Get(int id, out IEntity<E> entity) => _entities.TryGetValue(id, out entity);
+
+        internal int Add(IEntity<E> entity)
         {
-            do s_maxId++;
-            while (s_entities.ContainsKey(s_maxId));
+            if (!_recycledIds.TryPop(out int id))
+                id = _lastId++;
 
-            s_entities[s_maxId] = entity;
-            return s_maxId;
+            _entities.Add(id, entity);
+            this.OnAdded?.Invoke(entity);
+            return id;
         }
 
-        internal static void ChangeId(IEntity<E> entity, int previousId, int newId)
+        internal void Remove(int id)
         {
-            s_entities.Remove(previousId);
-            s_entities[newId] = entity;
+            if (_entities.Remove(id, out IEntity<E> entity))
+            {
+                _recycledIds.Push(id);
+                this.OnRemoved?.Invoke(entity);
+            }
         }
-        
-        /// <summary>
-        /// Finds an entity by its ID.
-        /// </summary>
-        /// <param name="id">The entity ID.</param>
-        /// <param name="entity">The found entity, if any.</param>
-        /// <returns>True if the entity exists; otherwise, false.</returns>
-        public static bool Find(int id, out IEntity<E> entity) => s_entities.TryGetValue(id, out entity);
 
-        /// <summary>
-        /// Resets all static entity tracking information (used internally on play mode enter).
-        /// </summary>
+
 #if UNITY_EDITOR
         [InitializeOnEnterPlayMode]
 #endif
         public static void ResetAll()
         {
-            s_maxId = -1;
-            s_entities.Clear();
+            if (_instance != null)
+            {
+                _instance._lastId = -1;
+                _instance._entities.Clear();
+            }
         }
     }
 }

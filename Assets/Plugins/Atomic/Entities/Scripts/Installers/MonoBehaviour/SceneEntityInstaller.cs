@@ -9,7 +9,7 @@ namespace Atomic.Entities
 #if UNITY_EDITOR
         public Action refreshCallback;
 #endif
-        public abstract void Install(E entity);
+        public abstract void Install(IEntity<E> entity);
 
         protected virtual void OnValidate()
         {

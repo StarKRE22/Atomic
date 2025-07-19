@@ -54,7 +54,7 @@ namespace Atomic.Entities
         /// Whether the entity is currently enabled.
         /// </summary>
         bool Enabled { get; }
-
+        
         /// <summary>
         /// Initializes the entity.
         /// </summary>
@@ -69,11 +69,6 @@ namespace Atomic.Entities
         /// Disables the entity.
         /// </summary>
         void Disable();
-
-        /// <summary>
-        /// Disposes the entity.
-        /// </summary>
-        void Dispose();
 
         /// <summary>
         /// Called every Update tick.

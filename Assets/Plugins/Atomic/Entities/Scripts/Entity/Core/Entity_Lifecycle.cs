@@ -87,15 +87,17 @@ namespace Atomic.Entities
         {
             if (this.initialized)
                 return;
-
+            
+            this.initialized = true;
+            this.instanceId = EntityRegistry<E>.Instance.Add(this);
+            
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IInit<E> initBehaviour)
                     initBehaviour.Init(this);
 
-            this.initialized = true;
             this.OnInitialized?.Invoke();
         }
-
+        
         /// <summary>
         /// Disposes the entity and all IDispose behaviours.
         /// </summary>
@@ -106,11 +108,13 @@ namespace Atomic.Entities
 
             if (this.enabled)
                 this.Disable();
-
+            
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IDispose<E> disposeBehaviour)
                     disposeBehaviour.Dispose(this);
 
+            EntityRegistry<E>.Instance.Remove(this.instanceId);
+            
             this.initialized = false;
             this.OnDisposed?.Invoke();
         }

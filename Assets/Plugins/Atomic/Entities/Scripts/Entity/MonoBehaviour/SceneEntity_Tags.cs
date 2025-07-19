@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -270,21 +271,7 @@ namespace Atomic.Entities
             return ref _tagBuckets[index];
         }
 
-        private void InitializeTags(in IEnumerable<int> tags)
-        {
-            if (tags == null)
-            {
-                this.InitializeTags();
-                return;
-            }
-
-            this.InitializeTags(tags.Count());
-
-            foreach (int key in tags)
-                this.AddTag(key);
-        }
-
-        private void InitializeTags(in int capacity = 0)
+        private void ConstructTags(int capacity)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));

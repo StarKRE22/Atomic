@@ -32,7 +32,7 @@ namespace Atomic.Entities
             {
                 var result = new List<string>();
                 foreach (IEntity entity in _entities.Values)
-                    result.Add($"{entity.Name}: {entity.Id}");
+                    result.Add($"{entity.Name}: {entity.InstanceID}");
 
                 return result;
             }

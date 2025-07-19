@@ -261,13 +261,13 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the behaviour array with an optional capacity.
         /// </summary>
-        private void InitializeBehaviours(IEnumerable<IBehaviour<E>> behaviours)
+        private void ConstructBehaviours(IEnumerable<IBehaviour<E>> behaviours)
         {
             if (behaviours == null)
-                this.InitializeBehaviours();
+                this.ConstructBehaviours();
             else
             {
-                this.InitializeBehaviours(behaviours.Count());
+                this.ConstructBehaviours(behaviours.Count());
 
                 foreach (IBehaviour<E> behaviour in behaviours)
                     if (behaviour != null)
@@ -278,7 +278,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the behaviour array from a collection.
         /// </summary>
-        private void InitializeBehaviours(in int capacity = 0) =>
+        private void ConstructBehaviours(int capacity = 0) =>
             _behaviours = new IBehaviour<E>[capacity];
     }
 }

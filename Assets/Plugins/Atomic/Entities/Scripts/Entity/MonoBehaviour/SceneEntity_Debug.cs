@@ -11,30 +11,6 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity<E>
     {
-        /// <summary>
-        /// Gets the entity's name for display in the inspector.
-        /// </summary>
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-        [LabelText("Name")]
-        private string NameDebug => _entity?.Name ?? this.name;
-
-        /// <summary>
-        /// Indicates whether the entity has been initialized.
-        /// </summary>
-        [FoldoutGroup("Debug")]
-        [LabelText("Initialized")]
-        [ShowInInspector, ReadOnly]
-        private bool InitializedDebug => _entity?.Initialized ?? false;
-        
-        /// <summary>
-        /// Indicates whether the entity is currently enabled.
-        /// </summary>
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-        [LabelText("Enabled")]
-        private bool EnabledDebug => _entity?.Enabled ?? false;
-
         #region Tags
 
         private static readonly List<TagElement> _tagElememtsCache = new();
@@ -76,12 +52,10 @@ namespace Atomic.Entities
             {
                 _tagElememtsCache.Clear();
 
-                IReadOnlyCollection<int> tags = _entity?.GetTags();
-                if (tags == null)
-                    return _tagElememtsCache;
-
-                foreach (int tag in tags)
+                TagEnumerator tagEnumerator = this.GetTagEnumerator();
+                while (tagEnumerator.MoveNext())
                 {
+                    int tag = tagEnumerator.Current;
                     string name = EntityUtils.IdToName(tag);
                     _tagElememtsCache.Add(new TagElement(name, tag));
                 }
@@ -95,15 +69,9 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveTagElement(TagElement tagElement)
-        {
-            if (_entity != null) this.DelTag(tagElement.id);
-        }
+        private void RemoveTagElement(TagElement tagElement) => this.DelTag(tagElement.id);
 
-        private void RemoveTagElementAt(int index)
-        {
-            if (_entity != null) this.DelTag(this.TagElememts[index].id);
-        }
+        private void RemoveTagElementAt(int index) => this.DelTag(this.TagElememts[index].id);
 
         #endregion
 
@@ -132,10 +100,8 @@ namespace Atomic.Entities
                 this.id = id;
             }
 
-            public int CompareTo(ValueElement other)
-            {
-                return string.Compare(this.name, other.name, StringComparison.Ordinal);
-            }
+            public int CompareTo(ValueElement other) => 
+                string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -156,12 +122,10 @@ namespace Atomic.Entities
             {
                 _valueElementsCache.Clear();
 
-                IEnumerable<KeyValuePair<int, object>> values = _entity?.GetValues();
-                if (values == null)
-                    return _valueElementsCache;
-
-                foreach ((int id, object value) in values)
+                ValueEnumerator enumerator = this.GetValueEnumerator();
+                while (enumerator.MoveNext())
                 {
+                    (int id, object value) = enumerator.Current;
                     string name = EntityUtils.IdToName(id);
                     _valueElementsCache.Add(new ValueElement(name, value, id));
                 }
@@ -176,15 +140,11 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveValueElement(ValueElement valueElement)
-        {
-            if (_entity != null) this.DelValue(valueElement.id);
-        }
+        private void RemoveValueElement(ValueElement valueElement) => 
+            this.DelValue(valueElement.id);
 
-        private void RemoveValueElementAt(int index)
-        {
-            if (_entity != null) this.DelValue(this.ValueElements[index].id);
-        }
+        private void RemoveValueElementAt(int index) => 
+            this.DelValue(this.ValueElements[index].id);
 
         #endregion
 
@@ -230,12 +190,9 @@ namespace Atomic.Entities
             {
                 _behaviourElementsCache.Clear();
 
-                IReadOnlyCollection<IBehaviour<E>> behaviours = _entity?.GetBehaviours();
-                if (behaviours == null)
-                    return _behaviourElementsCache;
-
-                foreach (IBehaviour<E> behaviour in behaviours)
+                for (int i = 0; i < _behaviourCount; i++)
                 {
+                    IBehaviour<E> behaviour = _behaviours[i];
                     string name = behaviour.GetType().Name;
                     _behaviourElementsCache.Add(new BehaviourElement(name, behaviour));
                 }
@@ -249,15 +206,11 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveBehaviourElement(BehaviourElement behaviourElement)
-        {
-            if (_entity != null) this.DelBehaviour(behaviourElement.value);
-        }
+        private void RemoveBehaviourElement(BehaviourElement behaviourElement) => 
+            this.DelBehaviour(behaviourElement.value);
 
-        private void RemoveBehaviourElementAt(int index)
-        {
-            if (_entity != null) this.DelBehaviour(this.BehaviourElements[index].value);
-        }
+        private void RemoveBehaviourElementAt(int index) => 
+            this.DelBehaviour(this.BehaviourElements[index].value);
 
         #endregion
     }

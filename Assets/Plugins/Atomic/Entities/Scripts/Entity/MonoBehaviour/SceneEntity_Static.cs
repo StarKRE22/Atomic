@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,11 +12,6 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity<E>
     {
-        /// <summary>
-        /// Stores a mapping between <see cref="IEntity"/> and its corresponding <see cref="SceneEntity"/>.
-        /// </summary>
-        private static readonly Dictionary<int, SceneEntity<E>> s_sceneEntities = new();
-
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
@@ -67,7 +62,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Destroys the associated GameObject of a given <see cref="IEntity"/> if it is a <see cref="SceneEntity"/>.
         /// </summary>
-        public static void Destroy(IEntity<E> entity, float t = 0)
+        public static void Destroy(SceneEntity<E> entity, float t = 0)
         {
             if (TryCast(entity, out SceneEntity<E> sceneEntity))
                 Destroy(sceneEntity.gameObject, t);
@@ -78,17 +73,13 @@ namespace Atomic.Entities
         /// </summary>
         public static SceneEntity<E> Cast(IEntity<E> entity)
         {
-            if (entity == null)
-                return null;
-
-            if (entity is SceneEntity<E> sceneEntity)
-                return sceneEntity;
-
-            if (entity is SceneEntityProxy proxy)
-                return proxy._source;
-
-            s_sceneEntities.TryGetValue(entity, out sceneEntity);
-            return sceneEntity;
+            return entity switch
+            {
+                null => null,
+                SceneEntity<E> sceneEntity => sceneEntity,
+                SceneEntityProxy sceneEntityProxy => sceneEntityProxy.Source,
+                _ => throw new Exception("Can't convert entity to SceneEntity")
+            };
         }
 
         /// <summary>
@@ -96,12 +87,6 @@ namespace Atomic.Entities
         /// </summary>
         public static bool TryCast(IEntity<E> entity, out SceneEntity<E> result)
         {
-            if (entity == null)
-            {
-                result = null;
-                return false;
-            }
-
             if (entity is SceneEntity<E> sceneEntity)
             {
                 result = sceneEntity;
@@ -110,11 +95,12 @@ namespace Atomic.Entities
 
             if (entity is SceneEntityProxy proxy)
             {
-                result = proxy._source;
+                result = proxy.Source;
                 return true;
             }
 
-            return s_sceneEntities.TryGetValue(entity, out result);
+            result = null;
+            return false;
         }
 
         /// <summary>
@@ -136,13 +122,5 @@ namespace Atomic.Entities
                 }
             }
         }
-
-#if UNITY_EDITOR
-        /// <summary>
-        /// Clears entity cache when entering Play Mode (Editor only).
-        /// </summary>
-        [InitializeOnEnterPlayMode]
-        private static void OnEnterPlayMode() => s_sceneEntities.Clear();
-#endif
     }
 }

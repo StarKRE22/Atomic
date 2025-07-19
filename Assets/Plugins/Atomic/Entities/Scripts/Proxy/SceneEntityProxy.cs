@@ -16,11 +16,13 @@ namespace Atomic.Entities
             add => _source.OnStateChanged += value;
             remove => _source.OnStateChanged -= value;
         }
+
+        public E Source => _source;
         
         [SerializeField]
-        public E _source;
+        private E _source;
 
-        public int Id
+        public int InstanceID
         {
             get { return _source.Id; }
             set { _source.Id = value; }
@@ -39,7 +41,7 @@ namespace Atomic.Entities
 
         public override bool Equals(object obj)
         {
-            return obj is IEntity entity && _source.Id == entity.Id;
+            return obj is IEntity entity && _source.Id == entity.InstanceID;
         }
 
         public override int GetHashCode()

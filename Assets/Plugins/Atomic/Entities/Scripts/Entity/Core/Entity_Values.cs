@@ -547,21 +547,21 @@ namespace Atomic.Entities
             return ref _valueBuckets[index];
         }
 
-        private void InitializeValues(in IEnumerable<KeyValuePair<int, object>> values)
+        private void ConstructValues(in IEnumerable<KeyValuePair<int, object>> values)
         {
             if (values == null)
             {
-                this.InitializeValues();
+                this.ConstructValues();
                 return;
             }
 
-            this.InitializeValues(values.Count());
+            this.ConstructValues(values.Count());
 
             foreach ((int key, object value) in values)
                 this.AddValue(key, value);
         }
 
-        private void InitializeValues(in int capacity = 0)
+        private void ConstructValues(int capacity = 0)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));

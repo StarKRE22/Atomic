@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -11,21 +13,12 @@ namespace Atomic.Entities
     ///
     /// Designed for flexible state-driven architecture and modular logic composition.
     /// </summary>
-    public partial interface IEntity<E> where E : IEntity<E>
+    public partial interface IEntity<E> : IDisposable where E : IEntity<E>
     {
-        /// <summary>
-        /// Unique identifier of the entity.
-        /// </summary>
-        int Id { get; set; }
-
-        /// <summary>
-        /// Optional user-defined name of the entity.
-        /// </summary>
+        int InstanceID { get; }
+        
         string Name { get; set; }
-
-        /// <summary>
-        /// Clears all data from the entity (tags, values, behaviours).
-        /// </summary>
+        
         void Clear();
     }
     

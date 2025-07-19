@@ -2,7 +2,6 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Atomic.Entities
 {
@@ -182,7 +181,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns the behaviour instance at the given index.
         /// </summary>
-        public IBehaviour<E> GetBehaviourAt(in int index)
+        public IBehaviour<E> GetBehaviourAt(int index)
         {
             if (index < 0 || index >= _behaviourCount)
                 throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
@@ -255,26 +254,9 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Initializes the behaviour array with an optional capacity.
-        /// </summary>
-        private void InitializeBehaviours(IEnumerable<IBehaviour<E>> behaviours)
-        {
-            if (behaviours == null)
-                this.InitializeBehaviours();
-            else
-            {
-                this.InitializeBehaviours(behaviours.Count());
-
-                foreach (IBehaviour<E> behaviour in behaviours)
-                    if (behaviour != null)
-                        _behaviours[_behaviourCount++] = behaviour;
-            }
-        }
-
-        /// <summary>
         /// Initializes the behaviour array from a collection.
         /// </summary>
-        private void InitializeBehaviours(in int capacity = 0) =>
+        private void ConstructBehaviours(int capacity) =>
             _behaviours = new IBehaviour<E>[capacity];
     }
 }

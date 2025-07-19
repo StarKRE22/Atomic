@@ -72,6 +72,25 @@ namespace Atomic.Entities
         /// Indicates whether the entity is currently enabled.
         /// </summary>
         public bool Enabled => _enabled;
+        
+        
+        //
+        // /// <summary>
+        // /// Indicates whether the entity has been initialized.
+        // /// </summary>
+        // [FoldoutGroup("Debug")]
+        // [LabelText("Initialized")]
+        // [ShowInInspector, ReadOnly]
+        // private bool InitializedDebug => _entity?.Initialized ?? false;
+        //
+        // /// <summary>
+        // /// Indicates whether the entity is currently enabled.
+        // /// </summary>
+        // [FoldoutGroup("Debug")]
+        // [ShowInInspector, ReadOnly]
+        // [LabelText("Enabled")]
+        // private bool EnabledDebug => _entity?.Enabled ?? false;
+
 
         private bool _initialized;
         private bool _enabled;

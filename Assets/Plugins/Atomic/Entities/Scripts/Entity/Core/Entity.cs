@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -12,6 +8,7 @@ namespace Atomic.Entities
     /// </summary>
     public abstract partial class Entity<E> : IEntity<E> where E : class, IEntity<E>
     {
+        private const int UNDEFINED_INDEX = -1;
         
         /// <summary>
         /// Occurs when the state of the entity changes.
@@ -21,15 +18,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets or sets the unique identifier of the entity.
         /// </summary>
-        public int Id
-        {
-            get => this.id;
-            set
-            {
-                EntityRegistry<E>.ChangeId(this, this.id, value);
-                this.id = value;
-            }
-        }
+        public int InstanceID => this.instanceId;
 
         /// <summary>
         /// Gets or sets the name of the entity.
@@ -41,7 +30,7 @@ namespace Atomic.Entities
         }
 
         private string name;
-        private int id;
+        private int instanceId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
@@ -49,11 +38,9 @@ namespace Atomic.Entities
         protected Entity()
         {
             this.name = string.Empty;
-            this.id = EntityRegistry<E>.NextId(this);
-
-            this.InitializeTags();
-            this.InitializeValues();
-            this.InitializeBehaviours();
+            this.ConstructTags();
+            this.ConstructValues();
+            this.ConstructBehaviours();
         }
 
         /// <summary>
@@ -62,11 +49,9 @@ namespace Atomic.Entities
         protected Entity(string name)
         {
             this.name = name;
-            this.id = EntityRegistry<E>.NextId(this);
-
-            this.InitializeTags();
-            this.InitializeValues();
-            this.InitializeBehaviours();
+            this.ConstructTags();
+            this.ConstructValues();
+            this.ConstructBehaviours();
         }
 
         /// <summary>
@@ -77,16 +62,13 @@ namespace Atomic.Entities
             string name = null,
             IEnumerable<int> tags = null,
             IEnumerable<KeyValuePair<int, object>> values = null,
-            IEnumerable<IBehaviour<E>> behaviours = null,
-            int id = -1
+            IEnumerable<IBehaviour<E>> behaviours = null
         )
         {
             this.name = name ?? string.Empty;
-            this.id = id < 0 ? NextId() : id;
-
-            this.InitializeTags(tags);
-            this.InitializeValues(values);
-            this.InitializeBehaviours(behaviours);
+            this.ConstructTags(tags);
+            this.ConstructValues(values);
+            this.ConstructBehaviours(behaviours);
         }
 
         /// <summary>
@@ -96,19 +78,14 @@ namespace Atomic.Entities
             string name = null,
             int tagCapacity = 0,
             int valueCapacity = 0,
-            int behaviourCapacity = 0,
-            int id = -1
+            int behaviourCapacity = 0
         )
         {
             this.name = name ?? string.Empty;
-            this.id = id < 0 ? NextId() : id;
-
-            this.InitializeTags(in tagCapacity);
-            this.InitializeValues(in valueCapacity);
-            this.InitializeBehaviours(in behaviourCapacity);
+            this.ConstructTags(tagCapacity);
+            this.ConstructValues(valueCapacity);
+            this.ConstructBehaviours(behaviourCapacity);
         }
-
-        ~Entity() => this.UnsubscribeAll();
 
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
@@ -137,15 +114,15 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"{nameof(name)}: {name}, {nameof(id)}: {id}";
+        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
 
-        public bool Equals(IEntity<E> other) => this.id == other.Id;
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity<E> other && other.Id == this.id;
+        public bool Equals(IEntity<E> other) => this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
-        public override int GetHashCode() => this.id;
+        public override bool Equals(object obj) => obj is IEntity<E> other && other.InstanceID == this.instanceId;
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => this.instanceId;
 
         /// <summary>
         /// Clears all data (tags, values, behaviours) from this entity.
@@ -157,9 +134,4 @@ namespace Atomic.Entities
             this.ClearBehaviours();
         }
     }
-
-    // public class Entity : Entity<Entity>
-    // {
-    //     
-    // }
 }

@@ -10,7 +10,6 @@ namespace Atomic.Entities
     /// for tags, values, and behaviours to minimize runtime allocations.
     /// </summary>
     public partial class SceneEntity<E>
-
     {
         /// <summary>
         /// Initial tag capacity used to optimize tag allocation.
@@ -19,8 +18,9 @@ namespace Atomic.Entities
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
+        [Min(0)]
         [SerializeField]
-        private int _tagCapacity;
+        private int _initialTagCapacity;
 
         /// <summary>
         /// Initial value capacity used to optimize value allocation.
@@ -29,8 +29,9 @@ namespace Atomic.Entities
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
+        [Min(0)]
         [SerializeField]
-        private int _valueCapacity;
+        private int _initialValueCapacity;
 
         /// <summary>
         /// Initial behaviour capacity used to optimize behaviour allocation.
@@ -39,8 +40,9 @@ namespace Atomic.Entities
         [FoldoutGroup("Optimization")]
         [ReadOnly]
 #endif
+        [Min(0)]
         [SerializeField]
-        private int _behaviourCapacity;
+        private int _initialBehaviourCapacity;
         
         /// <summary>
         /// Precompiles current capacities from the entity and stores them into serialized fields
@@ -48,9 +50,9 @@ namespace Atomic.Entities
         /// </summary>
         private void Precompile()
         {
-            _tagCapacity = _entity.TagCount;
-            _valueCapacity = _entity.ValueCount;
-            _behaviourCapacity = _entity.BehaviourCount;
+            _initialTagCapacity = _tagCount;
+            _initialValueCapacity = _valueCount;
+            _initialBehaviourCapacity = _behaviourCount;
         }
     }
 }
