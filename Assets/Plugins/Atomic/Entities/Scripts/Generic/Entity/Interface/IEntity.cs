@@ -21,8 +21,4 @@ namespace Atomic.Entities
 
         void Clear();
     }
-
-    public interface IEntity : IEntity<IEntity>
-    {
-    }
 }
