@@ -31,5 +31,8 @@ namespace Atomic.Events
         
         public static void Unsubscribe(this IEventBus it, string key, Action action) => 
             it.Unsubscribe(NameToId(key), action);
+        
+        public static bool Dispose(this IEventBus it, string key) => 
+            it.Dispose(NameToId(key));
     }
 }

@@ -7,25 +7,24 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
-    public class EntityViewPool : MonoBehaviour
+    public abstract class ViewPool<E> : MonoBehaviour where E : IEntity<E>
     {
         [SerializeField]
         private Transform _container;
 
         [SerializeField]
-        private EntityViewCatalog[] _catalogs;
+        private ViewCatalog<E>[] _catalogs;
 
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, ViewBase> _prefabs = new();
+        private readonly Dictionary<string, AbstractView<E>> _prefabs = new();
 
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, Queue<ViewBase>> _pools = new();
+        private readonly Dictionary<string, Stack<AbstractView<E>>> _pools = new();
 
         private void Awake()
         {
@@ -33,30 +32,30 @@ namespace Atomic.Entities
                 this.AddPrefabs(_catalogs[i]);
         }
         
-        public ViewBase Rent(string name)
+        public AbstractView<E> Rent(string name)
         {
-            Queue<ViewBase> pool = this.GetPool(name);
-            if (pool.TryDequeue(out ViewBase view))
+            Stack<AbstractView<E>> pool = this.GetPool(name);
+            if (pool.TryPop(out AbstractView<E> view))
                 return view;
 
-            if (!_prefabs.TryGetValue(name, out ViewBase prefab))
+            if (!_prefabs.TryGetValue(name, out AbstractView<E> prefab))
                 throw new KeyNotFoundException($"Entity view with name <{name}> was not present in Entity View Pool!");
 
             return Instantiate(prefab, _container);
         }
 
-        public void Return(string name, ViewBase view)
+        public void Return(string name, AbstractView<E> view)
         {
-            Queue<ViewBase> pool = this.GetPool(name);
-            pool.Enqueue(view);
+            Stack<AbstractView<E>> pool = this.GetPool(name);
+            pool.Push(view);
             view.transform.parent = _container;
         }
 
         public void Clear()
         {
-            foreach (Queue<ViewBase> pool in _pools.Values)
+            foreach (Stack<AbstractView<E>> pool in _pools.Values)
             {
-                foreach (ViewBase view in pool)
+                foreach (AbstractView<E> view in pool)
                     Destroy(view.gameObject);
 
                 pool.Clear();
@@ -65,30 +64,30 @@ namespace Atomic.Entities
             _pools.Clear();
         }
 
-        private Queue<ViewBase> GetPool(string name)
+        private Stack<AbstractView<E>> GetPool(string name)
         {
-            if (_pools.TryGetValue(name, out Queue<ViewBase> pool))
+            if (_pools.TryGetValue(name, out Stack<AbstractView<E>> pool))
                 return pool;
 
-            pool = new Queue<ViewBase>();
+            pool = new Stack<AbstractView<E>>();
             _pools.Add(name, pool);
             return pool;
         }
 
-        public void AddPrefab(string entityName, ViewBase prefab) => _prefabs.Add(entityName, prefab);
+        public void AddPrefab(string entityName, AbstractView<E> prefab) => _prefabs.Add(entityName, prefab);
 
         public void RemovePrefab(string entityName) => _prefabs.Remove(entityName);
 
-        public void AddPrefabs(EntityViewCatalog catalog)
+        public void AddPrefabs(ViewCatalog<E> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {
-                (string key, ViewBase value) = catalog.GetPrefab(i);
+                (string key, AbstractView<E> value) = catalog.GetPrefab(i);
                 _prefabs.Add(key, value);
             }
         }
 
-        public void RemovePrefabs(EntityViewCatalog catalog)
+        public void RemovePrefabs(ViewCatalog<E> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {

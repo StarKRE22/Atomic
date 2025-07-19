@@ -22,9 +22,9 @@ namespace Atomic.Entities
 
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
-
+        
         public int InstanceID => this.instanceId;
-
+        
         private int instanceId;
 
         /// <summary>

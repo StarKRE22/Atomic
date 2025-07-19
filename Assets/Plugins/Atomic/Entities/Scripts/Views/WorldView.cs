@@ -4,28 +4,27 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    [AddComponentMenu("Atomic/Entities/Entity World View")]
-    [DisallowMultipleComponent]
-    public class EntityWorldView : MonoBehaviour
+    public abstract class WorldView<E> : MonoBehaviour where E : IEntity<E>
     {
-        public event Action<IEntity, ViewBase> OnViewAdded;
-        public event Action<IEntity, ViewBase> OnViewRemoved; 
+        public event Action<E, AbstractView<E>> OnViewAdded;
+      
+        public event Action<E, AbstractView<E>> OnViewRemoved; 
 
-        private readonly Dictionary<IEntity, ViewBase> _activeViews = new();
+        private readonly Dictionary<E, AbstractView<E>> _activeViews = new();
 
         [SerializeField]
         private Transform _viewport;
 
         [SerializeField]
-        private EntityViewPool _viewPool;
+        private ViewPool<E> _viewPool;
 
-        private IEntityWorld _world;
+        private IWorld<E> _world;
 
-        public ViewBase GetView(IEntity entity) => _activeViews[entity];
+        public AbstractView<E> GetView(E entity) => _activeViews[entity];
 
-        public Dictionary<IEntity, ViewBase> GetAllViews() => new(_activeViews);
+        public Dictionary<E, AbstractView<E>> GetAllViews() => new(_activeViews);
 
-        public void Show(IEntityWorld world)
+        public void Show(IWorld<E> world)
         {
             this.Hide();
 
@@ -37,7 +36,7 @@ namespace Atomic.Entities
             _world.OnAdded += this.SpawnView;
             _world.OnDeleted += this.UnspawnView;
 
-            foreach (IEntity entity in _world.GetAll())
+            foreach (E entity in _world.GetAll())
                 this.SpawnView(entity);
         }
 
@@ -49,21 +48,21 @@ namespace Atomic.Entities
             _world.OnAdded -= this.SpawnView;
             _world.OnDeleted -= this.UnspawnView;
 
-            foreach (IEntity entity in _world.GetAll())
+            foreach (E entity in _world.GetAll())
                 this.UnspawnView(entity);
         }
 
-        protected virtual string GetEntityName(IEntity entity) => entity.Name;
+        protected virtual string GetEntityName(E entity) => entity.Name;
 
-        protected virtual bool IsSpawnConditionMet(IEntity entity) => true;
+        protected virtual bool IsSpawnConditionMet(E entity) => true;
 
-        private void SpawnView(IEntity entity)
+        private void SpawnView(E entity)
         {
             if (!this.IsSpawnConditionMet(entity))
                 return;
 
             string name = this.GetEntityName(entity);
-            ViewBase view = _viewPool.Rent(name);
+            AbstractView<E> view = _viewPool.Rent(name);
             view.transform.SetParent(_viewport);
             view.Show(entity);
             
@@ -71,9 +70,9 @@ namespace Atomic.Entities
             this.OnViewAdded?.Invoke(entity, view);
         }
 
-        private void UnspawnView(IEntity entity)
+        private void UnspawnView(E entity)
         {
-            if (!_activeViews.Remove(entity, out ViewBase view))
+            if (!_activeViews.Remove(entity, out AbstractView<E> view))
                 return;
 
             view.Hide();

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class ViewBase<E> : MonoBehaviour where E : IEntity<E>
+    public abstract class AbstractView<E> : MonoBehaviour where E : IEntity<E>
     {
 #if ODIN_INSPECTOR
         [Title("Debug")]

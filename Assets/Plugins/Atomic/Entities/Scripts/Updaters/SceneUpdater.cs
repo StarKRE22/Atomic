@@ -79,7 +79,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = _entityCount; i < count; i++)
             {
-                E entity = this._entities[i];
+                E entity = _entities[i];
                 if (entity)
                 {
                     entity.Dispose();

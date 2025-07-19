@@ -9,13 +9,15 @@ namespace Atomic.Entities
         public static EntityRegistry<E> Instance => _instance ??= new EntityRegistry<E>();
         private static EntityRegistry<E> _instance;
 
-        public event Action<IEntity<E>> OnAdded;
-        public event Action<IEntity<E>> OnRemoved;
-
         private readonly Dictionary<int, IEntity<E>> _entities = new();
         private readonly Stack<int> _recycledIds = new();
         private int _lastId;
 
+        /// <summary>
+        /// Returns all entities currently registered.
+        /// </summary>
+        public IReadOnlyCollection<IEntity<E>> GetAll() => _entities.Values;
+        
         public bool Get(int id, out IEntity<E> entity) => _entities.TryGetValue(id, out entity);
 
         internal int Add(IEntity<E> entity)
@@ -24,19 +26,48 @@ namespace Atomic.Entities
                 id = _lastId++;
 
             _entities.Add(id, entity);
-            this.OnAdded?.Invoke(entity);
             return id;
         }
 
         internal void Remove(int id)
         {
-            if (!_entities.Remove(id, out IEntity<E> entity)) 
-                return;
-            
-            _recycledIds.Push(id);
-            this.OnRemoved?.Invoke(entity);
+            if (_entities.Remove(id)) 
+                _recycledIds.Push(id);
         }
 
+        /// <summary>
+        /// Tries to get the first entity with the given name.
+        /// </summary>
+        public bool TryGetByName(string name, out IEntity<E> result)
+        {
+            foreach (var entity in _entities.Values)
+            {
+                if (entity.Name == name)
+                {
+                    result = entity;
+                    return true;
+                }
+            }
+
+            result = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns all entities with the given name.
+        /// </summary>
+        public List<IEntity<E>> GetAllByName(string name)
+        {
+            var list = new List<IEntity<E>>();
+
+            foreach (var entity in _entities.Values)
+            {
+                if (entity.Name == name)
+                    list.Add(entity);
+            }
+
+            return list;
+        }
 
 #if UNITY_EDITOR
         [InitializeOnEnterPlayMode]

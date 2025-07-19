@@ -9,7 +9,7 @@ namespace Atomic.Entities
     public abstract partial class Entity<E> : IEntity<E> where E : class, IEntity<E>
     {
         private const int UNDEFINED_INDEX = -1;
-        
+
         /// <summary>
         /// Occurs when the state of the entity changes.
         /// </summary>
@@ -30,14 +30,14 @@ namespace Atomic.Entities
         }
 
         private string name;
-        private int instanceId = UNDEFINED_INDEX;
+        private int instanceId;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
         /// </summary>
         protected Entity()
         {
-            this.name = string.Empty;
+            this.name = string.Empty; 
             this.ConstructTags();
             this.ConstructValues();
             this.ConstructBehaviours();
@@ -86,6 +86,27 @@ namespace Atomic.Entities
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
         }
+        
+        /// <inheritdoc/>
+        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
+
+        public bool Equals(IEntity<E> other) => this.instanceId == other.InstanceID;
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => obj is IEntity<E> other && other.InstanceID == this.instanceId;
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => this.instanceId;
+
+        /// <summary>
+        /// Clears all data (tags, values, behaviours) from this entity.
+        /// </summary>
+        public void Clear()
+        {
+            this.ClearTags();
+            this.ClearValues();
+            this.ClearBehaviours();
+        }
 
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
@@ -113,25 +134,11 @@ namespace Atomic.Entities
             InternalUtils.Unsubscribe(ref this.OnTagDeleted);
         }
 
-        /// <inheritdoc/>
-        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
-
-        public bool Equals(IEntity<E> other) => this.instanceId == other.InstanceID;
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity<E> other && other.InstanceID == this.instanceId;
-
-        /// <inheritdoc/>
-        public override int GetHashCode() => this.instanceId;
-
-        /// <summary>
-        /// Clears all data (tags, values, behaviours) from this entity.
-        /// </summary>
-        public void Clear()
+        public void Destroy()
         {
-            this.ClearTags();
-            this.ClearValues();
-            this.ClearBehaviours();
+            this.Dispose();
+            this.Clear();
+            this.UnsubscribeAll();
         }
     }
 }

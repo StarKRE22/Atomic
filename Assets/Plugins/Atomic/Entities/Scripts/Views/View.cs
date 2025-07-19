@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [DisallowMultipleComponent]
-    public abstract class View<E> : ViewBase<E> where E : IEntity<E>
+    public abstract class View<E> : AbstractView<E> where E : IEntity<E>
     {
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]
