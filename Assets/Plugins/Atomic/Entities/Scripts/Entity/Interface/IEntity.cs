@@ -16,9 +16,13 @@ namespace Atomic.Entities
     public partial interface IEntity<E> : IDisposable where E : IEntity<E>
     {
         int InstanceID { get; }
-        
+
         string Name { get; set; }
-        
+
         void Clear();
+    }
+
+    public interface IEntity : IEntity<IEntity>
+    {
     }
 }
