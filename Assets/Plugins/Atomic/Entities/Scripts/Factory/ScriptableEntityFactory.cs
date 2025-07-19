@@ -7,12 +7,13 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// An abstract base class for creating <see cref="IEntity"/> instances via Unity's <see cref="ScriptableObject"/>.
-    /// Used as a factory to define and configure entity blueprints in the Unity Editor.
-    /// </summary>
-    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>
+    public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity<E>
     {
+        /// <summary>
+        /// Gets the name of the entity factory, by default uses the ScriptableObject's name.
+        /// </summary>
+        public virtual string Name => this.name;
+        
         /// <summary>
         /// The number of tags assigned during the precompilation step. Used to allocate internal storage.
         /// </summary>
@@ -21,7 +22,7 @@ namespace Atomic.Entities
         [FoldoutGroup("Advanced")]
 #endif
         [SerializeField]
-        private int _tagCount;
+        protected int tagCount;
 
         /// <summary>
         /// The number of values assigned during the precompilation step. Used to allocate internal storage.
@@ -31,7 +32,7 @@ namespace Atomic.Entities
         [FoldoutGroup("Advanced")]
 #endif
         [SerializeField]
-        private int _valueCount;
+        protected int valueCount;
 
         /// <summary>
         /// The number of behaviors assigned during the precompilation step. Used to allocate internal storage.
@@ -41,25 +42,13 @@ namespace Atomic.Entities
         [FoldoutGroup("Advanced")]
 #endif
         [SerializeField]
-        private int _behaviourCount;
+        protected int behaviourCount;
 
         /// <summary>
         /// Creates a new <see cref="IEntity"/> instance using this factory's configuration.
         /// </summary>
         /// <returns>A new instance of <see cref="IEntity"/> with installed tags, values, and behaviors.</returns>
-        public override IEntity Create()
-        {
-            Entity entity = new Entity(this.Name, _tagCount, _valueCount, _behaviourCount);
-            this.Install(entity);
-            return entity;
-        }
-
-        /// <summary>
-        /// Defines how this factory installs tags, values, and behaviors onto the provided <see cref="IEntity"/>.
-        /// This method must be implemented by derived classes.
-        /// </summary>
-        /// <param name="entity">The entity to configure.</param>
-        protected abstract void Install(IEntity entity);
+        public abstract E Create();
 
         /// <summary>
         /// Automatically called when the asset is modified in the editor. 
@@ -85,22 +74,10 @@ namespace Atomic.Entities
         [ContextMenu(nameof(Precompile))]
         private void Precompile()
         {
-            var entity = new Entity();
-            this.Install(entity);
-
-            _tagCount = entity.TagCount;
-            _valueCount = entity.ValueCount;
-            _behaviourCount = entity.BehaviourCount;
+            E entity = this.Create();
+            tagCount = entity.TagCount;
+            valueCount = entity.ValueCount;
+            behaviourCount = entity.BehaviourCount;
         }
-    }
-
-    public abstract class ScriptableEntityFactory<T> : ScriptableObject, IEntityFactory<T> where T : IEntity
-    {
-        /// <summary>
-        /// Gets the name of the entity factory, by default uses the ScriptableObject's name.
-        /// </summary>
-        public virtual string Name => this.name;
-
-        public abstract T Create();
     }
 }

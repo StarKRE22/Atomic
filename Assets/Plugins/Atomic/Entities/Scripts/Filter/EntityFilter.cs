@@ -11,13 +11,13 @@ namespace Atomic.Entities
     /// Represents a dynamic filter over a set of entities in the world, based on a predicate and optional triggers.
     /// Automatically tracks entities that satisfy the predicate and invokes events on changes.
     /// </summary>
-    public class EntityFilter<T> : IEntityFilter<T> where T : IEntity 
+    public class EntityFilter<E> : IEntityFilter<E> where E : IEntity<E> 
     {
         /// <inheritdoc />
-        public event Action<T> OnAdded;
+        public event Action<E> OnAdded;
 
         /// <inheritdoc />
-        public event Action<T> OnDeleted;
+        public event Action<E> OnDeleted;
 
         /// <inheritdoc />
         public int Count => entities.Count;
@@ -28,11 +28,11 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly HashSet<T> entities = new();
+        private readonly HashSet<E> entities = new();
 
-        private readonly IEntityWorld<T> world;
-        private readonly Predicate<T> predicate;
-        private readonly IEntityFilter.ITrigger[] triggers;
+        private readonly IEntityWorld<E> world;
+        private readonly Predicate<E> predicate;
+        private readonly IEntityFilter<E>.ITrigger[] triggers;
 
         /// <summary>
         /// Creates a new entity filter that watches a world for entities matching a predicate and responds to trigger changes.
@@ -42,9 +42,9 @@ namespace Atomic.Entities
         /// <param name="triggers">Optional triggers that can invalidate entities or cause re-evaluation.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="world"/> or <paramref name="predicate"/> is null.</exception>
         public EntityFilter(
-            in IEntityWorld<T> world,
-            in Predicate<T> predicate,
-            params IEntityFilter.ITrigger[] triggers
+            in IEntityWorld<E> world,
+            in Predicate<E> predicate,
+            params IEntityFilter<E>.ITrigger[] triggers
         )
         {
             this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
@@ -61,14 +61,14 @@ namespace Atomic.Entities
             this.world.OnAdded += this.Subscribe;
             this.world.OnDeleted += this.Unsubscribe;
 
-            foreach (T entity in this.world)
+            foreach (E entity in this.world)
                 this.Subscribe(entity);
         }
 
         /// <inheritdoc />
         public void Dispose()
         {
-            foreach (T entity in this.world)
+            foreach (E entity in this.world)
                 this.Unsubscribe(entity);
 
             this.world.OnAdded -= this.Subscribe;
@@ -76,39 +76,39 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public T[] GetAll()
+        public E[] GetAll()
         {
-            T[] result = new T[this.entities.Count];
+            E[] result = new E[this.entities.Count];
             this.entities.CopyTo(result);
             return result;
         }
 
         /// <inheritdoc />
-        public int GetAll(T[] results)
+        public int GetAll(E[] results)
         {
             this.entities.CopyTo(results);
             return this.entities.Count;
         }
 
         /// <inheritdoc />
-        public void CopyTo(ICollection<IEntity> results)
+        public void CopyTo(ICollection<E> results)
         {
             results.Clear();
             
-            foreach (T entity in this.entities)
+            foreach (E entity in this.entities)
                 results.Add(entity);
         }
 
         /// <inheritdoc />
-        public bool Has(T entity) => this.entities.Contains(entity);
+        public bool Has(E entity) => this.entities.Contains(entity);
 
         /// <inheritdoc />
-        public IEnumerator<T> GetEnumerator() => this.entities.GetEnumerator();
+        public IEnumerator<E> GetEnumerator() => this.entities.GetEnumerator();
 
         /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
         
-        private void Subscribe(T entity)
+        private void Subscribe(E entity)
         {
             entity.OnTagAdded += this.OnTagAdded;
             entity.OnTagDeleted += this.OnTagDeleted;
@@ -119,7 +119,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = this.triggers.Length; i < count; i++)
             {
-                IEntityFilter.ITrigger trigger = this.triggers[i];
+                IEntityFilter<E>.ITrigger trigger = this.triggers[i];
                 trigger.Subscribe(entity, this.Synchronize);
             }
 
@@ -127,7 +127,7 @@ namespace Atomic.Entities
                 this.OnAdded?.Invoke(entity);
         }
 
-        private void Unsubscribe(T entity)
+        private void Unsubscribe(E entity)
         {
             entity.OnTagAdded -= this.OnTagAdded;
             entity.OnTagDeleted -= this.OnTagDeleted;
@@ -138,7 +138,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = this.triggers.Length; i < count; i++)
             {
-                IEntityFilter.ITrigger trigger = this.triggers[i];
+                IEntityFilter<E>.ITrigger trigger = this.triggers[i];
                 trigger.Unsubscribe(entity, this.Synchronize);
             }
 
@@ -146,14 +146,14 @@ namespace Atomic.Entities
                 this.OnDeleted?.Invoke(entity);
         }
 
-        private void OnTagDeleted(T entity, int tag) => this.Synchronize(entity);
-        private void OnTagAdded(T entity, int _) => this.Synchronize(entity);
+        private void OnTagDeleted(E entity, int tag) => this.Synchronize(entity);
+        private void OnTagAdded(E entity, int _) => this.Synchronize(entity);
 
-        private void OnValueDeleted(T entity, int key) => this.Synchronize(entity);
-        private void OnValueAdded(T entity, int key) => this.Synchronize(entity);
-        private void OnValueChanged(T entity, int key) => this.Synchronize(entity);
+        private void OnValueDeleted(E entity, int key) => this.Synchronize(entity);
+        private void OnValueAdded(E entity, int key) => this.Synchronize(entity);
+        private void OnValueChanged(E entity, int key) => this.Synchronize(entity);
 
-        private void Synchronize(T entity)
+        private void Synchronize(E entity)
         {
             bool matches = this.predicate(entity);
             if (!matches && this.entities.Remove(entity)) this.OnDeleted?.Invoke(entity);

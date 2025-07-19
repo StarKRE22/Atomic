@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial interface IEntityWorld<T> : IReadOnlyCollection<T> where T : IEntity
+    public partial interface IEntityWorld<E> : IReadOnlyCollection<E> where E : IEntity<E>
     {
         event Action OnStateChanged;
-        event Action<IEntity> OnAdded;
-        event Action<IEntity> OnDeleted;
+        event Action<E> OnAdded;
+        event Action<E> OnDeleted;
 
         string Name { get; }
 
