@@ -1,7 +1,7 @@
 namespace Atomic.Entities
 {
-    public interface IEntityInstaller<E> where E : IEntity<E>
+    public interface IEntityInstaller<in E> where E : IEntity<E>
     {
-        void Install(IEntity<E> entity);
+        void Install(E entity);
     }
 }

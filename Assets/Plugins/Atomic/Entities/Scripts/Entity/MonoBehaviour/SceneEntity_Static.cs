@@ -15,15 +15,15 @@ namespace Atomic.Entities
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static SceneEntity<E> Create(
+        public static T Create<T>(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
             IEnumerable<IBehaviour<E>> behaviours = null
-        )
+        ) where T : SceneEntity<E>
         {
             GameObject gameObject = new GameObject(name);
-            SceneEntity<E> sceneEntity = gameObject.AddComponent<SceneEntity<E>>();
+            T sceneEntity = gameObject.AddComponent<T>();
             sceneEntity.Name = name;
 
             sceneEntity.AddTags(tags);
@@ -37,9 +37,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Instantiates a prefab and installs the resulting <see cref="SceneEntity"/> under the specified parent.
         /// </summary>
-        public static SceneEntity<E> Create(SceneEntity<E> prefab, Transform parent)
+        public static T Create<T>(T prefab, Transform parent) where T : SceneEntity<E>
         {
-            SceneEntity<E> entity = Instantiate(prefab, parent);
+            T entity = Instantiate(prefab, parent);
             entity.Install();
             return entity;
         }
@@ -47,14 +47,14 @@ namespace Atomic.Entities
         /// <summary>
         /// Instantiates a prefab at the given position and rotation with optional parent, then installs it.
         /// </summary>
-        public static SceneEntity<E> Create(
-            SceneEntity<E> prefab,
+        public static T Create<T>(
+            T prefab,
             Vector3 position,
             Quaternion rotation,
             Transform parent = null
-        )
+        ) where T : SceneEntity<E>
         {
-            SceneEntity<E> entity = Instantiate(prefab, position, rotation, parent);
+            T entity = Instantiate(prefab, position, rotation, parent);
             entity.Install();
             return entity;
         }
@@ -62,22 +62,24 @@ namespace Atomic.Entities
         /// <summary>
         /// Destroys the associated GameObject of a given <see cref="IEntity"/> if it is a <see cref="SceneEntity"/>.
         /// </summary>
-        public static void Destroy(SceneEntity<E> entity, float t = 0)
+        public static void Destroy(IEntity<E> entity, float t = 0)
         {
-            if (TryCast(entity, out SceneEntity<E> sceneEntity))
+            if (entity is SceneEntity<E> sceneEntity)
                 Destroy(sceneEntity.gameObject, t);
+            else if (entity is SceneEntityProxy<E> entityProxy) 
+                Destroy(entityProxy.Source.gameObject, t);
         }
 
         /// <summary>
         /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
         /// </summary>
-        public static SceneEntity<E> Cast(IEntity<E> entity)
+        public static T Cast<T>(IEntity<E> entity) where T : SceneEntity<T>
         {
             return entity switch
             {
                 null => null,
-                SceneEntity<E> sceneEntity => sceneEntity,
-                SceneEntityProxy<E> sceneEntityProxy => sceneEntityProxy.Source,
+                T tEntity => tEntity,
+                SceneEntityProxy<T> tProxy => (T) tProxy.Source,
                 _ => throw new Exception("Can't convert entity to SceneEntity")
             };
         }
@@ -85,17 +87,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
         /// </summary>
-        public static bool TryCast(IEntity<E> entity, out SceneEntity<E> result)
+        public static bool TryCast<T>(IEntity<E> entity, out T result) where T : SceneEntity<T>
         {
-            if (entity is SceneEntity<E> sceneEntity)
+            if (entity is T sceneEntity)
             {
                 result = sceneEntity;
                 return true;
             }
 
-            if (entity is SceneEntityProxy<E> proxy)
+            if (entity is SceneEntityProxy<T> proxy)
             {
-                result = proxy.Source;
+                result = (T) proxy.Source;
                 return true;
             }
 

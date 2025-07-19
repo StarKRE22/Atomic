@@ -9,17 +9,17 @@ namespace Atomic.Entities
        /// <summary>
         /// Event triggered when a value is added.
         /// </summary>
-        event Action<IEntity<E>, int> OnValueAdded;
+        event Action<E, int> OnValueAdded;
 
         /// <summary>
         /// Event triggered when a value is deleted.
         /// </summary>
-        event Action<IEntity<E>, int> OnValueDeleted;
+        event Action<E, int> OnValueDeleted;
 
         /// <summary>
         /// Event triggered when a value is changed.
         /// </summary>
-        event Action<IEntity<E>, int> OnValueChanged;
+        event Action<E, int> OnValueChanged;
 
         /// <summary>
         /// Number of values stored in this entity.

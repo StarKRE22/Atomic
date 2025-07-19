@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 
@@ -16,17 +15,17 @@ namespace Atomic.Entities
        /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
-        public event Action<IEntity<E>, int> OnValueAdded;
+        public event Action<E, int> OnValueAdded;
 
         /// <summary>
         /// Invoked when a value is deleted from the entity.
         /// </summary>
-        public event Action<IEntity<E>, int> OnValueDeleted;
+        public event Action<E, int> OnValueDeleted;
 
         /// <summary>
         /// Invoked when a value is changed in the entity.
         /// </summary>
-        public event Action<IEntity<E>, int> OnValueChanged;
+        public event Action<E, int> OnValueChanged;
 
         /// <summary>
         /// Gets the total number of values stored in the entity.
@@ -377,7 +376,7 @@ namespace Atomic.Entities
             _valueLastIndex = 0;
 
             for (int i = 0; i < removedCount; i++)
-                this.OnValueDeleted?.Invoke(this, removedItems[i]);
+                this.OnValueDeleted?.Invoke(this as E, removedItems[i]);
 
             this.OnStateChanged?.Invoke();
         }
@@ -570,19 +569,19 @@ namespace Atomic.Entities
 
         private void NotifyAboutValueChanged(in int key)
         {
-            this.OnValueChanged?.Invoke(this, key);
+            this.OnValueChanged?.Invoke(this as E, key);
             this.OnStateChanged?.Invoke();
         }
 
         private void NotifyAboutValueAdded(in int key)
         {
-            this.OnValueAdded?.Invoke(this, key);
+            this.OnValueAdded?.Invoke(this as E, key);
             this.OnStateChanged?.Invoke();
         }
 
         private void NotifyAboutValueDeleted(in int key)
         {
-            this.OnValueDeleted?.Invoke(this, key);
+            this.OnValueDeleted?.Invoke(this as E, key);
             this.OnStateChanged?.Invoke();
         }
 

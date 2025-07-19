@@ -17,10 +17,10 @@ namespace Atomic.Entities
             remove => _source.OnStateChanged -= value;
         }
 
-        public E Source => _source;
+        public SceneEntity<E> Source => _source;
         
         [SerializeField]
-        private E _source;
+        private SceneEntity<E> _source;
 
         public int InstanceID => _source.InstanceID;
 
@@ -37,6 +37,6 @@ namespace Atomic.Entities
 
         public override int GetHashCode() => _source.GetHashCode();
 
-        private void Reset() => _source = this.GetComponentInParent<E>();
+        private void Reset() => _source = this.GetComponentInParent<SceneEntity<E>>();
     }
 }

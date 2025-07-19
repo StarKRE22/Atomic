@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -16,12 +14,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
-        public event Action<IEntity<E>, int> OnTagAdded;
+        public event Action<E, int> OnTagAdded;
 
         /// <summary>
         /// Invoked when a tag is deleted from the entity.
         /// </summary>
-        public event Action<IEntity<E>, int> OnTagDeleted;
+        public event Action<E, int> OnTagDeleted;
 
         /// <summary>
         /// Gets the total number of tags associated with the entity.
@@ -48,7 +46,7 @@ namespace Atomic.Entities
             if (!this.AddTagInternal(in key))
                 return false;
 
-            this.OnTagAdded?.Invoke(this, key);
+            this.OnTagAdded?.Invoke(this as E, key);
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -61,7 +59,7 @@ namespace Atomic.Entities
             if (!this.DelTagInternal(in key))
                 return false;
 
-            this.OnTagDeleted?.Invoke(this, key);
+            this.OnTagDeleted?.Invoke(this as E, key);
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -125,7 +123,7 @@ namespace Atomic.Entities
             _tagLastIndex = 0;
 
             for (int i = 0; i < removeCount; i++)
-                this.OnTagDeleted?.Invoke(this, removedTags[i]);
+                this.OnTagDeleted?.Invoke(this as E, removedTags[i]);
 
             this.OnStateChanged?.Invoke();
         }

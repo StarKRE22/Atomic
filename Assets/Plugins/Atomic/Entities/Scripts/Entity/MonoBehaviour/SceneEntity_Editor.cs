@@ -21,8 +21,12 @@ namespace Atomic.Entities
         /// </summary>
         private void Reset()
         {
-            this.installers = new List<SceneEntityInstaller<E>>(this.GetComponentsInChildren<SceneEntityInstaller<E>>());
-            this.children = new List<SceneEntity<E>>(this.GetComponentsInChildren<SceneEntity<E>>());
+            this.installers = new List<SceneEntityInstaller<E>>(
+                this.GetComponentsInChildren<SceneEntityInstaller<E>>()
+            );
+            this.children = new List<SceneEntity<E>>(
+                this.GetComponentsInChildren<SceneEntity<E>>()
+            );
             this.children.Remove(this);
         }
 
@@ -78,9 +82,10 @@ namespace Atomic.Entities
 #endif
         private void RefreshInEditMode()
         {
-            this.ResetInstalledFlag();
+            this.MarkAsNotInstalled();
 
             bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
+
             if (!isPrefab)
             {
                 this.DisableInEditMode();
@@ -102,12 +107,15 @@ namespace Atomic.Entities
         /// </summary>
         private void InitInEditMode()
         {
-            if (this.Initialized)
+            if (_initialized)
                 return;
 
-            foreach (IBehaviour<E> behaviour in GetBehaviours())
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                IBehaviour<E> behaviour = _behaviours[i];
                 if (behaviour is IInit<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Init(this);
+            }
         }
 
         /// <summary>
@@ -115,12 +123,15 @@ namespace Atomic.Entities
         /// </summary>
         private void EnableInEditMode()
         {
-            if (this.Enabled)
+            if (_enabled)
                 return;
 
-            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                IBehaviour<E> behaviour = _behaviours[i];
                 if (behaviour is IEnable<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Enable(this);
+            }
         }
 
         /// <summary>
@@ -128,12 +139,15 @@ namespace Atomic.Entities
         /// </summary>
         private void DisableInEditMode()
         {
-            if (this is not {Enabled: true})
+            if (!_enabled)
                 return;
 
-            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                IBehaviour<E> behaviour = _behaviours[i];
                 if (behaviour is IDisable<E> disable && IsEditModeSupported(behaviour))
                     disable.Disable(this);
+            }
         }
 
         /// <summary>
@@ -141,11 +155,12 @@ namespace Atomic.Entities
         /// </summary>
         private void DisposeInEditMode()
         {
-            if (this is not {Initialized: true})
+            if (!_initialized)
                 return;
 
-            foreach (IBehaviour<E> behaviour in this.GetBehaviours())
+            for (int i = 0; i < _behaviourCount; i++)
             {
+                IBehaviour<E> behaviour = _behaviours[i];
                 if (behaviour is IDispose<E> dispose && IsEditModeSupported(behaviour))
                     dispose.Dispose(this);
             }
@@ -154,7 +169,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether a behaviour is marked to support edit mode lifecycle.
         /// </summary>
-        private static bool IsEditModeSupported(IBehaviour<E> behaviour) => 
+        private static bool IsEditModeSupported(IBehaviour<E> behaviour) =>
             behaviour.GetType().IsDefined(typeof(EditModeBehaviourAttribute));
     }
 }

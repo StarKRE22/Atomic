@@ -9,12 +9,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Event triggered when a tag is added.
         /// </summary>
-        event Action<IEntity<E>, int> OnTagAdded;
+        event Action<E, int> OnTagAdded;
 
         /// <summary>
         /// Event triggered when a tag is deleted.
         /// </summary>
-        event Action<IEntity<E>, int> OnTagDeleted;
+        event Action<E, int> OnTagDeleted;
 
         /// <summary>
         /// Number of tags associated with this entity.

@@ -5,19 +5,19 @@ namespace Atomic.Entities
 {
     public partial class SceneEntityProxy<E>
     {
-        public event Action<IEntity<E>, int> OnValueAdded
+        public event Action<E, int> OnValueAdded
         {
             add => _source.OnValueAdded += value;
             remove => _source.OnValueAdded -= value;
         }
 
-        public event Action<IEntity<E>, int> OnValueDeleted
+        public event Action<E, int> OnValueDeleted
         {
             add => _source.OnValueDeleted += value;
             remove => _source.OnValueDeleted -= value;
         }
 
-        public event Action<IEntity<E>, int> OnValueChanged
+        public event Action<E, int> OnValueChanged
         {
             add => _source.OnValueChanged += value;
             remove => _source.OnValueChanged -= value;

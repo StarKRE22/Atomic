@@ -15,7 +15,8 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E>, ISerializationCallbackReceiver where E : class, IEntity<E>
+    public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E>, ISerializationCallbackReceiver 
+        where E : class, IEntity<E>
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -97,14 +98,14 @@ namespace Atomic.Entities
 
             _installed = true;
 
-            E me = this as E;
+            E entity = this as E;
             if (this.installers != null)
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
                     SceneEntityInstaller<E> installer = this.installers[i];
                     if (installer != null)
-                        installer.Install(me);
+                        installer.Install(entity);
                     else
                         Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
                 }
@@ -145,7 +146,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Marks the entity as not installed, allowing reinstallation.
         /// </summary>
-        public void ResetInstalledFlag() => _installed = false;
+        public void MarkAsNotInstalled() => _installed = false;
         
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
