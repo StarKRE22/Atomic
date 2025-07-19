@@ -12,11 +12,7 @@ namespace Atomic.Entities
     /// </summary>
     public abstract partial class Entity<E> : IEntity<E> where E : class, IEntity<E>
     {
-        private const int UNDEFINED_INDEX = -1;
-
-        private static readonly Dictionary<int, IEntity<E>> s_entities = new();
-        private static int s_maxId = -1;
-
+        
         /// <summary>
         /// Occurs when the state of the entity changes.
         /// </summary>
@@ -28,7 +24,11 @@ namespace Atomic.Entities
         public int Id
         {
             get => this.id;
-            set => this.SetId(value);
+            set
+            {
+                EntityRegistry<E>.ChangeId(this, this.id, value);
+                this.id = value;
+            }
         }
 
         /// <summary>
@@ -40,7 +40,6 @@ namespace Atomic.Entities
             set => this.name = value;
         }
 
-        private readonly IEntity<E> owner;
         private string name;
         private int id;
 
@@ -50,22 +49,7 @@ namespace Atomic.Entities
         protected Entity()
         {
             this.name = string.Empty;
-            this.id = NextId();
-            this.owner = this;
-
-            this.InitializeTags();
-            this.InitializeValues();
-            this.InitializeBehaviours();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with a specified owner.
-        /// </summary>
-        protected Entity(IEntity<E> owner)
-        {
-            this.name = string.Empty;
-            this.id = NextId();
-            this.owner = owner;
+            this.id = EntityRegistry<E>.NextId(this);
 
             this.InitializeTags();
             this.InitializeValues();
@@ -78,8 +62,7 @@ namespace Atomic.Entities
         protected Entity(string name)
         {
             this.name = name;
-            this.id = NextId();
-            this.owner = this;
+            this.id = EntityRegistry<E>.NextId(this);
 
             this.InitializeTags();
             this.InitializeValues();
@@ -95,13 +78,11 @@ namespace Atomic.Entities
             IEnumerable<int> tags = null,
             IEnumerable<KeyValuePair<int, object>> values = null,
             IEnumerable<IBehaviour<E>> behaviours = null,
-            IEntity<E> owner = null,
             int id = -1
         )
         {
             this.name = name ?? string.Empty;
             this.id = id < 0 ? NextId() : id;
-            this.owner = owner ?? this;
 
             this.InitializeTags(tags);
             this.InitializeValues(values);
@@ -116,13 +97,11 @@ namespace Atomic.Entities
             int tagCapacity = 0,
             int valueCapacity = 0,
             int behaviourCapacity = 0,
-            IEntity<E> owner = null,
             int id = -1
         )
         {
             this.name = name ?? string.Empty;
             this.id = id < 0 ? NextId() : id;
-            this.owner = owner ?? this;
 
             this.InitializeTags(in tagCapacity);
             this.InitializeValues(in valueCapacity);
@@ -176,44 +155,6 @@ namespace Atomic.Entities
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
-        }
-
-        private static int NextId()
-        {
-            do s_maxId++;
-            while (s_entities.ContainsKey(s_maxId));
-            return s_maxId;
-        }
-
-        private void SetId(int id)
-        {
-            if (id < 0)
-                throw new Exception($"Entity Id cannot be negative! Actual: {id}!");
-
-            s_entities.Remove(this.id);
-            s_entities[id] = this;
-
-            this.id = id;
-        }
-
-        /// <summary>
-        /// Finds an entity by its ID.
-        /// </summary>
-        /// <param name="id">The entity ID.</param>
-        /// <param name="entity">The found entity, if any.</param>
-        /// <returns>True if the entity exists; otherwise, false.</returns>
-        public static bool Find(int id, out IEntity<E> entity) => s_entities.TryGetValue(id, out entity);
-
-        /// <summary>
-        /// Resets all static entity tracking information (used internally on play mode enter).
-        /// </summary>
-#if UNITY_EDITOR
-        [InitializeOnEnterPlayMode]
-#endif
-        public static void ResetAll()
-        {
-            s_maxId = -1;
-            s_entities.Clear();
         }
     }
 

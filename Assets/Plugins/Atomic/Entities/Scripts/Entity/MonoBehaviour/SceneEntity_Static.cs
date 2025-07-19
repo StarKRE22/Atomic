@@ -15,7 +15,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Stores a mapping between <see cref="IEntity"/> and its corresponding <see cref="SceneEntity"/>.
         /// </summary>
-        private static readonly Dictionary<IEntity<E>, SceneEntity<E>> s_sceneEntities = new();
+        private static readonly Dictionary<int, SceneEntity<E>> s_sceneEntities = new();
 
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.

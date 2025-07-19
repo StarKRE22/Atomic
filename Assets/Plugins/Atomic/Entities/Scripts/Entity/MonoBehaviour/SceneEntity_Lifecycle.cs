@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
@@ -7,118 +9,220 @@ namespace Atomic.Entities
     /// delegating lifecycle control and state to the internal <see cref="Entity"/> instance.
     /// </summary>
     public partial class SceneEntity<E>
-
     {
         /// <summary>
-        /// Triggered when the entity is initialized.
+        /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        public event Action OnInitialized
+        private static readonly IEqualityComparer<IUpdate<E>> s_updateComparer =
+            EqualityComparer<IUpdate<E>>.Default;
+
+        /// <summary>
+        /// Equality comparer for IFixedUpdate behaviours.
+        /// </summary>
+        private static readonly IEqualityComparer<IFixedUpdate<E>> s_fixedUpdateComparer =
+            EqualityComparer<IFixedUpdate<E>>.Default;
+
+        /// <summary>
+        /// Equality comparer for ILateUpdate behaviours.
+        /// </summary>
+        private static readonly IEqualityComparer<ILateUpdate<E>> s_lateUpdateComparer =
+            EqualityComparer<ILateUpdate<E>>.Default;
+
+        /// <summary>
+        /// Called when the entity has been initialized.
+        /// </summary>
+        public event Action OnInitialized;
+
+        /// <summary>
+        /// Called when the entity is enabled.
+        /// </summary>
+        public event Action OnEnabled;
+
+        /// <summary>
+        /// Called when the entity is disabled.
+        /// </summary>
+        public event Action OnDisabled;
+
+        /// <summary>
+        /// Called when the entity is disposed.
+        /// </summary>
+        public event Action OnDisposed;
+
+        /// <summary>
+        /// Called every frame while the entity is enabled.
+        /// </summary>
+        public event Action<float> OnUpdated;
+
+        /// <summary>
+        /// Called every fixed frame while the entity is enabled.
+        /// </summary>
+        public event Action<float> OnFixedUpdated;
+
+        /// <summary>
+        /// Called every late frame while the entity is enabled.
+        /// </summary>
+        public event Action<float> OnLateUpdated;
+
+        /// <summary>
+        /// Indicates whether the entity has been initialized.
+        /// </summary>
+        public bool Initialized => _initialized;
+
+        /// <summary>
+        /// Indicates whether the entity is currently enabled.
+        /// </summary>
+        public bool Enabled => _enabled;
+
+        private bool _initialized;
+        private bool _enabled;
+
+        private IUpdate<E>[] updates;
+        private IFixedUpdate<E>[] fixedUpdates;
+        private ILateUpdate<E>[] lateUpdates;
+
+        private int updateCount;
+        private int fixedUpdateCount;
+        private int lateUpdateCount;
+
+        /// <summary>
+        /// Initializes the entity and all IInit behaviours.
+        /// </summary>
+        public void Init()
         {
-            add => this.Entity.OnInitialized += value;
-            remove => this.Entity.OnInitialized -= value;
+            if (_initialized)
+                return;
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is IInit<E> initBehaviour)
+                    initBehaviour.Init(this);
+
+            _initialized = true;
+            this.OnInitialized?.Invoke();
         }
 
         /// <summary>
-        /// Triggered when the entity is disposed.
+        /// Disposes the entity and all IDispose behaviours.
         /// </summary>
-        public event Action OnDisposed
+        public void Dispose()
         {
-            add => this.Entity.OnDisposed += value;
-            remove => this.Entity.OnDisposed -= value;
+            if (!_initialized)
+                return;
+
+            if (_enabled)
+                this.Disable();
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is IDispose<E> disposeBehaviour)
+                    disposeBehaviour.Dispose(this);
+
+            _initialized = false;
+            this.OnDisposed?.Invoke();
         }
 
         /// <summary>
-        /// Triggered when the entity is enabled.
+        /// Enables the entity and registers update behaviours.
         /// </summary>
-        public event Action OnEnabled
+        public void Enable()
         {
-            add => this.Entity.OnEnabled += value;
-            remove => this.Entity.OnEnabled -= value;
+            if (!_initialized)
+                this.Init();
+
+            if (_enabled)
+                return;
+
+            _enabled = true;
+
+            for (int i = 0; i < _behaviourCount; i++)
+                this.EnableBehaviour(in _behaviours[i]);
+
+            this.OnEnabled?.Invoke();
         }
 
         /// <summary>
-        /// Triggered when the entity is disabled.
+        /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public event Action OnDisabled
+        public void Disable()
         {
-            add => this.Entity.OnDisabled += value;
-            remove => this.Entity.OnDisabled -= value;
-        }
-        
-        /// <summary>
-        /// Triggered during the entity's update phase.
-        /// </summary>
-        public event Action<float> OnUpdated
-        {
-            add => this.Entity.OnUpdated += value;
-            remove => this.Entity.OnUpdated -= value;
+            if (!_enabled)
+                return;
+
+            for (int i = 0; i < _behaviourCount; i++)
+                this.DisableBehaviour(in _behaviours[i]);
+
+            _enabled = false;
+            this.OnDisabled?.Invoke();
         }
 
         /// <summary>
-        /// Triggered during the entity's fixed update phase.
+        /// Invokes OnUpdate for all registered IUpdate behaviours.
         /// </summary>
-        public event Action<float> OnFixedUpdated
+        public void OnUpdate(float deltaTime)
         {
-            add => this.Entity.OnFixedUpdated += value;
-            remove => this.Entity.OnFixedUpdated -= value;
-        }
+            if (!_enabled)
+                return;
 
-        
-        /// <summary>
-        /// Triggered during the entity's late update phase.
-        /// </summary>
-        public event Action<float> OnLateUpdated
-        {
-            add => this.Entity.OnLateUpdated += value;
-            remove => this.Entity.OnLateUpdated -= value;
+            for (int i = 0; i < this.updateCount && _enabled; i++)
+                this.updates[i].OnUpdate(this, deltaTime);
+
+            this.OnUpdated?.Invoke(deltaTime);
         }
 
         /// <summary>
-        /// Returns true if the entity has been initialized.
+        /// Invokes OnFixedUpdate for all registered IFixedUpdate behaviours.
         /// </summary>
-        public bool Initialized => this.Entity.Initialized;
-
-        /// <summary>
-        /// Returns or sets whether the entity is currently enabled.
-        /// </summary>
-        public bool Enabled
+        public void OnFixedUpdate(float deltaTime)
         {
-            get => this.Entity.Enabled;
-            set => this.enabled = value;
+            if (!_enabled)
+                return;
+
+            for (int i = 0; i < this.fixedUpdateCount && _enabled; i++)
+                this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
+
+            this.OnFixedUpdated?.Invoke(deltaTime);
         }
-        /// <summary>
-        /// Initializes the entity.
-        /// </summary>
-        public void Init() => this.Entity.Init();
-        
-        /// <summary>
-        /// Enables the entity.
-        /// </summary>
-        public void Enable() => this.Entity.Enable();
-        
-        /// <summary>
-        /// Disables the entity.
-        /// </summary>
-        public void Disable() => this.Entity.Disable();
 
         /// <summary>
-        /// Disposes the entity and releases associated resources.
+        /// Invokes OnLateUpdate for all registered ILateUpdate behaviours.
         /// </summary>
-        public void Dispose() => this.Entity.Dispose();
-        
-        /// <summary>
-        /// Performs update logic with the given delta time.
-        /// </summary>
-        public void OnUpdate(float deltaTime) => this.Entity.OnUpdate(deltaTime);
-        
-        /// <summary>
-        /// Performs fixed update logic with the given delta time.
-        /// </summary>
-        public void OnFixedUpdate(float deltaTime) => this.Entity.OnFixedUpdate(deltaTime);
-        
-        /// <summary>
-        /// Performs late update logic with the given delta time.
-        /// </summary>
-        public void OnLateUpdate(float deltaTime) => this.Entity.OnLateUpdate(deltaTime);
+        public void OnLateUpdate(float deltaTime)
+        {
+            if (!_enabled)
+                return;
+
+            for (int i = 0; i < this.lateUpdateCount && _enabled; i++)
+                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
+
+            this.OnLateUpdated?.Invoke(deltaTime);
+        }
+
+        private void EnableBehaviour(in IBehaviour<E> behaviour)
+        {
+            if (behaviour is IEnable<E> entityEnable)
+                entityEnable.Enable(this);
+
+            if (behaviour is IUpdate<E> update)
+                Add(ref this.updates, ref this.updateCount, in update);
+
+            if (behaviour is IFixedUpdate<E> fixedUpdate)
+                Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
+
+            if (behaviour is ILateUpdate<E> lateUpdate)
+                Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
+        }
+
+        private void DisableBehaviour(in IBehaviour<E> behaviour)
+        {
+            if (behaviour is IDisable<E> entityDisable)
+                entityDisable.Disable(this);
+
+            if (behaviour is IUpdate<E> update)
+                Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
+
+            if (behaviour is IFixedUpdate<E> fixedUpdate)
+                Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
+
+            if (behaviour is ILateUpdate<E> lateUpdate)
+                Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
+        }
     }
 }

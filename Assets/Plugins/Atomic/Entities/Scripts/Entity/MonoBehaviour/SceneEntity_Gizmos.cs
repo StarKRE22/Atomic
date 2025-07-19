@@ -36,17 +36,14 @@ namespace Atomic.Entities
         {
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
                 return;
-
-            if (_entity == null)
-                return;
-
+            
             try
             {
-                for (int i = 0; i < _entity._behaviourCount; i++)
+                for (int i = 0; i < _behaviourCount; i++)
                 {
-                    IBehaviour<E> behaviour = _entity._behaviours[i];
+                    IBehaviour<E> behaviour = _behaviours[i];
                     if (behaviour is IGizmos<E> gizmos)
-                        gizmos.OnGizmosDraw(_entity);
+                        gizmos.OnGizmosDraw(this);
                 }
             }
             catch (Exception e)

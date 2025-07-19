@@ -1,93 +1,280 @@
 using System;
+using System.Buffers;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Atomic.Entities
 {
     public partial class SceneEntity<E>
     {
         /// <summary>
-        /// Occurs when a behaviour is added to the entity.
+        /// Static comparer used to compare behaviours.
         /// </summary>
-        public event Action<E, IBehaviour<E>> OnBehaviourAdded
+        private static readonly IEqualityComparer<IBehaviour<E>> s_behaviourComparer =
+            EqualityComparer<IBehaviour<E>>.Default;
+
+        /// <summary>
+        /// Shared pool used to temporarily store behaviour arrays.
+        /// </summary>
+        private static readonly ArrayPool<IBehaviour<E>> s_behaviourPool =
+            ArrayPool<IBehaviour<E>>.Shared;
+
+        /// <summary>
+        /// Invoked when a new behaviour is added.
+        /// </summary>
+        public event Action<E, IBehaviour<E>> OnBehaviourAdded;
+
+        /// <summary>
+        /// Invoked when a behaviour is removed.
+        /// </summary>
+        public event Action<E, IBehaviour<E>> OnBehaviourDeleted;
+
+        /// <summary>
+        /// Total number of behaviours attached to this entity.
+        /// </summary>
+        public int BehaviourCount => _behaviourCount;
+
+        private IBehaviour<E>[] _behaviours;
+        private int _behaviourCount;
+
+        /// <summary>
+        /// Checks whether a specific behaviour instance is attached to this entity.
+        /// </summary>
+        public bool HasBehaviour(IBehaviour<E> behaviour)
         {
-            add => this.Entity.OnBehaviourAdded += value;
-            remove => this.Entity.OnBehaviourAdded -= value;
+            if (behaviour == null)
+                return false;
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] == behaviour)
+                    return true;
+
+            return false;
         }
 
         /// <summary>
-        /// Occurs when a behaviour is removed from the entity.
+        /// Checks whether a behaviour of type <typeparamref name="T"/> is attached.
         /// </summary>
-        public event Action<E, IBehaviour<E>> OnBehaviourDeleted
+        public bool HasBehaviour<T>() where T : IBehaviour<E>
         {
-            add => this.Entity.OnBehaviourDeleted += value;
-            remove => this.Entity.OnBehaviourDeleted -= value;
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T)
+                    return true;
+
+            return false;
         }
-        
-        /// <summary>
-        /// Gets the number of behaviours attached to the entity.
-        /// </summary>
-        public int BehaviourCount => this.Entity.BehaviourCount;
 
         /// <summary>
-        /// Adds a behaviour to the entity.
+        /// Adds a new behaviour to the entity.
         /// </summary>
-        public void AddBehaviour(IBehaviour<E> behaviour) => this.Entity.AddBehaviour(behaviour);
+        public void AddBehaviour(IBehaviour<E> behaviour)
+        {
+            if (behaviour == null)
+                throw new ArgumentNullException(nameof(behaviour));
+
+            InternalUtils.Add(ref _behaviours, ref _behaviourCount, in behaviour);
+
+            if (_initialized && behaviour is IInit<E> initBehaviour)
+                initBehaviour.Init(this);
+
+            if (_enabled)
+                this.EnableBehaviour(in behaviour);
+
+            this.OnBehaviourAdded?.Invoke(this as E, behaviour);
+            this.OnStateChanged?.Invoke();
+        }
 
         /// <summary>
-        /// Gets a behaviour of the specified type.
+        /// Removes the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
-        public T GetBehaviour<T>() where T : IBehaviour<E> => this.Entity.GetBehaviour<T>();
-        
-        /// <summary>
-        /// Attempts to get a behaviour of the specified type.
-        /// </summary>
-        public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour<E> => this.Entity.TryGetBehaviour(out behaviour);
+        public bool DelBehaviour<T>() where T : IBehaviour<E>
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                IBehaviour<E> behaviour = _behaviours[i];
+                if (behaviour is T)
+                    return this.DelBehaviour(behaviour);
+            }
+
+            return false;
+        }
 
         /// <summary>
-        /// Gets an array of all behaviours attached to the entity.
+        /// Removes a specific behaviour instance.
         /// </summary>
-        public IBehaviour<E>[] GetBehaviours() => this.Entity.GetBehaviours();
-        
+        public bool DelBehaviour(IBehaviour<E> behaviour)
+        {
+            if (behaviour == null)
+                return false;
+
+            if (!InternalUtils.Remove(ref _behaviours, ref _behaviourCount, in behaviour, in s_behaviourComparer))
+                return false;
+
+            if (_enabled)
+                this.DisableBehaviour(in behaviour);
+
+            if (_initialized && behaviour is IDispose<E> dispose)
+                dispose.Dispose(this);
+
+            this.OnBehaviourDeleted?.Invoke(this as E, behaviour);
+            this.OnStateChanged?.Invoke();
+            return true;
+        }
+
+        /// <summary>
+        /// Removes all behaviours from this entity.
+        /// </summary>
+        public void ClearBehaviours()
+        {
+            if (_behaviourCount == 0)
+                return;
+
+            int removedCount = _behaviourCount;
+            IBehaviour<E>[] removedBehaviours = s_behaviourPool.Rent(removedCount);
+            Array.Copy(_behaviours, removedBehaviours, removedCount);
+
+            _behaviourCount = 0;
+
+            try
+            {
+                for (int i = 0; i < removedCount; i++)
+                    this.OnBehaviourDeleted?.Invoke(this as E, removedBehaviours[i]);
+
+                this.OnStateChanged?.Invoke();
+            }
+            finally
+            {
+                s_behaviourPool.Return(removedBehaviours);
+            }
+        }
+
+        /// <summary>
+        /// Gets the first behaviour of type <typeparamref name="T"/>.
+        /// </summary>
+        public T GetBehaviour<T>() where T : IBehaviour<E>
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T result)
+                    return result;
+
+            throw new Exception($"Entity Behaviour of type {typeof(T).Name} is not found!");
+        }
+
+        /// <summary>
+        /// Attempts to get the first behaviour of type <typeparamref name="T"/>.
+        /// </summary>
+        public bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour<E>
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                if (_behaviours[i] is T tBehaviour)
+                {
+                    behaviour = tBehaviour;
+                    return true;
+                }
+            }
+
+            behaviour = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the behaviour instance at the given index.
+        /// </summary>
+        public IBehaviour<E> GetBehaviourAt(in int index)
+        {
+            if (index < 0 || index >= _behaviourCount)
+                throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
+
+            return _behaviours[index];
+        }
+
+        /// <summary>
+        /// Returns a new array of all behaviours attached to this entity.
+        /// </summary>
+        public IBehaviour<E>[] GetBehaviours()
+        {
+            IBehaviour<E>[] result = new IBehaviour<E>[_behaviourCount];
+            this.GetBehaviours(result);
+            return result;
+        }
+
         /// <summary>
         /// Copies all behaviours into the provided array.
         /// </summary>
-        public int GetBehaviours(IBehaviour<E>[] results) => this.Entity.GetBehaviours(results);
-        
-        /// <summary>
-        /// Gets the behaviour at the specified index.
-        /// </summary>
-        public IBehaviour<E> GetBehaviourAt(in int index) => this.Entity.GetBehaviourAt(index);
-        
-        /// <summary>
-        /// Removes the specified behaviour from the entity.
-        /// </summary>
-        public bool DelBehaviour(IBehaviour<E> behaviour) => this.Entity.DelBehaviour(behaviour);
-        
-        /// <summary>
-        /// Removes the behaviour of the specified type from the entity.
-        /// </summary>
-        public bool DelBehaviour<T>() where T : IBehaviour<E> => this.Entity.DelBehaviour<T>();
+        public int GetBehaviours(IBehaviour<E>[] results)
+        {
+            Array.Copy(_behaviours, results, _behaviourCount);
+            return _behaviourCount;
+        }
 
         /// <summary>
-        /// Checks whether the entity contains a behaviour of the specified type.
+        /// Returns an enumerator for iterating through behaviours.
         /// </summary>
-        public bool HasBehaviour<T>() where T : IBehaviour<E> => this.Entity.HasBehaviour<T>();
-        
-        /// <summary>
-        /// Checks whether the entity contains the specified behaviour.
-        /// </summary>
-        public bool HasBehaviour(IBehaviour<E> behaviour) => this.Entity.HasBehaviour(behaviour);
-        
-        /// <summary>
-        /// Removes all behaviours from the entity.
-        /// </summary>
-        public void ClearBehaviours() => this.Entity.ClearBehaviours();
-        
-        /// <summary>
-        /// Returns an enumerator over all behaviours attached to the entity.
-        /// </summary>
-        IEnumerator<IBehaviour<E>> IEntity<E>.GetBehaviourEnumerator() => this.Entity.GetBehaviourEnumerator();
+        IEnumerator<IBehaviour<E>> IEntity<E>.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
 
-        public Entity<E>.BehaviourEnumerator GetBehaviourEnumerator() => this.Entity.GetBehaviourEnumerator();
+        public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
+
+        public struct BehaviourEnumerator : IEnumerator<IBehaviour<E>>
+        {
+            public IBehaviour<E> Current => _current;
+
+            object IEnumerator.Current => _current;
+
+            private readonly SceneEntity<E> _entity;
+            private int _index;
+            private IBehaviour<E> _current;
+
+            public BehaviourEnumerator(SceneEntity<E> entity)
+            {
+                _entity = entity;
+                _index = -1;
+                _current = default;
+            }
+
+            public bool MoveNext()
+            {
+                if (_index + 1 == _entity._behaviourCount)
+                    return false;
+
+                _current = _entity._behaviours[++_index];
+                return true;
+            }
+
+            public void Reset()
+            {
+                _index = -1;
+                _current = default;
+            }
+
+            public void Dispose()
+            {
+                //Nothing...
+            }
+        }
+
+        /// <summary>
+        /// Initializes the behaviour array with an optional capacity.
+        /// </summary>
+        private void InitializeBehaviours(IEnumerable<IBehaviour<E>> behaviours)
+        {
+            if (behaviours == null)
+                this.InitializeBehaviours();
+            else
+            {
+                this.InitializeBehaviours(behaviours.Count());
+
+                foreach (IBehaviour<E> behaviour in behaviours)
+                    if (behaviour != null)
+                        _behaviours[_behaviourCount++] = behaviour;
+            }
+        }
+
+        /// <summary>
+        /// Initializes the behaviour array from a collection.
+        /// </summary>
+        private void InitializeBehaviours(in int capacity = 0) =>
+            _behaviours = new IBehaviour<E>[capacity];
     }
 }

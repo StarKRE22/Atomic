@@ -38,8 +38,8 @@ namespace Atomic.Entities
         /// </summary>
         public int BehaviourCount => _behaviourCount;
 
-        internal IBehaviour<E>[] _behaviours;
-        internal int _behaviourCount;
+        private IBehaviour<E>[] _behaviours;
+        private int _behaviourCount;
 
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Atomic.Entities
             InternalUtils.Add(ref _behaviours, ref _behaviourCount, in behaviour);
 
             if (this.initialized && behaviour is IInit<E> initBehaviour)
-                initBehaviour.Init(this.owner);
+                initBehaviour.Init(this);
 
             if (this.enabled)
                 this.EnableBehaviour(in behaviour);
@@ -119,7 +119,7 @@ namespace Atomic.Entities
                 this.DisableBehaviour(in behaviour);
 
             if (this.initialized && behaviour is IDispose<E> dispose)
-                dispose.Dispose(this.owner);
+                dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this as E, behaviour);
             this.OnStateChanged?.Invoke();
