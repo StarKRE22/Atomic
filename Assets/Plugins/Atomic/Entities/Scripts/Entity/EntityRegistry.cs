@@ -30,11 +30,11 @@ namespace Atomic.Entities
 
         internal void Remove(int id)
         {
-            if (_entities.Remove(id, out IEntity<E> entity))
-            {
-                _recycledIds.Push(id);
-                this.OnRemoved?.Invoke(entity);
-            }
+            if (!_entities.Remove(id, out IEntity<E> entity)) 
+                return;
+            
+            _recycledIds.Push(id);
+            this.OnRemoved?.Invoke(entity);
         }
 
 

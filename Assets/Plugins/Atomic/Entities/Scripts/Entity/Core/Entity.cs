@@ -30,7 +30,7 @@ namespace Atomic.Entities
         }
 
         private string name;
-        private int instanceId;
+        private int instanceId = UNDEFINED_INDEX;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.

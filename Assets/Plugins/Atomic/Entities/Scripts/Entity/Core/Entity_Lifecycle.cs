@@ -114,6 +114,7 @@ namespace Atomic.Entities
                     disposeBehaviour.Dispose(this);
 
             EntityRegistry<E>.Instance.Remove(this.instanceId);
+            this.instanceId = UNDEFINED_INDEX;
             
             this.initialized = false;
             this.OnDisposed?.Invoke();
@@ -133,7 +134,7 @@ namespace Atomic.Entities
             this.enabled = true;
 
             for (int i = 0; i < _behaviourCount; i++)
-                this.EnableBehaviour(in _behaviours[i]);
+                this.EnableBehaviour(_behaviours[i]);
 
             this.OnEnabled?.Invoke();
         }
@@ -147,7 +148,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
-                this.DisableBehaviour(in _behaviours[i]);
+                this.DisableBehaviour(_behaviours[i]);
 
             this.enabled = false;
             this.OnDisabled?.Invoke();
@@ -195,13 +196,13 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        private void EnableBehaviour(in IBehaviour<E> behaviour)
+        private void EnableBehaviour(IBehaviour<E> behaviour)
         {
             if (behaviour is IEnable<E> entityEnable)
                 entityEnable.Enable(this);
 
             if (behaviour is IUpdate<E> update)
-                Add(ref this.updates, ref this.updateCount, in update);
+                Add(ref this.updates, ref this.updateCount, update);
 
             if (behaviour is IFixedUpdate<E> fixedUpdate)
                 Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
@@ -210,7 +211,7 @@ namespace Atomic.Entities
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DisableBehaviour(in IBehaviour<E> behaviour)
+        private void DisableBehaviour(IBehaviour<E> behaviour)
         {
             if (behaviour is IDisable<E> entityDisable)
                 entityDisable.Disable(this);

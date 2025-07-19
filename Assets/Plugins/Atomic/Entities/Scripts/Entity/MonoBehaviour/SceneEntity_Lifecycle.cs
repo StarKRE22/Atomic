@@ -72,25 +72,6 @@ namespace Atomic.Entities
         /// Indicates whether the entity is currently enabled.
         /// </summary>
         public bool Enabled => _enabled;
-        
-        
-        //
-        // /// <summary>
-        // /// Indicates whether the entity has been initialized.
-        // /// </summary>
-        // [FoldoutGroup("Debug")]
-        // [LabelText("Initialized")]
-        // [ShowInInspector, ReadOnly]
-        // private bool InitializedDebug => _entity?.Initialized ?? false;
-        //
-        // /// <summary>
-        // /// Indicates whether the entity is currently enabled.
-        // /// </summary>
-        // [FoldoutGroup("Debug")]
-        // [ShowInInspector, ReadOnly]
-        // [LabelText("Enabled")]
-        // private bool EnabledDebug => _entity?.Enabled ?? false;
-
 
         private bool _initialized;
         private bool _enabled;
@@ -110,12 +91,14 @@ namespace Atomic.Entities
         {
             if (_initialized)
                 return;
+            
+            _initialized = true;
+            this.instanceId = EntityRegistry<E>.Instance.Add(this);
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IInit<E> initBehaviour)
                     initBehaviour.Init(this);
 
-            _initialized = true;
             this.OnInitialized?.Invoke();
         }
 
@@ -133,6 +116,9 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IDispose<E> disposeBehaviour)
                     disposeBehaviour.Dispose(this);
+
+            EntityRegistry<E>.Instance.Remove(this.instanceId);
+            this.instanceId = UNDEFINED_INDEX;
 
             _initialized = false;
             this.OnDisposed?.Invoke();
@@ -220,7 +206,7 @@ namespace Atomic.Entities
                 entityEnable.Enable(this);
 
             if (behaviour is IUpdate<E> update)
-                Add(ref this.updates, ref this.updateCount, in update);
+                Add(ref this.updates, ref this.updateCount, update);
 
             if (behaviour is IFixedUpdate<E> fixedUpdate)
                 Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);

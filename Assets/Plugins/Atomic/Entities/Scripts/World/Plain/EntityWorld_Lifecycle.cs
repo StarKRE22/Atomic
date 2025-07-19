@@ -6,58 +6,58 @@ namespace Atomic.Entities
     {
         public event Action OnInitialized
         {
-            add => _entityUpdater.OnInitialized += value;
-            remove => _entityUpdater.OnInitialized -= value;
+            add => _updater.OnInitialized += value;
+            remove => _updater.OnInitialized -= value;
         }
 
         public event Action OnDisposed
         {
-            add => _entityUpdater.OnDisposed += value;
-            remove => _entityUpdater.OnDisposed -= value;
+            add => _updater.OnDisposed += value;
+            remove => _updater.OnDisposed -= value;
         }
 
         public event Action OnEnabled
         {
-            add => _entityUpdater.OnEnabled += value;
-            remove => _entityUpdater.OnEnabled -= value;
+            add => _updater.OnEnabled += value;
+            remove => _updater.OnEnabled -= value;
         }
 
         public event Action OnDisabled
         {
-            add => _entityUpdater.OnDisabled += value;
-            remove => _entityUpdater.OnDisabled -= value;
+            add => _updater.OnDisabled += value;
+            remove => _updater.OnDisabled -= value;
         }
 
         public event Action<float> OnUpdated
         {
-            add => _entityUpdater.OnUpdated += value;
-            remove => _entityUpdater.OnUpdated -= value;
+            add => _updater.OnUpdated += value;
+            remove => _updater.OnUpdated -= value;
         }
 
         public event Action<float> OnFixedUpdated
         {
-            add => _entityUpdater.OnFixedUpdated += value;
-            remove => _entityUpdater.OnFixedUpdated -= value;
+            add => _updater.OnFixedUpdated += value;
+            remove => _updater.OnFixedUpdated -= value;
         }
 
         public event Action<float> OnLateUpdated
         {
-            add => _entityUpdater.OnLateUpdated += value;
-            remove => _entityUpdater.OnLateUpdated -= value;
+            add => _updater.OnLateUpdated += value;
+            remove => _updater.OnLateUpdated -= value;
         }
 
-        public bool Initialized => _entityUpdater.Initialized;
-        public bool Enabled => _entityUpdater.Enabled;
+        public bool Initialized => _updater.Initialized;
+        public bool Enabled => _updater.Enabled;
 
-        private readonly EntityUpdater _entityUpdater = new();
+        private readonly Updater _updater = new();
         
-        public void Init() => _entityUpdater.Init();
-        public void Enable() => _entityUpdater.Enable();
-        public void Disable() => _entityUpdater.Disable();
-        public void Dispose() => _entityUpdater.Dispose();
+        public void Init() => _updater.Init();
+        public void Enable() => _updater.Enable();
+        public void Disable() => _updater.Disable();
+        public void Dispose() => _updater.Dispose();
 
-        public void OnUpdate(float deltaTime) => _entityUpdater.OnUpdate(deltaTime);
-        public void OnFixedUpdate(float deltaTime) => _entityUpdater.OnFixedUpdate(deltaTime);
-        public void OnLateUpdate(float deltaTime) => _entityUpdater.OnLateUpdate(deltaTime);
+        public void OnUpdate(float deltaTime) => _updater.OnUpdate(deltaTime);
+        public void OnFixedUpdate(float deltaTime) => _updater.OnFixedUpdate(deltaTime);
+        public void OnLateUpdate(float deltaTime) => _updater.OnLateUpdate(deltaTime);
     }
 }

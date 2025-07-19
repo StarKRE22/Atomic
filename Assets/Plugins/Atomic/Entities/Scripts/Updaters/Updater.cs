@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityUpdater
+    public class Updater<E> where E : IEntity<E>
     {
+        private static readonly IEqualityComparer<E> s_entityComparer = EqualityComparer<E>.Default;
+        
         public event Action OnInitialized;
         public event Action OnDisposed;
         public event Action OnEnabled;
@@ -15,8 +18,8 @@ namespace Atomic.Entities
         public event Action<float> OnFixedUpdated;
         public event Action<float> OnLateUpdated;
 
-        private readonly List<IEntity> _entities;
-        private readonly List<IEntity> _cache = new();
+        private E[] _entities;
+        private int _entityCount;
 
         public bool Initialized => _initialized;
         public bool Enabled => _enabled;
@@ -24,14 +27,27 @@ namespace Atomic.Entities
         private bool _initialized;
         private bool _enabled;
 
-        public EntityUpdater()
+        public Updater()
         {
-            _entities = new List<IEntity>();
+            _entities = Array.Empty<E>();
+            _entityCount = 0;
         }
 
-        public EntityUpdater(IEnumerable<IEntity> entities)
+        public Updater(IEnumerable<E> entities)
         {
-            _entities = new List<IEntity>(entities);
+            _entities = entities.ToArray();
+            _entityCount = _entities.Length;
+        }
+
+        public void UnsubscribeAll()
+        {
+            InternalUtils.Unsubscribe(ref this.OnInitialized);
+            InternalUtils.Unsubscribe(ref this.OnEnabled);
+            InternalUtils.Unsubscribe(ref this.OnDisabled);
+            InternalUtils.Unsubscribe(ref this.OnUpdated);
+            InternalUtils.Unsubscribe(ref this.OnFixedUpdated);
+            InternalUtils.Unsubscribe(ref this.OnLateUpdated);
+            InternalUtils.Unsubscribe(ref this.OnDisposed);
         }
 
         public void Init()
@@ -44,15 +60,8 @@ namespace Atomic.Entities
 
             _initialized = true;
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].Init();
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].Init();
 
             this.OnInitialized?.Invoke();
         }
@@ -70,26 +79,10 @@ namespace Atomic.Entities
 
             _initialized = false;
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].Dispose();
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].Dispose();
 
             this.OnDisposed?.Invoke();
-
-            //Auto unsubscribe events:
-            InternalUtils.Unsubscribe(ref this.OnInitialized);
-            InternalUtils.Unsubscribe(ref this.OnEnabled);
-            InternalUtils.Unsubscribe(ref this.OnDisabled);
-            InternalUtils.Unsubscribe(ref this.OnUpdated);
-            InternalUtils.Unsubscribe(ref this.OnFixedUpdated);
-            InternalUtils.Unsubscribe(ref this.OnLateUpdated);
-            InternalUtils.Unsubscribe(ref this.OnDisposed);
         }
 
         public void Enable()
@@ -105,15 +98,8 @@ namespace Atomic.Entities
 
             _enabled = true;
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++) 
-                    _cache[i].Enable();
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].Enable();
 
             this.OnEnabled?.Invoke();
         }
@@ -128,15 +114,8 @@ namespace Atomic.Entities
 
             _enabled = false;
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].Disable();
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].Disable();
 
             this.OnDisabled?.Invoke();
         }
@@ -149,15 +128,8 @@ namespace Atomic.Entities
                 return;
             }
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].OnUpdate(deltaTime);
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].OnUpdate(deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -170,15 +142,8 @@ namespace Atomic.Entities
                 return;
             }
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].OnFixedUpdate(deltaTime);
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].OnFixedUpdate(deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -191,28 +156,19 @@ namespace Atomic.Entities
                 return;
             }
 
-            int count = _entities.Count;
-            if (count != 0)
-            {
-                _cache.Clear();
-                _cache.AddRange(_entities);
-
-                for (int i = 0; i < count; i++)
-                    _cache[i].OnLateUpdate(deltaTime);
-            }
+            for (int i = 0; i < _entityCount; i++)
+                _entities[i].OnLateUpdate(deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        public bool Add(in IEntity entity)
+        public bool Add(in E entity)
         {
             if (entity == null)
                 return false;
 
-            if (_entities.Contains(entity))
+            if (!InternalUtils.AddIfAbsent(ref _entities, ref _entityCount, entity, s_entityComparer))
                 return false;
-
-            _entities.Add(entity);
 
             if (_initialized) entity.Init();
             if (_enabled) entity.Enable();
@@ -220,12 +176,12 @@ namespace Atomic.Entities
             return true;
         }
 
-        public bool Del(in IEntity entity)
+        public bool Del(in E entity)
         {
             if (entity == null)
                 return false;
 
-            if (!_entities.Remove(entity))
+            if (!InternalUtils.Remove(ref _entities, ref _entityCount, entity, s_entityComparer))
                 return false;
 
             if (_enabled) entity.Disable();
@@ -236,19 +192,18 @@ namespace Atomic.Entities
 
         public void Clear()
         {
-            int count = _entities.Count;
-            if (count == 0)
+            if (_entityCount == 0)
                 return;
 
             if (_enabled)
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < _entityCount; i++)
                     _entities[i].Disable();
 
             if (_initialized)
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < _entityCount; i++)
                     _entities[i].Dispose();
 
-            _entities.Clear();
+            _entityCount = 0;
         }
     }
 }

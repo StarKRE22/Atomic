@@ -11,6 +11,22 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity<E>
     {
+        /// <summary>
+        /// Indicates whether the entity has been initialized.
+        /// </summary>
+        [FoldoutGroup("Debug")]
+        [LabelText("Initialized")]
+        [ShowInInspector, ReadOnly]
+        private bool InitializedDebug => this.Initialized;
+        
+        /// <summary>
+        /// Indicates whether the entity is currently enabled.
+        /// </summary>
+        [FoldoutGroup("Debug")]
+        [ShowInInspector, ReadOnly]
+        [LabelText("Enabled")]
+        private bool EnabledDebug => this.Enabled;
+        
         #region Tags
 
         private static readonly List<TagElement> _tagElememtsCache = new();

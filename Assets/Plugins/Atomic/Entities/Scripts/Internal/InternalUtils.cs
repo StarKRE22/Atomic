@@ -53,15 +53,15 @@ namespace Atomic.Entities
 
             if (number <= 3)
                 return number;
-            
-            while (!IsPrime(in number)) 
+
+            while (!IsPrime(number))
                 number++;
-            
+
             return number;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool IsPrime(in int number)
+        private static bool IsPrime(int number)
         {
             if (number % 2 == 0 || number % 3 == 0)
                 return false;
@@ -72,17 +72,46 @@ namespace Atomic.Entities
 
             return true;
         }
-
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static void Add<T>(ref T[] array, ref int count, in T item)
+        internal static void Add<T>(ref T[] array, ref int count, T item)
         {
             array ??= new T[1];
             
             if (count == array.Length)
                 Expand(ref array);
-
+        
             array[count] = item;
             count++;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool AddIfAbsent<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer)
+        {
+            array ??= new T[1];
+
+            for (int i = 0; i < count; i++)
+                if (comparer.Equals(array[i], item))
+                    return false;
+
+            if (count == array.Length)
+                Expand(ref array);
+
+            array[count++] = item;
+            return true;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool Contains<T>(T[] array, T item, IEqualityComparer<T> comparer)
+        {
+            if (array == null)
+                return false;
+
+            for (int i = 0, count = array.Length; i < count; i++)
+                if (comparer.Equals(array[i], item))
+                    return true;
+
+            return false;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -98,7 +127,7 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool Remove<T>(ref T[] array, ref int count, in T item, in IEqualityComparer<T> comparer)
+        internal static bool Remove<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer)
         {
             if (count == 0)
                 return false;
@@ -113,7 +142,7 @@ namespace Atomic.Entities
                 //Shift left:
                 for (int j = i; j < count; j++)
                     array[j] = array[j + 1];
-                
+
                 return true;
             }
 

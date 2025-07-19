@@ -77,13 +77,14 @@ namespace Atomic.Entities
             if (behaviour == null)
                 throw new ArgumentNullException(nameof(behaviour));
 
-            InternalUtils.Add(ref _behaviours, ref _behaviourCount, in behaviour);
+            if (!InternalUtils.AddIfAbsent(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
+                return;
 
             if (this.initialized && behaviour is IInit<E> initBehaviour)
                 initBehaviour.Init(this);
 
             if (this.enabled)
-                this.EnableBehaviour(in behaviour);
+                this.EnableBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this as E, behaviour);
             this.OnStateChanged?.Invoke();
@@ -112,11 +113,11 @@ namespace Atomic.Entities
             if (behaviour == null)
                 return false;
 
-            if (!InternalUtils.Remove(ref _behaviours, ref _behaviourCount, in behaviour, in s_behaviourComparer))
+            if (!InternalUtils.Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
                 return false;
 
             if (this.enabled)
-                this.DisableBehaviour(in behaviour);
+                this.DisableBehaviour(behaviour);
 
             if (this.initialized && behaviour is IDispose<E> dispose)
                 dispose.Dispose(this);
