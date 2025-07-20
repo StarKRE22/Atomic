@@ -164,14 +164,14 @@ namespace Atomic.Entities
 
         private static void GenerateValue(StringBuilder sb, string key, string type)
         {
-            int id = EntityUtils.NameToId(key);
+            int id = EntityAPIUtils.NameToId(key);
             string typeName = IsBaseType(type) ? "" : $"// {type}";
             sb.AppendLine($"\t\tpublic const int {key} = {id}; {typeName}");
         }
 
         private static void GenerateTag(StringBuilder sb, string tag)
         {
-            int id = EntityUtils.NameToId(tag);
+            int id = EntityAPIUtils.NameToId(tag);
             sb.AppendLine($"\t\tpublic const int {tag} = {id};");
         }
 

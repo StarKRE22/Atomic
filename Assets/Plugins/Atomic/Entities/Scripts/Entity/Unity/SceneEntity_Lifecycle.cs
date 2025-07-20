@@ -109,7 +109,7 @@ namespace Atomic.Entities
                 return;
             
             _initialized = true;
-            this._instanceId = EntityRegistry.Instance.Add(this);
+            this._instanceId = EntityRegistry.Instance.Register(this);
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityInit initBehaviour)
@@ -133,7 +133,7 @@ namespace Atomic.Entities
                 if (_behaviours[i] is IEntityDispose disposeBehaviour)
                     disposeBehaviour.Dispose(this);
 
-            EntityRegistry.Instance.Remove(this._instanceId);
+            EntityRegistry.Instance.Unregister(this._instanceId);
             this._instanceId = UNDEFINED_INDEX;
 
             _initialized = false;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract partial class SceneEntityProxy<E> : MonoBehaviour, IEntity<E> where E : SceneEntity<E>
+    public abstract partial class SceneEntityProxy : MonoBehaviour, IEntity
     {
         public event Action OnStateChanged
         {

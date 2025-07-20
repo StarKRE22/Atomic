@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Sirenix.OdinInspector;
+using static Atomic.Entities.InternalUtils;
+
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using static Atomic.Entities.InternalUtils;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace Atomic.Entities
 {
@@ -597,10 +601,10 @@ namespace Atomic.Entities
         }
 
         private KeyNotFoundException ValueNotFoundException(in int key) =>
-            new($"The given value {EntityUtils.IdToName(key)} was not present in the entity: {this.name}");
+            new($"The given value {EntityAPIUtils.IdToName(key)} was not present in the entity: {this.name}");
 
         private Exception ValueAlreadyAddedException(int key) =>
-            new ArgumentException($"A value with the same key {EntityUtils.IdToName(key)} already has been added!");
+            new ArgumentException($"A value with the same key {EntityAPIUtils.IdToName(key)} already has been added!");
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static object UnboxValue(in ValueSlot slot)

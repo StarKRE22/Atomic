@@ -68,7 +68,7 @@ namespace Atomic.Entities
                 while (tagEnumerator.MoveNext())
                 {
                     int tag = tagEnumerator.Current;
-                    string name = EntityUtils.IdToName(tag);
+                    string name = EntityAPIUtils.IdToName(tag);
                     _tagElememtsCache.Add(new TagElement(name, tag));
                 }
 
@@ -138,7 +138,7 @@ namespace Atomic.Entities
                 while (enumerator.MoveNext())
                 {
                     (int id, object value) = enumerator.Current;
-                    string name = EntityUtils.IdToName(id);
+                    string name = EntityAPIUtils.IdToName(id);
                     _valueElementsCache.Add(new ValueElement(name, value, id));
                 }
 

@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityProxy<E> where E : SceneEntity<E>
+    public partial class SceneEntityProxy
     {
         public event Action<E, int> OnValueAdded
         {

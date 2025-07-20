@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// Utility class for converting between entity names and their corresponding hashed identifiers.
     /// Useful for mapping string names to unique integer IDs and vice versa.
     /// </summary>
-    public static class EntityUtils
+    public static class EntityAPIUtils
     {
         /// <summary>
         /// Converts a string name into a hashed integer ID.

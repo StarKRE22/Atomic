@@ -72,7 +72,7 @@ namespace Atomic.Entities
                 
                 foreach (int tag in this.GetTags())
                 {
-                    string name = EntityUtils.IdToName(tag);
+                    string name = EntityAPIUtils.IdToName(tag);
                     result.Add(new DebugTag(name, tag));
                 }
 
@@ -136,7 +136,7 @@ namespace Atomic.Entities
 
                 foreach ((int id, object value) in values)
                 {
-                    string name = EntityUtils.IdToName(id);
+                    string name = EntityAPIUtils.IdToName(id);
                     result.Add(new DebugValue(name, value, id));
                 }
 

@@ -1,8 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using System.Collections.Generic;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities

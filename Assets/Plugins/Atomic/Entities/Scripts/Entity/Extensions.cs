@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Atomic.Entities.EntityUtils;
+using static Atomic.Entities.EntityAPIUtils;
 
 namespace Atomic.Entities
 {
@@ -179,7 +179,7 @@ namespace Atomic.Entities
         /// Installs logic from <see cref="SceneInstaller"/> components in the specified scene.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallFromScene(this IEntity obj, Scene scene, bool includeInactive = true)
+        public static void InstallFromScene(this IEntity entity, Scene scene, bool includeInactive = true)
         {
             GameObject[] gameObjects = scene.GetRootGameObjects();
             for (int g = 0, goCount = gameObjects.Length; g < goCount; g++)
@@ -189,13 +189,13 @@ namespace Atomic.Entities
                 for (int i = 0, installerCount = installers.Length; i < installerCount; i++)
                 {
                     SceneInstaller installer = installers[i];
-                    installer.Install(obj);
+                    installer.Install(entity);
                 }
             }
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallFromScene<T>(this T obj, Scene scene, bool includeInactive = true) where T : class, IEntity
+        public static void InstallFromScene<T>(this T entity, Scene scene, bool includeInactive = true) where T : class, IEntity
         {
             GameObject[] gameObjects = scene.GetRootGameObjects();
             for (int g = 0, count = gameObjects.Length; g < count; g++)
@@ -206,7 +206,7 @@ namespace Atomic.Entities
                 for (int i = 0, installerCount = installers.Length; i < installerCount; i++)
                 {
                     SceneInstaller<T> installer = installers[i];
-                    installer.Install(obj);
+                    installer.Install(entity);
                 }
             }
         }
