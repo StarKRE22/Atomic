@@ -9,20 +9,20 @@ namespace Atomic.Entities
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IUpdate> s_updateComparer =
-            EqualityComparer<IUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityUpdate> s_updateComparer =
+            EqualityComparer<IEntityUpdate>.Default;
 
         /// <summary>
         /// Equality comparer for IFixedUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IFixedUpdate> s_fixedUpdateComparer =
-            EqualityComparer<IFixedUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityFixedUpdate> s_fixedUpdateComparer =
+            EqualityComparer<IEntityFixedUpdate>.Default;
         
         /// <summary>
         /// Equality comparer for ILateUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<ILateUpdate> s_lateUpdateComparer =
-            EqualityComparer<ILateUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
+            EqualityComparer<IEntityLateUpdate>.Default;
 
         /// <summary>
         /// Called when the entity has been initialized.
@@ -72,9 +72,9 @@ namespace Atomic.Entities
         private bool initialized;
         private bool enabled;
 
-        private IUpdate[] updates;
-        private IFixedUpdate[] fixedUpdates;
-        private ILateUpdate[] lateUpdates;
+        private IEntityUpdate[] updates;
+        private IEntityFixedUpdate[] fixedUpdates;
+        private IEntityLateUpdate[] lateUpdates;
 
         private int updateCount;
         private int fixedUpdateCount;
@@ -92,7 +92,7 @@ namespace Atomic.Entities
             this.instanceId = EntityRegistry.Instance.Add(this);
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IInit initBehaviour)
+                if (_behaviours[i] is IEntityInit initBehaviour)
                     initBehaviour.Init(this);
 
             this.OnInitialized?.Invoke();
@@ -110,7 +110,7 @@ namespace Atomic.Entities
                 this.Disable();
             
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IDispose disposeBehaviour)
+                if (_behaviours[i] is IEntityDispose disposeBehaviour)
                     disposeBehaviour.Dispose(this);
             
             EntityRegistry.Instance.Remove(this.instanceId);
@@ -196,33 +196,33 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        private void EnableBehaviour(IBehaviour behaviour)
+        private void EnableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEnable entityEnable)
+            if (behaviour is IEntityEnable entityEnable)
                 entityEnable.Enable(this);
 
-            if (behaviour is IUpdate update)
+            if (behaviour is IEntityUpdate update)
                 Add(ref this.updates, ref this.updateCount, update);
 
-            if (behaviour is IFixedUpdate fixedUpdate)
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
                 Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
 
-            if (behaviour is ILateUpdate lateUpdate)
+            if (behaviour is IEntityLateUpdate lateUpdate)
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DisableBehaviour(IBehaviour behaviour)
+        private void DisableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IDisable entityDisable)
+            if (behaviour is IEntityDisable entityDisable)
                 entityDisable.Disable(this);
 
-            if (behaviour is IUpdate update)
+            if (behaviour is IEntityUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
 
-            if (behaviour is IFixedUpdate fixedUpdate)
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
                 Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
 
-            if (behaviour is ILateUpdate lateUpdate)
+            if (behaviour is IEntityLateUpdate lateUpdate)
                 Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }

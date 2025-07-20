@@ -169,9 +169,9 @@ namespace Atomic.Entities
             [ShowInInspector, ReadOnly]
             public string name;
 
-            internal readonly IBehaviour value;
+            internal readonly IEntityBehaviour value;
 
-            public DebugBehaviour(string name, IBehaviour value)
+            public DebugBehaviour(string name, IEntityBehaviour value)
             {
                 this.name = name;
                 this.value = value;
@@ -197,11 +197,11 @@ namespace Atomic.Entities
             {
                 _debugBehavioursCache.Clear();
 
-                IReadOnlyCollection<IBehaviour> behaviours = GetBehaviours();
+                IReadOnlyCollection<IEntityBehaviour> behaviours = GetBehaviours();
                 if (behaviours == null)
                     return _debugBehavioursCache;
 
-                foreach (IBehaviour behaviour in behaviours)
+                foreach (IEntityBehaviour behaviour in behaviours)
                 {
                     string name = behaviour.GetType().Name;
                     _debugBehavioursCache.Add(new DebugBehaviour(name, behaviour));

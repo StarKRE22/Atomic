@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// Provides inspector-only debug UI for the <see cref="SceneEntity"/> including read-only state
     /// and editable lists for tags, values, and behaviors.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity
     {
         /// <summary>
         /// Indicates whether the entity has been initialized.

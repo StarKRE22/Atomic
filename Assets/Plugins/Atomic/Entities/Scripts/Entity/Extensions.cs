@@ -42,12 +42,12 @@ namespace Atomic.Entities
         /// Adds multiple behaviours to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddBehaviours(this IEntity entity, IEnumerable<IBehaviour> behaviours)
+        public static void AddBehaviours(this IEntity entity, IEnumerable<IEntityBehaviour> behaviours)
         {
             if (behaviours == null)
                 return;
 
-            foreach (IBehaviour behaviour in behaviours)
+            foreach (IEntityBehaviour behaviour in behaviours)
                 entity.AddBehaviour(behaviour);
         }
         
@@ -55,12 +55,12 @@ namespace Atomic.Entities
         /// Removes multiple behaviours from the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DelBehaviours(this IEntity entity, IEnumerable<IBehaviour> behaviours)
+        public static void DelBehaviours(this IEntity entity, IEnumerable<IEntityBehaviour> behaviours)
         {
             if (behaviours == null)
                 return;
 
-            foreach (IBehaviour behaviour in behaviours)
+            foreach (IEntityBehaviour behaviour in behaviours)
                 entity.DelBehaviour(behaviour);
         }
 
@@ -68,7 +68,7 @@ namespace Atomic.Entities
         /// Adds a behaviour of the specified type to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddBehaviour<T>(this IEntity entity) where T : IBehaviour, new() =>
+        public static void AddBehaviour<T>(this IEntity entity) where T : IEntityBehaviour, new() =>
             entity.AddBehaviour(new T());
 
         /// <summary>

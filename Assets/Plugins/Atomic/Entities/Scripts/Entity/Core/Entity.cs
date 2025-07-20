@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using static Atomic.Entities.InternalUtils;
+
+// ReSharper disable UnusedMember.Global
 
 namespace Atomic.Entities
 {
@@ -37,7 +40,7 @@ namespace Atomic.Entities
         /// </summary>
         protected Entity()
         {
-            this.name = string.Empty; 
+            this.name = string.Empty;
             this.ConstructTags();
             this.ConstructValues();
             this.ConstructBehaviours();
@@ -62,7 +65,7 @@ namespace Atomic.Entities
             string name = null,
             IEnumerable<int> tags = null,
             IEnumerable<KeyValuePair<int, object>> values = null,
-            IEnumerable<IBehaviour> behaviours = null
+            IEnumerable<IEntityBehaviour> behaviours = null
         )
         {
             this.name = name ?? string.Empty;
@@ -86,14 +89,14 @@ namespace Atomic.Entities
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
         }
-        
+
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
 
-        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
-
         /// <inheritdoc/>
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
+
+        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;
@@ -113,27 +116,39 @@ namespace Atomic.Entities
         /// </summary>
         public void UnsubscribeAll()
         {
-            InternalUtils.Unsubscribe(ref this.OnStateChanged);
+            Unsubscribe(ref this.OnStateChanged);
 
-            InternalUtils.Unsubscribe(ref this.OnInitialized);
-            InternalUtils.Unsubscribe(ref this.OnEnabled);
-            InternalUtils.Unsubscribe(ref this.OnDisabled);
-            InternalUtils.Unsubscribe(ref this.OnUpdated);
-            InternalUtils.Unsubscribe(ref this.OnFixedUpdated);
-            InternalUtils.Unsubscribe(ref this.OnLateUpdated);
-            InternalUtils.Unsubscribe(ref this.OnDisposed);
+            Unsubscribe(ref this.OnInitialized);
+            Unsubscribe(ref this.OnEnabled);
+            Unsubscribe(ref this.OnDisabled);
+            Unsubscribe(ref this.OnUpdated);
+            Unsubscribe(ref this.OnFixedUpdated);
+            Unsubscribe(ref this.OnLateUpdated);
+            Unsubscribe(ref this.OnDisposed);
 
-            InternalUtils.Unsubscribe(ref this.OnBehaviourAdded);
-            InternalUtils.Unsubscribe(ref this.OnBehaviourDeleted);
+            Unsubscribe(ref this.OnBehaviourAdded);
+            Unsubscribe(ref this.OnBehaviourDeleted);
 
-            InternalUtils.Unsubscribe(ref this.OnValueAdded);
-            InternalUtils.Unsubscribe(ref this.OnValueDeleted);
-            InternalUtils.Unsubscribe(ref this.OnValueChanged);
+            Unsubscribe(ref this.OnValueAdded);
+            Unsubscribe(ref this.OnValueDeleted);
+            Unsubscribe(ref this.OnValueChanged);
 
-            InternalUtils.Unsubscribe(ref this.OnTagAdded);
-            InternalUtils.Unsubscribe(ref this.OnTagDeleted);
+            Unsubscribe(ref this.OnTagAdded);
+            Unsubscribe(ref this.OnTagDeleted);
         }
 
+        /// <summary>
+        /// Fully destroys the entity by performing the following steps:
+        /// <list type="bullet">
+        /// <item><description>Calls <see cref="Dispose"/> to release external resources and invoke disposal callbacks.</description></item>
+        /// <item><description>Clears all internal state (tags, values, and behaviours) via <see cref="Clear"/>.</description></item>
+        /// <item><description>Removes all subscriptions to avoid memory leaks via <see cref="UnsubscribeAll"/>.</description></item>
+        /// </list>
+        /// </summary>
+        /// <remarks>
+        /// This method is intended to safely and completely dismantle the entity,
+        /// making it eligible for reuse or garbage collection.
+        /// </remarks>
         public void Destroy()
         {
             this.Dispose();

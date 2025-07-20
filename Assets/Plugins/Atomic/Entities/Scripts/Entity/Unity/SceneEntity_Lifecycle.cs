@@ -8,25 +8,25 @@ namespace Atomic.Entities
     /// Provides lifecycle and update phase event bindings for a <see cref="SceneEntity"/>,
     /// delegating lifecycle control and state to the internal <see cref="Entity"/> instance.
     /// </summary>
-    public partial class SceneEntity<E>
+    public partial class SceneEntity
     {
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityUpdate<E>> s_updateComparer =
-            EqualityComparer<IEntityUpdate<E>>.Default;
+        private static readonly IEqualityComparer<IEntityUpdate> s_updateComparer =
+            EqualityComparer<IEntityUpdate>.Default;
 
         /// <summary>
         /// Equality comparer for IFixedUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityFixedUpdate<E>> s_fixedUpdateComparer =
-            EqualityComparer<IEntityFixedUpdate<E>>.Default;
+        private static readonly IEqualityComparer<IEntityFixedUpdate> s_fixedUpdateComparer =
+            EqualityComparer<IEntityFixedUpdate>.Default;
 
-        /// <summary>
-        /// Equality comparer for ILateUpdate behaviours.
+        /// <>
+        /// Equality comparer forLateUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityLateUpdate<E>> s_lateUpdateComparer =
-            EqualityComparer<IEntityLateUpdate<E>>.Default;
+        private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
+            EqualityComparer<IEntityLateUpdate>.Default;
 
         /// <summary>
         /// Called when the entity has been initialized.
@@ -76,9 +76,9 @@ namespace Atomic.Entities
         private bool _initialized;
         private bool _enabled;
 
-        private IEntityUpdate<E>[] updates;
-        private IEntityFixedUpdate<E>[] fixedUpdates;
-        private IEntityLateUpdate<E>[] lateUpdates;
+        private IEntityUpdate[] updates;
+        private IEntityFixedUpdate[] fixedUpdates;
+        private IEntityLateUpdate[] lateUpdates;
 
         private int updateCount;
         private int fixedUpdateCount;
@@ -93,10 +93,10 @@ namespace Atomic.Entities
                 return;
             
             _initialized = true;
-            this.instanceId = EntityRegistry<E>.Instance.Add(this);
+            this.instanceId = EntityRegistry.Instance.Add(this);
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityInit<E> initBehaviour)
+                if (_behaviours[i] is IEntityInit initBehaviour)
                     initBehaviour.Init(this);
 
             this.OnInitialized?.Invoke();
@@ -114,10 +114,10 @@ namespace Atomic.Entities
                 this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDispose<E> disposeBehaviour)
+                if (_behaviours[i] is IEntityDispose disposeBehaviour)
                     disposeBehaviour.Dispose(this);
 
-            EntityRegistry<E>.Instance.Remove(this.instanceId);
+            EntityRegistry.Instance.Remove(this.instanceId);
             this.instanceId = UNDEFINED_INDEX;
 
             _initialized = false;
@@ -138,7 +138,7 @@ namespace Atomic.Entities
             _enabled = true;
 
             for (int i = 0; i < _behaviourCount; i++)
-                this.EnableBehaviour(in _behaviours[i]);
+                this.EnableBehaviour(_behaviours[i]);
 
             this.OnEnabled?.Invoke();
         }
@@ -152,7 +152,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
-                this.DisableBehaviour(in _behaviours[i]);
+                this.DisableBehaviour(_behaviours[i]);
 
             _enabled = false;
             this.OnDisabled?.Invoke();
@@ -200,33 +200,33 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        private void EnableBehaviour(in IEntityBehaviour<E> behaviour)
+        private void EnableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityEnable<E> entityEnable)
+            if (behaviour is IEntityEnable entityEnable)
                 entityEnable.Enable(this);
 
-            if (behaviour is IEntityUpdate<E> update)
+            if (behaviour is IEntityUpdate update)
                 Add(ref this.updates, ref this.updateCount, update);
 
-            if (behaviour is IEntityFixedUpdate<E> fixedUpdate)
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
                 Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
 
-            if (behaviour is IEntityLateUpdate<E> lateUpdate)
+            if (behaviour is IEntityLateUpdate lateUpdate)
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DisableBehaviour(in IEntityBehaviour<E> behaviour)
+        private void DisableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityDisable<E> entityDisable)
+            if (behaviour is IEntityDisable entityDisable)
                 entityDisable.Disable(this);
 
-            if (behaviour is IEntityUpdate<E> update)
+            if (behaviour is IEntityUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
 
-            if (behaviour is IEntityFixedUpdate<E> fixedUpdate)
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
                 Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
 
-            if (behaviour is IEntityLateUpdate<E> lateUpdate)
+            if (behaviour is IEntityLateUpdate lateUpdate)
                 Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }

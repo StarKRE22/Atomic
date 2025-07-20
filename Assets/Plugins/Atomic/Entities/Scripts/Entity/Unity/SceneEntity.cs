@@ -15,8 +15,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public abstract partial class SceneEntity<E> : MonoBehaviour, IEntity<E>, ISerializationCallbackReceiver 
-        where E : SceneEntity<E>
+    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver 
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -79,14 +78,14 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
-        private List<SceneInstaller<E>> installers;
+        private List<SceneInstaller> installers;
 
 #if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
-        private List<E> children;
+        private List children;
 
         /// <summary>
         /// Installs all configured installers and child entities into this SceneEntity.
@@ -103,7 +102,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneInstaller<E> installer = this.installers[i];
+                    SceneInstaller installer = this.installers[i];
                     if (installer != null)
                         installer.Install(entity);
                     else
@@ -115,7 +114,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.children.Count; i < count; i++)
                 {
-                    SceneEntity<E> child = this.children[i];
+                    SceneEntity child = this.children[i];
                     if (child != null)
                         child.Install();
                     else
@@ -177,10 +176,10 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
 
-        public bool Equals(IEntity<E> other) => this.instanceId == other.InstanceID;
+        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity<E> other && other.InstanceID == this.instanceId;
+        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;

@@ -6,7 +6,7 @@ namespace Atomic.Entities
     /// An entity encapsulates:
     /// - key-value storage for data
     /// - tag identifiers for categorization
-    /// - a collection of behaviours (<see cref="IBehaviour"/>) for modular logic
+    /// - a collection of behaviours (<see cref="IEntityBehaviour"/>) for modular logic
     /// - lifecycle management (initialization, update, disposal)
     ///
     /// Designed for flexible state-driven architecture and modular logic composition.

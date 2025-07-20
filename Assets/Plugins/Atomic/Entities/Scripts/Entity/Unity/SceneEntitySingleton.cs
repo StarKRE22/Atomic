@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// per scene or globally, depending on the <see cref="_dontDestroyOnLoad"/> flag.
     /// </summary>
     /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
-    public abstract class SceneEntitySingleton<E> : SceneEntity<E> where E : SceneEntitySingleton<E>
+    public abstract class SceneEntitySingleton<E> : SceneEntity where E : SceneEntitySingleton<E>
     {
         [SerializeField]
         private bool _dontDestroyOnLoad;

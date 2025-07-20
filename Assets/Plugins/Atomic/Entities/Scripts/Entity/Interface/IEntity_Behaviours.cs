@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    ///Represents a collection of behaviours (<see cref="IBehaviour{T}"/>) for modular logic
+    ///Represents a collection of behaviours (<see cref="IEntityBehaviour"/>) for modular logic
     public partial interface IEntity
     {
         /// <summary>
         /// Event triggered when a behaviour is added.
         /// </summary>
-        event Action<IEntity, IBehaviour> OnBehaviourAdded;
+        event Action<IEntity, IEntityBehaviour> OnBehaviourAdded;
 
         /// <summary>
         /// Event triggered when a behaviour is deleted.
         /// </summary>
-        event Action<IEntity, IBehaviour> OnBehaviourDeleted;
+        event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted;
 
         /// <summary>
         /// Number of behaviours attached to this entity.
@@ -24,37 +24,37 @@ namespace Atomic.Entities
         /// <summary>
         /// Adds a behaviour to the entity.
         /// </summary>
-        void AddBehaviour(IBehaviour behaviour);
+        void AddBehaviour(IEntityBehaviour behaviour);
 
         /// <summary>
         /// Gets the first behaviour of the specified type.
         /// </summary>
-        T GetBehaviour<T>() where T : IBehaviour;
+        T GetBehaviour<T>() where T : IEntityBehaviour;
 
         /// <summary>
         /// Tries to get a behaviour of the specified type.
         /// </summary>
-        bool TryGetBehaviour<T>(out T behaviour) where T : IBehaviour;
+        bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour;
 
         /// <summary>
         /// Checks if a specific behaviour exists.
         /// </summary>
-        bool HasBehaviour(IBehaviour behaviour);
+        bool HasBehaviour(IEntityBehaviour behaviour);
 
         /// <summary>
         /// Checks if a behaviour of the specified type exists.
         /// </summary>
-        bool HasBehaviour<T>() where T : IBehaviour;
+        bool HasBehaviour<T>() where T : IEntityBehaviour;
 
         /// <summary>
         /// Removes a specific behaviour.
         /// </summary>
-        bool DelBehaviour(IBehaviour behaviour);
+        bool DelBehaviour(IEntityBehaviour behaviour);
 
         /// <summary>
         /// Removes a behaviour of the specified type.
         /// </summary>
-        bool DelBehaviour<T>() where T : IBehaviour;
+        bool DelBehaviour<T>() where T : IEntityBehaviour;
 
         /// <summary>
         /// Clears all behaviours from the entity.
@@ -64,16 +64,16 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns all behaviours attached to the entity.
         /// </summary>
-        IBehaviour[] GetBehaviours();
+        IEntityBehaviour[] GetBehaviours();
 
         /// <summary>
         /// Copies behaviours into the provided array.
         /// </summary>
-        int GetBehaviours(IBehaviour[] results);
+        int GetBehaviours(IEntityBehaviour[] results);
 
         /// <summary>
         /// Enumerates all behaviours.
         /// </summary>
-        IEnumerator<IBehaviour> GetBehaviourEnumerator();
+        IEnumerator<IEntityBehaviour> GetBehaviourEnumerator();
     }
 }
