@@ -8,29 +8,29 @@ namespace Atomic.Entities
     /// <typeparam name="TKey">The type of keys used to retrieve factories.</typeparam>
     public class FactoryRegistry<TKey, E> : IFactoryRegistry<TKey, E> where E : IEntity<E>
     {
-        private readonly Dictionary<TKey, IFactory<E>> _factories;
+        private readonly Dictionary<TKey, IEntityFactory<E>> _factories;
 
         /// <summary>
         /// Initializes a new empty factory dictionary.
         /// </summary>
-        public FactoryRegistry() => _factories = new Dictionary<TKey, IFactory<E>>();
+        public FactoryRegistry() => _factories = new Dictionary<TKey, IEntityFactory<E>>();
 
         /// <summary>
         /// Initializes the factory with a collection of key-factory pairs.
         /// </summary>
         /// <param name="factories">The key-factory pairs to initialize with.</param>
-        public FactoryRegistry(in IEnumerable<KeyValuePair<TKey, IFactory<E>>> factories) =>
-            _factories = new Dictionary<TKey, IFactory<E>>(factories);
+        public FactoryRegistry(in IEnumerable<KeyValuePair<TKey, IEntityFactory<E>>> factories) =>
+            _factories = new Dictionary<TKey, IEntityFactory<E>>(factories);
 
         /// <summary>
         /// Initializes the factory with a params array of key-factory pairs.
         /// </summary>
         /// <param name="factory">The key-factory pairs to initialize with.</param>
-        public FactoryRegistry(params KeyValuePair<TKey, IFactory<E>>[] factory) =>
-            _factories = new Dictionary<TKey, IFactory<E>>(factory);
+        public FactoryRegistry(params KeyValuePair<TKey, IEntityFactory<E>>[] factory) =>
+            _factories = new Dictionary<TKey, IEntityFactory<E>>(factory);
 
         /// <inheritdoc />
-        public void Add(TKey key, IFactory<E> factory) => _factories.Add(key, factory);
+        public void Add(TKey key, IEntityFactory<E> factory) => _factories.Add(key, factory);
 
         /// <inheritdoc />
         public void Remove(TKey key) => _factories.Remove(key);
@@ -38,7 +38,7 @@ namespace Atomic.Entities
         /// <inheritdoc />
         public E Create(TKey key)
         {
-            return !_factories.TryGetValue(key, out IFactory<E> factory)
+            return !_factories.TryGetValue(key, out IEntityFactory<E> factory)
                 ? throw new KeyNotFoundException($"Entity Factory with key \"{key}\" is not found")
                 : factory.Create();
         }

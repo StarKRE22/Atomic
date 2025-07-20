@@ -5,9 +5,9 @@ namespace Atomic.Entities
     public class Pool<E> : IPool<E> where E : IEntity<E>
     {
         private readonly Stack<E> _stack = new();
-        private readonly IFactory<E> _factory;
+        private readonly IEntityFactory<E> _factory;
 
-        public Pool(IFactory<E> factory) => _factory = factory;
+        public Pool(IEntityFactory<E> factory) => _factory = factory;
 
         public void Init(int count)
         {

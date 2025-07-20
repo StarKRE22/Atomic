@@ -29,7 +29,7 @@ namespace SampleGame
         /// where the key is the factory's name and the value is the factory instance.
         /// </summary>
         /// <returns>An enumerable of key-value pairs representing registered entity factories.</returns>
-        public IEnumerable<KeyValuePair<string, IFactory<E>>> GetAllFactories() =>
-            _factories.Select(it => new KeyValuePair<string, IFactory<E>>(it.name, it));
+        public IEnumerable<KeyValuePair<string, IEntityFactory<E>>> GetAllFactories() =>
+            _factories.Select(it => new KeyValuePair<string, IEntityFactory<E>>(it.name, it));
     }
 }

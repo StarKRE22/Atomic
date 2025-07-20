@@ -13,7 +13,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="key">The key to associate with the factory.</param>
         /// <param name="factory">The factory to register.</param>
-        void Add(TKey key, IFactory<E> factory);
+        void Add(TKey key, IEntityFactory<E> factory);
 
         /// <summary>
         /// Removes the entity factory associated with the specified key.
