@@ -1,11 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Atomic.Entities
 {
     internal static class InternalUtils
     {
+        /// <summary>
+        /// Checks whether a object is marked to support edit mode lifecycle.
+        /// </summary>
+        public static bool IsExecuteInEditModeDefined(object behaviour) =>
+            behaviour.GetType().IsDefined(typeof(ExecuteInEditModeAttribute));
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Unsubscribe<T>(ref T del) where T : Delegate
         {

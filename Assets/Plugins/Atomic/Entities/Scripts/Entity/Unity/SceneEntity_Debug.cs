@@ -14,17 +14,13 @@ namespace Atomic.Entities
         /// <summary>
         /// Indicates whether the entity has been initialized.
         /// </summary>
-        [FoldoutGroup("Debug")]
-        [LabelText("Initialized")]
-        [ShowInInspector, ReadOnly]
+      
         private bool InitializedDebug => this.Initialized;
         
         /// <summary>
         /// Indicates whether the entity is currently enabled.
         /// </summary>
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
-        [LabelText("Enabled")]
+       
         private bool EnabledDebug => this.Enabled;
         
         #region Tags
@@ -177,9 +173,9 @@ namespace Atomic.Entities
             [ShowInInspector, ReadOnly]
             public string name;
 
-            internal readonly IEntityBehaviour<E> value;
+            internal readonly IEntityBehaviour value;
 
-            public BehaviourElement(string name, IEntityBehaviour<E> value)
+            public BehaviourElement(string name, IEntityBehaviour value)
             {
                 this.name = name;
                 this.value = value;
@@ -208,7 +204,7 @@ namespace Atomic.Entities
 
                 for (int i = 0; i < _behaviourCount; i++)
                 {
-                    IEntityBehaviour<E> behaviour = _behaviours[i];
+                    IEntityBehaviour behaviour = _behaviours[i];
                     string name = behaviour.GetType().Name;
                     _behaviourElementsCache.Add(new BehaviourElement(name, behaviour));
                 }

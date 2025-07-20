@@ -2,6 +2,8 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -35,6 +37,17 @@ namespace Atomic.Entities
         /// </summary>
         public int BehaviourCount => _behaviourCount;
 
+        /// <summary>
+        /// Initial behaviour capacity used to optimize behaviour allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [FoldoutGroup("Optimization")]
+        [ReadOnly]
+#endif
+        [Min(0)]
+        [SerializeField]
+        private int _initialBehaviourCapacity;
+        
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
 
@@ -113,7 +126,7 @@ namespace Atomic.Entities
                 return false;
 
             if (_enabled)
-                this.DisableBehaviour(in behaviour);
+                this.DisableBehaviour(behaviour);
 
             if (_initialized && behaviour is IEntityDispose dispose)
                 dispose.Dispose(this);
@@ -213,21 +226,21 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator for iterating through behaviours.
         /// </summary>
-        IEnumerator<IEntityBehaviour IEntity<E>.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
+        IEnumerator<IEntityBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
 
         public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
-        public struct BehaviourEnumerator : IEnumerator<IEntityBehaviour
+        public struct BehaviourEnumerator : IEnumerator<IEntityBehaviour>
         {
             public IEntityBehaviour Current => _current;
 
             object IEnumerator.Current => _current;
 
-            private readonly SceneEntity<E> _entity;
+            private readonly SceneEntity _entity;
             private int _index;
             private IEntityBehaviour _current;
 
-            public BehaviourEnumerator(SceneEntity<E> entity)
+            public BehaviourEnumerator(SceneEntity entity)
             {
                 _entity = entity;
                 _index = -1;
@@ -258,7 +271,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the behaviour array from a collection.
         /// </summary>
-        private void ConstructBehaviours(int capacity) =>
-            _behaviours = new IEntityBehaviour[capacity];
+        private void ConstructBehaviours() =>
+            _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
     }
 }

@@ -1,8 +1,8 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEditor;
+using static Atomic.Entities.InternalUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -21,28 +21,19 @@ namespace Atomic.Entities
         /// </summary>
         private void Reset()
         {
-            this.installers = new List<SceneInstaller<E>>(
-                this.GetComponentsInChildren<SceneInstaller<E>>()
-            );
-            this.children = new List<E>(
-                this.GetComponentsInChildren<E>()
-            );
-            this.children.Remove(this as E);
+            this.installers = new List<SceneInstaller>(this.GetComponentsInChildren<SceneInstaller>());
+            this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
+            this.children.Remove(this);
         }
-
-        /// <summary>
-        /// Called when the script is loaded or a value is changed in the Inspector. Triggers auto-refresh if enabled.
-        /// </summary>
-        private void OnValidate() => this.AutoRefresh();
 
         /// <summary>
         /// Automatically refreshes the entity in Edit Mode if <c>installInEditMode</c> is true.
         /// </summary>
-        private void AutoRefresh()
+        private void OnValidate()
         {
             if (!this.installInEditMode)
                 return;
-
+            
             if (EditorApplication.isPlaying || EditorApplication.isCompiling)
                 return;
 
@@ -64,7 +55,7 @@ namespace Atomic.Entities
         {
             for (int i = 0, count = this.installers.Count; i < count; i++)
             {
-                SceneInstaller<E> installer = this.installers[i];
+                SceneInstaller installer = this.installers[i];
                 if (installer != null)
                     installer.refreshCallback = this.RefreshInEditMode;
             }
@@ -82,8 +73,6 @@ namespace Atomic.Entities
 #endif
         private void RefreshInEditMode()
         {
-            this.MarkAsNotInstalled();
-
             bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
 
             if (!isPrefab)
@@ -92,6 +81,7 @@ namespace Atomic.Entities
                 this.DisposeInEditMode();
             }
 
+            this.MarkAsNotInstalled();
             this.Install();
             this.Precompile();
 
@@ -100,6 +90,17 @@ namespace Atomic.Entities
                 this.InitInEditMode();
                 this.EnableInEditMode();
             }
+        }
+        
+        /// <summary>
+        /// Precompiles current capacities from the entity and stores them into serialized fields
+        /// for inspection and editor-time optimization.
+        /// </summary>
+        private void Precompile()
+        {
+            _initialTagCapacity = _tagCount;
+            _initialValueCapacity = _valueCount;
+            _initialBehaviourCapacity = _behaviourCount;
         }
 
         /// <summary>
@@ -112,8 +113,8 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
             {
-                IEntityBehaviour<E> behaviour = _behaviours[i];
-                if (behaviour is IEntityInit<E> dispose && IsEditModeSupported(behaviour))
+                IEntityBehaviour behaviour = _behaviours[i];
+                if (behaviour is IEntityInit dispose && IsExecuteInEditModeDefined(behaviour))
                     dispose.Init(this);
             }
         }
@@ -128,8 +129,8 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
             {
-                IEntityBehaviour<E> behaviour = _behaviours[i];
-                if (behaviour is IEntityEnable<E> dispose && IsEditModeSupported(behaviour))
+                IEntityBehaviour behaviour = _behaviours[i];
+                if (behaviour is IEntityEnable dispose && IsExecuteInEditModeDefined(behaviour))
                     dispose.Enable(this);
             }
         }
@@ -144,8 +145,8 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
             {
-                IEntityBehaviour<E> behaviour = _behaviours[i];
-                if (behaviour is IEntityDisable<E> disable && IsEditModeSupported(behaviour))
+                IEntityBehaviour behaviour = _behaviours[i];
+                if (behaviour is IEntityDisable disable && IsExecuteInEditModeDefined(behaviour))
                     disable.Disable(this);
             }
         }
@@ -160,17 +161,11 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
             {
-                IEntityBehaviour<E> behaviour = _behaviours[i];
-                if (behaviour is IEntityDispose<E> dispose && IsEditModeSupported(behaviour))
+                IEntityBehaviour behaviour = _behaviours[i];
+                if (behaviour is IEntityDispose dispose && IsExecuteInEditModeDefined(behaviour))
                     dispose.Dispose(this);
             }
         }
-
-        /// <summary>
-        /// Checks whether a behaviour is marked to support edit mode lifecycle.
-        /// </summary>
-        private static bool IsEditModeSupported(IEntityBehaviour<E> behaviour) =>
-            behaviour.GetType().IsDefined(typeof(ExecuteInEditModeAttribute));
     }
 }
 

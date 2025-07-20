@@ -7,7 +7,7 @@ namespace Atomic.Entities
     public abstract class SceneInstaller : MonoBehaviour, IInstaller
     {
 #if UNITY_EDITOR
-        public Action refreshCallback;
+        internal Action refreshCallback;
 #endif
         public abstract void Install(IEntity entity);
 

@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Marks a behavior class to indicate that its entity lifecycle callbacks
+    /// Marks a entity behavior class to indicate that its entity lifecycle callbacks
     /// (Init, Enable, Disable, Dispose) should also be invoked during Unity Editor mode.
     /// This attribute is intended for use only on types implementing <see cref="IEntityBehaviour{T}"/>.
     /// </summary>

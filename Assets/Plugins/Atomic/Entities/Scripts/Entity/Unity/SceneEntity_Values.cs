@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Sirenix.OdinInspector;
 using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
@@ -12,20 +15,20 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity
     {
-       /// <summary>
+        /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
-        public event Action<E, int> OnValueAdded;
+        public event Action<IEntity, int> OnValueAdded;
 
         /// <summary>
         /// Invoked when a value is deleted from the entity.
         /// </summary>
-        public event Action<E, int> OnValueDeleted;
+        public event Action<IEntity, int> OnValueDeleted;
 
         /// <summary>
         /// Invoked when a value is changed in the entity.
         /// </summary>
-        public event Action<E, int> OnValueChanged;
+        public event Action<IEntity, int> OnValueChanged;
 
         /// <summary>
         /// Gets the total number of values stored in the entity.
@@ -33,12 +36,23 @@ namespace Atomic.Entities
         public int ValueCount => _valueCount;
 
         private ValueSlot[] _valueSlots;
-        private int m_valueCapacity;
+        private int _valueCapacity;
         private int _valueCount;
 
         private int[] _valueBuckets;
         private int _valueFreeList;
         private int _valueLastIndex;
+        
+        /// <summary>
+        /// Initial value capacity used to optimize value allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [ReadOnly]
+        [FoldoutGroup("Optimization")]
+#endif
+        [Min(0)]
+        [SerializeField]
+        private int _initialValueCapacity;
 
         /// <summary>
         /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.
@@ -52,7 +66,7 @@ namespace Atomic.Entities
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -80,7 +94,7 @@ namespace Atomic.Entities
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -107,7 +121,7 @@ namespace Atomic.Entities
             if (_valueCount == 0)
                 throw this.ValueNotFoundException(in key);
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -137,7 +151,7 @@ namespace Atomic.Entities
                 return false;
             }
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -171,7 +185,7 @@ namespace Atomic.Entities
                 return false;
             }
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -207,7 +221,7 @@ namespace Atomic.Entities
                 return false;
             }
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref m_valueCapacity);
+            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
             int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
 
             while (index >= 0)
@@ -346,7 +360,7 @@ namespace Atomic.Entities
             tBoxing.value = value;
             this.NotifyAboutValueChanged(key);
         }
-        
+
         /// <summary>
         /// Clears all values from the entity.
         /// </summary>
@@ -376,11 +390,11 @@ namespace Atomic.Entities
             _valueLastIndex = 0;
 
             for (int i = 0; i < removedCount; i++)
-                this.OnValueDeleted?.Invoke(this as E, removedItems[i]);
+                this.OnValueDeleted?.Invoke(this, removedItems[i]);
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Returns an array of all key-value pairs stored in the entity.
         /// </summary>
@@ -416,13 +430,13 @@ namespace Atomic.Entities
 
             return count;
         }
-        
+
         /// <summary>
         /// Enumerates all key-value pairs stored in the entity.
         /// </summary>
         /// <returns>An enumerator over key-value pairs.</returns>
-        IEnumerator<KeyValuePair<int, object>> IEntity<E>.GetValueEnumerator() => new ValueEnumerator(this);
-        
+        IEnumerator<KeyValuePair<int, object>> IEntity.GetValueEnumerator() => new ValueEnumerator(this);
+
         public ValueEnumerator GetValueEnumerator() => new(this);
 
         private bool FindValueIndex(in int key, out int index)
@@ -456,7 +470,7 @@ namespace Atomic.Entities
             }
             else
             {
-                if (_valueLastIndex == m_valueCapacity)
+                if (_valueLastIndex == _valueCapacity)
                     this.IncreaseValueCapacity();
 
                 index = _valueLastIndex;
@@ -525,11 +539,11 @@ namespace Atomic.Entities
 
         private void IncreaseValueCapacity()
         {
-            m_valueCapacity = InternalUtils.GetPrime(m_valueCapacity + 1);
-            Array.Resize(ref _valueSlots, m_valueCapacity);
-            Array.Resize(ref _valueBuckets, m_valueCapacity);
+            _valueCapacity = GetPrime(_valueCapacity + 1);
+            Array.Resize(ref _valueSlots, _valueCapacity);
+            Array.Resize(ref _valueBuckets, _valueCapacity);
 
-            for (int i = 0; i < m_valueCapacity; i++)
+            for (int i = 0; i < _valueCapacity; i++)
                 _valueBuckets[i] = UNDEFINED_INDEX;
 
             for (int i = 0; i < _valueLastIndex; i++)
@@ -546,20 +560,17 @@ namespace Atomic.Entities
 
         private ref int ValueBucket(in int key)
         {
-            int index = (int) ((uint) key % m_valueCapacity);
+            int index = (int) ((uint) key % _valueCapacity);
             return ref _valueBuckets[index];
         }
 
-        private void ConstructValues(int capacity)
+        private void ConstructValues()
         {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
+            _valueCapacity = GetPrime(_initialValueCapacity);
+            _valueSlots = new ValueSlot[_valueCapacity];
+            _valueBuckets = new int[_valueCapacity];
 
-            m_valueCapacity = InternalUtils.GetPrime(capacity);
-            _valueSlots = new ValueSlot[m_valueCapacity];
-            _valueBuckets = new int[m_valueCapacity];
-
-            for (int i = 0; i < m_valueCapacity; i++)
+            for (int i = 0; i < _valueCapacity; i++)
                 _valueBuckets[i] = UNDEFINED_INDEX;
 
             _valueCount = 0;
@@ -569,19 +580,19 @@ namespace Atomic.Entities
 
         private void NotifyAboutValueChanged(in int key)
         {
-            this.OnValueChanged?.Invoke(this as E, key);
+            this.OnValueChanged?.Invoke(this, key);
             this.OnStateChanged?.Invoke();
         }
 
         private void NotifyAboutValueAdded(in int key)
         {
-            this.OnValueAdded?.Invoke(this as E, key);
+            this.OnValueAdded?.Invoke(this, key);
             this.OnStateChanged?.Invoke();
         }
 
         private void NotifyAboutValueDeleted(in int key)
         {
-            this.OnValueDeleted?.Invoke(this as E, key);
+            this.OnValueDeleted?.Invoke(this, key);
             this.OnStateChanged?.Invoke();
         }
 
@@ -601,14 +612,14 @@ namespace Atomic.Entities
 
         public struct ValueEnumerator : IEnumerator<KeyValuePair<int, object>>
         {
-            private readonly SceneEntity<E> _entity;
+            private readonly SceneEntity _entity;
             private int _index;
             private KeyValuePair<int, object> _current;
 
             public KeyValuePair<int, object> Current => _current;
             object IEnumerator.Current => _current;
 
-            public ValueEnumerator(SceneEntity<E> entity)
+            public ValueEnumerator(SceneEntity entity)
             {
                 _entity = entity;
                 _index = 0;
@@ -663,7 +674,7 @@ namespace Atomic.Entities
         private sealed class Boxing<T> : IBoxing
         {
             object IBoxing.Value => value;
-            
+
             Type IBoxing.Type => typeof(T);
 
             public T value;

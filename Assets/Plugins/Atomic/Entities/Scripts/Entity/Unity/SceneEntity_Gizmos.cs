@@ -41,8 +41,8 @@ namespace Atomic.Entities
             {
                 for (int i = 0; i < _behaviourCount; i++)
                 {
-                    IEntityBehaviour<E> behaviour = _behaviours[i];
-                    if (behaviour is IEntityGizmos<E> gizmos)
+                    IEntityBehaviour behaviour = _behaviours[i];
+                    if (behaviour is IEntityGizmos gizmos)
                         gizmos.OnGizmosDraw(this);
                 }
             }

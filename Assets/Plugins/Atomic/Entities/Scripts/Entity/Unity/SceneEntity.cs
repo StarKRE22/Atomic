@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 #endif
 
 using UnityEngine;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
@@ -22,12 +23,12 @@ namespace Atomic.Entities
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
         
-        public int InstanceID => this.instanceId;
-        
-        private int instanceId;
+        public int InstanceID => _instanceId;
+
+        private int _instanceId;
 
         /// <summary>
-        /// Indicates whether this entity has already been Constructed.
+        /// Indicates whether this entity has already been installed.
         /// </summary>
         public bool Installed => _installed;
 
@@ -57,8 +58,7 @@ namespace Atomic.Entities
             nameof(installInEditMode))
         ]
 #endif
-        [Tooltip(
-            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
         [SerializeField]
         private bool installInEditMode;
 
@@ -85,7 +85,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
-        private List children;
+        private List<SceneEntity> children;
 
         /// <summary>
         /// Installs all configured installers and child entities into this SceneEntity.
@@ -97,14 +97,13 @@ namespace Atomic.Entities
 
             _installed = true;
 
-            E entity = this as E;
             if (this.installers != null)
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
                     SceneInstaller installer = this.installers[i];
                     if (installer != null)
-                        installer.Install(entity);
+                        installer.Install(this);
                     else
                         Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
                 }
@@ -122,18 +121,12 @@ namespace Atomic.Entities
                 }
             }
         }
-
-        /// <summary>
-        /// Unity Awake callback. Automatically installs the entity if <c>installOnAwake</c> is true.
-        /// </summary>
+        
         protected virtual void Awake()
         {
             if (this.installOnAwake) this.Install();
         }
 
-        /// <summary>
-        /// Unity OnDestroy callback. Optionally disposes values and cleans up subscriptions.
-        /// </summary>
         protected virtual void OnDestroy()
         {
             if (this.disposeValues)
@@ -142,47 +135,32 @@ namespace Atomic.Entities
             this.UnsubscribeAll();
         }
 
+        public virtual void OnAfterDeserialize()
+        {
+            this.ConstructTags();
+            this.ConstructValues();
+            this.ConstructBehaviours();
+        }
+
+        public virtual void OnBeforeSerialize()
+        {
+        }
+        
+        /// <inheritdoc/>
+        public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
+
+        public bool Equals(IEntity other) => _instanceId == other.InstanceID;
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => _instanceId;
+
         /// <summary>
         /// Marks the entity as not installed, allowing reinstallation.
         /// </summary>
         public void MarkAsNotInstalled() => _installed = false;
-        
-        /// <summary>
-        /// Removes all subscriptions and callbacks associated with this entity.
-        /// </summary>
-        public void UnsubscribeAll()
-        {
-            InternalUtils.Unsubscribe(ref this.OnStateChanged);
-
-            InternalUtils.Unsubscribe(ref this.OnInitialized);
-            InternalUtils.Unsubscribe(ref this.OnEnabled);
-            InternalUtils.Unsubscribe(ref this.OnDisabled);
-            InternalUtils.Unsubscribe(ref this.OnUpdated);
-            InternalUtils.Unsubscribe(ref this.OnFixedUpdated);
-            InternalUtils.Unsubscribe(ref this.OnLateUpdated);
-            InternalUtils.Unsubscribe(ref this.OnDisposed);
-
-            InternalUtils.Unsubscribe(ref this.OnBehaviourAdded);
-            InternalUtils.Unsubscribe(ref this.OnBehaviourDeleted);
-
-            InternalUtils.Unsubscribe(ref this.OnValueAdded);
-            InternalUtils.Unsubscribe(ref this.OnValueDeleted);
-            InternalUtils.Unsubscribe(ref this.OnValueChanged);
-
-            InternalUtils.Unsubscribe(ref this.OnTagAdded);
-            InternalUtils.Unsubscribe(ref this.OnTagDeleted);
-        }
-
-        /// <inheritdoc/>
-        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
-
-        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
-
-        /// <inheritdoc/>
-        public override int GetHashCode() => this.instanceId;
 
         /// <summary>
         /// Clears all data (tags, values, behaviours) from this entity.
@@ -193,16 +171,31 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
         }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        
+        /// <summary>
+        /// Removes all subscriptions and callbacks associated with this entity.
+        /// </summary>
+        public void UnsubscribeAll()
         {
-            this.ConstructTags(_initialTagCapacity);
-            this.ConstructValues(_initialValueCapacity);
-            this.ConstructBehaviours(_initialBehaviourCapacity);
-        }
+            Unsubscribe(ref this.OnStateChanged);
 
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
+            Unsubscribe(ref this.OnInitialized);
+            Unsubscribe(ref this.OnEnabled);
+            Unsubscribe(ref this.OnDisabled);
+            Unsubscribe(ref this.OnUpdated);
+            Unsubscribe(ref this.OnFixedUpdated);
+            Unsubscribe(ref this.OnLateUpdated);
+            Unsubscribe(ref this.OnDisposed);
+
+            Unsubscribe(ref this.OnBehaviourAdded);
+            Unsubscribe(ref this.OnBehaviourDeleted);
+
+            Unsubscribe(ref this.OnValueAdded);
+            Unsubscribe(ref this.OnValueDeleted);
+            Unsubscribe(ref this.OnValueChanged);
+
+            Unsubscribe(ref this.OnTagAdded);
+            Unsubscribe(ref this.OnTagDeleted);
         }
     }
 }

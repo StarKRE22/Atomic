@@ -66,7 +66,7 @@ namespace Atomic.Entities
         /// </summary>
         public int[] GetTags()
         {
-            var results = new int[_tagCount];
+            int[] results = new int[_tagCount];
             this.GetTags(results);
             return results;
         }

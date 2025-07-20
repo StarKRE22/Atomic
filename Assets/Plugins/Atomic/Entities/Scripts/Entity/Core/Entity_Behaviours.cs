@@ -42,7 +42,6 @@ namespace Atomic.Entities
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
 
-
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
         /// </summary>

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -14,12 +16,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
-        public event Action<E, int> OnTagAdded;
+        public event Action<IEntity, int> OnTagAdded;
 
         /// <summary>
         /// Invoked when a tag is deleted from the entity.
         /// </summary>
-        public event Action<E, int> OnTagDeleted;
+        public event Action<IEntity, int> OnTagDeleted;
 
         /// <summary>
         /// Gets the total number of tags associated with the entity.
@@ -32,6 +34,18 @@ namespace Atomic.Entities
         private int[] _tagBuckets;
         private int _tagFreeList;
         private int _tagLastIndex;
+        
+        /// <summary>
+        /// Initial tag capacity used to optimize tag allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [ReadOnly]
+        [FoldoutGroup("Optimization")]
+#endif
+        [Min(0)]
+        [SerializeField]
+        private int _initialTagCapacity;
+
 
         /// <summary>
         /// Checks if the entity has a tag with the specified key.
@@ -46,7 +60,7 @@ namespace Atomic.Entities
             if (!this.AddTagInternal(in key))
                 return false;
 
-            this.OnTagAdded?.Invoke(this as E, key);
+            this.OnTagAdded?.Invoke(this, key);
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -59,7 +73,7 @@ namespace Atomic.Entities
             if (!this.DelTagInternal(in key))
                 return false;
 
-            this.OnTagDeleted?.Invoke(this as E, key);
+            this.OnTagDeleted?.Invoke(this, key);
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -123,7 +137,7 @@ namespace Atomic.Entities
             _tagLastIndex = 0;
 
             for (int i = 0; i < removeCount; i++)
-                this.OnTagDeleted?.Invoke(this as E, removedTags[i]);
+                this.OnTagDeleted?.Invoke(this, removedTags[i]);
 
             this.OnStateChanged?.Invoke();
         }
@@ -131,7 +145,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator over the tag keys of the entity.
         /// </summary>
-        IEnumerator<int> IEntity<E>.GetTagEnumerator() => new TagEnumerator(this);
+        IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
 
         public TagEnumerator GetTagEnumerator() => new(this);
 
@@ -269,12 +283,9 @@ namespace Atomic.Entities
             return ref _tagBuckets[index];
         }
 
-        private void ConstructTags(int capacity)
+        private void ConstructTags()
         {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-
-            int size = GetPrime(capacity);
+            int size = GetPrime(_initialTagCapacity);
 
             _tagSlots = new TagSlot[size];
             _tagBuckets = new int[size];
@@ -289,14 +300,14 @@ namespace Atomic.Entities
 
         public struct TagEnumerator : IEnumerator<int>
         {
-            private readonly SceneEntity<E> _entity;
+            private readonly SceneEntity _entity;
             private int _index;
             private int _current;
 
             public int Current => _current;
             object IEnumerator.Current => _current;
 
-            public TagEnumerator(SceneEntity<E> entity)
+            public TagEnumerator(SceneEntity entity)
             {
                 _entity = entity;
                 _index = 0;
