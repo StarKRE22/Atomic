@@ -38,7 +38,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
         /// </summary>
-        protected Entity()
+        public Entity()
         {
             this.name = string.Empty;
             this.ConstructTags();
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with a specified name.
         /// </summary>
-        protected Entity(string name)
+        public Entity(string name)
         {
             this.name = name;
             this.ConstructTags();
@@ -61,7 +61,7 @@ namespace Atomic.Entities
         /// Initializes a new instance of the <see cref="Entity"/> class
         /// with optional collections of tags, values, behaviours, and a custom ID.
         /// </summary>
-        protected Entity(
+        public Entity(
             string name = null,
             IEnumerable<int> tags = null,
             IEnumerable<KeyValuePair<int, object>> values = null,
@@ -77,7 +77,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with optional capacity settings and custom ID.
         /// </summary>
-        protected Entity(
+        public Entity(
             string name = null,
             int tagCapacity = 0,
             int valueCapacity = 0,

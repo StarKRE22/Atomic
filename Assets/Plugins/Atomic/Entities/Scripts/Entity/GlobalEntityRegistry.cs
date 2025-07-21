@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// Global registry responsible for tracking and managing all <see cref="IEntity"/> instances.
     /// Provides unique ID assignment, lookup, and name-based search utilities.
     /// </summary>
-    public sealed class EntityRegistry
+    public sealed class GlobalEntityRegistry
     {
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is registered in the registry.
@@ -22,15 +22,19 @@ namespace Atomic.Entities
         public event Action<IEntity> OnRemoved;
 
         /// <summary>
-        /// Gets the singleton instance of the <see cref="EntityRegistry"/>.
+        /// Gets the singleton instance of the <see cref="GlobalEntityRegistry"/>.
         /// </summary>
-        public static EntityRegistry Instance => _instance ??= new EntityRegistry();
+        public static GlobalEntityRegistry Instance => _instance ??= new GlobalEntityRegistry();
 
-        private static EntityRegistry _instance;
+        private static GlobalEntityRegistry _instance;
 
         private readonly Dictionary<int, IEntity> _entities = new();
         private readonly Stack<int> _recycledIds = new();
         private int _lastId;
+
+        private GlobalEntityRegistry()
+        {
+        }
 
         /// <summary>
         /// Registers an entity in the registry and assigns it a unique integer ID.

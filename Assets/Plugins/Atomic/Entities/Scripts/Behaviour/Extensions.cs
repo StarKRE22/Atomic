@@ -12,10 +12,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is initialized.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static InitSubscription WhenInit(this IEntity entity, Action action)
+        public static EntityInitSubscription WhenInit(this IEntity entity, Action action)
         {
             entity.OnInitialized += action;
-            return new InitSubscription(entity, action);
+            return new EntityInitSubscription(entity, action);
         }
 
         /// <summary>
@@ -25,10 +25,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is enabled.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EnableSubscription WhenEnable(this IEntity entity, Action action)
+        public static EntityEnableSubscription WhenEnable(this IEntity entity, Action action)
         {
             entity.OnEnabled += action;
-            return new EnableSubscription(entity, action);
+            return new EntityEnableSubscription(entity, action);
         }
 
         /// <summary>
@@ -38,10 +38,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is disabled.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DisableSubscription WhenDisable(this IEntity entity, Action action)
+        public static EntityDisableSubscription WhenDisable(this IEntity entity, Action action)
         {
             entity.OnDisabled += action;
-            return new DisableSubscription(entity, action);
+            return new EntityDisableSubscription(entity, action);
         }
 
         /// <summary>
@@ -51,10 +51,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is disposed.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DisposeSubscription WhenDispose(this IEntity entity, Action action)
+        public static EntityDisposeSubscription WhenDispose(this IEntity entity, Action action)
         {
             entity.OnDisposed += action;
-            return new DisposeSubscription(entity, action);
+            return new EntityDisposeSubscription(entity, action);
         }
 
         /// <summary>
@@ -64,10 +64,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke during the Update cycle.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UpdateSubscription WhenUpdate(this IEntity entity, Action<float> action)
+        public static EntityUpdateSubscription WhenUpdate(this IEntity entity, Action<float> action)
         {
             entity.OnUpdated += action;
-            return new UpdateSubscription(entity, action);
+            return new EntityUpdateSubscription(entity, action);
         }
 
         /// <summary>
@@ -77,10 +77,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke during the FixedUpdate cycle.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static FixedUpdateSubscription WhenFixedUpdate(this IEntity entity, Action<float> action)
+        public static EntityFixedUpdateSubscription WhenFixedUpdate(this IEntity entity, Action<float> action)
         {
             entity.OnFixedUpdated += action;
-            return new FixedUpdateSubscription(entity, action);
+            return new EntityFixedUpdateSubscription(entity, action);
         }
 
         /// <summary>
@@ -91,10 +91,10 @@ namespace Atomic.Entities
         /// <returns>A disposable subscription object.</returns>
         /// 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static LateUpdateSubscription WhenLateUpdate(this IEntity entity, Action<float> action)
+        public static EntityLateUpdateSubscription WhenLateUpdate(this IEntity entity, Action<float> action)
         {
             entity.OnLateUpdated += action;
-            return new LateUpdateSubscription(entity, action);
+            return new EntityLateUpdateSubscription(entity, action);
         }
     }
 }

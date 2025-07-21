@@ -18,9 +18,9 @@ namespace Atomic.Entities
 #endif
         private readonly Dictionary<E, TKey> _rentEntities = new();
 
-        private readonly IFactoryRegistry<TKey, E> _factory;
+        private readonly IEntityFactoryRegistry<TKey, E> _factory;
 
-        protected PoolRegistry(IFactoryRegistry<TKey, E> factory) =>
+        protected PoolRegistry(IEntityFactoryRegistry<TKey, E> factory) =>
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
         public void Initialize(TKey key, int count)
