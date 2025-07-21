@@ -1,9 +1,11 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using static Atomic.Entities.EntityAPIUtils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Atomic.Entities.EntityAPIUtils;
+
 
 namespace Atomic.Entities
 {
@@ -50,7 +52,7 @@ namespace Atomic.Entities
             foreach (IEntityBehaviour behaviour in behaviours)
                 entity.AddBehaviour(behaviour);
         }
-        
+
         /// <summary>
         /// Removes multiple behaviours from the entity.
         /// </summary>
@@ -144,7 +146,7 @@ namespace Atomic.Entities
             entity = component.GetComponentInParent<IEntity>();
             return entity != null;
         }
-        
+
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
         /// </summary>
@@ -164,7 +166,7 @@ namespace Atomic.Entities
             entity = collision.gameObject.GetComponentInParent<IEntity>();
             return entity != null;
         }
-        
+
         /// <summary>
         /// Installs logic from an <see cref="IInstaller"/> into the entity.
         /// </summary>
@@ -193,9 +195,10 @@ namespace Atomic.Entities
                 }
             }
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallFromScene<T>(this T entity, Scene scene, bool includeInactive = true) where T : class, IEntity
+        public static void InstallFromScene<T>(this T entity, Scene scene, bool includeInactive = true)
+            where T : class, IEntity
         {
             GameObject[] gameObjects = scene.GetRootGameObjects();
             for (int g = 0, count = gameObjects.Length; g < count; g++)
@@ -258,7 +261,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue(this IEntity entity, string key, object value) =>
             entity.AddValue(NameToId(key), value);
-        
+
         /// <summary>
         /// Adds a value to the entity and returns the corresponding ID.
         /// </summary>
@@ -275,7 +278,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddValue<T>(this IEntity entity, string key, T value) where T : struct =>
             entity.AddValue(NameToId(key), value);
-        
+
         /// <summary>
         /// Adds a strongly-typed value and retrieves its ID.
         /// </summary>
@@ -378,3 +381,4 @@ namespace Atomic.Entities
         }
     }
 }
+#endif

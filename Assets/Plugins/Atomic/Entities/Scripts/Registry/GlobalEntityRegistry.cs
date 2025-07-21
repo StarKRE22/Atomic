@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 namespace Atomic.Entities
 {
@@ -9,7 +13,7 @@ namespace Atomic.Entities
     /// Global registry responsible for tracking and managing all <see cref="IEntity"/> instances.
     /// Provides unique ID assignment, lookup, and name-based search utilities.
     /// </summary>
-    public sealed class GlobalEntityRegistry
+    public sealed class GlobalEntityRegistry : IReadOnlyEntityCollection<IEntity>
     {
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is registered in the registry.
@@ -19,7 +23,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is removed from the registry.
         /// </summary>
-        public event Action<IEntity> OnRemoved;
+        public event Action<IEntity> OnDeleted;
+
+        public int Count => _entities.Count;
 
         /// <summary>
         /// Gets the singleton instance of the <see cref="GlobalEntityRegistry"/>.
@@ -60,14 +66,29 @@ namespace Atomic.Entities
             if (_entities.Remove(id, out IEntity entity))
             {
                 _recycledIds.Push(id);
-                this.OnRemoved?.Invoke(entity);
+                this.OnDeleted?.Invoke(entity);
             }
         }
+
+        public bool Has(IEntity entity) => _entities.ContainsValue(entity);
 
         /// <summary>
         /// Returns all currently registered entities.
         /// </summary>
         public IEntity[] GetAll() => _entities.Values.ToArray();
+
+        public int GetAll(IEntity[] results)
+        {
+            _entities.Values.CopyTo(results, 0);
+            return _entities.Count;
+        }
+
+        public void CopyTo(ICollection<IEntity> results)
+        {
+            results.Clear();
+            foreach (IEntity entity in _entities.Values)
+                results.Add(entity);
+        }
 
         /// <summary>
         /// Attempts to retrieve an entity by its ID.
@@ -127,5 +148,9 @@ namespace Atomic.Entities
                 _instance._entities.Clear();
             }
         }
+
+        public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

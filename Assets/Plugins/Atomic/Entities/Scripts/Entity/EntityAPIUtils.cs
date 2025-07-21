@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -35,3 +36,4 @@ namespace Atomic.Entities
         public static string IdToFullName(in int id) => new PropertyName(id).ToString();
     }
 }
+#endif

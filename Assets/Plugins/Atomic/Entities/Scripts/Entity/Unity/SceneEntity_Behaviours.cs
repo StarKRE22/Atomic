@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using System.Buffers;
 using System.Collections;
@@ -278,3 +279,4 @@ namespace Atomic.Entities
             _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
     }
 }
+#endif

@@ -171,7 +171,7 @@ namespace SampleGame
         fileName = "EntityFactoryCatalog",
         menuName = "Atomic/Entities/New EntityFactoryCatalog"
     )]
-    public class ScriptableEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IEntity>
+    public class ScriptableEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IEntity>, IEntityFactoryCatalog
     {
         /// <summary>
         /// Extracts the string key for a given factory.
