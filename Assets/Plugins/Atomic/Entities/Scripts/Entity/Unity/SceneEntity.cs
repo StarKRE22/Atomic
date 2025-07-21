@@ -79,7 +79,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
-        private List<SceneInstaller> installers;
+        private List<SceneEntityInstaller> installers;
 
 #if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
@@ -102,7 +102,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneInstaller installer = this.installers[i];
+                    SceneEntityInstaller installer = this.installers[i];
                     if (installer != null)
                         installer.Install(this);
                     else

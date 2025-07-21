@@ -168,17 +168,17 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Installs logic from an <see cref="IInstaller"/> into the entity.
+        /// Installs logic from an <see cref="IEntityInstaller"/> into the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static IEntity Install(this IEntity entity, IInstaller installer)
+        public static IEntity Install(this IEntity entity, IEntityInstaller installer)
         {
             installer.Install(entity);
             return entity;
         }
 
         /// <summary>
-        /// Installs logic from <see cref="SceneInstaller"/> components in the specified scene.
+        /// Installs logic from <see cref="SceneEntityInstaller"/> components in the specified scene.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallFromScene(this IEntity entity, Scene scene, bool includeInactive = true)
@@ -187,10 +187,10 @@ namespace Atomic.Entities
             for (int g = 0, goCount = gameObjects.Length; g < goCount; g++)
             {
                 GameObject go = gameObjects[g];
-                var installers = go.GetComponentsInChildren<SceneInstaller>(includeInactive);
+                var installers = go.GetComponentsInChildren<SceneEntityInstaller>(includeInactive);
                 for (int i = 0, installerCount = installers.Length; i < installerCount; i++)
                 {
-                    SceneInstaller installer = installers[i];
+                    SceneEntityInstaller installer = installers[i];
                     installer.Install(entity);
                 }
             }
@@ -204,11 +204,11 @@ namespace Atomic.Entities
             for (int g = 0, count = gameObjects.Length; g < count; g++)
             {
                 GameObject go = gameObjects[g];
-                var installers = go.GetComponentsInChildren<SceneInstaller<T>>(includeInactive);
+                var installers = go.GetComponentsInChildren<SceneEntityInstaller<T>>(includeInactive);
 
                 for (int i = 0, installerCount = installers.Length; i < installerCount; i++)
                 {
-                    SceneInstaller<T> installer = installers[i];
+                    SceneEntityInstaller<T> installer = installers[i];
                     installer.Install(entity);
                 }
             }

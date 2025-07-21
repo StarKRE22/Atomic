@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    //TODO: NATIVE HASHSET
     /// <summary>
     /// Represents a dynamic, observable filtered view over an existing <see cref="IReadOnlyEntityCollection{E}"/>.
     /// Entities are included based on a predicate and tracked using optional triggers.
