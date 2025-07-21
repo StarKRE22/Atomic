@@ -220,8 +220,8 @@ namespace Atomic.Elements
         public void Dispose()
         {
             this.Clear();
-            InternalUtils.Dispose(ref this.OnItemChanged);
-            InternalUtils.Dispose(ref this.OnStateChanged);
+            this.OnItemChanged = null;
+            this.OnStateChanged = null;
         }
 
         /// <summary>

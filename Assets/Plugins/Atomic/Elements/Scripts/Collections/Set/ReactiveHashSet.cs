@@ -193,9 +193,9 @@ namespace Atomic.Elements
         {
             this.Clear();
 
-            InternalUtils.Dispose(ref this.OnItemAdded);
-            InternalUtils.Dispose(ref this.OnItemRemoved);
-            InternalUtils.Dispose(ref this.OnStateChanged);
+            this.OnItemAdded = null;
+            this.OnItemRemoved = null;
+            this.OnStateChanged = null;
         }
         
         /// <summary>

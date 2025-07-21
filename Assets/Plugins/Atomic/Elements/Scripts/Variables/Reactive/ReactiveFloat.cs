@@ -90,7 +90,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes the instance and removes all listeners from the <see cref="OnValueChanged"/> event.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => this.OnValueChanged = null;
 
         /// <summary>
         /// Returns a string representation of the current value using invariant culture.

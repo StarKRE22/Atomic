@@ -18,7 +18,7 @@ namespace Atomic.Elements
     /// <typeparam name="K">The type of keys in the dictionary.</typeparam>
     /// <typeparam name="V">The type of values in the dictionary.</typeparam>
     [Serializable]
-    public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>,
+    public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable,
 #if UNITY_5_3_OR_NEWER
         ISerializationCallbackReceiver
 #endif
@@ -239,6 +239,17 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            this.Clear();
+            this.OnStateChanged = null;
+            this.OnItemChanged = null;
+            this.OnItemAdded = null;
+            this.OnItemRemoved = null;
+            this.OnCleared = null;
+        }
+        
 #if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Unity callback invoked after the object has been deserialized.

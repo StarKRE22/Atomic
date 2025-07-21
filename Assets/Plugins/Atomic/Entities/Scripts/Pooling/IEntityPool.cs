@@ -3,7 +3,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents a pool for reusing <see cref="IEntity"/> instances to reduce allocation overhead.
     /// </summary>
-    public interface IPool<E> where E : IEntity<E>
+    public interface IEntityPool<E> where E : IEntity
     {
         /// <summary>
         /// Retrieves an entity instance from the pool.
@@ -27,5 +27,15 @@ namespace Atomic.Entities
         /// Clears all cached entities from the pool.
         /// </summary>
         void Clear();
+    }
+
+    /// <summary>
+    /// A non-generic alias for <see cref="IEntityPool{T}"/> that operates on the base <see cref="IEntity"/> type.
+    /// </summary>
+    /// <remarks>
+    /// Use this interface when you do not need type-specific access to entity creation or pooling.
+    /// </remarks>
+    public interface IEntityPool : IEntityPool<IEntity>
+    {
     }
 }

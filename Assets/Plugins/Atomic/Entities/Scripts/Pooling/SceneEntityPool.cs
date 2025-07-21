@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class ScenePool<E> : MonoBehaviour, IPool<E> where E : SceneEntity<E>
+    public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity<E>
     {
         [SerializeField]
         private E _prefab;

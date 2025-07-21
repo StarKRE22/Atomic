@@ -90,7 +90,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes the object by clearing all listeners.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => this.OnValueChanged = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

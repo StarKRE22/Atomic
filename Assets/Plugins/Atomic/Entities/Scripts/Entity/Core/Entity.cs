@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using static Atomic.Entities.InternalUtils;
 
 // ReSharper disable UnusedMember.Global
 
@@ -116,25 +115,26 @@ namespace Atomic.Entities
         /// </summary>
         public void UnsubscribeAll()
         {
-            Unsubscribe(ref this.OnStateChanged);
+            this.OnStateChanged = null;
+            
+            this.OnInitialized = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
+            
+            this.OnUpdated = null;
+            this.OnFixedUpdated = null;
+            this.OnLateUpdated = null;
+            this.OnDisposed = null;
 
-            Unsubscribe(ref this.OnInitialized);
-            Unsubscribe(ref this.OnEnabled);
-            Unsubscribe(ref this.OnDisabled);
-            Unsubscribe(ref this.OnUpdated);
-            Unsubscribe(ref this.OnFixedUpdated);
-            Unsubscribe(ref this.OnLateUpdated);
-            Unsubscribe(ref this.OnDisposed);
+            this.OnBehaviourAdded = null;
+            this.OnBehaviourDeleted = null;
 
-            Unsubscribe(ref this.OnBehaviourAdded);
-            Unsubscribe(ref this.OnBehaviourDeleted);
+            this.OnValueAdded = null;
+            this.OnValueDeleted = null;
+            this.OnValueChanged = null;
 
-            Unsubscribe(ref this.OnValueAdded);
-            Unsubscribe(ref this.OnValueDeleted);
-            Unsubscribe(ref this.OnValueChanged);
-
-            Unsubscribe(ref this.OnTagAdded);
-            Unsubscribe(ref this.OnTagDeleted);
+            this.OnTagAdded = null;
+            this.OnTagDeleted = null;
         }
 
         /// <summary>

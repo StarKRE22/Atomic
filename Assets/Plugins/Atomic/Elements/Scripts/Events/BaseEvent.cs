@@ -43,7 +43,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes of all event subscriptions.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
+        public void Dispose() => this.OnEvent = null;
     }
 
     /// <summary>
@@ -83,7 +83,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes of all event subscriptions.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
+        public void Dispose() => this.OnEvent = null;
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes of all event subscriptions.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
+        public void Dispose() => this.OnEvent = null;
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes of all event subscriptions.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
+        public void Dispose() => this.OnEvent = null;
     }
 
 
@@ -204,6 +204,6 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes of all event subscriptions.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnEvent);
+        public void Dispose() => this.OnEvent = null;
     }
 }

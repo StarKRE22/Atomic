@@ -86,7 +86,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Disposes the variable by clearing all listeners from <see cref="OnValueChanged"/>.
         /// </summary>
-        public void Dispose() => InternalUtils.Dispose(ref this.OnValueChanged);
+        public void Dispose() => this.OnValueChanged = null;
 
         /// <summary>
         /// Returns a string that represents the current value.
