@@ -13,7 +13,7 @@ namespace Atomic.Entities
     /// Global registry responsible for tracking and managing all <see cref="IEntity"/> instances.
     /// Provides unique ID assignment, lookup, and name-based search utilities.
     /// </summary>
-    public sealed class GlobalEntityRegistry : IReadOnlyEntityCollection<IEntity>
+    public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>
     {
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is registered in the registry.
@@ -28,17 +28,17 @@ namespace Atomic.Entities
         public int Count => _entities.Count;
 
         /// <summary>
-        /// Gets the singleton instance of the <see cref="GlobalEntityRegistry"/>.
+        /// Gets the singleton instance of the <see cref="EntityRegistry"/>.
         /// </summary>
-        public static GlobalEntityRegistry Instance => _instance ??= new GlobalEntityRegistry();
+        public static EntityRegistry Instance => _instance ??= new EntityRegistry();
 
-        private static GlobalEntityRegistry _instance;
+        private static EntityRegistry _instance;
 
         private readonly Dictionary<int, IEntity> _entities = new();
         private readonly Stack<int> _recycledIds = new();
         private int _lastId;
 
-        private GlobalEntityRegistry()
+        private EntityRegistry()
         {
         }
 
@@ -70,6 +70,7 @@ namespace Atomic.Entities
             }
         }
 
+        /// <inheritdoc />
         public bool Has(IEntity entity) => _entities.ContainsValue(entity);
 
         /// <summary>
@@ -77,12 +78,14 @@ namespace Atomic.Entities
         /// </summary>
         public IEntity[] GetAll() => _entities.Values.ToArray();
 
+        /// <inheritdoc />
         public int GetAll(IEntity[] results)
         {
             _entities.Values.CopyTo(results, 0);
             return _entities.Count;
         }
 
+        /// <inheritdoc />
         public void CopyTo(ICollection<IEntity> results)
         {
             results.Clear();
@@ -133,6 +136,11 @@ namespace Atomic.Entities
 
             return list;
         }
+        
+        
+        public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
 #if UNITY_EDITOR
         /// <summary>
@@ -140,7 +148,7 @@ namespace Atomic.Entities
         /// </summary>
         [InitializeOnEnterPlayMode]
 #endif
-        public static void ResetAll()
+        private static void ResetAll()
         {
             if (_instance != null)
             {
@@ -148,9 +156,5 @@ namespace Atomic.Entities
                 _instance._entities.Clear();
             }
         }
-
-        public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

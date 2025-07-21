@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -11,7 +12,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="TKey">The key type used to identify each pool.</typeparam>
     /// <typeparam name="E">The entity type managed by the pools. Must implement <see cref="IEntity"/>.</typeparam>
-    public class EntityPoolRegistry<TKey, E> : IEntityPoolRegistry<TKey, E> where E : IEntity
+    public class MultiEntityPool<TKey, E> : IMultiEntityPool<TKey, E> where E : IEntity
     {
         /// <summary>
         /// Internal storage of pooled (available) entities, mapped by their pool key.
@@ -32,18 +33,18 @@ namespace Atomic.Entities
         /// <summary>
         /// The factory registry used to create entities on demand.
         /// </summary>
-        private readonly IEntityFactoryRegistry<TKey, E> _factory;
+        private readonly IMultiEntityFactory<TKey, E> _factory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityPoolRegistry{TKey, E}"/> class.
+        /// Initializes a new instance of the <see cref="MultiEntityPool{TKey,E}"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create entities for each key.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public EntityPoolRegistry(IEntityFactoryRegistry<TKey, E> factory) =>
+        public MultiEntityPool(IMultiEntityFactory<TKey, E> factory) =>
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
         /// <inheritdoc />
-        public void Initialize(TKey key, int count)
+        public void Init(TKey key, int count)
         {
             if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
             {
@@ -99,25 +100,14 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public void Clear(TKey key)
-        {
-            if (_pooledEntities.TryGetValue(key, out Stack<E> pool))
-            {
-                foreach (E entity in pool)
-                    this.OnDispose(entity);
-
-                pool.Clear();
-            }
-        }
-
-        /// <inheritdoc />
-        public void Clear()
+        public void Dispose()
         {
             foreach (KeyValuePair<TKey, Stack<E>> pool in _pooledEntities)
             foreach (E entity in pool.Value)
                 this.OnDispose(entity);
 
             _pooledEntities.Clear();
+            _rentEntities.Clear();
         }
 
         /// <summary>
@@ -154,15 +144,15 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// A non-generic version of <see cref="EntityPoolRegistry{TKey, E}"/> that uses string keys and <see cref="IEntity"/> values.
+    /// A non-generic version of <see cref="MultiEntityPool{TKey,E}"/> that uses string keys and <see cref="IEntity"/> values.
     /// </summary>
-    public class EntityPoolRegistry : EntityPoolRegistry<string, IEntity>
+    public class MultiEntityPool : MultiEntityPool<string, IEntity>, IMultiEntityPool
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntityPoolRegistry"/> class.
+        /// Initializes a new instance of the <see cref="MultiEntityPool"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create and manage entity instances.</param>
-        public EntityPoolRegistry(IEntityFactoryRegistry<string, IEntity> factory) : base(factory)
+        public MultiEntityPool(IMultiEntityFactory<string, IEntity> factory) : base(factory)
         {
         }
     }

@@ -59,12 +59,13 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes all entities from the pool and invokes the <see cref="OnDispose"/> hook for each.
         /// </summary>
-        public void Clear()
+        public void Dispose()
         {
             foreach (E entity in _pooledEntities)
                 this.OnDispose(entity);
 
             _pooledEntities.Clear();
+            _rentEntities.Clear();
         }
 
         /// <summary>

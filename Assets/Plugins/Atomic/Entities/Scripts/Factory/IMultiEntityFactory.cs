@@ -5,7 +5,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify factories.</typeparam>
     /// <typeparam name="E">The type of entity created by the factories.</typeparam>
-    public interface IEntityFactoryRegistry<in TKey, E> where E : IEntity
+    public interface IMultiEntityFactory<in TKey, E> where E : IEntity
     {
         /// <summary>
         /// Registers an entity factory with the specified key.
@@ -31,7 +31,7 @@ namespace Atomic.Entities
     /// <summary>
     /// A non-generic registry interface for storing and retrieving entity factories by key.
     /// </summary>
-    public interface IEntityFactoryRegistry : IEntityFactoryRegistry<string, IEntity>
+    public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
     {
     }
 }

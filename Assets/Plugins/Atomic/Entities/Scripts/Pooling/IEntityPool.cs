@@ -1,9 +1,11 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// Represents a pool for reusing <see cref="IEntity"/> instances to reduce allocation overhead.
     /// </summary>
-    public interface IEntityPool<E> where E : IEntity
+    public interface IEntityPool<E> : IDisposable where E : IEntity
     {
         /// <summary>
         /// Retrieves an entity instance from the pool.
@@ -22,11 +24,6 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="initialCoint">The number of entities to preallocate in the pool.</param>
         void Init(int initialCoint);
-
-        /// <summary>
-        /// Clears all cached entities from the pool.
-        /// </summary>
-        void Clear();
     }
 
     /// <summary>

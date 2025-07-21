@@ -1,82 +1,162 @@
+#if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Atomic.Entities
 {
-    public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity<E>
+    /// <summary>
+    /// A Unity MonoBehaviour-based entity pool for scene-bound entities of type <typeparamref name="E"/>.
+    /// </summary>
+    /// <typeparam name="E">The type of entity managed by this pool. Must inherit from <see cref="SceneEntity"/>.</typeparam>
+    /// <remarks>
+    /// This pool uses a prefab to instantiate entities and manages their reuse via a stack.
+    /// Entities are activated/deactivated on rent/return, and can be preloaded using <see cref="Init(int)"/>.
+    /// </remarks>
+    public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity
     {
         [SerializeField]
+        [Tooltip("The prefab used to create pooled entity instances.")]
         private E _prefab;
 
         [SerializeField]
+        [Tooltip("Optional container transform under which pooled entities are parented. Defaults to this GameObject.")]
         private Transform _container;
 
         [SerializeField]
-        private int _initialCount;
-        
-        private readonly Stack<E> _stack = new();
+        [Tooltip("Whether to automatically initialize the pool in Awake().")]
+        private bool _initOnAwake = true;
 
+#if ODIN_INSPECTOR
+        [ShowIf(nameof(_initOnAwake))]
+#endif
+        [SerializeField]
+        [Tooltip("Initial number of entities to pre-instantiate in the pool on Awake.")]
+        private int _initialCount;
+
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
+        private readonly Stack<E> _pooledEntities = new();
+
+#if ODIN_INSPECTOR
+        [ShowInInspector, ReadOnly]
+#endif
+        private readonly HashSet<E> _rentEntities = new();
+        
+        /// <summary>
+        /// Initializes the pool when the GameObject is activated, if <see cref="_initOnAwake"/> is <c>true</c>.
+        /// </summary>
         private void Awake()
         {
-            this.Init(_initialCount);
+            if (_container == null)
+                _container = this.transform;
+
+            if (_initOnAwake)
+                this.Init(_initialCount);
         }
 
+        /// <summary>
+        /// Initializes the pool by pre-instantiating the specified number of entities.
+        /// </summary>
+        /// <param name="count">The number of entities to create and store in the pool.</param>
         public void Init(int count)
         {
             for (int i = 0; i < count; i++)
-            {
-                E entity = SceneEntity<E>.Create(_prefab, _container);
-                this.OnSpawn(entity);
-                _stack.Push(entity);
-            }
+                _pooledEntities.Push(this.CreateEntity());
         }
-
+        
+        /// <summary>
+        /// Rents (activates) an entity from the pool. If the pool is empty, a new instance is created.
+        /// </summary>
+        /// <returns>The rented entity.</returns>
         public E Rent()
         {
-            if (!_stack.TryPop(out E entity))
-            {
-                entity = SceneEntity<E>.Create(_prefab, _container);
-                this.OnSpawn(entity);
-            }
+            if (!_pooledEntities.TryPop(out E entity))
+                entity = this.CreateEntity();
 
+            _rentEntities.Add(entity);
             this.OnRent(entity);
             return entity;
         }
 
+        /// <summary>
+        /// Returns (deactivates) an entity to the pool.
+        /// </summary>
+        /// <param name="entity">The entity to return. Must have been previously rented.</param>
         public void Return(E entity)
         {
-            if (!_stack.Contains(entity))
+            if (_rentEntities.Remove(entity))
             {
                 this.OnReturn(entity);
-                _stack.Push(entity);
+                _pooledEntities.Push(entity);
+            }
+            else
+            {
+                Debug.LogWarning($"[EntityPool] Attempted to return untracked entity: {entity}", entity);
             }
         }
 
-        public void Clear()
+        /// <summary>
+        /// Disposes all pooled entities by destroying them and clearing the internal pool.
+        /// </summary>
+        public void Dispose()
         {
-            foreach (E entity in _stack)
+            foreach (E entity in _pooledEntities)
             {
-                this.OnUnspawn(entity);
+                this.OnDispose(entity);
                 Destroy(entity);
             }
 
-            _stack.Clear();
+            _pooledEntities.Clear();
         }
 
-        protected virtual void OnSpawn(E entity) => 
+        /// <summary>
+        /// Called when a new entity instance is created.
+        /// </summary>
+        /// <param name="entity">The newly created entity.</param>
+        protected virtual void OnCreate(E entity) =>
             entity.gameObject.SetActive(false);
 
-        protected virtual void OnUnspawn(E entity)
+        /// <summary>
+        /// Called when a pooled entity is being permanently destroyed during disposal.
+        /// </summary>
+        /// <param name="entity">The entity being destroyed.</param>
+        protected virtual void OnDispose(E entity)
         {
         }
 
-        protected virtual void OnRent(E entity) => 
+        /// <summary>
+        /// Called when an entity is rented from the pool.
+        /// </summary>
+        /// <param name="entity">The entity being rented.</param>
+        protected virtual void OnRent(E entity) =>
             entity.gameObject.SetActive(true);
 
+        /// <summary>
+        /// Called when an entity is returned to the pool.
+        /// </summary>
+        /// <param name="entity">The entity being returned.</param>
         protected virtual void OnReturn(E entity)
         {
             entity.gameObject.SetActive(false);
             entity.transform.SetParent(_container);
         }
+
+        /// <summary>
+        /// Instantiates a new entity instance from the prefab and initializes it.
+        /// </summary>
+        /// <returns>The newly created entity.</returns>
+        private E CreateEntity()
+        {
+            E entity = Instantiate(_prefab, _container);
+            entity.Install();
+            this.OnCreate(entity);
+            return entity;
+        }
     }
 }
+#endif

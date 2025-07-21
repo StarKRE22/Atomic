@@ -159,7 +159,6 @@ namespace Atomic.Entities
 
                 count--;
 
-                //Shift left:
                 for (int j = i; j < count; j++)
                     array[j] = array[j + 1];
 
