@@ -3,6 +3,16 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A string-keyed specialization of <see cref="IEntityFactoryCatalog{TKey, E}"/> for generic <see cref="IEntity"/> factories.
+    /// </summary>
+    /// <remarks>
+    /// Useful as a shorthand for the most common use case: mapping entity factories by name.
+    /// </remarks>
+    public interface IEntityFactoryCatalog : IEntityFactoryCatalog<string, IEntity>
+    {
+    }
+
+    /// <summary>
     /// Represents a read-only catalog of entity factories, indexed by a key of type <typeparamref name="TKey"/>.
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify factories (e.g., string, enum).</typeparam>
@@ -12,16 +22,6 @@ namespace Atomic.Entities
     /// It provides access to entity creation logic in a structured and lookup-efficient manner.
     /// </remarks>
     public interface IEntityFactoryCatalog<TKey, E> : IReadOnlyDictionary<TKey, IEntityFactory<E>> where E : IEntity
-    {
-    }
-
-    /// <summary>
-    /// A string-keyed specialization of <see cref="IEntityFactoryCatalog{TKey, E}"/> for generic <see cref="IEntity"/> factories.
-    /// </summary>
-    /// <remarks>
-    /// Useful as a shorthand for the most common use case: mapping entity factories by name.
-    /// </remarks>
-    public interface IEntityFactoryCatalog : IEntityFactoryCatalog<string, IEntity>
     {
     }
 }

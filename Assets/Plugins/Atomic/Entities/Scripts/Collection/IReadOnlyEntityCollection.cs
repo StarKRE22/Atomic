@@ -4,6 +4,13 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic version of <see cref="IReadOnlyEntityCollection{E}"/> for collections of <see cref="IEntity"/>.
+    /// </summary>
+    public interface IReadOnlyEntityCollection : IReadOnlyEntityCollection<IEntity>
+    {
+    }
+    
+    /// <summary>
     /// Represents a read-only, observable collection of entities of type <typeparamref name="E"/>.
     /// Provides access to entity presence, enumeration, and change events.
     /// </summary>
@@ -45,12 +52,5 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="results">The collection to populate with entities.</param>
         void CopyTo(ICollection<E> results);
-    }
-
-    /// <summary>
-    /// A non-generic version of <see cref="IReadOnlyEntityCollection{E}"/> for collections of <see cref="IEntity"/>.
-    /// </summary>
-    public interface IReadOnlyEntityCollection : IReadOnlyEntityCollection<IEntity>
-    {
     }
 }

@@ -10,6 +10,18 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Default implementation of <see cref="PrefabEntityPool{E}"/> for base <see cref="SceneEntity"/> types.
+    /// </summary>
+    /// <remarks>
+    /// This class provides a convenient non-generic entry point for working with pooled <see cref="SceneEntity"/> instances
+    /// across multiple Unity scenes. Use this when generic type inference is not needed.
+    /// </remarks>
+    [AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
+    public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
+    {
+    }
+
+    /// <summary>
     /// A multi-prefab object pool for scene-based entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The type of <see cref="SceneEntity"/> managed by the pool.</typeparam>
@@ -17,7 +29,7 @@ namespace Atomic.Entities
     /// This pool allows renting and returning multiple different entity prefabs, each tracked by its own internal pool.
     /// Pools are created lazily and managed by prefab name. Supports pre-warming via <see cref="Init"/>.
     /// </remarks>
-    public abstract class MultiSceneEntityPool<E> : MonoBehaviour, IMultiSceneEntityPool<E> where E : SceneEntity
+    public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
     {
         private const string NUMBER_PATTERN = @"\s*\(\d+\)$";
 
@@ -40,14 +52,16 @@ namespace Atomic.Entities
         [SerializeField]
         private Transform _container;
 
-        /// <summary>
-        /// Called automatically on Unity Awake.
-        /// Ensures the container is assigned.
-        /// </summary>
-        private void Awake()
+        [SerializeField]
+        private bool _dontDestroyOnLoad;
+        
+        protected virtual void Awake()
         {
             if (_container == null)
                 _container = this.transform;
+
+            if (_dontDestroyOnLoad) 
+                DontDestroyOnLoad(this.gameObject);
         }
 
         /// <summary>

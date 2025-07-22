@@ -1,6 +1,14 @@
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Non-generic version of <see cref="IEntityFactory{T}"/> that produces a base <see cref="IEntity"/> instance.
+    /// This interface is useful when working with heterogeneous entity types in a shared context, such as registries or catalogs.
+    /// </summary>
+    public interface IEntityFactory : IEntityFactory<IEntity>
+    {
+    }
+    
+    /// <summary>
     /// Defines a generic factory interface for creating new instances of <see cref="IEntity"/>-based types.
     /// 
     /// This interface is typically implemented by systems or data-driven structures (e.g., ScriptableObjects, MonoBehaviours)
@@ -17,13 +25,5 @@ namespace Atomic.Entities
         /// </summary>
         /// <returns>A new instance of the entity of type <typeparamref name="T"/>.</returns>
         T Create();
-    }
-
-    /// <summary>
-    /// Non-generic version of <see cref="IEntityFactory{T}"/> that produces a base <see cref="IEntity"/> instance.
-    /// This interface is useful when working with heterogeneous entity types in a shared context, such as registries or catalogs.
-    /// </summary>
-    public interface IEntityFactory : IEntityFactory<IEntity>
-    {
     }
 }

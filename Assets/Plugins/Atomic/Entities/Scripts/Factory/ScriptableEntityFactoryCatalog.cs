@@ -11,6 +11,36 @@ using UnityEngine;
 namespace SampleGame
 {
     /// <summary>
+    /// A concrete implementation of <see cref="ScriptableEntityFactoryCatalog{TKey, E}"/> that maps
+    /// <see cref="ScriptableEntityFactory{IEntity}"/> instances by their asset name as a string key.
+    /// </summary>
+    /// <remarks>
+    /// This catalog can be used as a drop-in asset to register entity factories by name for use in
+    /// entity spawning, prototyping, or in-editor tools.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// var catalog = Resources.Load&lt;ScriptableEntityFactoryCatalog&gt;("EntityFactoryCatalog");
+    /// var factory = catalog["Enemy"];
+    /// var enemy = factory.Create();
+    /// </code>
+    /// </example>
+    [CreateAssetMenu(
+        fileName = "EntityFactoryCatalog",
+        menuName = "Atomic/Entities/New EntityFactoryCatalog"
+    )]
+    public class ScriptableEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IEntity>, IEntityFactoryCatalog
+    {
+        /// <summary>
+        /// Extracts the string key for a given factory.
+        /// Uses the factory's asset name as the key.
+        /// </summary>
+        /// <param name="factory">The factory to extract a key from.</param>
+        /// <returns>The name of the factory asset.</returns>
+        protected override string GetKey(ScriptableEntityFactory<IEntity> factory) => factory.name;
+    }
+
+    /// <summary>
     /// A ScriptableObject-based catalog that stores a collection of <see cref="ScriptableEntityFactory{E}"/> instances,
     /// exposing them as a dictionary keyed by <typeparamref name="TKey"/> for use in factory registries.
     /// </summary>
@@ -150,36 +180,6 @@ namespace SampleGame
                 }
             }
         }
-    }
-    
-    /// <summary>
-    /// A concrete implementation of <see cref="ScriptableEntityFactoryCatalog{TKey, E}"/> that maps
-    /// <see cref="ScriptableEntityFactory{IEntity}"/> instances by their asset name as a string key.
-    /// </summary>
-    /// <remarks>
-    /// This catalog can be used as a drop-in asset to register entity factories by name for use in
-    /// entity spawning, prototyping, or in-editor tools.
-    /// </remarks>
-    /// <example>
-    /// <code>
-    /// var catalog = Resources.Load&lt;ScriptableEntityFactoryCatalog&gt;("EntityFactoryCatalog");
-    /// var factory = catalog["Enemy"];
-    /// var enemy = factory.Create();
-    /// </code>
-    /// </example>
-    [CreateAssetMenu(
-        fileName = "EntityFactoryCatalog",
-        menuName = "Atomic/Entities/New EntityFactoryCatalog"
-    )]
-    public class ScriptableEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IEntity>, IEntityFactoryCatalog
-    {
-        /// <summary>
-        /// Extracts the string key for a given factory.
-        /// Uses the factory's asset name as the key.
-        /// </summary>
-        /// <param name="factory">The factory to extract a key from.</param>
-        /// <returns>The name of the factory asset.</returns>
-        protected override string GetKey(ScriptableEntityFactory<IEntity> factory) => factory.name;
     }
 }
 #endif

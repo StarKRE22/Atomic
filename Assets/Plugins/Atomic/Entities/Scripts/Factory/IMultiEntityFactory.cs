@@ -1,6 +1,13 @@
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic registry interface for storing and retrieving entity factories by key.
+    /// </summary>
+    public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
+    {
+    }
+
+    /// <summary>
     /// A generic registry interface for storing and retrieving entity factories by key.
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify factories.</typeparam>
@@ -26,12 +33,5 @@ namespace Atomic.Entities
         /// <param name="key">The key of the factory to use.</param>
         /// <returns>A new instance of <typeparamref name="E"/>.</returns>
         E Create(TKey key);
-    }
-
-    /// <summary>
-    /// A non-generic registry interface for storing and retrieving entity factories by key.
-    /// </summary>
-    public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
-    {
     }
 }

@@ -9,6 +9,30 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Default non-generic implementation of a <see cref="SceneEntityPool{T}"/> for base <see cref="SceneEntity"/> types.
+    /// </summary>
+    /// <remarks>
+    /// This component can be added to a GameObject in the Unity scene to manage pooling of <see cref="SceneEntity"/> instances
+    /// without requiring generics. It implements <see cref="IEntityPool"/> for compatibility with systems that expect non-generic access.
+    /// </remarks>
+    /// <example>
+    /// Attach this component to a GameObject to preallocate and reuse pooled entities at runtime:
+    /// <code>
+    /// var pooledEntity = sceneEntityPool.Rent();
+    /// sceneEntityPool.Return(pooledEntity);
+    /// </code>
+    /// </example>
+    [AddComponentMenu("Atomic/Entities/Entity Pool")]
+    public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
+    {
+        /// <inheritdoc />
+        IEntity IEntityPool<IEntity>.Rent() => this.Rent();
+
+        /// <inheritdoc />
+        void IEntityPool<IEntity>.Return(IEntity entity) => this.Return((SceneEntity) entity);
+    }
+
+    /// <summary>
     /// A Unity MonoBehaviour-based entity pool for scene-bound entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The type of entity managed by this pool. Must inherit from <see cref="SceneEntity"/>.</typeparam>

@@ -8,6 +8,29 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic version of <see cref="EntityFilter{E}"/> for working with <see cref="IEntity"/> collections.
+    /// </summary>
+    /// <remarks>
+    /// This is a convenience wrapper that avoids specifying a type parameter when filtering general entities.
+    /// </remarks>
+    public class EntityFilter : EntityFilter<IEntity>, IReadOnlyEntityCollection
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityFilter"/> class.
+        /// </summary>
+        /// <param name="collection">The source collection of entities to observe.</param>
+        /// <param name="predicate">The predicate that determines inclusion in the filter.</param>
+        /// <param name="triggers">Optional triggers for dynamic change tracking.</param>
+        public EntityFilter(
+            IReadOnlyEntityCollection<IEntity> collection,
+            Predicate<IEntity> predicate,
+            params ITrigger[] triggers)
+            : base(collection, predicate, triggers)
+        {
+        }
+    }
+    
+    /// <summary>
     /// Represents a dynamic, observable filtered view over an existing <see cref="IReadOnlyEntityCollection{E}"/>.
     /// Entities are included based on a predicate and tracked using optional triggers.
     /// </summary>
@@ -189,29 +212,6 @@ namespace Atomic.Entities
                 this.OnDeleted?.Invoke(entity);
             else if (matches && this.entities.Add(entity))
                 this.OnAdded?.Invoke(entity);
-        }
-    }
-
-    /// <summary>
-    /// A non-generic version of <see cref="EntityFilter{E}"/> for working with <see cref="IEntity"/> collections.
-    /// </summary>
-    /// <remarks>
-    /// This is a convenience wrapper that avoids specifying a type parameter when filtering general entities.
-    /// </remarks>
-    public class EntityFilter : EntityFilter<IEntity>, IReadOnlyEntityCollection
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="EntityFilter"/> class.
-        /// </summary>
-        /// <param name="collection">The source collection of entities to observe.</param>
-        /// <param name="predicate">The predicate that determines inclusion in the filter.</param>
-        /// <param name="triggers">Optional triggers for dynamic change tracking.</param>
-        public EntityFilter(
-            IReadOnlyEntityCollection<IEntity> collection,
-            Predicate<IEntity> predicate,
-            params ITrigger[] triggers)
-            : base(collection, predicate, triggers)
-        {
         }
     }
 }

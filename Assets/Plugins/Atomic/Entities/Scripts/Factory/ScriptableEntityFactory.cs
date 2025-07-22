@@ -9,6 +9,40 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Abstract base class for Unity-based factories that create and configure <see cref="Entity"/> instances.
+    /// </summary>
+    /// <remarks>
+    /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
+    /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
+    /// </remarks>
+    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+    {
+        /// <summary>
+        /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
+        /// and applies additional configuration via the <see cref="Install"/> method.
+        /// </summary>
+        /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
+        public sealed override IEntity Create()
+        {
+            var entity = new Entity(
+                this.initialName,
+                this.initialTagCount,
+                this.initialValueCount,
+                this.initialBehaviourCount
+            );
+            this.Install(entity);
+            return entity;
+        }
+
+        /// <summary>
+        /// Applies additional logic to the newly created <see cref="Entity"/> instance.
+        /// Override this method to inject behaviors, tags, values, or other initialization logic.
+        /// </summary>
+        /// <param name="entity">The entity to configure after creation.</param>
+        protected abstract void Install(Entity entity);
+    }
+
+    /// <summary>
     /// Abstract base class for creating <see cref="IEntity"/> instances via Unity's <see cref="ScriptableObject"/> system.
     /// Stores initial parameters used during entity creation and allows previewing entity properties in the Editor.
     /// </summary>
@@ -111,40 +145,6 @@ namespace Atomic.Entities
             this.initialValueCount = entity.ValueCount;
             this.initialBehaviourCount = entity.BehaviourCount;
         }
-    }
-    
-    /// <summary>
-    /// Abstract base class for Unity-based factories that create and configure <see cref="Entity"/> instances.
-    /// </summary>
-    /// <remarks>
-    /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
-    /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
-    /// </remarks>
-    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
-    {
-        /// <summary>
-        /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
-        /// and applies additional configuration via the <see cref="Install"/> method.
-        /// </summary>
-        /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
-        public sealed override IEntity Create()
-        {
-            var entity = new Entity(
-                this.initialName,
-                this.initialTagCount,
-                this.initialValueCount,
-                this.initialBehaviourCount
-            );
-            this.Install(entity);
-            return entity;
-        }
-
-        /// <summary>
-        /// Applies additional logic to the newly created <see cref="Entity"/> instance.
-        /// Override this method to inject behaviors, tags, values, or other initialization logic.
-        /// </summary>
-        /// <param name="entity">The entity to configure after creation.</param>
-        protected abstract void Install(Entity entity);
     }
 }
 #endif

@@ -8,6 +8,20 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic version of <see cref="MultiEntityPool{TKey,E}"/> that uses string keys and <see cref="IEntity"/> values.
+    /// </summary>
+    public class MultiEntityPool : MultiEntityPool<string, IEntity>, IMultiEntityPool
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MultiEntityPool"/> class.
+        /// </summary>
+        /// <param name="factory">The factory registry used to create and manage entity instances.</param>
+        public MultiEntityPool(IMultiEntityFactory<string, IEntity> factory) : base(factory)
+        {
+        }
+    }
+    
+    /// <summary>
     /// A registry that manages multiple pools of entities, each identified by a unique key.
     /// </summary>
     /// <typeparam name="TKey">The key type used to identify each pool.</typeparam>
@@ -139,20 +153,6 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The returned entity.</param>
         protected virtual void OnReturn(E entity)
-        {
-        }
-    }
-
-    /// <summary>
-    /// A non-generic version of <see cref="MultiEntityPool{TKey,E}"/> that uses string keys and <see cref="IEntity"/> values.
-    /// </summary>
-    public class MultiEntityPool : MultiEntityPool<string, IEntity>, IMultiEntityPool
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MultiEntityPool"/> class.
-        /// </summary>
-        /// <param name="factory">The factory registry used to create and manage entity instances.</param>
-        public MultiEntityPool(IMultiEntityFactory<string, IEntity> factory) : base(factory)
         {
         }
     }

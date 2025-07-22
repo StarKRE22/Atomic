@@ -3,6 +3,13 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic alias of <see cref="IMultiEntityPool{TKey,E}"/> for managing pools of <see cref="IEntity"/> using string keys.
+    /// </summary>
+    public interface IMultiEntityPool : IMultiEntityPool<string, IEntity>
+    {
+    }
+    
+    /// <summary>
     /// Represents a registry that manages multiple entity pools, each identified by a key.
     /// </summary>
     /// <typeparam name="TKey">The key type used to identify individual pools.</typeparam>
@@ -29,12 +36,5 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to return to the pool.</param>
         void Return(E entity);
-    }
-
-    /// <summary>
-    /// A non-generic alias of <see cref="IMultiEntityPool{TKey,E}"/> for managing pools of <see cref="IEntity"/> using string keys.
-    /// </summary>
-    public interface IMultiEntityPool : IMultiEntityPool<string, IEntity>
-    {
     }
 }

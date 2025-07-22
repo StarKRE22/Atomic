@@ -5,11 +5,22 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Non-generic version of <see cref="IPrefabEntityPool{E}"/> specialized for base <see cref="SceneEntity"/> types.
+    /// </summary>
+    /// <remarks>
+    /// This interface provides a non-generic abstraction for working with multi-scene entity pools,
+    /// typically used for pooling and managing <see cref="SceneEntity"/> instances across multiple scenes.
+    /// </remarks>
+    public interface IPrefabEntityPool : IPrefabEntityPool<SceneEntity>
+    {
+    }
+
+    /// <summary>
     /// Manages multiple scene entity pools, each associated with a specific prefab.
     /// Provides centralized methods for renting and returning entities across those pools.
     /// </summary>
     /// <typeparam name="E">The type of scene entity being pooled. Must inherit from <see cref="SceneEntity"/>.</typeparam>
-    public interface IMultiSceneEntityPool<E> : IDisposable where E : SceneEntity
+    public interface IPrefabEntityPool<E> : IDisposable where E : SceneEntity
     {
         /// <summary>
         /// Initializes the pool associated with the specified key by pre-populating it with entities.
@@ -17,14 +28,14 @@ namespace Atomic.Entities
         /// <param name="prefab">The prefab to use as the key for the pool.</param>
         /// <param name="count">The number of entities to preallocate in the pool.</param>
         void Init(E prefab, int count);
-        
+
         /// <summary>
         /// Rents an entity instance from the pool associated with the specified prefab.
         /// </summary>
         /// <param name="prefab">The prefab to use as the key for the pool.</param>
         /// <returns>A rented instance of the specified prefab.</returns>
         E Rent(E prefab);
-        
+
         /// <summary>
         /// Rents an entity instance and parents it under the specified transform.
         /// </summary>
@@ -32,7 +43,7 @@ namespace Atomic.Entities
         /// <param name="parent">The transform to parent the entity under.</param>
         /// <returns>A rented and parented instance of the specified prefab.</returns>
         E Rent(E prefab, Transform parent);
-        
+
         /// <summary>
         /// Rents an entity instance with a specific position and rotation, optionally setting a parent.
         /// </summary>
@@ -48,7 +59,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity instance to return.</param>
         void Return(E entity);
-        
+
         /// <summary>
         /// Clears the pool associated with the given prefab, destroying all pooled instances.
         /// </summary>
