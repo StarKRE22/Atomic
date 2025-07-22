@@ -9,7 +9,11 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [DisallowMultipleComponent]
-    public abstract class View<E> : AbstractView<E> where E : IEntity<E>
+    public class EntityView : EntityView<IEntity>
+    {
+    }
+
+    public abstract class EntityView<E> : EntityViewBase<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]
@@ -17,8 +21,8 @@ namespace Atomic.Entities
         [SerializeField]
         private List<ViewInstaller<E>> _installers;
 
-        private readonly List<IEntityBehaviour<E>> _behaviours = new();
-        
+        private readonly List<IEntityBehaviour> _behaviours = new();
+
         private bool _installed;
 
         protected override void OnShow(E entity)
@@ -34,19 +38,19 @@ namespace Atomic.Entities
             base.OnHide(entity);
         }
 
-        public void AddBehaviour(IEntityBehaviour<E> behaviour)
+        public void AddBehaviour(IEntityBehaviour behaviour)
         {
             _behaviours.Add(behaviour);
-            
-            if (_isShown) 
+
+            if (_isVisible)
                 _entity.AddBehaviour(behaviour);
         }
 
-        public void DelBehaviour(IEntityBehaviour<E> behaviour)
+        public void DelBehaviour(IEntityBehaviour behaviour)
         {
             _behaviours.Remove(behaviour);
 
-            if (_isShown) 
+            if (_isVisible)
                 _entity.DelBehaviour(behaviour);
         }
 
@@ -64,7 +68,7 @@ namespace Atomic.Entities
                     installer.Install(this);
             }
         }
-        
+
         private void OnDrawGizmosSelected()
         {
             if (_entity == null)

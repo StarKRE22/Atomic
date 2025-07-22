@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 
 #if ODIN_INSPECTOR
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class AbstractView<E> : MonoBehaviour where E : IEntity<E>
+    public abstract class EntityViewBase<E> : MonoBehaviour where E : IEntity
     {
 #if ODIN_INSPECTOR
         [Title("Debug")]
@@ -24,29 +25,31 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public bool IsShown => _isShown;
+        public bool IsVisible => _isVisible;
 
         private protected E _entity;
-        private protected bool _isShown;
+        private protected bool _isVisible;
         
         public void Show(E entity)
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
-            _isShown = true;
+            _isVisible = true;
             this.OnShow(entity);
         }
 
         public void Hide()
         {
+            if (!_isVisible)
+                return;
+            
             this.OnHide(_entity);
-            _isShown = false;
+            _isVisible = false;
             _entity = default;
         }
 
-        protected virtual void OnShow(E entity) => 
-            this.gameObject.SetActive(true);
+        protected virtual void OnShow(E entity) => this.gameObject.SetActive(true);
 
-        protected virtual void OnHide(E entity) => 
-            this.gameObject.SetActive(false);
+        protected virtual void OnHide(E entity) => this.gameObject.SetActive(false);
     }
 }
+#endif
