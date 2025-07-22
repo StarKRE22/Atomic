@@ -17,6 +17,7 @@ namespace Atomic.Entities
     /// across multiple Unity scenes. Use this when generic type inference is not needed.
     /// </remarks>
     [AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
+    [DisallowMultipleComponent]
     public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
     {
     }

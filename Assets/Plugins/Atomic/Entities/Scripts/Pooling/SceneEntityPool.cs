@@ -23,6 +23,7 @@ namespace Atomic.Entities
     /// </code>
     /// </example>
     [AddComponentMenu("Atomic/Entities/Entity Pool")]
+    [DisallowMultipleComponent]
     public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
     {
         /// <inheritdoc />

@@ -4,12 +4,48 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Non-generic proxy component for exposing and interacting with a <see cref="SceneEntity"/> in the Unity scene.
+    /// </summary>
+    /// <remarks>
+    /// This component serves as a non-generic version of <see cref="SceneEntityProxy{E}"/> and is intended
+    /// for convenience when working with base <see cref="SceneEntity"/> types.
+    /// </remarks>
     [AddComponentMenu("Atomic/Entities/Entity Proxy")]
     [DisallowMultipleComponent]
     public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
     {
     }
 
+    /// <summary>
+    /// A Unity MonoBehaviour proxy that forwards all <see cref="IEntity"/> calls to an underlying <typeparamref name="E"/> source entity.
+    /// </summary>
+    /// <typeparam name="E">The type of the source entity, must inherit from <see cref="SceneEntity"/>.</typeparam>
+    /// <remarks>
+    /// This proxy allows interaction with an entity instance inside the Unity scene while decoupling logic from the GameObject.
+    /// It acts as a transparent forwarder for all <see cref="IEntity"/> functionality, including tags, values, lifecycle, and behaviours.
+    ///
+    /// Use this component to expose scene-level access to the underlying entity while maintaining modularity.
+    ///
+    /// ⚠️ **Collider Interaction Note**:
+    /// If your entity consists of multiple child colliders (e.g., hitboxes, triggers),
+    /// and you want to detect which entity was interacted with (e.g., on hit or raycast),
+    /// you can place <c>SceneEntityProxy</c> on each child and reference the same source <see cref="SceneEntity"/>.
+    /// This allows unified access to the logical entity regardless of which physical collider was hit.
+    ///
+    /// <example>
+    /// Example: Detecting hits from any collider on the entity:
+    /// <code>
+    /// void OnTriggerEnter(Collider other)
+    /// {
+    ///     if (other.TryGetComponent(out IEntity proxy)) // concrete type is SceneEntityProxy
+    ///     {
+    ///         Debug.Log($"Hit entity: {entity.Name}");
+    ///     }
+    /// }
+    /// </code>
+    /// </example>
+    /// </remarks>
     public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
     {
         public event Action OnStateChanged
