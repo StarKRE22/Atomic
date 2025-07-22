@@ -6,58 +6,58 @@ namespace Atomic.Entities
     {
         public event Action OnInitialized
         {
-            add => _updater.OnInitialized += value;
-            remove => _updater.OnInitialized -= value;
+            add => _loop.OnInitialized += value;
+            remove => _loop.OnInitialized -= value;
         }
 
         public event Action OnDisposed
         {
-            add => _updater.OnDisposed += value;
-            remove => _updater.OnDisposed -= value;
+            add => _loop.OnDisposed += value;
+            remove => _loop.OnDisposed -= value;
         }
 
         public event Action OnEnabled
         {
-            add => _updater.OnEnabled += value;
-            remove => _updater.OnEnabled -= value;
+            add => _loop.OnEnabled += value;
+            remove => _loop.OnEnabled -= value;
         }
 
         public event Action OnDisabled
         {
-            add => _updater.OnDisabled += value;
-            remove => _updater.OnDisabled -= value;
+            add => _loop.OnDisabled += value;
+            remove => _loop.OnDisabled -= value;
         }
 
         public event Action<float> OnUpdated
         {
-            add => _updater.OnUpdated += value;
-            remove => _updater.OnUpdated -= value;
+            add => _loop.OnUpdated += value;
+            remove => _loop.OnUpdated -= value;
         }
 
         public event Action<float> OnFixedUpdated
         {
-            add => _updater.OnFixedUpdated += value;
-            remove => _updater.OnFixedUpdated -= value;
+            add => _loop.OnFixedUpdated += value;
+            remove => _loop.OnFixedUpdated -= value;
         }
 
         public event Action<float> OnLateUpdated
         {
-            add => _updater.OnLateUpdated += value;
-            remove => _updater.OnLateUpdated -= value;
+            add => _loop.OnLateUpdated += value;
+            remove => _loop.OnLateUpdated -= value;
         }
 
-        public bool Initialized => _updater.Initialized;
-        public bool Enabled => _updater.Enabled;
+        public bool Initialized => _loop.Initialized;
+        public bool Enabled => _loop.Enabled;
 
-        private readonly Updater<E> _updater = new();
+        private readonly EntityLoop<E> _loop = new();
         
-        public void Init() => _updater.Init();
-        public void Enable() => _updater.Enable();
-        public void Disable() => _updater.Disable();
-        public void Dispose() => _updater.Dispose();
+        public void Init() => _loop.Init();
+        public void Enable() => _loop.Enable();
+        public void Disable() => _loop.Disable();
+        public void Dispose() => _loop.Dispose();
 
-        public void OnUpdate(float deltaTime) => _updater.OnUpdate(deltaTime);
-        public void OnFixedUpdate(float deltaTime) => _updater.OnFixedUpdate(deltaTime);
-        public void OnLateUpdate(float deltaTime) => _updater.OnLateUpdate(deltaTime);
+        public void OnUpdate(float deltaTime) => _loop.OnUpdate(deltaTime);
+        public void OnFixedUpdate(float deltaTime) => _loop.OnFixedUpdate(deltaTime);
+        public void OnLateUpdate(float deltaTime) => _loop.OnLateUpdate(deltaTime);
     }
 }

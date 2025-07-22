@@ -72,7 +72,7 @@ namespace Atomic.Entities
             if (!_entities.TryAdd(entity.InstanceID, entity))
                 return false;
 
-            _updater.Add(entity);
+            _loop.Add(entity);
 
             this.AddTags(entity);
             this.AddValues(entity);
@@ -88,7 +88,7 @@ namespace Atomic.Entities
             if (!_entities.Remove(entity.InstanceID))
                 return false;
 
-            _updater.Del(entity);
+            _loop.Del(entity);
 
             this.Unsubscribe(in entity);
             this.RemoveTags(entity);
@@ -111,7 +111,7 @@ namespace Atomic.Entities
             _entities.Clear();
             _tags.Clear();
             _values.Clear();
-            _updater.Clear();
+            _loop.Clear();
 
             foreach (E entity in _cache)
             {
