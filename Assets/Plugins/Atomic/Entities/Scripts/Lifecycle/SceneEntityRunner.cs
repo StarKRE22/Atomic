@@ -57,7 +57,7 @@ namespace Atomic.Entities
                     continue;
                 }
 
-                entity.Init();
+                entity.Spawn();
                 entity.Enable();
                 SceneEntityUpdater.Instance.Add(entity);
             }
@@ -116,7 +116,7 @@ namespace Atomic.Entities
                 SceneEntity entity = _entities[i];
                 if (entity)
                 {
-                    entity.Denit();
+                    entity.Despawn();
                     SceneEntityUpdater.Instance.Del(entity);
                 }
             }
@@ -146,7 +146,7 @@ namespace Atomic.Entities
 
             if (this.started)
             {
-                entity.Init();
+                entity.Spawn();
                 entity.Enable();
                 SceneEntityUpdater.Instance.Add(entity);
             }
@@ -170,7 +170,7 @@ namespace Atomic.Entities
             if (this.started)
             {
                 entity.Disable();
-                entity.Denit();
+                entity.Despawn();
                 SceneEntityUpdater.Instance.Del(entity);
             }
 

@@ -10,48 +10,94 @@ namespace Atomic.Entities
     {
     }
 
-    #region Init
+    #region Spawn
 
     /// <summary>
-    /// Defines a behavior that supports initialization logic for an <see cref="IEntity"/>.
+    /// Defines a behavior that executes spawn-time logic when an <see cref="IEntity"/> is spawned into the world or runtime context.
     /// </summary>
-    public interface IEntityInit : IEntityBehaviour
+    public interface IEntitySpawn : IEntityBehaviour
     {
         /// <summary>
-        /// Initializes the behavior with the specified <see cref="IEntity"/>.
+        /// Called when the entity is spawned.
         /// </summary>
-        /// <param name="entity">The entity to initialize this behavior with.</param>
-        void Init(IEntity entity);
+        /// <param name="entity">The entity being spawned.</param>
+        void Spawn(IEntity entity);
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityInit"/> that provides strongly-typed initialization for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntitySpawn"/> for handling spawn-time logic on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior works with.</typeparam>
-    public interface IEntityInit<in T> : IEntityInit where T : IEntity
+    /// <typeparam name="T">The concrete entity type.</typeparam>
+    public interface IEntitySpawn<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
-        /// Initializes the behavior with a strongly-typed entity context.
+        /// Called when the typed entity is spawned.
         /// </summary>
-        /// <param name="entity">The entity of type <typeparamref name="T"/>.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Init(T entity);
 
-        void IEntityInit.Init(IEntity entity) => this.Init((T) entity);
+        void IEntitySpawn.Spawn(IEntity entity) => this.Init((T)entity);
     }
 
     /// <summary>
-    /// Unsafe generic version of <see cref="IEntityInit"/> that uses low-level casting to initialize a strongly-typed <see cref="IEntity"/>.
+    /// Provides a high-performance, unsafe version of <see cref="IEntitySpawn"/> by using low-level casting for spawn-time logic.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior works with.</typeparam>
-    public interface IEntityInitUnsafe<in T> : IEntityInit where T : IEntity
+    /// <typeparam name="T">The concrete entity type.</typeparam>
+    public interface IEntitySpawnUnsafe<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
-        /// Initializes the behavior with a strongly-typed entity context.
+        /// Called when the typed entity is spawned.
         /// </summary>
-        /// <param name="entity">The entity of type <typeparamref name="T"/>.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Init(T entity);
 
-        void IEntityInit.Init(IEntity entity) => this.Init(UnsafeUtility.As<IEntity, T>(ref entity));
+        void IEntitySpawn.Spawn(IEntity entity) => this.Init(UnsafeUtility.As<IEntity, T>(ref entity));
+    }
+
+    #endregion
+    
+    #region Despawn
+
+    /// <summary>
+    /// Defines a behavior that executes cleanup or deinitialization logic when an <see cref="IEntity"/> is despawned from the world or runtime context.
+    /// </summary>
+    public interface IEntityDespawn
+    {
+        /// <summary>
+        /// Called when the entity is despawned.
+        /// </summary>
+        /// <param name="entity">The entity being despawned.</param>
+        void Despawn(IEntity entity);
+    }
+
+    /// <summary>
+    /// Provides a strongly-typed version of <see cref="IEntityDespawn"/> for handling despawn-time logic on a specific <see cref="IEntity"/> type.
+    /// </summary>
+    /// <typeparam name="T">The concrete entity type.</typeparam>
+    public interface IEntityDespawn<in T> : IEntityDespawn where T : IEntity
+    {
+        /// <summary>
+        /// Called when the typed entity is despawned.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        void Despawn(T entity);
+
+        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn((T)entity);
+    }
+
+    /// <summary>
+    /// Provides a high-performance, unsafe version of <see cref="IEntityDespawn"/> by using low-level casting for despawn-time logic.
+    /// </summary>
+    /// <typeparam name="T">The concrete entity type.</typeparam>
+    public interface IEntityDespawnUnsafe<in T> : IEntityDespawn where T : IEntity
+    {
+        /// <summary>
+        /// Called when the typed entity is despawned.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        void Despawn(T entity);
+
+        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 
     #endregion
@@ -147,53 +193,6 @@ namespace Atomic.Entities
         void Disable(T entity);
 
         void IEntityDisable.Disable(IEntity entity) => this.Disable(UnsafeUtility.As<IEntity, T>(ref entity));
-    }
-
-    #endregion
-
-    #region Shutdown
-
-    /// <summary>
-    /// Defines a behavior that is called when an <see cref="IEntity"/> is disposed.
-    /// </summary>
-    public interface IEntityDispose
-    {
-        /// <summary>
-        /// Called when the entity is being disposed.
-        /// </summary>
-        /// <param name="entity">The entity being disposed.</param>
-        void Dispose(IEntity entity);
-    }
-
-    /// <summary>
-    /// Generic version of <see cref="IEntityDispose"/> that provides strongly-typed dispose logic
-    /// for a specific <see cref="IEntity"/> type.
-    /// </summary>
-    /// <typeparam name="T">The specific entity type this logic applies to.</typeparam>
-    public interface IEntityDispose<in T> : IEntityDispose where T : IEntity
-    {
-        /// <summary>
-        /// Called when the entity is being disposed.
-        /// </summary>
-        /// <param name="entity">The strongly-typed entity being disposed.</param>
-        void Dispose(T entity);
-
-        void IEntityDispose.Dispose(IEntity entity) => this.Dispose((T) entity);
-    }
-
-    /// <summary>
-    /// Unsafe generic version of <see cref="IEntityDispose"/> that performs low-level casting for performance.
-    /// </summary>
-    /// <typeparam name="T">The specific entity type this logic applies to.</typeparam>
-    public interface IEntityDisposeUnsafe<in T> : IEntityDispose where T : IEntity
-    {
-        /// <summary>
-        /// Called when the entity is being disposed.
-        /// </summary>
-        /// <param name="entity">The strongly-typed entity being disposed.</param>
-        void Dispose(T entity);
-
-        void IEntityDispose.Dispose(IEntity entity) => this.Dispose(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 
     #endregion

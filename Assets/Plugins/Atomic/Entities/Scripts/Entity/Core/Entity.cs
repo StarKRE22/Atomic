@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-// ReSharper disable UnusedMember.Global
-
 namespace Atomic.Entities
 {
     /// <summary>
     /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
     /// </summary>
-    public partial class Entity : IEntity
+    public partial class Entity : IEntity, IDisposable
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -95,21 +93,12 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
 
+        // ReSharper disable once UnusedMember.Global
         public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;
-
-        /// <summary>
-        /// Clears all data (tags, values, behaviours) from this entity.
-        /// </summary>
-        public void Clear()
-        {
-            this.ClearTags();
-            this.ClearValues();
-            this.ClearBehaviours();
-        }
-
+        
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
         /// </summary>
@@ -117,14 +106,14 @@ namespace Atomic.Entities
         {
             this.OnStateChanged = null;
             
-            this.OnInitialized = null;
+            this.OnSpawned = null;
             this.OnEnabled = null;
             this.OnDisabled = null;
             
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;
-            this.OnDisposed = null;
+            this.OnDespawned = null;
 
             this.OnBehaviourAdded = null;
             this.OnBehaviourDeleted = null;
@@ -138,10 +127,10 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Fully destroys the entity by performing the following steps:
+        /// Fully disposes the entity by performing the following steps:
         /// <list type="bullet">
-        /// <item><description>Calls <see cref="Denit"/> to release external resources and invoke disposal callbacks.</description></item>
-        /// <item><description>Clears all internal state (tags, values, and behaviours) via <see cref="Clear"/>.</description></item>
+        /// <item><description>Calls <see cref="Despawn"/> to release external resources and invoke disposal callbacks.</description></item>
+        /// <item><description>Clears all internal state (tags, values, and behaviours).</description></item>
         /// <item><description>Removes all subscriptions to avoid memory leaks via <see cref="UnsubscribeAll"/>.</description></item>
         /// </list>
         /// </summary>
@@ -149,10 +138,12 @@ namespace Atomic.Entities
         /// This method is intended to safely and completely dismantle the entity,
         /// making it eligible for reuse or garbage collection.
         /// </remarks>
-        public void Destroy()
+        public void Dispose()
         {
-            this.Denit();
-            this.Clear();
+            this.Despawn();
+            this.ClearTags();
+            this.ClearValues();
+            this.ClearBehaviours();
             this.UnsubscribeAll();
         }
     }

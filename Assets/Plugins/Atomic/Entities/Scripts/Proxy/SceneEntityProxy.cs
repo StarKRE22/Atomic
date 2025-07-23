@@ -187,10 +187,10 @@ namespace Atomic.Entities
 
         #region Lifecycle
 
-        public event Action OnInitialized
+        public event Action OnSpawned
         {
-            add => _source.OnInitialized += value;
-            remove => _source.OnInitialized -= value;
+            add => _source.OnSpawned += value;
+            remove => _source.OnSpawned -= value;
         }
 
         public event Action OnEnabled
@@ -205,10 +205,10 @@ namespace Atomic.Entities
             remove => _source.OnDisabled -= value;
         }
 
-        public event Action OnDisposed
+        public event Action OnDespawned
         {
-            add => _source.OnDisposed += value;
-            remove => _source.OnDisposed -= value;
+            add => _source.OnDespawned += value;
+            remove => _source.OnDespawned -= value;
         }
 
         public event Action<float> OnUpdated
@@ -229,13 +229,13 @@ namespace Atomic.Entities
             remove => _source.OnLateUpdated -= value;
         }
 
-        public bool Initialized => _source.Initialized;
+        public bool Spawned => _source.Spawned;
         public bool Enabled => _source.Enabled;
 
-        public void Init() => _source.Init();
+        public void Spawn() => _source.Spawn();
         public void Enable() => _source.Enable();
         public void Disable() => _source.Disable();
-        public void Denit() => _source.Denit();
+        public void Despawn() => _source.Despawn();
         public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
         public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
         public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);

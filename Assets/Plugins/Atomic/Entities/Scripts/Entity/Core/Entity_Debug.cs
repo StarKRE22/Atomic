@@ -23,7 +23,7 @@ namespace Atomic.Entities
         /// </summary>
         [LabelText("Initialized")]
         [ShowInInspector]
-        private bool DebugInitialized => this.Initialized;
+        private bool DebugInitialized => this.Spawned;
 
         /// <summary>
         /// Debug-only: Indicates whether the entity is currently enabled.

@@ -161,16 +161,6 @@ namespace Atomic.Entities
         /// Marks the entity as not installed, allowing reinstallation.
         /// </summary>
         public void MarkAsNotInstalled() => _installed = false;
-
-        /// <summary>
-        /// Clears all data (tags, values, behaviours) from this entity.
-        /// </summary>
-        public void Clear()
-        {
-            this.ClearTags();
-            this.ClearValues();
-            this.ClearBehaviours();
-        }
         
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
@@ -179,14 +169,14 @@ namespace Atomic.Entities
         {
             this.OnStateChanged = null;
             
-            this.OnInitialized = null;
+            this.OnSpawned = null;
             this.OnEnabled = null;
             this.OnDisabled = null;
             
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;
-            this.OnDisposed = null;
+            this.OnDespawned = null;
 
             this.OnBehaviourAdded = null;
             this.OnBehaviourDeleted = null;

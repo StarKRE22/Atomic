@@ -6,16 +6,16 @@ namespace Atomic.Entities
     public static partial class Extensions
     {
         /// <summary>
-        /// Subscribes to the <see cref="IEntity.OnInitialized"/> event and returns a disposable subscription.
+        /// Subscribes to the <see cref="IEntity.OnSpawned"/> event and returns a disposable subscription.
         /// </summary>
         /// <param name="entity">The entity to observe.</param>
         /// <param name="action">The callback to invoke when the entity is initialized.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityInitSubscription WhenInit(this IEntity entity, Action action)
+        public static EntitySpawnSubscription WhenSpawn(this IEntity entity, Action action)
         {
-            entity.OnInitialized += action;
-            return new EntityInitSubscription(entity, action);
+            entity.OnSpawned += action;
+            return new EntitySpawnSubscription(entity, action);
         }
 
         /// <summary>
@@ -45,16 +45,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IEntity.OnDisposed"/> event and returns a disposable subscription.
+        /// Subscribes to the <see cref="IEntity.OnDespawned"/> event and returns a disposable subscription.
         /// </summary>
         /// <param name="entity">The entity to observe.</param>
         /// <param name="action">The callback to invoke when the entity is disposed.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityDisposeSubscription WhenDispose(this IEntity entity, Action action)
+        public static EntityDespawnSubscription WhenDespawn(this IEntity entity, Action action)
         {
-            entity.OnDisposed += action;
-            return new EntityDisposeSubscription(entity, action);
+            entity.OnDespawned += action;
+            return new EntityDespawnSubscription(entity, action);
         }
 
         /// <summary>

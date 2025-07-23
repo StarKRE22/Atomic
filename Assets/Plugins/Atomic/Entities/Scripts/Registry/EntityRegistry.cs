@@ -50,27 +50,27 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to register.</param>
         /// <returns>The assigned unique ID.</returns>
-        internal int Register(IEntity entity)
+        internal void Spawn(IEntity entity, out int id)
         {
-            if (!_recycledIds.TryPop(out int id))
+            if (!_recycledIds.TryPop(out id))
                 id = _lastId++;
 
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
-            return id;
         }
 
         /// <summary>
         /// Unregisters an entity from the registry by its ID.
         /// </summary>
         /// <param name="id">The ID of the entity to unregister.</param>
-        internal void Unregister(int id)
+        internal void Despawn(ref int id)
         {
-            if (_entities.Remove(id, out IEntity entity))
-            {
-                _recycledIds.Push(id);
-                this.OnRemoved?.Invoke(entity);
-            }
+            if (!_entities.Remove(id, out IEntity entity)) 
+                return;
+            
+            _recycledIds.Push(id);
+            id = -1;
+            this.OnRemoved?.Invoke(entity);
         }
 
         /// <inheritdoc />
@@ -80,20 +80,18 @@ namespace Atomic.Entities
         /// Returns all currently registered entities.
         /// </summary>
         public IEntity[] GetAll() => _entities.Values.ToArray();
-
-        /// <inheritdoc />
-        public int CopyTo(IEntity[] results)
-        {
-            _entities.Values.CopyTo(results, 0);
-            return _entities.Count;
-        }
-
+        
         /// <inheritdoc />
         public void CopyTo(ICollection<IEntity> results)
         {
             results.Clear();
             foreach (IEntity entity in _entities.Values)
                 results.Add(entity);
+        }
+
+        public void CopyTo(IEntity[] array, int arrayIndex)
+        {
+            _entities.Values.CopyTo(array, arrayIndex);
         }
 
         /// <summary>

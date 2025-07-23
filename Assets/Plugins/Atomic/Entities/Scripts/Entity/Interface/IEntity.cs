@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -14,6 +16,11 @@ namespace Atomic.Entities
     public partial interface IEntity
     {
         /// <summary>
+        /// Invoked when the internal state changes.
+        /// </summary>
+        event Action OnStateChanged;
+        
+        /// <summary>
         /// Unique instance identifier of the entity. Don't use for save! (Use custom GUID)
         /// </summary>
         int InstanceID { get; }
@@ -22,10 +29,5 @@ namespace Atomic.Entities
         /// Optional user-defined name of the entity.
         /// </summary>
         string Name { get; set; }
-
-        /// <summary>
-        /// Clears all data from the entity (tags, values, behaviours).
-        /// </summary>
-        void Clear();
     }
 }

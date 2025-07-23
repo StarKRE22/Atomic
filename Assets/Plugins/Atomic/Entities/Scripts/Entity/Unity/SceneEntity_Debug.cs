@@ -15,7 +15,7 @@ namespace Atomic.Entities
         /// Indicates whether the entity has been initialized.
         /// </summary>
       
-        private bool InitializedDebug => this.Initialized;
+        private bool InitializedDebug => this.Spawned;
         
         /// <summary>
         /// Indicates whether the entity is currently enabled.

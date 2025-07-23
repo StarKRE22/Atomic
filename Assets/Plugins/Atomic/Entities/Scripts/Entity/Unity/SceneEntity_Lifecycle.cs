@@ -34,9 +34,14 @@ namespace Atomic.Entities
             EqualityComparer<IEntityLateUpdate>.Default;
 
         /// <summary>
-        /// Called when the entity has been initialized.
+        /// Called when the entity has been spawned.
         /// </summary>
-        public event Action OnInitialized;
+        public event Action OnSpawned;
+
+        /// <summary>
+        /// Called when the entity is despawned.
+        /// </summary>
+        public event Action OnDespawned;
 
         /// <summary>
         /// Called when the entity is enabled.
@@ -47,11 +52,6 @@ namespace Atomic.Entities
         /// Called when the entity is disabled.
         /// </summary>
         public event Action OnDisabled;
-
-        /// <summary>
-        /// Called when the entity is disposed.
-        /// </summary>
-        public event Action OnDisposed;
 
         /// <summary>
         /// Called every frame while the entity is enabled.
@@ -76,9 +76,9 @@ namespace Atomic.Entities
         [FoldoutGroup("Debug")]
         [LabelText("Initialized")]
         [ShowInInspector, ReadOnly]
-        
+
 #endif
-        public bool Initialized => _initialized;
+        public bool Spawned => _spawned;
 
         /// <summary>
         /// Indicates whether the entity is currently enabled.
@@ -90,7 +90,7 @@ namespace Atomic.Entities
 #endif
         public bool Enabled => _enabled;
 
-        private bool _initialized;
+        private bool _spawned;
         private bool _enabled;
 
         private IEntityUpdate[] updates;
@@ -102,43 +102,42 @@ namespace Atomic.Entities
         private int lateUpdateCount;
 
         /// <summary>
-        /// Initializes the entity and all IInit behaviours.
+        /// Spawns the entity.
         /// </summary>
-        public void Init()
+        public void Spawn()
         {
-            if (_initialized)
+            if (_spawned)
                 return;
-            
-            _initialized = true;
-            this._instanceId = EntityRegistry.Instance.Register(this);
+
+            _spawned = true;
+            EntityRegistry.Instance.Spawn(this, out _instanceId);
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityInit initBehaviour)
-                    initBehaviour.Init(this);
+                if (_behaviours[i] is IEntitySpawn initBehaviour)
+                    initBehaviour.Spawn(this);
 
-            this.OnInitialized?.Invoke();
+            this.OnSpawned?.Invoke();
         }
 
         /// <summary>
-        /// Disposes the entity and all IDispose behaviours.
+        /// Despawns the entity.
         /// </summary>
-        public void Denit()
+        public void Despawn()
         {
-            if (!_initialized)
+            if (!_spawned)
                 return;
 
             if (_enabled)
                 this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDispose disposeBehaviour)
-                    disposeBehaviour.Dispose(this);
+                if (_behaviours[i] is IEntityDespawn disposeBehaviour)
+                    disposeBehaviour.Despawn(this);
 
-            EntityRegistry.Instance.Unregister(this._instanceId);
-            this._instanceId = UNDEFINED_INDEX;
+            EntityRegistry.Instance.Despawn(ref _instanceId);
 
-            _initialized = false;
-            this.OnDisposed?.Invoke();
+            _spawned = false;
+            this.OnDespawned?.Invoke();
         }
 
         /// <summary>
@@ -146,8 +145,8 @@ namespace Atomic.Entities
         /// </summary>
         public void Enable()
         {
-            if (!_initialized)
-                this.Init();
+            if (!_spawned)
+                this.Spawn();
 
             if (_enabled)
                 return;

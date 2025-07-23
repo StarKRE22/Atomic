@@ -15,6 +15,16 @@ namespace Atomic.Entities
     public static partial class Extensions
     {
         /// <summary>
+        /// Clears all data (tags, values, behaviours) from this entity.
+        /// </summary>
+        public static void Clear(this IEntity entity)
+        {
+            entity.ClearTags();
+            entity.ClearValues();
+            entity.ClearBehaviours();
+        }
+        
+        /// <summary>
         /// Adds multiple tags to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

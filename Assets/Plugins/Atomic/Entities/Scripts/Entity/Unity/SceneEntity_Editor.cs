@@ -108,14 +108,14 @@ namespace Atomic.Entities
         /// </summary>
         private void InitInEditMode()
         {
-            if (_initialized)
+            if (_spawned)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityInit dispose && IsExecuteInEditModeDefined(behaviour))
-                    dispose.Init(this);
+                if (behaviour is IEntitySpawn dispose && IsExecuteInEditModeDefined(behaviour))
+                    dispose.Spawn(this);
             }
         }
 
@@ -156,14 +156,14 @@ namespace Atomic.Entities
         /// </summary>
         private void DisposeInEditMode()
         {
-            if (!_initialized)
+            if (!_spawned)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityDispose dispose && IsExecuteInEditModeDefined(behaviour))
-                    dispose.Dispose(this);
+                if (behaviour is IEntityDespawn dispose && IsExecuteInEditModeDefined(behaviour))
+                    dispose.Despawn(this);
             }
         }
     }

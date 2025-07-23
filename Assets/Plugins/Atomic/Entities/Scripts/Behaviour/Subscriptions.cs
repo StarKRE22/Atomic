@@ -3,30 +3,55 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Subscription for the <see cref="IEntity.OnInitialized"/> event.
+    /// Subscription for the <see cref="IEntity.OnSpawned"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityInitSubscription : IDisposable
+    public readonly struct EntitySpawnSubscription : IDisposable
     {
         private readonly IEntity _entity;
         private readonly Action _callback;
 
         /// <summary>
-        /// Creates a new subscription for the <see cref="IEntity.OnInitialized"/> event.
+        /// Creates a new subscription for the <see cref="IEntity.OnSpawned"/> event.
         /// </summary>
-        internal EntityInitSubscription(IEntity entity, Action callback)
+        internal EntitySpawnSubscription(IEntity entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes from the <see cref="IEntity.OnInitialized"/> event.
+        /// Unsubscribes from the <see cref="IEntity.OnSpawned"/> event.
         /// </summary>
         public void Dispose()
         {
             if (_entity != null && _callback != null)
-                _entity.OnInitialized -= _callback;
+                _entity.OnSpawned -= _callback;
+        }
+    }
+    
+    /// <summary>
+    /// Subscription for the <see cref="IEntity.OnDespawned"/> event.
+    /// Automatically unsubscribes when disposed.
+    /// </summary>
+    public readonly struct EntityDespawnSubscription : IDisposable
+    {
+        private readonly IEntity _entity;
+        private readonly Action _callback;
+
+        internal EntityDespawnSubscription(IEntity entity, Action callback)
+        {
+            _entity = entity;
+            _callback = callback;
+        }
+
+        /// <summary>
+        /// Unsubscribes from the <see cref="IEntity.OnDespawned"/> event.
+        /// </summary>
+        public void Dispose()
+        {
+            if (_entity != null && _callback != null)
+                _entity.OnDespawned -= _callback;
         }
     }
 
@@ -80,30 +105,7 @@ namespace Atomic.Entities
         }
     }
 
-    /// <summary>
-    /// Subscription for the <see cref="IEntity.OnDisposed"/> event.
-    /// Automatically unsubscribes when disposed.
-    /// </summary>
-    public readonly struct EntityDisposeSubscription : IDisposable
-    {
-        private readonly IEntity _entity;
-        private readonly Action _callback;
-
-        internal EntityDisposeSubscription(IEntity entity, Action callback)
-        {
-            _entity = entity;
-            _callback = callback;
-        }
-
-        /// <summary>
-        /// Unsubscribes from the <see cref="IEntity.OnDisposed"/> event.
-        /// </summary>
-        public void Dispose()
-        {
-            if (_entity != null && _callback != null)
-                _entity.OnDisposed -= _callback;
-        }
-    }
+   
 
     /// <summary>
     /// Subscription for the <see cref="IEntity.OnUpdated"/> event.

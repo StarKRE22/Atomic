@@ -2,18 +2,18 @@ using System;
 
 namespace Atomic.Entities
 {
-    ///Represents a lifecycle management (initialization, update, disposal)
+    ///Represents a lifecycle management
     public partial interface IEntity
     {
         /// <summary>
-        /// Invoked when the entity is initialized.
+        /// Invoked when the entity is spawned.
         /// </summary>
-        event Action OnInitialized;
+        event Action OnSpawned;
 
         /// <summary>
-        /// Invoked when the entity is de-initialized.
+        /// Invoked when the entity is despawned
         /// </summary>
-        event Action OnDisposed;
+        event Action OnDespawned;
 
         /// <summary>
         /// Invoked when the entity is enabled.
@@ -24,11 +24,6 @@ namespace Atomic.Entities
         /// Invoked when the entity is disabled.
         /// </summary>
         event Action OnDisabled;
-
-        /// <summary>
-        /// Invoked when the internal state changes.
-        /// </summary>
-        event Action OnStateChanged;
 
         /// <summary>
         /// Invoked on every Update tick.
@@ -46,9 +41,9 @@ namespace Atomic.Entities
         event Action<float> OnLateUpdated;
 
         /// <summary>
-        /// Whether the entity has been initialized.
+        /// Whether the entity has been spawned.
         /// </summary>
-        bool Initialized { get; }
+        bool Spawned { get; }
 
         /// <summary>
         /// Whether the entity is currently enabled.
@@ -56,9 +51,9 @@ namespace Atomic.Entities
         bool Enabled { get; }
 
         /// <summary>
-        /// Initializes the entity.
+        /// Spawns the entity.
         /// </summary>
-        void Init();
+        void Spawn();
 
         /// <summary>
         /// Enables the entity.
@@ -71,9 +66,9 @@ namespace Atomic.Entities
         void Disable();
 
         /// <summary>
-        /// De-initializes the entity.
+        /// Despawns the entity.
         /// </summary>
-        void Denit();
+        void Despawn();
 
         /// <summary>
         /// Called every Update tick.
