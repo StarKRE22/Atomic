@@ -9,11 +9,11 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [DisallowMultipleComponent]
-    public class EntityView : AbstractEntityView<IEntity>
+    public class EntityView : EntityViewAbstract<IEntity>
     {
     }
 
-    public abstract class EntityView<E> : AbstractEntityView<E> where E : IEntity
+    public abstract class EntityView<E> : EntityViewAbstract<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]

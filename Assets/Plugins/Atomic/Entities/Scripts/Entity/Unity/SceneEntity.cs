@@ -16,13 +16,13 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver 
+    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
     {
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
-        
+
         public int SpawnedID => _instanceId;
 
         private int _instanceId;
@@ -58,7 +58,8 @@ namespace Atomic.Entities
             nameof(installInEditMode))
         ]
 #endif
-        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip(
+            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
         [SerializeField]
         private bool installInEditMode;
 
@@ -68,6 +69,9 @@ namespace Atomic.Entities
         [Tooltip("Should dispose values when OnDestroy() called")]
         [SerializeField]
         private bool disposeValues = true;
+
+        [SerializeField]
+        private bool controlLifecycle = true;
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -86,6 +90,8 @@ namespace Atomic.Entities
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
         private List<SceneEntity> children;
+
+        private bool started;
 
         /// <summary>
         /// Installs all configured installers and child entities into this SceneEntity.
@@ -121,14 +127,51 @@ namespace Atomic.Entities
                 }
             }
         }
-        
+
         protected virtual void Awake()
         {
             if (this.installOnAwake) this.Install();
         }
 
+        protected virtual void OnEnable()
+        {
+            if (this.controlLifecycle && this.started)
+            {
+                this.Enable();
+                UpdateManager.Instance.Add(this);
+            }
+        }
+
+        protected virtual void OnDisable()
+        {
+            if (this.controlLifecycle && this.started)
+            {
+                this.Disable();
+                UpdateManager.Instance.Del(this);
+            }
+        }
+
+        protected virtual void Start()
+        {
+            if (this.controlLifecycle)
+            {
+                this.Spawn();
+                this.Enable();
+                UpdateManager.Instance.Add(this);
+
+                this.started = true;
+            }
+        }
+
         protected virtual void OnDestroy()
         {
+            if (this.controlLifecycle && this.started)
+            {
+                this.Despawn();
+                UpdateManager.Instance.Del(this);
+                this.started = false;
+            }
+
             if (this.disposeValues)
                 this.DisposeValues();
 
@@ -145,10 +188,11 @@ namespace Atomic.Entities
         public virtual void OnBeforeSerialize()
         {
         }
-        
+
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 
+        // ReSharper disable once UnusedMember.Global
         public bool Equals(IEntity other) => _instanceId == other.SpawnedID;
 
         /// <inheritdoc/>
@@ -161,18 +205,18 @@ namespace Atomic.Entities
         /// Marks the entity as not installed, allowing reinstallation.
         /// </summary>
         public void MarkAsNotInstalled() => _installed = false;
-        
+
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
         /// </summary>
         public void UnsubscribeAll()
         {
             this.OnStateChanged = null;
-            
+
             this.OnSpawned = null;
             this.OnEnabled = null;
             this.OnDisabled = null;
-            
+
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;

@@ -34,12 +34,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnDespawned"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityDespawnSubscription : IDisposable
+    public readonly struct DespawnSubscription : IDisposable
     {
         private readonly IEntity _entity;
         private readonly Action _callback;
 
-        internal EntityDespawnSubscription(IEntity entity, Action callback)
+        internal DespawnSubscription(IEntity entity, Action callback)
         {
             _entity = entity;
             _callback = callback;
@@ -59,12 +59,12 @@ namespace Atomic.Entities
     /// Subscription for the <see cref="IEntity.OnEnabled"/> event.
     /// Automatically unsubscribes when disposed.
     /// </summary>
-    public readonly struct EntityEnableSubscription : IDisposable
+    public readonly struct EnableSubscription : IDisposable
     {
         private readonly IEntity _entity;
         private readonly Action _callback;
 
-        internal EntityEnableSubscription(IEntity entity, Action callback)
+        internal EnableSubscription(IEntity entity, Action callback)
         {
             _entity = entity;
             _callback = callback;

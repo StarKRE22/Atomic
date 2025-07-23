@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class AbstractEntityView<E> : MonoBehaviour, IEntityView<E> where E : IEntity
+    public abstract class EntityViewAbstract<E> : MonoBehaviour, IEntityView<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [Title("Debug")]

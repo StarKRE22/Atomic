@@ -7,21 +7,21 @@ namespace Atomic.Entities
     public abstract class EntityViewCatalog<E> : ScriptableObject where E : IEntity
     {
         [SerializeField]
-        private List<AbstractEntityView<E>> _prefabs;
+        private List<EntityViewAbstract<E>> _prefabs;
 
         public int Count => _prefabs.Count;
 
-        public KeyValuePair<string, AbstractEntityView<E>> GetPrefab(int index)
+        public KeyValuePair<string, EntityViewAbstract<E>> GetPrefab(int index)
         {
-            AbstractEntityView<E> view = _prefabs[index];
-            return new KeyValuePair<string, AbstractEntityView<E>>(this.GetName(view), view);
+            EntityViewAbstract<E> view = _prefabs[index];
+            return new KeyValuePair<string, EntityViewAbstract<E>>(this.GetName(view), view);
         }
 
-        public AbstractEntityView<E> GetPrefab(string name)
+        public EntityViewAbstract<E> GetPrefab(string name)
         {
             for (int i = 0, count = _prefabs.Count; i < count; i++)
             {
-                AbstractEntityView<E> prefab = _prefabs[i];
+                EntityViewAbstract<E> prefab = _prefabs[i];
                 string prefabName = this.GetName(prefab);
                 if (prefabName == name)
                     return prefab;
@@ -30,7 +30,7 @@ namespace Atomic.Entities
             throw new Exception($"Prefab with name {name} is not found!");
         }
 
-        protected virtual string GetName(AbstractEntityView<E> prefab) => prefab.Name;
+        protected virtual string GetName(EntityViewAbstract<E> prefab) => prefab.Name;
     }
 }
 

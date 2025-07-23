@@ -25,10 +25,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is enabled.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityEnableSubscription WhenEnable(this IEntity entity, Action action)
+        public static EnableSubscription WhenEnable(this IEntity entity, Action action)
         {
             entity.OnEnabled += action;
-            return new EntityEnableSubscription(entity, action);
+            return new EnableSubscription(entity, action);
         }
 
         /// <summary>
@@ -51,10 +51,10 @@ namespace Atomic.Entities
         /// <param name="action">The callback to invoke when the entity is disposed.</param>
         /// <returns>A disposable subscription object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityDespawnSubscription WhenDespawn(this IEntity entity, Action action)
+        public static DespawnSubscription WhenDespawn(this IEntity entity, Action action)
         {
             entity.OnDespawned += action;
-            return new EntityDespawnSubscription(entity, action);
+            return new DespawnSubscription(entity, action);
         }
 
         /// <summary>
