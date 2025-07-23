@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -140,6 +141,8 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public void CopyTo(E[] array, int arrayIndex) => this.entities.CopyTo(array, arrayIndex);
+
+        public E this[int index] => this.entities.ElementAt(index);
 
         /// <inheritdoc/>
         public bool Contains(E entity) => this.entities.Contains(entity);

@@ -90,6 +90,8 @@ namespace Atomic.Entities
             _entities.Values.CopyTo(array, arrayIndex);
         }
 
+        public IEntity this[int index] => _entities.Values.ElementAt(index);
+
         /// <summary>
         /// Attempts to retrieve an entity by its ID.
         /// </summary>

@@ -25,17 +25,15 @@ namespace Atomic.Entities
         public bool IsReadOnly => _world.IsReadOnly;
 
         int IEntityCollection<E>.Count => _world.Count;
-
         int ICollection<E>.Count => _world.Count;
-
         int IReadOnlyCollection<E>.Count => _world.Count;
         
+        public E this[int index] => _world[index];
+
         void ICollection<E>.Add(E item) => _world.Add(item);
 
         void ICollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
-
         void IEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
-
         void IReadOnlyEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
 
         public bool FindWithTag(int tag, out E entity) => _world.FindWithTag(tag, out entity);
@@ -69,6 +67,6 @@ namespace Atomic.Entities
 
         public IEnumerator<E> GetEnumerator() => _world.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable) _world).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => _world.GetEnumerator();
     }
 }

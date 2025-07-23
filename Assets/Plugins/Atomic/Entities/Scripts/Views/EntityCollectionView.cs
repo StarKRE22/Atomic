@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public class EntityWorldView : EntityWorldView<IEntity>
+    public class EntityCollectionView : EntityCollectionView<IEntity>
     {
     }
 
-    public abstract class EntityWorldView<E> : MonoBehaviour where E : IEntity
+    public abstract class EntityCollectionView<E> : MonoBehaviour where E : IEntity
     {
         public event Action<E, EntityViewBase<E>> OnViewAdded;
         public event Action<E, EntityViewBase<E>> OnViewRemoved;
@@ -21,7 +21,7 @@ namespace Atomic.Entities
         [SerializeField]
         private EntityViewPool<E> _viewPool;
 
-        private IEntityWorld<E> _world;
+        private IEntityCollection<E> _collection;
 
         public EntityViewBase<E> GetView(E entity) => _activeViews[entity];
 
@@ -29,27 +29,27 @@ namespace Atomic.Entities
         {
             this.Hide();
 
-            _world = world;
+            _collection = world;
 
-            if (_world == null)
+            if (_collection == null)
                 return;
 
-            _world.OnAdded += this.SpawnView;
-            _world.OnRemoved += this.UnspawnView;
+            _collection.OnAdded += this.SpawnView;
+            _collection.OnRemoved += this.UnspawnView;
 
-            foreach (E entity in _world.GetAll())
+            foreach (E entity in _collection)
                 this.SpawnView(entity);
         }
 
         public void Hide()
         {
-            if (_world == null)
+            if (_collection == null)
                 return;
 
-            _world.OnAdded -= this.SpawnView;
-            _world.OnRemoved -= this.UnspawnView;
+            _collection.OnAdded -= this.SpawnView;
+            _collection.OnRemoved -= this.UnspawnView;
 
-            foreach (E entity in _world.GetAll())
+            foreach (E entity in _collection)
                 this.UnspawnView(entity);
         }
 

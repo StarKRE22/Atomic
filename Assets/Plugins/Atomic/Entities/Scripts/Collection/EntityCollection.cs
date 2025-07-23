@@ -199,6 +199,8 @@ namespace Atomic.Entities
                 array[arrayIndex++] = _items[i];
         }
 
+        public E this[int index] => _items[index];
+
         public void CopyTo(ICollection<E> results)
         {
             if (results == null)
