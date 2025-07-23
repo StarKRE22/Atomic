@@ -13,8 +13,11 @@ namespace Atomic.Entities
     #region Spawn
 
     /// <summary>
-    /// Defines a behavior that executes spawn-time logic when an <see cref="IEntity"/> is spawned into the world or runtime context.
+    /// Defines a behavior that executes custom logic when an <see cref="IEntity"/> is spawned.
     /// </summary>
+    /// <remarks>
+    /// Called automatically by <see cref="IEntity.Spawn"/> when the entity enters the world or runtime context.
+    /// </remarks>
     public interface IEntitySpawn : IEntityBehaviour
     {
         /// <summary>
@@ -25,42 +28,56 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Provides a strongly-typed version of <see cref="IEntitySpawn"/> for handling spawn-time logic on a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntitySpawn"/> for handling spawn-time logic 
+    /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type.</typeparam>
+    /// <typeparam name="T">The specific entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Spawn"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntitySpawn<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
-        /// Called when the typed entity is spawned.
+        /// Called when the entity of type <typeparamref name="T"/> is spawned.
         /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void Init(T entity);
+        /// <param name="entity">The typed entity being spawned.</param>
+        void Spawn(T entity);
 
-        void IEntitySpawn.Spawn(IEntity entity) => this.Init((T)entity);
+        void IEntitySpawn.Spawn(IEntity entity) => this.Spawn((T) entity);
     }
 
     /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntitySpawn"/> by using low-level casting for spawn-time logic.
+    /// Provides an optimized version of <see cref="IEntitySpawn"/> that uses unsafe casting for better performance
+    /// in high-frequency spawn operations.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type.</typeparam>
+    /// <typeparam name="T">The specific entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Spawn"/> 
+    /// using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntitySpawnUnsafe<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
-        /// Called when the typed entity is spawned.
+        /// Called when the entity of type <typeparamref name="T"/> is spawned.
         /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void Init(T entity);
+        /// <param name="entity">The typed entity being spawned.</param>
+        void Spawn(T entity);
 
-        void IEntitySpawn.Spawn(IEntity entity) => this.Init(UnsafeUtility.As<IEntity, T>(ref entity));
+        void IEntitySpawn.Spawn(IEntity entity) => this.Spawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 
     #endregion
-    
+
     #region Despawn
 
     /// <summary>
-    /// Defines a behavior that executes cleanup or deinitialization logic when an <see cref="IEntity"/> is despawned from the world or runtime context.
+    /// Defines a behavior that executes cleanup or deinitialization logic 
+    /// when an <see cref="IEntity"/> is despawned from the world or runtime context.
     /// </summary>
+    /// <remarks>
+    /// Called automatically by <see cref="IEntity.Despawn"/> when the entity is removed or deactivated.
+    /// </remarks>
     public interface IEntityDespawn
     {
         /// <summary>
@@ -71,9 +88,14 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Provides a strongly-typed version of <see cref="IEntityDespawn"/> for handling despawn-time logic on a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityDespawn"/> for handling despawn-time logic 
+    /// specific to a concrete <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type.</typeparam>
+    /// <typeparam name="T">The specific type of entity this behavior targets.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Despawn"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityDespawn<in T> : IEntityDespawn where T : IEntity
     {
         /// <summary>
@@ -82,13 +104,18 @@ namespace Atomic.Entities
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Despawn(T entity);
 
-        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn((T)entity);
+        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn((T) entity);
     }
 
     /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntityDespawn"/> by using low-level casting for despawn-time logic.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityDespawn"/> 
+    /// that uses low-level casting for optimized despawn-time logic.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type.</typeparam>
+    /// <typeparam name="T">The specific type of entity this behavior targets.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Despawn"/> 
+    /// using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityDespawnUnsafe<in T> : IEntityDespawn where T : IEntity
     {
         /// <summary>
@@ -105,9 +132,12 @@ namespace Atomic.Entities
     #region Enable
 
     /// <summary>
-    /// Defines a behavior that supports an enable lifecycle event for an <see cref="IEntity"/>.
-    /// This is typically called when the entity is activated or enters the active state.
+    /// Defines a behavior that executes logic when an <see cref="IEntity"/> is enabled.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.Enable"/> when the entity enters the active state,
+    /// such as after spawning or resuming from a disabled state.
+    /// </remarks>
     public interface IEntityEnable : IEntityBehaviour
     {
         /// <summary>
@@ -118,43 +148,55 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityEnable"/> that provides strongly-typed enable logic for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityEnable"/> for handling enable-time logic
+    /// for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Enable"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityEnable<in T> : IEntityEnable where T : IEntity
     {
-        void IEntityEnable.Enable(IEntity entity) => this.Enable((T) entity);
-
         /// <summary>
-        /// Called when the entity is enabled.
+        /// Called when the typed entity is enabled.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity being enabled.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Enable(T entity);
+
+        void IEntityEnable.Enable(IEntity entity) => this.Enable((T) entity);
     }
 
     /// <summary>
-    /// Unsafe generic version of <see cref="IEntityEnable"/> that provides strongly-typed enable logic
-    /// for a specific <see cref="IEntity"/> type using low-level casting.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityEnable"/> by using low-level casting
+    /// to handle enable-time logic on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Enable"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityEnableUnsafe<in T> : IEntityEnable where T : IEntity
     {
         /// <summary>
-        /// Called when the entity is enabled.
+        /// Called when the typed entity is enabled.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity being enabled.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Enable(T entity);
 
         void IEntityEnable.Enable(IEntity entity) => this.Enable(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 
     #endregion
-    
+
     #region Disable
 
     /// <summary>
     /// Defines a behavior that executes logic when an <see cref="IEntity"/> is disabled.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.Disable"/> when the entity exits the active state,
+    /// such as during pause, unloading, or before being despawned.
+    /// </remarks>
     public interface IEntityDisable : IEntityBehaviour
     {
         /// <summary>
@@ -165,31 +207,39 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityDisable"/> that provides strongly-typed disable logic
-    /// for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityDisable"/> for handling disable-time logic
+    /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Disable"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityDisable<in T> : IEntityDisable where T : IEntity
     {
         /// <summary>
-        /// Called when the entity is disabled.
+        /// Called when the typed entity is disabled.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity being disabled.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Disable(T entity);
 
         void IEntityDisable.Disable(IEntity entity) => this.Disable((T) entity);
     }
 
     /// <summary>
-    /// Unsafe generic version of <see cref="IEntityDisable"/> that uses low-level casting for performance.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityDisable"/> that uses low-level casting
+    /// to handle disable-time logic on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.Disable"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityDisableUnsafe<in T> : IEntityDisable where T : IEntity
     {
         /// <summary>
-        /// Called when the entity is disabled.
+        /// Called when the typed entity is disabled.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity being disabled.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void Disable(T entity);
 
         void IEntityDisable.Disable(IEntity entity) => this.Disable(UnsafeUtility.As<IEntity, T>(ref entity));
@@ -200,13 +250,15 @@ namespace Atomic.Entities
     #region Update
 
     /// <summary>
-    /// Defines a behavior that supports logic during the regular update cycle of an <see cref="IEntity"/>.
-    /// Called once per frame in the main game loop.
+    /// Defines a behavior that executes logic during the regular update cycle of an <see cref="IEntity"/>.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.OnUpdate"/> once per frame during the main game loop.
+    /// </remarks>
     public interface IEntityUpdate : IEntityBehaviour
     {
         /// <summary>
-        /// Called during the main update phase.
+        /// Called during the main update phase of the frame.
         /// </summary>
         /// <param name="entity">The entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
@@ -214,13 +266,18 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityUpdate"/> providing strongly-typed update logic for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityUpdate"/> for handling update logic
+    /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnUpdate"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityUpdate<in T> : IEntityUpdate where T : IEntity
     {
         /// <summary>
-        /// Called during the main update phase.
+        /// Called during the main update phase of the frame.
         /// </summary>
         /// <param name="entity">The strongly-typed entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
@@ -230,21 +287,24 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityUpdateUnsafe{T}"/> providing unsafe, strongly-typed update logic for a specific <see cref="IEntity"/> type.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityUpdate"/> by using low-level casting
+    /// to handle update logic for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityUpdateUnsafe<in T> : IEntityUpdate where T : IEntity
     {
-        /// <inheritdoc/>
-        void IEntityUpdate.OnUpdate(IEntity entity, float deltaTime) =>
-            this.OnUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
-
         /// <summary>
-        /// Called during the main update phase for the strongly-typed entity.
+        /// Called during the main update phase of the frame.
         /// </summary>
         /// <param name="entity">The strongly-typed entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void OnUpdate(T entity, float deltaTime);
+
+        void IEntityUpdate.OnUpdate(IEntity entity, float deltaTime) =>
+            this.OnUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
     }
 
     #endregion
@@ -252,53 +312,63 @@ namespace Atomic.Entities
     #region FixedUpdate
 
     /// <summary>
-    /// Defines a behavior that is updated at a fixed time interval.
+    /// Defines a behavior that executes logic during the fixed update cycle of an <see cref="IEntity"/>.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.OnFixedUpdate"/> at a consistent time interval,
+    /// typically aligned with the physics simulation step.
+    /// </remarks>
     public interface IEntityFixedUpdate : IEntityBehaviour
     {
         /// <summary>
-        /// Called every fixed update tick.
+        /// Called during the fixed update phase.
         /// </summary>
-        /// <param name="entity">The entity this behavior is attached to.</param>
-        /// <param name="deltaTime">The fixed delta time step.</param>
+        /// <param name="entity">The entity being updated.</param>
+        /// <param name="deltaTime">The fixed time step since the last update.</param>
         void OnFixedUpdate(IEntity entity, float deltaTime);
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityFixedUpdate"/> that provides strongly-typed fixed update logic
-    /// for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityFixedUpdate"/> for handling fixed update logic
+    /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnFixedUpdate"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityFixedUpdate<in T> : IEntityFixedUpdate where T : IEntity
     {
-        /// <inheritdoc/>
-        void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) => this.OnFixedUpdate((T) entity, deltaTime);
-
         /// <summary>
-        /// Called every fixed update tick with a strongly-typed entity.
+        /// Called during the fixed update phase for a strongly-typed entity.
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        /// <param name="deltaTime">The fixed delta time step since the last update.</param>
+        /// <param name="deltaTime">The fixed time step since the last update.</param>
         void OnFixedUpdate(T entity, float deltaTime);
+
+        void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) =>
+            this.OnFixedUpdate((T) entity, deltaTime);
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityFixedUpdate"/> that provides strongly-typed fixed update logic
-    /// for a specific <see cref="IEntity"/> type.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityFixedUpdate"/> that uses low-level casting
+    /// to handle fixed update logic for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnFixedUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityFixedUpdateUnsafe<in T> : IEntityFixedUpdate where T : IEntity
     {
-        /// <inheritdoc />
+        /// <summary>
+        /// Called during the fixed update phase for a strongly-typed entity.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="deltaTime">The fixed time step since the last update.</param>
+        void OnFixedUpdate(T entity, float deltaTime);
+
         void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) =>
             this.OnFixedUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
-
-        /// <summary>
-        /// Called every fixed update tick with a strongly-typed entity.
-        /// </summary>
-        /// <param name="entity">The entity instance.</param>
-        /// <param name="deltaTime">The fixed delta time step.</param>
-        void OnFixedUpdate(T entity, float deltaTime);
     }
 
     #endregion
@@ -307,8 +377,11 @@ namespace Atomic.Entities
 
     /// <summary>
     /// Defines a behavior that executes logic during the late update phase of an <see cref="IEntity"/>.
-    /// Called after all standard updates, typically used for post-processing logic or transform synchronization.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.OnLateUpdate"/> after all standard updates,
+    /// and is typically used for post-processing, transform synchronization, or order-sensitive updates.
+    /// </remarks>
     public interface IEntityLateUpdate : IEntityBehaviour
     {
         /// <summary>
@@ -320,72 +393,92 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityLateUpdate"/> providing strongly-typed late update logic for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityLateUpdate"/> for handling late update logic
+    /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
     public interface IEntityLateUpdate<in T> : IEntityLateUpdate where T : IEntity
     {
         /// <summary>
-        /// Called during the late update phase.
+        /// Called during the late update phase for a strongly-typed entity.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity being updated.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void OnLateUpdate(T entity, float deltaTime);
 
-        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) => this.OnLateUpdate((T) entity, deltaTime);
+        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
+            this.OnLateUpdate((T) entity, deltaTime);
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityLateUpdate"/> that uses unsafe casting for fast strongly-typed late updates.
+    /// Provides a high-performance, unsafe version of <see cref="IEntityLateUpdate"/> that uses low-level casting
+    /// to handle late update logic for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of <see cref="IEntity"/> this behavior operates on.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
     public interface IEntityLateUpdateUnsafe<in T> : IEntityLateUpdate where T : IEntity
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Called during the late update phase for a strongly-typed entity.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnLateUpdate(T entity, float deltaTime);
+
         void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
             this.OnLateUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
-
-        /// <summary>
-        /// Called during the LateUpdate phase for the strongly-typed entity.
-        /// </summary>
-        /// <param name="entity">The strongly-typed entity instance.</param>
-        /// <param name="deltaTime">The delta time since the last update.</param>
-        void OnLateUpdate(T entity, float deltaTime);
     }
 
     #endregion
 
     #region Gizmos
 
+#if UNITY_5_3_OR_NEWER
+
     /// <summary>
-    /// Defines a behavior that allows drawing gizmos for an entity during the editor or debug rendering phase.
+    /// Defines a behavior that allows drawing gizmos for an <see cref="IEntity"/> during the editor or debug rendering phase.
     /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// in the Unity Editor, allowing you to visualize entity data in the scene view.
+    /// </remarks>
     public interface IEntityGizmos : IEntityBehaviour
     {
         /// <summary>
         /// Called to draw gizmos for the specified entity.
-        /// This is typically invoked during the Unity editor's OnDrawGizmos phase.
         /// </summary>
         /// <param name="entity">The entity for which gizmos should be drawn.</param>
         void OnGizmosDraw(IEntity entity);
     }
 
     /// <summary>
-    /// Generic version of <see cref="IEntityGizmos"/> that provides strongly-typed gizmo drawing
-    /// for a specific <see cref="IEntity"/> type.
+    /// Provides a strongly-typed version of <see cref="IEntityGizmos"/> for drawing gizmos
+    /// related to a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior applies to.</typeparam>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <c>SceneEntity.OnDrawGizmos()</c> or <c>SceneEntity.OnDrawGizmosSelected()</c>
+    /// if the entity implements this behavior and is currently visible in the editor.
+    /// </remarks>
     public interface IEntityGizmos<in T> : IEntityGizmos where T : IEntity
     {
-        /// <inheritdoc/>
-        void IEntityGizmos.OnGizmosDraw(IEntity entity) => this.OnGizmosDraw((T) entity);
-
         /// <summary>
-        /// Called to draw gizmos for the specified entity.
+        /// Called to draw gizmos for the specified strongly-typed entity.
         /// </summary>
-        /// <param name="entity">The strongly-typed entity instance.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void OnGizmosDraw(T entity);
+
+        void IEntityGizmos.OnGizmosDraw(IEntity entity) => this.OnGizmosDraw((T)entity);
     }
+
+
+#endif
 
     #endregion
 }
