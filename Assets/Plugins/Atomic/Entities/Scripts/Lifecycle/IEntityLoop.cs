@@ -2,6 +2,19 @@ using System;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Represents a lifecycle controller for a collection of <see cref="IEntity"/> instances.
+    /// Provides methods and events to manage initialization, enabling, disabling, updating, and disposal.
+    /// </summary>
+    public interface IEntityLoop : IEntityLoop<IEntity>
+    {
+    }
+
+    /// <summary>
+    /// Represents a lifecycle controller for a generic collection of entities.
+    /// Extends <see cref="IEntityCollection{E}"/> with lifecycle management capabilities such as Init, Enable, Disable, and Update loops.
+    /// </summary>
+    /// <typeparam name="E">The type of entity managed by the loop, which must implement <see cref="IEntity"/>.</typeparam>
     public interface IEntityLoop<E> : IEntityCollection<E> where E : IEntity
     {
         /// <summary>

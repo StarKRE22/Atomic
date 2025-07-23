@@ -19,7 +19,7 @@ namespace Atomic.Entities
             remove => _world.OnStateChanged -= value;
         }
 
-        private readonly World<E> _world = new();
+        private readonly EntityWorld<E> _world = new();
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]

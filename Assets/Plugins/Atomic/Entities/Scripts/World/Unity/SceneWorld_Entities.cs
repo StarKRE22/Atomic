@@ -35,15 +35,15 @@ namespace Atomic.Entities
 #endif
         public IReadOnlyCollection<E> All => _world.All;
 
-        public bool GetWithTag(int tag, out E entity) => _world.GetWithTag(tag, out entity);
-        public int GetAllWithTag(int tag, E[] results) => _world.GetAllWithTag(tag, results);
-        public IReadOnlyList<E> GetAllWithTag(int tag) => _world.GetAllWithTag(tag);
+        public bool FindWithTag(int tag, out E entity) => _world.FindWithTag(tag, out entity);
+        public int CopyWithTag(int tag, E[] results) => _world.CopyWithTag(tag, results);
+        public E[] FindAllWithTag(int tag) => _world.FindAllWithTag(tag);
 
-        public bool GetWithValue(int valueId, out E result) => _world.GetWithValue(valueId, out result);
-        public IReadOnlyList<E> GetAllWithValue(int valueKey) => _world.GetAllWithValue(valueKey);
+        public bool FindWithValue(int valueId, out E result) => _world.FindWithValue(valueId, out result);
+        public E[] FindAllWithValue(int valueKey) => _world.FindAllWithValue(valueKey);
 
-        public int GetAllWithValue(int valueKey, E[] results) =>
-            _world.GetAllWithValue(valueKey, results);
+        public int CopyWithValue(int valueKey, E[] results) =>
+            _world.CopyWithValue(valueKey, results);
 
         public bool Has(E entity) => _world.Has(entity);
 

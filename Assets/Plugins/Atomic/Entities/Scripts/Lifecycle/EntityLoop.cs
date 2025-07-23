@@ -10,6 +10,10 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    public class EntityLoop : EntityLoop<IEntity>, IEntityLoop
+    {
+    }
+
     /// <summary>
     /// Manages and executes lifecycle events for a collection of <see cref="IEntity"/> instances.
     /// This includes initialization, enabling, disabling, disposal, and update loops.
@@ -26,7 +30,7 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public event Action<E> OnDeleted;
-        
+
         /// <summary>
         /// Occurs when all entities have been initialized.
         /// </summary>
@@ -76,7 +80,7 @@ namespace Atomic.Entities
         /// Gets the number of registered entities.
         /// </summary>
         public int Count => _entityCount;
-        
+
         private E[] _entities;
         private int _entityCount;
 
@@ -336,7 +340,7 @@ namespace Atomic.Entities
 
             _entityCount = 0;
         }
-        
+
         /// <summary>
         /// Determines whether the specified entity is currently registered in the loop.
         /// </summary>
@@ -399,7 +403,7 @@ namespace Atomic.Entities
         /// Returns an enumerator that iterates through all registered entities.
         /// </summary>
         IEnumerator<E> IEnumerable<E>.GetEnumerator() => new Enumerator(this);
-        
+
         /// <summary>
         /// Returns an enumerator that iterates through all registered entities (non-generic).
         /// </summary>

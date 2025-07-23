@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public partial class World<E>
+    public partial class EntityWorld<E>
     {
 #if ODIN_INSPECTOR
         [ShowInInspector]

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class World<E> : IEntityWorld<E> where E : IEntity<E>
+    public partial class EntityWorld<E> : EntityLoop<E>, IEntityWorld<E> where E : IEntity
     {
         public event Action OnStateChanged;
 
@@ -25,21 +25,21 @@ namespace Atomic.Entities
 
         private string _name;
 
-        public World() => _name = string.Empty;
+        public EntityWorld() => _name = string.Empty;
 
-        public World(params E[] entities)
+        public EntityWorld(params E[] entities)
         {
             _name = string.Empty;
             this.AddEntities(entities);
         }
 
-        public World(string name = null, params E[] entities)
+        public EntityWorld(string name = null, params E[] entities)
         {
             _name = name;
             this.AddEntities(entities);
         }
 
-        public World(string name, IEnumerable<E> entities)
+        public EntityWorld(string name, IEnumerable<E> entities)
         {
             _name = name;
             this.AddEntities(entities);

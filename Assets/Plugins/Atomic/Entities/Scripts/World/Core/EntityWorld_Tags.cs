@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class World<E>
+    public partial class EntityWorld<E>
     {
         private readonly Dictionary<int, List<E>> _tags = new();
 
-        public bool GetWithTag(int tag, out E result)
+        public bool FindWithTag(int tag, out E result)
         {
             result = default;
             if (!_tags.TryGetValue(tag, out List<E> entities))
@@ -19,17 +19,18 @@ namespace Atomic.Entities
             return true;
         }
 
-        public IReadOnlyList<E> GetAllWithTag(int tag)
+        public E[] FindAllWithTag(int tag)
         {
-            if (_tags.TryGetValue(tag, out List<E> entities)) 
-                return entities;
-            
-            entities = new List<E>();
-            _tags.Add(tag, entities);
-            return entities;
+            if (!_tags.TryGetValue(tag, out List<E> entities))
+            {
+                entities = new List<E>();
+                _tags.Add(tag, entities);
+            }
+
+            return entities.ToArray();
         }
 
-        public int GetAllWithTag(int tag, E[] results)
+        public int CopyWithTag(int tag, E[] results)
         {
             if (!_tags.TryGetValue(tag, out List<E> entities))
                 return 0;

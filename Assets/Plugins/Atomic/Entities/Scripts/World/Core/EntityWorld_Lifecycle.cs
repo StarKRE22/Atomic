@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public partial class World<E>
+    public partial class EntityWorld<E>
     {
         public event Action OnInitialized
         {
