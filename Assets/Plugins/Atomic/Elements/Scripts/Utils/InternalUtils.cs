@@ -14,7 +14,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="number">The starting number to test.</param>
         /// <returns>The next prime number greater than <paramref name="number"/>.</returns>
-        internal static int NextPrime(int number)
+        internal static int GetPrime(int number)
         {
             if (number < 2)
                 return 2;

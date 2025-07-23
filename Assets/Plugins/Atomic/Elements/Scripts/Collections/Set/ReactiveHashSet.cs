@@ -574,7 +574,7 @@ namespace Atomic.Elements
 
         private void IncreaseCapacity()
         {
-            int size = InternalUtils.NextPrime(_slots.Length);
+            int size = InternalUtils.GetPrime(_slots.Length);
             Array.Resize(ref _slots, size);
             Array.Resize(ref _buckets, size);
 
@@ -704,7 +704,7 @@ namespace Atomic.Elements
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = InternalUtils.NextPrime(capacity);
+            int size = InternalUtils.GetPrime(capacity);
 
             _slots = new Slot[size];
             _buckets = new int[size];

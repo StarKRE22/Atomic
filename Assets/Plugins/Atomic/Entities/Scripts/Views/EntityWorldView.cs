@@ -35,7 +35,7 @@ namespace Atomic.Entities
                 return;
 
             _world.OnAdded += this.SpawnView;
-            _world.OnDeleted += this.UnspawnView;
+            _world.OnRemoved += this.UnspawnView;
 
             foreach (E entity in _world.GetAll())
                 this.SpawnView(entity);
@@ -47,7 +47,7 @@ namespace Atomic.Entities
                 return;
 
             _world.OnAdded -= this.SpawnView;
-            _world.OnDeleted -= this.UnspawnView;
+            _world.OnRemoved -= this.UnspawnView;
 
             foreach (E entity in _world.GetAll())
                 this.UnspawnView(entity);

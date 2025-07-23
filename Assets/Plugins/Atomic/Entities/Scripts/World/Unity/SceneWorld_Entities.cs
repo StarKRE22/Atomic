@@ -16,10 +16,10 @@ namespace Atomic.Entities
             remove => _world.OnAdded -= value;
         }
 
-        public event Action<E> OnDeleted
+        public event Action<E> OnRemoved
         {
-            add => _world.OnDeleted += value;
-            remove => _world.OnDeleted -= value;
+            add => _world.OnRemoved += value;
+            remove => _world.OnRemoved -= value;
         }
 
 #if ODIN_INSPECTOR
@@ -45,7 +45,7 @@ namespace Atomic.Entities
         public int CopyWithValue(int valueKey, E[] results) =>
             _world.CopyWithValue(valueKey, results);
 
-        public bool Has(E entity) => _world.Has(entity);
+        public bool Contains(E entity) => _world.Contains(entity);
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]

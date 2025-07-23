@@ -29,7 +29,7 @@ namespace Atomic.Entities
         {
         }
     }
-    
+
     /// <summary>
     /// Represents a dynamic, observable filtered view over an existing <see cref="IReadOnlyEntityCollection{E}"/>.
     /// Entities are included based on a predicate and tracked using optional triggers.
@@ -71,7 +71,7 @@ namespace Atomic.Entities
         public event Action<E> OnAdded;
 
         /// <inheritdoc/>
-        public event Action<E> OnDeleted;
+        public event Action<E> OnRemoved;
 
         /// <inheritdoc/>
         public int Count => entities.Count;
@@ -111,7 +111,7 @@ namespace Atomic.Entities
         private void Initialize()
         {
             this.collection.OnAdded += this.Subscribe;
-            this.collection.OnDeleted += this.Unsubscribe;
+            this.collection.OnRemoved += this.Unsubscribe;
 
             foreach (E entity in this.collection)
                 this.Subscribe(entity);
@@ -126,22 +126,7 @@ namespace Atomic.Entities
                 this.Unsubscribe(entity);
 
             this.collection.OnAdded -= this.Subscribe;
-            this.collection.OnDeleted -= this.Unsubscribe;
-        }
-
-        /// <inheritdoc/>
-        public E[] GetAll()
-        {
-            E[] result = new E[this.entities.Count];
-            this.entities.CopyTo(result);
-            return result;
-        }
-
-        /// <inheritdoc/>
-        public int CopyTo(E[] results)
-        {
-            this.entities.CopyTo(results);
-            return this.entities.Count;
+            this.collection.OnRemoved -= this.Unsubscribe;
         }
 
         /// <inheritdoc/>
@@ -154,7 +139,10 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public bool Has(E entity) => this.entities.Contains(entity);
+        public void CopyTo(E[] array, int arrayIndex) => this.entities.CopyTo(array, arrayIndex);
+
+        /// <inheritdoc/>
+        public bool Contains(E entity) => this.entities.Contains(entity);
 
         /// <inheritdoc/>
         public IEnumerator<E> GetEnumerator() => this.entities.GetEnumerator();
@@ -202,7 +190,7 @@ namespace Atomic.Entities
             if (this.entities.Remove(entity))
             {
                 this.OnStateChanged?.Invoke();
-                this.OnDeleted?.Invoke(entity);
+                this.OnRemoved?.Invoke(entity);
             }
         }
 
@@ -220,7 +208,7 @@ namespace Atomic.Entities
             if (!matches && this.entities.Remove(entity))
             {
                 this.OnStateChanged?.Invoke();
-                this.OnDeleted?.Invoke(entity);
+                this.OnRemoved?.Invoke(entity);
             }
             else if (matches && this.entities.Add(entity))
             {

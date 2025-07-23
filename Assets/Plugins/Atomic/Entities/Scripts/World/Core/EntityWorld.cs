@@ -9,7 +9,7 @@ namespace Atomic.Entities
         public event Action OnStateChanged;
 
         public event Action<E> OnAdded;
-        public event Action<E> OnDeleted;
+        public event Action<E> OnRemoved;
 
         public string Name
         {
@@ -45,7 +45,7 @@ namespace Atomic.Entities
             this.AddEntities(entities);
         }
 
-        public bool Has(E entity) => _entities.ContainsKey(entity.InstanceID);
+        public bool Contains(E entity) => _entities.ContainsKey(entity.InstanceID);
 
         public E[] GetAll()
         {
@@ -95,7 +95,7 @@ namespace Atomic.Entities
             this.RemoveValues(entity);
 
             this.OnStateChanged?.Invoke();
-            this.OnDeleted?.Invoke(entity);
+            this.OnRemoved?.Invoke(entity);
             return true;
         }
 
@@ -116,7 +116,7 @@ namespace Atomic.Entities
             foreach (E entity in _cache)
             {
                 this.Unsubscribe(in entity);
-                this.OnDeleted?.Invoke(entity);
+                this.OnRemoved?.Invoke(entity);
             }
 
             this.OnStateChanged?.Invoke();

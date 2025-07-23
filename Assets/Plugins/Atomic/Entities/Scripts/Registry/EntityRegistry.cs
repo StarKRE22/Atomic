@@ -26,7 +26,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is removed from the registry.
         /// </summary>
-        public event Action<IEntity> OnDeleted;
+        public event Action<IEntity> OnRemoved;
 
         public int Count => _entities.Count;
 
@@ -69,12 +69,12 @@ namespace Atomic.Entities
             if (_entities.Remove(id, out IEntity entity))
             {
                 _recycledIds.Push(id);
-                this.OnDeleted?.Invoke(entity);
+                this.OnRemoved?.Invoke(entity);
             }
         }
 
         /// <inheritdoc />
-        public bool Has(IEntity entity) => _entities.ContainsValue(entity);
+        public bool Contains(IEntity entity) => _entities.ContainsValue(entity);
 
         /// <summary>
         /// Returns all currently registered entities.

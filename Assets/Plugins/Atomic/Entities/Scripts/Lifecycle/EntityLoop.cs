@@ -18,19 +18,8 @@ namespace Atomic.Entities
     /// Manages and executes lifecycle events for a collection of <see cref="IEntity"/> instances.
     /// This includes initialization, enabling, disabling, disposal, and update loops.
     /// </summary>
-    public class EntityLoop<E> : IEntityLoop<E> where E : IEntity
+    public class EntityLoop<E> : EntityCollection<E>, IEntityLoop<E> where E : IEntity
     {
-        private static readonly IEqualityComparer<E> s_entityComparer = EqualityComparer<E>.Default;
-
-        /// <inheritdoc/>
-        public event Action OnStateChanged;
-
-        /// <inheritdoc/>
-        public event Action<E> OnAdded;
-
-        /// <inheritdoc/>
-        public event Action<E> OnDeleted;
-
         /// <summary>
         /// Occurs when all entities have been initialized.
         /// </summary>
@@ -76,45 +65,8 @@ namespace Atomic.Entities
         /// </summary>
         public bool Enabled => _enabled;
 
-        /// <summary>
-        /// Gets the number of registered entities.
-        /// </summary>
-        public int Count => _entityCount;
-
-        private E[] _entities;
-        private int _entityCount;
-
         private bool _initialized;
         private bool _enabled;
-
-        /// <summary>
-        /// Creates an empty <see cref="EntityLoop"/>.
-        /// </summary>
-        public EntityLoop()
-        {
-            _entities = Array.Empty<E>();
-            _entityCount = 0;
-        }
-
-        /// <summary>
-        /// Creates an <see cref="EntityLoop"/> with the specified collection of entities.
-        /// </summary>
-        /// <param name="entities">Initial collection of entities.</param>
-        public EntityLoop(IEnumerable<E> entities)
-        {
-            _entities = entities.ToArray();
-            _entityCount = _entities.Length;
-        }
-
-        /// <summary>
-        /// Creates an <see cref="EntityLoop"/> with the specified entities.
-        /// </summary>
-        /// <param name="entities">Initial entities.</param>
-        public EntityLoop(params E[] entities)
-        {
-            _entities = entities;
-            _entityCount = _entities.Length;
-        }
 
         /// <summary>
         /// Removes all subscribed event listeners.
@@ -138,15 +90,15 @@ namespace Atomic.Entities
             if (_initialized)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Entity Updater is already initialized!");
+                Debug.LogWarning("Entity Loop is already initialized!");
 #endif
                 return;
             }
 
             _initialized = true;
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].Init();
+            for (int i = 0; i < _count; i++)
+                _items[i].Init();
 
             this.OnInitialized?.Invoke();
         }
@@ -154,24 +106,18 @@ namespace Atomic.Entities
         /// <summary>
         /// Disposes all registered entities and raises <see cref="OnDisposed"/>.
         /// </summary>
-        public void Dispose()
+        public override void Dispose()
         {
             if (_enabled)
                 this.Disable();
 
-            if (!_initialized)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Entity Updater is already disposed!");
-#endif
+            if (!_initialized) 
                 return;
-            }
-
+            
             _initialized = false;
-
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].Dispose();
-
+            for (int i = 0; i < _count; i++)
+                _items[i].Dispose();
+                
             this.OnDisposed?.Invoke();
         }
 
@@ -186,15 +132,15 @@ namespace Atomic.Entities
             if (_enabled)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Entity Updater is already enabled!");
+                Debug.LogWarning("Entity Loop is already enabled!");
 #endif
                 return;
             }
 
             _enabled = true;
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].Enable();
+            for (int i = 0; i < _count; i++)
+                _items[i].Enable();
 
             this.OnEnabled?.Invoke();
         }
@@ -207,15 +153,15 @@ namespace Atomic.Entities
             if (!_enabled)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Entity Updater is already disabled!");
+                Debug.LogWarning("Entity Loop is already disabled!");
 #endif
                 return;
             }
 
             _enabled = false;
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].Disable();
+            for (int i = 0; i < _count; i++)
+                _items[i].Disable();
 
             this.OnDisabled?.Invoke();
         }
@@ -229,13 +175,13 @@ namespace Atomic.Entities
             if (!_enabled)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Update failed! Entity Updater is not enabled!");
+                Debug.LogWarning("Update failed! Entity Loop is not enabled!");
 #endif
                 return;
             }
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].OnUpdate(deltaTime);
+            for (int i = 0; i < _count; i++)
+                _items[i].OnUpdate(deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -249,13 +195,13 @@ namespace Atomic.Entities
             if (!_enabled)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Fixed update failed! Entity Updater is not enabled!");
+                Debug.LogWarning("Fixed update failed! Entity Loop is not enabled!");
 #endif
                 return;
             }
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].OnFixedUpdate(deltaTime);
+            for (int i = 0; i < _count; i++)
+                _items[i].OnFixedUpdate(deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -269,63 +215,35 @@ namespace Atomic.Entities
             if (!_enabled)
             {
 #if UNITY_5_3_OR_NEWER
-                Debug.LogWarning("Late update failed! Entity Updater is not enabled!");
+                Debug.LogWarning("Late update failed! Entity Loop is not enabled!");
 #endif
                 return;
             }
 
-            for (int i = 0; i < _entityCount; i++)
-                _entities[i].OnLateUpdate(deltaTime);
+            for (int i = 0; i < _count; i++)
+                _items[i].OnLateUpdate(deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        /// <summary>
-        /// Adds an entity to the loop and optionally initializes/enables it based on current state.
-        /// </summary>
-        /// <param name="entity">The entity to add.</param>
-        /// <returns>True if the entity was added, false if already present or null.</returns>
-        public bool Add(E entity)
+        protected override void OnAdd(E entity)
         {
-            if (entity == null)
-                return false;
-
-            if (!AddIfAbsent(ref _entities, ref _entityCount, entity, s_entityComparer))
-                return false;
-
             if (_initialized) entity.Init();
             if (_enabled) entity.Enable();
-
-            this.OnStateChanged?.Invoke();
-            this.OnAdded?.Invoke(entity);
-            return true;
         }
 
-        /// <summary>
-        /// Removes an entity from the loop and optionally disables/disposes it based on current state.
-        /// </summary>
-        /// <param name="entity">The entity to remove.</param>
-        /// <returns>True if the entity was removed, false if not found or null.</returns>
-        public bool Del(E entity)
+        protected override void OnRemove(E entity)
         {
-            if (entity == null)
-                return false;
-
-            if (!Remove(ref _entities, ref _entityCount, entity, s_entityComparer))
-                return false;
-
             if (_enabled) entity.Disable();
             if (_initialized) entity.Dispose();
-
-            this.OnStateChanged?.Invoke();
-            this.OnDeleted?.Invoke(entity);
-            return true;
         }
+        
+        
 
         /// <summary>
         /// Disables and disposes all entities, and clears the internal collection.
         /// </summary>
-        public void Clear()
+        public override void Clear()
         {
             if (_entityCount == 0)
                 return;
@@ -346,7 +264,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to check.</param>
         /// <returns>True if the entity is present; otherwise, false.</returns>
-        public bool Has(E entity)
+        public bool Contains(E entity)
         {
             for (int i = 0; i < _entityCount; i++)
                 if (s_entityComparer.Equals(_entities[i], entity))

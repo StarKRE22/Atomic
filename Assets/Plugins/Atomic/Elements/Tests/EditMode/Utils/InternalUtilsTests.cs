@@ -40,7 +40,7 @@ namespace Atomic.Elements
         [TestCase(200, 211)]
         public void NextPrime(int input, int expected)
         {
-            Assert.AreEqual(expected, InternalUtils.NextPrime(input), $"Failed for input: {input}");
+            Assert.AreEqual(expected, InternalUtils.GetPrime(input), $"Failed for input: {input}");
         }
     }
 }

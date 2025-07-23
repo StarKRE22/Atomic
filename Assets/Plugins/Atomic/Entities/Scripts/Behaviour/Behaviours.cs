@@ -151,7 +151,7 @@ namespace Atomic.Entities
 
     #endregion
 
-    #region Dispose
+    #region Shutdown
 
     /// <summary>
     /// Defines a behavior that is called when an <see cref="IEntity"/> is disposed.

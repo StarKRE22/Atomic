@@ -30,32 +30,24 @@ namespace Atomic.Entities
         /// <summary>
         /// Occurs when an entity is removed from the collection.
         /// </summary>
-        event Action<E> OnDeleted;
+        event Action<E> OnRemoved;
         
         /// <summary>
         /// Determines whether the specified entity is currently present in the collection.
         /// </summary>
         /// <param name="entity">The entity to check for presence.</param>
         /// <returns><c>true</c> if the entity is in the collection; otherwise, <c>false</c>.</returns>
-        bool Has(E entity);
-
-        /// <summary>
-        /// Returns a new array containing all entities currently in the collection.
-        /// </summary>
-        /// <returns>An array of entities.</returns>
-        E[] GetAll();
-
-        /// <summary>
-        /// Copies all entities into the provided array.
-        /// </summary>
-        /// <param name="results">The array to populate.</param>
-        /// <returns>The number of entities copied.</returns>
-        int CopyTo(E[] results);
+        bool Contains(E entity);
 
         /// <summary>
         /// Copies all entities into the specified collection.
         /// </summary>
         /// <param name="results">The collection to populate with entities.</param>
         void CopyTo(ICollection<E> results);
+        
+        /// <summary>
+        /// Copies all entities into the specified collection.
+        /// </summary>
+        void CopyTo(E[] array, int arrayIndex);
     }
 }
