@@ -59,7 +59,7 @@ namespace Atomic.Entities
         [SerializeField]
         private E _source;
 
-        public int InstanceID => _source.InstanceID;
+        public int SpawnedID => _source.SpawnedID;
 
         public string Name
         {
@@ -69,7 +69,7 @@ namespace Atomic.Entities
 
         public void Clear() => _source.Clear();
 
-        public override bool Equals(object obj) => obj is IEntity entity && _source.InstanceID == entity.InstanceID;
+        public override bool Equals(object obj) => obj is IEntity entity && _source.SpawnedID == entity.SpawnedID;
 
         public override int GetHashCode() => _source.GetHashCode();
 

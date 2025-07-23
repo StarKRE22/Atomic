@@ -38,7 +38,6 @@ namespace Atomic.Entities
         private static EntityRegistry _instance;
 
         private readonly Dictionary<int, IEntity> _entities = new();
-        private readonly Stack<int> _recycledIds = new();
         private int _lastId;
 
         private EntityRegistry()
@@ -52,9 +51,7 @@ namespace Atomic.Entities
         /// <returns>The assigned unique ID.</returns>
         internal void Spawn(IEntity entity, out int id)
         {
-            if (!_recycledIds.TryPop(out id))
-                id = _lastId++;
-
+            id = _lastId++;
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
         }
@@ -65,12 +62,11 @@ namespace Atomic.Entities
         /// <param name="id">The ID of the entity to unregister.</param>
         internal void Despawn(ref int id)
         {
-            if (!_entities.Remove(id, out IEntity entity)) 
-                return;
-            
-            _recycledIds.Push(id);
-            id = -1;
-            this.OnRemoved?.Invoke(entity);
+            if (_entities.Remove(id, out IEntity entity))
+            {
+                id = -1;
+                this.OnRemoved?.Invoke(entity);
+            }
         }
 
         /// <inheritdoc />
@@ -80,7 +76,7 @@ namespace Atomic.Entities
         /// Returns all currently registered entities.
         /// </summary>
         public IEntity[] GetAll() => _entities.Values.ToArray();
-        
+
         /// <inheritdoc />
         public void CopyTo(ICollection<IEntity> results)
         {
@@ -137,8 +133,7 @@ namespace Atomic.Entities
 
             return list;
         }
-        
-        
+
         public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

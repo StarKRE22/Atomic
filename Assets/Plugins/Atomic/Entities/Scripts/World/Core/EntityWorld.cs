@@ -45,7 +45,7 @@ namespace Atomic.Entities
             this.AddEntities(entities);
         }
 
-        public bool Contains(E entity) => _entities.ContainsKey(entity.InstanceID);
+        public bool Contains(E entity) => _entities.ContainsKey(entity.SpawnedID);
 
         public E[] GetAll()
         {
@@ -69,7 +69,7 @@ namespace Atomic.Entities
 
         public bool Add(E entity)
         {
-            if (!_entities.TryAdd(entity.InstanceID, entity))
+            if (!_entities.TryAdd(entity.SpawnedID, entity))
                 return false;
 
             _loop.Add(entity);
@@ -85,7 +85,7 @@ namespace Atomic.Entities
 
         public bool Del(E entity)
         {
-            if (!_entities.Remove(entity.InstanceID))
+            if (!_entities.Remove(entity.SpawnedID))
                 return false;
 
             _loop.Del(entity);

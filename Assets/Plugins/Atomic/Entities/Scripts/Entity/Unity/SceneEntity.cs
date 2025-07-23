@@ -23,7 +23,7 @@ namespace Atomic.Entities
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
         
-        public int InstanceID => _instanceId;
+        public int SpawnedID => _instanceId;
 
         private int _instanceId;
 
@@ -149,10 +149,10 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 
-        public bool Equals(IEntity other) => _instanceId == other.InstanceID;
+        public bool Equals(IEntity other) => _instanceId == other.SpawnedID;
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
+        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == _instanceId;
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;

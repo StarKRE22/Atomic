@@ -51,38 +51,44 @@ namespace Atomic.Entities
         bool Enabled { get; }
 
         /// <summary>
-        /// Spawns the entity.
+        /// Spawns the entity and invokes <see cref="IEntitySpawn.Spawn"/> on all attached behaviors that implement it.
         /// </summary>
         void Spawn();
 
         /// <summary>
-        /// Enables the entity.
+        /// Enables the entity and invokes <see cref="IEntityEnable.Enable"/> on all attached behaviors that implement it.
         /// </summary>
         void Enable();
 
         /// <summary>
-        /// Disables the entity.
+        /// Disables the entity and invokes <see cref="IEntityDisable.Disable"/> on all attached behaviors that implement it.
         /// </summary>
         void Disable();
 
         /// <summary>
-        /// Despawns the entity.
+        /// Despawns the entity and invokes <see cref="IEntityDespawn.Despawn"/> on all attached behaviors that implement it.
         /// </summary>
         void Despawn();
 
         /// <summary>
-        /// Called every Update tick.
+        /// Called once per frame during the main game loop and invokes <see cref="IEntityUpdate.OnUpdate"/>
+        /// on all attached behaviors that implement it.
         /// </summary>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void OnUpdate(float deltaTime);
 
         /// <summary>
-        /// Called every FixedUpdate tick.
+        /// Called at a fixed time interval (e.g., for physics) and invokes <see cref="IEntityFixedUpdate.OnFixedUpdate"/>
+        /// on all attached behaviors that implement it.
         /// </summary>
+        /// <param name="deltaTime">Fixed time step since the last update.</param>
         void OnFixedUpdate(float deltaTime);
 
         /// <summary>
-        /// Called every LateUpdate tick.
+        /// Called after all standard updates during the late update phase,
+        /// and invokes <see cref="IEntityLateUpdate.OnLateUpdate"/> on all attached behaviors that implement it.
         /// </summary>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void OnLateUpdate(float deltaTime);
     }
 }

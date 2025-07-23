@@ -28,7 +28,7 @@ namespace Atomic.Entities
             {
                 var result = new List<string>();
                 foreach (E entity in _entities.Values)
-                    result.Add($"{entity.Name}: {entity.InstanceID}");
+                    result.Add($"{entity.Name}: {entity.SpawnedID}");
 
                 return result;
             }

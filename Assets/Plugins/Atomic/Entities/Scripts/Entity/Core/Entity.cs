@@ -10,15 +10,11 @@ namespace Atomic.Entities
     {
         private const int UNDEFINED_INDEX = -1;
 
-        /// <summary>
-        /// Occurs when the state of the entity changes.
-        /// </summary>
+        /// <inheritdoc/>
         public event Action OnStateChanged;
 
-        /// <summary>
-        /// Gets or sets the unique identifier of the entity.
-        /// </summary>
-        public int InstanceID => this.instanceId;
+        /// <inheritdoc/>
+        public int SpawnedID => this.instanceId;
 
         /// <summary>
         /// Gets or sets the name of the entity.
@@ -91,10 +87,10 @@ namespace Atomic.Entities
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
+        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == this.instanceId;
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
+        public bool Equals(IEntity other) => this.instanceId == other.SpawnedID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;
