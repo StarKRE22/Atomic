@@ -18,7 +18,7 @@ namespace Atomic.Entities
             world.scanOnAwake = scanEntities;
 
             go.SetActive(true);
-            world.AddEntities(entities);
+            world.AddRange(entities);
             return world;
         }
     }

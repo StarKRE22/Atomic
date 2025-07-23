@@ -5,18 +5,7 @@ namespace Atomic.Entities
 {
     public static partial class Extensions
     {
-        public static void AddEntities<E>(this IEntityWorld<E> it, params E[] entities) where E : IEntity<E>
-        {
-            for (int i = 0, count = entities.Length; i < count; i++)
-                it.Add(entities[i]);
-        }
-
-        public static void AddEntities<E>(this IEntityWorld<E> it, IEnumerable<E> entities) where E : IEntity<E>
-        {
-            foreach (E entity in entities)
-                if (entity != null)
-                    it.Add(entity);
-        }
+  
         
         public static E CreateEntity<E>(
             this IEntityWorld<E> world,

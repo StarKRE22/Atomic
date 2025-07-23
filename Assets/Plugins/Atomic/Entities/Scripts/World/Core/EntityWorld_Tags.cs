@@ -42,7 +42,7 @@ namespace Atomic.Entities
             return count;
         }
 
-        private void AddTags(E entity)
+        private void AddTags(IEntity entity)
         {
             using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
@@ -54,22 +54,22 @@ namespace Atomic.Entities
                     _tags.Add(tag, entities);
                 }
 
-                entities.Add(entity);
+                entities.Add((E) entity);
             }
         }
 
-        private void RemoveTags(E entity)
+        private void RemoveTags(IEntity entity)
         {
             using IEnumerator<int> tags = entity.GetTagEnumerator();
             while (tags.MoveNext())
             {
                 int tag = tags.Current;
                 if (_tags.TryGetValue(tag, out List<E> entities))
-                    entities.Remove(entity);
+                    entities.Remove((E) entity);
             }
         }
 
-        private void OnTagAdded(E entity, int tag)
+        private void OnTagAdded(IEntity entity, int tag)
         {
             if (!_tags.TryGetValue(tag, out List<E> entities))
             {
@@ -77,15 +77,15 @@ namespace Atomic.Entities
                 _tags.Add(tag, entities);
             }
 
-            entities.Add(entity);
+            entities.Add((E) entity);
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnTagRemoved(E obj, int tag)
+        private void OnTagRemoved(IEntity entity, int tag)
         {
             if (_tags.TryGetValue(tag, out List<E> entities))
             {
-                entities.Remove(obj);
+                entities.Remove((E) entity);
                 this.OnStateChanged?.Invoke();
             }
         }

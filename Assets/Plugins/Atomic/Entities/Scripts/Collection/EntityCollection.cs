@@ -46,7 +46,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public event Action OnStateChanged;
+        public virtual event Action OnStateChanged;
 
         /// <inheritdoc/>
         public event Action<E> OnAdded;
@@ -73,23 +73,11 @@ namespace Atomic.Entities
 
         public EntityCollection(int capacity) => this.Initialize(capacity);
 
-        public EntityCollection(params E[] entities) : this(entities.Length)
-        {
-            for (int i = 0, count = entities.Length; i < count; i++)
-                this.Add(entities[i]);
-        }
+        public EntityCollection(params E[] entities) : this(entities.Length) => this.AddRange(entities);
 
-        public EntityCollection(IReadOnlyCollection<E> elements) : this(elements.Count)
-        {
-            foreach (E entity in elements)
-                this.Add(entity);
-        }
+        public EntityCollection(IReadOnlyCollection<E> elements) : this(elements.Count) => this.AddRange(elements);
 
-        public EntityCollection(IEnumerable<E> elements) : this(elements.Count())
-        {
-            foreach (E entity in elements)
-                this.Add(entity);
-        }
+        public EntityCollection(IEnumerable<E> elements) : this(elements.Count()) => this.AddRange(elements);
 
         public bool Contains(E item) => item != null && this.FindIndex(item, out _);
 
@@ -185,7 +173,7 @@ namespace Atomic.Entities
             this.UnsubscribeAll();
         }
 
-        private void UnsubscribeAll()
+        public virtual void UnsubscribeAll()
         {
             this.OnAdded = null;
             this.OnRemoved = null;

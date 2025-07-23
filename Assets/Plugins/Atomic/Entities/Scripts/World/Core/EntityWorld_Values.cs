@@ -72,7 +72,7 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnValueAdded(E entity, int valueKey)
+        private void OnValueAdded(IEntity entity, int valueKey)
         {
             if (!_values.TryGetValue(valueKey, out List<E> entities))
             {
@@ -80,15 +80,15 @@ namespace Atomic.Entities
                 _values.Add(valueKey, entities);
             }
 
-            entities.Add(entity);
+            entities.Add((E) entity);
             this.OnStateChanged?.Invoke();
         }
 
-        private void OnValueRemoved(E entity, int valueKey)
+        private void OnValueRemoved(IEntity entity, int valueKey)
         {
             if (_values.TryGetValue(valueKey, out List<E> entities))
             {
-                entities.Remove(entity);
+                entities.Remove((E) entity);
                 this.OnStateChanged?.Invoke();
             }
         }

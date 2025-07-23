@@ -16,6 +16,8 @@ namespace Atomic.Entities
     /// </summary>
     public class EntityRunner<E> : EntityCollection<E>, IEntityRunner<E> where E : IEntity
     {
+        public override event Action OnStateChanged;
+
         /// <inheritdoc/>
         public event Action OnSpawned;
 
@@ -64,6 +66,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _count; i++)
                 _items[i].Spawn();
 
+            this.OnStateChanged?.Invoke();
             this.OnSpawned?.Invoke();
         }
 
@@ -80,6 +83,7 @@ namespace Atomic.Entities
                 _items[i].Despawn();
 
             _spawned = false;
+            this.OnStateChanged?.Invoke();
             this.OnDespawned?.Invoke();
         }
 
@@ -102,6 +106,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _count; i++)
                 _items[i].Enable();
 
+            this.OnStateChanged?.Invoke();
             this.OnEnabled?.Invoke();
         }
 
@@ -121,6 +126,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _count; i++)
                 _items[i].Disable();
 
+            this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
         }
 
@@ -197,8 +203,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes all subscribed event listeners.
         /// </summary>
-        public void UnsubscribeAll()
+        public override void UnsubscribeAll()
         {
+            base.UnsubscribeAll();
+            
             this.OnSpawned = null;
             this.OnEnabled = null;
             this.OnDisabled = null;
