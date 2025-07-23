@@ -97,7 +97,7 @@ namespace Atomic.Entities
         public void ClearTags() => _source.ClearTags();
 
         public int[] GetTags() => _source.GetTags();
-        public int GetTags(int[] results) => _source.GetTags(results);
+        public int CopyTags(int[] results) => _source.CopyTags(results);
         public IEnumerator<int> GetTagEnumerator() => _source.GetTagEnumerator();
 
         #endregion
@@ -143,7 +143,7 @@ namespace Atomic.Entities
         public void ClearValues() => _source.ClearValues();
 
         public KeyValuePair<int, object>[] GetValues() => _source.GetValues();
-        public int GetValues(KeyValuePair<int, object>[] results) => _source.GetValues(results);
+        public int CopyValues(KeyValuePair<int, object>[] results) => _source.CopyValues(results);
         public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator() => _source.GetValueEnumerator();
 
         #endregion
@@ -179,7 +179,7 @@ namespace Atomic.Entities
 
         public void ClearBehaviours() => _source.ClearBehaviours();
 
-        public int GetBehaviours(IEntityBehaviour[] results) => _source.GetBehaviours(results);
+        public int CopyBehaviours(IEntityBehaviour[] results) => _source.CopyBehaviours(results);
         public IEntityBehaviour[] GetBehaviours() => _source.GetBehaviours();
         public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator() => _source.GetBehaviourEnumerator();
 

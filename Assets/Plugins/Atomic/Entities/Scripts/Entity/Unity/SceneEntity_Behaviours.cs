@@ -214,14 +214,14 @@ namespace Atomic.Entities
         public IEntityBehaviour[] GetBehaviours()
         {
             IEntityBehaviour[] result = new IEntityBehaviour[_behaviourCount];
-            this.GetBehaviours(result);
+            this.CopyBehaviours(result);
             return result;
         }
 
         /// <summary>
         /// Copies all behaviours into the provided array.
         /// </summary>
-        public int GetBehaviours(IEntityBehaviour[] results)
+        public int CopyBehaviours(IEntityBehaviour[] results)
         {
             Array.Copy(_behaviours, results, _behaviourCount);
             return _behaviourCount;

@@ -99,7 +99,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies all key-value pairs into the provided array.
         /// </summary>
-        int GetValues(KeyValuePair<int, object>[] results);
+        int CopyValues(KeyValuePair<int, object>[] results);
 
         /// <summary>
         /// Enumerates all key-value pairs.

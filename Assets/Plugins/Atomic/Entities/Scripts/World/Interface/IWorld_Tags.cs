@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial interface IWorld<E>
+    public partial interface IEntityWorld<E>
     {
         bool GetWithTag(int tag, out E result);
         

@@ -64,7 +64,7 @@ namespace Atomic.Entities
 
         public E[] GetAll() => _world.GetAll();
 
-        public int GetAll(E[] results) => _world.GetAll(results);
+        public int CopyTo(E[] results) => _world.CopyTo(results);
 
         public void CopyTo(ICollection<E> results) => _world.CopyTo(results);
 

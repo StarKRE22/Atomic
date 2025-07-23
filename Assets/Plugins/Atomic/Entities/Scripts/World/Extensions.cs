@@ -5,13 +5,13 @@ namespace Atomic.Entities
 {
     public static partial class Extensions
     {
-        public static void AddEntities<E>(this IWorld<E> it, params E[] entities) where E : IEntity<E>
+        public static void AddEntities<E>(this IEntityWorld<E> it, params E[] entities) where E : IEntity<E>
         {
             for (int i = 0, count = entities.Length; i < count; i++)
                 it.Add(entities[i]);
         }
 
-        public static void AddEntities<E>(this IWorld<E> it, IEnumerable<E> entities) where E : IEntity<E>
+        public static void AddEntities<E>(this IEntityWorld<E> it, IEnumerable<E> entities) where E : IEntity<E>
         {
             foreach (E entity in entities)
                 if (entity != null)
@@ -19,7 +19,7 @@ namespace Atomic.Entities
         }
         
         public static E CreateEntity<E>(
-            this IWorld<E> world,
+            this IEntityWorld<E> world,
             E prefab,
             Vector3 position,
             Quaternion rotation,
@@ -32,7 +32,7 @@ namespace Atomic.Entities
         }
 
         public static void DestroyEntity<E>(
-            this IWorld<E> world,
+            this IEntityWorld<E> world,
             E entity,
             float delay = 0
         )  where E : SceneEntity<E>

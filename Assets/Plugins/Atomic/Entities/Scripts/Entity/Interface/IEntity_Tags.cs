@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies tag keys into the provided array.
         /// </summary>
-        int GetTags(int[] results);
+        int CopyTags(int[] results);
 
         /// <summary>
         /// Enumerates all tag keys.

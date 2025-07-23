@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class World<E> : IWorld<E> where E : IEntity<E>
+    public partial class World<E> : IEntityWorld<E> where E : IEntity<E>
     {
         public event Action OnStateChanged;
 
@@ -50,11 +50,11 @@ namespace Atomic.Entities
         public E[] GetAll()
         {
             E[] result = new E[_entities.Count];
-            this.GetAll(result);
+            this.CopyTo(result);
             return result;
         }
 
-        public int GetAll(E[] results)
+        public int CopyTo(E[] results)
         {
             _entities.Values.CopyTo(results, 0);
             return _entities.Count;

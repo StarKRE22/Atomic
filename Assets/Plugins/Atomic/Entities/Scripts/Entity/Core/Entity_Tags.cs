@@ -67,14 +67,14 @@ namespace Atomic.Entities
         public int[] GetTags()
         {
             int[] results = new int[_tagCount];
-            this.GetTags(results);
+            this.CopyTags(results);
             return results;
         }
 
         /// <summary>
         /// Fills the provided array with all tag keys.
         /// </summary>
-        public int GetTags(int[] results)
+        public int CopyTags(int[] results)
         {
             if (results == null)
                 throw new ArgumentNullException(nameof(results));

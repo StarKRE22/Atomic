@@ -69,7 +69,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Copies behaviours into the provided array.
         /// </summary>
-        int GetBehaviours(IEntityBehaviour[] results);
+        int CopyBehaviours(IEntityBehaviour[] results);
 
         /// <summary>
         /// Enumerates all behaviours.

@@ -18,6 +18,11 @@ namespace Atomic.Entities
     public interface IReadOnlyEntityCollection<E> : IReadOnlyCollection<E> where E : IEntity
     {
         /// <summary>
+        /// Occurs when collection state changed.
+        /// </summary>
+        event Action OnStateChanged;
+        
+        /// <summary>
         /// Occurs when an entity is added to the collection.
         /// </summary>
         event Action<E> OnAdded;
@@ -26,7 +31,7 @@ namespace Atomic.Entities
         /// Occurs when an entity is removed from the collection.
         /// </summary>
         event Action<E> OnDeleted;
-
+        
         /// <summary>
         /// Determines whether the specified entity is currently present in the collection.
         /// </summary>
@@ -45,7 +50,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="results">The array to populate.</param>
         /// <returns>The number of entities copied.</returns>
-        int GetAll(E[] results);
+        int CopyTo(E[] results);
 
         /// <summary>
         /// Copies all entities into the specified collection.

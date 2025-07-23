@@ -15,6 +15,9 @@ namespace Atomic.Entities
     /// </summary>
     public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>
     {
+        /// <inheritdoc/>
+        public event Action OnStateChanged;
+
         /// <summary>
         /// Occurs when an <see cref="IEntity"/> is registered in the registry.
         /// </summary>
@@ -79,7 +82,7 @@ namespace Atomic.Entities
         public IEntity[] GetAll() => _entities.Values.ToArray();
 
         /// <inheritdoc />
-        public int GetAll(IEntity[] results)
+        public int CopyTo(IEntity[] results)
         {
             _entities.Values.CopyTo(results, 0);
             return _entities.Count;

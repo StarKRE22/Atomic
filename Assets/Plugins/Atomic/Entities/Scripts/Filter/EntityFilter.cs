@@ -65,6 +65,9 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
+        public event Action OnStateChanged;
+
+        /// <inheritdoc/>
         public event Action<E> OnAdded;
 
         /// <inheritdoc/>
@@ -135,7 +138,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public int GetAll(E[] results)
+        public int CopyTo(E[] results)
         {
             this.entities.CopyTo(results);
             return this.entities.Count;
@@ -175,7 +178,10 @@ namespace Atomic.Entities
             }
 
             if (this.predicate(entity) && this.entities.Add(entity))
+            {
+                this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
+            }
         }
 
         private void Unsubscribe(E entity)
@@ -194,7 +200,10 @@ namespace Atomic.Entities
             }
 
             if (this.entities.Remove(entity))
+            {
+                this.OnStateChanged?.Invoke();
                 this.OnDeleted?.Invoke(entity);
+            }
         }
 
         private void OnTagDeleted(IEntity entity, int tag) => this.Synchronize((E) entity);
@@ -209,9 +218,15 @@ namespace Atomic.Entities
             bool matches = this.predicate(entity);
 
             if (!matches && this.entities.Remove(entity))
+            {
+                this.OnStateChanged?.Invoke();
                 this.OnDeleted?.Invoke(entity);
+            }
             else if (matches && this.entities.Add(entity))
+            {
+                this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
+            }
         }
     }
 }

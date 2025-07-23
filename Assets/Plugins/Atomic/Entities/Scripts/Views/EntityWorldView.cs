@@ -21,11 +21,11 @@ namespace Atomic.Entities
         [SerializeField]
         private EntityViewPool<E> _viewPool;
 
-        private IWorld<E> _world;
+        private IEntityWorld<E> _world;
 
         public EntityViewBase<E> GetView(E entity) => _activeViews[entity];
 
-        public void Show(IWorld<E> world)
+        public void Show(IEntityWorld<E> world)
         {
             this.Hide();
 

@@ -11,7 +11,7 @@ namespace Atomic.Entities
     [AddComponentMenu("Atomic/Entities/Entity World")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1000)]
-    public partial class SceneWorld<E> : MonoBehaviour, IWorld<E> where E : SceneEntity<E>
+    public partial class SceneWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity<E>
     {
         public event Action OnStateChanged
         {

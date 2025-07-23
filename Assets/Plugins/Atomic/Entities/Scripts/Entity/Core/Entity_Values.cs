@@ -385,7 +385,7 @@ namespace Atomic.Entities
         public KeyValuePair<int, object>[] GetValues()
         {
             var results = new KeyValuePair<int, object>[_valueCount];
-            this.GetValues(results);
+            this.CopyValues(results);
             return results;
         }
 
@@ -394,7 +394,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="results">The array to copy values into.</param>
         /// <returns>The number of copied items.</returns>
-        public int GetValues(KeyValuePair<int, object>[] results)
+        public int CopyValues(KeyValuePair<int, object>[] results)
         {
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
