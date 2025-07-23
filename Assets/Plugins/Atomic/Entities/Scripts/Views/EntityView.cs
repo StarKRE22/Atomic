@@ -9,17 +9,17 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [DisallowMultipleComponent]
-    public class EntityView : EntityView<IEntity>
+    public class EntityView : AbstractEntityView<IEntity>
     {
     }
 
-    public abstract class EntityView<E> : EntityViewBase<E> where E : IEntity
+    public abstract class EntityView<E> : AbstractEntityView<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]
 #endif
         [SerializeField]
-        private List<ViewInstaller<E>> _installers;
+        private List<EntityViewInstaller<E>> _installers;
 
         private readonly List<IEntityBehaviour> _behaviours = new();
 
@@ -63,7 +63,7 @@ namespace Atomic.Entities
 
             for (int i = 0, count = _installers.Count; i < count; i++)
             {
-                ViewInstaller<E> installer = _installers[i];
+                EntityViewInstaller<E> installer = _installers[i];
                 if (installer != null)
                     installer.Install(this);
             }

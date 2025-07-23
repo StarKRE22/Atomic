@@ -474,9 +474,8 @@ namespace Atomic.Entities
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         void OnGizmosDraw(T entity);
 
-        void IEntityGizmos.OnGizmosDraw(IEntity entity) => this.OnGizmosDraw((T)entity);
+        void IEntityGizmos.OnGizmosDraw(IEntity entity) => this.OnGizmosDraw((T) entity);
     }
-
 
 #endif
 

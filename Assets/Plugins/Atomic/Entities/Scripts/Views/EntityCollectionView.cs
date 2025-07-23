@@ -10,10 +10,10 @@ namespace Atomic.Entities
 
     public abstract class EntityCollectionView<E> : MonoBehaviour where E : IEntity
     {
-        public event Action<E, EntityViewBase<E>> OnViewAdded;
-        public event Action<E, EntityViewBase<E>> OnViewRemoved;
+        public event Action<E, AbstractEntityView<E>> OnViewAdded;
+        public event Action<E, AbstractEntityView<E>> OnViewRemoved;
 
-        private readonly Dictionary<E, EntityViewBase<E>> _activeViews = new();
+        private readonly Dictionary<E, AbstractEntityView<E>> _activeViews = new();
 
         [SerializeField]
         private Transform _viewport;
@@ -23,7 +23,7 @@ namespace Atomic.Entities
 
         private IEntityCollection<E> _collection;
 
-        public EntityViewBase<E> GetView(E entity) => _activeViews[entity];
+        public IEntityView<E> GetView(E entity) => _activeViews[entity];
 
         public void Show(IEntityWorld<E> world)
         {
@@ -63,7 +63,7 @@ namespace Atomic.Entities
                 return;
 
             string name = this.GetEntityName(entity);
-            EntityViewBase<E> view = _viewPool.Rent(name);
+            AbstractEntityView<E> view = _viewPool.Rent(name);
             view.transform.SetParent(_viewport);
             view.Show(entity);
 
@@ -73,7 +73,7 @@ namespace Atomic.Entities
 
         private void UnspawnView(E entity)
         {
-            if (!_activeViews.Remove(entity, out EntityViewBase<E> view))
+            if (!_activeViews.Remove(entity, out AbstractEntityView<E> view))
                 return;
 
             view.Hide();
