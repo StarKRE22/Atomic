@@ -122,7 +122,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Disposes the entity and all IDispose behaviours.
         /// </summary>
-        public void Dispose()
+        public void Denit()
         {
             if (!_initialized)
                 return;

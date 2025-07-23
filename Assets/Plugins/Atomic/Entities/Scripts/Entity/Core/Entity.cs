@@ -140,7 +140,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Fully destroys the entity by performing the following steps:
         /// <list type="bullet">
-        /// <item><description>Calls <see cref="Dispose"/> to release external resources and invoke disposal callbacks.</description></item>
+        /// <item><description>Calls <see cref="Denit"/> to release external resources and invoke disposal callbacks.</description></item>
         /// <item><description>Clears all internal state (tags, values, and behaviours) via <see cref="Clear"/>.</description></item>
         /// <item><description>Removes all subscriptions to avoid memory leaks via <see cref="UnsubscribeAll"/>.</description></item>
         /// </list>
@@ -151,7 +151,7 @@ namespace Atomic.Entities
         /// </remarks>
         public void Destroy()
         {
-            this.Dispose();
+            this.Denit();
             this.Clear();
             this.UnsubscribeAll();
         }

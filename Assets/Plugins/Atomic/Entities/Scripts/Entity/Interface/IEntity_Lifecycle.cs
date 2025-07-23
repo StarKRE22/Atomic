@@ -11,7 +11,7 @@ namespace Atomic.Entities
         event Action OnInitialized;
 
         /// <summary>
-        /// Invoked when the entity is disposed.
+        /// Invoked when the entity is de-initialized.
         /// </summary>
         event Action OnDisposed;
 
@@ -71,9 +71,9 @@ namespace Atomic.Entities
         void Disable();
 
         /// <summary>
-        /// Disposes the entity.
+        /// De-initializes the entity.
         /// </summary>
-        void Dispose();
+        void Denit();
 
         /// <summary>
         /// Called every Update tick.

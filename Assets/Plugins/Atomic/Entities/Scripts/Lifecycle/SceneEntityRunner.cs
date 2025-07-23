@@ -116,7 +116,7 @@ namespace Atomic.Entities
                 SceneEntity entity = _entities[i];
                 if (entity)
                 {
-                    entity.Dispose();
+                    entity.Denit();
                     SceneEntityUpdater.Instance.Del(entity);
                 }
             }
@@ -170,7 +170,7 @@ namespace Atomic.Entities
             if (this.started)
             {
                 entity.Disable();
-                entity.Dispose();
+                entity.Denit();
                 SceneEntityUpdater.Instance.Del(entity);
             }
 

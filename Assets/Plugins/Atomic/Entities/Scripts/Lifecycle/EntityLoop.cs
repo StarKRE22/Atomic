@@ -116,9 +116,10 @@ namespace Atomic.Entities
             
             _initialized = false;
             for (int i = 0; i < _count; i++)
-                _items[i].Dispose();
+                _items[i].Denit();
                 
             this.OnDisposed?.Invoke();
+            this.Clear();
         }
 
         /// <summary>
@@ -235,7 +236,7 @@ namespace Atomic.Entities
         protected override void OnRemove(E entity)
         {
             if (_enabled) entity.Disable();
-            if (_initialized) entity.Dispose();
+            if (_initialized) entity.Denit();
         }
         
         

@@ -235,7 +235,7 @@ namespace Atomic.Entities
         public void Init() => _source.Init();
         public void Enable() => _source.Enable();
         public void Disable() => _source.Disable();
-        public void Dispose() => _source.Dispose();
+        public void Denit() => _source.Denit();
         public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
         public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
         public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);
