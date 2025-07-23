@@ -4,10 +4,10 @@ namespace Atomic.Entities
 {
     [AddComponentMenu("Atomic/Entities/Entity World Runner")]
     [DisallowMultipleComponent]
-    public class SceneWorldUpdater<E> : MonoBehaviour where E : SceneEntity<E>
+    public class SceneEntityWorldRunner<E> : MonoBehaviour where E : SceneEntity
     {
         [SerializeField]
-        private SceneWorld<E> world;
+        private SceneEntityWorld<E> world;
 
         private bool started;
 

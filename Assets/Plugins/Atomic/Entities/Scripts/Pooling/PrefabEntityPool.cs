@@ -240,8 +240,7 @@ namespace Atomic.Entities
         /// <returns>The newly created entity.</returns>
         private E CreateEntity(E prefab, Transform container)
         {
-            E entity = Instantiate(prefab, container);
-            entity.Install();
+            E entity = SceneEntity.Create(prefab, container);
             this.OnCreate(entity);
             return entity;
         }

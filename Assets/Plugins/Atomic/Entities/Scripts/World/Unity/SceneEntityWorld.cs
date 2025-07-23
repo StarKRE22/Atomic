@@ -11,7 +11,7 @@ namespace Atomic.Entities
     [AddComponentMenu("Atomic/Entities/Entity World")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1000)]
-    public partial class SceneWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity<E>
+    public partial class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity
     {
         public event Action OnStateChanged
         {
@@ -65,5 +65,7 @@ namespace Atomic.Entities
                 this.Add(entity);
             }
         }
+        
+        public void Dispose() => _world?.Dispose();
     }
 }

@@ -177,8 +177,7 @@ namespace Atomic.Entities
         /// <returns>The newly created entity.</returns>
         private E CreateEntity()
         {
-            E entity = Instantiate(_prefab, _container);
-            entity.Install();
+            E entity = SceneEntity.Create(_prefab, _container);
             this.OnCreate(entity);
             return entity;
         }

@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public partial class SceneWorld<E>
+    public partial class SceneEntityWorld<E>
     {
         public event Action OnSpawned
         {

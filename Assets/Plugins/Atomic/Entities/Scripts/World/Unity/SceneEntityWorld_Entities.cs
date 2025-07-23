@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
-    public partial class SceneWorld<E>
+    public partial class SceneEntityWorld<E>
     {
         public event Action<E> OnAdded
         {
@@ -22,18 +22,21 @@ namespace Atomic.Entities
             remove => _world.OnRemoved -= value;
         }
 
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly, HideInEditorMode]
-#endif
-        public int Count => _world.Count;
+        public bool IsReadOnly => _world.IsReadOnly;
 
-#if ODIN_INSPECTOR
-        [Searchable]
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly, HideInEditorMode]
-#endif
-        public IReadOnlyCollection<E> All => _world.All;
+        int IEntityCollection<E>.Count => _world.Count;
+
+        int ICollection<E>.Count => _world.Count;
+
+        int IReadOnlyCollection<E>.Count => _world.Count;
+        
+        void ICollection<E>.Add(E item) => _world.Add(item);
+
+        void ICollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
+
+        void IEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
+
+        void IReadOnlyEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
 
         public bool FindWithTag(int tag, out E entity) => _world.FindWithTag(tag, out entity);
         public int CopyWithTag(int tag, E[] results) => _world.CopyWithTag(tag, results);
@@ -55,16 +58,12 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public bool Del(E entity) => _world.Del(entity);
+        public bool Remove(E entity) => _world.Remove(entity);
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void Clear() => _world.Clear();
-
-        public E[] GetAll() => _world.GetAll();
-
-        public int CopyTo(E[] results) => _world.CopyTo(results);
 
         public void CopyTo(ICollection<E> results) => _world.CopyTo(results);
 
