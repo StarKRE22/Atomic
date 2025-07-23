@@ -4,60 +4,60 @@ namespace Atomic.Entities
 {
     public partial class EntityWorld<E>
     {
-        public event Action OnInitialized
+        public event Action OnSpawned
         {
-            add => _loop.OnInitialized += value;
-            remove => _loop.OnInitialized -= value;
+            add => _runner.OnSpawned += value;
+            remove => _runner.OnSpawned -= value;
         }
 
-        public event Action OnDisposed
+        public event Action OnDespawned
         {
-            add => _loop.OnDisposed += value;
-            remove => _loop.OnDisposed -= value;
+            add => _runner.OnDespawned += value;
+            remove => _runner.OnDespawned -= value;
         }
 
         public event Action OnEnabled
         {
-            add => _loop.OnEnabled += value;
-            remove => _loop.OnEnabled -= value;
+            add => _runner.OnEnabled += value;
+            remove => _runner.OnEnabled -= value;
         }
 
         public event Action OnDisabled
         {
-            add => _loop.OnDisabled += value;
-            remove => _loop.OnDisabled -= value;
+            add => _runner.OnDisabled += value;
+            remove => _runner.OnDisabled -= value;
         }
 
         public event Action<float> OnUpdated
         {
-            add => _loop.OnUpdated += value;
-            remove => _loop.OnUpdated -= value;
+            add => _runner.OnUpdated += value;
+            remove => _runner.OnUpdated -= value;
         }
 
         public event Action<float> OnFixedUpdated
         {
-            add => _loop.OnFixedUpdated += value;
-            remove => _loop.OnFixedUpdated -= value;
+            add => _runner.OnFixedUpdated += value;
+            remove => _runner.OnFixedUpdated -= value;
         }
 
         public event Action<float> OnLateUpdated
         {
-            add => _loop.OnLateUpdated += value;
-            remove => _loop.OnLateUpdated -= value;
+            add => _runner.OnLateUpdated += value;
+            remove => _runner.OnLateUpdated -= value;
         }
 
-        public bool Initialized => _loop.Initialized;
-        public bool Enabled => _loop.Enabled;
+        public bool Spawned => _runner.Spawned;
+        public bool Enabled => _runner.Enabled;
 
-        private readonly EntityLoop<E> _loop = new();
+        private readonly EntityRunner<E> _runner = new();
         
-        public void Init() => _loop.Init();
-        public void Enable() => _loop.Enable();
-        public void Disable() => _loop.Disable();
-        public void Dispose() => _loop.Dispose();
+        public void Spawn() => _runner.Spawn();
+        public void Enable() => _runner.Enable();
+        public void Disable() => _runner.Disable();
+        public void Despawn() => _runner.Despawn();
 
-        public void OnUpdate(float deltaTime) => _loop.OnUpdate(deltaTime);
-        public void OnFixedUpdate(float deltaTime) => _loop.OnFixedUpdate(deltaTime);
-        public void OnLateUpdate(float deltaTime) => _loop.OnLateUpdate(deltaTime);
+        public void OnUpdate(float deltaTime) => _runner.OnUpdate(deltaTime);
+        public void OnFixedUpdate(float deltaTime) => _runner.OnFixedUpdate(deltaTime);
+        public void OnLateUpdate(float deltaTime) => _runner.OnLateUpdate(deltaTime);
     }
 }

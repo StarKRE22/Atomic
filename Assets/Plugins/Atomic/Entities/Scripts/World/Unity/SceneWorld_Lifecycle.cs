@@ -7,16 +7,16 @@ namespace Atomic.Entities
 {
     public partial class SceneWorld<E>
     {
-        public event Action OnInitialized
+        public event Action OnSpawned
         {
-            add => _world.OnInitialized += value;
-            remove => _world.OnInitialized -= value;
+            add => _world.OnSpawned += value;
+            remove => _world.OnSpawned -= value;
         }
 
-        public event Action OnDisposed
+        public event Action OnDespawned
         {
-            add => _world.OnDisposed += value;
-            remove => _world.OnDisposed -= value;
+            add => _world.OnDespawned += value;
+            remove => _world.OnDespawned -= value;
         }
 
         public event Action OnEnabled
@@ -49,7 +49,7 @@ namespace Atomic.Entities
             remove => _world.OnLateUpdated -= value;
         }
 
-        public bool Initialized => _world.Initialized;
+        public bool Spawned => _world.Spawned;
 
         public bool Enabled => _world.Enabled;
 
@@ -57,7 +57,7 @@ namespace Atomic.Entities
         [Title("Lifecycle")]
         [Button, HideInEditorMode]
 #endif
-        public void Init() => _world.Init();
+        public void Spawn() => _world.Spawn();
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
@@ -72,7 +72,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Dispose() => _world.Dispose();
+        public void Despawn() => _world.Despawn();
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]

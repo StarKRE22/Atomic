@@ -1,10 +1,10 @@
 namespace Atomic.Entities
 {
-    public interface IEntityWorld : IEntityWorld<IEntity>, IEntityLoop
+    public interface IEntityWorld : IEntityWorld<IEntity>, IEntityRunner
     {
     }
 
-    public interface IEntityWorld<E> : IEntityLoop<E> where E : IEntity
+    public interface IEntityWorld<E> : IEntityRunner<E> where E : IEntity
     {
         string Name { get; }
 

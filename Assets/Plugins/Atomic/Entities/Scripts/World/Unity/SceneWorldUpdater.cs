@@ -19,7 +19,7 @@ namespace Atomic.Entities
 
         private void Start()
         {
-            this.world.Init();
+            this.world.Spawn();
             this.world.Enable();
             this.started = true;
         }
@@ -48,7 +48,7 @@ namespace Atomic.Entities
         private void OnDestroy()
         {
             if (this.started) 
-                this.world.Dispose();
+                this.world.Despawn();
         }
     }
 }

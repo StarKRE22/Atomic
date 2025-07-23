@@ -1,24 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public partial class EntityWorld<E> : EntityLoop<E>, IEntityWorld<E> where E : IEntity
+    public partial class EntityWorld<E> : EntityRunner<E>, IEntityWorld<E> where E : IEntity
     {
-        public event Action OnStateChanged;
-
-        public event Action<E> OnAdded;
-        public event Action<E> OnRemoved;
-
         public string Name
         {
             get => _name;
             set => _name = value;
         }
-
-        public IReadOnlyCollection<E> All => _entities.Values;
-        public int Count => _entities.Count;
 
         private readonly Dictionary<int, E> _entities = new();
         private readonly List<E> _cache = new();
@@ -72,7 +63,7 @@ namespace Atomic.Entities
             if (!_entities.TryAdd(entity.SpawnedID, entity))
                 return false;
 
-            _loop.Add(entity);
+            _runner.Add(entity);
 
             this.AddTags(entity);
             this.AddValues(entity);
@@ -88,7 +79,7 @@ namespace Atomic.Entities
             if (!_entities.Remove(entity.SpawnedID))
                 return false;
 
-            _loop.Del(entity);
+            _runner.Del(entity);
 
             this.Unsubscribe(in entity);
             this.RemoveTags(entity);
@@ -111,7 +102,7 @@ namespace Atomic.Entities
             _entities.Clear();
             _tags.Clear();
             _values.Clear();
-            _loop.Clear();
+            _runner.Clear();
 
             foreach (E entity in _cache)
             {

@@ -16,9 +16,7 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public int SpawnedID => this.instanceId;
 
-        /// <summary>
-        /// Gets or sets the name of the entity.
-        /// </summary>
+        /// <inheritdoc/>
         public string Name
         {
             get => this.name;
@@ -83,45 +81,6 @@ namespace Atomic.Entities
             this.ConstructBehaviours(behaviourCapacity);
         }
 
-        /// <inheritdoc/>
-        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == this.instanceId;
-
-        // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => this.instanceId == other.SpawnedID;
-
-        /// <inheritdoc/>
-        public override int GetHashCode() => this.instanceId;
-        
-        /// <summary>
-        /// Removes all subscriptions and callbacks associated with this entity.
-        /// </summary>
-        public void UnsubscribeAll()
-        {
-            this.OnStateChanged = null;
-            
-            this.OnSpawned = null;
-            this.OnEnabled = null;
-            this.OnDisabled = null;
-            
-            this.OnUpdated = null;
-            this.OnFixedUpdated = null;
-            this.OnLateUpdated = null;
-            this.OnDespawned = null;
-
-            this.OnBehaviourAdded = null;
-            this.OnBehaviourDeleted = null;
-
-            this.OnValueAdded = null;
-            this.OnValueDeleted = null;
-            this.OnValueChanged = null;
-
-            this.OnTagAdded = null;
-            this.OnTagDeleted = null;
-        }
-
         /// <summary>
         /// Fully disposes the entity by performing the following steps:
         /// <list type="bullet">
@@ -141,6 +100,45 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
             this.UnsubscribeAll();
+        }
+
+        /// <inheritdoc/>
+        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == this.instanceId;
+
+        // ReSharper disable once UnusedMember.Global
+        public bool Equals(IEntity other) => this.instanceId == other.SpawnedID;
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => this.instanceId;
+
+        /// <summary>
+        /// Removes all subscriptions and callbacks associated with this entity.
+        /// </summary>
+        public void UnsubscribeAll()
+        {
+            this.OnStateChanged = null;
+
+            this.OnSpawned = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
+
+            this.OnUpdated = null;
+            this.OnFixedUpdated = null;
+            this.OnLateUpdated = null;
+            this.OnDespawned = null;
+
+            this.OnBehaviourAdded = null;
+            this.OnBehaviourDeleted = null;
+
+            this.OnValueAdded = null;
+            this.OnValueDeleted = null;
+            this.OnValueChanged = null;
+
+            this.OnTagAdded = null;
+            this.OnTagDeleted = null;
         }
     }
 }
