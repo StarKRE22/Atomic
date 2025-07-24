@@ -71,7 +71,7 @@ namespace Atomic.Entities
         private bool disposeValues = true;
 
         [SerializeField]
-        private bool controlLifecycle = true;
+        private bool unityLifecycle = true;
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -135,25 +135,16 @@ namespace Atomic.Entities
 
         protected virtual void OnEnable()
         {
-            if (this.controlLifecycle && this.started)
+            if (this.unityLifecycle && this.started)
             {
                 this.Enable();
                 UpdateManager.Instance.Add(this);
             }
         }
-
-        protected virtual void OnDisable()
-        {
-            if (this.controlLifecycle && this.started)
-            {
-                this.Disable();
-                UpdateManager.Instance.Del(this);
-            }
-        }
-
+        
         protected virtual void Start()
         {
-            if (this.controlLifecycle)
+            if (this.unityLifecycle)
             {
                 this.Spawn();
                 this.Enable();
@@ -162,13 +153,21 @@ namespace Atomic.Entities
                 this.started = true;
             }
         }
+        
+        protected virtual void OnDisable()
+        {
+            if (this.unityLifecycle && this.started)
+            {
+                this.Disable();
+                UpdateManager.Instance.Del(this);
+            }
+        }
 
         protected virtual void OnDestroy()
         {
-            if (this.controlLifecycle && this.started)
+            if (this.unityLifecycle && this.started)
             {
                 this.Despawn();
-                UpdateManager.Instance.Del(this);
                 this.started = false;
             }
 
