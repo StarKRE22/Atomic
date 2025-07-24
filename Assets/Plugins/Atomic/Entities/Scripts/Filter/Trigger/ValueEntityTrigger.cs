@@ -15,32 +15,20 @@ namespace Atomic.Entities
         
         public override void Observe(E entity)
         {
-            if (_added)
-                entity.OnValueAdded += this.OnValueAdded;
-
-            if (_removed)
-                entity.OnValueDeleted += this.OnValueDeleted;
-
-            if (_changed)
-                entity.OnValueChanged += this.OnValueChanged;
+            if (_added) entity.OnValueAdded += this.OnValueAdded;
+            if (_removed) entity.OnValueDeleted += this.OnValueDeleted;
+            if (_changed) entity.OnValueChanged += this.OnValueChanged;
         }
 
         public override void Unobserve(E entity)
         {
-            if (_added)
-                entity.OnValueAdded -= this.OnValueAdded;
-            
-            if (_removed)
-                entity.OnValueDeleted -= this.OnValueDeleted;
-            
-            if (_changed)
-                entity.OnValueChanged -= this.OnValueChanged;
+            if (_added) entity.OnValueAdded -= this.OnValueAdded;
+            if (_removed) entity.OnValueDeleted -= this.OnValueDeleted;
+            if (_changed) entity.OnValueChanged -= this.OnValueChanged;
         }
 
-        private void OnValueDeleted(IEntity entity, int key) => _trigger?.Invoke((E) entity);
-        
-        private void OnValueAdded(IEntity entity, int key) => _trigger?.Invoke((E) entity);
-        
-        private void OnValueChanged(IEntity entity, int key) => _trigger?.Invoke((E) entity);
+        private void OnValueDeleted(IEntity entity, int key) => _callback?.Invoke((E) entity);
+        private void OnValueAdded(IEntity entity, int key) => _callback?.Invoke((E) entity);
+        private void OnValueChanged(IEntity entity, int key) => _callback?.Invoke((E) entity);
     }
 }

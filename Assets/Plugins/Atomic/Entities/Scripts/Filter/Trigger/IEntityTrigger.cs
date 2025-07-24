@@ -13,7 +13,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The entity type being tracked.</typeparam>
     public interface IEntityTrigger<E> where E : IEntity
     {
-        void SetCallback(Action<E> callback);
+        protected internal Action<E> Callback { set; }
 
         /// <summary>
         /// Begins tracking the specified entity and registers a callback for when it should be re-evaluated.

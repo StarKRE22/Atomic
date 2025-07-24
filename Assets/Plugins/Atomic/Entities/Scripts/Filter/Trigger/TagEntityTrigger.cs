@@ -17,24 +17,17 @@ namespace Atomic.Entities
 
         public override void Observe(E entity)
         {
-            if (_added)
-                entity.OnTagAdded += this.OnTagAdded;
-
-            if (_removed)
-                entity.OnTagDeleted += this.OnTagDeleted;
+            if (_added) entity.OnTagAdded += this.OnTagAdded;
+            if (_removed) entity.OnTagDeleted += this.OnTagDeleted;
         }
 
         public override void Unobserve(E entity)
         {
-            if (_added)
-                entity.OnTagAdded -= this.OnTagAdded;
-
-            if (_removed)
-                entity.OnTagDeleted -= this.OnTagDeleted;
+            if (_added) entity.OnTagAdded -= this.OnTagAdded;
+            if (_removed) entity.OnTagDeleted -= this.OnTagDeleted;
         }
 
-        private void OnTagDeleted(IEntity entity, int tag) => _trigger?.Invoke((E) entity);
-        
-        private void OnTagAdded(IEntity entity, int _) => _trigger?.Invoke((E) entity);
+        private void OnTagDeleted(IEntity entity, int tag) => _callback?.Invoke((E) entity);
+        private void OnTagAdded(IEntity entity, int _) => _callback?.Invoke((E) entity);
     }
 }

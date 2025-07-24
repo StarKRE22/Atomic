@@ -1,4 +1,4 @@
-namespace Atomic.Entities.Plugins.Atomic.Entities.Tests.EditMode
+namespace Atomic.Entities
 {
     public sealed class EntityCollectionTests
     {

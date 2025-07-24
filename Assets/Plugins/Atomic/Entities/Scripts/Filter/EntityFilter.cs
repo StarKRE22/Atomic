@@ -71,7 +71,7 @@ namespace Atomic.Entities
             this.triggers = triggers;
             
             for (int i = 0, count = triggers.Length; i < count; i++)
-                triggers[i].SetCallback(this.Synchronize);
+                triggers[i].Callback = this.Synchronize;
             
             this.source.OnAdded += this.Observe;
             this.source.OnRemoved += this.Unobserve;
