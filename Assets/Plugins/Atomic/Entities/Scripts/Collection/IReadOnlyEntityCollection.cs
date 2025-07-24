@@ -49,10 +49,5 @@ namespace Atomic.Entities
         /// Copies all entities into the specified collection.
         /// </summary>
         void CopyTo(E[] array, int arrayIndex);
-        
-        /// <summary>
-        /// Gets entity by index
-        /// </summary>
-        E this[int index] { get; }
     }
 }

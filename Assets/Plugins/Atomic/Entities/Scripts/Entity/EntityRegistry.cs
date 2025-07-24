@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,6 +14,13 @@ namespace Atomic.Entities
     /// </summary>
     public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>
     {
+        /// <summary>
+        /// Gets the singleton instance of the <see cref="EntityRegistry"/>.
+        /// </summary>
+        public static EntityRegistry Instance => _instance ??= new EntityRegistry();
+
+        private static EntityRegistry _instance;
+        
         /// <inheritdoc/>
         public event Action OnStateChanged;
 
@@ -28,14 +34,8 @@ namespace Atomic.Entities
         /// </summary>
         public event Action<IEntity> OnRemoved;
 
+        /// <inheritdoc />
         public int Count => _entities.Count;
-
-        /// <summary>
-        /// Gets the singleton instance of the <see cref="EntityRegistry"/>.
-        /// </summary>
-        public static EntityRegistry Instance => _instance ??= new EntityRegistry();
-
-        private static EntityRegistry _instance;
 
         private readonly Dictionary<int, IEntity> _entities = new();
         private int _lastId;
@@ -43,23 +43,14 @@ namespace Atomic.Entities
         private EntityRegistry()
         {
         }
-
-        /// <summary>
-        /// Registers an entity in the registry and assigns it a unique integer ID.
-        /// </summary>
-        /// <param name="entity">The entity to register.</param>
-        /// <returns>The assigned unique ID.</returns>
+        
         internal void Register(IEntity entity, out int id)
         {
             id = _lastId++;
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
         }
-
-        /// <summary>
-        /// Unregisters an entity from the registry by its ID.
-        /// </summary>
-        /// <param name="id">The ID of the entity to unregister.</param>
+        
         internal void Unregister(ref int id)
         {
             if (_entities.Remove(id, out IEntity entity))
@@ -72,11 +63,6 @@ namespace Atomic.Entities
         /// <inheritdoc />
         public bool Contains(IEntity entity) => _entities.ContainsValue(entity);
 
-        /// <summary>
-        /// Returns all currently registered entities.
-        /// </summary>
-        public IEntity[] GetAll() => _entities.Values.ToArray();
-
         /// <inheritdoc />
         public void CopyTo(ICollection<IEntity> results)
         {
@@ -85,12 +71,8 @@ namespace Atomic.Entities
                 results.Add(entity);
         }
 
-        public void CopyTo(IEntity[] array, int arrayIndex)
-        {
-            _entities.Values.CopyTo(array, arrayIndex);
-        }
-
-        public IEntity this[int index] => _entities.Values.ElementAt(index);
+        /// <inheritdoc />
+        public void CopyTo(IEntity[] array, int arrayIndex) => _entities.Values.CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Attempts to retrieve an entity by its ID.
@@ -98,47 +80,13 @@ namespace Atomic.Entities
         /// <param name="id">The ID of the entity.</param>
         /// <param name="entity">When this method returns, contains the entity if found; otherwise, null.</param>
         /// <returns>True if the entity was found; otherwise, false.</returns>
-        public bool Get(int id, out IEntity entity) => _entities.TryGetValue(id, out entity);
+        public bool TryGet(int id, out IEntity entity) => _entities.TryGetValue(id, out entity);
 
-        /// <summary>
-        /// Tries to get the first registered entity that matches the specified name.
-        /// </summary>
-        /// <param name="name">The name to search for.</param>
-        /// <param name="result">The first matching entity, if any.</param>
-        /// <returns>True if a matching entity was found; otherwise, false.</returns>
-        public bool TryGetByName(string name, out IEntity result)
-        {
-            foreach (IEntity entity in _entities.Values)
-            {
-                if (entity.Name == name)
-                {
-                    result = entity;
-                    return true;
-                }
-            }
-
-            result = default;
-            return false;
-        }
-
-        /// <summary>
-        /// Returns all entities with the specified name.
-        /// </summary>
-        /// <param name="name">The name to match.</param>
-        /// <returns>A list of all entities with the given name.</returns>
-        public List<IEntity> GetAllByName(string name)
-        {
-            List<IEntity> list = new List<IEntity>();
-            foreach (IEntity entity in _entities.Values)
-                if (entity.Name == name)
-                    list.Add(entity);
-
-            return list;
-        }
+        public IEntity Get(int id) => _entities[id];
 
         public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 #if UNITY_EDITOR
         /// <summary>
