@@ -50,9 +50,7 @@ namespace Atomic.Entities
         private bool useUnityLifecycle = true;
 
         private bool isStarted;
-
-     
-
+        
         protected virtual void Awake()
         {
             if (!this.scanOnAwake)
