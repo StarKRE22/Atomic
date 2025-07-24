@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// Represents an expression that computes the product of multiple parameterless float-returning functions.
     /// </summary>
     [Serializable]
-    public class FloatMulExpression : AbstractExpression<float>
+    public class FloatMulExpression : ExpressionAbstract<float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression"/> class.
@@ -50,7 +50,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input parameter type.</typeparam>
     [Serializable]
-    public class FloatMulExpression<T> : AbstractExpression<T, float>
+    public class FloatMulExpression<T> : ExpressionAbstract<T, float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T}"/> class.
@@ -95,7 +95,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The first input parameter type.</typeparam>
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     [Serializable]
-    public class FloatMulExpression<T1, T2> : AbstractExpression<T1, T2, float>
+    public class FloatMulExpression<T1, T2> : ExpressionAbstract<T1, T2, float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T1, T2}"/> class.

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Atomic.Entities
 {
@@ -26,7 +24,14 @@ namespace Atomic.Entities
 
         private string name;
         private int instanceId;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class with optional name, tag, value, and behaviour capacities.
+        /// </summary>
+        /// <param name="name">The name of the entity. Defaults to an empty string if <c>null</c>.</param>
+        /// <param name="tagCapacity">Initial capacity for tags. Improves performance by reducing allocations.</param>
+        /// <param name="valueCapacity">Initial capacity for values. Improves performance by reducing allocations.</param>
+        /// <param name="behaviourCapacity">Initial capacity for behaviours. Improves performance by reducing allocations.</param>
         public Entity(
             string name = null,
             int tagCapacity = 0,
@@ -38,21 +43,21 @@ namespace Atomic.Entities
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
-            
+
             EntityRegistry.Instance.Register(this, out this.instanceId);
         }
 
         /// <summary>
-        /// Fully disposes the entity by performing the following steps:
-        /// <list type="bullet">
-        /// <item><description>Calls <see cref="Despawn"/> to release external resources and invoke disposal callbacks.</description></item>
-        /// <item><description>Clears all internal state (tags, values, and behaviours).</description></item>
-        /// <item><description>Removes all subscriptions to avoid memory leaks via <see cref="UnsubscribeAll"/>.</description></item>
-        /// </list>
+        /// Releases all resources used by the entity.
         /// </summary>
         /// <remarks>
-        /// This method is intended to safely and completely dismantle the entity,
-        /// making it eligible for reuse or garbage collection.
+        /// This method performs cleanup by:
+        /// <list type="bullet">
+        /// <item><description>Calling <see cref="Despawn"/> to deactivate the entity.</description></item>
+        /// <item><description>Clearing all tags, values, and behaviours.</description></item>
+        /// <item><description>Unsubscribing from all events.</description></item>
+        /// <item><description>Unregistering the entity from the <see cref="EntityRegistry"/>.</description></item>
+        /// </list>
         /// </remarks>
         public void Dispose()
         {
@@ -61,7 +66,7 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
             this.UnsubscribeAll();
-            
+
             EntityRegistry.Instance.Unregister(ref this.instanceId);
         }
 

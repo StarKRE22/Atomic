@@ -36,7 +36,7 @@ namespace Atomic.Entities
     /// Entities are included based on a predicate and tracked using optional triggers.
     /// </summary>
     /// <typeparam name="E">The type of entity being filtered. Must implement <see cref="IEntity"/>.</typeparam>
-    public class EntityFilter<E> : IReadOnlyEntityCollection<E>, IDisposable where E : IEntity
+    public class EntityFilter<E> : EntityFilterAbstract<E>, IDisposable where E : IEntity
     {
         /// <summary>
         /// Provides a mechanism for observing entity-level changes that may affect filter membership.
@@ -87,7 +87,6 @@ namespace Atomic.Entities
         private readonly HashSet<E> entities = new();
 
         private readonly IReadOnlyEntityCollection<E> collection;
-        private readonly Predicate<E> predicate;
         private readonly ITrigger[] triggers;
 
         /// <summary>
@@ -104,19 +103,14 @@ namespace Atomic.Entities
         )
         {
             this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
-            this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
             this.triggers = triggers;
-            this.Initialize();
-        }
-
-        private void Initialize()
-        {
             this.collection.OnAdded += this.Subscribe;
             this.collection.OnRemoved += this.Unsubscribe;
 
             foreach (E entity in this.collection)
                 this.Subscribe(entity);
         }
+        
 
         /// <summary>
         /// Releases all subscriptions and clears internal state.
@@ -149,6 +143,11 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public IEnumerator<E> GetEnumerator() => this.entities.GetEnumerator();
+
+        protected override bool IsConditionMet(E entity)
+        {
+            return predicate;
+        }
 
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();

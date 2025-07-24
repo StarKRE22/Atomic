@@ -8,7 +8,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<R> : AbstractExpression<R>
+    public class BaseExpression<R> : ExpressionAbstract<R>
     {
         private readonly Func<IReadOnlyList<Func<R>>, R> function;
 
@@ -51,7 +51,7 @@ namespace Atomic.Elements
     /// <typeparam name="T">The input type passed to each function member.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<T, R> : AbstractExpression<T, R>
+    public class BaseExpression<T, R> : ExpressionAbstract<T, R>
     {
         private readonly Func<IReadOnlyList<Func<T, R>>, T, R> function;
 
@@ -97,7 +97,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<T1, T2, R> : AbstractExpression<T1, T2, R>
+    public class BaseExpression<T1, T2, R> : ExpressionAbstract<T1, T2, R>
     {
         private readonly Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function;
 

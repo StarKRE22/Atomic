@@ -8,7 +8,7 @@ namespace Atomic.Elements
     /// The expression returns <c>true</c> if all functions return <c>true</c>, or if no functions are present.
     /// </summary>
     [Serializable]
-    public class AndExpression : AbstractExpression<bool>, IPredicate
+    public class AndExpression : ExpressionAbstract<bool>, IPredicate
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression"/> class.
@@ -58,7 +58,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input parameter type.</typeparam>
     [Serializable]
-    public class AndExpression<T> : AbstractExpression<T, bool>, IPredicate<T>
+    public class AndExpression<T> : ExpressionAbstract<T, bool>, IPredicate<T>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression{T}"/> class.
@@ -111,7 +111,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The first input parameter type.</typeparam>
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     [Serializable]
-    public class AndExpression<T1, T2> : AbstractExpression<T1, T2, bool>, IPredicate<T1, T2>
+    public class AndExpression<T1, T2> : ExpressionAbstract<T1, T2, bool>, IPredicate<T1, T2>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression{T1, T2}"/> class.

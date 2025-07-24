@@ -15,7 +15,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class AbstractExpression<R> : IExpression<R>
+    public abstract class ExpressionAbstract<R> : IExpression<R>
     {
         private readonly List<Func<R>> members;
 
@@ -30,21 +30,21 @@ namespace Atomic.Elements
         public int Count => this.members.Count;
 
         /// <summary>
-        /// Initializes a new empty instance of the <see cref="AbstractExpression{R}"/> class.
+        /// Initializes a new empty instance of the <see cref="ExpressionAbstract{R}"/> class.
         /// </summary>
-        protected AbstractExpression() => this.members = new List<Func<R>>();
+        protected ExpressionAbstract() => this.members = new List<Func<R>>();
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions to initialize the expression with.</param>
-        protected AbstractExpression(params Func<R>[] members) => this.members = new List<Func<R>>(members);
+        protected ExpressionAbstract(params Func<R>[] members) => this.members = new List<Func<R>>(members);
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of functions to initialize the expression with.</param>
-        protected AbstractExpression(IEnumerable<Func<R>> members) => this.members = new List<Func<R>>(members);
+        protected ExpressionAbstract(IEnumerable<Func<R>> members) => this.members = new List<Func<R>>(members);
 
         /// <inheritdoc/>
         public void Add(Func<R> member)
@@ -90,7 +90,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class AbstractExpression<T, R> : IExpression<T, R>
+    public abstract class ExpressionAbstract<T, R> : IExpression<T, R>
     {
         private readonly List<Func<T, R>> members;
 
@@ -100,21 +100,21 @@ namespace Atomic.Elements
         public int Count => this.members.Count;
 
         /// <summary>
-        /// Initializes a new empty instance of the <see cref="AbstractExpression{T, R}"/> class.
+        /// Initializes a new empty instance of the <see cref="ExpressionAbstract{T,R}"/> class.
         /// </summary>
-        protected AbstractExpression() => this.members = new List<Func<T, R>>();
+        protected ExpressionAbstract() => this.members = new List<Func<T, R>>();
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions to initialize the expression with.</param>
-        protected AbstractExpression(params Func<T, R>[] members) => this.members = new List<Func<T, R>>(members);
+        protected ExpressionAbstract(params Func<T, R>[] members) => this.members = new List<Func<T, R>>(members);
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of functions to initialize the expression with.</param>
-        protected AbstractExpression(IEnumerable<Func<T, R>> members) => this.members = new List<Func<T, R>>(members);
+        protected ExpressionAbstract(IEnumerable<Func<T, R>> members) => this.members = new List<Func<T, R>>(members);
 
         /// <inheritdoc/>
         public void Add(Func<T, R> member)
@@ -163,7 +163,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class AbstractExpression<T1, T2, R> : IExpression<T1, T2, R>
+    public abstract class ExpressionAbstract<T1, T2, R> : IExpression<T1, T2, R>
     {
         private readonly List<Func<T1, T2, R>> members;
 
@@ -173,22 +173,22 @@ namespace Atomic.Elements
         public int Count => this.members.Count;
 
         /// <summary>
-        /// Initializes a new empty instance of the <see cref="AbstractExpression{T1, T2, R}"/> class.
+        /// Initializes a new empty instance of the <see cref="ExpressionAbstract{T1,T2,R}"/> class.
         /// </summary>
-        protected AbstractExpression() => this.members = new List<Func<T1, T2, R>>();
+        protected ExpressionAbstract() => this.members = new List<Func<T1, T2, R>>();
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions to initialize the expression with.</param>
-        protected AbstractExpression(params Func<T1, T2, R>[] members) =>
+        protected ExpressionAbstract(params Func<T1, T2, R>[] members) =>
             this.members = new List<Func<T1, T2, R>>(members);
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">A collection of functions to initialize the expression with.</param>
-        protected AbstractExpression(IEnumerable<Func<T1, T2, R>> members) =>
+        protected ExpressionAbstract(IEnumerable<Func<T1, T2, R>> members) =>
             this.members = new List<Func<T1, T2, R>>(members);
 
         /// <inheritdoc/>

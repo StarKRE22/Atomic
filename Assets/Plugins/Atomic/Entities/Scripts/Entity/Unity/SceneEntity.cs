@@ -22,23 +22,21 @@ namespace Atomic.Entities
 
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
-
+        
+        /// <inheritdoc />
         public int InstanceID => _instanceId;
 
-        private int _instanceId;
-
-        /// <summary>
-        /// Indicates whether this entity has already been installed.
-        /// </summary>
-        public bool Installed => _installed;
-
-        private bool _installed;
-
+        /// <inheritdoc />
         public string Name
         {
             get => this.name;
             set => this.name = value;
         }
+
+        /// <summary>
+        /// Indicates whether this entity has already been installed.
+        /// </summary>
+        public bool Installed => _installed;
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -58,8 +56,7 @@ namespace Atomic.Entities
             nameof(installInEditMode))
         ]
 #endif
-        [Tooltip(
-            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
         [SerializeField]
         private bool installInEditMode;
 
@@ -70,8 +67,8 @@ namespace Atomic.Entities
         [SerializeField]
         private bool disposeValues = true;
 
-        [SerializeField]
-        private bool unityLifecycle = true;
+        [SerializeField, Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+        private bool useUnityLifecycle = true;
 
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
@@ -91,7 +88,9 @@ namespace Atomic.Entities
         [Space, SerializeField]
         private List<SceneEntity> children;
 
-        private bool started;
+        private int _instanceId;
+        private bool _installed;
+        private bool _started;
 
         /// <summary>
         /// Installs all configured installers and child entities into this SceneEntity.
@@ -132,34 +131,34 @@ namespace Atomic.Entities
         {
             if (this.installOnAwake)
                 this.Install();
-            
+
             EntityRegistry.Instance.Register(this, out _instanceId);
         }
 
         protected virtual void OnEnable()
         {
-            if (this.unityLifecycle && this.started)
+            if (this.useUnityLifecycle && _started)
             {
                 this.Enable();
                 UpdateManager.Instance.Add(this);
             }
         }
-        
+
         protected virtual void Start()
         {
-            if (this.unityLifecycle)
+            if (this.useUnityLifecycle)
             {
                 this.Spawn();
                 this.Enable();
                 UpdateManager.Instance.Add(this);
 
-                this.started = true;
+                _started = true;
             }
         }
-        
+
         protected virtual void OnDisable()
         {
-            if (this.unityLifecycle && this.started)
+            if (this.useUnityLifecycle && _started)
             {
                 this.Disable();
                 UpdateManager.Instance.Del(this);
@@ -168,10 +167,10 @@ namespace Atomic.Entities
 
         protected virtual void OnDestroy()
         {
-            if (this.unityLifecycle && this.started)
+            if (this.useUnityLifecycle && _started)
             {
                 this.Despawn();
-                this.started = false;
+                _started = false;
             }
 
             if (this.disposeValues)

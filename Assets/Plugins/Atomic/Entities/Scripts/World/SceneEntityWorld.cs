@@ -15,10 +15,18 @@ namespace Atomic.Entities
     [DefaultExecutionOrder(-1000)]
     public class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity
     {
+        /// <inheritdoc />
         public event Action OnStateChanged
         {
             add => _world.OnStateChanged += value;
             remove => _world.OnStateChanged -= value;
+        }
+        
+        /// <inheritdoc />
+        public string Name
+        {
+            get => this.name;
+            set => this.name = value;
         }
         
         private readonly EntityWorld<E> _world = new();
@@ -38,16 +46,12 @@ namespace Atomic.Entities
         [SerializeField]
         private bool includeInactiveOnScan = true;
         
-        [SerializeField]
-        private bool unityLifecycle = true;
+        [SerializeField, Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+        private bool useUnityLifecycle = true;
 
         private bool isStarted;
 
-        public string Name
-        {
-            get => this.name;
-            set => this.name = value;
-        }
+     
 
         protected virtual void Awake()
         {
@@ -75,7 +79,7 @@ namespace Atomic.Entities
 
         protected virtual void OnEnable()
         {
-            if (this.unityLifecycle && this.isStarted)
+            if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Enable();
                 UpdateManager.Instance.Add(this);
@@ -84,7 +88,7 @@ namespace Atomic.Entities
 
         protected virtual void Start()
         {
-            if (this.unityLifecycle)
+            if (this.useUnityLifecycle)
             {
                 this.Spawn();
                 this.Enable();
@@ -96,7 +100,7 @@ namespace Atomic.Entities
 
         protected virtual void OnDisable()
         {
-            if (this.unityLifecycle && this.isStarted)
+            if (this.useUnityLifecycle && this.isStarted)
             {
                 UpdateManager.Instance.Del(this);
                 this.Disable();
@@ -105,7 +109,7 @@ namespace Atomic.Entities
 
         private void OnDestroy()
         {
-            if (this.unityLifecycle && this.isStarted)
+            if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Despawn();
                 this.isStarted = false;

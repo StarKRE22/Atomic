@@ -20,7 +20,7 @@ namespace Atomic.Entities
         public static EntityRegistry Instance => _instance ??= new EntityRegistry();
 
         private static EntityRegistry _instance;
-        
+
         /// <inheritdoc/>
         public event Action OnStateChanged;
 
@@ -40,17 +40,30 @@ namespace Atomic.Entities
         private readonly Dictionary<int, IEntity> _entities = new();
         private int _lastId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityRegistry"/> class.
+        /// This constructor is private because the registry uses the singleton pattern.
+        /// </summary>
         private EntityRegistry()
         {
         }
-        
+
+        /// <summary>
+        /// Registers a new <see cref="IEntity"/> into the registry and assigns it a unique ID.
+        /// </summary>
+        /// <param name="entity">The entity to register.</param>
+        /// <param name="id">The unique ID assigned to the entity.</param>
         internal void Register(IEntity entity, out int id)
         {
             id = _lastId++;
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
         }
-        
+
+        /// <summary>
+        /// Unregisters an <see cref="IEntity"/> from the registry by its reference ID.
+        /// </summary>
+        /// <param name="id">The ID reference to remove. Will be set to -1 if successfully removed.</param>
         internal void Unregister(ref int id)
         {
             if (_entities.Remove(id, out IEntity entity))
@@ -82,8 +95,18 @@ namespace Atomic.Entities
         /// <returns>True if the entity was found; otherwise, false.</returns>
         public bool TryGet(int id, out IEntity entity) => _entities.TryGetValue(id, out entity);
 
+        /// <summary>
+        /// Retrieves the entity with the specified ID.
+        /// Throws an exception if not found.
+        /// </summary>
+        /// <param name="id">The unique ID of the entity.</param>
+        /// <returns>The entity with the specified ID.</returns>
         public IEntity Get(int id) => _entities[id];
 
+        /// <summary>
+        /// Returns an enumerator that iterates through all registered entities.
+        /// </summary>
+        /// <returns>An enumerator over the registered entities.</returns>
         public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
