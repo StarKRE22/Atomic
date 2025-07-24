@@ -170,14 +170,10 @@ namespace SampleGame
                 TKey key = this.GetKey(factory);
 
                 if (!_map.ContainsKey(key))
-                {
                     _map[key] = factory;
-                }
                 else
-                {
                     Debug.LogWarning($"Duplicate key '{key}' in {nameof(ScriptableEntityFactoryCatalog<TKey, E>)} on " +
                                      $"{this.name}. Skipping duplicate.");
-                }
             }
         }
     }

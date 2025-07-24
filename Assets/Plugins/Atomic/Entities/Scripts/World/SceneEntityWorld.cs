@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -134,8 +135,6 @@ namespace Atomic.Entities
         int IEntityCollection<E>.Count => _world.Count;
         int ICollection<E>.Count => _world.Count;
         int IReadOnlyCollection<E>.Count => _world.Count;
-
-        public E this[int index] => _world[index];
 
         void ICollection<E>.Add(E item) => _world.Add(item);
 
@@ -277,3 +276,4 @@ namespace Atomic.Entities
         #endregion
     }
 }
+#endif

@@ -20,5 +20,4 @@ namespace Atomic.Entities
         /// </summary>
         string Name { get; set; }
     }
-
 }
