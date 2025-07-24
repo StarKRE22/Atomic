@@ -2,32 +2,6 @@ using System;
 
 namespace Atomic.Entities
 {
-    public interface ISpawnable
-    {
-        event Action OnSpawned;
-
-        event Action OnDespawned;
-        
-        bool Spawned { get; }
-        
-        void Spawn();
-        
-        void Despawn();
-    }
-    
-    public interface IActivatable
-    {
-        event Action OnEnabled;
-
-        event Action OnDisabled;
-
-        bool Enabled { get; }
-
-        void Enable();
-
-        void Disable();
-    }
-    
     public interface IUpdatable
     {
         /// <summary>

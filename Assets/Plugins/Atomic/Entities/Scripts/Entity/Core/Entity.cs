@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Atomic.Entities
 {
@@ -14,7 +15,7 @@ namespace Atomic.Entities
         public event Action OnStateChanged;
 
         /// <inheritdoc/>
-        public int SpawnedID => this.instanceId;
+        public int InstanceID => this.instanceId;
 
         /// <inheritdoc/>
         public string Name
@@ -25,49 +26,7 @@ namespace Atomic.Entities
 
         private string name;
         private int instanceId;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class.
-        /// </summary>
-        public Entity()
-        {
-            this.name = string.Empty;
-            this.ConstructTags();
-            this.ConstructValues();
-            this.ConstructBehaviours();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with a specified name.
-        /// </summary>
-        public Entity(string name)
-        {
-            this.name = name;
-            this.ConstructTags();
-            this.ConstructValues();
-            this.ConstructBehaviours();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class
-        /// with optional collections of tags, values, behaviours, and a custom ID.
-        /// </summary>
-        public Entity(
-            string name = null,
-            IEnumerable<int> tags = null,
-            IEnumerable<KeyValuePair<int, object>> values = null,
-            IEnumerable<IEntityBehaviour> behaviours = null
-        )
-        {
-            this.name = name ?? string.Empty;
-            this.ConstructTags(tags);
-            this.ConstructValues(values);
-            this.ConstructBehaviours(behaviours);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with optional capacity settings and custom ID.
-        /// </summary>
+        
         public Entity(
             string name = null,
             int tagCapacity = 0,
@@ -79,6 +38,8 @@ namespace Atomic.Entities
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
+            
+            EntityRegistry.Instance.Register(this, out this.instanceId);
         }
 
         /// <summary>
@@ -100,16 +61,18 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
             this.UnsubscribeAll();
+            
+            EntityRegistry.Instance.Unregister(ref this.instanceId);
         }
 
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == this.instanceId;
+        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => this.instanceId == other.SpawnedID;
+        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;

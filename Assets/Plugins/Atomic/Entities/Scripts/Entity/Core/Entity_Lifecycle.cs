@@ -89,11 +89,10 @@ namespace Atomic.Entities
                 return;
             
             this.spawned = true;
-            EntityRegistry.Instance.Spawn(this, out this.instanceId);
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawn initBehaviour)
-                    initBehaviour.Spawn(this);
+                if (_behaviours[i] is IEntitySpawn spawnBehaviour)
+                    spawnBehaviour.Spawn(this);
 
             this.OnSpawned?.Invoke();
         }
@@ -113,8 +112,6 @@ namespace Atomic.Entities
                 if (_behaviours[i] is IEntityDespawn despawnBehaviour)
                     despawnBehaviour.Despawn(this);
             
-            EntityRegistry.Instance.Despawn(ref this.instanceId);
-
             this.spawned = false;
             this.OnDespawned?.Invoke();
         }

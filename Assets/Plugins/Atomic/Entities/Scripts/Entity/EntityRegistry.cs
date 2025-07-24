@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to register.</param>
         /// <returns>The assigned unique ID.</returns>
-        internal void Spawn(IEntity entity, out int id)
+        internal void Register(IEntity entity, out int id)
         {
             id = _lastId++;
             _entities.Add(id, entity);
@@ -60,7 +60,7 @@ namespace Atomic.Entities
         /// Unregisters an entity from the registry by its ID.
         /// </summary>
         /// <param name="id">The ID of the entity to unregister.</param>
-        internal void Despawn(ref int id)
+        internal void Unregister(ref int id)
         {
             if (_entities.Remove(id, out IEntity entity))
             {

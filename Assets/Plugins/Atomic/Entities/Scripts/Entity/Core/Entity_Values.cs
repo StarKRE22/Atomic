@@ -547,20 +547,6 @@ namespace Atomic.Entities
             return ref _valueBuckets[index];
         }
 
-        private void ConstructValues(in IEnumerable<KeyValuePair<int, object>> values)
-        {
-            if (values == null)
-            {
-                this.ConstructValues();
-                return;
-            }
-
-            this.ConstructValues(values.Count());
-
-            foreach ((int key, object value) in values)
-                this.AddValue(key, value);
-        }
-
         private void ConstructValues(int capacity = 0)
         {
             if (capacity < 0)

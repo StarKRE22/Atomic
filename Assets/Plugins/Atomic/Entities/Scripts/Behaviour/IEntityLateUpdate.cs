@@ -1,0 +1,64 @@
+using Unity.Collections.LowLevel.Unsafe;
+
+namespace Atomic.Entities
+{
+    /// <summary>
+    /// Defines a behavior that executes logic during the late update phase of an <see cref="IEntity"/>.
+    /// </summary>
+    /// <remarks>
+    /// This method is automatically called by <see cref="IEntity.OnLateUpdate"/> after all standard updates,
+    /// and is typically used for post-processing, transform synchronization, or order-sensitive updates.
+    /// </remarks>
+    public interface IEntityLateUpdate : IEntityBehaviour
+    {
+        /// <summary>
+        /// Called during the late update phase.
+        /// </summary>
+        /// <param name="entity">The entity being updated.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnLateUpdate(IEntity entity, float deltaTime);
+    }
+
+    /// <summary>
+    /// Provides a strongly-typed version of <see cref="IEntityLateUpdate"/> for handling late update logic
+    /// on a specific <see cref="IEntity"/> type.
+    /// </summary>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> 
+    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// </remarks>
+    public interface IEntityLateUpdate<in T> : IEntityLateUpdate where T : IEntity
+    {
+        /// <summary>
+        /// Called during the late update phase for a strongly-typed entity.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnLateUpdate(T entity, float deltaTime);
+
+        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
+            this.OnLateUpdate((T) entity, deltaTime);
+    }
+
+    /// <summary>
+    /// Provides a high-performance, unsafe version of <see cref="IEntityLateUpdate"/> that uses low-level casting
+    /// to handle late update logic for a specific <see cref="IEntity"/> type.
+    /// </summary>
+    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <remarks>
+    /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
+    /// </remarks>
+    public interface IEntityLateUpdateUnsafe<in T> : IEntityLateUpdate where T : IEntity
+    {
+        /// <summary>
+        /// Called during the late update phase for a strongly-typed entity.
+        /// </summary>
+        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="deltaTime">Elapsed time since the last frame.</param>
+        void OnLateUpdate(T entity, float deltaTime);
+
+        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
+            this.OnLateUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
+    }
+}

@@ -39,10 +39,15 @@ namespace Atomic.Entities
 
         private protected struct Slot
         {
-            public E value;
-            public int next;
             public bool exists;
-            public int index;
+            public E value;
+            
+            //Hash set
+            public int next;
+            
+            //Linked list
+            public int left;
+            public int right;
         }
 
         /// <inheritdoc/>
@@ -59,13 +64,17 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool IsReadOnly => false;
 
-        private protected Slot[] _slots;
-        private protected E[] _items;
-
         private protected int _count;
+        
+        //Hash set
+        private protected Slot[] _slots;
         private protected int[] _buckets;
         private protected int _freeList;
         private protected int _lastIndex;
+        
+        //Linked list
+        private protected int _head;
+        private protected int _tail;
 
         public EntityCollection() : this(0)
         {

@@ -266,20 +266,6 @@ namespace Atomic.Entities
             return ref _tagBuckets[index];
         }
 
-        private void ConstructTags(in IEnumerable<int> tags)
-        {
-            if (tags == null)
-            {
-                this.ConstructTags();
-                return;
-            }
-
-            this.ConstructTags(tags.Count());
-
-            foreach (int key in tags)
-                this.AddTag(key);
-        }
-
         private void ConstructTags(int capacity = 0)
         {
             if (capacity < 0)

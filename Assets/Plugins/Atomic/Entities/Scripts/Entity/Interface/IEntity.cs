@@ -26,10 +26,10 @@ namespace Atomic.Entities
         event Action OnStateChanged;
 
         /// <summary>
-        /// The runtime-generated unique identifier for this spawned entity instance.
+        /// The runtime-generated unique identifier for this entity instance.
         /// This value is valid only during runtime and should not be used for persistence or serialization.
         /// </summary>
-        int SpawnedID { get; }
+        int InstanceID { get; }
 
         /// <summary>
         /// Optional user-defined name of the entity.

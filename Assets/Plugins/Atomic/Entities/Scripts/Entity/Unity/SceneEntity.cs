@@ -23,7 +23,7 @@ namespace Atomic.Entities
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
 
-        public int SpawnedID => _instanceId;
+        public int InstanceID => _instanceId;
 
         private int _instanceId;
 
@@ -130,7 +130,10 @@ namespace Atomic.Entities
 
         protected virtual void Awake()
         {
-            if (this.installOnAwake) this.Install();
+            if (this.installOnAwake)
+                this.Install();
+            
+            EntityRegistry.Instance.Register(this, out _instanceId);
         }
 
         protected virtual void OnEnable()
@@ -175,6 +178,8 @@ namespace Atomic.Entities
                 this.DisposeValues();
 
             this.UnsubscribeAll();
+
+            EntityRegistry.Instance.Unregister(ref _instanceId);
         }
 
         public virtual void OnAfterDeserialize()
@@ -192,10 +197,10 @@ namespace Atomic.Entities
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => _instanceId == other.SpawnedID;
+        public bool Equals(IEntity other) => _instanceId == other.InstanceID;
 
         /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.SpawnedID == _instanceId;
+        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
