@@ -61,7 +61,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The type of the entity. Must implement <see cref="IEntity"/>.</typeparam>
     public class EntityCollection<E> : IEntityCollection<E> where E : IEntity
     {
-        private const int UNDEFINED_INDEX = -1;
+        private protected const int UNDEFINED_INDEX = -1;
 
         private protected static readonly IEqualityComparer<E> s_comparer = EqualityComparer<E>.Default;
         private protected static readonly ArrayPool<E> s_arrayPool = ArrayPool<E>.Shared;
@@ -130,7 +130,6 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="elements">Enumerable to populate the collection with.</param>
         public EntityCollection(IEnumerable<E> elements) : this(elements.Count()) => this.AddRange(elements);
-        
 
         /// <inheritdoc cref="IEntityCollection{E}.Contains" />
         public bool Contains(E item) => item != null && this.FindIndex(item, out _);

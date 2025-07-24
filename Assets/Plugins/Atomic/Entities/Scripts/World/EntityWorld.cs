@@ -44,7 +44,7 @@ namespace Atomic.Entities
         /// Indicates whether the loop is enabled.
         /// </summary>
         public bool Enabled => _enabled;
-        
+
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
         [ShowInInspector]
@@ -79,8 +79,8 @@ namespace Atomic.Entities
             _name = name;
             this.AddRange(entities);
         }
-        
-          /// <inheritdoc/>
+
+        /// <inheritdoc/>
         public void Spawn()
         {
             if (_spawned)
@@ -93,8 +93,13 @@ namespace Atomic.Entities
 
             _spawned = true;
 
-            for (int i = 0; i < _count; i++)
-                _items[i].Spawn();
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.Spawn();
+                currentIndex = slot.right;
+            }
 
             this.OnStateChanged?.Invoke();
             this.OnSpawned?.Invoke();
@@ -109,8 +114,13 @@ namespace Atomic.Entities
             if (!_spawned)
                 return;
 
-            for (int i = 0; i < _count; i++)
-                _items[i].Despawn();
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.Despawn();
+                currentIndex = slot.right;
+            }
 
             _spawned = false;
             this.OnStateChanged?.Invoke();
@@ -133,8 +143,13 @@ namespace Atomic.Entities
 
             _enabled = true;
 
-            for (int i = 0; i < _count; i++)
-                _items[i].Enable();
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.Enable();
+                currentIndex = slot.right;
+            }
 
             this.OnStateChanged?.Invoke();
             this.OnEnabled?.Invoke();
@@ -153,8 +168,13 @@ namespace Atomic.Entities
 
             _enabled = false;
 
-            for (int i = 0; i < _count; i++)
-                _items[i].Disable();
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.Disable();
+                currentIndex = slot.right;
+            }
 
             this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
@@ -171,8 +191,13 @@ namespace Atomic.Entities
                 return;
             }
 
-            for (int i = 0; i < _count; i++)
-                _items[i].OnUpdate(deltaTime);
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.OnUpdate(deltaTime);
+                currentIndex = slot.right;
+            }
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -188,8 +213,13 @@ namespace Atomic.Entities
                 return;
             }
 
-            for (int i = 0; i < _count; i++)
-                _items[i].OnFixedUpdate(deltaTime);
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.OnFixedUpdate(deltaTime);
+                currentIndex = slot.right;
+            }
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -205,8 +235,13 @@ namespace Atomic.Entities
                 return;
             }
 
-            for (int i = 0; i < _count; i++)
-                _items[i].OnLateUpdate(deltaTime);
+            int currentIndex = _head;
+            while (currentIndex != UNDEFINED_INDEX)
+            {
+                ref Slot slot = ref _slots[currentIndex];
+                slot.value.OnLateUpdate(deltaTime);
+                currentIndex = slot.right;
+            }
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }
