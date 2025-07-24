@@ -2,7 +2,7 @@ using Unity.Collections.LowLevel.Unsafe;
 
 namespace Atomic.Entities
 {
- /// <summary>
+    /// <summary>
     /// Defines a behavior that executes logic during the regular update cycle of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
