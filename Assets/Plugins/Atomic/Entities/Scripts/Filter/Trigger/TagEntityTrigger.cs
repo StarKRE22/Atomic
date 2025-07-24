@@ -33,7 +33,8 @@ namespace Atomic.Entities
                 entity.OnTagDeleted -= this.OnTagDeleted;
         }
 
-        private void OnTagDeleted(IEntity entity, int tag) => this.Invoke((E) entity);
-        private void OnTagAdded(IEntity entity, int _) => this.Invoke((E) entity);
+        private void OnTagDeleted(IEntity entity, int tag) => _trigger?.Invoke((E) entity);
+        
+        private void OnTagAdded(IEntity entity, int _) => _trigger?.Invoke((E) entity);
     }
 }

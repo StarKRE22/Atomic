@@ -37,8 +37,10 @@ namespace Atomic.Entities
                 entity.OnValueChanged -= this.OnValueChanged;
         }
 
-        private void OnValueDeleted(IEntity entity, int key) => this.Invoke((E) entity);
-        private void OnValueAdded(IEntity entity, int key) => this.Invoke((E) entity);
-        private void OnValueChanged(IEntity entity, int key) => this.Invoke((E) entity);
+        private void OnValueDeleted(IEntity entity, int key) => _trigger?.Invoke((E) entity);
+        
+        private void OnValueAdded(IEntity entity, int key) => _trigger?.Invoke((E) entity);
+        
+        private void OnValueChanged(IEntity entity, int key) => _trigger?.Invoke((E) entity);
     }
 }

@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
 
 namespace Atomic.Entities
 {
@@ -19,14 +15,14 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityFilter"/> class.
         /// </summary>
-        /// <param name="collection">The source collection of entities to observe.</param>
+        /// <param name="source">The source collection of entities to observe.</param>
         /// <param name="predicate">The predicate that determines inclusion in the filter.</param>
         /// <param name="triggers">Optional triggers for dynamic change tracking.</param>
         public EntityFilter(
-            IReadOnlyEntityCollection<IEntity> collection,
+            IReadOnlyEntityCollection<IEntity> source,
             Predicate<IEntity> predicate,
             params IEntityTrigger<IEntity>[] triggers)
-            : base(collection, predicate, triggers)
+            : base(source, predicate, triggers)
         {
         }
     }
@@ -50,42 +46,37 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public int Count => entities.Count;
 
-        /// <summary>
-        /// The internal set of currently matching entities.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        private readonly HashSet<E> entities = new();
+        private readonly EntityCollection<E> entities;
 
-        private readonly IReadOnlyEntityCollection<E> collection;
+        private readonly IReadOnlyEntityCollection<E> source;
         private readonly Predicate<E> predicate;
         private readonly IEntityTrigger<E>[] triggers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityFilter{E}"/> class.
         /// </summary>
-        /// <param name="collection">The source entity collection to observe.</param>
+        /// <param name="source">The source entity collection to observe.</param>
         /// <param name="predicate">The predicate used to determine filter inclusion.</param>
         /// <param name="triggers">Optional triggers used to re-evaluate entities when their state changes.</param>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="collection"/> or <paramref name="predicate"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="source"/> or <paramref name="predicate"/> is null.</exception>
         public EntityFilter(
-            IReadOnlyEntityCollection<E> collection,
+            IReadOnlyEntityCollection<E> source,
             Predicate<E> predicate,
             params IEntityTrigger<E>[] triggers
         )
         {
+            this.source = source ?? throw new ArgumentNullException(nameof(source));
+            this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
+            this.entities = new EntityCollection<E>(source);
             this.triggers = triggers;
-            for (int i = 0, count = triggers.Length; i < count; i++) 
+            
+            for (int i = 0, count = triggers.Length; i < count; i++)
                 triggers[i].SetCallback(this.Synchronize);
             
-            this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
+            this.source.OnAdded += this.Observe;
+            this.source.OnRemoved += this.Unobserve;
 
-            this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
-            this.collection.OnAdded += this.Observe;
-            this.collection.OnRemoved += this.Unobserve;
-
-            foreach (E entity in this.collection)
+            foreach (E entity in this.source)
                 this.Observe(entity);
         }
 
@@ -94,11 +85,11 @@ namespace Atomic.Entities
         /// </summary>
         public void Dispose()
         {
-            foreach (E entity in this.collection)
+            foreach (E entity in this.source)
                 this.Unobserve(entity);
 
-            this.collection.OnAdded -= this.Observe;
-            this.collection.OnRemoved -= this.Unobserve;
+            this.source.OnAdded -= this.Observe;
+            this.source.OnRemoved -= this.Unobserve;
         }
 
         /// <inheritdoc/>
@@ -116,15 +107,17 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool Contains(E entity) => this.entities.Contains(entity);
 
+        public EntityCollection<E>.Enumerator GetEnumerator() => this.entities.GetEnumerator();
+
         /// <inheritdoc/>
-        public IEnumerator<E> GetEnumerator() => this.entities.GetEnumerator();
+        IEnumerator<E> IEnumerable<E>.GetEnumerator() => this.entities.GetEnumerator();
 
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         private void Observe(E entity)
         {
-            for (int i = 0, count = this.triggers.Length; i < count; i++) 
+            for (int i = 0, count = this.triggers.Length; i < count; i++)
                 this.triggers[i].Observe(entity);
 
             if (this.predicate(entity) && this.entities.Add(entity))
@@ -136,7 +129,7 @@ namespace Atomic.Entities
 
         private void Unobserve(E entity)
         {
-            for (int i = 0, count = this.triggers.Length; i < count; i++) 
+            for (int i = 0, count = this.triggers.Length; i < count; i++)
                 this.triggers[i].Unobserve(entity);
 
             if (this.entities.Remove(entity))
