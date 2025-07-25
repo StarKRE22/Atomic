@@ -11,7 +11,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of value to be set.</typeparam>
     [Serializable]
-    public class BasicSetter<T> : ISetter<T>
+    public class InlineSetter<T> : ISetter<T>
     {
         /// <summary>
         /// Sets the value by invoking the composed action.
@@ -24,17 +24,17 @@ namespace Atomic.Elements
         private Action<T> action;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicSetter{T}"/> class with no initial action.
+        /// Initializes a new instance of the <see cref="InlineSetter{T}"/> class with no initial action.
         /// </summary>
-        public BasicSetter()
+        public InlineSetter()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicSetter{T}"/> class with a specified action.
+        /// Initializes a new instance of the <see cref="InlineSetter{T}"/> class with a specified action.
         /// </summary>
         /// <param name="action">The action to invoke when the value is set.</param>
-        public BasicSetter(Action<T> action) => this.action = action;
+        public InlineSetter(Action<T> action) => this.action = action;
 
         /// <summary>
         /// Assigns or replaces the internal action used to handle value setting.

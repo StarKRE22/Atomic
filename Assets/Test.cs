@@ -10,8 +10,10 @@ namespace DefaultNamespace
         {
             // SimpleAction action = new SimpleAction(() => Debug.Log("Hello world!"));
             IAction action = new BasicAction(() => Debug.Log("Hello world!"));
-            BasicSignal signal = new BasicSignal();
+            BasicEvent basicEvent = new BasicEvent();
             BasicRequest request = new BasicRequest();
+            BasicFunction<bool> function = new BasicFunction<bool>(() => true);
+                
         }
     }
 }
