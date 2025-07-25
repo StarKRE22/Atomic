@@ -1,3 +1,5 @@
+using Unity.Collections.LowLevel.Unsafe;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -30,5 +32,25 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
         void IEntityInstaller.Install(IEntity entity) => this.Install((T) entity);
+    }
+    
+    /// <summary>
+    /// Represents an unsafe, allocation-free variant of <see cref="IEntityInstaller{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The specific type of entity this installer supports.</typeparam>
+    /// <remarks>
+    /// This interface avoids runtime casting and boxing by using <see cref="UnsafeUtility.As{TFrom, TTo}(ref TFrom)"/>.  
+    /// Use it only when you are certain that the incoming <see cref="IEntity"/> is of type <typeparamref name="T"/>.
+    /// </remarks>
+    public interface IEntityInstallerUnsafe<in T> : IEntityInstaller where T : IEntity
+    {
+        /// <summary>
+        /// Installs data, configuration, or behaviors into the specified entity of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <param name="entity">The strongly-typed entity to configure or initialize.</param>
+        void Install(T entity);
+
+        /// <inheritdoc />
+        void IEntityInstaller.Install(IEntity entity) => this.Install(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

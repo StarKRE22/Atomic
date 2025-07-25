@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class BaseActionTests
+    public sealed class BasicActionTests
     {
         [Test]
         public void CreateAndInvoke()

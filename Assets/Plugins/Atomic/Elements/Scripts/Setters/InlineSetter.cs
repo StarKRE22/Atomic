@@ -21,26 +21,14 @@ namespace Atomic.Elements
             set => this.action?.Invoke(value);
         }
 
-        private Action<T> action;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InlineSetter{T}"/> class with no initial action.
-        /// </summary>
-        public InlineSetter()
-        {
-        }
+        private readonly Action<T> action;
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineSetter{T}"/> class with a specified action.
         /// </summary>
         /// <param name="action">The action to invoke when the value is set.</param>
-        public InlineSetter(Action<T> action) => this.action = action;
-
-        /// <summary>
-        /// Assigns or replaces the internal action used to handle value setting.
-        /// </summary>
-        /// <param name="action">The new action to assign.</param>
-        public void Construct(Action<T> action) => this.action = action;
+        public InlineSetter(Action<T> action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
         /// [Editor Only] Invokes the setter manually in the Unity Editor.

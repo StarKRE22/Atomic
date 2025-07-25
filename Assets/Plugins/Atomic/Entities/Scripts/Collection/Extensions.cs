@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -18,6 +19,9 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddRange<E>(this IEntityCollection<E> it, params E[] entities) where E : IEntity
         {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
             for (int i = 0, count = entities.Length; i < count; i++)
                 it.Add(entities[i]);
         }
@@ -32,6 +36,9 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void AddRange<E>(this IEntityCollection<E> it, IEnumerable<E> entities) where E : IEntity
         {
+            if (entities == null)
+                throw new ArgumentNullException(nameof(entities));
+
             foreach (E entity in entities)
                 if (entity != null)
                     it.Add(entity);

@@ -31,14 +31,14 @@ namespace Atomic.Elements
 #endif
         public T Value
         {
-            get => this.getter != null ? this.getter.Invoke() : default;
+            get => this.getter.Invoke();
             set => this.setter?.Invoke(value);
         }
 
-        private Func<T> getter;
-        private Action<T> setter;
-        private Action<Action<T>> subscribe;
-        private Action<Action<T>> unsubscribe;
+        private readonly Func<T> getter;
+        private readonly Action<T> setter;
+        private readonly Action<Action<T>> subscribe;
+        private readonly Action<Action<T>> unsubscribe;
 
         /// <summary>
         /// Initializes an empty instance of <see cref="ReactiveProxyVariable{T}"/>.
@@ -61,26 +61,10 @@ namespace Atomic.Elements
             Action<Action<T>> unsubscribe
         )
         {
-            this.getter = getter;
-            this.setter = setter;
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
-        }
-
-        /// <summary>
-        /// Assigns delegates for get, set, subscribe, and unsubscribe operations.
-        /// </summary>
-        public void Construct(
-            Func<T> getter,
-            Action<T> setter,
-            Action<Action<T>> subscribe,
-            Action<Action<T>> unsubscribe
-        )
-        {
-            this.getter = getter;
-            this.setter = setter;
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
+            this.getter = getter ?? throw new ArgumentNullException(nameof(getter));
+            this.setter = setter ?? throw new ArgumentNullException(nameof(setter));
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
 
         /// <summary>

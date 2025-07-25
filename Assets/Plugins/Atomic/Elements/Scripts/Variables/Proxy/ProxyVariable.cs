@@ -23,19 +23,12 @@ namespace Atomic.Elements
 #endif
         public T Value
         {
-            get => this.getter != null ? this.getter.Invoke() : default;
-            set => this.setter?.Invoke(value);
+            get => this.getter.Invoke();
+            set => this.setter.Invoke(value);
         }
 
-        private Func<T> getter;
-        private Action<T> setter;
-
-        /// <summary>
-        /// Creates an uninitialized <see cref="ProxyVariable{T}"/> instance.
-        /// </summary>
-        public ProxyVariable()
-        {
-        }
+        private readonly Func<T> getter;
+        private readonly Action<T> setter;
 
         /// <summary>
         /// Creates a <see cref="ProxyVariable{T}"/> with the specified getter and setter.
@@ -44,21 +37,10 @@ namespace Atomic.Elements
         /// <param name="setter">Action to update the value.</param>
         public ProxyVariable(Func<T> getter, Action<T> setter)
         {
-            this.getter = getter;
-            this.setter = setter;
+            this.getter = getter ?? throw new ArgumentNullException(nameof(getter));
+            this.setter = setter ?? throw new ArgumentNullException(nameof(setter));
         }
-
-        /// <summary>
-        /// Assigns or updates the getter and setter of the proxy.
-        /// </summary>
-        /// <param name="getter">Function to retrieve the value.</param>
-        /// <param name="setter">Action to update the value.</param>
-        public void Construct(Func<T> getter, Action<T> setter)
-        {
-            this.getter = getter;
-            this.setter = setter;
-        }
-
+        
         /// <summary>
         /// Returns a string representation of the current value.
         /// </summary>

@@ -124,6 +124,7 @@ namespace Atomic.Elements
         protected override float Invoke(IReadOnlyList<Func<T1, T2, float>> members, T1 arg1, T2 arg2)
         {
             float result = 1;
+            
             int count = members.Count;
             if (count == 0)
                 return result;

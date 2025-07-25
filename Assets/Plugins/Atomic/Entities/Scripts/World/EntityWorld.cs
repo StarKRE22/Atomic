@@ -8,12 +8,27 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// A non-generic shortcut for <see cref="EntityWorld{IEntity}"/>.
+    /// Manages a world of general-purpose <see cref="IEntity"/> instances with support for spawning, enabling,
+    /// updating, and disposing all contained entities.
+    /// </summary>
+    /// <remarks>
+    /// This class provides a convenient entry point for working with untyped or heterogeneous entities
+    /// without requiring generic parameters.
+    /// </remarks>
     public class EntityWorld : EntityWorld<IEntity>
     {
     }
 
+    /// <summary>
+    /// Represents a runtime-managed world composed of entities of type <typeparamref name="E"/>.
+    /// Provides lifecycle management including spawning, enabling, updating, and disposing all entities in the collection.
+    /// </summary>
+    /// <typeparam name="E">The specific type of entity managed by this world. Must implement <see cref="IEntity"/>.</typeparam>
     public class EntityWorld<E> : EntityCollection<E>, IEntityWorld<E> where E : IEntity
     {
+        /// <inheritdoc/>
         public override event Action OnStateChanged;
 
         /// <inheritdoc/>
@@ -60,20 +75,37 @@ namespace Atomic.Entities
 
         private string _name;
 
+        /// <summary>
+        /// Initializes an empty <see cref="EntityWorld{E}"/> instance with no name.
+        /// </summary>
         public EntityWorld() => _name = string.Empty;
 
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld{E}"/> with the specified entities and an empty name.
+        /// </summary>
+        /// <param name="entities">Entities to prepopulate the world with.</param>
         public EntityWorld(params E[] entities)
         {
             _name = string.Empty;
             this.AddRange(entities);
         }
 
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld{E}"/> with a name and optional entities.
+        /// </summary>
+        /// <param name="name">The name of the world.</param>
+        /// <param name="entities">Entities to prepopulate the world with.</param>
         public EntityWorld(string name = null, params E[] entities)
         {
             _name = name;
             this.AddRange(entities);
         }
 
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld{E}"/> with a name and a collection of entities.
+        /// </summary>
+        /// <param name="name">The name of the world.</param>
+        /// <param name="entities">The enumerable collection of entities to add.</param>
         public EntityWorld(string name, IEnumerable<E> entities)
         {
             _name = name;
@@ -257,8 +289,10 @@ namespace Atomic.Entities
             if (_enabled) entity.Disable();
             if (_spawned) entity.Despawn();
         }
-
-        /// <inheritdoc/>
+        
+        /// <summary>
+        /// Disposes the world and its entities by despawning them and releasing all resources.
+        /// </summary>
         public override void Dispose()
         {
             this.Despawn();
@@ -266,7 +300,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Removes all subscribed event listeners.
+        /// Unsubscribes all internal world-level event listeners and clears event handlers.
         /// </summary>
         public override void UnsubscribeAll()
         {

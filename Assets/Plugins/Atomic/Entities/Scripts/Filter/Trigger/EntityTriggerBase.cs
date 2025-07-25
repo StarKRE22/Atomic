@@ -4,6 +4,14 @@ using System.Runtime.CompilerServices;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// Provides a base implementation of <see cref="EntityTriggerBase{IEntity}"/> for triggers that operate on <see cref="IEntity"/>.
+    /// This serves as a convenient base class when no specific entity type is needed.
+    /// </summary>
+    public abstract class EntityTriggerBase : EntityTriggerBase<IEntity>
+    {
+    }
+
+    /// <summary>
     /// Provides a base implementation for entity triggers that monitor changes in entity state
     /// and invoke a configured action when such changes occur.
     /// </summary>

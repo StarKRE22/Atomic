@@ -10,6 +10,17 @@ using Sirenix.OdinInspector;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// A Unity-compatible world manager for scene-based entities of type <typeparamref name="E"/>.
+    /// </summary>
+    /// <typeparam name="E">The specific type of scene entity this world manages. Must inherit from <see cref="SceneEntity"/>.</typeparam>
+    /// <remarks>
+    /// This component integrates with Unity’s lifecycle events (Awake, Start, OnEnable, etc.) to automatically
+    /// manage entity spawning, enabling, updating, and cleanup. It wraps a runtime <see cref="EntityWorld{E}"/> instance internally.
+    /// </remarks>
+    /// <example>
+    /// Attach this component to a GameObject in the scene to automatically scan and manage entities of type <typeparamref name="E"/>.
+    /// </example>
     [AddComponentMenu("Atomic/Entities/Entity World")]
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1000)]
@@ -257,6 +268,13 @@ namespace Atomic.Entities
 
         #region Static
 
+        /// <summary>
+        /// Creates a new inactive <see cref="GameObject"/> with an attached <see cref="SceneEntityWorld{E}"/> component.
+        /// </summary>
+        /// <param name="name">The name of the GameObject and world instance.</param>
+        /// <param name="scanEntities">If true, the world will scan the scene for entities on Awake.</param>
+        /// <param name="entities">Optional entities to add immediately after creation.</param>
+        /// <returns>The initialized <see cref="SceneEntityWorld{E}"/> instance.</returns>
         public static SceneEntityWorld<E> Create(
             string name = null,
             bool scanEntities = false,
