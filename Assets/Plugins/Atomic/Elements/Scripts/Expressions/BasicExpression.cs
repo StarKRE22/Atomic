@@ -8,32 +8,32 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<R> : ExpressionAbstract<R>
+    public class BasicExpression<R> : ExpressionBase<R>
     {
         private readonly Func<IReadOnlyList<Func<R>>, R> function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseExpression{R}"/> class with a custom evaluation function.
+        /// Initializes a new instance of the <see cref="BasicExpression{R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the list of function members.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<R>>, R> function) =>
+        public BasicExpression(Func<IReadOnlyList<Func<R>>, R> function) =>
             this.function = function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseExpression{R}"/> class with a custom evaluation function and initial members.
+        /// Initializes a new instance of the <see cref="BasicExpression{R}"/> class with a custom evaluation function and initial members.
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function members.</param>
         /// <param name="members">An array of function members to add to the expression.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<R>>, R> function, params Func<R>[] members)
+        public BasicExpression(Func<IReadOnlyList<Func<R>>, R> function, params Func<R>[] members)
             : base(members) =>
             this.function = function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseExpression{R}"/> class with a custom evaluation function and initial members.
+        /// Initializes a new instance of the <see cref="BasicExpression{R}"/> class with a custom evaluation function and initial members.
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function members.</param>
         /// <param name="members">A collection of function members to add to the expression.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<R>>, R> function, IEnumerable<Func<R>> members)
+        public BasicExpression(Func<IReadOnlyList<Func<R>>, R> function, IEnumerable<Func<R>> members)
             : base(members) =>
             this.function = function;
 
@@ -51,15 +51,15 @@ namespace Atomic.Elements
     /// <typeparam name="T">The input type passed to each function member.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<T, R> : ExpressionAbstract<T, R>
+    public class Expression<T, R> : ExpressionBase<T, R>
     {
         private readonly Func<IReadOnlyList<Func<T, R>>, T, R> function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseExpression{T, R}"/> class with a custom evaluation function.
+        /// Initializes a new instance of the <see cref="Expression{T,R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression given the members and an input argument.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T, R>>, T, R> function) =>
+        public Expression(Func<IReadOnlyList<Func<T, R>>, T, R> function) =>
             this.function = function;
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
         /// <param name="members">An array of function members to initialize with.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T, R>>, T, R> function, params Func<T, R>[] members)
+        public Expression(Func<IReadOnlyList<Func<T, R>>, T, R> function, params Func<T, R>[] members)
             : base(members) =>
             this.function = function;
 
@@ -76,7 +76,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
         /// <param name="members">A collection of function members to initialize with.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T, R>>, T, R> function, IEnumerable<Func<T, R>> members)
+        public Expression(Func<IReadOnlyList<Func<T, R>>, T, R> function, IEnumerable<Func<T, R>> members)
             : base(members) =>
             this.function = function;
 
@@ -97,15 +97,15 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BaseExpression<T1, T2, R> : ExpressionAbstract<T1, T2, R>
+    public class BasicExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
     {
         private readonly Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseExpression{T1, T2, R}"/> class with a custom evaluation function.
+        /// Initializes a new instance of the <see cref="BasicExpression{T1,T2,R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The custom logic used to evaluate the expression.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function) =>
+        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function) =>
             this.function = function;
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="members">An array of binary functions to initialize with.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
+        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
             params Func<T1, T2, R>[] members)
             : base(members) =>
             this.function = function;
@@ -123,7 +123,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="members">A collection of binary functions to initialize with.</param>
-        public BaseExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
+        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
             IEnumerable<Func<T1, T2, R>> members)
             : base(members) =>
             this.function = function;

@@ -8,7 +8,7 @@ namespace Atomic.Elements
     /// The expression evaluates to <c>true</c> if at least one function returns <c>true</c>.
     /// </summary>
     [Serializable]
-    public class OrExpression : ExpressionAbstract<bool>, IPredicate
+    public class OrExpression : ExpressionBase<bool>, IPredicate
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression"/> class.
@@ -51,7 +51,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input type for the predicate functions.</typeparam>
     [Serializable]
-    public class OrExpression<T> : ExpressionAbstract<T, bool>, IPredicate<T>
+    public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression{T}"/> class.
@@ -96,7 +96,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first input argument.</typeparam>
     /// <typeparam name="T2">The type of the second input argument.</typeparam>
     [Serializable]
-    public class OrExpression<T1, T2> : ExpressionAbstract<T1, T2, bool>, IPredicate<T1, T2>
+    public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression{T1, T2}"/> class.

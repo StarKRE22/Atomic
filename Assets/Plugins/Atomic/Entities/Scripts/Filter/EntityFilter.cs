@@ -71,7 +71,7 @@ namespace Atomic.Entities
             this.triggers = triggers;
             
             for (int i = 0, count = triggers.Length; i < count; i++)
-                triggers[i].Callback = this.Synchronize;
+                triggers[i].SetAction(this.Synchronize);
             
             this.source.OnAdded += this.Observe;
             this.source.OnRemoved += this.Unobserve;
@@ -118,7 +118,7 @@ namespace Atomic.Entities
         private void Observe(E entity)
         {
             for (int i = 0, count = this.triggers.Length; i < count; i++)
-                this.triggers[i].Observe(entity);
+                this.triggers[i].Track(entity);
 
             if (this.predicate(entity) && this.entities.Add(entity))
             {
@@ -130,7 +130,7 @@ namespace Atomic.Entities
         private void Unobserve(E entity)
         {
             for (int i = 0, count = this.triggers.Length; i < count; i++)
-                this.triggers[i].Unobserve(entity);
+                this.triggers[i].Untrack(entity);
 
             if (this.entities.Remove(entity))
             {

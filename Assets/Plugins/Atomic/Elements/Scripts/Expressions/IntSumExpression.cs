@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// Represents an expression that computes the sum of multiple parameterless integer-returning functions.
     /// </summary>
     [Serializable]
-    public class IntSumExpression : ExpressionAbstract<int>
+    public class IntSumExpression : ExpressionBase<int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression"/> class.
@@ -51,7 +51,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input parameter type.</typeparam>
     [Serializable]
-    public class IntSumExpression<T> : ExpressionAbstract<T, int>
+    public class IntSumExpression<T> : ExpressionBase<T, int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression{T}"/> class.
@@ -97,7 +97,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The first input parameter type.</typeparam>
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     [Serializable]
-    public class IntSumExpression<T1, T2> : ExpressionAbstract<T1, T2, int>
+    public class IntSumExpression<T1, T2> : ExpressionBase<T1, T2, int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression{T1, T2}"/> class.

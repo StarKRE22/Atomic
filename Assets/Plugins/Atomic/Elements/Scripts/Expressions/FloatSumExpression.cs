@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// Represents an expression that computes the sum of multiple parameterless float-returning functions.
     /// </summary>
     [Serializable]
-    public class FloatSumExpression : ExpressionAbstract<float>
+    public class FloatSumExpression : ExpressionBase<float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression"/> class.
@@ -51,7 +51,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input parameter type.</typeparam>
     [Serializable]
-    public class FloatSumExpression<T> : ExpressionAbstract<T, float>
+    public class FloatSumExpression<T> : ExpressionBase<T, float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression{T}"/> class.
@@ -97,7 +97,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The first input parameter type.</typeparam>
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     [Serializable]
-    public class FloatSumExpression<T1, T2> : ExpressionAbstract<T1, T2, float>
+    public class FloatSumExpression<T1, T2> : ExpressionBase<T1, T2, float>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression{T1, T2}"/> class.

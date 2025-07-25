@@ -11,7 +11,7 @@ namespace Atomic.Elements
             var wasEvent1 = false;
             var wasEvent2 = false;
 
-            var eventBase = new BaseEvent();
+            var eventBase = new BasicEvent();
             eventBase.OnEvent += () => wasEvent1 = true;
             eventBase.Subscribe(() => wasEvent2 = true);
 
@@ -40,7 +40,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent();
+            var eventBase = new BasicEvent();
             eventBase.OnEvent += OnEventRaisen1;
             eventBase.Subscribe(OnEventRaisen2);
 
@@ -78,7 +78,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent();
+            var eventBase = new BasicEvent();
             eventBase.OnEvent += OnEventRaisen1;
             eventBase.Subscribe(OnEventRaisen2);
 
@@ -109,7 +109,7 @@ namespace Atomic.Elements
             object wasEvent1 = null;
             object wasEvent2 = null;
 
-            var eventBase = new BaseEvent<object>();
+            var eventBase = new BasicEvent<object>();
             eventBase.OnEvent += a => wasEvent1 = a;
             eventBase.Subscribe(a => wasEvent2 = a);
 
@@ -138,7 +138,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<object>();
+            var eventBase = new BasicEvent<object>();
             eventBase.OnEvent += OnEventRaisen1;
             eventBase.Subscribe(OnEventRaisen2);
 
@@ -178,7 +178,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<string>();
+            var eventBase = new BasicEvent<string>();
             eventBase.OnEvent += OnEventRaisen1;
             eventBase.Subscribe(OnEventRaisen2);
 
@@ -210,7 +210,7 @@ namespace Atomic.Elements
             object arg1 = null;
             int arg2 = -1;
 
-            var eventBase = new BaseEvent<object, int>();
+            var eventBase = new BasicEvent<object, int>();
             eventBase.Subscribe((a1, a2) =>
             {
                 arg1 = a1;
@@ -238,7 +238,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<object, int>();
+            var eventBase = new BasicEvent<object, int>();
             eventBase.Subscribe(OnEventRaisen);
 
             eventBase.Invoke("Vasya", 10);
@@ -273,7 +273,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<string, int>();
+            var eventBase = new BasicEvent<string, int>();
             eventBase.OnEvent += OnEventRaisen;
 
             eventBase.Invoke("Vasya", 3);
@@ -305,7 +305,7 @@ namespace Atomic.Elements
             int arg2 = -1;
             bool arg3 = false;
 
-            var eventBase = new BaseEvent<object, int, bool>();
+            var eventBase = new BasicEvent<object, int, bool>();
             eventBase.Subscribe((a1, a2, a3) =>
             {
                 arg1 = a1;
@@ -337,7 +337,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<object, int, bool>();
+            var eventBase = new BasicEvent<object, int, bool>();
             eventBase.Subscribe(OnEventRaisen);
 
             eventBase.Invoke("Vasya", 10, true);
@@ -374,7 +374,7 @@ namespace Atomic.Elements
             }
 
             //Arrange:
-            var eventBase = new BaseEvent<string, int, bool>();
+            var eventBase = new BasicEvent<string, int, bool>();
             eventBase.OnEvent += OnEventRaisen;
 
             eventBase.Invoke("Vasya", 3, false);

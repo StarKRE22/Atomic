@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Atomic.Elements
 {
     /// <summary>
@@ -15,6 +17,7 @@ namespace Atomic.Elements
         /// Invokes the setter by assigning the provided value.
         /// </summary>
         /// <param name="arg">The value to set.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         void IAction<T>.Invoke(T arg) => this.Value = arg;
     }
 }

@@ -4,7 +4,7 @@ namespace Atomic.Entities
     {
     }
 
-    public class TagEntityTrigger<E> : EntityTriggerAbstract<E> where E : IEntity
+    public class TagEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
     {
         private readonly bool _added;
         private readonly bool _removed;
@@ -15,19 +15,19 @@ namespace Atomic.Entities
             _removed = removed;
         }
 
-        public override void Observe(E entity)
+        public override void Track(E entity)
         {
             if (_added) entity.OnTagAdded += this.OnTagAdded;
             if (_removed) entity.OnTagDeleted += this.OnTagDeleted;
         }
 
-        public override void Unobserve(E entity)
+        public override void Untrack(E entity)
         {
             if (_added) entity.OnTagAdded -= this.OnTagAdded;
             if (_removed) entity.OnTagDeleted -= this.OnTagDeleted;
         }
 
-        private void OnTagDeleted(IEntity entity, int tag) => _callback?.Invoke((E) entity);
-        private void OnTagAdded(IEntity entity, int _) => _callback?.Invoke((E) entity);
+        private void OnTagDeleted(IEntity entity, int tag) => _action?.Invoke((E) entity);
+        private void OnTagAdded(IEntity entity, int _) => _action?.Invoke((E) entity);
     }
 }

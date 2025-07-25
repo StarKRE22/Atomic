@@ -14,28 +14,28 @@ namespace Atomic.Elements
     /// Wraps a standard <see cref="System.Action"/> delegate.
     /// </summary>
     [Serializable]
-    public class BaseAction : IAction
+    public class BasicAction : IAction
     {
         private Action action;
 
         /// <summary>
-        /// Initializes a new, empty <see cref="BaseAction"/>.
+        /// Initializes a new, empty <see cref="BasicAction"/>.
         /// </summary>
-        public BaseAction()
+        public BasicAction()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="BaseAction"/> with the specified action.
+        /// Initializes a new instance of <see cref="BasicAction"/> with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BaseAction(Action action) => this.action = action;
+        public BasicAction(Action action) => this.action = action;
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="BaseAction"/>.
+        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="BasicAction"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BaseAction(Action value) => new BaseAction(value);
+        public static implicit operator BasicAction(Action value) => new(value);
 
         /// <summary>
         /// Sets or replaces the internal action.
@@ -61,14 +61,14 @@ namespace Atomic.Elements
     /// Wraps a <see cref="System.Action{T}"/> delegate.
     /// </summary>
     [Serializable]
-    public class BaseAction<T> : IAction<T>
+    public class BasicAction<T> : IAction<T>
     {
         private Action<T> action;
 
         /// <summary>
-        /// Initializes a new, empty <see cref="BaseAction{T}"/>.
+        /// Initializes a new, empty <see cref="BasicAction{T}"/>.
         /// </summary>
-        public BaseAction()
+        public BasicAction()
         {
         }
 
@@ -76,13 +76,13 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BaseAction(Action<T> action) => this.action = action;
+        public BasicAction(Action<T> action) => this.action = action;
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T}"/> to <see cref="BaseAction{T}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T}"/> to <see cref="BasicAction{T}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BaseAction<T>(Action<T> value) => new BaseAction<T>(value);
+        public static implicit operator BasicAction<T>(Action<T> value) => new BasicAction<T>(value);
 
         /// <summary>
         /// Sets or replaces the internal action.
@@ -109,14 +109,14 @@ namespace Atomic.Elements
     /// Wraps a <see cref="System.Action{T1, T2}"/> delegate.
     /// </summary>
     [Serializable]
-    public class BaseAction<T1, T2> : IAction<T1, T2>
+    public class BasicAction<T1, T2> : IAction<T1, T2>
     {
         private Action<T1, T2> action;
 
         /// <summary>
-        /// Initializes a new, empty <see cref="BaseAction{T1, T2}"/>.
+        /// Initializes a new, empty <see cref="BasicAction{T1,T2}"/>.
         /// </summary>
-        public BaseAction()
+        public BasicAction()
         {
         }
 
@@ -124,13 +124,13 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BaseAction(Action<T1, T2> action) => this.action = action;
+        public BasicAction(Action<T1, T2> action) => this.action = action;
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T1, T2}"/> to <see cref="BaseAction{T1, T2}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T1, T2}"/> to <see cref="BasicAction{T1,T2}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BaseAction<T1, T2>(Action<T1, T2> value) => new(value);
+        public static implicit operator BasicAction<T1, T2>(Action<T1, T2> value) => new(value);
 
         /// <summary>
         /// Sets or replaces the internal action.
@@ -158,14 +158,14 @@ namespace Atomic.Elements
     /// Wraps a <see cref="System.Action{T1, T2, T3}"/> delegate.
     /// </summary>
     [Serializable]
-    public class BaseAction<T1, T2, T3> : IAction<T1, T2, T3>
+    public class BasicAction<T1, T2, T3> : IAction<T1, T2, T3>
     {
         private Action<T1, T2, T3> action;
 
         /// <summary>
-        /// Initializes a new, empty <see cref="BaseAction{T1, T2, T3}"/>.
+        /// Initializes a new, empty <see cref="BasicAction{T1,T2,T3}"/>.
         /// </summary>
-        public BaseAction()
+        public BasicAction()
         {
         }
 
@@ -173,13 +173,13 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BaseAction(Action<T1, T2, T3> action) => this.action = action;
+        public BasicAction(Action<T1, T2, T3> action) => this.action = action;
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T1, T2, T3}"/> to <see cref="BaseAction{T1, T2, T3}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T1, T2, T3}"/> to <see cref="BasicAction{T1,T2,T3}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BaseAction<T1, T2, T3>(Action<T1, T2, T3> value) => new(value);
+        public static implicit operator BasicAction<T1, T2, T3>(Action<T1, T2, T3> value) => new(value);
 
         /// <summary>
         /// Sets or replaces the internal action.

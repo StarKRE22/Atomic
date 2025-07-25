@@ -6,9 +6,9 @@ namespace Atomic.Elements
     /// Represents a parameterless reactive event that can be invoked and observed.
     /// </summary>
     /// <remarks>
-    /// Inherits from <see cref="IReactive"/> and <see cref="IAction"/> to support both reactive tracking and action-based invocation.
+    /// Inherits from <see cref="ISignal"/> and <see cref="IAction"/> to support both reactive tracking and action-based invocation.
     /// </remarks>
-    public interface IEvent : IReactive, IAction
+    public interface IEvent : ISignal, IAction
     {
         /// <summary>
         /// Occurs when the event is triggered.
@@ -21,9 +21,9 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the event parameter.</typeparam>
     /// <remarks>
-    /// Inherits from <see cref="IReactive{T}"/> and <see cref="IAction{T}"/> to support reactive updates and invocation logic.
+    /// Inherits from <see cref="ISignal{T}"/> and <see cref="IAction{T}"/> to support reactive updates and invocation logic.
     /// </remarks>
-    public interface IEvent<T> : IReactive<T>, IAction<T>
+    public interface IEvent<T> : ISignal<T>, IAction<T>
     {
         /// <summary>
         /// Occurs when the event is triggered with the specified argument.
@@ -37,9 +37,9 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <remarks>
-    /// Inherits from <see cref="IReactive{T1, T2}"/> and <see cref="IAction{T1, T2}"/> to support reactive tracking and action invocation.
+    /// Inherits from <see cref="ISignal{T1,T2}"/> and <see cref="IAction{T1, T2}"/> to support reactive tracking and action invocation.
     /// </remarks>
-    public interface IEvent<T1, T2> : IReactive<T1, T2>, IAction<T1, T2>
+    public interface IEvent<T1, T2> : ISignal<T1, T2>, IAction<T1, T2>
     {
         /// <summary>
         /// Occurs when the event is triggered with two arguments.
@@ -54,9 +54,9 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <remarks>
-    /// Inherits from <see cref="IReactive{T1, T2, T3}"/> and <see cref="IAction{T1, T2, T3}"/> to support reactive state and behavior.
+    /// Inherits from <see cref="ISignal{T1,T2,T3}"/> and <see cref="IAction{T1, T2, T3}"/> to support reactive state and behavior.
     /// </remarks>
-    public interface IEvent<T1, T2, T3> : IReactive<T1, T2, T3>, IAction<T1, T2, T3>
+    public interface IEvent<T1, T2, T3> : ISignal<T1, T2, T3>, IAction<T1, T2, T3>
     {
         /// <summary>
         /// Occurs when the event is triggered with three arguments.
@@ -72,7 +72,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second event argument.</typeparam>
     /// <typeparam name="T3">The type of the third event argument.</typeparam>
     /// <typeparam name="T4">The type of the fourth event argument.</typeparam>
-    public interface IEvent<T1, T2, T3, T4> : IReactive<T1, T2, T3, T4>, IAction<T1, T2, T3, T4>
+    public interface IEvent<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>, IAction<T1, T2, T3, T4>
     {
         /// <summary>
         /// Occurs when the event is raised with four arguments.

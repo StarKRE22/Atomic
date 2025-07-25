@@ -3,20 +3,20 @@ using System;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// Represents a reactive source that can notify subscribers of generic events without data.
+    /// Represents a signal that can notify subscribers of events without passing any data.
     /// </summary>
-    public interface IReactive
+    public interface ISignal
     {
         /// <summary>
-        /// Subscribes an action to be invoked when the reactive source emits an event.
+        /// Subscribes an action to be invoked when the signal is triggered.
         /// </summary>
-        /// <param name="action">The action to invoke on event emission.</param>
+        /// <param name="action">The action to invoke when the signal is triggered.</param>
         Subscription Subscribe(Action action);
 
         /// <summary>
-        /// Unsubscribes a previously registered action from the reactive source.
+        /// Unsubscribes a previously registered action from the signal.
         /// </summary>
-        /// <param name="action">The action to remove from the subscription list.</param>
+        /// <param name="action">The action to remove from the list of subscribers.</param>
         void Unsubscribe(Action action);
     }
 
@@ -24,7 +24,7 @@ namespace Atomic.Elements
     /// Represents a reactive source that notifies subscribers with a single value.
     /// </summary>
     /// <typeparam name="T">The type of the value emitted to subscribers.</typeparam>
-    public interface IReactive<T>
+    public interface ISignal<T>
     {
         /// <summary>
         /// Subscribes an action to be invoked when the reactive source emits a value.
@@ -44,7 +44,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T1">The type of the first emitted value.</typeparam>
     /// <typeparam name="T2">The type of the second emitted value.</typeparam>
-    public interface IReactive<T1, T2>
+    public interface ISignal<T1, T2>
     {
         /// <summary>
         /// Subscribes an action to be invoked when the reactive source emits two values.
@@ -65,7 +65,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first emitted value.</typeparam>
     /// <typeparam name="T2">The type of the second emitted value.</typeparam>
     /// <typeparam name="T3">The type of the third emitted value.</typeparam>
-    public interface IReactive<T1, T2, T3>
+    public interface ISignal<T1, T2, T3>
     {
         /// <summary>
         /// Subscribes an action to be invoked when the reactive source emits three values.
@@ -87,7 +87,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second emitted value.</typeparam>
     /// <typeparam name="T3">The type of the third emitted value.</typeparam>
     /// <typeparam name="T4">The type of the fourth emitted value.</typeparam>
-    public interface IReactive<T1, T2, T3, T4>
+    public interface ISignal<T1, T2, T3, T4>
     {
         /// <summary>
         /// Subscribes an action to be invoked when the reactive source emits four values.

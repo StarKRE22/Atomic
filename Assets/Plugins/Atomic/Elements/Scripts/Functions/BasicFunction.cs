@@ -11,14 +11,14 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
     [Serializable]
-    public class BaseFunction<T> : IValue<T>
+    public class BasicFunction<T> : IValue<T>
     {
         private Func<T> func;
 
         /// <summary>
         /// Default constructor. Does not initialize the function.
         /// </summary>
-        public BaseFunction()
+        public BasicFunction()
         {
         }
 
@@ -26,13 +26,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BaseFunction(Func<T> func) => this.func = func;
+        public BasicFunction(Func<T> func) => this.func = func;
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="BaseFunction{T}"/>.
+        /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="BasicFunction{T}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BaseFunction<T>(Func<T> value) => new(value);
+        public static implicit operator BasicFunction<T>(Func<T> value) => new(value);
 
         /// <summary>
         /// Gets the result of the function.
@@ -60,14 +60,14 @@ namespace Atomic.Elements
     /// <typeparam name="T">The type of the input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
     [Serializable]
-    public sealed class BaseFunction<T, R> : IFunction<T, R>
+    public class BasicFunction<T, R> : IFunction<T, R>
     {
         private Func<T, R> func;
 
         /// <summary>
         /// Default constructor. Does not initialize the function.
         /// </summary>
-        public BaseFunction()
+        public BasicFunction()
         {
         }
 
@@ -75,13 +75,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BaseFunction(Func<T, R> func) => this.func = func;
+        public BasicFunction(Func<T, R> func) => this.func = func;
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T, R}"/> to <see cref="BaseFunction{T, R}"/>.
+        /// Implicit conversion from a <see cref="Func{T, R}"/> to <see cref="BasicFunction{T,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BaseFunction<T, R>(Func<T, R> value) => new(value);
+        public static implicit operator BasicFunction<T, R>(Func<T, R> value) => new(value);
 
         /// <summary>
         /// Sets or replaces the function implementation.
@@ -107,14 +107,14 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
     [Serializable]
-    public sealed class BaseFunction<T1, T2, R> : IFunction<T1, T2, R>
+    public class BasicFunction<T1, T2, R> : IFunction<T1, T2, R>
     {
         private Func<T1, T2, R> func;
 
         /// <summary>
         /// Default constructor. Does not initialize the function.
         /// </summary>
-        public BaseFunction()
+        public BasicFunction()
         {
         }
 
@@ -122,13 +122,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BaseFunction(Func<T1, T2, R> func) => this.func = func;
+        public BasicFunction(Func<T1, T2, R> func) => this.func = func;
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T1, T2, R}"/> to <see cref="BaseFunction{T1, T2, R}"/>.
+        /// Implicit conversion from a <see cref="Func{T1, T2, R}"/> to <see cref="BasicFunction{T1,T2,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BaseFunction<T1, T2, R>(Func<T1, T2, R> value) => new(value);
+        public static implicit operator BasicFunction<T1, T2, R>(Func<T1, T2, R> value) => new(value);
 
         /// <summary>
         /// Sets or replaces the function implementation.

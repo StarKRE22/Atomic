@@ -10,7 +10,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             bool wasAction = false;
-            BaseAction action = new BaseAction(() => wasAction = true);
+            BasicAction action = new BasicAction(() => wasAction = true);
             
             //Act:
             action.Invoke();
@@ -24,7 +24,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             bool wasAction = false;
-            BaseAction action = new BaseAction();
+            BasicAction action = new BasicAction();
             action.Construct(() => wasAction = true);
             
             //Act:
@@ -43,7 +43,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             string wasAction = string.Empty;
-            BaseAction<string> action = new BaseAction<string>(args => wasAction = args);
+            BasicAction<string> action = new BasicAction<string>(args => wasAction = args);
             
             //Act:
             action.Invoke("Vasya");
@@ -58,7 +58,7 @@ namespace Atomic.Elements
             //Arrange:
             string wasAction = string.Empty;
 
-            BaseAction<string> action = new BaseAction<string>();
+            BasicAction<string> action = new BasicAction<string>();
             action.Construct(args => wasAction = args);
             
             //Act:
@@ -80,7 +80,7 @@ namespace Atomic.Elements
             string t1 = null;
             int t2 = -1;
             
-            var action = new BaseAction<string, int>((a1, a2) =>
+            var action = new BasicAction<string, int>((a1, a2) =>
             {
                 t1 = a1;
                 t2 = a2;
@@ -101,7 +101,7 @@ namespace Atomic.Elements
             string t1 = null;
             int t2 = -1;
             
-            var action = new BaseAction<string, int>();
+            var action = new BasicAction<string, int>();
             action.Construct((a1, a2) =>
             {
                 t1 = a1;
@@ -129,7 +129,7 @@ namespace Atomic.Elements
             int t2 = -1;
             bool t3 = false;
             
-            var action = new BaseAction<string, int, bool>((a1, a2, a3) =>
+            var action = new BasicAction<string, int, bool>((a1, a2, a3) =>
             {
                 t1 = a1;
                 t2 = a2;
@@ -153,7 +153,7 @@ namespace Atomic.Elements
             int t2 = -1;
             bool t3 = false;
   
-            var action = new BaseAction<string, int, bool>();
+            var action = new BasicAction<string, int, bool>();
             action.Construct((a1, a2, a3) =>
             {
                 t1 = a1;

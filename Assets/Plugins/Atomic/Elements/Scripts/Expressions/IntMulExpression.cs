@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// Represents an expression that computes the product of multiple parameterless integer-returning functions.
     /// </summary>
     [Serializable]
-    public class IntMulExpression : ExpressionAbstract<int>
+    public class IntMulExpression : ExpressionBase<int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression"/> class.
@@ -50,7 +50,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The input parameter type.</typeparam>
     [Serializable]
-    public class IntMulExpression<T> : ExpressionAbstract<T, int>
+    public class IntMulExpression<T> : ExpressionBase<T, int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression{T}"/> class.
@@ -95,7 +95,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The first input parameter type.</typeparam>
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     [Serializable]
-    public class IntMulExpression<T1, T2> : ExpressionAbstract<T1, T2, int>
+    public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression{T1, T2}"/> class.

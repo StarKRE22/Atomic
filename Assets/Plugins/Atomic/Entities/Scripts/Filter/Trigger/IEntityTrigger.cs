@@ -13,18 +13,20 @@ namespace Atomic.Entities
     /// <typeparam name="E">The entity type being tracked.</typeparam>
     public interface IEntityTrigger<E> where E : IEntity
     {
-        protected internal Action<E> Callback { set; }
+        /// <summary>
+        /// Sets the callback to be invoked when the tracked entity should be re-evaluated.
+        /// </summary>
+        /// <param name="action">The action to invoke for re-evaluation.</param>
+        void SetAction(Action<E> action);
 
         /// <summary>
-        /// Begins tracking the specified entity and registers a callback for when it should be re-evaluated.
+        /// Starts tracking the specified entity for relevant changes.
         /// </summary>
-        /// <param name="entity">The entity to start tracking.</param>
-        void Observe(E entity);
+        void Track(E entity);
 
         /// <summary>
-        /// Stops tracking the specified entity and removes the previously registered callback.
+        /// Stops tracking the specified entity.
         /// </summary>
-        /// <param name="entity">The entity to stop tracking.</param>
-        void Unobserve(E entity);
+        void Untrack(E entity);
     }
 }
