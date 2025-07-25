@@ -1,5 +1,10 @@
 using System;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -9,11 +14,11 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     [DisallowMultipleComponent]
-    public class EntityView : EntityViewAbstract<IEntity>
+    public class EntityView : EntityViewBase<IEntity>
     {
     }
 
-    public abstract class EntityView<E> : EntityViewAbstract<E> where E : IEntity
+    public abstract class EntityView<E> : EntityViewBase<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]
@@ -24,6 +29,13 @@ namespace Atomic.Entities
         private readonly List<IEntityBehaviour> _behaviours = new();
 
         private bool _installed;
+
+        [Header("Gizmos")]
+        [SerializeField]
+        private bool _onlySelectedGizmos;
+        
+        [SerializeField]
+        private bool _onlyEditModeGizmos;
 
         protected override void OnShow(E entity)
         {
@@ -69,8 +81,17 @@ namespace Atomic.Entities
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            if (!_onlySelectedGizmos) 
+                this.OnDrawGizmosSelected();
+        }
+
         private void OnDrawGizmosSelected()
         {
+            if (EditorApplication.isPlaying && _onlyEditModeGizmos)
+                return;
+
             if (_entity == null)
                 return;
 

@@ -11,6 +11,21 @@ using Sirenix.OdinInspector;
 namespace Atomic.Entities
 {
     /// <summary>
+    /// A non-generic alias for <see cref="SceneEntityWorld{SceneEntity}"/>.
+    /// Represents a Unity scene-bound entity world operating on base <see cref="SceneEntity"/> types.
+    /// </summary>
+    /// <remarks>
+    /// Use this when you don't need to specialize the world with a custom entity type.
+    /// Useful for simple scenarios where only <see cref="SceneEntity"/> is involved.
+    /// </remarks>
+    [AddComponentMenu("Atomic/Entities/Entity World")]
+    [DisallowMultipleComponent]
+    [DefaultExecutionOrder(-1000)]
+    public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
+    {
+    }
+
+    /// <summary>
     /// A Unity-compatible world manager for scene-based entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The specific type of scene entity this world manages. Must inherit from <see cref="SceneEntity"/>.</typeparam>
@@ -21,9 +36,6 @@ namespace Atomic.Entities
     /// <example>
     /// Attach this component to a GameObject in the scene to automatically scan and manage entities of type <typeparamref name="E"/>.
     /// </example>
-    [AddComponentMenu("Atomic/Entities/Entity World")]
-    [DisallowMultipleComponent]
-    [DefaultExecutionOrder(-1000)]
     public class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity
     {
         /// <inheritdoc />
@@ -32,14 +44,14 @@ namespace Atomic.Entities
             add => _world.OnStateChanged += value;
             remove => _world.OnStateChanged -= value;
         }
-        
+
         /// <inheritdoc />
         public string Name
         {
             get => this.name;
             set => this.name = value;
         }
-        
+
         private readonly EntityWorld<E> _world = new();
 
 #if ODIN_INSPECTOR
@@ -56,12 +68,13 @@ namespace Atomic.Entities
         [Tooltip("If this option is enabled then EntityWorld scan inactive Entities on a scene also")]
         [SerializeField]
         private bool includeInactiveOnScan = true;
-        
-        [SerializeField, Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+
+        [SerializeField,
+         Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
         private bool useUnityLifecycle = true;
 
         private bool isStarted;
-        
+
         protected virtual void Awake()
         {
             if (!this.scanOnAwake)
@@ -103,7 +116,7 @@ namespace Atomic.Entities
                 this.Enable();
                 UpdateManager.Instance.Add(this);
 
-                this.isStarted = true;   
+                this.isStarted = true;
             }
         }
 
@@ -123,10 +136,10 @@ namespace Atomic.Entities
                 this.Despawn();
                 this.isStarted = false;
             }
-            
+
             this.Dispose();
         }
-        
+
         public void Dispose() => _world?.Dispose();
 
         #region Entities
