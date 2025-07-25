@@ -51,8 +51,6 @@ namespace Atomic.Entities
         /// </summary>
         private bool _installed;
 
-        #region Gizmos
-
         [Header("Gizmos")]
         [Tooltip("If true, gizmos will be drawn only when the object is selected.")]
         [SerializeField]
@@ -61,8 +59,6 @@ namespace Atomic.Entities
         [Tooltip("If true, gizmos will be drawn only in Edit Mode, even during play mode.")]
         [SerializeField]
         private bool _onlyEditModeGizmos;
-
-        #endregion
 
         /// <inheritdoc/>
         /// <summary>
