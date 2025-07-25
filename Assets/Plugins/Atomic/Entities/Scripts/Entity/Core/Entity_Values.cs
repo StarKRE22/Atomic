@@ -14,6 +14,32 @@ namespace Atomic.Entities
 {
     public partial class Entity
     {
+        internal struct ValueSlot
+        {
+            public int key;
+            public object value;
+
+            public bool primitive;
+            public bool exists;
+            public int next;
+        }
+        
+        private interface IBoxing
+        {
+            object Value { get; }
+
+            Type Type { get; }
+        }
+
+        private sealed class Boxing<T> : IBoxing
+        {
+            object IBoxing.Value => value;
+
+            Type IBoxing.Type => typeof(T);
+
+            public T value;
+        }
+        
         /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
@@ -651,32 +677,6 @@ namespace Atomic.Entities
             {
                 //Do nothing...
             }
-        }
-
-        internal struct ValueSlot
-        {
-            public int key;
-            public object value;
-
-            public bool primitive;
-            public bool exists;
-            public int next;
-        }
-
-        private interface IBoxing
-        {
-            object Value { get; }
-
-            Type Type { get; }
-        }
-
-        private sealed class Boxing<T> : IBoxing
-        {
-            object IBoxing.Value => value;
-
-            Type IBoxing.Type => typeof(T);
-
-            public T value;
         }
     }
 }

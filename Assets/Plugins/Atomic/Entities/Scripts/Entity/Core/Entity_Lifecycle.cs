@@ -94,6 +94,7 @@ namespace Atomic.Entities
                 if (_behaviours[i] is IEntitySpawn spawnBehaviour)
                     spawnBehaviour.Spawn(this);
 
+            this.OnStateChanged?.Invoke();
             this.OnSpawned?.Invoke();
         }
         
@@ -113,6 +114,8 @@ namespace Atomic.Entities
                     despawnBehaviour.Despawn(this);
             
             this.spawned = false;
+            
+            this.OnStateChanged?.Invoke();
             this.OnDespawned?.Invoke();
         }
 
@@ -132,6 +135,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
 
+            this.OnStateChanged?.Invoke();
             this.OnEnabled?.Invoke();
         }
 
@@ -147,6 +151,8 @@ namespace Atomic.Entities
                 this.DisableBehaviour(_behaviours[i]);
 
             this.enabled = false;
+            
+            this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
         }
 

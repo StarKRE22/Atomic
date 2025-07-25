@@ -1,13 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {
     public partial class Entity
     {
+        internal struct TagSlot
+        {
+            public int key;
+            public int next;
+            public bool exists;
+        }
+        
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
@@ -131,13 +137,6 @@ namespace Atomic.Entities
         IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
         
         public TagEnumerator GetTagEnumerator() => new(this);
-
-        private struct TagSlot
-        {
-            public int key;
-            public int next;
-            public bool exists;
-        }
 
         private void IncreaseTagCapacity()
         {
