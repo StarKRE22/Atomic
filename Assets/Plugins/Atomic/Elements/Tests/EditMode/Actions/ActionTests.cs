@@ -10,7 +10,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             bool wasAction = false;
-            BasicAction action = new BasicAction(() => wasAction = true);
+            InlineAction action = new InlineAction(() => wasAction = true);
             
             //Act:
             action.Invoke();
@@ -24,7 +24,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             bool wasAction = false;
-            BasicAction action = new BasicAction();
+            InlineAction action = new InlineAction();
             action.Construct(() => wasAction = true);
             
             //Act:
