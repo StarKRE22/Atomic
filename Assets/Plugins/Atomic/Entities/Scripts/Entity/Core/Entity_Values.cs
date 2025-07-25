@@ -1,9 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using Unity.Collections.LowLevel.Unsafe;
+
+#if UNITY_5_3_OR_NEWER
+using Unsafe = Unity.Collections.LowLevel.Unsafe.UnsafeUtility;
+
+#else
+using Unsafe = System.Runtime.CompilerServices.Unsafe;
+#endif
 
 namespace Atomic.Entities
 {
@@ -47,9 +52,10 @@ namespace Atomic.Entities
         public T GetValue<T>(int key)
         {
             if (_valueCount == 0)
-                throw this.ValueNotFoundException(in key);
+                throw this.ValueNotFoundException(key);
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -62,35 +68,7 @@ namespace Atomic.Entities
                 index = slot.next;
             }
 
-            throw this.ValueNotFoundException(in key);
-        }
-
-        /// <summary>
-        /// Gets the value associated with the specified key by reference (unsafe, no boxing).
-        /// </summary>
-        /// <typeparam name="T">The expected struct type of the value.</typeparam>
-        /// <param name="key">The key associated with the value.</param>
-        /// <returns>A reference to the stored value.</returns>
-        /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
-        public ref T GetValueUnsafe<T>(int key)
-        {
-            if (_valueCount == 0)
-                throw this.ValueNotFoundException(in key);
-
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[bucket];
-
-            while (index >= 0)
-            {
-                ref ValueSlot slot = ref _valueSlots[index];
-                if (slot.exists && slot.key == key)
-                    if (slot.primitive) return ref UnsafeUtility.As<object, Boxing<T>>(ref slot.value).value;
-                    else return ref UnsafeUtility.As<object, T>(ref slot.value);
-
-                index = slot.next;
-            }
-
-            throw this.ValueNotFoundException(in key);
+            throw this.ValueNotFoundException(key);
         }
 
         /// <summary>
@@ -102,21 +80,22 @@ namespace Atomic.Entities
         public object GetValue(int key)
         {
             if (_valueCount == 0)
-                throw this.ValueNotFoundException(in key);
+                throw this.ValueNotFoundException(key);
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
                 ref ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
-                    return UnboxValue(in slot);
+                    return slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
 
                 index = slot.next;
             }
 
-            throw this.ValueNotFoundException(in key);
+            throw this.ValueNotFoundException(key);
         }
 
         /// <summary>
@@ -134,7 +113,8 @@ namespace Atomic.Entities
                 return false;
             }
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
             int index = _valueBuckets[bucket];
 
             while (index >= 0)
@@ -143,43 +123,6 @@ namespace Atomic.Entities
                 if (slot.exists && slot.key == key)
                 {
                     value = slot.primitive ? ((Boxing<T>) slot.value).value : (T) slot.value;
-                    return true;
-                }
-
-                index = slot.next;
-            }
-
-            value = default;
-            return false;
-        }
-
-        /// <summary>
-        /// Tries to get a reference to a struct value by key (unsafe).
-        /// </summary>
-        /// <typeparam name="T">The struct type of the value.</typeparam>
-        /// <param name="key">The key associated with the value.</param>
-        /// <param name="value">The output value if found.</param>
-        /// <returns>True if the value is found; otherwise, false.</returns>
-        public bool TryGetValueUnsafe<T>(int key, out T value)
-        {
-            if (_valueCount == 0)
-            {
-                value = default;
-                return false;
-            }
-
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[bucket];
-
-            while (index >= 0)
-            {
-                ref ValueSlot slot = ref _valueSlots[index];
-                if (slot.exists && slot.key == key)
-                {
-                    value = slot.primitive
-                        ? UnsafeUtility.As<object, Boxing<T>>(ref slot.value).value
-                        : UnsafeUtility.As<object, T>(ref slot.value);
-
                     return true;
                 }
 
@@ -204,15 +147,83 @@ namespace Atomic.Entities
                 return false;
             }
 
-            uint bucket = UnsafeUtility.As<int, uint>(ref key) % UnsafeUtility.As<int, uint>(ref _valueCapacity);
-            int index = _valueBuckets[UnsafeUtility.As<uint, int>(ref bucket)];
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
+            int index = _valueBuckets[bucket];
 
             while (index >= 0)
             {
                 ref ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                 {
-                    value = UnboxValue(in slot);
+                    value = slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
+                    return true;
+                }
+
+                index = slot.next;
+            }
+
+            value = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the value associated with the specified key by reference (unsafe, no boxing).
+        /// </summary>
+        /// <typeparam name="T">The expected struct type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <returns>A reference to the stored value.</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the key does not exist in the entity.</exception>
+        public ref T GetValueUnsafe<T>(int key)
+        {
+            if (_valueCount == 0)
+                throw this.ValueNotFoundException(key);
+
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
+            int index = _valueBuckets[bucket];
+
+            while (index >= 0)
+            {
+                ref ValueSlot slot = ref _valueSlots[index];
+                if (slot.exists && slot.key == key)
+                    if (slot.primitive) return ref Unsafe.As<object, Boxing<T>>(ref slot.value).value;
+                    else return ref Unsafe.As<object, T>(ref slot.value);
+
+                index = slot.next;
+            }
+
+            throw this.ValueNotFoundException(key);
+        }
+
+        /// <summary>
+        /// Tries to get a reference to a struct value by key (unsafe).
+        /// </summary>
+        /// <typeparam name="T">The struct type of the value.</typeparam>
+        /// <param name="key">The key associated with the value.</param>
+        /// <param name="value">The output value if found.</param>
+        /// <returns>True if the value is found; otherwise, false.</returns>
+        public bool TryGetValueUnsafe<T>(int key, out T value)
+        {
+            if (_valueCount == 0)
+            {
+                value = default;
+                return false;
+            }
+
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _valueCapacity;
+            int index = _valueBuckets[bucket];
+
+            while (index >= 0)
+            {
+                ref ValueSlot slot = ref _valueSlots[index];
+                if (slot.exists && slot.key == key)
+                {
+                    value = slot.primitive
+                        ? Unsafe.As<object, Boxing<T>>(ref slot.value).value
+                        : Unsafe.As<object, T>(ref slot.value);
+
                     return true;
                 }
 
@@ -343,7 +354,7 @@ namespace Atomic.Entities
             tBoxing.value = value;
             this.NotifyAboutValueChanged(key);
         }
-        
+
         /// <summary>
         /// Clears all values from the entity.
         /// </summary>
@@ -377,7 +388,7 @@ namespace Atomic.Entities
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Returns an array of all key-value pairs stored in the entity.
         /// </summary>
@@ -407,19 +418,19 @@ namespace Atomic.Entities
                 if (!slot.exists)
                     continue;
 
-                var pair = new KeyValuePair<int, object>(slot.key, UnboxValue(in slot));
+                var pair = new KeyValuePair<int, object>(slot.key, UnboxValue(slot));
                 results[count++] = pair;
             }
 
             return count;
         }
-        
+
         /// <summary>
         /// Enumerates all key-value pairs stored in the entity.
         /// </summary>
         /// <returns>An enumerator over key-value pairs.</returns>
         IEnumerator<KeyValuePair<int, object>> IEntity.GetValueEnumerator() => new ValueEnumerator(this);
-        
+
         public ValueEnumerator GetValueEnumerator() => new(this);
 
         private bool FindValueIndex(in int key, out int index)
@@ -582,14 +593,16 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
         }
 
-        private KeyNotFoundException ValueNotFoundException(in int key) =>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private KeyNotFoundException ValueNotFoundException(int key) =>
             new($"The given value {EntityAPIUtils.IdToName(key)} was not present in the entity: {this.name}");
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Exception ValueAlreadyAddedException(int key) =>
             new ArgumentException($"A value with the same key {EntityAPIUtils.IdToName(key)} already has been added!");
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static object UnboxValue(in ValueSlot slot)
+        private static object UnboxValue(ValueSlot slot)
         {
             return slot.primitive
                 ? ((IBoxing) slot.value).Value
@@ -620,7 +633,7 @@ namespace Atomic.Entities
                     if (!slot.exists)
                         continue;
 
-                    _current = new KeyValuePair<int, object>(slot.key, UnboxValue(in slot));
+                    _current = new KeyValuePair<int, object>(slot.key, UnboxValue(slot));
                     return true;
                 }
 
@@ -660,7 +673,7 @@ namespace Atomic.Entities
         private sealed class Boxing<T> : IBoxing
         {
             object IBoxing.Value => value;
-            
+
             Type IBoxing.Type => typeof(T);
 
             public T value;
