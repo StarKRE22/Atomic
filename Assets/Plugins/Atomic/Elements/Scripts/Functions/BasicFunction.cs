@@ -10,23 +10,15 @@ namespace Atomic.Elements
     /// Represents a parameterless function returning a value of type <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
-    [Serializable]
     public class BasicFunction<T> : IValue<T>
     {
-        private Func<T> func;
-
-        /// <summary>
-        /// Default constructor. Does not initialize the function.
-        /// </summary>
-        public BasicFunction()
-        {
-        }
+        private readonly Func<T> func;
 
         /// <summary>
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T> func) => this.func = func;
+        public BasicFunction(Func<T> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
         /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="BasicFunction{T}"/>.
@@ -37,13 +29,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the result of the function.
         /// </summary>
-        public T Value => this.func != null ? this.func.Invoke() : default;
-
-        /// <summary>
-        /// Replaces the internal function with the given one.
-        /// </summary>
-        /// <param name="func">The function delegate to assign.</param>
-        public void Construct(Func<T> func) => this.func = func;
+        public T Value => this.func.Invoke();
 
 #if ODIN_INSPECTOR
         [Button]
@@ -51,7 +37,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the function and returns its result.
         /// </summary>
-        public T Invoke() => this.func != null ? this.func.Invoke() : default;
+        public T Invoke() => this.func.Invoke();
     }
 
     /// <summary>
@@ -62,32 +48,19 @@ namespace Atomic.Elements
     [Serializable]
     public class BasicFunction<T, R> : IFunction<T, R>
     {
-        private Func<T, R> func;
-
-        /// <summary>
-        /// Default constructor. Does not initialize the function.
-        /// </summary>
-        public BasicFunction()
-        {
-        }
+        private readonly Func<T, R> func;
 
         /// <summary>
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T, R> func) => this.func = func;
+        public BasicFunction(Func<T, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
         /// Implicit conversion from a <see cref="Func{T, R}"/> to <see cref="BasicFunction{T,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
         public static implicit operator BasicFunction<T, R>(Func<T, R> value) => new(value);
-
-        /// <summary>
-        /// Sets or replaces the function implementation.
-        /// </summary>
-        /// <param name="func">The function delegate to assign.</param>
-        public void Compose(Func<T, R> func) => this.func = func;
 
 #if ODIN_INSPECTOR
         [Button]
@@ -109,32 +82,19 @@ namespace Atomic.Elements
     [Serializable]
     public class BasicFunction<T1, T2, R> : IFunction<T1, T2, R>
     {
-        private Func<T1, T2, R> func;
-
-        /// <summary>
-        /// Default constructor. Does not initialize the function.
-        /// </summary>
-        public BasicFunction()
-        {
-        }
+        private readonly Func<T1, T2, R> func;
 
         /// <summary>
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T1, T2, R> func) => this.func = func;
+        public BasicFunction(Func<T1, T2, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
         /// Implicit conversion from a <see cref="Func{T1, T2, R}"/> to <see cref="BasicFunction{T1,T2,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
         public static implicit operator BasicFunction<T1, T2, R>(Func<T1, T2, R> value) => new(value);
-
-        /// <summary>
-        /// Sets or replaces the function implementation.
-        /// </summary>
-        /// <param name="func">The function delegate to assign.</param>
-        public void Construct(Func<T1, T2, R> func) => this.func = func;
 
 #if ODIN_INSPECTOR
         [Button]

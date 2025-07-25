@@ -1,12 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
-#endif
-
-// ReSharper disable NotAccessedField.Local
-
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
 #endif
 
 namespace Atomic.Elements
@@ -28,23 +24,14 @@ namespace Atomic.Elements
         private IAction[] actions;
 
         /// <summary>
-        /// Default constructor. Initializes an empty action group.
-        /// </summary>
-        public CompositeAction()
-        {
-        }
-
-        /// <summary>
         /// Initializes the group with the given actions.
         /// </summary>
         /// <param name="actions">A list of actions to include in the group.</param>
-        public CompositeAction(params IAction[] actions) => this.actions = actions;
+        public CompositeAction(params IAction[] actions) =>
+            this.actions = actions ?? throw new ArgumentNullException(nameof(actions));
 
-        /// <summary>
-        /// Replaces the current action list with a new set of actions.
-        /// </summary>
-        /// <param name="actions">The actions to assign to this group.</param>
-        public void Construct(params IAction[] actions) => this.actions = actions;
+        public CompositeAction(IEnumerable<IAction> actions) => this.actions =
+            actions != null ? actions.ToArray() : throw new ArgumentNullException(nameof(actions));
 
         /// <summary>
         /// Invokes all actions in the group sequentially.

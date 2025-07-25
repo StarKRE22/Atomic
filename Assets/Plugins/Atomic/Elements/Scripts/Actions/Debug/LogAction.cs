@@ -12,7 +12,7 @@ namespace Atomic.Elements
     /// An action that logs a message to the Unity console using a specified <see cref="LogType"/>.
     /// </summary>
     [Serializable]
-    public class LogAction : IAction
+    public sealed class LogAction : IAction
     {
 #if ODIN_INSPECTOR
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
