@@ -12,19 +12,20 @@ namespace Atomic.Entities
     /// Abstract base class for Unity-based factories that create and configure <see cref="Entity"/> instances.
     /// </summary>
     /// <remarks>
-    /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
-    /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
+    /// This class is designed for use in scene-based workflows where entities need to be created at runtime
+    /// from serialized MonoBehaviours (e.g. for prototyping, design-time composition, or runtime baking).
+    /// It also defines an <see cref="Install"/> method that allows injecting custom configuration logic,
+    /// such as adding tags, values, or behaviors after the entity has been created.
     /// </remarks>
-    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+    public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityFactory
     {
         /// <summary>
-        /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
-        /// and applies additional configuration via the <see cref="Install"/> method.
+        /// Creates a new <see cref="Entity"/> using the predefined initialization values,
+        /// then applies custom logic via the <see cref="Install"/> method.
         /// </summary>
-        /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
         public sealed override IEntity Create()
         {
-            var entity = new Entity(
+            Entity entity = new Entity(
                 this.initialName,
                 this.initialTagCount,
                 this.initialValueCount,
@@ -35,53 +36,64 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Applies additional logic to the newly created <see cref="Entity"/> instance.
-        /// Override this method to inject behaviors, tags, values, or other initialization logic.
+        /// Applies additional configuration to the newly created <see cref="Entity"/>.
+        /// This method can be used to inject custom logic, add components, behaviors, or metadata.
         /// </summary>
         /// <param name="entity">The entity to configure after creation.</param>
         protected abstract void Install(Entity entity);
     }
 
     /// <summary>
-    /// Abstract base class for creating <see cref="IEntity"/> instances via Unity's <see cref="ScriptableObject"/> system.
-    /// Stores initial parameters used during entity creation and allows previewing entity properties in the Editor.
+    /// Abstract base class for Unity-based factories that create <typeparamref name="E"/> entities
+    /// with customizable initial settings and optional support for scene baking workflows.
     /// </summary>
     /// <typeparam name="E">The type of entity to create. Must implement <see cref="IEntity"/>.</typeparam>
     /// <remarks>
-    /// This factory can be extended to define custom entity creation logic. The <see cref="Precompile"/> method
-    /// extracts entity metadata (like name, tag count, etc.) and stores it for optimization or display purposes.
+    /// This factory is useful for building entity templates in the Unity Editor,
+    /// where entities can be created at runtime or during a "bake" phase by converting authoring components into runtime data.
+    ///
+    /// You can override <see cref="Create"/> to define custom instantiation logic,
+    /// and use <see cref="Precompile"/> to extract editor-time metadata like name or component counts.
     /// </remarks>
-    public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
+    public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
+        /// <summary>
+        /// Initial number of tags to assign to the entity.
+        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
         protected int initialTagCount;
 
+        /// <summary>
+        /// Initial number of values to assign to the entity.
+        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
         protected int initialValueCount;
 
+        /// <summary>
+        /// Initial number of behaviours to assign to the entity.
+        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
         protected int initialBehaviourCount;
 
+        /// <summary>
+        /// Initial name to assign to the entity.
+        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Tooltip("Initial name to assign to the entity")]
         [SerializeField]
         protected string initialName;
 
@@ -103,7 +115,7 @@ namespace Atomic.Entities
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.Message}", this);
+                Debug.LogWarning($"[SceneEntityFactory] Precompile failed: {ex.Message}", this);
             }
         }
 
@@ -119,8 +131,9 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Generates a preview entity and extracts metadata such as tag count, value count, and name.
-        /// This is useful for optimizing asset previews and reducing runtime introspection.
+        /// Creates a temporary entity using <see cref="Create"/> and extracts basic metadata such as
+        /// name, tag count, value count, and behaviour count. This is useful for editor workflows,
+        /// asset previews, and scene baking optimization.
         /// </summary>
         [ContextMenu(nameof(Precompile))]
         protected virtual void Precompile()
@@ -128,7 +141,7 @@ namespace Atomic.Entities
             E entity = this.Create();
             if (entity == null)
             {
-                Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.", this);
+                Debug.LogWarning($"{nameof(SceneEntityFactory<E>)}: Create() returned null.", this);
                 return;
             }
 

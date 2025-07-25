@@ -4,7 +4,7 @@ namespace Atomic.Entities
     /// A non-generic shortcut for <see cref="IEntityView{IEntity}"/>.
     /// Represents a view that is bound to a general <see cref="IEntity"/> instance.
     /// </summary>
-    public interface IEntityView : IEntityView<IEntity>
+    public interface IEntityView : IEntityView<IEntity>, IReadOnlyEntityView
     {
     }
 
@@ -15,23 +15,8 @@ namespace Atomic.Entities
     /// <typeparam name="E">
     /// The type of entity this view represents. Must implement <see cref="IEntity"/>.
     /// </typeparam>
-    public interface IEntityView<E> where E : IEntity
+    public interface IEntityView<E> : IReadOnlyEntityView<E> where E : IEntity
     {
-        /// <summary>
-        /// The display name or identifier of the view.
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
-        /// The entity instance currently associated with this view.
-        /// </summary>
-        E Entity { get; }
-
-        /// <summary>
-        /// Indicates whether the view is currently visible (e.g., shown in the UI or active in the scene).
-        /// </summary>
-        bool IsVisible { get; }
-
         /// <summary>
         /// Displays the view for the specified entity.
         /// </summary>

@@ -164,6 +164,7 @@ namespace Atomic.Entities
             result = null;
             return false;
         }
+        
         /// <summary>
         /// Installs all <see cref="SceneEntity"/> instances found in the given scene that are not yet installed.
         /// </summary>
