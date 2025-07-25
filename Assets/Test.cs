@@ -9,8 +9,9 @@ namespace DefaultNamespace
         private void Awake()
         {
             // SimpleAction action = new SimpleAction(() => Debug.Log("Hello world!"));
-            InlineAction action = new InlineAction(() => Debug.Log("Hello world!"));
-            BasicSignal signal = new BasicSignal()
+            IAction action = new BasicAction(() => Debug.Log("Hello world!"));
+            BasicSignal signal = new BasicSignal();
+            BasicRequest request = new BasicRequest();
         }
     }
 }

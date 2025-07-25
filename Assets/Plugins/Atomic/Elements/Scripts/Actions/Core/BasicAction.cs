@@ -13,21 +13,21 @@ namespace Atomic.Elements
     /// Represents a parameterless action that can be invoked.
     /// Wraps a standard <see cref="System.Action"/> delegate.
     /// </summary>
-    public class InlineAction : IAction
+    public class BasicAction : IAction
     {
         private readonly Action action;
         
         /// <summary>
-        /// Initializes a new instance of <see cref="InlineAction"/> with the specified action.
+        /// Initializes a new instance of <see cref="BasicAction"/> with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public InlineAction(Action action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
+        public BasicAction(Action action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="InlineAction"/>.
+        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="BasicAction"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator InlineAction(Action value) => new(value);
+        public static implicit operator BasicAction(Action value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
