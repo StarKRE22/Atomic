@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Atomic.Entities
 {
@@ -22,31 +24,53 @@ namespace Atomic.Entities
             set => this.name = value;
         }
 
+        internal int instanceId;
         private string name;
-        private int instanceId;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Entity"/> class with the specified name, tags, values, and behaviours.
+        /// </summary>
+        /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
+        /// <param name="tags">A collection of tag identifiers to add to the entity. May be <c>null</c>.</param>
+        /// <param name="values">A collection of key-value pairs to add as values to the entity. May be <c>null</c>.</param>
+        /// <param name="behaviours">A collection of behaviours to attach to the entity. May be <c>null</c>.</param>
+        /// <remarks>
+        /// This constructor initializes the internal capacities for tags, values, and behaviours based on the sizes of the provided collections,
+        /// and immediately adds all specified items to the entity.
+        /// </remarks>
+        public Entity(
+            string name,
+            IEnumerable<int> tags,
+            IEnumerable<KeyValuePair<int, object>> values,
+            IEnumerable<IEntityBehaviour> behaviours
+        ) : this(name, tags?.Count() ?? 0, values?.Count() ?? 0, behaviours?.Count() ?? 0)
+        {
+            this.AddTags(tags);
+            this.AddValues(values);
+            this.AddBehaviours(behaviours);
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with optional name, tag, value, and behaviour capacities.
+        /// Initializes a new instance of the <see cref="Entity"/> class with the specified name and initial capacities
+        /// for tags, values, and behaviours.
         /// </summary>
-        /// <param name="name">The name of the entity. Defaults to an empty string if <c>null</c>.</param>
-        /// <param name="tagCapacity">Initial capacity for tags. Improves performance by reducing allocations.</param>
-        /// <param name="valueCapacity">Initial capacity for values. Improves performance by reducing allocations.</param>
-        /// <param name="behaviourCapacity">Initial capacity for behaviours. Improves performance by reducing allocations.</param>
-        public Entity(
-            string name = null,
-            int tagCapacity = 0,
-            int valueCapacity = 0,
-            int behaviourCapacity = 0
-        )
+        /// <param name="name">The name of the entity. If <c>null</c>, an empty string will be used.</param>
+        /// <param name="tagCapacity">Initial capacity for tag storage. Used to reduce memory allocations.</param>
+        /// <param name="valueCapacity">Initial capacity for value storage. Used to reduce memory allocations.</param>
+        /// <param name="behaviourCapacity">Initial capacity for behaviour storage. Used to reduce memory allocations.</param>
+        /// <remarks>
+        /// This constructor prepares internal structures for efficient use by preallocating capacity, and registers the entity
+        /// in the <see cref="EntityRegistry"/>.
+        /// </remarks>
+        public Entity(string name = null, int tagCapacity = 0, int valueCapacity = 0, int behaviourCapacity = 0)
         {
             this.name = name ?? string.Empty;
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
-
             EntityRegistry.Instance.Register(this, out this.instanceId);
         }
-
+        
         /// <summary>
         /// Releases all resources used by the entity.
         /// </summary>
@@ -77,7 +101,7 @@ namespace Atomic.Entities
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => this.instanceId == other.InstanceID;
+        public bool Equals(IEntity other) => other != null && this.instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;

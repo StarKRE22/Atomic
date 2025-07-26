@@ -41,7 +41,7 @@ namespace Atomic.Entities
         /// Adds multiple values to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IReadOnlyDictionary<int, object> values)
+        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<int, object>> values)
         {
             if (values == null)
                 return;

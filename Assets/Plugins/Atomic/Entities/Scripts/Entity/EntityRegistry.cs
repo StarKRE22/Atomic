@@ -55,7 +55,7 @@ namespace Atomic.Entities
         /// <param name="id">The unique ID assigned to the entity.</param>
         internal void Register(IEntity entity, out int id)
         {
-            id = _lastId++;
+            id = ++_lastId;
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
         }
@@ -72,6 +72,14 @@ namespace Atomic.Entities
                 this.OnRemoved?.Invoke(entity);
             }
         }
+
+        internal void Clear()
+        {
+            _entities.Clear();
+            _lastId = 0;
+        }
+
+        public bool Contains(int id) => _entities.ContainsKey(id);
 
         /// <inheritdoc />
         public bool Contains(IEntity entity) => _entities.ContainsValue(entity);
@@ -119,11 +127,8 @@ namespace Atomic.Entities
 #endif
         private static void ResetAll()
         {
-            if (_instance != null)
-            {
-                _instance._lastId = -1;
-                _instance._entities.Clear();
-            }
+            if (_instance != null) 
+                _instance.Clear();
         }
     }
 }
