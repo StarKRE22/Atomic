@@ -32,7 +32,7 @@ namespace Atomic.Entities
             // Act
             entity.AddTag(42);
             entity.AddValue(1, "value");
-            entity.AddBehaviour(new BehaviourStub());
+            entity.AddBehaviour(new EntityBehaviourStub());
 
             // Assert
             Assert.IsFalse(tagAddedCalled, "OnTagAdded should not be called after UnsubscribeAll()");

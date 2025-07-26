@@ -11,7 +11,7 @@ namespace Atomic.Entities
             var entity = new Entity("Test",
                 new[] {1, 2},
                 new Dictionary<int, object> {{1, "value"}},
-                new[] {new BehaviourStub()});
+                new[] {new EntityBehaviourStub()});
 
             entity.Dispose();
 
