@@ -209,6 +209,9 @@ namespace Atomic.Entities
         /// </summary>
         public int CopyBehaviours(IEntityBehaviour[] results)
         {
+            if (results == null)
+                throw new ArgumentNullException(nameof(results));
+            
             Array.Copy(_behaviours, results, _behaviourCount);
             return _behaviourCount;
         }

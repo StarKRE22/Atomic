@@ -11,10 +11,10 @@ namespace Atomic.Entities
         IEntityFixedUpdate,
         IEntityLateUpdate
     {
-        public bool initialized;
+        public bool spawned;
         public bool enabled;
         public bool disabled;
-        public bool disposed;
+        public bool despawned;
         public bool updated;
         public bool fixedUpdated;
         public bool lateUpdated;
@@ -23,7 +23,7 @@ namespace Atomic.Entities
 
         public void Spawn(IEntity entity)
         {
-            this.initialized = true;
+            this.spawned = true;
             this.invokationList.Add(nameof(Spawn));
         }
 
@@ -41,7 +41,7 @@ namespace Atomic.Entities
 
         public void Despawn(IEntity entity)
         {
-            this.disposed = true;
+            this.despawned = true;
             this.invokationList.Add(nameof(Despawn));
         }
 

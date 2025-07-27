@@ -81,43 +81,53 @@ namespace Atomic.Elements
             Assert.IsTrue(set.Contains("Ivan"));
         }
 
-        //NUnit Framework error!
         [TestCaseSource(nameof(UnionWith_OnStateChangedCases))]
-        public bool UnionWith_OnStateChanged(ReactiveHashSet<string> set, IEnumerable<string> items)
+        public bool UnionWith_OnStateChanged(Func<ReactiveHashSet<string>> setFactory, IEnumerable<string> items)
         {
-            //Arrange:
+            // Arrange:
             bool stateChanged = false;
+            var set = setFactory();
             set.OnStateChanged += () => stateChanged = true;
 
-            //Act:
+            // Act:
             set.UnionWith(items);
 
-            //Assert:
+            // Assert:
             return stateChanged;
         }
         
         private static IEnumerable<TestCaseData> UnionWith_OnStateChangedCases()
         {
-            yield return new TestCaseData(new ReactiveHashSet<string>(), Array.Empty<string>())
+            yield return new TestCaseData(
+                    new Func<ReactiveHashSet<string>>(() => new ReactiveHashSet<string>()),
+                    Array.Empty<string>())
                 .SetName("Empty Items")
                 .Returns(false);
 
-            yield return new TestCaseData(new ReactiveHashSet<string>(), new[] {"Petya", "Ivan", "John"})
+            yield return new TestCaseData(
+                    new Func<ReactiveHashSet<string>>(() => new ReactiveHashSet<string>()),
+                    new[] { "Petya", "Ivan", "John" })
                 .SetName("Empty Set")
                 .Returns(true);
 
             yield return new TestCaseData(
-                    new ReactiveHashSet<string>("Petya", "Ivan", "John"),
-                    new[] {"Petya", "Ivan", "John"}
-                )
+                    new Func<ReactiveHashSet<string>>(() => {
+                        var set = new ReactiveHashSet<string>();
+                        set.UnionWith(new[] { "Petya", "Ivan", "John" });
+                        return set;
+                    }),
+                    new[] { "Petya", "Ivan", "John" })
                 .SetName("All exists")
                 .Returns(false);
 
             yield return new TestCaseData(
-                    new ReactiveHashSet<string>("Petya", "Ivan"),
-                    new[] {"Petya", "Ivan", "John"}
-                )
-                .SetName("Not Empty Set")
+                    new Func<ReactiveHashSet<string>>(() => {
+                        var set = new ReactiveHashSet<string>();
+                        set.UnionWith(new[] { "Petya", "Ivan" });
+                        return set;
+                    }),
+                    new[] { "Petya", "Ivan", "John" })
+                .SetName("Partial Insert")
                 .Returns(true);
         }
 
