@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// <remarks>
     /// Called automatically by <see cref="IEntity.Despawn"/> when the entity is removed or deactivated.
     /// </remarks>
-    public interface IEntityDespawn
+    public interface IEntityDespawn : IEntityBehaviour
     {
         /// <summary>
         /// Called when the entity is despawned.

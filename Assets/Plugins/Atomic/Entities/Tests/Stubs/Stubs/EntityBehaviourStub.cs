@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityBehaviourStub :
+    public class EntityBehaviourStub :
         IEntitySpawn,
         IEntityEnable,
         IEntityDisable,
@@ -45,7 +45,7 @@ namespace Atomic.Entities
             this.invokationList.Add(nameof(Despawn));
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public virtual void OnUpdate(IEntity entity, float deltaTime)
         {
             this.updated = true;
             this.invokationList.Add(nameof(OnUpdate));

@@ -315,7 +315,7 @@ namespace Atomic.Entities
                 return false;
             }
 
-            void IEnumerator.Reset()
+            public void Reset()
             {
                 _index = 0;
                 _current = default;
