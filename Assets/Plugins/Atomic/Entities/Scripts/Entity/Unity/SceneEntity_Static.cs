@@ -112,7 +112,7 @@ namespace Atomic.Entities
             null => null,
             SceneEntity sceneEntity => sceneEntity,
             SceneEntityProxy proxy => proxy.Source,
-            _ => throw new Exception($"Can't cast {entity.Name} to {nameof(SceneEntity)}")
+            _ => throw new InvalidCastException($"Can't cast {entity.Name} to {nameof(SceneEntity)}")
         };
         
         public static E Cast<E>(IEntity entity) where E : SceneEntity => entity switch
