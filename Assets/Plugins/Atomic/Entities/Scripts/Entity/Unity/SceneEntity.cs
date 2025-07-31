@@ -16,7 +16,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+    public partial class SceneEntity : MonoBehaviour, IEntity
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -88,7 +88,7 @@ namespace Atomic.Entities
         [Space, SerializeField]
         private List<SceneEntity> children;
 
-        private int _instanceId;
+        internal int _instanceId;
         private bool _installed;
         private bool _started;
 
@@ -181,22 +181,11 @@ namespace Atomic.Entities
             EntityRegistry.Instance.Unregister(ref _instanceId);
         }
 
-        public virtual void OnAfterDeserialize()
-        {
-            this.ConstructTags();
-            this.ConstructValues();
-            this.ConstructBehaviours();
-        }
-
-        public virtual void OnBeforeSerialize()
-        {
-        }
-
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => _instanceId == other.InstanceID;
+        public bool Equals(IEntity other) =>  other != null && _instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,13 +26,11 @@ namespace Atomic.Entities
         {
             GameObject gameObject = new GameObject(name);
             SceneEntity sceneEntity = gameObject.AddComponent<SceneEntity>();
-            sceneEntity.Name = name;
 
+            sceneEntity.Name = name;
             sceneEntity.AddTags(tags);
             sceneEntity.AddValues(values);
             sceneEntity.AddBehaviours(behaviours);
-
-            sceneEntity.Install();
             return sceneEntity;
         }
         
@@ -44,13 +43,11 @@ namespace Atomic.Entities
         {
             GameObject gameObject = new GameObject(name);
             E sceneEntity = gameObject.AddComponent<E>();
+            
             sceneEntity.Name = name;
-
             sceneEntity.AddTags(tags);
             sceneEntity.AddValues(values);
             sceneEntity.AddBehaviours(behaviours);
-
-            sceneEntity.Install();
             return sceneEntity;
         }
 
