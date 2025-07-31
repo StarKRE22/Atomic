@@ -43,10 +43,9 @@ namespace Atomic.Entities
         private ValueSlot[] _valueSlots;
         private int _valueCapacity;
         private int _valueCount;
-
         private int[] _valueBuckets;
-        private int _valueFreeList;
         private int _valueLastIndex;
+        private int _valueFreeList = UNDEFINED_INDEX;
         
         /// <summary>
         /// Initial value capacity used to optimize value allocation.
@@ -279,7 +278,7 @@ namespace Atomic.Entities
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
-
+            
             if (this.FindValueIndex(in key, out _))
                 throw ValueAlreadyAddedException(key);
 
@@ -544,7 +543,10 @@ namespace Atomic.Entities
 
         private void IncreaseValueCapacity()
         {
-            _valueCapacity = GetPrime(_valueCapacity + 1);
+            _valueCapacity = _valueSlots == null 
+                ? GetPrime(_initialValueCapacity) 
+                : GetPrime(_valueCapacity + 1);  
+            
             Array.Resize(ref _valueSlots, _valueCapacity);
             Array.Resize(ref _valueBuckets, _valueCapacity);
 
@@ -567,20 +569,6 @@ namespace Atomic.Entities
         {
             int index = (int) ((uint) key % _valueCapacity);
             return ref _valueBuckets[index];
-        }
-
-        private void ConstructValues()
-        {
-            _valueCapacity = GetPrime(_initialValueCapacity);
-            _valueSlots = new ValueSlot[_valueCapacity];
-            _valueBuckets = new int[_valueCapacity];
-
-            for (int i = 0; i < _valueCapacity; i++)
-                _valueBuckets[i] = UNDEFINED_INDEX;
-
-            _valueCount = 0;
-            _valueLastIndex = 0;
-            _valueFreeList = UNDEFINED_INDEX;
         }
 
         private void NotifyAboutValueChanged(in int key)

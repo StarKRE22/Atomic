@@ -53,6 +53,7 @@ namespace Atomic.Entities
         private int _initialBehaviourCapacity;
 
         private IEntityBehaviour[] _behaviours;
+
         private int _behaviourCount;
 
         /// <summary>
@@ -61,9 +62,6 @@ namespace Atomic.Entities
         public bool HasBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour == null)
-                return false;
-
-            if (_behaviours == null)
                 return false;
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -78,9 +76,6 @@ namespace Atomic.Entities
         /// </summary>
         public bool HasBehaviour<T>() where T : IEntityBehaviour
         {
-            if (_behaviours == null)
-                return false;
-
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T)
                     return true;
@@ -96,9 +91,13 @@ namespace Atomic.Entities
             if (behaviour == null)
                 throw new ArgumentNullException(nameof(behaviour));
 
-            _behaviours ??= new IEntityBehaviour[_initialBehaviourCapacity];
-
-            if (!AddIfAbsent(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
+            if (!AddIfAbsent(
+                    ref _behaviours,
+                    ref _behaviourCount,
+                    behaviour,
+                    s_behaviourComparer,
+                    _initialBehaviourCapacity
+                ))
                 return;
 
             if (_spawned && behaviour is IEntitySpawn initBehaviour)
@@ -116,9 +115,6 @@ namespace Atomic.Entities
         /// </summary>
         public bool DelBehaviour<T>() where T : IEntityBehaviour
         {
-            if (_behaviours == null)
-                return false;
-
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
@@ -137,10 +133,7 @@ namespace Atomic.Entities
             if (behaviour == null)
                 return false;
 
-            if (_behaviours == null)
-                return false;
-
-            if (!Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
+            if (_behaviours == null || !Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
                 return false;
 
             if (_enabled)
@@ -159,9 +152,6 @@ namespace Atomic.Entities
         /// </summary>
         public void ClearBehaviours()
         {
-            if (_behaviours == null)
-                return;
-
             if (_behaviourCount == 0)
                 return;
 
@@ -189,12 +179,10 @@ namespace Atomic.Entities
         /// </summary>
         public T GetBehaviour<T>() where T : IEntityBehaviour
         {
-            if (_behaviours != null)
-                for (int i = 0; i < _behaviourCount; i++)
-                    if (_behaviours[i] is T result)
-                        return result;
-
-
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T result)
+                    return result;
+            
             throw new Exception($"Entity Behaviour of type {typeof(T).Name} is not found!");
         }
 
@@ -203,13 +191,12 @@ namespace Atomic.Entities
         /// </summary>
         public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour
         {
-            if (_behaviours != null)
-                for (int i = 0; i < _behaviourCount; i++)
-                    if (_behaviours[i] is T tBehaviour)
-                    {
-                        behaviour = tBehaviour;
-                        return true;
-                    }
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T tBehaviour)
+                {
+                    behaviour = tBehaviour;
+                    return true;
+                }
 
             behaviour = default;
             return false;
@@ -220,7 +207,7 @@ namespace Atomic.Entities
         /// </summary>
         public IEntityBehaviour GetBehaviourAt(int index)
         {
-            return _behaviours == null || index < 0 || index >= _behaviourCount
+            return index < 0 || index >= _behaviourCount
                 ? throw new IndexOutOfRangeException($"Index {index} is out of bounds.")
                 : _behaviours[index];
         }
@@ -242,7 +229,7 @@ namespace Atomic.Entities
         {
             if (_behaviours != null)
                 Array.Copy(_behaviours, results, _behaviourCount);
-            
+
             return _behaviourCount;
         }
 

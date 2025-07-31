@@ -84,9 +84,9 @@ namespace Atomic.Entities
         /// <param name="comparer">An equality comparer for item comparison.</param>
         /// <returns><c>true</c> if the item was added; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool AddIfAbsent<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer)
+        internal static bool AddIfAbsent<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer, int initialCapacity = 1)
         {
-            array ??= new T[1];
+            array ??= new T[initialCapacity];
 
             for (int i = 0; i < count; i++)
                 if (comparer.Equals(array[i], item))

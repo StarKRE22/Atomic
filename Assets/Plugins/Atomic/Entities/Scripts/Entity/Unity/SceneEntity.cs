@@ -129,10 +129,10 @@ namespace Atomic.Entities
 
         protected virtual void Awake()
         {
+            EntityRegistry.Instance.Register(this, out _instanceId);
+
             if (this.installOnAwake)
                 this.Install();
-
-            EntityRegistry.Instance.Register(this, out _instanceId);
         }
 
         protected virtual void OnEnable()
