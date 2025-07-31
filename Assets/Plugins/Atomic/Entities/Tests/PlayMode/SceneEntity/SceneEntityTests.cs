@@ -4,31 +4,7 @@ namespace Atomic.Entities
     {
        
 
-     
-        //
-        // [Test]
-        // public void HashCodeTest()
-        // {
-        //     var entity1 = SceneEntity.Create("1");
-        //     Assert.AreEqual(entity1.Id, entity1.GetHashCode());
-        // }
-        //
-        // [Test]
-        // public void WhenInstanceIdEqualsThenEquals()
-        // {
-        //     //Arrange:
-        //     var entity1 = SceneEntity.Create("1");
-        //     var entity2 = SceneEntity.Create("2");
-        //
-        //     //Act:
-        //     FieldInfo field = typeof(SceneEntity)
-        //         .GetField("_entity", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-        //
-        //     field!.SetValue(entity2, field.GetValue(entity1));
-        //
-        //     //Assert:
-        //     Assert.IsTrue(entity1.Equals(entity2));
-        // }
+        
         //
         // #endregion
         //
@@ -483,23 +459,7 @@ namespace Atomic.Entities
         //
         // #region Static
         //
-        // [UnityTest]
-        // public IEnumerator Cast()
-        // {
-        //     var entityGO = new GameObject();
-        //     SceneEntity sceneEntity = entityGO.AddComponent<SceneEntity>();
-        //     SceneEntityProxy sceneEntityProxy = entityGO.AddComponent<SceneEntityProxy>();
-        //     sceneEntityProxy._source = sceneEntity;
-        //
-        //     //Wait awake:
-        //     yield return null;
-        //
-        //     Assert.AreEqual(sceneEntity, SceneEntity.Cast(sceneEntity.Entity));
-        //     Assert.AreEqual(sceneEntity, SceneEntity.Cast(sceneEntity));
-        //     Assert.AreEqual(sceneEntity, SceneEntity.Cast(sceneEntityProxy));
-        //     Assert.AreNotEqual(sceneEntity, SceneEntity.Cast(new Entity()));
-        //     Assert.AreEqual(null, SceneEntity.Cast(null));
-        // }
+        
         //
         // [UnityTest]
         // public IEnumerator TryCast()

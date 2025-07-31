@@ -54,10 +54,11 @@ namespace Atomic.Entities
             remove => _source.OnStateChanged -= value;
         }
 
-        public E Source => _source;
-
-        [SerializeField]
-        private E _source;
+        public E Source
+        {
+            get => _source;
+            set => _source = value;
+        }
 
         public int InstanceID => _source.InstanceID;
 
@@ -66,6 +67,9 @@ namespace Atomic.Entities
             get => _source.Name;
             set => _source.Name = value;
         }
+
+        [SerializeField]
+        private E _source;
 
         public void Clear() => _source.Clear();
 
