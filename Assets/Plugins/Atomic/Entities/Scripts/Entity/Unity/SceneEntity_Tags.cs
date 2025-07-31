@@ -54,9 +54,9 @@ namespace Atomic.Entities
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Min(0)]
+        [Min(1)]
         [SerializeField]
-        private int _initialTagCapacity;
+        private int _initialTagCapacity = 1;
 
         /// <summary>
         /// Checks if the entity has a tag with the specified key.

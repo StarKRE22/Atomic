@@ -54,9 +54,9 @@ namespace Atomic.Entities
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
-        [Min(0)]
+        [Min(1)]
         [SerializeField]
-        private int _initialValueCapacity;
+        private int _initialValueCapacity = 1;
 
         /// <summary>
         /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.

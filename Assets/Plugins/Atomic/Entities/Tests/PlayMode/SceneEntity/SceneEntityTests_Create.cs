@@ -1,15 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
     public sealed partial class SceneEntityTests
     {
-        [UnityTest]
-        public IEnumerator Create()
+        [Test]
+        public void Create()
         {
             //Arrange:
             const int tag1 = 1;
@@ -28,8 +25,6 @@ namespace Atomic.Entities
             IEntityBehaviour behaviour3 = new EntityBehaviourStub();
 
             //Act:
-            yield return new WaitForEndOfFrame();
-
             var entity = SceneEntity.Create(
                 "123",
                 new[] {tag1, tag2},
@@ -75,8 +70,6 @@ namespace Atomic.Entities
                 behaviour2,
                 behaviour3
             }, entity.GetBehaviours());
-            
-            yield break;
         }
     }
 }

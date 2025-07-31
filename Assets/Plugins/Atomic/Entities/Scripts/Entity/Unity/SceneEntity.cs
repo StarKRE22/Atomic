@@ -22,7 +22,7 @@ namespace Atomic.Entities
 
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action OnStateChanged;
-        
+
         /// <inheritdoc />
         public int InstanceID => _instanceId;
 
@@ -56,7 +56,8 @@ namespace Atomic.Entities
             nameof(installInEditMode))
         ]
 #endif
-        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip(
+            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
         [SerializeField]
         private bool installInEditMode;
 
@@ -67,7 +68,8 @@ namespace Atomic.Entities
         [SerializeField]
         private bool disposeValues = true;
 
-        [SerializeField, Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+        [SerializeField,
+         Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
         private bool useUnityLifecycle = true;
 
 #if ODIN_INSPECTOR
@@ -91,41 +93,6 @@ namespace Atomic.Entities
         internal int _instanceId;
         private bool _installed;
         private bool _started;
-
-        /// <summary>
-        /// Installs all configured installers and child entities into this SceneEntity.
-        /// </summary>
-        public void Install()
-        {
-            if (_installed)
-                return;
-
-            _installed = true;
-
-            if (this.installers != null)
-            {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
-                {
-                    SceneEntityInstaller installer = this.installers[i];
-                    if (installer != null)
-                        installer.Install(this);
-                    else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
-                }
-            }
-
-            if (this.children != null)
-            {
-                for (int i = 0, count = this.children.Count; i < count; i++)
-                {
-                    SceneEntity child = this.children[i];
-                    if (child != null)
-                        child.Install();
-                    else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
-                }
-            }
-        }
 
         protected virtual void Awake()
         {
@@ -181,22 +148,57 @@ namespace Atomic.Entities
             EntityRegistry.Instance.Unregister(ref _instanceId);
         }
 
+        /// <summary>
+        /// Installs all configured installers and child entities into this SceneEntity.
+        /// </summary>
+        public void Install()
+        {
+            if (_installed)
+                return;
+
+            _installed = true;
+
+            if (this.installers != null)
+            {
+                for (int i = 0, count = this.installers.Count; i < count; i++)
+                {
+                    SceneEntityInstaller installer = this.installers[i];
+                    if (installer != null)
+                        installer.Install(this);
+                    else
+                        Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
+                }
+            }
+
+            if (this.children != null)
+            {
+                for (int i = 0, count = this.children.Count; i < count; i++)
+                {
+                    SceneEntity child = this.children[i];
+                    if (child != null)
+                        child.Install();
+                    else
+                        Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Marks the entity as not installed, allowing reinstallation.
+        /// </summary>
+        public void MarkAsNotInstalled() => _installed = false;
+
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 
         // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) =>  other != null && _instanceId == other.InstanceID;
+        public bool Equals(IEntity other) => other != null && _instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
-
-        /// <summary>
-        /// Marks the entity as not installed, allowing reinstallation.
-        /// </summary>
-        public void MarkAsNotInstalled() => _installed = false;
 
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
