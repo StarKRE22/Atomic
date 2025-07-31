@@ -12,7 +12,7 @@ namespace Atomic.Entities
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc/>
-        public event Action OnStateChanged;
+        public virtual event Action OnStateChanged;
 
         /// <inheritdoc/>
         public int InstanceID => this.instanceId;

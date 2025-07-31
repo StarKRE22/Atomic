@@ -327,7 +327,7 @@ namespace Atomic.Entities
         #endregion
 
         #region GetValue<T>
-        
+
         [Test]
         public void GetTValue_ValueIsAbsent_ThrowsKeyNotFoundException()
         {
@@ -407,13 +407,13 @@ namespace Atomic.Entities
         }
 
         #endregion
-        
+
         #region GetValue
 
         [Test]
         public void GetValue_ReturnsBoxedStruct()
         {
-            var entity = new Entity(valueCapacity:4);
+            var entity = new Entity(valueCapacity: 4);
             entity.AddValue(100, 123);
 
             object value = entity.GetValue(100);
@@ -425,7 +425,7 @@ namespace Atomic.Entities
         [Test]
         public void GetValue_ReturnsReferenceType()
         {
-            var entity = new Entity(valueCapacity:4);
+            var entity = new Entity(valueCapacity: 4);
             entity.AddValue(101, "test");
 
             object value = entity.GetValue(101);
@@ -437,7 +437,7 @@ namespace Atomic.Entities
         [Test]
         public void GetValue_Throws_WhenNoValuesExist()
         {
-            var entity = new Entity(valueCapacity:4);
+            var entity = new Entity(valueCapacity: 4);
 
             Assert.Throws<KeyNotFoundException>(() => entity.GetValue(1));
         }
@@ -445,7 +445,7 @@ namespace Atomic.Entities
         [Test]
         public void GetValue_Throws_WhenKeyNotFound()
         {
-            var entity = new Entity(valueCapacity:4);
+            var entity = new Entity(valueCapacity: 4);
             entity.AddValue(1, 10);
 
             Assert.Throws<KeyNotFoundException>(() => entity.GetValue(999));
@@ -454,14 +454,14 @@ namespace Atomic.Entities
         [Test]
         public void GetValue_ReturnsCorrectObject_ForCustomStruct()
         {
-            var entity = new Entity(valueCapacity:4);
-            var data = new PointStub { X = 1, Y = 2 };
+            var entity = new Entity(valueCapacity: 4);
+            var data = new PointStub {X = 1, Y = 2};
             entity.AddValue(77, data);
 
             object result = entity.GetValue(77);
 
             Assert.IsInstanceOf<PointStub>(result);
-            Assert.AreEqual(data, (PointStub)result);
+            Assert.AreEqual(data, (PointStub) result);
         }
 
         #endregion
@@ -523,7 +523,7 @@ namespace Atomic.Entities
 
             Assert.Throws<InvalidCastException>(() => entity.TryGetValue<int>(5, out _));
         }
-        
+
         [Test]
         public void TryGetTValue()
         {
@@ -558,7 +558,7 @@ namespace Atomic.Entities
             Assert.IsFalse(success);
             Assert.IsNull(foo);
         }
-        
+
         #endregion
 
         #region TryGetValue
@@ -616,14 +616,14 @@ namespace Atomic.Entities
         public void TryGetValue_ReturnsStruct_AsBoxedObject()
         {
             var entity = new Entity();
-            var expected = new StubStruct { A = 1, B = 2 };
+            var expected = new StubStruct {A = 1, B = 2};
             entity.AddValue(5, expected);
 
             bool found = entity.TryGetValue(5, out var result);
 
             Assert.IsTrue(found);
             Assert.IsInstanceOf<StubStruct>(result);
-            Assert.AreEqual(expected, (StubStruct)result);
+            Assert.AreEqual(expected, (StubStruct) result);
         }
 
         #endregion
@@ -740,7 +740,7 @@ namespace Atomic.Entities
         public void TryGetValueUnsafe_ReturnsCustomStructCorrectly()
         {
             var entity = new Entity();
-            var expected = new StubStruct { A = 1, B = 2 };
+            var expected = new StubStruct {A = 1, B = 2};
             entity.AddValue(3, expected);
 
             bool result = entity.TryGetValueUnsafe<StubStruct>(3, out var value);
@@ -803,7 +803,7 @@ namespace Atomic.Entities
         #endregion
 
         #region AddValue
-        
+
         [Test]
         public void AddValue()
         {
@@ -832,7 +832,7 @@ namespace Atomic.Entities
             Assert.AreEqual(addedKey, key);
             Assert.IsTrue(e.HasValue(key));
         }
-        
+
         [Test]
         public void AddValue_AlreadyAdded_ThrowsException()
         {
@@ -851,10 +851,8 @@ namespace Atomic.Entities
             Assert.AreEqual(foo1, e.GetValue<string>(key));
             Assert.AreNotEqual(foo2, e.GetValue<string>(key));
         }
-        
+
         #endregion
-
-
 
         #region AddValue<T>
 
@@ -974,7 +972,7 @@ namespace Atomic.Entities
 
             Assert.AreEqual(1, entity.ValueCount);
         }
-        
+
         [Test]
         public void DelValue()
         {
@@ -1019,9 +1017,9 @@ namespace Atomic.Entities
         }
 
         #endregion
-        
+
         #region SetValue
-        
+
         [Test]
         public void SetValue_AddsValue_IfKeyDoesNotExist()
         {
@@ -1077,7 +1075,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             Assert.Throws<ArgumentNullException>(() => entity.SetValue(1, null));
         }
-        
+
         #endregion
 
         #region SetValue<T>
@@ -1117,7 +1115,7 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
             entity.SetValue(1, "hello"); // reference type
-            entity.SetValue(1, 123);     // struct
+            entity.SetValue(1, 123); // struct
 
             int result = entity.GetValue<int>(1);
             Assert.AreEqual(123, result);
@@ -1134,7 +1132,7 @@ namespace Atomic.Entities
 
             Assert.AreEqual(777, changedKey);
         }
-        
+
         [Test]
         public void SetValue_PreviousValueIsNotExists_ValueAdded()
         {
@@ -1158,8 +1156,8 @@ namespace Atomic.Entities
             Assert.IsFalse(wasChangeEvent);
             Assert.AreEqual(foo, e.GetValue<string>(key));
         }
-        
-        
+
+
         [Test]
         public void SetValue_OverridesAddedValue()
         {
@@ -1190,12 +1188,69 @@ namespace Atomic.Entities
 
         #endregion
 
-       
+        #region ClearValues
 
+        [Test]
+        public void ClearValues_RemovesAllEntries()
+        {
+            var entity = new Entity();
+            entity.SetValue(1, 10);
+            entity.SetValue(2, "hello");
 
-      
+            entity.ClearValues();
 
-        
+            Assert.AreEqual(0, entity.ValueCount);
+            Assert.IsFalse(entity.HasValue(1));
+            Assert.IsFalse(entity.HasValue(2));
+        }
+
+        [Test]
+        public void ClearValues_InvokesOnValueDeleted_ForEachKey()
+        {
+            var entity = new Entity();
+            var deleted = new List<int>();
+            entity.OnValueDeleted += (_, key) => deleted.Add(key);
+
+            entity.SetValue(10, "a");
+            entity.SetValue(20, "b");
+
+            entity.ClearValues();
+
+            CollectionAssert.AreEquivalent(new[] {10, 20}, deleted);
+        }
+
+        [Test]
+        public void ClearValues_InvokesOnStateChanged()
+        {
+            var entity = new Entity();
+            bool changed = false;
+            entity.OnStateChanged += () => changed = true;
+
+            entity.SetValue(1, 123);
+            entity.ClearValues();
+
+            Assert.IsTrue(changed);
+        }
+
+        [Test]
+        public void ClearValues_WhenEmpty_DoesNothing()
+        {
+            var entity = new Entity();
+
+            // Should not throw
+            Assert.DoesNotThrow(() => entity.ClearValues());
+        }
+
+        [Test]
+        public void ClearValues_ValueCountIsZero()
+        {
+            var entity = new Entity();
+            entity.SetValue(1, 100);
+            entity.SetValue(2, 200);
+            entity.ClearValues();
+
+            Assert.AreEqual(0, entity.ValueCount);
+        }
 
         [Test]
         public void ClearValues()
@@ -1229,5 +1284,288 @@ namespace Atomic.Entities
             Assert.IsTrue(removedItems.Contains(key1));
             Assert.IsTrue(removedItems.Contains(key2));
         }
+
+        #endregion
+
+        #region GetValues
+
+        [Test]
+        public void GetValues_ReturnsAllKeyValuePairs()
+        {
+            var entity = new Entity();
+            entity.SetValue(1, 100);
+            entity.SetValue(2, "hello");
+            entity.SetValue(3, true);
+
+            var result = entity.GetValues();
+
+            CollectionAssert.AreEquivalent(
+                new[]
+                {
+                    new KeyValuePair<int, object>(1, 100),
+                    new KeyValuePair<int, object>(2, "hello"),
+                    new KeyValuePair<int, object>(3, true),
+                },
+                result);
+        }
+
+        [Test]
+        public void GetValues_ReturnsEmptyArray_WhenNoValues()
+        {
+            var entity = new Entity();
+
+            var result = entity.GetValues();
+
+            Assert.IsNotNull(result);
+            Assert.IsEmpty(result);
+        }
+
+        [Test]
+        public void GetValues_ReturnsCorrectCount()
+        {
+            var entity = new Entity();
+            entity.SetValue(1, 42);
+            entity.SetValue(2, 84);
+
+            var result = entity.GetValues();
+
+            Assert.AreEqual(2, result.Length);
+        }
+
+        [Test]
+        public void GetValues_DoesNotThrowWithMixedTypes()
+        {
+            var entity = new Entity();
+            entity.SetValue(1, 123);
+            entity.SetValue(2, "test");
+            entity.SetValue(3, 3.14f);
+
+            Assert.DoesNotThrow(() =>
+            {
+                var values = entity.GetValues();
+                Assert.AreEqual(3, values.Length);
+            });
+        }
+
+        [Test]
+        public void GetValues_ReturnsStructValueAddedByAddValue()
+        {
+            var entity = new Entity();
+            var value = new StubStruct {A = 1, B = 2};
+
+            entity.AddValue(1, value);
+
+            var result = entity.GetValues();
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual(1, result[0].Key);
+            Assert.AreEqual(value, result[0].Value);
+        }
+
+        [Test]
+        public void GetValues_ReturnsStructValueAddedBySetValue()
+        {
+            var entity = new Entity();
+            var value = new StubStruct {A = 3, B = 1};
+
+            entity.SetValue(5, value);
+
+            var values = entity.GetValues();
+            Assert.AreEqual(1, values.Length);
+            Assert.AreEqual(5, values[0].Key);
+            Assert.AreEqual(value, values[0].Value);
+        }
+
+        [Test]
+        public void GetValues_StructValueIsBoxedCorrectly()
+        {
+            var entity = new Entity();
+            var value = new StubStruct {A = 10, B = 3};
+
+            entity.AddValue(2, value);
+
+            object boxed = entity.GetValue(2);
+
+            Assert.IsInstanceOf<StubStruct>(boxed);
+            Assert.AreEqual(value, (StubStruct) boxed);
+        }
+
+        [Test]
+        public void GetValues_StructValueCanBeUnboxedSafely()
+        {
+            var entity = new Entity();
+            var value = new StubStruct {A = 7, B = 8};
+
+            entity.AddValue(4, value);
+
+            var allValues = entity.GetValues();
+
+            var unboxed = (StubStruct) allValues[0].Value;
+
+            Assert.AreEqual(value, unboxed);
+        }
+
+        #endregion
+
+        #region CopyValues
+
+        [Test]
+        public void CopyValues_SingleStruct_WritesCorrectly()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, 42);
+
+            var buffer = new KeyValuePair<int, object>[1];
+            int copied = entity.CopyValues(buffer);
+
+            Assert.AreEqual(1, copied);
+            Assert.AreEqual(1, buffer[0].Key);
+            Assert.AreEqual(42, buffer[0].Value);
+        }
+
+        [Test]
+        public void CopyValues_SingleReference_WritesCorrectly()
+        {
+            var entity = new Entity();
+            entity.AddValue(5, "hello");
+
+            var buffer = new KeyValuePair<int, object>[1];
+            int copied = entity.CopyValues(buffer);
+
+            Assert.AreEqual(1, copied);
+            Assert.AreEqual(5, buffer[0].Key);
+            Assert.AreEqual("hello", buffer[0].Value);
+        }
+
+        [Test]
+        public void CopyValues_MultipleEntries_CorrectCountAndValues()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, 1.5f);
+            entity.AddValue(2, "test");
+            entity.AddValue(3, true);
+
+            var buffer = new KeyValuePair<int, object>[3];
+            int copied = entity.CopyValues(buffer);
+
+            Assert.AreEqual(3, copied);
+            CollectionAssert.AreEquivalent(
+                new[]
+                {
+                    new KeyValuePair<int, object>(1, 1.5f),
+                    new KeyValuePair<int, object>(2, "test"),
+                    new KeyValuePair<int, object>(3, true),
+                },
+                buffer
+            );
+        }
+
+        [Test]
+        public void CopyValues_IgnoresDeletedSlots()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, 10);
+            entity.AddValue(2, 20);
+            entity.DelValue(1);
+
+            var buffer = new KeyValuePair<int, object>[2];
+            int copied = entity.CopyValues(buffer);
+
+            Assert.AreEqual(1, copied);
+            Assert.AreEqual(2, buffer[0].Key);
+            Assert.AreEqual(20, buffer[0].Value);
+        }
+
+        [Test]
+        public void CopyValues_NullBuffer_ThrowsArgumentNullException()
+        {
+            var entity = new Entity();
+            Assert.Throws<ArgumentNullException>(() => { entity.CopyValues(null); });
+        }
+
+        #endregion
+
+        #region GetValueEnumerator
+
+        [Test]
+        public void GetValueEnumerator_ReturnsAllAddedValues()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, "one");
+            entity.AddValue(2, 2);
+            entity.AddValue(3, true);
+
+            var results = new List<KeyValuePair<int, object>>();
+            
+            Entity.ValueEnumerator valueEnumerator = entity.GetValueEnumerator();
+            while (valueEnumerator.MoveNext()) 
+                results.Add(valueEnumerator.Current);
+
+            CollectionAssert.AreEquivalent(new[]
+            {
+                new KeyValuePair<int, object>(1, "one"),
+                new KeyValuePair<int, object>(2, 2),
+                new KeyValuePair<int, object>(3, true),
+            }, results);
+        }
+
+        [Test]
+        public void GetValueEnumerator_IgnoresDeletedValues()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, "alive");
+            entity.AddValue(2, "dead");
+            entity.DelValue(2);
+
+            var results = new List<KeyValuePair<int, object>>();
+            Entity.ValueEnumerator valueEnumerator = entity.GetValueEnumerator();
+            while (valueEnumerator.MoveNext()) 
+                results.Add(valueEnumerator.Current);
+            
+            Assert.AreEqual(1, results.Count);
+            Assert.AreEqual(1, results[0].Key);
+            Assert.AreEqual("alive", results[0].Value);
+        }
+
+        [Test]
+        public void GetValueEnumerator_EmptyEntity_ReturnsNothing()
+        {
+            var entity = new Entity();
+            var enumerator = ((IEntity) entity).GetValueEnumerator();
+
+            Assert.IsFalse(enumerator.MoveNext());
+        }
+
+        [Test]
+        public void GetValueEnumerator_MoveNext_CyclesCorrectly()
+        {
+            var entity = new Entity();
+            entity.AddValue(10, 99);
+
+            var enumerator = ((IEntity) entity).GetValueEnumerator();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual(10, enumerator.Current.Key);
+            Assert.AreEqual(99, enumerator.Current.Value);
+
+            Assert.IsFalse(enumerator.MoveNext());
+        }
+
+        [Test]
+        public void GetValueEnumerator_Reset_RewindsToStart()
+        {
+            var entity = new Entity();
+            entity.AddValue(1, "reset");
+
+            var enumerator = entity.GetValueEnumerator();
+            Assert.IsTrue(enumerator.MoveNext());
+
+            enumerator.Reset();
+
+            Assert.IsTrue(enumerator.MoveNext());
+            Assert.AreEqual(1, enumerator.Current.Key);
+            Assert.AreEqual("reset", enumerator.Current.Value);
+        }
+
+        #endregion
     }
 }

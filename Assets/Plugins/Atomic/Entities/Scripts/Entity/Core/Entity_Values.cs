@@ -415,10 +415,10 @@ namespace Atomic.Entities
             _valueFreeList = UNDEFINED_INDEX;
             _valueLastIndex = 0;
 
+            this.OnStateChanged?.Invoke();
+
             for (int i = 0; i < removedCount; i++)
                 this.OnValueDeleted?.Invoke(this, removedItems[i]);
-
-            this.OnStateChanged?.Invoke();
         }
 
         /// <summary>
