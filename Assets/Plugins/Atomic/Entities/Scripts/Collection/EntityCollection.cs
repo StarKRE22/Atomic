@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -143,6 +144,7 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool Add(E item)
         {
+            Debug.Log($"ADD {item}");
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
@@ -359,19 +361,21 @@ namespace Atomic.Entities
 
             if (_count == 0 || item == null)
                 return false;
-
-            int i = this.Bucket(item);
-            while (i != UNDEFINED_INDEX)
+            
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _slots.Length;
+            int next = _buckets[bucket];
+            
+            while (next != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[i];
-
+                ref Slot slot = ref _slots[next];
                 if (slot.exists && s_comparer.Equals(slot.value, item))
                 {
-                    index = i;
+                    index = next;
                     return true;
                 }
 
-                i = slot.next;
+                next = slot.next;
             }
 
             return false;
@@ -379,7 +383,7 @@ namespace Atomic.Entities
 
         private void IncreaseCapacity()
         {
-            int size = GetPrime(_slots.Length);
+            int size = GetPrime(_slots.Length + 1);
 
             Array.Resize(ref _slots, size);
 
@@ -427,10 +431,14 @@ namespace Atomic.Entities
             }
 
             // Get the reference to the corresponding bucket for the item
-            ref int bucket = ref this.Bucket(item);
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _slots.Length;
+            int next = _buckets[bucket];
+            
+            // Update the hash bucket to point to the new slot
+            _buckets[bucket] = index;
 
             // Save the current head of the chain in case of hash collision
-            int next = bucket;
 
             int left, right;
 
@@ -454,9 +462,6 @@ namespace Atomic.Entities
                 // Update tail
                 _tail = index;
             }
-
-            // Update the hash bucket to point to the new slot
-            bucket = index;
 
             // Store the new slot
             _slots[index] = new Slot

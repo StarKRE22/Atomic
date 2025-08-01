@@ -169,7 +169,7 @@ namespace Atomic.Entities
         {
             if (_valueCount == 0)
             {
-                value = default;
+                value = null;
                 return false;
             }
 
