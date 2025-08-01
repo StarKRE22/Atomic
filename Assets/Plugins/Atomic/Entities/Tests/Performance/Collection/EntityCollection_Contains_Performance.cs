@@ -6,7 +6,7 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Entities
 {
-    public class EntityCollection_Contains_Performance
+    public sealed class EntityCollection_Contains_Performance
     {
         [Test, Performance]
         public void Contains_EntityCollection()
@@ -28,7 +28,7 @@ namespace Atomic.Entities
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("EntityCollection.Contains()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("EntityCollection.Contains()"))
                 .Run();
         }
 
@@ -52,7 +52,7 @@ namespace Atomic.Entities
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("List.Contains()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("List.Contains()"))
                 .Run();
         }
 
@@ -76,7 +76,7 @@ namespace Atomic.Entities
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("HashSet.Contains()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("HashSet.Contains()"))
                 .Run();
         }
     }
