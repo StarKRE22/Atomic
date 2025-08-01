@@ -303,7 +303,7 @@ namespace Atomic.Entities
             {
                 _entity = entity;
                 _index = 0;
-                _current = default;
+                _current = 0;
             }
 
             public bool MoveNext()
@@ -318,14 +318,14 @@ namespace Atomic.Entities
                     }
                 }
 
-                _current = default;
+                _current = 0;
                 return false;
             }
 
             void IEnumerator.Reset()
             {
                 _index = 0;
-                _current = default;
+                _current = 0;
             }
 
             public void Dispose()

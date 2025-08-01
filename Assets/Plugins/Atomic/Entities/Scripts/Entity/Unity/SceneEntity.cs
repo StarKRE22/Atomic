@@ -44,7 +44,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("If this option is enabled, the Install() method will be called on Awake()")]
         [SerializeField]
-        private bool installOnAwake = true;
+        internal bool installOnAwake = true;
 
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0)]
@@ -81,14 +81,14 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space, SerializeField]
-        private List<SceneEntityInstaller> installers;
+        internal List<SceneEntityInstaller> installers;
 
 #if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space, SerializeField]
-        private List<SceneEntity> children;
+        internal List<SceneEntity> children;
 
         internal int _instanceId;
         private bool _installed;
@@ -156,8 +156,8 @@ namespace Atomic.Entities
             if (_installed)
                 return;
 
-            _installed = true;
-
+            this.OnInstall();
+            
             if (this.installers != null)
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
@@ -181,6 +181,12 @@ namespace Atomic.Entities
                         Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
                 }
             }
+            
+            _installed = true;
+        }
+
+        protected virtual void OnInstall()
+        {
         }
 
         /// <summary>

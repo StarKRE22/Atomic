@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests
+    public sealed class SceneEntityTests_DestroyEntity
     {
         [UnityTest]
         public IEnumerator DestroyEntity_RemovesSceneEntity_Immediately_WhenDelayIsZero()

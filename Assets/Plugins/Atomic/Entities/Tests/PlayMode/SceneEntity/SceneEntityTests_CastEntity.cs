@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests
+    public sealed class SceneEntityTests_CastEntity
     {
         #region Cast
 
