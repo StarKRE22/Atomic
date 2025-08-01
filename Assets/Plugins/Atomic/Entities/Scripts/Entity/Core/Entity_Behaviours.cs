@@ -186,7 +186,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns the behaviour instance at the given index.
         /// </summary>
-        public IEntityBehaviour GetBehaviourAt(in int index)
+        public IEntityBehaviour GetBehaviourAt(int index)
         {
             if (index < 0 || index >= _behaviourCount)
                 throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
@@ -237,7 +237,7 @@ namespace Atomic.Entities
             {
                 _entity = entity;
                 _index = -1;
-                _current = default;
+                _current = null;
             }
 
             public bool MoveNext()
@@ -252,7 +252,7 @@ namespace Atomic.Entities
             public void Reset()
             {
                 _index = -1;
-                _current = default;
+                _current = null;
             }
 
             public void Dispose()
