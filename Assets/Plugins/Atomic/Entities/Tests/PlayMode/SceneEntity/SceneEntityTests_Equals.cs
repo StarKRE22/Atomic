@@ -23,7 +23,7 @@ namespace Atomic.Entities
             var entity2 = SceneEntity.Create("2");
 
             //Act:
-            entity2._instanceId = entity1._instanceId;
+            entity2.InstanceID = entity1.InstanceID;
 
             //Assert:
             Assert.IsTrue(entity1.Equals(entity2));
@@ -57,7 +57,7 @@ namespace Atomic.Entities
             var entity2 = SceneEntity.Create("Test");
 
             // Принудительно присваиваем один и тот же InstanceID
-            entity2._instanceId = entity1.InstanceID;
+            entity2.InstanceID = entity1.InstanceID;
 
             Assert.IsTrue(entity1.Equals((object) entity2));
         }

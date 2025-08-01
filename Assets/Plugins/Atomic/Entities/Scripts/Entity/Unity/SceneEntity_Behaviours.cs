@@ -50,7 +50,7 @@ namespace Atomic.Entities
 #endif
         [Min(0)]
         [SerializeField]
-        private int _initialBehaviourCapacity;
+        private int initialBehaviourCapacity;
 
         private IEntityBehaviour[] _behaviours;
 
@@ -96,7 +96,7 @@ namespace Atomic.Entities
                     ref _behaviourCount,
                     behaviour,
                     s_behaviourComparer,
-                    _initialBehaviourCapacity
+                    this.initialBehaviourCapacity
                 ))
                 return;
 

@@ -24,7 +24,11 @@ namespace Atomic.Entities
         public event Action OnStateChanged;
 
         /// <inheritdoc />
-        public int InstanceID => _instanceId;
+        public int InstanceID
+        {
+            get => _instanceId;
+            internal set => _instanceId = value;
+        }
 
         /// <inheritdoc />
         public string Name
@@ -90,7 +94,7 @@ namespace Atomic.Entities
         [Space, SerializeField]
         internal List<SceneEntity> children;
 
-        internal int _instanceId;
+        private int _instanceId;
         private bool _installed;
         private bool _started;
 
@@ -157,7 +161,7 @@ namespace Atomic.Entities
                 return;
 
             this.OnInstall();
-            
+
             if (this.installers != null)
             {
                 for (int i = 0, count = this.installers.Count; i < count; i++)
@@ -181,7 +185,7 @@ namespace Atomic.Entities
                         Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
                 }
             }
-            
+
             _installed = true;
         }
 

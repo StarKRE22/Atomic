@@ -183,8 +183,17 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IEntity Install(this IEntity entity, IEntityInstaller installer)
         {
-            installer.Install(entity);
+            installer?.Install(entity);
             return entity;
+        }
+        
+        public static void Install(this IEntity entity, IEnumerable<IEntityInstaller> installers)
+        {
+            if (installers == null)
+                return;
+
+            foreach (IEntityInstaller installer in installers) 
+                installer.Install(entity);
         }
 
         /// <summary>

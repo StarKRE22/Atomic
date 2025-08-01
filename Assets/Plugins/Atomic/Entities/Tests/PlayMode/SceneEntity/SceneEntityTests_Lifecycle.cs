@@ -2,14 +2,14 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public sealed partial class EntityTests
+    public sealed partial class SceneEntityTests
     {
         #region OnSpawned
 
         [Test]
         public void OnSpawned_IsInvoked_WhenEntityIsSpawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             bool wasCalled = false;
 
             entity.OnSpawned += () => wasCalled = true;
@@ -22,7 +22,7 @@ namespace Atomic.Entities
         [Test]
         public void OnSpawned_IsNotInvoked_WhenNotSpawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             bool wasCalled = false;
 
             entity.OnSpawned += () => wasCalled = true;
@@ -35,7 +35,7 @@ namespace Atomic.Entities
         [Test]
         public void OnSpawned_IsInvokedOnlyOnce_WhenSpawnCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             int callCount = 0;
 
             entity.OnSpawned += () => callCount++;
@@ -54,7 +54,7 @@ namespace Atomic.Entities
         [Test]
         public void OnEnabled_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             bool wasCalled = false;
 
             entity.OnEnabled += () => wasCalled = true;
@@ -67,7 +67,7 @@ namespace Atomic.Entities
         [Test]
         public void OnEnabled_IsNotInvoked_WhenAlreadyEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Enable(); // уже включено
 
             bool wasCalled = false;
@@ -81,7 +81,7 @@ namespace Atomic.Entities
         [Test]
         public void OnEnabled_IsNotInvoked_WhenEntityRemainsDisabled()
         {
-            var entity = new Entity(); // по умолчанию выключен?
+            var entity = SceneEntity.Create(); // по умолчанию выключен?
 
             bool wasCalled = false;
             entity.OnEnabled += () => wasCalled = true;
@@ -98,7 +98,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsInvoked_WhenEntityIsDisabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn(); // сначала нужно заспаунить
             entity.Enable();
 
@@ -113,7 +113,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsNotInvoked_IfEntityNotEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn(); // только спаун, не включаем
 
             bool wasCalled = false;
@@ -127,7 +127,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDisabled_IsInvoked_OnlyOnce_WhenCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -144,7 +144,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_ChangesEnabledStateToFalse()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -160,7 +160,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDespawned_IsInvoked_WhenEntityIsDespawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool wasCalled = false;
@@ -174,7 +174,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDespawned_IsNotInvoked_WhenNotSpawned()
         {
-            var entity = new Entity(); // не спаунен
+            var entity = SceneEntity.Create(); // не спаунен
 
             bool wasCalled = false;
             entity.OnDespawned += () => wasCalled = true;
@@ -187,7 +187,7 @@ namespace Atomic.Entities
         [Test]
         public void OnDespawned_IsInvoked_OnlyOnce_WhenDespawnCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             int callCount = 0;
@@ -203,7 +203,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_ChangesSpawnedStateToFalse()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             entity.Despawn();
@@ -218,7 +218,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -233,7 +233,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             // не вызываем Enable()
 
@@ -248,7 +248,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -265,7 +265,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = new Entity(); // не вызываем Spawn()
+            var entity = SceneEntity.Create(); // не вызываем Spawn()
 
             bool wasCalled = false;
             entity.OnUpdated += _ => wasCalled = true;
@@ -282,7 +282,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -297,7 +297,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn(); // Не включаем
 
             bool wasCalled = false;
@@ -311,7 +311,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -328,7 +328,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = new Entity(); // Не вызываем Spawn()
+            var entity = SceneEntity.Create(); // Не вызываем Spawn()
 
             bool wasCalled = false;
             entity.OnFixedUpdated += _ => wasCalled = true;
@@ -345,7 +345,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_IsInvoked_WhenEntityIsEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -360,7 +360,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn(); // не вызываем Enable()
 
             bool wasCalled = false;
@@ -374,7 +374,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdated_CanBeCalledMultipleTimes()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -391,7 +391,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_DoesNothing_WhenNotSpawned()
         {
-            var entity = new Entity(); // не спаунен
+            var entity = SceneEntity.Create(); // не спаунен
 
             bool wasCalled = false;
             entity.OnLateUpdated += _ => wasCalled = true;
@@ -408,14 +408,14 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_IsFalse_ByDefault()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             Assert.IsFalse(entity.Spawned);
         }
 
         [Test]
         public void Spawned_IsTrue_AfterSpawn()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             Assert.IsTrue(entity.Spawned);
@@ -424,7 +424,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_IsFalse_AfterDespawn()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Despawn();
 
@@ -434,7 +434,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawned_RemainsTrue_OnMultipleSpawnCalls()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Spawn(); // повторный вызов
 
@@ -448,14 +448,14 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_ByDefault()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
         public void Enabled_IsTrue_AfterEnable()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -465,7 +465,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_AfterDisable()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
             entity.Disable();
@@ -476,7 +476,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_IsFalse_AfterDespawn()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
             entity.Despawn(); // вызывает Disable()
@@ -487,7 +487,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_RemainsTrue_OnMultipleEnableCalls()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
             entity.Enable(); // повторный вызов
@@ -498,7 +498,7 @@ namespace Atomic.Entities
         [Test]
         public void Enabled_RemainsFalse_OnMultipleDisableCalls()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
             entity.Disable();
@@ -514,7 +514,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_SetsSpawnedTrue()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             Assert.IsTrue(entity.Spawned);
@@ -523,7 +523,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_DoesNothing_IfAlreadySpawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool called = false;
@@ -537,7 +537,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesOnSpawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
 
             bool called = false;
             entity.OnSpawned += () => called = true;
@@ -551,7 +551,7 @@ namespace Atomic.Entities
         public void Spawn_InvokesIEntitySpawnInterfaces()
         {
             var stub = new EntitySpawnStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
 
             entity.AddBehaviour(stub);
             entity.Spawn();
@@ -562,7 +562,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesOnStateChanged()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
 
             bool called = false;
             entity.OnStateChanged += () => called = true;
@@ -576,7 +576,7 @@ namespace Atomic.Entities
         public void Spawn()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var wasEvent = false;
             var behaviourStub = new EntityBehaviourStub();
 
@@ -599,7 +599,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_SetsSpawnedFalse()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             entity.Despawn();
@@ -610,7 +610,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_DoesNothing_IfNotSpawned()
         {
-            var entity = new Entity(); // Не вызывали Spawn()
+            var entity = SceneEntity.Create(); // Не вызывали Spawn()
 
             bool called = false;
             entity.OnDespawned += () => called = true;
@@ -623,7 +623,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_DisablesEntity_IfEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -636,7 +636,7 @@ namespace Atomic.Entities
         public void Despawn_InvokesIEntityDespawnBehaviours()
         {
             var stub = new EntityDespawnStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -648,7 +648,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_InvokesOnDespawnedEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool called = false;
@@ -662,7 +662,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_InvokesOnStateChanged()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool stateChanged = false;
@@ -676,7 +676,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_CalledMultipleTimes_OnlyFirstAffectsState()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Despawn();
 
@@ -692,7 +692,7 @@ namespace Atomic.Entities
         public void Despawn()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var wasEvent = false;
             var behaviourStub = new EntityBehaviourStub();
 
@@ -719,7 +719,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_SetsEnabledTrue()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             entity.Enable();
@@ -730,7 +730,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_CallsSpawn_IfNotSpawned()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             bool spawned = false;
             entity.OnSpawned += () => spawned = true;
 
@@ -744,7 +744,7 @@ namespace Atomic.Entities
         public void Enable_InvokesIEntityEnable()
         {
             var stub = new EntityEnableStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -756,7 +756,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesOnEnabledEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool called = false;
@@ -770,7 +770,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesOnStateChanged()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool stateChanged = false;
@@ -784,7 +784,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_DoesNotCallTwice()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -800,7 +800,7 @@ namespace Atomic.Entities
         public void Enable()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var initEvent = false;
             var enabledEvent = false;
             var behaviourStub = new EntityBehaviourStub();
@@ -835,7 +835,7 @@ namespace Atomic.Entities
         public void Disable()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var wasEvent = false;
             var behaviourStub = new EntityBehaviourStub();
 
@@ -856,7 +856,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_SetsEnabledFalse()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -869,7 +869,7 @@ namespace Atomic.Entities
         public void Disable_InvokesIEntityDisable()
         {
             var stub = new EntityDisableStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -882,7 +882,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesOnDisabledEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -897,7 +897,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesOnStateChanged()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
 
@@ -912,7 +912,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_DoesNothing_IfNotEnabled()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
 
             bool wasCalled = false;
@@ -926,7 +926,7 @@ namespace Atomic.Entities
         [Test]
         public void Disable_CanBeCalledMultipleTimes_Safely()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.Spawn();
             entity.Enable();
             entity.Disable();
@@ -947,7 +947,7 @@ namespace Atomic.Entities
         public void Update()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 
@@ -967,7 +967,7 @@ namespace Atomic.Entities
         public void OnUpdate_DoesNothing_IfEntityNotEnabled()
         {
             var stub = new EntityUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn(); // но не Enable()
@@ -980,7 +980,7 @@ namespace Atomic.Entities
         public void OnUpdate_CallsUpdateOnRegisteredBehaviours()
         {
             var stub = new EntityUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -994,7 +994,7 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_InvokesOnUpdatedEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             float calledDelta = -1f;
 
             entity.OnUpdated += dt => calledDelta = dt;
@@ -1012,7 +1012,7 @@ namespace Atomic.Entities
             var stub1 = new DisableDuringUpdateStub();
             var stub2 = new EntityUpdateStub();
 
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
@@ -1032,7 +1032,7 @@ namespace Atomic.Entities
         public void OnFixedUpdate_DoesNothing_IfEntityNotEnabled()
         {
             var stub = new EntityFixedUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn(); // не включаем
@@ -1045,7 +1045,7 @@ namespace Atomic.Entities
         public void OnFixedUpdate_CallsRegisteredFixedUpdateBehaviours()
         {
             var stub = new EntityFixedUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -1060,7 +1060,7 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_InvokesOnFixedUpdatedEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             float delta = -1f;
 
             entity.OnFixedUpdated += dt => delta = dt;
@@ -1079,7 +1079,7 @@ namespace Atomic.Entities
             var stub1 = new DisableDuringFixedUpdateStub();
             var stub2 = new EntityFixedUpdateStub();
 
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
@@ -1095,7 +1095,7 @@ namespace Atomic.Entities
         public void FixedUpdate()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 
@@ -1120,7 +1120,7 @@ namespace Atomic.Entities
         public void OnLateUpdate_DoesNothing_WhenEntityDisabled()
         {
             var stub = new EntityLateUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -1134,7 +1134,7 @@ namespace Atomic.Entities
         public void OnLateUpdate_CallsRegisteredLateUpdateBehaviours()
         {
             var stub = new EntityLateUpdateStub();
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
@@ -1149,7 +1149,7 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_InvokesOnLateUpdatedEvent()
         {
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             float calledDelta = -1f;
 
             entity.OnLateUpdated += dt => calledDelta = dt;
@@ -1167,7 +1167,7 @@ namespace Atomic.Entities
             var stub1 = new DisableDuringLateUpdateStub();
             var stub2 = new EntityLateUpdateStub();
 
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
@@ -1183,7 +1183,7 @@ namespace Atomic.Entities
         public void LateUpdate()
         {
             //Arrange
-            var entity = new Entity();
+            var entity = SceneEntity.Create();
             var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 

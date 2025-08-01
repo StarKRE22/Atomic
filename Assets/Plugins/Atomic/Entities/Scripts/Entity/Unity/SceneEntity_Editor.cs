@@ -98,9 +98,9 @@ namespace Atomic.Entities
         /// </summary>
         private void Precompile()
         {
-            _initialTagCapacity = _tagCount;
-            _initialValueCapacity = _valueCount;
-            _initialBehaviourCapacity = _behaviourCount;
+            initialTagCapacity = _tagCount;
+            initialValueCapacity = _valueCount;
+            initialBehaviourCapacity = _behaviourCount;
         }
 
         /// <summary>

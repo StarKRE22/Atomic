@@ -56,7 +56,7 @@ namespace Atomic.Entities
 #endif
         [Min(1)]
         [SerializeField]
-        private int _initialTagCapacity = 1;
+        private int initialTagCapacity = 1;
 
         /// <summary>
         /// Checks if the entity has a tag with the specified key.
@@ -163,7 +163,7 @@ namespace Atomic.Entities
         private void IncreaseTagCapacity()
         {
             _tagCapacity = _tagSlots == null 
-                ? GetPrime(_initialTagCapacity) 
+                ? GetPrime(initialTagCapacity) 
                 : GetPrime(_tagCapacity + 1);
             
             Array.Resize(ref _tagSlots, _tagCapacity);

@@ -7,6 +7,7 @@ using static Atomic.Entities.InternalUtils;
 
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -56,7 +57,7 @@ namespace Atomic.Entities
 #endif
         [Min(1)]
         [SerializeField]
-        private int _initialValueCapacity = 1;
+        private int initialValueCapacity = 1;
 
         /// <summary>
         /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.
@@ -544,7 +545,7 @@ namespace Atomic.Entities
         private void IncreaseValueCapacity()
         {
             _valueCapacity = _valueSlots == null 
-                ? GetPrime(_initialValueCapacity) 
+                ? GetPrime(initialValueCapacity) 
                 : GetPrime(_valueCapacity + 1);  
             
             Array.Resize(ref _valueSlots, _valueCapacity);

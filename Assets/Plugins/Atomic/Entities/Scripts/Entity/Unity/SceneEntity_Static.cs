@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,40 +14,97 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity
     {
+        [Serializable]
+        public struct CreateArgs
+        {
+            public string name;
+            public IEnumerable<int> tags;
+            public IReadOnlyDictionary<int, object> values;
+            public IEnumerable<IEntityBehaviour> behaviours;
+            public List<SceneEntityInstaller> installers;
+            public List<SceneEntity> children;
+
+            public int initialTagCapacity;
+            public int initialValueCapacity;
+            public int initialBehaviourCapacity;
+            
+            public bool installOnAwake;
+            public bool disposeValues;
+            public bool useUnityLifecycle;
+        }
+
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static SceneEntity Create(
-            string name = null,
-            IEnumerable<int> tags = null,
-            IReadOnlyDictionary<int, object> values = null,
-            IEnumerable<IEntityBehaviour> behaviours = null
-        ) => Create<SceneEntity>(name, tags, values, behaviours);
+        public static SceneEntity Create(CreateArgs args) => Create<SceneEntity>(args);
 
+        public static E Create<E>(CreateArgs args) where E : SceneEntity
+        {
+            GameObject gameObject = new GameObject();
+            gameObject.SetActive(false);
+
+            E sceneEntity = gameObject.AddComponent<E>();
+
+            sceneEntity.name = args.name;
+            
+            sceneEntity.installers = args.installers;
+            sceneEntity.children = args.children;
+            
+            sceneEntity.installOnAwake = args.installOnAwake;
+            sceneEntity.disposeValues = args.disposeValues;
+            sceneEntity.useUnityLifecycle = args.useUnityLifecycle;
+            
+            sceneEntity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
+            sceneEntity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
+            sceneEntity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+            
+            sceneEntity.AddTags(args.tags);
+            sceneEntity.AddValues(args.values);
+            sceneEntity.AddBehaviours(args.behaviours);
+            
+            gameObject.SetActive(true);
+            return sceneEntity;
+        }
+        
         public static E Create<E>(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
             IEnumerable<IEntityBehaviour> behaviours = null
-        ) where E : SceneEntity
+        ) where E : SceneEntity => Create<E>(new CreateArgs
         {
-            GameObject gameObject = new GameObject(name);
-            E sceneEntity = gameObject.AddComponent<E>();
-            
-            sceneEntity.Name = name;
-            sceneEntity.AddTags(tags);
-            sceneEntity.AddValues(values);
-            sceneEntity.AddBehaviours(behaviours);
-            return sceneEntity;
-        }
+            name = name,
+            tags = tags,
+            values = values,
+            behaviours = behaviours,
+            initialTagCapacity = tags?.Count() ?? 1,
+            initialValueCapacity = tags?.Count() ?? 1,
+            initialBehaviourCapacity = tags?.Count() ?? 1
+        });
+
+        public static SceneEntity Create(
+            string name = null,
+            IEnumerable<int> tags = null,
+            IReadOnlyDictionary<int, object> values = null,
+            IEnumerable<IEntityBehaviour> behaviours = null
+        ) => Create(new CreateArgs
+            {
+                name = name,
+                tags = tags,
+                values = values,
+                behaviours = behaviours,
+                initialTagCapacity = tags?.Count() ?? 1,
+                initialValueCapacity = tags?.Count() ?? 1,
+                initialBehaviourCapacity = tags?.Count() ?? 1
+            });
 
         /// <summary>
         /// Instantiates a prefab and installs the resulting <see cref="SceneEntity"/> under the specified parent.
         /// </summary>
-        public static SceneEntity Create(SceneEntity prefab, Transform parent = null) => 
+        public static SceneEntity Create(SceneEntity prefab, Transform parent = null) =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
-        public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity => 
+        public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
         /// <summary>
@@ -84,7 +142,7 @@ namespace Atomic.Entities
         /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
         /// </summary>
         public static SceneEntity Cast(IEntity entity) => Cast<SceneEntity>(entity);
-        
+
         public static E Cast<E>(IEntity entity) where E : SceneEntity => entity switch
         {
             null => null,
@@ -96,7 +154,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
         /// </summary>
-        public static bool TryCast(IEntity entity, out SceneEntity result) => 
+        public static bool TryCast(IEntity entity, out SceneEntity result) =>
             TryCast<SceneEntity>(entity, out result);
 
         public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity
@@ -122,7 +180,7 @@ namespace Atomic.Entities
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallAll(Scene scene) => InstallAll<SceneEntity>(scene);
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallAll<E>(Scene scene) where E : SceneEntity
         {
