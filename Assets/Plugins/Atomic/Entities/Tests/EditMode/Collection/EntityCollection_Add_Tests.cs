@@ -20,6 +20,12 @@ namespace Atomic.Entities
             _collection.OnStateChanged += () => _stateChanged = true;
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            EntityRegistry.Instance.Clear();
+        }
+
         [Test]
         public void Add_NewEntity_ShouldReturnTrue_AndTriggerEvents()
         {
