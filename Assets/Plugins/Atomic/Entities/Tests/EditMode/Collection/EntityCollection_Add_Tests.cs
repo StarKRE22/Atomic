@@ -54,5 +54,26 @@ namespace Atomic.Entities
             Assert.IsNull(_addedEntity, "OnAdded should not be triggered on null");
             Assert.IsFalse(_stateChanged, "OnStateChanged should not be triggered on null");
         }
+        
+        [Test]
+        public void Add_1000_Entities_Successfully()
+        {
+            // Arrange
+            var collection = new EntityCollection<Entity>();
+
+            // Act
+            for (int i = 0; i < 1000; i++)
+            {
+                var entity = new Entity();
+                bool added = collection.Add(entity);
+
+                // Assert each add succeeds
+                Assert.IsTrue(added, $"Failed to add entity at index {i}");
+                Assert.IsTrue(collection.Contains(entity), $"Entity not found after adding at index {i}");
+            }
+
+            // Assert total count
+            Assert.AreEqual(1000, collection.Count);
+        }
     }
 }

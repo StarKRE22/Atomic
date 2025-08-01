@@ -3,7 +3,6 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -64,13 +63,12 @@ namespace Atomic.Entities
     {
         private protected const int UNDEFINED_INDEX = -1;
 
-        private protected static readonly IEqualityComparer<E> s_comparer = EqualityComparer<E>.Default;
         private protected static readonly ArrayPool<E> s_arrayPool = ArrayPool<E>.Shared;
 
         private protected struct Slot
         {
             public E value;
-            public bool exists;
+            public int hashCode;
 
             public int next; //hash collision chain
             public int left; //previous in linked list
@@ -92,6 +90,7 @@ namespace Atomic.Entities
         public bool IsReadOnly => false;
 
         private protected Slot[] _slots;
+        private protected int _capacity;
         private protected int _count;
 
         //hash table
@@ -106,7 +105,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with default capacity.
         /// </summary>
-        public EntityCollection() : this(0) { }
+        public EntityCollection() : this(1)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with a predefined capacity.
@@ -133,7 +134,28 @@ namespace Atomic.Entities
         public EntityCollection(IEnumerable<E> elements) : this(elements.Count()) => this.AddRange(elements);
 
         /// <inheritdoc cref="IEntityCollection{E}.Contains" />
-        public bool Contains(E item) => item != null && this.FindIndex(item, out _);
+        public bool Contains(E item)
+        {
+            if (_count == 0 || item == null)
+                return false;
+
+            int id = item.InstanceID;
+            
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int current = _buckets[bucket];
+
+            while (current != UNDEFINED_INDEX)
+            {
+                Slot slot = _slots[current];
+                if (slot.hashCode == id)
+                    return true;
+
+                current = slot.next;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Adds an item to the set. Part of <see cref="ICollection{T}"/>.
@@ -144,7 +166,6 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool Add(E item)
         {
-            Debug.Log($"ADD {item}");
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
@@ -194,10 +215,10 @@ namespace Atomic.Entities
                 _buckets[i] = UNDEFINED_INDEX;
 
                 ref Slot slot = ref _slots[i];
-                if (!slot.exists)
+                if (slot.hashCode == UNDEFINED_INDEX)
                     continue;
 
-                slot.exists = false;
+                slot.hashCode = UNDEFINED_INDEX;
                 slot.next = UNDEFINED_INDEX;
                 slot.left = UNDEFINED_INDEX;
                 slot.right = UNDEFINED_INDEX;
@@ -269,12 +290,12 @@ namespace Atomic.Entities
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
 
-            int currentIndex = _head;
-            while (currentIndex != UNDEFINED_INDEX)
+            int index = _head;
+            while (index != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref Slot slot = ref _slots[index];
                 results.Add(slot.value);
-                currentIndex = slot.right;
+                index = slot.right;
             }
         }
 
@@ -331,8 +352,8 @@ namespace Atomic.Entities
         private ref int Bucket(E item)
         {
             int hash = item.GetHashCode() & 0x7FFFFFFF;
-            int index = hash % _slots.Length;
-            return ref _buckets[index];
+            int bucket = hash % _capacity;
+            return ref _buckets[bucket];
         }
 
         private void Initialize(int capacity)
@@ -340,12 +361,12 @@ namespace Atomic.Entities
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = GetPrime(capacity);
+            _capacity = GetPrime(capacity);
 
-            _slots = new Slot[size];
-            _buckets = new int[size];
+            _slots = new Slot[_capacity];
+            _buckets = new int[_capacity];
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < _capacity; i++)
                 _buckets[i] = UNDEFINED_INDEX;
 
             _count = 0;
@@ -361,21 +382,23 @@ namespace Atomic.Entities
 
             if (_count == 0 || item == null)
                 return false;
-            
+
+            int instanceID = item.InstanceID;
+
             int hash = item.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _slots.Length;
-            int next = _buckets[bucket];
-            
-            while (next != UNDEFINED_INDEX)
+            int bucket = hash % _capacity;
+            int current = _buckets[bucket];
+
+            while (current != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[next];
-                if (slot.exists && s_comparer.Equals(slot.value, item))
+                ref Slot slot = ref _slots[current];
+                if (slot.hashCode == instanceID)
                 {
-                    index = next;
+                    index = current;
                     return true;
                 }
 
-                next = slot.next;
+                current = slot.next;
             }
 
             return false;
@@ -383,26 +406,26 @@ namespace Atomic.Entities
 
         private void IncreaseCapacity()
         {
-            int size = GetPrime(_slots.Length + 1);
+            _capacity = GetPrime(_capacity + 1);
 
-            Array.Resize(ref _slots, size);
+            Array.Resize(ref _slots, _capacity);
+            Array.Resize(ref _buckets, _capacity);
 
-            // Important: after resizing _slots, we use updated _slots.Length in Bucket()
-            Array.Resize(ref _buckets, size);
+            for (int index = 0; index < _capacity; index++)
+                _buckets[index] = UNDEFINED_INDEX;
 
-            for (int i = 0; i < size; i++)
-                _buckets[i] = UNDEFINED_INDEX;
-
-            for (int i = 0; i < _lastIndex; i++)
+            for (int index = 0; index < _lastIndex; index++)
             {
-                ref Slot slot = ref _slots[i];
-                if (!slot.exists)
+                ref Slot slot = ref _slots[index];
+                if (slot.hashCode == UNDEFINED_INDEX)
                     continue;
 
-                // Recalculate bucket for the existing slot with updated size
-                ref int bucket = ref this.Bucket(slot.value);
-                slot.next = bucket;
-                bucket = i;
+                int hash = slot.value.GetHashCode() & 0x7FFFFFFF;
+                int bucket = hash % _capacity;
+
+                ref int next = ref _buckets[bucket];
+                slot.next = next;
+                next = index;
             }
         }
 
@@ -422,7 +445,7 @@ namespace Atomic.Entities
             else
             {
                 // If the slot array is full, increase capacity
-                if (_lastIndex == _slots.Length)
+                if (_lastIndex == _capacity)
                     this.IncreaseCapacity();
 
                 // Use the next available index
@@ -432,9 +455,9 @@ namespace Atomic.Entities
 
             // Get the reference to the corresponding bucket for the item
             int hash = item.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _slots.Length;
+            int bucket = hash % _capacity;
             int next = _buckets[bucket];
-            
+
             // Update the hash bucket to point to the new slot
             _buckets[bucket] = index;
 
@@ -467,7 +490,7 @@ namespace Atomic.Entities
             _slots[index] = new Slot
             {
                 value = item,
-                exists = true,
+                hashCode = item.InstanceID,
                 next = next, // Hash collision chain
                 left = left, // Previous in linked list
                 right = right // Next in linked list
@@ -493,35 +516,35 @@ namespace Atomic.Entities
             // Traverse the hash chain (linked list in the bucket)
             while (index >= 0)
             {
-                ref Slot node = ref _slots[index];
+                ref Slot slot = ref _slots[index];
 
                 // If the item is found
-                if (s_comparer.Equals(node.value, item))
+                if (slot.hashCode == item.InstanceID)
                 {
                     // Remove from the hash chain
                     if (last == UNDEFINED_INDEX)
-                        bucket = node.next;
+                        bucket = slot.next;
                     else
-                        _slots[last].next = node.next;
+                        _slots[last].next = slot.next;
 
                     // Remove from the doubly linked list
-                    if (node.left != UNDEFINED_INDEX)
-                        _slots[node.left].right = node.right;
+                    if (slot.left != UNDEFINED_INDEX)
+                        _slots[slot.left].right = slot.right;
 
-                    if (node.right != UNDEFINED_INDEX)
-                        _slots[node.right].left = node.left;
+                    if (slot.right != UNDEFINED_INDEX)
+                        _slots[slot.right].left = slot.left;
 
                     // Update _tail if needed
                     if (_tail == index)
-                        _tail = node.left;
+                        _tail = slot.left;
 
                     // Update _head if needed
                     if (_head == index)
-                        _head = node.right;
+                        _head = slot.right;
 
                     // Mark slot as free and add it to the free list
-                    node.exists = false;
-                    node.next = _freeList;
+                    slot.hashCode = UNDEFINED_INDEX;
+                    slot.next = _freeList;
                     _freeList = index;
 
                     _count--;
@@ -540,7 +563,7 @@ namespace Atomic.Entities
 
                 // Move to the next node in the hash chain
                 last = index;
-                index = node.next;
+                index = slot.next;
             }
 
             // Item not found
