@@ -3,7 +3,6 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -106,7 +105,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with default capacity.
         /// </summary>
-        public EntityCollection() : this(1)
+        public EntityCollection() : this(3)
         {
         }
 
@@ -143,9 +142,6 @@ namespace Atomic.Entities
             int hashCode = item.GetHashCode();
             int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
             int current = _buckets[bucket];
-            
-            Debug.Log($"CHECK CONTAINS {item} , HEAD {current}");
-            
 
             while (current != UNDEFINED_INDEX)
             {
@@ -156,7 +152,6 @@ namespace Atomic.Entities
                 current = slot.next;
             }
 
-            Debug.Log("NOT FOUND!");
             return false;
         }
 
@@ -172,16 +167,17 @@ namespace Atomic.Entities
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
 
-            int hashCode = item.GetHashCode();
-            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
+            int itemHash = item.GetHashCode();
+            int itemMaskedHash = itemHash & 0x7FFFFFFF;
+            int bucket = itemMaskedHash % _capacity;
             ref int head = ref _buckets[bucket];
 
-            // Check if item is already exists
+            // Check if item already exists
             int current = head;
             while (current != UNDEFINED_INDEX)
             {
-                Slot slot = _slots[current];
-                if (slot.hashCode == hashCode)
+                ref Slot slot = ref _slots[current];
+                if (slot.hashCode == itemHash)
                     return false;
 
                 current = slot.next;
@@ -189,70 +185,67 @@ namespace Atomic.Entities
 
             int index;
 
-            // Get a free slot from the free list, or allocate a new one
+            // Allocate new slot or reuse from free list
             if (_freeList >= 0)
             {
-                // Reuse a previously freed slot
                 index = _freeList;
                 _freeList = _slots[index].next;
             }
             else
             {
-                // If the slot array is full, increase capacity
+                // Expand capacity if needed
                 if (_lastIndex == _capacity)
                 {
-                    this.IncreaseCapacity();
-                    bucket = (hashCode & 0x7FFFFFFF) % _capacity;
+                    int newCapacity = GetPrime(_capacity * 2);
+                    var newSlots = new Slot[newCapacity];
+                    Array.Copy(_slots, newSlots, _lastIndex);
+                    _slots = newSlots;
+
+                    var newBuckets = new int[newCapacity];
+                    Array.Fill(newBuckets, UNDEFINED_INDEX);
+
+                    for (int j = 0; j < _lastIndex; j++)
+                    {
+                        ref Slot s = ref _slots[j];
+                        int bucketIndex = (s.hashCode & 0x7FFFFFFF) % newCapacity;
+                        s.next = newBuckets[bucketIndex];
+                        newBuckets[bucketIndex] = j;
+                    }
+
+                    _buckets = newBuckets;
+                    _capacity = newCapacity;
+
+                    // Recalculate bucket + head after resize
+                    bucket = itemMaskedHash % _capacity;
                     head = ref _buckets[bucket];
                 }
 
-                // Use the next available index
-                index = _lastIndex;
-                _lastIndex++;
+                index = _lastIndex++;
             }
 
-            // Save the current head of the chain in case of hash collision
-            int left, right;
-
-            if (_tail == UNDEFINED_INDEX)
+            // Insert into doubly linked list
+            if (_count == 0)
             {
-                // This is the first element in the list
-                _head = index; // Set head to the new element
-                _tail = index; // Set tail to the new element
-
-                left = UNDEFINED_INDEX;
-                right = UNDEFINED_INDEX;
+                _head = _tail = index;
+                _slots[index].left = UNDEFINED_INDEX;
+                _slots[index].right = UNDEFINED_INDEX;
             }
             else
             {
-                // Append to the end of the linked list
-                left = _tail;
-                right = UNDEFINED_INDEX;
-
-                // Link current tail to new element
                 _slots[_tail].right = index;
-
-                // Update tail
+                _slots[index].left = _tail;
+                _slots[index].right = UNDEFINED_INDEX;
                 _tail = index;
             }
 
-            // Store the new slot
-            _slots[index] = new Slot
-            {
-                value = item,
-                hashCode = hashCode,
-                next = head, // Hash collision chain
-                left = left, // Previous in linked list
-                right = right // Next in linked list
-            };
+            // Store slot
+            _slots[index].value = item;
+            _slots[index].hashCode = itemHash;
+            _slots[index].next = head;
 
-            // Update the hash bucket to point to the new slot
+            // Update bucket
             head = index;
 
-            Debug.Log($"ADDED {item} INDEX: {index}, HEAD {head}");
-            
-            
-            // Increase element count
             _count++;
 
             this.OnAdd(item);
@@ -457,31 +450,6 @@ namespace Atomic.Entities
             _freeList = UNDEFINED_INDEX;
             _tail = UNDEFINED_INDEX;
             _head = UNDEFINED_INDEX;
-        }
-
-        private void IncreaseCapacity()
-        {
-            _capacity = GetPrime(_capacity + 1);
-
-            Array.Resize(ref _slots, _capacity);
-            Array.Resize(ref _buckets, _capacity);
-
-            for (int index = 0; index < _capacity; index++)
-                _buckets[index] = UNDEFINED_INDEX;
-
-            for (int index = 0; index < _lastIndex; index++)
-            {
-                ref Slot slot = ref _slots[index];
-                if (slot.hashCode == UNDEFINED_INDEX)
-                    continue;
-
-                int hash = slot.value.GetHashCode() & 0x7FFFFFFF;
-                int bucket = hash % _capacity;
-
-                ref int next = ref _buckets[bucket];
-                slot.next = next;
-                next = index;
-            }
         }
 
         private bool RemoveInternal(E item)
