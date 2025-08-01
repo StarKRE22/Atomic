@@ -644,10 +644,10 @@ namespace Atomic.Entities
         public void GetValueUnsafe_ReturnsRef_ToReferenceType()
         {
             var entity = new Entity();
-            var obj = new Dummy("initial");
+            var obj = new TextStub("initial");
             entity.AddValue(2, obj);
 
-            ref Dummy refValue = ref entity.GetValueUnsafe<Dummy>(2);
+            ref TextStub refValue = ref entity.GetValueUnsafe<TextStub>(2);
             Assert.AreSame(obj, refValue);
             Assert.AreEqual("initial", refValue.Text);
         }

@@ -1,0 +1,9 @@
+using UnityEngine;
+
+namespace Atomic.Entities
+{
+    [AddComponentMenu("")]
+    public class DummySceneEntityProxy : SceneEntityProxy<DummySceneEntity>
+    {
+    }
+}

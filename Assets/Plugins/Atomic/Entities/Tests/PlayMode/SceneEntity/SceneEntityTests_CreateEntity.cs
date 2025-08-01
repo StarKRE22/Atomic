@@ -69,7 +69,7 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_SetsName()
         {
-            var entity = SceneEntity.Create<SceneEntityStub>("MyEntity");
+            var entity = SceneEntity.Create<DummySceneEntity>("MyEntity");
 
             Assert.AreEqual("MyEntity", entity.Name);
             Assert.AreEqual("MyEntity", entity.gameObject.name);
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_AssignsTags()
         {
-            var entity = SceneEntity.Create<SceneEntityStub>("Entity", new[] { 10, 20 });
+            var entity = SceneEntity.Create<DummySceneEntity>("Entity", new[] { 10, 20 });
 
             Assert.IsTrue(entity.HasTag(10));
             Assert.IsTrue(entity.HasTag(20));
@@ -93,7 +93,7 @@ namespace Atomic.Entities
                 { 2, 42 }
             };
 
-            var entity = SceneEntity.Create<SceneEntityStub>("Entity", values: values);
+            var entity = SceneEntity.Create<DummySceneEntity>("Entity", values: values);
 
             Assert.AreEqual("value", entity.GetValue<string>(1));
             Assert.AreEqual(42, entity.GetValue<int>(2));
@@ -105,7 +105,7 @@ namespace Atomic.Entities
             var b1 = new EntityBehaviourStub();
             var b2 = new EntityBehaviourStub();
 
-            var entity = SceneEntity.Create<SceneEntityStub>("Entity", behaviours: new[] { b1, b2 });
+            var entity = SceneEntity.Create<DummySceneEntity>("Entity", behaviours: new[] { b1, b2 });
 
             Assert.IsTrue(entity.HasBehaviour(b1));
             Assert.IsTrue(entity.HasBehaviour(b2));
@@ -115,10 +115,10 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_CreatesGameObjectWithComponent()
         {
-            var entity = SceneEntity.Create<SceneEntityStub>("GameObjectCheck");
+            var entity = SceneEntity.Create<DummySceneEntity>("GameObjectCheck");
 
             Assert.IsNotNull(entity);
-            Assert.IsInstanceOf<SceneEntityStub>(entity);
+            Assert.IsInstanceOf<DummySceneEntity>(entity);
             Assert.AreEqual("GameObjectCheck", entity.gameObject.name);
         }
 
@@ -143,7 +143,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Create_CallsInstallMethod()
+        public void CreateEntities_CallsInstallMethod()
         {
             // Arrange
             var parent = new GameObject("Parent").transform;

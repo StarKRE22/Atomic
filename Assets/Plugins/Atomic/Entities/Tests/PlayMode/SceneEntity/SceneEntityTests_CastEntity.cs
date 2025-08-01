@@ -6,6 +6,8 @@ namespace Atomic.Entities
 {
     public sealed partial class SceneEntityTests
     {
+        #region Cast
+
         [Test]
         public void CastEntity_NullEntity_ReturnsNull()
         {
@@ -78,5 +80,102 @@ namespace Atomic.Entities
             // Assert
             Assert.AreNotEqual(sceneEntity, casted);
         }
+
+        #endregion
+
+        #region TryCast
+        
+        [Test]
+        public void TryCast_ReturnsFalse_IfEntityIsNull()
+        {
+            var result = SceneEntity.TryCast(null, out SceneEntity casted);
+
+            Assert.IsFalse(result);
+            Assert.IsNull(casted);
+        }
+
+        [Test]
+        public void TryCast_ReturnsFalse_IfEntityIsNotSceneEntity()
+        {
+            var dummy = new DummyEntity();
+            var result = SceneEntity.TryCast(dummy, out SceneEntity casted);
+
+            Assert.IsFalse(result);
+            Assert.IsNull(casted);
+        }
+
+        [Test]
+        public void TryCast_ReturnsTrue_ButCastedIsNull_WhenProxySourceIsNull()
+        {
+            var proxy = new GameObject("Proxy").AddComponent<SceneEntityProxy>();
+            proxy.Source = null;
+
+            var result = SceneEntity.TryCast(proxy, out SceneEntity casted);
+            Assert.IsTrue(result);  // TryCast matches the proxy type
+            Assert.IsNull(casted);  // But Source was null
+        }
+
+        [Test]
+        public void TryCast_Generic_ReturnsFalse_IfSceneEntityIsWrongType()
+        {
+            var instance = new GameObject("Instance")
+                .AddComponent<OtherSceneEntity>();
+
+            var result = SceneEntity.TryCast(instance, out AnotherSceneEntity casted);
+
+            Assert.IsFalse(result);
+            Assert.IsNull(casted);
+        }
+
+        [Test]
+        public void TryCast_Generic_ReturnsFalse_IfProxyGenericTypeIsWrong()
+        {
+            var proxy = new GameObject("Proxy")
+                .AddComponent<SceneEntityProxy<OtherSceneEntity>>();
+
+            var result = SceneEntity.TryCast(proxy, out AnotherSceneEntity casted);
+
+            Assert.IsFalse(result);
+            Assert.IsNull(casted);
+        }
+        
+        
+        [Test]
+        public void TryCast_ReturnsTrue_WhenDirectInstanceOfSceneEntity()
+        {
+            IEntity entity = new GameObject("MySceneEntity").AddComponent<DummySceneEntity>();
+
+            bool result = SceneEntity.TryCast(entity, out SceneEntity casted);
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(entity, casted);
+        }
+
+        [Test]
+        public void TryCast_Generic_ReturnsTrue_WhenCorrectGenericType()
+        {
+            IEntity entity = new GameObject("MySceneEntity")
+                .AddComponent<DummySceneEntity>();
+
+            bool result = SceneEntity.TryCast(entity, out DummySceneEntity casted);
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(entity, casted);
+        }
+
+        [Test]
+        public void TryCast_ReturnsTrue_WhenProxyMatchesGeneric()
+        {
+            var real = new GameObject("RealEntity").AddComponent<DummySceneEntity>();
+            var proxy = new GameObject("Proxy").AddComponent<DummySceneEntityProxy>();
+            proxy.Source = real;
+
+            bool result = SceneEntity.TryCast(proxy, out DummySceneEntity casted);
+
+            Assert.IsTrue(result);
+            Assert.AreEqual(real, casted);
+        }
+
+        #endregion
     }
 }
