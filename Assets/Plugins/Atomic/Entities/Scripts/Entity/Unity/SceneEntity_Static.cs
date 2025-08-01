@@ -27,7 +27,7 @@ namespace Atomic.Entities
             public int initialTagCapacity;
             public int initialValueCapacity;
             public int initialBehaviourCapacity;
-            
+
             public bool installOnAwake;
             public bool disposeValues;
             public bool useUnityLifecycle;
@@ -36,9 +36,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static SceneEntity Create(CreateArgs args) => Create<SceneEntity>(args);
+        public static SceneEntity Create(in CreateArgs args) => Create<SceneEntity>(args);
 
-        public static E Create<E>(CreateArgs args) where E : SceneEntity
+        public static E Create<E>(in CreateArgs args) where E : SceneEntity
         {
             GameObject gameObject = new GameObject();
             gameObject.SetActive(false);
@@ -46,57 +46,75 @@ namespace Atomic.Entities
             E sceneEntity = gameObject.AddComponent<E>();
 
             sceneEntity.name = args.name;
-            
+
             sceneEntity.installers = args.installers;
             sceneEntity.children = args.children;
-            
+
             sceneEntity.installOnAwake = args.installOnAwake;
             sceneEntity.disposeValues = args.disposeValues;
             sceneEntity.useUnityLifecycle = args.useUnityLifecycle;
-            
+
             sceneEntity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
             sceneEntity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
             sceneEntity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
-            
+
             sceneEntity.AddTags(args.tags);
             sceneEntity.AddValues(args.values);
             sceneEntity.AddBehaviours(args.behaviours);
-            
+
             gameObject.SetActive(true);
             return sceneEntity;
         }
-        
+
         public static E Create<E>(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
-            IEnumerable<IEntityBehaviour> behaviours = null
+            IEnumerable<IEntityBehaviour> behaviours = null,
+            bool installOnAwake = true,
+            bool disposeValues = true,
+            bool useUnityLifecycle = true,
+            int initialTagCount = 1,
+            int initialValueCount = 1,
+            int initialBehaviourCount = 1
         ) where E : SceneEntity => Create<E>(new CreateArgs
         {
             name = name,
             tags = tags,
             values = values,
             behaviours = behaviours,
-            initialTagCapacity = tags?.Count() ?? 1,
-            initialValueCapacity = tags?.Count() ?? 1,
-            initialBehaviourCapacity = tags?.Count() ?? 1
+            installOnAwake = installOnAwake,
+            disposeValues = disposeValues,
+            useUnityLifecycle = useUnityLifecycle,
+            initialTagCapacity = initialTagCount,
+            initialValueCapacity = initialValueCount,
+            initialBehaviourCapacity = initialBehaviourCount
         });
 
         public static SceneEntity Create(
             string name = null,
             IEnumerable<int> tags = null,
             IReadOnlyDictionary<int, object> values = null,
-            IEnumerable<IEntityBehaviour> behaviours = null
+            IEnumerable<IEntityBehaviour> behaviours = null,
+            bool installOnAwake = true,
+            bool disposeValues = true,
+            bool useUnityLifecycle = true,
+            int initialTagCount = 1,
+            int initialValueCount = 1,
+            int initialBehaviourCount = 1
         ) => Create(new CreateArgs
-            {
-                name = name,
-                tags = tags,
-                values = values,
-                behaviours = behaviours,
-                initialTagCapacity = tags?.Count() ?? 1,
-                initialValueCapacity = tags?.Count() ?? 1,
-                initialBehaviourCapacity = tags?.Count() ?? 1
-            });
+        {
+            name = name,
+            tags = tags,
+            values = values,
+            behaviours = behaviours,
+            installOnAwake = installOnAwake,
+            disposeValues = disposeValues,
+            useUnityLifecycle = useUnityLifecycle,
+            initialTagCapacity = initialTagCount,
+            initialValueCapacity = initialValueCount,
+            initialBehaviourCapacity = initialBehaviourCount
+        });
 
         /// <summary>
         /// Instantiates a prefab and installs the resulting <see cref="SceneEntity"/> under the specified parent.

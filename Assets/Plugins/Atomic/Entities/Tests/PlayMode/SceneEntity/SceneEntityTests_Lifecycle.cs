@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests
+    public sealed partial class SceneEntityTests_Values
     {
         #region OnSpawned
 
