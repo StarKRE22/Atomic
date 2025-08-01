@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -119,6 +120,41 @@ namespace Atomic.Entities
             Assert.IsNotNull(entity);
             Assert.IsInstanceOf<SceneEntityStub>(entity);
             Assert.AreEqual("GameObjectCheck", entity.gameObject.name);
+        }
+
+        #endregion
+
+        #region CreateByPrefab
+
+        [Test]
+        public void CreateEntity_InstantiatesPrefab_UnderParent()
+        {
+            // Arrange
+            var parent = new GameObject("Parent").transform;
+            var prefab = new GameObject("Prefab").AddComponent<SceneEntity>();
+
+            // Act
+            var instance = SceneEntity.Create(prefab, parent);
+
+            // Assert
+            Assert.NotNull(instance);
+            Assert.AreNotSame(prefab, instance);
+            Assert.AreEqual(parent, instance.transform.parent);
+        }
+
+        [Test]
+        public void Create_CallsInstallMethod()
+        {
+            // Arrange
+            var parent = new GameObject("Parent").transform;
+            var prefabObj = new GameObject("Prefab");
+            var prefab = prefabObj.AddComponent<SceneEntity>();
+
+            // Act
+            var instance = SceneEntity.Create(prefab, parent);
+
+            // Assert
+            Assert.IsTrue(instance.Installed);
         }
 
         #endregion

@@ -13,7 +13,8 @@ namespace DefaultNamespace
             BasicEvent basicEvent = new BasicEvent();
             BasicRequest request = new BasicRequest();
             BasicFunction<bool> function = new BasicFunction<bool>(() => true);
-                
+
+            GameObject gameObject = new GameObject();
         }
     }
 }

@@ -1,0 +1,25 @@
+header: EntityAPI
+namespace: SampleGame
+className: EntityAPIExtensions
+directory: Assets/Scripts/
+aggressiveInlining: true
+unsafe: false
+entityType: IEntity
+
+imports:
+- Atomic.Entities
+- Unity.Mathematics
+
+tags:
+    - Player
+    - Enemy
+
+values:
+ - Health222: float2
+ - Speed: int
+
+
+#dceceec ececee
+- cdd: int
+- efece: float
+
