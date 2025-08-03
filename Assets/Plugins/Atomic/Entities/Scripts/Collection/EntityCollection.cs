@@ -113,7 +113,24 @@ namespace Atomic.Entities
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with a predefined capacity.
         /// </summary>
         /// <param name="capacity">Initial capacity of the collection.</param>
-        public EntityCollection(int capacity) => this.Initialize(capacity);
+        public EntityCollection(int capacity)
+        {
+            if (capacity < 0)
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+
+            _capacity = GetPrime(capacity);
+            _count = 0;
+            _lastIndex = 0;
+            
+            _freeList = UNDEFINED_INDEX;
+            _tail = UNDEFINED_INDEX;
+            _head = UNDEFINED_INDEX;
+
+            _slots = new Slot[_capacity];
+            _buckets = new int[_capacity];
+
+            Array.Fill(_buckets, UNDEFINED_INDEX, 0, _capacity);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with the provided entities.
@@ -145,7 +162,7 @@ namespace Atomic.Entities
 
             while (current != UNDEFINED_INDEX)
             {
-                Slot slot = _slots[current];
+                ref readonly Slot slot = ref _slots[current];
                 if (slot.hashCode == hashCode)
                     return true;
 
@@ -176,7 +193,7 @@ namespace Atomic.Entities
             int current = head;
             while (current != UNDEFINED_INDEX)
             {
-                Slot slot = _slots[current];
+                ref readonly Slot slot = ref _slots[current];
                 if (slot.hashCode == itemHash)
                     return false;
 
@@ -261,16 +278,75 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public bool Remove(E item)
         {
-            if (item == null)
+            if (item == null || _count == 0)
                 return false;
 
-            if (!this.RemoveInternal(item))
-                return false;
+            // Get a reference to the bucket where the item should be
+            int hashCode = item.GetHashCode();
+            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
+            ref int next = ref _buckets[bucket];
 
-            this.OnRemove(item);
-            this.OnRemoved?.Invoke(item);
-            this.OnStateChanged?.Invoke();
-            return true;
+            int index = next;
+            int last = UNDEFINED_INDEX;
+
+            // Traverse the hash chain (linked list in the bucket)
+            while (index >= 0)
+            {
+                ref Slot slot = ref _slots[index];
+
+                // If the item is found
+                if (slot.hashCode == hashCode)
+                {
+                    // Remove from the hash chain
+                    if (last == UNDEFINED_INDEX)
+                        next = slot.next;
+                    else
+                        _slots[last].next = slot.next;
+
+                    // Remove from the doubly linked list
+                    if (slot.left != UNDEFINED_INDEX)
+                        _slots[slot.left].right = slot.right;
+
+                    if (slot.right != UNDEFINED_INDEX)
+                        _slots[slot.right].left = slot.left;
+
+                    // Update _tail if needed
+                    if (_tail == index)
+                        _tail = slot.left;
+
+                    // Update _head if needed
+                    if (_head == index)
+                        _head = slot.right;
+
+                    // Mark slot as free and add it to the free list
+                    slot.hashCode = UNDEFINED_INDEX;
+                    slot.next = _freeList;
+                    _freeList = index;
+
+                    _count--;
+
+                    // If this was the last element, reset everything
+                    if (_count == 0)
+                    {
+                        _lastIndex = 0;
+                        _freeList = UNDEFINED_INDEX;
+                        _tail = UNDEFINED_INDEX;
+                        _head = UNDEFINED_INDEX;
+                    }
+
+                    this.OnRemove(item);
+                    this.OnRemoved?.Invoke(item);
+                    this.OnStateChanged?.Invoke();
+                    return true;
+                }
+
+                // Move to the next node in the hash chain
+                last = index;
+                index = slot.next;
+            }
+
+            // Item not found
+            return false;
         }
 
         protected virtual void OnRemove(E entity)
@@ -284,7 +360,7 @@ namespace Atomic.Entities
                 return;
 
             int removeCount = 0;
-            E[] removedItems = s_arrayPool.Rent(_count);
+            E[] removedEntities = s_arrayPool.Rent(_count);
 
             for (int i = 0; i < _lastIndex; i++)
             {
@@ -299,25 +375,27 @@ namespace Atomic.Entities
                 slot.left = UNDEFINED_INDEX;
                 slot.right = UNDEFINED_INDEX;
 
-                E removedItem = slot.value;
-                removedItems[removeCount++] = removedItem;
-                this.OnRemove(removedItem);
+                removedEntities[removeCount++] = slot.value;
             }
 
             _count = 0;
-            _freeList = UNDEFINED_INDEX;
             _lastIndex = 0;
+            _freeList = UNDEFINED_INDEX;
 
             try
             {
                 for (int i = 0; i < removeCount; i++)
-                    this.OnRemoved?.Invoke(removedItems[i]);
+                {
+                    E entity = removedEntities[i];
+                    this.OnRemove(entity);
+                    this.OnRemoved?.Invoke(entity);
+                }
 
                 this.OnStateChanged?.Invoke();
             }
             finally
             {
-                s_arrayPool.Return(removedItems);
+                s_arrayPool.Return(removedEntities);
             }
         }
 
@@ -355,7 +433,7 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 array[arrayIndex++] = slot.value;
                 currentIndex = slot.right;
             }
@@ -369,7 +447,7 @@ namespace Atomic.Entities
             int index = _head;
             while (index != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[index];
+                ref readonly Slot slot = ref _slots[index];
                 results.Add(slot.value);
                 index = slot.right;
             }
@@ -389,136 +467,36 @@ namespace Atomic.Entities
         public struct Enumerator : IEnumerator<E>
         {
             public E Current => _current;
-
             object IEnumerator.Current => _current;
 
             private readonly EntityCollection<E> _collection;
-            private int _currentIndex;
+            private int _index;
             private E _current;
 
             public Enumerator(EntityCollection<E> collection)
             {
                 _collection = collection;
-                _currentIndex = _collection._head;
+                _index = collection._head;
                 _current = default;
             }
 
             public bool MoveNext()
             {
-                if (_currentIndex == UNDEFINED_INDEX)
+                if (_index == UNDEFINED_INDEX)
                     return false;
 
-                ref Slot slot = ref _collection._slots[_currentIndex];
+                ref readonly Slot slot = ref _collection._slots[_index];
                 _current = slot.value;
-                _currentIndex = slot.right;
+                _index = slot.right;
                 return true;
             }
 
             public void Reset()
             {
-                _currentIndex = _collection._head;
-                _current = default;
+                _index = _collection._head;
             }
 
-            public void Dispose()
-            {
-            }
-        }
-
-        private ref int Bucket(E item)
-        {
-            int hash = item.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            return ref _buckets[bucket];
-        }
-
-        private void Initialize(int capacity)
-        {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-
-            _capacity = GetPrime(capacity);
-
-            _slots = new Slot[_capacity];
-            _buckets = new int[_capacity];
-
-            for (int i = 0; i < _capacity; i++)
-                _buckets[i] = UNDEFINED_INDEX;
-
-            _count = 0;
-            _lastIndex = 0;
-            _freeList = UNDEFINED_INDEX;
-            _tail = UNDEFINED_INDEX;
-            _head = UNDEFINED_INDEX;
-        }
-
-        private bool RemoveInternal(E item)
-        {
-            // If the structure is empty, there's nothing to remove
-            if (_count == 0)
-                return false;
-
-            // Get a reference to the bucket where the item should be
-            ref int bucket = ref this.Bucket(item);
-
-            int index = bucket;
-            int last = UNDEFINED_INDEX;
-
-            // Traverse the hash chain (linked list in the bucket)
-            while (index >= 0)
-            {
-                ref Slot slot = ref _slots[index];
-
-                // If the item is found
-                if (slot.hashCode == item.InstanceID)
-                {
-                    // Remove from the hash chain
-                    if (last == UNDEFINED_INDEX)
-                        bucket = slot.next;
-                    else
-                        _slots[last].next = slot.next;
-
-                    // Remove from the doubly linked list
-                    if (slot.left != UNDEFINED_INDEX)
-                        _slots[slot.left].right = slot.right;
-
-                    if (slot.right != UNDEFINED_INDEX)
-                        _slots[slot.right].left = slot.left;
-
-                    // Update _tail if needed
-                    if (_tail == index)
-                        _tail = slot.left;
-
-                    // Update _head if needed
-                    if (_head == index)
-                        _head = slot.right;
-
-                    // Mark slot as free and add it to the free list
-                    slot.hashCode = UNDEFINED_INDEX;
-                    slot.next = _freeList;
-                    _freeList = index;
-
-                    _count--;
-
-                    // If this was the last element, reset everything
-                    if (_count == 0)
-                    {
-                        _lastIndex = 0;
-                        _freeList = UNDEFINED_INDEX;
-                        _tail = UNDEFINED_INDEX;
-                        _head = UNDEFINED_INDEX;
-                    }
-
-                    return true;
-                }
-
-                // Move to the next node in the hash chain
-                last = index;
-                index = slot.next;
-            }
-
-            // Item not found
-            return false;
+            public void Dispose() { }
         }
     }
 }
