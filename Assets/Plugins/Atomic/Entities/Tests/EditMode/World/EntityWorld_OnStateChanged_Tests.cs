@@ -38,7 +38,7 @@ namespace Atomic.Entities
             bool called = false;
             world.OnStateChanged += () => called = true;
 
-            world.Enable();
+            world.Activate();
 
             Assert.IsTrue(called);
         }
@@ -47,11 +47,11 @@ namespace Atomic.Entities
         public void Disable_Raises_OnStateChanged()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable(); // чтобы _enabled = true
+            world.Activate(); // чтобы _enabled = true
             bool called = false;
             world.OnStateChanged += () => called = true;
 
-            world.Disable();
+            world.Deactivate();
 
             Assert.IsTrue(called);
         }
@@ -103,7 +103,7 @@ namespace Atomic.Entities
         public void Dispose_Raises_OnStateChanged()
         {
             var world = new EntityWorld<Entity>(new Entity());
-            world.Enable(); // Ensure state changes on Dispose
+            world.Activate(); // Ensure state changes on Dispose
 
             bool called = false;
             world.OnStateChanged += () => called = true;

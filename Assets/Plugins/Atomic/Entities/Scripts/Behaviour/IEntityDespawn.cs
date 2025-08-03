@@ -15,7 +15,7 @@ namespace Atomic.Entities
         /// Called when the entity is despawned.
         /// </summary>
         /// <param name="entity">The entity being despawned.</param>
-        void Despawn(IEntity entity);
+        void OnDespawn(IEntity entity);
     }
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace Atomic.Entities
         /// Called when the typed entity is despawned.
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void Despawn(T entity);
+        void OnDespawn(T entity);
 
-        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn((T) entity);
+        void IEntityDespawn.OnDespawn(IEntity entity) => this.OnDespawn((T) entity);
     }
 
     /// <summary>
@@ -53,8 +53,8 @@ namespace Atomic.Entities
         /// Called when the typed entity is despawned.
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void Despawn(T entity);
+        void OnDespawn(T entity);
 
-        void IEntityDespawn.Despawn(IEntity entity) => this.Despawn(UnsafeUtility.As<IEntity, T>(ref entity));
+        void IEntityDespawn.OnDespawn(IEntity entity) => this.OnDespawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

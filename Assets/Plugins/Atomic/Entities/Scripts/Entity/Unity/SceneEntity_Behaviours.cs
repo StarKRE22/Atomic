@@ -101,7 +101,7 @@ namespace Atomic.Entities
                 return;
 
             if (_spawned && behaviour is IEntitySpawn initBehaviour)
-                initBehaviour.Spawn(this);
+                initBehaviour.OnSpawn(this);
 
             if (_active)
                 this.EnableBehaviour(behaviour);
@@ -140,7 +140,7 @@ namespace Atomic.Entities
                 this.DisableBehaviour(behaviour);
 
             if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.Despawn(this);
+                dispose.OnDespawn(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();

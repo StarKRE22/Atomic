@@ -23,14 +23,14 @@ namespace Atomic.Entities
         /// </summary>
         [LabelText("Initialized")]
         [ShowInInspector]
-        private bool DebugInitialized => this.Spawned;
+        private bool DebugInitialized => this.IsSpawned;
 
         /// <summary>
         /// Debug-only: Indicates whether the entity is currently enabled.
         /// </summary>
         [ShowInInspector]
         [LabelText("Enabled")]
-        private bool DebugEnabled => this.Enabled;
+        private bool DebugEnabled => this.IsActive;
 
         #region Tags
 

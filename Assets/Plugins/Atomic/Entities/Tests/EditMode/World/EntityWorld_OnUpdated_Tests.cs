@@ -9,7 +9,7 @@ namespace Atomic.Entities
         public void OnUpdate_Raises_OnUpdated_WithCorrectDeltaTime()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable(); // must be enabled for OnUpdate to run
+            world.Activate(); // must be enabled for OnUpdate to run
 
             float receivedDelta = -1;
             world.OnUpdated += dt => receivedDelta = dt;
@@ -36,7 +36,7 @@ namespace Atomic.Entities
         public void OnUpdate_CallsHandler_OncePerCall()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable();
+            world.Activate();
 
             int callCount = 0;
             world.OnUpdated += _ => callCount++;
@@ -51,7 +51,7 @@ namespace Atomic.Entities
         public void OnUpdate_LateSubscriber_DoesNotGetPreviousUpdate()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable();
+            world.Activate();
 
             world.OnUpdate(0.25f);
 
@@ -65,7 +65,7 @@ namespace Atomic.Entities
         public void OnUpdate_Works_WithNoEntities()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable();
+            world.Activate();
 
             Assert.DoesNotThrow(() => world.OnUpdate(0.016f));
         }

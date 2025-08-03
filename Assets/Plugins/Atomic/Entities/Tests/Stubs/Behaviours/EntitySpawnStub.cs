@@ -4,7 +4,7 @@ namespace Atomic.Entities
     {
         public bool WasSpawn;
         
-        public void Spawn(IEntity entity)
+        public void OnSpawn(IEntity entity)
         {
             WasSpawn = true;
         }

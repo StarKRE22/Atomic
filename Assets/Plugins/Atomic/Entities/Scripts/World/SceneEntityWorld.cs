@@ -103,7 +103,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                this.Enable();
+                this.Activate();
                 UpdateManager.Instance.Add(this);
             }
         }
@@ -113,7 +113,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle)
             {
                 this.Spawn();
-                this.Enable();
+                this.Activate();
                 UpdateManager.Instance.Add(this);
 
                 this.isStarted = true;
@@ -125,7 +125,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 UpdateManager.Instance.Del(this);
-                this.Disable();
+                this.Deactivate();
             }
         }
 
@@ -207,16 +207,16 @@ namespace Atomic.Entities
             remove => _world.OnDespawned -= value;
         }
 
-        public event Action OnEnabled
+        public event Action OnActivated
         {
-            add => _world.OnEnabled += value;
-            remove => _world.OnEnabled -= value;
+            add => _world.OnActivated += value;
+            remove => _world.OnActivated -= value;
         }
 
-        public event Action OnDisabled
+        public event Action OnDeactivated
         {
-            add => _world.OnDisabled += value;
-            remove => _world.OnDisabled -= value;
+            add => _world.OnDeactivated += value;
+            remove => _world.OnDeactivated -= value;
         }
 
         public event Action<float> OnUpdated
@@ -237,9 +237,9 @@ namespace Atomic.Entities
             remove => _world.OnLateUpdated -= value;
         }
 
-        public bool Spawned => _world.Spawned;
+        public bool IsSpawned => _world.IsSpawned;
 
-        public bool Enabled => _world.Enabled;
+        public bool IsActive => _world.IsActive;
 
 #if ODIN_INSPECTOR
         [Title("Lifecycle")]
@@ -250,12 +250,12 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Enable() => _world.Enable();
+        public void Activate() => _world.Activate();
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Disable() => _world.Disable();
+        public void Deactivate() => _world.Deactivate();
 
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]

@@ -54,10 +54,10 @@ namespace Atomic.Entities
         public event Action OnDespawned;
 
         /// <inheritdoc/>
-        public event Action OnEnabled;
+        public event Action OnActivated;
 
         /// <inheritdoc/>
-        public event Action OnDisabled;
+        public event Action OnDeactivated;
 
         /// <inheritdoc/>
         public event Action<float> OnUpdated;
@@ -69,12 +69,12 @@ namespace Atomic.Entities
         public event Action<float> OnLateUpdated;
 
         /// <inheritdoc/>
-        public bool Spawned => _spawned;
+        public bool IsSpawned => _spawned;
 
         /// <summary>
         /// Indicates whether the loop is enabled.
         /// </summary>
-        public bool Enabled => _enabled;
+        public bool IsActive => _enabled;
 
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -157,7 +157,7 @@ namespace Atomic.Entities
         public void Despawn()
         {
             if (_enabled)
-                this.Disable();
+                this.Deactivate();
 
             if (!_spawned)
                 return;
@@ -176,7 +176,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void Enable()
+        public void Activate()
         {
             if (!_spawned)
                 this.Spawn();
@@ -195,16 +195,16 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Enable();
+                slot.value.Activate();
                 currentIndex = slot.right;
             }
 
             this.NotifyAboutStateChanged();
-            this.OnEnabled?.Invoke();
+            this.OnActivated?.Invoke();
         }
 
         /// <inheritdoc/>
-        public void Disable()
+        public void Deactivate()
         {
             if (!_enabled)
             {
@@ -220,12 +220,12 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Disable();
+                slot.value.Deactivate();
                 currentIndex = slot.right;
             }
 
             this.NotifyAboutStateChanged();
-            this.OnDisabled?.Invoke();
+            this.OnDeactivated?.Invoke();
         }
 
         /// <inheritdoc/>
@@ -297,12 +297,12 @@ namespace Atomic.Entities
         protected override void OnAdd(E entity)
         {
             if (_spawned) entity.Spawn();
-            if (_enabled) entity.Enable();
+            if (_enabled) entity.Activate();
         }
 
         protected override void OnRemove(E entity)
         {
-            if (_enabled) entity.Disable();
+            if (_enabled) entity.Deactivate();
             if (_spawned) entity.Despawn();
         }
         
@@ -323,8 +323,8 @@ namespace Atomic.Entities
             base.UnsubscribeAll();
 
             this.OnSpawned = null;
-            this.OnEnabled = null;
-            this.OnDisabled = null;
+            this.OnActivated = null;
+            this.OnDeactivated = null;
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;

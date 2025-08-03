@@ -4,7 +4,7 @@ namespace Atomic.Entities
     {
         public bool WasDespawn;
 
-        public void Despawn(IEntity entity)
+        public void OnDespawn(IEntity entity)
         {
             WasDespawn = true;
         }

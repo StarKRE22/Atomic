@@ -10,10 +10,10 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnDisabled += () => callCount++;
+            world.OnDeactivated += () => callCount++;
 
-            world.Enable();   // сначала включаем
-            world.Disable();  // теперь можно выключить
+            world.Activate();   // сначала включаем
+            world.Deactivate();  // теперь можно выключить
 
             Assert.AreEqual(1, callCount);
         }
@@ -23,11 +23,11 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnDisabled += () => callCount++;
+            world.OnDeactivated += () => callCount++;
 
-            world.Enable();
-            world.Disable();
-            world.Disable(); // второй вызов — не должен вызывать событие
+            world.Activate();
+            world.Deactivate();
+            world.Deactivate(); // второй вызов — не должен вызывать событие
 
             Assert.AreEqual(1, callCount);
         }
@@ -37,9 +37,9 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
-            world.OnDisabled += () => called = true;
+            world.OnDeactivated += () => called = true;
 
-            world.Disable(); // без Enable
+            world.Deactivate(); // без Enable
 
             Assert.IsFalse(called);
         }
@@ -48,12 +48,12 @@ namespace Atomic.Entities
         public void Disable_Raises_OnDisabled_EvenWithoutEntities()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable();
+            world.Activate();
 
             bool called = false;
-            world.OnDisabled += () => called = true;
+            world.OnDeactivated += () => called = true;
 
-            world.Disable();
+            world.Deactivate();
 
             Assert.IsTrue(called);
         }
@@ -62,11 +62,11 @@ namespace Atomic.Entities
         public void Disable_LateSubscriber_DoesNotGetEvent()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable();
-            world.Disable();
+            world.Activate();
+            world.Deactivate();
 
             bool called = false;
-            world.OnDisabled += () => called = true;
+            world.OnDeactivated += () => called = true;
 
             Assert.IsFalse(called);
         }

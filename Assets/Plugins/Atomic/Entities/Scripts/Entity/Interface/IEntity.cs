@@ -15,9 +15,9 @@ namespace Atomic.Entities
     ///   <item><description>Lifecycle management including spawn, enable, update, disable, and despawn phases</description></item>
     /// </list>
     /// Behaviors are invoked automatically during the corresponding lifecycle events via interfaces such as:
-    /// <see cref="IEntitySpawn"/>, <see cref="IEntityEnable"/>, <see cref="IEntityUpdate"/>, and others.
+    /// <see cref="IEntitySpawn"/>, <see cref="IEntityActivate"/>, <see cref="IEntityUpdate"/>, and others.
     /// </remarks>
-    public partial interface IEntity : ISpawnable, IUpdatable, IEnableable
+    public partial interface IEntity : ISpawnable, IUpdatable, IActivatable
     {
         /// <summary>
         /// Raised when the internal state of the entity changes.

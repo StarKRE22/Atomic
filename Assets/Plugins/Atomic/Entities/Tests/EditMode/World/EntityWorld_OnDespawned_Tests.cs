@@ -51,7 +51,7 @@ namespace Atomic.Entities
             int callCount = 0;
             world.OnDespawned += () => callCount++;
 
-            world.Enable(); // triggers Spawn + Enable
+            world.Activate(); // triggers Spawn + Enable
             world.Despawn(); // should still raise
 
             Assert.AreEqual(1, callCount);

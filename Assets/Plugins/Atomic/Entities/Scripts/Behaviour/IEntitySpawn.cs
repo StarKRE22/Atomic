@@ -14,7 +14,7 @@ namespace Atomic.Entities
         /// Called when the entity is spawned.
         /// </summary>
         /// <param name="entity">The entity being spawned.</param>
-        void Spawn(IEntity entity);
+        void OnSpawn(IEntity entity);
     }
 
     /// <summary>
@@ -32,9 +32,9 @@ namespace Atomic.Entities
         /// Called when the entity of type <typeparamref name="T"/> is spawned.
         /// </summary>
         /// <param name="entity">The typed entity being spawned.</param>
-        void Spawn(T entity);
+        void OnSpawn(T entity);
 
-        void IEntitySpawn.Spawn(IEntity entity) => this.Spawn((T) entity);
+        void IEntitySpawn.OnSpawn(IEntity entity) => this.OnSpawn((T) entity);
     }
 
     /// <summary>
@@ -52,8 +52,8 @@ namespace Atomic.Entities
         /// Called when the entity of type <typeparamref name="T"/> is spawned.
         /// </summary>
         /// <param name="entity">The typed entity being spawned.</param>
-        void Spawn(T entity);
+        void OnSpawn(T entity);
 
-        void IEntitySpawn.Spawn(IEntity entity) => this.Spawn(UnsafeUtility.As<IEntity, T>(ref entity));
+        void IEntitySpawn.OnSpawn(IEntity entity) => this.OnSpawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

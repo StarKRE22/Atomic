@@ -35,8 +35,8 @@ namespace Atomic.Entities
             var wasEnable = false;
 
             //Act:
-            entity.OnEnabled += () => wasEnable = true;
-            entityWorld.Enable();
+            entity.OnActivated += () => wasEnable = true;
+            entityWorld.Activate();
 
             //Assert:
             Assert.IsTrue(wasEnable);
@@ -55,7 +55,7 @@ namespace Atomic.Entities
             Assert.IsFalse(behaviourStub.enabled);
             
             var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
-            world.Enable();
+            world.Activate();
             var wasUpdate = false;
             
             Assert.IsTrue(behaviourStub.spawned);
@@ -77,7 +77,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(behaviourStub);
 
             var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
-            world.Enable();
+            world.Activate();
             var wasUpdate = false;
 
             Assert.IsTrue(behaviourStub.spawned);
@@ -99,7 +99,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(behaviourStub);
             
             var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
-            world.Enable();
+            world.Activate();
             var wasUpdate = false;
 
             Assert.IsTrue(behaviourStub.spawned);
@@ -121,7 +121,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(behaviourStub);
             
             var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
-            world.Enable();
+            world.Activate();
             var wasDisable = false;
 
             //Pre-assert:
@@ -129,8 +129,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.enabled);
             
             //Act:
-            entity.OnDisabled += () => wasDisable = true;
-            world.Disable();
+            entity.OnDeactivated += () => wasDisable = true;
+            world.Deactivate();
 
             //Assert:
             Assert.IsTrue(wasDisable);
@@ -144,7 +144,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(behaviourStub);
             
             var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
-            world.Enable();
+            world.Activate();
             var wasDispose = false;
 
             Assert.IsTrue(behaviourStub.spawned);

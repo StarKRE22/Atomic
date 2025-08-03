@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IEnableable"/>'s <see cref="IEnableable.OnEnabled"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IActivatable"/>'s <see cref="IActivatable.OnActivated"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// This struct is intended to simplify the management of temporary or scoped subscriptions
@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// </remarks>
     public readonly struct EnableSubscription : IDisposable
     {
-        private readonly IEnableable _source;
+        private readonly IActivatable _source;
         private readonly Action _callback;
 
         /// <summary>
@@ -19,19 +19,19 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The activatable source object to subscribe to.</param>
         /// <param name="callback">The callback to invoke when the source is enabled.</param>
-        internal EnableSubscription(IEnableable source, Action callback)
+        internal EnableSubscription(IActivatable source, Action callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IEnableable.OnEnabled"/> event.
+        /// Unsubscribes the callback from the <see cref="IActivatable.OnActivated"/> event.
         /// </summary>
         public void Dispose()
         {
             if (_source != null && _callback != null)
-                _source.OnEnabled -= _callback;
+                _source.OnActivated -= _callback;
         }
     }
 }

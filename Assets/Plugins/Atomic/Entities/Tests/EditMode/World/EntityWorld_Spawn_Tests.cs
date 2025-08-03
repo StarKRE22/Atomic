@@ -10,7 +10,7 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             world.Spawn();
-            Assert.IsTrue(world.Spawned);
+            Assert.IsTrue(world.IsSpawned);
         }
 
         [Test]
@@ -22,8 +22,8 @@ namespace Atomic.Entities
 
             world.Spawn();
 
-            Assert.IsTrue(e1.Spawned);
-            Assert.IsTrue(e2.Spawned);
+            Assert.IsTrue(e1.IsSpawned);
+            Assert.IsTrue(e2.IsSpawned);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace Atomic.Entities
             world.Spawn(); // repeated
 
             Assert.AreEqual(1, eventCallCount);
-            Assert.IsTrue(entity.Spawned); // still true
+            Assert.IsTrue(entity.IsSpawned); // still true
         }
 
 

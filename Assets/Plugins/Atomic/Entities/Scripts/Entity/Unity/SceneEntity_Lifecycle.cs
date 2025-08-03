@@ -46,12 +46,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Called when the entity is enabled.
         /// </summary>
-        public event Action OnEnabled;
+        public event Action OnActivated;
 
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnDisabled;
+        public event Action OnDeactivated;
 
         /// <summary>
         /// Called every frame while the entity is enabled.
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
 
 #endif
-        public bool Spawned => _spawned;
+        public bool IsSpawned => _spawned;
 
         /// <summary>
         /// Indicates whether the entity is currently enabled.
@@ -88,7 +88,7 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
         [LabelText("Enabled")]
 #endif
-        public bool Enabled => _active;
+        public bool IsActive => _active;
 
         private bool _spawned;
         private bool _active;
@@ -113,7 +113,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntitySpawn spawnBehaviour)
-                    spawnBehaviour.Spawn(this);
+                    spawnBehaviour.OnSpawn(this);
 
             this.OnStateChanged?.Invoke();
             this.OnSpawned?.Invoke();
@@ -128,11 +128,11 @@ namespace Atomic.Entities
                 return;
 
             if (_active)
-                this.Disable();
+                this.Deactivate();
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityDespawn despawnBehaviour)
-                    despawnBehaviour.Despawn(this);
+                    despawnBehaviour.OnDespawn(this);
             
             _spawned = false;
             this.OnStateChanged?.Invoke();
@@ -142,7 +142,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Enables the entity and registers update behaviours.
         /// </summary>
-        public void Enable()
+        public void Activate()
         {
             if (!_spawned)
                 this.Spawn();
@@ -156,13 +156,13 @@ namespace Atomic.Entities
                 this.EnableBehaviour(_behaviours[i]);
 
             this.OnStateChanged?.Invoke();
-            this.OnEnabled?.Invoke();
+            this.OnActivated?.Invoke();
         }
 
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Disable()
+        public void Deactivate()
         {
             if (!_active)
                 return;
@@ -172,7 +172,7 @@ namespace Atomic.Entities
 
             _active = false;
             this.OnStateChanged?.Invoke();
-            this.OnDisabled?.Invoke();
+            this.OnDeactivated?.Invoke();
         }
 
         /// <summary>
@@ -219,8 +219,8 @@ namespace Atomic.Entities
 
         private void EnableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityEnable entityEnable)
-                entityEnable.Enable(this);
+            if (behaviour is IEntityActivate entityEnable)
+                entityEnable.OnActivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref this.updates, ref this.updateCount, update);
@@ -234,8 +234,8 @@ namespace Atomic.Entities
 
         private void DisableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityDisable entityDisable)
-                entityDisable.Disable(this);
+            if (behaviour is IEntityDeactivate entityDisable)
+                entityDisable.OnDeactivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);

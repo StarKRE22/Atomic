@@ -4,8 +4,8 @@ namespace Atomic.Entities
 {
     public class EntityBehaviourStub :
         IEntitySpawn,
-        IEntityEnable,
-        IEntityDisable,
+        IEntityActivate,
+        IEntityDeactivate,
         IEntityDespawn,
         IEntityUpdate,
         IEntityFixedUpdate,
@@ -21,28 +21,28 @@ namespace Atomic.Entities
 
         public readonly List<string> invokationList = new();
 
-        public void Spawn(IEntity entity)
+        public void OnSpawn(IEntity entity)
         {
             this.spawned = true;
-            this.invokationList.Add(nameof(Spawn));
+            this.invokationList.Add(nameof(OnSpawn));
         }
 
-        public void Enable(IEntity entity)
+        public void OnActivate(IEntity entity)
         {
             this.enabled = true;
-            this.invokationList.Add(nameof(Enable));
+            this.invokationList.Add(nameof(OnActivate));
         }
 
-        public void Disable(IEntity entity)
+        public void OnDeactivate(IEntity entity)
         {
             this.disabled = true;
-            this.invokationList.Add(nameof(Disable));
+            this.invokationList.Add(nameof(OnDeactivate));
         }
 
-        public void Despawn(IEntity entity)
+        public void OnDespawn(IEntity entity)
         {
             this.despawned = true;
-            this.invokationList.Add(nameof(Despawn));
+            this.invokationList.Add(nameof(OnDespawn));
         }
 
         public virtual void OnUpdate(IEntity entity, float deltaTime)

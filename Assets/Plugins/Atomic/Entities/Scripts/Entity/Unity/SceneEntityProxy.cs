@@ -197,16 +197,16 @@ namespace Atomic.Entities
             remove => _source.OnSpawned -= value;
         }
 
-        public event Action OnEnabled
+        public event Action OnActivated
         {
-            add => _source.OnEnabled += value;
-            remove => _source.OnEnabled -= value;
+            add => _source.OnActivated += value;
+            remove => _source.OnActivated -= value;
         }
 
-        public event Action OnDisabled
+        public event Action OnDeactivated
         {
-            add => _source.OnDisabled += value;
-            remove => _source.OnDisabled -= value;
+            add => _source.OnDeactivated += value;
+            remove => _source.OnDeactivated -= value;
         }
 
         public event Action OnDespawned
@@ -233,12 +233,12 @@ namespace Atomic.Entities
             remove => _source.OnLateUpdated -= value;
         }
 
-        public bool Spawned => _source.Spawned;
-        public bool Enabled => _source.Enabled;
+        public bool IsSpawned => _source.IsSpawned;
+        public bool IsActive => _source.IsActive;
 
         public void Spawn() => _source.Spawn();
-        public void Enable() => _source.Enable();
-        public void Disable() => _source.Disable();
+        public void Activate() => _source.Activate();
+        public void Deactivate() => _source.Deactivate();
         public void Despawn() => _source.Despawn();
         public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
         public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);

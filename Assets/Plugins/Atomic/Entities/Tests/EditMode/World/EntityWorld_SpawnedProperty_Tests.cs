@@ -9,7 +9,7 @@ namespace Atomic.Entities
         public void Spawned_IsFalse_ByDefault()
         {
             var world = new EntityWorld<Entity>();
-            Assert.IsFalse(world.Spawned);
+            Assert.IsFalse(world.IsSpawned);
         }
 
         [Test]
@@ -17,7 +17,7 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             world.Spawn();
-            Assert.IsTrue(world.Spawned);
+            Assert.IsTrue(world.IsSpawned);
         }
 
         [Test]
@@ -26,15 +26,15 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             world.Spawn();
             world.Despawn();
-            Assert.IsFalse(world.Spawned);
+            Assert.IsFalse(world.IsSpawned);
         }
 
         [Test]
         public void Spawned_IsTrue_AfterEnable()
         {
             var world = new EntityWorld<Entity>();
-            world.Enable(); // Enable triggers Spawn if not already spawned
-            Assert.IsTrue(world.Spawned);
+            world.Activate(); // Enable triggers Spawn if not already spawned
+            Assert.IsTrue(world.IsSpawned);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             world.Spawn();
             world.Spawn(); // second call should be ignored internally
-            Assert.IsTrue(world.Spawned);
+            Assert.IsTrue(world.IsSpawned);
         }
     }
 }

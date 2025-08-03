@@ -21,7 +21,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets a value indicating whether the object is currently spawned.
         /// </summary>
-        bool Spawned { get; }
+        bool IsSpawned { get; }
 
         /// <summary>
         /// Spawns the object.
