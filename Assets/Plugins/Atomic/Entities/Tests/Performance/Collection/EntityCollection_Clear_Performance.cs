@@ -1,3 +1,4 @@
+#if UNITY_6000
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
@@ -50,11 +51,12 @@ namespace Atomic.Entities
             var hashSet = new HashSet<Entity>();
             Measure
                 .Method(hashSet.Clear)
-                    .SetUp(() => hashSet.UnionWith(entities))
-                    .WarmupCount(5)
-                    .MeasurementCount(20)
-                    .SampleGroup(new SampleGroup("HashSet.Clear()", SampleUnit.Microsecond))
-                    .Run();
+                .SetUp(() => hashSet.UnionWith(entities))
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("HashSet.Clear()", SampleUnit.Microsecond))
+                .Run();
         }
     }
 }
+#endif

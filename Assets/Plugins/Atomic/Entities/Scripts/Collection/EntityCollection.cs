@@ -3,6 +3,8 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -76,7 +78,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public virtual event Action OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
         public event Action<E> OnAdded;
@@ -267,6 +269,7 @@ namespace Atomic.Entities
 
             this.OnAdd(item);
             this.OnAdded?.Invoke(item);
+            Debug.Log("ON STATE CHANGED");
             this.OnStateChanged?.Invoke();
             return true;
         }
@@ -498,5 +501,16 @@ namespace Atomic.Entities
 
             public void Dispose() { }
         }
+
+        /// <summary>
+        /// Notifies subscribers that the internal state of the collection has changed.
+        /// </summary>
+        /// <remarks>
+        /// This method invokes the <see cref="OnStateChanged"/> event if there are any subscribers.
+        /// It should be called after operations that modify the state of the collection,
+        /// such as <see cref="Add(E)"/>, <see cref="Remove(E)"/>, or <see cref="Clear()"/>.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private protected void NotifyAboutStateChanged() => this.OnStateChanged?.Invoke();
     }
 }

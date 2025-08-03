@@ -29,9 +29,6 @@ namespace Atomic.Entities
     public class EntityWorld<E> : EntityCollection<E>, IEntityWorld<E> where E : IEntity
     {
         /// <inheritdoc/>
-        public override event Action OnStateChanged;
-
-        /// <inheritdoc/>
         public event Action OnSpawned;
 
         /// <inheritdoc/>
@@ -128,12 +125,12 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.Spawn();
                 currentIndex = slot.right;
             }
 
-            this.OnStateChanged?.Invoke();
+            this.NotifyAboutStateChanged();
             this.OnSpawned?.Invoke();
         }
 
@@ -149,13 +146,13 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.Despawn();
                 currentIndex = slot.right;
             }
 
             _spawned = false;
-            this.OnStateChanged?.Invoke();
+            this.NotifyAboutStateChanged();
             this.OnDespawned?.Invoke();
         }
 
@@ -178,12 +175,12 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.Enable();
                 currentIndex = slot.right;
             }
 
-            this.OnStateChanged?.Invoke();
+            this.NotifyAboutStateChanged();
             this.OnEnabled?.Invoke();
         }
 
@@ -203,12 +200,12 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.Disable();
                 currentIndex = slot.right;
             }
 
-            this.OnStateChanged?.Invoke();
+            this.NotifyAboutStateChanged();
             this.OnDisabled?.Invoke();
         }
 
@@ -226,7 +223,7 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.OnUpdate(deltaTime);
                 currentIndex = slot.right;
             }
@@ -248,7 +245,7 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.OnFixedUpdate(deltaTime);
                 currentIndex = slot.right;
             }
@@ -270,7 +267,7 @@ namespace Atomic.Entities
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[currentIndex];
+                ref readonly Slot slot = ref _slots[currentIndex];
                 slot.value.OnLateUpdate(deltaTime);
                 currentIndex = slot.right;
             }

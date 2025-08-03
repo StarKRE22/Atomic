@@ -1,3 +1,4 @@
+#if UNITY_6000
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
@@ -61,3 +62,4 @@ namespace Atomic.Entities
         }
     }
 }
+#endif
