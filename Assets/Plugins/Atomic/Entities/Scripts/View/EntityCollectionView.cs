@@ -67,7 +67,7 @@ namespace Atomic.Entities
 
             _source = source;
             _source.OnAdded += this.SpawnView;
-            _source.OnRemoved += this.UnspawnView;
+            _source.OnRemoved += this.DespawnView;
 
             foreach (E entity in _source)
                 this.SpawnView(entity);
@@ -82,10 +82,10 @@ namespace Atomic.Entities
                 return;
 
             _source.OnAdded -= this.SpawnView;
-            _source.OnRemoved -= this.UnspawnView;
+            _source.OnRemoved -= this.DespawnView;
 
             foreach (E entity in _source)
-                this.UnspawnView(entity);
+                this.DespawnView(entity);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Atomic.Entities
         /// Hides and returns the view associated with the specified entity.
         /// </summary>
         /// <param name="entity">The entity whose view should be removed.</param>
-        private void UnspawnView(E entity)
+        private void DespawnView(E entity)
         {
             if (!_views.Remove(entity, out EntityViewBase<E> view))
                 return;

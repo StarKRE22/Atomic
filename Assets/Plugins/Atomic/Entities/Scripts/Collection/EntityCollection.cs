@@ -269,7 +269,6 @@ namespace Atomic.Entities
 
             this.OnAdd(item);
             this.OnAdded?.Invoke(item);
-            Debug.Log("ON STATE CHANGED");
             this.OnStateChanged?.Invoke();
             return true;
         }

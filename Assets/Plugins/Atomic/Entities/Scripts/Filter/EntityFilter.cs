@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -44,9 +45,9 @@ namespace Atomic.Entities
         public event Action<E> OnRemoved;
 
         /// <inheritdoc/>
-        public int Count => entities.Count;
+        public int Count => this.state.Count;
 
-        private readonly EntityCollection<E> entities;
+        private readonly EntityCollection<E> state;
 
         private readonly IReadOnlyEntityCollection<E> source;
         private readonly Predicate<E> predicate;
@@ -67,12 +68,12 @@ namespace Atomic.Entities
         {
             this.source = source ?? throw new ArgumentNullException(nameof(source));
             this.predicate = predicate ?? throw new ArgumentNullException(nameof(predicate));
-            this.entities = new EntityCollection<E>(source);
+            this.state = new EntityCollection<E>();
             this.triggers = triggers;
-            
+
             for (int i = 0, count = triggers.Length; i < count; i++)
                 triggers[i].SetAction(this.Synchronize);
-            
+
             this.source.OnAdded += this.Observe;
             this.source.OnRemoved += this.Unobserve;
 
@@ -93,24 +94,18 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void CopyTo(ICollection<E> results)
-        {
-            results.Clear();
-
-            foreach (E entity in this.entities)
-                results.Add(entity);
-        }
+        public void CopyTo(ICollection<E> results) => this.state.CopyTo(results);
 
         /// <inheritdoc/>
-        public void CopyTo(E[] array, int arrayIndex) => this.entities.CopyTo(array, arrayIndex);
+        public void CopyTo(E[] array, int arrayIndex) => this.state.CopyTo(array, arrayIndex);
 
         /// <inheritdoc/>
-        public bool Contains(E entity) => this.entities.Contains(entity);
+        public bool Contains(E entity) => this.state.Contains(entity);
 
-        public EntityCollection<E>.Enumerator GetEnumerator() => this.entities.GetEnumerator();
+        public EntityCollection<E>.Enumerator GetEnumerator() => this.state.GetEnumerator();
 
         /// <inheritdoc/>
-        IEnumerator<E> IEnumerable<E>.GetEnumerator() => this.entities.GetEnumerator();
+        IEnumerator<E> IEnumerable<E>.GetEnumerator() => this.state.GetEnumerator();
 
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
@@ -120,8 +115,10 @@ namespace Atomic.Entities
             for (int i = 0, count = this.triggers.Length; i < count; i++)
                 this.triggers[i].Track(entity);
 
-            if (this.predicate(entity) && this.entities.Add(entity))
+            Debug.Log($"PASS PREDICATE {predicate(entity)} && CONTAINS {state.Contains(entity)}");
+            if (this.predicate(entity) && this.state.Add(entity))
             {
+                Debug.Log($"ADD TO FILTER {entity}");
                 this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
             }
@@ -132,24 +129,27 @@ namespace Atomic.Entities
             for (int i = 0, count = this.triggers.Length; i < count; i++)
                 this.triggers[i].Untrack(entity);
 
-            if (this.entities.Remove(entity))
+            if (this.state.Remove(entity))
             {
                 this.OnStateChanged?.Invoke();
                 this.OnRemoved?.Invoke(entity);
             }
         }
 
-        private void Synchronize(E entity)
+        internal void Synchronize(E entity)
         {
             bool matches = this.predicate(entity);
 
-            if (!matches && this.entities.Remove(entity))
+            if (!matches && this.state.Remove(entity))
             {
+                Debug.Log($"SYNC REMOVE FROM FILTER {entity}");
                 this.OnStateChanged?.Invoke();
                 this.OnRemoved?.Invoke(entity);
             }
-            else if (matches && this.entities.Add(entity))
+            else if (matches && this.state.Add(entity))
             {
+                Debug.Log($"SYNC ADD TO FILTER {entity}");
+                
                 this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
             }
