@@ -11,18 +11,6 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity
     {
-        /// <summary>
-        /// Indicates whether the entity has been initialized.
-        /// </summary>
-      
-        private bool InitializedDebug => this.Spawned;
-        
-        /// <summary>
-        /// Indicates whether the entity is currently enabled.
-        /// </summary>
-       
-        private bool EnabledDebug => this.Enabled;
-        
         #region Tags
 
         private static readonly List<TagElement> _tagElememtsCache = new();

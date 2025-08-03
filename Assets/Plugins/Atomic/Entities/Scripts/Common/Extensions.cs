@@ -35,26 +35,26 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IActivatable.OnEnabled"/> event.
+        /// Subscribes to the <see cref="IEnableable.OnEnabled"/> event.
         /// </summary>
         /// <param name="source">The activatable object.</param>
         /// <param name="action">The action to invoke when enabled.</param>
         /// <returns>A disposable <see cref="EnableSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EnableSubscription WhenEnable(this IActivatable source, Action action)
+        public static EnableSubscription WhenEnable(this IEnableable source, Action action)
         {
             source.OnEnabled += action;
             return new EnableSubscription(source, action);
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IActivatable.OnDisabled"/> event.
+        /// Subscribes to the <see cref="IEnableable.OnDisabled"/> event.
         /// </summary>
         /// <param name="source">The activatable object.</param>
         /// <param name="action">The action to invoke when disabled.</param>
         /// <returns>A disposable <see cref="DisableSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DisableSubscription WhenDisable(this IActivatable source, Action action)
+        public static DisableSubscription WhenDisable(this IEnableable source, Action action)
         {
             source.OnDisabled += action;
             return new DisableSubscription(source, action);

@@ -88,10 +88,10 @@ namespace Atomic.Entities
         [ShowInInspector, ReadOnly]
         [LabelText("Enabled")]
 #endif
-        public bool Enabled => _enabled;
+        public bool Enabled => _active;
 
         private bool _spawned;
-        private bool _enabled;
+        private bool _active;
 
         private IEntityUpdate[] updates;
         private IEntityFixedUpdate[] fixedUpdates;
@@ -127,7 +127,7 @@ namespace Atomic.Entities
             if (!_spawned)
                 return;
 
-            if (_enabled)
+            if (_active)
                 this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -147,10 +147,10 @@ namespace Atomic.Entities
             if (!_spawned)
                 this.Spawn();
 
-            if (_enabled)
+            if (_active)
                 return;
 
-            _enabled = true;
+            _active = true;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
@@ -164,13 +164,13 @@ namespace Atomic.Entities
         /// </summary>
         public void Disable()
         {
-            if (!_enabled)
+            if (!_active)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.DisableBehaviour(_behaviours[i]);
 
-            _enabled = false;
+            _active = false;
             this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
         }
@@ -180,10 +180,10 @@ namespace Atomic.Entities
         /// </summary>
         public void OnUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
                 return;
 
-            for (int i = 0; i < this.updateCount && _enabled; i++)
+            for (int i = 0; i < this.updateCount && _active; i++)
                 this.updates[i].OnUpdate(this, deltaTime);
             
             this.OnUpdated?.Invoke(deltaTime);
@@ -194,10 +194,10 @@ namespace Atomic.Entities
         /// </summary>
         public void OnFixedUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
                 return;
 
-            for (int i = 0; i < this.fixedUpdateCount && _enabled; i++)
+            for (int i = 0; i < this.fixedUpdateCount && _active; i++)
                 this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
@@ -208,10 +208,10 @@ namespace Atomic.Entities
         /// </summary>
         public void OnLateUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
                 return;
 
-            for (int i = 0; i < this.lateUpdateCount && _enabled; i++)
+            for (int i = 0; i < this.lateUpdateCount && _active; i++)
                 this.lateUpdates[i].OnLateUpdate(this, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);

@@ -62,33 +62,33 @@ namespace Atomic.Entities
         /// <summary>
         /// Indicates whether the entity has been spawned.
         /// </summary>
-        public bool Spawned => this.spawned;
+        public bool Spawned => _spawned;
 
         /// <summary>
         /// Indicates whether the entity is currently enabled.
         /// </summary>
-        public bool Enabled => this.enabled;
+        public bool Enabled => _enabled;
 
-        private bool spawned;
-        private bool enabled;
+        private bool _spawned;
+        private bool _enabled;
 
-        private IEntityUpdate[] updates;
-        private IEntityFixedUpdate[] fixedUpdates;
-        private IEntityLateUpdate[] lateUpdates;
+        private IEntityUpdate[] _updates;
+        private IEntityFixedUpdate[] _fixedUpdates;
+        private IEntityLateUpdate[] _lateUpdates;
 
-        private int updateCount;
-        private int fixedUpdateCount;
-        private int lateUpdateCount;
+        private int _updateCount;
+        private int _fixedUpdateCount;
+        private int _lateUpdateCount;
 
         /// <summary>
         /// Spawns the entity.
         /// </summary>
         public void Spawn()
         {
-            if (this.spawned)
+            if (_spawned)
                 return;
 
-            this.spawned = true;
+            _spawned = true;
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntitySpawn spawnBehaviour)
@@ -108,10 +108,10 @@ namespace Atomic.Entities
         /// </summary>
         public void Despawn()
         {
-            if (!this.spawned)
+            if (!_spawned)
                 return;
 
-            if (this.enabled)
+            if (_enabled)
                 this.Disable();
 
             this.OnDespawn();
@@ -120,7 +120,7 @@ namespace Atomic.Entities
                 if (_behaviours[i] is IEntityDespawn despawnBehaviour)
                     despawnBehaviour.Despawn(this);
 
-            this.spawned = false;
+            _spawned = false;
             this.OnDespawned?.Invoke();
             this.OnStateChanged?.Invoke();
         }
@@ -134,23 +134,23 @@ namespace Atomic.Entities
         /// </summary>
         public void Enable()
         {
-            if (!this.spawned)
+            if (!_spawned)
                 this.Spawn();
 
-            if (this.enabled)
+            if (_enabled)
                 return;
 
-            this.enabled = true;
+            _enabled = true;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
 
-            this.OnEnable();
+            this.EnableInternal();
             this.OnEnabled?.Invoke();
             this.OnStateChanged?.Invoke();
         }
 
-        protected virtual void OnEnable()
+        protected virtual void EnableInternal()
         {
         }
 
@@ -159,13 +159,13 @@ namespace Atomic.Entities
         /// </summary>
         public void Disable()
         {
-            if (!this.enabled)
+            if (!_enabled)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.DisableBehaviour(_behaviours[i]);
 
-            this.enabled = false;
+            _enabled = false;
 
             this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
@@ -176,11 +176,11 @@ namespace Atomic.Entities
         /// </summary>
         public void OnUpdate(float deltaTime)
         {
-            if (!this.enabled)
+            if (!_enabled)
                 return;
 
-            for (int i = 0; i < this.updateCount && this.enabled; i++)
-                this.updates[i].OnUpdate(this, deltaTime);
+            for (int i = 0; i < this._updateCount && _enabled; i++)
+                this._updates[i].OnUpdate(this, deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -190,11 +190,11 @@ namespace Atomic.Entities
         /// </summary>
         public void OnFixedUpdate(float deltaTime)
         {
-            if (!this.enabled)
+            if (!_enabled)
                 return;
 
-            for (int i = 0; i < this.fixedUpdateCount && this.enabled; i++)
-                this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
+            for (int i = 0; i < this._fixedUpdateCount && _enabled; i++)
+                this._fixedUpdates[i].OnFixedUpdate(this, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -204,11 +204,11 @@ namespace Atomic.Entities
         /// </summary>
         public void OnLateUpdate(float deltaTime)
         {
-            if (!this.enabled)
+            if (!_enabled)
                 return;
 
-            for (int i = 0; i < this.lateUpdateCount && this.enabled; i++)
-                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
+            for (int i = 0; i < this._lateUpdateCount && _enabled; i++)
+                this._lateUpdates[i].OnLateUpdate(this, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }
@@ -219,13 +219,13 @@ namespace Atomic.Entities
                 entityEnable.Enable(this);
 
             if (behaviour is IEntityUpdate update)
-                Add(ref this.updates, ref this.updateCount, update);
+                Add(ref this._updates, ref this._updateCount, update);
 
             if (behaviour is IEntityFixedUpdate fixedUpdate)
-                Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
+                Add(ref this._fixedUpdates, ref this._fixedUpdateCount, fixedUpdate);
 
             if (behaviour is IEntityLateUpdate lateUpdate)
-                Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
+                Add(ref this._lateUpdates, ref this._lateUpdateCount, lateUpdate);
         }
 
         private void DisableBehaviour(IEntityBehaviour behaviour)
@@ -234,13 +234,13 @@ namespace Atomic.Entities
                 entityDisable.Disable(this);
 
             if (behaviour is IEntityUpdate update)
-                Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
+                Remove(ref this._updates, ref this._updateCount, update, s_updateComparer);
 
             if (behaviour is IEntityFixedUpdate fixedUpdate)
-                Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
+                Remove(ref this._fixedUpdates, ref this._fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
 
             if (behaviour is IEntityLateUpdate lateUpdate)
-                Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
+                Remove(ref this._lateUpdates, ref this._lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }
 }

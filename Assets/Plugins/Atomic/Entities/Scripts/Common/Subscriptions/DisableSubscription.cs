@@ -3,14 +3,14 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IActivatable"/>'s <see cref="IActivatable.OnDisabled"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IEnableable"/>'s <see cref="IEnableable.OnDisabled"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// Useful for managing scoped or temporary subscriptions to disable events, ensuring the callback is removed when no longer needed.
     /// </remarks>
     public readonly struct DisableSubscription : IDisposable
     {
-        private readonly IActivatable _source;
+        private readonly IEnableable _source;
         private readonly Action _callback;
 
         /// <summary>
@@ -18,14 +18,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The activatable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke when the source is disabled.</param>
-        internal DisableSubscription(IActivatable source, Action callback)
+        internal DisableSubscription(IEnableable source, Action callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IActivatable.OnDisabled"/> event.
+        /// Unsubscribes the callback from the <see cref="IEnableable.OnDisabled"/> event.
         /// </summary>
         public void Dispose()
         {

@@ -124,7 +124,7 @@ namespace Atomic.Entities
         /// </summary>
         private void EnableInEditMode()
         {
-            if (_enabled)
+            if (_active)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -140,7 +140,7 @@ namespace Atomic.Entities
         /// </summary>
         private void DisableInEditMode()
         {
-            if (!_enabled)
+            if (!_active)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)

@@ -5,7 +5,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents an object that can be enabled or disabled during runtime.
     /// </summary>
-    public interface IActivatable
+    public interface IEnableable
     {
         /// <summary>
         /// Occurs when the object is enabled.
