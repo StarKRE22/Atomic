@@ -23,12 +23,12 @@ namespace Atomic.Entities
             Measure.Method(() =>
                 {
                     var collection = new EntityCollection<Entity>();
-                    for (int i = 0; i < entities.Count; i++)
-                        collection.Add(entities[i]);
+                    foreach (var t in entities)
+                        collection.Add(t);
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("EntityCollection.Add()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("EntityCollection.Add()"))
                 .Run();
         }
 
@@ -40,12 +40,12 @@ namespace Atomic.Entities
             Measure.Method(() =>
                 {
                     var list = new List<Entity>();
-                    for (int i = 0; i < entities.Count; i++)
-                        list.Add(entities[i]);
+                    foreach (var t in entities)
+                        list.Add(t);
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("List.Add()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("List.Add()"))
                 .Run();
         }
 
@@ -57,12 +57,12 @@ namespace Atomic.Entities
             Measure.Method(() =>
                 {
                     var set = new HashSet<Entity>();
-                    for (int i = 0; i < entities.Count; i++)
-                        set.Add(entities[i]);
+                    foreach (var t in entities)
+                        set.Add(t);
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("HashSet.Add()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("HashSet.Add()"))
                 .Run();
         }
     }

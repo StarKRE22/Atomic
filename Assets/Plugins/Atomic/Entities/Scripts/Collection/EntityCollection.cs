@@ -176,7 +176,7 @@ namespace Atomic.Entities
             int current = head;
             while (current != UNDEFINED_INDEX)
             {
-                ref Slot slot = ref _slots[current];
+                Slot slot = _slots[current];
                 if (slot.hashCode == itemHash)
                     return false;
 
