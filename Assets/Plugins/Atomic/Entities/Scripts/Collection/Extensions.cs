@@ -40,8 +40,7 @@ namespace Atomic.Entities
                 throw new ArgumentNullException(nameof(entities));
 
             foreach (E entity in entities)
-                if (entity != null)
-                    it.Add(entity);
+                it.Add(entity);
         }
 
         /// <summary>

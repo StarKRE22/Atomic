@@ -17,7 +17,7 @@ namespace Atomic.Entities
         /// </summary>
         private static readonly IEqualityComparer<IEntityFixedUpdate> s_fixedUpdateComparer =
             EqualityComparer<IEntityFixedUpdate>.Default;
-        
+
         /// <summary>
         /// Equality comparer for ILateUpdate behaviours.
         /// </summary>
@@ -28,17 +28,17 @@ namespace Atomic.Entities
         /// Called when the entity has been initialized.
         /// </summary>
         public event Action OnSpawned;
-        
+
         /// <summary>
         /// Called when the entity is enabled.
         /// </summary>
         public event Action OnEnabled;
-     
+
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
         public event Action OnDisabled;
-        
+
         /// <summary>
         /// Called when the entity is disposed.
         /// </summary>
@@ -48,12 +48,12 @@ namespace Atomic.Entities
         /// Called every frame while the entity is enabled.
         /// </summary>
         public event Action<float> OnUpdated;
-        
+
         /// <summary>
         /// Called every fixed frame while the entity is enabled.
         /// </summary>
         public event Action<float> OnFixedUpdated;
-        
+
         /// <summary>
         /// Called every late frame while the entity is enabled.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Atomic.Entities
         /// Indicates whether the entity has been spawned.
         /// </summary>
         public bool Spawned => this.spawned;
-        
+
         /// <summary>
         /// Indicates whether the entity is currently enabled.
         /// </summary>
@@ -87,17 +87,22 @@ namespace Atomic.Entities
         {
             if (this.spawned)
                 return;
-            
+
             this.spawned = true;
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntitySpawn spawnBehaviour)
                     spawnBehaviour.Spawn(this);
 
-            this.OnStateChanged?.Invoke();
+            this.OnSpawn();
             this.OnSpawned?.Invoke();
+            this.OnStateChanged?.Invoke();
         }
-        
+
+        protected virtual void OnSpawn()
+        {
+        }
+
         /// <summary>
         /// Despawns the entity.
         /// </summary>
@@ -108,15 +113,20 @@ namespace Atomic.Entities
 
             if (this.enabled)
                 this.Disable();
-            
+
+            this.OnDespawn();
+
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityDespawn despawnBehaviour)
                     despawnBehaviour.Despawn(this);
-            
+
             this.spawned = false;
-            
-            this.OnStateChanged?.Invoke();
             this.OnDespawned?.Invoke();
+            this.OnStateChanged?.Invoke();
+        }
+
+        protected virtual void OnDespawn()
+        {
         }
 
         /// <summary>
@@ -135,8 +145,13 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
 
-            this.OnStateChanged?.Invoke();
+            this.OnEnable();
             this.OnEnabled?.Invoke();
+            this.OnStateChanged?.Invoke();
+        }
+
+        protected virtual void OnEnable()
+        {
         }
 
         /// <summary>
@@ -151,7 +166,7 @@ namespace Atomic.Entities
                 this.DisableBehaviour(_behaviours[i]);
 
             this.enabled = false;
-            
+
             this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
         }

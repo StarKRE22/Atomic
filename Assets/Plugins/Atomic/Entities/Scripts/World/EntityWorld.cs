@@ -19,6 +19,25 @@ namespace Atomic.Entities
     /// </remarks>
     public class EntityWorld : EntityWorld<IEntity>
     {
+        /// <inheritdoc/>
+        public EntityWorld()
+        {
+        }
+
+        /// <inheritdoc/>
+        public EntityWorld(params IEntity[] entities) : base(entities)
+        {
+        }
+
+        /// <inheritdoc/>
+        public EntityWorld(string name = null, params IEntity[] entities) : base(name, entities)
+        {
+        }
+
+        /// <inheritdoc/>
+        public EntityWorld(string name, IEnumerable<IEntity> entities) : base(name, entities)
+        {
+        }
     }
 
     /// <summary>
