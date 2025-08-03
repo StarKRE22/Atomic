@@ -207,7 +207,7 @@ namespace Atomic.Entities
                 index = slot.next;
             }
 
-            value = default;
+            value = null;
             return false;
         }
 

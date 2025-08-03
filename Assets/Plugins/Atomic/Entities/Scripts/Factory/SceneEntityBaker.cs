@@ -20,6 +20,21 @@ namespace Atomic.Entities
     /// <typeparam name="E">The type of entity to create.</typeparam>
     public abstract class SceneEntityBaker<E> : SceneEntityFactory<E> where E : IEntity
     {
+        [Tooltip("Should destroy this Game Object after baking?")]
+        [SerializeField]
+        private bool _destroyAfterBake = true;
+
+        public sealed override E Create()
+        {
+            E entity = this.Bake();
+            if (_destroyAfterBake)
+                Destroy(this.gameObject);
+
+            return entity;
+        }
+
+        protected abstract E Bake();
+
         /// <summary>
         /// Finds all <see cref="SceneEntityBaker{E}"/> components in the scene and bakes them into entities.
         /// All corresponding GameObjects will be destroyed after baking.
@@ -44,9 +59,11 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 SceneEntityBaker<E> baker = bakers[i];
+                if (!includeInactive && !baker.gameObject.activeInHierarchy)
+                    continue;
+
                 E entity = baker.Create();
                 entities[i] = entity;
-                Destroy(baker.gameObject);
             }
 
             return entities;
@@ -69,9 +86,11 @@ namespace Atomic.Entities
                 for (int j = 0, bakerCount = bakers.Length; j < bakerCount; j++)
                 {
                     SceneEntityBaker<E> baker = bakers[j];
+                    if (!includeInactive && !baker.gameObject.activeInHierarchy)
+                        continue;
+
                     E entity = baker.Create();
                     result.Add(entity);
-                    Destroy(baker.gameObject);
                 }
             }
 
@@ -83,18 +102,20 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="gameObject">The GameObject to search.</param>
         /// <returns>Array of baked entities.</returns>
-        public static E[] Bake(GameObject gameObject)
+        public static E[] Bake(GameObject gameObject, bool includeInactive = true)
         {
-            SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(true);
+            SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
             int count = bakers.Length;
             E[] entities = new E[count];
 
             for (int i = 0; i < count; i++)
             {
                 SceneEntityBaker<E> baker = bakers[i];
+                if (!includeInactive && !baker.gameObject.activeInHierarchy)
+                    continue;
+
                 E entity = baker.Create();
                 entities[i] = entity;
-                Destroy(baker.gameObject);
             }
 
             return entities;

@@ -17,21 +17,21 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("")]
     [DisallowMultipleComponent]
-    internal sealed class UpdateManager : MonoBehaviour
+    internal sealed class UpdateLoop : MonoBehaviour
     {
         private static readonly IEqualityComparer<IUpdatable> s_comparer = EqualityComparer<IUpdatable>.Default;
 
-        private static UpdateManager _instance;
+        private static UpdateLoop _instance;
         private static bool _spawned;
 
-        private IUpdatable[] _updatables;
+        internal IUpdatable[] _updatables;
         private int _count;
 
         /// <summary>
         /// Gets the singleton instance of the UpdateManager.
         /// Automatically creates and registers itself if needed.
         /// </summary>
-        internal static UpdateManager Instance
+        internal static UpdateLoop Instance
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Atomic.Entities
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateManager instance = Instance;
+            UpdateLoop instance = Instance;
             AddIfAbsent(ref instance._updatables, ref instance._count, updatable, s_comparer);
         }
 
@@ -72,9 +72,12 @@ namespace Atomic.Entities
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateManager instance = Instance;
+            UpdateLoop instance = Instance;
             Remove(ref instance._updatables, ref instance._count, updatable, s_comparer);
         }
+
+        internal bool Contains(IUpdatable updatable) => 
+            InternalUtils.Contains(Instance._updatables, updatable, s_comparer);
 
         /// <summary>
         /// Invokes <see cref="IUpdatable.OnUpdate"/> on all registered instances.
@@ -110,12 +113,12 @@ namespace Atomic.Entities
         /// Creates the hidden singleton GameObject and attaches UpdateManager component.
         /// </summary>
         /// <returns>The created UpdateManager instance.</returns>
-        private static UpdateManager CreateInstance()
+        private static UpdateLoop CreateInstance()
         {
             GameObject go = new GameObject("Update Manager");
             go.hideFlags = HideFlags.HideAndDontSave;
             DontDestroyOnLoad(go);
-            return go.AddComponent<UpdateManager>();
+            return go.AddComponent<UpdateLoop>();
         }
 
 #if UNITY_EDITOR

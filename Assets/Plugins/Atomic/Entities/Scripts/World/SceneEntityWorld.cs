@@ -127,7 +127,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Activate();
-                UpdateManager.Instance.Add(this);
+                UpdateLoop.Instance.Add(this);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Atomic.Entities
             {
                 this.Spawn();
                 this.Activate();
-                UpdateManager.Instance.Add(this);
+                UpdateLoop.Instance.Add(this);
 
                 this.isStarted = true;
             }
@@ -147,7 +147,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                UpdateManager.Instance.Del(this);
+                UpdateLoop.Instance.Del(this);
                 this.Deactivate();
             }
         }

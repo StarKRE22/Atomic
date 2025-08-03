@@ -38,6 +38,7 @@ namespace Atomic.Entities
         public int Count => _entities.Count;
 
         private readonly Dictionary<int, IEntity> _entities = new();
+        private readonly Stack<int> _recycledIds = new();
         private int _lastId;
 
         /// <summary>
@@ -55,7 +56,9 @@ namespace Atomic.Entities
         /// <param name="id">The unique ID assigned to the entity.</param>
         internal void Register(IEntity entity, out int id)
         {
-            id = ++_lastId;
+            if (!_recycledIds.TryPop(out id)) 
+                id = ++_lastId;
+
             _entities.Add(id, entity);
             this.OnAdded?.Invoke(entity);
         }
@@ -68,17 +71,25 @@ namespace Atomic.Entities
         {
             if (_entities.Remove(id, out IEntity entity))
             {
+                _recycledIds.Push(id);
                 id = -1;
                 this.OnRemoved?.Invoke(entity);
             }
         }
 
+        /// <summary>
+        /// Clears all entities in the registry.
+        /// </summary>
         internal void Clear()
         {
+            _recycledIds.Clear();
             _entities.Clear();
             _lastId = 0;
         }
 
+        /// <summary>
+        /// Attempts to check an id is registered or not.
+        /// </summary>
         public bool Contains(int id) => _entities.ContainsKey(id);
 
         /// <inheritdoc />
@@ -125,9 +136,9 @@ namespace Atomic.Entities
         /// </summary>
         [InitializeOnEnterPlayMode]
 #endif
-        private static void ResetAll()
+        internal static void ResetAll()
         {
-            if (_instance != null) 
+            if (_instance != null)
                 _instance.Clear();
         }
     }

@@ -6,6 +6,10 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -97,6 +101,10 @@ namespace Atomic.Entities
         /// </summary>
         protected virtual void OnValidate()
         {
+#if UNITY_EDITOR
+            if (EditorApplication.isPlaying)
+                return;
+
             try
             {
                 this.Precompile();
@@ -105,6 +113,7 @@ namespace Atomic.Entities
             {
                 Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.Message}", this);
             }
+#endif
         }
 
         /// <summary>
@@ -112,10 +121,12 @@ namespace Atomic.Entities
         /// </summary>
         protected virtual void Reset()
         {
+#if UNITY_EDITOR
             this.initialName = this.name;
             this.initialTagCount = 0;
             this.initialValueCount = 0;
             this.initialBehaviourCount = 0;
+#endif
         }
 
         /// <summary>
@@ -125,6 +136,7 @@ namespace Atomic.Entities
         [ContextMenu(nameof(Precompile))]
         protected virtual void Precompile()
         {
+#if UNITY_EDITOR
             E entity = this.Create();
             if (entity == null)
             {
@@ -136,6 +148,7 @@ namespace Atomic.Entities
             this.initialTagCount = entity.TagCount;
             this.initialValueCount = entity.ValueCount;
             this.initialBehaviourCount = entity.BehaviourCount;
+#endif
         }
     }
 }
