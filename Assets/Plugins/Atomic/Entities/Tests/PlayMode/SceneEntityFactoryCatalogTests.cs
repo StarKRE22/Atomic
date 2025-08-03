@@ -21,11 +21,7 @@ namespace Atomic.Entities
             _factoryB.name = "Ally";
 
             _catalog = ScriptableObject.CreateInstance<ScriptableEntityFactoryCatalog>();
-
-            var serializedField = typeof(ScriptableEntityFactoryCatalog)
-                .GetField("_factories",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            serializedField.SetValue(_catalog, new[] {_factoryA, _factoryB});
+            _catalog._factories = new ScriptableEntityFactory<IEntity>[] {_factoryA, _factoryB};
         }
 
         [Test]
@@ -100,10 +96,7 @@ namespace Atomic.Entities
             duplicate.name = "Enemy"; // same as _factoryA
 
             var localCatalog = ScriptableObject.CreateInstance<ScriptableEntityFactoryCatalog>();
-            var field = typeof(ScriptableEntityFactoryCatalog)
-                .GetField("_factories",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            field.SetValue(localCatalog, new[] {_factoryA, duplicate});
+            localCatalog._factories = new ScriptableEntityFactory<IEntity>[] {_factoryA, duplicate};
 
             // force init
             _ = localCatalog.Count;

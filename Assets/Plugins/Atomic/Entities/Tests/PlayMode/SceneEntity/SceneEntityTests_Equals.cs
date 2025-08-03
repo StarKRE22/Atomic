@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public partial class SceneEntityTests_Values
+    public partial class SceneEntityTests
     {
         [Test]
         public void Equals_EntitiesAreDifferent_ReturnsFalse()

@@ -59,7 +59,7 @@ namespace Atomic.Entities
         public void Spawn_Calls_EntityBehaviourSpawn()
         {
             //Arrange:
-            var initBehaviour = new EntityBehaviourStub();
+            var initBehaviour = new DummyEntityBehaviour();
             var entity = new Entity("E");
             entity.AddBehaviour(initBehaviour);
 
@@ -72,7 +72,7 @@ namespace Atomic.Entities
 
             //Assert:
             Assert.IsTrue(wasSpawn);
-            Assert.IsTrue(initBehaviour.spawned);
+            Assert.IsTrue(initBehaviour.Spawned);
         }
     }
 }

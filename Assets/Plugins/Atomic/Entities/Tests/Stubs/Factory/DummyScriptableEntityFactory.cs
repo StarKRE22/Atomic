@@ -1,8 +1,9 @@
 namespace Atomic.Entities
 {
-    
-    public class DummyScriptableEntityFactory : ScriptableEntityFactory<DummyEntity>
+    public class DummyScriptableEntityFactory : ScriptableEntityFactory
     {
-        public override DummyEntity Create() => new();
+        protected override void Install(Entity entity)
+        {
+        }
     }
 }

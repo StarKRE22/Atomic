@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests_Values
+    public sealed partial class SceneEntityTests
     {
         [Test]
         public void GetHashCode_Equals_InstanceId()

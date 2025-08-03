@@ -578,7 +578,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnSpawned += () => wasEvent = true;
@@ -589,7 +589,7 @@ namespace Atomic.Entities
             //Assert
             Assert.IsTrue(entity.IsSpawned);
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(behaviourStub.spawned);
+            Assert.IsTrue(behaviourStub.Spawned);
         }
 
         #endregion
@@ -694,7 +694,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDespawned += () => wasEvent = true;
@@ -705,7 +705,7 @@ namespace Atomic.Entities
             entity.Despawn();
 
             //Assert
-            Assert.IsTrue(behaviourStub.despawned);
+            Assert.IsTrue(behaviourStub.Despawned);
             Assert.IsTrue(wasEvent);
 
             Assert.IsFalse(entity.IsActive);
@@ -803,7 +803,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             var initEvent = false;
             var enabledEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnSpawned += () => initEvent = true;
@@ -820,11 +820,11 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.IsSpawned);
             Assert.IsTrue(entity.IsActive);
 
-            Assert.IsTrue(behaviourStub.spawned);
-            Assert.IsTrue(behaviourStub.enabled);
+            Assert.IsTrue(behaviourStub.Spawned);
+            Assert.IsTrue(behaviourStub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.invocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), behaviourStub.invocationList[1]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityActivate.OnActivate), behaviourStub.InvocationList[1]);
         }
 
         #endregion
@@ -837,7 +837,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = new Entity();
             var wasEvent = false;
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDeactivated += () => wasEvent = true;
@@ -848,7 +848,7 @@ namespace Atomic.Entities
             entity.Deactivate();
 
             //Assert
-            Assert.IsTrue(behaviourStub.disabled);
+            Assert.IsTrue(behaviourStub.Deactivated);
             Assert.IsTrue(wasEvent);
             Assert.IsFalse(entity.IsActive);
         }
@@ -948,7 +948,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -959,7 +959,7 @@ namespace Atomic.Entities
             entity.OnUpdate(deltaTime: 0);
 
             //Assert
-            Assert.IsTrue(behaviourStub.updated);
+            Assert.IsTrue(behaviourStub.Updated);
             Assert.IsTrue(wasUpdate);
         }
 
@@ -1096,7 +1096,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1107,7 +1107,7 @@ namespace Atomic.Entities
             entity.OnFixedUpdate(deltaTime: 0);
 
             //Assert
-            Assert.IsTrue(behaviourStub.fixedUpdated);
+            Assert.IsTrue(behaviourStub.FixedUpdated);
             Assert.IsTrue(wasUpdate);
         }
 
@@ -1183,7 +1183,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = new Entity();
-            var behaviourStub = new EntityBehaviourStub();
+            var behaviourStub = new DummyEntityBehaviour();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1194,7 +1194,7 @@ namespace Atomic.Entities
             entity.OnLateUpdate(deltaTime: 0);
 
             //Assert
-            Assert.IsTrue(behaviourStub.lateUpdated);
+            Assert.IsTrue(behaviourStub.LateUpdated);
             Assert.IsTrue(wasUpdate);
         }
 

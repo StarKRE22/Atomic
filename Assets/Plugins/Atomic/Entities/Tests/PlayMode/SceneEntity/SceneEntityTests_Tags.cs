@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public sealed partial class SceneEntityTests_Values
+    public sealed partial class SceneEntityTests
     {
         #region OnTagAdded
 
@@ -57,8 +57,7 @@ namespace Atomic.Entities
         }
 
         #endregion
-
-
+        
         #region OnTagDeleted
 
         [Test]

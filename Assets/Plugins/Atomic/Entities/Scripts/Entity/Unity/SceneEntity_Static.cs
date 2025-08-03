@@ -155,6 +155,11 @@ namespace Atomic.Entities
             SceneEntity sceneEntity = Cast(entity);
             Destroy(sceneEntity.gameObject, t);
         }
+        
+        public static void Destroy(SceneEntity entity, float t = 0)
+        {
+            Destroy(entity.gameObject, t);
+        }
 
         /// <summary>
         /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.

@@ -54,7 +54,7 @@ namespace SampleGame
         [ListDrawerSettings(ShowFoldout = true)]
 #endif
         [SerializeField]
-        private ScriptableEntityFactory<E>[] _factories;
+        internal ScriptableEntityFactory<E>[] _factories;
 
         private Dictionary<TKey, IEntityFactory<E>> _map;
 
