@@ -19,48 +19,48 @@ namespace Atomic.Entities
         public bool fixedUpdated;
         public bool lateUpdated;
 
-        public readonly List<string> invokationList = new();
+        public readonly List<string> invocationList = new();
 
         public void OnSpawn(IEntity entity)
         {
             this.spawned = true;
-            this.invokationList.Add(nameof(OnSpawn));
+            this.invocationList.Add(nameof(OnSpawn));
         }
 
         public void OnActivate(IEntity entity)
         {
             this.enabled = true;
-            this.invokationList.Add(nameof(OnActivate));
+            this.invocationList.Add(nameof(OnActivate));
         }
 
         public void OnDeactivate(IEntity entity)
         {
             this.disabled = true;
-            this.invokationList.Add(nameof(OnDeactivate));
+            this.invocationList.Add(nameof(OnDeactivate));
         }
 
         public void OnDespawn(IEntity entity)
         {
             this.despawned = true;
-            this.invokationList.Add(nameof(OnDespawn));
+            this.invocationList.Add(nameof(OnDespawn));
         }
 
         public virtual void OnUpdate(IEntity entity, float deltaTime)
         {
             this.updated = true;
-            this.invokationList.Add(nameof(OnUpdate));
+            this.invocationList.Add(nameof(OnUpdate));
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             this.fixedUpdated = true;
-            this.invokationList.Add(nameof(OnFixedUpdate));
+            this.invocationList.Add(nameof(OnFixedUpdate));
         }
 
         public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             this.lateUpdated = true;
-            this.invokationList.Add(nameof(OnLateUpdate));
+            this.invocationList.Add(nameof(OnLateUpdate));
         }
     }
 }

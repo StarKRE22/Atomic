@@ -67,6 +67,24 @@ namespace Atomic.Entities
         private int[] _valueBuckets;
         private int _valueFreeList;
         private int _valueLastIndex;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructValues(int capacity = 0)
+        {
+            if (capacity < 0)
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+
+            _valueCapacity = InternalUtils.GetPrime(capacity);
+            _valueSlots = new ValueSlot[_valueCapacity];
+            _valueBuckets = new int[_valueCapacity];
+
+            for (int i = 0; i < _valueCapacity; i++)
+                _valueBuckets[i] = UNDEFINED_INDEX;
+
+            _valueCount = 0;
+            _valueLastIndex = 0;
+            _valueFreeList = UNDEFINED_INDEX;
+        }
 
         /// <summary>
         /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.
@@ -601,24 +619,6 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ConstructValues(int capacity = 0)
-        {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-
-            _valueCapacity = InternalUtils.GetPrime(capacity);
-            _valueSlots = new ValueSlot[_valueCapacity];
-            _valueBuckets = new int[_valueCapacity];
-
-            for (int i = 0; i < _valueCapacity; i++)
-                _valueBuckets[i] = UNDEFINED_INDEX;
-
-            _valueCount = 0;
-            _valueLastIndex = 0;
-            _valueFreeList = UNDEFINED_INDEX;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void NotifyAboutValueChanged(int key)
         {
             this.OnValueChanged?.Invoke(this, key);
@@ -693,20 +693,5 @@ namespace Atomic.Entities
                 //Do nothing...
             }
         }
-
-        //Unused
-        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        // private static object UnboxValue(ValueSlot slot)
-        // {
-        //     return slot.primitive
-        //         ? ((IBoxing) slot.value).Value
-        //         : slot.value;
-        // }
-        //
-        // private ref int ValueBucket(int key)
-        // {
-        //     int index = (int) ((uint) key % _valueCapacity);
-        //     return ref _valueBuckets[index];
-        // }
     }
 }

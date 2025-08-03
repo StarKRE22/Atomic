@@ -823,8 +823,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.spawned);
             Assert.IsTrue(behaviourStub.enabled);
 
-            Assert.AreEqual(nameof(entity.Spawn), behaviourStub.invokationList[0]);
-            Assert.AreEqual(nameof(entity.Activate), behaviourStub.invokationList[1]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.invocationList[0]);
+            Assert.AreEqual(nameof(IEntityActivate.OnActivate), behaviourStub.invocationList[1]);
         }
 
         #endregion

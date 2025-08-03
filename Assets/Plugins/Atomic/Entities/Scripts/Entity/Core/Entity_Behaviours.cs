@@ -2,6 +2,7 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -40,6 +41,10 @@ namespace Atomic.Entities
 
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructBehaviours(int capacity = 0) =>
+            _behaviours = new IEntityBehaviour[capacity];
 
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
@@ -82,8 +87,8 @@ namespace Atomic.Entities
             if (_spawned && behaviour is IEntitySpawn initBehaviour)
                 initBehaviour.OnSpawn(this);
 
-            if (_enabled)
-                this.EnableBehaviour(behaviour);
+            if (_active)
+                this.ActivateBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -115,8 +120,8 @@ namespace Atomic.Entities
             if (!Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
                 return false;
 
-            if (_enabled)
-                this.InactiveBehaviour(behaviour);
+            if (_active)
+                this.DeactivateBehaviour(behaviour);
 
             if (_spawned && behaviour is IEntityDespawn dispose)
                 dispose.OnDespawn(this);
@@ -260,11 +265,5 @@ namespace Atomic.Entities
                 //Nothing...
             }
         }
-
-        /// <summary>
-        /// Initializes the behaviour array from a collection.
-        /// </summary>
-        private void ConstructBehaviours(int capacity = 0) =>
-            _behaviours = new IEntityBehaviour[capacity];
     }
 }

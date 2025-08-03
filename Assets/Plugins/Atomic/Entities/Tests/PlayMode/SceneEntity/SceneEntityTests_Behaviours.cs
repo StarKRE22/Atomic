@@ -377,7 +377,7 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.spawned);
             Assert.IsFalse(behaviourStub.enabled);
-            Assert.AreEqual(nameof(EntityBehaviourStub.OnSpawn), behaviourStub.invokationList[0]);
+            Assert.AreEqual(nameof(EntityBehaviourStub.OnSpawn), behaviourStub.invocationList[0]);
         }
 
         [Test]
@@ -395,8 +395,8 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.spawned);
             Assert.IsTrue(behaviourStub.enabled);
-            Assert.AreEqual(nameof(EntityBehaviourStub.OnSpawn), behaviourStub.invokationList[0]);
-            Assert.AreEqual(nameof(EntityBehaviourStub.OnActivate), behaviourStub.invokationList[1]);
+            Assert.AreEqual(nameof(EntityBehaviourStub.OnSpawn), behaviourStub.invocationList[0]);
+            Assert.AreEqual(nameof(EntityBehaviourStub.OnActivate), behaviourStub.invocationList[1]);
         }
 
         #endregion
@@ -463,8 +463,8 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.disabled);
             Assert.IsTrue(behaviourStub.despawned);
-            Assert.AreEqual(nameof(EntityBehaviourStub.OnDeactivate), behaviourStub.invokationList[^2]);
-            Assert.AreEqual(nameof(EntityBehaviourStub.OnDespawn), behaviourStub.invokationList[^1]);
+            Assert.AreEqual(nameof(EntityBehaviourStub.OnDeactivate), behaviourStub.invocationList[^2]);
+            Assert.AreEqual(nameof(EntityBehaviourStub.OnDespawn), behaviourStub.invocationList[^1]);
         }
 
         [Test]

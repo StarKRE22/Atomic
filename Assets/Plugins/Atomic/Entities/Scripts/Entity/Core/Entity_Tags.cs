@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
@@ -35,6 +36,25 @@ namespace Atomic.Entities
         private int[] _tagBuckets;
         private int _tagFreeList;
         private int _tagLastIndex;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructTags(int capacity = 0)
+        {
+            if (capacity < 0)
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+
+            int size = GetPrime(capacity);
+
+            _tagSlots = new TagSlot[size];
+            _tagBuckets = new int[size];
+
+            for (int i = 0; i < size; i++)
+                _tagBuckets[i] = UNDEFINED_INDEX;
+
+            _tagCount = 0;
+            _tagLastIndex = 0;
+            _tagFreeList = UNDEFINED_INDEX;
+        }
 
         /// <summary>
         /// Checks if the entity has a tag with the specified key.
@@ -265,24 +285,6 @@ namespace Atomic.Entities
             return ref _tagBuckets[index];
         }
 
-        private void ConstructTags(int capacity = 0)
-        {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-
-            int size = GetPrime(capacity);
-
-            _tagSlots = new TagSlot[size];
-            _tagBuckets = new int[size];
-
-            for (int i = 0; i < size; i++)
-                _tagBuckets[i] = UNDEFINED_INDEX;
-
-            _tagCount = 0;
-            _tagLastIndex = 0;
-            _tagFreeList = UNDEFINED_INDEX;
-        }
-
         public struct TagEnumerator : IEnumerator<int>
         {
             private readonly Entity _entity;
@@ -296,7 +298,7 @@ namespace Atomic.Entities
             {
                 _entity = entity;
                 _index = 0;
-                _current = default;
+                _current = 0;
             }
 
             public bool MoveNext()
@@ -311,14 +313,14 @@ namespace Atomic.Entities
                     }
                 }
 
-                _current = default;
+                _current = 0;
                 return false;
             }
 
             public void Reset()
             {
                 _index = 0;
-                _current = default;
+                _current = 0;
             }
 
             public void Dispose()
