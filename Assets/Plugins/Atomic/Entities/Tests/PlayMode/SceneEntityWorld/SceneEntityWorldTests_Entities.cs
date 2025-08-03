@@ -22,7 +22,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void DelEntity()
+        public void RemoveEntity()
         {
             //Arrange
             var entity = SceneEntity.Create("Test Entity");
@@ -39,7 +39,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void HasEntity()
+        public void ContainsEntity()
         {
             //Arrange
             var entity = SceneEntity.Create("Test Entity");

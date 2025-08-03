@@ -23,6 +23,26 @@ namespace Atomic.Entities
     [DefaultExecutionOrder(-1000)]
     public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
     {
+        /// <summary>
+        /// Creates a new inactive <see cref="GameObject"/> with an attached <see cref="SceneEntityWorld{E}"/> component.
+        /// </summary>
+        /// <param name="name">The name of the GameObject and world instance.</param>
+        /// <param name="scanEntities">If true, the world will scan the scene for entities on Awake.</param>
+        /// <param name="entities">Optional entities to add immediately after creation.</param>
+        /// <returns>The initialized <see cref="SceneEntityWorld{E}"/> instance.</returns>
+        public static SceneEntityWorld Create(string name = null, bool scanEntities = false, params SceneEntity[] entities)
+        {
+            GameObject go = new GameObject();
+            go.SetActive(false);
+
+            SceneEntityWorld world = go.AddComponent<SceneEntityWorld>();
+            world.Name = name;
+            world.scanOnAwake = scanEntities;
+
+            go.SetActive(true);
+            world.AddRange(entities);
+            return world;
+        }
     }
 
     /// <summary>
@@ -60,7 +80,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
         [SerializeField]
-        private bool scanOnAwake = true;
+        private protected bool scanOnAwake = true;
 
 #if ODIN_INSPECTOR
         [ShowIf(nameof(scanOnAwake))]
@@ -77,9 +97,12 @@ namespace Atomic.Entities
 
         protected virtual void Awake()
         {
-            if (!this.scanOnAwake)
-                return;
+            if (this.scanOnAwake) 
+                this.ScanEntities();
+        }
 
+        private void ScanEntities()
+        {
 #if UNITY_2023_1_OR_NEWER
             FindObjectsInactive includeInactive = this.includeInactiveOnScan
                 ? FindObjectsInactive.Include
@@ -140,171 +163,180 @@ namespace Atomic.Entities
             this.Dispose();
         }
 
+        /// <inheritdoc />
         public void Dispose() => _world?.Dispose();
 
         #region Entities
 
+        /// <inheritdoc />
         public event Action<E> OnAdded
         {
             add => _world.OnAdded += value;
             remove => _world.OnAdded -= value;
         }
 
+        /// <inheritdoc />
         public event Action<E> OnRemoved
         {
             add => _world.OnRemoved += value;
             remove => _world.OnRemoved -= value;
         }
 
+        /// <inheritdoc />
         public bool IsReadOnly => _world.IsReadOnly;
 
+        /// <inheritdoc />
         int IEntityCollection<E>.Count => _world.Count;
+       
+        /// <inheritdoc />
         int ICollection<E>.Count => _world.Count;
+        
+        /// <inheritdoc />
         int IReadOnlyCollection<E>.Count => _world.Count;
 
+        /// <inheritdoc />
         void ICollection<E>.Add(E item) => _world.Add(item);
 
+        /// <inheritdoc />
         void ICollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
+        
+        /// <inheritdoc />
         void IEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
+        
+        /// <inheritdoc />
         void IReadOnlyEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
 
+        /// <inheritdoc cref="IReadOnlyEntityCollection{E}.Contains" />
         public bool Contains(E entity) => _world.Contains(entity);
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public bool Add(E entity) => _world.Add(entity);
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public bool Remove(E entity) => _world.Remove(entity);
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void Clear() => _world.Clear();
 
+        /// <inheritdoc />
         public void CopyTo(ICollection<E> results) => _world.CopyTo(results);
 
+        /// <inheritdoc />
         public IEnumerator<E> GetEnumerator() => _world.GetEnumerator();
 
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => _world.GetEnumerator();
 
         #endregion
 
         #region Lifecycle
 
+        /// <inheritdoc />
         public event Action OnSpawned
         {
             add => _world.OnSpawned += value;
             remove => _world.OnSpawned -= value;
         }
 
+        /// <inheritdoc />
         public event Action OnDespawned
         {
             add => _world.OnDespawned += value;
             remove => _world.OnDespawned -= value;
         }
 
+        /// <inheritdoc />
         public event Action OnActivated
         {
             add => _world.OnActivated += value;
             remove => _world.OnActivated -= value;
         }
 
+        /// <inheritdoc />
         public event Action OnDeactivated
         {
             add => _world.OnDeactivated += value;
             remove => _world.OnDeactivated -= value;
         }
 
+        /// <inheritdoc />
         public event Action<float> OnUpdated
         {
             add => _world.OnUpdated += value;
             remove => _world.OnUpdated -= value;
         }
 
+        /// <inheritdoc />
         public event Action<float> OnFixedUpdated
         {
             add => _world.OnFixedUpdated += value;
             remove => _world.OnFixedUpdated -= value;
         }
 
+        /// <inheritdoc />
         public event Action<float> OnLateUpdated
         {
             add => _world.OnLateUpdated += value;
             remove => _world.OnLateUpdated -= value;
         }
 
+        /// <inheritdoc />
         public bool IsSpawned => _world.IsSpawned;
 
+        /// <inheritdoc />
         public bool IsActive => _world.IsActive;
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Title("Lifecycle")]
         [Button, HideInEditorMode]
 #endif
         public void Spawn() => _world.Spawn();
-
+        
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void Activate() => _world.Activate();
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void Deactivate() => _world.Deactivate();
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void Despawn() => _world.Despawn();
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void OnUpdate(float deltaTime) => _world.OnUpdate(deltaTime);
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void OnFixedUpdate(float deltaTime) => _world.OnFixedUpdate(deltaTime);
 
+        /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
         public void OnLateUpdate(float deltaTime) => _world.OnLateUpdate(deltaTime);
-
-        #endregion
-
-        #region Static
-
-        /// <summary>
-        /// Creates a new inactive <see cref="GameObject"/> with an attached <see cref="SceneEntityWorld{E}"/> component.
-        /// </summary>
-        /// <param name="name">The name of the GameObject and world instance.</param>
-        /// <param name="scanEntities">If true, the world will scan the scene for entities on Awake.</param>
-        /// <param name="entities">Optional entities to add immediately after creation.</param>
-        /// <returns>The initialized <see cref="SceneEntityWorld{E}"/> instance.</returns>
-        public static SceneEntityWorld<E> Create(
-            string name = null,
-            bool scanEntities = false,
-            params E[] entities
-        )
-        {
-            GameObject go = new GameObject(name);
-            go.SetActive(false);
-
-            SceneEntityWorld<E> world = go.AddComponent<SceneEntityWorld<E>>();
-            world.Name = name;
-            world.scanOnAwake = scanEntities;
-
-            go.SetActive(true);
-            world.AddRange(entities);
-            return world;
-        }
 
         #endregion
     }

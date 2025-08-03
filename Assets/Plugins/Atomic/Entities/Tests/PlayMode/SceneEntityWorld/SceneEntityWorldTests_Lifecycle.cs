@@ -25,7 +25,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void EnableEntities()
+        public void ActivateEntities()
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
@@ -114,7 +114,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void DisableEntities()
+        public void DeactivateEntities()
         {
             var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
