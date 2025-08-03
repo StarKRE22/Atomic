@@ -1,0 +1,54 @@
+using NUnit.Framework;
+
+namespace Atomic.Entities
+{
+    public class EntityWorld_OnAdd_Tests
+    {
+        [Test]
+        public void OnAdd_Should_DoNothing_WhenWorldIsInactiveAndNotSpawned()
+        {
+            // Arrange
+            var entity = new DummyEntity();
+            var world = new EntityWorld<Entity>();
+
+            // Act
+            world.Add(entity);
+
+            // Assert
+            Assert.IsFalse(entity.WasSpawned);
+            Assert.IsFalse(entity.WasActivated);
+        }
+
+        [Test]
+        public void OnAdd_Should_SpawnEntity_WhenWorldIsSpawned()
+        {
+            // Arrange
+            var entity = new DummyEntity();
+            var world = new EntityWorld<Entity>();
+            world.Spawn();
+
+            // Act
+            world.Add(entity);
+
+            // Assert
+            Assert.IsTrue(entity.WasSpawned);
+            Assert.IsFalse(entity.WasActivated);
+        }
+
+        [Test]
+        public void OnAdd_Should_SpawnAndActivateEntity_WhenWorldIsActive()
+        {
+            // Arrange
+            var entity = new DummyEntity();
+            var world = new EntityWorld<Entity>();
+            world.Activate(); // Spawn + Activate
+
+            // Act
+            world.Add(entity);
+
+            // Assert
+            Assert.IsTrue(entity.WasSpawned);
+            Assert.IsTrue(entity.WasActivated);
+        }
+    }
+}

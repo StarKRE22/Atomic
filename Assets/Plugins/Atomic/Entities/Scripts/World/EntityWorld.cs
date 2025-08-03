@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -74,7 +75,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Indicates whether the loop is enabled.
         /// </summary>
-        public bool IsActive => _enabled;
+        public bool IsActive => _active;
 
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -87,7 +88,7 @@ namespace Atomic.Entities
         }
 
         private protected bool _spawned;
-        private protected bool _enabled;
+        private protected bool _active;
 
         private string _name;
 
@@ -139,8 +140,16 @@ namespace Atomic.Entities
                 return;
             }
 
+            this.ProcessSpawn();
             _spawned = true;
 
+            this.NotifyAboutStateChanged();
+            this.OnSpawned?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessSpawn()
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -148,20 +157,27 @@ namespace Atomic.Entities
                 slot.value.Spawn();
                 currentIndex = slot.right;
             }
-
-            this.NotifyAboutStateChanged();
-            this.OnSpawned?.Invoke();
         }
 
         /// <inheritdoc/>
         public void Despawn()
         {
-            if (_enabled)
+            if (_active)
                 this.Deactivate();
 
             if (!_spawned)
                 return;
 
+            this.ProcessDespawn();
+            _spawned = false;
+
+            this.NotifyAboutStateChanged();
+            this.OnDespawned?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessDespawn()
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -169,10 +185,6 @@ namespace Atomic.Entities
                 slot.value.Despawn();
                 currentIndex = slot.right;
             }
-
-            _spawned = false;
-            this.NotifyAboutStateChanged();
-            this.OnDespawned?.Invoke();
         }
 
         /// <inheritdoc/>
@@ -181,7 +193,7 @@ namespace Atomic.Entities
             if (!_spawned)
                 this.Spawn();
 
-            if (_enabled)
+            if (_active)
             {
 #if UNITY_5_3_OR_NEWER
                 Debug.LogWarning($"{this.GetType().Name} is already enabled!");
@@ -189,8 +201,16 @@ namespace Atomic.Entities
                 return;
             }
 
-            _enabled = true;
+            this.ProcessActivate();
+            _active = true;
 
+            this.NotifyAboutStateChanged();
+            this.OnActivated?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessActivate()
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -198,15 +218,12 @@ namespace Atomic.Entities
                 slot.value.Activate();
                 currentIndex = slot.right;
             }
-
-            this.NotifyAboutStateChanged();
-            this.OnActivated?.Invoke();
         }
 
         /// <inheritdoc/>
         public void Deactivate()
         {
-            if (!_enabled)
+            if (!_active)
             {
 #if UNITY_5_3_OR_NEWER
                 Debug.LogWarning($"{this.GetType().Name} is already disabled!");
@@ -214,8 +231,16 @@ namespace Atomic.Entities
                 return;
             }
 
-            _enabled = false;
+            this.ProcessDeactivate();
+            _active = false;
 
+            this.NotifyAboutStateChanged();
+            this.OnDeactivated?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessDeactivate()
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -223,15 +248,12 @@ namespace Atomic.Entities
                 slot.value.Deactivate();
                 currentIndex = slot.right;
             }
-
-            this.NotifyAboutStateChanged();
-            this.OnDeactivated?.Invoke();
         }
 
         /// <inheritdoc/>
         public void OnUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
             {
 #if UNITY_5_3_OR_NEWER
                 Debug.LogWarning($"Update failed! {this.GetType().Name} is not enabled!");
@@ -239,6 +261,13 @@ namespace Atomic.Entities
                 return;
             }
 
+            this.ProcessUpdate(deltaTime);
+            this.OnUpdated?.Invoke(deltaTime);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessUpdate(float deltaTime)
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -246,14 +275,12 @@ namespace Atomic.Entities
                 slot.value.OnUpdate(deltaTime);
                 currentIndex = slot.right;
             }
-
-            this.OnUpdated?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
         public void OnFixedUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
             {
 #if UNITY_5_3_OR_NEWER
                 Debug.LogWarning($"Fixed update failed! {this.GetType().Name} is not enabled!");
@@ -261,6 +288,13 @@ namespace Atomic.Entities
                 return;
             }
 
+            this.ProcessFixedUpdate(deltaTime);
+            this.OnFixedUpdated?.Invoke(deltaTime);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessFixedUpdate(float deltaTime)
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -268,14 +302,12 @@ namespace Atomic.Entities
                 slot.value.OnFixedUpdate(deltaTime);
                 currentIndex = slot.right;
             }
-
-            this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
         public void OnLateUpdate(float deltaTime)
         {
-            if (!_enabled)
+            if (!_active)
             {
 #if UNITY_5_3_OR_NEWER
                 Debug.LogWarning($"Late update failed! {this.GetType().Name} is not enabled!");
@@ -283,6 +315,13 @@ namespace Atomic.Entities
                 return;
             }
 
+            this.ProcessLateUpdate(deltaTime);
+            this.OnLateUpdated?.Invoke(deltaTime);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessLateUpdate(float deltaTime)
+        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -290,22 +329,22 @@ namespace Atomic.Entities
                 slot.value.OnLateUpdate(deltaTime);
                 currentIndex = slot.right;
             }
-
-            this.OnLateUpdated?.Invoke(deltaTime);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnAdd(E entity)
         {
             if (_spawned) entity.Spawn();
-            if (_enabled) entity.Activate();
+            if (_active) entity.Activate();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnRemove(E entity)
         {
-            if (_enabled) entity.Deactivate();
+            if (_active) entity.Deactivate();
             if (_spawned) entity.Despawn();
         }
-        
+
         /// <summary>
         /// Disposes the world and its entities by despawning them and releasing all resources.
         /// </summary>

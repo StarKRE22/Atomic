@@ -67,5 +67,4 @@ namespace Atomic.Entities
             Assert.IsFalse(called);
         }
     }
-
 }
