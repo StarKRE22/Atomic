@@ -103,9 +103,9 @@ namespace Atomic.Entities
             entity.Activate();
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnInactivated += () => wasCalled = true;
 
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsTrue(wasCalled);
         }
@@ -117,9 +117,9 @@ namespace Atomic.Entities
             entity.Spawn(); // только спаун, не включаем
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnInactivated += () => wasCalled = true;
 
-            entity.Deactivate(); // вызов Disable на уже выключенном
+            entity.Inactivate(); // вызов Disable на уже выключенном
 
             Assert.IsFalse(wasCalled);
         }
@@ -132,11 +132,11 @@ namespace Atomic.Entities
             entity.Activate();
 
             int callCount = 0;
-            entity.OnDeactivated += () => callCount++;
+            entity.OnInactivated += () => callCount++;
 
-            entity.Deactivate();
-            entity.Deactivate();
-            entity.Deactivate();
+            entity.Inactivate();
+            entity.Inactivate();
+            entity.Inactivate();
 
             Assert.AreEqual(1, callCount);
         }
@@ -148,7 +148,7 @@ namespace Atomic.Entities
             entity.Spawn();
             entity.Activate();
 
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsFalse(entity.IsActive);
         }
@@ -468,7 +468,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.Spawn();
             entity.Activate();
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsFalse(entity.IsActive);
         }
@@ -501,8 +501,8 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.Spawn();
             entity.Activate();
-            entity.Deactivate();
-            entity.Deactivate();
+            entity.Inactivate();
+            entity.Inactivate();
 
             Assert.IsFalse(entity.IsActive);
         }
@@ -550,7 +550,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesIEntitySpawnInterfaces()
         {
-            var stub = new EntitySpawnStub();
+            var stub = new EntitySpawnedStub();
             var entity = new Entity();
 
             entity.AddBehaviour(stub);
@@ -635,7 +635,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_InvokesIEntityDespawnBehaviours()
         {
-            var stub = new EntityDespawnStub();
+            var stub = new EntityDespawnedStub();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -743,7 +743,7 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesIEntityEnable()
         {
-            var stub = new EntityActivateStub();
+            var stub = new EntityActiveStub();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -823,8 +823,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Spawned);
             Assert.IsTrue(behaviourStub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), behaviourStub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntitySpawned.OnSpawn), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityActive.OnActive), behaviourStub.InvocationList[1]);
         }
 
         #endregion
@@ -840,12 +840,12 @@ namespace Atomic.Entities
             var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnDeactivated += () => wasEvent = true;
+            entity.OnInactivated += () => wasEvent = true;
 
             //Act
             entity.Spawn();
             entity.Activate();
-            entity.Deactivate();
+            entity.Inactivate();
 
             //Assert
             Assert.IsTrue(behaviourStub.Deactivated);
@@ -860,7 +860,7 @@ namespace Atomic.Entities
             entity.Spawn();
             entity.Activate();
 
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsFalse(entity.IsActive);
         }
@@ -868,13 +868,13 @@ namespace Atomic.Entities
         [Test]
         public void Disable_InvokesIEntityDisable()
         {
-            var stub = new EntityDeactivateStub();
+            var stub = new EntityInactiveStub();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
             entity.Spawn();
             entity.Activate();
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsTrue(stub.WasDisable);
         }
@@ -887,9 +887,9 @@ namespace Atomic.Entities
             entity.Activate();
 
             bool called = false;
-            entity.OnDeactivated += () => called = true;
+            entity.OnInactivated += () => called = true;
 
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsTrue(called);
         }
@@ -904,7 +904,7 @@ namespace Atomic.Entities
             bool stateChanged = false;
             entity.OnStateChanged += () => stateChanged = true;
 
-            entity.Deactivate();
+            entity.Inactivate();
 
             Assert.IsTrue(stateChanged);
         }
@@ -916,9 +916,9 @@ namespace Atomic.Entities
             entity.Spawn();
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnInactivated += () => wasCalled = true;
 
-            entity.Deactivate(); // entity.Enabled == false
+            entity.Inactivate(); // entity.Enabled == false
 
             Assert.IsFalse(wasCalled);
         }
@@ -929,12 +929,12 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.Spawn();
             entity.Activate();
-            entity.Deactivate();
+            entity.Inactivate();
 
             bool called = false;
-            entity.OnDeactivated += () => called = true;
+            entity.OnInactivated += () => called = true;
 
-            entity.Deactivate(); // второй вызов
+            entity.Inactivate(); // второй вызов
 
             Assert.IsFalse(called); // событие не должно вызываться второй раз
         }

@@ -51,7 +51,7 @@ namespace Atomic.Entities
             bool called = false;
             world.OnStateChanged += () => called = true;
 
-            world.Deactivate();
+            world.Inactivate();
 
             Assert.IsTrue(called);
         }

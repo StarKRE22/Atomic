@@ -3,10 +3,10 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     public class DummyEntityBehaviour :
-        IEntitySpawn,
-        IEntityActivate,
-        IEntityDeactivate,
-        IEntityDespawn,
+        IEntitySpawned,
+        IEntityActive,
+        IEntityInactive,
+        IEntityDespawned,
         IEntityUpdate,
         IEntityFixedUpdate,
         IEntityLateUpdate
@@ -27,16 +27,16 @@ namespace Atomic.Entities
             this.InvocationList.Add(nameof(OnSpawn));
         }
 
-        public void OnActivate(IEntity entity)
+        public void OnActive(IEntity entity)
         {
             this.Activated = true;
-            this.InvocationList.Add(nameof(OnActivate));
+            this.InvocationList.Add(nameof(OnActive));
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void OnInactive(IEntity entity)
         {
             this.Deactivated = true;
-            this.InvocationList.Add(nameof(OnDeactivate));
+            this.InvocationList.Add(nameof(OnInactive));
         }
 
         public void OnDespawn(IEntity entity)

@@ -129,8 +129,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Activated);
             
             //Act:
-            entity.OnDeactivated += () => wasDisable = true;
-            world.Deactivate();
+            entity.OnInactivated += () => wasDisable = true;
+            world.Inactivate();
 
             //Assert:
             Assert.IsTrue(wasDisable);

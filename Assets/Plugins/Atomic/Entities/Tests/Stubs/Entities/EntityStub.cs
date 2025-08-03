@@ -20,7 +20,7 @@ namespace Atomic.Entities
         }
 
         public event Action OnActivated;
-        public event Action OnDeactivated;
+        public event Action OnInactivated;
         public bool IsActive { get; }
 
         public void Activate()
@@ -28,7 +28,7 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
-        public void Deactivate()
+        public void Inactivate()
         {
             throw new NotImplementedException();
         }

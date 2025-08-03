@@ -115,7 +115,7 @@ namespace Atomic.Entities
 
             this.OnSpawned = null;
             this.OnActivated = null;
-            this.OnDeactivated = null;
+            this.OnInactivated = null;
 
             this.OnUpdated = null;
             this.OnFixedUpdated = null;

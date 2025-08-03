@@ -15,7 +15,7 @@ namespace Atomic.Entities
             Assert.IsTrue(world.IsActive);
 
             // Act
-            world.Deactivate();
+            world.Inactivate();
 
             // Assert
             Assert.IsFalse(world.IsActive);
@@ -33,7 +33,7 @@ namespace Atomic.Entities
             Assert.IsFalse(world.IsActive);
 
             // Act
-            world.Deactivate();
+            world.Inactivate();
 
             // Assert
             Assert.IsFalse(world.IsActive); // Still false
@@ -47,10 +47,10 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             world.Activate(); // Активируем перед деактивацией
             bool wasCalled = false;
-            world.OnDeactivated += () => wasCalled = true;
+            world.OnInactivated += () => wasCalled = true;
 
             // Act
-            world.Deactivate();
+            world.Inactivate();
 
             // Assert
             Assert.IsTrue(wasCalled);

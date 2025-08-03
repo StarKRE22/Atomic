@@ -131,7 +131,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && _started)
             {
-                this.Deactivate();
+                this.Inactivate();
                 UpdateLoop.Instance.Del(this);
             }
         }
@@ -219,7 +219,7 @@ namespace Atomic.Entities
 
             this.OnSpawned = null;
             this.OnActivated = null;
-            this.OnDeactivated = null;
+            this.OnInactivated = null;
 
             this.OnUpdated = null;
             this.OnFixedUpdated = null;

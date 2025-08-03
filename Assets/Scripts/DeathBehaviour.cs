@@ -2,26 +2,22 @@ using Atomic.Entities;
 
 namespace SampleGame
 {
-    public class DeathBehaviour : IEntitySpawn, IEntityDespawn, IEntityActivate, IEntityDeactivate
+    public class DeathBehaviour : IEntityActive, IEntityInactive, IEntitySpawned, IEntityDespawned
     {
+        public void OnActive(IEntity entity)
+        {
+        }
+
+        public void OnInactive(IEntity entity)
+        {
+        }
+
         public void OnSpawn(IEntity entity)
         {
-            throw new System.NotImplementedException();
         }
 
         public void OnDespawn(IEntity entity)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnActivate(IEntity entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnDeactivate(IEntity entity)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

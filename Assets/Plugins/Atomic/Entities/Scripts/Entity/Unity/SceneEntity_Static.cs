@@ -36,7 +36,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
-        public static SceneEntity Create(in CreateArgs args) => Create<SceneEntity>(args);
+        public static SceneEntity Create(in CreateArgs args) => Create<SceneEntity>(in args);
 
         public static E Create<E>(in CreateArgs args) where E : SceneEntity
         {

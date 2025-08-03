@@ -84,7 +84,7 @@ namespace Atomic.Entities
             if (!AddIfAbsent(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
                 return;
 
-            if (_spawned && behaviour is IEntitySpawn initBehaviour)
+            if (_spawned && behaviour is IEntitySpawned initBehaviour)
                 initBehaviour.OnSpawn(this);
 
             if (_active)
@@ -121,9 +121,9 @@ namespace Atomic.Entities
                 return false;
 
             if (_active)
-                this.DeactivateBehaviour(behaviour);
+                this.InactivateBehaviour(behaviour);
 
-            if (_spawned && behaviour is IEntityDespawn dispose)
+            if (_spawned && behaviour is IEntityDespawned dispose)
                 dispose.OnDespawn(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);

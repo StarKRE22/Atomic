@@ -51,7 +51,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnDeactivated;
+        public event Action OnInactivated;
 
         /// <summary>
         /// Called every frame while the entity is enabled.
@@ -112,7 +112,7 @@ namespace Atomic.Entities
             _spawned = true;
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawn spawnBehaviour)
+                if (_behaviours[i] is IEntitySpawned spawnBehaviour)
                     spawnBehaviour.OnSpawn(this);
 
             this.OnStateChanged?.Invoke();
@@ -128,10 +128,10 @@ namespace Atomic.Entities
                 return;
 
             if (_active)
-                this.Deactivate();
+                this.Inactivate();
 
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDespawn despawnBehaviour)
+                if (_behaviours[i] is IEntityDespawned despawnBehaviour)
                     despawnBehaviour.OnDespawn(this);
             
             _spawned = false;
@@ -162,7 +162,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Deactivate()
+        public void Inactivate()
         {
             if (!_active)
                 return;
@@ -172,7 +172,7 @@ namespace Atomic.Entities
 
             _active = false;
             this.OnStateChanged?.Invoke();
-            this.OnDeactivated?.Invoke();
+            this.OnInactivated?.Invoke();
         }
 
         /// <summary>
@@ -219,8 +219,8 @@ namespace Atomic.Entities
 
         private void EnableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityActivate entityEnable)
-                entityEnable.OnActivate(this);
+            if (behaviour is IEntityActive entityEnable)
+                entityEnable.OnActive(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref this.updates, ref this.updateCount, update);
@@ -234,8 +234,8 @@ namespace Atomic.Entities
 
         private void DisableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityDeactivate entityDisable)
-                entityDisable.OnDeactivate(this);
+            if (behaviour is IEntityInactive entityDisable)
+                entityDisable.OnInactive(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);

@@ -1,10 +1,10 @@
 namespace Atomic.Entities
 {
-    public sealed class EntityActivateStub : IEntityActivate
+    public sealed class EntityActiveStub : IEntityActive
     {
         public bool WasEnable;
         
-        public void OnActivate(IEntity entity)
+        public void OnActive(IEntity entity)
         {
             WasEnable = true;
         }

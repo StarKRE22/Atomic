@@ -7,7 +7,7 @@ namespace Atomic.Entities
         public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             WasCalled = true;
-            entity.Deactivate(); // отключает во время обновления
+            entity.Inactivate(); // отключает во время обновления
         }
     }
 }

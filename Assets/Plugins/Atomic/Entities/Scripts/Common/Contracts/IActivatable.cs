@@ -15,7 +15,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Occurs when the object is disabled.
         /// </summary>
-        event Action OnDeactivated;
+        event Action OnInactivated;
 
         /// <summary>
         /// Gets a value indicating whether the object is currently enabled.
@@ -30,6 +30,6 @@ namespace Atomic.Entities
         /// <summary>
         /// Disables the object.
         /// </summary>
-        void Deactivate();
+        void Inactivate();
     }
 }

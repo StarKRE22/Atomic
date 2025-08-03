@@ -38,7 +38,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnDeactivated;
+        public event Action OnInactivated;
 
         /// <summary>
         /// Called when the entity is disposed.
@@ -100,7 +100,7 @@ namespace Atomic.Entities
         protected virtual void ProcessSpawn()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawn spawnBehaviour)
+                if (_behaviours[i] is IEntitySpawned spawnBehaviour)
                     spawnBehaviour.OnSpawn(this);
         }
 
@@ -113,7 +113,7 @@ namespace Atomic.Entities
                 return;
 
             if (_active)
-                this.Deactivate();
+                this.Inactivate();
 
             this.ProcessDespawn();
             _spawned = false;
@@ -126,7 +126,7 @@ namespace Atomic.Entities
         protected virtual void ProcessDespawn()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDespawn despawnBehaviour)
+                if (_behaviours[i] is IEntityDespawned despawnBehaviour)
                     despawnBehaviour.OnDespawn(this);
         }
 
@@ -158,23 +158,23 @@ namespace Atomic.Entities
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Deactivate()
+        public void Inactivate()
         {
             if (!_active)
                 return;
 
-            this.ProcessDeactivate();
+            this.ProcessInactivate();
             _active = false;
 
             this.OnStateChanged?.Invoke();
-            this.OnDeactivated?.Invoke();
+            this.OnInactivated?.Invoke();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessDeactivate()
+        protected virtual void ProcessInactivate()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                this.DeactivateBehaviour(_behaviours[i]);
+                this.InactivateBehaviour(_behaviours[i]);
         }
 
         /// <summary>
@@ -236,8 +236,8 @@ namespace Atomic.Entities
 
         private void ActivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityActivate activate)
-                activate.OnActivate(this);
+            if (behaviour is IEntityActive activate)
+                activate.OnActive(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref _updates, ref _updateCount, update);
@@ -249,10 +249,10 @@ namespace Atomic.Entities
                 Add(ref _lateUpdates, ref _lateUpdateCount, lateUpdate);
         }
 
-        private void DeactivateBehaviour(IEntityBehaviour behaviour)
+        private void InactivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityDeactivate deactivate)
-                deactivate.OnDeactivate(this);
+            if (behaviour is IEntityInactive inactive)
+                inactive.OnInactive(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref _updates, ref _updateCount, update, s_updateComparer);

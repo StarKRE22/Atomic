@@ -56,7 +56,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static DeactivateSubscription WhenDisable(this IActivatable source, Action action)
         {
-            source.OnDeactivated += action;
+            source.OnInactivated += action;
             return new DeactivateSubscription(source, action);
         }
 

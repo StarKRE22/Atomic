@@ -32,9 +32,9 @@ namespace Atomic.Entities
             WasActivated = true;
         }
 
-        protected override void ProcessDeactivate()
+        protected override void ProcessInactivate()
         {
-            base.ProcessDeactivate();
+            base.ProcessInactivate();
             WasDeactivated = true;
         }
 

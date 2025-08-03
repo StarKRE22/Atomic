@@ -10,10 +10,10 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnDeactivated += () => callCount++;
+            world.OnInactivated += () => callCount++;
 
             world.Activate();   // сначала включаем
-            world.Deactivate();  // теперь можно выключить
+            world.Inactivate();  // теперь можно выключить
 
             Assert.AreEqual(1, callCount);
         }
@@ -23,11 +23,11 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnDeactivated += () => callCount++;
+            world.OnInactivated += () => callCount++;
 
             world.Activate();
-            world.Deactivate();
-            world.Deactivate(); // второй вызов — не должен вызывать событие
+            world.Inactivate();
+            world.Inactivate(); // второй вызов — не должен вызывать событие
 
             Assert.AreEqual(1, callCount);
         }
@@ -37,9 +37,9 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
-            world.OnDeactivated += () => called = true;
+            world.OnInactivated += () => called = true;
 
-            world.Deactivate(); // без Enable
+            world.Inactivate(); // без Enable
 
             Assert.IsFalse(called);
         }
@@ -51,9 +51,9 @@ namespace Atomic.Entities
             world.Activate();
 
             bool called = false;
-            world.OnDeactivated += () => called = true;
+            world.OnInactivated += () => called = true;
 
-            world.Deactivate();
+            world.Inactivate();
 
             Assert.IsTrue(called);
         }
@@ -63,10 +63,10 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             world.Activate();
-            world.Deactivate();
+            world.Inactivate();
 
             bool called = false;
-            world.OnDeactivated += () => called = true;
+            world.OnInactivated += () => called = true;
 
             Assert.IsFalse(called);
         }
