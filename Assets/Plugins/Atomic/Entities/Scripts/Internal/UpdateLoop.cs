@@ -77,7 +77,7 @@ namespace Atomic.Entities
         }
 
         internal bool Contains(IUpdatable updatable) => 
-            InternalUtils.Contains(Instance._updatables, updatable, s_comparer);
+            InternalUtils.Contains(Instance._updatables, updatable, _count, s_comparer);
 
         /// <summary>
         /// Invokes <see cref="IUpdatable.OnUpdate"/> on all registered instances.

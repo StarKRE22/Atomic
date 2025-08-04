@@ -36,8 +36,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Creates a new <see cref="SceneEntity"/> GameObject and configures it with optional tags, values, and behaviours.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(in CreateArgs args) => Create<SceneEntity>(in args);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(in CreateArgs args) where E : SceneEntity
         {
             GameObject gameObject = new GameObject();
@@ -66,6 +68,7 @@ namespace Atomic.Entities
             return sceneEntity;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             string name = null,
             IEnumerable<int> tags = null,
@@ -91,6 +94,7 @@ namespace Atomic.Entities
             initialBehaviourCapacity = initialBehaviourCount
         });
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(
             string name = null,
             IEnumerable<int> tags = null,
@@ -119,15 +123,18 @@ namespace Atomic.Entities
         /// <summary>
         /// Instantiates a prefab and installs the resulting <see cref="SceneEntity"/> under the specified parent.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(SceneEntity prefab, Transform parent = null) =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
         /// <summary>
         /// Instantiates a prefab at the given position and rotation with optional parent, then installs it.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(
             SceneEntity prefab,
             Vector3 position,
@@ -135,6 +142,7 @@ namespace Atomic.Entities
             Transform parent = null
         ) => Create<SceneEntity>(prefab, position, rotation, parent);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             E prefab,
             Vector3 position,
@@ -150,22 +158,23 @@ namespace Atomic.Entities
         /// <summary>
         /// Destroys the associated GameObject of a given <see cref="IEntity"/> if it is a <see cref="SceneEntity"/>.
         /// </summary>
-        public static void Destroy(IEntity entity, float t = 0)
-        {
-            SceneEntity sceneEntity = Cast(entity);
-            Destroy(sceneEntity.gameObject, t);
-        }
-        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Destroy(IEntity entity, float t = 0) => Destroy(Cast(entity), t);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(SceneEntity entity, float t = 0)
         {
-            Destroy(entity.gameObject, t);
+            if (entity) 
+                Destroy(entity.gameObject, t);
         }
 
         /// <summary>
         /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Cast(IEntity entity) => Cast<SceneEntity>(entity);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Cast<E>(IEntity entity) where E : SceneEntity => entity switch
         {
             null => null,
@@ -177,9 +186,11 @@ namespace Atomic.Entities
         /// <summary>
         /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryCast(IEntity entity, out SceneEntity result) =>
             TryCast<SceneEntity>(entity, out result);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity
         {
             if (entity is E sceneEntity)

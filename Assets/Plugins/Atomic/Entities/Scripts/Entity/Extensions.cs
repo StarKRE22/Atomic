@@ -23,7 +23,7 @@ namespace Atomic.Entities
             entity.ClearValues();
             entity.ClearBehaviours();
         }
-        
+
         /// <summary>
         /// Adds multiple tags to the entity.
         /// </summary>
@@ -50,6 +50,16 @@ namespace Atomic.Entities
                 entity.AddValue(key, value);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddBehaviours(this IEntity entity, IEntityBehaviour[] behaviours, int startIndex, int count)
+        {
+            if (behaviours == null)
+                return;
+
+            for (int i = startIndex, end = startIndex + count; i < end; i++)
+                entity.AddBehaviour(behaviours[i]);
+        }
+
         /// <summary>
         /// Adds multiple behaviours to the entity.
         /// </summary>
@@ -74,6 +84,16 @@ namespace Atomic.Entities
 
             foreach (IEntityBehaviour behaviour in behaviours)
                 entity.DelBehaviour(behaviour);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void DelBehaviours(this IEntity entity, IEntityBehaviour[] behaviours, int startIndex, int count)
+        {
+            if (behaviours == null)
+                return;
+
+            for (int i = startIndex, end = startIndex + count; i < end; i++)
+                entity.DelBehaviour(behaviours[i]);
         }
 
         /// <summary>
@@ -186,13 +206,13 @@ namespace Atomic.Entities
             installer?.Install(entity);
             return entity;
         }
-        
+
         public static void Install(this IEntity entity, IEnumerable<IEntityInstaller> installers)
         {
             if (installers == null)
                 return;
 
-            foreach (IEntityInstaller installer in installers) 
+            foreach (IEntityInstaller installer in installers)
                 installer.Install(entity);
         }
 

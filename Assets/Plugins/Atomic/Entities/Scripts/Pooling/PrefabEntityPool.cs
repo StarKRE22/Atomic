@@ -1,5 +1,6 @@
 #if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace Atomic.Entities
     {
         private const string NUMBER_PATTERN = @"\s*\(\d+\)$";
 
-        private struct Pool
+        internal struct Pool
         {
             public Stack<E> stack;
             public Transform container;
@@ -101,7 +102,7 @@ namespace Atomic.Entities
 
             if (!_pools.TryGetValue(name, out Pool pool))
             {
-                pool = CreatePool(name);
+                pool = this.CreatePool(name);
                 _pools.Add(name, pool);
             }
 
@@ -109,13 +110,13 @@ namespace Atomic.Entities
             {
                 Transform tf = entity.transform;
                 tf.SetParent(parent, false);
-                tf.position = position;
-                tf.rotation = rotation;
+                tf.SetPositionAndRotation(position, rotation);
             }
             else
             {
                 entity = this.CreateEntity(prefab, parent);
                 entity.name = name;
+                entity.transform.SetPositionAndRotation(position, rotation);
             }
 
             this.OnRent(entity);
@@ -187,6 +188,7 @@ namespace Atomic.Entities
         /// Use this to apply default inactive state or setup.
         /// </summary>
         /// <param name="entity">The new pooled entity.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnCreate(E entity) => entity.gameObject.SetActive(false);
 
         /// <summary>
@@ -194,6 +196,7 @@ namespace Atomic.Entities
         /// Default behavior activates the entity.
         /// </summary>
         /// <param name="entity">The rented entity.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnRent(E entity) => entity.gameObject.SetActive(true);
 
         /// <summary>
@@ -201,6 +204,7 @@ namespace Atomic.Entities
         /// Default behavior deactivates the entity.
         /// </summary>
         /// <param name="entity">The returned entity.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnReturn(E entity) => entity.gameObject.SetActive(false);
 
         /// <summary>
@@ -208,6 +212,7 @@ namespace Atomic.Entities
         /// Override to dispose resources or unregister events.
         /// </summary>
         /// <param name="entity">The entity being disposed.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDispose(E entity)
         {
         }
@@ -218,9 +223,11 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to extract a base name from.</param>
         /// <returns>A clean prefab name for use as a pool key.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual string GetEntityName(E entity) =>
             Regex.Replace(entity.name, NUMBER_PATTERN, string.Empty).Trim();
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Pool CreatePool(string name)
         {
             Stack<E> stack = new Stack<E>();
@@ -238,6 +245,7 @@ namespace Atomic.Entities
         /// Instantiates a new entity instance from the prefab and initializes it.
         /// </summary>
         /// <returns>The newly created entity.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private E CreateEntity(E prefab, Transform container)
         {
             E entity = SceneEntity.Create(prefab, container);

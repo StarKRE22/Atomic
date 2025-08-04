@@ -5,7 +5,7 @@ using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
-    public sealed class SceneEntityTests_UnityLifecycle
+    public sealed class SceneEntityTests_UseUnityLifecycle
     {
         [UnityTest]
         public IEnumerator EntityLifecycle_ByUnityLifecycle()

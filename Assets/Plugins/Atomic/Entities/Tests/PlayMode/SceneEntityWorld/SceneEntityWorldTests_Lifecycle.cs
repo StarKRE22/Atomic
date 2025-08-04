@@ -12,12 +12,13 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(initBehaviour);
 
-            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             var wasInit = false;
 
             //Act:
             entity.OnSpawned += () => wasInit = true;
-            entityWorld.Spawn();
+            world.Spawn();
 
             //Assert:
             Assert.IsTrue(wasInit);
@@ -31,12 +32,13 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
-            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             var wasEnable = false;
 
             //Act:
             entity.OnActivated += () => wasEnable = true;
-            entityWorld.Activate();
+            world.Activate();
 
             //Assert:
             Assert.IsTrue(wasEnable);
@@ -54,7 +56,8 @@ namespace Atomic.Entities
             Assert.IsFalse(behaviourStub.Spawned);
             Assert.IsFalse(behaviourStub.Activated);
             
-            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             world.Activate();
             var wasUpdate = false;
             
@@ -76,7 +79,8 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
-            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             world.Activate();
             var wasUpdate = false;
 
@@ -98,7 +102,8 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
             
-            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             world.Activate();
             var wasUpdate = false;
 
@@ -120,7 +125,8 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
             
-            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             world.Activate();
             var wasDisable = false;
 
@@ -143,7 +149,8 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
             
-            var world = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            world.Add(entity);
             world.Activate();
             var wasDispose = false;
 

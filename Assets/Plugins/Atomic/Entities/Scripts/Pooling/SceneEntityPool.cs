@@ -1,5 +1,7 @@
 #if UNITY_5_3_OR_NEWER
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -31,6 +33,8 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
         void IEntityPool<IEntity>.Return(IEntity entity) => this.Return((SceneEntity) entity);
+
+        public static SceneEntityPool Create(CreateArgs args) => Create<SceneEntityPool>(args);
     }
 
     /// <summary>
@@ -65,13 +69,13 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Stack<E> _pooledEntities = new();
+        internal readonly Stack<E> pooledEntities = new();
 
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly HashSet<E> _rentEntities = new();
-        
+        internal readonly HashSet<E> rentEntities = new();
+
         /// <summary>
         /// Initializes the pool when the GameObject is activated, if <see cref="_initOnAwake"/> is <c>true</c>.
         /// </summary>
@@ -91,19 +95,19 @@ namespace Atomic.Entities
         public void Init(int count)
         {
             for (int i = 0; i < count; i++)
-                _pooledEntities.Push(this.CreateEntity());
+                pooledEntities.Push(this.CreateEntity());
         }
-        
+
         /// <summary>
         /// Rents (activates) an entity from the pool. If the pool is empty, a new instance is created.
         /// </summary>
         /// <returns>The rented entity.</returns>
         public E Rent()
         {
-            if (!_pooledEntities.TryPop(out E entity))
+            if (!pooledEntities.TryPop(out E entity))
                 entity = this.CreateEntity();
 
-            _rentEntities.Add(entity);
+            rentEntities.Add(entity);
             this.OnRent(entity);
             return entity;
         }
@@ -114,10 +118,10 @@ namespace Atomic.Entities
         /// <param name="entity">The entity to return. Must have been previously rented.</param>
         public void Return(E entity)
         {
-            if (_rentEntities.Remove(entity))
+            if (rentEntities.Remove(entity))
             {
                 this.OnReturn(entity);
-                _pooledEntities.Push(entity);
+                pooledEntities.Push(entity);
             }
             else
             {
@@ -126,17 +130,24 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Disposes all pooled entities by destroying them and clearing the internal pool.
+        /// Disposes all pooled and rent entities by destroying them and clearing the internal pool.
         /// </summary>
         public void Dispose()
         {
-            foreach (E entity in _pooledEntities)
+            foreach (E entity in pooledEntities)
             {
                 this.OnDispose(entity);
                 Destroy(entity);
             }
 
-            _pooledEntities.Clear();
+            foreach (E entity in rentEntities)
+            {
+                this.OnDispose(entity);
+                Destroy(entity);
+            }
+
+            pooledEntities.Clear();
+            rentEntities.Clear();
         }
 
         /// <summary>
@@ -181,6 +192,44 @@ namespace Atomic.Entities
             this.OnCreate(entity);
             return entity;
         }
+
+        #region Static
+
+        [Serializable]
+        public struct CreateArgs
+        {
+            public string name;
+            public E prefab;
+            public Transform container;
+            public bool initOnAwake;
+            public int initialCount;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T Create<T>(CreateArgs args) where T : SceneEntityPool<E>
+        {
+            var gameObject = new GameObject(args.name);
+            gameObject.SetActive(false);
+            T pool = gameObject.AddComponent<T>();
+            pool._prefab = args.prefab;
+            pool._container = args.container;
+            pool._initOnAwake = args.initOnAwake;
+            pool._initialCount = args.initialCount;
+            gameObject.SetActive(true);
+            return pool;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Destroy(SceneEntityPool<E> pool, float t = 0)
+        {
+            if (pool)
+            {
+                pool.Dispose();
+                Destroy(pool.gameObject, t);
+            }
+        }
+
+        #endregion
     }
 }
 #endif

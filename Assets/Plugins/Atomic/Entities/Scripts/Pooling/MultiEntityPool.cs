@@ -120,6 +120,9 @@ namespace Atomic.Entities
             foreach (E entity in pool.Value)
                 this.OnDispose(entity);
 
+            foreach (E entity in _rentEntities.Keys) 
+                this.OnDispose(entity);
+            
             _pooledEntities.Clear();
             _rentEntities.Clear();
         }

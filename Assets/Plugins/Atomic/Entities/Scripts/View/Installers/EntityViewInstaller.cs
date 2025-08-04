@@ -12,6 +12,11 @@ namespace Atomic.Entities
     /// </remarks>
     public abstract class EntityViewInstaller : EntityViewInstaller<IEntity>
     {
+        /// <inheritdoc/>
+        public sealed override void Install(EntityView<IEntity> view) => this.Install((EntityView) view);
+
+        /// <inheritdoc cref="Install" />
+        protected abstract void Install(EntityView view);
     }
 
     /// <summary>

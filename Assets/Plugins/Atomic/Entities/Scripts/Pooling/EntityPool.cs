@@ -42,12 +42,12 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Stack<E> _pooledEntities = new();
+        private protected readonly Stack<E> _pooledEntities = new();
         
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly HashSet<E> _rentEntities = new();
+        private protected readonly HashSet<E> _rentEntities = new();
       
         private readonly IEntityFactory<E> _factory;
 
@@ -81,6 +81,9 @@ namespace Atomic.Entities
             foreach (E entity in _pooledEntities)
                 this.OnDispose(entity);
 
+            foreach (E entity in _rentEntities) 
+                this.OnDispose(entity);
+            
             _pooledEntities.Clear();
             _rentEntities.Clear();
         }

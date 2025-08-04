@@ -1,12 +1,15 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 using UnityEngine;
+using static Atomic.Entities.InternalUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -16,12 +19,13 @@ namespace Atomic.Entities
 {
     /// <summary>
     /// A non-generic alias for a base entity view targeting general <see cref="IEntity"/> instances.
-    /// This component inherits all behavior from <see cref="EntityViewBase{IEntity}"/>.
+    /// This component inherits all behavior from <see cref="EntityView{IEntity}"/>.
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
-    public class EntityView : EntityViewBase<IEntity>
+    public class EntityView : EntityView<IEntity>
     {
+        public static EntityView Create(CreateArgs args = default) => Create<EntityView>(args);
     }
 
     /// <summary>
@@ -34,6 +38,10 @@ namespace Atomic.Entities
     /// </typeparam>
     public abstract class EntityView<E> : EntityViewBase<E> where E : IEntity
     {
+        /// <summary>
+        /// Static comparer used to compare behaviours.
+        /// </summary>
+
 #if ODIN_INSPECTOR
         [SceneObjectsOnly]
 #endif
@@ -44,7 +52,8 @@ namespace Atomic.Entities
         /// <summary>
         /// A collection of behaviours added to the entity via the view.
         /// </summary>
-        private readonly List<IEntityBehaviour> _behaviours = new();
+        private IEntityBehaviour[] _behaviours;
+        private int _behaviourCount;
 
         /// <summary>
         /// Indicates whether the view installation process has been performed.
@@ -70,7 +79,7 @@ namespace Atomic.Entities
         protected override void OnShow(E entity)
         {
             this.Install();
-            entity.AddBehaviours(_behaviours);
+            entity.AddBehaviours(_behaviours, 0, _behaviourCount);
             base.OnShow(entity);
         }
 
@@ -82,7 +91,7 @@ namespace Atomic.Entities
         /// <param name="entity">The entity being hidden.</param>
         protected override void OnHide(E entity)
         {
-            entity.DelBehaviours(_behaviours);
+            entity.DelBehaviours(_behaviours, 0, _behaviourCount);
             base.OnHide(entity);
         }
 
@@ -92,11 +101,24 @@ namespace Atomic.Entities
         /// <param name="behaviour">The behaviour to add.</param>
         public void AddBehaviour(IEntityBehaviour behaviour)
         {
-            _behaviours.Add(behaviour);
+            if (behaviour == null)
+                throw new ArgumentNullException(nameof(behaviour));
+
+            if (!AddIfAbsent(
+                    ref _behaviours,
+                    ref _behaviourCount,
+                    behaviour,
+                    EqualityComparer<IEntityBehaviour>.Default
+                ))
+                return;
 
             if (_isVisible)
                 _entity.AddBehaviour(behaviour);
         }
+
+        public bool HasBehaviour(IEntityBehaviour behaviour) =>
+            behaviour != null && Contains(_behaviours, behaviour, _behaviourCount,
+                EqualityComparer<IEntityBehaviour>.Default);
 
         /// <summary>
         /// Removes the specified behaviour from the view and, if visible, immediately removes it from the entity.
@@ -104,10 +126,23 @@ namespace Atomic.Entities
         /// <param name="behaviour">The behaviour to remove.</param>
         public void DelBehaviour(IEntityBehaviour behaviour)
         {
-            _behaviours.Remove(behaviour);
+            if (behaviour == null || !Remove(
+                    ref _behaviours,
+                    ref _behaviourCount,
+                    behaviour,
+                    EqualityComparer<IEntityBehaviour>.Default
+                ))
+                return;
 
             if (_isVisible)
                 _entity.DelBehaviour(behaviour);
+        }
+
+        public IEntityBehaviour GetBehaviourAt(int index)
+        {
+            return index < 0 || index >= _behaviourCount
+                ? throw new ArgumentOutOfRangeException(nameof(index))
+                : _behaviours[index];
         }
 
         /// <summary>
@@ -119,14 +154,18 @@ namespace Atomic.Entities
             if (_installed)
                 return;
 
-            _installed = true;
-
-            for (int i = 0, count = _installers.Count; i < count; i++)
+            if (_installers != null)
             {
-                EntityViewInstaller<E> installer = _installers[i];
-                if (installer != null)
-                    installer.Install(this);
+                for (int i = 0, count = _installers.Count; i < count; i++)
+                {
+                    EntityViewInstaller<E> installer = _installers[i];
+                    if (installer != null)
+                        installer.Install(this);
+                }
             }
+
+
+            _installed = true;
         }
 
         /// <summary>
@@ -149,14 +188,22 @@ namespace Atomic.Entities
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
                 return;
 #endif
+            this.OnGizmosDraw();
+        }
+
+        internal void OnGizmosDraw()
+        {
             if (_entity == null)
                 return;
 
+            Debug.Log($"START GIZMOS {_behaviourCount}");
             try
             {
-                for (int i = 0, count = _behaviours.Count; i < count; i++)
+                for (int i = 0, count = _behaviourCount; i < count; i++)
                 {
-                    if (_behaviours[i] is IEntityGizmos<E> gizmos)
+                    Debug.Log("AAA GIZMOS");
+
+                    if (_behaviours[i] is IEntityGizmos gizmos)
                         gizmos.OnGizmosDraw(_entity);
                 }
             }
@@ -165,6 +212,34 @@ namespace Atomic.Entities
                 Debug.LogWarning($"Ops: detected exception in gizmos: {e.Message}");
             }
         }
+
+        #region Static
+
+        [Serializable]
+        public struct CreateArgs
+        {
+            public string name;
+            public List<EntityViewInstaller<E>> installers;
+            public IEnumerable<IEntityBehaviour> behaviours;
+            public bool onlyEditModeGizmos;
+            public bool onlySelectedGizmos;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T Create<T>(CreateArgs args = default) where T : EntityView<E>
+        {
+            var gameObject = new GameObject(args.name);
+            gameObject.SetActive(false);
+            T view = gameObject.AddComponent<T>();
+            view._installers = args.installers;
+            view._behaviours = args.behaviours?.ToArray();
+            view._onlyEditModeGizmos = args.onlyEditModeGizmos;
+            view._onlySelectedGizmos = args.onlySelectedGizmos;
+            gameObject.SetActive(true);
+            return view;
+        }
+
+        #endregion
     }
 }
 #endif

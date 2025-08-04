@@ -111,12 +111,12 @@ namespace Atomic.Entities
         /// <param name="comparer">An equality comparer.</param>
         /// <returns><c>true</c> if the item exists; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool Contains<T>(T[] array, T item, IEqualityComparer<T> comparer)
+        internal static bool Contains<T>(T[] array, T item,  int count, IEqualityComparer<T> comparer)
         {
             if (array == null)
                 return false;
 
-            for (int i = 0, count = array.Length; i < count; i++)
+            for (int i = 0; i < count; i++)
                 if (comparer.Equals(array[i], item))
                     return true;
 

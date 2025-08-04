@@ -14,6 +14,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
     public abstract class SceneEntitySingleton<E> : SceneEntity where E : SceneEntitySingleton<E>
     {
+        [Tooltip("Do not destroy the target Object when loading a new Scene?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;
 

@@ -82,6 +82,15 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being hidden.</param>
         protected virtual void OnHide(E entity) => this.gameObject.SetActive(false);
+
+        public static void Destroy(EntityViewBase<E> view, float time = 0)
+        {
+            if (view)
+            {
+                view.Hide();
+                Destroy(view.gameObject, time);
+            }
+        }
     }
 }
 #endif

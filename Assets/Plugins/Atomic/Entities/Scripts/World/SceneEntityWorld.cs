@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -23,26 +24,11 @@ namespace Atomic.Entities
     [DefaultExecutionOrder(-1000)]
     public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
     {
-        /// <summary>
-        /// Creates a new inactive <see cref="GameObject"/> with an attached <see cref="SceneEntityWorld{E}"/> component.
-        /// </summary>
-        /// <param name="name">The name of the GameObject and world instance.</param>
-        /// <param name="scanEntities">If true, the world will scan the scene for entities on Awake.</param>
-        /// <param name="entities">Optional entities to add immediately after creation.</param>
-        /// <returns>The initialized <see cref="SceneEntityWorld{E}"/> instance.</returns>
-        public static SceneEntityWorld Create(string name = null, bool scanEntities = false, params SceneEntity[] entities)
-        {
-            GameObject go = new GameObject();
-            go.SetActive(false);
-
-            SceneEntityWorld world = go.AddComponent<SceneEntityWorld>();
-            world.Name = name;
-            world.scanOnAwake = scanEntities;
-
-            go.SetActive(true);
-            world.AddRange(entities);
-            return world;
-        }
+        public static SceneEntityWorld Create(
+            string name = null,
+            bool scanEntities = true,
+            bool useUnityLifecycle = true
+        ) => Create<SceneEntityWorld>(name, scanEntities, useUnityLifecycle);
     }
 
     /// <summary>
@@ -80,10 +66,10 @@ namespace Atomic.Entities
 #endif
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
         [SerializeField]
-        private protected bool scanOnAwake = true;
+        private protected bool scanEntitiesOnAwake = true;
 
 #if ODIN_INSPECTOR
-        [ShowIf(nameof(scanOnAwake))]
+        [ShowIf(nameof(scanEntitiesOnAwake))]
 #endif
         [Tooltip("If this option is enabled then EntityWorld scan inactive Entities on a scene also")]
         [SerializeField]
@@ -91,13 +77,13 @@ namespace Atomic.Entities
 
         [SerializeField,
          Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
-        private bool useUnityLifecycle = true;
+        private protected bool useUnityLifecycle = true;
 
         private bool isStarted;
 
         protected virtual void Awake()
         {
-            if (this.scanOnAwake) 
+            if (this.scanEntitiesOnAwake)
                 this.ScanEntities();
         }
 
@@ -187,10 +173,10 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
         int IEntityCollection<E>.Count => _world.Count;
-       
+
         /// <inheritdoc />
         int ICollection<E>.Count => _world.Count;
-        
+
         /// <inheritdoc />
         int IReadOnlyCollection<E>.Count => _world.Count;
 
@@ -199,10 +185,10 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
         void ICollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
-        
+
         /// <inheritdoc />
         void IEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
-        
+
         /// <inheritdoc />
         void IReadOnlyEntityCollection<E>.CopyTo(E[] array, int arrayIndex) => _world.CopyTo(array, arrayIndex);
 
@@ -301,7 +287,7 @@ namespace Atomic.Entities
         [Button, HideInEditorMode]
 #endif
         public void Spawn() => _world.Spawn();
-        
+
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
@@ -337,6 +323,44 @@ namespace Atomic.Entities
         [Button, HideInEditorMode]
 #endif
         public void OnLateUpdate(float deltaTime) => _world.OnLateUpdate(deltaTime);
+
+        #endregion
+
+        #region Static
+
+        /// <summary>
+        /// Creates a new inactive <see cref="GameObject"/> with an attached <see cref="SceneEntityWorld{E}"/> component.
+        /// </summary>
+        /// <param name="name">The name of the GameObject and world instance.</param>
+        /// <param name="scanEntities">If true, the world will scan the scene for entities on Awake.</param>
+        /// <param name="entities">Optional entities to add immediately after creation.</param>
+        /// <returns>The initialized <see cref="SceneEntityWorld{E}"/> instance.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T Create<T>(
+            string name = null,
+            bool scanEntities = true,
+            bool useUnityLifecycle = true
+        )
+            where T : SceneEntityWorld<E>
+        {
+            GameObject go = new GameObject();
+            go.SetActive(false);
+
+            T world = go.AddComponent<T>();
+            world.Name = name;
+            world.scanEntitiesOnAwake = scanEntities;
+            world.useUnityLifecycle = useUnityLifecycle;
+
+            go.SetActive(true);
+            return world;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Destroy(SceneEntityWorld<E> world, float t = 0)
+        {
+            if (world)
+                GameObject.Destroy(world.gameObject, t);
+        }
 
         #endregion
     }

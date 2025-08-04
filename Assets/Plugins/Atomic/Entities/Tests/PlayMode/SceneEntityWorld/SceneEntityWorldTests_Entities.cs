@@ -26,7 +26,8 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = SceneEntity.Create("Test Entity");
-            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            entityWorld.Add(entity);
             IEntity wasEvent = null;
 
             //Act
@@ -43,7 +44,8 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = SceneEntity.Create("Test Entity");
-            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, entity);
+            var entityWorld = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
+            entityWorld.Add(entity);
 
             //Act
             bool exists = entityWorld.Contains(entity);

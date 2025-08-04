@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
 
 #if ODIN_INSPECTOR
@@ -74,7 +75,7 @@ namespace Atomic.Entities
         ///
 #if ODIN_INSPECTOR
         [FoldoutGroup("Debug")]
-        [LabelText("Initialized")]
+        [LabelText("Spawned")]
         [ShowInInspector, ReadOnly]
 
 #endif
@@ -86,7 +87,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [FoldoutGroup("Debug")]
         [ShowInInspector, ReadOnly]
-        [LabelText("Enabled")]
+        [LabelText("Active")]
 #endif
         public bool IsActive => _active;
 
@@ -109,14 +110,19 @@ namespace Atomic.Entities
             if (_spawned)
                 return;
 
+            this.ProcessSpawn();
             _spawned = true;
-
-            for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawned spawnBehaviour)
-                    spawnBehaviour.OnSpawn(this);
 
             this.OnStateChanged?.Invoke();
             this.OnSpawned?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessSpawn()
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is IEntitySpawned spawnBehaviour)
+                    spawnBehaviour.OnSpawn(this);
         }
 
         /// <summary>
@@ -130,13 +136,19 @@ namespace Atomic.Entities
             if (_active)
                 this.Inactivate();
 
+            this.ProcessDespawn();
+            _spawned = false;
+
+            this.OnStateChanged?.Invoke();
+            this.OnDespawned?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessDespawn()
+        {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityDespawned despawnBehaviour)
                     despawnBehaviour.OnDespawn(this);
-            
-            _spawned = false;
-            this.OnStateChanged?.Invoke();
-            this.OnDespawned?.Invoke();
         }
 
         /// <summary>
@@ -150,13 +162,18 @@ namespace Atomic.Entities
             if (_active)
                 return;
 
+            this.ProcessActivate();
             _active = true;
-
-            for (int i = 0; i < _behaviourCount; i++)
-                this.EnableBehaviour(_behaviours[i]);
 
             this.OnStateChanged?.Invoke();
             this.OnActivated?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessActivate()
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+                this.ActivateBehaviour(_behaviours[i]);
         }
 
         /// <summary>
@@ -167,12 +184,18 @@ namespace Atomic.Entities
             if (!_active)
                 return;
 
-            for (int i = 0; i < _behaviourCount; i++)
-                this.DisableBehaviour(_behaviours[i]);
-
+            this.ProcessInactivate();
             _active = false;
+
             this.OnStateChanged?.Invoke();
             this.OnInactivated?.Invoke();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessInactivate()
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+                this.DeactivateBehaviour(_behaviours[i]);
         }
 
         /// <summary>
@@ -183,10 +206,15 @@ namespace Atomic.Entities
             if (!_active)
                 return;
 
+            this.ProcessUpdate(deltaTime);
+            this.OnUpdated?.Invoke(deltaTime);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessUpdate(float deltaTime)
+        {
             for (int i = 0; i < this.updateCount && _active; i++)
                 this.updates[i].OnUpdate(this, deltaTime);
-            
-            this.OnUpdated?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -197,10 +225,15 @@ namespace Atomic.Entities
             if (!_active)
                 return;
 
+            this.ProcessFixedUpdate(deltaTime);
+            this.OnFixedUpdated?.Invoke(deltaTime);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessFixedUpdate(float deltaTime)
+        {
             for (int i = 0; i < this.fixedUpdateCount && _active; i++)
                 this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
-
-            this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -211,13 +244,18 @@ namespace Atomic.Entities
             if (!_active)
                 return;
 
-            for (int i = 0; i < this.lateUpdateCount && _active; i++)
-                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
-
+            this.ProcessLateUpdate(deltaTime);
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
-        private void EnableBehaviour(IEntityBehaviour behaviour)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessLateUpdate(float deltaTime)
+        {
+            for (int i = 0; i < this.lateUpdateCount && _active; i++)
+                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
+        }
+
+        private void ActivateBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour is IEntityActive entityEnable)
                 entityEnable.OnActive(this);
@@ -232,7 +270,7 @@ namespace Atomic.Entities
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DisableBehaviour(IEntityBehaviour behaviour)
+        private void DeactivateBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour is IEntityInactive entityDisable)
                 entityDisable.OnInactive(this);

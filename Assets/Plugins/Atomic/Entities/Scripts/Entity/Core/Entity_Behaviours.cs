@@ -97,6 +97,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
+        //TODO: OPTIMIZE!
         public bool DelBehaviour<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
