@@ -143,6 +143,14 @@ namespace Atomic.Entities
         ) => Create<SceneEntity>(prefab, position, rotation, parent);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity
+        {
+            E entity = Instantiate(prefab, point.position, point.rotation, parent);
+            entity.Install();
+            return entity;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             E prefab,
             Vector3 position,

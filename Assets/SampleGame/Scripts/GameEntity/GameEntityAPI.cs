@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using Atomic.Elements;
 using Unity.Mathematics;
+using Atomic.Entities;
 
 namespace SampleGame
 {
@@ -20,9 +21,10 @@ namespace SampleGame
 		public const int Transform = -284094885; // Transform
 		public const int GameObject = 2006407362; // GameObject
 		public const int MoveSpeed = -279498267; // IValue<float>
-		public const int MoveDirection = 1403009565; // IVariable<float3>
+		public const int MoveDirection = 1403009565; // IVariable<Vector3>
 		public const int RotationSpeed = 1037734616; // IValue<float>
-		public const int RotationDirection = -19666544; // IVariable<float3>
+		public const int RotationDirection = -19666544; // IVariable<Vector3>
+		public const int TeamType = 2029097576; // IReactiveVariable<TeamType>
 		public const int TriggerEvents = -1182757792; // TriggerEvents
 		public const int Money = 561222447; // IValue<int>
 
@@ -105,13 +107,13 @@ namespace SampleGame
 		public static void SetMoveSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(MoveSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<float3> GetMoveDirection(this IGameEntity obj) => obj.GetValue<IVariable<float3>>(MoveDirection);
+		public static IVariable<Vector3> GetMoveDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(MoveDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveDirection(this IGameEntity obj, out IVariable<float3> value) => obj.TryGetValue(MoveDirection, out value);
+		public static bool TryGetMoveDirection(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(MoveDirection, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveDirection(this IGameEntity obj, IVariable<float3> value) => obj.AddValue(MoveDirection, value);
+		public static void AddMoveDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(MoveDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasMoveDirection(this IGameEntity obj) => obj.HasValue(MoveDirection);
@@ -120,7 +122,7 @@ namespace SampleGame
 		public static bool DelMoveDirection(this IGameEntity obj) => obj.DelValue(MoveDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveDirection(this IGameEntity obj, IVariable<float3> value) => obj.SetValue(MoveDirection, value);
+		public static void SetMoveDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<float> GetRotationSpeed(this IGameEntity obj) => obj.GetValue<IValue<float>>(RotationSpeed);
@@ -141,13 +143,13 @@ namespace SampleGame
 		public static void SetRotationSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(RotationSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<float3> GetRotationDirection(this IGameEntity obj) => obj.GetValue<IVariable<float3>>(RotationDirection);
+		public static IVariable<Vector3> GetRotationDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(RotationDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRotationDirection(this IGameEntity obj, out IVariable<float3> value) => obj.TryGetValue(RotationDirection, out value);
+		public static bool TryGetRotationDirection(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(RotationDirection, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRotationDirection(this IGameEntity obj, IVariable<float3> value) => obj.AddValue(RotationDirection, value);
+		public static void AddRotationDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(RotationDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasRotationDirection(this IGameEntity obj) => obj.HasValue(RotationDirection);
@@ -156,7 +158,25 @@ namespace SampleGame
 		public static bool DelRotationDirection(this IGameEntity obj) => obj.DelValue(RotationDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRotationDirection(this IGameEntity obj, IVariable<float3> value) => obj.SetValue(RotationDirection, value);
+		public static void SetRotationDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(RotationDirection, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<TeamType> GetTeamType(this IGameEntity obj) => obj.GetValue<IReactiveVariable<TeamType>>(TeamType);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTeamType(this IGameEntity obj, out IReactiveVariable<TeamType> value) => obj.TryGetValue(TeamType, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddTeamType(this IGameEntity obj, IReactiveVariable<TeamType> value) => obj.AddValue(TeamType, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTeamType(this IGameEntity obj) => obj.HasValue(TeamType);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTeamType(this IGameEntity obj) => obj.DelValue(TeamType);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTeamType(this IGameEntity obj, IReactiveVariable<TeamType> value) => obj.SetValue(TeamType, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TriggerEvents GetTriggerEvents(this IGameEntity obj) => obj.GetValue<TriggerEvents>(TriggerEvents);

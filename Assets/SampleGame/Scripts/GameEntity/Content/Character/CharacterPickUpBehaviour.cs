@@ -17,19 +17,13 @@ namespace SampleGame
             _triggerEvents = entity.GetTriggerEvents();
         }
 
-        public void OnActive(IEntity entity)
-        {
+        public void OnActive(IEntity entity) => 
             _triggerEvents.OnEntered += this.OnTriggerEntered;
-        }
 
-        public void OnInactive(IEntity entity)
-        {
+        public void OnInactive(IEntity entity) => 
             _triggerEvents.OnEntered -= this.OnTriggerEntered;
-        }
 
-        private void OnTriggerEntered(Collider collider)
-        {
-            CollectCoinUseCase.TryCollectCoin(_gameContext, _entity, collider);
-        }
+        private void OnTriggerEntered(Collider collider) => 
+            CollectCoinUseCase.Collect(_gameContext, _entity, collider);
     }
 }

@@ -1,6 +1,5 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace SampleGame
@@ -9,7 +8,7 @@ namespace SampleGame
     {
         private Transform _transform;
         private IValue<float> _moveSpeed;
-        private IValue<float3> _moveDirection;
+        private IValue<Vector3> _moveDirection;
         
         public void OnSpawn(IGameEntity entity)
         {
@@ -20,8 +19,7 @@ namespace SampleGame
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            Vector3 moveStep = _moveSpeed.Value * deltaTime * _moveDirection.Value;
-            _transform.position += moveStep;
+            _transform.position += _moveSpeed.Value * deltaTime * _moveDirection.Value;
         }
     }
 }

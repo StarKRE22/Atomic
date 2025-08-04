@@ -1,6 +1,5 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace SampleGame
@@ -18,23 +17,26 @@ namespace SampleGame
         
         protected override void Install(IGameEntity entity)
         {
+            //Character:
             entity.AddCharacterTag();
             entity.AddBehaviour<CharacterMoveBehaviour>();
+            entity.AddBehaviour<CharacterPickUpBehaviour>();
             
+            //Base:
             entity.AddGameObject(this.gameObject);
             entity.AddTransform(this.transform);
             entity.AddTriggerEvents(_triggerEvents);
+            entity.AddTeamType(new ReactiveVariable<TeamType>());
             
+            //Movement:
             entity.AddMoveSpeed(_moveSpeed);
-            entity.AddMoveDirection(new BasicVariable<float3>());
+            entity.AddMoveDirection(new BasicVariable<Vector3>());
             entity.AddBehaviour<MovementBehaviour>();
             
+            //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
-            entity.AddRotationDirection(new BasicVariable<float3>());
+            entity.AddRotationDirection(new BasicVariable<Vector3>());
             entity.AddBehaviour<RotationBehaviour>();
-            
-            entity.AddBehaviour<CharacterMoveBehaviour>();
-            entity.AddBehaviour<CharacterPickUpBehaviour>();
         }
     }
 }

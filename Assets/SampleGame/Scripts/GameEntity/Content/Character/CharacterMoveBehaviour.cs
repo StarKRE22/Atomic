@@ -1,13 +1,13 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using Unity.Mathematics;
+using UnityEngine;
 
 namespace SampleGame
 {
     public class CharacterMoveBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
-        private IValue<float3> _moveDirection;
-        private IVariable<float3> _rotationDirection;
+        private IValue<Vector3> _moveDirection;
+        private IVariable<Vector3> _rotationDirection;
         
         public void OnSpawn(IGameEntity entity)
         {

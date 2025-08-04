@@ -10,6 +10,7 @@ imports:
 - UnityEngine
 - Atomic.Elements
 - Unity.Mathematics
+- Atomic.Entities
 
 tags:
 - Character
@@ -23,13 +24,14 @@ values:
 
 #Movement
 - MoveSpeed: IValue<float>
-- MoveDirection: IVariable<float3>
+- MoveDirection: IVariable<Vector3>
 
 #Rotation
 - RotationSpeed: IValue<float>
-- RotationDirection: IVariable<float3>
+- RotationDirection: IVariable<Vector3>
 
 #Other
+- TeamType: IReactiveVariable<TeamType>
 - TriggerEvents : TriggerEvents
 - Money: IValue<int>
 

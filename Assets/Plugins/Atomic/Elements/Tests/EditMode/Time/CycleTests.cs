@@ -3,39 +3,39 @@ using NUnit.Framework;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class CycleTests
+    public sealed class PeriodTests
     {
         [Test]
         public void Instantiate()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
 
             //Assert:
-            Assert.AreEqual(5, cycle.GetDuration());
-            Assert.AreEqual(0, cycle.GetCurrentTime());
+            Assert.AreEqual(5, period.GetDuration());
+            Assert.AreEqual(0, period.GetCurrentTime());
         }
 
         [Test]
         public void Start()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasEvent = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
             //Act:
-            cycle.OnStarted += () => wasEvent = true;
-            cycle.OnStateChanged += s => stateChanged = s;
-            cycle.Start();
+            period.OnStarted += () => wasEvent = true;
+            period.OnStateChanged += s => stateChanged = s;
+            period.Start();
         
             //Assert:
             Assert.IsTrue(wasEvent);
-            Assert.AreEqual(CycleState.PLAYING, stateChanged);
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
-            Assert.AreEqual(0, cycle.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, stateChanged);
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(0, period.GetCurrentTime());
             
-            Assert.IsTrue(cycle.IsPlaying());
+            Assert.IsTrue(period.IsPlaying());
         }
         
         
@@ -43,184 +43,184 @@ namespace Atomic.Elements
         public void StartWithTime()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasEvent = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
             //Act:
-            cycle.OnStarted += () => wasEvent = true;
-            cycle.OnStateChanged += s => stateChanged = s;
-            cycle.Start(3);
+            period.OnStarted += () => wasEvent = true;
+            period.OnStateChanged += s => stateChanged = s;
+            period.Start(3);
         
             //Assert:
-            Assert.AreEqual(CycleState.PLAYING, stateChanged);
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
-            Assert.AreEqual(3, cycle.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, stateChanged);
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(3, period.GetCurrentTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(cycle.IsPlaying());
+            Assert.IsTrue(period.IsPlaying());
         }
         
         [Test]
         public void Play()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasEvent = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
-            cycle.OnStarted += () => wasEvent = true;
-            cycle.OnStateChanged += s => stateChanged = s;
+            period.OnStarted += () => wasEvent = true;
+            period.OnStateChanged += s => stateChanged = s;
 
             //Act:
-            cycle.CurrentTime = 2;
-            bool success = cycle.Play();
+            period.CurrentTime = 2;
+            bool success = period.Play();
 
             //Assert:
             Assert.IsTrue(success);
-            Assert.AreEqual(CycleState.PLAYING, stateChanged);
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
-            Assert.AreEqual(2, cycle.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, stateChanged);
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(2, period.GetCurrentTime());
             
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(cycle.IsPlaying());
+            Assert.IsTrue(period.IsPlaying());
             
             //Act:
-            cycle.Tick(deltaTime: 0.5f);
-            cycle.Tick(deltaTime: 0.5f);
-            cycle.Tick(deltaTime: 0.5f);
-            cycle.Tick(deltaTime: 0.5f);
-            cycle.Tick(deltaTime: 0.5f);
-            cycle.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
+            period.Tick(deltaTime: 0.5f);
 
-            Assert.AreEqual(0, cycle.CurrentTime, 1e-2);
+            Assert.AreEqual(0, period.CurrentTime, 1e-2);
         }
         
         [Test]
         public void WhenGetProgressOfNotStartedThenReturnZero()
         {
-            Cycle cycle = new Cycle(5);
-            Assert.AreEqual(0, cycle.GetProgress());
+            Period period = new Period(5);
+            Assert.AreEqual(0, period.GetProgress());
         }
 
         [Test]
         public void WhenTickNotStartedThenNothing()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasTimeEvent = false;
             bool wasProgressEvent = false;
         
             //Act:
-            cycle.OnCurrentTimeChanged += _ => wasTimeEvent = true;
-            cycle.OnProgressChanged += _ => wasProgressEvent = true;
-            cycle.Tick(deltaTime: 0.5f);
+            period.OnCurrentTimeChanged += _ => wasTimeEvent = true;
+            period.OnProgressChanged += _ => wasProgressEvent = true;
+            period.Tick(deltaTime: 0.5f);
         
             //Assert:
-            Assert.IsFalse(cycle.IsPlaying());
+            Assert.IsFalse(period.IsPlaying());
             Assert.IsFalse(wasTimeEvent);
             Assert.IsFalse(wasProgressEvent);
         
-            Assert.AreEqual(0, cycle.GetCurrentTime());
-            Assert.AreEqual(0, cycle.GetProgress());
+            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(0, period.GetProgress());
         }
 
         [Test]
         public void WhenTickThenProgressChanged()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             float progress = -1;
         
             //Act:
-            cycle.Start();
-            cycle.OnProgressChanged += p => progress = p;
-            cycle.Tick(deltaTime: 1);
+            period.Start();
+            period.OnProgressChanged += p => progress = p;
+            period.Tick(deltaTime: 1);
         
             //Assert:
             Assert.AreEqual(0.2f, progress, float.Epsilon);
-            Assert.AreEqual(0.2f, cycle.GetProgress(), float.Epsilon);
+            Assert.AreEqual(0.2f, period.GetProgress(), float.Epsilon);
         }
         
         [Test]
         public void OnCycle()
         {
             //Arrange:
-            Cycle cycle = new Cycle(4);
+            Period period = new Period(4);
             bool wasCycle = false;
         
             //Act:
-            cycle.Start();
-            cycle.OnCycle += () => wasCycle = true;
+            period.Start();
+            period.OnCycle += () => wasCycle = true;
             
             //Pre-Assert:
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
             
             for (int i = 0; i < 20; i++)
             {
-                cycle.Tick(deltaTime: 0.2f);
+                period.Tick(deltaTime: 0.2f);
             }
         
             //Assert:
             Assert.IsTrue(wasCycle);
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
         
-            Assert.AreEqual(0, cycle.GetProgress());
-            Assert.AreEqual(0, cycle.GetCurrentTime());
-            Assert.AreEqual(4, cycle.GetDuration());
+            Assert.AreEqual(0, period.GetProgress());
+            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(4, period.GetDuration());
         
-            Assert.IsTrue(cycle.IsPlaying());
-            Assert.IsFalse(cycle.IsPaused());
+            Assert.IsTrue(period.IsPlaying());
+            Assert.IsFalse(period.IsPaused());
         }
 
         [Test]
         public void Pause()
         {
             //Arrange:
-            Cycle cycle = new Cycle(1);
+            Period period = new Period(1);
             bool wasPause = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
-            cycle.Start();
+            period.Start();
         
             //Act:
-            cycle.OnStateChanged += s => stateChanged = s;
-            cycle.OnPaused += () => wasPause = true;
-            cycle.Pause();
+            period.OnStateChanged += s => stateChanged = s;
+            period.OnPaused += () => wasPause = true;
+            period.Pause();
         
             //Assert:
             Assert.IsTrue(wasPause);
-            Assert.AreEqual(CycleState.PAUSED, stateChanged);
-            Assert.AreEqual(CycleState.PAUSED, cycle.GetCurrentState());
-            Assert.IsTrue(cycle.IsPaused());
+            Assert.AreEqual(PeriodState.PAUSED, stateChanged);
+            Assert.AreEqual(PeriodState.PAUSED, period.GetCurrentState());
+            Assert.IsTrue(period.IsPaused());
         }
 
         [Test]
         public void WhenTickInPausedThenNothing()
         {
             //Arrange:
-            Cycle cycle = new Cycle(0.8f);
+            Period period = new Period(0.8f);
             bool progressChanged = false;
             bool timeChanged = false;
             bool wasCycle = false;
         
             //Act:
-            cycle.Start();
-            cycle.Tick(0.2f);
-            cycle.OnProgressChanged += _ => progressChanged = true;
-            cycle.OnCurrentTimeChanged += _ => timeChanged = true;
-            cycle.OnCycle += () => wasCycle = true;
+            period.Start();
+            period.Tick(0.2f);
+            period.OnProgressChanged += _ => progressChanged = true;
+            period.OnCurrentTimeChanged += _ => timeChanged = true;
+            period.OnCycle += () => wasCycle = true;
         
-            cycle.Pause();
+            period.Pause();
         
             for (int i = 0; i < 5; i++)
             {
-                cycle.Tick(deltaTime: 0.2f);
+                period.Tick(deltaTime: 0.2f);
             }
         
             //Assert:
-            Assert.IsTrue(cycle.IsPaused());
-            Assert.AreEqual(0.2f, cycle.GetCurrentTime(), 1e-2);
-            Assert.AreEqual(0.25f, cycle.GetProgress(), 1e-2);
+            Assert.IsTrue(period.IsPaused());
+            Assert.AreEqual(0.2f, period.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.25f, period.GetProgress(), 1e-2);
         
             Assert.IsFalse(progressChanged);
             Assert.IsFalse(timeChanged);
@@ -232,62 +232,62 @@ namespace Atomic.Elements
         public void WhenPauseCycleThatNotStartedThenNothing()
         {
             //Arrange:
-            Cycle cycle = new Cycle(0.8f);
+            Period period = new Period(0.8f);
             bool wasPause = false;
         
             //Act:
-            cycle.OnPaused += () => wasPause = true;
-            cycle.Pause();
+            period.OnPaused += () => wasPause = true;
+            period.Pause();
         
             //Assert:
             Assert.IsFalse(wasPause);
-            Assert.IsFalse(cycle.IsPaused());
+            Assert.IsFalse(period.IsPaused());
         }
         
         [Test]
         public void Resume()
         {
             //Arrange:
-            Cycle cycle = new Cycle(1);
+            Period period = new Period(1);
             bool wasResume = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
-            cycle.Start();
-            cycle.Pause();
+            period.Start();
+            period.Pause();
         
             //Pre-assert:
-            Assert.IsTrue(cycle.IsPaused());
+            Assert.IsTrue(period.IsPaused());
         
             //Act:
-            cycle.OnStateChanged += s => stateChanged = s;
-            cycle.OnResumed += () => wasResume = true;
-            cycle.Resume();
+            period.OnStateChanged += s => stateChanged = s;
+            period.OnResumed += () => wasResume = true;
+            period.Resume();
         
             //Assert:
             Assert.IsTrue(wasResume);
-            Assert.AreEqual(CycleState.PLAYING, stateChanged);
-            Assert.AreEqual(CycleState.PLAYING, cycle.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, stateChanged);
+            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
         
-            Assert.IsFalse(cycle.IsPaused());
-            Assert.IsTrue(cycle.IsPlaying());
+            Assert.IsFalse(period.IsPaused());
+            Assert.IsTrue(period.IsPlaying());
         }
         
         [Test]
         public void WhenResumeThatNotStartedThenNothing()
         {
             //Arrange:
-            Cycle cycle = new Cycle(1);
+            Period period = new Period(1);
             bool wasResume = false;
         
             //Act:
-            cycle.OnResumed += () => wasResume = true;
-            cycle.Resume();
+            period.OnResumed += () => wasResume = true;
+            period.Resume();
         
             //Assert:
             Assert.IsFalse(wasResume);
-            Assert.AreEqual(CycleState.IDLE, cycle.GetCurrentState());
-            Assert.IsFalse(cycle.IsPlaying());
-            Assert.IsFalse(cycle.IsPaused());
+            Assert.AreEqual(PeriodState.IDLE, period.GetCurrentState());
+            Assert.IsFalse(period.IsPlaying());
+            Assert.IsFalse(period.IsPaused());
         }
         
         
@@ -295,64 +295,64 @@ namespace Atomic.Elements
         public void WhenTickThenCurrentTimeChanged()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             float currentTime = -1;
         
             //Act:
-            cycle.Start();
-            cycle.OnCurrentTimeChanged += t => currentTime = t;
-            cycle.Tick(deltaTime: 0.5f);
+            period.Start();
+            period.OnCurrentTimeChanged += t => currentTime = t;
+            period.Tick(deltaTime: 0.5f);
         
             //Assert:
             Assert.AreEqual(0.5f, currentTime, 1e-2);
-            Assert.AreEqual(0.5f, cycle.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.5f, period.GetCurrentTime(), 1e-2);
         }
         
         [Test]
         public void WhenStartCycleThatAlreadyStartedThenFailed()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasEvent = false;
         
-            cycle.Start();
-            cycle.Tick(deltaTime: 1);
-            cycle.OnStarted += () => wasEvent = true;
+            period.Start();
+            period.Tick(deltaTime: 1);
+            period.OnStarted += () => wasEvent = true;
         
             //Act:
-            cycle.Start();
+            period.Start();
         
             //Assert:
             Assert.IsFalse(wasEvent);
-            Assert.AreEqual(1, cycle.GetCurrentTime());
-            Assert.AreEqual(5, cycle.GetDuration());
+            Assert.AreEqual(1, period.GetCurrentTime());
+            Assert.AreEqual(5, period.GetDuration());
         }
         
         [Test]
         public void Stop()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool wasStop = false;
-            CycleState stateChanged = default;
+            PeriodState stateChanged = default;
         
-            cycle.Start();
+            period.Start();
         
             //Act:
-            cycle.OnStateChanged += s => stateChanged = s;
-            cycle.OnStopped += () => wasStop = true;
-            cycle.Stop();
+            period.OnStateChanged += s => stateChanged = s;
+            period.OnStopped += () => wasStop = true;
+            period.Stop();
         
             //Assert:
             Assert.IsTrue(wasStop);
-            Assert.AreEqual(CycleState.IDLE, cycle.GetCurrentState());
-            Assert.AreEqual(CycleState.IDLE, stateChanged);
+            Assert.AreEqual(PeriodState.IDLE, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.IDLE, stateChanged);
         
-            Assert.IsFalse(cycle.IsPlaying());
-            Assert.IsTrue(cycle.IsIdle());
+            Assert.IsFalse(period.IsPlaying());
+            Assert.IsTrue(period.IsIdle());
         
-            Assert.AreEqual(5, cycle.GetDuration());
-            Assert.AreEqual(0, cycle.GetCurrentTime());
+            Assert.AreEqual(5, period.GetDuration());
+            Assert.AreEqual(0, period.GetCurrentTime());
         }
         
         
@@ -360,12 +360,12 @@ namespace Atomic.Elements
         public void WhenStopNotStartedCycleThenNoEvent()
         {
             //Arrange:
-            Cycle cycle = new Cycle(10);
+            Period period = new Period(10);
             bool wasEvent = false;
         
             //Act:
-            cycle.OnStopped += () => wasEvent = true;
-            cycle.Stop();
+            period.OnStopped += () => wasEvent = true;
+            period.Stop();
         
             //Assert:
             Assert.IsFalse(wasEvent);
@@ -375,16 +375,16 @@ namespace Atomic.Elements
         public void WhenResumeProductionThatIsNotPausedThenNothing()
         {
             //Arrange:
-            Cycle cycle = new Cycle(10);
+            Period period = new Period(10);
             bool wasResume = false;
-            cycle.OnResumed += () => wasResume = true;
-            cycle.Start();
+            period.OnResumed += () => wasResume = true;
+            period.Start();
         
             //Pre-assert:
-            Assert.IsTrue(!cycle.IsPaused());
+            Assert.IsTrue(!period.IsPaused());
         
             //Act:
-            cycle.Resume();
+            period.Resume();
         
             //Assert:
             Assert.IsFalse(wasResume);
@@ -395,26 +395,26 @@ namespace Atomic.Elements
         public void WhenStopPausedCycleThenWillIdle()
         {
             //Arrange:
-            Cycle cycle = new Cycle(5);
+            Period period = new Period(5);
             bool canceled = false;
         
-            cycle.Start();
-            cycle.Pause();
+            period.Start();
+            period.Pause();
         
-            Assert.IsTrue(cycle.IsPaused());
+            Assert.IsTrue(period.IsPaused());
         
             //Act:
-            cycle.OnStopped += () => canceled = true;
-            cycle.Stop();
+            period.OnStopped += () => canceled = true;
+            period.Stop();
         
             //Assert:
             Assert.IsTrue(canceled);
         
-            Assert.IsFalse(cycle.IsPaused());
-            Assert.IsFalse(cycle.IsPlaying());
-            Assert.IsTrue(cycle.IsIdle());
-            Assert.AreEqual(5, cycle.Duration);
-            Assert.AreEqual(0, cycle.CurrentTime);
+            Assert.IsFalse(period.IsPaused());
+            Assert.IsFalse(period.IsPlaying());
+            Assert.IsTrue(period.IsIdle());
+            Assert.AreEqual(5, period.Duration);
+            Assert.AreEqual(0, period.CurrentTime);
         }
     }
 }
