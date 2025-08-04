@@ -52,8 +52,9 @@ namespace Atomic.Entities
         /// Initial value capacity used to optimize value allocation.
         /// </summary>
 #if ODIN_INSPECTOR
+        [PropertyOrder(101)]
         [ReadOnly]
-        [FoldoutGroup("Optimization")]
+        [FoldoutGroup("Optimization", 2)]
 #endif
         [Min(1)]
         [SerializeField]

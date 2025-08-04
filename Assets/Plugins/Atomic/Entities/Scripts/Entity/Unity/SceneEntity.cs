@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// MonoBehaviour wrapper for an <see cref="Entity"/> that can be installed from the Unity Scene.
+    /// Represents a MonoBehaviour implementation for an <see cref="IEntity"/> that can be installed from the Unity Scene.
     /// Allows composition through Unity Inspector and automated setup via installers and child entities.
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
@@ -50,6 +50,7 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool installOnAwake = true;
 
+        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0)]
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -60,38 +61,40 @@ namespace Atomic.Entities
             nameof(installInEditMode))
         ]
 #endif
-        [Tooltip(
-            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
         [SerializeField]
         private bool installInEditMode;
 
+        [Space]
+        [Tooltip("Should dispose values when OnDestroy() called")]
 #if ODIN_INSPECTOR
         [HideInPlayMode]
+        // [GUIColor(0f, 0.83f, 1f)]
 #endif
-        [Tooltip("Should dispose values when OnDestroy() called")]
         [SerializeField]
         private bool disposeValues = true;
 
-        [SerializeField,
-         Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+        [Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+#if ODIN_INSPECTOR
+        [HideInPlayMode]
+        // [GUIColor(0f, 0.83f, 1f)]
+#endif
+        [SerializeField]
         private bool useUnityLifecycle = true;
-
+        
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
-#endif
-
-#if ODIN_INSPECTOR
         [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
-        [Space, SerializeField]
+        [Space(8), SerializeField]
         internal List<SceneEntityInstaller> installers;
 
 #if ODIN_INSPECTOR
+        // [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode, SceneObjectsOnly]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
-        [Space, SerializeField]
+        [Space(8), SerializeField]
         internal List<SceneEntity> children;
 
         private int _instanceId;

@@ -58,10 +58,8 @@ namespace Atomic.Entities
             set => this.name = value;
         }
 
-        private readonly EntityWorld<E> _world = new();
 
 #if ODIN_INSPECTOR
-        [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode]
 #endif
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
@@ -75,10 +73,16 @@ namespace Atomic.Entities
         [SerializeField]
         private bool includeInactiveOnScan = true;
 
-        [SerializeField,
-         Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
+#if ODIN_INSPECTOR
+        // [GUIColor(0f, 0.83f, 1f)]
+        [HideInPlayMode]
+#endif
+        // [Space]
+        [SerializeField]
+        [Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
         private protected bool useUnityLifecycle = true;
 
+        private readonly EntityWorld<E> _world = new();
         private bool isStarted;
 
         protected virtual void Awake()

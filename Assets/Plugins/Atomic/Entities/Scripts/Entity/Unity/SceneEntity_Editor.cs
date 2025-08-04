@@ -68,7 +68,7 @@ namespace Atomic.Entities
         [FoldoutGroup("Debug")]
         [PropertyOrder(95)]
         [Button("Test Install"), HideInPlayMode]
-        [GUIColor(0f, 0.83f, 1f)]
+        [GUIColor(1f, 0.92156863f, 0.015686275f)]
         [PropertySpace(SpaceAfter = 8, SpaceBefore = 8)]
 #endif
         private void RefreshInEditMode()

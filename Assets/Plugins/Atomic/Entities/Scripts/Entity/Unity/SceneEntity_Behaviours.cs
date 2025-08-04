@@ -45,6 +45,7 @@ namespace Atomic.Entities
         /// Initial behaviour capacity used to optimize behaviour allocation.
         /// </summary>
 #if ODIN_INSPECTOR
+        [PropertyOrder(102)]
         [FoldoutGroup("Optimization")]
         [ReadOnly]
 #endif

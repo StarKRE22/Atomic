@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using System;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,19 +37,25 @@ namespace Atomic.Entities
         {
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
                 return;
-            
+
             try
             {
-                for (int i = 0; i < _behaviourCount; i++)
-                {
-                    IEntityBehaviour behaviour = _behaviours[i];
-                    if (behaviour is IEntityGizmos gizmos)
-                        gizmos.OnGizmosDraw(this);
-                }
+                this.ProcessGizmosDraw();
             }
             catch (Exception e)
             {
                 Debug.LogWarning($"Ops: detected exception in gizmos: {e.Message}");
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void ProcessGizmosDraw()
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+            {
+                IEntityBehaviour behaviour = _behaviours[i];
+                if (behaviour is IEntityGizmos gizmos)
+                    gizmos.OnGizmosDraw(this);
             }
         }
     }

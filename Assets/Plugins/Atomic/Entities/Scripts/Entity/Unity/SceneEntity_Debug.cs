@@ -13,7 +13,7 @@ namespace Atomic.Entities
     {
         #region Tags
 
-        private static readonly List<TagElement> _tagElememtsCache = new();
+        private static readonly List<TagElement> _tagElementsCache = new();
 
         /// <summary>
         /// Represents a tag element with its display name and internal ID.
@@ -46,22 +46,22 @@ namespace Atomic.Entities
             CustomRemoveIndexFunction = nameof(RemoveTagElementAt),
             HideAddButton = true
         )]
-        private List<TagElement> TagElememts
+        private List<TagElement> TagElements
         {
             get
             {
-                _tagElememtsCache.Clear();
+                _tagElementsCache.Clear();
 
                 TagEnumerator tagEnumerator = this.GetTagEnumerator();
                 while (tagEnumerator.MoveNext())
                 {
                     int tag = tagEnumerator.Current;
                     string name = EntityAPIUtils.IdToName(tag);
-                    _tagElememtsCache.Add(new TagElement(name, tag));
+                    _tagElementsCache.Add(new TagElement(name, tag));
                 }
 
-                _tagElememtsCache.Sort();
-                return _tagElememtsCache;
+                _tagElementsCache.Sort();
+                return _tagElementsCache;
             }
             set
             {
@@ -71,7 +71,7 @@ namespace Atomic.Entities
 
         private void RemoveTagElement(TagElement tagElement) => this.DelTag(tagElement.id);
 
-        private void RemoveTagElementAt(int index) => this.DelTag(this.TagElememts[index].id);
+        private void RemoveTagElementAt(int index) => this.DelTag(this.TagElements[index].id);
 
         #endregion
 

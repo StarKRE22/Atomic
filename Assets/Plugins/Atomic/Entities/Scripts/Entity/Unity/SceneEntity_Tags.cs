@@ -51,8 +51,9 @@ namespace Atomic.Entities
         /// Initial tag capacity used to optimize tag allocation.
         /// </summary>
 #if ODIN_INSPECTOR
+        [PropertyOrder(100)]
         [ReadOnly]
-        [FoldoutGroup("Optimization")]
+        [FoldoutGroup("Optimization", 1)]
 #endif
         [Min(1)]
         [SerializeField]
