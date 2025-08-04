@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GameExample.Engine
+namespace SampleGame.Engine
 {
     [Serializable]
     public sealed class InputMap

@@ -550,7 +550,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesIEntitySpawnInterfaces()
         {
-            var stub = new EntitySpawnedStub();
+            var stub = new EntitySpawnStub();
             var entity = new Entity();
 
             entity.AddBehaviour(stub);
@@ -635,7 +635,7 @@ namespace Atomic.Entities
         [Test]
         public void Despawn_InvokesIEntityDespawnBehaviours()
         {
-            var stub = new EntityDespawnedStub();
+            var stub = new EntityDespawnStub();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
@@ -823,7 +823,7 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Spawned);
             Assert.IsTrue(behaviourStub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawned.OnSpawn), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.InvocationList[0]);
             Assert.AreEqual(nameof(IEntityActive.OnActive), behaviourStub.InvocationList[1]);
         }
 

@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    public sealed class EntityDespawnedStub : IEntityDespawned
+    public sealed class EntityDespawnStub : IEntityDespawn
     {
         public bool WasDespawn;
 

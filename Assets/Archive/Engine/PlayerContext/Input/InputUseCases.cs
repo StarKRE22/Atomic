@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace GameExample.Engine
+namespace SampleGame.Engine
 {
     public static class InputUseCases
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     public class DummyEntityBehaviour :
-        IEntitySpawned,
+        IEntitySpawn,
         IEntityActive,
         IEntityInactive,
-        IEntityDespawned,
+        IEntityDespawn,
         IEntityUpdate,
         IEntityFixedUpdate,
         IEntityLateUpdate

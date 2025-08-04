@@ -115,7 +115,7 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Deactivated);
             Assert.IsTrue(stub.Despawned);
             Assert.AreEqual(nameof(IEntityInactive.OnInactive), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawned.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
         }
     }
 }

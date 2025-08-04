@@ -121,7 +121,7 @@ namespace Atomic.Entities
         protected virtual void ProcessSpawn()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawned spawnBehaviour)
+                if (_behaviours[i] is IEntitySpawn spawnBehaviour)
                     spawnBehaviour.OnSpawn(this);
         }
 
@@ -147,7 +147,7 @@ namespace Atomic.Entities
         protected virtual void ProcessDespawn()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDespawned despawnBehaviour)
+                if (_behaviours[i] is IEntityDespawn despawnBehaviour)
                     despawnBehaviour.OnDespawn(this);
         }
 

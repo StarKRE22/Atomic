@@ -8,7 +8,7 @@ namespace Atomic.Entities
     /// <remarks>
     /// Called automatically by <see cref="IEntity.Spawn"/> when the entity enters the world or runtime context.
     /// </remarks>
-    public interface IEntitySpawned : IEntityBehaviour
+    public interface IEntitySpawn : IEntityBehaviour
     {
         /// <summary>
         /// Called when the entity is spawned.
@@ -18,7 +18,7 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Provides a strongly-typed version of <see cref="IEntitySpawned"/> for handling spawn-time logic 
+    /// Provides a strongly-typed version of <see cref="IEntitySpawn"/> for handling spawn-time logic 
     /// on a specific <see cref="IEntity"/> type.
     /// </summary>
     /// <typeparam name="T">The specific entity type this behavior is associated with.</typeparam>
@@ -26,7 +26,7 @@ namespace Atomic.Entities
     /// This method is automatically invoked by <see cref="IEntity.Spawn"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
     /// </remarks>
-    public interface IEntitySpawned<in T> : IEntitySpawned where T : IEntity
+    public interface IEntitySpawn<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
         /// Called when the entity of type <typeparamref name="T"/> is spawned.
@@ -34,11 +34,11 @@ namespace Atomic.Entities
         /// <param name="entity">The typed entity being spawned.</param>
         void OnSpawn(T entity);
 
-        void IEntitySpawned.OnSpawn(IEntity entity) => this.OnSpawn((T) entity);
+        void IEntitySpawn.OnSpawn(IEntity entity) => this.OnSpawn((T) entity);
     }
 
     /// <summary>
-    /// Provides an optimized version of <see cref="IEntitySpawned"/> that uses unsafe casting for better performance
+    /// Provides an optimized version of <see cref="IEntitySpawn"/> that uses unsafe casting for better performance
     /// in high-frequency spawn operations.
     /// </summary>
     /// <typeparam name="T">The specific entity type this behavior is associated with.</typeparam>
@@ -46,7 +46,7 @@ namespace Atomic.Entities
     /// This method is automatically invoked by <see cref="IEntity.Spawn"/> 
     /// using low-level casting via <c>UnsafeUtility.As</c>.
     /// </remarks>
-    public interface IEntitySpawnedUnsafe<in T> : IEntitySpawned where T : IEntity
+    public interface IEntitySpawnUnsafe<in T> : IEntitySpawn where T : IEntity
     {
         /// <summary>
         /// Called when the entity of type <typeparamref name="T"/> is spawned.
@@ -54,6 +54,6 @@ namespace Atomic.Entities
         /// <param name="entity">The typed entity being spawned.</param>
         void OnSpawn(T entity);
 
-        void IEntitySpawned.OnSpawn(IEntity entity) => this.OnSpawn(UnsafeUtility.As<IEntity, T>(ref entity));
+        void IEntitySpawn.OnSpawn(IEntity entity) => this.OnSpawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

@@ -30,7 +30,7 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawned.OnSpawn), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
             Assert.AreEqual(nameof(IEntityActive.OnActive), stub.InvocationList[1]);
 
             //Wait update:
@@ -54,7 +54,7 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Despawned);
 
             Assert.AreEqual(nameof(IEntityInactive.OnInactive), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawned.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
         }
 
         [UnityTest]
@@ -76,7 +76,7 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.HasBehaviour(stub));
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
-            Assert.AreEqual(nameof(IEntitySpawned.OnSpawn), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
             Assert.AreEqual(nameof(IEntityActive.OnActive), stub.InvocationList[1]);
 
             //Wait update
@@ -112,7 +112,7 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
             
-            Assert.AreEqual(nameof(IEntitySpawned.OnSpawn), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
             Assert.AreEqual(nameof(IEntityActive.OnActive), stub.InvocationList[1]);
 
             yield return new WaitForFixedUpdate();
@@ -128,7 +128,7 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Despawned);
 
             Assert.AreEqual(nameof(IEntityInactive.OnInactive), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawned.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
         }
     }
 }

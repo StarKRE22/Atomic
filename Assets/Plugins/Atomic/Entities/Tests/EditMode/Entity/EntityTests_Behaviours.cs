@@ -172,7 +172,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
             var behaviourStub = new DummyEntityBehaviour();
 
             var expectedBehaviours = new IEntityBehaviour[]
@@ -244,7 +244,7 @@ namespace Atomic.Entities
         {
             //Arrange:
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = new Entity(null, null, null, new IEntityBehaviour[]
@@ -255,7 +255,7 @@ namespace Atomic.Entities
 
             //Assert & Act:
             Assert.IsTrue(entity.HasBehaviour(updateStub));
-            Assert.IsTrue(entity.HasBehaviour<EntitySpawnedStub>());
+            Assert.IsTrue(entity.HasBehaviour<EntitySpawnStub>());
             Assert.IsFalse(entity.HasBehaviour(behaviourStub));
         }
 
@@ -301,7 +301,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(new EntityUpdateStub());
 
-            bool result = entity.HasBehaviour<IEntitySpawned>();
+            bool result = entity.HasBehaviour<IEntitySpawn>();
 
             Assert.IsFalse(result);
         }
@@ -332,7 +332,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
             IEntityBehaviour addedBehaviour = null;
 
             var entity = new Entity(null, null, null, new IEntityBehaviour[] {updateStub});
@@ -410,7 +410,7 @@ namespace Atomic.Entities
             IEntityBehaviour removedBehaviour = null;
 
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = new Entity(null, null, null, new IEntityBehaviour[]
@@ -425,11 +425,11 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.DelBehaviour(updateStub));
             Assert.AreEqual(updateStub, removedBehaviour);
 
-            Assert.IsTrue(entity.DelBehaviour<EntitySpawnedStub>());
+            Assert.IsTrue(entity.DelBehaviour<EntitySpawnStub>());
             Assert.IsFalse(entity.HasBehaviour(initStub));
 
             Assert.IsFalse(entity.DelBehaviour(behaviourStub));
-            Assert.IsFalse(entity.DelBehaviour<EntitySpawnedStub>());
+            Assert.IsFalse(entity.DelBehaviour<EntitySpawnStub>());
         }
 
         [Test]
@@ -521,7 +521,7 @@ namespace Atomic.Entities
         public void ClearBehaviours_BehaviourCountIsZero()
         {
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
 
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[]
@@ -541,7 +541,7 @@ namespace Atomic.Entities
         public void ClearBehaviours_OnBehaviourDeleted_IsRaisedForEach()
         {
             var updateStub = new EntityUpdateStub();
-            var initStub = new EntitySpawnedStub();
+            var initStub = new EntitySpawnStub();
 
             var entity = new Entity();
             var deleted = new List<IEntityBehaviour>();
