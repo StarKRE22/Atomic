@@ -25,6 +25,7 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityView : EntityView<IEntity>
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static EntityView Create(CreateArgs args = default) => Create<EntityView>(args);
     }
 

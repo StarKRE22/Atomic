@@ -37,7 +37,7 @@ namespace Atomic.Entities
 
         [Tooltip("The pool responsible for providing and recycling entity view instances")]
         [SerializeField]
-        private EntityViewPool<E> _viewPool;
+        private EntityViewPoolAbstract<E> _viewPool;
 
         /// <summary>
         /// Internal dictionary mapping active entities to their associated views.

@@ -29,7 +29,7 @@ namespace Atomic.Entities
     {
         [Tooltip("The list of view prefabs available in this catalog")]
         [SerializeField]
-        private List<EntityViewBase<E>> _prefabs;
+        internal List<EntityViewBase<E>> _prefabs;
 
         /// <summary>
         /// Gets the number of prefabs stored in the catalog.
@@ -71,7 +71,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="prefab">The prefab whose name to retrieve.</param>
         /// <returns>The name used to identify the prefab.</returns>
-        protected virtual string GetName(EntityViewBase<E> prefab) => prefab.Name;
+        protected internal virtual string GetName(EntityViewBase<E> prefab) => prefab.Name;
     }
 }
 #endif

@@ -23,15 +23,15 @@ namespace Atomic.Entities
     /// This reduces memory allocations and improves performance by avoiding frequent instantiations.
     /// </summary>
     /// <typeparam name="E">The type of entity associated with the views. Must implement <see cref="IEntity"/>.</typeparam>
-    public abstract class EntityViewPool<E> : MonoBehaviour where E : IEntity
+    public abstract class EntityViewPool<E> : EntityViewPoolAbstract<E> where E : IEntity
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
-        private Transform _container;
+        internal Transform _container;
 
         [Tooltip("A list of view catalogs to preload view prefabs from on Awake")]
         [SerializeField]
-        private EntityViewCatalog<E>[] _catalogs;
+        internal EntityViewCatalog<E>[] _catalogs;
 
         /// <summary>
         /// A dictionary mapping view names to their prefab instances.
@@ -53,10 +53,11 @@ namespace Atomic.Entities
         /// Called by Unity when the component is initialized.
         /// Loads prefabs from the assigned catalogs.
         /// </summary>
-        private void Awake()
+        protected virtual void Awake()
         {
-            for (int i = 0, count = _catalogs.Length; i < count; i++)
-                this.AddPrefabs(_catalogs[i]);
+            if (_catalogs != null)
+                for (int i = 0, count = _catalogs.Length; i < count; i++)
+                    this.AddPrefabs(_catalogs[i]);
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Atomic.Entities
         /// <param name="name">The name of the view to retrieve.</param>
         /// <returns>A reusable <see cref="EntityViewBase{E}"/> instance.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the view prefab was not registered.</exception>
-        public EntityViewBase<E> Rent(string name)
+        public sealed override EntityViewBase<E> Rent(string name)
         {
             Stack<EntityViewBase<E>> pool = this.GetPool(name);
             if (pool.TryPop(out EntityViewBase<E> view))
@@ -82,7 +83,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="name">The name of the view being returned.</param>
         /// <param name="view">The view instance to return.</param>
-        public void Return(string name, EntityViewBase<E> view)
+        public sealed override void Return(string name, EntityViewBase<E> view)
         {
             Stack<EntityViewBase<E>> pool = this.GetPool(name);
             pool.Push(view);
@@ -92,7 +93,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Clears all pooled instances and destroys their GameObjects.
         /// </summary>
-        public void Clear()
+        public sealed override void Clear()
         {
             foreach (Stack<EntityViewBase<E>> pool in _pools.Values)
             {
