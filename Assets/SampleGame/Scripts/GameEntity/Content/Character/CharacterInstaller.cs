@@ -30,12 +30,12 @@ namespace SampleGame
             
             //Movement:
             entity.AddMoveSpeed(_moveSpeed);
-            entity.AddMoveDirection(new BasicVariable<Vector3>());
+            entity.AddMoveDirection(new BaseVariable<Vector3>());
             entity.AddBehaviour<MovementBehaviour>();
             
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
-            entity.AddRotationDirection(new BasicVariable<Vector3>());
+            entity.AddRotationDirection(new BaseVariable<Vector3>());
             entity.AddBehaviour<RotationBehaviour>();
         }
     }

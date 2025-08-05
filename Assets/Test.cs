@@ -8,12 +8,12 @@ namespace DefaultNamespace
     {
         private void Awake()
         {
-            // SimpleAction action = new SimpleAction(() => Debug.Log("Hello world!"));
-            IAction action = new BasicAction(() => Debug.Log("Hello world!"));
-            BasicEvent basicEvent = new BasicEvent();
-            BasicRequest request = new BasicRequest();
-            BasicFunction<bool> function = new BasicFunction<bool>(() => true);
+            IAction action = new InlineAction(() => Debug.Log("Hello world!"));
+            IEvent basicEvent = new BaseEvent();
+            IRequest request = new BaseRequest();
+            IFunction<bool> function = new InlineFunction<bool>(() => true);
 
+            IVariable<int> variable = new BaseVariable<int>(); 
             GameObject gameObject = new GameObject();
         }
     }

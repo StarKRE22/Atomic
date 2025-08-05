@@ -97,15 +97,15 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The second input parameter type.</typeparam>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
-    public class BasicExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
+    public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
     {
         private readonly Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicExpression{T1,T2,R}"/> class with a custom evaluation function.
+        /// Initializes a new instance of the <see cref="InlineExpression{T1,T2,R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The custom logic used to evaluate the expression.</param>
-        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function) =>
+        public InlineExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function) =>
             this.function = function;
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="members">An array of binary functions to initialize with.</param>
-        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
+        public InlineExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
             params Func<T1, T2, R>[] members)
             : base(members) =>
             this.function = function;
@@ -123,7 +123,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
         /// <param name="members">A collection of binary functions to initialize with.</param>
-        public BasicExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
+        public InlineExpression(Func<IReadOnlyList<Func<T1, T2, R>>, T1, T2, R> function,
             IEnumerable<Func<T1, T2, R>> members)
             : base(members) =>
             this.function = function;

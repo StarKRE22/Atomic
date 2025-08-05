@@ -3,14 +3,14 @@ using NUnit.Framework;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class BasicActionTests
+    public sealed class InlineActionTests
     {
         [Test]
         public void CreateAndInvoke()
         {
             //Arrange:
             bool wasAction = false;
-            BasicAction action = new BasicAction(() => wasAction = true);
+            InlineAction action = new InlineAction(() => wasAction = true);
             
             //Act:
             action.Invoke();
@@ -28,7 +28,7 @@ namespace Atomic.Elements
         {
             //Arrange:
             string wasAction = string.Empty;
-            BasicAction<string> action = new BasicAction<string>(args => wasAction = args);
+            InlineAction<string> action = new InlineAction<string>(args => wasAction = args);
             
             //Act:
             action.Invoke("Vasya");
@@ -49,7 +49,7 @@ namespace Atomic.Elements
             string t1 = null;
             int t2 = -1;
             
-            var action = new BasicAction<string, int>((a1, a2) =>
+            var action = new InlineAction<string, int>((a1, a2) =>
             {
                 t1 = a1;
                 t2 = a2;
@@ -76,7 +76,7 @@ namespace Atomic.Elements
             int t2 = -1;
             bool t3 = false;
             
-            var action = new BasicAction<string, int, bool>((a1, a2, a3) =>
+            var action = new InlineAction<string, int, bool>((a1, a2, a3) =>
             {
                 t1 = a1;
                 t2 = a2;

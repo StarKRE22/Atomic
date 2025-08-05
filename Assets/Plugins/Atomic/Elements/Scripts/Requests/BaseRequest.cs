@@ -10,7 +10,7 @@ namespace Atomic.Elements
     /// Represents a base implementation of a request without parameters.
     /// </summary>
     [Serializable]
-    public class BasicRequest : IRequest
+    public class BaseRequest : IRequest
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -41,7 +41,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the argument.</typeparam>
     [Serializable]
-    public class BasicRequest<T> : IRequest<T>
+    public class BaseRequest<T> : IRequest<T>
     {
         /// <inheritdoc />
         public bool Required => _required;
@@ -162,7 +162,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second argument.</typeparam>
     /// <typeparam name="T3">The type of the third argument.</typeparam>
     [Serializable]
-    public class BasicRequest<T1, T2, T3> : IRequest<T1, T2, T3>
+    public class BaseRequest<T1, T2, T3> : IRequest<T1, T2, T3>
     {
         /// <inheritdoc />
         public bool Required => _required;

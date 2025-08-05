@@ -10,7 +10,7 @@ namespace Atomic.Elements
     /// Represents a parameterless function returning a value of type <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
-    public class BasicFunction<T> : IValue<T>
+    public class InlineFunction<T> : IValue<T>
     {
         private readonly Func<T> func;
 
@@ -18,13 +18,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
+        public InlineFunction(Func<T> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="BasicFunction{T}"/>.
+        /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="InlineFunction{T}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BasicFunction<T>(Func<T> value) => new(value);
+        public static implicit operator InlineFunction<T>(Func<T> value) => new(value);
 
         /// <summary>
         /// Gets the result of the function.
@@ -46,7 +46,7 @@ namespace Atomic.Elements
     /// <typeparam name="T">The type of the input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
     [Serializable]
-    public class BasicFunction<T, R> : IFunction<T, R>
+    public class InlineFunction<T, R> : IFunction<T, R>
     {
         private readonly Func<T, R> func;
 
@@ -54,13 +54,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
+        public InlineFunction(Func<T, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T, R}"/> to <see cref="BasicFunction{T,R}"/>.
+        /// Implicit conversion from a <see cref="Func{T, R}"/> to <see cref="InlineFunction{T,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BasicFunction<T, R>(Func<T, R> value) => new(value);
+        public static implicit operator InlineFunction<T, R>(Func<T, R> value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
@@ -80,7 +80,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
     [Serializable]
-    public class BasicFunction<T1, T2, R> : IFunction<T1, T2, R>
+    public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
     {
         private readonly Func<T1, T2, R> func;
 
@@ -88,13 +88,13 @@ namespace Atomic.Elements
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public BasicFunction(Func<T1, T2, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
+        public InlineFunction(Func<T1, T2, R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
-        /// Implicit conversion from a <see cref="Func{T1, T2, R}"/> to <see cref="BasicFunction{T1,T2,R}"/>.
+        /// Implicit conversion from a <see cref="Func{T1, T2, R}"/> to <see cref="InlineFunction{T1,T2,R}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator BasicFunction<T1, T2, R>(Func<T1, T2, R> value) => new(value);
+        public static implicit operator InlineFunction<T1, T2, R>(Func<T1, T2, R> value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]

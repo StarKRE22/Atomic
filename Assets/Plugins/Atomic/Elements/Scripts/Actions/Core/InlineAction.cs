@@ -13,21 +13,21 @@ namespace Atomic.Elements
     /// Represents a parameterless action that can be invoked.
     /// Wraps a standard <see cref="System.Action"/> delegate.
     /// </summary>
-    public class BasicAction : IAction
+    public class InlineAction : IAction
     {
         private readonly Action action;
         
         /// <summary>
-        /// Initializes a new instance of <see cref="BasicAction"/> with the specified action.
+        /// Initializes a new instance of <see cref="InlineAction"/> with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BasicAction(Action action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
+        public InlineAction(Action action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="BasicAction"/>.
+        /// Allows implicit conversion from <see cref="System.Action"/> to <see cref="InlineAction"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BasicAction(Action value) => new(value);
+        public static implicit operator InlineAction(Action value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
@@ -37,7 +37,7 @@ namespace Atomic.Elements
         /// </summary>
         public void Invoke() => this.action?.Invoke();
         
-        public override string ToString() => this.action.Method.Name;
+        public override string ToString() => this.action?.Method.Name ?? "Anonymous";
     }
 
 #if ODIN_INSPECTOR
@@ -47,7 +47,7 @@ namespace Atomic.Elements
     /// Represents an action with one parameter that can be invoked.
     /// Wraps a <see cref="System.Action{T}"/> delegate.
     /// </summary>
-    public class BasicAction<T> : IAction<T>
+    public class InlineAction<T> : IAction<T>
     {
         private readonly Action<T> action;
 
@@ -55,13 +55,13 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BasicAction(Action<T> action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
+        public InlineAction(Action<T> action) => this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T}"/> to <see cref="BasicAction{T}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T}"/> to <see cref="InlineAction{T}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BasicAction<T>(Action<T> value) => new(value);
+        public static implicit operator InlineAction<T>(Action<T> value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
@@ -82,7 +82,7 @@ namespace Atomic.Elements
     /// Represents an action with two parameters that can be invoked.
     /// Wraps a <see cref="System.Action{T1, T2}"/> delegate.
     /// </summary>
-    public class BasicAction<T1, T2> : IAction<T1, T2>
+    public class InlineAction<T1, T2> : IAction<T1, T2>
     {
         private readonly Action<T1, T2> action;
 
@@ -90,14 +90,14 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BasicAction(Action<T1, T2> action) =>
+        public InlineAction(Action<T1, T2> action) =>
             this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T1, T2}"/> to <see cref="BasicAction{T1,T2}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T1, T2}"/> to <see cref="InlineAction{T1,T2}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BasicAction<T1, T2>(Action<T1, T2> value) => new(value);
+        public static implicit operator InlineAction<T1, T2>(Action<T1, T2> value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
@@ -119,7 +119,7 @@ namespace Atomic.Elements
     /// Represents an action with three parameters that can be invoked.
     /// Wraps a <see cref="System.Action{T1, T2, T3}"/> delegate.
     /// </summary>
-    public class BasicAction<T1, T2, T3> : IAction<T1, T2, T3>
+    public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
     {
         private readonly Action<T1, T2, T3> action;
 
@@ -127,14 +127,14 @@ namespace Atomic.Elements
         /// Initializes a new instance with the specified action.
         /// </summary>
         /// <param name="action">The action to invoke.</param>
-        public BasicAction(Action<T1, T2, T3> action) =>
+        public InlineAction(Action<T1, T2, T3> action) =>
             this.action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
-        /// Allows implicit conversion from <see cref="System.Action{T1, T2, T3}"/> to <see cref="BasicAction{T1,T2,T3}"/>.
+        /// Allows implicit conversion from <see cref="System.Action{T1, T2, T3}"/> to <see cref="InlineAction{T1,T2,T3}"/>.
         /// </summary>
         /// <param name="value">The action to wrap.</param>
-        public static implicit operator BasicAction<T1, T2, T3>(Action<T1, T2, T3> value) => new(value);
+        public static implicit operator InlineAction<T1, T2, T3>(Action<T1, T2, T3> value) => new(value);
 
 #if ODIN_INSPECTOR
         [Button]
