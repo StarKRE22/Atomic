@@ -852,9 +852,9 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
 
-            var ex = Assert.Throws<Exception>(() => { entity.GetBehaviour<DummyEntityBehaviour>(); });
+            var ex = Assert.Throws<Exception>(() => entity.GetBehaviour<DummyEntityBehaviour>());
 
-            Assert.That(ex.Message, Does.Contain("EntityBehaviourStub"));
+            Assert.That(ex.Message, Does.Contain("DummyEntityBehaviour"));
         }
 
         #endregion

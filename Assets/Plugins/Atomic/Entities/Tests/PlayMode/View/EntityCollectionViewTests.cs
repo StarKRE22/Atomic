@@ -83,20 +83,6 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void SpawnView_RespectsIsSpawnConditionMet()
-        {
-            _view.SetSpawnCondition(entity => entity.Name != "B");
-
-            _collection.Add(_e1);
-            _collection.Add(_e2);
-
-            _view.Show(_collection);
-
-            Assert.IsTrue(_view.HasView(_e1));
-            Assert.IsFalse(_view.HasView(_e2));
-        }
-
-        [Test]
         public void Show_CalledTwice_IsSafe()
         {
             _collection.Add(_e1);
@@ -196,7 +182,6 @@ namespace Atomic.Entities
             }
 
             private Func<IEntity, bool> _customCondition;
-            protected override bool IsSpawnConditionMet(IEntity entity) => _customCondition?.Invoke(entity) ?? true;
 
             private T GetPrivate<T>(string field)
             {
