@@ -17,8 +17,10 @@ imports:
 values:
 - WorldTransform: Transform
 - Players: IDictionary<TeamType, IPlayerContext>
+- GameCountdown: ICooldown
+- GameOverEvent: IEvent
+- WinnerTeam: IReactiveVariable<TeamType>
 
 #Coins
 - CoinPool: IEntityPool<IGameEntity>
 - CoinSpawnArea: Bounds
-- CoinSpawnPeriod: Cooldown

@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    public class PlayerContextInstaller : SceneEntityInstaller<IPlayerContext>
+    public sealed class PlayerContextInstaller : SceneEntityInstaller<IPlayerContext>
     {
         [SerializeField]
         private TeamType _teamType;
-        
+
         [SerializeField]
         private InputMap _inputMap;
 
@@ -28,38 +28,24 @@ namespace SampleGame
 
         [SerializeField]
         private Vector3 _cameraOffset;
-        
+
         protected override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
             gameContext.GetPlayers().Add(_teamType, context);
-            
+
+            //Base:
             context.AddTeamType(new Const<TeamType>(_teamType));
             context.AddInputMap(_inputMap);
             context.AddMoney(_money);
 
-            GameEntity character = EntitiesUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);
+            //Character:
+            GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);
             context.AddCharacter(character);
             context.AddBehaviour<CharacterMoveController>();
-            
+
+            //Camera:
             context.AddBehaviour(new CameraFollowController(_cameraRoot, _cameraOffset));
         }
     }
 }
-
-
-//
-//
-//         public override void Install(IContext context)
-//         {
-//             context.GetPlayerMap().Add(this.teamType, context);
-//             context.AddTeamType(this.teamType);
-//
-//             context.AddCharacter(new Const<IEntity>(this.character));
-//             context.AddInputMap(this.inputMap);
-//             context.AddCameraData(this.cameraData);
-//             
-//             context.AddSystem<CharacterMovementSystem>();
-//             context.AddSystem<CoinCollectSystem>();
-//             context.AddSystem<CameraFollowSystem>();
-//         }

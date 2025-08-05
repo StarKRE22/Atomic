@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SampleGame
 {
-    public static class EntitiesUseCase
+    public static class CharactersUseCase
     {
         public static GameEntity Spawn(
             IGameContext context,

@@ -5,22 +5,26 @@ namespace SampleGame
 {
     public sealed class CoinSpawnController : IEntitySpawn<IGameContext>, IEntityFixedUpdate
     {
+        private readonly Cooldown _spawnPeriod;
         private IGameContext _context;
-        private Cooldown _cooldown;
+
+        public CoinSpawnController(Cooldown spawnPeriod)
+        {
+            _spawnPeriod = spawnPeriod;
+        }
 
         public void OnSpawn(IGameContext context)
         {
             _context = context;
-            _cooldown = context.GetCoinSpawnPeriod();
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            _cooldown.Tick(deltaTime);
-            if (_cooldown.IsExpired())
+            _spawnPeriod.Tick(deltaTime);
+            if (_spawnPeriod.IsExpired())
             {
                 CoinUseCase.Spawn(_context);
-                _cooldown.Reset();
+                _spawnPeriod.Reset();
             }
         }
     }
