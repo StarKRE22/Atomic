@@ -25,7 +25,7 @@ namespace Atomic.Entities
         /// Raised when a view is spawned for a newly added entity.
         /// </summary>
         public event Action<E, EntityViewBase<E>> OnAdded;
-        
+
         /// <summary>
         /// Raised when a view is removed for a despawned or removed entity.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Atomic.Entities
         /// Internal dictionary mapping active entities to their associated views.
         /// </summary>
         private readonly Dictionary<E, EntityViewBase<E>> _views = new();
-        
+
         private IReadOnlyEntityCollection<E> _source;
 
         /// <summary>
@@ -89,27 +89,12 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Determines the name used to retrieve the view prefab for a given entity.
-        /// </summary>
-        /// <param name="entity">The entity to evaluate.</param>
-        /// <returns>The name used in the view pool.</returns>
-        protected virtual string GetEntityName(E entity) => entity.Name;
-
-        /// <summary>
-        /// Determines whether a view should be spawned for the given entity.
-        /// Override this method to implement conditional visualization.
-        /// </summary>
-        /// <param name="entity">The entity to evaluate.</param>
-        /// <returns>True if the view should be created; otherwise, false.</returns>
-        protected virtual bool IsSpawnConditionMet(E entity) => true;
-        
-        /// <summary>
         /// Creates and shows a view for the specified entity, if the spawn condition is met.
         /// </summary>
         /// <param name="entity">The entity to visualize.</param>
         public void SpawnView(E entity)
         {
-            if (_views.ContainsKey(entity) || !this.IsSpawnConditionMet(entity))
+            if (_views.ContainsKey(entity))
                 return;
 
             string name = this.GetEntityName(entity);
@@ -136,6 +121,13 @@ namespace Atomic.Entities
             string name = this.GetEntityName(entity);
             _viewPool.Return(name, view);
         }
+
+        /// <summary>
+        /// Determines the name used to retrieve the view prefab for a given entity.
+        /// </summary>
+        /// <param name="entity">The entity to evaluate.</param>
+        /// <returns>The name used in the view pool.</returns>
+        protected virtual string GetEntityName(E entity) => entity.Name;
     }
 }
 #endif
