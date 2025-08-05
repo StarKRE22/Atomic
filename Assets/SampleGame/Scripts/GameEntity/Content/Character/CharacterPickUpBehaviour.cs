@@ -24,6 +24,6 @@ namespace SampleGame
             _triggerEvents.OnEntered -= this.OnTriggerEntered;
 
         private void OnTriggerEntered(Collider collider) => 
-            CollectCoinUseCase.Collect(_gameContext, _entity, collider);
+            CoinUseCase.Collect(_gameContext, _entity, collider);
     }
 }

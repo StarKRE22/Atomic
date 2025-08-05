@@ -107,9 +107,9 @@ namespace Atomic.Entities
         /// Creates and shows a view for the specified entity, if the spawn condition is met.
         /// </summary>
         /// <param name="entity">The entity to visualize.</param>
-        private void SpawnView(E entity)
+        public void SpawnView(E entity)
         {
-            if (!this.IsSpawnConditionMet(entity))
+            if (_views.ContainsKey(entity) || !this.IsSpawnConditionMet(entity))
                 return;
 
             string name = this.GetEntityName(entity);
@@ -125,7 +125,7 @@ namespace Atomic.Entities
         /// Hides and returns the view associated with the specified entity.
         /// </summary>
         /// <param name="entity">The entity whose view should be removed.</param>
-        private void DespawnView(E entity)
+        public void DespawnView(E entity)
         {
             if (!_views.Remove(entity, out EntityViewBase<E> view))
                 return;
