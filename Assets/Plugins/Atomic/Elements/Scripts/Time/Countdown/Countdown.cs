@@ -35,7 +35,7 @@ namespace Atomic.Elements
         public event Action<CountdownState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
-        public event Action<float> OnCurrentTimeChanged;
+        public event Action<float> OnTimeChanged;
 
         /// <summary>Raised when the total duration changes.</summary>
         public event Action<float> OnDurationChanged;
@@ -66,7 +66,7 @@ namespace Atomic.Elements
         public float CurrentTime
         {
             get => this.currentTime;
-            set => this.SetCurrentTime(value);
+            set => this.SetTime(value);
         }
 
         /// <summary>Gets or sets the progress of the countdown (0–1).</summary>
@@ -102,7 +102,7 @@ namespace Atomic.Elements
         public Countdown(float duration) => this.duration = duration;
 
         /// <summary>Gets the current internal state.</summary>
-        public CountdownState GetCurrentState() => this.currentState;
+        public CountdownState GetState() => this.currentState;
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
         public bool IsIdle() => this.currentState == CountdownState.IDLE;
@@ -120,7 +120,7 @@ namespace Atomic.Elements
         public float GetDuration() => this.duration;
 
         /// <summary>Gets the current remaining time.</summary>
-        public float GetCurrentTime() => this.currentTime;
+        public float GetTime() => this.currentTime;
 
         /// <summary>Starts the countdown from full duration. Stops any current state first.</summary>
 #if ODIN_INSPECTOR
@@ -151,7 +151,7 @@ namespace Atomic.Elements
 
         public void Start(float currentTime)
         {
-            this.SetCurrentTime(currentTime);
+            this.SetTime(currentTime);
             this.Play();
         }
 
@@ -226,7 +226,7 @@ namespace Atomic.Elements
                 return;
 
             this.currentTime = Math.Max(0, this.currentTime - deltaTime);
-            this.OnCurrentTimeChanged?.Invoke(this.currentTime);
+            this.OnTimeChanged?.Invoke(this.currentTime);
 
             float progress = 1 - this.currentTime / this.duration;
             this.OnProgressChanged?.Invoke(progress);
@@ -264,7 +264,7 @@ namespace Atomic.Elements
             float remainingTime = this.duration * (1 - progress);
 
             this.currentTime = remainingTime;
-            this.OnCurrentTimeChanged?.Invoke(remainingTime);
+            this.OnTimeChanged?.Invoke(remainingTime);
             this.OnProgressChanged?.Invoke(progress);
         }
 
@@ -288,7 +288,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void SetCurrentTime(float time)
+        public void SetTime(float time)
         {
             if (time < 0)
                 throw new Exception($"Time can't be negative: {duration}!");
@@ -297,7 +297,7 @@ namespace Atomic.Elements
             if (Math.Abs(newTime - this.currentTime) > float.Epsilon)
             {
                 this.currentTime = newTime;
-                this.OnCurrentTimeChanged?.Invoke(newTime);
+                this.OnTimeChanged?.Invoke(newTime);
                 this.OnProgressChanged?.Invoke(this.GetProgress());
             }
         }
@@ -306,6 +306,6 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void ResetTime() => this.SetCurrentTime(this.duration);
+        public void ResetTime() => this.SetTime(this.duration);
     }
 }

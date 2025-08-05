@@ -20,7 +20,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the current remaining time changes.
         /// </summary>
-        public event Action<float> OnCurrentTimeChanged;
+        public event Action<float> OnTimeChanged;
 
         /// <summary>
         /// Invoked when the progress (0 to 1) changes.
@@ -89,7 +89,7 @@ namespace Atomic.Elements
             float remainingTime = _duration * progress;
 
             _current = remainingTime;
-            this.OnCurrentTimeChanged?.Invoke(remainingTime);
+            this.OnTimeChanged?.Invoke(remainingTime);
             this.OnProgressChanged?.Invoke(progress);
         }
 
@@ -102,7 +102,7 @@ namespace Atomic.Elements
                 return;
 
             _current = _duration;
-            this.OnCurrentTimeChanged?.Invoke(_current);
+            this.OnTimeChanged?.Invoke(_current);
             this.OnProgressChanged?.Invoke(this.GetProgress());
         }
 
@@ -118,7 +118,7 @@ namespace Atomic.Elements
 
             _current = Math.Max(0, _current - deltaTime);
 
-            this.OnCurrentTimeChanged?.Invoke(_current);
+            this.OnTimeChanged?.Invoke(_current);
             this.OnProgressChanged?.Invoke(this.GetProgress());
 
             if (_current <= 0)
@@ -156,14 +156,14 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current remaining time on the cooldown.
         /// </summary>
-        public float GetCurrentTime() => _current;
+        public float GetTime() => _current;
 
         /// <summary>
         /// Sets the current remaining time on the cooldown.
-        /// Triggers <see cref="OnCurrentTimeChanged"/> and <see cref="OnProgressChanged"/>.
+        /// Triggers <see cref="OnTimeChanged"/> and <see cref="OnProgressChanged"/>.
         /// </summary>
         /// <param name="time">The new time to set (must be between 0 and duration).</param>
-        public void SetCurrentTime(float time)
+        public void SetTime(float time)
         {
             if (time < 0)
                 throw new ArgumentException($"Time can't be negative: {time}!", nameof(time));
@@ -173,7 +173,7 @@ namespace Atomic.Elements
                 return;
 
             _current = newTime;
-            this.OnCurrentTimeChanged?.Invoke(newTime);
+            this.OnTimeChanged?.Invoke(newTime);
             this.OnProgressChanged?.Invoke(this.GetProgress());
         }
     }

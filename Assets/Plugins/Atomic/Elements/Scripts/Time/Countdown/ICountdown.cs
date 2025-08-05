@@ -27,7 +27,7 @@ namespace Atomic.Elements
         event Action<CountdownState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
-        event Action<float> OnCurrentTimeChanged;
+        event Action<float> OnTimeChanged;
 
         /// <summary>Raised when the total duration changes.</summary>
         event Action<float> OnDurationChanged;
@@ -56,7 +56,7 @@ namespace Atomic.Elements
         float Progress { get; set; }
 
         /// <summary>Gets the current internal state.</summary>
-        CountdownState GetCurrentState();
+        CountdownState GetState();
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
         bool IsIdle();
@@ -74,7 +74,7 @@ namespace Atomic.Elements
         float GetDuration();
 
         /// <summary>Gets the current remaining time.</summary>
-        float GetCurrentTime();
+        float GetTime();
 
         /// <summary>Starts the countdown from full duration. Stops any current state first.</summary>
 #if ODIN_INSPECTOR
@@ -131,7 +131,7 @@ namespace Atomic.Elements
         /// <summary>Sets the current time remaining in the countdown.</summary>
 #if ODIN_INSPECTOR
 #endif
-        void SetCurrentTime(float time);
+        void SetTime(float time);
 
         /// <summary>Resets the current time to the full duration.</summary>
 #if ODIN_INSPECTOR

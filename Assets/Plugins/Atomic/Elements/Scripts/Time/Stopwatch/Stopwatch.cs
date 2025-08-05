@@ -36,7 +36,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the current elapsed time changes.
         /// </summary>
-        public event Action<float> OnCurrentTimeChanged;
+        public event Action<float> OnTimeChanged;
         
         /// <summary>
         /// Invoked when the state of the stopwatch changes.
@@ -57,10 +57,10 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public float CurrentTime
+        public float Time
         {
             get => this.currentTime;
-            set => this.SetCurrentTime(value);
+            set => this.SetTime(value);
         }
         
         private StopwatchState currentState = StopwatchState.IDLE;
@@ -89,7 +89,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current elapsed time.
         /// </summary>
-        public float GetCurrentTime() => this.currentTime;
+        public float GetTime() => this.currentTime;
 
         /// <summary>
         /// Starts the stopwatch and resets elapsed time to zero.
@@ -196,7 +196,7 @@ namespace Atomic.Elements
             if (this.currentState == StopwatchState.PLAYING)
             {
                 this.currentTime += deltaTime;
-                this.OnCurrentTimeChanged?.Invoke(this.currentTime);
+                this.OnTimeChanged?.Invoke(this.currentTime);
             }
         }
         
@@ -207,13 +207,13 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void SetCurrentTime(float time)
+        public void SetTime(float time)
         {
             float newTime = Math.Max(time, 0);
             if (Math.Abs(currentTime - newTime) > float.Epsilon)
             {
                 this.currentTime = newTime;
-                this.OnCurrentTimeChanged?.Invoke(time);
+                this.OnTimeChanged?.Invoke(time);
             }
         }
     }

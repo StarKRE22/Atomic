@@ -36,7 +36,7 @@ namespace Atomic.Elements
         public event Action<TimerState> OnStateChanged;
 
         /// <inheritdoc/>
-        public event Action<float> OnCurrentTimeChanged;
+        public event Action<float> OnTimeChanged;
 
         /// <inheritdoc/>
         public event Action<float> OnDurationChanged;
@@ -70,10 +70,10 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public float CurrentTime
+        public float Time
         {
             get => this.currentTime;
-            set => this.SetCurrentTime(value);
+            set => this.SetTime(value);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current state of the timer.
         /// </summary>
-        public TimerState GetCurrentState() => this.currentState;
+        public TimerState GetState() => this.currentState;
 
         /// <summary>
         /// Returns true if the timer is idle.
@@ -145,7 +145,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current remaining time of the timer.
         /// </summary>
-        public float GetCurrentTime() => this.currentTime;
+        public float GetTime() => this.currentTime;
 
         /// <summary>
         /// Stops and restarts the timer from zero.
@@ -195,7 +195,7 @@ namespace Atomic.Elements
 #endif
         public void Start(float currentTime)
         {
-            this.SetCurrentTime(currentTime);
+            this.SetTime(currentTime);
             this.Play();
         }
 
@@ -286,7 +286,7 @@ namespace Atomic.Elements
                 return;
 
             this.currentTime = Math.Min(this.duration, this.currentTime + deltaTime);
-            this.OnCurrentTimeChanged?.Invoke(this.currentTime);
+            this.OnTimeChanged?.Invoke(this.currentTime);
 
             float progress = this.currentTime / this.duration;
             this.OnProgressChanged?.Invoke(progress);
@@ -326,7 +326,7 @@ namespace Atomic.Elements
         {
             progress = Math.Clamp(progress, 0, 1);
             this.currentTime = this.duration * progress;
-            this.OnCurrentTimeChanged?.Invoke(this.currentTime);
+            this.OnTimeChanged?.Invoke(this.currentTime);
             this.OnProgressChanged?.Invoke(progress);
         }
 
@@ -356,7 +356,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void SetCurrentTime(float time)
+        public void SetTime(float time)
         {
             if (time < 0)
                 return;
@@ -365,7 +365,7 @@ namespace Atomic.Elements
             if (Math.Abs(newTime - this.currentTime) > float.Epsilon)
             {
                 this.currentTime = newTime;
-                this.OnCurrentTimeChanged?.Invoke(newTime);
+                this.OnTimeChanged?.Invoke(newTime);
                 this.OnProgressChanged?.Invoke(this.GetProgress());
             }
         }
@@ -376,6 +376,6 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void ResetTime() => this.SetCurrentTime(0);
+        public void ResetTime() => this.SetTime(0);
     }
 }

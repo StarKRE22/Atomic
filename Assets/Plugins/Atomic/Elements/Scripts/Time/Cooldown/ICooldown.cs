@@ -16,7 +16,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the current remaining time changes.
         /// </summary>
-        event Action<float> OnCurrentTimeChanged;
+        event Action<float> OnTimeChanged;
 
         /// <summary>
         /// Invoked when the progress (0 to 1) changes.
@@ -71,13 +71,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current remaining time on the cooldown.
         /// </summary>
-        float GetCurrentTime();
+        float GetTime();
 
         /// <summary>
         /// Sets the current remaining time on the cooldown.
         /// Triggers <see cref="Cooldown.OnCurrentTimeChanged.OnCurrentTimeChanged"/> and <see cref="Cooldown"/>.
         /// </summary>
         /// <param name="time">The new time to set (must be between 0 and duration).</param>
-        void SetCurrentTime(float time);
+        void SetTime(float time);
     }
 }

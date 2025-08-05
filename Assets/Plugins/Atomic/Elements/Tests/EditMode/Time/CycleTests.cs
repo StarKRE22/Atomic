@@ -13,7 +13,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.AreEqual(5, period.GetDuration());
-            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(0, period.GetTime());
         }
 
         [Test]
@@ -32,8 +32,8 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasEvent);
             Assert.AreEqual(PeriodState.PLAYING, stateChanged);
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
-            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
+            Assert.AreEqual(0, period.GetTime());
             
             Assert.IsTrue(period.IsPlaying());
         }
@@ -54,8 +54,8 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.AreEqual(PeriodState.PLAYING, stateChanged);
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
-            Assert.AreEqual(3, period.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
+            Assert.AreEqual(3, period.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(period.IsPlaying());
         }
@@ -72,14 +72,14 @@ namespace Atomic.Elements
             period.OnStateChanged += s => stateChanged = s;
 
             //Act:
-            period.CurrentTime = 2;
+            period.Time = 2;
             bool success = period.Play();
 
             //Assert:
             Assert.IsTrue(success);
             Assert.AreEqual(PeriodState.PLAYING, stateChanged);
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
-            Assert.AreEqual(2, period.GetCurrentTime());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
+            Assert.AreEqual(2, period.GetTime());
             
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(period.IsPlaying());
@@ -92,7 +92,7 @@ namespace Atomic.Elements
             period.Tick(deltaTime: 0.5f);
             period.Tick(deltaTime: 0.5f);
 
-            Assert.AreEqual(0, period.CurrentTime, 1e-2);
+            Assert.AreEqual(0, period.Time, 1e-2);
         }
         
         [Test]
@@ -111,7 +111,7 @@ namespace Atomic.Elements
             bool wasProgressEvent = false;
         
             //Act:
-            period.OnCurrentTimeChanged += _ => wasTimeEvent = true;
+            period.OnTimeChanged += _ => wasTimeEvent = true;
             period.OnProgressChanged += _ => wasProgressEvent = true;
             period.Tick(deltaTime: 0.5f);
         
@@ -120,7 +120,7 @@ namespace Atomic.Elements
             Assert.IsFalse(wasTimeEvent);
             Assert.IsFalse(wasProgressEvent);
         
-            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(0, period.GetTime());
             Assert.AreEqual(0, period.GetProgress());
         }
 
@@ -153,7 +153,7 @@ namespace Atomic.Elements
             period.OnCycle += () => wasCycle = true;
             
             //Pre-Assert:
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
             
             for (int i = 0; i < 20; i++)
             {
@@ -162,10 +162,10 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasCycle);
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
         
             Assert.AreEqual(0, period.GetProgress());
-            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(0, period.GetTime());
             Assert.AreEqual(4, period.GetDuration());
         
             Assert.IsTrue(period.IsPlaying());
@@ -190,7 +190,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasPause);
             Assert.AreEqual(PeriodState.PAUSED, stateChanged);
-            Assert.AreEqual(PeriodState.PAUSED, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.PAUSED, period.GetState());
             Assert.IsTrue(period.IsPaused());
         }
 
@@ -207,7 +207,7 @@ namespace Atomic.Elements
             period.Start();
             period.Tick(0.2f);
             period.OnProgressChanged += _ => progressChanged = true;
-            period.OnCurrentTimeChanged += _ => timeChanged = true;
+            period.OnTimeChanged += _ => timeChanged = true;
             period.OnCycle += () => wasCycle = true;
         
             period.Pause();
@@ -219,7 +219,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(period.IsPaused());
-            Assert.AreEqual(0.2f, period.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.2f, period.GetTime(), 1e-2);
             Assert.AreEqual(0.25f, period.GetProgress(), 1e-2);
         
             Assert.IsFalse(progressChanged);
@@ -266,7 +266,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasResume);
             Assert.AreEqual(PeriodState.PLAYING, stateChanged);
-            Assert.AreEqual(PeriodState.PLAYING, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.PLAYING, period.GetState());
         
             Assert.IsFalse(period.IsPaused());
             Assert.IsTrue(period.IsPlaying());
@@ -285,7 +285,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsFalse(wasResume);
-            Assert.AreEqual(PeriodState.IDLE, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.IDLE, period.GetState());
             Assert.IsFalse(period.IsPlaying());
             Assert.IsFalse(period.IsPaused());
         }
@@ -300,12 +300,12 @@ namespace Atomic.Elements
         
             //Act:
             period.Start();
-            period.OnCurrentTimeChanged += t => currentTime = t;
+            period.OnTimeChanged += t => currentTime = t;
             period.Tick(deltaTime: 0.5f);
         
             //Assert:
             Assert.AreEqual(0.5f, currentTime, 1e-2);
-            Assert.AreEqual(0.5f, period.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.5f, period.GetTime(), 1e-2);
         }
         
         [Test]
@@ -324,7 +324,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsFalse(wasEvent);
-            Assert.AreEqual(1, period.GetCurrentTime());
+            Assert.AreEqual(1, period.GetTime());
             Assert.AreEqual(5, period.GetDuration());
         }
         
@@ -345,14 +345,14 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(wasStop);
-            Assert.AreEqual(PeriodState.IDLE, period.GetCurrentState());
+            Assert.AreEqual(PeriodState.IDLE, period.GetState());
             Assert.AreEqual(PeriodState.IDLE, stateChanged);
         
             Assert.IsFalse(period.IsPlaying());
             Assert.IsTrue(period.IsIdle());
         
             Assert.AreEqual(5, period.GetDuration());
-            Assert.AreEqual(0, period.GetCurrentTime());
+            Assert.AreEqual(0, period.GetTime());
         }
         
         
@@ -414,7 +414,7 @@ namespace Atomic.Elements
             Assert.IsFalse(period.IsPlaying());
             Assert.IsTrue(period.IsIdle());
             Assert.AreEqual(5, period.Duration);
-            Assert.AreEqual(0, period.CurrentTime);
+            Assert.AreEqual(0, period.Time);
         }
     }
 }

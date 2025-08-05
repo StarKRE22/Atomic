@@ -31,7 +31,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the elapsed time changes.
         /// </summary>
-        event Action<float> OnCurrentTimeChanged;
+        event Action<float> OnTimeChanged;
 
         /// <summary>
         /// Invoked when the stopwatch state changes.
@@ -52,13 +52,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets or sets the current elapsed time.
         /// </summary>
-        float CurrentTime { get; set; }
+        float Time { get; set; }
 
         /// <summary>
         /// Returns the current elapsed time.
         /// </summary>
         /// <returns>The elapsed time in seconds.</returns>
-        float GetCurrentTime();
+        float GetTime();
 
         /// <summary>
         /// Returns true if the stopwatch is currently running.
@@ -116,6 +116,6 @@ namespace Atomic.Elements
         /// Sets the current elapsed time.
         /// </summary>
         /// <param name="time">The time to set (must be ≥ 0).</param>
-        void SetCurrentTime(float time);
+        void SetTime(float time);
     }
 }

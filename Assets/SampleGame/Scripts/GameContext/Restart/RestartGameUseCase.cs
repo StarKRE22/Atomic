@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace GameExample.Engine
+namespace SampleGame
 {
-    public sealed class RestartGameUseCase
+    public static class RestartGameUseCase
     {
         private const string SCENE_NAME = "SampleGame";
         

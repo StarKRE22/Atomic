@@ -26,7 +26,7 @@ namespace Atomic.Elements
         event Action<PeriodState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
-        event Action<float> OnCurrentTimeChanged;
+        event Action<float> OnTimeChanged;
 
         /// <summary>Raised when the progress changes.</summary>
         event Action<float> OnProgressChanged;
@@ -47,7 +47,7 @@ namespace Atomic.Elements
         /// <summary>Gets or sets the current time within the current cycle.</summary>
 #if ODIN_INSPECTOR
 #endif
-        float CurrentTime { get; set; }
+        float Time { get; set; }
 
         /// <summary>Gets or sets the progress of the current cycle (from 0 to 1).</summary>
 #if ODIN_INSPECTOR
@@ -55,7 +55,7 @@ namespace Atomic.Elements
         float Progress { get; set; }
 
         /// <summary>Returns the current state of the timer.</summary>
-        PeriodState GetCurrentState();
+        PeriodState GetState();
 
         /// <summary>Returns true if the timer is currently playing.</summary>
         bool IsPlaying();
@@ -70,7 +70,7 @@ namespace Atomic.Elements
         float GetDuration();
 
         /// <summary>Returns the current time of the cycle.</summary>
-        float GetCurrentTime();
+        float GetTime();
 
         /// <summary>Starts the timer from the beginning.</summary>
 #if ODIN_INSPECTOR
@@ -119,7 +119,7 @@ namespace Atomic.Elements
         /// <param name="time">The time to set.</param>
 #if ODIN_INSPECTOR
 #endif
-        void SetCurrentTime(float time);
+        void SetTime(float time);
 
         /// <summary>Gets the progress of the current cycle as a value between 0 and 1.</summary>
         float GetProgress();

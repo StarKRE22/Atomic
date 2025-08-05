@@ -9,7 +9,7 @@ namespace Atomic.Elements
         {
             var cd = new Cooldown(10);
             Assert.AreEqual(10, cd.GetDuration());
-            Assert.AreEqual(10, cd.GetCurrentTime());
+            Assert.AreEqual(10, cd.GetTime());
             Assert.IsFalse(cd.IsExpired());
         }
 
@@ -18,7 +18,7 @@ namespace Atomic.Elements
         {
             var cd = new Cooldown(10, 3);
             Assert.AreEqual(10, cd.GetDuration());
-            Assert.AreEqual(3, cd.GetCurrentTime());
+            Assert.AreEqual(3, cd.GetTime());
         }
 
         [Test]
@@ -43,13 +43,13 @@ namespace Atomic.Elements
             float? progress = null;
             bool expired = false;
 
-            cd.OnCurrentTimeChanged += t => currentTime = t;
+            cd.OnTimeChanged += t => currentTime = t;
             cd.OnProgressChanged += p => progress = p;
             cd.OnExpired += () => expired = true;
 
             cd.Tick(5);
 
-            Assert.AreEqual(0, cd.GetCurrentTime());
+            Assert.AreEqual(0, cd.GetTime());
             Assert.AreEqual(0, currentTime);
             Assert.AreEqual(0, progress);
             Assert.IsTrue(expired);
@@ -62,7 +62,7 @@ namespace Atomic.Elements
             float? changedTime = null;
             float? changedProgress = null;
 
-            cd.OnCurrentTimeChanged += t => changedTime = t;
+            cd.OnTimeChanged += t => changedTime = t;
             cd.OnProgressChanged += p => changedProgress = p;
 
             cd.SetProgress(0.25f);
@@ -78,7 +78,7 @@ namespace Atomic.Elements
             float? changedTime = null;
             float? changedProgress = null;
 
-            cd.OnCurrentTimeChanged += t => changedTime = t;
+            cd.OnTimeChanged += t => changedTime = t;
             cd.OnProgressChanged += p => changedProgress = p;
 
             cd.Reset();
@@ -91,7 +91,7 @@ namespace Atomic.Elements
         public void SetDuration_UpdatesDuration_AndFiresEvents()
         {
             var cd = new Cooldown(10);
-            cd.SetCurrentTime(5);
+            cd.SetTime(5);
 
             float? changedDuration = null;
             float? changedProgress = null;

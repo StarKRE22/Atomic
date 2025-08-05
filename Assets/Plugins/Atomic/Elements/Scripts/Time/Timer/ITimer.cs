@@ -41,7 +41,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the current remaining time changes.
         /// </summary>
-        event Action<float> OnCurrentTimeChanged;
+        event Action<float> OnTimeChanged;
 
         /// <summary>
         /// Invoked when the duration changes.
@@ -66,7 +66,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets or sets the current remaining time of the timer.
         /// </summary>
-        float CurrentTime { get; set; }
+        float Time { get; set; }
 
         /// <summary>
         /// Gets or sets the progress of the timer (from 0 to 1).
@@ -76,7 +76,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns the current state of the timer.
         /// </summary>
-        TimerState GetCurrentState();
+        TimerState GetState();
 
         /// <summary>
         /// Returns true if the timer is idle.
@@ -106,7 +106,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current remaining time of the timer.
         /// </summary>
-        float GetCurrentTime();
+        float GetTime();
 
         /// <summary>
         /// Forcefully starts the timer from the beginning.
@@ -183,7 +183,7 @@ namespace Atomic.Elements
         /// Sets the current remaining time of the timer.
         /// </summary>
         /// <param name="time">The time to set (must be ≥ 0).</param>
-        void SetCurrentTime(float time);
+        void SetTime(float time);
 
         /// <summary>
         /// Resets the current time to the full duration.

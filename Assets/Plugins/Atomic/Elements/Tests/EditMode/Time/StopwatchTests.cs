@@ -13,7 +13,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.AreEqual(StopwatchState.IDLE, stopwatch.GetCurrentState());
-            Assert.AreEqual(0, stopwatch.GetCurrentTime());
+            Assert.AreEqual(0, stopwatch.GetTime());
         }
         
         [Test]
@@ -33,7 +33,7 @@ namespace Atomic.Elements
             Assert.IsTrue(wasEvent);
             Assert.AreEqual(StopwatchState.PLAYING, stateChanged);
             Assert.AreEqual(StopwatchState.PLAYING, stopwatch.GetCurrentState());
-            Assert.AreEqual(0, stopwatch.GetCurrentTime());
+            Assert.AreEqual(0, stopwatch.GetTime());
             
             Assert.IsTrue(stopwatch.IsPlaying());
         }
@@ -50,7 +50,7 @@ namespace Atomic.Elements
             stopwatch.OnStateChanged += s => stateChanged = s;
 
             //Act:
-            stopwatch.CurrentTime = 4;
+            stopwatch.Time = 4;
             bool success = stopwatch.Play();
 
             //Assert:
@@ -59,7 +59,7 @@ namespace Atomic.Elements
 
             Assert.AreEqual(StopwatchState.PLAYING, stateChanged);
             Assert.AreEqual(StopwatchState.PLAYING, stopwatch.GetCurrentState());
-            Assert.AreEqual(4, stopwatch.GetCurrentTime());
+            Assert.AreEqual(4, stopwatch.GetTime());
 
             Assert.IsTrue(wasEvent);
         }
@@ -72,14 +72,14 @@ namespace Atomic.Elements
             bool wasTimeEvent = false;
         
             //Act:
-            stopwatch.OnCurrentTimeChanged += _ => wasTimeEvent = true;
+            stopwatch.OnTimeChanged += _ => wasTimeEvent = true;
             stopwatch.Tick(deltaTime: 0.5f);
         
             //Assert:
             Assert.IsFalse(stopwatch.IsPlaying());
             Assert.IsFalse(wasTimeEvent);
         
-            Assert.AreEqual(0, stopwatch.GetCurrentTime());
+            Assert.AreEqual(0, stopwatch.GetTime());
         }
         
         
@@ -115,7 +115,7 @@ namespace Atomic.Elements
             //Act:
             stopwatch.Start();
             stopwatch.Tick(0.2f);
-            stopwatch.OnCurrentTimeChanged += _ => timeChanged = true;
+            stopwatch.OnTimeChanged += _ => timeChanged = true;
         
             stopwatch.Pause();
         
@@ -126,7 +126,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsTrue(stopwatch.IsPaused());
-            Assert.AreEqual(0.2f, stopwatch.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.2f, stopwatch.GetTime(), 1e-2);
             Assert.IsFalse(timeChanged);
         }
         
@@ -203,12 +203,12 @@ namespace Atomic.Elements
         
             //Act:
             stopwatch.Start();
-            stopwatch.OnCurrentTimeChanged += t => currentTime = t;
+            stopwatch.OnTimeChanged += t => currentTime = t;
             stopwatch.Tick(deltaTime: 0.5f);
         
             //Assert:
             Assert.AreEqual(0.5f, currentTime, 1e-2);
-            Assert.AreEqual(0.5f, stopwatch.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.5f, stopwatch.GetTime(), 1e-2);
         }
         
         [Test]
@@ -227,7 +227,7 @@ namespace Atomic.Elements
         
             //Assert:
             Assert.IsFalse(wasEvent);
-            Assert.AreEqual(1, stopwatch.GetCurrentTime());
+            Assert.AreEqual(1, stopwatch.GetTime());
         }
 
         [Test]
@@ -253,7 +253,7 @@ namespace Atomic.Elements
             Assert.IsFalse(stopwatch.IsPlaying());
             Assert.IsTrue(stopwatch.IsIdle());
         
-            Assert.AreEqual(0, stopwatch.GetCurrentTime());
+            Assert.AreEqual(0, stopwatch.GetTime());
         }
         
         [Test]
@@ -312,7 +312,7 @@ namespace Atomic.Elements
             Assert.IsFalse(stopwatch.IsPaused());
             Assert.IsFalse(stopwatch.IsPlaying());
             Assert.IsTrue(stopwatch.IsIdle());
-            Assert.AreEqual(0, stopwatch.CurrentTime);
+            Assert.AreEqual(0, stopwatch.Time);
         }
     }
 }

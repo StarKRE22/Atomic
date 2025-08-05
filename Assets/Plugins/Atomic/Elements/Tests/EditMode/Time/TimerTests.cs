@@ -13,7 +13,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.AreEqual(5, timer.GetDuration());
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.AreEqual(TimerState.PLAYING, stateChanged);
             Assert.AreEqual(TimerState.PLAYING, timer.CurrentState);
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(timer.IsPlaying());
         }
@@ -49,7 +49,7 @@ namespace Atomic.Elements
             timer.Start(3);
 
             //Assert:
-            Assert.AreEqual(3, timer.GetCurrentTime());
+            Assert.AreEqual(3, timer.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(timer.IsPlaying());
         }
@@ -63,11 +63,11 @@ namespace Atomic.Elements
 
             //Act:
             timer.OnStarted += () => wasEvent = true;
-            timer.CurrentTime = 3;
+            timer.Time = 3;
             timer.Play();
 
             //Assert:
-            Assert.AreEqual(3, timer.GetCurrentTime());
+            Assert.AreEqual(3, timer.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(timer.IsPlaying());
         }
@@ -88,7 +88,7 @@ namespace Atomic.Elements
             bool wasProgressEvent = false;
 
             //Act:
-            timer.OnCurrentTimeChanged += _ => wasTimeEvent = true;
+            timer.OnTimeChanged += _ => wasTimeEvent = true;
             timer.OnProgressChanged += _ => wasProgressEvent = true;
             timer.Tick(deltaTime: 0.5f);
 
@@ -97,7 +97,7 @@ namespace Atomic.Elements
             Assert.IsFalse(wasTimeEvent);
             Assert.IsFalse(wasProgressEvent);
 
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
             Assert.AreEqual(0, timer.GetProgress());
         }
 
@@ -147,7 +147,7 @@ namespace Atomic.Elements
 
             Assert.IsTrue(timer.IsPlaying());
             Assert.IsFalse(timer.IsExpired());
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
         }
 
         [Test]
@@ -171,10 +171,10 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasComplete);
             Assert.AreEqual(TimerState.EXPIRED, stateChanged);
-            Assert.AreEqual(TimerState.EXPIRED, timer.GetCurrentState());
+            Assert.AreEqual(TimerState.EXPIRED, timer.GetState());
 
             Assert.AreEqual(1, timer.GetProgress());
-            Assert.AreEqual(4, timer.GetCurrentTime());
+            Assert.AreEqual(4, timer.GetTime());
             Assert.AreEqual(4, timer.GetDuration());
 
             Assert.IsFalse(timer.IsPlaying());
@@ -212,7 +212,7 @@ namespace Atomic.Elements
             timer.Start();
             timer.Tick(0.2f);
             timer.OnProgressChanged += _ => progressChanged = true;
-            timer.OnCurrentTimeChanged += _ => timeChanged = true;
+            timer.OnTimeChanged += _ => timeChanged = true;
             timer.OnExpired += () => completed = true;
 
             timer.Pause();
@@ -224,7 +224,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(timer.IsPaused());
-            Assert.AreEqual(0.2f, timer.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.2f, timer.GetTime(), 1e-2);
             Assert.AreEqual(0.25f, timer.GetProgress(), 1e-2);
 
             Assert.IsFalse(progressChanged);
@@ -297,12 +297,12 @@ namespace Atomic.Elements
 
             //Act:
             timer.Start();
-            timer.OnCurrentTimeChanged += t => currentTime = t;
+            timer.OnTimeChanged += t => currentTime = t;
             timer.Tick(deltaTime: 0.5f);
 
             //Assert:
             Assert.AreEqual(0.5f, currentTime, 1e-2);
-            Assert.AreEqual(0.5f, timer.GetCurrentTime(), 1e-2);
+            Assert.AreEqual(0.5f, timer.GetTime(), 1e-2);
         }
 
         [Test]
@@ -323,7 +323,7 @@ namespace Atomic.Elements
             Assert.IsTrue(timer.IsIdle());
 
             Assert.AreEqual(5, timer.GetDuration());
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
         }
 
         [Test]
@@ -340,7 +340,7 @@ namespace Atomic.Elements
             timer.Tick(deltaTime: 1);
 
             //Pre-assert:
-            Assert.AreEqual(2, timer.GetCurrentTime());
+            Assert.AreEqual(2, timer.GetTime());
             Assert.AreEqual(0.2f, timer.GetProgress());
 
             //Act:
@@ -353,7 +353,7 @@ namespace Atomic.Elements
             Assert.IsTrue(started);
 
             Assert.AreEqual(10, timer.GetDuration());
-            Assert.AreEqual(0, timer.GetCurrentTime());
+            Assert.AreEqual(0, timer.GetTime());
             Assert.AreEqual(0, timer.GetProgress());
 
             Assert.IsTrue(timer.IsPlaying());
@@ -373,7 +373,7 @@ namespace Atomic.Elements
             timer.Tick(deltaTime: 1);
 
             //Pre-assert:
-            Assert.AreEqual(2, timer.GetCurrentTime());
+            Assert.AreEqual(2, timer.GetTime());
             Assert.AreEqual(0.2f, timer.GetProgress());
 
             //Act:
@@ -386,7 +386,7 @@ namespace Atomic.Elements
             Assert.IsTrue(started);
 
             Assert.AreEqual(10, timer.GetDuration());
-            Assert.AreEqual(5, timer.GetCurrentTime());
+            Assert.AreEqual(5, timer.GetTime());
             Assert.AreEqual(0.5f, timer.GetProgress());
 
             Assert.IsTrue(timer.IsPlaying());
@@ -449,7 +449,7 @@ namespace Atomic.Elements
             Assert.IsFalse(timer.IsPlaying());
             Assert.IsTrue(timer.IsIdle());
             Assert.AreEqual(5, timer.Duration);
-            Assert.AreEqual(0, timer.CurrentTime);
+            Assert.AreEqual(0, timer.Time);
         }
     }
 }
