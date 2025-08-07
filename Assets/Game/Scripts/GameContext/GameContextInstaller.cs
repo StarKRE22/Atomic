@@ -31,6 +31,10 @@ namespace SampleGame
             //Game countdown
             context.AddGameCountdown(_gameCountdown);
             context.AddBehaviour<GameCountdownController>();
+            
+            //Game Over
+            context.AddGameOverEvent(new BaseEvent());
+            context.AddWinnerTeam(new ReactiveVariable<TeamType>());
 
             //Coin system:
             context.AddCoinPool(_coinPool);

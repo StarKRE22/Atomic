@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace SampleGame
 {
-    public sealed class GameOverViewController : IEntitySpawn<IUIContext>, IEntityDespawn
+    public sealed class GameOverObserver : IEntitySpawn<IUIContext>, IEntityDespawn
     {
         private IUIContext _context;
         private IEvent _gameOverEvent;

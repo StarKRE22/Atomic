@@ -13,16 +13,20 @@ namespace SampleGame
             remove => this.restartButton.onClick.RemoveListener(value);
         }
 
+        public event UnityAction OnCloseClicked
+        {
+            add => this.closeButton.onClick.AddListener(value);
+            remove => this.closeButton.onClick.RemoveListener(value);
+        }
+
         [SerializeField]
         private TMP_Text messageText;
         
         [SerializeField]
         private Button restartButton;
-        
-        public void Show()
-        {
-            this.gameObject.SetActive(true);
-        }
+
+        [SerializeField]
+        private Button closeButton;
 
         public void SetMessageColor(Color color)
         {

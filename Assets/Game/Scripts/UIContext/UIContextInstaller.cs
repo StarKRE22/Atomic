@@ -25,7 +25,6 @@ namespace SampleGame
             //Base:
             context.AddPopupTransform(_popupTransform);
             
-            
             //Money:
             context.AddMoneyView(_moneyView);
             context.AddBehaviour(new MoneyPresenter(_teamType));
@@ -35,10 +34,8 @@ namespace SampleGame
             context.AddBehaviour<CountdownPresenter>();
             
             //GameOver:
-            context.AddBehaviour<GameOverViewController>();
+            context.AddBehaviour<GameOverObserver>();
             context.AddGameOverViewPrefab(_gameOverViewPrefab);
-            
         }
-        
     }
 }
