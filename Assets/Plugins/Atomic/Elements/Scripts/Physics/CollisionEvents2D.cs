@@ -9,7 +9,8 @@ namespace Atomic.Elements
     /// (<c>OnCollisionEnter2D</c>, <c>OnCollisionExit2D</c>, <c>OnCollisionStay2D</c>)
     /// as C# events for external handling.
     /// </summary>
-    [AddComponentMenu("Atomic/Elements/Collision Event Receiver 2D")]
+    [AddComponentMenu("Atomic/Elements/Collision Events 2D")]
+    [DisallowMultipleComponent]
     public sealed class CollisionEvents2D : MonoBehaviour
     {
         /// <summary>

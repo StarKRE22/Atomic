@@ -3,6 +3,7 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
@@ -54,9 +55,15 @@ namespace Atomic.Entities
         private int initialBehaviourCapacity;
 
         private IEntityBehaviour[] _behaviours;
-
         private int _behaviourCount;
-
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructBehaviours()
+        {
+            _behaviours = new IEntityBehaviour[this.initialBehaviourCapacity];
+            _behaviourCount = 0;
+        }
+        
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
         /// </summary>

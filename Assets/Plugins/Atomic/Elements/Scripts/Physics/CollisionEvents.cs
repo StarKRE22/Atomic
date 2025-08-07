@@ -8,7 +8,8 @@ namespace Atomic.Elements
     /// A MonoBehaviour component that exposes Unity's collision events (<c>OnCollisionEnter</c>, <c>OnCollisionExit</c>, <c>OnCollisionStay</c>)
     /// as C# events for easier binding and external reaction.
     /// </summary>
-    [AddComponentMenu("Atomic/Elements/Collision Event Receiver")]
+    [AddComponentMenu("Atomic/Elements/Collision Events")]
+    [DisallowMultipleComponent]
     public sealed class CollisionEvents : MonoBehaviour
     {
         /// <summary>

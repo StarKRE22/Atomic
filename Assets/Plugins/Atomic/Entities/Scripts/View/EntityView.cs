@@ -42,10 +42,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Static comparer used to compare behaviours.
         /// </summary>
-
-#if ODIN_INSPECTOR
-        [SceneObjectsOnly]
-#endif
+        
         [Tooltip("The list of installers used to configure and setup the entity view")]
         [SerializeField]
         private List<EntityViewInstaller<E>> _installers;

@@ -8,7 +8,8 @@ namespace Atomic.Elements
     /// A MonoBehaviour that listens to Unity's OnTriggerEnter and OnTriggerExit events
     /// and exposes them as C# events for external subscription.
     /// </summary>
-    [AddComponentMenu("Atomic/Elements/Trigger Event Receiver")]
+    [AddComponentMenu("Atomic/Elements/Trigger Events")]
+    [DisallowMultipleComponent]
     public sealed class TriggerEvents : MonoBehaviour
     {
         /// <summary>

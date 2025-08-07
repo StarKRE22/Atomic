@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
-
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -47,7 +46,7 @@ namespace Atomic.Entities
         private int[] _valueBuckets;
         private int _valueLastIndex;
         private int _valueFreeList = UNDEFINED_INDEX;
-        
+
         /// <summary>
         /// Initial value capacity used to optimize value allocation.
         /// </summary>
@@ -60,6 +59,19 @@ namespace Atomic.Entities
         [SerializeField]
         private int initialValueCapacity = 1;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructValues()
+        {
+            _valueCapacity = GetPrime(this.initialValueCapacity);
+            _valueSlots = new ValueSlot[_valueCapacity];
+            _valueBuckets = new int[_valueCapacity];
+            Array.Fill(_valueBuckets, UNDEFINED_INDEX);
+            
+            _valueCount = 0;
+            _valueLastIndex = 0;
+            _valueFreeList = UNDEFINED_INDEX;
+        }
+        
         /// <summary>
         /// Gets the value associated with the specified key and casts it to type <typeparamref name="T"/>.
         /// </summary>
@@ -223,7 +235,7 @@ namespace Atomic.Entities
         {
             if (_valueCount == 0)
             {
-                value = default;
+                value = null;
                 return false;
             }
 
@@ -280,7 +292,7 @@ namespace Atomic.Entities
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
-            
+
             if (this.FindValueIndex(in key, out _))
                 throw ValueAlreadyAddedException(key);
 
@@ -545,15 +557,11 @@ namespace Atomic.Entities
 
         private void IncreaseValueCapacity()
         {
-            _valueCapacity = _valueSlots == null 
-                ? GetPrime(initialValueCapacity) 
-                : GetPrime(_valueCapacity + 1);  
-            
+            _valueCapacity = GetPrime(_valueCapacity + 1);
+
             Array.Resize(ref _valueSlots, _valueCapacity);
             Array.Resize(ref _valueBuckets, _valueCapacity);
-
-            for (int i = 0; i < _valueCapacity; i++)
-                _valueBuckets[i] = UNDEFINED_INDEX;
+            Array.Fill(_valueBuckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _valueLastIndex; i++)
             {
@@ -623,7 +631,7 @@ namespace Atomic.Entities
 
             public bool MoveNext()
             {
-                while (_index < _entity._valueLastIndex)
+                while (_index < _entity._valueLastIndex && _entity._valueSlots != null)
                 {
                     ref ValueSlot slot = ref _entity._valueSlots[_index++];
                     if (!slot.exists)

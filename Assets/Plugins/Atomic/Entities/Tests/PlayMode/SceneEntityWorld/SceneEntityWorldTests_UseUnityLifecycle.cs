@@ -33,6 +33,8 @@ namespace Atomic.Entities
             //Wait for update
             yield return new WaitForEndOfFrame();
             Assert.IsTrue(stub.Updated);
+            
+            yield return new WaitForFixedUpdate();
             Assert.IsTrue(stub.FixedUpdated);
             Assert.IsTrue(stub.LateUpdated);
 

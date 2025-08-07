@@ -16,7 +16,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity : MonoBehaviour, IEntity
+    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -82,8 +82,8 @@ namespace Atomic.Entities
         private bool useUnityLifecycle = true;
         
 #if ODIN_INSPECTOR
-        [GUIColor(0f, 0.83f, 1f)]
-        [HideInPlayMode, SceneObjectsOnly]
+        // [GUIColor(0f, 0.83f, 1f)]
+        [HideInPlayMode]
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
         [Space(8), SerializeField]
@@ -91,7 +91,7 @@ namespace Atomic.Entities
 
 #if ODIN_INSPECTOR
         // [GUIColor(0f, 0.83f, 1f)]
-        [HideInPlayMode, SceneObjectsOnly]
+        [HideInPlayMode]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space(8), SerializeField]
@@ -238,6 +238,18 @@ namespace Atomic.Entities
 
             this.OnTagAdded = null;
             this.OnTagDeleted = null;
+        }
+
+        public virtual void OnAfterDeserialize()
+        {
+            this.ConstructTags();
+            this.ConstructValues();
+            this.ConstructBehaviours();
+        }
+
+        public virtual void OnBeforeSerialize()
+        {
+            
         }
     }
 }

@@ -8,7 +8,8 @@ namespace Atomic.Elements
     /// A MonoBehaviour that listens for 2D trigger events on this GameObject.
     /// Exposes those events through C# delegates for external subscriptions.
     /// </summary>
-    [AddComponentMenu("Atomic/Elements/Trigger Event Receiver 2D")]
+    [AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
+    [DisallowMultipleComponent]
     public sealed class TriggerEvents2D : MonoBehaviour
     {
         /// <summary>

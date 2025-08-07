@@ -163,9 +163,7 @@ namespace Atomic.Entities
             int size = GetPrime(_tagSlots.Length + 1);
             Array.Resize(ref _tagSlots, size);
             Array.Resize(ref _tagBuckets, size);
-
-            for (int i = 0; i < size; i++)
-                _tagBuckets[i] = UNDEFINED_INDEX;
+            Array.Fill(_tagBuckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _tagLastIndex; i++)
             {

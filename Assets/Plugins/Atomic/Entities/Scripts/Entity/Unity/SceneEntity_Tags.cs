@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -58,6 +59,19 @@ namespace Atomic.Entities
         [Min(1)]
         [SerializeField]
         private int initialTagCapacity = 1;
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructTags()
+        {
+            _tagCapacity  = GetPrime(this.initialTagCapacity);
+            _tagSlots = new TagSlot[_tagCapacity];
+            _tagBuckets = new int[_tagCapacity];
+            Array.Fill(_tagBuckets, UNDEFINED_INDEX);
+
+            _tagCount = 0;
+            _tagLastIndex = 0;
+            _tagFreeList = UNDEFINED_INDEX;
+        }
 
         /// <summary>
         /// Checks if the entity has a tag with the specified key.
@@ -163,15 +177,11 @@ namespace Atomic.Entities
 
         private void IncreaseTagCapacity()
         {
-            _tagCapacity = _tagSlots == null 
-                ? GetPrime(initialTagCapacity) 
-                : GetPrime(_tagCapacity + 1);
+            _tagCapacity = GetPrime(_tagCapacity + 1);
             
             Array.Resize(ref _tagSlots, _tagCapacity);
             Array.Resize(ref _tagBuckets, _tagCapacity);
-
-            for (int i = 0; i < _tagCapacity; i++)
-                _tagBuckets[i] = UNDEFINED_INDEX;
+            Array.Fill(_tagBuckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _tagLastIndex; i++)
             {
@@ -309,7 +319,7 @@ namespace Atomic.Entities
 
             public bool MoveNext()
             {
-                while (_index < _entity._tagLastIndex)
+                while (_index < _entity._tagLastIndex && _entity._tagSlots != null)
                 {
                     ref TagSlot slot = ref _entity._tagSlots[_index++];
                     if (slot.exists)

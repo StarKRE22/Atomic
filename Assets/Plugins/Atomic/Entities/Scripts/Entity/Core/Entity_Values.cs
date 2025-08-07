@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using static Atomic.Entities.InternalUtils;
 
 #if UNITY_5_3_OR_NEWER
 using Unsafe = Unity.Collections.LowLevel.Unsafe.UnsafeUtility;
@@ -74,12 +75,10 @@ namespace Atomic.Entities
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            _valueCapacity = InternalUtils.GetPrime(capacity);
+            _valueCapacity = GetPrime(capacity);
             _valueSlots = new ValueSlot[_valueCapacity];
             _valueBuckets = new int[_valueCapacity];
-
-            for (int i = 0; i < _valueCapacity; i++)
-                _valueBuckets[i] = UNDEFINED_INDEX;
+            Array.Fill(_valueBuckets, UNDEFINED_INDEX);
 
             _valueCount = 0;
             _valueLastIndex = 0;
@@ -596,12 +595,10 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseValueCapacity()
         {
-            _valueCapacity = InternalUtils.GetPrime(_valueCapacity + 1);
+            _valueCapacity = GetPrime(_valueCapacity + 1);
             Array.Resize(ref _valueSlots, _valueCapacity);
             Array.Resize(ref _valueBuckets, _valueCapacity);
-
-            for (int i = 0; i < _valueCapacity; i++)
-                _valueBuckets[i] = UNDEFINED_INDEX;
+            Array.Fill(_valueBuckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _valueLastIndex; i++)
             {
