@@ -2,14 +2,15 @@
 * Code generation. Don't modify! 
 **/
 
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using Atomic.Elements;
+using Atomic.Entities;
 using static Atomic.Entities.EntityNames;
-
+using System.Runtime.CompilerServices;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using UnityEngine;
+using Atomic.Elements;
+using SampleGame;
 
 namespace SampleGame
 {
@@ -18,6 +19,7 @@ namespace SampleGame
 #endif
 	public static class GameEntityAPI
 	{
+
 		///Tags
 		public static readonly int Character;
 		public static readonly int Coin;
@@ -32,13 +34,13 @@ namespace SampleGame
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
 		public static readonly int TriggerEvents; // TriggerEvents
 		public static readonly int Money; // IValue<int>
-		
+
 		static GameEntityAPI()
 		{
 			//Tags
 			Character = NameToId(nameof(Character));
 			Coin = NameToId(nameof(Coin));
-			
+
 			//Values
 			Transform = NameToId(nameof(Transform));
 			GameObject = NameToId(nameof(GameObject));
@@ -50,8 +52,11 @@ namespace SampleGame
 			TriggerEvents = NameToId(nameof(TriggerEvents));
 			Money = NameToId(nameof(Money));
 		}
-		
+
+
 		///Tag Extensions
+
+		#region Character
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasCharacterTag(this IGameEntity obj) => obj.HasTag(Character);
@@ -62,6 +67,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelCharacterTag(this IGameEntity obj) => obj.DelTag(Character);
 
+		#endregion
+
+		#region Coin
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasCoinTag(this IGameEntity obj) => obj.HasTag(Coin);
 
@@ -70,8 +79,13 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelCoinTag(this IGameEntity obj) => obj.DelTag(Coin);
-		
+
+		#endregion
+
+
 		///Value Extensions
+
+		#region Transform
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Transform GetTransform(this IGameEntity obj) => obj.GetValue<Transform>(Transform);
@@ -91,6 +105,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTransform(this IGameEntity obj, Transform value) => obj.SetValue(Transform, value);
 
+		#endregion
+
+		#region GameObject
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static GameObject GetGameObject(this IGameEntity obj) => obj.GetValue<GameObject>(GameObject);
 
@@ -108,6 +126,10 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameObject(this IGameEntity obj, GameObject value) => obj.SetValue(GameObject, value);
+
+		#endregion
+
+		#region MoveSpeed
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<float> GetMoveSpeed(this IGameEntity obj) => obj.GetValue<IValue<float>>(MoveSpeed);
@@ -127,6 +149,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMoveSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(MoveSpeed, value);
 
+		#endregion
+
+		#region MoveDirection
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IVariable<Vector3> GetMoveDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(MoveDirection);
 
@@ -144,6 +170,10 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMoveDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
+
+		#endregion
+
+		#region RotationSpeed
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<float> GetRotationSpeed(this IGameEntity obj) => obj.GetValue<IValue<float>>(RotationSpeed);
@@ -163,6 +193,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotationSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(RotationSpeed, value);
 
+		#endregion
+
+		#region RotationDirection
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IVariable<Vector3> GetRotationDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(RotationDirection);
 
@@ -180,6 +214,10 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotationDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(RotationDirection, value);
+
+		#endregion
+
+		#region TeamType
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<TeamType> GetTeamType(this IGameEntity obj) => obj.GetValue<IReactiveVariable<TeamType>>(TeamType);
@@ -199,6 +237,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTeamType(this IGameEntity obj, IReactiveVariable<TeamType> value) => obj.SetValue(TeamType, value);
 
+		#endregion
+
+		#region TriggerEvents
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static TriggerEvents GetTriggerEvents(this IGameEntity obj) => obj.GetValue<TriggerEvents>(TriggerEvents);
 
@@ -217,6 +259,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTriggerEvents(this IGameEntity obj, TriggerEvents value) => obj.SetValue(TriggerEvents, value);
 
+		#endregion
+
+		#region Money
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<int> GetMoney(this IGameEntity obj) => obj.GetValue<IValue<int>>(Money);
 
@@ -234,5 +280,7 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMoney(this IGameEntity obj, IValue<int> value) => obj.SetValue(Money, value);
+
+		#endregion
     }
 }

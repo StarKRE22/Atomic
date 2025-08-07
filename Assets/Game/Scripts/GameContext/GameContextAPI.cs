@@ -2,17 +2,17 @@
 * Code generation. Don't modify! 
 **/
 
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using System.Collections.Generic;
 using Atomic.Entities;
-using Atomic.Elements;
-
+using static Atomic.Entities.EntityNames;
+using System.Runtime.CompilerServices;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
-using static Atomic.Entities.EntityNames;
+using UnityEngine;
+using System.Collections.Generic;
+using Atomic.Entities;
+using SampleGame;
+using Atomic.Elements;
 
 namespace SampleGame
 {
@@ -23,7 +23,7 @@ namespace SampleGame
 	{
 		///Values
 		public static readonly int WorldTransform; // Transform
-		public static readonly int Players; // IDictionary<TeamType,IPlayerContext>
+		public static readonly int Players; // IDictionary<TeamType, IPlayerContext>
 		public static readonly int GameCountdown; // ICooldown
 		public static readonly int GameOverEvent; // IEvent
 		public static readonly int WinnerTeam; // IReactiveVariable<TeamType>
@@ -42,7 +42,10 @@ namespace SampleGame
 			CoinSpawnArea = NameToId(nameof(CoinSpawnArea));
 		}
 
+
 		///Value Extensions
+
+		#region WorldTransform
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Transform GetWorldTransform(this IGameContext obj) => obj.GetValue<Transform>(WorldTransform);
@@ -62,14 +65,18 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetWorldTransform(this IGameContext obj, Transform value) => obj.SetValue(WorldTransform, value);
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IDictionary<TeamType,IPlayerContext> GetPlayers(this IGameContext obj) => obj.GetValue<IDictionary<TeamType,IPlayerContext>>(Players);
+		#endregion
+
+		#region Players
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPlayers(this IGameContext obj, out IDictionary<TeamType,IPlayerContext> value) => obj.TryGetValue(Players, out value);
+		public static IDictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext obj) => obj.GetValue<IDictionary<TeamType, IPlayerContext>>(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddPlayers(this IGameContext obj, IDictionary<TeamType,IPlayerContext> value) => obj.AddValue(Players, value);
+		public static bool TryGetPlayers(this IGameContext obj, out IDictionary<TeamType, IPlayerContext> value) => obj.TryGetValue(Players, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddPlayers(this IGameContext obj, IDictionary<TeamType, IPlayerContext> value) => obj.AddValue(Players, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasPlayers(this IGameContext obj) => obj.HasValue(Players);
@@ -78,7 +85,11 @@ namespace SampleGame
 		public static bool DelPlayers(this IGameContext obj) => obj.DelValue(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPlayers(this IGameContext obj, IDictionary<TeamType,IPlayerContext> value) => obj.SetValue(Players, value);
+		public static void SetPlayers(this IGameContext obj, IDictionary<TeamType, IPlayerContext> value) => obj.SetValue(Players, value);
+
+		#endregion
+
+		#region GameCountdown
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static ICooldown GetGameCountdown(this IGameContext obj) => obj.GetValue<ICooldown>(GameCountdown);
@@ -98,6 +109,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameCountdown(this IGameContext obj, ICooldown value) => obj.SetValue(GameCountdown, value);
 
+		#endregion
+
+		#region GameOverEvent
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IEvent GetGameOverEvent(this IGameContext obj) => obj.GetValue<IEvent>(GameOverEvent);
 
@@ -115,6 +130,10 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetGameOverEvent(this IGameContext obj, IEvent value) => obj.SetValue(GameOverEvent, value);
+
+		#endregion
+
+		#region WinnerTeam
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<TeamType> GetWinnerTeam(this IGameContext obj) => obj.GetValue<IReactiveVariable<TeamType>>(WinnerTeam);
@@ -134,6 +153,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetWinnerTeam(this IGameContext obj, IReactiveVariable<TeamType> value) => obj.SetValue(WinnerTeam, value);
 
+		#endregion
+
+		#region CoinPool
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IEntityPool<IGameEntity> GetCoinPool(this IGameContext obj) => obj.GetValue<IEntityPool<IGameEntity>>(CoinPool);
 
@@ -152,6 +175,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetCoinPool(this IGameContext obj, IEntityPool<IGameEntity> value) => obj.SetValue(CoinPool, value);
 
+		#endregion
+
+		#region CoinSpawnArea
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Bounds GetCoinSpawnArea(this IGameContext obj) => obj.GetValue<Bounds>(CoinSpawnArea);
 
@@ -169,5 +196,7 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetCoinSpawnArea(this IGameContext obj, Bounds value) => obj.SetValue(CoinSpawnArea, value);
+
+		#endregion
     }
 }

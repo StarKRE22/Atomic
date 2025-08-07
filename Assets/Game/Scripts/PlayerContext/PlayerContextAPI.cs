@@ -2,15 +2,20 @@
 * Code generation. Don't modify! 
 **/
 
+using Atomic.Entities;
+using static Atomic.Entities.EntityNames;
 using System.Runtime.CompilerServices;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using SampleGame;
 using Atomic.Elements;
-using UnityEditor;
-using static Atomic.Entities.EntityNames;
 
 namespace SampleGame
 {
+#if UNITY_EDITOR
 	[InitializeOnLoad]
+#endif
 	public static class PlayerContextAPI
 	{
 		///Values
@@ -22,13 +27,16 @@ namespace SampleGame
 		static PlayerContextAPI()
 		{
 			//Values
+			InputMap = NameToId(nameof(InputMap));
 			Character = NameToId(nameof(Character));
 			Money = NameToId(nameof(Money));
 			TeamType = NameToId(nameof(TeamType));
-			InputMap = NameToId(nameof(InputMap));
 		}
 
+
 		///Value Extensions
+
+		#region InputMap
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static InputMap GetInputMap(this IPlayerContext obj) => obj.GetValue<InputMap>(InputMap);
@@ -48,6 +56,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetInputMap(this IPlayerContext obj, InputMap value) => obj.SetValue(InputMap, value);
 
+		#endregion
+
+		#region Character
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IGameEntity GetCharacter(this IPlayerContext obj) => obj.GetValue<IGameEntity>(Character);
 
@@ -65,6 +77,10 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetCharacter(this IPlayerContext obj, IGameEntity value) => obj.SetValue(Character, value);
+
+		#endregion
+
+		#region Money
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IReactiveVariable<int> GetMoney(this IPlayerContext obj) => obj.GetValue<IReactiveVariable<int>>(Money);
@@ -84,6 +100,10 @@ namespace SampleGame
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMoney(this IPlayerContext obj, IReactiveVariable<int> value) => obj.SetValue(Money, value);
 
+		#endregion
+
+		#region TeamType
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static IValue<TeamType> GetTeamType(this IPlayerContext obj) => obj.GetValue<IValue<TeamType>>(TeamType);
 
@@ -101,5 +121,7 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTeamType(this IPlayerContext obj, IValue<TeamType> value) => obj.SetValue(TeamType, value);
+
+		#endregion
     }
 }

@@ -1,26 +1,26 @@
-#header: EntityAPI
-#namespace: SampleGame
-#className: GameContextAPI
-#directory: Assets/SampleGame/Scripts/GameContext/
-#aggressiveInlining: true
-#unsafe: false
-#entityType: IGameContext
-#
-#imports:
-#- UnityEngine
-#- System.Collections.Generic
-#- Atomic.Entities
-#- SampleGame
-#- Atomic.Elements
-#
-#
-#values:
-#- WorldTransform: Transform
-#- Players: IDictionary<TeamType, IPlayerContext>
-#- GameCountdown: ICooldown
-#- GameOverEvent: IEvent
-#- WinnerTeam: IReactiveVariable<TeamType>
-#
-##Coins
-#- CoinPool: IEntityPool<IGameEntity>
-#- CoinSpawnArea: Bounds
+header: EntityAPI
+namespace: SampleGame
+className: GameContextAPI
+directory: Assets/Game/Scripts/GameContext/
+aggressiveInlining: true
+unsafe: false
+entityType: IGameContext
+
+imports:
+- UnityEngine
+- System.Collections.Generic
+- Atomic.Entities
+- SampleGame
+- Atomic.Elements
+
+
+values:
+- WorldTransform: Transform
+- Players: IDictionary<TeamType, IPlayerContext>
+- GameCountdown: ICooldown
+- GameOverEvent: IEvent
+- WinnerTeam: IReactiveVariable<TeamType>
+
+#Coins
+- CoinPool: IEntityPool<IGameEntity>
+- CoinSpawnArea: Bounds
