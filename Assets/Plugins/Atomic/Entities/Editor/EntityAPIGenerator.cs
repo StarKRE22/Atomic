@@ -7,7 +7,6 @@ namespace Atomic.Entities
 {
     internal static class EntityAPIGenerator
     {
-        private const string NAMESPACE = "Atomic.Entities";
         private const string AGGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
         private const string UNSAFE_SUFFIX = "Unsafe";
         private const string REF_MODIFIER = "ref";
@@ -59,7 +58,7 @@ namespace Atomic.Entities
             IReadOnlyCollection<string> imports = settings.Imports;
             IReadOnlyCollection<string> tags = settings.Tags;
             IReadOnlyDictionary<string, string> values = settings.Values;
-           
+
             string entityType = settings.EntityType;
             bool useInlining = settings.AggressiveInlining;
             bool unsafeAccess = settings.UnsafeAccess;
@@ -100,19 +99,16 @@ namespace Atomic.Entities
             sb.AppendLine();
 
             //Generate imports:
-            sb.AppendLine($"using {NAMESPACE};");
-
+            sb.AppendLine("using Atomic.Entities;");
+            sb.AppendLine("using static Atomic.Entities.EntityNames;");
+            
             if (useInlining)
                 sb.AppendLine("using System.Runtime.CompilerServices;");
-            
-            //Generate UnityEditor
+
+            //Generate UnityEditor using
             sb.AppendLine("#if UNITY_EDITOR");
             sb.AppendLine("using UnityEditor;");
             sb.AppendLine("#endif");
-
-            
-
-
 
             foreach (string import in imports)
                 sb.AppendLine($"using {import};");
@@ -121,7 +117,11 @@ namespace Atomic.Entities
             sb.AppendLine();
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
-            
+
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine("\t[InitializeOnLoad]");
+            sb.AppendLine("#endif");
+
             //Generate class header:
             sb.AppendLine($"\tpublic static class {className}");
             sb.AppendLine("\t{");
@@ -138,7 +138,6 @@ namespace Atomic.Entities
             if (valuesCount > 0)
             {
                 sb.AppendLine();
-                sb.AppendLine();
                 sb.AppendLine("\t\t///Values");
 
                 foreach ((string name, string type) in values)
@@ -148,27 +147,30 @@ namespace Atomic.Entities
                 }
             }
             
-                    //= EntityNames.NameToId(nameof({tag}))
-            
-        // ///Values
-        // public static readonly int MoneyView; // MoneyView
-        // public static readonly int GameCountdownView; // GameCountdownView
-        // public static readonly int PopupTransform; // Transform
-        // public static readonly int GameOverViewPrefab; // GameOverView
-        // public static readonly int GameOverView; // GameOverView
-        //
-        // static UIContextAPI()
-        // {
-        //     //Values
-        //     GameCountdownView = NameToId(nameof(GameCountdownView));
-        //     PopupTransform = NameToId(nameof(PopupTransform));
-        //     GameOverViewPrefab = NameToId(nameof(GameOverViewPrefab));
-        //     GameOverView = NameToId(nameof(GameOverView));
-        //     MoneyView = NameToId(nameof(MoneyView));
-        // }
-            
-            //TODO:
             //Generate static constructor
+            sb.AppendLine();
+            sb.AppendLine($"\t\tstatic {className}()");
+            sb.AppendLine("\t\t{");
+            
+            ////Generate tags:
+            if (tagsCount > 0)
+            {
+                sb.AppendLine("\t\t//Tags");
+                foreach (string tag in tags)
+                    sb.AppendLine($"\t\t{tag} = NameToId(nameof({tag});");
+            }
+            
+            ////Generate values:
+            if (valuesCount > 0)
+            {
+                sb.AppendLine();
+                sb.AppendLine("\t\t//Values");
+
+                foreach ((string name, string type) in values) 
+                    sb.AppendLine($"\t\t{name} = NameToId(nameof({name});");
+            }
+
+            sb.AppendLine("\t\t}");
 
             //Generate tag extensions:
             if (tagsCount > 0)
@@ -235,7 +237,7 @@ namespace Atomic.Entities
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static {type} Get{name}(this {entity} obj) => " +
                           $"obj.GetValue{unsafeSuffix}<{type}>({name});");
-            
+
             //Get Ref:
             if (unsafeAccess)
             {
@@ -243,8 +245,8 @@ namespace Atomic.Entities
                 sb.AppendLine($"\t\tpublic static {refModifier} {type} Ref{name}(this {entity} obj) => " +
                               $"{refModifier} obj.GetValue{unsafeSuffix}<{type}>({name});");
             }
-            
-            
+
+
             //TryGet:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);

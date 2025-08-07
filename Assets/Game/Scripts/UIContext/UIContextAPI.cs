@@ -13,7 +13,9 @@ using static Atomic.Entities.EntityNames;
 
 namespace SampleGame
 {
+#if UNITY_EDITOR
 	[InitializeOnLoad]
+#endif
 	public static class UIContextAPI
 	{
 		///Values
