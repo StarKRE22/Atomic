@@ -133,6 +133,9 @@ namespace Atomic.Entities
                 foreach ((string name, string type) in values)
                     GenerateValue(sb, name, type);
             }
+            
+            //TODO:
+            //Generate static constructor
 
             //Generate tag extensions:
             if (tagsCount > 0)

@@ -1,0 +1,21 @@
+#header: "IEntity"
+#namespace: SampleGame
+#className: UIContextAPI
+#directory: Assets/SampleGame/Scripts/UIContext/
+#aggressiveInlining: true
+#unsafe: false
+#entityType: IUIContext
+#
+#imports:
+#- SampleGame
+#- UnityEngine
+#
+#
+#
+#values:
+#- MoneyView: MoneyView
+#- GameCountdownView: GameCountdownView
+#- PopupTransform: Transform
+#
+#- GameOverViewPrefab: GameOverView
+#- GameOverView: GameOverView
