@@ -58,12 +58,12 @@ namespace Atomic.Entities
 #endif
         [Min(1)]
         [SerializeField]
-        private int initialTagCapacity = 1;
+        private int _initialTagCapacity = 1;
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructTags()
         {
-            _tagCapacity  = GetPrime(this.initialTagCapacity);
+            _tagCapacity  = GetPrime(_initialTagCapacity);
             _tagSlots = new TagSlot[_tagCapacity];
             _tagBuckets = new int[_tagCapacity];
             Array.Fill(_tagBuckets, UNDEFINED_INDEX);

@@ -1,0 +1,37 @@
+#header: EntityAPI
+#className: GameEntityAPI
+#directory: Assets/SampleGame/Scripts/GameEntity/
+#aggressiveInlining: true
+#unsafe: false
+#namespace: SampleGame
+#entityType: IGameEntity
+#
+#imports:
+#- UnityEngine
+#- Atomic.Elements
+#- SampleGame
+#
+#tags:
+#- Character
+#- Coin
+#
+#values:
+#
+##Base
+#- Transform: Transform
+#- GameObject: GameObject
+#
+##Movement
+#- MoveSpeed: IValue<float>
+#- MoveDirection: IVariable<Vector3>
+#
+##Rotation
+#- RotationSpeed: IValue<float>
+#- RotationDirection: IVariable<Vector3>
+#
+##Other
+#- TeamType: IReactiveVariable<TeamType>
+#- TriggerEvents : TriggerEvents
+#- Money: IValue<int>
+#
+#

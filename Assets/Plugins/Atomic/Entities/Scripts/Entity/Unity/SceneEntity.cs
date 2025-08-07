@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -50,7 +51,8 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool installOnAwake = true;
 
-        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip(
+            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0)]
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -80,7 +82,7 @@ namespace Atomic.Entities
 #endif
         [SerializeField]
         private bool useUnityLifecycle = true;
-        
+
 #if ODIN_INSPECTOR
         // [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode]
@@ -199,6 +201,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Marks the entity as not installed, allowing reinstallation.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void MarkAsNotInstalled() => _installed = false;
 
         /// <inheritdoc/>
@@ -240,16 +243,18 @@ namespace Atomic.Entities
             this.OnTagDeleted = null;
         }
 
-        public virtual void OnAfterDeserialize()
+        void ISerializationCallbackReceiver.OnAfterDeserialize() => this.Construct();
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void Construct()
         {
             this.ConstructTags();
             this.ConstructValues();
             this.ConstructBehaviours();
-        }
-
-        public virtual void OnBeforeSerialize()
-        {
-            
         }
     }
 }

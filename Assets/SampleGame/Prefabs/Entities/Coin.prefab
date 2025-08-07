@@ -54,11 +54,11 @@ MonoBehaviour:
   installers:
   - {fileID: 9001512976166052882}
   children: []
-  initialBehaviourCapacity: 0
+  _initialBehaviourCapacity: 0
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
-  initialTagCapacity: 1
-  initialValueCapacity: 3
+  _initialTagCapacity: 1
+  _initialValueCapacity: 3
 --- !u!114 &9001512976166052882
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine;
 using static Atomic.Entities.InternalUtils;
 
 #if ODIN_INSPECTOR
@@ -19,11 +20,19 @@ namespace Atomic.Entities
         /// <summary>
         /// Automatically gathers installers and child entities when the component is reset.
         /// </summary>
+
+#if ODIN_INSPECTOR
+        // [FoldoutGroup("Debug")]
+        [PropertyOrder(96)]
+        [Button(nameof(Reset)), HideInPlayMode]
+        [GUIColor(1f, 0.92f, 0.02f)]
+#endif
         private void Reset()
         {
             this.installers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
             this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
             this.children.Remove(this);
+            Debug.Log($"<color=#FFEB04>{this.name} Reset successfully!</color>", this);
         }
 
         /// <summary>
@@ -33,14 +42,14 @@ namespace Atomic.Entities
         {
             if (!this.installInEditMode)
                 return;
-            
+
             if (EditorApplication.isPlaying || EditorApplication.isCompiling)
                 return;
 
             try
             {
                 this.SetRefreshCallbackToInstallers();
-                this.RefreshInEditMode();
+                this.Compile();
             }
             catch (Exception)
             {
@@ -57,7 +66,7 @@ namespace Atomic.Entities
             {
                 SceneEntityInstaller installer = this.installers[i];
                 if (installer != null)
-                    installer.refreshCallback = this.RefreshInEditMode;
+                    installer.refreshCallback = this.Compile;
             }
         }
 
@@ -65,42 +74,53 @@ namespace Atomic.Entities
         /// Refreshes the entity's state in the Unity Editor, simulating the full entity lifecycle.
         /// </summary>
 #if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
         [PropertyOrder(95)]
-        [Button("Test Install"), HideInPlayMode]
-        [GUIColor(1f, 0.92156863f, 0.015686275f)]
-        [PropertySpace(SpaceAfter = 8, SpaceBefore = 8)]
+        [Button("Compile"), HideInPlayMode]
+        [GUIColor(0f, 0.83f, 1f)]
+        [PropertySpace(SpaceAfter = 8)]
 #endif
-        private void RefreshInEditMode()
+        [ContextMenu(nameof(Compile))]
+        private void Compile()
         {
             bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
 
-            if (!isPrefab)
+            try
             {
-                this.DisableInEditMode();
-                this.DisposeInEditMode();
+                if (!isPrefab)
+                {
+                    this.DisableInEditMode();
+                    this.DisposeInEditMode();
+                }
+
+                this.Construct();
+                this.MarkAsNotInstalled();
+                this.Install();
+                this.Precompile();
+
+                if (!isPrefab)
+                {
+                    this.InitInEditMode();
+                    this.EnableInEditMode();
+                }
+
+                Debug.Log($"<color=#00D4FF>{this.name} Compiled successfully!</color>", this);
             }
-
-            this.MarkAsNotInstalled();
-            this.Install();
-            this.Precompile();
-
-            if (!isPrefab)
+            catch (Exception e)
             {
-                this.InitInEditMode();
-                this.EnableInEditMode();
+                Debug.LogError($"<color=#FF3C3C>{this.name} Compile failed: {e.Message}</color>\n{e.StackTrace}",
+                    this);
             }
         }
-        
+
         /// <summary>
         /// Precompiles current capacities from the entity and stores them into serialized fields
         /// for inspection and editor-time optimization.
         /// </summary>
         private void Precompile()
         {
-            initialTagCapacity = _tagCount;
-            initialValueCapacity = _valueCount;
-            initialBehaviourCapacity = _behaviourCount;
+            _initialTagCapacity = _tagCount;
+            _initialValueCapacity = _valueCount;
+            _initialBehaviourCapacity = _behaviourCount;
         }
 
         /// <summary>

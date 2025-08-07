@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.EntityAPIUtils;
+using static Atomic.Entities.EntityNames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

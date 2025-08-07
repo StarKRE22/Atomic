@@ -2,31 +2,30 @@
 * Code generation. Don't modify! 
 **/
 
+using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Atomic.Elements;
-using Unity.Mathematics;
-using Atomic.Entities;
+using SampleGame;
 
 namespace SampleGame
 {
 	public static class GameEntityAPI
 	{
 		///Tags
-		public const int Character = 227434008;
-		public const int Coin = 17805890;
-
+		public static readonly int Character = EntityNames.NameToId(nameof(Character));
+		public static readonly int Coin = EntityNames.NameToId(nameof(Coin));
 
 		///Values
-		public const int Transform = -284094885; // Transform
-		public const int GameObject = 2006407362; // GameObject
-		public const int MoveSpeed = -279498267; // IValue<float>
-		public const int MoveDirection = 1403009565; // IVariable<Vector3>
-		public const int RotationSpeed = 1037734616; // IValue<float>
-		public const int RotationDirection = -19666544; // IVariable<Vector3>
-		public const int TeamType = 2029097576; // IReactiveVariable<TeamType>
-		public const int TriggerEvents = -1182757792; // TriggerEvents
-		public const int Money = 561222447; // IValue<int>
+		public static readonly int Transform = EntityNames.NameToId(nameof(Transform)); // Transform
+		public static readonly int GameObject = EntityNames.NameToId(nameof(GameObject)); // GameObject
+		public static readonly int MoveSpeed = EntityNames.NameToId(nameof(MoveSpeed)); // IValue<float>
+		public static readonly int MoveDirection = EntityNames.NameToId(nameof(MoveDirection)); // IVariable<Vector3>
+		public static readonly int RotationSpeed = EntityNames.NameToId(nameof(RotationSpeed)); // IValue<float>
+		public static readonly int RotationDirection = EntityNames.NameToId(nameof(RotationDirection)); // IVariable<Vector3>
+		public static readonly int TeamType = EntityNames.NameToId(nameof(TeamType)); // IReactiveVariable<TeamType>
+		public static readonly int TriggerEvents = EntityNames.NameToId(nameof(TriggerEvents)); // TriggerEvents
+		public static readonly int Money = EntityNames.NameToId(nameof(Money)); // IValue<int>
 
 
 		///Tag Extensions

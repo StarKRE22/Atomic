@@ -8,7 +8,7 @@ namespace Atomic.Entities
     internal static class EntityAPIGenerator
     {
         private const string NAMESPACE = "Atomic.Entities";
-        private const string AGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
+        private const string AGGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
         private const string UNSAFE_SUFFIX = "Unsafe";
         private const string REF_MODIFIER = "ref";
 
@@ -164,15 +164,13 @@ namespace Atomic.Entities
 
         private static void GenerateValue(StringBuilder sb, string key, string type)
         {
-            int id = EntityAPIUtils.NameToId(key);
             string typeName = IsBaseType(type) ? "" : $"// {type}";
-            sb.AppendLine($"\t\tpublic const int {key} = {id}; {typeName}");
+            sb.AppendLine($"\t\tpublic static readonly int {key} = EntityNames.NameToId(nameof({key})); {typeName}");
         }
 
         private static void GenerateTag(StringBuilder sb, string tag)
         {
-            int id = EntityAPIUtils.NameToId(tag);
-            sb.AppendLine($"\t\tpublic const int {tag} = {id};");
+            sb.AppendLine($"\t\tpublic static readonly int {tag} = EntityNames.NameToId(nameof({tag}));");
         }
 
         private static void GenerateTagExtensions(StringBuilder sb, string tag, string entity, bool useInlining)
@@ -180,17 +178,17 @@ namespace Atomic.Entities
             sb.AppendLine();
 
             //Has:
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static bool Has{tag}Tag(this {entity} obj) => obj.HasTag({tag});");
 
             //Add:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static bool Add{tag}Tag(this {entity} obj) => obj.AddTag({tag});");
 
             //Del:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {entity} obj) => obj.DelTag({tag});");
         }
 
@@ -209,7 +207,7 @@ namespace Atomic.Entities
             string refModifier = unsafeAccess ? REF_MODIFIER : string.Empty;
 
             //Get:
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static {type} Get{name}(this {entity} obj) => " +
                           $"obj.GetValue{unsafeSuffix}<{type}>({name});");
             
@@ -224,32 +222,32 @@ namespace Atomic.Entities
             
             //TryGet:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine(
                 $"\t\tpublic static bool TryGet{name}(this {entity} obj, out {type} value) =>" +
                 $" obj.TryGetValue{unsafeSuffix}({name}, out value);");
 
             //Add:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static void Add{name}(this {entity} obj, {type} value) => " +
                           $"obj.AddValue({name}, value);");
 
             //Has:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static bool Has{name}(this {entity} obj) => " +
                           $"obj.HasValue({name});");
 
             //Del:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static bool Del{name}(this {entity} obj) => " +
                           $"obj.DelValue({name});");
 
             //Set:
             sb.AppendLine();
-            if (useInlining) sb.AppendLine(AGRESSIVE_INLINING);
+            if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine($"\t\tpublic static void Set{name}(this {entity} obj, {type} value) => " +
                           $"obj.SetValue({name}, value);");
         }

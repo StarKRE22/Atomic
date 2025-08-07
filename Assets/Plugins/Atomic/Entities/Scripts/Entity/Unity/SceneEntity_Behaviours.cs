@@ -52,7 +52,7 @@ namespace Atomic.Entities
 #endif
         [Min(0)]
         [SerializeField]
-        private int initialBehaviourCapacity;
+        private int _initialBehaviourCapacity;
 
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
@@ -60,7 +60,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructBehaviours()
         {
-            _behaviours = new IEntityBehaviour[this.initialBehaviourCapacity];
+            _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
             _behaviourCount = 0;
         }
         
@@ -104,7 +104,7 @@ namespace Atomic.Entities
                     ref _behaviourCount,
                     behaviour,
                     s_behaviourComparer,
-                    this.initialBehaviourCapacity
+                    _initialBehaviourCapacity
                 ))
                 return;
 

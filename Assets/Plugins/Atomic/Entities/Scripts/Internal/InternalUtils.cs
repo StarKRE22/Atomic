@@ -30,7 +30,7 @@ namespace Atomic.Entities
 
             if (number == 0)
                 return 1;
-            
+
             if (number <= 3)
                 return number;
 
@@ -57,7 +57,7 @@ namespace Atomic.Entities
 
             return true;
         }
-        
+
         /// <summary>
         /// Adds an item to a dynamically managed array, expanding it if needed.
         /// </summary>
@@ -69,10 +69,10 @@ namespace Atomic.Entities
         internal static void Add<T>(ref T[] array, ref int count, T item)
         {
             array ??= new T[1];
-            
+
             if (count == array.Length)
                 Expand(ref array);
-        
+
             array[count] = item;
             count++;
         }
@@ -87,7 +87,8 @@ namespace Atomic.Entities
         /// <param name="comparer">An equality comparer for item comparison.</param>
         /// <returns><c>true</c> if the item was added; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool AddIfAbsent<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer, int initialCapacity = 1)
+        internal static bool AddIfAbsent<T>(ref T[] array, ref int count, T item, IEqualityComparer<T> comparer,
+            int initialCapacity = 1)
         {
             array ??= new T[initialCapacity];
 
@@ -111,7 +112,7 @@ namespace Atomic.Entities
         /// <param name="comparer">An equality comparer.</param>
         /// <returns><c>true</c> if the item exists; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool Contains<T>(T[] array, T item,  int count, IEqualityComparer<T> comparer)
+        internal static bool Contains<T>(T[] array, T item, int count, IEqualityComparer<T> comparer)
         {
             if (array == null)
                 return false;
@@ -169,6 +170,39 @@ namespace Atomic.Entities
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Computes a 32-bit FNV-1a hash for the specified input string.
+        /// </summary>
+        /// <remarks>
+        /// This implementation uses the Fowler–Noll–Vo hash function (FNV-1a), which offers good distribution
+        /// and performance for hashing text. It is not cryptographically secure and is intended for use cases
+        /// such as dictionaries, hash sets, quick comparisons, and ID generation.
+        /// </remarks>
+        /// <param name="input">The input string to hash. Must not be null.</param>
+        /// <returns>
+        /// A 32-bit signed integer hash representing the input string.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="input"/> is <c>null</c>.
+        /// </exception>
+        public static int StrongFnv1aHash(string input)
+        {
+            unchecked
+            {
+                const uint fnvOffsetBasis = 2166136261;
+                const uint fnvPrime = 16777619;
+                uint hash = fnvOffsetBasis;
+
+                for (int i = 0, count = input.Length; i < count; i++)
+                {
+                    hash ^= input[i];
+                    hash *= fnvPrime;
+                }
+
+                return (int) hash;
+            }
         }
     }
 }

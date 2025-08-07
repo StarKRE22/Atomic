@@ -56,9 +56,9 @@ namespace Atomic.Entities
             sceneEntity.disposeValues = args.disposeValues;
             sceneEntity.useUnityLifecycle = args.useUnityLifecycle;
 
-            sceneEntity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
-            sceneEntity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
-            sceneEntity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+            sceneEntity._initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
+            sceneEntity._initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
+            sceneEntity._initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
 
             sceneEntity.AddTags(args.tags);
             sceneEntity.AddValues(args.values);

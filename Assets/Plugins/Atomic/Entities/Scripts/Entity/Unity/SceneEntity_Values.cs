@@ -6,7 +6,6 @@ using System.Runtime.CompilerServices;
 using static Atomic.Entities.InternalUtils;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -57,12 +56,12 @@ namespace Atomic.Entities
 #endif
         [Min(1)]
         [SerializeField]
-        private int initialValueCapacity = 1;
+        private int _initialValueCapacity = 1;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructValues()
         {
-            _valueCapacity = GetPrime(this.initialValueCapacity);
+            _valueCapacity = GetPrime(_initialValueCapacity);
             _valueSlots = new ValueSlot[_valueCapacity];
             _valueBuckets = new int[_valueCapacity];
             Array.Fill(_valueBuckets, UNDEFINED_INDEX);
@@ -600,10 +599,10 @@ namespace Atomic.Entities
         }
 
         private KeyNotFoundException ValueNotFoundException(in int key) =>
-            new($"The given value {EntityAPIUtils.IdToName(key)} was not present in the entity: {this.name}");
+            new($"The given value {EntityNames.IdToName(key)} was not present in the entity: {this.name}");
 
         private Exception ValueAlreadyAddedException(int key) =>
-            new ArgumentException($"A value with the same key {EntityAPIUtils.IdToName(key)} already has been added!");
+            new ArgumentException($"A value with the same key {EntityNames.IdToName(key)} already has been added!");
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static object UnboxValue(in ValueSlot slot)
