@@ -104,14 +104,25 @@ namespace Atomic.Entities
 
             if (useInlining)
                 sb.AppendLine("using System.Runtime.CompilerServices;");
+            
+            //Generate UnityEditor
+            sb.AppendLine("#if UNITY_EDITOR");
+            sb.AppendLine("using UnityEditor;");
+            sb.AppendLine("#endif");
+
+            
+
+
 
             foreach (string import in imports)
                 sb.AppendLine($"using {import};");
 
-            //Generate start of class:
+            //Generate namespace:
             sb.AppendLine();
             sb.AppendLine($"namespace {ns}");
             sb.AppendLine("{");
+            
+            //Generate class header:
             sb.AppendLine($"\tpublic static class {className}");
             sb.AppendLine("\t{");
 
@@ -120,7 +131,7 @@ namespace Atomic.Entities
             {
                 sb.AppendLine("\t\t///Tags");
                 foreach (string tag in tags)
-                    GenerateTag(sb, tag);
+                    sb.AppendLine($"\t\tpublic static readonly int {tag};");
             }
 
             //Generate values:
@@ -131,8 +142,30 @@ namespace Atomic.Entities
                 sb.AppendLine("\t\t///Values");
 
                 foreach ((string name, string type) in values)
-                    GenerateValue(sb, name, type);
+                {
+                    string typeName = IsObjectType(type) ? string.Empty : $"// {type}";
+                    sb.AppendLine($"\t\tpublic static readonly int {name}; {typeName}");
+                }
             }
+            
+                    //= EntityNames.NameToId(nameof({tag}))
+            
+        // ///Values
+        // public static readonly int MoneyView; // MoneyView
+        // public static readonly int GameCountdownView; // GameCountdownView
+        // public static readonly int PopupTransform; // Transform
+        // public static readonly int GameOverViewPrefab; // GameOverView
+        // public static readonly int GameOverView; // GameOverView
+        //
+        // static UIContextAPI()
+        // {
+        //     //Values
+        //     GameCountdownView = NameToId(nameof(GameCountdownView));
+        //     PopupTransform = NameToId(nameof(PopupTransform));
+        //     GameOverViewPrefab = NameToId(nameof(GameOverViewPrefab));
+        //     GameOverView = NameToId(nameof(GameOverView));
+        //     MoneyView = NameToId(nameof(MoneyView));
+        // }
             
             //TODO:
             //Generate static constructor
@@ -163,17 +196,6 @@ namespace Atomic.Entities
             sb.AppendLine("}");
 
             return sb.ToString();
-        }
-
-        private static void GenerateValue(StringBuilder sb, string key, string type)
-        {
-            string typeName = IsBaseType(type) ? "" : $"// {type}";
-            sb.AppendLine($"\t\tpublic static readonly int {key} = EntityNames.NameToId(nameof({key})); {typeName}");
-        }
-
-        private static void GenerateTag(StringBuilder sb, string tag)
-        {
-            sb.AppendLine($"\t\tpublic static readonly int {tag} = EntityNames.NameToId(nameof({tag}));");
         }
 
         private static void GenerateTagExtensions(StringBuilder sb, string tag, string entity, bool useInlining)
@@ -255,10 +277,7 @@ namespace Atomic.Entities
                           $"obj.SetValue({name}, value);");
         }
 
-        private static bool IsBaseType(string type)
-        {
-            return string.IsNullOrEmpty(type) || type is "object" or "Object";
-        }
+        private static bool IsObjectType(string type) => string.IsNullOrEmpty(type) || type is "object" or "Object";
     }
 }
 #endif
