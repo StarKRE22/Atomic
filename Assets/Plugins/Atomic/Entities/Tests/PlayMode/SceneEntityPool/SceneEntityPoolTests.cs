@@ -40,8 +40,8 @@ namespace Atomic.Entities
             _pool.Init(3);
             yield return null;
 
-            Assert.AreEqual(3, _pool.pooledEntities.Count);
-            foreach (var e in _pool.pooledEntities)
+            Assert.AreEqual(3, _pool._pooledEntities.Count);
+            foreach (var e in _pool._pooledEntities)
                 Assert.IsFalse(e.gameObject.activeSelf);
         }
 
@@ -54,7 +54,7 @@ namespace Atomic.Entities
             var entity = _pool.Rent();
             Assert.NotNull(entity);
             Assert.IsTrue(entity.gameObject.activeSelf);
-            Assert.AreEqual(0, _pool.pooledEntities.Count);
+            Assert.AreEqual(0, _pool._pooledEntities.Count);
         }
 
         [UnityTest]
@@ -67,7 +67,7 @@ namespace Atomic.Entities
 
             Assert.IsFalse(entity.gameObject.activeSelf);
             Assert.AreEqual(_pool.transform, entity.transform.parent);
-            Assert.AreEqual(1, _pool.pooledEntities.Count);
+            Assert.AreEqual(1, _pool._pooledEntities.Count);
         }
 
         [UnityTest]
@@ -77,7 +77,7 @@ namespace Atomic.Entities
             yield return null;
 
             Assert.IsNotNull(entity);
-            Assert.AreEqual(1, _pool.rentEntities.Count);
+            Assert.AreEqual(1, _pool._rentEntities.Count);
         }
 
         [UnityTest]
@@ -86,14 +86,14 @@ namespace Atomic.Entities
             _pool.Init(2);
             var e1 = _pool.Rent();
 
-            Assert.AreEqual(1, _pool.pooledEntities.Count);
-            Assert.AreEqual(1, _pool.rentEntities.Count);
+            Assert.AreEqual(1, _pool._pooledEntities.Count);
+            Assert.AreEqual(1, _pool._rentEntities.Count);
             
             _pool.Dispose();
             yield return null;
 
-            Assert.AreEqual(0, _pool.pooledEntities.Count);
-            Assert.AreEqual(0, _pool.rentEntities.Count);
+            Assert.AreEqual(0, _pool._pooledEntities.Count);
+            Assert.AreEqual(0, _pool._rentEntities.Count);
         }
 
         [UnityTest]
@@ -108,7 +108,7 @@ namespace Atomic.Entities
             
             yield return null;
 
-            Assert.AreEqual(2, _pool.pooledEntities.Count);
+            Assert.AreEqual(2, _pool._pooledEntities.Count);
         }
 
         [UnityTest]

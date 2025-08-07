@@ -6,22 +6,41 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using System.Collections.Generic;
 using Atomic.Entities;
-using SampleGame;
 using Atomic.Elements;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+using static Atomic.Entities.EntityNames;
 
 namespace SampleGame
 {
+#if UNITY_EDITOR
+	[InitializeOnLoad]
+#endif
 	public static class GameContextAPI
 	{
 		///Values
-		public const int WorldTransform = -2059850133; // Transform
-		public const int Players = 734090337; // IDictionary<TeamType,IPlayerContext>
-		public const int GameCountdown = -1631187506; // ICooldown
-		public const int GameOverEvent = 520413635; // IEvent
-		public const int WinnerTeam = -928171475; // IReactiveVariable<TeamType>
-		public const int CoinPool = -1313944194; // IEntityPool<IGameEntity>
-		public const int CoinSpawnArea = 748018310; // Bounds
+		public static readonly int WorldTransform; // Transform
+		public static readonly int Players; // IDictionary<TeamType,IPlayerContext>
+		public static readonly int GameCountdown; // ICooldown
+		public static readonly int GameOverEvent; // IEvent
+		public static readonly int WinnerTeam; // IReactiveVariable<TeamType>
+		public static readonly int CoinPool; // IEntityPool<IGameEntity>
+		public static readonly int CoinSpawnArea; // Bounds
 
+		static GameContextAPI()
+		{
+			//Values
+			WorldTransform = NameToId(nameof(WorldTransform));
+			Players = NameToId(nameof(Players));
+			GameCountdown = NameToId(nameof(GameCountdown));
+			GameOverEvent = NameToId(nameof(GameOverEvent));
+			WinnerTeam = NameToId(nameof(WinnerTeam));
+			CoinPool = NameToId(nameof(CoinPool));
+			CoinSpawnArea = NameToId(nameof(CoinSpawnArea));
+		}
 
 		///Value Extensions
 

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3670080920923910284}
+  - component: {fileID: 325131033648698089}
+  - component: {fileID: 2052508353354759341}
   m_Layer: 0
   m_Name: PlayerContext
   m_TagString: Untagged
@@ -32,6 +34,50 @@ Transform:
   - {fileID: 2678276222640361327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &325131033648698089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550732037569256318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d89d800befc44f4af11f6ab65602415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  installOnAwake: 1
+  installInEditMode: 0
+  disposeValues: 1
+  useUnityLifecycle: 1
+  installers:
+  - {fileID: 2052508353354759341}
+  children: []
+  _initialBehaviourCapacity: 0
+  _onlySelectedGizmos: 0
+  _onlyEditModeGizmos: 0
+  _initialTagCapacity: 1
+  _initialValueCapacity: 1
+--- !u!114 &2052508353354759341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550732037569256318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d2733232ce4143acf9b951787b13dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teamType: 0
+  _inputMap: {fileID: 0}
+  _money:
+    value: 0
+  _characterPrefab: {fileID: 0}
+  _spawnPoint: {fileID: 0}
+  _cameraRoot: {fileID: 0}
+  _cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &5004436558762336259
 GameObject:
   m_ObjectHideFlags: 0

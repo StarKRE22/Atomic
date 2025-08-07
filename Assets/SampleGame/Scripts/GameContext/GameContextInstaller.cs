@@ -36,6 +36,7 @@ namespace SampleGame
             context.AddCoinPool(_coinPool);
             context.AddCoinSpawnArea(_coinSpawnArea);
             context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
+            context.AddBehaviour<CoinSpawnAreaGizmos>();
         }
     }
 }

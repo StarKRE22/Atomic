@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -14,6 +18,9 @@ namespace Atomic.Entities
     /// <typeparam name="E">The concrete type of the singleton scene entity.</typeparam>
     public abstract class SceneEntitySingleton<E> : SceneEntity where E : SceneEntitySingleton<E>
     {
+#if ODIN_INSPECTOR
+        [PropertyOrder(-10)]
+#endif
         [Tooltip("Do not destroy the target Object when loading a new Scene?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;

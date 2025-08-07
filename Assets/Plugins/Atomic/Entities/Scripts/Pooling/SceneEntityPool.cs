@@ -47,6 +47,24 @@ namespace Atomic.Entities
     /// </remarks>
     public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity
     {
+#if ODIN_INSPECTOR
+        [GUIColor(0f, 0.83f, 1f)]
+#endif
+        [SerializeField]
+        [Tooltip("Whether to automatically initialize the pool in Awake().")]
+        private bool _initOnAwake = true;
+
+#if ODIN_INSPECTOR
+        [ShowIf(nameof(_initOnAwake))]
+        [MinValue(0)]
+#else
+        [Min(0)]
+#endif
+        [SerializeField]
+        [Tooltip("Initial number of entities to pre-instantiate in the pool on Awake.")]
+        private int _initialCount;
+
+        [Space]
         [SerializeField]
         [Tooltip("The prefab used to create pooled entity instances.")]
         private E _prefab;
@@ -55,26 +73,17 @@ namespace Atomic.Entities
         [Tooltip("Optional container transform under which pooled entities are parented. Defaults to this GameObject.")]
         private Transform _container;
 
-        [SerializeField]
-        [Tooltip("Whether to automatically initialize the pool in Awake().")]
-        private bool _initOnAwake = true;
+#if ODIN_INSPECTOR
+        [FoldoutGroup("Debug")]
+        [ShowInInspector, ReadOnly, HideInEditorMode]
+#endif
+        internal readonly Stack<E> _pooledEntities = new();
 
 #if ODIN_INSPECTOR
-        [ShowIf(nameof(_initOnAwake))]
+        [FoldoutGroup("Debug")]
+        [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        [SerializeField]
-        [Tooltip("Initial number of entities to pre-instantiate in the pool on Awake.")]
-        private int _initialCount;
-
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        internal readonly Stack<E> pooledEntities = new();
-
-#if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
-#endif
-        internal readonly HashSet<E> rentEntities = new();
+        internal readonly HashSet<E> _rentEntities = new();
 
         /// <summary>
         /// Initializes the pool when the GameObject is activated, if <see cref="_initOnAwake"/> is <c>true</c>.
@@ -95,7 +104,7 @@ namespace Atomic.Entities
         public void Init(int count)
         {
             for (int i = 0; i < count; i++)
-                pooledEntities.Push(this.CreateEntity());
+                _pooledEntities.Push(this.CreateEntity());
         }
 
         /// <summary>
@@ -104,10 +113,10 @@ namespace Atomic.Entities
         /// <returns>The rented entity.</returns>
         public E Rent()
         {
-            if (!pooledEntities.TryPop(out E entity))
+            if (!_pooledEntities.TryPop(out E entity))
                 entity = this.CreateEntity();
 
-            rentEntities.Add(entity);
+            _rentEntities.Add(entity);
             this.OnRent(entity);
             return entity;
         }
@@ -118,10 +127,10 @@ namespace Atomic.Entities
         /// <param name="entity">The entity to return. Must have been previously rented.</param>
         public void Return(E entity)
         {
-            if (rentEntities.Remove(entity))
+            if (_rentEntities.Remove(entity))
             {
                 this.OnReturn(entity);
-                pooledEntities.Push(entity);
+                _pooledEntities.Push(entity);
             }
             else
             {
@@ -134,20 +143,20 @@ namespace Atomic.Entities
         /// </summary>
         public void Dispose()
         {
-            foreach (E entity in pooledEntities)
+            foreach (E entity in _pooledEntities)
             {
                 this.OnDispose(entity);
                 Destroy(entity);
             }
 
-            foreach (E entity in rentEntities)
+            foreach (E entity in _rentEntities)
             {
                 this.OnDispose(entity);
                 Destroy(entity);
             }
 
-            pooledEntities.Clear();
-            rentEntities.Clear();
+            _pooledEntities.Clear();
+            _rentEntities.Clear();
         }
 
         /// <summary>

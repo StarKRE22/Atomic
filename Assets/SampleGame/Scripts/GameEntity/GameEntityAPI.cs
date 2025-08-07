@@ -2,32 +2,55 @@
 * Code generation. Don't modify! 
 **/
 
-using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using Atomic.Elements;
-using SampleGame;
+using static Atomic.Entities.EntityNames;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace SampleGame
 {
+#if UNITY_EDITOR
+	[InitializeOnLoad]
+#endif
 	public static class GameEntityAPI
 	{
 		///Tags
-		public static readonly int Character = EntityNames.NameToId(nameof(Character));
-		public static readonly int Coin = EntityNames.NameToId(nameof(Coin));
+		public static readonly int Character;
+		public static readonly int Coin;
 
 		///Values
-		public static readonly int Transform = EntityNames.NameToId(nameof(Transform)); // Transform
-		public static readonly int GameObject = EntityNames.NameToId(nameof(GameObject)); // GameObject
-		public static readonly int MoveSpeed = EntityNames.NameToId(nameof(MoveSpeed)); // IValue<float>
-		public static readonly int MoveDirection = EntityNames.NameToId(nameof(MoveDirection)); // IVariable<Vector3>
-		public static readonly int RotationSpeed = EntityNames.NameToId(nameof(RotationSpeed)); // IValue<float>
-		public static readonly int RotationDirection = EntityNames.NameToId(nameof(RotationDirection)); // IVariable<Vector3>
-		public static readonly int TeamType = EntityNames.NameToId(nameof(TeamType)); // IReactiveVariable<TeamType>
-		public static readonly int TriggerEvents = EntityNames.NameToId(nameof(TriggerEvents)); // TriggerEvents
-		public static readonly int Money = EntityNames.NameToId(nameof(Money)); // IValue<int>
-
-
+		public static readonly int Transform; // Transform
+		public static readonly int GameObject; // GameObject
+		public static readonly int MoveSpeed; // IValue<float>
+		public static readonly int MoveDirection; // IVariable<Vector3>
+		public static readonly int RotationSpeed; // IValue<float>
+		public static readonly int RotationDirection; // IVariable<Vector3>
+		public static readonly int TeamType; // IReactiveVariable<TeamType>
+		public static readonly int TriggerEvents; // TriggerEvents
+		public static readonly int Money; // IValue<int>
+		
+		static GameEntityAPI()
+		{
+			//Tags
+			Character = NameToId(nameof(Character));
+			Coin = NameToId(nameof(Coin));
+			
+			//Values
+			Transform = NameToId(nameof(Transform));
+			GameObject = NameToId(nameof(GameObject));
+			MoveSpeed = NameToId(nameof(MoveSpeed));
+			MoveDirection = NameToId(nameof(MoveDirection));
+			RotationSpeed = NameToId(nameof(RotationSpeed));
+			RotationDirection = NameToId(nameof(RotationDirection));
+			TeamType = NameToId(nameof(TeamType));
+			TriggerEvents = NameToId(nameof(TriggerEvents));
+			Money = NameToId(nameof(Money));
+		}
+		
 		///Tag Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -47,8 +70,7 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelCoinTag(this IGameEntity obj) => obj.DelTag(Coin);
-
-
+		
 		///Value Extensions
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]

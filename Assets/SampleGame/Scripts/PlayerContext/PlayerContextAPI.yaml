@@ -1,0 +1,18 @@
+#header: "IEntity"
+#namespace: SampleGame
+#className: PlayerContextAPI
+#directory: Assets/SampleGame/Scripts/PlayerContext/
+#aggressiveInlining: true
+#unsafe: false
+#entityType: IPlayerContext
+#
+#imports:
+#- SampleGame
+#- Atomic.Elements
+#
+#values:
+#- InputMap: InputMap
+#- Character: IGameEntity
+#- Money: IReactiveVariable<int>
+#- TeamType: IValue<TeamType>
+#

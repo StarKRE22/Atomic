@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6922072772241536143}
+  - component: {fileID: 5524392739060135003}
+  - component: {fileID: 1765928185858468627}
   m_Layer: 0
   m_Name: GameContext
   m_TagString: Untagged
@@ -32,6 +34,54 @@ Transform:
   - {fileID: 8169474731843298041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5524392739060135003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415917276825906686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c875c9102f44897b4135a6294282597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  installOnAwake: 1
+  installInEditMode: 0
+  disposeValues: 1
+  useUnityLifecycle: 1
+  installers:
+  - {fileID: 1765928185858468627}
+  children: []
+  _initialBehaviourCapacity: 3
+  _onlySelectedGizmos: 0
+  _onlyEditModeGizmos: 0
+  _initialTagCapacity: 0
+  _initialValueCapacity: 5
+  _dontDestroyOnLoad: 0
+--- !u!114 &1765928185858468627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415917276825906686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85cf0699b6a4b0aa0fbe005755779a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _worldTransform: {fileID: 0}
+  _gameCountdown:
+    _duration: 30
+    _current: 0
+  _coinPool: {fileID: 3525287292529898423}
+  _coinSpawnPeriod:
+    _duration: 2
+    _current: 2
+  _coinSpawnArea:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5, y: 0, z: 5}
 --- !u!1 &5177279202917277595
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,13 +91,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8169474731843298041}
+  - component: {fileID: 3525287292529898423}
   m_Layer: 0
   m_Name: Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8169474731843298041
 Transform:
   m_ObjectHideFlags: 0
@@ -63,3 +114,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6922072772241536143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3525287292529898423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177279202917277595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62a465db63f4c4e99518e8bc46fc097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initOnAwake: 1
+  _initialCount: 0
+  _prefab: {fileID: 381086113069860620, guid: 5fbdd03daee4a4b1aa62fd693787d80c, type: 3}
+  _container: {fileID: 8169474731843298041}
