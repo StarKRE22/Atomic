@@ -11,6 +11,9 @@ namespace Atomic.Elements
     /// A reactive wrapper for <see cref="Vector2"/> that notifies listeners when the value changes.
     /// Implements <see cref="IReactiveVariable{Vector2}"/> and <see cref="IDisposable"/>.
     /// </summary>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class ReactiveVector2 : IReactiveVariable<Vector2>, IDisposable
     {

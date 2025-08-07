@@ -14,6 +14,9 @@ namespace Atomic.Elements
     /// Implements <see cref="IReactiveVariable{T}"/> and <see cref="IDisposable"/>.
     /// </summary>
     /// <typeparam name="T">The type of the stored value.</typeparam>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
     {

@@ -14,6 +14,9 @@ namespace Atomic.Extensions
     /// A reactive wrapper for a <see cref="quaternion"/> value.
     /// Notifies subscribers whenever the value changes.
     /// </summary>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class Reactive_quaternion : IReactiveVariable<quaternion>
     {

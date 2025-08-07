@@ -12,6 +12,9 @@ namespace Atomic.Elements
     /// A reactive quaternion variable that raises events when its value changes.
     /// Implements <see cref="IReactiveVariable{Quaternion}"/> and <see cref="IDisposable"/>.
     /// </summary>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class ReactiveQuaternion : IReactiveVariable<Quaternion>, IDisposable
     {

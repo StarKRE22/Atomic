@@ -10,6 +10,10 @@ namespace Atomic.Elements
     /// Represents a parameterless function returning a value of type <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">The return type of the function.</typeparam>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
+    [Serializable]
     public class InlineFunction<T> : IValue<T>
     {
         private readonly Func<T> func;
@@ -45,6 +49,9 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class InlineFunction<T, R> : IFunction<T, R>
     {
@@ -79,6 +86,9 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first input parameter.</typeparam>
     /// <typeparam name="T2">The type of the second input parameter.</typeparam>
     /// <typeparam name="R">The return type.</typeparam>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
     {

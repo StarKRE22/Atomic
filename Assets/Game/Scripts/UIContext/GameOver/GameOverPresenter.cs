@@ -9,6 +9,7 @@ namespace SampleGame
 
         public void OnSpawn(IUIContext context)
         {
+            _context = context;
             _view = context.GetGameOverView();
 
             TeamType teamType = GameContext.Instance.GetWinnerTeam().Value;

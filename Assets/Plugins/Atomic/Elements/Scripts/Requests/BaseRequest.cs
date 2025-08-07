@@ -1,4 +1,7 @@
 using System;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
@@ -9,6 +12,9 @@ namespace Atomic.Elements
     /// <summary>
     /// Represents a base implementation of a request without parameters.
     /// </summary>
+#if ODIN_INSPECTOR
+    [InlineProperty]
+#endif
     [Serializable]
     public class BaseRequest : IRequest
     {
