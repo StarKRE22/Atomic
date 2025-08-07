@@ -20,7 +20,7 @@ namespace Atomic.Elements
     /// You can configure the action list in the Inspector or via <see cref="Construct"/>.
     /// </remarks>
     [AddComponentMenu("Atomic/Elements/Scene Action")]
-    public class MonoAction : MonoActionAbstract
+    public class SceneAction : SceneActionAbstract
     {
         /// <summary>
         /// Actions to run when this component is invoked.

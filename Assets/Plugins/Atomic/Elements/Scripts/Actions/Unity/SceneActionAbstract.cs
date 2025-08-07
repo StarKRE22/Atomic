@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// An abstract class for scene-based actions that implement the <see cref="IAction"/> interface.
     /// Inherit from this class to define custom actions as MonoBehaviours.
     /// </summary>
-    public abstract class MonoActionAbstract : MonoBehaviour, IAction
+    public abstract class SceneActionAbstract : MonoBehaviour, IAction
     {
         /// <summary>
         /// Executes the action logic.

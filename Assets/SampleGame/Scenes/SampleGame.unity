@@ -582,11 +582,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 869558024427659874, guid: 0e8e3e18f69ab4d2b951829203b543a1, type: 3}
       propertyPath: _initialValueCapacity
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 869558024427659874, guid: 0e8e3e18f69ab4d2b951829203b543a1, type: 3}
       propertyPath: _initialBehaviourCapacity
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4311444741787691024, guid: 0e8e3e18f69ab4d2b951829203b543a1, type: 3}
       propertyPath: m_RootOrder
@@ -659,6 +659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1238958044}
+  - component: {fileID: 1238958045}
   m_Layer: 0
   m_Name: '[World]'
   m_TagString: Untagged
@@ -683,6 +684,22 @@ Transform:
   - {fileID: 1209263635}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238958045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238958043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba5fb5eb60f4c29a68d0a16f3c4fe59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1313525599
 PrefabInstance:
   m_ObjectHideFlags: 0
