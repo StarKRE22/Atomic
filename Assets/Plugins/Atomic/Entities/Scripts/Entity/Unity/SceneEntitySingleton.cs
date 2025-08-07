@@ -121,7 +121,7 @@ namespace Atomic.Entities
             }
 
             ListPool<GameObject>.Release(gameObjects);
-            throw new Exception($"Scene Entity Sigleton of type {typeof(E).Name} is not found!");
+            throw new Exception($"Scene Entity Singleton of type {typeof(E).Name} is not found!");
         }
 
         #endregion

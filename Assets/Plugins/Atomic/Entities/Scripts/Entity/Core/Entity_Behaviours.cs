@@ -41,10 +41,6 @@ namespace Atomic.Entities
 
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
-        
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ConstructBehaviours(int capacity = 0) =>
-            _behaviours = new IEntityBehaviour[capacity];
 
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
@@ -81,11 +77,20 @@ namespace Atomic.Entities
             if (behaviour == null)
                 throw new ArgumentNullException(nameof(behaviour));
 
-            if (!AddIfAbsent(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
-                return;
+            //Check for contains:
+            for (int i = 0; i < _behaviourCount; i++)
+                if (s_behaviourComparer.Equals(_behaviours[i], behaviour))
+                    return;
 
-            if (_spawned && behaviour is IEntitySpawn initBehaviour)
-                initBehaviour.OnSpawn(this);
+            //Check for capacity:
+            if (_behaviourCount == _behaviours.Length)
+                Expand(ref _behaviours);
+
+            //Push back
+            _behaviours[_behaviourCount++] = behaviour;
+
+            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
+                spawnBehaviour.OnSpawn(this);
 
             if (_active)
                 this.ActivateBehaviour(behaviour);
@@ -97,29 +102,36 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes the first behaviour of type <typeparamref name="T"/>.
         /// </summary>
-        //TODO: OPTIMIZE!
         public bool DelBehaviour<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
-            {
-                IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is T)
-                    return this.DelBehaviour(behaviour);
-            }
+                if (_behaviours[i] is T)
+                    return this.DelBehaviourAt(i);
 
             return false;
         }
 
-        /// <summary>
-        /// Removes a specific behaviour instance.
-        /// </summary>
-        public bool DelBehaviour(IEntityBehaviour behaviour)
+        public void DelAllBehaviours<T>() where T : IEntityBehaviour
         {
-            if (behaviour == null)
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T)
+                    this.DelBehaviourAt(i);
+        }
+
+        /// <summary>
+        /// Removes the behaviour at the specified index.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool DelBehaviourAt(int index)
+        {
+            if (index < 0 || index >= _behaviourCount)
                 return false;
 
-            if (!Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
-                return false;
+            IEntityBehaviour behaviour = _behaviours[index];
+
+            _behaviourCount--;
+            for (int i = index; i < _behaviourCount; i++)
+                _behaviours[i] = _behaviours[i + 1];
 
             if (_active)
                 this.InactivateBehaviour(behaviour);
@@ -130,6 +142,16 @@ namespace Atomic.Entities
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
             return true;
+        }
+
+        /// <summary>
+        /// Removes a specific behaviour instance.
+        /// </summary>
+        public bool DelBehaviour(IEntityBehaviour behaviour)
+        {
+            return behaviour != null &&
+                   FindIndex(_behaviours, _behaviourCount, behaviour, s_behaviourComparer, out int index) &&
+                   this.DelBehaviourAt(index);
         }
 
         /// <summary>
@@ -217,7 +239,7 @@ namespace Atomic.Entities
         {
             if (results == null)
                 throw new ArgumentNullException(nameof(results));
-            
+
             Array.Copy(_behaviours, results, _behaviourCount);
             return _behaviourCount;
         }
@@ -226,7 +248,7 @@ namespace Atomic.Entities
         /// Returns an enumerator for iterating through behaviours.
         /// </summary>
         IEnumerator<IEntityBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
-        
+
         public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
         public struct BehaviourEnumerator : IEnumerator<IEntityBehaviour>
@@ -266,5 +288,9 @@ namespace Atomic.Entities
                 //Nothing...
             }
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructBehaviours(int capacity = 0) =>
+            _behaviours = new IEntityBehaviour[capacity];
     }
 }

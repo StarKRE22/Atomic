@@ -171,6 +171,32 @@ namespace Atomic.Entities
 
             return false;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool FindIndex<T>(T[] array, int count, T item, IEqualityComparer<T> comparer, out int i)
+        {
+            for (i = 0; i < count; i++)
+                if (comparer.Equals(array[i], item))
+                    return true;
+
+            i = -1;
+            return false; // если не найден
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        internal static bool RemoveAt<T>(ref T[] array, ref int count, int index)
+        {
+            if (index < 0 || index >= count)
+                return false;
+
+            count--;
+
+            for (int i = index; i < count; i++)
+                array[i] = array[i + 1];
+
+            array[count] = default;
+            return true;
+        }
 
         /// <summary>
         /// Computes a 32-bit FNV-1a hash for the specified input string.

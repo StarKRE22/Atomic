@@ -132,6 +132,39 @@ namespace Atomic.Entities
 
             return false;
         }
+        
+        public void DelAllBehaviours<T>() where T : IEntityBehaviour
+        {
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T)
+                    this.DelBehaviourAt(i);
+        }
+        
+        /// <summary>
+        /// Removes the behaviour at the specified index.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool DelBehaviourAt(int index)
+        {
+            if (index < 0 || index >= _behaviourCount)
+                return false;
+
+            IEntityBehaviour behaviour = _behaviours[index];
+
+            _behaviourCount--;
+            for (int i = index; i < _behaviourCount; i++)
+                _behaviours[i] = _behaviours[i + 1];
+
+            if (_active)
+                this.InactivateBehaviour(behaviour);
+
+            if (_spawned && behaviour is IEntityDespawn dispose)
+                dispose.OnDespawn(this);
+
+            this.OnBehaviourDeleted?.Invoke(this, behaviour);
+            this.OnStateChanged?.Invoke();
+            return true;
+        }
 
         /// <summary>
         /// Removes a specific behaviour instance.
@@ -145,7 +178,7 @@ namespace Atomic.Entities
                 return false;
 
             if (_active)
-                this.DeactivateBehaviour(behaviour);
+                this.InactivateBehaviour(behaviour);
 
             if (_spawned && behaviour is IEntityDespawn dispose)
                 dispose.OnDespawn(this);

@@ -194,16 +194,11 @@ namespace Atomic.Entities
             if (_entity == null)
                 return;
 
-            Debug.Log($"START GIZMOS {_behaviourCount}");
             try
             {
                 for (int i = 0, count = _behaviourCount; i < count; i++)
-                {
-                    Debug.Log("AAA GIZMOS");
-
                     if (_behaviours[i] is IEntityGizmos gizmos)
                         gizmos.OnGizmosDraw(_entity);
-                }
             }
             catch (Exception e)
             {

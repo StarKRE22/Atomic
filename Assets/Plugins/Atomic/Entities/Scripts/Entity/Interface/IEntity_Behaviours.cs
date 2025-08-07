@@ -56,6 +56,8 @@ namespace Atomic.Entities
         /// </summary>
         bool DelBehaviour<T>() where T : IEntityBehaviour;
 
+        void DelAllBehaviours<T>() where T : IEntityBehaviour;
+
         /// <summary>
         /// Clears all behaviours from the entity.
         /// </summary>

@@ -61,6 +61,7 @@ namespace Atomic.Entities
 
 #if ODIN_INSPECTOR
         [HideInPlayMode]
+        [GUIColor(0f, 0.83f, 1f)]
 #endif
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
         [SerializeField]
@@ -74,13 +75,16 @@ namespace Atomic.Entities
         private bool includeInactiveOnScan = true;
 
 #if ODIN_INSPECTOR
-        // [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode]
 #endif
-        // [Space]
+        [Space]
         [SerializeField]
         [Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
         private protected bool useUnityLifecycle = true;
+        
+        [Tooltip("Should don't destroy if scene changed?")]
+        [SerializeField]
+        private bool _dontDestroyOnLoad;
 
         private readonly EntityWorld<E> _world = new();
         private bool isStarted;

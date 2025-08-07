@@ -195,7 +195,7 @@ namespace Atomic.Entities
         protected virtual void ProcessInactivate()
         {
             for (int i = 0; i < _behaviourCount; i++)
-                this.DeactivateBehaviour(_behaviours[i]);
+                this.InactivateBehaviour(_behaviours[i]);
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Atomic.Entities
                 Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
         }
 
-        private void DeactivateBehaviour(IEntityBehaviour behaviour)
+        private void InactivateBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour is IEntityInactive entityDisable)
                 entityDisable.OnInactive(this);

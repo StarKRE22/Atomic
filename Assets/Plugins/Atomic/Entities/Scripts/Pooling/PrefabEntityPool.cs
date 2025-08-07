@@ -43,17 +43,19 @@ namespace Atomic.Entities
         }
 
 #if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
+        [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         private readonly Dictionary<string, Pool> _pools = new();
 
         /// <summary>
-        /// Root container for pooled entities.
         /// If not assigned, defaults to the GameObject this script is attached to.
         /// </summary>
+        [Space]
+        [Tooltip("Root container for pooled entities")]
         [SerializeField]
         private Transform _container;
 
+        [Tooltip("Should don't destroy if scene changed?")]
         [SerializeField]
         private bool _dontDestroyOnLoad;
         

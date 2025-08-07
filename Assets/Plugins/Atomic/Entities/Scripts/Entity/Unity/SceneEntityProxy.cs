@@ -1,6 +1,11 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace Atomic.Entities
 {
@@ -68,6 +73,9 @@ namespace Atomic.Entities
             set => _source.Name = value;
         }
 
+#if ODIN_INSPECTOR
+        // [GUIColor(0f, 0.83f, 1f)]
+#endif
         [SerializeField]
         private E _source;
 
@@ -180,6 +188,7 @@ namespace Atomic.Entities
 
         public bool DelBehaviour(IEntityBehaviour behaviour) => _source.DelBehaviour(behaviour);
         public bool DelBehaviour<T>() where T : IEntityBehaviour => _source.DelBehaviour<T>();
+        public void DelAllBehaviours<T>() where T : IEntityBehaviour => _source.DelAllBehaviours<T>();
 
         public void ClearBehaviours() => _source.ClearBehaviours();
 
@@ -247,3 +256,4 @@ namespace Atomic.Entities
         #endregion
     }
 }
+#endif

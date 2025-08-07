@@ -31,6 +31,7 @@ namespace Atomic.Entities
         /// </summary>
         public event Action<E, EntityViewBase<E>> OnRemoved;
 
+        [Space]
         [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
         [SerializeField]
         private Transform _viewport;
