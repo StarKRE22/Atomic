@@ -8,12 +8,12 @@ namespace SampleGame
         public static void GameOver(IGameContext context)
         {
             Time.timeScale = 0;
-            context.GetWinnerTeam().Value = DefineWinnerTeam(context);
+            context.GetWinnerTeam().Value = GetWinnerTeam(context);
             context.GetGameOverEvent().Invoke();
             Debug.Log("Game Over!");
         }
 
-        private static TeamType DefineWinnerTeam(IGameContext context)
+        public static TeamType GetWinnerTeam(IGameContext context)
         {
             IDictionary<TeamType, IPlayerContext> players = context.GetPlayers();
             int redMoney = players[TeamType.RED].GetMoney().Value;
