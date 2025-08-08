@@ -20,15 +20,15 @@ namespace SampleGame
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            RotationUseCase.RotateStep(
-                _transform.rotation,
-                _rotationDirection.Value,
-                _rotationSpeed.Value,
-                in deltaTime,
-                out quaternion result
-            );
-
-            _transform.rotation = result;
+            Quaternion current = _transform.rotation;
+            Quaternion target = Quaternion.LookRotation(_rotationDirection.Value);
+            float angle = Quaternion.Angle(current, target);
+            
+            float maxStep = _rotationSpeed.Value * deltaTime;
+            float t = Mathf.Clamp01(maxStep / angle);
+            
+            Quaternion next = Quaternion.Slerp(current, target, t);
+            _transform.rotation = next;
         }
     }
 }

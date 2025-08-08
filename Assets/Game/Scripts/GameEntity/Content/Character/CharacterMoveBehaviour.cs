@@ -8,7 +8,7 @@ namespace SampleGame
     {
         private IValue<Vector3> _moveDirection;
         private IVariable<Vector3> _rotationDirection;
-        
+
         public void OnSpawn(IGameEntity entity)
         {
             _moveDirection = entity.GetMoveDirection();
@@ -17,7 +17,9 @@ namespace SampleGame
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            _rotationDirection.Value = _moveDirection.Value;
+            Vector3 direction = _moveDirection.Value;
+            if (direction != Vector3.zero) 
+                _rotationDirection.Value = direction;
         }
     }
 }
