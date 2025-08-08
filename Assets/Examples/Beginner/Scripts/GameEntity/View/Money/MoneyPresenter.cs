@@ -1,3 +1,4 @@
+using System;
 using Atomic.Elements;
 using Atomic.Entities;
 
@@ -5,15 +6,15 @@ namespace BeginnerGame
 {
     public sealed class MoneyPresenter : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
-        private IReactiveValue<int> _money;
         private MoneyView _view;
+        private IReactiveValue<int> _money;
 
         public void OnSpawn(IGameEntity entity)
         {
             _view = entity.GetMoneyView();
             
-            IPlayerContext player = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
-            _money = player.GetMoney();
+            IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
+            _money = playerContext.GetMoney();
             _money.Observe(this.OnMoneyChanged);
         }
 
@@ -26,7 +27,5 @@ namespace BeginnerGame
         {
             _view.SetMoney(money, "Money: {0}");
         }
-
- 
     }
 }

@@ -9,18 +9,20 @@ namespace BeginnerGame
         IEntityActive,
         IEntityLateUpdate
     {
-        private readonly Transform _cameraRoot;
         private readonly Vector3 _cameraOffset;
-
+        private Transform _camera;
         private IGameEntity _character;
 
-        public CameraFollowController(Transform cameraRoot, Vector3 cameraOffset)
+        public CameraFollowController(Vector3 cameraOffset)
         {
-            _cameraRoot = cameraRoot;
             _cameraOffset = cameraOffset;
         }
 
-        public void OnSpawn(IPlayerContext entity) => _character = entity.GetCharacter();
+        public void OnSpawn(IPlayerContext entity)
+        {
+            _camera = entity.GetCamera().transform;
+            _character = entity.GetCharacter();
+        }
 
         public void OnActive(IEntity entity) => this.UpdatePosition();
 
@@ -29,7 +31,7 @@ namespace BeginnerGame
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void UpdatePosition()
         {
-            _cameraRoot.position = _character.GetPosition().Value + _cameraOffset;
+            _camera.position = _character.GetPosition().Value + _cameraOffset;
         }
     }
 }

@@ -76,7 +76,7 @@ MonoBehaviour:
     value: 0
   _characterPrefab: {fileID: 869558024427659874, guid: 0e8e3e18f69ab4d2b951829203b543a1, type: 3}
   _spawnPoint: {fileID: 0}
-  _cameraRoot: {fileID: 2678276222640361327}
+  _camera: {fileID: 1428306703136761568}
   _cameraOffset: {x: 0, y: 10, z: -8}
 --- !u!1 &5004436558762336259
 GameObject:

@@ -6,9 +6,6 @@ namespace BeginnerGame
     public sealed class UIContextInstaller : SceneEntityInstaller<IUIContext>
     {
         [SerializeField]
-        private MoneyView _moneyView;
-
-        [SerializeField]
         private CountdownView _countdownView;
 
         [SerializeField]

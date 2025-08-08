@@ -24,11 +24,12 @@ namespace BeginnerGame
 
         [Header("Camera")]
         [SerializeField]
-        private Transform _cameraRoot;
+        private Camera _camera;
 
         [SerializeField]
         private Vector3 _cameraOffset;
 
+        
         protected override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
@@ -38,6 +39,7 @@ namespace BeginnerGame
             context.AddTeamType(new Const<TeamType>(_teamType));
             context.AddInputMap(_inputMap);
             context.AddMoney(_money);
+            context.AddCamera(_camera);
 
             if (IsPlayMode())
             {
@@ -48,7 +50,7 @@ namespace BeginnerGame
             }
 
             //Camera:
-            context.AddBehaviour(new CameraFollowController(_cameraRoot, _cameraOffset));
+            context.AddBehaviour(new CameraFollowController(_cameraOffset));
         }
     }
 }

@@ -9,10 +9,12 @@ entityType: IPlayerContext
 imports:
 - BeginnerGame
 - Atomic.Elements
+- UnityEngine
 
 values:
 - InputMap: InputMap
 - Character: IGameEntity
 - Money: IReactiveVariable<int>
 - TeamType: IValue<TeamType>
+- Camera: Camera
 

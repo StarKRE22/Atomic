@@ -21,6 +21,7 @@ namespace BeginnerGame
             entity.AddCharacterTag();
             entity.AddBehaviour<CharacterMoveBehaviour>();
             entity.AddBehaviour<CharacterPickUpBehaviour>();
+            entity.AddBehaviour<CharacterNameBehaviour>();
 
             //Base:
             entity.AddPosition(new TransformPositionVariable(this.transform));

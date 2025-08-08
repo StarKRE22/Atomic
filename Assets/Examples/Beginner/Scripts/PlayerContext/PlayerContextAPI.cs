@@ -10,6 +10,7 @@ using UnityEditor;
 #endif
 using BeginnerGame;
 using Atomic.Elements;
+using UnityEngine;
 
 namespace BeginnerGame
 {
@@ -23,6 +24,7 @@ namespace BeginnerGame
 		public static readonly int Character; // IGameEntity
 		public static readonly int Money; // IReactiveVariable<int>
 		public static readonly int TeamType; // IValue<TeamType>
+		public static readonly int Camera; // Camera
 
 		static PlayerContextAPI()
 		{
@@ -31,6 +33,7 @@ namespace BeginnerGame
 			Character = NameToId(nameof(Character));
 			Money = NameToId(nameof(Money));
 			TeamType = NameToId(nameof(TeamType));
+			Camera = NameToId(nameof(Camera));
 		}
 
 
@@ -121,6 +124,28 @@ namespace BeginnerGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetTeamType(this IPlayerContext obj, IValue<TeamType> value) => obj.SetValue(TeamType, value);
+
+		#endregion
+
+		#region Camera
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Camera GetCamera(this IPlayerContext obj) => obj.GetValue<Camera>(Camera);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetCamera(this IPlayerContext obj, out Camera value) => obj.TryGetValue(Camera, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddCamera(this IPlayerContext obj, Camera value) => obj.AddValue(Camera, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasCamera(this IPlayerContext obj) => obj.HasValue(Camera);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelCamera(this IPlayerContext obj) => obj.DelValue(Camera);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetCamera(this IPlayerContext obj, Camera value) => obj.SetValue(Camera, value);
 
 		#endregion
     }
