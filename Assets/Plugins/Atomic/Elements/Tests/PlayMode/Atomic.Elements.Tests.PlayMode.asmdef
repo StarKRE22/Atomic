@@ -4,7 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "Atomic.Elements.Tests.Stubs",
+        "Atomic.Elements.Tests.Substitutions",
         "Atomic.Elements"
     ],
     "includePlatforms": [],

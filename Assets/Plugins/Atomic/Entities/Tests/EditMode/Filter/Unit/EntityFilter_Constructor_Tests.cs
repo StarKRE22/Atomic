@@ -32,8 +32,8 @@ namespace Atomic.Entities
         {
             // Arrange
             var source = new EntityCollection();
-            var trigger1 = new DummyTrigger();
-            var trigger2 = new DummyTrigger();
+            var trigger1 = new EntityTriggerStub();
+            var trigger2 = new EntityTriggerStub();
 
             // Act
             var filter = new EntityFilter(source, e => true, trigger1, trigger2);
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         public void Constructor_Should_ContainsEntities()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var source = new EntityCollection();
             source.Add(entity);
 
@@ -67,7 +67,7 @@ namespace Atomic.Entities
             var source = new EntityCollection();
             var filter = new EntityFilter(source, e => true);
 
-            IEntity entity = new DummyEntity();
+            IEntity entity = new EntityDummy();
             IEntity observed = null;
             filter.OnAdded += e => observed = e;
 

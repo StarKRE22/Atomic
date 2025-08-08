@@ -13,7 +13,7 @@ namespace Atomic.Entities
         [UnitySetUp]
         public IEnumerator Setup()
         {
-            DummySceneEntityBaker.CreateCallCount = 0;
+            SceneEntityBakerDummy.CreateCallCount = 0;
 
             // Создаём пустую сцену
             _testScene = SceneManager.CreateScene("BakeTestScene");
@@ -33,29 +33,29 @@ namespace Atomic.Entities
             // Arrange
             for (int i = 0; i < 3; i++)
             {
-                var go = new GameObject($"Baker_{i}", typeof(DummySceneEntityBaker));
+                var go = new GameObject($"Baker_{i}", typeof(SceneEntityBakerDummy));
                 SceneManager.MoveGameObjectToScene(go, _testScene);
             }
 
             yield return null;
 
             // Act
-            var baked = DummySceneEntityBaker.Bake(_testScene);
+            var baked = SceneEntityBakerDummy.Bake(_testScene);
 
             //Wait for destroy bakers:
             yield return null;
 
             // Assert
             Assert.AreEqual(3, baked.Count);
-            Assert.AreEqual(3, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(0, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(3, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(0, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
 
         [UnityTest]
         public IEnumerator Bake_Should_Respect_IncludeInactive_Flag()
         {
             // Arrange
-            var go = new GameObject("InactiveBaker", typeof(DummySceneEntityBaker));
+            var go = new GameObject("InactiveBaker", typeof(SceneEntityBakerDummy));
             go.SetActive(false);
             SceneManager.MoveGameObjectToScene(go, _testScene);
 
@@ -64,37 +64,37 @@ namespace Atomic.Entities
             yield return null;
 
             // Act
-            var baked = DummySceneEntityBaker.Bake(_testScene, includeInactive: false);
+            var baked = SceneEntityBakerDummy.Bake(_testScene, includeInactive: false);
 
             //Wait for destroy bakers:
             yield return null;
 
             // Assert
             Assert.AreEqual(0, baked.Count);
-            Assert.AreEqual(0, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(1, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(0, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(1, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
 
         [UnityTest]
         public IEnumerator Bake_Should_Bake_Inactive_When_IncludeInactive_True()
         {
             // Arrange
-            var go = new GameObject("InactiveBaker", typeof(DummySceneEntityBaker));
+            var go = new GameObject("InactiveBaker", typeof(SceneEntityBakerDummy));
             go.SetActive(false);
             SceneManager.MoveGameObjectToScene(go, _testScene);
 
             yield return null;
 
             // Act
-            var baked = DummySceneEntityBaker.Bake(_testScene, includeInactive: true);
+            var baked = SceneEntityBakerDummy.Bake(_testScene, includeInactive: true);
 
             //Wait for destroy bakers:
             yield return null;
 
             // Assert
             Assert.AreEqual(1, baked.Count);
-            Assert.AreEqual(1, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(0, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(1, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(0, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
     }
 }

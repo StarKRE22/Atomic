@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [AddComponentMenu("")]
-    public class OtherSceneEntity : SceneEntity
+    public class SceneEntityProxyDummy : SceneEntityProxy<SceneEntityDummy>
     {
     }
 }

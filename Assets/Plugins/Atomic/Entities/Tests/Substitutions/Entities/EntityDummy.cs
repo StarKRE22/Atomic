@@ -1,6 +1,6 @@
 namespace Atomic.Entities
 {
-    public class DummyEntity : Entity
+    public class EntityDummy : Entity
     {
         public bool WasSpawned { get; private set; }
         public bool WasDespawned { get; private set; }

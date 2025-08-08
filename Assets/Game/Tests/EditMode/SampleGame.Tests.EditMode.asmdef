@@ -6,7 +6,8 @@
         "UnityEditor.TestRunner",
         "Unity.Mathematics",
         "Atomic.Entities",
-        "Atomic.Elements"
+        "Atomic.Elements",
+        "Atomic.Entities.Substitutions"
     ],
     "includePlatforms": [
         "Editor"

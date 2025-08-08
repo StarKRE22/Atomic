@@ -5,8 +5,8 @@ namespace Atomic.Entities
 {
     public sealed class EntityFactoryMock : IEntityFactory
     {
-        public Func<IEntity> create = () => new Entity();
+        public Func<IEntity> CreateMethod = () => new Entity();
         
-        public IEntity Create() => create?.Invoke();
+        public IEntity Create() => CreateMethod?.Invoke();
     }
 }

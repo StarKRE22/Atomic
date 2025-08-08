@@ -3,9 +3,9 @@
     "rootNamespace": "Atomic.Entities",
     "references": [
         "Atomic.Entities",
-        "Atomic.Entities.Stubs",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "Atomic.Entities.Substitutions"
     ],
     "includePlatforms": [
         "Editor"

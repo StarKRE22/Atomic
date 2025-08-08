@@ -10,7 +10,7 @@ namespace Atomic.Entities
         [SetUp]
         public void SetUp()
         {
-            DummySceneEntityBaker.CreateCallCount = 0;
+            SceneEntityBakerDummy.CreateCallCount = 0;
         }
 
         [UnityTest]
@@ -18,20 +18,20 @@ namespace Atomic.Entities
         {
             // Arrange
             var root = new GameObject("Root");
-            root.AddComponent<DummySceneEntityBaker>();
+            root.AddComponent<SceneEntityBakerDummy>();
 
             yield return null;
 
             // Act
-            var entities = DummySceneEntityBaker.Bake(root);
+            var entities = SceneEntityBakerDummy.Bake(root);
 
             //Wait for destroy bakers:
             yield return null;
             
             // Assert
             Assert.AreEqual(1, entities.Length);
-            Assert.AreEqual(1, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(0, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(1, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(0, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
 
         [UnityTest]
@@ -41,20 +41,20 @@ namespace Atomic.Entities
             var root = new GameObject("Root");
             var child = new GameObject("Child");
             child.transform.SetParent(root.transform);
-            child.AddComponent<DummySceneEntityBaker>();
+            child.AddComponent<SceneEntityBakerDummy>();
 
             yield return null;
 
             // Act
-            var entities = DummySceneEntityBaker.Bake(root);
+            var entities = SceneEntityBakerDummy.Bake(root);
 
             //Wait for destroy bakers:
             yield return null;
             
             // Assert
             Assert.AreEqual(1, entities.Length);
-            Assert.AreEqual(1, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(0, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(1, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(0, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
 
         [UnityTest]
@@ -66,7 +66,7 @@ namespace Atomic.Entities
             yield return null;
 
             // Act
-            var entities = DummySceneEntityBaker.Bake(go);
+            var entities = SceneEntityBakerDummy.Bake(go);
 
             //Wait for destroy bakers:
             yield return null;
@@ -74,7 +74,7 @@ namespace Atomic.Entities
             // Assert
             Assert.IsNotNull(entities);
             Assert.AreEqual(0, entities.Length);
-            Assert.AreEqual(0, DummySceneEntityBaker.CreateCallCount);
+            Assert.AreEqual(0, SceneEntityBakerDummy.CreateCallCount);
         }
 
         [UnityTest]
@@ -82,28 +82,28 @@ namespace Atomic.Entities
         {
             // Arrange
             var go = new GameObject("Parent");
-            go.AddComponent<DummySceneEntityBaker>();
+            go.AddComponent<SceneEntityBakerDummy>();
 
             var child1 = new GameObject("Child1");
             child1.transform.SetParent(go.transform);
-            child1.AddComponent<DummySceneEntityBaker>();
+            child1.AddComponent<SceneEntityBakerDummy>();
 
             var child2 = new GameObject("Child2");
             child2.transform.SetParent(go.transform);
-            child2.AddComponent<DummySceneEntityBaker>();
+            child2.AddComponent<SceneEntityBakerDummy>();
 
             yield return null;
 
             // Act
-            var entities = DummySceneEntityBaker.Bake(go);
+            var entities = SceneEntityBakerDummy.Bake(go);
 
             //Wait for destroy bakers:
             yield return null;
             
             // Assert
             Assert.AreEqual(3, entities.Length);
-            Assert.AreEqual(3, DummySceneEntityBaker.CreateCallCount);
-            Assert.AreEqual(0, Object.FindObjectsOfType<DummySceneEntityBaker>(true).Length);
+            Assert.AreEqual(3, SceneEntityBakerDummy.CreateCallCount);
+            Assert.AreEqual(0, Object.FindObjectsOfType<SceneEntityBakerDummy>(true).Length);
         }
     }
 }

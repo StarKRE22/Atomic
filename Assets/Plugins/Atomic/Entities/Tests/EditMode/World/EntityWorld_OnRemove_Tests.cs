@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void OnRemove_Should_DoNothing_WhenWorldIsInactiveAndNotSpawned()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
 
             // Act
@@ -23,7 +23,7 @@ namespace Atomic.Entities
         public void OnRemove_Should_Despawn_WhenWorldIsSpawned()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Spawn();
 
@@ -39,7 +39,7 @@ namespace Atomic.Entities
         public void OnRemove_Should_DeactivateAndDespawn_WhenWorldIsActive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Activate(); // Spawn + Activate
 

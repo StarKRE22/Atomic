@@ -8,16 +8,16 @@ namespace Atomic.Entities
     public sealed class SceneEntityFactoryCatalogTests
     {
         private ScriptableEntityFactoryCatalog _catalog;
-        private DummyScriptableEntityFactory _factoryA;
-        private DummyScriptableEntityFactory _factoryB;
+        private ScriptableEntityFactoryDummy _factoryA;
+        private ScriptableEntityFactoryDummy _factoryB;
 
         [SetUp]
         public void Setup()
         {
-            _factoryA = ScriptableObject.CreateInstance<DummyScriptableEntityFactory>();
+            _factoryA = ScriptableObject.CreateInstance<ScriptableEntityFactoryDummy>();
             _factoryA.name = "Enemy";
 
-            _factoryB = ScriptableObject.CreateInstance<DummyScriptableEntityFactory>();
+            _factoryB = ScriptableObject.CreateInstance<ScriptableEntityFactoryDummy>();
             _factoryB.name = "Ally";
 
             _catalog = ScriptableObject.CreateInstance<ScriptableEntityFactoryCatalog>();
@@ -92,7 +92,7 @@ namespace Atomic.Entities
         [Test]
         public void DuplicateKeys_Should_WarnAndIgnoreSecond()
         {
-            var duplicate = ScriptableObject.CreateInstance<DummyScriptableEntityFactory>();
+            var duplicate = ScriptableObject.CreateInstance<ScriptableEntityFactoryDummy>();
             duplicate.name = "Enemy"; // same as _factoryA
 
             var localCatalog = ScriptableObject.CreateInstance<ScriptableEntityFactoryCatalog>();

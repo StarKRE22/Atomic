@@ -455,13 +455,13 @@ namespace Atomic.Entities
         public void GetValue_ReturnsCorrectObject_ForCustomStruct()
         {
             var entity = SceneEntity.Create();
-            var data = new PointStub {X = 1, Y = 2};
+            var data = new SamplePoint {X = 1, Y = 2};
             entity.AddValue(77, data);
 
             object result = entity.GetValue(77);
 
-            Assert.IsInstanceOf<PointStub>(result);
-            Assert.AreEqual(data, (PointStub) result);
+            Assert.IsInstanceOf<SamplePoint>(result);
+            Assert.AreEqual(data, (SamplePoint) result);
         }
 
         #endregion
@@ -616,14 +616,14 @@ namespace Atomic.Entities
         public void TryGetValue_ReturnsStruct_AsBoxedObject()
         {
             var entity = new Entity();
-            var expected = new StubStruct {A = 1, B = 2};
+            var expected = new SampleStruct {A = 1, B = 2};
             entity.AddValue(5, expected);
 
             bool found = entity.TryGetValue(5, out var result);
 
             Assert.IsTrue(found);
-            Assert.IsInstanceOf<StubStruct>(result);
-            Assert.AreEqual(expected, (StubStruct) result);
+            Assert.IsInstanceOf<SampleStruct>(result);
+            Assert.AreEqual(expected, (SampleStruct) result);
         }
 
         #endregion
@@ -644,10 +644,10 @@ namespace Atomic.Entities
         public void GetValueUnsafe_ReturnsRef_ToReferenceType()
         {
             var entity = new Entity();
-            var obj = new TextStub("initial");
+            var obj = new SampleText("initial");
             entity.AddValue(2, obj);
 
-            ref TextStub refValue = ref entity.GetValueUnsafe<TextStub>(2);
+            ref SampleText refValue = ref entity.GetValueUnsafe<SampleText>(2);
             Assert.AreSame(obj, refValue);
             Assert.AreEqual("initial", refValue.Text);
         }
@@ -740,10 +740,10 @@ namespace Atomic.Entities
         public void TryGetValueUnsafe_ReturnsCustomStructCorrectly()
         {
             var entity = new Entity();
-            var expected = new StubStruct {A = 1, B = 2};
+            var expected = new SampleStruct {A = 1, B = 2};
             entity.AddValue(3, expected);
 
-            bool result = entity.TryGetValueUnsafe<StubStruct>(3, out var value);
+            bool result = entity.TryGetValueUnsafe<SampleStruct>(3, out var value);
 
             Assert.IsTrue(result);
             Assert.AreEqual(expected, value);
@@ -1351,7 +1351,7 @@ namespace Atomic.Entities
         public void GetValues_ReturnsStructValueAddedByAddValue()
         {
             var entity = new Entity();
-            var value = new StubStruct {A = 1, B = 2};
+            var value = new SampleStruct {A = 1, B = 2};
 
             entity.AddValue(1, value);
 
@@ -1365,7 +1365,7 @@ namespace Atomic.Entities
         public void GetValues_ReturnsStructValueAddedBySetValue()
         {
             var entity = new Entity();
-            var value = new StubStruct {A = 3, B = 1};
+            var value = new SampleStruct {A = 3, B = 1};
 
             entity.SetValue(5, value);
 
@@ -1379,27 +1379,27 @@ namespace Atomic.Entities
         public void GetValues_StructValueIsBoxedCorrectly()
         {
             var entity = new Entity();
-            var value = new StubStruct {A = 10, B = 3};
+            var value = new SampleStruct {A = 10, B = 3};
 
             entity.AddValue(2, value);
 
             object boxed = entity.GetValue(2);
 
-            Assert.IsInstanceOf<StubStruct>(boxed);
-            Assert.AreEqual(value, (StubStruct) boxed);
+            Assert.IsInstanceOf<SampleStruct>(boxed);
+            Assert.AreEqual(value, (SampleStruct) boxed);
         }
 
         [Test]
         public void GetValues_StructValueCanBeUnboxedSafely()
         {
             var entity = new Entity();
-            var value = new StubStruct {A = 7, B = 8};
+            var value = new SampleStruct {A = 7, B = 8};
 
             entity.AddValue(4, value);
 
             var allValues = entity.GetValues();
 
-            var unboxed = (StubStruct) allValues[0].Value;
+            var unboxed = (SampleStruct) allValues[0].Value;
 
             Assert.AreEqual(value, unboxed);
         }

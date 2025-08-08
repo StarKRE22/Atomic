@@ -6,11 +6,14 @@ namespace SampleGame
     public static class CoinUseCase
     {
         public static bool Collect(IGameContext context, IGameEntity character, Collider other) =>
-            other.TryGetComponent(out IGameEntity entity) && entity.HasCoinTag() &&
+            other.TryGetComponent(out IGameEntity entity) &&
             Collect(context, character, entity);
 
         public static bool Collect(IGameContext context, IGameEntity character, IGameEntity coin)
         {
+            if (!character.HasCoinTag())
+                return false;
+            
             //Earn money:
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, character);
             playerContext.GetMoney().Value += coin.GetMoney().Value;

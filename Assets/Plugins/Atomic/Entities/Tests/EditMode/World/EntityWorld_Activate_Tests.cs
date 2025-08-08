@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void Activate_Should_SpawnAndActivate_When_NotSpawnedAndNotActive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
 
             // Assert preconditions
@@ -31,7 +31,7 @@ namespace Atomic.Entities
         public void Activate_Should_DoNothing_When_AlreadyActive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
 
             // Act

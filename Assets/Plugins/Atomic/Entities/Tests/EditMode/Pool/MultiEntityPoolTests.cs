@@ -6,9 +6,9 @@ namespace Atomic.Entities
 {
     public class MultiEntityPoolTests
     {
-        private readonly MultiEntityFactoryMock factoryMock = new()
+        private readonly MultiEntityFactoryMock factory = new()
         {
-            create = _ => new Entity()
+            CreateMethod = _ => new Entity()
         };
         
         private TestMultiEntityPool<string, IEntity> _pool;
@@ -16,7 +16,7 @@ namespace Atomic.Entities
         [SetUp]
         public void SetUp()
         {
-            _pool = new TestMultiEntityPool<string, IEntity>(factoryMock);
+            _pool = new TestMultiEntityPool<string, IEntity>(factory);
         }
 
         [Test]

@@ -2,14 +2,14 @@ using System;
 
 namespace Atomic.Entities
 {
-    public struct PointStub
+    public struct SamplePoint
     {
         public int X;
         public int Y;
 
         public override bool Equals(object obj)
         {
-            if (obj is PointStub other)
+            if (obj is SamplePoint other)
                 return this.X == other.X && this.Y == other.Y;
             return false;
         }

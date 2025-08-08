@@ -3,14 +3,14 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [AddComponentMenu("")]
-    public class DummySceneEntityBaker : SceneEntityBaker<DummyEntity>
+    public class SceneEntityBakerDummy : SceneEntityBaker<EntityDummy>
     {
         public static int CreateCallCount;
         
-        protected override DummyEntity Bake()
+        protected override EntityDummy Bake()
         {
             CreateCallCount++;
-            return new DummyEntity();
+            return new EntityDummy();
         }
     }
 }

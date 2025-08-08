@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void Deactivate_Should_TurnOffWorldAndEntities()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Activate();
 
@@ -26,7 +26,7 @@ namespace Atomic.Entities
         public void Deactivate_Should_DoNothing_When_AlreadyInactive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
 
             // Ensure inactive

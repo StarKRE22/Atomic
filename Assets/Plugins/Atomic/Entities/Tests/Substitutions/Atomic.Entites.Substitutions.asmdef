@@ -1,17 +1,15 @@
 {
-    "name": "Atomic.Elements.Tests.Stubs",
-    "rootNamespace": "Atomic.Elements",
+    "name": "Atomic.Entities.Substitutions",
+    "rootNamespace": "Atomic.Entities",
     "references": [
-        "Atomic.Elements"
+        "Atomic.Entities"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
     ],

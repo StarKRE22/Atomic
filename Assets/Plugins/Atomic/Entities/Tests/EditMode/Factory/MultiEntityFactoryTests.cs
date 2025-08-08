@@ -10,8 +10,8 @@ namespace Atomic.Entities
         public void Add_And_Create_Should_Return_CorrectEntity()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
-            var dummyFactory = new DummyEntityFactory();
+            var factory = new MultiEntityFactory<string, EntityDummy>();
+            var dummyFactory = new EntityFactoryDummy();
 
             factory.Add("enemy", dummyFactory);
 
@@ -27,7 +27,7 @@ namespace Atomic.Entities
         public void Create_Should_Throw_When_Key_Not_Found()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
+            var factory = new MultiEntityFactory<string, EntityDummy>();
 
             // Act & Assert
             var ex = Assert.Throws<KeyNotFoundException>(() => factory.Create("nonexistent"));
@@ -38,8 +38,8 @@ namespace Atomic.Entities
         public void Remove_Should_Delete_Factory()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
-            factory.Add("npc", new DummyEntityFactory());
+            var factory = new MultiEntityFactory<string, EntityDummy>();
+            factory.Add("npc", new EntityFactoryDummy());
 
             // Act
             factory.Remove("npc");
@@ -52,13 +52,13 @@ namespace Atomic.Entities
         public void Constructor_With_KeyValuePairArray_Should_Initialize_Factories()
         {
             // Arrange
-            var kvp = new KeyValuePair<string, IEntityFactory<DummyEntity>>[]
+            var kvp = new KeyValuePair<string, IEntityFactory<EntityDummy>>[]
             {
-                new("enemy", new DummyEntityFactory()),
-                new("boss", new DummyEntityFactory())
+                new("enemy", new EntityFactoryDummy()),
+                new("boss", new EntityFactoryDummy())
             };
 
-            var factory = new MultiEntityFactory<string, DummyEntity>(kvp);
+            var factory = new MultiEntityFactory<string, EntityDummy>(kvp);
 
             // Act & Assert
             Assert.DoesNotThrow(() => factory.Create("enemy"));
@@ -69,13 +69,13 @@ namespace Atomic.Entities
         public void Constructor_With_IEnumerable_Should_Initialize_Factories()
         {
             // Arrange
-            var dict = new Dictionary<string, IEntityFactory<DummyEntity>>
+            var dict = new Dictionary<string, IEntityFactory<EntityDummy>>
             {
-                ["orc"] = new DummyEntityFactory(),
-                ["goblin"] = new DummyEntityFactory()
+                ["orc"] = new EntityFactoryDummy(),
+                ["goblin"] = new EntityFactoryDummy()
             };
 
-            var factory = new MultiEntityFactory<string, DummyEntity>(dict);
+            var factory = new MultiEntityFactory<string, EntityDummy>(dict);
 
             // Act
             Assert.DoesNotThrow(() => factory.Create("orc"));
@@ -86,13 +86,13 @@ namespace Atomic.Entities
         public void Constructor_With_IReadOnlyDictionary_Should_Initialize_Factories()
         {
             // Arrange
-            IReadOnlyDictionary<string, IEntityFactory<DummyEntity>> readonlyDict =
-                new Dictionary<string, IEntityFactory<DummyEntity>>
+            IReadOnlyDictionary<string, IEntityFactory<EntityDummy>> readonlyDict =
+                new Dictionary<string, IEntityFactory<EntityDummy>>
                 {
-                    ["dragon"] = new DummyEntityFactory()
+                    ["dragon"] = new EntityFactoryDummy()
                 };
 
-            var factory = new MultiEntityFactory<string, DummyEntity>(readonlyDict);
+            var factory = new MultiEntityFactory<string, EntityDummy>(readonlyDict);
 
             // Act
             var entity = factory.Create("dragon");
@@ -105,18 +105,18 @@ namespace Atomic.Entities
         public void Add_Should_Throw_When_Key_AlreadyExists()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
-            factory.Add("enemy", new DummyEntityFactory());
+            var factory = new MultiEntityFactory<string, EntityDummy>();
+            factory.Add("enemy", new EntityFactoryDummy());
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => factory.Add("enemy", new DummyEntityFactory()));
+            Assert.Throws<ArgumentException>(() => factory.Add("enemy", new EntityFactoryDummy()));
         }
         
         [Test]
         public void Remove_Should_NotThrow_When_Key_NotExists()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
+            var factory = new MultiEntityFactory<string, EntityDummy>();
 
             // Act & Assert
             Assert.DoesNotThrow(() =>
@@ -129,8 +129,8 @@ namespace Atomic.Entities
         public void Add_WithNullKey_ThrowsException()
         {
             // Arrange
-            var factory = new MultiEntityFactory<string, DummyEntity>();
-            var dummyFactory = new DummyEntityFactory();
+            var factory = new MultiEntityFactory<string, EntityDummy>();
+            var dummyFactory = new EntityFactoryDummy();
 
             // Assert
             Assert.Throws<ArgumentNullException>(() => factory.Add(null, dummyFactory));
@@ -139,7 +139,7 @@ namespace Atomic.Entities
         [Test]
         public void EmptyFactory_Should_Throw_OnAnyKey()
         {
-            var factory = new MultiEntityFactory<string, DummyEntity>();
+            var factory = new MultiEntityFactory<string, EntityDummy>();
             Assert.Throws<KeyNotFoundException>(() => factory.Create("anything"));
         }
     }

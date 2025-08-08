@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void OnAdd_Should_DoNothing_WhenWorldIsInactiveAndNotSpawned()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>();
 
             // Act
@@ -23,7 +23,7 @@ namespace Atomic.Entities
         public void OnAdd_Should_SpawnEntity_WhenWorldIsSpawned()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>();
             world.Spawn();
 
@@ -39,7 +39,7 @@ namespace Atomic.Entities
         public void OnAdd_Should_SpawnAndActivateEntity_WhenWorldIsActive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>();
             world.Activate(); // Spawn + Activate
 

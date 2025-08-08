@@ -8,7 +8,7 @@ namespace Atomic.Entities
         public void Dispose_Should_DespawnEntities_IfSpawned()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Spawn();
 
@@ -24,7 +24,7 @@ namespace Atomic.Entities
         public void Dispose_Should_DeactivateAndDespawn_IfActive()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Activate(); // Spawn + Activate
 
@@ -41,7 +41,7 @@ namespace Atomic.Entities
         public void Dispose_Should_ClearEntities()
         {
             // Arrange
-            var world = new EntityWorld<Entity>(new DummyEntity(), new DummyEntity());
+            var world = new EntityWorld<Entity>(new EntityDummy(), new EntityDummy());
 
             // Act
             world.Dispose();
@@ -54,7 +54,7 @@ namespace Atomic.Entities
         public void Dispose_CanBeCalledMultipleTimes_Safely()
         {
             // Arrange
-            var entity = new DummyEntity();
+            var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
             world.Activate();
 

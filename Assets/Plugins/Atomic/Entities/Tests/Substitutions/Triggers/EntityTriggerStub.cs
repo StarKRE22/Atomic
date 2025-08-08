@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public class DummyTrigger : IEntityTrigger<IEntity>
+    public class EntityTriggerStub : IEntityTrigger<IEntity>
     {
         public Action<IEntity> Action;
         public bool SetActionCalled;
