@@ -11,7 +11,7 @@ namespace SampleGame
 
         public static bool Collect(IGameContext context, IGameEntity character, IGameEntity coin)
         {
-            if (!character.HasCoinTag())
+            if (!coin.HasCoinTag())
                 return false;
             
             //Earn money:

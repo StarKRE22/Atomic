@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using NUnit.Framework;
-using SampleGame;
 
-namespace GameExample.Engine
+namespace SampleGame
 {
     [TestFixture]
-    public sealed class CollectCoinTests
+    public partial class CoinUseCaseTests
     {
         [Test]
         public void CollectCoin_Successful()
@@ -46,11 +45,10 @@ namespace GameExample.Engine
         }
 
         [Test]
-        public void CollectCoin_EntityIsNotACoin_ReturnsFalse()
+        public void CollectCoin_EntityNotCoin_ReturnsFalse()
         {
             //Arrange:
             var coin = new TestGameEntity();
-            coin.AddCoinTag();
             coin.AddMoney(new Const<int>(10));
 
             var character = new TestGameEntity();
