@@ -39,10 +39,13 @@ namespace BeginnerGame
             context.AddInputMap(_inputMap);
             context.AddMoney(_money);
 
-            //Character:
-            GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);
-            context.AddCharacter(character);
-            context.AddBehaviour<CharacterMoveController>();
+            if (IsPlayMode())
+            {
+                //Character:
+                GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);
+                context.AddCharacter(character);
+                context.AddBehaviour<CharacterMoveController>();
+            }
 
             //Camera:
             context.AddBehaviour(new CameraFollowController(_cameraRoot, _cameraOffset));

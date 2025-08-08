@@ -3,23 +3,16 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class MoneyPresenter : IEntitySpawn<IUIContext>, IEntityDespawn
+    public sealed class MoneyPresenter : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
-        private readonly TeamType _teamType;
-
         private IReactiveValue<int> _money;
         private MoneyView _view;
 
-        public MoneyPresenter(TeamType teamType)
+        public void OnSpawn(IGameEntity entity)
         {
-            _teamType = teamType;
-        }
-
-        public void OnSpawn(IUIContext context)
-        {
-            _view = context.GetMoneyView();
+            _view = entity.GetMoneyView();
             
-            IPlayerContext player = PlayersUseCase.GetPlayerFor(GameContext.Instance, _teamType);
+            IPlayerContext player = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
             _money = player.GetMoney();
             _money.Observe(this.OnMoneyChanged);
         }
@@ -33,5 +26,7 @@ namespace BeginnerGame
         {
             _view.SetMoney(money, "Money: {0}");
         }
+
+ 
     }
 }

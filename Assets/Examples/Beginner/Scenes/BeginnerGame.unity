@@ -773,8 +773,12 @@ PrefabInstance:
       value: GameContext
       objectReference: {fileID: 0}
     - target: {fileID: 5524392739060135003, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
-      propertyPath: children.Array.size
-      value: 2
+      propertyPath: installInEditMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524392739060135003, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
+      propertyPath: _initialValueCapacity
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5524392739060135003, guid: 03e32f163c91d44f8a2863ceebd87758, type: 3}
       propertyPath: 'children.Array.data[0]'

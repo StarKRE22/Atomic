@@ -34,6 +34,8 @@ namespace BeginnerGame
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
 		public static readonly int TriggerEvents; // TriggerEvents
 		public static readonly int Money; // IValue<int>
+		public static readonly int Renderer; // Renderer
+		public static readonly int MoneyView; // MoneyView
 
 		static GameEntityAPI()
 		{
@@ -51,6 +53,8 @@ namespace BeginnerGame
 			TeamType = NameToId(nameof(TeamType));
 			TriggerEvents = NameToId(nameof(TriggerEvents));
 			Money = NameToId(nameof(Money));
+			Renderer = NameToId(nameof(Renderer));
+			MoneyView = NameToId(nameof(MoneyView));
 		}
 
 
@@ -280,6 +284,50 @@ namespace BeginnerGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMoney(this IGameEntity obj, IValue<int> value) => obj.SetValue(Money, value);
+
+		#endregion
+
+		#region Renderer
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Renderer GetRenderer(this IGameEntity obj) => obj.GetValue<Renderer>(Renderer);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetRenderer(this IGameEntity obj, out Renderer value) => obj.TryGetValue(Renderer, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddRenderer(this IGameEntity obj, Renderer value) => obj.AddValue(Renderer, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasRenderer(this IGameEntity obj) => obj.HasValue(Renderer);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelRenderer(this IGameEntity obj) => obj.DelValue(Renderer);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetRenderer(this IGameEntity obj, Renderer value) => obj.SetValue(Renderer, value);
+
+		#endregion
+
+		#region MoneyView
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static MoneyView GetMoneyView(this IGameEntity obj) => obj.GetValue<MoneyView>(MoneyView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetMoneyView(this IGameEntity obj, out MoneyView value) => obj.TryGetValue(MoneyView, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddMoneyView(this IGameEntity obj, MoneyView value) => obj.AddValue(MoneyView, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasMoneyView(this IGameEntity obj) => obj.HasValue(MoneyView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelMoneyView(this IGameEntity obj) => obj.DelValue(MoneyView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetMoneyView(this IGameEntity obj, MoneyView value) => obj.SetValue(MoneyView, value);
 
 		#endregion
     }

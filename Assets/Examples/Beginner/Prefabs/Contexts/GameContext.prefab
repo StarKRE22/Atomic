@@ -52,7 +52,9 @@ MonoBehaviour:
   useUnityLifecycle: 1
   installers:
   - {fileID: 1765928185858468627}
-  children: []
+  children:
+  - {fileID: 0}
+  - {fileID: 0}
   _initialBehaviourCapacity: 3
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
   _gameCountdown:
     _duration: 30
     _current: 0
+  _teamCatalog: {fileID: 11400000, guid: f67d605704bd0409c9307ca865b2001c, type: 2}
   _coinPool: {fileID: 3525287292529898423}
   _coinSpawnPeriod:
     _duration: 2

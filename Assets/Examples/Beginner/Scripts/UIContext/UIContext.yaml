@@ -1,7 +1,7 @@
 header: EntityAPI
 namespace: BeginnerGame
 className: UIContextAPI
-directory: BeginnerGame/Game/Scripts/UIContext/
+directory: Assets/Examples/Beginner/Scripts/UIContext/
 aggressiveInlining: true
 unsafe: false
 entityType: IUIContext
@@ -11,7 +11,6 @@ imports:
 - UnityEngine
 
 values:
-- MoneyView: MoneyView
 - GameCountdownView: GameCountdownView
 - PopupTransform: Transform
 

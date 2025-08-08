@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    [CreateAssetMenu(fileName = "InputMap", menuName = "SampleGame/InputMap")]
+    [CreateAssetMenu(fileName = "InputMap", menuName = "BeginnerGame/InputMap")]
     public sealed class InputMap : ScriptableObject
     {
         public KeyCode forward;

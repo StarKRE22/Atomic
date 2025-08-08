@@ -25,10 +25,6 @@ namespace BeginnerGame
             //Base:
             context.AddPopupTransform(_popupTransform);
             
-            //Money:
-            context.AddMoneyView(_moneyView);
-            context.AddBehaviour(new MoneyPresenter(_teamType));
-            
             //Countdown:
             context.AddGameCountdownView(_countdownView);
             context.AddBehaviour<CountdownPresenter>();

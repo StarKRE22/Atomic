@@ -1,7 +1,7 @@
 header: EntityAPI
 namespace: BeginnerGame
 className: PlayerContextAPI
-directory: Assets/BeginnerGame/Scripts/PlayerContext/
+directory: Assets/Examples/Beginner/Scripts/PlayerContext/
 aggressiveInlining: true
 unsafe: false
 entityType: IPlayerContext

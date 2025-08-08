@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4311444741787691024}
   - component: {fileID: 869558024427659874}
   - component: {fileID: 5179633123429045676}
+  - component: {fileID: 7440937513640963367}
   - component: {fileID: 185084392699458948}
   - component: {fileID: 3728482585526971170}
   - component: {fileID: 2937108498836211073}
@@ -87,6 +88,7 @@ MonoBehaviour:
   disposeValues: 1
   useUnityLifecycle: 1
   installers:
+  - {fileID: 7440937513640963367}
   - {fileID: 5179633123429045676}
   children: []
   _initialBehaviourCapacity: 0
@@ -109,8 +111,21 @@ MonoBehaviour:
   _moveSpeed:
     value: 3
   _rotationSpeed:
-    value: 1440
+    value: 720
   _triggerEvents: {fileID: 185084392699458948}
+--- !u!114 &7440937513640963367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163934293965024875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e945a1f88154fae82079c8d7338078f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 4592268431962441901}
 --- !u!114 &185084392699458948
 MonoBehaviour:
   m_ObjectHideFlags: 0

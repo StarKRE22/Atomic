@@ -14,8 +14,8 @@ namespace Atomic.Entities
         /// <summary>
         /// Checks whether a object is marked to support edit mode lifecycle.
         /// </summary>
-        internal static bool IsExecuteInEditModeDefined(object obj) =>
-            obj.GetType().IsDefined(typeof(ExecuteInEditModeAttribute));
+        internal static bool IsRunInEditModeDefined(object obj) =>
+            obj.GetType().IsDefined(typeof(RunInEditModeAttribute));
 
         /// <summary>
         /// Computes the next prime number greater than or equal to the specified value.

@@ -12,7 +12,7 @@ namespace Atomic.Entities
     /// Useful for simulating runtime logic inside the Unity Editor without entering Play Mode.
     /// </remarks>
     [AttributeUsage(AttributeTargets.Class)]
-    public sealed class ExecuteInEditModeAttribute : Attribute
+    public sealed class RunInEditModeAttribute : Attribute
     {
     }
 }

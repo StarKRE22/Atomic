@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEngine;
@@ -50,6 +51,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns <c>true</c> if the application is in Play Mode.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected static bool IsPlayMode()
         {
 #if UNITY_EDITOR
@@ -62,6 +64,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns <c>true</c> if the application is in Edit Mode and not compiling.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected static bool IsEditMode()
         {
 #if UNITY_EDITOR
