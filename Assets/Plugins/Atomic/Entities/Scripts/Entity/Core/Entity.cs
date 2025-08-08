@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Atomic.Entities
 {
@@ -109,6 +110,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Removes all subscriptions and callbacks associated with this entity.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void UnsubscribeAll()
         {
             this.OnStateChanged = null;

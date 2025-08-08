@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using static Atomic.Entities.InternalUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -15,12 +14,6 @@ namespace Atomic.Entities
 {
     public partial class SceneEntity
     {
-        /// <summary>
-        /// Static comparer used to compare behaviours.
-        /// </summary>
-        private static readonly IEqualityComparer<IEntityBehaviour> s_behaviourComparer =
-            EqualityComparer<IEntityBehaviour>.Default;
-
         /// <summary>
         /// Shared pool used to temporarily store behaviour arrays.
         /// </summary>
@@ -57,13 +50,6 @@ namespace Atomic.Entities
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ConstructBehaviours()
-        {
-            _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
-            _behaviourCount = 0;
-        }
-        
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
         /// </summary>
@@ -99,17 +85,23 @@ namespace Atomic.Entities
             if (behaviour == null)
                 throw new ArgumentNullException(nameof(behaviour));
 
-            if (!AddIfAbsent(
-                    ref _behaviours,
-                    ref _behaviourCount,
-                    behaviour,
-                    s_behaviourComparer,
-                    _initialBehaviourCapacity
-                ))
-                return;
+            //Check for contains:
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] == behaviour)
+                    return;
 
-            if (_spawned && behaviour is IEntitySpawn initBehaviour)
-                initBehaviour.OnSpawn(this);
+            //Check for capacity:
+            int capacity = _behaviours.Length;
+            if (_behaviourCount == capacity)
+                Array.Resize(ref _behaviours, capacity == 0 ? 1 : capacity * 2);
+
+            //Push as last
+            _behaviours[_behaviourCount] = behaviour;
+            _behaviourCount++;
+
+            //Check for lifecycle
+            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
+                spawnBehaviour.OnSpawn(this);
 
             if (_active)
                 this.ActivateBehaviour(behaviour);
@@ -124,22 +116,19 @@ namespace Atomic.Entities
         public bool DelBehaviour<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
-            {
-                IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is T)
-                    return this.DelBehaviour(behaviour);
-            }
+                if (_behaviours[i] is T)
+                    return this.DelBehaviourAt(i);
 
             return false;
         }
-        
+
         public void DelAllBehaviours<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T)
                     this.DelBehaviourAt(i);
         }
-        
+
         /// <summary>
         /// Removes the behaviour at the specified index.
         /// </summary>
@@ -151,6 +140,7 @@ namespace Atomic.Entities
 
             IEntityBehaviour behaviour = _behaviours[index];
 
+            //Shift other behaviours
             _behaviourCount--;
             for (int i = index; i < _behaviourCount; i++)
                 _behaviours[i] = _behaviours[i + 1];
@@ -174,18 +164,11 @@ namespace Atomic.Entities
             if (behaviour == null)
                 return false;
 
-            if (_behaviours == null || !Remove(ref _behaviours, ref _behaviourCount, behaviour, s_behaviourComparer))
-                return false;
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] == behaviour)
+                    return this.DelBehaviourAt(i);
 
-            if (_active)
-                this.InactivateBehaviour(behaviour);
-
-            if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.OnDespawn(this);
-
-            this.OnBehaviourDeleted?.Invoke(this, behaviour);
-            this.OnStateChanged?.Invoke();
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -196,22 +179,22 @@ namespace Atomic.Entities
             if (_behaviourCount == 0)
                 return;
 
-            int removedCount = _behaviourCount;
-            IEntityBehaviour[] removedBehaviours = s_behaviourPool.Rent(removedCount);
-            Array.Copy(_behaviours, removedBehaviours, removedCount);
+            int count = _behaviourCount;
+            IEntityBehaviour[] clearedBehaviours = s_behaviourPool.Rent(count);
+            Array.Copy(_behaviours, clearedBehaviours, count);
 
             _behaviourCount = 0;
 
             try
             {
-                for (int i = 0; i < removedCount; i++)
-                    this.OnBehaviourDeleted?.Invoke(this, removedBehaviours[i]);
+                for (int i = 0; i < count; i++)
+                    this.OnBehaviourDeleted?.Invoke(this, clearedBehaviours[i]);
 
                 this.OnStateChanged?.Invoke();
             }
             finally
             {
-                s_behaviourPool.Return(removedBehaviours);
+                s_behaviourPool.Return(clearedBehaviours);
             }
         }
 
@@ -223,7 +206,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T result)
                     return result;
-            
+
             throw new Exception($"Entity Behaviour of type {typeof(T).Name} is not found!");
         }
 
@@ -233,11 +216,13 @@ namespace Atomic.Entities
         public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
+            {
                 if (_behaviours[i] is T tBehaviour)
                 {
                     behaviour = tBehaviour;
                     return true;
                 }
+            }
 
             behaviour = default;
             return false;
@@ -248,9 +233,10 @@ namespace Atomic.Entities
         /// </summary>
         public IEntityBehaviour GetBehaviourAt(int index)
         {
-            return index < 0 || index >= _behaviourCount
-                ? throw new IndexOutOfRangeException($"Index {index} is out of bounds.")
-                : _behaviours[index];
+            if (index < 0 || index >= _behaviourCount)
+                throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
+
+            return _behaviours[index];
         }
 
         /// <summary>
@@ -263,15 +249,56 @@ namespace Atomic.Entities
             return result;
         }
 
+        public T[] GetBehaviours<T>() where T : IEntityBehaviour
+        {
+            if (_behaviourCount == 0)
+                return Array.Empty<T>();
+
+            Span<int> indexes = stackalloc int[_behaviourCount];
+            int count = 0;
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is T)
+                    indexes[count++] = i;
+
+            T[] result = new T[count];
+            for (int i = 0; i < count; i++)
+                result[i] = (T) _behaviours[indexes[i]];
+
+            return result;
+        }
+
         /// <summary>
         /// Copies all behaviours into the provided array.
         /// </summary>
         public int CopyBehaviours(IEntityBehaviour[] results)
         {
-            if (_behaviours != null)
-                Array.Copy(_behaviours, results, _behaviourCount);
+            if (results == null)
+                throw new ArgumentNullException(nameof(results));
 
+            Array.Copy(_behaviours, results, _behaviourCount);
             return _behaviourCount;
+        }
+
+        /// <summary>Copies behaviours of type <typeparamref name="T"/> into <paramref name="results"/>.</summary>
+        /// <returns>Number of items written.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour
+        {
+            if (results == null)
+                throw new ArgumentNullException(nameof(results));
+
+            int count = 0;
+            int capacity = results.Length;
+            
+            if (capacity == 0)
+                return 0;
+
+            for (int i = 0; i < _behaviourCount && count < capacity; i++)
+                if (_behaviours[i] is T behaviour)
+                    results[count++] = behaviour;
+
+            return count;
         }
 
         /// <summary>
@@ -295,7 +322,7 @@ namespace Atomic.Entities
             {
                 _entity = entity;
                 _index = -1;
-                _current = default;
+                _current = null;
             }
 
             public bool MoveNext()
@@ -310,13 +337,20 @@ namespace Atomic.Entities
             public void Reset()
             {
                 _index = -1;
-                _current = default;
+                _current = null;
             }
 
             public void Dispose()
             {
                 //Nothing...
             }
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void ConstructBehaviours()
+        {
+            _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
+            _behaviourCount = 0;
         }
     }
 }

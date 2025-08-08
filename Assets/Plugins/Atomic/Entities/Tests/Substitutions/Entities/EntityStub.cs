@@ -148,7 +148,17 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
+        public T[] GetBehaviours<T>() where T : IEntityBehaviour
+        {
+            throw new NotImplementedException();
+        }
+
         public int CopyBehaviours(IEntityBehaviour[] results)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour
         {
             throw new NotImplementedException();
         }

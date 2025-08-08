@@ -107,6 +107,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Despawns the entity.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Despawn()
         {
             if (!_spawned)
@@ -234,6 +235,7 @@ namespace Atomic.Entities
                 _lateUpdates[i].OnLateUpdate(this, deltaTime);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ActivateBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour is IEntityActive activate)
@@ -249,6 +251,7 @@ namespace Atomic.Entities
                 Add(ref _lateUpdates, ref _lateUpdateCount, lateUpdate);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void InactivateBehaviour(IEntityBehaviour behaviour)
         {
             if (behaviour is IEntityInactive inactive)

@@ -191,8 +191,11 @@ namespace Atomic.Entities
         public void DelAllBehaviours<T>() where T : IEntityBehaviour => _source.DelAllBehaviours<T>();
 
         public void ClearBehaviours() => _source.ClearBehaviours();
-
+        
         public int CopyBehaviours(IEntityBehaviour[] results) => _source.CopyBehaviours(results);
+        public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour => _source.CopyBehaviours(results);
+
+        public T[] GetBehaviours<T>() where T : IEntityBehaviour => _source.GetBehaviours<T>();
         public IEntityBehaviour[] GetBehaviours() => _source.GetBehaviours();
         public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator() => _source.GetBehaviourEnumerator();
 

@@ -407,6 +407,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Clears all values from the entity.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearValues()
         {
             if (_valueCount == 0)

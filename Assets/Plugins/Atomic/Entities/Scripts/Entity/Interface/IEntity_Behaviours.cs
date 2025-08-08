@@ -30,7 +30,7 @@ namespace Atomic.Entities
         /// Gets the first behaviour of the specified type.
         /// </summary>
         T GetBehaviour<T>() where T : IEntityBehaviour;
-
+        
         /// <summary>
         /// Tries to get a behaviour of the specified type.
         /// </summary>
@@ -67,11 +67,15 @@ namespace Atomic.Entities
         /// Returns all behaviours attached to the entity.
         /// </summary>
         IEntityBehaviour[] GetBehaviours();
+        
+        T[] GetBehaviours<T>() where T : IEntityBehaviour;
 
         /// <summary>
         /// Copies behaviours into the provided array.
         /// </summary>
         int CopyBehaviours(IEntityBehaviour[] results);
+        
+        int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour; 
 
         /// <summary>
         /// Enumerates all behaviours.

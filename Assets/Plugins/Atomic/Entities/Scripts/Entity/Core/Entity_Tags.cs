@@ -47,10 +47,8 @@ namespace Atomic.Entities
 
             _tagSlots = new TagSlot[size];
             _tagBuckets = new int[size];
-
-            for (int i = 0; i < size; i++)
-                _tagBuckets[i] = UNDEFINED_INDEX;
-
+            Array.Fill(_tagBuckets, UNDEFINED_INDEX);
+            
             _tagCount = 0;
             _tagLastIndex = 0;
             _tagFreeList = UNDEFINED_INDEX;
@@ -79,7 +77,7 @@ namespace Atomic.Entities
         /// </summary>
         public bool DelTag(int key)
         {
-            if (!this.DelTagInternal(in key))
+            if (!this.DelTagInternal(key))
                 return false;
 
             this.OnTagDeleted?.Invoke(this, key);
@@ -120,6 +118,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Clears all tags from the entity.
         /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ClearTags()
         {
             if (_tagCount == 0)
@@ -177,7 +176,7 @@ namespace Atomic.Entities
             }
         }
 
-        private bool DelTagInternal(in int key)
+        private bool DelTagInternal(int key)
         {
             if (_tagCount == 0)
                 return false;
