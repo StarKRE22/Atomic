@@ -26,13 +26,11 @@ namespace SampleGame
         public static IEntity Spawn(IGameContext gameContext)
         {
             IGameEntity coin = gameContext.GetCoinPool().Rent();
-
-            Vector3 spawnPoint = RandomSpawnPoint(gameContext);
-            coin.GetTransform().position = spawnPoint;
+            coin.GetPosition().Value = RandomSpawnPosition(gameContext);
             return coin;
         }
 
-        private static Vector3 RandomSpawnPoint(IGameContext gameContext)
+        private static Vector3 RandomSpawnPosition(IGameContext gameContext)
         {
             Bounds area = gameContext.GetCoinSpawnArea();
             Vector3 min = area.min;

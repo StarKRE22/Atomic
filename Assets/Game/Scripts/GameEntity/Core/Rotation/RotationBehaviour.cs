@@ -7,13 +7,13 @@ namespace SampleGame
 {
     public sealed class RotationBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
-        private Transform _transform;
+        private IVariable<Quaternion> _rotation;
         private IValue<float> _rotationSpeed;
         private IValue<Vector3> _rotationDirection;
 
         public void OnSpawn(IGameEntity entity)
         {
-            _transform = entity.GetTransform();
+            _rotation = entity.GetRotation();
             _rotationSpeed = entity.GetRotationSpeed();
             _rotationDirection = entity.GetRotationDirection();
         }
@@ -21,14 +21,14 @@ namespace SampleGame
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             RotationUseCase.RotationStep(
-                _transform.rotation,
+                _rotation.Value,
                 _rotationDirection.Value,
                 _rotationSpeed.Value,
                 deltaTime,
                 out quaternion next
             );
             
-            _transform.rotation = next;
+            _rotation.Value = next;
         }
     }
 }

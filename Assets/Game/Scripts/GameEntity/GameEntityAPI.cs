@@ -25,8 +25,8 @@ namespace SampleGame
 		public static readonly int Coin;
 
 		///Values
-		public static readonly int Transform; // Transform
-		public static readonly int GameObject; // GameObject
+		public static readonly int Position; // IVariable<Vector3>
+		public static readonly int Rotation; // IVariable<Quaternion>
 		public static readonly int MoveSpeed; // IValue<float>
 		public static readonly int MoveDirection; // IVariable<Vector3>
 		public static readonly int RotationSpeed; // IValue<float>
@@ -42,8 +42,8 @@ namespace SampleGame
 			Coin = NameToId(nameof(Coin));
 
 			//Values
-			Transform = NameToId(nameof(Transform));
-			GameObject = NameToId(nameof(GameObject));
+			Position = NameToId(nameof(Position));
+			Rotation = NameToId(nameof(Rotation));
 			MoveSpeed = NameToId(nameof(MoveSpeed));
 			MoveDirection = NameToId(nameof(MoveDirection));
 			RotationSpeed = NameToId(nameof(RotationSpeed));
@@ -85,47 +85,47 @@ namespace SampleGame
 
 		///Value Extensions
 
-		#region Transform
+		#region Position
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Transform GetTransform(this IGameEntity obj) => obj.GetValue<Transform>(Transform);
+		public static IVariable<Vector3> GetPosition(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTransform(this IGameEntity obj, out Transform value) => obj.TryGetValue(Transform, out value);
+		public static bool TryGetPosition(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(Position, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTransform(this IGameEntity obj, Transform value) => obj.AddValue(Transform, value);
+		public static void AddPosition(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(Position, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTransform(this IGameEntity obj) => obj.HasValue(Transform);
+		public static bool HasPosition(this IGameEntity obj) => obj.HasValue(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTransform(this IGameEntity obj) => obj.DelValue(Transform);
+		public static bool DelPosition(this IGameEntity obj) => obj.DelValue(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTransform(this IGameEntity obj, Transform value) => obj.SetValue(Transform, value);
+		public static void SetPosition(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(Position, value);
 
 		#endregion
 
-		#region GameObject
+		#region Rotation
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static GameObject GetGameObject(this IGameEntity obj) => obj.GetValue<GameObject>(GameObject);
+		public static IVariable<Quaternion> GetRotation(this IGameEntity obj) => obj.GetValue<IVariable<Quaternion>>(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetGameObject(this IGameEntity obj, out GameObject value) => obj.TryGetValue(GameObject, out value);
+		public static bool TryGetRotation(this IGameEntity obj, out IVariable<Quaternion> value) => obj.TryGetValue(Rotation, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddGameObject(this IGameEntity obj, GameObject value) => obj.AddValue(GameObject, value);
+		public static void AddRotation(this IGameEntity obj, IVariable<Quaternion> value) => obj.AddValue(Rotation, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasGameObject(this IGameEntity obj) => obj.HasValue(GameObject);
+		public static bool HasRotation(this IGameEntity obj) => obj.HasValue(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelGameObject(this IGameEntity obj) => obj.DelValue(GameObject);
+		public static bool DelRotation(this IGameEntity obj) => obj.DelValue(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetGameObject(this IGameEntity obj, GameObject value) => obj.SetValue(GameObject, value);
+		public static void SetRotation(this IGameEntity obj, IVariable<Quaternion> value) => obj.SetValue(Rotation, value);
 
 		#endregion
 

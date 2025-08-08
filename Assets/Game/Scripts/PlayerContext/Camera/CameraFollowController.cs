@@ -29,7 +29,7 @@ namespace SampleGame
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void UpdatePosition()
         {
-            _cameraRoot.position = _character.GetTransform().position + _cameraOffset;
+            _cameraRoot.position = _character.GetPosition().Value + _cameraOffset;
         }
     }
 }

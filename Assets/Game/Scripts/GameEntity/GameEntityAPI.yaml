@@ -17,9 +17,9 @@ tags:
 
 values:
 
-#Base
-- Transform: Transform
-- GameObject: GameObject
+#Transform
+- Position: IVariable<Vector3>
+- Rotation: IVariable<Quaternion>
 
 #Movement
 - MoveSpeed: IValue<float>

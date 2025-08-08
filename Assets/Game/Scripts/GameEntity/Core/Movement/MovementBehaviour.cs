@@ -7,13 +7,13 @@ namespace SampleGame
 {
     public sealed class MovementBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
-        private Transform _transform;
+        private IVariable<Vector3> _position;
         private IValue<float> _moveSpeed;
         private IValue<Vector3> _moveDirection;
 
         public void OnSpawn(IGameEntity entity)
         {
-            _transform = entity.GetTransform();
+            _position = entity.GetPosition();
             _moveSpeed = entity.GetMoveSpeed();
             _moveDirection = entity.GetMoveDirection();
         }
@@ -21,13 +21,13 @@ namespace SampleGame
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             MovementUseCase.MovementStep(
-                _transform.position,
+                _position.Value,
                 _moveDirection.Value,
                 _moveSpeed.Value,
                 deltaTime,
                 out float3 next
             );
-            _transform.position = next;
+            _position.Value = next;
         }
     }
 }
