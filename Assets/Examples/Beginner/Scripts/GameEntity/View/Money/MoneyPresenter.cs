@@ -4,7 +4,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class MoneyPresenter : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class MoneyPresenter : IEntitySpawn<IGameEntity>, IEntityActive, IEntityDespawn
     {
         private MoneyView _view;
         private IReactiveValue<int> _money;
@@ -15,7 +15,12 @@ namespace BeginnerGame
             
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
             _money = playerContext.GetMoney();
-            _money.Observe(this.OnMoneyChanged);
+            _money.Subscribe(this.OnMoneyChanged);
+        }
+
+        public void OnActive(IEntity entity)
+        {
+            _view.SetMoney($"Money: {_money.Value}");
         }
 
         public void OnDespawn(IEntity entity)
@@ -25,7 +30,7 @@ namespace BeginnerGame
 
         private void OnMoneyChanged(int money)
         {
-            _view.SetMoney(money, "Money: {0}");
+            _view.ChangeMoney($"Money: {money}");
         }
     }
 }

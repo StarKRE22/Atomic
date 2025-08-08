@@ -269,6 +269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CountdownView
       objectReference: {fileID: 0}
+    - target: {fileID: 5136541209655289177, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
+      propertyPath: m_text
+      value: 00:00
+      objectReference: {fileID: 0}
     - target: {fileID: 7124285366273285062, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -335,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7124285366273285062, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7124285366273285062, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

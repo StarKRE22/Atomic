@@ -1,5 +1,6 @@
 using Atomic.Elements;
 using Atomic.Entities;
+using UnityEngine;
 
 namespace BeginnerGame
 {
@@ -22,7 +23,9 @@ namespace BeginnerGame
 
         private void OnTimeChanged(float time)
         {
-            _view.SetTime($"Remaining time: {time:F0}");
+            int minutes = Mathf.FloorToInt(time / 60f);
+            int seconds = Mathf.FloorToInt(time % 60f);
+            _view.SetTime($"{minutes:00}:{seconds:00}");
         }
     }
 }

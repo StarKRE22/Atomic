@@ -5,6 +5,7 @@ namespace BeginnerGame
     public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityDespawn
     {
         private IUIContext _context;
+        private TeamCatalog _catalog;
         private GameOverView _view;
 
         public void OnSpawn(IUIContext context)
@@ -13,8 +14,8 @@ namespace BeginnerGame
             _view = context.GetGameOverView();
 
             TeamType teamType = GameContext.Instance.GetWinnerTeam().Value;
-            _view.SetMessage($"{teamType} PLAYER WINS");
-            _view.SetMessageColor(teamType.GetColor());
+            _view.SetMessage($"{teamType} PLAYER \nWINS");
+            _view.SetMessageColor(_catalog.GetInfo(teamType).Material.color);
             _view.OnRestartClicked += RestartGameUseCase.RestartGame;
             _view.OnCloseClicked += this.OnCloseClicked;
         }

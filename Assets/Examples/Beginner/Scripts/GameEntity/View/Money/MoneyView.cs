@@ -9,24 +9,41 @@ namespace BeginnerGame
         [SerializeField]
         private TMP_Text _valueText;
 
+        [Header("Animation")]
         [SerializeField]
-        private float _animationDuration = 0.5f;
+        private float _bounceScale = 1.2f;
 
-        private int _currentValue;
+        [SerializeField]
+        private float _bounceDuration = 0.2f;
 
-        public void SetMoney(int newValue, string format)
+        private Tween _bounceTween;
+
+        public void SetMoney(string money)
         {
-            DOTween.Kill(_valueText);
+            _valueText.text = money;
+        }
 
-            DOTween.To(
-                    () => _currentValue,
-                    x =>
-                    {
-                        _currentValue = x;
-                        _valueText.text = string.Format(format, _currentValue);
-                    }, newValue, _animationDuration)
+        public void ChangeMoney(string money)
+        {
+            this.SetMoney(money);
+            this.AnimateBounce();
+        }
+
+        private void AnimateBounce()
+        {
+            _bounceTween?.Kill();
+
+            Vector3 originalScale = _valueText.rectTransform.localScale;
+
+            _bounceTween = _valueText.rectTransform
+                .DOScale(originalScale * _bounceScale, _bounceDuration)
                 .SetEase(Ease.OutQuad)
-                .SetTarget(_valueText);
+                .OnComplete(() =>
+                {
+                    _valueText.rectTransform
+                        .DOScale(originalScale, _bounceDuration)
+                        .SetEase(Ease.OutBounce);
+                });
         }
     }
 }
