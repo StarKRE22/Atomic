@@ -13,6 +13,9 @@ namespace SampleGame
         [SerializeField]
         private Cooldown _gameCountdown;
 
+        [SerializeField]
+        private TeamCatalog _teamCatalog;
+
         [Header("Coin System")]
         [SerializeField]
         private CoinPool _coinPool;
@@ -27,6 +30,7 @@ namespace SampleGame
         {
             context.AddWorldTransform(_worldTransform);
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
+            context.AddTeamCatalog(_teamCatalog);
 
             //Game countdown
             context.AddGameCountdown(_gameCountdown);

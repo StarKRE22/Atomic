@@ -27,6 +27,7 @@ namespace SampleGame
 		public static readonly int GameCountdown; // ICooldown
 		public static readonly int GameOverEvent; // IEvent
 		public static readonly int WinnerTeam; // IReactiveVariable<TeamType>
+		public static readonly int TeamCatalog; // TeamCatalog
 		public static readonly int CoinPool; // IEntityPool<IGameEntity>
 		public static readonly int CoinSpawnArea; // Bounds
 
@@ -38,6 +39,7 @@ namespace SampleGame
 			GameCountdown = NameToId(nameof(GameCountdown));
 			GameOverEvent = NameToId(nameof(GameOverEvent));
 			WinnerTeam = NameToId(nameof(WinnerTeam));
+			TeamCatalog = NameToId(nameof(TeamCatalog));
 			CoinPool = NameToId(nameof(CoinPool));
 			CoinSpawnArea = NameToId(nameof(CoinSpawnArea));
 		}
@@ -152,6 +154,28 @@ namespace SampleGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetWinnerTeam(this IGameContext obj, IReactiveVariable<TeamType> value) => obj.SetValue(WinnerTeam, value);
+
+		#endregion
+
+		#region TeamCatalog
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static TeamCatalog GetTeamCatalog(this IGameContext obj) => obj.GetValue<TeamCatalog>(TeamCatalog);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTeamCatalog(this IGameContext obj, out TeamCatalog value) => obj.TryGetValue(TeamCatalog, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddTeamCatalog(this IGameContext obj, TeamCatalog value) => obj.AddValue(TeamCatalog, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTeamCatalog(this IGameContext obj) => obj.HasValue(TeamCatalog);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTeamCatalog(this IGameContext obj) => obj.DelValue(TeamCatalog);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTeamCatalog(this IGameContext obj, TeamCatalog value) => obj.SetValue(TeamCatalog, value);
 
 		#endregion
 

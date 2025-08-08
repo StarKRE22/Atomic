@@ -20,6 +20,7 @@ values:
 - GameCountdown: ICooldown
 - GameOverEvent: IEvent
 - WinnerTeam: IReactiveVariable<TeamType>
+- TeamCatalog: TeamCatalog
 
 #Coins
 - CoinPool: IEntityPool<IGameEntity>
