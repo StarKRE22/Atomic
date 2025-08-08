@@ -1,7 +1,7 @@
 header: EntityAPI
 namespace: SampleGame
 className: PlayerContextAPI
-directory: Assets/Game/Scripts/PlayerContext/
+directory: Assets/SampleGame/Scripts/PlayerContext/
 aggressiveInlining: true
 unsafe: false
 entityType: IPlayerContext

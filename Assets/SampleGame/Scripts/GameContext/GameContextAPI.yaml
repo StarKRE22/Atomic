@@ -1,7 +1,7 @@
 header: EntityAPI
 namespace: SampleGame
 className: GameContextAPI
-directory: Assets/Game/Scripts/GameContext/
+directory: Assets/SampleGame/Scripts/GameContext/
 aggressiveInlining: true
 unsafe: false
 entityType: IGameContext

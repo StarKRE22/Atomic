@@ -1,6 +1,6 @@
 header: EntityAPI
 className: GameEntityAPI
-directory: Assets/Game/Scripts/GameEntity/
+directory: Assets/SampleGame/Scripts/GameEntity/
 aggressiveInlining: true
 unsafe: false
 namespace: SampleGame
