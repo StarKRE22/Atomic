@@ -23,16 +23,10 @@ namespace SampleGame
             entity.AddBehaviour<CharacterPickUpBehaviour>();
 
             //Base:
-            entity.AddPosition(new ProxyVariable<Vector3>(
-                getter: () => this.transform.position,
-                setter: value => this.transform.position = value)
-            );
-            entity.AddRotation(new ProxyVariable<Quaternion>(
-                getter: () => this.transform.rotation,
-                setter: value => this.transform.rotation = value)
-            );
-            entity.AddTriggerEvents(_triggerEvents);
+            entity.AddPosition(new TransformPositionVariable(this.transform));
+            entity.AddRotation(new TransformRotationVariable(this.transform));
             entity.AddTeamType(new ReactiveVariable<TeamType>());
+            entity.AddTriggerEvents(_triggerEvents);
 
             //Movement:
             entity.AddMoveSpeed(_moveSpeed);

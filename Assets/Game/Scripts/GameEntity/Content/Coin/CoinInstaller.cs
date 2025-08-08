@@ -12,14 +12,8 @@ namespace SampleGame
         protected override void Install(IGameEntity entity)
         {
             entity.AddCoinTag();
-            entity.AddPosition(new ProxyVariable<Vector3>(
-                getter: () => this.transform.position,
-                setter: value => this.transform.position = value)
-            );
-            entity.AddRotation(new ProxyVariable<Quaternion>(
-                getter: () => this.transform.rotation,
-                setter: value => this.transform.rotation = value)
-            );
+            entity.AddPosition(new TransformPositionVariable(this.transform));
+            entity.AddRotation(new TransformRotationVariable(this.transform));
             entity.AddMoney(_money);
         }
     }
