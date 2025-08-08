@@ -897,6 +897,10 @@ MonoBehaviour:
   messageText: {fileID: 1728999239984265108}
   restartButton: {fileID: 6842272032818796119}
   closeButton: {fileID: 5711210592632880339}
+  bounceDuration: 1
+  popupDuration: 0.4
+  popupOvershoot: 1.25
+  _content: {fileID: 5947663206441050639}
 --- !u!1 &8875809878241579647
 GameObject:
   m_ObjectHideFlags: 0

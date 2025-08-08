@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityDespawn
+    public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityActive, IEntityDespawn
     {
         private IUIContext _context;
         private TeamCatalog _catalog;
@@ -10,6 +10,7 @@ namespace BeginnerGame
 
         public void OnSpawn(IUIContext context)
         {
+            _catalog = GameContext.Instance.GetTeamCatalog();
             _context = context;
             _view = context.GetGameOverView();
 
@@ -18,6 +19,11 @@ namespace BeginnerGame
             _view.SetMessageColor(_catalog.GetInfo(teamType).Material.color);
             _view.OnRestartClicked += RestartGameUseCase.RestartGame;
             _view.OnCloseClicked += this.OnCloseClicked;
+        }
+
+        public void OnActive(IEntity entity)
+        {
+            _view.Show();
         }
 
         public void OnDespawn(IEntity context)

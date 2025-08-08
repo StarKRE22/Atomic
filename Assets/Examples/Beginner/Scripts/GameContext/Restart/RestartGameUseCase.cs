@@ -5,7 +5,7 @@ namespace BeginnerGame
 {
     public static class RestartGameUseCase
     {
-        private const string SCENE_NAME = "SampleGame";
+        private const string SCENE_NAME = "BeginnerGame";
         
         public static void RestartGame()
         {

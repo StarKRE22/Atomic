@@ -41,7 +41,7 @@ namespace Atomic.Entities
         /// <param name="action">The action to invoke when enabled.</param>
         /// <returns>A disposable <see cref="ActivateSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ActivateSubscription WhenEnable(this IActivatable source, Action action)
+        public static ActivateSubscription WhenActive(this IActivatable source, Action action)
         {
             source.OnActivated += action;
             return new ActivateSubscription(source, action);
@@ -52,12 +52,12 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The activatable object.</param>
         /// <param name="action">The action to invoke when disabled.</param>
-        /// <returns>A disposable <see cref="DeactivateSubscription"/> that unsubscribes when disposed.</returns>
+        /// <returns>A disposable <see cref="InactivateSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static DeactivateSubscription WhenDisable(this IActivatable source, Action action)
+        public static InactivateSubscription WhenInactive(this IActivatable source, Action action)
         {
             source.OnInactivated += action;
-            return new DeactivateSubscription(source, action);
+            return new InactivateSubscription(source, action);
         }
 
         /// <summary>

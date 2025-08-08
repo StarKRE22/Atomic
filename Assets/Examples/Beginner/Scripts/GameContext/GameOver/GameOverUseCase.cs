@@ -7,9 +7,10 @@ namespace BeginnerGame
     {
         public static void GameOver(IGameContext context)
         {
-            Time.timeScale = 0;
             context.GetWinnerTeam().Value = GetWinnerTeam(context);
             context.GetGameOverEvent().Invoke();
+            
+            context.Inactivate();
             Debug.Log("Game Over!");
         }
 

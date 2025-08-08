@@ -28,7 +28,6 @@ namespace BeginnerGame
 
         [SerializeField]
         private Vector3 _cameraOffset;
-
         
         protected override void Install(IPlayerContext context)
         {
@@ -51,6 +50,10 @@ namespace BeginnerGame
 
             //Camera:
             context.AddBehaviour(new CameraFollowController(_cameraOffset));
+            
+            //Inactivate
+            gameContext.WhenInactive(context.Inactivate);
+            gameContext.WhenInactive(context.GetCharacter().Inactivate);
         }
     }
 }
