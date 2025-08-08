@@ -1,0 +1,18 @@
+header: EntityAPI
+namespace: BeginnerGame
+className: PlayerContextAPI
+directory: Assets/BeginnerGame/Scripts/PlayerContext/
+aggressiveInlining: true
+unsafe: false
+entityType: IPlayerContext
+
+imports:
+- BeginnerGame
+- Atomic.Elements
+
+values:
+- InputMap: InputMap
+- Character: IGameEntity
+- Money: IReactiveVariable<int>
+- TeamType: IValue<TeamType>
+

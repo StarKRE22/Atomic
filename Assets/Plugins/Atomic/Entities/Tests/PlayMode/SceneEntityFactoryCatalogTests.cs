@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using SampleGame;
+using BeginnerGame;
 using UnityEngine;
 
 namespace Atomic.Entities
