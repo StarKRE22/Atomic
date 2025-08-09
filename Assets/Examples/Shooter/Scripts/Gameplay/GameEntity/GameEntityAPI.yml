@@ -16,15 +16,20 @@ tags:
 
 values:
 
-# Main
-- GameObject: GameObject
-- Transform: Transform
+#Transform
+- Position: IReactiveVariable<Vector3>
+- Rotation: IReactiveVariable<Quaternion>
 
 #Movement  
-- MoveSpeed: IValue<float>
-- AngularSpeed: IValue<float>
-- MoveCondition: IExpression<bool>
-- MoveDirection: IReactiveVariable<Vector3>
+- MovementSpeed: IValue<float>
+- MovementCondition: IExpression<bool>
+- MovementDirection: IReactiveVariable<Vector3>
+  
+#Rotate  
+- RotationCondition: IExpression<bool>
+- RotationSpeed: IValue<float>
+- RotationDirection: IReactiveVariable<Quaternion>
+
 
 #Life
 - Health: Health
@@ -37,7 +42,7 @@ values:
 - Team: IReactiveVariable<TeamType>
 
 #Combat
-- Weapon: IEntity
+- Weapon: IWeapon
 - Damage: IValue<int>
 - Target: IReactiveVariable<IEntity>  
 - FireCondition: IExpression<bool>

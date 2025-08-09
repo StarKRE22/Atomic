@@ -20,13 +20,13 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
     {
-        private static readonly IEqualityComparer<T> equalityComparer = EqualityComparer.GetDefault<T>();
+        private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
 
         /// <inheritdoc/>
         public event Action<T> OnValueChanged;
 
 #if ODIN_INSPECTOR
-        [HideLabel, OnValueChanged(nameof(InvokeEvent))]
+        [HideLabel, OnValueChanged(nameof(InvokeValueChanged))]
 #endif
 #if UNITY_5_3_OR_NEWER
         [SerializeField]
@@ -42,7 +42,7 @@ namespace Atomic.Elements
             get => this.value;
             set
             {
-                if (!equalityComparer.Equals(this.value, value))
+                if (!s_equalityComparer.Equals(value))
                 {
                     this.value = value;
                     this.OnValueChanged?.Invoke(value);
@@ -92,7 +92,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Manually triggers the <see cref="OnValueChanged"/> event with the given value.
         /// </summary>
-        private void InvokeEvent(T value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeValueChanged(T value) => this.OnValueChanged?.Invoke(value);
 
         /// <summary>
         /// Disposes the object by clearing all subscribed listeners.
@@ -102,6 +102,6 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns a string representation of the current value.
         /// </summary>
-        public override string ToString() => this.Value?.ToString();
+        public override string ToString() => this.value?.ToString();
     }
 }

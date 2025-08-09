@@ -18,6 +18,10 @@ namespace ShooterGame.Gameplay
         [SerializeField, Min(0)]
         private int max;
 
+        public Health(int max) : this(max, max)
+        {
+        }
+
         public Health(int health, int max)
         {
             this.max = max;

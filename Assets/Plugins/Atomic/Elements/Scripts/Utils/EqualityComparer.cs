@@ -64,10 +64,7 @@ namespace Atomic.Elements
             }
         }
 
-        public static IEqualityComparer<T> GetDefault<T>()
-        {
-            return Cache<T>.Comparer;
-        }
+        public static IEqualityComparer<T> GetDefault<T>() => Cache<T>.Comparer;
 
         static object GetDefaultHelper(Type type)
         {
