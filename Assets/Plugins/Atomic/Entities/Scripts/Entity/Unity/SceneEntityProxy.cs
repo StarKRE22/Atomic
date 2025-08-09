@@ -73,13 +73,9 @@ namespace Atomic.Entities
             set => _source.Name = value;
         }
 
-#if ODIN_INSPECTOR
-        // [GUIColor(0f, 0.83f, 1f)]
-#endif
+        [Tooltip("Reference to the actual scene entity object that this proxy wraps")]
         [SerializeField]
         private E _source;
-
-        public void Clear() => _source.Clear();
 
         public override bool Equals(object obj) => obj is IEntity entity && _source.InstanceID == entity.InstanceID;
 
@@ -191,7 +187,7 @@ namespace Atomic.Entities
         public void DelAllBehaviours<T>() where T : IEntityBehaviour => _source.DelAllBehaviours<T>();
 
         public void ClearBehaviours() => _source.ClearBehaviours();
-        
+
         public int CopyBehaviours(IEntityBehaviour[] results) => _source.CopyBehaviours(results);
         public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour => _source.CopyBehaviours(results);
 

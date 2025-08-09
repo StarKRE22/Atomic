@@ -50,8 +50,7 @@ MonoBehaviour:
   installInEditMode: 0
   disposeValues: 1
   useUnityLifecycle: 1
-  installers:
-  - {fileID: 0}
+  installers: []
   children:
   - {fileID: 0}
   - {fileID: 0}

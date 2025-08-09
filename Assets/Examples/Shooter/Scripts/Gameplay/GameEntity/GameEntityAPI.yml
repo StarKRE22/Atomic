@@ -1,0 +1,54 @@
+header: EntityAPI
+entityType: IGameEntity
+aggressiveInlining: true
+namespace: ShooterGame.Gameplay
+className: GameEntityAPI
+directory: Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/  
+
+imports:
+- UnityEngine
+- Atomic.Entities
+- System
+- Atomic.Elements
+
+tags:
+- Damageable
+
+values:
+
+# Main
+- GameObject: GameObject
+- Transform: Transform
+
+#Movement  
+- MoveSpeed: IValue<float>
+- AngularSpeed: IValue<float>
+- MoveCondition: IExpression<bool>
+- MoveDirection: IReactiveVariable<Vector3>
+
+#Life
+- Health: Health
+- Lifetime: Cooldown
+- TakeDamageEvent: IEvent<DamageArgs>
+- TakeDeathEvent: IEvent<DamageArgs>
+- DestroyAction: IAction
+
+#Team
+- Team: IReactiveVariable<TeamType>
+
+#Combat
+- Weapon: IEntity
+- Damage: IValue<int>
+- Target: IReactiveVariable<IEntity>  
+- FireCondition: IExpression<bool>
+- FireCooldown: Cooldown
+- FirePoint: Transform
+- FireAction: IAction
+- FireEvent: IEvent
+
+#Physics
+- Trigger: TriggerEvents
+
+#Visual
+- MeshRenderer: Renderer
+- Animator: Animator

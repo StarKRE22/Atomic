@@ -1,7 +1,6 @@
 using Atomic.Entities;
-using ShooterGame.App;
 
-namespace ShooterGame.UI
+namespace ShooterGame.App
 {
     public sealed class StartScreenPresenter :
         IEntitySpawn<IMenuUIContext>,

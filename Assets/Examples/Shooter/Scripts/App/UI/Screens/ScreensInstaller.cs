@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Atomic.Elements;
 using Atomic.Entities;
-using ShooterGame.UI;
 using UnityEngine;
 
 namespace ShooterGame.App
