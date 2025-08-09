@@ -4,8 +4,8 @@ namespace Atomic.Entities
 {
     public class DummyEntityBehaviour :
         IEntitySpawn,
-        IEntityActive,
-        IEntityInactive,
+        IEntityActivate,
+        IEntityDeactivate,
         IEntityDespawn,
         IEntityUpdate,
         IEntityFixedUpdate,
@@ -27,16 +27,16 @@ namespace Atomic.Entities
             this.InvocationList.Add(nameof(OnSpawn));
         }
 
-        public void OnActive(IEntity entity)
+        public void OnActivate(IEntity entity)
         {
             this.Activated = true;
-            this.InvocationList.Add(nameof(OnActive));
+            this.InvocationList.Add(nameof(OnActivate));
         }
 
-        public void OnInactive(IEntity entity)
+        public void OnDeactivate(IEntity entity)
         {
             this.Deactivated = true;
-            this.InvocationList.Add(nameof(OnInactive));
+            this.InvocationList.Add(nameof(OnDeactivate));
         }
 
         public void OnDespawn(IEntity entity)

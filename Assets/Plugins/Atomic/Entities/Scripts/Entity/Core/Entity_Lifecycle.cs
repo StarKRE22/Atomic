@@ -38,7 +38,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnInactivated;
+        public event Action OnDeactivated;
 
         /// <summary>
         /// Called when the entity is disposed.
@@ -114,7 +114,7 @@ namespace Atomic.Entities
                 return;
 
             if (_active)
-                this.Inactivate();
+                this.Deactivate();
 
             this.ProcessDespawn();
             _spawned = false;
@@ -159,7 +159,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Inactivate()
+        public void Deactivate()
         {
             if (!_active)
                 return;
@@ -168,7 +168,7 @@ namespace Atomic.Entities
             _active = false;
 
             this.OnStateChanged?.Invoke();
-            this.OnInactivated?.Invoke();
+            this.OnDeactivated?.Invoke();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -238,8 +238,8 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ActivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityActive activate)
-                activate.OnActive(this);
+            if (behaviour is IEntityActivate activate)
+                activate.OnActivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref _updates, ref _updateCount, update);
@@ -254,8 +254,8 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void InactivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityInactive inactive)
-                inactive.OnInactive(this);
+            if (behaviour is IEntityDeactivate inactive)
+                inactive.OnDeactivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref _updates, ref _updateCount, update, s_updateComparer);

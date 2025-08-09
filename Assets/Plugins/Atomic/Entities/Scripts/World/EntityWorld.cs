@@ -58,7 +58,7 @@ namespace Atomic.Entities
         public event Action OnActivated;
 
         /// <inheritdoc/>
-        public event Action OnInactivated;
+        public event Action OnDeactivated;
 
         /// <inheritdoc/>
         public event Action<float> OnUpdated;
@@ -163,7 +163,7 @@ namespace Atomic.Entities
         public void Despawn()
         {
             if (_active)
-                this.Inactivate();
+                this.Deactivate();
 
             if (!_spawned)
                 return;
@@ -221,7 +221,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void Inactivate()
+        public void Deactivate()
         {
             if (!_active)
             {
@@ -235,7 +235,7 @@ namespace Atomic.Entities
             _active = false;
 
             this.NotifyAboutStateChanged();
-            this.OnInactivated?.Invoke();
+            this.OnDeactivated?.Invoke();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -245,7 +245,7 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Inactivate();
+                slot.value.Deactivate();
                 currentIndex = slot.right;
             }
         }
@@ -341,7 +341,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnRemove(E entity)
         {
-            if (_active) entity.Inactivate();
+            if (_active) entity.Deactivate();
             if (_spawned) entity.Despawn();
         }
 
@@ -363,7 +363,7 @@ namespace Atomic.Entities
 
             this.OnSpawned = null;
             this.OnActivated = null;
-            this.OnInactivated = null;
+            this.OnDeactivated = null;
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;

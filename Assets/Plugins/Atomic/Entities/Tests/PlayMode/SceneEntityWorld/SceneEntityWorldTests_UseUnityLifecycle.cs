@@ -84,7 +84,7 @@ namespace Atomic.Entities
             //Act:
             world.enabled = true;
             
-            Assert.AreEqual(nameof(IEntityActive.OnActive), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityActivate.OnActivate), stub.InvocationList[^1]);
         }
         
         [UnityTest]
@@ -116,7 +116,7 @@ namespace Atomic.Entities
             Assert.IsTrue(success);
             Assert.IsTrue(stub.Deactivated);
             Assert.IsTrue(stub.Despawned);
-            Assert.AreEqual(nameof(IEntityInactive.OnInactive), stub.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDeactivate.OnDeactivate), stub.InvocationList[^2]);
             Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
         }
     }

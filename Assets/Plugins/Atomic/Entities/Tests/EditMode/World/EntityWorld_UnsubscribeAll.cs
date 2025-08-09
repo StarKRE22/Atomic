@@ -35,11 +35,11 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
-            world.OnInactivated += () => called = true;
+            world.OnDeactivated += () => called = true;
 
             world.Activate();
             world.UnsubscribeAll();
-            world.Inactivate();
+            world.Deactivate();
 
             Assert.IsFalse(called);
         }

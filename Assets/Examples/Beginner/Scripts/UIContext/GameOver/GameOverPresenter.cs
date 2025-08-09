@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityActive, IEntityDespawn
+    public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityActivate, IEntityDespawn
     {
         private IUIContext _context;
         private TeamCatalog _catalog;
@@ -21,7 +21,7 @@ namespace BeginnerGame
             _view.OnCloseClicked += this.OnCloseClicked;
         }
 
-        public void OnActive(IEntity entity)
+        public void OnActivate(IEntity entity)
         {
             _view.Show();
         }

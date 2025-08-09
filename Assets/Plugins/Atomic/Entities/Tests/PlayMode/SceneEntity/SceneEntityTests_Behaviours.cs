@@ -396,7 +396,7 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Spawned);
             Assert.IsTrue(behaviourStub.Activated);
             Assert.AreEqual(nameof(DummyEntityBehaviour.OnSpawn), behaviourStub.InvocationList[0]);
-            Assert.AreEqual(nameof(DummyEntityBehaviour.OnActive), behaviourStub.InvocationList[1]);
+            Assert.AreEqual(nameof(DummyEntityBehaviour.OnActivate), behaviourStub.InvocationList[1]);
         }
 
         #endregion
@@ -463,7 +463,7 @@ namespace Atomic.Entities
 
             Assert.IsTrue(behaviourStub.Deactivated);
             Assert.IsTrue(behaviourStub.Despawned);
-            Assert.AreEqual(nameof(DummyEntityBehaviour.OnInactive), behaviourStub.InvocationList[^2]);
+            Assert.AreEqual(nameof(DummyEntityBehaviour.OnDeactivate), behaviourStub.InvocationList[^2]);
             Assert.AreEqual(nameof(DummyEntityBehaviour.OnDespawn), behaviourStub.InvocationList[^1]);
         }
 

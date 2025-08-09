@@ -16,8 +16,9 @@ values:
 - ExitKeyCode: IValue<KeyCode>
 
 #Level
-- CurrentLevel: IReactiveVariable<int>
+- StartLevel: IValue<int>
 - MaxLevel: IValue<int>
+- CurrentLevel: IReactiveVariable<int>
 
 #Game
 - GameLoadingAction : ILoadingTask

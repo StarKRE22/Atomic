@@ -25,7 +25,7 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             world.Activate();
-            world.Inactivate();
+            world.Deactivate();
             Assert.IsFalse(world.IsActive);
         }
 
@@ -43,8 +43,8 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             world.Activate();
-            world.Inactivate();
-            world.Inactivate(); // второй Disable не должен ничего изменить
+            world.Deactivate();
+            world.Deactivate(); // второй Disable не должен ничего изменить
             Assert.IsFalse(world.IsActive);
         }
     }

@@ -142,7 +142,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 UpdateLoop.Instance.Del(this);
-                this.Inactivate();
+                this.Deactivate();
             }
         }
 
@@ -256,10 +256,10 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public event Action OnInactivated
+        public event Action OnDeactivated
         {
-            add => _world.OnInactivated += value;
-            remove => _world.OnInactivated -= value;
+            add => _world.OnDeactivated += value;
+            remove => _world.OnDeactivated -= value;
         }
 
         /// <inheritdoc />
@@ -306,7 +306,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Inactivate() => _world.Inactivate();
+        public void Deactivate() => _world.Deactivate();
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR

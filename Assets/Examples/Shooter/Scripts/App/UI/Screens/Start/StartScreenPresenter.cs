@@ -3,7 +3,10 @@ using ShooterGame.App;
 
 namespace ShooterGame.UI
 {
-    public sealed class StartScreenPresenter : IEntitySpawn<IMenuUIContext>, IEntityActive, IEntityInactive
+    public sealed class StartScreenPresenter :
+        IEntitySpawn<IMenuUIContext>,
+        IEntityActivate,
+        IEntityDeactivate
     {
         private readonly StartScreenView _screenView;
         
@@ -21,14 +24,14 @@ namespace ShooterGame.UI
             _appContext = AppContext.Instance;
         }   
 
-        public void OnActive(IEntity entity)
+        public void OnActivate(IEntity entity)
         {
             _screenView.OnSelectLevelClicked += this.OnSelectLevelClicked;
             _screenView.OnStartClicked += this.OnStartClicked;
             _screenView.OnExitClicked += ExitAppUseCase.Exit;
         }
 
-        public void OnInactive(IEntity entity)
+        public void OnDeactivate(IEntity entity)
         {
             _screenView.OnStartClicked -= this.OnStartClicked;
             _screenView.OnSelectLevelClicked -= this.OnSelectLevelClicked;

@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IActivatable"/>'s <see cref="IActivatable.OnInactivated"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IActivatable"/>'s <see cref="IActivatable.OnDeactivated"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// Useful for managing scoped or temporary subscriptions to disable events, ensuring the callback is removed when no longer needed.
@@ -25,12 +25,12 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IActivatable.OnInactivated"/> event.
+        /// Unsubscribes the callback from the <see cref="IActivatable.OnDeactivated"/> event.
         /// </summary>
         public void Dispose()
         {
             if (_source != null && _callback != null)
-                _source.OnInactivated -= _callback;
+                _source.OnDeactivated -= _callback;
         }
     }
 

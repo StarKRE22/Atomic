@@ -22,16 +22,18 @@ namespace ShooterGame.App
 	{
 		///Values
 		public static readonly int ExitKeyCode; // IValue<KeyCode>
-		public static readonly int CurrentLevel; // IReactiveVariable<int>
+		public static readonly int StartLevel; // IValue<int>
 		public static readonly int MaxLevel; // IValue<int>
+		public static readonly int CurrentLevel; // IReactiveVariable<int>
 		public static readonly int GameLoadingAction; // ILoadingTask
 
 		static AppContextAPI()
 		{
 			//Values
 			ExitKeyCode = NameToId(nameof(ExitKeyCode));
-			CurrentLevel = NameToId(nameof(CurrentLevel));
+			StartLevel = NameToId(nameof(StartLevel));
 			MaxLevel = NameToId(nameof(MaxLevel));
+			CurrentLevel = NameToId(nameof(CurrentLevel));
 			GameLoadingAction = NameToId(nameof(GameLoadingAction));
 		}
 
@@ -60,25 +62,25 @@ namespace ShooterGame.App
 
 		#endregion
 
-		#region CurrentLevel
+		#region StartLevel
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<int> GetCurrentLevel(this IAppContext entity) => entity.GetValue<IReactiveVariable<int>>(CurrentLevel);
+		public static IValue<int> GetStartLevel(this IAppContext entity) => entity.GetValue<IValue<int>>(StartLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCurrentLevel(this IAppContext entity, out IReactiveVariable<int> value) => entity.TryGetValue(CurrentLevel, out value);
+		public static bool TryGetStartLevel(this IAppContext entity, out IValue<int> value) => entity.TryGetValue(StartLevel, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCurrentLevel(this IAppContext entity, IReactiveVariable<int> value) => entity.AddValue(CurrentLevel, value);
+		public static void AddStartLevel(this IAppContext entity, IValue<int> value) => entity.AddValue(StartLevel, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCurrentLevel(this IAppContext entity) => entity.HasValue(CurrentLevel);
+		public static bool HasStartLevel(this IAppContext entity) => entity.HasValue(StartLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCurrentLevel(this IAppContext entity) => entity.DelValue(CurrentLevel);
+		public static bool DelStartLevel(this IAppContext entity) => entity.DelValue(StartLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCurrentLevel(this IAppContext entity, IReactiveVariable<int> value) => entity.SetValue(CurrentLevel, value);
+		public static void SetStartLevel(this IAppContext entity, IValue<int> value) => entity.SetValue(StartLevel, value);
 
 		#endregion
 
@@ -101,6 +103,28 @@ namespace ShooterGame.App
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetMaxLevel(this IAppContext entity, IValue<int> value) => entity.SetValue(MaxLevel, value);
+
+		#endregion
+
+		#region CurrentLevel
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<int> GetCurrentLevel(this IAppContext entity) => entity.GetValue<IReactiveVariable<int>>(CurrentLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetCurrentLevel(this IAppContext entity, out IReactiveVariable<int> value) => entity.TryGetValue(CurrentLevel, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddCurrentLevel(this IAppContext entity, IReactiveVariable<int> value) => entity.AddValue(CurrentLevel, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasCurrentLevel(this IAppContext entity) => entity.HasValue(CurrentLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelCurrentLevel(this IAppContext entity) => entity.DelValue(CurrentLevel);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetCurrentLevel(this IAppContext entity, IReactiveVariable<int> value) => entity.SetValue(CurrentLevel, value);
 
 		#endregion
 

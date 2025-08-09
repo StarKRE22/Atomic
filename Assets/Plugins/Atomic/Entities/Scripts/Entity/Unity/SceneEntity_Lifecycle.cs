@@ -52,7 +52,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnInactivated;
+        public event Action OnDeactivated;
 
         /// <summary>
         /// Called every frame while the entity is enabled.
@@ -134,7 +134,7 @@ namespace Atomic.Entities
                 return;
 
             if (_active)
-                this.Inactivate();
+                this.Deactivate();
 
             this.ProcessDespawn();
             _spawned = false;
@@ -179,7 +179,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Inactivate()
+        public void Deactivate()
         {
             if (!_active)
                 return;
@@ -188,7 +188,7 @@ namespace Atomic.Entities
             _active = false;
 
             this.OnStateChanged?.Invoke();
-            this.OnInactivated?.Invoke();
+            this.OnDeactivated?.Invoke();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -257,8 +257,8 @@ namespace Atomic.Entities
 
         private void ActivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityActive entityEnable)
-                entityEnable.OnActive(this);
+            if (behaviour is IEntityActivate entityEnable)
+                entityEnable.OnActivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref this.updates, ref this.updateCount, update);
@@ -272,8 +272,8 @@ namespace Atomic.Entities
 
         private void InactivateBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityInactive entityDisable)
-                entityDisable.OnInactive(this);
+            if (behaviour is IEntityDeactivate entityDisable)
+                entityDisable.OnDeactivate(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);

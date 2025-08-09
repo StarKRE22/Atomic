@@ -6,7 +6,7 @@ namespace BeginnerGame
 {
     public sealed class CameraFollowController :
         IEntitySpawn<IPlayerContext>,
-        IEntityActive,
+        IEntityActivate,
         IEntityLateUpdate
     {
         private readonly Vector3 _cameraOffset;
@@ -24,7 +24,7 @@ namespace BeginnerGame
             _character = entity.GetCharacter();
         }
 
-        public void OnActive(IEntity entity) => this.UpdatePosition();
+        public void OnActivate(IEntity entity) => this.UpdatePosition();
 
         public void OnLateUpdate(IEntity entity, float deltaTime) => this.UpdatePosition();
 

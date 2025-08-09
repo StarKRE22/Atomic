@@ -7,7 +7,7 @@ namespace Atomic.Entities
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             WasCalled = true;
-            entity.Inactivate();
+            entity.Deactivate();
         }
     }
 }

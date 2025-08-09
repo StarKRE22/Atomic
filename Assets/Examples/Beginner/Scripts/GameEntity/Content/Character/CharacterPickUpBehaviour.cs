@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class CharacterPickUpBehaviour : IEntitySpawn<IGameEntity>, IEntityActive, IEntityInactive
+    public sealed class CharacterPickUpBehaviour : IEntitySpawn<IGameEntity>, IEntityActivate, IEntityDeactivate
     {
         private TriggerEvents _triggerEvents;
         private IGameEntity _entity;
@@ -17,10 +17,10 @@ namespace BeginnerGame
             _triggerEvents = entity.GetTriggerEvents();
         }
 
-        public void OnActive(IEntity entity) => 
+        public void OnActivate(IEntity entity) => 
             _triggerEvents.OnEntered += this.OnTriggerEntered;
 
-        public void OnInactive(IEntity entity) => 
+        public void OnDeactivate(IEntity entity) => 
             _triggerEvents.OnEntered -= this.OnTriggerEntered;
 
         private void OnTriggerEntered(Collider collider) => 
