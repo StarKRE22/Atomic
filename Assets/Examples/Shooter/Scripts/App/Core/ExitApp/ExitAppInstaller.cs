@@ -5,16 +5,13 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    [CreateAssetMenu(
-        fileName = "ExitAppInstaller",
-        menuName = "ShooterGame/New ExitAppInstaller"
-    )]
-    public sealed class ExitAppInstaller : ScriptableEntityInstaller<IAppContext>
+    [Serializable]
+    public sealed class ExitAppInstaller : IEntityInstaller<IAppContext>
     {
         [SerializeField]
         private KeyCode _exitKey = KeyCode.Escape;
 
-        protected override void Install(IAppContext context)
+        public void Install(IAppContext context)
         {
             context.AddExitKeyCode(new Const<KeyCode>(_exitKey));
             context.AddBehaviour<ExitAppController>();

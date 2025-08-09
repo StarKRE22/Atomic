@@ -1,13 +1,12 @@
+using System;
 using Atomic.Entities;
 using UnityEngine;
 
 namespace ShooterGame.App
 {
-    [CreateAssetMenu(
-        fileName = "LoadGameInstaller",
-        menuName = "ShooterGame/New LoadGameInstaller"
-    )]
-    public sealed class LoadGameInstaller : ScriptableEntityInstaller<IAppContext>
+
+    [Serializable]
+    public sealed class LoadGameInstaller : IEntityInstaller<IAppContext>
     {
         [SerializeField]
         private string _levelNameFormat = "ShooterGame (Level{0})";
@@ -19,7 +18,7 @@ namespace ShooterGame.App
         [SerializeField]
         private GameObject _gameUIContextPrefab;
 
-        protected override void Install(IAppContext context)
+       public void Install(IAppContext context)
         {
             context.AddGameLoadingAction(new LoadingTaskSequence(
                 new LoadLevelSceneTask(_levelNameFormat),

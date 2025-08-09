@@ -8,17 +8,17 @@ namespace Atomic.Entities
     /// <remarks>
     /// Useful for managing scoped or temporary subscriptions to disable events, ensuring the callback is removed when no longer needed.
     /// </remarks>
-    public readonly struct InactivateSubscription : IDisposable
+    public readonly struct DeactivateSubscription : IDisposable
     {
         private readonly IActivatable _source;
         private readonly Action _callback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InactivateSubscription"/> struct.
+        /// Initializes a new instance of the <see cref="DeactivateSubscription"/> struct.
         /// </summary>
         /// <param name="source">The activatable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke when the source is disabled.</param>
-        internal InactivateSubscription(IActivatable source, Action callback)
+        internal DeactivateSubscription(IActivatable source, Action callback)
         {
             _source = source;
             _callback = callback;

@@ -710,7 +710,7 @@ MonoBehaviour:
   disposeValues: 1
   useUnityLifecycle: 1
   installers:
-  - {fileID: 962958588}
+  - {fileID: 0}
   children: []
   _initialBehaviourCapacity: 1
   _onlySelectedGizmos: 0
@@ -1092,7 +1092,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1117083258}
   - component: {fileID: 1117083260}
-  - component: {fileID: 1117083259}
   m_Layer: 0
   m_Name: '[AppContext]'
   m_TagString: Untagged
@@ -1115,22 +1114,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1117083259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117083257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7686ec15a76a4c4c903e117827e15678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levelInstaller:
-    _currentLevel: 1
-  exitAppInstaller:
-    _exitKey: 27
 --- !u!114 &1117083260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1148,7 +1131,7 @@ MonoBehaviour:
   disposeValues: 1
   useUnityLifecycle: 1
   installers:
-  - {fileID: 1117083259}
+  - {fileID: 0}
   children: []
   _initialBehaviourCapacity: 2
   _onlySelectedGizmos: 0
@@ -1926,8 +1909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startButton: {fileID: 876472795762467642}
+  _selectLevelButton: {fileID: 0}
   _exitButton: {fileID: 7999971694690385152}
-  _currentLevel: {fileID: 0}
 --- !u!1 &2334863787921548376
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.App
 {
+    //Instead of Screen Manager
     public static class ScreenUseCase
     {
         public static void ShowScreen<T>(IMenuUIContext context) where T : ScreenView => 
