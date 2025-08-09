@@ -2,6 +2,8 @@
 * Code generation. Don't modify! 
 **/
 
+using System;
+using System.Collections.Generic;
 using Atomic.Entities;
 using static Atomic.Entities.EntityNames;
 using System.Runtime.CompilerServices;
@@ -20,36 +22,60 @@ namespace ShooterGame.App
 	public static class MenuUIContextAPI
 	{
 		///Values
-		public static readonly int MainMenuView; // MainMenuView
+		public static readonly int Screens; // IDictionary<Type, (ScreenView, IEntityBehaviour)>
+		public static readonly int CurrentScreen; // IReactiveVariable<ScreenView>
 
 		static MenuUIContextAPI()
 		{
 			//Values
-			MainMenuView = NameToId(nameof(MainMenuView));
+			Screens = NameToId(nameof(Screens));
+			CurrentScreen = NameToId(nameof(CurrentScreen));
 		}
 
 
 		///Value Extensions
 
-		#region MainMenuView
+		#region Screens
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static MainMenuView GetMainMenuView(this IMenuUIContext entity) => entity.GetValue<MainMenuView>(MainMenuView);
+		public static IDictionary<Type, (ScreenView, IEntityBehaviour)> GetScreens(this IMenuUIContext entity) => entity.GetValue<IDictionary<Type, (ScreenView, IEntityBehaviour)>>(Screens);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMainMenuView(this IMenuUIContext entity, out MainMenuView value) => entity.TryGetValue(MainMenuView, out value);
+		public static bool TryGetScreens(this IMenuUIContext entity, out IDictionary<Type, (ScreenView, IEntityBehaviour)> value) => entity.TryGetValue(Screens, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMainMenuView(this IMenuUIContext entity, MainMenuView value) => entity.AddValue(MainMenuView, value);
+		public static void AddScreens(this IMenuUIContext entity, IDictionary<Type, (ScreenView, IEntityBehaviour)> value) => entity.AddValue(Screens, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMainMenuView(this IMenuUIContext entity) => entity.HasValue(MainMenuView);
+		public static bool HasScreens(this IMenuUIContext entity) => entity.HasValue(Screens);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMainMenuView(this IMenuUIContext entity) => entity.DelValue(MainMenuView);
+		public static bool DelScreens(this IMenuUIContext entity) => entity.DelValue(Screens);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMainMenuView(this IMenuUIContext entity, MainMenuView value) => entity.SetValue(MainMenuView, value);
+		public static void SetScreens(this IMenuUIContext entity, IDictionary<Type, (ScreenView, IEntityBehaviour)> value) => entity.SetValue(Screens, value);
+
+		#endregion
+
+		#region CurrentScreen
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IReactiveVariable<ScreenView> GetCurrentScreen(this IMenuUIContext entity) => entity.GetValue<IReactiveVariable<ScreenView>>(CurrentScreen);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetCurrentScreen(this IMenuUIContext entity, out IReactiveVariable<ScreenView> value) => entity.TryGetValue(CurrentScreen, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddCurrentScreen(this IMenuUIContext entity, IReactiveVariable<ScreenView> value) => entity.AddValue(CurrentScreen, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasCurrentScreen(this IMenuUIContext entity) => entity.HasValue(CurrentScreen);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelCurrentScreen(this IMenuUIContext entity) => entity.DelValue(CurrentScreen);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetCurrentScreen(this IMenuUIContext entity, IReactiveVariable<ScreenView> value) => entity.SetValue(CurrentScreen, value);
 
 		#endregion
     }

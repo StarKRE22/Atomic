@@ -10,6 +10,9 @@ imports:
 - UnityEngine
 - Atomic.Entities
 - Atomic.Elements
+- System.Collections.Generic
+- System
 
 values:
-- MainMenuView: MainMenuView
+- Screens: IDictionary<Type, (ScreenView, IEntityBehaviour)>
+- CurrentScreen: IReactiveVariable<ScreenView>

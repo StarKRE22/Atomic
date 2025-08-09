@@ -1,11 +1,10 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ShooterGame.App
 {
-    public sealed class MainMenuView : MonoBehaviour
+    public sealed class StartScreenView : ScreenView
     {
         public event UnityAction OnStartClicked
         {
@@ -19,23 +18,19 @@ namespace ShooterGame.App
             remove => _exitButton.onClick.RemoveListener(value);
         }
 
-        public event UnityAction<string> OnLevelChanged
+        public event UnityAction OnSelectLevelClicked
         {
-            add => _currentLevel.onValueChanged.AddListener(value);
-            remove => _currentLevel.onValueChanged.RemoveListener(value);
+            add => _selectLevelButton.onClick.AddListener(value);
+            remove => _selectLevelButton.onClick.RemoveListener(value);
         }
 
         [SerializeField]
         private Button _startButton;
 
         [SerializeField]
-        private Button _exitButton;
+        private Button _selectLevelButton;
 
         [SerializeField]
-        private TMP_InputField _currentLevel;
-
-        public void SetCurrentLevel(string level) => _currentLevel.text = level;
-
-        public string GetCurrentLevel() => _currentLevel.text;
+        private Button _exitButton;
     }
 }
