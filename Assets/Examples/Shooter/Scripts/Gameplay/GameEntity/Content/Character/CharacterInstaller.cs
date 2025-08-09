@@ -67,11 +67,11 @@ namespace ShooterGame.Gameplay
             entity.AddBehaviour<RotationBehaviour>();
 
             //Physics:
+            entity.AddTrigger(_triggerEvents);
             entity.AddPhysicsLayer(new ProxyVariable<int>(
                 getter: () => _gameObject.layer,
                 setter: value => _gameObject.layer = value
             ));
-            entity.AddTrigger(_triggerEvents);
 
             //Other:
             entity.AddBehaviour<CharacterMoveBehaviour>();

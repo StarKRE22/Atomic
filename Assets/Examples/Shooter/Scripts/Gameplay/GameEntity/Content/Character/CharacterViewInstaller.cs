@@ -12,6 +12,9 @@ namespace ShooterGame.Gameplay
         private Animator _animator;
 
         [SerializeField]
+        private GameObject _view;
+
+        [SerializeField]
         private ParticleSystem _bloodVfx;
 
         [SerializeField]
@@ -29,9 +32,9 @@ namespace ShooterGame.Gameplay
             entity.AddAnimator(_animator);
             
             entity.AddBehaviour<TeamColorBehaviour>();
-            entity.AddBehaviour<MoveAnimBehaviour>();
+            entity.AddBehaviour(new MoveAnimBehaviour());
             entity.AddBehaviour<TakeDamageAnimBehaviour>();
-            entity.AddBehaviour<DeathAnimBehaviour>();
+            entity.AddBehaviour(new DeathAnimBehaviour(_view));
             entity.AddBehaviour<FireAnimBehaviour>();
             entity.AddBehaviour(new TakeDamageBloodBehaviour(_bloodVfx));
 

@@ -6,14 +6,19 @@ namespace ShooterGame.Gameplay
 {
     public sealed class MoveAnimBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn, IEntityLateUpdate
     {
-        private const float MOVE_DURATION = 0.08f;
         private static readonly int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
         private Animator _animator;
         private ISignal<Vector3> _moveEvent;
         private IReactiveVariable<bool> _isMoving;
 
+        private readonly float _moveDuration;
         private float _moveTime;
+
+        public MoveAnimBehaviour(float moveDuration = 0.08f)
+        {
+            _moveDuration = moveDuration;
+        }
 
         public void OnSpawn(IGameEntity entity)
         {
@@ -30,7 +35,7 @@ namespace ShooterGame.Gameplay
         private void OnMoved(Vector3 _)
         {
             _animator.SetBool(IsMoving, true);
-            _moveTime = MOVE_DURATION;
+            _moveTime = _moveDuration;
         }
 
         public void OnLateUpdate(IEntity entity, float deltaTime)
