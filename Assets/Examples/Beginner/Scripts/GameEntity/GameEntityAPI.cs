@@ -63,26 +63,26 @@ namespace BeginnerGame
 		#region Character
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCharacterTag(this IGameEntity obj) => obj.HasTag(Character);
+		public static bool HasCharacterTag(this IGameEntity entity) => entity.HasTag(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddCharacterTag(this IGameEntity obj) => obj.AddTag(Character);
+		public static bool AddCharacterTag(this IGameEntity entity) => entity.AddTag(Character);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCharacterTag(this IGameEntity obj) => obj.DelTag(Character);
+		public static bool DelCharacterTag(this IGameEntity entity) => entity.DelTag(Character);
 
 		#endregion
 
 		#region Coin
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCoinTag(this IGameEntity obj) => obj.HasTag(Coin);
+		public static bool HasCoinTag(this IGameEntity entity) => entity.HasTag(Coin);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddCoinTag(this IGameEntity obj) => obj.AddTag(Coin);
+		public static bool AddCoinTag(this IGameEntity entity) => entity.AddTag(Coin);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCoinTag(this IGameEntity obj) => obj.DelTag(Coin);
+		public static bool DelCoinTag(this IGameEntity entity) => entity.DelTag(Coin);
 
 		#endregion
 
@@ -92,242 +92,242 @@ namespace BeginnerGame
 		#region Position
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Vector3> GetPosition(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(Position);
+		public static IVariable<Vector3> GetPosition(this IGameEntity entity) => entity.GetValue<IVariable<Vector3>>(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPosition(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(Position, out value);
+		public static bool TryGetPosition(this IGameEntity entity, out IVariable<Vector3> value) => entity.TryGetValue(Position, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddPosition(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(Position, value);
+		public static void AddPosition(this IGameEntity entity, IVariable<Vector3> value) => entity.AddValue(Position, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasPosition(this IGameEntity obj) => obj.HasValue(Position);
+		public static bool HasPosition(this IGameEntity entity) => entity.HasValue(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelPosition(this IGameEntity obj) => obj.DelValue(Position);
+		public static bool DelPosition(this IGameEntity entity) => entity.DelValue(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPosition(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(Position, value);
+		public static void SetPosition(this IGameEntity entity, IVariable<Vector3> value) => entity.SetValue(Position, value);
 
 		#endregion
 
 		#region Rotation
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Quaternion> GetRotation(this IGameEntity obj) => obj.GetValue<IVariable<Quaternion>>(Rotation);
+		public static IVariable<Quaternion> GetRotation(this IGameEntity entity) => entity.GetValue<IVariable<Quaternion>>(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRotation(this IGameEntity obj, out IVariable<Quaternion> value) => obj.TryGetValue(Rotation, out value);
+		public static bool TryGetRotation(this IGameEntity entity, out IVariable<Quaternion> value) => entity.TryGetValue(Rotation, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRotation(this IGameEntity obj, IVariable<Quaternion> value) => obj.AddValue(Rotation, value);
+		public static void AddRotation(this IGameEntity entity, IVariable<Quaternion> value) => entity.AddValue(Rotation, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRotation(this IGameEntity obj) => obj.HasValue(Rotation);
+		public static bool HasRotation(this IGameEntity entity) => entity.HasValue(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRotation(this IGameEntity obj) => obj.DelValue(Rotation);
+		public static bool DelRotation(this IGameEntity entity) => entity.DelValue(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRotation(this IGameEntity obj, IVariable<Quaternion> value) => obj.SetValue(Rotation, value);
+		public static void SetRotation(this IGameEntity entity, IVariable<Quaternion> value) => entity.SetValue(Rotation, value);
 
 		#endregion
 
 		#region MoveSpeed
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<float> GetMoveSpeed(this IGameEntity obj) => obj.GetValue<IValue<float>>(MoveSpeed);
+		public static IValue<float> GetMoveSpeed(this IGameEntity entity) => entity.GetValue<IValue<float>>(MoveSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveSpeed(this IGameEntity obj, out IValue<float> value) => obj.TryGetValue(MoveSpeed, out value);
+		public static bool TryGetMoveSpeed(this IGameEntity entity, out IValue<float> value) => entity.TryGetValue(MoveSpeed, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveSpeed(this IGameEntity obj, IValue<float> value) => obj.AddValue(MoveSpeed, value);
+		public static void AddMoveSpeed(this IGameEntity entity, IValue<float> value) => entity.AddValue(MoveSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoveSpeed(this IGameEntity obj) => obj.HasValue(MoveSpeed);
+		public static bool HasMoveSpeed(this IGameEntity entity) => entity.HasValue(MoveSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoveSpeed(this IGameEntity obj) => obj.DelValue(MoveSpeed);
+		public static bool DelMoveSpeed(this IGameEntity entity) => entity.DelValue(MoveSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(MoveSpeed, value);
+		public static void SetMoveSpeed(this IGameEntity entity, IValue<float> value) => entity.SetValue(MoveSpeed, value);
 
 		#endregion
 
 		#region MoveDirection
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Vector3> GetMoveDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(MoveDirection);
+		public static IVariable<Vector3> GetMoveDirection(this IGameEntity entity) => entity.GetValue<IVariable<Vector3>>(MoveDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveDirection(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(MoveDirection, out value);
+		public static bool TryGetMoveDirection(this IGameEntity entity, out IVariable<Vector3> value) => entity.TryGetValue(MoveDirection, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(MoveDirection, value);
+		public static void AddMoveDirection(this IGameEntity entity, IVariable<Vector3> value) => entity.AddValue(MoveDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoveDirection(this IGameEntity obj) => obj.HasValue(MoveDirection);
+		public static bool HasMoveDirection(this IGameEntity entity) => entity.HasValue(MoveDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoveDirection(this IGameEntity obj) => obj.DelValue(MoveDirection);
+		public static bool DelMoveDirection(this IGameEntity entity) => entity.DelValue(MoveDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(MoveDirection, value);
+		public static void SetMoveDirection(this IGameEntity entity, IVariable<Vector3> value) => entity.SetValue(MoveDirection, value);
 
 		#endregion
 
 		#region RotationSpeed
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<float> GetRotationSpeed(this IGameEntity obj) => obj.GetValue<IValue<float>>(RotationSpeed);
+		public static IValue<float> GetRotationSpeed(this IGameEntity entity) => entity.GetValue<IValue<float>>(RotationSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRotationSpeed(this IGameEntity obj, out IValue<float> value) => obj.TryGetValue(RotationSpeed, out value);
+		public static bool TryGetRotationSpeed(this IGameEntity entity, out IValue<float> value) => entity.TryGetValue(RotationSpeed, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRotationSpeed(this IGameEntity obj, IValue<float> value) => obj.AddValue(RotationSpeed, value);
+		public static void AddRotationSpeed(this IGameEntity entity, IValue<float> value) => entity.AddValue(RotationSpeed, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRotationSpeed(this IGameEntity obj) => obj.HasValue(RotationSpeed);
+		public static bool HasRotationSpeed(this IGameEntity entity) => entity.HasValue(RotationSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRotationSpeed(this IGameEntity obj) => obj.DelValue(RotationSpeed);
+		public static bool DelRotationSpeed(this IGameEntity entity) => entity.DelValue(RotationSpeed);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRotationSpeed(this IGameEntity obj, IValue<float> value) => obj.SetValue(RotationSpeed, value);
+		public static void SetRotationSpeed(this IGameEntity entity, IValue<float> value) => entity.SetValue(RotationSpeed, value);
 
 		#endregion
 
 		#region RotationDirection
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Vector3> GetRotationDirection(this IGameEntity obj) => obj.GetValue<IVariable<Vector3>>(RotationDirection);
+		public static IVariable<Vector3> GetRotationDirection(this IGameEntity entity) => entity.GetValue<IVariable<Vector3>>(RotationDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRotationDirection(this IGameEntity obj, out IVariable<Vector3> value) => obj.TryGetValue(RotationDirection, out value);
+		public static bool TryGetRotationDirection(this IGameEntity entity, out IVariable<Vector3> value) => entity.TryGetValue(RotationDirection, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRotationDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.AddValue(RotationDirection, value);
+		public static void AddRotationDirection(this IGameEntity entity, IVariable<Vector3> value) => entity.AddValue(RotationDirection, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRotationDirection(this IGameEntity obj) => obj.HasValue(RotationDirection);
+		public static bool HasRotationDirection(this IGameEntity entity) => entity.HasValue(RotationDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRotationDirection(this IGameEntity obj) => obj.DelValue(RotationDirection);
+		public static bool DelRotationDirection(this IGameEntity entity) => entity.DelValue(RotationDirection);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRotationDirection(this IGameEntity obj, IVariable<Vector3> value) => obj.SetValue(RotationDirection, value);
+		public static void SetRotationDirection(this IGameEntity entity, IVariable<Vector3> value) => entity.SetValue(RotationDirection, value);
 
 		#endregion
 
 		#region TeamType
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<TeamType> GetTeamType(this IGameEntity obj) => obj.GetValue<IReactiveVariable<TeamType>>(TeamType);
+		public static IReactiveVariable<TeamType> GetTeamType(this IGameEntity entity) => entity.GetValue<IReactiveVariable<TeamType>>(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTeamType(this IGameEntity obj, out IReactiveVariable<TeamType> value) => obj.TryGetValue(TeamType, out value);
+		public static bool TryGetTeamType(this IGameEntity entity, out IReactiveVariable<TeamType> value) => entity.TryGetValue(TeamType, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTeamType(this IGameEntity obj, IReactiveVariable<TeamType> value) => obj.AddValue(TeamType, value);
+		public static void AddTeamType(this IGameEntity entity, IReactiveVariable<TeamType> value) => entity.AddValue(TeamType, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTeamType(this IGameEntity obj) => obj.HasValue(TeamType);
+		public static bool HasTeamType(this IGameEntity entity) => entity.HasValue(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTeamType(this IGameEntity obj) => obj.DelValue(TeamType);
+		public static bool DelTeamType(this IGameEntity entity) => entity.DelValue(TeamType);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTeamType(this IGameEntity obj, IReactiveVariable<TeamType> value) => obj.SetValue(TeamType, value);
+		public static void SetTeamType(this IGameEntity entity, IReactiveVariable<TeamType> value) => entity.SetValue(TeamType, value);
 
 		#endregion
 
 		#region TriggerEvents
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static TriggerEvents GetTriggerEvents(this IGameEntity obj) => obj.GetValue<TriggerEvents>(TriggerEvents);
+		public static TriggerEvents GetTriggerEvents(this IGameEntity entity) => entity.GetValue<TriggerEvents>(TriggerEvents);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTriggerEvents(this IGameEntity obj, out TriggerEvents value) => obj.TryGetValue(TriggerEvents, out value);
+		public static bool TryGetTriggerEvents(this IGameEntity entity, out TriggerEvents value) => entity.TryGetValue(TriggerEvents, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTriggerEvents(this IGameEntity obj, TriggerEvents value) => obj.AddValue(TriggerEvents, value);
+		public static void AddTriggerEvents(this IGameEntity entity, TriggerEvents value) => entity.AddValue(TriggerEvents, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTriggerEvents(this IGameEntity obj) => obj.HasValue(TriggerEvents);
+		public static bool HasTriggerEvents(this IGameEntity entity) => entity.HasValue(TriggerEvents);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTriggerEvents(this IGameEntity obj) => obj.DelValue(TriggerEvents);
+		public static bool DelTriggerEvents(this IGameEntity entity) => entity.DelValue(TriggerEvents);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTriggerEvents(this IGameEntity obj, TriggerEvents value) => obj.SetValue(TriggerEvents, value);
+		public static void SetTriggerEvents(this IGameEntity entity, TriggerEvents value) => entity.SetValue(TriggerEvents, value);
 
 		#endregion
 
 		#region Money
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<int> GetMoney(this IGameEntity obj) => obj.GetValue<IValue<int>>(Money);
+		public static IValue<int> GetMoney(this IGameEntity entity) => entity.GetValue<IValue<int>>(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoney(this IGameEntity obj, out IValue<int> value) => obj.TryGetValue(Money, out value);
+		public static bool TryGetMoney(this IGameEntity entity, out IValue<int> value) => entity.TryGetValue(Money, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoney(this IGameEntity obj, IValue<int> value) => obj.AddValue(Money, value);
+		public static void AddMoney(this IGameEntity entity, IValue<int> value) => entity.AddValue(Money, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoney(this IGameEntity obj) => obj.HasValue(Money);
+		public static bool HasMoney(this IGameEntity entity) => entity.HasValue(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoney(this IGameEntity obj) => obj.DelValue(Money);
+		public static bool DelMoney(this IGameEntity entity) => entity.DelValue(Money);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoney(this IGameEntity obj, IValue<int> value) => obj.SetValue(Money, value);
+		public static void SetMoney(this IGameEntity entity, IValue<int> value) => entity.SetValue(Money, value);
 
 		#endregion
 
 		#region Renderer
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Renderer GetRenderer(this IGameEntity obj) => obj.GetValue<Renderer>(Renderer);
+		public static Renderer GetRenderer(this IGameEntity entity) => entity.GetValue<Renderer>(Renderer);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRenderer(this IGameEntity obj, out Renderer value) => obj.TryGetValue(Renderer, out value);
+		public static bool TryGetRenderer(this IGameEntity entity, out Renderer value) => entity.TryGetValue(Renderer, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRenderer(this IGameEntity obj, Renderer value) => obj.AddValue(Renderer, value);
+		public static void AddRenderer(this IGameEntity entity, Renderer value) => entity.AddValue(Renderer, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasRenderer(this IGameEntity obj) => obj.HasValue(Renderer);
+		public static bool HasRenderer(this IGameEntity entity) => entity.HasValue(Renderer);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelRenderer(this IGameEntity obj) => obj.DelValue(Renderer);
+		public static bool DelRenderer(this IGameEntity entity) => entity.DelValue(Renderer);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRenderer(this IGameEntity obj, Renderer value) => obj.SetValue(Renderer, value);
+		public static void SetRenderer(this IGameEntity entity, Renderer value) => entity.SetValue(Renderer, value);
 
 		#endregion
 
 		#region MoneyView
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static MoneyView GetMoneyView(this IGameEntity obj) => obj.GetValue<MoneyView>(MoneyView);
+		public static MoneyView GetMoneyView(this IGameEntity entity) => entity.GetValue<MoneyView>(MoneyView);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoneyView(this IGameEntity obj, out MoneyView value) => obj.TryGetValue(MoneyView, out value);
+		public static bool TryGetMoneyView(this IGameEntity entity, out MoneyView value) => entity.TryGetValue(MoneyView, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoneyView(this IGameEntity obj, MoneyView value) => obj.AddValue(MoneyView, value);
+		public static void AddMoneyView(this IGameEntity entity, MoneyView value) => entity.AddValue(MoneyView, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoneyView(this IGameEntity obj) => obj.HasValue(MoneyView);
+		public static bool HasMoneyView(this IGameEntity entity) => entity.HasValue(MoneyView);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoneyView(this IGameEntity obj) => obj.DelValue(MoneyView);
+		public static bool DelMoneyView(this IGameEntity entity) => entity.DelValue(MoneyView);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoneyView(this IGameEntity obj, MoneyView value) => obj.SetValue(MoneyView, value);
+		public static void SetMoneyView(this IGameEntity entity, MoneyView value) => entity.SetValue(MoneyView, value);
 
 		#endregion
     }

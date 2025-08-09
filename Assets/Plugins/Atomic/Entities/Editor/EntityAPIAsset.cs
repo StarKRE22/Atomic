@@ -22,6 +22,22 @@ namespace Atomic.Entities
             public HashSet<string> Imports;
             public HashSet<string> Tags;
             public Dictionary<string, string> Values;
+
+            //TODO: Сделать валидацию!
+            public void Validate()
+            {
+                if (this.Namespace == null)
+                    throw new ArgumentNullException(nameof(Namespace));
+
+                if (this.ClassName == null)
+                    throw new ArgumentNullException(nameof(ClassName));
+                
+                if (this.Directory == null)
+                    throw new ArgumentNullException(nameof(Directory));
+                
+                if (this.EntityType == null)
+                    throw new ArgumentNullException(nameof(EntityType));
+            }
         }
         
         private readonly string _filePath;
@@ -107,6 +123,7 @@ namespace Atomic.Entities
                 }
             }
 
+            settings.Validate();
             return settings;
         }
 

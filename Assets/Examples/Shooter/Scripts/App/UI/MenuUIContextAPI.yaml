@@ -1,0 +1,15 @@
+header: EntityAPI
+entityType: IMenuUIContext
+aggressiveInlining: true
+
+namespace: ShooterGame.App
+className: MenuUIContextAPI
+directory: Assets/Examples/Shooter/Scripts/App/UI/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- MainMenuView: MainMenuView

@@ -1,0 +1,16 @@
+header: EntityAPI
+entityType: IAppContext
+aggressiveInlining: true
+
+namespace: ShooterGame.App
+className: AppContextAPI
+directory: Assets/Examples/Shooter/Scripts/App/Core/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- CurrentLevel: IReactiveVariable<int>
+- ExitKeyCode: IValue<KeyCode>

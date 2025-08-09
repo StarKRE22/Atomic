@@ -50,176 +50,176 @@ namespace BeginnerGame
 		#region WorldTransform
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Transform GetWorldTransform(this IGameContext obj) => obj.GetValue<Transform>(WorldTransform);
+		public static Transform GetWorldTransform(this IGameContext entity) => entity.GetValue<Transform>(WorldTransform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetWorldTransform(this IGameContext obj, out Transform value) => obj.TryGetValue(WorldTransform, out value);
+		public static bool TryGetWorldTransform(this IGameContext entity, out Transform value) => entity.TryGetValue(WorldTransform, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddWorldTransform(this IGameContext obj, Transform value) => obj.AddValue(WorldTransform, value);
+		public static void AddWorldTransform(this IGameContext entity, Transform value) => entity.AddValue(WorldTransform, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasWorldTransform(this IGameContext obj) => obj.HasValue(WorldTransform);
+		public static bool HasWorldTransform(this IGameContext entity) => entity.HasValue(WorldTransform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelWorldTransform(this IGameContext obj) => obj.DelValue(WorldTransform);
+		public static bool DelWorldTransform(this IGameContext entity) => entity.DelValue(WorldTransform);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetWorldTransform(this IGameContext obj, Transform value) => obj.SetValue(WorldTransform, value);
+		public static void SetWorldTransform(this IGameContext entity, Transform value) => entity.SetValue(WorldTransform, value);
 
 		#endregion
 
 		#region Players
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IDictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext obj) => obj.GetValue<IDictionary<TeamType, IPlayerContext>>(Players);
+		public static IDictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext entity) => entity.GetValue<IDictionary<TeamType, IPlayerContext>>(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPlayers(this IGameContext obj, out IDictionary<TeamType, IPlayerContext> value) => obj.TryGetValue(Players, out value);
+		public static bool TryGetPlayers(this IGameContext entity, out IDictionary<TeamType, IPlayerContext> value) => entity.TryGetValue(Players, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddPlayers(this IGameContext obj, IDictionary<TeamType, IPlayerContext> value) => obj.AddValue(Players, value);
+		public static void AddPlayers(this IGameContext entity, IDictionary<TeamType, IPlayerContext> value) => entity.AddValue(Players, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasPlayers(this IGameContext obj) => obj.HasValue(Players);
+		public static bool HasPlayers(this IGameContext entity) => entity.HasValue(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelPlayers(this IGameContext obj) => obj.DelValue(Players);
+		public static bool DelPlayers(this IGameContext entity) => entity.DelValue(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPlayers(this IGameContext obj, IDictionary<TeamType, IPlayerContext> value) => obj.SetValue(Players, value);
+		public static void SetPlayers(this IGameContext entity, IDictionary<TeamType, IPlayerContext> value) => entity.SetValue(Players, value);
 
 		#endregion
 
 		#region GameCountdown
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static ICooldown GetGameCountdown(this IGameContext obj) => obj.GetValue<ICooldown>(GameCountdown);
+		public static ICooldown GetGameCountdown(this IGameContext entity) => entity.GetValue<ICooldown>(GameCountdown);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetGameCountdown(this IGameContext obj, out ICooldown value) => obj.TryGetValue(GameCountdown, out value);
+		public static bool TryGetGameCountdown(this IGameContext entity, out ICooldown value) => entity.TryGetValue(GameCountdown, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddGameCountdown(this IGameContext obj, ICooldown value) => obj.AddValue(GameCountdown, value);
+		public static void AddGameCountdown(this IGameContext entity, ICooldown value) => entity.AddValue(GameCountdown, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasGameCountdown(this IGameContext obj) => obj.HasValue(GameCountdown);
+		public static bool HasGameCountdown(this IGameContext entity) => entity.HasValue(GameCountdown);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelGameCountdown(this IGameContext obj) => obj.DelValue(GameCountdown);
+		public static bool DelGameCountdown(this IGameContext entity) => entity.DelValue(GameCountdown);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetGameCountdown(this IGameContext obj, ICooldown value) => obj.SetValue(GameCountdown, value);
+		public static void SetGameCountdown(this IGameContext entity, ICooldown value) => entity.SetValue(GameCountdown, value);
 
 		#endregion
 
 		#region GameOverEvent
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEvent GetGameOverEvent(this IGameContext obj) => obj.GetValue<IEvent>(GameOverEvent);
+		public static IEvent GetGameOverEvent(this IGameContext entity) => entity.GetValue<IEvent>(GameOverEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetGameOverEvent(this IGameContext obj, out IEvent value) => obj.TryGetValue(GameOverEvent, out value);
+		public static bool TryGetGameOverEvent(this IGameContext entity, out IEvent value) => entity.TryGetValue(GameOverEvent, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddGameOverEvent(this IGameContext obj, IEvent value) => obj.AddValue(GameOverEvent, value);
+		public static void AddGameOverEvent(this IGameContext entity, IEvent value) => entity.AddValue(GameOverEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasGameOverEvent(this IGameContext obj) => obj.HasValue(GameOverEvent);
+		public static bool HasGameOverEvent(this IGameContext entity) => entity.HasValue(GameOverEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelGameOverEvent(this IGameContext obj) => obj.DelValue(GameOverEvent);
+		public static bool DelGameOverEvent(this IGameContext entity) => entity.DelValue(GameOverEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetGameOverEvent(this IGameContext obj, IEvent value) => obj.SetValue(GameOverEvent, value);
+		public static void SetGameOverEvent(this IGameContext entity, IEvent value) => entity.SetValue(GameOverEvent, value);
 
 		#endregion
 
 		#region WinnerTeam
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<TeamType> GetWinnerTeam(this IGameContext obj) => obj.GetValue<IReactiveVariable<TeamType>>(WinnerTeam);
+		public static IReactiveVariable<TeamType> GetWinnerTeam(this IGameContext entity) => entity.GetValue<IReactiveVariable<TeamType>>(WinnerTeam);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetWinnerTeam(this IGameContext obj, out IReactiveVariable<TeamType> value) => obj.TryGetValue(WinnerTeam, out value);
+		public static bool TryGetWinnerTeam(this IGameContext entity, out IReactiveVariable<TeamType> value) => entity.TryGetValue(WinnerTeam, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddWinnerTeam(this IGameContext obj, IReactiveVariable<TeamType> value) => obj.AddValue(WinnerTeam, value);
+		public static void AddWinnerTeam(this IGameContext entity, IReactiveVariable<TeamType> value) => entity.AddValue(WinnerTeam, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasWinnerTeam(this IGameContext obj) => obj.HasValue(WinnerTeam);
+		public static bool HasWinnerTeam(this IGameContext entity) => entity.HasValue(WinnerTeam);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelWinnerTeam(this IGameContext obj) => obj.DelValue(WinnerTeam);
+		public static bool DelWinnerTeam(this IGameContext entity) => entity.DelValue(WinnerTeam);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetWinnerTeam(this IGameContext obj, IReactiveVariable<TeamType> value) => obj.SetValue(WinnerTeam, value);
+		public static void SetWinnerTeam(this IGameContext entity, IReactiveVariable<TeamType> value) => entity.SetValue(WinnerTeam, value);
 
 		#endregion
 
 		#region TeamCatalog
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static TeamCatalog GetTeamCatalog(this IGameContext obj) => obj.GetValue<TeamCatalog>(TeamCatalog);
+		public static TeamCatalog GetTeamCatalog(this IGameContext entity) => entity.GetValue<TeamCatalog>(TeamCatalog);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTeamCatalog(this IGameContext obj, out TeamCatalog value) => obj.TryGetValue(TeamCatalog, out value);
+		public static bool TryGetTeamCatalog(this IGameContext entity, out TeamCatalog value) => entity.TryGetValue(TeamCatalog, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTeamCatalog(this IGameContext obj, TeamCatalog value) => obj.AddValue(TeamCatalog, value);
+		public static void AddTeamCatalog(this IGameContext entity, TeamCatalog value) => entity.AddValue(TeamCatalog, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasTeamCatalog(this IGameContext obj) => obj.HasValue(TeamCatalog);
+		public static bool HasTeamCatalog(this IGameContext entity) => entity.HasValue(TeamCatalog);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelTeamCatalog(this IGameContext obj) => obj.DelValue(TeamCatalog);
+		public static bool DelTeamCatalog(this IGameContext entity) => entity.DelValue(TeamCatalog);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTeamCatalog(this IGameContext obj, TeamCatalog value) => obj.SetValue(TeamCatalog, value);
+		public static void SetTeamCatalog(this IGameContext entity, TeamCatalog value) => entity.SetValue(TeamCatalog, value);
 
 		#endregion
 
 		#region CoinPool
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEntityPool<IGameEntity> GetCoinPool(this IGameContext obj) => obj.GetValue<IEntityPool<IGameEntity>>(CoinPool);
+		public static IEntityPool<IGameEntity> GetCoinPool(this IGameContext entity) => entity.GetValue<IEntityPool<IGameEntity>>(CoinPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCoinPool(this IGameContext obj, out IEntityPool<IGameEntity> value) => obj.TryGetValue(CoinPool, out value);
+		public static bool TryGetCoinPool(this IGameContext entity, out IEntityPool<IGameEntity> value) => entity.TryGetValue(CoinPool, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCoinPool(this IGameContext obj, IEntityPool<IGameEntity> value) => obj.AddValue(CoinPool, value);
+		public static void AddCoinPool(this IGameContext entity, IEntityPool<IGameEntity> value) => entity.AddValue(CoinPool, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCoinPool(this IGameContext obj) => obj.HasValue(CoinPool);
+		public static bool HasCoinPool(this IGameContext entity) => entity.HasValue(CoinPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCoinPool(this IGameContext obj) => obj.DelValue(CoinPool);
+		public static bool DelCoinPool(this IGameContext entity) => entity.DelValue(CoinPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCoinPool(this IGameContext obj, IEntityPool<IGameEntity> value) => obj.SetValue(CoinPool, value);
+		public static void SetCoinPool(this IGameContext entity, IEntityPool<IGameEntity> value) => entity.SetValue(CoinPool, value);
 
 		#endregion
 
 		#region CoinSpawnArea
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Bounds GetCoinSpawnArea(this IGameContext obj) => obj.GetValue<Bounds>(CoinSpawnArea);
+		public static Bounds GetCoinSpawnArea(this IGameContext entity) => entity.GetValue<Bounds>(CoinSpawnArea);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetCoinSpawnArea(this IGameContext obj, out Bounds value) => obj.TryGetValue(CoinSpawnArea, out value);
+		public static bool TryGetCoinSpawnArea(this IGameContext entity, out Bounds value) => entity.TryGetValue(CoinSpawnArea, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddCoinSpawnArea(this IGameContext obj, Bounds value) => obj.AddValue(CoinSpawnArea, value);
+		public static void AddCoinSpawnArea(this IGameContext entity, Bounds value) => entity.AddValue(CoinSpawnArea, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasCoinSpawnArea(this IGameContext obj) => obj.HasValue(CoinSpawnArea);
+		public static bool HasCoinSpawnArea(this IGameContext entity) => entity.HasValue(CoinSpawnArea);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelCoinSpawnArea(this IGameContext obj) => obj.DelValue(CoinSpawnArea);
+		public static bool DelCoinSpawnArea(this IGameContext entity) => entity.DelValue(CoinSpawnArea);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetCoinSpawnArea(this IGameContext obj, Bounds value) => obj.SetValue(CoinSpawnArea, value);
+		public static void SetCoinSpawnArea(this IGameContext entity, Bounds value) => entity.SetValue(CoinSpawnArea, value);
 
 		#endregion
     }

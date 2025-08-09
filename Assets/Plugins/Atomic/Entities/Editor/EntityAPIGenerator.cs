@@ -10,6 +10,7 @@ namespace Atomic.Entities
         private const string AGGRESSIVE_INLINING = "\t\t[MethodImpl(MethodImplOptions.AggressiveInlining)]";
         private const string UNSAFE_SUFFIX = "Unsafe";
         private const string REF_MODIFIER = "ref";
+        private const string PARAM_NAME = "entity";
 
         public static void CreateFile(EntityAPIAsset.Settings settings)
         {
@@ -212,17 +213,17 @@ namespace Atomic.Entities
             
             //Has:
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Has{tag}Tag(this {entity} obj) => obj.HasTag({tag});");
+            sb.AppendLine($"\t\tpublic static bool Has{tag}Tag(this {entity} {PARAM_NAME}) => {PARAM_NAME}.HasTag({tag});");
 
             //Add:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Add{tag}Tag(this {entity} obj) => obj.AddTag({tag});");
+            sb.AppendLine($"\t\tpublic static bool Add{tag}Tag(this {entity} {PARAM_NAME}) => {PARAM_NAME}.AddTag({tag});");
 
             //Del:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {entity} obj) => obj.DelTag({tag});");
+            sb.AppendLine($"\t\tpublic static bool Del{tag}Tag(this {entity} {PARAM_NAME}) => {PARAM_NAME}.DelTag({tag});");
             
             sb.AppendLine();
             sb.AppendLine("\t\t#endregion");
@@ -247,47 +248,47 @@ namespace Atomic.Entities
 
             //Get:
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static {type} Get{value}(this {entity} obj) => " +
-                          $"obj.GetValue{unsafeSuffix}<{type}>({value});");
+            sb.AppendLine($"\t\tpublic static {type} Get{value}(this {entity} {PARAM_NAME}) => " +
+                          $"{PARAM_NAME}.GetValue{unsafeSuffix}<{type}>({value});");
 
             //Get Ref:
             if (unsafeAccess)
             {
                 sb.AppendLine();
-                sb.AppendLine($"\t\tpublic static {refModifier} {type} Ref{value}(this {entity} obj) => " +
-                              $"{refModifier} obj.GetValue{unsafeSuffix}<{type}>({value});");
+                sb.AppendLine($"\t\tpublic static {refModifier} {type} Ref{value}(this {entity} {PARAM_NAME}) => " +
+                              $"{refModifier} {PARAM_NAME}.GetValue{unsafeSuffix}<{type}>({value});");
             }
             
             //TryGet:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
             sb.AppendLine(
-                $"\t\tpublic static bool TryGet{value}(this {entity} obj, out {type} value) =>" +
-                $" obj.TryGetValue{unsafeSuffix}({value}, out value);");
+                $"\t\tpublic static bool TryGet{value}(this {entity} {PARAM_NAME}, out {type} value) =>" +
+                $" {PARAM_NAME}.TryGetValue{unsafeSuffix}({value}, out value);");
 
             //Add:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static void Add{value}(this {entity} obj, {type} value) => " +
-                          $"obj.AddValue({value}, value);");
+            sb.AppendLine($"\t\tpublic static void Add{value}(this {entity} {PARAM_NAME}, {type} value) => " +
+                          $"{PARAM_NAME}.AddValue({value}, value);");
 
             //Has:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Has{value}(this {entity} obj) => " +
-                          $"obj.HasValue({value});");
+            sb.AppendLine($"\t\tpublic static bool Has{value}(this {entity} {PARAM_NAME}) => " +
+                          $"{PARAM_NAME}.HasValue({value});");
 
             //Del:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static bool Del{value}(this {entity} obj) => " +
-                          $"obj.DelValue({value});");
+            sb.AppendLine($"\t\tpublic static bool Del{value}(this {entity} {PARAM_NAME}) => " +
+                          $"{PARAM_NAME}.DelValue({value});");
 
             //Set:
             sb.AppendLine();
             if (useInlining) sb.AppendLine(AGGRESSIVE_INLINING);
-            sb.AppendLine($"\t\tpublic static void Set{value}(this {entity} obj, {type} value) => " +
-                          $"obj.SetValue({value}, value);");
+            sb.AppendLine($"\t\tpublic static void Set{value}(this {entity} {PARAM_NAME}, {type} value) => " +
+                          $"{PARAM_NAME}.SetValue({value}, value);");
             
             sb.AppendLine();
             sb.AppendLine("\t\t#endregion");
