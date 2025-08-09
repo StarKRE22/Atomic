@@ -2,8 +2,6 @@
 * Code generation. Don't modify! 
 **/
 
-using System;
-using System.Collections.Generic;
 using Atomic.Entities;
 using static Atomic.Entities.EntityNames;
 using System.Runtime.CompilerServices;
@@ -13,6 +11,8 @@ using UnityEditor;
 using UnityEngine;
 using Atomic.Entities;
 using Atomic.Elements;
+using System.Collections.Generic;
+using System;
 
 namespace ShooterGame.App
 {

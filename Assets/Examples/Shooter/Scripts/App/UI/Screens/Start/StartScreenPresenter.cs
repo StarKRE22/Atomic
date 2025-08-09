@@ -35,7 +35,7 @@ namespace ShooterGame.UI
             _screenView.OnExitClicked -= ExitAppUseCase.Exit;
         }
 
-        private void OnStartClicked() => StartLevelUseCase.StartCurrentLevel(_appContext);
+        private void OnStartClicked() => LoadGameUseCase.StartGame(_appContext);
 
         private void OnSelectLevelClicked() => ScreenUseCase.ShowScreen<LevelScreenView>(_uIContext);
     }

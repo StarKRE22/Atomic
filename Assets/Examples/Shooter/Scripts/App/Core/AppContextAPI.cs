@@ -11,6 +11,7 @@ using UnityEditor;
 using UnityEngine;
 using Atomic.Entities;
 using Atomic.Elements;
+using Cysharp.Threading.Tasks;
 
 namespace ShooterGame.App
 {
@@ -20,18 +21,44 @@ namespace ShooterGame.App
 	public static class AppContextAPI
 	{
 		///Values
-		public static readonly int CurrentLevel; // IReactiveVariable<int>
 		public static readonly int ExitKeyCode; // IValue<KeyCode>
+		public static readonly int CurrentLevel; // IReactiveVariable<int>
+		public static readonly int MaxLevel; // IValue<int>
+		public static readonly int GameLoadingAction; // ILoadingTask
 
 		static AppContextAPI()
 		{
 			//Values
-			CurrentLevel = NameToId(nameof(CurrentLevel));
 			ExitKeyCode = NameToId(nameof(ExitKeyCode));
+			CurrentLevel = NameToId(nameof(CurrentLevel));
+			MaxLevel = NameToId(nameof(MaxLevel));
+			GameLoadingAction = NameToId(nameof(GameLoadingAction));
 		}
 
 
 		///Value Extensions
+
+		#region ExitKeyCode
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<KeyCode> GetExitKeyCode(this IAppContext entity) => entity.GetValue<IValue<KeyCode>>(ExitKeyCode);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetExitKeyCode(this IAppContext entity, out IValue<KeyCode> value) => entity.TryGetValue(ExitKeyCode, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddExitKeyCode(this IAppContext entity, IValue<KeyCode> value) => entity.AddValue(ExitKeyCode, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasExitKeyCode(this IAppContext entity) => entity.HasValue(ExitKeyCode);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelExitKeyCode(this IAppContext entity) => entity.DelValue(ExitKeyCode);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetExitKeyCode(this IAppContext entity, IValue<KeyCode> value) => entity.SetValue(ExitKeyCode, value);
+
+		#endregion
 
 		#region CurrentLevel
 
@@ -55,25 +82,47 @@ namespace ShooterGame.App
 
 		#endregion
 
-		#region ExitKeyCode
+		#region MaxLevel
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<KeyCode> GetExitKeyCode(this IAppContext entity) => entity.GetValue<IValue<KeyCode>>(ExitKeyCode);
+		public static IValue<int> GetMaxLevel(this IAppContext entity) => entity.GetValue<IValue<int>>(MaxLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetExitKeyCode(this IAppContext entity, out IValue<KeyCode> value) => entity.TryGetValue(ExitKeyCode, out value);
+		public static bool TryGetMaxLevel(this IAppContext entity, out IValue<int> value) => entity.TryGetValue(MaxLevel, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddExitKeyCode(this IAppContext entity, IValue<KeyCode> value) => entity.AddValue(ExitKeyCode, value);
+		public static void AddMaxLevel(this IAppContext entity, IValue<int> value) => entity.AddValue(MaxLevel, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasExitKeyCode(this IAppContext entity) => entity.HasValue(ExitKeyCode);
+		public static bool HasMaxLevel(this IAppContext entity) => entity.HasValue(MaxLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelExitKeyCode(this IAppContext entity) => entity.DelValue(ExitKeyCode);
+		public static bool DelMaxLevel(this IAppContext entity) => entity.DelValue(MaxLevel);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetExitKeyCode(this IAppContext entity, IValue<KeyCode> value) => entity.SetValue(ExitKeyCode, value);
+		public static void SetMaxLevel(this IAppContext entity, IValue<int> value) => entity.SetValue(MaxLevel, value);
+
+		#endregion
+
+		#region GameLoadingAction
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static ILoadingTask GetGameLoadingAction(this IAppContext entity) => entity.GetValue<ILoadingTask>(GameLoadingAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameLoadingAction(this IAppContext entity, out ILoadingTask value) => entity.TryGetValue(GameLoadingAction, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddGameLoadingAction(this IAppContext entity, ILoadingTask value) => entity.AddValue(GameLoadingAction, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameLoadingAction(this IAppContext entity) => entity.HasValue(GameLoadingAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameLoadingAction(this IAppContext entity) => entity.DelValue(GameLoadingAction);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameLoadingAction(this IAppContext entity, ILoadingTask value) => entity.SetValue(GameLoadingAction, value);
 
 		#endregion
     }

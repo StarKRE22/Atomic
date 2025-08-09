@@ -1,7 +1,8 @@
+using Atomic.Entities;
+
 namespace ShooterGame
 {
-    public interface IGameUIContext
+    public interface IGameUIContext : IEntity
     {
-        
     }
 }

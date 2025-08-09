@@ -10,7 +10,14 @@ imports:
 - UnityEngine
 - Atomic.Entities
 - Atomic.Elements
+- Cysharp.Threading.Tasks
 
 values:
-- CurrentLevel: IReactiveVariable<int>
 - ExitKeyCode: IValue<KeyCode>
+
+#Level
+- CurrentLevel: IReactiveVariable<int>
+- MaxLevel: IValue<int>
+
+#Game
+- GameLoadingAction : ILoadingTask
