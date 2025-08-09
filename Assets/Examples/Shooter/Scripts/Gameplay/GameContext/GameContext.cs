@@ -1,9 +1,11 @@
+using Atomic.Elements;
 using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
     public interface IGameContext : IEntity
     {
+        IEvent<KillArgs> GetKillEvent();
     }
 
     public sealed class GameContext : SceneEntitySingleton<GameContext>, IGameContext
