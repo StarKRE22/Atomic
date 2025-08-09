@@ -35,7 +35,7 @@ namespace Atomic.Entities
         {
             get
             {
-                if (_instance != null)
+                if (_instance)
                     return _instance;
 
 #if UNITY_2023_1_OR_NEWER
@@ -44,8 +44,8 @@ namespace Atomic.Entities
                 _instance = FindObjectOfType<T>();
 #endif
 
-                return _instance == null
-                    ? throw new Exception($"Scene Entity Sigleton of type {typeof(E).Name} is not found!")
+                return !_instance
+                    ? throw new Exception($"Scene Entity Singleton of type {typeof(E).Name} is not found!")
                     : _instance;
             }
         }

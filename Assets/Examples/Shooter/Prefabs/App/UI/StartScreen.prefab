@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 8105360388652763965}
   - component: {fileID: 2101023486427016942}
   m_Layer: 5
-  m_Name: MenuScreen
+  m_Name: StartScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -900,8 +900,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startButton: {fileID: 876472796902637300}
+  _selectLevelButton: {fileID: 989092983592819042}
   _exitButton: {fileID: 7999971694085710030}
-  _currentLevel: {fileID: 0}
 --- !u!1 &8337778854294711146
 GameObject:
   m_ObjectHideFlags: 0

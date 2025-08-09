@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3918535737307865332}
   - component: {fileID: 6690594187553924924}
+  - component: {fileID: 3011129282913887316}
   m_Layer: 0
   m_Name: '[AppContext]'
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   disposeValues: 1
   useUnityLifecycle: 1
   installers:
-  - {fileID: 0}
+  - {fileID: 3011129282913887316}
   children: []
   _initialBehaviourCapacity: 2
   _onlySelectedGizmos: 0
@@ -57,3 +58,25 @@ MonoBehaviour:
   _initialTagCapacity: 0
   _initialValueCapacity: 2
   _dontDestroyOnLoad: 1
+--- !u!114 &3011129282913887316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3202832608125613718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92f1c34c0c5449ca1f3e2e79aee50b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitAppInstaller:
+    _exitKey: 27
+  _levelsInstaller:
+    _startLevel: 1
+    _maxLevel: 9
+    _currentLevel: 1
+  _loadGameInstaller:
+    _levelNameFormat: ShooterGame (Level{0})
+    _gameContextPrefab: {fileID: 4416341591751757094, guid: a242cc7a6ad034a13b45e36d0de66287, type: 3}
+    _gameUIContextPrefab: {fileID: 4720274340981811091, guid: 9772a4540a3374d25b2bd23f26ced795, type: 3}

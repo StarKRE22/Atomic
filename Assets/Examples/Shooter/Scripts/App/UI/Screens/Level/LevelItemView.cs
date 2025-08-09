@@ -19,9 +19,31 @@ namespace ShooterGame.App
         [SerializeField]
         private Button _button;
 
+        [SerializeField]
+        private Image _icon;
+        
         public void SetLevel(string level)
         {
             _level.text = level;
         }
+        
+        public void SetAsCurrent()
+        {
+            _icon.color = Color.yellow;
+            _button.interactable = true;
+        }
+
+        public void SetAsCompleted()
+        {
+            _icon.color = Color.green;
+            _button.interactable = true;
+        }
+
+        public void SetAsNotCompleted()
+        {
+            _icon.color = Color.white;
+            _button.interactable = false;
+        }
+
     }
 }

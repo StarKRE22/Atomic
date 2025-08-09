@@ -19,8 +19,8 @@ namespace ShooterGame.App
 
         public void OnSpawn(IMenuUIContext context)
         {
-            _uiContext = context;
             _appContext = AppContext.Instance;
+            _uiContext = context;
             this.SpawnLevelItems();
         }
         
@@ -41,7 +41,7 @@ namespace ShooterGame.App
             for (int i = startLevel; i <= maxLevel; i++)
             {
                 LevelItemView itemView = _screenView.CreateItem();
-                LevelItemPresenter itemPresenter = new LevelItemPresenter(i, itemView);
+                LevelItemPresenter itemPresenter = new LevelItemPresenter(_appContext, i, itemView);
                 _uiContext.AddBehaviour(itemPresenter);
             }
         }

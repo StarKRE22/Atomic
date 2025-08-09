@@ -13,7 +13,7 @@ namespace ShooterGame.App
 
         public static UniTask StartGame(IAppContext context, int level)
         {
-            if (level < 0 || level > context.GetMaxLevel().Value)
+            if (level <= 0 || level > context.GetMaxLevel().Value)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
             var bundle = new LoadingBundle

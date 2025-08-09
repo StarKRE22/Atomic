@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace ShooterGame.App
@@ -7,7 +8,10 @@ namespace ShooterGame.App
     {
         private const string MENU_NAME = "ShooterGame (Menu)";
         
-        public static UniTask LoadMenu() => 
-            SceneManager.LoadSceneAsync(MENU_NAME).ToUniTask();
+        public static async UniTask LoadMenu()
+        {
+            await SceneManager.LoadSceneAsync(MENU_NAME);
+            ScreenUseCase.ShowScreen<StartScreenView>(MenuUIContext.Instance);
+        }
     }
 }

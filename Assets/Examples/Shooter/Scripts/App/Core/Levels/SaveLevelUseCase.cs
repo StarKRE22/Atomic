@@ -6,11 +6,17 @@ namespace ShooterGame.App
     {
         private const string PrefsKey = "CurrentLevel";
 
-        public static int LoadLevel()
+        public static bool LoadLevel(out int level)
         {
-            int level = PlayerPrefs.GetInt(PrefsKey, 0);
-            Debug.Log($"Level Loaded: {level}");
-            return level;
+            if (PlayerPrefs.HasKey(PrefsKey))
+            {
+                level = PlayerPrefs.GetInt(PrefsKey, 0);
+                Debug.Log($"Level Loaded: {level}");
+                return true;
+            }
+
+            level = -1;
+            return false;
         }
 
         public static void SaveLevel(int level)

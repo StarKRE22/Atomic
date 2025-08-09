@@ -7,7 +7,7 @@ namespace ShooterGame.App
         fileName = "AppContextInstaller",
         menuName = "ShooterGame/New AppContextInstaller"
     )]
-    public sealed class AppContextInstaller : ScriptableEntityInstaller<IAppContext>
+    public sealed class AppContextInstaller : SceneEntityInstaller<IAppContext>
     {
         [SerializeField]
         private ExitAppInstaller _exitAppInstaller;
@@ -24,7 +24,11 @@ namespace ShooterGame.App
             _levelsInstaller.Install(context);
             _loadGameInstaller.Install(context);
             
-            context.WhenActivate(() => LoadMenuUseCase.LoadMenu());
+            context.WhenActivate(() =>
+            {
+                Debug.Log("ACTIVATE APP");
+                LoadMenuUseCase.LoadMenu();
+            });
         }
     }
 }
