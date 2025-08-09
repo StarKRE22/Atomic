@@ -1,31 +1,31 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class TeamPhysicsLayerBehaviour : IEntityInit, IEntityDispose
+    public sealed class TeamPhysicsLayerBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
-        private GameObject _gameObject;
-        private TeamConfig _teamConfig;
+        private IVariable<int> _physicsLayer;
+        private TeamCatalog teamCatalog;
         private IReactiveValue<TeamType> _team;
 
-        public void Init(in IEntity entity)
+        public void OnSpawn(IGameEntity entity)
         {
-            _gameObject = entity.GetGameObject();
-            _teamConfig = GameContext.Instance.GetTeamConfig();
-            _team = entity.GetTeam();
+            _physicsLayer = entity.GetPhysicsLayer();
+            teamCatalog = GameContext.Instance.GetTeamConfig();
+            
+            _team = entity.GetTeamType();
             _team.Observe(this.OnTeamChanged);
+        }
+
+        public void OnDespawn(IEntity entity)
+        {
+            _team.Unsubscribe(this.OnTeamChanged);
         }
 
         private void OnTeamChanged(TeamType teamType)
         {
-            _gameObject.layer = _teamConfig.GetTeam(teamType).PhysicsLayer;
-        }
-
-        public void Dispose(in IEntity entity)
-        {
-            _team.Unsubscribe(this.OnTeamChanged);
+            _physicsLayer.Value = teamCatalog.GetInfo(teamType).PhysicsLayer;
         }
     }
 }

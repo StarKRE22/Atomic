@@ -32,7 +32,7 @@ namespace ShooterGame.Gameplay
                     GameContext.Instance,
                     _firePoint.position,
                     _firePoint.rotation,
-                    _owner.GetTeam().Value
+                    _owner.GetTeamType().Value
                 );
                 
                 _cooldown.Reset();

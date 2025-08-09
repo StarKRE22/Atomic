@@ -24,12 +24,13 @@ values:
 - MovementSpeed: IValue<float>
 - MovementCondition: IExpression<bool>
 - MovementDirection: IReactiveVariable<Vector3>
+- MovementEvent: IEvent<Vector3>  
   
 #Rotate  
 - RotationCondition: IExpression<bool>
 - RotationSpeed: IValue<float>
-- RotationDirection: IReactiveVariable<Quaternion>
-
+- RotationDirection: IReactiveVariable<Vector3>
+- RotationEvent: IEvent<Vector3>
 
 #Life
 - Health: Health
@@ -39,7 +40,7 @@ values:
 - DestroyAction: IAction
 
 #Team
-- Team: IReactiveVariable<TeamType>
+- TeamType: IReactiveVariable<TeamType>
 
 #Combat
 - Weapon: IWeapon
@@ -53,7 +54,8 @@ values:
 
 #Physics
 - Trigger: TriggerEvents
+- PhysicsLayer: IVariable<int>
 
 #Visual
-- MeshRenderer: Renderer
+- Renderer: Renderer
 - Animator: Animator

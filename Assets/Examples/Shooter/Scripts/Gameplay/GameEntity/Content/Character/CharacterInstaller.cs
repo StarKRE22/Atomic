@@ -7,6 +7,15 @@ namespace ShooterGame.Gameplay
     public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
     {
         [SerializeField]
+        private GameObject _gameObject;
+
+        [SerializeField]
+        private Transform _transform;
+
+        [SerializeField]
+        private TriggerEvents _triggerEvents;
+
+        [SerializeField]
         private Const<float> _moveSpeed = 3;
 
         [SerializeField]
@@ -16,42 +25,57 @@ namespace ShooterGame.Gameplay
         private Health _health = new(3);
 
         [SerializeField]
-        private Transform _transform;
-
-        [SerializeField]
         private Weapon _initialWeapon;
 
         [SerializeField]
-        private ReactiveVariable<TeamType> _team;
-        
+        private ReactiveVariable<TeamType> _teamType;
+
         protected override void Install(IGameEntity entity)
         {
-            //Main
+            //Transform:
             entity.AddPosition(new TransformPositionVariable(_transform));
             entity.AddRotation(new TransformRotationVariable(_transform));
-            
-            //Team
-            entity.AddTeam(new ReactiveVariable<TeamType>(_team));
+
+            //Team:
+            entity.AddTeamType(_teamType);
             entity.AddBehaviour<TeamPhysicsLayerBehaviour>();
 
-            //Life
+            //Life:
             entity.AddDamageableTag();
             entity.AddHealth(_health);
             entity.AddTakeDamageEvent(new BaseEvent<DamageArgs>());
             entity.AddTakeDeathEvent(new BaseEvent<DamageArgs>());
 
-            //Combat
+            //Combat:
             entity.AddFireCondition(new AndExpression(_health.Exists));
             entity.AddFireAction(new CharacterFireAction(entity));
             entity.AddFireEvent(new BaseEvent());
             entity.AddWeapon(_initialWeapon);
 
             //Movement:
-            entity.AddMoveDirection(new ReactiveVector3());
-            entity.AddMoveCondition(new AndExpression(entity.GetHealth().Exists));
-            entity.AddMoveSpeed(_moveSpeed);
-            entity.AddBehaviour<CharacterMoveBehaviour>();
+            entity.AddMovementSpeed(_moveSpeed);
+            entity.AddMovementDirection(new ReactiveVector3());
+            entity.AddMovementCondition(new AndExpression(_health.Exists));
+            entity.AddMovementEvent(new BaseEvent<Vector3>());
+            entity.AddBehaviour<MovementBehaviour>();
+
+            //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
+            entity.AddRotationDirection(new ReactiveVariable<Vector3>());
+            entity.AddRotationCondition(new AndExpression(_health.Exists));
+            entity.AddRotationEvent(new BaseEvent<Vector3>());
+            entity.AddBehaviour<RotationBehaviour>();
+
+            //Physics:
+            entity.AddPhysicsLayer(new ProxyVariable<int>(
+                getter: () => _gameObject.layer,
+                setter: value => _gameObject.layer = value
+            ));
+            entity.AddTrigger(_triggerEvents);
+
+            //Other:
+            entity.AddBehaviour<CharacterMoveBehaviour>();
+            entity.AddBehaviour<CharacterNameBehaviour>();
         }
     }
 }

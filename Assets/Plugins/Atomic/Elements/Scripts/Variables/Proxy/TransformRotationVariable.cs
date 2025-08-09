@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using UnityEngine;
 
@@ -83,10 +84,7 @@ namespace Atomic.Elements
         /// Unsubscribes a previously registered callback.
         /// </summary>
         /// <param name="action">The callback to remove.</param>
-        public void Unsubscribe(Action<Quaternion> action)
-        {
-            this.OnValueChanged -= action;
-        }
+        public void Unsubscribe(Action<Quaternion> action) => this.OnValueChanged -= action;
 
         /// <summary>
         /// Releases all subscribers by clearing <see cref="OnValueChanged"/>.
@@ -94,9 +92,7 @@ namespace Atomic.Elements
         /// <remarks>
         /// After disposal, further <see cref="Value"/> updates will no longer notify any listeners.
         /// </remarks>
-        public void Dispose()
-        {
-            this.OnValueChanged = null;
-        }
+        public void Dispose() => this.OnValueChanged = null;
     }
 }
+#endif
