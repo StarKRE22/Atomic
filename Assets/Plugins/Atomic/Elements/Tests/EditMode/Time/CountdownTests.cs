@@ -419,7 +419,7 @@ namespace Atomic.Elements
             //Act:
             countdown.OnStopped += () => canceled = true;
             countdown.OnStarted += () => started = true;
-            countdown.ForceStart(5);
+            countdown.Restart(5);
 
             //Assert:
             Assert.IsTrue(canceled);

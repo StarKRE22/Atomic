@@ -32,24 +32,28 @@ namespace Atomic.Elements
         /// </summary>
         public event Action OnExpired;
 
+        public float Duration => _duration;
+        
+        public float Time => _time;
+
 #if UNITY_5_3_OR_NEWER
+        [Min(float.Epsilon)]
         [SerializeField]
 #endif
         private float _duration;
 
 #if UNITY_5_3_OR_NEWER
+        [Min(0)]
         [SerializeField]
 #endif
-        private float _current;
+        private float _time;
 
         /// <summary>
         /// Initializes a new cooldown with a given duration. Starts at full time.
         /// </summary>
         /// <param name="duration">The total duration of the cooldown.</param>
-        public Cooldown(float duration)
+        public Cooldown(float duration) : this(duration, duration)
         {
-            _duration = duration;
-            _current = duration;
         }
 
         /// <summary>
@@ -59,19 +63,21 @@ namespace Atomic.Elements
         /// <param name="current">The current remaining time.</param>
         public Cooldown(float duration, float current)
         {
-            _duration = duration;
-            _current = current;
+            _duration = Math.Max(0, duration);
+            _time = Math.Min(current, _duration);
         }
+
+        public static implicit operator Cooldown(float duration) => new(duration);
 
         /// <summary>
         /// Returns whether the cooldown has expired (i.e., current time is zero or less).
         /// </summary>
-        public bool IsExpired() => _current <= 0;
+        public bool IsExpired() => _time <= 0;
 
         /// <summary>
         /// Gets the progress of the cooldown (from 0 to 1).
         /// </summary>
-        public float GetProgress() => _current / _duration;
+        public float GetProgress() => _time / _duration;
 
         /// <summary>
         /// Sets the progress (from 0 to 1), updating the remaining time accordingly.
@@ -79,32 +85,18 @@ namespace Atomic.Elements
         /// <param name="progress">The new progress value (0–1).</param>
         public void SetProgress(float progress)
         {
-            progress = progress switch
-            {
-                < 0 => 0,
-                > 1 => 1,
-                _ => progress
-            };
+            progress = Math.Clamp(progress, 0, 1);
+            float time = _duration * progress;
 
-            float remainingTime = _duration * progress;
-
-            _current = remainingTime;
-            this.OnTimeChanged?.Invoke(remainingTime);
+            _time = time;
+            this.OnTimeChanged?.Invoke(time);
             this.OnProgressChanged?.Invoke(progress);
         }
 
         /// <summary>
         /// Resets the cooldown to full duration.
         /// </summary>
-        public void Reset()
-        {
-            if (Math.Abs(_duration - _current) <= float.Epsilon)
-                return;
-
-            _current = _duration;
-            this.OnTimeChanged?.Invoke(_current);
-            this.OnProgressChanged?.Invoke(this.GetProgress());
-        }
+        public void Reset() => this.SetTime(_duration);
 
         /// <summary>
         /// Updates the cooldown by reducing current time by deltaTime.
@@ -113,22 +105,22 @@ namespace Atomic.Elements
         /// <param name="deltaTime">The time to subtract from the current time.</param>
         public void Tick(float deltaTime)
         {
-            if (_current == 0)
+            if (_time == 0)
                 return;
 
-            _current = Math.Max(0, _current - deltaTime);
+            _time = Math.Max(0, _time - deltaTime);
 
-            this.OnTimeChanged?.Invoke(_current);
+            this.OnTimeChanged?.Invoke(_time);
             this.OnProgressChanged?.Invoke(this.GetProgress());
 
-            if (_current <= 0)
+            if (_time <= 0)
                 this.OnExpired?.Invoke();
         }
 
         /// <summary>
         /// Returns a string representation of the cooldown's duration and current time.
         /// </summary>
-        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_current)}: {_current}";
+        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_time)}: {_time}";
 
         /// <summary>
         /// Gets the total duration of the cooldown.
@@ -142,9 +134,7 @@ namespace Atomic.Elements
         /// <param name="duration">The new duration value.</param>
         public void SetDuration(float duration)
         {
-            if (duration < 0)
-                throw new ArgumentException($"Duration can't be negative: {duration}!", nameof(duration));
-
+            duration = Math.Max(0, duration);
             if (Math.Abs(_duration - duration) > float.Epsilon)
             {
                 _duration = duration;
@@ -156,7 +146,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current remaining time on the cooldown.
         /// </summary>
-        public float GetTime() => _current;
+        public float GetTime() => _time;
 
         /// <summary>
         /// Sets the current remaining time on the cooldown.
@@ -169,10 +159,10 @@ namespace Atomic.Elements
                 throw new ArgumentException($"Time can't be negative: {time}!", nameof(time));
 
             float newTime = Math.Clamp(time, 0, _duration);
-            if (Math.Abs(newTime - _current) <= float.Epsilon)
+            if (Math.Abs(newTime - _time) <= float.Epsilon)
                 return;
 
-            _current = newTime;
+            _time = newTime;
             this.OnTimeChanged?.Invoke(newTime);
             this.OnProgressChanged?.Invoke(this.GetProgress());
         }

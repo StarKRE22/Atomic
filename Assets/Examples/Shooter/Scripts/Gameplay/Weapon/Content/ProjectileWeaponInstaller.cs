@@ -16,7 +16,7 @@ namespace ShooterGame.Gameplay
         private ReactiveVariable<int> _ammo = 100;
 
         [SerializeField]
-        private Cooldown _cooldown = new(0.5f);
+        private Cooldown _cooldown = 0.5f;
 
         protected override void Install(IWeapon weapon)
         {

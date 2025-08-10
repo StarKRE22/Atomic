@@ -150,7 +150,7 @@ namespace Atomic.Elements
         
             //Act:
             period.Start();
-            period.OnCycle += () => wasCycle = true;
+            period.OnPeriod += () => wasCycle = true;
             
             //Pre-Assert:
             Assert.AreEqual(PeriodState.PLAYING, period.GetState());
@@ -208,7 +208,7 @@ namespace Atomic.Elements
             period.Tick(0.2f);
             period.OnProgressChanged += _ => progressChanged = true;
             period.OnTimeChanged += _ => timeChanged = true;
-            period.OnCycle += () => wasCycle = true;
+            period.OnPeriod += () => wasCycle = true;
         
             period.Pause();
         

@@ -1,6 +1,6 @@
 using System;
 #if UNITY_5_3_OR_NEWER
-using UnityEngine; 
+using UnityEngine;
 #endif
 
 #if ODIN_INSPECTOR
@@ -47,7 +47,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public CountdownState CurrentState => this.currentState;
+        public CountdownState State => this.state;
 
         /// <summary>Gets or sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
@@ -65,7 +65,7 @@ namespace Atomic.Elements
 #endif
         public float CurrentTime
         {
-            get => this.currentTime;
+            get => this.time;
             set => this.SetTime(value);
         }
 
@@ -87,8 +87,9 @@ namespace Atomic.Elements
 #endif
         private float duration;
 
-        private float currentTime;
-        private CountdownState currentState;
+        private float time;
+
+        private CountdownState state;
 
         /// <summary>Initializes a new instance of <see cref="Countdown"/>.</summary>
         public Countdown()
@@ -102,118 +103,82 @@ namespace Atomic.Elements
         public Countdown(float duration) => this.duration = duration;
 
         /// <summary>Gets the current internal state.</summary>
-        public CountdownState GetState() => this.currentState;
+        public CountdownState GetState() => this.state;
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
-        public bool IsIdle() => this.currentState == CountdownState.IDLE;
+        public bool IsIdle() => this.state == CountdownState.IDLE;
 
         /// <summary>Returns true if the countdown is running.</summary>
-        public bool IsPlaying() => this.currentState == CountdownState.PLAYING;
+        public bool IsStarted() => this.state == CountdownState.PLAYING;
 
         /// <summary>Returns true if the countdown is paused.</summary>
-        public bool IsPaused() => this.currentState == CountdownState.PAUSED;
+        public bool IsPaused() => this.state == CountdownState.PAUSED;
 
         /// <summary>Returns true if the countdown has finished.</summary>
-        public bool IsExpired() => this.currentState == CountdownState.EXPIRED;
+        public bool IsExpired() => this.state == CountdownState.EXPIRED;
 
         /// <summary>Gets the total duration.</summary>
         public float GetDuration() => this.duration;
 
         /// <summary>Gets the current remaining time.</summary>
-        public float GetTime() => this.currentTime;
+        public float GetTime() => this.time;
 
-        /// <summary>Starts the countdown from full duration. Stops any current state first.</summary>
-#if ODIN_INSPECTOR
-        [Title("Methods")]
-        [Button]
-#endif
-        public void ForceStart()
-        {
-            this.Stop();
-            this.Start();
-        }
-
-        /// <summary>Starts the countdown from a specific current time. Stops any current state first.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void ForceStart(float currentTime)
+        public void Start(float currentTime = 0)
         {
-            this.Stop();
-            this.Start(currentTime);
-        }
+            if (this.state is not (CountdownState.IDLE or CountdownState.EXPIRED))
+                return;
 
-        public void Start()
-        {
-            this.ResetTime();
-            this.Play();
-        }
-
-        public void Start(float currentTime)
-        {
             this.SetTime(currentTime);
-            this.Play();
-        }
 
-        /// <summary>Plays the countdown without resetting time.</summary>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public bool Play()
-        {
-            if (this.currentState is not (CountdownState.IDLE or CountdownState.EXPIRED))
-                return false;
-
-            this.currentState = CountdownState.PLAYING;
+            this.state = CountdownState.PLAYING;
             this.OnStateChanged?.Invoke(CountdownState.PLAYING);
             this.OnStarted?.Invoke();
-            return true;
         }
 
         /// <summary>Pauses the countdown if it is currently playing.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Pause()
+        public void Pause()
         {
-            if (this.currentState != CountdownState.PLAYING)
-                return false;
+            if (this.state != CountdownState.PLAYING)
+                return;
 
-            this.currentState = CountdownState.PAUSED;
+            this.state = CountdownState.PAUSED;
             this.OnStateChanged?.Invoke(CountdownState.PAUSED);
             this.OnPaused?.Invoke();
-            return true;
         }
 
         /// <summary>Resumes the countdown if it is currently paused.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Resume()
+        public void Resume()
         {
-            if (this.currentState != CountdownState.PAUSED)
-                return false;
+            if (this.state != CountdownState.PAUSED)
+                return;
 
-            this.currentState = CountdownState.PLAYING;
+            this.state = CountdownState.PLAYING;
             this.OnStateChanged?.Invoke(CountdownState.PLAYING);
             this.OnResumed?.Invoke();
-            return true;
         }
 
         /// <summary>Stops the countdown and resets the current time to zero.</summary>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Stop()
+        public void Stop()
         {
-            if (this.currentState == CountdownState.IDLE)
-                return false;
+            if (this.state == CountdownState.IDLE)
+                return;
 
-            this.currentTime = 0;
-            this.currentState = CountdownState.IDLE;
+            this.time = 0;
+            this.state = CountdownState.IDLE;
             this.OnStateChanged?.Invoke(CountdownState.IDLE);
             this.OnStopped?.Invoke();
-            return true;
         }
 
         /// <summary>Advances the countdown by deltaTime and triggers completion if needed.</summary>
@@ -222,13 +187,13 @@ namespace Atomic.Elements
 #endif
         public void Tick(float deltaTime)
         {
-            if (this.currentState != CountdownState.PLAYING)
+            if (this.state != CountdownState.PLAYING)
                 return;
 
-            this.currentTime = Math.Max(0, this.currentTime - deltaTime);
-            this.OnTimeChanged?.Invoke(this.currentTime);
+            this.time = Math.Max(0, this.time - deltaTime);
+            this.OnTimeChanged?.Invoke(this.time);
 
-            float progress = 1 - this.currentTime / this.duration;
+            float progress = 1 - this.time / this.duration;
             this.OnProgressChanged?.Invoke(progress);
 
             if (progress >= 1)
@@ -238,7 +203,7 @@ namespace Atomic.Elements
         /// <summary>Completes the countdown.</summary>
         private void Complete()
         {
-            this.currentState = CountdownState.EXPIRED;
+            this.state = CountdownState.EXPIRED;
             this.OnStateChanged?.Invoke(CountdownState.EXPIRED);
             this.OnExpired?.Invoke();
         }
@@ -246,9 +211,9 @@ namespace Atomic.Elements
         /// <summary>Gets the normalized progress (0–1) of the countdown.</summary>
         public float GetProgress()
         {
-            return this.currentState switch
+            return this.state switch
             {
-                CountdownState.PLAYING or CountdownState.PAUSED => 1 - this.currentTime / this.duration,
+                CountdownState.PLAYING or CountdownState.PAUSED => 1 - this.time / this.duration,
                 CountdownState.EXPIRED => 1,
                 _ => 0
             };
@@ -263,7 +228,7 @@ namespace Atomic.Elements
             progress = Math.Clamp(progress, 0, 1);
             float remainingTime = this.duration * (1 - progress);
 
-            this.currentTime = remainingTime;
+            this.time = remainingTime;
             this.OnTimeChanged?.Invoke(remainingTime);
             this.OnProgressChanged?.Invoke(progress);
         }
@@ -290,14 +255,11 @@ namespace Atomic.Elements
 #endif
         public void SetTime(float time)
         {
-            if (time < 0)
-                throw new Exception($"Time can't be negative: {duration}!");
-
-            float newTime = Math.Clamp(time, 0, this.duration);
-            if (Math.Abs(newTime - this.currentTime) > float.Epsilon)
+            time = Math.Clamp(time, 0, this.duration);
+            if (Math.Abs(time - this.time) > float.Epsilon)
             {
-                this.currentTime = newTime;
-                this.OnTimeChanged?.Invoke(newTime);
+                this.time = time;
+                this.OnTimeChanged?.Invoke(time);
                 this.OnProgressChanged?.Invoke(this.GetProgress());
             }
         }
@@ -306,6 +268,6 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void ResetTime() => this.SetTime(this.duration);
+        public void Reset() => this.SetTime(this.duration);
     }
 }
