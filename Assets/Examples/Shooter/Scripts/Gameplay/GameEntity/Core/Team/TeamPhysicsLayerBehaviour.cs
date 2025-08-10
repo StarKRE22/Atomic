@@ -12,7 +12,7 @@ namespace ShooterGame.Gameplay
         public void OnSpawn(IGameEntity entity)
         {
             _physicsLayer = entity.GetPhysicsLayer();
-            teamCatalog = GameContext.Instance.GetTeamConfig();
+            teamCatalog = GameContext.Instance.GetTeamCatalog();
             
             _team = entity.GetTeamType();
             _team.Observe(this.OnTeamChanged);

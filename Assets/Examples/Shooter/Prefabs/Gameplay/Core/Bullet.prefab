@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7002937625849939667}
   - component: {fileID: 2313383314344418545}
   - component: {fileID: 148895312222978992}
-  - component: {fileID: 5171870878798322356}
   m_Layer: 0
   m_Name: <Visual>
   m_TagString: Untagged
@@ -59,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -84,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5171870878798322356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538255892624886559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb4ca2eeb0045a98860da10de58f14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meshRenderer: {fileID: 148895312222978992}
 --- !u!1 &2714759441127867601
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,11 +95,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5428821966894332721}
-  - component: {fileID: 4849326646527509110}
+  - component: {fileID: 8811853913606489943}
   - component: {fileID: 3578295191263286036}
-  - component: {fileID: 3256732682530281581}
+  - component: {fileID: 2721846075959337691}
   - component: {fileID: 7646165224295598019}
-  - component: {fileID: 1517153936497973315}
+  - component: {fileID: 2952689514094640455}
   m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
@@ -134,7 +123,7 @@ Transform:
   - {fileID: 7002937625849939667}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4849326646527509110
+--- !u!114 &8811853913606489943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,17 +132,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2714759441127867601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3142498ee69840069f3a93c11b1e1f75, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e3b7b4ca4e54ad8af076c8a921ffd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   installOnAwake: 1
   installInEditMode: 0
+  disposeValues: 1
+  useUnityLifecycle: 1
   installers:
   - {fileID: 3578295191263286036}
-  - {fileID: 5171870878798322356}
+  - {fileID: 2952689514094640455}
+  children: []
+  _initialBehaviourCapacity: 0
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
-  gizmoses: []
+  _initialTagCapacity: 1
+  _initialValueCapacity: 1
 --- !u!114 &3578295191263286036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,11 +160,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197ce9065ef845f99928b8ed6315177a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
-  _damage: 1
-  _trigger: {fileID: 3256732682530281581}
-  _lifetime: 3
---- !u!114 &3256732682530281581
+  _transform: {fileID: 5428821966894332721}
+  _moveSpeed:
+    value: 3
+  _damage:
+    value: 1
+  _trigger: {fileID: 2721846075959337691}
+  _lifetime:
+    _duration: 5
+    _time: 5
+--- !u!114 &2721846075959337691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2714759441127867601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb44e97529be4a61b1ea0d782c4ae33c, type: 3}
+  m_Script: {fileID: 11500000, guid: c11f7caf293d4158bfbb8855eade79be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &7646165224295598019
@@ -203,7 +202,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.125
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1517153936497973315
+--- !u!114 &2952689514094640455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,8 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2714759441127867601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 603a745f80e14d1d8cd57cf70a50187f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bb4ca2eeb0045a98860da10de58f14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entities:
-  - {fileID: 4849326646527509110}
+  _renderer: {fileID: 148895312222978992}

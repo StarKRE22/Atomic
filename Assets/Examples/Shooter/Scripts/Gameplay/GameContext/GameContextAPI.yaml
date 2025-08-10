@@ -1,27 +1,26 @@
-#header: EntityAPI
-#contextType: IGameContext
-#aggressiveInlining: true
-#
-#namespace: Game.Gameplay
-#className: GameContextAPI
-#directory:  Assets/Examples/Shooter/Scripts/Gameplay/GameContext/
-#
-#imports:
-#  - UnityEngine
-#  - Atomic.Entities
-#  - Atomic.Elements
-#  - System.Collections.Generic
-#
-#values:
-#  - Players: IDictionary<TeamType, IPlayerContext> 
-#  - GameTime: IReactiveVariable<float> 
-#  - TeamConfig: TeamConfig
-#  - BulletPool: IEntityPool
-#  - WorldTransform: Transform
-#  - Leaderboard: IReactiveDictionary<TeamType, int>
-#  - KillEvent: IEvent<KillArgs>
-#  - RespawnTime: IValue<float>
-#  
-#  #Spawn points
-#  - AllSpawnPoints: Transform[]
-#  - FreeSpawnPoints: List<Transform>
+header: EntityAPI
+entityType: IGameContext
+aggressiveInlining: true
+namespace: ShooterGame.Gameplay
+className: GameContextAPI
+directory:  Assets/Examples/Shooter/Scripts/Gameplay/GameContext/
+
+imports:
+  - UnityEngine
+  - Atomic.Entities
+  - Atomic.Elements
+  - System.Collections.Generic
+
+values:
+  - Players: IDictionary<TeamType, IPlayerContext> 
+  - GameTime: IReactiveVariable<float> 
+  - TeamCatalog: TeamCatalog
+  - BulletPool: IEntityPool<IGameEntity>
+  - WorldTransform: Transform
+  - Leaderboard: IReactiveDictionary<TeamType, int>
+  - KillEvent: IEvent<KillArgs>
+  - RespawnTime: IValue<float>
+
+  #Spawn points
+  - AllSpawnPoints: Transform[]
+  - FreeSpawnPoints: List<Transform>

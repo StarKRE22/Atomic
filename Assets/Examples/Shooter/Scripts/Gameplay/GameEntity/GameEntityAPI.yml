@@ -19,6 +19,7 @@ values:
 #Transform
 - Position: IReactiveVariable<Vector3>
 - Rotation: IReactiveVariable<Quaternion>
+- Parent: IVariable<Transform>
 
 #Movement  
 - MovementSpeed: IValue<float>

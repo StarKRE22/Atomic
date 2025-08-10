@@ -1,12 +1,9 @@
-// using Atomic.Contexts;
-//
-// namespace ShooterGame.Gameplay
-// {
-//     public interface IPlayerContext : IContext
-//     {
-//     }
-//
-//     public sealed class PlayerContext : SceneContext, IPlayerContext
-//     {
-//     }
-// }
+
+using Atomic.Entities;
+
+namespace ShooterGame.Gameplay
+{
+    public sealed class PlayerContext : SceneEntitySingleton<PlayerContext>, IPlayerContext
+    {
+    }
+}

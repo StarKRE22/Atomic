@@ -27,6 +27,7 @@ namespace ShooterGame.Gameplay
 		///Values
 		public static readonly int Position; // IReactiveVariable<Vector3>
 		public static readonly int Rotation; // IReactiveVariable<Quaternion>
+		public static readonly int Parent; // IVariable<Transform>
 		public static readonly int MovementSpeed; // IValue<float>
 		public static readonly int MovementCondition; // IExpression<bool>
 		public static readonly int MovementDirection; // IReactiveVariable<Vector3>
@@ -53,6 +54,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int PhysicsLayer; // IVariable<int>
 		public static readonly int Renderer; // Renderer
 		public static readonly int Animator; // Animator
+		public static readonly int HitPointsView; // HitPointsView
 
 		static GameEntityAPI()
 		{
@@ -62,6 +64,7 @@ namespace ShooterGame.Gameplay
 			//Values
 			Position = NameToId(nameof(Position));
 			Rotation = NameToId(nameof(Rotation));
+			Parent = NameToId(nameof(Parent));
 			MovementSpeed = NameToId(nameof(MovementSpeed));
 			MovementCondition = NameToId(nameof(MovementCondition));
 			MovementDirection = NameToId(nameof(MovementDirection));
@@ -88,6 +91,7 @@ namespace ShooterGame.Gameplay
 			PhysicsLayer = NameToId(nameof(PhysicsLayer));
 			Renderer = NameToId(nameof(Renderer));
 			Animator = NameToId(nameof(Animator));
+			HitPointsView = NameToId(nameof(HitPointsView));
 		}
 
 
@@ -150,6 +154,28 @@ namespace ShooterGame.Gameplay
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotation(this IGameEntity entity, IReactiveVariable<Quaternion> value) => entity.SetValue(Rotation, value);
+
+		#endregion
+
+		#region Parent
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IVariable<Transform> GetParent(this IGameEntity entity) => entity.GetValue<IVariable<Transform>>(Parent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetParent(this IGameEntity entity, out IVariable<Transform> value) => entity.TryGetValue(Parent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddParent(this IGameEntity entity, IVariable<Transform> value) => entity.AddValue(Parent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasParent(this IGameEntity entity) => entity.HasValue(Parent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelParent(this IGameEntity entity) => entity.DelValue(Parent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetParent(this IGameEntity entity, IVariable<Transform> value) => entity.SetValue(Parent, value);
 
 		#endregion
 
@@ -722,6 +748,28 @@ namespace ShooterGame.Gameplay
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetAnimator(this IGameEntity entity, Animator value) => entity.SetValue(Animator, value);
+
+		#endregion
+
+		#region HitPointsView
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static HitPointsView GetHitPointsView(this IGameEntity entity) => entity.GetValue<HitPointsView>(HitPointsView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetHitPointsView(this IGameEntity entity, out HitPointsView value) => entity.TryGetValue(HitPointsView, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddHitPointsView(this IGameEntity entity, HitPointsView value) => entity.AddValue(HitPointsView, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasHitPointsView(this IGameEntity entity) => entity.HasValue(HitPointsView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelHitPointsView(this IGameEntity entity) => entity.DelValue(HitPointsView);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetHitPointsView(this IGameEntity entity, HitPointsView value) => entity.SetValue(HitPointsView, value);
 
 		#endregion
     }

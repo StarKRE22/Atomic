@@ -24,10 +24,9 @@ namespace ShooterGame.Gameplay
 
             target.GetTakeDeathEvent().Invoke(args);
 
-            IEntity source = args.source;
             context?.GetKillEvent().Invoke(new KillArgs
             {
-                instigator = source,
+                instigator = args.source,
                 victim = target
             });
 

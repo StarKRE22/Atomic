@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
         {
             _teamType = entity.GetTeamType();
             _damageEvent = entity.GetTakeDamageEvent();
-            _teamCatalog = GameContext.Instance.GetTeamConfig();
+            _teamCatalog = GameContext.Instance.GetTeamCatalog();
             _damageEvent.Subscribe(this.OnDamageTaken);
         }
 

@@ -6,7 +6,7 @@ namespace ShooterGame.Gameplay
 {
     public sealed class BulletCollisionBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
-        private IEntity _entity;
+        private IGameEntity _entity;
         private TriggerEvents _trigger;
         private IValue<int> _damage;
         private IAction _destroyAction;

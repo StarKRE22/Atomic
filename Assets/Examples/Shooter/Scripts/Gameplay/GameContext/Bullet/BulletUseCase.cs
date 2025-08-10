@@ -1,4 +1,3 @@
-using System;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -8,25 +7,20 @@ namespace ShooterGame.Gameplay
     {
         public static IEntity Spawn(
             IGameContext context,
-            in Vector3 position,
-            in Quaternion rotation,
-            in TeamType teamType
+            Vector3 position,
+            Quaternion rotation,
+            TeamType teamType
         )
         {
-            // IEntity bullet = context.GetBulletPool().Rent();
-            // Transform bulletTransform = bullet.GetTransform();
-            // bulletTransform.SetParent(context.GetWorldTransform());
-            // bulletTransform.SetPositionAndRotation(position, rotation);
-            // bullet.GetLifetime().Reset();
-            // bullet.GetTeam().Value = teamType;
-            // return bullet;
-            throw new NotImplementedException();
+            IGameEntity bullet = context.GetBulletPool().Rent();
+            bullet.GetPosition().Value = position;
+            bullet.GetRotation().Value = rotation;
+            bullet.GetTeamType().Value = teamType;
+            bullet.GetLifetime().Reset();
+            return bullet;
         }
 
-        public static void Despawn(in IGameContext context, in IEntity bullet)
-        {
-            throw new NotImplementedException();
-            // context.GetBulletPool().Return(bullet);
-        }
+        public static void Despawn(IGameContext context, IGameEntity bullet) => 
+            context.GetBulletPool().Return(bullet);
     }
 }
