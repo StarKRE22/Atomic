@@ -1,6 +1,6 @@
-namespace Atomic.Elements.Plugins.Atomic.Elements.Scripts.Time
+namespace Atomic.Elements
 {
-    public static class Extensions
+    public static partial class Extensions
     {
         public static void Restart(this IStartSource source, float currentTime = 0)
         {

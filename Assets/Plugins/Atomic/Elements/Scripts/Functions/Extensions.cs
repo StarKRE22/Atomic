@@ -34,6 +34,6 @@ namespace Atomic.Elements
         /// <param name="it">The reactive boolean value to negate.</param>
         /// <returns>A <see cref="InlineFunction{T}"/> that returns the inverse of the current value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static InlineFunction<bool> AsNot(this IFunction<bool> it) => new(() => !it.Invoke());
+        public static InlineFunction<bool> Invert(this IFunction<bool> it) => new(() => !it.Invoke());
     }
 }

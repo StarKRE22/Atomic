@@ -19,5 +19,10 @@ namespace ShooterGame.Gameplay
         {
             throw new System.NotImplementedException();
         }
+
+        public IEvent<KillArgs> GetKillEvent()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

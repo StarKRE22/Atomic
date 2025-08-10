@@ -156,7 +156,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Start(float currentTime)
+        public void Start(float currentTime = 0)
         {
             if (this.currentState is not (TimerState.IDLE or TimerState.EXPIRED))
                 return;

@@ -34,7 +34,7 @@ namespace Atomic.Elements
             Assert.AreEqual(CountdownState.PLAYING, stateChanged);
             Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
             Assert.AreEqual(5, countdown.GetTime());
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
         }
 
         [Test]
@@ -50,14 +50,14 @@ namespace Atomic.Elements
 
             //Act:
             countdown.SetTime(2);
-            countdown.Play();
+            countdown.Start();
 
             //Assert:
             Assert.AreEqual(CountdownState.PLAYING, stateChanged);
             Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
             Assert.AreEqual(2, countdown.GetTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
             
             //Act:
             countdown.Tick(deltaTime: 0.5f);
@@ -86,7 +86,7 @@ namespace Atomic.Elements
             Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
             Assert.AreEqual(3, countdown.GetTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
         }
 
         [Test]
@@ -110,7 +110,7 @@ namespace Atomic.Elements
             countdown.Tick(deltaTime: 0.5f);
 
             //Assert:
-            Assert.IsFalse(countdown.IsPlaying());
+            Assert.IsFalse(countdown.IsStarted());
             Assert.IsFalse(wasTimeEvent);
             Assert.IsFalse(wasProgressEvent);
 
@@ -167,7 +167,7 @@ namespace Atomic.Elements
             Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
             Assert.AreEqual(CountdownState.PLAYING, stateChanged);
 
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
             Assert.IsFalse(countdown.IsExpired());
             Assert.AreEqual(4, countdown.GetTime());
         }
@@ -200,7 +200,7 @@ namespace Atomic.Elements
             Assert.AreEqual(0, countdown.GetTime());
             Assert.AreEqual(4, countdown.GetDuration());
 
-            Assert.IsFalse(countdown.IsPlaying());
+            Assert.IsFalse(countdown.IsStarted());
             Assert.IsFalse(countdown.IsPaused());
             Assert.IsTrue(countdown.IsExpired());
         }
@@ -301,7 +301,7 @@ namespace Atomic.Elements
             Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
 
             Assert.IsTrue(!countdown.IsPaused());
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
         }
 
         [Test]
@@ -318,7 +318,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsFalse(wasResume);
             Assert.AreEqual(CountdownState.IDLE, countdown.GetState());
-            Assert.IsFalse(countdown.IsPlaying());
+            Assert.IsFalse(countdown.IsStarted());
             Assert.IsFalse(countdown.IsPaused());
         }
 
@@ -359,7 +359,7 @@ namespace Atomic.Elements
             Assert.AreEqual(CountdownState.IDLE, countdown.GetState());
             Assert.AreEqual(CountdownState.IDLE, stateChanged);
 
-            Assert.IsFalse(countdown.IsPlaying());
+            Assert.IsFalse(countdown.IsStarted());
             Assert.IsTrue(countdown.IsIdle());
 
             Assert.AreEqual(5, countdown.GetDuration());
@@ -367,7 +367,7 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void ForceStart()
+        public void Restart()
         {
             //Arrange:
             Countdown countdown = new Countdown(10);
@@ -386,7 +386,7 @@ namespace Atomic.Elements
             //Act:
             countdown.OnStopped += () => canceled = true;
             countdown.OnStarted += () => started = true;
-            countdown.ForceStart();
+            countdown.Restart();
 
             //Assert:
             Assert.IsTrue(canceled);
@@ -396,7 +396,7 @@ namespace Atomic.Elements
             Assert.AreEqual(10, countdown.GetTime());
             Assert.AreEqual(0, countdown.GetProgress());
 
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
         }
 
         [Test]
@@ -429,7 +429,7 @@ namespace Atomic.Elements
             Assert.AreEqual(5, countdown.GetTime());
             Assert.AreEqual(0.5f, countdown.GetProgress());
 
-            Assert.IsTrue(countdown.IsPlaying());
+            Assert.IsTrue(countdown.IsStarted());
         }
 
         [Test]
@@ -486,7 +486,7 @@ namespace Atomic.Elements
             Assert.IsTrue(canceled);
 
             Assert.IsFalse(countdown.IsPaused());
-            Assert.IsFalse(countdown.IsPlaying());
+            Assert.IsFalse(countdown.IsStarted());
             Assert.IsTrue(countdown.IsIdle());
             Assert.AreEqual(5, countdown.Duration);
             Assert.AreEqual(0, countdown.CurrentTime);

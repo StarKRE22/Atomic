@@ -56,6 +56,7 @@ values:
 - Trigger: TriggerEvents
 - PhysicsLayer: IVariable<int>
 
-#Visual
+#View
 - Renderer: Renderer
 - Animator: Animator
+- HitPointsView: HitPointsView

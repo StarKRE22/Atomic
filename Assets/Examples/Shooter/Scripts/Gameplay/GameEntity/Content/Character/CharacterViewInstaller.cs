@@ -26,6 +26,9 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private AudioClip _deathClip;
 
+        [SerializeField]
+        private HitPointsView _hitPointsView;
+
         protected override void Install(IGameEntity entity)
         {
             entity.AddRenderer(_renderer);

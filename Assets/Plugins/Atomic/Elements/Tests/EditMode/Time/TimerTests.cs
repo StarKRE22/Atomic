@@ -34,7 +34,7 @@ namespace Atomic.Elements
             Assert.AreEqual(TimerState.PLAYING, timer.CurrentState);
             Assert.AreEqual(0, timer.GetTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.AreEqual(3, timer.GetTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
         
         [Test]
@@ -64,12 +64,12 @@ namespace Atomic.Elements
             //Act:
             timer.OnStarted += () => wasEvent = true;
             timer.Time = 3;
-            timer.Play();
+            timer.Start();
 
             //Assert:
             Assert.AreEqual(3, timer.GetTime());
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
 
         [Test]
@@ -93,7 +93,7 @@ namespace Atomic.Elements
             timer.Tick(deltaTime: 0.5f);
 
             //Assert:
-            Assert.IsFalse(timer.IsPlaying());
+            Assert.IsFalse(timer.IsStarted());
             Assert.IsFalse(wasTimeEvent);
             Assert.IsFalse(wasProgressEvent);
 
@@ -145,7 +145,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasStarted);
 
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
             Assert.IsFalse(timer.IsExpired());
             Assert.AreEqual(0, timer.GetTime());
         }
@@ -177,7 +177,7 @@ namespace Atomic.Elements
             Assert.AreEqual(4, timer.GetTime());
             Assert.AreEqual(4, timer.GetDuration());
 
-            Assert.IsFalse(timer.IsPlaying());
+            Assert.IsFalse(timer.IsStarted());
             Assert.IsFalse(timer.IsPaused());
             Assert.IsTrue(timer.IsExpired());
         }
@@ -268,7 +268,7 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasResume);
             Assert.IsTrue(!timer.IsPaused());
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
 
         [Test]
@@ -284,7 +284,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsFalse(wasResume);
-            Assert.IsFalse(timer.IsPlaying());
+            Assert.IsFalse(timer.IsStarted());
             Assert.IsFalse(timer.IsPaused());
         }
 
@@ -319,7 +319,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasStop);
-            Assert.IsFalse(timer.IsPlaying());
+            Assert.IsFalse(timer.IsStarted());
             Assert.IsTrue(timer.IsIdle());
 
             Assert.AreEqual(5, timer.GetDuration());
@@ -327,7 +327,7 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void ForceStart()
+        public void Restart()
         {
             //Arrange:
             Timer timer = new Timer(10);
@@ -346,7 +346,7 @@ namespace Atomic.Elements
             //Act:
             timer.OnStopped += () => canceled = true;
             timer.OnStarted += () => started = true;
-            timer.ForceStart();
+            timer.Restart();
 
             //Assert:
             Assert.IsTrue(canceled);
@@ -356,7 +356,7 @@ namespace Atomic.Elements
             Assert.AreEqual(0, timer.GetTime());
             Assert.AreEqual(0, timer.GetProgress());
 
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
 
         [Test]
@@ -379,7 +379,7 @@ namespace Atomic.Elements
             //Act:
             timer.OnStopped += () => canceled = true;
             timer.OnStarted += () => started = true;
-            timer.ForceStart(5);
+            timer.Restart(5);
 
             //Assert:
             Assert.IsTrue(canceled);
@@ -389,7 +389,7 @@ namespace Atomic.Elements
             Assert.AreEqual(5, timer.GetTime());
             Assert.AreEqual(0.5f, timer.GetProgress());
 
-            Assert.IsTrue(timer.IsPlaying());
+            Assert.IsTrue(timer.IsStarted());
         }
 
         [Test]
@@ -446,7 +446,7 @@ namespace Atomic.Elements
             Assert.IsTrue(canceled);
 
             Assert.IsFalse(timer.IsPaused());
-            Assert.IsFalse(timer.IsPlaying());
+            Assert.IsFalse(timer.IsStarted());
             Assert.IsTrue(timer.IsIdle());
             Assert.AreEqual(5, timer.Duration);
             Assert.AreEqual(0, timer.Time);

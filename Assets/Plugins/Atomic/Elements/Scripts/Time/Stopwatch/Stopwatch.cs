@@ -98,7 +98,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Start(float time)
+        public void Start(float time = 0)
         {
             if (this.state is not StopwatchState.IDLE)
                 return;
