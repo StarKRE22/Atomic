@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
@@ -194,13 +195,14 @@ namespace Atomic.Elements
             this.OnProgressChanged?.Invoke(progress);
 
             if (progress >= 1)
-                this.CompleteCycle();
+                this.Complete();
         }
 
-        private void CompleteCycle()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void Complete()
         {
-            this.SetTime(this.time - this.duration);
             this.OnPeriod?.Invoke();
+            this.SetTime(this.time - this.duration);
         }
 
         /// <summary>Sets a new duration for the cycle.</summary>
@@ -228,7 +230,7 @@ namespace Atomic.Elements
         public void SetTime(float time)
         {
             time = Math.Clamp(time, 0, this.duration);
-            if (Math.Abs(time - this.duration) > float.Epsilon)
+            if (Math.Abs(time - this.time) > float.Epsilon)
             {
                 this.time = time;
                 this.OnTimeChanged?.Invoke(time);

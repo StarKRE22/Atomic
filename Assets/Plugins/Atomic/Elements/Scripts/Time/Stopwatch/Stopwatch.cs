@@ -49,7 +49,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public StopwatchState CurrentState => this.currentState;
+        public StopwatchState State => this.state;
 
         /// <summary>
         /// Gets or sets the current elapsed time of the stopwatch.
@@ -59,37 +59,37 @@ namespace Atomic.Elements
 #endif
         public float Time
         {
-            get => this.currentTime;
+            get => this.time;
             set => this.SetTime(value);
         }
         
-        private StopwatchState currentState = StopwatchState.IDLE;
-        private float currentTime;
+        private StopwatchState state = StopwatchState.IDLE;
+        private float time;
 
         /// <summary>
         /// Returns the current state of the stopwatch.
         /// </summary>
-        public StopwatchState GetCurrentState() => this.currentState;
+        public StopwatchState GetState() => this.state;
      
         /// <summary>
         /// Returns true if the stopwatch is currently running.
         /// </summary>
-        public bool IsPlaying() => this.currentState == StopwatchState.PLAYING;
+        public bool IsStarted() => this.state == StopwatchState.PLAYING;
     
         /// <summary>
         /// Returns true if the stopwatch is currently paused.
         /// </summary>
-        public bool IsPaused() => this.currentState == StopwatchState.PAUSED;
+        public bool IsPaused() => this.state == StopwatchState.PAUSED;
    
         /// <summary>
         /// Returns true if the stopwatch is idle.
         /// </summary>
-        public bool IsIdle() => this.currentState == StopwatchState.IDLE;
+        public bool IsIdle() => this.state == StopwatchState.IDLE;
         
         /// <summary>
         /// Gets the current elapsed time.
         /// </summary>
-        public float GetTime() => this.currentTime;
+        public float GetTime() => this.time;
 
         /// <summary>
         /// Starts the stopwatch and resets elapsed time to zero.
@@ -98,34 +98,15 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Start()
+        public void Start(float time)
         {
-            if (this.currentState is not StopwatchState.IDLE)
-                return false;
+            if (this.state is not StopwatchState.IDLE)
+                return;
 
-            this.currentTime = 0;
-            this.currentState = StopwatchState.PLAYING;
+            this.time = Math.Max(0, time);
+            this.state = StopwatchState.PLAYING;
             this.OnStateChanged?.Invoke(StopwatchState.PLAYING);
             this.OnStarted?.Invoke();
-            return true;
-        }
-        
-        /// <summary>
-        /// Starts the stopwatch without resetting time (alias for Play).
-        /// </summary>
-        /// <returns>True if successfully started; otherwise, false.</returns>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public bool Play()
-        {
-            if (this.currentState is not StopwatchState.IDLE)
-                return false;
-
-            this.currentState = StopwatchState.PLAYING;
-            this.OnStateChanged?.Invoke(StopwatchState.PLAYING);
-            this.OnStarted?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -135,15 +116,14 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Pause()
+        public void Pause()
         {
-            if (this.currentState != StopwatchState.PLAYING)
-                return false;
+            if (this.state != StopwatchState.PLAYING)
+                return;
 
-            this.currentState = StopwatchState.PAUSED;
+            this.state = StopwatchState.PAUSED;
             this.OnStateChanged?.Invoke(StopwatchState.PAUSED);
             this.OnPaused?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -153,15 +133,14 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Resume()
+        public void Resume()
         {
-            if (this.currentState != StopwatchState.PAUSED)
-                return false;
+            if (this.state != StopwatchState.PAUSED)
+                return;
 
-            this.currentState = StopwatchState.PLAYING;
+            this.state = StopwatchState.PLAYING;
             this.OnStateChanged?.Invoke(StopwatchState.PLAYING);
             this.OnResumed?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -171,16 +150,15 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Stop()
+        public void Stop()
         {
-            if (this.currentState == StopwatchState.IDLE)
-                return false;
+            if (this.state == StopwatchState.IDLE)
+                return;
 
-            this.currentTime = 0;
-            this.currentState = StopwatchState.IDLE;
+            this.time = 0;
+            this.state = StopwatchState.IDLE;
             this.OnStateChanged?.Invoke(StopwatchState.IDLE);
             this.OnStopped?.Invoke();
-            return true;
         }
         
         /// <summary>
@@ -193,10 +171,10 @@ namespace Atomic.Elements
 #endif
         public void Tick(float deltaTime)
         {
-            if (this.currentState == StopwatchState.PLAYING)
+            if (this.state == StopwatchState.PLAYING)
             {
-                this.currentTime += deltaTime;
-                this.OnTimeChanged?.Invoke(this.currentTime);
+                this.time += deltaTime;
+                this.OnTimeChanged?.Invoke(this.time);
             }
         }
         
@@ -209,12 +187,14 @@ namespace Atomic.Elements
 #endif
         public void SetTime(float time)
         {
-            float newTime = Math.Max(time, 0);
-            if (Math.Abs(currentTime - newTime) > float.Epsilon)
+            time = Math.Max(time, 0);
+            if (Math.Abs(this.time - time) > float.Epsilon)
             {
-                this.currentTime = newTime;
+                this.time = time;
                 this.OnTimeChanged?.Invoke(time);
             }
         }
+
+        public void Reset() => this.SetTime(0);
     }
 }

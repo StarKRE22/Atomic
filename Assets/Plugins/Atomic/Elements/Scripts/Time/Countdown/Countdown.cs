@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
 #endif
@@ -201,6 +202,7 @@ namespace Atomic.Elements
         }
 
         /// <summary>Completes the countdown.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Complete()
         {
             this.state = CountdownState.EXPIRED;

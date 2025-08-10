@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine; 
@@ -125,7 +126,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns true if the timer is currently running.
         /// </summary>
-        public bool IsPlaying() => this.currentState == TimerState.PLAYING;
+        public bool IsStarted() => this.currentState == TimerState.PLAYING;
 
         /// <summary>
         /// Returns true if the timer is paused.
@@ -148,44 +149,6 @@ namespace Atomic.Elements
         public float GetTime() => this.currentTime;
 
         /// <summary>
-        /// Stops and restarts the timer from zero.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public void ForceStart()
-        {
-            this.Stop();
-            this.Start();
-        }
-
-        /// <summary>
-        /// Stops and restarts the timer from a specific time.
-        /// </summary>
-        /// <param name="currentTime">The time to start from.</param>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public void ForceStart(float currentTime)
-        {
-            this.Stop();
-            this.Start(currentTime);
-        }
-
-        /// <summary>
-        /// Starts the timer from zero.
-        /// </summary>
-        /// <returns>True if started successfully; otherwise false.</returns>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public void Start()
-        {
-            this.ResetTime();
-            this.Play();
-        }
-
-        /// <summary>
         /// Starts the timer from a specific time.
         /// </summary>
         /// <param name="currentTime">The time to start from.</param>
@@ -195,28 +158,14 @@ namespace Atomic.Elements
 #endif
         public void Start(float currentTime)
         {
-            this.SetTime(currentTime);
-            this.Play();
-        }
-
-        /// <summary>
-        /// Starts or resumes the timer.
-        /// </summary>
-        /// <returns>True if the timer was started.</returns>
-#if ODIN_INSPECTOR
-        [Button]
-#endif
-        public bool Play()
-        {
             if (this.currentState is not (TimerState.IDLE or TimerState.EXPIRED))
-                return false;
+                return;
 
             this.currentState = TimerState.PLAYING;
             this.OnStateChanged?.Invoke(TimerState.PLAYING);
             this.OnStarted?.Invoke();
-            return true;
         }
-
+        
         /// <summary>
         /// Pauses the timer.
         /// </summary>
@@ -224,15 +173,14 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Pause()
+        public void Pause()
         {
             if (this.currentState != TimerState.PLAYING)
-                return false;
+                return;
 
             this.currentState = TimerState.PAUSED;
             this.OnStateChanged?.Invoke(TimerState.PAUSED);
             this.OnPaused?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -242,15 +190,14 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Resume()
+        public void Resume()
         {
             if (this.currentState != TimerState.PAUSED)
-                return false;
+                return;
 
             this.currentState = TimerState.PLAYING;
             this.OnStateChanged?.Invoke(TimerState.PLAYING);
             this.OnResumed?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -260,16 +207,15 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public bool Stop()
+        public void Stop()
         {
             if (this.currentState == TimerState.IDLE)
-                return false;
+                return;
 
             this.currentTime = 0;
             this.currentState = TimerState.IDLE;
             this.OnStateChanged?.Invoke(TimerState.IDLE);
             this.OnStopped?.Invoke();
-            return true;
         }
 
         /// <summary>
@@ -295,6 +241,7 @@ namespace Atomic.Elements
                 this.Complete();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Complete()
         {
             this.currentState = TimerState.EXPIRED;
@@ -376,6 +323,6 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void ResetTime() => this.SetTime(0);
+        public void Reset() => this.SetTime(0);
     }
 }
