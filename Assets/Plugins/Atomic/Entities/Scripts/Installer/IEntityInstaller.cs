@@ -1,4 +1,9 @@
+using System.Runtime.CompilerServices;
 using Unity.Collections.LowLevel.Unsafe;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Atomic.Entities
 {

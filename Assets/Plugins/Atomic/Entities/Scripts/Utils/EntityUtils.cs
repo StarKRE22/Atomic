@@ -3,14 +3,44 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// Contains low-level utility methods for internal use within the Atomic.Entities framework.
     /// Includes optimized helpers for delegate management, primitive operations, and array manipulation.
     /// </summary>
-    internal static class InternalUtils
+    public static class EntityUtils
     {
+        /// <summary>
+        /// Returns <c>true</c> if the application is in Play Mode.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsPlayMode()
+        {
+#if UNITY_EDITOR
+            return EditorApplication.isPlaying;
+#else
+            return true;
+#endif
+        }
+
+        /// <summary>
+        /// Returns <c>true</c> if the application is in Edit Mode and not compiling.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsEditMode()
+        {
+#if UNITY_EDITOR
+            return !EditorApplication.isPlaying && !EditorApplication.isCompiling;
+#else
+            return false;
+#endif
+        }        
+        
         /// <summary>
         /// Checks whether a object is marked to support edit mode lifecycle.
         /// </summary>
@@ -46,7 +76,7 @@ namespace Atomic.Entities
         /// <param name="number">The number to test.</param>
         /// <returns><c>true</c> if the number is prime; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool IsPrime(int number)
+        internal static bool IsPrime(int number)
         {
             if (number % 2 == 0 || number % 3 == 0)
                 return false;

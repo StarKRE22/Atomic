@@ -385,7 +385,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!InternalUtils.Contains(other, slot.value, s_comparer))
+                if (!EntityUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -412,7 +412,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!InternalUtils.Contains(other, slot.value, s_comparer))
+                if (!EntityUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -547,7 +547,7 @@ namespace Atomic.Elements
                     continue;
 
                 T item = slot.value;
-                if (!InternalUtils.Contains(other, item, s_comparer))
+                if (!EntityUtils.Contains(other, item, s_comparer))
                     removedItems[removedCount++] = item;
             }
 
@@ -574,7 +574,7 @@ namespace Atomic.Elements
 
         private void IncreaseCapacity()
         {
-            int size = InternalUtils.GetPrime(_slots.Length);
+            int size = EntityUtils.GetPrime(_slots.Length);
             Array.Resize(ref _slots, size);
             Array.Resize(ref _buckets, size);
 
@@ -704,7 +704,7 @@ namespace Atomic.Elements
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = InternalUtils.GetPrime(capacity);
+            int size = EntityUtils.GetPrime(capacity);
 
             _slots = new Slot[size];
             _buckets = new int[size];

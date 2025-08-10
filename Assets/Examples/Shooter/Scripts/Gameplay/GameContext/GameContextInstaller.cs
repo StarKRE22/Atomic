@@ -23,7 +23,7 @@ namespace ShooterGame.Gameplay
         private TeamCatalog _teamCatalog;
         
         [SerializeField]
-        private float _respawnTime = 3.0f;
+        private Const<float> _respawnTime = 3.0f;
 
         [SerializeField]
         private GameEntityPool _bulletPool;
@@ -34,7 +34,7 @@ namespace ShooterGame.Gameplay
             context.AddWorldTransform(_worldTransform);
             context.AddTeamCatalog(_teamCatalog);
             context.AddKillEvent(new BaseEvent<KillArgs>());
-            context.AddRespawnTime(new Const<float>(_respawnTime));
+            context.AddRespawnDelay(_respawnTime);
             context.AddBulletPool(_bulletPool);
 
             _spawnPointsInstaller.Install(context);

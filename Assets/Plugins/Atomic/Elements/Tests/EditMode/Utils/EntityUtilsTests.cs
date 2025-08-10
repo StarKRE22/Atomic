@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed class InternalUtilsTests
+    public sealed class EntityUtilsTests
     {
         [TestCase(0, true)]
         [TestCase(1, true)]
@@ -21,7 +21,7 @@ namespace Atomic.Elements
         [TestCase(101, true)]
         public void IsPrime(int number, bool expected)
         {
-            Assert.AreEqual(expected, InternalUtils.IsPrime(number), $"Failed for number: {number}");
+            Assert.AreEqual(expected, EntityUtils.IsPrime(number), $"Failed for number: {number}");
         }
         
         [TestCase(0, 2)]
@@ -40,7 +40,7 @@ namespace Atomic.Elements
         [TestCase(200, 211)]
         public void NextPrime(int input, int expected)
         {
-            Assert.AreEqual(expected, InternalUtils.GetPrime(input), $"Failed for input: {input}");
+            Assert.AreEqual(expected, EntityUtils.GetPrime(input), $"Failed for input: {input}");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Provides internal utility methods for delegate cleanup and common algorithmic operations.
     /// </summary>
-    internal static class InternalUtils
+    internal static class EntityUtils
     {
         /// <summary>
         /// Calculates the next prime number greater than the specified value.

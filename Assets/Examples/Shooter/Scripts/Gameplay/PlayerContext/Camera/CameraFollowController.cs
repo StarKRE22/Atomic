@@ -1,30 +1,30 @@
-// using Atomic.Contexts;
-// using Atomic.Entities;
-// using ShooterGame.Gameplay;
-// using UnityEngine;
-//
-// namespace SampleGame
-// {
-//     public sealed class CameraFollowController : IContextInit<IPlayerContext>, IContextLateUpdate
-//     {
-//         private readonly Vector3 _cameraOffset;
-//         private IEntity _character;
-//         private Transform _camera;
-//         
-//         public CameraFollowController(Vector3 cameraOffset)
-//         {
-//             _cameraOffset = cameraOffset;
-//         }
-//
-//         public void Init(IPlayerContext context)
-//         {
-//             _character = context.GetCharacter();
-//             _camera = context.GetCamera().transform;
-//         }
-//
-//         public void OnLateUpdate(IContext context, float deltaTime)
-//         {
-//             _camera.position = _character.GetTransform().position + _cameraOffset;
-//         }
-//     }
-// }
+using Atomic.Entities;
+using ShooterGame;
+using ShooterGame.Gameplay;
+using UnityEngine;
+
+namespace SampleGame
+{
+    public sealed class CameraFollowController : IEntitySpawn<IPlayerContext>, IEntityLateUpdate
+    {
+        private readonly Vector3 _offset;
+        private IGameEntity _character;
+        private Transform _camera;
+        
+        public CameraFollowController(Vector3 offset)
+        {
+            _offset = offset;
+        }
+
+        public void OnSpawn(IPlayerContext context)
+        {
+            _character = context.GetCharacter();
+            _camera = context.GetCamera().transform;
+        }
+
+        public void OnLateUpdate(IEntity entity, float deltaTime)
+        {
+            _camera.position = _character.GetPosition().Value + _offset;
+        }
+    }
+}

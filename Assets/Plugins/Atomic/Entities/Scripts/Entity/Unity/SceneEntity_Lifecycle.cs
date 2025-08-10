@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.InternalUtils;
+using static Atomic.Entities.EntityUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;

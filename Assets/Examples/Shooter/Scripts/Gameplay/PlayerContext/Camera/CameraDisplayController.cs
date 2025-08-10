@@ -1,18 +1,18 @@
-// using Atomic.Contexts;
-// using UnityEngine;
-//
-// namespace ShooterGame.Gameplay
-// {
-//     public sealed class CameraDisplayController : IContextInit<IPlayerContext>
-//     {
-//         public void Init(IPlayerContext context)
-//         {
-//             Camera camera = context.GetCamera();
-//             TeamType teamType = context.GetTeam().Value;
-//             
-//             camera.targetDisplay = GameContext.Instance
-//                 .GetTeamConfig()
-//                 .GetTeam(teamType).CameraDisplay;
-//         }
-//     }
-// }
+using Atomic.Entities;
+using UnityEngine;
+
+namespace ShooterGame.Gameplay
+{
+    public sealed class CameraDisplayController : IEntitySpawn<IPlayerContext>
+    {
+        public void OnSpawn(IPlayerContext context)
+        {
+            Camera camera = context.GetCamera();
+            TeamType teamType = context.GetTeamType().Value;
+            
+            camera.targetDisplay = GameContext.Instance
+                .GetTeamCatalog()
+                .GetInfo(teamType).CameraDisplay;
+        }
+    }
+}

@@ -7,7 +7,7 @@ namespace BeginnerGame
     public sealed class PlayerContextInstaller : SceneEntityInstaller<IPlayerContext>
     {
         [SerializeField]
-        private TeamType _teamType;
+        private Const<TeamType> _teamType;
 
         [SerializeField]
         private InputMap _inputMap;
@@ -35,12 +35,12 @@ namespace BeginnerGame
             gameContext.GetPlayers().Add(_teamType, context);
 
             //Base:
-            context.AddTeamType(new Const<TeamType>(_teamType));
+            context.AddTeamType(_teamType);
             context.AddInputMap(_inputMap);
             context.AddMoney(_money);
             context.AddCamera(_camera);
 
-            if (IsPlayMode())
+            if (EntityUtils.IsPlayMode())
             {
                 //Character:
                 GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);

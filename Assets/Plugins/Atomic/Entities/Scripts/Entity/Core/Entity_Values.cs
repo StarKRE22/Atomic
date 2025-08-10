@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.InternalUtils;
+using static Atomic.Entities.EntityUtils;
 
 #if UNITY_5_3_OR_NEWER
 using Unsafe = Unity.Collections.LowLevel.Unsafe.UnsafeUtility;

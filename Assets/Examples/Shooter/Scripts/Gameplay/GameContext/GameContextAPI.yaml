@@ -19,7 +19,7 @@ values:
   - WorldTransform: Transform
   - Leaderboard: IReactiveDictionary<TeamType, int>
   - KillEvent: IEvent<KillArgs>
-  - RespawnTime: IValue<float>
+  - RespawnDelay: IValue<float>
 
   #Spawn points
   - AllSpawnPoints: Transform[]

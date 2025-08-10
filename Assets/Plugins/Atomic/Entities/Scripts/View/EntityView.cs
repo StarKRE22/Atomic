@@ -9,7 +9,7 @@ using UnityEditor;
 #endif
 
 using UnityEngine;
-using static Atomic.Entities.InternalUtils;
+using static Atomic.Entities.EntityUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;

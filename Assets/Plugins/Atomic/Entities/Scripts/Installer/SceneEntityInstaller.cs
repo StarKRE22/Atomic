@@ -47,32 +47,6 @@ namespace Atomic.Entities
             }
 #endif
         }
-
-        /// <summary>
-        /// Returns <c>true</c> if the application is in Play Mode.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected static bool IsPlayMode()
-        {
-#if UNITY_EDITOR
-            return EditorApplication.isPlaying;
-#else
-            return true;
-#endif
-        }
-
-        /// <summary>
-        /// Returns <c>true</c> if the application is in Edit Mode and not compiling.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected static bool IsEditMode()
-        {
-#if UNITY_EDITOR
-            return !EditorApplication.isPlaying && !EditorApplication.isCompiling;
-#else
-            return false;
-#endif
-        }
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 using Atomic.Entities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ShooterGame.Gameplay
 {
@@ -11,8 +12,9 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private Animator _animator;
 
+        [FormerlySerializedAs("_view")]
         [SerializeField]
-        private GameObject _view;
+        private GameObject _viewGO;
 
         [SerializeField]
         private ParticleSystem _bloodVfx;
@@ -33,16 +35,17 @@ namespace ShooterGame.Gameplay
         {
             entity.AddRenderer(_renderer);
             entity.AddAnimator(_animator);
-            
+
             entity.AddBehaviour<TeamColorBehaviour>();
             entity.AddBehaviour(new MoveAnimBehaviour());
             entity.AddBehaviour<TakeDamageAnimBehaviour>();
-            entity.AddBehaviour(new DeathAnimBehaviour(_view));
+            entity.AddBehaviour(new DeathAnimBehaviour(_viewGO));
             entity.AddBehaviour<FireAnimBehaviour>();
             entity.AddBehaviour(new TakeDamageBloodBehaviour(_bloodVfx));
 
             entity.GetTakeDamageEvent().Subscribe(_ => _audioSource.PlayOneShot(_damageClip));
             entity.GetTakeDeathEvent().Subscribe(_ => _audioSource.PlayOneShot(_deathClip));
+            entity.GetRespawnEvent().Subscribe(() => _viewGO.SetActive(true));
         }
     }
 }

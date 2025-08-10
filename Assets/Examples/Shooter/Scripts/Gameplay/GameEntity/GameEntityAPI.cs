@@ -41,6 +41,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int TakeDamageEvent; // IEvent<DamageArgs>
 		public static readonly int TakeDeathEvent; // IEvent<DamageArgs>
 		public static readonly int DestroyAction; // IAction
+		public static readonly int RespawnEvent; // IEvent
 		public static readonly int TeamType; // IReactiveVariable<TeamType>
 		public static readonly int Weapon; // IWeapon
 		public static readonly int Damage; // IValue<int>
@@ -78,6 +79,7 @@ namespace ShooterGame.Gameplay
 			TakeDamageEvent = NameToId(nameof(TakeDamageEvent));
 			TakeDeathEvent = NameToId(nameof(TakeDeathEvent));
 			DestroyAction = NameToId(nameof(DestroyAction));
+			RespawnEvent = NameToId(nameof(RespawnEvent));
 			TeamType = NameToId(nameof(TeamType));
 			Weapon = NameToId(nameof(Weapon));
 			Damage = NameToId(nameof(Damage));
@@ -462,6 +464,28 @@ namespace ShooterGame.Gameplay
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetDestroyAction(this IGameEntity entity, IAction value) => entity.SetValue(DestroyAction, value);
+
+		#endregion
+
+		#region RespawnEvent
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetRespawnEvent(this IGameEntity entity) => entity.GetValue<IEvent>(RespawnEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetRespawnEvent(this IGameEntity entity, out IEvent value) => entity.TryGetValue(RespawnEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddRespawnEvent(this IGameEntity entity, IEvent value) => entity.AddValue(RespawnEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasRespawnEvent(this IGameEntity entity) => entity.HasValue(RespawnEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelRespawnEvent(this IGameEntity entity) => entity.DelValue(RespawnEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetRespawnEvent(this IGameEntity entity, IEvent value) => entity.SetValue(RespawnEvent, value);
 
 		#endregion
 

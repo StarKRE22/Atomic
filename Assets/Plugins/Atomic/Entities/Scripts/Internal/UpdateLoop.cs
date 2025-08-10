@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static Atomic.Entities.InternalUtils;
+using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
@@ -77,7 +77,7 @@ namespace Atomic.Entities
         }
 
         internal bool Contains(IUpdatable updatable) => 
-            InternalUtils.Contains(Instance._updatables, updatable, _count, s_comparer);
+            EntityUtils.Contains(Instance._updatables, updatable, _count, s_comparer);
 
         /// <summary>
         /// Invokes <see cref="IUpdatable.OnUpdate"/> on all registered instances.

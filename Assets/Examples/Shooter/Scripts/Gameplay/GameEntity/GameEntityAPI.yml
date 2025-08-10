@@ -39,6 +39,7 @@ values:
 - TakeDamageEvent: IEvent<DamageArgs>
 - TakeDeathEvent: IEvent<DamageArgs>
 - DestroyAction: IAction
+- RespawnEvent: IEvent
 
 #Team
 - TeamType: IReactiveVariable<TeamType>
