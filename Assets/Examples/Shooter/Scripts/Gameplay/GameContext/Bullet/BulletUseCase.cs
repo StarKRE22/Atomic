@@ -6,7 +6,7 @@ namespace ShooterGame.Gameplay
 {
     public static class BulletUseCase
     {
-        public static IEntity SpawnBullet(
+        public static IEntity Spawn(
             IGameContext context,
             in Vector3 position,
             in Quaternion rotation,
@@ -23,7 +23,7 @@ namespace ShooterGame.Gameplay
             throw new NotImplementedException();
         }
 
-        public static void DespawnBullet(in IGameContext context, in IEntity bullet)
+        public static void Despawn(in IGameContext context, in IEntity bullet)
         {
             throw new NotImplementedException();
             // context.GetBulletPool().Return(bullet);

@@ -28,7 +28,7 @@ namespace ShooterGame.Gameplay
 
                 _ammo.Value--;
                 
-                BulletUseCase.SpawnBullet(
+                BulletUseCase.Spawn(
                     GameContext.Instance,
                     _firePoint.position,
                     _firePoint.rotation,
