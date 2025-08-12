@@ -1,31 +1,35 @@
 using Atomic.Elements;
+using Atomic.Entities;
 using ShooterGame.Gameplay;
 using TMPro;
 using UnityEngine;
 
 namespace ShooterGame.UI
 {
-    public sealed class CountdownPresenter : Presenter
+    public sealed class CountdownPresenter : IEntitySpawn, IEntityDespawn
     {
-        [SerializeField]
-        private TMP_Text _text;
-        
+        private readonly TMP_Text _view;
         private IReactiveVariable<float> _gameTime;
 
-        protected override void OnShow()
+        public CountdownPresenter(TMP_Text view)
+        {
+            _view = view;
+        }
+
+        public void OnSpawn(IEntity _)
         {
             _gameTime = GameContext.Instance.GetGameTime();
             _gameTime.Observe(this.OnGameTimeChanged);
         }
 
-        protected override void OnHide()
+        public void OnDespawn(IEntity _)
         {
             _gameTime.Unsubscribe(this.OnGameTimeChanged);
         }
 
         private void OnGameTimeChanged(float time)
         {
-            _text.text = $"Game Time: {time:F0}";
+            _view.text = $"Game Time: {time:F0}";
         }
     }
 }

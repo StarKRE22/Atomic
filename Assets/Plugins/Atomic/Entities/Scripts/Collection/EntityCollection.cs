@@ -93,6 +93,7 @@ namespace Atomic.Entities
         private protected Slot[] _slots;
         private protected int _capacity;
         private protected int _count;
+        private int _primeIndex;
 
         //hash table
         private protected int[] _buckets;
@@ -119,7 +120,7 @@ namespace Atomic.Entities
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            _capacity = GetPrime(capacity);
+            _capacity = CeilToPrime(capacity, out _primeIndex);
             _count = 0;
             _lastIndex = 0;
             
@@ -214,7 +215,7 @@ namespace Atomic.Entities
                 // Expand capacity if needed
                 if (_lastIndex == _capacity)
                 {
-                    int newCapacity = GetPrime(_capacity * 2);
+                    int newCapacity = PrimeTable[++_primeIndex];
                     var newSlots = new Slot[newCapacity];
                     Array.Copy(_slots, newSlots, _lastIndex);
                     _slots = newSlots;

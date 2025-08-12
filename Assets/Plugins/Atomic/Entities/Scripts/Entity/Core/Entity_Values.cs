@@ -64,18 +64,19 @@ namespace Atomic.Entities
         private ValueSlot[] _valueSlots;
         private int _valueCapacity;
         private int _valueCount;
+        private int _valuePrimeIndex;
 
         private int[] _valueBuckets;
         private int _valueFreeList;
         private int _valueLastIndex;
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ConstructValues(int capacity = 0)
+        private void ConstructValues(int capacity)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            _valueCapacity = GetPrime(capacity);
+            _valueCapacity = CeilToPrime(capacity, out _valuePrimeIndex);
             _valueSlots = new ValueSlot[_valueCapacity];
             _valueBuckets = new int[_valueCapacity];
             Array.Fill(_valueBuckets, UNDEFINED_INDEX);
@@ -103,7 +104,7 @@ namespace Atomic.Entities
 
             while (index >= 0)
             {
-                ref ValueSlot slot = ref _valueSlots[index];
+                ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                     if (slot.primitive) return ((Boxing<T>) slot.value).value;
                     else return (T) slot.value;
@@ -131,7 +132,7 @@ namespace Atomic.Entities
 
             while (index >= 0)
             {
-                ref ValueSlot slot = ref _valueSlots[index];
+                ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                     return slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
 
@@ -162,7 +163,7 @@ namespace Atomic.Entities
 
             while (index >= 0)
             {
-                ref ValueSlot slot = ref _valueSlots[index];
+                ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                 {
                     value = slot.primitive ? ((Boxing<T>) slot.value).value : (T) slot.value;
@@ -196,7 +197,7 @@ namespace Atomic.Entities
 
             while (index >= 0)
             {
-                ref ValueSlot slot = ref _valueSlots[index];
+                ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                 {
                     value = slot.primitive ? ((IBoxing) slot.value).Value : slot.value;
@@ -391,9 +392,9 @@ namespace Atomic.Entities
                 }
 
                 Boxing<T> tBoxing = (Boxing<T>) iBoxing;
-                if (tBoxing.value.Equals(value)) 
+                if (tBoxing.value.Equals(value))
                     return;
-                
+
                 tBoxing.value = value;
                 this.NotifyAboutValueChanged(key);
             }
@@ -465,7 +466,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _valueLastIndex; i++)
             {
-                ref ValueSlot slot = ref _valueSlots[i];
+                ref readonly ValueSlot slot = ref _valueSlots[i];
                 if (!slot.exists)
                     continue;
 
@@ -500,7 +501,7 @@ namespace Atomic.Entities
 
             while (index >= 0)
             {
-                ValueSlot slot = _valueSlots[index];
+                ref readonly ValueSlot slot = ref _valueSlots[index];
                 if (slot.exists && slot.key == key)
                     return true;
 
@@ -511,7 +512,7 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void AddValueInternal(int key, object value, in bool boxing)
+        private void AddValueInternal(int key, object value, bool boxing)
         {
             int index;
             if (_valueFreeList >= 0)
@@ -596,7 +597,8 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseValueCapacity()
         {
-            _valueCapacity = GetPrime(_valueCapacity + 1);
+            _valueCapacity = PrimeTable[++_valuePrimeIndex];
+
             Array.Resize(ref _valueSlots, _valueCapacity);
             Array.Resize(ref _valueBuckets, _valueCapacity);
             Array.Fill(_valueBuckets, UNDEFINED_INDEX);
@@ -665,7 +667,7 @@ namespace Atomic.Entities
             {
                 while (_index < _entity._valueLastIndex)
                 {
-                    ref ValueSlot slot = ref _entity._valueSlots[_index++];
+                    ref readonly ValueSlot slot = ref _entity._valueSlots[_index++];
                     if (!slot.exists)
                         continue;
 

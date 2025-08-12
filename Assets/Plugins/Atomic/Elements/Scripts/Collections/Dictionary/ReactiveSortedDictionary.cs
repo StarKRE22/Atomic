@@ -133,10 +133,9 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         public bool Remove(K key)
         {
-            if (!this.dictionary.TryGetValue(key, out V value))
+            if (!this.dictionary.Remove(key, out V value))
                 return false;
 
-            this.dictionary.Remove(key);
             this.OnItemRemoved?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
             return true;
@@ -182,6 +181,7 @@ namespace Atomic.Elements
 
             return false;
         }
+#if UNITY_5_3_OR_NEWER
 
         /// <summary>
         /// Unity callback for deserialization. Reconstructs the dictionary from serialized pairs.
@@ -216,5 +216,6 @@ namespace Atomic.Elements
                 };
             }
         }
+#endif
     }
 }

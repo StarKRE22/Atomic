@@ -147,10 +147,9 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         public bool Remove(K key)
         {
-            if (!this.list.TryGetValue(key, out V value))
+            if (!this.list.Remove(key, out V value))
                 return false;
 
-            this.list.Remove(key);
             this.OnItemRemoved?.Invoke(key, value);
             this.OnStateChanged?.Invoke();
             return true;

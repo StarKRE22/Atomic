@@ -3,6 +3,8 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using static Atomic.Elements.InternalUtils;
 
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 // ReSharper disable HeuristicUnreachableCode
@@ -18,25 +20,13 @@ using UnityEngine;
 
 namespace Atomic.Elements
 {
-   /// <summary>
+    /// <summary>
     /// A reactive hash set that raises events when items are added, removed, or the entire set is modified.
     /// Implements a custom internal hash-based storage system with support for efficient lookups and updates.
     /// </summary>
     /// <typeparam name="T">The element type.</typeparam>
     public partial class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable
     {
-        private const int UNDEFINED_INDEX = -1;
-
-        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
-        private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
-
-        private struct Slot
-        {
-            public T value;
-            public int next;
-            public bool exists;
-        }
-
         /// <inheritdoc/>
         public event StateChangedHandler OnStateChanged;
 
@@ -52,22 +42,43 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         public bool IsReadOnly => false;
 
+        private struct Slot
+        {
+            public T value;
+            public int next;
+            public bool exists;
+        }
+
+        private const int UNDEFINED_INDEX = -1;
+        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
+        private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
+
         private Slot[] _slots;
-        private int _count;
         private int[] _buckets;
+        private int _capacity;
+        private int _count;
         private int _freeList;
         private int _lastIndex;
-
-        /// <summary>
-        /// Initializes an empty <see cref="ReactiveHashSet{T}"/>.
-        /// </summary>
-        public ReactiveHashSet() : this(0) { }
+        private int _primeIndex;
 
         /// <summary>
         /// Initializes the set with a predefined capacity.
         /// </summary>
         /// <param name="capacity">Initial number of slots to allocate.</param>
-        public ReactiveHashSet(int capacity) => this.Initialize(capacity);
+        public ReactiveHashSet(int capacity = 0)
+        {
+            if (capacity < 0)
+                throw new ArgumentOutOfRangeException(nameof(capacity));
+
+            _capacity = CeilToPrime(capacity, out _primeIndex);
+            _slots = new Slot[_capacity];
+            _buckets = new int[_capacity];
+            Array.Fill(_buckets, UNDEFINED_INDEX);
+
+            _count = 0;
+            _lastIndex = 0;
+            _freeList = UNDEFINED_INDEX;
+        }
 
         /// <summary>
         /// Initializes the set with a collection of elements.
@@ -84,6 +95,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="item">The item to look for.</param>
         /// <returns>True if the item exists in the set; otherwise, false.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Contains(T item) => item != null && this.FindIndex(item, out _);
 
         /// <summary>
@@ -97,11 +109,11 @@ namespace Atomic.Elements
         public bool IsNotEmpty() => _count > 0;
 
         /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Add(T item)
         {
-            if (item == null) return false;
-
-            if (!this.AddInternal(item)) return false;
+            if (item == null || !this.AddInternal(item))
+                return false;
 
             this.OnItemAdded?.Invoke(item);
             this.OnStateChanged?.Invoke();
@@ -109,6 +121,7 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void UnionWith(IEnumerable<T> other)
         {
             if (other == null)
@@ -140,9 +153,8 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         public bool Remove(T item)
         {
-            if (item == null) return false;
-
-            if (!this.RemoveInternal(item)) return false;
+            if (item == null || !this.RemoveInternal(item))
+                return false;
 
             this.OnItemRemoved?.Invoke(item);
             this.OnStateChanged?.Invoke();
@@ -150,18 +162,17 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Clear()
         {
             if (_count == 0)
                 return;
-
+            
             int removeCount = 0;
             T[] removedItems = s_arrayPool.Rent(_count);
 
             for (int i = 0; i < _lastIndex; i++)
             {
-                _buckets[i] = UNDEFINED_INDEX;
-
                 ref Slot slot = ref _slots[i];
                 if (!slot.exists)
                     continue;
@@ -170,6 +181,8 @@ namespace Atomic.Elements
                 slot.next = UNDEFINED_INDEX;
                 removedItems[removeCount++] = slot.value;
             }
+            
+            Array.Fill(_buckets, UNDEFINED_INDEX);
 
             _count = 0;
             _freeList = UNDEFINED_INDEX;
@@ -197,7 +210,7 @@ namespace Atomic.Elements
             this.OnItemRemoved = null;
             this.OnStateChanged = null;
         }
-        
+
         /// <summary>
         /// Copies the elements of the set into the specified array, starting at the given index.
         /// </summary>
@@ -215,7 +228,7 @@ namespace Atomic.Elements
 
             for (int i = 0; i < _lastIndex; i++)
             {
-                Slot slot = _slots[i];
+                ref readonly Slot slot = ref _slots[i];
                 if (slot.exists)
                     array[arrayIndex++] = slot.value;
             }
@@ -279,7 +292,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="other">Collection to intersect with.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="other"/> is null.</exception>
-        public unsafe void IntersectWith(IEnumerable<T> other)
+        public void IntersectWith(IEnumerable<T> other)
         {
             if (other == null)
                 throw new ArgumentNullException(nameof(other));
@@ -287,7 +300,7 @@ namespace Atomic.Elements
             if (_count == 0)
                 return;
 
-            bool* intersectedItems = stackalloc bool[_lastIndex];
+            Span<bool> intersectedItems = stackalloc bool[_lastIndex];
 
             foreach (T item in other)
                 if (item != null && this.FindIndex(item, out int index))
@@ -298,7 +311,7 @@ namespace Atomic.Elements
 
             for (int i = 0; i < _lastIndex; i++)
             {
-                Slot slot = _slots[i];
+                ref readonly Slot slot = ref _slots[i];
                 if (slot.exists && !intersectedItems[i] && this.RemoveInternal(slot.value))
                     removedItems[removedCount++] = slot.value;
             }
@@ -385,7 +398,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!EntityUtils.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -412,7 +425,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                if (!EntityUtils.Contains(other, slot.value, s_comparer))
+                if (!InternalUtils.Contains(other, slot.value, s_comparer))
                     return false;
             }
 
@@ -542,12 +555,12 @@ namespace Atomic.Elements
 
             for (int i = 0; i < _lastIndex; i++)
             {
-                Slot slot = _slots[i];
+                ref readonly Slot slot = ref _slots[i];
                 if (!slot.exists)
                     continue;
 
                 T item = slot.value;
-                if (!EntityUtils.Contains(other, item, s_comparer))
+                if (!InternalUtils.Contains(other, item, s_comparer))
                     removedItems[removedCount++] = item;
             }
 
@@ -556,10 +569,10 @@ namespace Atomic.Elements
 
             try
             {
-                for (int i = 0; i < addedCount; i++) 
+                for (int i = 0; i < addedCount; i++)
                     this.OnItemAdded?.Invoke(addedItems[i]);
 
-                for (int i = 0; i < removedCount; i++) 
+                for (int i = 0; i < removedCount; i++)
                     this.OnItemRemoved?.Invoke(removedItems[i]);
 
                 if (addedCount > 0 || removedCount > 0)
@@ -572,35 +585,40 @@ namespace Atomic.Elements
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseCapacity()
         {
-            int size = EntityUtils.GetPrime(_slots.Length);
-            Array.Resize(ref _slots, size);
-            Array.Resize(ref _buckets, size);
-
-            for (int i = 0; i < size; i++)
-                _buckets[i] = UNDEFINED_INDEX;
+            _capacity = PrimeTable[++_primeIndex];
+            Array.Resize(ref _slots, _capacity);
+            Array.Resize(ref _buckets, _capacity);
+            Array.Fill(_buckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _lastIndex; i++)
             {
                 ref Slot slot = ref _slots[i];
                 if (!slot.exists)
                     continue;
-
-                ref int bucket = ref this.Bucket(slot.value);
-                slot.next = bucket;
-                bucket = i;
+                
+                int hash = s_comparer.GetHashCode(slot.value) & 0x7FFFFFFF;
+                int bucket = hash % _capacity;
+                ref int next = ref _buckets[bucket];
+                slot.next = next;
+                next = i;
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool RemoveInternal(T item)
         {
             if (_count == 0)
                 return false;
 
-            ref int bucket = ref this.Bucket(item);
+            
+            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int next = ref _buckets[bucket];
 
-            int index = bucket;
+            int index = next;
             int last = UNDEFINED_INDEX;
 
             while (index >= 0)
@@ -609,7 +627,7 @@ namespace Atomic.Elements
                 if (s_comparer.Equals(node.value, item))
                 {
                     if (last == UNDEFINED_INDEX)
-                        bucket = node.next;
+                        next = node.next;
                     else
                         _slots[last].next = node.next;
 
@@ -638,6 +656,7 @@ namespace Atomic.Elements
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool AddInternal(T item)
         {
             if (this.FindIndex(item, out int index))
@@ -650,28 +669,32 @@ namespace Atomic.Elements
             }
             else
             {
-                if (_lastIndex == _slots.Length)
+                if (_lastIndex == _capacity)
                     this.IncreaseCapacity();
 
                 index = _lastIndex;
                 _lastIndex++;
             }
 
-            ref int bucket = ref this.Bucket(item);
+
+            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int next = ref _buckets[bucket];
 
             _slots[index] = new Slot
             {
                 value = item,
-                next = bucket,
+                next = next,
                 exists = true
             };
 
-            bucket = index;
+            next = index;
 
             _count++;
             return true;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool FindIndex(T item, out int index)
         {
             if (_count == 0)
@@ -680,10 +703,13 @@ namespace Atomic.Elements
                 return false;
             }
 
-            index = this.Bucket(item);
+            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            index = _buckets[bucket];
+
             while (index >= 0)
             {
-                Slot slot = _slots[index];
+                ref readonly Slot slot = ref _slots[index];
                 if (slot.exists && s_comparer.Equals(slot.value, item))
                     return true;
 
@@ -691,30 +717,6 @@ namespace Atomic.Elements
             }
 
             return false;
-        }
-
-        private ref int Bucket(T item)
-        {
-            int index = (int) ((uint) item.GetHashCode() % _slots.Length);
-            return ref _buckets[index];
-        }
-
-        private void Initialize(int capacity)
-        {
-            if (capacity < 0)
-                throw new ArgumentOutOfRangeException(nameof(capacity));
-
-            int size = EntityUtils.GetPrime(capacity);
-
-            _slots = new Slot[size];
-            _buckets = new int[size];
-
-            for (int i = 0; i < size; i++)
-                _buckets[i] = UNDEFINED_INDEX;
-
-            _count = 0;
-            _lastIndex = 0;
-            _freeList = UNDEFINED_INDEX;
         }
 
         //+
@@ -738,7 +740,7 @@ namespace Atomic.Elements
             {
                 while (_index < _set._lastIndex)
                 {
-                    ref Slot slot = ref _set._slots[_index++];
+                    ref readonly Slot slot = ref _set._slots[_index++];
                     if (slot.exists)
                     {
                         _current = slot.value;
@@ -775,19 +777,19 @@ namespace Atomic.Elements
         [HideInPlayMode]
 #endif
         [SerializeField]
-        private List<T> items;
+        internal T[] _serializedItems;
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            this.items = new List<T>(this);
+            _serializedItems = this.ToArray();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
             this.Clear();
 
-            if (this.items != null)
-                this.UnionWith(this.items);
+            if (_serializedItems != null)
+                this.UnionWith(_serializedItems);
         }
     }
 }

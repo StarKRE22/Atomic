@@ -15,6 +15,27 @@ namespace Atomic.Entities
     /// </summary>
     public static class EntityUtils
     {
+        internal static readonly int[] PrimeTable =
+        {
+            2, 3, 7, 17, 29, 53, 97, 193, 389, 769, 1543, 3079,
+            6151, 12289, 24593, 49157, 98317, 196613, 393241, 786433,
+            1572869, 3145739, 6291469, 12582917, 25165843, 50331653,
+            100663319, 201326611, 402653189, 805306457, 1610612741
+        };
+
+        internal static int CeilToPrime(int value, out int index)
+        {
+            index = Array.BinarySearch(PrimeTable, value);
+            if (index >= 0)
+                return PrimeTable[index];
+
+            index = ~index;
+            if (index < PrimeTable.Length)
+                return PrimeTable[index];
+
+            throw new InvalidOperationException($"Prime can't get larger than {PrimeTable.Length - 1}");
+        }
+
         /// <summary>
         /// Returns <c>true</c> if the application is in Play Mode.
         /// </summary>
@@ -39,54 +60,54 @@ namespace Atomic.Entities
 #else
             return false;
 #endif
-        }        
-        
+        }
+
         /// <summary>
         /// Checks whether a object is marked to support edit mode lifecycle.
         /// </summary>
         internal static bool IsRunInEditModeDefined(object obj) =>
             obj.GetType().IsDefined(typeof(RunInEditModeAttribute));
 
-        /// <summary>
-        /// Computes the next prime number greater than or equal to the specified value.
-        /// </summary>
-        /// <param name="number">The number to evaluate.</param>
-        /// <returns>A prime number greater than or equal to <paramref name="number"/>.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static int GetPrime(int number)
-        {
-            if (number < 0)
-                throw new ArgumentOutOfRangeException(nameof(number));
+        // /// <summary>
+        // /// Computes the next prime number greater than or equal to the specified value.
+        // /// </summary>
+        // /// <param name="number">The number to evaluate.</param>
+        // /// <returns>A prime number greater than or equal to <paramref name="number"/>.</returns>
+        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        // internal static int GetPrime(int number)
+        // {
+        //     if (number < 0)
+        //         throw new ArgumentOutOfRangeException(nameof(number));
+        //
+        //     if (number == 0)
+        //         return 1;
+        //
+        //     if (number <= 3)
+        //         return number;
+        //
+        //     while (!IsPrime(number))
+        //         number++;
+        //
+        //     return number;
+        // }
 
-            if (number == 0)
-                return 1;
-
-            if (number <= 3)
-                return number;
-
-            while (!IsPrime(number))
-                number++;
-
-            return number;
-        }
-
-        /// <summary>
-        /// Determines whether the given number is prime.
-        /// </summary>
-        /// <param name="number">The number to test.</param>
-        /// <returns><c>true</c> if the number is prime; otherwise, <c>false</c>.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool IsPrime(int number)
-        {
-            if (number % 2 == 0 || number % 3 == 0)
-                return false;
-
-            for (int i = 5; i * i <= number; i += 2)
-                if (number % i == 0)
-                    return false;
-
-            return true;
-        }
+        // /// <summary>
+        // /// Determines whether the given number is prime.
+        // /// </summary>
+        // /// <param name="number">The number to test.</param>
+        // /// <returns><c>true</c> if the number is prime; otherwise, <c>false</c>.</returns>
+        // [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        // internal static bool IsPrime(int number)
+        // {
+        //     if (number % 2 == 0 || number % 3 == 0)
+        //         return false;
+        //
+        //     for (int i = 5; i * i <= number; i += 2)
+        //         if (number % i == 0)
+        //             return false;
+        //
+        //     return true;
+        // }
 
         /// <summary>
         /// Adds an item to a dynamically managed array, expanding it if needed.
@@ -201,7 +222,7 @@ namespace Atomic.Entities
 
             return false;
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static bool FindIndex<T>(T[] array, int count, T item, IEqualityComparer<T> comparer, out int i)
         {
@@ -212,7 +233,7 @@ namespace Atomic.Entities
             i = -1;
             return false; // если не найден
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static bool RemoveAt<T>(ref T[] array, ref int count, int index)
         {

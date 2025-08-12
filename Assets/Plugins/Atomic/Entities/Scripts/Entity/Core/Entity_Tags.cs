@@ -31,22 +31,24 @@ namespace Atomic.Entities
         public int TagCount => _tagCount;
 
         private TagSlot[] _tagSlots;
+        private int _tagCapacity;
         private int _tagCount;
+        private int _tagPrimeIndex;
 
         private int[] _tagBuckets;
         private int _tagFreeList;
         private int _tagLastIndex;
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ConstructTags(int capacity = 0)
+        private void ConstructTags(int capacity)
         {
             if (capacity < 0)
                 throw new ArgumentOutOfRangeException(nameof(capacity));
 
-            int size = GetPrime(capacity);
+            _tagCapacity = CeilToPrime(capacity, out _tagPrimeIndex);
 
-            _tagSlots = new TagSlot[size];
-            _tagBuckets = new int[size];
+            _tagSlots = new TagSlot[_tagCapacity];
+            _tagBuckets = new int[_tagCapacity];
             Array.Fill(_tagBuckets, UNDEFINED_INDEX);
             
             _tagCount = 0;
@@ -64,7 +66,7 @@ namespace Atomic.Entities
         /// </summary>
         public bool AddTag(int key)
         {
-            if (!this.AddTagInternal(in key))
+            if (!this.AddTagInternal(key))
                 return false;
 
             this.OnTagAdded?.Invoke(this, key);
@@ -107,7 +109,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _tagLastIndex; i++)
             {
-                TagSlot slot = _tagSlots[i];
+                ref readonly TagSlot slot = ref _tagSlots[i];
                 if (slot.exists)
                     results[count++] = slot.key;
             }
@@ -157,11 +159,12 @@ namespace Atomic.Entities
         
         public TagEnumerator GetTagEnumerator() => new(this);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseTagCapacity()
         {
-            int size = GetPrime(_tagSlots.Length + 1);
-            Array.Resize(ref _tagSlots, size);
-            Array.Resize(ref _tagBuckets, size);
+            _tagCapacity = PrimeTable[++_tagPrimeIndex];
+            Array.Resize(ref _tagSlots, _tagCapacity);
+            Array.Resize(ref _tagBuckets, _tagCapacity);
             Array.Fill(_tagBuckets, UNDEFINED_INDEX);
 
             for (int i = 0; i < _tagLastIndex; i++)
@@ -169,21 +172,26 @@ namespace Atomic.Entities
                 ref TagSlot slot = ref _tagSlots[i];
                 if (!slot.exists)
                     continue;
-
-                ref int bucket = ref this.TagBucket(slot.key);
-                slot.next = bucket;
-                bucket = i;
+                
+                int hash = slot.key & 0x7FFFFFFF;
+                int bucket = hash % _tagCapacity;
+                ref int next = ref _tagBuckets[bucket];
+                slot.next = next;
+                next = i;
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool DelTagInternal(int key)
         {
             if (_tagCount == 0)
                 return false;
 
-            ref int bucket = ref this.TagBucket(in key);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _tagCapacity;
+            ref int next = ref _tagBuckets[bucket];
 
-            int index = bucket;
+            int index = next;
             int last = UNDEFINED_INDEX;
 
             while (index >= 0)
@@ -192,7 +200,7 @@ namespace Atomic.Entities
                 if (slot.key == key)
                 {
                     if (last == UNDEFINED_INDEX)
-                        bucket = slot.next;
+                        next = slot.next;
                     else
                         _tagSlots[last].next = slot.next;
 
@@ -221,9 +229,10 @@ namespace Atomic.Entities
             return false;
         }
 
-        private bool AddTagInternal(in int key)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private bool AddTagInternal(int key)
         {
-            if (this.FindTagIndex(in key, out int index))
+            if (this.FindTagIndex(key, out int index))
                 return false;
 
             if (_tagFreeList >= 0)
@@ -233,29 +242,32 @@ namespace Atomic.Entities
             }
             else
             {
-                if (_tagLastIndex == _tagSlots.Length)
+                if (_tagLastIndex == _tagCapacity)
                     this.IncreaseTagCapacity();
 
                 index = _tagLastIndex;
                 _tagLastIndex++;
             }
 
-            ref int bucket = ref this.TagBucket(in key);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _tagCapacity;
+            ref int next = ref _tagBuckets[bucket];
 
             _tagSlots[index] = new TagSlot
             {
                 key = key,
-                next = bucket,
+                next = next,
                 exists = true
             };
 
-            bucket = index;
+            next = index;
 
             _tagCount++;
             return true;
         }
 
-        private bool FindTagIndex(in int key, out int index)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private bool FindTagIndex(int key, out int index)
         {
             if (_tagCount == 0)
             {
@@ -263,10 +275,13 @@ namespace Atomic.Entities
                 return false;
             }
 
-            index = this.TagBucket(in key);
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _tagCapacity;
+            index = _tagBuckets[bucket];
+
             while (index >= 0)
             {
-                TagSlot slot = _tagSlots[index];
+                ref readonly TagSlot slot = ref _tagSlots[index];
                 if (slot.exists && slot.key == key)
                     return true;
 
@@ -274,12 +289,6 @@ namespace Atomic.Entities
             }
 
             return false;
-        }
-
-        private ref int TagBucket(in int key)
-        {
-            int index = (int) ((uint) key % _tagSlots.Length);
-            return ref _tagBuckets[index];
         }
 
         public struct TagEnumerator : IEnumerator<int>
@@ -302,7 +311,7 @@ namespace Atomic.Entities
             {
                 while (_index < _entity._tagLastIndex)
                 {
-                    ref TagSlot slot = ref _entity._tagSlots[_index++];
+                    ref readonly TagSlot slot = ref _entity._tagSlots[_index++];
                     if (slot.exists)
                     {
                         _current = slot.key;
