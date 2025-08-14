@@ -96,7 +96,7 @@ namespace Atomic.Elements
         /// <param name="item">The item to look for.</param>
         /// <returns>True if the item exists in the set; otherwise, false.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Contains(T item) => item != null && this.FindIndex(item, out _);
+        public bool Contains(T item) => this.FindIndex(item, out _);
 
         /// <summary>
         /// Returns true if the set has no elements.
@@ -345,7 +345,7 @@ namespace Atomic.Elements
             Span<bool> intersectedItems = stackalloc bool[_lastIndex];
 
             foreach (T item in other)
-                if (item != null && this.FindIndex(item, out int index))
+                if (this.FindIndex(item, out int index))
                     intersectedItems[index] = true;
 
             T[] removedItems = s_arrayPool.Rent(other.Count());
@@ -746,7 +746,7 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool FindIndex(T item, out int index)
         {
-            if (_count == 0)
+            if (item == null || _count == 0)
             {
                 index = UNDEFINED_INDEX;
                 return false;

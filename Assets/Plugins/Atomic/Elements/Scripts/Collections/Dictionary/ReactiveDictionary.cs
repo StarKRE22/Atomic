@@ -249,7 +249,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="item">The key/value pair to remove.</param>
         /// <returns>True if the item was removed; otherwise, false.</returns>
-        public bool Remove(KeyValuePair<K, V> item)
+        bool ICollection<KeyValuePair<K, V>>.Remove(KeyValuePair<K, V> item)
         {
             if (!this.TryGetValue(item.Key, out V value)
                 || !s_valueComparer.Equals(value, item.Value)
