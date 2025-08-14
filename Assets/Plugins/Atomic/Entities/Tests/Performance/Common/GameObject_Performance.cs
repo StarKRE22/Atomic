@@ -1,26 +1,31 @@
 #if UNITY_6000
-using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public class GameObject_Performance
+    public sealed class GameObject_Performance
     {
+        private const int N = 1000;
+        private GameObject[] _source;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            _source = new GameObject[N];
+            for (int i = 0; i < N; i++)
+                _source[i] = new GameObject($"{i}");
+        }
+        
         [Test, Performance]
         public void GetComponent()
         {
-            var gameObjects = new List<GameObject>();
-            for (int i = 0; i < 1000; i++)
-                gameObjects.Add(new GameObject($"{i}"));
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        GameObject gameObject = gameObjects[i];
-                        Transform unused = gameObject.GetComponent<Transform>();
+                        Transform _ = _source[i].GetComponent<Transform>();
                     }
                 })
                 .WarmupCount(10)

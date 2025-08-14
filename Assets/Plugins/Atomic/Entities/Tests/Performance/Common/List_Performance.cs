@@ -6,19 +6,27 @@ namespace Atomic.Entities
 {
     public class List_Performance
     {
+        private const int N = 1000;
+        private Entity[] _source;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            _source = new Entity[N];
+            for (int i = 0; i < N; i++)
+                _source[i] = new Entity();
+        }
+
         [Test, Performance]
         public void Add()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-
+            var list = new List<Entity>();
             Measure.Method(() =>
                 {
-                    var list = new List<Entity>();
-                    foreach (var t in entities)
-                        list.Add(t);
+                    for (int i = 0; i < N; i++) 
+                        list.Add(_source[i]);
                 })
+                .CleanUp(list.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("List.Add()"))
@@ -28,14 +36,10 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Clear()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-
             var list = new List<Entity>();
             Measure
                 .Method(list.Clear)
-                .SetUp(() => list.AddRange(entities))
+                .SetUp(() => list.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("List.Clear()", SampleUnit.Microsecond))
@@ -46,20 +50,14 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Contains()
         {
-            var list = new List<Entity>();
-            var entities = new List<Entity>();
-
-            for (int i = 0; i < 1000; i++)
-            {
-                var entity = new Entity();
-                list.Add(entity);
-                entities.Add(entity);
-            }
+            var list = new List<Entity>(_source);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < entities.Count; i++)
-                        list.Contains(entities[i]);
+                    for (int i = 0; i < N; i++)
+                    {
+                        bool _ = list.Contains(_source[i]);
+                    }
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
@@ -70,13 +68,10 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Enumerator()
         {
-            var list = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                list.Add(new Entity());
-
+            var list = new List<Entity>(_source);
             Measure.Method(() =>
                 {
-                    foreach (var entity in list)
+                    foreach (Entity entity in list)
                         _ = entity;
                 })
                 .WarmupCount(5)
@@ -84,21 +79,19 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("List.Enumerator", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Remove()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-
             var list = new List<Entity>();
             Measure.Method(() =>
                 {
-                    foreach (var entity in entities)
-                        list.Remove(entity);
+                    for (int i = 0; i < N; i++)
+                    {
+                        list.Remove(_source[i]);
+                    }
                 })
-                .SetUp(() => list.AddRange(entities))
+                .SetUp(() => list.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("List.Remove()"))

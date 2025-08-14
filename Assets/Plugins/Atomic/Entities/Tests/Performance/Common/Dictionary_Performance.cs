@@ -6,21 +6,27 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Entities
 {
-    public class Dictionary_Performance
+    public sealed class Dictionary_Performance
     {
+        private const int N = 1000;
+        private Dictionary<int, object> _source;
+        
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            _source = new Dictionary<int, object>(N);
+            for (int i = 0; i < N; i++)
+                _source.Add(i, "Sample");
+        }
         
         [Test, Performance]
         public void GetValue()
         {
-            Dictionary<int, object> dictionary = new Dictionary<int, object>();
-            for (int i = 0; i < 1000; i++)
-                dictionary.Add(i, "Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        object _ = dictionary[i];
+                        object _ = _source[i];
                     }
                 })
                 .WarmupCount(10)
@@ -33,15 +39,11 @@ namespace Atomic.Entities
         [Test, Performance]
         public void GetValue_SafeCast()
         {
-            Dictionary<int, object> dictionary = new Dictionary<int, object>();
-            for (int i = 0; i < 1000; i++)
-                dictionary.Add(i, "Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        string unused = (string) dictionary[i];
+                        string _ = (string) _source[i];
                     }
                 })
                 .WarmupCount(10)
@@ -54,16 +56,12 @@ namespace Atomic.Entities
         [Test, Performance]
         public void GetValue_UnsafeCast()
         {
-            Dictionary<int, object> dictionary = new Dictionary<int, object>();
-            for (int i = 0; i < 1000; i++)
-                dictionary.Add(i, "Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        object value = dictionary[i];
-                        ref readonly string unused = ref UnsafeUtility.As<object, string>(ref value);
+                        object value = _source[i];
+                        ref readonly string _ = ref UnsafeUtility.As<object, string>(ref value);
                     }
                 })
                 .WarmupCount(10)

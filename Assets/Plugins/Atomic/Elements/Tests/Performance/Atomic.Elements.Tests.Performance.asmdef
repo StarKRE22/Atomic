@@ -1,8 +1,8 @@
 {
-    "name": "Atomic.Entites.Tests.Performance",
-    "rootNamespace": "Atomic.Entities",
+    "name": "Atomic.Elements.Tests.Performance",
+    "rootNamespace": "Atomic.Elements",
     "references": [
-        "Atomic.Entities",
+        "Atomic.Elements",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Unity.PerformanceTesting"

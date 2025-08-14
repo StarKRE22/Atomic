@@ -123,7 +123,7 @@ namespace Atomic.Entities
             _capacity = CeilToPrime(capacity, out _primeIndex);
             _count = 0;
             _lastIndex = 0;
-            
+
             _freeList = UNDEFINED_INDEX;
             _tail = UNDEFINED_INDEX;
             _head = UNDEFINED_INDEX;
@@ -278,62 +278,52 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Remove(E item)
         {
-            if (item == null || _count == 0)
+            if (_count == 0 || item == null)
                 return false;
 
-            // Get a reference to the bucket where the item should be
-            int hashCode = item.GetHashCode();
-            int bucket = (hashCode & 0x7FFFFFFF) % _capacity;
-            ref int next = ref _buckets[bucket];
+            var slots = _slots;
+            var buckets = _buckets;
 
-            int index = next;
-            int last = UNDEFINED_INDEX;
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int cur = ref buckets[bucket];
 
-            // Traverse the hash chain (linked list in the bucket)
-            while (index >= 0)
+            while (true)
             {
-                ref Slot slot = ref _slots[index];
+                int idx = cur;
+                if (idx < 0)
+                    break;
 
-                // If the item is found
-                if (slot.hashCode == hashCode)
+                ref Slot slot = ref slots[idx];
+                if (slot.hashCode == hash)
                 {
-                    // Remove from the hash chain
-                    if (last == UNDEFINED_INDEX)
-                        next = slot.next;
-                    else
-                        _slots[last].next = slot.next;
+                    cur = slot.next;
 
-                    // Remove from the doubly linked list
-                    if (slot.left != UNDEFINED_INDEX)
-                        _slots[slot.left].right = slot.right;
+                    int left = slot.left;
+                    int right = slot.right;
 
-                    if (slot.right != UNDEFINED_INDEX)
-                        _slots[slot.right].left = slot.left;
+                    if (left != UNDEFINED_INDEX) slots[left].right = right;
+                    else _head = right;
 
-                    // Update _tail if needed
-                    if (_tail == index)
-                        _tail = slot.left;
+                    if (right != UNDEFINED_INDEX) slots[right].left = left;
+                    else _tail = left;
 
-                    // Update _head if needed
-                    if (_head == index)
-                        _head = slot.right;
-
-                    // Mark slot as free and add it to the free list
-                    slot.hashCode = UNDEFINED_INDEX;
                     slot.next = _freeList;
-                    _freeList = index;
+                    _freeList = idx;
+
+                    slot.hashCode = UNDEFINED_INDEX;
+                    slot.value = default;
 
                     _count--;
-
-                    // If this was the last element, reset everything
                     if (_count == 0)
                     {
                         _lastIndex = 0;
                         _freeList = UNDEFINED_INDEX;
-                        _tail = UNDEFINED_INDEX;
                         _head = UNDEFINED_INDEX;
+                        _tail = UNDEFINED_INDEX;
                     }
 
                     this.OnRemove(item);
@@ -342,12 +332,9 @@ namespace Atomic.Entities
                     return true;
                 }
 
-                // Move to the next node in the hash chain
-                last = index;
-                index = slot.next;
+                cur = ref slot.next;
             }
 
-            // Item not found
             return false;
         }
 
@@ -498,7 +485,9 @@ namespace Atomic.Entities
                 _index = _collection._head;
             }
 
-            public void Dispose() { }
+            public void Dispose()
+            {
+            }
         }
 
         /// <summary>

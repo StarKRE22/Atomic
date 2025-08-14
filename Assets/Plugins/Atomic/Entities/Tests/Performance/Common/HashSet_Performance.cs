@@ -6,76 +6,76 @@ namespace Atomic.Entities
 {
     public sealed class HashSet_Performance
     {
+        private const int N = 1000;
+        private Entity[] _source;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            _source = new Entity[N];
+            for (int i = 0; i < N; i++)
+                _source[i] = new Entity();
+        }
+
         [Test, Performance]
         public void Contains()
         {
-            var hashSet = new HashSet<Entity>();
-            var entities = new List<Entity>();
-
-            for (int i = 0; i < 1000; i++)
-            {
-                var entity = new Entity();
-                hashSet.Add(entity);
-                entities.Add(entity);
-            }
+            var set = new HashSet<Entity>();
+            set.UnionWith(_source);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < entities.Count; i++)
-                        hashSet.Contains(entities[i]);
+                    for (int i = 0; i < N; i++)
+                    {
+                        bool _ = set.Contains(_source[i]);
+                    }
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("HashSet.Contains()"))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Add()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-
+            var set = new HashSet<Entity>();
             Measure.Method(() =>
                 {
-                    var set = new HashSet<Entity>();
-                    foreach (var t in entities)
-                        set.Add(t);
+                    for (int i = 0; i < N; i++)
+                    {
+                        bool _ = set.Add(_source[i]);
+                    }
                 })
+                .SetUp(set.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("HashSet.Add()"))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Clear()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-
-            var hashSet = new HashSet<Entity>();
+            var set = new HashSet<Entity>();
             Measure
-                .Method(hashSet.Clear)
-                .SetUp(() => hashSet.UnionWith(entities))
+                .Method(set.Clear)
+                .SetUp(() => set.UnionWith(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("HashSet.Clear()", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Enumerator()
         {
-            var hashSet = new HashSet<Entity>();
-            for (int i = 0; i < 1000; i++) 
-                hashSet.Add(new Entity());
+            var set = new HashSet<Entity>();
+            set.UnionWith(_source);
 
             Measure.Method(() =>
                 {
-                    foreach (var entity in hashSet) 
+                    foreach (Entity entity in set)
                         _ = entity;
                 })
                 .WarmupCount(5)
@@ -83,21 +83,19 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("HashSet.Enumerator", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Remove()
         {
-            var entities = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
-                entities.Add(new Entity());
-            
-            var hashSet = new HashSet<Entity>();
+            var set = new HashSet<Entity>();
             Measure.Method(() =>
                 {
-                    foreach (var entity in entities)
-                        hashSet.Remove(entity);
+                    for (int i = 0; i < N; i++)
+                    {
+                        bool _ = set.Remove(_source[i]);
+                    }
                 })
-                .SetUp(() => hashSet.UnionWith(entities))
+                .SetUp(() => set.UnionWith(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("HashSet.Remove()"))

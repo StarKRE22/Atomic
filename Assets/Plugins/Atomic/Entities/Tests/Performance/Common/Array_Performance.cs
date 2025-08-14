@@ -7,19 +7,25 @@ namespace Atomic.Entities
 {
     public class Array_Performance
     {
+        private const int N = 1000;
+        private object[] _source;
+        
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            _source = new object[N];
+            for (int i = 0; i < N; i++)
+                _source[i] = "Sample";
+        }
+        
         [Test, Performance]
         public void GetValue()
         {
-            object[] array = new object[1000];
-
-            for (int i = 0; i < 1000; i++)
-                array[i] = new string("Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        object _ = array[i];
+                        object _ = _source[i];
                     }
                 })
                 .WarmupCount(10)
@@ -31,16 +37,11 @@ namespace Atomic.Entities
         [Test, Performance]
         public void GetValue_SafeCast()
         {
-            object[] array = new object[1000];
-
-            for (int i = 0; i < 1000; i++)
-                array[i] = new string("Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        string unused = (string) array[i];
+                        string _ = (string) _source[i];
                     }
                 })
                 .WarmupCount(10)
@@ -52,17 +53,11 @@ namespace Atomic.Entities
         [Test, Performance]
         public void GetValue_UnsafeCast()
         {
-            object[] array = new object[1000];
-
-            for (int i = 0; i < 1000; i++)
-                array[i] = new string("Sample");
-
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
-                        object value = array[i];
-                        ref readonly string unused = ref UnsafeUtility.As<object, string>(ref value);
+                        ref readonly string _ = ref UnsafeUtility.As<object, string>(ref _source[i]);
                     }
                 })
                 .WarmupCount(10)

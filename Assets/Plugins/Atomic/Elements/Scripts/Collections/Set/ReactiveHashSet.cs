@@ -153,12 +153,54 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         public bool Remove(T item)
         {
-            if (item == null || !this.RemoveInternal(item))
+            if (item == null || _count == 0)
                 return false;
 
-            this.OnItemRemoved?.Invoke(item);
-            this.OnStateChanged?.Invoke();
-            return true;
+            var comparer = s_comparer;
+            var slots = _slots;          
+            var buckets = _buckets;
+            int capacity = _capacity;
+
+            int hash = comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int bucket = hash % capacity;
+
+            ref int cur = ref buckets[bucket];
+
+            while (true)
+            {
+                int idx = cur;
+                if (idx < 0)
+                    break;
+
+                ref Slot node = ref slots[idx];
+
+                if (comparer.Equals(node.value, item))
+                {
+                    cur = node.next;
+
+                    node.exists = false;
+                    node.next = _freeList;
+
+                    _count--;
+                    if (_count == 0)
+                    {
+                        _lastIndex = 0;
+                        _freeList = UNDEFINED_INDEX;
+                    }
+                    else
+                    {
+                        _freeList = idx;
+                    }
+
+                    this.OnItemRemoved?.Invoke(item);
+                    this.OnStateChanged?.Invoke();
+                    return true;
+                }
+
+                cur = ref node.next;
+            }
+
+            return false;
         }
 
         /// <inheritdoc/>
@@ -613,29 +655,36 @@ namespace Atomic.Elements
             if (_count == 0)
                 return false;
 
-            
-            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            ref int next = ref _buckets[bucket];
+            var comparer = s_comparer;
+            var slots = _slots;          // локальные ссылки ускоряют доступ
+            var buckets = _buckets;
+            int capacity = _capacity;
 
-            int index = next;
-            int last = UNDEFINED_INDEX;
+            int hash = comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int bucket = hash % capacity;
 
-            while (index >= 0)
+            // "cur" — это ref на ячейку, которая указывает на текущий индекс узла (либо на bucket, либо на next предыдущего узла).
+            ref int cur = ref buckets[bucket];
+
+            while (true)
             {
-                ref Slot node = ref _slots[index];
-                if (s_comparer.Equals(node.value, item))
+                int idx = cur;                  // значение текущего "указателя"
+                if (idx < 0)
+                    break;
+
+                ref Slot node = ref slots[idx];
+
+                if (comparer.Equals(node.value, item))
                 {
-                    if (last == UNDEFINED_INDEX)
-                        next = node.next;
-                    else
-                        _slots[last].next = node.next;
+                    // unlink: переписываем указатель, который указывал на нас
+                    cur = node.next;
 
-                    node.next = _freeList;
+                    // кладём узел в freelist
                     node.exists = false;
+                    node.next = _freeList;
 
+                    // тот же семантический порядок, что и в исходнике
                     _count--;
-
                     if (_count == 0)
                     {
                         _lastIndex = 0;
@@ -643,14 +692,14 @@ namespace Atomic.Elements
                     }
                     else
                     {
-                        _freeList = index;
+                        _freeList = idx;
                     }
 
                     return true;
                 }
 
-                last = index;
-                index = node.next;
+                // двигаем ref на следующий "указатель"
+                cur = ref node.next;
             }
 
             return false;
