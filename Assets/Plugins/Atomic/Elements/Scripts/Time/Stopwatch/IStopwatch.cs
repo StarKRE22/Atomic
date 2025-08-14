@@ -9,8 +9,7 @@ namespace Atomic.Elements
         IPauseSource,
         ITimeSource,
         IStateSource<StopwatchState>,
-        ITickSource,
-        IResetSource
+        ITickSource
     {
     }
 }

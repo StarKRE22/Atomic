@@ -23,7 +23,7 @@ namespace ShooterGame.Gameplay
             weapon.AddFireEvent(new BaseEvent());
             weapon.AddFireAction(new InlineAction(() =>
             {
-                if (_ammo.Value <= 0 || !_cooldown.IsExpired())
+                if (_ammo.Value <= 0 || !_cooldown.IsCompleted())
                     return;
 
                 _ammo.Value--;
@@ -35,7 +35,7 @@ namespace ShooterGame.Gameplay
                     _owner.GetTeamType().Value
                 );
                 
-                _cooldown.Reset();
+                _cooldown.ResetTime();
                 weapon.GetFireEvent().Invoke();
             }));
             weapon.WhenFixedUpdate(_cooldown.Tick);

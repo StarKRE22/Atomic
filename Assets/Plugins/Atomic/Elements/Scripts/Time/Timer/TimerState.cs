@@ -23,6 +23,6 @@ namespace Atomic.Elements
         /// <summary>
         /// The timer has finished counting down and expired.
         /// </summary>
-        EXPIRED = 3
+        COMPLETED = 3
     }
 }

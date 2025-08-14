@@ -7,13 +7,12 @@ namespace Atomic.Elements
     public interface ITimer :
         IStartSource,
         IPauseSource,
-        IExpiredSource,
+        ICompleteSource,
         IStateSource<TimerState>,
         ITimeSource,
         IDurationSource,
         IProgressSource,
-        ITickSource,
-        IResetSource
+        ITickSource
     {
     }
 }

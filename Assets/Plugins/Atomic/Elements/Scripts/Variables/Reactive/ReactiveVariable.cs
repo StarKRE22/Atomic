@@ -42,7 +42,7 @@ namespace Atomic.Elements
             get => this.value;
             set
             {
-                if (!s_equalityComparer.Equals(value))
+                if (!s_equalityComparer.Equals(this.value, value))
                 {
                     this.value = value;
                     this.OnValueChanged?.Invoke(value);

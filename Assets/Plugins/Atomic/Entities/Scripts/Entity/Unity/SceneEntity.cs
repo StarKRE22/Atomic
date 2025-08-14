@@ -58,7 +58,7 @@ namespace Atomic.Entities
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
         [HideInPlayMode]
         [InfoBox(
-            "WARINING: If you create Unity objects or another heavy objects in the Install() method, be sure to turn off!",
+            "WARNING: If you create Unity objects or another heavy objects in the Install() method, be sure to turn off!",
             InfoMessageType.Warning,
             nameof(installInEditMode))
         ]
@@ -70,7 +70,6 @@ namespace Atomic.Entities
         [Tooltip("Should dispose values when OnDestroy() called")]
 #if ODIN_INSPECTOR
         [HideInPlayMode]
-        // [GUIColor(0f, 0.83f, 1f)]
 #endif
         [SerializeField]
         private bool disposeValues = true;
@@ -78,13 +77,11 @@ namespace Atomic.Entities
         [Tooltip("Enable automatic syncing with Unity MonoBehaviour lifecycle (Start/OnEnable/OnDisable).")]
 #if ODIN_INSPECTOR
         [HideInPlayMode]
-        // [GUIColor(0f, 0.83f, 1f)]
 #endif
         [SerializeField]
         private bool useUnityLifecycle = true;
 
 #if ODIN_INSPECTOR
-        // [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode]
 #endif
         [Tooltip("Specify the installers that will put values and systems to this context")]
@@ -92,7 +89,6 @@ namespace Atomic.Entities
         internal List<SceneEntityInstaller> installers;
 
 #if ODIN_INSPECTOR
-        // [GUIColor(0f, 0.83f, 1f)]
         [HideInPlayMode]
 #endif
         [Tooltip("Specify child entities that will installed with this entity")]

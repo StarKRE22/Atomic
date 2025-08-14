@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -8,7 +6,7 @@ namespace Atomic.Elements
     public sealed partial class ReactiveHashSetTests
     {
         [Test]
-        public void OnBeforSerialize()
+        public void OnBeforeSerialize()
         {
             //Arrange:
             var set = new ReactiveHashSet<string>
@@ -21,17 +19,12 @@ namespace Atomic.Elements
             //Act:
             ((ISerializationCallbackReceiver) set).OnBeforeSerialize();
 
-            //Assert:
-            List<string> items = typeof(ReactiveHashSet<string>)
-                .GetField("items", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)!
-                .GetValue(set) as List<string>;
-
-            Assert.AreEqual(new List<string>
+            Assert.AreEqual(new[]
             {
                 "Milk",
                 "Bread",
                 "Butter"
-            }, items);
+            }, set.serializedItems);
         }
 
         [Test]
@@ -43,14 +36,13 @@ namespace Atomic.Elements
             var set = new ReactiveHashSet<string>();
             set.OnStateChanged += () => stateChanged = true;
 
-            typeof(ReactiveHashSet<string>)
-                .GetField("items", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly)!
-                .SetValue(set, new List<string>
-                {
-                    "Milk",
-                    "Bread",
-                    "Butter"
-                });
+
+            set.serializedItems = new[]
+            {
+                "Milk",
+                "Bread",
+                "Butter"
+            }; 
 
             //Pre-assert:
             Assert.AreEqual(0, set.Count);

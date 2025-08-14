@@ -30,11 +30,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the cooldown has expired (time reaches zero).
         /// </summary>
-        public event Action OnExpired;
-
-        public float Duration => _duration;
-        
-        public float Time => _time;
+        public event Action OnCompleted;
 
 #if UNITY_5_3_OR_NEWER
         [Min(float.Epsilon)]
@@ -72,7 +68,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns whether the cooldown has expired (i.e., current time is zero or less).
         /// </summary>
-        public bool IsExpired() => _time <= 0;
+        public bool IsCompleted() => _time <= 0;
 
         /// <summary>
         /// Gets the progress of the cooldown (from 0 to 1).
@@ -96,11 +92,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Resets the cooldown to full duration.
         /// </summary>
-        public void Reset() => this.SetTime(_duration);
+        public void ResetTime() => this.SetTime(_duration);
 
         /// <summary>
         /// Updates the cooldown by reducing current time by deltaTime.
-        /// Fires <see cref="OnExpired"/> if the timer reaches zero.
+        /// Fires <see cref="OnCompleted"/> if the timer reaches zero.
         /// </summary>
         /// <param name="deltaTime">The time to subtract from the current time.</param>
         public void Tick(float deltaTime)
@@ -114,7 +110,7 @@ namespace Atomic.Elements
             this.OnProgressChanged?.Invoke(this.GetProgress());
 
             if (_time <= 0)
-                this.OnExpired?.Invoke();
+                this.OnCompleted?.Invoke();
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace ShooterGame.Gameplay
             bullet.GetPosition().Value = position;
             bullet.GetRotation().Value = rotation;
             bullet.GetTeamType().Value = teamType;
-            bullet.GetLifetime().Reset();
+            bullet.GetLifetime().ResetTime();
             return bullet;
         }
 

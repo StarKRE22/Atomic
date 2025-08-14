@@ -46,7 +46,6 @@ namespace Atomic.Entities
             gameObject.SetActive(false);
 
             E sceneEntity = gameObject.AddComponent<E>();
-
             sceneEntity.name = args.name;
 
             sceneEntity.installers = args.installers;
@@ -59,6 +58,8 @@ namespace Atomic.Entities
             sceneEntity._initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
             sceneEntity._initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
             sceneEntity._initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+            
+            sceneEntity.Construct();
 
             sceneEntity.AddTags(args.tags);
             sceneEntity.AddValues(args.values);

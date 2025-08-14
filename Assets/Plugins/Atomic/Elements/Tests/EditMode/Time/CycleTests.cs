@@ -72,8 +72,7 @@ namespace Atomic.Elements
             period.OnStateChanged += s => stateChanged = s;
 
             //Act:
-            period.Time = 2;
-            period.Start();
+            period.Start(2);
 
             //Assert:
             Assert.AreEqual(PeriodState.PLAYING, stateChanged);

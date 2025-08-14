@@ -21,10 +21,10 @@ namespace BeginnerGame
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _spawnPeriod.Tick(deltaTime);
-            if (_spawnPeriod.IsExpired())
+            if (_spawnPeriod.IsCompleted())
             {
                 CoinUseCase.Spawn(_context);
-                _spawnPeriod.Reset();
+                _spawnPeriod.ResetTime();
             }
         }
     }

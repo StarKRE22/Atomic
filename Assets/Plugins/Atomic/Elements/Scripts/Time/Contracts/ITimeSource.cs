@@ -20,5 +20,10 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="time">The new time to set (must be between 0 and duration).</param>
         void SetTime(float time);
+        
+        /// <summary>
+        /// Resets the source to initial time.
+        /// </summary>
+        void ResetTime();
     }
 }

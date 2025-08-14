@@ -777,19 +777,19 @@ namespace Atomic.Elements
         [HideInPlayMode]
 #endif
         [SerializeField]
-        internal T[] _serializedItems;
+        internal T[] serializedItems;
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            _serializedItems = this.ToArray();
+            serializedItems = this.ToArray();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
             this.Clear();
 
-            if (_serializedItems != null)
-                this.UnionWith(_serializedItems);
+            if (serializedItems != null)
+                this.UnionWith(serializedItems);
         }
     }
 }

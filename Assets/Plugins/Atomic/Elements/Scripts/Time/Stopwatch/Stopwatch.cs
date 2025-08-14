@@ -91,6 +91,8 @@ namespace Atomic.Elements
         /// </summary>
         public float GetTime() => this.time;
 
+        public void Start() => this.Start(0);
+        
         /// <summary>
         /// Starts the stopwatch and resets elapsed time to zero.
         /// </summary>
@@ -98,7 +100,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Start(float time = 0)
+        public void Start(float time)
         {
             if (this.state is not StopwatchState.IDLE)
                 return;
@@ -195,6 +197,6 @@ namespace Atomic.Elements
             }
         }
 
-        public void Reset() => this.SetTime(0);
+        public void ResetTime() => this.SetTime(0);
     }
 }

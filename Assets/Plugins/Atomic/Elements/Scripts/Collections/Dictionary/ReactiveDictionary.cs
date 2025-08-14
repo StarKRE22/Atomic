@@ -64,7 +64,7 @@ namespace Atomic.Elements
             public bool exists;
             public int next;
         }
-        
+
         private Slot[] _slots;
         private int[] _buckets;
         private int _capacity;
@@ -168,6 +168,9 @@ namespace Atomic.Elements
             if (this.FindIndex(key, out int index))
             {
                 ref Slot slot = ref _slots[index];
+                if (s_valueComparer.Equals(slot.value, value))
+                    return;
+
                 slot.value = value;
                 this.OnStateChanged?.Invoke();
                 this.OnItemChanged?.Invoke(key, value);
@@ -635,7 +638,7 @@ namespace Atomic.Elements
         {
             private readonly ReactiveDictionary<K, V> _dictionary;
 
-            internal ReadOnlyValueCollection(ReactiveDictionary<K, V> dictionary) => 
+            internal ReadOnlyValueCollection(ReactiveDictionary<K, V> dictionary) =>
                 _dictionary = dictionary;
 
             public int Count => _dictionary._count;
@@ -662,7 +665,7 @@ namespace Atomic.Elements
             {
                 if (array == null)
                     throw new ArgumentNullException(nameof(array));
-               
+
                 if (arrayIndex < 0)
                     throw new ArgumentOutOfRangeException(nameof(arrayIndex));
 
@@ -677,10 +680,10 @@ namespace Atomic.Elements
 
             public void Add(V item) =>
                 throw new NotSupportedException("ValueCollection is read-only.");
-            
-            public void Clear() => 
+
+            public void Clear() =>
                 throw new NotSupportedException("ValueCollection is read-only.");
-            
+
             public bool Remove(V item) =>
                 throw new NotSupportedException("ValueCollection is read-only.");
 
@@ -742,7 +745,7 @@ namespace Atomic.Elements
         }
 
         [SerializeField]
-        internal SerializedKeyValuePair[] _serializedPairs;
+        internal SerializedKeyValuePair[] serializedItems;
 
         /// <summary>
         /// Unity callback invoked after the object has been deserialized.
@@ -750,12 +753,12 @@ namespace Atomic.Elements
         /// </summary>
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            if (_serializedPairs == null)
+            if (serializedItems == null)
                 return;
-            
-            for (int i = 0, count = _serializedPairs.Length; i < count; i++)
+
+            for (int i = 0, count = serializedItems.Length; i < count; i++)
             {
-                SerializedKeyValuePair pair = _serializedPairs[i];
+                SerializedKeyValuePair pair = serializedItems[i];
                 this.Add(pair.key, pair.value);
             }
 
@@ -768,12 +771,12 @@ namespace Atomic.Elements
         /// </summary>
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            _serializedPairs = new SerializedKeyValuePair[_count];
+            serializedItems = new SerializedKeyValuePair[_count];
 
             int i = 0;
             foreach ((K key, V value) in this)
             {
-                _serializedPairs[i++] = new SerializedKeyValuePair
+                serializedItems[i++] = new SerializedKeyValuePair
                 {
                     key = key,
                     value = value

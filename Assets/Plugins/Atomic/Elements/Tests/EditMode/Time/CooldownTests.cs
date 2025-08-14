@@ -10,7 +10,7 @@ namespace Atomic.Elements
             var cd = new Cooldown(10);
             Assert.AreEqual(10, cd.GetDuration());
             Assert.AreEqual(10, cd.GetTime());
-            Assert.IsFalse(cd.IsExpired());
+            Assert.IsFalse(cd.IsCompleted());
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace Atomic.Elements
         public void IsExpired_ReturnsTrue_WhenTimeZero()
         {
             var cd = new Cooldown(5, 0);
-            Assert.IsTrue(cd.IsExpired());
+            Assert.IsTrue(cd.IsCompleted());
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace Atomic.Elements
 
             cd.OnTimeChanged += t => currentTime = t;
             cd.OnProgressChanged += p => progress = p;
-            cd.OnExpired += () => expired = true;
+            cd.OnCompleted += () => expired = true;
 
             cd.Tick(5);
 
@@ -81,7 +81,7 @@ namespace Atomic.Elements
             cd.OnTimeChanged += t => changedTime = t;
             cd.OnProgressChanged += p => changedProgress = p;
 
-            cd.Reset();
+            cd.ResetTime();
 
             Assert.AreEqual(10, changedTime);
             Assert.AreEqual(1f, changedProgress);

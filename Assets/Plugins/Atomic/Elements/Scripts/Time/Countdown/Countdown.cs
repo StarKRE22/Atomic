@@ -30,7 +30,7 @@ namespace Atomic.Elements
         public event Action OnResumed;
 
         /// <summary>Raised when the countdown reaches the end.</summary>
-        public event Action OnExpired;
+        public event Action OnCompleted;
 
         /// <summary>Raised when the state changes.</summary>
         public event Action<CountdownState> OnStateChanged;
@@ -116,7 +116,7 @@ namespace Atomic.Elements
         public bool IsPaused() => this.state == CountdownState.PAUSED;
 
         /// <summary>Returns true if the countdown has finished.</summary>
-        public bool IsExpired() => this.state == CountdownState.EXPIRED;
+        public bool IsCompleted() => this.state == CountdownState.COMPLETED;
 
         /// <summary>Gets the total duration.</summary>
         public float GetDuration() => this.duration;
@@ -124,16 +124,17 @@ namespace Atomic.Elements
         /// <summary>Gets the current remaining time.</summary>
         public float GetTime() => this.time;
 
+        public void Start() => this.Start(this.duration);
+
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Start(float currentTime = 0)
+        public void Start(float time)
         {
-            if (this.state is not (CountdownState.IDLE or CountdownState.EXPIRED))
+            if (this.state is not (CountdownState.IDLE or CountdownState.COMPLETED))
                 return;
 
-            this.SetTime(currentTime);
-
+            this.SetTime(time);
             this.state = CountdownState.PLAYING;
             this.OnStateChanged?.Invoke(CountdownState.PLAYING);
             this.OnStarted?.Invoke();
@@ -205,9 +206,9 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Complete()
         {
-            this.state = CountdownState.EXPIRED;
-            this.OnStateChanged?.Invoke(CountdownState.EXPIRED);
-            this.OnExpired?.Invoke();
+            this.state = CountdownState.COMPLETED;
+            this.OnStateChanged?.Invoke(CountdownState.COMPLETED);
+            this.OnCompleted?.Invoke();
         }
 
         /// <summary>Gets the normalized progress (0–1) of the countdown.</summary>
@@ -216,7 +217,7 @@ namespace Atomic.Elements
             return this.state switch
             {
                 CountdownState.PLAYING or CountdownState.PAUSED => 1 - this.time / this.duration,
-                CountdownState.EXPIRED => 1,
+                CountdownState.COMPLETED => 1,
                 _ => 0
             };
         }
@@ -270,6 +271,6 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Reset() => this.SetTime(this.duration);
+        public void ResetTime() => this.SetTime(this.duration);
     }
 }

@@ -12,12 +12,12 @@ namespace BeginnerGame
         {
             _context = context;
             _countdown = context.GetGameCountdown();
-            _countdown.Reset();
+            _countdown.ResetTime();
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            if (_countdown.IsExpired())
+            if (_countdown.IsCompleted())
                 GameOverUseCase.GameOver(_context);
             else
                 _countdown.Tick(deltaTime);

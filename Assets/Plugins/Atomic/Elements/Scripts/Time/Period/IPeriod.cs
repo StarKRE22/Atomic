@@ -12,8 +12,7 @@ namespace Atomic.Elements
         ITimeSource,
         IProgressSource,
         IDurationSource,
-        ITickSource,
-        IResetSource
+        ITickSource
     {
         /// <summary>Raised when the period completes and starts over.</summary>
         event Action OnPeriod;

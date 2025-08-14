@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
         {
             _lifetime.Tick(deltaTime);
             
-            if (_lifetime.IsExpired()) 
+            if (_lifetime.IsCompleted()) 
                 _destroyAction.Invoke();
         }
     }

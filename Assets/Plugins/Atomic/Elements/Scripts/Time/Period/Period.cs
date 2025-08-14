@@ -119,17 +119,19 @@ namespace Atomic.Elements
         /// <summary>Returns the current time of the cycle.</summary>
         public float GetTime() => this.time;
 
+        public void Start() => this.Start(0);
+        
         /// <summary>Starts the timer from a specific current time.</summary>
-        /// <param name="currentTime">The time to start the cycle from.</param>
+        /// <param name="time">The time to start the cycle from.</param>
 #if ODIN_INSPECTOR
         [Button]
 #endif
-        public void Start(float currentTime = 0)
+        public void Start(float time)
         {
             if (this.state is not PeriodState.IDLE)
                 return;
 
-            this.time = Math.Clamp(currentTime, 0, this.duration);
+            this.time = Math.Clamp(time, 0, this.duration);
             this.state = PeriodState.PLAYING;
             this.OnStateChanged?.Invoke(PeriodState.PLAYING);
             this.OnStarted?.Invoke();
@@ -258,6 +260,6 @@ namespace Atomic.Elements
             this.OnProgressChanged?.Invoke(progress);
         }
         
-        public void Reset() => this.SetTime(0);
+        public void ResetTime() => this.SetTime(0);
     }
 }

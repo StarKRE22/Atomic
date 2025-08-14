@@ -50,8 +50,7 @@ namespace Atomic.Elements
             stopwatch.OnStateChanged += s => stateChanged = s;
 
             //Act:
-            stopwatch.Time = 4;
-            stopwatch.Start();
+            stopwatch.Start(4);
 
             //Assert:
             Assert.IsTrue(stopwatch.IsStarted());

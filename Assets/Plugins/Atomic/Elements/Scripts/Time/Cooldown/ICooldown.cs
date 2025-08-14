@@ -8,8 +8,7 @@ namespace Atomic.Elements
         IDurationSource,
         ITimeSource,
         IProgressSource,
-        IExpiredSource,
-        IResetSource,
+        ICompleteSource,
         ITickSource
     {
     }

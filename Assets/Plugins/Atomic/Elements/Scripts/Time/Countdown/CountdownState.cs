@@ -12,6 +12,6 @@ namespace Atomic.Elements
         /// <summary>Temporarily paused.</summary>
         PAUSED = 2,
         /// <summary>Finished naturally or by time running out.</summary>
-        EXPIRED = 3
+        COMPLETED = 3
     }
 }

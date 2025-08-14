@@ -37,7 +37,7 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void WhenChangeVariableOnASameValueThenEventWillNotRaisen()
+        public void SetValue_SameValue_OnValueChangedNotRisen()
         {
             int r1 = -1;
             int r2 = -1;
