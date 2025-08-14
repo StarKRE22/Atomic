@@ -13,12 +13,11 @@ namespace ShooterGame.App
             _levelNameFormat = levelNameFormat;
         }
 
-        public UniTask Invoke(IAppContext context, LoadingBundle bundle)
+        public async UniTask Invoke(IAppContext context, LoadingBundle bundle)
         {
             int level = bundle.Get<int>("level");
             string sceneName = string.Format(_levelNameFormat, level);
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
-            return operation.ToUniTask();
+            await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Atomic.Entities
     {
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
+        [DisableInPlayMode]
 #endif
         [Tooltip("Do not destroy the target Object when loading a new Scene?")]
         [SerializeField]

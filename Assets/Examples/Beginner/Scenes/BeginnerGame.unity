@@ -475,6 +475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 700195352}
     m_Modifications:
+    - target: {fileID: 325131033648698089, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
+      propertyPath: installOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1428306703136761568, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: m_TargetDisplay
       value: 1
@@ -515,6 +519,10 @@ PrefabInstance:
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 727621270}
+    - target: {fileID: 2052508353354759341, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
+      propertyPath: _teamType.value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2550732037569256318, guid: 44ada37d32de145cdbb417feda3a6ba4, type: 3}
       propertyPath: m_Name
       value: PlayerContext (Red)

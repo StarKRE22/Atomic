@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Atomic.Entities
 {
@@ -115,10 +114,8 @@ namespace Atomic.Entities
             for (int i = 0, count = this.triggers.Length; i < count; i++)
                 this.triggers[i].Track(entity);
 
-            Debug.Log($"PASS PREDICATE {predicate(entity)} && CONTAINS {state.Contains(entity)}");
             if (this.predicate(entity) && this.state.Add(entity))
             {
-                Debug.Log($"ADD TO FILTER {entity}");
                 this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
             }
@@ -142,14 +139,11 @@ namespace Atomic.Entities
 
             if (!matches && this.state.Remove(entity))
             {
-                Debug.Log($"SYNC REMOVE FROM FILTER {entity}");
                 this.OnStateChanged?.Invoke();
                 this.OnRemoved?.Invoke(entity);
             }
             else if (matches && this.state.Add(entity))
             {
-                Debug.Log($"SYNC ADD TO FILTER {entity}");
-                
                 this.OnStateChanged?.Invoke();
                 this.OnAdded?.Invoke(entity);
             }
