@@ -1,5 +1,4 @@
 using Atomic.Entities;
-using Modules.Gameplay;
 
 namespace RTSGame
 {
@@ -26,6 +25,15 @@ namespace RTSGame
         private void OnHealthEmpty()
         {
             EntitiesUseCase.UnspawnEntity(_gameContext, _entity);
+        }
+
+        public void OnSpawn(IGameEntity entity)
+        {
+            
+        }
+
+        public void OnDespawn(IEntity entity)
+        {
         }
     }
 }

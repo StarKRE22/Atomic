@@ -101,7 +101,7 @@ namespace Atomic.Elements
     /// <typeparam name="T1">The type of the first argument.</typeparam>
     /// <typeparam name="T2">The type of the second argument.</typeparam>
     [Serializable]
-    public class Request<T1, T2> : IRequest<T1, T2>
+    public class BaseRequest<T1, T2> : IRequest<T1, T2>
     {
         /// <inheritdoc />
         public bool Required => _required;

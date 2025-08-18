@@ -5,8 +5,8 @@ using UnityEngine;
 namespace RTSGame
 {
     [CreateAssetMenu(
-        fileName = "HeadquartersInstaller",
-        menuName = "SampleGame/Entities/New HeadquartersInstaller"
+        fileName = "HeadquartersFactory",
+        menuName = "RTSGame/Entities/New HeadquartersFactory"
     )]
     public sealed class HeadquartersFactory : GameEntityFactory
     {
@@ -17,7 +17,7 @@ namespace RTSGame
         {
             entity.AddUnitTag();
             entity.AddDamageableTag();
-            entity.AddHealth(new Health(_health, _health));
+            entity.AddHealth(new Health(_health));
             entity.AddPosition(new ReactiveVector3());
             entity.AddRotation(new ReactiveQuaternion());
             entity.AddTeam(new ReactiveVariable<TeamType>());

@@ -27,9 +27,8 @@ values:
   
 #Movement  
 - MoveSpeed: IValue<float>
-- MoveCondition: IFunction<Vector3, float, bool>
-- MoveAction: IAction<Vector3, float>
-- MoveEvent: IEvent<Vector3, float>
+- MoveRequest: IRequest<Vector3>
+- MoveEvent: IEvent<Vector3>
 
 #Rotation
 - RotationSpeed: IValue<float>

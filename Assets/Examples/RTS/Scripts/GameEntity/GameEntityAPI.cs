@@ -32,9 +32,8 @@ namespace RTSGame
 		public static readonly int Rotation; // IReactiveVariable<Quaternion>
 		public static readonly int Scale; // IValue<float>
 		public static readonly int MoveSpeed; // IValue<float>
-		public static readonly int MoveCondition; // IFunction<Vector3, float, bool>
-		public static readonly int MoveAction; // IAction<Vector3, float>
-		public static readonly int MoveEvent; // IEvent<Vector3, float>
+		public static readonly int MoveRequest; // IRequest<Vector3>
+		public static readonly int MoveEvent; // IEvent<Vector3>
 		public static readonly int RotationSpeed; // IValue<float>
 		public static readonly int Health; // Health
 		public static readonly int Lifetime; // Cooldown
@@ -62,8 +61,7 @@ namespace RTSGame
 			Rotation = NameToId(nameof(Rotation));
 			Scale = NameToId(nameof(Scale));
 			MoveSpeed = NameToId(nameof(MoveSpeed));
-			MoveCondition = NameToId(nameof(MoveCondition));
-			MoveAction = NameToId(nameof(MoveAction));
+			MoveRequest = NameToId(nameof(MoveRequest));
 			MoveEvent = NameToId(nameof(MoveEvent));
 			RotationSpeed = NameToId(nameof(RotationSpeed));
 			Health = NameToId(nameof(Health));
@@ -226,60 +224,38 @@ namespace RTSGame
 
 		#endregion
 
-		#region MoveCondition
+		#region MoveRequest
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IFunction<Vector3, float, bool> GetMoveCondition(this IGameEntity entity) => entity.GetValue<IFunction<Vector3, float, bool>>(MoveCondition);
+		public static IRequest<Vector3> GetMoveRequest(this IGameEntity entity) => entity.GetValue<IRequest<Vector3>>(MoveRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveCondition(this IGameEntity entity, out IFunction<Vector3, float, bool> value) => entity.TryGetValue(MoveCondition, out value);
+		public static bool TryGetMoveRequest(this IGameEntity entity, out IRequest<Vector3> value) => entity.TryGetValue(MoveRequest, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveCondition(this IGameEntity entity, IFunction<Vector3, float, bool> value) => entity.AddValue(MoveCondition, value);
+		public static void AddMoveRequest(this IGameEntity entity, IRequest<Vector3> value) => entity.AddValue(MoveRequest, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoveCondition(this IGameEntity entity) => entity.HasValue(MoveCondition);
+		public static bool HasMoveRequest(this IGameEntity entity) => entity.HasValue(MoveRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoveCondition(this IGameEntity entity) => entity.DelValue(MoveCondition);
+		public static bool DelMoveRequest(this IGameEntity entity) => entity.DelValue(MoveRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveCondition(this IGameEntity entity, IFunction<Vector3, float, bool> value) => entity.SetValue(MoveCondition, value);
-
-		#endregion
-
-		#region MoveAction
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IAction<Vector3, float> GetMoveAction(this IGameEntity entity) => entity.GetValue<IAction<Vector3, float>>(MoveAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveAction(this IGameEntity entity, out IAction<Vector3, float> value) => entity.TryGetValue(MoveAction, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveAction(this IGameEntity entity, IAction<Vector3, float> value) => entity.AddValue(MoveAction, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasMoveAction(this IGameEntity entity) => entity.HasValue(MoveAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelMoveAction(this IGameEntity entity) => entity.DelValue(MoveAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveAction(this IGameEntity entity, IAction<Vector3, float> value) => entity.SetValue(MoveAction, value);
+		public static void SetMoveRequest(this IGameEntity entity, IRequest<Vector3> value) => entity.SetValue(MoveRequest, value);
 
 		#endregion
 
 		#region MoveEvent
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEvent<Vector3, float> GetMoveEvent(this IGameEntity entity) => entity.GetValue<IEvent<Vector3, float>>(MoveEvent);
+		public static IEvent<Vector3> GetMoveEvent(this IGameEntity entity) => entity.GetValue<IEvent<Vector3>>(MoveEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetMoveEvent(this IGameEntity entity, out IEvent<Vector3, float> value) => entity.TryGetValue(MoveEvent, out value);
+		public static bool TryGetMoveEvent(this IGameEntity entity, out IEvent<Vector3> value) => entity.TryGetValue(MoveEvent, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddMoveEvent(this IGameEntity entity, IEvent<Vector3, float> value) => entity.AddValue(MoveEvent, value);
+		public static void AddMoveEvent(this IGameEntity entity, IEvent<Vector3> value) => entity.AddValue(MoveEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasMoveEvent(this IGameEntity entity) => entity.HasValue(MoveEvent);
@@ -288,7 +264,7 @@ namespace RTSGame
 		public static bool DelMoveEvent(this IGameEntity entity) => entity.DelValue(MoveEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetMoveEvent(this IGameEntity entity, IEvent<Vector3, float> value) => entity.SetValue(MoveEvent, value);
+		public static void SetMoveEvent(this IGameEntity entity, IEvent<Vector3> value) => entity.SetValue(MoveEvent, value);
 
 		#endregion
 
