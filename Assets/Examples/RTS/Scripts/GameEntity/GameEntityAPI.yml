@@ -23,6 +23,8 @@ values:
 #Transform
 - Position: IReactiveVariable<Vector3>
 - Rotation: IReactiveVariable<Quaternion>
+- Scale: IValue<float>  
+  
   
 #Movement  
 - MoveSpeed: IValue<float>

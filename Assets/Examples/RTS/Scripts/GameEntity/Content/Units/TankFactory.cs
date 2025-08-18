@@ -42,7 +42,7 @@ namespace RTSGame
             this.InstallMove(entity);
             this.InstallCombat(entity, gameContext);
             this.InstallLife(entity);
-            this.InstallAI(entity);
+            this.InstallAI(entity, gameContext);
         }
 
         private void InstallMove(IGameEntity entity)
@@ -64,7 +64,7 @@ namespace RTSGame
                 }
             });
         }
-        
+
         private void InstallCombat(IGameEntity entity, IGameContext gameContext)
         {
             entity.AddFireCooldown(new Cooldown(_attackCooldown));
@@ -94,11 +94,13 @@ namespace RTSGame
             entity.AddBehaviour<DeathBehaviour>();
         }
 
-        private void InstallAI(IGameEntity entity)
+        private void InstallAI(IGameEntity entity, IGameContext context)
         {
             entity.AddTarget(new ReactiveVariable<IEntity>());
-            entity.AddBehaviour(new DetectTargetBehaviour(new RandomCooldown(MIN_DETECT_DURATION, MAX_DETECT_DURATION)));
-            entity.AddBehaviour<AttackBehaviour>();
+            entity.AddBehaviour(new DetectTargetBehaviour(
+                new RandomCooldown(MIN_DETECT_DURATION, MAX_DETECT_DURATION), context)
+            );
+            entity.AddBehaviour<AttackTargetBehaviour>();
         }
     }
 }

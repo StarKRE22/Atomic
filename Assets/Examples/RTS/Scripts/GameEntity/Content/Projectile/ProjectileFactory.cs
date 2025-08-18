@@ -1,15 +1,14 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using Modules.Gameplay;
 using UnityEngine;
 
 namespace RTSGame
 {
     [CreateAssetMenu(
-        fileName = "ProjectileInstaller",
-        menuName = "SampleGame/Entities/New ProjectileInstaller"
+        fileName = "ProjectileFactory",
+        menuName = "RTSGame/New ProjectileFactory"
     )]
-    public sealed class ProjectileFactory : ScriptableEntityInstaller
+    public sealed class ProjectileFactory : ScriptableEntityInstaller<IGameEntity>
     {
         [SerializeField]
         private Const<float> _moveSpeed = 3;
@@ -23,11 +22,10 @@ namespace RTSGame
         [SerializeField]
         private Const<float> _radius;
 
-        public override void Install(IEntity entity)
+        protected override void Install(IGameEntity entity)
         {
             entity.AddProjectileTag();
 
-            entity.AddRadius(_radius);
             entity.AddDamage(_damage);
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddLifetime(new Cooldown(_lifetime));
@@ -35,10 +33,6 @@ namespace RTSGame
 
             entity.AddBehaviour<ProjectileLifetimeBehaviour>();
             entity.AddBehaviour<ProjectileFollowBehaviour>();
-
-#if UNITY_EDITOR
-            entity.AddBehaviour<RadiusGizmos>();
-#endif
         }
     }
 }

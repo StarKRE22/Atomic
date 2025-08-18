@@ -8,11 +8,8 @@ namespace RTSGame
         fileName = "WarriorInstaller",
         menuName = "RTSGame/Entities/New WarriorInstaller"
     )]
-    public sealed class WarriorFactory : ScriptableEntityInstaller
+    public sealed class WarriorFactory : ScriptableEntityInstaller<IGameEntity>
     {
-        [SerializeField]
-        private Const<float> _radius = 1;
-
         [SerializeField]
         private Const<float> _moveSpeed = 3;
 
@@ -31,7 +28,7 @@ namespace RTSGame
         [SerializeField]
         private float _attackCooldown = 1;
 
-        public override void Install(IEntity entity)
+        protected override void Install(IGameEntity entity)
         {
             entity.AddUnitTag();
 
@@ -46,7 +43,7 @@ namespace RTSGame
         {
             entity.AddTarget(new ReactiveVariable<IEntity>());
             entity.AddBehaviour(new DetectTargetBehaviour(new RandomCooldown(0.2f, 0.3f)));
-            entity.AddBehaviour<AttackBehaviour>();
+            entity.AddBehaviour<AttackTargetBehaviour>();
         }
 
         private void InstallRotation(IEntity entity)
