@@ -1,0 +1,17 @@
+{
+    "name": "RTSGame",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a953053e80bb4f599f6a51d42532f103",
+        "GUID:f06f28e7a0d24ff18d1b4e4acec49d4d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

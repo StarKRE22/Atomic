@@ -11,7 +11,7 @@ using UnityEngine;
 namespace BeginnerGame
 {
     /// <summary>
-    /// A concrete implementation of <see cref="ScriptableEntityFactoryCatalog{TKey, E}"/> that maps
+    /// A concrete implementation of <see cref="ScriptableEntityCatalog{TKey,E}"/> that maps
     /// <see cref="ScriptableEntityFactory{IEntity}"/> instances by their asset name as a string key.
     /// </summary>
     /// <remarks>
@@ -29,7 +29,7 @@ namespace BeginnerGame
         fileName = "EntityFactoryCatalog",
         menuName = "Atomic/Entities/New EntityFactoryCatalog"
     )]
-    public class ScriptableEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IEntity>, IEntityFactoryCatalog
+    public class ScriptableEntityCatalog : ScriptableEntityCatalog<string, IEntity>, IEntityFactoryCatalog
     {
         /// <summary>
         /// Extracts the string key for a given factory.
@@ -46,7 +46,7 @@ namespace BeginnerGame
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify each factory.</typeparam>
     /// <typeparam name="E">The type of entity each factory creates.</typeparam>
-    public abstract class ScriptableEntityFactoryCatalog<TKey, E> : ScriptableObject,
+    public abstract class ScriptableEntityCatalog<TKey, E> : ScriptableObject,
         IEntityFactoryCatalog<TKey, E> where E : IEntity
     {
 #if ODIN_INSPECTOR
@@ -170,7 +170,7 @@ namespace BeginnerGame
                 TKey key = this.GetKey(factory);
 
                 if (!_map.TryAdd(key, factory))
-                    Debug.LogWarning($"Duplicate key '{key}' in {nameof(ScriptableEntityFactoryCatalog<TKey, E>)} on " +
+                    Debug.LogWarning($"Duplicate key '{key}' in {nameof(ScriptableEntityCatalog<TKey, E>)} on " +
                                      $"{this.name}. Skipping duplicate.");
             }
         }

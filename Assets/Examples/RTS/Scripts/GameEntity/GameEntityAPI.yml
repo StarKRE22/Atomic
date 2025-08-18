@@ -1,18 +1,16 @@
-header: GameEntityAPI
+header: EntityAPI
 entityType: IGameEntity
 aggressiveInlining: true
 
-namespace: SampleGame
+namespace: RTSGame
 className: GameEntityAPI
-directory: Assets/Game/Scripts/Entity/
+directory: Assets/Examples/RTS/Scripts/GameEntity/
  
 imports:
 - UnityEngine
 - Atomic.Entities
 - System
 - Atomic.Elements
-- Modules.Gameplay
-- Atomic.Extensions
 
 tags:
 - Damageable
@@ -25,7 +23,7 @@ values:
 #Transform
 - Position: IReactiveVariable<Vector3>
 - Rotation: IReactiveVariable<Quaternion>
-- Radius: IValue<float>
+- Scale: IValue<float>
   
 #Movement  
 - MoveSpeed: IValue<float>

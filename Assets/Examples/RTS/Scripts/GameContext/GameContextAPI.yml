@@ -1,25 +1,21 @@
-#header: ContextAPI
-#contextType: GameContext
-#aggressiveInlining: true
-#
-#namespace: SampleGame
-#className: GameContextAPI
-#directory: Assets/Game/Scripts/GameContext/
-#
-#imports:
-#  - UnityEngine
-#  - Atomic.Contexts
-#  - Atomic.Entities
-#  - Atomic.Elements
-#  - System.Collections.Generic
-#
-##<CORE>
-#values:
-#  - EntityWorld: IEntityWorld
-#  - EntityPool: IGenericEntityPool
-#  - Players: IDictionary<TeamType, PlayerContext>
-#  
-#  
-#  
-##<VIEW>
-#  - TeamViewConfig: TeamViewConfig
+header: EntityAPI
+entityType: IGameContext
+aggressiveInlining: true
+
+namespace: RTSGame
+className: GameContextAPI
+directory: Assets/Examples/RTS/Scripts/GameContext/
+
+imports:
+  - UnityEngine
+  - Atomic.Entities
+  - Atomic.Elements
+  - System.Collections.Generic
+
+#Core
+values:
+  - EntityWorld: IGameEntityWorld
+  - EntityPool: IMultiEntityPool<string, IGameEntity>
+
+#View
+  - TeamViewConfig: TeamViewConfig
