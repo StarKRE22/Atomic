@@ -25,7 +25,6 @@ values:
 - Rotation: IReactiveVariable<Quaternion>
 - Scale: IValue<float>  
   
-  
 #Movement  
 - MoveSpeed: IValue<float>
 - MoveRequest: IRequest<Vector3>

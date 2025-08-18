@@ -30,6 +30,7 @@ namespace RTSGame
 		///Values
 		public static readonly int Position; // IReactiveVariable<Vector3>
 		public static readonly int Rotation; // IReactiveVariable<Quaternion>
+		public static readonly int Scale; // IValue<float>
 		public static readonly int MoveSpeed; // IValue<float>
 		public static readonly int MoveRequest; // IRequest<Vector3>
 		public static readonly int MoveEvent; // IEvent<Vector3>
@@ -57,6 +58,7 @@ namespace RTSGame
 			//Values
 			Position = NameToId(nameof(Position));
 			Rotation = NameToId(nameof(Rotation));
+			Scale = NameToId(nameof(Scale));
 			MoveSpeed = NameToId(nameof(MoveSpeed));
 			MoveRequest = NameToId(nameof(MoveRequest));
 			MoveEvent = NameToId(nameof(MoveEvent));
@@ -173,6 +175,28 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotation(this IGameEntity entity, IReactiveVariable<Quaternion> value) => entity.SetValue(Rotation, value);
+
+		#endregion
+
+		#region Scale
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IValue<float> GetScale(this IGameEntity entity) => entity.GetValue<IValue<float>>(Scale);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetScale(this IGameEntity entity, out IValue<float> value) => entity.TryGetValue(Scale, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddScale(this IGameEntity entity, IValue<float> value) => entity.AddValue(Scale, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasScale(this IGameEntity entity) => entity.HasValue(Scale);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelScale(this IGameEntity entity) => entity.DelValue(Scale);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetScale(this IGameEntity entity, IValue<float> value) => entity.SetValue(Scale, value);
 
 		#endregion
 

@@ -6,44 +6,38 @@ namespace RTSGame
 {
     public sealed class ProjectileFollowBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
-        private GameContext _gameContext;
-        private IValue<float> _radius;
+        private readonly IGameContext _gameContext;
+
+        private IGameEntity _entity;
+        private IValue<float> _scale;
         private IValue<IEntity> _target;
 
         private Vector3 _forward;
-        
+
+        public ProjectileFollowBehaviour(IGameContext gameContext)
+        {
+            _gameContext = gameContext;
+        }
+
         public void OnSpawn(IGameEntity entity)
         {
+            _entity = entity;
             _target = entity.GetTarget();
-            _radius = entity.`();
-            _gameContext = GameContext.Instance;
+            _scale = entity.GetScale();
+            _forward = entity.GetRotation().Value * Vector3.forward;
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-        }
-        
-        public void Init(in IEntity entity)
-        {
-       
-        }
-        
-        public void Enable(in IEntity entity)
-        {
-            _forward = entity.GetRotation().Value * Vector3.forward;
-        }
-
-        public void OnFixedUpdate(in IEntity entity, in float deltaTime)
-        {
             IEntity target = _target.Value;
-            if (target is not {Enabled: true})
+            if (target is not {IsActive: true})
             {
-                MoveUseCase.MoveStep(entity, _forward, deltaTime);
+                MoveUseCase.MoveStep(_entity, _forward, deltaTime);
                 return;
             }
 
             Vector3 vector = TransformUseCase.GetVector(entity, target);
-            float radius = _radius.Value;
+            float radius = _scale.Value;
             if (vector.sqrMagnitude > radius * radius)
             {
                 _forward = vector.normalized;
@@ -55,8 +49,5 @@ namespace RTSGame
                 EntitiesUseCase.UnspawnEntity(_gameContext, entity);
             }
         }
-
-
-        
     }
 }
