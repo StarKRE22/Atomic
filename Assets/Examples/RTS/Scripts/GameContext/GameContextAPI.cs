@@ -23,6 +23,7 @@ namespace RTSGame
 		///Values
 		public static readonly int EntityWorld; // IGameEntityWorld
 		public static readonly int EntityPool; // IMultiEntityPool<string, IGameEntity>
+		public static readonly int Players; // Dictionary<TeamType, IPlayerContext>
 		public static readonly int TeamViewConfig; // TeamViewConfig
 
 		static GameContextAPI()
@@ -30,6 +31,7 @@ namespace RTSGame
 			//Values
 			EntityWorld = NameToId(nameof(EntityWorld));
 			EntityPool = NameToId(nameof(EntityPool));
+			Players = NameToId(nameof(Players));
 			TeamViewConfig = NameToId(nameof(TeamViewConfig));
 		}
 
@@ -77,6 +79,28 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetEntityPool(this IGameContext entity, IMultiEntityPool<string, IGameEntity> value) => entity.SetValue(EntityPool, value);
+
+		#endregion
+
+		#region Players
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Dictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext entity) => entity.GetValue<Dictionary<TeamType, IPlayerContext>>(Players);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPlayers(this IGameContext entity, out Dictionary<TeamType, IPlayerContext> value) => entity.TryGetValue(Players, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddPlayers(this IGameContext entity, Dictionary<TeamType, IPlayerContext> value) => entity.AddValue(Players, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPlayers(this IGameContext entity) => entity.HasValue(Players);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPlayers(this IGameContext entity) => entity.DelValue(Players);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPlayers(this IGameContext entity, Dictionary<TeamType, IPlayerContext> value) => entity.SetValue(Players, value);
 
 		#endregion
 

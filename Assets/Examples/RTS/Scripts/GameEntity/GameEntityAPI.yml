@@ -23,7 +23,6 @@ values:
 #Transform
 - Position: IReactiveVariable<Vector3>
 - Rotation: IReactiveVariable<Quaternion>
-- Scale: IValue<float>
   
 #Movement  
 - MoveSpeed: IValue<float>
@@ -47,8 +46,7 @@ values:
   
 #Fire
 - FireDistance: IValue<float>
-- FireCondition: IFunction<IEntity, bool>
-- FireAction: IAction<IEntity>
+- FireRequest: IRequest<IEntity>
 - FireEvent: IEvent<IEntity>
 - FireCooldown: Cooldown
 - FirePoint: IValue<Vector3>

@@ -20,7 +20,7 @@ namespace BeginnerGame
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            MovementUseCase.MovementStep(
+            MoveUseCase.MovementStep(
                 _position.Value,
                 _moveDirection.Value,
                 _moveSpeed.Value,

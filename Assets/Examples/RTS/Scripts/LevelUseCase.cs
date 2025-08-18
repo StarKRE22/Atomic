@@ -4,6 +4,10 @@ namespace RTSGame
 {
     public static class LevelUseCase
     {
+        private const string HEADQUARTERS_NAME = "Headquarters";
+        private const string WARRIOR_NAME = "Warrior";
+        private const string TANK_NAME = "Tank";
+
         public static void LoadLevel(IGameContext context)
         {
             for (int i = 0; i < 100; i++)
@@ -15,28 +19,28 @@ namespace RTSGame
 
         private static void SpawnUnits(IGameContext context, TeamType player, Vector3 position, Quaternion rotation)
         {
-            //Spawn base:
-            GameEntitiesUseCase.Spawn(context, "Headquarters", position, rotation, player);
+            //Spawn headquarters:
+            GameEntitiesUseCase.Spawn(context, HEADQUARTERS_NAME, position, rotation, player);
 
             //Spawn warriors:
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, "Warrior", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             position.x += 2;
-            GameEntitiesUseCase.Spawn(context, "Warrior", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             position.x += 2;
-            GameEntitiesUseCase.Spawn(context, "Warrior", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             //Spawn tanks:
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, "Tank", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
 
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, "Tank", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
 
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, "Tank", position, rotation, player);
+            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
         }
     }
 }

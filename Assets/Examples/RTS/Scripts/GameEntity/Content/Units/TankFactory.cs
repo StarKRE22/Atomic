@@ -10,8 +10,8 @@ namespace RTSGame
     )]
     public sealed class TankFactory : GameEntityFactory
     {
-        [SerializeField]
-        private Const<float> _radius = 2;
+        private const float MIN_DETECT_DURATION = 0.2f;
+        private const float MAX_DETECT_DURATION = 0.3f;
 
         [SerializeField]
         private Const<float> _moveSpeed = 3;
@@ -29,7 +29,7 @@ namespace RTSGame
         private float _attackCooldown = 1;
 
         [SerializeField]
-        private ProjectileInstaller _projectileConfig;
+        private ProjectileFactory _projectileFactory;
 
         [SerializeField]
         private Const<Vector3> _fireOffset = new Vector3(0, 1, 1);
@@ -41,7 +41,6 @@ namespace RTSGame
             entity.AddUnitTag();
             this.InstallMove(entity);
             this.InstallCombat(entity, gameContext);
-            this.InstallRotation(entity);
             this.InstallLife(entity);
             this.InstallAI(entity);
         }
@@ -50,12 +49,13 @@ namespace RTSGame
         {
             entity.AddMoveableTag();
             entity.AddMoveSpeed(_moveSpeed);
+            entity.AddRotationSpeed(_rotationSpeed);
             entity.AddMoveRequest(new BaseRequest<Vector3>());
             entity.AddMoveEvent(new BaseEvent<Vector3>());
             entity.WhenFixedUpdate(deltaTime =>
             {
-                if (HealthUseCase.IsAlive(entity) && 
-                    entity.GetMoveRequest().Consume(out Vector3 direction) && 
+                if (HealthUseCase.IsAlive(entity) &&
+                    entity.GetMoveRequest().Consume(out Vector3 direction) &&
                     direction != Vector3.zero)
                 {
                     MoveUseCase.MoveStep(entity, direction, deltaTime);
@@ -63,46 +63,42 @@ namespace RTSGame
                     entity.GetMoveEvent().Invoke(direction);
                 }
             });
-
         }
-
-        private void InstallAI(IEntity entity)
+        
+        private void InstallCombat(IGameEntity entity, IGameContext gameContext)
         {
-            entity.AddTarget(new ReactiveVariable<IEntity>());
-            entity.AddBehaviour(new DetectTargetBehaviour(new RandomCooldown(0.2f, 0.3f)));
-            entity.AddBehaviour<AttackBehaviour>();
+            entity.AddFireCooldown(new Cooldown(_attackCooldown));
+            entity.AddFirePoint(new InlineFunction<Vector3>(() => FireUseCase.GetFirePoint(entity, _fireOffset.Value)));
+            entity.AddFireRequest(new BaseRequest<IEntity>());
+            entity.WhenFixedUpdate(_ =>
+            {
+                if (HealthUseCase.IsAlive(entity) &&
+                    entity.GetFireCooldown().IsCompleted() &&
+                    entity.GetFireRequest().Consume(out IEntity target))
+                {
+                    FireUseCase.FireProjectile(entity, _projectileFactory.name, target, gameContext);
+                    entity.GetFireCooldown().ResetTime();
+                    entity.GetFireEvent().Invoke(target);
+                }
+            });
+
+            entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
+            entity.AddFireDistance(_attackDistance);
+            entity.AddFireEvent(new BaseEvent<IEntity>());
         }
 
-        private void InstallRotation(IEntity entity)
-        {
-            entity.AddRotationSpeed(_rotationSpeed);
-        }
-
-        private void InstallLife(IEntity entity)
+        private void InstallLife(IGameEntity entity)
         {
             entity.AddDamageableTag();
             entity.AddHealth(new Health(_health, _health));
             entity.AddBehaviour<DeathBehaviour>();
         }
 
-        private void InstallCombat(IEntity entity, GameContext gameContext)
+        private void InstallAI(IGameEntity entity)
         {
-            entity.AddFireCooldown(new Cooldown(_attackCooldown));
-            entity.AddFirePoint(new BaseFunction<Vector3>(() =>
-                FireUseCase.GetFirePoint(entity, _fireOffset.Value))
-            );
-            entity.AddFireAction(new BaseAction<IEntity>(target =>
-            {
-                FireUseCase.FireProjectile(entity, _projectileConfig.name, target, gameContext);
-                entity.GetFireCooldown().Reset();
-            }));
-            entity.AddFireCondition(new BaseFunction<IEntity, bool>(_ =>
-                HealthUseCase.IsAlive(entity) && entity.GetFireCooldown().IsExpired())
-            );
-
-            entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
-            entity.AddFireDistance(_attackDistance);
-            entity.AddFireEvent(new BaseEvent<IEntity>());
+            entity.AddTarget(new ReactiveVariable<IEntity>());
+            entity.AddBehaviour(new DetectTargetBehaviour(new RandomCooldown(MIN_DETECT_DURATION, MAX_DETECT_DURATION)));
+            entity.AddBehaviour<AttackBehaviour>();
         }
     }
 }

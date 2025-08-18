@@ -35,6 +35,13 @@ namespace RTSGame
             return true;
         }
 
+        public static IGameEntity FindClosestEnemyFor(IGameContext context, IGameEntity entity)
+        {
+            IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, entity);
+            IEnumerable<IGameEntity> enemyFilter = playerContext.GetEnemyFilter();
+            return FindClosest(enemyFilter, entity.GetPosition().Value);
+        }
+
         public static IGameEntity FindClosest(IEnumerable<IGameEntity> entities, Vector3 center)
         {
             IGameEntity result = null;

@@ -3,7 +3,7 @@ namespace BeginnerGame
     using NUnit.Framework;
     using Unity.Mathematics;
 
-    public sealed class MovementUseCaseTests
+    public sealed class MoveUseCaseTests
     {
         [Test]
         public void MovementStep_ZeroDirection_PositionUnchanged()
@@ -13,7 +13,7 @@ namespace BeginnerGame
             float speed = 5f;
             float deltaTime = 1f;
 
-            MovementUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
+            MoveUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
 
             Assert.AreEqual(start, result);
         }
@@ -26,7 +26,7 @@ namespace BeginnerGame
             float speed = 10f;
             float deltaTime = 0.5f;
 
-            MovementUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
+            MoveUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
 
             float3 expected = new float3(5f, 0f, 0f); // 10 * 0.5 * (1,0,0)
             Assert.That(result.x, Is.EqualTo(expected.x).Within(1e-6f));
@@ -42,7 +42,7 @@ namespace BeginnerGame
             float speed = 1f;
             float deltaTime = 1f;
 
-            MovementUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
+            MoveUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
 
             float3 expected = dir * speed * deltaTime;
             Assert.That(result.x, Is.EqualTo(expected.x).Within(1e-6f));
@@ -58,7 +58,7 @@ namespace BeginnerGame
             float speed = 3f;
             float deltaTime = 2f;
 
-            MovementUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
+            MoveUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
 
             float3 expected = new float3(-6f, 0f, 0f);
             Assert.That(result, Is.EqualTo(expected));
@@ -72,7 +72,7 @@ namespace BeginnerGame
             float speed = 5f;
             float deltaTime = 0.1f;
 
-            MovementUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
+            MoveUseCase.MovementStep(start, dir, speed, deltaTime, out float3 result);
 
             float3 expected = start + speed * deltaTime * dir;
             Assert.That(result.x, Is.EqualTo(expected.x).Within(1e-6f));

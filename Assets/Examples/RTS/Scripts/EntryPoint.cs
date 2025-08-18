@@ -18,19 +18,13 @@ namespace RTSGame
         private void Awake()
         {
             GameContext = _gameFactory.Create();
-            GameContext.AddEntityWorld(new GameEntityWorld());
-        }
-
-        private void Start()
-        {
             LevelUseCase.LoadLevel(GameContext);
-            
             GameContext.Spawn();
             GameContext.Activate();
-            
-            _entityWorldView.Show(GameContext.GetEntityWorld());
         }
-        
+
+        private void Start() => _entityWorldView.Show(GameContext.GetEntityWorld());
+
         private void Update() => GameContext.OnUpdate(Time.deltaTime);
 
         private void FixedUpdate() => GameContext.OnFixedUpdate(Time.fixedDeltaTime);

@@ -4,7 +4,7 @@ using Unity.Mathematics;
 namespace BeginnerGame
 {
     [BurstCompile]
-    public static class RotationUseCase
+    public static class RotateUseCase
     {
         private const float EPS = 1e-4f;
 

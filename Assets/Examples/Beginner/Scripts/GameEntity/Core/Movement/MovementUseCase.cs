@@ -4,7 +4,7 @@ using Unity.Mathematics;
 namespace BeginnerGame
 {
     [BurstCompile]
-    public static class MovementUseCase
+    public static class MoveUseCase
     {
         [BurstCompile]
         public static void MovementStep(

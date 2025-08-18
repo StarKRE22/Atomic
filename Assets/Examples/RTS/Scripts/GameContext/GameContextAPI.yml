@@ -16,6 +16,7 @@ imports:
 values:
   - EntityWorld: IGameEntityWorld
   - EntityPool: IMultiEntityPool<string, IGameEntity>
+  - Players: Dictionary<TeamType, IPlayerContext>
 
 #View
   - TeamViewConfig: TeamViewConfig

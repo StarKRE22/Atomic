@@ -3,7 +3,7 @@ using Unity.Mathematics;
 
 namespace BeginnerGame
 {
-    public sealed class RotationUseCaseTests
+    public sealed class RotateUseCaseTests
     {
         [Test]
         public void RotationStep_ZeroDirection_RotationUnchanged()
@@ -13,7 +13,7 @@ namespace BeginnerGame
             float speed = 90f;
             float deltaTime = 1f;
 
-            RotationUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
+            RotateUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
 
             Assert.That(result, Is.EqualTo(start));
         }
@@ -26,7 +26,7 @@ namespace BeginnerGame
             float speed = 90f;
             float deltaTime = 1f;
 
-            RotationUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
+            RotateUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
 
             Assert.That(result, Is.EqualTo(start));
         }
@@ -39,10 +39,10 @@ namespace BeginnerGame
             float speed = 45f; // 45° per second
             float deltaTime = 1f;
 
-            RotationUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
+            RotateUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
 
             // Expect rotation to move exactly 45° toward the target
-            RotationUseCase.Angle(start, result, out float angleMoved);
+            RotateUseCase.Angle(start, result, out float angleMoved);
             Assert.That(angleMoved, Is.EqualTo(45f).Within(1e-3f));
         }
 
@@ -54,11 +54,11 @@ namespace BeginnerGame
             float speed = 180f; // 180° per second
             float deltaTime = 1f;
 
-            RotationUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
+            RotateUseCase.RotationStep(start, dir, speed, deltaTime, out quaternion result);
 
             // Should be fully aligned with the target
             quaternion expected = quaternion.LookRotation(math.normalize(dir), math.up());
-            RotationUseCase.Angle(result, expected, out float angleToTarget);
+            RotateUseCase.Angle(result, expected, out float angleToTarget);
             Assert.That(angleToTarget, Is.LessThan(0.5f));
         }
     }

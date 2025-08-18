@@ -1,25 +1,65 @@
 using Atomic.Elements;
-using Atomic.Entities;
+using Unity.Burst;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace RTSGame
 {
+    [BurstCompile]
     public static class RotateUseCase
     {
-        public static void RotateStep(in IGameEntity entity, in Vector3 direction, in float deltaTime)
-        {
-            if (direction == Vector3.zero)
-                return;
+        private const float EPS = 1e-4f;
 
-            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            RotateStep(entity, targetRotation, deltaTime);
+        public static void RotateStep(IGameEntity entity, Vector3 direction, float deltaTime)
+        {
+            IReactiveVariable<Quaternion> rotation = entity.GetRotation();
+            RotateStep(
+                rotation.Value,
+                direction,
+                entity.GetRotationSpeed().Value,
+                deltaTime,
+                out quaternion next
+            );
+            
+            rotation.Value = next;
+        }
+        
+        [BurstCompile]
+        public static void RotateStep(
+            in quaternion current,
+            in float3 direction,
+            in float speedDeg,
+            in float deltaTime,
+            out quaternion result
+        )
+        {
+            if (math.lengthsq(direction) < EPS)
+            {
+                result = current;
+                return;
+            }
+
+            quaternion target = quaternion.LookRotation(math.normalize(direction), math.up());
+            Angle(in current, in target, out float angle);
+
+            float maxStep = speedDeg * deltaTime;
+            if (angle <= maxStep)
+            {
+                result = target;
+            }
+            else
+            {
+                float t = maxStep / angle;
+                result = math.slerp(current, target, t);
+            }
         }
 
-        public static void RotateStep(in IGameEntity entity, in Quaternion target, in float deltaTime)
+        [BurstCompile]
+        public static void Angle(in quaternion current, in quaternion target, out float angle)
         {
-            float speed = entity.GetRotationSpeed().Value * deltaTime;
-            IReactiveVariable<Quaternion> rotation = entity.GetRotation();
-            rotation.Value = Quaternion.Lerp(rotation.Value, target, speed);
+            float dot = math.clamp(math.dot(current.value, target.value), -1f, 1f);
+            dot = math.abs(dot);
+            angle = math.degrees(math.acos(dot)) * 2f;
         }
     }
 }

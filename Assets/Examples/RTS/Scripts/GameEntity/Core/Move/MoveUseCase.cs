@@ -1,27 +1,33 @@
 using Atomic.Elements;
-using Atomic.Entities;
+using Unity.Burst;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace RTSGame
 {
+    [BurstCompile]
     public static class MoveUseCase
     {
-        public static bool MoveAbstract(in IEntity entity, in Vector3 direction, in float deltaTime)
+        public static void MoveStep(IGameEntity entity, Vector3 direction, float deltaTime)
         {
-            if (!entity.GetMoveCondition().Invoke(direction, deltaTime))
-                return false;
-
-            entity.GetMoveAction().Invoke(direction, deltaTime);
-            entity.GetMoveEvent().Invoke(direction, deltaTime);
-            return true;
+            IReactiveVariable<Vector3> position = entity.GetPosition();
+            MoveStep(
+                position.Value,
+                direction,
+                entity.GetMoveSpeed().Value,
+                deltaTime,
+                out float3 next
+            );
+            position.Value = next;
         }
-
-
-        public static void MoveStep(in IEntity entity, in Vector3 direction, in float deltaTime)
-        {
-            IVariable<Vector3> position = entity.GetPosition();
-            IValue<float> speed = entity.GetMoveSpeed();
-            position.Value += direction * (speed.Invoke() * deltaTime);
-        }
+        
+        [BurstCompile]
+        public static void MoveStep(
+            in float3 position,
+            in float3 direction,
+            in float speed,
+            in float deltaTime,
+            out float3 result
+        ) => result = position + speed * deltaTime * direction;
     }
 }

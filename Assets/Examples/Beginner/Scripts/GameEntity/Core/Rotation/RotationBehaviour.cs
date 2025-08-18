@@ -20,7 +20,7 @@ namespace BeginnerGame
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            RotationUseCase.RotationStep(
+            RotateUseCase.RotationStep(
                 _rotation.Value,
                 _rotationDirection.Value,
                 _rotationSpeed.Value,

@@ -1,0 +1,19 @@
+header: EntityAPI
+entityType: IPlayerContext
+aggressiveInlining: true
+
+namespace: RTSGame
+className: PlayerContextAPI
+directory: Assets/Examples/RTS/Scripts/PlayerContext/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- System
+- Atomic.Elements
+
+tags:
+
+values:
+  - EnemyFilter: EntityFilter<IGameEntity>
+  - Team: IValue<TeamType>

@@ -30,7 +30,6 @@ namespace RTSGame
 		///Values
 		public static readonly int Position; // IReactiveVariable<Vector3>
 		public static readonly int Rotation; // IReactiveVariable<Quaternion>
-		public static readonly int Scale; // IValue<float>
 		public static readonly int MoveSpeed; // IValue<float>
 		public static readonly int MoveRequest; // IRequest<Vector3>
 		public static readonly int MoveEvent; // IEvent<Vector3>
@@ -42,8 +41,7 @@ namespace RTSGame
 		public static readonly int Damage; // IValue<int>
 		public static readonly int Target; // IReactiveVariable<IEntity>
 		public static readonly int FireDistance; // IValue<float>
-		public static readonly int FireCondition; // IFunction<IEntity, bool>
-		public static readonly int FireAction; // IAction<IEntity>
+		public static readonly int FireRequest; // IRequest<IEntity>
 		public static readonly int FireEvent; // IEvent<IEntity>
 		public static readonly int FireCooldown; // Cooldown
 		public static readonly int FirePoint; // IValue<Vector3>
@@ -59,7 +57,6 @@ namespace RTSGame
 			//Values
 			Position = NameToId(nameof(Position));
 			Rotation = NameToId(nameof(Rotation));
-			Scale = NameToId(nameof(Scale));
 			MoveSpeed = NameToId(nameof(MoveSpeed));
 			MoveRequest = NameToId(nameof(MoveRequest));
 			MoveEvent = NameToId(nameof(MoveEvent));
@@ -71,8 +68,7 @@ namespace RTSGame
 			Damage = NameToId(nameof(Damage));
 			Target = NameToId(nameof(Target));
 			FireDistance = NameToId(nameof(FireDistance));
-			FireCondition = NameToId(nameof(FireCondition));
-			FireAction = NameToId(nameof(FireAction));
+			FireRequest = NameToId(nameof(FireRequest));
 			FireEvent = NameToId(nameof(FireEvent));
 			FireCooldown = NameToId(nameof(FireCooldown));
 			FirePoint = NameToId(nameof(FirePoint));
@@ -177,28 +173,6 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRotation(this IGameEntity entity, IReactiveVariable<Quaternion> value) => entity.SetValue(Rotation, value);
-
-		#endregion
-
-		#region Scale
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<float> GetScale(this IGameEntity entity) => entity.GetValue<IValue<float>>(Scale);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetScale(this IGameEntity entity, out IValue<float> value) => entity.TryGetValue(Scale, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddScale(this IGameEntity entity, IValue<float> value) => entity.AddValue(Scale, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasScale(this IGameEntity entity) => entity.HasValue(Scale);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelScale(this IGameEntity entity) => entity.DelValue(Scale);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetScale(this IGameEntity entity, IValue<float> value) => entity.SetValue(Scale, value);
 
 		#endregion
 
@@ -444,47 +418,25 @@ namespace RTSGame
 
 		#endregion
 
-		#region FireCondition
+		#region FireRequest
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IFunction<IEntity, bool> GetFireCondition(this IGameEntity entity) => entity.GetValue<IFunction<IEntity, bool>>(FireCondition);
+		public static IRequest<IEntity> GetFireRequest(this IGameEntity entity) => entity.GetValue<IRequest<IEntity>>(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetFireCondition(this IGameEntity entity, out IFunction<IEntity, bool> value) => entity.TryGetValue(FireCondition, out value);
+		public static bool TryGetFireRequest(this IGameEntity entity, out IRequest<IEntity> value) => entity.TryGetValue(FireRequest, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddFireCondition(this IGameEntity entity, IFunction<IEntity, bool> value) => entity.AddValue(FireCondition, value);
+		public static void AddFireRequest(this IGameEntity entity, IRequest<IEntity> value) => entity.AddValue(FireRequest, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasFireCondition(this IGameEntity entity) => entity.HasValue(FireCondition);
+		public static bool HasFireRequest(this IGameEntity entity) => entity.HasValue(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelFireCondition(this IGameEntity entity) => entity.DelValue(FireCondition);
+		public static bool DelFireRequest(this IGameEntity entity) => entity.DelValue(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetFireCondition(this IGameEntity entity, IFunction<IEntity, bool> value) => entity.SetValue(FireCondition, value);
-
-		#endregion
-
-		#region FireAction
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IAction<IEntity> GetFireAction(this IGameEntity entity) => entity.GetValue<IAction<IEntity>>(FireAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetFireAction(this IGameEntity entity, out IAction<IEntity> value) => entity.TryGetValue(FireAction, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddFireAction(this IGameEntity entity, IAction<IEntity> value) => entity.AddValue(FireAction, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasFireAction(this IGameEntity entity) => entity.HasValue(FireAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelFireAction(this IGameEntity entity) => entity.DelValue(FireAction);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetFireAction(this IGameEntity entity, IAction<IEntity> value) => entity.SetValue(FireAction, value);
+		public static void SetFireRequest(this IGameEntity entity, IRequest<IEntity> value) => entity.SetValue(FireRequest, value);
 
 		#endregion
 
