@@ -57,6 +57,7 @@ MonoBehaviour:
   _onlyEditModeGizmos: 0
   _initialTagCapacity: 0
   _initialValueCapacity: 2
+  _isGlobal: 1
   _dontDestroyOnLoad: 1
 --- !u!114 &3011129282913887316
 MonoBehaviour:
@@ -78,5 +79,5 @@ MonoBehaviour:
     _currentLevel: 1
   _loadGameInstaller:
     _levelNameFormat: ShooterGame (Level{0})
-    _gameContextPrefab: {fileID: 4416341591751757094, guid: a242cc7a6ad034a13b45e36d0de66287, type: 3}
-    _gameUIContextPrefab: {fileID: 4720274340981811091, guid: 9772a4540a3374d25b2bd23f26ced795, type: 3}
+    _gameContextPrefab: {fileID: 2721497269382895227, guid: a242cc7a6ad034a13b45e36d0de66287, type: 3}
+    _gameUIContextPrefab: {fileID: 1031260549355080343, guid: 9772a4540a3374d25b2bd23f26ced795, type: 3}

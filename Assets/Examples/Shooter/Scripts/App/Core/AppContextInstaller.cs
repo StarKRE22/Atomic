@@ -3,10 +3,6 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    [CreateAssetMenu(
-        fileName = "AppContextInstaller",
-        menuName = "ShooterGame/New AppContextInstaller"
-    )]
     public sealed class AppContextInstaller : SceneEntityInstaller<IAppContext>
     {
         [SerializeField]
@@ -23,12 +19,6 @@ namespace ShooterGame.App
             _exitAppInstaller.Install(context);
             _levelsInstaller.Install(context);
             _loadGameInstaller.Install(context);
-            
-            context.WhenActivate(() =>
-            {
-                Debug.Log("ACTIVATE APP");
-                LoadMenuUseCase.LoadMenu();
-            });
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Atomic.Entities;
+using ShooterGame.Gameplay;
 using UnityEngine;
 
 namespace ShooterGame.App
@@ -13,16 +14,17 @@ namespace ShooterGame.App
 
         [Header("GameSystem")]
         [SerializeField]
-        private GameObject _gameContextPrefab;
+        private GameContext _gameContextPrefab;
 
         [SerializeField]
-        private GameObject _gameUIContextPrefab;
+        private GameUIContext _gameUIContextPrefab;
 
        public void Install(IAppContext context)
         {
             context.AddGameLoadingAction(new LoadingTaskSequence(
                 new LoadLevelSceneTask(_levelNameFormat),
-                new SpawnGameObjectsTask(null, _gameContextPrefab, _gameUIContextPrefab)
+                new LoadGameContextTask(_gameContextPrefab),
+                new LoadGameUIContextTask(_gameUIContextPrefab)
             ));
         }
     }

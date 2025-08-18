@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    public static class SaveLevelUseCase
+    public static partial class LevelUseCase
     {
         private const string PrefsKey = "CurrentLevel";
 

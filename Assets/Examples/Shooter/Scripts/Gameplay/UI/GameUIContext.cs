@@ -1,6 +1,6 @@
 using Atomic.Entities;
 
-namespace ShooterGame
+namespace ShooterGame.Gameplay
 {
     public sealed class GameUIContext : SceneEntitySingleton<GameUIContext>, IGameUIContext
     {

@@ -8,7 +8,7 @@ namespace ShooterGame.App
     {
         private const string MENU_NAME = "ShooterGame (Menu)";
         
-        public static async UniTask LoadMenu()
+        public static async UniTaskVoid LoadMenu()
         {
             await SceneManager.LoadSceneAsync(MENU_NAME);
             ScreenUseCase.ShowScreen<StartScreenView>(MenuUIContext.Instance);

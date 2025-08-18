@@ -29,6 +29,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int Leaderboard; // IReactiveDictionary<TeamType, int>
 		public static readonly int KillEvent; // IEvent<KillArgs>
 		public static readonly int RespawnDelay; // IValue<float>
+		public static readonly int GameOverEvent; // IEvent
 		public static readonly int AllSpawnPoints; // Transform[]
 		public static readonly int FreeSpawnPoints; // List<Transform>
 
@@ -43,6 +44,7 @@ namespace ShooterGame.Gameplay
 			Leaderboard = NameToId(nameof(Leaderboard));
 			KillEvent = NameToId(nameof(KillEvent));
 			RespawnDelay = NameToId(nameof(RespawnDelay));
+			GameOverEvent = NameToId(nameof(GameOverEvent));
 			AllSpawnPoints = NameToId(nameof(AllSpawnPoints));
 			FreeSpawnPoints = NameToId(nameof(FreeSpawnPoints));
 		}
@@ -223,6 +225,28 @@ namespace ShooterGame.Gameplay
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetRespawnDelay(this IGameContext entity, IValue<float> value) => entity.SetValue(RespawnDelay, value);
+
+		#endregion
+
+		#region GameOverEvent
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent GetGameOverEvent(this IGameContext entity) => entity.GetValue<IEvent>(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameOverEvent(this IGameContext entity, out IEvent value) => entity.TryGetValue(GameOverEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddGameOverEvent(this IGameContext entity, IEvent value) => entity.AddValue(GameOverEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameOverEvent(this IGameContext entity) => entity.HasValue(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameOverEvent(this IGameContext entity) => entity.DelValue(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameOverEvent(this IGameContext entity, IEvent value) => entity.SetValue(GameOverEvent, value);
 
 		#endregion
 

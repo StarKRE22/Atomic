@@ -6,11 +6,13 @@ namespace ShooterGame.Gameplay
 {
     public sealed class GameCycleController : IEntitySpawn<IGameContext>, IEntityUpdate
     {
-        private IReactiveVariable<float> _gameTime;
+        private IVariable<float> _gameTime;
+        private IEvent _gameOverEvent;
 
         public void OnSpawn(IGameContext context)
         {
             _gameTime = context.GetGameTime();
+            _gameOverEvent = context.GetGameOverEvent();
             Debug.Log("<color=yellow>Game Started!</color>");
         }
 
@@ -21,8 +23,11 @@ namespace ShooterGame.Gameplay
 
             _gameTime.Value -= deltaTime;
 
-            if (_gameTime.Value <= 0) 
+            if (_gameTime.Value <= 0)
+            {
+                _gameOverEvent.Invoke();
                 Debug.Log("<color=yellow>Game Finished</color>");
+            }
         }
     }
 }

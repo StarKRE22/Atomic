@@ -35,6 +35,7 @@ namespace ShooterGame.Gameplay
             context.AddKillEvent(new BaseEvent<KillArgs>());
             context.AddRespawnDelay(_respawnTime);
             context.AddBulletPool(_bulletPool);
+            context.AddGameOverEvent(new BaseEvent());
 
             _spawnPointsInstaller.Install(context);
             _gameCycleInstaller.Install(context);

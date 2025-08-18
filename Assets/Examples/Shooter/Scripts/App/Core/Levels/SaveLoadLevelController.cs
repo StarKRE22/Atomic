@@ -11,18 +11,18 @@ namespace ShooterGame.App
         {
             _currentLevel = context.GetCurrentLevel();
 
-            if (SaveLevelUseCase.LoadLevel(out int level))
+            if (LevelUseCase.LoadLevel(out int level))
                 _currentLevel.Value = level;
         }
 
         public void OnActivate(IEntity entity)
         {
-            _currentLevel.Subscribe(SaveLevelUseCase.SaveLevel);
+            _currentLevel.Subscribe(LevelUseCase.SaveLevel);
         }
 
         public void OnDeactivate(IEntity entity)
         {
-            _currentLevel.Unsubscribe(SaveLevelUseCase.SaveLevel);
+            _currentLevel.Unsubscribe(LevelUseCase.SaveLevel);
         }
     }
 }

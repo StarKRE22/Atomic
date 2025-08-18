@@ -20,7 +20,8 @@ values:
   - Leaderboard: IReactiveDictionary<TeamType, int>
   - KillEvent: IEvent<KillArgs>
   - RespawnDelay: IValue<float>
-
+  - GameOverEvent: IEvent
+    
   #Spawn points
   - AllSpawnPoints: Transform[]
   - FreeSpawnPoints: List<Transform>
