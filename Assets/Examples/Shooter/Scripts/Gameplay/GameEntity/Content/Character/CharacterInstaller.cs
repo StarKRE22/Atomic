@@ -45,7 +45,8 @@ namespace ShooterGame.Gameplay
             entity.AddHealth(_health);
             entity.AddTakeDamageEvent(new BaseEvent<DamageArgs>());
             entity.AddTakeDeathEvent(new BaseEvent<DamageArgs>());
-
+            entity.AddRespawnEvent(new BaseEvent());
+            
             //Combat:
             entity.AddFireCondition(new AndExpression(_health.Exists));
             entity.AddFireAction(new CharacterFireAction(entity));

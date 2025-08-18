@@ -1,10 +1,8 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using ShooterGame.Gameplay;
 using TMPro;
-using UnityEngine;
 
-namespace ShooterGame.UI
+namespace ShooterGame.Gameplay
 {
     public sealed class CountdownPresenter : IEntitySpawn, IEntityDespawn
     {

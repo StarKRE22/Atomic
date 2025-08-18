@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,16 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
         [DisableInPlayMode]
+        [GUIColor(0f, 0.83f, 1f)]
+#endif
+        [Tooltip("Is it possible to contact via SceneEntitySingleton<T>.Instance?")]
+        [SerializeField]
+        private bool _isGlobal = true;
+
+#if ODIN_INSPECTOR
+        [PropertyOrder(-10)]
+        [DisableInPlayMode]
+        [PropertySpace(SpaceBefore = 0, SpaceAfter = 8)]
 #endif
         [Tooltip("Do not destroy the target Object when loading a new Scene?")]
         [SerializeField]
@@ -40,9 +51,9 @@ namespace Atomic.Entities
                     return _instance;
 
 #if UNITY_2023_1_OR_NEWER
-                _instance = FindFirstObjectByType<E>();
+                _instance = FindObjectsByType<E>(FindObjectsSortMode.None).FirstOrDefault(it => it._isGlobal);
 #else
-                _instance = FindObjectOfType<T>();
+                _instance = FindObjectsOfType<E>().FirstOrDefault(it => it._isGlobal);
 #endif
 
                 return !_instance
@@ -58,7 +69,7 @@ namespace Atomic.Entities
         /// </summary>
         protected override void Awake()
         {
-            if (_instance == null)
+            if (_instance == null && _isGlobal)
                 _instance = (E) this;
 
             base.Awake();

@@ -15,6 +15,7 @@ namespace ShooterGame.Gameplay
         {
             _position = entity.GetPosition();
             _rotation = entity.GetRotation();
+            _moveSpeed = entity.GetMovementSpeed();
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)

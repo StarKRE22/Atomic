@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6063465757194759053}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: <FirePoint>
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3688758479371248472}
   - component: {fileID: 3298511296141762020}
   - component: {fileID: 1649052986558347341}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ProjectileWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547027259680209559}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07, y: 0.835, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     value: 100
   _cooldown:
     _duration: 0.5
-    _current: 0.5
+    _time: 0.5
 --- !u!114 &1649052986558347341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7134396152951030517}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: <Vfx>
   m_TagString: Untagged
   m_Icon: {fileID: 0}

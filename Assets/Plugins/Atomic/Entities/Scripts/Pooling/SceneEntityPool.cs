@@ -97,6 +97,11 @@ namespace Atomic.Entities
                 this.Init(_initialCount);
         }
 
+        private void Reset()
+        {
+            _container = this.transform;
+        }
+
         /// <summary>
         /// Initializes the pool by pre-instantiating the specified number of entities.
         /// </summary>

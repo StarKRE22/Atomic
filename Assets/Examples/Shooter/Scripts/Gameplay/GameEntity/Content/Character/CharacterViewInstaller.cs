@@ -29,6 +29,9 @@ namespace ShooterGame.Gameplay
         private AudioClip _deathClip;
 
         [SerializeField]
+        private Transform _canvas;
+
+        [SerializeField]
         private HitPointsView _hitPointsView;
 
         protected override void Install(IGameEntity entity)
@@ -42,7 +45,11 @@ namespace ShooterGame.Gameplay
             entity.AddBehaviour(new DeathAnimBehaviour(_viewGO));
             entity.AddBehaviour<FireAnimBehaviour>();
             entity.AddBehaviour(new TakeDamageBloodBehaviour(_bloodVfx));
+            entity.AddBehaviour(new CameraBillboardBehaviour(_canvas));
 
+            entity.AddHitPointsView(_hitPointsView);
+            entity.AddBehaviour<HitPointsPresenter>();
+            
             entity.GetTakeDamageEvent().Subscribe(_ => _audioSource.PlayOneShot(_damageClip));
             entity.GetTakeDeathEvent().Subscribe(_ => _audioSource.PlayOneShot(_deathClip));
             entity.GetRespawnEvent().Subscribe(() => _viewGO.SetActive(true));

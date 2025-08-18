@@ -3,11 +3,7 @@ entityType: IGameUIContext
 aggressiveInlining: true
 
 namespace: ShooterGame.Gameplay
-className: WeaponEntityAPI
+className: GameUIContextAPI
 directory: Assets/Examples/Shooter/Scripts/Gameplay/UI/  
 
 imports:
-- UnityEngine
-- Atomic.Entities
-- System
-- Atomic.Elements

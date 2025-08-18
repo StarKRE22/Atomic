@@ -39,7 +39,13 @@ namespace ShooterGame.Gameplay
             character.GetRotation().Value = nextPoint.rotation;
             
             character.GetRespawnEvent().Invoke();
-            Debug.Log($"<color=green>Player {character.GetTeamType().Value} has respawned!</color>");
+            DebugRespawn(character);
+        }
+
+        private static void DebugRespawn(IGameEntity character)
+        {
+            TeamType teamType = character.GetTeamType().Value;
+            Debug.Log($"<color={teamType.ToString().ToLower()}>Player {teamType} has respawned!</color>");
         }
     }
 }

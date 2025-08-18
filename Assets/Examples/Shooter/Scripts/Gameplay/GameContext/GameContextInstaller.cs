@@ -7,6 +7,8 @@ namespace ShooterGame.Gameplay
 {
     public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
     {
+        private const string WORLD_TRANSFORM_NAME = "[World]";
+
         [SerializeField]
         private SpawnPointsInstaller _spawnPointsInstaller;
 
@@ -15,23 +17,20 @@ namespace ShooterGame.Gameplay
 
         [SerializeField]
         private LeaderboardInstaller _leaderboardInstaller;
-        
-        [SerializeField]
-        private Transform _worldTransform;
 
         [SerializeField]
         private TeamCatalog _teamCatalog;
-        
+
         [SerializeField]
         private Const<float> _respawnTime = 3.0f;
 
         [SerializeField]
         private GameEntityPool _bulletPool;
-        
+
         protected override void Install(IGameContext context)
         {
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
-            context.AddWorldTransform(_worldTransform);
+            context.AddWorldTransform(GameObject.Find(WORLD_TRANSFORM_NAME).transform);
             context.AddTeamCatalog(_teamCatalog);
             context.AddKillEvent(new BaseEvent<KillArgs>());
             context.AddRespawnDelay(_respawnTime);

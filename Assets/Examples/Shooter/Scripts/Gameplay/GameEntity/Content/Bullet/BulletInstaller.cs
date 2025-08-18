@@ -7,6 +7,9 @@ namespace ShooterGame.Gameplay
     public sealed class BulletInstaller : SceneEntityInstaller<IGameEntity>
     {
         [SerializeField]
+        private GameObject _gameObject;
+        
+        [SerializeField]
         private Transform _transform;
 
         [SerializeField]
@@ -43,6 +46,10 @@ namespace ShooterGame.Gameplay
 
             //Physics
             entity.AddTrigger(_trigger);
+            entity.AddPhysicsLayer(new ProxyVariable<int>(
+                getter: () => _gameObject.layer,
+                setter: value => _gameObject.layer = value
+            ));
             entity.AddBehaviour(new BulletCollisionBehaviour(gameContext));
 
             //Damage dealing:

@@ -1,9 +1,8 @@
 using Atomic.Elements;
 using Atomic.Entities;
-using ShooterGame.Gameplay;
 using TMPro;
 
-namespace ShooterGame.UI
+namespace ShooterGame.Gameplay
 {
     public sealed class KillsPresenter : IEntitySpawn, IEntityDespawn
     {
@@ -11,6 +10,12 @@ namespace ShooterGame.UI
         private readonly TeamType _teamType;
 
         private IReactiveDictionary<TeamType, int> _leaderboard;
+
+        public KillsPresenter(TMP_Text text, TeamType teamType)
+        {
+            _text = text;
+            _teamType = teamType;
+        }
 
         private void OnLeaderboardChanged(TeamType teamType, int value)
         {
