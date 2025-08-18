@@ -1,0 +1,57 @@
+header: GameEntityAPI
+entityType: IGameEntity
+aggressiveInlining: true
+
+namespace: SampleGame
+className: GameEntityAPI
+directory: Assets/Game/Scripts/Entity/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- System
+- Atomic.Elements
+- Modules.Gameplay
+- Atomic.Extensions
+
+tags:
+- Damageable
+- Moveable
+- Projectile
+- Unit
+
+values:
+
+#Transform
+- Position: IReactiveVariable<Vector3>
+- Rotation: IReactiveVariable<Quaternion>
+- Radius: IValue<float>
+  
+#Movement  
+- MoveSpeed: IValue<float>
+- MoveCondition: IFunction<Vector3, float, bool>
+- MoveAction: IAction<Vector3, float>
+- MoveEvent: IEvent<Vector3, float>
+
+#Rotation
+- RotationSpeed: IValue<float>
+  
+#Life
+- Health: Health
+- Lifetime: Cooldown
+- DestroyAction: IAction
+  
+#Team
+- Team: IReactiveVariable<TeamType>   
+
+#Combat
+- Damage: IValue<int>
+- Target: IReactiveVariable<IEntity>
+  
+#Fire
+- FireDistance: IValue<float>
+- FireCondition: IFunction<IEntity, bool>
+- FireAction: IAction<IEntity>
+- FireEvent: IEvent<IEntity>
+- FireCooldown: Cooldown
+- FirePoint: IValue<Vector3>

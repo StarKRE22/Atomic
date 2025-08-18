@@ -1,6 +1,6 @@
 using System;
 using Atomic.Entities;
-using SampleGame;
+using RTSGame;
 using UnityEngine;
 
 namespace ShooterGame.Gameplay

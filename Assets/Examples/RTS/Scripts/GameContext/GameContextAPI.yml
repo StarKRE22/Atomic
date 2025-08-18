@@ -1,0 +1,25 @@
+#header: ContextAPI
+#contextType: GameContext
+#aggressiveInlining: true
+#
+#namespace: SampleGame
+#className: GameContextAPI
+#directory: Assets/Game/Scripts/GameContext/
+#
+#imports:
+#  - UnityEngine
+#  - Atomic.Contexts
+#  - Atomic.Entities
+#  - Atomic.Elements
+#  - System.Collections.Generic
+#
+##<CORE>
+#values:
+#  - EntityWorld: IEntityWorld
+#  - EntityPool: IGenericEntityPool
+#  - Players: IDictionary<TeamType, PlayerContext>
+#  
+#  
+#  
+##<VIEW>
+#  - TeamViewConfig: TeamViewConfig

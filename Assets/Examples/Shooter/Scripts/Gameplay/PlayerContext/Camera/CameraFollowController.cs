@@ -3,7 +3,7 @@ using ShooterGame;
 using ShooterGame.Gameplay;
 using UnityEngine;
 
-namespace SampleGame
+namespace RTSGame
 {
     public sealed class CameraFollowController : IEntitySpawn<IPlayerContext>, IEntityLateUpdate
     {
