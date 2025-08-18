@@ -17,26 +17,28 @@ namespace RTSGame
         [SerializeField]
         private TeamViewConfig _teamViewConfig;
 
-        [SerializeField]
-        private PlayerContextFactory _playerFactory;
-        
         public override IGameContext Create()
         {
             var context = new GameContext();
             _gameEntityInstaller.Install(context);
+
             context.AddTeamViewConfig(_teamViewConfig);
+
+            IGameEntityWorld entityWorld = context.GetEntityWorld();
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>
             {
-                {TeamType.BLUE, this.CreatePlayerContext(TeamType.BLUE)},
-                {TeamType.RED, this.CreatePlayerContext(TeamType.RED)}
+                {TeamType.BLUE, this.CreatePlayerContext(TeamType.BLUE, entityWorld)},
+                {TeamType.RED, this.CreatePlayerContext(TeamType.RED, entityWorld)}
             });
             return context;
         }
 
-        private IPlayerContext CreatePlayerContext(TeamType type)
+        private IPlayerContext CreatePlayerContext(TeamType type, IGameEntityWorld entityWorld)
         {
-            IPlayerContext playerContext = _playerFactory.Create();
+            IPlayerContext playerContext = new PlayerContext();
             playerContext.AddTeam(new Const<TeamType>(type));
+            playerContext.AddEnemyFilter(new EntityFilter<IGameEntity>(entityWorld,
+                e => TeamUseCase.IsEnemy(e, type)));
             return playerContext;
         }
     }
