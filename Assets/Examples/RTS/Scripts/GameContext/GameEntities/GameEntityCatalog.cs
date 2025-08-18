@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using BeginnerGame;
 using UnityEngine;
 
@@ -8,8 +7,8 @@ namespace RTSGame
         fileName = "GameEntityCatalog",
         menuName = "RTSGame/New GameEntityCatalog"
     )]
-    public sealed class GameEntityCatalog : ScriptableEntityCatalog<string, IGameEntity>
+    public sealed class GameEntityCatalog : ScriptableEntityCatalog<string, IGameEntity, GameEntityFactory>
     {
-        protected override string GetKey(ScriptableEntityFactory<IGameEntity> factory) => factory.name;
+        protected override string GetKey(GameEntityFactory factory) => factory.name;
     }
 }

@@ -29,7 +29,9 @@ namespace BeginnerGame
         fileName = "EntityFactoryCatalog",
         menuName = "Atomic/Entities/New EntityFactoryCatalog"
     )]
-    public class ScriptableEntityCatalog : ScriptableEntityCatalog<string, IEntity>, IEntityFactoryCatalog
+    public class ScriptableEntityCatalog :
+        ScriptableEntityCatalog<string, IEntity, ScriptableEntityFactory>,
+        IEntityFactoryCatalog
     {
         /// <summary>
         /// Extracts the string key for a given factory.
@@ -37,7 +39,7 @@ namespace BeginnerGame
         /// </summary>
         /// <param name="factory">The factory to extract a key from.</param>
         /// <returns>The name of the factory asset.</returns>
-        protected override string GetKey(ScriptableEntityFactory<IEntity> factory) => factory.name;
+        protected override string GetKey(ScriptableEntityFactory factory) => factory.name;
     }
 
     /// <summary>
@@ -46,15 +48,19 @@ namespace BeginnerGame
     /// </summary>
     /// <typeparam name="TKey">The type of the key used to identify each factory.</typeparam>
     /// <typeparam name="E">The type of entity each factory creates.</typeparam>
-    public abstract class ScriptableEntityCatalog<TKey, E> : ScriptableObject,
-        IEntityFactoryCatalog<TKey, E> where E : IEntity
+    /// <typeparam name="F">The type of entity factory.</typeparam>
+    public abstract class ScriptableEntityCatalog<TKey, E, F> :
+        ScriptableObject,
+        IEntityFactoryCatalog<TKey, E>
+        where E : IEntity
+        where F : ScriptableEntityFactory<E>
     {
 #if ODIN_INSPECTOR
         [AssetsOnly]
         [ListDrawerSettings(ShowFoldout = true)]
 #endif
         [SerializeField]
-        internal ScriptableEntityFactory<E>[] _factories;
+        internal F[] _factories;
 
         private Dictionary<TKey, IEntityFactory<E>> _map;
 
@@ -92,15 +98,6 @@ namespace BeginnerGame
                 this.EnsureInitialized();
                 return _map.Values;
             }
-        }
-
-        /// <summary>
-        /// Returns all factories as key-value pairs using the derived <see cref="GetKey"/> implementation.
-        /// </summary>
-        public IEnumerable<KeyValuePair<TKey, IEntityFactory<E>>> GetAllFactories()
-        {
-            this.EnsureInitialized();
-            return _map;
         }
 
         /// <summary>
@@ -149,7 +146,7 @@ namespace BeginnerGame
         /// </summary>
         /// <param name="factory">The factory to extract a key from.</param>
         /// <returns>A key of type <typeparamref name="TKey"/>.</returns>
-        protected abstract TKey GetKey(ScriptableEntityFactory<E> factory);
+        protected abstract TKey GetKey(F factory);
 
         /// <summary>
         /// Initializes the internal dictionary from the serialized factory list.
@@ -166,11 +163,11 @@ namespace BeginnerGame
 
             for (int i = 0, count = _factories.Length; i < count; i++)
             {
-                ScriptableEntityFactory<E> factory = _factories[i];
+                F factory = _factories[i];
                 TKey key = this.GetKey(factory);
 
                 if (!_map.TryAdd(key, factory))
-                    Debug.LogWarning($"Duplicate key '{key}' in {nameof(ScriptableEntityCatalog<TKey, E>)} on " +
+                    Debug.LogWarning($"Duplicate key '{key}' in {this.GetType().Name} on " +
                                      $"{this.name}. Skipping duplicate.");
             }
         }

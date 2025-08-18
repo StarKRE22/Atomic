@@ -21,7 +21,7 @@ namespace Atomic.Entities
             _factoryB.name = "Ally";
 
             _catalog = ScriptableObject.CreateInstance<ScriptableEntityCatalog>();
-            _catalog._factories = new ScriptableEntityFactory<IEntity>[] {_factoryA, _factoryB};
+            _catalog._factories = new ScriptableEntityFactory[] {_factoryA, _factoryB};
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace Atomic.Entities
             duplicate.name = "Enemy"; // same as _factoryA
 
             var localCatalog = ScriptableObject.CreateInstance<ScriptableEntityCatalog>();
-            localCatalog._factories = new ScriptableEntityFactory<IEntity>[] {_factoryA, duplicate};
+            localCatalog._factories = new ScriptableEntityFactory[] {_factoryA, duplicate};
 
             // force init
             _ = localCatalog.Count;

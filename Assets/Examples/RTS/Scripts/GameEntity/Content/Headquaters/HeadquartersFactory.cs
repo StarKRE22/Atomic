@@ -1,3 +1,4 @@
+using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -7,26 +8,21 @@ namespace RTSGame
         fileName = "HeadquartersInstaller",
         menuName = "SampleGame/Entities/New HeadquartersInstaller"
     )]
-    public sealed class HeadquartersInstaller : ScriptableEntityFactory<>
+    public sealed class HeadquartersFactory : GameEntityFactory
     {
         [SerializeField]
         private int _health;
 
-        public override void Install(IEntity entity)
-        {
-            this.InstallLife(entity);
-        }
-
-        private void InstallLife(IEntity entity)
+        protected override void Install(IGameEntity entity)
         {
             entity.AddUnitTag();
             entity.AddDamageableTag();
             entity.AddHealth(new Health(_health, _health));
+            entity.AddPosition(new ReactiveVector3());
+            entity.AddRotation(new ReactiveQuaternion());
+            entity.AddTeam(new ReactiveVariable<TeamType>());
             entity.AddBehaviour<DeathBehaviour>();
         }
     }
 }
 
-entity.AddPosition(new ReactiveVector3(position));
-entity.AddRotation(new ReactiveQuaternion(rotation));
-entity.AddTeam(new ReactiveVariable<TeamType>(team));
