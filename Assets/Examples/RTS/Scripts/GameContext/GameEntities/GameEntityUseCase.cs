@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public static class GameEntitiesUseCase
+    public static class GameEntityUseCase
     {
         private static readonly Predicate<IEntity> DEFAULT_PREDICATE = _ => true;
 
@@ -26,7 +26,7 @@ namespace RTSGame
             return entity;
         }
 
-        public static bool DespawnEntity(IGameContext gameContext, IGameEntity entity)
+        public static bool Despawn(IGameContext gameContext, IGameEntity entity)
         {
             if (!gameContext.GetEntityWorld().Remove(entity))
                 return false;

@@ -20,27 +20,27 @@ namespace RTSGame
         private static void SpawnUnits(IGameContext context, TeamType player, Vector3 position, Quaternion rotation)
         {
             //Spawn headquarters:
-            GameEntitiesUseCase.Spawn(context, HEADQUARTERS_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, HEADQUARTERS_NAME, position, rotation, player);
 
             //Spawn warriors:
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             position.x += 2;
-            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             position.x += 2;
-            GameEntitiesUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
 
             //Spawn tanks:
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
 
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
 
             position.x += 5;
-            GameEntitiesUseCase.Spawn(context, TANK_NAME, position, rotation, player);
+            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
         }
     }
 }

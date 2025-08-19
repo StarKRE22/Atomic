@@ -4,36 +4,29 @@ namespace RTSGame
 {
     public sealed class DeathBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
+        private readonly IGameContext _gameContext;
+
         private Health _health;
-        private IEntity _entity;
-        private GameContext _gameContext;
+        private IGameEntity _entity;
 
-        public void Init(in IEntity entity)
+        public DeathBehaviour(IGameContext gameContext)
         {
-            _entity = entity;
-            _gameContext = GameContext.Instance;
-            
-            _health = entity.GetHealth();
-            _health.OnHealthEmpty += this.OnHealthEmpty;
-        }
-
-        public void Dispose(in IEntity entity)
-        {
-            _health.OnHealthEmpty -= this.OnHealthEmpty;
-        }
-
-        private void OnHealthEmpty()
-        {
-            EntitiesUseCase.UnspawnEntity(_gameContext, _entity);
+            _gameContext = gameContext;
         }
 
         public void OnSpawn(IGameEntity entity)
         {
-            
+            _entity = entity;
+
+            _health = entity.GetHealth();
+            _health.OnHealthEmpty += this.OnHealthEmpty;
         }
 
         public void OnDespawn(IEntity entity)
         {
+            _health.OnHealthEmpty -= this.OnHealthEmpty;
         }
+
+        private void OnHealthEmpty() => GameEntityUseCase.Despawn(_gameContext, _entity);
     }
 }

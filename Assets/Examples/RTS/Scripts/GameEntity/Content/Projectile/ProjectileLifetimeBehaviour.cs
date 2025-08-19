@@ -1,25 +1,31 @@
+using Atomic.Elements;
 using Atomic.Entities;
-using Modules.Gameplay;
 
 namespace RTSGame
 {
-    public sealed class ProjectileLifetimeBehaviour : IEntityInit, IEntityFixedUpdate
+    public sealed class ProjectileLifetimeBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
+        private readonly IGameContext _gameContext;
+        private IGameEntity _entity;
         private Cooldown _lifetime;
-        private GameContext _gameContext;
 
-        public void Init(in IEntity entity)
+        public ProjectileLifetimeBehaviour(IGameContext gameContext)
         {
-            _lifetime = entity.GetLifetime();
-            _lifetime.Reset();
-            _gameContext = GameContext.Instance;
+            _gameContext = gameContext;
         }
 
-        public void OnFixedUpdate(in IEntity entity, in float deltaTime)
+        public void OnSpawn(IGameEntity entity)
+        {
+            _entity = entity;
+            _lifetime = entity.GetLifetime();
+            _lifetime.ResetTime();
+        }
+
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
-            if (_lifetime.IsExpired())
-                EntitiesUseCase.UnspawnEntity(_gameContext, entity);
+            if (_lifetime.IsCompleted())
+                GameEntityUseCase.Despawn(_gameContext, _entity);
         }
     }
 }

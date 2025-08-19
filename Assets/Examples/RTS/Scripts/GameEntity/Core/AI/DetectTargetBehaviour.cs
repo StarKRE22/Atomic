@@ -8,7 +8,7 @@ namespace RTSGame
         private readonly IGameContext _gameContext;
         private readonly ICooldown _cooldown;
 
-        private IVariable<IEntity> _target;
+        private IVariable<IGameEntity> _target;
         private IGameEntity _entity;
 
         public DetectTargetBehaviour(ICooldown cooldown, IGameContext context)
@@ -28,7 +28,7 @@ namespace RTSGame
             _cooldown.Tick(deltaTime);
             if (_cooldown.IsCompleted())
             {
-                _target.Value = GameEntitiesUseCase.FindClosestEnemyFor(_gameContext, _entity);
+                _target.Value = GameEntityUseCase.FindClosestEnemyFor(_gameContext, _entity);
                 _cooldown.ResetTime();
             }
         }

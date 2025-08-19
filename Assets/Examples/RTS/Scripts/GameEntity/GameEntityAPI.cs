@@ -401,13 +401,13 @@ namespace RTSGame
 		#region Target
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<IEntity> GetTarget(this IGameEntity entity) => entity.GetValue<IReactiveVariable<IEntity>>(Target);
+		public static IReactiveVariable<IGameEntity> GetTarget(this IGameEntity entity) => entity.GetValue<IReactiveVariable<IGameEntity>>(Target);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool TryGetTarget(this IGameEntity entity, out IReactiveVariable<IEntity> value) => entity.TryGetValue(Target, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddTarget(this IGameEntity entity, IReactiveVariable<IEntity> value) => entity.AddValue(Target, value);
+		public static void AddTarget(this IGameEntity entity, IReactiveVariable<IGameEntity> value) => entity.AddValue(Target, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasTarget(this IGameEntity entity) => entity.HasValue(Target);
@@ -445,7 +445,7 @@ namespace RTSGame
 		#region FireRequest
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IRequest<IEntity> GetFireRequest(this IGameEntity entity) => entity.GetValue<IRequest<IEntity>>(FireRequest);
+		public static IRequest<IGameEntity> GetFireRequest(this IGameEntity entity) => entity.GetValue<IRequest<IGameEntity>>(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool TryGetFireRequest(this IGameEntity entity, out IRequest<IEntity> value) => entity.TryGetValue(FireRequest, out value);

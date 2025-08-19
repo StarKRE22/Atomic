@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class ProjectileFollowBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class ProjectileMoveBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
         private readonly IGameContext _gameContext;
 
         private IGameEntity _entity;
         private IValue<float> _scale;
-        private IValue<IEntity> _target;
+        private IValue<IGameEntity> _target;
 
         private Vector3 _forward;
 
-        public ProjectileFollowBehaviour(IGameContext gameContext)
+        public ProjectileMoveBehaviour(IGameContext gameContext)
         {
             _gameContext = gameContext;
         }
@@ -24,29 +24,28 @@ namespace RTSGame
             _entity = entity;
             _target = entity.GetTarget();
             _scale = entity.GetScale();
-            _forward = entity.GetRotation().Value * Vector3.forward;
+            _forward = TransformUseCase.GetForward(_entity);
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
-            IEntity target = _target.Value;
+            IGameEntity target = _target.Value;
             if (target is not {IsActive: true})
             {
                 MoveUseCase.MoveStep(_entity, _forward, deltaTime);
                 return;
             }
 
-            Vector3 vector = TransformUseCase.GetVector(entity, target);
-            float radius = _scale.Value;
-            if (vector.sqrMagnitude > radius * radius)
+            Vector3 vector = TransformUseCase.GetVector(_entity, target);
+            float scale = _scale.Value;
+            if (vector.sqrMagnitude > scale * scale)
             {
                 _forward = vector.normalized;
-                MoveUseCase.MoveStep(entity, _forward, deltaTime);
+                MoveUseCase.MoveStep(_entity, _forward, deltaTime);
             }
-            else
+            else if (DamageUseCase.DealDamage(_entity, target))
             {
-                DealDamageUseCase.DealDamage(entity, target);
-                EntitiesUseCase.UnspawnEntity(_gameContext, entity);
+                GameEntityUseCase.Despawn(_gameContext, _entity);
             }
         }
     }
