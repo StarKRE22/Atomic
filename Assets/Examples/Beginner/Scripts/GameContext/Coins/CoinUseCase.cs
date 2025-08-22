@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using UnityEngine;
 
 namespace BeginnerGame

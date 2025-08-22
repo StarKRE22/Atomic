@@ -6,6 +6,8 @@ namespace ShooterGame.Gameplay
 {
     public sealed class KinematicMovementBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
+        private const float MAX_DISTANCE_COEFFICIENT = 2;
+        
         private Rigidbody _rigidbody;
         private IVariable<Vector3> _position;
 
@@ -30,11 +32,12 @@ namespace ShooterGame.Gameplay
             if (direction == Vector3.zero || !_moveCondition.Invoke())
                 return;
 
-            float magnitude = _moveSpeed.Value * deltaTime;
-            if (_rigidbody.SweepTest(direction, out _, magnitude))
+            float moveStep = _moveSpeed.Value * deltaTime;
+            float maxDistance = moveStep * MAX_DISTANCE_COEFFICIENT;
+            if (_rigidbody.SweepTest(direction, out _, maxDistance))
                 return;
 
-            _position.Value += direction * magnitude;
+            _position.Value += direction * moveStep;
             _moveEvent.Invoke(direction);
         }
     }
