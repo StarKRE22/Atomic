@@ -15,7 +15,7 @@ namespace ShooterGame.App
 
         public void OnUpdate(IEntity entity, float deltaTime)
         {
-            if (Input.GetKey(_exitKey.Value)) 
+            if (Input.GetKey(_exitKey.Value) && MenuUseCase.InMenu()) 
                 ExitAppUseCase.Exit();
         }
     }

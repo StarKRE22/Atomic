@@ -15,6 +15,7 @@ namespace ShooterGame.App
         {
             context.AddExitKeyCode(new Const<KeyCode>(_exitKey));
             context.AddBehaviour<ExitAppController>();
+            context.AddBehaviour<ExitMenuController>();
         }
     }
 }

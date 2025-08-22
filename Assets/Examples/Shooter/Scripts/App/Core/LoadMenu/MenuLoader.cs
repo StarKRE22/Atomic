@@ -6,7 +6,7 @@ namespace ShooterGame.App
     {
         private void Start()
         {
-            LoadMenuUseCase.LoadMenu().Forget();
+            MenuUseCase.LoadMenu().Forget();
         }
     }
 }

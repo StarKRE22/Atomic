@@ -22,7 +22,7 @@ namespace ShooterGame.App
         private void OnGameOver()
         {
             LevelUseCase.IncrementLevel(AppContext.Instance);
-            LoadMenuUseCase.LoadMenu().Forget();
+            MenuUseCase.LoadMenu().Forget();
         }
     }
 }

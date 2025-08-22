@@ -75,7 +75,7 @@ MonoBehaviour:
     _exitKey: 27
   _levelsInstaller:
     _startLevel: 1
-    _maxLevel: 9
+    _maxLevel: 3
     _currentLevel: 1
   _loadGameInstaller:
     _levelNameFormat: ShooterGame (Level{0})
