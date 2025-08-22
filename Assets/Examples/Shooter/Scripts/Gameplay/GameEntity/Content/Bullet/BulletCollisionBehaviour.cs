@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -6,6 +7,9 @@ namespace ShooterGame.Gameplay
 {
     public sealed class BulletCollisionBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
     {
+        //string -> hashcode -> 
+        private Dictionary<string, object> _units;
+        
         private IGameEntity _entity;
         private TriggerEvents _trigger;
         private IValue<int> _damage;
@@ -39,10 +43,9 @@ namespace ShooterGame.Gameplay
                 source = _entity,
                 damage = _damage.Value
             };
-            
-            if (TakeDamageUseCase.TakeDamage(collider, args, _gameContext))
-                _destroyAction.Invoke();
-        }
 
+            collider.TakeDamage(args, _gameContext);
+            _destroyAction.Invoke();
+        }
     }
 }

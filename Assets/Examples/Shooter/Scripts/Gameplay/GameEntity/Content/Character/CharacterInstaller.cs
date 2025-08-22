@@ -13,6 +13,9 @@ namespace ShooterGame.Gameplay
         private Transform _transform;
 
         [SerializeField]
+        private Rigidbody _rigidbody;
+
+        [SerializeField]
         private TriggerEvents _triggerEvents;
 
         [SerializeField]
@@ -58,7 +61,7 @@ namespace ShooterGame.Gameplay
             entity.AddMovementDirection(new ReactiveVector3());
             entity.AddMovementCondition(new AndExpression(_health.Exists));
             entity.AddMovementEvent(new BaseEvent<Vector3>());
-            entity.AddBehaviour<MovementBehaviour>();
+            entity.AddBehaviour<KinematicMovementBehaviour>();
 
             //Rotation:
             entity.AddRotationSpeed(_rotationSpeed);
@@ -68,6 +71,7 @@ namespace ShooterGame.Gameplay
             entity.AddBehaviour<RotationBehaviour>();
 
             //Physics:
+            entity.AddRigidbody(_rigidbody);
             entity.AddTrigger(_triggerEvents);
             entity.AddPhysicsLayer(new ProxyVariable<int>(
                 getter: () => _gameObject.layer,

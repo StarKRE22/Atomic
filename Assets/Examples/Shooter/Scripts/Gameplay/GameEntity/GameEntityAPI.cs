@@ -53,6 +53,7 @@ namespace ShooterGame.Gameplay
 		public static readonly int FireEvent; // IEvent
 		public static readonly int Trigger; // TriggerEvents
 		public static readonly int PhysicsLayer; // IVariable<int>
+		public static readonly int Rigidbody; // Rigidbody
 		public static readonly int Renderer; // Renderer
 		public static readonly int Animator; // Animator
 		public static readonly int HitPointsView; // HitPointsView
@@ -91,6 +92,7 @@ namespace ShooterGame.Gameplay
 			FireEvent = NameToId(nameof(FireEvent));
 			Trigger = NameToId(nameof(Trigger));
 			PhysicsLayer = NameToId(nameof(PhysicsLayer));
+			Rigidbody = NameToId(nameof(Rigidbody));
 			Renderer = NameToId(nameof(Renderer));
 			Animator = NameToId(nameof(Animator));
 			HitPointsView = NameToId(nameof(HitPointsView));
@@ -728,6 +730,28 @@ namespace ShooterGame.Gameplay
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetPhysicsLayer(this IGameEntity entity, IVariable<int> value) => entity.SetValue(PhysicsLayer, value);
+
+		#endregion
+
+		#region Rigidbody
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Rigidbody GetRigidbody(this IGameEntity entity) => entity.GetValue<Rigidbody>(Rigidbody);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetRigidbody(this IGameEntity entity, out Rigidbody value) => entity.TryGetValue(Rigidbody, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddRigidbody(this IGameEntity entity, Rigidbody value) => entity.AddValue(Rigidbody, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasRigidbody(this IGameEntity entity) => entity.HasValue(Rigidbody);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelRigidbody(this IGameEntity entity) => entity.DelValue(Rigidbody);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetRigidbody(this IGameEntity entity, Rigidbody value) => entity.SetValue(Rigidbody, value);
 
 		#endregion
 

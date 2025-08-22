@@ -435,6 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 7896759888454424343}
   _transform: {fileID: 4473757027215454236}
+  _rigidbody: {fileID: 7508520775225795682}
   _triggerEvents: {fileID: 1078873930473175172}
   _moveSpeed:
     value: 3

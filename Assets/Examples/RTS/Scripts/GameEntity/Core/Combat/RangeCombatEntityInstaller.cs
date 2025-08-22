@@ -26,7 +26,7 @@ namespace RTSGame
             
             entity.AddFireCooldown(new Cooldown(_attackCooldown));
             entity.AddFirePoint(new InlineFunction<Vector3>(() => CombatUseCase.GetFirePoint(entity, _fireOffset.Value)));
-            entity.AddFireRequest(new BaseRequest<IEntity>());
+            entity.AddFireRequest(new BaseRequest<IGameEntity>());
             entity.WhenFixedUpdate(_ =>
             {
                 if (HealthUseCase.IsAlive(entity) &&
@@ -41,7 +41,7 @@ namespace RTSGame
 
             entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
             entity.AddFireDistance(_attackDistance);
-            entity.AddFireEvent(new BaseEvent<IEntity>());
+            entity.AddFireEvent(new BaseEvent<IGameEntity>());
         }
     }
 }

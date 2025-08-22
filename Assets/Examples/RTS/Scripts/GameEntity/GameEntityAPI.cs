@@ -40,10 +40,10 @@ namespace RTSGame
 		public static readonly int DestroyAction; // IAction
 		public static readonly int Team; // IReactiveVariable<TeamType>
 		public static readonly int Damage; // IValue<int>
-		public static readonly int Target; // IReactiveVariable<IEntity>
+		public static readonly int Target; // IReactiveVariable<IGameEntity>
 		public static readonly int FireDistance; // IValue<float>
-		public static readonly int FireRequest; // IRequest<IEntity>
-		public static readonly int FireEvent; // IEvent<IEntity>
+		public static readonly int FireRequest; // IRequest<IGameEntity>
+		public static readonly int FireEvent; // IEvent<IGameEntity>
 		public static readonly int FireCooldown; // Cooldown
 		public static readonly int FirePoint; // IValue<Vector3>
 
@@ -404,7 +404,7 @@ namespace RTSGame
 		public static IReactiveVariable<IGameEntity> GetTarget(this IGameEntity entity) => entity.GetValue<IReactiveVariable<IGameEntity>>(Target);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTarget(this IGameEntity entity, out IReactiveVariable<IEntity> value) => entity.TryGetValue(Target, out value);
+		public static bool TryGetTarget(this IGameEntity entity, out IReactiveVariable<IGameEntity> value) => entity.TryGetValue(Target, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddTarget(this IGameEntity entity, IReactiveVariable<IGameEntity> value) => entity.AddValue(Target, value);
@@ -416,7 +416,7 @@ namespace RTSGame
 		public static bool DelTarget(this IGameEntity entity) => entity.DelValue(Target);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetTarget(this IGameEntity entity, IReactiveVariable<IEntity> value) => entity.SetValue(Target, value);
+		public static void SetTarget(this IGameEntity entity, IReactiveVariable<IGameEntity> value) => entity.SetValue(Target, value);
 
 		#endregion
 
@@ -448,10 +448,10 @@ namespace RTSGame
 		public static IRequest<IGameEntity> GetFireRequest(this IGameEntity entity) => entity.GetValue<IRequest<IGameEntity>>(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetFireRequest(this IGameEntity entity, out IRequest<IEntity> value) => entity.TryGetValue(FireRequest, out value);
+		public static bool TryGetFireRequest(this IGameEntity entity, out IRequest<IGameEntity> value) => entity.TryGetValue(FireRequest, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddFireRequest(this IGameEntity entity, IRequest<IEntity> value) => entity.AddValue(FireRequest, value);
+		public static void AddFireRequest(this IGameEntity entity, IRequest<IGameEntity> value) => entity.AddValue(FireRequest, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasFireRequest(this IGameEntity entity) => entity.HasValue(FireRequest);
@@ -460,20 +460,20 @@ namespace RTSGame
 		public static bool DelFireRequest(this IGameEntity entity) => entity.DelValue(FireRequest);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetFireRequest(this IGameEntity entity, IRequest<IEntity> value) => entity.SetValue(FireRequest, value);
+		public static void SetFireRequest(this IGameEntity entity, IRequest<IGameEntity> value) => entity.SetValue(FireRequest, value);
 
 		#endregion
 
 		#region FireEvent
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IEvent<IEntity> GetFireEvent(this IGameEntity entity) => entity.GetValue<IEvent<IEntity>>(FireEvent);
+		public static IEvent<IGameEntity> GetFireEvent(this IGameEntity entity) => entity.GetValue<IEvent<IGameEntity>>(FireEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetFireEvent(this IGameEntity entity, out IEvent<IEntity> value) => entity.TryGetValue(FireEvent, out value);
+		public static bool TryGetFireEvent(this IGameEntity entity, out IEvent<IGameEntity> value) => entity.TryGetValue(FireEvent, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddFireEvent(this IGameEntity entity, IEvent<IEntity> value) => entity.AddValue(FireEvent, value);
+		public static void AddFireEvent(this IGameEntity entity, IEvent<IGameEntity> value) => entity.AddValue(FireEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasFireEvent(this IGameEntity entity) => entity.HasValue(FireEvent);
@@ -482,7 +482,7 @@ namespace RTSGame
 		public static bool DelFireEvent(this IGameEntity entity) => entity.DelValue(FireEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetFireEvent(this IGameEntity entity, IEvent<IEntity> value) => entity.SetValue(FireEvent, value);
+		public static void SetFireEvent(this IGameEntity entity, IEvent<IGameEntity> value) => entity.SetValue(FireEvent, value);
 
 		#endregion
 
