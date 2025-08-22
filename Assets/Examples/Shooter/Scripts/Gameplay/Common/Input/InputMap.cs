@@ -4,7 +4,7 @@ namespace ShooterGame.Gameplay
 {
     [CreateAssetMenu(
         fileName = "InputMap",
-        menuName = "SampleGame/New InputMap"
+        menuName = "ShooterGame/New InputMap"
     )]
     public sealed class InputMap : ScriptableObject
     {

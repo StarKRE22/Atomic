@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace BeginnerGame
 {
-    [CreateAssetMenu(fileName = "TeamCatalog", menuName = "Beginner/TeamCatalog")]
+    [CreateAssetMenu(fileName = "TeamCatalog", menuName = "BeginnerGame/TeamCatalog")]
     public sealed class TeamCatalog : ScriptableObject
     {
         [FormerlySerializedAs("Teams")]

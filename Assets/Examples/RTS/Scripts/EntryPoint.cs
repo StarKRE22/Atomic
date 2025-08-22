@@ -8,17 +8,26 @@ namespace RTSGame
     {
         [ShowInInspector]
         public static IGameContext GameContext { get; private set; }
-        
+
         [SerializeField]
         private GameContextFactory _gameFactory;
 
         [SerializeField]
         private GameEntityWorldView _entityWorldView;
 
+        [SerializeField]
+        private bool _bakingMode;
+
         private void Awake()
         {
             GameContext = _gameFactory.Create();
-            LevelUseCase.LoadLevel(GameContext);
+            
+            if (_bakingMode)
+                InitGameCase.BakeUnits(GameContext);
+            else
+                InitGameCase.SpawnUnits(GameContext);
+
+
             GameContext.Spawn();
             GameContext.Activate();
         }

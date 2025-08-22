@@ -7,7 +7,7 @@ namespace RTSGame
 {
     [CreateAssetMenu(
         fileName = "TeamViewConfig",
-        menuName = "SampleGame/Common/New TeamViewConfig"
+        menuName = "RTSGame/Common/New TeamViewConfig"
     )]
     public sealed class TeamViewConfig : ScriptableObject
     {
