@@ -1,6 +1,5 @@
 #if UNITY_5_3_OR_NEWER
 using System;
-using System.Reflection;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -128,6 +127,7 @@ namespace Atomic.Entities
         /// </summary>
 #if ODIN_INSPECTOR
         [Button]
+        [FoldoutGroup("Optimization")]
 #endif
         protected virtual void Precompile()
         {
@@ -136,13 +136,14 @@ namespace Atomic.Entities
             if (entity == null)
             {
                 Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.", this);
-                return;
             }
-
-            this.InitialName = entity.Name;
-            this.InitialTagCount = entity.TagCount;
-            this.InitialValueCount = entity.ValueCount;
-            this.InitialBehaviourCount = entity.BehaviourCount;
+            else
+            {
+                this.InitialName = entity.Name;
+                this.InitialTagCount = entity.TagCount;
+                this.InitialValueCount = entity.ValueCount;
+                this.InitialBehaviourCount = entity.BehaviourCount;
+            }
 #endif
         }
     }
