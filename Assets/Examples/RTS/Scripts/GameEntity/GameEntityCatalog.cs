@@ -5,7 +5,7 @@ namespace RTSGame
 {
     [CreateAssetMenu(
         fileName = "GameEntityCatalog",
-        menuName = "RTSGame/New GameEntityCatalog"
+        menuName = "RTSGame/GameEntities/New GameEntityCatalog"
     )]
     public sealed class GameEntityCatalog : ScriptableEntityCatalog<string, IGameEntity, GameEntityFactory>
     {

@@ -111,7 +111,7 @@ namespace Atomic.Entities
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.Message}", this);
+                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
             }
 #endif
         }
@@ -133,7 +133,9 @@ namespace Atomic.Entities
         /// Generates a preview entity and extracts metadata such as tag count, value count, and name.
         /// This is useful for optimizing asset previews and reducing runtime introspection.
         /// </summary>
-        [ContextMenu(nameof(Precompile))]
+#if ODIN_INSPECTOR
+        [Button]
+#endif
         protected virtual void Precompile()
         {
 #if UNITY_EDITOR

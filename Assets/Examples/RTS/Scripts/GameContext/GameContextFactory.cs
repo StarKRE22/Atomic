@@ -17,10 +17,15 @@ namespace RTSGame
 
         [SerializeField]
         private TeamViewConfig _teamViewConfig;
-        
+
         public override IGameContext Create()
         {
-            var context = new GameContext();
+            var context = new GameContext(
+                this.initialName,
+                this.initialTagCount,
+                this.initialValueCount,
+                this.initialBehaviourCount
+            );
             _gameEntityInstaller.Install(context);
             _playerSystemInstaller.Install(context);
             context.AddTeamViewConfig(_teamViewConfig);

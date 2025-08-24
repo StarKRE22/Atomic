@@ -1,5 +1,4 @@
 using Atomic.Elements;
-using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame
@@ -8,7 +7,7 @@ namespace RTSGame
         fileName = "WarriorFactory",
         menuName = "RTSGame/GameEntities/New WarriorFactory"
     )]
-    public sealed class WarriorFactory : ScriptableEntityInstaller<IGameEntity>
+    public sealed class WarriorFactory : GameEntityFactory
     {
         [SerializeField]
         private TransformEntityInstaller _transformInstaller;

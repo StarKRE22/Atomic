@@ -163,8 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6885ac910754be9af2b0211035d6b19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameFactory: {fileID: 0}
-  _entityWorldView: {fileID: 0}
+  _gameContextFactory: {fileID: 11400000, guid: c7be78091b4bf46838d8f7bddb63cb21, type: 2}
+  _entityCollectionView: {fileID: 1245728447}
+  _bakingMode: 0
 --- !u!1 &441292360
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245728444}
-  - component: {fileID: 1245728445}
+  - component: {fileID: 1245728447}
   - component: {fileID: 1245728446}
   m_Layer: 0
   m_Name: '[Entities]'
@@ -475,20 +476,6 @@ Transform:
   - {fileID: 441292361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1245728445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245728443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c1f26fbfe647abb48a00bd5de63443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _viewport: {fileID: 641383930}
-  _viewPool: {fileID: 1245728446}
 --- !u!114 &1245728446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +491,20 @@ MonoBehaviour:
   _container: {fileID: 441292361}
   _catalogs:
   - {fileID: 11400000, guid: ce98fc6ba5a6547159eb2f6578f31b43, type: 2}
+--- !u!114 &1245728447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245728443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee121fb14a949e198629aa1b0549c47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _viewport: {fileID: 0}
+  _viewPool: {fileID: 0}
 --- !u!1 &1277143007
 GameObject:
   m_ObjectHideFlags: 0

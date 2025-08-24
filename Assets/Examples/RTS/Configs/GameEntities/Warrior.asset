@@ -12,16 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370904b88384aa8bb214bdec12a3a99, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  _radius:
-    value: 1
-  _moveSpeed:
-    value: 3
-  _rotationSpeed:
-    value: 12
-  _attackDistance:
-    value: 1
-  _damage:
-    value: 1
-  _health: 5
-  _detectPeriod: 0.25
-  _attackCooldown: 1
+  _transformInstaller:
+    _scale:
+      value: 1
+  _moveInstaller:
+    _moveSpeed:
+      value: 3
+    _rotationSpeed:
+      value: 12
+  _lifeInstaller:
+    _health: 3
+  _meleeCombatInstaller:
+    _attackCooldown: 1
+    _attackDistance:
+      value: 1
+    _damage:
+      value: 1
+  _aiInstaller:
+    _minDetectDuration: 0.2
+    _maxDetectDuration: 0.3

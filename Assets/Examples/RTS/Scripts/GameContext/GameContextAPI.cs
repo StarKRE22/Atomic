@@ -21,7 +21,7 @@ namespace RTSGame
 	public static class GameContextAPI
 	{
 		///Values
-		public static readonly int EntityWorld; // IGameEntityWorld
+		public static readonly int EntityWorld; // IEntityWorld<IGameEntity>
 		public static readonly int EntityPool; // IMultiEntityPool<string, IGameEntity>
 		public static readonly int Players; // Dictionary<TeamType, IPlayerContext>
 		public static readonly int TeamViewConfig; // TeamViewConfig
@@ -41,13 +41,13 @@ namespace RTSGame
 		#region EntityWorld
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IGameEntityWorld GetEntityWorld(this IGameContext entity) => entity.GetValue<IGameEntityWorld>(EntityWorld);
+		public static IEntityWorld<IGameEntity> GetEntityWorld(this IGameContext entity) => entity.GetValue<IEntityWorld<IGameEntity>>(EntityWorld);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityWorld(this IGameContext entity, out IGameEntityWorld value) => entity.TryGetValue(EntityWorld, out value);
+		public static bool TryGetEntityWorld(this IGameContext entity, out IEntityWorld<IGameEntity> value) => entity.TryGetValue(EntityWorld, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddEntityWorld(this IGameContext entity, IGameEntityWorld value) => entity.AddValue(EntityWorld, value);
+		public static void AddEntityWorld(this IGameContext entity, IEntityWorld<IGameEntity> value) => entity.AddValue(EntityWorld, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasEntityWorld(this IGameContext entity) => entity.HasValue(EntityWorld);
@@ -56,7 +56,7 @@ namespace RTSGame
 		public static bool DelEntityWorld(this IGameContext entity) => entity.DelValue(EntityWorld);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetEntityWorld(this IGameContext entity, IGameEntityWorld value) => entity.SetValue(EntityWorld, value);
+		public static void SetEntityWorld(this IGameContext entity, IEntityWorld<IGameEntity> value) => entity.SetValue(EntityWorld, value);
 
 		#endregion
 

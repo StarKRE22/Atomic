@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f393a8f6d894373a744b11bfd789b27, type: 3}
   m_Name: Headquaters
   m_EditorClassIdentifier: 
-  _health: 5
+  initialTagCount: 2
+  initialValueCount: 5
+  initialBehaviourCount: 1
+  initialName: Headquaters
+  _transformInstaller:
+    _scale:
+      value: 1
+  _lifeInstaller:
+    _health: 5

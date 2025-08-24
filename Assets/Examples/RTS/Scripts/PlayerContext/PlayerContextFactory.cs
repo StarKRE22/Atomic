@@ -10,10 +10,10 @@ namespace RTSGame
     )]
     public sealed class PlayerContextFactory : ScriptableEntityFactory<IPlayerContext>
     {
-        private IGameEntityWorld _entityWorld;
+        private IEntityWorld<IGameEntity> _entityWorld;
         private TeamType _teamType;
 
-        public PlayerContextFactory SetEntityWorld(IGameEntityWorld entityWorld)
+        public PlayerContextFactory SetEntityWorld(IEntityWorld<IGameEntity> entityWorld)
         {
             _entityWorld = entityWorld;
             return this;
@@ -25,14 +25,15 @@ namespace RTSGame
             return this;
         }
 
-
         public override IPlayerContext Create()
         {
             IPlayerContext playerContext = new PlayerContext();
-            playerContext.AddTeam(new Const<TeamType>(this._teamType));
-            playerContext.AddEnemyFilter(
-                new EntityFilter<IGameEntity>(this._entityWorld, e => TeamUseCase.IsEnemy(e, this._teamType))
-            );
+            playerContext.AddTeam(new Const<TeamType>(_teamType));
+            
+            EntityFilter<IGameEntity> filter = new EntityFilter<IGameEntity>(_entityWorld,
+                e => TeamUseCase.IsEnemy(e, _teamType));
+         
+            playerContext.AddEnemyFilter(filter);
             return playerContext;
         }
     }

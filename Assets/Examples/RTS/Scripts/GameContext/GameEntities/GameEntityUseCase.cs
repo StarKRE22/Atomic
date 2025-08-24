@@ -71,7 +71,7 @@ namespace RTSGame
             predicate ??= DEFAULT_PREDICATE;
 
             result = null;
-            IGameEntityWorld world = context.GetEntityWorld();
+            IEntityWorld<IGameEntity> world = context.GetEntityWorld();
 
             float minDistance = float.MaxValue;
             foreach (IGameEntity entity in world)

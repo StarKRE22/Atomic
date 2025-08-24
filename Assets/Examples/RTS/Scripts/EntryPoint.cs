@@ -6,33 +6,32 @@ namespace RTSGame
     [DefaultExecutionOrder(-1000)]
     public sealed class EntryPoint : MonoBehaviour
     {
-        [ShowInInspector]
+        [ShowInInspector, HideInEditorMode]
         public static IGameContext GameContext { get; private set; }
 
         [SerializeField]
-        private GameContextFactory _gameFactory;
+        private GameContextFactory _gameContextFactory;
 
         [SerializeField]
-        private GameEntityWorldView _entityWorldView;
+        private GameEntityCollectionView _entityCollectionView;
 
         [SerializeField]
         private bool _bakingMode;
 
         private void Awake()
         {
-            GameContext = _gameFactory.Create();
+            GameContext = _gameContextFactory.Create();
             
             if (_bakingMode)
                 InitGameCase.BakeUnits(GameContext);
             else
                 InitGameCase.SpawnUnits(GameContext);
-
-
+            
             GameContext.Spawn();
             GameContext.Activate();
         }
 
-        private void Start() => _entityWorldView.Show(GameContext.GetEntityWorld());
+        private void Start() => _entityCollectionView.Show(GameContext.GetEntityWorld());
 
         private void Update() => GameContext.OnUpdate(Time.deltaTime);
 
