@@ -85,7 +85,7 @@ namespace Atomic.Entities
             var catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
             var another = EntityView.Create();
             another.name = "Tank";
-            catalog._prefabs = new List<EntityViewBase<IEntity>> {another};
+            catalog._prefabs = new List<EntityViewBase> {another};
 
             _pool.AddPrefabs(catalog);
 
@@ -111,7 +111,7 @@ namespace Atomic.Entities
             var catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
             var v = EntityView.Create();
             v.name = "Sniper";
-            catalog._prefabs = new List<EntityViewBase<IEntity>> {v};
+            catalog._prefabs = new List<EntityViewBase> {v};
 
             _pool.AddPrefabs(catalog);
             _pool.RemovePrefabs(catalog);

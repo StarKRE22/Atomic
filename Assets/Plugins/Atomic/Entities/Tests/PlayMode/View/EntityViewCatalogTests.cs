@@ -15,16 +15,16 @@ namespace Atomic.Entities
         {
             _catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
 
-            _viewA = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            _viewA = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "ViewA"
             });
-            _viewB = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            _viewB = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "ViewB"
             });
 
-            _catalog._prefabs = new List<EntityViewBase<IEntity>> {_viewA, _viewB};
+            _catalog._prefabs = new List<EntityViewBase> {_viewA, _viewB};
         }
 
         [OneTimeTearDown]

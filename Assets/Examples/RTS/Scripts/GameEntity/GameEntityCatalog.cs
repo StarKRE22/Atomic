@@ -9,6 +9,6 @@ namespace RTSGame
     )]
     public sealed class GameEntityCatalog : ScriptableEntityCatalog<string, IGameEntity, GameEntityFactory>
     {
-        protected override string GetKey(GameEntityFactory factory) => factory.name;
+        protected override string GetKey(GameEntityFactory factory) => factory.Name;
     }
 }

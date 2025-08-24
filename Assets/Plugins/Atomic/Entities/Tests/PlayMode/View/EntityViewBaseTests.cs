@@ -2,7 +2,6 @@ using NUnit.Framework;
 using System;
 using UnityEngine;
 
-
 namespace Atomic.Entities
 {
     public class EntityViewBaseTests

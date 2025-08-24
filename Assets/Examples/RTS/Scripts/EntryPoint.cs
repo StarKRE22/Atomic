@@ -12,8 +12,8 @@ namespace RTSGame
         [SerializeField]
         private GameContextFactory _gameContextFactory;
 
-        [SerializeField]
-        private GameEntityCollectionView _entityCollectionView;
+        // [SerializeField]
+        // private GameEntityCollectionView _entityCollectionView;
 
         [SerializeField]
         private bool _bakingMode;
@@ -31,7 +31,7 @@ namespace RTSGame
             GameContext.Activate();
         }
 
-        private void Start() => _entityCollectionView.Show(GameContext.GetEntityWorld());
+        // private void Start() => _entityCollectionView.Show(GameContext.GetEntityWorld());
 
         private void Update() => GameContext.OnUpdate(Time.deltaTime);
 

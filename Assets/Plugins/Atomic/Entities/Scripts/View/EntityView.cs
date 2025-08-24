@@ -11,33 +11,9 @@ using UnityEditor;
 using UnityEngine;
 using static Atomic.Entities.EntityUtils;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A non-generic alias for a base entity view targeting general <see cref="IEntity"/> instances.
-    /// This component inherits all behavior from <see cref="EntityView{IEntity}"/>.
-    /// </summary>
-    [AddComponentMenu("Atomic/Entities/Entity View")]
-    [DisallowMultipleComponent]
-    public class EntityView : EntityView<IEntity>
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityView Create(CreateArgs args = default) => Create<EntityView>(args);
-    }
-
-    /// <summary>
-    /// Provides a base implementation for viewing and managing entities of type <typeparamref name="E"/>
-    /// in Unity. This class extends <see cref="EntityViewBase{E}"/> to add support for installing view-specific
-    /// behaviours and for drawing gizmos via installed <see cref="EntityViewInstaller{E}"/> instances.
-    /// </summary>
-    /// <typeparam name="E">
-    /// The type of entity to be viewed. Must implement <see cref="IEntity"/>.
-    /// </typeparam>
-    public abstract class EntityView<E> : EntityViewBase<E> where E : IEntity
+    public abstract class EntityView : EntityViewBase
     {
         /// <summary>
         /// Static comparer used to compare behaviours.
@@ -45,7 +21,7 @@ namespace Atomic.Entities
         
         [Tooltip("The list of installers used to configure and setup the entity view")]
         [SerializeField]
-        private List<EntityViewInstaller<E>> _installers;
+        private List<EntityViewInstaller> _installers;
 
         /// <summary>
         /// A collection of behaviours added to the entity via the view.
@@ -67,27 +43,25 @@ namespace Atomic.Entities
         [SerializeField]
         private bool _onlyEditModeGizmos;
 
-        /// <inheritdoc/>
         /// <summary>
         /// Called when the view is being shown. 
         /// This override installs any defined installers, adds registered behaviours to the entity,
         /// and activates the GameObject.
         /// </summary>
         /// <param name="entity">The entity being shown.</param>
-        protected override void OnShow(E entity)
+        protected override void OnShow(IEntity entity)
         {
             this.Install();
             entity.AddBehaviours(_behaviours, 0, _behaviourCount);
             base.OnShow(entity);
         }
 
-        /// <inheritdoc/>
         /// <summary>
         /// Called when the view is being hidden.
         /// This override removes previously added behaviours from the entity and deactivates the GameObject.
         /// </summary>
         /// <param name="entity">The entity being hidden.</param>
-        protected override void OnHide(E entity)
+        protected override void OnHide(IEntity entity)
         {
             entity.DelBehaviours(_behaviours, 0, _behaviourCount);
             base.OnHide(entity);
@@ -156,7 +130,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = _installers.Count; i < count; i++)
                 {
-                    EntityViewInstaller<E> installer = _installers[i];
+                    EntityViewInstaller installer = _installers[i];
                     if (installer != null)
                         installer.Install(this);
                 }
@@ -212,22 +186,24 @@ namespace Atomic.Entities
         public struct CreateArgs
         {
             public string name;
-            public List<EntityViewInstaller<E>> installers;
+            public List<EntityViewInstaller> installers;
             public IEnumerable<IEntityBehaviour> behaviours;
             public bool onlyEditModeGizmos;
             public bool onlySelectedGizmos;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Create<T>(CreateArgs args = default) where T : EntityView<E>
+        public static EntityView Create(CreateArgs args = default)
         {
             var gameObject = new GameObject(args.name);
             gameObject.SetActive(false);
-            T view = gameObject.AddComponent<T>();
+            
+            EntityView view = gameObject.AddComponent<EntityView>();
             view._installers = args.installers;
             view._behaviours = args.behaviours?.ToArray();
             view._onlyEditModeGizmos = args.onlyEditModeGizmos;
             view._onlySelectedGizmos = args.onlySelectedGizmos;
+            
             gameObject.SetActive(true);
             return view;
         }

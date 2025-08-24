@@ -15,10 +15,10 @@ namespace Atomic.Entities
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
 
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView",
-                installers = new List<EntityViewInstaller<IEntity>> {installer}
+                installers = new List<EntityViewInstaller> {installer}
             });
 
             var entity = new Entity();
@@ -36,7 +36,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator Hide_RemovesBehaviours_AndDisablesGameObject()
         {
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView"
             });
@@ -62,7 +62,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator AddBehaviour_AfterShow_ImmediatelyAddedToEntity()
         {
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView"
             });
@@ -82,7 +82,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator DelBehaviour_AfterShow_ImmediatelyRemovedFromEntity()
         {
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView"
             });

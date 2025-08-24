@@ -9,26 +9,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A non-generic base class for entity views working with general <see cref="IEntity"/> instances.
-    /// Inherits from <see cref="EntityViewBase{IEntity}"/> to provide default behavior for non-generic use cases.
-    /// </summary>
-    /// <remarks>
-    /// Useful when a generic parameter is not required or when working with polymorphic collections of views.
-    /// </remarks>
-    public abstract class EntityViewBase : EntityViewBase<IEntity>
-    {
-    }
-
-    /// <summary>
-    /// A base MonoBehaviour implementation of <see cref="IEntityView{E}"/> for displaying or managing
-    /// the visual representation of an entity of type <typeparamref name="E"/> in a Unity scene.
-    /// </summary>
-    /// <typeparam name="E">The type of entity this view handles. Must implement <see cref="IEntity"/>.</typeparam>
-    /// <remarks>
-    /// This base class handles binding and visibility logic. Override <see cref="OnShow(E)"/> and <see cref="OnHide(E)"/> to customize behavior.
-    /// </remarks>
-    public abstract class EntityViewBase<E> : MonoBehaviour, IEntityView<E> where E : IEntity
+    public abstract class EntityViewBase : MonoBehaviour, IEntityView
     {
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -41,7 +22,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
-        public E Entity => _entity;
+        public IEntity Entity => _entity;
 
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -49,11 +30,11 @@ namespace Atomic.Entities
 #endif
         public bool IsVisible => _isVisible;
 
-        private protected E _entity;
+        private protected IEntity _entity;
         private protected bool _isVisible;
 
         /// <inheritdoc/>
-        public void Show(E entity)
+        public void Show(IEntity entity)
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
             _isVisible = true;
@@ -68,22 +49,22 @@ namespace Atomic.Entities
 
             this.OnHide(_entity);
             _isVisible = false;
-            _entity = default;
+            _entity = null;
         }
 
         /// <summary>
         /// Called when the view is shown. Override to implement custom behavior (e.g. enable visuals).
         /// </summary>
         /// <param name="entity">The entity being shown.</param>
-        protected virtual void OnShow(E entity) => this.gameObject.SetActive(true);
+        protected virtual void OnShow(IEntity entity) => this.gameObject.SetActive(true);
 
         /// <summary>
         /// Called when the view is hidden. Override to implement custom behavior (e.g. disable visuals).
         /// </summary>
         /// <param name="entity">The entity being hidden.</param>
-        protected virtual void OnHide(E entity) => this.gameObject.SetActive(false);
+        protected virtual void OnHide(IEntity entity) => this.gameObject.SetActive(false);
 
-        public static void Destroy(EntityViewBase<E> view, float time = 0)
+        public static void Destroy(EntityViewBase view, float time = 0)
         {
             if (view)
             {
