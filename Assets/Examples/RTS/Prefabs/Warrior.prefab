@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8935788647876660831}
   - component: {fileID: 494722127738740240}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,10 +59,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 14a83a1ed2b6e43bbbac122ae4d53c8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +120,7 @@ GameObject:
   - component: {fileID: 6276131014593229788}
   - component: {fileID: 8821030069575764120}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,6 +166,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -198,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3141069101459334024}
   - component: {fileID: 8497453259572675288}
-  - component: {fileID: 4161693431325705418}
+  - component: {fileID: 7270004268072809945}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -236,8 +242,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _installers:
-  - {fileID: 4161693431325705418}
---- !u!114 &4161693431325705418
+  - {fileID: 7270004268072809945}
+  _onlySelectedGizmos: 0
+  _onlyEditModeGizmos: 0
+--- !u!114 &7270004268072809945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d0fd9acf7842d3a91627021dda40a2, type: 3}
+  m_Script: {fileID: 11500000, guid: ae900cea4ee845228e1128e1d1c132cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3141069101459334024}

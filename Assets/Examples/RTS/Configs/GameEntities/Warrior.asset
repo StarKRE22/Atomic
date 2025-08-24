@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370904b88384aa8bb214bdec12a3a99, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
+  InitialName: Warrior
+  InitialTagCount: 3
+  InitialValueCount: 15
+  InitialBehaviourCount: 3
   _transformInstaller:
     _scale:
       value: 1
@@ -21,13 +25,13 @@ MonoBehaviour:
     _rotationSpeed:
       value: 12
   _lifeInstaller:
-    _health: 3
+    _health: 0
   _meleeCombatInstaller:
     _attackCooldown: 1
     _attackDistance:
       value: 1
     _damage:
-      value: 1
+      value: 0
   _aiInstaller:
     _minDetectDuration: 0.2
     _maxDetectDuration: 0.3

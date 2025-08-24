@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -72,6 +73,12 @@ namespace Atomic.Entities
 
             string name = this.GetEntityName(entity);
             _viewPool.Return(name, view);
+        }
+
+        public void ClearViews()
+        {
+            foreach (IEntity entity in _views.Keys.ToArray())
+                this.RemoveView(entity);
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace RTSGame
         public string Name => this.name;
         
         public override IGameEntity Create() => new GameEntity(
-            this.InitialName,
+            this.Name,
             this.InitialTagCount,
             this.InitialValueCount,
             this.InitialBehaviourCount

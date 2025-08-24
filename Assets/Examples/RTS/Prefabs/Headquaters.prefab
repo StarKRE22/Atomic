@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7673907106864078327}
   - component: {fileID: 1067835268590508640}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,10 +58,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 14a83a1ed2b6e43bbbac122ae4d53c8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +98,7 @@ GameObject:
   - component: {fileID: 481719548711685882}
   - component: {fileID: 3064850760050433709}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +144,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -175,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141069101459334024}
-  - component: {fileID: 8497453259572675288}
+  - component: {fileID: 2263331300892048135}
   - component: {fileID: 2859853849887445547}
   m_Layer: 0
   m_Name: Headquaters
@@ -201,7 +207,7 @@ Transform:
   - {fileID: 6677326442308791362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8497453259572675288
+--- !u!114 &2263331300892048135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,6 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _installers:
   - {fileID: 2859853849887445547}
+  _onlySelectedGizmos: 0
+  _onlyEditModeGizmos: 0
 --- !u!114 &2859853849887445547
 MonoBehaviour:
   m_ObjectHideFlags: 0

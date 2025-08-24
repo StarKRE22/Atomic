@@ -105,10 +105,10 @@ namespace Atomic.Entities
         public IEnumerator Install_CalledOnlyOnce()
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView",
-                installers = new List<EntityViewInstaller<IEntity>> {installer}
+                installers = new List<EntityViewInstaller> {installer}
             });
 
             var entity = new Entity();
@@ -196,10 +196,10 @@ namespace Atomic.Entities
         [Test]
         public void Install_WithNullInstallers_DoesNotThrow()
         {
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView",
-                installers = new List<EntityViewInstaller<IEntity>>
+                installers = new List<EntityViewInstaller>
                 {
                     null,
                     new GameObject().AddComponent<TestInstaller>(),
@@ -218,10 +218,10 @@ namespace Atomic.Entities
         public void Install_CalledOnlyOnceEvenAfterMultipleShowHide()
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
-            var view = EntityView.Create(new EntityView<IEntity>.CreateArgs
+            var view = EntityView.Create(new EntityView.CreateArgs
             {
                 name = "EntityView",
-                installers = new List<EntityViewInstaller<IEntity>> {installer}
+                installers = new List<EntityViewInstaller> {installer}
             });
 
             var entity = new Entity();
@@ -282,7 +282,7 @@ namespace Atomic.Entities
             public bool Installed { get; private set; }
             public int CallCount { get; private set; }
 
-            protected override void Install(EntityView view)
+            public override void Install(EntityView view)
             {
                 Installed = true;
                 CallCount++;

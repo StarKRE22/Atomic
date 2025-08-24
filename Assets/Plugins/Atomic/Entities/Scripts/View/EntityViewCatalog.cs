@@ -9,7 +9,7 @@ namespace Atomic.Entities
         fileName = "EntityViewCatalog",
         menuName = "Atomic/Entities/New EntityViewCatalog"
     )]
-    public abstract class EntityViewCatalog : ScriptableObject
+    public class EntityViewCatalog : ScriptableObject
     {
         [Tooltip("The list of view prefabs available in this catalog")]
         [SerializeField]

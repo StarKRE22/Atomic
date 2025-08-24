@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337105b774754ec7a0b9f51107ef8c70, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  initialTagCount: 3
-  initialValueCount: 15
-  initialBehaviourCount: 3
-  initialName: Tank
+  InitialName: 
+  InitialTagCount: 3
+  InitialValueCount: 15
+  InitialBehaviourCount: 3
   _transformInstaller:
     _scale:
       value: 1

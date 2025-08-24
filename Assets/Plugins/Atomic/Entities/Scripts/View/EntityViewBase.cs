@@ -9,7 +9,9 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public abstract class EntityViewBase : MonoBehaviour, IEntityView
+    [AddComponentMenu("Atomic/Entities/Entity View Base")]
+    [DisallowMultipleComponent]
+    public class EntityViewBase : MonoBehaviour, IEntityView
     {
         /// <inheritdoc/>
 #if ODIN_INSPECTOR

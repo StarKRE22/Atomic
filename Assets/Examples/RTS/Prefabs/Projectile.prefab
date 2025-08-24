@@ -58,6 +58,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -93,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3141069101459334024}
   - component: {fileID: 8497453259572675288}
-  - component: {fileID: 2872022532136594304}
+  - component: {fileID: 2018461362408615404}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -130,8 +133,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _installers:
-  - {fileID: 2872022532136594304}
---- !u!114 &2872022532136594304
+  - {fileID: 2018461362408615404}
+  _onlySelectedGizmos: 0
+  _onlyEditModeGizmos: 0
+--- !u!114 &2018461362408615404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 946cc2ed426c41329616ab62eab4a6f7, type: 3}
+  m_Script: {fileID: 11500000, guid: ae900cea4ee845228e1128e1d1c132cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3141069101459334024}

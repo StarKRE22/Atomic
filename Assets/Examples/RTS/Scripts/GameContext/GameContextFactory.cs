@@ -21,7 +21,7 @@ namespace RTSGame
         public override IGameContext Create()
         {
             var context = new GameContext(
-                this.InitialName,
+                this.name,
                 this.InitialTagCount,
                 this.InitialValueCount,
                 this.InitialBehaviourCount

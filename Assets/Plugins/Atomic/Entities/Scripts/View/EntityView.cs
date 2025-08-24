@@ -13,7 +13,9 @@ using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
-    public abstract class EntityView : EntityViewBase
+    [AddComponentMenu("Atomic/Entities/Entity View")]
+    [DisallowMultipleComponent]
+    public class EntityView : EntityViewBase
     {
         /// <summary>
         /// Static comparer used to compare behaviours.

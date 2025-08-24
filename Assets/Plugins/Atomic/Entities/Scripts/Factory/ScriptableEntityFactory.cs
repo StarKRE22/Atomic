@@ -31,7 +31,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
         public override IEntity Create() => new Entity(
-            this.InitialName,
+            this.name,
             this.InitialTagCount,
             this.InitialValueCount,
             this.InitialBehaviourCount
@@ -52,14 +52,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
-#endif
-        [Tooltip("Initial name to assign to the entity")]
-        [SerializeField]
-        protected string InitialName;
-
-#if ODIN_INSPECTOR
-        [ReadOnly]
-        [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
         [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
@@ -68,6 +61,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
         [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
@@ -76,6 +70,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
         [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
@@ -114,7 +109,6 @@ namespace Atomic.Entities
         protected virtual void Reset()
         {
 #if UNITY_EDITOR
-            this.InitialName = this.name;
             this.InitialTagCount = 0;
             this.InitialValueCount = 0;
             this.InitialBehaviourCount = 0;
@@ -128,6 +122,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
         protected virtual void Precompile()
         {
@@ -139,7 +134,6 @@ namespace Atomic.Entities
             }
             else
             {
-                this.InitialName = entity.Name;
                 this.InitialTagCount = entity.TagCount;
                 this.InitialValueCount = entity.ValueCount;
                 this.InitialBehaviourCount = entity.BehaviourCount;
