@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31906a31d5fa4ecfabc75980127d42ab, type: 3}
   m_Name: Projectile
   m_EditorClassIdentifier: 
+  InitialTagCount: 1
+  InitialValueCount: 7
+  InitialBehaviourCount: 2
   _moveSpeed:
     value: 5
   _damage:
     value: 1
   _lifetime: 3
-  _radius:
-    value: 1
+  _transformInstaller:
+    _scale:
+      value: 1
