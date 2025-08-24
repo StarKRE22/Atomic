@@ -21,10 +21,10 @@ namespace RTSGame
         public override IGameContext Create()
         {
             var context = new GameContext(
-                this.initialName,
-                this.initialTagCount,
-                this.initialValueCount,
-                this.initialBehaviourCount
+                this.InitialName,
+                this.InitialTagCount,
+                this.InitialValueCount,
+                this.InitialBehaviourCount
             );
             _gameEntityInstaller.Install(context);
             _playerSystemInstaller.Install(context);

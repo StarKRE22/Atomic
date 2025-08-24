@@ -24,8 +24,9 @@ namespace RTSGame
         [SerializeField]
         private AIEntityInstaller _aiInstaller;
 
-        protected override void Install(IGameEntity entity)
+        public override IGameEntity Create()
         {
+            var entity = base.Create();
             entity.AddUnitTag();
             entity.AddTeam(new ReactiveVariable<TeamType>());
             
@@ -34,6 +35,8 @@ namespace RTSGame
             _lifeInstaller.Install(entity);
             _meleeCombatInstaller.Install(entity);
             _aiInstaller.Install(entity);
+            
+            return entity;
         }
     }
 }

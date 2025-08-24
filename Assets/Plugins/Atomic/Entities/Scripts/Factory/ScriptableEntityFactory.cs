@@ -1,5 +1,6 @@
 #if UNITY_5_3_OR_NEWER
 using System;
+using System.Reflection;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -19,31 +20,23 @@ namespace Atomic.Entities
     /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
     /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
     /// </remarks>
-    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+    [CreateAssetMenu(
+        fileName = "EntityFactory",
+        menuName = "Atomic/Entities/New EntityFactory"
+    )]
+    public class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
     {
         /// <summary>
         /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
         /// and applies additional configuration via the <see cref="Install"/> method.
         /// </summary>
         /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
-        public sealed override IEntity Create()
-        {
-            var entity = new Entity(
-                this.initialName,
-                this.initialTagCount,
-                this.initialValueCount,
-                this.initialBehaviourCount
-            );
-            this.Install(entity);
-            return entity;
-        }
-
-        /// <summary>
-        /// Applies additional logic to the newly created <see cref="Entity"/> instance.
-        /// Override this method to inject behaviors, tags, values, or other initialization logic.
-        /// </summary>
-        /// <param name="entity">The entity to configure after creation.</param>
-        protected abstract void Install(Entity entity);
+        public override IEntity Create() => new Entity(
+            this.InitialName,
+            this.InitialTagCount,
+            this.InitialValueCount,
+            this.InitialBehaviourCount
+        );
     }
 
     /// <summary>
@@ -61,9 +54,17 @@ namespace Atomic.Entities
         [ReadOnly]
         [FoldoutGroup("Optimization")]
 #endif
+        [Tooltip("Initial name to assign to the entity")]
+        [SerializeField]
+        protected string InitialName;
+
+#if ODIN_INSPECTOR
+        [ReadOnly]
+        [FoldoutGroup("Optimization")]
+#endif
         [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
-        protected int initialTagCount;
+        protected int InitialTagCount;
 
 #if ODIN_INSPECTOR
         [ReadOnly]
@@ -71,7 +72,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
-        protected int initialValueCount;
+        protected int InitialValueCount;
 
 #if ODIN_INSPECTOR
         [ReadOnly]
@@ -79,15 +80,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
-        protected int initialBehaviourCount;
-
-#if ODIN_INSPECTOR
-        [ReadOnly]
-        [FoldoutGroup("Optimization")]
-#endif
-        [Tooltip("Initial name to assign to the entity")]
-        [SerializeField]
-        protected string initialName;
+        protected int InitialBehaviourCount;
 
         /// <summary>
         /// Creates and returns a new instance of the entity.
@@ -122,10 +115,10 @@ namespace Atomic.Entities
         protected virtual void Reset()
         {
 #if UNITY_EDITOR
-            this.initialName = this.name;
-            this.initialTagCount = 0;
-            this.initialValueCount = 0;
-            this.initialBehaviourCount = 0;
+            this.InitialName = this.name;
+            this.InitialTagCount = 0;
+            this.InitialValueCount = 0;
+            this.InitialBehaviourCount = 0;
 #endif
         }
 
@@ -146,10 +139,10 @@ namespace Atomic.Entities
                 return;
             }
 
-            this.initialName = entity.Name;
-            this.initialTagCount = entity.TagCount;
-            this.initialValueCount = entity.ValueCount;
-            this.initialBehaviourCount = entity.BehaviourCount;
+            this.InitialName = entity.Name;
+            this.InitialTagCount = entity.TagCount;
+            this.InitialValueCount = entity.ValueCount;
+            this.InitialBehaviourCount = entity.BehaviourCount;
 #endif
         }
     }
