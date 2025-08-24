@@ -6,7 +6,7 @@ namespace RTSGame
 {
     [CreateAssetMenu(
         fileName = "WarriorFactory",
-        menuName = "RTSGame/New WarriorFactory"
+        menuName = "RTSGame/GameEntities/New WarriorFactory"
     )]
     public sealed class WarriorFactory : ScriptableEntityInstaller<IGameEntity>
     {

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -28,7 +26,5 @@ namespace RTSGame
             context.AddTeamViewConfig(_teamViewConfig);
             return context;
         }
-
-      
     }
 }

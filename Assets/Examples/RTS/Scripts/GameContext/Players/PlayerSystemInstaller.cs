@@ -10,7 +10,7 @@ namespace RTSGame
     {
         [SerializeField]
         private PlayerContextFactory _playerFactory;
-        
+
         public void Install(IGameContext context)
         {
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>
@@ -20,11 +20,10 @@ namespace RTSGame
             });
         }
 
-        private IPlayerContext CreatePlayerContext(TeamType teamType, IGameContext context)
-        {
-            _playerFactory.EntityWorld = context.GetEntityWorld(); 
-            _playerFactory.TeamType = teamType;
-            return _playerFactory.Create();
-        }
+        private IPlayerContext CreatePlayerContext(TeamType teamType, IGameContext context) =>
+            _playerFactory
+                .SetEntityWorld(context.GetEntityWorld())
+                .SetTeamType(teamType)
+                .Create();
     }
 }

@@ -5,7 +5,7 @@ namespace RTSGame
 {
     [CreateAssetMenu(
         fileName = "ProjectileFactory",
-        menuName = "RTSGame/New ProjectileFactory"
+        menuName = "RTSGame/GameEntities/New ProjectileFactory"
     )]
     public sealed class ProjectileFactory : GameEntityFactory
     {
