@@ -308,7 +308,7 @@ namespace Atomic.Entities
         {
             foreach (int key in entity.Values.Keys)
             {
-                if (this.tags.TryGetValue(key, out List<IEntity> entities))
+                if (this.values.TryGetValue(key, out List<IEntity> entities))
                 {
                     entities.Remove(entity);
                 }
