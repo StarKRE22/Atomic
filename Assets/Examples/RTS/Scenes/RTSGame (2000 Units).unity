@@ -166,6 +166,7 @@ MonoBehaviour:
   _gameContextFactory: {fileID: 11400000, guid: c7be78091b4bf46838d8f7bddb63cb21, type: 2}
   _entityCollectionView: {fileID: 1245728445}
   _bakingMode: 0
+  _spawnUnits: 10
 --- !u!1 &441292360
 GameObject:
   m_ObjectHideFlags: 0

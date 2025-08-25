@@ -31,7 +31,7 @@ namespace RTSGame
             playerContext.AddTeam(new Const<TeamType>(_teamType));
             
             EntityFilter<IGameEntity> filter = new EntityFilter<IGameEntity>(_entityWorld,
-                e => TeamUseCase.IsEnemy(e, _teamType));
+                e => TeamUseCase.IsEnemyUnit(e, _teamType));
          
             playerContext.AddEnemyFilter(filter);
             return playerContext;

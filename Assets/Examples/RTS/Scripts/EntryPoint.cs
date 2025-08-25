@@ -19,6 +19,10 @@ namespace RTSGame
         [SerializeField]
         private bool _bakingMode;
 
+        [HideIf(nameof(_bakingMode))]
+        [SerializeField]
+        private int _spawnUnits = 100;
+        
         private EntityCollectionViewBinder<IGameEntity> _viewBinder;
         
         private void Awake()
@@ -28,7 +32,7 @@ namespace RTSGame
             if (_bakingMode)
                 InitGameCase.BakeUnits(_gameContext);
             else
-                InitGameCase.SpawnUnits(_gameContext);
+                InitGameCase.SpawnUnits(_gameContext, _spawnUnits);
 
             _gameContext.Spawn();
             _gameContext.Activate();

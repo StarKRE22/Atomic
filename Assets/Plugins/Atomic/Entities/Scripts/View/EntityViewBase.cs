@@ -64,7 +64,11 @@ namespace Atomic.Entities
         /// Called when the view is hidden. Override to implement custom behavior (e.g. disable visuals).
         /// </summary>
         /// <param name="entity">The entity being hidden.</param>
-        protected virtual void OnHide(IEntity entity) => this.gameObject.SetActive(false);
+        protected virtual void OnHide(IEntity entity)
+        {
+            if (this.gameObject) 
+                this.gameObject.SetActive(false);
+        }
 
         public static void Destroy(EntityViewBase view, float time = 0)
         {

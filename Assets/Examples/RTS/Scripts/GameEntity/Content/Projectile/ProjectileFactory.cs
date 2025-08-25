@@ -32,6 +32,7 @@ namespace RTSGame
             entity.AddMoveSpeed(_moveSpeed);
             entity.AddLifetime(new Cooldown(_lifetime));
             entity.AddTarget(new ReactiveVariable<IGameEntity>());
+            entity.AddTeam(new ReactiveVariable<TeamType>());
 
             entity.AddBehaviour(new ProjectileLifetimeBehaviour(context));
             entity.AddBehaviour(new ProjectileMoveBehaviour(context));

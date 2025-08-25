@@ -1,15 +1,8 @@
 namespace RTSGame
 {
-    public static partial class TeamUseCase
+    public static class TeamUseCase
     {
-        public static bool IsEnemy(IGameEntity source, IGameEntity target)
-        {
-            return source.GetTeam().Value != target.GetTeam().Value;
-        }
-        
-        public static bool IsEnemy(IGameEntity target, TeamType type)
-        {
-            return target.GetTeam().Value != type;
-        }
+        public static bool IsEnemyUnit(IGameEntity target, TeamType type) => 
+            target.HasUnitTag() && target.GetTeam().Value != type;
     }
 }
