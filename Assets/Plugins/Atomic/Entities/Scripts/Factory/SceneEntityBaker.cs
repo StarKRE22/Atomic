@@ -70,6 +70,34 @@ namespace Atomic.Entities
             return entities;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void BakeAll(ICollection<E> target, bool includeInactive = true)
+        {
+            if (target == null)
+                throw new System.ArgumentNullException(nameof(target));
+
+#if UNITY_2023_1_OR_NEWER
+            FindObjectsInactive include = includeInactive
+                ? FindObjectsInactive.Include
+                : FindObjectsInactive.Exclude;
+
+            SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
+#else
+            SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
+#endif
+
+            int count = bakers.Length;
+            for (int i = 0; i < count; i++)
+            {
+                SceneEntityBaker<E> baker = bakers[i];
+                if (!includeInactive && !baker.gameObject.activeInHierarchy)
+                    continue;
+
+                E entity = baker.Create();
+                target.Add(entity);
+            }
+        }
+
         /// <summary>
         /// Bakes all <see cref="SceneEntityBaker{E}"/>s in a specific <see cref="Scene"/>.
         /// </summary>

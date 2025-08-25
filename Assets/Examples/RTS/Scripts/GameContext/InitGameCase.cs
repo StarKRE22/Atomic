@@ -1,4 +1,3 @@
-using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame
@@ -8,12 +7,6 @@ namespace RTSGame
         private const string HEADQUARTERS_NAME = "Headquarters";
         private const string WARRIOR_NAME = "Warrior";
         private const string TANK_NAME = "Tank";
-
-        public static void BakeUnits(IGameContext context)
-        {
-            IGameEntity[] entities = SceneEntityBaker<IGameEntity>.BakeAll();
-            context.GetEntityWorld().AddRange(entities);
-        }
 
         public static void SpawnUnits(IGameContext context, int count = 100)
         {
