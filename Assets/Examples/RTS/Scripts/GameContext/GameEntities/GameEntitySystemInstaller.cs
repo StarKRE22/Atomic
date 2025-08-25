@@ -16,7 +16,7 @@ namespace RTSGame
                 new MultiEntityFactory<string, IGameEntity>(_catalog)
             ));
 
-            IEntityWorld<IGameEntity> entityWorld = new EntityWorld<IGameEntity>();
+            EntityWorld<IGameEntity> entityWorld = new EntityWorld<IGameEntity>();
             context.AddEntityWorld(entityWorld);
             
             context.WhenSpawn(entityWorld.Spawn);

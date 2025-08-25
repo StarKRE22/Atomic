@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 3141069101459334024}
   - component: {fileID: 8497453259572675288}
   - component: {fileID: 3652659177915688678}
+  - component: {fileID: 6638467102114009318}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -372,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cddd8c94f34bb4a1530d0f92e80758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _overrideName: 1
+  _customName: Tank
   _installers:
   - {fileID: 3652659177915688678}
   _onlySelectedGizmos: 0
@@ -392,3 +395,33 @@ MonoBehaviour:
   _renderers:
   - {fileID: 4462659273236926685}
   - {fileID: 2318777210656067590}
+--- !u!114 &6638467102114009318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258922563122937303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1efb1e447144ed5a25cf91712f4e587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyAfterBake: 1
+  _factory: {fileID: 11400000, guid: 806a1fe85759d4df5bf46519fdff9d74, type: 2}
+  _lifeBaker:
+    _current: 3
+    _max: 3
+  _moveBaker:
+    _moveSpeed:
+      value: 10
+    _rotationSpeed:
+      value: 180
+  _combatBaker:
+    _fireCooldown: 1
+    _fireDistance:
+      value: 5
+  _teamBaker:
+    _teamType: 0
+  _transformBaker:
+    _transform: {fileID: 3141069101459334024}

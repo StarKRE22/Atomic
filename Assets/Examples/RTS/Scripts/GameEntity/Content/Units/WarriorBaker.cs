@@ -1,4 +1,3 @@
-using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -14,12 +13,20 @@ namespace RTSGame
 
         [SerializeField]
         private CombatEntityBaker _combatBaker;
+        
+        [SerializeField]
+        private TeamEntityBaker _teamBaker;
+
+        [SerializeField]
+        private TransformEntityBaker _transformBaker;
 
         protected override void Install(IGameEntity entity)
         {
             entity.Install(_moveBaker);
             entity.Install(_lifeBaker);
             entity.Install(_combatBaker);
+            entity.Install(_teamBaker);
+            entity.Install(_transformBaker);
         }
     }
 }

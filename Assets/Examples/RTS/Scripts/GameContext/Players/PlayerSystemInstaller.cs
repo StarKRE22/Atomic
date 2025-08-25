@@ -13,17 +13,16 @@ namespace RTSGame
 
         public void Install(IGameContext context)
         {
+            _playerFactory.SetEntityWorld(context.GetEntityWorld());
+
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>
             {
-                {TeamType.BLUE, this.CreatePlayerContext(TeamType.BLUE, context)},
-                {TeamType.RED, this.CreatePlayerContext(TeamType.RED, context)}
+                {TeamType.BLUE, this.CreatePlayerContext(TeamType.BLUE)},
+                {TeamType.RED, this.CreatePlayerContext(TeamType.RED)}
             });
         }
 
-        private IPlayerContext CreatePlayerContext(TeamType teamType, IGameContext context) =>
-            _playerFactory
-                .SetEntityWorld(context.GetEntityWorld())
-                .SetTeamType(teamType)
-                .Create();
+        private IPlayerContext CreatePlayerContext(TeamType teamType) =>
+            _playerFactory.SetTeamType(teamType).Create();
     }
 }

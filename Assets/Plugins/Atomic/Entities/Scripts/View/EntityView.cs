@@ -17,10 +17,7 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityView : EntityViewBase
     {
-        /// <summary>
-        /// Static comparer used to compare behaviours.
-        /// </summary>
-        
+        [Space]
         [Tooltip("The list of installers used to configure and setup the entity view")]
         [SerializeField]
         private List<EntityViewInstaller> _installers;

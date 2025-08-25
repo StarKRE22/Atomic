@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cddd8c94f34bb4a1530d0f92e80758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _overrideName: 1
+  _customName: Projectile
   _installers:
   - {fileID: 2018461362408615404}
   _onlySelectedGizmos: 0

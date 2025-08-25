@@ -17,9 +17,9 @@ namespace RTSGame
         private EntityCollectionView _entityCollectionView;
         
         [SerializeField]
-        private bool _bakingMode;
+        private bool _bakeUnits;
 
-        [HideIf(nameof(_bakingMode))]
+        [HideIf(nameof(_bakeUnits))]
         [SerializeField]
         private int _spawnUnits = 100;
         
@@ -29,7 +29,7 @@ namespace RTSGame
         {
             _gameContext = _gameContextFactory.Create();
 
-            if (_bakingMode)
+            if (_bakeUnits)
                 SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld());
             else
                 InitGameCase.SpawnUnits(_gameContext, _spawnUnits);

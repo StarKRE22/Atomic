@@ -7,8 +7,6 @@ namespace RTSGame
 {
     public static class GameEntityUseCase
     {
-        private static readonly Predicate<IEntity> DEFAULT_PREDICATE = _ => true;
-
         public static IGameEntity Spawn(
             IGameContext context,
             string name,
@@ -38,11 +36,12 @@ namespace RTSGame
         public static IGameEntity FindClosestEnemyFor(IGameContext context, IGameEntity entity)
         {
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, entity);
-            IEnumerable<IGameEntity> enemyFilter = playerContext.GetEnemyFilter();
+            Debug.Log($"PLAYER CONTEXT FOR {playerContext}");
+            EntityFilter<IGameEntity> enemyFilter = playerContext.GetEnemyFilter();
             return FindClosest(enemyFilter, entity.GetPosition().Value);
         }
 
-        public static IGameEntity FindClosest(IEnumerable<IGameEntity> entities, Vector3 center)
+        public static IGameEntity FindClosest(EntityFilter<IGameEntity> entities, Vector3 center)
         {
             IGameEntity result = null;
 
@@ -59,36 +58,6 @@ namespace RTSGame
             }
 
             return result;
-        }
-
-        public static bool FindClosest(
-            IGameContext context,
-            Vector3 center,
-            out IGameEntity result,
-            Predicate<IGameEntity> predicate = null
-        )
-        {
-            predicate ??= DEFAULT_PREDICATE;
-
-            result = null;
-            IEntityWorld<IGameEntity> world = context.GetEntityWorld();
-
-            float minDistance = float.MaxValue;
-            foreach (IGameEntity entity in world)
-            {
-                if (!predicate.Invoke(entity))
-                    continue;
-
-                Vector3 position = entity.GetPosition().Value;
-                float distance = Vector3.SqrMagnitude(position - center);
-                if (distance < minDistance)
-                {
-                    result = entity;
-                    minDistance = distance;
-                }
-            }
-
-            return result != null;
         }
     }
 }

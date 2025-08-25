@@ -13,17 +13,23 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     public class EntityViewBase : MonoBehaviour, IEntityView
     {
+        [SerializeField]
+        private bool _overrideName;
+
+#if ODIN_INSPECTOR
+        [ShowIf(nameof(_overrideName))]
+#endif
+        [SerializeField]
+        private string _customName;
+
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
         [Title("Debug")]
         [ShowInInspector, HideInEditorMode]
 #endif
-        public virtual string Name => this.name;
+        public virtual string Name => _overrideName ? _customName : this.name;
 
         /// <inheritdoc/>
-#if ODIN_INSPECTOR
-        [ShowInInspector, HideInEditorMode]
-#endif
         public IEntity Entity => _entity;
 
         /// <inheritdoc/>
@@ -66,7 +72,7 @@ namespace Atomic.Entities
         /// <param name="entity">The entity being hidden.</param>
         protected virtual void OnHide(IEntity entity)
         {
-            if (this.gameObject) 
+            if (this.gameObject)
                 this.gameObject.SetActive(false);
         }
 
@@ -78,6 +84,22 @@ namespace Atomic.Entities
                 Destroy(view.gameObject, time);
             }
         }
+
+        [ContextMenu("Assign Custom Name From GameObject")]
+        private void AssignCustomNameFromGameObject() => _customName = this.name;
+
+        #region Debug
+
+#if ODIN_INSPECTOR
+        [ShowInInspector, HideInEditorMode, LabelText("Entity")]
+#endif
+        private IEntity DebugEntity
+        {
+            get => _entity;
+            set => _entity = value;
+        }
+
+        #endregion
     }
 }
 #endif

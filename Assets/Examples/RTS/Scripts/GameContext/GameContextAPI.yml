@@ -14,7 +14,7 @@ imports:
 
 #Core
 values:
-  - EntityWorld: IEntityWorld<IGameEntity>
+  - EntityWorld: EntityWorld<IGameEntity>
   - EntityPool: IMultiEntityPool<string, IGameEntity>
   - Players: Dictionary<TeamType, IPlayerContext>
 

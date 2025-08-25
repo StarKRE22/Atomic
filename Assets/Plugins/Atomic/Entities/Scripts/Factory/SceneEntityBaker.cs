@@ -15,12 +15,13 @@ namespace Atomic.Entities
 
     public abstract class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
     {
-        [SerializeField]
-        internal ScriptableEntityFactory<E> _factory;
-
         [Tooltip("Should destroy this Game Object after baking?")]
         [SerializeField]
         internal bool _destroyAfterBake = true;
+        
+        [Space]
+        [SerializeField]
+        internal ScriptableEntityFactory<E> _factory;
 
         public E Bake()
         {

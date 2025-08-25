@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -46,6 +50,9 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public int Count => this.state.Count;
 
+#if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
         private readonly EntityCollection<E> state;
 
         private readonly IReadOnlyEntityCollection<E> source;
