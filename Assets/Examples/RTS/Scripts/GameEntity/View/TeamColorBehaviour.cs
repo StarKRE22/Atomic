@@ -13,9 +13,10 @@ namespace RTSGame
         private IReactiveValue<TeamType> _team;
         private TeamViewConfig _viewConfig;
 
-        public TeamColorBehaviour(IEnumerable<Renderer> renderers)
+        public TeamColorBehaviour(IEnumerable<Renderer> renderers, IGameContext context)
         {
             _renderers = renderers;
+            _gameContext = context;
         }
 
         public void OnSpawn(IGameEntity entity)

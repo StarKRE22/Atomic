@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c370904b88384aa8bb214bdec12a3a99, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  InitialName: Warrior
   InitialTagCount: 3
   InitialValueCount: 15
   InitialBehaviourCount: 3

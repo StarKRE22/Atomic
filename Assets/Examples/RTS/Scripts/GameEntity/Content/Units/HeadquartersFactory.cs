@@ -15,15 +15,13 @@ namespace RTSGame
         [SerializeField]
         private LifeEntityInstaller _lifeInstaller;
 
-        public override IGameEntity Create()
+        protected override void Install(IGameEntity entity)
         {
-            var entity = base.Create();
             entity.AddUnitTag();
             entity.AddTeam(new ReactiveVariable<TeamType>());
         
             _transformInstaller.Install(entity);
             _lifeInstaller.Install(entity);
-            return entity;
         }
     }
 }

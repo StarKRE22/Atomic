@@ -69,6 +69,7 @@ namespace Atomic.Entities
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
+            
             EntityRegistry.Instance.Register(this, out this.instanceId);
         }
         

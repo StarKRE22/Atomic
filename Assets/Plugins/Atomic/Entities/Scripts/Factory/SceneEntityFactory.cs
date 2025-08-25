@@ -29,22 +29,17 @@ namespace Atomic.Entities
         /// </summary>
         public sealed override IEntity Create()
         {
-            Entity entity = new Entity(
-                this.initialName,
-                this.initialTagCount,
-                this.initialValueCount,
-                this.initialBehaviourCount
+            var entity = new Entity(
+                this.name,
+                this.InitialTagCount,
+                this.InitialValueCount,
+                this.InitialBehaviourCount
             );
             this.Install(entity);
             return entity;
         }
 
-        /// <summary>
-        /// Applies additional configuration to the newly created <see cref="Entity"/>.
-        /// This method can be used to inject custom logic, add components, behaviors, or metadata.
-        /// </summary>
-        /// <param name="entity">The entity to configure after creation.</param>
-        protected abstract void Install(Entity entity);
+        protected abstract void Install(IEntity entity);
     }
 
     /// <summary>
@@ -61,45 +56,32 @@ namespace Atomic.Entities
     /// </remarks>
     public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
-        /// <summary>
-        /// Initial number of tags to assign to the entity.
-        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
+        [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
-        protected int initialTagCount;
+        protected int InitialTagCount;
 
-        /// <summary>
-        /// Initial number of values to assign to the entity.
-        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
+        [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
-        protected int initialValueCount;
+        protected int InitialValueCount;
 
-        /// <summary>
-        /// Initial number of behaviours to assign to the entity.
-        /// </summary>
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
 #endif
+        [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
-        protected int initialBehaviourCount;
-
-        /// <summary>
-        /// Initial name to assign to the entity.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [ReadOnly]
-        [FoldoutGroup("Optimization")]
-#endif
-        [SerializeField]
-        protected string initialName;
+        protected int InitialBehaviourCount;
 
         /// <summary>
         /// Creates and returns a new instance of the entity.
@@ -134,13 +116,11 @@ namespace Atomic.Entities
         protected virtual void Reset()
         {
 #if UNITY_EDITOR
-            this.initialName = this.name;
-            this.initialTagCount = 0;
-            this.initialValueCount = 0;
-            this.initialBehaviourCount = 0;
+            this.InitialTagCount = 0;
+            this.InitialValueCount = 0;
+            this.InitialBehaviourCount = 0;
 #endif
         }
-
 
         /// <summary>
         /// Creates a temporary entity using <see cref="Create"/> and extracts basic metadata such as
@@ -158,10 +138,9 @@ namespace Atomic.Entities
                 return;
             }
 
-            this.initialName = entity.Name;
-            this.initialTagCount = entity.TagCount;
-            this.initialValueCount = entity.ValueCount;
-            this.initialBehaviourCount = entity.BehaviourCount;
+            this.InitialTagCount = entity.TagCount;
+            this.InitialValueCount = entity.ValueCount;
+            this.InitialBehaviourCount = entity.BehaviourCount;
 #endif
         }
     }

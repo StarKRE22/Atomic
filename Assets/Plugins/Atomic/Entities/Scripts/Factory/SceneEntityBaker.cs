@@ -33,6 +33,7 @@ namespace Atomic.Entities
             return entity;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected abstract E Bake();
 
         /// <summary>

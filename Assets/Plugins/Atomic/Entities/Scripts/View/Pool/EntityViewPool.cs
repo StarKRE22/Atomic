@@ -12,12 +12,15 @@ namespace Atomic.Entities
     /// A Unity-based pool manager for reusing entity view instances based on their names.
     /// This reduces memory allocations and improves performance by avoiding frequent instantiations.
     /// </summary>
-    public abstract class EntityViewPool : EntityViewPoolAbstract
+    [AddComponentMenu("Atomic/Entities/Entity View Pool")]
+    [DisallowMultipleComponent]
+    public class EntityViewPool : EntityViewPoolAbstract
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
         internal Transform _container;
 
+        [Space]
         [Tooltip("A list of view catalogs to preload view prefabs from on Awake")]
         [SerializeField]
         internal EntityViewCatalog[] _catalogs;
@@ -62,7 +65,7 @@ namespace Atomic.Entities
                 return view;
 
             if (!_prefabs.TryGetValue(name, out EntityViewBase prefab))
-                throw new KeyNotFoundException($"Entity view with name <{name}> was not present in Entity View Pool!");
+                throw new KeyNotFoundException($"Entity view with name \"{name}\" was not present in Entity View Pool!");
 
             return Instantiate(prefab, _container);
         }

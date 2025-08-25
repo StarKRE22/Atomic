@@ -15,7 +15,7 @@ namespace RTSGame
         {
             view.AddBehaviour(new PositionViewBehaviour(_transform));
             view.AddBehaviour(new RotationViewBehaviour(_transform));
-            view.AddBehaviour(new TeamColorBehaviour(_renderers));
+            view.AddBehaviour(new TeamColorBehaviour(_renderers, EntryPoint.GameContext));
         }
     }
 }

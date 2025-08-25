@@ -21,10 +21,8 @@ namespace RTSGame
         [SerializeField]
         private TransformEntityInstaller _transformInstaller;
 
-        public override IGameEntity Create()
+        protected override void Install(IGameEntity entity)
         {
-            IGameEntity entity = base.Create();
-            
             IGameContext context = EntryPoint.GameContext;
             entity.AddProjectileTag();
             
@@ -37,8 +35,6 @@ namespace RTSGame
 
             entity.AddBehaviour(new ProjectileLifetimeBehaviour(context));
             entity.AddBehaviour(new ProjectileMoveBehaviour(context));
-            
-            return entity;
         }
     }
 }

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcd52a191714bd8bc3cc00be0390c24, type: 3}
   m_Name: PlayerContextFactory
   m_EditorClassIdentifier: 
-  initialTagCount: 0
-  initialValueCount: 0
-  initialBehaviourCount: 0
-  initialName: 
+  InitialTagCount: 0
+  InitialValueCount: 2
+  InitialBehaviourCount: 0

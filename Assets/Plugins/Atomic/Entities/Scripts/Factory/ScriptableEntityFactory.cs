@@ -19,23 +19,26 @@ namespace Atomic.Entities
     /// In addition to creating the entity with predefined values, this class defines an <see cref="Install"/> method
     /// that allows injecting additional behaviors, components, or configuration into the newly created entity.
     /// </remarks>
-    [CreateAssetMenu(
-        fileName = "EntityFactory",
-        menuName = "Atomic/Entities/New EntityFactory"
-    )]
-    public class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+    public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
     {
         /// <summary>
         /// Creates a new <see cref="Entity"/> using the initial parameters defined in the factory
         /// and applies additional configuration via the <see cref="Install"/> method.
         /// </summary>
         /// <returns>A fully constructed and configured <see cref="Entity"/>.</returns>
-        public override IEntity Create() => new Entity(
-            this.name,
-            this.InitialTagCount,
-            this.InitialValueCount,
-            this.InitialBehaviourCount
-        );
+        public sealed override IEntity Create()
+        {
+            var entity = new Entity(
+                this.name,
+                this.InitialTagCount,
+                this.InitialValueCount,
+                this.InitialBehaviourCount
+            );
+            this.Install(entity);
+            return entity;
+        }
+
+        protected abstract void Install(IEntity entity);
     }
 
     /// <summary>
