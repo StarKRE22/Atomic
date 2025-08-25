@@ -23,7 +23,7 @@ namespace RTSGame
 
         protected override void Install(IGameEntity entity)
         {
-            IGameContext context = EntryPoint.GameContext;
+            IGameContext context = GameContext.Instance;
             entity.AddProjectileTag();
             
             _transformInstaller.Install(entity);

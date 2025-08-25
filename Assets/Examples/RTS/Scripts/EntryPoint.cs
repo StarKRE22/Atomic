@@ -8,7 +8,7 @@ namespace RTSGame
     public sealed class EntryPoint : MonoBehaviour
     {
         [ShowInInspector, HideInEditorMode]
-        public static IGameContext GameContext { get; private set; }
+        private IGameContext _gameContext;
 
         [SerializeField]
         private GameContextFactory _gameContextFactory;
@@ -23,33 +23,33 @@ namespace RTSGame
         
         private void Awake()
         {
-            GameContext = _gameContextFactory.Create();
+            _gameContext = _gameContextFactory.Create();
 
             if (_bakingMode)
-                InitGameCase.BakeUnits(GameContext);
+                InitGameCase.BakeUnits(_gameContext);
             else
-                InitGameCase.SpawnUnits(GameContext);
+                InitGameCase.SpawnUnits(_gameContext);
 
-            GameContext.Spawn();
-            GameContext.Activate();
+            _gameContext.Spawn();
+            _gameContext.Activate();
         }
 
         private void Start() => _viewBinder = new EntityCollectionViewBinder<IGameEntity>(
-            GameContext.GetEntityWorld(),
+            _gameContext.GetEntityWorld(),
             _entityCollectionView
         );
 
-        private void Update() => GameContext.OnUpdate(Time.deltaTime);
+        private void Update() => _gameContext.OnUpdate(Time.deltaTime);
 
-        private void FixedUpdate() => GameContext.OnFixedUpdate(Time.fixedDeltaTime);
+        private void FixedUpdate() => _gameContext.OnFixedUpdate(Time.fixedDeltaTime);
 
-        private void LateUpdate() => GameContext.OnLateUpdate(Time.deltaTime);
+        private void LateUpdate() => _gameContext.OnLateUpdate(Time.deltaTime);
 
         private void OnDestroy()
         {
             _viewBinder.Dispose();
-            GameContext.Deactivate();
-            GameContext.Despawn();
+            _gameContext.Deactivate();
+            _gameContext.Despawn();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace RTSGame
         
         public void Install(IGameEntity entity)
         {
-            var gameContext = EntryPoint.GameContext;
+            var gameContext = GameContext.Instance;
             
             entity.AddFireCooldown(new Cooldown(_attackCooldown));
             entity.AddFirePoint(new InlineFunction<Vector3>(() => CombatUseCase.GetFirePoint(entity, _fireOffset.Value)));

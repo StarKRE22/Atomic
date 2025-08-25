@@ -12,7 +12,7 @@ namespace RTSGame
         
         public void Install(IGameEntity entity)
         {
-            IGameContext gameContext = EntryPoint.GameContext;
+            IGameContext gameContext = GameContext.Instance;
             entity.AddDamageableTag();
             entity.AddHealth(new Health(_health));
             entity.AddBehaviour(new DeathBehaviour(gameContext));

@@ -27,7 +27,7 @@ namespace Atomic.Entities
 
         internal int instanceId;
         private string name;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with the specified name, tags, values, and behaviours.
         /// </summary>
@@ -69,10 +69,10 @@ namespace Atomic.Entities
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
-            
+
             EntityRegistry.Instance.Register(this, out this.instanceId);
         }
-        
+
         /// <summary>
         /// Releases all resources used by the entity.
         /// </summary>
@@ -94,6 +94,11 @@ namespace Atomic.Entities
             this.UnsubscribeAll();
 
             EntityRegistry.Instance.Unregister(ref this.instanceId);
+            this.OnDispose();
+        }
+
+        protected virtual void OnDispose()
+        {
         }
 
         /// <inheritdoc/>
