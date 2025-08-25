@@ -9,10 +9,10 @@ namespace RTSGame
     public sealed class MeleeCombatEntityInstaller : IEntityInstaller<IGameEntity>
     {
         [SerializeField]
-        private float _attackCooldown = 1;
+        private float _fireCooldown = 1;
         
         [SerializeField]
-        private Const<float> _attackDistance = 1;
+        private Const<float> _fireDistance = 1;
 
         [SerializeField]
         private Const<int> _damage;
@@ -20,7 +20,7 @@ namespace RTSGame
         public void Install(IGameEntity entity)
         {
             entity.AddDamage(_damage);
-            entity.AddFireCooldown(new Cooldown(_attackCooldown));
+            entity.AddFireCooldown(new Cooldown(_fireCooldown));
             entity.AddFireRequest(new BaseRequest<IGameEntity>());
             entity.WhenFixedUpdate(_ =>
             {
@@ -35,7 +35,7 @@ namespace RTSGame
             });
             
             entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
-            entity.AddFireDistance(_attackDistance);
+            entity.AddFireDistance(_fireDistance);
             entity.AddFireEvent(new BaseEvent<IGameEntity>());
         }
     }

@@ -16,6 +16,7 @@ namespace RTSGame
             entity.AddPosition(new ReactiveVector3());
             entity.AddRotation(new ReactiveQuaternion());
             entity.AddScale(_scale);
+            entity.AddBehaviour<TransformGizmos>();
         }
     }
 }

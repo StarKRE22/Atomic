@@ -1,8 +1,9 @@
 using System;
-using System.Runtime.CompilerServices;
-using Unity.Collections.LowLevel.Unsafe;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Atomic.Entities
 {
@@ -65,33 +66,6 @@ namespace Atomic.Entities
         /// Installs data or behavior into a strongly-typed entity.
         /// </summary>
         /// <param name="entity">The entity to install.</param>
-        protected abstract void Install(T entity);
-    }
-
-    /// <summary>
-    /// An unsafe, strongly-typed scene-level installer for entities of type <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">The concrete type of entity to install. Must be a class implementing <see cref="IEntity"/>.</typeparam>
-    /// <remarks>
-    /// This abstract base class provides an unsafe override of <see cref="SceneEntityInstaller.Install(IEntity)"/> 
-    /// using <see cref="UnsafeUtility.As{TFrom, TTo}(ref TFrom)"/> to avoid runtime casting costs.
-    /// <para>
-    /// Use this class only when you are certain that the passed <see cref="IEntity"/> is of type <typeparamref name="T"/>, 
-    /// as incorrect usage may lead to undefined behavior.
-    /// </para>
-    /// </remarks>
-    public abstract class SceneEntityInstallerUnsafe<T> : SceneEntityInstaller where T : class, IEntity
-    {
-        /// <summary>
-        /// Installs the specified entity by casting it unsafely to <typeparamref name="T"/> and delegating to the type-safe method.
-        /// </summary>
-        /// <param name="entity">The entity to install. Must be of type <typeparamref name="T"/>.</param>
-        public sealed override void Install(IEntity entity) => this.Install(UnsafeUtility.As<IEntity, T>(ref entity));
-
-        /// <summary>
-        /// Performs installation logic for the strongly-typed entity.
-        /// </summary>
-        /// <param name="entity">The entity of type <typeparamref name="T"/> to configure.</param>
         protected abstract void Install(T entity);
     }
 }

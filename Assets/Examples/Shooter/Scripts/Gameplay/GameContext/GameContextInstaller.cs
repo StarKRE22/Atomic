@@ -37,9 +37,9 @@ namespace ShooterGame.Gameplay
             context.AddBulletPool(_bulletPool);
             context.AddGameOverEvent(new BaseEvent());
 
-            _spawnPointsInstaller.Install(context);
-            _gameCycleInstaller.Install(context);
-            _leaderboardInstaller.Install(context);
+            context.Install(_spawnPointsInstaller);
+            context.Install(_gameCycleInstaller);
+            context.Install(_leaderboardInstaller);
         }
     }
 }

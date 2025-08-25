@@ -1,4 +1,4 @@
-using Atomic.Elements;
+using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame
@@ -6,18 +6,11 @@ namespace RTSGame
     public sealed class HeadquartersBaker : GameEntityBaker
     {
         [SerializeField]
-        private TransformEntityInstaller _transformInstaller;
-        
-        [SerializeField]
-        private LifeEntityInstaller _lifeInstaller;
+        private LifeEntityBaker _lifeBaker;
 
         protected override void Install(IGameEntity entity)
         {
-            entity.AddUnitTag();
-            entity.AddTeam(new ReactiveVariable<TeamType>());
-        
-            _transformInstaller.Install(entity);
-            _lifeInstaller.Install(entity);
+            entity.Install(_lifeBaker);
         } 
     }
 }

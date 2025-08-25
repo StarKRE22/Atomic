@@ -13,30 +13,29 @@ namespace Atomic.Entities
     {
     }
 
-    /// <summary>
-    /// Scene entity baker that allows converting authoring components (MonoBehaviours)
-    /// into <typeparamref name="E"/> entities at runtime and removing their GameObjects.
-    /// </summary>
-    /// <typeparam name="E">The type of entity to create.</typeparam>
-    public abstract class SceneEntityBaker<E> : SceneEntityFactory<E> where E : IEntity
+    public abstract class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
     {
+        [SerializeField]
+        internal ScriptableEntityFactory<E> _factory;
+
         [Tooltip("Should destroy this Game Object after baking?")]
         [SerializeField]
-        private bool _destroyAfterBake = true;
+        internal bool _destroyAfterBake = true;
 
-        public sealed override E Create()
+        public E Bake()
         {
-            E entity = this.Bake();
+            E entity = _factory.Create();
+            this.Install(entity);
+
             if (_destroyAfterBake)
                 Destroy(this.gameObject);
 
             return entity;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected abstract E Bake();
+        protected abstract void Install(E entity);
 
-        /// <summary>
+    /// <summary>
         /// Finds all <see cref="SceneEntityBaker{E}"/> components in the scene and bakes them into entities.
         /// All corresponding GameObjects will be destroyed after baking.
         /// </summary>
@@ -63,7 +62,7 @@ namespace Atomic.Entities
                 if (!includeInactive && !baker.gameObject.activeInHierarchy)
                     continue;
 
-                E entity = baker.Create();
+                E entity = baker.Bake();
                 entities[i] = entity;
             }
 
@@ -71,10 +70,10 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void BakeAll(ICollection<E> target, bool includeInactive = true)
+        public static void BakeAll(ICollection<E> destination, bool includeInactive = true)
         {
-            if (target == null)
-                throw new System.ArgumentNullException(nameof(target));
+            if (destination == null)
+                throw new System.ArgumentNullException(nameof(destination));
 
 #if UNITY_2023_1_OR_NEWER
             FindObjectsInactive include = includeInactive
@@ -93,8 +92,8 @@ namespace Atomic.Entities
                 if (!includeInactive && !baker.gameObject.activeInHierarchy)
                     continue;
 
-                E entity = baker.Create();
-                target.Add(entity);
+                E entity = baker.Bake();
+                destination.Add(entity);
             }
         }
 
@@ -118,7 +117,7 @@ namespace Atomic.Entities
                     if (!includeInactive && !baker.gameObject.activeInHierarchy)
                         continue;
 
-                    E entity = baker.Create();
+                    E entity = baker.Bake();
                     result.Add(entity);
                 }
             }
@@ -143,7 +142,7 @@ namespace Atomic.Entities
                 if (!includeInactive && !baker.gameObject.activeInHierarchy)
                     continue;
 
-                E entity = baker.Create();
+                E entity = baker.Bake();
                 entities[i] = entity;
             }
 

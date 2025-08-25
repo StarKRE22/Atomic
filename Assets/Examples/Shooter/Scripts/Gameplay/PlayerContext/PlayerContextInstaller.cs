@@ -28,8 +28,8 @@ namespace ShooterGame.Gameplay
             context.AddTeamType(_teamType);
             context.AddInputMap(_inputMap);
 
-            _characterInstaller.Install(context);
-            _cameraInstaller.Install(context);
+            context.Install(_characterInstaller);
+            context.Install(_cameraInstaller);
         }
     }
 }

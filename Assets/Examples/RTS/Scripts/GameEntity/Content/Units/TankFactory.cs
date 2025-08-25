@@ -1,4 +1,5 @@
 using Atomic.Elements;
+using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame
@@ -29,11 +30,11 @@ namespace RTSGame
             entity.AddUnitTag();
             entity.AddTeam(new ReactiveVariable<TeamType>());
             
-            _transformInstaller.Install(entity);
-            _moveInstaller.Install(entity);
-            _lifeInstaller.Install(entity);
-            _combatInstaller.Install(entity);
-            _aiInstaller.Install(entity);
+            entity.Install(_transformInstaller);
+            entity.Install(_moveInstaller);
+            entity.Install(_lifeInstaller);
+            entity.Install(_combatInstaller);
+            entity.Install(_aiInstaller);
         }
     }
 }

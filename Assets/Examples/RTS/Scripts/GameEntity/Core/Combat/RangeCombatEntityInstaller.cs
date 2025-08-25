@@ -9,10 +9,10 @@ namespace RTSGame
     public sealed class RangeCombatEntityInstaller : IEntityInstaller<IGameEntity>
     {
         [SerializeField]
-        private Const<float> _attackDistance = 5;
+        private Const<float> _fireDistance = 5;
         
         [SerializeField]
-        private float _attackCooldown = 1;
+        private float _fireCooldown = 1;
         
         [SerializeField]
         private Const<Vector3> _fireOffset = new Vector3(0, 1, 1);
@@ -24,7 +24,7 @@ namespace RTSGame
         {
             var gameContext = GameContext.Instance;
             
-            entity.AddFireCooldown(new Cooldown(_attackCooldown));
+            entity.AddFireCooldown(new Cooldown(_fireCooldown));
             entity.AddFirePoint(new InlineFunction<Vector3>(() => CombatUseCase.GetFirePoint(entity, _fireOffset.Value)));
             entity.AddFireRequest(new BaseRequest<IGameEntity>());
             entity.WhenFixedUpdate(_ =>
@@ -40,7 +40,7 @@ namespace RTSGame
             });
 
             entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
-            entity.AddFireDistance(_attackDistance);
+            entity.AddFireDistance(_fireDistance);
             entity.AddFireEvent(new BaseEvent<IGameEntity>());
         }
     }

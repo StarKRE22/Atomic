@@ -203,7 +203,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static IEntity Install(this IEntity entity, IEntityInstaller installer)
         {
-            installer?.Install(entity);
+            installer.Install(entity);
             return entity;
         }
 
