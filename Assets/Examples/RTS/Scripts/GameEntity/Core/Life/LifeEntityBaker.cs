@@ -1,5 +1,6 @@
 using System;
 using Atomic.Entities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace RTSGame
@@ -9,10 +10,13 @@ namespace RTSGame
     {
         [SerializeField]
         private bool _active;
-
+        
+        [Space]
+        [EnableIf(nameof(_active))]
         [SerializeField]
         private int _current;
 
+        [EnableIf(nameof(_active))]
         [SerializeField]
         private int _max;
 

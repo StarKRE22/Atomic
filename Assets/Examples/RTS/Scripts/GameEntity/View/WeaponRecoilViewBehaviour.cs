@@ -38,5 +38,4 @@ namespace RTSGame
             seq.Append(_weapon.DOLocalMoveZ(_originalLocalPos.z, returnTime).SetEase(Ease.OutBack));
         }
     }
-
 }

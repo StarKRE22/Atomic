@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,11 +16,19 @@ namespace Atomic.Entities
 
     public abstract class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
     {
+#if ODIN_INSPECTOR
+        [GUIColor(0f, 0.83f, 1f)]
+        [DisableInPlayMode]
+#endif
         [Tooltip("Should destroy this Game Object after baking?")]
         [SerializeField]
         internal bool _destroyAfterBake = true;
         
-        [Space]
+#if ODIN_INSPECTOR
+        [PropertySpace(SpaceBefore = 0, SpaceAfter = 12)]
+        [AssetsOnly]
+#endif
+        [Tooltip("Entity Factory that baker will override")]
         [SerializeField]
         internal ScriptableEntityFactory<E> _factory;
 

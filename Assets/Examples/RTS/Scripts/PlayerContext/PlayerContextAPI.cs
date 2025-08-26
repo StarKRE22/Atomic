@@ -37,10 +37,12 @@ namespace RTSGame
 		#region EnemyFilter
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static EntityFilter<IGameEntity> GetEnemyFilter(this IPlayerContext entity) => entity.GetValue<EntityFilter<IGameEntity>>(EnemyFilter);
+		public static EntityFilter<IGameEntity> GetEnemyFilter(this IPlayerContext entity) => entity.GetValueUnsafe<EntityFilter<IGameEntity>>(EnemyFilter);
+
+		public static ref EntityFilter<IGameEntity> RefEnemyFilter(this IPlayerContext entity) => ref entity.GetValueUnsafe<EntityFilter<IGameEntity>>(EnemyFilter);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEnemyFilter(this IPlayerContext entity, out EntityFilter<IGameEntity> value) => entity.TryGetValue(EnemyFilter, out value);
+		public static bool TryGetEnemyFilter(this IPlayerContext entity, out EntityFilter<IGameEntity> value) => entity.TryGetValueUnsafe(EnemyFilter, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddEnemyFilter(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.AddValue(EnemyFilter, value);
@@ -59,10 +61,12 @@ namespace RTSGame
 		#region Team
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IValue<TeamType> GetTeam(this IPlayerContext entity) => entity.GetValue<IValue<TeamType>>(Team);
+		public static IValue<TeamType> GetTeam(this IPlayerContext entity) => entity.GetValueUnsafe<IValue<TeamType>>(Team);
+
+		public static ref IValue<TeamType> RefTeam(this IPlayerContext entity) => ref entity.GetValueUnsafe<IValue<TeamType>>(Team);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTeam(this IPlayerContext entity, out IValue<TeamType> value) => entity.TryGetValue(Team, out value);
+		public static bool TryGetTeam(this IPlayerContext entity, out IValue<TeamType> value) => entity.TryGetValueUnsafe(Team, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddTeam(this IPlayerContext entity, IValue<TeamType> value) => entity.AddValue(Team, value);

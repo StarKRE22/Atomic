@@ -1,5 +1,38 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &675632488408859945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7582158637512609521}
+  m_Layer: 0
+  m_Name: Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7582158637512609521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675632488408859945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5948162306037690326}
+  - {fileID: 6240964115049495386}
+  m_Father: {fileID: 3141069101459334024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495569411524896216
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,12 +60,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495569411524896216}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.7, z: 0.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.7, z: 0.29999995}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3141069101459334024}
+  m_Father: {fileID: 7582158637512609521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8286817332134937768
 MeshFilter:
@@ -134,12 +167,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5745363731737874568}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3141069101459334024}
+  m_Father: {fileID: 7582158637512609521}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6276131014593229788
 MeshFilter:
@@ -205,6 +238,7 @@ GameObject:
   - component: {fileID: 3141069101459334024}
   - component: {fileID: 8497453259572675288}
   - component: {fileID: 7270004268072809945}
+  - component: {fileID: 7218851486221765621}
   - component: {fileID: 8808063545637895219}
   m_Layer: 0
   m_Name: Warrior
@@ -226,8 +260,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5948162306037690326}
-  - {fileID: 6240964115049495386}
+  - {fileID: 7582158637512609521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8497453259572675288
@@ -246,6 +279,7 @@ MonoBehaviour:
   _customName: Warrior
   _installers:
   - {fileID: 7270004268072809945}
+  - {fileID: 7218851486221765621}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
 --- !u!114 &7270004268072809945
@@ -263,6 +297,20 @@ MonoBehaviour:
   _transform: {fileID: 3141069101459334024}
   _renderers:
   - {fileID: 8821030069575764120}
+--- !u!114 &7218851486221765621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8258922563122937303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a12ce8096440c4b292c566eadf629d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _root: {fileID: 7582158637512609521}
+  _weapon: {fileID: 6240964115049495386}
 --- !u!114 &8808063545637895219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,18 +326,26 @@ MonoBehaviour:
   _destroyAfterBake: 1
   _factory: {fileID: 11400000, guid: bff4f710d3b704ac7a6438e12d0bcf57, type: 2}
   _lifeBaker:
+    _active: 0
     _current: 5
     _max: 5
   _moveBaker:
     _moveSpeed:
+      active: 0
       value: 10
     _rotationSpeed:
+      active: 0
       value: 720
   _combatBaker:
-    _fireCooldown: 1
+    _fireCooldown:
+      active: 0
+      value: 1
     _fireDistance:
+      active: 0
       value: 5
   _teamBaker:
-    _teamType: 0
+    _teamType:
+      active: 0
+      value: 0
   _transformBaker:
     _transform: {fileID: 3141069101459334024}

@@ -30,7 +30,7 @@ namespace RTSGame
             _gameContext = _gameContextFactory.Create();
 
             if (_bakeUnits)
-                SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld());
+                SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), false);
             else
                 InitGameCase.SpawnUnits(_gameContext, _spawnUnits);
 

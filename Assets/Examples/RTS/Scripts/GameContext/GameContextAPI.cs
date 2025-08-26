@@ -41,10 +41,12 @@ namespace RTSGame
 		#region EntityWorld
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static EntityWorld<IGameEntity> GetEntityWorld(this IGameContext entity) => entity.GetValue<EntityWorld<IGameEntity>>(EntityWorld);
+		public static EntityWorld<IGameEntity> GetEntityWorld(this IGameContext entity) => entity.GetValueUnsafe<EntityWorld<IGameEntity>>(EntityWorld);
+
+		public static ref EntityWorld<IGameEntity> RefEntityWorld(this IGameContext entity) => ref entity.GetValueUnsafe<EntityWorld<IGameEntity>>(EntityWorld);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityWorld(this IGameContext entity, out EntityWorld<IGameEntity> value) => entity.TryGetValue(EntityWorld, out value);
+		public static bool TryGetEntityWorld(this IGameContext entity, out EntityWorld<IGameEntity> value) => entity.TryGetValueUnsafe(EntityWorld, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddEntityWorld(this IGameContext entity, EntityWorld<IGameEntity> value) => entity.AddValue(EntityWorld, value);
@@ -63,10 +65,12 @@ namespace RTSGame
 		#region EntityPool
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IMultiEntityPool<string, IGameEntity> GetEntityPool(this IGameContext entity) => entity.GetValue<IMultiEntityPool<string, IGameEntity>>(EntityPool);
+		public static IMultiEntityPool<string, IGameEntity> GetEntityPool(this IGameContext entity) => entity.GetValueUnsafe<IMultiEntityPool<string, IGameEntity>>(EntityPool);
+
+		public static ref IMultiEntityPool<string, IGameEntity> RefEntityPool(this IGameContext entity) => ref entity.GetValueUnsafe<IMultiEntityPool<string, IGameEntity>>(EntityPool);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEntityPool(this IGameContext entity, out IMultiEntityPool<string, IGameEntity> value) => entity.TryGetValue(EntityPool, out value);
+		public static bool TryGetEntityPool(this IGameContext entity, out IMultiEntityPool<string, IGameEntity> value) => entity.TryGetValueUnsafe(EntityPool, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddEntityPool(this IGameContext entity, IMultiEntityPool<string, IGameEntity> value) => entity.AddValue(EntityPool, value);
@@ -85,10 +89,12 @@ namespace RTSGame
 		#region Players
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Dictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext entity) => entity.GetValue<Dictionary<TeamType, IPlayerContext>>(Players);
+		public static Dictionary<TeamType, IPlayerContext> GetPlayers(this IGameContext entity) => entity.GetValueUnsafe<Dictionary<TeamType, IPlayerContext>>(Players);
+
+		public static ref Dictionary<TeamType, IPlayerContext> RefPlayers(this IGameContext entity) => ref entity.GetValueUnsafe<Dictionary<TeamType, IPlayerContext>>(Players);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPlayers(this IGameContext entity, out Dictionary<TeamType, IPlayerContext> value) => entity.TryGetValue(Players, out value);
+		public static bool TryGetPlayers(this IGameContext entity, out Dictionary<TeamType, IPlayerContext> value) => entity.TryGetValueUnsafe(Players, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddPlayers(this IGameContext entity, Dictionary<TeamType, IPlayerContext> value) => entity.AddValue(Players, value);
@@ -107,10 +113,12 @@ namespace RTSGame
 		#region TeamViewConfig
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static TeamViewConfig GetTeamViewConfig(this IGameContext entity) => entity.GetValue<TeamViewConfig>(TeamViewConfig);
+		public static TeamViewConfig GetTeamViewConfig(this IGameContext entity) => entity.GetValueUnsafe<TeamViewConfig>(TeamViewConfig);
+
+		public static ref TeamViewConfig RefTeamViewConfig(this IGameContext entity) => ref entity.GetValueUnsafe<TeamViewConfig>(TeamViewConfig);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetTeamViewConfig(this IGameContext entity, out TeamViewConfig value) => entity.TryGetValue(TeamViewConfig, out value);
+		public static bool TryGetTeamViewConfig(this IGameContext entity, out TeamViewConfig value) => entity.TryGetValueUnsafe(TeamViewConfig, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddTeamViewConfig(this IGameContext entity, TeamViewConfig value) => entity.AddValue(TeamViewConfig, value);

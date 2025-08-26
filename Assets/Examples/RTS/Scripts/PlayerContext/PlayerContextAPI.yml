@@ -1,6 +1,7 @@
 header: EntityAPI
 entityType: IPlayerContext
 aggressiveInlining: true
+unsafeAccess: true
 
 namespace: RTSGame
 className: PlayerContextAPI

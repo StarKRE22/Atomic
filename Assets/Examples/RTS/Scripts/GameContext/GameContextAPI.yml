@@ -1,6 +1,7 @@
 header: EntityAPI
 entityType: IGameContext
 aggressiveInlining: true
+unsafeAccess: true
 
 namespace: RTSGame
 className: GameContextAPI

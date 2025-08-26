@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   InitialTagCount: 3
-  InitialValueCount: 15
-  InitialBehaviourCount: 3
+  InitialValueCount: 16
+  InitialBehaviourCount: 4
   _transformInstaller:
     _scale:
       value: 1
@@ -24,13 +24,13 @@ MonoBehaviour:
     _rotationSpeed:
       value: 12
   _lifeInstaller:
-    _health: 0
+    _health: 5
   _meleeCombatInstaller:
-    _attackCooldown: 1
-    _attackDistance:
+    _fireCooldown: 1
+    _fireDistance:
       value: 1
     _damage:
-      value: 0
+      value: 1
   _aiInstaller:
     _minDetectDuration: 0.2
     _maxDetectDuration: 0.3
