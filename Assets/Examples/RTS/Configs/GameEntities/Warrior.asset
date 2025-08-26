@@ -17,14 +17,14 @@ MonoBehaviour:
   InitialBehaviourCount: 4
   _transformInstaller:
     _scale:
-      value: 1
+      value: 0.5
   _moveInstaller:
     _moveSpeed:
-      value: 3
+      value: 5
     _rotationSpeed:
-      value: 12
+      value: 360
   _lifeInstaller:
-    _health: 5
+    _health: 3
   _meleeCombatInstaller:
     _fireCooldown: 1
     _fireDistance:
@@ -32,5 +32,5 @@ MonoBehaviour:
     _damage:
       value: 1
   _aiInstaller:
-    _minDetectDuration: 0.2
-    _maxDetectDuration: 0.3
+    _minDetectDuration: 0.3
+    _maxDetectDuration: 0.4
