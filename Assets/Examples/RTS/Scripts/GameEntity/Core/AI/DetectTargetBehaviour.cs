@@ -6,6 +6,7 @@ namespace RTSGame
     public sealed class DetectTargetBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
     {
         private readonly IGameContext _gameContext;
+        private readonly IEntityWorld<IGameEntity> _entityWorld;
         private readonly ICooldown _cooldown;
 
         private IVariable<IGameEntity> _target;
@@ -15,6 +16,7 @@ namespace RTSGame
         {
             _cooldown = cooldown;
             _gameContext = context;
+            _entityWorld = context.GetEntityWorld();
         }
 
         public void OnSpawn(IGameEntity entity)
@@ -26,7 +28,8 @@ namespace RTSGame
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _cooldown.Tick(deltaTime);
-            if (_cooldown.IsCompleted())
+            
+            if (_cooldown.IsCompleted() && !_entityWorld.Contains(_target.Value))
             {
                 _target.Value = GameEntityUseCase.FindClosestEnemyFor(_gameContext, _entity);
                 _cooldown.ResetTime();

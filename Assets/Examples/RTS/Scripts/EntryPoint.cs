@@ -2,6 +2,7 @@ using System;
 using Atomic.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace RTSGame
 {
@@ -30,8 +31,9 @@ namespace RTSGame
         private bool _bakeIncludeInactive;
 
         [HideIf(nameof(_bakeUnits))]
+        [FormerlySerializedAs("_spawnUnits")]
         [SerializeField]
-        private int _spawnUnits = 100;
+        private int _unitColumns = 100;
 
         private EntityCollectionViewBinder<IGameEntity> _viewBinder;
 
@@ -50,7 +52,7 @@ namespace RTSGame
             if (_bakeUnits)
                 SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
             else
-                InitGameCase.SpawnUnits(_gameContext, _spawnUnits);
+                InitGameCase.SpawnUnits(_gameContext, _unitColumns);
         }
 
         private void BindEntityViews()

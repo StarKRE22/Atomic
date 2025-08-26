@@ -16,26 +16,26 @@ EditorBuildSettings:
     guid: be9bfa09430ff456eb76851b15fa7fd2
   - enabled: 1
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level2).unity
-    guid: 38562041c869c4d91b93c2510d2c149f
+    guid: 7b2ee36e12cdf44c5b8c0de6c0262fb9
   - enabled: 1
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level3).unity
-    guid: 92e6c3bd9e7714452b06d5c332f16708
-  - enabled: 1
+    guid: c597e0a1fe8ea400bbb8deeacee6fa9f
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level4).unity
     guid: 1f19e9ae07a77420f802622120f29991
-  - enabled: 1
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level5).unity
     guid: 81548a5ee8bfb4071a0d2ed499a7301f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level6).unity
     guid: 4df6d07bd60454faa966bf129ee8e38c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Level7).unity
     guid: def41bfe0957049428fa0b3122f7384e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Levell8).unity
     guid: dab5000872ccc4192977f9ad74b18756
-  - enabled: 1
+  - enabled: 0
     path: Assets/Examples/Shooter/Scenes/ShooterGame (Levell9).unity
     guid: 3353d4c0913604e12bed8008606d2f40
   - enabled: 1

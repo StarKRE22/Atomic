@@ -8,39 +8,72 @@ namespace RTSGame
         private const string WARRIOR_NAME = "Warrior";
         private const string TANK_NAME = "Tank";
 
-        public static void SpawnUnits(IGameContext context, int count = 100)
+        public static void SpawnUnits(IGameContext context, int columns = 10)
         {
-            for (int i = 0; i < count; i++)
+            const float step = 10f;
+            const float offsetBetweenTeams = -50f; 
+
+            for (int i = 0; i < columns; i++)
             {
-                SpawnUnits(context, TeamType.BLUE, new Vector3(10 * i, 0, -10), Quaternion.Euler(0, 0, 0));
-                SpawnUnits(context, TeamType.RED, new Vector3(10 * i, 0, 10), Quaternion.Euler(0, 180, 0));
+                float x = i * step;
+
+                // Синие — пехота, танки, штабы
+                SpawnRow(context, TeamType.BLUE, x, 0f, Quaternion.identity);
+
+                // Красные — штабы, танки, пехота
+                SpawnRow(context, TeamType.RED, x, offsetBetweenTeams, Quaternion.Euler(0, 180, 0));
+
             }
         }
 
-        private static void SpawnUnits(IGameContext context, TeamType player, Vector3 position, Quaternion rotation)
+        private static void SpawnRow(IGameContext context, TeamType team, float x, float zOffset, Quaternion rotation)
         {
-            //Spawn headquarters:
-            GameEntityUseCase.Spawn(context, HEADQUARTERS_NAME, position, rotation, player);
+            float infantryZ = zOffset; // ближе всего
+            float tankZ = zOffset + 3f; // чуть дальше
+            float hqZ = zOffset + 6f; // ещё дальше
 
-            //Spawn warriors:
-            position.x += 5;
-            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+            if (team == TeamType.BLUE)
+            {
+                // Пехота
+                Vector3 infantryPos = new Vector3(x, 0, -infantryZ);
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+                infantryPos.x += 2;
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+                infantryPos.x += 2;
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
 
-            position.x += 2;
-            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+                // Танки
+                Vector3 tankPos = new Vector3(x, 0, -tankZ);
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
+                tankPos.x += 3;
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
+                tankPos.x += 3;
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
 
-            position.x += 2;
-            GameEntityUseCase.Spawn(context, WARRIOR_NAME, position, rotation, player);
+                // Штаб
+                Vector3 hqPos = new Vector3(x, 0, -hqZ);
+                GameEntityUseCase.Spawn(context, HEADQUARTERS_NAME, hqPos, rotation, team);
+            }
+            else
+            {
+                // Красные зеркально: штабы ближе, потом танки, потом пехота
+                Vector3 hqPos = new Vector3(x, 0, -infantryZ);
+                GameEntityUseCase.Spawn(context, HEADQUARTERS_NAME, hqPos, rotation, team);
 
-            //Spawn tanks:
-            position.x += 5;
-            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
+                Vector3 tankPos = new Vector3(x, 0, -tankZ);
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
+                tankPos.x += 3;
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
+                tankPos.x += 3;
+                GameEntityUseCase.Spawn(context, TANK_NAME, tankPos, rotation, team);
 
-            position.x += 5;
-            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
-
-            position.x += 5;
-            GameEntityUseCase.Spawn(context, TANK_NAME, position, rotation, player);
+                Vector3 infantryPos = new Vector3(x, 0, -hqZ);
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+                infantryPos.x += 2;
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+                infantryPos.x += 2;
+                GameEntityUseCase.Spawn(context, WARRIOR_NAME, infantryPos, rotation, team);
+            }
         }
     }
 }
