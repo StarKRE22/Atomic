@@ -34,4 +34,4 @@ MonoBehaviour:
     _projectileFactory: {fileID: 11400000, guid: dd3502d2bd9b24b29974995cdac38568, type: 2}
   _aiInstaller:
     _minDetectDuration: 0.3
-    _maxDetectDuration: 0.4
+    _maxDetectDuration: 0.5

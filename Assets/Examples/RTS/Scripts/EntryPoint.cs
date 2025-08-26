@@ -1,4 +1,3 @@
-using System;
 using Atomic.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -44,7 +43,6 @@ namespace RTSGame
             _gameContext.Spawn();
             _gameContext.Activate();
             this.BindEntityViews();
-
         }
         
         private void SpawnUnits()

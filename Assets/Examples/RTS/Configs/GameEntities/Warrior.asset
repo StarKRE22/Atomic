@@ -33,4 +33,4 @@ MonoBehaviour:
       value: 1
   _aiInstaller:
     _minDetectDuration: 0.3
-    _maxDetectDuration: 0.4
+    _maxDetectDuration: 0.5
