@@ -61,20 +61,20 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity from which the value was removed.</param>
         /// <param name="key">The key of the removed value.</param>
-        private void OnValueDeleted(IEntity entity, int key) => _action?.Invoke((E) entity);
+        private void OnValueDeleted(IEntity entity, int key) => _action.Invoke((E) entity);
 
         /// <summary>
         /// Handles the <c>OnValueAdded</c> event and invokes the configured trigger action.
         /// </summary>
         /// <param name="entity">The entity to which the value was added.</param>
         /// <param name="key">The key of the added value.</param>
-        private void OnValueAdded(IEntity entity, int key) => _action?.Invoke((E) entity);
+        private void OnValueAdded(IEntity entity, int key) => _action.Invoke((E) entity);
 
         /// <summary>
         /// Handles the <c>OnValueChanged</c> event and invokes the configured trigger action.
         /// </summary>
         /// <param name="entity">The entity whose value was changed.</param>
         /// <param name="key">The key of the changed value.</param>
-        private void OnValueChanged(IEntity entity, int key) => _action?.Invoke((E) entity);
+        private void OnValueChanged(IEntity entity, int key) => _action.Invoke((E) entity);
     }
 }

@@ -8,6 +8,9 @@ namespace RTSGame
     public sealed class LifeEntityBaker : IEntityInstaller<IGameEntity>
     {
         [SerializeField]
+        private bool _active;
+
+        [SerializeField]
         private int _current;
 
         [SerializeField]
@@ -15,8 +18,11 @@ namespace RTSGame
 
         public void Install(IGameEntity entity)
         {
-            entity.GetHealth().SetCurrent(_current);
-            entity.GetHealth().SetMax(_max);
+            if (_active)
+            {
+                entity.GetHealth().SetCurrent(_current);
+                entity.GetHealth().SetMax(_max);
+            }
         }
     }
 }

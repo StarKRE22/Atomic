@@ -9,15 +9,15 @@ namespace RTSGame
     public sealed class MoveEntityBaker : IEntityInstaller<IGameEntity>
     {
         [SerializeField]
-        private Const<float> _moveSpeed;
+        private Optional<float> _moveSpeed;
 
         [SerializeField]
-        private Const<float> _rotationSpeed;
-        
+        private Optional<float> _rotationSpeed;
+
         public void Install(IGameEntity entity)
         {
-            entity.SetMoveSpeed(_moveSpeed);
-            entity.SetRotationSpeed(_rotationSpeed);
+            if (_moveSpeed) entity.SetMoveSpeed(new Const<float>(_moveSpeed));
+            if (_rotationSpeed) entity.SetRotationSpeed(new Const<float>(_rotationSpeed));
         }
     }
 }

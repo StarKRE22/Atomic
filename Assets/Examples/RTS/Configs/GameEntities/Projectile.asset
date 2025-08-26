@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Projectile
   m_EditorClassIdentifier: 
   InitialTagCount: 1
-  InitialValueCount: 7
-  InitialBehaviourCount: 2
+  InitialValueCount: 8
+  InitialBehaviourCount: 3
   _moveSpeed:
-    value: 5
+    value: 50
   _damage:
     value: 1
   _lifetime: 3

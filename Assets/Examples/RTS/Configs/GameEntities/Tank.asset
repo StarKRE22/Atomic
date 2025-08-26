@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337105b774754ec7a0b9f51107ef8c70, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
-  InitialName: 
   InitialTagCount: 3
   InitialValueCount: 15
-  InitialBehaviourCount: 3
+  InitialBehaviourCount: 4
   _transformInstaller:
     _scale:
       value: 1
@@ -23,16 +22,16 @@ MonoBehaviour:
     _moveSpeed:
       value: 3
     _rotationSpeed:
-      value: 12
+      value: 50
   _lifeInstaller:
     _health: 5
   _combatInstaller:
-    _attackDistance:
-      value: 5
-    _attackCooldown: 1
+    _fireDistance:
+      value: 10
+    _fireCooldown: 1
     _fireOffset:
       value: {x: 0, y: 1, z: 1}
     _projectileFactory: {fileID: 11400000, guid: dd3502d2bd9b24b29974995cdac38568, type: 2}
   _aiInstaller:
-    _minDetectDuration: 0.2
-    _maxDetectDuration: 0.3
+    _minDetectDuration: 0.3
+    _maxDetectDuration: 0.45

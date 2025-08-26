@@ -248,6 +248,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _lifeBaker._active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _moveBaker._moveSpeed.active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _combatBaker._fireCooldown.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _combatBaker._fireCooldown.active
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638467102114009318, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
+      propertyPath: _combatBaker._fireDistance.active
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8258922563122937303, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_Name
       value: Tank
@@ -658,6 +686,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
       propertyPath: _teamBaker._teamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.active
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}

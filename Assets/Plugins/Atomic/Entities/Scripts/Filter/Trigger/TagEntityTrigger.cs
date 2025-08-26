@@ -53,13 +53,13 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity from which the tag was removed.</param>
         /// <param name="tag">The tag that was removed (ignored).</param>
-        private void OnTagDeleted(IEntity entity, int tag) => _action?.Invoke((E) entity);
+        private void OnTagDeleted(IEntity entity, int tag) => _action.Invoke((E) entity);
 
         /// <summary>
         /// Called when a tag is added to the entity. Invokes the configured action.
         /// </summary>
         /// <param name="entity">The entity to which the tag was added.</param>
         /// <param name="tag">The tag that was added (ignored).</param>
-        private void OnTagAdded(IEntity entity, int tag) => _action?.Invoke((E) entity);
+        private void OnTagAdded(IEntity entity, int tag) => _action.Invoke((E) entity);
     }
 }

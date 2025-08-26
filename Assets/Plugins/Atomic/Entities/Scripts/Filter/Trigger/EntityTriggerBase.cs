@@ -48,5 +48,4 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected void InvokeAction(E entity) => _action?.Invoke(entity);
     }
-
 }

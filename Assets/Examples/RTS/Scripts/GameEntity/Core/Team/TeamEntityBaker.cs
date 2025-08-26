@@ -1,4 +1,5 @@
 using System;
+using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -8,11 +9,11 @@ namespace RTSGame
     public sealed class TeamEntityBaker : IEntityInstaller<IGameEntity>
     {
         [SerializeField]
-        private TeamType _teamType;
+        private Optional<TeamType> _teamType;
         
         public void Install(IGameEntity entity)
         {
-            entity.GetTeam().Value = _teamType;
+            if (_teamType) entity.GetTeam().Value = _teamType;
         }
     }
 }
