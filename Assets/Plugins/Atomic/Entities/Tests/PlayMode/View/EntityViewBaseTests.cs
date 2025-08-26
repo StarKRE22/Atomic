@@ -76,13 +76,13 @@ namespace Atomic.Entities
         [Test]
         public void Show_EntityViewBaseNonGeneric_WorksAsExpected()
         {
-            var nonGeneric = _go.AddComponent<TestEntityView>();
-            nonGeneric.Show(_entity);
-            Assert.AreEqual(_entity, nonGeneric.Entity);
-            Assert.IsTrue(nonGeneric.IsVisible);
-            nonGeneric.Hide();
-            Assert.IsFalse(nonGeneric.IsVisible);
-            Assert.IsNull(nonGeneric.Entity);
+            _view.Show(_entity);
+            
+            Assert.AreEqual(_entity, _view.Entity);
+            Assert.IsTrue(_view.IsVisible);
+            _view.Hide();
+            Assert.IsFalse(_view.IsVisible);
+            Assert.IsNull(_view.Entity);
         }
 
         private class TestEntityView : EntityViewBase

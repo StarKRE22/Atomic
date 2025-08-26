@@ -18,7 +18,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var root = new GameObject("Root");
-            root.AddComponent<SceneEntityBakerDummy>();
+            SceneEntityBakerDummy dummy = root.AddComponent<SceneEntityBakerDummy>();
 
             yield return null;
 

@@ -22,7 +22,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Should destroy this Game Object after baking?")]
         [SerializeField]
-        internal bool _destroyAfterBake = true;
+        protected internal bool _destroyAfterBake = true;
         
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0, SpaceAfter = 12)]
@@ -30,7 +30,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Entity Factory that baker will override")]
         [SerializeField]
-        internal ScriptableEntityFactory<E> _factory;
+        protected internal ScriptableEntityFactory<E> _factory;
 
         public E Bake()
         {
