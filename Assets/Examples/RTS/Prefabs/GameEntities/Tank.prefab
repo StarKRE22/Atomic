@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 1000083987112415055}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 1.6, z: 0.37}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: -0.05000002, y: 0.100000024, z: 0.9800001}
+  m_LocalScale: {x: 0.24999999, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3141069101459334024}
+  m_Father: {fileID: 1849572026191355283}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7678067343684849080
 MeshFilter:
@@ -247,7 +247,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.5, z: -0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2804361175103553226}
   m_Father: {fileID: 3141069101459334024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2438851587753742378
@@ -358,7 +359,6 @@ Transform:
   m_Children:
   - {fileID: 7400640230169896432}
   - {fileID: 1849572026191355283}
-  - {fileID: 2804361175103553226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8497453259572675288
@@ -410,18 +410,26 @@ MonoBehaviour:
   _destroyAfterBake: 1
   _factory: {fileID: 11400000, guid: 806a1fe85759d4df5bf46519fdff9d74, type: 2}
   _lifeBaker:
+    _active: 0
     _current: 3
     _max: 3
   _moveBaker:
     _moveSpeed:
+      active: 0
       value: 10
     _rotationSpeed:
+      active: 0
       value: 180
   _combatBaker:
-    _fireCooldown: 1
+    _fireCooldown:
+      active: 1
+      value: 1
     _fireDistance:
+      active: 1
       value: 5
   _teamBaker:
-    _teamType: 0
+    _teamType:
+      active: 0
+      value: 0
   _transformBaker:
     _transform: {fileID: 3141069101459334024}
