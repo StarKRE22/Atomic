@@ -48,7 +48,7 @@ namespace ShooterGame.App
         
         public void OnDespawn(IEntity entity)
         {
-            _uiContext.DelAllBehaviours<LevelItemPresenter>();
+            _uiContext.DelBehaviours<LevelItemPresenter>();
             _screenView.ClearAllItems();
         }
 

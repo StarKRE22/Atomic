@@ -33,5 +33,4 @@ namespace Atomic.Entities
                 _source.OnSpawned -= _callback;
         }
     }
-
 }

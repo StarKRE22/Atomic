@@ -1,7 +1,6 @@
 #if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,6 +38,12 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(in CreateArgs args) => Create<SceneEntity>(in args);
 
+        /// <summary>
+        /// Creates a new SceneEntity of type <typeparamref name="E"/> and configures it with optional tags, values, behaviours, and other initialization options.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to create.</typeparam>
+        /// <param name="args">A <see cref="CreateArgs"/> structure containing configuration options for the SceneEntity.</param>
+        /// <returns>The newly created SceneEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(in CreateArgs args) where E : SceneEntity
         {
@@ -58,7 +63,7 @@ namespace Atomic.Entities
             sceneEntity._initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
             sceneEntity._initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
             sceneEntity._initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
-            
+
             sceneEntity.Construct();
 
             sceneEntity.AddTags(args.tags);
@@ -69,6 +74,22 @@ namespace Atomic.Entities
             return sceneEntity;
         }
 
+        /// <summary>
+        /// Creates a new SceneEntity of type <typeparamref name="E"/> with optional configuration parameters.
+        /// This overload constructs a <see cref="CreateArgs"/> object internally.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to create.</typeparam>
+        /// <param name="name">Optional name for the GameObject.</param>
+        /// <param name="tags">Optional collection of integer tags to assign to the entity.</param>
+        /// <param name="values">Optional dictionary of key-value pairs to assign to the entity.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach to the entity.</param>
+        /// <param name="installOnAwake">If true, installers will be run on Awake.</param>
+        /// <param name="disposeValues">If true, values will be disposed when the entity is destroyed.</param>
+        /// <param name="useUnityLifecycle">If true, the entity will use Unity's lifecycle methods.</param>
+        /// <param name="initialTagCount">Initial capacity for tags.</param>
+        /// <param name="initialValueCount">Initial capacity for values.</param>
+        /// <param name="initialBehaviourCount">Initial capacity for behaviours.</param>
+        /// <returns>The newly created SceneEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             string name = null,
@@ -95,6 +116,21 @@ namespace Atomic.Entities
             initialBehaviourCapacity = initialBehaviourCount
         });
 
+        /// <summary>
+        /// Creates a new <see cref="SceneEntity"/> with optional configuration parameters.
+        /// This overload constructs a <see cref="CreateArgs"/> object internally and returns a non-generic SceneEntity.
+        /// </summary>
+        /// <param name="name">Optional name for the GameObject.</param>
+        /// <param name="tags">Optional collection of integer tags to assign to the entity.</param>
+        /// <param name="values">Optional dictionary of key-value pairs to assign to the entity.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach to the entity.</param>
+        /// <param name="installOnAwake">If true, installers will be run on Awake.</param>
+        /// <param name="disposeValues">If true, values will be disposed when the entity is destroyed.</param>
+        /// <param name="useUnityLifecycle">If true, the entity will use Unity's lifecycle methods.</param>
+        /// <param name="initialTagCount">Initial capacity for tags.</param>
+        /// <param name="initialValueCount">Initial capacity for values.</param>
+        /// <param name="initialBehaviourCount">Initial capacity for behaviours.</param>
+        /// <returns>The newly created <see cref="SceneEntity"/> instance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Create(
             string name = null,
@@ -128,6 +164,14 @@ namespace Atomic.Entities
         public static SceneEntity Create(SceneEntity prefab, Transform parent = null) =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
 
+        /// <summary>
+        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab, optionally setting its parent transform.
+        /// The entity is positioned at <see cref="Vector3.zero"/> and rotated with <see cref="Quaternion.identity"/> by default.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity =>
             Create(prefab, Vector3.zero, Quaternion.identity, parent);
@@ -143,6 +187,15 @@ namespace Atomic.Entities
             Transform parent = null
         ) => Create<SceneEntity>(prefab, position, rotation, parent);
 
+        /// <summary>
+        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab at the position and rotation of a reference transform,
+        /// optionally assigning a parent transform.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="point">The reference <see cref="Transform"/> from which the position and rotation are copied.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity
         {
@@ -150,7 +203,17 @@ namespace Atomic.Entities
             entity.Install();
             return entity;
         }
-        
+
+        /// <summary>
+        /// Instantiates a new SceneEntity of type <typeparamref name="E"/> from the given prefab at a specific position and rotation,
+        /// optionally assigning a parent transform.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to create.</typeparam>
+        /// <param name="prefab">The prefab instance of <typeparamref name="E"/> to instantiate.</param>
+        /// <param name="position">The position at which to place the new entity.</param>
+        /// <param name="rotation">The rotation to apply to the new entity.</param>
+        /// <param name="parent">Optional parent <see cref="Transform"/> under which the new entity will be placed. Defaults to <c>null</c>.</param>
+        /// <returns>The newly instantiated SceneEntity of type <typeparamref name="E"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Create<E>(
             E prefab,
@@ -165,24 +228,46 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Destroys the associated GameObject of a given <see cref="IEntity"/> if it is a <see cref="SceneEntity"/>.
+        /// Destroys the associated GameObject of the specified <see cref="IEntity"/> if it can be cast to a <see cref="SceneEntity"/>.
         /// </summary>
+        /// <param name="entity">The entity whose GameObject should be destroyed.</param>
+        /// <param name="t">Optional delay in seconds before destruction. Defaults to 0.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(IEntity entity, float t = 0) => Destroy(Cast(entity), t);
 
+        /// <summary>
+        /// Destroys the specified <see cref="SceneEntity"/>'s GameObject after an optional delay.
+        /// </summary>
+        /// <param name="entity">The <see cref="SceneEntity"/> to destroy.</param>
+        /// <param name="t">Optional delay in seconds before destruction. Defaults to 0.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(SceneEntity entity, float t = 0)
         {
-            if (entity) 
+            if (entity)
                 Destroy(entity.gameObject, t);
         }
 
         /// <summary>
-        /// Casts the <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
+        /// Casts the specified <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
         /// </summary>
+        /// <param name="entity">The entity to cast.</param>
+        /// <returns>The entity cast to <see cref="SceneEntity"/>, or <c>null</c> if the input is <c>null</c>.</returns>
+        /// <exception cref="InvalidCastException">Thrown if the entity cannot be cast to <see cref="SceneEntity"/>.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SceneEntity Cast(IEntity entity) => Cast<SceneEntity>(entity);
 
+        /// <summary>
+        /// Casts the specified <see cref="IEntity"/> to the target type <typeparamref name="E"/> if possible.
+        /// Supports direct SceneEntity instances and <see cref="SceneEntityProxy{E}"/> wrappers.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to cast to.</typeparam>
+        /// <param name="entity">The entity to cast.</param>
+        /// <returns>
+        /// The entity cast to type <typeparamref name="E"/>, or <c>null</c> if the input is <c>null</c>.
+        /// </returns>
+        /// <exception cref="InvalidCastException">
+        /// Thrown if the entity cannot be cast to the target type <typeparamref name="E"/>.
+        /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static E Cast<E>(IEntity entity) where E : SceneEntity => entity switch
         {
@@ -193,12 +278,23 @@ namespace Atomic.Entities
         };
 
         /// <summary>
-        /// Attempts to cast the <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
+        /// Attempts to cast the specified <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
         /// </summary>
+        /// <param name="entity">The entity to cast.</param>
+        /// <param name="result">The cast result if successful; otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if the cast was successful; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryCast(IEntity entity, out SceneEntity result) =>
             TryCast<SceneEntity>(entity, out result);
 
+        /// <summary>
+        /// Attempts to cast the specified <see cref="IEntity"/> to the target type <typeparamref name="E"/>.
+        /// Supports direct <see cref="SceneEntity"/> instances and <see cref="SceneEntityProxy{E}"/> wrappers.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to cast to.</typeparam>
+        /// <param name="entity">The entity to cast.</param>
+        /// <param name="result">The cast result if successful; otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if the cast was successful; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity
         {
@@ -224,6 +320,12 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallAll(Scene scene) => InstallAll<SceneEntity>(scene);
 
+        /// <summary>
+        /// Installs all <see cref="SceneEntity"/> instances of type <typeparamref name="E"/> found in the specified <see cref="Scene"/> 
+        /// that are not yet installed.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to search for and install.</typeparam>
+        /// <param name="scene">The scene in which to search for <typeparamref name="E"/> instances.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallAll<E>(Scene scene) where E : SceneEntity
         {

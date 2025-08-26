@@ -1,5 +1,3 @@
-using Unity.Collections.LowLevel.Unsafe;
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -36,24 +34,5 @@ namespace Atomic.Entities
         void OnActivate(T entity);
 
         void IEntityActivate.OnActivate(IEntity entity) => this.OnActivate((T) entity);
-    }
-
-    /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntityActivate"/> by using low-level casting
-    /// to handle enable-time logic on a specific <see cref="IEntity"/> type.
-    /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
-    /// <remarks>
-    /// This method is automatically invoked by <see cref="IActivatable.Activate"/> using low-level casting via <c>UnsafeUtility.As</c>.
-    /// </remarks>
-    public interface IEntityActivateUnsafe<in T> : IEntityActivate where T : IEntity
-    {
-        /// <summary>
-        /// Called when the typed entity is enabled.
-        /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void OnActivate(T entity);
-
-        void IEntityActivate.OnActivate(IEntity entity) => this.OnActivate(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

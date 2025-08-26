@@ -133,7 +133,7 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
-        public void DelAllBehaviours<T>() where T : IEntityBehaviour
+        public void DelBehaviours<T>() where T : IEntityBehaviour
         {
             throw new NotImplementedException();
         }

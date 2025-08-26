@@ -100,14 +100,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="component">The component whose scene will be used for lookup.</param>
         /// <returns>The singleton instance found in the component's scene.</returns>
-        public static E Resolve(in Component component) => Resolve(component.gameObject);
+        public static E Resolve(Component component) => Resolve(component.gameObject);
 
         /// <summary>
         /// Resolves the singleton instance for the scene containing the given GameObject.
         /// </summary>
         /// <param name="gameObject">The GameObject whose scene will be used for lookup.</param>
         /// <returns>The singleton instance found in the GameObject's scene.</returns>
-        public static E Resolve(in GameObject gameObject) => Resolve(gameObject.scene);
+        public static E Resolve(GameObject gameObject) => Resolve(gameObject.scene);
 
         /// <summary>
         /// Resolves the singleton instance for the given scene.

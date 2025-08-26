@@ -30,14 +30,7 @@ namespace Atomic.Entities
         [Min(1)]
         [SerializeField]
         private int _initialTagCapacity = 1;
-
-        internal struct TagSlot
-        {
-            public int key;
-            public int next;
-            public bool exists;
-        }
-
+        
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
@@ -53,6 +46,13 @@ namespace Atomic.Entities
         /// </summary>
         public int TagCount => _tagCount;
 
+        internal struct TagSlot
+        {
+            public int key;
+            public int next;
+            public bool exists;
+        }
+        
         private TagSlot[] _tagSlots;
         private int _tagCapacity;
         private int _tagCount;
@@ -176,6 +176,9 @@ namespace Atomic.Entities
         /// </summary>
         IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
 
+        /// <summary>
+        /// Returns an enumerator over the tag keys of the entity.
+        /// </summary>
         public TagEnumerator GetTagEnumerator() => new(this);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -16,8 +16,8 @@ namespace Atomic.Entities
         /// <param name="untrack">A delegate that defines how to stop tracking the entity, given an action.</param>
         public InlineEntityTrigger(
             Action<IEntity, Action<IEntity>> track,
-            Action<IEntity, Action<IEntity>> untrack)
-            : base(track, untrack)
+            Action<IEntity, Action<IEntity>> untrack
+        ) : base(track, untrack)
         {
         }
     }

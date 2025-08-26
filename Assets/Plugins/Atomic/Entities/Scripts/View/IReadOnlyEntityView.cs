@@ -1,5 +1,9 @@
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// Represents a read-only view of an <see cref="IEntity"/>.
+    /// Provides basic information about the view without allowing modifications.
+    /// </summary>
     public interface IReadOnlyEntityView
     {
         /// <summary>

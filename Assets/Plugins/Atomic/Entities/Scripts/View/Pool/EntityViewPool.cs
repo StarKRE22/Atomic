@@ -14,7 +14,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
-    public class EntityViewPool : EntityViewPoolAbstract
+    public class EntityViewPool : EntityViewPoolBase
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]

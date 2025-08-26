@@ -1,5 +1,3 @@
-using Unity.Collections.LowLevel.Unsafe;
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -39,26 +37,5 @@ namespace Atomic.Entities
 
         void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) =>
             this.OnFixedUpdate((T) entity, deltaTime);
-    }
-
-    /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntityFixedUpdate"/> that uses low-level casting
-    /// to handle fixed update logic for a specific <see cref="IEntity"/> type.
-    /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
-    /// <remarks>
-    /// This method is automatically invoked by <see cref="IEntity.OnFixedUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
-    /// </remarks>
-    public interface IEntityFixedUpdateUnsafe<in T> : IEntityFixedUpdate where T : IEntity
-    {
-        /// <summary>
-        /// Called during the fixed update phase for a strongly-typed entity.
-        /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        /// <param name="deltaTime">The fixed time step since the last update.</param>
-        void OnFixedUpdate(T entity, float deltaTime);
-
-        void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) =>
-            this.OnFixedUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
     }
 }

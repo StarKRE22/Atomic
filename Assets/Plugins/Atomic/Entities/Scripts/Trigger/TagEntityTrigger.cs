@@ -15,17 +15,17 @@ namespace Atomic.Entities
     public class TagEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
     {
         private readonly bool _added;
-        private readonly bool _removed;
+        private readonly bool _deleted;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TagEntityTrigger{E}"/> class.
         /// </summary>
         /// <param name="added">Whether to react to tag additions via <c>OnTagAdded</c>.</param>
-        /// <param name="removed">Whether to react to tag removals via <c>OnTagDeleted</c>.</param>
-        public TagEntityTrigger(bool added = true, bool removed = true)
+        /// <param name="deleted">Whether to react to tag removals via <c>OnTagDeleted</c>.</param>
+        public TagEntityTrigger(bool added = true, bool deleted = true)
         {
             _added = added;
-            _removed = removed;
+            _deleted = deleted;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Atomic.Entities
         public override void Track(E entity)
         {
             if (_added) entity.OnTagAdded += this.OnTagAdded;
-            if (_removed) entity.OnTagDeleted += this.OnTagDeleted;
+            if (_deleted) entity.OnTagDeleted += this.OnTagDeleted;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Atomic.Entities
         public override void Untrack(E entity)
         {
             if (_added) entity.OnTagAdded -= this.OnTagAdded;
-            if (_removed) entity.OnTagDeleted -= this.OnTagDeleted;
+            if (_deleted) entity.OnTagDeleted -= this.OnTagDeleted;
         }
 
         /// <summary>

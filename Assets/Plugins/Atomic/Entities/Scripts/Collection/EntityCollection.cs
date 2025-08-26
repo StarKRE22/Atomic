@@ -453,6 +453,7 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         IEnumerator<E> IEnumerable<E>.GetEnumerator() => new Enumerator(this);
 
+        /// <inheritdoc/>
         public struct Enumerator : IEnumerator<E>
         {
             public E Current => _current;

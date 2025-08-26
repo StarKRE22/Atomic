@@ -128,6 +128,10 @@ namespace Atomic.Entities
         /// <returns>An enumerator over the registered entities.</returns>
         public IEnumerator<IEntity> GetEnumerator() => _entities.Values.GetEnumerator();
 
+        /// <summary>
+        /// Returns an enumerator that iterates through all registered entities.
+        /// </summary>
+        /// <returns>An enumerator over the registered entities.</returns>
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
 #if UNITY_EDITOR

@@ -1,5 +1,3 @@
-using Unity.Collections.LowLevel.Unsafe;
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -39,26 +37,5 @@ namespace Atomic.Entities
 
         void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
             this.OnLateUpdate((T) entity, deltaTime);
-    }
-
-    /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntityLateUpdate"/> that uses low-level casting
-    /// to handle late update logic for a specific <see cref="IEntity"/> type.
-    /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
-    /// <remarks>
-    /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> using low-level casting via <c>UnsafeUtility.As</c>.
-    /// </remarks>
-    public interface IEntityLateUpdateUnsafe<in T> : IEntityLateUpdate where T : IEntity
-    {
-        /// <summary>
-        /// Called during the late update phase for a strongly-typed entity.
-        /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void OnLateUpdate(T entity, float deltaTime);
-
-        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
-            this.OnLateUpdate(UnsafeUtility.As<IEntity, T>(ref entity), deltaTime);
     }
 }

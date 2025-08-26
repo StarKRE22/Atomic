@@ -122,7 +122,7 @@ namespace Atomic.Entities
             return false;
         }
 
-        public void DelAllBehaviours<T>() where T : IEntityBehaviour
+        public void DelBehaviours<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T)
@@ -249,6 +249,9 @@ namespace Atomic.Entities
             return result;
         }
 
+        /// <summary>
+        /// Returns a new array of all behaviours of type T attached to this entity.
+        /// </summary>
         public T[] GetBehaviours<T>() where T : IEntityBehaviour
         {
             if (_behaviourCount == 0)
@@ -306,6 +309,9 @@ namespace Atomic.Entities
         /// </summary>
         IEnumerator<IEntityBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
 
+        /// <summary>
+        /// Returns an enumerator for iterating through behaviours.
+        /// </summary>
         public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
         public struct BehaviourEnumerator : IEnumerator<IEntityBehaviour>

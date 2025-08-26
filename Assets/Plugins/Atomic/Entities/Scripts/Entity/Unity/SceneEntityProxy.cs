@@ -184,7 +184,7 @@ namespace Atomic.Entities
 
         public bool DelBehaviour(IEntityBehaviour behaviour) => _source.DelBehaviour(behaviour);
         public bool DelBehaviour<T>() where T : IEntityBehaviour => _source.DelBehaviour<T>();
-        public void DelAllBehaviours<T>() where T : IEntityBehaviour => _source.DelAllBehaviours<T>();
+        public void DelBehaviours<T>() where T : IEntityBehaviour => _source.DelBehaviours<T>();
 
         public void ClearBehaviours() => _source.ClearBehaviours();
 

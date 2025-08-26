@@ -15,6 +15,26 @@ namespace Atomic.Entities
 {
     public partial class Entity
     {
+        /// <summary>
+        /// Invoked when a new value is added to the entity.
+        /// </summary>
+        public event Action<IEntity, int> OnValueAdded;
+
+        /// <summary>
+        /// Invoked when a value is deleted from the entity.
+        /// </summary>
+        public event Action<IEntity, int> OnValueDeleted;
+
+        /// <summary>
+        /// Invoked when a value is changed in the entity.
+        /// </summary>
+        public event Action<IEntity, int> OnValueChanged;
+
+        /// <summary>
+        /// Gets the total number of values stored in the entity.
+        /// </summary>
+        public int ValueCount => _valueCount;
+
         internal struct ValueSlot
         {
             public int key;
@@ -40,26 +60,6 @@ namespace Atomic.Entities
 
             public T value;
         }
-
-        /// <summary>
-        /// Invoked when a new value is added to the entity.
-        /// </summary>
-        public event Action<IEntity, int> OnValueAdded;
-
-        /// <summary>
-        /// Invoked when a value is deleted from the entity.
-        /// </summary>
-        public event Action<IEntity, int> OnValueDeleted;
-
-        /// <summary>
-        /// Invoked when a value is changed in the entity.
-        /// </summary>
-        public event Action<IEntity, int> OnValueChanged;
-
-        /// <summary>
-        /// Gets the total number of values stored in the entity.
-        /// </summary>
-        public int ValueCount => _valueCount;
 
         private ValueSlot[] _valueSlots;
         private int _valueCapacity;

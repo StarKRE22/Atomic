@@ -5,6 +5,10 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+    /// <summary>
+    /// A ScriptableObject that serves as a catalog of <see cref="EntityViewBase"/> prefabs.
+    /// Allows retrieving prefabs by index or by name and provides a centralized collection for entity view assets.
+    /// </summary>
     [CreateAssetMenu(
         fileName = "EntityViewCatalog",
         menuName = "Atomic/Entities/New EntityViewCatalog"
@@ -24,7 +28,7 @@ namespace Atomic.Entities
         /// Retrieves a prefab at the specified index along with its name.
         /// </summary>
         /// <param name="index">The index of the prefab to retrieve.</param>
-        /// <returns>A key-value pair where the key is the name and the value is the prefab.</returns>
+        /// <returns>A <see cref="KeyValuePair{TKey, TValue}"/> where the key is the prefab's name and the value is the prefab itself.</returns>
         public KeyValuePair<string, EntityViewBase> GetPrefab(int index)
         {
             EntityViewBase view = _prefabs[index];
@@ -35,7 +39,7 @@ namespace Atomic.Entities
         /// Retrieves a prefab by its name.
         /// </summary>
         /// <param name="name">The name of the prefab to retrieve.</param>
-        /// <returns>The matching <see cref="EntityViewBase{E}"/> instance.</returns>
+        /// <returns>The matching <see cref="EntityViewBase"/> instance.</returns>
         /// <exception cref="Exception">Thrown if no prefab with the specified name is found.</exception>
         public EntityViewBase GetPrefab(string name)
         {

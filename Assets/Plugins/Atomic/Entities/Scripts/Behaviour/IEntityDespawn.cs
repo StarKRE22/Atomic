@@ -1,5 +1,3 @@
-using Unity.Collections.LowLevel.Unsafe;
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -36,25 +34,5 @@ namespace Atomic.Entities
         void OnDespawn(T entity);
 
         void IEntityDespawn.OnDespawn(IEntity entity) => this.OnDespawn((T) entity);
-    }
-
-    /// <summary>
-    /// Provides a high-performance, unsafe version of <see cref="IEntityDespawn"/> 
-    /// that uses low-level casting for optimized despawn-time logic.
-    /// </summary>
-    /// <typeparam name="T">The specific type of entity this behavior targets.</typeparam>
-    /// <remarks>
-    /// This method is automatically invoked by <see cref="IEntity.Despawn"/> 
-    /// using low-level casting via <c>UnsafeUtility.As</c>.
-    /// </remarks>
-    public interface IEntityDespawnUnsafe<in T> : IEntityDespawn where T : IEntity
-    {
-        /// <summary>
-        /// Called when the typed entity is despawned.
-        /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void OnDespawn(T entity);
-
-        void IEntityDespawn.OnDespawn(IEntity entity) => this.OnDespawn(UnsafeUtility.As<IEntity, T>(ref entity));
     }
 }

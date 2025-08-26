@@ -52,11 +52,8 @@ namespace Atomic.Entities
         protected virtual void ProcessGizmosDraw()
         {
             for (int i = 0; i < _behaviourCount; i++)
-            {
-                IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityGizmos gizmos)
+                if (_behaviours[i] is IEntityGizmos gizmos)
                     gizmos.OnGizmosDraw(this);
-            }
         }
     }
 }

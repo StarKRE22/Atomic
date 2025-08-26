@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public class EntityViewPoolMock : EntityViewPoolAbstract
+    public class EntityViewPoolMock : EntityViewPoolBase
     {
         private Dictionary<string, EntityView> _rented = new();
 

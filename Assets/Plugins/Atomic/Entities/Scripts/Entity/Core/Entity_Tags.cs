@@ -8,13 +8,6 @@ namespace Atomic.Entities
 {
     public partial class Entity
     {
-        internal struct TagSlot
-        {
-            public int key;
-            public int next;
-            public bool exists;
-        }
-        
         /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
@@ -30,6 +23,13 @@ namespace Atomic.Entities
         /// </summary>
         public int TagCount => _tagCount;
 
+        internal struct TagSlot
+        {
+            public int key;
+            public int next;
+            public bool exists;
+        }
+        
         private TagSlot[] _tagSlots;
         private int _tagCapacity;
         private int _tagCount;

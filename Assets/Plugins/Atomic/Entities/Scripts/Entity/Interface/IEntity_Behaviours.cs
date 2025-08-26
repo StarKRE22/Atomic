@@ -56,7 +56,10 @@ namespace Atomic.Entities
         /// </summary>
         bool DelBehaviour<T>() where T : IEntityBehaviour;
 
-        void DelAllBehaviours<T>() where T : IEntityBehaviour;
+        /// <summary>
+        /// Removes all behaviour of the specified type.
+        /// </summary>
+        void DelBehaviours<T>() where T : IEntityBehaviour;
 
         /// <summary>
         /// Clears all behaviours from the entity.
@@ -68,6 +71,9 @@ namespace Atomic.Entities
         /// </summary>
         IEntityBehaviour[] GetBehaviours();
         
+        /// <summary>
+        /// Returns all behaviours of type T that attached to the entity.
+        /// </summary>
         T[] GetBehaviours<T>() where T : IEntityBehaviour;
 
         /// <summary>
@@ -75,6 +81,9 @@ namespace Atomic.Entities
         /// </summary>
         int CopyBehaviours(IEntityBehaviour[] results);
         
+        /// <summary>
+        /// Copies behaviours of type T into the provided array.
+        /// </summary>
         int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour; 
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace Atomic.Entities
     public class ValueEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
     {
         private readonly bool _added;
-        private readonly bool _removed;
+        private readonly bool _deleted;
         private readonly bool _changed;
 
         /// <summary>
@@ -25,12 +25,12 @@ namespace Atomic.Entities
         /// with configurable listening behavior for value events.
         /// </summary>
         /// <param name="added">Whether to react to value additions via <c>OnValueAdded</c>.</param>
-        /// <param name="removed">Whether to react to value removals via <c>OnValueDeleted</c>.</param>
+        /// <param name="deleted">Whether to react to value removals via <c>OnValueDeleted</c>.</param>
         /// <param name="changed">Whether to react to value changes via <c>OnValueChanged</c>.</param>
-        public ValueEntityTrigger(bool added = true, bool removed = true, bool changed = true)
+        public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed = true)
         {
             _added = added;
-            _removed = removed;
+            _deleted = deleted;
             _changed = changed;
         }
 
@@ -41,7 +41,7 @@ namespace Atomic.Entities
         public override void Track(E entity)
         {
             if (_added) entity.OnValueAdded += this.OnValueAdded;
-            if (_removed) entity.OnValueDeleted += this.OnValueDeleted;
+            if (_deleted) entity.OnValueDeleted += this.OnValueDeleted;
             if (_changed) entity.OnValueChanged += this.OnValueChanged;
         }
 
@@ -52,7 +52,7 @@ namespace Atomic.Entities
         public override void Untrack(E entity)
         {
             if (_added) entity.OnValueAdded -= this.OnValueAdded;
-            if (_removed) entity.OnValueDeleted -= this.OnValueDeleted;
+            if (_deleted) entity.OnValueDeleted -= this.OnValueDeleted;
             if (_changed) entity.OnValueChanged -= this.OnValueChanged;
         }
 

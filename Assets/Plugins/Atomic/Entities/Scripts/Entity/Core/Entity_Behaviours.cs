@@ -3,8 +3,6 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEngine;
-using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
@@ -109,7 +107,10 @@ namespace Atomic.Entities
             return false;
         }
 
-        public void DelAllBehaviours<T>() where T : IEntityBehaviour
+        /// <summary>
+        /// Removes the all behaviours of type <typeparamref name="T"/>.
+        /// </summary>
+        public void DelBehaviours<T>() where T : IEntityBehaviour
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is T)
@@ -218,13 +219,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns the behaviour instance at the given index.
         /// </summary>
-        public IEntityBehaviour GetBehaviourAt(int index)
-        {
-            if (index < 0 || index >= _behaviourCount)
-                throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
-
-            return _behaviours[index];
-        }
+        public IEntityBehaviour GetBehaviourAt(int index) => index < 0 || index >= _behaviourCount
+            ? throw new IndexOutOfRangeException($"Index {index} is out of bounds.")
+            : _behaviours[index];
 
         /// <summary>
         /// Returns a new array of all behaviours attached to this entity.
@@ -277,7 +274,7 @@ namespace Atomic.Entities
 
             int count = 0;
             int capacity = results.Length;
-            
+
             if (capacity == 0)
                 return 0;
 
@@ -293,6 +290,9 @@ namespace Atomic.Entities
         /// </summary>
         IEnumerator<IEntityBehaviour> IEntity.GetBehaviourEnumerator() => new BehaviourEnumerator(this);
 
+        /// <summary>
+        /// Returns an enumerator for iterating through behaviours.
+        /// </summary>
         public BehaviourEnumerator GetBehaviourEnumerator() => new(this);
 
         public struct BehaviourEnumerator : IEnumerator<IEntityBehaviour>
