@@ -479,5 +479,9 @@ MonoBehaviour:
     _teamType:
       active: 0
       value: 0
+    _viewConfig: {fileID: 11400000, guid: 092153cc4c1644aa284e47f2e0128f60, type: 2}
+    _renderers:
+    - {fileID: 2318777210656067590}
+    - {fileID: 4462659273236926685}
   _transformBaker:
     _transform: {fileID: 3141069101459334024}

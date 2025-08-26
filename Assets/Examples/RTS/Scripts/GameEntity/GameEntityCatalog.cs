@@ -1,4 +1,4 @@
-using BeginnerGame;
+using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame

@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 #endif
 using UnityEngine;
 
-namespace BeginnerGame
+namespace Atomic.Entities
 {
     /// <summary>
     /// A concrete implementation of <see cref="ScriptableEntityCatalog{TKey,E}"/> that maps

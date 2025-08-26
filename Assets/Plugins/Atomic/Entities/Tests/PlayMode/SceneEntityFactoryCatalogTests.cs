@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using BeginnerGame;
 using UnityEngine;
 
 namespace Atomic.Entities

@@ -171,6 +171,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821030069575764120, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c9aef8177d021493ba3b47bf885b47c0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -767,6 +779,10 @@ PrefabInstance:
       propertyPath: _teamBaker._teamType.active
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3064850760050433709, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
     - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.37

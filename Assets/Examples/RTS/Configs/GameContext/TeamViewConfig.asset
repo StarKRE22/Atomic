@@ -17,3 +17,5 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: c9aef8177d021493ba3b47bf885b47c0, type: 2}
   - type: 1
     material: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+  - type: 2
+    material: {fileID: 2100000, guid: 586504a6235fa42ac80a352735f57fc7, type: 2}

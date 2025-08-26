@@ -28,5 +28,10 @@ namespace RTSGame
             entity.Install(_teamBaker);
             entity.Install(_transformBaker);
         }
+        
+        private void OnValidate()
+        {
+            _teamBaker.OnValidate();
+        }
     }
 }

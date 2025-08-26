@@ -1,3 +1,4 @@
+using System;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -19,6 +20,11 @@ namespace RTSGame
             entity.Install(_lifeBaker);
             entity.Install(_teamBaker);
             entity.Install(_transformBaker);
-        } 
+        }
+
+        private void OnValidate()
+        {
+            _teamBaker.OnValidate();
+        }
     }
 }

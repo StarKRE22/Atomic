@@ -34,9 +34,7 @@ namespace RTSGame
         private void OnTeamChanged(TeamType teamType)
         {
             TeamViewConfig.TeamInfo team = _viewConfig.GetTeam(teamType);
-            Material material = team.Material;
-            foreach (Renderer renderer in _renderers)
-                renderer.material = material;
+            RendererUseCase.SetMaterial(_renderers, team.Material);
         }
     }
 }
