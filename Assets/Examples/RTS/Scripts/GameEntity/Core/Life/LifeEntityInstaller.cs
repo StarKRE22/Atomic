@@ -1,4 +1,5 @@
 using System;
+using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace RTSGame
             IGameContext gameContext = GameContext.Instance;
             entity.AddDamageableTag();
             entity.AddHealth(new Health(_health));
+            entity.AddTakeDamageEvent(new BaseEvent<int>());
             entity.AddBehaviour(new DeathBehaviour(gameContext));
         }
     }

@@ -37,6 +37,7 @@ values:
 - Health: Health
 - Lifetime: Cooldown
 - DestroyAction: IAction
+- TakeDamageEvent: IEvent<int>
   
 #Team
 - Team: IReactiveVariable<TeamType>   

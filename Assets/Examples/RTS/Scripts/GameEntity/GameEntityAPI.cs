@@ -38,6 +38,7 @@ namespace RTSGame
 		public static readonly int Health; // Health
 		public static readonly int Lifetime; // Cooldown
 		public static readonly int DestroyAction; // IAction
+		public static readonly int TakeDamageEvent; // IEvent<int>
 		public static readonly int Team; // IReactiveVariable<TeamType>
 		public static readonly int Damage; // IValue<int>
 		public static readonly int Target; // IReactiveVariable<IGameEntity>
@@ -66,6 +67,7 @@ namespace RTSGame
 			Health = NameToId(nameof(Health));
 			Lifetime = NameToId(nameof(Lifetime));
 			DestroyAction = NameToId(nameof(DestroyAction));
+			TakeDamageEvent = NameToId(nameof(TakeDamageEvent));
 			Team = NameToId(nameof(Team));
 			Damage = NameToId(nameof(Damage));
 			Target = NameToId(nameof(Target));
@@ -351,6 +353,28 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void SetDestroyAction(this IGameEntity entity, IAction value) => entity.SetValue(DestroyAction, value);
+
+		#endregion
+
+		#region TakeDamageEvent
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IEvent<int> GetTakeDamageEvent(this IGameEntity entity) => entity.GetValue<IEvent<int>>(TakeDamageEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTakeDamageEvent(this IGameEntity entity, out IEvent<int> value) => entity.TryGetValue(TakeDamageEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void AddTakeDamageEvent(this IGameEntity entity, IEvent<int> value) => entity.AddValue(TakeDamageEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTakeDamageEvent(this IGameEntity entity) => entity.HasValue(TakeDamageEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTakeDamageEvent(this IGameEntity entity) => entity.DelValue(TakeDamageEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTakeDamageEvent(this IGameEntity entity, IEvent<int> value) => entity.SetValue(TakeDamageEvent, value);
 
 		#endregion
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class DefaultEntityViewInstaller : EntityViewInstaller
+    public sealed class BasicEntityViewInstaller : EntityViewInstaller
     {
         [SerializeField]
         private Transform _transform;
