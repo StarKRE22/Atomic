@@ -242,7 +242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameContextFactory: {fileID: 11400000, guid: c7be78091b4bf46838d8f7bddb63cb21, type: 2}
   _entityCollectionView: {fileID: 1245728445}
+  _showEntityViews: 1
   _bakeUnits: 1
+  _bakeIncludeInactive: 0
   _spawnUnits: 10
 --- !u!1 &441292360
 GameObject:
@@ -361,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8258922563122937303, guid: 5e5b5d818fc384b6eac38a371fa27b4f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -851,11 +853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6273790560587329638, guid: f8f3527b43336497cb064b594be78144, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273790560587329638, guid: f8f3527b43336497cb064b594be78144, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6273790560587329638, guid: f8f3527b43336497cb064b594be78144, type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6273790560587329638, guid: f8f3527b43336497cb064b594be78144, type: 3}
       propertyPath: m_LocalPosition.x

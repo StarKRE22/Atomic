@@ -1,3 +1,4 @@
+using System;
 using Atomic.Entities;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -15,33 +16,52 @@ namespace RTSGame
 
         [SerializeField]
         private EntityCollectionView _entityCollectionView;
-        
+
+        [Header("Visualization")]
+        [SerializeField]
+        private bool _showEntityViews = true;
+
+        [Header("Baking")]
         [SerializeField]
         private bool _bakeUnits;
+
+        [ShowIf(nameof(_bakeUnits))]
+        [SerializeField]
+        private bool _bakeIncludeInactive;
 
         [HideIf(nameof(_bakeUnits))]
         [SerializeField]
         private int _spawnUnits = 100;
-        
+
         private EntityCollectionViewBinder<IGameEntity> _viewBinder;
-        
-        private void Awake()
+
+        private void Start()
         {
             _gameContext = _gameContextFactory.Create();
-
-            if (_bakeUnits)
-                SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), false);
-            else
-                InitGameCase.SpawnUnits(_gameContext, _spawnUnits);
-
+            this.SpawnUnits();
             _gameContext.Spawn();
             _gameContext.Activate();
+            this.BindEntityViews();
+
+        }
+        
+        private void SpawnUnits()
+        {
+            if (_bakeUnits)
+                SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
+            else
+                InitGameCase.SpawnUnits(_gameContext, _spawnUnits);
         }
 
-        private void Start() => _viewBinder = new EntityCollectionViewBinder<IGameEntity>(
-            _gameContext.GetEntityWorld(),
-            _entityCollectionView
-        );
+        private void BindEntityViews()
+        {
+            if (!_showEntityViews)
+                return;
+
+            _viewBinder = new EntityCollectionViewBinder<IGameEntity>(
+                _gameContext.GetEntityWorld(), _entityCollectionView
+            );
+        }
 
         private void Update() => _gameContext.OnUpdate(Time.deltaTime);
 
@@ -51,7 +71,7 @@ namespace RTSGame
 
         private void OnDestroy()
         {
-            _viewBinder.Dispose();
+            _viewBinder?.Dispose();
             _gameContext.Deactivate();
             _gameContext.Despawn();
         }

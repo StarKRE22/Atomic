@@ -72,17 +72,17 @@ namespace Atomic.Entities
         /// <param name="entity">The entity being hidden.</param>
         protected virtual void OnHide(IEntity entity)
         {
-            if (this.gameObject)
+            if (this != null)
                 this.gameObject.SetActive(false);
         }
 
         public static void Destroy(EntityViewBase view, float time = 0)
         {
-            if (view)
-            {
-                view.Hide();
-                Destroy(view.gameObject, time);
-            }
+            if (view == null) 
+                return;
+            
+            view.Hide();
+            Destroy(view.gameObject, time);
         }
 
         [ContextMenu("Assign Custom Name From GameObject")]

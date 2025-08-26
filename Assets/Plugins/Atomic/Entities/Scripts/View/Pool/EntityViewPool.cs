@@ -79,7 +79,8 @@ namespace Atomic.Entities
         {
             Stack<EntityViewBase> pool = this.GetPool(name);
             pool.Push(view);
-            view.transform.parent = _container;
+            if (view) 
+                view.transform.parent = _container;
         }
 
         /// <summary>
