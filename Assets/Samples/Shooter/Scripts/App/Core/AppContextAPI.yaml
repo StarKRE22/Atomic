@@ -1,0 +1,24 @@
+header: EntityAPI
+entityType: IAppContext
+aggressiveInlining: true
+
+namespace: ShooterGame.App
+className: AppContextAPI
+directory: Assets/Examples/Shooter/Scripts/App/Core/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+- Cysharp.Threading.Tasks
+
+values:
+- ExitKeyCode: IValue<KeyCode>
+
+#Level
+- StartLevel: IValue<int>
+- MaxLevel: IValue<int>
+- CurrentLevel: IReactiveVariable<int>
+
+#Game
+- GameLoadingAction : ILoadingTask

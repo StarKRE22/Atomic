@@ -1,0 +1,26 @@
+header: EntityAPI
+namespace: BeginnerGame
+className: GameContextAPI
+directory: Assets/Examples/Beginner/Scripts/GameContext/
+aggressiveInlining: true
+unsafe: false
+entityType: IGameContext
+
+imports:
+- UnityEngine
+- System.Collections.Generic
+- Atomic.Entities
+- BeginnerGame
+- Atomic.Elements
+
+values:
+- WorldTransform: Transform
+- Players: IDictionary<TeamType, IPlayerContext>
+- GameCountdown: ICooldown
+- GameOverEvent: IEvent
+- WinnerTeam: IReactiveVariable<TeamType>
+- TeamCatalog: TeamCatalog
+
+#Coins
+- CoinPool: IEntityPool<IGameEntity>
+- CoinSpawnArea: Bounds

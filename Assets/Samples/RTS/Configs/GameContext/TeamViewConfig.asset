@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bbf997f3a44e7199a118397e8ef7d0, type: 3}
+  m_Name: TeamViewConfig
+  m_EditorClassIdentifier: 
+  _teams:
+  - type: 0
+    material: {fileID: 2100000, guid: c9aef8177d021493ba3b47bf885b47c0, type: 2}
+  - type: 1
+    material: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+  - type: 2
+    material: {fileID: 2100000, guid: 586504a6235fa42ac80a352735f57fc7, type: 2}

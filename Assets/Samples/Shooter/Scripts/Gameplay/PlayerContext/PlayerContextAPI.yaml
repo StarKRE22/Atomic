@@ -1,0 +1,18 @@
+header: EntityAPI
+entityType: IPlayerContext
+aggressiveInlining: true
+
+namespace: ShooterGame.Gameplay
+className: PlayerContextAPI
+directory: Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/
+
+imports:
+- UnityEngine
+- Atomic.Entities
+- Atomic.Elements
+
+values:
+- Character: IGameEntity
+- TeamType: IValue<TeamType>
+- InputMap: InputMap
+- Camera: Camera

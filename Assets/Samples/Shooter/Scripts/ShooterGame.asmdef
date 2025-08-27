@@ -1,0 +1,22 @@
+{
+    "name": "ShooterGame",
+    "rootNamespace": "ShooterGame",
+    "references": [
+        "Atomic.Elements",
+        "Atomic.Entities",
+        "Unity.Mathematics",
+        "Unity.Burst",
+        "Unity.TextMeshPro",
+        "DOTween.Modules",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

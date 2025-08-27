@@ -1,0 +1,23 @@
+header: EntityAPI
+entityType: IGameContext
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: RTSGame
+className: GameContextAPI
+directory: Assets/Examples/RTS/Scripts/GameContext/
+
+imports:
+  - UnityEngine
+  - Atomic.Entities
+  - Atomic.Elements
+  - System.Collections.Generic
+
+#Core
+values:
+  - EntityWorld: EntityWorld<IGameEntity>
+  - EntityPool: IMultiEntityPool<string, IGameEntity>
+  - Players: Dictionary<TeamType, IPlayerContext>
+
+#View
+  - TeamViewConfig: TeamViewConfig

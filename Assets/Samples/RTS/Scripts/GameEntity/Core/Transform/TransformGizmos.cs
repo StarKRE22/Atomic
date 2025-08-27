@@ -1,0 +1,16 @@
+using Atomic.Entities;
+using UnityEditor;
+using UnityEngine;
+
+namespace RTSGame
+{
+    public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
+    {
+        public void OnGizmosDraw(IGameEntity entity)
+        {
+            Vector3 center = entity.GetPosition().Value;
+            float scale = entity.GetScale().Value;
+            Handles.DrawWireDisc(center, Vector3.up, scale);
+        }
+    }
+}
