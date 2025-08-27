@@ -21,7 +21,7 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Core Modules](#core-modules)
-- [Getting Started](#getting-started)
+- [Quick Start](#quick-start)
 - [Theory](#theory)
 - [Examples](#examples)
 - [License](#license)
@@ -48,6 +48,65 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution to manage and deploy entities across the architecture of a project
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance event handling system, flexible and efficient.
 
+## Quick Start
+
+1. **Create a GameObject in a scene**
+   
+   <img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+
+3. **Add the `Entity` component to the GameObject**
+   
+   <img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
+
+4. **Create a `CharacterInstaller` script and attach it to the GameObject**
+
+ ```csharp
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f;
+    [SerializeField] private BaseVariable<Vector3> _moveDirection;
+
+    public override void Install(IEntity entity)
+    {
+        entity.AddTag("Character");
+        entity.AddTag("Moveable");
+
+        entity.AddValue("Transform", _transform);
+        entity.AddValue("MoveSpeed", _moveSpeed);
+        entity.AddValue("MoveDirection", _moveDirection);
+
+        entity.AddBehaviour<MoveBehaviour>();
+    }
+}
+```
+
+5. **Write the `MoveBehaviour` class **
+
+```csharp
+
+public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
+    {
+        private Transform _transform;
+        private IValue<float> _moveSpeed;
+        private IValue<Vector3> _moveDirection;
+
+        public void OnSpawn(IEntity entity)
+        {
+            _transform = entity.GetValue<Transform>("Transform");
+            _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
+            _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
+        }
+
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        {
+            Vector3 direction = _moveDirection.Value;
+            if (direction != Vector3.zero) 
+                _transform.position += _moveSpeed.Value * deltaTime * direction;
+        }
+    }
+
+```
 
 <!--
 ## Game Example
