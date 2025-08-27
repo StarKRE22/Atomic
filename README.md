@@ -18,8 +18,6 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Quick Start](#quick-start)    
 - [Theory](#theory)
 - [Examples](#examples)
-- [Tutorial](#tutorial)
-- [Manual](#manual)
 - [Best Practices](#best-practices)
 - [License](#license)
 - [Contacts](#contacts)
@@ -40,9 +38,9 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
 ## 🧩 Core Modules
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — modular and reusable components for Unity development ⚙️
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — manage and deploy entities across project architecture 🏗️
-- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance, flexible event handling system ⚡
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Manual.md)** — modular and reusable components for Unity development ⚙️
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Manual.md)** — manage and deploy entities across project architecture 🏗️
+- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Manual.md)** — high-performance event handling system ⚡
 
 ## 🚀 Quick Start
 The Quick Start guide contains **two examples**:
@@ -351,9 +349,8 @@ This sample illustrates:
 - Advanced **entity management patterns** using Atomic concepts  
 - Techniques for **high-speed updates, filtering, and reactive triggers**
 
-## 🎓 Tutorial
-
-## 📘 Manual
+## Best Practices
+TODO:
 
 ## 📄 License
 This project is licensed under the [MIT License](./LICENSE.md).
@@ -390,40 +387,7 @@ SOFTWARE.
 
 
 <!-- 
-## Table of Contents
-Here you can see all the features that are in the framework. We will add documentation on github from time to time to make it easier for developers to learn the framework.
-- [Atomic.Elements]
-  - [Reactive Properties]
-    - [ReactiveVariable]
-    - [ReactiveInt]
-    - [ReactiveFloat]
-    - [ReactiveBool]
-    - [ReactiveVector2]
-    - [ReactiveVector3]
-    - [ReactiveQuaternion]
-    - [float3Reactive]
-    - [quaternionReactive]    
-  - [Reactive Collections]
-    - [ReactiveArray]
-    - [ReactiveDictionary]
-    - [ReactiveHashSet]
-    - [ReactiveList]
-    - [ReactiveSortedDictionary]
-    - [ReactiveSortedList]
-    - [ReactiveSortedSet]   
-  - [Event]
-  - [Expressions]
-    - [AndExpression]
-    - [OrExpression]
-    - [IntMulExpression]
-    - [IntSumExpression]
-    - [FloatMulExpression]
-    - [FloatSumExpression]
-  - [Time]
-    - [Timer]
-    - [Countdown]
-    - [Stopwatch]
-    - [Cycle]
+
 - [Atomic.Entities]
   - [C#]
     - [Entity]
