@@ -65,6 +65,7 @@ The Quick Start guide contains **two examples**:
 4. **Create a `CharacterInstaller` script and attach it to the GameObject**
 
  ```csharp
+//Populates entity with data and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
@@ -73,13 +74,16 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
+        //Set tags to the entity
         entity.AddTag("Character");
         entity.AddTag("Moveable");
 
+        //Set properties to the entity
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
         entity.AddValue("MoveDirection", _moveDirection);
 
+        //Set controllers to the entity
         entity.AddBehaviour<MoveBehaviour>();
     }
 }
@@ -88,12 +92,14 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 5. **Write the `MoveBehaviour` class**
 
 ```csharp
+//Controller that moves entity by direction
 public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
+    //Calls when entity spawns in a scene  
     public void OnSpawn(IEntity entity)
     {
         _transform = entity.GetValue<Transform>("Transform");
@@ -101,6 +107,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
+    //Calls when FixedUpdate()
     public void OnFixedUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
@@ -117,25 +124,31 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 
 1. **Create a character**
 ```csharp
+//Create a new entity
 var character = new Entity("Character");
 
+//Add tags
 character.AddTag("Moveable");
 
+//Add properties
 character.AddValue("Position", new ReactiveVariable<Vector3>());
 character.AddValue("MoveSpeed", new Const<float>(3.5f));
 character.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 
+//Add controllers
 character.AddBehaviour<MoveBehaviour>();
 ```
 
 2. **Write `MoveBehaviour` for the character**
 ```csharp
+//Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
+    //Calls when Entity.Spawn()
     public void OnSpawn(IEntity entity)
     {
         _position = entity.GetValue<IVariable<Vector3>>("Position");
@@ -143,6 +156,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
+    //Calls when Entity.OnFixedUpdate()
     public void OnFixedUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
