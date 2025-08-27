@@ -14,21 +14,28 @@ What is Atomic?
 ---
 Atomic is a reactive procedural framework for developing games in C# and Unity. The key idea is reducing code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards static methods and reactive properties instead of OOP.
 
+## Requirements
+> [!IMPORTANT]
+> The Atomic Framework requires **Unity 6+** or **.NET 7+**.  
+> Make sure your development environment meets these requirements before using the framework.
+
 ## Installation
 
-_Option #1. Download source code with game examples_
-_Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
+- _Option #1. Download source code with game examples_
+- _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
 
-## Add Odin Inspector
-> [!IMPORTANT]
-> There are many features that don't work by default. To make the most of the Atomic Framework, we recommend adding the [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) plugin to your project. In the future, we plan to move away from dependence on Odin Inspector and write our own tools for integration with Unity
+## Add Odin Inspector for Unity 6
+
+> [!TIP]
+> For better debugging, configuration, and visualization of the game state, we **optionally recommend** adding the [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) plugin to your project. 
+> While the Atomic Framework **works without Odin Inspector**, using it will enhance your workflow and make it easier to inspect and tweak data in Unity. 
+> In the future, we plan to reduce dependency on Odin Inspector and implement our own tools for Unity integration.
+
 
 ## Framework modules
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — library with reactive data structures
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution for developing game objects
-- **[Atomic.Context](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Context)** — solution for developing game systems
-- **[Atomic.UI](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/UI)** — solution for developing UI controllers
-- **[Atomic.Extensions](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Extensions)** — extra features
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — library with reactive data structures and basic game components
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution for developing 
+- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus (Experimenta))** — solution for developing UI controllers
 
 ## Game Example
 There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
