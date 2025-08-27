@@ -14,7 +14,8 @@
   - [BaseVariable](Variables/BaseVariable.md)
   - [ReactiveVariable](Variables/ReactiveVariable.md)
   - [ProxyVariable](Variables/ProxyVariable.md)
-  - [UnityVariables](Variables/UnityVariables.md)
+  - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
+  - [UnitySpecificVariables](Variables/UnitySpecificVariables.md)
 
 - [Actions]
   - [IAction] 

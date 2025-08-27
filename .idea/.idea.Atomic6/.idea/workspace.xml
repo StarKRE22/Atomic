@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="105bcf0e-7420-418f-a870-8c69f9b1c82e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Variables/ReactiveVariable.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Variables/ReactiveVariable.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Variables/UnitySpecificVariables.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Variables/UnitySpecificVariables.md.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Reactive_float3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/float3Reactive.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Reactive_float3.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/float3Reactive.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Reactive_quaternion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/quaternionReactive.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Reactive_quaternion.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/quaternionReactive.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/FloatPrefsVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/FloatPrefsVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/FloatPrefsVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/FloatPrefsVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/IntPrefsVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/IntPrefsVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/IntPrefsVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/IntPrefsVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/StringPrefsVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/StringPrefsVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/StringPrefsVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/PlayerPrefs/StringPrefsVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformParentVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformParentVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformParentVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformParentVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformPositionVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformPositionVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformPositionVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformPositionVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformRotationVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformRotationVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformRotationVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformRotationVariable.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformScaleVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformScaleVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Unity/TransformScaleVariable.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Transform/TransformScaleVariable.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756296358745</updated>
       <workItem from="1756296359809" duration="9983000" />
-      <workItem from="1756310537707" duration="7247000" />
+      <workItem from="1756310537707" duration="8946000" />
     </task>
     <task id="LOCAL-00001" summary="Added Samples!">
       <option name="closed" value="true" />
@@ -207,7 +186,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756316809781</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Написал ReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1756317823489</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1756317823489</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Сделал ReactiveProxyVariable!">
+      <option name="closed" value="true" />
+      <created>1756319177078</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1756319177078</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +226,9 @@
     <MESSAGE value="Написал Const.md" />
     <MESSAGE value="Отлично!" />
     <MESSAGE value="Пилим дом!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим дом!" />
+    <MESSAGE value="Написал ReactiveVariable.md" />
+    <MESSAGE value="Сделал ReactiveProxyVariable!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал ReactiveProxyVariable!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
