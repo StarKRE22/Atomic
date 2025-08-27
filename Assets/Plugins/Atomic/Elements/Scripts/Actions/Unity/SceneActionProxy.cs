@@ -1,7 +1,11 @@
 #if UNITY_5_3_OR_NEWER
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 
 namespace Atomic.Elements
 {

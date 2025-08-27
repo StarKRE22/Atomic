@@ -1,14 +1,19 @@
 using Atomic.Entities;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace RTSGame
 {
     [DefaultExecutionOrder(-1000)]
     public sealed class EntryPoint : MonoBehaviour
     {
+#if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
+#endif
         private IGameContext _gameContext;
 
         [SerializeField]
@@ -25,11 +30,15 @@ namespace RTSGame
         [SerializeField]
         private bool _bakeUnits;
 
+#if ODIN_INSPECTOR
         [ShowIf(nameof(_bakeUnits))]
+#endif
         [SerializeField]
         private bool _bakeIncludeInactive;
 
+#if ODIN_INSPECTOR
         [HideIf(nameof(_bakeUnits))]
+#endif
         [FormerlySerializedAs("_spawnUnits")]
         [SerializeField]
         private int _unitColumns = 100;

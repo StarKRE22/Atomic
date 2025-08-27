@@ -15,7 +15,9 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of value.</typeparam>
     [Serializable]
+#if ODIN_INSPECTOR
     [InlineProperty]
+#endif
     public struct Optional<T>
     {
 #if ODIN_INSPECTOR

@@ -1,6 +1,9 @@
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace RTSGame
 {
@@ -12,7 +15,10 @@ namespace RTSGame
         public event Action<int> OnMaxHealthChanged;
         public event Action OnHealthEmpty;
 
-        [SerializeField, Min(0), MaxValue(nameof(max))]
+#if ODIN_INSPECTOR
+        [MaxValue(nameof(max))]
+#endif
+        [SerializeField, Min(0)]
         private int current;
 
         [SerializeField, Min(0)]
@@ -58,7 +64,9 @@ namespace RTSGame
             return (float) this.current / this.max;
         }
 
+#if ODIN_INSPECTOR
         [Button, HideInEditorMode]
+#endif
         public bool Add(int range)
         {
             if (range <= 0)
@@ -78,7 +86,9 @@ namespace RTSGame
             return true;
         }
 
+#if ODIN_INSPECTOR
         [Button, HideInEditorMode]
+#endif
         public bool Reduce(int range)
         {
             if (range < 0)
@@ -100,7 +110,9 @@ namespace RTSGame
             return true;
         }
 
+#if ODIN_INSPECTOR
         [Button, HideInEditorMode]
+#endif
         public void SetCurrent(int health)
         {
             if (this.current == health)
@@ -119,7 +131,9 @@ namespace RTSGame
             this.SetCurrent(this.max);
         }
 
+#if ODIN_INSPECTOR
         [Button, HideInEditorMode]
+#endif
         public void SetMax(int maxHealth)
         {
             if (this.max == maxHealth)

@@ -1,9 +1,12 @@
 #if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace Atomic.Entities
 {
