@@ -48,6 +48,9 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance event handling system, flexible and efficient.
 
 ## Quick Start
+The Quick Start guide contains **two examples**:
+- Using **Unity** with GameObjects and installers  
+- Using **pure C#** without Unity components  
 
 ### With Unity
 
@@ -173,6 +176,8 @@ character.Deactivate();
 //Despawn entity
 character.Despawn();
 ```
+
+
 
    
            
