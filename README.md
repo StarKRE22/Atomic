@@ -21,8 +21,8 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - [Core Modules](#core-modules)
 - [Quick Start](#quick-start)    
 - [Theory](#theory)
-- [Manual](#manual)
 - [Examples](#examples)
+- [Manual](#manual)
 - [License](#license)
 - [Contacts](#contacts)
 
