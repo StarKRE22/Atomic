@@ -267,6 +267,26 @@ By clearly separating state and behaviour, developers can focus on gameplay mech
   This allows developers to **construct complex entities** by assembling simple, reusable pieces, similar to using a constructor pattern.  
   The approach ensures that data remains **modular, predictable, and easy to manage**, while behaviours operate on these atomic elements.
            
+## Examples
+The repository includes **three sample projects** demonstrating different use cases of the Atomic Framework:
+
+1. **Beginner Sample**
+<img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+
+A simple introductory project designed for newcomers to the framework. It demonstrates basic concepts and usage patterns.
+
+
+2. **Top-Down Shooter Sample**
+<img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
+
+A fast-paced 3D shooter example showcasing entity behaviours, movement, and interactions in a gameplay scenario.
+
+3. **RTS Sample**
+<img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
+
+A large-scale real-time strategy example featuring **thousands of units** to demonstrate performance, entity management, and high-speed updates.
+
+
 
 <!--
 ## Game Example
