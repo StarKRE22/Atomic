@@ -1,4 +1,4 @@
-# 📘 Atomic.Elements Manual
+# 📘 Atomic.Elements
 
 `Atomic.Elements` is a modular and reusable component library for Unity and C#, designed to simplify and accelerate game development. It provides a set of reactive components and data structures that can be easily integrated into different projects, offering flexibility and scalability.
 
