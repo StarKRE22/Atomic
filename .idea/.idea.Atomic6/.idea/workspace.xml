@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f106cd4d-c00f-4b81-9bcf-3c28f7dcc409" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="non-unity" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;StarKRE22&quot;
+  }
+}</component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/StarKRE22/Atomic&quot;,
+    &quot;accountId&quot;: &quot;7e4d7979-8bc1-43b4-9e2f-89d48163d907&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float3.gen.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/math.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework.performance@fb0dc592af8b/Runtime/Measurements/MethodMeasurement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@5ac417e07314/UnityEngine.TestRunner/NUnitExtensions/Attributes/TestEnumerator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@22ebcc83720a/Runtime/TMP/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/2c/93eb9a9d/IEqualityComparer`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/3b/c9f26450/Array.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/5e/a1fbd25c/Single.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/85/48702da0/IReadOnlyCollection`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/89/8932e18a/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/aa/3af5e450/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/e9/daf39465/CollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6d777f43889641459eab050a5ff572a19b8e00/86/a55e67b8/EditorSceneManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/96ae1b388758443598ae9d397294e3122ac00/e8/8ad60106/Rigidbody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/67/434e7bcf/IObservable`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/de80aed0bd3646409e8bfb15c101f005e2000/71/96828021/Guid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/08/c54e819f/AsyncOperation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/18/73be7056/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/32/1dac8720/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/40/fd33f593/Bounds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/65/b7fabbf1/FindObjectsInactive.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/83/73a5990b/ProfilerMarker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/91/8d44f40c/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/f2/70b0d224/MinAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/f9/af9476ba/ExecuteInEditMode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f577cd9686154d6ab10efd7e65e6436647400/29/f014c22e/Does.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2zmQG2c5qj5nYUC7ejoDTsZkRTu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;LiveTemplatesSettingsId&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="{" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f106cd4d-c00f-4b81-9bcf-3c28f7dcc409" name="Changes" comment="" />
+      <created>1752333673580</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752333673580</updated>
+      <workItem from="1752333683640" duration="868000" />
+      <workItem from="1752406427910" duration="2035000" />
+      <workItem from="1752477659470" duration="16380000" />
+      <workItem from="1752572992025" duration="10928000" />
+      <workItem from="1752670117774" duration="7136000" />
+      <workItem from="1752738345934" duration="12252000" />
+      <workItem from="1752769230451" duration="3187000" />
+      <workItem from="1752824278419" duration="13673000" />
+      <workItem from="1752848543492" duration="69000" />
+      <workItem from="1752848627253" duration="274000" />
+      <workItem from="1752849096628" duration="18053000" />
+      <workItem from="1752870359855" duration="183000" />
+      <workItem from="1752906523498" duration="38667000" />
+      <workItem from="1753031534266" duration="191000" />
+      <workItem from="1753038201930" duration="50000" />
+      <workItem from="1753085447153" duration="16117000" />
+      <workItem from="1753164754240" duration="7446000" />
+      <workItem from="1753285362127" duration="14471000" />
+      <workItem from="1753304857042" duration="1870000" />
+      <workItem from="1753342137960" duration="22261000" />
+      <workItem from="1753431713153" duration="7044000" />
+      <workItem from="1753454136227" duration="9838000" />
+      <workItem from="1753472293113" duration="1160000" />
+      <workItem from="1753533438775" duration="5126000" />
+      <workItem from="1753558850746" duration="370000" />
+      <workItem from="1753615003785" duration="8795000" />
+      <workItem from="1753692713123" duration="2602000" />
+      <workItem from="1753948503880" duration="1701000" />
+      <workItem from="1753950216811" duration="12364000" />
+      <workItem from="1754031763013" duration="388000" />
+      <workItem from="1754032187227" duration="4340000" />
+      <workItem from="1754036872750" duration="301000" />
+      <workItem from="1754037193402" duration="12632000" />
+      <workItem from="1754201102429" duration="34876000" />
+      <workItem from="1754288845350" duration="25493000" />
+      <workItem from="1754329392429" duration="718000" />
+      <workItem from="1754380614207" duration="2656000" />
+      <workItem from="1754404567524" duration="5100000" />
+      <workItem from="1754411146934" duration="45000" />
+      <workItem from="1754411223857" duration="2107000" />
+      <workItem from="1754552705047" duration="18878000" />
+      <workItem from="1754639879716" duration="4879000" />
+      <workItem from="1754645729941" duration="14100000" />
+      <workItem from="1754680158033" duration="701000" />
+      <workItem from="1754681201424" duration="7062000" />
+      <workItem from="1754726085546" duration="12125000" />
+      <workItem from="1754746005957" duration="17000" />
+      <workItem from="1754746116557" duration="12971000" />
+      <workItem from="1754769742407" duration="322000" />
+      <workItem from="1754812483937" duration="11383000" />
+      <workItem from="1754982103098" duration="10337000" />
+      <workItem from="1755022048494" duration="77000" />
+      <workItem from="1755174273067" duration="7702000" />
+      <workItem from="1755193563587" duration="2270000" />
+      <workItem from="1755486422239" duration="33636000" />
+      <workItem from="1755768257824" duration="737000" />
+      <workItem from="1755774862290" duration="890000" />
+      <workItem from="1755874073972" duration="5729000" />
+      <workItem from="1756054095099" duration="4536000" />
+      <workItem from="1756063241943" duration="3468000" />
+      <workItem from="1756119774743" duration="27009000" />
+      <workItem from="1756217605389" duration="10904000" />
+      <workItem from="1756290238292" duration="1543000" />
+      <workItem from="1756291795666" duration="869000" />
+      <workItem from="1756292675213" duration="525000" />
+    </task>
+    <task id="LOCAL-00071" summary="Пилим!">
+      <created>1753288110940</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1753288110941</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Пилим EntityWorld">
+      <created>1753288993439</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1753288993439</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Думаем!">
+      <created>1753293348133</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1753293348133</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Делаем де-инициализацию!">
+      <created>1753293639034</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1753293639034</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Вот сейчас уже лучше!">
+      <created>1753295947966</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1753295947966</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Переписал Behaviour!">
+      <created>1753296415149</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1753296415149</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Minor Fixes!">
+      <created>1753296749914</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1753296749914</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Пилим!">
+      <created>1753297530840</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1753297530840</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Вот теперь красота!">
+      <created>1753298585239</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1753298585239</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Minor Fixes!">
+      <created>1753299262674</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1753299262674</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Блин новая атомарка будет еще более пушечной!">
+      <created>1753299781382</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1753299781382</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Ну вроде все готово!">
+      <created>1753300579439</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1753300579439</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Пилим!">
+      <created>1753306578274</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1753306578275</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Пилим!">
+      <created>1753306698542</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1753306698542</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Пилим!">
+      <created>1753343494965</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1753343494965</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Minor Fixes!">
+      <created>1753345170472</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1753345170472</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Написал EntityCollection, это жесть!">
+      <created>1753348058253</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1753348058253</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Entity Collection done ✅">
+      <created>1753348523600</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1753348523600</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Сделал доку для подписок!">
+      <created>1753349239875</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1753349239875</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Пилим!">
+      <created>1753350630289</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1753350630289</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Думаем!">
+      <created>1753367297755</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1753367297755</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Пилим!">
+      <created>1753369708186</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1753369708186</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Написал триггеры!">
+      <created>1753370686113</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1753370686113</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Сделал фильтр и триггеры!">
+      <created>1753371546826</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1753371546826</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Пилим атомарку!">
+      <created>1753386738392</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1753386738392</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Фиксы в нейминге!">
+      <created>1753435950293</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1753435950294</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Кайф!">
+      <created>1753437012415</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1753437012416</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Думаем!">
+      <created>1753437347396</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1753437347397</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Фиксы!">
+      <created>1753437558341</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1753437558342</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Думаем!">
+      <created>1753437605209</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1753437605209</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Вот теперь кайф!">
+      <created>1753438570681</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1753438570681</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Остался EntityView!">
+      <created>1753459573851</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1753459573851</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Пилим!">
+      <created>1753461034510</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1753461034510</updated>
+    </task>
+    <task id="LOCAL-00104" summary="UI готоф!">
+      <created>1753465260515</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1753465260515</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Minor Fixes!">
+      <created>1753465322307</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1753465322307</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Встроил unsafe!">
+      <created>1753473019974</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1753473019974</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Minor Fixes!">
+      <created>1753473431735</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1753473431735</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Написал тесты!">
+      <created>1753541282532</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1753541282533</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Пока остановимся тут!">
+      <created>1753541908840</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1753541908840</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Пофиксил баги!">
+      <created>1753617868405</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1753617868406</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Добавил тесты по Lifecycle!">
+      <created>1753621109898</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1753621109898</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Пилим!">
+      <created>1753623974631</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1753623974631</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Пилим тесты для Entity!">
+      <created>1753953762068</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1753953762069</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Сущность протестирована!">
+      <created>1753954497424</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1753954497424</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Думаем!">
+      <created>1753956903972</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1753956903972</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Пилим!">
+      <created>1753959548193</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1753959548193</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Сделал тест для Create!">
+      <created>1753960062189</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1753960062189</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Готов каст!">
+      <created>1753960995129</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1753960995129</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Пилим!">
+      <created>1753983867412</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1753983867412</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Добавил RTS код" />
+    <MESSAGE value="Пилим сущности!" />
+    <MESSAGE value="Думаем над фабриками!" />
+    <MESSAGE value="Вроде переписал RTS!" />
+    <MESSAGE value="Облагородил BeginnerGame!" />
+    <MESSAGE value="Сделал первый уровень!" />
+    <MESSAGE value="Сделал уровни для Shooter Sample!" />
+    <MESSAGE value="Перепиливаем UI!" />
+    <MESSAGE value="Думаем!" />
+    <MESSAGE value="Написал Bakers!" />
+    <MESSAGE value="Поправил фильтр!" />
+    <MESSAGE value="Сделал отдачу пушки!" />
+    <MESSAGE value="Вроде игра готова, го тестить!" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Сделал Baking!" />
+    <MESSAGE value="Подкручиваем!" />
+    <MESSAGE value="Покрыл доку!" />
+    <MESSAGE value="Запекание сделал!" />
+    <MESSAGE value="RTS Sample готоф!" />
+    <MESSAGE value="Примеры готовы!" />
+    <MESSAGE value="Поправил тесты!" />
+    <MESSAGE value="Убрал лишние ассеты!" />
+    <MESSAGE value="Удалил Odin Inspector" />
+    <MESSAGE value="Make Samples invisible" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

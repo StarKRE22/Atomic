@@ -6,40 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/~Examples/Beginner/Scenes/BeginnerGame.unity
+    path: Assets/Samples/Beginner/Scenes/BeginnerGame.unity
     guid: 6cde48bfb3ab8440f80ae31b77cfe96f
   - enabled: 1
-    path: Assets/~Examples/Shooter/Scenes/ShooterGame (Bootstrap).unity
+    path: Assets/Samples/Shooter/Scenes/ShooterGame (Bootstrap).unity
     guid: 01127b740c5ae4d4f94f81df70c81490
   - enabled: 1
-    path: Assets/~Examples/Shooter/Scenes/ShooterGame (Level1).unity
+    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level1).unity
     guid: be9bfa09430ff456eb76851b15fa7fd2
   - enabled: 1
-    path: Assets/~Examples/Shooter/Scenes/ShooterGame (Level2).unity
+    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level2).unity
     guid: 7b2ee36e12cdf44c5b8c0de6c0262fb9
   - enabled: 1
-    path: Assets/~Examples/Shooter/Scenes/ShooterGame (Level3).unity
+    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level3).unity
     guid: c597e0a1fe8ea400bbb8deeacee6fa9f
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level4).unity
-    guid: 1f19e9ae07a77420f802622120f29991
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level5).unity
-    guid: 81548a5ee8bfb4071a0d2ed499a7301f
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level6).unity
-    guid: 4df6d07bd60454faa966bf129ee8e38c
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level7).unity
-    guid: def41bfe0957049428fa0b3122f7384e
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Levell8).unity
-    guid: dab5000872ccc4192977f9ad74b18756
-  - enabled: 0
-    path: Assets/Examples/Shooter/Scenes/ShooterGame (Levell9).unity
-    guid: 3353d4c0913604e12bed8008606d2f40
   - enabled: 1
-    path: Assets/~Examples/Shooter/Scenes/ShooterGame (Menu).unity
+    path: Assets/Samples/Shooter/Scenes/ShooterGame (Menu).unity
     guid: 2a971fcbfef4b451f82c4da85c65aee1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
