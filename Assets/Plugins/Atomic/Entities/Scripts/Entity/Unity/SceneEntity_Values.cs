@@ -20,18 +20,6 @@ namespace Atomic.Entities
     public partial class SceneEntity
     {
         /// <summary>
-        /// Initial value capacity used to optimize value allocation.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [PropertyOrder(101)]
-        [ReadOnly]
-        [FoldoutGroup("Optimization", 2)]
-#endif
-        [Min(1)]
-        [SerializeField]
-        private int _initialValueCapacity = 1;
-        
-        /// <summary>
         /// Invoked when a new value is added to the entity.
         /// </summary>
         public event Action<IEntity, int> OnValueAdded;

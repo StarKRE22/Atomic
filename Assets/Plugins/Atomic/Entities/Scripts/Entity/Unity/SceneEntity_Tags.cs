@@ -20,18 +20,6 @@ namespace Atomic.Entities
     public partial class SceneEntity
     {
         /// <summary>
-        /// Initial tag capacity used to optimize tag allocation.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [PropertyOrder(100)]
-        [ReadOnly]
-        [FoldoutGroup("Optimization", 1)]
-#endif
-        [Min(1)]
-        [SerializeField]
-        private int _initialTagCapacity = 1;
-        
-        /// <summary>
         /// Invoked when a new tag is added to the entity.
         /// </summary>
         public event Action<IEntity, int> OnTagAdded;

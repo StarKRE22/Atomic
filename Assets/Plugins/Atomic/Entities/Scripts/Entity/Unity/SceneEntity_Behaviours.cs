@@ -35,21 +35,9 @@ namespace Atomic.Entities
         /// </summary>
         public int BehaviourCount => _behaviourCount;
 
-        /// <summary>
-        /// Initial behaviour capacity used to optimize behaviour allocation.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [PropertyOrder(102)]
-        [FoldoutGroup("Optimization")]
-        [ReadOnly]
-#endif
-        [Min(0)]
-        [SerializeField]
-        private int _initialBehaviourCapacity;
-
         private IEntityBehaviour[] _behaviours;
         private int _behaviourCount;
-        
+
         /// <summary>
         /// Checks whether a specific behaviour instance is attached to this entity.
         /// </summary>
@@ -293,7 +281,7 @@ namespace Atomic.Entities
 
             int count = 0;
             int capacity = results.Length;
-            
+
             if (capacity == 0)
                 return 0;
 
@@ -351,7 +339,7 @@ namespace Atomic.Entities
                 //Nothing...
             }
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructBehaviours()
         {

@@ -95,6 +95,44 @@ namespace Atomic.Entities
         [Space(8), SerializeField]
         internal List<SceneEntity> children;
 
+        /// <summary>
+        /// Initial tag capacity used to optimize tag allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [PropertyOrder(100)]
+        [ReadOnly]
+        [FoldoutGroup("Optimization", 1)]
+#else
+        [Header("Optimization")]
+#endif
+        [Min(1)]
+        [SerializeField]
+        private int _initialTagCapacity = 1;
+
+        /// <summary>
+        /// Initial value capacity used to optimize value allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [PropertyOrder(101)]
+        [ReadOnly]
+        [FoldoutGroup("Optimization", 2)]
+#endif
+        [Min(1)]
+        [SerializeField]
+        private int _initialValueCapacity = 1;
+
+        /// <summary>
+        /// Initial behaviour capacity used to optimize behaviour allocation.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [PropertyOrder(102)]
+        [FoldoutGroup("Optimization")]
+        [ReadOnly]
+#endif
+        [Min(0)]
+        [SerializeField]
+        private int _initialBehaviourCapacity;
+
         private int _instanceId;
         private bool _installed;
         private bool _started;
