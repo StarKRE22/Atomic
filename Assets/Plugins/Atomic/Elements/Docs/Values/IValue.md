@@ -1,4 +1,4 @@
-### 🧩 Value
+## 🧩 Value
 
 `IValue<T>` is a **read-only value provider interface** in the `Atomic.Elements` namespace.  
 It inherits from `IFunction<T>` and exposes a strongly-typed `Value` property.
