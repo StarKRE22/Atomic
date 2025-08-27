@@ -35,7 +35,7 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 ## Installation
 - _Option #1. Download source code with game examples_
 - _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
-- _Option #3: Install via Unity Package Manager using the Git URL: https://github.com/StarKRE22/unity-atomic.git?path=Assets/Plugins/Atomic_
+- _Option #3: Install via Unity Package Manager using the Git URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic_
 
 ## Add Odin Inspector for Unity 6
 
