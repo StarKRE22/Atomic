@@ -89,7 +89,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 5. **Write the `MoveBehaviour` class**
 
 ```csharp
-//Controller that moves entity by direction
+//Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 {
     private Transform _transform;
