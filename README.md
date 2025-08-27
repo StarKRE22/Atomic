@@ -14,7 +14,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Core Modules](#core-modules)
+- [Documentation](#documentation)
 - [Quick Start](#quick-start)    
 - [Theory](#theory)
 - [Examples](#examples)
@@ -37,7 +37,8 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
-## Core Modules
+## Documentation
+Atomic Framework consists of three main modules, each with its own detailed documentation that you can access via the links below:
 - **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — modular and reusable components for Unity development ⚙️
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — manage and deploy entities across project architecture 🏗️
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
