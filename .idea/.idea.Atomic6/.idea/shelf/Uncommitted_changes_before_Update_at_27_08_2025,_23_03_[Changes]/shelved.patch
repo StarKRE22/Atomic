@@ -1,0 +1,16 @@
+Index: Assets/Plugins/Atomic/Elements/Manual.md.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/Plugins/Atomic/Elements/Manual.md.meta b/Assets/Plugins/Atomic/Elements/Manual.md.meta
+new file mode 100644
+--- /dev/null	(date 1756310576779)
++++ b/Assets/Plugins/Atomic/Elements/Manual.md.meta	(date 1756310576779)
+@@ -0,0 +1,3 @@
++fileFormatVersion: 2
++guid: 55afb792f278407fa1cd695b42dd3a2e
++timeCreated: 1756310576
+\ No newline at end of file
+diff --git a/Assets/Plugins/Atomic/Elements/Manual.md b/Assets/Plugins/Atomic/Elements/Manual.md
+new file mode 100644

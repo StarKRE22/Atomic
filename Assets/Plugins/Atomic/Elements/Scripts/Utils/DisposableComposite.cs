@@ -27,7 +27,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="disposable">The <see cref="IDisposable"/> to add.</param>
         /// <exception cref="ObjectDisposedException">Thrown if the composite has already been disposed.</exception>
-        public void Add(IDisposable disposable)
+        public DisposableComposite Add(IDisposable disposable)
         {
             if (disposable == null)
                 throw new ArgumentNullException(nameof(disposable));
@@ -40,6 +40,7 @@ namespace Atomic.Elements
             }
 
             _items.Add(disposable);
+            return this;
         }
 
         /// <summary>

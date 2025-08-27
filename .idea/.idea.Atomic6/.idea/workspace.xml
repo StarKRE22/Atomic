@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="105bcf0e-7420-418f-a870-8c69f9b1c82e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Manual.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveSortedDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveSortedDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveSortedList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveSortedList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Set/ReactiveSortedSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Set/ReactiveSortedSet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/DisposableComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/DisposableComposite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedDictionaryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedDictionaryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedListTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedListTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedSetTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveSortedSetTests.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;StarKRE22&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/StarKRE22/Atomic&quot;,
+    &quot;accountId&quot;: &quot;7e4d7979-8bc1-43b4-9e2f-89d48163d907&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Tags.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/package.json" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="31ryCXKOg2Ny0QgDce9JZMn5RTm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="105bcf0e-7420-418f-a870-8c69f9b1c82e" name="Changes" comment="" />
+      <created>1756296358745</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756296358745</updated>
+      <workItem from="1756296359809" duration="9983000" />
+      <workItem from="1756310537707" duration="1776000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Samples!">
+      <option name="closed" value="true" />
+      <created>1756296480790</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1756296480790</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1756307267289</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756307267289</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Added Samples!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
