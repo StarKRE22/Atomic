@@ -1,15 +1,16 @@
-![Official](https://img.shields.io/badge/official-871DAC)
-![Stable](https://img.shields.io/badge/stable-5FBA27)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
+![🚀 Official](https://img.shields.io/badge/official-871DAC)
+![✅ Stable](https://img.shields.io/badge/stable-5FBA27)
+[![📦 GitHub release (latest by date)](https://img.shields.io/github/v/release/starkre22/Atomic?color=red)](https://github.com/starkre22/Atomic/releases)
+[![📄 GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/StarKRE22/Atomic/blob/main/LICENSE.md)
 
-<img width="4096" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" />
+<img width="4096" height="1024" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" />
 
-What is Atomic?
----
-Atomic is a reactive procedural framework for developing games in C# and Unity. The key idea is reducing code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards static methods and reactive properties instead of OOP.
+# What is Atomic? ⚛️
+Atomic is a **reactive procedural framework** for developing games in C# and Unity.  
+The key idea is **reducing code complexity** by separating state from behaviour.  
+To achieve **flexibility and reusability**, Atomic uses **static methods** and **reactive properties** instead of classical OOP.
 
-# Table of Contents
+# Table of Contents 📑
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
@@ -23,31 +24,30 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - [License](#license)
 - [Contacts](#contacts)
 
-## Requirements
-> [!IMPORTANT]
+## Requirements ⚠️
+> [!IMPORTANT]  
 > The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
 
-## Installation
-- _Option #1. Download source code with game examples_
-- _Option #2. Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
-- _Option #3: Install via Unity Package Manager using the Git URL: https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic_
+## 📦 Installation
+- _Option #1. Download source code with game examples_  
+- _Option #2. Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip) from [release notes](https://github.com/StarKRE22/Atomic/releases)_  
+- _Option #3: Install via Unity Package Manager using the Git URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
 
-## Using Odin Inspector
-> [!TIP]
-> For better debugging, configuration, and visualization of the game state, we **optionally recommend** adding the [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041) plugin to your project. 
-> While the Atomic Framework **works without Odin Inspector**, using it will enhance your workflow and make it easier to inspect and tweak data in Unity. 
-> In the future, we plan to reduce dependency on Odin Inspector and implement our own tools for Unity integration.
+## 🛠️ Using Odin Inspector
+> [!TIP]  
+> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
+> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
-## Core Modules
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — solution with modular and reusable components for Unity development
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution to manage and deploy entities across the architecture of a project
-- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance event handling system, flexible and efficient.
+## 🧩 Core Modules
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — modular and reusable components for Unity development ⚙️
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — manage and deploy entities across project architecture 🏗️
+- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance, flexible event handling system ⚡
 
-## Quick Start
+## 🚀 Quick Start
 The Quick Start guide contains **two examples**:
-- Using **Unity** with GameObjects and installers  
-- Using **pure C#** without Unity components  
+- Using **Unity** with GameObjects and installers 🕹️  
+- Using **pure C#** without Unity components 💻
 
 ### With Unity
 
