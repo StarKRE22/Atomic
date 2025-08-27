@@ -17,11 +17,12 @@
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
   - [UnitySpecificVariables](Variables/UnitySpecificVariables.md)
 
-- [Actions]
-  - [IAction] 
-  - [InlineAction]
-  - [CompositeAction]
-
+- **Actions**
+  - [IAction](Actions/IAction.md) 
+  - [InlineAction](Actions/InlineAction.md)
+  - [CompositeAction](Actions/CompositeAction.md)
+  - [UnitySpecificActions](Actions/UnitySpecificActions.md)
+  
 - [Functions]
   - [IFunction] 
   - [InlineFunction]
@@ -82,27 +83,6 @@
 -  [Best Practices]
 - [Performance]
 
-
-
-[//]: # ()
-[//]: # ()
-[//]: # (1. [Overview]&#40;#overview&#41;)
-
-[//]: # (2. [Core Components]&#40;#core-components&#41;)
-
-[//]: # (3. [Usage]&#40;#usage&#41;)
-
-[//]: # (4. [Best Practices]&#40;#best-practices&#41;)
-
-[//]: # (5. [References]&#40;#references&#41;)
-
-[//]: # ()
-[//]: # (## 🧩 Overview)
-
-[//]: # ()
-[//]: # (`Atomic.Elements` provides a collection of reactive components and data structures for creating complex entities in game development. Each component is designed to be **independent and highly configurable**, allowing developers to quickly adapt them to their project needs.)
-
-[//]: # ()
 
 
 

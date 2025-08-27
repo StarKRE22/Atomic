@@ -12,7 +12,7 @@ namespace Atomic.Elements
     /// An action that logs a message to the Unity console using a specified <see cref="LogType"/>.
     /// </summary>
     [Serializable]
-    public sealed class LogAction : IAction
+    public sealed class UnityLogAction : IAction
     {
 #if ODIN_INSPECTOR
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -27,11 +27,11 @@ namespace Atomic.Elements
         private LogType _logType;
 
         /// <summary>
-        /// Creates a new <see cref="LogAction"/> instance with the specified message and log type.
+        /// Creates a new <see cref="UnityLogAction"/> instance with the specified message and log type.
         /// </summary>
         /// <param name="message">The message to log.</param>
         /// <param name="logType">The log type (default is <see cref="LogType.Log"/>).</param>
-        public LogAction(string message, LogType logType = LogType.Log)
+        public UnityLogAction(string message, LogType logType = LogType.Log)
         {
             _message = message;
             _logType = logType;
