@@ -9,12 +9,12 @@
   - [IReactiveValue](Values/IReactiveValue.md)
   - [Const](Values/Const.md)
 
-- [Variable]
-  - [IVariable] 
-  - [BaseVariable]
-  - [ReactiveVariable]
-  - [ProxyVariable]
-  - [PlayerPrefsVariables]
+- **Variables**
+  - [IVariable](Variables/IVariable.md)
+  - [BaseVariable](Variables/BaseVariable.md)
+  - [ReactiveVariable](Variables/ReactiveVariable.md)
+  - [ProxyVariable](Variables/ProxyVariable.md)
+  - [UnityVariables](Variables/UnityVariables.md)
 
 - [Actions]
   - [IAction] 
@@ -78,6 +78,8 @@
   - [Optional]
   - [Reference]
 
+-  [Best Practices]
+- 
 
 
 
