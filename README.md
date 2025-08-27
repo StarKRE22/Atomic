@@ -188,11 +188,11 @@ character.Deactivate();
 character.Despawn();
 ```
 
-## Theory
+## 📚 Theory
 This section explains the **core concepts** behind the Atomic Framework and how they work together.  
 Understanding these principles will help you design flexible and reusable game mechanics.
 
-### Problem
+### 🛑 Problem
 
 Game development differs from typical software development because **games involve a large number of interactions** between objects and systems.  
 
@@ -214,7 +214,7 @@ Each choice creates new challenges:
 
 As a result, game projects can quickly become hard to maintain, extend, and debug, especially as the number of interactions grows.
 
-### Solution
+### 💡 Solution
 
 To address the problem of complex interactions in game development, the Atomic Framework uses a **procedural programming approach**, which enforces a strict separation between **data** and **logic**.
 
@@ -238,8 +238,7 @@ This approach provides several advantages:
 
 By clearly separating state and behaviour, developers can focus on gameplay mechanics without getting bogged down in organizational overhead.
 
-
-### Key Concepts
+### ⚡ Key Concepts
 
 - **Everything is Entities**  
   Everything in Atomic is represented as **entities** that hold values (state) and behaviours (logic).  
@@ -264,10 +263,10 @@ By clearly separating state and behaviour, developers can focus on gameplay mech
   This allows developers to **construct complex entities** by assembling simple, reusable pieces, similar to using a constructor pattern.  
   The approach ensures that data remains **modular, predictable, and easy to manage**, while behaviours operate on these atomic elements.
            
-## Examples
+## 🎮 Examples
 The repository includes **three sample projects** demonstrating different use cases of the Atomic Framework:
 
-1. **Beginner Sample**
+### 1️⃣ Beginner Sample
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
 The Beginner Sample is a **simple 2-player mini-game** designed to introduce the core concepts of the Atomic Framework.  
@@ -289,7 +288,7 @@ This sample demonstrates:
 - Handling of **game state transitions** (playing → victory → restart)
 - **Testing Support** — includes tests proving that this architecture is **fully testable**, even with thousands of entities.
 
-2. **Top-Down Shooter Sample**
+### 2️⃣ Top-Down Shooter Sample
 <img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
 The Top-Down Shooter Sample demonstrates a more **complex game architecture**, suitable for mid-sized games.  
@@ -321,7 +320,7 @@ This sample serves as a **mini-prototype for a top-down shooter**, demonstrating
 - Separation of **Application** and **Game** contexts for clean architecture  
 - How to **scale and extend** a project for more complex gameplay scenarios
 
-3. **RTS Sample**
+### 3️⃣ RTS Sample
 <img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
 
 The RTS Sample is designed to demonstrate **high-performance entity management** with a large number of units.  
@@ -349,11 +348,11 @@ This sample illustrates:
 - Advanced **entity management patterns** using Atomic concepts  
 - Techniques for **high-speed updates, filtering, and reactive triggers**
 
-## Tutorial
+## 🎓 Tutorial
 
-## Manual
+## 📘 Manual
 
-## License
+## 📄 License
 This project is licensed under the [MIT License](./LICENSE.md).
 
 ```
@@ -380,7 +379,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## Contacts
+## 📞 Contacts
 **Author:** Igor Gulkin  
 **Telegram:** [@starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
