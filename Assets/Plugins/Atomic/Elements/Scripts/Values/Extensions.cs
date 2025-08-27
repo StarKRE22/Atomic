@@ -24,10 +24,10 @@ namespace Atomic.Elements
         /// <param name="it">The reactive value to observe.</param>
         /// <param name="action">The callback to invoke on value changes and immediately with the current value.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Observe<T>(this IReactiveValue<T> it, Action<T> action)
+        public static Subscription<T> Observe<T>(this IReactiveValue<T> it, Action<T> action)
         {
-            it.Subscribe(action);
             action.Invoke(it.Value);
+            return it.Subscribe(action);
         }
     }
 }

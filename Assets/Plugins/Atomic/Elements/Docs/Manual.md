@@ -4,10 +4,10 @@
 
 ## 🔍 Table of Contents
 
-- [Values](#values)
-  - [IValue](#ivalue)
-  - [Const]
-  - [Constants]
+- **Values**
+  - [IValue](Values/IValue.md)
+  - [IReactiveValue](Values/IReactiveValue.md)
+  - [Const](Values/Const.md)
 
 - [Variable]
   - [IVariable] 

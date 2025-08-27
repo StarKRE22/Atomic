@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="105bcf0e-7420-418f-a870-8c69f9b1c82e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/Const.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/Const.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/IValue.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/IValue.md.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/IReactiveValue.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/IReactiveValue.md.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Manual.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Extensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +121,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756296358745</updated>
       <workItem from="1756296359809" duration="9983000" />
-      <workItem from="1756310537707" duration="3337000" />
+      <workItem from="1756310537707" duration="4787000" />
     </task>
     <task id="LOCAL-00001" summary="Added Samples!">
       <option name="closed" value="true" />
@@ -159,7 +155,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756312934975</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Сделал IValue.md">
+      <option name="closed" value="true" />
+      <created>1756313897238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1756313897238</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Написал Const.md">
+      <option name="closed" value="true" />
+      <created>1756314495440</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756314495440</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +191,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="пишем manual для Atomic.Elements!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Сделал IValue.md" />
+    <MESSAGE value="Написал Const.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал Const.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
