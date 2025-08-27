@@ -14,15 +14,28 @@ What is Atomic?
 ---
 Atomic is a reactive procedural framework for developing games in C# and Unity. The key idea is reducing code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards static methods and reactive properties instead of OOP.
 
+
+# Table of Contents
+
+- [Requirements](#Requirements)
+- [Installation](#installation)
+- [Using Odin Inspector](#using-odin-inspector)
+- [Core Modules](#core-modules)
+- [Theory](#theory)
+- [Getting Started](#getting-started)
+- [Examples](#examples)
+- [License](#license)
+- [Contacts](#contacts)
+
 ## Requirements
 > [!IMPORTANT]
-> The Atomic Framework requires **Unity 6+** or **.NET 7+**.  
+> The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
 
 ## Installation
-
 - _Option #1. Download source code with game examples_
 - _Option #2. Download last [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) from [release notes](https://github.com/StarKRE22/Atomic/releases)_ 
+- _Option #3: Install via Unity Package Manager using the Git URL: https://github.com/StarKRE22/unity-atomic.git?path=Assets/Plugins/Atomic_
 
 ## Add Odin Inspector for Unity 6
 
@@ -35,8 +48,10 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 ## Framework modules
 - **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements)** — solution with modular and reusable components for Unity development
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution to manage and deploy entities across the architecture of a project
-- **[Atomic.EventBus (Experimental)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus (Experimental))** — high-performance event handling system, flexible and efficient.
+- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance event handling system, flexible and efficient.
 
+
+<!--
 ## Game Example
 There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
 
@@ -123,3 +138,4 @@ Here you can see all the features that are in the framework. We will add documen
 - [Atomic.Extensions]
   - [Entity Aspects]
   - [Condition and Action Assets] 
+-->
