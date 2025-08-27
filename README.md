@@ -272,14 +272,55 @@ The repository includes **three sample projects** demonstrating different use ca
 
 1. **Beginner Sample**
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+The Beginner Sample is a **simple 2-player mini-game** designed to introduce the core concepts of the Atomic Framework.  
 
-A simple introductory project designed for newcomers to the framework. It demonstrates basic concepts and usage patterns.
+**Gameplay:**
+- **Players:** Two players share the same scene.
+- **Controls:**  
+  - Player 1: `W`, `A`, `S`, `D`  
+  - Player 2: Arrow keys
+- **Objective:** Collect more coins than the opponent within a **limited time**.
+- **Win Condition:** When time runs out, the player with the most coins wins.
+- **UI Feedback:** Victory screen appears showing the winning player.
+- **Restart:** Players can restart the game to try again.
 
+This sample demonstrates:  
+- Basic **entity creation** and behaviour binding  
+- **Reactive properties** for tracking player scores  
+- Simple **UI integration**  
+- Handling of **game state transitions** (playing → victory → restart)
 
 2. **Top-Down Shooter Sample**
 <img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
-A fast-paced 3D shooter example showcasing entity behaviours, movement, and interactions in a gameplay scenario.
+The Top-Down Shooter Sample demonstrates a more **complex game architecture**, suitable for mid-sized games.  
+
+#### Project Structure
+- **Scenes:**  
+  - `Bootstrap` — starting scene that initializes the game.  
+  - `Menu` — separate scene for main menu and navigation.
+- **Contexts:**  
+  - **Application Context** — handles global systems and persistent data.  
+  - **Game Context** — manages gameplay-specific entities and logic.
+
+#### Gameplay Mechanics
+- **Levels:** Three separate levels where players and enemies spawn.  
+- **Combat:** Core mechanic is **shooting bullets**.  
+- **Physics:** Both bullets and characters use **Unity physics and colliders**.  
+- **Animations & VFX:** Characters and bullets have animations, visual effects, and sound effects for feedback.  
+- **Respawning:** Units respawn dynamically after being defeated.  
+- **Win Condition:** Player or team with the **most kills** at the end of the match wins.  
+- **Controls:**  
+  - Player 1 (Blue): `W`, `A`, `S`, `D` to move, `Space` to shoot  
+  - Player 2 (Red): Arrow keys to move, `Q` to shoot  
+- **Configuration:** All controls and settings are defined in the **game configuration** and can be inspected there.  
+- **Start:** Game is launched through the `Bootstrap` scene.
+
+#### Purpose
+This sample serves as a **mini-prototype for a top-down shooter**, demonstrating:  
+- How **Atomic Framework** can manage entities, behaviours, and reactive properties  
+- Separation of **Application** and **Game** contexts for clean architecture  
+- How to **scale and extend** a project for more complex gameplay scenarios
 
 3. **RTS Sample**
 <img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
