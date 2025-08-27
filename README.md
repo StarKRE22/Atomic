@@ -5,11 +5,6 @@
 
 <img width="4096" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" />
 
-<!-- ![изображение](https://github.com/user-attachments/assets/bd9b13da-fed3-41dc-b84e-ef87b3301dfa)  -->
-
-<!-- # Atomic Framework -->
-
-
 What is Atomic?
 ---
 Atomic is a reactive procedural framework for developing games in C# and Unity. The key idea is reducing code complexity by separating state from behaviour. To achieve the flexibility and reusability of game mechanics, it is necessary to look towards static methods and reactive properties instead of OOP.
@@ -272,6 +267,7 @@ The repository includes **three sample projects** demonstrating different use ca
 
 1. **Beginner Sample**
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+
 The Beginner Sample is a **simple 2-player mini-game** designed to introduce the core concepts of the Atomic Framework.  
 
 **Gameplay:**
@@ -289,6 +285,7 @@ This sample demonstrates:
 - **Reactive properties** for tracking player scores  
 - Simple **UI integration**  
 - Handling of **game state transitions** (playing → victory → restart)
+- **Testing Support** — includes tests proving that this architecture is **fully testable**, even with thousands of entities.
 
 2. **Top-Down Shooter Sample**
 <img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
@@ -325,24 +322,32 @@ This sample serves as a **mini-prototype for a top-down shooter**, demonstrating
 3. **RTS Sample**
 <img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
 
-A large-scale real-time strategy example featuring **thousands of units** to demonstrate performance, entity management, and high-speed updates.
+The RTS Sample is designed to demonstrate **high-performance entity management** with a large number of units.  
 
+#### Core Idea
+- Unity serves purely as a **visualization layer**.  
+- The actual game logic runs entirely in **C#**, decoupled from Unity's MonoBehaviour system.  
+- This architecture allows simulation of **thousands of entities** efficiently.
 
+#### Project Structure
+- **Scenes:**  
+  1. **Entity Baking Scene** — converts Unity objects into pure C# entities for the game simulation.  
+  2. **5000 Units Scene** — 5,000 game objects with full Unity visualization.  
+  3. **10000 Units Scene** — 10,000 game objects running without visualization for maximum performance testing.
 
-<!--
-## Game Example
-There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
+#### Features Demonstrated
+- **Model-View Separation** — demonstrates how Atomic separates the **data/model layer** from the **visual layer**.  
+- **EntityWorld, Filters, and Triggers** — advanced tools for managing entities efficiently and reacting to changes.  
+- **EntityCollectionView** — shows how to synchronize entity data with views.  
 
-> Note: Made without Odin Inspector!
+#### Purpose
+This sample illustrates:  
+- **Scalability** of the Atomic Framework for large-scale RTS projects  
+- Efficient **C#-based entity simulation** independent of Unity  
+- Advanced **entity management patterns** using Atomic concepts  
+- Techniques for **high-speed updates, filtering, and reactive triggers**
 
-<img width="546" alt="изображение" src="https://github.com/user-attachments/assets/c7d114c8-f9bd-4c59-be36-2dc7ee3cdac9">
-
-## Tutorial Walkthrough
-There is a step-by-step tutorial in the project. It shows the key features of Atomic Framework and how mini-game was made step by step.
-
-<img width="651" alt="изображение" src="https://github.com/user-attachments/assets/4a1655c4-475d-41e7-a699-21b917448b36">
-
-
+<!-- 
 ## Table of Contents
 Here you can see all the features that are in the framework. We will add documentation on github from time to time to make it easier for developers to learn the framework.
 - [Atomic.Elements]
