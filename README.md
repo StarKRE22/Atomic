@@ -175,8 +175,11 @@ character.Activate();
 ```csharp
 const float deltaTime = 0.02f;
 
-//Calls IEntityFixedUpdate if entity is active
-character.OnFixedUpdate(deltaTime); 
+while(_isGameRunning)
+{
+   //Calls IEntityFixedUpdate if entity is active
+   character.OnFixedUpdate(deltaTime); 
+}
 ```
 
 5. **Make entity inactive and despawned**
