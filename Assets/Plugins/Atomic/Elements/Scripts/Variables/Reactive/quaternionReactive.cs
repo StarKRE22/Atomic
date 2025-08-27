@@ -18,7 +18,7 @@ namespace Atomic.Extensions
     [InlineProperty]
 #endif
     [Serializable]
-    public class Reactive_quaternion : IReactiveVariable<quaternion>
+    public class quaternionReactive : IReactiveVariable<quaternion>
     {
         /// <summary>
         /// Invoked when the value changes.
@@ -53,21 +53,21 @@ namespace Atomic.Extensions
         }
 
         /// <summary>
-        /// Creates a new <see cref="Reactive_quaternion"/> with a default value.
+        /// Creates a new <see cref="quaternionReactive"/> with a default value.
         /// </summary>
-        public Reactive_quaternion() => this.value = default;
+        public quaternionReactive() => this.value = default;
 
         /// <summary>
-        /// Creates a new <see cref="Reactive_quaternion"/> with the specified value.
+        /// Creates a new <see cref="quaternionReactive"/> with the specified value.
         /// </summary>
         /// <param name="value">The initial quaternion value.</param>
-        public Reactive_quaternion(quaternion value) => this.value = value;
+        public quaternionReactive(quaternion value) => this.value = value;
 
         /// <summary>
-        /// Implicitly converts a <see cref="quaternion"/> to a <see cref="Reactive_quaternion"/>.
+        /// Implicitly converts a <see cref="quaternion"/> to a <see cref="quaternionReactive"/>.
         /// </summary>
         /// <param name="value">The value to wrap.</param>
-        public static implicit operator Reactive_quaternion(quaternion value) => new(value);
+        public static implicit operator quaternionReactive(quaternion value) => new(value);
 
         /// <summary>
         /// Subscribes to value change events.

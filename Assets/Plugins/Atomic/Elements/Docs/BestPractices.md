@@ -3,8 +3,46 @@
 - Interface Segregation на максимум тоже, чтобы более гибко было!
 - Коллекции старайтесь указывать явный тип, так как Enumerator Struct!
 Уходите от зависимостей Unity & зависимостей на всякие фреймворки особенно мультиплеер, чтобы код был максимально тестируемым!
-
+- Используйте Observe для 
 This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
+
+
+
+You can use extension Observe and cache subscription handle
+```csharp
+using UnityEngine;
+using UnityEngine.UI; // Required for Text
+using Atomic.Elements;
+using System;
+
+public sealed class ScorePresenter : IDisposable
+{
+    private readonly IReactiveValue<int> _score;
+    private readonly Text _scoreText;
+    private readonly Subscription<int> _subscription; //struct
+    
+    public ScorePresenter(IReactiveValue<int> score, Text scoreText)
+    {
+        _score = score;
+        _scoreText = scoreText;
+
+        // Subscribe and initialize UI with current value
+        _subscription = _score.Observe(this.OnScoreChanged);
+    }
+    
+    public void Dispose()
+    {
+        // Unsubscribe to avoid memory leaks
+        _subscription.Dispose();
+    }
+    
+    private void OnScoreChanged(int score)
+    {
+        // Update UI text
+        _scoreText.text = "Score: " + score;
+    }
+}
+```
 
 ```csharp
 using UnityEngine;

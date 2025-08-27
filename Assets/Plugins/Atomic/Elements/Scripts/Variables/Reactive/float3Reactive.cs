@@ -18,7 +18,7 @@ namespace Atomic.Extensions
     [InlineProperty]
 #endif
     [Serializable]
-    public class Reactive_float3 : IReactiveVariable<float3>
+    public class float3Reactive : IReactiveVariable<float3>
     {
         /// <summary>
         /// Invoked when the value changes.
@@ -53,21 +53,21 @@ namespace Atomic.Extensions
         }
 
         /// <summary>
-        /// Creates a new <see cref="Reactive_float3"/> with the default value.
+        /// Creates a new <see cref="float3Reactive"/> with the default value.
         /// </summary>
-        public Reactive_float3() => this.value = default;
+        public float3Reactive() => this.value = default;
 
         /// <summary>
-        /// Creates a new <see cref="Reactive_float3"/> with the specified initial value.
+        /// Creates a new <see cref="float3Reactive"/> with the specified initial value.
         /// </summary>
         /// <param name="value">Initial float3 value.</param>
-        public Reactive_float3(float3 value) => this.value = value;
+        public float3Reactive(float3 value) => this.value = value;
 
         /// <summary>
-        /// Implicitly converts a <see cref="float3"/> to a <see cref="Reactive_float3"/>.
+        /// Implicitly converts a <see cref="float3"/> to a <see cref="float3Reactive"/>.
         /// </summary>
         /// <param name="value">The value to wrap.</param>
-        public static implicit operator Reactive_float3(float3 value) => new(value);
+        public static implicit operator float3Reactive(float3 value) => new(value);
 
         /// <summary>
         /// Subscribes to value changes.
