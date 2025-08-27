@@ -11,7 +11,7 @@ The key idea is **reducing code complexity** by separating state from behaviour.
 To achieve **flexibility and reusability**, Atomic uses **static methods** and **reactive properties** instead of classical OOP.
 
 # 📑 Table of Contents 
-- [Requirements](#requirements)
+- [⚠️ Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Core Modules](#core-modules)
