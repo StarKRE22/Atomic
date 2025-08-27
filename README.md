@@ -5,12 +5,12 @@
 
 <img width="4096" height="1024" alt="Banner" src="https://github.com/user-attachments/assets/bd596a97-4215-4fa6-8e5c-48da598b1e79" />
 
-# What is Atomic? ⚛️
+# ⚛️ What is Atomic? 
 Atomic is a **reactive procedural framework** for developing games in C# and Unity.  
 The key idea is **reducing code complexity** by separating state from behaviour.  
 To achieve **flexibility and reusability**, Atomic uses **static methods** and **reactive properties** instead of classical OOP.
 
-# Table of Contents 📑
+# 📑 Table of Contents 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
@@ -24,7 +24,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [License](#license)
 - [Contacts](#contacts)
 
-## Requirements ⚠️
+## ⚠️ Requirements 
 > [!IMPORTANT]  
 > The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
