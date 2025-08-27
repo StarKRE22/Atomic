@@ -37,6 +37,8 @@ Atomic is a reactive procedural framework for developing games in C# and Unity. 
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities)** — solution to manage and deploy entities across the architecture of a project
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus)** — high-performance event handling system, flexible and efficient.
 
+
+<!--
 ## Game Example
 There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
 
@@ -123,3 +125,4 @@ Here you can see all the features that are in the framework. We will add documen
 - [Atomic.Extensions]
   - [Entity Aspects]
   - [Condition and Action Assets] 
+-->
