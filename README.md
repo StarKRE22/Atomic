@@ -177,9 +177,81 @@ character.Deactivate();
 character.Despawn();
 ```
 
+## Theory
+This section explains the **core concepts** behind the Atomic Framework and how they work together.  
+Understanding these principles will help you design flexible and reusable game mechanics.
+
+### Problem
+
+Game development differs from typical software development because **games involve a large number of interactions** between objects and systems.  
+
+The key problem is that **interactions are difficult to model using traditional object-oriented approaches**. For example:  
+
+- Imagine a character and a ladder in a game.
+
+<img width="225" height="225" alt="изображение" src="https://github.com/user-attachments/assets/d6d36566-2c8f-4cc8-b208-3e586d45be98" />
+
+- Where should the interaction logic live?  
+  - In the character?  
+  - In the ladder?  
+  - In a separate controller object?  
+
+Each choice creates new challenges:  
+- Naming becomes confusing.  
+- The code structure becomes more complex.  
+- Developers spend a lot of time just organizing interactions instead of implementing gameplay mechanics.  
+
+As a result, game projects can quickly become hard to maintain, extend, and debug, especially as the number of interactions grows.
+
+### Solution
+
+To address the problem of complex interactions in game development, the Atomic Framework uses a **procedural programming approach**, which enforces a strict separation between **data** and **logic**.
+
+```csharp
+public static void InteractWithLadder(IEntity character, IEntity ladder)
+{
+   Vector3 characterPosition = character.GetValue<Vector3>("Position");
+   Vector3 ladderPosition = ladder.GetValue<Vector3>("Position");
+   //Some code...
+}
+```
+
+- **Data** is represented by **structures** or **objects** that only store state.  
+- **Logic** is implemented as **pure static methods**, responsible for handling interactions between objects.  
+
+This approach provides several advantages:  
+- Simplifies code structure and naming conventions.  
+- Reduces time spent deciding where interaction code should live.  
+- Improves **performance**, **reliability**, and **speed of development**, especially for small and medium projects.  
+- Ideal for **prototyping**, where fast iteration and clear data flow are critical.  
+
+By clearly separating state and behaviour, developers can focus on gameplay mechanics without getting bogged down in organizational overhead.
 
 
-   
+### Key Concepts
+
+- **Everything is Entities**  
+  Everything in Atomic is represented as **entities** that hold values (state) and behaviours (logic).  
+  Entities can represent anything: characters, UI, contexts, or systems.
+
+- **Entity-State-Behaviour Pattern**  
+  Each entity acts as a **container** that holds **data** and **behaviours**, keeping them strictly separated.  
+  - **Data** consists of structures or objects that represent the state of the entity.  
+  - **Behaviour** consists of pure controllers or logic methods that operate on the data.  
+
+   Entities can have multiple behaviours bound to them, which can be **activated or deactivated dynamically** depending on the state.  
+   This strict separation of state and logic allows for **clearer architecture**, reducing complexity, improving testability, easier debugging, and more       flexible interactions between game objects.
+
+- **Static and Procedural Approach**  
+  Atomic promotes the use of static methods and reactive values for entity interactions.
+  
+- **Reactive Programming**  
+  The framework uses **reactive properties** to observe entity state and respond to data changes in real time.
+
+- **Atomic Data Composition**  
+  Each entity's **data** is composed of **primitive, atomic elements** that can be combined like building blocks.  
+  This allows developers to **construct complex entities** by assembling simple, reusable pieces, similar to using a constructor pattern.  
+  The approach ensures that data remains **modular, predictable, and easy to manage**, while behaviours operate on these atomic elements.
            
 
 <!--
