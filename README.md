@@ -11,7 +11,7 @@ The key idea is **reducing code complexity** by separating state from behaviour.
 To achieve **flexibility and reusability**, Atomic uses **static methods** and **reactive properties** instead of classical OOP.
 
 # 📑 Table of Contents 
-- [⚠️ Requirements](#requirements)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Core Modules](#core-modules)
@@ -22,27 +22,27 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [License](#license)
 - [Contacts](#contacts)
 
-## ⚠️ Requirements 
+## Requirements 
 > [!IMPORTANT]  
 > The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
 
-## 📦 Installation
+## Installation
 - _Option #1. Download source code with game examples_  
 - _Option #2. Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip) from [release notes](https://github.com/StarKRE22/Atomic/releases)_  
 - _Option #3: Install via Unity Package Manager using the Git URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
 
-## 🛠️ Using Odin Inspector
+## Using Odin Inspector
 > [!TIP]  
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
-## 🧩 Core Modules
+## Core Modules
 - **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Manual.md)** — modular and reusable components for Unity development ⚙️
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Manual.md)** — manage and deploy entities across project architecture 🏗️
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Manual.md)** — high-performance event handling system ⚡
 
-## 🚀 Quick Start
+## Quick Start
 The Quick Start guide contains **two examples**:
 - Using **Unity** with GameObjects and installers 🕹️  
 - Using **pure C#** without Unity components 💻
@@ -189,7 +189,7 @@ character.Deactivate();
 character.Despawn();
 ```
 
-## 📚 Theory
+## Theory
 This section explains the **core concepts** behind the Atomic Framework and how they work together.  
 Understanding these principles will help you design flexible and reusable game mechanics.
 
@@ -264,7 +264,7 @@ By clearly separating state and behaviour, developers can focus on gameplay mech
   This allows developers to **construct complex entities** by assembling simple, reusable pieces, similar to using a constructor pattern.  
   The approach ensures that data remains **modular, predictable, and easy to manage**, while behaviours operate on these atomic elements.
            
-## 🎮 Examples
+## Examples
 The repository includes **three sample projects** demonstrating different use cases of the Atomic Framework:
 
 ### 1️⃣ Beginner Sample
@@ -352,7 +352,7 @@ This sample illustrates:
 ## Best Practices
 TODO:
 
-## 📄 License
+## License
 This project is licensed under the [MIT License](./LICENSE.md).
 
 ```
@@ -379,7 +379,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## 📞 Contacts
+## Contacts
 **Author:** Igor Gulkin  
 **Telegram:** [@starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
