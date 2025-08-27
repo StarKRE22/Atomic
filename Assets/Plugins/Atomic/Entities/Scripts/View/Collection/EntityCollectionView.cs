@@ -20,12 +20,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Raised when a view is spawned for a newly added entity.
         /// </summary>
-        public event Action<IEntity, EntityViewBase> OnAdded;
+        public event Action<IEntity, IReadOnlyEntityView> OnAdded;
 
         /// <summary>
         /// Raised when a view is removed for a despawned or removed entity.
         /// </summary>
-        public event Action<IEntity, EntityViewBase> OnRemoved;
+        public event Action<IEntity, IReadOnlyEntityView> OnRemoved;
 
         [Space]
         [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
@@ -119,7 +119,11 @@ namespace Atomic.Entities
         /// Returns an enumerator that iterates through the collection of entity-view pairs.
         /// </summary>
         /// <returns>An enumerator of <see cref="KeyValuePair{IEntity, EntityViewBase}"/> representing all active entity-view mappings.</returns>
-        public IEnumerator<KeyValuePair<IEntity, EntityViewBase>> GetEnumerator() => _views.GetEnumerator();
+        public IEnumerator<KeyValuePair<IEntity, IReadOnlyEntityView>> GetEnumerator()
+        {
+            foreach (KeyValuePair<IEntity, EntityViewBase> pair in _views)
+                yield return new KeyValuePair<IEntity, IReadOnlyEntityView>(pair.Key, pair.Value);
+        }
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection of entity-view pairs (non-generic version).

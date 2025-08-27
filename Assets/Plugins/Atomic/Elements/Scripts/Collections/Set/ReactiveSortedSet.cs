@@ -14,9 +14,9 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of elements in the set.</typeparam>
     [Serializable]
-    public class ReactiveSortedSet<T> : IReactiveSet<T>,
+    public class ReactiveSortedSet<T> : IReactiveSet<T>
 #if UNITY_5_3_OR_NEWER
-        ISerializationCallbackReceiver
+        , ISerializationCallbackReceiver
 #endif
     {
         /// <inheritdoc/>

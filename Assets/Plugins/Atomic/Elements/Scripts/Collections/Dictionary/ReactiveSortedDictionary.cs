@@ -17,9 +17,9 @@ namespace Atomic.Elements
     /// <typeparam name="V">The value type.</typeparam>
     [Serializable]
     public class ReactiveSortedDictionary<K, V> :
-        IReactiveDictionary<K, V>,
+        IReactiveDictionary<K, V>
 #if UNITY_5_3_OR_NEWER
-        ISerializationCallbackReceiver
+        , ISerializationCallbackReceiver
 #endif
     {
         /// <summary>

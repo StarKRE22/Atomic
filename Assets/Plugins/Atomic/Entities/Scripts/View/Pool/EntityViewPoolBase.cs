@@ -1,7 +1,8 @@
+#if UNITY_5_3_OR_NEWER
+using UnityEngine;
+
 namespace Atomic.Entities
 {
-    using UnityEngine;
-
     /// <summary>
     /// Base class for implementing a pool of <see cref="EntityViewBase"/> instances.
     /// Provides abstract methods for renting, returning, and clearing views.
@@ -18,6 +19,8 @@ namespace Atomic.Entities
         /// <returns>An active <see cref="EntityViewBase"/> instance.</returns>
         public abstract EntityViewBase Rent(string name);
 
+        IReadOnlyEntityView IEntityViewPool.Rent(string name) => this.Rent(name);
+
         /// <summary>
         /// Returns a previously rented view instance back to the pool for reuse.
         /// Must be implemented in derived classes.
@@ -26,6 +29,8 @@ namespace Atomic.Entities
         /// <param name="view">The <see cref="EntityViewBase"/> instance to return to the pool.</param>
         public abstract void Return(string name, EntityViewBase view);
 
+        void IEntityViewPool.Return(string name, IReadOnlyEntityView view) => this.Return(name, (EntityViewBase) view);
+
         /// <summary>
         /// Clears all view instances from the pool, releasing any resources held.
         /// Must be implemented in derived classes.
@@ -33,3 +38,4 @@ namespace Atomic.Entities
         public abstract void Clear();
     }
 }
+#endif

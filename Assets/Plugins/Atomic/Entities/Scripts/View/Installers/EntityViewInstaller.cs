@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// Base class for components that handle the installation of <see cref="EntityView"/> instances.
     /// Inherit from this class to implement custom installation logic for entity views.
     /// </summary>
-    public abstract class EntityViewInstaller : MonoBehaviour, IEntityViewInstaller
+    public abstract class EntityViewInstaller : MonoBehaviour
     {
         /// <summary>
         /// Performs the installation logic for the specified <see cref="EntityView"/>.

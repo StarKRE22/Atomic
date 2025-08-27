@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;

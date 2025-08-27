@@ -4,13 +4,16 @@
 
 using System;
 using System.Collections.Generic;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Elements
 {
     //Steal from UniRx! ;)
     internal static class EqualityComparer
     {
+#if UNITY_5_3_OR_NEWER
         public static readonly IEqualityComparer<Vector2> Vector2 = new Vector2EqualityComparer();
         public static readonly IEqualityComparer<Vector3> Vector3 = new Vector3EqualityComparer();
         public static readonly IEqualityComparer<Vector4> Vector4 = new Vector4EqualityComparer();
@@ -28,6 +31,7 @@ namespace Atomic.Elements
         static readonly RuntimeTypeHandle rectType = typeof(Rect).TypeHandle;
         static readonly RuntimeTypeHandle boundsType = typeof(Bounds).TypeHandle;
         static readonly RuntimeTypeHandle quaternionType = typeof(Quaternion).TypeHandle;
+#endif
 
 
 #if UNITY_2017_2_OR_NEWER
@@ -69,7 +73,7 @@ namespace Atomic.Elements
         static object GetDefaultHelper(Type type)
         {
             var t = type.TypeHandle;
-
+#if UNITY_5_3_OR_NEWER
             if (t.Equals(vector2Type)) return Vector2;
             if (t.Equals(vector3Type)) return Vector3;
             if (t.Equals(vector4Type)) return Vector4;
@@ -78,6 +82,7 @@ namespace Atomic.Elements
             if (t.Equals(rectType)) return Rect;
             if (t.Equals(boundsType)) return Bounds;
             if (t.Equals(quaternionType)) return Quaternion;
+#endif
 
 #if UNITY_2017_2_OR_NEWER
 
@@ -90,6 +95,7 @@ namespace Atomic.Elements
 
             return null;
         }
+#if UNITY_5_3_OR_NEWER
 
         sealed class Vector2EqualityComparer : IEqualityComparer<Vector2>
         {
@@ -204,6 +210,7 @@ namespace Atomic.Elements
                        obj.b.GetHashCode() >> 1;
             }
         }
+#endif
 
 #if UNITY_2017_2_OR_NEWER
 

@@ -15,9 +15,9 @@ namespace Atomic.Elements
     /// <typeparam name="K">The key type. Must implement <see cref="IComparable{K}"/>.</typeparam>
     /// <typeparam name="V">The value type.</typeparam>
     [Serializable]
-    public class ReactiveSortedList<K, V> : IReactiveDictionary<K, V>,
+    public class ReactiveSortedList<K, V> : IReactiveDictionary<K, V>
 #if UNITY_5_3_OR_NEWER
-        ISerializationCallbackReceiver
+        , ISerializationCallbackReceiver
 #endif
         where K : IComparable<K>
     {

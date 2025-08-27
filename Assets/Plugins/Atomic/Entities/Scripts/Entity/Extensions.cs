@@ -1,10 +1,12 @@
-#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using static Atomic.Entities.EntityNames;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 using UnityEngine.SceneManagement;
+#endif
 
 
 namespace Atomic.Entities
@@ -129,34 +131,40 @@ namespace Atomic.Entities
             return false;
         }
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified GameObject.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryGetEntity(this GameObject gameObject, out IEntity entity) =>
             gameObject.TryGetComponent(out entity);
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from the specified Component.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryGetEntity(this Component component, out IEntity entity) =>
             component.TryGetComponent(out entity);
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from a 2D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryGetEntity(this Collision2D collision2D, out IEntity entity) =>
             collision2D.gameObject.TryGetComponent(out entity);
+#endif
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Tries to retrieve the <see cref="IEntity"/> component from a 3D collision.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool TryGetEntity(this Collision collision, out IEntity entity) =>
             collision.gameObject.TryGetComponent(out entity);
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy of the GameObject.
         /// </summary>
@@ -166,7 +174,8 @@ namespace Atomic.Entities
             entity = gameObject.GetComponentInParent<IEntity>();
             return entity != null;
         }
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy of the Component.
         /// </summary>
@@ -176,7 +185,8 @@ namespace Atomic.Entities
             entity = component.GetComponentInParent<IEntity>();
             return entity != null;
         }
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
         /// </summary>
@@ -186,7 +196,8 @@ namespace Atomic.Entities
             entity = collision2D.gameObject.GetComponentInParent<IEntity>();
             return entity != null;
         }
-
+#endif
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 3D collision.
         /// </summary>
@@ -196,6 +207,7 @@ namespace Atomic.Entities
             entity = collision.gameObject.GetComponentInParent<IEntity>();
             return entity != null;
         }
+#endif
 
         /// <summary>
         /// Installs logic from an <see cref="IEntityInstaller"/> into the entity.
@@ -215,7 +227,7 @@ namespace Atomic.Entities
             foreach (IEntityInstaller installer in installers)
                 installer.Install(entity);
         }
-
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Installs logic from <see cref="SceneEntityInstaller"/> components in the specified scene.
         /// </summary>
@@ -234,7 +246,8 @@ namespace Atomic.Entities
                 }
             }
         }
-
+#endif
+#if UNITY_5_3_OR_NEWER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InstallFromScene<T>(this T entity, Scene scene, bool includeInactive = true)
             where T : class, IEntity
@@ -252,7 +265,7 @@ namespace Atomic.Entities
                 }
             }
         }
-
+#endif
         /// <summary>
         /// Checks if the entity has the specified tag.
         /// </summary>
@@ -420,4 +433,3 @@ namespace Atomic.Entities
         }
     }
 }
-#endif

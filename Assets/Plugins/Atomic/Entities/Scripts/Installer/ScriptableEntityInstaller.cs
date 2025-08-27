@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -38,3 +39,4 @@ namespace Atomic.Entities
         protected abstract void Install(T entity);
     }
 }
+#endif

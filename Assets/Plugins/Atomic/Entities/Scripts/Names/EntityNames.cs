@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-#if UNITY_5_3_OR_NEWER
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 
@@ -66,7 +66,7 @@ namespace Atomic.Entities
         /// Clears all name-to-ID mappings and resets the ID counter.
         /// Automatically called when entering play mode in the Unity Editor.
         /// </summary>
-#if UNITY_5_3_OR_NEWER
+#if UNITY_EDITOR
         [InitializeOnEnterPlayMode]
 #endif
         public static void Clear()

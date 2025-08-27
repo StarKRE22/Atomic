@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Atomic.Entities
 {
@@ -43,6 +46,7 @@ namespace Atomic.Entities
                 it.Add(entity);
         }
 
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Instantiates a new entity based on the given prefab and adds it to the collection.
         /// </summary>
@@ -67,6 +71,9 @@ namespace Atomic.Entities
             return entity;
         }
 
+#endif
+
+#if UNITY_5_3_OR_NEWER
         /// <summary>
         /// Removes the entity from the collection and destroys its game object.
         /// </summary>
@@ -81,5 +88,6 @@ namespace Atomic.Entities
             if (it.Remove(entity))
                 GameObject.Destroy(entity, delay);
         }
+#endif
     }
 }
