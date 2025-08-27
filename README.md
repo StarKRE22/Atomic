@@ -166,6 +166,18 @@ const float deltaTime = 0.02f;
 character.OnFixedUpdate(deltaTime); 
 ```
 
+5. **Make entity inactive and despawned**
+```csharp
+//Make entity inactive
+character.Deactivate();
+
+//Make entity
+character.Despawn();
+```
+
+   
+           
+
 <!--
 ## Game Example
 There is a game example in project. A mini game for two players in which you need to collect coins for a while. Which of the players collected the most, he won. Controls: WASD and keyboard arrows.
