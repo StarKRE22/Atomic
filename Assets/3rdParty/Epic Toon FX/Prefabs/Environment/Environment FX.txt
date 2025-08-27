@@ -1,4 +1,0 @@
-In the Environment folder you will find effects that:
-
-- are sorted to be part of specific environments
-- are typically considered ambient or atmospheric effects
