@@ -4,8 +4,8 @@
 
 ## 🔍 Table of Contents
 
-- [Values]
-  - [IValue] 
+- [Values](#values)
+  - [IValue](#ivalue)
   - [Const]
   - [Constants]
 
@@ -78,83 +78,134 @@
   - [Optional]
   - [Reference]
 
+## 📁 Values
+The values folder is designed to store constants and interfaces for read-only values. It provides a centralized place for all immutable data used in the library, making the code safer and more maintainable.
 
+### 🧩 Value
 
+`IValue<T>` is a **read-only value provider interface** in the `Atomic.Elements` namespace.  
+It inherits from `IFunction<T>` and exposes a strongly-typed `Value` property.
 
+---
 
+#### Type Parameter
 
+- `T` – The type of the value being returned.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1. [Overview](#overview)
-2. [Core Components](#core-components)
-3. [Usage](#usage)
-4. [Best Practices](#best-practices)
-5. [References](#references)
-
-## 🧩 Overview
-
-`Atomic.Elements` provides a collection of reactive components and data structures for creating complex entities in game development. Each component is designed to be **independent and highly configurable**, allowing developers to quickly adapt them to their project needs.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 🔧 Core Components
-
-- **Component 1**: Description of component 1.
-- **Component 2**: Description of component 2.
-- **Component 3**: Description of component 3.
-
-*(Add real component names and descriptions based on the repository content)*
-
-## 🚀 Usage
-
-To get started with `Atomic.Elements`, follow these steps:
-
-1. Clone or download the repository.
-2. Import the required components into your Unity project.
-3. Configure components according to the documentation.
-
-Example usage:
+#### Properties
 
 ```csharp
-using Atomic.Elements;
-using UnityEngine;
+T Value { get; }
+```
+- Description: Gets the current value.
+- Access: Read-only
 
-public class Example : MonoBehaviour
-{
-    void Start()
-    {
-        var component = new Component1();
-        component.Initialize();
-    }
-}
+#### Methods
+```csharp
+T Invoke()
+```
+- Description: Invokes the function and returns the value.
+This is the default implementation from IFunction<T> and simply returns Value.
+- Returns: The current value of type T.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[//]: # ()
+[//]: # ()
+[//]: # (1. [Overview]&#40;#overview&#41;)
+
+[//]: # (2. [Core Components]&#40;#core-components&#41;)
+
+[//]: # (3. [Usage]&#40;#usage&#41;)
+
+[//]: # (4. [Best Practices]&#40;#best-practices&#41;)
+
+[//]: # (5. [References]&#40;#references&#41;)
+
+[//]: # ()
+[//]: # (## 🧩 Overview)
+
+[//]: # ()
+[//]: # (`Atomic.Elements` provides a collection of reactive components and data structures for creating complex entities in game development. Each component is designed to be **independent and highly configurable**, allowing developers to quickly adapt them to their project needs.)
+
+[//]: # ()
+
+
+
+
+
+
+
+
+
+
+
+
+[//]: # ()
+[//]: # ()
+[//]: # (## 🔧 Core Components)
+
+[//]: # ()
+[//]: # (- **Component 1**: Description of component 1.)
+
+[//]: # (- **Component 2**: Description of component 2.)
+
+[//]: # (- **Component 3**: Description of component 3.)
+
+[//]: # ()
+[//]: # (*&#40;Add real component names and descriptions based on the repository content&#41;*)
+
+[//]: # ()
+[//]: # (## 🚀 Usage)
+
+[//]: # ()
+[//]: # (To get started with `Atomic.Elements`, follow these steps:)
+
+[//]: # ()
+[//]: # (1. Clone or download the repository.)
+
+[//]: # (2. Import the required components into your Unity project.)
+
+[//]: # (3. Configure components according to the documentation.)
+
+[//]: # ()
+[//]: # (Example usage:)
+
+[//]: # (```csharp)
+
+[//]: # (using Atomic.Elements;)
+
+[//]: # (using UnityEngine;)
+
+[//]: # ()
+[//]: # (public class Example : MonoBehaviour)
+
+[//]: # ({)
+
+[//]: # (    void Start&#40;&#41;)
+
+[//]: # (    {)
+
+[//]: # (        var component = new Component1&#40;&#41;;)
+
+[//]: # (        component.Initialize&#40;&#41;;)
+
+[//]: # (    })
+
+[//]: # (})
