@@ -351,7 +351,7 @@ This sample illustrates:
 ## Tutorial
 
 ## License
-
+This project is licensed under the [MIT License](./LICENSE).
 
 ## Contacts
 
