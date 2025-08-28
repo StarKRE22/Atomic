@@ -10,7 +10,7 @@ It extends `IAction<T>` to provide a unified way to assign values through both d
 
 ---
 
-## ISetter<T>
+## ISetter&lt;T&gt;
 
 ```csharp
 public interface ISetter<in T> : IAction<T>
