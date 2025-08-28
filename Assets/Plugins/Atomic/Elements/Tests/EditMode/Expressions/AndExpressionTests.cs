@@ -173,7 +173,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            andExpression.Add(s => s == "Petya");
+            andExpression.AddLast(s => s == "Petya");
 
             //Assert:
             Assert.AreEqual(2, andExpression.Count);
@@ -283,7 +283,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            andExpression.Add((s, i) => s == "Petya");
+            andExpression.AddLast((s, i) => s == "Petya");
 
             //Assert:
             Assert.AreEqual(2, andExpression.Count);

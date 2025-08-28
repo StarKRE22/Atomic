@@ -167,7 +167,7 @@ namespace Atomic.Elements
             );
 
             //Act:
-            orExpression.Add(s => s == "Vasya");
+            orExpression.AddLast(s => s == "Vasya");
 
             //Assert:
             Assert.AreEqual(2, orExpression.Count);
@@ -282,7 +282,7 @@ namespace Atomic.Elements
             Assert.IsFalse(orExpression.Invoke("Vawsya", 10));
 
             //Act:
-            orExpression.Add((s, i) => s == "Vasya");
+            orExpression.AddLast((s, i) => s == "Vasya");
 
             //Assert:
             Assert.AreEqual(2, orExpression.Count);

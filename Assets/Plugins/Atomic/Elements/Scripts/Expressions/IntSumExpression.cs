@@ -26,24 +26,31 @@ namespace Atomic.Elements
         /// <param name="members">A collection of functions that return an integer value.</param>
         public IntSumExpression(IEnumerable<Func<int>> members) : base(members) { }
 
+        protected int InitialValue() => 0;
+        
+        
         /// <summary>
         /// Evaluates the expression by summing the results of all function members.
         /// </summary>
         /// <param name="members">The list of function members to evaluate.</param>
         /// <returns>The sum of all evaluated function results, or 0 if none exist.</returns>
-        protected override int Invoke(IReadOnlyList<Func<int>> members)
+        protected override bool Reduce(Func<int> member, ref int current)
         {
-            int count = members.Count;
-            if (count == 0)
-                return 0;
-
-            int result = 0;
-
-            for (int i = 0; i < count; i++)
-                result += members[i].Invoke();
-
-            return result;
+            current += member.Invoke();
+            return true;
         }
+    
+    
+    //     int count = members.Count;
+    //     if (count == 0)
+    //         return 0;
+    //
+    //     int result = 0;
+    //
+    //     for (int i = 0; i < count; i++)
+    //         result += members[i].Invoke();
+    //
+    //     return result;
     }
 
     /// <summary>
@@ -76,19 +83,24 @@ namespace Atomic.Elements
         /// <param name="members">The list of function members to evaluate.</param>
         /// <param name="arg">The input argument passed to each function.</param>
         /// <returns>The sum of all evaluated results, or 0 if none exist.</returns>
-        protected override int Invoke(IReadOnlyList<Func<T, int>> members, T arg)
+        protected override int Reduce(IReadOnlyList members, T arg)
         {
-            int count = members.Count;
-            if (count == 0)
-                return 0;
-
-            int result = 0;
-
-            for (int i = 0; i < count; i++)
-                result += members[i].Invoke(arg);
-
-            return result;
+        
         }
+
+        
+        // int count = members.Count;
+        // if (count == 0)
+        //     return 0;
+        //
+        // int result = 0;
+        //
+        // for (int i = 0; i < count; i++)
+        //     result += members[i].Invoke(arg);
+        //
+        // return result;
+        
+        protected int InitialValue() => 0;
     }
 
     /// <summary>

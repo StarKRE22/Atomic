@@ -117,7 +117,7 @@ namespace Atomic.Elements
         /// <param name="newItems">The new values to assign. Must match the array length.</param>
         /// <exception cref="ArgumentNullException">If <paramref name="newItems"/> is null.</exception>
         /// <exception cref="ArgumentException">If <paramref name="newItems"/> has a different number of items than the array.</exception>
-        public void SetAll(IEnumerable<T> newItems)
+        public void Replace(IEnumerable<T> newItems)
         {
             if (newItems == null)
                 throw new ArgumentNullException(nameof(newItems));

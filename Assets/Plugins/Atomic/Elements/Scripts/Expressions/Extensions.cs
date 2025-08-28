@@ -22,7 +22,7 @@ namespace Atomic.Elements
             {
                 Func<T> member = members[i];
                 if (member != null)
-                    it.Add(member);
+                    it.AddLast(member);
             }
         }
 
@@ -42,7 +42,7 @@ namespace Atomic.Elements
 
             foreach (IFunction<bool> predicate in predicates)
                 if (predicate != null)
-                    expression.Add(predicate.Invoke);
+                    expression.AddLast(predicate.Invoke);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Atomic.Elements
         /// <param name="member">The function object to add.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Add<T, R>(this IExpression<T, R> it, IFunction<R> member) =>
-            it.Add(_ => member.Invoke());
+            it.AddLast(_ => member.Invoke());
 
         /// <summary>
         /// Adds a parameterless function as a member to a <see cref="IExpression{T}"/> expression.
@@ -84,7 +84,7 @@ namespace Atomic.Elements
         /// <param name="member">The function object to add.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Add<T>(this IExpression<T> it, IFunction<T> member) =>
-            it.Add(member.Invoke);
+            it.AddLast(member.Invoke);
 
         /// <summary>
         /// Removes a parameterless function from a <see cref="IExpression{T}"/> expression.

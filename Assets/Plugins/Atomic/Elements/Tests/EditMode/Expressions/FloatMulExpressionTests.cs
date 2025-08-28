@@ -146,7 +146,7 @@ namespace Atomic.Elements
             Assert.AreEqual(6, exp.Invoke("Vasya"));
             Assert.AreEqual(2, exp.Count);
 
-            exp.Add(s => s == "Vasya" ? 5 : 0);
+            exp.AddLast(s => s == "Vasya" ? 5 : 0);
 
             //Assert:
             Assert.AreEqual(3, exp.Count);
@@ -246,7 +246,7 @@ namespace Atomic.Elements
             Assert.AreEqual(2.5f, exp.Invoke("Vasya", 0.5f));
             Assert.AreEqual(2, exp.Count);
 
-            exp.Add((s, i) => s == "Vasya" ? 0 : 1);
+            exp.AddLast((s, i) => s == "Vasya" ? 0 : 1);
 
             //Assert:
             Assert.AreEqual(3, exp.Count);

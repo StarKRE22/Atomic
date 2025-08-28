@@ -141,10 +141,8 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Expand<T>(ref T[] array)
         {
-            int capacity = array.Length;
-            int newCapacity = capacity == 0 ? 1 : capacity * 2;
-
-            if ((uint) newCapacity > int.MaxValue)
+            int newCapacity = array.Length == 0 ? 1 : array.Length * 2;
+            if (newCapacity < 0) 
                 newCapacity = int.MaxValue;
 
             Array.Resize(ref array, newCapacity);
@@ -172,9 +170,10 @@ namespace Atomic.Entities
 
                 count--;
 
-                for (int j = i; j < count; j++)
-                    array[j] = array[j + 1];
+                if (i < count) 
+                    Array.Copy(array, i + 1, array, i, count - i);
 
+                array[count] = default;
                 return true;
             }
 

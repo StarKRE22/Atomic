@@ -33,22 +33,12 @@ namespace Atomic.Elements
         {
         }
 
-        /// <summary>
-        /// Evaluates the logical AND expression by invoking each function in sequence.
-        /// </summary>
-        /// <param name="members">The list of boolean-returning function members.</param>
-        /// <returns><c>true</c> if all functions return <c>true</c> or if none exist; otherwise, <c>false</c>.</returns>
-        protected override bool Invoke(IReadOnlyList<Func<bool>> members)
+        protected override bool InitialValue() => true;
+        
+        protected override bool Reduce(Func<bool> member, ref bool current)
         {
-            int count = members.Count;
-            if (count == 0)
-                return true;
-
-            for (int i = 0; i < count; i++)
-                if (!members[i].Invoke())
-                    return false;
-
-            return true;
+            current = member.Invoke();
+            return current;
         }
     }
 
