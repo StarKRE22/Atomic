@@ -29,6 +29,7 @@
   - [InlineFunction](Functions/InlineFunction.md)
   - [IPredicate](Functions/IPredicate.md)
   - [InlinePredicate](Functions/InlinePredicate.md)
+  - [Extensions](Functions/Extensions.md)
 - **Setters**
   - [ISetter](Setters/ISetter.md)
   - [InlineSetter](Setters/InlineSetter.md)
@@ -39,6 +40,7 @@
   - [ISignal]
   - [InlineSignal]
   - [Subscription]
+  - [Extensions]
 
 - [Requests]
   - [IRequest]
