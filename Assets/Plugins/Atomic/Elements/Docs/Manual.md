@@ -44,16 +44,17 @@
 - **Requests**
   - [IRequest](Requests/IRequest.md)
   - [BaseRequest](Requests/BaseRequest.md)
-
-
-- [Expressions]
-  - [AndExpression]
-  - [OrExpression]
-  - [IntMulExpression]
-  - [IntSumExpression]
-  - [FloatMulExpression]
-  - [FloatSumExpression]
-  - [InlineExpression]
+- **Expressions**
+  - [IExpression](Expressions/IExpression.md)
+  - [ExpressionBase](Expressions/ExpressionBase.md)
+  - [InlineExpression](Expressions/InlineExpression.md)
+  - [AndExpression](Expressions/AndExpression.md)
+  - [OrExpression](Expressions/OrExpression.md)
+  - [IntMulExpression](Expressions/IntMulExpression.md)
+  - [IntSumExpression](Expressions/IntSumExpression.md)
+  - [FloatMulExpression](Expressions/FloatMulExpression.md)
+  - [FloatSumExpression](Expressions/FloatSumExpression.md)
+  - [Extensions](Expressions/Extensions.md)
 
 - [Collections]
   - [ReactiveArray]
