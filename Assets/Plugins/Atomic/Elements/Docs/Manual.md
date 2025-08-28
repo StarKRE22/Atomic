@@ -8,7 +8,6 @@
   - [IValue](Values/IValue.md)
   - [IReactiveValue](Values/IReactiveValue.md)
   - [Const](Values/Const.md)
-
 - **Variables**
   - [IVariable](Variables/IVariable.md)
   - [BaseVariable](Variables/BaseVariable.md)
@@ -16,23 +15,19 @@
   - [ProxyVariable](Variables/ProxyVariable.md)
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
   - [UnitySpecificVariables](Variables/UnitySpecificVariables.md)
-
 - **Actions**
   - [IAction](Actions/IAction.md) 
   - [InlineAction](Actions/InlineAction.md)
   - [CompositeAction](Actions/CompositeAction.md)
   - [UnitySpecificActions](Actions/UnitySpecificActions.md)
-  
 - **Functions**
   - [IFunction](Functions/IFunction.md) 
   - [InlineFunction](Functions/InlineFunction.md)
   - [IPredicate](Functions/IPredicate.md)
   - [InlinePredicate](Functions/InlinePredicate.md)
-
-- [Setters]
-  - [ISetter]
-  - [InlineSetter]
-
+- **Setters**
+  - [ISetter](Setters/ISetter.md)
+  - [InlineSetter](Setters/InlineSetter.md)
 - **Events**
   - [IEvent](Events/IEvent.md)
   - [BaseEvent](Events/BaseEvent.md)
