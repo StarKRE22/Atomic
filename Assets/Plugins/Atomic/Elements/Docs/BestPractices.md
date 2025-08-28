@@ -6,7 +6,7 @@
 - Используйте Observe для 
 This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
 
-
+- для однопользовательских игр используйте Requests, а для сетевых Actions
 
 You can use extension Observe and cache subscription handle
 ```csharp

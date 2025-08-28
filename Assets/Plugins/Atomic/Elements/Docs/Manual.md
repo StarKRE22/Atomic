@@ -29,21 +29,22 @@
   - [IPredicate](Functions/IPredicate.md)
   - [InlinePredicate](Functions/InlinePredicate.md)
 
-- [Events]
-  - [IEvent]
-  - [BaseEvent]
-  
-- [Requests]
-  - [IRequest]
-  - [BaseRequest]
+- [Setters]
+  - [ISetter]
+  - [InlineSetter]
+
+- **Events**
+  - [IEvent](Events/IEvent.md)
+  - [BaseEvent](Events/BaseEvent.md)
 
 - [Signals]
   - [ISignal]
   - [InlineSignal]
 
-- [Setters]
-  - [ISetter]
-  - [InlineSetter]
+- [Requests]
+  - [IRequest]
+  - [BaseRequest]
+
 
 - [Expressions]
   - [AndExpression]

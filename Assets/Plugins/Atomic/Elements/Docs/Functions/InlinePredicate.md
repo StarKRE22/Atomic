@@ -49,3 +49,23 @@ public class InlinePredicate<T1, T2> : InlineFunction<T1, T2, bool>, IPredicate<
 # Notes
 - **Exception Safety** – Constructors throw `ArgumentNullException` if a null delegate is provided.
 - **Usage Context** – Can be used in collections, rule engines, pipelines, or other scenarios where conditions need to be evaluated.
+
+
+### Example of Usage
+Procedural polymorphism and composition over inheritance
+
+```csharp
+var tank = new Entity("Tank");
+tank.AddValue<IPredicate>("CanMove",
+    new InlinePredicate(() => ArmorExists(tank) && FuelExists(tank));
+);
+
+var soldier = new Entity("Soldier");
+soldier.AddValue<IPredicate>("CanMove",
+    new InlinePredicate(() => HealthExists(soldier));
+);
+
+// Invoke functions
+tank.GetValue<IFunction<bool>>("CanMove").Invoke();
+soldier.GetValue<IFunction<bool>>("CanMove").Invoke();
+```

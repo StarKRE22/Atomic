@@ -68,3 +68,22 @@ public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
 - Constructor – Initializes the class with a Func<T1, T2, R>.
 - Implicit Operator – Converts a Func<T1, T2, R> to an InlineFunction<T1, T2, R>.
 - Invoke(T1 arg1, T2 arg2) – Executes the function with the specified arguments.
+
+### Example of Usage
+Procedural polymorphism and composition over inheritance
+
+```csharp
+var tank = new Entity("Tank");
+tank.AddValue<IFunction<Vector3>>("Position",
+    new InlineFunction<Vector3>(() => _rigidbody.position);
+);
+
+var ship = new Entity("Ship");
+ship.AddValue<IFunction<Vector3>>("Position",
+    new InlineFunction<Vector3>(() => _transform.position)
+);
+
+// Invoke functions
+tank.GetValue<IFunction<Vector3>>("Position").Invoke(); // Returns position of Rigidbody
+ship.GetValue<IFunction<Vector3>>("Position").Invoke(); // Returns position of Transform
+```
