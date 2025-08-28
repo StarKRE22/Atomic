@@ -109,94 +109,39 @@ namespace Atomic.Elements
         }
 
         /// <summary>
-        /// Copies the elements of the list to an array, starting at a particular array index.
+        /// Adds an object to the end of the list.
         /// </summary>
-        /// <param name="array">The one-dimensional array that is the destination of the copied elements.</param>
-        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="array"/> is null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="arrayIndex"/> is less than 0.</exception>
-        /// <exception cref="ArgumentException">If the target array is too small.</exception>
-        public void CopyTo(T[] array, int arrayIndex)
+        /// <param name="item">The object to add.</param>
+        public void Add(T item)
         {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
+            if (item == null)
+                return;
 
-            if (arrayIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-            
-            if (arrayIndex + _count > array.Length)
-                throw new ArgumentException("The target array is too small to hold the elements.");
-
-            int current = _head;
-            while (current != UNDEFINED_INDEX)
+            if (_freeIndex == _nodes.Length)
             {
-                array[arrayIndex++] = _nodes[current].item;
-                current = _nodes[current].next;
-            }
-        }
-
-        /// <summary>
-        /// Removes the first occurrence of a specific object from the list.
-        /// </summary>
-        /// <param name="item">The object to remove from the list.</param>
-        /// <returns><c>true</c> if <paramref name="item"/> was successfully removed; otherwise <c>false</c>.</returns>
-        public bool Remove(T item)
-        {
-            if (_head == UNDEFINED_INDEX || item == null)
-                return false;
-
-            int current = _head;
-            int prev = UNDEFINED_INDEX;
-
-            while (current != UNDEFINED_INDEX)
-            {
-                if (s_comparer.Equals(_nodes[current].item, item))
-                {
-                    if (prev != UNDEFINED_INDEX)
-                        _nodes[prev].next = _nodes[current].next;
-                    else
-                        _head = _nodes[current].next;
-
-                    if (current == _tail)
-                        _tail = prev;
-
-                    _nodes[current] = default;
-                    _count--;
-                    break;
-                }
-
-                prev = current;
-                current = _nodes[current].next;
+                int newCapacity = _nodes.Length * 2;
+                if (newCapacity < 0) newCapacity = int.MaxValue;
+                Array.Resize(ref _nodes, newCapacity);
             }
 
-            return true;
-        }
-
-        /// <summary>
-        /// Returns the zero-based index of the first occurrence of a specific object in the list.
-        /// </summary>
-        /// <param name="item">The object to locate.</param>
-        /// <returns>
-        /// The index of <paramref name="item"/> if found in the list; otherwise, -1.
-        /// </returns>
-        public int IndexOf(T item)
-        {
-            if (item == null) return -1;
-
-            int index = 0;
-            int current = _head;
-            while (current != UNDEFINED_INDEX)
+            _nodes[_freeIndex] = new Node
             {
-                if (s_comparer.Equals(_nodes[current].item, item))
-                    return index;
+                item = item,
+                next = UNDEFINED_INDEX
+            };
 
-                current = _nodes[current].next;
-                index++;
-            }
+            if (_tail != UNDEFINED_INDEX)
+                _nodes[_tail].next = _freeIndex;
 
-            return -1;
+            _tail = _freeIndex;
+
+            if (_head == UNDEFINED_INDEX)
+                _head = _freeIndex;
+
+            _freeIndex++;
+            _count++;
         }
-        
+
         /// <summary>
         /// Inserts an element into the list at the specified index.
         /// </summary>
@@ -246,6 +191,68 @@ namespace Atomic.Elements
             }
 
             _count++;
+        }
+
+        /// <summary>
+        /// Removes the first occurrence of a specific object from the list.
+        /// </summary>
+        /// <param name="item">The object to remove from the list.</param>
+        /// <returns><c>true</c> if <paramref name="item"/> was successfully removed; otherwise <c>false</c>.</returns>
+        public bool Remove(T item)
+        {
+            if (_head == UNDEFINED_INDEX || item == null)
+                return false;
+
+            int current = _head;
+            int prev = UNDEFINED_INDEX;
+
+            while (current != UNDEFINED_INDEX)
+            {
+                if (s_comparer.Equals(_nodes[current].item, item))
+                {
+                    if (prev != UNDEFINED_INDEX)
+                        _nodes[prev].next = _nodes[current].next;
+                    else
+                        _head = _nodes[current].next;
+
+                    if (current == _tail)
+                        _tail = prev;
+
+                    _nodes[current] = default;
+                    _count--;
+                    return true;
+                }
+
+                prev = current;
+                current = _nodes[current].next;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the zero-based index of the first occurrence of a specific object in the list.
+        /// </summary>
+        /// <param name="item">The object to locate.</param>
+        /// <returns>
+        /// The index of <paramref name="item"/> if found in the list; otherwise, -1.
+        /// </returns>
+        public int IndexOf(T item)
+        {
+            if (item == null) return -1;
+
+            int index = 0;
+            int current = _head;
+            while (current != UNDEFINED_INDEX)
+            {
+                if (s_comparer.Equals(_nodes[current].item, item))
+                    return index;
+
+                current = _nodes[current].next;
+                index++;
+            }
+
+            return -1;
         }
 
         /// <summary>
@@ -304,39 +311,32 @@ namespace Atomic.Elements
         }
 
         /// <summary>
-        /// Adds an object to the end of the list.
+        /// Copies the elements of the list to an array, starting at a particular array index.
         /// </summary>
-        /// <param name="item">The object to add.</param>
-        public void Add(T item)
+        /// <param name="array">The one-dimensional array that is the destination of the copied elements.</param>
+        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="array"/> is null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="arrayIndex"/> is less than 0.</exception>
+        /// <exception cref="ArgumentException">If the target array is too small.</exception>
+        public void CopyTo(T[] array, int arrayIndex)
         {
-            if (item == null)
-                return;
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
 
-            if (_freeIndex == _nodes.Length)
+            if (arrayIndex < 0)
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
+            
+            if (arrayIndex + _count > array.Length)
+                throw new ArgumentException("The target array is too small to hold the elements.");
+
+            int current = _head;
+            while (current != UNDEFINED_INDEX)
             {
-                int newCapacity = _nodes.Length * 2;
-                if (newCapacity < 0) newCapacity = int.MaxValue;
-                Array.Resize(ref _nodes, newCapacity);
+                array[arrayIndex++] = _nodes[current].item;
+                current = _nodes[current].next;
             }
-
-            _nodes[_freeIndex] = new Node
-            {
-                item = item,
-                next = UNDEFINED_INDEX
-            };
-
-            if (_tail != UNDEFINED_INDEX)
-                _nodes[_tail].next = _freeIndex;
-
-            _tail = _freeIndex;
-
-            if (_head == UNDEFINED_INDEX)
-                _head = _freeIndex;
-
-            _freeIndex++;
-            _count++;
         }
-        
+
         /// <summary>
         /// Removes all elements from the list.
         /// </summary>
