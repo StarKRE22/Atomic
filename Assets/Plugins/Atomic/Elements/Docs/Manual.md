@@ -23,10 +23,11 @@
   - [CompositeAction](Actions/CompositeAction.md)
   - [UnitySpecificActions](Actions/UnitySpecificActions.md)
   
-- [Functions]
-  - [IFunction] 
-  - [InlineFunction]
-  - [InlinePredicate]
+- **Functions**
+  - [IFunction](Functions/IFunction.md) 
+  - [InlineFunction](Functions/InlineFunction.md)
+  - [IPredicate](Functions/IPredicate.md)
+  - [InlinePredicate](Functions/InlinePredicate.md)
 
 - [Events]
   - [IEvent]

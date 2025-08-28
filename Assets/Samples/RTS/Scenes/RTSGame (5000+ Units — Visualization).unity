@@ -200,7 +200,7 @@ MonoBehaviour:
   _showEntityViews: 1
   _bakeUnits: 0
   _bakeIncludeInactive: 0
-  _spawnUnits: 400
+  _unitColumns: 400
 --- !u!1 &441292360
 GameObject:
   m_ObjectHideFlags: 0
