@@ -16,6 +16,9 @@ namespace Atomic.Elements
         /// <summary>
         /// Sets the value by invoking the composed action.
         /// </summary>
+#if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
         public T Value
         {
             set => this.action?.Invoke(value);

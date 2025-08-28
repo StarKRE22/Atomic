@@ -1,7 +1,7 @@
 # 🧩 InlineFunction Classes
 
 The **InlineFunction** classes provide a convenient way to wrap delegates (`Func`) into serializable objects that can be invoked or passed around.  
-They are designed to integrate with `IFunction` interface and optionally support **Odin Inspector** attributes for enhanced editor experience.
+They are designed to integrate with `IFunction` and `IValue` interfaces and optionally support **Odin Inspector** attributes for enhanced editor experience.
 
 ## Key Features
 - **Serialization** – Allows functions to be stored and used as serializable fields.
@@ -21,16 +21,18 @@ Represents a **parameterless function returning a value** of type `T`.
 public class InlineFunction<T> : IValue<T>
 {
     private readonly Func<T> func;
-
+    
     public InlineFunction(Func<T> func);
     public static implicit operator InlineFunction<T>(Func<T> value);
     public T Invoke();
+    T Value { get; }
 }
 ```
 ### Members
-- Constructor – Initializes the class with a Func<T>.
-- Implicit Operator – Converts a Func<T> to an InlineFunction<T>.
-- Invoke() – Invokes the function and returns the result.
+- **Constructor** – Initializes the class with a Func<T>.
+- **Implicit Operator** – Converts a Func<T> to an InlineFunction<T>.
+- **Invoke()** – Invokes the function and returns the result.
+- **Value** – Invokes the function and returns the result.
 
 ## InlineFunction<T, R>
 Represents a function that takes one argument and returns a result.

@@ -14,7 +14,7 @@ namespace Atomic.Elements
     [InlineProperty]
 #endif
     [Serializable]
-    public class InlineFunction<T> : IFunction<T>
+    public class InlineFunction<T> : IValue<T>
     {
         private readonly Func<T> func;
 
@@ -31,8 +31,14 @@ namespace Atomic.Elements
         public static implicit operator InlineFunction<T>(Func<T> value) => new(value);
 
 #if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
+        public T Value => this.func.Invoke();
+        
+#if ODIN_INSPECTOR
         [Button]
 #endif
+
         /// <summary>
         /// Invokes the function and returns its result.
         /// </summary>
