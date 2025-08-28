@@ -239,4 +239,96 @@ namespace Atomic.Elements
             return true;
         }
     }
+
+    /// <summary>
+    /// Represents a base implementation of a request with four arguments.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first argument.</typeparam>
+    /// <typeparam name="T2">The type of the second argument.</typeparam>
+    /// <typeparam name="T3">The type of the third argument.</typeparam>
+    /// <typeparam name="T4">The type of the fourth argument.</typeparam>
+    [Serializable]
+    public class BaseRequest<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
+    {
+        /// <inheritdoc />
+        public bool Required => _required;
+
+        /// <inheritdoc />
+        public T1 Arg1 => _arg1;
+
+        /// <inheritdoc />
+        public T2 Arg2 => _arg2;
+
+        /// <inheritdoc />
+        public T3 Arg3 => _arg3;
+
+        /// <inheritdoc />
+        public T4 Arg4 => _arg4;
+
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private T1 _arg1;
+
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private T2 _arg2;
+
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private T3 _arg3;
+
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private T4 _arg4;
+
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private bool _required;
+
+        /// <summary>
+        /// Marks the request as required and assigns all four arguments.
+        /// </summary>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            _required = true;
+            _arg1 = arg1;
+            _arg2 = arg2;
+            _arg3 = arg3;
+            _arg4 = arg4;
+        }
+
+        /// <inheritdoc />
+        public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4)
+        {
+            arg1 = _arg1;
+            arg2 = _arg2;
+            arg3 = _arg3;
+            arg4 = _arg4;
+            return _required;
+        }
+
+        /// <inheritdoc />
+        public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4)
+        {
+            arg1 = _arg1;
+            arg2 = _arg2;
+            arg3 = _arg3;
+            arg4 = _arg4;
+
+            if (!_required)
+                return false;
+
+            _required = false;
+            return true;
+        }
+    }
 }

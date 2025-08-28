@@ -37,14 +37,13 @@
   - [IEvent](Events/IEvent.md)
   - [BaseEvent](Events/BaseEvent.md)
 - **Signals**
-  - [ISignal]
-  - [InlineSignal]
-  - [Subscription]
-  - [Extensions]
-
-- [Requests]
-  - [IRequest]
-  - [BaseRequest]
+  - [ISignal](Signals/ISignal.md)
+  - [InlineSignal](Signals/InlineSignal.md)
+  - [Subscription](Signals/Subscription.md)
+  - [Extensions](Signals/Extensions.md)
+- **Requests**
+  - [IRequest](Requests/IRequest.md)
+  - [BaseRequest](Requests/BaseRequest.md)
 
 
 - [Expressions]

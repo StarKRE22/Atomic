@@ -134,4 +134,59 @@ namespace Atomic.Elements
         /// <returns>True if the request was consumed; otherwise, false.</returns>
         bool Consume(out T1 args1, out T2 args2, out T3 args3);
     }
+
+    /// <summary>
+    /// Represents a typed request action with four arguments.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first argument.</typeparam>
+    /// <typeparam name="T2">The type of the second argument.</typeparam>
+    /// <typeparam name="T3">The type of the third argument.</typeparam>
+    /// <typeparam name="T4">The type of the fourth argument.</typeparam>
+    public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
+    {
+        /// <summary>
+        /// Gets a value indicating whether the request is required to be handled.
+        /// </summary>
+        bool Required { get; }
+
+        /// <summary>
+        /// Gets the first argument of the request.
+        /// </summary>
+        T1 Arg1 { get; }
+
+        /// <summary>
+        /// Gets the second argument of the request.
+        /// </summary>
+        T2 Arg2 { get; }
+
+        /// <summary>
+        /// Gets the third argument of the request.
+        /// </summary>
+        T3 Arg3 { get; }
+
+        /// <summary>
+        /// Gets the fourth argument of the request.
+        /// </summary>
+        T4 Arg4 { get; }
+
+        /// <summary>
+        /// Attempts to retrieve all four arguments.
+        /// </summary>
+        /// <param name="arg1">The output first argument.</param>
+        /// <param name="arg2">The output second argument.</param>
+        /// <param name="arg3">The output third argument.</param>
+        /// <param name="arg4">The output fourth argument.</param>
+        /// <returns>True if the arguments were retrieved successfully; otherwise, false.</returns>
+        bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
+
+        /// <summary>
+        /// Attempts to consume the request and retrieve all four arguments.
+        /// </summary>
+        /// <param name="arg1">The output first argument.</param>
+        /// <param name="arg2">The output second argument.</param>
+        /// <param name="arg3">The output third argument.</param>
+        /// <param name="arg4">The output fourth argument.</param>
+        /// <returns>True if the request was consumed; otherwise, false.</returns>
+        bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
+    }
 }
