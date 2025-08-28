@@ -336,72 +336,7 @@ namespace Atomic.Elements
             _freeIndex++;
             _count++;
         }
-       
-        /// <summary>
-        /// Adds an object to the end of the list.
-        /// </summary>
-        /// <param name="item">The object to add.</param>
-        public void AddLast(T item)
-        {
-            if (item == null)
-                return;
-
-            if (_freeIndex == _nodes.Length)
-            {
-                int newCapacity = _nodes.Length * 2;
-                if (newCapacity < 0) newCapacity = int.MaxValue;
-                Array.Resize(ref _nodes, newCapacity);
-            }
-
-            _nodes[_freeIndex] = new Node
-            {
-                item = item,
-                next = UNDEFINED_INDEX
-            };
-
-            if (_tail != UNDEFINED_INDEX)
-                _nodes[_tail].next = _freeIndex;
-
-            _tail = _freeIndex;
-
-            if (_head == UNDEFINED_INDEX)
-                _head = _freeIndex;
-
-            _freeIndex++;
-            _count++;
-        }
         
-        /// <summary>
-        /// Adds an object to the beginning of the list.
-        /// </summary>
-        /// <param name="item">The object to add.</param>
-        public void AddFirst(T item)
-        {
-            if (item == null)
-                return;
-
-            if (_freeIndex == _nodes.Length)
-            {
-                int newCapacity = _nodes.Length * 2;
-                if (newCapacity < 0) newCapacity = int.MaxValue;
-                Array.Resize(ref _nodes, newCapacity);
-            }
-
-            _nodes[_freeIndex] = new Node
-            {
-                item = item,
-                next = _head
-            };
-
-            _head = _freeIndex;
-
-            if (_tail == UNDEFINED_INDEX)
-                _tail = _freeIndex;
-
-            _freeIndex++;
-            _count++;
-        }
-
         /// <summary>
         /// Removes all elements from the list.
         /// </summary>
