@@ -33,7 +33,7 @@ namespace Atomic.Elements
         {
         }
 
-        protected sealed override bool Invoke(Enumerator enumerator)
+        protected override bool Invoke(Enumerator enumerator)
         {
             while (enumerator.MoveNext())
                 if (!enumerator.Current!.Invoke())
@@ -74,7 +74,7 @@ namespace Atomic.Elements
         {
         }
 
-        protected sealed override bool Invoke(Enumerator enumerator, T arg)
+        protected override bool Invoke(Enumerator enumerator, T arg)
         {
             while (enumerator.MoveNext())
                 if (!enumerator.Current!.Invoke(arg))
