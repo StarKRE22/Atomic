@@ -61,6 +61,7 @@
   - [ReactiveDictionary]
   - [ReactiveHashSet]
   - [ReactiveList]
+  - [LinkedList]
 
 - [Time]
   - [Cooldown]
