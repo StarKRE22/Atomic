@@ -20,7 +20,7 @@ public interface IPredicate : IFunction<bool>
 }
 ```
 ---
-## IPredicate<T>
+## IPredicate&lt;T&gt;
 Represents a **predicate that takes one argument**.
 ```csharp
 public interface IPredicate<in T> : IFunction<T, bool>
