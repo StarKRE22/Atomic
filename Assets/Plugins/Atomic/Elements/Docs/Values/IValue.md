@@ -1,22 +1,22 @@
-## 🧩 Value
+# 🧩 Value
 
 `IValue<T>` is a **read-only value provider interface** in the `Atomic.Elements` namespace.  
 It inherits from `IFunction<T>` and exposes a strongly-typed `Value` property.
 
 ---
 
-#### Type Parameter
+## Type Parameter
 - `T` – The type of the value being returned.
 ---
 
-#### Properties
+## Properties
 ```csharp
 T Value { get; }
 ```
 - Description: Gets the current value.
 - Access: Read-only
 
-#### Methods
+## Methods
 ```csharp
 T Invoke()
 ```
@@ -25,7 +25,7 @@ T Invoke()
 - Returns: The current value of type T.
 
 
-### Example of Usage
+## Example of Usage
 IValue<T> can wrap any data source, for example:
 
 ```csharp

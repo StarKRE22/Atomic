@@ -1,4 +1,4 @@
-# Extensions for Function Wrappers
+# 🧩 Extensions for Function Wrappers
 
 The **Extensions** class provides utility methods for converting **delegates** and **reactive values** into function wrappers (`InlineFunction<T>`).  
 These methods simplify function composition, contextual invocation, and boolean inversion.

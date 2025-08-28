@@ -1,11 +1,11 @@
-### 🧩 CompositeAction
+# 🧩 CompositeAction
 
 `CompositeAction` represents a **group of actions** that implement the `IAction` interface.  
 When invoked, it executes all contained actions **sequentially** in the order they were added.
 
 ---
 
-#### Features
+## Features
 
 - Groups multiple `IAction` instances into a single composite.
 - Invokes all actions in the sequence when `Invoke()` is called.
@@ -14,7 +14,7 @@ When invoked, it executes all contained actions **sequentially** in the order th
 
 ---
 
-#### Constructors
+## Constructors
 
 ```csharp
 public CompositeAction(params IAction[] actions)
@@ -23,14 +23,14 @@ public CompositeAction(IEnumerable<IAction> actions)
 - CompositeAction(params IAction[] actions) – initializes with a variable number of actions.
 - CompositeAction(IEnumerable<IAction> actions) – initializes with a collection of actions.
 
-#### Methods
+## Methods
 ```csharp
 public void Invoke()
 ```
 - Description: Executes all contained actions in order.
 - Returns: Nothing.
 
-#### Example Usage
+## Example Usage
 ```csharp
 var action1 = new InlineAction(() => Console.WriteLine("Action 1"));
 var action2 = new InlineAction(() => Console.WriteLine("Action 2"));

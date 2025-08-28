@@ -1,4 +1,4 @@
-# InlineSetter Class
+# 🧩 InlineSetter Class
 
 The **InlineSetter<T>** class provides a concrete implementation of the `ISetter<T>` interface.  
 It wraps an `Action<T>` delegate to allow values to be set through a callback, making it suitable for flexible, inline assignment logic.

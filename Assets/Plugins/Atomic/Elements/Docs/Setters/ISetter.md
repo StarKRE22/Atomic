@@ -1,4 +1,4 @@
-# ISetter Interface
+# 🧩 ISetter Interface
 
 The **ISetter<T>** interface represents a **setter contract** that accepts a value of type `T`.  
 It extends `IAction<T>` to provide a unified way to assign values through both direct property access and method invocation.

@@ -1,4 +1,4 @@
-# BaseEvent Classes
+# 🧩 BaseEvent Classes
 The **BaseEvent** classes provide a concrete implementation of the `IEvent` interfaces.  
 They support **subscription**, **invocation**, and **disposal** of event handlers, and optionally integrate with **Odin Inspector** for editor buttons and inline property visualization.
 ## Key Features

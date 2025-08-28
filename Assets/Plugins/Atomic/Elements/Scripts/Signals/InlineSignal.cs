@@ -162,4 +162,48 @@ namespace Atomic.Elements
         /// <param name="action">The action to remove.</param>
         public void Unsubscribe(Action<T1, T2, T3> action) => this.unsubscribe.Invoke(action);
     }
+    
+    /// <summary>
+    /// A base implementation of a reactive source with four parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first emitted value.</typeparam>
+    /// <typeparam name="T2">The type of the second emitted value.</typeparam>
+    /// <typeparam name="T3">The type of the third emitted value.</typeparam>
+    /// <typeparam name="T4">The type of the fourth emitted value.</typeparam>
+    [Serializable]
+    public sealed class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
+    {
+        private readonly Action<Action<T1, T2, T3, T4>> subscribe;
+        private readonly Action<Action<T1, T2, T3, T4>> unsubscribe;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InlineSignal{T1,T2,T3,T4}"/> class with subscription delegates.
+        /// </summary>
+        /// <param name="subscribe">The action to handle subscription logic.</param>
+        /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
+        public InlineSignal(
+            Action<Action<T1, T2, T3, T4>> subscribe,
+            Action<Action<T1, T2, T3, T4>> unsubscribe)
+        {
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
+        }
+
+        /// <summary>
+        /// Subscribes to the reactive source.
+        /// </summary>
+        /// <param name="action">The action to invoke with emitted values.</param>
+        /// <returns>A <see cref="Subscription{T1, T2, T3, T4}"/> representing the subscription.</returns>
+        public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
+        {
+            this.subscribe.Invoke(action);
+            return new Subscription<T1, T2, T3, T4>(this, action);
+        }
+
+        /// <summary>
+        /// Unsubscribes the specified action from the reactive source.
+        /// </summary>
+        /// <param name="action">The action to remove.</param>
+        public void Unsubscribe(Action<T1, T2, T3, T4> action) => this.unsubscribe.Invoke(action);
+    }
 }

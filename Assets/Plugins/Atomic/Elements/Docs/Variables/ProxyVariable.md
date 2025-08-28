@@ -1,4 +1,4 @@
-### 🧩 ProxyVariable<T>
+# 🧩 ProxyVariable<T>
 
 `ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions**.  
 It implements `IVariable<T>`, allowing you to **wrap existing data sources** and expose them through a unified variable interface.
@@ -7,12 +7,12 @@ This is useful when you want to integrate third-party or existing fields/propert
 
 ---
 
-#### Type Parameter
+## Type Parameter
 - `T` – The type of the value being proxied.
 
 ---
 
-#### Constructors
+## Constructors
 
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
@@ -21,14 +21,14 @@ public ProxyVariable(Func<T> getter, Action<T> setter)
 - setter – An action to update the value.
 - Throws: ArgumentNullException if either argument is null.
 
-#### Properties
+## Properties
 ```csharp
 T Value { get; set; }
 ```
 - Gets or sets the proxied value.
 - Returns the default value if getter is not assigned.
 
-#### Builder API
+## Builder API
 ProxyVariable<T> also includes a fluent builder to simplify creation:
 
 ```csharp
@@ -39,7 +39,7 @@ var variable = ProxyVariable<int>
     .Build();
 ```
 
-#### Example Usage
+## Example Usage
 Wrapping a Transform’s Position
 
 ```csharp
@@ -64,7 +64,7 @@ public class Player
     }
 }
 ```
-#### Using the Fluent Builder
+## Using the Fluent Builder
 
 ```csharp
 int health = 100;
@@ -80,7 +80,7 @@ healthVariable.Value = 80;
 Debug.Log(health);               // Output: 80
 ```
 
-#### When to Use
+## When to Use
 - Integrating external or third-party APIs (e.g., Unity’s Transform, networking states).
 - Adapting existing properties/fields to IVariable<T> without refactoring.
 - Testing: Makes it easy to substitute mock getters/setters in unit tests.

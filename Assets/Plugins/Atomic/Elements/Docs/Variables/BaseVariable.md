@@ -1,17 +1,17 @@
-### 🧩 BaseVariable<T>
+# 🧩 BaseVariable<T>
 
 `BaseVariable<T>` is a **simple serialized container** for a value of type `T`.  
 It implements `IVariable<T>`, providing **read-write access** to the stored value.
 
 ---
 
-#### Type Parameter
+## Type Parameter
 
 - `T` – The type of the value to store.
 
 ---
 
-#### Properties
+## Properties
 
 ```csharp
 T Value { get; set; }
@@ -20,7 +20,7 @@ T Value { get; set; }
 - Access: Read-write
 - Notes: Serialized in Unity when [SerializeField] is available. 
 
-#### Methods
+## Methods
 ```csharp  
 T Invoke()
 ```
@@ -31,7 +31,7 @@ public override string ToString()
 ```
 - Returns a string representation of the stored value.
 
-### Constructors
+## Constructors
 
 ```csharp  
 // Default constructor
@@ -44,13 +44,13 @@ public BaseVariable(T value)
   - BaseVariable() initializes with default(T).
   - BaseVariable(T value) initializes with the specified value.
 
-### Implicit Conversion
+## Implicit Conversion
 ```csharp  
 public static implicit operator BaseVariable<T>(T value)
 ```
 - Allows assigning a plain value to a BaseVariable<T> instance directly.
 
-### Example Usage
+## Example Usage
 ```csharp
 using UnityEngine;
 using Atomic.Elements;

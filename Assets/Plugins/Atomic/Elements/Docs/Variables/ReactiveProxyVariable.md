@@ -1,16 +1,16 @@
-### 🔄 ReactiveProxyVariable<T>
+# 🧩 ReactiveProxyVariable<T>
 
 `ReactiveProxyVariable<T>` is a **reactive proxy variable** that delegates reading, writing, and subscription operations to external handlers.  
 This is useful when you need to **wrap an existing data source or event system** and expose it through the unified `IReactiveVariable<T>` interface.
 
 ---
 
-#### Type Parameter
+## Type Parameter
 - `T` – the value type.
 
 ---
 
-#### Constructors
+## Constructors
 
 ```csharp
 public ReactiveProxyVariable()
@@ -32,19 +32,19 @@ public ReactiveProxyVariable(
 - Throws: ArgumentNullException if any argument is null.
 
 
-#### Properties
+## Properties
 ```csharp
 T Value { get; set; }
 ```
 - gets or sets the current value using delegated functions.
 
-#### Events
+## Events
 ```csharp
 event Action<T> OnValueChanged;
 ```
 - invoked whenever the value changes.
 
-#### Methods
+## Methods
 ```csharp
 //registers a listener and returns a subscription handle.
 Subscription<T> Subscribe(Action<T> action)
@@ -53,7 +53,7 @@ Subscription<T> Subscribe(Action<T> action)
 void Unsubscribe(Action<T> action)
 ```
 
-#### Fluent Builder
+## Fluent Builder
 ReactiveProxyVariable<T> provides a convenient fluent builder
 
 ```csharp
@@ -66,7 +66,7 @@ var variable = ReactiveProxyVariable<int>
     .Build();
 ```
 
-#### Example Usage
+## Example Usage
 Wrapping an external field and event
 ```csharp
 using System;
@@ -91,7 +91,7 @@ public class Player
 }
 ```
 
-### Testing with the builder
+## Testing with the builder
 ```csharp
 int score = 0;
 event Action<int> scoreChanged;
@@ -111,7 +111,7 @@ scoreVar.Subscribe(v => Console.WriteLine($"Score updated: {v}"));
 scoreVar.Value = 100; // Output: "Score updated: 100"
 ```
 
-### When to Use
+## When to Use
 - To integrate with external APIs or event systems.
 - To adapt existing fields or properties into IReactiveVariable<T>.
 - Testing: easily substitute mocks or test delegates.

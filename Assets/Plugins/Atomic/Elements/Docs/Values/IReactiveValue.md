@@ -1,4 +1,4 @@
-## 🧩 IReactiveValue<T>
+# 🧩 IReactiveValue<T>
 
 `IReactiveValue<T>` represents a **reactive value** that combines:
 
@@ -9,26 +9,27 @@ It allows you to both **read the current value** and **subscribe to changes**.
 
 ---
 
-#### Type Parameter
+## Type Parameter
 
 - `T` – The type of the value.
 
 ---
 
-#### Inheritance
+## Inheritance
 
 - `IValue<T>` – Provides read-only access via `Value` and `Invoke()`.
 - `ISignal<T>` – Provides reactive subscriptions for when the value changes.
 
 ---
 
-#### Description
+## Description
 
 - `IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
 - It merges the benefits of a **value provider** and a **signal emitter** in a single interface.
 
 ---
 
+## Example of Usage
 For example, rendering score text on a UI in Unity:
 
 ```csharp

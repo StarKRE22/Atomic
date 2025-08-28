@@ -1,4 +1,4 @@
-### 🧩 ReactiveVariable<T>
+# 🧩 ReactiveVariable<T>
 
 `ReactiveVariable<T>` is a **serialized reactive variable** that raises events whenever its value changes.  
 It implements `IReactiveVariable<T>` and `IDisposable`, allowing **reactive programming patterns** in Unity or pure C# environments.
@@ -14,13 +14,13 @@ It implements `IReactiveVariable<T>` and `IDisposable`, allowing **reactive prog
 > - `quaternionReactive`
 ---
 
-#### Type Parameter
+## Type Parameter
 
 - `T` – The type of the stored value.
 
 ---
 
-#### Events
+## Events
 
 ```csharp
 event Action<T> OnValueChanged;
@@ -28,7 +28,7 @@ event Action<T> OnValueChanged;
 - Description: Triggered whenever the Value changes.
 - Notes: Can be subscribed to via Subscribe for automatic unsubscription support.
 
-#### Properties
+## Properties
 ```csharp
 - T Value { get; set; }
 ```
@@ -37,7 +37,7 @@ event Action<T> OnValueChanged;
   - When a new value differs from the previous one, OnValueChanged is triggered.
   - Read-write access.
 
-#### Methods
+## Methods
 ```csharp
 T Invoke()
 ```
@@ -62,7 +62,7 @@ public override string ToString()
 ```
 - Returns a string representation of the current value.
 
-#### Constructors
+## Constructors
 ```csharp
 // Default constructor
 public ReactiveVariable()
@@ -74,13 +74,13 @@ public ReactiveVariable(T value)
   - ReactiveVariable() initializes with default(T).
   - ReactiveVariable(T value) initializes with the specified value.
 
-#### Implicit Conversion
+## Implicit Conversion
 ```csharp
 public static implicit operator ReactiveVariable<T>(T value)
 ```
 - Allows assigning a plain value to a ReactiveVariable<T> directly.
 
-#### Example Usage
+## Example Usage
 ```csharp
 using UnityEngine;
 using Atomic.Elements;

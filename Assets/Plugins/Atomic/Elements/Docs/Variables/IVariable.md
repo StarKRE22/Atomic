@@ -1,17 +1,17 @@
-### 🧩 IVariable<T>
+# 🧩 IVariable<T>
 
 `IVariable<T>` represents a **read-write variable** that exposes both **getter** and **setter** interfaces.  
 It combines the functionality of `IValue<T>` (read-only access) and `ISetter<T>` (write access).
 
 ---
 
-#### Type Parameter
+## Type Parameter
 
 - `T` – The type of the value.
 
 ---
 
-#### Properties
+## Properties
 
 ```csharp
 new T Value { get; set; }
@@ -23,10 +23,10 @@ new T Value { get; set; }
   - Implements ISetter<T>.Value for write access.
 
 
-#### Inheritance
+## Inheritance
 - IValue<T> – Provides read-only access via Value and Invoke().
 - ISetter<T> – Provides write access via Value property.
-### 🧩 Examples Usage
+## 🧩 Examples Usage
 
 This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
 

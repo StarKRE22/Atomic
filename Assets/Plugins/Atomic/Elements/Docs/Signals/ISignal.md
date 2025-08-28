@@ -1,9 +1,9 @@
-# ISignal Interfaces
+# 🧩 ISignal Interfaces
 
 The **ISignal** interfaces define a family of contracts for **reactive sources** that notify subscribers of events or data changes.  
 
 ### Notes
-- **Subscription Management** – Each `Subscribe` method returns a `Subscription ` `struct` for later unsubscription.
+- **Subscription Management** – Each `Subscribe` method returns a `Subscription ` struct for later unsubscription.
 - **Reactive Design** – Supports 0–4 parameters for maximum flexibility in reactive systems.
 ---
 

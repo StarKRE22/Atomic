@@ -1,4 +1,4 @@
-# Extensions for IAction Collections
+# 🧩Extensions for IAction Collections
 
 The **Extensions** class provides utility methods for working with collections of `IAction` instances.  
 These extensions allow batch operations on multiple actions, simplifying invocation patterns.

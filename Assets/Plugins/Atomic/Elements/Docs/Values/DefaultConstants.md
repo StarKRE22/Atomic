@@ -1,12 +1,12 @@
-## 🧩 Default constants
+# 🧩 Default constants
 
-#### Boolean Constants
+## Boolean Constants
 | Name    | Value   | Description        |
 |---------|---------|--------------------|
 | `True`  | `true`  | Represents `true`  |
 | `False` | `false` | Represents `false` |
 
-#### Mathematical Constants
+## Mathematical Constants
 | Name          | Value      | Description                         |
 |---------------|------------|-------------------------------------|
 | `PI`          | 3.1415927f | π (pi)                              |
@@ -17,7 +17,7 @@
 | `Deg2Rad`     | 0.01745    | Degrees to radians (Unity specific) |
 | `Rad2Deg`     | 57.2958    | Radians to degrees (Unity specific) |
 
-#### Time Constants
+## Time Constants
 | Name             | Value    | Description           |
 |------------------|----------|-----------------------|
 | `Second`         | 1f       | One second            |
@@ -25,7 +25,7 @@
 | `Hour`           | 3600f    | One hour in seconds   |
 | `FrameTime60FPS` | 1f / 60f | Frame time at 60 FPS  |
 
-#### Common Values
+## Common Values
 | Name          | Value | Description        |
 |---------------|-------|--------------------|
 | `ZeroInt`     | 0     | Integer zero       |
@@ -35,13 +35,13 @@
 | `NegativeOne` | -1f   | Float negative one |
 | `Half`        | 0.5f  | Float one half     |
 
-#### Physics Constants
+## Physics Constants
 | Name           | Value | Description               |
 |----------------|-------|---------------------------|
 | `GravityEarth` | 9.81f | Standard gravity on Earth |
 | `DefaultMass`  | 1f    | Default mass              |
 
-#### Unity-Specific Vectors
+## Unity-Specific Vectors
 | Name         | Value    | Description         |
 |--------------|----------|---------------------|
 | `Up`         | (0,1,0)  | Unit vector up      |
@@ -53,7 +53,7 @@
 | `ZeroVector` | (0,0,0)  | Zero vector         |
 | `OneVector`  | (1,1,1)  | One vector          |
 
-#### Unity-Specific Colors
+## Unity-Specific Colors
 | Name          | Value     | Description       |
 |---------------|-----------|-------------------|
 | `White`       | (1,1,1,1) | White color       |

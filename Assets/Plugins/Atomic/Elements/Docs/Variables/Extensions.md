@@ -1,4 +1,4 @@
-# Extensions for Variable Wrappers
+# 🧩 Extensions for Variable Wrappers
 
 The **Extensions** class provides utility methods for creating **variable wrappers**, including standard, reactive, and proxy variables.  
 These methods simplify the creation of variables that support encapsulation, reactivity, and indirect access.

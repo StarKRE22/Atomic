@@ -1,5 +1,4 @@
-
-## 🧩 Const<T>
+# 🧩 Const<T>
 
 `Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**.  
 It implements `IValue<T>` and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
@@ -9,13 +8,13 @@ It implements `IValue<T>` and supports **implicit conversions**, making it usefu
 
 ---
 
-#### Type Parameter
+## Type Parameter
 
 - `T` – The type of the wrapped constant value.
 
 ---
 
-#### Constructors
+## Constructors
 
 ```csharp
 // Default constructor
@@ -28,18 +27,18 @@ public Const(T value)
   - Const() initializes a new instance with the default value of T.
   - Const(T value) initializes a new instance with a specified constant value.
 
-#### Properties
+## Properties
 ```csharp
 T Value { get; }
 ```
 - Description: Gets the wrapped constant value.
 - Access: Read-only
-#### Methods
+## Methods
 ```csharp
 T Invoke()
 ```
 
-### Example of Usage
+## Example of Usage
 ```csharp
 public sealed class Character : MonoBehaviour
 {
