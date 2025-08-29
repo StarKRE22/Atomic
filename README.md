@@ -17,7 +17,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
 - [Manual References](#manual-references)
 - [Unity Quick Start](#unity-quick-start)
-- [C# Quick Start](#csharp-quick-start)
+- [C# Quick Start](#c#-quick-start)
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
