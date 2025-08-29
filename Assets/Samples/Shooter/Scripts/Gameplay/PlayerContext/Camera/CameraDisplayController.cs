@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CameraDisplayController : IEntitySpawn<IPlayerContext>
+    public sealed class CameraDisplayController : IEntityInit<IPlayerContext>
     {
-        public void OnSpawn(IPlayerContext context)
+        public void Init(IPlayerContext context)
         {
             Camera camera = context.GetCamera();
             TeamType teamType = context.GetTeamType().Value;

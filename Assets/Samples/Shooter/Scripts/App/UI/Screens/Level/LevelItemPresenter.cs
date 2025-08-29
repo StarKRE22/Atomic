@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.App
 {
-    public sealed class LevelItemPresenter : IEntitySpawn<IMenuUIContext>, IEntityDespawn
+    public sealed class LevelItemPresenter : IEntityInit<IMenuUIContext>, IEntityDispose
     {
         private readonly IAppContext _context;
         private readonly int _level;
@@ -15,7 +15,7 @@ namespace ShooterGame.App
             _view = view;
         }
 
-        public void OnSpawn(IMenuUIContext context)
+        public void Init(IMenuUIContext context)
         {
             int currentLevel = _context.GetCurrentLevel().Value;
             if (currentLevel == _level)
@@ -29,7 +29,7 @@ namespace ShooterGame.App
             _view.OnClicked += this.OnClicked;
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _view.OnClicked -= this.OnClicked;
         }

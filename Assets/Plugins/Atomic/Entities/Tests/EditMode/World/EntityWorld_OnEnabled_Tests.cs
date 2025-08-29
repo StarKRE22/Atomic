@@ -10,9 +10,9 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnActivated += () => callCount++;
+            world.OnEnabled += () => callCount++;
 
-            world.Activate();
+            world.Enable();
 
             Assert.AreEqual(1, callCount);
         }
@@ -22,10 +22,10 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             int callCount = 0;
-            world.OnActivated += () => callCount++;
+            world.OnEnabled += () => callCount++;
 
-            world.Activate();
-            world.Activate(); // повторный вызов
+            world.Enable();
+            world.Enable(); // повторный вызов
 
             Assert.AreEqual(1, callCount);
         }
@@ -36,11 +36,11 @@ namespace Atomic.Entities
             var entity = new Entity();
             var world = new EntityWorld<Entity>(entity);
 
-            Assert.IsFalse(entity.IsSpawned);
+            Assert.IsFalse(entity.Initialized);
 
-            world.Activate();
+            world.Enable();
 
-            Assert.IsTrue(entity.IsSpawned);
+            Assert.IsTrue(entity.Initialized);
         }
 
         [Test]
@@ -48,9 +48,9 @@ namespace Atomic.Entities
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
-            world.OnActivated += () => called = true;
+            world.OnEnabled += () => called = true;
 
-            world.Activate();
+            world.Enable();
 
             Assert.IsTrue(called);
         }
@@ -59,10 +59,10 @@ namespace Atomic.Entities
         public void Enable_LateSubscriber_DoesNotGetEvent()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();
+            world.Enable();
 
             bool called = false;
-            world.OnActivated += () => called = true;
+            world.OnEnabled += () => called = true;
 
             Assert.IsFalse(called);
         }

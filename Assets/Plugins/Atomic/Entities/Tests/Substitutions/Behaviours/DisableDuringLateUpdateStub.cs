@@ -4,10 +4,10 @@ namespace Atomic.Entities
     {
         public bool WasCalled { get; private set; }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateUpdate(IEntity entity, float deltaTime)
         {
             WasCalled = true;
-            entity.Deactivate(); // отключает во время обновления
+            entity.Disable(); // отключает во время обновления
         }
     }
 }

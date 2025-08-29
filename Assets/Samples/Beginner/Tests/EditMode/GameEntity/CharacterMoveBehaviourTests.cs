@@ -21,7 +21,7 @@ namespace BeginnerGame
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(new Vector3(0, 0, 1)));
             entity.AddBehaviour(new CharacterMoveBehaviour());
 
-            entity.Activate();
+            entity.Enable();
             entity.OnFixedUpdate(deltaTime: 0.02f);
 
             AssertVec3Equal(entity.GetRotationDirection().Value, new Vector3(1, 0, 0));
@@ -35,7 +35,7 @@ namespace BeginnerGame
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(new Vector3(0, 1, 0)));
             entity.AddBehaviour(new CharacterMoveBehaviour());
 
-            entity.Activate();
+            entity.Enable();
             entity.OnFixedUpdate(deltaTime: 0.02f);
 
             AssertVec3Equal(entity.GetRotationDirection().Value, new Vector3(0, 1, 0));
@@ -50,7 +50,7 @@ namespace BeginnerGame
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.zero));
             entity.AddBehaviour(new CharacterMoveBehaviour());
 
-            entity.Activate();
+            entity.Enable();
 
             // First tick
             entity.OnFixedUpdate(deltaTime: 0.02f);
@@ -72,7 +72,7 @@ namespace BeginnerGame
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.zero));
             entity.AddBehaviour(new CharacterMoveBehaviour());
 
-            entity.Activate();
+            entity.Enable();
             entity.OnFixedUpdate(deltaTime: 0.02f);
 
             AssertVec3Equal(entity.GetRotationDirection().Value, tiny);
@@ -87,7 +87,7 @@ namespace BeginnerGame
             entity.AddRotationDirection(new ReactiveVariable<Vector3>(Vector3.left));
             entity.AddBehaviour(new CharacterMoveBehaviour());
 
-            entity.Activate();
+            entity.Enable();
             entity.OnFixedUpdate(deltaTime: 0.02f);
             entity.OnFixedUpdate(deltaTime: 0.02f);
 

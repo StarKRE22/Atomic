@@ -3,11 +3,11 @@ using Atomic.Entities;
 
 namespace ShooterGame.App
 {
-    public sealed class SaveLoadLevelController : IEntitySpawn<IAppContext>, IEntityActivate, IEntityDeactivate
+    public sealed class SaveLoadLevelController : IEntityInit<IAppContext>, IEntityEnable, IEntityDisable
     {
         private IReactiveVariable<int> _currentLevel;
 
-        public void OnSpawn(IAppContext context)
+        public void Init(IAppContext context)
         {
             _currentLevel = context.GetCurrentLevel();
 
@@ -15,12 +15,12 @@ namespace ShooterGame.App
                 _currentLevel.Value = level;
         }
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _currentLevel.Subscribe(LevelUseCase.SaveLevel);
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void Disable(IEntity entity)
         {
             _currentLevel.Unsubscribe(LevelUseCase.SaveLevel);
         }

@@ -22,8 +22,8 @@ namespace Atomic.Entities
 
             world.Spawn();
 
-            Assert.IsTrue(e1.IsSpawned);
-            Assert.IsTrue(e2.IsSpawned);
+            Assert.IsTrue(e1.Initialized);
+            Assert.IsTrue(e2.Initialized);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace Atomic.Entities
             world.Spawn(); // repeated
 
             Assert.AreEqual(1, eventCallCount);
-            Assert.IsTrue(entity.IsSpawned); // still true
+            Assert.IsTrue(entity.Initialized); // still true
         }
 
 
@@ -67,7 +67,7 @@ namespace Atomic.Entities
             var wasSpawn = false;
 
             //Act:
-            entity.OnSpawned += () => wasSpawn = true;
+            entity.OnInitialized += () => wasSpawn = true;
             entityWorld.Spawn();
 
             //Assert:

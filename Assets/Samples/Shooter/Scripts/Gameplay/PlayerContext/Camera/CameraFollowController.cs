@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class CameraFollowController : IEntitySpawn<IPlayerContext>, IEntityLateUpdate
+    public sealed class CameraFollowController : IEntityInit<IPlayerContext>, IEntityLateUpdate
     {
         private readonly Vector3 _offset;
         private IGameEntity _character;
@@ -16,13 +16,13 @@ namespace RTSGame
             _offset = offset;
         }
 
-        public void OnSpawn(IPlayerContext context)
+        public void Init(IPlayerContext context)
         {
             _character = context.GetCharacter();
             _camera = context.GetCamera().transform;
         }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateUpdate(IEntity entity, float deltaTime)
         {
             _camera.position = _character.GetPosition().Value + _offset;
         }

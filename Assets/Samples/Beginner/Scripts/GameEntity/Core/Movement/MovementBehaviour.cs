@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class MovementBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class MovementBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private IVariable<Vector3> _position;
         private IValue<float> _moveSpeed;
         private IValue<Vector3> _moveDirection;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _position = entity.GetPosition();
             _moveSpeed = entity.GetMoveSpeed();
             _moveDirection = entity.GetMoveDirection();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             MoveUseCase.MovementStep(
                 _position.Value,

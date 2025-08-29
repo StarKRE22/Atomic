@@ -14,7 +14,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void OnLateUpdate(IEntity entity, float deltaTime);
+        void LateUpdate(IEntity entity, float deltaTime);
     }
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void OnLateUpdate(T entity, float deltaTime);
+        void LateUpdate(T entity, float deltaTime);
 
-        void IEntityLateUpdate.OnLateUpdate(IEntity entity, float deltaTime) =>
-            this.OnLateUpdate((T) entity, deltaTime);
+        void IEntityLateUpdate.LateUpdate(IEntity entity, float deltaTime) =>
+            this.LateUpdate((T) entity, deltaTime);
     }
 }

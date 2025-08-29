@@ -88,8 +88,8 @@ namespace Atomic.Entities
             _behaviourCount++;
 
             //Check for lifecycle
-            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
-                spawnBehaviour.OnSpawn(this);
+            if (_spawned && behaviour is IEntityInit spawnBehaviour)
+                spawnBehaviour.Init(this);
 
             if (_active)
                 this.ActivateBehaviour(behaviour);
@@ -136,8 +136,8 @@ namespace Atomic.Entities
             if (_active)
                 this.InactivateBehaviour(behaviour);
 
-            if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.OnDespawn(this);
+            if (_spawned && behaviour is IEntityDispose dispose)
+                dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();

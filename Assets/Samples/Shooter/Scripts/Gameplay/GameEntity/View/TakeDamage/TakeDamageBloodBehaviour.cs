@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class TakeDamageBloodBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class TakeDamageBloodBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private readonly ParticleSystem _bloodVfx;
 
@@ -14,7 +14,7 @@ namespace ShooterGame.Gameplay
 
         public TakeDamageBloodBehaviour(ParticleSystem bloodVfx) => _bloodVfx = bloodVfx;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _teamType = entity.GetTeamType();
             _damageEvent = entity.GetTakeDamageEvent();
@@ -22,7 +22,7 @@ namespace ShooterGame.Gameplay
             _damageEvent.Subscribe(this.OnDamageTaken);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _damageEvent.Unsubscribe(this.OnDamageTaken);
         }

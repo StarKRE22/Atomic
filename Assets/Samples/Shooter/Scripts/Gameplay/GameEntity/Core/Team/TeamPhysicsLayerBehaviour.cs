@@ -3,13 +3,13 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class TeamPhysicsLayerBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class TeamPhysicsLayerBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private IVariable<int> _physicsLayer;
         private TeamCatalog teamCatalog;
         private IReactiveValue<TeamType> _team;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _physicsLayer = entity.GetPhysicsLayer();
             teamCatalog = GameContext.Instance.GetTeamCatalog();
@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
             _team.Observe(this.OnTeamChanged);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _team.Unsubscribe(this.OnTeamChanged);
         }

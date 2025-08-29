@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class BulletCollisionBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class BulletCollisionBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         //string -> hashcode -> 
         private Dictionary<string, object> _units;
@@ -21,7 +21,7 @@ namespace ShooterGame.Gameplay
             _gameContext = gameContext;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _entity = entity;
             _destroyAction = entity.GetDestroyAction();
@@ -31,7 +31,7 @@ namespace ShooterGame.Gameplay
             _trigger.OnEntered += this.OnTriggerEntered;
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _trigger.OnEntered -= this.OnTriggerEntered;
         }

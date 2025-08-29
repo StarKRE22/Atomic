@@ -3,10 +3,10 @@ using System.Collections.Generic;
 namespace Atomic.Entities
 {
     public class DummyEntityBehaviour :
-        IEntitySpawn,
-        IEntityActivate,
-        IEntityDeactivate,
-        IEntityDespawn,
+        IEntityInit,
+        IEntityEnable,
+        IEntityDisable,
+        IEntityDispose,
         IEntityUpdate,
         IEntityFixedUpdate,
         IEntityLateUpdate
@@ -21,46 +21,46 @@ namespace Atomic.Entities
 
         public readonly List<string> InvocationList = new();
 
-        public void OnSpawn(IEntity entity)
+        public void Init(IEntity entity)
         {
             this.Spawned = true;
-            this.InvocationList.Add(nameof(OnSpawn));
+            this.InvocationList.Add(nameof(Init));
         }
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             this.Activated = true;
-            this.InvocationList.Add(nameof(OnActivate));
+            this.InvocationList.Add(nameof(Enable));
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void Disable(IEntity entity)
         {
             this.Deactivated = true;
-            this.InvocationList.Add(nameof(OnDeactivate));
+            this.InvocationList.Add(nameof(Disable));
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             this.Despawned = true;
-            this.InvocationList.Add(nameof(OnDespawn));
+            this.InvocationList.Add(nameof(Dispose));
         }
 
-        public virtual void OnUpdate(IEntity entity, float deltaTime)
+        public virtual void Update(IEntity entity, float deltaTime)
         {
             this.Updated = true;
-            this.InvocationList.Add(nameof(OnUpdate));
+            this.InvocationList.Add(nameof(Update));
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             this.FixedUpdated = true;
-            this.InvocationList.Add(nameof(OnFixedUpdate));
+            this.InvocationList.Add(nameof(FixedUpdate));
         }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateUpdate(IEntity entity, float deltaTime)
         {
             this.LateUpdated = true;
-            this.InvocationList.Add(nameof(OnLateUpdate));
+            this.InvocationList.Add(nameof(LateUpdate));
         }
     }
 }

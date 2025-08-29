@@ -84,12 +84,11 @@ namespace Atomic.Entities
             _behaviours[_behaviourCount] = behaviour;
             _behaviourCount++;
 
-            //Check for lifecycle
-            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
-                spawnBehaviour.OnSpawn(this);
+            if (_initialized && behaviour is IEntityInit spawnBehaviour)
+                spawnBehaviour.Init(this);
 
-            if (_active)
-                this.ActivateBehaviour(behaviour);
+            if (_enabled)
+                this.EnableBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -133,11 +132,11 @@ namespace Atomic.Entities
             for (int i = index; i < _behaviourCount; i++)
                 _behaviours[i] = _behaviours[i + 1];
 
-            if (_active)
-                this.InactivateBehaviour(behaviour);
+            if (_enabled)
+                this.DisableBehaviour(behaviour);
 
-            if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.OnDespawn(this);
+            if (_initialized && behaviour is IEntityDispose dispose)
+                dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();

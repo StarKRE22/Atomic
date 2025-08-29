@@ -10,7 +10,7 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Activate();
+            world.Enable();
 
             float delta = 0.16f;
 
@@ -27,7 +27,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var world = new EntityWorld<Entity>();
-            world.Activate();
+            world.Enable();
 
             float calledDelta = -1f;
             world.OnUpdated += dt => calledDelta = dt;

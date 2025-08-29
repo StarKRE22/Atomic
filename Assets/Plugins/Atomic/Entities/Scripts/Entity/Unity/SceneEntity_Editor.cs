@@ -134,8 +134,8 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntitySpawn dispose && IsRunInEditModeDefined(behaviour))
-                    dispose.OnSpawn(this);
+                if (behaviour is IEntityInit dispose && IsRunInEditModeDefined(behaviour))
+                    dispose.Init(this);
             }
         }
 
@@ -150,8 +150,8 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityActivate dispose && IsRunInEditModeDefined(behaviour))
-                    dispose.OnActivate(this);
+                if (behaviour is IEntityEnable dispose && IsRunInEditModeDefined(behaviour))
+                    dispose.Enable(this);
             }
         }
 
@@ -166,8 +166,8 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityDeactivate disable && IsRunInEditModeDefined(behaviour))
-                    disable.OnDeactivate(this);
+                if (behaviour is IEntityDisable disable && IsRunInEditModeDefined(behaviour))
+                    disable.Disable(this);
             }
         }
 
@@ -182,8 +182,8 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
             {
                 IEntityBehaviour behaviour = _behaviours[i];
-                if (behaviour is IEntityDespawn dispose && IsRunInEditModeDefined(behaviour))
-                    dispose.OnDespawn(this);
+                if (behaviour is IEntityDispose dispose && IsRunInEditModeDefined(behaviour))
+                    dispose.Dispose(this);
             }
         }
     }

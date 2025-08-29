@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class KinematicMovementBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class KinematicMovementBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private const float MAX_DISTANCE_COEFFICIENT = 2;
         
@@ -16,7 +16,7 @@ namespace ShooterGame.Gameplay
         private IFunction<bool> _moveCondition;
         private IEvent<Vector3> _moveEvent;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _rigidbody = entity.GetRigidbody();
             _position = entity.GetPosition();
@@ -26,7 +26,7 @@ namespace ShooterGame.Gameplay
             _moveEvent = entity.GetMovementEvent();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             Vector3 direction = _moveDirection.Value;
             if (direction == Vector3.zero || !_moveCondition.Invoke())

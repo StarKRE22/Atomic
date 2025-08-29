@@ -11,8 +11,14 @@ namespace RTSGame
             int tagCapacity = 0,
             int valueCapacity = 0,
             int behaviourCapacity = 0
-        ) : base(name, tagCapacity, valueCapacity, behaviourCapacity) => Instance = this;
+        ) : base(name, tagCapacity, valueCapacity, behaviourCapacity)
+        {
+            Instance = this;
+        }
 
-        protected override void OnDispose() => Instance = null;
+        protected override void OnDispose()
+        {
+            Instance = null;
+        }
     }
 }

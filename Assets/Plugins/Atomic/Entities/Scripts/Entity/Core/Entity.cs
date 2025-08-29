@@ -8,7 +8,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
     /// </summary>
-    public partial class Entity : IEntity, IDisposable
+    public partial class Entity : IEntity
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -87,18 +87,48 @@ namespace Atomic.Entities
         /// </remarks>
         public void Dispose()
         {
-            this.Despawn();
+            this.OnDispose();
+            this.Deinitialize();
+
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
-            this.UnsubscribeAll();
 
+            this.OnStateChanged?.Invoke();
+            this.OnDisposed?.Invoke();
+
+            this.UnsubscribeEvents();
             EntityRegistry.Instance.Unregister(ref this.instanceId);
-            this.OnDispose();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDispose()
         {
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void UnsubscribeEvents()
+        {
+            this.OnStateChanged = null;
+
+            this.OnInitialized = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
+
+            this.OnUpdated = null;
+            this.OnFixedUpdated = null;
+            this.OnLateUpdated = null;
+            this.OnDisposed = null;
+
+            this.OnBehaviourAdded = null;
+            this.OnBehaviourDeleted = null;
+
+            this.OnValueAdded = null;
+            this.OnValueDeleted = null;
+            this.OnValueChanged = null;
+
+            this.OnTagAdded = null;
+            this.OnTagDeleted = null;
         }
 
         /// <inheritdoc/>
@@ -112,33 +142,5 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public override int GetHashCode() => this.instanceId;
-
-        /// <summary>
-        /// Removes all subscriptions and callbacks associated with this entity.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void UnsubscribeAll()
-        {
-            this.OnStateChanged = null;
-
-            this.OnSpawned = null;
-            this.OnActivated = null;
-            this.OnDeactivated = null;
-
-            this.OnUpdated = null;
-            this.OnFixedUpdated = null;
-            this.OnLateUpdated = null;
-            this.OnDespawned = null;
-
-            this.OnBehaviourAdded = null;
-            this.OnBehaviourDeleted = null;
-
-            this.OnValueAdded = null;
-            this.OnValueDeleted = null;
-            this.OnValueChanged = null;
-
-            this.OnTagAdded = null;
-            this.OnTagDeleted = null;
-        }
     }
 }

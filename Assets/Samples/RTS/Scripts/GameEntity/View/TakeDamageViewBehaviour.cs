@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class TakeDamageViewBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn<IGameEntity>
+    public sealed class TakeDamageViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose<IGameEntity>
     {
         private readonly Transform _visual;
         private readonly Vector3 _originalScale;
@@ -15,12 +15,12 @@ namespace RTSGame
             _originalScale = visual.localScale;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             entity.GetTakeDamageEvent().Subscribe(this.OnTakeDamage);
         }
 
-        public void OnDespawn(IGameEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             entity.GetTakeDamageEvent().Unsubscribe(this.OnTakeDamage);
         }

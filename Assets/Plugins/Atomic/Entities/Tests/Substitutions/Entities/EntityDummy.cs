@@ -14,27 +14,27 @@ namespace Atomic.Entities
         public float LastFixedDeltaTime { get; private set; }
         public float LastLateDeltaTime { get; private set; }
         
-        protected override void ProcessSpawn()
+        protected override void ProcessInit()
         {
-            base.ProcessSpawn();
+            base.ProcessInit();
             WasSpawned = true;
         }
 
-        protected override void ProcessDespawn()
+        protected override void ProcessDispose()
         {
-            base.ProcessDespawn();
+            base.ProcessDispose();
             WasDespawned = true;
         }
 
-        protected override void ProcessActivate()
+        protected override void ProcessEnable()
         {
-            base.ProcessActivate();
+            base.ProcessEnable();
             WasActivated = true;
         }
 
-        protected override void ProcessInactivate()
+        protected override void ProcessDisable()
         {
-            base.ProcessInactivate();
+            base.ProcessDisable();
             WasDeactivated = true;
         }
 

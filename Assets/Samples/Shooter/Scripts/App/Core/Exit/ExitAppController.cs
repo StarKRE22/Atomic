@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    public sealed class ExitAppController : IEntitySpawn<IAppContext>, IEntityUpdate
+    public sealed class ExitAppController : IEntityInit<IAppContext>, IEntityUpdate
     {
         private IValue<KeyCode> _exitKey;
 
-        public void OnSpawn(IAppContext context)
+        public void Init(IAppContext context)
         {
             _exitKey = context.GetExitKeyCode();
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Update(IEntity entity, float deltaTime)
         {
             if (Input.GetKey(_exitKey.Value) && MenuUseCase.InMenu()) 
                 ExitAppUseCase.Exit();

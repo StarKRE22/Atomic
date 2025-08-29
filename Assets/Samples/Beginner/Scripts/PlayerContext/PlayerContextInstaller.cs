@@ -52,8 +52,8 @@ namespace BeginnerGame
             context.AddBehaviour(new CameraFollowController(_cameraOffset));
             
             //Inactivate
-            gameContext.WhenDeactivate(context.Deactivate);
-            gameContext.WhenDeactivate(context.GetCharacter().Deactivate);
+            gameContext.WhenDisable(context.Disable);
+            gameContext.WhenDisable(context.GetCharacter().Disable);
         }
     }
 }

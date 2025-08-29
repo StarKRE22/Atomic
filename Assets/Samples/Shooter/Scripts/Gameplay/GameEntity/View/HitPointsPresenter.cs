@@ -3,14 +3,14 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class HitPointsPresenter : IEntitySpawn<IGameEntity>, IEntityActivate, IEntityDeactivate
+    public sealed class HitPointsPresenter : IEntityInit<IGameEntity>, IEntityEnable, IEntityDisable
     {
         private HitPointsView _view;
         private Health _health;
         private TeamCatalog _teamConfig;
         private IValue<TeamType> _teamType;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _view = entity.GetHitPointsView();
             _health = entity.GetHealth();
@@ -18,13 +18,13 @@ namespace ShooterGame.Gameplay
             _teamConfig = GameContext.Instance.GetTeamCatalog();
         }
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _health.OnStateChanged += this.OnHealthChanged;
             _view.Hide();
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void Disable(IEntity entity)
         {
             _health.OnStateChanged -= this.OnHealthChanged;
         }

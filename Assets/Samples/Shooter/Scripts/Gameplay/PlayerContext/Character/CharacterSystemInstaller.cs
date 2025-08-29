@@ -17,7 +17,7 @@ namespace ShooterGame.Gameplay
                 GameContext gameContext = GameContext.Instance;
                 GameEntity character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);
                 context.AddCharacter(character);
-                gameContext.WhenDeactivate(character.Deactivate);
+                gameContext.WhenDisable(character.Disable);
             }
 
             context.AddBehaviour<CharacterMoveController>();

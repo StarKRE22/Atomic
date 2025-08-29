@@ -4,7 +4,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class LeaderboardController : IEntitySpawn<IGameContext>, IEntityDespawn
+    public sealed class LeaderboardController : IEntityInit<IGameContext>, IEntityDispose
     {
         private ISignal<KillArgs> _killEvent;
         private IGameContext _gameContext;
@@ -14,14 +14,14 @@ namespace ShooterGame.Gameplay
             LeaderboardUseCase.AddScore(_gameContext, args);
         }
 
-        public void OnSpawn(IGameContext context)
+        public void Init(IGameContext context)
         {
             _gameContext = context;
             _killEvent = context.GetKillEvent();
             _killEvent.Subscribe(this.OnKill);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _killEvent.Unsubscribe(this.OnKill);
         }

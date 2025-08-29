@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class DeathBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class DeathBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private readonly IGameContext _gameContext;
 
@@ -14,7 +14,7 @@ namespace RTSGame
             _gameContext = gameContext;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _entity = entity;
 
@@ -22,7 +22,7 @@ namespace RTSGame
             _health.OnHealthEmpty += this.OnHealthEmpty;
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _health.OnHealthEmpty -= this.OnHealthEmpty;
         }

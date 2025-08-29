@@ -24,26 +24,24 @@ namespace Atomic.Entities
         /// </summary>
         private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
             EqualityComparer<IEntityLateUpdate>.Default;
-
-        /// <summary>
-        /// Called when the entity has been initialized.
+        
+        /// Called when the entity is initialized.
         /// </summary>
-        public event Action OnSpawned;
-
+        public event Action OnInitialized;
+       
+        /// Called when the entity is disposed.
+        /// </summary>
+        public event Action OnDisposed;
+        
         /// <summary>
         /// Called when the entity is enabled.
         /// </summary>
-        public event Action OnActivated;
+        public event Action OnEnabled;
 
         /// <summary>
         /// Called when the entity is disabled.
         /// </summary>
-        public event Action OnDeactivated;
-
-        /// <summary>
-        /// Called when the entity is disposed.
-        /// </summary>
-        public event Action OnDespawned;
+        public event Action OnDisabled;
 
         /// <summary>
         /// Called every frame while the entity is enabled.
@@ -61,17 +59,17 @@ namespace Atomic.Entities
         public event Action<float> OnLateUpdated;
 
         /// <summary>
-        /// Indicates whether the entity has been spawned.
+        /// Indicates whether the entity has been Initialized.
         /// </summary>
-        public bool IsSpawned => _spawned;
+        public bool Initialized => _initialized;
 
         /// <summary>
         /// Indicates whether the entity is currently enabled.
         /// </summary>
-        public bool IsActive => _active;
+        public bool Enabled => _enabled;
 
-        private bool _spawned;
-        private bool _active;
+        private bool _initialized;
+        private bool _enabled;
 
         private IEntityUpdate[] _updates;
         private IEntityFixedUpdate[] _fixedUpdates;
@@ -82,100 +80,71 @@ namespace Atomic.Entities
         private int _lateUpdateCount;
 
         /// <summary>
-        /// Spawns the entity.
+        /// Initializes the entity.
         /// </summary>
-        public void Spawn()
+        public void Init()
         {
-            if (_spawned)
+            if (_initialized)
                 return;
 
-            this.ProcessSpawn();
-            _spawned = true;
-
-            this.OnSpawned?.Invoke();
-            this.OnStateChanged?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessSpawn()
-        {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntitySpawn spawnBehaviour)
-                    spawnBehaviour.OnSpawn(this);
+                if (_behaviours[i] is IEntityInit behaviour)
+                    behaviour.Init(this);
+            
+            _initialized = true;
+            
+            this.OnStateChanged?.Invoke();
+            this.OnInitialized?.Invoke();
         }
 
-        /// <summary>
-        /// Despawns the entity.
-        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void Despawn()
+        private void Deinitialize()
         {
-            if (!_spawned)
+            if (!_initialized) 
                 return;
+            
+            if (_enabled)
+                this.Disable();
 
-            if (_active)
-                this.Deactivate();
-
-            this.ProcessDespawn();
-            _spawned = false;
-
-            this.OnDespawned?.Invoke();
-            this.OnStateChanged?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessDespawn()
-        {
             for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDespawn despawnBehaviour)
-                    despawnBehaviour.OnDespawn(this);
+                if (_behaviours[i] is IEntityDispose behaviour)
+                    behaviour.Dispose(this);
+            
+            _initialized = false;
         }
-
+        
         /// <summary>
         /// Enables the entity and registers update behaviours.
         /// </summary>
-        public void Activate()
+        public void Enable()
         {
-            if (!_spawned)
-                this.Spawn();
-
-            if (_active)
+            if (_enabled)
                 return;
 
-            this.ProcessActivate();
-            _active = true;
-
-            this.OnActivated?.Invoke();
-            this.OnStateChanged?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessActivate()
-        {
             for (int i = 0; i < _behaviourCount; i++)
-                this.ActivateBehaviour(_behaviours[i]);
+                this.EnableBehaviour(_behaviours[i]);
+            
+            _enabled = true;
+
+            this.OnEnabled?.Invoke();
+            this.OnStateChanged?.Invoke();
         }
 
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
-        public void Deactivate()
+        public void Disable()
         {
-            if (!_active)
+            if (!_enabled)
                 return;
 
-            this.ProcessInactivate();
-            _active = false;
+            for (int i = 0; i < _behaviourCount; i++)
+                this.DisableBehaviour(_behaviours[i]);
+            
+            _enabled = false;
 
             this.OnStateChanged?.Invoke();
-            this.OnDeactivated?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessInactivate()
-        {
-            for (int i = 0; i < _behaviourCount; i++)
-                this.InactivateBehaviour(_behaviours[i]);
+            this.OnDisabled?.Invoke();
         }
 
         /// <summary>
@@ -183,18 +152,13 @@ namespace Atomic.Entities
         /// </summary>
         public void OnUpdate(float deltaTime)
         {
-            if (!_active)
+            if (!_enabled)
                 return;
 
-            this.ProcessUpdate(deltaTime);
+            for (int i = 0; i < _updateCount; i++)
+                _updates[i].Update(this, deltaTime);
+            
             this.OnUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessUpdate(float deltaTime)
-        {
-            for (int i = 0; i < _updateCount && _active; i++)
-                _updates[i].OnUpdate(this, deltaTime);
         }
 
         /// <summary>
@@ -202,18 +166,13 @@ namespace Atomic.Entities
         /// </summary>
         public void OnFixedUpdate(float deltaTime)
         {
-            if (!_active)
+            if (!_enabled)
                 return;
             
-            this.ProcessFixedUpdate(deltaTime);
+            for (int i = 0; i < _fixedUpdateCount; i++)
+                _fixedUpdates[i].FixedUpdate(this, deltaTime);
+            
             this.OnFixedUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessFixedUpdate(float deltaTime)
-        {
-            for (int i = 0; i < _fixedUpdateCount && _active; i++)
-                _fixedUpdates[i].OnFixedUpdate(this, deltaTime);
         }
 
         /// <summary>
@@ -221,25 +180,20 @@ namespace Atomic.Entities
         /// </summary>
         public void OnLateUpdate(float deltaTime)
         {
-            if (!_active)
+            if (!_enabled)
                 return;
 
-            this.ProcessLateUpdate(deltaTime);
+            for (int i = 0; i < _lateUpdateCount && _enabled; i++)
+                _lateUpdates[i].LateUpdate(this, deltaTime);
+            
             this.OnLateUpdated?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessLateUpdate(float deltaTime)
+        private void EnableBehaviour(IEntityBehaviour behaviour)
         {
-            for (int i = 0; i < _lateUpdateCount && _active; i++)
-                _lateUpdates[i].OnLateUpdate(this, deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void ActivateBehaviour(IEntityBehaviour behaviour)
-        {
-            if (behaviour is IEntityActivate activate)
-                activate.OnActivate(this);
+            if (behaviour is IEntityEnable enable)
+                enable.Enable(this);
 
             if (behaviour is IEntityUpdate update)
                 Add(ref _updates, ref _updateCount, update);
@@ -252,10 +206,10 @@ namespace Atomic.Entities
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void InactivateBehaviour(IEntityBehaviour behaviour)
+        private void DisableBehaviour(IEntityBehaviour behaviour)
         {
-            if (behaviour is IEntityDeactivate inactive)
-                inactive.OnDeactivate(this);
+            if (behaviour is IEntityDisable disable)
+                disable.Disable(this);
 
             if (behaviour is IEntityUpdate update)
                 Remove(ref _updates, ref _updateCount, update, s_updateComparer);

@@ -24,8 +24,8 @@ namespace Atomic.Entities
             var despawn1 = false;
             var despawn2 = false;
 
-            e1.WhenDespawn(() => despawn1 = true);
-            e2.WhenDespawn(() => despawn2 = true);
+            e1.WhenDispose(() => despawn1 = true);
+            e2.WhenDispose(() => despawn2 = true);
             
             world.Spawn();   // must be spawned before Despawn
             world.Despawn();
@@ -38,11 +38,11 @@ namespace Atomic.Entities
         public void Despawn_DisablesWorld_IfEnabled()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();  // this will spawn as well
+            world.Enable();  // this will spawn as well
 
             world.Despawn();
 
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
         }
 
         [Test]

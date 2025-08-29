@@ -3,33 +3,33 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Represents an object that can be enabled or disabled during runtime.
+    /// Represents a contract that can be enabled or disabled during runtime.
     /// </summary>
-    public interface IActivatable
+    public interface IEnableSource
     {
         /// <summary>
         /// Occurs when the object is enabled.
         /// </summary>
-        event Action OnActivated;
+        event Action OnEnabled;
 
         /// <summary>
         /// Occurs when the object is disabled.
         /// </summary>
-        event Action OnDeactivated;
+        event Action OnDisabled;
 
         /// <summary>
         /// Gets a value indicating whether the object is currently enabled.
         /// </summary>
-        bool IsActive { get; }
+        bool Enabled { get; }
 
         /// <summary>
         /// Enables the object.
         /// </summary>
-        void Activate();
+        void Enable();
 
         /// <summary>
         /// Disables the object.
         /// </summary>
-        void Deactivate();
+        void Disable();
     }
 }

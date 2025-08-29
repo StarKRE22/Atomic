@@ -89,5 +89,19 @@ namespace Atomic.Entities
                 GameObject.Destroy(entity, delay);
         }
 #endif
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEntity
+        {
+            foreach (E entity in it)
+                entity.Init();
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IEntity
+        {
+            foreach (E entity in it)
+                entity.Dispose();
+        }
     }
 }

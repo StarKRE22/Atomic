@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class CameraBillboardBehaviour : IEntitySpawn<IGameEntity>, IEntityLateUpdate
+    public sealed class CameraBillboardBehaviour : IEntityInit<IGameEntity>, IEntityLateUpdate
     {
         private readonly Transform _target;
         private Transform _camera;
@@ -14,13 +14,13 @@ namespace BeginnerGame
             _target = target ?? throw new ArgumentNullException(nameof(target));
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(GameContext.Instance, entity);
             _camera = playerContext.GetCamera().transform;
         }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateUpdate(IEntity entity, float deltaTime)
         {
             Vector3 dir = _target.position - _camera.position;
             _target.rotation = Quaternion.LookRotation(dir, _camera.up);

@@ -2,20 +2,20 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterRespawnController : IEntitySpawn<IPlayerContext>, IEntityDespawn
+    public sealed class CharacterRespawnController : IEntityInit<IPlayerContext>, IEntityDispose
     {
         private IGameContext _gameContext;
 
         private IPlayerContext _playerContext;
 
-        public void OnSpawn(IPlayerContext context)
+        public void Init(IPlayerContext context)
         {
             _gameContext = GameContext.Instance;
             _playerContext = context;
             _playerContext.GetCharacter().GetHealth().OnHealthEmpty += this.OnHealthEmpty;
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _playerContext.GetCharacter().GetHealth().OnHealthEmpty -= this.OnHealthEmpty;
         }

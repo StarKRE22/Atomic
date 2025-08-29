@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class DeathAnimBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class DeathAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private static readonly int Death = Animator.StringToHash(nameof(Death));
 
@@ -28,14 +28,14 @@ namespace ShooterGame.Gameplay
             _view.SetActive(false);
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _animator = entity.GetAnimator();
             _health = entity.GetHealth();
             _health.OnHealthEmpty += this.OnDeath;
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _health.OnHealthEmpty -= this.OnDeath;
         }

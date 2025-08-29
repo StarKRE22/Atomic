@@ -4,17 +4,17 @@ using ShooterGame.Gameplay;
 
 namespace ShooterGame.App
 {
-    public sealed class GameOverObserver : IEntitySpawn<IGameContext>, IEntityDespawn
+    public sealed class GameOverObserver : IEntityInit<IGameContext>, IEntityDispose
     {
         private ISignal _gameOverEvent;
 
-        public void OnSpawn(IGameContext context)
+        public void Init(IGameContext context)
         {
             _gameOverEvent = context.GetGameOverEvent();
             _gameOverEvent.Subscribe(this.OnGameOver);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _gameOverEvent.Unsubscribe(this.OnGameOver);
         }

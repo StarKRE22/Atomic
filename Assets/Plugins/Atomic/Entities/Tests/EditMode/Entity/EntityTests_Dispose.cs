@@ -38,10 +38,10 @@ namespace Atomic.Entities
         {
             var entity = new Entity("Test");
             entity.Spawn(); // допустим, ты это вызываешь перед Dispose
-            Assert.IsTrue(entity.IsSpawned);
+            Assert.IsTrue(entity.Initialized);
 
             entity.Dispose();
-            Assert.IsFalse(entity.IsSpawned); // или другой индикатор деактивации
+            Assert.IsFalse(entity.Initialized); // или другой индикатор деактивации
         }
 
         [Test]

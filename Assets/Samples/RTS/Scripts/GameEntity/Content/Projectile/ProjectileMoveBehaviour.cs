@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class ProjectileMoveBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class ProjectileMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private readonly IGameContext _gameContext;
 
@@ -19,7 +19,7 @@ namespace RTSGame
             _gameContext = gameContext;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _entity = entity;
             _target = entity.GetTarget();
@@ -27,10 +27,10 @@ namespace RTSGame
             _forward = TransformUseCase.GetForward(_entity);
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
-            if (target is not {IsActive: true})
+            if (target is not {Enabled: true})
             {
                 MoveUseCase.MoveStep(_entity, _forward, deltaTime);
                 return;

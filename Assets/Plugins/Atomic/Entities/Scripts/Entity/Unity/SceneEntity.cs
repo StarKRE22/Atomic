@@ -149,7 +149,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && _started)
             {
-                this.Activate();
+                this.Enable();
                 UpdateLoop.Instance.Add(this);
             }
         }
@@ -159,7 +159,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle)
             {
                 this.Spawn();
-                this.Activate();
+                this.Enable();
                 UpdateLoop.Instance.Add(this);
 
                 _started = true;
@@ -170,7 +170,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && _started)
             {
-                this.Deactivate();
+                this.Disable();
                 UpdateLoop.Instance.Del(this);
             }
         }
@@ -258,8 +258,8 @@ namespace Atomic.Entities
             this.OnStateChanged = null;
 
             this.OnSpawned = null;
-            this.OnActivated = null;
-            this.OnDeactivated = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
 
             this.OnUpdated = null;
             this.OnFixedUpdated = null;

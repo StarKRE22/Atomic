@@ -5,14 +5,14 @@ using UnityEngine;
 namespace BeginnerGame
 {
     [RunInEditMode]
-    public sealed class TeamColorBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class TeamColorBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private TeamCatalog _catalog;
 
         private Renderer _renderer;
         private IReactiveValue<TeamType> _team;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             GameContext gameContext = GameContext.Instance;
             if (gameContext) 
@@ -24,7 +24,7 @@ namespace BeginnerGame
             _team.Observe(this.OnTeamChanged);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _team.Unsubscribe(this.OnTeamChanged);
         }

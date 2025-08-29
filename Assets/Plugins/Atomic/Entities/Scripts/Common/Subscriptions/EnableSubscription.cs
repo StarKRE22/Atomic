@@ -3,35 +3,35 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IActivatable"/>'s <see cref="IActivatable.OnActivated"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IEnableSource"/>'s <see cref="IEnableSource.OnEnabled"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// This struct is intended to simplify the management of temporary or scoped subscriptions
     /// to activation events, ensuring that the provided callback is properly unsubscribed when no longer needed.
     /// </remarks>
-    public readonly struct ActivateSubscription : IDisposable
+    public readonly struct EnableSubscription : IDisposable
     {
-        private readonly IActivatable _source;
+        private readonly IEnableSource _source;
         private readonly Action _callback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActivateSubscription"/> struct.
+        /// Initializes a new instance of the <see cref="EnableSubscription"/> struct.
         /// </summary>
         /// <param name="source">The activatable source object to subscribe to.</param>
         /// <param name="callback">The callback to invoke when the source is enabled.</param>
-        internal ActivateSubscription(IActivatable source, Action callback)
+        internal EnableSubscription(IEnableSource source, Action callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IActivatable.OnActivated"/> event.
+        /// Unsubscribes the callback from the <see cref="IEnableSource.OnEnabled"/> event.
         /// </summary>
         public void Dispose()
         {
             if (_source != null && _callback != null)
-                _source.OnActivated -= _callback;
+                _source.OnEnabled -= _callback;
         }
     }
 }

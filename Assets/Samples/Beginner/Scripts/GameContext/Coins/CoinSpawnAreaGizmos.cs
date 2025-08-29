@@ -5,7 +5,7 @@ namespace BeginnerGame
 {
     public sealed class CoinSpawnAreaGizmos : IEntityGizmos<IGameContext>
     {
-        public void OnGizmosDraw(IGameContext context)
+        public void DrawGizmos(IGameContext context)
         {
             Bounds bounds = context.GetCoinSpawnArea();
 

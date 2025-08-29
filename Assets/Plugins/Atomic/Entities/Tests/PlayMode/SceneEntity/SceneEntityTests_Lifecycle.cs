@@ -59,9 +59,9 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             bool wasCalled = false;
 
-            entity.OnActivated += () => wasCalled = true;
+            entity.OnEnabled += () => wasCalled = true;
 
-            entity.Activate(); // Предполагаемый метод
+            entity.Enable(); // Предполагаемый метод
 
             Assert.IsTrue(wasCalled);
         }
@@ -70,12 +70,12 @@ namespace Atomic.Entities
         public void OnEnabled_IsNotInvoked_WhenAlreadyEnabled()
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
-            entity.Activate(); // уже включено
+            entity.Enable(); // уже включено
 
             bool wasCalled = false;
-            entity.OnActivated += () => wasCalled = true;
+            entity.OnEnabled += () => wasCalled = true;
 
-            entity.Activate(); // попытка включить снова
+            entity.Enable(); // попытка включить снова
 
             Assert.IsFalse(wasCalled);
         }
@@ -86,7 +86,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false); // по умолчанию выключен
 
             bool wasCalled = false;
-            entity.OnActivated += () => wasCalled = true;
+            entity.OnEnabled += () => wasCalled = true;
 
             //Wait awake
             yield return null;
@@ -103,12 +103,12 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn(); // сначала нужно заспаунить
-            entity.Activate();
+            entity.Enable();
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnDisabled += () => wasCalled = true;
 
-            entity.Deactivate();
+            entity.Disable();
 
             Assert.IsTrue(wasCalled);
         }
@@ -120,9 +120,9 @@ namespace Atomic.Entities
             entity.Spawn(); // только спаун, не включаем
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnDisabled += () => wasCalled = true;
 
-            entity.Deactivate(); // вызов Disable на уже выключенном
+            entity.Disable(); // вызов Disable на уже выключенном
 
             Assert.IsFalse(wasCalled);
         }
@@ -132,14 +132,14 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             int callCount = 0;
-            entity.OnDeactivated += () => callCount++;
+            entity.OnDisabled += () => callCount++;
 
-            entity.Deactivate();
-            entity.Deactivate();
-            entity.Deactivate();
+            entity.Disable();
+            entity.Disable();
+            entity.Disable();
 
             Assert.AreEqual(1, callCount);
         }
@@ -149,11 +149,11 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
-            entity.Deactivate();
+            entity.Disable();
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         #endregion
@@ -223,7 +223,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             float receivedDelta = -1f;
             entity.OnUpdated += dt => receivedDelta = dt;
@@ -253,7 +253,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             int callCount = 0;
             entity.OnUpdated += _ => callCount++;
@@ -287,7 +287,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             float receivedDelta = -1f;
             entity.OnFixedUpdated += dt => receivedDelta = dt;
@@ -316,7 +316,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             int callCount = 0;
             entity.OnFixedUpdated += _ => callCount++;
@@ -350,7 +350,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             float receivedDelta = -1f;
             entity.OnLateUpdated += dt => receivedDelta = dt;
@@ -379,7 +379,7 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             int callCount = 0;
             entity.OnLateUpdated += _ => callCount++;
@@ -452,7 +452,7 @@ namespace Atomic.Entities
         public void Enabled_IsFalse_ByDefault()
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
@@ -460,9 +460,9 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
         }
 
         [Test]
@@ -470,10 +470,10 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
-            entity.Deactivate();
+            entity.Enable();
+            entity.Disable();
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
@@ -481,10 +481,10 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.Despawn(); // вызывает Disable()
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
@@ -492,10 +492,10 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
-            entity.Activate(); // повторный вызов
+            entity.Enable();
+            entity.Enable(); // повторный вызов
 
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
         }
 
         [Test]
@@ -503,11 +503,11 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
-            entity.Deactivate();
-            entity.Deactivate();
+            entity.Enable();
+            entity.Disable();
+            entity.Disable();
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         #endregion
@@ -553,7 +553,7 @@ namespace Atomic.Entities
         [Test]
         public void Spawn_InvokesIEntitySpawnInterfaces()
         {
-            var stub = new EntitySpawnStub();
+            var stub = new EntityInitStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
 
             entity.AddBehaviour(stub);
@@ -628,17 +628,17 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.Despawn();
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
         public void Despawn_InvokesIEntityDespawnBehaviours()
         {
-            var stub = new EntityDespawnStub();
+            var stub = new EntityDisposeStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
@@ -704,14 +704,14 @@ namespace Atomic.Entities
 
             //Act
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.Despawn();
 
             //Assert
             Assert.IsTrue(behaviourStub.Despawned);
             Assert.IsTrue(wasEvent);
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
             Assert.IsFalse(entity.IsSpawned);
         }
 
@@ -725,9 +725,9 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
 
-            entity.Activate();
+            entity.Enable();
 
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
         }
 
         [Test]
@@ -737,7 +737,7 @@ namespace Atomic.Entities
             bool spawned = false;
             entity.OnSpawned += () => spawned = true;
 
-            entity.Activate();
+            entity.Enable();
 
             Assert.IsTrue(entity.IsSpawned);
             Assert.IsTrue(spawned);
@@ -746,12 +746,12 @@ namespace Atomic.Entities
         [Test]
         public void Enable_InvokesIEntityEnable()
         {
-            var stub = new EntityActivateStub();
+            var stub = new EntityEnableStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             Assert.IsTrue(stub.WasEnable);
         }
@@ -763,9 +763,9 @@ namespace Atomic.Entities
             entity.Spawn();
 
             bool called = false;
-            entity.OnActivated += () => called = true;
+            entity.OnEnabled += () => called = true;
 
-            entity.Activate();
+            entity.Enable();
 
             Assert.IsTrue(called);
         }
@@ -779,7 +779,7 @@ namespace Atomic.Entities
             bool stateChanged = false;
             entity.OnStateChanged += () => stateChanged = true;
 
-            entity.Activate();
+            entity.Enable();
 
             Assert.IsTrue(stateChanged);
         }
@@ -789,12 +789,12 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             bool wasCalled = false;
-            entity.OnActivated += () => wasCalled = true;
+            entity.OnEnabled += () => wasCalled = true;
 
-            entity.Activate(); // повторно
+            entity.Enable(); // повторно
 
             Assert.IsFalse(wasCalled);
         }
@@ -810,24 +810,24 @@ namespace Atomic.Entities
 
             entity.AddBehaviour(behaviourStub);
             entity.OnSpawned += () => initEvent = true;
-            entity.OnActivated += () => enabledEvent = true;
+            entity.OnEnabled += () => enabledEvent = true;
 
             //Act
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             //Assert
             Assert.IsTrue(initEvent);
             Assert.IsTrue(enabledEvent);
 
             Assert.IsTrue(entity.IsSpawned);
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
 
             Assert.IsTrue(behaviourStub.Spawned);
             Assert.IsTrue(behaviourStub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), behaviourStub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), behaviourStub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), behaviourStub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), behaviourStub.InvocationList[1]);
         }
 
         #endregion
@@ -843,17 +843,17 @@ namespace Atomic.Entities
             var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnDeactivated += () => wasEvent = true;
+            entity.OnDisabled += () => wasEvent = true;
 
             //Act
             entity.Spawn();
-            entity.Activate();
-            entity.Deactivate();
+            entity.Enable();
+            entity.Disable();
 
             //Assert
             Assert.IsTrue(behaviourStub.Deactivated);
             Assert.IsTrue(wasEvent);
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
@@ -861,23 +861,23 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
-            entity.Deactivate();
+            entity.Disable();
 
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
         public void Disable_InvokesIEntityDisable()
         {
-            var stub = new EntityDeactivateStub();
+            var stub = new EntityDisableStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Spawn();
-            entity.Activate();
-            entity.Deactivate();
+            entity.Enable();
+            entity.Disable();
 
             Assert.IsTrue(stub.WasDisable);
         }
@@ -887,12 +887,12 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             bool called = false;
-            entity.OnDeactivated += () => called = true;
+            entity.OnDisabled += () => called = true;
 
-            entity.Deactivate();
+            entity.Disable();
 
             Assert.IsTrue(called);
         }
@@ -902,12 +902,12 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             bool stateChanged = false;
             entity.OnStateChanged += () => stateChanged = true;
 
-            entity.Deactivate();
+            entity.Disable();
 
             Assert.IsTrue(stateChanged);
         }
@@ -919,9 +919,9 @@ namespace Atomic.Entities
             entity.Spawn();
 
             bool wasCalled = false;
-            entity.OnDeactivated += () => wasCalled = true;
+            entity.OnDisabled += () => wasCalled = true;
 
-            entity.Deactivate(); // entity.Enabled == false
+            entity.Disable(); // entity.Enabled == false
 
             Assert.IsFalse(wasCalled);
         }
@@ -931,13 +931,13 @@ namespace Atomic.Entities
         {
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.Spawn();
-            entity.Activate();
-            entity.Deactivate();
+            entity.Enable();
+            entity.Disable();
 
             bool called = false;
-            entity.OnDeactivated += () => called = true;
+            entity.OnDisabled += () => called = true;
 
-            entity.Deactivate(); // второй вызов
+            entity.Disable(); // второй вызов
 
             Assert.IsFalse(called); // событие не должно вызываться второй раз
         }
@@ -958,7 +958,7 @@ namespace Atomic.Entities
             entity.OnUpdated += _ => wasUpdate = true;
 
             //Act
-            entity.Activate();
+            entity.Enable();
             entity.OnUpdate(deltaTime: 0);
 
             //Assert
@@ -987,7 +987,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(stub);
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.OnUpdate(0.25f);
 
             Assert.IsTrue(stub.WasUpdated);
@@ -1003,7 +1003,7 @@ namespace Atomic.Entities
             entity.OnUpdated += dt => calledDelta = dt;
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.OnUpdate(0.75f);
 
             Assert.AreEqual(0.75f, calledDelta);
@@ -1019,7 +1019,7 @@ namespace Atomic.Entities
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.OnUpdate(0.1f);
 
@@ -1052,7 +1052,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(stub);
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.OnFixedUpdate(0.02f);
 
@@ -1069,7 +1069,7 @@ namespace Atomic.Entities
             entity.OnFixedUpdated += dt => delta = dt;
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.OnFixedUpdate(0.05f);
 
@@ -1086,7 +1086,7 @@ namespace Atomic.Entities
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.OnFixedUpdate(0.03f);
 
@@ -1106,7 +1106,7 @@ namespace Atomic.Entities
             entity.OnFixedUpdated += _ => wasUpdate = true;
 
             //Act
-            entity.Activate();
+            entity.Enable();
             entity.OnFixedUpdate(deltaTime: 0);
 
             //Assert
@@ -1140,7 +1140,7 @@ namespace Atomic.Entities
             entity.AddBehaviour(stub);
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
 
             entity.OnLateUpdate(0.04f);
 
@@ -1157,7 +1157,7 @@ namespace Atomic.Entities
             entity.OnLateUpdated += dt => calledDelta = dt;
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.OnLateUpdate(0.06f);
 
             Assert.AreEqual(0.06f, calledDelta);
@@ -1173,7 +1173,7 @@ namespace Atomic.Entities
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Spawn();
-            entity.Activate();
+            entity.Enable();
             entity.OnLateUpdate(0.07f);
 
             Assert.IsTrue(stub1.WasCalled);
@@ -1193,7 +1193,7 @@ namespace Atomic.Entities
             entity.OnLateUpdated += _ => wasUpdate = true;
 
             //Act
-            entity.Activate();
+            entity.Enable();
             entity.OnLateUpdate(deltaTime: 0);
 
             //Assert

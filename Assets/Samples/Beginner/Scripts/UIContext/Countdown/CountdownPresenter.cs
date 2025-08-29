@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public class CountdownPresenter : IEntitySpawn<IUIContext>, IEntityDespawn
+    public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
     {
         private ICooldown _countdown;
         private CountdownView _view;
         
-        public void OnSpawn(IUIContext context)
+        public void Init(IUIContext context)
         {
             _countdown = GameContext.Instance.GetGameCountdown();
             _countdown.OnTimeChanged += this.OnTimeChanged;
             _view = context.GetGameCountdownView();
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _countdown.OnTimeChanged -= this.OnTimeChanged;
         }

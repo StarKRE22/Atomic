@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class WeaponRecoilViewBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn<IGameEntity>
+    public sealed class WeaponRecoilViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose<IGameEntity>
     {
         private readonly Transform _weapon;
         private readonly Vector3 _originalLocalPos;
@@ -15,12 +15,12 @@ namespace RTSGame
             _originalLocalPos = weapon.localPosition;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             entity.GetFireEvent().Subscribe(this.OnFire);
         }
 
-        public void OnDespawn(IGameEntity entity)
+        public void Dispose(IGameEntity entity)
         {
             entity.GetFireEvent().Unsubscribe(this.OnFire);
         }

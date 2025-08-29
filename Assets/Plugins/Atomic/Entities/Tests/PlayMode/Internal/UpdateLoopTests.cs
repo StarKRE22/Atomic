@@ -12,7 +12,7 @@ namespace Atomic.Entities
         public IEnumerator Should_Invoke_OnUpdate()
         {
             // Arrange
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             UpdateLoop.Instance.Add(updatable);
 
             // Act
@@ -26,7 +26,7 @@ namespace Atomic.Entities
         public IEnumerator Should_Invoke_OnFixedUpdate()
         {
             // Arrange
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             UpdateLoop.Instance.Add(updatable);
 
             // Act
@@ -41,7 +41,7 @@ namespace Atomic.Entities
         public IEnumerator Should_Invoke_OnLateUpdate()
         {
             // Arrange
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             UpdateLoop.Instance.Add(updatable);
 
             // Act
@@ -55,7 +55,7 @@ namespace Atomic.Entities
         public IEnumerator Should_StopCallingAfterRemove()
         {
             // Arrange
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             UpdateLoop.Instance.Add(updatable);
 
             yield return new WaitForSeconds(0.1f);
@@ -93,7 +93,7 @@ namespace Atomic.Entities
         public IEnumerator ShouldNotAddDuplicate()
         {
             // Arrange
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             var manager = UpdateLoop.Instance;
 
             // Act
@@ -108,7 +108,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator ShouldStopCallingUpdate_AfterDel()
         {
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             var manager = UpdateLoop.Instance;
 
             manager.Add(updatable);
@@ -128,7 +128,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator ShouldCallAllThreeUpdates()
         {
-            var updatable = new UpdatableDummy();
+            var updatable = new UpdateSourceDummy();
             var manager = UpdateLoop.Instance;
             manager.Add(updatable);
 

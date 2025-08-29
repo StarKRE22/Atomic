@@ -10,7 +10,7 @@ namespace BeginnerGame
             context.GetWinnerTeam().Value = GetWinnerTeam(context);
             context.GetGameOverEvent().Invoke();
             
-            context.Deactivate();
+            context.Disable();
             Debug.Log("Game Over!");
         }
 

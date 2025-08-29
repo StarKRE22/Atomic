@@ -23,7 +23,7 @@ namespace ShooterGame.Gameplay
             GameContext gameContext = GameContext.Instance;
             gameContext.GetLeaderboard().Add(_teamType, 0);
             gameContext.GetPlayers().Add(_teamType, context);
-            gameContext.WhenDeactivate(context.Deactivate);
+            gameContext.WhenDisable(context.Disable);
 
             context.AddTeamType(_teamType);
             context.AddInputMap(_inputMap);

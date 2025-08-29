@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class RotationBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private IVariable<Quaternion> _rotation;
         private IValue<float> _rotationSpeed;
         private IValue<Vector3> _rotationDirection;
         private IFunction<bool> _rotationCondition;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _rotation = entity.GetRotation();
             _rotationSpeed = entity.GetRotationSpeed();
@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             _rotationCondition = entity.GetRotationCondition();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             if (!_rotationCondition.Invoke())
                 return;

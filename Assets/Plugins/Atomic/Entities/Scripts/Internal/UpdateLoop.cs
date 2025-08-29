@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Internal MonoBehaviour singleton that manages and dispatches Unity update callbacks
     /// (<see cref="Update"/>, <see cref="FixedUpdate"/>, <see cref="LateUpdate"/>)
-    /// to all registered <see cref="IUpdatable"/> instances.
+    /// to all registered <see cref="IUpdateSource"/> instances.
     /// </summary>
     /// <remarks>
     /// The UpdateManager is instantiated automatically and hidden from the hierarchy. 
@@ -19,12 +19,12 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     internal sealed class UpdateLoop : MonoBehaviour
     {
-        private static readonly IEqualityComparer<IUpdatable> s_comparer = EqualityComparer<IUpdatable>.Default;
+        private static readonly IEqualityComparer<IUpdateSource> s_comparer = EqualityComparer<IUpdateSource>.Default;
 
         private static UpdateLoop _instance;
         private static bool _spawned;
 
-        internal IUpdatable[] _updatables;
+        internal IUpdateSource[] _updatables;
         private int _count;
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Registers an IUpdatable instance for update callbacks.
         /// </summary>
-        /// <param name="updatable">The instance to register.</param>
-        internal void Add(IUpdatable updatable)
+        /// <param name="updateSource">The instance to register.</param>
+        internal void Add(IUpdateSource updateSource)
         {
-            if (updatable == null)
+            if (updateSource == null)
                 return;
 
 #if UNITY_EDITOR
@@ -59,28 +59,28 @@ namespace Atomic.Entities
                 return;
 #endif
             UpdateLoop instance = Instance;
-            AddIfAbsent(ref instance._updatables, ref instance._count, updatable, s_comparer);
+            AddIfAbsent(ref instance._updatables, ref instance._count, updateSource, s_comparer);
         }
 
         /// <summary>
         /// Unregisters a previously registered IUpdatable instance.
         /// </summary>
-        /// <param name="updatable">The instance to unregister.</param>
-        internal void Del(IUpdatable updatable)
+        /// <param name="updateSource">The instance to unregister.</param>
+        internal void Del(IUpdateSource updateSource)
         {
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
                 return;
 #endif
             UpdateLoop instance = Instance;
-            Remove(ref instance._updatables, ref instance._count, updatable, s_comparer);
+            Remove(ref instance._updatables, ref instance._count, updateSource, s_comparer);
         }
 
-        internal bool Contains(IUpdatable updatable) => 
-            EntityUtils.Contains(Instance._updatables, updatable, _count, s_comparer);
+        internal bool Contains(IUpdateSource updateSource) => 
+            EntityUtils.Contains(Instance._updatables, updateSource, _count, s_comparer);
 
         /// <summary>
-        /// Invokes <see cref="IUpdatable.OnUpdate"/> on all registered instances.
+        /// Invokes <see cref="IUpdateSource.OnUpdate"/> on all registered instances.
         /// </summary>
         private void Update()
         {
@@ -90,7 +90,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes <see cref="IUpdatable.OnFixedUpdate"/> on all registered instances.
+        /// Invokes <see cref="IUpdateSource.OnFixedUpdate"/> on all registered instances.
         /// </summary>
         private void FixedUpdate()
         {
@@ -100,7 +100,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes <see cref="IUpdatable.OnLateUpdate"/> on all registered instances.
+        /// Invokes <see cref="IUpdateSource.OnLateUpdate"/> on all registered instances.
         /// </summary>
         private void LateUpdate()
         {

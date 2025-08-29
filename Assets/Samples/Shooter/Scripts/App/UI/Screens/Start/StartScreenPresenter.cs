@@ -3,9 +3,9 @@ using Atomic.Entities;
 namespace ShooterGame.App
 {
     public sealed class StartScreenPresenter :
-        IEntitySpawn<IMenuUIContext>,
-        IEntityActivate,
-        IEntityDeactivate
+        IEntityInit<IMenuUIContext>,
+        IEntityEnable,
+        IEntityDisable
     {
         private readonly StartScreenView _screenView;
         
@@ -17,20 +17,20 @@ namespace ShooterGame.App
             _screenView = screenView;
         }
 
-        public void OnSpawn(IMenuUIContext context)
+        public void Init(IMenuUIContext context)
         {
             _uIContext = context;
             _appContext = AppContext.Instance;
         }   
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _screenView.OnSelectLevelClicked += this.OnSelectLevelClicked;
             _screenView.OnStartClicked += this.OnStartClicked;
             _screenView.OnExitClicked += ExitAppUseCase.Exit;
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void Disable(IEntity entity)
         {
             _screenView.OnStartClicked -= this.OnStartClicked;
             _screenView.OnSelectLevelClicked -= this.OnSelectLevelClicked;

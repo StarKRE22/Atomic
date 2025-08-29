@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public class UpdatableDummy : IUpdatable
+    public class UpdateSourceDummy : IUpdateSource
     {
         public event Action<float> OnUpdated;
         public event Action<float> OnFixedUpdated;

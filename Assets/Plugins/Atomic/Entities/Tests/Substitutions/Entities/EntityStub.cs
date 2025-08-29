@@ -19,16 +19,16 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
-        public event Action OnActivated;
-        public event Action OnDeactivated;
-        public bool IsActive { get; }
+        public event Action OnEnabled;
+        public event Action OnDisabled;
+        public bool Enabled { get; }
 
-        public void Activate()
+        public void Enable()
         {
             throw new NotImplementedException();
         }
 
-        public void Deactivate()
+        public void Disable()
         {
             throw new NotImplementedException();
         }

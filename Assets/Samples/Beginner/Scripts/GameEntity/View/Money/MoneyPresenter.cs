@@ -4,12 +4,12 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class MoneyPresenter : IEntitySpawn<IGameEntity>, IEntityActivate, IEntityDespawn
+    public sealed class MoneyPresenter : IEntityInit<IGameEntity>, IEntityEnable, IEntityDispose
     {
         private MoneyView _view;
         private IReactiveValue<int> _money;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _view = entity.GetMoneyView();
             
@@ -18,12 +18,12 @@ namespace BeginnerGame
             _money.Subscribe(this.OnMoneyChanged);
         }
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _view.SetMoney($"Money: {_money.Value}");
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _money.Unsubscribe(this.OnMoneyChanged);
         }

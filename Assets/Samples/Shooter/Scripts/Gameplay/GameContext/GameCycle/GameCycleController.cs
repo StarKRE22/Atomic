@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameCycleController : IEntitySpawn<IGameContext>, IEntityUpdate
+    public sealed class GameCycleController : IEntityInit<IGameContext>, IEntityUpdate
     {
         private IVariable<float> _gameTime;
         private IEvent _gameOverEvent;
 
-        public void OnSpawn(IGameContext context)
+        public void Init(IGameContext context)
         {
             _gameTime = context.GetGameTime();
             _gameOverEvent = context.GetGameOverEvent();
             Debug.Log("<color=yellow>Game Started!</color>");
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Update(IEntity entity, float deltaTime)
         {
             if (_gameTime.Value <= 0)
                 return;

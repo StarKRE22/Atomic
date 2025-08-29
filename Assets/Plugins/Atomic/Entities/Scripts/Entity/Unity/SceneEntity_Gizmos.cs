@@ -53,7 +53,7 @@ namespace Atomic.Entities
         {
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityGizmos gizmos)
-                    gizmos.OnGizmosDraw(this);
+                    gizmos.DrawGizmos(this);
         }
     }
 }

@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class DetectTargetBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class DetectTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private readonly IGameContext _gameContext;
         private readonly IEntityWorld<IGameEntity> _entityWorld;
@@ -19,13 +19,13 @@ namespace RTSGame
             _entityWorld = context.GetEntityWorld();
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _entity = entity;
             _target = entity.GetTarget();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             _cooldown.Tick(deltaTime);
             

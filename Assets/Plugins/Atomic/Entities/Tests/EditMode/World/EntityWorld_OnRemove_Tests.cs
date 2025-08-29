@@ -41,7 +41,7 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Activate(); // Spawn + Activate
+            world.Enable(); // Spawn + Activate
 
             // Act
             world.Remove(entity);

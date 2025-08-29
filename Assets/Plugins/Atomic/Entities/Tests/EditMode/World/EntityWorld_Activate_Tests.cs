@@ -13,16 +13,16 @@ namespace Atomic.Entities
 
             // Assert preconditions
             Assert.IsFalse(world.IsSpawned);
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
             Assert.IsFalse(entity.WasSpawned);
             Assert.IsFalse(entity.WasActivated);
 
             // Act
-            world.Activate();
+            world.Enable();
 
             // Assert
             Assert.IsTrue(world.IsSpawned);
-            Assert.IsTrue(world.IsActive);
+            Assert.IsTrue(world.Enabled);
             Assert.IsTrue(entity.WasSpawned);
             Assert.IsTrue(entity.WasActivated);
         }
@@ -35,12 +35,12 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>(entity);
 
             // Act
-            world.Activate(); // первая активация
+            world.Enable(); // первая активация
             var wasActivated = entity.WasActivated;
-            world.Activate(); // вторая — должна быть проигнорирована
+            world.Enable(); // вторая — должна быть проигнорирована
 
             // Assert
-            Assert.IsTrue(world.IsActive);
+            Assert.IsTrue(world.Enabled);
             Assert.IsTrue(wasActivated);
             // Нет повторной активации, логика в Activate() это предотвращает
         }
@@ -51,10 +51,10 @@ namespace Atomic.Entities
             // Arrange
             var world = new EntityWorld<Entity>();
             bool eventCalled = false;
-            world.OnActivated += () => eventCalled = true;
+            world.OnEnabled += () => eventCalled = true;
 
             // Act
-            world.Activate();
+            world.Enable();
 
             // Assert
             Assert.IsTrue(eventCalled);

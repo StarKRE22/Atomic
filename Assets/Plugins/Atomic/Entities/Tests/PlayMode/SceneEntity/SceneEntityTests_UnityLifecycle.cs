@@ -24,14 +24,14 @@ namespace Atomic.Entities
 
             //Assert:
             Assert.IsTrue(entity.IsSpawned);
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
 
             Assert.IsTrue(entity.HasBehaviour(stub));
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
 
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), stub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
 
             //Wait update:
             yield return null;
@@ -45,7 +45,7 @@ namespace Atomic.Entities
 
             //Finalize:
             SceneEntity.Destroy(entity);
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(entity.Enabled);
             Assert.IsTrue(stub.Deactivated);
 
             //Wait for OnDestroy
@@ -53,8 +53,8 @@ namespace Atomic.Entities
             Assert.IsFalse(entity.IsSpawned);
             Assert.IsTrue(stub.Despawned);
 
-            Assert.AreEqual(nameof(IEntityDeactivate.OnDeactivate), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
         }
 
         [UnityTest]
@@ -69,15 +69,15 @@ namespace Atomic.Entities
             //Wait unity callbacks
             yield return new WaitForEndOfFrame();
             Assert.IsTrue(entity.IsSpawned);
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
 
             entity.AddBehaviour(stub);
 
             Assert.IsTrue(entity.HasBehaviour(stub));
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), stub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
 
             //Wait update
             yield return null;
@@ -112,8 +112,8 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
             
-            Assert.AreEqual(nameof(IEntitySpawn.OnSpawn), stub.InvocationList[0]);
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), stub.InvocationList[1]);
+            Assert.AreEqual(nameof(IEntityInit.Init), stub.InvocationList[0]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[1]);
 
             yield return new WaitForFixedUpdate();
             Assert.IsTrue(stub.FixedUpdated);
@@ -127,8 +127,8 @@ namespace Atomic.Entities
             Assert.IsTrue(stub.Deactivated);
             Assert.IsTrue(stub.Despawned);
 
-            Assert.AreEqual(nameof(IEntityDeactivate.OnDeactivate), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
         }
     }
 }

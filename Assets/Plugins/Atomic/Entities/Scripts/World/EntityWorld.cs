@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-#if UNITY_5_3_OR_NEWER
-using UnityEngine;
-#endif
-
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
@@ -52,16 +48,10 @@ namespace Atomic.Entities
     public class EntityWorld<E> : EntityCollection<E>, IEntityWorld<E> where E : IEntity
     {
         /// <inheritdoc/>
-        public event Action OnSpawned;
+        public event Action OnEnabled;
 
         /// <inheritdoc/>
-        public event Action OnDespawned;
-
-        /// <inheritdoc/>
-        public event Action OnActivated;
-
-        /// <inheritdoc/>
-        public event Action OnDeactivated;
+        public event Action OnDisabled;
 
         /// <inheritdoc/>
         public event Action<float> OnUpdated;
@@ -73,14 +63,6 @@ namespace Atomic.Entities
         public event Action<float> OnLateUpdated;
 
         /// <inheritdoc/>
-        public bool IsSpawned => _spawned;
-
-        /// <summary>
-        /// Indicates whether the loop is enabled.
-        /// </summary>
-        public bool IsActive => _active;
-
-        /// <inheritdoc/>
 #if ODIN_INSPECTOR
         [ShowInInspector]
 #endif
@@ -89,11 +71,13 @@ namespace Atomic.Entities
             get => _name;
             set => _name = value;
         }
-
-        private protected bool _spawned;
-        private protected bool _active;
+        /// <summary>
+        /// Indicates whether the world is enabled.
+        /// </summary>
+        public bool Enabled => _enabled;
 
         private string _name;
+        private bool _enabled;
 
         /// <summary>
         /// Initializes an empty <see cref="EntityWorld{E}"/> instance with no name.
@@ -133,144 +117,51 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void Spawn()
+        public void Enable()
         {
-            if (_spawned)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"{this.GetType().Name} is already spawned!");
-#endif
+            if (_enabled)
                 return;
-            }
 
-            this.ProcessSpawn();
-            _spawned = true;
-
-            this.NotifyAboutStateChanged();
-            this.OnSpawned?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessSpawn()
-        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Spawn();
+                slot.value.Enable();
                 currentIndex = slot.right;
             }
-        }
+            
+            _enabled = true;
 
+            this.NotifyAboutStateChanged();
+            this.OnEnabled?.Invoke();
+        }
+        
         /// <inheritdoc/>
-        public void Despawn()
+        public void Disable()
         {
-            if (_active)
-                this.Deactivate();
-
-            if (!_spawned)
+            if (!_enabled)
                 return;
 
-            this.ProcessDespawn();
-            _spawned = false;
-
-            this.NotifyAboutStateChanged();
-            this.OnDespawned?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessDespawn()
-        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Despawn();
+                slot.value.Disable();
                 currentIndex = slot.right;
             }
-        }
-
-        /// <inheritdoc/>
-        public void Activate()
-        {
-            if (!_spawned)
-                this.Spawn();
-
-            if (_active)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"{this.GetType().Name} is already enabled!");
-#endif
-                return;
-            }
-
-            this.ProcessActivate();
-            _active = true;
+            
+            _enabled = false;
 
             this.NotifyAboutStateChanged();
-            this.OnActivated?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessActivate()
-        {
-            int currentIndex = _head;
-            while (currentIndex != UNDEFINED_INDEX)
-            {
-                ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Activate();
-                currentIndex = slot.right;
-            }
-        }
-
-        /// <inheritdoc/>
-        public void Deactivate()
-        {
-            if (!_active)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"{this.GetType().Name} is already disabled!");
-#endif
-                return;
-            }
-
-            this.ProcessDeactivate();
-            _active = false;
-
-            this.NotifyAboutStateChanged();
-            this.OnDeactivated?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessDeactivate()
-        {
-            int currentIndex = _head;
-            while (currentIndex != UNDEFINED_INDEX)
-            {
-                ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.Deactivate();
-                currentIndex = slot.right;
-            }
+            this.OnDisabled?.Invoke();
         }
 
         /// <inheritdoc/>
         public void OnUpdate(float deltaTime)
         {
-            if (!_active)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"Update failed! {this.GetType().Name} is not enabled!");
-#endif
+            if (!_enabled)
                 return;
-            }
 
-            this.ProcessUpdate(deltaTime);
-            this.OnUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessUpdate(float deltaTime)
-        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -278,26 +169,16 @@ namespace Atomic.Entities
                 slot.value.OnUpdate(deltaTime);
                 currentIndex = slot.right;
             }
+            
+            this.OnUpdated?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
         public void OnFixedUpdate(float deltaTime)
         {
-            if (!_active)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"Fixed update failed! {this.GetType().Name} is not enabled!");
-#endif
+            if (!_enabled)
                 return;
-            }
 
-            this.ProcessFixedUpdate(deltaTime);
-            this.OnFixedUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessFixedUpdate(float deltaTime)
-        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -305,26 +186,16 @@ namespace Atomic.Entities
                 slot.value.OnFixedUpdate(deltaTime);
                 currentIndex = slot.right;
             }
+            
+            this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
         public void OnLateUpdate(float deltaTime)
         {
-            if (!_active)
-            {
-#if UNITY_5_3_OR_NEWER
-                Debug.LogWarning($"Late update failed! {this.GetType().Name} is not enabled!");
-#endif
+            if (!_enabled)
                 return;
-            }
 
-            this.ProcessLateUpdate(deltaTime);
-            this.OnLateUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessLateUpdate(float deltaTime)
-        {
             int currentIndex = _head;
             while (currentIndex != UNDEFINED_INDEX)
             {
@@ -332,45 +203,36 @@ namespace Atomic.Entities
                 slot.value.OnLateUpdate(deltaTime);
                 currentIndex = slot.right;
             }
+            
+            this.OnLateUpdated?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnAdd(E entity)
         {
-            if (_spawned) entity.Spawn();
-            if (_active) entity.Activate();
+            if (_enabled) entity.Enable();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnRemove(E entity)
         {
-            if (_active) entity.Deactivate();
-            if (_spawned) entity.Despawn();
+            if (_enabled) entity.Disable();
         }
 
-        /// <summary>
-        /// Disposes the world and its entities by despawning them and releasing all resources.
-        /// </summary>
         public override void Dispose()
         {
-            this.Despawn();
             base.Dispose();
-        }
-
-        /// <summary>
-        /// Unsubscribes all internal world-level event listeners and clears event handlers.
-        /// </summary>
-        public override void UnsubscribeAll()
-        {
-            base.UnsubscribeAll();
-
-            this.OnSpawned = null;
-            this.OnActivated = null;
-            this.OnDeactivated = null;
+            
+            //Unsubscribe events:
+            this.OnEnabled = null;
+            this.OnDisabled = null;
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;
-            this.OnDespawned = null;
         }
     }
 }
+
+
+
+

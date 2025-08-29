@@ -3,10 +3,10 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Represents an object that supports update callbacks during the Unity game loop,
+    /// Represents a contract that supports update callbacks during the loop,
     /// including regular, fixed, and late update phases.
     /// </summary>
-    public interface IUpdatable
+    public interface IUpdateSource
     {
         /// <summary>
         /// Occurs during the regular Update phase, once per frame.

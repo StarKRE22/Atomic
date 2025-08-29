@@ -26,14 +26,14 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Activate(); // Spawn + Activate
+            world.Enable(); // Spawn + Activate
 
             // Act
             world.Dispose();
 
             // Assert
             Assert.IsTrue(entity.WasDespawned);
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
             Assert.IsFalse(world.IsSpawned);
         }
 
@@ -56,7 +56,7 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Activate();
+            world.Enable();
 
             // Act
             world.Dispose();
@@ -75,7 +75,7 @@ namespace Atomic.Entities
             bool updatedCalled = false;
             world.OnUpdated += _ => updatedCalled = true;
 
-            world.Activate();
+            world.Enable();
             world.Dispose();
 
             // Act
@@ -90,13 +90,13 @@ namespace Atomic.Entities
         {
             // Arrange
             var world = new EntityWorld<Entity>();
-            world.Activate();
+            world.Enable();
 
             // Act
             world.Dispose();
 
             // Assert
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
             Assert.IsFalse(world.IsSpawned);
         }
     }

@@ -24,9 +24,9 @@ namespace Atomic.Entities
             //Wait Awake, Start
             yield return null;
             Assert.IsTrue(world.IsSpawned);
-            Assert.IsTrue(world.IsActive);
+            Assert.IsTrue(world.Enabled);
             Assert.IsTrue(entity.IsSpawned);
-            Assert.IsTrue(entity.IsActive);
+            Assert.IsTrue(entity.Enabled);
             Assert.IsTrue(stub.Spawned);
             Assert.IsTrue(stub.Activated);
 
@@ -40,8 +40,8 @@ namespace Atomic.Entities
 
             //Disable world
             world.enabled = false;
-            Assert.IsFalse(world.IsActive);
-            Assert.IsFalse(entity.IsActive);
+            Assert.IsFalse(world.Enabled);
+            Assert.IsFalse(entity.Enabled);
             Assert.IsTrue(stub.Deactivated);
 
             //Destroy world
@@ -84,7 +84,7 @@ namespace Atomic.Entities
             //Act:
             world.enabled = true;
             
-            Assert.AreEqual(nameof(IEntityActivate.OnActivate), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityEnable.Enable), stub.InvocationList[^1]);
         }
         
         [UnityTest]
@@ -116,8 +116,8 @@ namespace Atomic.Entities
             Assert.IsTrue(success);
             Assert.IsTrue(stub.Deactivated);
             Assert.IsTrue(stub.Despawned);
-            Assert.AreEqual(nameof(IEntityDeactivate.OnDeactivate), stub.InvocationList[^2]);
-            Assert.AreEqual(nameof(IEntityDespawn.OnDespawn), stub.InvocationList[^1]);
+            Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
+            Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
         }
     }
 }

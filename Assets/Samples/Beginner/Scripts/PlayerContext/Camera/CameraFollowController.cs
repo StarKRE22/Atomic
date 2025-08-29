@@ -5,8 +5,8 @@ using UnityEngine;
 namespace BeginnerGame
 {
     public sealed class CameraFollowController :
-        IEntitySpawn<IPlayerContext>,
-        IEntityActivate,
+        IEntityInit<IPlayerContext>,
+        IEntityEnable,
         IEntityLateUpdate
     {
         private readonly Vector3 _cameraOffset;
@@ -18,15 +18,15 @@ namespace BeginnerGame
             _cameraOffset = cameraOffset;
         }
 
-        public void OnSpawn(IPlayerContext entity)
+        public void Init(IPlayerContext entity)
         {
             _camera = entity.GetCamera().transform;
             _character = entity.GetCharacter();
         }
 
-        public void OnActivate(IEntity entity) => this.UpdatePosition();
+        public void Enable(IEntity entity) => this.UpdatePosition();
 
-        public void OnLateUpdate(IEntity entity, float deltaTime) => this.UpdatePosition();
+        public void LateUpdate(IEntity entity, float deltaTime) => this.UpdatePosition();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void UpdatePosition()

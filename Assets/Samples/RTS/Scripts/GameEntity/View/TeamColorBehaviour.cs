@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class TeamColorBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class TeamColorBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private readonly IGameContext _gameContext;
         private readonly IEnumerable<Renderer> _renderers;
@@ -19,14 +19,14 @@ namespace RTSGame
             _gameContext = context;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _viewConfig = _gameContext.GetTeamViewConfig();
             _team = entity.GetTeam();
             _team.Observe(this.OnTeamChanged);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _team.Unsubscribe(this.OnTeamChanged);
         }

@@ -3,10 +3,10 @@ using Atomic.Entities;
 namespace ShooterGame.App
 {
     public sealed class LevelScreenPresenter : 
-        IEntitySpawn<IMenuUIContext>, 
-        IEntityDespawn,
-        IEntityActivate,
-        IEntityDeactivate
+        IEntityInit<IMenuUIContext>, 
+        IEntityDispose,
+        IEntityEnable,
+        IEntityDisable
     {
         private readonly LevelScreenView _screenView;
         private IMenuUIContext _uiContext;
@@ -17,19 +17,19 @@ namespace ShooterGame.App
             _screenView = screenView;
         }
 
-        public void OnSpawn(IMenuUIContext context)
+        public void Init(IMenuUIContext context)
         {
             _appContext = AppContext.Instance;
             _uiContext = context;
             this.SpawnLevelItems();
         }
         
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _screenView.OnCloseClicked += this.OnCloseClicked;
         }
 
-        public void OnDeactivate(IEntity entity)
+        public void Disable(IEntity entity)
         {
             _screenView.OnCloseClicked -= this.OnCloseClicked;
         }
@@ -46,7 +46,7 @@ namespace ShooterGame.App
             }
         }
         
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _uiContext.DelBehaviours<LevelItemPresenter>();
             _screenView.ClearAllItems();

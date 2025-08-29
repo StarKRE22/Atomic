@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class RotationViewBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class RotationViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private readonly Transform _transform;
         private IReactiveValue<Quaternion> _rotation;
@@ -19,13 +19,13 @@ namespace RTSGame
             _transform.rotation = rotation;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _rotation = entity.GetRotation();
             _rotation.Observe(this.OnRotationChanged);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _rotation.Unsubscribe(this.OnRotationChanged);
         }

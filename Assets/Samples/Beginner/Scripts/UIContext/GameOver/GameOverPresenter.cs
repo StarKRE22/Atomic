@@ -2,13 +2,13 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class GameOverPresenter : IEntitySpawn<IUIContext>, IEntityActivate, IEntityDespawn
+    public sealed class GameOverPresenter : IEntityInit<IUIContext>, IEntityEnable, IEntityDispose
     {
         private IUIContext _context;
         private TeamCatalog _catalog;
         private GameOverView _view;
 
-        public void OnSpawn(IUIContext context)
+        public void Init(IUIContext context)
         {
             _catalog = GameContext.Instance.GetTeamCatalog();
             _context = context;
@@ -21,12 +21,12 @@ namespace BeginnerGame
             _view.OnCloseClicked += this.OnCloseClicked;
         }
 
-        public void OnActivate(IEntity entity)
+        public void Enable(IEntity entity)
         {
             _view.Show();
         }
 
-        public void OnDespawn(IEntity context)
+        public void Dispose(IEntity context)
         {
             _view.OnRestartClicked -= RestartGameUseCase.RestartGame;
             _view.OnCloseClicked -= this.OnCloseClicked;

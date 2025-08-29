@@ -187,7 +187,7 @@ namespace Atomic.Entities
             {
                 for (int i = 0, count = _behaviourCount; i < count; i++)
                     if (_behaviours[i] is IEntityGizmos gizmos)
-                        gizmos.OnGizmosDraw(_entity);
+                        gizmos.DrawGizmos(_entity);
             }
             catch (Exception e)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class MoveAnimBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn, IEntityLateUpdate
+    public sealed class MoveAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose, IEntityLateUpdate
     {
         private static readonly int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
@@ -20,14 +20,14 @@ namespace ShooterGame.Gameplay
             _moveDuration = moveDuration;
         }
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _animator = entity.GetAnimator();
             _moveEvent = entity.GetMovementEvent();
             _moveEvent.Subscribe(this.OnMoved);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _moveEvent.Unsubscribe(this.OnMoved);
         }
@@ -38,7 +38,7 @@ namespace ShooterGame.Gameplay
             _moveTime = _moveDuration;
         }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateUpdate(IEntity entity, float deltaTime)
         {
             if (_moveTime <= 0)
                 return;

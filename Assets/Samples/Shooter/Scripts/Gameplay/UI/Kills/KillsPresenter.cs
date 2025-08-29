@@ -4,7 +4,7 @@ using TMPro;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class KillsPresenter : IEntitySpawn, IEntityDespawn
+    public sealed class KillsPresenter : IEntityInit, IEntityDispose
     {
         private readonly TMP_Text _text;
         private readonly TeamType _teamType;
@@ -28,14 +28,14 @@ namespace ShooterGame.Gameplay
             _text.text = $"Kills: {value}";
         }
 
-        public void OnSpawn(IEntity entity)
+        public void Init(IEntity entity)
         {
             _leaderboard = GameContext.Instance.GetLeaderboard();
             _leaderboard.OnItemChanged += this.OnLeaderboardChanged;
             this.UpdateText(_leaderboard[_teamType]);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _leaderboard.OnItemChanged -= this.OnLeaderboardChanged;
         }

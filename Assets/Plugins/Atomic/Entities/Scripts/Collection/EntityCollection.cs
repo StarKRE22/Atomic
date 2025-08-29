@@ -391,11 +391,8 @@ namespace Atomic.Entities
         public virtual void Dispose()
         {
             this.Clear();
-            this.UnsubscribeAll();
-        }
-
-        public virtual void UnsubscribeAll()
-        {
+        
+            //Unsubscribe events:
             this.OnAdded = null;
             this.OnRemoved = null;
             this.OnStateChanged = null;

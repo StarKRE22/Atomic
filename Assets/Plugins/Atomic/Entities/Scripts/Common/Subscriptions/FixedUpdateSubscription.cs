@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IUpdatable"/>'s <see cref="IUpdatable.OnFixedUpdated"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IUpdateSource"/>'s <see cref="IUpdateSource.OnFixedUpdated"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// Use this struct to manage scoped or temporary subscriptions to fixed update events,
@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// </remarks>
     public readonly struct FixedUpdateSubscription : IDisposable
     {
-        private readonly IUpdatable _source;
+        private readonly IUpdateSource _source;
         private readonly Action<float> _callback;
 
         /// <summary>
@@ -19,14 +19,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The updatable source object to subscribe to.</param>
         /// <param name="callback">The callback to invoke on each fixed update.</param>
-        internal FixedUpdateSubscription(IUpdatable source, Action<float> callback)
+        internal FixedUpdateSubscription(IUpdateSource source, Action<float> callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IUpdatable.OnFixedUpdated"/> event.
+        /// Unsubscribes the callback from the <see cref="IUpdateSource.OnFixedUpdated"/> event.
         /// </summary>
         public void Dispose()
         {

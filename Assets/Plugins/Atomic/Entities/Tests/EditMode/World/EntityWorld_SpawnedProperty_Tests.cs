@@ -33,7 +33,7 @@ namespace Atomic.Entities
         public void Spawned_IsTrue_AfterEnable()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate(); // Enable triggers Spawn if not already spawned
+            world.Enable(); // Enable triggers Spawn if not already spawned
             Assert.IsTrue(world.IsSpawned);
         }
 

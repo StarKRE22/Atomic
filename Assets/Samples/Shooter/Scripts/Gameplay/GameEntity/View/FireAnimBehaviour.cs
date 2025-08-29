@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class FireAnimBehaviour : IEntitySpawn<IGameEntity>, IEntityDespawn
+    public sealed class FireAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private static readonly int Fire = Animator.StringToHash(nameof(Fire));
 
         private ISignal _fireEvent;
         private Animator _animator;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _animator = entity.GetAnimator();
             _fireEvent = entity.GetFireEvent();
             _fireEvent.Subscribe(this.OnFire);
         }
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             _fireEvent.Unsubscribe(this.OnFire);
         }

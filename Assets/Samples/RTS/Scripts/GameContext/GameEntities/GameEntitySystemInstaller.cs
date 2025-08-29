@@ -19,13 +19,13 @@ namespace RTSGame
             EntityWorld<IGameEntity> entityWorld = new EntityWorld<IGameEntity>();
             context.AddEntityWorld(entityWorld);
             
-            context.WhenSpawn(entityWorld.Spawn);
-            context.WhenActivate(entityWorld.Activate);
+            context.WhenInit(entityWorld.InitEntities);
+            context.WhenEnable(entityWorld.Enable);
             context.WhenUpdate(entityWorld.OnUpdate);
             context.WhenFixedUpdate(entityWorld.OnFixedUpdate);
             context.WhenLateUpdate(entityWorld.OnLateUpdate);
-            context.WhenDeactivate(entityWorld.Deactivate);
-            context.WhenDespawn(entityWorld.Despawn);
+            context.WhenDisable(entityWorld.Disable);
+            context.WhenDispose(entityWorld.DisposeEntities);
         }
     }
 }

@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class AttackTargetBehaviour : IEntitySpawn<IGameEntity>, IEntityFixedUpdate
+    public sealed class AttackTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
     {
         private IGameEntity _entity;
         private IValue<IGameEntity> _target;
         private IValue<float> _scale;
 
-        public void OnSpawn(IGameEntity entity)
+        public void Init(IGameEntity entity)
         {
             _entity = entity;
             _scale = entity.GetScale();
             _target = entity.GetTarget();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedUpdate(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
-            if (target is not {IsActive: true} || !HealthUseCase.IsAlive(target))
+            if (target is not {Enabled: true} || !HealthUseCase.IsAlive(target))
                 return;
 
             Vector3 vector = TransformUseCase.GetVector(_entity, target);

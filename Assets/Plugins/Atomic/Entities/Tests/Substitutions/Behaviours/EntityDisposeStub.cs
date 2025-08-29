@@ -1,10 +1,10 @@
 namespace Atomic.Entities
 {
-    public sealed class EntityDespawnStub : IEntityDespawn
+    public sealed class EntityDisposeStub : IEntityDispose
     {
         public bool WasDespawn;
 
-        public void OnDespawn(IEntity entity)
+        public void Dispose(IEntity entity)
         {
             WasDespawn = true;
         }
