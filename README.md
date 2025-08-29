@@ -17,7 +17,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
 - [Manual References](#manual-references)
 - [Unity Quick Start](#unity-quick-start)
-- [CSharp Quick Start](#csharp-quick-start)
+- [C# Quick Start](#csharp-quick-start)
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -125,7 +125,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-## CSharp Quick Start
+## C# Quick Start
 
 1. **Create a character**
 ```csharp
