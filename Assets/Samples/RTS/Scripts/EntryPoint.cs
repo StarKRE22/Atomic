@@ -49,6 +49,7 @@ namespace RTSGame
         {
             _gameContext = _gameContextFactory.Create();
             this.SpawnUnits();
+            
             _gameContext.Init();
             _gameContext.Enable();
             this.BindEntityViews();
@@ -81,6 +82,8 @@ namespace RTSGame
         private void OnDestroy()
         {
             _viewBinder?.Dispose();
+            
+            _gameContext?.Disable();
             _gameContext?.Dispose();
         }
     }

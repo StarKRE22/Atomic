@@ -370,13 +370,13 @@ namespace Atomic.Entities
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = SceneEntity.Create();
-            entity.Spawn();
+            entity.Inii();
 
             //Act
             entity.AddBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsFalse(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsFalse(behaviourStub.Enabled);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Init), behaviourStub.InvocationList[0]);
         }
 
@@ -387,14 +387,14 @@ namespace Atomic.Entities
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = SceneEntity.Create();
-            entity.Spawn();
+            entity.Inii();
             entity.Enable();
 
             //Act
             entity.AddBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Init), behaviourStub.InvocationList[0]);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Enable), behaviourStub.InvocationList[1]);
         }
@@ -443,8 +443,8 @@ namespace Atomic.Entities
             //Act
             entity.DelBehaviour(behaviourStub);
 
-            Assert.IsFalse(behaviourStub.Deactivated);
-            Assert.IsFalse(behaviourStub.Despawned);
+            Assert.IsFalse(behaviourStub.Disabled);
+            Assert.IsFalse(behaviourStub.Disposed);
         }
 
         [Test]
@@ -455,14 +455,14 @@ namespace Atomic.Entities
 
             var entity = SceneEntity.Create();
             entity.AddBehaviour(behaviourStub);
-            entity.Spawn();
+            entity.Inii();
             entity.Enable();
 
             //Act
             entity.DelBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Deactivated);
-            Assert.IsTrue(behaviourStub.Despawned);
+            Assert.IsTrue(behaviourStub.Disabled);
+            Assert.IsTrue(behaviourStub.Disposed);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Disable), behaviourStub.InvocationList[^2]);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Dispose), behaviourStub.InvocationList[^1]);
         }

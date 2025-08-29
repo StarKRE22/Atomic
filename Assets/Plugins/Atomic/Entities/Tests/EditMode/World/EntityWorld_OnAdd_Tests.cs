@@ -15,8 +15,8 @@ namespace Atomic.Entities
             world.Add(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasSpawned);
-            Assert.IsFalse(entity.WasActivated);
+            Assert.IsFalse(entity.WasInitialized);
+            Assert.IsFalse(entity.WasEnabled);
         }
 
         [Test]
@@ -31,8 +31,8 @@ namespace Atomic.Entities
             world.Add(entity);
 
             // Assert
-            Assert.IsTrue(entity.WasSpawned);
-            Assert.IsFalse(entity.WasActivated);
+            Assert.IsTrue(entity.WasInitialized);
+            Assert.IsFalse(entity.WasEnabled);
         }
 
         [Test]
@@ -47,8 +47,8 @@ namespace Atomic.Entities
             world.Add(entity);
 
             // Assert
-            Assert.IsTrue(entity.WasSpawned);
-            Assert.IsTrue(entity.WasActivated);
+            Assert.IsTrue(entity.WasInitialized);
+            Assert.IsTrue(entity.WasEnabled);
         }
     }
 }

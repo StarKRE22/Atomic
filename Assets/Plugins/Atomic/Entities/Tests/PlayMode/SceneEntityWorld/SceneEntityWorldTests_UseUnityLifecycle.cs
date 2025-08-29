@@ -25,10 +25,10 @@ namespace Atomic.Entities
             yield return null;
             Assert.IsTrue(world.IsSpawned);
             Assert.IsTrue(world.Enabled);
-            Assert.IsTrue(entity.IsSpawned);
+            Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(entity.Enabled);
-            Assert.IsTrue(stub.Spawned);
-            Assert.IsTrue(stub.Activated);
+            Assert.IsTrue(stub.Initialized);
+            Assert.IsTrue(stub.Enabled);
 
             //Wait for update
             yield return new WaitForEndOfFrame();
@@ -42,18 +42,18 @@ namespace Atomic.Entities
             world.enabled = false;
             Assert.IsFalse(world.Enabled);
             Assert.IsFalse(entity.Enabled);
-            Assert.IsTrue(stub.Deactivated);
+            Assert.IsTrue(stub.Disabled);
 
             //Destroy world
-            Assert.IsTrue(stub.Activated);
+            Assert.IsTrue(stub.Enabled);
             SceneEntityWorld.Destroy(world);
 
             //Wait OnDestroy
             yield return null;
 
             Assert.IsFalse(world.IsSpawned);
-            Assert.IsFalse(entity.IsSpawned);
-            Assert.IsTrue(stub.Despawned);
+            Assert.IsFalse(entity.Initialized);
+            Assert.IsTrue(stub.Disposed);
         }
         
         [UnityTest]
@@ -72,14 +72,14 @@ namespace Atomic.Entities
             
             yield return new WaitForSeconds(0.1f);
 
-            Assert.IsTrue(stub.Spawned);
-            Assert.IsTrue(stub.Activated);
+            Assert.IsTrue(stub.Initialized);
+            Assert.IsTrue(stub.Enabled);
             Assert.IsTrue(stub.Updated);
             
             //Act:
             world.enabled = false;
 
-            Assert.IsTrue(stub.Deactivated);
+            Assert.IsTrue(stub.Disabled);
 
             //Act:
             world.enabled = true;
@@ -105,8 +105,8 @@ namespace Atomic.Entities
             yield return new WaitForSeconds(0.1f);
             
             //Pre-Assert:
-            Assert.IsTrue(stub.Spawned);
-            Assert.IsTrue(stub.Activated);
+            Assert.IsTrue(stub.Initialized);
+            Assert.IsTrue(stub.Enabled);
             Assert.IsTrue(stub.Updated);
             
             //Act:
@@ -114,8 +114,8 @@ namespace Atomic.Entities
             
             //Assert:
             Assert.IsTrue(success);
-            Assert.IsTrue(stub.Deactivated);
-            Assert.IsTrue(stub.Despawned);
+            Assert.IsTrue(stub.Disabled);
+            Assert.IsTrue(stub.Disposed);
             Assert.AreEqual(nameof(IEntityDisable.Disable), stub.InvocationList[^2]);
             Assert.AreEqual(nameof(IEntityDispose.Dispose), stub.InvocationList[^1]);
         }

@@ -641,7 +641,7 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private KeyNotFoundException ValueNotFoundException(int key) =>
-            new($"The given value {EntityNames.IdToName(key)} was not present in the entity: {this.name}");
+            new($"The given value {EntityNames.IdToName(key)} was not present in the entity: {this._name}");
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Exception ValueAlreadyAddedException(int key) =>

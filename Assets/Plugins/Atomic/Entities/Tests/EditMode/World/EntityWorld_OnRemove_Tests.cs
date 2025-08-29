@@ -15,8 +15,8 @@ namespace Atomic.Entities
             world.Remove(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasDeactivated);
-            Assert.IsFalse(entity.WasDespawned);
+            Assert.IsFalse(entity.WasDisabled);
+            Assert.IsFalse(entity.WasDisposed);
         }
 
         [Test]
@@ -31,8 +31,8 @@ namespace Atomic.Entities
             world.Remove(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasDeactivated);
-            Assert.IsTrue(entity.WasDespawned);
+            Assert.IsFalse(entity.WasDisabled);
+            Assert.IsTrue(entity.WasDisposed);
         }
 
         [Test]
@@ -47,8 +47,8 @@ namespace Atomic.Entities
             world.Remove(entity);
 
             // Assert
-            Assert.IsTrue(entity.WasDeactivated);
-            Assert.IsTrue(entity.WasDespawned);
+            Assert.IsTrue(entity.WasDisabled);
+            Assert.IsTrue(entity.WasDisposed);
         }
     }
 }

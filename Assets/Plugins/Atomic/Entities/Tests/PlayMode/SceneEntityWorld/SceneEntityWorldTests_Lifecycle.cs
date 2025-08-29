@@ -22,7 +22,7 @@ namespace Atomic.Entities
 
             //Assert:
             Assert.IsTrue(wasInit);
-            Assert.IsTrue(initBehaviour.Spawned);
+            Assert.IsTrue(initBehaviour.Initialized);
         }
 
         [Test]
@@ -42,8 +42,8 @@ namespace Atomic.Entities
 
             //Assert:
             Assert.IsTrue(wasEnable);
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
         }
 
         [Test]
@@ -53,16 +53,16 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
-            Assert.IsFalse(behaviourStub.Spawned);
-            Assert.IsFalse(behaviourStub.Activated);
+            Assert.IsFalse(behaviourStub.Initialized);
+            Assert.IsFalse(behaviourStub.Enabled);
             
             var world = SceneEntityWorld.Create("Test", scanEntities: false, useUnityLifecycle: false);
             world.Add(entity);
             world.Enable();
             var wasUpdate = false;
             
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
 
             //Act:
             entity.OnUpdated += _ => wasUpdate = true;
@@ -84,8 +84,8 @@ namespace Atomic.Entities
             world.Enable();
             var wasUpdate = false;
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
             
             //Act:
             entity.OnFixedUpdated += _ => wasUpdate = true;
@@ -107,8 +107,8 @@ namespace Atomic.Entities
             world.Enable();
             var wasUpdate = false;
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
 
             //Act:
             entity.OnLateUpdated += _ => wasUpdate = true;
@@ -131,8 +131,8 @@ namespace Atomic.Entities
             var wasDisable = false;
 
             //Pre-assert:
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
             
             //Act:
             entity.OnDisabled += () => wasDisable = true;
@@ -154,8 +154,8 @@ namespace Atomic.Entities
             world.Enable();
             var wasDispose = false;
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
             
             //Act:
             entity.OnDespawned += () => wasDispose = true;

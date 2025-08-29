@@ -72,7 +72,7 @@ namespace Atomic.Entities
 
             //Assert:
             Assert.IsTrue(wasSpawn);
-            Assert.IsTrue(initBehaviour.Spawned);
+            Assert.IsTrue(initBehaviour.Initialized);
         }
     }
 }

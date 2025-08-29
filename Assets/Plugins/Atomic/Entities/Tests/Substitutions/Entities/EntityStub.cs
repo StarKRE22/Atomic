@@ -252,5 +252,18 @@ namespace Atomic.Entities
         {
             throw new NotImplementedException();
         }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public event Action OnInitialized;
+        public event Action OnDisposed;
+        public bool Initialized { get; }
+        public void Init()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

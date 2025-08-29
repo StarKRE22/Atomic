@@ -70,17 +70,5 @@ namespace Atomic.Entities
 
             Assert.AreEqual(1, _callbackCount);
         }
-
-        [Test]
-        public void OnRemoved_UnsubscribeAll()
-        {
-            _collection.Add(_entity1);
-            _collection.OnRemoved += _ => _callbackCount++;
-
-            _collection.UnsubscribeAll();
-            _collection.Remove(_entity1);
-
-            Assert.AreEqual(0, _callbackCount);
-        }
     }
 }

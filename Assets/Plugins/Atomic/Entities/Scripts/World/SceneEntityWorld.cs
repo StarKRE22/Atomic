@@ -129,10 +129,8 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle)
             {
-                this.Spawn();
                 this.Enable();
                 UpdateLoop.Instance.Add(this);
-
                 this.isStarted = true;
             }
         }
@@ -148,13 +146,8 @@ namespace Atomic.Entities
 
         private void OnDestroy()
         {
-            if (this.useUnityLifecycle && this.isStarted)
-            {
-                this.Despawn();
-                this.isStarted = false;
-            }
-
-            this.Dispose();
+            if (this.useUnityLifecycle) 
+                this.Dispose();
         }
 
         /// <inheritdoc />
@@ -233,21 +226,7 @@ namespace Atomic.Entities
         #endregion
 
         #region Lifecycle
-
-        /// <inheritdoc />
-        public event Action OnSpawned
-        {
-            add => _world.OnSpawned += value;
-            remove => _world.OnSpawned -= value;
-        }
-
-        /// <inheritdoc />
-        public event Action OnDespawned
-        {
-            add => _world.OnDespawned += value;
-            remove => _world.OnDespawned -= value;
-        }
-
+        
         /// <inheritdoc />
         public event Action OnEnabled
         {
@@ -284,18 +263,11 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public bool IsSpawned => _world.IsSpawned;
-
-        /// <inheritdoc />
-        public bool Enabled => _world.Enabled;
-
-        /// <inheritdoc />
 #if ODIN_INSPECTOR
-        [Title("Lifecycle")]
-        [Button, HideInEditorMode]
+        [ShowInInspector, ReadOnly]
 #endif
-        public void Spawn() => _world.Spawn();
-
+        public bool Enabled => _world.Enabled;
+        
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
@@ -307,12 +279,6 @@ namespace Atomic.Entities
         [Button, HideInEditorMode]
 #endif
         public void Disable() => _world.Disable();
-
-        /// <inheritdoc />
-#if ODIN_INSPECTOR
-        [Button, HideInEditorMode]
-#endif
-        public void Despawn() => _world.Despawn();
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR

@@ -16,7 +16,7 @@ namespace Atomic.Entities
             world.Dispose();
 
             // Assert
-            Assert.IsTrue(entity.WasDespawned);
+            Assert.IsTrue(entity.WasDisposed);
             Assert.IsFalse(world.IsSpawned);
         }
 
@@ -32,7 +32,7 @@ namespace Atomic.Entities
             world.Dispose();
 
             // Assert
-            Assert.IsTrue(entity.WasDespawned);
+            Assert.IsTrue(entity.WasDisposed);
             Assert.IsFalse(world.Enabled);
             Assert.IsFalse(world.IsSpawned);
         }
@@ -63,8 +63,8 @@ namespace Atomic.Entities
             Assert.DoesNotThrow(() => world.Dispose());
 
             // Assert
-            Assert.IsTrue(entity.WasDespawned);
-            Assert.IsTrue(entity.WasDeactivated);
+            Assert.IsTrue(entity.WasDisposed);
+            Assert.IsTrue(entity.WasDisabled);
         }
 
         [Test]

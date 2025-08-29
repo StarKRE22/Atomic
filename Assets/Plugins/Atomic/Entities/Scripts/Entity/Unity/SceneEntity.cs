@@ -67,7 +67,7 @@ namespace Atomic.Entities
         private bool installInEditMode;
 
         [Space]
-        [Tooltip("Should dispose values when OnDestroy() called")]
+        [Tooltip("Should dispose values when Dispose() called")]
 #if ODIN_INSPECTOR
         [DisableInPlayMode]
 #endif
@@ -158,10 +158,9 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle)
             {
-                this.Spawn();
+                this.Init();
                 this.Enable();
                 UpdateLoop.Instance.Add(this);
-
                 _started = true;
             }
         }
@@ -179,16 +178,9 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && _started)
             {
-                this.Despawn();
+                this.Dispose();
                 _started = false;
             }
-
-            if (this.disposeValues)
-                this.DisposeValues();
-
-            this.UnsubscribeAll();
-
-            EntityRegistry.Instance.Unregister(ref _instanceId);
         }
 
         /// <summary>
@@ -249,22 +241,44 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
+        
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            this.Deinitialize();
+            this.OnDispose();
 
-        /// <summary>
-        /// Removes all subscriptions and callbacks associated with this entity.
-        /// </summary>
-        public void UnsubscribeAll()
+            this.ClearTags();
+            this.ClearValues();
+            this.ClearBehaviours();
+
+            this.OnStateChanged?.Invoke();
+            this.OnDisposed?.Invoke();
+
+            this.UnsubscribeEvents();
+            EntityRegistry.Instance.Unregister(ref _instanceId);
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void OnDispose()
+        {
+            if (this.disposeValues)
+                this.DisposeValues();
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void UnsubscribeEvents()
         {
             this.OnStateChanged = null;
 
-            this.OnSpawned = null;
+            this.OnInitialized = null;
+            this.OnDisposed = null;
             this.OnEnabled = null;
             this.OnDisabled = null;
 
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;
-            this.OnDespawned = null;
 
             this.OnBehaviourAdded = null;
             this.OnBehaviourDeleted = null;

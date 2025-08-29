@@ -11,10 +11,10 @@ namespace Atomic.Entities
         IEntityFixedUpdate,
         IEntityLateUpdate
     {
-        public bool Spawned;
-        public bool Activated;
-        public bool Deactivated;
-        public bool Despawned;
+        public bool Initialized;
+        public bool Enabled;
+        public bool Disabled;
+        public bool Disposed;
         public bool Updated;
         public bool FixedUpdated;
         public bool LateUpdated;
@@ -23,25 +23,25 @@ namespace Atomic.Entities
 
         public void Init(IEntity entity)
         {
-            this.Spawned = true;
+            this.Initialized = true;
             this.InvocationList.Add(nameof(Init));
         }
 
         public void Enable(IEntity entity)
         {
-            this.Activated = true;
+            this.Enabled = true;
             this.InvocationList.Add(nameof(Enable));
         }
 
         public void Disable(IEntity entity)
         {
-            this.Deactivated = true;
+            this.Disabled = true;
             this.InvocationList.Add(nameof(Disable));
         }
 
         public void Dispose(IEntity entity)
         {
-            this.Despawned = true;
+            this.Disposed = true;
             this.InvocationList.Add(nameof(Dispose));
         }
 

@@ -19,7 +19,7 @@ namespace Atomic.Entities
 
             // Assert
             Assert.IsFalse(world.Enabled);
-            Assert.IsTrue(entity.WasDeactivated);
+            Assert.IsTrue(entity.WasDisabled);
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace Atomic.Entities
 
             // Assert
             Assert.IsFalse(world.Enabled); // Still false
-            Assert.IsFalse(entity.WasDeactivated); // Не вызывался
+            Assert.IsFalse(entity.WasDisabled); // Не вызывался
         }
 
         [Test]

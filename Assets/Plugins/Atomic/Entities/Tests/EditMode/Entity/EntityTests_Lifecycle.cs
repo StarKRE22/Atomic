@@ -589,7 +589,7 @@ namespace Atomic.Entities
             //Assert
             Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(wasEvent);
-            Assert.IsTrue(behaviourStub.Spawned);
+            Assert.IsTrue(behaviourStub.Initialized);
         }
 
         #endregion
@@ -705,7 +705,7 @@ namespace Atomic.Entities
             entity.Despawn();
 
             //Assert
-            Assert.IsTrue(behaviourStub.Despawned);
+            Assert.IsTrue(behaviourStub.Disposed);
             Assert.IsTrue(wasEvent);
 
             Assert.IsFalse(entity.Enabled);
@@ -820,8 +820,8 @@ namespace Atomic.Entities
             Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(entity.Enabled);
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
 
             Assert.AreEqual(nameof(IEntityInit.Init), behaviourStub.InvocationList[0]);
             Assert.AreEqual(nameof(IEntityEnable.Enable), behaviourStub.InvocationList[1]);
@@ -848,7 +848,7 @@ namespace Atomic.Entities
             entity.Disable();
 
             //Assert
-            Assert.IsTrue(behaviourStub.Deactivated);
+            Assert.IsTrue(behaviourStub.Disabled);
             Assert.IsTrue(wasEvent);
             Assert.IsFalse(entity.Enabled);
         }

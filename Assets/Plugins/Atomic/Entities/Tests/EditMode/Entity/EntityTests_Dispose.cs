@@ -34,10 +34,10 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Dispose_CallsDespawn()
+        public void Dispose_CallsDeiniitalize()
         {
             var entity = new Entity("Test");
-            entity.Spawn(); // допустим, ты это вызываешь перед Dispose
+            entity.Init(); // допустим, ты это вызываешь перед Dispose
             Assert.IsTrue(entity.Initialized);
 
             entity.Dispose();

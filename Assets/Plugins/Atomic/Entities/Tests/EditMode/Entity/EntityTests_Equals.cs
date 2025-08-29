@@ -32,7 +32,7 @@ namespace Atomic.Entities
             var entity2 = new Entity("Test");
 
             // Симулируем: вручную присваиваем один и тот же ID (только если ты контролируешь EntityRegistry)
-            entity2.instanceId = entity1.InstanceID;
+            entity2._instanceId = entity1.InstanceID;
 
             Assert.IsTrue(entity1.Equals((object) entity2));
         }

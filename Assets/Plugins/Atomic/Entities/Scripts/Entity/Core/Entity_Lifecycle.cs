@@ -118,6 +118,9 @@ namespace Atomic.Entities
         /// </summary>
         public void Enable()
         {
+            if (!_initialized)
+                this.Init();
+            
             if (_enabled)
                 return;
 
@@ -188,37 +191,7 @@ namespace Atomic.Entities
             
             this.OnLateUpdated?.Invoke(deltaTime);
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void EnableBehaviour(IEntityBehaviour behaviour)
-        {
-            if (behaviour is IEntityEnable enable)
-                enable.Enable(this);
-
-            if (behaviour is IEntityUpdate update)
-                Add(ref _updates, ref _updateCount, update);
-
-            if (behaviour is IEntityFixedUpdate fixedUpdate)
-                Add(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate);
-
-            if (behaviour is IEntityLateUpdate lateUpdate)
-                Add(ref _lateUpdates, ref _lateUpdateCount, lateUpdate);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DisableBehaviour(IEntityBehaviour behaviour)
-        {
-            if (behaviour is IEntityDisable disable)
-                disable.Disable(this);
-
-            if (behaviour is IEntityUpdate update)
-                Remove(ref _updates, ref _updateCount, update, s_updateComparer);
-
-            if (behaviour is IEntityFixedUpdate fixedUpdate)
-                Remove(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
-
-            if (behaviour is IEntityLateUpdate lateUpdate)
-                Remove(ref _lateUpdates, ref _lateUpdateCount, lateUpdate, s_lateUpdateComparer);
-        }
+        
+        
     }
 }

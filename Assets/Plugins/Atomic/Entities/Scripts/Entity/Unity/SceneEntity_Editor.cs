@@ -128,7 +128,7 @@ namespace Atomic.Entities
         /// </summary>
         private void InitInEditMode()
         {
-            if (_spawned)
+            if (_initialized)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -144,7 +144,7 @@ namespace Atomic.Entities
         /// </summary>
         private void EnableInEditMode()
         {
-            if (_active)
+            if (_enabled)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -160,7 +160,7 @@ namespace Atomic.Entities
         /// </summary>
         private void DisableInEditMode()
         {
-            if (!_active)
+            if (!_enabled)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
@@ -176,7 +176,7 @@ namespace Atomic.Entities
         /// </summary>
         private void DisposeInEditMode()
         {
-            if (!_spawned)
+            if (!_initialized)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)

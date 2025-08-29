@@ -364,37 +364,37 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void AddBehaviour_AfterSpawn_BehaviourSpawned()
+        public void AddBehaviour_AfterInit_BehaviourInitialized()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             //Act
             entity.AddBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsFalse(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsFalse(behaviourStub.Enabled);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Init), behaviourStub.InvocationList[0]);
         }
 
         [Test]
-        public void AddBehaviour_AfterEnable_BehaviourSpawnedAndEnabled()
+        public void AddBehaviour_AfterEnable_BehaviourInitializedAndEnabled()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             //Act
             entity.AddBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Spawned);
-            Assert.IsTrue(behaviourStub.Activated);
+            Assert.IsTrue(behaviourStub.Initialized);
+            Assert.IsTrue(behaviourStub.Enabled);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Init), behaviourStub.InvocationList[0]);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Enable), behaviourStub.InvocationList[1]);
         }
@@ -433,7 +433,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void DelBehaviour_BeforeSpawn_NotDisabledAndDespawned()
+        public void DelBehaviour_BeforeInit_NotDisabledAndDespawned()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
@@ -443,8 +443,8 @@ namespace Atomic.Entities
             //Act
             entity.DelBehaviour(behaviourStub);
 
-            Assert.IsFalse(behaviourStub.Deactivated);
-            Assert.IsFalse(behaviourStub.Despawned);
+            Assert.IsFalse(behaviourStub.Disabled);
+            Assert.IsFalse(behaviourStub.Disposed);
         }
 
         [Test]
@@ -455,14 +455,14 @@ namespace Atomic.Entities
 
             var entity = new Entity();
             entity.AddBehaviour(behaviourStub);
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             //Act
             entity.DelBehaviour(behaviourStub);
 
-            Assert.IsTrue(behaviourStub.Deactivated);
-            Assert.IsTrue(behaviourStub.Despawned);
+            Assert.IsTrue(behaviourStub.Disabled);
+            Assert.IsTrue(behaviourStub.Disposed);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Disable), behaviourStub.InvocationList[^2]);
             Assert.AreEqual(nameof(DummyEntityBehaviour.Dispose), behaviourStub.InvocationList[^1]);
         }

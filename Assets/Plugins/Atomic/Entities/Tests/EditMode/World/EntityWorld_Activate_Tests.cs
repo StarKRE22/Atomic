@@ -14,8 +14,8 @@ namespace Atomic.Entities
             // Assert preconditions
             Assert.IsFalse(world.IsSpawned);
             Assert.IsFalse(world.Enabled);
-            Assert.IsFalse(entity.WasSpawned);
-            Assert.IsFalse(entity.WasActivated);
+            Assert.IsFalse(entity.WasInitialized);
+            Assert.IsFalse(entity.WasEnabled);
 
             // Act
             world.Enable();
@@ -23,8 +23,8 @@ namespace Atomic.Entities
             // Assert
             Assert.IsTrue(world.IsSpawned);
             Assert.IsTrue(world.Enabled);
-            Assert.IsTrue(entity.WasSpawned);
-            Assert.IsTrue(entity.WasActivated);
+            Assert.IsTrue(entity.WasInitialized);
+            Assert.IsTrue(entity.WasEnabled);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace Atomic.Entities
 
             // Act
             world.Enable(); // первая активация
-            var wasActivated = entity.WasActivated;
+            var wasActivated = entity.WasEnabled;
             world.Enable(); // вторая — должна быть проигнорирована
 
             // Assert
