@@ -23,15 +23,15 @@ namespace Atomic.Entities
         /// </summary>
         private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
             EqualityComparer<IEntityLateUpdate>.Default;
-        
+
         /// Called when the entity is initialized.
         /// </summary>
         public event Action OnInitialized;
-       
+
         /// Called when the entity is disposed.
         /// </summary>
         public event Action OnDisposed;
-        
+
         /// <summary>
         /// Called when the entity is enabled.
         /// </summary>
@@ -89,27 +89,26 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityInit behaviour)
                     behaviour.Init(this);
-            
+
             _initialized = true;
-            
+
             this.OnStateChanged?.Invoke();
             this.OnInitialized?.Invoke();
         }
-        
+
         /// <summary>
         /// Enables the entity and registers update behaviours.
         /// </summary>
         public void Enable()
         {
-            if (!_initialized)
-                this.Init();
-            
+            this.Init();
+
             if (_enabled)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
-            
+
             _enabled = true;
 
             this.OnEnabled?.Invoke();
@@ -126,7 +125,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.DisableBehaviour(_behaviours[i]);
-            
+
             _enabled = false;
 
             this.OnStateChanged?.Invoke();
@@ -143,7 +142,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _updateCount; i++)
                 _updates[i].Update(this, deltaTime);
-            
+
             this.OnUpdated?.Invoke(deltaTime);
         }
 
@@ -154,10 +153,10 @@ namespace Atomic.Entities
         {
             if (!_enabled)
                 return;
-            
+
             for (int i = 0; i < _fixedUpdateCount; i++)
                 _fixedUpdates[i].FixedUpdate(this, deltaTime);
-            
+
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
@@ -171,23 +170,22 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _lateUpdateCount && _enabled; i++)
                 _lateUpdates[i].LateUpdate(this, deltaTime);
-            
+
             this.OnLateUpdated?.Invoke(deltaTime);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void DisposeInternal()
         {
-            if (!_initialized) 
+            if (!_initialized)
                 return;
-            
-            if (_enabled)
-                this.Disable();
+
+            this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityDispose behaviour)
                     behaviour.Dispose(this);
-            
+
             _initialized = false;
             this.OnDisposed?.Invoke();
         }

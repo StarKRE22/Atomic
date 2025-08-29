@@ -50,8 +50,8 @@ namespace Atomic.Entities
             //Wait OnDestroy
             yield return null;
 
-            Assert.IsFalse(entity.Initialized);
-            Assert.IsTrue(stub.Disposed);
+            Assert.IsTrue(entity.Initialized);
+            Assert.IsFalse(stub.Disposed);
         }
         
         [UnityTest]

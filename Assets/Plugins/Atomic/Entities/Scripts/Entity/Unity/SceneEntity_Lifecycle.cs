@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.EntityUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -113,7 +112,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityInit behaviour)
                     behaviour.Init(this);
-            
+
             _initialized = true;
 
             this.OnStateChanged?.Invoke();
@@ -125,21 +124,20 @@ namespace Atomic.Entities
         /// </summary>
         public void Enable()
         {
-            if (!_initialized)
-                this.Init();
+            this.Init();
 
             if (_enabled)
                 return;
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.EnableBehaviour(_behaviours[i]);
-            
+
             _enabled = true;
 
             this.OnStateChanged?.Invoke();
             this.OnEnabled?.Invoke();
         }
-        
+
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
@@ -150,7 +148,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < _behaviourCount; i++)
                 this.DisableBehaviour(_behaviours[i]);
-            
+
             _enabled = false;
 
             this.OnStateChanged?.Invoke();
@@ -167,7 +165,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < this.updateCount; i++)
                 this.updates[i].Update(this, deltaTime);
-            
+
             this.OnUpdated?.Invoke(deltaTime);
         }
 
@@ -181,7 +179,7 @@ namespace Atomic.Entities
 
             for (int i = 0; i < this.fixedUpdateCount; i++)
                 this.fixedUpdates[i].FixedUpdate(this, deltaTime);
-            
+
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
@@ -195,24 +193,24 @@ namespace Atomic.Entities
 
             for (int i = 0; i < this.lateUpdateCount; i++)
                 this.lateUpdates[i].LateUpdate(this, deltaTime);
-        
+
             this.OnLateUpdated?.Invoke(deltaTime);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void DisposeInternal()
         {
             if (!_initialized)
                 return;
 
-            if (_enabled)
-                this.Disable();
+            this.Disable();
 
             for (int i = 0; i < _behaviourCount; i++)
                 if (_behaviours[i] is IEntityDispose behaviour)
                     behaviour.Dispose(this);
-            
+
             _initialized = false;
+            this.OnDisposed?.Invoke();
         }
     }
 }
