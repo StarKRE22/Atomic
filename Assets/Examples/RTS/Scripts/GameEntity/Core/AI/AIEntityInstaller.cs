@@ -13,16 +13,13 @@ namespace RTSGame
 
         [SerializeField]
         private float _maxDetectDuration = 0.3f;
-
-        [SerializeField]
-        private float _maxVision = 10;
         
         public void Install(IGameEntity entity)
         {
             IGameContext gameContext = GameContext.Instance;
             entity.AddTarget(new ReactiveVariable<IGameEntity>());
             entity.AddBehaviour(new DetectTargetBehaviour(
-                new RandomCooldown(_minDetectDuration, _maxDetectDuration), gameContext, _maxVision)
+                new RandomCooldown(_minDetectDuration, _maxDetectDuration), gameContext)
             );
             entity.AddBehaviour<AttackTargetBehaviour>();
         }

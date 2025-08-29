@@ -26,6 +26,7 @@ namespace RTSGame
 		public static readonly int Moveable;
 		public static readonly int Projectile;
 		public static readonly int Unit;
+		public static readonly int Targeted;
 
 		///Values
 		public static readonly int Position; // IReactiveVariable<Vector3>
@@ -55,6 +56,7 @@ namespace RTSGame
 			Moveable = NameToId(nameof(Moveable));
 			Projectile = NameToId(nameof(Projectile));
 			Unit = NameToId(nameof(Unit));
+			Targeted = NameToId(nameof(Targeted));
 
 			//Values
 			Position = NameToId(nameof(Position));
@@ -130,6 +132,19 @@ namespace RTSGame
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelUnitTag(this IGameEntity entity) => entity.DelTag(Unit);
+
+		#endregion
+
+		#region Targeted
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTargetedTag(this IGameEntity entity) => entity.HasTag(Targeted);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddTargetedTag(this IGameEntity entity) => entity.AddTag(Targeted);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTargetedTag(this IGameEntity entity) => entity.DelTag(Targeted);
 
 		#endregion
 

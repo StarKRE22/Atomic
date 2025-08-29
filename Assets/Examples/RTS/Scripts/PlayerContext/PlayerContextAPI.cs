@@ -21,40 +21,40 @@ namespace RTSGame
 	public static class PlayerContextAPI
 	{
 		///Values
-		public static readonly int EnemyFilter; // EntityFilter<IGameEntity>
+		public static readonly int FreeEnemyFilter; // EntityFilter<IGameEntity>
 		public static readonly int Team; // IValue<TeamType>
 
 		static PlayerContextAPI()
 		{
 			//Values
-			EnemyFilter = NameToId(nameof(EnemyFilter));
+			FreeEnemyFilter = NameToId(nameof(FreeEnemyFilter));
 			Team = NameToId(nameof(Team));
 		}
 
 
 		///Value Extensions
 
-		#region EnemyFilter
+		#region FreeEnemyFilter
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static EntityFilter<IGameEntity> GetEnemyFilter(this IPlayerContext entity) => entity.GetValueUnsafe<EntityFilter<IGameEntity>>(EnemyFilter);
+		public static EntityFilter<IGameEntity> GetFreeEnemyFilter(this IPlayerContext entity) => entity.GetValueUnsafe<EntityFilter<IGameEntity>>(FreeEnemyFilter);
 
-		public static ref EntityFilter<IGameEntity> RefEnemyFilter(this IPlayerContext entity) => ref entity.GetValueUnsafe<EntityFilter<IGameEntity>>(EnemyFilter);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetEnemyFilter(this IPlayerContext entity, out EntityFilter<IGameEntity> value) => entity.TryGetValueUnsafe(EnemyFilter, out value);
+		public static ref EntityFilter<IGameEntity> RefFreeEnemyFilter(this IPlayerContext entity) => ref entity.GetValueUnsafe<EntityFilter<IGameEntity>>(FreeEnemyFilter);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddEnemyFilter(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.AddValue(EnemyFilter, value);
+		public static bool TryGetFreeEnemyFilter(this IPlayerContext entity, out EntityFilter<IGameEntity> value) => entity.TryGetValueUnsafe(FreeEnemyFilter, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasEnemyFilter(this IPlayerContext entity) => entity.HasValue(EnemyFilter);
+		public static void AddFreeEnemyFilter(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.AddValue(FreeEnemyFilter, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelEnemyFilter(this IPlayerContext entity) => entity.DelValue(EnemyFilter);
+		public static bool HasFreeEnemyFilter(this IPlayerContext entity) => entity.HasValue(FreeEnemyFilter);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetEnemyFilter(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.SetValue(EnemyFilter, value);
+		public static bool DelFreeEnemyFilter(this IPlayerContext entity) => entity.DelValue(FreeEnemyFilter);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetFreeEnemyFilter(this IPlayerContext entity, EntityFilter<IGameEntity> value) => entity.SetValue(FreeEnemyFilter, value);
 
 		#endregion
 

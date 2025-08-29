@@ -45,6 +45,10 @@ namespace RTSGame
 
         private EntityCollectionViewBinder<IGameEntity> _viewBinder;
 
+        [Header("Debug")]
+        [SerializeField]
+        private float _debugUnitCount; //See entity count changes in the world
+        
         private void Start()
         {
             _gameContext = _gameContextFactory.Create();
@@ -77,7 +81,11 @@ namespace RTSGame
 
         private void FixedUpdate() => _gameContext.OnFixedUpdate(Time.fixedDeltaTime);
 
-        private void LateUpdate() => _gameContext.OnLateUpdate(Time.deltaTime);
+        private void LateUpdate()
+        {
+            _gameContext.OnLateUpdate(Time.deltaTime);
+            _debugUnitCount = _gameContext.GetEntityWorld().Count;
+        }
 
         private void OnDestroy()
         {

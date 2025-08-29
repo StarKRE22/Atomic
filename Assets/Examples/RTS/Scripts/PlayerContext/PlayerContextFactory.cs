@@ -37,14 +37,14 @@ namespace RTSGame
             );
 
             playerContext.AddTeam(new Const<TeamType>(_teamType));
-            playerContext.AddEnemyFilter(this.CreateEnemyFilter(playerContext));
+            playerContext.AddFreeEnemyFilter(this.CreateFreeEnemyFilter(playerContext));
             return playerContext;
         }
 
-        private EntityFilter<IGameEntity> CreateEnemyFilter(IPlayerContext playerContext) => new(
+        private EntityFilter<IGameEntity> CreateFreeEnemyFilter(IPlayerContext playerContext) => new(
             _entityWorld,
-            entity => TeamUseCase.IsEnemyUnit(playerContext, entity),
-            new TeamEntityTrigger()
+            entity => TeamUseCase.IsFreeEnemyUnit(playerContext, entity),
+            new TeamEntityTrigger(), new TagEntityTrigger<IGameEntity>()
         );
     }
 }
