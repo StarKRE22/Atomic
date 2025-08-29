@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -33,30 +31,43 @@ namespace RTSGame
             return true;
         }
 
-        public static IGameEntity FindClosestEnemyFor(IGameContext context, IGameEntity entity)
+        public static IGameEntity FindEnemyFor(IGameContext context, IGameEntity entity, float maxDistanceSqr)
         {
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, entity);
             EntityFilter<IGameEntity> enemyFilter = playerContext.GetEnemyFilter();
-            return FindClosest(enemyFilter, entity.GetPosition().Value);
+            Vector3 center = entity.GetPosition().Value;
+            return FindFirst(enemyFilter, center, maxDistanceSqr);
         }
-
-        public static IGameEntity FindClosest(EntityFilter<IGameEntity> entities, Vector3 center)
+        
+        public static IGameEntity FindFirst(EntityFilter<IGameEntity> entities, Vector3 center, float maxDistanceSqr)
         {
-            IGameEntity result = null;
-
-            float minDistance = float.MaxValue;
             foreach (IGameEntity entity in entities)
-            {
-                Vector3 position = entity.GetPosition().Value;
-                float distance = Vector3.SqrMagnitude(position - center);
-                if (distance < minDistance)
+                if (Vector3.SqrMagnitude(entity.GetPosition().Value - center) <= maxDistanceSqr)
                 {
-                    result = entity;
-                    minDistance = distance;
+                    Debug.Log($"FOUND {entity}");
+                    return entity;
                 }
-            }
 
-            return result;
+            return null;
         }
+
+        // public static IGameEntity FindClosest(EntityFilter<IGameEntity> entities, Vector3 center)
+        // {
+        //     IGameEntity result = null;
+        //
+        //     float minDistance = float.MaxValue;
+        //     foreach (IGameEntity entity in entities)
+        //     {
+        //         Vector3 position = entity.GetPosition().Value;
+        //         float distance = Vector3.SqrMagnitude(position - center);
+        //         if (distance < minDistance)
+        //         {
+        //             result = entity;
+        //             minDistance = distance;
+        //         }
+        //     }
+        //
+        //     return result;
+        // }
     }
 }

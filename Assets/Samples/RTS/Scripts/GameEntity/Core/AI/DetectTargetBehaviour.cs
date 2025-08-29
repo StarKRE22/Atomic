@@ -8,15 +8,17 @@ namespace RTSGame
         private readonly IGameContext _gameContext;
         private readonly IEntityWorld<IGameEntity> _entityWorld;
         private readonly ICooldown _cooldown;
+        private readonly float _maxVisionSqr;
 
         private IVariable<IGameEntity> _target;
         private IGameEntity _entity;
 
-        public DetectTargetBehaviour(ICooldown cooldown, IGameContext context)
+        public DetectTargetBehaviour(ICooldown cooldown, IGameContext context, float maxVision)
         {
             _cooldown = cooldown;
             _gameContext = context;
             _entityWorld = context.GetEntityWorld();
+            _maxVisionSqr = maxVision * maxVision;
         }
 
         public void Init(IGameEntity entity)
@@ -31,7 +33,7 @@ namespace RTSGame
             
             if (_cooldown.IsCompleted() && !_entityWorld.Contains(_target.Value))
             {
-                _target.Value = GameEntityUseCase.FindClosestEnemyFor(_gameContext, _entity);
+                _target.Value = GameEntityUseCase.FindEnemyFor(_gameContext, _entity, _maxVisionSqr);
                 _cooldown.ResetTime();
             }
         }
