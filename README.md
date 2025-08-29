@@ -15,7 +15,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Using Atomic Rider Plugin](#using-atomic-rider-plugin)
+- [Using Atomic Plugin for JetBrains Rider ](#using-atomic-plugin-for-JetBrains-Rider)
 - [Documentation](#documentation)
 - [Theory](#theory)
 - [Examples](#examples)
