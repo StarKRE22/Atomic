@@ -63,39 +63,37 @@ The Quick Start guide contains **two examples**:
    
    <img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
-3. **Add the `Entity` component to the GameObject**
+2. **Add the `Entity` component to the GameObject**
    
    <img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
 
-4. **Create a `CharacterInstaller` script and attach it to the GameObject**
+3. **Create a `CharacterInstaller` script**
 
  ```csharp
 //Populates entity with data and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private Const<float> _moveSpeed = 5.0f;
-    [SerializeField] private ReactiveVariable<Vector3> _moveDirection;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
+    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
 
     public override void Install(IEntity entity)
     {
-        //Set tags to the entity
+        //Add tags to the character
         entity.AddTag("Character");
         entity.AddTag("Moveable");
 
-        //Set properties to the entity
+        //Add properties to the character
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
         entity.AddValue("MoveDirection", _moveDirection);
-
-        //Set controllers to the entity
-        entity.AddBehaviour<MoveBehaviour>();
     }
 }
 ```
+4. **Attach the `CharacterInstaller` to the `GameObject` and configure it**  
+<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-5. **Write the `MoveBehaviour` class**
-
+5. **Create a `MoveBehaviour` class**
 ```csharp
 //Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
@@ -121,13 +119,27 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
     }
 }
 ```
-6. **Configure `CharacterInstaller`, Enter `PlayMode` and test your character movement**
+6. **Add `MoveBehaviour` to `CharacterInstaller`**
+ ```csharp
+//Populates entity with data and behaviours
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+     ...previous code
 
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+    public override void Install(IEntity entity)
+    {
+        ...previous code
+
+        //+
+        entity.AddBehaviour<MoveBehaviour>();
+    }
+}
+```
+7. **Enter `PlayMode` and test your character movement**
 
 ## C Sharp Quick Start
 
-1. **Create a character**
+1. **Create a character entity**
 ```csharp
 //Create a new entity
 var character = new Entity("Character");
@@ -139,15 +151,12 @@ character.AddTag("Moveable");
 character.AddValue("Position", new ReactiveVariable<Vector3>());
 character.AddValue("MoveSpeed", new Const<float>(3.5f));
 character.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
-
-//Add controllers
-character.AddBehaviour<MoveBehaviour>();
 ```
 
 2. **Write `MoveBehaviour` for the character**
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
+public sealed class MoveBehaviour : IEntitySpawn, IEntityUpdate
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
@@ -161,8 +170,8 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
-    //Calls when Entity.OnFixedUpdate()
-    public void OnFixedUpdate(IEntity entity, float deltaTime)
+    //Calls when Entity.OnUpdate()
+    public void OnUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -170,27 +179,31 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
     }
 }
 ```
-3. **Activate the character one time**
+3. Add `MoveBehaviour` to the character
+```csharp
+character.AddBehaviour<MoveBehaviour>();
+```
+4. **Spawn the character when game initialized**
 ```csharp
 //Make entity spawned and calls IEntitySpawn
 character.Spawn();
-
+```
+5. **Activate the character when game started**
+```csharp
 //Make entity active and calls IEntityActivate
 character.Activate(); 
 ```
-
-4. **Update the character multiple times**
+6. **Update the character while a game is running**
 ```csharp
 const float deltaTime = 0.02f;
 
 while(_isGameRunning)
 {
-   //Calls IEntityFixedUpdate if entity is active
-   character.OnFixedUpdate(deltaTime); 
+   //Calls IEntityUpdate
+   character.OnUpdate(deltaTime); 
 }
 ```
-
-5. **Make entity inactive and despawned**
+7. **When game is finished make entity inactive and despawned**
 ```csharp
 //Make entity inactive
 character.Deactivate();
