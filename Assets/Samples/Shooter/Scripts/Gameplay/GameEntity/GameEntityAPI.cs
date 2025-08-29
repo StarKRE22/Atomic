@@ -97,8 +97,7 @@ namespace ShooterGame.Gameplay
 			Animator = NameToId(nameof(Animator));
 			HitPointsView = NameToId(nameof(HitPointsView));
 		}
-
-
+		
 		///Tag Extensions
 
 		#region Damageable

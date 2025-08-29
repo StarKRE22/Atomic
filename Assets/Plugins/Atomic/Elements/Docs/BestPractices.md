@@ -8,6 +8,8 @@ This section demonstrates how to implement `IVariable<T>` for **Transform positi
 
 - для однопользовательских игр используйте Requests AI или Input, а для сетевых Actions
 
+- Разделять инсталлеры на маленькие фичи для больших проектов и EntityAPI
+
 You can use extension Observe and cache subscription handle
 ```csharp
 using UnityEngine;
