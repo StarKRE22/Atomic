@@ -15,8 +15,8 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
+- [Manual References](#manual-references)
 - [Quick Start](#quick-start)
-- [Documentation](#documentation)
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -45,7 +45,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 > For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become smoother and more powerful than in Unity.
 
-## Documentation
+## Manual References
 Atomic Framework consists of three main modules, each with its own detailed documentation that you can access via the links below:
 - **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — modular and reusable components for Unity development ⚙️
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — manage and deploy entities across project architecture 🏗️
