@@ -14,10 +14,10 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
+- [Using Atomic Plugin for Rider](#using-atomic-plugin-for-rider)
 - [Manual References](#manual-references)
 - [Unity Quick Start](#unity-quick-start)
-- [C# Quick Start](#c#-quick-start)
+- [C# Quick Start](#csharp-quick-start)
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -39,7 +39,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
-## Using Atomic Plugin for JetBrains Rider  
+## Using Atomic Plugin for Rider  
 > [!TIP]  
 > For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become smoother and more powerful than in Unity.
@@ -125,7 +125,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-## C# Quick Start
+## C Sharp Quick Start
 
 1. **Create a character**
 ```csharp
