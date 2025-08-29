@@ -80,7 +80,7 @@ namespace Atomic.Entities
             EntityUtils.Contains(Instance._updatables, updateSource, _count, s_comparer);
 
         /// <summary>
-        /// Invokes <see cref="IUpdateSource.OnUpdate"/> on all registered instances.
+        /// Invokes <see crefIUpdateSourceteeOnUpdate"/> on all registered instances.
         /// </summary>
         private void Update()
         {
@@ -90,7 +90,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes <see cref="IUpdateSource.OnFixedUpdate"/> on all registered instances.
+        /// Invokes <see crefIUpdateSourceteeOnFixedUpdate"/> on all registered instances.
         /// </summary>
         private void FixedUpdate()
         {
@@ -100,7 +100,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes <see cref="IUpdateSource.OnLateUpdate"/> on all registered instances.
+        /// Invokes <see crefIUpdateSourceteeOnLateUpdate"/> on all registered instances.
         /// </summary>
         private void LateUpdate()
         {

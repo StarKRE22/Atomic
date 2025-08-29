@@ -22,7 +22,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="IEnableSource.Enable"/> 
+    /// This method is automatically invoked by <see cref="_IEnable.Enable"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
     /// </remarks>
     public interface IEntityEnable<in T> : IEntityEnable where T : IEntity

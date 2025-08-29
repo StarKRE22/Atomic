@@ -9,7 +9,7 @@ namespace Atomic.Entities
     public static partial class Extensions
     {
         /// <summary>
-        /// Subscribes to the <see cref="IInitSource.OnInitialized"/> event.
+        /// Subscribes to the <see cref="IILifecycleInitOnInitialized"/> event.
         /// </summary>
         /// <param name="source">The spawnable object.</param>
         /// <param name="action">The action to invoke on spawn.</param>
@@ -22,7 +22,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IInitSource.OnDisposed"/> event.
+        /// Subscribes to the <see cref="IILifecycleInitOnDisposed"/> event.
         /// </summary>
         /// <param name="source">The spawnable object.</param>
         /// <param name="action">The action to invoke on despawn.</param>
@@ -61,7 +61,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IUpdateSource.OnUpdated"/> event.
+        /// Subscribes to the <see crefIUpdateSourceteeOnUpdated"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each frame update.</param>
@@ -74,7 +74,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IUpdateSource.OnFixedUpdated"/> event.
+        /// Subscribes to the <see crefIUpdateSourceteeOnFixedUpdated"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each fixed update frame.</param>
@@ -87,7 +87,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IUpdateSource.OnLateUpdated"/> event.
+        /// Subscribes to the <see crefIUpdateSourceteeOnLateUpdated"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each late update frame.</param>

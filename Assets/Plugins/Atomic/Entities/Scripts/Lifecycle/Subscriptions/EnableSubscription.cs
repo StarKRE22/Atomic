@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IEnableSource"/>'s <see cref="IEnableSource.OnEnabled"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IEnableSource"/>'s <see creIEnableSourcelee.OnEnabled"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// This struct is intended to simplify the management of temporary or scoped subscriptions
@@ -26,7 +26,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IEnableSource.OnEnabled"/> event.
+        /// Unsubscribes the callback from the <see creIEnableSourcelee.OnEnabled"/> event.
         /// </summary>
         public void Dispose()
         {

@@ -1,6 +1,7 @@
 using Atomic.Entities;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+
 // ReSharper disable AsyncVoidMethod
 
 namespace ShooterGame.Gameplay
@@ -14,18 +15,11 @@ namespace ShooterGame.Gameplay
 
         private Health _health;
         private Animator _animator;
-        
+
         public DeathAnimBehaviour(GameObject view, float deathDuration = 1.5f)
         {
             _deathDuration = deathDuration;
             _view = view;
-        }
-
-        private async void OnDeath()
-        {
-            _animator.SetTrigger(Death);
-            await UniTask.WaitForSeconds(_deathDuration);
-            _view.SetActive(false);
         }
 
         public void Init(IGameEntity entity)
@@ -38,6 +32,13 @@ namespace ShooterGame.Gameplay
         public void Dispose(IEntity entity)
         {
             _health.OnHealthEmpty -= this.OnDeath;
+        }
+
+        private async void OnDeath()
+        {
+            _animator.SetTrigger(Death);
+            await UniTask.WaitForSeconds(_deathDuration);
+            _view.SetActive(false);
         }
     }
 }

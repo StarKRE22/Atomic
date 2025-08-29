@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class ProjectileLifetimeBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class ProjectileLifetimeBehaviour : IEntityInit<IGameEntity>, IEntityEnable, IEntityFixedUpdate
     {
         private readonly IGameContext _gameContext;
         private IGameEntity _entity;
@@ -18,6 +18,10 @@ namespace RTSGame
         {
             _entity = entity;
             _lifetime = entity.GetLifetime();
+        }
+
+        public void Enable(IEntity entity)
+        {
             _lifetime.ResetTime();
         }
 

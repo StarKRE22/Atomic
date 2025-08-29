@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IInitSource"/>'s <see cref="IInitSource.OnDisposed"/> event upon disposal.
+    /// A disposable subscription handle that unregisters a callback from an <see cref="IInitSource"/>'s <see cref="IILifecycleInitOnDisposed"/> event upon disposal.
     /// </summary>
     /// <remarks>
     /// Useful for managing temporary or one-time subscriptions to despawn events in a safe and deterministic way.
@@ -25,7 +25,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IInitSource.OnDisposed"/> event.
+        /// Unsubscribes the callback from the <see cref="IILifecycleInitOnDisposed"/> event.
         /// </summary>
         public void Dispose()
         {

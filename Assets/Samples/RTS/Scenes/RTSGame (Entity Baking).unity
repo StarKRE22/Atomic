@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -276,6 +280,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -351,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -424,6 +436,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -499,6 +515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -555,6 +575,10 @@ Transform:
   - {fileID: 1422013859}
   - {fileID: 595450615}
   - {fileID: 517434321}
+  - {fileID: 1137052435}
+  - {fileID: 2123232171}
+  - {fileID: 1126883291}
+  - {fileID: 272233041}
   - {fileID: 454864349}
   - {fileID: 955737347}
   - {fileID: 484207095}
@@ -624,7 +648,7 @@ MonoBehaviour:
   _showEntityViews: 1
   _bakeUnits: 1
   _bakeIncludeInactive: 0
-  _spawnUnits: 10
+  _unitColumns: 10
 --- !u!1001 &259684195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,6 +701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -698,6 +726,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
   m_PrefabInstance: {fileID: 259684195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &272233040
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 231380684}
+    m_Modifications:
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064850760050433709, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_Name
+      value: Headquarters (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+--- !u!4 &272233041 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+  m_PrefabInstance: {fileID: 272233040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &278177124
 PrefabInstance:
@@ -750,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -825,6 +935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -898,6 +1012,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -973,6 +1091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -1046,6 +1168,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -1532,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -1684,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -1789,6 +1923,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -1862,6 +2000,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -1937,6 +2079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -2010,6 +2156,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -2206,6 +2356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -2279,6 +2433,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -2354,6 +2512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -2427,6 +2589,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -2502,6 +2668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -2575,6 +2745,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -2650,6 +2824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -2724,6 +2902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -2797,6 +2979,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -3213,6 +3399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -3287,6 +3477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -3308,6 +3502,162 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
   m_PrefabInstance: {fileID: 1015794129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1126883290
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 231380684}
+    m_Modifications:
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064850760050433709, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_Name
+      value: Headquarters (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+--- !u!4 &1126883291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+  m_PrefabInstance: {fileID: 1126883290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1137052434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 231380684}
+    m_Modifications:
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064850760050433709, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_Name
+      value: Headquarters (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+--- !u!4 &1137052435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+  m_PrefabInstance: {fileID: 1137052434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1175068672
 PrefabInstance:
@@ -3360,6 +3710,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -3499,6 +3853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -3572,6 +3930,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -3758,6 +4120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -3831,6 +4197,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -3906,6 +4276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -3980,6 +4354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -4053,6 +4431,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -4206,6 +4588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -4279,6 +4665,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -4460,6 +4850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -4534,6 +4928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -4607,6 +5005,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -4760,6 +5162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 1
@@ -4833,6 +5239,10 @@ PrefabInstance:
     - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: m_Name
       value: Warrior (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
@@ -4908,6 +5318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8808063545637895219, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
       propertyPath: _teamBaker._teamType.value
       value: 0
@@ -4929,6 +5343,84 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 04fcdb1504c204e2685d13a25ce23d78, type: 3}
   m_PrefabInstance: {fileID: 1968926952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2123232170
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 231380684}
+    m_Modifications:
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072667488915062089, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: _teamBaker._teamType.active
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064850760050433709, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f32c633583d834115a0486a669cab6b4, type: 2}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258922563122937303, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: m_Name
+      value: Headquarters (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+--- !u!4 &2123232171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3141069101459334024, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+  m_PrefabInstance: {fileID: 2123232170}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
