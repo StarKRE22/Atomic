@@ -16,7 +16,8 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Using Odin Inspector](#using-odin-inspector)
 - [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
 - [Manual References](#manual-references)
-- [Quick Start](#quick-start)
+- [Unity Quick Start](#unity-quick-start)
+- [CSharp Quick Start](#csharp-quick-start)
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -50,12 +51,13 @@ Atomic Framework consists of three main modules, each with its own detailed docu
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
 
 
-## Quick Start
+<!-- ## Quick Start
 The Quick Start guide contains **two examples**:
 - Using **Unity** with GameObjects and installers 🕹️  
 - Using **pure C#** without Unity components 💻
+-->
 
-### With Unity
+## Unity Quick Start
 
 1. **Create a GameObject in a scene**
    
@@ -123,7 +125,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-### With C#
+## CSharp Quick Start
 
 1. **Create a character**
 ```csharp
