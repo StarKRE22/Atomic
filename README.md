@@ -13,9 +13,10 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 # 📑 Table of Contents 
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Quick Start](#quick-start)
 - [Using Odin Inspector](#using-odin-inspector)
+- [Using Atomic Rider Plugin](#using-atomic-rider-plugin)
 - [Documentation](#documentation)
-- [Quick Start](#quick-start)    
 - [Theory](#theory)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -31,17 +32,6 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - _Option #1. Download source code with game examples_  
 - _Option #2. Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip) from [release notes](https://github.com/StarKRE22/Atomic/releases)_  
 - _Option #3: Install via Unity Package Manager using the Git URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
-
-## Using Odin Inspector
-> [!TIP]  
-> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
-
-## Documentation
-Atomic Framework consists of three main modules, each with its own detailed documentation that you can access via the links below:
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — modular and reusable components for Unity development ⚙️
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — manage and deploy entities across project architecture 🏗️
-- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
 
 ## Quick Start
 The Quick Start guide contains **two examples**:
@@ -189,6 +179,25 @@ character.Deactivate();
 //Despawn entity
 character.Despawn();
 ```
+
+## Using Odin Inspector
+> [!TIP]  
+> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
+> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
+
+## Using Atomic Rider Plugin
+> [!TIP]  
+> For better **code generation** and more convenient workflow in Rider, we **optionally recommend** installing the [Atomic Rider Plugin](https://github.com/Prylor/atomic-rider-plugin).  
+> The framework works **without Atomic Rider Plugin**, but with the plugin, code generation and development experience in Rider become smoother and more powerful than in Unity alone.
+
+
+## Documentation
+Atomic Framework consists of three main modules, each with its own detailed documentation that you can access via the links below:
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — modular and reusable components for Unity development ⚙️
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — manage and deploy entities across project architecture 🏗️
+- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
+
+
 
 ## Theory
 This section explains the **core concepts** behind the Atomic Framework and how they work together.  
