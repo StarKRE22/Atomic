@@ -14,7 +14,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Using JetBrains Plugin](#using-jetbrains-plugin)
+- [Using Atomic Plugin for JetBrains Rider](#using-atomic-plugin-for-jetbrains-rider)
 - [Quick Start](#quick-start)
 - [Documentation](#documentation)
 - [Theory](#theory)
@@ -33,13 +33,13 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - _Option #2. Download [Atomic.unitypackage](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/Atomic.unitypackage) or [AtomicNonUnity.zip](https://github.com/StarKRE22/Atomic/releases/download/v.2.0.0/AtomicNonUnity.zip) from [release notes](https://github.com/StarKRE22/Atomic/releases)_  
 - _Option #3: Install via Unity Package Manager using the Git URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
 
-## <img width="24" height="24" alt="изображение" src="https://github.com/user-attachments/assets/c5eadeb0-abe4-464a-8946-5ad9731e3ff0" />   Using Odin Inspector
+## Using Odin Inspector <img width="24" height="24" alt="изображение" src="https://github.com/user-attachments/assets/c5eadeb0-abe4-464a-8946-5ad9731e3ff0" />  
 
 > [!TIP]  
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.  
 
-## <img width="22" height="22" alt="изображение" src="https://github.com/user-attachments/assets/e8966a2e-9f12-45ff-b744-c9d99b26dd96" />   Using Atomic Plugin for JetBrains Rider 
+## Using Atomic Plugin for JetBrains Rider  <img width="22" height="22" alt="изображение" src="https://github.com/user-attachments/assets/e8966a2e-9f12-45ff-b744-c9d99b26dd96" />   
 
 > [!TIP]  
 > For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
