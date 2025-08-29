@@ -96,22 +96,22 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 5. **Create a `MoveBehaviour` class**
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntitySpawn, IEntityFixedUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
-    //Calls when entity spawns in a scene  
-    public void OnSpawn(IEntity entity)
+    //Calls when MonoBehaviour.Start() is called
+    public void Init(IEntity entity)
     {
         _transform = entity.GetValue<Transform>("Transform");
         _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
-    //Calls when FixedUpdate()
-    public void OnFixedUpdate(IEntity entity, float deltaTime)
+    //Calls when MonoBehaviour.FixedUpdate() is called
+    public void FixedUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -156,14 +156,14 @@ character.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 2. **Write `MoveBehaviour` for the character**
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntitySpawn, IEntityUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
-    //Calls when Entity.Spawn()
-    public void OnSpawn(IEntity entity)
+    //Calls when Entity.Init()
+    public void Init(IEntity entity)
     {
         _position = entity.GetValue<IVariable<Vector3>>("Position");
         _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
@@ -171,7 +171,7 @@ public sealed class MoveBehaviour : IEntitySpawn, IEntityUpdate
     }
 
     //Calls when Entity.OnUpdate()
-    public void OnUpdate(IEntity entity, float deltaTime)
+    public void Update(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -185,13 +185,13 @@ character.AddBehaviour<MoveBehaviour>();
 ```
 4. **Spawn the character when game initialized**
 ```csharp
-//Make entity spawned and calls IEntitySpawn
-character.Spawn();
+//Initialize entity, that will call IEntitySpawn
+character.Init();
 ```
 5. **Activate the character when game started**
 ```csharp
-//Make entity active and calls IEntityActivate
-character.Activate(); 
+//Enable entity for updates
+character.Enable(); 
 ```
 6. **Update the character while a game is running**
 ```csharp
@@ -200,18 +200,17 @@ const float deltaTime = 0.02f;
 while(_isGameRunning)
 {
    //Calls IEntityUpdate
-   character.OnUpdate(deltaTime); 
+   character.Update(deltaTime); 
 }
 ```
 7. **When game is finished make entity inactive and despawned**
 ```csharp
-//Make entity inactive
-character.Deactivate();
+//Disable entity
+character.Disable();
 
-//Despawn entity
-character.Despawn();
+//Dispose entity
+character.Dispose();
 ```
-
 
 ## Theory
 This section explains the **core concepts** behind the Atomic Framework and how they work together.  
