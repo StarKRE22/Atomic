@@ -13,7 +13,7 @@ namespace Atomic.Entities
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc/>
-        public virtual event Action OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
         public int InstanceID => _instanceId;
@@ -75,7 +75,7 @@ namespace Atomic.Entities
         {
             _name = name ?? string.Empty;
             _disposeValues = disposeValues;
-            
+
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
@@ -109,15 +109,17 @@ namespace Atomic.Entities
         /// </remarks>
         public void Dispose()
         {
-            this.Deinitialize();
             this.OnDispose();
+            this.DisposeInternal();
+
+            if (_disposeValues)
+                this.DisposeValues();
 
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
 
             this.OnStateChanged?.Invoke();
-            this.OnDisposed?.Invoke();
 
             this.UnsubscribeEvents();
             EntityRegistry.Instance.Unregister(ref _instanceId);
@@ -126,8 +128,6 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDispose()
         {
-            if (_disposeValues)
-                this.DisposeValues();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

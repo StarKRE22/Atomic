@@ -221,6 +221,9 @@ namespace Atomic.Entities
 
         public override void Dispose()
         {
+            if (_enabled) 
+                this.Disable();
+            
             base.Dispose();
             
             //Unsubscribe events:

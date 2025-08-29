@@ -20,19 +20,19 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnRemove_Should_DeactivateAndDespawn_WhenWorldIsActive()
+        public void OnRemove_Should_Disable_But_Not_Dispose_WhenWorldIsActive()
         {
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Enable(); // Spawn + Activate
+            world.Enable();
 
             // Act
             world.Remove(entity);
 
             // Assert
             Assert.IsTrue(entity.WasDisabled);
-            Assert.IsTrue(entity.WasDisposed);
+            Assert.IsFalse(entity.WasDisposed);
         }
     }
 }

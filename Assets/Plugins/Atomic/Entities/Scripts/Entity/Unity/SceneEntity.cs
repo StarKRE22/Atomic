@@ -245,25 +245,25 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public void Dispose()
         {
-            this.Deinitialize();
             this.OnDispose();
+            this.DisposeInternal();
+
+            if (this.disposeValues)
+                this.DisposeValues();
 
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
 
             this.OnStateChanged?.Invoke();
-            this.OnDisposed?.Invoke();
 
             this.UnsubscribeEvents();
             EntityRegistry.Instance.Unregister(ref _instanceId);
         }
-        
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDispose()
         {
-            if (this.disposeValues)
-                this.DisposeValues();
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
@@ -96,22 +95,6 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke();
             this.OnInitialized?.Invoke();
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void Deinitialize()
-        {
-            if (!_initialized) 
-                return;
-            
-            if (_enabled)
-                this.Disable();
-
-            for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDispose behaviour)
-                    behaviour.Dispose(this);
-            
-            _initialized = false;
-        }
         
         /// <summary>
         /// Enables the entity and registers update behaviours.
@@ -192,6 +175,21 @@ namespace Atomic.Entities
             this.OnLateUpdated?.Invoke(deltaTime);
         }
         
-        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void DisposeInternal()
+        {
+            if (!_initialized) 
+                return;
+            
+            if (_enabled)
+                this.Disable();
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is IEntityDispose behaviour)
+                    behaviour.Dispose(this);
+            
+            _initialized = false;
+            this.OnDisposed?.Invoke();
+        }
     }
 }

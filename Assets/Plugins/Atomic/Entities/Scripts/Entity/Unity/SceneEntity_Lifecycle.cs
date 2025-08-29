@@ -120,28 +120,6 @@ namespace Atomic.Entities
             this.OnInitialized?.Invoke();
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void Deinitialize()
-        {
-            if (!_initialized)
-                return;
-
-            if (_enabled)
-                this.Disable();
-
-            for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityDispose behaviour)
-                    behaviour.Dispose(this);
-            
-            _initialized = false;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessDespawn()
-        {
-            
-        }
-
         /// <summary>
         /// Enables the entity and registers update behaviours.
         /// </summary>
@@ -162,7 +140,6 @@ namespace Atomic.Entities
             this.OnEnabled?.Invoke();
         }
         
-
         /// <summary>
         /// Disables the entity and unregisters update behaviours.
         /// </summary>
@@ -171,18 +148,13 @@ namespace Atomic.Entities
             if (!_enabled)
                 return;
 
-            this.ProcessInactivate();
+            for (int i = 0; i < _behaviourCount; i++)
+                this.DisableBehaviour(_behaviours[i]);
+            
             _enabled = false;
 
             this.OnStateChanged?.Invoke();
             this.OnDisabled?.Invoke();
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessInactivate()
-        {
-            for (int i = 0; i < _behaviourCount; i++)
-                this.DisableBehaviour(_behaviours[i]);
         }
 
         /// <summary>
@@ -193,15 +165,10 @@ namespace Atomic.Entities
             if (!_enabled)
                 return;
 
-            this.ProcessUpdate(deltaTime);
-            this.OnUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessUpdate(float deltaTime)
-        {
-            for (int i = 0; i < this.updateCount && _enabled; i++)
+            for (int i = 0; i < this.updateCount; i++)
                 this.updates[i].Update(this, deltaTime);
+            
+            this.OnUpdated?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -212,15 +179,10 @@ namespace Atomic.Entities
             if (!_enabled)
                 return;
 
-            this.ProcessFixedUpdate(deltaTime);
-            this.OnFixedUpdated?.Invoke(deltaTime);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessFixedUpdate(float deltaTime)
-        {
-            for (int i = 0; i < this.fixedUpdateCount && _enabled; i++)
+            for (int i = 0; i < this.fixedUpdateCount; i++)
                 this.fixedUpdates[i].FixedUpdate(this, deltaTime);
+            
+            this.OnFixedUpdated?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -231,18 +193,27 @@ namespace Atomic.Entities
             if (!_enabled)
                 return;
 
-            this.ProcessLateUpdate(deltaTime);
+            for (int i = 0; i < this.lateUpdateCount; i++)
+                this.lateUpdates[i].LateUpdate(this, deltaTime);
+        
             this.OnLateUpdated?.Invoke(deltaTime);
         }
-
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessLateUpdate(float deltaTime)
+        private void DisposeInternal()
         {
-            for (int i = 0; i < this.lateUpdateCount && _enabled; i++)
-                this.lateUpdates[i].LateUpdate(this, deltaTime);
-        }
+            if (!_initialized)
+                return;
 
-       
+            if (_enabled)
+                this.Disable();
+
+            for (int i = 0; i < _behaviourCount; i++)
+                if (_behaviours[i] is IEntityDispose behaviour)
+                    behaviour.Dispose(this);
+            
+            _initialized = false;
+        }
     }
 }
 #endif

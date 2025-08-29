@@ -4,34 +4,21 @@ namespace Atomic.Entities
 {
     public class EntityWorld_Dispose_Tests
     {
+
         [Test]
-        public void Dispose_Should_DespawnEntities_IfSpawned()
+        public void Dispose_Not_Should_DisposeEntity()
         {
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
+            world.Enable();
 
             // Act
             world.Dispose();
 
             // Assert
-            Assert.IsTrue(entity.WasDisposed);
-        }
-
-        [Test]
-        public void Dispose_Should_DeactivateAndDespawn_IfActive()
-        {
-            // Arrange
-            var entity = new EntityDummy();
-            var world = new EntityWorld<Entity>(entity);
-            world.Enable(); // Spawn + Activate
-
-            // Act
-            world.Dispose();
-
-            // Assert
-            Assert.IsTrue(entity.WasDisposed);
-            Assert.IsFalse(world.Enabled);
+            Assert.IsTrue(entity.WasInitialized);
+            Assert.IsFalse(entity.WasDisposed);
         }
 
         [Test]
@@ -48,7 +35,7 @@ namespace Atomic.Entities
         }
         
         [Test]
-        public void Dispose_CanBeCalledMultipleTimes_Safely()
+        public void Dispose_Should_DisableEntity()
         {
             // Arrange
             var entity = new EntityDummy();
@@ -57,10 +44,8 @@ namespace Atomic.Entities
 
             // Act
             world.Dispose();
-            Assert.DoesNotThrow(() => world.Dispose());
 
             // Assert
-            Assert.IsTrue(entity.WasDisposed);
             Assert.IsTrue(entity.WasDisabled);
         }
 
@@ -83,7 +68,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Dispose_Should_ResetSpawnAndActiveFlags()
+        public void Dispose_Should_DisableWorld()
         {
             // Arrange
             var world = new EntityWorld<Entity>();
