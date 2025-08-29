@@ -4,45 +4,45 @@ namespace Atomic.Entities
 {
     public sealed partial class EntityTests
     {
-        #region OnSpawned
+        #region OnInited
 
         [Test]
-        public void OnSpawned_IsInvoked_WhenEntityIsSpawned()
+        public void OnInited_IsInvoked_WhenEntityIsInited()
         {
             var entity = new Entity();
             bool wasCalled = false;
 
             entity.OnInitialized += () => wasCalled = true;
 
-            entity.Spawn(); // Предполагаемый метод
+            entity.Init(); // Предполагаемый метод
 
             Assert.IsTrue(wasCalled);
         }
 
         [Test]
-        public void OnSpawned_IsNotInvoked_WhenNotSpawned()
+        public void OnInited_IsNotInvoked_WhenNotInited()
         {
             var entity = new Entity();
             bool wasCalled = false;
 
             entity.OnInitialized += () => wasCalled = true;
 
-            // Spawn не вызываем
+            // Init не вызываем
 
             Assert.IsFalse(wasCalled);
         }
 
         [Test]
-        public void OnSpawned_IsInvokedOnlyOnce_WhenSpawnCalledMultipleTimes()
+        public void OnInited_IsInvokedOnlyOnce_WhenInitCalledMultipleTimes()
         {
             var entity = new Entity();
             int callCount = 0;
 
             entity.OnInitialized += () => callCount++;
 
-            entity.Spawn();
-            entity.Spawn();
-            entity.Spawn();
+            entity.Init();
+            entity.Init();
+            entity.Init();
 
             Assert.AreEqual(1, callCount);
         }
@@ -99,7 +99,7 @@ namespace Atomic.Entities
         public void OnDisabled_IsInvoked_WhenEntityIsDisabled()
         {
             var entity = new Entity();
-            entity.Spawn(); // сначала нужно заспаунить
+            entity.Init(); // сначала нужно заспаунить
             entity.Enable();
 
             bool wasCalled = false;
@@ -114,7 +114,7 @@ namespace Atomic.Entities
         public void OnDisabled_IsNotInvoked_IfEntityNotEnabled()
         {
             var entity = new Entity();
-            entity.Spawn(); // только спаун, не включаем
+            entity.Init(); // только спаун, не включаем
 
             bool wasCalled = false;
             entity.OnDisabled += () => wasCalled = true;
@@ -128,7 +128,7 @@ namespace Atomic.Entities
         public void OnDisabled_IsInvoked_OnlyOnce_WhenCalledMultipleTimes()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             int callCount = 0;
@@ -145,7 +145,7 @@ namespace Atomic.Entities
         public void Disable_ChangesEnabledStateToFalse()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.Disable();
@@ -155,58 +155,58 @@ namespace Atomic.Entities
 
         #endregion
 
-        #region OnDespawned
+        #region OnDisposed
 
         [Test]
-        public void OnDespawned_IsInvoked_WhenEntityIsDespawned()
+        public void OnDisposed_IsInvoked_WhenEntityIsDisposeed()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool wasCalled = false;
-            entity.OnDespawned += () => wasCalled = true;
+            entity.OnDisposed += () => wasCalled = true;
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsTrue(wasCalled);
         }
 
         [Test]
-        public void OnDespawned_IsNotInvoked_WhenNotSpawned()
+        public void OnDisposed_IsNotInvoked_WhenNotInited()
         {
             var entity = new Entity(); // не спаунен
 
             bool wasCalled = false;
-            entity.OnDespawned += () => wasCalled = true;
+            entity.OnDisposed += () => wasCalled = true;
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsFalse(wasCalled);
         }
 
         [Test]
-        public void OnDespawned_IsInvoked_OnlyOnce_WhenDespawnCalledMultipleTimes()
+        public void OnDisposed_IsInvoked_OnlyOnce_WhenDisposeCalledMultipleTimes()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             int callCount = 0;
-            entity.OnDespawned += () => callCount++;
+            entity.OnDisposed += () => callCount++;
 
-            entity.Despawn();
-            entity.Despawn();
-            entity.Despawn();
+            entity.Dispose();
+            entity.Dispose();
+            entity.Dispose();
 
             Assert.AreEqual(1, callCount);
         }
 
         [Test]
-        public void Despawn_ChangesSpawnedStateToFalse()
+        public void Dispose_ChangesInitedStateToFalse()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsFalse(entity.Initialized);
         }
@@ -219,7 +219,7 @@ namespace Atomic.Entities
         public void OnUpdated_IsInvoked_WhenEntityIsEnabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             float receivedDelta = -1f;
@@ -234,7 +234,7 @@ namespace Atomic.Entities
         public void OnUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             // не вызываем Enable()
 
             bool wasCalled = false;
@@ -249,7 +249,7 @@ namespace Atomic.Entities
         public void OnUpdated_CanBeCalledMultipleTimes()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             int callCount = 0;
@@ -263,9 +263,9 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnUpdate_DoesNothing_WhenNotSpawned()
+        public void OnUpdate_DoesNothing_WhenNotInited()
         {
-            var entity = new Entity(); // не вызываем Spawn()
+            var entity = new Entity(); // не вызываем Init()
 
             bool wasCalled = false;
             entity.OnUpdated += _ => wasCalled = true;
@@ -283,7 +283,7 @@ namespace Atomic.Entities
         public void OnFixedUpdated_IsInvoked_WhenEntityIsEnabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             float receivedDelta = -1f;
@@ -298,7 +298,7 @@ namespace Atomic.Entities
         public void OnFixedUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
             var entity = new Entity();
-            entity.Spawn(); // Не включаем
+            entity.Init(); // Не включаем
 
             bool wasCalled = false;
             entity.OnFixedUpdated += _ => wasCalled = true;
@@ -312,7 +312,7 @@ namespace Atomic.Entities
         public void OnFixedUpdated_CanBeCalledMultipleTimes()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             int callCount = 0;
@@ -326,9 +326,9 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnFixedUpdate_DoesNothing_WhenNotSpawned()
+        public void OnFixedUpdate_DoesNothing_WhenNotInited()
         {
-            var entity = new Entity(); // Не вызываем Spawn()
+            var entity = new Entity(); // Не вызываем Init()
 
             bool wasCalled = false;
             entity.OnFixedUpdated += _ => wasCalled = true;
@@ -346,7 +346,7 @@ namespace Atomic.Entities
         public void OnLateUpdated_IsInvoked_WhenEntityIsEnabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             float receivedDelta = -1f;
@@ -361,7 +361,7 @@ namespace Atomic.Entities
         public void OnLateUpdated_IsNotInvoked_WhenEntityIsDisabled()
         {
             var entity = new Entity();
-            entity.Spawn(); // не вызываем Enable()
+            entity.Init(); // не вызываем Enable()
 
             bool wasCalled = false;
             entity.OnLateUpdated += _ => wasCalled = true;
@@ -375,7 +375,7 @@ namespace Atomic.Entities
         public void OnLateUpdated_CanBeCalledMultipleTimes()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             int callCount = 0;
@@ -389,7 +389,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnLateUpdate_DoesNothing_WhenNotSpawned()
+        public void OnLateUpdate_DoesNothing_WhenNotInited()
         {
             var entity = new Entity(); // не спаунен
 
@@ -403,40 +403,40 @@ namespace Atomic.Entities
 
         #endregion
 
-        #region Spawned
+        #region Inited
 
         [Test]
-        public void Spawned_IsFalse_ByDefault()
+        public void Inited_IsFalse_ByDefault()
         {
             var entity = new Entity();
             Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
-        public void Spawned_IsTrue_AfterSpawn()
+        public void Inited_IsTrue_AfterInit()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             Assert.IsTrue(entity.Initialized);
         }
 
         [Test]
-        public void Spawned_IsFalse_AfterDespawn()
+        public void Inited_IsFalse_AfterDispose()
         {
             var entity = new Entity();
-            entity.Spawn();
-            entity.Despawn();
+            entity.Init();
+            entity.Dispose();
 
             Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
-        public void Spawned_RemainsTrue_OnMultipleSpawnCalls()
+        public void Inited_RemainsTrue_OnMultipleInitCalls()
         {
             var entity = new Entity();
-            entity.Spawn();
-            entity.Spawn(); // повторный вызов
+            entity.Init();
+            entity.Init(); // повторный вызов
 
             Assert.IsTrue(entity.Initialized);
         }
@@ -456,7 +456,7 @@ namespace Atomic.Entities
         public void Enabled_IsTrue_AfterEnable()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             Assert.IsTrue(entity.Enabled);
@@ -466,7 +466,7 @@ namespace Atomic.Entities
         public void Enabled_IsFalse_AfterDisable()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Disable();
 
@@ -474,12 +474,12 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Enabled_IsFalse_AfterDespawn()
+        public void Enabled_IsFalse_AfterDispose()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
-            entity.Despawn(); // вызывает Disable()
+            entity.Dispose(); // вызывает Disable()
 
             Assert.IsFalse(entity.Enabled);
         }
@@ -488,7 +488,7 @@ namespace Atomic.Entities
         public void Enabled_RemainsTrue_OnMultipleEnableCalls()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Enable(); // повторный вызов
 
@@ -499,7 +499,7 @@ namespace Atomic.Entities
         public void Enabled_RemainsFalse_OnMultipleDisableCalls()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Disable();
             entity.Disable();
@@ -509,71 +509,71 @@ namespace Atomic.Entities
 
         #endregion
 
-        #region Spawn
+        #region Init
 
         [Test]
-        public void Spawn_SetsSpawnedTrue()
+        public void Init_SetsInitedTrue()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             Assert.IsTrue(entity.Initialized);
         }
 
         [Test]
-        public void Spawn_DoesNothing_IfAlreadySpawned()
+        public void Init_DoesNothing_IfAlreadyInited()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool called = false;
             entity.OnInitialized += () => called = true;
 
-            entity.Spawn(); // второй вызов
+            entity.Init(); // второй вызов
 
             Assert.IsFalse(called); // не должно вызваться второй раз
         }
 
         [Test]
-        public void Spawn_InvokesOnSpawned()
+        public void Init_InvokesOnInited()
         {
             var entity = new Entity();
 
             bool called = false;
             entity.OnInitialized += () => called = true;
 
-            entity.Spawn();
+            entity.Init();
 
             Assert.IsTrue(called);
         }
 
         [Test]
-        public void Spawn_InvokesIEntitySpawnInterfaces()
+        public void Init_InvokesIEntityInitInterfaces()
         {
             var stub = new EntityInitStub();
             var entity = new Entity();
 
             entity.AddBehaviour(stub);
-            entity.Spawn();
+            entity.Init();
 
-            Assert.IsTrue(stub.WasSpawn);
+            Assert.IsTrue(stub.WasInit);
         }
 
         [Test]
-        public void Spawn_InvokesOnStateChanged()
+        public void Init_InvokesOnStateChanged()
         {
             var entity = new Entity();
 
             bool called = false;
             entity.OnStateChanged += () => called = true;
 
-            entity.Spawn();
+            entity.Init();
 
             Assert.IsTrue(called);
         }
 
         [Test]
-        public void Spawn()
+        public void Init()
         {
             //Arrange
             var entity = new Entity();
@@ -584,7 +584,7 @@ namespace Atomic.Entities
             entity.OnInitialized += () => wasEvent = true;
 
             //Act
-            entity.Spawn();
+            entity.Init();
 
             //Assert
             Assert.IsTrue(entity.Initialized);
@@ -594,102 +594,102 @@ namespace Atomic.Entities
 
         #endregion
 
-        #region Despawn
+        #region Dispose
 
         [Test]
-        public void Despawn_SetsSpawnedFalse()
+        public void Dispose_SetsInitedFalse()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
-        public void Despawn_DoesNothing_IfNotSpawned()
+        public void Dispose_DoesNothing_IfNotInited()
         {
-            var entity = new Entity(); // Не вызывали Spawn()
+            var entity = new Entity(); // Не вызывали Init()
 
             bool called = false;
-            entity.OnDespawned += () => called = true;
+            entity.OnDisposed += () => called = true;
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsFalse(called); // ничего не произошло
         }
 
         [Test]
-        public void Despawn_DisablesEntity_IfEnabled()
+        public void Dispose_DisablesEntity_IfEnabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsFalse(entity.Enabled);
         }
 
         [Test]
-        public void Despawn_InvokesIEntityDespawnBehaviours()
+        public void Dispose_InvokesIEntityDisposeBehaviours()
         {
             var stub = new EntityDisposeStub();
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
-            entity.Despawn();
+            entity.Init();
+            entity.Dispose();
 
-            Assert.IsTrue(stub.WasDespawn);
+            Assert.IsTrue(stub.WasDispose);
         }
 
         [Test]
-        public void Despawn_InvokesOnDespawnedEvent()
+        public void Dispose_InvokesOnDisposedEvent()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool called = false;
-            entity.OnDespawned += () => called = true;
+            entity.OnDisposed += () => called = true;
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsTrue(called);
         }
 
         [Test]
-        public void Despawn_InvokesOnStateChanged()
+        public void Dispose_InvokesOnStateChanged()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool stateChanged = false;
             entity.OnStateChanged += () => stateChanged = true;
 
-            entity.Despawn();
+            entity.Dispose();
 
             Assert.IsTrue(stateChanged);
         }
 
         [Test]
-        public void Despawn_CalledMultipleTimes_OnlyFirstAffectsState()
+        public void Dispose_CalledMultipleTimes_OnlyFirstAffectsState()
         {
             var entity = new Entity();
-            entity.Spawn();
-            entity.Despawn();
+            entity.Init();
+            entity.Dispose();
 
             bool called = false;
-            entity.OnDespawned += () => called = true;
+            entity.OnDisposed += () => called = true;
 
-            entity.Despawn(); // второй вызов не должен триггерить событие
+            entity.Dispose(); // второй вызов не должен триггерить событие
 
             Assert.IsFalse(called);
         }
 
         [Test]
-        public void Despawn()
+        public void Dispose()
         {
             //Arrange
             var entity = new Entity();
@@ -697,12 +697,12 @@ namespace Atomic.Entities
             var behaviourStub = new DummyEntityBehaviour();
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnDespawned += () => wasEvent = true;
+            entity.OnDisposed += () => wasEvent = true;
 
             //Act
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
-            entity.Despawn();
+            entity.Dispose();
 
             //Assert
             Assert.IsTrue(behaviourStub.Disposed);
@@ -720,7 +720,7 @@ namespace Atomic.Entities
         public void Enable_SetsEnabledTrue()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             entity.Enable();
 
@@ -728,7 +728,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Enable_CallsSpawn_IfNotSpawned()
+        public void Enable_CallsInit_IfNotInited()
         {
             var entity = new Entity();
             bool spawned = false;
@@ -747,7 +747,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             Assert.IsTrue(stub.WasEnable);
@@ -757,7 +757,7 @@ namespace Atomic.Entities
         public void Enable_InvokesOnEnabledEvent()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool called = false;
             entity.OnEnabled += () => called = true;
@@ -771,7 +771,7 @@ namespace Atomic.Entities
         public void Enable_InvokesOnStateChanged()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool stateChanged = false;
             entity.OnStateChanged += () => stateChanged = true;
@@ -785,7 +785,7 @@ namespace Atomic.Entities
         public void Enable_DoesNotCallTwice()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             bool wasCalled = false;
@@ -810,7 +810,7 @@ namespace Atomic.Entities
             entity.OnEnabled += () => enabledEvent = true;
 
             //Act
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             //Assert
@@ -843,7 +843,7 @@ namespace Atomic.Entities
             entity.OnDisabled += () => wasEvent = true;
 
             //Act
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Disable();
 
@@ -857,7 +857,7 @@ namespace Atomic.Entities
         public void Disable_SetsEnabledFalse()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.Disable();
@@ -872,7 +872,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Disable();
 
@@ -883,7 +883,7 @@ namespace Atomic.Entities
         public void Disable_InvokesOnDisabledEvent()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             bool called = false;
@@ -898,7 +898,7 @@ namespace Atomic.Entities
         public void Disable_InvokesOnStateChanged()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             bool stateChanged = false;
@@ -913,7 +913,7 @@ namespace Atomic.Entities
         public void Disable_DoesNothing_IfNotEnabled()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
 
             bool wasCalled = false;
             entity.OnDisabled += () => wasCalled = true;
@@ -927,7 +927,7 @@ namespace Atomic.Entities
         public void Disable_CanBeCalledMultipleTimes_Safely()
         {
             var entity = new Entity();
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.Disable();
 
@@ -970,7 +970,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn(); // но не Enable()
+            entity.Init(); // но не Enable()
             entity.OnUpdate(0.5f);
 
             Assert.IsFalse(stub.WasUpdated);
@@ -983,7 +983,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.OnUpdate(0.25f);
 
@@ -999,7 +999,7 @@ namespace Atomic.Entities
 
             entity.OnUpdated += dt => calledDelta = dt;
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.OnUpdate(0.75f);
 
@@ -1015,7 +1015,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.OnUpdate(0.1f);
@@ -1035,7 +1035,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn(); // не включаем
+            entity.Init(); // не включаем
             entity.OnFixedUpdate(0.02f);
 
             Assert.IsFalse(stub.WasCalled);
@@ -1048,7 +1048,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.OnFixedUpdate(0.02f);
@@ -1065,7 +1065,7 @@ namespace Atomic.Entities
 
             entity.OnFixedUpdated += dt => delta = dt;
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.OnFixedUpdate(0.05f);
@@ -1082,7 +1082,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.OnFixedUpdate(0.03f);
@@ -1122,7 +1122,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             // not enabling
             entity.OnLateUpdate(0.04f);
 
@@ -1136,7 +1136,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviour(stub);
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
 
             entity.OnLateUpdate(0.04f);
@@ -1153,7 +1153,7 @@ namespace Atomic.Entities
 
             entity.OnLateUpdated += dt => calledDelta = dt;
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.OnLateUpdate(0.06f);
 
@@ -1169,7 +1169,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
-            entity.Spawn();
+            entity.Init();
             entity.Enable();
             entity.OnLateUpdate(0.07f);
 

@@ -10,14 +10,12 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Spawn();
 
             // Act
             world.Dispose();
 
             // Assert
             Assert.IsTrue(entity.WasDisposed);
-            Assert.IsFalse(world.IsSpawned);
         }
 
         [Test]
@@ -34,7 +32,6 @@ namespace Atomic.Entities
             // Assert
             Assert.IsTrue(entity.WasDisposed);
             Assert.IsFalse(world.Enabled);
-            Assert.IsFalse(world.IsSpawned);
         }
 
         [Test]
@@ -97,7 +94,6 @@ namespace Atomic.Entities
 
             // Assert
             Assert.IsFalse(world.Enabled);
-            Assert.IsFalse(world.IsSpawned);
         }
     }
 }

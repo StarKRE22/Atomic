@@ -23,7 +23,6 @@ namespace Atomic.Entities
 
             //Wait Awake, Start
             yield return null;
-            Assert.IsTrue(world.IsSpawned);
             Assert.IsTrue(world.Enabled);
             Assert.IsTrue(entity.Initialized);
             Assert.IsTrue(entity.Enabled);
@@ -51,7 +50,6 @@ namespace Atomic.Entities
             //Wait OnDestroy
             yield return null;
 
-            Assert.IsFalse(world.IsSpawned);
             Assert.IsFalse(entity.Initialized);
             Assert.IsTrue(stub.Disposed);
         }

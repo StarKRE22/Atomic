@@ -364,13 +364,13 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void AddBehaviour_AfterSpawn_BehaviourSpawned()
+        public void AddBehaviour_AfterInit_BehaviourInited()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = SceneEntity.Create();
-            entity.Inii();
+            entity.Init();
 
             //Act
             entity.AddBehaviour(behaviourStub);
@@ -381,13 +381,13 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void AddBehaviour_AfterEnable_BehaviourSpawnedAndEnabled()
+        public void AddBehaviour_AfterEnable_BehaviourInitedAndEnabled()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
 
             var entity = SceneEntity.Create();
-            entity.Inii();
+            entity.Init();
             entity.Enable();
 
             //Act
@@ -433,7 +433,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void DelBehaviour_BeforeSpawn_NotDisabledAndDespawned()
+        public void DelBehaviour_BeforeInit_NotDisabledAndDespawned()
         {
             //Arrange:
             var behaviourStub = new DummyEntityBehaviour();
@@ -455,7 +455,7 @@ namespace Atomic.Entities
 
             var entity = SceneEntity.Create();
             entity.AddBehaviour(behaviourStub);
-            entity.Inii();
+            entity.Init();
             entity.Enable();
 
             //Act

@@ -2,17 +2,16 @@ using NUnit.Framework;
 
 namespace Atomic.Entities
 {
-    public class EntityWorld_Activate_Tests
+    public class EntityWorld_Enable_Tests
     {
         [Test]
-        public void Activate_Should_SpawnAndActivate_When_NotSpawnedAndNotActive()
+        public void Enable_Should_SpawnAndEnable_When_NotSpawnedAndNotActive()
         {
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
 
             // Assert preconditions
-            Assert.IsFalse(world.IsSpawned);
             Assert.IsFalse(world.Enabled);
             Assert.IsFalse(entity.WasInitialized);
             Assert.IsFalse(entity.WasEnabled);
@@ -21,14 +20,13 @@ namespace Atomic.Entities
             world.Enable();
 
             // Assert
-            Assert.IsTrue(world.IsSpawned);
             Assert.IsTrue(world.Enabled);
             Assert.IsTrue(entity.WasInitialized);
             Assert.IsTrue(entity.WasEnabled);
         }
 
         [Test]
-        public void Activate_Should_DoNothing_When_AlreadyActive()
+        public void Enable_Should_DoNothing_When_AlreadyActive()
         {
             // Arrange
             var entity = new EntityDummy();
@@ -36,17 +34,17 @@ namespace Atomic.Entities
 
             // Act
             world.Enable(); // первая активация
-            var wasActivated = entity.WasEnabled;
+            var wasEnabled = entity.WasEnabled;
             world.Enable(); // вторая — должна быть проигнорирована
 
             // Assert
             Assert.IsTrue(world.Enabled);
-            Assert.IsTrue(wasActivated);
-            // Нет повторной активации, логика в Activate() это предотвращает
+            Assert.IsTrue(wasEnabled);
+            // Нет повторной активации, логика в Enable() это предотвращает
         }
 
         [Test]
-        public void Activate_Should_RaiseOnActivatedEvent()
+        public void Enable_Should_RaiseOnEnabledEvent()
         {
             // Arrange
             var world = new EntityWorld<Entity>();

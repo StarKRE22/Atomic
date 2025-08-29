@@ -2,11 +2,11 @@ namespace Atomic.Entities
 {
     public sealed class EntityInitStub : IEntityInit
     {
-        public bool WasSpawn;
+        public bool WasInit;
         
         public void Init(IEntity entity)
         {
-            WasSpawn = true;
+            WasInit = true;
         }
     }
 }

@@ -20,22 +20,6 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnAdd_Should_SpawnEntity_WhenWorldIsSpawned()
-        {
-            // Arrange
-            var entity = new EntityDummy();
-            var world = new EntityWorld<Entity>();
-            world.Spawn();
-
-            // Act
-            world.Add(entity);
-
-            // Assert
-            Assert.IsTrue(entity.WasInitialized);
-            Assert.IsFalse(entity.WasEnabled);
-        }
-
-        [Test]
         public void OnAdd_Should_SpawnAndActivateEntity_WhenWorldIsActive()
         {
             // Arrange
