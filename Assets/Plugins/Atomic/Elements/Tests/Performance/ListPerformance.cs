@@ -1,8 +1,9 @@
+#if UNITY_6000
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 
-namespace Atomic.Entities
+namespace Atomic.Elements
 {
     [TestFixture]
     public sealed class ListPerformance
@@ -97,6 +98,23 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("List.Remove()", SampleUnit.Microsecond))
                 .Run();
         }
+        
+        [Test, Performance]
+        public void RemoveAt()
+        {
+            var list = new List<object>();
+
+            Measure.Method(() =>
+                {
+                    for (int i = N - 1; i >= 0; i--)
+                        list.RemoveAt(i);
+                })
+                .SetUp(() => list.AddRange(_source))
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("List.RemoveAt()", SampleUnit.Microsecond))
+                .Run();
+        }
 
         [Test, Performance]
         public void Indexer_Get()
@@ -145,5 +163,39 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("List.For loop traversal", SampleUnit.Microsecond))
                 .Run();
         }
+        
+        [Test, Performance]
+        public void CopyTo()
+        {
+            var list = new List<object>(_source);
+            object[] buffer = new object[N];
+
+            Measure.Method(() =>
+                {
+                    list.CopyTo(buffer);
+                })
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("List.CopyTo()", SampleUnit.Microsecond))
+                .Run();
+        }
+        
+        [Test, Performance]
+        public void Insert()
+        {
+            var list = new List<object>();
+
+            Measure.Method(() =>
+                {
+                    for (int i = 0; i < N; i++)
+                        list.Insert(0, _source[i]); // вставляем в начало списка
+                })
+                .CleanUp(list.Clear) // очищаем список после каждого измерения
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("List.Insert()", SampleUnit.Microsecond))
+                .Run();
+        }
     }
 }
+#endif

@@ -82,7 +82,7 @@ namespace Atomic.Elements
             this.items = items.ToArray();
             this.count = this.items.Length;
         }
-        
+
         /// <inheritdoc/>
         public void Dispose()
         {
@@ -102,11 +102,11 @@ namespace Atomic.Elements
             }
             set
             {
-                if (index < 0 || index >= this.count)
-                    throw new IndexOutOfRangeException($"Index {index} out of range!");
-                
                 if (value == null)
                     throw new ArgumentNullException(nameof(value));
+                
+                if (index < 0 || index >= this.count)
+                    throw new IndexOutOfRangeException($"Index {index} out of range!");
                 
                 if (s_comparer.Equals(this.items[index], value))
                     return;
@@ -122,7 +122,7 @@ namespace Atomic.Elements
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            
+
             int index = this.count;
             if (index == this.items.Length)
             {
@@ -140,9 +140,9 @@ namespace Atomic.Elements
             this.OnItemInserted?.Invoke(index, item);
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
-        /// Adds a range of items to the end of the list.
+        /// Adds a range of items to the end of the list efficiently.
         /// </summary>
         /// <param name="items">The items to add.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="items"/> is <c>null</c>.</exception>
@@ -151,13 +151,48 @@ namespace Atomic.Elements
             if (items == null)
                 throw new ArgumentNullException(nameof(items));
 
+            if (items is ICollection<T> collection)
+            {
+                //Ensure capacity
+                int requiredCapacity = this.count + collection.Count;
+                if (requiredCapacity > this.items.Length)
+                {
+                    int newCapacity = Math.Max(this.items.Length * 2, requiredCapacity);
+                    Array.Resize(ref this.items, newCapacity);
+                }
+            }
+
+            int initialCount = this.count;
+
             foreach (T item in items)
-                this.Add(item);
+            {
+                if (item == null)
+                    throw new ArgumentNullException(nameof(item));
+
+                if (this.count == this.items.Length)
+                {
+                    // Expand array size
+                    int newCapacity = this.items.Length == 0 ? 1 : this.items.Length * 2;
+                    if (newCapacity < 0)
+                        newCapacity = int.MaxValue;
+
+                    Array.Resize(ref this.items, newCapacity);
+                }
+
+                this.items[this.count++] = item;
+                this.OnItemInserted?.Invoke(this.count - 1, item);
+            }
+
+            if (this.count > initialCount)
+                this.OnStateChanged?.Invoke();
         }
-        
+
         /// <inheritdoc/>
         public void Insert(int index, T item)
         {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+            
             if (index < 0 || index > this.count)
                 throw new IndexOutOfRangeException($"Index {index} out of range!");
 
@@ -171,7 +206,7 @@ namespace Atomic.Elements
                 Array.Resize(ref this.items, newCapacity);
             }
 
-            if (index < this.count) 
+            if (index < this.count)
                 Array.Copy(this.items, index, this.items, index + 1, this.count - index);
 
             this.items[index] = item;
@@ -182,8 +217,6 @@ namespace Atomic.Elements
         }
 
         /// <inheritdoc/>
-    
-
         /// <inheritdoc/>
         public bool Contains(T item)
         {
@@ -228,7 +261,7 @@ namespace Atomic.Elements
             T item = this.items[index];
             this.count--;
 
-            if (index < this.count) 
+            if (index < this.count)
                 Array.Copy(this.items, index + 1, this.items, index, this.count - index);
 
             this.OnItemDeleted?.Invoke(index, item);
@@ -243,10 +276,10 @@ namespace Atomic.Elements
 
             T[] buffer = s_arrayPool.Rent(count);
             Array.Copy(this.items, buffer, count);
-            
+
             this.count = 0;
             this.OnStateChanged?.Invoke();
-            
+
             try
             {
                 for (int i = 0; i < count; i++)
@@ -257,7 +290,7 @@ namespace Atomic.Elements
                 s_arrayPool.Return(buffer);
             }
         }
-        
+
         /// <inheritdoc/>
         public int IndexOf(T item)
         {
@@ -265,7 +298,7 @@ namespace Atomic.Elements
                 for (int i = 0; i < this.count; i++)
                     if (s_comparer.Equals(this.items[i], item))
                         return i;
-            
+
             return -1;
         }
 
@@ -273,7 +306,6 @@ namespace Atomic.Elements
         public void CopyTo(T[] array, int arrayIndex = 0) =>
             Array.Copy(this.items, 0, array, arrayIndex, this.count);
 
-      
 
         /// <summary>
         /// Updates the contents of the list with the values from the specified <paramref name="newItems"/> collection.
@@ -311,7 +343,7 @@ namespace Atomic.Elements
                 index++;
             }
 
-            while (enumerator.MoveNext()) 
+            while (enumerator.MoveNext())
                 this.Add(enumerator.Current);
 
             while (index < this.count)
@@ -326,7 +358,7 @@ namespace Atomic.Elements
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         public Enumerator GetEnumerator() => new(this);
 
         /// <inheritdoc/>

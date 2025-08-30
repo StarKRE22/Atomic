@@ -1,26 +1,27 @@
+#if UNITY_6000
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 
-namespace Atomic.Entities
+namespace Atomic.Elements
 {
-    public sealed class HashSet_Performance
+    public sealed class HashSetPerformance
     {
         private const int N = 1000;
-        private Entity[] _source;
+        private object[] _source;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            _source = new Entity[N];
+            _source = new object[N];
             for (int i = 0; i < N; i++)
-                _source[i] = new Entity();
+                _source[i] = new object();
         }
 
         [Test, Performance]
         public void Contains()
         {
-            var set = new HashSet<Entity>();
+            var set = new HashSet<object>();
             set.UnionWith(_source);
 
             Measure.Method(() =>
@@ -39,7 +40,7 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Add()
         {
-            var set = new HashSet<Entity>();
+            var set = new HashSet<object>();
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++)
@@ -57,7 +58,7 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Clear()
         {
-            var set = new HashSet<Entity>();
+            var set = new HashSet<object>();
             Measure
                 .Method(set.Clear)
                 .SetUp(() => set.UnionWith(_source))
@@ -70,12 +71,12 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Enumerator()
         {
-            var set = new HashSet<Entity>();
+            var set = new HashSet<object>();
             set.UnionWith(_source);
 
             Measure.Method(() =>
                 {
-                    foreach (Entity entity in set)
+                    foreach (object entity in set)
                         _ = entity;
                 })
                 .WarmupCount(5)
@@ -87,7 +88,7 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Remove()
         {
-            var set = new HashSet<Entity>();
+            var set = new HashSet<object>();
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++)
@@ -103,3 +104,4 @@ namespace Atomic.Entities
         }
     }
 }
+#endif

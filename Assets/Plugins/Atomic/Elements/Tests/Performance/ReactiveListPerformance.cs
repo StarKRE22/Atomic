@@ -1,3 +1,4 @@
+#if UNITY_6000
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 
@@ -33,27 +34,22 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.Indexer get", SampleUnit.Microsecond))
                 .Run();
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
 
         [Test, Performance]
         public void Indexer_Set()
         {
             var list = new ReactiveList<object>(N);
+            
+            object dummy = new object();
+            for (var i = 0; i < N; i++)
+                list.Add(dummy);
 
             Measure.Method(() =>
                 {
                     for (var i = 0; i < N; i++)
                         list[i] = Dummy;
                 })
-                .CleanUp(list.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveList.Indexer set", SampleUnit.Microsecond))
@@ -76,18 +72,35 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.Add()", SampleUnit.Microsecond))
                 .Run();
         }
+        
+        [Test, Performance]
+        public void Remove()
+        {
+            var list = new ReactiveList<object>();
+
+            Measure.Method(() =>
+                {
+                    for (var i = 0; i < N; i++)
+                        list.Remove(_source[i]);
+                })
+                .SetUp(() => list.AddRange(_source))
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("ReactiveList.Remove()", SampleUnit.Microsecond))
+                .Run();
+        }
 
         [Test, Performance]
         public void RemoveAt()
         {
-            var list = new ReactiveList<object>(_source);
+            var list = new ReactiveList<object>();
 
             Measure.Method(() =>
                 {
                     for (int i = N - 1; i >= 0; i--)
                         list.RemoveAt(i);
                 })
-                .SetUp(() => list.Populate(_source))
+                .SetUp(() => list.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveList.RemoveAt()", SampleUnit.Microsecond))
@@ -135,7 +148,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.CopyTo()", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Insert()
         {
@@ -152,7 +165,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.Insert()", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Contains()
         {
@@ -188,3 +201,4 @@ namespace Atomic.Elements
         }
     }
 }
+#endif

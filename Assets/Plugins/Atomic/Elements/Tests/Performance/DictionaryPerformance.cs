@@ -4,9 +4,9 @@ using NUnit.Framework;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.PerformanceTesting;
 
-namespace Atomic.Entities
+namespace Atomic.Elements
 {
-    public sealed class Dictionary_Performance
+    public sealed class DictionaryPerformance
     {
         private const int N = 1000;
         private Dictionary<int, object> _source;

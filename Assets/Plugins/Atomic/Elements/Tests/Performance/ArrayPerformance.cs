@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.PerformanceTesting;
 
-namespace Atomic.Entities
+namespace Atomic.Elements
 {
     public class ArrayPerformance
     {
