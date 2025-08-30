@@ -58,7 +58,7 @@
 - **Collections**
   - [ReactiveArray](Collections/ReactiveArray.md)
   - [ReactiveList](Collections/ReactiveList.md)
-  - [ReactiveLinkedList]
+  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md)
   - [ReactiveDictionary]
   - [ReactiveHashSet]
 

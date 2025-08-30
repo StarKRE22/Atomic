@@ -16,7 +16,9 @@ namespace Atomic.Elements
     public partial class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable
     {
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer<T>.Default;
+      
         private const int UNDEFINED_INDEX = -1;
+        
         protected const int INITIAL_CAPACITY = 4;
 
         /// <summary>
