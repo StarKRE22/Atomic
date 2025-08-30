@@ -2,12 +2,12 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void Clear_NonEmptyList_EmptiesList()
         {
-            var list = new LinkedList<int>(1, 2, 3, 4);
+            var list = new ReactiveLinkedList<int>(1, 2, 3, 4);
             Assert.AreEqual(4, list.Count);
 
             list.Clear();
@@ -22,7 +22,7 @@ namespace Atomic.Elements
         [Test]
         public void Clear_EmptyList_StillEmpty()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             Assert.AreEqual(0, list.Count);
 
             list.Clear();
@@ -33,7 +33,7 @@ namespace Atomic.Elements
         [Test]
         public void Clear_AddAfterClear_WorksCorrectly()
         {
-            var list = new LinkedList<int>(1, 2);
+            var list = new ReactiveLinkedList<int>(1, 2);
             list.Clear();
             list.Add(5);
             list.Add(10);

@@ -14,7 +14,7 @@ namespace Atomic.Entities
         /// Called to draw gizmos for the specified entity.
         /// </summary>
         /// <param name="entity">The entity for which gizmos should be drawn.</param>
-        void OnGizmosDraw(IEntity entity);
+        void DrawGizmos(IEntity entity);
     }
 
     /// <summary>
@@ -32,9 +32,9 @@ namespace Atomic.Entities
         /// Called to draw gizmos for the specified strongly-typed entity.
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void OnGizmosDraw(T entity);
+        void DrawGizmos(T entity);
 
-        void IEntityGizmos.OnGizmosDraw(IEntity entity) => this.OnGizmosDraw((T) entity);
+        void IEntityGizmos.DrawGizmos(IEntity entity) => this.DrawGizmos((T) entity);
     }
 }
 #endif

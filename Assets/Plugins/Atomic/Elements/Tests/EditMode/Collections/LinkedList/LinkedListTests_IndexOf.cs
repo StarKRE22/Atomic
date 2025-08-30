@@ -2,12 +2,12 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void IndexOf_ItemExists_ReturnsCorrectIndex()
         {
-            var list = new LinkedList<int>(1, 2, 3, 4);
+            var list = new ReactiveLinkedList<int>(1, 2, 3, 4);
 
             Assert.AreEqual(0, list.IndexOf(1));
             Assert.AreEqual(2, list.IndexOf(3));
@@ -17,7 +17,7 @@ namespace Atomic.Elements
         [Test]
         public void IndexOf_ItemDoesNotExist_ReturnsMinusOne()
         {
-            var list = new LinkedList<int>(1, 2, 3);
+            var list = new ReactiveLinkedList<int>(1, 2, 3);
 
             Assert.AreEqual(-1, list.IndexOf(5));
         }
@@ -25,7 +25,7 @@ namespace Atomic.Elements
         [Test]
         public void IndexOf_NullItem_ReturnsMinusOne()
         {
-            var list = new LinkedList<string>("a", "b", "c");
+            var list = new ReactiveLinkedList<string>("a", "b", "c");
 
             Assert.AreEqual(-1, list.IndexOf(null));
         }
@@ -33,7 +33,7 @@ namespace Atomic.Elements
         [Test]
         public void IndexOf_EmptyList_ReturnsMinusOne()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
 
             Assert.AreEqual(-1, list.IndexOf(1));
         }
@@ -41,7 +41,7 @@ namespace Atomic.Elements
         [Test]
         public void IndexOf_Duplicates_ReturnsFirstOccurrence()
         {
-            var list = new LinkedList<int>(1, 2, 3, 2, 4);
+            var list = new ReactiveLinkedList<int>(1, 2, 3, 2, 4);
 
             Assert.AreEqual(1, list.IndexOf(2));
         }

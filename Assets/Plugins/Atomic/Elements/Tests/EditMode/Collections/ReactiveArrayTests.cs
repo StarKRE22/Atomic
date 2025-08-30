@@ -189,7 +189,7 @@ namespace Atomic.Elements
             array.OnStateChanged += () => stateChanged = true;
 
             // Act
-            array.Replace(new[] {10, 2, 30});
+            array.Populate(new[] {10, 2, 30});
 
             // Assert
             Assert.That(array[0], Is.EqualTo(10));
@@ -204,21 +204,15 @@ namespace Atomic.Elements
         public void SetAll_NullInput_ThrowsArgumentNullException()
         {
             var array = new ReactiveArray<string>(3);
-            Assert.Throws<ArgumentNullException>(() => array.Replace(null));
+            Assert.Throws<ArgumentNullException>(() => array.Populate(null));
         }
-
-        [Test]
-        public void SetAll_TooFewElements_ThrowsArgumentException()
-        {
-            var array = new ReactiveArray<int>(3);
-            Assert.Throws<ArgumentException>(() => array.Replace(new[] {1, 2}));
-        }
+        
 
         [Test]
         public void SetAll_TooManyElements_ThrowsArgumentException()
         {
             var array = new ReactiveArray<int>(2);
-            Assert.Throws<ArgumentException>(() => array.Replace(new[] {1, 2, 3}));
+            Assert.Throws<ArgumentException>(() => array.Populate(new[] {1, 2, 3}));
         }
 
         [Test]
@@ -233,7 +227,7 @@ namespace Atomic.Elements
             array.OnStateChanged += () => stateChanged = true;
 
             // Act
-            array.Replace(new[] {1, 2, 3});
+            array.Populate(new[] {1, 2, 3});
 
             // Assert
             Assert.That(itemChangedCalled, Is.False);

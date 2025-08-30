@@ -3,12 +3,12 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void Insert_AtBeginning_ListIsUpdated()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(2);
             list.Add(3);
 
@@ -21,7 +21,7 @@ namespace Atomic.Elements
         [Test]
         public void Insert_AtMiddle_ListIsUpdated()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(1);
             list.Add(3);
 
@@ -34,7 +34,7 @@ namespace Atomic.Elements
         [Test]
         public void Insert_AtEnd_ListIsUpdated()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(1);
             list.Add(2);
 
@@ -47,7 +47,7 @@ namespace Atomic.Elements
         [Test]
         public void Insert_NullItem_DoesNotIncreaseCount()
         {
-            var list = new LinkedList<string>();
+            var list = new ReactiveLinkedList<string>();
             list.Insert(0, null);
 
             Assert.AreEqual(0, list.Count);
@@ -56,7 +56,7 @@ namespace Atomic.Elements
         [Test]
         public void Insert_InvalidIndex_ThrowsArgumentOutOfRangeException()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(1);
 
             Assert.Throws<ArgumentOutOfRangeException>(() => list.Insert(-1, 10));
@@ -66,7 +66,7 @@ namespace Atomic.Elements
         [Test]
         public void Insert_WhenCapacityExceeded_ResizesInternalArray()
         {
-            var list = new LinkedList<int>(1); // initial capacity = 1
+            var list = new ReactiveLinkedList<int>(1); // initial capacity = 1
             list.Add(1);
 
             list.Insert(1, 2); // should trigger resize

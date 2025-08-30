@@ -7,38 +7,13 @@ namespace Atomic.Entities
     public class EntityWorld_OnStateChanged_Tests
     {
         [Test]
-        public void Spawn_Raises_OnStateChanged()
-        {
-            var world = new EntityWorld<Entity>();
-            bool called = false;
-            world.OnStateChanged += () => called = true;
-
-            world.Spawn();
-
-            Assert.IsTrue(called);
-        }
-
-        [Test]
-        public void Despawn_Raises_OnStateChanged()
-        {
-            var world = new EntityWorld<Entity>();
-            world.Spawn(); // чтобы _spawned = true
-            bool called = false;
-            world.OnStateChanged += () => called = true;
-
-            world.Despawn();
-
-            Assert.IsTrue(called);
-        }
-
-        [Test]
         public void Enable_Raises_OnStateChanged()
         {
             var world = new EntityWorld<Entity>();
             bool called = false;
             world.OnStateChanged += () => called = true;
 
-            world.Activate();
+            world.Enable();
 
             Assert.IsTrue(called);
         }
@@ -47,11 +22,11 @@ namespace Atomic.Entities
         public void Disable_Raises_OnStateChanged()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate(); // чтобы _enabled = true
+            world.Enable(); // чтобы _enabled = true
             bool called = false;
             world.OnStateChanged += () => called = true;
 
-            world.Deactivate();
+            world.Disable();
 
             Assert.IsTrue(called);
         }
@@ -103,7 +78,7 @@ namespace Atomic.Entities
         public void Dispose_Raises_OnStateChanged()
         {
             var world = new EntityWorld<Entity>(new Entity());
-            world.Activate(); // Ensure state changes on Dispose
+            world.Enable(); // Ensure state changes on Dispose
 
             bool called = false;
             world.OnStateChanged += () => called = true;

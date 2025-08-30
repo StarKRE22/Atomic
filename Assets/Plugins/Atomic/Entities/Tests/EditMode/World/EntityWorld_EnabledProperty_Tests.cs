@@ -9,43 +9,43 @@ namespace Atomic.Entities
         public void Enabled_IsFalse_ByDefault()
         {
             var world = new EntityWorld<Entity>();
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
         }
 
         [Test]
         public void Enabled_IsTrue_AfterEnable()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();
-            Assert.IsTrue(world.IsActive);
+            world.Enable();
+            Assert.IsTrue(world.Enabled);
         }
 
         [Test]
         public void Enabled_IsFalse_AfterDisable()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();
-            world.Deactivate();
-            Assert.IsFalse(world.IsActive);
+            world.Enable();
+            world.Disable();
+            Assert.IsFalse(world.Enabled);
         }
 
         [Test]
         public void Enabled_RemainsTrue_IfEnable_CalledAgain()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();
-            world.Activate(); // повторный вызов — не должен сбросить состояние
-            Assert.IsTrue(world.IsActive);
+            world.Enable();
+            world.Enable(); // повторный вызов — не должен сбросить состояние
+            Assert.IsTrue(world.Enabled);
         }
 
         [Test]
         public void Enabled_RemainsFalse_IfDisable_CalledAgain()
         {
             var world = new EntityWorld<Entity>();
-            world.Activate();
-            world.Deactivate();
-            world.Deactivate(); // второй Disable не должен ничего изменить
-            Assert.IsFalse(world.IsActive);
+            world.Enable();
+            world.Disable();
+            world.Disable(); // второй Disable не должен ничего изменить
+            Assert.IsFalse(world.Enabled);
         }
     }
 

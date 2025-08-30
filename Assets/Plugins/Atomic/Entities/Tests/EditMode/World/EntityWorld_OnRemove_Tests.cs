@@ -15,40 +15,24 @@ namespace Atomic.Entities
             world.Remove(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasDeactivated);
-            Assert.IsFalse(entity.WasDespawned);
+            Assert.IsFalse(entity.WasDisabled);
+            Assert.IsFalse(entity.WasDisposed);
         }
 
         [Test]
-        public void OnRemove_Should_Despawn_WhenWorldIsSpawned()
+        public void OnRemove_Should_Disable_But_Not_Dispose_WhenWorldIsActive()
         {
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Spawn();
+            world.Enable();
 
             // Act
             world.Remove(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasDeactivated);
-            Assert.IsTrue(entity.WasDespawned);
-        }
-
-        [Test]
-        public void OnRemove_Should_DeactivateAndDespawn_WhenWorldIsActive()
-        {
-            // Arrange
-            var entity = new EntityDummy();
-            var world = new EntityWorld<Entity>(entity);
-            world.Activate(); // Spawn + Activate
-
-            // Act
-            world.Remove(entity);
-
-            // Assert
-            Assert.IsTrue(entity.WasDeactivated);
-            Assert.IsTrue(entity.WasDespawned);
+            Assert.IsTrue(entity.WasDisabled);
+            Assert.IsFalse(entity.WasDisposed);
         }
     }
 }

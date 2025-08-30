@@ -10,16 +10,16 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>(entity);
-            world.Activate();
+            world.Enable();
 
-            Assert.IsTrue(world.IsActive);
+            Assert.IsTrue(world.Enabled);
 
             // Act
-            world.Deactivate();
+            world.Disable();
 
             // Assert
-            Assert.IsFalse(world.IsActive);
-            Assert.IsTrue(entity.WasDeactivated);
+            Assert.IsFalse(world.Enabled);
+            Assert.IsTrue(entity.WasDisabled);
         }
 
         [Test]
@@ -30,14 +30,14 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>(entity);
 
             // Ensure inactive
-            Assert.IsFalse(world.IsActive);
+            Assert.IsFalse(world.Enabled);
 
             // Act
-            world.Deactivate();
+            world.Disable();
 
             // Assert
-            Assert.IsFalse(world.IsActive); // Still false
-            Assert.IsFalse(entity.WasDeactivated); // Не вызывался
+            Assert.IsFalse(world.Enabled); // Still false
+            Assert.IsFalse(entity.WasDisabled); // Не вызывался
         }
 
         [Test]
@@ -45,12 +45,12 @@ namespace Atomic.Entities
         {
             // Arrange
             var world = new EntityWorld<Entity>();
-            world.Activate(); // Активируем перед деактивацией
+            world.Enable(); // Активируем перед деактивацией
             bool wasCalled = false;
-            world.OnDeactivated += () => wasCalled = true;
+            world.OnDisabled += () => wasCalled = true;
 
             // Act
-            world.Deactivate();
+            world.Disable();
 
             // Assert
             Assert.IsTrue(wasCalled);

@@ -2,19 +2,19 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void Count_InitiallyIsZero()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             Assert.AreEqual(0, list.Count);
         }
 
         [Test]
         public void Count_IncreasesAfterAdd()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(10);
             Assert.AreEqual(1, list.Count);
 
@@ -26,7 +26,7 @@ namespace Atomic.Elements
         [Test]
         public void Count_DecreasesAfterRemove()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -44,7 +44,7 @@ namespace Atomic.Elements
         [Test]
         public void Count_ReflectsConstructorWithItems()
         {
-            var list = new LinkedList<int>(1, 2, 3, 4);
+            var list = new ReactiveLinkedList<int>(1, 2, 3, 4);
             Assert.AreEqual(4, list.Count);
         }
     }

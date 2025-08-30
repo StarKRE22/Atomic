@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
@@ -84,12 +85,11 @@ namespace Atomic.Entities
             _behaviours[_behaviourCount] = behaviour;
             _behaviourCount++;
 
-            //Check for lifecycle
-            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
-                spawnBehaviour.OnSpawn(this);
+            if (_initialized && behaviour is IEntityInit spawnBehaviour)
+                spawnBehaviour.Init(this);
 
-            if (_active)
-                this.ActivateBehaviour(behaviour);
+            if (_enabled)
+                this.EnableBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -133,11 +133,11 @@ namespace Atomic.Entities
             for (int i = index; i < _behaviourCount; i++)
                 _behaviours[i] = _behaviours[i + 1];
 
-            if (_active)
-                this.InactivateBehaviour(behaviour);
+            if (_enabled)
+                this.DisableBehaviour(behaviour);
 
-            if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.OnDespawn(this);
+            if (_initialized && behaviour is IEntityDispose dispose)
+                dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -336,5 +336,37 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructBehaviours(int capacity = 0) =>
             _behaviours = new IEntityBehaviour[capacity];
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void EnableBehaviour(IEntityBehaviour behaviour)
+        {
+            if (behaviour is IEntityEnable enable)
+                enable.Enable(this);
+
+            if (behaviour is IEntityUpdate update)
+                Add(ref _updates, ref _updateCount, update);
+
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
+                Add(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate);
+
+            if (behaviour is IEntityLateUpdate lateUpdate)
+                Add(ref _lateUpdates, ref _lateUpdateCount, lateUpdate);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void DisableBehaviour(IEntityBehaviour behaviour)
+        {
+            if (behaviour is IEntityDisable disable)
+                disable.Disable(this);
+
+            if (behaviour is IEntityUpdate update)
+                Remove(ref _updates, ref _updateCount, update, s_updateComparer);
+
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
+                Remove(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
+
+            if (behaviour is IEntityLateUpdate lateUpdate)
+                Remove(ref _lateUpdates, ref _lateUpdateCount, lateUpdate, s_lateUpdateComparer);
+        }
     }
 }

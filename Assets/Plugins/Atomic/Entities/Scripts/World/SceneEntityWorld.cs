@@ -120,7 +120,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                this.Activate();
+                this.Enable();
                 UpdateLoop.Instance.Add(this);
             }
         }
@@ -129,10 +129,8 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle)
             {
-                this.Spawn();
-                this.Activate();
+                this.Enable();
                 UpdateLoop.Instance.Add(this);
-
                 this.isStarted = true;
             }
         }
@@ -142,19 +140,14 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 UpdateLoop.Instance.Del(this);
-                this.Deactivate();
+                this.Disable();
             }
         }
 
         private void OnDestroy()
         {
-            if (this.useUnityLifecycle && this.isStarted)
-            {
-                this.Despawn();
-                this.isStarted = false;
-            }
-
-            this.Dispose();
+            if (this.useUnityLifecycle) 
+                this.Dispose();
         }
 
         /// <inheritdoc />
@@ -233,33 +226,19 @@ namespace Atomic.Entities
         #endregion
 
         #region Lifecycle
-
+        
         /// <inheritdoc />
-        public event Action OnSpawned
+        public event Action OnEnabled
         {
-            add => _world.OnSpawned += value;
-            remove => _world.OnSpawned -= value;
+            add => _world.OnEnabled += value;
+            remove => _world.OnEnabled -= value;
         }
 
         /// <inheritdoc />
-        public event Action OnDespawned
+        public event Action OnDisabled
         {
-            add => _world.OnDespawned += value;
-            remove => _world.OnDespawned -= value;
-        }
-
-        /// <inheritdoc />
-        public event Action OnActivated
-        {
-            add => _world.OnActivated += value;
-            remove => _world.OnActivated -= value;
-        }
-
-        /// <inheritdoc />
-        public event Action OnDeactivated
-        {
-            add => _world.OnDeactivated += value;
-            remove => _world.OnDeactivated -= value;
+            add => _world.OnDisabled += value;
+            remove => _world.OnDisabled -= value;
         }
 
         /// <inheritdoc />
@@ -284,35 +263,22 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public bool IsSpawned => _world.IsSpawned;
-
-        /// <inheritdoc />
-        public bool IsActive => _world.IsActive;
-
-        /// <inheritdoc />
 #if ODIN_INSPECTOR
-        [Title("Lifecycle")]
-        [Button, HideInEditorMode]
+        [ShowInInspector, ReadOnly]
 #endif
-        public void Spawn() => _world.Spawn();
-
+        public bool Enabled => _world.Enabled;
+        
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Activate() => _world.Activate();
+        public void Enable() => _world.Enable();
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void Deactivate() => _world.Deactivate();
-
-        /// <inheritdoc />
-#if ODIN_INSPECTOR
-        [Button, HideInEditorMode]
-#endif
-        public void Despawn() => _world.Despawn();
+        public void Disable() => _world.Disable();
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR

@@ -8,25 +8,26 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
     /// </summary>
-    public partial class Entity : IEntity, IDisposable
+    public partial class Entity : IEntity
     {
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc/>
-        public virtual event Action OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
-        public int InstanceID => this.instanceId;
+        public int InstanceID => _instanceId;
 
         /// <inheritdoc/>
         public string Name
         {
-            get => this.name;
-            set => this.name = value;
+            get => _name;
+            set => _name = value;
         }
 
-        internal int instanceId;
-        private string name;
+        internal int _instanceId;
+        private string _name;
+        private readonly bool _disposeValues;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class with the specified name, tags, values, and behaviours.
@@ -43,8 +44,9 @@ namespace Atomic.Entities
             string name,
             IEnumerable<int> tags,
             IEnumerable<KeyValuePair<int, object>> values,
-            IEnumerable<IEntityBehaviour> behaviours
-        ) : this(name, tags?.Count() ?? 0, values?.Count() ?? 0, behaviours?.Count() ?? 0)
+            IEnumerable<IEntityBehaviour> behaviours,
+            bool disposeValues = true
+        ) : this(name, tags?.Count() ?? 0, values?.Count() ?? 0, behaviours?.Count() ?? 0, disposeValues)
         {
             this.AddTags(tags);
             this.AddValues(values);
@@ -63,15 +65,35 @@ namespace Atomic.Entities
         /// This constructor prepares internal structures for efficient use by preallocating capacity, and registers the entity
         /// in the <see cref="EntityRegistry"/>.
         /// </remarks>
-        public Entity(string name = null, int tagCapacity = 0, int valueCapacity = 0, int behaviourCapacity = 0)
+        public Entity(
+            string name = null,
+            int tagCapacity = 0,
+            int valueCapacity = 0,
+            int behaviourCapacity = 0,
+            bool disposeValues = true
+        )
         {
-            this.name = name ?? string.Empty;
+            _name = name ?? string.Empty;
+            _disposeValues = disposeValues;
+
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
 
-            EntityRegistry.Instance.Register(this, out this.instanceId);
+            EntityRegistry.Instance.Register(this, out _instanceId);
         }
+
+        /// <inheritdoc/>
+        public override string ToString() => $"{nameof(_name)}: {_name}, {nameof(_instanceId)}: {_instanceId}";
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
+
+        // ReSharper disable once UnusedMember.Global
+        public bool Equals(IEntity other) => other != null && _instanceId == other.InstanceID;
+
+        /// <inheritdoc/>
+        public override int GetHashCode() => _instanceId;
 
         /// <summary>
         /// Releases all resources used by the entity.
@@ -87,48 +109,40 @@ namespace Atomic.Entities
         /// </remarks>
         public void Dispose()
         {
-            this.Despawn();
+            this.OnDispose();
+            this.DisposeInternal();
+
+            if (_disposeValues)
+                this.DisposeValues();
+
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
-            this.UnsubscribeAll();
 
-            EntityRegistry.Instance.Unregister(ref this.instanceId);
-            this.OnDispose();
+            this.OnStateChanged?.Invoke();
+
+            this.UnsubscribeEvents();
+            EntityRegistry.Instance.Unregister(ref _instanceId);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnDispose()
         {
         }
 
-        /// <inheritdoc/>
-        public override string ToString() => $"{nameof(name)}: {name}, {nameof(instanceId)}: {instanceId}";
-
-        /// <inheritdoc/>
-        public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == this.instanceId;
-
-        // ReSharper disable once UnusedMember.Global
-        public bool Equals(IEntity other) => other != null && this.instanceId == other.InstanceID;
-
-        /// <inheritdoc/>
-        public override int GetHashCode() => this.instanceId;
-
-        /// <summary>
-        /// Removes all subscriptions and callbacks associated with this entity.
-        /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void UnsubscribeAll()
+        private void UnsubscribeEvents()
         {
             this.OnStateChanged = null;
 
-            this.OnSpawned = null;
-            this.OnActivated = null;
-            this.OnDeactivated = null;
+            this.OnInitialized = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
 
             this.OnUpdated = null;
             this.OnFixedUpdated = null;
             this.OnLateUpdated = null;
-            this.OnDespawned = null;
+            this.OnDisposed = null;
 
             this.OnBehaviourAdded = null;
             this.OnBehaviourDeleted = null;

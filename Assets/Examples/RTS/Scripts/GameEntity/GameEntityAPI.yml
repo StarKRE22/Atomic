@@ -1,0 +1,56 @@
+header: EntityAPI
+entityType: IGameEntity
+aggressiveInlining: true
+unsafeAccess: true
+
+namespace: RTSGame
+className: GameEntityAPI
+directory: Assets/Examples/RTS/Scripts/GameEntity/
+ 
+imports:
+- UnityEngine
+- Atomic.Entities
+- System
+- Atomic.Elements
+
+tags:
+- Damageable
+- Moveable
+- Projectile
+- Unit
+- Targeted
+
+values:
+
+#Transform
+- Position: IReactiveVariable<Vector3>
+- Rotation: IReactiveVariable<Quaternion>
+- Scale: IValue<float>  
+  
+#Movement  
+- MoveSpeed: IValue<float>
+- MoveRequest: IRequest<Vector3>
+- MoveEvent: IEvent<Vector3>
+
+#Rotation
+- RotationSpeed: IValue<float>
+  
+#Life
+- Health: Health
+- Lifetime: Cooldown
+- DestroyAction: IAction
+- TakeDamageEvent: IEvent<int>
+  
+#Team
+- Team: IReactiveVariable<TeamType>   
+
+#Combat
+- Damage: IValue<int>
+- Target: IReactiveVariable<IGameEntity>
+  
+#Fire
+- FireDistance: IValue<float>
+- FireRequest: IRequest<IGameEntity>
+- FireEvent: IEvent<IGameEntity>
+- FireCooldown: Cooldown
+- FirePoint: IValue<Vector3>

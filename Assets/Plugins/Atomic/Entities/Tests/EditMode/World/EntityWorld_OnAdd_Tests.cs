@@ -15,24 +15,8 @@ namespace Atomic.Entities
             world.Add(entity);
 
             // Assert
-            Assert.IsFalse(entity.WasSpawned);
-            Assert.IsFalse(entity.WasActivated);
-        }
-
-        [Test]
-        public void OnAdd_Should_SpawnEntity_WhenWorldIsSpawned()
-        {
-            // Arrange
-            var entity = new EntityDummy();
-            var world = new EntityWorld<Entity>();
-            world.Spawn();
-
-            // Act
-            world.Add(entity);
-
-            // Assert
-            Assert.IsTrue(entity.WasSpawned);
-            Assert.IsFalse(entity.WasActivated);
+            Assert.IsFalse(entity.WasInitialized);
+            Assert.IsFalse(entity.WasEnabled);
         }
 
         [Test]
@@ -41,14 +25,14 @@ namespace Atomic.Entities
             // Arrange
             var entity = new EntityDummy();
             var world = new EntityWorld<Entity>();
-            world.Activate(); // Spawn + Activate
+            world.Enable(); // Spawn + Activate
 
             // Act
             world.Add(entity);
 
             // Assert
-            Assert.IsTrue(entity.WasSpawned);
-            Assert.IsTrue(entity.WasActivated);
+            Assert.IsTrue(entity.WasInitialized);
+            Assert.IsTrue(entity.WasEnabled);
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
+
+// ReSharper disable NotResolvedInText
 #endif
 
 namespace Atomic.Elements
@@ -21,7 +23,7 @@ namespace Atomic.Elements
 #endif
         private T[] items;
 
-        private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
+        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
         /// <inheritdoc/>
         public event ChangeItemHandler<T> OnItemChanged;
@@ -53,29 +55,19 @@ namespace Atomic.Elements
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {
-            get
-            {
-                if (index < 0 || index >= this.items.Length)
-                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
-
-                return this.items[index];
-            }
+            get { return this.items[index]; }
             set
             {
-                if (index < 0 || index >= this.items.Length)
-                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
-                
-                ref T current = ref this.items[index];
-
-                if (s_equalityComparer.Equals(current, value))
+                ref T item = ref this.items[index];
+                if (s_comparer.Equals(item, value))
                     return;
 
-                current = value;
-                this.OnStateChanged?.Invoke();
+                item = value;
                 this.OnItemChanged?.Invoke(index, value);
+                this.OnStateChanged?.Invoke();
             }
         }
-        
+
         /// <summary>
         /// Resets all elements in the array to their default values.
         /// </summary>
@@ -99,25 +91,63 @@ namespace Atomic.Elements
             for (int i = 0; i < length; i++)
             {
                 ref T item = ref this.items[i];
-                if (s_equalityComparer.Equals(item, default)) 
+                if (s_comparer.Equals(item, default))
                     continue;
-                
+
                 item = default;
                 this.OnItemChanged?.Invoke(i, default);
             }
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
-        /// Replaces all elements in the array with values from the provided sequence.
-        /// Fires <see cref="OnItemChanged"/> for each changed item,
-        /// and <see cref="OnStateChanged"/> once at the end.
+        /// Copies a range of elements from this reactive array to a destination array.
         /// </summary>
-        /// <param name="newItems">The new values to assign. Must match the array length.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="newItems"/> is null.</exception>
-        /// <exception cref="ArgumentException">If <paramref name="newItems"/> has a different number of items than the array.</exception>
-        public void Replace(IEnumerable<T> newItems)
+        /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>
+        /// <param name="destination">The destination array.</param>
+        /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
+        /// <param name="length">The number of elements to copy.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="destination"/> is null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If indices or length are invalid.</exception>
+        /// <exception cref="ArgumentException">If the destination array is too small to contain the copied elements.</exception>
+        /// <example>
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(1, 2, 3, 4, 5);
+        /// int[] target = new int[5];
+        /// array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
+        /// </code>
+        /// </example>
+        public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)
+        {
+            if (destination == null)
+                throw new ArgumentNullException(nameof(destination));
+            if (sourceIndex < 0 || destinationIndex < 0 || length < 0)
+                throw new ArgumentOutOfRangeException("Indices and length must be non-negative.");
+            if (sourceIndex + length > this.items.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "Source range exceeds array length.");
+            if (destinationIndex + length > destination.Length)
+                throw new ArgumentException("Destination array is too small.");
+
+            Array.Copy(this.items, sourceIndex, destination, destinationIndex, length);
+        }
+
+        /// <summary>
+        /// Updates the contents of the reactive array with values from the specified <paramref name="newItems"/> collection.
+        /// </summary>
+        /// <remarks>
+        /// This method works as follows:
+        /// <list type="bullet">
+        /// <item>Existing elements that differ from the new values are updated, triggering <see cref="OnItemChanged"/>.</item>
+        /// <item>If there are more new elements than the current array length, an <see cref="ArgumentException"/> is thrown.</item>
+        /// <item>If there are fewer new elements than the current array length, the remaining elements are cleared (defaulted) and <see cref="OnItemDeleted"/> is triggered for them.</item>
+        /// <item>After the method completes, <see cref="OnStateChanged"/> is always invoked.</item>
+        /// </list>
+        /// </remarks>
+        /// <param name="newItems">The collection of new items to populate the array with.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="newItems"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException">Thrown if the number of items in <paramref name="newItems"/> does not match the array length.</exception>
+        public void Populate(IEnumerable<T> newItems)
         {
             if (newItems == null)
                 throw new ArgumentNullException(nameof(newItems));
@@ -125,12 +155,13 @@ namespace Atomic.Elements
             using var enumerator = newItems.GetEnumerator();
             int index = 0;
 
+            // Update existing elements
             while (index < this.items.Length && enumerator.MoveNext())
             {
                 T newValue = enumerator.Current;
                 ref T current = ref this.items[index];
 
-                if (!s_equalityComparer.Equals(current, newValue))
+                if (!s_comparer.Equals(current, newValue))
                 {
                     current = newValue;
                     this.OnItemChanged?.Invoke(index, newValue);
@@ -139,8 +170,80 @@ namespace Atomic.Elements
                 index++;
             }
 
-            if (index != this.items.Length || enumerator.MoveNext())
+            // If there are still items in newItems but array is full — throw
+            if (enumerator.MoveNext())
                 throw new ArgumentException("Item count does not match array length.", nameof(newItems));
+
+            // Clear remaining elements if newItems has fewer elements
+            for (int i = index; i < this.items.Length; i++)
+            {
+                T removedItem = this.items[i];
+                this.items[i] = default;
+                this.OnItemChanged?.Invoke(i, removedItem);
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Fills the array with the specified value.
+        /// </summary>
+        /// <param name="value">The value to set for all elements.</param>
+        /// <remarks>
+        /// - Triggers <see cref="OnItemChanged"/> for each element that changes.
+        /// - Triggers <see cref="OnStateChanged"/> once at the end.
+        /// </remarks>
+        /// <example>
+        /// Filling a reactive array of integers:
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(3);
+        /// array.Fill(42); // All elements set to 42, events triggered
+        /// </code>
+        /// </example>
+        public void Fill(T value)
+        {
+            for (int i = 0, length = this.items.Length; i < length; i++)
+            {
+                ref T current = ref this.items[i];
+                if (!s_comparer.Equals(current, value))
+                {
+                    current = value;
+                    this.OnItemChanged?.Invoke(i, value);
+                }
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Resizes the array to the specified new size.
+        /// </summary>
+        /// <param name="newSize">The new length of the array. Must be non-negative.</param>
+        /// <remarks>
+        /// - If the new size is greater than the current size, new elements are initialized with default(T).  
+        /// - If the new size is smaller, excess elements are discarded.  
+        /// - Triggers <see cref="OnItemChanged"/> for all changed or new elements.  
+        /// - Triggers <see cref="OnStateChanged"/> once at the end.
+        /// </remarks>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="newSize"/> is negative.</exception>
+        public void Resize(int newSize)
+        {
+            if (newSize < 0)
+                throw new ArgumentOutOfRangeException(nameof(newSize));
+
+            if (newSize == this.items.Length)
+                return;
+
+            T[] newItems = new T[newSize];
+            int minLength = Math.Min(newSize, this.items.Length);
+
+            for (int i = 0; i < minLength; i++)
+                newItems[i] = this.items[i];
+
+            this.items = newItems;
+
+            for (int i = minLength; i < newSize; i++)
+                this.OnItemChanged?.Invoke(i, default);
 
             this.OnStateChanged?.Invoke();
         }
@@ -151,7 +254,7 @@ namespace Atomic.Elements
         public Enumerator GetEnumerator() => new(this);
 
         /// <inheritdoc/>
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator(this);
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator();
 
         /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
@@ -189,10 +292,12 @@ namespace Atomic.Elements
             /// <inheritdoc/>
             public bool MoveNext()
             {
-                if (_index + 1 == _array.Length)
+                int next = _index + 1;
+                if (next >= _array.items.Length)
                     return false;
 
-                _current = _array[++_index];
+                _index = next;
+                _current = _array.items[_index];
                 return true;
             }
 

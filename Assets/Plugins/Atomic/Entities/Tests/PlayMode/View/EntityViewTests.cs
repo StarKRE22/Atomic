@@ -293,12 +293,12 @@ namespace Atomic.Entities
         private sealed class MockGizmoBehaviour : IEntityGizmos
         {
             public bool Called { get; private set; }
-            public void OnGizmosDraw(IEntity entity) => Called = true;
+            public void DrawGizmos(IEntity entity) => Called = true;
         }
 
         private sealed class ThrowingGizmoBehaviour : IEntityGizmos
         {
-            public void OnGizmosDraw(IEntity entity) => throw new Exception("oops");
+            public void DrawGizmos(IEntity entity) => throw new Exception("oops");
         }
     }
 }

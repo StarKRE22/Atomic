@@ -199,28 +199,28 @@ namespace Atomic.Entities
 
         #region Lifecycle
 
-        public event Action OnSpawned
+        public event Action OnInitialized
         {
-            add => _source.OnSpawned += value;
-            remove => _source.OnSpawned -= value;
+            add => _source.OnInitialized += value;
+            remove => _source.OnInitialized -= value;
         }
 
-        public event Action OnActivated
+        public event Action OnEnabled
         {
-            add => _source.OnActivated += value;
-            remove => _source.OnActivated -= value;
+            add => _source.OnEnabled += value;
+            remove => _source.OnEnabled -= value;
         }
 
-        public event Action OnDeactivated
+        public event Action OnDisabled
         {
-            add => _source.OnDeactivated += value;
-            remove => _source.OnDeactivated -= value;
+            add => _source.OnDisabled += value;
+            remove => _source.OnDisabled -= value;
         }
 
-        public event Action OnDespawned
+        public event Action OnDisposed
         {
-            add => _source.OnDespawned += value;
-            remove => _source.OnDespawned -= value;
+            add => _source.OnDisposed += value;
+            remove => _source.OnDisposed -= value;
         }
 
         public event Action<float> OnUpdated
@@ -241,13 +241,13 @@ namespace Atomic.Entities
             remove => _source.OnLateUpdated -= value;
         }
 
-        public bool IsSpawned => _source.IsSpawned;
-        public bool IsActive => _source.IsActive;
+        public bool Initialized => _source.Initialized;
+        public bool Enabled => _source.Enabled;
 
-        public void Spawn() => _source.Spawn();
-        public void Activate() => _source.Activate();
-        public void Deactivate() => _source.Deactivate();
-        public void Despawn() => _source.Despawn();
+        public void Init() => _source.Init();
+        public void Enable() => _source.Enable();
+        public void Disable() => _source.Disable();
+        public void Dispose() => _source.Dispose();
         public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
         public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
         public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);

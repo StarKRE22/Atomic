@@ -6,7 +6,7 @@ namespace Atomic.Elements
     /// Represents a read-only reactive array that notifies about changes to its elements and global state.
     /// </summary>
     /// <typeparam name="T">The type of elements contained in the array.</typeparam>
-    public interface IReadOnlyReactiveArray<out T> : IReadOnlyList<T>
+    public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
     {
         /// <summary>
         /// Gets the total number of elements in the array.
@@ -33,5 +33,14 @@ namespace Atomic.Elements
 
         /// <inheritdoc/>
         int IReadOnlyCollection<T>.Count => this.Length;
+
+        /// <summary>
+        /// Copies a range of elements from this array to the specified destination array.
+        /// </summary>
+        /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>
+        /// <param name="destination">The destination array.</param>
+        /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
+        /// <param name="length">The number of elements to copy.</param>
+        void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
     }
 }

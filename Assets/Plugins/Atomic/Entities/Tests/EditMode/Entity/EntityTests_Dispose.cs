@@ -25,23 +25,32 @@ namespace Atomic.Entities
         {
             var entity = new Entity("Test");
 
-            entity.OnStateChanged += () => Assert.Fail("Should be unsubscribed");
+            entity.OnInitialized += () => Assert.Fail("Should be unsubscribed");
+            entity.OnEnabled += () => Assert.Fail("Should be unsubscribed");
+            entity.OnDisabled += () => Assert.Fail("Should be unsubscribed");
+            entity.OnUpdated += _ => Assert.Fail("Should be unsubscribed");
+            entity.OnFixedUpdated += _ => Assert.Fail("Should be unsubscribed");
+            entity.OnLateUpdated += _ => Assert.Fail("Should be unsubscribed");
 
             entity.Dispose();
 
-            entity.AddTag(1);
-            entity.AddValue(1, 1);
+            //Assert:
+            entity.Init();
+            entity.Enable();
+            entity.OnUpdate(1);
+            entity.OnUpdate(1);
+            entity.Disable();
         }
 
         [Test]
-        public void Dispose_CallsDespawn()
+        public void Dispose_Entity_Will_Not_Initialized()
         {
             var entity = new Entity("Test");
-            entity.Spawn(); // допустим, ты это вызываешь перед Dispose
-            Assert.IsTrue(entity.IsSpawned);
+            entity.Init(); 
+            Assert.IsTrue(entity.Initialized);
 
             entity.Dispose();
-            Assert.IsFalse(entity.IsSpawned); // или другой индикатор деактивации
+            Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
@@ -54,8 +63,7 @@ namespace Atomic.Entities
             Assert.Greater(entity.InstanceID, 0);
 
             entity.Dispose();
-
-            // Проверяем, что instanceId больше не активен
+            
             Assert.IsFalse(EntityRegistry.Instance.Contains(originalId));
         }
     }

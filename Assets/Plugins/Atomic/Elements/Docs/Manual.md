@@ -55,14 +55,12 @@
   - [FloatMulExpression](Expressions/FloatMulExpression.md)
   - [FloatSumExpression](Expressions/FloatSumExpression.md)
   - [Extensions](Expressions/Extensions.md)
-
-- [Collections]
-  - [ReactiveArray]
-  - [ReactiveDictionary]
-  - [ReactiveHashSet]
-  - [ReactiveList]
-  - [LinkedList]
-
+- **Collections**
+  - [ReactiveArray](Collections/ReactiveArray.md)
+  - [ReactiveList](Collections/ReactiveList.md)
+  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md)
+  - [ReactiveDictionary](Collections/ReactiveDictionary.md)
+  - [ReactiveHashSet](Collections/ReactiveHashSet.md)
 - [Time]
   - [Cooldown]
   - [Timer]
@@ -85,7 +83,6 @@
   - [Reference]
 
 -  [Best Practices]
-- [Performance]
 
 
 

@@ -4,7 +4,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEngine;
+using static Atomic.Entities.EntityUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -88,11 +88,11 @@ namespace Atomic.Entities
             _behaviourCount++;
 
             //Check for lifecycle
-            if (_spawned && behaviour is IEntitySpawn spawnBehaviour)
-                spawnBehaviour.OnSpawn(this);
+            if (_initialized && behaviour is IEntityInit spawnBehaviour)
+                spawnBehaviour.Init(this);
 
-            if (_active)
-                this.ActivateBehaviour(behaviour);
+            if (_enabled)
+                this.EnableBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -133,11 +133,11 @@ namespace Atomic.Entities
             for (int i = index; i < _behaviourCount; i++)
                 _behaviours[i] = _behaviours[i + 1];
 
-            if (_active)
-                this.InactivateBehaviour(behaviour);
+            if (_enabled)
+                this.DisableBehaviour(behaviour);
 
-            if (_spawned && behaviour is IEntityDespawn dispose)
-                dispose.OnDespawn(this);
+            if (_initialized && behaviour is IEntityDispose dispose)
+                dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
             this.OnStateChanged?.Invoke();
@@ -339,12 +339,44 @@ namespace Atomic.Entities
                 //Nothing...
             }
         }
-
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructBehaviours()
         {
             _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
             _behaviourCount = 0;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void EnableBehaviour(IEntityBehaviour behaviour)
+        {
+            if (behaviour is IEntityEnable entityEnable)
+                entityEnable.Enable(this);
+
+            if (behaviour is IEntityUpdate update)
+                Add(ref this.updates, ref this.updateCount, update);
+
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
+                Add(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate);
+
+            if (behaviour is IEntityLateUpdate lateUpdate)
+                Add(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void DisableBehaviour(IEntityBehaviour behaviour)
+        {
+            if (behaviour is IEntityDisable entityDisable)
+                entityDisable.Disable(this);
+
+            if (behaviour is IEntityUpdate update)
+                Remove(ref this.updates, ref this.updateCount, update, s_updateComparer);
+
+            if (behaviour is IEntityFixedUpdate fixedUpdate)
+                Remove(ref this.fixedUpdates, ref this.fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
+
+            if (behaviour is IEntityLateUpdate lateUpdate)
+                Remove(ref this.lateUpdates, ref this.lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }
 }

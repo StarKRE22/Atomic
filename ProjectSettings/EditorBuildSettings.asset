@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/Beginner/Scenes/BeginnerGame.unity
+    path: Assets/Examples/Beginner/Scenes/BeginnerGame.unity
     guid: 6cde48bfb3ab8440f80ae31b77cfe96f
   - enabled: 1
-    path: Assets/Samples/Shooter/Scenes/ShooterGame (Bootstrap).unity
+    path: Assets/Examples/Shooter/Scenes/ShooterGame (Bootstrap).unity
     guid: 01127b740c5ae4d4f94f81df70c81490
   - enabled: 1
-    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level1).unity
+    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level1).unity
     guid: be9bfa09430ff456eb76851b15fa7fd2
   - enabled: 1
-    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level2).unity
+    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level2).unity
     guid: 7b2ee36e12cdf44c5b8c0de6c0262fb9
   - enabled: 1
-    path: Assets/Samples/Shooter/Scenes/ShooterGame (Level3).unity
+    path: Assets/Examples/Shooter/Scenes/ShooterGame (Level3).unity
     guid: c597e0a1fe8ea400bbb8deeacee6fa9f
   - enabled: 1
-    path: Assets/Samples/Shooter/Scenes/ShooterGame (Menu).unity
+    path: Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity
     guid: 2a971fcbfef4b451f82c4da85c65aee1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
