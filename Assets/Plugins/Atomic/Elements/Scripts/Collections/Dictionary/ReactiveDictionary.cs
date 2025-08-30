@@ -268,7 +268,7 @@ namespace Atomic.Elements
 
                 index = _lastIndex;
                 bucket = hash % _capacity;
-                
+
                 _lastIndex++;
             }
 
@@ -287,7 +287,7 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
             this.OnItemAdded?.Invoke(key, value);
         }
-        
+
         /// <summary>
         /// Removes the value with the specified key from the dictionary.
         /// </summary>
@@ -387,20 +387,20 @@ namespace Atomic.Elements
         /// <returns>True if the key is found; otherwise, false.</returns>
         public bool ContainsKey(K key)
         {
-            if (_count == 0)
-                return false;
-
-            int hash = key.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            int index = _buckets[bucket];
-
-            while (index >= 0)
+            if (_count > 0)
             {
-                ref readonly Slot slot = ref _slots[index];
-                if (slot.exists && s_keyComparer.Equals(slot.key, key))
-                    return true;
+                int hash = key.GetHashCode() & 0x7FFFFFFF;
+                int bucket = hash % _capacity;
+                int index = _buckets[bucket];
 
-                index = slot.next;
+                while (index >= 0)
+                {
+                    ref readonly Slot slot = ref _slots[index];
+                    if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                        return true;
+
+                    index = slot.next;
+                }
             }
 
             return false;

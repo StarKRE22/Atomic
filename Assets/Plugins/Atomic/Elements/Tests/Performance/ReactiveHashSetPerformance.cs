@@ -26,12 +26,12 @@ namespace Atomic.Elements
             Measure.Method(() =>
                 {
                     for (var i = 0; i < N; i++)
-                        set.Add(_source[i]);
+                        _ = set.Add(_source[i]);
                 })
                 .CleanUp(set.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveHashSet.Add()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveHashSet.Add()", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -46,7 +46,7 @@ namespace Atomic.Elements
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveHashSet.Contains() - missing", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveHashSet.Contains() - missing", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -62,7 +62,7 @@ namespace Atomic.Elements
                 .SetUp(() => set.UnionWith(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveHashSet.Remove()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveHashSet.Remove()", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -80,7 +80,7 @@ namespace Atomic.Elements
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveHashSet.Enumerator", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveHashSet.Enumerator", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -93,7 +93,7 @@ namespace Atomic.Elements
                 .SetUp(() => set.UnionWith(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveHashSet.Clear()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveHashSet.Clear()", SampleUnit.Microsecond))
                 .Run();
         }
     }

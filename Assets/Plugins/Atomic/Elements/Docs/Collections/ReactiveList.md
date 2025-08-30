@@ -159,7 +159,7 @@ The table shows median execution times of key operations, illustrating the overh
 | Contains        | 62.80            | 41.90                    |
 | CopyTo          | 0.40             | 0.50                     |
 | Enumerator      | 7.00             | 7.10                     |
-| ForLoop         | 1.70             | 1.70                     |
+| For             | 1.70             | 1.70                     |
 | Indexer Get     | 1.50             | 1.70                     |
 | Indexer Set     | 9.50             | 42.00                    |
 | Remove          | 293.35           | 254.25                   |

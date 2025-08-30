@@ -20,6 +20,22 @@ namespace Atomic.Elements
         }
 
         [Test, Performance]
+        public void Add()
+        {
+            var set = new HashSet<object>();
+            Measure.Method(() =>
+                {
+                    for (int i = 0; i < N; i++) 
+                        _ = set.Add(_source[i]);
+                })
+                .SetUp(set.Clear)
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("HashSet.Add()", SampleUnit.Microsecond))
+                .Run();
+        }
+
+        [Test, Performance]
         public void Contains()
         {
             var set = new HashSet<object>();
@@ -34,25 +50,7 @@ namespace Atomic.Elements
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("HashSet.Contains()"))
-                .Run();
-        }
-
-        [Test, Performance]
-        public void Add()
-        {
-            var set = new HashSet<object>();
-            Measure.Method(() =>
-                {
-                    for (int i = 0; i < N; i++)
-                    {
-                        bool _ = set.Add(_source[i]);
-                    }
-                })
-                .SetUp(set.Clear)
-                .WarmupCount(5)
-                .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("HashSet.Add()"))
+                .SampleGroup(new SampleGroup("HashSet.Contains()", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -100,7 +98,7 @@ namespace Atomic.Elements
                 .SetUp(() => set.UnionWith(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("HashSet.Remove()"))
+                .SampleGroup(new SampleGroup("HashSet.Remove()", SampleUnit.Microsecond))
                 .Run();
         }
     }

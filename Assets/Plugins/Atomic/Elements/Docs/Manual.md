@@ -59,9 +59,8 @@
   - [ReactiveArray](Collections/ReactiveArray.md)
   - [ReactiveList](Collections/ReactiveList.md)
   - [ReactiveLinkedList](Collections/ReactiveLinkedList.md)
-  - [ReactiveDictionary]
-  - [ReactiveHashSet]
-
+  - [ReactiveDictionary](Collections/ReactiveDictionary.md)
+  - [ReactiveHashSet](Collections/ReactiveHashSet.md)
 - [Time]
   - [Cooldown]
   - [Timer]

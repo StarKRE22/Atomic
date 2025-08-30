@@ -58,12 +58,13 @@ namespace Atomic.Elements
             get { return this.items[index]; }
             set
             {
-                if (s_comparer.Equals(this.items[index], value))
+                ref T item = ref this.items[index];
+                if (s_comparer.Equals(item, value))
                     return;
 
-                this.items[index] = value;
-                this.OnStateChanged?.Invoke();
+                item = value;
                 this.OnItemChanged?.Invoke(index, value);
+                this.OnStateChanged?.Invoke();
             }
         }
 

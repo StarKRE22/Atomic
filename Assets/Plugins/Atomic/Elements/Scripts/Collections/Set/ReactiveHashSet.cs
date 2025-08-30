@@ -96,7 +96,26 @@ namespace Atomic.Elements
         /// <param name="item">The item to look for.</param>
         /// <returns>True if the item exists in the set; otherwise, false.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Contains(T item) => this.FindIndex(item, out _);
+        public bool Contains(T item)
+        {
+            if (item != null && _count > 0)
+            {
+                int hash = item.GetHashCode() & 0x7FFFFFFF;
+                int bucket = hash % _capacity;
+                int index = _buckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly Slot slot = ref _slots[index];
+                    if (slot.exists && s_comparer.Equals(slot.value, item))
+                        return true;
+
+                    index = slot.next;
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Returns true if the set has no elements.
@@ -112,9 +131,50 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Add(T item)
         {
-            if (item == null || !this.AddInternal(item))
+            if (item == null)
                 return false;
+            
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int index = _buckets[bucket];
 
+            while (index >= 0)
+            {
+                ref readonly Slot slot = ref _slots[index];
+                if (slot.exists && s_comparer.Equals(slot.value, item))
+                    return false;
+
+                index = slot.next;
+            }
+
+            if (_freeList >= 0)
+            {
+                index = _freeList;
+                _freeList = _slots[index].next;
+            }
+            else
+            {
+                if (_lastIndex == _capacity)
+                    this.IncreaseCapacity();
+
+                index = _lastIndex;
+                bucket = hash % _capacity;
+                _lastIndex++;
+            }
+            
+            ref int next = ref _buckets[bucket];
+
+            _slots[index] = new Slot
+            {
+                value = item,
+                next = next,
+                exists = true
+            };
+
+            next = index;
+
+            _count++;
+            
             this.OnItemAdded?.Invoke(item);
             this.OnStateChanged?.Invoke();
             return true;
@@ -156,15 +216,9 @@ namespace Atomic.Elements
             if (item == null || _count == 0)
                 return false;
 
-            var comparer = s_comparer;
-            var slots = _slots;          
-            var buckets = _buckets;
-            int capacity = _capacity;
-
-            int hash = comparer.GetHashCode(item) & 0x7FFFFFFF;
-            int bucket = hash % capacity;
-
-            ref int cur = ref buckets[bucket];
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int cur = ref _buckets[bucket];
 
             while (true)
             {
@@ -172,9 +226,9 @@ namespace Atomic.Elements
                 if (idx < 0)
                     break;
 
-                ref Slot node = ref slots[idx];
+                ref Slot node = ref _slots[idx];
 
-                if (comparer.Equals(node.value, item))
+                if (s_comparer.Equals(node.value, item))
                 {
                     cur = node.next;
 
@@ -656,19 +710,18 @@ namespace Atomic.Elements
                 return false;
 
             var comparer = s_comparer;
-            var slots = _slots;          // локальные ссылки ускоряют доступ
+            var slots = _slots;    
             var buckets = _buckets;
             int capacity = _capacity;
 
             int hash = comparer.GetHashCode(item) & 0x7FFFFFFF;
             int bucket = hash % capacity;
 
-            // "cur" — это ref на ячейку, которая указывает на текущий индекс узла (либо на bucket, либо на next предыдущего узла).
             ref int cur = ref buckets[bucket];
 
             while (true)
             {
-                int idx = cur;                  // значение текущего "указателя"
+                int idx = cur;  
                 if (idx < 0)
                     break;
 
@@ -676,14 +729,11 @@ namespace Atomic.Elements
 
                 if (comparer.Equals(node.value, item))
                 {
-                    // unlink: переписываем указатель, который указывал на нас
                     cur = node.next;
 
-                    // кладём узел в freelist
                     node.exists = false;
                     node.next = _freeList;
 
-                    // тот же семантический порядок, что и в исходнике
                     _count--;
                     if (_count == 0)
                     {
@@ -698,7 +748,6 @@ namespace Atomic.Elements
                     return true;
                 }
 
-                // двигаем ref на следующий "указатель"
                 cur = ref node.next;
             }
 
@@ -724,9 +773,8 @@ namespace Atomic.Elements
                 index = _lastIndex;
                 _lastIndex++;
             }
-
-
-            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
+            
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             ref int next = ref _buckets[bucket];
 
@@ -752,7 +800,7 @@ namespace Atomic.Elements
                 return false;
             }
 
-            int hash = s_comparer.GetHashCode(item) & 0x7FFFFFFF;
+            int hash = item.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             index = _buckets[bucket];
 
