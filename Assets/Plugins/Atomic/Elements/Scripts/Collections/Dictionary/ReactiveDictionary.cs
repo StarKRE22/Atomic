@@ -6,6 +6,8 @@ using System.Runtime.CompilerServices;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
+
+// ReSharper disable MemberHidesStaticFromOuterClass
 #endif
 
 namespace Atomic.Elements
@@ -99,30 +101,91 @@ namespace Atomic.Elements
         /// <returns>The value associated with the specified key.</returns>
         public V this[K key]
         {
-            get => this.GetValue(key);
-            set => this.SetValue(key, value);
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public V GetValue(K key)
-        {
-            if (_count == 0)
-                throw new KeyNotFoundException(nameof(key));
-
-            int hash = s_keyComparer.GetHashCode(key) & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            int index = _buckets[bucket];
-
-            while (index >= 0)
+            get
             {
-                ref readonly Slot slot = ref _slots[index];
-                if (slot.exists && s_keyComparer.Equals(slot.key, key))
-                    return slot.value;
+                if (_count == 0)
+                    throw new KeyNotFoundException(nameof(key));
 
-                index = slot.next;
+                int hash = key.GetHashCode() & 0x7FFFFFFF;
+                int bucket = hash % _capacity;
+                int index = _buckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly Slot slot = ref _slots[index];
+                    if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                        return slot.value;
+
+                    index = slot.next;
+                }
+
+                throw new KeyNotFoundException(nameof(key));
             }
+            set
+            {
+                int index = -1;
+                
+                if (_count > 0)
+                {
+                    int hash = key.GetHashCode() & 0x7FFFFFFF;
+                    int bucket = hash % _capacity;
+                    index = _buckets[bucket];
 
-            throw new KeyNotFoundException(nameof(key));
+                    while (index >= 0)
+                    {
+                        ref readonly Slot slot = ref _slots[index];
+                        if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                            break;
+
+                        index = slot.next;
+                    }
+                }
+                
+                if (index >= 0)
+                {
+                    ref Slot slot = ref _slots[index];
+                    if (s_valueComparer.Equals(slot.value, value))
+                        return;
+
+                    slot.value = value;
+                    this.OnStateChanged?.Invoke();
+                    this.OnItemChanged?.Invoke(key, value);
+                }
+                else
+                {
+                    if (_freeList >= 0)
+                    {
+                        index = _freeList;
+                        _freeList = _slots[index].next;
+                    }
+                    else
+                    {
+                        if (_lastIndex == _capacity)
+                            this.IncreaseCapacity();
+
+                        index = _lastIndex;
+                        _lastIndex++;
+                    }
+
+                    int hash = key.GetHashCode() & 0x7FFFFFFF;
+                    int bucket = hash % _capacity;
+                    ref int next = ref _buckets[bucket];
+
+                    _slots[index] = new Slot
+                    {
+                        key = key,
+                        value = value,
+                        next = next,
+                        exists = true
+                    };
+
+                    next = index;
+                    _count++;
+                    
+                    this.OnStateChanged?.Invoke();
+                    this.OnItemAdded?.Invoke(key, value);
+                }
+            }
         }
 
         /// <summary>
@@ -137,7 +200,7 @@ namespace Atomic.Elements
             if (_count == 0)
                 return false;
 
-            int hash = s_keyComparer.GetHashCode(key) & 0x7FFFFFFF;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             int index = _buckets[bucket];
 
@@ -157,30 +220,13 @@ namespace Atomic.Elements
         }
 
         /// <summary>
-        /// Sets the value associated with the specified key. If the key exists,
-        /// the value is updated and <see cref="OnItemChanged"/> is triggered.
+        /// Adds a <see cref="KeyValuePair{K,V}"/> to the dictionary.
         /// </summary>
-        /// <param name="key">The key of the element to set.</param>
-        /// <param name="value">The new value.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetValue(K key, V value)
+        /// <param name="item">The key/value pair to add.</param>
+        public void Add(KeyValuePair<K, V> item)
         {
-            if (this.FindIndex(key, out int index))
-            {
-                ref Slot slot = ref _slots[index];
-                if (s_valueComparer.Equals(slot.value, value))
-                    return;
-
-                slot.value = value;
-                this.OnStateChanged?.Invoke();
-                this.OnItemChanged?.Invoke(key, value);
-            }
-            else
-            {
-                this.AddInternal(key, value);
-                this.OnStateChanged?.Invoke();
-                this.OnItemAdded?.Invoke(key, value);
-            }
+            (K key, V value) = item;
+            this.Add(key, value);
         }
 
         /// <summary>
@@ -202,15 +248,6 @@ namespace Atomic.Elements
             this.OnItemAdded?.Invoke(key, value);
         }
 
-        /// <summary>
-        /// Adds a <see cref="KeyValuePair{K,V}"/> to the dictionary.
-        /// </summary>
-        /// <param name="item">The key/value pair to add.</param>
-        public void Add(KeyValuePair<K, V> item)
-        {
-            (K key, V value) = item;
-            this.Add(key, value);
-        }
 
         /// <summary>
         /// Removes the value with the specified key from the dictionary.
@@ -266,7 +303,26 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="key">The key to locate.</param>
         /// <returns>True if the key is found; otherwise, false.</returns>
-        public bool ContainsKey(K key) => this.FindIndex(key, out _);
+        public bool ContainsKey(K key)
+        {
+            if (_count == 0)
+                return false;
+
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int index = _buckets[bucket];
+
+            while (index >= 0)
+            {
+                ref readonly Slot slot = ref _slots[index];
+                if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                    return true;
+
+                index = slot.next;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Determines whether the dictionary contains the specified key/value pair.
@@ -417,7 +473,7 @@ namespace Atomic.Elements
                 return false;
             }
 
-            int hash = s_keyComparer.GetHashCode(key) & 0x7FFFFFFF;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             index = _buckets[bucket];
 
@@ -451,7 +507,7 @@ namespace Atomic.Elements
                 _lastIndex++;
             }
 
-            int hash = s_keyComparer.GetHashCode(key) & 0x7FFFFFFF;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             ref int next = ref _buckets[bucket];
 
@@ -482,7 +538,7 @@ namespace Atomic.Elements
                 if (!slot.exists)
                     continue;
 
-                int hash = s_keyComparer.GetHashCode(slot.key) & 0x7FFFFFFF;
+                int hash = slot.key.GetHashCode() & 0x7FFFFFFF;
                 int bucket = hash % _capacity;
                 ref int next = ref _buckets[bucket];
 
@@ -500,7 +556,7 @@ namespace Atomic.Elements
                 return false;
             }
 
-            int hash = s_keyComparer.GetHashCode(key) & 0x7FFFFFFF;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
             int bucket = hash % _capacity;
             ref int next = ref _buckets[bucket];
 
@@ -727,7 +783,6 @@ namespace Atomic.Elements
 
                 public void Dispose()
                 {
-                    // ничего
                 }
             }
         }

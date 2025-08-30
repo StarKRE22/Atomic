@@ -144,8 +144,8 @@ namespace Atomic.Elements
                     for (int i = 0, count = array.Length; i < count; i++) 
                         _ = array[i];
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveArray.ForLoop", SampleUnit.Microsecond))
                 .Run();
         }

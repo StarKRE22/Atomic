@@ -8,6 +8,7 @@ namespace Atomic.Elements
     public sealed class HashSetPerformance
     {
         private const int N = 1000;
+        private static readonly object Dummy = new();
         private object[] _source;
 
         [OneTimeSetUp]
@@ -15,7 +16,7 @@ namespace Atomic.Elements
         {
             _source = new object[N];
             for (int i = 0; i < N; i++)
-                _source[i] = new object();
+                _source[i] = Dummy;
         }
 
         [Test, Performance]
