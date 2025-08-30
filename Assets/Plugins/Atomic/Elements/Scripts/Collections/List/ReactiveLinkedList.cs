@@ -10,15 +10,14 @@ namespace Atomic.Elements
     /// Provides methods to add, remove, search and enumerate items.
     /// </summary>
     /// <typeparam name="T">The type of elements stored in the list.</typeparam>
-    //TODO: REACTIVE LINKED LIST INSERT EVENTS!
     public class ReactiveLinkedList<T> : IReactiveList<T>
     {
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
-        
+
         private const int UNDEFINED_INDEX = -1;
 
         protected const int INITIAL_CAPACITY = 1;
-        
+
         public event StateChangedHandler OnStateChanged;
         public event ChangeItemHandler<T> OnItemChanged;
         public event InsertItemHandler<T> OnItemInserted;
@@ -34,8 +33,6 @@ namespace Atomic.Elements
         /// </summary>
         public bool IsReadOnly => false;
         
-     
-
         private struct Node
         {
             public T item;
@@ -114,7 +111,12 @@ namespace Atomic.Elements
                 for (int i = 0; i < index; i++)
                     current = _nodes[current].next;
 
-                _nodes[current].item = value;
+                if (!s_comparer.Equals(_nodes[current].item, value))
+                {
+                    _nodes[current].item = value;
+                    OnItemChanged?.Invoke(index, value);
+                    OnStateChanged?.Invoke();
+                }
             }
         }
 
@@ -134,22 +136,21 @@ namespace Atomic.Elements
                 Array.Resize(ref _nodes, newCapacity);
             }
 
-            _nodes[_freeIndex] = new Node
-            {
-                item = item,
-                next = UNDEFINED_INDEX
-            };
+            _nodes[_freeIndex] = new Node {item = item, next = UNDEFINED_INDEX};
 
             if (_tail != UNDEFINED_INDEX)
                 _nodes[_tail].next = _freeIndex;
 
             _tail = _freeIndex;
-
             if (_head == UNDEFINED_INDEX)
                 _head = _freeIndex;
 
+            int addedIndex = _count; // индекс для события
             _freeIndex++;
             _count++;
+
+            OnItemInserted?.Invoke(addedIndex, item);
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Atomic.Elements
                 return;
 
             if (index < 0 || index > _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "Index must be between 0 and Count.");
+                throw new ArgumentOutOfRangeException(nameof(index));
 
             if (_freeIndex == _nodes.Length)
             {
@@ -179,7 +180,7 @@ namespace Atomic.Elements
             _nodes[nodeIndex] = new Node {item = item, next = UNDEFINED_INDEX};
             _freeIndex++;
 
-            if (index == 0) // insert at head
+            if (index == 0)
             {
                 _nodes[nodeIndex].next = _head;
                 _head = nodeIndex;
@@ -188,7 +189,6 @@ namespace Atomic.Elements
             }
             else
             {
-                // find node at UNDEFINED_INDEX
                 int prev = _head;
                 for (int i = 0; i < index - 1; i++)
                     prev = _nodes[prev].next;
@@ -196,11 +196,14 @@ namespace Atomic.Elements
                 _nodes[nodeIndex].next = _nodes[prev].next;
                 _nodes[prev].next = nodeIndex;
 
-                if (_nodes[nodeIndex].next == UNDEFINED_INDEX) // new tail
+                if (_nodes[nodeIndex].next == UNDEFINED_INDEX)
                     _tail = nodeIndex;
             }
 
             _count++;
+
+            OnItemInserted?.Invoke(index, item);
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -215,6 +218,7 @@ namespace Atomic.Elements
 
             int current = _head;
             int prev = UNDEFINED_INDEX;
+            int index = 0;
 
             while (current != UNDEFINED_INDEX)
             {
@@ -230,14 +234,58 @@ namespace Atomic.Elements
 
                     _nodes[current] = default;
                     _count--;
+
+                    OnItemDeleted?.Invoke(index, item);
+                    OnStateChanged?.Invoke();
                     return true;
                 }
 
                 prev = current;
                 current = _nodes[current].next;
+                index++;
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Removes the element at the specified index of the list.
+        /// </summary>
+        /// <param name="index">The zero-based index of the element to remove.</param>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// If <paramref name="index"/> is less than 0 or greater than or equal to <see cref="Count"/>.
+        /// </exception>
+        public void RemoveAt(int index)
+        {
+            if (index < 0 || index >= _count)
+                throw new ArgumentOutOfRangeException(nameof(index));
+
+            int current = _head;
+            int prev = UNDEFINED_INDEX;
+            int currentIndex = 0;
+
+            while (currentIndex < index)
+            {
+                prev = current;
+                current = _nodes[current].next;
+                currentIndex++;
+            }
+
+            T removedItem = _nodes[current].item;
+
+            if (prev != UNDEFINED_INDEX)
+                _nodes[prev].next = _nodes[current].next;
+            else
+                _head = _nodes[current].next;
+
+            if (current == _tail)
+                _tail = prev;
+
+            _nodes[current] = default;
+            _count--;
+
+            OnItemDeleted?.Invoke(index, removedItem);
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -263,41 +311,6 @@ namespace Atomic.Elements
             }
 
             return -1;
-        }
-
-        /// <summary>
-        /// Removes the element at the specified index of the list.
-        /// </summary>
-        /// <param name="index">The zero-based index of the element to remove.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// If <paramref name="index"/> is less than 0 or greater than or equal to <see cref="Count"/>.
-        /// </exception>
-        public void RemoveAt(int index)
-        {
-            if (index < 0 || index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index),
-                    "Index must be within the bounds of the collection.");
-
-            if (index == 0) // remove head
-            {
-                _head = _nodes[_head].next;
-                if (_head == UNDEFINED_INDEX) //list is empty
-                    _tail = UNDEFINED_INDEX;
-            }
-            else
-            {
-                int prev = _head;
-                for (int i = 0; i < index - 1; i++)
-                    prev = _nodes[prev].next;
-
-                int toRemove = _nodes[prev].next;
-                _nodes[prev].next = _nodes[toRemove].next;
-
-                if (_nodes[prev].next == UNDEFINED_INDEX) //removed tail
-                    _tail = prev;
-            }
-
-            _count--;
         }
 
         /// <summary>
@@ -335,7 +348,7 @@ namespace Atomic.Elements
 
             if (arrayIndex < 0)
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-            
+
             if (arrayIndex + _count > array.Length)
                 throw new ArgumentException("The target array is too small to hold the elements.");
 
@@ -352,10 +365,28 @@ namespace Atomic.Elements
         /// </summary>
         public void Clear()
         {
+            if (_count == 0)
+                return;
+
+            int current = _head;
+            int index = 0;
+
+            while (current != UNDEFINED_INDEX)
+            {
+                T removedItem = _nodes[current].item;
+                _nodes[current] = default;
+                OnItemDeleted?.Invoke(index, removedItem);
+
+                current = _nodes[current].next;
+                index++;
+            }
+
             _head = UNDEFINED_INDEX;
             _tail = UNDEFINED_INDEX;
             _freeIndex = 0;
             _count = 0;
+
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -364,7 +395,7 @@ namespace Atomic.Elements
         public Enumerator GetEnumerator() => new(this);
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => this.GetEnumerator();
-        
+
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
@@ -378,7 +409,7 @@ namespace Atomic.Elements
             public T Current => _current;
 
             object IEnumerator.Current => _current;
-            
+
             private readonly ReactiveLinkedList<T> _list;
             private int _index;
             private T _current;
@@ -399,7 +430,7 @@ namespace Atomic.Elements
                 if (_index == UNDEFINED_INDEX)
                     return false;
 
-                ref readonly var node = ref _list._nodes[_index];
+                ref readonly Node node = ref _list._nodes[_index];
                 _current = node.item;
                 _index = node.next;
                 return true;
@@ -413,7 +444,6 @@ namespace Atomic.Elements
                 _index = _list._head;
                 _current = default;
             }
-
             
             /// <summary>
             /// Performs application-defined tasks associated with freeing resources.
@@ -422,6 +452,5 @@ namespace Atomic.Elements
             {
             }
         }
-
     }
 }
