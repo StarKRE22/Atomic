@@ -121,7 +121,6 @@ namespace Atomic.Elements
         public void Remove()
         {
             var dict = new ReactiveDictionary<int, object>();
-            Populate(dict);
 
             Measure.Method(() =>
                 {

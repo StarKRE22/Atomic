@@ -286,9 +286,7 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
             this.OnItemAdded?.Invoke(key, value);
         }
-
-
-
+        
         /// <summary>
         /// Removes the value with the specified key from the dictionary.
         /// </summary>
@@ -313,13 +311,56 @@ namespace Atomic.Elements
         /// <returns>True if the element was removed; otherwise, false.</returns>
         public bool Remove(K key, out V value)
         {
-            if (!this.RemoveInternal(key, out value))
+            if (_count == 0)
+            {
+                value = default;
                 return false;
+            }
 
-            this.OnItemRemoved?.Invoke(key, value);
-            this.OnStateChanged?.Invoke();
-            return true;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int next = ref _buckets[bucket];
+
+            int index = next;
+            int last = UNDEFINED_INDEX;
+
+            while (index >= 0)
+            {
+                ref Slot slot = ref _slots[index];
+                if (s_keyComparer.Equals(slot.key, key))
+                {
+                    if (last == UNDEFINED_INDEX)
+                        next = slot.next;
+                    else
+                        _slots[last].next = slot.next;
+
+                    value = slot.value;
+
+                    slot.next = _freeList;
+                    slot.exists = false;
+                    _freeList = index;
+
+                    _count--;
+
+                    if (_count == 0)
+                    {
+                        _lastIndex = 0;
+                        _freeList = UNDEFINED_INDEX;
+                    }
+
+                    OnItemRemoved?.Invoke(key, value);
+                    OnStateChanged?.Invoke();
+                    return true;
+                }
+
+                last = index;
+                index = slot.next;
+            }
+
+            value = default;
+            return false;
         }
+
 
         /// <summary>
         /// Removes the specified key/value pair from the dictionary.
@@ -379,21 +420,16 @@ namespace Atomic.Elements
         /// </summary>
         public void Clear()
         {
-            if (_count == 0)
-                return;
-
-            KeyValuePair<K, V>[] removedItems = s_pairArrayPool.Rent(_count);
-            int removedCount = 0;
+            if (_count == 0) return;
 
             for (int i = 0; i < _lastIndex; i++)
             {
                 ref Slot slot = ref _slots[i];
-                if (!slot.exists)
-                    continue;
+                if (!slot.exists) continue;
 
                 slot.exists = false;
                 slot.next = UNDEFINED_INDEX;
-                removedItems[removedCount++] = new KeyValuePair<K, V>(slot.key, slot.value);
+                OnItemRemoved?.Invoke(slot.key, slot.value);
             }
 
             Array.Fill(_buckets, UNDEFINED_INDEX);
@@ -402,20 +438,7 @@ namespace Atomic.Elements
             _freeList = UNDEFINED_INDEX;
             _lastIndex = 0;
 
-            try
-            {
-                this.OnStateChanged?.Invoke();
-
-                for (int i = 0; i < removedCount; i++)
-                {
-                    ref readonly KeyValuePair<K, V> pair = ref removedItems[i];
-                    this.OnItemRemoved?.Invoke(pair.Key, pair.Value);
-                }
-            }
-            finally
-            {
-                s_pairArrayPool.Return(removedItems);
-            }
+            OnStateChanged?.Invoke();
         }
 
         /// <summary>
