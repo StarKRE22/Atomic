@@ -21,7 +21,7 @@ namespace Atomic.Elements
 #endif
         private T[] items;
 
-        private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
+        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
         /// <inheritdoc/>
         public event ChangeItemHandler<T> OnItemChanged;
@@ -53,21 +53,11 @@ namespace Atomic.Elements
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {
-            get
-            {
-                if (index < 0 || index >= this.items.Length)
-                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
-
-                return this.items[index];
-            }
+            get { return this.items[index]; }
             set
             {
-                if (index < 0 || index >= this.items.Length)
-                    throw new IndexOutOfRangeException($"Index {index} is out of bounds.");
-                
                 ref T current = ref this.items[index];
-
-                if (s_equalityComparer.Equals(current, value))
+                if (s_comparer.Equals(current, value))
                     return;
 
                 current = value;
@@ -75,7 +65,7 @@ namespace Atomic.Elements
                 this.OnItemChanged?.Invoke(index, value);
             }
         }
-        
+
         /// <summary>
         /// Resets all elements in the array to their default values.
         /// </summary>
@@ -99,16 +89,16 @@ namespace Atomic.Elements
             for (int i = 0; i < length; i++)
             {
                 ref T item = ref this.items[i];
-                if (s_equalityComparer.Equals(item, default)) 
+                if (s_comparer.Equals(item, default))
                     continue;
-                
+
                 item = default;
                 this.OnItemChanged?.Invoke(i, default);
             }
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Replaces all elements in the array with values from the provided sequence.
         /// Fires <see cref="OnItemChanged"/> for each changed item,
@@ -129,8 +119,7 @@ namespace Atomic.Elements
             {
                 T newValue = enumerator.Current;
                 ref T current = ref this.items[index];
-
-                if (!s_equalityComparer.Equals(current, newValue))
+                if (!s_comparer.Equals(current, newValue))
                 {
                     current = newValue;
                     this.OnItemChanged?.Invoke(index, newValue);
@@ -145,6 +134,74 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Fills the array with the specified value.
+        /// </summary>
+        /// <param name="value">The value to set for all elements.</param>
+        /// <remarks>
+        /// - Triggers <see cref="OnItemChanged"/> for each element that changes.
+        /// - Triggers <see cref="OnStateChanged"/> once at the end.
+        /// </remarks>
+        /// <example>
+        /// Filling a reactive array of integers:
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(3);
+        /// array.Fill(42); // All elements set to 42, events triggered
+        /// </code>
+        /// </example>
+        public void Fill(T value)
+        {
+            for (int i = 0, length = this.items.Length; i < length; i++)
+            {
+                ref T current = ref this.items[i];
+                if (!s_comparer.Equals(current, value))
+                {
+                    current = value;
+                    this.OnItemChanged?.Invoke(i, value);
+                }
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+
+        /// <summary>
+        /// Resizes the array to the specified new size.
+        /// </summary>
+        /// <param name="newSize">The new length of the array. Must be non-negative.</param>
+        /// <remarks>
+        /// - If the new size is greater than the current size, new elements are initialized with default(T).  
+        /// - If the new size is smaller, excess elements are discarded.  
+        /// - Triggers <see cref="OnItemChanged"/> for all changed or new elements.  
+        /// - Triggers <see cref="OnStateChanged"/> once at the end.
+        /// </remarks>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="newSize"/> is negative.</exception>
+        public void Resize(int newSize)
+        {
+            if (newSize < 0)
+                throw new ArgumentOutOfRangeException(nameof(newSize));
+
+            if (newSize == this.items.Length)
+                return;
+
+            T[] newItems = new T[newSize];
+            int minLength = Math.Min(newSize, this.items.Length);
+
+            for (int i = 0; i < minLength; i++)
+            {
+                newItems[i] = this.items[i];
+            }
+
+            this.items = newItems;
+
+            // Fire OnItemChanged for all new elements
+            for (int i = minLength; i < newSize; i++)
+            {
+                this.OnItemChanged?.Invoke(i, default);
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+        
         /// <summary>
         /// Returns a struct-based enumerator for the array.
         /// </summary>

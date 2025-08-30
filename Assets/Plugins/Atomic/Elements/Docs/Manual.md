@@ -55,8 +55,7 @@
   - [FloatMulExpression](Expressions/FloatMulExpression.md)
   - [FloatSumExpression](Expressions/FloatSumExpression.md)
   - [Extensions](Expressions/Extensions.md)
-
-- [Collections]
+- **Collections**
   - [ReactiveArray]
   - [ReactiveDictionary]
   - [ReactiveHashSet]
