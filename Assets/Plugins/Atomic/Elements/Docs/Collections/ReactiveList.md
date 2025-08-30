@@ -61,6 +61,12 @@ Supports manual memory pooling for temporary buffers, indexed access, and enumer
     - Triggers `OnItemInserted` and `OnStateChanged`.
 
 
+- `void AddRange(IEnumerable<T> items)`
+  Adds a range of items to the end of the list 
+  - Triggers `OnItemInserted` and `OnStateChanged`
+  - Throws `ArgumentNullException` if parameter `items` is null 
+ 
+
 - `void Clear()`  
   Removes all elements.
     - Triggers `OnItemDeleted` for each element.

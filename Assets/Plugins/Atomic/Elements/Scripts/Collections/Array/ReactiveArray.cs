@@ -251,13 +251,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns a struct-based enumerator for the array.
         /// </summary>
-        public Enumerator GetEnumerator() => new(this.items);
+        public Enumerator GetEnumerator() => new(this);
 
         /// <inheritdoc/>
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator();
 
         /// <inheritdoc/>
-        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this.items);
+        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
 
         /// <summary>
         /// Disposes this array and clears all event subscriptions.
@@ -273,7 +273,7 @@ namespace Atomic.Elements
         /// </summary>
         public struct Enumerator : IEnumerator<T>
         {
-            private readonly T[] _items;
+            private readonly ReactiveArray<T> _array;
             private int _index;
             private T _current;
 
@@ -282,9 +282,9 @@ namespace Atomic.Elements
 
             object IEnumerator.Current => _current;
 
-            public Enumerator(T[] items)
+            public Enumerator(ReactiveArray<T> array)
             {
-                _items = items;
+                _array = array;
                 _index = -1;
                 _current = default;
             }
@@ -293,11 +293,11 @@ namespace Atomic.Elements
             public bool MoveNext()
             {
                 int next = _index + 1;
-                if (next >= _items.Length)
+                if (next >= _array.items.Length)
                     return false;
 
                 _index = next;
-                _current = _items[_index];
+                _current = _array.items[_index];
                 return true;
             }
 

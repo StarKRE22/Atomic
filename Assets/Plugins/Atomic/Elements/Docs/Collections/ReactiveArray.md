@@ -147,10 +147,10 @@ The table shows median execution times of key operations, illustrating the overh
 | Operation | Array (Median μs) | ReactiveArray (Median μs) |
 |-----------|-------------------|---------------------------|
 | Get       | 1.10              | 1.20                      |
-| Set       | 10.80             | 105.00                    |
+| Set       | 10.80             | 63.50                     |
 | Copy      | 0.70              | 0.70                      |
-| ForEach   | 1.20              | 11.40                     |
-| For       | 0.50              | 0.60                      |
+| ForEach   | 0.80              | 7.00                      |
+| For       | 0.70              | 0.70                      |
 
 Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations.  
 It is well-suited for scenarios where element change notifications are needed.

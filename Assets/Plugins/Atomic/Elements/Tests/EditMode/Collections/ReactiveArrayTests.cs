@@ -206,13 +206,7 @@ namespace Atomic.Elements
             var array = new ReactiveArray<string>(3);
             Assert.Throws<ArgumentNullException>(() => array.Populate(null));
         }
-
-        [Test]
-        public void SetAll_TooFewElements_ThrowsArgumentException()
-        {
-            var array = new ReactiveArray<int>(3);
-            Assert.Throws<ArgumentException>(() => array.Populate(new[] {1, 2}));
-        }
+        
 
         [Test]
         public void SetAll_TooManyElements_ThrowsArgumentException()

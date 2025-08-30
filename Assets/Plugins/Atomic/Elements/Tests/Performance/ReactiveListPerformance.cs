@@ -4,7 +4,7 @@ using Unity.PerformanceTesting;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class ReactiveList_Performance
+    public sealed class ReactiveListPerformance
     {
         private static readonly object Dummy = new();
         private const int N = 1000;
@@ -100,7 +100,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<object>(_source);
 
             Measure.Method(list.Clear)
-                .SetUp(() => list.Populate(_source))
+                .SetUp(() => list.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveList.Clear()", SampleUnit.Microsecond))
@@ -135,8 +135,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.CopyTo()", SampleUnit.Microsecond))
                 .Run();
         }
-
-        // --- Insert ---
+        
         [Test, Performance]
         public void Insert()
         {
@@ -153,8 +152,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.Insert()", SampleUnit.Microsecond))
                 .Run();
         }
-
-        // --- Contains ---
+        
         [Test, Performance]
         public void Contains()
         {

@@ -51,10 +51,13 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Indexer_Get_SafeCast()
         {
+            var source = new object[N];
+            Array.Fill(source, "Sample");
+            
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++) 
-                        _ = (string) _source[i];
+                        _ = (string) source[i];
                 })
                 .WarmupCount(10)
                 .MeasurementCount(30)
@@ -65,11 +68,14 @@ namespace Atomic.Entities
         [Test, Performance]
         public void Indexer_Get_UnsafeCast()
         {
+            var source = new object[N];
+            Array.Fill(source, "Sample");
+            
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++)
                     {
-                        ref readonly string _ = ref UnsafeUtility.As<object, string>(ref _source[i]);
+                        ref readonly string _ = ref UnsafeUtility.As<object, string>(ref source[i]);
                     }
                 })
                 .WarmupCount(10)
@@ -77,9 +83,7 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
-
-   
-
+        
         [Test, Performance]
         public void Copy()
         {
