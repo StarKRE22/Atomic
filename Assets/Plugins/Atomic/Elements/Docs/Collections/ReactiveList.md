@@ -152,18 +152,18 @@ foreach (var item in list)
 The performance comparison below was measured on a **MacBook with Apple M1** and for collections containing **1000 elements of type `object`**.  
 The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
 
-| Operation   | List (Median μs) | ReactiveList (Median μs) |
-|-------------|------------------|--------------------------|
-| Add         | 8.60             | 10.70                    |
-| Clear       | 0.40             | 1.20                     |
-| Contains    | 62.80            | 41.90                    |
-| CopyTo      | 0.40             | 0.50                     |
-| Enumerator  | 7.00             | 7.10                     |
-| ForLoop     | 1.70             | 1.70                     |
-| Indexer Get | 1.50             | 1.70                     |
-| Indexer Set | 9.50             | 42.00                    |
-| Remove      | 293.35           | 254.25                   |
-| RemoveAt    | 10.80            | 3.00                     |
-| Insert      | 222.65           | 223.60                   |
+| Operation       | List (Median μs) | ReactiveList (Median μs) |
+|-----------------|------------------|--------------------------|
+| Add             | 8.60             | 10.70                    |
+| Clear           | 0.40             | 1.20                     |
+| Contains        | 62.80            | 41.90                    |
+| CopyTo          | 0.40             | 0.50                     |
+| Enumerator      | 7.00             | 7.10                     |
+| ForLoop         | 1.70             | 1.70                     |
+| Indexer Get     | 1.50             | 1.70                     |
+| Indexer Set     | 9.50             | 42.00                    |
+| Remove          | 293.35           | 254.25                   |
+| Remove At Last  | 10.80            | 3.00                     |
+| Insert At First | 222.65           | 223.60                   |
 
 > **Note:** `ReactiveList` shows slightly higher latency when setting elements (`Indexer Set`) due to event invocation, but is faster in some removal operations (`RemoveAt`) thanks to internal optimizations.

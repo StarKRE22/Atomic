@@ -87,7 +87,10 @@ namespace Atomic.Elements
         public void Dispose()
         {
             this.Clear();
+            
             this.OnItemChanged = null;
+            this.OnItemInserted = null;
+            this.OnItemDeleted = null;
             this.OnStateChanged = null;
         }
 

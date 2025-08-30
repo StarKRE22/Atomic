@@ -102,7 +102,31 @@ foreach (var item in list)
     Console.WriteLine(item);
 ```
 
-## Performance
+### Performance
 
 The performance comparison below was measured on a **MacBook with Apple M1** and for collections containing **1000 elements of type `object`**.  
-The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
+The table shows **average execution times** of key operations, illustrating the overhead of the reactive wrapper and the cost of using a linked structure.
+### Performance
+The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
+The table shows median execution times of key operations.
+
+| Operation       | List<T> Avg (μs) | ReactiveList Avg (μs) | ReactiveLinkedList Avg (μs) |
+|-----------------|------------------|-----------------------|-----------------------------|
+| Add             | 8.63             | 10.69                 | 16.74                       |
+| Clear           | 0.44             | 1.22                  | 0.04                        |
+| Contains        | 63.35            | 42.70                 | 51.59                       |
+| CopyTo          | 0.45             | 0.48                  | 8.02                        |
+| Enumerator      | 7.11             | 7.16                  | 6.81                        |
+| ForLoop         | 1.72             | 1.75                  | 1269.22                     |
+| Indexer Get     | 1.53             | 1.74                  | 1275.63                     |
+| Indexer Set     | 10.13            | 42.12                 | 1316.02                     |
+| Remove          | 295.79           | 257.58                | 48.58                       |
+| Remove At Last  | 11.08            | 3.03                  | 2539.79                     |
+| Insert At First | 226.36           | 225.46                | 16.07                       |
+
+#### Notes
+
+- `ReactiveLinkedList` excels in scenarios with frequent insertions/removals at the head or tail.
+- Index-based access (`Get`/`Set`) is significantly slower than arrays due to traversal.
+- Iteration using `foreach` is acceptable, but for high-performance scenarios, direct node traversal is recommended.
+- Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`) add a slight overhead.
