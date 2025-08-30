@@ -124,7 +124,8 @@ namespace Atomic.Elements
             set
             {
                 int index = -1;
-                
+
+                //Find index:
                 if (_count > 0)
                 {
                     int hash = key.GetHashCode() & 0x7FFFFFFF;
@@ -140,7 +141,8 @@ namespace Atomic.Elements
                         index = slot.next;
                     }
                 }
-                
+
+                //If item exists
                 if (index >= 0)
                 {
                     ref Slot slot = ref _slots[index];
@@ -151,6 +153,8 @@ namespace Atomic.Elements
                     this.OnStateChanged?.Invoke();
                     this.OnItemChanged?.Invoke(key, value);
                 }
+
+                //Add item
                 else
                 {
                     if (_freeList >= 0)
@@ -181,7 +185,7 @@ namespace Atomic.Elements
 
                     next = index;
                     _count++;
-                    
+
                     this.OnStateChanged?.Invoke();
                     this.OnItemAdded?.Invoke(key, value);
                 }
@@ -240,13 +244,49 @@ namespace Atomic.Elements
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            if (this.FindIndex(key, out _))
-                throw new ArgumentException($"Value with key {key} is already added!");
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int index = _buckets[bucket];
 
-            this.AddInternal(key, value);
+            while (index >= 0)
+            {
+                ref readonly Slot slot = ref _slots[index];
+                if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                    throw new ArgumentException($"Value with key {key} is already added!");
+
+                index = slot.next;
+            }
+
+            if (_freeList >= 0)
+            {
+                index = _freeList;
+                _freeList = _slots[index].next;
+            }
+            else
+            {
+                if (_lastIndex == _capacity)
+                    this.IncreaseCapacity();
+
+                index = _lastIndex;
+                _lastIndex++;
+            }
+
+            ref int next = ref _buckets[bucket];
+            _slots[index] = new Slot
+            {
+                key = key,
+                value = value,
+                next = next,
+                exists = true
+            };
+            next = index;
+
+            _count++;
+
             this.OnStateChanged?.Invoke();
             this.OnItemAdded?.Invoke(key, value);
         }
+
 
 
         /// <summary>
