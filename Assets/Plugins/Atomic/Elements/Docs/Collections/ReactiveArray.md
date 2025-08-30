@@ -141,7 +141,18 @@ foreach (var item in array)
 ```
 
 ### Performance
+Below are the performance comparison results between `ReactiveArray` and a regular array. The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
 
-`ReactiveArray<T>` is slightly slower than a regular array because it wraps a standard array and adds event notifications.  
-Every element assignment or modification triggers events (`OnItemChanged` and `OnStateChanged`), which introduces some overhead compared to using a plain `T[]`.  
-However, the overhead is typically small and acceptable for scenarios where reactivity and observation are required.
+| Operation | Array (Median μs) | ReactiveArray (Median μs) |
+|-----------|-------------------|---------------------------|
+| Get       | 1.10              | 1.20                      |
+| Set       | 10.80             | 105.00                    |
+| Copy      | 0.70              | 0.70                      |
+| ForEach   | 1.20              | 11.40                     |
+| For       | 0.50              | 0.60                      |
+
+Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations.  
+It is well-suited for scenarios where element change notifications are needed.
+
+However, writing to an element or iterating with `foreach` is noticeably slower due to event invocations.  
+For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
