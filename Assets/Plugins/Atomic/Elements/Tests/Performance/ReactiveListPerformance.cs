@@ -34,8 +34,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("ReactiveList.Indexer get", SampleUnit.Microsecond))
                 .Run();
         }
-
-
+        
         [Test, Performance]
         public void Indexer_Set()
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
+using UnityEngine;
 
 // ReSharper disable ReturnValueOfPureMethodIsNotUsed
 
@@ -50,7 +51,6 @@ namespace Atomic.Elements
         public void Indexer_Set()
         {
             var dict = new ReactiveDictionary<int, object>();
-            Populate(dict);
             
             Measure.Method(() =>
                 {
@@ -59,6 +59,7 @@ namespace Atomic.Elements
                         dict[i] = Dummy;
                     }
                 })
+                .SetUp(() =>  Populate(dict))
                 .WarmupCount(10)
                 .MeasurementCount(30)
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))

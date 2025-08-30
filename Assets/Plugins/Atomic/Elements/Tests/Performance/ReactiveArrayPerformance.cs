@@ -1,4 +1,5 @@
 #if UNITY_6000
+using System;
 using NUnit.Framework;
 using Unity.PerformanceTesting;
 
@@ -64,17 +65,17 @@ namespace Atomic.Elements
                 .Run();
         }
 
-
+        
         [Test, Performance]
         public void Clear()
         {
             var array = new ReactiveArray<object>(_source);
 
             Measure.Method(array.Clear)
-                .SetUp(() => array.Populate(_source))
+                .SetUp(() => array.Fill(Dummy))
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Clear()", SampleUnit.Microsecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Clear", SampleUnit.Microsecond))
                 .Run();
         }
 

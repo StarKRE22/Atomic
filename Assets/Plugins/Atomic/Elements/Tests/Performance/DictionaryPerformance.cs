@@ -88,7 +88,7 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void Indexer_Set()
         {
@@ -105,7 +105,7 @@ namespace Atomic.Elements
                 .Run();
         }
 
-        
+
         [Test, Performance]
         public void Indexer_Get()
         {
@@ -176,13 +176,13 @@ namespace Atomic.Elements
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void TryGetValue()
         {
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < N; i++) 
+                    for (int i = 0; i < N; i++)
                         _ = _source.TryGetValue(i, out object _);
                 })
                 .WarmupCount(10)

@@ -57,7 +57,6 @@ namespace Atomic.Elements
         private const int UNDEFINED_INDEX = -1;
         private static readonly IEqualityComparer<K> s_keyComparer = EqualityComparer.GetDefault<K>();
         private static readonly IEqualityComparer<V> s_valueComparer = EqualityComparer.GetDefault<V>();
-        private static readonly ArrayPool<KeyValuePair<K, V>> s_pairArrayPool = ArrayPool<KeyValuePair<K, V>>.Shared;
 
         private struct Slot
         {
@@ -268,6 +267,8 @@ namespace Atomic.Elements
                     this.IncreaseCapacity();
 
                 index = _lastIndex;
+                bucket = hash % _capacity;
+                
                 _lastIndex++;
             }
 

@@ -16,8 +16,7 @@ namespace Atomic.Elements
         public void OneTimeSetUp()
         {
             _source = new object[N];
-            for (int i = 0; i < N; i++)
-                _source[i] = Dummy;
+            Array.Fill(_source, Dummy);
         }
 
         [Test, Performance]
@@ -28,8 +27,8 @@ namespace Atomic.Elements
                     for (int i = 0; i < N; i++) 
                         _ = _source[i];
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
@@ -42,9 +41,21 @@ namespace Atomic.Elements
                     for (int i = 0; i < N; i++)
                         _source[i] = Dummy;
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Array.SetValue", SampleUnit.Microsecond))
+                .Run();
+        }
+        
+        [Test, Performance]
+        public void Clear()
+        {
+            var source = new object[N];
+            Measure.Method(() => Array.Clear(source, 0, source.Length))
+                .SetUp(() => Array.Fill(source, Dummy))
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("Array.Clear", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -59,8 +70,8 @@ namespace Atomic.Elements
                     for (int i = 0; i < N; i++) 
                         _ = (string) source[i];
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
@@ -78,8 +89,8 @@ namespace Atomic.Elements
                         ref readonly string _ = ref UnsafeUtility.As<object, string>(ref source[i]);
                     }
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
                 .Run();
         }
@@ -89,8 +100,8 @@ namespace Atomic.Elements
         {
             var copy = new object[N];
             Measure.Method(() => Array.Copy(_source, copy, N))
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Array.Copy", SampleUnit.Microsecond))
                 .Run();
         }
@@ -103,8 +114,8 @@ namespace Atomic.Elements
                     foreach (var item in _source)
                         _ = item;
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Array.Foreach", SampleUnit.Microsecond))
                 .Run();
         }
@@ -117,8 +128,8 @@ namespace Atomic.Elements
                     for (int i = 0, count = _source.Length; i < count; i++) 
                         _ = _source[i];
                 })
-                .WarmupCount(10)
-                .MeasurementCount(30)
+                .WarmupCount(5)
+                .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("Array.ForLoop", SampleUnit.Microsecond))
                 .Run();
         }
