@@ -84,13 +84,13 @@ Supports indexed access, enumeration, and event notifications.
     - `OnStateChanged` is triggered once at the end.
 
 
-- `void Replace(IEnumerable<T> newItems)`  
-  Replaces all elements with the values from `newItems`.
-    - Must match the array length.
-    - Throws `ArgumentNullException` if `newItems` is null.
-    - Throws `ArgumentException` if lengths do not match.
-    - `OnItemChanged` is fired for each changed element.
-    - `OnStateChanged` is fired once at the end.
+- `void Populate(IEnumerable<T> newItems)`  
+  Updates the array elements with the values from `newItems`.
+  - Any existing elements that differ from the new values are replaced and `OnItemChanged` is fired for each updated element.
+  - If `newItems` has fewer elements than the array length, the remaining elements are cleared (set to default) and `OnItemDeleted` is fired for each cleared element.
+  - If `newItems` has more elements than the array length, an `ArgumentException` is thrown.
+  - Throws `ArgumentNullException` if `newItems` is `null`.
+  - `OnStateChanged` is fired once at the end.
 
 
 - `void Fill(T value)`  
@@ -141,7 +141,8 @@ foreach (var item in array)
 ```
 
 ### Performance
-Below are the performance comparison results between `ReactiveArray` and a regular array. The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
+The performance comparison below was measured on a **MacBook with Apple M1** and for collections containing **1000 elements of type `object`**.  
+The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
 
 | Operation | Array (Median μs) | ReactiveArray (Median μs) |
 |-----------|-------------------|---------------------------|

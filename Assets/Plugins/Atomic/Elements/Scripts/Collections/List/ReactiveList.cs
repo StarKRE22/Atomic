@@ -256,6 +256,63 @@ namespace Atomic.Elements
         }
 
         /// <summary>
+        /// Updates the contents of the list with the values from the specified <paramref name="newItems"/> collection.
+        /// </summary>
+        /// <remarks>
+        /// The method works as follows:
+        /// <list type="bullet">
+        /// <item>Existing elements that differ from the new values are updated, triggering <see cref="OnItemChanged"/>.</item>
+        /// <item>If there are more new elements than the current list, the additional elements are added, triggering <see cref="OnItemInserted"/>.</item>
+        /// <item>If there are fewer new elements than the current list, the excess elements are removed, triggering <see cref="OnItemDeleted"/>.</item>
+        /// <item>After the method completes, <see cref="OnStateChanged"/> is always invoked.</item>
+        /// </list>
+        /// </remarks>
+        /// <param name="newItems">The collection of new items to populate the list with.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="newItems"/> is <c>null</c>.</exception>
+        public void Populate(IEnumerable<T> newItems)
+        {
+            if (newItems == null)
+                throw new ArgumentNullException(nameof(newItems));
+
+            using var enumerator = newItems.GetEnumerator();
+            int index = 0;
+
+            // Обновляем существующие элементы
+            while (index < this.count && enumerator.MoveNext())
+            {
+                T newValue = enumerator.Current;
+                ref T current = ref this.items[index];
+
+                if (!s_equalityComparer.Equals(current, newValue))
+                {
+                    current = newValue;
+                    this.OnItemChanged?.Invoke(index, newValue);
+                }
+
+                index++;
+            }
+
+            // Если остались новые элементы — добавляем их
+            while (enumerator.MoveNext())
+            {
+                this.Add(enumerator.Current); // вызывает OnItemInserted и OnStateChanged
+            }
+
+            // Если текущих элементов больше, чем новых — удаляем лишние
+            while (index < this.count)
+            {
+                T removedItem = this.items[index];
+                this.count--;
+                for (int j = index; j < this.count; j++)
+                    this.items[j] = this.items[j + 1];
+
+                this.OnItemDeleted?.Invoke(index, removedItem);
+            }
+
+            this.OnStateChanged?.Invoke();
+        }
+
+        /// <summary>
         /// Internal enumerator used for foreach iteration.
         /// </summary>
         public struct Enumerator : IEnumerator<T>

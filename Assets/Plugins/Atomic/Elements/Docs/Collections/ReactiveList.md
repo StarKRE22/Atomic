@@ -60,36 +60,53 @@ Supports manual memory pooling for temporary buffers, indexed access, and enumer
   Adds a new item to the end of the list.
     - Triggers `OnItemInserted` and `OnStateChanged`.
 
+
 - `void Clear()`  
   Removes all elements.
     - Triggers `OnItemDeleted` for each element.
     - Triggers `OnStateChanged`.
 
+
 - `bool Remove(T item)`  
   Removes the first occurrence of the specified item.
     - Triggers `OnItemDeleted` and `OnStateChanged` if found.
+
 
 - `void RemoveAt(int index)`  
   Removes the item at the specified index.
     - Triggers `OnItemDeleted` and `OnStateChanged`.
     - Throws `IndexOutOfRangeException` if index is invalid.
 
+
 - `void Insert(int index, T item)`  
   Inserts an item at the specified index.
     - Triggers `OnItemInserted` and `OnStateChanged`.
     - Throws `IndexOutOfRangeException` if index is invalid.
 
+
 - `void CopyTo(T[] array, int arrayIndex = 0)`  
   Copies elements to an external array starting at `arrayIndex`.
+
 
 - `int IndexOf(T item)`  
   Returns the index of the first occurrence of the item, or `-1` if not found.
 
+
 - `void Dispose()`  
   Clears all elements and event subscriptions.
 
+
 - `Enumerator GetEnumerator()`  
   Returns a lightweight struct-based enumerator for iteration.
+
+
+- `void Populate(IEnumerable<T> newItems)`  
+  Updates the contents of the list with the values from `newItems`.
+  - Existing elements that differ from the new values are updated, triggering `OnItemChanged`.
+  - If there are more new elements than the current list, the additional elements are added, triggering `OnItemInserted`.
+  - If there are fewer new elements than the current list, the excess elements are removed, triggering `OnItemDeleted`.
+  - Throws `ArgumentNullException` if `newItems` is `null`.
+  - `OnStateChanged` is fired once at the end.
 
 ---
 

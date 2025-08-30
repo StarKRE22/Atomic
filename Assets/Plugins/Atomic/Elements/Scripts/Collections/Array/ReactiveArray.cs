@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
+
 // ReSharper disable NotResolvedInText
 #endif
 
@@ -99,7 +100,7 @@ namespace Atomic.Elements
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Copies a range of elements from this reactive array to a destination array.
         /// </summary>
@@ -132,14 +133,21 @@ namespace Atomic.Elements
         }
 
         /// <summary>
-        /// Replaces all elements in the array with values from the provided sequence.
-        /// Fires <see cref="OnItemChanged"/> for each changed item,
-        /// and <see cref="OnStateChanged"/> once at the end.
+        /// Updates the contents of the reactive array with values from the specified <paramref name="newItems"/> collection.
         /// </summary>
-        /// <param name="newItems">The new values to assign. Must match the array length.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="newItems"/> is null.</exception>
-        /// <exception cref="ArgumentException">If <paramref name="newItems"/> has a different number of items than the array.</exception>
-        public void Replace(IEnumerable<T> newItems)
+        /// <remarks>
+        /// This method works as follows:
+        /// <list type="bullet">
+        /// <item>Existing elements that differ from the new values are updated, triggering <see cref="OnItemChanged"/>.</item>
+        /// <item>If there are more new elements than the current array length, an <see cref="ArgumentException"/> is thrown.</item>
+        /// <item>If there are fewer new elements than the current array length, the remaining elements are cleared (defaulted) and <see cref="OnItemDeleted"/> is triggered for them.</item>
+        /// <item>After the method completes, <see cref="OnStateChanged"/> is always invoked.</item>
+        /// </list>
+        /// </remarks>
+        /// <param name="newItems">The collection of new items to populate the array with.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="newItems"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException">Thrown if the number of items in <paramref name="newItems"/> does not match the array length.</exception>
+        public void Populate(IEnumerable<T> newItems)
         {
             if (newItems == null)
                 throw new ArgumentNullException(nameof(newItems));
@@ -147,10 +155,12 @@ namespace Atomic.Elements
             using var enumerator = newItems.GetEnumerator();
             int index = 0;
 
+            // Update existing elements
             while (index < this.items.Length && enumerator.MoveNext())
             {
                 T newValue = enumerator.Current;
                 ref T current = ref this.items[index];
+
                 if (!s_comparer.Equals(current, newValue))
                 {
                     current = newValue;
@@ -160,8 +170,17 @@ namespace Atomic.Elements
                 index++;
             }
 
-            if (index != this.items.Length || enumerator.MoveNext())
+            // If there are still items in newItems but array is full — throw
+            if (enumerator.MoveNext())
                 throw new ArgumentException("Item count does not match array length.", nameof(newItems));
+
+            // Clear remaining elements if newItems has fewer elements
+            for (int i = index; i < this.items.Length; i++)
+            {
+                T removedItem = this.items[i];
+                this.items[i] = default;
+                this.OnItemChanged?.Invoke(i, removedItem);
+            }
 
             this.OnStateChanged?.Invoke();
         }
@@ -218,17 +237,17 @@ namespace Atomic.Elements
             T[] newItems = new T[newSize];
             int minLength = Math.Min(newSize, this.items.Length);
 
-            for (int i = 0; i < minLength; i++) 
+            for (int i = 0; i < minLength; i++)
                 newItems[i] = this.items[i];
 
             this.items = newItems;
 
-            for (int i = minLength; i < newSize; i++) 
+            for (int i = minLength; i < newSize; i++)
                 this.OnItemChanged?.Invoke(i, default);
 
             this.OnStateChanged?.Invoke();
         }
-        
+
         /// <summary>
         /// Returns a struct-based enumerator for the array.
         /// </summary>
@@ -274,14 +293,14 @@ namespace Atomic.Elements
             public bool MoveNext()
             {
                 int next = _index + 1;
-                if (next >= _items.Length) 
+                if (next >= _items.Length)
                     return false;
-                
+
                 _index = next;
                 _current = _items[_index];
                 return true;
             }
-            
+
             /// <inheritdoc/>
             public void Reset()
             {

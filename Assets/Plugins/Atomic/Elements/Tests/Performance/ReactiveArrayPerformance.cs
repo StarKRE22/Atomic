@@ -71,7 +71,7 @@ namespace Atomic.Elements
             var array = new ReactiveArray<object>(_source);
 
             Measure.Method(array.Clear)
-                .SetUp(() => array.Replace(_source))
+                .SetUp(() => array.Populate(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveArray.Clear()", SampleUnit.Microsecond))
@@ -83,7 +83,7 @@ namespace Atomic.Elements
         {
             var array = new ReactiveArray<object>(N);
 
-            Measure.Method(() => { array.Replace(_source); })
+            Measure.Method(() => { array.Populate(_source); })
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveArray.Replace()", SampleUnit.Microsecond))
