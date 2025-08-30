@@ -20,8 +20,6 @@ namespace Atomic.Elements
     {
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
-        private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
-
         /// <inheritdoc/>
         public event StateChangedHandler OnStateChanged;
 
@@ -277,21 +275,11 @@ namespace Atomic.Elements
             if (count == 0)
                 return;
 
-            T[] buffer = s_arrayPool.Rent(count);
-            Array.Copy(this.items, buffer, count);
-
             this.count = 0;
             this.OnStateChanged?.Invoke();
-
-            try
-            {
-                for (int i = 0; i < count; i++)
-                    this.OnItemDeleted?.Invoke(i, buffer[i]);
-            }
-            finally
-            {
-                s_arrayPool.Return(buffer);
-            }
+            
+            for (int i = 0; i < count; i++)
+                this.OnItemDeleted?.Invoke(i, this.items[i]);
         }
 
         /// <inheritdoc/>
