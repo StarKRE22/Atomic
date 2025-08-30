@@ -7,7 +7,7 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Elements
 {
-    public sealed class ReactiveDictionary_Performance
+    public sealed class ReactiveDictionaryPerformance
     {
         private const int N = 1000;
 

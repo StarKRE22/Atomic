@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
+// ReSharper disable NotResolvedInText
 #endif
 
 namespace Atomic.Elements
@@ -97,6 +98,37 @@ namespace Atomic.Elements
             }
 
             this.OnStateChanged?.Invoke();
+        }
+        
+        /// <summary>
+        /// Copies a range of elements from this reactive array to a destination array.
+        /// </summary>
+        /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>
+        /// <param name="destination">The destination array.</param>
+        /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
+        /// <param name="length">The number of elements to copy.</param>
+        /// <exception cref="ArgumentNullException">If <paramref name="destination"/> is null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If indices or length are invalid.</exception>
+        /// <exception cref="ArgumentException">If the destination array is too small to contain the copied elements.</exception>
+        /// <example>
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(1, 2, 3, 4, 5);
+        /// int[] target = new int[5];
+        /// array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
+        /// </code>
+        /// </example>
+        public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)
+        {
+            if (destination == null)
+                throw new ArgumentNullException(nameof(destination));
+            if (sourceIndex < 0 || destinationIndex < 0 || length < 0)
+                throw new ArgumentOutOfRangeException("Indices and length must be non-negative.");
+            if (sourceIndex + length > this.items.Length)
+                throw new ArgumentOutOfRangeException(nameof(length), "Source range exceeds array length.");
+            if (destinationIndex + length > destination.Length)
+                throw new ArgumentException("Destination array is too small.");
+
+            Array.Copy(this.items, sourceIndex, destination, destinationIndex, length);
         }
 
         /// <summary>

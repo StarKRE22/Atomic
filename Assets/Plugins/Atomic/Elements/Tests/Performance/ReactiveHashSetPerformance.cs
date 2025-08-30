@@ -6,7 +6,7 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Elements
 {
-    public sealed class ReactiveHashSet_Performance
+    public sealed class ReactiveHashSetPerformance
     {
         private const int N = 1000;
         private object[] _source;

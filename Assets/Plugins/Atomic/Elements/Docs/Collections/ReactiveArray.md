@@ -24,6 +24,20 @@ Represents a **read-only** reactive array that notifies about element changes an
 - `event StateChangedHandler OnStateChanged` – triggered when the array’s **global state** changes (e.g., cleared,
   replaced, or reset).
 
+### Methods
+
+- `void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)`  
+  Copies a range of elements from this reactive array to a specified destination array.
+  - `sourceIndex` – zero-based index in this array where copying starts.
+  - `destination` – the target array.
+  - `destinationIndex` – zero-based index in the target array where storing begins.
+  - `length` – number of elements to copy.
+  - **Example**:
+    ```csharp
+    var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
+    int[] target = new int[5];
+    array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
+    ```
 ---
 
 ## IReactiveArray\<T\>
