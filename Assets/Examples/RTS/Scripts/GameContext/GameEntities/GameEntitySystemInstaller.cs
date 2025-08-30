@@ -26,6 +26,7 @@ namespace RTSGame
             context.WhenLateUpdate(entityWorld.OnLateUpdate);
             context.WhenDisable(entityWorld.Disable);
             context.WhenDispose(entityWorld.DisposeEntities);
+            context.WhenDispose(entityWorld.Dispose);
         }
     }
 }
