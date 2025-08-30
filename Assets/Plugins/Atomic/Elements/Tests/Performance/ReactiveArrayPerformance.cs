@@ -4,47 +4,24 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Elements
 {
-    public sealed class ReactiveArray_Performance
+    public sealed class ReactiveArrayPerformance
     {
+        private static readonly object Dummy = new();
         private const int N = 1000;
-        private int[] _values;
+        private object[] _source;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            _values = new int[N];
+            _source = new object[N];
             for (int i = 0; i < N; i++)
-                _values[i] = i;
-        }
-
-        private void Populate(ReactiveArray<int> array)
-        {
-            array.Clear();
-            for (int i = 0; i < N; i++)
-                array[i] = _values[i];
-        }
-
-        [Test, Performance]
-        public void Indexer_Set()
-        {
-            var array = new ReactiveArray<int>(N);
-
-            Measure.Method(() =>
-                {
-                    for (var i = 0; i < N; i++)
-                        array[i] = _values[i];
-                })
-                .CleanUp(array.Clear)
-                .WarmupCount(5)
-                .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Indexer set", SampleUnit.Millisecond))
-                .Run();
+                _source[i] = Dummy;
         }
 
         [Test, Performance]
         public void Indexer_Get()
         {
-            var array = new ReactiveArray<int>(_values);
+            var array = new ReactiveArray<object>(_source);
 
             Measure.Method(() =>
                 {
@@ -53,57 +30,82 @@ namespace Atomic.Elements
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Indexer get", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Indexer get", SampleUnit.Microsecond))
                 .Run();
         }
 
         [Test, Performance]
-        public void Clear()
+        public void Indexer_Set()
         {
-            var array = new ReactiveArray<int>(_values);
+            var array = new ReactiveArray<object>(N);
 
-            Measure.Method(array.Clear)
-                .SetUp(() => Populate(array))
+            Measure.Method(() =>
+                {
+                    for (var i = 0; i < N; i++)
+                        array[i] = Dummy;
+                })
+                .CleanUp(array.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Clear()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Indexer set", SampleUnit.Microsecond))
+                .Run();
+        }
+
+        [Test, Performance]
+        public void Copy()
+        {
+            var array = new ReactiveArray<object>(_source);
+            object[] destination = new object[N];
+
+            Measure.Method(() => { array.Copy(0, destination, 0, N); })
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("ReactiveArray.Copy()", SampleUnit.Microsecond))
+                .Run();
+        }
+
+
+        [Test, Performance]
+        public void Clear()
+        {
+            var array = new ReactiveArray<object>(_source);
+
+            Measure.Method(array.Clear)
+                .SetUp(() => array.Replace(_source))
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("ReactiveArray.Clear()", SampleUnit.Microsecond))
                 .Run();
         }
 
         [Test, Performance]
         public void Replace()
         {
-            var array = new ReactiveArray<int>(N);
+            var array = new ReactiveArray<object>(N);
 
-            Measure.Method(() =>
-                {
-                    array.Replace(_values);
-                })
+            Measure.Method(() => { array.Replace(_source); })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Replace()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Replace()", SampleUnit.Microsecond))
                 .Run();
         }
 
         [Test, Performance]
         public void Fill()
         {
-            var array = new ReactiveArray<int>(N);
+            var array = new ReactiveArray<object>(N);
 
-            Measure.Method(() =>
-                {
-                    array.Fill(42);
-                })
+            Measure.Method(() => { array.Fill(42); })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Fill()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Fill()", SampleUnit.Microsecond))
                 .Run();
         }
 
         [Test, Performance]
         public void Resize()
         {
-            var array = new ReactiveArray<int>(N);
+            var array = new ReactiveArray<object>(N);
 
             Measure.Method(() =>
                 {
@@ -112,26 +114,41 @@ namespace Atomic.Elements
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Resize()", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Resize()", SampleUnit.Microsecond))
                 .Run();
         }
 
         [Test, Performance]
         public void Enumerator()
         {
-            var array = new ReactiveArray<int>(_values);
+            var array = new ReactiveArray<object>(_source);
 
             Measure.Method(() =>
                 {
-                    foreach (var item in array)
+                    foreach (object item in array)
                         _ = item;
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("ReactiveArray.Enumerator", SampleUnit.Millisecond))
+                .SampleGroup(new SampleGroup("ReactiveArray.Enumerator", SampleUnit.Microsecond))
+                .Run();
+        }
+        
+        [Test, Performance]
+        public void ForLoop()
+        {
+            var array = new ReactiveArray<object>(_source);
+            
+            Measure.Method(() =>
+                {
+                    for (int i = 0, count = array.Length; i < count; i++) 
+                        _ = array[i];
+                })
+                .WarmupCount(10)
+                .MeasurementCount(30)
+                .SampleGroup(new SampleGroup("ReactiveArray.ForLoop", SampleUnit.Microsecond))
                 .Run();
         }
     }
-
 }
 #endif

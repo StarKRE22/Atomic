@@ -218,18 +218,13 @@ namespace Atomic.Elements
             T[] newItems = new T[newSize];
             int minLength = Math.Min(newSize, this.items.Length);
 
-            for (int i = 0; i < minLength; i++)
-            {
+            for (int i = 0; i < minLength; i++) 
                 newItems[i] = this.items[i];
-            }
 
             this.items = newItems;
 
-            // Fire OnItemChanged for all new elements
-            for (int i = minLength; i < newSize; i++)
-            {
+            for (int i = minLength; i < newSize; i++) 
                 this.OnItemChanged?.Invoke(i, default);
-            }
 
             this.OnStateChanged?.Invoke();
         }
@@ -237,13 +232,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Returns a struct-based enumerator for the array.
         /// </summary>
-        public Enumerator GetEnumerator() => new(this);
+        public Enumerator GetEnumerator() => new(this.items);
 
         /// <inheritdoc/>
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator(this);
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator();
 
         /// <inheritdoc/>
-        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
+        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this.items);
 
         /// <summary>
         /// Disposes this array and clears all event subscriptions.
@@ -259,7 +254,7 @@ namespace Atomic.Elements
         /// </summary>
         public struct Enumerator : IEnumerator<T>
         {
-            private readonly ReactiveArray<T> _array;
+            private readonly T[] _items;
             private int _index;
             private T _current;
 
@@ -268,9 +263,9 @@ namespace Atomic.Elements
 
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveArray<T> array)
+            public Enumerator(T[] items)
             {
-                _array = array;
+                _items = items;
                 _index = -1;
                 _current = default;
             }
@@ -278,13 +273,15 @@ namespace Atomic.Elements
             /// <inheritdoc/>
             public bool MoveNext()
             {
-                if (_index + 1 == _array.Length)
+                int next = _index + 1;
+                if (next >= _items.Length) 
                     return false;
-
-                _current = _array[++_index];
+                
+                _index = next;
+                _current = _items[_index];
                 return true;
             }
-
+            
             /// <inheritdoc/>
             public void Reset()
             {
