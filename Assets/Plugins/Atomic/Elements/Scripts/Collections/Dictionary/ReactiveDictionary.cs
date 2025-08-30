@@ -753,16 +753,15 @@ namespace Atomic.Elements
         /// </summary>
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            if (serializedItems == null)
+            if (this.serializedItems == null)
                 return;
 
-            for (int i = 0, count = serializedItems.Length; i < count; i++)
+            this.Clear();
+            for (int i = 0, count = this.serializedItems.Length; i < count; i++)
             {
-                SerializedKeyValuePair pair = serializedItems[i];
+                SerializedKeyValuePair pair = this.serializedItems[i];
                 this.Add(pair.key, pair.value);
             }
-
-            this.OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -771,12 +770,12 @@ namespace Atomic.Elements
         /// </summary>
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            serializedItems = new SerializedKeyValuePair[_count];
+            this.serializedItems = new SerializedKeyValuePair[_count];
 
             int i = 0;
             foreach ((K key, V value) in this)
             {
-                serializedItems[i++] = new SerializedKeyValuePair
+                this.serializedItems[i++] = new SerializedKeyValuePair
                 {
                     key = key,
                     value = value

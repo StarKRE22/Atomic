@@ -2,37 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Atomic.Elements
 {
-    /// <summary>
-    /// Represents a singly linked list of elements of type <typeparamref name="T"/>.
-    /// Provides methods to add, remove, search and enumerate items.
-    /// </summary>
-    /// <typeparam name="T">The type of elements stored in the list.</typeparam>
-    public class ReactiveLinkedList<T> : IReactiveList<T>
+    public partial class ReactiveLinkedList<T> : IReactiveList<T>
     {
-        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
-
+        private static readonly IEqualityComparer<T> s_comparer = EqualityComparer<T>.Default;
         private const int UNDEFINED_INDEX = -1;
-
-        protected const int INITIAL_CAPACITY = 1;
+        protected const int INITIAL_CAPACITY = 4;
 
         public event StateChangedHandler OnStateChanged;
         public event ChangeItemHandler<T> OnItemChanged;
         public event InsertItemHandler<T> OnItemInserted;
         public event DeleteItemHandler<T> OnItemDeleted;
 
-        /// <summary>
-        /// Gets the number of elements contained in the list.
-        /// </summary>
         public int Count => _count;
-
-        /// <summary>
-        /// Always returns <c>false</c>, as the list is not read-only.
-        /// </summary>
         public bool IsReadOnly => false;
-        
+
         private struct Node
         {
             public T item;
@@ -42,143 +29,117 @@ namespace Atomic.Elements
         private Node[] _nodes;
         private int _head;
         private int _tail;
-        private int _freeIndex;
         private int _count;
+        private int _freeList;
 
-        /// <summary>
-        /// Initializes a new, empty instance of the <see cref="ReactiveLinkedList{T}"/> class
-        /// with the specified initial capacity.
-        /// </summary>
-        /// <param name="capacity">The initial capacity of the internal node storage.</param>
         public ReactiveLinkedList(int capacity = INITIAL_CAPACITY)
         {
             _nodes = new Node[Math.Max(capacity, INITIAL_CAPACITY)];
-            _head = UNDEFINED_INDEX;
-            _tail = UNDEFINED_INDEX;
-            _freeIndex = 0;
+            _head = _tail = UNDEFINED_INDEX;
             _count = 0;
+            _freeList = UNDEFINED_INDEX;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReactiveLinkedList{T}"/> class
-        /// containing the specified items.
-        /// </summary>
-        /// <param name="items">An array of items to initialize the list with.</param>
         public ReactiveLinkedList(params T[] items) : this(items.Length)
         {
-            for (int i = 0, count = items.Length; i < count; i++)
-                this.Add(items[i]);
+            foreach (var item in items) Add(item);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ReactiveLinkedList{T}"/> class
-        /// containing elements copied from the specified enumerable.
-        /// </summary>
-        /// <param name="items">The enumerable collection whose elements are copied to the list.</param>
         public ReactiveLinkedList(IEnumerable<T> items) : this(items.Count())
         {
-            foreach (T item in items)
-                this.Add(item);
+            foreach (var item in items) Add(item);
         }
 
-        /// <summary>
-        /// Gets or sets the element at the specified index.
-        /// </summary>
-        /// <param name="index">The zero-based index of the element to get or set.</param>
-        /// <returns>The element at the specified index.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown when <paramref name="index"/> is less than 0 or greater than or equal to <see cref="Count"/>.
-        /// </exception>
+        #region Allocation & FreeList
+
+        private int AllocateNode()
+        {
+            if (_freeList != UNDEFINED_INDEX)
+            {
+                int nodeIndex = _freeList;
+                _freeList = _nodes[nodeIndex].next; // следующий свободный
+                return nodeIndex;
+            }
+
+            if (_count >= _nodes.Length)
+                Array.Resize(ref _nodes, _nodes.Length * 2);
+
+            return _count;
+        }
+
+        private void FreeNode(int index)
+        {
+            _nodes[index].item = default;
+            _nodes[index].next = _freeList;
+            _freeList = index;
+        }
+
+        #endregion
+
+        #region Indexer
+
         public T this[int index]
         {
             get
             {
-                if (index < 0 || index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index));
-
-                int current = _head;
-                for (int i = 0; i < index; i++)
-                    current = _nodes[current].next;
-
-                return _nodes[current].item;
+                int node = GetNodeIndex(index);
+                return _nodes[node].item;
             }
             set
             {
-                if (index < 0 || index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index));
-
-                int current = _head;
-                for (int i = 0; i < index; i++)
-                    current = _nodes[current].next;
-
-                if (!s_comparer.Equals(_nodes[current].item, value))
+                int node = GetNodeIndex(index);
+                if (!s_comparer.Equals(_nodes[node].item, value))
                 {
-                    _nodes[current].item = value;
+                    _nodes[node].item = value;
                     OnItemChanged?.Invoke(index, value);
                     OnStateChanged?.Invoke();
                 }
             }
         }
 
-        /// <summary>
-        /// Adds an object to the end of the list.
-        /// </summary>
-        /// <param name="item">The object to add.</param>
+        private int GetNodeIndex(int index)
+        {
+            if (index < 0 || index >= _count)
+                throw new ArgumentOutOfRangeException(nameof(index));
+
+            int current = _head;
+            for (int i = 0; i < index; i++)
+                current = _nodes[current].next;
+
+            return current;
+        }
+
+        #endregion
+
+        #region Add / Insert
+
         public void Add(T item)
         {
-            if (item == null)
-                return;
+            if (item == null) return;
 
-            if (_freeIndex == _nodes.Length)
-            {
-                int newCapacity = _nodes.Length * 2;
-                if (newCapacity < 0) newCapacity = int.MaxValue;
-                Array.Resize(ref _nodes, newCapacity);
-            }
-
-            _nodes[_freeIndex] = new Node {item = item, next = UNDEFINED_INDEX};
+            int nodeIndex = AllocateNode();
+            _nodes[nodeIndex] = new Node {item = item, next = UNDEFINED_INDEX};
 
             if (_tail != UNDEFINED_INDEX)
-                _nodes[_tail].next = _freeIndex;
+                _nodes[_tail].next = nodeIndex;
 
-            _tail = _freeIndex;
+            _tail = nodeIndex;
             if (_head == UNDEFINED_INDEX)
-                _head = _freeIndex;
+                _head = nodeIndex;
 
-            int addedIndex = _count; // индекс для события
-            _freeIndex++;
             _count++;
-
-            OnItemInserted?.Invoke(addedIndex, item);
+            OnItemInserted?.Invoke(_count - 1, item);
             OnStateChanged?.Invoke();
         }
 
-        /// <summary>
-        /// Inserts an element into the list at the specified index.
-        /// </summary>
-        /// <param name="index">The zero-based index at which <paramref name="item"/> should be inserted.</param>
-        /// <param name="item">The object to insert.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// If <paramref name="index"/> is less than 0 or greater than <see cref="Count"/>.
-        /// </exception>
         public void Insert(int index, T item)
         {
-            if (item == null)
-                return;
-
+            if (item == null) return;
             if (index < 0 || index > _count)
                 throw new ArgumentOutOfRangeException(nameof(index));
 
-            if (_freeIndex == _nodes.Length)
-            {
-                int newCapacity = _nodes.Length * 2;
-                if (newCapacity < 0) newCapacity = int.MaxValue;
-                Array.Resize(ref _nodes, newCapacity);
-            }
-
-            int nodeIndex = _freeIndex;
+            int nodeIndex = AllocateNode();
             _nodes[nodeIndex] = new Node {item = item, next = UNDEFINED_INDEX};
-            _freeIndex++;
 
             if (index == 0)
             {
@@ -189,168 +150,105 @@ namespace Atomic.Elements
             }
             else
             {
-                int prev = _head;
-                for (int i = 0; i < index - 1; i++)
-                    prev = _nodes[prev].next;
-
+                int prev = GetNodeIndex(index - 1);
                 _nodes[nodeIndex].next = _nodes[prev].next;
                 _nodes[prev].next = nodeIndex;
-
                 if (_nodes[nodeIndex].next == UNDEFINED_INDEX)
                     _tail = nodeIndex;
             }
 
             _count++;
-
             OnItemInserted?.Invoke(index, item);
             OnStateChanged?.Invoke();
         }
 
-        /// <summary>
-        /// Removes the first occurrence of a specific object from the list.
-        /// </summary>
-        /// <param name="item">The object to remove from the list.</param>
-        /// <returns><c>true</c> if <paramref name="item"/> was successfully removed; otherwise <c>false</c>.</returns>
+        #endregion
+
+        #region Remove
+
         public bool Remove(T item)
         {
-            if (_head == UNDEFINED_INDEX || item == null)
-                return false;
+            if (_head == UNDEFINED_INDEX || item == null) return false;
 
             int current = _head;
             int prev = UNDEFINED_INDEX;
-            int index = 0;
+            int idx = 0;
 
             while (current != UNDEFINED_INDEX)
             {
                 if (s_comparer.Equals(_nodes[current].item, item))
                 {
-                    if (prev != UNDEFINED_INDEX)
-                        _nodes[prev].next = _nodes[current].next;
-                    else
-                        _head = _nodes[current].next;
-
-                    if (current == _tail)
-                        _tail = prev;
-
-                    _nodes[current] = default;
-                    _count--;
-
-                    OnItemDeleted?.Invoke(index, item);
-                    OnStateChanged?.Invoke();
+                    RemoveNode(current, prev, idx);
                     return true;
                 }
 
                 prev = current;
                 current = _nodes[current].next;
-                index++;
+                idx++;
             }
 
             return false;
         }
 
-        /// <summary>
-        /// Removes the element at the specified index of the list.
-        /// </summary>
-        /// <param name="index">The zero-based index of the element to remove.</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// If <paramref name="index"/> is less than 0 or greater than or equal to <see cref="Count"/>.
-        /// </exception>
         public void RemoveAt(int index)
         {
-            if (index < 0 || index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index));
+            int current = GetNodeIndex(index);
+            int prev = (index == 0) ? UNDEFINED_INDEX : GetNodeIndex(index - 1);
+            RemoveNode(current, prev, index);
+        }
 
-            int current = _head;
-            int prev = UNDEFINED_INDEX;
-            int currentIndex = 0;
-
-            while (currentIndex < index)
-            {
-                prev = current;
-                current = _nodes[current].next;
-                currentIndex++;
-            }
-
-            T removedItem = _nodes[current].item;
-
+        private void RemoveNode(int current, int prev, int index)
+        {
             if (prev != UNDEFINED_INDEX)
                 _nodes[prev].next = _nodes[current].next;
             else
                 _head = _nodes[current].next;
 
-            if (current == _tail)
+            if (_tail == current)
                 _tail = prev;
 
-            _nodes[current] = default;
-            _count--;
+            T removed = _nodes[current].item;
+            FreeNode(current);
 
-            OnItemDeleted?.Invoke(index, removedItem);
+            _count--;
+            OnItemDeleted?.Invoke(index, removed);
             OnStateChanged?.Invoke();
         }
 
-        /// <summary>
-        /// Returns the zero-based index of the first occurrence of a specific object in the list.
-        /// </summary>
-        /// <param name="item">The object to locate.</param>
-        /// <returns>
-        /// The index of <paramref name="item"/> if found in the list; otherwise, -1.
-        /// </returns>
+        #endregion
+
+        #region Search
+
         public int IndexOf(T item)
         {
             if (item == null) return -1;
 
-            int index = 0;
+            int idx = 0;
             int current = _head;
             while (current != UNDEFINED_INDEX)
             {
                 if (s_comparer.Equals(_nodes[current].item, item))
-                    return index;
+                    return idx;
 
                 current = _nodes[current].next;
-                index++;
+                idx++;
             }
 
             return -1;
         }
 
-        /// <summary>
-        /// Determines whether the list contains a specific value.
-        /// </summary>
-        /// <param name="item">The object to locate in the list.</param>
-        /// <returns><c>true</c> if <paramref name="item"/> is found; otherwise <c>false</c>.</returns>
-        public bool Contains(T item)
-        {
-            if (item != null)
-            {
-                int current = _head;
-                while (current != UNDEFINED_INDEX)
-                {
-                    if (s_comparer.Equals(_nodes[current].item, item)) return true;
-                    current = _nodes[current].next;
-                }
-            }
+        public bool Contains(T item) => IndexOf(item) >= 0;
 
-            return false;
-        }
+        #endregion
 
-        /// <summary>
-        /// Copies the elements of the list to an array, starting at a particular array index.
-        /// </summary>
-        /// <param name="array">The one-dimensional array that is the destination of the copied elements.</param>
-        /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param>
-        /// <exception cref="ArgumentNullException">If <paramref name="array"/> is null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="arrayIndex"/> is less than 0.</exception>
-        /// <exception cref="ArgumentException">If the target array is too small.</exception>
+        #region Copy / Clear
+
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (array == null)
-                throw new ArgumentNullException(nameof(array));
-
-            if (arrayIndex < 0)
-                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            if (arrayIndex < 0) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
             if (arrayIndex + _count > array.Length)
-                throw new ArgumentException("The target array is too small to hold the elements.");
+                throw new ArgumentException("Array too small");
 
             int current = _head;
             while (current != UNDEFINED_INDEX)
@@ -360,56 +258,31 @@ namespace Atomic.Elements
             }
         }
 
-        /// <summary>
-        /// Removes all elements from the list.
-        /// </summary>
         public void Clear()
         {
-            if (_count == 0)
-                return;
-
             int current = _head;
-            int index = 0;
-
             while (current != UNDEFINED_INDEX)
             {
-                T removedItem = _nodes[current].item;
-                _nodes[current] = default;
-                OnItemDeleted?.Invoke(index, removedItem);
-
-                current = _nodes[current].next;
-                index++;
+                int next = _nodes[current].next;
+                FreeNode(current);
+                current = next;
             }
 
-            _head = UNDEFINED_INDEX;
-            _tail = UNDEFINED_INDEX;
-            _freeIndex = 0;
+            _head = _tail = UNDEFINED_INDEX;
             _count = 0;
-
             OnStateChanged?.Invoke();
         }
 
-        /// <summary>
-        /// Returns an enumerator that iterates through the list.
-        /// </summary>
+        #endregion
+
+        #region Enumerator
+
         public Enumerator GetEnumerator() => new(this);
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => this.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-
-        /// <summary>
-        /// Enumerates the elements of a <see cref="ReactiveLinkedList{T}"/>.
-        /// </summary>
         public struct Enumerator : IEnumerator<T>
         {
-            /// <summary>
-            /// Gets the element at the current position of the enumerator.
-            /// </summary>
-            public T Current => _current;
-
-            object IEnumerator.Current => _current;
-
             private readonly ReactiveLinkedList<T> _list;
             private int _index;
             private T _current;
@@ -421,36 +294,53 @@ namespace Atomic.Elements
                 _current = default;
             }
 
-            /// <summary>
-            /// Advances the enumerator to the next element of the list.
-            /// </summary>
-            /// <returns><c>true</c> if the enumerator was successfully advanced; <c>false</c> if the end is reached.</returns>
+            public T Current => _current;
+            object IEnumerator.Current => _current;
+
             public bool MoveNext()
             {
-                if (_index == UNDEFINED_INDEX)
-                    return false;
-
-                ref readonly Node node = ref _list._nodes[_index];
+                if (_index == UNDEFINED_INDEX) return false;
+                ref Node node = ref _list._nodes[_index];
                 _current = node.item;
                 _index = node.next;
                 return true;
             }
 
-            /// <summary>
-            /// Sets the enumerator to its initial position.
-            /// </summary>
             public void Reset()
             {
                 _index = _list._head;
                 _current = default;
             }
-            
-            /// <summary>
-            /// Performs application-defined tasks associated with freeing resources.
-            /// </summary>
+
             public void Dispose()
             {
             }
         }
+
+        #endregion
     }
+    
+#if UNITY_5_3_OR_NEWER
+    [Serializable]
+    public partial class ReactiveLinkedList<T> : ISerializationCallbackReceiver
+    {
+        [SerializeField]
+        internal T[] serializedItems;
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            this.serializedItems = this.ToArray();
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            if (this.serializedItems == null)
+                return;
+
+            this.Clear();
+            for (int i = 0, count = this.serializedItems.Length; i < count; i++) 
+                this.Add(this.serializedItems[i]);
+        }
+    }
+#endif
 }

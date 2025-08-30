@@ -830,14 +830,14 @@ namespace Atomic.Elements
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
-            serializedItems = this.ToArray();
+            this.serializedItems = this.ToArray();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
             this.Clear();
 
-            if (serializedItems != null)
+            if (this.serializedItems != null)
                 this.UnionWith(serializedItems);
         }
     }
