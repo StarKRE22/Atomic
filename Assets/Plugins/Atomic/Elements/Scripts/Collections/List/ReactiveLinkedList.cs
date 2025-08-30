@@ -10,11 +10,31 @@ namespace Atomic.Elements
     /// Provides methods to add, remove, search and enumerate items.
     /// </summary>
     /// <typeparam name="T">The type of elements stored in the list.</typeparam>
-    public class LinkedList<T> : IList<T>
+    //TODO: REACTIVE LINKED LIST INSERT EVENTS!
+    public class ReactiveLinkedList<T> : IReactiveList<T>
     {
-        protected const int INITIAL_CAPACITY = 1;
-        private const int UNDEFINED_INDEX = -1;
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
+        
+        private const int UNDEFINED_INDEX = -1;
+
+        protected const int INITIAL_CAPACITY = 1;
+        
+        public event StateChangedHandler OnStateChanged;
+        public event ChangeItemHandler<T> OnItemChanged;
+        public event InsertItemHandler<T> OnItemInserted;
+        public event DeleteItemHandler<T> OnItemDeleted;
+
+        /// <summary>
+        /// Gets the number of elements contained in the list.
+        /// </summary>
+        public int Count => _count;
+
+        /// <summary>
+        /// Always returns <c>false</c>, as the list is not read-only.
+        /// </summary>
+        public bool IsReadOnly => false;
+        
+     
 
         private struct Node
         {
@@ -29,21 +49,11 @@ namespace Atomic.Elements
         private int _count;
 
         /// <summary>
-        /// Gets the number of elements contained in the list.
-        /// </summary>
-        public int Count => _count;
-
-        /// <summary>
-        /// Always returns <c>false</c>, as the list is not read-only.
-        /// </summary>
-        public bool IsReadOnly => false;
-
-        /// <summary>
-        /// Initializes a new, empty instance of the <see cref="LinkedList{T}"/> class
+        /// Initializes a new, empty instance of the <see cref="ReactiveLinkedList{T}"/> class
         /// with the specified initial capacity.
         /// </summary>
         /// <param name="capacity">The initial capacity of the internal node storage.</param>
-        public LinkedList(int capacity = INITIAL_CAPACITY)
+        public ReactiveLinkedList(int capacity = INITIAL_CAPACITY)
         {
             _nodes = new Node[Math.Max(capacity, INITIAL_CAPACITY)];
             _head = UNDEFINED_INDEX;
@@ -53,22 +63,22 @@ namespace Atomic.Elements
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LinkedList{T}"/> class
+        /// Initializes a new instance of the <see cref="ReactiveLinkedList{T}"/> class
         /// containing the specified items.
         /// </summary>
         /// <param name="items">An array of items to initialize the list with.</param>
-        public LinkedList(params T[] items) : this(items.Length)
+        public ReactiveLinkedList(params T[] items) : this(items.Length)
         {
             for (int i = 0, count = items.Length; i < count; i++)
                 this.Add(items[i]);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LinkedList{T}"/> class
+        /// Initializes a new instance of the <see cref="ReactiveLinkedList{T}"/> class
         /// containing elements copied from the specified enumerable.
         /// </summary>
         /// <param name="items">The enumerable collection whose elements are copied to the list.</param>
-        public LinkedList(IEnumerable<T> items) : this(items.Count())
+        public ReactiveLinkedList(IEnumerable<T> items) : this(items.Count())
         {
             foreach (T item in items)
                 this.Add(item);
@@ -358,7 +368,7 @@ namespace Atomic.Elements
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
-        /// Enumerates the elements of a <see cref="LinkedList{T}"/>.
+        /// Enumerates the elements of a <see cref="ReactiveLinkedList{T}"/>.
         /// </summary>
         public struct Enumerator : IEnumerator<T>
         {
@@ -369,11 +379,11 @@ namespace Atomic.Elements
 
             object IEnumerator.Current => _current;
             
-            private readonly LinkedList<T> _list;
+            private readonly ReactiveLinkedList<T> _list;
             private int _index;
             private T _current;
 
-            internal Enumerator(LinkedList<T> list)
+            internal Enumerator(ReactiveLinkedList<T> list)
             {
                 _list = list;
                 _index = list._head;
@@ -412,5 +422,6 @@ namespace Atomic.Elements
             {
             }
         }
+
     }
 }

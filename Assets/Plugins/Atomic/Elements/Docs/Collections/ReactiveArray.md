@@ -38,68 +38,6 @@ Implements `IReadOnlyReactiveArray<T>` and provides write access to the array.
 ---
 
 ## ReactiveArray\<T\>
-
-A fixed-size reactive array that emits events when elements change.  
-Supports indexed access, enumeration, and event notifications.
-
-### Constructors
-
-- `ReactiveArray(int capacity)`  
-  Creates a new reactive array with the specified capacity.
-  > Throws `ArgumentOutOfRangeException` if `capacity < 0`.
-
-- `ReactiveArray(params T[] elements)`  
-  Creates a reactive array initialized with the provided elements.
-
-### Properties
-
-- `int Length` – the number of elements in the array.
-- `T this[int index]` – indexed access with bounds checking.
-  > Throws `IndexOutOfRangeException` if index is out of range.
-
-### Events
-
-- `event ChangeItemHandler<T> OnItemChanged` – raised when an element changes.
-- `event StateChangedHandler OnStateChanged` – raised when the array's global state changes (clear, replace, reset).
-
-### Methods
-
-- `void Clear()`  
-  Resets all elements to `default(T)`.
-    - `OnItemChanged` is triggered only for elements that changed.
-    - `OnStateChanged` is triggered once at the end.
-
-- `void Replace(IEnumerable<T> newItems)`  
-  Replaces all elements with the values from `newItems`.
-    - Must match the array length.
-    - Throws `ArgumentNullException` if `newItems` is null.
-    - Throws `ArgumentException` if lengths do not match.
-    - `OnItemChanged` is fired for each changed element.
-    - `OnStateChanged` is fired once at the end.
-
-- `Enumerator GetEnumerator()`  
-  Returns a lightweight struct-based enumerator.
-
-- `void Dispose()`  
-  Clears all event subscriptions.
-
-### Examples
-
-```csharp
-var array = new ReactiveArray<int>(3);
-array.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
-array.OnStateChanged += () => Console.WriteLine("Array state changed");
-
-array[0] = 10; // triggers OnItemChanged and OnStateChanged
-array.Clear();  // triggers OnItemChanged for all elements and OnStateChanged
-array.Replace(new[] {1, 2, 3}); // triggers events for changed elements
-```
-
-## ReactiveArray\<T\>
-
-**Namespace:** `Atomic.Elements`  
-**Assembly:** *(your assembly)*
-
 A fixed-size reactive array that emits events when elements change.  
 Supports indexed access, enumeration, and event notifications.
 
@@ -108,6 +46,7 @@ Supports indexed access, enumeration, and event notifications.
 - `ReactiveArray(int capacity)`  
   Creates a new reactive array with the specified capacity.
     - Throws `ArgumentOutOfRangeException` if `capacity < 0`.
+
 
 - `ReactiveArray(params T[] elements)`  
   Creates a reactive array initialized with the provided elements.
@@ -186,3 +125,9 @@ array.Resize(5);
 foreach (var item in array)
     Console.WriteLine(item);
 ```
+
+### Performance
+
+`ReactiveArray<T>` is slightly slower than a regular array because it wraps a standard array and adds event notifications.  
+Every element assignment or modification triggers events (`OnItemChanged` and `OnStateChanged`), which introduces some overhead compared to using a plain `T[]`.  
+However, the overhead is typically small and acceptable for scenarios where reactivity and observation are required.

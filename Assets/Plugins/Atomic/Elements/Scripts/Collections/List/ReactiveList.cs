@@ -18,14 +18,10 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveList<T> : IReactiveList<T>, IDisposable
     {
-#if UNITY_5_3_OR_NEWER
-        [SerializeField]
-#endif
-        private T[] items;
-
         private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
-        private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
 
+        private static readonly ArrayPool<T> s_arrayPool = ArrayPool<T>.Shared;
+        
         /// <inheritdoc/>
         public event StateChangedHandler OnStateChanged;
 
@@ -48,7 +44,12 @@ namespace Atomic.Elements
         /// Gets the current internal array capacity.
         /// </summary>
         public int Capacity => items.Length;
-
+        
+#if UNITY_5_3_OR_NEWER
+        [SerializeField]
+#endif
+        private T[] items;
+        
         private int count;
 
         /// <summary>

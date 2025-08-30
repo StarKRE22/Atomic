@@ -56,11 +56,11 @@
   - [FloatSumExpression](Expressions/FloatSumExpression.md)
   - [Extensions](Expressions/Extensions.md)
 - **Collections**
-  - [ReactiveArray]
+  - [ReactiveArray](Collections/ReactiveArray.md)
+  - [ReactiveList](Collections/ReactiveList.md)
+  - [ReactiveLinkedList]
   - [ReactiveDictionary]
   - [ReactiveHashSet]
-  - [ReactiveList]
-  - [LinkedList]
 
 - [Time]
   - [Cooldown]

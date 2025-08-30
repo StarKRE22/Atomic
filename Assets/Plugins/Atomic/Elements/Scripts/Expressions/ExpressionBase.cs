@@ -10,14 +10,14 @@ namespace Atomic.Elements
 {
     /// <summary>
     /// Represents a base implementation of <see cref="IExpression{R}"/> that aggregates multiple parameterless functions returning a value of type <typeparamref name="R"/>.
-    /// Inherits from <see cref="LinkedList{Func{R}}"/> and provides dynamic evaluation of its function members.
+    /// Inherits from <see cref="ReactiveLinkedList{T}"/> and provides dynamic evaluation of its function members.
     /// </summary>
     /// <typeparam name="R">The return type of the expression.</typeparam>
     [Serializable]
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<R> : LinkedList<Func<R>>, IExpression<R>
+    public abstract class ExpressionBase<R> : ReactiveLinkedList<Func<R>>, IExpression<R>
     {
         /// <summary>
         /// Gets the evaluated result of the expression by invoking all registered function members.
@@ -60,7 +60,7 @@ namespace Atomic.Elements
 
     /// <summary>
     /// Represents a base implementation of <see cref="IExpression{T, R}"/> that aggregates multiple functions with one input parameter of type <typeparamref name="T"/>.
-    /// Inherits from <see cref="LinkedList{Func{T,R}}"/> and provides dynamic evaluation of its function members.
+    /// Inherits from <see cref="ReactiveLinkedList{T}"/> and provides dynamic evaluation of its function members.
     /// </summary>
     /// <typeparam name="T">The input parameter type of the functions.</typeparam>
     /// <typeparam name="R">The return type of the functions.</typeparam>
@@ -68,7 +68,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<T, R> : LinkedList<Func<T, R>>, IExpression<T, R>
+    public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
     {
         /// <summary>
         /// Invokes all function members of the expression with the specified argument and returns the aggregated result.
@@ -105,7 +105,7 @@ namespace Atomic.Elements
 
     /// <summary>
     /// Represents a base implementation of <see cref="IExpression{T1, T2, R}"/> that aggregates multiple functions with two input parameters of type <typeparamref name="T1"/> and <typeparamref name="T2"/>.
-    /// Inherits from <see cref="LinkedList{Func{T1,T2,R}}"/> and provides dynamic evaluation of its function members.
+    /// Inherits from <see cref="ReactiveLinkedList{T}"/> and provides dynamic evaluation of its function members.
     /// </summary>
     /// <typeparam name="T1">The first input parameter type of the functions.</typeparam>
     /// <typeparam name="T2">The second input parameter type of the functions.</typeparam>
@@ -114,7 +114,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
-    public abstract class ExpressionBase<T1, T2, R> : LinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
+    public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
     {
         /// <summary>
         /// Invokes all function members of the expression with the specified arguments and returns the aggregated result.

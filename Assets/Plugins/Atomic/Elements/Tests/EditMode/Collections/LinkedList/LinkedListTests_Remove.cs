@@ -2,12 +2,12 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void Remove_ItemExists_RemovesItemAndReturnsTrue()
         {
-            var list = new LinkedList<int>(1, 2, 3);
+            var list = new ReactiveLinkedList<int>(1, 2, 3);
             bool result = list.Remove(2);
 
             Assert.IsTrue(result);
@@ -18,7 +18,7 @@ namespace Atomic.Elements
         [Test]
         public void Remove_ItemDoesNotExist_ReturnsFalse()
         {
-            var list = new LinkedList<int>(1, 2, 3);
+            var list = new ReactiveLinkedList<int>(1, 2, 3);
             bool result = list.Remove(5);
 
             Assert.IsFalse(result);
@@ -28,7 +28,7 @@ namespace Atomic.Elements
         [Test]
         public void Remove_NullItem_ReturnsFalse()
         {
-            var list = new LinkedList<string>("a", "b", "c");
+            var list = new ReactiveLinkedList<string>("a", "b", "c");
             bool result = list.Remove(null);
 
             Assert.IsFalse(result);
@@ -38,7 +38,7 @@ namespace Atomic.Elements
         [Test]
         public void Remove_HeadItem_UpdatesHeadCorrectly()
         {
-            var list = new LinkedList<int>(1, 2, 3);
+            var list = new ReactiveLinkedList<int>(1, 2, 3);
             bool result = list.Remove(1);
 
             Assert.IsTrue(result);
@@ -50,7 +50,7 @@ namespace Atomic.Elements
         [Test]
         public void Remove_TailItem_UpdatesTailCorrectly()
         {
-            var list = new LinkedList<int>(1, 2, 3);
+            var list = new ReactiveLinkedList<int>(1, 2, 3);
             bool result = list.Remove(3);
 
             Assert.IsTrue(result);
@@ -62,7 +62,7 @@ namespace Atomic.Elements
         [Test]
         public void Remove_EmptyList_ReturnsFalse()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             bool result = list.Remove(1);
 
             Assert.IsFalse(result);

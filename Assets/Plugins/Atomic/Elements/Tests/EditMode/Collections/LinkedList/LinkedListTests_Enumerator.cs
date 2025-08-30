@@ -3,12 +3,12 @@ using NUnit.Framework;
 
 namespace Atomic.Elements
 {
-    public sealed partial class LinkedListTests
+    public sealed partial class ReactiveLinkedListTests
     {
         [Test]
         public void GetEnumerator_IteratesOverAllElements()
         {
-            var list = new LinkedList<int>(1, 2, 3, 4);
+            var list = new ReactiveLinkedList<int>(1, 2, 3, 4);
             var enumerated = new List<int>();
 
             var enumerator = list.GetEnumerator();
@@ -23,7 +23,7 @@ namespace Atomic.Elements
         [Test]
         public void GetEnumerator_EmptyList_NoElements()
         {
-            var list = new LinkedList<int>();
+            var list = new ReactiveLinkedList<int>();
             var enumerated = new List<int>();
 
             var enumerator = list.GetEnumerator();
@@ -38,7 +38,7 @@ namespace Atomic.Elements
         [Test]
         public void Enumerator_Reset_WorksCorrectly()
         {
-            var list = new LinkedList<int>(5, 6);
+            var list = new ReactiveLinkedList<int>(5, 6);
             var enumerator = list.GetEnumerator();
 
             Assert.IsTrue(enumerator.MoveNext());
