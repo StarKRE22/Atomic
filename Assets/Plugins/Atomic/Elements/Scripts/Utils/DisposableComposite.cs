@@ -15,29 +15,31 @@ namespace Atomic.Elements
         public int Count => _items.Count;
 
         private readonly List<IDisposable> _items;
-        private bool _isDisposed;
-
-        public DisposableComposite(params IDisposable[] disposables)
-        {
-            _items = new List<IDisposable>(disposables);
-        }
 
         /// <summary>
-        /// Adds a disposable resource to the composite.
+        /// Initializes a new instance of <see cref="DisposableComposite"/> with a collection of disposables.
         /// </summary>
-        /// <param name="disposable">The <see cref="IDisposable"/> to add.</param>
-        /// <exception cref="ObjectDisposedException">Thrown if the composite has already been disposed.</exception>
+        /// <param name="disposables">The initial disposables to add.</param>
+        public DisposableComposite(IEnumerable<IDisposable> disposables) =>
+            _items = new List<IDisposable>(disposables);
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="DisposableComposite"/> with a params array of disposables.
+        /// </summary>
+        /// <param name="disposables">The initial disposables to add.</param>
+        public DisposableComposite(params IDisposable[] disposables) =>
+            _items = new List<IDisposable>(disposables);
+
+        /// <summary>
+        /// Adds a new <see cref="IDisposable"/> to the composite.
+        /// </summary>
+        /// <param name="disposable">The disposable to add.</param>
+        /// <returns>The current composite instance for chaining.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="disposable"/> is null.</exception>
         public DisposableComposite Add(IDisposable disposable)
         {
             if (disposable == null)
                 throw new ArgumentNullException(nameof(disposable));
-
-            if (_isDisposed)
-            {
-                disposable.Dispose();
-                throw new ObjectDisposedException(nameof(DisposableComposite),
-                    "Cannot add disposables to a disposed composite. The disposable has been immediately disposed.");
-            }
 
             _items.Add(disposable);
             return this;
@@ -48,30 +50,10 @@ namespace Atomic.Elements
         /// </summary>
         public void Dispose()
         {
-            if (_isDisposed)
-                return;
-
-            _isDisposed = true;
-
-            List<Exception> exceptions = null;
-
-            foreach (var item in _items)
-            {
-                try
-                {
-                    item.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    exceptions ??= new List<Exception>();
-                    exceptions.Add(ex);
-                }
-            }
+            for (int i = 0, count = _items.Count; i < count; i++)
+                _items[i].Dispose();
 
             _items.Clear();
-
-            if (exceptions != null)
-                throw new AggregateException("One or more disposables threw an exception during disposal.", exceptions);
         }
     }
 }

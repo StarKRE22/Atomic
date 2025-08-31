@@ -1,14 +1,10 @@
 
-- Принцип DIP в максимум используйте, 
-- Interface Segregation на максимум тоже, чтобы более гибко было!
-- Коллекции старайтесь указывать явный тип, так как Enumerator Struct!
-Уходите от зависимостей Unity & зависимостей на всякие фреймворки особенно мультиплеер, чтобы код был максимально тестируемым!
-- Используйте Observe для 
-This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
-
-- для однопользовательских игр используйте Requests AI или Input, а для сетевых Actions
-
+Best Practices
+- Factory, Builder
+- No Dependency Injection
+- Flyweight Constants!
 - Разделять инсталлеры на маленькие фичи для больших проектов и EntityAPI
+
 
 You can use extension Observe and cache subscription handle
 ```csharp

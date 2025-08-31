@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// A Unity-friendly Optional type, serializable and visible in the Inspector.
+    /// A Unity-friendly Optional value, serializable and visible in the Inspector.
     /// </summary>
     /// <typeparam name="T">The type of value.</typeparam>
     [Serializable]
