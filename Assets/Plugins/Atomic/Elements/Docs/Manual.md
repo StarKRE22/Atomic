@@ -68,6 +68,8 @@
   - [Stopwatch](Time/Stopwatch.md)
   - [Period](Time/Period.md)
   - [Timestamp](Time/Timestamp.md)
+  - [Extensions](Time/Extensions.md)
+  - [Source Interfaces](Time/SourceInterfaces.md)
 - **Unity Components**
   - [AnimationEvents](UnityComponents/AnimationEvents.md)
   - [TriggerEvents](UnityComponents/TriggerEvents.md)

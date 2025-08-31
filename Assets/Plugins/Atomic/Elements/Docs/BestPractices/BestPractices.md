@@ -10,6 +10,12 @@ This section demonstrates how to implement `IVariable<T>` for **Transform positi
 
 - Разделять инсталлеры на маленькие фичи для больших проектов и EntityAPI
 
+Best Practices
+- Factory, Builder
+- No Dependency Injection
+- Flyweight Constants!
+
+
 You can use extension Observe and cache subscription handle
 ```csharp
 using UnityEngine;

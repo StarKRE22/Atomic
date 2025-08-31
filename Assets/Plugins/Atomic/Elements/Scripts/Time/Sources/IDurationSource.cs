@@ -2,6 +2,9 @@ using System;
 
 namespace Atomic.Elements
 {
+    /// <summary>
+    /// Represents a source that has a total duration and can notify changes.
+    /// </summary>
     public interface IDurationSource
     {
         /// <summary>
@@ -10,13 +13,13 @@ namespace Atomic.Elements
         event Action<float> OnDurationChanged;
 
         /// <summary>
-        /// Gets the total duration of the cooldown.
+        /// Gets the total duration.
         /// </summary>
+        /// <returns>The duration in seconds.</returns>
         float GetDuration();
 
         /// <summary>
-        /// Sets the total duration of the cooldown.
-        /// Triggers <see cref="Cooldown.OnDurationChanged.OnDurationChanged"/> and <see cref="Cooldown"/>.
+        /// Sets the total duration.
         /// </summary>
         /// <param name="duration">The new duration value.</param>
         void SetDuration(float duration);
