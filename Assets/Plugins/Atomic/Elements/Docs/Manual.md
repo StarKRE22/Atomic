@@ -61,27 +61,23 @@
   - [ReactiveLinkedList](Collections/ReactiveLinkedList.md)
   - [ReactiveDictionary](Collections/ReactiveDictionary.md)
   - [ReactiveHashSet](Collections/ReactiveHashSet.md)
-- [Time]
-  - [Cooldown]
-  - [Timer]
-  - [Countdown]
-  - [Stopwatch]
-  - [Period]
-  - [Timestamp]
-
-- [Unity Components]
-  - [TriggerEvents]
-  - [TriggerEvents2D]
-  - [CollisionEvents]
-  - [CollisionEvents2D]
-  - [AnimationEvents]
-
-- [Utils]
-  - [DisposableComposite]
-  - [EqualityComparer]
-  - [Optional]
-  - [Reference]
-
+- **Time**
+  - [Cooldown](Time/Cooldown.md)
+  - [Timer](Time/Timer.md)
+  - [Countdown](Time/Countdown.md)
+  - [Stopwatch](Time/Stopwatch.md)
+  - [Period](Time/Period.md)
+  - [Timestamp](Time/Timestamp.md)
+- **Unity Components**
+  - [AnimationEvents](UnityComponents/AnimationEvents.md)
+  - [TriggerEvents](UnityComponents/TriggerEvents.md)
+  - [CollisionEvents](UnityComponents/CollisionEvents.md)
+- **Utils**
+  - [InlineDisposable](Utils/InlineDisposable.md)
+  - [DisposableComposite](Utils/DisposableComposite.md)
+  - [Reference](Utils/Reference.md)
+  - [Optional](Utils/Optional.md)
+  
 -  [Best Practices]
 
 
