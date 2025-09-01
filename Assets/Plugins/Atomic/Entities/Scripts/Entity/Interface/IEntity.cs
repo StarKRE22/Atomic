@@ -12,7 +12,7 @@ namespace Atomic.Entities
     ///   <item><description>A key-value data store for dynamic state</description></item>
     ///   <item><description>Tag-based identifiers for categorization or filtering</description></item>
     ///   <item><description>A collection of <see cref="IEntityBehaviour"/> components that define runtime behavior</description></item>
-    ///   <item><description>Lifecycle management including spawn, enable, update, disable, and despawn phases</description></item>
+    ///   <item><description>Lifecycle management including initialization, enable, update, disable, and dispose phases</description></item>
     /// </list>
     /// Behaviors are invoked automatically during the corresponding lifecycle events via interfaces such as:
     /// <see cref="IEntityInit"/>, <see cref="IEntityEnable"/>, <see cref="IEntityUpdate"/>, and others.

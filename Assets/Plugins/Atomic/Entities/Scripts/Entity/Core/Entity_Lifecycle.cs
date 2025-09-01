@@ -79,8 +79,11 @@ namespace Atomic.Entities
         private int _lateUpdateCount;
 
         /// <summary>
-        /// Initializes the entity.
+        /// Initializes the entity and attached <see cref="IEntityInit"/> behaviours.
         /// </summary>
+        /// <remarks>
+        /// If the entity is already initialized, this method does nothing.
+        /// </remarks>
         public void Init()
         {
             if (_initialized)
@@ -97,8 +100,11 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Enables the entity and registers update behaviours.
+        /// Enables the entity and attached <see cref="IEntityEnable"/> behaviours.
         /// </summary>
+        /// <remarks>
+        /// If the entity is not initialized yet, this method initializes the entity also.
+        /// </remarks>
         public void Enable()
         {
             this.Init();
@@ -116,8 +122,11 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Disables the entity and unregisters update behaviours.
+        /// Disables the entity and attached <see cref="IEntityDisable"/> behaviours.
         /// </summary>
+        /// <remarks>
+        /// If the entity is not enabled yet, this method does nothing.
+        /// </remarks>
         public void Disable()
         {
             if (!_enabled)
@@ -133,7 +142,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes OnUpdate for all registered IUpdate behaviours.
+        /// Calls Update for all registered <see cref="IEntityUpdate"/> behaviours.
         /// </summary>
         public void OnUpdate(float deltaTime)
         {
@@ -147,7 +156,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes OnFixedUpdate for all registered IFixedUpdate behaviours.
+        /// Calls FixedUpdate for all registered <see cref="IEntityFixedUpdate"/> behaviours.
         /// </summary>
         public void OnFixedUpdate(float deltaTime)
         {
@@ -161,7 +170,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Invokes OnLateUpdate for all registered ILateUpdate behaviours.
+        /// Calls LateUpdate for all registered <see cref="IEntityLateUpdate"/> behaviours.
         /// </summary>
         public void OnLateUpdate(float deltaTime)
         {

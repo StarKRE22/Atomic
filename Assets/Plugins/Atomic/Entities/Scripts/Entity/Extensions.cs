@@ -385,7 +385,7 @@ namespace Atomic.Entities
         /// Adds multiple values by string keys.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IReadOnlyDictionary<string, object> values)
+        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<string, object>> values)
         {
             if (values == null)
                 return;
