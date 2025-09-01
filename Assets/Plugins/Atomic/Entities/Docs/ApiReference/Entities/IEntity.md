@@ -1,37 +1,24 @@
 # 🧩️ IEntity
 
-`IEntity` represents an entity following the **Entity–State–Behaviour** pattern.  
-It provides a modular architecture for composing logic, storing dynamic state, managing tags, and handling behaviours throughout the entity lifecycle.
+`IEntity` is the fundamental interface representing an entity in the framework. It follows the Entity-State-Behaviour
+pattern, serving as a container for data (values), identity (tags), and modular logic (behaviours).
 
 ---
 
-## Overview
+## Key Features
 
-An `IEntity` encapsulates:
+- **State Management** – Dynamic key-value store for runtime data
+- **Tag System** – Lightweight categorization and filtering
+- **Behaviour Composition** – Attach/detach modular logic at runtime
+- **Lifecycle Control** – Built-in init, enable, update, disable and disposal phases
+- **Event-Driven** – State change notifications for reactive programming
+- **Unique Identity** – Runtime instance ID for entity tracking
 
-- A **key-value data store** for dynamic state.
-- **Tag-based identifiers** for categorization and filtering.
-- A collection of **IEntityBehaviour** components that define runtime behaviour.
-- **Lifecycle management**: initialization, enable, update, disable, dispose.
-
-Behaviours are automatically invoked during lifecycle events via interfaces such as:
-`IEntityInit`, `IEntityEnable`, `IEntityUpdate`, and others.
-
-`IEntity` also inherits:
+## Inheritance
 
 - `IInitSource` – supports explicit initialization and disposal.
 - `IEnableSource` – supports enabling and disabling at runtime.
 - `IUpdateSource` – supports Update, FixedUpdate, and LateUpdate callbacks.
-
----
-
-## Properties
-
-- `int InstanceID` – runtime-generated unique identifier, valid only during runtime.
-- `string Name` – optional user-defined name, useful for debugging or editor tooling.
-- `int BehaviourCount` – number of behaviours attached.
-- `int TagCount` – number of tags associated.
-- `int ValueCount` – number of stored values.
 
 ---
 
@@ -40,6 +27,13 @@ Behaviours are automatically invoked during lifecycle events via interfaces such
 ### State Events
 
 - `event Action OnStateChanged` – triggered when the entity’s internal state changes.
+- `event Action OnInitialize` – triggered when the entity has been initialized.
+- `event Action OnEnabled` – triggered when the entity has been enabled.
+- `event Action OnDisabled` – triggered when the entity has been disabled.
+- `event Action OnDisposed` – triggered when the entity has been disposed and its resources released.
+- `event Action<float> OnUpdated` – triggered when the entity has been updated.
+- `event Action<float> OnFixedUpdated` – triggered when the entity has been fixed updated.
+- `event Action<float> OnLateUpdated` – triggered when the entity has been late updated.
 
 ### Behaviour Events
 
@@ -59,22 +53,15 @@ Behaviours are automatically invoked during lifecycle events via interfaces such
 
 ---
 
-## Behaviour Methods
+## Properties
 
-- `void AddBehaviour(IEntityBehaviour behaviour)` – adds a behaviour.
-- `T GetBehaviour<T>()` – returns the first behaviour of type `T`.
-- `bool TryGetBehaviour<T>(out T behaviour)` – attempts to get a behaviour.
-- `bool HasBehaviour(IEntityBehaviour behaviour)` – checks if a specific behaviour exists.
-- `bool HasBehaviour<T>()` – checks if a behaviour of type `T` exists.
-- `bool DelBehaviour(IEntityBehaviour behaviour)` – removes a specific behaviour.
-- `bool DelBehaviour<T>()` – removes the first behaviour of type `T`.
-- `void DelBehaviours<T>()` – removes all behaviours of type `T`.
-- `void ClearBehaviours()` – removes all behaviours.
-- `IEntityBehaviour[] GetBehaviours()` – returns all behaviours.
-- `T[] GetBehaviours<T>()` – returns all behaviours of type `T`.
-- `int CopyBehaviours(IEntityBehaviour[] results)` – copies behaviours into an array.
-- `int CopyBehaviours<T>(T[] results)` – copies behaviours of type `T`.
-- `IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()` – enumerates behaviours.
+- `int InstanceID` – runtime-generated unique identifier, valid only during runtime.
+- `string Name` – optional user-defined name, useful for debugging or editor tooling.
+- `int BehaviourCount` – number of behaviours attached.
+- `int TagCount` – number of tags associated.
+- `int ValueCount` – number of stored values.
+- `bool Initialized` – Gets a value indicating whether the entity is currently initialized.
+- `bool Enabled` – Gets a value indicating whether the entity is currently initialized.
 
 ---
 
@@ -110,3 +97,81 @@ Behaviours are automatically invoked during lifecycle events via interfaces such
 - `IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()` – enumerates all values.
 
 ---
+
+## Behaviour Methods
+
+- `void AddBehaviour(IEntityBehaviour behaviour)` – adds a behaviour.
+- `T GetBehaviour<T>()` – returns the first behaviour of type `T`.
+- `bool TryGetBehaviour<T>(out T behaviour)` – attempts to get a behaviour.
+- `bool HasBehaviour(IEntityBehaviour behaviour)` – checks if a specific behaviour exists.
+- `bool HasBehaviour<T>()` – checks if a behaviour of type `T` exists.
+- `bool DelBehaviour(IEntityBehaviour behaviour)` – removes a specific behaviour.
+- `bool DelBehaviour<T>()` – removes the first behaviour of type `T`.
+- `void DelBehaviours<T>()` – removes all behaviours of type `T`.
+- `void ClearBehaviours()` – removes all behaviours.
+- `IEntityBehaviour[] GetBehaviours()` – returns all behaviours.
+- `T[] GetBehaviours<T>()` – returns all behaviours of type `T`.
+- `int CopyBehaviours(IEntityBehaviour[] results)` – copies behaviours into an array.
+- `int CopyBehaviours<T>(T[] results)` – copies behaviours of type `T`.
+- `IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()` – enumerates behaviours.
+
+---
+
+## Lifecycle Methods
+
+- `void Init()` – initializes the entity.
+    - Transitions an entity to `Initialized` state
+    - Calls `Init` on all behaviours implementing `IEntityInit`
+    - Triggers `OnInitialized` event
+    - If the entity is already initialized, this method does nothing
+
+
+- `void Enable()` – enables the entity for updates
+    - Transitions an entity to `Enabled` state
+    - Calls `Enable` on all behaviours implementing `IEntityEnable`
+    - Triggers `OnEnabled` event
+    - If the entity is not initialized yet, this method initializes the entity also
+    - If the entity is already enabled, this method does nothing
+
+- `void OnUpdate(float deltaTime)` — calls the update on the entity
+  - Calls `Update` on all `IEntityUpdate` behaviours
+  - Triggers `OnUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void OnFixedUpdate(float deltaTime)` — calls the fixed update on the entity
+  - Calls `FixedUpdate` on all `IEntityFixedUpdate` behaviours
+  - Triggers `OnFixedUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void OnLateUpdate(float deltaTime)` — calls the late update on the entity
+  - Calls `LateUpdate` on all `IEntityLateUpdate` behaviours
+  - Triggers `OnLateUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void Disable()` — disables the entity for updates
+    - Transitions an entity to `not Enabled` state
+    - Calls `Disable` on all behaviours implementing `IEntityDisable`
+    - Triggers `OnDisabled` event
+    - If the entity is not enabled yet, this method does nothing
+
+
+- `void Dispose()` – cleans up all resources used by the entity.
+    - Transitions an entity to  `not Initialized` state
+    - Calls `Dispose` on all behaviours implementing `IEntityDispose`
+    - Clears all tags, values, and behaviours
+    - Unsubscribes from all events
+    - Unregisters from EntityRegistry
+    - If the entity is not initialized yet, this method doesn't call `IEntityDispose.Dispose` and `OnDisposed`
+    - If the entity is enabled, this method call `Entity.Disable` automatically
+
+---
+
+## Notes
+
+- **Reactive Programming** – Entities support reactive patterns through the `OnStateChanged` event
+- **Separation of Concerns** – Interface focuses on entity contract, not implementation
+- **Flexibility** – Can be implemented by both pure C# classes and Unity MonoBehaviours
+- **Testability** – Interface-based design enables easy mocking and testing

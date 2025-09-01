@@ -11,6 +11,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
+//TODO: Обновить MD как в Entity!
     /// <summary>
     /// Represents a MonoBehaviour implementation for an <see cref="IEntity"/> that can be installed from the Unity Scene.
     /// Allows composition through Unity Inspector and automated setup via installers and child entities.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    ///Represents a collection of behaviours (<see cref="IEntityBehaviour"/>) for modular logic
+    ///Represents a collection of behaviours <see cref="IEntityBehaviour"/> for modular logic
     public partial interface IEntity
     {
         /// <summary>

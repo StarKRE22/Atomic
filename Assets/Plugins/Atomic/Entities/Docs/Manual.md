@@ -57,6 +57,7 @@ Atomic.Entities provides:
   - [Entity]
   - [EntitySingleton]
   - [SceneEntity]
+  - [SceneEntityProxy]
   - [SceneEntitySingleton]
   - [Extensions]
   

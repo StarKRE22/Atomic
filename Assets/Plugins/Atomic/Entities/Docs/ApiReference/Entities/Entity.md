@@ -3,6 +3,77 @@
 Represents the core implementation of an `IEntity`.  
 This class follows the Entity–State–Behaviour pattern, providing a modular container for dynamic state, tags, values, behaviours, and lifecycle management.
 
+## Key Features
+
+- **Complete Implementation** – Full IEntity interface implementation
+- **Lifecycle Management** – Built-in spawn, activate, update, despawn support
+- **Dynamic Composition** – Runtime attachment of behaviours
+- **Event System** – Comprehensive event notifications
+- **Registry Integration** – Automatic registration with EntityRegistry
+- **Memory Efficient** – Pre-allocation support for collections
+
+
+---
+
+
+## Constructors
+
+#### Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
+```csharp
+Entity(
+    string name,
+    IEnumerable<string> tags = null,
+    IEnumerable<KeyValuePair<string, object>> values = null,
+    IEnumerable<IEntityBehaviour> behaviours = null,
+    Settings? settings = null
+)
+```
+### Parameters
+
+- `name` — Entity name.
+- `tags` — Optional initial tags.
+- `values` — Optional initial values.
+- `behaviours` — Optional initial behaviours.
+- `settings` — Optional settings (disposeValues defaults to true).
+----
+
+#### Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
+```csharp
+Entity(
+    string name,
+    IEnumerable<int> tags = null,
+    IEnumerable<KeyValuePair<int, object>> values = null,
+    IEnumerable<IEntityBehaviour> behaviours = null,
+    Settings? settings = null
+)
+```
+### Parameters
+
+- `name` — Entity name.
+- `tags` — Optional initial tags.
+- `values` — Optional initial values.
+- `behaviours` — Optional initial behaviours.
+- `settings` — Optional settings (disposeValues defaults to true).
+
+---
+#### Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
+```csharp
+Entity(
+    string name = null,
+    int tagCapacity = 0,
+    int valueCapacity = 0,
+    int behaviourCapacity = 0,
+    Settings? settings = null
+)
+```
+### Parameters
+
+- `name` — Entity name.
+- `tagCapacity` — Initial capacity for tags.
+- `valueCapacity` — Initial capacity for values.
+- `behaviourCapacity` — Initial capacity for behaviours.
+- `settings` — Optional settings (disposeValues defaults to true).
+
 ---
 
 ## Events
@@ -44,73 +115,6 @@ This class follows the Entity–State–Behaviour pattern, providing a modular c
 
 ---
 
-## Constructors
-
-```csharp
-Entity(
-    string name,
-    IEnumerable<string> tags = null,
-    IEnumerable<KeyValuePair<string, object>> values = null,
-    IEnumerable<IEntityBehaviour> behaviours = null,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tags` — Optional initial tags.
-- `values` — Optional initial values.
-- `behaviours` — Optional initial behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-----
-
-```csharp
-Entity(
-    string name,
-    IEnumerable<int> tags = null,
-    IEnumerable<KeyValuePair<int, object>> values = null,
-    IEnumerable<IEntityBehaviour> behaviours = null,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tags` — Optional initial tags.
-- `values` — Optional initial values.
-- `behaviours` — Optional initial behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-
----
-```csharp
-Entity(
-    string name = null,
-    int tagCapacity = 0,
-    int valueCapacity = 0,
-    int behaviourCapacity = 0,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tagCapacity` — Initial capacity for tags.
-- `valueCapacity` — Initial capacity for values.
-- `behaviourCapacity` — Initial capacity for behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-
----
-
-## Lifecycle Methods
-
-- `void Init()` — Initializes the entity and attached `IEntityInit` behaviours. If the entity is already initialized, this method does nothing.
-- `void Enable()` — Enables the entity and attached `IEntityEnable` behaviours. If the entity is not initialized yet, this method initializes the entity also.
-- `void Disable()` — Disables the entity and attached `IEntityDisable` behaviours. If the entity is not enabled yet, this method does nothing.
-- `void OnUpdate(float deltaTime)` — Calls `Update` on all `IEntityUpdate` behaviours.
-- `void OnFixedUpdate(float deltaTime)` — Calls `FixedUpdate` on all `IEntityFixedUpdate` behaviours.
-- `void OnLateUpdate(float deltaTime)` — Calls `LateUpdate` on all `IEntityLateUpdate` behaviours.
-- `void Dispose()` — Cleans up the entity, unregisters it from the registry, clears tags, values, and behaviours, and optionally disposes values.
----
 ## Tags Management
 
 - `bool HasTag(int key)` — Checks if the entity has a specific tag.
@@ -159,6 +163,61 @@ Entity(
 - `int CopyBehaviours<T>(T[] results)` — Copies behaviours of type `T` to array.
 - `BehaviourEnumerator GetBehaviourEnumerator()` — Returns an enumerator for behaviours.
 
+
+## Lifecycle Methods
+
+- `void Init()` – initializes the entity.
+  - Transitions an entity to `Initialized` state
+  - Calls `Init` on all behaviours implementing `IEntityInit`
+  - Triggers `OnInitialized` event
+  - If the entity is already initialized, this method does nothing
+
+
+- `void Enable()` – enables the entity for updates
+  - Transitions an entity to `Enabled` state
+  - Calls `Enable` on all behaviours implementing `IEntityEnable`
+  - Triggers `OnEnabled` event
+  - If the entity is not initialized yet, this method initializes the entity also
+  - If the entity is already enabled, this method does nothing
+
+  
+- `void OnUpdate(float deltaTime)` — calls the update on the entity
+  - Calls `Update` on all `IEntityUpdate` behaviours
+  - Triggers `OnUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void OnFixedUpdate(float deltaTime)` — calls the fixed update on the entity
+  - Calls `FixedUpdate` on all `IEntityFixedUpdate` behaviours
+  - Triggers `OnFixedUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void OnLateUpdate(float deltaTime)` — calls the late update on the entity
+  - Calls `LateUpdate` on all `IEntityLateUpdate` behaviours
+  - Triggers `OnLateUpdated` event
+  - Can be invoked only if entity is enabled
+
+
+- `void Disable()` — disables the entity for updates
+  - Transitions an entity to `not Enabled` state
+  - Calls `Disable` on all behaviours implementing `IEntityDisable`
+  - Triggers `OnDisabled` event
+  - If the entity is not enabled yet, this method does nothing
+
+
+- `void Dispose()` – cleans up all resources used by the entity.
+  - Transitions an entity to not `Initialized` state
+  - Calls `Dispose` on all behaviours implementing `IEntityDispose`
+  - Clears all tags, values, and behaviours
+  - Unsubscribes from all events
+  - Unregisters from EntityRegistry
+  - Disposing stored values if `Settings.disposeValues` is `true`
+  - If the entity is enabled, this method call `Entity.Disable` automatically
+  - If the entity is not initialized yet, this method doesn't call `IEntityDispose.Dispose` and `OnDisposed`
+
+---
+
 ## Nested Types
 
 - `Settings` — Entity configuration (e.g., `disposeValues`).
@@ -192,7 +251,7 @@ var entity = new Entity(
 
 // Add tags
 entity.AddTag(EntityNames.NameToId("Moveable"));
-entity.AddTag(("Damageable")); //There is an extension method
+entity.AddTag("Damageable"); //There is an extension method
 
 // Add values
 entity.AddValue(EntityNames.NameToId("Health"), 100);

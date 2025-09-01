@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    ///Represents entity state (key-value storage for data)
+    ///Represents entity state as key-value storage for data
     public partial interface IEntity
     {
-       /// <summary>
+        /// <summary>
         /// Event triggered when a value is added.
         /// </summary>
         event Action<IEntity, int> OnValueAdded;

@@ -79,10 +79,15 @@ namespace Atomic.Entities
         private int _lateUpdateCount;
 
         /// <summary>
-        /// Initializes the entity and attached <see cref="IEntityInit"/> behaviours.
+        /// Initializes the entity.
         /// </summary>
         /// <remarks>
-        /// If the entity is already initialized, this method does nothing.
+        /// <list type="bullet">
+        /// <item><description>Transitions an entity to <c>Initialized</c> state.</description></item>
+        /// <item><description>Calls <c>Init</c> on all behaviours implementing <see cref="IEntityInit"/>.</description></item>
+        /// <item><description>Triggers <see cref="OnInitialized"/> event.</description></item>
+        /// <item><description>If the entity is already initialized, this method does nothing.</description></item>
+        /// </list>
         /// </remarks>
         public void Init()
         {
@@ -100,10 +105,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Enables the entity and attached <see cref="IEntityEnable"/> behaviours.
+        /// Enables the entity for updates.
         /// </summary>
         /// <remarks>
-        /// If the entity is not initialized yet, this method initializes the entity also.
+        /// <list type="bullet">
+        /// <item><description>Transitions an entity to <c>Enabled</c> state.</description></item>
+        /// <item><description>Calls <c>Enable</c> on all behaviours implementing <see cref="IEntityEnable"/>.</description></item>
+        /// <item><description>Triggers <see cref="OnEnabled"/> event.</description></item>
+        /// <item><description>If the entity is not initialized yet, this method also initializes it.</description></item>
+        /// <item><description>If the entity is already enabled, this method does nothing.</description></item>
+        /// </list>
         /// </remarks>
         public void Enable()
         {
@@ -122,10 +133,15 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Disables the entity and attached <see cref="IEntityDisable"/> behaviours.
+        /// Disables the entity for updates.
         /// </summary>
         /// <remarks>
-        /// If the entity is not enabled yet, this method does nothing.
+        /// <list type="bullet">
+        /// <item><description>Transitions an entity to a <c>not Enabled</c> state.</description></item>
+        /// <item><description>Calls <c>Disable</c> on all behaviours implementing <see cref="IEntityDisable"/>.</description></item>
+        /// <item><description>Triggers <see cref="OnDisabled"/> event.</description></item>
+        /// <item><description>If the entity is not enabled yet, this method does nothing.</description></item>
+        /// </list>
         /// </remarks>
         public void Disable()
         {
@@ -142,8 +158,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Calls Update for all registered <see cref="IEntityUpdate"/> behaviours.
+        /// Calls Update on the entity.
         /// </summary>
+        /// <param name="deltaTime">Time elapsed since the last frame.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Calls <c>Update</c> on all <see cref="IEntityUpdate"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnUpdated"/> event.</description></item>
+        /// <item><description>Can be invoked only if the entity is enabled.</description></item>
+        /// </list>
+        /// </remarks>
         public void OnUpdate(float deltaTime)
         {
             if (!_enabled)
@@ -156,8 +180,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Calls FixedUpdate for all registered <see cref="IEntityFixedUpdate"/> behaviours.
+        /// Calls FixedUpdate on the entity.
         /// </summary>
+        /// <param name="deltaTime">Fixed delta time.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedUpdate"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnFixedUpdated"/> event.</description></item>
+        /// <item><description>Can be invoked only if the entity is enabled.</description></item>
+        /// </list>
+        /// </remarks>
         public void OnFixedUpdate(float deltaTime)
         {
             if (!_enabled)
@@ -170,8 +202,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Calls LateUpdate for all registered <see cref="IEntityLateUpdate"/> behaviours.
+        /// Calls LateUpdate on the entity.
         /// </summary>
+        /// <param name="deltaTime">Time elapsed since last frame.</param>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateUpdate"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnLateUpdated"/> event.</description></item>
+        /// <item><description>Can be invoked only if the entity is enabled.</description></item>
+        /// </list>
+        /// </remarks>
         public void OnLateUpdate(float deltaTime)
         {
             if (!_enabled)

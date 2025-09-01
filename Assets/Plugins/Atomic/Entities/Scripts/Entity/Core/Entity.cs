@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
+    /// Represents the core implementation of an <see cref="IEntity"/> in the framework.
     /// This class follows the Entity–State–Behaviour pattern, providing a modular container
     /// for dynamic state, tags, behaviours, and lifecycle management.
     /// </summary>
@@ -47,7 +47,7 @@ namespace Atomic.Entities
         private readonly Settings _settings;
         
         /// <summary>
-        /// Initializes a new entity with the specified name, tags, values, behaviours, and optional settings.
+        /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
         /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
         /// <param name="tags">Optional collection of tag identifiers.</param>
@@ -77,7 +77,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Initializes a new entity with the specified name, tags, values, behaviours, and optional settings.
+        /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
         /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
         /// <param name="tags">Optional collection of tag identifiers.</param>
@@ -107,7 +107,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Initializes a new entity with the specified name and initial capacities for tags, values, and behaviours.
+        /// Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
         /// </summary>
         /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
         /// <param name="tagCapacity">Initial capacity for tag storage to minimize memory allocations.</param>
@@ -155,13 +155,15 @@ namespace Atomic.Entities
         /// Cleans up all resources used by the entity.
         /// </summary>
         /// <remarks>
-        /// Performs cleanup by:
         /// <list type="bullet">
-        /// <item><description>Calling <see cref="Dispose"/> to deactivate the entity.</description></item>
-        /// <item><description>Clearing all tags, values, and behaviours.</description></item>
-        /// <item><description>Unsubscribing from all events.</description></item>
-        /// <item><description>Unregistering the entity from <see cref="EntityRegistry"/>.</description></item>
-        /// <item><description>Disposing stored values if <see cref="Settings.disposeValues"/> is <c>true</c>.</description></item>
+        /// <item><description>Transitions an entity to not <c>Initialized</c> state.</description></item>
+        /// <item><description>Calls <see cref="IEntityDispose.Dispose"/> on all registered behaviours implementing <see cref="IEntityDispose"/>.</description></item>
+        /// <item><description>Clears all tags, values, and behaviours.</description></item>
+        /// <item><description>Unsubscribes from all events.</description></item>
+        /// <item><description>Unregisters the entity from <see cref="EntityRegistry"/>.</description></item>
+        /// <item><description>Disposes stored values if <see cref="Settings.disposeValues"/> is <c>true</c>.</description></item>
+        /// <item><description>If the entity is enabled, this method automatically calls <see cref="Disable"/>.</description></item>
+        /// <item><description>If the entity is not initialized yet, this method does not call <see cref="IEntityDispose.Dispose"/> or <see cref="OnDisposed"/>.</description></item>
         /// </list>
         /// </remarks>
         public void Dispose()
