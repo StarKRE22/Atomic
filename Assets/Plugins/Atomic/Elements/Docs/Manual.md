@@ -5,7 +5,7 @@
 ## 🔍 Table of Contents
 - [Requirements](#requirements)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Documentation](#documentation)
+- [API Reference](#api-reference)
 - [Performance](#performance)
 - [Best Practices](#best-practices)
 
@@ -19,7 +19,7 @@
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
-## Documentation
+## API Reference
 
 This section provides a complete reference to the core interfaces, classes, and utilities designed for reactive programming, event handling, Unity integration, and general-purpose development.
 
