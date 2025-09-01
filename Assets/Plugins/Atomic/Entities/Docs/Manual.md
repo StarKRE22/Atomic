@@ -1,7 +1,7 @@
 # ⚛️ Atomic.Entities
 
-`Atomic.Entities` is a library for Unity and C# that allows you to **architect your game using entities**.  
-With this library, all game objects, systems, UI elements, and application contexts can be represented as **entities**, each containing **state** (data) and **behaviour** (logic).
+`Atomic.Entities` is a framework for Unity and C# that allows you to **architect your game using entities**.  
+With this framework, all game objects, systems, UI elements, and application contexts can be represented as **entities**, each containing **state** (data) and **behaviour** (logic).
 
 Atomic.Entities provides:
 - **Clear separation of data and logic** through the Entity–State–Behaviour pattern;
@@ -33,89 +33,187 @@ Atomic.Entities provides:
 > For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become smoother and more powerful than in Unity.
 
+## Tutorial
 
+- **What is Entity**
+- **Create an Entity**
+  - **CSharp Guide** 
+  - **Unity Guide**
+- **Entity Behaviour Lifecycle** + Gizmos и аттрибут в Edit Mode
+- **Using Entity Pools**
+- **Using Entity Worlds**
+- **Using Entity Filters**
+- **Separating Game from Unity** //Factories, Baking, Views 
+- **Designing Architecture with Entities** //Contexts
 
+- **Using Code generation**
+  - **Unity Guide**
+  - **Rider Plugin Guide**
 
-
-
-
-Guides
-├── Introduction
-│   ├── What is Atomic?
-│   ├── Requirements & Installation
-│   └── Using Odin Inspector (optional)
-│
-├── Core Concepts
-│   ├── Entities & EntityStateBehaviour Pattern
-│   ├── Reactive Values & Variables
-│   ├── Events & Signals
-│   └── Requests & Actions
-│
-├── Tutorials
-│   ├── Getting Started with Entities (C# example)
-│   ├── Unity Quick Start (SceneEntity, Installers)
-│   ├── Character Example (MoveBehaviour)
-│   └── Building UI Contexts
-│
-├── Best Practices
-│   ├── Prefer Abstract Interfaces
-│   ├── Shared Constants
-│   ├── Iterating Reactive Collections
-│   ├── Request-Condition-Action-Event Pattern
-│   ├── Requests vs Actions
-│   └── Performance Tips
-
-
+## API Reference
 
 - **Entities**
-- **Factories & Baking, Pooling**
-- **EntityCollection**
+  - [IEntity]
+  - [Entity]
+  - [EntitySingleton]
+  - [SceneEntity]
+  - [SceneEntitySingleton]
+  - [Extensions]
+  
+- **Entity Behaviours**
+  - [IEntityBehaviour]
+  - [IEntityInit]
+  - [IEntityDispose]
+  - [IEntityEnable]
+  - [IEntityDisable]
+  - [IEntityUpdate]
+  - [IEntityFixedUpdate]
+  - [IEntityLateUpdate]
+  - [IEntityGizmos]
+  - [RunInEditModeAttribute]
+  
+- **Entity Installers**
+  - [IEntityInstaller]
+  - [ScriptableEntityInstaller]
+  - [SceneEntityInstaller]
+
+- **Entity Factories**
+  - [IEntityFactory]
+  - [InlineEntityFactory]
+  - [ScriptableEntityFactory]
+  - [SceneEntityFactory]
+  - [IEntityCatalog]
+  - [ScriptableEntityCatalog]
+  - [IMultiEntityFactory]
+  - [MultiEntityFactory]
+
+- **Entity Baking**
+  - [SceneEntityBaker]
+
+- **Entity Pools**
+  - [IEntityPool]
+  - [EntityPool]
+  - [SceneEntityPool]
+  - [IMultiEntityPool]
+  - [MultiEntityPool]
+  - [IPrefabEntityPool]
+  - [PrefabEntityPool]
+
+- **Entity Collections**
+  - [IReadOnlyEntityCollection]
+  - [IEntityCollection]
+  - [EntityCollection]
+  - [Extensions]
+
+- **Entity Worlds**
+  - [IEntityWorld]
+  - [EntityWorld]
+  - [SceneEntityWorld]
+
+- **Entity Registry**
+  - [EntityRegistry]
+
+- **Entity Filters & Triggers**
+  - [EntityFilter]
+  - [IEntityTrigger]
+  - [EntityTriggerBase]
+  - [TagEntityTrigger]
+  - [ValueEntityTrigger]
+  - [BehaviourEntityTrigger]
+  - [StateChangedEntityTrigger]
+  - [SubscriptionEntityTrigger]
+  - [InlineEntityTrigger]
+
+- **Lifecycle Sources**
+  - [Sources]
+  - [Extensions]
+  - [Subscriptions]
+
+- **Entity Utils**
+  - [EntityUtils]
+
+- **Entity Names**
+  - [EntityNames]
+  
+- **User Interface**
+
+  - **Entity View**
+    - [IReadOnlyEntityView]
+    - [IEntityView]
+    - [EntityViewBase]
+    - [EntityView]
+    - [EntityViewInstaller]
+    - [EntityViewCatalog]
+    
+  - **Entity View Pool**
+    - [IEntityViewPool]
+    - [EntityViewPoolBase]
+    - [EntityViewPool]
+    
+  - **Entity Collection View**
+    - [IReadOnlyEntityCollectionView]
+    - [IEntityCollectionView]
+    - [EntityCollectionView]
+    - [EntityCollectionViewBinder]
+
+
+## Performance
+
+## Best Practices
 
 
 
-Entities
-├── IEntity
-├── Entity
-├── SceneEntity
-├── Behaviours
-│   ├── IEntityBehaviour
-│   ├── IEntityInit
-│   ├── IEntityDispose
-│   └── ...
-├── IEntityGizmos (Unity-specific)
-├── IEntityInstaller
-└── Extensions (Lifecycle, Subscriptions, etc.)
+[//]: # ()
+[//]: # (Guides)
+
+[//]: # (├── Introduction)
+
+[//]: # (│   ├── What is Atomic?)
+
+[//]: # (│   ├── Requirements & Installation)
+
+[//]: # (│   └── Using Odin Inspector &#40;optional&#41;)
+
+[//]: # (│)
+
+[//]: # (├── Core Concepts)
+
+[//]: # (│   ├── Entities & EntityStateBehaviour Pattern)
+
+[//]: # (│   ├── Reactive Values & Variables)
+
+[//]: # (│   ├── Events & Signals)
+
+[//]: # (│   └── Requests & Actions)
+
+[//]: # (│)
+
+[//]: # (├── Tutorials)
+
+[//]: # (│   ├── Getting Started with Entities &#40;C# example&#41;)
+
+[//]: # (│   ├── Unity Quick Start &#40;SceneEntity, Installers&#41;)
+
+[//]: # (│   ├── Character Example &#40;MoveBehaviour&#41;)
+
+[//]: # (│   └── Building UI Contexts)
+
+[//]: # (│)
+
+[//]: # (├── Best Practices)
+
+[//]: # (│   ├── Prefer Abstract Interfaces)
+
+[//]: # (│   ├── Shared Constants)
+
+[//]: # (│   ├── Iterating Reactive Collections)
+
+[//]: # (│   ├── Request-Condition-Action-Event Pattern)
+
+[//]: # (│   ├── Requests vs Actions)
+
+[//]: # (│   └── Performance Tips)
 
 
-//Второй вариант
-- **Entity** //глобальный раздел
-  - [IEntity]()
-  - [Entity]()
-  - [SceneEntity]()
-  - *Behaviours*
-  Behaviour Lifecycle
-    - [IEntityBehaviour]
-    - [IEntityInit]
-    - [IEntityDispose]
-    - [IEntityEnable]
-    - [IEntityDisable]
-    - [IEntityUpdate]
-    - [IEntityFixedUpdate]
-    - [IEntityLateUpdate]
 
-- [IEntityGizmos] для Unity, RunInEditModeAttribute
-
-
-- IEntityInstaller
-- Lifecycle Extensions WhenInit, WhenEnable, WhenDisable,
-- Subscriptions!
-- Code generation, EntityNames
-- 
-- Pooling
-- Factory / Baking
-- EntityCollection/ EntityWorld, Extensions
-- EntityRegistry
-- EntityFilter & EntityTrigger
-- EntityView
-- Performance
 

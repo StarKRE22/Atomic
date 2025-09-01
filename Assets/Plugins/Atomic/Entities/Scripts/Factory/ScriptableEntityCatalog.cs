@@ -31,7 +31,7 @@ namespace Atomic.Entities
     )]
     public class ScriptableEntityCatalog :
         ScriptableEntityCatalog<string, IEntity, ScriptableEntityFactory>,
-        IEntityFactoryCatalog
+        IEntityCatalog
     {
         /// <summary>
         /// Extracts the string key for a given factory.
@@ -51,7 +51,7 @@ namespace Atomic.Entities
     /// <typeparam name="F">The type of entity factory.</typeparam>
     public abstract class ScriptableEntityCatalog<TKey, E, F> :
         ScriptableObject,
-        IEntityFactoryCatalog<TKey, E>
+        IEntityCatalog<TKey, E>
         where E : IEntity
         where F : ScriptableEntityFactory<E>
     {
