@@ -9,7 +9,7 @@ namespace RTSGame
     public sealed class PlayerSystemInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
-        private PlayerContextFactory _playerFactory;
+        private PlayerContextBuilder _playerFactory;
 
         public void Install(IGameContext context)
         {

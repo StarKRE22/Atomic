@@ -53,8 +53,8 @@ Atomic.Entities provides:
 ## API Reference
 
 - **Entities**
-  - [IEntity]
-  - [Entity]
+  - [IEntity](ApiReference/Entities/IEntity.md)
+  - [Entity](ApiReference/Entities/Entity.md)
   - [EntitySingleton]
   - [SceneEntity]
   - [SceneEntityProxy]

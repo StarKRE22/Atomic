@@ -5,23 +5,23 @@ using UnityEngine;
 namespace RTSGame
 {
     [CreateAssetMenu(
-        fileName = "PlayerContextFactory",
-        menuName = "RTSGame/New PlayerContextFactory"
+        fileName = "PlayerContextBuilder",
+        menuName = "RTSGame/New PlayerContextBuilder"
     )]
-    public sealed class PlayerContextFactory : ScriptableEntityFactory<IPlayerContext>
+    public sealed class PlayerContextBuilder : ScriptableEntityFactory<IPlayerContext>
     {
         private const string PLAYER_CONTEXT_NAME_FORMAT = "PlayerContext {0}";
 
         private EntityWorld<IGameEntity> _entityWorld;
         private TeamType _teamType;
 
-        public PlayerContextFactory SetEntityWorld(EntityWorld<IGameEntity> entityWorld)
+        public PlayerContextBuilder SetEntityWorld(EntityWorld<IGameEntity> entityWorld)
         {
             _entityWorld = entityWorld;
             return this;
         }
 
-        public PlayerContextFactory SetTeamType(TeamType teamType)
+        public PlayerContextBuilder SetTeamType(TeamType teamType)
         {
             _teamType = teamType;
             return this;

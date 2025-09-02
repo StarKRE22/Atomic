@@ -1,3 +1,4 @@
+using System;
 using Atomic.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -48,10 +49,15 @@ namespace RTSGame
         [Header("Debug")]
         [SerializeField]
         private float _debugUnitCount; //See entity count changes in the world
-        
+
+        private void Awake()
+        {
+            GameContext.SetFactory(_gameContextFactory);
+            _gameContext = GameContext.Instance;
+        }
+
         private void Start()
         {
-            _gameContext = _gameContextFactory.Create();
             this.SpawnUnits();
             
             _gameContext.Init();
@@ -90,9 +96,7 @@ namespace RTSGame
         private void OnDestroy()
         {
             _viewBinder?.Dispose();
-            
-            _gameContext?.Disable();
-            _gameContext?.Dispose();
+            GameContext.DisposeInstance();
         }
     }
 }

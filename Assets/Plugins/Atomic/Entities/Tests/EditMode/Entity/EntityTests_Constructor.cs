@@ -60,7 +60,7 @@ namespace Atomic.Entities
             var behaviour2 = new DummyEntityBehaviour();
             var behaviour3 = new DummyEntityBehaviour();
 
-            var entity = new Entity("123", null, null, new[]
+            var entity = new Entity("123", Array.Empty<string>(), null, new[]
             {
                 behaviour1, behaviour2, behaviour3
             });
@@ -82,7 +82,7 @@ namespace Atomic.Entities
         [Test]
         public void Constructor_AllCollectionsAreNull_EntityIsEmpty()
         {
-            var entity = new Entity("Test", null, null, null);
+            var entity = new Entity("Test", Array.Empty<string>(), null, null);
 
             Assert.AreEqual("Test", entity.Name);
             Assert.IsEmpty(entity.GetTags());

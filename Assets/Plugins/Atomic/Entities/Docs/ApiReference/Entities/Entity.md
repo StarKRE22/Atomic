@@ -1,10 +1,9 @@
-# Entity
+# 🧩️ Entity
 
 Represents the core implementation of an `IEntity`.  
 This class follows the Entity–State–Behaviour pattern, providing a modular container for dynamic state, tags, values, behaviours, and lifecycle management.
 
 ## Key Features
-
 - **Complete Implementation** – Full IEntity interface implementation
 - **Lifecycle Management** – Built-in spawn, activate, update, despawn support
 - **Dynamic Composition** – Runtime attachment of behaviours
@@ -12,9 +11,14 @@ This class follows the Entity–State–Behaviour pattern, providing a modular c
 - **Registry Integration** – Automatic registration with EntityRegistry
 - **Memory Efficient** – Pre-allocation support for collections
 
-
 ---
 
+## Thread Safety
+- Entity is **NOT thread-safe**
+- All operations should be performed on the main thread
+- Use synchronization if accessing from multiple threads
+
+---
 
 ## Constructors
 
