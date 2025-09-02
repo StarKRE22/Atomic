@@ -40,6 +40,7 @@ It allows installation from the Unity Scene and composition through the Inspecto
 - [Install All Entities](#install-all-entities)
 - [Debug Properties](#debug-properties)
 - [Gizmos Support](#gizmos-support)
+- [Notes](#notes)
 ---
 ## Inspector Settings
 
@@ -373,3 +374,12 @@ Provides inspector-only debug UI for the `SceneEntity`, including read-only stat
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `OnDrawGizmos()`         | Called by Unity to draw gizmos in the scene view. Delegates to `OnDrawGizmosSelected()` unless `_onlySelectedGizmos` is enabled.                                                        |
 | `OnDrawGizmosSelected()` | Draws gizmos for this entity and all attached behaviours implementing `IEntityGizmos`. Skips drawing in play mode if `_onlyEditModeGizmos` is enabled. Catches and logs any exceptions. |
+
+
+## Notes
+
+- `SceneEntity` is Unity-specific (requires `UNITY_5_3_OR_NEWER`)
+- Implements `ISerializationCallbackReceiver` for Unity serialization
+- Default execution order is `-1000` (runs early)
+- `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
+- Supports `Odin Inspector` attributes for enhanced editor experience

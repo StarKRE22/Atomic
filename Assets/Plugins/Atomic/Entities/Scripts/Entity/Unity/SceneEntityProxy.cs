@@ -32,7 +32,7 @@ namespace Atomic.Entities
     ///
     /// Use this component to expose scene-level access to the underlying entity while maintaining modularity.
     ///
-    /// ⚠️ **Collider Interaction Note**:
+    /// **Collider Interaction Note**:
     /// If your entity consists of multiple child colliders (e.g., hitboxes, triggers),
     /// and you want to detect which entity was interacted with (e.g., on hit or raycast),
     /// you can place <c>SceneEntityProxy</c> on each child and reference the same source <see cref="SceneEntity"/>.
