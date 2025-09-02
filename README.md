@@ -139,7 +139,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 ## C Sharp Quick Start
 
-1. **Create a character entity**
+1. **Create a new entity**
 ```csharp
 //Create a new entity
 var character = new Entity("Character");
@@ -153,7 +153,7 @@ character.AddValue("MoveSpeed", new Const<float>(3.5f));
 character.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 ```
 
-2. **Write `MoveBehaviour` for the character**
+2. **Write `MoveBehaviour` for the entity**
 ```csharp
 //Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
@@ -179,18 +179,18 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
     }
 }
 ```
-3. Add `MoveBehaviour` to the character
+3. **Add `MoveBehaviour` to the entity**
 ```csharp
 character.AddBehaviour<MoveBehaviour>();
 ```
-4. **Spawn the character when game initialized**
+4. **Initiaize the character when game is loading**
 ```csharp
-//Initialize entity, that will call IEntitySpawn
+//Initialize entity, that will call IEntityInit
 character.Init();
 ```
-5. **Activate the character when game started**
+5. **Enable the character when game started**
 ```csharp
-//Enable entity for updates
+//Enable entity for updates, that will call IEntityEnable
 character.Enable(); 
 ```
 6. **Update the character while a game is running**
@@ -199,16 +199,12 @@ const float deltaTime = 0.02f;
 
 while(_isGameRunning)
 {
-   //Calls IEntityUpdate
-   character.Update(deltaTime); 
+   character.Update(deltaTime); //Calls IEntityUpdate
 }
 ```
-7. **When game is finished make entity inactive and despawned**
+7. **When game is finished dispose entity**
 ```csharp
-//Disable entity
-character.Disable();
-
-//Dispose entity
+//Disables and disposes entity state
 character.Dispose();
 ```
 
