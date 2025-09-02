@@ -13,9 +13,11 @@ namespace Atomic.Entities
     public partial class SceneEntity
     {
         [Header("Gizmos")]
+        [Tooltip("Should draw gizmos only when this GameObject is selected?")]
         [SerializeField]
         private bool _onlySelectedGizmos;
 
+        [Tooltip("Should draw gizmos only when Unity is not playing?")]
         [SerializeField]
         private bool _onlyEditModeGizmos;
 
@@ -40,20 +42,14 @@ namespace Atomic.Entities
 
             try
             {
-                this.ProcessGizmosDraw();
+                for (int i = 0; i < _behaviourCount; i++)
+                    if (_behaviours[i] is IEntityGizmos gizmos)
+                        gizmos.DrawGizmos(this);
             }
             catch (Exception e)
             {
-                Debug.LogWarning($"Ops: detected exception in gizmos: {e.Message}");
+                Debug.LogWarning($"SceneEntity: Ops! Detected exception in OnDrawGizmos: {e.StackTrace}", this);
             }
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void ProcessGizmosDraw()
-        {
-            for (int i = 0; i < _behaviourCount; i++)
-                if (_behaviours[i] is IEntityGizmos gizmos)
-                    gizmos.DrawGizmos(this);
         }
     }
 }

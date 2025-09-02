@@ -11,7 +11,6 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-//TODO: Обновить MD как в Entity!
     /// <summary>
     /// Represents a MonoBehaviour implementation for an <see cref="IEntity"/> that can be installed from the Unity Scene.
     /// Allows composition through Unity Inspector and automated setup via installers and child entities.
@@ -52,8 +51,7 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool installOnAwake = true;
 
-        [Tooltip(
-            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0)]
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -221,6 +219,7 @@ namespace Atomic.Entities
             _installed = true;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnInstall()
         {
         }
@@ -243,7 +242,21 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
         
-        /// <inheritdoc/>
+        /// <summary>
+        /// Cleans up all resources used by the entity.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Transitions an entity to not <c>Initialized</c> state.</description></item>
+        /// <item><description>Calls <see cref="IEntityDispose.Dispose"/> on all registered behaviours implementing <see cref="IEntityDispose"/>.</description></item>
+        /// <item><description>Clears all tags, values, and behaviours.</description></item>
+        /// <item><description>Unsubscribes from all events.</description></item>
+        /// <item><description>Unregisters the entity from <see cref="EntityRegistry"/>.</description></item>
+        /// <item><description>Disposes stored values if <see cref="disposeValues"/> is <c>true</c>.</description></item>
+        /// <item><description>If the entity is enabled, this method automatically calls <see cref="Disable"/>.</description></item>
+        /// <item><description>If the entity is not initialized yet, this method does not call <see cref="IEntityDispose.Dispose"/> or <see cref="OnDisposed"/>.</description></item>
+        /// </list>
+        /// </remarks>
         public void Dispose()
         {
             this.OnDispose();
