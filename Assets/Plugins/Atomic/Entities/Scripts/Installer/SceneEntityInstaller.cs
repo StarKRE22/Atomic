@@ -52,22 +52,22 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// A strongly-typed version of <see cref="SceneEntityInstaller"/> for entities of type <typeparamref name="T"/>.
+    /// A strongly-typed version of <see cref="SceneEntityInstaller"/> for entities of type <typeparamref name="E"/>.
     /// </summary>
-    /// <typeparam name="T">The specific type of <see cref="IEntity"/> this installer operates on.</typeparam>
+    /// <typeparam name="E">The specific type of <see cref="IEntity"/> this installer operates on.</typeparam>
     /// <remarks>
     /// This variant enforces type safety and eliminates the need for manual casting in derived classes.
     /// </remarks>
-    public abstract class SceneEntityInstaller<T> : SceneEntityInstaller where T : class, IEntity
+    public abstract class SceneEntityInstaller<E> : SceneEntityInstaller where E : class, IEntity
     {
         /// <inheritdoc/>
-        public sealed override void Install(IEntity entity) => this.Install((T) entity);
+        public sealed override void Install(IEntity entity) => this.Install((E) entity);
 
         /// <summary>
         /// Installs data or behavior into a strongly-typed entity.
         /// </summary>
         /// <param name="entity">The entity to install.</param>
-        protected abstract void Install(T entity);
+        protected abstract void Install(E entity);
     }
 }
 #endif

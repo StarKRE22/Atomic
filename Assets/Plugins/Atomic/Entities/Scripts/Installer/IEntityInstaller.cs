@@ -13,22 +13,22 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// Represents a type-safe installer for entities of type <typeparamref name="T"/>.
+    /// Represents a type-safe installer for entities of type <typeparamref name="E"/>.
     /// </summary>
-    /// <typeparam name="T">The specific type of entity this installer supports.</typeparam>
+    /// <typeparam name="E">The specific type of entity this installer supports.</typeparam>
     /// <remarks>
-    /// This interface provides a strongly-typed <see cref="Install(T)"/> method while also implementing the
+    /// This interface provides a strongly-typed <see cref="Install(E)"/> method while also implementing the
     /// non-generic <see cref="IEntityInstaller"/> interface. The explicit implementation ensures safe casting.
     /// </remarks>
-    public interface IEntityInstaller<in T> : IEntityInstaller where T : IEntity
+    public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
     {
         /// <summary>
-        /// Installs data, configuration, or behaviors into the specified entity of type <typeparamref name="T"/>.
+        /// Installs data, configuration, or behaviors into the specified entity of type <typeparamref name="E"/>.
         /// </summary>
         /// <param name="entity">The strongly-typed entity to configure or initialize.</param>
-        void Install(T entity);
+        void Install(E entity);
 
         /// <inheritdoc />
-        void IEntityInstaller.Install(IEntity entity) => this.Install((T) entity);
+        void IEntityInstaller.Install(IEntity entity) => this.Install((E) entity);
     }
 }

@@ -43,7 +43,7 @@ Atomic.Entities provides:
   - [SceneEntitySingleton](ApiReference/Entities/SceneEntitySingleton.md)
   - [Extensions](ApiReference/Entities/Extensions.md)
   
-- **Entity Behaviours**
+- **Behaviours**
   - [IEntityBehaviour](ApiReference/Behaviours/IEntityBehaviour.md)
   - [IEntityInit](ApiReference/Behaviours/IEntityInit.md)
   - [IEntityDispose](ApiReference/Behaviours/IEntityDispose.md)
@@ -55,12 +55,12 @@ Atomic.Entities provides:
   - [IEntityGizmos](ApiReference/Behaviours/IEntityGizmos.md)
   - [RunInEditModeAttribute](ApiReference/Attributes/RunInEditModeAttribute.md)
   
-- **Entity Installers**
+- **Installers**
   - [IEntityInstaller](ApiReference/Installers/IEntityInstaller.md)
-  - [ScriptableEntityInstaller](ApiReference/Installers/ScriptableEntityInstaller.md)
   - [SceneEntityInstaller](ApiReference/Installers/SceneEntityInstaller.md)
+  - [ScriptableEntityInstaller](ApiReference/Installers/ScriptableEntityInstaller.md)
 
-- **Entity Factories**
+- **Factories**
   - [IEntityFactory](ApiReference/Factories/IEntityFactory.md)
   - [ScriptableEntityFactory](ApiReference/Factories/ScriptableEntityFactory.md)
   - [SceneEntityFactory](ApiReference/Factories/SceneEntityFactory.md)
@@ -70,10 +70,10 @@ Atomic.Entities provides:
   - [IMultiEntityFactory](ApiReference/Factories/IMultiEntityFactory.md)
   - [MultiEntityFactory](ApiReference/Factories/MultiEntityFactory.md)
 
-- **Entity Baking**
+- **Baking**
   - [SceneEntityBaker](ApiReference/Baking/SceneEntityBaker.md)
 
-- **Entity Pools**
+- **Pools**
   - [IEntityPool](ApiReference/Pooling/IEntityPool.md)
   - [EntityPool](ApiReference/Pooling/EntityPool.md)
   - [SceneEntityPool](ApiReference/Pooling/SceneEntityPool.md)
@@ -82,21 +82,21 @@ Atomic.Entities provides:
   - [IPrefabEntityPool](ApiReference/Pooling/IPrefabEntityPool.md)
   - [PrefabEntityPool](ApiReference/Pooling/PrefabEntityPool.md)
 
-- **Entity Collections**
+- **Collections**
   - [IReadOnlyEntityCollection](ApiReference/Collections/IReadOnlyEntityCollection.md)
   - [IEntityCollection](ApiReference/Collections/IEntityCollection.md)
   - [EntityCollection](ApiReference/Collections/EntityCollection.md)
   - [Extensions](ApiReference/Collections/Extensions.md)
 
-- **Entity Worlds**
+- **Worlds**
   - [IEntityWorld](ApiReference/Worlds/IEntityWorld.md)
   - [EntityWorld](ApiReference/Worlds/EntityWorld.md)
   - [SceneEntityWorld](ApiReference/Worlds/SceneEntityWorld.md)
 
-- **Entity Registry**
+- **Registry**
   - [EntityRegistry](ApiReference/Registry/EntityRegistry.md)
 
-- **Entity Filters & Triggers**
+- **Filters & Triggers**
   - [EntityFilter](ApiReference/Filters/EntityFilter.md)
   - [IEntityTrigger](ApiReference/Filters/IEntityTrigger.md)
   - [EntityTriggerBase](ApiReference/Filters/EntityTriggerBase.md)
@@ -112,14 +112,11 @@ Atomic.Entities provides:
   - **Subscriptions**
   - [Extensions]
 
-- **Entity Utils**
+- **Utils**
   - [EntityUtils]
-
-- **Entity Names**
   - [EntityNames]
-  
-- **User Interface**
 
+- **Views**
   - **Entity View**
     - [IReadOnlyEntityView]
     - [IEntityView]

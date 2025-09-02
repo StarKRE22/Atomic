@@ -21,22 +21,22 @@ namespace Atomic.Entities
     }
 
     /// <summary>
-    /// A strongly-typed version of <see cref="ScriptableEntityInstaller"/> for installing entities of type <typeparamref name="T"/>.
+    /// A strongly-typed version of <see cref="ScriptableEntityInstaller"/> for installing entities of type <typeparamref name="E"/>.
     /// </summary>
-    /// <typeparam name="T">The specific entity type this installer supports.</typeparam>
+    /// <typeparam name="E">The specific entity type this installer supports.</typeparam>
     /// <remarks>
     /// This class enforces type safety and avoids manual casting in derived implementations.
     /// </remarks>
-    public abstract class ScriptableEntityInstaller<T> : ScriptableEntityInstaller where T : class, IEntity
+    public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller where E : class, IEntity
     {
         /// <inheritdoc />
-        public sealed override void Install(IEntity entity) => this.Install((T) entity);
+        public sealed override void Install(IEntity entity) => this.Install((E) entity);
 
         /// <summary>
         /// Applies configuration to a strongly-typed entity instance.
         /// </summary>
         /// <param name="entity">The entity to install.</param>
-        protected abstract void Install(T entity);
+        protected abstract void Install(E entity);
     }
 }
 #endif
