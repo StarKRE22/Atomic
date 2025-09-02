@@ -21,21 +21,21 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityLateUpdate"/> for handling late update logic
     /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IEntity.OnLateUpdate"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityLateUpdate<in T> : IEntityLateUpdate where T : IEntity
+    public interface IEntityLateUpdate<in E> : IEntityLateUpdate where E : IEntity
     {
         /// <summary>
         /// Called during the late update phase for a strongly-typed entity.
         /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void LateUpdate(T entity, float deltaTime);
+        void LateUpdate(E entity, float deltaTime);
 
         void IEntityLateUpdate.LateUpdate(IEntity entity, float deltaTime) =>
-            this.LateUpdate((T) entity, deltaTime);
+            this.LateUpdate((E) entity, deltaTime);
     }
 }

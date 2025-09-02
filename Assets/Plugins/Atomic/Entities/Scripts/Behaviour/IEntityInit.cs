@@ -21,23 +21,23 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityInit"/> 
     /// for handling initialization logic for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">
+    /// <typeparam name="E">
     /// The concrete entity type this behavior is associated with.
     /// </typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IInitSource.Init"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityInit<in T> : IEntityInit where T : IEntity
+    public interface IEntityInit<in E> : IEntityInit where E : IEntity
     {
         /// <summary>
         /// Called when the typed entity is initialized.
         /// </summary>
         /// <param name="entity">
-        /// The entity instance of type <typeparamref name="T"/>.
+        /// The entity instance of type <typeparamref name="E"/>.
         /// </param>
-        void Init(T entity);
+        void Init(E entity);
 
-        void IEntityInit.Init(IEntity entity) => this.Init((T) entity);
+        void IEntityInit.Init(IEntity entity) => this.Init((E) entity);
     }
 }

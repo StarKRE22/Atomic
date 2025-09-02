@@ -20,6 +20,18 @@ This class follows the Entity–State–Behaviour pattern, providing a modular c
 
 ---
 
+## Content
+
+- [Constructors](#constructors)
+- [Main State](#main-state)
+- [Tags](#tags)
+- [Values](#values)
+- [Behaviours](#behaviours)
+- [Lifecycle](#lifecycle)
+- [Nested Types](#nested-types)
+- [Examples](#examples)
+- [Performance](#performance)
+
 ## Constructors
 
 #### Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
@@ -80,10 +92,36 @@ Entity(
 
 ---
 
+## Main State
+
+### Events
+- `OnStateChanged` — Triggered whenever the entity's state changes.
+
+### Properties
+- `int InstanceID` — Unique identifier for this entity instance.
+- `string Name` — The entity's name.
+
+
+## Tags
+
+### Events
+- `OnTagAdded(int key)` — Triggered when a tag is added.
+- `OnTagDeleted(int key)` — Triggered when a tag is removed.
+
+### Methods
+- `bool HasTag(int key)` — Checks if the entity has a specific tag.
+- `bool AddTag(int key)` — Adds a tag.
+- `bool DelTag(int key)` — Deletes a tag.
+- `void ClearTags()` — Clears all tags.
+- `int[] GetTags()` — Returns all tags as an array.
+- `int CopyTags(int[] results)` — Copies tags into the provided array.
+- `TagEnumerator GetTagEnumerator()` — Returns an enumerator for iterating tags.
+
+---
+
 ## Events
 
 ### Lifecycle Events
-- `OnStateChanged` — Triggered whenever the entity's state changes.
 - `OnInitialized` — Triggered when the entity is initialized.
 - `OnDisposed` — Triggered when the entity is disposed.
 - `OnEnabled` — Triggered when the entity is enabled.
@@ -96,9 +134,7 @@ Entity(
 - `OnBehaviourAdded(IEntityBehaviour behaviour)` — Triggered when a new behaviour is added.
 - `OnBehaviourDeleted(IEntityBehaviour behaviour)` — Triggered when a behaviour is removed.
 
-### Tags Events
-- `OnTagAdded(int key)` — Triggered when a tag is added.
-- `OnTagDeleted(int key)` — Triggered when a tag is removed.
+
 
 ### Values Events
 - `OnValueAdded(int key)` — Triggered when a value is added.
@@ -309,3 +345,5 @@ entity.Disable();
 // Dispose the entity when it is no longer needed
 entity.Dispose();
 ```
+
+## Performance

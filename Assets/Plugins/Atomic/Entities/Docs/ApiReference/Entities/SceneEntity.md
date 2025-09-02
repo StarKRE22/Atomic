@@ -31,6 +31,7 @@ It allows installation from the Unity Scene and composition through the Inspecto
 
 ## Contents
 - [Inspector Settings](#inspector-settings)
+- [Main State](#main-state)
 - [Lifecycle](#lifecycle)
 - [Update Events](#update-events)
 - [Tags](#tags)
@@ -40,6 +41,7 @@ It allows installation from the Unity Scene and composition through the Inspecto
 - [Install All Entities](#install-all-entities)
 - [Debug Properties](#debug-properties)
 - [Gizmos Support](#gizmos-support)
+- [Performance](#performance)
 - [Notes](#notes)
 ---
 ## Inspector Settings
@@ -59,6 +61,17 @@ These fields are serialized and configurable from the Unity Inspector.
 | `_initialBehaviourCapacity` | `int`                        | `0`     | Initial capacity for behaviours to optimize memory allocation.                                                                                                                                                |
 
 ---
+
+## Main State
+
+### Events
+- `OnStateChanged` — Triggered whenever the entity's state changes.
+
+### Properties
+- `int InstanceID` — Unique identifier for this entity instance.
+- `string Name` — The entity's name.
+
+
 
 ## Lifecycle
 
@@ -375,6 +388,7 @@ Provides inspector-only debug UI for the `SceneEntity`, including read-only stat
 | `OnDrawGizmos()`         | Called by Unity to draw gizmos in the scene view. Delegates to `OnDrawGizmosSelected()` unless `_onlySelectedGizmos` is enabled.                                                        |
 | `OnDrawGizmosSelected()` | Draws gizmos for this entity and all attached behaviours implementing `IEntityGizmos`. Skips drawing in play mode if `_onlyEditModeGizmos` is enabled. Catches and logs any exceptions. |
 
+## Performance
 
 ## Notes
 
@@ -383,3 +397,4 @@ Provides inspector-only debug UI for the `SceneEntity`, including read-only stat
 - Default execution order is `-1000` (runs early)
 - `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
 - Supports `Odin Inspector` attributes for enhanced editor experience
+

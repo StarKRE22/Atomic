@@ -13,7 +13,6 @@ Atomic.Entities provides:
 - [Requirements](#requirements)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Using Atomic Plugin for Rider](#using-atomic-plugin-for-rider)
-- [Tutorial](#tutorial)
 - [API Reference](#api-reference)
 - [Performance](#performance)
 - [Best Practices](#best-practices)
@@ -33,23 +32,6 @@ Atomic.Entities provides:
 > For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become smoother and more powerful than in Unity.
 
-## Tutorial
-
-- **What is Entity**
-- **Create an Entity**
-  - **CSharp Guide** 
-  - **Unity Guide**
-- **Entity Behaviour Lifecycle** + Gizmos и аттрибут в Edit Mode
-- **Using Entity Pools**
-- **Using Entity Worlds**
-- **Using Entity Filters**
-- **Separating Game from Unity** //Factories, Baking, Views 
-- **Designing Architecture with Entities** //Contexts
-
-- **Using Code generation**
-  - **Unity Guide**
-  - **Rider Plugin Guide**
-
 ## API Reference
 
 - **Entities**
@@ -62,73 +44,73 @@ Atomic.Entities provides:
   - [Extensions](ApiReference/Entities/Extensions.md)
   
 - **Entity Behaviours**
-  - [IEntityBehaviour]
-  - [IEntityInit]
-  - [IEntityDispose]
-  - [IEntityEnable]
-  - [IEntityDisable]
-  - [IEntityUpdate]
-  - [IEntityFixedUpdate]
-  - [IEntityLateUpdate]
-  - [IEntityGizmos]
-  - [RunInEditModeAttribute]
+  - [IEntityBehaviour](ApiReference/Behaviours/IEntityBehaviour.md)
+  - [IEntityInit](ApiReference/Behaviours/IEntityInit.md)
+  - [IEntityDispose](ApiReference/Behaviours/IEntityDispose.md)
+  - [IEntityEnable](ApiReference/Behaviours/IEntityEnable.md)
+  - [IEntityDisable](ApiReference/Behaviours/IEntityDisable.md)
+  - [IEntityUpdate](ApiReference/Behaviours/IEntityUpdate.md)
+  - [IEntityFixedUpdate](ApiReference/Behaviours/IEntityFixedUpdate.md)
+  - [IEntityLateUpdate](ApiReference/Behaviours/IEntityLateUpdate.md)
+  - [IEntityGizmos](ApiReference/Behaviours/IEntityGizmos.md)
+  - [RunInEditModeAttribute](ApiReference/Behaviours/RunInEditModeAttribute.md)
   
 - **Entity Installers**
-  - [IEntityInstaller]
-  - [ScriptableEntityInstaller]
-  - [SceneEntityInstaller]
+  - [IEntityInstaller](ApiReference/Installers/IEntityInstaller.md)
+  - [ScriptableEntityInstaller](ApiReference/Installers/ScriptableEntityInstaller.md)
+  - [SceneEntityInstaller](ApiReference/Installers/SceneEntityInstaller.md)
 
 - **Entity Factories**
-  - [IEntityFactory]
-  - [InlineEntityFactory]
-  - [ScriptableEntityFactory]
-  - [SceneEntityFactory]
-  - [IEntityCatalog]
-  - [ScriptableEntityCatalog]
-  - [IMultiEntityFactory]
-  - [MultiEntityFactory]
+  - [IEntityFactory](ApiReference/Factories/IEntityFactory.md)
+  - [ScriptableEntityFactory](ApiReference/Factories/ScriptableEntityFactory.md)
+  - [SceneEntityFactory](ApiReference/Factories/SceneEntityFactory.md)
+  - [InlineEntityFactory](ApiReference/Factories/InlineEntityFactory.md)
+  - [IEntityCatalog](ApiReference/Factories/IEntityCatalog.md)
+  - [ScriptableEntityCatalog](ApiReference/Factories/ScriptableEntityCatalog.md)
+  - [IMultiEntityFactory](ApiReference/Factories/IMultiEntityFactory.md)
+  - [MultiEntityFactory](ApiReference/Factories/MultiEntityFactory.md)
 
 - **Entity Baking**
-  - [SceneEntityBaker]
+  - [SceneEntityBaker](ApiReference/Baking/SceneEntityBaker.md)
 
 - **Entity Pools**
-  - [IEntityPool]
-  - [EntityPool]
-  - [SceneEntityPool]
-  - [IMultiEntityPool]
-  - [MultiEntityPool]
-  - [IPrefabEntityPool]
-  - [PrefabEntityPool]
+  - [IEntityPool](ApiReference/Pooling/IEntityPool.md)
+  - [EntityPool](ApiReference/Pooling/EntityPool.md)
+  - [SceneEntityPool](ApiReference/Pooling/SceneEntityPool.md)
+  - [IMultiEntityPool](ApiReference/Pooling/IMultiEntityPool.md)
+  - [MultiEntityPool](ApiReference/Pooling/MultiEntityPool.md)
+  - [IPrefabEntityPool](ApiReference/Pooling/IPrefabEntityPool.md)
+  - [PrefabEntityPool](ApiReference/Pooling/PrefabEntityPool.md)
 
 - **Entity Collections**
-  - [IReadOnlyEntityCollection]
-  - [IEntityCollection]
-  - [EntityCollection]
-  - [Extensions]
+  - [IReadOnlyEntityCollection](ApiReference/Collections/IReadOnlyEntityCollection.md)
+  - [IEntityCollection](ApiReference/Collections/IEntityCollection.md)
+  - [EntityCollection](ApiReference/Collections/EntityCollection.md)
+  - [Extensions](ApiReference/Collections/Extensions.md)
 
 - **Entity Worlds**
-  - [IEntityWorld]
-  - [EntityWorld]
-  - [SceneEntityWorld]
+  - [IEntityWorld](ApiReference/Worlds/IEntityWorld.md)
+  - [EntityWorld](ApiReference/Worlds/EntityWorld.md)
+  - [SceneEntityWorld](ApiReference/Worlds/SceneEntityWorld.md)
 
 - **Entity Registry**
-  - [EntityRegistry]
+  - [EntityRegistry](ApiReference/Registry/EntityRegistry.md)
 
 - **Entity Filters & Triggers**
-  - [EntityFilter]
-  - [IEntityTrigger]
-  - [EntityTriggerBase]
-  - [TagEntityTrigger]
-  - [ValueEntityTrigger]
-  - [BehaviourEntityTrigger]
-  - [StateChangedEntityTrigger]
-  - [SubscriptionEntityTrigger]
-  - [InlineEntityTrigger]
+  - [EntityFilter](ApiReference/Filters/EntityFilter.md)
+  - [IEntityTrigger](ApiReference/Filters/IEntityTrigger.md)
+  - [EntityTriggerBase](ApiReference/Filters/EntityTriggerBase.md)
+  - [TagEntityTrigger](ApiReference/Filters/TagEntityTrigger.md)
+  - [ValueEntityTrigger](ApiReference/Filters/ValueEntityTrigger.md)
+  - [BehaviourEntityTrigger](ApiReference/Filters/BehaviourEntityTrigger.md)
+  - [StateChangedEntityTrigger](ApiReference/Filters/StateChangedEntityTrigger.md)
+  - [SubscriptionEntityTrigger](ApiReference/Filters/SubscriptionEntityTrigger.md)
+  - [InlineEntityTrigger](ApiReference/Filters/InlineEntityTrigger.md)
 
-- **Lifecycle Sources**
-  - [Sources]
+- **Lifecycle**
+  - **Sources**
+  - **Subscriptions**
   - [Extensions]
-  - [Subscriptions]
 
 - **Entity Utils**
   - [EntityUtils]
@@ -161,60 +143,3 @@ Atomic.Entities provides:
 ## Performance
 
 ## Best Practices
-
-
-
-[//]: # ()
-[//]: # (Guides)
-
-[//]: # (├── Introduction)
-
-[//]: # (│   ├── What is Atomic?)
-
-[//]: # (│   ├── Requirements & Installation)
-
-[//]: # (│   └── Using Odin Inspector &#40;optional&#41;)
-
-[//]: # (│)
-
-[//]: # (├── Core Concepts)
-
-[//]: # (│   ├── Entities & EntityStateBehaviour Pattern)
-
-[//]: # (│   ├── Reactive Values & Variables)
-
-[//]: # (│   ├── Events & Signals)
-
-[//]: # (│   └── Requests & Actions)
-
-[//]: # (│)
-
-[//]: # (├── Tutorials)
-
-[//]: # (│   ├── Getting Started with Entities &#40;C# example&#41;)
-
-[//]: # (│   ├── Unity Quick Start &#40;SceneEntity, Installers&#41;)
-
-[//]: # (│   ├── Character Example &#40;MoveBehaviour&#41;)
-
-[//]: # (│   └── Building UI Contexts)
-
-[//]: # (│)
-
-[//]: # (├── Best Practices)
-
-[//]: # (│   ├── Prefer Abstract Interfaces)
-
-[//]: # (│   ├── Shared Constants)
-
-[//]: # (│   ├── Iterating Reactive Collections)
-
-[//]: # (│   ├── Request-Condition-Action-Event Pattern)
-
-[//]: # (│   ├── Requests vs Actions)
-
-[//]: # (│   └── Performance Tips)
-
-
-
-
