@@ -20,12 +20,12 @@ It follows the **Entity–State–Behaviour** pattern and provides a modular con
 
 ## 🔑 Key Features
 
-- **State Management** – Dynamic key-value storage for runtime data.
-- **Tag System** – Lightweight categorization and filtering.
-- **Behaviour Composition** – Attach or detach modular logic at runtime.
-- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
 - **Event-Driven** – Reactive programming support via state change notifications.
 - **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
 
 ---
 
@@ -247,7 +247,6 @@ entity.OnUpdate(Time.deltaTime);
 ```
 
 ## 📝 Notes
-
 - Supports **reactive programming** via `OnStateChanged`.
 - Focused on **interface contract**, not implementation.
 - Can be implemented by pure C# classes or Unity `MonoBehaviour`s.

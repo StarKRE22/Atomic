@@ -1,271 +1,251 @@
 # 🧩️ Entity
 
-Represents the core implementation of an `IEntity`.  
-This class follows the Entity–State–Behaviour pattern, providing a modular container for dynamic state, tags, values, behaviours, and lifecycle management.
+Represents the fundamental implementation of an `IEntity` in the framework.  
+It follows the **Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
 
-## Key Features
-- **Complete Implementation** – Full IEntity interface implementation
-- **Lifecycle Management** – Built-in spawn, activate, update, despawn support
-- **Dynamic Composition** – Runtime attachment of behaviours
-- **Event System** – Comprehensive event notifications
+---
+
+## 📚 Content
+
+- [Key Features](#-key-features)
+- [Thread Safety](#-thread-safety)
+- [Core State](#-core-state)
+- [Tags](#-tags)
+- [Values](#-values)
+- [Behaviours](#-behaviours)
+- [Lifecycle](#-lifecycle)
+- [Nested Types](#-nested-types)
+- [Debug Properties](#-debug-properties)
+- [Example Usage](#-example-usage)
+- [Performance](#-performance)
+- [Notes](#-notes)
+
+## 🔑 Key Features
+
+- **Event-Driven** – Reactive programming support via state change notifications.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
 - **Registry Integration** – Automatic registration with EntityRegistry
 - **Memory Efficient** – Pre-allocation support for collections
 
 ---
 
-## Thread Safety
+## 🔒 Thread Safety
 - Entity is **NOT thread-safe**
 - All operations should be performed on the main thread
 - Use synchronization if accessing from multiple threads
 
 ---
+## 🧩 Core State
 
-## Content
+The Core State section defines the essential identity and fundamental data of an entity.
+It captures the minimal information needed to track, identify, and observe the entity during its lifecycle.
 
-- [Constructors](#constructors)
-- [Main State](#main-state)
-- [Tags](#tags)
-- [Values](#values)
-- [Behaviours](#behaviours)
-- [Lifecycle](#lifecycle)
-- [Nested Types](#nested-types)
-- [Examples](#examples)
-- [Performance](#performance)
+This section includes:
 
-## Constructors
-
-#### Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
-```csharp
-Entity(
-    string name,
-    IEnumerable<string> tags = null,
-    IEnumerable<KeyValuePair<string, object>> values = null,
-    IEnumerable<IEntityBehaviour> behaviours = null,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tags` — Optional initial tags.
-- `values` — Optional initial values.
-- `behaviours` — Optional initial behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-----
-
-#### Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
-```csharp
-Entity(
-    string name,
-    IEnumerable<int> tags = null,
-    IEnumerable<KeyValuePair<int, object>> values = null,
-    IEnumerable<IEntityBehaviour> behaviours = null,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tags` — Optional initial tags.
-- `values` — Optional initial values.
-- `behaviours` — Optional initial behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-
----
-#### Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
-```csharp
-Entity(
-    string name = null,
-    int tagCapacity = 0,
-    int valueCapacity = 0,
-    int behaviourCapacity = 0,
-    Settings? settings = null
-)
-```
-### Parameters
-
-- `name` — Entity name.
-- `tagCapacity` — Initial capacity for tags.
-- `valueCapacity` — Initial capacity for values.
-- `behaviourCapacity` — Initial capacity for behaviours.
-- `settings` — Optional settings (disposeValues defaults to true).
-
----
-
-## Main State
+- **Unique Identity** – runtime-generated `InstanceID` to distinguish entities.
+- **Optional Name** – user-defined `Name` for debugging, tooling, or editor purposes.
+- **Reactive State** – `OnStateChanged` event to respond to runtime state changes.
+- **Entity Creation** – constructors for creating entities with initial names, tags, values, behaviours, and optional settings.
 
 ### Events
-- `OnStateChanged` — Triggered whenever the entity's state changes.
+
+| Event                   | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| `OnStateChanged`        | Triggered whenever the entity’s internal state changes. |
 
 ### Properties
-- `int InstanceID` — Unique identifier for this entity instance.
-- `string Name` — The entity's name.
 
+| Property     | Type   | Description                                          |
+|--------------|--------|------------------------------------------------------|
+| `InstanceID` | int    | Runtime-generated unique identifier.                 |
+| `Name`       | string | Optional user-defined name for debugging or tooling. |
 
-## Tags
+### Constructors
+
+| Signature                                                                                                                                                                                   | Parameters                                                                                                                                                                                                                                          |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Entity(string name, IEnumerable<string> tags = null, IEnumerable<KeyValuePair<string, object>> values = null, IEnumerable<IEntityBehaviour> behaviours = null, Settings? settings = null)` | `name` — Entity name.<br>`tags` — Optional initial tags.<br>`values` — Optional initial values.<br>`behaviours` — Optional initial behaviours.<br>`settings` — Optional settings (disposeValues defaults to true).                                  |
+| `Entity(string name, IEnumerable<int> tags = null, IEnumerable<KeyValuePair<int, object>> values = null, IEnumerable<IEntityBehaviour> behaviours = null, Settings? settings = null)`       | `name` — Entity name.<br>`tags` — Optional initial tags.<br>`values` — Optional initial values.<br>`behaviours` — Optional initial behaviours.<br>`settings` — Optional settings (disposeValues defaults to true).                                  |
+| `Entity(string name = null, int tagCapacity = 0, int valueCapacity = 0, int behaviourCapacity = 0, Settings? settings = null)`                                                              | `name` — Entity name.<br>`tagCapacity` — Initial capacity for tags.<br>`valueCapacity` — Initial capacity for values.<br>`behaviourCapacity` — Initial capacity for behaviours.<br>`settings` — Optional settings (disposeValues defaults to true). |
+
+---
+
+## 🏷 Tags
+
+The **Tags** section manages lightweight categorization and filtering of entities.  
+Tags are integer-based labels that can be added, removed, enumerated, or checked.  
+They are useful for grouping entities, querying, and driving logic based on assigned tags.
 
 ### Events
-- `OnTagAdded(int key)` — Triggered when a tag is added.
-- `OnTagDeleted(int key)` — Triggered when a tag is removed.
+
+| Event          | Description                      |
+|----------------|----------------------------------|
+| `OnTagAdded`   | Triggered when a tag is added.   |
+| `OnTagDeleted` | Triggered when a tag is removed. |
+
+### Properties
+
+| Property             | Type   | Description                                           |
+|----------------------|--------|-------------------------------------------------------|
+| `TagCount`           | int    | Number of associated tags.                            |
 
 ### Methods
-- `bool HasTag(int key)` — Checks if the entity has a specific tag.
-- `bool AddTag(int key)` — Adds a tag.
-- `bool DelTag(int key)` — Deletes a tag.
-- `void ClearTags()` — Clears all tags.
-- `int[] GetTags()` — Returns all tags as an array.
-- `int CopyTags(int[] results)` — Copies tags into the provided array.
-- `TagEnumerator GetTagEnumerator()` — Returns an enumerator for iterating tags.
+
+| Method               | Description                             |
+|----------------------|-----------------------------------------|
+| `HasTag(int)`        | Checks if the entity has the given tag. |
+| `AddTag(int)`        | Adds a tag.                             |
+| `DelTag(int)`        | Removes a tag.                          |
+| `ClearTags()`        | Removes all tags.                       |
+| `GetTags()`          | Returns all tag keys.                   |
+| `CopyTags(int[])`    | Copies tag keys into an array.          |
+| `GetTagEnumerator()` | Enumerates all tags.                    |
 
 ---
 
-## Events
 
-### Lifecycle Events
-- `OnInitialized` — Triggered when the entity is initialized.
-- `OnDisposed` — Triggered when the entity is disposed.
-- `OnEnabled` — Triggered when the entity is enabled.
-- `OnDisabled` — Triggered when the entity is disabled.
-- `OnUpdated(float deltaTime)` — Triggered on each update while the entity is enabled.
-- `OnFixedUpdated(float deltaTime)` — Triggered on each fixed update while the entity is enabled.
-- `OnLateUpdated(float deltaTime)` — Triggered on each late update while the entity is enabled.
+## 💾 Values
 
-### Behaviours Events
-- `OnBehaviourAdded(IEntityBehaviour behaviour)` — Triggered when a new behaviour is added.
-- `OnBehaviourDeleted(IEntityBehaviour behaviour)` — Triggered when a behaviour is removed.
+The **Values** section manages dynamic key-value storage for the entity.  
+Values can be of any type (structs or reference types) and are identified by integer keys.  
+This allows flexible runtime data storage, reactive updates, and modular logic.
 
+Values support reactive updates via associated events (`OnValueAdded`, `OnValueDeleted`, `OnValueChanged`),
+allowing other systems to respond automatically to state changes.
 
+### Events
 
-### Values Events
-- `OnValueAdded(int key)` — Triggered when a value is added.
-- `OnValueDeleted(int key)` — Triggered when a value is removed.
-- `OnValueChanged(int key)` — Triggered when a value is changed.
+| Event            | Description                        |
+|------------------|------------------------------------|
+| `OnValueAdded`   | Triggered when a value is added.   |
+| `OnValueDeleted` | Triggered when a value is deleted. |
+| `OnValueChanged` | Triggered when a value is updated. |
 
----
+### Properties
 
-## Properties
-
-- `int InstanceID` — Unique identifier for this entity instance.
-- `string Name` — The entity's name.
-- `bool Initialized` — Indicates if the entity has been initialized.
-- `bool Enabled` — Indicates if the entity is currently enabled.
-- `int BehaviourCount` — Total number of attached behaviours.
-- `int TagCount` — Total number of tags.
-- `int ValueCount` — Total number of values.
-
----
-
-## Tags Management
-
-- `bool HasTag(int key)` — Checks if the entity has a specific tag.
-- `bool AddTag(int key)` — Adds a tag.
-- `bool DelTag(int key)` — Deletes a tag.
-- `void ClearTags()` — Clears all tags.
-- `int[] GetTags()` — Returns all tags as an array.
-- `int CopyTags(int[] results)` — Copies tags into the provided array.
-- `TagEnumerator GetTagEnumerator()` — Returns an enumerator for iterating tags.
-
-## Values Management
-
-- `bool HasValue(int key)` — Checks if a value exists.
-- `T GetValue<T>(int key)` — Gets the value of type `T`.
-- `object GetValue(int key)` — Gets the value as an object.
-- `bool TryGetValue<T>(int key, out T value)` — Attempts to get a value of type `T`.
-- `bool TryGetValue(int key, out object value)` — Attempts to get a value as object.
-- `ref T GetValueUnsafe<T>(int key)` — Returns a reference to a struct value (unsafe, no boxing).
-- `bool TryGetValueUnsafe<T>(int key, out T value)` — Tries to get a reference to a struct value.
-- `void AddValue<T>(int key, T value)` — Adds a struct value.
-- `void AddValue(int key, object value)` — Adds a reference type value.
-- `void SetValue<T>(int key, T value)` — Updates or adds a struct value.
-- `void SetValue(int key, object value)` — Updates or adds a reference value.
-- `bool DelValue(int key)` — Deletes a value by key.
-- `void ClearValues()` — Clears all values.
-- `KeyValuePair<int, object>[] GetValues()` — Returns all key-value pairs.
-- `int CopyValues(KeyValuePair<int, object>[] results)` — Copies all key-value pairs into an array.
-- `ValueEnumerator GetValueEnumerator()` — Returns an enumerator for values.
-
-## Behaviours Management
-
-- `bool HasBehaviour(IEntityBehaviour behaviour)` — Checks if a specific behaviour is attached.
-- `bool HasBehaviour<T>()` — Checks if a behaviour of type `T` exists.
-- `void AddBehaviour(IEntityBehaviour behaviour)` — Adds a behaviour.
-- `bool DelBehaviour(IEntityBehaviour behaviour)` — Deletes a behaviour instance.
-- `bool DelBehaviour<T>()` — Deletes the first behaviour of type `T`.
-- `void DelBehaviours<T>()` — Deletes all behaviours of type `T`.
-- `bool DelBehaviourAt(int index)` — Deletes behaviour at a given index.
-- `void ClearBehaviours()` — Clears all behaviours.
-- `T GetBehaviour<T>()` — Gets the first behaviour of type `T`.
-- `bool TryGetBehaviour<T>(out T behaviour)` — Tries to get the first behaviour of type `T`.
-- `IEntityBehaviour GetBehaviourAt(int index)` — Gets behaviour at index.
-- `IEntityBehaviour[] GetBehaviours()` — Returns all behaviours.
-- `T[] GetBehaviours<T>()` — Returns all behaviours of type `T`.
-- `int CopyBehaviours(IEntityBehaviour[] results)` — Copies behaviours to array.
-- `int CopyBehaviours<T>(T[] results)` — Copies behaviours of type `T` to array.
-- `BehaviourEnumerator GetBehaviourEnumerator()` — Returns an enumerator for behaviours.
+| Property     | Type | Description              |
+|--------------|------|--------------------------|
+| `ValueCount` | int  | Number of stored values. |
 
 
-## Lifecycle Methods
+### Methods
 
-- `void Init()` – initializes the entity.
-  - Transitions an entity to `Initialized` state
-  - Calls `Init` on all behaviours implementing `IEntityInit`
-  - Triggers `OnInitialized` event
-  - If the entity is already initialized, this method does nothing
-
-
-- `void Enable()` – enables the entity for updates
-  - Transitions an entity to `Enabled` state
-  - Calls `Enable` on all behaviours implementing `IEntityEnable`
-  - Triggers `OnEnabled` event
-  - If the entity is not initialized yet, this method initializes the entity also
-  - If the entity is already enabled, this method does nothing
-
-  
-- `void OnUpdate(float deltaTime)` — calls the update on the entity
-  - Calls `Update` on all `IEntityUpdate` behaviours
-  - Triggers `OnUpdated` event
-  - Can be invoked only if entity is enabled
-
-
-- `void OnFixedUpdate(float deltaTime)` — calls the fixed update on the entity
-  - Calls `FixedUpdate` on all `IEntityFixedUpdate` behaviours
-  - Triggers `OnFixedUpdated` event
-  - Can be invoked only if entity is enabled
-
-
-- `void OnLateUpdate(float deltaTime)` — calls the late update on the entity
-  - Calls `LateUpdate` on all `IEntityLateUpdate` behaviours
-  - Triggers `OnLateUpdated` event
-  - Can be invoked only if entity is enabled
-
-
-- `void Disable()` — disables the entity for updates
-  - Transitions an entity to `not Enabled` state
-  - Calls `Disable` on all behaviours implementing `IEntityDisable`
-  - Triggers `OnDisabled` event
-  - If the entity is not enabled yet, this method does nothing
-
-
-- `void Dispose()` – cleans up all resources used by the entity.
-  - Transitions an entity to not `Initialized` state
-  - Calls `Dispose` on all behaviours implementing `IEntityDispose`
-  - Clears all tags, values, and behaviours
-  - Unsubscribes from all events
-  - Unregisters from EntityRegistry
-  - Disposing stored values if `Settings.disposeValues` is `true`
-  - If the entity is enabled, this method call `Entity.Disable` automatically
-  - If the entity is not initialized yet, this method doesn't call `IEntityDispose.Dispose` and `OnDisposed`
+| Method                                    | Description                              |
+|-------------------------------------------|------------------------------------------|
+| `GetValue<T>(int)`                        | Retrieves a value by key.                |
+| `GetValueUnsafe<T>(int)`                  | Retrieves a value by reference (unsafe). |
+| `GetValue(int)`                           | Retrieves a value as `object`.           |
+| `TryGetValue<T>(int, out T)`              | Tries to retrieve a typed value.         |
+| `TryGetValueUnsafe<T>(int, out T)`        | Tries to retrieve by reference.          |
+| `TryGetValue(int, out object)`            | Tries to retrieve as `object`.           |
+| `SetValue<T>(int, T)`                     | Sets or updates a struct value.          |
+| `SetValue(int, object)`                   | Sets or updates a reference value.       |
+| `HasValue(int)`                           | Checks if a value exists.                |
+| `AddValue<T>(int, T)`                     | Adds a struct value.                     |
+| `AddValue(int, object)`                   | Adds a reference value.                  |
+| `DelValue(int)`                           | Deletes a value.                         |
+| `ClearValues()`                           | Clears all values.                       |
+| `GetValues()`                             | Returns all key-value pairs.             |
+| `CopyValues(KeyValuePair<int, object>[])` | Copies all key-value pairs.              |
+| `GetValueEnumerator()`                    | Enumerates all values.                   |
 
 ---
 
-## Nested Types
+## ⚙️ Behaviours
+
+The **Behaviours** section manages modular logic attached to the entity.  
+Behaviours implement `IEntityBehaviour` interfaces and can be added, removed, queried, or enumerated at runtime.  
+This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure.
+
+Behaviours can respond to lifecycle events (`Init`, `Enable`, `Update`, `Disable`, `Dispose`),
+enabling dynamic logic composition without changing the core entity structure.
+
+### Events
+
+| Event                | Description                            |
+|----------------------|----------------------------------------|
+| `OnBehaviourAdded`   | Triggered when a behaviour is added.   |
+| `OnBehaviourDeleted` | Triggered when a behaviour is removed. |
+
+
+### Properties
+
+| Property         | Type | Description                    |
+|------------------|------|--------------------------------|
+| `BehaviourCount` | int  | Number of attached behaviours. |
+
+### Methods
+
+| Method                               | Description                               |
+|--------------------------------------|-------------------------------------------|
+| `AddBehaviour(IEntityBehaviour)`     | Adds a behaviour.                         |
+| `GetBehaviour<T>()`                  | Returns first behaviour of type `T`.      |
+| `TryGetBehaviour<T>(out T)`          | Tries to get a behaviour of type `T`.     |
+| `HasBehaviour(IEntityBehaviour)`     | Checks if a specific behaviour exists.    |
+| `HasBehaviour<T>()`                  | Checks if a behaviour of type `T` exists. |
+| `DelBehaviour(IEntityBehaviour)`     | Removes a specific behaviour.             |
+| `DelBehaviour<T>()`                  | Removes the first behaviour of type `T`.  |
+| `DelBehaviours<T>()`                 | Removes all behaviours of type `T`.       |
+| `ClearBehaviours()`                  | Removes all behaviours.                   |
+| `GetBehaviours()`                    | Returns all behaviours.                   |
+| `GetBehaviours<T>()`                 | Returns all behaviours of type `T`.       |
+| `CopyBehaviours(IEntityBehaviour[])` | Copies behaviours into an array.          |
+| `CopyBehaviours<T>(T[])`             | Copies behaviours of type `T`.            |
+| `GetBehaviourEnumerator()`           | Enumerates behaviours.                    |
+
+----
+
+## 🔄 Lifecycle
+
+The **Lifecycle** section manages the entity's state transitions and update phases.  
+It covers initialization, enabling, per-frame updates, disabling, and disposal.  
+Lifecycle events allow reactive systems to respond to changes in the entity's state.
+
+### Events
+
+| Event                   | Description                                             |
+|-------------------------|---------------------------------------------------------|
+| `OnInitialize`          | Triggered when the entity is initialized.               |
+| `OnEnabled`             | Triggered when the entity is enabled.                   |
+| `OnDisabled`            | Triggered when the entity is disabled.                  |
+| `OnDisposed`            | Triggered when the entity is disposed.                  |
+| `OnUpdated(float)`      | Triggered when the entity is updated.                   |
+| `OnFixedUpdated(float)` | Triggered when the entity is fixed updated.             |
+| `OnLateUpdated(float)`  | Triggered when the entity is late updated.              |
+
+### Properties
+
+| Property      | Type | Description                        |
+|---------------|------|------------------------------------|
+| `Initialized` | bool | True if the entity is initialized. |
+| `Enabled`     | bool | True if the entity is enabled.     |
+
+### Methods
+
+| Method                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Init()`                         | Initializes the entity. <ul><li>Transitions the entity to the `Initialized` state.</li><li>Calls `Init` on all behaviours implementing `IEntityInit`.</li><li>Triggers the `OnInitialized` event.</li><li>If the entity is already initialized, does nothing.</li></ul>                                                                                                                                                                                                                                                                                                                  |
+| `Enable()`                       | Enables the entity for updates. <ul><li>Transitions the entity to the `Enabled` state.</li><li>Calls `Enable` on all behaviours implementing `IEntityEnable`.</li><li>Triggers the `OnEnabled` event.</li><li>If the entity is not initialized yet, it will be initialized automatically.</li><li>If the entity is already enabled, does nothing.</li></ul>                                                                                                                                                                                                                              |
+| `OnUpdate(float deltaTime)`      | Calls `Update` on all behaviours implementing `IEntityUpdate`. <ul><li>Triggers the `OnUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `OnFixedUpdate(float deltaTime)` | Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`. <ul><li>Triggers the `OnFixedUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `OnLateUpdate(float deltaTime)`  | Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`. <ul><li>Triggers the `OnLateUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `Disable()`                      | Disables the entity for updates. <ul><li>Transitions the entity to a not `Enabled` state.</li><li>Calls `Disable` on all behaviours implementing `IEntityDisable`.</li><li>Triggers the `OnDisabled` event.</li><li>If the entity is not enabled yet, does nothing.</li></ul>                                                                                                                                                                                                                                                                                                            |
+| `Dispose()`                      | Cleans up all resources used by the entity. <ul><li>Transitions the entity to a not `Initialized` state.</li><li>Calls `Dispose` on all behaviours implementing `IEntityDispose`.</li><li>Clears all tags, values, and behaviours.</li><li>Unsubscribes from all events.</li><li>Unregisters the entity from the `EntityRegistry`.</li><li>Disposes stored values if `disposeValues` is `true`.</li><li>If the entity is enabled, calls `Disable` automatically.</li><li>If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.</li></ul> |
+
+---
+
+## 🔹 Nested Types
 
 - `Settings` — Entity configuration (e.g., `disposeValues`).
 - `BehaviourEnumerator` — Enumerator for behaviours.
 - `TagEnumerator` — Enumerator for tags.
 - `ValueEnumerator` — Enumerator for values.
 
-### Debug Properties (Editor Only)
+## 🐞 Debug Properties
 
 > **Note:** These properties are available only in **Unity Editor** when using **Odin Inspector**.
 
@@ -276,7 +256,7 @@ Entity(
 - `DebugValues` — Sorted list of values for debug display.
 - `DebugBehaviours` — Sorted list of attached behaviours for debug display.
 
-## Examples
+## 💡 Example Usage
 
 ### Example #1: Creating and setting up an entity
 
@@ -346,4 +326,16 @@ entity.Disable();
 entity.Dispose();
 ```
 
-## Performance
+## ⏱ Performance
+//TODO:
+
+## 📝 Notes
+
+- **Implementation of IEntity** – `Entity` provides a concrete implementation of the `IEntity` interface with full support for tags, values, behaviours, and lifecycle management.
+- **Reactive Events** – All core operations (adding/removing tags, values, behaviours, state changes) trigger events, allowing other systems to react automatically.
+- **Pre-allocation and Memory Efficiency** – Initial capacities for tags, values, and behaviours can be set in constructors to reduce runtime allocations.
+- **Lifecycle Discipline** – Proper use of `Init()`, `Enable()`, `Disable()`, and `Dispose()` ensures predictable entity behaviour and resource cleanup.
+- **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be synchronized externally.
+- **Registry Integration** – Entities are automatically registered with the `EntityRegistry` for global tracking and lookup.
+- **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into the entity state, tags, values, and behaviours.
+- **Extensibility** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core entity class.
