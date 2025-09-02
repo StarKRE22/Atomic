@@ -57,9 +57,9 @@ Atomic.Entities provides:
   - [Entity](ApiReference/Entities/Entity.md)
   - [EntitySingleton](ApiReference/Entities/EntitySingleton.md)
   - [SceneEntity](ApiReference/Entities/SceneEntity.md)
-  - [SceneEntityProxy]
-  - [SceneEntitySingleton]
-  - [Extensions]
+  - [SceneEntityProxy](ApiReference/Entities/SceneEntityProxy.md)
+  - [SceneEntitySingleton](ApiReference/Entities/SceneEntitySingleton.md)
+  - [Extensions](ApiReference/Entities/Extensions.md)
   
 - **Entity Behaviours**
   - [IEntityBehaviour]
