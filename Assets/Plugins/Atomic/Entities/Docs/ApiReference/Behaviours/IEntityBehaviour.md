@@ -20,7 +20,7 @@ It allows entities to dynamically compose functionality at runtime, following th
 - They can be used to implement features such as movement, attack, game systems, AI, input, or UI controllers.
 - `IEntityBehaviour` is intentionally minimal; lifecycle hooks and event handling are defined by optional interfaces (e.g., `IEntityInit`, `IEntityEnable`, `IEntityUpdate`).
 
-## Example of Usage
+## Example Usage
 
 #### 1. Create a character entity
 ```csharp

@@ -34,10 +34,12 @@ public interface IEntityInit<in E> : IEntityInit where E : IEntity
 - Implements `IEntityInit.Init(IEntity)` automatically by casting to `E`.
 - Ensures type-safe initialization for specific entity types.
 
-## Example of Usage
+## Example Usage
 Set up a `Color` for the entity `Renderer`
+
+### Example #1. Non-Generic (IEntity)
 ```csharp
-public class InitColorBehaviour : IEntityInit<UnitEntity>
+public class InitColorBehaviour : IEntityInit
 {
     public void Init(IEntity entity)
     {
@@ -48,6 +50,22 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 }
 ```
 > Note: `GetValue<T>` assumes the entity has these values already set.
+
+### Example #2. Generic with UnitEntity (strongly-typed)
+
+```csharp
+public class InitColorBehaviour : IEntityInit<UnitEntity>
+{
+    public void Init(UnitEntity entity)
+    {
+        var renderer = entity.GetValue<Renderer>("Renderer");
+        var color = entity.GetValue<Color>("Color");
+        renderer.material.color = color;
+    }
+}
+```
+
+> Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required
 ---
 
 ## Remarks

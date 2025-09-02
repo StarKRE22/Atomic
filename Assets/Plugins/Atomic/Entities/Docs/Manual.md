@@ -53,7 +53,7 @@ Atomic.Entities provides:
   - [IEntityFixedUpdate](ApiReference/Behaviours/IEntityFixedUpdate.md)
   - [IEntityLateUpdate](ApiReference/Behaviours/IEntityLateUpdate.md)
   - [IEntityGizmos](ApiReference/Behaviours/IEntityGizmos.md)
-  - [RunInEditModeAttribute](ApiReference/Behaviours/RunInEditModeAttribute.md)
+  - [RunInEditModeAttribute](ApiReference/Attributes/RunInEditModeAttribute.md)
   
 - **Entity Installers**
   - [IEntityInstaller](ApiReference/Installers/IEntityInstaller.md)
