@@ -329,6 +329,12 @@ namespace Atomic.Entities
             return world;
         }
 
+        /// <summary>
+        /// Destroys the <see cref="SceneEntityWorld{E}"/> and its associated GameObject after an optional delay.
+        /// </summary>
+        /// <typeparam name="E">The type of scene entity managed by the world.</typeparam>
+        /// <param name="world">The world instance to destroy.</param>
+        /// <param name="t">Optional delay in seconds before destruction. Default is 0.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(SceneEntityWorld<E> world, float t = 0)
         {

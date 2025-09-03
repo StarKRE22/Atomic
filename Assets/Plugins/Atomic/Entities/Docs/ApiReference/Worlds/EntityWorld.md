@@ -1,34 +1,20 @@
-# 🧩 IEntityWorld
+# 🧩 EntityWorld
 
-Represents a world that manages a collection of entities and controls their lifecycle events.  
-Extends `IEntityCollection`, `IEnableSource`, and `IUpdateSource`.
+A runtime-managed world that holds a collection of entities and controls their lifecycle, updates, and reactive events.  
+Supports both generic (`EntityWorld<E>`) and non-generic (`EntityWorld`) usage.
+
+### Type Parameters
+- `E` – The specific type of entity managed by the world. Must implement [`IEntity`](#).
 
 ---
 
 ## Key Features
 
-- **Entity collection management** – Serves as a container for entities with fast insertion, removal, and iteration.
-- **Lifecycle control** – Integrates with `IEnableSource` and `IUpdateSource` for enabling, disabling, and frame-based updates (Update, FixedUpdate, LateUpdate).
-- **Generic and non-generic support** – Can be used with a specific entity type (`IEntityWorld<E>`) or without specifying a type (`IEntityWorld`).
-- **Identifiable** – Each world has a `Name` property for easier tracking in logs, UI, or debugging.
-- **Reactive events** – Exposes events for entity addition, removal, state changes, and world enable/disable.
-
-
-## Interfaces
-
-### `IEntityWorld`
-
-A **non-generic version** of [`IEntityWorld<E>`](#) specialized for `IEntity`.  
-Use this interface when you do not need to specify a particular entity type.
-
----
-
-### `IEntityWorld<E>`
-
-A **generic interface** representing a world that manages a collection of entities of type `E`.  
-
-#### Type Parameters
-- `E` – The type of entity managed by this world. Must implement [`IEntity`](#).
+- **Entity collection management** – Acts as a container for entities with fast lookup, insertion order, and iteration.
+- **Lifecycle control** – Implements `IEnableSource` and `IUpdateSource` to enable, disable, and update entities.
+- **Generic and non-generic support** – Flexible usage whether a specific entity type is required or not.
+- **Identifiable** – Each world can have a `Name` for easier tracking in logs, UI, or debugging.
+- **Reactive events** – Supports `OnEnabled`, `OnDisabled`, `OnUpdated`, `OnFixedUpdated`, and `OnLateUpdated` for integration with systems or UI.
 
 ---
 
@@ -77,8 +63,39 @@ A **generic interface** representing a world that manages a collection of entiti
 
 ---
 
-## Remarks
+## Example Usage
 
-- Designed for **scalable and reactive entity management**.
-- Allows combining **collection operations** with **update and enable/disable control** in a single abstraction.
-- Works seamlessly with other `Atomic.Entities` systems, such as `IEntityCollection` and lifecycle extension methods.
+```csharp
+var world = new EntityWorld<MyEntity>("GameplayWorld");
+
+// Add entities
+world.Add(new MyEntity("Player"));
+world.AddRange(new MyEntity("Enemy1"), new MyEntity("Enemy2"));
+
+// Enable world and entities
+world.Enable();
+
+// Update loop
+world.OnUpdate(Time.deltaTime);
+world.OnFixedUpdate(Time.fixedDeltaTime);
+world.OnLateUpdate(Time.deltaTime);
+
+// Subscribe to events
+world.OnEnabled += () => Console.WriteLine("World enabled");
+world.OnDisabled += () => Console.WriteLine("World disabled");
+
+// Disable world
+world.Disable();
+
+// Dispose world
+world.Dispose();
+```
+
+## Performance
+#TODO
+
+## Remarks
+- Ensures consistent lifecycle management for all entities in the world.
+- Integrates reactive events for real-time updates and UI binding.
+- Supports standard .NET collection patterns for seamless integration.
+- Optimized for high-performance scenarios like games, simulations, or real-time systems.
