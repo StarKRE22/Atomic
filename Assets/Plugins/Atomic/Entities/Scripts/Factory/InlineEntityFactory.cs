@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// </summary>
     public class InlineEntityFactory : InlineEntityFactory<IEntity>, IEntityFactory
     {
-        public InlineEntityFactory(Func<IEntity> creator) : base(creator)
+        public InlineEntityFactory(Func<IEntity> createFunc) : base(createFunc)
         {
         }
     }
@@ -15,19 +15,19 @@ namespace Atomic.Entities
     /// <summary>
     /// A lightweight, inline implementation of <see cref="IEntityFactory{T}"/> that wraps a creation delegate.
     /// </summary>
-    /// <typeparam name="T">The type of <see cref="IEntity"/> to produce.</typeparam>
-    public class InlineEntityFactory<T> : IEntityFactory<T> where T : IEntity
+    /// <typeparam name="E">The type of <see cref="IEntity"/> to produce.</typeparam>
+    public class InlineEntityFactory<E> : IEntityFactory<E> where E : IEntity
     {
-        private readonly Func<T> _creator;
+        private readonly Func<E> _createFunc;
 
         /// <summary>
         /// Creates a new inline factory that uses the specified creation function.
         /// </summary>
-        /// <param name="creator">The function used to instantiate the entity.</param>
-        public InlineEntityFactory(Func<T> creator) =>
-            _creator = creator ?? throw new ArgumentNullException(nameof(creator));
+        /// <param name="createFunc">The function used to instantiate the entity.</param>
+        public InlineEntityFactory(Func<E> createFunc) =>
+            _createFunc = createFunc ?? throw new ArgumentNullException(nameof(createFunc));
 
         /// <inheritdoc />
-        public T Create() => _creator.Invoke();
+        public E Create() => _createFunc.Invoke();
     }
 }

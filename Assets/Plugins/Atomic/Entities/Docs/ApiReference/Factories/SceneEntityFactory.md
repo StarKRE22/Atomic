@@ -43,7 +43,7 @@ public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityF
 
 ---
 
-## Class: SceneEntityFactory<E> (Generic)
+## Class: SceneEntityFactory&lt;E&gt; (Generic)
 ```csharp
 public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
 {

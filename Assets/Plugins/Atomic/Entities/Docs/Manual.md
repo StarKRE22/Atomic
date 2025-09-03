@@ -65,8 +65,8 @@ Atomic.Entities provides:
   - [ScriptableEntityFactory](ApiReference/Factories/ScriptableEntityFactory.md)
   - [SceneEntityFactory](ApiReference/Factories/SceneEntityFactory.md)
   - [InlineEntityFactory](ApiReference/Factories/InlineEntityFactory.md)
-  - [IEntityCatalog](ApiReference/Factories/IEntityCatalog.md)
-  - [ScriptableEntityCatalog](ApiReference/Factories/ScriptableEntityCatalog.md)
+  - [IEntityFactoryCatalog](ApiReference/Factories/IEntityFactoryCatalog.md)
+  - [ScriptableEntityFactoryCatalog](ApiReference/Factories/ScriptableEntityCatalog.md)
   - [IMultiEntityFactory](ApiReference/Factories/IMultiEntityFactory.md)
   - [MultiEntityFactory](ApiReference/Factories/MultiEntityFactory.md)
 

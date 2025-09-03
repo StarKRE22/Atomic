@@ -42,7 +42,7 @@ public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>
 
 ---
 
-## Class: ScriptableEntityFactory<E> (Generic)
+## Class: ScriptableEntityFactory&lt;E&gt; (Generic)
 ```csharp
 public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
 {
@@ -177,7 +177,6 @@ public class Example : MonoBehaviour
 ```
 
 ## Remarks
-
 - Use **non-generic** `ScriptableEntityFactory` for heterogeneous entities in registries or catalogs.
 - Use **generic** `ScriptableEntityFactory<E>` for type-safe creation when the entity type is known.
 - `Precompile` caches metadata (`TagCount`, `ValueCount`, `BehaviourCount`) to reduce runtime introspection.

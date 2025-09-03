@@ -7,7 +7,7 @@ namespace RTSGame
         fileName = "GameEntityCatalog",
         menuName = "RTSGame/GameEntities/New GameEntityCatalog"
     )]
-    public sealed class GameEntityCatalog : ScriptableEntityCatalog<string, IGameEntity, GameEntityFactory>
+    public sealed class GameEntityFactoryCatalog : ScriptableEntityFactoryCatalog<string, IGameEntity, GameEntityFactory>
     {
         protected override string GetKey(GameEntityFactory factory) => factory.Name;
     }

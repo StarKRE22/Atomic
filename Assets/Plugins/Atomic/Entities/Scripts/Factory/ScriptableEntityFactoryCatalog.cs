@@ -29,9 +29,9 @@ namespace Atomic.Entities
         fileName = "EntityFactoryCatalog",
         menuName = "Atomic/Entities/New EntityFactoryCatalog"
     )]
-    public class ScriptableEntityCatalog :
-        ScriptableEntityCatalog<string, IEntity, ScriptableEntityFactory>,
-        IEntityCatalog
+    public class ScriptableEntityFactoryCatalog :
+        ScriptableEntityFactoryCatalog<string, IEntity, ScriptableEntityFactory>,
+        IEntityFactoryCatalog
     {
         /// <summary>
         /// Extracts the string key for a given factory.
@@ -49,9 +49,9 @@ namespace Atomic.Entities
     /// <typeparam name="TKey">The type of the key used to identify each factory.</typeparam>
     /// <typeparam name="E">The type of entity each factory creates.</typeparam>
     /// <typeparam name="F">The type of entity factory.</typeparam>
-    public abstract class ScriptableEntityCatalog<TKey, E, F> :
+    public abstract class ScriptableEntityFactoryCatalog<TKey, E, F> :
         ScriptableObject,
-        IEntityCatalog<TKey, E>
+        IEntityFactoryCatalog<TKey, E>
         where E : IEntity
         where F : ScriptableEntityFactory<E>
     {
