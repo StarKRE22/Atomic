@@ -34,7 +34,26 @@ namespace Atomic.Entities
         /// <inheritdoc />
         void IEntityPool<IEntity>.Return(IEntity entity) => this.Return((SceneEntity) entity);
 
-        public static SceneEntityPool Create(CreateArgs args) => Create<SceneEntityPool>(args);
+        /// <summary>
+        /// Creates a new instance of a non-generic <see cref="SceneEntityPool"/> in the scene.
+        /// </summary>
+        /// <param name="args">The <see cref="CreateArgs"/> structure containing initialization parameters such as name, prefab, container, initial count, and whether to initialize on Awake.</param>
+        /// <returns>A newly created <see cref="SceneEntityPool"/> instance added to a new GameObject in the scene.</returns>
+        /// <example>
+        /// <code>
+        /// var poolArgs = new SceneEntityPool.CreateArgs
+        /// {
+        ///     name = "EnemyPool",
+        ///     prefab = enemyPrefab,
+        ///     container = parentTransform,
+        ///     initOnAwake = true,
+        ///     initialCount = 10
+        /// };
+        /// 
+        /// SceneEntityPool pool = SceneEntityPool.Create(poolArgs);
+        /// </code>
+        /// </example>
+        public static SceneEntityPool Create(in CreateArgs args) => Create<SceneEntityPool>(in args);
     }
 
     /// <summary>
@@ -88,7 +107,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the pool when the GameObject is activated, if <see cref="_initOnAwake"/> is <c>true</c>.
         /// </summary>
-        private void Awake()
+        protected virtual void Awake()
         {
             if (_container == null)
                 _container = this.transform;
@@ -97,7 +116,7 @@ namespace Atomic.Entities
                 this.Init(_initialCount);
         }
 
-        private void Reset()
+        protected virtual void Reset()
         {
             _container = this.transform;
         }
@@ -146,7 +165,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Disposes all pooled and rent entities by destroying them and clearing the internal pool.
         /// </summary>
-        public void Dispose()
+        public virtual void Dispose()
         {
             foreach (E entity in _pooledEntities)
             {
@@ -195,11 +214,8 @@ namespace Atomic.Entities
             entity.gameObject.SetActive(false);
             entity.transform.SetParent(_container);
         }
-
-        /// <summary>
-        /// Instantiates a new entity instance from the prefab and initializes it.
-        /// </summary>
-        /// <returns>The newly created entity.</returns>
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private E CreateEntity()
         {
             E entity = SceneEntity.Create(_prefab, _container);
@@ -209,18 +225,49 @@ namespace Atomic.Entities
 
         #region Static
 
+        /// <summary>
+        /// Arguments used to create a new <see cref="SceneEntityPool{E}"/> instance.
+        /// </summary>
         [Serializable]
         public struct CreateArgs
         {
+            [Tooltip("The name of the GameObject that will host the pool")]
             public string name;
+
+            [Tooltip("The prefab used to instantiate pooled entities")]
             public E prefab;
+            
+            [Tooltip("Optional transform under which pooled entities will be parented. Defaults to the pool's GameObject if null")]
             public Transform container;
+           
+            [Tooltip("Whether the pool should automatically initialize in Awake()")]
             public bool initOnAwake;
+            
+            [Tooltip("Number of entities to pre-instantiate in the pool")]
             public int initialCount;
         }
 
+        /// <summary>
+        /// Creates a new instance of <typeparamref name="T"/> (a <see cref="SceneEntityPool{E}"/>) in the scene.
+        /// </summary>
+        /// <typeparam name="T">The type of scene entity pool to create.</typeparam>
+        /// <param name="args">Initialization parameters encapsulated in <see cref="CreateArgs"/>.</param>
+        /// <returns>A new instance of <typeparamref name="T"/> added to a new GameObject in the scene.</returns>
+        /// <example>
+        /// <code>
+        /// var poolArgs = new SceneEntityPool<E>.CreateArgs
+        /// {
+        /// name = "EnemyPool",
+        /// prefab = enemyPrefab,
+        /// container = parentTransform,
+        /// initOnAwake = true,
+        /// initialCount = 10
+        /// };
+        /// SceneEntityPool<EnemyEntity> pool = SceneEntityPool<EnemyEntity>.Create<SceneEntityPool<EnemyEntity>>(poolArgs);
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T Create<T>(CreateArgs args) where T : SceneEntityPool<E>
+        public static T Create<T>(in CreateArgs args) where T : SceneEntityPool<E>
         {
             var gameObject = new GameObject(args.name);
             gameObject.SetActive(false);
@@ -233,6 +280,17 @@ namespace Atomic.Entities
             return pool;
         }
 
+        /// <summary>
+        /// Disposes a scene entity pool and destroys its GameObject after an optional delay.
+        /// </summary>
+        /// <param name="pool">The pool instance to dispose and destroy.</param>
+        /// <param name="t">Optional delay (in seconds) before destroying the pool's GameObject. Defaults to 0.</param>
+        /// <example>
+        /// <code>
+        /// SceneEntityPool<EnemyEntity> pool = ...;
+        /// SceneEntityPool<EnemyEntity>.Destroy(pool, 1.0f); // Dispose and destroy after 1 second
+        /// </code>
+        /// </example>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(SceneEntityPool<E> pool, float t = 0)
         {

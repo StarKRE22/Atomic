@@ -71,7 +71,7 @@ Atomic.Entities provides:
   - [IEntityFactoryCatalog](ApiReference/Factories/IEntityFactoryCatalog.md)
   - [ScriptableEntityFactoryCatalog](ApiReference/Factories/ScriptableEntityFactoryCatalog.md)
 
-- **Pools**
+- **Pooling**
   - [IEntityPool](ApiReference/Pooling/IEntityPool.md)
   - [EntityPool](ApiReference/Pooling/EntityPool.md)
   - [SceneEntityPool](ApiReference/Pooling/SceneEntityPool.md)
