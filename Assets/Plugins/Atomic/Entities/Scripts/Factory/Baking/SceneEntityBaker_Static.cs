@@ -1,54 +1,14 @@
-#if UNITY_5_3_OR_NEWER
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
+#if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A non-generic alias for <see cref="SceneEntityBaker{IEntity}"/>.
-    /// </summary>
-    public abstract class SceneEntityBaker : SceneEntityBaker<IEntity>
+    public partial class SceneEntityBaker<E>
     {
-    }
-
-    public abstract class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
-    {
-#if ODIN_INSPECTOR
-        [GUIColor(0f, 0.83f, 1f)]
-        [DisableInPlayMode]
-#endif
-        [Tooltip("Should destroy this Game Object after baking?")]
-        [SerializeField]
-        protected internal bool _destroyAfterBake = true;
-        
-#if ODIN_INSPECTOR
-        [PropertySpace(SpaceBefore = 0, SpaceAfter = 12)]
-        [AssetsOnly]
-#endif
-        [Tooltip("Entity Factory that baker will override")]
-        [SerializeField]
-        protected internal ScriptableEntityFactory<E> _factory;
-
-        public E Bake()
-        {
-            E entity = _factory.Create();
-            this.Install(entity);
-
-            if (_destroyAfterBake)
-                Destroy(this.gameObject);
-
-            return entity;
-        }
-
-        protected abstract void Install(E entity);
-
-    /// <summary>
+        /// <summary>
         /// Finds all <see cref="SceneEntityBaker{E}"/> components in the scene and bakes them into entities.
         /// All corresponding GameObjects will be destroyed after baking.
         /// </summary>
@@ -72,11 +32,11 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 SceneEntityBaker<E> baker = bakers[i];
-                if (!includeInactive && !baker.gameObject.activeInHierarchy)
-                    continue;
-
-                E entity = baker.Bake();
-                entities[i] = entity;
+                if (includeInactive || baker.gameObject.activeInHierarchy)
+                {
+                    E entity = baker.Bake();
+                    entities[i] = entity;
+                }
             }
 
             return entities;
@@ -102,11 +62,11 @@ namespace Atomic.Entities
             for (int i = 0; i < count; i++)
             {
                 SceneEntityBaker<E> baker = bakers[i];
-                if (!includeInactive && !baker.gameObject.activeInHierarchy)
-                    continue;
-
-                E entity = baker.Bake();
-                destination.Add(entity);
+                if (includeInactive || baker.gameObject.activeInHierarchy)
+                {
+                    E entity = baker.Bake();
+                    destination.Add(entity);
+                }
             }
         }
 
@@ -127,16 +87,46 @@ namespace Atomic.Entities
                 for (int j = 0, bakerCount = bakers.Length; j < bakerCount; j++)
                 {
                     SceneEntityBaker<E> baker = bakers[j];
-                    if (!includeInactive && !baker.gameObject.activeInHierarchy)
-                        continue;
-
-                    E entity = baker.Bake();
-                    result.Add(entity);
+                    if (includeInactive || baker.gameObject.activeInHierarchy)
+                    {
+                        E entity = baker.Bake();
+                        result.Add(entity);
+                    }
                 }
             }
 
             return result;
         }
+
+        /// <summary>
+        /// Bakes all <see cref="SceneEntityBaker{E}"/>s in a specific <see cref="Scene"/> and adds them to the provided collection.
+        /// </summary>
+        /// <param name="scene">The scene whose root objects should be searched.</param>
+        /// <param name="results">The collection where baked entities will be added.</param>
+        /// <param name="includeInactive">Whether to include inactive objects in the search.</param>
+        public static void Bake(Scene scene, ICollection<E> results, bool includeInactive = true)
+        {
+            if (results == null)
+                throw new System.ArgumentNullException(nameof(results));
+
+            GameObject[] objects = scene.GetRootGameObjects();
+            for (int i = 0, objectCount = objects.Length; i < objectCount; i++)
+            {
+                GameObject go = objects[i];
+                SceneEntityBaker<E>[] bakers = go.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
+
+                for (int j = 0, bakerCount = bakers.Length; j < bakerCount; j++)
+                {
+                    SceneEntityBaker<E> baker = bakers[j];
+                    if (includeInactive || baker.gameObject.activeInHierarchy)
+                    {
+                        E entity = baker.Bake();
+                        results.Add(entity);
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         /// Bakes all <see cref="SceneEntityBaker{E}"/> components attached to or under the specified GameObject.
@@ -160,6 +150,30 @@ namespace Atomic.Entities
             }
 
             return entities;
+        }
+
+        /// <summary>
+        /// Bakes all <see cref="SceneEntityBaker{E}"/> components attached to or under the specified GameObject
+        /// and adds them to the provided collection.
+        /// </summary>
+        /// <param name="gameObject">The GameObject to search.</param>
+        /// <param name="results">The collection where baked entities will be added.</param>
+        /// <param name="includeInactive">Whether to include inactive objects in the search.</param>
+        public static void Bake(GameObject gameObject, ICollection<E> results, bool includeInactive = true)
+        {
+            if (results == null)
+                throw new System.ArgumentNullException(nameof(results));
+
+            SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
+            for (int i = 0, count = bakers.Length; i < count; i++)
+            {
+                SceneEntityBaker<E> baker = bakers[i];
+                if (includeInactive || baker.gameObject.activeInHierarchy)
+                {
+                    E entity = baker.Bake();
+                    results.Add(entity);
+                }
+            }
         }
     }
 }
