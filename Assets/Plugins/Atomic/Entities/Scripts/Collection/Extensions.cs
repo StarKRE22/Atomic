@@ -90,6 +90,11 @@ namespace Atomic.Entities
         }
 #endif
 
+        /// <summary>
+        /// Initializes all entities in the specified collection by calling <see cref="IEntity.Init"/> on each entity.
+        /// </summary>
+        /// <typeparam name="E">The type of entity contained in the collection.</typeparam>
+        /// <param name="it">The collection of entities to initialize.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEntity
         {
@@ -97,6 +102,11 @@ namespace Atomic.Entities
                 entity.Init();
         }
 
+        /// <summary>
+        /// Disposes all entities in the specified collection by calling <see cref="IDisposable.Dispose"/> on each entity.
+        /// </summary>
+        /// <typeparam name="E">The type of entity contained in the collection.</typeparam>
+        /// <param name="it">The collection of entities to dispose.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IEntity
         {
