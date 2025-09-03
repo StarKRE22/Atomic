@@ -1,4 +1,4 @@
-# 🧩️ EntityCollection<E>
+# 🧩️ EntityCollection
 
 A high-performance, mutable, and observable collection of unique entities of type `E`.  
 Optimized for fast insertion, removal, and lookup while maintaining insertion order through a linked-list/hash-table hybrid.
@@ -69,5 +69,54 @@ Optimized for fast insertion, removal, and lookup while maintaining insertion or
 - Reactive events allow integration with UI, game logic, or other systems that require real-time updates.
 - Supports standard .NET collection interfaces for seamless API compatibility.
 
+## Example Usage
+
+```csharp
+// Create a new collection of entities
+var collection = new EntityCollection<MyEntity>();
+
+// Add entities individually
+collection.Add(new MyEntity("Player1"));
+collection.Add(new MyEntity("Player2"));
+
+// Add a range of entities
+collection.AddRange(
+    new MyEntity("Enemy1"),
+    new MyEntity("Enemy2")
+);
+
+// Iterate over entities
+foreach (MyEntity entity in collection)
+    Console.WriteLine(entity.Name);
+
+// Check for presence
+if (collection.Contains(someEntity))
+    Console.WriteLine($"{someEntity.Name} is in the collection.");
+
+// Remove an entity
+collection.Remove(someEntity);
+
+// Clear all entities
+collection.Clear();
+
+// Subscribe to events
+collection.OnAdded += entity => Console.WriteLine($"Added: {entity.Name}");
+collection.OnRemoved += entity => Console.WriteLine($"Removed: {entity.Name}");
+collection.OnStateChanged += () => Console.WriteLine("Collection changed");
+
+// Dispose the collection when done
+collection.Dispose();
+```
+
 ## Performance
 TODO:
+Insertion & Removal – Near constant-time operations due to hash table management.
+
+Lookup – O(1) average complexity for Contains.
+
+Enumeration – Iterates in insertion order with minimal overhead.
+
+Memory Efficiency – Uses pooled arrays for temporary operations, avoiding unnecessary allocations.
+
+Suitable for real-time applications such as games or simulations where large numbers of entities are managed.
+

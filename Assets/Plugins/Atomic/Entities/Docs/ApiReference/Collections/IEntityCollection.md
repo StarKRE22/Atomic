@@ -1,4 +1,4 @@
-# 🧩️ IEntityCollection<E>
+# 🧩️ IEntityCollection
 
 A mutable collection of entities of type `E`.  
 Supports standard collection operations and provides utility methods for entity lifecycle management.

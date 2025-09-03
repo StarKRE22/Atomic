@@ -1,4 +1,4 @@
-# 🧩️ IReadOnlyEntityCollection<E>
+# 🧩️ IReadOnlyEntityCollection
 
 A read-only, observable collection of entities of type `E`.  
 Provides enumeration, presence checking, and notifications for changes in the collection.
