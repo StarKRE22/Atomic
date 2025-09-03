@@ -15,7 +15,7 @@ It provides both a **non-generic** and a **generic** version, making it useful i
 
 ---
 
-## Interface: IEntityFactory
+## Interface: IEntityFactory (Non-generic)
 
 ```csharp
 public interface IEntityFactory : IEntityFactory<IEntity>
@@ -28,7 +28,7 @@ public interface IEntityFactory : IEntityFactory<IEntity>
 
 ---
 
-## Interface: IEntityFactory&lt;E&gt;
+## Interface: IEntityFactory&lt;E&gt; (Generic)
 ```csharp
 public interface IEntityFactory<out E> where T : IEntity
 {
