@@ -1,3 +1,4 @@
+using System;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -29,6 +30,9 @@ namespace RTSGame
 
         public override IPlayerContext Create()
         {
+            if (_entityWorld == null)
+                throw new InvalidOperationException("EntityWorld must be set before creating PlayerContext!");  
+            
             var playerContext = new PlayerContext(
                 string.Format(PLAYER_CONTEXT_NAME_FORMAT, _teamType),
                 this.InitialTagCount,
