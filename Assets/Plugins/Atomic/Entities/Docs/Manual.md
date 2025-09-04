@@ -107,9 +107,9 @@ Atomic.Entities provides:
 
 - **Lifecycle**
   - **Sources**
-    - [IInitSource] 
-    - [IEnableSource] 
-    - [IUpdateSource] 
+    - [IInitSource](ApiReference/Lifecycle/Sources/IInitSource.md)
+    - [IEnableSource](ApiReference/Lifecycle/Sources/IEnableSource.md)
+    - [IUpdateSource](ApiReference/Lifecycle/Sources/IUpdateSource.md)
   - **Subscriptions**
     - [InitSubscription]
     - [EnableSubscription]
