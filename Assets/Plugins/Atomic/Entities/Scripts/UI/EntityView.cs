@@ -225,7 +225,7 @@ namespace Atomic.Entities
         /// <param name="args">The creation arguments.</param>
         /// <returns>The created <see cref="EntityView"/> instance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityView Create(CreateArgs args = default)
+        public static EntityView Create(in CreateArgs args = default)
         {
             var gameObject = new GameObject(args.name);
             gameObject.SetActive(false);

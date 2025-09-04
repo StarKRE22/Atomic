@@ -126,12 +126,12 @@ Atomic.Entities provides:
 
 - **Views**
   - **Entity View**
-    - [IReadOnlyEntityView]
-    - [IEntityView]
-    - [EntityViewBase]
-    - [EntityView]
-    - [EntityViewInstaller]
-    - [EntityViewCatalog]
+    - [IReadOnlyEntityView](ApiReference/Views/IReadOnlyEntityView.md)
+    - [IEntityView](ApiReference/Views/IEntityView.md)
+    - [EntityViewBase](ApiReference/Views/EntityViewBase.md)
+    - [EntityView](ApiReference/Views/EntityView.md)
+    - [EntityViewInstaller](ApiReference/Views/EntityViewInstaller.md)
+    - [EntityViewCatalog](ApiReference/Views/EntityViewCatalog.md)
     
   - **Entity View Pool**
     - [IEntityViewPool]
