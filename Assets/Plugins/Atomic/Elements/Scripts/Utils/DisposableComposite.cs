@@ -20,15 +20,13 @@ namespace Atomic.Elements
         /// Initializes a new instance of <see cref="DisposableComposite"/> with a collection of disposables.
         /// </summary>
         /// <param name="disposables">The initial disposables to add.</param>
-        public DisposableComposite(IEnumerable<IDisposable> disposables) =>
-            _items = new List<IDisposable>(disposables);
+        public DisposableComposite(IEnumerable<IDisposable> disposables) => _items = new List<IDisposable>(disposables);
 
         /// <summary>
         /// Initializes a new instance of <see cref="DisposableComposite"/> with a params array of disposables.
         /// </summary>
         /// <param name="disposables">The initial disposables to add.</param>
-        public DisposableComposite(params IDisposable[] disposables) =>
-            _items = new List<IDisposable>(disposables);
+        public DisposableComposite(params IDisposable[] disposables) => _items = new List<IDisposable>(disposables);
 
         /// <summary>
         /// Adds a new <see cref="IDisposable"/> to the composite.
