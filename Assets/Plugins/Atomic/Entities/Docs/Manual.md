@@ -111,14 +111,14 @@ Atomic.Entities provides:
     - [IEnableSource](ApiReference/Lifecycle/Sources/IEnableSource.md)
     - [IUpdateSource](ApiReference/Lifecycle/Sources/IUpdateSource.md)
   - **Subscriptions**
-    - [InitSubscription]
-    - [EnableSubscription]
-    - [DisableSubscription]
-    - [DisposeSubscription]
-    - [UpdateSubscription]
-    - [FixedUpdateSubscription]
-    - [LateUpdateSubscription]
-  - [Extensions]
+    - [InitSubscription](ApiReference/Lifecycle/Subscriptions/InitSubscription.md)
+    - [EnableSubscription](ApiReference/Lifecycle/Subscriptions/EnableSubscription.md)
+    - [DisableSubscription](ApiReference/Lifecycle/Subscriptions/DisableSubscription.md)
+    - [DisposeSubscription](ApiReference/Lifecycle/Subscriptions/DisposeSubscription.md)
+    - [UpdateSubscription](ApiReference/Lifecycle/Subscriptions/UpdateSubscription.md)
+    - [FixedUpdateSubscription](ApiReference/Lifecycle/Subscriptions/FixedUpdateSubscription.md)
+    - [LateUpdateSubscription](ApiReference/Lifecycle/Subscriptions/LateUpdateSubscription.md)
+  - [Extensions](ApiReference/Lifecycle/Extensions.md)
 
 - **Utils**
   - [EntityUtils]
