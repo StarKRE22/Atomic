@@ -107,7 +107,17 @@ Atomic.Entities provides:
 
 - **Lifecycle**
   - **Sources**
+    - [IInitSource] 
+    - [IEnableSource] 
+    - [IUpdateSource] 
   - **Subscriptions**
+    - [InitSubscription]
+    - [EnableSubscription]
+    - [DisableSubscription]
+    - [DisposeSubscription]
+    - [UpdateSubscription]
+    - [FixedUpdateSubscription]
+    - [LateUpdateSubscription]
   - [Extensions]
 
 - **Utils**
