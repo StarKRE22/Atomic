@@ -13,8 +13,11 @@ namespace Atomic.Entities
     /// Contains low-level utility methods for internal use within the Atomic.Entities framework.
     /// Includes optimized helpers for delegate management, primitive operations, and array manipulation.
     /// </summary>
-    public static class EntityUtils
+    public static partial class EntityUtils
     {
+        /// <summary>
+        /// Predefined table of prime numbers used for sizing collections or other internal computations.
+        /// </summary>
         internal static readonly int[] PrimeTable =
         {
             2, 3, 7, 17, 29, 53, 97, 193, 389, 769, 1543, 3079,
@@ -23,6 +26,17 @@ namespace Atomic.Entities
             100663319, 201326611, 402653189, 805306457, 1610612741
         };
 
+        /// <summary>
+        /// Returns the smallest prime number from <see cref="PrimeTable"/> that is greater than or equal to the specified value.
+        /// </summary>
+        /// <param name="value">The value to compare against the prime table.</param>
+        /// <param name="index">
+        /// When this method returns, contains the index of the prime number in <see cref="PrimeTable"/>.
+        /// </param>
+        /// <returns>The smallest prime number greater than or equal to <paramref name="value"/>.</returns>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if the requested prime would exceed the range of the <see cref="PrimeTable"/>.
+        /// </exception>
         internal static int CeilToPrime(int value, out int index)
         {
             index = Array.BinarySearch(PrimeTable, value);
@@ -33,32 +47,6 @@ namespace Atomic.Entities
             return index < PrimeTable.Length
                 ? PrimeTable[index]
                 : throw new InvalidOperationException($"Prime can't get larger than {PrimeTable.Length - 1}");
-        }
-
-        /// <summary>
-        /// Returns <c>true</c> if the application is in Play Mode.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsPlayMode()
-        {
-#if UNITY_EDITOR
-            return EditorApplication.isPlaying;
-#else
-            return true;
-#endif
-        }
-
-        /// <summary>
-        /// Returns <c>true</c> if the application is in Edit Mode and not compiling.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsEditMode()
-        {
-#if UNITY_EDITOR
-            return !EditorApplication.isPlaying && !EditorApplication.isCompiling;
-#else
-            return false;
-#endif
         }
 
         /// <summary>

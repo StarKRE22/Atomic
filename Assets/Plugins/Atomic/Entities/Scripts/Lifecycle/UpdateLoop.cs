@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static Atomic.Entities.EntityUtils;
+using static Atomic.Entities.EntityUtils_Internal;
 
 namespace Atomic.Entities
 {
@@ -77,7 +77,7 @@ namespace Atomic.Entities
         }
 
         internal bool Contains(IUpdateSource updateSource) => 
-            EntityUtils.Contains(Instance._updatables, updateSource, _count, s_comparer);
+            EntityUtils_Internal.Contains(Instance._updatables, updateSource, _count, s_comparer);
 
         /// <summary>
         /// Invokes <see crefIUpdateSourceteeOnUpdate"/> on all registered instances.

@@ -121,8 +121,8 @@ Atomic.Entities provides:
   - [Extensions](ApiReference/Lifecycle/Extensions.md)
 
 - **Utils**
-  - [EntityUtils]
-  - [EntityNames]
+  - [EntityUtils](ApiReference/Utils/EntityUtils.md)
+  - [EntityNames](ApiReference/Utils/EntityNames.md)
 
 - **Views**
   - **Entity View**
