@@ -1,7 +1,73 @@
 namespace Atomic.Entities
 {
-    public class BehaviourEntityTrigger
+    /// <summary>
+    /// A non-generic shortcut for <see cref="BehaviourEntityTrigger{IEntity}"/>.
+    /// Subscribes to behaviour-related events (<c>OnBehaviourAdded</c>, <c>OnBehaviourRemoved</c>) on basic <see cref="IEntity"/> instances.
+    /// </summary>
+    public class BehaviourEntityTrigger : BehaviourEntityTrigger<IEntity>
     {
-        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BehaviourEntityTrigger"/> class.
+        /// </summary>
+        /// <param name="added">Whether to react to behaviour additions via <c>OnBehaviourAdded</c>.</param>
+        /// <param name="removed">Whether to react to behaviour removals via <c>OnBehaviourRemoved</c>.</param>
+        public BehaviourEntityTrigger(bool added = true, bool removed = true) : base(added, removed)
+        {
+        }
+    }
+
+    /// <summary>
+    /// A trigger that responds to behaviour changes (added or removed) on entities of type <typeparamref name="E"/>.
+    /// </summary>
+    /// <typeparam name="E">The entity type, which must implement <see cref="IEntity"/>.</typeparam>
+    public class BehaviourEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    {
+        private readonly bool _added;
+        private readonly bool _removed;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BehaviourEntityTrigger{E}"/> class.
+        /// </summary>
+        /// <param name="added">Whether to react to behaviour additions via <c>OnBehaviourAdded</c>.</param>
+        /// <param name="removed">Whether to react to behaviour removals via <c>OnBehaviourRemoved</c>.</param>
+        public BehaviourEntityTrigger(bool added = true, bool removed = true)
+        {
+            _added = added;
+            _removed = removed;
+        }
+
+        /// <summary>
+        /// Subscribes to the behaviour-related events on the given entity.
+        /// </summary>
+        /// <param name="entity">The entity to track.</param>
+        public override void Track(E entity)
+        {
+            if (_added) entity.OnBehaviourAdded += this.OnBehaviourAdded;
+            if (_removed) entity.OnBehaviourDeleted += this.OnBehaviourRemoved;
+        }
+
+        /// <summary>
+        /// Unsubscribes from the behaviour-related events on the given entity.
+        /// </summary>
+        /// <param name="entity">The entity to untrack.</param>
+        public override void Untrack(E entity)
+        {
+            if (_added) entity.OnBehaviourAdded -= this.OnBehaviourAdded;
+            if (_removed) entity.OnBehaviourDeleted -= this.OnBehaviourRemoved;
+        }
+
+        /// <summary>
+        /// Called when a behaviour is removed from the entity. Invokes the configured action.
+        /// </summary>
+        /// <param name="entity">The entity from which the behaviour was removed.</param>
+        /// <param name="behaviour">The behaviour that was removed (ignored).</param>
+        private void OnBehaviourRemoved(IEntity entity, IEntityBehaviour _) => _action.Invoke((E) entity);
+
+        /// <summary>
+        /// Called when a behaviour is added to the entity. Invokes the configured action.
+        /// </summary>
+        /// <param name="entity">The entity to which the behaviour was added.</param>
+        /// <param name="behaviour">The behaviour that was added (ignored).</param>
+        private void OnBehaviourAdded(IEntity entity, IEntityBehaviour _) => _action.Invoke((E) entity);
     }
 }

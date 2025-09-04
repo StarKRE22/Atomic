@@ -568,7 +568,7 @@ namespace Atomic.Entities
             var stateChanged = false;
 
             var entity = new Entity();
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.AddBehaviour(stub);
 
@@ -586,7 +586,7 @@ namespace Atomic.Entities
             var stateChanged = false;
             var behaviourDeletedCalled = false;
 
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
             entity.OnBehaviourDeleted += (_, _) => behaviourDeletedCalled = true;
 
             // Act:

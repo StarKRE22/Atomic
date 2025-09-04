@@ -52,7 +52,7 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
-        public event Action OnStateChanged;
+        public event Action<IEntity> OnStateChanged;
         public int InstanceID { get; }
         public string Name { get; set; }
         public event Action<IEntity, int> OnTagAdded;

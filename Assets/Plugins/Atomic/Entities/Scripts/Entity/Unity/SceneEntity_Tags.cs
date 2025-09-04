@@ -77,7 +77,7 @@ namespace Atomic.Entities
                 return false;
 
             this.OnTagAdded?.Invoke(this, key);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
             return true;
         }
 
@@ -90,7 +90,7 @@ namespace Atomic.Entities
                 return false;
 
             this.OnTagDeleted?.Invoke(this, key);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
             return true;
         }
 
@@ -156,7 +156,7 @@ namespace Atomic.Entities
             for (int i = 0; i < removeCount; i++)
                 this.OnTagDeleted?.Invoke(this, removedTags[i]);
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
         }
 
         /// <summary>

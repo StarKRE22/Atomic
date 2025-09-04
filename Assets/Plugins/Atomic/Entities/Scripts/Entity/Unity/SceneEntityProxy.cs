@@ -53,7 +53,7 @@ namespace Atomic.Entities
     /// </remarks>
     public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
     {
-        public event Action OnStateChanged
+        public event Action<IEntity> OnStateChanged
         {
             add => _source.OnStateChanged += value;
             remove => _source.OnStateChanged -= value;

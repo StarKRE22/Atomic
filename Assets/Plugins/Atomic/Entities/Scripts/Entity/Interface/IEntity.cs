@@ -24,7 +24,7 @@ namespace Atomic.Entities
         /// Raised when the internal state of the entity changes.
         /// Useful for tracking structural or dynamic modifications.
         /// </summary>
-        event Action OnStateChanged;
+        event Action<IEntity> OnStateChanged;
 
         /// <summary>
         /// The runtime-generated unique identifier for this entity instance.

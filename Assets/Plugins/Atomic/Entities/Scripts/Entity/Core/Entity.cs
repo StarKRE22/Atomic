@@ -15,7 +15,7 @@ namespace Atomic.Entities
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc/>
-        public event Action OnStateChanged;
+        public event Action<IEntity> OnStateChanged;
 
         /// <inheritdoc/>
         public int InstanceID => _instanceId;
@@ -178,7 +178,7 @@ namespace Atomic.Entities
             this.ClearValues();
             this.ClearBehaviours();
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
 
             this.UnsubscribeEvents();
             EntityRegistry.Instance.Unregister(ref _instanceId);

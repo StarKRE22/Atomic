@@ -100,7 +100,7 @@ namespace Atomic.Entities
 
             _initialized = true;
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
             this.OnInitialized?.Invoke();
         }
 
@@ -128,8 +128,8 @@ namespace Atomic.Entities
 
             _enabled = true;
 
+            this.OnStateChanged?.Invoke(this);
             this.OnEnabled?.Invoke();
-            this.OnStateChanged?.Invoke();
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Atomic.Entities
 
             _enabled = false;
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
             this.OnDisabled?.Invoke();
         }
 
