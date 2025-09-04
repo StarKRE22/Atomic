@@ -13,7 +13,6 @@ Extends `IEntityCollection`, `IEnableSource`, and `IUpdateSource`.
 - **Identifiable** – Each world has a `Name` property for easier tracking in logs, UI, or debugging.
 - **Reactive events** – Exposes events for entity addition, removal, state changes, and world enable/disable.
 
-
 ## Interfaces
 
 ### `IEntityWorld`

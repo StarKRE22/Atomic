@@ -18,6 +18,44 @@ Supports both generic (`EntityWorld<E>`) and non-generic (`EntityWorld`) usage.
 
 ---
 
+## Classes
+
+### `EntityWorld`
+
+A **non-generic version** of [`EntityWorld<E>`](#) specialized for `IEntity`.  
+Use this class when you do not need to specify a particular entity type.
+
+#### Constructors
+
+| Constructor                                                  | Parameters                                                   | Description                                                                      |
+|--------------------------------------------------------------|--------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `EntityWorld()`                                              | None                                                         | Initializes an empty `EntityWorld` instance with no name.                        |
+| `EntityWorld(params IEntity[] entities)`                     | `entities` – Entities to add                                 | Initializes a new `EntityWorld` with specified entities and empty name.          |
+| `EntityWorld(string name = null, params IEntity[] entities)` | `name` – Optional world name<br>`entities` – Entities to add | Initializes a new `EntityWorld` with optional name and entities.                 |
+| `EntityWorld(string name, IEnumerable<IEntity> entities)`    | `name` – World name<br>`entities` – Collection of entities   | Initializes a new `EntityWorld` with name and enumerable collection of entities. |
+
+---
+
+### `EntityWorld<E>`
+
+A **generic class** representing a world that manages a collection of entities of type `E`.
+
+#### Type Parameters
+- `E` – The type of entity managed by this world. Must implement [`IEntity`](#).
+
+
+#### Constructors
+
+| Constructor                                            | Parameters                                                     | Description                                                              |
+|--------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
+| `EntityWorld()`                                        | None                                                           | Creates an empty world with no name. Initializes `name` as empty string. |
+| `EntityWorld(params E[] entities)`                     | `entities` – array of entities                                 | Creates a world with specified entities and empty name.                  |
+| `EntityWorld(string name = null, params E[] entities)` | `name` – optional world name<br>`entities` – array of entities | Creates a world with optional name and entities.                         |
+| `EntityWorld(string name, IEnumerable<E> entities)`    | `name` – world name<br>`entities` – collection of entities     | Creates a world with specified name and collection of entities.          |
+
+
+---
+
 ## Events
 
 | Event            | Parameters        | Description                                                                     |
@@ -99,3 +137,7 @@ world.Dispose();
 - Integrates reactive events for real-time updates and UI binding.
 - Supports standard .NET collection patterns for seamless integration.
 - Optimized for high-performance scenarios like games, simulations, or real-time systems.
+
+## Best Practices
+Enumerator,
+Enable/Disable

@@ -23,6 +23,24 @@ Supports automatic integration with Unity lifecycle events and runtime managemen
 
 ---
 
+## Classes
+
+### `SceneEntityWorld`
+
+A **non-generic version** of [`SceneEntityWorld<E>`](#) specialized for `SceneEntity`.  
+Use this component when you do not need to specify a particular entity type.
+
+---
+
+### `SceneEntityWorld<E>`
+
+A **generic component** representing a world that manages a collection of entities of type `E`.
+
+#### Type Parameters
+- `E` – The type of entity managed by this world. Must implement [`SceneEntity`](#).
+
+---
+
 ## Inspector Settings
 
 | Field                        | Description                                                                     |
