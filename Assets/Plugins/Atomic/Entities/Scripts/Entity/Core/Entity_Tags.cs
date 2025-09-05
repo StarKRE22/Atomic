@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.EntityUtils_Internal;
+using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {

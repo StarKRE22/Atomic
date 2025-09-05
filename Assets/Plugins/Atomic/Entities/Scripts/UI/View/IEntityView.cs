@@ -1,8 +1,9 @@
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// Represents a view of an <see cref="IEntity"/>.
-    /// </summary>
+    public interface IEntityView : IEntityView<IEntity>
+    {
+    }
+
     public interface IEntityView<E> where E : IEntity
     {
         /// <summary>
@@ -19,7 +20,7 @@ namespace Atomic.Entities
         /// Gets a value indicating whether the view is currently visible (e.g., active in scene or UI).
         /// </summary>
         bool IsVisible { get; }
-        
+
         /// <summary>
         /// Displays the view for the specified entity and associates it with this view instance.
         /// </summary>

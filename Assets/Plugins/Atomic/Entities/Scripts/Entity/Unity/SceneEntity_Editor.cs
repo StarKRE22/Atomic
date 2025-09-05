@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static Atomic.Entities.EntityUtils_Internal;
+using static Atomic.Entities.EntityUtils;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;

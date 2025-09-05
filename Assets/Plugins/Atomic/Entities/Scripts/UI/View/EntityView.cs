@@ -40,10 +40,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets a value indicating whether the view is currently visible (active in the scene).
         /// </summary>
-        public bool IsVisible => _isVisible;
+        public bool IsVisible => _entity != null;
 
-        private protected IEntity _entity;
-        private protected bool _isVisible;
+        private IEntity _entity;
 
         /// <summary>
         /// Displays the view and associates it with the specified entity.
@@ -52,7 +51,6 @@ namespace Atomic.Entities
         public void Show(IEntity entity)
         {
             _entity = entity ?? throw new ArgumentNullException(nameof(entity));
-            _isVisible = true;
             this.OnShow(entity);
         }
 
@@ -61,10 +59,9 @@ namespace Atomic.Entities
         /// </summary>
         public void Hide()
         {
-            if (_isVisible)
+            if (_entity != null)
             {
                 this.OnHide(_entity);
-                _isVisible = false;
                 _entity = null;
             }
         }
@@ -84,8 +81,7 @@ namespace Atomic.Entities
         /// <param name="entity">The entity being hidden.</param>
         protected virtual void OnHide(IEntity entity)
         {
-            if (this != null)
-                this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
 
         /// <summary>
@@ -95,18 +91,21 @@ namespace Atomic.Entities
         /// <param name="time">Optional delay in seconds before destruction. Defaults to 0.</param>
         public static void Destroy(EntityView view, float time = 0)
         {
-            if (view == null) 
-                return;
-
-            view.Hide();
-            Destroy(view.gameObject, time);
+            if (view != null)
+            {
+                view.Hide();
+                Destroy(view.gameObject, time);
+            }
         }
 
         /// <summary>
         /// Assigns the GameObject's name to the custom name field.
         /// </summary>
         [ContextMenu("Assign Custom Name From GameObject")]
-        private void AssignCustomNameFromGameObject() => _customName = this.name;
+        private void AssignCustomNameFromGameObject()
+        {
+            _customName = this.name;
+        }
     }
 }
 #endif

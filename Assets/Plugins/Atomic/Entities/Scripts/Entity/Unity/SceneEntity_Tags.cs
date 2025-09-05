@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using Sirenix.OdinInspector;
 #endif
 
-using static Atomic.Entities.EntityUtils_Internal;
+using static Atomic.Entities.EntityUtils;
 
 namespace Atomic.Entities
 {
