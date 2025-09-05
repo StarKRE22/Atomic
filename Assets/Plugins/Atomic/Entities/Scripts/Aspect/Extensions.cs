@@ -1,0 +1,14 @@
+using System.Runtime.CompilerServices;
+using Atomic.Entities;
+
+namespace Atomic.Extensions
+{
+    public static class Extensions
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Apply(this IEntity e, IEntityAspect entityAspect) => entityAspect.Apply(e);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Discard(this IEntity e, IEntityAspect entityAspect) => entityAspect.Discard(e);
+    }
+}
