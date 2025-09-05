@@ -58,16 +58,16 @@ namespace Atomic.Entities
     /// <remarks>
     /// This variant enforces type safety and eliminates the need for manual casting in derived classes.
     /// </remarks>
-    public abstract class SceneEntityInstaller<E> : SceneEntityInstaller where E : class, IEntity
+    public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> where E : class, IEntity
     {
-        /// <inheritdoc/>
+        /// <inheritdoc cref="SceneEntityInstaller.Install" />
         public sealed override void Install(IEntity entity) => this.Install((E) entity);
 
         /// <summary>
         /// Installs data or behavior into a strongly-typed entity.
         /// </summary>
         /// <param name="entity">The entity to install.</param>
-        protected abstract void Install(E entity);
+        public abstract void Install(E entity);
     }
 }
 #endif

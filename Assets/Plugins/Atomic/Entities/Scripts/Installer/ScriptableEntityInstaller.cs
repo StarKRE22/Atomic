@@ -27,16 +27,16 @@ namespace Atomic.Entities
     /// <remarks>
     /// This class enforces type safety and avoids manual casting in derived implementations.
     /// </remarks>
-    public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller where E : class, IEntity
+    public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, IEntityInstaller<E> where E : class, IEntity
     {
-        /// <inheritdoc />
+        /// <inheritdoc cref="ScriptableEntityInstaller.Install" />
         public sealed override void Install(IEntity entity) => this.Install((E) entity);
 
         /// <summary>
         /// Applies configuration to a strongly-typed entity instance.
         /// </summary>
         /// <param name="entity">The entity to install.</param>
-        protected abstract void Install(E entity);
+        public abstract void Install(E entity);
     }
 }
 #endif

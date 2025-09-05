@@ -59,6 +59,11 @@ Atomic.Entities provides:
   - [IEntityInstaller](ApiReference/Installers/IEntityInstaller.md)
   - [SceneEntityInstaller](ApiReference/Installers/SceneEntityInstaller.md)
   - [ScriptableEntityInstaller](ApiReference/Installers/ScriptableEntityInstaller.md)
+  
+- **Aspects**
+  - [IEntityAspect] 
+  - [ScriptableEntityAspect] 
+  - [SceneEntityAspect] 
 
 - **Factories**
   - [IEntityFactory](ApiReference/Factories/IEntityFactory.md)

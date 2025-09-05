@@ -14,7 +14,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
-    public class EntityViewPool : EntityViewPoolBase
+    public class EntityViewPool : MonoBehaviour, IEntityViewPool
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
@@ -52,13 +52,14 @@ namespace Atomic.Entities
                     this.AddPrefabs(_catalogs[i]);
         }
 
+
         /// <summary>
         /// Rents a view by name from the pool. If the pool is empty, a new instance is created.
         /// </summary>
         /// <param name="name">The name of the view to retrieve.</param>
         /// <returns>A reusable <see cref="EntityView"/> instance.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the view prefab was not registered.</exception>
-        public sealed override EntityView Rent(string name)
+        public EntityView Rent(string name)
         {
             Stack<EntityView> pool = this.GetPool(name);
             if (pool.TryPop(out EntityView view))
@@ -69,13 +70,16 @@ namespace Atomic.Entities
 
             return Instantiate(prefab, _container);
         }
+        
+        IEntityView IEntityViewPool.Rent(string name) => Rent(name);
+        
 
         /// <summary>
         /// Returns a view back to its corresponding pool for future reuse.
         /// </summary>
         /// <param name="name">The name of the view being returned.</param>
         /// <param name="view">The view instance to return.</param>
-        public sealed override void Return(string name, EntityView view)
+        public  void Return(string name, EntityView view)
         {
             Stack<EntityView> pool = this.GetPool(name);
             pool.Push(view);
@@ -83,10 +87,12 @@ namespace Atomic.Entities
                 view.transform.parent = _container;
         }
 
+        void IEntityViewPool.Return(string name, IEntityView view) => this.Return(name, (EntityView) view);
+    
         /// <summary>
         /// Clears all pooled instances and destroys their GameObjects.
         /// </summary>
-        public sealed override void Clear()
+        public void Clear()
         {
             foreach (Stack<EntityView> pool in _pools.Values)
             {

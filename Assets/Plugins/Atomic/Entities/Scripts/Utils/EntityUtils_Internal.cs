@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Atomic.Entities
 {
     /// <summary>
