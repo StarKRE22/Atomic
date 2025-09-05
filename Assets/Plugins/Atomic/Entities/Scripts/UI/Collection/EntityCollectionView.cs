@@ -27,6 +27,15 @@ namespace Atomic.Entities
         /// </summary>
         public event Action<IEntity, IReadOnlyEntityView> OnRemoved;
 
+        /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.Keys"/>>
+        public IEnumerable<IEntity> Keys => _views.Keys;
+
+        /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.Values"/>>
+        public IEnumerable<IReadOnlyEntityView> Values => _views.Values;
+
+        /// <inheritdoc cref="IReadOnlyEntityCollectionView.Count"/>>
+        public int Count => _views.Count;
+        
         [Space]
         [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
         [SerializeField]
@@ -39,10 +48,12 @@ namespace Atomic.Entities
         /// <summary>
         /// Internal dictionary mapping active entities to their associated views.
         /// </summary>
-        private readonly Dictionary<IEntity, EntityViewBase> _views = new();
+        private readonly Dictionary<IEntity, EntityView> _views = new();
 
-        /// <inheritdoc cref="IReadOnlyEntityCollectionView.Count"/>>
-        public int Count => _views.Count;
+
+        
+        public IReadOnlyEntityView this[IEntity key] => throw new NotImplementedException();
+        
 
         /// <summary>
         /// Gets the view instance associated with the specified entity.
@@ -61,7 +72,7 @@ namespace Atomic.Entities
                 return;
 
             string name = this.GetEntityName(entity);
-            EntityViewBase view = _viewPool.Rent(name);
+            EntityView view = _viewPool.Rent(name);
             view.transform.SetParent(_viewport);
             view.Show(entity);
 
@@ -75,7 +86,7 @@ namespace Atomic.Entities
         /// <param name="entity">The entity whose view should be removed.</param>
         public void RemoveView(IEntity entity)
         {
-            if (!_views.Remove(entity, out EntityViewBase view))
+            if (!_views.Remove(entity, out EntityView view))
                 return;
 
             view.Hide();
@@ -121,7 +132,7 @@ namespace Atomic.Entities
         /// <returns>An enumerator of <see cref="KeyValuePair{IEntity, EntityViewBase}"/> representing all active entity-view mappings.</returns>
         public IEnumerator<KeyValuePair<IEntity, IReadOnlyEntityView>> GetEnumerator()
         {
-            foreach (KeyValuePair<IEntity, EntityViewBase> pair in _views)
+            foreach (KeyValuePair<IEntity, EntityView> pair in _views)
                 yield return new KeyValuePair<IEntity, IReadOnlyEntityView>(pair.Key, pair.Value);
         }
 
@@ -130,6 +141,18 @@ namespace Atomic.Entities
         /// </summary>
         /// <returns>An <see cref="IEnumerator"/> that can be used to iterate through the collection.</returns>
         IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
+
+        public bool ContainsKey(IEntity key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryGetValue(IEntity key, out IReadOnlyEntityView value)
+        {
+            throw new NotImplementedException();
+        }
+
+   
     }
 }
 #endif

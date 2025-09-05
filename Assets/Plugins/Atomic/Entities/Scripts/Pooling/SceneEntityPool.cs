@@ -124,10 +124,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the pool by pre-instantiating the specified number of entities.
         /// </summary>
-        /// <param name="count">The number of entities to create and store in the pool.</param>
-        public void Init(int count)
+        /// <param name="initialCount">The number of entities to create and store in the pool.</param>
+        public void Init(int initialCount)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < initialCount; i++)
                 _pooledEntities.Push(this.CreateEntity());
         }
 

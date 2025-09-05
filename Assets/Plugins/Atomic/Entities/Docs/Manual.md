@@ -134,9 +134,9 @@ Atomic.Entities provides:
     - [EntityViewCatalog](ApiReference/Views/EntityViewCatalog.md)
     
   - **Entity View Pool**
-    - [IEntityViewPool]
-    - [EntityViewPoolBase]
-    - [EntityViewPool]
+    - [IEntityViewPool](ApiReference/Views/Pools/IEntityViewPool.md)
+    - [EntityViewPoolBase](ApiReference/Views/Pools/EntityViewPoolBase.md)
+    - [EntityViewPool](ApiReference/Views/Pools/EntityViewPool.md)
     
   - **Entity Collection View**
     - [IReadOnlyEntityCollectionView]

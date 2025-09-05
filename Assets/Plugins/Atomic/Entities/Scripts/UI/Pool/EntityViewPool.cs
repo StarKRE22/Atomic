@@ -31,7 +31,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, EntityViewBase> _prefabs = new();
+        private readonly Dictionary<string, EntityView> _prefabs = new();
 
         /// <summary>
         /// A dictionary mapping view names to stacks of pooled instances.
@@ -39,7 +39,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, Stack<EntityViewBase>> _pools = new();
+        private readonly Dictionary<string, Stack<EntityView>> _pools = new();
 
         /// <summary>
         /// Called by Unity when the component is initialized.
@@ -56,15 +56,15 @@ namespace Atomic.Entities
         /// Rents a view by name from the pool. If the pool is empty, a new instance is created.
         /// </summary>
         /// <param name="name">The name of the view to retrieve.</param>
-        /// <returns>A reusable <see cref="EntityViewBase{E}"/> instance.</returns>
+        /// <returns>A reusable <see cref="EntityView"/> instance.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the view prefab was not registered.</exception>
-        public sealed override EntityViewBase Rent(string name)
+        public sealed override EntityView Rent(string name)
         {
-            Stack<EntityViewBase> pool = this.GetPool(name);
-            if (pool.TryPop(out EntityViewBase view))
+            Stack<EntityView> pool = this.GetPool(name);
+            if (pool.TryPop(out EntityView view))
                 return view;
 
-            if (!_prefabs.TryGetValue(name, out EntityViewBase prefab))
+            if (!_prefabs.TryGetValue(name, out EntityView prefab))
                 throw new KeyNotFoundException($"Entity view with name \"{name}\" was not present in Entity View Pool!");
 
             return Instantiate(prefab, _container);
@@ -75,9 +75,9 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="name">The name of the view being returned.</param>
         /// <param name="view">The view instance to return.</param>
-        public sealed override void Return(string name, EntityViewBase view)
+        public sealed override void Return(string name, EntityView view)
         {
-            Stack<EntityViewBase> pool = this.GetPool(name);
+            Stack<EntityView> pool = this.GetPool(name);
             pool.Push(view);
             if (view) 
                 view.transform.parent = _container;
@@ -88,9 +88,9 @@ namespace Atomic.Entities
         /// </summary>
         public sealed override void Clear()
         {
-            foreach (Stack<EntityViewBase> pool in _pools.Values)
+            foreach (Stack<EntityView> pool in _pools.Values)
             {
-                foreach (EntityViewBase view in pool)
+                foreach (EntityView view in pool)
                     Destroy(view.gameObject);
 
                 pool.Clear();
@@ -104,12 +104,12 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="name">The name of the view.</param>
         /// <returns>A stack of pooled views for the given name.</returns>
-        private Stack<EntityViewBase> GetPool(string name)
+        private Stack<EntityView> GetPool(string name)
         {
-            if (_pools.TryGetValue(name, out Stack<EntityViewBase> pool))
+            if (_pools.TryGetValue(name, out Stack<EntityView> pool))
                 return pool;
 
-            pool = new Stack<EntityViewBase>();
+            pool = new Stack<EntityView>();
             _pools.Add(name, pool);
             return pool;
         }
@@ -119,7 +119,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entityName">The name identifier for the view prefab.</param>
         /// <param name="prefab">The prefab to register.</param>
-        public void AddPrefab(string entityName, EntityViewBase prefab) => _prefabs.Add(entityName, prefab);
+        public void AddPrefab(string entityName, EntityView prefab) => _prefabs.Add(entityName, prefab);
 
         /// <summary>
         /// Removes a registered prefab from the pool.
@@ -135,7 +135,7 @@ namespace Atomic.Entities
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {
-                (string key, EntityViewBase value) = catalog.GetPrefab(i);
+                (string key, EntityView value) = catalog.GetPrefab(i);
                 _prefabs.Add(key, value);
             }
         }

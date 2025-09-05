@@ -1,10 +1,9 @@
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Represents a read-only view of an <see cref="IEntity"/>.
-    /// Provides basic information about the view without allowing modifications.
+    /// Represents a view of an <see cref="IEntity"/>.
     /// </summary>
-    public interface IReadOnlyEntityView
+    public interface IEntityView
     {
         /// <summary>
         /// Gets the display name or identifier of the view.
@@ -20,5 +19,16 @@ namespace Atomic.Entities
         /// Gets a value indicating whether the view is currently visible (e.g., active in scene or UI).
         /// </summary>
         bool IsVisible { get; }
+        
+        /// <summary>
+        /// Displays the view for the specified entity and associates it with this view instance.
+        /// </summary>
+        /// <param name="entity">The entity to associate with and display through this view.</param>
+        void Show(IEntity entity);
+
+        /// <summary>
+        /// Hides the current view, removing its association with the entity.
+        /// </summary>
+        void Hide();
     }
 }

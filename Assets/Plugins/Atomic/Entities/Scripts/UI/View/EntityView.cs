@@ -2,15 +2,19 @@
 using System;
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// Base class for all entity views. Implements <see cref="IEntityView"/> to provide
     /// basic functionality for showing, hiding, and naming views associated with <see cref="IEntity"/>.
     /// </summary>
-    [AddComponentMenu("Atomic/Entities/Entity View Base")]
+    [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
-    public class EntityViewBase : MonoBehaviour, IEntityView
+    public class EntityView : MonoBehaviour, IEntityView
     {
         [Tooltip("If true, the view will use the custom name instead of the GameObject's name")]
         [SerializeField]
@@ -28,6 +32,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets the entity currently associated with this view.
         /// </summary>
+#if ODIN_INSPECTOR
+        [ShowInInspector]
+#endif
         public IEntity Entity => _entity;
 
         /// <summary>
@@ -54,19 +61,22 @@ namespace Atomic.Entities
         /// </summary>
         public void Hide()
         {
-            if (!_isVisible)
-                return;
-
-            this.OnHide(_entity);
-            _isVisible = false;
-            _entity = null;
+            if (_isVisible)
+            {
+                this.OnHide(_entity);
+                _isVisible = false;
+                _entity = null;
+            }
         }
 
         /// <summary>
         /// Called when the view is shown. Override to implement custom behavior, such as enabling visuals.
         /// </summary>
         /// <param name="entity">The entity being shown.</param>
-        protected virtual void OnShow(IEntity entity) => this.gameObject.SetActive(true);
+        protected virtual void OnShow(IEntity entity)
+        {
+            this.gameObject.SetActive(true);
+        }
 
         /// <summary>
         /// Called when the view is hidden. Override to implement custom behavior, such as disabling visuals.
@@ -81,9 +91,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Destroys the view and its associated GameObject after an optional delay.
         /// </summary>
-        /// <param name="view">The <see cref="EntityViewBase"/> instance to destroy.</param>
+        /// <param name="view">The <see cref="EntityView"/> instance to destroy.</param>
         /// <param name="time">Optional delay in seconds before destruction. Defaults to 0.</param>
-        public static void Destroy(EntityViewBase view, float time = 0)
+        public static void Destroy(EntityView view, float time = 0)
         {
             if (view == null) 
                 return;
@@ -97,19 +107,6 @@ namespace Atomic.Entities
         /// </summary>
         [ContextMenu("Assign Custom Name From GameObject")]
         private void AssignCustomNameFromGameObject() => _customName = this.name;
-
-        #region Debug
-
-        /// <summary>
-        /// Debug property to inspect or modify the associated entity in the editor.
-        /// </summary>
-        private IEntity DebugEntity
-        {
-            get => _entity;
-            set => _entity = value;
-        }
-
-        #endregion
     }
 }
 #endif

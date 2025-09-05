@@ -7,24 +7,24 @@ namespace Atomic.Entities
     public class EntityViewCatalogTests
     {
         private EntityViewCatalog _catalog;
-        private EntityView _viewA;
-        private EntityView _viewB;
+        private BehaviourEntityView _viewA;
+        private BehaviourEntityView _viewB;
 
         [OneTimeSetUp]
         public void SetUp()
         {
             _catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
 
-            _viewA = EntityView.Create(new EntityView.CreateArgs
+            _viewA = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "ViewA"
             });
-            _viewB = EntityView.Create(new EntityView.CreateArgs
+            _viewB = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "ViewB"
             });
 
-            _catalog._prefabs = new List<EntityViewBase> {_viewA, _viewB};
+            _catalog._prefabs = new List<EntityView> {_viewA, _viewB};
         }
 
         [OneTimeTearDown]

@@ -6,18 +6,18 @@ namespace Atomic.Entities
 {
     public class EntityViewPoolMock : EntityViewPoolBase
     {
-        private Dictionary<string, EntityView> _rented = new();
+        private Dictionary<string, BehaviourEntityView> _rented = new();
 
-        public override EntityViewBase Rent(string name)
+        public override EntityView Rent(string name)
         {
             var go = new GameObject($"View-{name}");
-            var view = go.AddComponent<EntityView>();
+            var view = go.AddComponent<BehaviourEntityView>();
             view.name = name;
             _rented[name] = view;
             return view;
         }
 
-        public override void Return(string name, EntityViewBase view)
+        public override void Return(string name, EntityView view)
         {
             DestroyImmediate(view.gameObject);
             _rented.Remove(name);

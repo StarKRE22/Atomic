@@ -15,7 +15,7 @@ namespace Atomic.Entities
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
 
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView",
                 installers = new List<EntityViewInstaller> {installer}
@@ -29,14 +29,14 @@ namespace Atomic.Entities
             Assert.AreEqual(1, entity.BehaviourCount);
             Assert.AreSame(view.GetBehaviourAt(0), entity.GetBehaviourAt(0));
 
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [UnityTest]
         public IEnumerator Hide_RemovesBehaviours_AndDisablesGameObject()
         {
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView"
             });
@@ -55,14 +55,14 @@ namespace Atomic.Entities
             Assert.IsFalse(view.gameObject.activeSelf);
             Assert.IsFalse(entity.HasBehaviour(behaviour));
 
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [UnityTest]
         public IEnumerator AddBehaviour_AfterShow_ImmediatelyAddedToEntity()
         {
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView"
             });
@@ -75,14 +75,14 @@ namespace Atomic.Entities
             view.AddBehaviour(behaviour);
 
             Assert.IsTrue(entity.HasBehaviour(behaviour));
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [UnityTest]
         public IEnumerator DelBehaviour_AfterShow_ImmediatelyRemovedFromEntity()
         {
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView"
             });
@@ -97,7 +97,7 @@ namespace Atomic.Entities
             view.DelBehaviour(behaviour);
             Assert.IsFalse(entity.HasBehaviour(behaviour));
 
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
@@ -105,7 +105,7 @@ namespace Atomic.Entities
         public IEnumerator Install_CalledOnlyOnce()
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView",
                 installers = new List<EntityViewInstaller> {installer}
@@ -118,14 +118,14 @@ namespace Atomic.Entities
             yield return null;
 
             Assert.AreEqual(1, installer.CallCount);
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [UnityTest]
         public IEnumerator EntityView_NonGeneric_WorksAsExpected()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
             
             var entity = new Entity();
             view.Show(entity);
@@ -133,14 +133,14 @@ namespace Atomic.Entities
 
             Assert.AreEqual(entity, view.Entity);
             Assert.IsTrue(view.IsVisible);
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void AddBehaviour_BeforeShow_IsAppliedAfterShow()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
             var behaviour = new MockBehaviour();
             view.AddBehaviour(behaviour);
 
@@ -148,14 +148,14 @@ namespace Atomic.Entities
             view.Show(entity);
 
             Assert.IsTrue(entity.HasBehaviour(behaviour));
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void DelBehaviour_BeforeShow_RemovesFromInternalList()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
             var behaviour = new MockBehaviour();
             view.AddBehaviour(behaviour);
             view.DelBehaviour(behaviour);
@@ -170,14 +170,14 @@ namespace Atomic.Entities
 
             
             Assert.IsFalse(entity.HasBehaviour(behaviour));
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void AddBehaviour_Twice_DoesNotDuplicateInEntity()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
             var behaviour = new MockBehaviour();
 
             view.AddBehaviour(behaviour);
@@ -189,14 +189,14 @@ namespace Atomic.Entities
             int count = entity.GetBehaviours().Count(b => b == behaviour);
             Assert.AreEqual(1, count); // хотя в _behaviours может быть 2, но в Entity — должно быть 1
           
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void Install_WithNullInstallers_DoesNotThrow()
         {
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView",
                 installers = new List<EntityViewInstaller>
@@ -210,7 +210,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             Assert.DoesNotThrow(() => view.Show(entity));
             
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
@@ -218,7 +218,7 @@ namespace Atomic.Entities
         public void Install_CalledOnlyOnceEvenAfterMultipleShowHide()
         {
             var installer = new GameObject("Installer").AddComponent<TestInstaller>();
-            var view = EntityView.Create(new EntityView.CreateArgs
+            var view = BehaviourEntityView.Create(new BehaviourEntityView.CreateArgs
             {
                 name = "EntityView",
                 installers = new List<EntityViewInstaller> {installer}
@@ -232,14 +232,14 @@ namespace Atomic.Entities
             view.Show(entity);
 
             Assert.AreEqual(1, installer.CallCount);
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void OnDrawGizmosSelected_CallsGizmosDraw()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
 
             var gizmo = new MockGizmoBehaviour();
             view.AddBehaviour(gizmo);
@@ -250,14 +250,14 @@ namespace Atomic.Entities
             view.OnGizmosDraw();
 
             Assert.IsTrue(gizmo.Called);
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
         [Test]
         public void OnDrawGizmosSelected_WhenExceptionInBehaviour_LogsWarning()
         {
-            var view = EntityView.Create();
+            var view = BehaviourEntityView.Create();
             var badGizmo = new ThrowingGizmoBehaviour();
             view.AddBehaviour(badGizmo);
             
@@ -269,7 +269,7 @@ namespace Atomic.Entities
 
             view.OnGizmosDraw();
             
-            EntityView.Destroy(view);
+            BehaviourEntityView.Destroy(view);
             entity.Dispose();
         }
 
@@ -282,7 +282,7 @@ namespace Atomic.Entities
             public bool Installed { get; private set; }
             public int CallCount { get; private set; }
 
-            public override void Install(EntityView view)
+            public override void Install(BehaviourEntityView view)
             {
                 Installed = true;
                 CallCount++;

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A ScriptableObject that serves as a catalog of <see cref="EntityViewBase"/> prefabs.
+    /// A ScriptableObject that serves as a catalog of <see cref="EntityView"/> prefabs.
     /// Allows retrieving prefabs by index or by name and provides a centralized collection for entity view assets.
     /// </summary>
     [CreateAssetMenu(
@@ -17,7 +17,7 @@ namespace Atomic.Entities
     {
         [Tooltip("The list of view prefabs available in this catalog")]
         [SerializeField]
-        internal List<EntityViewBase> _prefabs;
+        internal List<EntityView> _prefabs;
 
         /// <summary>
         /// Gets the number of prefabs stored in the catalog.
@@ -29,23 +29,23 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="index">The index of the prefab to retrieve.</param>
         /// <returns>A <see cref="KeyValuePair{TKey, TValue}"/> where the key is the prefab's name and the value is the prefab itself.</returns>
-        public KeyValuePair<string, EntityViewBase> GetPrefab(int index)
+        public KeyValuePair<string, EntityView> GetPrefab(int index)
         {
-            EntityViewBase view = _prefabs[index];
-            return new KeyValuePair<string, EntityViewBase>(this.GetName(view), view);
+            EntityView view = _prefabs[index];
+            return new KeyValuePair<string, EntityView>(this.GetName(view), view);
         }
 
         /// <summary>
         /// Retrieves a prefab by its name.
         /// </summary>
         /// <param name="name">The name of the prefab to retrieve.</param>
-        /// <returns>The matching <see cref="EntityViewBase"/> instance.</returns>
+        /// <returns>The matching <see cref="EntityView"/> instance.</returns>
         /// <exception cref="Exception">Thrown if no prefab with the specified name is found.</exception>
-        public EntityViewBase GetPrefab(string name)
+        public EntityView GetPrefab(string name)
         {
             for (int i = 0, count = _prefabs.Count; i < count; i++)
             {
-                EntityViewBase prefab = _prefabs[i];
+                EntityView prefab = _prefabs[i];
                 if (this.GetName(prefab) == name)
                     return prefab;
             }
@@ -59,7 +59,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="prefab">The prefab whose name to retrieve.</param>
         /// <returns>The name used to identify the prefab.</returns>
-        protected internal virtual string GetName(EntityViewBase prefab) => prefab.Name;
+        protected internal virtual string GetName(EntityView prefab) => prefab.Name;
     }
 }
 #endif

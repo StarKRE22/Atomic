@@ -11,7 +11,7 @@ namespace Atomic.Entities
         private GameObject _go;
         private EntityViewPool _pool;
         private Transform _container;
-        private EntityView _prefab;
+        private BehaviourEntityView _prefab;
 
         [SetUp]
         public void SetUp()
@@ -22,7 +22,7 @@ namespace Atomic.Entities
             _pool = _go.AddComponent<EntityViewPool>();
             _pool._container = _container;
 
-            _prefab = EntityView.Create();
+            _prefab = BehaviourEntityView.Create();
             _prefab.name = "Soldier";
             _prefab.gameObject.SetActive(false);
         }
@@ -83,9 +83,9 @@ namespace Atomic.Entities
         public void AddPrefabs_FromCatalog_AddsAll()
         {
             var catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
-            var another = EntityView.Create();
+            var another = BehaviourEntityView.Create();
             another.name = "Tank";
-            catalog._prefabs = new List<EntityViewBase> {another};
+            catalog._prefabs = new List<EntityView> {another};
 
             _pool.AddPrefabs(catalog);
 
@@ -109,9 +109,9 @@ namespace Atomic.Entities
         public void RemovePrefabs_FromCatalog_RemovesAll()
         {
             var catalog = ScriptableObject.CreateInstance<EntityViewCatalog>();
-            var v = EntityView.Create();
+            var v = BehaviourEntityView.Create();
             v.name = "Sniper";
-            catalog._prefabs = new List<EntityViewBase> {v};
+            catalog._prefabs = new List<EntityView> {v};
 
             _pool.AddPrefabs(catalog);
             _pool.RemovePrefabs(catalog);

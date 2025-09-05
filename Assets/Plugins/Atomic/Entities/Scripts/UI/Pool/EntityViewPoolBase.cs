@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Base class for implementing a pool of <see cref="EntityViewBase"/> instances.
+    /// Base class for implementing a pool of <see cref="EntityView"/> instances.
     /// Provides abstract methods for renting, returning, and clearing views.
     /// Inherit from this class to implement custom pooling logic.
     /// </summary>
@@ -16,8 +16,8 @@ namespace Atomic.Entities
         /// Must be implemented in derived classes.
         /// </summary>
         /// <param name="name">The name identifying the type of view to rent.</param>
-        /// <returns>An active <see cref="EntityViewBase"/> instance.</returns>
-        public abstract EntityViewBase Rent(string name);
+        /// <returns>An active <see cref="EntityView"/> instance.</returns>
+        public abstract EntityView Rent(string name);
 
         IReadOnlyEntityView IEntityViewPool.Rent(string name) => this.Rent(name);
 
@@ -26,10 +26,10 @@ namespace Atomic.Entities
         /// Must be implemented in derived classes.
         /// </summary>
         /// <param name="name">The name identifying the type of view being returned.</param>
-        /// <param name="view">The <see cref="EntityViewBase"/> instance to return to the pool.</param>
-        public abstract void Return(string name, EntityViewBase view);
+        /// <param name="view">The <see cref="EntityView"/> instance to return to the pool.</param>
+        public abstract void Return(string name, EntityView view);
 
-        void IEntityViewPool.Return(string name, IReadOnlyEntityView view) => this.Return(name, (EntityViewBase) view);
+        void IEntityViewPool.Return(string name, IReadOnlyEntityView view) => this.Return(name, (EntityView) view);
 
         /// <summary>
         /// Clears all view instances from the pool, releasing any resources held.

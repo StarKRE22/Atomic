@@ -11,7 +11,7 @@ namespace RTSGame
         [SerializeField]
         private Renderer[] _renderers;
 
-        public override void Install(EntityView view)
+        public override void Install(BehaviourEntityView view)
         {
             view.AddBehaviour(new PositionViewBehaviour(_transform));
             view.AddBehaviour(new RotationViewBehaviour(_transform));

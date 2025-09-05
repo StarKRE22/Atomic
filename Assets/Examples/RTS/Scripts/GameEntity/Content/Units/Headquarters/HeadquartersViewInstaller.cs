@@ -8,7 +8,7 @@ namespace RTSGame
         [SerializeField]
         private Transform _root;
         
-        public override void Install(EntityView view)
+        public override void Install(BehaviourEntityView view)
         {
             view.AddBehaviour(new TakeDamageViewBehaviour(_root));
         }

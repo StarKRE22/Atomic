@@ -32,7 +32,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the pool with a specified number of preallocated entities.
         /// </summary>
-        /// <param name="initialCoint">The number of entities to preallocate in the pool.</param>
-        void Init(int initialCoint);
+        /// <param name="initialCount">The number of entities to preallocate in the pool.</param>
+        void Init(int initialCount);
     }
 }

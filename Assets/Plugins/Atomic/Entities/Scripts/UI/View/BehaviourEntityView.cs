@@ -19,7 +19,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View")]
     [DisallowMultipleComponent]
-    public class EntityView : EntityViewBase
+    public class BehaviourEntityView : EntityView
     {
         [Space]
         [Tooltip("The list of installers used to configure and setup the entity view")]
@@ -198,7 +198,7 @@ namespace Atomic.Entities
         #region Static
 
         /// <summary>
-        /// Arguments used to create an <see cref="EntityView"/> instance.
+        /// Arguments used to create an <see cref="BehaviourEntityView"/> instance.
         /// </summary>
         [Serializable]
         public struct CreateArgs
@@ -220,17 +220,17 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Creates a new <see cref="EntityView"/> GameObject and sets up its behaviours and installers.
+        /// Creates a new <see cref="BehaviourEntityView"/> GameObject and sets up its behaviours and installers.
         /// </summary>
         /// <param name="args">The creation arguments.</param>
-        /// <returns>The created <see cref="EntityView"/> instance.</returns>
+        /// <returns>The created <see cref="BehaviourEntityView"/> instance.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static EntityView Create(in CreateArgs args = default)
+        public static BehaviourEntityView Create(in CreateArgs args = default)
         {
             var gameObject = new GameObject(args.name);
             gameObject.SetActive(false);
 
-            EntityView view = gameObject.AddComponent<EntityView>();
+            BehaviourEntityView view = gameObject.AddComponent<BehaviourEntityView>();
             view._installers = args.installers;
             view._behaviours = args.behaviours?.ToArray();
             view._onlyEditModeGizmos = args.onlyEditModeGizmos;

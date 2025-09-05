@@ -85,7 +85,7 @@ namespace Atomic.Entities
             Assert.IsNull(_view.Entity);
         }
 
-        private class TestEntityView : EntityViewBase
+        private class TestEntityView : EntityView
         {
             public bool OnShowCalled { get; private set; }
             public bool OnHideCalled { get; private set; }

@@ -11,7 +11,7 @@ namespace RTSGame
         [SerializeField]
         private Transform _weapon;
         
-        public override void Install(EntityView view)
+        public override void Install(BehaviourEntityView view)
         {
             view.AddBehaviour(new TakeDamageViewBehaviour(_root));
             view.AddBehaviour(new WeaponRecoilViewBehaviour(_weapon)); 
