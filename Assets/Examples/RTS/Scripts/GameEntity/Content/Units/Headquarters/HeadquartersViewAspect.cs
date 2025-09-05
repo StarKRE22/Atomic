@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class TankViewInstaller : SceneEntityAspect<IGameEntity>
+    public sealed class HeadquartersViewAspect : SceneEntityAspect<IGameEntity>
     {
         [SerializeField]
         private TakeDamageViewBehaviour _takeDamageBehaviour;
@@ -16,9 +16,6 @@ namespace RTSGame
 
         [SerializeField]
         private TeamColorViewBehaviour _teamColorBehaviour;
-
-        [SerializeField]
-        private WeaponRecoilViewBehaviour _weaponRecoilBehaviour;
         
         public override void Apply(IGameEntity entity)
         {
@@ -26,7 +23,6 @@ namespace RTSGame
             entity.AddBehaviour(_positionBehaviour);
             entity.AddBehaviour(_rotationBehaviour);
             entity.AddBehaviour(_teamColorBehaviour);
-            entity.AddBehaviour(_weaponRecoilBehaviour);
         }
 
         public override void Discard(IGameEntity entity)
@@ -35,7 +31,6 @@ namespace RTSGame
             entity.DelBehaviour(_positionBehaviour);
             entity.DelBehaviour(_rotationBehaviour);
             entity.DelBehaviour(_teamColorBehaviour);
-            entity.DelBehaviour(_weaponRecoilBehaviour);
         }
     }
 }

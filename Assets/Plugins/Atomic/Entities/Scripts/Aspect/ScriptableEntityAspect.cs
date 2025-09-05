@@ -1,18 +1,15 @@
-// using Atomic.Entities;
-// using UnityEngine;
-//
-// namespace Atomic.Extensions
-// {
-//     public abstract class ScriptableEntityAspect : ScriptableObject, IEntityAspect
-//     {
-//         public abstract void Apply(IEntity entity);
-//         public abstract void Discard(IEntity entity);
-//     }
-//     
-//     
-//     public abstract class ScriptableEntityAspect<E> : ScriptableEntityAspect where 
-//     {
-//         public abstract void Apply(IEntity entity);
-//         public abstract void Discard(IEntity entity);
-//     }
-// }
+using UnityEngine;
+
+namespace Atomic.Entities
+{
+    public abstract class ScriptableEntityAspect : ScriptableEntityAspect<IEntity>, IEntityAspect
+    {
+    }
+
+    public abstract class ScriptableEntityAspect<E> : ScriptableObject, IEntityAspect<E> where E : IEntity
+    {
+        public abstract void Apply(E entity);
+        
+        public abstract void Discard(E entity);
+    }
+}

@@ -25,7 +25,7 @@ namespace Atomic.Entities
         /// Called by Unity to draw gizmos in the scene view.
         /// Will delegate to <see cref="OnDrawGizmosSelected"/> unless only selected drawing is enabled.
         /// </summary>
-        private void OnDrawGizmos()
+        protected virtual void OnDrawGizmos()
         {
             if (!_onlySelectedGizmos)
                 this.OnDrawGizmosSelected();
@@ -35,7 +35,7 @@ namespace Atomic.Entities
         /// Draws gizmos for this entity and its behaviours when selected.
         /// Gizmos will only be drawn in edit mode if allowed by configuration.
         /// </summary>
-        private void OnDrawGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
                 return;

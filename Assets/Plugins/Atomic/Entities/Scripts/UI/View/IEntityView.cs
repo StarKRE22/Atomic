@@ -1,12 +1,10 @@
-using System;
-
 namespace Atomic.Entities
 {
     public interface IEntityView : IEntityView<IEntity>
     {
     }
 
-    public interface IEntityView<E> : IDisposable where E : IEntity
+    public interface IEntityView<E> where E : IEntity
     {
         /// <summary>
         /// Gets the display name or identifier of the view.
@@ -23,8 +21,6 @@ namespace Atomic.Entities
         /// </summary>
         bool IsVisible { get; }
 
-        void Init();
-        
         /// <summary>
         /// Displays the view for the specified entity and associates it with this view instance.
         /// </summary>

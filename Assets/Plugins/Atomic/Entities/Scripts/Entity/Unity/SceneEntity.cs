@@ -83,7 +83,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [DisableInPlayMode]
 #endif
-        [Tooltip("Specify the installers that will put values and systems to this context")]
+        [Tooltip("Specify the installers that will put values and behaviours to this entity")]
         [Space(8), SerializeField]
         internal List<SceneEntityInstaller> installers;
 

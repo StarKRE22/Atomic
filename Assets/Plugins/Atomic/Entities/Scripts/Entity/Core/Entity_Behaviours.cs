@@ -85,8 +85,8 @@ namespace Atomic.Entities
             _behaviours[_behaviourCount] = behaviour;
             _behaviourCount++;
 
-            if (_initialized && behaviour is IEntityInit spawnBehaviour)
-                spawnBehaviour.Init(this);
+            if (_initialized && behaviour is IEntityInit init)
+                init.Init(this);
 
             if (_enabled)
                 this.EnableBehaviour(behaviour);

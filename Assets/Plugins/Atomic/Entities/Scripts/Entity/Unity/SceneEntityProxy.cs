@@ -175,6 +175,7 @@ namespace Atomic.Entities
         public void AddBehaviour(IEntityBehaviour behaviour) => _source.AddBehaviour(behaviour);
 
         public T GetBehaviour<T>() where T : IEntityBehaviour => _source.GetBehaviour<T>();
+        public IEntityBehaviour GetBehaviourAt(int index) => _source.GetBehaviourAt(index);
 
         public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour =>
             _source.TryGetBehaviour(out behaviour);

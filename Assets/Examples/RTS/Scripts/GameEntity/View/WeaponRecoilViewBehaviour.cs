@@ -1,19 +1,18 @@
+using System;
 using Atomic.Entities;
 using DG.Tweening;
 using UnityEngine;
 
 namespace RTSGame
 {
+    [Serializable]
     public sealed class WeaponRecoilViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose<IGameEntity>
     {
-        private readonly Transform _weapon;
-        private readonly Vector3 _originalLocalPos;
-
-        public WeaponRecoilViewBehaviour(Transform weapon)
-        {
-            _weapon = weapon;
-            _originalLocalPos = weapon.localPosition;
-        }
+        [SerializeField]
+        private Transform _weapon;
+      
+        [SerializeField]
+        private Vector3 _originalLocalPos = Vector3.zero;
 
         public void Init(IGameEntity entity)
         {

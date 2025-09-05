@@ -30,6 +30,11 @@ namespace Atomic.Entities
         /// Gets the first behaviour of the specified type.
         /// </summary>
         T GetBehaviour<T>() where T : IEntityBehaviour;
+
+        /// <summary>
+        /// Returns the behaviour instance at the given index.
+        /// </summary>
+        IEntityBehaviour GetBehaviourAt(int index);
         
         /// <summary>
         /// Tries to get a behaviour of the specified type.

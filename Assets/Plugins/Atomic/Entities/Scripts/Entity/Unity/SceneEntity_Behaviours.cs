@@ -88,8 +88,8 @@ namespace Atomic.Entities
             _behaviourCount++;
 
             //Check for lifecycle
-            if (_initialized && behaviour is IEntityInit spawnBehaviour)
-                spawnBehaviour.Init(this);
+            if (_initialized && behaviour is IEntityInit init)
+                init.Init(this);
 
             if (_enabled)
                 this.EnableBehaviour(behaviour);
