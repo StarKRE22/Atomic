@@ -10,8 +10,8 @@ namespace ShooterGame.Gameplay
 
         [SerializeField]
         private AudioSource _audioSource;
-        
-        protected override void Install(IWeapon weapon)
+
+        public override void Install(IWeapon weapon)
         {
             weapon.GetFireEvent().Subscribe(_particleSystem.Play);
             weapon.GetFireEvent().Subscribe(_audioSource.Play);

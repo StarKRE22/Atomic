@@ -15,6 +15,6 @@ namespace Atomic.Extensions
         public static void Discard(this IEntity e, IEntityAspect entityAspect) => entityAspect.Discard(e);
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Discard(this E e, IEntityAspect<> entityAspect) => entityAspect.Discard(e);
+        public static void Discard<E>(this E e, IEntityAspect<E> entityAspect) where E : IEntity => entityAspect.Discard(e);
     }
 }

@@ -34,7 +34,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private HitPointsView _hitPointsView;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             entity.AddRenderer(_renderer);
             entity.AddAnimator(_animator);

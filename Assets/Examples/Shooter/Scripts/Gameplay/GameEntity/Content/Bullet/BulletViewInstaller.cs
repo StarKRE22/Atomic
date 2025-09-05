@@ -7,8 +7,8 @@ namespace ShooterGame.Gameplay
     {
         [SerializeField]
         private Renderer _renderer;
-        
-        protected override void Install(IGameEntity entity)
+
+        public override void Install(IGameEntity entity)
         {
             entity.AddRenderer(_renderer);
             entity.AddBehaviour<TeamColorBehaviour>();

@@ -29,7 +29,7 @@ namespace BeginnerGame
         [SerializeField]
         private Vector3 _cameraOffset;
         
-        protected override void Install(IPlayerContext context)
+        public override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
             gameContext.GetPlayers().Add(_teamType, context);
@@ -40,7 +40,7 @@ namespace BeginnerGame
             context.AddMoney(_money);
             context.AddCamera(_camera);
 
-            if (EntityUtils_Internal.IsPlayMode())
+            if (EntityUtils.IsPlayMode())
             {
                 //Character:
                 GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);

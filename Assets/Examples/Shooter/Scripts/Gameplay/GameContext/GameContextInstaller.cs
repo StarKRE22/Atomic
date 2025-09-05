@@ -27,7 +27,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private GameEntityPool _bulletPool;
 
-        protected override void Install(IGameContext context)
+        public override void Install(IGameContext context)
         {
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
             context.AddWorldTransform(GameObject.Find(WORLD_TRANSFORM_NAME).transform);

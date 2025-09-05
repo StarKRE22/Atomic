@@ -24,7 +24,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private Cooldown _lifetime = 5;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             GameContext gameContext = GameContext.Instance;
             

@@ -13,8 +13,8 @@ namespace ShooterGame.App
 
         [SerializeField]
         private LoadGameInstaller _loadGameInstaller;
-        
-        protected override void Install(IAppContext context)
+
+        public override void Install(IAppContext context)
         {
             _exitAppInstaller.Install(context);
             _levelsInstaller.Install(context);

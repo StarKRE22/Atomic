@@ -17,7 +17,7 @@ namespace BeginnerGame
         [SerializeField]
         private GameOverView _gameOverViewPrefab;
         
-        protected override void Install(IUIContext context)
+        public override void Install(IUIContext context)
         {
             //Base:
             context.AddPopupTransform(_popupTransform);
