@@ -27,7 +27,7 @@ namespace Atomic.Entities
     /// Base class for all entity views. Implements <see cref="IEntityView"/> to provide
     /// basic functionality for showing, hiding, and naming views associated with <see cref="IEntity"/>.
     /// </summary>
-    public abstract partial class EntityView<E> : MonoBehaviour, IEntityView<E> where E : IEntity
+    public abstract partial class EntityView<E> : MonoBehaviour where E : IEntity
     {
         [Tooltip("Should activate and deactivate GameObject when Show / Hide are invoked?")]
         [SerializeField]

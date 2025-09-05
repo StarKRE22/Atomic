@@ -14,7 +14,13 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity View Pool")]
     [DisallowMultipleComponent]
-    public class EntityViewPool : MonoBehaviour, IEntityViewPool
+    public class EntityViewPool : EntityViewPool<IEntity, EntityView>
+    {
+    }
+    
+    public abstract class EntityViewPool<E, V> : MonoBehaviour 
+        where E : IEntity
+        where V : EntityView<E>
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
@@ -23,7 +29,7 @@ namespace Atomic.Entities
         [Space]
         [Tooltip("A list of view catalogs to preload view prefabs from on Awake")]
         [SerializeField]
-        internal EntityViewCatalog[] _catalogs;
+        internal EntityViewCatalog<E, V>[] _catalogs;
 
         /// <summary>
         /// A dictionary mapping view names to their prefab instances.
@@ -31,7 +37,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, EntityView> _prefabs = new();
+        private readonly Dictionary<string, V> _prefabs = new();
 
         /// <summary>
         /// A dictionary mapping view names to stacks of pooled instances.
@@ -39,7 +45,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        private readonly Dictionary<string, Stack<EntityView>> _pools = new();
+        private readonly Dictionary<string, Stack<V>> _pools = new();
 
         /// <summary>
         /// Called by Unity when the component is initialized.
@@ -59,44 +65,42 @@ namespace Atomic.Entities
         /// <param name="name">The name of the view to retrieve.</param>
         /// <returns>A reusable <see cref="EntityView"/> instance.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the view prefab was not registered.</exception>
-        public EntityView Rent(string name)
+        public V Rent(string name)
         {
-            Stack<EntityView> pool = this.GetPool(name);
-            if (pool.TryPop(out EntityView view))
+            Stack<V> pool = this.GetPool(name);
+            if (pool.TryPop(out V view))
                 return view;
 
-            if (!_prefabs.TryGetValue(name, out EntityView prefab))
-                throw new KeyNotFoundException($"Entity view with name \"{name}\" was not present in Entity View Pool!");
+            if (!_prefabs.TryGetValue(name, out V prefab))
+                throw new KeyNotFoundException(
+                    $"Entity view with name \"{name}\" was not present in Entity View Pool!");
 
             return Instantiate(prefab, _container);
         }
-        
-        IEntityView IEntityViewPool.Rent(string name) => Rent(name);
-        
+
 
         /// <summary>
         /// Returns a view back to its corresponding pool for future reuse.
         /// </summary>
         /// <param name="name">The name of the view being returned.</param>
         /// <param name="view">The view instance to return.</param>
-        public  void Return(string name, EntityView view)
+        public void Return(string name, V view)
         {
-            Stack<EntityView> pool = this.GetPool(name);
+            Stack<V> pool = this.GetPool(name);
             pool.Push(view);
-            if (view) 
+            if (view)
                 view.transform.parent = _container;
         }
 
-        void IEntityViewPool.Return(string name, IEntityView view) => this.Return(name, (EntityView) view);
-    
+
         /// <summary>
         /// Clears all pooled instances and destroys their GameObjects.
         /// </summary>
         public void Clear()
         {
-            foreach (Stack<EntityView> pool in _pools.Values)
+            foreach (Stack<V> pool in _pools.Values)
             {
-                foreach (EntityView view in pool)
+                foreach (V view in pool)
                     Destroy(view.gameObject);
 
                 pool.Clear();
@@ -110,12 +114,12 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="name">The name of the view.</param>
         /// <returns>A stack of pooled views for the given name.</returns>
-        private Stack<EntityView> GetPool(string name)
+        private Stack<V> GetPool(string name)
         {
-            if (_pools.TryGetValue(name, out Stack<EntityView> pool))
+            if (_pools.TryGetValue(name, out Stack<V> pool))
                 return pool;
 
-            pool = new Stack<EntityView>();
+            pool = new Stack<V>();
             _pools.Add(name, pool);
             return pool;
         }
@@ -125,7 +129,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entityName">The name identifier for the view prefab.</param>
         /// <param name="prefab">The prefab to register.</param>
-        public void AddPrefab(string entityName, EntityView prefab) => _prefabs.Add(entityName, prefab);
+        public void AddPrefab(string entityName, V prefab) => _prefabs.Add(entityName, prefab);
 
         /// <summary>
         /// Removes a registered prefab from the pool.
@@ -137,11 +141,11 @@ namespace Atomic.Entities
         /// Adds all prefabs from a given catalog to the internal registry.
         /// </summary>
         /// <param name="catalog">The catalog containing view prefabs to register.</param>
-        public void AddPrefabs(EntityViewCatalog catalog)
+        public void AddPrefabs(EntityViewCatalog<E, V> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {
-                (string key, EntityView value) = catalog.GetPrefab(i);
+                (string key, V value) = catalog.GetPrefab(i);
                 _prefabs.Add(key, value);
             }
         }
@@ -150,7 +154,7 @@ namespace Atomic.Entities
         /// Removes all prefabs from a given catalog from the internal registry.
         /// </summary>
         /// <param name="catalog">The catalog containing view prefabs to unregister.</param>
-        public void RemovePrefabs(EntityViewCatalog catalog)
+        public void RemovePrefabs(EntityViewCatalog<E, V> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {

@@ -108,6 +108,11 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
+        public IEntityBehaviour GetBehaviourAt(int index)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour
         {
             throw new NotImplementedException();

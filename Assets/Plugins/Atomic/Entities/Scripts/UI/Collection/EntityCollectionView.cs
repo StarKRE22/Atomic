@@ -13,29 +13,16 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity Collection View")]
     [DisallowMultipleComponent]
-    public class EntityCollectionView : MonoBehaviour, IEntityCollectionView
+    public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
     {
-        private static readonly ArrayPool<IEntity> s_entityPool = ArrayPool<IEntity>.Shared;
+    }
 
-        /// <summary>
-        /// Raised when a view is spawned for a newly added entity.
-        /// </summary>
-        public event Action<IEntity, IReadOnlyEntityView> OnAdded;
+    public abstract class EntityCollectionView<E, V> : MonoBehaviour, IEnumerable<KeyValuePair<E, V>>
+        where E : IEntity
+        where V : EntityView<E>
+    {
+        private static readonly ArrayPool<E> s_entityPool = ArrayPool<E>.Shared;
 
-        /// <summary>
-        /// Raised when a view is removed for a despawned or removed entity.
-        /// </summary>
-        public event Action<IEntity, IReadOnlyEntityView> OnRemoved;
-
-        /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.Keys"/>>
-        public IEnumerable<IEntity> Keys => _views.Keys;
-
-        /// <inheritdoc cref="IReadOnlyDictionary{TKey,TValue}.Values"/>>
-        public IEnumerable<IReadOnlyEntityView> Values => _views.Values;
-
-        /// <inheritdoc cref="IReadOnlyEntityCollectionView.Count"/>>
-        public int Count => _views.Count;
-        
         [Space]
         [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
         [SerializeField]
@@ -43,36 +30,67 @@ namespace Atomic.Entities
 
         [Tooltip("The pool responsible for providing and recycling entity view instances")]
         [SerializeField]
-        internal EntityViewPoolBase _viewPool;
+        internal EntityViewPool<E, V> _viewPool;
 
         /// <summary>
-        /// Internal dictionary mapping active entities to their associated views.
+        /// Raised when a view is spawned for a newly added entity.
         /// </summary>
-        private readonly Dictionary<IEntity, EntityView> _views = new();
+        public event Action<E, V> OnAdded;
 
+        /// <summary>
+        /// Raised when a view is removed for a despawned or removed entity.
+        /// </summary>
+        public event Action<E, V> OnRemoved;
 
-        
-        public IReadOnlyEntityView this[IEntity key] => throw new NotImplementedException();
-        
+        public int Count => _views.Count;
+
+        public bool IsVisible => _source != null;
+
+        private readonly Dictionary<E, V> _views = new();
+
+        private IReadOnlyEntityCollection<E> _source;
+
+        public void Show(IReadOnlyEntityCollection<E> source)
+        {
+            this.Hide();
+            
+            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _source.OnAdded += this.AddView;
+            _source.OnRemoved += this.RemoveView;
+
+            foreach (E entity in _source)
+                this.AddView(entity);
+        }
+
+        public void Hide()
+        {
+            if (_source == null)
+                return;
+
+            _source.OnAdded -= this.AddView;
+            _source.OnRemoved -= this.RemoveView;
+
+            this.ClearViews();
+        }
 
         /// <summary>
         /// Gets the view instance associated with the specified entity.
         /// </summary>
         /// <param name="entity">The entity whose view is requested.</param>
         /// <returns>The active <see cref="IReadOnlyEntityView"/> instance associated with the entity.</returns>
-        public IReadOnlyEntityView GetView(IEntity entity) => _views[entity];
+        public EntityView<E> GetView(E entity) => _views[entity];
 
         /// <summary>
         /// Creates and shows a view for the specified entity, if it does not already exist.
         /// </summary>
         /// <param name="entity">The entity to visualize.</param>
-        public void AddView(IEntity entity)
+        public void AddView(E entity)
         {
             if (_views.ContainsKey(entity))
                 return;
 
             string name = this.GetEntityName(entity);
-            EntityView view = _viewPool.Rent(name);
+            V view = _viewPool.Rent(name);
             view.transform.SetParent(_viewport);
             view.Show(entity);
 
@@ -84,9 +102,9 @@ namespace Atomic.Entities
         /// Hides and returns the view associated with the specified entity to the view pool.
         /// </summary>
         /// <param name="entity">The entity whose view should be removed.</param>
-        public void RemoveView(IEntity entity)
+        public void RemoveView(E entity)
         {
-            if (!_views.Remove(entity, out EntityView view))
+            if (!_views.Remove(entity, out V view))
                 return;
 
             view.Hide();
@@ -104,7 +122,7 @@ namespace Atomic.Entities
             if (_views.Count == 0)
                 return;
 
-            IEntity[] buffer = s_entityPool.Rent(_views.Count);
+            E[] buffer = s_entityPool.Rent(_views.Count);
             _views.Keys.CopyTo(buffer, 0);
 
             try
@@ -119,40 +137,20 @@ namespace Atomic.Entities
         }
 
         /// <summary>
+        /// Returns an enumerator that iterates through the collection of entity-view pairs (non-generic version).
+        /// </summary>
+        /// <returns>An <see cref="IEnumerator"/> that can be used to iterate through the collection.</returns>
+        public IEnumerator<KeyValuePair<E, V>> GetEnumerator() => _views.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
+
+        /// <summary>
         /// Determines the name used to retrieve the view prefab for a given entity.
         /// Can be overridden to provide custom naming logic.
         /// </summary>
         /// <param name="entity">The entity to evaluate.</param>
         /// <returns>The name used in the view pool.</returns>
-        protected virtual string GetEntityName(IEntity entity) => entity.Name;
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the collection of entity-view pairs.
-        /// </summary>
-        /// <returns>An enumerator of <see cref="KeyValuePair{IEntity, EntityViewBase}"/> representing all active entity-view mappings.</returns>
-        public IEnumerator<KeyValuePair<IEntity, IReadOnlyEntityView>> GetEnumerator()
-        {
-            foreach (KeyValuePair<IEntity, EntityView> pair in _views)
-                yield return new KeyValuePair<IEntity, IReadOnlyEntityView>(pair.Key, pair.Value);
-        }
-
-        /// <summary>
-        /// Returns an enumerator that iterates through the collection of entity-view pairs (non-generic version).
-        /// </summary>
-        /// <returns>An <see cref="IEnumerator"/> that can be used to iterate through the collection.</returns>
-        IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
-
-        public bool ContainsKey(IEntity key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool TryGetValue(IEntity key, out IReadOnlyEntityView value)
-        {
-            throw new NotImplementedException();
-        }
-
-   
+        protected virtual string GetEntityName(E entity) => entity.Name;
     }
 }
 #endif

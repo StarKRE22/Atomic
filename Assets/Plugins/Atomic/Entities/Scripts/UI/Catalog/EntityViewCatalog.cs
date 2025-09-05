@@ -13,11 +13,13 @@ namespace Atomic.Entities
         fileName = "EntityViewCatalog",
         menuName = "Atomic/Entities/New EntityViewCatalog"
     )]
-    public class EntityViewCatalog : ScriptableObject
+    public class EntityViewCatalog<E, V> : ScriptableObject 
+        where E : IEntity
+        where V : EntityView<E>
     {
         [Tooltip("The list of view prefabs available in this catalog")]
         [SerializeField]
-        internal List<EntityView> _prefabs;
+        internal List<V> _prefabs;
 
         /// <summary>
         /// Gets the number of prefabs stored in the catalog.
@@ -29,10 +31,10 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="index">The index of the prefab to retrieve.</param>
         /// <returns>A <see cref="KeyValuePair{TKey, TValue}"/> where the key is the prefab's name and the value is the prefab itself.</returns>
-        public KeyValuePair<string, EntityView> GetPrefab(int index)
+        public KeyValuePair<string, V> GetPrefab(int index)
         {
-            EntityView view = _prefabs[index];
-            return new KeyValuePair<string, EntityView>(this.GetName(view), view);
+            V view = _prefabs[index];
+            return new KeyValuePair<string, V>(this.GetName(view), view);
         }
 
         /// <summary>
@@ -41,11 +43,11 @@ namespace Atomic.Entities
         /// <param name="name">The name of the prefab to retrieve.</param>
         /// <returns>The matching <see cref="EntityView"/> instance.</returns>
         /// <exception cref="Exception">Thrown if no prefab with the specified name is found.</exception>
-        public EntityView GetPrefab(string name)
+        public V GetPrefab(string name)
         {
             for (int i = 0, count = _prefabs.Count; i < count; i++)
             {
-                EntityView prefab = _prefabs[i];
+                V prefab = _prefabs[i];
                 if (this.GetName(prefab) == name)
                     return prefab;
             }
@@ -59,7 +61,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="prefab">The prefab whose name to retrieve.</param>
         /// <returns>The name used to identify the prefab.</returns>
-        protected internal virtual string GetName(EntityView prefab) => prefab.Name;
+        protected internal virtual string GetName(V prefab) => prefab.Name;
     }
 }
 #endif

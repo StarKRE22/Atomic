@@ -49,7 +49,7 @@ namespace Atomic.Entities
         {
             public bool called;
 
-            protected override void Install(SceneEntity entity)
+            public override void Install(SceneEntity entity)
             {
                 called = true;
             }
