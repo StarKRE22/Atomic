@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Atomic.Entities
 {
-    public sealed class SceneEntityFactoryCatalogTests
+    public sealed class ScriptableEntityFactoryCatalogTests
     {
         private ScriptableEntityFactoryCatalog factoryCatalog;
         private ScriptableEntityFactoryDummy _factoryA;

@@ -37,12 +37,12 @@ namespace Atomic.Entities
         /// </summary>
         [Tooltip("The list of view prefabs available in this catalog")]
         [SerializeField]
-        internal List<V> _prefabs;
+        internal List<V> prefabs;
 
         /// <summary>
         /// Gets the number of prefabs stored in the catalog.
         /// </summary>
-        public int Count => _prefabs.Count;
+        public int Count => this.prefabs.Count;
 
         /// <summary>
         /// Retrieves a prefab at the specified index along with its name.
@@ -55,7 +55,7 @@ namespace Atomic.Entities
         /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="index"/> is out of range.</exception>
         public KeyValuePair<string, V> GetPrefab(int index)
         {
-            V view = _prefabs[index];
+            V view = this.prefabs[index];
             return new KeyValuePair<string, V>(this.GetName(view), view);
         }
 
@@ -67,9 +67,9 @@ namespace Atomic.Entities
         /// <exception cref="Exception">Thrown if no prefab with the specified name is found.</exception>
         public V GetPrefab(string name)
         {
-            for (int i = 0, count = _prefabs.Count; i < count; i++)
+            for (int i = 0, count = this.prefabs.Count; i < count; i++)
             {
-                V prefab = _prefabs[i];
+                V prefab = this.prefabs[i];
                 if (this.GetName(prefab) == name)
                     return prefab;
             }

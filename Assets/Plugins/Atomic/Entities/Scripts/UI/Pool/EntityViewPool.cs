@@ -24,12 +24,12 @@ namespace Atomic.Entities
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]
         [SerializeField]
-        internal Transform _container;
+        internal Transform container;
 
         [Space]
         [Tooltip("A list of view catalogs to preload view prefabs from on Awake")]
         [SerializeField]
-        internal EntityViewCatalog<E, V>[] _catalogs;
+        internal EntityViewCatalog<E, V>[] catalogs;
 
         /// <summary>
         /// A dictionary mapping view names to their prefab instances.
@@ -53,11 +53,10 @@ namespace Atomic.Entities
         /// </summary>
         protected virtual void Awake()
         {
-            if (_catalogs != null)
-                for (int i = 0, count = _catalogs.Length; i < count; i++)
-                    this.AddPrefabs(_catalogs[i]);
+            if (this.catalogs != null)
+                for (int i = 0, count = this.catalogs.Length; i < count; i++)
+                    this.RegisterPrefabs(this.catalogs[i]);
         }
-
 
         /// <summary>
         /// Rents a view by name from the pool. If the pool is empty, a new instance is created.
@@ -72,12 +71,10 @@ namespace Atomic.Entities
                 return view;
 
             if (!_prefabs.TryGetValue(name, out V prefab))
-                throw new KeyNotFoundException(
-                    $"Entity view with name \"{name}\" was not present in Entity View Pool!");
+                throw new KeyNotFoundException($"EntityView with name \"{name}\" was not present in EntityViewPool!");
 
-            return Instantiate(prefab, _container);
+            return Instantiate(prefab, this.container);
         }
-
 
         /// <summary>
         /// Returns a view back to its corresponding pool for future reuse.
@@ -89,7 +86,7 @@ namespace Atomic.Entities
             Stack<V> pool = this.GetPool(name);
             pool.Push(view);
             if (view)
-                view.transform.parent = _container;
+                view.transform.parent = this.container;
         }
 
 
@@ -125,23 +122,23 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Adds a new view prefab to the pool by name.
+        /// Registers a new view prefab to the pool by name.
         /// </summary>
         /// <param name="entityName">The name identifier for the view prefab.</param>
         /// <param name="prefab">The prefab to register.</param>
-        public void AddPrefab(string entityName, V prefab) => _prefabs.Add(entityName, prefab);
+        public void RegisterPrefab(string entityName, V prefab) => _prefabs.Add(entityName, prefab);
 
         /// <summary>
         /// Removes a registered prefab from the pool.
         /// </summary>
         /// <param name="entityName">The name of the prefab to remove.</param>
-        public void RemovePrefab(string entityName) => _prefabs.Remove(entityName);
+        public void UnregisterPrefab(string entityName) => _prefabs.Remove(entityName);
 
         /// <summary>
         /// Adds all prefabs from a given catalog to the internal registry.
         /// </summary>
         /// <param name="catalog">The catalog containing view prefabs to register.</param>
-        public void AddPrefabs(EntityViewCatalog<E, V> catalog)
+        public void RegisterPrefabs(EntityViewCatalog<E, V> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {
@@ -154,7 +151,7 @@ namespace Atomic.Entities
         /// Removes all prefabs from a given catalog from the internal registry.
         /// </summary>
         /// <param name="catalog">The catalog containing view prefabs to unregister.</param>
-        public void RemovePrefabs(EntityViewCatalog<E, V> catalog)
+        public void UnregisterPrefabs(EntityViewCatalog<E, V> catalog)
         {
             for (int i = 0, count = catalog.Count; i < count; i++)
             {

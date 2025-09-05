@@ -37,11 +37,11 @@ namespace Atomic.Entities
         [Space]
         [Tooltip("The viewport or container under which views will be placed in the scene hierarchy")]
         [SerializeField]
-        internal Transform _viewport;
+        internal Transform viewport;
 
         [Tooltip("The pool responsible for providing and recycling entity view instances")]
         [SerializeField]
-        internal EntityViewPool<E, V> _viewPool;
+        internal EntityViewPool<E, V> viewPool;
 
         /// <summary>
         /// Raised when a view is spawned for a newly added entity.
@@ -117,8 +117,8 @@ namespace Atomic.Entities
                 return;
 
             string name = this.GetEntityName(entity);
-            V view = _viewPool.Rent(name);
-            view.transform.SetParent(_viewport);
+            V view = this.viewPool.Rent(name);
+            view.transform.SetParent(this.viewport);
             view.Show(entity);
 
             _views.Add(entity, view);
@@ -138,7 +138,7 @@ namespace Atomic.Entities
             this.OnRemoved?.Invoke(entity, view);
 
             string name = this.GetEntityName(entity);
-            _viewPool.Return(name, view);
+            this.viewPool.Return(name, view);
         }
 
         /// <summary>
@@ -146,15 +146,16 @@ namespace Atomic.Entities
         /// </summary>
         public void ClearViews()
         {
-            if (_views.Count == 0)
+            int viewCount = _views.Count;
+            if (viewCount == 0)
                 return;
 
-            E[] buffer = s_entityPool.Rent(_views.Count);
+            E[] buffer = s_entityPool.Rent(viewCount);
             _views.Keys.CopyTo(buffer, 0);
 
             try
             {
-                for (int i = 0, count = buffer.Length; i < count; i++)
+                for (int i = 0; i < viewCount; i++)
                     this.RemoveView(buffer[i]);
             }
             finally
