@@ -65,7 +65,7 @@ namespace Atomic.Entities
         [ContextMenu("Assign Custom Name From GameObject")]
         private void AssignCustomNameFromGameObject()
         {
-            _customName = this.name;
+            customName = this.name;
         }
     }
 }

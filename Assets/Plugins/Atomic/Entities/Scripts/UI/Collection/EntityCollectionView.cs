@@ -8,15 +8,26 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A MonoBehaviour that manages a collection of entity views in the scene.
-    /// Implements <see cref="IEntityCollectionView"/> to provide add, remove, and clear operations for entity views.
+    /// A <see cref="MonoBehaviour"/> that manages a collection of <see cref="EntityView"/>s in the scene.
     /// </summary>
+    /// <remarks>
+    /// This non-generic version is a concrete specialization of 
+    /// <see cref="EntityCollectionView{E, V}"/> with <typeparamref name="E"/> fixed 
+    /// to <see cref="IEntity"/> and <typeparamref name="V"/> fixed to <see cref="EntityView"/>.
+    /// </remarks>
     [AddComponentMenu("Atomic/Entities/Entity Collection View")]
     [DisallowMultipleComponent]
     public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
     {
     }
 
+    /// <summary>
+    /// A base class for managing collections of entity views in a Unity scene.
+    /// Provides functionality to show, hide, add, remove, and clear entity views,
+    /// backed by a pool of reusable instances.
+    /// </summary>
+    /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
+    /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
     public abstract class EntityCollectionView<E, V> : MonoBehaviour, IEnumerable<KeyValuePair<E, V>>
         where E : IEntity
         where V : EntityView<E>
@@ -42,14 +53,26 @@ namespace Atomic.Entities
         /// </summary>
         public event Action<E, V> OnRemoved;
 
+        /// <summary>
+        /// Gets the number of active entity views currently tracked by this collection.
+        /// </summary>
         public int Count => _views.Count;
 
+        /// <summary>
+        /// Gets a value indicating whether this collection is currently visible 
+        /// (i.e., has a bound <see cref="IReadOnlyEntityCollection{E}"/> source).
+        /// </summary>
         public bool IsVisible => _source != null;
 
         private readonly Dictionary<E, V> _views = new();
 
         private IReadOnlyEntityCollection<E> _source;
 
+        /// <summary>
+        /// Shows this collection, binding it to the specified source of entities.
+        /// </summary>
+        /// <param name="source">The entity collection to visualize.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
         public void Show(IReadOnlyEntityCollection<E> source)
         {
             this.Hide();
@@ -62,6 +85,9 @@ namespace Atomic.Entities
                 this.AddView(entity);
         }
 
+        /// <summary>
+        /// Hides this collection, detaching it from the bound entity source and removing all views.
+        /// </summary>
         public void Hide()
         {
             if (_source == null)
@@ -77,7 +103,8 @@ namespace Atomic.Entities
         /// Gets the view instance associated with the specified entity.
         /// </summary>
         /// <param name="entity">The entity whose view is requested.</param>
-        /// <returns>The active <see cref="IReadOnlyEntityView"/> instance associated with the entity.</returns>
+        /// <returns>The active <see cref="EntityView{E}"/> instance associated with the entity.</returns>
+        /// <exception cref="KeyNotFoundException">Thrown if the entity is not in the collection.</exception>
         public EntityView<E> GetView(E entity) => _views[entity];
 
         /// <summary>
@@ -137,19 +164,23 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Returns an enumerator that iterates through the collection of entity-view pairs (non-generic version).
+        /// Returns an enumerator that iterates through the collection of entity-view pairs.
         /// </summary>
-        /// <returns>An <see cref="IEnumerator"/> that can be used to iterate through the collection.</returns>
+        /// <returns>An enumerator of <see cref="KeyValuePair{TKey, TValue}"/> containing entity-view pairs.</returns>
         public IEnumerator<KeyValuePair<E, V>> GetEnumerator() => _views.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
 
         /// <summary>
         /// Determines the name used to retrieve the view prefab for a given entity.
-        /// Can be overridden to provide custom naming logic.
         /// </summary>
         /// <param name="entity">The entity to evaluate.</param>
         /// <returns>The name used in the view pool.</returns>
+        /// <remarks>
+        /// The default implementation returns <see cref="IEntity.Name"/>.
+        /// Override this method to implement custom naming logic 
+        /// (e.g., categorizing entities or supporting localization).
+        /// </remarks>
         protected virtual string GetEntityName(E entity) => entity.Name;
     }
 }

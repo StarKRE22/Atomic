@@ -43,8 +43,8 @@ namespace Atomic.Entities
 
             T view = gameObject.AddComponent<T>();
             
-            view._aspects = args.aspects;
-            view._controlGameObject = args.controlGameObject;
+            view.aspects = args.aspects;
+            view.controlGameObject = args.controlGameObject;
             view._onlyEditModeGizmos = args.onlyEditModeGizmos;
             view._onlySelectedGizmos = args.onlySelectedGizmos;
 
