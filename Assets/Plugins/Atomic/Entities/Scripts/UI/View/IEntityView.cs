@@ -3,7 +3,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents a view of an <see cref="IEntity"/>.
     /// </summary>
-    public interface IEntityView
+    public interface IEntityView<E> where E : IEntity
     {
         /// <summary>
         /// Gets the display name or identifier of the view.
@@ -13,7 +13,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Gets the entity instance currently associated with this view.
         /// </summary>
-        IEntity Entity { get; }
+        E Entity { get; }
 
         /// <summary>
         /// Gets a value indicating whether the view is currently visible (e.g., active in scene or UI).
@@ -24,7 +24,7 @@ namespace Atomic.Entities
         /// Displays the view for the specified entity and associates it with this view instance.
         /// </summary>
         /// <param name="entity">The entity to associate with and display through this view.</param>
-        void Show(IEntity entity);
+        void Show(E entity);
 
         /// <summary>
         /// Hides the current view, removing its association with the entity.
