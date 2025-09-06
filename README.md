@@ -7,7 +7,7 @@
 
 # ⚛️ What is Atomic?
 
-Atomic is a **reactive procedural framework** built around the **Entity–State–Behaviour** pattern. An **Entity** is a container that holds state and behaviour separately, where state acts like a **Lego constructor** filled with reactive and atomic elements. **Behaviour** acts as the controller that operates on the entity’s state, enabling clean, modular, and scalable game architecture.
+Atomic is a **reactive procedural framework** built around the **`Entity–State–Behaviour`** pattern. An **`Entity`** is a container that holds `State` and `Behaviour` separately. **`State`** is data set of reactive and atomic elements. **`Behaviour`** acts as the stateless controller that operates on the entity `State` through lifecycle events.
 
 
 # 📑 Table of Contents 
