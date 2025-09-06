@@ -16,7 +16,7 @@ pattern and using `Atomic` elements for data organization.
 - [Installation](#-installation)
 - [Using Odin Inspector](#-using-odin-inspector)
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
-- [Key Concepts](#-key-concept)
+- [Key Concepts](#-key-concepts)
 - [Framework Structure](#-framework-structure)
 - [Unity Quick Start](#unity-quick-start)
 - [C Sharp Quick Start](#c-sharp-quick-start)

@@ -147,23 +147,7 @@
       <workItem from="1757058837081" duration="7166000" />
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
-      <workItem from="1757167610415" duration="4996000" />
-    </task>
-    <task id="LOCAL-00059" summary="Написал EntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1756801044887</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1756801044888</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Начинаем писать API Reference для SceneEntity.cs">
-      <option name="closed" value="true" />
-      <created>1756801608405</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1756801608405</updated>
+      <workItem from="1757167610415" duration="5939000" />
     </task>
     <task id="LOCAL-00061" summary="Сделал SceneEntity.md">
       <option name="closed" value="true" />
@@ -541,7 +525,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757181370087</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Пилим README.md">
+      <option name="closed" value="true" />
+      <created>1757183940690</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1757183940690</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Пилим README.md">
+      <option name="closed" value="true" />
+      <created>1757184059571</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1757184059571</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал Collections.md!" />
     <MESSAGE value="Остановился на IEntityWorld.md" />
     <MESSAGE value="Написал EntityWorld.md &amp; EntityRegistry.md" />
     <MESSAGE value="Написал EntityFilter.md &amp; IEntityTrigger.md" />
@@ -593,7 +592,8 @@
     <MESSAGE value="Написал EntityCollectionView.md" />
     <MESSAGE value="Вроде основная часть доки готова!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Пилим README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
