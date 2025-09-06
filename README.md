@@ -11,7 +11,7 @@ Atomic is a **reactive procedural framework** built around the **Entity–State�
 
 
 # 📑 Table of Contents 
-- [Requirements](#requirements)
+- [Requirements](#-requirements)
 - [Installation](#installation)
 - [Using Odin Inspector](#using-odin-inspector)
 - [Using Atomic Plugin for Rider](#using-atomic-plugin-for-rider)
@@ -24,7 +24,7 @@ Atomic is a **reactive procedural framework** built around the **Entity–State�
 - [License](#license)
 - [Contacts](#contacts)
 
-## Requirements 
+## 📝 Requirements 
 > [!IMPORTANT]  
 > The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
