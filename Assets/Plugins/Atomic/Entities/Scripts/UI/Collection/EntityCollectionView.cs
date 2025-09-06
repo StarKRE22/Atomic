@@ -90,13 +90,14 @@ namespace Atomic.Entities
         /// </summary>
         public void Hide()
         {
-            if (_source == null)
-                return;
-
-            _source.OnAdded -= this.AddView;
-            _source.OnRemoved -= this.RemoveView;
-
             this.ClearViews();
+            
+            if (_source != null)
+            {
+                _source.OnAdded -= this.AddView;
+                _source.OnRemoved -= this.RemoveView;
+                _source = null;
+            }
         }
 
         /// <summary>
@@ -170,6 +171,10 @@ namespace Atomic.Entities
         /// <returns>An enumerator of <see cref="KeyValuePair{TKey, TValue}"/> containing entity-view pairs.</returns>
         public IEnumerator<KeyValuePair<E, V>> GetEnumerator() => _views.GetEnumerator();
 
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection of entity-view pairs.
+        /// </summary>
+        /// <returns>An enumerator containing entity-view pairs.</returns>
         IEnumerator IEnumerable.GetEnumerator() => _views.GetEnumerator();
 
         /// <summary>
