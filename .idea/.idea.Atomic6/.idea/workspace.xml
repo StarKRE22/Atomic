@@ -147,23 +147,7 @@
       <workItem from="1757058837081" duration="7166000" />
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
-      <workItem from="1757167610415" duration="5939000" />
-    </task>
-    <task id="LOCAL-00061" summary="Сделал SceneEntity.md">
-      <option name="closed" value="true" />
-      <created>1756806607059</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1756806607060</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Написал SceneEntityProxy!">
-      <option name="closed" value="true" />
-      <created>1756807178085</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1756807178085</updated>
+      <workItem from="1757167610415" duration="6795000" />
     </task>
     <task id="LOCAL-00063" summary="Сущности мы написали!">
       <option name="closed" value="true" />
@@ -541,7 +525,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757184059571</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="Сделал раздел Framework Structure!">
+      <option name="closed" value="true" />
+      <created>1757184886039</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1757184886039</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Сделал раздел Framework Structure!">
+      <option name="closed" value="true" />
+      <created>1757184951541</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1757184951541</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Остановился на IEntityWorld.md" />
     <MESSAGE value="Написал EntityWorld.md &amp; EntityRegistry.md" />
     <MESSAGE value="Написал EntityFilter.md &amp; IEntityTrigger.md" />
     <MESSAGE value="Написал TagEntityTrigger.cs" />
@@ -593,7 +592,8 @@
     <MESSAGE value="Вроде основная часть доки готова!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Пилим README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим README.md" />
+    <MESSAGE value="Сделал раздел Framework Structure!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел Framework Structure!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

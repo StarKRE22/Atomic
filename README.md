@@ -18,8 +18,8 @@ pattern and using `Atomic` elements for data organization.
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concepts)
 - [Framework Structure](#-framework-structure)
-- [Unity Quick Start](#unity-quick-start)
-- [C Sharp Quick Start](#c-sharp-quick-start)
+- [Unity Quick Start](#-unity-quick-start)
+- [CSharp Quick Start](#-csharp-quick-start)
 - [Tutorial](#tutorial)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -31,6 +31,7 @@ pattern and using `Atomic` elements for data organization.
 > [!IMPORTANT]  
 > The Atomic Framework requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
+---
 
 ## 📦 Installation
 
@@ -41,6 +42,7 @@ pattern and using `Atomic` elements for data organization.
   from [release notes](https://github.com/StarKRE22/Atomic/releases)_
 - _Option #3: Install via Unity Package Manager using the Git
   URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
+---
 
 ## 🧩 Using Odin Inspector
 
@@ -48,6 +50,7 @@ pattern and using `Atomic` elements for data organization.
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
 > using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+---
 
 ## 🔌 Using Atomic Plugin for Rider
 
@@ -56,6 +59,7 @@ pattern and using `Atomic` elements for data organization.
 > the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become
 > smoother and more powerful than in Unity.
+---
 
 ## 💡 Key Concepts
 
@@ -89,6 +93,7 @@ and a `centralized data registry` instead of decentralized objects.
 ### 4. Reactive Programming
    The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the flow of game logic consistent.
 
+---
 
 ## 🏗️ Framework Structure
 
@@ -105,22 +110,20 @@ game:
   In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
 > To explore the documentation for each module in more detail, click the links above.
+---
 
+## 🚀 Unity Quick Start
+**Below is the process for quickly creating a character entity in Unity**
 
-## Unity Quick Start
+### 1. Create a new `GameObject`
+<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
-1. **Create a GameObject in a scene**
+### 2. Add `Entity` Component to the GameObject
+<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
 
-   <img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
-
-2. **Add the `Entity` component to the GameObject**
-
-   <img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
-
-3. **Create a `CharacterInstaller` script**
-
+### 3. Create `CharacterInstaller` script
  ```csharp
-//Populates entity with data and behaviours
+//Populates entity with tags, values and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
@@ -129,11 +132,11 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        //Add tags to the character
+        //Add tags to a character
         entity.AddTag("Character");
         entity.AddTag("Moveable");
 
-        //Add properties to the character
+        //Add properties to a character
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
         entity.AddValue("MoveDirection", _moveDirection);
@@ -141,20 +144,19 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-4. **Attach the `CharacterInstaller` to the `GameObject` and configure it**  
-   <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+### 4. Attach `CharacterInstaller` script to the GameObject
+<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-5. **Create a `MoveBehaviour` class**
-
+### 5. Create `MoveBehaviour` class
 ```csharp
-//Controller that moves entity by its direction
+// Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
     private IValue<Vector3> _moveDirection;
 
-    //Calls when MonoBehaviour.Start() is called
+    // Called when MonoBehaviour.Start() is invoked
     public void Init(IEntity entity)
     {
         _transform = entity.GetValue<Transform>("Transform");
@@ -162,7 +164,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
-    //Calls when MonoBehaviour.FixedUpdate() is called
+    // Called when MonoBehaviour.FixedUpdate() is invoked
     public void FixedUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
@@ -171,28 +173,33 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
     }
 }
 ```
-
-6. **Add `MoveBehaviour` to `CharacterInstaller`**
+### 6. Add `MoveBehaviour` to `CharacterInstaller`
 
  ```csharp
-//Populates entity with data and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
-     ...previous code
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
+    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
 
     public override void Install(IEntity entity)
     {
-        ...previous code
-
-        //+
+        //Add tags to a character 
+        {...}
+        
+        //Add properties to a character
+        {...}
+        
+        //Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
     }
 }
 ```
+### 7. Enter `PlayMode` and check your character movement!
 
-7. **Enter `PlayMode` and test your character movement**
+---
 
-## C Sharp Quick Start
+## ⚡ CSharp Quick Start
 
 1. **Create a new entity**
 
