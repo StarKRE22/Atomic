@@ -61,9 +61,9 @@ Atomic.Entities provides:
   - [ScriptableEntityInstaller](ApiReference/Installers/ScriptableEntityInstaller.md)
   
 - **Aspects**
-  - [IEntityAspect] 
-  - [ScriptableEntityAspect] 
-  - [SceneEntityAspect] 
+  - [IEntityAspect](ApiReference/Aspects/IEntityAspect.md)
+  - [ScriptableEntityAspect](ApiReference/Aspects/ScriptableEntityAspect.md)
+  - [SceneEntityAspect](ApiReference/Aspects/SceneEntityAspect.md)
 
 - **Factories**
   - [IEntityFactory](ApiReference/Factories/IEntityFactory.md)
@@ -110,46 +110,76 @@ Atomic.Entities provides:
   - [SubscriptionEntityTrigger](ApiReference/Filters/SubscriptionEntityTrigger.md)
   - [InlineEntityTrigger](ApiReference/Filters/InlineEntityTrigger.md)
 
-- **Lifecycle**
-  - **Sources**
-    - [IInitSource](ApiReference/Lifecycle/Sources/IInitSource.md)
-    - [IEnableSource](ApiReference/Lifecycle/Sources/IEnableSource.md)
-    - [IUpdateSource](ApiReference/Lifecycle/Sources/IUpdateSource.md)
-  - **Subscriptions**
-    - [InitSubscription](ApiReference/Lifecycle/Subscriptions/InitSubscription.md)
-    - [EnableSubscription](ApiReference/Lifecycle/Subscriptions/EnableSubscription.md)
-    - [DisableSubscription](ApiReference/Lifecycle/Subscriptions/DisableSubscription.md)
-    - [DisposeSubscription](ApiReference/Lifecycle/Subscriptions/DisposeSubscription.md)
-    - [UpdateSubscription](ApiReference/Lifecycle/Subscriptions/UpdateSubscription.md)
-    - [FixedUpdateSubscription](ApiReference/Lifecycle/Subscriptions/FixedUpdateSubscription.md)
-    - [LateUpdateSubscription](ApiReference/Lifecycle/Subscriptions/LateUpdateSubscription.md)
+- **Lifecycle Sources & Subscriptions**
+  - [IInitSource](ApiReference/Lifecycle/Sources/IInitSource.md)
+  - [IEnableSource](ApiReference/Lifecycle/Sources/IEnableSource.md)
+  - [IUpdateSource](ApiReference/Lifecycle/Sources/IUpdateSource.md)
+  - [InitSubscription](ApiReference/Lifecycle/Subscriptions/InitSubscription.md)
+  - [EnableSubscription](ApiReference/Lifecycle/Subscriptions/EnableSubscription.md)
+  - [DisableSubscription](ApiReference/Lifecycle/Subscriptions/DisableSubscription.md)
+  - [DisposeSubscription](ApiReference/Lifecycle/Subscriptions/DisposeSubscription.md)
+  - [UpdateSubscription](ApiReference/Lifecycle/Subscriptions/UpdateSubscription.md)
+  - [FixedUpdateSubscription](ApiReference/Lifecycle/Subscriptions/FixedUpdateSubscription.md)
+  - [LateUpdateSubscription](ApiReference/Lifecycle/Subscriptions/LateUpdateSubscription.md)
   - [Extensions](ApiReference/Lifecycle/Extensions.md)
 
 - **Utils**
   - [EntityUtils](ApiReference/Utils/EntityUtils.md)
   - [EntityNames](ApiReference/Utils/EntityNames.md)
 
-- **Views**
-  - **Entity View**
-    - [IReadOnlyEntityView](ApiReference/Views/IReadOnlyEntityView.md)
-    - [IEntityView](ApiReference/Views/IEntityView.md)
-    - [EntityViewBase](ApiReference/Views/EntityViewBase.md)
-    - [EntityView](ApiReference/Views/EntityView.md)
-    - [EntityViewInstaller](ApiReference/Views/EntityViewInstaller.md)
-    - [EntityViewCatalog](ApiReference/Views/EntityViewCatalog.md)
-    
-  - **Entity View Pool**
-    - [IEntityViewPool](ApiReference/Views/Pools/IEntityViewPool.md)
-    - [EntityViewPoolBase](ApiReference/Views/Pools/EntityViewPoolBase.md)
-    - [EntityViewPool](ApiReference/Views/Pools/EntityViewPool.md)
-    
-  - **Entity Collection View**
-    - [IReadOnlyEntityCollectionView]
-    - [IEntityCollectionView]
-    - [EntityCollectionView]
-    - [EntityCollectionViewBinder]
+- **UI**
+  - [EntityView](ApiReference/UI/EntityView.md)
+  - [EntityViewCatalog](ApiReference/UI/EntityViewCatalog.md)
+  - [EntityViewPool](ApiReference/UI/EntityViewPool.md)
+  - [EntityCollectionView](ApiReference/UI/EntityViewPool.md)
 
 
 ## Performance
 
 ## Best Practices
+
+
+
+
+
+
+
+
+
+
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (- **Entity View**)
+
+[//]: # (  - [IReadOnlyEntityView]&#40;ApiReference/Views/IReadOnlyEntityView.md&#41;)
+
+[//]: # (  - [IEntityView]&#40;ApiReference/Views/IEntityView.md&#41;)
+
+[//]: # (  - [EntityViewBase]&#40;ApiReference/Views/EntityViewBase.md&#41;)
+
+[//]: # (  - [EntityView]&#40;ApiReference/Views/EntityView.md&#41;)
+
+[//]: # (  - [EntityViewInstaller]&#40;ApiReference/Views/EntityViewInstaller.md&#41;)
+
+[//]: # (  - [EntityViewCatalog]&#40;ApiReference/Views/EntityViewCatalog.md&#41;)
+
+[//]: # (    )
+[//]: # (  - **Entity View Pool**)
+
+[//]: # (    - [IEntityViewPool]&#40;ApiReference/Views/Pools/IEntityViewPool.md&#41;)
+
+[//]: # (    - [EntityViewPoolBase]&#40;ApiReference/Views/Pools/EntityViewPoolBase.md&#41;)
+
+[//]: # (    - [EntityViewPool]&#40;ApiReference/Views/Pools/EntityViewPool.md&#41;)
+
+[//]: # (    )
+[//]: # (  - **Entity Collection View**)
+
+[//]: # (    - [IReadOnlyEntityCollectionView])
+
+[//]: # (    - [IEntityCollectionView])
+
+[//]: # (    - [EntityCollectionView])
+
+[//]: # (    - [EntityCollectionViewBinder])

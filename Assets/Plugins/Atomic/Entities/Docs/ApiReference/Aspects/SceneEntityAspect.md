@@ -104,7 +104,7 @@ The `JumpAspect` adds jump capabilities to scene entities implementing `IGameEnt
 - Automatically updates the entity when applied or discarded
 
 ```csharp
-public sealed class SceneJumpAspect : SceneEntityAspect<IGameEntity>
+public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
 {
     [SerializeField] private float _jumpForce = 3f;
 
