@@ -85,14 +85,14 @@ namespace Atomic.Entities
             _behaviours[_behaviourCount] = behaviour;
             _behaviourCount++;
 
-            if (_initialized && behaviour is IEntityInit spawnBehaviour)
-                spawnBehaviour.Init(this);
+            if (_initialized && behaviour is IEntityInit init)
+                init.Init(this);
 
             if (_enabled)
                 this.EnableBehaviour(behaviour);
 
             this.OnBehaviourAdded?.Invoke(this, behaviour);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Atomic.Entities
                 dispose.Dispose(this);
 
             this.OnBehaviourDeleted?.Invoke(this, behaviour);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
             return true;
         }
 
@@ -178,7 +178,7 @@ namespace Atomic.Entities
                 for (int i = 0; i < count; i++)
                     this.OnBehaviourDeleted?.Invoke(this, clearedBehaviours[i]);
 
-                this.OnStateChanged?.Invoke();
+                this.OnStateChanged?.Invoke(this);
             }
             finally
             {

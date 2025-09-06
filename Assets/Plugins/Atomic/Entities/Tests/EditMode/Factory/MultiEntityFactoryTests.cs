@@ -13,7 +13,7 @@ namespace Atomic.Entities
             var factory = new MultiEntityFactory<string, EntityDummy>();
             var dummyFactory = new EntityFactoryDummy();
 
-            factory.Add("enemy", dummyFactory);
+            factory.Register("enemy", dummyFactory);
 
             // Act
             var result = factory.Create("enemy");
@@ -39,10 +39,10 @@ namespace Atomic.Entities
         {
             // Arrange
             var factory = new MultiEntityFactory<string, EntityDummy>();
-            factory.Add("npc", new EntityFactoryDummy());
+            factory.Register("npc", new EntityFactoryDummy());
 
             // Act
-            factory.Remove("npc");
+            factory.Unregister("npc");
 
             // Assert
             Assert.Throws<KeyNotFoundException>(() => factory.Create("npc"));
@@ -106,10 +106,10 @@ namespace Atomic.Entities
         {
             // Arrange
             var factory = new MultiEntityFactory<string, EntityDummy>();
-            factory.Add("enemy", new EntityFactoryDummy());
+            factory.Register("enemy", new EntityFactoryDummy());
 
             // Act & Assert
-            Assert.Throws<ArgumentException>(() => factory.Add("enemy", new EntityFactoryDummy()));
+            Assert.Throws<ArgumentException>(() => factory.Register("enemy", new EntityFactoryDummy()));
         }
         
         [Test]
@@ -121,7 +121,7 @@ namespace Atomic.Entities
             // Act & Assert
             Assert.DoesNotThrow(() =>
             {
-                factory.Remove("missing_key");
+                factory.Unregister("missing_key");
             });
         }
         
@@ -133,7 +133,7 @@ namespace Atomic.Entities
             var dummyFactory = new EntityFactoryDummy();
 
             // Assert
-            Assert.Throws<ArgumentNullException>(() => factory.Add(null, dummyFactory));
+            Assert.Throws<ArgumentNullException>(() => factory.Register(null, dummyFactory));
         }
         
         [Test]

@@ -16,7 +16,7 @@ namespace ShooterGame.App
         [SerializeField]
         private LevelScreenView _levelScreen;
 
-        protected override void Install(IMenuUIContext entity)
+        public override void Install(IMenuUIContext entity)
         {
             Dictionary<Type, (ScreenView, IEntityBehaviour)> screens = this
                 .ProvideScreens()

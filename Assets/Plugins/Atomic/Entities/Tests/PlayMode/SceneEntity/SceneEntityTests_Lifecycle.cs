@@ -568,7 +568,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
 
             bool called = false;
-            entity.OnStateChanged += () => called = true;
+            entity.OnStateChanged += _ => called = true;
 
             entity.Init();
 
@@ -669,7 +669,7 @@ namespace Atomic.Entities
             entity.Init();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Dispose();
 
@@ -777,7 +777,7 @@ namespace Atomic.Entities
             entity.Init();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Enable();
 
@@ -905,7 +905,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Disable();
 

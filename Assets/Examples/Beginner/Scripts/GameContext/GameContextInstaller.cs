@@ -26,7 +26,7 @@ namespace BeginnerGame
         [SerializeField]
         private Bounds _coinSpawnArea = new(Vector3.zero, new Vector3(5, 0, 5));
 
-        protected override void Install(IGameContext context)
+        public override void Install(IGameContext context)
         {
             context.AddWorldTransform(_worldTransform);
             context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());

@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private Cooldown _cooldown = 0.5f;
 
-        protected override void Install(IWeapon weapon)
+        public override void Install(IWeapon weapon)
         {
             weapon.AddFireEvent(new BaseEvent());
             weapon.AddFireAction(new InlineAction(() =>

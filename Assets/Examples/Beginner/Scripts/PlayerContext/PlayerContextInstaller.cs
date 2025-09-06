@@ -29,7 +29,7 @@ namespace BeginnerGame
         [SerializeField]
         private Vector3 _cameraOffset;
         
-        protected override void Install(IPlayerContext context)
+        public override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
             gameContext.GetPlayers().Add(_teamType, context);

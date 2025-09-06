@@ -33,7 +33,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private ReactiveVariable<TeamType> _teamType;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             //Transform:
             entity.AddPosition(new TransformPositionVariable(_transform));

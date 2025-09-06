@@ -15,7 +15,7 @@ namespace Atomic.Entities
 
         public void Return(IEntity entity) => this.ReturnMethod.Invoke(entity);
 
-        public void Init(int initialCoint) => this.InitMethod.Invoke(initialCoint);
+        public void Init(int initialCount) => this.InitMethod.Invoke(initialCount);
     }
     
     public sealed class EntityPoolMock<T> : IEntityPool<T> where T : IEntity
@@ -31,6 +31,6 @@ namespace Atomic.Entities
 
         public void Return(T entity) => this.ReturnMethod.Invoke(entity);
 
-        public void Init(int initialCoint) => this.InitMethod.Invoke(initialCoint);
+        public void Init(int initialCount) => this.InitMethod.Invoke(initialCount);
     }
 }

@@ -32,7 +32,7 @@ namespace Atomic.Entities
     ///
     /// Use this component to expose scene-level access to the underlying entity while maintaining modularity.
     ///
-    /// ⚠️ **Collider Interaction Note**:
+    /// **Collider Interaction Note**:
     /// If your entity consists of multiple child colliders (e.g., hitboxes, triggers),
     /// and you want to detect which entity was interacted with (e.g., on hit or raycast),
     /// you can place <c>SceneEntityProxy</c> on each child and reference the same source <see cref="SceneEntity"/>.
@@ -53,7 +53,7 @@ namespace Atomic.Entities
     /// </remarks>
     public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity where E : SceneEntity
     {
-        public event Action OnStateChanged
+        public event Action<IEntity> OnStateChanged
         {
             add => _source.OnStateChanged += value;
             remove => _source.OnStateChanged -= value;
@@ -175,6 +175,7 @@ namespace Atomic.Entities
         public void AddBehaviour(IEntityBehaviour behaviour) => _source.AddBehaviour(behaviour);
 
         public T GetBehaviour<T>() where T : IEntityBehaviour => _source.GetBehaviour<T>();
+        public IEntityBehaviour GetBehaviourAt(int index) => _source.GetBehaviourAt(index);
 
         public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour =>
             _source.TryGetBehaviour(out behaviour);

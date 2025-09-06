@@ -20,19 +20,19 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityDisable"/> for handling disable-time logic
     /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IEnable.Disable"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityDisable<in T> : IEntityDisable where T : IEntity
+    public interface IEntityDisable<in E> : IEntityDisable where E : IEntity
     {
         /// <summary>
         /// Called when the typed entity is disabled.
         /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
-        void Disable(T entity);
+        /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
+        void Disable(E entity);
 
-        void IEntityDisable.Disable(IEntity entity) => this.Disable((T) entity);
+        void IEntityDisable.Disable(IEntity entity) => this.Disable((E) entity);
     }
 }

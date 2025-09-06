@@ -1,19 +1,18 @@
+using System;
 using Atomic.Entities;
 using DG.Tweening;
 using UnityEngine;
 
 namespace RTSGame
 {
+    [Serializable]
     public sealed class TakeDamageViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose<IGameEntity>
     {
-        private readonly Transform _visual;
-        private readonly Vector3 _originalScale;
+        [SerializeField]
+        private Transform _visual;
 
-        public TakeDamageViewBehaviour(Transform visual)
-        {
-            _visual = visual;
-            _originalScale = visual.localScale;
-        }
+        [SerializeField]
+        private Vector3 _originalScale = Vector3.one;
 
         public void Init(IGameEntity entity)
         {

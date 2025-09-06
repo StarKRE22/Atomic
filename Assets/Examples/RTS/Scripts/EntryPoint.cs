@@ -1,3 +1,4 @@
+using System;
 using Atomic.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,8 +20,9 @@ namespace RTSGame
         [SerializeField]
         private GameContextFactory _gameContextFactory;
 
+        [FormerlySerializedAs("_entityCollectionView")]
         [SerializeField]
-        private EntityCollectionView _entityCollectionView;
+        private GameEntityCollectionView _entityWorldView;
 
         [Header("Visualization")]
         [SerializeField]
@@ -43,20 +45,25 @@ namespace RTSGame
         [SerializeField]
         private int _unitColumns = 100;
 
-        private EntityCollectionViewBinder<IGameEntity> _viewBinder;
-
         [Header("Debug")]
         [SerializeField]
         private float _debugUnitCount; //See entity count changes in the world
-        
+
+        private void Awake()
+        {
+            GameContext.SetFactory(_gameContextFactory);
+            _gameContext = GameContext.Instance;
+        }
+
         private void Start()
         {
-            _gameContext = _gameContextFactory.Create();
             this.SpawnUnits();
             
             _gameContext.Init();
             _gameContext.Enable();
-            this.BindEntityViews();
+            
+            if (_showEntityViews)
+                _entityWorldView.Show(_gameContext.GetEntityWorld());
         }
         
         private void SpawnUnits()
@@ -65,16 +72,6 @@ namespace RTSGame
                 SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
             else
                 InitGameCase.SpawnUnits(_gameContext, _unitColumns);
-        }
-
-        private void BindEntityViews()
-        {
-            if (!_showEntityViews)
-                return;
-
-            _viewBinder = new EntityCollectionViewBinder<IGameEntity>(
-                _gameContext.GetEntityWorld(), _entityCollectionView
-            );
         }
 
         private void Update() => _gameContext.OnUpdate(Time.deltaTime);
@@ -89,10 +86,10 @@ namespace RTSGame
 
         private void OnDestroy()
         {
-            _viewBinder?.Dispose();
+            if (_showEntityViews)
+                _entityWorldView.Hide();
             
-            _gameContext?.Disable();
-            _gameContext?.Dispose();
+            GameContext.DisposeInstance();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BeginnerGame
         [SerializeField]
         private TriggerEvents _triggerEvents;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             //Character:
             entity.AddCharacterTag();

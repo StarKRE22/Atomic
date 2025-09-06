@@ -57,10 +57,7 @@ namespace Atomic.Entities
         /// or a fallback string in the format <c>#Unknown:{id}</c> if the ID was not registered.
         /// </returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string IdToName(int id)
-        {
-            return _idToName.TryGetValue(id, out var name) ? name : $"#Unknown:{id}";
-        }
+        public static string IdToName(int id) => _idToName.TryGetValue(id, out var name) ? name : $"#Unknown:{id}";
 
         /// <summary>
         /// Clears all name-to-ID mappings and resets the ID counter.

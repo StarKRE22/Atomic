@@ -281,7 +281,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create();
             bool stateChanged = false;
 
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.AddTag(123);
 
@@ -295,7 +295,7 @@ namespace Atomic.Entities
             entity.AddTag(1);
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.AddTag(1); // дубликат
 
@@ -387,7 +387,7 @@ namespace Atomic.Entities
             entity.AddTag(7);
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.DelTag(7);
 
@@ -400,7 +400,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.DelTag(777); // не существует
 
@@ -589,7 +589,7 @@ namespace Atomic.Entities
             entity.AddTag(100);
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.ClearTags();
 
@@ -605,7 +605,7 @@ namespace Atomic.Entities
             bool stateChangedCalled = false;
 
             entity.OnTagDeleted += (_, _) => tagDeletedCalled = true;
-            entity.OnStateChanged += () => stateChangedCalled = true;
+            entity.OnStateChanged += _ => stateChangedCalled = true;
 
             entity.ClearTags();
 

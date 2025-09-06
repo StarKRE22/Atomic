@@ -4,10 +4,10 @@ namespace Atomic.Entities
 {
     public sealed partial class EntityTests
     {
-        #region OnInited
+        #region OnInitialized
 
         [Test]
-        public void OnInited_IsInvoked_WhenEntityIsInited()
+        public void OnInitialized_IsInvoked_WhenEntityIsInitialized()
         {
             var entity = new Entity();
             bool wasCalled = false;
@@ -20,7 +20,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnInited_IsNotInvoked_WhenNotInited()
+        public void OnInitialized_IsNotInvoked_WhenNotInitialized()
         {
             var entity = new Entity();
             bool wasCalled = false;
@@ -33,7 +33,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnInited_IsInvokedOnlyOnce_WhenInitCalledMultipleTimes()
+        public void OnInitialized_IsInvokedOnlyOnce_WhenInitCalledMultipleTimes()
         {
             var entity = new Entity();
             int callCount = 0;
@@ -172,7 +172,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnDisposed_IsNotInvoked_WhenNotInited()
+        public void OnDisposed_IsNotInvoked_WhenNotInitialized()
         {
             var entity = new Entity(); // не спаунен
 
@@ -201,7 +201,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Dispose_ChangesInitedStateToFalse()
+        public void Dispose_ChangesInitializedStateToFalse()
         {
             var entity = new Entity();
             entity.Init();
@@ -263,7 +263,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnUpdate_DoesNothing_WhenNotInited()
+        public void OnUpdate_DoesNothing_WhenNotInitialized()
         {
             var entity = new Entity(); // не вызываем Init()
 
@@ -326,7 +326,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnFixedUpdate_DoesNothing_WhenNotInited()
+        public void OnFixedUpdate_DoesNothing_WhenNotInitialized()
         {
             var entity = new Entity(); // Не вызываем Init()
 
@@ -389,7 +389,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void OnLateUpdate_DoesNothing_WhenNotInited()
+        public void OnLateUpdate_DoesNothing_WhenNotInitialized()
         {
             var entity = new Entity(); // не спаунен
 
@@ -403,17 +403,17 @@ namespace Atomic.Entities
 
         #endregion
 
-        #region Inited
+        #region Initialized
 
         [Test]
-        public void Inited_IsFalse_ByDefault()
+        public void Initialized_IsFalse_ByDefault()
         {
             var entity = new Entity();
             Assert.IsFalse(entity.Initialized);
         }
 
         [Test]
-        public void Inited_IsTrue_AfterInit()
+        public void Initialized_IsTrue_AfterInit()
         {
             var entity = new Entity();
             entity.Init();
@@ -422,7 +422,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Inited_IsFalse_AfterDispose()
+        public void Initialized_IsFalse_AfterDispose()
         {
             var entity = new Entity();
             entity.Init();
@@ -432,7 +432,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Inited_RemainsTrue_OnMultipleInitCalls()
+        public void Initialized_RemainsTrue_OnMultipleInitCalls()
         {
             var entity = new Entity();
             entity.Init();
@@ -512,7 +512,7 @@ namespace Atomic.Entities
         #region Init
 
         [Test]
-        public void Init_SetsInitedTrue()
+        public void Init_SetsInitializedTrue()
         {
             var entity = new Entity();
             entity.Init();
@@ -521,7 +521,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Init_DoesNothing_IfAlreadyInited()
+        public void Init_DoesNothing_IfAlreadyInitialized()
         {
             var entity = new Entity();
             entity.Init();
@@ -535,7 +535,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Init_InvokesOnInited()
+        public void Init_InvokesOnInitialized()
         {
             var entity = new Entity();
 
@@ -565,7 +565,7 @@ namespace Atomic.Entities
             var entity = new Entity();
 
             bool called = false;
-            entity.OnStateChanged += () => called = true;
+            entity.OnStateChanged += _ => called = true;
 
             entity.Init();
 
@@ -597,7 +597,7 @@ namespace Atomic.Entities
         #region Dispose
 
         [Test]
-        public void Dispose_SetsInitedFalse()
+        public void Dispose_SetsInitializedFalse()
         {
             var entity = new Entity();
             entity.Init();
@@ -608,7 +608,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Dispose_DoesNothing_IfNotInited()
+        public void Dispose_DoesNothing_IfNotInitialized()
         {
             var entity = new Entity(); // Не вызывали Init()
 
@@ -666,7 +666,7 @@ namespace Atomic.Entities
             entity.Init();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Dispose();
 
@@ -728,7 +728,7 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Enable_CallsInit_IfNotInited()
+        public void Enable_CallsInit_IfNotInitialized()
         {
             var entity = new Entity();
             bool spawned = false;
@@ -774,7 +774,7 @@ namespace Atomic.Entities
             entity.Init();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Enable();
 
@@ -902,7 +902,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             bool stateChanged = false;
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.Disable();
 

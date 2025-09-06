@@ -13,25 +13,25 @@ namespace Atomic.Entities
     {
         #region Tags
 
-        private static readonly List<TagElement> _tagElementsCache = new();
+        private static readonly List<DebugTag> _debugTagsCache = new();
 
         /// <summary>
         /// Represents a tag element with its display name and internal ID.
         /// </summary>
         [InlineProperty]
-        private struct TagElement : IComparable<TagElement>
+        private struct DebugTag : IComparable<DebugTag>
         {
             [ShowInInspector, ReadOnly]
             internal string name;
             internal readonly int id;
 
-            public TagElement(string name, int id)
+            public DebugTag(string name, int id)
             {
                 this.name = name;
                 this.id = id;
             }
 
-            public int CompareTo(TagElement other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
+            public int CompareTo(DebugTag other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -42,26 +42,26 @@ namespace Atomic.Entities
         [LabelText("Tags")]
         [ShowInInspector, PropertyOrder(100)]
         [ListDrawerSettings(
-            CustomRemoveElementFunction = nameof(RemoveTagElement),
-            CustomRemoveIndexFunction = nameof(RemoveTagElementAt),
+            CustomRemoveElementFunction = nameof(RemoveDebugTag),
+            CustomRemoveIndexFunction = nameof(RemoveDebugTagAt),
             HideAddButton = true
         )]
-        private List<TagElement> TagElements
+        private List<DebugTag> DebugTags
         {
             get
             {
-                _tagElementsCache.Clear();
+                _debugTagsCache.Clear();
 
                 TagEnumerator tagEnumerator = this.GetTagEnumerator();
                 while (tagEnumerator.MoveNext())
                 {
                     int tag = tagEnumerator.Current;
                     string name = EntityNames.IdToName(tag);
-                    _tagElementsCache.Add(new TagElement(name, tag));
+                    _debugTagsCache.Add(new DebugTag(name, tag));
                 }
 
-                _tagElementsCache.Sort();
-                return _tagElementsCache;
+                _debugTagsCache.Sort();
+                return _debugTagsCache;
             }
             set
             {
@@ -69,21 +69,21 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveTagElement(TagElement tagElement) => this.DelTag(tagElement.id);
+        private void RemoveDebugTag(DebugTag debugTag) => this.DelTag(debugTag.id);
 
-        private void RemoveTagElementAt(int index) => this.DelTag(this.TagElements[index].id);
+        private void RemoveDebugTagAt(int index) => this.DelTag(this.DebugTags[index].id);
 
         #endregion
 
         #region Values
 
-        private static readonly List<ValueElement> _valueElementsCache = new();
+        private static readonly List<DebugValue> _debugValuesCache = new();
 
         /// <summary>
         /// Represents a value element consisting of a name, object value, and internal key.
         /// </summary>
         [InlineProperty]
-        private struct ValueElement : IComparable<ValueElement>
+        private struct DebugValue : IComparable<DebugValue>
         {
             [HorizontalGroup(200), ShowInInspector, ReadOnly, HideLabel]
             public string name;
@@ -93,14 +93,14 @@ namespace Atomic.Entities
 
             internal readonly int id;
 
-            public ValueElement(string name, object value, int id)
+            public DebugValue(string name, object value, int id)
             {
                 this.name = name;
                 this.value = value;
                 this.id = id;
             }
 
-            public int CompareTo(ValueElement other) => 
+            public int CompareTo(DebugValue other) => 
                 string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
@@ -112,26 +112,26 @@ namespace Atomic.Entities
         [LabelText("Values")]
         [ShowInInspector, PropertyOrder(100)]
         [ListDrawerSettings(
-            CustomRemoveElementFunction = nameof(RemoveValueElement),
-            CustomRemoveIndexFunction = nameof(RemoveValueElementAt),
+            CustomRemoveElementFunction = nameof(RemoveDebugValue),
+            CustomRemoveIndexFunction = nameof(RemoveDebugValueAt),
             HideAddButton = true
         )]
-        private List<ValueElement> ValueElements
+        private List<DebugValue> DebugValues
         {
             get
             {
-                _valueElementsCache.Clear();
+                _debugValuesCache.Clear();
 
                 ValueEnumerator enumerator = this.GetValueEnumerator();
                 while (enumerator.MoveNext())
                 {
                     (int id, object value) = enumerator.Current;
                     string name = EntityNames.IdToName(id);
-                    _valueElementsCache.Add(new ValueElement(name, value, id));
+                    _debugValuesCache.Add(new DebugValue(name, value, id));
                 }
 
-                _valueElementsCache.Sort();
-                return _valueElementsCache;
+                _debugValuesCache.Sort();
+                return _debugValuesCache;
             }
 
             set
@@ -140,36 +140,36 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveValueElement(ValueElement valueElement) => 
-            this.DelValue(valueElement.id);
+        private void RemoveDebugValue(DebugValue debugValue) => 
+            this.DelValue(debugValue.id);
 
-        private void RemoveValueElementAt(int index) => 
-            this.DelValue(this.ValueElements[index].id);
+        private void RemoveDebugValueAt(int index) => 
+            this.DelValue(this.DebugValues[index].id);
 
         #endregion
 
         #region Behaviours
 
-        private static readonly List<BehaviourElement> _behaviourElementsCache = new();
+        private static readonly List<DebugBehaviour> _debugBehavioursCache = new();
 
         /// <summary>
         /// Represents a behaviour component with a name and IBehaviour instance.
         /// </summary>
         [InlineProperty]
-        private struct BehaviourElement : IComparable<BehaviourElement>
+        private struct DebugBehaviour : IComparable<DebugBehaviour>
         {
             [ShowInInspector, ReadOnly]
             public string name;
 
             internal readonly IEntityBehaviour value;
 
-            public BehaviourElement(string name, IEntityBehaviour value)
+            public DebugBehaviour(string name, IEntityBehaviour value)
             {
                 this.name = name;
                 this.value = value;
             }
 
-            public int CompareTo(BehaviourElement other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
+            public int CompareTo(DebugBehaviour other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -180,25 +180,25 @@ namespace Atomic.Entities
         [LabelText("Behaviours")]
         [ShowInInspector, PropertyOrder(100)]
         [ListDrawerSettings(
-            CustomRemoveElementFunction = nameof(RemoveBehaviourElement),
-            CustomRemoveIndexFunction = nameof(RemoveBehaviourElementAt),
+            CustomRemoveElementFunction = nameof(RemoveDebugBehaviour),
+            CustomRemoveIndexFunction = nameof(RemoveDebugBehaviourAt),
             HideAddButton = true
         )]
-        private List<BehaviourElement> BehaviourElements
+        private List<DebugBehaviour> DebugBehaviours
         {
             get
             {
-                _behaviourElementsCache.Clear();
+                _debugBehavioursCache.Clear();
 
                 for (int i = 0; i < _behaviourCount; i++)
                 {
                     IEntityBehaviour behaviour = _behaviours[i];
                     string name = behaviour.GetType().Name;
-                    _behaviourElementsCache.Add(new BehaviourElement(name, behaviour));
+                    _debugBehavioursCache.Add(new DebugBehaviour(name, behaviour));
                 }
 
-                _behaviourElementsCache.Sort();
-                return _behaviourElementsCache;
+                _debugBehavioursCache.Sort();
+                return _debugBehavioursCache;
             }
             set
             {
@@ -206,11 +206,11 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveBehaviourElement(BehaviourElement behaviourElement) => 
-            this.DelBehaviour(behaviourElement.value);
+        private void RemoveDebugBehaviour(DebugBehaviour debugBehaviour) => 
+            this.DelBehaviour(debugBehaviour.value);
 
-        private void RemoveBehaviourElementAt(int index) => 
-            this.DelBehaviour(this.BehaviourElements[index].value);
+        private void RemoveDebugBehaviourAt(int index) => 
+            this.DelBehaviour(this.DebugBehaviours[index].value);
 
         #endregion
     }

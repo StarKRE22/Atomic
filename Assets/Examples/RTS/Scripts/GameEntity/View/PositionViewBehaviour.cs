@@ -1,12 +1,16 @@
+using System;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
 namespace RTSGame
 {
+    [Serializable]
     public sealed class PositionViewBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
-        private readonly Transform _transform;
+        [SerializeField]
+        private Transform _transform;
+        
         private IReactiveValue<Vector3> _position;
 
         public PositionViewBehaviour(Transform transform)

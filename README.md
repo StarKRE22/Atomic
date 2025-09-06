@@ -18,7 +18,7 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 - [Manual References](#manual-references)
 - [Unity Quick Start](#unity-quick-start)
 - [C Sharp Quick Start](#c-sharp-quick-start)
-- [Theory](#theory)
+- [Tutorial](#tutorial)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
 - [License](#license)
@@ -207,6 +207,78 @@ while(_isGameRunning)
 //Disables and disposes entity state
 character.Dispose();
 ```
+
+## Tutorial
+
+- **What is Entity**
+- **Create an Entity**
+  - **CSharp Guide**
+  - **Unity Guide**
+- **Entity Behaviour Lifecycle** + Gizmos и аттрибут в Edit Mode
+- **Using Entity Pools**
+- **Using Entity Worlds**
+- **Using Entity Filters**
+- **Separating Game from Unity** //Factories, Baking, Views
+- **Designing Architecture with Entities** //Contexts
+
+- **Using Code generation**
+  - **Unity Guide**
+  - **Rider Plugin Guide**
+
+
+
+[//]: # ()
+[//]: # (Guides)
+
+[//]: # (├── Introduction)
+
+[//]: # (│   ├── What is Atomic?)
+
+[//]: # (│   ├── Requirements & Installation)
+
+[//]: # (│   └── Using Odin Inspector &#40;optional&#41;)
+
+[//]: # (│)
+
+[//]: # (├── Core Concepts)
+
+[//]: # (│   ├── Entities & EntityStateBehaviour Pattern)
+
+[//]: # (│   ├── Reactive Values & Variables)
+
+[//]: # (│   ├── Events & Signals)
+
+[//]: # (│   └── Requests & Actions)
+
+[//]: # (│)
+
+[//]: # (├── Tutorials)
+
+[//]: # (│   ├── Getting Started with Entities &#40;C# example&#41;)
+
+[//]: # (│   ├── Unity Quick Start &#40;SceneEntity, Installers&#41;)
+
+[//]: # (│   ├── Character Example &#40;MoveBehaviour&#41;)
+
+[//]: # (│   └── Building UI Contexts)
+
+[//]: # (│)
+
+[//]: # (├── Best Practices)
+
+[//]: # (│   ├── Prefer Abstract Interfaces)
+
+[//]: # (│   ├── Shared Constants)
+
+[//]: # (│   ├── Iterating Reactive Collections)
+
+[//]: # (│   ├── Request-Condition-Action-Event Pattern)
+
+[//]: # (│   ├── Requests vs Actions)
+
+[//]: # (│   └── Performance Tips)
+
+
 
 ## Theory
 This section explains the **core concepts** behind the Atomic Framework and how they work together.  

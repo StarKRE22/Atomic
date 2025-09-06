@@ -16,7 +16,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private TMP_Text _redKillsView;
 
-        protected override void Install(IGameUIContext context)
+        public override void Install(IGameUIContext context)
         {
             context.AddBehaviour(new CountdownPresenter(_countdownView));
             context.AddBehaviour(new KillsPresenter(_blueKillsView, TeamType.BLUE));

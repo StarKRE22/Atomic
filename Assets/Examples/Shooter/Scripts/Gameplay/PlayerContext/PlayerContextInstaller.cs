@@ -18,7 +18,7 @@ namespace ShooterGame.Gameplay
         [SerializeField]
         private CameraInstaller _cameraInstaller;
 
-        protected override void Install(IPlayerContext context)
+        public override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
             gameContext.GetLeaderboard().Add(_teamType, 0);

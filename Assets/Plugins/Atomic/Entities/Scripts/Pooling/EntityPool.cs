@@ -62,10 +62,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Pre-populates the pool with a specified number of entities.
         /// </summary>
-        /// <param name="count">The number of entities to create and store in the pool.</param>
-        public void Init(int count)
+        /// <param name="initialCount">The number of entities to create and store in the pool.</param>
+        public void Init(int initialCount)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < initialCount; i++)
             {
                 E entity = _factory.Create();
                 this.OnCreate(entity);

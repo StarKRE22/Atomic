@@ -6,6 +6,43 @@ Best Practices
 - Разделять инсталлеры на маленькие фичи для больших проектов и EntityAPI
 
 
+
+### Example #2. With custom builder
+
+
+
+
+
+
+
+
+[//]: # ()
+[//]: # (## Best Practices)
+
+[//]: # ()
+[//]: # (1. **Pre-allocate Capacity** – Use capacity parameters for known collection sizes)
+
+[//]: # (2. **Dispose Properly** – Always call Dispose&#40;&#41; when entity is no longer needed)
+
+[//]: # (3. **Check Lifecycle State** – Verify `Initialized` / `Enabled` before operations)
+
+[//]: # (3. **Check Lifecycle State** – Verify `Initialized` / `Enabled` before operations)
+
+[//]: # ()
+[//]: # (## Performance Considerations)
+
+[//]: # ()
+[//]: # (- **Registry Overhead** – Each entity registers with global registry)
+
+[//]: # (- **Event Invocations** – Events add overhead; batch changes when possible)
+
+[//]: # (- **Collection Growth** – Pre-allocate to avoid reallocation)
+
+[//]: # (- **Behaviour Iteration** – Update methods iterate all behaviours)
+
+[//]: # (- **Boxing/Unboxing** – Use generic value methods to minimize boxing)
+
+
 You can use extension Observe and cache subscription handle
 ```csharp
 using UnityEngine;

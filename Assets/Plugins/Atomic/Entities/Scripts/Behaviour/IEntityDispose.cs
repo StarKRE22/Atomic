@@ -24,23 +24,23 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityDispose"/> 
     /// for handling cleanup logic for a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">
+    /// <typeparam name="E">
     /// The concrete entity type this behavior is associated with.
     /// </typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IDisposeSource.Dispose"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityDispose<in T> : IEntityDispose where T : IEntity
+    public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
     {
         /// <summary>
         /// Called when the typed entity is being disposed.
         /// </summary>
         /// <param name="entity">
-        /// The entity instance of type <typeparamref name="T"/>.
+        /// The entity instance of type <typeparamref name="E"/>.
         /// </param>
-        void Dispose(T entity);
+        void Dispose(E entity);
 
-        void IEntityDispose.Dispose(IEntity entity) => this.Dispose((T) entity);
+        void IEntityDispose.Dispose(IEntity entity) => this.Dispose((E) entity);
     }
 }

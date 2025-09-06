@@ -435,7 +435,7 @@ namespace Atomic.Entities
             _valueFreeList = UNDEFINED_INDEX;
             _valueLastIndex = 0;
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
 
             for (int i = 0; i < removedCount; i++)
                 this.OnValueDeleted?.Invoke(this, removedItems[i]);
@@ -623,21 +623,21 @@ namespace Atomic.Entities
         private void NotifyAboutValueChanged(int key)
         {
             this.OnValueChanged?.Invoke(this, key);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void NotifyAboutValueAdded(int key)
         {
             this.OnValueAdded?.Invoke(this, key);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void NotifyAboutValueDeleted(int key)
         {
             this.OnValueDeleted?.Invoke(this, key);
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

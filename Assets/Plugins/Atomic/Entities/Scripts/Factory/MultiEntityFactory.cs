@@ -86,10 +86,10 @@ namespace Atomic.Entities
             _factories = new Dictionary<TKey, IEntityFactory<E>>(factory);
 
         /// <inheritdoc />
-        public void Add(TKey key, IEntityFactory<E> factory) => _factories.Add(key, factory);
+        public void Register(TKey key, IEntityFactory<E> factory) => _factories.Add(key, factory);
 
         /// <inheritdoc />
-        public void Remove(TKey key) => _factories.Remove(key);
+        public void Unregister(TKey key) => _factories.Remove(key);
 
         /// <inheritdoc />
         public E Create(TKey key)

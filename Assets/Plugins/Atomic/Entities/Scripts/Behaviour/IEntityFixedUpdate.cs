@@ -21,21 +21,21 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityFixedUpdate"/> for handling fixed update logic
     /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IEntity.OnFixedUpdate"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityFixedUpdate<in T> : IEntityFixedUpdate where T : IEntity
+    public interface IEntityFixedUpdate<in E> : IEntityFixedUpdate where E : IEntity
     {
         /// <summary>
         /// Called during the fixed update phase for a strongly-typed entity.
         /// </summary>
-        /// <param name="entity">The entity instance of type <typeparamref name="T"/>.</param>
+        /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         /// <param name="deltaTime">The fixed time step since the last update.</param>
-        void FixedUpdate(T entity, float deltaTime);
+        void FixedUpdate(E entity, float deltaTime);
 
         void IEntityFixedUpdate.FixedUpdate(IEntity entity, float deltaTime) =>
-            this.FixedUpdate((T) entity, deltaTime);
+            this.FixedUpdate((E) entity, deltaTime);
     }
 }

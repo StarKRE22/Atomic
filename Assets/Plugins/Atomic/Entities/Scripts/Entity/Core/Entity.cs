@@ -6,17 +6,21 @@ using System.Runtime.CompilerServices;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Represents the core implementation of an <see cref="IEntity"/> in the Atomic framework.
+    /// Represents the core implementation of an <see cref="IEntity"/> in the framework.
+    /// This class follows the Entity–State–Behaviour pattern, providing a modular container
+    /// for dynamic state, tags, behaviours, and lifecycle management.
     /// </summary>
     public partial class Entity : IEntity
     {
         private const int UNDEFINED_INDEX = -1;
 
         /// <inheritdoc/>
-        public event Action OnStateChanged;
+        public event Action<IEntity> OnStateChanged;
 
         /// <inheritdoc/>
         public int InstanceID => _instanceId;
+
+        internal int _instanceId;
 
         /// <inheritdoc/>
         public string Name
@@ -25,28 +29,47 @@ namespace Atomic.Entities
             set => _name = value;
         }
 
-        internal int _instanceId;
         private string _name;
-        private readonly bool _disposeValues;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with the specified name, tags, values, and behaviours.
+        /// Configuration settings for the entity.
+        /// </summary>
+        [Serializable]
+        public struct Settings
+        {
+            /// <summary>
+            /// Indicates whether stored values should be disposed automatically when <see cref="Dispose"/> is called.
+            /// Default is <c>true</c>.
+            /// </summary>
+            public bool disposeValues;
+        }
+
+        private readonly Settings _settings;
+        
+        /// <summary>
+        /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
         /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
-        /// <param name="tags">A collection of tag identifiers to add to the entity. May be <c>null</c>.</param>
-        /// <param name="values">A collection of key-value pairs to add as values to the entity. May be <c>null</c>.</param>
-        /// <param name="behaviours">A collection of behaviours to attach to the entity. May be <c>null</c>.</param>
+        /// <param name="tags">Optional collection of tag identifiers.</param>
+        /// <param name="values">Optional collection of key-value pairs.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach.</param>
+        /// <param name="settings">Optional entity settings. If <c>null</c>, <see cref="Settings.disposeValues"/> defaults to <c>true</c>.</param>
         /// <remarks>
-        /// This constructor initializes the internal capacities for tags, values, and behaviours based on the sizes of the provided collections,
-        /// and immediately adds all specified items to the entity.
+        /// The constructor initializes internal capacities based on the provided collections,
+        /// then adds all specified tags, values, and behaviours immediately.
         /// </remarks>
         public Entity(
             string name,
-            IEnumerable<int> tags,
-            IEnumerable<KeyValuePair<int, object>> values,
+            IEnumerable<string> tags,
+            IEnumerable<KeyValuePair<string, object>> values,
             IEnumerable<IEntityBehaviour> behaviours,
-            bool disposeValues = true
-        ) : this(name, tags?.Count() ?? 0, values?.Count() ?? 0, behaviours?.Count() ?? 0, disposeValues)
+            Settings? settings = null
+        ) : this(
+            name: name,
+            tagCapacity: tags?.Count() ?? 0,
+            valueCapacity: values?.Count() ?? 0,
+            behaviourCapacity: behaviours?.Count() ?? 0,
+            settings: settings)
         {
             this.AddTags(tags);
             this.AddValues(values);
@@ -54,27 +77,56 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class with the specified name and initial capacities
-        /// for tags, values, and behaviours.
+        /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>
-        /// <param name="name">The name of the entity. If <c>null</c>, an empty string will be used.</param>
-        /// <param name="tagCapacity">Initial capacity for tag storage. Used to reduce memory allocations.</param>
-        /// <param name="valueCapacity">Initial capacity for value storage. Used to reduce memory allocations.</param>
-        /// <param name="behaviourCapacity">Initial capacity for behaviour storage. Used to reduce memory allocations.</param>
+        /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
+        /// <param name="tags">Optional collection of tag identifiers.</param>
+        /// <param name="values">Optional collection of key-value pairs.</param>
+        /// <param name="behaviours">Optional collection of behaviours to attach.</param>
+        /// <param name="settings">Optional entity settings. If <c>null</c>, <see cref="Settings.disposeValues"/> defaults to <c>true</c>.</param>
         /// <remarks>
-        /// This constructor prepares internal structures for efficient use by preallocating capacity, and registers the entity
-        /// in the <see cref="EntityRegistry"/>.
+        /// The constructor initializes internal capacities based on the provided collections,
+        /// then adds all specified tags, values, and behaviours immediately.
+        /// </remarks>
+        public Entity(
+            string name,
+            IEnumerable<int> tags,
+            IEnumerable<KeyValuePair<int, object>> values,
+            IEnumerable<IEntityBehaviour> behaviours,
+            Settings? settings = null
+        ) : this(
+            name: name,
+            tagCapacity: tags?.Count() ?? 0,
+            valueCapacity: values?.Count() ?? 0,
+            behaviourCapacity: behaviours?.Count() ?? 0,
+            settings: settings)
+        {
+            this.AddTags(tags);
+            this.AddValues(values);
+            this.AddBehaviours(behaviours);
+        }
+
+        /// <summary>
+        /// Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
+        /// </summary>
+        /// <param name="name">The name of the entity. If <c>null</c>, an empty string is used.</param>
+        /// <param name="tagCapacity">Initial capacity for tag storage to minimize memory allocations.</param>
+        /// <param name="valueCapacity">Initial capacity for value storage to minimize memory allocations.</param>
+        /// <param name="behaviourCapacity">Initial capacity for behaviour storage to minimize memory allocations.</param>
+        /// <param name="settings">Optional entity settings. If <c>null</c>, <see cref="Settings.disposeValues"/> defaults to <c>true</c>.</param>
+        /// <remarks>
+        /// Preallocates internal structures for efficient usage and registers the entity in <see cref="EntityRegistry"/>.
         /// </remarks>
         public Entity(
             string name = null,
             int tagCapacity = 0,
             int valueCapacity = 0,
             int behaviourCapacity = 0,
-            bool disposeValues = true
+            Settings? settings = null
         )
         {
             _name = name ?? string.Empty;
-            _disposeValues = disposeValues;
+            _settings = settings ?? new Settings {disposeValues = true};
 
             this.ConstructTags(tagCapacity);
             this.ConstructValues(valueCapacity);
@@ -89,22 +141,29 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public override bool Equals(object obj) => obj is IEntity other && other.InstanceID == _instanceId;
 
-        // ReSharper disable once UnusedMember.Global
+        /// <summary>
+        /// Checks equality between this entity and another <see cref="IEntity"/> instance.
+        /// </summary>
+        /// <param name="other">The entity to compare.</param>
+        /// <returns><c>true</c> if the entities share the same <see cref="InstanceID"/>; otherwise, <c>false</c>.</returns>
         public bool Equals(IEntity other) => other != null && _instanceId == other.InstanceID;
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
 
         /// <summary>
-        /// Releases all resources used by the entity.
+        /// Cleans up all resources used by the entity.
         /// </summary>
         /// <remarks>
-        /// This method performs cleanup by:
         /// <list type="bullet">
-        /// <item><description>Calling <see cref="Despawn"/> to deactivate the entity.</description></item>
-        /// <item><description>Clearing all tags, values, and behaviours.</description></item>
-        /// <item><description>Unsubscribing from all events.</description></item>
-        /// <item><description>Unregistering the entity from the <see cref="EntityRegistry"/>.</description></item>
+        /// <item><description>Transitions an entity to not <c>Initialized</c> state.</description></item>
+        /// <item><description>Calls <see cref="IEntityDispose.Dispose"/> on all registered behaviours implementing <see cref="IEntityDispose"/>.</description></item>
+        /// <item><description>Clears all tags, values, and behaviours.</description></item>
+        /// <item><description>Unsubscribes from all events.</description></item>
+        /// <item><description>Unregisters the entity from <see cref="EntityRegistry"/>.</description></item>
+        /// <item><description>Disposes stored values if <see cref="Settings.disposeValues"/> is <c>true</c>.</description></item>
+        /// <item><description>If the entity is enabled, this method automatically calls <see cref="Disable"/>.</description></item>
+        /// <item><description>If the entity is not initialized yet, this method does not call <see cref="IEntityDispose.Dispose"/> or <see cref="OnDisposed"/>.</description></item>
         /// </list>
         /// </remarks>
         public void Dispose()
@@ -112,14 +171,14 @@ namespace Atomic.Entities
             this.OnDispose();
             this.DisposeInternal();
 
-            if (_disposeValues)
+            if (_settings.disposeValues)
                 this.DisposeValues();
 
             this.ClearTags();
             this.ClearValues();
             this.ClearBehaviours();
 
-            this.OnStateChanged?.Invoke();
+            this.OnStateChanged?.Invoke(this);
 
             this.UnsubscribeEvents();
             EntityRegistry.Instance.Unregister(ref _instanceId);

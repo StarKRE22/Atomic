@@ -20,20 +20,20 @@ namespace Atomic.Entities
     /// Provides a strongly-typed version of <see cref="IEntityUpdate"/> for handling update logic
     /// on a specific <see cref="IEntity"/> type.
     /// </summary>
-    /// <typeparam name="T">The concrete entity type this behavior is associated with.</typeparam>
+    /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
     /// This method is automatically invoked by <see cref="IEntity.OnUpdate"/> 
-    /// when the behavior is registered on an entity of type <typeparamref name="T"/>.
+    /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
-    public interface IEntityUpdate<in T> : IEntityUpdate where T : IEntity
+    public interface IEntityUpdate<in E> : IEntityUpdate where E : IEntity
     {
         /// <summary>
         /// Called during the main update phase of the frame.
         /// </summary>
         /// <param name="entity">The strongly-typed entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void OnUpdate(T entity, float deltaTime);
+        void OnUpdate(E entity, float deltaTime);
 
-        void IEntityUpdate.Update(IEntity entity, float deltaTime) => this.OnUpdate((T) entity, deltaTime);
+        void IEntityUpdate.Update(IEntity entity, float deltaTime) => this.OnUpdate((E) entity, deltaTime);
     }
 }

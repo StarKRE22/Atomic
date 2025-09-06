@@ -2,10 +2,8 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class GameContext : Entity, IGameContext
+    public sealed class GameContext : EntitySingleton<GameContext>, IGameContext
     {
-        public static GameContext Instance;
-
         public GameContext(
             string name = null,
             int tagCapacity = 0,
@@ -13,12 +11,10 @@ namespace RTSGame
             int behaviourCapacity = 0
         ) : base(name, tagCapacity, valueCapacity, behaviourCapacity)
         {
-            Instance = this;
         }
 
-        protected override void OnDispose()
+        public GameContext()
         {
-            Instance = null;
         }
     }
 }

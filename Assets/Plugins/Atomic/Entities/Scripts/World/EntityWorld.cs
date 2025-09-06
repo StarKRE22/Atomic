@@ -19,22 +19,34 @@ namespace Atomic.Entities
     /// </remarks>
     public class EntityWorld : EntityWorld<IEntity>, IEntityWorld
     {
-        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes an empty <see cref="EntityWorld"/> instance with no name.
+        /// </summary>
         public EntityWorld()
         {
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld"/> with the specified entities and an empty name.
+        /// </summary>
+        /// <param name="entities">Entities to prepopulate the world with.</param>
         public EntityWorld(params IEntity[] entities) : base(entities)
         {
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld"/> with the specified entities and an empty name.
+        /// </summary>
+        /// <param name="entities">Entities to prepopulate the world with.</param>
         public EntityWorld(string name = null, params IEntity[] entities) : base(name, entities)
         {
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Initializes a new <see cref="EntityWorld"/> with a name and a collection of entities.
+        /// </summary>
+        /// <param name="name">The name of the world.</param>
+        /// <param name="entities">The enumerable collection of entities to add.</param>
         public EntityWorld(string name, IEnumerable<IEntity> entities) : base(name, entities)
         {
         }
@@ -235,7 +247,3 @@ namespace Atomic.Entities
         }
     }
 }
-
-
-
-

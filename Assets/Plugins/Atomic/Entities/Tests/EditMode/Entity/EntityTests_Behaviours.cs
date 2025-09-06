@@ -182,7 +182,7 @@ namespace Atomic.Entities
                 behaviourStub
             };
 
-            var entity = new Entity(null, null, null, expectedBehaviours);
+            var entity = new Entity(null, Array.Empty<string>(), null, expectedBehaviours);
 
             // Act
             var actualBehaviours = entity.GetBehaviours();
@@ -247,7 +247,7 @@ namespace Atomic.Entities
             var initStub = new EntityInitStub();
             var behaviourStub = new DummyEntityBehaviour();
 
-            var entity = new Entity(null, null, null, new IEntityBehaviour[]
+            var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[]
             {
                 updateStub,
                 initStub
@@ -317,7 +317,7 @@ namespace Atomic.Entities
             var updateStub = new EntityUpdateStub();
             IEntityBehaviour addedBehaviour = null;
 
-            var entity = new Entity(null, null, null, new IEntityBehaviour[] {updateStub});
+            var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[] {updateStub});
             entity.OnBehaviourAdded += (_, b) => addedBehaviour = b;
 
             // Act
@@ -335,7 +335,7 @@ namespace Atomic.Entities
             var initStub = new EntityInitStub();
             IEntityBehaviour addedBehaviour = null;
 
-            var entity = new Entity(null, null, null, new IEntityBehaviour[] {updateStub});
+            var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[] {updateStub});
             entity.OnBehaviourAdded += (_, b) => addedBehaviour = b;
 
             // Act
@@ -413,7 +413,7 @@ namespace Atomic.Entities
             var initStub = new EntityInitStub();
             var behaviourStub = new DummyEntityBehaviour();
 
-            var entity = new Entity(null, null, null, new IEntityBehaviour[]
+            var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[]
             {
                 updateStub,
                 initStub
@@ -546,7 +546,7 @@ namespace Atomic.Entities
             var entity = new Entity();
             var deleted = new List<IEntityBehaviour>();
 
-            entity.OnBehaviourDeleted += (e, b) => deleted.Add(b);
+            entity.OnBehaviourDeleted += (_, b) => deleted.Add(b);
 
             entity.AddBehaviours(new IEntityBehaviour[]
             {
@@ -568,7 +568,7 @@ namespace Atomic.Entities
             var stateChanged = false;
 
             var entity = new Entity();
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
 
             entity.AddBehaviour(stub);
 
@@ -586,7 +586,7 @@ namespace Atomic.Entities
             var stateChanged = false;
             var behaviourDeletedCalled = false;
 
-            entity.OnStateChanged += () => stateChanged = true;
+            entity.OnStateChanged += _ => stateChanged = true;
             entity.OnBehaviourDeleted += (_, _) => behaviourDeletedCalled = true;
 
             // Act:

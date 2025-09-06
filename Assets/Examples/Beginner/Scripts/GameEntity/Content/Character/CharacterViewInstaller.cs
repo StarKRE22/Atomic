@@ -14,7 +14,7 @@ namespace BeginnerGame
         [SerializeField]
         private Transform _canvas;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             //Team:
             entity.AddRenderer(_renderer);

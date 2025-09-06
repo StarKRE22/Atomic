@@ -1224,7 +1224,7 @@ namespace Atomic.Entities
         {
             var entity = new Entity();
             bool changed = false;
-            entity.OnStateChanged += () => changed = true;
+            entity.OnStateChanged += _ => changed = true;
 
             entity.SetValue(1, 123);
             entity.ClearValues();

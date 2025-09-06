@@ -7,7 +7,7 @@ namespace RTSGame
         fileName = "GameContextFactory",
         menuName = "RTSGame/New GameContextFactory"
     )]
-    public sealed class GameContextFactory : ScriptableEntityFactory<IGameContext>
+    public sealed class GameContextFactory : ScriptableEntityFactory<GameContext>
     {
         [SerializeField]
         private GameEntitySystemInstaller _gameEntityInstaller;
@@ -18,7 +18,7 @@ namespace RTSGame
         [SerializeField]
         private TeamViewConfig _teamViewConfig;
 
-        public override IGameContext Create()
+        public override GameContext Create()
         {
             var context = new GameContext(
                 this.name,

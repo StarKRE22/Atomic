@@ -9,7 +9,7 @@ namespace BeginnerGame
         [SerializeField]
         private Const<int> _money = 1;
 
-        protected override void Install(IGameEntity entity)
+        public override void Install(IGameEntity entity)
         {
             entity.AddCoinTag();
             entity.AddPosition(new TransformPositionVariable(this.transform));
