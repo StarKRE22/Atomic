@@ -151,7 +151,7 @@ The table shows median execution times of key operations, illustrating the overh
 | Add        | 51.70               | 21.20                       |
 | Clear      | 0.10                | 9.30                        |
 | Contains   | 46.00               | 9.60                        |
-| Enumerator | 0.10                | 7.40                        |
+| Enumerator | 11.00               | 7.40                        |
 | Remove     | 23.50               | 53.90                       |
 
 > **Note:** `ReactiveHashSet` shows **much lower median times for Add, Contains, and Enumerator**, thanks to internal optimizations and preallocated slots.  
