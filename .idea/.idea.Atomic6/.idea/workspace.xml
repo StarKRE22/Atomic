@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,23 +148,7 @@
       <workItem from="1757058837081" duration="7166000" />
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
-      <workItem from="1757167610415" duration="6795000" />
-    </task>
-    <task id="LOCAL-00063" summary="Сущности мы написали!">
-      <option name="closed" value="true" />
-      <created>1756808326787</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1756808326787</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Короч, раздел с Entities переделываем на таблицу!">
-      <option name="closed" value="true" />
-      <created>1756812652565</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1756812652565</updated>
+      <workItem from="1757167610415" duration="10701000" />
     </task>
     <task id="LOCAL-00065" summary="Переделал доку для IEntity.md">
       <option name="closed" value="true" />
@@ -541,7 +526,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757184951541</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Обработал UnityQuickStart">
+      <option name="closed" value="true" />
+      <created>1757185745811</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1757185745811</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757191036438</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1757191036438</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +569,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал EntityWorld.md &amp; EntityRegistry.md" />
     <MESSAGE value="Написал EntityFilter.md &amp; IEntityTrigger.md" />
     <MESSAGE value="Написал TagEntityTrigger.cs" />
     <MESSAGE value="Написал ValueEntityTrigger.md" />
@@ -590,10 +590,11 @@
     <MESSAGE value="Сделал EntityView!" />
     <MESSAGE value="Написал EntityCollectionView.md" />
     <MESSAGE value="Вроде основная часть доки готова!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Пилим README.md" />
     <MESSAGE value="Сделал раздел Framework Structure!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел Framework Structure!" />
+    <MESSAGE value="Обработал UnityQuickStart" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

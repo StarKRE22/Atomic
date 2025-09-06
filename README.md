@@ -17,14 +17,14 @@ pattern and using `Atomic` elements for data organization.
 - [Using Odin Inspector](#-using-odin-inspector)
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concepts)
-- [Framework Structure](#-framework-structure)
+- [Documentation](#-documentation)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
 - [Tutorials](#-tutorials)
 - [Game Examples](#-game-examples)
-- [Best Practices](#best-practices)
-- [License](#license)
-- [Contacts](#contacts)
+- [Best Practices](#-best-practices)
+- [License](#-license)
+- [Contacts](#-contacts)
 
 ## 📝 Requirements
 
@@ -95,21 +95,19 @@ and a `centralized data registry` instead of decentralized objects.
 
 ---
 
-## 🏗️ Framework Structure
+## 📚 Documentation
 
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)**  
+### `Atomic.Elements` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)  
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
   The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
 
 
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)**  
-  **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.**  
-  In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
+### `Atomic.Entities` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)  
+  **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
-> To explore the documentation for each module in more detail, click the links above.
 ---
 
 ## 🚀 Unity Quick Start
@@ -292,7 +290,7 @@ character.Disable();
 entity.Dispose();
 ```
 
-## 📚 Tutorials
+## 📖 Tutorials
 Coming Soon
 
 <!-- 
@@ -418,11 +416,13 @@ This sample illustrates:
 - Advanced **entity management patterns** using Atomic concepts
 - Techniques for **high-speed updates, filtering, and reactive triggers**
 
-## Best Practices
+---
+
+## 📌 Best Practices
 
 TODO:
 
-## License
+## ⚖️ License
 
 This project is licensed under the [MIT License](./LICENSE.md).
 
@@ -450,7 +450,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## Contacts
+## 📧 Contacts
 
 **Author:** Igor Gulkin  
 **Telegram:** [@starkre22](https://t.me/starkre22)  
