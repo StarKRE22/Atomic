@@ -46,8 +46,8 @@ To achieve **flexibility and reusability**, Atomic uses **static methods** and *
 
 ## Manual References
 Atomic Framework consists of three main modules, each with its own detailed documentation that you can access via the links below:
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — modular and reusable components for Unity development ⚙️
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — manage and deploy entities across project architecture 🏗️
+- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** is a library of reactive and modular components for Unity and C# ⚙️
+- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** is a framework for Unity and C# that allows you to architect your game using entities
 
 <!--
 - **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
