@@ -17,7 +17,7 @@ pattern and using `Atomic` elements for data organization.
 - [Using Odin Inspector](#-using-odin-inspector)
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concept)
-- [Manual References](#manual-references)
+- [Framework Structure](#-framework-structure)
 - [Unity Quick Start](#unity-quick-start)
 - [C Sharp Quick Start](#c-sharp-quick-start)
 - [Tutorial](#tutorial)
@@ -90,40 +90,22 @@ and a `centralized data registry` instead of decentralized objects.
    The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the flow of game logic consistent.
 
 
+## 🏗️ Framework Structure
 
-
-Thus Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
+Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
 - **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)**  
-  A library of reactive and modular components for Unity and C#.  
-  Think of **Elements** as the building blocks or constructors. They are **atomic pieces of data, logic, and behavior**
-  that can react to changes and events. You use them to assemble more complex functionality without directly coupling
-  components.
+**A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
+  The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
+
 
 - **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)**  
-  A framework for creating and managing entities in Unity and C#.  
-  **Entities** act as containers that hold data, logic, and tags. They are the “objects” in your game world, but instead
-  of being monolithic, they are **composed dynamically** using the atomic elements from Atomic.Elements.  
-  Essentially, while **Elements** are the Lego bricks, **Entities** are the Lego structures built from these bricks. You
-  populate entities with elements, behaviors, and tags to create fully-featured game objects.
+  **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.**  
+  In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
-<!--
-## Manual References
-Atomic Framework consists of two main modules, each with its own detailed documentation that you can access via the links below:
-- **[Atomic.Elements](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)** — a library of reactive and modular components for Unity and C#
-- **[Atomic.Entities](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)** — a framework for Unity and C# that allows you to architect your game using entities
--->
+> To explore the documentation for each module in more detail, click the links above.
 
-<!--
-- **[Atomic.EventBus](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/EventBus/Docs/Manual.md)** — high-performance event handling system ⚡
--->
-
-<!-- ## Quick Start
-The Quick Start guide contains **two examples**:
-- Using **Unity** with GameObjects and installers 🕹️  
-- Using **pure C#** without Unity components 💻
--->
 
 ## Unity Quick Start
 
