@@ -3,6 +3,7 @@ using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -78,11 +79,11 @@ namespace Atomic.Entities
             this.Hide();
             
             _source = source ?? throw new ArgumentNullException(nameof(source));
-            _source.OnAdded += this.AddView;
-            _source.OnRemoved += this.RemoveView;
+            _source.OnAdded += this.Add;
+            _source.OnRemoved += this.Remove;
 
             foreach (E entity in _source)
-                this.AddView(entity);
+                this.Add(entity);
         }
 
         /// <summary>
@@ -90,12 +91,12 @@ namespace Atomic.Entities
         /// </summary>
         public void Hide()
         {
-            this.ClearViews();
+            this.Clear();
             
             if (_source != null)
             {
-                _source.OnAdded -= this.AddView;
-                _source.OnRemoved -= this.RemoveView;
+                _source.OnAdded -= this.Add;
+                _source.OnRemoved -= this.Remove;
                 _source = null;
             }
         }
@@ -106,18 +107,18 @@ namespace Atomic.Entities
         /// <param name="entity">The entity whose view is requested.</param>
         /// <returns>The active <see cref="EntityView{E}"/> instance associated with the entity.</returns>
         /// <exception cref="KeyNotFoundException">Thrown if the entity is not in the collection.</exception>
-        public EntityView<E> GetView(E entity) => _views[entity];
+        public EntityView<E> Get(E entity) => _views[entity];
 
         /// <summary>
         /// Creates and shows a view for the specified entity, if it does not already exist.
         /// </summary>
         /// <param name="entity">The entity to visualize.</param>
-        public void AddView(E entity)
+        public void Add(E entity)
         {
             if (_views.ContainsKey(entity))
                 return;
 
-            string name = this.GetEntityName(entity);
+            string name = this.GetName(entity);
             V view = this.viewPool.Rent(name);
             view.transform.SetParent(this.viewport);
             view.Show(entity);
@@ -130,7 +131,7 @@ namespace Atomic.Entities
         /// Hides and returns the view associated with the specified entity to the view pool.
         /// </summary>
         /// <param name="entity">The entity whose view should be removed.</param>
-        public void RemoveView(E entity)
+        public void Remove(E entity)
         {
             if (!_views.Remove(entity, out V view))
                 return;
@@ -138,14 +139,14 @@ namespace Atomic.Entities
             view.Hide();
             this.OnRemoved?.Invoke(entity, view);
 
-            string name = this.GetEntityName(entity);
+            string name = this.GetName(entity);
             this.viewPool.Return(name, view);
         }
 
         /// <summary>
         /// Removes all active entity views, returning them to the view pool.
         /// </summary>
-        public void ClearViews()
+        public void Clear()
         {
             int viewCount = _views.Count;
             if (viewCount == 0)
@@ -157,7 +158,7 @@ namespace Atomic.Entities
             try
             {
                 for (int i = 0; i < viewCount; i++)
-                    this.RemoveView(buffer[i]);
+                    this.Remove(buffer[i]);
             }
             finally
             {
@@ -187,7 +188,8 @@ namespace Atomic.Entities
         /// Override this method to implement custom naming logic 
         /// (e.g., categorizing entities or supporting localization).
         /// </remarks>
-        protected virtual string GetEntityName(E entity) => entity.Name;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual string GetName(E entity) => entity.Name;
     }
 }
 #endif

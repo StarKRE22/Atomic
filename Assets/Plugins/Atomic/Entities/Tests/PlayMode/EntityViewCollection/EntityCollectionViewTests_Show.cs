@@ -22,8 +22,8 @@ namespace Atomic.Entities
             _collection.Show(source);
 
             Assert.AreEqual(2, _collection.Count, "Все сущности из источника должны быть добавлены");
-            Assert.NotNull(_collection.GetView(entityA));
-            Assert.NotNull(_collection.GetView(entityB));
+            Assert.NotNull(_collection.Get(entityA));
+            Assert.NotNull(_collection.Get(entityB));
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace Atomic.Entities
             source.Add(newEntity); // должно подтянуть вьюшку автоматически
 
             Assert.AreEqual(2, _collection.Count, "После добавления в источник коллекция должна обновиться");
-            Assert.NotNull(_collection.GetView(newEntity));
+            Assert.NotNull(_collection.Get(newEntity));
         }
 
         [Test]
@@ -55,8 +55,8 @@ namespace Atomic.Entities
 
             Assert.AreEqual(1, _collection.Count, "После смены источника должны остаться только сущности из нового источника");
             Assert.IsTrue(_collection.IsVisible);
-            Assert.NotNull(_collection.GetView(entityB));
-            Assert.Throws<KeyNotFoundException>(() => _collection.GetView(entityA), "Старые сущности должны быть удалены");
+            Assert.NotNull(_collection.Get(entityB));
+            Assert.Throws<KeyNotFoundException>(() => _collection.Get(entityA), "Старые сущности должны быть удалены");
         }
     }
 }

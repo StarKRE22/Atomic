@@ -10,9 +10,9 @@ namespace Atomic.Entities
         {
             var entity = new Entity("Player");
 
-            _collection.AddView(entity);
+            _collection.Add(entity);
 
-            var view = _collection.GetView(entity);
+            var view = _collection.Get(entity);
 
             Assert.NotNull(view, "GetView должен вернуть вьюшку для существующей сущности");
             Assert.AreEqual(entity, view.Entity, "Вьюшка должна быть связана с правильной сущностью");
@@ -24,7 +24,7 @@ namespace Atomic.Entities
             var entity = new Entity("Enemy");
 
             Assert.Throws<KeyNotFoundException>(
-                () => _collection.GetView(entity),
+                () => _collection.Get(entity),
                 "Если сущности нет в коллекции, должно выбрасываться KeyNotFoundException"
             );
         }

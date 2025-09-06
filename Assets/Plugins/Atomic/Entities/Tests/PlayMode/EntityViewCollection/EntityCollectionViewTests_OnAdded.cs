@@ -21,7 +21,7 @@ namespace Atomic.Entities
                 receivedView = v;
             };
 
-            _collection.AddView(entity);
+            _collection.Add(entity);
             yield return null;
 
             Assert.AreEqual(entity, receivedEntity);
@@ -37,8 +37,8 @@ namespace Atomic.Entities
 
             _collection.OnAdded += (_, _) => callCount++;
 
-            _collection.AddView(entity);
-            _collection.AddView(entity); // второй раз та же сущность
+            _collection.Add(entity);
+            _collection.Add(entity); // второй раз та же сущность
             yield return null;
 
             Assert.AreEqual(1, callCount, "OnAdded должно быть вызвано только один раз");

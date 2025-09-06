@@ -11,8 +11,8 @@ namespace Atomic.Entities
             var entityA = new Entity("Player");
             var entityB = new Entity("Enemy");
 
-            _collection.AddView(entityA);
-            _collection.AddView(entityB);
+            _collection.Add(entityA);
+            _collection.Add(entityB);
 
             var pairs = _collection.ToList();
 
@@ -27,10 +27,10 @@ namespace Atomic.Entities
             var entityA = new Entity("Player");
             var entityB = new Entity("Enemy");
 
-            _collection.AddView(entityA);
-            _collection.AddView(entityB);
+            _collection.Add(entityA);
+            _collection.Add(entityB);
 
-            _collection.RemoveView(entityA);
+            _collection.Remove(entityA);
 
             var pairs = _collection.ToList();
 
@@ -42,7 +42,7 @@ namespace Atomic.Entities
         public void Foreach_WorksCorrectly()
         {
             var entity = new Entity("Player");
-            _collection.AddView(entity);
+            _collection.Add(entity);
 
             int count = 0;
             foreach (var pair in _collection)

@@ -11,14 +11,14 @@ namespace Atomic.Entities
             IEntity removedEntity = null;
             EntityView removedView = null;
 
-            _collection.AddView(entity);
+            _collection.Add(entity);
             _collection.OnRemoved += (e, v) =>
             {
                 removedEntity = e;
                 removedView = v;
             };
 
-            _collection.RemoveView(entity);
+            _collection.Remove(entity);
 
             Assert.AreEqual(entity, removedEntity);
             Assert.NotNull(removedView);
@@ -33,7 +33,7 @@ namespace Atomic.Entities
 
             _collection.OnRemoved += (_, _) => callCount++;
 
-            _collection.RemoveView(entity);
+            _collection.Remove(entity);
 
             Assert.AreEqual(0, callCount, "OnRemoved должно вызываться только при реальном удалении");
         }
@@ -44,11 +44,11 @@ namespace Atomic.Entities
             var entity = new Entity("Enemy");
             int callCount = 0;
 
-            _collection.AddView(entity);
+            _collection.Add(entity);
             _collection.OnRemoved += (_, _) => callCount++;
 
-            _collection.RemoveView(entity);
-            _collection.RemoveView(entity); // повторное удаление
+            _collection.Remove(entity);
+            _collection.Remove(entity); // повторное удаление
 
             Assert.AreEqual(1, callCount, "OnRemoved должно вызваться только один раз");
         }

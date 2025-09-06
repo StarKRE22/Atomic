@@ -17,7 +17,7 @@ namespace Atomic.Entities
                 addedView = v;
             };
 
-            _collection.AddView(entity);
+            _collection.Add(entity);
 
             Assert.AreEqual(entity, addedEntity, "OnAdded должно быть вызвано для добавленной сущности");
             Assert.NotNull(addedView, "Созданная вьюшка не должна быть null");
@@ -33,8 +33,8 @@ namespace Atomic.Entities
 
             _collection.OnAdded += (_, _) => callCount++;
 
-            _collection.AddView(entity);
-            _collection.AddView(entity); // повторное добавление той же сущности
+            _collection.Add(entity);
+            _collection.Add(entity); // повторное добавление той же сущности
 
             Assert.AreEqual(1, callCount, "OnAdded должно быть вызвано только один раз");
             Assert.AreEqual(1, _collection.Count, "Count не должен увеличиваться при повторном добавлении");
