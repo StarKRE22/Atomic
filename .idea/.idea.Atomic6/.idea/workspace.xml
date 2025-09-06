@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Docs/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,15 +147,7 @@
       <workItem from="1757058837081" duration="7166000" />
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
-      <workItem from="1757167610415" duration="2441000" />
-    </task>
-    <task id="LOCAL-00058" summary="Прошурудил Entity &amp; IEntity!">
-      <option name="closed" value="true" />
-      <created>1756757611760</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1756757611760</updated>
+      <workItem from="1757167610415" duration="4996000" />
     </task>
     <task id="LOCAL-00059" summary="Написал EntitySingleton.md">
       <option name="closed" value="true" />
@@ -541,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757166302195</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757181370087</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1757181370087</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +582,6 @@
     <MESSAGE value="Написал EntityViewBase.md" />
     <MESSAGE value="Остался маленький кусочек! Завтра добью!" />
     <MESSAGE value="Добавляем Aspects!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Вроде с визуалом разобрались!" />
     <MESSAGE value="Переписал EntityCollectionView.cs" />
@@ -593,7 +592,8 @@
     <MESSAGE value="Сделал EntityView!" />
     <MESSAGE value="Написал EntityCollectionView.md" />
     <MESSAGE value="Вроде основная часть доки готова!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Вроде основная часть доки готова!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
