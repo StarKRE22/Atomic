@@ -5,15 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveDictionary.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveHashSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveHashSet.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveLinkedList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveList.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/IteratingReactiveCollections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/IteratingReactiveCollections.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/PreferAbstractInterfaces.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/RequestConditionActionEventPattern.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/RequestConditionActionEventPattern.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/RequestsVsActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/RequestsVsActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/RequestsVsActions.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/RequestsVsActions.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/SharedConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/SharedConstants.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/SharedConstants.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Docs/BestPractices/SharedConstants.md.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/DefaultConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/DefaultConstants.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,39 +162,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="11462000" />
-    </task>
-    <task id="LOCAL-00073" summary="Написал IEntityFactoryCatalog.md">
-      <option name="closed" value="true" />
-      <created>1756891895977</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1756891895977</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Написал ScriptableEntityFactoryCatalog.md">
-      <option name="closed" value="true" />
-      <created>1756893243471</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1756893243471</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Написал раздел Factories!">
-      <option name="closed" value="true" />
-      <created>1756894096368</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1756894096368</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Написал про Baker!">
-      <option name="closed" value="true" />
-      <created>1756919961362</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1756919961362</updated>
+      <workItem from="1757234040454" duration="12146000" />
     </task>
     <task id="LOCAL-00077" summary="Написал EntityPools!">
       <option name="closed" value="true" />
@@ -550,7 +524,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757243199568</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246388247</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246388247</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246540162</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246540162</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246582781</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246582781</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246702301</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246702301</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал раздел Lifecycle" />
     <MESSAGE value="Написал EntityNames.md" />
     <MESSAGE value="Написал EntityViewBase.md" />
     <MESSAGE value="Остался маленький кусочек! Завтра добью!" />
@@ -602,7 +607,8 @@
     <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
     <MESSAGE value="Обновляем Best Practices" />
     <MESSAGE value="Написал Using Shared Constants!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал Using Shared Constants!" />
+    <MESSAGE value="Сделал  Iterating over Reactive Collections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал  Iterating over Reactive Collections" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

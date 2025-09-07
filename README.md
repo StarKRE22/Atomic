@@ -401,13 +401,17 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 5. Baking Unity scene objects into a C# game system
 ---
 
+
 ## 📌 Best Practices
 
-This section is dedicated to sharing **Best Practices** for using the `Atomic` framework.
+This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
 
-For now, you can explore the following links to read best practices directly:
-- [Atomic.Elements](Assets/Plugins/Atomic/Elements/Docs/Manual.md#-best-practices)
-- [Atomic.Entities](Assets/Plugins/Atomic/Entities/Docs/Manual.md#-best-practices)
+- [Prefer Interfaces to Concrete Classes](Assets/Plugins/Atomic/Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Use Shared Constants](Assets/Plugins/Atomic/Docs/BestPractices/SharedConstants.md)
+- [Iterating over Reactive Collections](Assets/Plugins/Atomic/Docs/BestPractices/IteratingReactiveCollections.md)
+- [Requests vs Actions](Assets/Plugins/Atomic/Docs/BestPractices/RequestsVsActions.md)
+
+
 
 A comprehensive guide covering general best practices across the framework will be added here soon.
 
