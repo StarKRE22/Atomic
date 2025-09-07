@@ -8,19 +8,19 @@ Following the **Dependency Inversion Principle** is especially important in mult
 
 ## 🗂 Example Usage
 
-### ✅ Good Usage
-```csharp
-IVariable<Vector3> position = entity.GetPosition();
-IValue<Vector3> moveDirection = entity.GetMoveDirection();
-IValue<float> speed = entity.GetMoveSpeed();
-position.Value += speed.Value * moveDirection.Value;
-```
-
 ### ❌Bad Usage
 ```csharp
 ReactiveVariable<Vector3> position = entity.GetPosition();
 ReactiveVariable<Vector3> moveDirection = entity.GetMoveDirection();
 Const<float> speed = entity.GetMoveSpeed();
+position.Value += speed.Value * moveDirection.Value;
+```
+
+### ✅ Good Usage
+```csharp
+IVariable<Vector3> position = entity.GetPosition();
+IValue<Vector3> moveDirection = entity.GetMoveDirection();
+IValue<float> speed = entity.GetMoveSpeed();
 position.Value += speed.Value * moveDirection.Value;
 ```
 

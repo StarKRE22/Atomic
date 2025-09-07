@@ -147,7 +147,7 @@ foreach (var item in list)
     Console.WriteLine(item);
 ```
 
-## Performance
+## 🔥 Performance
 
 The performance comparison below was measured on a **MacBook with Apple M1** and for collections containing **1000 elements of type `object`**.  
 The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.

@@ -120,11 +120,11 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
 
 **Collections**
-  - [ReactiveArray](Collections/ReactiveArray.md/#performance) – performance benchmarks for reactive arrays.
-  - [ReactiveList](Collections/ReactiveList.md/#performance) – performance benchmarks for reactive lists.
-  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#performance) – performance benchmarks for reactive linked lists.
-  - [ReactiveDictionary](Collections/ReactiveDictionary.md/#performance) – performance benchmarks for reactive dictionaries.
-  - [ReactiveHashSet](Collections/ReactiveHashSet.md/#performance) – performance benchmarks for reactive hash sets.
+  - [ReactiveArray](Collections/ReactiveArray.md/#-performance) – performance benchmarks for reactive arrays.
+  - [ReactiveList](Collections/ReactiveList.md/#-performance) – performance benchmarks for reactive lists.
+  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#-performance) – performance benchmarks for reactive linked lists.
+  - [ReactiveDictionary](Collections/ReactiveDictionary.md/#-performance) – performance benchmarks for reactive dictionaries.
+  - [ReactiveHashSet](Collections/ReactiveHashSet.md/#-performance) – performance benchmarks for reactive hash sets.
 
 ## 📌 Best Practices
 
@@ -132,6 +132,6 @@ This section outlines **recommended approaches and patterns** when working with 
 
 - [Prefer Interfaces to Concrete Classes](BestPractices/PreferAbstractInterfaces.md)
 - [Use Shared Constants](BestPractices/SharedConstants.md)
-- [Iterating Reactive Collections](BestPractices/IteratingReactiveCollections.md)
+- [Iterating over Reactive Collections](BestPractices/IteratingReactiveCollections.md)
 - [Request-Condition-Action-Event Pattern](BestPractices/RequestConditionActionEventPattern.md)
 - [Requests vs Actions](BestPractices/RequestsVsActions.md)

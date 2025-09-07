@@ -1,4 +1,4 @@
-# 🧩 Default constants
+# 🧩 Default Constants
 
 ## Boolean Constants
 | Name    | Value   | Description        |
