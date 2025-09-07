@@ -100,12 +100,12 @@ and a `centralized data registry` instead of decentralized objects.
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
-### `Atomic.Elements` [(Read More)](Assets/Plugins/Atomic/Elements/Docs/Manual.md)  
+### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)  
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
   The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
 
 
-### `Atomic.Entities` [(Read More)](Assets/Plugins/Atomic/Entities/Docs/Manual.md)  
+### `Atomic.Entities` [(Read More)](Docs/Entities/Manual.md)  
   **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
 ---
@@ -406,14 +406,10 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 
 This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
 
-- [Prefer Interfaces to Concrete Classes](Assets/Plugins/Atomic/Docs/BestPractices/PreferAbstractInterfaces.md)
-- [Use Shared Constants](Assets/Plugins/Atomic/Docs/BestPractices/SharedConstants.md)
-- [Iterating over Reactive Collections](Assets/Plugins/Atomic/Docs/BestPractices/IteratingReactiveCollections.md)
-- [Requests vs Actions](Assets/Plugins/Atomic/Docs/BestPractices/RequestsVsActions.md)
-
-
-
-A comprehensive guide covering general best practices across the framework will be added here soon.
+- [Prefer Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
+- [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)
+- [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
 
 ## ⚖️ License
 

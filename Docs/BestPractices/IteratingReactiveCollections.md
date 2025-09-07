@@ -47,7 +47,7 @@ foreach(string item in items)
 When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the stack**, which can slightly slow down iteration. 
 
 > [!NOTE]
-> Performance tests confirm this behavior for both [ReactiveList](../Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Collections/ReactiveArray.md/#-performance).
+> Performance tests confirm this behavior for both [ReactiveList](../Elements/Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Elements/Collections/ReactiveArray.md/#-performance).
 
 ### ❌ Bad Practice
 ```csharp
@@ -104,6 +104,6 @@ foreach(string item in items)
 
 > [!NOTE]  
 > For detailed `performance` analysis, see the following sections:
-> - [ReactiveLinkedList](../Collections/ReactiveLinkedList.md/#-performance)
-> - [ReactiveDictionary](../Collections/ReactiveDictionary.md/#-performance)
-> - [ReactiveHashSet](../Collections/ReactiveHashSet.md/#-performance)
+> - [ReactiveLinkedList](../Elements/Collections/ReactiveLinkedList.md/#-performance)
+> - [ReactiveDictionary](../Elements/Collections/ReactiveDictionary.md/#-performance)
+> - [ReactiveHashSet](../Elements/Collections/ReactiveHashSet.md/#-performance)

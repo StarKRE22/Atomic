@@ -43,6 +43,6 @@ public sealed class Character : MonoBehaviour
 These constants are **lightweight**, **immutable**, and can be **safely shared** between multiple objects or components.
 
 > [!NOTE] 
-> You can explore all available default constants by following this link: [DefaultConstants](../Values/DefaultConstants.md)
+> You can explore all available default constants by following this link: [DefaultConstants](../Elements/Values/DefaultConstants.md)
 
 ---
