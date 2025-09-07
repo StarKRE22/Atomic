@@ -336,10 +336,6 @@ The `Beginner Sample` is a **simple 2-player mini-game** designed to introduce t
 6. Developing **Atomic UI** using the **MVP-Passive View** pattern.
 7. Writing **Unit tests** to validate entity logic and behaviors.
 
-
-<!-- 
-Тут!
--->
 ### 2️⃣ Top-Down Shooter Sample
 <img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
@@ -385,34 +381,24 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 
 The RTS Sample is designed to demonstrate **high-performance entity management** with a large number of units.
 
-#### Core Idea
+> **Gameplay**
+> - **Armies:** Two large armies are placed on the scene and attack each other automatically. Each army consists of infantry, tanks, and buildings.
+> - **Building:** Has health points.
+> - **Infantry:** Has health, performs melee attacks, and can detect the nearest available enemy.
+> - **Tank:** Has health, fires projectiles, and can detect the nearest available enemy.
+> - **Projectile:** Moves toward its target and has a limited lifetime.
 
-- Unity serves purely as a **visualization layer**.
-- The actual game logic runs entirely in **C#**, decoupled from Unity's MonoBehaviour system.
-- This architecture allows simulation of **thousands of entities** efficiently.
+> **Scenes:**
+> - **5000 Units Scene** — 5,000 game objects with full Unity visualization.
+> - **10000 Units Scene** — 10,000 game objects running without visualization for maximum performance testing.
+> - **Entity Baking Scene** — converts Unity objects into pure C# entities for the game simulation.
 
-#### Project Structure
-
-- **Scenes:**
-    1. **Entity Baking Scene** — converts Unity objects into pure C# entities for the game simulation.
-    2. **5000 Units Scene** — 5,000 game objects with full Unity visualization.
-    3. **10000 Units Scene** — 10,000 game objects running without visualization for maximum performance testing.
-
-#### Features Demonstrated
-
-- **Model-View Separation** — demonstrates how Atomic separates the **data/model layer** from the **visual layer**.
-- **EntityWorld, Filters, and Triggers** — advanced tools for managing entities efficiently and reacting to changes.
-- **EntityCollectionView** — shows how to synchronize entity data with views.
-
-#### Purpose
-
-This sample illustrates:
-
-- **Scalability** of the Atomic Framework for large-scale RTS projects
-- Efficient **C#-based entity simulation** independent of Unity
-- Advanced **entity management patterns** using Atomic concepts
-- Techniques for **high-speed updates, filtering, and reactive triggers**
-
+#### This Sample Demonstrates
+1. An architecture where the game logic runs purely in C#, with Unity serving as the presentation layer
+2. The use of `EntityWorld`, `EntityFactory`, `EntityPools`, `EntityFilter`, and `EntityTriggers`
+3. How to use `EntityView`, `EntityCollectView`, `EntityViewPool` to represent game objects in Unity
+4. Handling 5,000 to 10,000 game objects on a single thread
+5. Baking Unity scene objects into a C# game system
 ---
 
 ## 📌 Best Practices
