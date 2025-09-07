@@ -9,7 +9,6 @@ The solution includes **constants, variables, reactive properties, collections, 
 - [Using Odin Inspector](#-using-odin-inspector)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
-- [Best Practices](#-best-practices)
 
 ## 📝 Requirements
 > [!IMPORTANT]  
