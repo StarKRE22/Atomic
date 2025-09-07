@@ -1,7 +1,7 @@
 # ⚛️ Atomic.Elements
 
 A library of atomic elements for constructing complex game objects and systems in `Unity` and `C#`.
-The solution includes constants, variables, reactive properties, collections, events, and actions, enabling developers to quickly assemble any game entity like a `LEGO Constructor`.
+The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity like a `LEGO Constructor`.
 
 
 ## 📑 Table of Contents
