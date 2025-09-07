@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private IVariable<Quaternion> _rotation;
         private IValue<float> _rotationSpeed;
@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             _rotationCondition = entity.GetRotationCondition();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             if (!_rotationCondition.Invoke())
                 return;

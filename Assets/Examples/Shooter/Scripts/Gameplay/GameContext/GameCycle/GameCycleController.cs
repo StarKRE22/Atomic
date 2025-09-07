@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class GameCycleController : IEntityInit<IGameContext>, IEntityEnable, IEntityUpdate
+    public sealed class GameCycleController : IEntityInit<IGameContext>, IEntityEnable, IEntityTick
     {
         private IVariable<float> _gameTime;
         private IEvent _gameOverEvent;
@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             Debug.Log("<color=yellow>Game Started!</color>");
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             if (_gameTime.Value <= 0)
                 return;

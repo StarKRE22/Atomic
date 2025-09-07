@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-    public sealed class ExitAppController : IEntityInit<IAppContext>, IEntityUpdate
+    public sealed class ExitAppController : IEntityInit<IAppContext>, IEntityTick
     {
         private IValue<KeyCode> _exitKey;
 
@@ -13,7 +13,7 @@ namespace ShooterGame.App
             _exitKey = context.GetExitKeyCode();
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             if (Input.GetKey(_exitKey.Value) && MenuUseCase.InMenu()) 
                 ExitAppUseCase.Exit();

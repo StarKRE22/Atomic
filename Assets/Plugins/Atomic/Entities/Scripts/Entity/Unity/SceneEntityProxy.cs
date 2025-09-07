@@ -249,9 +249,9 @@ namespace Atomic.Entities
         public void Enable() => _source.Enable();
         public void Disable() => _source.Disable();
         public void Dispose() => _source.Dispose();
-        public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
-        public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
-        public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);
+        public void Tick(float deltaTime) => _source.Tick(deltaTime);
+        public void FixedTick(float deltaTime) => _source.FixedTick(deltaTime);
+        public void LateTick(float deltaTime) => _source.LateTick(deltaTime);
 
         #endregion
     }

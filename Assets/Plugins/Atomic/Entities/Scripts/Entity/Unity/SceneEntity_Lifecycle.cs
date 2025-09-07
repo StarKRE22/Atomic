@@ -18,20 +18,20 @@ namespace Atomic.Entities
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityUpdate> s_updateComparer =
-            EqualityComparer<IEntityUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityTick> s_updateComparer =
+            EqualityComparer<IEntityTick>.Default;
 
         /// <summary>
         /// Equality comparer for IFixedUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityFixedUpdate> s_fixedUpdateComparer =
-            EqualityComparer<IEntityFixedUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityFixedTick> s_fixedUpdateComparer =
+            EqualityComparer<IEntityFixedTick>.Default;
 
         /// <>
         /// Equality comparer forLateUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
-            EqualityComparer<IEntityLateUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityLateTick> s_lateUpdateComparer =
+            EqualityComparer<IEntityLateTick>.Default;
 
         /// <summary>
         /// Called when the entity has been initialized
@@ -93,9 +93,9 @@ namespace Atomic.Entities
         private bool _initialized;
         private bool _enabled;
 
-        private IEntityUpdate[] updates;
-        private IEntityFixedUpdate[] fixedUpdates;
-        private IEntityLateUpdate[] lateUpdates;
+        private IEntityTick[] updates;
+        private IEntityFixedTick[] fixedUpdates;
+        private IEntityLateTick[] lateUpdates;
 
         private int updateCount;
         private int fixedUpdateCount;
@@ -186,18 +186,18 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Time elapsed since the last frame.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>Update</c> on all <see cref="IEntityUpdate"/> behaviours.</description></item>
+        /// <item><description>Calls <c>Update</c> on all <see cref="IEntityTick"/> behaviours.</description></item>
         /// <item><description>Triggers <see cref="OnUpdated"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnUpdate(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < this.updateCount; i++)
-                this.updates[i].OnUpdate(this, deltaTime);
+                this.updates[i].Tick(this, deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -208,18 +208,18 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Fixed delta time.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedUpdate"/> behaviours.</description></item>
+        /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedTick"/> behaviours.</description></item>
         /// <item><description>Triggers <see cref="OnFixedUpdated"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnFixedUpdate(float deltaTime)
+        public void FixedTick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < this.fixedUpdateCount; i++)
-                this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
+                this.fixedUpdates[i].FixedTick(this, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -230,18 +230,18 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Time elapsed since last frame.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateUpdate"/> behaviours.</description></item>
+        /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateTick"/> behaviours.</description></item>
         /// <item><description>Triggers <see cref="OnLateUpdated"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnLateUpdate(float deltaTime)
+        public void LateTick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < this.lateUpdateCount; i++)
-                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
+                this.lateUpdates[i].LateTick(this, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace ShooterGame
 {
-    public sealed class ExitMenuController : IEntityUpdate
+    public sealed class ExitMenuController : IEntityTick
     {
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !MenuUseCase.InMenu()) 
                 MenuUseCase.LoadMenu().Forget();

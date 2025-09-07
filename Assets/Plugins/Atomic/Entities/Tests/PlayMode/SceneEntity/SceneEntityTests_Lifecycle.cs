@@ -228,7 +228,7 @@ namespace Atomic.Entities
             float receivedDelta = -1f;
             entity.OnUpdated += dt => receivedDelta = dt;
 
-            entity.OnUpdate(0.123f);
+            entity.Tick(0.123f);
 
             Assert.AreEqual(0.123f, receivedDelta);
         }
@@ -243,7 +243,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnUpdated += _ => wasCalled = true;
 
-            entity.OnUpdate(0.05f);
+            entity.Tick(0.05f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -258,9 +258,9 @@ namespace Atomic.Entities
             int callCount = 0;
             entity.OnUpdated += _ => callCount++;
 
-            entity.OnUpdate(0.016f);
-            entity.OnUpdate(0.016f);
-            entity.OnUpdate(0.016f);
+            entity.Tick(0.016f);
+            entity.Tick(0.016f);
+            entity.Tick(0.016f);
 
             Assert.AreEqual(3, callCount);
         }
@@ -273,7 +273,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnUpdated += _ => wasCalled = true;
 
-            entity.OnUpdate(0.1f);
+            entity.Tick(0.1f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -292,7 +292,7 @@ namespace Atomic.Entities
             float receivedDelta = -1f;
             entity.OnFixedUpdated += dt => receivedDelta = dt;
 
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.AreEqual(0.02f, receivedDelta);
         }
@@ -306,7 +306,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnFixedUpdated += _ => wasCalled = true;
 
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -321,9 +321,9 @@ namespace Atomic.Entities
             int callCount = 0;
             entity.OnFixedUpdated += _ => callCount++;
 
-            entity.OnFixedUpdate(0.02f);
-            entity.OnFixedUpdate(0.02f);
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
+            entity.FixedTick(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.AreEqual(3, callCount);
         }
@@ -336,7 +336,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnFixedUpdated += _ => wasCalled = true;
 
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -355,7 +355,7 @@ namespace Atomic.Entities
             float receivedDelta = -1f;
             entity.OnLateUpdated += dt => receivedDelta = dt;
 
-            entity.OnLateUpdate(0.033f);
+            entity.LateTick(0.033f);
 
             Assert.AreEqual(0.033f, receivedDelta);
         }
@@ -369,7 +369,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnLateUpdated += _ => wasCalled = true;
 
-            entity.OnLateUpdate(0.033f);
+            entity.LateTick(0.033f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -384,9 +384,9 @@ namespace Atomic.Entities
             int callCount = 0;
             entity.OnLateUpdated += _ => callCount++;
 
-            entity.OnLateUpdate(0.033f);
-            entity.OnLateUpdate(0.033f);
-            entity.OnLateUpdate(0.033f);
+            entity.LateTick(0.033f);
+            entity.LateTick(0.033f);
+            entity.LateTick(0.033f);
 
             Assert.AreEqual(3, callCount);
         }
@@ -399,7 +399,7 @@ namespace Atomic.Entities
             bool wasCalled = false;
             entity.OnLateUpdated += _ => wasCalled = true;
 
-            entity.OnLateUpdate(0.033f);
+            entity.LateTick(0.033f);
 
             Assert.IsFalse(wasCalled);
         }
@@ -959,7 +959,7 @@ namespace Atomic.Entities
 
             //Act
             entity.Enable();
-            entity.OnUpdate(deltaTime: 0);
+            entity.Tick(deltaTime: 0);
 
             //Assert
             Assert.IsTrue(behaviourStub.Updated);
@@ -969,12 +969,12 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityUpdateStub();
+            var stub = new EntityTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init(); // но не Enable()
-            entity.OnUpdate(0.5f);
+            entity.Tick(0.5f);
 
             Assert.IsFalse(stub.WasUpdated);
         }
@@ -982,13 +982,13 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_CallsUpdateOnRegisteredBehaviours()
         {
-            var stub = new EntityUpdateStub();
+            var stub = new EntityTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
-            entity.OnUpdate(0.25f);
+            entity.Tick(0.25f);
 
             Assert.IsTrue(stub.WasUpdated);
             Assert.AreEqual(0.25f, stub.LastDeltaTime);
@@ -1004,7 +1004,7 @@ namespace Atomic.Entities
 
             entity.Init();
             entity.Enable();
-            entity.OnUpdate(0.75f);
+            entity.Tick(0.75f);
 
             Assert.AreEqual(0.75f, calledDelta);
         }
@@ -1012,8 +1012,8 @@ namespace Atomic.Entities
         [Test]
         public void OnUpdate_StopsCallingIfEntityDisabledMidLoop()
         {
-            var stub1 = new DisableDuringUpdateStub();
-            var stub2 = new EntityUpdateStub();
+            var stub1 = new DisableDuringTickStub();
+            var stub2 = new EntityTickStub();
 
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
@@ -1021,7 +1021,7 @@ namespace Atomic.Entities
             entity.Init();
             entity.Enable();
 
-            entity.OnUpdate(0.1f);
+            entity.Tick(0.1f);
 
             Assert.IsTrue(stub1.WasUpdated);
             Assert.IsFalse(stub2.WasUpdated); // не должен вызваться, т.к. отключились
@@ -1034,12 +1034,12 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_DoesNothing_IfEntityNotEnabled()
         {
-            var stub = new EntityFixedUpdateStub();
+            var stub = new EntityFixedTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init(); // не включаем
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.IsFalse(stub.WasCalled);
         }
@@ -1047,14 +1047,14 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_CallsRegisteredFixedUpdateBehaviours()
         {
-            var stub = new EntityFixedUpdateStub();
+            var stub = new EntityFixedTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
 
-            entity.OnFixedUpdate(0.02f);
+            entity.FixedTick(0.02f);
 
             Assert.IsTrue(stub.WasCalled);
             Assert.AreEqual(0.02f, stub.LastDeltaTime);
@@ -1071,7 +1071,7 @@ namespace Atomic.Entities
             entity.Init();
             entity.Enable();
 
-            entity.OnFixedUpdate(0.05f);
+            entity.FixedTick(0.05f);
 
             Assert.AreEqual(0.05f, delta);
         }
@@ -1079,8 +1079,8 @@ namespace Atomic.Entities
         [Test]
         public void OnFixedUpdate_StopsIfEntityDisabledMidIteration()
         {
-            var stub1 = new DisableDuringFixedUpdateStub();
-            var stub2 = new EntityFixedUpdateStub();
+            var stub1 = new DisableDuringFixedTickStub();
+            var stub2 = new EntityFixedTickStub();
 
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
@@ -1088,7 +1088,7 @@ namespace Atomic.Entities
             entity.Init();
             entity.Enable();
 
-            entity.OnFixedUpdate(0.03f);
+            entity.FixedTick(0.03f);
 
             Assert.IsTrue(stub1.WasCalled);
             Assert.IsFalse(stub2.WasCalled); // не вызван, т.к. entity отключён во время
@@ -1107,7 +1107,7 @@ namespace Atomic.Entities
 
             //Act
             entity.Enable();
-            entity.OnFixedUpdate(deltaTime: 0);
+            entity.FixedTick(deltaTime: 0);
 
             //Assert
             Assert.IsTrue(behaviourStub.FixedUpdated);
@@ -1121,13 +1121,13 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_DoesNothing_WhenEntityDisabled()
         {
-            var stub = new EntityLateUpdateStub();
+            var stub = new EntityLateTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             // not enabling
-            entity.OnLateUpdate(0.04f);
+            entity.LateTick(0.04f);
 
             Assert.IsFalse(stub.WasCalled);
         }
@@ -1135,14 +1135,14 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_CallsRegisteredLateUpdateBehaviours()
         {
-            var stub = new EntityLateUpdateStub();
+            var stub = new EntityLateTickStub();
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviour(stub);
 
             entity.Init();
             entity.Enable();
 
-            entity.OnLateUpdate(0.04f);
+            entity.LateTick(0.04f);
 
             Assert.IsTrue(stub.WasCalled);
             Assert.AreEqual(0.04f, stub.LastDeltaTime);
@@ -1158,7 +1158,7 @@ namespace Atomic.Entities
 
             entity.Init();
             entity.Enable();
-            entity.OnLateUpdate(0.06f);
+            entity.LateTick(0.06f);
 
             Assert.AreEqual(0.06f, calledDelta);
         }
@@ -1166,15 +1166,15 @@ namespace Atomic.Entities
         [Test]
         public void OnLateUpdate_StopsIteration_WhenDisabledMidUpdate()
         {
-            var stub1 = new DisableDuringLateUpdateStub();
-            var stub2 = new EntityLateUpdateStub();
+            var stub1 = new DisableDuringLateTickStub();
+            var stub2 = new EntityLateTickStub();
 
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             entity.AddBehaviours(new IEntityBehaviour[] {stub1, stub2});
 
             entity.Init();
             entity.Enable();
-            entity.OnLateUpdate(0.07f);
+            entity.LateTick(0.07f);
 
             Assert.IsTrue(stub1.WasCalled);
             Assert.IsFalse(stub2.WasCalled);
@@ -1194,7 +1194,7 @@ namespace Atomic.Entities
 
             //Act
             entity.Enable();
-            entity.OnLateUpdate(deltaTime: 0);
+            entity.LateTick(deltaTime: 0);
 
             //Assert
             Assert.IsTrue(behaviourStub.LateUpdated);

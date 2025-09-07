@@ -121,7 +121,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle)
             {
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
                 this.isStarted = true;
             }
         }
@@ -139,7 +139,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                UpdateLoop.Instance.Del(this);
+                UpdateLoop.Instance.Unregister(this);
                 this.Disable();
             }
         }
@@ -284,19 +284,19 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnUpdate(float deltaTime) => _world.OnUpdate(deltaTime);
+        public void Tick(float deltaTime) => _world.Tick(deltaTime);
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnFixedUpdate(float deltaTime) => _world.OnFixedUpdate(deltaTime);
+        public void FixedTick(float deltaTime) => _world.FixedTick(deltaTime);
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnLateUpdate(float deltaTime) => _world.OnLateUpdate(deltaTime);
+        public void LateTick(float deltaTime) => _world.LateTick(deltaTime);
 
         #endregion
 

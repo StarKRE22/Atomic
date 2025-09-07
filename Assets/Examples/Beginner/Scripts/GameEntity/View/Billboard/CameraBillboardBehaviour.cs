@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class CameraBillboardBehaviour : IEntityInit<IGameEntity>, IEntityLateUpdate
+    public sealed class CameraBillboardBehaviour : IEntityInit<IGameEntity>, IEntityLateTick
     {
         private readonly Transform _target;
         private Transform _camera;
@@ -20,7 +20,7 @@ namespace BeginnerGame
             _camera = playerContext.GetCamera().transform;
         }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateTick(IEntity entity, float deltaTime)
         {
             Vector3 dir = _target.position - _camera.position;
             _target.rotation = Quaternion.LookRotation(dir, _camera.up);

@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// Registers an IUpdatable instance for update callbacks.
         /// </summary>
         /// <param name="updateSource">The instance to register.</param>
-        internal void Add(IUpdateSource updateSource)
+        internal void Register(IUpdateSource updateSource)
         {
             if (updateSource == null)
                 return;
@@ -66,7 +66,7 @@ namespace Atomic.Entities
         /// Unregisters a previously registered IUpdatable instance.
         /// </summary>
         /// <param name="updateSource">The instance to unregister.</param>
-        internal void Del(IUpdateSource updateSource)
+        internal void Unregister(IUpdateSource updateSource)
         {
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
@@ -75,10 +75,7 @@ namespace Atomic.Entities
             UpdateLoop instance = Instance;
             Remove(ref instance._updatables, ref instance._count, updateSource, s_comparer);
         }
-
-        internal bool Contains(IUpdateSource updateSource) => 
-            EntityUtils.Contains(Instance._updatables, updateSource, _count, s_comparer);
-
+        
         /// <summary>
         /// Invokes <see crefIUpdateSourceteeOnUpdate"/> on all registered instances.
         /// </summary>
@@ -86,7 +83,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.deltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnUpdate(deltaTime);
+                _updatables[i].Tick(deltaTime);
         }
 
         /// <summary>
@@ -96,7 +93,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.fixedDeltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnFixedUpdate(deltaTime);
+                _updatables[i].FixedTick(deltaTime);
         }
 
         /// <summary>
@@ -106,7 +103,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.deltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnLateUpdate(deltaTime);
+                _updatables[i].LateTick(deltaTime);
         }
 
         /// <summary>

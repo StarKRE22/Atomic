@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class ProjectileMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class ProjectileMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private readonly IGameContext _gameContext;
 
@@ -27,7 +27,7 @@ namespace RTSGame
             _forward = TransformUseCase.GetForward(_entity);
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
             if (target is not {Enabled: true})

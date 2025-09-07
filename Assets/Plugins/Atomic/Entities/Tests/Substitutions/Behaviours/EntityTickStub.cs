@@ -1,11 +1,11 @@
 namespace Atomic.Entities
 {
-    public sealed class EntityUpdateStub : IEntityUpdate
+    public sealed class EntityTickStub : IEntityTick
     {
         public bool WasUpdated;
         public float LastDeltaTime;
         
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             WasUpdated = true;
             LastDeltaTime = deltaTime;

@@ -3,7 +3,7 @@ using Unity.Mathematics;
 
 namespace BeginnerGame
 {
-    public sealed class CharacterMoveController : IEntityInit<IPlayerContext>, IEntityUpdate
+    public sealed class CharacterMoveController : IEntityInit<IPlayerContext>, IEntityTick
     {
         private IGameEntity _character;
         private InputMap _inputMap;
@@ -14,7 +14,7 @@ namespace BeginnerGame
             _inputMap = entity.GetInputMap();
         }
 
-        public void OnUpdate(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             float3 moveDirection = InputUseCase.GetMoveDirection(_inputMap);
             _character.GetMoveDirection().Value = moveDirection;

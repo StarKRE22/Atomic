@@ -27,18 +27,18 @@ namespace Atomic.Entities
         /// Called once per frame during the Update phase.
         /// </summary>
         /// <param name="deltaTime">The time in seconds since the last frame.</param>
-        void OnUpdate(float deltaTime);
+        void Tick(float deltaTime);
 
         /// <summary>
         /// Called during the FixedUpdate phase, typically used for physics calculations.
         /// </summary>
         /// <param name="deltaTime">The fixed time step used by the physics engine.</param>
-        void OnFixedUpdate(float deltaTime);
+        void FixedTick(float deltaTime);
 
         /// <summary>
         /// Called during the LateUpdate phase, after all Update calls.
         /// </summary>
         /// <param name="deltaTime">The time in seconds since the last frame.</param>
-        void OnLateUpdate(float deltaTime);
+        void LateTick(float deltaTime);
     }
 }

@@ -1,10 +1,10 @@
 namespace Atomic.Entities
 {
-    public class DisableDuringFixedUpdateStub : IEntityFixedUpdate
+    public class DisableDuringFixedTickStub : IEntityFixedTick
     {
         public bool WasCalled { get; private set; }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             WasCalled = true;
             entity.Disable();

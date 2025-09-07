@@ -149,7 +149,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && _started)
             {
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
             }
         }
 
@@ -159,7 +159,7 @@ namespace Atomic.Entities
             {
                 this.Init();
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
                 _started = true;
             }
         }
@@ -169,7 +169,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && _started)
             {
                 this.Disable();
-                UpdateLoop.Instance.Del(this);
+                UpdateLoop.Instance.Unregister(this);
             }
         }
 

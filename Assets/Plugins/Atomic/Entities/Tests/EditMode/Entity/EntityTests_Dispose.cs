@@ -37,8 +37,8 @@ namespace Atomic.Entities
             //Assert:
             entity.Init();
             entity.Enable();
-            entity.OnUpdate(1);
-            entity.OnUpdate(1);
+            entity.Tick(1);
+            entity.Tick(1);
             entity.Disable();
         }
 

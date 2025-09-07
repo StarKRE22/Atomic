@@ -46,7 +46,7 @@ namespace Atomic.Entities
 
             //Act:
             entity.OnUpdated += _ => wasUpdate = true;
-            world.OnUpdate(0);
+            world.Tick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -69,7 +69,7 @@ namespace Atomic.Entities
             
             //Act:
             entity.OnFixedUpdated += _ => wasUpdate = true;
-            world.OnFixedUpdate(0);
+            world.FixedTick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -92,7 +92,7 @@ namespace Atomic.Entities
 
             //Act:
             entity.OnLateUpdated += _ => wasUpdate = true;
-            world.OnLateUpdate(0);
+            world.LateTick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);

@@ -74,13 +74,13 @@ namespace RTSGame
                 InitGameCase.SpawnUnits(_gameContext, _unitColumns);
         }
 
-        private void Update() => _gameContext.OnUpdate(Time.deltaTime);
+        private void Update() => _gameContext.Tick(Time.deltaTime);
 
-        private void FixedUpdate() => _gameContext.OnFixedUpdate(Time.fixedDeltaTime);
+        private void FixedUpdate() => _gameContext.FixedTick(Time.fixedDeltaTime);
 
         private void LateUpdate()
         {
-            _gameContext.OnLateUpdate(Time.deltaTime);
+            _gameContext.LateTick(Time.deltaTime);
             _debugUnitCount = _gameContext.GetEntityWorld().Count;
         }
 

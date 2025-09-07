@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class LifetimeBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class LifetimeBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private Cooldown _lifetime;
         private IAction _destroyAction;
@@ -14,7 +14,7 @@ namespace ShooterGame.Gameplay
             _lifetime = entity.GetLifetime();
         }
 
-        public void OnFixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
             

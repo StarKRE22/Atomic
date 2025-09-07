@@ -169,7 +169,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void OnUpdate(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -178,7 +178,7 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnUpdate(deltaTime);
+                slot.value.Tick(deltaTime);
                 currentIndex = slot.right;
             }
             
@@ -186,7 +186,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void OnFixedUpdate(float deltaTime)
+        public void FixedTick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -195,7 +195,7 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnFixedUpdate(deltaTime);
+                slot.value.FixedTick(deltaTime);
                 currentIndex = slot.right;
             }
             
@@ -203,7 +203,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void OnLateUpdate(float deltaTime)
+        public void LateTick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -212,7 +212,7 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnLateUpdate(deltaTime);
+                slot.value.LateTick(deltaTime);
                 currentIndex = slot.right;
             }
             

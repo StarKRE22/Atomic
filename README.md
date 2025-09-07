@@ -148,7 +148,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 ### 5. Create `MoveBehaviour` class
 ```csharp
 // Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
@@ -163,7 +163,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
     }
 
     // Called when MonoBehaviour.FixedUpdate() is invoked
-    public void OnFixedUpdate(IEntity entity, float deltaTime)
+    public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -219,7 +219,7 @@ entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityTick
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
@@ -234,7 +234,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
     }
 
     //Called when Entity.OnUpdate()
-    public void OnUpdate(IEntity entity, float deltaTime)
+    public void Tick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -270,8 +270,8 @@ const float deltaTime = 0.02f;
 
 while(_isGameRunning)
 { 
-   //Calls IEntityUpdate
-   entity.OnUpdate(deltaTime); 
+   //Calls IEntityTick
+   entity.Tick(deltaTime); 
 }
 ```
 

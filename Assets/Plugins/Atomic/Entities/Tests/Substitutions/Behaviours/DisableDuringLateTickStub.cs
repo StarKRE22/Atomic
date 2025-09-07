@@ -1,10 +1,10 @@
 namespace Atomic.Entities
 {
-    public class DisableDuringLateUpdateStub : IEntityLateUpdate
+    public class DisableDuringLateTickStub : IEntityLateTick
     {
         public bool WasCalled { get; private set; }
 
-        public void OnLateUpdate(IEntity entity, float deltaTime)
+        public void LateTick(IEntity entity, float deltaTime)
         {
             WasCalled = true;
             entity.Disable(); // отключает во время обновления

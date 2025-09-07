@@ -61,7 +61,7 @@ namespace Atomic.Entities
             world.Dispose();
 
             // Act
-            world.OnUpdate(1f); // событие не должно сработать
+            world.Tick(1f); // событие не должно сработать
 
             // Assert
             Assert.IsFalse(updatedCalled);

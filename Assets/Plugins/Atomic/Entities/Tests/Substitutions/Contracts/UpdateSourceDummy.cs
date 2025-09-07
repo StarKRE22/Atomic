@@ -12,19 +12,19 @@ namespace Atomic.Entities
         public int FixedCount;
         public int LateCount;
         
-        public void OnUpdate(float dt)
+        public void Tick(float dt)
         {
             UpdateCount++;
             this.OnUpdated?.Invoke(dt);
         }
 
-        public void OnFixedUpdate(float dt)
+        public void FixedTick(float dt)
         {
             FixedCount++;
             this.OnFixedUpdated?.Invoke(dt);
         }
 
-        public void OnLateUpdate(float dt)
+        public void LateTick(float dt)
         {
             LateCount++;
             this.OnLateUpdated?.Invoke(dt);

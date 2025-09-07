@@ -37,17 +37,17 @@ namespace Atomic.Entities
         public event Action<float> OnFixedUpdated;
         public event Action<float> OnLateUpdated;
 
-        public void OnUpdate(float deltaTime)
+        public void Tick(float deltaTime)
         {
             throw new NotImplementedException();
         }
 
-        public void OnFixedUpdate(float deltaTime)
+        public void FixedTick(float deltaTime)
         {
             throw new NotImplementedException();
         }
 
-        public void OnLateUpdate(float deltaTime)
+        public void LateTick(float deltaTime)
         {
             throw new NotImplementedException();
         }
