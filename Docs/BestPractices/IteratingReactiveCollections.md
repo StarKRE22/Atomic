@@ -1,6 +1,6 @@
 # 📌 Iterating over Reactive Collections
 
-When using reactive collections such as `ReactiveArray`, `ReactiveList`, `ReactiveLinkedList`, `ReactiveHashSet`, and `ReactiveDictionary`, it is important to understand that **each reactive wrapper introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working with a large number of elements.
+When using reactive collections such as [ReactiveArray](../Elements/Collections/ReactiveArray.md), [ReactiveList](../Elements/Collections/ReactiveList.md), [ReactiveLinkedList](../Elements/Collections/ReactiveLinkedList.md), [ReactiveHashSet](../Elements/Collections/ReactiveHashSet.md), and [ReactiveDictionary](../Elements/Collections/ReactiveDictionary.md), it is important to understand that **each reactive wrapper introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working with a large number of elements.
 
 ---
 
@@ -46,7 +46,7 @@ foreach(string item in items)
 
 When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the stack**, which can slightly slow down iteration. 
 
-> [!NOTE]
+> [!NOTE]  
 > Performance tests confirm this behavior for both [ReactiveList](../Elements/Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Elements/Collections/ReactiveArray.md/#-performance).
 
 ### ❌ Bad Practice

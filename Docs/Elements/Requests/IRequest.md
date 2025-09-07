@@ -1,4 +1,4 @@
-# 🧩 IRequest Interfaces
+# 🧩 IRequest
 
 These interfaces represent **request actions** that may carry from zero to four typed arguments.  
 Unlike standard `IAction` or event handlers, **requests are designed to represent actions that can be deferred**.  

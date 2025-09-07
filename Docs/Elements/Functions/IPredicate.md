@@ -1,4 +1,4 @@
-# 🧩 IPredicate Interfaces
+# 🧩 IPredicate
 
 The **IPredicate** interfaces define a family of contracts for **boolean-returning functions** (predicates).  
 They are specialized forms of `IFunction` that evaluate a condition and return `true` or `false`, useful in filtering, validation, and decision-making logic.

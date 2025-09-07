@@ -1,6 +1,6 @@
 #  📌 Use Shared Constants
 
-Whenever you have a **read-only, constant value** that multiple objects need to access, wrap it in `Const<T>`.  
+Whenever you have a **read-only, constant value** that multiple objects need to access, wrap it in [Const\<T\>](../Elements/Values/Const.md).  
 
 This approach makes your code **lightweight, safe, and reference-friendly**, avoiding unnecessary copies of data.
 
@@ -9,7 +9,7 @@ This approach makes your code **lightweight, safe, and reference-friendly**, avo
 ## ✅ Benefits
 - Acts as a **lightweight reference type**, even for primitive or value types.
 - Can be **shared across multiple objects or systems** without duplication.
-- Implements `IValue<T>`, making the project **more maintainable and testable**.
+- Implements [IValue<T>](../Elements/Values/IValue.md), making the project **more maintainable and testable**.
 - Keeps data **immutable**, preventing accidental modifications.
 
 ---

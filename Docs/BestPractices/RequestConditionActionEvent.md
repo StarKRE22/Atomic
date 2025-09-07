@@ -1,58 +1,71 @@
-## 🏆 Request-Condition-Action-Event Pattern
+# 📌 Request-Condition-Action-Event Flow
 
-A practical implementation of the **Request → Condition → Action → Event** pattern for gameplay systems.  
-This pattern separates **intent**, **validation**, **execution**, and **notification**, making mechanics modular, testable, and safe for multiplayer scenarios.
+During the development of game mechanics using the atomic approach, I derived a convenient pattern that makes any mechanic highly flexible, observable, and safe. The `Request-Condition-Action-Event` pattern separates **intent**, **validation**, **execution**, and **notification**, making mechanics modular and robust.
 
 ---
 
-### Components
+## 💡 Key Components
 
-1. **Request** — a deferred intention, e.g., a `BaseRequest` or `IRequest`.  
-   Represents the player's or AI's desire to perform an action.
+1. **Request** — a deferred action, implemented via [IRequest](../Elements/Requests/IRequest.md).  
+   Example: `MoveRequest`, `AttackRequest`, `JumpRequest` — triggered by player input or AI.
 
-2. **Condition** — a boolean check that validates whether the request can be executed.  
+2. **Condition** — a logical check that determines if the requested action can be executed, often implemented with [AndExpression](../Elements/Expressions/AndExpression.md) or [IPredicate](../Elements/Functions/IPredicate.md).  
    Example: `IsGrounded`, `HasAmmo`, `CanJump`.
 
-3. **Action** — executes the main effect if the condition passes.  
-   Example: apply jump force, move character, fire weapon.
+3. **Action** — executes the main effect if the condition passes, implemented via [IAction](../Elements/Actions/IAction.md).  
+   Example: apply jump force, move the character, fire a weapon.
 
-4. **Event** — triggers notifications or side effects after the action.  
+4. **Event** — triggers notifications or side effects after the action, implemented via [IEvent](../Elements/Events/IEvent.md).  
    Example: play animation, update UI, notify other systems.
 
 ---
 
-### Example
+## 🗂 Example of Usage
+
+**A simple jump mechanic for an entity:**
 
 ```csharp
-public sealed class JumpBehaviour
-{
-    private readonly IRequest _jumpRequest;       // BaseRequest
-    private readonly IValue<bool> _jumpCondition; // Condition check
-    private readonly IAction _jumpAction;         // InlineAction
-    private readonly IEvent _jumpEvent;           // BaseEvent
+// Add jump mechanic
+var entity = ...;
 
-    public JumpBehaviour(
-        IRequest jumpRequest,
-        IValue<bool> jumpCondition,
-        IAction jumpAction,
-        IEvent jumpEvent
-    )
+entity.AddJumpRequest(new BaseRequest());
+entity.AddJumpCondition(new AndExpression(
+    entity.GetHealth().Exists,
+    entity.GetEnergy().Exists
+));
+entity.AddJumpAction(new InlineAction(
+    () => entity.GetRigidbody().AddForce(Vector3.up, ForceMode.Impulse)
+));
+entity.AddJumpEvent(new BaseEvent());
+
+entity.AddBehaviour<JumpBehaviour>();
+```
+
+```csharp
+// Jump controller that invokes Request-Condition-Action-Event flow
+public sealed class JumpBehaviour : IEntityInit, IEntityFixedTick
+{
+    private IRequest _jumpRequest;       
+    private IFunction<bool> _jumpCondition; 
+    private IAction _jumpAction;         
+    private IEvent _jumpEvent;           
+
+    public void Init(IEntity entity)
     {
-        _jumpRequest = jumpRequest;
-        _jumpCondition = jumpCondition;
-        _jumpAction = jumpAction;
-        _jumpEvent = jumpEvent;
+        _jumpRequest = entity.GetJumpRequest();
+        _jumpCondition = entity.GetJumpCondition();
+        _jumpAction = entity.GetJumpAction();
+        _jumpEvent = entity.GetJumpEvent();
     }
 
-    public void Update()
+    public void FixedTick(IEntity entity, float deltaTime)
     {
-        // Process the jump only if requested and condition passes
+        // Execute jump if requested and condition passes
         if (_jumpRequest.Consume() && _jumpCondition.Value)
         {
-            _jumpAction.Invoke(); // Execute action
-            _jumpEvent.Invoke();  // Trigger any linked events
+            _jumpAction.Invoke();
+            _jumpEvent.Invoke();
         }
     }
 }
 ```
-> Using the Request-Condition-Action-Event pattern helps keep gameplay mechanics modular, unit-testable, and network-safe, especially in multiplayer projects.

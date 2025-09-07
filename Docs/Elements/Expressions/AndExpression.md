@@ -1,4 +1,4 @@
-# 🧩 AndExpression Classes
+# 🧩 AndExpression
 
 These classes provide **logical AND expressions** that aggregate multiple functions returning boolean values.  
 They evaluate all registered functions and return `true` **only if all functions return `true`**.

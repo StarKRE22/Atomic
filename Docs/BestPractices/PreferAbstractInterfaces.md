@@ -2,7 +2,7 @@
 
 Always use atomic interfaces such as `IValue`, `IVariable`, `ISignal`, etc., instead of concrete classes. This significantly improves the **maintainability** and **testability** of your project.
 
-Following the **Dependency Inversion Principle** is especially important in multiplayer games, allowing developers to focus on **game logic** rather than networking code.
+Following the **[Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** is especially important in multiplayer games, allowing developers to focus on **game logic** rather than networking code.
 
 ---
 
