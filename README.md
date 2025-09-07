@@ -100,12 +100,12 @@ and a `centralized data registry` instead of decentralized objects.
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
-### `Atomic.Elements` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)  
+### `Atomic.Elements` [(Read More)](Assets/Plugins/Atomic/Elements/Docs/Manual.md)  
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
   The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
 
 
-### `Atomic.Entities` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)  
+### `Atomic.Entities` [(Read More)](Assets/Plugins/Atomic/Entities/Docs/Manual.md)  
   **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
 ---
@@ -310,7 +310,7 @@ Coming Soon
     - **Rider Plugin Guide**
 -->
 
-## ✅ Game Examples
+## 🗂 Game Examples
 This section includes **three sample projects** demonstrating different use cases of the `Atomic Framework`
 
 ### 1️⃣ Beginner Sample
@@ -403,7 +403,13 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 
 ## 📌 Best Practices
 
-TODO:
+This section is dedicated to sharing **Best Practices** for using the `Atomic` framework.
+
+For now, you can explore the following links to read best practices directly:
+- [Atomic.Elements](Assets/Plugins/Atomic/Elements/Docs/Manual.md#-best-practices)
+- [Atomic.Entities](Assets/Plugins/Atomic/Entities/Docs/Manual.md#-best-practices)
+
+A comprehensive guide covering general best practices across the framework will be added here soon.
 
 ## ⚖️ License
 

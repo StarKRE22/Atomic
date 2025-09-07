@@ -21,7 +21,7 @@ The solution includes **constants, variables, reactive properties, collections, 
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework works **without Odin**, but Odin makes inspection and tweaking much easier.
 
-## 📚 API Reference
+## 🔍 API Reference
 
 This section provides a complete reference to the core interfaces, classes, and utilities designed for reactive programming, event handling, Unity integration, and general-purpose development.
 
@@ -129,7 +129,7 @@ The performance comparison below was measured on a **MacBook with Apple M1** for
 
 This section outlines **recommended approaches and patterns** when working with the `Atomic.Elements` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
 
-- [Prefer Abstract Interfaces](BestPractices/PreferAbstractInterfaces.md)
+- [Prefer Interfaces to Concrete Classes](BestPractices/PreferAbstractInterfaces.md)
 - [Shared Constants](BestPractices/SharedConstants.md)
 - [Iterating Reactive Collections](BestPractices/IteratingReactiveCollections.md)
 - [Request-Condition-Action-Event Pattern](BestPractices/RequestConditionActionEventPattern.md)

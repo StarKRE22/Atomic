@@ -15,7 +15,7 @@ Atomic.Entities provides:
 - [Using Atomic Plugin for Rider](#using-atomic-plugin-for-rider)
 - [API Reference](#api-reference)
 - [Performance](#performance)
-- [Best Practices](#best-practices)
+- [Best Practices](#-best-practices)
 
 ## Requirements
 > [!IMPORTANT]  
@@ -136,4 +136,4 @@ Atomic.Entities provides:
 
 ## Performance
 
-## Best Practices 
+## 📌 Best Practices

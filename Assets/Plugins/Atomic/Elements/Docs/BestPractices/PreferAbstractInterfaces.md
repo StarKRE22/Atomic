@@ -1,43 +1,32 @@
-# 🏆 Prefer Abstract Interfaces
+# 📌 Prefer Interfaces to Concrete Classes 
 
-Always use abstract interfaces (`IValue`, `IVariable`, `ISignal`, etc.)  
-instead of concrete classes. This is **especially important in multiplayer projects**,  
-where decoupling logic from specific implementations helps prevent hard-to-debug issues.
+Always use atomic interfaces such as `IValue`, `IVariable`, `ISignal`, etc., instead of concrete classes. This significantly improves the **maintainability** and **testability** of your project.
 
----
-
-## Why?
-
-- Decouples your logic from specific implementations.
-- Simplifies unit testing by allowing mocks and stubs.
-- Makes your systems modular and reusable across multiple GameObjects or projects.
-- Prevents tight coupling that can lead to network desyncs or unintended shared state in multiplayer.
+Following the **Dependency Inversion Principle** is especially important in multiplayer games, allowing developers to focus on **game logic** rather than networking code.
 
 ---
 
-## Example
+## 🗂 Example Usage
 
+### ✅ Good Usage
 ```csharp
-// Good: uses interfaces
-void Move(
-  IVariable<Vector3> position,
-  IValue<Vector3> moveDirection,
-  IValue<float> speed,
-  float deltaTime 
-) => position.Value += speed.Value * deltaTime * moveDirection.Value;
-
-
-// Bad: depends on concrete implementation
-void Move(
-  ReactiveVariable<Vector3> position,
-  BaseVariable<Vector3> moveDirection,
-  Const<float> speed,
-  float deltaTime 
-) => position.Value += speed.Value * deltaTime * moveDirection.Value;
+IVariable<Vector3> position = entity.GetPosition();
+IValue<Vector3> moveDirection = entity.GetMoveDirection();
+IValue<float> speed = entity.GetMoveSpeed();
+position.Value += speed.Value * moveDirection.Value;
 ```
----
-## Unity and Framework Dependencies
 
-Avoid direct dependencies on Unity components or external frameworks whenever possible.  
-Wrapping these systems behind interfaces makes your game logic **much easier to unit-test**,  
-especially in multiplayer projects where deterministic and isolated behavior is critical.
+### ❌Bad Usage
+```csharp
+ReactiveVariable<Vector3> position = entity.GetPosition();
+ReactiveVariable<Vector3> moveDirection = entity.GetMoveDirection();
+Const<float> speed = entity.GetMoveSpeed();
+position.Value += speed.Value * moveDirection.Value;
+```
+
+---
+## 📝 Notes 
+
+Using `Atomic.Elements` allows you to **abstract away from specific dependencies** like Unity and multiplayer frameworks such as Photon Fusion 2 or Mirror. This approach significantly improves **maintainability**, **testability**, and makes it easier to **port your project to other engines**.
+
+We strongly recommend **maximizing abstraction from Unity wherever possible** to keep your game logic engine-agnostic.

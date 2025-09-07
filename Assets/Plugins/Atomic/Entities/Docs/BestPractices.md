@@ -2,7 +2,6 @@
 Best Practices
 - Factory, Builder
 - No Dependency Injection
-- Flyweight Constants!
 - Разделять инсталлеры на маленькие фичи для больших проектов и EntityAPI
 
 
