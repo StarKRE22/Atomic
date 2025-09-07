@@ -5,7 +5,7 @@ namespace Atomic.Entities
         public bool WasCalled { get; private set; }
         public float LastDeltaTime { get; private set; }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             WasCalled = true;
             LastDeltaTime = deltaTime;

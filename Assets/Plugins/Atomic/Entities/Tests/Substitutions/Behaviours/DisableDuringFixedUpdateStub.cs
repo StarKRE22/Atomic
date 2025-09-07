@@ -4,7 +4,7 @@ namespace Atomic.Entities
     {
         public bool WasCalled { get; private set; }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             WasCalled = true;
             entity.Disable();

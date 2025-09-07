@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             Debug.Log("<color=yellow>Game Started!</color>");
         }
 
-        public void Update(IEntity entity, float deltaTime)
+        public void OnUpdate(IEntity entity, float deltaTime)
         {
             if (_gameTime.Value <= 0)
                 return;

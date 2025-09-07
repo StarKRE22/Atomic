@@ -20,7 +20,7 @@ namespace ShooterGame.Gameplay
             _rotationCondition = entity.GetRotationCondition();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             if (!_rotationCondition.Invoke())
                 return;

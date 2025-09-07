@@ -163,7 +163,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
     }
 
     // Called when MonoBehaviour.FixedUpdate() is invoked
-    public void FixedUpdate(IEntity entity, float deltaTime)
+    public void OnFixedUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -234,7 +234,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
     }
 
     //Called when Entity.OnUpdate()
-    public void Update(IEntity entity, float deltaTime)
+    public void OnUpdate(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -271,7 +271,7 @@ const float deltaTime = 0.02f;
 while(_isGameRunning)
 { 
    //Calls IEntityUpdate
-   entity.Update(deltaTime); 
+   entity.OnUpdate(deltaTime); 
 }
 ```
 
@@ -401,15 +401,19 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 5. Baking Unity scene objects into a C# game system
 ---
 
-
 ## 📌 Best Practices
 
 This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
-
-- [Prefer Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
 - [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
 - [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)
 - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
+- [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
+- [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
+- [Upgrade Entity Factory to Builder](Docs/BestPractices/UpgradeEntityFactory.md)
+- [Observe Extension instead Subscribe](Docs/BestPractices/ObserveExtension.md)
+- [Entity Filter Chaining](Docs/BestPractices/EntityFilterChaining.md)
+- [Prepare Entity Domains for your project](Docs/BestPractices/PrepareEntityDomains.md)
 
 ## ⚖️ License
 
@@ -444,48 +448,3 @@ SOFTWARE.
 **Author:** Igor Gulkin  
 **Telegram:** [@starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
-
-
-
-<!-- 
-
-- [Atomic.Entities]
-  - [C#]
-    - [Entity]
-    - [Entity Behaviours]
-    - [Entity World]
-    - [Entity Filter]
-  - [Unity]
-    - [Configure Value Console]
-    - [Configure Tag Console]
-    - [SceneEntity]
-    - [SceneEntityInstaller]
-    - [SceneEntityController]
-    - [SceneEntityProxy]
-    - [SceneEntityGizmos]
-    - [SceneEntityWorld]
-    - [SceneEntityWorldController]
-    - [Attributes]
-  - [Performance]    
-- [Atomic.Contexts]
-  - [C#]
-    - [Context]
-    - [Context Systems]
-    - [Dependency Injection]
-  - [Unity]
-    - [Configure Value Console]  
-    - [SceneContext]
-    - [SceneContextInstaller]
-    - [SceneContextController]
-    - [SceneContextGizmos]
-    - [Attributes]
-  - [Performance]     
-- [Atomic.UI]
-  - [SceneViewController]
-  - [SceneViewGizmos]
-  - [Behaviours]
-  - [Performance]
-- [Atomic.Extensions]
-  - [Entity Aspects]
-  - [Condition and Action Assets] 
--->

@@ -45,22 +45,22 @@ namespace Atomic.Entities
             this.InvocationList.Add(nameof(Dispose));
         }
 
-        public virtual void Update(IEntity entity, float deltaTime)
+        public virtual void OnUpdate(IEntity entity, float deltaTime)
         {
             this.Updated = true;
-            this.InvocationList.Add(nameof(Update));
+            this.InvocationList.Add(nameof(OnUpdate));
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             this.FixedUpdated = true;
-            this.InvocationList.Add(nameof(FixedUpdate));
+            this.InvocationList.Add(nameof(OnFixedUpdate));
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             this.LateUpdated = true;
-            this.InvocationList.Add(nameof(LateUpdate));
+            this.InvocationList.Add(nameof(OnLateUpdate));
         }
     }
 }

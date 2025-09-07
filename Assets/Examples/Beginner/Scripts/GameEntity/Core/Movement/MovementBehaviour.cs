@@ -18,7 +18,7 @@ namespace BeginnerGame
             _moveDirection = entity.GetMoveDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             MoveUseCase.MovementStep(
                 _position.Value,

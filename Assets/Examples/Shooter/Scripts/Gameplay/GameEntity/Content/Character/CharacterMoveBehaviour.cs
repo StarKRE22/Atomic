@@ -15,7 +15,7 @@ namespace ShooterGame.Gameplay
             _rotationDirection = entity.GetRotationDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             Vector3 direction = _moveDirection.Value;
             if (direction != Vector3.zero) 

@@ -15,7 +15,7 @@ namespace ShooterGame.Gameplay
             _gameContext = GameContext.Instance;
         }
 
-        public void Update(IEntity entity, float deltaTime)
+        public void OnUpdate(IEntity entity, float deltaTime)
         {
             if (FireInputUseCase.FireRequired(_playerContext, _gameContext))
                 _character.GetFireAction().Invoke();

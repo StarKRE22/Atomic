@@ -27,7 +27,7 @@ namespace RTSGame
             _forward = TransformUseCase.GetForward(_entity);
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
             if (target is not {Enabled: true})

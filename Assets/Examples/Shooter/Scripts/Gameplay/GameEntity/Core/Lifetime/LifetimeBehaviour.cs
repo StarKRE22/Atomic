@@ -14,7 +14,7 @@ namespace ShooterGame.Gameplay
             _lifetime = entity.GetLifetime();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
             

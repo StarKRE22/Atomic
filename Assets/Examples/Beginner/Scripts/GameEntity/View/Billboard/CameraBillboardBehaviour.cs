@@ -20,7 +20,7 @@ namespace BeginnerGame
             _camera = playerContext.GetCamera().transform;
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             Vector3 dir = _target.position - _camera.position;
             _target.rotation = Quaternion.LookRotation(dir, _camera.up);

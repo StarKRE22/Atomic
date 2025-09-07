@@ -14,7 +14,7 @@ namespace BeginnerGame
             _inputMap = entity.GetInputMap();
         }
 
-        public void Update(IEntity entity, float deltaTime)
+        public void OnUpdate(IEntity entity, float deltaTime)
         {
             float3 moveDirection = InputUseCase.GetMoveDirection(_inputMap);
             _character.GetMoveDirection().Value = moveDirection;

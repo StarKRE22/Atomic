@@ -18,7 +18,7 @@ namespace BeginnerGame
             _context = context;
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _spawnPeriod.Tick(deltaTime);
             if (_spawnPeriod.IsCompleted())

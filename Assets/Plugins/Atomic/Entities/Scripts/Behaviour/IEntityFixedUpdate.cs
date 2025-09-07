@@ -14,7 +14,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being updated.</param>
         /// <param name="deltaTime">The fixed time step since the last update.</param>
-        void FixedUpdate(IEntity entity, float deltaTime);
+        void OnFixedUpdate(IEntity entity, float deltaTime);
     }
 
     /// <summary>
@@ -33,9 +33,9 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity instance of type <typeparamref name="E"/>.</param>
         /// <param name="deltaTime">The fixed time step since the last update.</param>
-        void FixedUpdate(E entity, float deltaTime);
+        void OnFixedUpdate(E entity, float deltaTime);
 
-        void IEntityFixedUpdate.FixedUpdate(IEntity entity, float deltaTime) =>
-            this.FixedUpdate((E) entity, deltaTime);
+        void IEntityFixedUpdate.OnFixedUpdate(IEntity entity, float deltaTime) =>
+            this.OnFixedUpdate((E) entity, deltaTime);
     }
 }

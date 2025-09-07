@@ -17,7 +17,7 @@ namespace RTSGame
             _target = entity.GetTarget();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
             if (target is not {Enabled: true} || !HealthUseCase.IsAlive(target))

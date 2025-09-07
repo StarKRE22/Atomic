@@ -174,7 +174,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _updateCount; i++)
-                _updates[i].Update(this, deltaTime);
+                _updates[i].OnUpdate(this, deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -196,7 +196,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _fixedUpdateCount; i++)
-                _fixedUpdates[i].FixedUpdate(this, deltaTime);
+                _fixedUpdates[i].OnFixedUpdate(this, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -218,7 +218,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < _lateUpdateCount && _enabled; i++)
-                _lateUpdates[i].LateUpdate(this, deltaTime);
+                _lateUpdates[i].OnLateUpdate(this, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }

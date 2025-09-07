@@ -18,7 +18,7 @@ namespace BeginnerGame
             _rotationDirection = entity.GetRotationDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             RotateUseCase.RotationStep(
                 _rotation.Value,

@@ -15,7 +15,7 @@ namespace BeginnerGame
             _countdown.ResetTime();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             if (_countdown.IsCompleted())
                 GameOverUseCase.GameOver(_context);

@@ -25,7 +25,7 @@ namespace RTSGame
             _lifetime.ResetTime();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
             if (_lifetime.IsCompleted())

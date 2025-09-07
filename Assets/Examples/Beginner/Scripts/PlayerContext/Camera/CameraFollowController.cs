@@ -26,7 +26,7 @@ namespace BeginnerGame
 
         public void Enable(IEntity entity) => this.UpdatePosition();
 
-        public void LateUpdate(IEntity entity, float deltaTime) => this.UpdatePosition();
+        public void OnLateUpdate(IEntity entity, float deltaTime) => this.UpdatePosition();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void UpdatePosition()

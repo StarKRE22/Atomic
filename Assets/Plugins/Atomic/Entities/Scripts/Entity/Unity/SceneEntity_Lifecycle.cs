@@ -197,7 +197,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.updateCount; i++)
-                this.updates[i].Update(this, deltaTime);
+                this.updates[i].OnUpdate(this, deltaTime);
 
             this.OnUpdated?.Invoke(deltaTime);
         }
@@ -219,7 +219,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.fixedUpdateCount; i++)
-                this.fixedUpdates[i].FixedUpdate(this, deltaTime);
+                this.fixedUpdates[i].OnFixedUpdate(this, deltaTime);
 
             this.OnFixedUpdated?.Invoke(deltaTime);
         }
@@ -241,7 +241,7 @@ namespace Atomic.Entities
                 return;
 
             for (int i = 0; i < this.lateUpdateCount; i++)
-                this.lateUpdates[i].LateUpdate(this, deltaTime);
+                this.lateUpdates[i].OnLateUpdate(this, deltaTime);
 
             this.OnLateUpdated?.Invoke(deltaTime);
         }

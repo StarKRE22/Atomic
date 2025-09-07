@@ -22,7 +22,7 @@ namespace RTSGame
             _camera = context.GetCamera().transform;
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             _camera.position = _character.GetPosition().Value + _offset;
         }

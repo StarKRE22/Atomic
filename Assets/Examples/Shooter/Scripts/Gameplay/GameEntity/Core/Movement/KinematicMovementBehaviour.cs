@@ -26,7 +26,7 @@ namespace ShooterGame.Gameplay
             _moveEvent = entity.GetMovementEvent();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             Vector3 direction = _moveDirection.Value;
             if (direction == Vector3.zero || !_moveCondition.Invoke())

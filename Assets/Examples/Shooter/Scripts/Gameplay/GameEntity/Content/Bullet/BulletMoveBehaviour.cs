@@ -17,7 +17,7 @@ namespace ShooterGame.Gameplay
             _moveSpeed = entity.GetMovementSpeed();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
             _position.Value += _moveSpeed.Value * deltaTime * (_rotation.Value * Vector3.forward);
         }

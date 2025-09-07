@@ -38,7 +38,7 @@ namespace ShooterGame.Gameplay
             _moveTime = _moveDuration;
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void OnLateUpdate(IEntity entity, float deltaTime)
         {
             if (_moveTime <= 0)
                 return;

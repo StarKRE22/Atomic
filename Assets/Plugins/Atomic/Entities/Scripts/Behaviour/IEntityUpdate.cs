@@ -13,7 +13,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity being updated.</param>
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
-        void Update(IEntity entity, float deltaTime);
+        void OnUpdate(IEntity entity, float deltaTime);
     }
 
     /// <summary>
@@ -34,6 +34,6 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Elapsed time since the last frame.</param>
         void OnUpdate(E entity, float deltaTime);
 
-        void IEntityUpdate.Update(IEntity entity, float deltaTime) => this.OnUpdate((E) entity, deltaTime);
+        void IEntityUpdate.OnUpdate(IEntity entity, float deltaTime) => this.OnUpdate((E) entity, deltaTime);
     }
 }

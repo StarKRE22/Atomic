@@ -13,7 +13,7 @@ namespace ShooterGame.App
             _exitKey = context.GetExitKeyCode();
         }
 
-        public void Update(IEntity entity, float deltaTime)
+        public void OnUpdate(IEntity entity, float deltaTime)
         {
             if (Input.GetKey(_exitKey.Value) && MenuUseCase.InMenu()) 
                 ExitAppUseCase.Exit();
