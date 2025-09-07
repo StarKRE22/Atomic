@@ -1,43 +1,45 @@
 # ⚛️ Atomic.Elements
 
-`Atomic.Elements` is a modular and reusable component library for Unity and C#, designed to simplify and accelerate game development. It provides a set of reactive components and data structures that can be easily integrated into different projects, offering flexibility and scalability.
+A library of atomic elements for constructing complex game objects and systems in `Unity` and `C#`.
+The solution includes constants, variables, reactive properties, collections, events, and actions, enabling developers to quickly assemble any game entity like a `LEGO Constructor`.
 
-## 🔍 Table of Contents
-- [Requirements](#requirements)
-- [Using Odin Inspector](#using-odin-inspector)
-- [API Reference](#api-reference)
-- [Performance](#performance)
-- [Best Practices](#best-practices)
 
-## Requirements
+## 📑 Table of Contents
+- [Requirements](#-requirements)
+- [Using Odin Inspector](#-using-odin-inspector)
+- [API Reference](#-api-reference)
+- [Performance](#-performance)
+- [Best Practices](#-best-practices)
+
+## 📝 Requirements
 > [!IMPORTANT]  
-> The Atomic Framework requires **Unity 6** or **.NET 7+**.  
+> The Atomic.Elements requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
 
-## Using Odin Inspector
+## 🧩 Using Odin Inspector
 > [!TIP]  
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+> The framework works **without Odin**, but Odin makes inspection and tweaking much easier.
 
-## API Reference
+## 📚 API Reference
 
 This section provides a complete reference to the core interfaces, classes, and utilities designed for reactive programming, event handling, Unity integration, and general-purpose development.
 
 Here you will find detailed explanations, usage examples, and extension methods for:
 
-- **Values** – interfaces and implementations for reactive and constant values.
-- **Variables** – reactive variables, proxies, and Unity-specific variable types.
-- **Actions & Functions** – reusable actions, predicates, and function abstractions.
-- **Setters** – inline and interface-based property setters.
-- **Events & Signals** – event abstractions, subscriptions, and reactive signals.
-- **Requests** – encapsulated request objects for decoupled communication.
-- **Expressions** – logical and arithmetic expressions for flexible evaluation.
-- **Collections** – reactive collections such as arrays, lists, dictionaries, and sets.
-- **Time** – timers, cooldowns, countdowns, stopwatches, and time sources.
-- **Unity Components** – MonoBehaviour wrappers for animation, collision, and trigger events.
-- **Utils** – helper classes including disposable management, optional values, and reference wrappers.
+- `Values` – interfaces and implementations for reactive and constant values.
+- `Variables` – reactive variables, proxies, and Unity-specific variable types.
+- `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
+- `Setters` – inline and interface-based property setters.
+- `Events` & `Signals` – event abstractions, subscriptions, and reactive signals.
+- `Requests` – encapsulated request objects for decoupled communication.
+- `Expressions` – logical and arithmetic expressions for flexible evaluation.
+- `Collections` – reactive collections such as arrays, lists, dictionaries, and sets.
+- `Time` – timers, cooldowns, countdowns, stopwatches, and time sources.
+- `Unity Components` – MonoBehaviour wrappers for animation, collision, and trigger events.
+- `Utils` – helper classes including disposable management, optional values, and reference wrappers.
 
-Use this documentation as a guide for integrating Atomic.Elements into your Unity projects or C# applications, leveraging reactive patterns, composable structures, and modular design.
+Use this documentation as a guide for integrating `Atomic.Elements` into your `Unity` projects or `C#` applications, leveraging reactive patterns, composable structures, and modular design.
 
 - **Values**
   - [IValue](Values/IValue.md)
@@ -112,10 +114,9 @@ Use this documentation as a guide for integrating Atomic.Elements into your Unit
   - [Reference](Utils/Reference.md)
   - [Optional](Utils/Optional.md)
 
-## Performance
+## 🔥 Performance
 
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
-The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper compared to a standard `HashSet<T>`.
 
 **Collections**
   - [ReactiveArray](Collections/ReactiveArray.md/#performance) – performance benchmarks for reactive arrays.
@@ -124,10 +125,9 @@ The table shows median execution times of key operations, illustrating the overh
   - [ReactiveDictionary](Collections/ReactiveDictionary.md/#performance) – performance benchmarks for reactive dictionaries.
   - [ReactiveHashSet](Collections/ReactiveHashSet.md/#performance) – performance benchmarks for reactive hash sets.
 
-## Best Practices
+## 📌 Best Practices
 
-This section outlines **recommended approaches and patterns** when working with the Atomic Elements framework.  
-Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
+This section outlines **recommended approaches and patterns** when working with the `Atomic.Elements` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
 
 - [Prefer Abstract Interfaces](BestPractices/PreferAbstractInterfaces.md)
 - [Shared Constants](BestPractices/SharedConstants.md)

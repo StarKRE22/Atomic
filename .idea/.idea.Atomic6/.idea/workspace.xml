@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,23 +149,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="1839000" />
-    </task>
-    <task id="LOCAL-00066" summary="Поправил Entity.md">
-      <option name="closed" value="true" />
-      <created>1756833987825</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1756833987825</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Пока по Entities все!">
-      <option name="closed" value="true" />
-      <created>1756836177398</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1756836177398</updated>
+      <workItem from="1757234040454" duration="4916000" />
     </task>
     <task id="LOCAL-00068" summary="Написал пример для Entity Behavioirs">
       <option name="closed" value="true" />
@@ -543,7 +527,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757191547713</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Сделал блок для Shooter Sample!">
+      <option name="closed" value="true" />
+      <created>1757235897335</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1757235897335</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Оформил раздел #3">
+      <option name="closed" value="true" />
+      <created>1757236623258</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1757236623258</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,8 +570,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал TagEntityTrigger.cs" />
-    <MESSAGE value="Написал ValueEntityTrigger.md" />
     <MESSAGE value="Сделал EntityTriggers!" />
     <MESSAGE value="Все пока!!" />
     <MESSAGE value="Написал Lifecycle Sources!" />
@@ -595,7 +593,9 @@
     <MESSAGE value="Обработал UnityQuickStart" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Сделал блок для Shooter Sample!" />
+    <MESSAGE value="Оформил раздел #3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Оформил раздел #3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
