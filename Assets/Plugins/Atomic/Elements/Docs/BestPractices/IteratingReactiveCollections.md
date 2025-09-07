@@ -77,9 +77,30 @@ for (int i = 0, count = items.Count; i < count; i++)
 
 ## 3. Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
 
-In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`, `ReactiveDictionary`, or `ReactiveHashSet`.
+In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`, `ReactiveDictionary`, or `ReactiveHashSet`. This is especially important for `ReactiveLinkedList`, which is a **doubly-linked list** where accessing elements by index has **O(N) complexity**. Using a `for` loop with indexing would therefore be very inefficient.
 
-This is especially important for `ReactiveLinkedList`, which is a **doubly-linked list** where accessing elements by index has **O(N) complexity**. Using a `for` loop with indexing would therefore be very inefficient.
+
+### ❌ Bad Practice
+```csharp
+ReactiveLinkedList<string> items = ... //1000+ elements
+
+for (int i = 0, count = items.Count; i < count; i++)
+{
+    string item = items[i];
+    ...
+}
+```
+
+### ✅ Good Practice
+
+```csharp
+ReactiveLinkedList<string> items = ... //1000+ elements
+
+foreach(string item in items)
+{
+    ...
+}
+```
 
 > [!NOTE]  
 > For detailed `performance` analysis, see the following sections:
