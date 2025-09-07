@@ -2,7 +2,7 @@
 Here, I would like to share how I organize my projects using the `Atomic Framework`, so they can be easily scaled, and the file structure remains as intuitive as possible.
 
 > [!TIP]
-> **As an example, you can check out the prototype game [Top Down Shooter](../../README.md/#2-top-down-shooter-sample)**
+> **As an example, you can check out the prototype game `Top Down Shooter` in the [Game Examples](../../README.md/#-game-examples) section**
 
 ## 📂 1. Organize Assets Folder
 

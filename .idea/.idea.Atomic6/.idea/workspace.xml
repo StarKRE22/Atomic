@@ -5,174 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/ModularEntityInstallers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/IEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/IEntityAspect.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/SceneEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/SceneEntityAspect.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/ScriptableEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Aspects/ScriptableEntityAspect.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Attributes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Attributes/RunInEditModeAttribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Attributes/RunInEditModeAttribute.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Attributes/RunInEditModeAttribute.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Attributes/RunInEditModeAttribute.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityBehaviour.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityBehaviour.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityDisable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityDisable.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityDispose.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityDispose.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityEnable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityEnable.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityFixedUpdate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityFixedUpdate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityFixedUpdate.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityFixedUpdate.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityGizmos.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGizmos.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityGizmos.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGizmos.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityInit.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityInit.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityLateUpdate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityLateUpdate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityLateUpdate.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityLateUpdate.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityUpdate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityUpdate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Behaviours/IEntityUpdate.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityUpdate.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/EntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/EntityCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/Extensions.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Extensions.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/IEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/IEntityCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/IReadOnlyEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Collections/IReadOnlyEntityCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/Entity.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/EntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/EntitySingleton.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/Extensions.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Extensions.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/IEntity.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntity.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntityProxy.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntityProxy.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxy.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Entities/SceneEntitySingleton.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IEntityFactoryCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IEntityFactoryCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/IMultiEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/InlineEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/InlineEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/MultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/MultiEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/MultiEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/MultiEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityBaker.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/ScriptableEntityFactory.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/ScriptableEntityFactoryCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactoryCatalog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/ScriptableEntityFactoryCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactoryCatalog.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/BehaviourEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/BehaviourEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/BehaviourEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/BehaviourEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/EntityFilter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/EntityFilter.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/EntityTriggerBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/EntityTriggerBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/IEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/IEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/InlineEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/StateChangedTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/StateChangedTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/StateChangedTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/StateChangedTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/SubscriptionEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/SubscriptionEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/TagEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/TagEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/ValueEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/ValueEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Filters/ValueEntityTrigger.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/ValueEntityTrigger.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/IEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/IEntityInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/SceneEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/SceneEntityInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/ScriptableEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Installers/ScriptableEntityInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Extensions.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IEnableSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IEnableSource.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableSource.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IInitSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IInitSource.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitSource.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IUpdateSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IUpdateSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Sources/IUpdateSource.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IUpdateSource.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/DisableSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/DisableSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/DisposeSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/DisposeSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/EnableSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/EnableSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/EnableSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/EnableSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/FixedUpdateSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/FixedUpdateSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/FixedUpdateSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/FixedUpdateSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/InitSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/InitSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/LateUpdateSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/LateUpdateSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/LateUpdateSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/LateUpdateSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/UpdateSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/UpdateSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Lifecycle/Subscriptions/UpdateSubscription.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/UpdateSubscription.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/EntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/EntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IMultiEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IMultiEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IPrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/IPrefabEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/MultiEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/MultiEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/MultiEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/MultiEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/PrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/PrefabEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/SceneEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Pooling/SceneEntityPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Registry.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Registry/EntityRegistry.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Registry/EntityRegistry.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityCollectionView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityCollectionView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityView.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityViewCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/UI/EntityViewPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Utils.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Utils/EntityNames.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/EntityNames.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Utils/EntityNames.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/EntityNames.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Utils/EntityUtils.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Utils/EntityUtils.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/EntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/EntityWorld.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/IEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/IEntityWorld.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/SceneEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference/Worlds/SceneEntityWorld.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/NOT COMPILED BestPractices.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entities.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/TUTOR.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entities.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/NOT COMPILED BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/NOT COMPILED BestPractices.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/TUTOR.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/TUTOR.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -320,15 +189,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="22984000" />
-    </task>
-    <task id="LOCAL-00085" summary="Сделал EntityTriggers!">
-      <option name="closed" value="true" />
-      <created>1756985423638</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1756985423638</updated>
+      <workItem from="1757234040454" duration="26058000" />
     </task>
     <task id="LOCAL-00086" summary="Все пока!!">
       <option name="closed" value="true" />
@@ -714,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757270133883</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Сделал ModularEntityInstallers.md">
+      <option name="closed" value="true" />
+      <created>1757272066732</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1757272066732</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,7 +610,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Переписал EntityCollectionView.cs" />
     <MESSAGE value="Переписал тесты для EntityView.cs" />
     <MESSAGE value="Написал тесты для OnAdded / OnRemoved EntityCollectionView.cs" />
     <MESSAGE value="Покрыл тестами EntityCollectionView.cs" />
@@ -766,7 +634,8 @@
     <MESSAGE value="Перековеркал Update-&gt;Tick!" />
     <MESSAGE value="Оформил Request vs Actions!" />
     <MESSAGE value="Написал RequestConditionActionEvent.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал RequestConditionActionEvent.md" />
+    <MESSAGE value="Сделал ModularEntityInstallers.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал ModularEntityInstallers.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
