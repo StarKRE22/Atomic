@@ -7,7 +7,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Provides a set of commonly used constant values wrapped in <see cref="Const{T}"/> for use in serialized and functional contexts.
     /// </summary>
-    public static class Consts
+    public static class DefaultConstants
     {
         // -------------------- Boolean --------------------
 

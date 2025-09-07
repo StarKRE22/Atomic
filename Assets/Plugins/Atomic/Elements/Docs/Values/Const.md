@@ -1,4 +1,4 @@
-# 🧩 Const<T>
+# 🧩 Const
 
 `Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**.  
 It implements `IValue<T>` and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
@@ -37,34 +37,23 @@ T Value { get; }
 ```csharp
 T Invoke()
 ```
+## 🗂 Example of Usage
 
-## Example of Usage
+The example below demonstrates **shared movement speed** across multiple characters using `Const<T>`.
+
 ```csharp
-public sealed class Character : MonoBehaviour
+public sealed class CharacterConfig : ScriptableObject
 {
-    private IValue<float> _moveSpeed;
-    
-    public void SetMoveSpeed(IValue<float> moveSpeed) =>
-        _moveSpeed = moveSpeed;
-    
-    public void MoveStep(Vector3 direction) =>
-        this.transform.position += direction * moveSpeed;
-    
+    [SerializeField] public Const<float> moveSpeed = 5;
 }
 
-public sealed class GameInitializer : MonoBehaviour
+public sealed class Character : MonoBehaviour
 {
-    [SerializeField]
-    private Const<float> _moveSpeed = 3f;  // Shared constant for all characters
-    
-    [SerializeField]
-    private Character[] _characters; // 100+ characters
-    
-    void Start()
+    [SerializeField] private CharacterConfig _config;
+
+    public void MoveStep(Vector3 direction, float deltaTime) 
     {
-        // Assign the same Const<float> instance to all characters
-        foreach (Character character in _characters)
-            character.SetMoveSpeed(_moveSpeed);
+        this.transform.position += direction * (_config.moveSpeed.Value * deltaTime);
     }
 }
 ```

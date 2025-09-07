@@ -61,7 +61,7 @@ namespace Atomic.Elements
             Assert.IsTrue(andExpression.Value);
             Assert.AreEqual(2, andExpression.Count);
 
-            andExpression.Add(Consts.False);
+            andExpression.Add(DefaultConstants.False);
 
             //Assert:
             Assert.AreEqual(3, andExpression.Count);

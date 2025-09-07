@@ -45,6 +45,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IValue](Values/IValue.md)
   - [IReactiveValue](Values/IReactiveValue.md)
   - [Const](Values/Const.md)
+  - [ScriptableConst](Values/ScriptableConst.md)
   - [DefaultConstants](Values/DefaultConstants.md)
   - [Extensions](Values/Extensions.md)
 - **Variables**
@@ -130,7 +131,7 @@ The performance comparison below was measured on a **MacBook with Apple M1** for
 This section outlines **recommended approaches and patterns** when working with the `Atomic.Elements` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
 
 - [Prefer Interfaces to Concrete Classes](BestPractices/PreferAbstractInterfaces.md)
-- [Shared Constants](BestPractices/SharedConstants.md)
+- [Using Shared Constants](BestPractices/SharedConstants.md)
 - [Iterating Reactive Collections](BestPractices/IteratingReactiveCollections.md)
 - [Request-Condition-Action-Event Pattern](BestPractices/RequestConditionActionEventPattern.md)
 - [Requests vs Actions](BestPractices/RequestsVsActions.md)
