@@ -374,6 +374,7 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 5. How to persist and manage **game data**
 6. How to transform an entity into a fully-featured **game object with animations, VFX, and audio**
 7. How to create and manage a **projectile pool** efficiently
+8. How to organize scalable file system for your project
 
 ### 3️⃣ RTS Sample
 
@@ -410,11 +411,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
-- [Project Folder Organization]
-- [Upgrade Entity Factory to Builder](Docs/BestPractices/UpgradeEntityFactory.md)
-- [Observe Extension instead Subscribe](Docs/BestPractices/ObserveExtension.md)
-- [Entity Filter Chaining](Docs/BestPractices/EntityFilterChaining.md)
-- [Prepare Entity Domains for your project](Docs/BestPractices/PrepareEntityDomains.md)
+- [Project Folder Organization](Docs/BestPractices/ProjectFolderOrganization.md)
 
 ## ⚖️ License
 
