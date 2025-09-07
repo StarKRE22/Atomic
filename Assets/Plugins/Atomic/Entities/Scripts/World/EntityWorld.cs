@@ -66,13 +66,13 @@ namespace Atomic.Entities
         public event Action OnDisabled;
 
         /// <inheritdoc/>
-        public event Action<float> OnUpdated;
+        public event Action<float> OnTicked;
 
         /// <inheritdoc/>
-        public event Action<float> OnFixedUpdated;
+        public event Action<float> OnFixedTicked;
 
         /// <inheritdoc/>
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnLateTicked;
 
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -169,7 +169,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc/>
-        public void OnUpdate(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -178,15 +178,15 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnUpdate(deltaTime);
+                slot.value.Tick(deltaTime);
                 currentIndex = slot.right;
             }
             
-            this.OnUpdated?.Invoke(deltaTime);
+            this.OnTicked?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
-        public void OnFixedUpdate(float deltaTime)
+        public void FixedTick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -195,15 +195,15 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnFixedUpdate(deltaTime);
+                slot.value.FixedTick(deltaTime);
                 currentIndex = slot.right;
             }
             
-            this.OnFixedUpdated?.Invoke(deltaTime);
+            this.OnFixedTicked?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
-        public void OnLateUpdate(float deltaTime)
+        public void LateTick(float deltaTime)
         {
             if (!_enabled)
                 return;
@@ -212,11 +212,11 @@ namespace Atomic.Entities
             while (currentIndex != UNDEFINED_INDEX)
             {
                 ref readonly Slot slot = ref _slots[currentIndex];
-                slot.value.OnLateUpdate(deltaTime);
+                slot.value.LateTick(deltaTime);
                 currentIndex = slot.right;
             }
             
-            this.OnLateUpdated?.Invoke(deltaTime);
+            this.OnLateTicked?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -241,9 +241,9 @@ namespace Atomic.Entities
             //Unsubscribe events:
             this.OnEnabled = null;
             this.OnDisabled = null;
-            this.OnUpdated = null;
-            this.OnFixedUpdated = null;
-            this.OnLateUpdated = null;
+            this.OnTicked = null;
+            this.OnFixedTicked = null;
+            this.OnLateTicked = null;
         }
     }
 }

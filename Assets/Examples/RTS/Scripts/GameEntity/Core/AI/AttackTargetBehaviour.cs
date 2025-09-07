@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class AttackTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class AttackTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private IGameEntity _entity;
         private IValue<IGameEntity> _target;
@@ -17,7 +17,7 @@ namespace RTSGame
             _target = entity.GetTarget();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             IGameEntity target = _target.Value;
             if (target is not {Enabled: true} || !HealthUseCase.IsAlive(target))

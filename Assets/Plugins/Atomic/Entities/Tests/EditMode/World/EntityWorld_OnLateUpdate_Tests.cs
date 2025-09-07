@@ -15,7 +15,7 @@ namespace Atomic.Entities
             float delta = 0.033f;
 
             // Act
-            world.OnLateUpdate(delta);
+            world.LateTick(delta);
 
             // Assert
             Assert.IsTrue(entity.WasLateUpdated);
@@ -30,12 +30,12 @@ namespace Atomic.Entities
             world.Enable();
 
             float calledDelta = -1f;
-            world.OnLateUpdated += dt => calledDelta = dt;
+            world.OnLateTicked += dt => calledDelta = dt;
 
             float delta = 0.033f;
 
             // Act
-            world.OnLateUpdate(delta);
+            world.LateTick(delta);
 
             // Assert
             Assert.AreEqual(delta, calledDelta);
@@ -49,7 +49,7 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>(entity);
 
             // Act
-            world.OnLateUpdate(0.033f);
+            world.LateTick(0.033f);
 
             // Assert
             Assert.IsFalse(entity.WasLateUpdated);

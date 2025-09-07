@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class MoveAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose, IEntityLateUpdate
+    public sealed class MoveAnimBehaviour : IEntityInit<IGameEntity>, IEntityDispose, IEntityLateTick
     {
         private static readonly int IsMoving = Animator.StringToHash(nameof(IsMoving));
 
@@ -38,7 +38,7 @@ namespace ShooterGame.Gameplay
             _moveTime = _moveDuration;
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void LateTick(IEntity entity, float deltaTime)
         {
             if (_moveTime <= 0)
                 return;

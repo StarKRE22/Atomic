@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class RotationBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private IVariable<Quaternion> _rotation;
         private IValue<float> _rotationSpeed;
@@ -18,7 +18,7 @@ namespace BeginnerGame
             _rotationDirection = entity.GetRotationDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             RotateUseCase.RotationStep(
                 _rotation.Value,

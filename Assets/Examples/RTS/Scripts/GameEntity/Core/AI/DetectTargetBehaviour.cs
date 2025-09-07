@@ -4,7 +4,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class DetectTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate, IEntityDisable
+    public sealed class DetectTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick, IEntityDisable
     {
         private readonly IGameContext _gameContext;
         private readonly IEntityWorld<IGameEntity> _entityWorld;
@@ -26,7 +26,7 @@ namespace RTSGame
             _target = entity.GetTarget();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             _cooldown.Tick(deltaTime);
             

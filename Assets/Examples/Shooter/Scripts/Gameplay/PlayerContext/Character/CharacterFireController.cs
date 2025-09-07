@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterFireController : IEntityInit<IPlayerContext>, IEntityUpdate
+    public sealed class CharacterFireController : IEntityInit<IPlayerContext>, IEntityTick
     {
         private IGameContext _gameContext;
         private IGameEntity _character;
@@ -15,7 +15,7 @@ namespace ShooterGame.Gameplay
             _gameContext = GameContext.Instance;
         }
 
-        public void Update(IEntity entity, float deltaTime)
+        public void Tick(IEntity entity, float deltaTime)
         {
             if (FireInputUseCase.FireRequired(_playerContext, _gameContext))
                 _character.GetFireAction().Invoke();

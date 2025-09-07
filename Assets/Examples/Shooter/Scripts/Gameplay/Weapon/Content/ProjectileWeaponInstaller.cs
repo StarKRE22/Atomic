@@ -38,7 +38,7 @@ namespace ShooterGame.Gameplay
                 _cooldown.ResetTime();
                 weapon.GetFireEvent().Invoke();
             }));
-            weapon.WhenFixedUpdate(_cooldown.Tick);
+            weapon.WhenFixedTick(_cooldown.Tick);
         }
     }
 }

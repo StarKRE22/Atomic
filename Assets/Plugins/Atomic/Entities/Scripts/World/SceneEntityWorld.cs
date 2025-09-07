@@ -121,7 +121,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle)
             {
                 this.Enable();
-                UpdateLoop.Instance.Add(this);
+                UpdateLoop.Instance.Register(this);
                 this.isStarted = true;
             }
         }
@@ -139,7 +139,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                UpdateLoop.Instance.Del(this);
+                UpdateLoop.Instance.Unregister(this);
                 this.Disable();
             }
         }
@@ -242,24 +242,24 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public event Action<float> OnUpdated
+        public event Action<float> OnTicked
         {
-            add => _world.OnUpdated += value;
-            remove => _world.OnUpdated -= value;
+            add => _world.OnTicked += value;
+            remove => _world.OnTicked -= value;
         }
 
         /// <inheritdoc />
-        public event Action<float> OnFixedUpdated
+        public event Action<float> OnFixedTicked
         {
-            add => _world.OnFixedUpdated += value;
-            remove => _world.OnFixedUpdated -= value;
+            add => _world.OnFixedTicked += value;
+            remove => _world.OnFixedTicked -= value;
         }
 
         /// <inheritdoc />
-        public event Action<float> OnLateUpdated
+        public event Action<float> OnLateTicked
         {
-            add => _world.OnLateUpdated += value;
-            remove => _world.OnLateUpdated -= value;
+            add => _world.OnLateTicked += value;
+            remove => _world.OnLateTicked -= value;
         }
 
         /// <inheritdoc />
@@ -284,19 +284,19 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnUpdate(float deltaTime) => _world.OnUpdate(deltaTime);
+        public void Tick(float deltaTime) => _world.Tick(deltaTime);
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnFixedUpdate(float deltaTime) => _world.OnFixedUpdate(deltaTime);
+        public void FixedTick(float deltaTime) => _world.FixedTick(deltaTime);
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
         [Button, HideInEditorMode]
 #endif
-        public void OnLateUpdate(float deltaTime) => _world.OnLateUpdate(deltaTime);
+        public void LateTick(float deltaTime) => _world.LateTick(deltaTime);
 
         #endregion
 

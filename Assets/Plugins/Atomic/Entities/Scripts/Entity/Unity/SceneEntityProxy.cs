@@ -224,22 +224,22 @@ namespace Atomic.Entities
             remove => _source.OnDisposed -= value;
         }
 
-        public event Action<float> OnUpdated
+        public event Action<float> OnTicked
         {
-            add => _source.OnUpdated += value;
-            remove => _source.OnUpdated -= value;
+            add => _source.OnTicked += value;
+            remove => _source.OnTicked -= value;
         }
 
-        public event Action<float> OnFixedUpdated
+        public event Action<float> OnFixedTicked
         {
-            add => _source.OnFixedUpdated += value;
-            remove => _source.OnFixedUpdated -= value;
+            add => _source.OnFixedTicked += value;
+            remove => _source.OnFixedTicked -= value;
         }
 
-        public event Action<float> OnLateUpdated
+        public event Action<float> OnLateTicked
         {
-            add => _source.OnLateUpdated += value;
-            remove => _source.OnLateUpdated -= value;
+            add => _source.OnLateTicked += value;
+            remove => _source.OnLateTicked -= value;
         }
 
         public bool Initialized => _source.Initialized;
@@ -249,9 +249,9 @@ namespace Atomic.Entities
         public void Enable() => _source.Enable();
         public void Disable() => _source.Disable();
         public void Dispose() => _source.Dispose();
-        public void OnUpdate(float deltaTime) => _source.OnUpdate(deltaTime);
-        public void OnFixedUpdate(float deltaTime) => _source.OnFixedUpdate(deltaTime);
-        public void OnLateUpdate(float deltaTime) => _source.OnLateUpdate(deltaTime);
+        public void Tick(float deltaTime) => _source.Tick(deltaTime);
+        public void FixedTick(float deltaTime) => _source.FixedTick(deltaTime);
+        public void LateTick(float deltaTime) => _source.LateTick(deltaTime);
 
         #endregion
     }

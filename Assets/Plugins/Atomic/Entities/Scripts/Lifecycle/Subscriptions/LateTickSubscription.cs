@@ -1,0 +1,37 @@
+using System;
+
+namespace Atomic.Entities
+{
+    /// <summary>
+    /// A disposable subscription that detaches a callback from an <see cref="ITickSource"/>'s <see cref="ITickSource.OnLateTicked"/> event when disposed.
+    /// </summary>
+    /// <remarks>
+    /// Useful for managing lifecycle-scoped or temporary subscriptions to late update events,
+    /// such as when binding logic to specific runtime conditions.
+    /// </remarks>
+    public readonly struct LateTickSubscription : IDisposable
+    {
+        private readonly ITickSource _source;
+        private readonly Action<float> _callback;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LateTickSubscription"/> struct.
+        /// </summary>
+        /// <param name="source">The updatable source to subscribe to.</param>
+        /// <param name="callback">The callback invoked during <c>LateUpdate</c> cycles.</param>
+        internal LateTickSubscription(ITickSource source, Action<float> callback)
+        {
+            _source = source;
+            _callback = callback;
+        }
+
+        /// <summary>
+        /// Unsubscribes the callback from the <see cref="ITickSource.OnLateTicked"/> event.
+        /// </summary>
+        public void Dispose()
+        {
+            if (_source != null && _callback != null)
+                _source.OnLateTicked -= _callback;
+        }
+    }
+}

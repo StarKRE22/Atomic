@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame.Gameplay
 {
-    public sealed class CharacterMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class CharacterMoveBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private IValue<Vector3> _moveDirection;
         private IVariable<Vector3> _rotationDirection;
@@ -15,7 +15,7 @@ namespace ShooterGame.Gameplay
             _rotationDirection = entity.GetRotationDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             Vector3 direction = _moveDirection.Value;
             if (direction != Vector3.zero) 

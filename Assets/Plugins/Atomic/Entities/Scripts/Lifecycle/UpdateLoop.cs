@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Internal MonoBehaviour singleton that manages and dispatches Unity update callbacks
     /// (<see cref="Update"/>, <see cref="FixedUpdate"/>, <see cref="LateUpdate"/>)
-    /// to all registered <see cref="IUpdateSource"/> instances.
+    /// to all registered <see cref="ITickSource"/> instances.
     /// </summary>
     /// <remarks>
     /// The UpdateManager is instantiated automatically and hidden from the hierarchy. 
@@ -19,12 +19,12 @@ namespace Atomic.Entities
     [DisallowMultipleComponent]
     internal sealed class UpdateLoop : MonoBehaviour
     {
-        private static readonly IEqualityComparer<IUpdateSource> s_comparer = EqualityComparer<IUpdateSource>.Default;
+        private static readonly IEqualityComparer<ITickSource> s_comparer = EqualityComparer<ITickSource>.Default;
 
         private static UpdateLoop _instance;
         private static bool _spawned;
 
-        internal IUpdateSource[] _updatables;
+        internal ITickSource[] _updatables;
         private int _count;
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace Atomic.Entities
         /// <summary>
         /// Registers an IUpdatable instance for update callbacks.
         /// </summary>
-        /// <param name="updateSource">The instance to register.</param>
-        internal void Add(IUpdateSource updateSource)
+        /// <param name="tickSource">The instance to register.</param>
+        internal void Register(ITickSource tickSource)
         {
-            if (updateSource == null)
+            if (tickSource == null)
                 return;
 
 #if UNITY_EDITOR
@@ -59,26 +59,23 @@ namespace Atomic.Entities
                 return;
 #endif
             UpdateLoop instance = Instance;
-            AddIfAbsent(ref instance._updatables, ref instance._count, updateSource, s_comparer);
+            AddIfAbsent(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
 
         /// <summary>
         /// Unregisters a previously registered IUpdatable instance.
         /// </summary>
-        /// <param name="updateSource">The instance to unregister.</param>
-        internal void Del(IUpdateSource updateSource)
+        /// <param name="tickSource">The instance to unregister.</param>
+        internal void Unregister(ITickSource tickSource)
         {
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
                 return;
 #endif
             UpdateLoop instance = Instance;
-            Remove(ref instance._updatables, ref instance._count, updateSource, s_comparer);
+            Remove(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
-
-        internal bool Contains(IUpdateSource updateSource) => 
-            EntityUtils.Contains(Instance._updatables, updateSource, _count, s_comparer);
-
+        
         /// <summary>
         /// Invokes <see crefIUpdateSourceteeOnUpdate"/> on all registered instances.
         /// </summary>
@@ -86,7 +83,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.deltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnUpdate(deltaTime);
+                _updatables[i].Tick(deltaTime);
         }
 
         /// <summary>
@@ -96,7 +93,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.fixedDeltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnFixedUpdate(deltaTime);
+                _updatables[i].FixedTick(deltaTime);
         }
 
         /// <summary>
@@ -106,7 +103,7 @@ namespace Atomic.Entities
         {
             float deltaTime = Time.deltaTime;
             for (int i = 0; i < _count; i++)
-                _updatables[i].OnLateUpdate(deltaTime);
+                _updatables[i].LateTick(deltaTime);
         }
 
         /// <summary>

@@ -9,20 +9,20 @@ namespace Atomic.Entities
         /// <summary>
         /// Equality comparer for IUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityUpdate> s_updateComparer =
-            EqualityComparer<IEntityUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityTick> s_updateComparer =
+            EqualityComparer<IEntityTick>.Default;
 
         /// <summary>
         /// Equality comparer for IFixedUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityFixedUpdate> s_fixedUpdateComparer =
-            EqualityComparer<IEntityFixedUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityFixedTick> s_fixedUpdateComparer =
+            EqualityComparer<IEntityFixedTick>.Default;
 
         /// <summary>
         /// Equality comparer for ILateUpdate behaviours.
         /// </summary>
-        private static readonly IEqualityComparer<IEntityLateUpdate> s_lateUpdateComparer =
-            EqualityComparer<IEntityLateUpdate>.Default;
+        private static readonly IEqualityComparer<IEntityLateTick> s_lateUpdateComparer =
+            EqualityComparer<IEntityLateTick>.Default;
 
         /// Called when the entity is initialized.
         /// </summary>
@@ -45,17 +45,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Called every frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnUpdated;
+        public event Action<float> OnTicked;
 
         /// <summary>
         /// Called every fixed frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnFixedUpdated;
+        public event Action<float> OnFixedTicked;
 
         /// <summary>
         /// Called every late frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnLateTicked;
 
         /// <summary>
         /// Indicates whether the entity has been Initialized.
@@ -70,9 +70,9 @@ namespace Atomic.Entities
         private bool _initialized;
         private bool _enabled;
 
-        private IEntityUpdate[] _updates;
-        private IEntityFixedUpdate[] _fixedUpdates;
-        private IEntityLateUpdate[] _lateUpdates;
+        private IEntityTick[] _updates;
+        private IEntityFixedTick[] _fixedUpdates;
+        private IEntityLateTick[] _lateUpdates;
 
         private int _updateCount;
         private int _fixedUpdateCount;
@@ -163,20 +163,20 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Time elapsed since the last frame.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>Update</c> on all <see cref="IEntityUpdate"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnUpdated"/> event.</description></item>
+        /// <item><description>Calls <c>Update</c> on all <see cref="IEntityTick"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnUpdate(float deltaTime)
+        public void Tick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < _updateCount; i++)
-                _updates[i].Update(this, deltaTime);
+                _updates[i].Tick(this, deltaTime);
 
-            this.OnUpdated?.Invoke(deltaTime);
+            this.OnTicked?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -185,20 +185,20 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Fixed delta time.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedUpdate"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnFixedUpdated"/> event.</description></item>
+        /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedTick"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnFixedTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnFixedUpdate(float deltaTime)
+        public void FixedTick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < _fixedUpdateCount; i++)
-                _fixedUpdates[i].FixedUpdate(this, deltaTime);
+                _fixedUpdates[i].FixedTick(this, deltaTime);
 
-            this.OnFixedUpdated?.Invoke(deltaTime);
+            this.OnFixedTicked?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -207,20 +207,20 @@ namespace Atomic.Entities
         /// <param name="deltaTime">Time elapsed since last frame.</param>
         /// <remarks>
         /// <list type="bullet">
-        /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateUpdate"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnLateUpdated"/> event.</description></item>
+        /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateTick"/> behaviours.</description></item>
+        /// <item><description>Triggers <see cref="OnLateTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
-        public void OnLateUpdate(float deltaTime)
+        public void LateTick(float deltaTime)
         {
             if (!_enabled)
                 return;
 
             for (int i = 0; i < _lateUpdateCount && _enabled; i++)
-                _lateUpdates[i].LateUpdate(this, deltaTime);
+                _lateUpdates[i].LateTick(this, deltaTime);
 
-            this.OnLateUpdated?.Invoke(deltaTime);
+            this.OnLateTicked?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

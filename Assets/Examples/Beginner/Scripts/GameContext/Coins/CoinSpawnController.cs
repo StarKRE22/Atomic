@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedUpdate
+    public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedTick
     {
         private readonly Cooldown _spawnPeriod;
         private IGameContext _context;
@@ -18,7 +18,7 @@ namespace BeginnerGame
             _context = context;
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             _spawnPeriod.Tick(deltaTime);
             if (_spawnPeriod.IsCompleted())

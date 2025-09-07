@@ -12,9 +12,9 @@ namespace Atomic.Entities
             world.Enable();
 
             float receivedDelta = -1;
-            world.OnFixedUpdated += dt => receivedDelta = dt;
+            world.OnFixedTicked += dt => receivedDelta = dt;
 
-            world.OnFixedUpdate(0.02f);
+            world.FixedTick(0.02f);
 
             Assert.AreEqual(0.02f, receivedDelta, 1e-6);
         }
@@ -25,9 +25,9 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
 
             bool called = false;
-            world.OnFixedUpdated += _ => called = true;
+            world.OnFixedTicked += _ => called = true;
 
-            world.OnFixedUpdate(0.02f);
+            world.FixedTick(0.02f);
 
             Assert.IsFalse(called);
         }
@@ -39,10 +39,10 @@ namespace Atomic.Entities
             world.Enable();
 
             int count = 0;
-            world.OnFixedUpdated += _ => count++;
+            world.OnFixedTicked += _ => count++;
 
-            world.OnFixedUpdate(0.01f);
-            world.OnFixedUpdate(0.01f);
+            world.FixedTick(0.01f);
+            world.FixedTick(0.01f);
 
             Assert.AreEqual(2, count);
         }
@@ -53,10 +53,10 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             world.Enable();
 
-            world.OnFixedUpdate(0.03f);
+            world.FixedTick(0.03f);
 
             bool called = false;
-            world.OnFixedUpdated += _ => called = true;
+            world.OnFixedTicked += _ => called = true;
 
             Assert.IsFalse(called);
         }
@@ -67,7 +67,7 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             world.Enable();
 
-            Assert.DoesNotThrow(() => world.OnFixedUpdate(0.015f));
+            Assert.DoesNotThrow(() => world.FixedTick(0.015f));
         }
     }
 }

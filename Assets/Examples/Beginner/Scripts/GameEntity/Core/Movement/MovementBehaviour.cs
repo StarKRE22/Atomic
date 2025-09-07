@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public sealed class MovementBehaviour : IEntityInit<IGameEntity>, IEntityFixedUpdate
+    public sealed class MovementBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick
     {
         private IVariable<Vector3> _position;
         private IValue<float> _moveSpeed;
@@ -18,7 +18,7 @@ namespace BeginnerGame
             _moveDirection = entity.GetMoveDirection();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             MoveUseCase.MovementStep(
                 _position.Value,

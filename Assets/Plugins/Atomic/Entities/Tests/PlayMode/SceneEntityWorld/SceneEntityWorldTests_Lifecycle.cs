@@ -45,8 +45,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Enabled);
 
             //Act:
-            entity.OnUpdated += _ => wasUpdate = true;
-            world.OnUpdate(0);
+            entity.OnTicked += _ => wasUpdate = true;
+            world.Tick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -68,8 +68,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Enabled);
             
             //Act:
-            entity.OnFixedUpdated += _ => wasUpdate = true;
-            world.OnFixedUpdate(0);
+            entity.OnFixedTicked += _ => wasUpdate = true;
+            world.FixedTick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);
@@ -91,8 +91,8 @@ namespace Atomic.Entities
             Assert.IsTrue(behaviourStub.Enabled);
 
             //Act:
-            entity.OnLateUpdated += _ => wasUpdate = true;
-            world.OnLateUpdate(0);
+            entity.OnLateTicked += _ => wasUpdate = true;
+            world.LateTick(0);
 
             //Assert:
             Assert.IsTrue(wasUpdate);

@@ -5,7 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/NOT COMPILED BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/NOT COMPILED BestPractices.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/TUTOR.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/TUTOR.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +70,15 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Beginner/Scripts/PlayerContext/Character/CharacterMoveController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Docs/ApiReference/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Docs/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Elements/Values/Const.md.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/31528bc1/IReadOnlyList`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/85/48702da0/IReadOnlyCollection`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -149,167 +189,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="1839000" />
-    </task>
-    <task id="LOCAL-00066" summary="Поправил Entity.md">
-      <option name="closed" value="true" />
-      <created>1756833987825</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1756833987825</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Пока по Entities все!">
-      <option name="closed" value="true" />
-      <created>1756836177398</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1756836177398</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Написал пример для Entity Behavioirs">
-      <option name="closed" value="true" />
-      <created>1756842468442</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1756842468442</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Сделал EntityInstallers!">
-      <option name="closed" value="true" />
-      <created>1756843454057</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1756843454057</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1756843530073</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1756843530073</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Написал IEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1756888354781</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1756888354781</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Написал доку для Factories.md!">
-      <option name="closed" value="true" />
-      <created>1756890634825</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1756890634825</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Написал IEntityFactoryCatalog.md">
-      <option name="closed" value="true" />
-      <created>1756891895977</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1756891895977</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Написал ScriptableEntityFactoryCatalog.md">
-      <option name="closed" value="true" />
-      <created>1756893243471</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1756893243471</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Написал раздел Factories!">
-      <option name="closed" value="true" />
-      <created>1756894096368</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1756894096368</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Написал про Baker!">
-      <option name="closed" value="true" />
-      <created>1756919961362</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1756919961362</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Написал EntityPools!">
-      <option name="closed" value="true" />
-      <created>1756924247725</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1756924247725</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Пулы описал!">
-      <option name="closed" value="true" />
-      <created>1756926292435</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1756926292435</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Написал Collections.md!">
-      <option name="closed" value="true" />
-      <created>1756927093492</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1756927093492</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Остановился на IEntityWorld.md">
-      <option name="closed" value="true" />
-      <created>1756927677777</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1756927677777</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Написал EntityWorld.md &amp; EntityRegistry.md">
-      <option name="closed" value="true" />
-      <created>1756930709598</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1756930709599</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Написал EntityFilter.md &amp; IEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1756977388831</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1756977388831</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Написал TagEntityTrigger.cs">
-      <option name="closed" value="true" />
-      <created>1756979836956</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1756979836956</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Написал ValueEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1756980924959</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1756980924959</updated>
-    </task>
-    <task id="LOCAL-00085" summary="Сделал EntityTriggers!">
-      <option name="closed" value="true" />
-      <created>1756985423638</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1756985423638</updated>
+      <workItem from="1757234040454" duration="26058000" />
     </task>
     <task id="LOCAL-00086" summary="Все пока!!">
       <option name="closed" value="true" />
@@ -543,7 +423,167 @@
       <option name="project" value="LOCAL" />
       <updated>1757191547713</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Сделал блок для Shooter Sample!">
+      <option name="closed" value="true" />
+      <created>1757235897335</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1757235897335</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Оформил раздел #3">
+      <option name="closed" value="true" />
+      <created>1757236623258</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1757236623258</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Подкрутил Atomic.Elements Manual!">
+      <option name="closed" value="true" />
+      <created>1757239489171</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1757239489171</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Подкрутил Atomic.Elements Manual!">
+      <option name="closed" value="true" />
+      <created>1757239537988</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1757239537988</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Обновляем Best Practices">
+      <option name="closed" value="true" />
+      <created>1757241313065</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1757241313065</updated>
+    </task>
+    <task id="LOCAL-00120" summary="Написал Using Shared Constants!">
+      <option name="closed" value="true" />
+      <created>1757243141500</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1757243141500</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Написал Using Shared Constants!">
+      <option name="closed" value="true" />
+      <created>1757243199568</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1757243199568</updated>
+    </task>
+    <task id="LOCAL-00122" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246388247</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246388247</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246540162</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246540162</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246582781</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246582781</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Сделал  Iterating over Reactive Collections">
+      <option name="closed" value="true" />
+      <created>1757246702301</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1757246702301</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Думаем!">
+      <option name="closed" value="true" />
+      <created>1757247241999</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1757247241999</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Двиганул документацию!">
+      <option name="closed" value="true" />
+      <created>1757247639940</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1757247639940</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Думаем!">
+      <option name="closed" value="true" />
+      <created>1757249783013</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1757249783014</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Переименование Update в Tick!">
+      <option name="closed" value="true" />
+      <created>1757250034594</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250034594</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Переименование Update в Tick!">
+      <option name="closed" value="true" />
+      <created>1757250040838</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250040838</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Перековеркал Update-&gt;Tick!">
+      <option name="closed" value="true" />
+      <created>1757250401763</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250401763</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Оформил Request vs Actions!">
+      <option name="closed" value="true" />
+      <created>1757251307790</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1757251307790</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Написал RequestConditionActionEvent.md">
+      <option name="closed" value="true" />
+      <created>1757270133883</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1757270133883</updated>
+    </task>
+    <task id="LOCAL-00134" summary="Сделал ModularEntityInstallers.md">
+      <option name="closed" value="true" />
+      <created>1757272066732</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1757272066732</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,19 +610,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал TagEntityTrigger.cs" />
-    <MESSAGE value="Написал ValueEntityTrigger.md" />
-    <MESSAGE value="Сделал EntityTriggers!" />
-    <MESSAGE value="Все пока!!" />
-    <MESSAGE value="Написал Lifecycle Sources!" />
-    <MESSAGE value="Написал раздел Lifecycle" />
-    <MESSAGE value="Написал EntityNames.md" />
-    <MESSAGE value="Написал EntityViewBase.md" />
-    <MESSAGE value="Остался маленький кусочек! Завтра добью!" />
-    <MESSAGE value="Добавляем Aspects!" />
-    <MESSAGE value="Думаем!" />
-    <MESSAGE value="Вроде с визуалом разобрались!" />
-    <MESSAGE value="Переписал EntityCollectionView.cs" />
     <MESSAGE value="Переписал тесты для EntityView.cs" />
     <MESSAGE value="Написал тесты для OnAdded / OnRemoved EntityCollectionView.cs" />
     <MESSAGE value="Покрыл тестами EntityCollectionView.cs" />
@@ -595,7 +622,20 @@
     <MESSAGE value="Обработал UnityQuickStart" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Сделал блок для Shooter Sample!" />
+    <MESSAGE value="Оформил раздел #3" />
+    <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
+    <MESSAGE value="Обновляем Best Practices" />
+    <MESSAGE value="Написал Using Shared Constants!" />
+    <MESSAGE value="Сделал  Iterating over Reactive Collections" />
+    <MESSAGE value="Двиганул документацию!" />
+    <MESSAGE value="Думаем!" />
+    <MESSAGE value="Переименование Update в Tick!" />
+    <MESSAGE value="Перековеркал Update-&gt;Tick!" />
+    <MESSAGE value="Оформил Request vs Actions!" />
+    <MESSAGE value="Написал RequestConditionActionEvent.md" />
+    <MESSAGE value="Сделал ModularEntityInstallers.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал ModularEntityInstallers.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

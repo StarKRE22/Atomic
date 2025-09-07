@@ -7,9 +7,9 @@ namespace Atomic.Entities
         IEntityEnable,
         IEntityDisable,
         IEntityDispose,
-        IEntityUpdate,
-        IEntityFixedUpdate,
-        IEntityLateUpdate
+        IEntityTick,
+        IEntityFixedTick,
+        IEntityLateTick
     {
         public bool Initialized;
         public bool Enabled;
@@ -45,22 +45,22 @@ namespace Atomic.Entities
             this.InvocationList.Add(nameof(Dispose));
         }
 
-        public virtual void Update(IEntity entity, float deltaTime)
+        public virtual void Tick(IEntity entity, float deltaTime)
         {
             this.Updated = true;
-            this.InvocationList.Add(nameof(Update));
+            this.InvocationList.Add(nameof(Tick));
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             this.FixedUpdated = true;
-            this.InvocationList.Add(nameof(FixedUpdate));
+            this.InvocationList.Add(nameof(FixedTick));
         }
 
-        public void LateUpdate(IEntity entity, float deltaTime)
+        public void LateTick(IEntity entity, float deltaTime)
         {
             this.LateUpdated = true;
-            this.InvocationList.Add(nameof(LateUpdate));
+            this.InvocationList.Add(nameof(LateTick));
         }
     }
 }

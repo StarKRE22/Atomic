@@ -28,17 +28,17 @@ namespace Atomic.Entities
             entity.OnInitialized += () => Assert.Fail("Should be unsubscribed");
             entity.OnEnabled += () => Assert.Fail("Should be unsubscribed");
             entity.OnDisabled += () => Assert.Fail("Should be unsubscribed");
-            entity.OnUpdated += _ => Assert.Fail("Should be unsubscribed");
-            entity.OnFixedUpdated += _ => Assert.Fail("Should be unsubscribed");
-            entity.OnLateUpdated += _ => Assert.Fail("Should be unsubscribed");
+            entity.OnTicked += _ => Assert.Fail("Should be unsubscribed");
+            entity.OnFixedTicked += _ => Assert.Fail("Should be unsubscribed");
+            entity.OnLateTicked += _ => Assert.Fail("Should be unsubscribed");
 
             entity.Dispose();
 
             //Assert:
             entity.Init();
             entity.Enable();
-            entity.OnUpdate(1);
-            entity.OnUpdate(1);
+            entity.Tick(1);
+            entity.Tick(1);
             entity.Disable();
         }
 

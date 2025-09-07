@@ -22,7 +22,7 @@ namespace RTSGame
             entity.AddDamage(_damage);
             entity.AddFireCooldown(new Cooldown(_fireCooldown));
             entity.AddFireRequest(new BaseRequest<IGameEntity>());
-            entity.WhenFixedUpdate(_ =>
+            entity.WhenFixedTick(_ =>
             {
                 if (HealthUseCase.IsAlive(entity) &&
                     entity.GetFireCooldown().IsCompleted() &&
@@ -34,7 +34,7 @@ namespace RTSGame
                 }
             });
             
-            entity.WhenFixedUpdate(entity.GetFireCooldown().Tick);
+            entity.WhenFixedTick(entity.GetFireCooldown().Tick);
             entity.AddFireDistance(_fireDistance);
             entity.AddFireEvent(new BaseEvent<IGameEntity>());
         }

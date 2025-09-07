@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace BeginnerGame
 {
-    public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntityFixedUpdate
+    public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntityFixedTick
     {
         private IGameContext _context;
         private ICooldown _countdown;
@@ -15,7 +15,7 @@ namespace BeginnerGame
             _countdown.ResetTime();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             if (_countdown.IsCompleted())
                 GameOverUseCase.GameOver(_context);

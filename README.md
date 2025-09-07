@@ -100,12 +100,12 @@ and a `centralized data registry` instead of decentralized objects.
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
-### `Atomic.Elements` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Elements/Docs/Manual.md)  
+### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)  
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
   The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
 
 
-### `Atomic.Entities` [(Read More)](https://github.com/StarKRE22/Atomic/tree/main/Assets/Plugins/Atomic/Entities/Docs/Manual.md)  
+### `Atomic.Entities` [(Read More)](Docs/Entities/Manual.md)  
   **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
 
 ---
@@ -148,7 +148,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 ### 5. Create `MoveBehaviour` class
 ```csharp
 // Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
     private Transform _transform;
     private IValue<float> _moveSpeed;
@@ -163,7 +163,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedUpdate
     }
 
     // Called when MonoBehaviour.FixedUpdate() is invoked
-    public void FixedUpdate(IEntity entity, float deltaTime)
+    public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -219,7 +219,7 @@ entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityTick
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
@@ -234,7 +234,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
     }
 
     //Called when Entity.OnUpdate()
-    public void Update(IEntity entity, float deltaTime)
+    public void Tick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -270,8 +270,8 @@ const float deltaTime = 0.02f;
 
 while(_isGameRunning)
 { 
-   //Calls IEntityUpdate
-   entity.Update(deltaTime); 
+   //Calls IEntityTick
+   entity.Tick(deltaTime); 
 }
 ```
 
@@ -310,7 +310,7 @@ Coming Soon
     - **Rider Plugin Guide**
 -->
 
-## ✅ Game Examples
+## 🗂 Game Examples
 This section includes **three sample projects** demonstrating different use cases of the `Atomic Framework`
 
 ### 1️⃣ Beginner Sample
@@ -374,6 +374,7 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 5. How to persist and manage **game data**
 6. How to transform an entity into a fully-featured **game object with animations, VFX, and audio**
 7. How to create and manage a **projectile pool** efficiently
+8. How to organize scalable file system for your project
 
 ### 3️⃣ RTS Sample
 
@@ -403,7 +404,14 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 
 ## 📌 Best Practices
 
-TODO:
+This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
+- [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
+- [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)
+- [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
+- [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
+- [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
+- [Project Folder Organization](Docs/BestPractices/ProjectFolderOrganization.md)
 
 ## ⚖️ License
 
@@ -438,48 +446,3 @@ SOFTWARE.
 **Author:** Igor Gulkin  
 **Telegram:** [@starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
-
-
-
-<!-- 
-
-- [Atomic.Entities]
-  - [C#]
-    - [Entity]
-    - [Entity Behaviours]
-    - [Entity World]
-    - [Entity Filter]
-  - [Unity]
-    - [Configure Value Console]
-    - [Configure Tag Console]
-    - [SceneEntity]
-    - [SceneEntityInstaller]
-    - [SceneEntityController]
-    - [SceneEntityProxy]
-    - [SceneEntityGizmos]
-    - [SceneEntityWorld]
-    - [SceneEntityWorldController]
-    - [Attributes]
-  - [Performance]    
-- [Atomic.Contexts]
-  - [C#]
-    - [Context]
-    - [Context Systems]
-    - [Dependency Injection]
-  - [Unity]
-    - [Configure Value Console]  
-    - [SceneContext]
-    - [SceneContextInstaller]
-    - [SceneContextController]
-    - [SceneContextGizmos]
-    - [Attributes]
-  - [Performance]     
-- [Atomic.UI]
-  - [SceneViewController]
-  - [SceneViewGizmos]
-  - [Behaviours]
-  - [Performance]
-- [Atomic.Extensions]
-  - [Entity Aspects]
-  - [Condition and Action Assets] 
--->

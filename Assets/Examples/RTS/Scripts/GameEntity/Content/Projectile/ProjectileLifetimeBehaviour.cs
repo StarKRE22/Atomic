@@ -3,7 +3,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class ProjectileLifetimeBehaviour : IEntityInit<IGameEntity>, IEntityEnable, IEntityFixedUpdate
+    public sealed class ProjectileLifetimeBehaviour : IEntityInit<IGameEntity>, IEntityEnable, IEntityFixedTick
     {
         private readonly IGameContext _gameContext;
         private IGameEntity _entity;
@@ -25,7 +25,7 @@ namespace RTSGame
             _lifetime.ResetTime();
         }
 
-        public void FixedUpdate(IEntity entity, float deltaTime)
+        public void FixedTick(IEntity entity, float deltaTime)
         {
             _lifetime.Tick(deltaTime);
             if (_lifetime.IsCompleted())

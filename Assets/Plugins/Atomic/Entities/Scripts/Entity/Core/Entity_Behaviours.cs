@@ -343,13 +343,13 @@ namespace Atomic.Entities
             if (behaviour is IEntityEnable enable)
                 enable.Enable(this);
 
-            if (behaviour is IEntityUpdate update)
+            if (behaviour is IEntityTick update)
                 Add(ref _updates, ref _updateCount, update);
 
-            if (behaviour is IEntityFixedUpdate fixedUpdate)
+            if (behaviour is IEntityFixedTick fixedUpdate)
                 Add(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate);
 
-            if (behaviour is IEntityLateUpdate lateUpdate)
+            if (behaviour is IEntityLateTick lateUpdate)
                 Add(ref _lateUpdates, ref _lateUpdateCount, lateUpdate);
         }
 
@@ -359,13 +359,13 @@ namespace Atomic.Entities
             if (behaviour is IEntityDisable disable)
                 disable.Disable(this);
 
-            if (behaviour is IEntityUpdate update)
+            if (behaviour is IEntityTick update)
                 Remove(ref _updates, ref _updateCount, update, s_updateComparer);
 
-            if (behaviour is IEntityFixedUpdate fixedUpdate)
+            if (behaviour is IEntityFixedTick fixedUpdate)
                 Remove(ref _fixedUpdates, ref _fixedUpdateCount, fixedUpdate, s_fixedUpdateComparer);
 
-            if (behaviour is IEntityLateUpdate lateUpdate)
+            if (behaviour is IEntityLateTick lateUpdate)
                 Remove(ref _lateUpdates, ref _lateUpdateCount, lateUpdate, s_lateUpdateComparer);
         }
     }

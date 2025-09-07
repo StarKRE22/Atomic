@@ -171,7 +171,7 @@ namespace Atomic.Entities
         public void GetAllBehaviours_ReturnsAllAttachedBehaviours()
         {
             // Arrange
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
             var behaviourStub = new DummyEntityBehaviour();
 
@@ -243,7 +243,7 @@ namespace Atomic.Entities
         public void HasBehaviour()
         {
             //Arrange:
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
             var behaviourStub = new DummyEntityBehaviour();
 
@@ -299,7 +299,7 @@ namespace Atomic.Entities
         public void HasBehaviour_ReturnsFalse_WhenTypeDoesNotMatch()
         {
             var entity = new Entity();
-            entity.AddBehaviour(new EntityUpdateStub());
+            entity.AddBehaviour(new EntityTickStub());
 
             bool result = entity.HasBehaviour<IEntityInit>();
 
@@ -314,7 +314,7 @@ namespace Atomic.Entities
         public void AddBehaviour_WhenAlreadyPresent_DoesNotRaiseEvent()
         {
             // Arrange
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             IEntityBehaviour addedBehaviour = null;
 
             var entity = new Entity(null, Array.Empty<string>(), null, new IEntityBehaviour[] {updateStub});
@@ -331,7 +331,7 @@ namespace Atomic.Entities
         public void AddBehaviour_WhenNew_RaisesEvent()
         {
             // Arrange
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
             IEntityBehaviour addedBehaviour = null;
 
@@ -409,7 +409,7 @@ namespace Atomic.Entities
             //Arrange:
             IEntityBehaviour removedBehaviour = null;
 
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
             var behaviourStub = new DummyEntityBehaviour();
 
@@ -520,7 +520,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_BehaviourCountIsZero()
         {
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
 
             var entity = new Entity();
@@ -540,7 +540,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_OnBehaviourDeleted_IsRaisedForEach()
         {
-            var updateStub = new EntityUpdateStub();
+            var updateStub = new EntityTickStub();
             var initStub = new EntityInitStub();
 
             var entity = new Entity();
@@ -564,7 +564,7 @@ namespace Atomic.Entities
         [Test]
         public void ClearBehaviours_OnStateChanged_IsRaised()
         {
-            var stub = new EntityUpdateStub();
+            var stub = new EntityTickStub();
             var stateChanged = false;
 
             var entity = new Entity();

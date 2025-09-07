@@ -21,9 +21,9 @@ namespace RTSGame
             
             context.WhenInit(entityWorld.InitEntities);
             context.WhenEnable(entityWorld.Enable);
-            context.WhenUpdate(entityWorld.OnUpdate);
-            context.WhenFixedUpdate(entityWorld.OnFixedUpdate);
-            context.WhenLateUpdate(entityWorld.OnLateUpdate);
+            context.WhenTick(entityWorld.Tick);
+            context.WhenFixedTick(entityWorld.FixedTick);
+            context.WhenLateTick(entityWorld.LateTick);
             context.WhenDisable(entityWorld.Disable);
             context.WhenDispose(entityWorld.DisposeEntities);
             context.WhenDispose(entityWorld.Dispose);

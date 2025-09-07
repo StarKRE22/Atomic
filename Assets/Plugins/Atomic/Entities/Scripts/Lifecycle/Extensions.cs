@@ -9,7 +9,7 @@ namespace Atomic.Entities
     public static partial class Extensions
     {
         /// <summary>
-        /// Subscribes to the <see cref="IILifecycleInitOnInitialized"/> event.
+        /// Subscribes to the <see cref="IInitSource.OnInitialized"/> event.
         /// </summary>
         /// <param name="source">The spawnable object.</param>
         /// <param name="action">The action to invoke on spawn.</param>
@@ -22,7 +22,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IILifecycleInitOnDisposed"/> event.
+        /// Subscribes to the <see cref="IInitSource.OnDisposed"/> event.
         /// </summary>
         /// <param name="source">The spawnable object.</param>
         /// <param name="action">The action to invoke on despawn.</param>
@@ -35,7 +35,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IIActivatable.OnActive/> event.
+        /// Subscribes to the <see cref="IEnableSource.OnEnabled"/> event.
         /// </summary>
         /// <param name="source">The activatable object.</param>
         /// <param name="action">The action to invoke when enabled.</param>
@@ -48,7 +48,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see cref="IIActivatable.OnInactive/> event.
+        /// Subscribes to the <see cref="IEnableSource.OnDisables"/> event.
         /// </summary>
         /// <param name="source">The activatable object.</param>
         /// <param name="action">The action to invoke when disabled.</param>
@@ -61,42 +61,42 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Subscribes to the <see crefIUpdateSourceteeOnUpdated"/> event.
+        /// Subscribes to the <see cref="ITickSource.OnTicked"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each frame update.</param>
-        /// <returns>A disposable <see cref="UpdateSubscription"/> that unsubscribes when disposed.</returns>
+        /// <returns>A disposable <see cref="TickSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UpdateSubscription WhenUpdate(this IUpdateSource source, Action<float> action)
+        public static TickSubscription WhenTick(this ITickSource source, Action<float> action)
         {
-            source.OnUpdated += action;
-            return new UpdateSubscription(source, action);
+            source.OnTicked += action;
+            return new TickSubscription(source, action);
         }
 
         /// <summary>
-        /// Subscribes to the <see crefIUpdateSourceteeOnFixedUpdated"/> event.
+        /// Subscribes to the <see cref="ITickSource.OnFixedTicked"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each fixed update frame.</param>
-        /// <returns>A disposable <see cref="FixedUpdateSubscription"/> that unsubscribes when disposed.</returns>
+        /// <returns>A disposable <see cref="FixedTickSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static FixedUpdateSubscription WhenFixedUpdate(this IUpdateSource source, Action<float> action)
+        public static FixedTickSubscription WhenFixedTick(this ITickSource source, Action<float> action)
         {
-            source.OnFixedUpdated += action;
-            return new FixedUpdateSubscription(source, action);
+            source.OnFixedTicked += action;
+            return new FixedTickSubscription(source, action);
         }
 
         /// <summary>
-        /// Subscribes to the <see crefIUpdateSourceteeOnLateUpdated"/> event.
+        /// Subscribes to the <see cref="ITickSource.OnLateTicked"/> event.
         /// </summary>
         /// <param name="source">The updatable object.</param>
         /// <param name="action">The action to invoke each late update frame.</param>
-        /// <returns>A disposable <see cref="LateUpdateSubscription"/> that unsubscribes when disposed.</returns>
+        /// <returns>A disposable <see cref="LateTickSubscription"/> that unsubscribes when disposed.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static LateUpdateSubscription WhenLateUpdate(this IUpdateSource source, Action<float> action)
+        public static LateTickSubscription WhenLateTick(this ITickSource source, Action<float> action)
         {
-            source.OnLateUpdated += action;
-            return new LateUpdateSubscription(source, action);
+            source.OnLateTicked += action;
+            return new LateTickSubscription(source, action);
         }
     }
 }
