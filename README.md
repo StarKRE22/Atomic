@@ -410,6 +410,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
+- [Project Folder Organization]
 - [Upgrade Entity Factory to Builder](Docs/BestPractices/UpgradeEntityFactory.md)
 - [Observe Extension instead Subscribe](Docs/BestPractices/ObserveExtension.md)
 - [Entity Filter Chaining](Docs/BestPractices/EntityFilterChaining.md)
