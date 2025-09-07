@@ -320,11 +320,10 @@ The `Beginner Sample` is a **simple 2-player mini-game** designed to introduce t
 
 > **Gameplay:**
 > - **Players:** Two players share the same scene.
-> - **Controls:**
->    - Player 1: `W`, `A`, `S`, `D`
->    - Player 2: Arrow keys
 > - **Objective:** Collect more coins than the opponent within a **limited time**.
-> - **Win Condition:** When time runs out, the player with the most coins wins.
+> - **Controls:**
+>    - Player (Blue): Arrow keys
+>    - Player (Red): `W`, `A`, `S`, `D`
 > - **UI Feedback:** Victory screen appears showing the winning player.
 > - **Restart:** Players can restart the game to try again.
 
@@ -346,41 +345,39 @@ The `Beginner Sample` is a **simple 2-player mini-game** designed to introduce t
 
 The Top-Down Shooter Sample demonstrates a more **complex game architecture**, suitable for mid-sized games.
 
-#### Project Structure
+> **Gameplay**
+> - **Players:** Two players share the same scene.
+> - **Objective:** Kill your opponent more times than he does within a **limited time**.
+> - **Controls:**
+>   - Player (Blue): Arrow keys to move, `Space` to shoot 
+>   - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
+> - **Mechanics**
+>   - **Character Movement:** Kinematic movement using `Transform`, with collision handling using `Rigidbody.SweepTest`.
+>   - **Combat:** Characters use weapon, which are separate entities, and these weapons fire physical projectiles.
+>   - **Projectile:** A kinematic object that interacts via trigger collisions and has a limited lifetime.
+>   - **Respawning:** Units respawn at random point dynamically after being defeated.
+>   - **Limited Time:**  The game ends when the time limit is reached.
+> - **Visualization**
+>   - **Character:** Equipped with canvas, animations, VFX, and sound effects. 
+>   - **UI:** Displays the kill count for each player and a session timer.
 
-- **Scenes:**
-    - `Bootstrap` — starting scene that initializes the game.
-    - `Menu` — separate scene for main menu and navigation.
-  
-- **Contexts:**
-  - **Application Context** — oversees global systems and stores data that persists throughout the game.
-  - **Menu UI Context** — manages the user interface within the menu scene.
-  - **Game Context** — coordinates core gameplay mechanics and systems.
-  - **Game UI Context** — handles the in-game user interface elements.
-  - **Player Context** — governs player-specific systems, state, and logic.
-  - **Game Entity** — represents any interactive or visible object within the game world.
+> **Application**
+> - **Scenes:**
+>  - `Bootstrap` — starting scene that initializes the game.
+>  - `Menu` — separate scene for main menu and navigation.
+> - **Start:** Game is launched through the `Bootstrap` scene.
+> - **Levels:** Three separate levels where players and enemies spawn.
+> - **Save System:** Stores the last completed level.
+> - **Game Load Flow:** Hierarchical structure of game loading sequence.
 
-#### Gameplay Mechanics
-
-- **Levels:** Three separate levels where players and enemies spawn.
-- **Combat:** Core mechanic is **shooting bullets**.
-- **Physics:** Both bullets and characters use **Unity physics and colliders**.
-- **Animations & VFX:** Characters and bullets have animations, visual effects, and sound effects for feedback.
-- **Respawning:** Units respawn dynamically after being defeated.
-- **Win Condition:** Player or team with the **most kills** at the end of the match wins.
-- **Controls:**
-    - Player 1 (Blue): `W`, `A`, `S`, `D` to move, `Space` to shoot
-    - Player 2 (Red): Arrow keys to move, `Q` to shoot
-- **Configuration:** All controls and settings are defined in the **game configuration** and can be inspected there.
-- **Start:** Game is launched through the `Bootstrap` scene.
-
-#### Purpose
-
-This sample serves as a **mini-prototype for a top-down shooter**, demonstrating:
-
-- How **Atomic Framework** can manage entities, behaviours, and reactive properties
-- Separation of **Application** and **Game** contexts for clean architecture
-- How to **scale and extend** a project for more complex gameplay scenarios
+#### This Sample Demonstrates
+1. How to structure a full-fledged **game architecture** for seamless scalability
+2. How to build an **application context** leveraging the `Entity-State-Behaviour` pattern
+3. How to design a **menu interface** in a procedural style
+4. How to orchestrate scene loading using a `Loading Tree`
+5. How to persist and manage **game data**
+6. How to transform an entity into a fully-featured **game object with animations, VFX, and audio**
+7. How to create and manage a **projectile pool** efficiently
 
 ### 3️⃣ RTS Sample
 
