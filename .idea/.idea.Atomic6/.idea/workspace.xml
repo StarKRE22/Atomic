@@ -6,47 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinSpawnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinSpawnController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Countdown/GameCountdownController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Countdown/GameCountdownController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterMoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Movement/MovementBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Core/Rotation/RotationBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Billboard/CameraBillboardBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/View/Billboard/CameraBillboardBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/Camera/CameraFollowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/Camera/CameraFollowController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/Character/CharacterMoveController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/Character/CharacterMoveController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AttackTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AttackTargetBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameContext/GameCycle/GameCycleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameContext/GameCycle/GameCycleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletMoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterMoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Lifetime/LifetimeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Lifetime/LifetimeBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Movement/KinematicMovementBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Movement/KinematicMovementBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Core/Rotation/RotationBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/CameraBillboardBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/CameraBillboardBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/MoveAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/MoveAnimBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Camera/CameraFollowController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Camera/CameraFollowController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterFireController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterFireController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterMoveController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterMoveController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityFixedUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityFixedUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityLateUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityLateUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Lifecycle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringFixedUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringFixedUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringLateUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringLateUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/DisableDuringUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityFixedUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityFixedUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityLateUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityLateUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityUpdateStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityUpdateStub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/BestPractices.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +34,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Beginner/Scripts/PlayerContext/Character/CharacterMoveController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="SKIP_HIGHLIGHTING" />
@@ -191,39 +153,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="14849000" />
-    </task>
-    <task id="LOCAL-00079" summary="Написал Collections.md!">
-      <option name="closed" value="true" />
-      <created>1756927093492</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1756927093492</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Остановился на IEntityWorld.md">
-      <option name="closed" value="true" />
-      <created>1756927677777</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1756927677777</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Написал EntityWorld.md &amp; EntityRegistry.md">
-      <option name="closed" value="true" />
-      <created>1756930709598</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1756930709599</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Написал EntityFilter.md &amp; IEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1756977388831</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1756977388831</updated>
+      <workItem from="1757234040454" duration="16363000" />
     </task>
     <task id="LOCAL-00083" summary="Написал TagEntityTrigger.cs">
       <option name="closed" value="true" />
@@ -585,7 +515,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757247639940</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="Думаем!">
+      <option name="closed" value="true" />
+      <created>1757249783013</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1757249783014</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Переименование Update в Tick!">
+      <option name="closed" value="true" />
+      <created>1757250034594</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250034594</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Переименование Update в Tick!">
+      <option name="closed" value="true" />
+      <created>1757250040838</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250040838</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Перековеркал Update-&gt;Tick!">
+      <option name="closed" value="true" />
+      <created>1757250401763</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1757250401763</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,8 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал EntityViewBase.md" />
-    <MESSAGE value="Остался маленький кусочек! Завтра добью!" />
     <MESSAGE value="Добавляем Aspects!" />
     <MESSAGE value="Вроде с визуалом разобрались!" />
     <MESSAGE value="Переписал EntityCollectionView.cs" />
@@ -635,9 +595,11 @@
     <MESSAGE value="Обновляем Best Practices" />
     <MESSAGE value="Написал Using Shared Constants!" />
     <MESSAGE value="Сделал  Iterating over Reactive Collections" />
-    <MESSAGE value="Думаем!" />
     <MESSAGE value="Двиганул документацию!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Двиганул документацию!" />
+    <MESSAGE value="Думаем!" />
+    <MESSAGE value="Переименование Update в Tick!" />
+    <MESSAGE value="Перековеркал Update-&gt;Tick!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перековеркал Update-&gt;Tick!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
