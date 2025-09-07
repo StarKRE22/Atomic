@@ -44,7 +44,10 @@ foreach(string item in items)
 
 ## 2. Iterating over `ReactiveArray` & `ReactiveList`
 
-When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the stack**, which can slightly slow down iteration. Performance tests confirm this behavior for both [ReactiveList](../Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Collections/ReactiveArray.md/#-performance).
+When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the stack**, which can slightly slow down iteration. 
+
+> [!NOTE]
+> Performance tests confirm this behavior for both [ReactiveList](../Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Collections/ReactiveArray.md/#-performance).
 
 > [!TIP]
 > It's also recommended to **cache the `Count` property** to avoid repeatedly calling the getter during iteration.

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/ScriptableConst.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/ScriptableConst.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/ScriptableConst.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/ScriptableConst.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/SharedConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/SharedConstants.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/IteratingReactiveCollections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveDictionary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveHashSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveHashSet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveLinkedList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Collections/ReactiveList.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/Const.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Consts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/DefaultConstants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Consts.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/DefaultConstants.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Expressions/AndExpressionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Expressions/AndExpressionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/DefaultConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Docs/Values/DefaultConstants.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,23 +156,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="8556000" />
-    </task>
-    <task id="LOCAL-00071" summary="Написал IEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1756888354781</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1756888354781</updated>
-    </task>
-    <task id="LOCAL-00072" summary="Написал доку для Factories.md!">
-      <option name="closed" value="true" />
-      <created>1756890634825</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1756890634825</updated>
+      <workItem from="1757234040454" duration="11462000" />
     </task>
     <task id="LOCAL-00073" summary="Написал IEntityFactoryCatalog.md">
       <option name="closed" value="true" />
@@ -552,7 +534,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757241313065</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Написал Using Shared Constants!">
+      <option name="closed" value="true" />
+      <created>1757243141500</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1757243141500</updated>
+    </task>
+    <task id="LOCAL-00121" summary="Написал Using Shared Constants!">
+      <option name="closed" value="true" />
+      <created>1757243199568</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1757243199568</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал Lifecycle Sources!" />
     <MESSAGE value="Написал раздел Lifecycle" />
     <MESSAGE value="Написал EntityNames.md" />
     <MESSAGE value="Написал EntityViewBase.md" />
@@ -604,7 +601,8 @@
     <MESSAGE value="Оформил раздел #3" />
     <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
     <MESSAGE value="Обновляем Best Practices" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновляем Best Practices" />
+    <MESSAGE value="Написал Using Shared Constants!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал Using Shared Constants!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
