@@ -49,9 +49,6 @@ When iterating over a large number of elements in a `ReactiveArray` or `Reactive
 > [!NOTE]
 > Performance tests confirm this behavior for both [ReactiveList](../Collections/ReactiveList.md/#-performance) and [ReactiveArray](../Collections/ReactiveArray.md/#-performance).
 
-> [!TIP]
-> It's also recommended to **cache the `Count` property** to avoid repeatedly calling the getter during iteration.
-
 ### ❌ Bad Practice
 ```csharp
 ReactiveList<string> items = ... //1000+ elements
@@ -72,6 +69,12 @@ for (int i = 0, count = items.Count; i < count; i++)
     ...
 }
 ```
+
+> [!TIP]
+> It's also recommended to **cache the `Count` property** to avoid repeatedly calling the getter during iteration.
+
+---
+
 ## 3. Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
 
 In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`, `ReactiveDictionary`, or `ReactiveHashSet`.
