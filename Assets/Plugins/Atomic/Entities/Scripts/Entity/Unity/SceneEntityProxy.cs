@@ -224,22 +224,22 @@ namespace Atomic.Entities
             remove => _source.OnDisposed -= value;
         }
 
-        public event Action<float> OnUpdated
+        public event Action<float> OnTicked
         {
-            add => _source.OnUpdated += value;
-            remove => _source.OnUpdated -= value;
+            add => _source.OnTicked += value;
+            remove => _source.OnTicked -= value;
         }
 
-        public event Action<float> OnFixedUpdated
+        public event Action<float> OnFixedTicked
         {
-            add => _source.OnFixedUpdated += value;
-            remove => _source.OnFixedUpdated -= value;
+            add => _source.OnFixedTicked += value;
+            remove => _source.OnFixedTicked -= value;
         }
 
-        public event Action<float> OnLateUpdated
+        public event Action<float> OnLateTicked
         {
-            add => _source.OnLateUpdated += value;
-            remove => _source.OnLateUpdated -= value;
+            add => _source.OnLateTicked += value;
+            remove => _source.OnLateTicked -= value;
         }
 
         public bool Initialized => _source.Initialized;

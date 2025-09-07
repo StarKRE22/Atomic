@@ -12,7 +12,7 @@ namespace Atomic.Entities
             world.Enable();
 
             float receivedDelta = -1;
-            world.OnLateUpdated += dt => receivedDelta = dt;
+            world.OnLateTicked += dt => receivedDelta = dt;
 
             world.LateTick(0.033f);
 
@@ -25,7 +25,7 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
             bool called = false;
 
-            world.OnLateUpdated += _ => called = true;
+            world.OnLateTicked += _ => called = true;
             world.LateTick(0.033f);
 
             Assert.IsFalse(called);
@@ -38,7 +38,7 @@ namespace Atomic.Entities
             world.Enable();
 
             int callCount = 0;
-            world.OnLateUpdated += _ => callCount++;
+            world.OnLateTicked += _ => callCount++;
 
             world.LateTick(0.01f);
             world.LateTick(0.01f);
@@ -55,7 +55,7 @@ namespace Atomic.Entities
             world.LateTick(0.016f);
 
             bool called = false;
-            world.OnLateUpdated += _ => called = true;
+            world.OnLateTicked += _ => called = true;
 
             Assert.IsFalse(called);
         }

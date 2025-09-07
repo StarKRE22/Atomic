@@ -45,17 +45,17 @@ namespace Atomic.Entities
         /// <summary>
         /// Called every frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnUpdated;
+        public event Action<float> OnTicked;
 
         /// <summary>
         /// Called every fixed frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnFixedUpdated;
+        public event Action<float> OnFixedTicked;
 
         /// <summary>
         /// Called every late frame while the entity is enabled.
         /// </summary>
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnLateTicked;
 
         /// <summary>
         /// Indicates whether the entity has been Initialized.
@@ -164,7 +164,7 @@ namespace Atomic.Entities
         /// <remarks>
         /// <list type="bullet">
         /// <item><description>Calls <c>Update</c> on all <see cref="IEntityTick"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnUpdated"/> event.</description></item>
+        /// <item><description>Triggers <see cref="OnTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
@@ -176,7 +176,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _updateCount; i++)
                 _updates[i].Tick(this, deltaTime);
 
-            this.OnUpdated?.Invoke(deltaTime);
+            this.OnTicked?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Atomic.Entities
         /// <remarks>
         /// <list type="bullet">
         /// <item><description>Calls <c>FixedUpdate</c> on all <see cref="IEntityFixedTick"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnFixedUpdated"/> event.</description></item>
+        /// <item><description>Triggers <see cref="OnFixedTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
@@ -198,7 +198,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _fixedUpdateCount; i++)
                 _fixedUpdates[i].FixedTick(this, deltaTime);
 
-            this.OnFixedUpdated?.Invoke(deltaTime);
+            this.OnFixedTicked?.Invoke(deltaTime);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Atomic.Entities
         /// <remarks>
         /// <list type="bullet">
         /// <item><description>Calls <c>LateUpdate</c> on all <see cref="IEntityLateTick"/> behaviours.</description></item>
-        /// <item><description>Triggers <see cref="OnLateUpdated"/> event.</description></item>
+        /// <item><description>Triggers <see cref="OnLateTicked"/> event.</description></item>
         /// <item><description>Can be invoked only if the entity is enabled.</description></item>
         /// </list>
         /// </remarks>
@@ -220,7 +220,7 @@ namespace Atomic.Entities
             for (int i = 0; i < _lateUpdateCount && _enabled; i++)
                 _lateUpdates[i].LateTick(this, deltaTime);
 
-            this.OnLateUpdated?.Invoke(deltaTime);
+            this.OnLateTicked?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

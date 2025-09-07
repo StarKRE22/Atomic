@@ -2,11 +2,11 @@ using System;
 
 namespace Atomic.Entities
 {
-    public class UpdateSourceDummy : IUpdateSource
+    public class TickSourceDummy : ITickSource
     {
-        public event Action<float> OnUpdated;
-        public event Action<float> OnFixedUpdated;
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnTicked;
+        public event Action<float> OnFixedTicked;
+        public event Action<float> OnLateTicked;
 
         public int UpdateCount;
         public int FixedCount;
@@ -15,19 +15,19 @@ namespace Atomic.Entities
         public void Tick(float dt)
         {
             UpdateCount++;
-            this.OnUpdated?.Invoke(dt);
+            this.OnTicked?.Invoke(dt);
         }
 
         public void FixedTick(float dt)
         {
             FixedCount++;
-            this.OnFixedUpdated?.Invoke(dt);
+            this.OnFixedTicked?.Invoke(dt);
         }
 
         public void LateTick(float dt)
         {
             LateCount++;
-            this.OnLateUpdated?.Invoke(dt);
+            this.OnLateTicked?.Invoke(dt);
         }
     }
 }

@@ -20,19 +20,19 @@ namespace Atomic.Entities
             this.OnDisposed += () => WasDisposed = true;
             this.OnEnabled += () => WasEnabled = true;
             this.OnDisabled += () =>  WasDisabled = true;
-            this.OnUpdated += deltaTime =>
+            this.OnTicked += deltaTime =>
             {
                 LastDeltaTime = deltaTime;
                 WasUpdated = true;
             };
 
-            this.OnFixedUpdated += deltaTime =>
+            this.OnFixedTicked += deltaTime =>
             {
                 LastFixedDeltaTime = deltaTime;
                 WasFixedUpdated = true;
             };
 
-            this.OnLateUpdated += deltaTime =>
+            this.OnLateTicked += deltaTime =>
             {
                 LastLateDeltaTime = deltaTime;
                 WasLateUpdated = true;

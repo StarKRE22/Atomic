@@ -21,7 +21,7 @@ namespace RTSGame
             entity.AddRotationSpeed(_rotationSpeed);
             entity.AddMoveRequest(new BaseRequest<Vector3>());
             entity.AddMoveEvent(new BaseEvent<Vector3>());
-            entity.WhenFixedUpdate(deltaTime =>
+            entity.WhenFixedTick(deltaTime =>
             {
                 if (HealthUseCase.IsAlive(entity) &&
                     entity.GetMoveRequest().Consume(out Vector3 direction) &&

@@ -4,7 +4,7 @@ namespace Atomic.Entities
     /// Defines a behavior that executes logic during the late update phase of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <see cref="IUpdateSource.LateTick"/> after all standard updates,
+    /// This method is automatically called by <see cref="ITickSource.LateTick"/> after all standard updates,
     /// and is typically used for post-processing, transform synchronization, or order-sensitive updates.
     /// </remarks>
     public interface IEntityLateTick : IEntityBehaviour
@@ -23,7 +23,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="IUpdateSource.LateTick"/> 
+    /// This method is automatically invoked by <see cref="ITickSource.LateTick"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityLateTick<in E> : IEntityLateTick where E : IEntity

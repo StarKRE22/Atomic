@@ -6,22 +6,22 @@ namespace Atomic.Entities
     /// Represents a contract that supports update callbacks during the loop,
     /// including regular, fixed, and late update phases.
     /// </summary>
-    public interface IUpdateSource
+    public interface ITickSource
     {
         /// <summary>
         /// Occurs during the regular Update phase, once per frame.
         /// </summary>
-        event Action<float> OnUpdated;
+        event Action<float> OnTicked;
 
         /// <summary>
         /// Occurs during the FixedUpdate phase, used for physics updates.
         /// </summary>
-        event Action<float> OnFixedUpdated;
+        event Action<float> OnFixedTicked;
 
         /// <summary>
         /// Occurs during the LateUpdate phase, after all Update calls have been made.
         /// </summary>
-        event Action<float> OnLateUpdated;
+        event Action<float> OnLateTicked;
 
         /// <summary>
         /// Called once per frame during the Update phase.

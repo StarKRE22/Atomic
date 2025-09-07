@@ -4,7 +4,7 @@ namespace Atomic.Entities
     /// Defines a behavior that executes logic during the fixed update cycle of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <see cref="IUpdateSource.FixedTick"/> at a consistent time interval,
+    /// This method is automatically called by <see cref="ITickSource.FixedTick"/> at a consistent time interval,
     /// typically aligned with the physics simulation step.
     /// </remarks>
     public interface IEntityFixedTick : IEntityBehaviour
@@ -23,7 +23,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="IUpdateSource.FixedTick"/> 
+    /// This method is automatically invoked by <see cref="ITickSource.FixedTick"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityFixedTick<in E> : IEntityFixedTick where E : IEntity

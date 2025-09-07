@@ -226,7 +226,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             float receivedDelta = -1f;
-            entity.OnUpdated += dt => receivedDelta = dt;
+            entity.OnTicked += dt => receivedDelta = dt;
 
             entity.Tick(0.123f);
 
@@ -241,7 +241,7 @@ namespace Atomic.Entities
             // не вызываем Enable()
 
             bool wasCalled = false;
-            entity.OnUpdated += _ => wasCalled = true;
+            entity.OnTicked += _ => wasCalled = true;
 
             entity.Tick(0.05f);
 
@@ -256,7 +256,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             int callCount = 0;
-            entity.OnUpdated += _ => callCount++;
+            entity.OnTicked += _ => callCount++;
 
             entity.Tick(0.016f);
             entity.Tick(0.016f);
@@ -271,7 +271,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false); // не вызываем Spawn()
 
             bool wasCalled = false;
-            entity.OnUpdated += _ => wasCalled = true;
+            entity.OnTicked += _ => wasCalled = true;
 
             entity.Tick(0.1f);
 
@@ -290,7 +290,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             float receivedDelta = -1f;
-            entity.OnFixedUpdated += dt => receivedDelta = dt;
+            entity.OnFixedTicked += dt => receivedDelta = dt;
 
             entity.FixedTick(0.02f);
 
@@ -304,7 +304,7 @@ namespace Atomic.Entities
             entity.Init(); // Не включаем
 
             bool wasCalled = false;
-            entity.OnFixedUpdated += _ => wasCalled = true;
+            entity.OnFixedTicked += _ => wasCalled = true;
 
             entity.FixedTick(0.02f);
 
@@ -319,7 +319,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             int callCount = 0;
-            entity.OnFixedUpdated += _ => callCount++;
+            entity.OnFixedTicked += _ => callCount++;
 
             entity.FixedTick(0.02f);
             entity.FixedTick(0.02f);
@@ -334,7 +334,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false); // Не вызываем Spawn()
 
             bool wasCalled = false;
-            entity.OnFixedUpdated += _ => wasCalled = true;
+            entity.OnFixedTicked += _ => wasCalled = true;
 
             entity.FixedTick(0.02f);
 
@@ -353,7 +353,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             float receivedDelta = -1f;
-            entity.OnLateUpdated += dt => receivedDelta = dt;
+            entity.OnLateTicked += dt => receivedDelta = dt;
 
             entity.LateTick(0.033f);
 
@@ -367,7 +367,7 @@ namespace Atomic.Entities
             entity.Init(); // не вызываем Enable()
 
             bool wasCalled = false;
-            entity.OnLateUpdated += _ => wasCalled = true;
+            entity.OnLateTicked += _ => wasCalled = true;
 
             entity.LateTick(0.033f);
 
@@ -382,7 +382,7 @@ namespace Atomic.Entities
             entity.Enable();
 
             int callCount = 0;
-            entity.OnLateUpdated += _ => callCount++;
+            entity.OnLateTicked += _ => callCount++;
 
             entity.LateTick(0.033f);
             entity.LateTick(0.033f);
@@ -397,7 +397,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false); // не спаунен
 
             bool wasCalled = false;
-            entity.OnLateUpdated += _ => wasCalled = true;
+            entity.OnLateTicked += _ => wasCalled = true;
 
             entity.LateTick(0.033f);
 
@@ -955,7 +955,7 @@ namespace Atomic.Entities
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnUpdated += _ => wasUpdate = true;
+            entity.OnTicked += _ => wasUpdate = true;
 
             //Act
             entity.Enable();
@@ -1000,7 +1000,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             float calledDelta = -1f;
 
-            entity.OnUpdated += dt => calledDelta = dt;
+            entity.OnTicked += dt => calledDelta = dt;
 
             entity.Init();
             entity.Enable();
@@ -1066,7 +1066,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             float delta = -1f;
 
-            entity.OnFixedUpdated += dt => delta = dt;
+            entity.OnFixedTicked += dt => delta = dt;
 
             entity.Init();
             entity.Enable();
@@ -1103,7 +1103,7 @@ namespace Atomic.Entities
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnFixedUpdated += _ => wasUpdate = true;
+            entity.OnFixedTicked += _ => wasUpdate = true;
 
             //Act
             entity.Enable();
@@ -1154,7 +1154,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             float calledDelta = -1f;
 
-            entity.OnLateUpdated += dt => calledDelta = dt;
+            entity.OnLateTicked += dt => calledDelta = dt;
 
             entity.Init();
             entity.Enable();
@@ -1190,7 +1190,7 @@ namespace Atomic.Entities
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
-            entity.OnLateUpdated += _ => wasUpdate = true;
+            entity.OnLateTicked += _ => wasUpdate = true;
 
             //Act
             entity.Enable();

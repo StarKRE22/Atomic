@@ -3,34 +3,34 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="IUpdateSource"/>'s <see cref="IUpdateSource.OnUpdated"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="ITickSource"/>'s <see cref="ITickSource.OnTicked"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for subscribing to frame-based updates and ensuring clean unsubscription to prevent memory leaks.
     /// </remarks>
-    public readonly struct UpdateSubscription : IDisposable
+    public readonly struct TickSubscription : IDisposable
     {
-        private readonly IUpdateSource _source;
+        private readonly ITickSource _source;
         private readonly Action<float> _callback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateSubscription"/> struct.
+        /// Initializes a new instance of the <see cref="TickSubscription"/> struct.
         /// </summary>
         /// <param name="source">The updatable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke on update.</param>
-        internal UpdateSubscription(IUpdateSource source, Action<float> callback)
+        internal TickSubscription(ITickSource source, Action<float> callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IUpdateSource.OnUpdated"/> event.
+        /// Unsubscribes the callback from the <see cref="ITickSource.OnTicked"/> event.
         /// </summary>
         public void Dispose()
         {
             if (_source != null && _callback != null)
-                _source.OnUpdated -= _callback;
+                _source.OnTicked -= _callback;
         }
     }
 }

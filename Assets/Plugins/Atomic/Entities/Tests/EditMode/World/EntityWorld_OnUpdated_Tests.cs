@@ -12,7 +12,7 @@ namespace Atomic.Entities
             world.Enable(); // must be enabled for OnUpdate to run
 
             float receivedDelta = -1;
-            world.OnUpdated += dt => receivedDelta = dt;
+            world.OnTicked += dt => receivedDelta = dt;
 
             world.Tick(0.123f);
 
@@ -25,7 +25,7 @@ namespace Atomic.Entities
             var world = new EntityWorld<Entity>();
 
             bool called = false;
-            world.OnUpdated += _ => called = true;
+            world.OnTicked += _ => called = true;
 
             world.Tick(0.5f);
 
@@ -39,7 +39,7 @@ namespace Atomic.Entities
             world.Enable();
 
             int callCount = 0;
-            world.OnUpdated += _ => callCount++;
+            world.OnTicked += _ => callCount++;
 
             world.Tick(0.1f);
             world.Tick(0.2f);
@@ -56,7 +56,7 @@ namespace Atomic.Entities
             world.Tick(0.25f);
 
             bool called = false;
-            world.OnUpdated += _ => called = true;
+            world.OnTicked += _ => called = true;
 
             Assert.IsFalse(called);
         }

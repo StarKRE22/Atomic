@@ -66,13 +66,13 @@ namespace Atomic.Entities
         public event Action OnDisabled;
 
         /// <inheritdoc/>
-        public event Action<float> OnUpdated;
+        public event Action<float> OnTicked;
 
         /// <inheritdoc/>
-        public event Action<float> OnFixedUpdated;
+        public event Action<float> OnFixedTicked;
 
         /// <inheritdoc/>
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnLateTicked;
 
         /// <inheritdoc/>
 #if ODIN_INSPECTOR
@@ -182,7 +182,7 @@ namespace Atomic.Entities
                 currentIndex = slot.right;
             }
             
-            this.OnUpdated?.Invoke(deltaTime);
+            this.OnTicked?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
@@ -199,7 +199,7 @@ namespace Atomic.Entities
                 currentIndex = slot.right;
             }
             
-            this.OnFixedUpdated?.Invoke(deltaTime);
+            this.OnFixedTicked?.Invoke(deltaTime);
         }
 
         /// <inheritdoc/>
@@ -216,7 +216,7 @@ namespace Atomic.Entities
                 currentIndex = slot.right;
             }
             
-            this.OnLateUpdated?.Invoke(deltaTime);
+            this.OnLateTicked?.Invoke(deltaTime);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -241,9 +241,9 @@ namespace Atomic.Entities
             //Unsubscribe events:
             this.OnEnabled = null;
             this.OnDisabled = null;
-            this.OnUpdated = null;
-            this.OnFixedUpdated = null;
-            this.OnLateUpdated = null;
+            this.OnTicked = null;
+            this.OnFixedTicked = null;
+            this.OnLateTicked = null;
         }
     }
 }

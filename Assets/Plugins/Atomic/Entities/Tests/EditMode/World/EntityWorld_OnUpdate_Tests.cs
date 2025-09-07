@@ -30,7 +30,7 @@ namespace Atomic.Entities
             world.Enable();
 
             float calledDelta = -1f;
-            world.OnUpdated += dt => calledDelta = dt;
+            world.OnTicked += dt => calledDelta = dt;
 
             float delta = 0.1f;
 

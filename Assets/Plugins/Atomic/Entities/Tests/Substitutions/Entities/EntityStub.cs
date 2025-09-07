@@ -33,9 +33,9 @@ namespace Atomic.Entities
             throw new NotImplementedException();
         }
 
-        public event Action<float> OnUpdated;
-        public event Action<float> OnFixedUpdated;
-        public event Action<float> OnLateUpdated;
+        public event Action<float> OnTicked;
+        public event Action<float> OnFixedTicked;
+        public event Action<float> OnLateTicked;
 
         public void Tick(float deltaTime)
         {

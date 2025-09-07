@@ -55,7 +55,7 @@ namespace Atomic.Entities
             // Arrange
             var world = new EntityWorld<Entity>();
             bool updatedCalled = false;
-            world.OnUpdated += _ => updatedCalled = true;
+            world.OnTicked += _ => updatedCalled = true;
 
             world.Enable();
             world.Dispose();

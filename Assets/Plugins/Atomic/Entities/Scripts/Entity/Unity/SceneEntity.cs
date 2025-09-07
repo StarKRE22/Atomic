@@ -290,9 +290,9 @@ namespace Atomic.Entities
             this.OnEnabled = null;
             this.OnDisabled = null;
 
-            this.OnUpdated = null;
-            this.OnFixedUpdated = null;
-            this.OnLateUpdated = null;
+            this.OnTicked = null;
+            this.OnFixedTicked = null;
+            this.OnLateTicked = null;
 
             this.OnBehaviourAdded = null;
             this.OnBehaviourDeleted = null;

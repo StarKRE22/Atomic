@@ -242,24 +242,24 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public event Action<float> OnUpdated
+        public event Action<float> OnTicked
         {
-            add => _world.OnUpdated += value;
-            remove => _world.OnUpdated -= value;
+            add => _world.OnTicked += value;
+            remove => _world.OnTicked -= value;
         }
 
         /// <inheritdoc />
-        public event Action<float> OnFixedUpdated
+        public event Action<float> OnFixedTicked
         {
-            add => _world.OnFixedUpdated += value;
-            remove => _world.OnFixedUpdated -= value;
+            add => _world.OnFixedTicked += value;
+            remove => _world.OnFixedTicked -= value;
         }
 
         /// <inheritdoc />
-        public event Action<float> OnLateUpdated
+        public event Action<float> OnLateTicked
         {
-            add => _world.OnLateUpdated += value;
-            remove => _world.OnLateUpdated -= value;
+            add => _world.OnLateTicked += value;
+            remove => _world.OnLateTicked -= value;
         }
 
         /// <inheritdoc />
