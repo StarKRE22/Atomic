@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Subscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/Subscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +160,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-    </task>
-    <task id="LOCAL-00089" summary="Написал EntityNames.md">
-      <option name="closed" value="true" />
-      <created>1757014448691</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1757014448691</updated>
+      <workItem from="1757314938895" duration="1659000" />
     </task>
     <task id="LOCAL-00090" summary="Написал EntityViewBase.md">
       <option name="closed" value="true" />
@@ -547,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757275458942</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="Minor!">
+      <option name="closed" value="true" />
+      <created>1757315017732</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1757315017733</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +581,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал тесты для OnAdded / OnRemoved EntityCollectionView.cs" />
     <MESSAGE value="Покрыл тестами EntityCollectionView.cs" />
     <MESSAGE value="Написал Aspects!" />
     <MESSAGE value="Сделал EntityView!" />
@@ -599,7 +605,8 @@
     <MESSAGE value="Сделал ModularEntityInstallers.md" />
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Minor!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

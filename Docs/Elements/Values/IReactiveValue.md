@@ -1,9 +1,9 @@
-# 🧩 IReactiveValue<T>
+# 🧩 IReactiveValue&lt;T&gt;
 
 `IReactiveValue<T>` represents a **reactive value** that combines:
 
-- **Read-only access** through `IValue<T>`
-- **Reactive observation** through `ISignal<T>`
+- **Read-only access** through [IValue<T>](IValue.md)
+- **Reactive observation** through [ISignal<T>](../Signals/ISignal.md)
 
 It allows you to both **read the current value** and **subscribe to changes**.
 
@@ -15,23 +15,45 @@ It allows you to both **read the current value** and **subscribe to changes**.
 
 ---
 
-## Inheritance
+## Properties
+```csharp
+T Value { get; }
+```
+- Description: Gets the current value.
+- Access: Read-only
 
-- `IValue<T>` – Provides read-only access via `Value` and `Invoke()`.
-- `ISignal<T>` – Provides reactive subscriptions for when the value changes.
-
+## Methods
+### Invoke
+```csharp
+T Invoke()
+```
+- Description: Invokes the function and returns the value.
+  This is the default implementation from [IFunction<T>](../Functions/IFunction.md) and simply returns Value.
+- Returns: The current value of type `T`.
 ---
+### Subscribe
+```csharp
+Subscription<T> Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameters:**
+  - `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription<T>](../Signals/Subscription.md) struct representing the active subscription.
 
-## Description
+### Unsubscribe
+```csharp
+void Unsubscribe(Action action)  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:**
+  - `action` – The delegate to remove from the subscription list.
 
-- `IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
-- It merges the benefits of a **value provider** and a **signal emitter** in a single interface.
 
----
 
-## Example of Usage
+## 🗂 Example of Usage
+`IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
+
 For example, rendering score text on a UI in Unity:
-
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text
@@ -69,7 +91,7 @@ public sealed class ScorePresenter : IDisposable
 }
 ```
 
-You can use extension Observe and cache subscription handle
+We suppose to use [Observe](Extensions.md/#observe) extension method  and cache subscription handle
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text

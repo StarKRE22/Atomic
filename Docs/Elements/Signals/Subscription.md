@@ -1,4 +1,4 @@
-# 🧩 Subscription Structs
+# 🧩 Subscription
 
 The **Subscription** structs represent a subscription to a reactive `ISignal` source.  
 Disposing a `Subscription` automatically unsubscribes the associated action.

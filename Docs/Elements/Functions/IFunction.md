@@ -1,4 +1,4 @@
-#  🧩 IFunction Interfaces
+#  🧩 IFunction
 
 The **IFunction** interfaces define a family of contracts for representing functions with varying numbers of input parameters.  
 They provide a lightweight abstraction for defining logic that returns a value, making them useful for callbacks, computations, and functional programming patterns.
@@ -9,6 +9,7 @@ They provide a lightweight abstraction for defining logic that returns a value, 
 - **Reusability** – Suitable for event-driven systems, pipelines, or functional utilities.
 
 ---
+
 
 ## IFunction&lt;R&gt;
 Represents a **parameterless function that returns a result**.
@@ -23,6 +24,10 @@ public interface IFunction<out R>
     R Invoke();
 }
 ```
+
+## Invokedddd
+
+
 ## IFunction<T, R>
 Represents a function with one input argument that returns a result.
 ```csharp
@@ -36,6 +41,9 @@ public interface IFunction<in T, out R>
     R Invoke(T args);
 }
 ```
+### Invoke(T)
+
+
 ### IFunction<T1, T2, R>
 ```csharp
 public interface IFunction<in T1, in T2, out R>
@@ -49,3 +57,5 @@ public interface IFunction<in T1, in T2, out R>
     R Invoke(T1 args1, T2 args2);
 }
 ```
+
+### Invoke(T1, T2)
