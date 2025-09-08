@@ -23,23 +23,30 @@ new T Value { get; set; }
   - Implements [ISetter<T>.Value](../Setters/ISetter.md/#value) for write access.
 
 
-## 🧩 Examples Usage
+## Methods
+
+#### `Invoke()`
+```csharp
+T Invoke()
+```
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+
+---
+
+## 🗂 Example of Usage
 
 This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
 
 ```csharp
-using UnityEngine;
-using Atomic.Elements;
-using System;
-
-// -------------------- Transform Position Variable --------------------
 public class TransformPositionVariable : IVariable<Vector3>
 {
-    private Transform _target;
+    private readonly Transform _target;
 
     public TransformPositionVariable(Transform target)
     {
-        _target = target;
+        _target = target ?? throw new ArgumentNullException(nameof(target));
     }
 
     public Vector3 Value
@@ -48,8 +55,9 @@ public class TransformPositionVariable : IVariable<Vector3>
         set => _target.position = value;
     }
 }
+```
 
-// -------------------- Network Variable --------------------
+```csharp
 public class NetworkVariable<T> : IVariable<T> where T : unmanaged
 {
     private readonly NetworkObject _networkObject;
@@ -57,7 +65,7 @@ public class NetworkVariable<T> : IVariable<T> where T : unmanaged
     
     public NetworkVariable(NetworkObject networkObject, IntPtr ptr)
     {
-        _networkObject = networkObject;
+        _networkObject = networkObject ?? throw new ArgumentNullException(nameof(networkObject));
         _ptr = ptr;
     }
 

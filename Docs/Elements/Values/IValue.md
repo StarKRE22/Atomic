@@ -29,7 +29,7 @@ T Invoke()
 ---
 
 ##  🗂 Example of Usage
-**IValue<T> can wrap any data source, for example:**
+**`IValue<T>` can wrap any data source, for example:**
 
 ```csharp
 /// Provides a position from Transform as a read-only IValue<int>.
