@@ -4,9 +4,6 @@ The **InlineAction** classes provide wrappers around standard `System.Action` de
 They implement the corresponding [IAction](IAction.md) interfaces and allow invoking actions directly, optionally with parameters. 
 They also support implicit conversion from the underlying `Action` delegates and, if using Odin Inspector, inline display and buttons.
 
-
-> [!NOTE]
-> `InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for events, commands, or reactive systems.
 ---
 
 ## 🧩 InlineAction
@@ -338,3 +335,8 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
     }
 }
 ```
+
+---
+
+## 📝 Notes
+`InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for events, commands, or reactive systems.
