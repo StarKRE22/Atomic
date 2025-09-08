@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,31 +154,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="3866000" />
-    </task>
-    <task id="LOCAL-00099" summary="Переписал EntityCollectionView.cs">
-      <option name="closed" value="true" />
-      <created>1757097138547</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1757097138547</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Переписал тесты для EntityView.cs">
-      <option name="closed" value="true" />
-      <created>1757106819879</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1757106819879</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Написал тесты для OnAdded / OnRemoved EntityCollectionView.cs">
-      <option name="closed" value="true" />
-      <created>1757108385603</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1757108385603</updated>
+      <workItem from="1757314938895" duration="4166000" />
     </task>
     <task id="LOCAL-00102" summary="Покрыл тестами EntityCollectionView.cs">
       <option name="closed" value="true" />
@@ -546,7 +524,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757320212349</updated>
     </task>
-    <option name="localTasksCounter" value="148" />
+    <task id="LOCAL-00148" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757320305182</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320305182</updated>
+    </task>
+    <task id="LOCAL-00149" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757320359381</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320359381</updated>
+    </task>
+    <task id="LOCAL-00150" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757320398567</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320398567</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,9 +598,9 @@
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor!" />
     <MESSAGE value="Минор фиксы!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
