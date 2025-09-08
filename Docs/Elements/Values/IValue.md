@@ -9,7 +9,7 @@
 ---
 
 ## Properties
-### `Value`
+#### `Value`
 ```csharp
 T Value { get; }
 ```
@@ -19,7 +19,7 @@ T Value { get; }
 ---
 
 ## Methods
-### `Invoke()`
+#### `Invoke()`
 ```csharp
 T Invoke()
 ```
