@@ -120,13 +120,13 @@ namespace ShooterGame.Gameplay
 		#region Position
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<Vector3> GetPosition(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Vector3>>(Position);
+		public static IVariable<Vector3> GetPosition(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Vector3>>(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool TryGetPosition(this IGameEntity entity, out IReactiveVariable<Vector3> value) => entity.TryGetValue(Position, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddPosition(this IGameEntity entity, IReactiveVariable<Vector3> value) => entity.AddValue(Position, value);
+		public static void AddPosition(this IGameEntity entity, IVariable<Vector3> value) => entity.AddValue(Position, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasPosition(this IGameEntity entity) => entity.HasValue(Position);
@@ -142,13 +142,13 @@ namespace ShooterGame.Gameplay
 		#region Rotation
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IReactiveVariable<Quaternion> GetRotation(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Quaternion>>(Rotation);
+		public static IVariable<Quaternion> GetRotation(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Quaternion>>(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool TryGetRotation(this IGameEntity entity, out IReactiveVariable<Quaternion> value) => entity.TryGetValue(Rotation, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void AddRotation(this IGameEntity entity, IReactiveVariable<Quaternion> value) => entity.AddValue(Rotation, value);
+		public static void AddRotation(this IGameEntity entity, IVariable<Quaternion> value) => entity.AddValue(Rotation, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasRotation(this IGameEntity entity) => entity.HasValue(Rotation);

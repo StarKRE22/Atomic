@@ -8,7 +8,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Atomic.Extensions
+namespace Atomic.Elements
 {
     /// <summary>
     /// A reactive wrapper for a <see cref="int3"/> value.

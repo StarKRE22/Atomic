@@ -8,7 +8,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Atomic.Extensions
+namespace Atomic.Elements
 {
     /// <summary>
     /// A simple serialized variable for <see cref="int3"/> values.

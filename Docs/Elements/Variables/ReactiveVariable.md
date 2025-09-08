@@ -136,18 +136,24 @@ score.Dispose();
 ## 🧩 Specialized Reactive Variables
 There are **specialized reactive variants** that **do not require an `EqualityComparer`** and allow slightly faster `Value` assignments.
 
-- **Common types**
-  - `ReactiveFloat`
-  - `ReactiveInt`
-  - `ReactiveBool`
+### Common Types
+- `ReactiveBool` – Boolean reactive variable
+- `ReactiveInt` – Integer reactive variable
+- `ReactiveFloat` – Float reactive variable
 
+### Unity Types
+- `ReactiveQuaternion` – Stores a `Quaternion`
+- `ReactiveVector2` – Stores a `Vector2`
+- `ReactiveVector3` – Stores a `Vector3`
+- `ReactiveVector4` – Stores a `Vector4`
+- `ReactiveVector2Int` – Stores a `Vector2Int`
+- `ReactiveVector3Int` – Stores a `Vector3Int`
 
-- **Unity types**
-  - `ReactiveVector2`
-  - `ReactiveVector3`
-  - `ReactiveQuaternion`
-
-
-- **Unity Mathematics**
-  - `float3Reactive`
-  - `quaternionReactive`
+### Unity Mathematics Types
+- `reactive_int2` – Stores an `int2`
+- `reactive_int3` – Stores an `int3`
+- `reactive_int4` – Stores an `int4`
+- `reactive_ float2` – Stores a `float2`
+- `reactive_float3` – Stores a `float3`
+- `reactive_float4` – Stores a `float4`
+- `reactive_quaternion` – Stores a `quaternion`

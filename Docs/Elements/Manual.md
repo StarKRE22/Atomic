@@ -51,7 +51,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IVariable](Variables/IVariable.md) <!-- + -->
   - [BaseVariable](Variables/BaseVariable.md) <!-- + -->
   - [IReactiveVariable](Variables/IReactiveVariable.md) <!-- + -->
-  - [ReactiveVariable](Variables/ReactiveVariable.md)
+  - [ReactiveVariable](Variables/ReactiveVariable.md) <!-- + -->
   - [ProxyVariable](Variables/ProxyVariable.md)
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
   - [UnityVariables](Variables/UnitySpecificVariables.md)

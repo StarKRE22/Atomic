@@ -1,7 +1,6 @@
-#if UNITY_MATHEMATICS
+#if UNITY_5_3_OR_NEWER
 using System;
 using Atomic.Elements;
-using Unity.Mathematics;
 using UnityEngine;
 
 #if ODIN_INSPECTOR
@@ -11,17 +10,17 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// A simple serialized variable for <see cref="int4"/> values.
-    /// Implements <see cref="IVariable{int4}"/>.
+    /// A simple serialized variable for <see cref="Vector3Int"/> values.
+    /// Implements <see cref="IVariable{Vector3Int}"/>.
     /// </summary>
     [Serializable]
-    public sealed class int4_variable : IVariable<int4>
+    public sealed class Vector3IntVariable : IVariable<Vector3Int>
     {
 #if ODIN_INSPECTOR
         [HideLabel]
 #endif
         [SerializeField]
-        private int4 value;
+        private Vector3Int value;
 
         /// <summary>
         /// Gets or sets the current value.
@@ -29,32 +28,32 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector]
 #endif
-        public int4 Value
+        public Vector3Int Value
         {
             get => this.value;
             set => this.value = value;
         }
 
         /// <summary>
-        /// Initializes a new instance with the default value (0,0,0,0).
+        /// Initializes a new instance with the default value (0,0,0).
         /// </summary>
-        public int4_variable() => this.value = int4.zero;
+        public Vector3IntVariable() => this.value = Vector3Int.zero;
 
         /// <summary>
         /// Initializes a new instance with a specified value.
         /// </summary>
-        /// <param name="value">The initial int4 value.</param>
-        public int4_variable(int4 value) => this.value = value;
+        /// <param name="value">The initial Vector3Int value.</param>
+        public Vector3IntVariable(Vector3Int value) => this.value = value;
 
         /// <summary>
         /// Returns the current value.
         /// </summary>
-        public int4 Invoke() => this.value;
+        public Vector3Int Invoke() => this.value;
 
         /// <summary>
-        /// Implicitly converts an <see cref="int4"/> to an <see cref="int4_variable"/>.
+        /// Implicitly converts a <see cref="Vector3Int"/> to a <see cref="Vector3IntVariable"/>.
         /// </summary>
-        public static implicit operator int4_variable(int4 value) => new(value);
+        public static implicit operator Vector3IntVariable(Vector3Int value) => new(value);
 
         /// <summary>
         /// Returns a string representation of the current value.

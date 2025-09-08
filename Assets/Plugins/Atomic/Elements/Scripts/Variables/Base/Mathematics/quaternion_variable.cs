@@ -8,7 +8,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-namespace Atomic.Extensions
+namespace Atomic.Elements
 {
     /// <summary>
     /// A simple serialized variable that stores a <see cref="quaternion"/> value.
