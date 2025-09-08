@@ -49,6 +49,12 @@ public interface ISignal<T>
     void Unsubscribe(Action<T> action);
 }
 ```
+
+### `Subscribe<T>(Action<T>)`
+
+### `Unsubscribe<T>(Action<T>)`
+
+
 ### Type Parameters
 - **T** – The type of the value emitted to subscribers.
 ### Members

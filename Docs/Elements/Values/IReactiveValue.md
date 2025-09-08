@@ -41,6 +41,7 @@ Subscription<T> Subscribe(Action action)
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
 - **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;](../Signals/ISignal.md#subscribetactiont)
 
 #### `Unsubscribe(Action)`
 ```csharp
@@ -48,6 +49,7 @@ void `Unsubscribe(Action action)`
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;](../Signals/ISignal.md#unsubscribetactiont)
 
 ---
 
