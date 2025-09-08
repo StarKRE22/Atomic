@@ -35,9 +35,9 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the wrapped action, if it exists.
         /// </summary>
-        public void Invoke() => this.action?.Invoke();
+        public void Invoke() => this.action.Invoke();
 
-        public override string ToString() => this.action?.Method.Name ?? "Anonymous";
+        public override string ToString() => this.action.Method.Name;
     }
 
 #if ODIN_INSPECTOR
@@ -71,7 +71,7 @@ namespace Atomic.Elements
         /// Invokes the wrapped action with the specified argument.
         /// </summary>
         /// <param name="arg">The argument to pass to the action.</param>
-        public void Invoke(T arg) => this.action?.Invoke(arg);
+        public void Invoke(T arg) => this.action.Invoke(arg);
 
         public override string ToString() => this.action.Method.Name;
     }
@@ -108,7 +108,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
-        public void Invoke(T1 arg1, T2 arg2) => this.action?.Invoke(arg1, arg2);
+        public void Invoke(T1 arg1, T2 arg2) => this.action.Invoke(arg1, arg2);
 
         public override string ToString() => this.action.Method.Name;
     }
@@ -146,7 +146,7 @@ namespace Atomic.Elements
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
-        public void Invoke(T1 arg1, T2 arg2, T3 arg3) => this.action?.Invoke(arg1, arg2, arg3);
+        public void Invoke(T1 arg1, T2 arg2, T3 arg3) => this.action.Invoke(arg1, arg2, arg3);
 
         public override string ToString() => this.action.Method.Name;
     }
@@ -182,7 +182,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the wrapped action with the specified arguments.
         /// </summary>
-        public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4) => this.action?.Invoke(arg1, arg2, arg3, arg4);
+        public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4) => this.action.Invoke(arg1, arg2, arg3, arg4);
 
         public override string ToString() => this.action.Method.Name;
     }
