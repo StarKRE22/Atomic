@@ -35,6 +35,8 @@ public interface IAction<in T>
 }
 ```
 
+#### `Invoke(T)`
+
 ## IAction<T1, T2>
 Represents an executable action that takes two arguments.
 ```csharp

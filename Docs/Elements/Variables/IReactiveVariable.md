@@ -52,7 +52,9 @@ void Invoke(T arg)
 ```
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
-- **Note:** - Acts as a setter method, complementing the `Value` property.
+- **Notes:** 
+  - Acts as a setter method, complementing the `Value` property.
+  - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
 
 #### `Subscribe(Action)`
 ```csharp
