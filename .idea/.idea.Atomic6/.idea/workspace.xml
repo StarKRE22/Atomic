@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,31 +156,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="6554000" />
-    </task>
-    <task id="LOCAL-00114" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757191547713</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1757191547713</updated>
-    </task>
-    <task id="LOCAL-00115" summary="Сделал блок для Shooter Sample!">
-      <option name="closed" value="true" />
-      <created>1757235897335</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1757235897335</updated>
-    </task>
-    <task id="LOCAL-00116" summary="Оформил раздел #3">
-      <option name="closed" value="true" />
-      <created>1757236623258</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1757236623258</updated>
+      <workItem from="1757314938895" duration="7482000" />
     </task>
     <task id="LOCAL-00117" summary="Подкрутил Atomic.Elements Manual!">
       <option name="closed" value="true" />
@@ -548,7 +526,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757322578265</updated>
     </task>
-    <option name="localTasksCounter" value="163" />
+    <task id="LOCAL-00163" summary="Прочесал Value Extensions.md">
+      <option name="closed" value="true" />
+      <created>1757322930022</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1757322930022</updated>
+    </task>
+    <task id="LOCAL-00164" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757323169108</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1757323169108</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Прочесал IVariable.md">
+      <option name="closed" value="true" />
+      <created>1757323414521</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1757323414522</updated>
+    </task>
+    <option name="localTasksCounter" value="166" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,8 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим README.md" />
-    <MESSAGE value="Сделал раздел Framework Structure!" />
     <MESSAGE value="Обработал UnityQuickStart" />
     <MESSAGE value="Сделал блок для Shooter Sample!" />
     <MESSAGE value="Оформил раздел #3" />
@@ -597,10 +597,12 @@
     <MESSAGE value="Прочесал Const.md" />
     <MESSAGE value="Пропушил ScriptableConst.md" />
     <MESSAGE value="Пропушил DefaultConstants.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Ь" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Прочесал Value Extensions.md" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Прочесал IVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Прочесал IVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
