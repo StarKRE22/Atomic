@@ -24,6 +24,8 @@ T Value { get; }
 - **Description:** Gets the current value.
 - **Access:** Read-only
 
+---
+
 ## Methods
 
 #### `Invoke()`

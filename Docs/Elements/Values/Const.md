@@ -29,6 +29,8 @@ public Const(T value)
 - **Description:** Initializes a new instance with a specified constant value `value`.
 - **Parameter:** - `value` – The constant value to initialize the instance with.
 
+---
+
 ## Properties
 
 #### `Value`
@@ -37,6 +39,8 @@ T Value { get; }
 ```
 - **Description:** Gets the wrapped constant value.
 - **Access:** Read-only
+
+---
 
 ## Methods
 #### `Invoke()`
@@ -53,6 +57,8 @@ public override string ToString();
 ```
 - **Description:** Returns a string that represents the wrapped constant value.
 - **Returns:** A string representation of the constant value.
+
+---
 
 ## Operators
 

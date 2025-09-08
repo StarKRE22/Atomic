@@ -10,7 +10,6 @@
 
 ---
 
-
 ## Constructors
 
 #### `BaseVariable()`
@@ -27,6 +26,8 @@ public BaseVariable(T value)
 - **Description:** Initializes a new instance with a specified constant value `value`.
 - **Parameter:** - `value` – The constant value to initialize the instance with.
 
+---
+
 ## Properties
 
 #### `Value`
@@ -35,6 +36,8 @@ new T Value { get; set; }
 ```
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
+
+---
 
 ## Methods
 
@@ -53,6 +56,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the wrapped constant value.
 - **Returns:** A string representation of the constant value.
 
+---
 
 ## Operators
 

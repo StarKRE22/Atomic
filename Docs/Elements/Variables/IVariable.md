@@ -22,6 +22,7 @@ new T Value { get; set; }
   - Implements [IValue<T>.Value](../Values/IValue.md#value) for read access.
   - Implements [ISetter<T>.Value](../Setters/ISetter.md/#value) for write access.
 
+---
 
 ## Methods
 

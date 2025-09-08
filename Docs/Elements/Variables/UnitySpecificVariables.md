@@ -1,4 +1,4 @@
-# 🧩 Unity-Specific Variables
+# 🧩 Unity Variables
 
 In addition to the core `IVariable<T>` and `IReactiveVariable<T>` types, the library includes several **Unity-oriented variable wrappers** that make it easy to bind common Unity data sources to the variable system.
 
