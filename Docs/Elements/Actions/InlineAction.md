@@ -301,7 +301,7 @@ moveAction.Invoke(transform, Vector3.forward, 10, 0.02);
 
 ---
 
-## 🗂 Example of Usage
+## 📌 Best Practice
 Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using `InlineAction`:
  
 ```csharp
