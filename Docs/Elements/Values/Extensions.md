@@ -12,16 +12,16 @@ public static Const<T> AsConst<T>(this T it)
 - **Parameter:** - `it` – The value to wrap. 
 - **Returns:** A new `Const<T>` instance containing the provided value.
 
-##### Example of Usage
+- **Example of Usage**
 ```csharp
 int number = 42;
 Const<int> constant = number.AsConst();
 Console.WriteLine(constant.Value); // Output: 42
 ```
 
-##### Notes
-- Useful for converting ordinary values into constant wrappers.
-- Aggressively inlined for performance.
+- **Notes**
+  - Useful for converting ordinary values into constant wrappers.
+  - Aggressively inlined for performance.
 ---
 
 ### `Observe()`
