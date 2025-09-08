@@ -20,15 +20,14 @@
 // Default constructor
 public Const()
 ```
-- **Description: Initializes a new instance with the default value of `T`.
+- **Description:** Initializes a new instance with the default value of `T`.
 
 #### `Const(T value)`
 ```csharp
 public Const(T value)
 ```
 - **Description:** Initializes a new instance with a specified constant value `value`.
-- **Parameters:**
-  - `value` – The constant value to initialize the instance with.
+- **Parameter:** - `value` – The constant value to initialize the instance with.
 
 ## Properties
 
@@ -45,8 +44,8 @@ T Value { get; }
 T Invoke()
 ```
 - **Description:** Invokes the function and returns the value.
-  This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
 - **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke)
 
 #### `ToString()`
 ```csharp
