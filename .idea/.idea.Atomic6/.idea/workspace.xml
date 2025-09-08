@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,31 +155,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="2335000" />
-    </task>
-    <task id="LOCAL-00094" summary="Добавляем Aspects!">
-      <option name="closed" value="true" />
-      <created>1757067752073</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1757067752073</updated>
-    </task>
-    <task id="LOCAL-00095" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757080992299</created>
-      <option name="number" value="00095" />
-      <option name="presentableId" value="LOCAL-00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1757080992299</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1757083579721</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1757083579721</updated>
+      <workItem from="1757314938895" duration="3553000" />
     </task>
     <task id="LOCAL-00097" summary="Думаем!">
       <option name="closed" value="true" />
@@ -549,7 +525,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757317097424</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757318451551</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1757318451551</updated>
+    </task>
+    <task id="LOCAL-00144" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757318589551</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1757318589551</updated>
+    </task>
+    <task id="LOCAL-00145" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757318611047</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1757318611047</updated>
+    </task>
+    <option name="localTasksCounter" value="146" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

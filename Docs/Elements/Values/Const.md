@@ -1,10 +1,9 @@
 # 🧩 Const
 
-`Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**.  
-It implements `IValue<T>` and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
+`Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**. It implements [IValue&lt;T&gt;](IValue.md) and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
 
-> **Note:** Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around.  
-> It can act as a **lightweight pattern**, for example, to share a constant value across multiple systems without copying the value.
+> [!NOTE]
+> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as a **lightweight pattern**, for example, to share a constant value across multiple systems without copying the value.
 
 ---
 
