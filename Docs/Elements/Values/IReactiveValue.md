@@ -30,7 +30,6 @@ T Invoke()
 - Description: Invokes the function and returns the value.
   This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
 - Returns: The current value of type `T`.
----
 
 ### Subscribe(Action)
 ```csharp
