@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,31 +155,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="4166000" />
-    </task>
-    <task id="LOCAL-00102" summary="Покрыл тестами EntityCollectionView.cs">
-      <option name="closed" value="true" />
-      <created>1757158872926</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1757158872926</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Написал Aspects!">
-      <option name="closed" value="true" />
-      <created>1757160526925</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1757160526925</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Сделал EntityView!">
-      <option name="closed" value="true" />
-      <created>1757164935368</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1757164935368</updated>
+      <workItem from="1757314938895" duration="4676000" />
     </task>
     <task id="LOCAL-00105" summary="Написал EntityCollectionView.md">
       <option name="closed" value="true" />
@@ -548,7 +525,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757320398567</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="Прочесал Const.md">
+      <option name="closed" value="true" />
+      <created>1757320648371</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320648371</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Прочесал Const.md">
+      <option name="closed" value="true" />
+      <created>1757320679353</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320679353</updated>
+    </task>
+    <task id="LOCAL-00153" summary="Прочесал Const.md">
+      <option name="closed" value="true" />
+      <created>1757320729621</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320729621</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал Aspects!" />
     <MESSAGE value="Сделал EntityView!" />
     <MESSAGE value="Написал EntityCollectionView.md" />
     <MESSAGE value="Вроде основная часть доки готова!" />
@@ -600,7 +600,8 @@
     <MESSAGE value="Минор фиксы!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Прочесал Const.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Прочесал Const.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

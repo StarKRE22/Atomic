@@ -1,7 +1,6 @@
-# 🧩 ScriptableConst
+# 🧩 ScriptableConst&lt;T&gt;
 
-`ScriptableConst<T>` represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**.  
-It implements `IValue<T>` making it perfect for sharing constant values across multiple objects or scenes in Unity.
+`ScriptableConst<T>` represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**. It implements [IValue&lt;T&gt;](IValue.md) making it perfect for sharing constant values across multiple objects or scenes in `Unity`.
 
 > [!TIP]  
 > Using `ScriptableConst<T>` allows you to change the value in the editor and automatically propagate it to all objects that reference it, without changing any code.
@@ -15,26 +14,38 @@ It implements `IValue<T>` making it perfect for sharing constant values across m
 ---
 
 ## Properties
+
+#### `Value`
 ```csharp
 T Value { get; }
 ```
-- **Description:** Gets the wrapped constant value.
-- **Access:** Read-only
-
+- Description: Gets the wrapped constant value.
+- Access: Read-only
 ---
 
 ## Methods
+#### `Invoke()`
 ```csharp
 T Invoke()
 ```
-- **Description:** Returns the constant value (implements `IValue<T>`).
-- **Usage:** Allows `ScriptableConst<T>` to be used interchangeably with other `IValue<T>` objects.
+- Description: Invokes the function and returns the value.
+  This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
+- Returns: The current value of type `T`.
+
+#### `ToString()`
+```csharp
+public override string ToString();
+```
+- **Description:**
+    - Returns a string that represents the wrapped constant value.
+- **Returns:**
+    - A string representation of the constant value.
 
 ---
 
 ## 🗂 Example of Usage
-
 The example below demonstrates how a speed parameter can be **shared across multiple characters** using `ScriptableConst`.
+
 ```csharp
 [CreateAssetMenu(
     fileName = "FloatConst",
@@ -43,7 +54,9 @@ The example below demonstrates how a speed parameter can be **shared across mult
 public sealed class ScriptableFloatConst : ScriptableConst<float>
 {
 }
+```
 
+```csharp
 public sealed class Character : MonoBehaviour
 {
     [SerializeField] private ScriptableFloatConst _moveSpeed;
