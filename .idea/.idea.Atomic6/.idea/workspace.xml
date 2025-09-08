@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,23 +152,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="3553000" />
-    </task>
-    <task id="LOCAL-00097" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1757086004596</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1757086004596</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Вроде с визуалом разобрались!">
-      <option name="closed" value="true" />
-      <created>1757093330157</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1757093330157</updated>
+      <workItem from="1757314938895" duration="3866000" />
     </task>
     <task id="LOCAL-00099" summary="Переписал EntityCollectionView.cs">
       <option name="closed" value="true" />
@@ -549,7 +530,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757318611047</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757319910169</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1757319910169</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757320212349</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1757320212349</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,8 +595,8 @@
     <MESSAGE value="Сделал ModularEntityInstallers.md" />
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Минор фиксы!" />
+    <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
