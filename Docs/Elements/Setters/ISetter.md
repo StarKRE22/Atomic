@@ -29,6 +29,8 @@ public interface ISetter<in T> : IAction<T>
 }
 ```
 
+#### Value
+
 ## Notes
 **Direct Assignment** – The `Value` property allows direct setting of the value.
 **Invocation Syntax** – Calling `Invoke(value)` is equivalent to `Value = value`.
