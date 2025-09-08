@@ -66,8 +66,8 @@ var variable = ReactiveProxyVariable<int>
     .Build();
 ```
 
-## Example Usage
-Wrapping an external field and event
+## 🗂 Example of Usage
+**Wrapping an external field and event**
 ```csharp
 using System;
 using Atomic.Elements;

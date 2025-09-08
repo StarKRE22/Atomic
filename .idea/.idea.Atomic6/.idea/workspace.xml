@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Unity/Vector2IntVariable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Unity/Vector2IntVariable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Unity/Vector3IntVariable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Unity/Vector3IntVariable.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int2_variable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int2_variable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int3_variable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int3_variable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int4_variable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/int4_variable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/quaternion_variable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/quaternion_variable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int4.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,15 +156,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="14078000" />
-    </task>
-    <task id="LOCAL-00123" summary="Сделал  Iterating over Reactive Collections">
-      <option name="closed" value="true" />
-      <created>1757246540162</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1757246540162</updated>
+      <workItem from="1757314938895" duration="14862000" />
     </task>
     <task id="LOCAL-00124" summary="Сделал  Iterating over Reactive Collections">
       <option name="closed" value="true" />
@@ -565,7 +542,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757353253261</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="Сделал ReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1757353905759</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1757353905760</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Обновляем Best Practices" />
     <MESSAGE value="Написал Using Shared Constants!" />
     <MESSAGE value="Сделал  Iterating over Reactive Collections" />
     <MESSAGE value="Двиганул документацию!" />
@@ -617,7 +601,8 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Остановились на ReactiveVariable" />
     <MESSAGE value="Сделал много extensions!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал много extensions!" />
+    <MESSAGE value="Сделал ReactiveVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал ReactiveVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
