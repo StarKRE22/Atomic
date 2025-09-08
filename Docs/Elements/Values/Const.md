@@ -91,7 +91,7 @@ The example below demonstrates **shared movement speed** across multiple charact
 ```csharp
 public sealed class CharacterConfig : ScriptableObject
 {
-    [SerializeField] public Const<float> moveSpeed = 5;
+    [SerializeField] public Const<float> moveSpeed = 5.0f;
 }
 
 public sealed class Character : MonoBehaviour
