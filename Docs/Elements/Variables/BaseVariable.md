@@ -48,6 +48,18 @@ T Invoke()
 - **Returns:** The current value of type `T`.
 - **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
 
+#### `Invoke(T arg)`
+```csharp
+void Invoke(T arg)
+```
+- **Description:** Sets the value of the variable to the provided argument.
+- **Parameter:** `arg` – The new value to assign to the variable.
+- **Notes:**
+    - Acts as a setter method, complementing the `Value` property.
+    - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+
+
+
 #### `ToString()`
 ```csharp
 public override string ToString();

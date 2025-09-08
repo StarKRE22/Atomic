@@ -56,7 +56,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)  <!-- + -->
   - [Extensions](Variables/Extensions.md) <!-- + -->
 - **Actions & Functions**
-  - [IAction](Actions/IAction.md)
+  - [IAction](Actions/IAction.md) <!-- + -->
   - [InlineAction](Actions/InlineAction.md)
   - [CompositeAction](Actions/CompositeAction.md)
   - [UnitySpecificActions](Actions/UnitySpecificActions.md)
