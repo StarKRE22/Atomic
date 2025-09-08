@@ -21,8 +21,8 @@ It allows you to both **read the current value** and **subscribe to changes**.
 ```csharp
 T Value { get; }
 ```
-- Description: Gets the current value.
-- Access: Read-only
+- **Description:** Gets the current value.
+- **Access:** Read-only
 
 ## Methods
 
@@ -30,17 +30,16 @@ T Value { get; }
 ```csharp
 T Invoke()
 ```
-- Description: Invokes the function and returns the value.
+- **Description:** Invokes the function and returns the value.
   This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
-- Returns: The current value of type `T`.
+- **Returns:** The current value of type `T`.
 
 #### `Subscribe(Action)`
 ```csharp
 Subscription<T> Subscribe(Action action)  
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameters:**
-  - `action` – The delegate to be called when the value changes.
+- **Parameter:** `action` – The delegate to be called when the value changes.
 - **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
 
 #### `Unsubscribe(Action)`
@@ -48,8 +47,7 @@ Subscription<T> Subscribe(Action action)
 void `Unsubscribe(Action action)`  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:**
-  - `action` – The delegate to remove from the subscription list.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
 
 ---
 

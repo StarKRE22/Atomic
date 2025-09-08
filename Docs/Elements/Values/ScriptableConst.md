@@ -19,8 +19,8 @@
 ```csharp
 T Value { get; }
 ```
-- Description: Gets the wrapped constant value.
-- Access: Read-only
+- **Description:** Gets the wrapped constant value.
+- **Access:** Read-only
 ---
 
 ## Methods
@@ -28,18 +28,16 @@ T Value { get; }
 ```csharp
 T Invoke()
 ```
-- Description: Invokes the function and returns the value.
+- **Description:** Invokes the function and returns the value.
   This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
-- Returns: The current value of type `T`.
+- **Returns:** The current value of type `T`.
 
 #### `ToString()`
 ```csharp
 public override string ToString();
 ```
-- **Description:**
-    - Returns a string that represents the wrapped constant value.
-- **Returns:**
-    - A string representation of the constant value.
+- **Description:** Returns a string that represents the wrapped constant value.
+- **Returns:** A string representation of the constant value.
 
 ---
 

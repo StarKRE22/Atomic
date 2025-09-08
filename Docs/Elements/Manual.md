@@ -45,7 +45,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IReactiveValue](Values/IReactiveValue.md) <!-- + -->
   - [Const](Values/Const.md) <!-- + -->
   - [ScriptableConst](Values/ScriptableConst.md) <!-- + -->
-  - [DefaultConstants](Values/DefaultConstants.md)
+  - [DefaultConstants](Values/DefaultConstants.md) <!-- + -->
   - [Extensions](Values/Extensions.md)
 - **Variables**
   - [IVariable](Variables/IVariable.md)

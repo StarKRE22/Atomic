@@ -20,15 +20,13 @@
 // Default constructor
 public Const()
 ```
-- **Description:**
-  - Initializes a new instance with the default value of `T`.
+- **Description: Initializes a new instance with the default value of `T`.
 
 #### `Const(T value)`
 ```csharp
 public Const(T value)
 ```
-- **Description:**
-  - Initializes a new instance with a specified constant value `value`.
+- **Description:** Initializes a new instance with a specified constant value `value`.
 - **Parameters:**
   - `value` – The constant value to initialize the instance with.
 
@@ -38,26 +36,24 @@ public Const(T value)
 ```csharp
 T Value { get; }
 ```
-- Description: Gets the wrapped constant value.
-- Access: Read-only
+- **Description:** Gets the wrapped constant value.
+- **Access:** Read-only
 
 ## Methods
 #### `Invoke()`
 ```csharp
 T Invoke()
 ```
-- Description: Invokes the function and returns the value.
+- **Description:** Invokes the function and returns the value.
   This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
-- Returns: The current value of type `T`.
+- **Returns:** The current value of type `T`.
 
 #### `ToString()`
 ```csharp
 public override string ToString();
 ```
-- **Description:**
-  - Returns a string that represents the wrapped constant value.
-- **Returns:**
-  - A string representation of the constant value.
+- **Description:** Returns a string that represents the wrapped constant value.
+- **Returns:** A string representation of the constant value.
 
 ## Operators
 
@@ -65,23 +61,17 @@ public override string ToString();
 ```csharp
 public static implicit operator Const<T>(T value);
 ```
-- **Description:**
-  - Implicitly converts a value of type `T` to a `Const<T>`.
-- **Parameters:**
-  - `value` – The value to wrap in a `Const<T>`.
-- **Returns:**
-  - A new `Const<T>` containing the specified value.
+- **Description:** Implicitly converts a value of type `T` to a `Const<T>`.
+- **Parameter:** `value` – The value to wrap in a `Const<T>`.
+- **Returns:** A new `Const<T>` containing the specified value.
 
 #### `implicit operator T(Const<T> value)`
 ```csharp
 public static implicit operator T(Const<T> value);
 ```
-- **Description:**
-  - Implicitly converts a `Const<T>` back to its underlying value of type `T`.
-- **Parameters:**
-  - `value` – The `Const<T>` instance to extract the value from.
-- **Returns:**
-  - The underlying constant value of type `T`.
+- **Description:** Implicitly converts a `Const<T>` back to its underlying value of type `T`.
+- **Parameter:** `value` – The `Const<T>` instance to extract the value from.
+- **Returns:** The underlying constant value of type `T`.
 
 ---
 

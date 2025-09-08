@@ -13,8 +13,8 @@
 ```csharp
 T Value { get; }
 ```
-- Description: Gets the current value.
-- Access: Read-only
+- **Description:** Gets the current value.
+- **Access:** Read-only
 
 ---
 
@@ -23,9 +23,9 @@ T Value { get; }
 ```csharp
 T Invoke()
 ```
-- Description: Invokes the function and returns the value.
+- **Description:** Invokes the function and returns the value.
   This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
-- Returns: The current value of type `T`.
+- **Returns:** The current value of type `T`.
 ---
 
 ##  🗂 Example of Usage

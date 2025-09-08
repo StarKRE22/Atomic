@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,23 +160,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="4676000" />
-    </task>
-    <task id="LOCAL-00105" summary="Написал EntityCollectionView.md">
-      <option name="closed" value="true" />
-      <created>1757166160461</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1757166160461</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Вроде основная часть доки готова!">
-      <option name="closed" value="true" />
-      <created>1757166302194</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1757166302195</updated>
+      <workItem from="1757314938895" duration="5340000" />
     </task>
     <task id="LOCAL-00107" summary="Пилим!">
       <option name="closed" value="true" />
@@ -549,7 +538,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757320729621</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="Пропушил ScriptableConst.md">
+      <option name="closed" value="true" />
+      <created>1757321046293</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1757321046293</updated>
+    </task>
+    <task id="LOCAL-00155" summary="Пропушил DefaultConstants.md">
+      <option name="closed" value="true" />
+      <created>1757321193145</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1757321193145</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,8 +581,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал EntityView!" />
-    <MESSAGE value="Написал EntityCollectionView.md" />
     <MESSAGE value="Вроде основная часть доки готова!" />
     <MESSAGE value="Пилим README.md" />
     <MESSAGE value="Сделал раздел Framework Structure!" />
@@ -601,7 +604,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Прочесал Const.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прочесал Const.md" />
+    <MESSAGE value="Пропушил ScriptableConst.md" />
+    <MESSAGE value="Пропушил DefaultConstants.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пропушил DefaultConstants.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
