@@ -1,7 +1,6 @@
 # 🧩 Value
 
-`IValue<T>` is a **read-only value provider interface** in the `Atomic.Elements` namespace.  
-It inherits from `IFunction<T>` and exposes a strongly-typed `Value` property.
+`IValue<T>` is a **read-only value provider interface**. It inherits from [IFunction<T>](../Functions/IFunction.md) and exposes a strongly-typed `Value` property.
 
 ---
 

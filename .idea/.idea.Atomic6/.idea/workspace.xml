@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/BehaviourEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/BehaviourEntityView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityCollectionViewBinder.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityCollectionViewBinder.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityView.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewBase.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewCatalog.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewCatalog.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewInstaller.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewInstaller.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/EntityViewPoolBase.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/EntityViewPoolBase.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityCollectionView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityView.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IEntityViewPool.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IEntityViewPool.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityCollectionView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityVIewCollection.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityVIewCollection.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Archive/IReadOnlyEntityView.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/IReadOnlyEntityView.md.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/NOT COMPILED BestPractices.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/NOT COMPILED BestPractices.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/TUTOR.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/TUTOR.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,15 +33,16 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/Beginner/Scripts/PlayerContext/Character/CharacterMoveController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/Elements/Values/Const.md.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Docs/Entities/ApiReference/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/31528bc1/IReadOnlyList`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/85/48702da0/IReadOnlyCollection`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -101,20 +65,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -189,31 +153,7 @@
       <workItem from="1757083042019" duration="16490000" />
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
-      <workItem from="1757234040454" duration="26058000" />
-    </task>
-    <task id="LOCAL-00086" summary="Все пока!!">
-      <option name="closed" value="true" />
-      <created>1756985531695</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1756985531695</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Написал Lifecycle Sources!">
-      <option name="closed" value="true" />
-      <created>1757008173038</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1757008173038</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Написал раздел Lifecycle">
-      <option name="closed" value="true" />
-      <created>1757013680843</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1757013680843</updated>
+      <workItem from="1757234040454" duration="26668000" />
     </task>
     <task id="LOCAL-00089" summary="Написал EntityNames.md">
       <option name="closed" value="true" />
@@ -583,7 +523,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757272066732</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Сделал Best Practices!">
+      <option name="closed" value="true" />
+      <created>1757275154851</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1757275154851</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757275315024</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1757275315024</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757275458942</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1757275458942</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Переписал тесты для EntityView.cs" />
     <MESSAGE value="Написал тесты для OnAdded / OnRemoved EntityCollectionView.cs" />
     <MESSAGE value="Покрыл тестами EntityCollectionView.cs" />
     <MESSAGE value="Написал Aspects!" />
@@ -621,7 +584,6 @@
     <MESSAGE value="Сделал раздел Framework Structure!" />
     <MESSAGE value="Обработал UnityQuickStart" />
     <MESSAGE value="Пилим!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал блок для Shooter Sample!" />
     <MESSAGE value="Оформил раздел #3" />
     <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
@@ -635,7 +597,9 @@
     <MESSAGE value="Оформил Request vs Actions!" />
     <MESSAGE value="Написал RequestConditionActionEvent.md" />
     <MESSAGE value="Сделал ModularEntityInstallers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал ModularEntityInstallers.md" />
+    <MESSAGE value="Сделал Best Practices!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
