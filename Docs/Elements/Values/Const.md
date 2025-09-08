@@ -1,4 +1,4 @@
-# 🧩 Const
+# 🧩 Const&lt;T&gt;
 
 `Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**. It implements [IValue&lt;T&gt;](IValue.md) and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
 
