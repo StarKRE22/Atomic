@@ -49,6 +49,7 @@ void Unsubscribe(Action action)
 - **Parameters:**
   - `action` – The delegate to remove from the subscription list.
 
+---
 
 ## 🗂 Example of Usage
 `IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
