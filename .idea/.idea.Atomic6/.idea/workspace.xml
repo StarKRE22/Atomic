@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,15 +155,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="1978000" />
-    </task>
-    <task id="LOCAL-00093" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1757067737515</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1757067737515</updated>
+      <workItem from="1757314938895" duration="2335000" />
     </task>
     <task id="LOCAL-00094" summary="Добавляем Aspects!">
       <option name="closed" value="true" />
@@ -548,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757316852688</updated>
     </task>
-    <option name="localTasksCounter" value="142" />
+    <task id="LOCAL-00142" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757317097424</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1757317097424</updated>
+    </task>
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,11 +597,11 @@
     <MESSAGE value="Написал RequestConditionActionEvent.md" />
     <MESSAGE value="Сделал ModularEntityInstallers.md" />
     <MESSAGE value="Сделал Best Practices!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Minor!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Минор фиксы!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Минор фиксы!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

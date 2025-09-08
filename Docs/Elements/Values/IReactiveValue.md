@@ -2,8 +2,8 @@
 
 `IReactiveValue<T>` represents a **reactive value** that combines:
 
-- **Read-only access** through [IValue<T>](IValue.md)
-- **Reactive observation** through [ISignal<T>](../Signals/ISignal.md)
+- **Read-only access** through [IValue&lt;T&gt;](IValue.md)
+- **Reactive observation** through [ISignal&lt;T&gt;](../Signals/ISignal.md)
 
 It allows you to both **read the current value** and **subscribe to changes**.
 
@@ -28,9 +28,10 @@ T Value { get; }
 T Invoke()
 ```
 - Description: Invokes the function and returns the value.
-  This is the default implementation from [IFunction<R>](../Functions/IFunction.md#invoke) and simply returns Value.
+  This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke) and simply returns Value.
 - Returns: The current value of type `T`.
 ---
+
 ### Subscribe(Action)
 ```csharp
 Subscription<T> Subscribe(Action action)  
@@ -38,7 +39,7 @@ Subscription<T> Subscribe(Action action)
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameters:**
   - `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription<T>](../Signals/Subscription.md) struct representing the active subscription.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
 
 ### Unsubscribe(Action)
 ```csharp
@@ -47,7 +48,6 @@ void Unsubscribe(Action action)
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:**
   - `action` – The delegate to remove from the subscription list.
-
 
 
 ## 🗂 Example of Usage

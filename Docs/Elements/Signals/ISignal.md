@@ -19,14 +19,16 @@ public interface ISignal
 }
 ```
 ### Methods
+
+
 ### Subscribe(Action)
 ```csharp
 Subscription<T> Subscribe(Action action)  
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameters:**
-    - `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription<T>](../Signals/Subscription.md) struct representing the active subscription.
+  - `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
 
 ### Unsubscribe(Action)
 ```csharp
@@ -34,7 +36,9 @@ void Unsubscribe(Action action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:**
-    - `action` – The delegate to remove from the subscription list.
+  - `action` – The delegate to remove from the subscription list.
+
+
 ---
 ## ISignal&lt;T&gt;
 Represents a **reactive source with one value**.
