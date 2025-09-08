@@ -25,7 +25,7 @@ public interface IFunction<out R>
 }
 ```
 
-## Invokedddd
+## Invoke()
 
 
 ## IFunction<T, R>

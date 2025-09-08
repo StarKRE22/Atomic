@@ -1,6 +1,6 @@
 # 🧩 Value&lt;T&gt;
 
-`IValue<T>` is a **read-only value provider interface**. It inherits from [IFunction<T>](../Functions/IFunction.md) and exposes a strongly-typed `Value` property.
+`IValue<T>` is a **read-only value provider interface**. It inherits from [IFunction<R>](../Functions/IFunction.md) and exposes a strongly-typed `Value` property.
 
 ---
 
@@ -19,12 +19,12 @@ T Value { get; }
 ---
 
 ## Methods
-### Invoke
+### Invoke()
 ```csharp
 T Invoke()
 ```
 - Description: Invokes the function and returns the value.
-  This is the default implementation from [IFunction<T>](../Functions/IFunction.md) and simply returns Value.
+  This is the default implementation from [IFunction<R>](../Functions/IFunction.md#invoke) and simply returns Value.
 - Returns: The current value of type `T`.
 ---
 

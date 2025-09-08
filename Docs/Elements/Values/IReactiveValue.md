@@ -23,15 +23,15 @@ T Value { get; }
 - Access: Read-only
 
 ## Methods
-### Invoke
+### Invoke()
 ```csharp
 T Invoke()
 ```
 - Description: Invokes the function and returns the value.
-  This is the default implementation from [IFunction<T>](../Functions/IFunction.md) and simply returns Value.
+  This is the default implementation from [IFunction<R>](../Functions/IFunction.md#invoke) and simply returns Value.
 - Returns: The current value of type `T`.
 ---
-### Subscribe
+### Subscribe(Action)
 ```csharp
 Subscription<T> Subscribe(Action action)  
 ```
@@ -40,7 +40,7 @@ Subscription<T> Subscribe(Action action)
   - `action` – The delegate to be called when the value changes.
 - **Returns:** A [Subscription<T>](../Signals/Subscription.md) struct representing the active subscription.
 
-### Unsubscribe
+### Unsubscribe(Action)
 ```csharp
 void Unsubscribe(Action action)  
 ```

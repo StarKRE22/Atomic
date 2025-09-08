@@ -19,7 +19,7 @@ public interface ISignal
 }
 ```
 ### Methods
-### Subscribe
+### Subscribe(Action)
 ```csharp
 Subscription<T> Subscribe(Action action)  
 ```
@@ -28,7 +28,7 @@ Subscription<T> Subscribe(Action action)
     - `action` – The delegate to be called when the value changes.
 - **Returns:** A [Subscription<T>](../Signals/Subscription.md) struct representing the active subscription.
 
-### Unsubscribe
+### Unsubscribe(Action)
 ```csharp
 void Unsubscribe(Action action)  
 ```
