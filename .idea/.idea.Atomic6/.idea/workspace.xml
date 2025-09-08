@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,23 +157,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="7482000" />
-    </task>
-    <task id="LOCAL-00117" summary="Подкрутил Atomic.Elements Manual!">
-      <option name="closed" value="true" />
-      <created>1757239489171</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1757239489171</updated>
-    </task>
-    <task id="LOCAL-00118" summary="Подкрутил Atomic.Elements Manual!">
-      <option name="closed" value="true" />
-      <created>1757239537988</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1757239537988</updated>
+      <workItem from="1757314938895" duration="8192000" />
     </task>
     <task id="LOCAL-00119" summary="Обновляем Best Practices">
       <option name="closed" value="true" />
@@ -550,7 +535,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757323414522</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="Прочесал BaseVariable.md">
+      <option name="closed" value="true" />
+      <created>1757323856755</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1757323856755</updated>
+    </task>
+    <task id="LOCAL-00167" summary="Накидал IReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1757324263726</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1757324263726</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,8 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Обработал UnityQuickStart" />
-    <MESSAGE value="Сделал блок для Shooter Sample!" />
     <MESSAGE value="Оформил раздел #3" />
     <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
     <MESSAGE value="Обновляем Best Practices" />
@@ -602,7 +601,9 @@
     <MESSAGE value="Прочесал Value Extensions.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Прочесал IVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прочесал IVariable.md" />
+    <MESSAGE value="Прочесал BaseVariable.md" />
+    <MESSAGE value="Накидал IReactiveVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Накидал IReactiveVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

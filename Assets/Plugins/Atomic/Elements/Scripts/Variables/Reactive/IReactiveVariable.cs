@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Elements
 {
     /// <summary>
@@ -10,6 +12,6 @@ namespace Atomic.Elements
         /// <summary>
         /// Occurs when the value changes.
         /// </summary>
-        event System.Action<T> OnValueChanged;
+        event Action<T> OnValueChanged;
     }
 }
