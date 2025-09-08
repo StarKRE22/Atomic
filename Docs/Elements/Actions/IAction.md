@@ -190,12 +190,8 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```csharp
 public class MoveAction : IAction<Transform, Vector3, float, float>
 {
-    public void Invoke(
-        Transform transform,
-        Vector3 direction,
-        float speed,
-        float deltaTime
-    ) => transform.position += direction * (speed * deltaTime);
+    public void Invoke(Transform transform, Vector3 direction, float speed, float deltaTime ) => 
+        transform.position += direction * (speed * deltaTime);
 }
 
 // Usage
