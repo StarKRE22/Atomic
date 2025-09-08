@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/InlineAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/InlineAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,39 +152,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="21672000" />
-    </task>
-    <task id="LOCAL-00130" summary="Переименование Update в Tick!">
-      <option name="closed" value="true" />
-      <created>1757250040838</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1757250040838</updated>
-    </task>
-    <task id="LOCAL-00131" summary="Перековеркал Update-&gt;Tick!">
-      <option name="closed" value="true" />
-      <created>1757250401763</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1757250401763</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Оформил Request vs Actions!">
-      <option name="closed" value="true" />
-      <created>1757251307790</created>
-      <option name="number" value="00132" />
-      <option name="presentableId" value="LOCAL-00132" />
-      <option name="project" value="LOCAL" />
-      <updated>1757251307790</updated>
-    </task>
-    <task id="LOCAL-00133" summary="Написал RequestConditionActionEvent.md">
-      <option name="closed" value="true" />
-      <created>1757270133883</created>
-      <option name="number" value="00133" />
-      <option name="presentableId" value="LOCAL-00133" />
-      <option name="project" value="LOCAL" />
-      <updated>1757270133883</updated>
+      <workItem from="1757314938895" duration="21980000" />
     </task>
     <task id="LOCAL-00134" summary="Сделал ModularEntityInstallers.md">
       <option name="closed" value="true" />
@@ -551,7 +514,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757359821638</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="Сделал InlineAction.md">
+      <option name="closed" value="true" />
+      <created>1757361977874</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1757361977874</updated>
+    </task>
+    <task id="LOCAL-00180" summary="Сделал InlineAction.md">
+      <option name="closed" value="true" />
+      <created>1757362069418</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1757362069418</updated>
+    </task>
+    <task id="LOCAL-00181" summary="Сделал InlineAction.md">
+      <option name="closed" value="true" />
+      <created>1757362146085</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1757362146085</updated>
+    </task>
+    <task id="LOCAL-00182" summary="Сделал InlineAction.md">
+      <option name="closed" value="true" />
+      <created>1757362223969</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1757362223969</updated>
+    </task>
+    <option name="localTasksCounter" value="183" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Думаем!" />
     <MESSAGE value="Переименование Update в Tick!" />
     <MESSAGE value="Перековеркал Update-&gt;Tick!" />
     <MESSAGE value="Оформил Request vs Actions!" />
@@ -603,7 +597,8 @@
     <MESSAGE value="Прочесал Variables!" />
     <MESSAGE value="Сделал IAction.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Сделал InlineAction.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал InlineAction.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

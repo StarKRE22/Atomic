@@ -101,3 +101,27 @@ IReactiveVariable<int> variable = ReactiveProxyVariable<int>
     .WithUnsubscribe(cb => myEvent -= cb)
     .Build();
 ```
+
+
+## 🧩 Specialized Proxy Variables
+**For convenience, several specialized proxy variable implementations are provided.**
+
+### Player Prefs
+- `BoolPrefsVariable` – Boolean variable stored in PlayerPrefs
+- `IntPrefsVariable` – Integer variable stored in PlayerPrefs
+- `FloatPrefsVariable` – Float variable stored in PlayerPrefs
+- `StringPrefsVariable` – String variable stored in PlayerPrefs
+
+### Transform
+- `TransformParentVariable` – Stores a `Transform` parent reference
+- `TransformPositionVariable` – Stores a `Vector3` position
+- `TransformRotationVariable` – Stores a `Quaternion` rotation
+- `TransformScaleVariable` – Stores a `Vector3` scale
+
+## 📝 Notes
+
+Below are some notes on when to use `ReactiveProxyVariable<T>`:
+
+- Integrating external or third-party APIs (e.g., Unity’s `Transform`, networking states).
+- Adapting existing properties / fields to `IReactiveVariable<T>` without refactoring.
+- Testing: Makes it easy to substitute mock getters / setters in unit tests.
