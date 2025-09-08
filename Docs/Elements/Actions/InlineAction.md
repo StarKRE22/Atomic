@@ -302,6 +302,9 @@ moveAction.Invoke(transform, Vector3.forward, 10, 0.02);
 ---
 
 ## 📌 Best Practice
+
+> `InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for events, commands, or reactive systems.
+
 Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using `InlineAction`:
  
 ```csharp
@@ -337,6 +340,3 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
 ```
 
 ---
-
-## 📝 Notes
-`InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for events, commands, or reactive systems.
