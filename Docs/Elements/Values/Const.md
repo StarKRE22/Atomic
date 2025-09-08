@@ -3,7 +3,7 @@
 `Const<T>` represents a **serialized, immutable (read-only) constant value wrapper**. It implements [IValue&lt;T&gt;](IValue.md) and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data sources.
 
 > [!NOTE]
-> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as a **lightweight pattern**, for example, to share a constant value across multiple systems without copying the value.
+> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as a [Flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern), for example, to share a constant value across multiple systems without copying the value.
 
 ---
 
@@ -15,16 +15,23 @@
 
 ## Constructors
 
+### `Const()`
 ```csharp
 // Default constructor
 public Const()
+```
+- **Description:**
+  - Initializes a new instance with the default value of `T`.
 
-// Constructor with a specified value
+### Const(T value)
+```csharp
 public Const(T value)
 ```
-- Description:
-  - Const() initializes a new instance with the default value of T.
-  - Const(T value) initializes a new instance with a specified constant value.
+- **Description:**
+  - Initializes a new instance with a specified constant value `value`.
+- **Parameters:**
+  - `value` – The constant value to initialize the instance with.
+
 
 ## Properties
 ```csharp

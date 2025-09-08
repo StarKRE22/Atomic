@@ -34,7 +34,7 @@ Console.WriteLine(constant.Value); // Output: 42
 - Aggressively inlined for performance.
 ---
 
-### Observe()
+### `Observe()`
 Subscribes to a reactive value and immediately invokes the callback with the current value.
 ```csharp
 public static Subscription<T> Observe<T>(this IReactiveValue<T> it, Action<T> action)
