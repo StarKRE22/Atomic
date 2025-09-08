@@ -7,7 +7,7 @@
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,23 +156,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="18435000" />
-    </task>
-    <task id="LOCAL-00126" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1757247241999</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1757247241999</updated>
-    </task>
-    <task id="LOCAL-00127" summary="Двиганул документацию!">
-      <option name="closed" value="true" />
-      <created>1757247639940</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1757247639940</updated>
+      <workItem from="1757314938895" duration="19225000" />
     </task>
     <task id="LOCAL-00128" summary="Думаем!">
       <option name="closed" value="true" />
@@ -550,7 +534,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757357552791</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="Сделал IAction.md">
+      <option name="closed" value="true" />
+      <created>1757358724707</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1757358724707</updated>
+    </task>
+    <task id="LOCAL-00176" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757358817609</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1757358817609</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Двиганул документацию!" />
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Переименование Update в Tick!" />
     <MESSAGE value="Перековеркал Update-&gt;Tick!" />
@@ -596,13 +595,14 @@
     <MESSAGE value="Прочесал IVariable.md" />
     <MESSAGE value="Прочесал BaseVariable.md" />
     <MESSAGE value="Накидал IReactiveVariable.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Остановились на ReactiveVariable" />
     <MESSAGE value="Сделал много extensions!" />
     <MESSAGE value="Сделал ReactiveVariable.md" />
     <MESSAGE value="Сделал ProxyVariable!" />
     <MESSAGE value="Прочесал Variables!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прочесал Variables!" />
+    <MESSAGE value="Сделал IAction.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
