@@ -32,7 +32,7 @@ T Invoke()
 ```
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
 
 #### `Subscribe(Action)`
 ```csharp
@@ -41,7 +41,7 @@ Subscription<T> Subscribe(Action action)
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
 - **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
-- **Notes**: This is the default implementation from [ISignal&lt;T&gt;](../Signals/ISignal.md#subscribetactiont)
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribetactiont)
 
 #### `Unsubscribe(Action)`
 ```csharp
@@ -49,7 +49,7 @@ void `Unsubscribe(Action action)`
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
-- **Notes**: This is the default implementation from [ISignal&lt;T&gt;](../Signals/ISignal.md#unsubscribetactiont)
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribetactiont)
 
 ---
 
@@ -60,6 +60,7 @@ For example, rendering score text on a UI in Unity:
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text
+
 using Atomic.Elements;
 using System;
 
@@ -94,10 +95,12 @@ public sealed class ScorePresenter : IDisposable
 }
 ```
 
-We suppose to use [Observe](Extensions.md/#observe) extension method  and cache subscription handle
+## 📌 Best Practice
+It is recommended to use the [`Observe`](Extensions.md/#observe) extension method and store (cache) the returned subscription handle for proper disposal or reuse.
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text
+
 using Atomic.Elements;
 using System;
 
