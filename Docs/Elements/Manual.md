@@ -49,7 +49,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [Extensions](Values/Extensions.md) <!-- + -->
 - **Variables**
   - [IVariable](Variables/IVariable.md) <!-- + -->
-  - [BaseVariable](Variables/BaseVariable.md)
+  - [IReactiveVariable](Variables/IReactiveVariable.md)
+  - [BaseVariable](Variables/BaseVariable.md) <!-- + -->
   - [ReactiveVariable](Variables/ReactiveVariable.md)
   - [ProxyVariable](Variables/ProxyVariable.md)
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
