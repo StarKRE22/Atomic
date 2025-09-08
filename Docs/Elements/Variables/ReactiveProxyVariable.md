@@ -1,7 +1,8 @@
-# 🧩 ReactiveProxyVariable<T>
+# 🧩 ReactiveProxyVariable&lt;T&gt;
 
 `ReactiveProxyVariable<T>` is a **reactive proxy variable** that delegates reading, writing, and subscription operations to external handlers.  
-This is useful when you need to **wrap an existing data source or event system** and expose it through the unified `IReactiveVariable<T>` interface.
+
+This is useful when you need to **wrap an existing data source or event system** and expose it through the unified [IReactiveVariable&lt;T&gt;](IReactiveVariable.md) interface.
 
 ---
 
@@ -10,54 +11,89 @@ This is useful when you need to **wrap an existing data source or event system**
 
 ---
 
-## Constructors
+## Events
+
+#### `OnValueChanged`
+```csharp
+event Action<T> OnValueChanged
+```
+- **Description:** Triggered whenever the value changes.
+- **Parameter**: `T` – The new value after the change.
+- **Note:** Allows subscribers to react to value changes .
+
+---
+
+## Constructor
 
 ```csharp
-public ReactiveProxyVariable()
+public ReactiveProxyVariable(Func<T> getter, Action<T> setter)
 ```
-- Creates an empty instance. Delegates must be provided later using the builder.
-
-```csharp
-public ReactiveProxyVariable(
-    Func<T> getter,
-    Action<T> setter,
-    Action<Action<T>> subscribe,
-    Action<Action<T>> unsubscribe
-)
-```
-- getter – function to retrieve the current value.
-- setter – action to update the value.
-- subscribe – handler for subscribing to change notifications.
-- unsubscribe – handler for unsubscribing.
-- Throws: ArgumentNullException if any argument is null.
-
+- **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.
+- **Parameters:**
+    - `getter` – A function to retrieve the value.
+    - `setter` – An action to update the value.
+    - `subscribe` – An action to handle the subscription.
+    - `unsubscribe` – An action to handle the unsubscription.
+- **Throws:** `ArgumentNullException` if either `getter`, `setter` `subscription` or `unsubscription` is null.
 
 ## Properties
-```csharp
-T Value { get; set; }
-```
-- gets or sets the current value using delegated functions.
 
-## Events
+#### `Value`
 ```csharp
-event Action<T> OnValueChanged;
+new T Value { get; set; }
 ```
-- invoked whenever the value changes.
+- **Description:** Gets or sets the current value.
+- **Access:** Read-write
+- **Notes:**
+    - Implements [IValue<T>.Value](../Values/IValue.md#value) for read access.
+    - Implements [ISetter<T>.Value](../Setters/ISetter.md/#value) for write access.
+
+---
 
 ## Methods
-```csharp
-//registers a listener and returns a subscription handle.
-Subscription<T> Subscribe(Action<T> action)
 
-//removes a previously registered listener.
-void Unsubscribe(Action<T> action)
+#### `Invoke()`
+```csharp
+T Invoke()
 ```
+- **Description:** Invokes the variable and returns its current value.
+- **Returns:** The current value of type `T`.
+- **Note:** Default implementation comes from [IFunction<R>.Invoke()](../Functions/IFunction.md#invoke).
 
-## Fluent Builder
-ReactiveProxyVariable<T> provides a convenient fluent builder
+#### `Invoke(T arg)`
+```csharp
+void Invoke(T arg)
+```
+- **Description:** Sets the value of the variable to the provided argument.
+- **Parameter:** `arg` – The new value to assign to the variable.
+- **Notes:**
+  - Acts as a setter method, complementing the `Value` property.
+  - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+
+#### `Subscribe(Action)`
+```csharp
+Subscription<T> Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribetactiont)
+
+#### `Unsubscribe(Action)`
+```csharp
+void `Unsubscribe(Action action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribetactiont)
+
+---
+
+## Builder
+**`ReactiveProxyVariable<T>` provides a convenient fluent builder**
 
 ```csharp
-var variable = ReactiveProxyVariable<int>
+IReactiveVariable<int> variable = ReactiveProxyVariable<int>
     .StartBuild()
     .WithGetter(() => someInt)
     .WithSetter(v => someInt = v)
@@ -65,53 +101,3 @@ var variable = ReactiveProxyVariable<int>
     .WithUnsubscribe(cb => myEvent -= cb)
     .Build();
 ```
-
-## 🗂 Example of Usage
-**Wrapping an external field and event**
-```csharp
-using System;
-using Atomic.Elements;
-
-public class Player
-{
-    private int _health;
-    public event Action<int> HealthChanged;
-
-    public IReactiveVariable<int> Health { get; }
-
-    public Player()
-    {
-        Health = new ReactiveProxyVariable<int>(
-            getter: () => _health,
-            setter: v => { _health = v; HealthChanged?.Invoke(v); },
-            subscribe: h => HealthChanged += h,
-            unsubscribe: h => HealthChanged -= h
-        );
-    }
-}
-```
-
-## Testing with the builder
-```csharp
-int score = 0;
-event Action<int> scoreChanged;
-
-var scoreVar = ReactiveProxyVariable<int>
-    .StartBuild()
-    .WithGetter(() => score)
-    .WithSetter(v => { score = v; scoreChanged?.Invoke(v); })
-    .WithSubscribe(cb => scoreChanged += cb)
-    .WithUnsubscribe(cb => scoreChanged -= cb)
-    .Build();
-
-// Subscribe
-scoreVar.Subscribe(v => Console.WriteLine($"Score updated: {v}"));
-
-// Update value
-scoreVar.Value = 100; // Output: "Score updated: 100"
-```
-
-## When to Use
-- To integrate with external APIs or event systems.
-- To adapt existing fields or properties into IReactiveVariable<T>.
-- Testing: easily substitute mocks or test delegates.

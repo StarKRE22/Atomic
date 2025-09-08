@@ -13,7 +13,6 @@ This is useful when you want to integrate third-party or existing fields / prope
 
 ## Constructor
 
-### ProxyVariable(Func&lt;T&gt;,  Action&lt;T&gt;)
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
 ```
@@ -101,6 +100,21 @@ IVariable<Vector3> position = ProxyVariable<Vector3>
 //Move position:
 position.Value += Vector3.forward; 
 ```
+
+## 🧩 Specialized Proxy Variables
+**For convenience, several specialized proxy variable implementations are provided.**
+
+### Player Prefs
+- `BoolPrefsVariable` – Boolean variable stored in PlayerPrefs
+- `IntPrefsVariable` – Integer variable stored in PlayerPrefs
+- `FloatPrefsVariable` – Float variable stored in PlayerPrefs
+- `StringPrefsVariable` – String variable stored in PlayerPrefs
+
+### Transform
+- `TransformParentVariable` – Stores a `Transform` parent reference
+- `TransformPositionVariable` – Stores a `Vector3` position
+- `TransformRotationVariable` – Stores a `Quaternion` rotation
+- `TransformScaleVariable` – Stores a `Vector3` scale
 
 ## 📝 Notes
 
