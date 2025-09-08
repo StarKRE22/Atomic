@@ -6,7 +6,7 @@ These methods simplify the creation of variables that support encapsulation, rea
 
 ---
 
-### AsVariable&lt;T&gt;()
+### `AsVariable<T>()`
 ```csharp
 public static BaseVariable<T> AsVariable<T>(this T it)
 ```
@@ -22,7 +22,7 @@ public static BaseVariable<T> AsVariable<T>(this T it)
     Console.WriteLine(variable.Value); // Output: 42
     ```
 ---
-### AsReactiveVariable&lt;T&gt;()
+### `AsReactiveVariable<T>()`
 ```csharp
 public static ReactiveVariable<T> AsReactiveVariable<T>(this T it)
 ```
@@ -42,7 +42,7 @@ public static ReactiveVariable<T> AsReactiveVariable<T>(this T it)
     ```
 ---
 
-### AsProxyVariable<T, R>()
+### `AsProxyVariable<T, R>()`
 ```csharp
 public static ProxyVariable<R> AsProxyVariable<T, R>(this T it, Func<T, R> getter, Action<T, R> setter)
 ```

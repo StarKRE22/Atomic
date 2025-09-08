@@ -6,21 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveBoolPrefs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveBoolPrefs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveFloatPrefs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveFloatPrefs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveIntPrefs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveIntPrefs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveStringPrefs.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/PlayerPrefs/ReactiveStringPrefs.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/ReactiveProxyVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/ReactiveProxyVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/UnitySpecificVariables.md" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/UnitySpecificVariables.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/UnitySpecificVariables.md.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Archive/UnitySpecificVariables.md.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,15 +156,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="17266000" />
-    </task>
-    <task id="LOCAL-00125" summary="Сделал  Iterating over Reactive Collections">
-      <option name="closed" value="true" />
-      <created>1757246702301</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1757246702301</updated>
+      <workItem from="1757314938895" duration="18435000" />
     </task>
     <task id="LOCAL-00126" summary="Думаем!">
       <option name="closed" value="true" />
@@ -563,7 +542,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757354762744</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="Прочесал Variables!">
+      <option name="closed" value="true" />
+      <created>1757357552791</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1757357552791</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +577,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал  Iterating over Reactive Collections" />
     <MESSAGE value="Двиганул документацию!" />
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Переименование Update в Tick!" />
@@ -615,7 +601,8 @@
     <MESSAGE value="Сделал много extensions!" />
     <MESSAGE value="Сделал ReactiveVariable.md" />
     <MESSAGE value="Сделал ProxyVariable!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал ProxyVariable!" />
+    <MESSAGE value="Прочесал Variables!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Прочесал Variables!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
