@@ -5,12 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Subscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/Subscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IReactiveValue.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,31 +154,7 @@
       <workItem from="1757153357747" duration="9119000" />
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
-      <workItem from="1757314938895" duration="1659000" />
-    </task>
-    <task id="LOCAL-00090" summary="Написал EntityViewBase.md">
-      <option name="closed" value="true" />
-      <created>1757015929584</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1757015929584</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Остался маленький кусочек! Завтра добью!">
-      <option name="closed" value="true" />
-      <created>1757017857529</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1757017857529</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1757066452352</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1757066452353</updated>
+      <workItem from="1757314938895" duration="1978000" />
     </task>
     <task id="LOCAL-00093" summary="Думаем!">
       <option name="closed" value="true" />
@@ -554,7 +524,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757315017733</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757316609430</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1757316609430</updated>
+    </task>
+    <task id="LOCAL-00140" summary="Минор фиксы!">
+      <option name="closed" value="true" />
+      <created>1757316805686</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1757316805686</updated>
+    </task>
+    <task id="LOCAL-00141" summary="Минор фиксы!">
+      <option name="closed" value="true" />
+      <created>1757316852688</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1757316852688</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +575,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Покрыл тестами EntityCollectionView.cs" />
     <MESSAGE value="Написал Aspects!" />
     <MESSAGE value="Сделал EntityView!" />
     <MESSAGE value="Написал EntityCollectionView.md" />
@@ -589,7 +582,6 @@
     <MESSAGE value="Пилим README.md" />
     <MESSAGE value="Сделал раздел Framework Structure!" />
     <MESSAGE value="Обработал UnityQuickStart" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал блок для Shooter Sample!" />
     <MESSAGE value="Оформил раздел #3" />
     <MESSAGE value="Подкрутил Atomic.Elements Manual!" />
@@ -606,7 +598,9 @@
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Minor!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor!" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Минор фиксы!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Минор фиксы!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
