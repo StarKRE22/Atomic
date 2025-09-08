@@ -14,7 +14,6 @@
 
 #### `BaseVariable()`
 ```csharp
-// Default constructor
 public BaseVariable()
 ```
 - **Description:** Initializes a new instance with the default value of `T`.
@@ -24,7 +23,7 @@ public BaseVariable()
 public BaseVariable(T value)
 ```
 - **Description:** Initializes a new instance with a specified constant value `value`.
-- **Parameter:** - `value` – The constant value to initialize the instance with.
+- **Parameter:** `value` – The initial value to initialize the instance with.
 
 ---
 

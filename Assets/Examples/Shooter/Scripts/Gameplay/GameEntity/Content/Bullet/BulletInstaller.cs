@@ -29,8 +29,8 @@ namespace ShooterGame.Gameplay
             GameContext gameContext = GameContext.Instance;
             
             //Transform:
-            entity.AddPosition(new TransformPositionVariable(_transform));
-            entity.AddRotation(new TransformRotationVariable(_transform));
+            entity.AddPosition(new ReactiveTransformPosition(_transform));
+            entity.AddRotation(new ReactiveTransformRotation(_transform));
 
             //Lifetime
             entity.AddLifetime(_lifetime);

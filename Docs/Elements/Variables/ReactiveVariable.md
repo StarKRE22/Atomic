@@ -1,17 +1,7 @@
-# 🧩 ReactiveVariable<T>
+# 🧩 ReactiveVariable&lt;T&gt;
 
-`ReactiveVariable<T>` is a **serialized reactive variable** that raises events whenever its value changes.  
-It implements `IReactiveVariable<T>` and `IDisposable`, allowing **reactive programming patterns** in Unity or pure C# environments.
+`ReactiveVariable<T>` is a **serialized reactive variable** that raises events whenever its value changes. It implements [IReactiveVariable&lt;T&gt;](IReactiveVariable.md) and `IDisposable`, providing **read-write** access with **change notifications**.
 
-> **Note:** For common types like `float`, `int`, `bool`, `Vector2`, `Vector3`, or `Quaternion`, there are **specialized reactive variants**:
-> - `ReactiveFloat`, `ReactiveInt`, `ReactiveBool`
-> - `ReactiveVector2`, `ReactiveVector3`
-> - `ReactiveQuaternion`
-  > These variants **do not require an `EqualityComparer`** and allow slightly faster `Value` assignment.
->
-> Additionally, for projects using **Unity.Mathematics**, there are optimized reactive types:
-> - `float3Reactive`
-> - `quaternionReactive`
 ---
 
 ## Type Parameter
@@ -20,97 +10,144 @@ It implements `IReactiveVariable<T>` and `IDisposable`, allowing **reactive prog
 
 ---
 
+## Constructors
+
+#### `ReactiveVariable()`
+```csharp
+public ReactiveVariable()
+```
+- **Description:** Initializes a new instance with the default value of `T`.
+
+#### `ReactiveVariable(T value)`
+```csharp
+public ReactiveVariable(T value)
+```
+- **Description:** Initializes a new instance with a specified constant value `value`.
+- **Parameter:** `value` – The initial value to initialize the instance with.
+
+---
+
 ## Events
 
+#### `OnValueChanged`
 ```csharp
-event Action<T> OnValueChanged;
+event Action<T> OnValueChanged
 ```
-- Description: Triggered whenever the Value changes.
-- Notes: Can be subscribed to via Subscribe for automatic unsubscription support.
+- **Description:** Triggered whenever the value changes.
+- **Parameter**: `T` – The new value after the change.
+- **Note:** Allows subscribers to react to value changes in a reactive programming pattern.
+
+---
 
 ## Properties
+
+#### `Value`
 ```csharp
-- T Value { get; set; }
+new T Value { get; set; }
 ```
-- Description: Gets or sets the current value.
-- Behavior:
-  - When a new value differs from the previous one, OnValueChanged is triggered.
-  - Read-write access.
+- **Description:** Gets or sets the current value.
+- **Access:** Read-write
+- **Notes:**
+  - Implements [IVariable<T>.Value](IVariable.md#value) for read-write access.
+  - Implements [IReactiveValue<T>.Value](../Values/IReactiveValue.md#value) for reactive observation.
+
+---
 
 ## Methods
+
+#### `Invoke()`
 ```csharp
 T Invoke()
 ```
-- Returns the current value. Useful for functional-style invocation or delegate pointers.
+- **Description:** Invokes the variable and returns its current value.
+- **Returns:** The current value of type `T`.
+- **Note:** Default implementation comes from [IFunction<R>.Invoke()](../Functions/IFunction.md#invoke).
 
+#### `Invoke(T arg)`
 ```csharp
-Subscription<T> Subscribe(Action<T> listener)
+void Invoke(T arg)
 ```
-- Subscribes a listener to value changes. Returns a Subscription<T> for easy unsubscription.
-```csharp
-void Unsubscribe(Action<T> listener)
-```
-- Removes a previously subscribed listener.
+- **Description:** Sets the value of the variable to the provided argument.
+- **Parameter:** `arg` – The new value to assign to the variable.
+- **Notes:**
+  - Acts as a setter method, complementing the `Value` property.
+  - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
 
+#### `Subscribe(Action)`
+```csharp
+Subscription<T> Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribetactiont)
+
+#### `Unsubscribe(Action)`
+```csharp
+void `Unsubscribe(Action action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribetactiont)
+
+#### `Dispose`
 ```csharp
 void Dispose()
 ```
-- Clears all listeners and releases resources.
+- **Description:** Clears all listeners and releases resources.
+
+#### `ToString()`
+```csharp
+public override string ToString();
+```
+- **Description:** Returns a string that represents the wrapped constant value.
+- **Returns:** A string representation of the constant value.
+
+--- 
+
+## Operators
+
+#### `implicit operator ReactiveVariable<T>(T value)`
+```csharp
+public static implicit operator ReactiveVariable<T>(T value);
+```
+- **Description:** Implicitly converts a value of type `T` to a `ReactiveVariable<T>`.
+- **Parameter:** `value` – The value to wrap in a `ReactiveVariable<T>`.
+- **Returns:** A new `ReactiveVariable<T>` containing the specified value.
+
+---
+
+## 🗂 Example of Usage
 
 ```csharp
-public override string ToString()
+// Initialize with a starting value
+var score = new ReactiveVariable<int>(10);
+
+// Subscribe to changes
+score.Subscribe(newValue => Console.WriteLine("Score updated: " + newValue));
+
+// Change the value
+score.Value = 20; // Triggers subscription callback
+
+ // Dispose to clear subscriptions
+score.Dispose();
 ```
-- Returns a string representation of the current value.
 
-## Constructors
-```csharp
-// Default constructor
-public ReactiveVariable()
+## 🧩 Specialized Reactive Variables
+There are **specialized reactive variants** that **do not require an `EqualityComparer`** and allow slightly faster `Value` assignments.
 
-// Constructor with initial value
-public ReactiveVariable(T value)
-```
-- Description:
-  - ReactiveVariable() initializes with default(T).
-  - ReactiveVariable(T value) initializes with the specified value.
+- **Common types**
+  - `ReactiveFloat`
+  - `ReactiveInt`
+  - `ReactiveBool`
 
-## Implicit Conversion
-```csharp
-public static implicit operator ReactiveVariable<T>(T value)
-```
-- Allows assigning a plain value to a ReactiveVariable<T> directly.
 
-## Example Usage
-```csharp
-using UnityEngine;
-using Atomic.Elements;
+- **Unity types**
+  - `ReactiveVector2`
+  - `ReactiveVector3`
+  - `ReactiveQuaternion`
 
-public class Example : MonoBehaviour
-{
-    private ReactiveVariable<int> _score;
 
-    void Start()
-    {
-        // Initialize with a starting value
-        _score = new ReactiveVariable<int>(10);
-
-        // Subscribe to changes
-        _score.Subscribe(newScore =>
-        {
-            Debug.Log("Score updated: " + newScore);
-        });
-
-        // Change the value
-        _score.Value = 20; // Triggers subscription callback
-
-        // Functional-style invocation
-        Debug.Log("Current Score: " + _score.Invoke());
-    }
-
-    void OnDestroy()
-    {
-        // Dispose to clear subscriptions
-        _score.Dispose();
-    }
-}
-```
+- **Unity Mathematics**
+  - `float3Reactive`
+  - `quaternionReactive`

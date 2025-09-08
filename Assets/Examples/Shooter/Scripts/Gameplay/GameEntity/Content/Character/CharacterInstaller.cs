@@ -36,8 +36,8 @@ namespace ShooterGame.Gameplay
         public override void Install(IGameEntity entity)
         {
             //Transform:
-            entity.AddPosition(new TransformPositionVariable(_transform));
-            entity.AddRotation(new TransformRotationVariable(_transform));
+            entity.AddPosition(new ReactiveTransformPosition(_transform));
+            entity.AddRotation(new ReactiveTransformRotation(_transform));
 
             //Team:
             entity.AddTeamType(_teamType);
