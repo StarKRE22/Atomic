@@ -13,7 +13,7 @@ namespace Atomic.Elements
             var a2 = new ActionStub();
             var a1 = new ActionStub();
 
-            var sceneAction = new GameObject().AddComponent<SceneAction>();
+            var sceneAction = new GameObject().AddComponent<SceneActionDefault>();
             sceneAction.Construct(null, a2, null, a1);
 
             //Act:
@@ -28,7 +28,7 @@ namespace Atomic.Elements
         public void InvokeWhenActionsNull()
         {
             //Arrange:
-            var sceneAction = new GameObject().AddComponent<SceneAction>();
+            var sceneAction = new GameObject().AddComponent<SceneActionDefault>();
             sceneAction.Construct(null);
 
             //Act:

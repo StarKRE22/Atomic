@@ -13,7 +13,7 @@ namespace Atomic.Elements
             var a1 = new ActionStub();
 
             GameObject gameObject = new GameObject();
-            var sceneAction = gameObject.AddComponent<SceneAction>();
+            var sceneAction = gameObject.AddComponent<SceneActionDefault>();
             sceneAction.Construct(null, a2, null, a1);
             var sceneActionReference = new SceneActionProxy(sceneAction);
             

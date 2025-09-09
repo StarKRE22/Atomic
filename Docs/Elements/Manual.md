@@ -55,12 +55,14 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ProxyVariable](Variables/ProxyVariable.md)  <!-- + -->
   - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)  <!-- + -->
   - [Extensions](Variables/Extensions.md) <!-- + -->
-- **Actions & Functions**
+- **Actions**
   - [IAction](Actions/IAction.md) <!-- + -->
   - [InlineAction](Actions/InlineAction.md)  <!-- + -->
-  - [CompositeAction](Actions/CompositeAction.md)
+  - [CompositeAction](Actions/CompositeAction.md) <!-- + -->
+  - [PrintAction](Actions/PrintAction.md) <!-- + -->
   - [UnitySpecificActions](Actions/UnitySpecificActions.md)
   - [Extensions](Actions/Extensions.md)
+- **Functions**
   - [IFunction](Functions/IFunction.md)
   - [InlineFunction](Functions/InlineFunction.md)
   - [IPredicate](Functions/IPredicate.md)

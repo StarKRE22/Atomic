@@ -1,48 +1,249 @@
-# 🧩 CompositeAction
+# 🧩 CompositeAction Classes
 
-`CompositeAction` represents a **group of actions** that implement the `IAction` interface.  
-When invoked, it executes all contained actions **sequentially** in the order they were added.
+The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md) interfaces.  
 
----
+They follow the [Composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction` both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
 
-## Features
-
-- Groups multiple `IAction` instances into a single composite.
-- Invokes all actions in the sequence when `Invoke()` is called.
-- Useful for triggering multiple behaviors with a single event.
-- Supports up to **four generic parameters** (`CompositeAction<T1, T2, T3, T4>`).
+This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is especially important when game objects and scripts need to execute complex action scenarios.
 
 ---
 
-## Constructors
+## 🧩 CompositeAction
+```csharp
+public class CompositeAction : IAction
+```
+- **Description:** Represents a group of **parameterless actions** that are executed sequentially.
 
+### Constructors
+#### `CompositeAction(params IAction[])`
 ```csharp
 public CompositeAction(params IAction[] actions)
+```
+- **Description:** Initializes a new instance with the specified array of actions.
+- **Parameter:** `actions` – One or more actions to include in the group.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+#### `CompositeAction(IEnumerable<IAction>)`
+```csharp
 public CompositeAction(IEnumerable<IAction> actions)
 ```
-- CompositeAction(params IAction[] actions) – initializes with a variable number of actions.
-- CompositeAction(IEnumerable<IAction> actions) – initializes with a collection of actions.
+- **Description:** Initializes a new instance with the specified collection of actions.
+- **Parameter:** `actions` – A collection of actions to include in the group.
+- **Throws:** `ArgumentNullException` if `actions` is null.
 
-## Methods
+### Methods
+
+#### `Invoke()`
 ```csharp
 public void Invoke()
 ```
-- Description: Executes all contained actions in order.
-- Returns: Nothing.
+- **Description:** Invokes all actions in the group sequentially.
 
-## Example Usage
+### 🗂 Example of Usage
 ```csharp
-var action1 = new InlineAction(() => Console.WriteLine("Action 1"));
-var action2 = new InlineAction(() => Console.WriteLine("Action 2"));
-var action3 = new InlineAction(() => Console.WriteLine("Action 3"));
+var composite = new CompositeAction(
+    new InlineAction(() => Console.WriteLine("Action 1")),
+    new InlineAction(() => Console.WriteLine("Action 2"))
+);
 
-// Create a composite action
-var composite = new CompositeAction(action1, action2, action3);
-
-// Invoke all actions at once
 composite.Invoke();
 // Output:
 // Action 1
 // Action 2
-// Action 3
 ```
+
+---
+
+## 🧩 CompositeAction&lt;T&gt;
+```csharp
+public class CompositeAction<T> : IAction<T>
+```
+- **Description:** Represents a group of actions with one parameter executed sequentially.
+- **Type parameter:** `T` — the input parameter.
+
+### Constructors
+#### `CompositeAction(params IAction<T>[])`
+```csharp
+public CompositeAction(params IAction<T>[] actions)
+```
+- **Description:** Initializes a new instance with the specified array of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+#### `CompositeAction(IEnumerable<Action<T>)`
+
+```csharp
+public CompositeAction(IEnumerable<IAction<T>> actions)
+```
+- **Description:** Initializes a new instance with the specified collection of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+### Methods
+```csharp
+public void Invoke(T arg)
+```
+- **Description:** Invokes all actions sequentially with the given argument.
+- **Parameter:** `arg` – The input argument.
+
+### 🗂 Example of Usage
+```csharp
+var composite = new CompositeAction<string>(
+    new InlineAction<string>(msg => Console.WriteLine("Hello " + msg)),
+    new InlineAction<string>(msg => Console.WriteLine("Bye " + msg))
+);
+
+composite.Invoke("World");
+
+// Output:
+// Hello World
+// Bye World
+```
+
+---
+
+## 🧩 CompositeAction<T1, T2>
+```csharp
+public class CompositeAction<T1, T2> : IAction<T1, T2>
+```
+- **Description:** Represents a group of actions with two parameters executed sequentially.
+- **Type parameters:**
+    - `T1` — the first argument
+    - `T2` — the second argument
+
+### Constructors
+
+#### `CompositeAction(params IAction<T1, T2>[])`
+
+```csharp
+public CompositeAction(params IAction<T1, T2>[] actions)
+```
+- **Description:** Initializes a new instance with the specified array of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+#### `CompositeAction(IEnumerable<Action<T1, T2>)`
+
+```csharp
+public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
+```
+- **Description:** Initializes a new instance with the specified collection of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+### Methods
+```csharp
+public void Invoke(T1 arg1, T2 arg2)
+```
+- **Description:** Invokes all actions sequentially with the given arguments.
+
+### 🗂 Example of Usage
+```csharp
+var composite = new CompositeAction<int, int>(
+    new InlineAction<int, int>((a, b) => Console.WriteLine(a + b)),
+    new InlineAction<int, int>((a, b) => Console.WriteLine(a * b))
+);
+
+composite.Invoke(3, 4);
+// Output:
+// 7
+// 12
+```
+
+---
+
+## 🧩 CompositeAction<T1, T2, T3>
+```csharp
+public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
+```
+- **Description:** Represents a group of actions with three parameters executed sequentially.
+- **Type parameters:**
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
+
+### Constructors
+
+#### `CompositeAction(params IAction<T1, T2, T3>[])`
+
+```csharp
+public CompositeAction(params IAction<T1, T2, T3>[] actions)
+```
+- **Description:** Initializes a new instance with the specified array of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+#### `CompositeAction(IEnumerable<Action<T1, T2>)`
+
+```csharp
+public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
+```
+- **Description:** Initializes a new instance with the specified collection of actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+### Methods
+```csharp
+public void Invoke(T1 arg1, T2 arg2, T3 arg3)
+```
+- **Description:** Invokes all actions sequentially with the given arguments.
+
+### 🗂 Example of Usage
+```csharp
+var composite = new CompositeAction<int, int, int>(
+    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a + b + c)),
+    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a * b * c))
+);
+
+composite.Invoke(3, 4, 2);
+// Output:
+// 14
+// 24
+```
+
+---
+
+## 🧩 CompositeAction<T1, T2, T3, T4>
+```csharp
+public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
+```
+- **Description:** Represents a group of actions with four parameters executed sequentially.
+- **Type parameters:**
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
+    - `T4` — the fourth argument
+
+### Constructors
+
+#### `CompositeAction(params IAction<T1, T2, T3, T4>[])`
+```csharp
+public CompositeAction(params IAction<T1, T2, T3, T4>[] actions)
+```
+- **Description:** Initializes a new instance with the specified actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+
+#### `CompositeAction(IEnumerable<T1, T2, T3, T4>)`
+```csharp
+public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
+```
+- **Description:** Initializes a new instance with the specified actions.
+- **Parameter:** `actions` – The actions to include.
+- **Throws:** `ArgumentNullException` if `actions` is null.
+
+### Methods
+```csharp
+public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+```
+- **Description:** Invokes all actions sequentially with the given arguments.
+
+---
+
+## 📝 Notes
+
+- Groups multiple [IAction](IAction.md) instances into a single composite.
+- Invokes all actions in the sequence when `Invoke()` is called.
+- Useful for triggering multiple behaviors with a single event.
+- Supports up to **four generic parameters** (`CompositeAction<T1, T2, T3, T4>`).
