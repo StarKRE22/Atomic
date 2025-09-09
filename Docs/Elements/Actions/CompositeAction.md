@@ -276,18 +276,14 @@ It allows designers to visually chain multiple actions in the inspector without 
 using UnityEngine;
 using Atomic.Elements;
 
-public class PlayerTriggerEvent : MonoBehaviour
+public sealed class PlayerTriggerEvent : MonoBehaviour
 {
-    [SerializeReference]
-    private CompositeAction _eventActions;
+    [SerializeReference] private IAction _action;
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
-        {
-            // Invoke all actions configured in the inspector
-            _eventActions.Invoke();
-        }
+            _action.Invoke();
     }
 }
 ```
