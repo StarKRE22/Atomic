@@ -292,7 +292,7 @@ public class PlayerTriggerEvent : MonoBehaviour
 }
 ```
 
-<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="818" height="448">
+<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="409" height="224">
 
 > [!NOTE]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
