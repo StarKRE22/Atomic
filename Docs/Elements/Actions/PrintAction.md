@@ -56,11 +56,32 @@ printAction.Invoke(); // Logs message to standard console
 
 ---
 
-## Using Odin Inspector
-
-
-## 📝 Notes
+## 🎛️ Using `Odin Inspector` and `[SerializeReference]`
 
 In Unity, **PrintAction** is perfect for **visualizing the occurrence of an action**—for example, when temporarily replacing a real action or using it inside a composite.
 
 It can also be easily serialized using `[SerializeReference]` in a `MonoBehaviour` and configured in the inspector, making it convenient for debugging or testing action pipelines.
+
+
+### 🗂 Example of Usage
+
+```csharp
+using UnityEngine;
+using Atomic.Elements;
+
+public sealed class PlayerTriggerEvent : MonoBehaviour
+{
+    [SerializeReference] private IAction _action;
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+            _action.Invoke();
+    }
+}
+```
+
+<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="409" height="224">
+
+> [!NOTE]
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
