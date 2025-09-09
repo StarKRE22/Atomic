@@ -1,9 +1,7 @@
 # 🧩 SceneActionAbstract Classes
 
-The **SceneActionAbstract** classes define **scene-based actions** in Unity that implement the corresponding [IAction](IAction.md) interfaces.  
-
+The **SceneActionAbstract** classes define **scene-based actions** in Unity that implement the corresponding [IAction](IAction.md) interfaces.
 These abstract classes inherit from `MonoBehaviour`, allowing actions to be attached to GameObjects in a scene.
-
 They serve as a base for **custom scene logic** and are designed to be subclassed to implement specific behavior.
 
 > [!NOTE]
