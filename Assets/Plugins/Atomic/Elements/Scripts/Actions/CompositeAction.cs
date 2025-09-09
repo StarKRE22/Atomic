@@ -111,7 +111,7 @@ namespace Atomic.Elements
         /// <param name="arg1">The argument passed to each action.</param>
         public void Invoke(T arg)
         {
-            for (int i = 0, count = actions.Length; i < count; i++)
+            for (int i = 0, count = this.actions.Length; i < count; i++)
                 this.actions[i].Invoke(arg);
         }
     }

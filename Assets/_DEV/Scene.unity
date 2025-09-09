@@ -337,13 +337,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb466202bccc9428381f305d32ffcab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventActions:
-    rid: -2
+  actions: []
   references:
     version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    RefIds: []
 --- !u!4 &2083626922
 Transform:
   m_ObjectHideFlags: 0

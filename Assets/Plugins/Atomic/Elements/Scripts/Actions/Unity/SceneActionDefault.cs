@@ -20,37 +20,135 @@ namespace Atomic.Elements
     /// You can configure the action list in the Inspector or via <see cref="Construct"/>.
     /// </remarks>
     [AddComponentMenu("Atomic/Elements/Scene Action")]
-    public class SceneActionDefault : SceneAction
+    public class SceneActionDefault : SceneActionAbstract
     {
         /// <summary>
         /// Actions to run when this component is invoked.
         /// They are executed in the order they appear in the array.
         /// </summary>
         [SerializeReference]
-        private IAction[] actions;
+        public IAction[] actions;
 
         /// <summary>
-        /// Programmatically assigns the internal action list.
+        /// Executes every action in <see cref="actions"/> sequentially.
         /// </summary>
-        /// <param name="actions">Actions to be stored and executed.</param>
-        /// <returns>This instance, enabling fluent chaining.</returns>
-        public void Construct(params IAction[] actions) => this.actions = actions;
-
 #if ODIN_INSPECTOR
         [HideInEditorMode]
         [GUIColor(0, 1, 0)]
         [Button]
 #endif
-        /// <summary>
-        /// Executes every action in <see cref="actions"/> sequentially.
-        /// </summary>
         public override void Invoke()
         {
-            if (this.actions == null)
-                return;
+            if (this.actions != null)
+                for (int i = 0, count = this.actions.Length; i < count; i++)
+                    this.actions[i]?.Invoke();
+        }
+    }
 
-            for (int i = 0, count = this.actions.Length; i < count; i++) 
-                this.actions[i]?.Invoke();
+    /// <summary>
+    /// Scene-based action with one parameter.
+    /// Executes a sequence of <see cref="IAction{T1}"/> instances.
+    /// </summary>
+    /// <typeparam name="T">Type of the input parameter.</typeparam>
+    public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
+    {
+        /// <summary>
+        /// Actions to invoke sequentially. Can be assigned in the Inspector via [SerializeReference].
+        /// </summary>
+        [SerializeReference]
+        public IAction<T>[] actions;
+
+        /// <summary>
+        /// Invokes all actions sequentially with the given argument.
+        /// Null actions are safely skipped.
+        /// </summary>
+        /// <param name="arg1">The input argument.</param>
+        public override void Invoke(T arg1)
+        {
+            if (this.actions != null)
+                for (int i = 0, count = this.actions.Length; i < count; i++)
+                    this.actions[i]?.Invoke(arg1);
+        }
+    }
+
+    /// <summary>
+    /// Scene-based action with two parameters.
+    /// Executes a sequence of <see cref="IAction{T1, T2}"/> instances.
+    /// </summary>
+    /// <typeparam name="T1">Type of the first argument.</typeparam>
+    /// <typeparam name="T2">Type of the second argument.</typeparam>
+    public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
+    {
+        [SerializeReference]
+        public IAction<T1, T2>[] actions;
+
+        /// <summary>
+        /// Invokes all actions sequentially with the given arguments.
+        /// Null actions are safely skipped.
+        /// </summary>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        public override void Invoke(T1 arg1, T2 arg2)
+        {
+            if (this.actions != null)
+                for (int i = 0, count = this.actions.Length; i < count; i++)
+                    this.actions[i]?.Invoke(arg1, arg2);
+        }
+    }
+
+    /// <summary>
+    /// Scene-based action with three parameters.
+    /// Executes a sequence of <see cref="IAction{T1, T2, T3}"/> instances.
+    /// </summary>
+    /// <typeparam name="T1">Type of the first argument.</typeparam>
+    /// <typeparam name="T2">Type of the second argument.</typeparam>
+    /// <typeparam name="T3">Type of the third argument.</typeparam>
+    public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
+    {
+        [SerializeReference]
+        public IAction<T1, T2, T3>[] actions;
+
+        /// <summary>
+        /// Invokes all actions sequentially with the given arguments.
+        /// Null actions are safely skipped.
+        /// </summary>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        public override void Invoke(T1 arg1, T2 arg2, T3 arg3)
+        {
+            if (this.actions != null)
+                for (int i = 0, count = this.actions.Length; i < count; i++)
+                    this.actions[i]?.Invoke(arg1, arg2, arg3);
+        }
+    }
+
+    /// <summary>
+    /// Scene-based action with four parameters.
+    /// Executes a sequence of <see cref="IAction{T1, T2, T3, T4}"/> instances.
+    /// </summary>
+    /// <typeparam name="T1">Type of the first argument.</typeparam>
+    /// <typeparam name="T2">Type of the second argument.</typeparam>
+    /// <typeparam name="T3">Type of the third argument.</typeparam>
+    /// <typeparam name="T4">Type of the fourth argument.</typeparam>
+    public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
+    {
+        [SerializeReference]
+        public IAction<T1, T2, T3, T4>[] actions;
+
+        /// <summary>
+        /// Invokes all actions sequentially with the given arguments.
+        /// Null actions are safely skipped.
+        /// </summary>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            if (this.actions != null)
+                for (int i = 0, count = this.actions.Length; i < count; i++)
+                    this.actions[i]?.Invoke(arg1, arg2, arg3, arg4);
         }
     }
 }

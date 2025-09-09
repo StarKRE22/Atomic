@@ -60,7 +60,10 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [InlineAction](Actions/InlineAction.md)  <!-- + -->
   - [CompositeAction](Actions/CompositeAction.md) <!-- + -->
   - [PrintAction](Actions/PrintAction.md) <!-- + -->
-  - [UnitySpecificActions](Actions/UnitySpecificActions.md)
+  - [SceneActionAbstract](Actions/SceneActionAbstract.md)
+  - [SceneActionDefault](Actions/SceneActionDefault.md)
+  - [SceneActionComposite](Actions/SceneActionComposite.md)
+  - [SceneActionReference](Actions/SceneActionReference.md)
   - [Extensions](Actions/Extensions.md)
 - **Functions**
   - [IFunction](Functions/IFunction.md)
