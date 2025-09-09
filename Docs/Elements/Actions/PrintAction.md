@@ -56,6 +56,9 @@ printAction.Invoke(); // Logs message to standard console
 
 ---
 
+## Using Odin Inspector
+
+
 ## 📝 Notes
 
 In Unity, **PrintAction** is perfect for **visualizing the occurrence of an action**—for example, when temporarily replacing a real action or using it inside a composite.

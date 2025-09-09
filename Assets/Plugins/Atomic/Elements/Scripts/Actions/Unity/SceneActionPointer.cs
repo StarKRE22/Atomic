@@ -17,7 +17,7 @@ namespace Atomic.Elements
     /// often useful in serialized action chains or as part of a logic asset.
     /// </remarks>
     [Serializable]
-    public sealed class SceneActionProxy : IAction
+    public sealed class SceneActionPointer : IAction
     {
         /// <summary>
         /// Reference to the actual <see cref="SceneActionDefault"/> component to be invoked.
@@ -31,15 +31,15 @@ namespace Atomic.Elements
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public SceneActionProxy()
+        public SceneActionPointer()
         {
         }
 
         /// <summary>
-        /// Creates a new <see cref="SceneActionProxy"/> with the specified scene action.
+        /// Creates a new <see cref="SceneActionPointer"/> with the specified scene action.
         /// </summary>
         /// <param name="action">The <see cref="SceneActionDefault"/> to wrap.</param>
-        public SceneActionProxy(SceneActionDefault action) => this.action = action;
+        public SceneActionPointer(SceneActionDefault action) => this.action = action;
 
         /// <summary>
         /// Assigns a <see cref="SceneActionDefault"/> to this pointer.

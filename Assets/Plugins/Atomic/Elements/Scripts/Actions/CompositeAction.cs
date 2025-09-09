@@ -26,6 +26,17 @@ namespace Atomic.Elements
         private IAction[] actions;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="CompositeAction"/>.
+        /// </remarks>
+        public CompositeAction()
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CompositeAction"/> class with the given actions.
         /// </summary>
         /// <param name="actions">One or more actions to include in the group.</param>
@@ -44,16 +55,20 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes all actions in the group sequentially.
         /// </summary>
-        public void Invoke() => this.actions.InvokeRange();
+        public void Invoke()
+        {
+            for (int i = 0, count = actions.Length; i < count; i++)
+                this.actions[i].Invoke();
+        }
     }
 
     /// <summary>
     /// Represents a group of actions with one parameter that implement the <see cref="IAction{T1}"/> interface.
     /// Follows the Composite design pattern and executes all contained actions sequentially with the provided argument.
     /// </summary>
-    /// <typeparam name="T1">The type of the input parameter.</typeparam>
+    /// <typeparam name="T">The type of the input parameter.</typeparam>
     [Serializable]
-    public class CompositeAction<T1> : IAction<T1>
+    public class CompositeAction<T> : IAction<T>
     {
         /// <summary>
         /// Collection of actions that belong to this group.
@@ -61,14 +76,25 @@ namespace Atomic.Elements
 #if UNITY_5_3_OR_NEWER
         [Space, SerializeReference]
 #endif
-        private IAction<T1>[] actions;
+        private IAction<T>[] actions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="CompositeAction"/>.
+        /// </remarks>
+        public CompositeAction()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompositeAction{T1}"/> class with the given actions.
         /// </summary>
         /// <param name="actions">One or more actions to include in the group.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="actions"/> is null.</exception>
-        public CompositeAction(params IAction<T1>[] actions) =>
+        public CompositeAction(params IAction<T>[] actions) =>
             this.actions = actions ?? throw new ArgumentNullException(nameof(actions));
 
         /// <summary>
@@ -76,17 +102,17 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="actions">A collection of actions to include in the group.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="actions"/> is null.</exception>
-        public CompositeAction(IEnumerable<IAction<T1>> actions) =>
+        public CompositeAction(IEnumerable<IAction<T>> actions) =>
             this.actions = actions?.ToArray() ?? throw new ArgumentNullException(nameof(actions));
 
         /// <summary>
         /// Invokes all actions sequentially with the provided argument.
         /// </summary>
         /// <param name="arg1">The argument passed to each action.</param>
-        public void Invoke(T1 arg1)
+        public void Invoke(T arg)
         {
-            foreach (var action in actions)
-                action.Invoke(arg1);
+            for (int i = 0, count = actions.Length; i < count; i++)
+                this.actions[i].Invoke(arg);
         }
     }
 
@@ -103,6 +129,17 @@ namespace Atomic.Elements
         [Space, SerializeReference]
 #endif
         private IAction<T1, T2>[] actions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="CompositeAction"/>.
+        /// </remarks>
+        public CompositeAction()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompositeAction{T1,T2}"/> class with the given actions.
@@ -127,8 +164,8 @@ namespace Atomic.Elements
         /// <param name="arg2">The second argument.</param>
         public void Invoke(T1 arg1, T2 arg2)
         {
-            foreach (var action in actions)
-                action.Invoke(arg1, arg2);
+            for (int i = 0, count = actions.Length; i < count; i++)
+                this.actions[i].Invoke(arg1, arg2);
         }
     }
 
@@ -146,6 +183,17 @@ namespace Atomic.Elements
         [Space, SerializeReference]
 #endif
         private IAction<T1, T2, T3>[] actions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="CompositeAction"/>.
+        /// </remarks>
+        public CompositeAction()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompositeAction{T1,T2,T3}"/> class with the given actions.
@@ -171,8 +219,8 @@ namespace Atomic.Elements
         /// <param name="arg3">The third argument.</param>
         public void Invoke(T1 arg1, T2 arg2, T3 arg3)
         {
-            foreach (var action in actions)
-                action.Invoke(arg1, arg2, arg3);
+            for (int i = 0, count = actions.Length; i < count; i++)
+                this.actions[i].Invoke(arg1, arg2, arg3);
         }
     }
 
@@ -191,6 +239,17 @@ namespace Atomic.Elements
         [Space, SerializeReference]
 #endif
         private IAction<T1, T2, T3, T4>[] actions;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CompositeAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="CompositeAction"/>.
+        /// </remarks>
+        public CompositeAction()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompositeAction{T1,T2,T3,T4}"/> class with the given actions.
@@ -217,8 +276,8 @@ namespace Atomic.Elements
         /// <param name="arg4">The fourth argument.</param>
         public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            foreach (var action in actions)
-                action.Invoke(arg1, arg2, arg3, arg4);
+            for (int i = 0, count = actions.Length; i < count; i++)
+                this.actions[i].Invoke(arg1, arg2, arg3, arg4);
         }
     }
 }

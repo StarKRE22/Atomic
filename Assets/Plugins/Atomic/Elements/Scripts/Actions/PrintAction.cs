@@ -32,6 +32,17 @@ namespace Atomic.Elements
         private string _message;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="PrintAction"/> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+        /// It allows the inspector to create and serialize a default instance of <see cref="PrintAction"/>.
+        /// </remarks>
+        public PrintAction()
+        {
+        }
+        
+        /// <summary>
         /// Creates a new <see cref="ConsoleAction"/> instance.
         /// </summary>
         /// <param name="message">The message to log.</param>

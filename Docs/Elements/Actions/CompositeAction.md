@@ -15,6 +15,12 @@ public class CompositeAction : IAction
 - **Description:** Represents a group of **parameterless actions** that are executed sequentially.
 
 ### Constructors
+
+#### `CompositeAction()`
+- **Description:** Initializes a new instance
+- **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+
+
 #### `CompositeAction(params IAction[])`
 ```csharp
 public CompositeAction(params IAction[] actions)
@@ -62,6 +68,11 @@ public class CompositeAction<T> : IAction<T>
 - **Type parameter:** `T` — the input parameter.
 
 ### Constructors
+
+#### `CompositeAction()`
+- **Description:** Initializes a new instance
+- **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+
 #### `CompositeAction(params IAction<T>[])`
 ```csharp
 public CompositeAction(params IAction<T>[] actions)
@@ -113,6 +124,10 @@ public class CompositeAction<T1, T2> : IAction<T1, T2>
 
 ### Constructors
 
+#### `CompositeAction()`
+- **Description:** Initializes a new instance
+- **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+
 #### `CompositeAction(params IAction<T1, T2>[])`
 
 ```csharp
@@ -163,6 +178,10 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
     - `T3` — the third argument
 
 ### Constructors
+
+#### `CompositeAction()`
+- **Description:** Initializes a new instance
+- **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
 #### `CompositeAction(params IAction<T1, T2, T3>[])`
 
@@ -216,6 +235,10 @@ public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 
 ### Constructors
 
+#### `CompositeAction()`
+- **Description:** Initializes a new instance
+- **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
+
 #### `CompositeAction(params IAction<T1, T2, T3, T4>[])`
 ```csharp
 public CompositeAction(params IAction<T1, T2, T3, T4>[] actions)
@@ -241,9 +264,35 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 
 ---
 
-## 📝 Notes
+## 🎛️ Using with `[SerializeReference]` and `Odin Inspector`
 
-- Groups multiple [IAction](IAction.md) instances into a single composite.
-- Invokes all actions in the sequence when `Invoke()` is called.
-- Useful for triggering multiple behaviors with a single event.
-- Supports up to **four generic parameters** (`CompositeAction<T1, T2, T3, T4>`).
+For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene, `CompositeAction` combined with `[SerializeReference]` is very convenient.
+
+It allows designers to visually chain multiple actions in the inspector without writing extra code. This is especially useful for quickly iterating on game logic or events.
+
+### 🗂 Example of Usage
+
+```csharp
+using UnityEngine;
+using Atomic.Elements;
+
+public class PlayerTriggerEvent : MonoBehaviour
+{
+    [SerializeReference]
+    private CompositeAction _eventActions;
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            // Invoke all actions configured in the inspector
+            _eventActions.Invoke();
+        }
+    }
+}
+```
+
+<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="818" height="448">
+
+> [!NOTE]
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
