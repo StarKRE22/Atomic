@@ -20,7 +20,6 @@ public interface IAction
 ```csharp
 void Invoke();
 ```
-
 - **Description:** Executes the action logic
 
 ### 🗂 Example of Usage
@@ -187,13 +186,13 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ### 🗂 Example of Usage
 
 ```csharp
-public class MoveAction : IAction<Transform, Vector3, float, float>
+public class MoveTransformAction : IAction<Transform, Vector3, float, float>
 {
     public void Invoke(Transform transform, Vector3 direction, float speed, float deltaTime) => 
         transform.position += direction * (speed * deltaTime);
 }
 
 // Usage
-IAction<Transform, Vector3, float, float> action = new MoveAction();
+IAction<Transform, Vector3, float, float> action = new MoveTransformAction();
 action.Invoke(transform, Vector3.forward, 10, 0.02);
 ```
