@@ -15,6 +15,12 @@ namespace Atomic.Elements
         public InlinePredicate(Func<bool> func) : base(func)
         {
         }
+        
+        /// <summary>
+        /// Implicit conversion from a <see cref="Func{bool}"/> to <see cref="InlinePredicate"/>.
+        /// </summary>
+        /// <param name="value">The function delegate.</param>
+        public static implicit operator InlinePredicate(Func<bool> value) => new(value);
     }
 
     /// <summary>
@@ -31,6 +37,12 @@ namespace Atomic.Elements
         public InlinePredicate(Func<T, bool> func) : base(func)
         {
         }
+        
+        /// <summary>
+        /// Implicit conversion from a <see cref="Func{T, bool}"/> to <see cref="InlinePredicate{T}"/>.
+        /// </summary>
+        /// <param name="value">The function delegate.</param>
+        public static implicit operator InlinePredicate<T>(Func<T, bool> value) => new(value);
     }
 
     /// <summary>
@@ -48,5 +60,11 @@ namespace Atomic.Elements
         public InlinePredicate(Func<T1, T2, bool> func) : base(func)
         {
         }
+        
+        /// <summary>
+        /// Implicit conversion from a <see cref="Func{T1, T2, bool}"/> to <see cref="InlinePredicate{T1, T2}"/>.
+        /// </summary>
+        /// <param name="value">The function delegate.</param>
+        public static implicit operator InlinePredicate<T1, T2>(Func<T1, T2, bool> value) => new(value);
     }
 }

@@ -2,6 +2,7 @@
 
 The **InlineAction** classes provide wrappers around standard `System.Action` delegates. 
 They implement the corresponding [IAction](IAction.md) interfaces and allow invoking actions directly, optionally with parameters. 
+
 They also support implicit conversion from the underlying `Action` delegates and, if using Odin Inspector, inline display and buttons.
 
 ---
@@ -338,5 +339,3 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
     }
 }
 ```
-
----

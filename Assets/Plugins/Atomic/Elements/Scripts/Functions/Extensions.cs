@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.CompilerServices;
 
 namespace Atomic.Elements
@@ -9,31 +8,33 @@ namespace Atomic.Elements
     public static partial class Extensions
     {
         /// <summary>
-        /// Wraps a <see cref="Func{R}"/> into a <see cref="InlineFunction{T}"/>.
-        /// </summary>
-        /// <typeparam name="R">The return type of the function.</typeparam>
-        /// <param name="func">The function to wrap.</param>
-        /// <returns>A <see cref="InlineFunction{T}"/> that wraps the provided delegate.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static InlineFunction<R> AsFunction<R>(this Func<R> func) => new(func);
-
-        /// <summary>
-        /// Wraps a function with one parameter and a context object into a <see cref="InlineFunction{T}"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the context object.</typeparam>
-        /// <typeparam name="R">The return type of the function.</typeparam>
-        /// <param name="it">The context object to pass to the function.</param>
-        /// <param name="func">The function that accepts the context object.</param>
-        /// <returns>A <see cref="InlineFunction{T}"/> that wraps the contextual invocation.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static InlineFunction<R> AsFunction<T, R>(this T it, Func<T, R> func) => new(() => func.Invoke(it));
-
-        /// <summary>
-        /// Creates a new function that returns the negation of the current <see cref="IFunction{T}"/> boolean value.
+        /// Creates a new function that returns the negation of the current <see cref="IFunction{bool}"/> value.
         /// </summary>
         /// <param name="it">The reactive boolean value to negate.</param>
-        /// <returns>A <see cref="InlineFunction{T}"/> that returns the inverse of the current value.</returns>
+        /// <returns>A <see cref="InlineFunction{bool}"/> that returns the inverse of the current value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static InlineFunction<bool> Invert(this IFunction<bool> it) => new(() => !it.Invoke());
+        public static InlineFunction<bool> Invert(this IFunction<bool> it) => new(() => 
+            !it.Invoke());
+
+        /// <summary>
+        /// Creates a new function that returns the negation of the current <see cref="IFunction{T, bool}"/> value.
+        /// </summary>
+        /// <typeparam name="T">The input type of the function.</typeparam>
+        /// <param name="it">The reactive boolean function to negate.</param>
+        /// <returns>An <see cref="InlineFunction{T, bool}"/> that returns the inverse of the current value.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it) => 
+            new(arg => !it.Invoke(arg));
+
+        /// <summary>
+        /// Creates a new function that returns the negation of the current <see cref="IFunction{T1, T2, bool}"/> value.
+        /// </summary>
+        /// <typeparam name="T1">The first input type of the function.</typeparam>
+        /// <typeparam name="T2">The second input type of the function.</typeparam>
+        /// <param name="it">The reactive boolean function to negate.</param>
+        /// <returns>An <see cref="InlineFunction{T1, T2, bool}"/> that returns the inverse of the current value.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2, bool> it) =>
+            new((arg1, arg2) => !it.Invoke(arg1, arg2));
     }
 }

@@ -43,6 +43,8 @@ namespace Atomic.Elements
         /// Invokes the function and returns its result.
         /// </summary>
         public T Invoke() => this.func.Invoke();
+        
+        public override string ToString() => this.func.Method.Name;
     }
 
     /// <summary>
@@ -79,6 +81,8 @@ namespace Atomic.Elements
         /// <param name="args">The argument passed to the function.</param>
         /// <returns>The result of the function call.</returns>
         public R Invoke(T args) => this.func.Invoke(args);
+        
+        public override string ToString() => this.func.Method.Name;
     }
 
     /// <summary>
@@ -117,5 +121,7 @@ namespace Atomic.Elements
         /// <param name="arg2">The second input parameter.</param>
         /// <returns>The result of the function call.</returns>
         public R Invoke(T1 arg1, T2 arg2) => this.func.Invoke(arg1, arg2);
+        
+        public override string ToString() => this.func.Method.Name;
     }
 }

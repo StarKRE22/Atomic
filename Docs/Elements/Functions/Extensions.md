@@ -1,70 +1,68 @@
-# 🧩 Extensions for Function Wrappers
+# 🧩 Function Extensions
 
-The **Extensions** class provides utility methods for converting **delegates** and **reactive values** into function wrappers (`InlineFunction<T>`).  
-These methods simplify function composition, contextual invocation, and boolean inversion.
+The **FunctionExtensions** class provides utility methods for composing and transforming [IFunction](IFunction.md) instances.  
+One of the most useful helpers is `Invert`, which creates a new function that represents the **logical negation** of an existing boolean-returning function.
 
 ---
 
-## AsFunction (parameterless)
-
-Wraps a `Func<R>` into an `InlineFunction<R>`.
-
-```csharp
-public static InlineFunction<R> AsFunction<R>(this Func<R> func)
-```
-### Type Parameters
-- **R** – The return type of the function.
-### Parameters
-- **func** – The delegate to wrap.
-### Returns
-- An `InlineFunction<R>` that wraps the provided delegate.
-### Example
-```csharp
-Func<int> getNumber = () => 42;
-InlineFunction<int> funcWrapper = getNumber.AsFunction();
-Console.WriteLine(funcWrapper.Invoke()); // Output: 42
-```
----
-## AsFunction (with context)
-Wraps a function with one parameter and a context object into an `InlineFunction<R>`.
-```csharp
-public static InlineFunction<R> AsFunction<T, R>(this T it, Func<T, R> func)
-```
-### Type Parameters
-- **T** – The type of the context object.
-- **R** – The return type of the function.
-### Parameters
-- **it** – The context object to pass to the function.
-- **func** – The function that accepts the context object.
-### Returns
-- An `InlineFunction<R>` that wraps the contextual invocation.
-### Example
-```csharp
-class Player { public int Score = 100; }
-
-Player player = new Player();
-InlineFunction<int> getScoreFunc = player.AsFunction(p => p.Score);
-
-Console.WriteLine(getScoreFunc.Invoke()); // Output: 100
-```
----
-## Invert
-Creates a new function that returns the negation of the current `IFunction<bool>` value.
+### `Invert(IFunction<bool>)`
 ```csharp
 public static InlineFunction<bool> Invert(this IFunction<bool> it)
-```
-### Parameters
-- **it** – The reactive boolean value to negate.
-### Returns
-- An `InlineFunction<bool>` that returns the inverse of the current value.
-### Example
-```csharp
-InlineFunction<bool> isActive = new InlineFunction<bool>(() => true);
-InlineFunction<bool> isInactive = isActive.Invert();
+`````
+- **Description:** Creates a new function that returns the **negation** of the current boolean value.
+- **Parameter:** `it` – The reactive boolean function to negate.
+- **Returns:** A new `InlineFunction<bool>` that returns the opposite of the original function’s result.
+- **Example of Usage:**
+  ```csharp
+  IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
+  IFunction<bool> isDead = isAlive.Invert();
 
-Console.WriteLine(isInactive.Invoke()); // Output: False
-```
-## Notes
-- **Composable** – These extensions allow chaining and functional composition.
-- **Contextual Invocation** – `AsFunction<T, R>` enables wrapping functions that depend on a specific object instance.
-- **Boolean Utilities** – Invert simplifies negation for reactive boolean functions.
+  bool dead = isDead.Invoke(); // true if health <= 0
+  ````
+
+---
+
+### `Invert<T>(IFunction<T, bool>)`
+```csharp
+public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it)
+````
+- **Description:** Creates a new function that returns the **negation** of a boolean predicate with one input argument.
+- **Type Parameter:** `T` – The input parameter type.
+- **Parameter:** `it` – The predicate function to negate.
+- **Returns:** A new `InlineFunction<T, bool>` that returns the opposite of the original function’s result.
+- **Example of Usage:**
+  ```csharp
+  IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
+  IFunction<Character, bool> isAlly = isEnemy.Invert();
+
+  bool ally = isAlly.Invoke(otherCharacter); // true if same team
+  ````
+
+---
+
+### `Invert<T1, T2>(IFunction<T1, T2, bool>)`
+```csharp
+public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2, bool> it)
+````
+- **Description:** Creates a new function that returns the **negation** of a boolean predicate with two input arguments.
+- **Type Parameters:**
+    - `T1` – The first input parameter type.
+    - `T2` – The second input parameter type.
+- **Parameter:** `it` – The predicate function to negate.
+- **Returns:** A new `InlineFunction<T1, T2, bool>` that returns the opposite of the original function’s result.
+- **Example of Usage:**
+  ```csharp
+  IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>((a, b) => a.Team != b.Team);
+  IFunction<Character, Character, bool> isAllyPair = isEnemyPair.Invert();
+
+  bool allies = isAllyPair.Invoke(player, teammate); // true if same team
+  ````
+---
+
+## 📝 Notes
+- **Null Safety** – `Invert` assumes that the input function is non-null. Passing `null` will result in an exception.
+- **Performance** – Each `Invert` call creates a small wrapper around the original function. With `[MethodImpl(MethodImplOptions.AggressiveInlining)]`, the overhead is negligible.
+- **Use Cases:**
+    - Simplifying boolean logic by reusing existing functions.
+    - Quickly flipping conditions without writing additional lambdas.
+    - Maintaining cleaner and more readable predicate composition in reactive systems.  

@@ -66,10 +66,10 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [Extensions](Actions/Extensions.md) <!-- + -->
 - **Functions**
   - [IFunction](Functions/IFunction.md) <!-- + -->
-  - [InlineFunction](Functions/InlineFunction.md)
-  - [IPredicate](Functions/IPredicate.md)  !-- + -->
-  - [InlinePredicate](Functions/InlinePredicate.md)
-  - [Extensions](Functions/Extensions.md)
+  - [InlineFunction](Functions/InlineFunction.md)  <!-- + -->
+  - [IPredicate](Functions/IPredicate.md)  <!-- + -->
+  - [InlinePredicate](Functions/InlinePredicate.md)  <!-- + -->
+  - [Extensions](Functions/Extensions.md) <!-- + -->
 - **Setters**
   - [ISetter](Setters/ISetter.md)
   - [InlineSetter](Setters/InlineSetter.md)
