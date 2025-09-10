@@ -1,8 +1,8 @@
 # 🧩 SceneActionReference Classes
 
-The `SceneActionReference` classes are **pointer wrappers** for [SceneActionAbstract](SceneActionAbstract.md) components. They are primarily used when a game designer works with [SceneActionDefault](SceneActionDefault.md) and needs to reference or invoke another `SceneActionDefault` from a different context.
+The `SceneActionReference` is **pointer** for [SceneActionAbstract](SceneActionAbstract.md). It is primarily used when a game designer works with [SceneActionDefault](SceneActionDefault.md) and needs to reference or invoke another `SceneActionDefault` from a different context.
 
-These wrappers implement the corresponding [IAction](IAction.md) interfaces and can be used in **Inspector-driven workflows**.
+This wrapper implement the corresponding [IAction](IAction.md) interface and can be used in **Inspector-driven workflows**.
 
 > [!NOTE]  
 > The reference only stores a pointer to a `SceneActionAbstract`. If the reference is null, invoking it does nothing.
