@@ -2,9 +2,9 @@ using UnityEditor;
 
 namespace ShooterGame.App
 {
-    public static class ExitAppUseCase
+    public static class QuitUseCase
     {
-        public static void Exit()
+        public static void Quit()
         {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;

@@ -2,14 +2,14 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class DeathBehaviour : IEntityInit<IGameEntity>, IEntityDispose
+    public sealed class LifeBehaviour : IEntityInit<IGameEntity>, IEntityDispose
     {
         private readonly IGameContext _gameContext;
 
         private Health _health;
         private IGameEntity _entity;
 
-        public DeathBehaviour(IGameContext gameContext)
+        public LifeBehaviour(IGameContext gameContext)
         {
             _gameContext = gameContext;
         }
@@ -27,6 +27,6 @@ namespace RTSGame
             _health.OnHealthEmpty -= this.OnHealthEmpty;
         }
 
-        private void OnHealthEmpty() => GameEntityUseCase.Despawn(_gameContext, _entity);
+        private void OnHealthEmpty() => GameEntitiesUseCase.Despawn(_gameContext, _entity);
     }
 }

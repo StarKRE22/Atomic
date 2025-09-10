@@ -18,10 +18,10 @@ namespace RTSGame
         {
             IGameContext gameContext = GameContext.Instance;
             entity.AddTarget(new ReactiveVariable<IGameEntity>());
-            entity.AddBehaviour(new DetectTargetBehaviour(
+            entity.AddBehaviour(new AIDetectTargetBehaviour(
                 new RandomCooldown(_minDetectDuration, _maxDetectDuration), gameContext)
             );
-            entity.AddBehaviour<AttackTargetBehaviour>();
+            entity.AddBehaviour<AIAttackTargetBehaviour>();
         }
     }
 }

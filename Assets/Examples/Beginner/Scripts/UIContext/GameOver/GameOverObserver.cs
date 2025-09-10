@@ -20,6 +20,6 @@ namespace BeginnerGame
             _gameOverEvent.OnEvent -= this.OnGameOver;
         }
 
-        private void OnGameOver() => GameOverViewUseCase.ShowPopup(_context);
+        private void OnGameOver() => GameOverUseCase.ShowPopup(_context);
     }
 }

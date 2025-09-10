@@ -6,7 +6,7 @@ using BeginnerGame;
 namespace GameExample.Engine
 {
     [TestFixture]
-    public sealed class GameOverUseCaseTests_GetWinnerTeam
+    public sealed partial class GameUseCaseTests_GetWinnerTeam
     {
         [TestCase(10, 1, ExpectedResult = TeamType.BLUE)]
         [TestCase(10, 11, ExpectedResult = TeamType.RED)]

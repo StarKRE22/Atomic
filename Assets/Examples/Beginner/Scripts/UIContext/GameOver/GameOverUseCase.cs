@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public static class GameOverViewUseCase
+    public static partial class GameOverUseCase
     {
         public static void ShowPopup(IUIContext context)
         {

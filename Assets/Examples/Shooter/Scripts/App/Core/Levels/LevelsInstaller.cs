@@ -22,7 +22,7 @@ namespace ShooterGame.App
             context.AddStartLevel(new Const<int>(_startLevel));
             context.AddMaxLevel(new Const<int>(_maxLevel));
             context.AddCurrentLevel(new ReactiveVariable<int>(_currentLevel));
-            context.AddBehaviour<SaveLoadLevelController>();
+            context.AddBehaviour<LevelPersistentController>();
         }
     }
 }

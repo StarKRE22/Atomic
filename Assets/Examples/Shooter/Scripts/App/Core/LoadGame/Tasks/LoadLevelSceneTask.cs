@@ -13,7 +13,7 @@ namespace ShooterGame.App
             _levelNameFormat = levelNameFormat;
         }
 
-        public async UniTask Invoke(IAppContext context, LoadingBundle bundle)
+        public async UniTask Invoke(IAppContext context, LoadGameBundle bundle)
         {
             int level = bundle.Get<int>("level");
             string sceneName = string.Format(_levelNameFormat, level);

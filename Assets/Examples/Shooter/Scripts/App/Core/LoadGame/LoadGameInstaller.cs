@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace ShooterGame.App
 {
-
     [Serializable]
     public sealed class LoadGameInstaller : IEntityInstaller<IAppContext>
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ShooterGame
 {
-    public sealed class ExitMenuController : IEntityTick
+    public sealed class MenuLoadController : IEntityTick
     {
         public void Tick(IEntity entity, float deltaTime)
         {

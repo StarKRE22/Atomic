@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public static class GameOverUseCase
+    public static partial class GameOverUseCase
     {
         public static void GameOver(IGameContext context)
         {

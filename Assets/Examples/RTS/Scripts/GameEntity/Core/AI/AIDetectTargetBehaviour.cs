@@ -4,7 +4,7 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class DetectTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick, IEntityDisable
+    public sealed class AIDetectTargetBehaviour : IEntityInit<IGameEntity>, IEntityFixedTick, IEntityDisable
     {
         private readonly IGameContext _gameContext;
         private readonly IEntityWorld<IGameEntity> _entityWorld;
@@ -13,7 +13,7 @@ namespace RTSGame
         private IVariable<IGameEntity> _target;
         private IGameEntity _entity;
 
-        public DetectTargetBehaviour(ICooldown cooldown, IGameContext context)
+        public AIDetectTargetBehaviour(ICooldown cooldown, IGameContext context)
         {
             _cooldown = cooldown;
             _gameContext = context;
@@ -40,7 +40,7 @@ namespace RTSGame
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void AssignTarget()
         {
-            IGameEntity enemy = GameEntityUseCase.FindFreeEnemyFor(_gameContext, _entity);
+            IGameEntity enemy = GameEntitiesUseCase.FindFreeEnemyFor(_gameContext, _entity);
             if (enemy != null) 
                 enemy.AddTargetedTag();
             

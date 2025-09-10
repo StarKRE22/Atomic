@@ -17,7 +17,7 @@ namespace RTSGame
         }
 
         public static IGameEntity FireProjectile(IGameEntity source, string projectileName, IGameContext context) =>
-            GameEntityUseCase.Spawn(
+            GameEntitiesUseCase.Spawn(
                 context,
                 projectileName,
                 source.GetFirePoint().Value,

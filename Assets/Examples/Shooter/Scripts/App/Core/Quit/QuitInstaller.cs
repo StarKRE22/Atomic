@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ShooterGame.App
 {
     [Serializable]
-    public sealed class ExitAppInstaller : IEntityInstaller<IAppContext>
+    public sealed class QuitInstaller : IEntityInstaller<IAppContext>
     {
         [SerializeField]
         private KeyCode _exitKey = KeyCode.Escape;
@@ -14,8 +14,7 @@ namespace ShooterGame.App
         public void Install(IAppContext context)
         {
             context.AddExitKeyCode(new Const<KeyCode>(_exitKey));
-            context.AddBehaviour<ExitAppController>();
-            context.AddBehaviour<ExitMenuController>();
+            context.AddBehaviour<QuitController>();
         }
     }
 }

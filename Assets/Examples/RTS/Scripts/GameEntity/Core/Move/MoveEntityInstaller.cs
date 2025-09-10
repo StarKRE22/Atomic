@@ -23,7 +23,7 @@ namespace RTSGame
             entity.AddMoveEvent(new BaseEvent<Vector3>());
             entity.WhenFixedTick(deltaTime =>
             {
-                if (HealthUseCase.IsAlive(entity) &&
+                if (LifeUseCase.IsAlive(entity) &&
                     entity.GetMoveRequest().Consume(out Vector3 direction) &&
                     direction != Vector3.zero)
                 {

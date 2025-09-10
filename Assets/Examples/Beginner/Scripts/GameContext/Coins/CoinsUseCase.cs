@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace BeginnerGame
 {
-    public static class CoinUseCase
+    public static class CoinsUseCase
     {
         public static bool Collect(IGameContext context, IGameEntity character, Collider other) =>
             other.TryGetComponent(out IGameEntity entity) &&

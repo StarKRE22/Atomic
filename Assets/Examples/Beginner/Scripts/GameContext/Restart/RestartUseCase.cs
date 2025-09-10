@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace BeginnerGame
 {
-    public static class RestartGameUseCase
+    public static class RestartUseCase
     {
         private const string SCENE_NAME = "BeginnerGame";
         

@@ -24,6 +24,6 @@ namespace BeginnerGame
             _triggerEvents.OnEntered -= this.OnTriggerEntered;
 
         private void OnTriggerEntered(Collider collider) => 
-            CoinUseCase.Collect(_gameContext, _entity, collider);
+            CoinsUseCase.Collect(_gameContext, _entity, collider);
     }
 }

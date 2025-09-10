@@ -2,7 +2,7 @@ using Atomic.Elements;
 
 namespace ShooterGame.App
 {
-    public static partial class LevelUseCase
+    public static partial class LevelsUseCase
     {
         public static void IncrementLevel(IAppContext context)
         {

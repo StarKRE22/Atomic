@@ -27,14 +27,14 @@ namespace ShooterGame.App
         {
             _screenView.OnSelectLevelClicked += this.OnSelectLevelClicked;
             _screenView.OnStartClicked += this.OnStartClicked;
-            _screenView.OnExitClicked += ExitAppUseCase.Exit;
+            _screenView.OnExitClicked += QuitUseCase.Quit;
         }
 
         public void Disable(IEntity entity)
         {
             _screenView.OnStartClicked -= this.OnStartClicked;
             _screenView.OnSelectLevelClicked -= this.OnSelectLevelClicked;
-            _screenView.OnExitClicked -= ExitAppUseCase.Exit;
+            _screenView.OnExitClicked -= QuitUseCase.Quit;
         }
 
         private void OnStartClicked() => LoadGameUseCase.StartGame(_appContext);

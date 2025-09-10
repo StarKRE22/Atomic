@@ -411,7 +411,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
-- [Project Folder Organization](Docs/BestPractices/ProjectFolderOrganization.md)
+- [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md)
 
 ## ⚖️ License
 
