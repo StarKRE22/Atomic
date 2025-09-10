@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/DefaultConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/DefaultConstants.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,23 +162,7 @@
       <workItem from="1757404317436" duration="12119000" />
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
-      <workItem from="1757480778920" duration="12218000" />
-    </task>
-    <task id="LOCAL-00157" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757321973141</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
-      <option name="project" value="LOCAL" />
-      <updated>1757321973141</updated>
-    </task>
-    <task id="LOCAL-00158" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757322148192</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
-      <option name="project" value="LOCAL" />
-      <updated>1757322148192</updated>
+      <workItem from="1757480778920" duration="12925000" />
     </task>
     <task id="LOCAL-00159" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -558,7 +540,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757492477168</updated>
     </task>
-    <option name="localTasksCounter" value="206" />
+    <task id="LOCAL-00206" summary="IFunction.md">
+      <option name="closed" value="true" />
+      <created>1757495399160</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1757495399160</updated>
+    </task>
+    <task id="LOCAL-00207" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757495593914</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1757495593914</updated>
+    </task>
+    <option name="localTasksCounter" value="208" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +583,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Минор фиксы!" />
     <MESSAGE value="Прочесал Const.md" />
     <MESSAGE value="Пропушил ScriptableConst.md" />
     <MESSAGE value="Пропушил DefaultConstants.md" />
@@ -608,9 +605,10 @@
     <MESSAGE value="Сделал SceneActionAbstract.md" />
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="Написал SceneActionReference.cs" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Extensions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
+    <MESSAGE value="IFunction.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
