@@ -1,8 +1,6 @@
 # 🧩 SceneActionReference Classes
 
-The `SceneActionReference` is **pointer** for [SceneActionAbstract](SceneActionAbstract.md). It is primarily used when a game designer works with [SceneActionDefault](SceneActionDefault.md) and needs to reference or invoke another `SceneActionDefault` from a different context.
-
-This wrapper implement the corresponding [IAction](IAction.md) interface and can be used in **Inspector-driven workflows**.
+The `SceneActionReference` is **pointer** for [SceneActionAbstract](SceneActionAbstract.md). It is primarily used when a game designer works with [SceneActionDefault](SceneActionDefault.md) and needs to reference or invoke another `SceneActionDefault` from a different context. This wrapper implement the corresponding [IAction](IAction.md) interface and can be used in **Inspector-driven workflows**.
 
 > [!NOTE]  
 > The reference only stores a pointer to a `SceneActionAbstract`. If the reference is null, invoking it does nothing.
@@ -213,21 +211,25 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 - **Description:** Invokes the referenced scene action with the provided arguments.
 
 ---
-
 ## 🗂 Example of Usage
-**`SceneActionReference` полезен для связывания ссылки на другой `SceneActionAbstract` через `[SerializeReference]`.** 
+
+**`SceneActionReference` is useful for creating a reference to another `SceneActionAbstract` via `[SerializeReference]`.**
+
+---
 
 ### 🔹 Non-generic Example
 
-Ниже приведен пример связывания `SceneActionDefault` с `HelloWorldSceneAction`
+Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
 
-<img src="../../Images/SceneActionReference.png" alt="SceneActionComposite example" width="" height="128">
+<img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
+
+---
 
 ### 🔹 Generic Example
 
-Ниже приведен пример связывания `GameObjectSceneActionDefault` с `DestroyGameObjectSceneAction`
+Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
 
-<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionComposite example" width="" height="128">
+<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
 
-> [!WARNING]
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
+> [!WARNING]  
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code for clarity and maintainability, as `[SerializeReference]` can be fragile during refactoring.
