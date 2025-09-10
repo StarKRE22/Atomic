@@ -27,6 +27,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes all contained scene actions sequentially.
         /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke()
         {
             if (this.actions == null)
@@ -56,6 +61,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes all contained scene actions sequentially.
         /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T arg)
         {
             if (this.actions == null)
@@ -81,6 +91,14 @@ namespace Atomic.Elements
         [Space, SerializeField]
         public SceneActionAbstract<T1, T2>[] actions;
         
+        /// <summary>
+        /// Invokes all contained scene actions sequentially.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2)
         {
             if (this.actions == null)
@@ -106,6 +124,14 @@ namespace Atomic.Elements
         [SerializeField]
         public SceneActionAbstract<T1, T2, T3>[] actions;
 
+        /// <summary>
+        /// Invokes all contained scene actions sequentially.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2, T3 arg3)
         {
             if (this.actions == null)
@@ -131,6 +157,14 @@ namespace Atomic.Elements
         [SerializeField]
         public SceneActionAbstract<T1, T2, T3, T4>[] actions;
 
+        /// <summary>
+        /// Invokes all contained scene actions sequentially.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (this.actions == null)

@@ -63,6 +63,11 @@ namespace Atomic.Elements
         /// Null actions are safely skipped.
         /// </summary>
         /// <param name="arg1">The input argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T arg1)
         {
             if (this.actions != null)
@@ -88,6 +93,11 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2)
         {
             if (this.actions != null)
@@ -115,6 +125,11 @@ namespace Atomic.Elements
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2, T3 arg3)
         {
             if (this.actions != null)
@@ -144,6 +159,11 @@ namespace Atomic.Elements
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
         /// <param name="arg4">The fourth argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             if (this.actions != null)

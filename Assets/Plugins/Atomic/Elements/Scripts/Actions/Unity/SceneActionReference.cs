@@ -6,7 +6,6 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 #endif
 
-
 namespace Atomic.Elements
 {
     /// <summary>
@@ -29,8 +28,11 @@ namespace Atomic.Elements
         public SceneActionAbstract action;
 
         /// <summary>
-        /// Default constructor.
+        /// Initializes a new instance.
         /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector**.
+        /// </remarks>
         public SceneActionReference()
         {
         }
@@ -44,6 +46,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the referenced <see cref="SceneActionAbstract"/>, if it exists.
         /// </summary>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public void Invoke()
         {
             if (this.action)
@@ -68,8 +75,11 @@ namespace Atomic.Elements
         public SceneActionAbstract<T> action;
 
         /// <summary>
-        /// Default constructor.
+        /// Initializes a new instance.
         /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector**.
+        /// </remarks>
         public SceneActionReference()
         {
         }
@@ -83,11 +93,16 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the referenced scene action with the given argument.
         /// </summary>
-        /// <param name="arg1">The argument to pass to the action.</param>
-        public void Invoke(T arg1)
+        /// <param name="arg">The argument to pass to the action.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
+        public void Invoke(T arg)
         {
-            if (this.action != null)
-                this.action.Invoke(arg1);
+            if (this.action)
+                this.action.Invoke(arg);
         }
     }
 
@@ -109,8 +124,11 @@ namespace Atomic.Elements
         public SceneActionAbstract<T1, T2> action;
 
         /// <summary>
-        /// Default constructor.
+        /// Initializes a new instance.
         /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector**.
+        /// </remarks>
         public SceneActionReference()
         {
         }
@@ -126,9 +144,14 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public void Invoke(T1 arg1, T2 arg2)
         {
-            if (this.action != null)
+            if (this.action)
                 this.action.Invoke(arg1, arg2);
         }
     }
@@ -152,8 +175,11 @@ namespace Atomic.Elements
         public SceneActionAbstract<T1, T2, T3> action;
 
         /// <summary>
-        /// Default constructor.
+        /// Initializes a new instance.
         /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector**.
+        /// </remarks>
         public SceneActionReference()
         {
         }
@@ -170,9 +196,14 @@ namespace Atomic.Elements
         /// <param name="arg1">The first argument.</param>
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public void Invoke(T1 arg1, T2 arg2, T3 arg3)
         {
-            if (this.action != null)
+            if (this.action)
                 this.action.Invoke(arg1, arg2, arg3);
         }
     }
@@ -197,8 +228,11 @@ namespace Atomic.Elements
         public SceneActionAbstract<T1, T2, T3, T4> action;
 
         /// <summary>
-        /// Default constructor.
+        /// Initializes a new instance.
         /// </summary>
+        /// <remarks>
+        /// This constructor is intended **only for use by the Unity Inspector**.
+        /// </remarks>
         public SceneActionReference()
         {
         }
@@ -216,9 +250,14 @@ namespace Atomic.Elements
         /// <param name="arg2">The second argument.</param>
         /// <param name="arg3">The third argument.</param>
         /// <param name="arg4">The fourth argument.</param>
+#if ODIN_INSPECTOR
+        [HideInEditorMode]
+        [GUIColor(0, 1, 0)]
+        [Button]
+#endif
         public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            if (this.action != null)
+            if (this.action)
                 this.action.Invoke(arg1, arg2, arg3, arg4);
         }
     }

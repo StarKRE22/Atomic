@@ -163,6 +163,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6393673dba354a188176984c95f2afdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1056782078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056782080}
+  - component: {fileID: 1056782079}
+  - component: {fileID: 1056782081}
+  m_Layer: 0
+  m_Name: CompositeAction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1056782079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056782078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801beca55de524a12b02fa8ea2b5fdb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - rid: 7841194892651135056
+  references:
+    version: 2
+    RefIds:
+    - rid: 7841194892651135056
+      type: {class: SceneActionReference, ns: Atomic.Elements, asm: Atomic.Elements}
+      data:
+        action: {fileID: 2012616963}
+--- !u!4 &1056782080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056782078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1056782081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056782078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6f6e8830de4016b421dc13da9caf8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - rid: 7841194892651135057
+  references:
+    version: 2
+    RefIds:
+    - rid: 7841194892651135057
+      type: {class: 'SceneActionReference`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Atomic.Elements, asm: Atomic.Elements}
+      data:
+        action: {fileID: 89427645}
 --- !u!1 &1108162873
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,3 +565,4 @@ SceneRoots:
   - {fileID: 1930466805}
   - {fileID: 1108162875}
   - {fileID: 2083626922}
+  - {fileID: 1056782080}

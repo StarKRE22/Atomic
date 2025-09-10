@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameObjectSceneActionDefault.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameObjectSceneActionDefault.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionComposite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionComposite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionReference.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,39 +167,7 @@
       <workItem from="1757404317436" duration="12119000" />
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
-      <workItem from="1757480778920" duration="3837000" />
-    </task>
-    <task id="LOCAL-00149" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757320359381</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320359381</updated>
-    </task>
-    <task id="LOCAL-00150" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757320398567</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320398567</updated>
-    </task>
-    <task id="LOCAL-00151" summary="Прочесал Const.md">
-      <option name="closed" value="true" />
-      <created>1757320648371</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320648371</updated>
-    </task>
-    <task id="LOCAL-00152" summary="Прочесал Const.md">
-      <option name="closed" value="true" />
-      <created>1757320679353</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320679353</updated>
+      <workItem from="1757480778920" duration="8057000" />
     </task>
     <task id="LOCAL-00153" summary="Прочесал Const.md">
       <option name="closed" value="true" />
@@ -559,7 +529,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757483381775</updated>
     </task>
-    <option name="localTasksCounter" value="198" />
+    <task id="LOCAL-00198" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757484637622</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1757484637622</updated>
+    </task>
+    <task id="LOCAL-00199" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757484765941</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1757484765941</updated>
+    </task>
+    <task id="LOCAL-00200" summary="SceneActionComposite.md">
+      <option name="closed" value="true" />
+      <created>1757486060781</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1757486060781</updated>
+    </task>
+    <task id="LOCAL-00201" summary="SceneActionComposite.md">
+      <option name="closed" value="true" />
+      <created>1757486071058</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1757486071058</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал ModularEntityInstallers.md" />
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor!" />
     <MESSAGE value="Минор фиксы!" />
@@ -611,7 +612,8 @@
     <MESSAGE value="Добавил SceneActions!" />
     <MESSAGE value="Сделал SceneActionAbstract.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="SceneActionComposite.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionComposite.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
