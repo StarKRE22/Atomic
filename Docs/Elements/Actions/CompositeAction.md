@@ -298,5 +298,5 @@ For example, we can add [PrintAction](PrintAction.md) to the action array.
 
 <img src="../../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
 
-> [!NOTE]
+> [!WARNING]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.

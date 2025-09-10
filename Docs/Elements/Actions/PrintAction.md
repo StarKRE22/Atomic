@@ -89,5 +89,5 @@ In the **Inspector**, we can assign the `PrintAction` value to the `Action` para
 
 <img src="../../Images/PlayerActionTrigger_PrintAction.png" alt="img.png" width="386" height="108">
 
-> [!NOTE]
+> [!WARNING]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
