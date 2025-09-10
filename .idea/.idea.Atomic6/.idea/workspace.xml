@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameObjectSceneActionDefault.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameObjectSceneActionDefault.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/PlayerTriggerAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/PlayerActionTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/PlayerTriggerAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/PlayerActionTrigger.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Images/PlayerEventTrigger.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,39 +165,7 @@
       <workItem from="1757404317436" duration="12119000" />
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
-      <workItem from="1757480778920" duration="1333000" />
-    </task>
-    <task id="LOCAL-00145" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757318611047</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
-      <option name="project" value="LOCAL" />
-      <updated>1757318611047</updated>
-    </task>
-    <task id="LOCAL-00146" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757319910169</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1757319910169</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757320212349</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320212349</updated>
-    </task>
-    <task id="LOCAL-00148" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757320305182</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1757320305182</updated>
+      <workItem from="1757480778920" duration="3837000" />
     </task>
     <task id="LOCAL-00149" summary="Пилим!">
       <option name="closed" value="true" />
@@ -563,7 +527,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757416338520</updated>
     </task>
-    <option name="localTasksCounter" value="194" />
+    <task id="LOCAL-00194" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757482122462</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1757482122462</updated>
+    </task>
+    <task id="LOCAL-00195" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757482189670</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1757482189670</updated>
+    </task>
+    <task id="LOCAL-00196" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757482346293</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1757482346293</updated>
+    </task>
+    <task id="LOCAL-00197" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757483381775</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1757483381775</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
