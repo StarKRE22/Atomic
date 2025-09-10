@@ -13,6 +13,7 @@ public static InlineFunction<bool> Invert(this IFunction<bool> it)
 - **Parameter:** `it` – The reactive boolean function to negate.
 - **Returns:** A new `InlineFunction<bool>` that returns the opposite of the original function’s result.
 - **Example of Usage:**
+ 
   ```csharp
   IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
   IFunction<bool> isDead = isAlive.Invert();
@@ -31,6 +32,7 @@ public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it)
 - **Parameter:** `it` – The predicate function to negate.
 - **Returns:** A new `InlineFunction<T, bool>` that returns the opposite of the original function’s result.
 - **Example of Usage:**
+  
   ```csharp
   IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
   IFunction<Character, bool> isAlly = isEnemy.Invert();
@@ -51,6 +53,7 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
 - **Parameter:** `it` – The predicate function to negate.
 - **Returns:** A new `InlineFunction<T1, T2, bool>` that returns the opposite of the original function’s result.
 - **Example of Usage:**
+  
   ```csharp
   IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>((a, b) => a.Team != b.Team);
   IFunction<Character, Character, bool> isAllyPair = isEnemyPair.Invert();
