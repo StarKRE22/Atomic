@@ -71,8 +71,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [InlinePredicate](Functions/InlinePredicate.md)  <!-- + -->
   - [Extensions](Functions/Extensions.md) <!-- + -->
 - **Setters**
-  - [ISetter](Setters/ISetter.md)
-  - [InlineSetter](Setters/InlineSetter.md)
+  - [ISetter](Setters/ISetter.md) <!-- + -->
+  - [InlineSetter](Setters/InlineSetter.md) <!-- + -->
 - **Events & Signals**
   - [IEvent](Events/IEvent.md)
   - [BaseEvent](Events/BaseEvent.md)

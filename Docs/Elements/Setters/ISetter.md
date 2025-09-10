@@ -1,37 +1,55 @@
-# 🧩 ISetter Interface
+# 🧩 ISetter&lt;T&gt;
 
-The **ISetter<T>** interface represents a **setter contract** that accepts a value of type `T`.  
-It extends `IAction<T>` to provide a unified way to assign values through both direct property access and method invocation.
-
-## Key Features
-- **Type-Safe Assignment** – Ensures the value being set matches the specified generic type `T`.
-- **Action Integration** – Implements `IAction<T>` so that the setter can be invoked like a method.
-- **Performance** – Uses `[MethodImpl(MethodImplOptions.AggressiveInlining)]` for efficient invocation.
+The **ISetter** interface defines a contract for **assigning values**.  
+It extends the [IAction&lt;T&gt;](../Actions/IAction.md#-iactiont) interface, enabling its usage both as an **action** and as a **value setter**.
 
 ---
 
-## ISetter&lt;T&gt;
+## Type Parameter
+- `T` – the type of the value to be set.
+---
+
+## Properties
+
+#### `Value`
+```csharp
+T Value { set; }
+```
+- **Description:** Assigns the provided value.
+- **Parameter:** `value` — the new value to be set.
+
+## Methods
+
+#### `Invoke(T arg)`
 
 ```csharp
-public interface ISetter<in T> : IAction<T>
-{
-    /// <summary>
-    /// Sets the value.
-    /// </summary>
-    T Value { set; }
+void Invoke(T arg);
+```
+- **Description:** Invokes the setter by assigning the provided value.
+- **Parameter:** `arg` — the value to set.
+- **Notes:** Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
 
-    /// <summary>
-    /// Invokes the setter by assigning the provided value.
-    /// </summary>
-    /// <param name="arg">The value to set.</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    void IAction<T>.Invoke(T arg) => this.Value = arg;
+## 📌 Best Practice
+
+Below is an example of using `ISetter<Vector3>` inside a movement input controller built with **Atomic.Entities**.  
+This approach cleanly separates **input handling** from the **entity’s movement logic**, while relying only on the `ISetter` interface.
+
+```csharp
+public sealed class MoveController : IEntityInit, IEntityTick
+{
+    // Use through the interface
+    private ISetter<Vector3> _moveDirection;
+
+    public void Init(IEntity entity)
+    {
+        _moveDirection = entity.GetValue<ISetter<Vector3>>("MoveDirection");
+    }
+    
+    public void Tick(IEntity entity, float deltaTime)
+    {
+        float dx = Input.GetAxis("Horizontal");
+        float dz = Input.GetAxis("Vertical");
+        _moveDirection.Value = new Vector3(dx, 0, dz);
+    }
 }
 ```
-
-#### Value
-
-## Notes
-**Direct Assignment** – The `Value` property allows direct setting of the value.
-**Invocation Syntax** – Calling `Invoke(value)` is equivalent to `Value = value`.
-**Contravariance** – The `in T` modifier allows flexibility with compatible types for input.

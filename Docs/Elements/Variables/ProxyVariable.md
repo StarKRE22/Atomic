@@ -33,8 +33,8 @@ new T Value { get; set; }
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
 - **Notes:**
-    - Implements [IValue<T>.Value](../Values/IValue.md#value) for read access.
-    - Implements [ISetter<T>.Value](../Setters/ISetter.md/#value) for write access.
+    - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
+    - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
 
 ---
 
@@ -57,7 +57,7 @@ void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+    - Default implementation comes from [IAction&lt;R&gt;.Invoke()](../Actions/IAction.md#invoket).
 
 ---
 

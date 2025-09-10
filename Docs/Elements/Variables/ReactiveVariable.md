@@ -48,8 +48,8 @@ new T Value { get; set; }
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
 - **Notes:**
-  - Implements [IVariable<T>.Value](IVariable.md#value) for read-write access.
-  - Implements [IReactiveValue<T>.Value](../Values/IReactiveValue.md#value) for reactive observation.
+  - Implements [IVariable&lt;T&gt;.Value](IVariable.md#value) for read-write access.
+  - Implements [IReactiveValue&lt;T&gt;.Value](../Values/IReactiveValue.md#value) for reactive observation.
 
 ---
 
@@ -61,7 +61,7 @@ T Invoke()
 ```
 - **Description:** Invokes the variable and returns its current value.
 - **Returns:** The current value of type `T`.
-- **Note:** Default implementation comes from [IFunction<R>.Invoke()](../Functions/IFunction.md#invoke).
+- **Note:** Default implementation comes from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke).
 
 #### `Invoke(T arg)`
 ```csharp
@@ -71,7 +71,7 @@ void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
   - Acts as a setter method, complementing the `Value` property.
-  - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+  - Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
 
 #### `Subscribe(Action)`
 ```csharp

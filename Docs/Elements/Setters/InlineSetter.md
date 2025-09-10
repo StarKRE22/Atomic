@@ -1,33 +1,56 @@
-# 🧩 InlineSetter Class
+# 🧩  InlineSetter&lt;T&gt;
 
-The **InlineSetter<T>** class provides a concrete implementation of the `ISetter<T>` interface.  
-It wraps an `Action<T>` delegate to allow values to be set through a callback, making it suitable for flexible, inline assignment logic.
-
-## Key Features
-- **Delegate-Based Assignment** – Uses an `Action<T>` to handle value assignment.
-- **Integration with ISetter<T>** – Implements the `ISetter<T>` interface for unified setter usage.
-- **Serialization Support** – Marked as `[Serializable]`, allowing storage in Unity or other serializable systems.
-- **Editor Integration** – Optionally supports `[Button]` in Odin Inspector for manual invocation in the Unity Editor.
+The **InlineSetter** class provides a wrapper around a standard `System.Action<T>` delegate. It implements the [ISetter&lt;T&gt;](ISetter.md) interface, enabling **value assignment** through a delegate.
 
 ---
 
-## InlineSetter<T>
+## Type Parameter
+- `T` – the type of the value to be set.
+---
+
+## Constructors
+
+#### `InlineSetter(Action<T>)`
+```csharp
+public InlineSetter(Action<T> action)
+```
+- **Description:** Initializes a new instance of `InlineSetter<T>` with the specified action.
+- **Parameter:** `action` — The action to invoke when the value is set.
+- **Throws:** `ArgumentNullException` if `action` is null.
+
+## Properties
+
+#### `Value`
+```csharp
+T Value { set; }
+```
+- **Description:** Assigns the provided value.
+- **Parameter:** `value` — the new value to be set.
+
+## Methods
+
+#### `Invoke(T arg)`
 
 ```csharp
-public class InlineSetter<T> : ISetter<T>
-{
-    public T Value { set; }
-    private readonly Action<T> action;
-
-    public InlineSetter(Action<T> action);
-}
+void Invoke(T arg);
 ```
-## Members
-- **Value** – Invokes the internal action with the assigned value.
-- **Constructor** – `InlineSetter(Action<T> action)` initializes the setter with a delegate. Throws `ArgumentNullException` if `action` is null.
-- **Editor_SetValue** – (Editor only) method to invoke the setter manually in the Unity Editor (with Odin Inspector `[Button]` attribute).
+- **Description:** Invokes the setter by assigning the provided value.
+- **Parameter:** `arg` — the value to set.
+- **Notes:** Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
 
-## Notes
-- **Null Safety** – The constructor ensures the `Action<T>` delegate is not null.
-- **Unity Editor Support** – Conditional compilation provides editor-only buttons for testing setters directly.
-- **Flexible Binding** – Can bind to any external target by passing a delegate.
+#### `ToString()`
+```csharp
+public override string ToString();
+```
+- **Description:** Returns a string representing the method name of the underlying action.
+- **Returns:** A string representation of the method name of the delegate.
+
+## Operators
+
+#### `implicit operator InlineSetter<T>(Action<T>)`
+```csharp
+public static implicit operator InlineSetter<T>(Action<T> action);
+```
+- **Description:** Implicitly converts a delegate of type `Action<T>` to an `InlineSetter<T>`.
+- **Parameter:** `action` — The delegate to wrap.
+- **Returns:** A new `InlineSetter<T>` instance containing the specified delegate.

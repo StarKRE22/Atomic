@@ -56,7 +56,7 @@ void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+    - Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
 
 
 
