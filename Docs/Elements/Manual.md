@@ -62,7 +62,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [PrintAction](Actions/PrintAction.md) <!-- + -->
   - [SceneActionAbstract](Actions/SceneActionAbstract.md)  <!-- + -->
   - [SceneActionDefault](Actions/SceneActionDefault.md) <!-- + -->
-  - [SceneActionComposite](Actions/SceneActionComposite.md)
+  - [SceneActionComposite](Actions/SceneActionComposite.md) <!-- + -->
   - [SceneActionReference](Actions/SceneActionReference.md)
   - [Extensions](Actions/Extensions.md)
 - **Functions**

@@ -14,7 +14,7 @@ namespace Atomic.Elements
     /// Follows the Composite design pattern: the group itself behaves as a single scene action,
     /// while internally invoking all contained scene actions in order.
     /// </summary>
-    [AddComponentMenu("Atomic/Elements/Scene Action Composite")]
+    [AddComponentMenu("Atomic/Elements/Action Composite")]
     [Serializable]
     public class SceneActionComposite : SceneActionAbstract
     {

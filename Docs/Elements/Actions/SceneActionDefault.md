@@ -1,6 +1,6 @@
-# 🧩 SceneActionDefault
+# 🧩 SceneActionDefault Classes
 
-The **SceneActionDefault** class implements the [IAction](IAction.md) interface and inherits from [SceneActionAbstract](SceneActionAbstract.md). It allows game designers to build **composite actions directly in the Unity scene** — chaining multiple `IAction` instances (including generic variants like `IAction<T>`) without writing additional code.
+The `SceneActionDefault` class implements the [IAction](IAction.md) interface and inherits from [SceneActionAbstract](SceneActionAbstract.md). It allows game designers to build **composite actions directly in the Unity scene** — chaining multiple `IAction` instances (including generic variants like `IAction<T>`) without writing additional code.
 
 In essence, `SceneActionDefault` acts as a **container of actions**, executing them sequentially as configured in the **Inspector** through `[SerializeReference]`.
 
