@@ -19,7 +19,7 @@ namespace Atomic.Elements
     /// without writing a custom script.  
     /// You can configure the action list in the Inspector or via <see cref="Construct"/>.
     /// </remarks>
-    [AddComponentMenu("Atomic/Elements/Scene Action")]
+    [AddComponentMenu("Atomic/Elements/Action")]
     public class SceneActionDefault : SceneActionAbstract
     {
         /// <summary>

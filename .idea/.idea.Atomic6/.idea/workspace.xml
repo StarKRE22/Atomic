@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Unity/SceneActionDefault.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/PlayerTriggerAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/PlayerActionTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/PlayerTriggerAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/PlayerActionTrigger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Images/PlayerEventTrigger.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,20 +76,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#60 on dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#60 on dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -160,23 +166,10 @@
       <workItem from="1757167610415" duration="10944000" />
       <workItem from="1757234040454" duration="26668000" />
       <workItem from="1757314938895" duration="22901000" />
-      <workItem from="1757404317436" duration="10999000" />
-    </task>
-    <task id="LOCAL-00143" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757318451551</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1757318451551</updated>
-    </task>
-    <task id="LOCAL-00144" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757318589551</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1757318589551</updated>
+      <workItem from="1757404317436" duration="12119000" />
+      <workItem from="1757441777610" duration="135000" />
+      <workItem from="1757480216447" duration="557000" />
+      <workItem from="1757480778920" duration="1333000" />
     </task>
     <task id="LOCAL-00145" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -554,7 +547,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757414447542</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="Сделал SceneActionAbstract.md">
+      <option name="closed" value="true" />
+      <created>1757416267145</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1757416267145</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757416338520</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1757416338520</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +590,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал RequestConditionActionEvent.md" />
     <MESSAGE value="Сделал ModularEntityInstallers.md" />
     <MESSAGE value="Сделал Best Practices!" />
     <MESSAGE value="Minor!" />
@@ -604,9 +612,10 @@
     <MESSAGE value="Сделал InlineAction.md" />
     <MESSAGE value="Написал PrintAction.md" />
     <MESSAGE value="Сделал CompositeAction.cs" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Добавил SceneActions!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил SceneActions!" />
+    <MESSAGE value="Сделал SceneActionAbstract.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

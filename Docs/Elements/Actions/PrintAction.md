@@ -65,23 +65,27 @@ It can also be easily serialized using `[SerializeReference]` in a `MonoBehaviou
 
 ### 🗂 Example of Usage
 
+Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the designer directly in the **Inspector**.
+
 ```csharp
 using UnityEngine;
 using Atomic.Elements;
 
-public sealed class PlayerTriggerEvent : MonoBehaviour
+public sealed class PlayerActionTrigger : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+    
     [SerializeReference] private IAction _action;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag(PlayerTag))
             _action.Invoke();
     }
 }
 ```
 
-<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="409" height="224">
+<img src="../../Images/PlayerActionTrigger_PrintAction.png" alt="img.png" width="386" height="108">
 
 > [!NOTE]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.

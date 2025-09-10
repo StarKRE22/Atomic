@@ -272,23 +272,29 @@ It allows designers to visually chain multiple actions in the inspector without 
 
 ### 🗂 Example of Usage
 
+Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the designer directly in the **Inspector**.
+
 ```csharp
 using UnityEngine;
 using Atomic.Elements;
 
-public sealed class PlayerTriggerEvent : MonoBehaviour
+public sealed class PlayerActionTrigger : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+    
     [SerializeReference] private IAction _action;
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag(PlayerTag))
             _action.Invoke();
     }
 }
 ```
 
-<img src="../../Images/PlayerEventTrigger.png" alt="img.png" width="409" height="224">
+In the **Inspector**, we can assign the `CompositeAction` component to the `Action` parameter. Inside it, we can then add actions to the array — for example, [PrintAction](PrintAction.md).
+
+<img src="../../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
 
 > [!NOTE]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
