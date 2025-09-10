@@ -141,7 +141,14 @@ For **narrative or scenario-driven games**, where designers need to configure a 
 
 ### 🔹 Non-generic Usage
 
+Below is an example of using `SceneActionDefault`
+
+#### 1. Add the `Atomic/Elements/Action` component.
 <img src="../../Images/SceneAction.png" alt="SceneAction example" width="384" height="137">
+
+#### 2. In the **Inspector**, assign the `PrintAction` value to the `Action` parameter.
+
+#### 3. Use `SceneActionDefault` as `SceneActionAbstract` in your components.
 
 ```csharp
 // Example of usage "SceneActionDefault"
@@ -152,11 +159,6 @@ public sealed class GameStartup : MonoBehaviour
     private void Start() => _startup.Invoke();
 }
 ```
-
-1. Add the `Atomic/Elements/Action` component.
-2. In the **Inspector**, assign the `PrintAction` value to the `Action` parameter.
-3. Use `SceneActionDefault` as `SceneActionAbstract` in your components.
-
 ---
 
 ### 🔹 Generic Usage
