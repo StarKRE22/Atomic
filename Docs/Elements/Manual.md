@@ -3,7 +3,6 @@
 A library of atomic elements for constructing complex game objects and systems in `Unity` and `C#`.
 The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity like a `LEGO Constructor`.
 
-
 ## 📑 Table of Contents
 - [Requirements](#-requirements)
 - [Using Odin Inspector](#-using-odin-inspector)
@@ -66,9 +65,9 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [SceneActionReference](Actions/SceneActionReference.md) <!-- + -->
   - [Extensions](Actions/Extensions.md) <!-- + -->
 - **Functions**
-  - [IFunction](Functions/IFunction.md)
+  - [IFunction](Functions/IFunction.md) <!-- + -->
   - [InlineFunction](Functions/InlineFunction.md)
-  - [IPredicate](Functions/IPredicate.md)
+  - [IPredicate](Functions/IPredicate.md)  !-- + -->
   - [InlinePredicate](Functions/InlinePredicate.md)
   - [Extensions](Functions/Extensions.md)
 - **Setters**
