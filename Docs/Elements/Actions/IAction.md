@@ -45,7 +45,7 @@ public interface IAction<in T>
 ```
 
 - **Description:** Represents an executable action that takes one argument.
-- **Type parameter** `T` — the input parameter
+- **Type parameter:** `T` — the input parameter
 
 ### Methods
 
@@ -54,7 +54,6 @@ public interface IAction<in T>
 ```csharp
 void Invoke(T arg);
 ```
-
 - **Description:** Executes the action with the specified argument
 - **Parameter:** `arg` — the input parameter
 
@@ -80,7 +79,7 @@ public interface IAction<in T1, in T2>
 ```
 
 - **Description:** Represents an executable action that takes two arguments.
-- **Type parameters**
+- **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
 
@@ -118,7 +117,7 @@ public interface IAction<in T1, in T2, in T3>
 ```
 
 - **Description:** Represents an executable action that takes three arguments.
-- **Type parameters**
+- **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
@@ -163,7 +162,7 @@ public interface IAction<in T1, in T2, in T3, in T4>
 ```
 
 - **Description:** Represents an executable action that takes four arguments.
-- **Type parameters**
+- **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument

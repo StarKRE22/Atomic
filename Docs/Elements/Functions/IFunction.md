@@ -1,61 +1,114 @@
 #  🧩 IFunction
 
-The **IFunction** interfaces define a family of contracts for representing functions with varying numbers of input parameters.  
-They provide a lightweight abstraction for defining logic that returns a value, making them useful for callbacks, computations, and functional programming patterns.
-
-## Key Features
-- **Decoupling** – Define functions independently of concrete implementations.
-- **Extensibility** – Supports multiple overloads (0–2 parameters).
-- **Reusability** – Suitable for event-driven systems, pipelines, or functional utilities.
+The **IFunction** interfaces define a family of contracts for representing functions with varying numbers of input parameters. They provide a lightweight abstraction for defining logic that returns a value, making them useful for callbacks, computations, and functional programming patterns.
 
 ---
 
-
-## IFunction&lt;R&gt;
-Represents a **parameterless function that returns a result**.
-
+## 🧩 IFunction&lt;R&gt;
 ```csharp
 public interface IFunction<out R>
+```
+- **Description:** Represents a **parameterless function that returns a result**.
+- **Type parameter:** `R` — the output result
+
+### Methods
+
+#### `Invoke()`
+
+```csharp
+R Invoke();
+```
+- **Description:** Invokes the function and returns the result
+- **Returns:** The result of the function
+
+### 🗂 Example of Usage
+
+```csharp
+public class IsGameObjectActiveFunction : IFunction<bool>
 {
-    /// <summary>
-    /// Invokes the function and returns the result.
-    /// </summary>
-    /// <returns>The result of the function.</returns>
-    R Invoke();
+    private readonly GameObject _go;
+    
+    public IsGameObjectActiveFunction(GameObject go) => _go = go;
+    
+    public bool Invoke() => _go.activeSelf;
 }
+
+```
+```csharp
+IFunction<bool> function = new IsGameObjectActiveFunction(gameObject);
+function.Invoke();
 ```
 
-## `Invoke()`
+---
 
-
-## IFunction<T, R>
-Represents a function with one input argument that returns a result.
+## 🧩 IFunction&lt;T, R&gt;
 ```csharp
 public interface IFunction<in T, out R>
+```
+- **Description:** Represents a function with **one input argument** that returns a result.
+- **Type parameters:**
+    - `T` — the input argument type
+    - `R` — the return type
+
+### Methods
+
+#### `Invoke(T)`
+```csharp
+R Invoke(T arg);
+```
+- **Description:** Executes the function with the specified input argument.
+- **Parameter:** `arg` — the input argument.
+- **Returns:** The result of type `R`.
+
+### 🗂 Example of Usage
+
+```csharp
+public sealed class IsEnemyFunction : IFunction<Character, bool>
 {
-    /// <summary>
-    /// Invokes the function with the specified argument and returns the result.
-    /// </summary>
-    /// <param name="args">The input argument.</param>
-    /// <returns>The result of the function.</returns>
-    R Invoke(T args);
+    private readonly Character _source;
+    
+    public IsEnemyFunction(Character source) => _source = source;
+    
+    public int Invoke(Character other) => _source.Team != other.Team;
 }
 ```
-### Invoke(T)
+```csharp
+IFunction<Character, bool> func = new IsEnemyFunction(character);
+bool isEnemies = func.Invoke(otherCharacter);
+```
 
+## 🧩 IFunction&lt;T1, T2, R&gt;
 
-### IFunction<T1, T2, R>
 ```csharp
 public interface IFunction<in T1, in T2, out R>
+```
+- **Description:** Represents a function with **two input arguments** that returns a result.
+- **Type parameters:**
+    - `T1` — the first input argument type
+    - `T2` — the second input argument type
+    - `R` — the return type
+
+### Methods
+
+#### `Invoke(T1, T2)`
+```csharp
+R Invoke(T1 arg1, T2 arg2);
+```
+- **Description:** Executes the function with the specified input arguments.
+- **Parameters:**
+    - `arg1` — the first input argument
+    - `arg2` — the second input argument
+- **Returns:** The result of type `R`.
+
+### 🗂 Example of Usage
+
+```csharp
+public class SumFunction : IFunction<int, int, int>
 {
-    /// <summary>
-    /// Invokes the function with the specified arguments and returns the result.
-    /// </summary>
-    /// <param name="args1">The first input argument.</param>
-    /// <param name="args2">The second input argument.</param>
-    /// <returns>The result of the function.</returns>
-    R Invoke(T1 args1, T2 args2);
+    public int Invoke(int a, int b) => a + b;
 }
 ```
-
-### Invoke(T1, T2)
+```csharp
+IFunction<int, int, int> func = new SumFunction();
+int sum = func.Invoke(3, 4); // sum = 7
+```

@@ -1,6 +1,4 @@
 # 🧩 Default Constants
-
-## Overview
 The **Default Constants** collection provides a centralized set of commonly used values across multiple domains, including Boolean logic, mathematics, time, physics, and Unity-specific utilities.  
 
 These constants are designed to improve **code readability**, **reduce magic numbers**, and ensure **consistency** throughout your projects.
