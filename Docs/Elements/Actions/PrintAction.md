@@ -85,6 +85,8 @@ public sealed class PlayerActionTrigger : MonoBehaviour
 }
 ```
 
+In the **Inspector**, we can assign the `PrintAction` value to the `Action` parameter.
+
 <img src="../../Images/PlayerActionTrigger_PrintAction.png" alt="img.png" width="386" height="108">
 
 > [!NOTE]

@@ -292,7 +292,9 @@ public sealed class PlayerActionTrigger : MonoBehaviour
 }
 ```
 
-In the **Inspector**, we can assign the `CompositeAction` component to the `Action` parameter. Inside it, we can then add actions to the array — for example, [PrintAction](PrintAction.md).
+In the **Inspector**, we can assign the `CompositeAction` value to the `Action` parameter. 
+
+For example, we can add [PrintAction](PrintAction.md) to the action array.
 
 <img src="../../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
 
