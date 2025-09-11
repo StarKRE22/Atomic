@@ -489,3 +489,14 @@ Console.WriteLine($"AND Expression result: {finalResult}");
 expression.Add(() => true);
 finalResult = expression.Invoke(); // still false
 ```
+
+## 📝 Notes
+
+Expressions are particularly useful for dynamic runtime calculations, such as:
+
+- Applying **speed multipliers** from various sources (buffs, debuffs, environmental effects).
+- Adding or removing conditions like **frozen state**, **boosts**, or other temporary effects.
+- Combining multiple **dynamic factors** to calculate a final value on the fly.
+
+This makes `IExpression` a flexible, runtime-adjustable function container suitable for game logic or any system
+requiring composable dynamic calculations.
