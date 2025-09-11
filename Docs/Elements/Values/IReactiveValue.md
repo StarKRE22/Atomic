@@ -3,7 +3,7 @@
 `IReactiveValue<T>` represents a **reactive value** that combines:
 
 - **Read-only access** through [IValue&lt;T&gt;](IValue.md)
-- **Reactive observation** through [ISignal&lt;T&gt;](../Signals/ISignal.md)
+- **Reactive observation** through [ISignal&lt;T&gt;](../Signals/ISignal.md#-isignalt)
 
 It allows you to both **read the current value** and **subscribe to changes**.
 
