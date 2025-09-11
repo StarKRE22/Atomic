@@ -5,93 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/InitGame.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Damage.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinSpawnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinSpawnController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Coins/CoinsUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameOver/GameOverUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/GameOver/GameOverUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Restart/RestartGameUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Restart/RestartUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Restart/RestartGameUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameContext/Restart/RestartUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterPickUpBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/GameEntity/Content/Character/CharacterPickUpBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverViewUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverViewUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/CoinUseCaseTests_CollectCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/CoinUseCaseTests_CollectCoin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/CoinUseCaseTests_SpawnCoin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/CoinUseCaseTests_SpawnCoin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/GameOverUseCaseTests_GetWinnerTeam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/GameUseCaseTests_GetWinnerTeam.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/GameOverUseCaseTests_GetWinnerTeam.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Tests/EditMode/GameContext/GameUseCaseTests_GetWinnerTeam.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitySystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitySystemInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntityUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntityUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/InitGameCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/InitGame/InitGameCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/InitGameCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/InitGame/InitGameCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AttackTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIAttackTargetBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AttackTargetBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIAttackTargetBehaviour.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIDetectTargetBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/DetectTargetBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIDetectTargetBehaviour.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/MeleeCombatEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/MeleeCombatEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/RangeCombatEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/RangeCombatEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/DeathBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/DeathBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeBehaviour.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/HealthUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/HealthUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/RotateUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate/RotateUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/RotateUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate/RotateUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/AppContextInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitAppUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Quit/QuitUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoadController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Exit/ExitMenuController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadMenu/MenuLoadController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelUseCase_SaveLoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase_SaveLoad.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelUseCase_SaveLoad.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsUseCase_SaveLoad.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelsInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/SaveLoadLevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelPersistentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/SaveLoadLevelController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/Levels/LevelPersistentController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Behaviours.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Behaviours/GameOverObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver/GameOverObserver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Behaviours/GameOverObserver.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/GameOver/GameOverObserver.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadingBundle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameBundle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadingBundle.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/LoadGameBundle.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/ILoadingTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/ILoadingTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameContextTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameContextTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameUIContextTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadGameUIContextTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadLevelSceneTask.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadLevelSceneTask.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadingTaskSequence.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/Core/LoadGame/Tasks/LoadingTaskSequence.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/App/UI/Screens/Start/StartScreenPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Elements.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Health.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Elements/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Health/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Elements/Health.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Health/Health.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Kill/DamageArgs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Damage/DamageArgs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Kill/DamageArgs.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Common/Damage/DamageArgs.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPointsPresenter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsPresenter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPointsPresenter.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsPresenter.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPointsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPointsView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/HitPoints/HitPointsView.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,15 +165,8 @@
       <workItem from="1757404317436" duration="12119000" />
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
-      <workItem from="1757480778920" duration="21686000" />
-    </task>
-    <task id="LOCAL-00164" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757323169108</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1757323169108</updated>
+      <workItem from="1757480778920" duration="23560000" />
+      <workItem from="1757584369536" duration="1853000" />
     </task>
     <task id="LOCAL-00165" summary="Прочесал IVariable.md">
       <option name="closed" value="true" />
@@ -641,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757518752429</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="Reorganize Folders!">
+      <option name="closed" value="true" />
+      <created>1757529252369</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1757529252369</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +587,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Ь" />
     <MESSAGE value="Прочесал Value Extensions.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Прочесал IVariable.md" />
@@ -693,7 +611,8 @@
     <MESSAGE value="Сделал FunctionExtensions.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Написал ISetter.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал ISetter.md" />
+    <MESSAGE value="Reorganize Folders!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganize Folders!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

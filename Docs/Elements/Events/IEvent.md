@@ -1,4 +1,13 @@
+
+
+
+
+
+==============
+==============
+
 #  🧩 IEvent
+
 
 The **IEvent** interfaces define a family of contracts for **reactive events** that can be both observed and invoked.  
 They combine the features of `ISignal` (reactive observation) and `IAction` (invocation logic) to create a unified event abstraction.
