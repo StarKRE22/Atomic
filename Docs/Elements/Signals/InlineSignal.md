@@ -198,7 +198,7 @@ void `Unsubscribe(Action<T1, T2, T3, T4> action)`
 ---
 ## 🗂 Example of Usage
 
-The following example demonstrates how to wrap the `OnTriggerEntered` event from the [TriggerEvents](../UnityComponents/TriggerEvents.md) class into a `Signal<Collider>`:
+The following example demonstrates how to wrap the `OnEntered` event from the [TriggerEvents](../UnityComponents/TriggerEvents.md) class into a `Signal<Collider>`:
 
 ```csharp
 // Wrap the Unity event into an InlineSignal

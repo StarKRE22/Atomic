@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/Sample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/Sample.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/BaseEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/BaseEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/IEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/IEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/InlineSignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/InlineSignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/UnityComponents/TriggerEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/UnityComponents/TriggerEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,47 +176,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="1853000" />
-    </task>
-    <task id="LOCAL-00165" summary="Прочесал IVariable.md">
-      <option name="closed" value="true" />
-      <created>1757323414521</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1757323414522</updated>
-    </task>
-    <task id="LOCAL-00166" summary="Прочесал BaseVariable.md">
-      <option name="closed" value="true" />
-      <created>1757323856755</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1757323856755</updated>
-    </task>
-    <task id="LOCAL-00167" summary="Накидал IReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1757324263726</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1757324263726</updated>
-    </task>
-    <task id="LOCAL-00168" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757324566623</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1757324566623</updated>
-    </task>
-    <task id="LOCAL-00169" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757324717717</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1757324717717</updated>
+      <workItem from="1757584369536" duration="5776000" />
     </task>
     <task id="LOCAL-00170" summary="Остановились на ReactiveVariable">
       <option name="closed" value="true" />
@@ -560,7 +530,47 @@
       <option name="project" value="LOCAL" />
       <updated>1757529252369</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="Написал ISignal.md">
+      <option name="closed" value="true" />
+      <created>1757586241408</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1757586241409</updated>
+    </task>
+    <task id="LOCAL-00215" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757587723573</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1757587723573</updated>
+    </task>
+    <task id="LOCAL-00216" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757587891724</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1757587891724</updated>
+    </task>
+    <task id="LOCAL-00217" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757587983470</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1757587983470</updated>
+    </task>
+    <task id="LOCAL-00218" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757588107426</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1757588107426</updated>
+    </task>
+    <option name="localTasksCounter" value="219" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Прочесал Value Extensions.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Прочесал IVariable.md" />
     <MESSAGE value="Прочесал BaseVariable.md" />
@@ -609,10 +618,11 @@
     <MESSAGE value="IFunction.md" />
     <MESSAGE value="Сделал IPredicate.md" />
     <MESSAGE value="Сделал FunctionExtensions.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Написал ISetter.md" />
     <MESSAGE value="Reorganize Folders!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganize Folders!" />
+    <MESSAGE value="Написал ISignal.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
