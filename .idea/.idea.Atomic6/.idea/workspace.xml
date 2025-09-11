@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Requests/IRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Requests/IRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,23 +166,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="15706000" />
-    </task>
-    <task id="LOCAL-00177" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757359746202</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
-      <option name="project" value="LOCAL" />
-      <updated>1757359746202</updated>
-    </task>
-    <task id="LOCAL-00178" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757359821638</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
-      <option name="project" value="LOCAL" />
-      <updated>1757359821638</updated>
+      <workItem from="1757584369536" duration="19344000" />
     </task>
     <task id="LOCAL-00179" summary="Сделал InlineAction.md">
       <option name="closed" value="true" />
@@ -558,7 +544,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757598537804</updated>
     </task>
-    <option name="localTasksCounter" value="226" />
+    <task id="LOCAL-00226" summary="Написал Extensions.md">
+      <option name="closed" value="true" />
+      <created>1757603849832</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
+      <option name="project" value="LOCAL" />
+      <updated>1757603849832</updated>
+    </task>
+    <task id="LOCAL-00227" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757603933656</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
+      <option name="project" value="LOCAL" />
+      <updated>1757603933656</updated>
+    </task>
+    <option name="localTasksCounter" value="228" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +587,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Накидал IReactiveVariable.md" />
     <MESSAGE value="Остановились на ReactiveVariable" />
     <MESSAGE value="Сделал много extensions!" />
     <MESSAGE value="Сделал ReactiveVariable.md" />
@@ -607,10 +608,11 @@
     <MESSAGE value="Reorganize Folders!" />
     <MESSAGE value="Написал ISignal.md" />
     <MESSAGE value="Прочесал InlineSignal.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Написал IEvent.md" />
     <MESSAGE value="Сделал Subscription.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал Subscription.md" />
+    <MESSAGE value="Написал Extensions.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,7 +4,7 @@ The **IRequest** interfaces define a set of contracts for request actions that c
 They extend the [IAction](../Actions/IAction.md) interfaces and provide **required flags** and **argument retrieval / consumption** functionality.
 
 > [!IMPORTANT]
-> Unlike regular [actions](../Actions/IAction.md), requests are meant for **deferred execution**. You can call `Invoke` to create a request, and process it later using `Consume`. Repeated `Invoke` calls before `Consume` do not create duplicates.
+> Unlike regular actions, requests are meant for **deferred execution**. You can call `Invoke` to create a request, and process it later using `Consume`. Repeated `Invoke` calls before `Consume` do not create duplicates.
 
 ---
 
