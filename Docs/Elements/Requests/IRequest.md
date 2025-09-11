@@ -309,6 +309,12 @@ Below are examples of using `IRequest` with the `Atomic.Entities` framework.
 
 ### 1. Move Input Using Requests
 This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume it later in fixed update**:
+```csharp
+//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
+entity.AddMoveRequest(new BaseRequest<Vector3>());
+entity.AddBehaviour<MoveController>();
+entity.AddBehaviour<MoveBehaviour>();
+```
 
 ```csharp
 // MoveController produces the request
@@ -354,7 +360,12 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 
 ### 2. Target Following Using Requests
 In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
-
+```csharp
+//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
+entity.AddMoveRequest(new BaseRequest<Vector3>());
+entity.AddBehaviour<AIFollowBehaviour>();
+entity.AddBehaviour<MoveBehaviour>();
+```
 ```csharp
 // AIFollowBehaviour produces the request
 public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
