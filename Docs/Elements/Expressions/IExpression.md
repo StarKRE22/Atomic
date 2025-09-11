@@ -1,6 +1,5 @@
 # 🧩 Expression Interfaces
-These interfaces represent **expressions composed of function members** that can be dynamically added, removed, and evaluated.  
-They support parameterless functions as well as functions with one or more parameters.
+These interfaces represent **expressions composed of function members** that can be dynamically added, removed, and evaluated. They support parameterless functions as well as functions with one or more parameters.
 
 > **Note:** These interfaces allow **dynamic composition of multiple factors or conditions** at runtime.  
 > For example, you can add multipliers for speed, apply effects when an object is frozen, or modify a value based on boosts.  
