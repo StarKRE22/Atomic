@@ -49,7 +49,7 @@ public void Dispose()
 - **Description:** Clears all subscriptions for this event.
 ---
 
-## 🧩 BaseEvent&lt;R&gt;
+## 🧩 BaseEvent&lt;T&gt;
 ```csharp
 public class BaseEvent<T> : IEvent<T>, IDisposable
 ```
