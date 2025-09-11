@@ -43,7 +43,6 @@ action.Invoke(); // Output: Hello World!
 ```csharp
 public interface IAction<in T>
 ```
-
 - **Description:** Represents an executable action that takes one argument.
 - **Type parameter:** `T` — the input parameter
 
@@ -90,7 +89,6 @@ public interface IAction<in T1, in T2>
 ```csharp
 void Invoke(T1 arg1, T2 arg2);
 ```
-
 - **Description:** Executes the action with the specified arguments
 - **Parameters:**
     - `arg1` — the first argument
@@ -115,7 +113,6 @@ action.Invoke(enemy, 5);
 ```csharp
 public interface IAction<in T1, in T2, in T3>
 ```
-
 - **Description:** Represents an executable action that takes three arguments.
 - **Type parameters:**
     - `T1` — the first argument
@@ -129,7 +126,6 @@ public interface IAction<in T1, in T2, in T3>
 ```csharp
 void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
-
 - **Description:** Executes the action with the specified arguments
 - **Parameters:**
     - `arg1` — the first argument

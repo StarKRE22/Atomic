@@ -74,8 +74,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ISetter](Setters/ISetter.md) <!-- + -->
   - [InlineSetter](Setters/InlineSetter.md) <!-- + -->
 - **Observables**
-  - [ISignal](Signals/ISignal.md)
-  - [InlineSignal](Signals/InlineSignal.md)
+  - [ISignal](Signals/ISignal.md) <!-- + -->
+  - [InlineSignal](Signals/InlineSignal.md) <!-- + -->
   - [IEvent](Events/IEvent.md)
   - [BaseEvent](Events/BaseEvent.md)
   - [Subscription](Signals/Subscription.md)

@@ -35,7 +35,7 @@ Subscription Subscribe(Action action)
 
 #### `Unsubscribe(Action)`
 ```csharp
-void `Unsubscribe(Action action)`  
+void Unsubscribe(Action action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -74,7 +74,7 @@ Subscription<T> Subscribe(Action<T> action)
 
 #### `Unsubscribe(Action<T>)`
 ```csharp
-void `Unsubscribe(Action<T> action)`  
+void Unsubscribe(Action<T> action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -114,7 +114,7 @@ Subscription<T1, T2> Subscribe(Action<T1, T2> action)
 
 #### `Unsubscribe(Action<T1, T2>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2> action)`  
+void Unsubscribe(Action<T1, T2> action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -151,7 +151,7 @@ Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
 
 #### `Unsubscribe(Action<T1, T2, T3>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2, T3> action)`  
+void Unsubscribe(Action<T1, T2, T3> action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -191,7 +191,7 @@ Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
 
 #### `Unsubscribe(Action<T1, T2, T3, T4>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2, T3, T4> action)`  
+void Unsubscribe(Action<T1, T2, T3, T4> action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.

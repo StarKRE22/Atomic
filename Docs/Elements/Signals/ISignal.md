@@ -15,7 +15,7 @@ public interface ISignal
 
 #### `Subscribe(Action)`
 ```csharp
-Subscription Subscribe(Action action)  
+Subscription Subscribe(Action action)
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
@@ -23,7 +23,7 @@ Subscription Subscribe(Action action)
 
 #### `Unsubscribe(Action)`
 ```csharp
-void `Unsubscribe(Action action)`  
+void Unsubscribe(Action action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -41,7 +41,7 @@ public interface ISignal<T>
 
 #### `Subscribe(Action<T>)`
 ```csharp
-Subscription<T> Subscribe(Action<T> action)  
+Subscription<T> Subscribe(Action<T> action)
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
@@ -49,7 +49,7 @@ Subscription<T> Subscribe(Action<T> action)
 
 #### `Unsubscribe(Action<T>)`
 ```csharp
-void `Unsubscribe(Action<T> action)`  
+void Unsubscribe(Action<T> action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -68,7 +68,7 @@ public interface ISignal<T1, T2>
 
 #### `Subscribe(Action<T1, T2>)`
 ```csharp
-Subscription<T1, T2> Subscribe(Action<T1, T2> action)  
+Subscription<T1, T2> Subscribe(Action<T1, T2> action)
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
@@ -76,7 +76,7 @@ Subscription<T1, T2> Subscribe(Action<T1, T2> action)
 
 #### `Unsubscribe(Action<T1, T2>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2> action)`  
+void Unsubscribe(Action<T1, T2> action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -96,7 +96,7 @@ public interface ISignal<T1, T2, T3>
 
 #### `Subscribe(Action<T1, T2, T3>)`
 ```csharp
-Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)  
+Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
@@ -104,7 +104,7 @@ Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
 
 #### `Unsubscribe(Action<T1, T2, T3>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2, T3> action)`  
+void Unsubscribe(Action<T1, T2, T3> action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -125,7 +125,7 @@ public interface ISignal<T1, T2, T3, T4>
 
 #### `Subscribe(Action<T1, T2, T3, T4>)`
 ```csharp
-Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)  
+Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
 ```
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
@@ -133,7 +133,7 @@ Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
 
 #### `Unsubscribe(Action<T1, T2, T3, T4>)`
 ```csharp
-void `Unsubscribe(Action<T1, T2, T3, T4> action)`  
+void Unsubscribe(Action<T1, T2, T3, T4> action)
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
@@ -145,8 +145,8 @@ Below is an example of how to use `ISignal` for triggering a **sound effect** to
 ```csharp
 // Create an entity with a "FireEvent" signal property
 var entity = new Entity("Character");
-entity.AddValue<ISignal>("FireEvent", new BaseEvent());
-entity.AddValue<AudioSource>("AudioSource", audioSource);
+entity.AddValue("FireEvent", new BaseEvent()); //ISignal
+entity.AddValue("AudioSource", audioSource);
 ```
 
 ```csharp

@@ -47,7 +47,7 @@ Subscription<T> Subscribe(Action action)
 
 #### `Unsubscribe(Action)`
 ```csharp
-void `Unsubscribe(Action action)`  
+void Unsubscribe(Action action)  
 ```
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
