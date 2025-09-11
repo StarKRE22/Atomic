@@ -2,7 +2,7 @@
 
 The **BaseRequest** classes provide **concrete implementations** of the [IRequest](IRequest.md) interfaces. They are designed to store request state and optionally one to four arguments. These classes **track whether a request is required** and allow **deferred consumption**.
 
-> [!INFO]
+> [!IMPORTANT]
 > Unlike regular actions, requests are meant for **deferred execution**. You can call `Invoke` to create a request, and process it later using `Consume`. Repeated `Invoke` calls before `Consume` do not create duplicates.
 
 ---
