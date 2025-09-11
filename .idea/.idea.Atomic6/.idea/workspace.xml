@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Requests/IRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Requests/IRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
     </list>
@@ -166,23 +163,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="19344000" />
-    </task>
-    <task id="LOCAL-00179" summary="Сделал InlineAction.md">
-      <option name="closed" value="true" />
-      <created>1757361977874</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1757361977874</updated>
-    </task>
-    <task id="LOCAL-00180" summary="Сделал InlineAction.md">
-      <option name="closed" value="true" />
-      <created>1757362069418</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1757362069418</updated>
+      <workItem from="1757584369536" duration="20247000" />
     </task>
     <task id="LOCAL-00181" summary="Сделал InlineAction.md">
       <option name="closed" value="true" />
@@ -560,7 +541,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757603933656</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="Написал IRequest.md">
+      <option name="closed" value="true" />
+      <created>1757607502725</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1757607502725</updated>
+    </task>
+    <task id="LOCAL-00229" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757607551762</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1757607551762</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Остановились на ReactiveVariable" />
     <MESSAGE value="Сделал много extensions!" />
     <MESSAGE value="Сделал ReactiveVariable.md" />
     <MESSAGE value="Сделал ProxyVariable!" />
@@ -611,6 +607,7 @@
     <MESSAGE value="Написал IEvent.md" />
     <MESSAGE value="Сделал Subscription.md" />
     <MESSAGE value="Написал Extensions.md" />
+    <MESSAGE value="Написал IRequest.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>

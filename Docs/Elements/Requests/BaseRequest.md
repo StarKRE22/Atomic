@@ -62,7 +62,7 @@ public T Arg { get; }
 public void Invoke(T arg);
 ```
 - **Description:** Marks the request as required and stores the argument.
-- **Parameter:** `arg` — the argument value.
+- **Parameter:** `arg` — the input argument.
 
 #### `Consume(out T)`
 ```csharp
@@ -115,6 +115,7 @@ public T2 Arg2 { get; }
 public void Invoke(T1 arg1, T2 arg2);
 ```
 - **Description:** Marks the request as required and stores both arguments.
+- **Parameters:** `arg1`, `arg2` — the input arguments.
 
 #### `Consume(out T1, out T2)`
 ```csharp
@@ -177,6 +178,7 @@ public T3 Arg3 { get; }
 public void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 - **Description:** Marks the request as required and stores all three arguments.
+- **Parameters:** `arg1`, `arg2`, `arg3` — the input arguments.
 
 #### `Consume(out T1, out T2, out T3)`
 ```csharp
@@ -244,6 +246,7 @@ public T4 Arg4 { get; }
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 - **Description:** Marks the request as required and stores all four arguments.
+- **Parameters:** `arg1`, `arg2`, `arg3`, `arg4` — the input arguments.
 
 #### `Consume(out T1, out T2, out T3, out T4)`
 ```csharp
