@@ -84,7 +84,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IRequest](Requests/IRequest.md) <!-- + -->
   - [BaseRequest](Requests/BaseRequest.md) <!-- + -->
 - **Expressions**
-  - [IExpression](Expressions/IExpression.md)
+  - [IExpression](Expressions/IExpression.md) <!-- + -->
   - [ExpressionBase](Expressions/ExpressionBase.md)
   - [InlineExpression](Expressions/InlineExpression.md)
   - [AndExpression](Expressions/AndExpression.md)

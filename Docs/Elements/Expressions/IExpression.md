@@ -9,8 +9,7 @@ evaluated. They support parameterless functions as well as functions with one or
 > or modify a value based on boosts.
 
 > [!NOTE]  
-> Additionally, `IExpression` **implements `IList`** (so it can hold multiple function members) and *
-*[IFunction](../Functions/IFunction.md)** (so it itself can be evaluated as a function).
+> Additionally, `IExpression` **implements** `IList` (so it can hold multiple function members) and [IFunction](../Functions/IFunction.md) (so it itself can be evaluated as a function).
 ---
 
 ## IExpression&lt;R&gt;
@@ -43,8 +42,71 @@ public interface IExpression<R> : IList<Func<R>>, IValue<R>
 | `Remove`        | `Func<R> item`                    | `bool`                 | Removes the specified function.                    |
 | `RemoveAt`      | `int index`                       | `void`                 | Removes the function at a specific index.          |
 | `GetEnumerator` | —                                 | `IEnumerator<Func<R>>` | Returns an enumerator for iterating the functions. |
+---
 
-### 🗂 Example Usage
+## IExpression&lt;T, R&gt;
+```csharp
+public interface IExpression<T, R> : IList<Func<T, R>>, IValue<R>
+```
+- An **expression with a single parameter** of type `T` that returns a value of type `R`.
+
+### Properties
+
+| Property          | Type           | Description                                              |
+|-------------------|----------------|----------------------------------------------------------|
+| `Value`           | `R`            | Evaluates the expression with the current argument and returns the result. |
+| `Count`           | `int`          | Gets the number of functions in the expression.          |
+| `IsReadOnly`      | bool           | Indicates whether the list of functions can be modified. |
+| `this[int index]` | `Func<T, R>`   | Indexer to access a function at a specific position.     |
+
+### Methods
+
+| Method          | Parameters                        | Returns                | Description                                        |
+|-----------------|-----------------------------------|------------------------|----------------------------------------------------|
+| `Invoke`        | `T arg`                           | `R`                    | Evaluates the expression with the provided argument and returns the result. |
+| `Add`           | `Func<T, R> item`                 | `void`                 | Adds a function to the expression.                 |
+| `Clear`         | —                                 | `void`                 | Removes all functions from the expression.         |
+| `Contains`      | `Func<T, R> item`                 | `bool`                 | Checks if the function exists in the expression.   |
+| `CopyTo`        | `Func<T, R>[] array, int arrayIndex` | `void`              | Copies the functions to an array.                  |
+| `IndexOf`       | `Func<T, R> item`                 | `int`                  | Gets the index of a function.                      |
+| `Insert`        | `int index, Func<T, R> item`      | `void`                 | Inserts a function at a specific index.            |
+| `Remove`        | `Func<T, R> item`                 | `bool`                 | Removes the specified function.                    |
+| `RemoveAt`      | `int index`                        | `void`                 | Removes the function at a specific index.          |
+| `GetEnumerator` | —                                 | `IEnumerator<Func<T, R>>` | Returns an enumerator for iterating the functions. |
+---
+
+## IExpression&lt;T1, T2, R&gt;
+```csharp
+public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IValue<R>
+```
+- An **expression with two parameters** of types `T1` and `T2` that returns a value of type `R`.
+
+### Properties
+
+| Property          | Type             | Description                                              |
+|-------------------|-----------------|----------------------------------------------------------|
+| `Value`           | `R`              | Evaluates the expression with the current arguments and returns the result. |
+| `Count`           | `int`            | Gets the number of functions in the expression.          |
+| `IsReadOnly`      | `bool`           | Indicates whether the list of functions can be modified. |
+| `this[int index]` | `Func<T1, T2, R>` | Indexer to access a function at a specific position.     |
+
+### Methods
+
+| Method          | Parameters                       | Returns                  | Description                                        |
+|-----------------|----------------------------------|--------------------------|----------------------------------------------------|
+| `Invoke`        | `T1 arg1, T2 arg2`               | `R`                      | Evaluates the expression with the provided arguments and returns the result. |
+| `Add`           | `Func<T1, T2, R> item`           | `void`                   | Adds a function to the expression.                 |
+| `Clear`         | —                                | `void`                   | Removes all functions from the expression.         |
+| `Contains`      | `Func<T1, T2, R> item`           | `bool`                   | Checks if the function exists in the expression.   |
+| `CopyTo`        | `Func<T1, T2, R>[] array, int arrayIndex` | `void`          | Copies the functions to an array.                  |
+| `IndexOf`       | `Func<T1, T2, R> item`           | `int`                    | Gets the index of a function.                      |
+| `Insert`        | `int index, Func<T1, T2, R> item` | `void`                  | Inserts a function at a specific index.            |
+| `Remove`        | `Func<T1, T2, R> item`           | `bool`                   | Removes the specified function.                    |
+| `RemoveAt`      | `int index`                       | `void`                  | Removes the function at a specific index.          |
+| `GetEnumerator` | —                                | `IEnumerator<Func<T1, T2, R>>` | Returns an enumerator for iterating the functions. |
+---
+
+## 🗂 Example Usage
 
 ```csharp
 // Suppose we have a concrete implementation of IExpression<int>
@@ -74,39 +136,7 @@ foreach (Func<int> func in expression)
     Console.WriteLine($"Function result: {func()}");
 ```
 
----
-
-## IExpression<T, R>
-
-An **expression with a single input parameter** of type `T` and return type `R`.
-
-```csharp
-public interface IExpression<T, R> : IList<Func<T, R>>, IFunction<T, R>
-{
-}
-```
-
-- **Implements** `IList<Func<T, R>>` – allows indexed access and enumeration of the function members.
-- **Implements** `IFunction<T, R>` – allows evaluation of the expression with one argument of type `T`.
-
----
-
-## IExpression<T1, T2, R>
-
-An **expression with two input parameters** (`T1`, `T2`) and return type `R`.
-
-```csharp
-public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
-{
-}
-```
-
-- **Implements** `IList<Func<T1, T2, R>>` – allows indexed access and enumeration of the function members.
-- **Implements** `IFunction<T1, T2, R>` – allows evaluation of the expression with two arguments of types `T1` and `T2`.
-
----
-
-## Practical Use Cases
+## 📝 Notes
 
 Expressions are particularly useful for dynamic runtime calculations, such as:
 

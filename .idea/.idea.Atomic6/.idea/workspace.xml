@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,31 +163,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="20606000" />
-    </task>
-    <task id="LOCAL-00183" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757362375139</created>
-      <option name="number" value="00183" />
-      <option name="presentableId" value="LOCAL-00183" />
-      <option name="project" value="LOCAL" />
-      <updated>1757362375139</updated>
-    </task>
-    <task id="LOCAL-00184" summary="Написал PrintAction.md">
-      <option name="closed" value="true" />
-      <created>1757406655122</created>
-      <option name="number" value="00184" />
-      <option name="presentableId" value="LOCAL-00184" />
-      <option name="project" value="LOCAL" />
-      <updated>1757406655122</updated>
-    </task>
-    <task id="LOCAL-00185" summary="Сделал CompositeAction.cs">
-      <option name="closed" value="true" />
-      <created>1757411697455</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1757411697455</updated>
+      <workItem from="1757584369536" duration="22426000" />
     </task>
     <task id="LOCAL-00186" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -559,7 +533,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757608605920</updated>
     </task>
-    <option name="localTasksCounter" value="232" />
+    <task id="LOCAL-00232" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757608764995</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
+      <option name="project" value="LOCAL" />
+      <updated>1757608764995</updated>
+    </task>
+    <task id="LOCAL-00233" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757608866938</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
+      <option name="project" value="LOCAL" />
+      <updated>1757608866938</updated>
+    </task>
+    <task id="LOCAL-00234" summary="Пилим IExpression.md">
+      <option name="closed" value="true" />
+      <created>1757610047184</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1757610047184</updated>
+    </task>
+    <option name="localTasksCounter" value="235" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал ReactiveVariable.md" />
     <MESSAGE value="Сделал ProxyVariable!" />
     <MESSAGE value="Прочесал Variables!" />
     <MESSAGE value="Сделал IAction.md" />
@@ -611,7 +608,8 @@
     <MESSAGE value="Написал IRequest.md" />
     <MESSAGE value="Написал BaseRequest.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Пилим IExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим IExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
