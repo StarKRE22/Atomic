@@ -131,9 +131,23 @@ namespace Atomic.Elements
 
         #endregion
 
-
         #region SubscribeRange
 
+        /// <summary>
+        /// Subscribes a range of <see cref="IAction"/> actions to a reactive source.
+        /// Null actions in the collection are ignored.
+        /// </summary>
+        /// <param name="it">The reactive source.</param>
+        /// <param name="actions">The collection of actions to subscribe.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SubscribeRange(this ISignal it, IEnumerable<IAction> actions)
+        {
+            if (actions != null)
+                foreach (IAction action in actions)
+                    if (action != null)
+                        it.Subscribe(action.Invoke);
+        }
+        
         /// <summary>
         /// Subscribes a range of <see cref="IAction{T}"/> actions to a reactive source.
         /// Null actions in the collection are ignored.
@@ -193,6 +207,18 @@ namespace Atomic.Elements
 
         #region UnsubscribeRange
 
+        /// <summary>
+        /// Unsubscribes a range of <see cref="IAction"/> actions from a reactive source.
+        /// Null actions in the collection are ignored.
+        /// </summary>
+        public static void UnsubscribeRange(this ISignal it, IEnumerable<IAction> actions)
+        {
+            if (actions != null)
+                foreach (var action in actions)
+                    if (action != null)
+                        it.Unsubscribe(action.Invoke);
+        }
+        
         /// <summary>
         /// Unsubscribes a range of <see cref="IAction{T}"/> actions from a reactive source.
         /// Null actions in the collection are ignored.

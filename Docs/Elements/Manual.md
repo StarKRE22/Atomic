@@ -77,8 +77,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ISignal](Signals/ISignal.md) <!-- + -->
   - [InlineSignal](Signals/InlineSignal.md) <!-- + -->
   - [IEvent](Events/IEvent.md) <!-- + -->
-  - [BaseEvent](Events/BaseEvent.md)
-  - [Subscription](Signals/Subscription.md)
+  - [BaseEvent](Events/BaseEvent.md) <!-- + -->
+  - [Subscription](Signals/Subscription.md) <!-- + -->
   - [Extensions](Signals/Extensions.md)
 - **Requests**
   - [IRequest](Requests/IRequest.md)
