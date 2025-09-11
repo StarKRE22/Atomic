@@ -36,7 +36,7 @@ void Invoke();
 - **Description:** Executes the event logic
 ---
 
-## 🧩 IEvent&lt;R&gt;
+## 🧩 IEvent&lt;T&gt;
 
 ```csharp
 public interface IEvent<T> : ISignal<T>, IAction<T>
