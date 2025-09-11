@@ -12,12 +12,12 @@ namespace BeginnerGame
         {
             _context = context;
             _gameOverEvent = GameContext.Instance.GetGameOverEvent();
-            _gameOverEvent.OnEvent += this.OnGameOver;
+            _gameOverEvent.Subscribe(this.OnGameOver);
         }
 
         public void Dispose(IEntity entity)
         {
-            _gameOverEvent.OnEvent -= this.OnGameOver;
+            _gameOverEvent.Unsubscribe(this.OnGameOver);
         }
 
         private void OnGameOver() => GameOverUseCase.ShowPopup(_context);

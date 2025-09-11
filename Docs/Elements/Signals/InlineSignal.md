@@ -9,7 +9,7 @@ They implement the corresponding [ISignal](ISignal.md) interfaces and allow enti
 ```csharp
 public class InlineSignal : ISignal
 ```
-- **Description:** Represents a **parameterless reactive signal**.
+- **Description:** Represents a signal that can notify subscribers of events **without passing any data**.
 
 ### Constructors
 
@@ -21,6 +21,7 @@ public InlineSignal(Action<Action> subscribe, Action<Action> unsubscribe)
 - **Parameters:**
     - `subscribe` — Action handling subscription logic
     - `unsubscribe` — Action handling unsubscription logic
+- **Throws:** `ArgumentNullException` if `subscribe` or `unsubscribe` is null.
 
 ### Methods
 
@@ -45,7 +46,8 @@ void `Unsubscribe(Action action)`
 ```csharp
 public class InlineSignal<T> : ISignal<T>
 ```
-- **Description:** Represents a reactive signal with **one parameter**.
+- **Description:** Represents a signal that notifies subscribers with a **single value**.
+- **Type parameter:** `T` — the emitted value type.
 
 ### Constructors
 
@@ -58,6 +60,7 @@ public InlineSignal(Action<Action<T>> subscribe, Action<Action<T>> unsubscribe)
 - **Parameters:**
     - `subscribe` — Action handling subscription logic
     - `unsubscribe` — Action handling unsubscription logic
+- **Throws:** `ArgumentNullException` if `subscribe` or `unsubscribe` is null.
 
 ### Methods
 
@@ -83,7 +86,10 @@ void `Unsubscribe(Action<T> action)`
 public class InlineSignal<T1, T2> : ISignal<T1, T2>
 ```
 - **Description:** Represents a reactive signal with **two parameters**.
-
+- **Type parameters:**
+  - `T1` — the first emitted value
+  - `T2` — the second emitted value
+  
 ### Constructors
 
 #### `InlineSignal(Action<Action<T1, T2>>, Action<Action<T1, T2>>)`
@@ -94,6 +100,7 @@ public InlineSignal(Action<Action<T1, T2>> subscribe, Action<Action<T1, T2>> uns
 - **Parameters:**
     - `subscribe` — Action handling subscription logic
     - `unsubscribe` — Action handling unsubscription logic
+- **Throws:** `ArgumentNullException` if `subscribe` or `unsubscribe` is null.
 
 ### Methods
 
@@ -113,206 +120,98 @@ void `Unsubscribe(Action<T1, T2> action)`
 - **Parameters:** `action` – The delegate to remove from the subscription list.
 ---
 
-## 🔔 InlineSignal&lt;T1, T2, T3&gt;
-!!!
+## 🧩 InlineSignal&lt;T1, T2, T3&gt;
+```csharp
 public sealed class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
-!!!
-- **Description:** Represents a reactive signal with **three parameters**.
+```
+- **Description:** Represents a signal that notifies subscribers with **three values**.
+- **Type parameters:**
+  - `T1` — the first emitted value
+  - `T2` — the second emitted value
+  - `T3` — the third emitted value
 
 ### Constructors
-#### `InlineSignal(Action<Action<T1, T2, T3>> subscribe, Action<Action<T1, T2, T3>> unsubscribe)`
-!!!
+#### `InlineSignal(Action<Action<T1, T2, T3>>, Action<Action<T1, T2, T3>>)`
+```csharp
 public InlineSignal(Action<Action<T1, T2, T3>> subscribe, Action<Action<T1, T2, T3>> unsubscribe)
-!!!
+```
+- **Description:** Initializes a new instance with provided subscription and unsubscription delegates.
+- **Parameters:**
+  - `subscribe` — Action handling subscription logic
+  - `unsubscribe` — Action handling unsubscription logic
+- **Throws:** `ArgumentNullException` if `subscribe` or `unsubscribe` is null.
 
-### Methods
+#### `Subscribe(Action<T1, T2, T3>)`
+```csharp
+Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription<T1, T2, T3>](../Signals/Subscription.md#subscriptiont1-t2-t3) struct representing the active subscription.
 
-#### `Subscribe(Action<T1, T2, T3> action)`
-!!!
-public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
-!!!
-- **Description:** Subscribes to the signal with three arguments.
-
-#### `Unsubscribe(Action<T1, T2, T3> action)`
-!!!
-public void Unsubscribe(Action<T1, T2, T3> action)
-!!!
-
-### 🗂 Example of Usage
-!!!
-var signal = new InlineSignal<string, int, bool>(
-onSubscribe => Console.WriteLine("Subscribed!"),
-onUnsubscribe => Console.WriteLine("Unsubscribed!")
-);
-
-var subscription = signal.Subscribe((player, score, alive) =>
-Console.WriteLine($"{player} scored {score}, Alive: {alive}")
-);
-subscription.Dispose();
-!!!
-
+#### `Unsubscribe(Action<T1, T2, T3>)`
+```csharp
+void `Unsubscribe(Action<T1, T2, T3> action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
 ---
 
-## 🔔 InlineSignal&lt;T1, T2, T3, T4&gt;
-!!!
+## 🧩 InlineSignal&lt;T1, T2, T3, T4&gt;
+```csharp
 public sealed class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
-!!!
-- **Description:** Represents a reactive signal with **four parameters**.
+```
+- **Description:** Represents a signal that notifies subscribers with **four values**.
+- **Type parameters:**
+  - `T1` — the first emitted value
+  - `T2` — the second emitted value
+  - `T3` — the third emitted value
+  - `T4` — the fourth emitted value
 
 ### Constructors
 #### `InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)`
-!!!
+```csharp
 public InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)
-!!!
+```
+- **Description:** Initializes a new instance with provided subscription and unsubscription delegates.
+- **Parameters:**
+  - `subscribe` — Action handling subscription logic
+  - `unsubscribe` — Action handling unsubscription logic
+- **Throws:** `ArgumentNullException` if `subscribe` or `unsubscribe` is null.
 
 ### Methods
 
-#### `Subscribe(Action<T1, T2, T3, T4> action)`
-!!!
-public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
-!!!
+#### `Subscribe(Action<T1, T2, T3, T4>)`
+```csharp
+Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription<T1, T2, T3, T4>](../Signals/Subscription.md#subscriptiont1-t2-t3-t4) struct representing the active subscription.
 
-#### `Unsubscribe(Action<T1, T2, T3, T4> action)`
-!!!
-public void Unsubscribe(Action<T1, T2, T3, T4> action)
-!!!
+#### `Unsubscribe(Action<T1, T2, T3, T4>)`
+```csharp
+void `Unsubscribe(Action<T1, T2, T3, T4> action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+---
+## 🗂 Example of Usage
 
-### 🗂 Example of Usage
-!!!
-var signal = new InlineSignal<string, int, float, bool>(
-onSubscribe => Console.WriteLine("Subscribed!"),
-onUnsubscribe => Console.WriteLine("Unsubscribed!")
+The following example demonstrates how to wrap the `OnTriggerEntered` event from the [TriggerEvents](../UnityComponents/TriggerEvents.md) class into a `Signal<Collider>`:
+
+```csharp
+// Wrap the Unity event into an InlineSignal
+ISignal<Collider> onTriggerEnter = new InlineSignal<Collider>(
+    subscribe: action => triggerEvents.OnEntered += action,
+    unsubscribe: action => triggerEvents.OnEntered -= action
 );
 
-var subscription = signal.Subscribe((name, score, time, isWinner) =>
-Console.WriteLine($"{name} scored {score} in {time}s. Winner: {isWinner}")
+// Subscribe to the signal
+Subscription<Collider> subscription = onTriggerEnter.Subscribe(
+    collider => Debug.Log($"On Trigger Entered: {collider.name}")
 );
+
+// Later, dispose to unsubscribe
 subscription.Dispose();
-!!!
-
----
-
-## 📌 Best Practice
-
-> `InlineSignal` is best used for decoupled **reactive event streams**, enabling **pub/sub architectures** without tight coupling between publishers and subscribers.
-
-Typical use cases:
-- Entity events in games (damage, death, resource collection)
-- UI updates and notifications
-- Reactive programming pipelines
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-======
-======
-
-
-
-# 🧩 InlineSignal Classes
-
-The **InlineSignal** classes provide **base implementations of reactive sources** that notify subscribers when values are emitted.  
-They support 0–4 parameters and implement the corresponding `ISignal` interfaces.
-
-### Notes
-
-- **Delegate-based** – All `InlineSignal` classes accept `subscribe` and `unsubscribe` delegates for flexible subscription management.
-- **Subscription Structs** – Each `Subscribe` method returns a `Subscription` struct to allow easy unsubscription.
-- **Serializable** – All classes are `[Serializable]`, suitable for Unity and other serialization systems.
-- **Null Safety** – Constructors validate delegate arguments, throwing `ArgumentNullException` if `null`.
-
----
-
-## InlineSignal
-
-A **non-generic reactive source**.
-
-```csharp
-public class InlineSignal : ISignal
-{
-    Subscription Subscribe(Action action);
-    void Unsubscribe(Action action);
-}
 ```
-- **Subscribe(Action action)** – Subscribes an action to be invoked when the source triggers.
-- **Unsubscribe(Action action)** – Unsubscribes a previously registered action.
----
-
-## InlineSignal&lt;T&gt;
-A **generic reactive source with one value**.
-```csharp
-public class InlineSignal<T> : ISignal<T>
-{
-    Subscription<T> Subscribe(Action<T> action);
-    void Unsubscribe(Action<T> action);
-}
-```
-- **T** – Type of the emitted value.
-- **Subscribe(Action<T> action)** – Subscribes to receive emitted values.
-- **Unsubscribe(Action<T> action)** – Unsubscribes a previously registered action.
----
-## InlineSignal<T1, T2>
-A **reactive source with two values**.
-```csharp
-public class InlineSignal<T1, T2> : ISignal<T1, T2>
-{
-    Subscription<T1, T2> Subscribe(Action<T1, T2> action);
-    void Unsubscribe(Action<T1, T2> action);
-}
-```
-- **T1**, **T2** – Types of the emitted values.
----
-## InlineSignal<T1, T2, T3>
-A **reactive source with three values**.
-```csharp
-public class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
-{
-    Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action);
-    void Unsubscribe(Action<T1, T2, T3> action);
-}
-```
-- **T1**, **T2**, **T3** – Types of the emitted values.
----
-## InlineSignal<T1, T2, T3, T4>
-A **reactive source with four values**.
-```csharp
-public class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
-{
-    Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action);
-    void Unsubscribe(Action<T1, T2, T3, T4> action);
-}
-```
-- **T1**, **T2**, **T3**, **T4** – Types of the emitted values.
----

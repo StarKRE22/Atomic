@@ -22,7 +22,6 @@ namespace Atomic.Elements
     {
         private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
 
-        /// <inheritdoc/>
         public event Action<T> OnValueChanged;
 
 #if ODIN_INSPECTOR

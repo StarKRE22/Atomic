@@ -1,5 +1,3 @@
-using System;
-
 namespace Atomic.Elements
 {
     /// <summary>
@@ -9,9 +7,5 @@ namespace Atomic.Elements
     /// <typeparam name="T">The type of the value.</typeparam>
     public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
     {
-        /// <summary>
-        /// Occurs when the value changes.
-        /// </summary>
-        event Action<T> OnValueChanged;
     }
 }

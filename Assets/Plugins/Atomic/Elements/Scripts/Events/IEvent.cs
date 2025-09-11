@@ -1,4 +1,3 @@
-using System;
 
 namespace Atomic.Elements
 {
@@ -10,10 +9,6 @@ namespace Atomic.Elements
     /// </remarks>
     public interface IEvent : ISignal, IAction
     {
-        /// <summary>
-        /// Occurs when the event is triggered.
-        /// </summary>
-        event Action OnEvent;
     }
 
     /// <summary>
@@ -25,10 +20,6 @@ namespace Atomic.Elements
     /// </remarks>
     public interface IEvent<T> : ISignal<T>, IAction<T>
     {
-        /// <summary>
-        /// Occurs when the event is triggered with the specified argument.
-        /// </summary>
-        event Action<T> OnEvent;
     }
 
     /// <summary>
@@ -41,10 +32,6 @@ namespace Atomic.Elements
     /// </remarks>
     public interface IEvent<T1, T2> : ISignal<T1, T2>, IAction<T1, T2>
     {
-        /// <summary>
-        /// Occurs when the event is triggered with two arguments.
-        /// </summary>
-        event Action<T1, T2> OnEvent;
     }
 
     /// <summary>
@@ -58,10 +45,6 @@ namespace Atomic.Elements
     /// </remarks>
     public interface IEvent<T1, T2, T3> : ISignal<T1, T2, T3>, IAction<T1, T2, T3>
     {
-        /// <summary>
-        /// Occurs when the event is triggered with three arguments.
-        /// </summary>
-        event Action<T1, T2, T3> OnEvent;
     }
 
     /// <summary>
@@ -74,9 +57,5 @@ namespace Atomic.Elements
     /// <typeparam name="T4">The type of the fourth event argument.</typeparam>
     public interface IEvent<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>, IAction<T1, T2, T3, T4>
     {
-        /// <summary>
-        /// Occurs when the event is raised with four arguments.
-        /// </summary>
-        event Action<T1, T2, T3, T4> OnEvent;
     }
 }

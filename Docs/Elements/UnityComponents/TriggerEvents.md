@@ -1,4 +1,4 @@
-# 🧩️ TriggerEvents
+# 🧩️ TriggerEvents Classes
 
 `TriggerEvents` and `TriggerEvents2D` are Unity `MonoBehaviour` components that expose trigger callbacks as C# events.  
 They allow you to subscribe to trigger enter, stay, and exit events without writing custom `MonoBehaviour` methods.

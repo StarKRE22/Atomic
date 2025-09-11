@@ -10,18 +10,6 @@
 
 ---
 
-## Events
-
-#### `OnValueChanged`
-```csharp
-event Action<T> OnValueChanged
-```
-- **Description:** Triggered whenever the value changes.
-- **Parameter**: `T` – The new value after the change.
-- **Note:** Allows subscribers to react to value changes in a reactive programming pattern.
-
----
-
 ## Properties
 
 #### `Value`

@@ -11,18 +11,6 @@ This is useful when you need to **wrap an existing data source or event system**
 
 ---
 
-## Events
-
-#### `OnValueChanged`
-```csharp
-event Action<T> OnValueChanged
-```
-- **Description:** Triggered whenever the value changes.
-- **Parameter**: `T` – The new value after the change.
-- **Note:** Allows subscribers to react to value changes .
-
----
-
 ## Constructor
 
 ```csharp

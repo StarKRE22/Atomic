@@ -18,7 +18,6 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveQuaternion : IReactiveVariable<Quaternion>, IDisposable
     {
-        /// <inheritdoc/>
         public event Action<Quaternion> OnValueChanged;
 
 #if ODIN_INSPECTOR
