@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/Sample.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/Sample.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/UIContext/GameOver/GameOverObserver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/BaseEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/BaseEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/IEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/IEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/IReactiveVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/InlineSignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/InlineSignal.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/UnityComponents/TriggerEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/UnityComponents/TriggerEvents.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,9 +39,9 @@
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Elements/Scripts/Events/BaseEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/_DEV/DestroyGameObjectSceneAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/Elements/Values/Const.md.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
@@ -176,31 +165,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="5776000" />
-    </task>
-    <task id="LOCAL-00170" summary="Остановились на ReactiveVariable">
-      <option name="closed" value="true" />
-      <created>1757325012570</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1757325012570</updated>
-    </task>
-    <task id="LOCAL-00171" summary="Сделал много extensions!">
-      <option name="closed" value="true" />
-      <created>1757353253261</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1757353253261</updated>
-    </task>
-    <task id="LOCAL-00172" summary="Сделал ReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1757353905759</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1757353905760</updated>
+      <workItem from="1757584369536" duration="8937000" />
     </task>
     <task id="LOCAL-00173" summary="Сделал ProxyVariable!">
       <option name="closed" value="true" />
@@ -570,7 +535,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757588107426</updated>
     </task>
-    <option name="localTasksCounter" value="219" />
+    <task id="LOCAL-00219" summary="Прочесал InlineSignal.md">
+      <option name="closed" value="true" />
+      <created>1757590176616</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1757590176616</updated>
+    </task>
+    <task id="LOCAL-00220" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757590257699</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1757590257699</updated>
+    </task>
+    <task id="LOCAL-00221" summary="Написал IEvent.md">
+      <option name="closed" value="true" />
+      <created>1757592093342</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1757592093342</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,8 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим!" />
-    <MESSAGE value="Прочесал IVariable.md" />
     <MESSAGE value="Прочесал BaseVariable.md" />
     <MESSAGE value="Накидал IReactiveVariable.md" />
     <MESSAGE value="Остановились на ReactiveVariable" />
@@ -621,8 +608,10 @@
     <MESSAGE value="Написал ISetter.md" />
     <MESSAGE value="Reorganize Folders!" />
     <MESSAGE value="Написал ISignal.md" />
+    <MESSAGE value="Прочесал InlineSignal.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Написал IEvent.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал IEvent.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

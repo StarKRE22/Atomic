@@ -9,8 +9,7 @@ The **IEvent** interfaces define a family of contracts for **reactive events** t
 ```csharp
 public interface IEvent : ISignal, IAction
 ```
-- **Description:** Represents a **parameterless reactive event**.  
-  Can be **subscribed to** as a signal and **invoked** as an action.
+- **Description:** Represents a **parameterless reactive event**.
 
 ### Methods
 
@@ -34,10 +33,10 @@ void Unsubscribe(Action action)
 ```csharp
 void Invoke();
 ```
-- **Description:** Executes the action logic
+- **Description:** Executes the event logic
 ---
 
-## 🧩 IEvent<T>
+## 🧩 IEvent&lt;R&gt;
 
 ```csharp
 public interface IEvent<T> : ISignal<T>, IAction<T>
@@ -67,7 +66,7 @@ void Unsubscribe(Action<T> action)
 ```csharp
 void Invoke(T arg);
 ```
-- **Description:** Executes the action with the specified argument
+- **Description:** Executes the event with the specified argument
 - **Parameter:** `arg` — the input parameter
 ---
 
@@ -141,7 +140,7 @@ void Unsubscribe(Action<T1, T2, T3> action)
 ```csharp
 void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
-- **Description:** Executes the action with the specified arguments
+- **Description:** Executes the event with the specified arguments
 - **Parameters:**
     - `arg1` — the first argument
     - `arg2` — the second argument
@@ -177,12 +176,12 @@ void Unsubscribe(Action<T1, T2, T3, T4> action)
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
 
-#### `Invoke(T1, T2, T3)`
+#### `Invoke(T1, T2, T3, T4)`
 
 ```csharp
-void Invoke(T1 arg1, T2 arg2, T3 arg3);
+void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
-- **Description:** Executes the action with the specified arguments
+- **Description:** Executes the event with the specified arguments
 - **Parameters:**
     - `arg1` — the first argument
     - `arg2` — the second argument
