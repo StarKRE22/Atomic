@@ -1,5 +1,248 @@
 # 🧩 InlineSignal Classes
 
+The **InlineSignal** classes provide wrappers for reactive event sources.  
+They implement the corresponding [ISignal](ISignal.md) interfaces and allow entities to **subscribe / unsubscribe** from events, optionally with parameters.
+
+---
+
+## 🧩 InlineSignal
+```csharp
+public class InlineSignal : ISignal
+```
+- **Description:** Represents a **parameterless reactive signal**.
+
+### Constructors
+
+#### `InlineSignal(Action<Action>, Action<Action>)`
+```csharp
+public InlineSignal(Action<Action> subscribe, Action<Action> unsubscribe)
+```
+- **Description:** Initializes a new instance with provided subscription and unsubscription delegates.
+- **Parameters:**
+    - `subscribe` — Action handling subscription logic
+    - `unsubscribe` — Action handling unsubscription logic
+
+### Methods
+
+#### `Subscribe(Action)`
+```csharp
+Subscription Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription](../Signals/Subscription.md#subscription) struct representing the active subscription.
+
+#### `Unsubscribe(Action)`
+```csharp
+void `Unsubscribe(Action action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+---
+
+## 🧩 InlineSignal&lt;T&gt;
+```csharp
+public class InlineSignal<T> : ISignal<T>
+```
+- **Description:** Represents a reactive signal with **one parameter**.
+
+### Constructors
+
+#### `InlineSignal(Action<Action<T>>, Action<Action<T>>)`
+
+```csharp
+public InlineSignal(Action<Action<T>> subscribe, Action<Action<T>> unsubscribe)
+```
+- **Description:** Initializes a new instance with provided delegates.
+- **Parameters:**
+    - `subscribe` — Action handling subscription logic
+    - `unsubscribe` — Action handling unsubscription logic
+
+### Methods
+
+#### `Subscribe(Action<T>)`
+```csharp
+Subscription<T> Subscribe(Action<T> action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+
+#### `Unsubscribe(Action<T>)`
+```csharp
+void `Unsubscribe(Action<T> action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+---
+
+## 🧩 InlineSignal&lt;T1, T2&gt;
+```csharp
+public class InlineSignal<T1, T2> : ISignal<T1, T2>
+```
+- **Description:** Represents a reactive signal with **two parameters**.
+
+### Constructors
+
+#### `InlineSignal(Action<Action<T1, T2>>, Action<Action<T1, T2>>)`
+```csharp
+public InlineSignal(Action<Action<T1, T2>> subscribe, Action<Action<T1, T2>> unsubscribe)
+```
+- **Description:** Initializes a new instance with provided delegates.
+- **Parameters:**
+    - `subscribe` — Action handling subscription logic
+    - `unsubscribe` — Action handling unsubscription logic
+
+### Methods
+
+#### `Subscribe(Action<T1, T2>)`
+```csharp
+Subscription<T1, T2> Subscribe(Action<T1, T2> action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription<T1, T2>](../Signals/Subscription.md#subscriptiont1-t2) struct representing the active subscription.
+
+#### `Unsubscribe(Action<T1, T2>)`
+```csharp
+void `Unsubscribe(Action<T1, T2> action)`  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+---
+
+## 🔔 InlineSignal&lt;T1, T2, T3&gt;
+!!!
+public sealed class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
+!!!
+- **Description:** Represents a reactive signal with **three parameters**.
+
+### Constructors
+#### `InlineSignal(Action<Action<T1, T2, T3>> subscribe, Action<Action<T1, T2, T3>> unsubscribe)`
+!!!
+public InlineSignal(Action<Action<T1, T2, T3>> subscribe, Action<Action<T1, T2, T3>> unsubscribe)
+!!!
+
+### Methods
+
+#### `Subscribe(Action<T1, T2, T3> action)`
+!!!
+public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
+!!!
+- **Description:** Subscribes to the signal with three arguments.
+
+#### `Unsubscribe(Action<T1, T2, T3> action)`
+!!!
+public void Unsubscribe(Action<T1, T2, T3> action)
+!!!
+
+### 🗂 Example of Usage
+!!!
+var signal = new InlineSignal<string, int, bool>(
+onSubscribe => Console.WriteLine("Subscribed!"),
+onUnsubscribe => Console.WriteLine("Unsubscribed!")
+);
+
+var subscription = signal.Subscribe((player, score, alive) =>
+Console.WriteLine($"{player} scored {score}, Alive: {alive}")
+);
+subscription.Dispose();
+!!!
+
+---
+
+## 🔔 InlineSignal&lt;T1, T2, T3, T4&gt;
+!!!
+public sealed class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
+!!!
+- **Description:** Represents a reactive signal with **four parameters**.
+
+### Constructors
+#### `InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)`
+!!!
+public InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)
+!!!
+
+### Methods
+
+#### `Subscribe(Action<T1, T2, T3, T4> action)`
+!!!
+public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
+!!!
+
+#### `Unsubscribe(Action<T1, T2, T3, T4> action)`
+!!!
+public void Unsubscribe(Action<T1, T2, T3, T4> action)
+!!!
+
+### 🗂 Example of Usage
+!!!
+var signal = new InlineSignal<string, int, float, bool>(
+onSubscribe => Console.WriteLine("Subscribed!"),
+onUnsubscribe => Console.WriteLine("Unsubscribed!")
+);
+
+var subscription = signal.Subscribe((name, score, time, isWinner) =>
+Console.WriteLine($"{name} scored {score} in {time}s. Winner: {isWinner}")
+);
+subscription.Dispose();
+!!!
+
+---
+
+## 📌 Best Practice
+
+> `InlineSignal` is best used for decoupled **reactive event streams**, enabling **pub/sub architectures** without tight coupling between publishers and subscribers.
+
+Typical use cases:
+- Entity events in games (damage, death, resource collection)
+- UI updates and notifications
+- Reactive programming pipelines
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+======
+======
+
+
+
+# 🧩 InlineSignal Classes
+
 The **InlineSignal** classes provide **base implementations of reactive sources** that notify subscribers when values are emitted.  
 They support 0–4 parameters and implement the corresponding `ISignal` interfaces.
 
