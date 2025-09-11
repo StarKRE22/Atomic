@@ -363,8 +363,6 @@ public Func<T1, T2, R> this[int index] { get; set; }
 - **Parameter:** `index` — The position of the function.
 - **Returns:** `Func<T1, T2, R>` — The function at the given index.
 
----
-
 ### Methods
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
@@ -452,28 +450,6 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 🗂 Example of Usage
 Below is an example of using `ExpressionBase` to extend a simple **logical AND** expression with multiple parameterless boolean functions.

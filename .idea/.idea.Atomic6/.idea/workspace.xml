@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,23 +164,7 @@
       <workItem from="1757441777610" duration="135000" />
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
-      <workItem from="1757584369536" duration="22426000" />
-    </task>
-    <task id="LOCAL-00186" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757411841348</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1757411841348</updated>
-    </task>
-    <task id="LOCAL-00187" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757411916926</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1757411916926</updated>
+      <workItem from="1757584369536" duration="25714000" />
     </task>
     <task id="LOCAL-00188" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -557,7 +542,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757610047184</updated>
     </task>
-    <option name="localTasksCounter" value="235" />
+    <task id="LOCAL-00235" summary="Сделал IExpression.md">
+      <option name="closed" value="true" />
+      <created>1757610633264</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1757610633264</updated>
+    </task>
+    <task id="LOCAL-00236" summary="Написал ExpressionBase.md">
+      <option name="closed" value="true" />
+      <created>1757613455017</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1757613455017</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,8 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал ProxyVariable!" />
-    <MESSAGE value="Прочесал Variables!" />
     <MESSAGE value="Сделал IAction.md" />
     <MESSAGE value="Сделал InlineAction.md" />
     <MESSAGE value="Написал PrintAction.md" />
@@ -609,7 +608,9 @@
     <MESSAGE value="Написал BaseRequest.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим IExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим IExpression.md" />
+    <MESSAGE value="Сделал IExpression.md" />
+    <MESSAGE value="Написал ExpressionBase.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал ExpressionBase.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
