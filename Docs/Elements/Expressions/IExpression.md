@@ -17,8 +17,8 @@ evaluated. They support parameterless functions as well as functions with one or
     <h2>🧩 IExpression&lt;R&gt;</h2>
     <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>
   </summary>
+<br>
 
-## 
 ```csharp
 public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>
 ```
@@ -148,6 +148,7 @@ public IEnumerator<Func<R>> GetEnumerator()
     <h2>🧩 IExpression&lt;T, R&gt;</h2>
     <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
   </summary>
+<br>
 
 ```csharp
 public interface IExpression<T, R> : IList<Func<T, R>>, IFunction<T, R>
@@ -274,8 +275,8 @@ public IEnumerator<Func<T, R>> GetEnumerator()
     <h2>🧩 IExpression&lt;T1, T2, R&gt;</h2>
     <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
   </summary>
+<br>
 
-## IExpression&lt;T1, T2, R&gt;
 ```csharp
 public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
 ```
