@@ -13,6 +13,7 @@ The **ExpressionBase** classes provide **base implementations** of the [IExpress
     <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>
   </summary>
 
+
 ```csharp
 public abstract class ExpressionBase<R> : ReactiveLinkedList<Func<R>>, IExpression<R>
 ```
