@@ -149,8 +149,6 @@ public IEnumerator<Func<R>> GetEnumerator()
     <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
   </summary>
 
-<br>
-
 ```csharp
 public interface IExpression<T, R> : IList<Func<T, R>>, IFunction<T, R>
 ```
@@ -277,8 +275,6 @@ public IEnumerator<Func<T, R>> GetEnumerator()
     <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
   </summary>
 
-<br>
-
 ## IExpression&lt;T1, T2, R&gt;
 ```csharp
 public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
@@ -401,7 +397,7 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
 ---
-<details>
+</details>
 
 ## 🗂 Example Usage
 
