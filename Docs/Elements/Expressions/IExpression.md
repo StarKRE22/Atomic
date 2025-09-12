@@ -12,25 +12,18 @@ evaluated. They support parameterless functions as well as functions with one or
 > Additionally, `IExpression` **implements** `IList` (so it can hold multiple function members) and [IFunction](../Functions/IFunction.md) (so it itself can be evaluated as a function).
 ---
 
-[//]: # ()
-[//]: # (<details>)
+<details>
+  <summary>
+    <h2>🧩 IExpression&lt;R&gt;</h2>
+    <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>
+  </summary>
 
-[//]: # (  <summary>)
+<br>
 
-[//]: # (    <h2>ExpressionBase&lt;R&gt;</h2>)
-
-[//]: # (    <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>)
-
-[//]: # (  </summary>)
-
-[//]: # ()
-[//]: # (<br>)
-
-## IExpression&lt;R&gt;
+## 
 ```csharp
-public interface IExpression<R> : IList<Func<R>>, IValue<R>
+public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>
 ```
-- **Description:** Represents a **parameterless expression** aggregating multiple functions returning a value of type `R`.
 - **Type parameter**: `R` — The return type of the expression.
 
 ### Properties
@@ -150,10 +143,18 @@ public IEnumerator<Func<R>> GetEnumerator()
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
 - **Returns:** `IEnumerator<Func<R>>` — Enumerator over the functions.
 ---
+</details>
 
-## IExpression&lt;T, R&gt;
+<details>
+  <summary>
+    <h2>🧩 IExpression&lt;T, R&gt;</h2>
+    <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
+  </summary>
+
+<br>
+
 ```csharp
-public interface IExpression<T, R> : IList<Func<T, R>>, IValue<R>
+public interface IExpression<T, R> : IList<Func<T, R>>, IFunction<T, R>
 ```
 - **Description:** Represents an expression with a **single input parameter** of type `T` that aggregates multiple functions returning a value of type `R`.
 - **Type Parameters:**
@@ -268,12 +269,21 @@ public IEnumerator<Func<T, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T, R>>` — Enumerator for the function members.
-
 ---
+</details>
+
+
+<details>
+  <summary>
+    <h2>🧩 IExpression&lt;T1, T2, R&gt;</h2>
+    <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+  </summary>
+
+<br>
 
 ## IExpression&lt;T1, T2, R&gt;
 ```csharp
-public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IValue<R>
+public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
 ```
 - **Description:** Represents an expression with **two input parameters** of types `T1` and `T2` that aggregates multiple functions returning a value of type `R`.
 - **Type Parameters:**
@@ -393,6 +403,7 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
 ---
+<details>
 
 ## 🗂 Example Usage
 
