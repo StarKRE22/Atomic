@@ -8,12 +8,11 @@ The **ExpressionBase** classes provide **base implementations** of the [IExpress
 ---
 
 <details>
-  <summary><h2>ExpressionBase&lt;R&gt;</h2></summary>
+  <summary><h2>ExpressionBase&lt;R&gt;</h2> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code></summary>
 
 ```csharp
 public abstract class ExpressionBase<R> : ReactiveLinkedList<Func<R>>, IExpression<R>
 ```
-- **Description:** Represents a **parameterless expression** aggregating multiple functions returning a value of type `R`.
 - **Type parameter**: `R` — The return type of the expression.
 
 ### Constructors
@@ -40,6 +39,8 @@ public ExpressionBase(IEnumerable<Func<R>> members)
 - **Description:** Initializes a new expression containing function members from the provided enumerable.
 - **Parameter:** `members` — enumerable of function delegates to add to the expression.
 - **Throws:** `ArgumentNullException` if `members` is null.
+
+### Events
 
 #### `OnStateChanged`
 ```csharp
@@ -204,12 +205,11 @@ public void Dispose()
 
 
 <details>
-  <summary><h2>ExpressionBase&lt;T, R&gt;</h2></summary>
+  <summary><h2>ExpressionBase&lt;T, R&gt;</h2>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>></summary>
 
 ```csharp
 public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
 ```
-- **Description:** Represents an expression with a **single input parameter** of type `T` that aggregates multiple functions returning a value of type `R`.
 - **Type Parameters:**
   - `T` - The input parameter type of the functions.
   - `R` - The return type of the expression.
@@ -236,6 +236,31 @@ protected ExpressionBase(IEnumerable<Func<T, R>> members)
 ```
 - **Description:** Initializes the expression with an enumerable of function members.
 - **Parameter:** `members` — Enumerable collection of functions.
+
+### Events
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is cleared).
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<Func<T, R>> OnItemChanged;
+```
+- **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<Func<T, R>> OnItemInserted;
+```
+- **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<Func<T, R>> OnItemDeleted;
+```
+- **Description:** Occurs when a function delegate is removed from the expression.
 
 ### Properties
 
@@ -288,6 +313,14 @@ public void Add(Func<T, R> item)
 ```
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+#### `AddRange(IEnumerable<Func<T, R>> items)`
+```csharp
+public void AddRange(IEnumerable<Func<T, R>> items)
+```
+- **Description:** Adds multiple functions to the expression at once.
+- **Parameter:** `items` — An enumerable collection of `Func<T, R>` delegates to add.
+- **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
 ```csharp
@@ -348,16 +381,25 @@ public IEnumerator<Func<T, R>> GetEnumerator()
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T, R>>` — Enumerator for the function members.
 
+#### `Dispose()`
+```csharp
+public void Dispose()
+```
+- **Description:** Releases all resources used by the expression and clears its content.  
+  Also unsubscribes all event handlers.
+- **Effects:**
+  - Clears the function list.
+  - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
+
 ---
 </details>
 
 <details>
-  <summary><h2>ExpressionBase&lt;T1, T2, R&gt;</h2></summary>
+  <summary><h2>ExpressionBase&lt;T1, T2, R&gt;</h2>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code></summary>
 
 ```csharp
 public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
 ```
-- **Description:** Represents an expression with **two input parameters** of types `T1` and `T2` that aggregates multiple functions returning a value of type `R`.
 - **Type Parameters:**
   - `T1` — The first input parameter type.
   - `T2` — The second input parameter type.
@@ -386,10 +428,32 @@ protected ExpressionBase(IEnumerable<Func<T1, T2, R>> members)
 - **Description:** Initializes the expression with an enumerable of function members.
 - **Parameter:** `members` — Enumerable collection of functions.
 
----
+### Events
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is cleared).
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<Func<T1, T2, R>> OnItemChanged;
+```
+- **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<Func<T1, T2, R>> OnItemInserted;
+```
+- **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<Func<T1, T2, R>> OnItemDeleted;
+```
+- **Description:** Occurs when a function delegate is removed from the expression.
 
 ### Properties
-
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -441,6 +505,14 @@ public void Add(Func<T1, T2, R> item)
 ```
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+#### `AddRange(IEnumerable<Func<T1, T2, R>> items)`
+```csharp
+public void AddRange(IEnumerable<Func<T1, T2, R>> items)
+```
+- **Description:** Adds multiple functions to the expression at once.
+- **Parameter:** `items` — An enumerable collection of `Func<T1, T2, R>` delegates to add.
+- **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
 ```csharp
@@ -500,9 +572,18 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
+
+#### `Dispose()`
+```csharp
+public void Dispose()
+```
+- **Description:** Releases all resources used by the expression and clears its content.  
+  Also unsubscribes all event handlers.
+- **Effects:**
+  - Clears the function list.
+  - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 ----
 </details>
-
 
 ## 🗂 Example of Usage
 Below is an example of using `ExpressionBase` to extend a simple **logical AND** expression with multiple parameterless boolean functions.
