@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,55 +164,7 @@
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
-      <workItem from="1757657871544" duration="3551000" />
-    </task>
-    <task id="LOCAL-00198" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757484637622</created>
-      <option name="number" value="00198" />
-      <option name="presentableId" value="LOCAL-00198" />
-      <option name="project" value="LOCAL" />
-      <updated>1757484637622</updated>
-    </task>
-    <task id="LOCAL-00199" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757484765941</created>
-      <option name="number" value="00199" />
-      <option name="presentableId" value="LOCAL-00199" />
-      <option name="project" value="LOCAL" />
-      <updated>1757484765941</updated>
-    </task>
-    <task id="LOCAL-00200" summary="SceneActionComposite.md">
-      <option name="closed" value="true" />
-      <created>1757486060781</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1757486060781</updated>
-    </task>
-    <task id="LOCAL-00201" summary="SceneActionComposite.md">
-      <option name="closed" value="true" />
-      <created>1757486071058</created>
-      <option name="number" value="00201" />
-      <option name="presentableId" value="LOCAL-00201" />
-      <option name="project" value="LOCAL" />
-      <updated>1757486071058</updated>
-    </task>
-    <task id="LOCAL-00202" summary="Написал SceneActionReference.cs">
-      <option name="closed" value="true" />
-      <created>1757490356364</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1757490356364</updated>
-    </task>
-    <task id="LOCAL-00203" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757490439804</created>
-      <option name="number" value="00203" />
-      <option name="presentableId" value="LOCAL-00203" />
-      <option name="project" value="LOCAL" />
-      <updated>1757490439804</updated>
+      <workItem from="1757657871544" duration="5740000" />
     </task>
     <task id="LOCAL-00204" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -558,7 +510,55 @@
       <option name="project" value="LOCAL" />
       <updated>1757661354173</updated>
     </task>
-    <option name="localTasksCounter" value="247" />
+    <task id="LOCAL-00247" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661438553</created>
+      <option name="number" value="00247" />
+      <option name="presentableId" value="LOCAL-00247" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661438553</updated>
+    </task>
+    <task id="LOCAL-00248" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661827937</created>
+      <option name="number" value="00248" />
+      <option name="presentableId" value="LOCAL-00248" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661827937</updated>
+    </task>
+    <task id="LOCAL-00249" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661890710</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661890710</updated>
+    </task>
+    <task id="LOCAL-00250" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661924494</created>
+      <option name="number" value="00250" />
+      <option name="presentableId" value="LOCAL-00250" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661924494</updated>
+    </task>
+    <task id="LOCAL-00251" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757662013632</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1757662013632</updated>
+    </task>
+    <task id="LOCAL-00252" summary="Пилим AndExpression.md">
+      <option name="closed" value="true" />
+      <created>1757662468541</created>
+      <option name="number" value="00252" />
+      <option name="presentableId" value="LOCAL-00252" />
+      <option name="project" value="LOCAL" />
+      <updated>1757662468541</updated>
+    </task>
+    <option name="localTasksCounter" value="253" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал InlineAction.md" />
     <MESSAGE value="Написал PrintAction.md" />
     <MESSAGE value="Сделал CompositeAction.cs" />
     <MESSAGE value="Добавил SceneActions!" />
@@ -610,7 +609,8 @@
     <MESSAGE value="Написал ExpressionBase.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Пилим AndExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим AndExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
