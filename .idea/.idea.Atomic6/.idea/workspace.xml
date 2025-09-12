@@ -7,6 +7,7 @@
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,23 +165,7 @@
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
-      <workItem from="1757657871544" duration="5740000" />
-    </task>
-    <task id="LOCAL-00204" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757490572886</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1757490572886</updated>
-    </task>
-    <task id="LOCAL-00205" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1757492477168</created>
-      <option name="number" value="00205" />
-      <option name="presentableId" value="LOCAL-00205" />
-      <option name="project" value="LOCAL" />
-      <updated>1757492477168</updated>
+      <workItem from="1757657871544" duration="9539000" />
     </task>
     <task id="LOCAL-00206" summary="IFunction.md">
       <option name="closed" value="true" />
@@ -558,7 +543,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757662468541</updated>
     </task>
-    <option name="localTasksCounter" value="253" />
+    <task id="LOCAL-00253" summary="Написал AndExpression.md">
+      <option name="closed" value="true" />
+      <created>1757663639889</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1757663639889</updated>
+    </task>
+    <task id="LOCAL-00254" summary="Сделал AndExpression.md">
+      <option name="closed" value="true" />
+      <created>1757665017165</created>
+      <option name="number" value="00254" />
+      <option name="presentableId" value="LOCAL-00254" />
+      <option name="project" value="LOCAL" />
+      <updated>1757665017165</updated>
+    </task>
+    <option name="localTasksCounter" value="255" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,8 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал PrintAction.md" />
-    <MESSAGE value="Сделал CompositeAction.cs" />
     <MESSAGE value="Добавил SceneActions!" />
     <MESSAGE value="Сделал SceneActionAbstract.md" />
     <MESSAGE value="SceneActionComposite.md" />
@@ -610,7 +609,9 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим AndExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим AndExpression.md" />
+    <MESSAGE value="Написал AndExpression.md" />
+    <MESSAGE value="Сделал AndExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал AndExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

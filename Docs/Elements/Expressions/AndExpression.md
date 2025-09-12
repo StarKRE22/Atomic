@@ -574,11 +574,9 @@ public void Dispose()
 </details>
 
 
-## 🗂 Examples of Usage
+## 🗂 Example of Usage
 
 Below are examples of using `AndExpression` to configure an entity using `Atomic.Entities`.
-
----
 
 ```csharp
 // Setting up a character with an AND expression for firing
