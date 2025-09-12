@@ -8,11 +8,17 @@ The **AndExpression** classes represent **logical AND expressions** composed of 
 
 ---
 
-## AndExpression
+<details>
+  <summary>
+    <h2>🧩 AndExpression</h2>
+    <br> Represents a <b>parameterless logical AND expression</b> aggregating multiple <code>Func&lt;bool&gt;</code> members
+  </summary>
+
+<br>
+
 ```csharp
 public class AndExpression : ExpressionBase<bool>, IPredicate
 ```
-- **Description:** Represents a **parameterless logical AND expression** aggregating multiple `Func<bool>` members.
 
 ### Constructors
 #### `AndExpression(int)`
@@ -35,6 +41,31 @@ public AndExpression(IEnumerable<Func<bool>> members)
 ```
 - **Description:** Initializes the expression with a collection of parameterless boolean-returning functions.
 - **Parameter:** `members` — Enumerable of `Func<bool>` delegates.
+
+### Events
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Occurs when the state of the expression changes (e.g., when functions are added, removed, or the list is cleared).
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<Func<bool>> OnItemChanged;
+```
+- **Description:** Occurs when an existing function in the expression is replaced or modified.
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<Func<bool>> OnItemInserted;
+```
+- **Description:** Occurs when a new function is inserted into the expression at a specific position.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<Func<bool>> OnItemDeleted;
+```
+- **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
 #### `Value`
@@ -83,6 +114,14 @@ public void Add(Func<bool> item)
 ```
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+#### `AddRange(IEnumerable<Func<bool>> items)`
+```csharp
+public void AddRange(IEnumerable<Func<bool>> items)
+```
+- **Description:** Adds multiple functions to the expression at once.
+- **Parameter:** `items` — An enumerable collection of `Func<bool>` delegates to add.
+- **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
 ```csharp
@@ -146,7 +185,21 @@ public IEnumerator<Func<bool>> GetEnumerator()
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
 - **Returns:** `IEnumerator<Func<bool>>` — Enumerator over the functions.
 
+#### `Dispose()`
+```csharp
+public void Dispose()
+```
+- **Description:** Releases all resources used by the expression and clears its content.  
+  Also unsubscribes all event handlers.
+- **Effects:**
+  - Clears the function list.
+  - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 ---
+</details>
+
+
+
+
 
 ## AndExpression<T>
 !!!
