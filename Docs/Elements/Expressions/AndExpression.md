@@ -573,20 +573,59 @@ public void Dispose()
 ---
 </details>
 
-## 🗂 Example of Usage
-Below is an example of using `AndExpression` for an entity
+
+## 🗂 Examples of Usage
+
+Below are examples of using `AndExpression` to configure an entity using `Atomic.Entities`.
+
+---
 
 ```csharp
-// Simple logic to check if the entity can attack
-IFunction<bool> canAttack = new AndExpression(
-    () => entity.IsAlive(),               // Player is alive
-    () => entity.HasTarget(),             // There is a target
-    () => entity.HasWeapon(),             // Player has a weapon
-    () => !entity.IsStunned()             // Player is not stunned
-);
+// Setting up a character with an AND expression for firing
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private ReactiveVariable<int> _health = 3;
+    [SerializeField] private ReactiveVariable<int> _ammo = 10;
 
-bool attackAllowed = canAttack.Invoke();  // true if all conditions are met
+    public override void Install(IEntity entity)
+    {
+        // Life:
+        entity.AddHealth(_health);
+        
+        // Combat: add a condition for firing
+        entity.AddFireCondition(new AndExpression(
+            () => _health.Value > 0,  // Character is alive
+            () => _ammo.Value > 0     // Has ammo
+        ));
 
-//Disable attack fully 
-canAttack.Add(() => false);
+        // Add the fire action, executed only if the condition is true
+        entity.AddFireAction(new InlineAction(() => 
+        {
+            IFunction<bool> condition = entity.GetFireCondition();
+            if (condition.Invoke())
+            {
+                // Perform fire action...
+            }
+        }));
+    }
+}
+```
+
+```csharp
+// Dynamically disable firing (e.g., character is disarmed)
+IExpression<bool> condition = entity.GetFireCondition();
+condition.Add(() => false);
+```
+
+## 📌 Best Practice
+When you need to insert constant `true` or `false` conditions **without allocations**, you can use boolean constants from [DefaultConstants](../Values/DefaultConstants.md#boolean-constants)
+
+```csharp
+IExpression<bool> condition = new AndExpression(cond1, cond2, cond3);
+
+// Fully disable the AND condition
+condition.Add(DefaultConstants.False);
+
+// Reset the lock from the condition
+condition.Remove(DefaultConstants.False);
 ```
