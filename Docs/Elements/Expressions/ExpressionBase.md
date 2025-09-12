@@ -9,7 +9,7 @@ The **ExpressionBase** classes provide **base implementations** of the [IExpress
 
 <details>
   <summary>
-    <h2>ExpressionBase&lt;R&gt;</h2>
+    <h2>🧩 ExpressionBase&lt;R&gt;</h2>
     <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>
   </summary>
 
@@ -210,7 +210,7 @@ public void Dispose()
 
 <details>
   <summary>
-    <h2>ExpressionBase&lt;T, R&gt;</h2>
+    <h2>🧩 ExpressionBase&lt;T, R&gt;</h2>
     <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
   </summary>
 
@@ -405,7 +405,7 @@ public void Dispose()
 
 <details>
   <summary>
-    <h2>ExpressionBase&lt;T1, T2, R&gt;</h2>
+    <h2>🧩 ExpressionBase&lt;T1, T2, R&gt;</h2>
     <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
   </summary>
 

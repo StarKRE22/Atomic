@@ -12,6 +12,20 @@ evaluated. They support parameterless functions as well as functions with one or
 > Additionally, `IExpression` **implements** `IList` (so it can hold multiple function members) and [IFunction](../Functions/IFunction.md) (so it itself can be evaluated as a function).
 ---
 
+[//]: # ()
+[//]: # (<details>)
+
+[//]: # (  <summary>)
+
+[//]: # (    <h2>ExpressionBase&lt;R&gt;</h2>)
+
+[//]: # (    <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>)
+
+[//]: # (  </summary>)
+
+[//]: # ()
+[//]: # (<br>)
+
 ## IExpression&lt;R&gt;
 ```csharp
 public interface IExpression<R> : IList<Func<R>>, IValue<R>
