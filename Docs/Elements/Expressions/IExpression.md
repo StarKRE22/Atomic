@@ -18,8 +18,6 @@ evaluated. They support parameterless functions as well as functions with one or
     <br> Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of type <code>R</code>
   </summary>
 
-<br>
-
 ## 
 ```csharp
 public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>

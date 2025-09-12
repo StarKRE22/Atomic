@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,47 +164,7 @@
       <workItem from="1757480216447" duration="557000" />
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
-      <workItem from="1757657871544" duration="3194000" />
-    </task>
-    <task id="LOCAL-00193" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757416338520</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1757416338520</updated>
-    </task>
-    <task id="LOCAL-00194" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757482122462</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1757482122462</updated>
-    </task>
-    <task id="LOCAL-00195" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757482189670</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1757482189670</updated>
-    </task>
-    <task id="LOCAL-00196" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757482346293</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1757482346293</updated>
-    </task>
-    <task id="LOCAL-00197" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757483381775</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1757483381775</updated>
+      <workItem from="1757657871544" duration="3551000" />
     </task>
     <task id="LOCAL-00198" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -558,7 +518,47 @@
       <option name="project" value="LOCAL" />
       <updated>1757660967420</updated>
     </task>
-    <option name="localTasksCounter" value="242" />
+    <task id="LOCAL-00242" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661080400</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661080400</updated>
+    </task>
+    <task id="LOCAL-00243" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661114730</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661114730</updated>
+    </task>
+    <task id="LOCAL-00244" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661141133</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661141133</updated>
+    </task>
+    <task id="LOCAL-00245" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661226070</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661226070</updated>
+    </task>
+    <task id="LOCAL-00246" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757661354173</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1757661354173</updated>
+    </task>
+    <option name="localTasksCounter" value="247" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
