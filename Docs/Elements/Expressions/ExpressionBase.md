@@ -208,9 +208,13 @@ public void Dispose()
 ---
 </details>
 
-
 <details>
-  <summary><h2>ExpressionBase&lt;T, R&gt;</h2>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>></summary>
+  <summary>
+    <h2>ExpressionBase&lt;T, R&gt;</h2>
+    <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
@@ -400,7 +404,12 @@ public void Dispose()
 </details>
 
 <details>
-  <summary><h2>ExpressionBase&lt;T1, T2, R&gt;</h2>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code></summary>
+  <summary>
+    <h2>ExpressionBase&lt;T1, T2, R&gt;</h2>
+    <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
