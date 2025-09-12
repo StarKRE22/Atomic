@@ -7,7 +7,9 @@ The **ExpressionBase** classes provide **base implementations** of the [IExpress
 
 ---
 
-## ExpressionBase&lt;R&gt;
+<details>
+  <summary><h2>ExpressionBase&lt;R&gt;</h2></summary>
+
 ```csharp
 public abstract class ExpressionBase<R> : ReactiveLinkedList<Func<R>>, IExpression<R>
 ```
@@ -39,10 +41,6 @@ public ExpressionBase(IEnumerable<Func<R>> members)
 - **Parameter:** `members` — enumerable of function delegates to add to the expression.
 - **Throws:** `ArgumentNullException` if `members` is null.
 
-
-<details>
-  <summary><h3>Events</h3></summary>
-
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -66,12 +64,6 @@ public event InsertItemHandler<Func<R>> OnItemInserted;
 public event DeleteItemHandler<Func<R>> OnItemDeleted;
 ```
 - **Description:** Occurs when a function delegate is removed from the expression.
-
-
-</details>
-
-
-
 
 ### Properties
 
@@ -208,8 +200,12 @@ public void Dispose()
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
 ---
+</details>
 
-## ExpressionBase<T, R>
+
+<details>
+  <summary><h2>ExpressionBase&lt;T, R&gt;</h2></summary>
+
 ```csharp
 public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
 ```
@@ -353,8 +349,11 @@ public IEnumerator<Func<T, R>> GetEnumerator()
 - **Returns:** `IEnumerator<Func<T, R>>` — Enumerator for the function members.
 
 ---
+</details>
 
-## ExpressionBase<T1, T2, R>
+<details>
+  <summary><h2>ExpressionBase&lt;T1, T2, R&gt;</h2></summary>
+
 ```csharp
 public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
 ```
@@ -501,6 +500,9 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
+----
+</details>
+
 
 ## 🗂 Example of Usage
 Below is an example of using `ExpressionBase` to extend a simple **logical AND** expression with multiple parameterless boolean functions.
