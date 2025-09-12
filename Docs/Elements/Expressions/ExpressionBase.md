@@ -39,6 +39,40 @@ public ExpressionBase(IEnumerable<Func<R>> members)
 - **Parameter:** `members` — enumerable of function delegates to add to the expression.
 - **Throws:** `ArgumentNullException` if `members` is null.
 
+
+<details>
+  <summary><h3>Events</h3></summary>
+
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is cleared).
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<Func<R>> OnItemChanged;
+```
+- **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<Func<R>> OnItemInserted;
+```
+- **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<Func<R>> OnItemDeleted;
+```
+- **Description:** Occurs when a function delegate is removed from the expression.
+
+
+</details>
+
+
+
+
 ### Properties
 
 #### `Value`
@@ -93,6 +127,14 @@ public void Add(Func<R> item)
 ```
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+#### `AddRange(IEnumerable<Func<R>> items)`
+```csharp
+public void AddRange(IEnumerable<Func<R>> items)
+```
+- **Description:** Adds multiple functions to the expression at once.
+- **Parameter:** `items` — An enumerable collection of `Func<R>` delegates to add.
+- **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
 ```csharp
@@ -155,6 +197,15 @@ public IEnumerator<Func<R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
 - **Returns:** `IEnumerator<Func<R>>` — Enumerator over the functions.
+
+#### `Dispose()`
+```csharp
+public void Dispose()
+```
+- **Description:** Releases all resources used by the expression and clears its content. Also unsubscribes all event handlers.
+- **Effects:**
+  - Clears the function list.
+  - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
 ---
 
