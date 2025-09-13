@@ -12,7 +12,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression"/> class.
         /// </summary>
-        public IntSumExpression()
+        public IntSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 
@@ -52,7 +52,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression{T}"/> class.
         /// </summary>
-        public IntSumExpression()
+        public IntSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 
@@ -93,7 +93,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntSumExpression{T1, T2}"/> class.
         /// </summary>
-        public IntSumExpression()
+        public IntSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 

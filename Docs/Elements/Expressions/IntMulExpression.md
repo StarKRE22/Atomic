@@ -22,13 +22,14 @@ public IntMulExpression(int capacity)
 - **Description:** Initializes a new empty instance of the `IntMulExpression` class.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `IntMulExpression(Func<int> members)`
+#### `IntMulExpression(Func<int>[] members)`
 ```csharp
-public IntMulExpression(params Func<int> members)
+public IntMulExpression(params Func<int>[] members)
 ```
 - **Description:** Initializes the expression with an array of integer-returning functions.
 - **Parameter:** `members` — Array of `Func<int>` delegates.
 
+#### `IntMulExpression(IEnumerable<Func<int>> members)`
 ```csharp
 public IntMulExpression(IEnumerable<Func<int>> members)
 ```
@@ -220,9 +221,9 @@ public IntMulExpression(int capacity)
 - **Description:** Initializes a new empty instance of the `IntMulExpression<T>` class.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `IntMulExpression(Func<T, int> members)`
+#### `IntMulExpression(Func<T, int>[] members)`
 ```csharp
-public IntMulExpression(params Func<T, int> members)
+public IntMulExpression(params Func<T, int>[] members)
 ```
 - **Description:** Initializes the expression with an array of functions that take a `T` and return an integer.
 - **Parameter:** `members` — Array of `Func<T, int>` delegates.
@@ -414,9 +415,9 @@ public IntMulExpression(int capacity)
 - **Description:** Initializes a new empty instance of the `IntMulExpression<T1, T2>` class.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `IntMulExpression(Func<T1, T2, int> members)`
+#### `IntMulExpression(Func<T1, T2, int>[] members)`
 ```csharp
-public IntMulExpression(params Func<T1, T2, int> members)
+public IntMulExpression(params Func<T1, T2, int>[] members)
 ```
 - **Description:** Initializes the expression with an array of functions that take two parameters and return an integer.
 - **Parameter:** `members` — Array of `Func<T1, T2, int>` delegates.
