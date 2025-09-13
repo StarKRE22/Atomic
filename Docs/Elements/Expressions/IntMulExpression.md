@@ -10,6 +10,7 @@
  <br> Represents an expression that computes the product of multiple <b>parameterless integer-returning</b> functions
  </summary>
 
+##
 ```csharp
 public class IntMulExpression : ExpressionBase<int>
 ```
@@ -208,6 +209,7 @@ int result = multiply.Invoke(); // 24
  <br> Represents an expression that computes the product of integer values returned from functions with a <b>single input parameter</b>
  </summary>
 
+##
 ```csharp
 public class IntMulExpression<T> : ExpressionBase<T, int>
 ```
@@ -400,6 +402,7 @@ int result = expression.Invoke(3); // 3 * (3 + 1) = 12
  <br> Represents an expression that computes the product of integer values returned from functions with <b>two input parameters</b>
  </summary>
 
+##
 ```csharp
 public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
 ```
