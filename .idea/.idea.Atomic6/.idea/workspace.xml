@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/IntMulExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/IntMulExpression.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,15 +165,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="2715000" />
-    </task>
-    <task id="LOCAL-00207" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757495593914</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1757495593914</updated>
+      <workItem from="1757738347120" duration="3480000" />
     </task>
     <task id="LOCAL-00208" summary="Сделал IPredicate.md">
       <option name="closed" value="true" />
@@ -561,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757667563618</updated>
     </task>
-    <option name="localTasksCounter" value="256" />
+    <task id="LOCAL-00256" summary="Пилим IntMulExpression.md">
+      <option name="closed" value="true" />
+      <created>1757741099564</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1757741099565</updated>
+    </task>
+    <option name="localTasksCounter" value="257" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал SceneActionAbstract.md" />
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="Написал SceneActionReference.cs" />
     <MESSAGE value="Extensions.md" />
@@ -613,7 +610,8 @@
     <MESSAGE value="Написал AndExpression.md" />
     <MESSAGE value="Сделал AndExpression.md" />
     <MESSAGE value="Сделал OR EXPRESSION" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал OR EXPRESSION" />
+    <MESSAGE value="Пилим IntMulExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим IntMulExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

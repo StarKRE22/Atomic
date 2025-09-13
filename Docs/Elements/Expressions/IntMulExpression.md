@@ -17,7 +17,7 @@ public class IntMulExpression : ExpressionBase<int>
 ### Constructors
 #### `IntMulExpression(int capacity)`
 ```csharp
-public IntMulExpression()
+public IntMulExpression(int capacity)
 ```
 - **Description:** Initializes a new empty instance of the `IntMulExpression` class.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
@@ -99,6 +99,7 @@ public int Invoke()
 ```
 - **Description:** Evaluates all function members of the expression and returns their product.
 - **Returns:** `int` — The computed product.
+- **Note:** -Returns `1` if no functions are present. 
 
 #### `Add(Func<int> item)`
 ```csharp
@@ -203,9 +204,10 @@ public class IntMulExpression<T> : ExpressionBase<T, int>
 ### Constructors
 #### `IntMulExpression()`
 ```csharp
-public IntMulExpression()
+public IntMulExpression(int capacity)
 ```
 - **Description:** Initializes a new empty instance of the `IntMulExpression<T>` class.
+- **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
 #### `IntMulExpression(Func<T, int> members)`
 ```csharp
@@ -286,6 +288,7 @@ public int Invoke(T arg)
 - **Description:** Evaluates all function members of the expression with the provided argument and returns their product.
 - **Parameter:** `arg` — The input argument of type T.
 - **Returns:** `int` — The computed product.
+- **Note:** -Returns `1` if no functions are present.
 
 #### `Add(Func<T, int> item)`
 ```csharp
@@ -378,31 +381,192 @@ public void Dispose()
 
 <details>
  <summary>
- <h2>🧠 IntMulExpression&lt;T1, T2&gt;</h2>
+ <h2>🧩 IntMulExpression&lt;T1, T2&gt;</h2>
  <br> Represents an expression that computes the product of integer values returned from functions with <b>two input parameters</b>
  </summary>
 
-!!!
-Serializable
+```csharp
 public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
-!!!
+```
 - **Type Parameters:**
 - `T1` — The first input parameter type.
 - `T2` — The second input parameter type.
 
-### Constructors
-
+## Constructors
 #### `IntMulExpression()`
-!!!
-public IntMulExpression()
-!!!
+```csharp
+public IntMulExpression(int capacity)
+```
 - **Description:** Initializes a new empty instance of the `IntMulExpression<T1, T2>` class.
+- **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
 #### `IntMulExpression(Func<T1, T2, int> members)`
-!!!
+```csharp
 public IntMulExpression(params Func<T1, T2, int> members)
-!!!
-- **
+```
+- **Description:** Initializes the expression with an array of functions that take two parameters and return an integer.
+- **Parameter:** `members` — Array of `Func<T1, T2, int>` delegates.
+
+#### `IntMulExpression(IEnumerable<Func<T1, T2, int>> members)`
+```csharp
+public IntMulExpression(IEnumerable<Func<T1, T2, int>> members)
+```
+- **Description:** Initializes the expression with a collection of functions that take two parameters and return an integer.
+- **Parameter:** `members` — Enumerable collection of `Func<T1, T2, int>` delegates.
+
+### Events
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Occurs when the state of the expression changes.
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<Func<T1, T2, int>> OnItemChanged;
+```
+- **Description:** Occurs when an existing function is replaced or modified.
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<Func<T1, T2, int>> OnItemInserted;
+```
+- **Description:** Occurs when a new function is inserted.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<Func<T1, T2, int>> OnItemDeleted;
+```
+- **Description:** Occurs when a function is removed.
+
+## Properties
+### `Value`
+```csharp
+public int Value { get; }
+```
+- **Description:** Evaluates all functions and returns the product of their results.
+- **Returns:** `int` — The computed product.
+
+### `Count`
+```csharp
+public int Count { get; }
+```
+- **Description:** Gets the number of functions in the expression.
+- **Returns:** `int` — Number of function members.
+
+### `IsReadOnly`
+```csharp
+public bool IsReadOnly { get; }
+```
+- **Description:** Indicates whether the list of functions can be modified.
+- **Returns:** `false`.
+
+### Indexers
+#### `this[int index]`
+```csharp
+public Func<T1, T2, int> this[int index] { get; set; }
+```
+- **Description:** Accesses a function at a specific position.
+- **Parameter:** `index` — Position of the function.
+- **Returns:** `Func<T1, T2, int>` — Function at the given index.
+
+### Methods
+#### `Invoke(T1 arg1, T2 arg2)`
+```csharp
+public int Invoke(T1 arg1, T2 arg2)
+```
+- **Description:** Evaluates all functions with provided arguments.
+- **Parameters:**
+    - `arg1` — First input argument.
+    - `arg2` — Second input argument.
+- **Returns:** `int` — Computed product.
+- **Note:** -Returns `1` if no functions are present.
+
+#### `Add(Func<T1, T2, int> item)`
+```csharp
+public void Add(Func<T1, T2, int> item)
+```
+- **Description:** Adds a function to the expression.
+- **Parameter:** `item` — Function to add.
+
+#### `AddRange(IEnumerable<Func<T1, T2, int>> items)`
+```csharp
+public void AddRange(IEnumerable<Func<T1, T2, int>> items)
+```
+- **Description:** Adds multiple functions.
+- **Parameter:** `items` — Collection of functions.
+- **Throws:** `ArgumentNullException` if `items` is null.
+
+#### `Clear()`
+```csharp
+public void Clear()
+```
+- **Description:** Removes all functions.
+
+#### `Contains(Func<T1, T2, int> item)`
+```csharp
+public bool Contains(Func<T1, T2, int> item)
+```
+- **Description:** Checks if a function exists.
+- **Returns:** `bool` — True if found.
+
+#### `CopyTo(Func<T1, T2, int>[] array, int arrayIndex)`
+```csharp
+public void CopyTo(Func<T1, T2, int>[] array, int arrayIndex)
+```
+- **Description:** Copies all functions to the specified array starting at the given index.
+- **Parameters:**
+    - `array` — Destination array.
+    - `arrayIndex` — Starting index in the array.
+
+#### `IndexOf(Func<T1, T2, int> item)`
+```csharp
+public int IndexOf(Func<T1, T2, int> item)
+```
+- **Description:** Returns the index of the specified function.
+- **Parameter:** `item` — Function to locate.
+- **Returns:** `int` — Index of the function, or `-1` if not found.
+
+#### `Insert(int index, Func<T1, T2, int> item)`
+```csharp
+public void Insert(int index, Func<T1, T2, int> item)
+```
+- **Description:** Inserts a function at the specified index.
+- **Parameters:**
+    - `index` — Position to insert.
+    - `item` — Function to insert.
+
+#### `Remove(Func<T1, T2, int> item)`
+```csharp
+public bool Remove(Func<T1, T2, int> item)
+```
+- **Description:** Removes the specified function.
+- **Parameter:** `item` — Function to remove.
+- **Returns:** `bool` — True if removed successfully.
+
+#### `RemoveAt(int index)`
+```csharp
+public void RemoveAt(int index)
+```
+- **Description:** Removes the function at the specified index.
+- **Parameter:** `index` — Position of the function to remove.
+
+#### `GetEnumerator()`
+```csharp
+public IEnumerator<Func<T1, T2, int>> GetEnumerator()
+```
+- **Description:** Returns an enumerator for iterating over functions.
+- **Returns:** `IEnumerator<Func<T1, T2, int>>` — Enumerator over functions.
+
+#### `Dispose()`
+```csharp
+public void Dispose()
+```
+- **Description:** Releases resources and clears content.
+- **Effects:**
+    - Clears the function list.
+    - Sets event handlers to null.
+
 </details>
 
 
