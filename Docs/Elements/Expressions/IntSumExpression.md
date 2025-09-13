@@ -10,6 +10,7 @@
  <br> Represents an expression that computes the sum of multiple <b>parameterless integer-returning</b> functions
  </summary>
 
+##
 ```csharp
 public class IntSumExpression : ExpressionBase<int>
 ```
@@ -210,6 +211,7 @@ int result = expression.Invoke(); // 9
  <br> Represents an expression that computes the sum of integer values returned from functions with a <b>single input parameter</b>
  </summary>
 
+##
 ```csharp
 public class IntSumExpression<T> : ExpressionBase<T, int>
 ```
@@ -403,6 +405,7 @@ int result = expression.Invoke(3); // 3 + (3 + 1) = 7
  <br> Represents an expression that computes the sum of integer values returned from functions with <b>two input parameters</b>
  </summary>
 
+##
 ```csharp
 public class IntSumExpression<T1, T2> : ExpressionBase<T1, T2, int>
 ```
