@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,23 +165,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="6966000" />
-    </task>
-    <task id="LOCAL-00211" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757499182791</created>
-      <option name="number" value="00211" />
-      <option name="presentableId" value="LOCAL-00211" />
-      <option name="project" value="LOCAL" />
-      <updated>1757499182791</updated>
-    </task>
-    <task id="LOCAL-00212" summary="Написал ISetter.md">
-      <option name="closed" value="true" />
-      <created>1757518752429</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1757518752429</updated>
+      <workItem from="1757738347120" duration="7362000" />
     </task>
     <task id="LOCAL-00213" summary="Reorganize Folders!">
       <option name="closed" value="true" />
@@ -558,7 +543,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757756532824</updated>
     </task>
-    <option name="localTasksCounter" value="260" />
+    <task id="LOCAL-00260" summary="Пилим IntSumExpression.md">
+      <option name="closed" value="true" />
+      <created>1757756838045</created>
+      <option name="number" value="00260" />
+      <option name="presentableId" value="LOCAL-00260" />
+      <option name="project" value="LOCAL" />
+      <updated>1757756838045</updated>
+    </task>
+    <task id="LOCAL-00261" summary="Пилим IntSumExpression.md">
+      <option name="closed" value="true" />
+      <created>1757756934128</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1757756934128</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="Написал SceneActionReference.cs" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IFunction.md" />
@@ -610,7 +610,8 @@
     <MESSAGE value="Сделал OR EXPRESSION" />
     <MESSAGE value="Пилим IntMulExpression.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Пилим IntSumExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим IntSumExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -88,10 +88,10 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ExpressionBase](Expressions/ExpressionBase.md) <!-- + -->
   - [AndExpression](Expressions/AndExpression.md) <!-- + -->
   - [OrExpression](Expressions/OrExpression.md) <!-- + -->
-  - [IntMulExpression](Expressions/IntMulExpression.md)
-  - [IntSumExpression](Expressions/IntSumExpression.md)
-  - [FloatMulExpression](Expressions/FloatMulExpression.md)
-  - [FloatSumExpression](Expressions/FloatSumExpression.md)
+  - [IntMulExpression](Expressions/IntMulExpression.md) <!-- + -->
+  - [IntSumExpression](Expressions/IntSumExpression.md) <!-- + -->
+  - [FloatMulExpression](Expressions/FloatMulExpression.md) <!-- + -->
+  - [FloatSumExpression](Expressions/FloatSumExpression.md) <!-- + -->
   - [InlineExpression](Expressions/InlineExpression.md)
   - [Extensions](Expressions/Extensions.md)
 - **Collections**
