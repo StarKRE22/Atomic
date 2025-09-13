@@ -12,7 +12,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression"/> class.
         /// </summary>
-        public IntMulExpression() { }
+        public IntMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity) { }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
@@ -46,7 +46,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression{T}"/> class.
         /// </summary>
-        public IntMulExpression() { }
+        public IntMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity) { }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
@@ -81,7 +81,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="IntMulExpression{T1, T2}"/> class.
         /// </summary>
-        public IntMulExpression() { }
+        public IntMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity) { }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
