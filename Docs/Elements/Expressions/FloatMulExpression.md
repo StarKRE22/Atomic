@@ -132,9 +132,9 @@ public bool Contains(Func<float> item)
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<float>[] array, float arrayIndex)`
+#### `CopyTo(Func<float>[] array, int arrayIndex)`
 ```csharp
-public void CopyTo(Func<float>[] array, float arrayIndex)
+public void CopyTo(Func<float>[] array, int arrayIndex)
 ```
 - **Description:** Copies all functions in the expression to the specified array starting at the given index.
 - **Parameters:**
@@ -325,9 +325,9 @@ public bool Contains(Func<T, float> item)
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<T, float>[] array, float arrayIndex)`
+#### `CopyTo(Func<T, float>[] array, int arrayIndex)`
 ```csharp
-public void CopyTo(Func<T, float>[] array, float arrayIndex)
+public void CopyTo(Func<T, float>[] array, int arrayIndex)
 ```
 - **Description:** Copies all functions in the expression to the specified array starting at the given index.
 - **Parameters:**
@@ -521,9 +521,9 @@ public bool Contains(Func<T1, T2, float> item)
 - **Description:** Checks if a function exists.
 - **Returns:** `bool` — True if found.
 
-#### `CopyTo(Func<T1, T2, float>[] array, float arrayIndex)`
+#### `CopyTo(Func<T1, T2, float>[] array, int arrayIndex)`
 ```csharp
-public void CopyTo(Func<T1, T2, float>[] array, float arrayIndex)
+public void CopyTo(Func<T1, T2, float>[] array, int arrayIndex)
 ```
 - **Description:** Copies all functions to the specified array starting at the given index.
 - **Parameters:**
