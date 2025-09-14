@@ -13,6 +13,13 @@ namespace Atomic.Elements
         private readonly Func<Enumerator, R> function;
 
         /// <summary>
+        /// Initializes a new empty instance of the <see cref="InlineExpression{R}"/> class.
+        /// </summary>
+        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the list of function enumerator.</param>
@@ -52,6 +59,13 @@ namespace Atomic.Elements
     public class InlineExpression<T, R> : ExpressionBase<T, R>
     {
         private readonly Func<Enumerator, T, R> function;
+        
+        /// <summary>
+        /// Initializes a new empty instance of the <see cref="InlineExpression{T, R}"/> class.
+        /// </summary>
+        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{T,R}"/> class with a custom evaluation function.
@@ -96,6 +110,13 @@ namespace Atomic.Elements
     public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
     {
         private readonly Func<Enumerator, T1, T2, R> function;
+        
+        /// <summary>
+        /// Initializes a new empty instance of the <see cref="InlineExpression{T1, T2, R}"/> class.
+        /// </summary>
+        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{T1,T2,R}"/> class with a custom evaluation function.

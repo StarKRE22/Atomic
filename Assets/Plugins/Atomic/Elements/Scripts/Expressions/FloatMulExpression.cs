@@ -12,25 +12,31 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression"/> class.
         /// </summary>
-        public FloatMulExpression() { }
+        public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of float-returning functions.</param>
-        public FloatMulExpression(params Func<float>[] members) : base(members) { }
+        public FloatMulExpression(params Func<float>[] members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
         /// <param name="members">A collection of float-returning functions.</param>
-        public FloatMulExpression(IEnumerable<Func<float>> members) : base(members) { }
+        public FloatMulExpression(IEnumerable<Func<float>> members) : base(members)
+        {
+        }
 
         protected override float Invoke(Enumerator enumerator)
         {
             float result = 1;
             while (enumerator.MoveNext())
-                result *= enumerator.Current!.Invoke(); 
+                result *= enumerator.Current!.Invoke();
 
             return result;
         }
@@ -46,25 +52,31 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T}"/> class.
         /// </summary>
-        public FloatMulExpression() { }
+        public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions that take a <typeparamref name="T"/> and return a float.</param>
-        public FloatMulExpression(params Func<T, float>[] members) : base(members) { }
+        public FloatMulExpression(params Func<T, float>[] members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that take a <typeparamref name="T"/> and return a float.</param>
-        public FloatMulExpression(IEnumerable<Func<T, float>> members) : base(members) { }
+        public FloatMulExpression(IEnumerable<Func<T, float>> members) : base(members)
+        {
+        }
 
         protected override float Invoke(Enumerator enumerator, T arg)
         {
             float result = 1;
             while (enumerator.MoveNext())
-                result *= enumerator.Current!.Invoke(arg); 
+                result *= enumerator.Current!.Invoke(arg);
 
             return result;
         }
@@ -81,25 +93,31 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatMulExpression{T1, T2}"/> class.
         /// </summary>
-        public FloatMulExpression() { }
+        public FloatMulExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified function members.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a float.</param>
-        public FloatMulExpression(params Func<T1, T2, float>[] members) : base(members) { }
+        public FloatMulExpression(params Func<T1, T2, float>[] members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with the specified collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a float.</param>
-        public FloatMulExpression(IEnumerable<Func<T1, T2, float>> members) : base(members) { }
+        public FloatMulExpression(IEnumerable<Func<T1, T2, float>> members) : base(members)
+        {
+        }
 
         protected override float Invoke(Enumerator enumerator, T1 arg1, T2 arg2)
         {
             float result = 1;
             while (enumerator.MoveNext())
-                result *= enumerator.Current!.Invoke(arg1, arg2); 
+                result *= enumerator.Current!.Invoke(arg1, arg2);
 
             return result;
         }
