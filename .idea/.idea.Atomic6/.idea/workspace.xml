@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/FloatMulExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/FloatMulExpression.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/FloatSumExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/FloatSumExpression.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/InlineExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/InlineExpression.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,15 +167,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="10559000" />
-    </task>
-    <task id="LOCAL-00215" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757587723573</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1757587723573</updated>
+      <workItem from="1757738347120" duration="15436000" />
     </task>
     <task id="LOCAL-00216" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -562,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757825404049</updated>
     </task>
-    <option name="localTasksCounter" value="264" />
+    <task id="LOCAL-00264" summary="Пилим Inline Expression">
+      <option name="closed" value="true" />
+      <created>1757826008350</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1757826008350</updated>
+    </task>
+    <option name="localTasksCounter" value="265" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,7 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IFunction.md" />
     <MESSAGE value="Сделал IPredicate.md" />
     <MESSAGE value="Сделал FunctionExtensions.md" />
     <MESSAGE value="Написал ISetter.md" />
@@ -614,7 +612,8 @@
     <MESSAGE value="Пилим IntSumExpression.md" />
     <MESSAGE value="FloatMulExpression.md" />
     <MESSAGE value="Сделал FloatSumExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал FloatSumExpression.md" />
+    <MESSAGE value="Пилим Inline Expression" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим Inline Expression" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

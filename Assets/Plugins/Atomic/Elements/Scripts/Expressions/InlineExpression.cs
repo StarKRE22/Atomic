@@ -13,33 +13,27 @@ namespace Atomic.Elements
         private readonly Func<Enumerator, R> function;
 
         /// <summary>
-        /// Initializes a new empty instance of the <see cref="InlineExpression{R}"/> class.
-        /// </summary>
-        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the list of function enumerator.</param>
-        public InlineExpression(Func<Enumerator, R> function) =>
+        /// <param name="capacity">Initial capacity for the function list.</param>
+        public InlineExpression(Func<Enumerator, R> function, int capacity = INITIAL_CAPACITY) : base(capacity) =>
             this.function = function;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{R}"/> class with a custom evaluation function and initial enumerator.
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function enumerator.</param>
-        /// <param name="enumerator">An array of function enumerator to add to the expression.</param>
-        public InlineExpression(Func<Enumerator, R> function, params Func<R>[] enumerator) : base(enumerator) =>
+        /// <param name="array">An array of function enumerator to add to the expression.</param>
+        public InlineExpression(Func<Enumerator, R> function, params Func<R>[] array) : base(array) =>
             this.function = function;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{R}"/> class with a custom evaluation function and initial enumerator.
         /// </summary>
         /// <param name="function">The evaluation logic to be applied to the function enumerator.</param>
-        /// <param name="enumerator">A collection of function enumerator to add to the expression.</param>
-        public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enumerator) : base(enumerator) =>
+        /// <param name="enumerable">A collection of function enumerator to add to the expression.</param>
+        public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enumerable) : base(enumerable) =>
             this.function = function;
 
         /// <summary>
@@ -61,33 +55,27 @@ namespace Atomic.Elements
         private readonly Func<Enumerator, T, R> function;
         
         /// <summary>
-        /// Initializes a new empty instance of the <see cref="InlineExpression{T, R}"/> class.
-        /// </summary>
-        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{T,R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression given the enumerator and an input argument.</param>
-        public InlineExpression(Func<Enumerator, T, R> function) =>
+        /// <param name="capacity">Initial capacity for the function list.</param>
+        public InlineExpression(Func<Enumerator, T, R> function, int capacity = INITIAL_CAPACITY) : base(capacity) =>
             this.function = function;
 
         /// <summary>
         /// Initializes the expression with a custom evaluation function and an array of function enumerator.
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
-        /// <param name="enumerator">An array of function enumerator to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] enumerator) : base(enumerator) =>
+        /// <param name="array">An array of function enumerator to initialize with.</param>
+        public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] array) : base(array) =>
             this.function = function;
 
         /// <summary>
         /// Initializes the expression with a custom evaluation function and a collection of function enumerator.
         /// </summary>
         /// <param name="function">The custom logic for evaluating the expression.</param>
-        /// <param name="enumerator">A collection of function enumerator to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>> enumerator) : base(enumerator) =>
+        /// <param name="enumerable">A collection of function enumerator to initialize with.</param>
+        public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>> enumerable) : base(enumerable) =>
             this.function = function;
 
         /// <summary>
@@ -110,35 +98,29 @@ namespace Atomic.Elements
     public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
     {
         private readonly Func<Enumerator, T1, T2, R> function;
-        
-        /// <summary>
-        /// Initializes a new empty instance of the <see cref="InlineExpression{T1, T2, R}"/> class.
-        /// </summary>
-        public InlineExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
-        {
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineExpression{T1,T2,R}"/> class with a custom evaluation function.
         /// </summary>
         /// <param name="function">The custom logic used to evaluate the expression.</param>
-        public InlineExpression(Func<Enumerator, T1, T2, R> function) =>
+        /// <param name="capacity">Initial capacity for the function list.</param>
+        public InlineExpression(Func<Enumerator, T1, T2, R> function, int capacity = INITIAL_CAPACITY) =>
             this.function = function;
 
         /// <summary>
         /// Initializes the expression with a custom evaluation function and an array of function enumerator.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
-        /// <param name="enumerator">An array of binary functions to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T1, T2, R> function, params Func<T1, T2, R>[] enumerator) : base(enumerator) =>
+        /// <param name="array">An array of binary functions to initialize with.</param>
+        public InlineExpression(Func<Enumerator, T1, T2, R> function, params Func<T1, T2, R>[] array) : base(array) =>
             this.function = function;
 
         /// <summary>
         /// Initializes the expression with a custom evaluation function and a collection of function enumerator.
         /// </summary>
         /// <param name="function">The function that defines how to evaluate the expression.</param>
-        /// <param name="enumerator">A collection of binary functions to initialize with.</param>
-        public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T1, T2, R>> enumerator) : base(enumerator) =>
+        /// <param name="enumerable">A collection of binary functions to initialize with.</param>
+        public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T1, T2, R>> enumerable) : base(enumerable) =>
             this.function = function;
 
         /// <summary>
