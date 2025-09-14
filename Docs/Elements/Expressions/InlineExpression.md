@@ -1,6 +1,6 @@
 # 🧩 InlineExpression Classes
 
-`InlineExpression` is a flexible class for creating expressions with custom evaluation logic. It allows you to define how a list of functions is evaluated to produce a result.
+`InlineExpression` is a flexible class for creating expressions with **custom evaluation logic**. It allows you to define how a list of functions is evaluated to produce a result.
 
 <details>
   <summary>
