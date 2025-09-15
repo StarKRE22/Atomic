@@ -106,3 +106,78 @@ bool IsCompleted();
 ```
 - **Description:** Returns whether the source has completed.
 - **Returns:** `true` if completed; otherwise `false`.
+
+
+
+спаун монет с Atomic.Entities
+```csharp
+public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedTick
+    {
+        private readonly ICooldown _spawnCooldown;
+        private IGameContext _context;
+
+        public CoinSpawnController(ICooldown spawnCooldown)
+        {
+            _spawnCooldown = spawnCooldown;
+        }
+
+        public void Init(IGameContext context)
+        {
+            _context = context;
+        }
+
+        public void FixedTick(IEntity entity, float deltaTime)
+        {
+            _spawnCooldown.Tick(deltaTime);
+            if (_spawnCooldown.IsCompleted())
+            {
+                CoinsUseCase.Spawn(_context);
+                _spawnCooldown.ResetTime();
+            }
+        }
+    }
+    
+
+public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+    {
+        [SerializeField]
+        private Transform _worldTransform;
+
+        [SerializeField]
+        private Cooldown _gameCountdown;
+
+        [SerializeField]
+        private TeamCatalog _teamCatalog;
+
+        [Header("Coin System")]
+        [SerializeField]
+        private CoinPool _coinPool;
+
+        [SerializeField]
+        private Cooldown _coinSpawnPeriod = new(2);
+
+        [SerializeField]
+        private Bounds _coinSpawnArea = new(Vector3.zero, new Vector3(5, 0, 5));
+
+        public override void Install(IGameContext context)
+        {
+            context.AddWorldTransform(_worldTransform);
+            context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
+            context.AddTeamCatalog(_teamCatalog);
+
+            //Game countdown
+            context.AddGameCountdown(_gameCountdown);
+            context.AddBehaviour<GameCountdownController>();
+            
+            //Game Over
+            context.AddGameOverEvent(new BaseEvent());
+            context.AddWinnerTeam(new ReactiveVariable<TeamType>());
+
+            //Coin system:
+            context.AddCoinPool(_coinPool);
+            context.AddCoinSpawnArea(_coinSpawnArea);
+            context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
+            context.AddBehaviour<CoinSpawnAreaGizmos>();
+        }
+    }
+```

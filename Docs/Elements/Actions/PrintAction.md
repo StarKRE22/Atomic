@@ -42,7 +42,7 @@ public void Invoke()
     - In Unity, uses the specified `LogType`.
     - Outside Unity, prints to standard console.
 
-## 🗂 Example of Usage
+### 🗂 Example of Usage
 ```csharp
 
 #if UNITY_5_3_OR_NEWER
@@ -63,7 +63,7 @@ In Unity, **PrintAction** is perfect for **visualizing the occurrence of an acti
 It can also be easily serialized using `[SerializeReference]` in a `MonoBehaviour` and configured in the inspector, making it convenient for debugging or testing action pipelines.
 
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the designer directly in the **Inspector**.
 

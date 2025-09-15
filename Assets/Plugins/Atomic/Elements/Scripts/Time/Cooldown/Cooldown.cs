@@ -112,12 +112,7 @@ namespace Atomic.Elements
             if (_time <= 0)
                 this.OnCompleted?.Invoke();
         }
-
-        /// <summary>
-        /// Returns a string representation of the cooldown's duration and current time.
-        /// </summary>
-        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_time)}: {_time}";
-
+        
         /// <summary>
         /// Gets the total duration of the cooldown.
         /// </summary>
@@ -162,5 +157,10 @@ namespace Atomic.Elements
             this.OnTimeChanged?.Invoke(newTime);
             this.OnProgressChanged?.Invoke(this.GetProgress());
         }
+        
+        /// <summary>
+        /// Returns a string representation of the cooldown's duration and current time.
+        /// </summary>
+        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_time)}: {_time}";
     }
 }
