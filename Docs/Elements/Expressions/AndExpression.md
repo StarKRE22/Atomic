@@ -21,6 +21,7 @@ public class AndExpression : ExpressionBase<bool>, IPredicate
 ```
 
 ### Constructors
+
 #### `AndExpression(int)`
 ```csharp
  public AndExpression(int capacity)
@@ -68,6 +69,7 @@ public event DeleteItemHandler<Func<bool>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Value`
 ```csharp
 public bool Value { get; }
@@ -91,6 +93,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<bool> this[int index] { get; set; }
@@ -100,6 +103,7 @@ public Func<bool> this[int index] { get; set; }
 - **Returns:** `Func<bool>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke()`
 ```csharp
 public bool Invoke()
@@ -194,10 +198,9 @@ public void Dispose()
 - **Effects:**
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
----
 </details>
 
-
+---
 
 <details>
   <summary>
@@ -214,6 +217,7 @@ public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
   - `T` - The input parameter type of the functions.
 
 ### Constructors
+
 #### `AndExpression(int)`
 ```csharp
 public AndExpression(int capacity)
@@ -236,6 +240,7 @@ public AndExpression(IEnumerable<Func<T, bool>> members)
 - **Parameter:** `members` — Enumerable of `Func<T, bool>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -276,6 +281,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T, bool> this[int index] { get; set; }
@@ -285,6 +291,7 @@ public Func<T, bool> this[int index] { get; set; }
 - **Returns:** `Func<T, bool>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T arg)`
 ```csharp
 public bool Invoke(T arg)
@@ -380,10 +387,9 @@ public void Dispose()
 - **Effects:**
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
----
 </details>
 
+---
 
 <details>
   <summary>
@@ -401,6 +407,7 @@ public class AndExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1
   - `T2` - The second input parameter type of the functions.
 
 ### Constructors
+
 #### `AndExpression(int)`
 ```csharp
 public AndExpression(int capacity)
@@ -423,6 +430,7 @@ public AndExpression(IEnumerable<Func<T1, T2, bool>> members)
 - **Parameter:** `members` — Enumerable of `Func<T1, T2, bool>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -448,6 +456,7 @@ public event DeleteItemHandler<Func<T1, T2, bool>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -463,6 +472,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T1, T2, bool> this[int index] { get; set; }
@@ -569,13 +579,11 @@ public void Dispose()
 - **Effects:**
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
----
 </details>
 
+---
 
 ## 🗂 Example of Usage
-
 Below are examples of using `AndExpression` to configure an entity using `Atomic.Entities`.
 
 ```csharp
@@ -614,6 +622,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 IExpression<bool> condition = entity.GetFireCondition();
 condition.Add(() => false);
 ```
+
+---
 
 ## 📌 Best Practice
 When you need to insert constant `true` or `false` conditions **without allocations**, you can use boolean constants from [DefaultConstants](../Values/DefaultConstants.md#boolean-constants)
