@@ -1,19 +1,19 @@
 # 🧩 Time Source Interfaces
 Provides a set of flexible interfaces for **time tracking**, **state management**, and **progress monitoring** in reactive systems. These interfaces allow you to create sources that:
 
-- Track **current time** (`ITimeSource`) and notify listeners of changes.
+- Track **current time** [ITimeSource](#itimesource) and notify listeners of changes.
 - Handle total duration tracking (`IDurationSource`).
 - Update incrementally via **ticks** (`ITickSource`).
 - Start, stop, pause, or resume execution (`IStartSource`, `IPauseSource`).
 - Signal completion or progress updates (`ICompleteSource`, `IProgressSource`).
-- Maintain and notify **state changes** (`IStateSource<T>`).
+- Maintain and notify **state changes** ([IStateSource&lt;T&gt;](#istatesource)).
 
 ---
 
 
 <details>
   <summary>
-    <h2>🧩 ITimeSource</h2>
+    <h2 id="itimesource">🧩 ITimeSource</h2>
     <br> Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time changes</b>.
   </summary>
 
@@ -268,7 +268,7 @@ void Resume();
 
 <details>
   <summary>
-    <h2>🧩 IStateSource&lt;T&gt;</h2>
+    <h2 id="istatesource">🧩 IStateSource&lt;T&gt;</h2>
     <br> Represents a source that <b>provides state notifications</b>.
   </summary>
 
