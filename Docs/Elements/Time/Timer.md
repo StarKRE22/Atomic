@@ -9,7 +9,7 @@
 
 <details>
   <summary>
-    <h2>Constructors</h2>
+    <h2>🔹 Constructors</h2>
   </summary>
 
 ### `Timer()`
@@ -33,7 +33,7 @@ public Timer(float duration);
 
 <details>
   <summary>
-    <h2>Events</h2>
+    <h2>🔹 Events</h2>
   </summary>
 
 #### `event Action OnStarted`
@@ -113,31 +113,31 @@ public event Action<TimerState> OnStateChanged;
 
 <details>
   <summary>
-    <h2>Properties</h2>
+    <h2>🔹 Properties</h2>
   </summary>
 
-### `TimerState CurrentState`
+#### `TimerState CurrentState`
 ```csharp
 public TimerState CurrentState { get; }
 ```
 - **Description:** Gets the current state of the timer.
 - **Remarks:** Read-only property reflecting the [timer state](TimerState.md): `IDLE`, `PLAYING`, `PAUSED`, or `COMPLETED`.
 
-### `float Duration`
+#### `float Duration`
 ```csharp
 public float Duration { get; set; }
 ```
 - **Description:** Gets or sets the total duration of the timer in seconds.
 - **Remarks:** Setting this property triggers `OnDurationChanged`.
 
-### `float Time`
+#### `float Time`
 ```csharp
 public float Time { get; set; }
 ```
 - **Description:** Gets or sets the current time of the timer in seconds.
 - **Remarks:** Setting this property triggers `OnTimeChanged` and updates progress via `OnProgressChanged`.
 
-### `float Progress`
+#### `float Progress`
 ```csharp
 public float Progress { get; set; }
 ```
@@ -150,7 +150,7 @@ public float Progress { get; set; }
 
 <details>
   <summary>
-    <h2>Methods</h2>
+    <h2>🔹 Methods</h2>
   </summary>
 
 #### `void Start()`
@@ -278,10 +278,10 @@ public void Tick(float deltaTime);
 
 <details>
   <summary>
-    <h2>Operators</h2>
+    <h2>🔹 Operators</h2>
   </summary>
 
-### `implicit operator Timer(float duration)`
+#### `implicit operator Timer(float duration)`
 ```csharp
 public static implicit operator Timer(float duration);
 ```
@@ -294,7 +294,7 @@ public static implicit operator Timer(float duration);
   Timer timer = 5f; // creates a Timer with duration = 5 seconds
   ```
 
-### `implicit operator Timer(int duration)`
+#### `implicit operator Timer(int duration)`
 ```csharp
 public static implicit operator Timer(int duration);
 ```

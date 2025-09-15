@@ -20,7 +20,7 @@ The interface combines multiple sources internally:
 
 <details>
   <summary>
-    <h2>Events</h2>
+    <h2>🔹 Events</h2>
   </summary>
 
 #### `event Action OnStarted`
@@ -103,7 +103,7 @@ public event Action<TimerState> OnStateChanged;
 
 <details>
   <summary>
-    <h2>Methods</h2>
+    <h2>🔹 Methods</h2>
   </summary>
 
 #### `void Start()`
