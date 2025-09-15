@@ -1,8 +1,9 @@
 # 🧩️ ICooldown
 
 `ICooldown` represents a contract of **cooldown timer** that tracks remaining time,  
-provides progress feedback (0–1), and raises events when its state changes. The interface combines multiple sources: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource)  
-to provide flexible access to timer data and notifications.
+provides progress feedback and raises events when its state changes. 
+
+The interface combines multiple sources: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource) to provide flexible access to timer data and notifications.
 
 > [!IMPORTANT]
 > It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
