@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,15 +166,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="27523000" />
-    </task>
-    <task id="LOCAL-00223" summary="Написал IEvent.md">
-      <option name="closed" value="true" />
-      <created>1757593426067</created>
-      <option name="number" value="00223" />
-      <option name="presentableId" value="LOCAL-00223" />
-      <option name="project" value="LOCAL" />
-      <updated>1757593426067</updated>
+      <workItem from="1757738347120" duration="28606000" />
     </task>
     <task id="LOCAL-00224" summary="Написал IEvent.md">
       <option name="closed" value="true" />
@@ -557,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757926793552</updated>
     </task>
-    <option name="localTasksCounter" value="272" />
+    <task id="LOCAL-00272" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757927106889</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1757927106889</updated>
+    </task>
+    <option name="localTasksCounter" value="273" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,12 +607,12 @@
     <MESSAGE value="Сделал FloatSumExpression.md" />
     <MESSAGE value="Пилим Inline Expression" />
     <MESSAGE value="Пилим InlineExpression.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал InlineExpression.md" />
     <MESSAGE value="Сделал Expressions!" />
     <MESSAGE value="Делаем Time!" />
     <MESSAGE value="Сделал TimeSources.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал TimeSources.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

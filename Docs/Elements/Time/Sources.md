@@ -1,15 +1,16 @@
 # 🧩 Time Source Interfaces
 Provides a set of flexible interfaces for **time tracking**, **state management**, and **progress monitoring** in reactive systems. These interfaces allow you to create sources that:
 
-- Track **current time** [ITimeSource](#itimesource) and notify listeners of changes.
-- Handle total duration tracking (`IDurationSource`).
-- Update incrementally via **ticks** (`ITickSource`).
-- Start, stop, pause, or resume execution (`IStartSource`, `IPauseSource`).
-- Signal completion or progress updates (`ICompleteSource`, `IProgressSource`).
-- Maintain and notify **state changes** ([IStateSource&lt;T&gt;](#istatesource)).
+- [ITimeSource](#itimesource) — Track **current time**  and notify listeners of changes.
+- [IDurationSource](#durationsource) — Handle total duration tracking.
+- [ITickSource](#iticksource) — Update incrementally via **ticks** .
+- [IStartSource](#istartsource) — Start, stop execution.
+- [IPauseSource](#ipausesource) — Pause, or resume execution.
+- [ICompleteSource](#icompletesource) — Signal completion.
+- [IProgressSource](#iprogresssource) — Progress updates.
+- [IStateSource&lt;T&gt;](#istatesource) — Maintain and notify **state changes**.
 
 ---
-
 
 <details>
   <summary>
@@ -55,28 +56,7 @@ void ResetTime();
 
 <details>
   <summary>
-    <h2>🧩 ITickSource</h2>
-    <br> Represents a source that <b>can be updated over time through the ticks</b>.
-  </summary>
-
-<br>
-
-### Methods
-#### `void Tick(float deltaTime)`
-```csharp
-void Tick(float deltaTime);  
-```
-- **Description:** Updates the source by a specified time increment.
-- **Parameters:**
-  - `deltaTime` — The amount of time (in seconds) to advance the source.
-- **Remarks:** This method is typically called repeatedly (e.g., once per frame) to progress time-dependent systems.
-</details>
-
----
-
-<details>
-  <summary>
-    <h2>🧩 IDurationSource</h2>
+    <h2 id="idurationsource">🧩 IDurationSource</h2>
     <br> Represents a source that <b>has a total duration and can notify changes</b>.
   </summary>
 <br>
@@ -108,7 +88,28 @@ void SetDuration(float duration);
 
 <details>
   <summary>
-    <h2>🧩 IProgressSource</h2>
+    <h2 id="iticksource">🧩 ITickSource</h2>
+    <br> Represents a source that <b>can be updated over time through the ticks</b>.
+  </summary>
+
+<br>
+
+### Methods
+#### `void Tick(float deltaTime)`
+```csharp
+void Tick(float deltaTime);  
+```
+- **Description:** Updates the source by a specified time increment.
+- **Parameters:**
+  - `deltaTime` — The amount of time (in seconds) to advance the source.
+- **Remarks:** This method is typically called repeatedly (e.g., once per frame) to progress time-dependent systems.
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="iprogresssource">🧩 IProgressSource</h2>
     <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
   </summary>
 
@@ -141,7 +142,7 @@ void SetProgress(float progress);
 
 <details>
   <summary>
-    <h2>🧩 IStartSource</h2>
+    <h2 id="istartsource">🧩 IStartSource</h2>
     <br> Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
   </summary>
 
@@ -198,7 +199,7 @@ void Stop();
 
 <details>
   <summary>
-    <h2>🧩 ICompleteSource</h2>
+    <h2 id="icompletesource">🧩 ICompleteSource</h2>
     <br> Represents a source that <b>can complete and notify listeners</b>.
   </summary>
 
@@ -224,7 +225,7 @@ bool IsCompleted();
 
 <details>
   <summary>
-    <h2>🧩 IPauseSource</h2>
+    <h2 id="ipausesource">🧩 IPauseSource</h2>
     <br> Represents a source that <b>can be paused and resumed</b>.
   </summary>
 
