@@ -140,8 +140,9 @@ public IEnumerator<Func<R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
 - **Returns:** `IEnumerator<Func<R>>` — Enumerator over the functions.
----
 </details>
+
+---
 
 <details>
   <summary>
@@ -266,9 +267,9 @@ public IEnumerator<Func<T, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T, R>>` — Enumerator for the function members.
----
 </details>
 
+---
 
 <details>
   <summary>
@@ -397,8 +398,9 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 ```
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
----
 </details>
+
+---
 
 ## 🗂 Example Usage
 
@@ -429,6 +431,8 @@ expression.Insert(1, () => 42);
 foreach (Func<int> func in expression)
     Console.WriteLine($"Function result: {func()}");
 ```
+
+---
 
 ## 📝 Notes
 
