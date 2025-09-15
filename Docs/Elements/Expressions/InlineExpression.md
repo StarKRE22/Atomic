@@ -2,6 +2,8 @@
 
 `InlineExpression` is a flexible class for creating expressions with **custom evaluation logic**. It allows you to define how a list of functions is evaluated to produce a result.
 
+---
+
 <details>
   <summary>
     <h2>🧩 InlineExpression&lt;R&gt;</h2>
@@ -16,6 +18,7 @@ public class InlineExpression<R> : ExpressionBase<R>
 - **Type Parameter:** `R` — The return type of the expression.
 
 ### Constructors
+
 #### `InlineExpression(Func<Enumerator, R>, int)`
 ```csharp
 public InlineExpression(Func<Enumerator, R> function, int capacity)
@@ -44,6 +47,7 @@ public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enume
   - `enumerable` — A collection of functions to add to the expression.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -69,6 +73,7 @@ public event DeleteItemHandler<Func<R>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Value`
 ```csharp
 public R Value { get; }
@@ -91,6 +96,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<R> this[int index] { get; set; }
@@ -100,6 +106,7 @@ public Func<R> this[int index] { get; set; }
 - **Returns:** `Func<R>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke()`
 ```csharp
 public R Invoke()
@@ -194,7 +201,7 @@ public void Dispose()
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 Below is an example of using `InlineExpression<R>` to extend a simple **SUM** expression:
 
 ```csharp
@@ -214,9 +221,9 @@ expression.Add(() => 3);
 //Evaluate:
 int sum = expression.Invoke(); // 1 + 2 + 3 = 6
 ```
----
 </details>
 
+---
 
 <details>
   <summary>
@@ -234,6 +241,7 @@ public class InlineExpression<T, R> : ExpressionBase<T, R>
   - `R` — The return type of the expression.
 
 ### Constructors
+
 #### `InlineExpression(Func<Enumerator, T, R>, int)`
 ```csharp
 public InlineExpression(Func<Enumerator, T, R> function, int capacity)
@@ -262,6 +270,7 @@ public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>>
   - `enumerable` — A collection of functions to add to the expression.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -287,6 +296,7 @@ public event DeleteItemHandler<Func<T, R>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -302,6 +312,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T, R> this[int index] { get; set; }
@@ -311,6 +322,7 @@ public Func<T, R> this[int index] { get; set; }
 - **Returns:** `Func<T, R>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T)`
 ```csharp
 public R Invoke(T arg)
@@ -406,7 +418,7 @@ public void Dispose()
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 Below is an example of using `InlineExpression<T, R>` to extend a simple **PRODUCT** expression:
 
 ```csharp
@@ -425,10 +437,9 @@ expression.Add(x => x + 2);
 //Evaluate:
 int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
 ```
----
 </details>
 
-
+---
 
 <details>
   <summary>
@@ -447,6 +458,7 @@ public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
   - `R` — The return type of the expression.
 
 ### Constructors
+
 #### `InlineExpression(Func<Enumerator, T1, T2, R>, int)`
 ```csharp
 public InlineExpression(Func<Enumerator, T1, T2, R> function, int capacity)
@@ -475,6 +487,7 @@ public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T
   - `enumerable` — A collection of functions to add to the expression.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -500,6 +513,7 @@ public event DeleteItemHandler<Func<T1, T2, R>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -515,6 +529,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T1, T2, R> this[int index] { get; set; }
@@ -524,6 +539,7 @@ public Func<T1, T2, R> this[int index] { get; set; }
 - **Returns:** `Func<T1, T2, R>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T1, T2)`
 ```csharp
 public R Invoke(T1 arg1, T2 arg2)
@@ -621,9 +637,9 @@ public void Dispose()
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
-
+### 🗂 Example Usage
 Below is an example of using `InlineExpression<T1, T2, R>` to extend a simple **SUM** expression:
+
 ```csharp
 var expression = new InlineExpression<int, int, int>((enumerator, x, y) => {
     int sum = 0;
@@ -639,5 +655,4 @@ expression.Add((a, b) => a * b);
 //Evaluate:
 int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
 ```
----
 </details>

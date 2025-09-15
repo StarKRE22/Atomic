@@ -21,6 +21,7 @@ public class OrExpression : ExpressionBase<bool>, IPredicate
 ```
 
 ### Constructors
+
 #### `OrExpression()`
 ```csharp
 public OrExpression()
@@ -67,6 +68,7 @@ public event DeleteItemHandler<Func<bool>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Value`
 ```csharp
 public bool Value { get; }
@@ -90,6 +92,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<bool> this[int index] { get; set; }
@@ -99,6 +102,7 @@ public Func<bool> this[int index] { get; set; }
 - **Returns:** `Func<bool>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke()`
 ```csharp
 public bool Invoke()
@@ -193,8 +197,9 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
----
 </details>
+
+---
 
 <details>
   <summary>
@@ -211,6 +216,7 @@ public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
     - `T` — The input type of the functions.
 
 ### Constructors
+
 #### `OrExpression()`
 ```csharp
 public OrExpression()
@@ -232,6 +238,7 @@ public OrExpression(IEnumerable<Func<T, bool>> members)
 - **Parameter:** `members` — Enumerable of `Func<T, bool>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -257,6 +264,7 @@ public event DeleteItemHandler<Func<T, bool>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -281,6 +289,7 @@ public Func<T, bool> this[int index] { get; set; }
 - **Returns:** `Func<T, bool>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T arg)`
 ```csharp
 public bool Invoke(T arg)
@@ -376,8 +385,9 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
----
 </details>
+
+---
 
 <details>
   <summary>
@@ -395,6 +405,7 @@ public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1,
     - `T2` — The second input type of the functions.
 
 ### Constructors
+
 #### `OrExpression()`
 ```csharp
 public OrExpression()
@@ -416,6 +427,7 @@ public OrExpression(IEnumerable<Func<T1, T2, bool>> members)
 - **Parameter:** `members` — Enumerable of `Func<T1, T2, bool>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -441,6 +453,7 @@ public event DeleteItemHandler<Func<T1, T2, bool>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -456,6 +469,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T1, T2, bool> this[int index] { get; set; }
@@ -465,6 +479,7 @@ public Func<T1, T2, bool> this[int index] { get; set; }
 - **Returns:** `Func<T1, T2, bool>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
 public bool Invoke(T1 arg1, T2 arg2)
@@ -562,9 +577,9 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
----
 </details>
 
+---
 
 ## 🗂 Example of Usage
 Below are examples of using `OrExpression` to configure an entity using `Atomic.Entities`.

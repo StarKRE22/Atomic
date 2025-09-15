@@ -16,6 +16,7 @@ public class FloatMulExpression : ExpressionBase<float>
 ```
 
 ### Constructors
+
 #### `FloatMulExpression(int capacity)`
 ```csharp
 public FloatMulExpression(int capacity)
@@ -38,6 +39,7 @@ public FloatMulExpression(IEnumerable<Func<float>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<float>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -63,6 +65,7 @@ public event DeleteItemHandler<Func<float>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Value`
 ```csharp
 public float Value { get; }
@@ -86,6 +89,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<float> this[int index] { get; set; }
@@ -95,6 +99,7 @@ public Func<float> this[int index] { get; set; }
 - **Returns:** `Func<float>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke()`
 ```csharp
 public float Invoke()
@@ -190,9 +195,8 @@ public void Dispose()
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
-// Parameterless
 var multiply = new FloatMulExpression(
     () => 2,
     () => 3,
@@ -200,8 +204,9 @@ var multiply = new FloatMulExpression(
 );
 float result = multiply.Invoke(); // 24
 ```
----
 </details>
+
+---
 
 <details>
  <summary>
@@ -216,6 +221,7 @@ public class FloatMulExpression<T> : ExpressionBase<T, float>
 - **Type Parameter:** `T` — The input parameter type of the functions.
 
 ### Constructors
+
 #### `FloatMulExpression()`
 ```csharp
 public FloatMulExpression(int capacity)
@@ -238,6 +244,7 @@ public FloatMulExpression(IEnumerable<Func<T, float>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<T, float>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -263,6 +270,7 @@ public event DeleteItemHandler<Func<T, float>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -278,6 +286,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T, float> this[int index] { get; set; }
@@ -287,6 +296,7 @@ public Func<T, float> this[int index] { get; set; }
 - **Returns:** `Func<T, float>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T arg)`
 ```csharp
 public float Invoke(T arg)
@@ -383,18 +393,17 @@ public void Dispose()
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
-
-// Single-parameter
 var expression = new FloatMulExpression<float>(
     x => x,
     x => x + 1
 );
 float result = expression.Invoke(3); // 3 * (3 + 1) = 12
 ```
----
 </details>
+
+---
 
 <details>
  <summary>
@@ -411,6 +420,7 @@ public class FloatMulExpression<T1, T2> : ExpressionBase<T1, T2, float>
 - `T2` — The second input parameter type.
 
 ## Constructors
+
 #### `FloatMulExpression()`
 ```csharp
 public FloatMulExpression(int capacity)
@@ -433,6 +443,7 @@ public FloatMulExpression(IEnumerable<Func<T1, T2, float>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<T1, T2, float>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -458,14 +469,15 @@ public event DeleteItemHandler<Func<T1, T2, float>> OnItemDeleted;
 - **Description:** Occurs when a function is removed.
 
 ## Properties
-### `Count`
+
+#### `Count`
 ```csharp
 public int Count { get; }
 ```
 - **Description:** Gets the number of functions in the expression.
 - **Returns:** `float` — Number of function members.
 
-### `IsReadOnly`
+#### `IsReadOnly`
 ```csharp
 public bool IsReadOnly { get; }
 ```
@@ -473,6 +485,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T1, T2, float> this[int index] { get; set; }
@@ -482,6 +495,7 @@ public Func<T1, T2, float> this[int index] { get; set; }
 - **Returns:** `Func<T1, T2, float>` — Function at the given index.
 
 ### Methods
+
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
 public float Invoke(T1 arg1, T2 arg2)
@@ -578,7 +592,7 @@ public void Dispose()
     - Clears the function list.
     - Sets event handlers to null.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
 var expression = new FloatMulExpression<float, float>(
     (a, b) => a,

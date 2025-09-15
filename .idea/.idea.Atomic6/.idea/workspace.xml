@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,39 +171,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="28606000" />
-    </task>
-    <task id="LOCAL-00224" summary="Написал IEvent.md">
-      <option name="closed" value="true" />
-      <created>1757593453315</created>
-      <option name="number" value="00224" />
-      <option name="presentableId" value="LOCAL-00224" />
-      <option name="project" value="LOCAL" />
-      <updated>1757593453315</updated>
-    </task>
-    <task id="LOCAL-00225" summary="Сделал Subscription.md">
-      <option name="closed" value="true" />
-      <created>1757598537804</created>
-      <option name="number" value="00225" />
-      <option name="presentableId" value="LOCAL-00225" />
-      <option name="project" value="LOCAL" />
-      <updated>1757598537804</updated>
-    </task>
-    <task id="LOCAL-00226" summary="Написал Extensions.md">
-      <option name="closed" value="true" />
-      <created>1757603849832</created>
-      <option name="number" value="00226" />
-      <option name="presentableId" value="LOCAL-00226" />
-      <option name="project" value="LOCAL" />
-      <updated>1757603849832</updated>
-    </task>
-    <task id="LOCAL-00227" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757603933656</created>
-      <option name="number" value="00227" />
-      <option name="presentableId" value="LOCAL-00227" />
-      <option name="project" value="LOCAL" />
-      <updated>1757603933656</updated>
+      <workItem from="1757738347120" duration="30195000" />
     </task>
     <task id="LOCAL-00228" summary="Написал IRequest.md">
       <option name="closed" value="true" />
@@ -560,7 +533,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757927106889</updated>
     </task>
-    <option name="localTasksCounter" value="273" />
+    <task id="LOCAL-00273" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757928024476</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1757928024476</updated>
+    </task>
+    <task id="LOCAL-00274" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757928162188</created>
+      <option name="number" value="00274" />
+      <option name="presentableId" value="LOCAL-00274" />
+      <option name="project" value="LOCAL" />
+      <updated>1757928162188</updated>
+    </task>
+    <task id="LOCAL-00275" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757928232039</created>
+      <option name="number" value="00275" />
+      <option name="presentableId" value="LOCAL-00275" />
+      <option name="project" value="LOCAL" />
+      <updated>1757928232039</updated>
+    </task>
+    <task id="LOCAL-00276" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757928366220</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1757928366220</updated>
+    </task>
+    <option name="localTasksCounter" value="277" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +601,6 @@
     <MESSAGE value="Пилим IExpression.md" />
     <MESSAGE value="Сделал IExpression.md" />
     <MESSAGE value="Написал ExpressionBase.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим AndExpression.md" />
     <MESSAGE value="Написал AndExpression.md" />
     <MESSAGE value="Сделал AndExpression.md" />
@@ -612,7 +616,8 @@
     <MESSAGE value="Делаем Time!" />
     <MESSAGE value="Сделал TimeSources.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

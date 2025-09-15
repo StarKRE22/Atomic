@@ -16,6 +16,7 @@ public class IntSumExpression : ExpressionBase<int>
 ```
 
 ### Constructors
+
 #### `IntSumExpression(int capacity)`
 ```csharp
 public IntSumExpression(int capacity)
@@ -38,6 +39,7 @@ public IntSumExpression(IEnumerable<Func<int>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<int>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -63,6 +65,7 @@ public event DeleteItemHandler<Func<int>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Value`
 ```csharp
 public int Value { get; }
@@ -86,6 +89,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<int> this[int index] { get; set; }
@@ -95,6 +99,7 @@ public Func<int> this[int index] { get; set; }
 - **Returns:** `Func<int>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke()`
 ```csharp
 public int Invoke()
@@ -190,9 +195,8 @@ public void Dispose()
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
-// Parameterless
 var expression = new IntSumExpression(
     () => 2,
     () => 3,
@@ -200,10 +204,9 @@ var expression = new IntSumExpression(
 );
 int result = expression.Invoke(); // 9
 ```
----
 </details>
 
-
+---
 
 <details>
  <summary>
@@ -218,6 +221,7 @@ public class IntSumExpression<T> : ExpressionBase<T, int>
 - **Type Parameter:** `T` — The input parameter type of the functions.
 
 ### Constructors
+
 #### `IntSumExpression()`
 ```csharp
 public IntSumExpression(int capacity)
@@ -240,6 +244,7 @@ public IntSumExpression(IEnumerable<Func<T, int>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<T, int>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -265,6 +270,7 @@ public event DeleteItemHandler<Func<T, int>> OnItemDeleted;
 - **Description:** Occurs when a function is removed from the expression.
 
 ### Properties
+
 #### `Count`
 ```csharp
 public int Count { get; }
@@ -280,6 +286,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T, int> this[int index] { get; set; }
@@ -289,6 +296,7 @@ public Func<T, int> this[int index] { get; set; }
 - **Returns:** `Func<T, int>` — The function at the given index.
 
 ### Methods
+
 #### `Invoke(T arg)`
 ```csharp
 public int Invoke(T arg)
@@ -385,19 +393,17 @@ public void Dispose()
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
-
-// Single-parameter
 var expression = new IntSumExpression<int>(
     x => x,
     x => x + 1
 );
 int result = expression.Invoke(3); // 3 + (3 + 1) = 7
 ```
----
 </details>
 
+---
 
 <details>
  <summary>
@@ -414,6 +420,7 @@ public class IntSumExpression<T1, T2> : ExpressionBase<T1, T2, int>
 - `T2` — The second input parameter type.
 
 ## Constructors
+
 #### `IntSumExpression()`
 ```csharp
 public IntSumExpression(int capacity)
@@ -436,6 +443,7 @@ public IntSumExpression(IEnumerable<Func<T1, T2, int>> members)
 - **Parameter:** `members` — Enumerable collection of `Func<T1, T2, int>` delegates.
 
 ### Events
+
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
@@ -460,15 +468,16 @@ public event DeleteItemHandler<Func<T1, T2, int>> OnItemDeleted;
 ```
 - **Description:** Occurs when a function is removed.
 
-## Properties
-### `Count`
+### Properties
+
+#### `Count`
 ```csharp
 public int Count { get; }
 ```
 - **Description:** Gets the number of functions in the expression.
 - **Returns:** `int` — Number of function members.
 
-### `IsReadOnly`
+#### `IsReadOnly`
 ```csharp
 public bool IsReadOnly { get; }
 ```
@@ -476,6 +485,7 @@ public bool IsReadOnly { get; }
 - **Returns:** `false`.
 
 ### Indexers
+
 #### `this[int index]`
 ```csharp
 public Func<T1, T2, int> this[int index] { get; set; }
@@ -485,6 +495,7 @@ public Func<T1, T2, int> this[int index] { get; set; }
 - **Returns:** `Func<T1, T2, int>` — Function at the given index.
 
 ### Methods
+
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
 public int Invoke(T1 arg1, T2 arg2)
@@ -581,7 +592,7 @@ public void Dispose()
     - Clears the function list.
     - Sets event handlers to null.
 
-## 🗂 Example Usage
+### 🗂 Example Usage
 ```csharp
 var expression = new IntSumExpression<int, int>(
     (a, b) => a,
