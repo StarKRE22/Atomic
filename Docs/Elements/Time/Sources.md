@@ -18,8 +18,6 @@ Provides a set of flexible interfaces for **time tracking**, **state management*
     <br> Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time changes</b>.
   </summary>
 
-<br>
-
 ### Events
 #### `event Action<float> OnTimeChanged`
 ```csharp
@@ -59,7 +57,6 @@ void ResetTime();
     <h2 id="idurationsource">🧩 IDurationSource</h2>
     <br> Represents a source that <b>has a total duration and can notify changes</b>.
   </summary>
-<br>
 
 ### Events
 #### `event Action<float> OnDurationChanged`
@@ -92,8 +89,6 @@ void SetDuration(float duration);
     <br> Represents a source that <b>can be updated over time through the ticks</b>.
   </summary>
 
-<br>
-
 ### Methods
 #### `void Tick(float deltaTime)`
 ```csharp
@@ -112,8 +107,6 @@ void Tick(float deltaTime);
     <h2 id="istartsource">🧩 IStartSource</h2>
     <br> Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
   </summary>
-
-<br>
 
 ### Events
 #### `event Action OnStarted`
@@ -170,8 +163,6 @@ void Stop();
     <br> Represents a source that <b>can complete and notify listeners</b>.
   </summary>
 
-<br>
-
 ### Events
 #### `event Action OnCompleted`
 ```csharp
@@ -195,8 +186,6 @@ bool IsCompleted();
     <h2 id="ipausesource">🧩 IPauseSource</h2>
     <br> Represents a source that <b>can be paused and resumed</b>.
   </summary>
-
-<br>
 
 ### Events
 #### `event Action OnPaused`
@@ -240,8 +229,6 @@ void Resume();
     <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
   </summary>
 
-<br>
-
 ### Events
 #### `event Action<float> OnProgressChanged`
 ```csharp
@@ -272,8 +259,6 @@ void SetProgress(float progress);
     <h2 id="istatesource">🧩 IStateSource&lt;T&gt;</h2>
     <br> Represents a source that <b>provides state notifications</b>.
   </summary>
-
-<br>
 
 - **Type Parameter:** `T` — Enum type representing the state.
 
