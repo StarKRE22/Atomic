@@ -21,7 +21,7 @@ Provides a set of flexible interfaces for **time tracking**, **state management*
 ### Events
 #### `event Action<float> OnTimeChanged`
 ```csharp
-event Action<float> OnTimeChanged;
+public event Action<float> OnTimeChanged;
 ```
 - **Description:** Raised whenever the current time changes.
 - **Parameters:** `float` — the new current time in seconds.
@@ -29,14 +29,14 @@ event Action<float> OnTimeChanged;
 ### Methods
 #### `float GetTime()`
 ```csharp
-float GetTime();
+public float GetTime();
 ```
 - **Description:** Gets the current time from the source.
 - **Returns:** `float` — current time in seconds.
 
 #### `void SetTime(float time)`
 ```csharp
-void SetTime(float time);
+public void SetTime(float time);
 ```
 - **Description:** Sets the current time.
 - **Parameters:**
@@ -44,7 +44,7 @@ void SetTime(float time);
 
 #### `void ResetTime()`
 ```csharp
-void ResetTime();  
+public void ResetTime();  
 ```
 - **Description:** Resets the time source to its initial state.
 - **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via `OnTimeChanged`.
@@ -61,21 +61,21 @@ void ResetTime();
 ### Events
 #### `event Action<float> OnDurationChanged`
 ```csharp
-event Action<float> OnDurationChanged;
+public event Action<float> OnDurationChanged;
 ```
 - **Description:** Invoked when the duration value changes.
 
 ### Methods
 #### `float GetDuration()`
 ```csharp
-float GetDuration();  
+public float GetDuration();  
 ```
 - **Description:** Gets the total duration.
 - **Returns:** The duration in seconds.
 
 #### `void SetDuration(float duration)`
 ```csharp
-void SetDuration(float duration);  
+public void SetDuration(float duration);  
 ```
 - **Description:** Sets the total duration.
 - **Parameter:** `duration` — The new duration value in seconds.
@@ -92,7 +92,7 @@ void SetDuration(float duration);
 ### Methods
 #### `void Tick(float deltaTime)`
 ```csharp
-void Tick(float deltaTime);  
+public void Tick(float deltaTime);  
 ```
 - **Description:** Updates the source by a specified time increment.
 - **Parameters:**
@@ -111,32 +111,32 @@ void Tick(float deltaTime);
 ### Events
 #### `event Action OnStarted`
 ```csharp
-event Action OnStarted;  
+public event Action OnStarted;  
 ```
 - **Description:** Raised when the source starts.
 
 #### `event Action OnStopped`
 ```csharp
-event Action OnStopped;  
+public event Action OnStopped;  
 ```
 - **Description:** Raised when the source stops.
 
 ### Methods
 #### `bool IsIdle()`
 ```csharp
-bool IsIdle();  
+public bool IsIdle();  
 ```
 - **Description:** Returns `true` if the source has not started yet.
 
 #### `bool IsStarted()`
 ```csharp
-bool IsStarted();  
+public bool IsStarted();  
 ```
 - **Description:** Returns `true` if the source is running.
 
 #### `void Start(float time)`
 ```csharp
-void Start(float time);  
+public void Start(float time);  
 ```
 - **Description:** Starts the source from a specific time.
 - **Parameters:**
@@ -144,13 +144,13 @@ void Start(float time);
 
 #### `void Start()`
 ```csharp
-void Start();  
+public void Start();  
 ```
 - **Description:** Starts the source from the default start time.
 
 #### `void Stop()`
 ```csharp
-void Stop();  
+public void Stop();  
 ```
 - **Description:** Stops the source and resets its time.
 </details>
@@ -166,14 +166,14 @@ void Stop();
 ### Events
 #### `event Action OnCompleted`
 ```csharp
-event Action OnCompleted;  
+public event Action OnCompleted;  
 ```
 - **Description:** Invoked when the source has completed.
 
 ### Methods
 #### `bool IsCompleted()`
 ```csharp
-bool IsCompleted();  
+public bool IsCompleted();  
 ```
 - **Description:** Returns whether the source has completed.
 - **Returns:** `true` if completed; otherwise `false`.
@@ -190,33 +190,33 @@ bool IsCompleted();
 ### Events
 #### `event Action OnPaused`
 ```csharp
-event Action OnPaused;  
+public event Action OnPaused;  
 ```
 - **Description:** Raised when the source is paused.
 
 #### `event Action OnResumed`
 ```csharp
-event Action OnResumed;  
+public event Action OnResumed;  
 ```
 - **Description:** Raised when the source is resumed.
 
 ### Methods
 #### `bool IsPaused()`
 ```csharp
-bool IsPaused();  
+public bool IsPaused();  
 ```
 - **Description:** Returns true if the source is paused.
 - **Returns:** `true` if paused; otherwise `false`.
 
 #### `void Pause()`
 ```csharp
-void Pause();  
+public void Pause();  
 ```
 - **Description:** Pauses the source.
 
 #### `void Resume()`
 ```csharp
-void Resume();  
+public void Resume();  
 ```
 - **Description:** Resumes the source.
 </details>
@@ -232,21 +232,21 @@ void Resume();
 ### Events
 #### `event Action<float> OnProgressChanged`
 ```csharp
-event Action<float> OnProgressChanged;  
+public event Action<float> OnProgressChanged;  
 ```
 - **Description:** Raised when the progress changes.
 
 ### Methods
 #### `float GetProgress()`
 ```csharp
-float GetProgress();  
+public float GetProgress();  
 ```
 - **Description:** Gets the current progress.
 - **Returns:** Normalized progress (0–1).
 
 #### `void SetProgress(float progress)`
 ```csharp
-void SetProgress(float progress);  
+public void SetProgress(float progress);  
 ```
 - **Description:** Sets the current progress.
 - **Parameter:** `progress` — Progress value (0–1).
@@ -265,14 +265,14 @@ void SetProgress(float progress);
 ### Events
 #### `event Action<T> OnStateChanged`
 ```csharp
-event Action<T> OnStateChanged;  
+public event Action<T> OnStateChanged;  
 ```
 - **Description:** Raised when the state changes.
 
 ### Methods
 #### `T GetState()`
 ```csharp
-T GetState();  
+public T GetState();  
 ```
 - **Description:** Gets the current internal state.
 - **Returns:** The current state of type `T`.

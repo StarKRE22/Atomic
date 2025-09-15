@@ -23,8 +23,6 @@ The interface combines multiple sources internally:
     <h2>Events</h2>
   </summary>
 
-<br>
-
 #### `event Action OnStarted`
 ```csharp
 public event Action OnStarted;
@@ -108,8 +106,6 @@ public event Action<TimerState> OnStateChanged;
   <summary>
     <h2>Methods</h2>
   </summary>
-
-<br>
 
 #### `void Start()`
 ```csharp
