@@ -2,11 +2,11 @@
 
 `Cooldown` represents a cooldown timer that tracks remaining time,  
 provides progress feedback (0–1), and raises events when its state changes.  
-It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
+
+> [!NOTE]
+> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
 ---
-
-## ICooldown
 
 Defines the **contract** for a cooldown timer.
 
