@@ -205,8 +205,9 @@ public void Dispose()
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
 
----
 </details>
+
+---
 
 <details>
   <summary>
@@ -399,9 +400,9 @@ public void Dispose()
 - **Effects:**
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
+</details>
 
 ---
-</details>
 
 <details>
   <summary>
@@ -596,8 +597,9 @@ public void Dispose()
 - **Effects:**
   - Clears the function list.
   - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-----
 </details>
+
+---
 
 ## 🗂 Example of Usage
 Below is an example of using `ExpressionBase` to extend a simple **logical AND** expression with multiple parameterless boolean functions.
@@ -637,6 +639,8 @@ Console.WriteLine($"AND Expression result: {finalResult}");
 expression.Add(() => true);
 finalResult = expression.Invoke(); // still false
 ```
+
+---
 
 ## 📝 Notes
 
