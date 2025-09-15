@@ -64,6 +64,8 @@ namespace Atomic.Elements
         }
 
         public static implicit operator Cooldown(float duration) => new(duration);
+        
+        public static implicit operator Cooldown(int duration) => new(duration);
 
         /// <summary>
         /// Returns whether the cooldown has expired (i.e., current time is zero or less).

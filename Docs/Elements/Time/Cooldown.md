@@ -115,6 +115,33 @@ public override string ToString();
 - **Description:** Returns a string representation of the cooldown's state.
 - **Returns:** Formatted string showing `duration` and `remaining time`.
 
+## Operators
+
+#### `public static implicit operator Cooldown(float)`
+```csharp
+public static implicit operator Cooldown(float duration) => new(duration);
+```
+- **Description:** Allows implicit conversion from a `float` to a `Cooldown`.
+- **Parameter:** `duration` — The duration value in seconds.
+- **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
+- **Usage Example:**  
+
+  ```csharp
+  Cooldown cooldown = 5f; // creates a Cooldown with duration = 5 seconds
+  ```
+
+#### `public static implicit operator Cooldown(int)`
+```csharp
+public static implicit operator Cooldown(int duration) => new(duration);
+```
+- **Description:** Allows implicit conversion from a `int` to a `Cooldown`.
+- **Parameter:** `duration` — The duration value in seconds.
+- **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
+- **Usage Example:**
+
+  ```csharp
+  Cooldown cooldown = 3; // creates a Cooldown with duration = 3 seconds
+  ```
 
 ## 🗂 Example of Usage
 
@@ -150,65 +177,55 @@ Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetT
 ```
 
 ## 📌 Best Practice
+Below are real-world examples of using the `Cooldown` class in different gameplay scenarios.
 
+### 🗂 Example #1: Weapon Shooting
 
-Ниже приведен пример кулдауна для оружия + WhenFixedUpdate
+Cooldown for a weapon that shoots bullets. Implemented with `Atomic.Entities` to handle the firing logic.
 
 ```csharp
-public sealed class ProjectileWeaponInstaller : SceneEntityInstaller<IWeapon>
+public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
 {
-    [SerializeField]
-    private GameEntity _owner;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private Cooldown _cooldown = 0.5f;
 
-    [SerializeField]
-    private Transform _firePoint;
-
-    [SerializeField]
-    private ReactiveVariable<int> _ammo = 100;
-
-    [SerializeField]
-    private Cooldown _cooldown = 0.5f;
-
-    public override void Install(IWeapon weapon)
+    public override void Install(IWeaponEntity weapon)
     {
-        weapon.AddFireEvent(new BaseEvent());
         weapon.AddFireAction(new InlineAction(() =>
         {
-            if (_ammo.Value <= 0 || !_cooldown.IsCompleted())
+            // Check cooldown before firing
+            if (!_cooldown.IsCompleted())
                 return;
 
-            _ammo.Value--;
+            // TODO: weapon shooting logic
             
-            BulletUseCase.Spawn(
-                GameContext.Instance,
-                _firePoint.position,
-                _firePoint.rotation,
-                _owner.GetTeamType().Value
-            );
-            
+            // Reset cooldown after shot
             _cooldown.ResetTime();
-            weapon.GetFireEvent().Invoke();
         }));
+        
+        // Tick cooldown each FixedUpdate
         weapon.WhenFixedTick(_cooldown.Tick);
     }
 }
 ```
 
+> [!TIP]  
+> For ticking cooldowns it’s convenient to use `WhenTick`/`WhenFixedTick`/`WhenLateTick` extensions for `IEntity` from `Atomic.Entities` to synchronize updates.
 
+---
 
-Милишка!
+### 🗂 Example #2: Melee Combat
+
+The same approach works for melee attacks.  
+Here is a more complete combat setup with cooldown control.
+
 ```csharp
 [Serializable]
 public sealed class MeleeCombatEntityInstaller : IEntityInstaller<IGameEntity>
 {
-    [SerializeField]
-    private float _fireCooldown = 1;
-    
-    [SerializeField]
-    private Const<float> _fireDistance = 1;
-
-    [SerializeField]
-    private Const<int> _damage;
+    [SerializeField] private float _fireCooldown = 1;
+    [SerializeField] private Const<float> _fireDistance = 1;
+    [SerializeField] private Const<int> _damage;
     
     public void Install(IGameEntity entity)
     {
@@ -233,86 +250,65 @@ public sealed class MeleeCombatEntityInstaller : IEntityInstaller<IGameEntity>
     }
 }
 ```
+---
 
-пример таймера игры + UI
+### 🗂 Example #3: Game Timer
+
+Using `Cooldown` as a countdown timer for game sessions.
+
+#### 🔹 Countdown Controller
+Reduces the countdown each frame (`FixedTick`).  
+When the timer reaches zero, the `GameOver` event is triggered.
+
+```csharp
+public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntityFixedTick
+{
+    private ICooldown _countdown;
+    private IEvent _overEvent;
+
+    public void Init(IGameContext context)
+    {
+        _countdown = context.GetGameCountdown();
+        _overEvent = context.GetGameOverEvent();
+    }
+
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        if (_countdown.IsCompleted())
+            _overEvent.Invoke();
+        else
+            _countdown.Tick(deltaTime);
+    }
+}
+```
+
+#### 🔹 Countdown Installing
+The `Cooldown` is initialized with `60` seconds.  
+The countdown and `GameOverEvent` are registered in the game context, and the controller is attached.
+
 ```csharp
 public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
 {
-    [SerializeField]
-    private Transform _worldTransform;
-
-    [SerializeField]
-    private Cooldown _gameCountdown;
-
-    [SerializeField]
-    private TeamCatalog _teamCatalog;
-
-    [Header("Coin System")]
-    [SerializeField]
-    private CoinPool _coinPool;
-
-    [SerializeField]
-    private Cooldown _coinSpawnPeriod = new(2);
-
-    [SerializeField]
-    private Bounds _coinSpawnArea = new(Vector3.zero, new Vector3(5, 0, 5));
+    [SerializeField] private Cooldown _gameCountdown = 60.0f; // 60 seconds game session
 
     public override void Install(IGameContext context)
     {
-        context.AddWorldTransform(_worldTransform);
-        context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
-        context.AddTeamCatalog(_teamCatalog);
-
-        //Game countdown
         context.AddGameCountdown(_gameCountdown);
-        context.AddBehaviour<GameCountdownController>();
-        
-        //Game Over
         context.AddGameOverEvent(new BaseEvent());
-        context.AddWinnerTeam(new ReactiveVariable<TeamType>());
-
-        //Coin system:
-        context.AddCoinPool(_coinPool);
-        context.AddCoinSpawnArea(_coinSpawnArea);
-        context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
-        context.AddBehaviour<CoinSpawnAreaGizmos>();
+        context.AddBehaviour<GameCountdownController>();
     }
 }
+```
+#### 🔹 Countdown Visualization
+`CountdownPresenter` subscribes to the `OnTimeChanged` event and updates the UI view with the current time in `MM:SS` format.  
+Thanks to the [MVP Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html) pattern, the UI stays simple and reactive.
 
-
-using Atomic.Elements;
-using Atomic.Entities;
-
-namespace BeginnerGame
-{
-    public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntityFixedTick
-    {
-        private IGameContext _context;
-        private ICooldown _countdown;
-
-        public void Init(IGameContext context)
-        {
-            _context = context;
-            _countdown = context.GetGameCountdown();
-            _countdown.ResetTime();
-        }
-
-        public void FixedTick(IEntity entity, float deltaTime)
-        {
-            if (_countdown.IsCompleted())
-                GameOverUseCase.GameOver(_context);
-            else
-                _countdown.Tick(deltaTime);
-        }
-    }
-}
-
-
+```csharp
 public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
 {
     private ICooldown _countdown;
     private CountdownView _view;
-    
+
     public void Init(IUIContext context)
     {
         _countdown = GameContext.Instance.GetGameCountdown();
@@ -333,5 +329,3 @@ public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
     }
 }
 ```
-
-

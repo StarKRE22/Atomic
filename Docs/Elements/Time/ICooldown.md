@@ -107,77 +107,59 @@ bool IsCompleted();
 - **Description:** Returns whether the source has completed.
 - **Returns:** `true` if completed; otherwise `false`.
 
+## 🗂 Example of Usage
 
+The following example demonstrates how to use `ICooldown` for spawning coins as game objects in a scene, together with the `Atomic.Entities` framework.
 
-спаун монет с Atomic.Entities
+### CoinSpawnController
+
 ```csharp
 public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedTick
+{
+    private ICooldown _cooldown;
+
+    public void Init(IGameContext context)
     {
-        private readonly ICooldown _spawnCooldown;
-        private IGameContext _context;
+        _cooldown = context.GetCoinSpawnCooldown();
+    }
 
-        public CoinSpawnController(ICooldown spawnCooldown)
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        _cooldown.Tick(deltaTime);
+        if (_cooldown.IsCompleted())
         {
-            _spawnCooldown = spawnCooldown;
-        }
-
-        public void Init(IGameContext context)
-        {
-            _context = context;
-        }
-
-        public void FixedTick(IEntity entity, float deltaTime)
-        {
-            _spawnCooldown.Tick(deltaTime);
-            if (_spawnCooldown.IsCompleted())
-            {
-                CoinsUseCase.Spawn(_context);
-                _spawnCooldown.ResetTime();
-            }
+            this.SpawnCoin();
+            _cooldown.ResetTime();
         }
     }
     
-
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
-    {
-        [SerializeField]
-        private Transform _worldTransform;
-
-        [SerializeField]
-        private Cooldown _gameCountdown;
-
-        [SerializeField]
-        private TeamCatalog _teamCatalog;
-
-        [Header("Coin System")]
-        [SerializeField]
-        private CoinPool _coinPool;
-
-        [SerializeField]
-        private Cooldown _coinSpawnPeriod = new(2);
-
-        [SerializeField]
-        private Bounds _coinSpawnArea = new(Vector3.zero, new Vector3(5, 0, 5));
-
-        public override void Install(IGameContext context)
-        {
-            context.AddWorldTransform(_worldTransform);
-            context.AddPlayers(new Dictionary<TeamType, IPlayerContext>());
-            context.AddTeamCatalog(_teamCatalog);
-
-            //Game countdown
-            context.AddGameCountdown(_gameCountdown);
-            context.AddBehaviour<GameCountdownController>();
-            
-            //Game Over
-            context.AddGameOverEvent(new BaseEvent());
-            context.AddWinnerTeam(new ReactiveVariable<TeamType>());
-
-            //Coin system:
-            context.AddCoinPool(_coinPool);
-            context.AddCoinSpawnArea(_coinSpawnArea);
-            context.AddBehaviour(new CoinSpawnController(_coinSpawnPeriod));
-            context.AddBehaviour<CoinSpawnAreaGizmos>();
-        }
-    }
+    // Logic for spawning a coin
+    private void SpawnCoin() { ... }
+}
 ```
+
+### GameContextInstaller
+Below we bind the `Cooldown` implementation and attach the coin spawn controller.
+
+```csharp
+public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+{
+    // Using Cooldown as implementation
+    [SerializeField] private Cooldown _coinSpawnCooldown = new Cooldown(2);
+
+    public override void Install(IGameContext context)
+    {
+        // Register cooldown
+        context.AddCoinSpawnCooldown(_coinSpawnCooldown);
+        
+        // Register coin spawn logic
+        context.AddBehaviour<CoinSpawnController>();
+    }
+}
+```
+
+### Explanation
+
+- **Cooldown setup:** A `Cooldown` of 2 seconds is created and registered in the game context.
+- **Controller logic:** Each `FixedTick`, the cooldown is updated via `Tick(deltaTime)`.
+- **Coin spawning:** When the cooldown completes, a new coin is spawned, and the cooldown is reset.
