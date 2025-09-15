@@ -109,39 +109,6 @@ void Tick(float deltaTime);
 
 <details>
   <summary>
-    <h2 id="iprogresssource">🧩 IProgressSource</h2>
-    <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
-  </summary>
-
-<br>
-
-### Events
-### `event Action<float> OnProgressChanged`
-```csharp
-event Action<float> OnProgressChanged;  
-```
-- **Description:** Raised when the progress changes.
-
-### Methods
-#### `float GetProgress()`
-```csharp
-float GetProgress();  
-```
-- **Description:** Gets the current progress.
-- **Returns:** Normalized progress (0–1).
-
-#### `void SetProgress(float progress)`
-```csharp
-void SetProgress(float progress);  
-```
-- **Description:** Sets the current progress.
-- **Parameter:** `progress` — Progress value (0–1).
-</details>
-
----
-
-<details>
-  <summary>
     <h2 id="istartsource">🧩 IStartSource</h2>
     <br> Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
   </summary>
@@ -263,6 +230,39 @@ void Pause();
 void Resume();  
 ```
 - **Description:** Resumes the source.
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="iprogresssource">🧩 IProgressSource</h2>
+    <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
+  </summary>
+
+<br>
+
+### Events
+#### `event Action<float> OnProgressChanged`
+```csharp
+event Action<float> OnProgressChanged;  
+```
+- **Description:** Raised when the progress changes.
+
+### Methods
+#### `float GetProgress()`
+```csharp
+float GetProgress();  
+```
+- **Description:** Gets the current progress.
+- **Returns:** Normalized progress (0–1).
+
+#### `void SetProgress(float progress)`
+```csharp
+void SetProgress(float progress);  
+```
+- **Description:** Sets the current progress.
+- **Parameter:** `progress` — Progress value (0–1).
 </details>
 
 ---
