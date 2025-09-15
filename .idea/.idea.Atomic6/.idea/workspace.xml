@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/SourceInterfaces.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/SourceInterfaces.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Cooldown/Cooldown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Cooldown/Cooldown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timer/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timer/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timer.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,23 +171,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="39417000" />
-    </task>
-    <task id="LOCAL-00234" summary="Пилим IExpression.md">
-      <option name="closed" value="true" />
-      <created>1757610047184</created>
-      <option name="number" value="00234" />
-      <option name="presentableId" value="LOCAL-00234" />
-      <option name="project" value="LOCAL" />
-      <updated>1757610047184</updated>
-    </task>
-    <task id="LOCAL-00235" summary="Сделал IExpression.md">
-      <option name="closed" value="true" />
-      <created>1757610633264</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1757610633264</updated>
+      <workItem from="1757738347120" duration="41478000" />
     </task>
     <task id="LOCAL-00236" summary="Написал ExpressionBase.md">
       <option name="closed" value="true" />
@@ -561,7 +549,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757963296394</updated>
     </task>
-    <option name="localTasksCounter" value="283" />
+    <task id="LOCAL-00283" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757963512970</created>
+      <option name="number" value="00283" />
+      <option name="presentableId" value="LOCAL-00283" />
+      <option name="project" value="LOCAL" />
+      <updated>1757963512970</updated>
+    </task>
+    <task id="LOCAL-00284" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1757963679130</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1757963679130</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,11 +613,11 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Причесал Expressions!" />
     <MESSAGE value="Сделал ICooldown.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим Cooldown!" />
     <MESSAGE value="Сделал Cooldown.md" />
     <MESSAGE value="Сделал интерфейс для таймера!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал интерфейс для таймера!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

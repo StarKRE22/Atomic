@@ -95,8 +95,7 @@ public event Action<TimerState> OnStateChanged;
 ```
 - **Description:** Invoked whenever the timer’s internal state changes.
 - **Remarks:** States may include Idle, Running, Paused, Completed depending on `TimerState` enum.
-- **Parameters:**
-    - `TimerState` — the new state of the timer.
+- **Parameter:** [TimerState](TimerState.md) — the new state of the timer.
 
 </details>
 
@@ -226,7 +225,7 @@ public void SetProgress(float progress);
 public TimerState GetState();
 ```
 - **Description:** Returns the current internal state of the timer.
-- **Returns:** `TimerState` — e.g., Idle, Running, Paused, Completed.
+- **Returns:** [TimerState](TimerState.md) — e.g., Idle, Running, Paused, Completed.
 - **Remarks:** Can be used to track state transitions along with `OnStateChanged`.
 
 #### `void Tick(float deltaTime)`
@@ -298,5 +297,5 @@ Choosing Between `ITimer` and `ICooldown`
   - Best for **simple countdowns**, repeated delays, or ability cooldowns where pausing or manual state control isn’t needed.
 
 **Rule of thumb:**
-- Use `Cooldown` for **simple timers**.
+- Use `ICooldown` for **simple timers**.
 - Use `ITimer` for **complex, interactive timers** that need full state and control.

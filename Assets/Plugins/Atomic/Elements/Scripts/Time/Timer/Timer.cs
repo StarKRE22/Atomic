@@ -114,6 +114,30 @@ namespace Atomic.Elements
         public Timer(float duration) => this.duration = duration;
 
         /// <summary>
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="Timer"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Timer"/>.</param>
+        /// <returns>A new <see cref="Timer"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Timer timer = 5f; // creates a Timer with duration = 5 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Timer(float duration) => new(duration);
+
+        /// <summary>
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="Timer"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Timer"/>.</param>
+        /// <returns>A new <see cref="Timer"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Timer timer = 3; // creates a Timer with duration = 3 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Timer(int duration) => new(duration);
+        
+        /// <summary>
         /// Gets the current state of the timer.
         /// </summary>
         public TimerState GetState() => this.currentState;
@@ -148,6 +172,9 @@ namespace Atomic.Elements
         /// </summary>
         public float GetTime() => this.currentTime;
 
+        /// <summary>
+        /// Starts the timer from a zero time.
+        /// </summary>
         public void Start() => this.Start(0);
 
         /// <summary>

@@ -9,6 +9,25 @@ The class combines multiple sources internally: [ITimeSource](Sources.md/#itimes
 
 ---
 
+## Constructors
+
+#### `Cooldown()`
+```csharp
+public Cooldown();
+```
+- **Description:** Initializes a new instance of the `Cooldown` class with default values.
+- **Remarks:** Duration defaults to `0` and remaining time is `0`. The cooldown must be set or reset before use.
+
+#### `Cooldown(float duration)`
+```csharp
+public Cooldown(float duration);
+```
+- **Description:** Initializes a new instance of the `Cooldown` class with a specified duration.
+- **Parameter:** `duration` — total duration of the cooldown in seconds.
+- **Remarks:** The remaining time is initialized to the full duration.
+
+---
+
 ## Events
 
 #### `event Action<float> OnTimeChanged`
@@ -115,6 +134,8 @@ public override string ToString();
 - **Description:** Returns a string representation of the cooldown's state.
 - **Returns:** Formatted string showing `duration` and `remaining time`.
 
+---
+
 ## Operators
 
 #### `public static implicit operator Cooldown(float)`
@@ -142,6 +163,8 @@ public static implicit operator Cooldown(int duration) => new(duration);
   ```csharp
   Cooldown cooldown = 3; // creates a Cooldown with duration = 3 seconds
   ```
+  
+---
 
 ## 🗂 Example of Usage
 
@@ -175,6 +198,8 @@ Console.WriteLine($"Cooldown reset. Time remaining: {cooldown.GetTime()}s");
 cooldown.SetProgress(0.5f);
 Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetTime()}s");
 ```
+
+---
 
 ## 📌 Best Practice
 Below are real-world examples of using the `Cooldown` class in different gameplay scenarios.

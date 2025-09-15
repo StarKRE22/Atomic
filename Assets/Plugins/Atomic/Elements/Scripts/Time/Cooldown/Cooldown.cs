@@ -62,11 +62,31 @@ namespace Atomic.Elements
             _duration = Math.Max(0, duration);
             _time = Math.Min(current, _duration);
         }
-
-        public static implicit operator Cooldown(float duration) => new(duration);
         
-        public static implicit operator Cooldown(int duration) => new(duration);
+        /// <summary>
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="Cooldown"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Cooldown"/>.</param>
+        /// <returns>A new <see cref="Cooldown"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Cooldown cooldown = 5f; // creates a Cooldown with duration = 5 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Cooldown(float duration) => new(duration);
 
+        /// <summary>
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="Cooldown"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Cooldown"/>.</param>
+        /// <returns>A new <see cref="Cooldown"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Cooldown cooldown = 3; // creates a Cooldown with duration = 3 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Cooldown(int duration) => new(duration);
+        
         /// <summary>
         /// Returns whether the cooldown has expired (i.e., current time is zero or less).
         /// </summary>
