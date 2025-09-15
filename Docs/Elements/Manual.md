@@ -101,8 +101,10 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [ReactiveHashSet](Collections/ReactiveHashSet.md)
 - **Time**
   - [Sources](Time/Sources.md)  <!-- + -->
-  - [ICooldown](Time/ICooldown.md) 
-  - [Cooldown](Time/Cooldown.md)
+  - [ICooldown](Time/ICooldown.md) <!-- + -->
+  - [Cooldown](Time/Cooldown.md) <!-- + -->
+  - [ITimer](Time/ITimer.md)
+  - [TimerState](Time/TimerState.md)
   - [Timer](Time/Timer.md)
   - [Countdown](Time/Countdown.md)
   - [Stopwatch](Time/Stopwatch.md)
