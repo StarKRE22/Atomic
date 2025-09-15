@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace Atomic.Elements
@@ -7,6 +9,8 @@ namespace Atomic.Elements
     /// </summary>
     public static partial class Extensions
     {
+        #region Invert
+
         /// <summary>
         /// Creates a new function that returns the negation of the current <see cref="IFunction{bool}"/> value.
         /// </summary>
@@ -36,5 +40,37 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2, bool> it) =>
             new((arg1, arg2) => !it.Invoke(arg1, arg2));
+
+        #endregion
+
+        #region Collections
+        
+        /// <summary>
+        /// Adds a parameterless function to a collection of <see cref="Func{R}"/> delegates.
+        /// </summary>
+        /// <typeparam name="R">The return type of the function.</typeparam>
+        /// <param name="it">The collection to which the function will be added.</param>
+        /// <param name="member">The <see cref="IFunction{R}"/> object whose <see cref="IFunction{R}.Invoke"/> method will be added to the collection.</param>
+        /// <remarks>
+        /// This method wraps the <see cref="IFunction{R}.Invoke"/> method into a <see cref="Func{R}"/> delegate.
+        /// The method is aggressively inlined for performance.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Add<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Add(member.Invoke);
+
+        /// <summary>
+        /// Removes a parameterless function from a collection of <see cref="Func{R}"/> delegates.
+        /// </summary>
+        /// <typeparam name="R">The return type of the function.</typeparam>
+        /// <param name="it">The collection from which the function will be removed.</param>
+        /// <param name="member">The <see cref="IFunction{R}"/> object whose <see cref="IFunction{R}.Invoke"/> method will be removed from the collection.</param>
+        /// <remarks>
+        /// This method wraps the <see cref="IFunction{R}.Invoke"/> method into a <see cref="Func{R}"/> delegate.
+        /// The method is aggressively inlined for performance.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Remove<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Remove(member.Invoke);
+
+        #endregion
     }
 }

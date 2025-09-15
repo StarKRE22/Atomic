@@ -5,6 +5,8 @@ One of the most useful helpers is `Invert`, which creates a new function that re
 
 ---
 
+## 🔹 Invert
+
 ### `Invert(IFunction<bool>)`
 ```csharp
 public static InlineFunction<bool> Invert(this IFunction<bool> it)
@@ -60,6 +62,32 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
 
   bool allies = isAllyPair.Invoke(player, teammate); // true if same team
   ````
+---
+
+## 🔹 Collections
+
+### `Add<R>(ICollection<Func<R>>, IFunction<R>)`
+```csharp
+public static void Add<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Add(member.Invoke);  
+```
+- **Description:** Adds a parameterless function to a collection of `<Func<R>>`. Wraps the `IFunction<R>.Invoke` method as a delegate.
+- **Type Parameter:** `R` — The return type of the function.
+- **Parameters:**
+  - `it` — The target collection to add the function to.
+  - `member` — The `IFunction<R>` whose `Invoke` method will be added.
+
+---
+
+### `Remove<R>(ICollection<Func<R>>, IFunction<R>)`
+```csharp
+public static void Remove<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Remove(member.Invoke);  
+```
+- **Description:** Removes a parameterless function from a collection of `<Func<R>>`. Wraps the `IFunction<R>.Invoke` method as a delegate.
+- **Type Parameter:** `R` — The return type of the function.
+- **Parameters:**
+  - `it` — The target collection to remove the function from.
+  - `member` — The `IFunction<R>` whose `Invoke` method will be removed.
+
 ---
 
 ## 📝 Notes
