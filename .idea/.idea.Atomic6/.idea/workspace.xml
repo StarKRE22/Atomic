@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,39 +166,7 @@
       <workItem from="1757480778920" duration="23560000" />
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
-      <workItem from="1757738347120" duration="18688000" />
-    </task>
-    <task id="LOCAL-00218" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757588107426</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1757588107426</updated>
-    </task>
-    <task id="LOCAL-00219" summary="Прочесал InlineSignal.md">
-      <option name="closed" value="true" />
-      <created>1757590176616</created>
-      <option name="number" value="00219" />
-      <option name="presentableId" value="LOCAL-00219" />
-      <option name="project" value="LOCAL" />
-      <updated>1757590176616</updated>
-    </task>
-    <task id="LOCAL-00220" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757590257699</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1757590257699</updated>
-    </task>
-    <task id="LOCAL-00221" summary="Написал IEvent.md">
-      <option name="closed" value="true" />
-      <created>1757592093342</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1757592093342</updated>
+      <workItem from="1757738347120" duration="27144000" />
     </task>
     <task id="LOCAL-00222" summary="Написал IEvent.md">
       <option name="closed" value="true" />
@@ -560,7 +528,39 @@
       <option name="project" value="LOCAL" />
       <updated>1757832094999</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1757913804066</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1757913804066</updated>
+    </task>
+    <task id="LOCAL-00268" summary="Сделал InlineExpression.md">
+      <option name="closed" value="true" />
+      <created>1757922473339</created>
+      <option name="number" value="00268" />
+      <option name="presentableId" value="LOCAL-00268" />
+      <option name="project" value="LOCAL" />
+      <updated>1757922473340</updated>
+    </task>
+    <task id="LOCAL-00269" summary="Сделал Expressions!">
+      <option name="closed" value="true" />
+      <created>1757924064160</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1757924064160</updated>
+    </task>
+    <task id="LOCAL-00270" summary="Делаем Time!">
+      <option name="closed" value="true" />
+      <created>1757924515217</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1757924515217</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,9 +587,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал FunctionExtensions.md" />
-    <MESSAGE value="Написал ISetter.md" />
-    <MESSAGE value="Reorganize Folders!" />
     <MESSAGE value="Написал ISignal.md" />
     <MESSAGE value="Прочесал InlineSignal.md" />
     <MESSAGE value="Написал IEvent.md" />
@@ -606,13 +603,16 @@
     <MESSAGE value="Сделал AndExpression.md" />
     <MESSAGE value="Сделал OR EXPRESSION" />
     <MESSAGE value="Пилим IntMulExpression.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Пилим IntSumExpression.md" />
     <MESSAGE value="FloatMulExpression.md" />
     <MESSAGE value="Сделал FloatSumExpression.md" />
     <MESSAGE value="Пилим Inline Expression" />
     <MESSAGE value="Пилим InlineExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим InlineExpression.md" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Сделал InlineExpression.md" />
+    <MESSAGE value="Сделал Expressions!" />
+    <MESSAGE value="Делаем Time!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Делаем Time!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
