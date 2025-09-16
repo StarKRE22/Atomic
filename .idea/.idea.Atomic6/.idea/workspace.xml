@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveList.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,23 +180,7 @@
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
       <workItem from="1758016683531" duration="12669000" />
-      <workItem from="1758035034709" duration="9628000" />
-    </task>
-    <task id="LOCAL-00277" summary="Причесал Expressions!">
-      <option name="closed" value="true" />
-      <created>1757929617698</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1757929617698</updated>
-    </task>
-    <task id="LOCAL-00278" summary="Сделал ICooldown.md">
-      <option name="closed" value="true" />
-      <created>1757930168237</created>
-      <option name="number" value="00278" />
-      <option name="presentableId" value="LOCAL-00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1757930168237</updated>
+      <workItem from="1758035034709" duration="9998000" />
     </task>
     <task id="LOCAL-00279" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -578,7 +558,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758043826511</updated>
     </task>
-    <option name="localTasksCounter" value="326" />
+    <task id="LOCAL-00326" summary="Обновил IReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758044761102</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1758044761102</updated>
+    </task>
+    <task id="LOCAL-00327" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758045065499</created>
+      <option name="number" value="00327" />
+      <option name="presentableId" value="LOCAL-00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1758045065499</updated>
+    </task>
+    <option name="localTasksCounter" value="328" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +601,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал FloatSumExpression.md" />
     <MESSAGE value="Пилим Inline Expression" />
     <MESSAGE value="Пилим InlineExpression.md" />
     <MESSAGE value="Сделал InlineExpression.md" />
@@ -629,6 +624,7 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReactiveCollection.md" />
+    <MESSAGE value="Обновил IReactiveList.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>

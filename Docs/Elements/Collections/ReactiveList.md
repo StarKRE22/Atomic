@@ -11,10 +11,10 @@
 
 #### `ReactiveList(int)`
 ```csharp
-public ReactiveList(int capacity = 0);
+public ReactiveList(int capacity);
 ```
 - **Description:** Initializes an empty reactive list with the given initial capacity.
-- **Parameter:** `capacity` — initial number of allocated elements. Must be non-negative.
+- **Parameter:** `capacity` — initial number of allocated elements. Must be non-negative. Default is `0`.
 - **Exceptions:** Throws `ArgumentOutOfRangeException` if `capacity < 0`.
 
 #### `ReactiveList(params T[])`
