@@ -13,8 +13,20 @@ namespace Atomic.Elements
         IReadOnlyDictionary<K, V>,
         IReadOnlyReactiveCollection<KeyValuePair<K, V>>
     {
+        /// <summary>
+        /// Occurs when a new key-value pair is added to the dictionary.
+        /// </summary>
+        /// <remarks>
+        /// Use this event to react to newly inserted items.
+        /// </remarks>
         new event Action<K, V> OnItemAdded; 
         
+        /// <summary>
+        /// Occurs when a key-value pair is removed from the dictionary.
+        /// </summary>
+        /// <remarks>
+        /// Use this event to react to deleted items.
+        /// </remarks>
         new event Action<K, V> OnItemRemoved; 
         
         /// <summary>

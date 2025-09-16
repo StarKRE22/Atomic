@@ -2,12 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-
-#if UNITY_5_3_OR_NEWER
-using UnityEngine;
-
 // ReSharper disable MemberHidesStaticFromOuterClass
-#endif
 
 namespace Atomic.Elements
 {
@@ -20,17 +15,29 @@ namespace Atomic.Elements
     /// <typeparam name="V">The type of values in the dictionary.</typeparam>
     public partial class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable
     {
+        /// <summary>
+        /// Occurs when the overall state of the dictionary changes.
+        /// This includes bulk operations or any modification affecting the dictionary as a whole.
+        /// </summary>
         public event Action OnStateChanged;
-     
+
+        /// <inheritdoc/>
         public event Action<K, V> OnItemChanged;
+
+        /// <inheritdoc/>
         public event Action<K, V> OnItemAdded;
+
+        /// <inheritdoc/>
         public event Action<K, V> OnItemRemoved;
-        
+
+        /// <inheritdoc cref="IReadOnlyReactiveCollection{T}.OnItemAdded"/> 
         event Action<KeyValuePair<K, V>> IReadOnlyReactiveCollection<KeyValuePair<K, V>>.OnItemAdded
         {
             add => this.onItemAdded += value;
             remove => this.onItemAdded -= value;
         }
+
+        /// <inheritdoc cref="IReadOnlyReactiveCollection{T}.OnItemRemoved"/> 
         event Action<KeyValuePair<K, V>> IReadOnlyReactiveCollection<KeyValuePair<K, V>>.OnItemRemoved
         {
             add => this.onItemRemoved += value;
@@ -45,8 +52,10 @@ namespace Atomic.Elements
         /// </summary>
         public ReadOnlyKeyCollection Keys => new(this);
 
+        /// <inheritdoc/>
         ICollection<K> IDictionary<K, V>.Keys => new ReadOnlyKeyCollection(this);
 
+        /// <inheritdoc/>
         IEnumerable<K> IReadOnlyDictionary<K, V>.Keys => new ReadOnlyKeyCollection(this);
 
         /// <summary>
@@ -54,8 +63,10 @@ namespace Atomic.Elements
         /// </summary>
         public ReadOnlyValueCollection Values => new(this);
 
+        /// <inheritdoc/>
         ICollection<V> IDictionary<K, V>.Values => new ReadOnlyValueCollection(this);
 
+        /// <inheritdoc/>
         IEnumerable<V> IReadOnlyDictionary<K, V>.Values => new ReadOnlyValueCollection(this);
 
         /// <summary>
@@ -418,7 +429,6 @@ namespace Atomic.Elements
             return false;
         }
 
-
         /// <summary>
         /// Removes the specified key/value pair from the dictionary.
         /// </summary>
@@ -426,15 +436,7 @@ namespace Atomic.Elements
         /// <returns>True if the item was removed; otherwise, false.</returns>
         public bool Remove(KeyValuePair<K, V> item)
         {
-            if (!this.TryGetValue(item.Key, out V value)
-                || !s_valueComparer.Equals(value, item.Value)
-                || !this.RemoveInternal(item.Key, out value))
-                return false;
-
-            this.OnStateChanged?.Invoke();
-            this.OnItemRemoved?.Invoke(item.Key, item.Value);
-            this.onItemRemoved?.Invoke(item);
-            return true;
+            return this.Contains(item) && this.Remove(item.Key);
         }
 
         /// <summary>
@@ -468,8 +470,10 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="item">The key/value pair to locate.</param>
         /// <returns>True if the pair is found; otherwise, false.</returns>
-        public bool Contains(KeyValuePair<K, V> item) => 
-            this.TryGetValue(item.Key, out V value) && s_valueComparer.Equals(value, item.Value);
+        public bool Contains(KeyValuePair<K, V> item)
+        {
+            return this.TryGetValue(item.Key, out V value) && s_valueComparer.Equals(value, item.Value);
+        }
 
         /// <summary>
         /// Removes all keys and values from the dictionary.
@@ -540,50 +544,6 @@ namespace Atomic.Elements
             this.OnItemRemoved = null;
         }
 
-        public struct Enumerator : IEnumerator<KeyValuePair<K, V>>
-        {
-            private readonly ReactiveDictionary<K, V> _dictionary;
-            private int _index;
-            private KeyValuePair<K, V> _current;
-
-            public KeyValuePair<K, V> Current => _current;
-            object IEnumerator.Current => _current;
-
-            public Enumerator(ReactiveDictionary<K, V> dictionary)
-            {
-                _dictionary = dictionary;
-                _index = 0;
-                _current = default;
-            }
-
-            public bool MoveNext()
-            {
-                while (_index < _dictionary._lastIndex)
-                {
-                    ref readonly Slot slot = ref _dictionary._slots[_index++];
-                    if (slot.exists)
-                    {
-                        _current = new KeyValuePair<K, V>(slot.key, slot.value);
-                        return true;
-                    }
-                }
-
-                _current = default;
-                return false;
-            }
-
-            void IEnumerator.Reset()
-            {
-                _index = 0;
-                _current = default;
-            }
-
-            public void Dispose()
-            {
-                //Do nothing...
-            }
-        }
-        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseCapacity()
         {
@@ -607,297 +567,5 @@ namespace Atomic.Elements
                 next = i;
             }
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool RemoveInternal(K key, out V value)
-        {
-            if (_count == 0)
-            {
-                value = default;
-                return false;
-            }
-
-            int hash = key.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            ref int next = ref _buckets[bucket];
-
-            int index = next;
-            int last = UNDEFINED_INDEX;
-
-            while (index >= 0)
-            {
-                ref Slot slot = ref _slots[index];
-                if (s_keyComparer.Equals(slot.key, key))
-                {
-                    if (last == UNDEFINED_INDEX)
-                        next = slot.next;
-                    else
-                        _slots[last].next = slot.next;
-
-                    value = slot.value;
-
-                    slot.next = _freeList;
-                    slot.exists = false;
-
-                    _count--;
-
-                    if (_count == 0)
-                    {
-                        _lastIndex = 0;
-                        _freeList = UNDEFINED_INDEX;
-                    }
-                    else
-                    {
-                        _freeList = index;
-                    }
-
-                    return true;
-                }
-
-                last = index;
-                index = slot.next;
-            }
-
-            value = default;
-            return false;
-        }
-
-        public readonly struct ReadOnlyKeyCollection : ICollection<K>
-        {
-            private readonly ReactiveDictionary<K, V> _dictionary;
-
-            internal ReadOnlyKeyCollection(ReactiveDictionary<K, V> dictionary) => _dictionary = dictionary;
-
-            public int Count => _dictionary._count;
-
-            public bool IsReadOnly => true;
-
-            public Enumerator GetEnumerator() => new(_dictionary);
-
-            IEnumerator<K> IEnumerable<K>.GetEnumerator() => new Enumerator(_dictionary);
-
-            IEnumerator IEnumerable.GetEnumerator() => new Enumerator(_dictionary);
-
-            public bool Contains(K item) => item != null && _dictionary.ContainsKey(item);
-
-            public void CopyTo(K[] array, int arrayIndex)
-            {
-                if (array == null)
-                    throw new ArgumentNullException(nameof(array));
-
-                if (arrayIndex < 0)
-                    throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-
-                int i = arrayIndex;
-                for (int s = 0; s < _dictionary._lastIndex; s++)
-                {
-                    ref readonly Slot slot = ref _dictionary._slots[s];
-                    if (slot.exists)
-                        array[i++] = slot.key;
-                }
-            }
-
-            void ICollection<K>.Add(K item) =>
-                throw new NotSupportedException("KeyCollection is read-only.");
-
-            void ICollection<K>.Clear() =>
-                throw new NotSupportedException("KeyCollection is read-only.");
-
-            bool ICollection<K>.Remove(K item) =>
-                throw new NotSupportedException("KeyCollection is read-only.");
-
-            public struct Enumerator : IEnumerator<K>
-            {
-                private readonly ReactiveDictionary<K, V> _dictionary;
-                private int _index;
-                private K _current;
-
-                internal Enumerator(ReactiveDictionary<K, V> dictionary)
-                {
-                    _dictionary = dictionary;
-                    _index = 0;
-                    _current = default;
-                }
-
-                public K Current => _current;
-                object IEnumerator.Current => _current;
-
-                public bool MoveNext()
-                {
-                    while (_index < _dictionary._lastIndex)
-                    {
-                        ref readonly Slot slot = ref _dictionary._slots[_index++];
-                        if (slot.exists)
-                        {
-                            _current = slot.key;
-                            return true;
-                        }
-                    }
-
-                    _current = default;
-                    return false;
-                }
-
-                public void Reset()
-                {
-                    _index = 0;
-                    _current = default;
-                }
-
-                public void Dispose()
-                {
-                    // ничего
-                }
-            }
-        }
-
-        public readonly struct ReadOnlyValueCollection : ICollection<V>
-        {
-            private readonly ReactiveDictionary<K, V> _dictionary;
-
-            internal ReadOnlyValueCollection(ReactiveDictionary<K, V> dictionary) =>
-                _dictionary = dictionary;
-
-            public int Count => _dictionary._count;
-            public bool IsReadOnly => true;
-
-            public Enumerator GetEnumerator() => new(_dictionary);
-            IEnumerator<V> IEnumerable<V>.GetEnumerator() => GetEnumerator();
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-            public bool Contains(V item)
-            {
-                var comparer = s_valueComparer;
-                for (int i = 0; i < _dictionary._lastIndex; i++)
-                {
-                    ref readonly Slot slot = ref _dictionary._slots[i];
-                    if (slot.exists && comparer.Equals(slot.value, item))
-                        return true;
-                }
-
-                return false;
-            }
-
-            public void CopyTo(V[] array, int arrayIndex)
-            {
-                if (array == null)
-                    throw new ArgumentNullException(nameof(array));
-
-                if (arrayIndex < 0)
-                    throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-
-                int i = arrayIndex;
-                for (int s = 0; s < _dictionary._lastIndex; s++)
-                {
-                    ref readonly Slot slot = ref _dictionary._slots[s];
-                    if (slot.exists)
-                        array[i++] = slot.value;
-                }
-            }
-
-            public void Add(V item) =>
-                throw new NotSupportedException("ValueCollection is read-only.");
-
-            public void Clear() =>
-                throw new NotSupportedException("ValueCollection is read-only.");
-
-            public bool Remove(V item) =>
-                throw new NotSupportedException("ValueCollection is read-only.");
-
-            public struct Enumerator : IEnumerator<V>
-            {
-                private readonly ReactiveDictionary<K, V> _dictionary;
-                private int _index;
-                private V _current;
-
-                internal Enumerator(ReactiveDictionary<K, V> dictionary)
-                {
-                    _dictionary = dictionary;
-                    _index = 0;
-                    _current = default;
-                }
-
-                public V Current => _current;
-                object IEnumerator.Current => _current;
-
-                public bool MoveNext()
-                {
-                    while (_index < _dictionary._lastIndex)
-                    {
-                        ref readonly Slot slot = ref _dictionary._slots[_index++];
-                        if (slot.exists)
-                        {
-                            _current = slot.value;
-                            return true;
-                        }
-                    }
-
-                    _current = default;
-                    return false;
-                }
-
-                public void Reset()
-                {
-                    _index = 0;
-                    _current = default;
-                }
-
-                public void Dispose()
-                {
-                }
-            }
-        }
     }
-
-#if UNITY_5_3_OR_NEWER
-    [Serializable]
-    public partial class ReactiveDictionary<K, V> : ISerializationCallbackReceiver
-    {
-        [Serializable]
-        internal struct SerializedKeyValuePair
-        {
-            public K key;
-            public V value;
-        }
-
-        [SerializeField]
-        internal SerializedKeyValuePair[] serializedItems;
-
-        /// <summary>
-        /// Unity callback invoked after the object has been deserialized.
-        /// Reconstructs the internal dictionary from the serialized pair array.
-        /// </summary>
-        void ISerializationCallbackReceiver.OnAfterDeserialize()
-        {
-            if (this.serializedItems == null)
-                return;
-
-            this.Clear();
-            for (int i = 0, count = this.serializedItems.Length; i < count; i++)
-            {
-                SerializedKeyValuePair pair = this.serializedItems[i];
-                this.Add(pair.key, pair.value);
-            }
-        }
-
-        /// <summary>
-        /// Unity callback invoked before the object is serialized.
-        /// Flattens the internal dictionary to a serializable array of key-value pairs.
-        /// </summary>
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
-            this.serializedItems = new SerializedKeyValuePair[_count];
-
-            int i = 0;
-            foreach ((K key, V value) in this)
-            {
-                this.serializedItems[i++] = new SerializedKeyValuePair
-                {
-                    key = key,
-                    value = value
-                };
-            }
-        }
-    }
-#endif
 }
