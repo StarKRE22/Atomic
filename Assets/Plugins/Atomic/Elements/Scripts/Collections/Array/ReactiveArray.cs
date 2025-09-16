@@ -118,7 +118,7 @@ namespace Atomic.Elements
         /// array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
         /// </code>
         /// </example>
-        public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)
+        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
         {
             if (destination == null)
                 throw new ArgumentNullException(nameof(destination));

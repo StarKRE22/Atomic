@@ -25,8 +25,8 @@ namespace ShooterGame.Gameplay
 		public static readonly int Damageable;
 
 		///Values
-		public static readonly int Position; // IReactiveVariable<Vector3>
-		public static readonly int Rotation; // IReactiveVariable<Quaternion>
+		public static readonly int Position; // IVariable<Vector3>
+		public static readonly int Rotation; // IVariable<Quaternion>
 		public static readonly int Parent; // IVariable<Transform>
 		public static readonly int MovementSpeed; // IValue<float>
 		public static readonly int MovementCondition; // IExpression<bool>
@@ -120,10 +120,10 @@ namespace ShooterGame.Gameplay
 		#region Position
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Vector3> GetPosition(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Vector3>>(Position);
+		public static IVariable<Vector3> GetPosition(this IGameEntity entity) => entity.GetValue<IVariable<Vector3>>(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPosition(this IGameEntity entity, out IReactiveVariable<Vector3> value) => entity.TryGetValue(Position, out value);
+		public static bool TryGetPosition(this IGameEntity entity, out IVariable<Vector3> value) => entity.TryGetValue(Position, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddPosition(this IGameEntity entity, IVariable<Vector3> value) => entity.AddValue(Position, value);
@@ -135,17 +135,17 @@ namespace ShooterGame.Gameplay
 		public static bool DelPosition(this IGameEntity entity) => entity.DelValue(Position);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPosition(this IGameEntity entity, IReactiveVariable<Vector3> value) => entity.SetValue(Position, value);
+		public static void SetPosition(this IGameEntity entity, IVariable<Vector3> value) => entity.SetValue(Position, value);
 
 		#endregion
 
 		#region Rotation
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static IVariable<Quaternion> GetRotation(this IGameEntity entity) => entity.GetValue<IReactiveVariable<Quaternion>>(Rotation);
+		public static IVariable<Quaternion> GetRotation(this IGameEntity entity) => entity.GetValue<IVariable<Quaternion>>(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetRotation(this IGameEntity entity, out IReactiveVariable<Quaternion> value) => entity.TryGetValue(Rotation, out value);
+		public static bool TryGetRotation(this IGameEntity entity, out IVariable<Quaternion> value) => entity.TryGetValue(Rotation, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static void AddRotation(this IGameEntity entity, IVariable<Quaternion> value) => entity.AddValue(Rotation, value);
@@ -157,7 +157,7 @@ namespace ShooterGame.Gameplay
 		public static bool DelRotation(this IGameEntity entity) => entity.DelValue(Rotation);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetRotation(this IGameEntity entity, IReactiveVariable<Quaternion> value) => entity.SetValue(Rotation, value);
+		public static void SetRotation(this IGameEntity entity, IVariable<Quaternion> value) => entity.SetValue(Rotation, value);
 
 		#endregion
 

@@ -1,3 +1,187 @@
+# 🧩 ReactiveArray\<T\>
+
+`ReactiveArray<T>` is a **fixed-size reactive array** that emits events when elements change.  
+It provides indexed access, enumeration, and supports event-driven updates for reactive programming.
+
+> [!NOTE]  
+> Useful in **UI binding, reactive systems, and data-driven game logic** where you want automatic notifications on array changes.
+
+---
+
+## Events
+
+#### `event ChangeItemHandler<T> OnItemChanged`
+!!!
+public event ChangeItemHandler<T> OnItemChanged;
+!!!
+- **Description:** Invoked when an element at a specific index changes.
+- **Parameters:**
+  - `int index` — the index of the changed element.
+  - `T newValue` — the new value of the element.
+
+#### `event StateChangedHandler OnStateChanged`
+!!!
+public event StateChangedHandler OnStateChanged;
+!!!
+- **Description:** Invoked when the overall state of the array changes (e.g., after `Clear`, `Fill`, `Resize`, or `Populate`).
+
+---
+
+## Properties
+
+#### `int Length`
+!!!
+public int Length { get; }
+!!!
+- **Description:** Gets the number of elements in the array.
+
+---
+
+## Constructors
+
+#### `ReactiveArray(int capacity)`
+!!!
+public ReactiveArray(int capacity);
+!!!
+- **Description:** Creates a new reactive array with a fixed capacity.
+- **Parameters:** `int capacity` — the size of the internal array (must be non-negative).
+
+#### `ReactiveArray(params T[] elements)`
+!!!
+public ReactiveArray(params T[] elements);
+!!!
+- **Description:** Creates a reactive array initialized with the given elements.
+- **Parameters:** `T[] elements` — initial array elements.
+
+---
+
+## Methods
+
+#### `T this[int index] { get; set; }`
+!!!
+public T this[int index] { get; set; }
+!!!
+- **Description:** Gets or sets the element at the specified index.
+- **Notes:** Setting a new value triggers `OnItemChanged` and `OnStateChanged`.
+
+#### `void Clear()`
+!!!
+public void Clear();
+!!!
+- **Description:** Resets all elements to their default values.
+- **Notes:** Fires `OnItemChanged` for elements that change and `OnStateChanged` once at the end.
+
+#### `void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)`
+!!!
+public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+!!!
+- **Description:** Copies a range of elements to a destination array.
+- **Parameters:**
+  - `int sourceIndex` — starting index in this array.
+  - `T[] destination` — the array to copy to.
+  - `int destinationIndex` — starting index in the destination array.
+  - `int length` — number of elements to copy.
+- **Exceptions:** Throws if indices or lengths are invalid, or destination is too small.
+
+#### `void Populate(IEnumerable<T> newItems)`
+!!!
+public void Populate(IEnumerable<T> newItems);
+!!!
+- **Description:** Updates array elements from the specified collection.
+- **Notes:**
+  - Triggers `OnItemChanged` for differing elements.
+  - Throws if the collection length does not match array length.
+  - Remaining elements are cleared if the collection is smaller.
+  - Triggers `OnStateChanged` at the end.
+
+#### `void Fill(T value)`
+!!!
+public void Fill(T value);
+!!!
+- **Description:** Sets all elements to the specified value.
+- **Notes:** Fires `OnItemChanged` for each element that changes and `OnStateChanged` once at the end.
+
+#### `void Resize(int newSize)`
+!!!
+public void Resize(int newSize);
+!!!
+- **Description:** Changes the size of the array.
+- **Notes:**
+  - New elements are initialized with default values.
+  - Excess elements are discarded.
+  - Fires `OnItemChanged` for new/changed elements and `OnStateChanged` once at the end.
+- **Exceptions:** Throws if `newSize` is negative.
+
+#### `Enumerator GetEnumerator()`
+!!!
+public Enumerator GetEnumerator();
+!!!
+- **Description:** Returns a struct-based enumerator for the array.
+
+#### `void Dispose()`
+!!!
+public void Dispose();
+!!!
+- **Description:** Clears event subscriptions.
+
+---
+
+## Enumerator
+
+`ReactiveArray<T>.Enumerator` is a lightweight enumerator for iterating over the array.
+
+#### `bool MoveNext()`
+!!!
+public bool MoveNext();
+!!!
+- **Description:** Advances the enumerator to the next element.
+- **Returns:** `true` if there is a next element; otherwise, `false`.
+
+#### `T Current`
+!!!
+public T Current { get; }
+!!!
+- **Description:** Gets the current element.
+
+#### `void Reset()`
+!!!
+public void Reset();
+!!!
+- **Description:** Resets the enumerator to its initial state.
+
+---
+
+## Example Usage
+
+!!!
+// Create a reactive array of integers
+ReactiveArray<int> array = new ReactiveArray<int>(3);
+
+// Subscribe to item changes
+array.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
+array.OnStateChanged += () => Console.WriteLine("Array state changed");
+
+// Set values
+array[0] = 10;
+array[1] = 20;
+
+// Fill all elements with 5
+array.Fill(5);
+
+// Clear the array
+array.Clear();
+
+// Populate from a collection
+array.Populate(new List<int> { 1, 2, 3 });
+!!!
+
+
+
+
+
+=====
+=====
+
 # 🧩 Reactive Array
 
 A reactive array is designed to provide a fixed set of elements that can be observed.  

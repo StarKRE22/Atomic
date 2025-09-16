@@ -41,6 +41,6 @@ namespace Atomic.Elements
         /// <param name="destination">The destination array.</param>
         /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
         /// <param name="length">The number of elements to copy.</param>
-        void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+        void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
     }
 }

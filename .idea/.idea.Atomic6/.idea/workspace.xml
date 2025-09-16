@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Delegates.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/GameEntityAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveArrayPerformance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveArrayPerformance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Editor/EntityAPISettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Editor/EntityAPISettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timestamp.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,9 @@
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Elements/Tests/EditMode/Time/CountdownTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/float3_variable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Time/PeriodTests.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
@@ -173,15 +179,12 @@
       <workItem from="1757584369536" duration="27454000" />
       <workItem from="1757657871544" duration="11299000" />
       <workItem from="1757738347120" duration="42263000" />
-      <workItem from="1758003143971" duration="8113000" />
-    </task>
-    <task id="LOCAL-00244" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757661141133</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1757661141133</updated>
+      <workItem from="1758003143971" duration="9586000" />
+      <workItem from="1758013832046" duration="35000" />
+      <workItem from="1758013872689" duration="853000" />
+      <workItem from="1758014902308" duration="1081000" />
+      <workItem from="1758015997866" duration="621000" />
+      <workItem from="1758016683531" duration="299000" />
     </task>
     <task id="LOCAL-00245" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -567,7 +570,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758010416661</updated>
     </task>
-    <option name="localTasksCounter" value="293" />
+    <task id="LOCAL-00293" summary="Сделал раздел с Time!">
+      <option name="closed" value="true" />
+      <created>1758012102798</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1758012102798</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -594,7 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал IExpression.md" />
     <MESSAGE value="Написал ExpressionBase.md" />
     <MESSAGE value="Пилим AndExpression.md" />
     <MESSAGE value="Написал AndExpression.md" />
@@ -619,7 +629,8 @@
     <MESSAGE value="Сделали Timer!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Написал таймеры!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал таймеры!" />
+    <MESSAGE value="Сделал раздел с Time!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел с Time!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
