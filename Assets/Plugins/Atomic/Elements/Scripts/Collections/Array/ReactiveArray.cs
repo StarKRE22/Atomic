@@ -26,10 +26,10 @@ namespace Atomic.Elements
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
         /// <inheritdoc/>
-        public event ChangeItemHandler<T> OnItemChanged;
+        public event Action<int, T> OnItemChanged;
 
         /// <inheritdoc/>
-        public event StateChangedHandler OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
         public int Length => this.items.Length;

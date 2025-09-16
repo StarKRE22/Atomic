@@ -28,13 +28,13 @@ namespace Atomic.Elements
     public partial class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable
     {
         /// <inheritdoc/>
-        public event StateChangedHandler OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
-        public event AddItemHandler<T> OnItemAdded;
+        public event Action<T> OnItemAdded;
 
         /// <inheritdoc/>
-        public event RemoveItemHandler<T> OnItemRemoved;
+        public event Action<T> OnItemRemoved;
 
         /// <inheritdoc cref="ICollection{T}.Count" />
         public int Count => _count;

@@ -8,7 +8,7 @@ namespace Atomic.Elements
     /// Includes events for inserts, deletions, modifications, and state changes.
     /// </summary>
     /// <typeparam name="T">The type of elements in the list.</typeparam>
-    public interface IReactiveList<T> : IReadOnlyReactiveList<T>, IList<T>
+    public interface IReactiveList<T> : IList<T>, IReadOnlyReactiveList<T>, IReactiveCollection<T>
     {
     }
 }

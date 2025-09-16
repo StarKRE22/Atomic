@@ -9,14 +9,14 @@
 
 ## Events
 
-### `OnStateChanged`
+#### `OnStateChanged`
 ```csharp
 event StateChangedHandler OnStateChanged;
 ```
 - **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
 - **Remarks:** Useful for reacting to any modifications in the dictionary without subscribing to individual item events.
 
-### `OnItemChanged`
+#### `OnItemChanged`
 ```csharp
 event SetItemHandler<K, V> OnItemChanged;
 ```
@@ -26,7 +26,7 @@ event SetItemHandler<K, V> OnItemChanged;
     - `value` — the new value assigned to the key.
 - **Remarks:** Allows monitoring changes to specific keys in the dictionary.
 
-### `OnItemAdded`
+#### `OnItemAdded`
 ```csharp
 event AddItemHandler<K, V> OnItemAdded;
 ```
@@ -36,7 +36,7 @@ event AddItemHandler<K, V> OnItemAdded;
     - `value` — the value associated with the added key.
 - **Remarks:** Useful to react only to newly inserted entries.
 
-### `OnItemRemoved`
+#### `OnItemRemoved`
 ```csharp
 event RemoveItemHandler<K, V> OnItemRemoved;
 ```
@@ -83,7 +83,6 @@ public V this[K key] { get; }
 - **Exceptions:** Throws `KeyNotFoundException` if the key does not exist.
 
 ---
-
 
 ## Methods
 

@@ -9,7 +9,10 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="K">The type of keys in the dictionary.</typeparam>
     /// <typeparam name="V">The type of values in the dictionary.</typeparam>
-    public interface IReactiveDictionary<K, V> : IReadOnlyReactiveDictionary<K, V>, IDictionary<K, V>
+    public interface IReactiveDictionary<K, V> : 
+        IDictionary<K, V>, 
+        IReadOnlyReactiveDictionary<K, V>,
+        IReactiveCollection<KeyValuePair<K, V>>
     {
         /// <summary>
         /// Gets or sets the value associated with the specified key.

@@ -156,7 +156,7 @@ namespace Atomic.Elements
             int removedIndex = -1;
 
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
-            list.OnItemDeleted += (i, v) =>
+            list.OnItemRemoved += (i, v) =>
             {
                 removedIndex = i;
                 removedItem = v;
@@ -187,7 +187,7 @@ namespace Atomic.Elements
             int removedIndex = -1;
 
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
-            list.OnItemDeleted += (i, v) =>
+            list.OnItemRemoved += (i, v) =>
             {
                 removedIndex = i;
                 removedItem = v;
@@ -218,7 +218,7 @@ namespace Atomic.Elements
             int removedIndex = -1;
 
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
-            list.OnItemDeleted += (i, v) =>
+            list.OnItemRemoved += (i, v) =>
             {
                 removedIndex = i;
                 removedItem = v;
@@ -249,7 +249,7 @@ namespace Atomic.Elements
             int removedIndex = -1;
 
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
-            list.OnItemDeleted += (i, v) =>
+            list.OnItemRemoved += (i, v) =>
             {
                 removedIndex = i;
                 removedItem = v;
@@ -296,7 +296,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
 
             list.OnStateChanged += () => stateChanged = true;
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 addedIndex = i;
                 addedItem = v;
@@ -325,7 +325,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
 
             list.OnStateChanged += () => stateChanged = true;
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 addedIndex = i;
                 addedItem = v;
@@ -357,7 +357,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
 
             list.OnStateChanged += () => stateChanged = true;
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 addedIndex = i;
                 addedItem = v;
@@ -389,7 +389,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
 
             list.OnStateChanged += () => stateChanged = true;
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 addedIndex = i;
                 addedItem = v;
@@ -420,7 +420,7 @@ namespace Atomic.Elements
             var list = new ReactiveList<string>("Vasya", "Petya", "Masha");
 
             list.OnStateChanged += () => stateChanged = true;
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 addedIndex = i;
                 addedItem = v;

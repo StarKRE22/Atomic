@@ -1,3 +1,217 @@
+# 🧩 `ReactiveDictionary<K, V>`
+
+`ReactiveDictionary<K, V>` is a **reactive key-value dictionary** that provides notifications when items are added, removed, or updated. It implements [IReactiveDictionary<K, V>](IReactiveDictionary.md).
+
+> [!NOTE]  
+> Use this class when you need a dictionary with full read/write access and **reactive notifications** on changes.
+
+---
+
+## Events
+
+### `OnStateChanged`
+```csharp
+event StateChangedHandler OnStateChanged;
+```
+- **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
+
+### `OnItemChanged`
+```csharp
+event SetItemHandler<K, V> OnItemChanged;
+```
+- **Description:** Triggered when the value of an existing key changes.
+- **Parameters:**
+  - `key` — the key that changed.
+  - `value` — the new value of the key.
+
+### `OnItemAdded`
+```csharp
+event AddItemHandler<K, V> OnItemAdded;
+```
+- **Description:** Triggered when a new key-value pair is added.
+- **Parameters:**
+  - `key` — the added key.
+  - `value` — the value of the added key.
+
+### `OnItemRemoved`
+```csharp
+event RemoveItemHandler<K, V> OnItemRemoved;
+```
+- **Description:** Triggered when a key-value pair is removed.
+- **Parameters:**
+  - `key` — the removed key.
+  - `value` — the value of the removed key.
+
+---
+
+## Properties
+
+### `Count`
+```csharp
+public int Count { get; }
+```
+- **Description:** Gets the total number of key-value pairs in the dictionary.
+
+### `IsReadOnly`
+```csharp
+public bool IsReadOnly { get; }
+```
+- **Description:** Always returns `false` for `ReactiveDictionary` since it supports full modification.
+
+### `Keys`
+```csharp
+public ReadOnlyKeyCollection Keys { get; }
+```
+- **Description:** Gets a read-only collection of all keys.
+
+### `Values`
+```csharp
+public ReadOnlyValueCollection Values { get; }
+```
+- **Description:** Gets a read-only collection of all values.
+
+### Indexer `this[K key]`
+```csharp
+public V this[K key] { get; set; }
+```
+- **Description:** Gets or sets the value associated with the specified key.
+- **Exceptions:** Throws `KeyNotFoundException` if key does not exist when getting.
+- **Events:** Triggers `OnItemChanged` (if updating) or `OnItemAdded` (if adding).
+
+---
+
+## Methods
+
+### `Add(K, V)`
+```csharp
+public void Add(K key, V value);
+```
+- **Description:** Adds a new key-value pair to the dictionary.
+- **Parameters:**
+  - `key` — The key to add. Cannot be null.
+  - `value` — The value associated with the key. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `value` is null.
+  - Throws `ArgumentException` if the key already exists.
+- **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
+- **Remarks:** Use this method to insert new entries.
+
+---
+
+### `Remove(K)`
+```csharp
+public bool Remove(K key);
+```
+- **Description:** Removes the key-value pair with the specified key.
+- **Parameters:**
+  - `key` — The key of the element to remove.
+- **Returns:** `true` if the element was successfully removed; otherwise `false`.
+- **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
+- **Remarks:** Does not throw an exception if the key does not exist.
+
+---
+
+### `Remove(K, out V)`
+```csharp
+public bool Remove(K key, out V value);
+```
+- **Description:** Removes the key-value pair with the specified key and outputs the removed value.
+- **Parameters:**
+  - `key` — The key of the element to remove.
+  - `value` — Outputs the value associated with the removed key if successful; otherwise, the default value.
+- **Returns:** `true` if the element was successfully removed; otherwise `false`.
+- **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
+- **Remarks:** Provides the removed value for further processing.
+
+---
+
+### `Clear()`
+```csharp
+public void Clear();
+```
+- **Description:** Removes all key-value pairs from the dictionary.
+- **Events:** Triggers `OnItemRemoved` for each item and `OnStateChanged`.
+- **Remarks:** Resets the internal state. Use with caution as all data is lost.
+
+---
+
+### `ContainsKey(K)`
+```csharp
+public bool ContainsKey(K key);
+```
+- **Description:** Determines whether the dictionary contains the specified key.
+- **Parameters:**
+  - `key` — The key to locate in the dictionary.
+- **Returns:** `true` if the key exists; otherwise `false`.
+- **Remarks:** Use this method to check existence before accessing a key to avoid exceptions.
+
+---
+
+### `TryGetValue(K, out V)`
+```csharp
+public bool TryGetValue(K key, out V value);
+```
+- **Description:** Attempts to get the value associated with the specified key without throwing an exception.
+- **Parameters:**
+  - `key` — The key to look up.
+  - `value` — Outputs the value if found; otherwise, the default value of type `V`.
+- **Returns:** `true` if the key exists; otherwise `false`.
+- **Remarks:** Preferred method for safe retrieval of values.
+
+---
+
+### `GetEnumerator()`
+```csharp
+public Enumerator GetEnumerator();
+```
+- **Description:** Returns an enumerator that iterates through the dictionary.
+- **Returns:** An `Enumerator` struct for iterating over key-value pairs.
+- **Remarks:** Use `foreach` for iteration. Avoid modifying the dictionary while enumerating.
+
+---
+
+
+
+
+
+## Nested Collections
+
+### `ReadOnlyKeyCollection`
+- Represents a read-only collection of keys.
+- Supports enumeration and `Contains` checks, but cannot be modified.
+
+### `ReadOnlyValueCollection`
+- Represents a read-only collection of values.
+- Supports enumeration and `Contains` checks, but cannot be modified.
+
+---
+
+## Example of Usage
+
+```
+ReactiveDictionary<string, int> dict = new ReactiveDictionary<string, int>();
+
+dict.OnItemAdded += (k, v) => Console.WriteLine($"Added: {k} => {v}");
+dict.OnItemChanged += (k, v) => Console.WriteLine($"Changed: {k} => {v}");
+dict.OnItemRemoved += (k, v) => Console.WriteLine($"Removed: {k} => {v}");
+dict.OnStateChanged += () => Console.WriteLine("Dictionary state changed.");
+
+dict.Add("apple", 5);
+dict["apple"] = 10;
+dict.Remove("apple");
+
+foreach (var kvp in dict)
+{
+Console.WriteLine($"{kvp.Key} => {kvp.Value}");
+}
+```
+
+
+
+
+=====
+=====
+
 # 🧩 Reactive Dictionary
 
 A reactive key-value dictionary that allows observation of its elements.  
@@ -8,32 +222,6 @@ Ideal for **UI updates, reactive programming, caching layers, and event-driven s
 
 ---
 
-## IReactiveDictionary<K,V>
-
-`IReactiveDictionary<K,V>` extends `IDictionary<K,V>` and `IReadOnlyDictionary<K,V>`.  
-It defines events for observing dictionary changes.
-
-### Events
-
-- `event StateChangedHandler OnStateChanged`  
-  Triggered when any structural change happens (e.g., `Clear`, bulk update).
-
-- `event SetItemHandler<K,V> OnItemChanged`  
-  Triggered when an existing key’s value is updated.
-
-- `event AddItemHandler<K,V> OnItemAdded`  
-  Triggered when a new key-value pair is added.
-
-- `event RemoveItemHandler<K,V> OnItemRemoved`  
-  Triggered when a key-value pair is removed.
-
-### Members
-
-- `int Count` – number of items.
-- `V this[K key]` – read/write access by key.
-- `bool ContainsKey(K key)` – checks whether a key exists.
-
----
 
 ## ReactiveDictionary<K,V>
 

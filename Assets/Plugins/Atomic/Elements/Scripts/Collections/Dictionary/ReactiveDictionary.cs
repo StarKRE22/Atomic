@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -21,10 +20,25 @@ namespace Atomic.Elements
     /// <typeparam name="V">The type of values in the dictionary.</typeparam>
     public partial class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable
     {
-        public event StateChangedHandler OnStateChanged;
-        public event SetItemHandler<K, V> OnItemChanged;
-        public event AddItemHandler<K, V> OnItemAdded;
-        public event RemoveItemHandler<K, V> OnItemRemoved;
+        public event Action OnStateChanged;
+     
+        public event Action<K, V> OnItemChanged;
+        public event Action<K, V> OnItemAdded;
+        public event Action<K, V> OnItemRemoved;
+        
+        event Action<KeyValuePair<K, V>> IReadOnlyReactiveCollection<KeyValuePair<K, V>>.OnItemAdded
+        {
+            add => this.onItemAdded += value;
+            remove => this.onItemAdded -= value;
+        }
+        event Action<KeyValuePair<K, V>> IReadOnlyReactiveCollection<KeyValuePair<K, V>>.OnItemRemoved
+        {
+            add => this.onItemRemoved += value;
+            remove => this.onItemRemoved -= value;
+        }
+
+        private Action<KeyValuePair<K, V>> onItemAdded;
+        private Action<KeyValuePair<K, V>> onItemRemoved;
 
         /// <summary>
         /// Gets a collection containing the keys in the dictionary.
@@ -187,6 +201,7 @@ namespace Atomic.Elements
 
                     this.OnStateChanged?.Invoke();
                     this.OnItemAdded?.Invoke(key, value);
+                    this.onItemAdded?.Invoke(new KeyValuePair<K, V>(key, value));
                 }
             }
         }
@@ -286,6 +301,7 @@ namespace Atomic.Elements
 
             this.OnStateChanged?.Invoke();
             this.OnItemAdded?.Invoke(key, value);
+            this.onItemAdded?.Invoke(new KeyValuePair<K, V>(key, value));
         }
 
         /// <summary>
@@ -296,12 +312,51 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Remove(K key)
         {
-            if (!this.RemoveInternal(key, out V value))
+            if (_count == 0)
                 return false;
 
-            this.OnItemRemoved?.Invoke(key, value);
-            this.OnStateChanged?.Invoke();
-            return true;
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            ref int next = ref _buckets[bucket];
+
+            int index = next;
+            int last = UNDEFINED_INDEX;
+
+            while (index >= 0)
+            {
+                ref Slot slot = ref _slots[index];
+                if (s_keyComparer.Equals(slot.key, key))
+                {
+                    if (last == UNDEFINED_INDEX)
+                        next = slot.next;
+                    else
+                        _slots[last].next = slot.next;
+
+                    V value = slot.value;
+
+                    slot.next = _freeList;
+                    slot.exists = false;
+                    _freeList = index;
+
+                    _count--;
+
+                    if (_count == 0)
+                    {
+                        _lastIndex = 0;
+                        _freeList = UNDEFINED_INDEX;
+                    }
+
+                    OnItemRemoved?.Invoke(key, value);
+                    onItemRemoved?.Invoke(new KeyValuePair<K, V>(key, value));
+                    OnStateChanged?.Invoke();
+                    return true;
+                }
+
+                last = index;
+                index = slot.next;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -350,6 +405,7 @@ namespace Atomic.Elements
                     }
 
                     OnItemRemoved?.Invoke(key, value);
+                    onItemRemoved?.Invoke(new KeyValuePair<K, V>(key, value));
                     OnStateChanged?.Invoke();
                     return true;
                 }
@@ -368,7 +424,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="item">The key/value pair to remove.</param>
         /// <returns>True if the item was removed; otherwise, false.</returns>
-        bool ICollection<KeyValuePair<K, V>>.Remove(KeyValuePair<K, V> item)
+        public bool Remove(KeyValuePair<K, V> item)
         {
             if (!this.TryGetValue(item.Key, out V value)
                 || !s_valueComparer.Equals(value, item.Value)
@@ -377,6 +433,7 @@ namespace Atomic.Elements
 
             this.OnStateChanged?.Invoke();
             this.OnItemRemoved?.Invoke(item.Key, item.Value);
+            this.onItemRemoved?.Invoke(item);
             return true;
         }
 
@@ -411,10 +468,8 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="item">The key/value pair to locate.</param>
         /// <returns>True if the pair is found; otherwise, false.</returns>
-        public bool Contains(KeyValuePair<K, V> item)
-        {
-            return this.TryGetValue(item.Key, out V value) && s_valueComparer.Equals(value, item.Value);
-        }
+        public bool Contains(KeyValuePair<K, V> item) => 
+            this.TryGetValue(item.Key, out V value) && s_valueComparer.Equals(value, item.Value);
 
         /// <summary>
         /// Removes all keys and values from the dictionary.
@@ -431,6 +486,7 @@ namespace Atomic.Elements
                 slot.exists = false;
                 slot.next = UNDEFINED_INDEX;
                 OnItemRemoved?.Invoke(slot.key, slot.value);
+                onItemRemoved?.Invoke(new KeyValuePair<K, V>(slot.key, slot.value));
             }
 
             Array.Fill(_buckets, UNDEFINED_INDEX);
@@ -527,66 +583,7 @@ namespace Atomic.Elements
                 //Do nothing...
             }
         }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private bool FindIndex(K key, out int index)
-        {
-            if (_count == 0)
-            {
-                index = UNDEFINED_INDEX;
-                return false;
-            }
-
-            int hash = key.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            index = _buckets[bucket];
-
-            while (index >= 0)
-            {
-                ref readonly Slot slot = ref _slots[index];
-                if (slot.exists && s_keyComparer.Equals(slot.key, key))
-                    return true;
-
-                index = slot.next;
-            }
-
-            return false;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void AddInternal(K key, V value)
-        {
-            int index;
-            if (_freeList >= 0)
-            {
-                index = _freeList;
-                _freeList = _slots[index].next;
-            }
-            else
-            {
-                if (_lastIndex == _capacity)
-                    this.IncreaseCapacity();
-
-                index = _lastIndex;
-                _lastIndex++;
-            }
-
-            int hash = key.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            ref int next = ref _buckets[bucket];
-
-            _slots[index] = new Slot
-            {
-                key = key,
-                value = value,
-                next = next,
-                exists = true
-            };
-
-            next = index;
-            _count++;
-        }
-
+        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseCapacity()
         {

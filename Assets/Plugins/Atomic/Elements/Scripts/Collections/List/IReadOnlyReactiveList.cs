@@ -1,3 +1,6 @@
+// ReSharper disable PossibleInterfaceMemberAmbiguity
+using System;
+
 namespace Atomic.Elements
 {
     /// <summary>
@@ -5,19 +8,24 @@ namespace Atomic.Elements
     /// Includes events for inserts, deletions, modifications, and state changes.
     /// </summary>
     /// <typeparam name="T">The type of elements in the list.</typeparam>
-    public interface IReadOnlyReactiveList<T> : IReadOnlyReactiveArray<T>
+    public interface IReadOnlyReactiveList<T> : IReadOnlyReactiveArray<T>, IReadOnlyReactiveCollection<T>
     {
+        /// <summary>
+        /// Event triggered when the overall state of the set changes.
+        /// </summary>
+        new event Action OnStateChanged;
+        
         ///<inheritdoc cref="IReadOnlyReactiveArray{T}"/> 
         int IReadOnlyReactiveArray<T>.Length => this.Count;
         
         /// <summary>
         /// Event triggered when a new item is inserted at a specific index.
         /// </summary>
-        event InsertItemHandler<T> OnItemInserted;
+        new event Action<int, T> OnItemAdded;
 
         /// <summary>
         /// Event triggered when an item is deleted from a specific index.
         /// </summary>
-        event DeleteItemHandler<T> OnItemDeleted;
+        new event Action<int, T> OnItemRemoved;
     }
 }

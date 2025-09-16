@@ -19,17 +19,34 @@ namespace Atomic.Elements
     {
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
-        /// <inheritdoc/>
-        public event StateChangedHandler OnStateChanged;
+        /// <inheritdoc cref="IReactiveList{T}" />
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
-        public event ChangeItemHandler<T> OnItemChanged;
+        public event Action<int, T> OnItemAdded;
 
         /// <inheritdoc/>
-        public event InsertItemHandler<T> OnItemInserted;
+        public event Action<int, T> OnItemRemoved;
 
         /// <inheritdoc/>
-        public event DeleteItemHandler<T> OnItemDeleted;
+        public event Action<int, T> OnItemChanged;
+
+        /// <inheritdoc/>
+        event Action<T> IReadOnlyReactiveCollection<T>.OnItemAdded
+        {
+            add => this.onItemAdded += value;
+            remove => this.onItemRemoved -= value;
+        }
+
+        /// <inheritdoc/>
+        event Action<T> IReadOnlyReactiveCollection<T>.OnItemRemoved
+        {
+            add => this.onItemRemoved += value;
+            remove => this.onItemRemoved -= value;
+        }
+
+        private event Action<T> onItemAdded;
+        private event Action<T> onItemRemoved;
 
         /// <inheritdoc/>
         public bool IsReadOnly => false;
@@ -84,10 +101,12 @@ namespace Atomic.Elements
         public void Dispose()
         {
             this.Clear();
-            
+
+            this.onItemAdded = null;
+            this.onItemRemoved = null;
+            this.OnItemAdded = null;
+            this.OnItemRemoved = null;
             this.OnItemChanged = null;
-            this.OnItemInserted = null;
-            this.OnItemDeleted = null;
             this.OnStateChanged = null;
         }
 
@@ -104,10 +123,10 @@ namespace Atomic.Elements
             {
                 if (value == null)
                     throw new ArgumentNullException(nameof(value));
-                
+
                 if (index < 0 || index >= this.count)
                     throw new IndexOutOfRangeException($"Index {index} out of range!");
-                
+
                 if (s_comparer.Equals(this.items[index], value))
                     return;
 
@@ -137,7 +156,8 @@ namespace Atomic.Elements
             this.items[index] = item;
             this.count++;
 
-            this.OnItemInserted?.Invoke(index, item);
+            this.OnItemAdded?.Invoke(index, item);
+            this.onItemAdded?.Invoke(item);
             this.OnStateChanged?.Invoke();
         }
 
@@ -180,7 +200,8 @@ namespace Atomic.Elements
                 }
 
                 this.items[this.count++] = item;
-                this.OnItemInserted?.Invoke(this.count - 1, item);
+                this.OnItemAdded?.Invoke(this.count - 1, item);
+                this.onItemAdded?.Invoke(item);
             }
 
             if (this.count > initialCount)
@@ -192,7 +213,7 @@ namespace Atomic.Elements
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            
+
             if (index < 0 || index > this.count)
                 throw new IndexOutOfRangeException($"Index {index} out of range!");
 
@@ -212,7 +233,8 @@ namespace Atomic.Elements
             this.items[index] = item;
             this.count++;
 
-            this.OnItemInserted?.Invoke(index, item);
+            this.OnItemAdded?.Invoke(index, item);
+            this.onItemAdded?.Invoke(item);
             this.OnStateChanged?.Invoke();
         }
 
@@ -243,7 +265,8 @@ namespace Atomic.Elements
                     if (i < this.count)
                         Array.Copy(this.items, i + 1, this.items, i, this.count - i);
 
-                    this.OnItemDeleted?.Invoke(i, item);
+                    this.OnItemRemoved?.Invoke(i, item);
+                    this.onItemRemoved?.Invoke(item);
                     this.OnStateChanged?.Invoke();
                     return true;
                 }
@@ -264,7 +287,8 @@ namespace Atomic.Elements
             if (index < this.count)
                 Array.Copy(this.items, index + 1, this.items, index, this.count - index);
 
-            this.OnItemDeleted?.Invoke(index, item);
+            this.OnItemRemoved?.Invoke(index, item);
+            this.onItemRemoved?.Invoke(item);
             this.OnStateChanged?.Invoke();
         }
 
@@ -276,9 +300,13 @@ namespace Atomic.Elements
 
             this.count = 0;
             this.OnStateChanged?.Invoke();
-            
+
             for (int i = 0; i < count; i++)
-                this.OnItemDeleted?.Invoke(i, this.items[i]);
+            {
+                T item = this.items[i];
+                this.OnItemRemoved?.Invoke(i, item);
+                this.onItemRemoved?.Invoke(item);
+            }
         }
 
         /// <inheritdoc/>
@@ -297,9 +325,9 @@ namespace Atomic.Elements
             Array.Copy(this.items, 0, array, arrayIndex, this.count);
 
         /// <inheritdoc cref="IReadOnlyReactiveList{T}" />
-        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length) => 
+        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length) =>
             Array.Copy(this.items, sourceIndex, destination, destinationIndex, length);
-        
+
         /// <summary>
         /// Updates the contents of the list with the values from the specified <paramref name="newItems"/> collection.
         /// </summary>
@@ -307,8 +335,8 @@ namespace Atomic.Elements
         /// The method works as follows:
         /// <list type="bullet">
         /// <item>Existing elements that differ from the new values are updated, triggering <see cref="OnItemChanged"/>.</item>
-        /// <item>If there are more new elements than the current list, the additional elements are added, triggering <see cref="OnItemInserted"/>.</item>
-        /// <item>If there are fewer new elements than the current list, the excess elements are removed, triggering <see cref="OnItemDeleted"/>.</item>
+        /// <item>If there are more new elements than the current list, the additional elements are added, triggering <see cref="OnItemAdded"/>.</item>
+        /// <item>If there are fewer new elements than the current list, the excess elements are removed, triggering <see cref="OnItemRemoved"/>.</item>
         /// <item>After the method completes, <see cref="OnStateChanged"/> is always invoked.</item>
         /// </list>
         /// </remarks>
@@ -346,7 +374,8 @@ namespace Atomic.Elements
                 for (int j = index; j < this.count; j++)
                     this.items[j] = this.items[j + 1];
 
-                this.OnItemDeleted?.Invoke(index, removedItem);
+                this.OnItemRemoved?.Invoke(index, removedItem);
+                this.onItemRemoved?.Invoke(removedItem);
             }
 
             this.OnStateChanged?.Invoke();

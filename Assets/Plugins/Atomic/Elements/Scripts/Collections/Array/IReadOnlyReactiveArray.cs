@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Atomic.Elements
@@ -11,13 +12,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Occurs when an item at a specific index is changed.
         /// </summary>
-        event ChangeItemHandler<T> OnItemChanged;
+        event Action<int, T> OnItemChanged;
 
         /// <summary>
         /// Occurs when the state of the array is changed globally.
         /// For example, when multiple items are updated, cleared, or reset.
         /// </summary>
-        event StateChangedHandler OnStateChanged;
+        event Action OnStateChanged;
         
         /// <summary>
         /// Gets the total number of elements in the array.
