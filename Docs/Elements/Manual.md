@@ -96,8 +96,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
 - **Collections**
   - [IReadOnlyReactiveCollection](Collections/IReadOnlyReactiveCollection.md) <!-- + -->
   - [IReactiveCollection](Collections/IReactiveCollection.md) <!-- + -->
-  - 
-  - [IReadOnlyReactiveArray](Collections/IReadOnlyReactiveArray.md)
+  - [IReadOnlyReactiveArray](Collections/IReadOnlyReactiveArray.md)  <!-- + -->
   - [IReactiveArray](Collections/IReactiveArray.md)
   - [ReactiveArray](Collections/ReactiveArray.md) 
   - [IReadOnlyReactiveList](Collections/IReadOnlyReactiveList.md) 

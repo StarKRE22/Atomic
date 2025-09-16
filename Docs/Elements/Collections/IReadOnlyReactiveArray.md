@@ -9,22 +9,20 @@
 
 ## Events
 
-#### `OnItemChanged`
-```csharp
-public event ChangeItemHandler<T> OnItemChanged;
-```
-- **Description:** Triggered when an item at a specific index changes.
-- **Parameters:**
-    - `index` — index of the changed element.
-    - `newValue` — `T` the new value of the element.
-- **Remarks:** See [ChangeItemHandler&lt;T&gt;](Delegates.md/#-changeitemhandlert)
-
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
 ```
 - **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).
-- **Remarks:** See [StateChangedHandler](Delegates.md/#-statechangedhandler)
+
+#### `OnItemChanged`
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+    - `index` — index of the changed element.
+    - `value` — `T` the new value of the element.
 
 ---
 
@@ -45,7 +43,7 @@ public int Count { get; }
 
 ---
 
-## Indexers
+## Indexer
 
 #### `[int index]`
 ```csharp
@@ -98,17 +96,19 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
 
 #### `GetEnumerator()`
 ```csharp
-IEnumerator<T> GetEnumerator();
+public IEnumerator<T> GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
 
 #### `GetEnumerator()`
 ```csharp
-IEnumerator GetEnumerator();
+public IEnumerator GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Non-generic version, inherited from `IEnumerable`.
+
+---
 
 ## 🗂 Example of Usage
 
