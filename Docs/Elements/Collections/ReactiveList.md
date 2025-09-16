@@ -67,8 +67,8 @@ public event Action<int, T> OnItemChanged;
 - **Description:** Triggered when an item at a specific index changes.
 - **Parameters:**
   - `index` — index of the changed element.
-  - `newValue` — `T` the new value of the element.
-
+  - `item` — `T` the new value of the element.
+  
 ---
 
 ## Properties
@@ -78,13 +78,6 @@ public event Action<int, T> OnItemChanged;
 public int Count { get; }
 ````
 - **Description:** Gets the number of elements in the list.
-
-#### `Length`
-```csharp
-public int Length { get; }
-```
-- **Description:** Gets the number of elements in the list.
-- **Remarks:** Implemented from [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md); usually returns the same value as `Count`.
 
 #### `Capacity`
 ```csharp

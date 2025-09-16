@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,15 +185,7 @@
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
       <workItem from="1758016683531" duration="12669000" />
-      <workItem from="1758035034709" duration="9998000" />
-    </task>
-    <task id="LOCAL-00279" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757930252147</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1757930252148</updated>
+      <workItem from="1758035034709" duration="10839000" />
     </task>
     <task id="LOCAL-00280" summary="Пилим Cooldown!">
       <option name="closed" value="true" />
@@ -574,7 +571,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758045065499</updated>
     </task>
-    <option name="localTasksCounter" value="328" />
+    <task id="LOCAL-00328" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758045121511</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1758045121511</updated>
+    </task>
+    <option name="localTasksCounter" value="329" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

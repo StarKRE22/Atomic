@@ -20,11 +20,6 @@ public ReactiveLinkedList(int capacity);
 ```
 - **Description:** Initializes a new list with the specified initial capacity.
 - **Parameters:** `capacity` — the initial number of nodes to allocate. Default is `4`
-- **Example:**
-  
-  ```csharp
-  var list = new ReactiveLinkedList<string>(10); // Preallocates space for 10 elements
-  ```
 
 #### `ReactiveLinkedList(params T[] items)`
 ```csharp
@@ -32,11 +27,6 @@ public ReactiveLinkedList(params T[] items);
 ```
 - **Description:** Initializes a new list and adds the provided items.
 - **Parameters:** `items` — initial elements to populate the list.
-- **Example:**
-  
-  ```csharp
-  var list = new ReactiveLinkedList<int>(1, 2, 3); // Adds 1, 2, 3 to the list
-  ```
 
 #### `ReactiveLinkedList(IEnumerable<T> items)`
 ```csharp
@@ -44,28 +34,29 @@ public ReactiveLinkedList(IEnumerable<T> items);
 ```
 - **Description:** Initializes a new list from an enumerable collection.
 - **Parameters:** `items` — collection of items to populate the list.
-- **Example:**
-  
-  ```csharp
-  var list = new ReactiveLinkedList<string>(new[] { "a", "b", "c" });
-  ```
 
 ---
 
 ## Events
 
-#### `OnItemInserted`
+#### `OnStateChanged`
 ```csharp
-public event InsertItemHandler<T> OnItemInserted;
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Triggered whenever the list state changes globally (add, remove, clear).
+
+#### `OnItemAdded`
+```csharp
+public event Action<int, T> OnItemAdded;
 ```
 - **Description:** Triggered when a new item is inserted.
 - **Parameters:**
   - `index` — zero-based index of the inserted element.
   - `item` — the inserted element of type `T`.
 
-#### `OnItemDeleted`
+#### `OnItemRemoved`
 ```csharp
-public event DeleteItemHandler<T> OnItemDeleted;
+public event Action<int, T> OnItemRemoved;
 ```
 - **Description:** Triggered when an item is removed.
 - **Parameters:**
@@ -74,18 +65,12 @@ public event DeleteItemHandler<T> OnItemDeleted;
 
 #### `OnItemChanged`
 ```csharp
-public event ChangeItemHandler<T> OnItemChanged;
+public event Action<int, T> OnItemChanged;
 ```
 - **Description:** Triggered when an existing item is replaced or modified.
 - **Parameters:**
   - `index` — zero-based index of the changed element.
-  - `newValue` — the new value of type `T`.
-
-#### `OnStateChanged`
-```csharp
-public event StateChangedHandler OnStateChanged;
-```
-- **Description:** Triggered whenever the list state changes globally (add, remove, clear).
+  - `item` — the new value of type `T`.
 
 ---
 
@@ -118,6 +103,7 @@ public T this[int index] { get; set; }
 ---
 
 ## Methods
+
 #### `Add(T)`
 ```csharp
 public void Add(T item);
@@ -125,11 +111,6 @@ public void Add(T item);
 - **Description:** Adds an item to the end of the list. Automatically expands the internal storage if necessary.
 - **Parameter:** `item` — the element to add. Cannot be `null`.
 - **Remarks:** Triggers `OnItemInserted` and `OnStateChanged` events.
-- **Example:**
-  
-  ```csharp
-  list.Add("apple");
-  ```
 
 #### `AddRange(IEnumerable<T>)`
 ```csharp
@@ -139,11 +120,6 @@ public void AddRange(IEnumerable<T> items);
 - **Parameter:** `items` — collection of elements to add. Cannot be `null`.
 - **Remarks:** Always use this method instead of multiple `Add` calls when adding a group of items to reduce overhead. Triggers `OnItemInserted` for each item and `OnStateChanged` once.
 - **Exceptions:** `ArgumentNullException` if `items` is `null`.
-- **Example:**
-  
-  ```csharp
-  list.AddRange(new[] { "banana", "cherry" });
-  ```
 
 #### `Insert(int, T)`
 ```csharp
@@ -226,6 +202,14 @@ public void Populate(IEnumerable<T> newItems);
 - **Parameter:** `newItems` — collection of items to populate the list. Cannot be `null`.
 - **Remarks:** Updates existing items, adds new items, and removes excess items. Triggers `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged`.
 
+#### `GetEnumerator()`
+```csharp
+public Enumerator GetEnumerator();
+```
+- **Description:** Returns a struct enumerator that iterates over the elements of the `ReactiveLinkedList<T>`.
+- **Returns:** An `Enumerator` struct that implements `IEnumerator<T>` for the list.
+- **Remarks:** This enumerator allows `foreach` iteration without allocating on the heap.
+
 #### `Dispose()`
 ```csharp
 public void Dispose();
@@ -233,26 +217,6 @@ public void Dispose();
 - **Description:** Clears the list and unsubscribes all event handlers.
 - **Remarks:** Releases internal resources and prevents further event notifications.
 
-#### `GetEnumerator()`
-```csharp
-public Enumerator GetEnumerator();
-```
-- **Description:** Returns a struct enumerator that iterates over the elements of the `ReactiveLinkedList<T>`.
-- **Returns:** An `Enumerator` struct that implements `IEnumerator<T>` for the list.
-- **Remarks:**
-  - This enumerator allows `foreach` iteration without allocating on the heap.
-  - Iterating through the list with this enumerator **does not trigger any events**.
-  - Use `MoveNext()` to advance and `Current` to access the current element.
-- **Example:**
-  
-  ```csharp
-  var list = new ReactiveLinkedList<string>("apple", "banana", "cherry");
-  var enumerator = list.GetEnumerator();
-  while (enumerator.MoveNext())
-  {
-      Console.WriteLine(enumerator.Current);
-  }
-  ```
 ---
 
 ## 🗂 Example of Usage
@@ -262,10 +226,10 @@ public Enumerator GetEnumerator();
 var reactiveList = new ReactiveLinkedList<string>();
 
 // Subscribe to events
-reactiveList.OnItemInserted += (index, item) =>
+reactiveList.OnItemAdded += (index, item) =>
     Console.WriteLine($"Inserted '{item}' at index {index}");
 
-reactiveList.OnItemDeleted += (index, item) =>
+reactiveList.OnItemRemoved += (index, item) =>
     Console.WriteLine($"Deleted '{item}' from index {index}");
 
 reactiveList.OnItemChanged += (index, newValue) =>
@@ -298,9 +262,7 @@ reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
 ---
 
 ## 🔥 Performance
-The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
-
-The table shows median execution times of key operations.
+The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**. The table shows median execution times of key operations.
 
 | Operation       | List<T> Avg (μs) | ReactiveList Avg (μs) | ReactiveLinkedList Avg (μs) |
 |-----------------|------------------|-----------------------|-----------------------------|
@@ -317,8 +279,7 @@ The table shows median execution times of key operations.
 | Insert At First | 226.36           | 225.46                | 16.07                       |
 
 ### Explanation
-
-- `ReactiveLinkedList` **excels** in scenarios with **frequent insertions or removals** at arbitrary positions, especially at the head or tail.
-- Index-based access (`Get` / `Set`) is **significantly slower** than arrays or lists because it requires traversal from the head.
-- Iteration should be done using **`foreach`**, which is efficient and safe. Never use `for` loop for traversal!
-- Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, `OnStateChanged`) introduce a **slight performance overhead**, but provide real-time updates on all changes.
+1. `ReactiveLinkedList` **excels** in scenarios with **frequent insertions or removals** at arbitrary positions, especially at the head or tail.
+2. Index-based access (`Get` / `Set`) is **significantly slower** than arrays or lists because it requires traversal from the head.
+3. Iteration should be done using **`foreach`**, which is efficient and safe. Never use `for` loop for traversal!
+4. Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, `OnStateChanged`) introduce a **slight performance overhead**, but provide real-time updates on all changes.
