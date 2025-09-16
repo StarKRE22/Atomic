@@ -199,7 +199,7 @@ reactiveCollection.OnItemAdded += item =>
 // Subscribe to non-indexed removal events (inherited from IReadOnlyReactiveCollection)
 reactiveCollection.OnItemRemoved += item =>
 {
-Console.WriteLine($"Item {item} removed (non-indexed event)");
+    Console.WriteLine($"Item {item} removed (non-indexed event)");
 };
 
 ```
