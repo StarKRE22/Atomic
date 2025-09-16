@@ -1,6 +1,6 @@
 # 🧩 IReactiveDictionary&lt;K, V&gt;
 
-`IReactiveDictionary<K, V>` represents a **reactive key-value dictionary** that supports notifications when items are added, removed, updated, or when the overall state changes. It extends `IDictionary<K, V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md), and [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md).
+Represents a **reactive key-value dictionary** that supports notifications when items are added, removed, updated, or when the overall state changes. It extends `IDictionary<K, V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md), and [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md).
 
 > [!NOTE]  
 > Use this interface when you need **mutable dictionary access** with **reactive notifications** for all changes.
