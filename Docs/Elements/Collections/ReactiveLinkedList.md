@@ -7,8 +7,7 @@
 
 > [!IMPORTANT]
 > Insertions and removals are **O(1)**, unlike a standard `List<T>` which may require shifting elements for each operation.
-
-> [!IMPORTANT]
+>
 > For high performance always use `foreach` to iterate over the collection, and **never** use `for` loops for index-based traversal!
 
 ---
