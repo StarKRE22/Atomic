@@ -52,7 +52,7 @@ public event StateChangedHandler OnStateChanged;
 
 #### `Count`
 ```csharp
-int Count { get; }
+public int Count { get; }
 ````
 - **Description:** Gets the total number of elements in the list.
 - **Remarks:** Implements `IReadOnlyCollection<T>`.  
@@ -60,7 +60,7 @@ int Count { get; }
 
 #### `Length`
 ```csharp
-int Length { get; }
+public int Length { get; }
 ````
 - **Description:** Inherited from `IReadOnlyReactiveArray<T>`.  
   Returns the number of elements in the list.
@@ -72,7 +72,7 @@ int Length { get; }
 
 #### `[int index]`
 ```csharp
-T this[int index] { get; }
+public T this[int index] { get; }
 ````
 - **Description:** Gets the element at the specified index.
 - **Parameters:** `index` — zero-based index of the element.
@@ -84,7 +84,7 @@ T this[int index] { get; }
 
 #### `Contains(T)`
 ```csharp
-bool Contains(T item);
+public bool Contains(T item);
 ```
 - **Description:** Determines whether the array contains a specific element.
 - **Parameter:** `item` — The object to locate in the array.
@@ -92,7 +92,7 @@ bool Contains(T item);
 
 #### `IndexOf(T)`
 ```csharp
-int IndexOf(T item);
+public int IndexOf(T item);
 ```
 - **Description:** Returns the index of a specific item in the array.
 - **Parameter:** `item` — The object to locate in the array.
@@ -121,17 +121,10 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
 
 #### `GetEnumerator()`
 ```csharp
-IEnumerator<T> GetEnumerator();
+public IEnumerator<T> GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
-
-#### `GetEnumerator()`
-```csharp
-IEnumerator GetEnumerator();
-```
-- **Description:** Returns an enumerator that iterates through the collection.
-- **Remarks:** Non-generic version, inherited from `IEnumerable`.
 
 ---
 

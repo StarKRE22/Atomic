@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/IReadOnlyReactiveList.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/IReadOnlyReactiveList.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/IReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/IReactiveList.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveList.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,15 +176,7 @@
       <workItem from="1758013872689" duration="853000" />
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
-      <workItem from="1758016683531" duration="3656000" />
-    </task>
-    <task id="LOCAL-00249" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1757661890710</created>
-      <option name="number" value="00249" />
-      <option name="presentableId" value="LOCAL-00249" />
-      <option name="project" value="LOCAL" />
-      <updated>1757661890710</updated>
+      <workItem from="1758016683531" duration="3985000" />
     </task>
     <task id="LOCAL-00250" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -574,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758019626763</updated>
     </task>
-    <option name="localTasksCounter" value="298" />
+    <task id="LOCAL-00298" summary="Сделал IReadOnlyReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758020662832</created>
+      <option name="number" value="00298" />
+      <option name="presentableId" value="LOCAL-00298" />
+      <option name="project" value="LOCAL" />
+      <updated>1758020662832</updated>
+    </task>
+    <option name="localTasksCounter" value="299" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал AndExpression.md" />
     <MESSAGE value="Сделал AndExpression.md" />
     <MESSAGE value="Сделал OR EXPRESSION" />
     <MESSAGE value="Пилим IntMulExpression.md" />
@@ -626,7 +621,8 @@
     <MESSAGE value="Сделал IReadOnlyReactiveArray.cs" />
     <MESSAGE value="Написал ReactiveArray.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Сделал IReadOnlyReactiveList.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал IReadOnlyReactiveList.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
