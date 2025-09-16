@@ -114,9 +114,9 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IPeriod](Time/IPeriod.md) <!-- + -->
   - [Period](Time/Period.md) <!-- + -->
   - [PeriodState](Time/PeriodState.md) <!-- + -->
-  - [Timestamp](Time/Timestamp.md)
-  - [Extensions](Time/Extensions.md)
-  - [Source Interfaces](Time/SourceInterfaces.md)
+  - [ITimestamp](Time/ITimestamp.md) <!-- + -->
+  - [FixedTimestamp](Time/FixedTimestamp.md) <!-- + -->
+  - [Extensions](Time/Extensions.md) <!-- + -->
 - **Unity Components**
   - [AnimationEvents](UnityComponents/AnimationEvents.md)
   - [TriggerEvents](UnityComponents/TriggerEvents.md)
