@@ -106,7 +106,7 @@ public void Clear();
   array.Clear(); // All elements set to 0, OnItemChanged fired for all
   ```
 
-#### `CopyTo(T[] array, int arrayIndex)`
+#### `CopyTo(T[], int)`
 ```csharp
 public void CopyTo(T[] array, int arrayIndex)
 ```
@@ -161,7 +161,7 @@ public void Populate(IEnumerable<T> newItems);
   - Clears remaining elements if fewer items, triggering `OnItemChanged` for removed elements.
   - Always triggers `OnStateChanged` at the end.
 
-#### `Fill(T value)`
+#### `Fill(T)`
 ```csharp
 public void Fill(T value);
 ```
@@ -177,7 +177,7 @@ public void Fill(T value);
   array.Fill(42); // All elements set to 42, events triggered
   ```
 
-#### `Resize(int newSize)`
+#### `Resize(int)`
 ```csharp
 public void Resize(int newSize);
 ```
