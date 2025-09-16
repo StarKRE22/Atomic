@@ -18,10 +18,7 @@ The interface combines multiple sources internally:
 
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Events</h2>
-  </summary>
+## Events
 
 #### `event Action OnStarted`
 ```csharp
@@ -97,15 +94,9 @@ public event Action<TimerState> OnStateChanged;
 - **Remarks:** States may include Idle, Running, Paused, Completed depending on `TimerState` enum.
 - **Parameter:** [TimerState](TimerState.md) — the new state of the timer.
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Methods</h2>
-  </summary>
-
+## Methods
 #### `void Start()`
 ```csharp
 public void Start();
@@ -236,7 +227,6 @@ public void Tick(float deltaTime);
 - **Parameters:**
     - `deltaTime` — time in seconds to advance the timer.
 - **Remarks:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` as appropriate.
-</details>
 
 ---
 
