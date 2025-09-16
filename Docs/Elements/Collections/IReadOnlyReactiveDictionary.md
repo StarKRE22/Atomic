@@ -1,6 +1,6 @@
 # 🧩 IReadOnlyReactiveDictionary&lt;K, V&gt;
 
-`IReadOnlyReactiveDictionary<K, V>` represents a **read-only reactive key-value dictionary** that provides notifications when items are added, removed, updated, or when the overall state changes. It extends [`IReadOnlyDictionary<K, V>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2) and [`IReadOnlyReactiveCollection<KeyValuePair<K, V>>`](IReadOnlyReactiveCollection.md).
+`IReadOnlyReactiveDictionary<K, V>` represents a **read-only reactive key-value dictionary** that provides notifications when items are added, removed, updated, or when the overall state changes. It extends `IReadOnlyDictionary<K, V>` and [IReadOnlyReactiveCollection<KeyValuePair<K, V>>](IReadOnlyReactiveCollection.md).
 
 > [!NOTE]  
 > Use this interface when you need **read-only dictionary access** but still want **reactive notifications** on changes.
