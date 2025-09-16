@@ -9,22 +9,20 @@
 
 ## Events
 
-#### `OnItemChanged`
-```csharp
-public event ChangeItemHandler<T> OnItemChanged;
-```
-- **Description:** Triggered when an item at a specific index changes.
-- **Parameters:**
-    - `index` — index of the changed element.
-    - `newValue` — `T` the new value of the element.
-- **Remarks:** See [ChangeItemHandler&lt;T&gt;](Delegates.md/#-changeitemhandlert)
-
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
 ```
 - **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).
-- **Remarks:** See [StateChangedHandler](Delegates.md/#-statechangedhandler)
+
+#### `OnItemChanged`
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+  - `index` — index of the changed element.
+  - `value` — `T` the new value of the element.
 
 ---
 
@@ -45,16 +43,16 @@ public int Count { get; }
 
 ---
 
-## Indexers
+## Indexer
 
 #### `[int index]`
 ```csharp
 public T this[int index] { get; set; }
 ```
 - **Description:** Gets or sets the element at the specified index.  
-  Setting a new value triggers the `OnItemChanged` event if the value changes.
 - **Parameters:** `index` — zero-based index of the element.
 - **Returns:** `T` — the element at the specified index.
+- **Remarks:** Setting a new value triggers the `OnItemChanged` event if the value changes.
 
 ---
 
@@ -67,7 +65,7 @@ void Clear();
 - **Description:** Removes all elements from the array.
 - **Remarks:** Triggers the `OnStateChanged` event.
 
-#### `Populate(IEnumerable<T> newItems)`
+#### `Populate(IEnumerable<T>)`
 ```csharp
 void Populate(IEnumerable<T> newItems);
 ```
@@ -75,7 +73,7 @@ void Populate(IEnumerable<T> newItems);
 - **Parameters:** `newItems` — collection of new elements to populate the array with.
 - **Remarks:** Triggers the `OnStateChanged` event.
 
-#### `Fill(T value)`
+#### `Fill(T)`
 ```csharp
 void Fill(T value);
 ```
@@ -83,7 +81,7 @@ void Fill(T value);
 - **Parameters:** `value` — the value to assign to each element.
 - **Remarks:** Triggers the `OnStateChanged` event.
 
-#### `Resize(int newSize)`
+#### `Resize(int)`
 ```csharp
 void Resize(int newSize);
 ```
@@ -126,7 +124,7 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
     - `T[] destination` — array to copy elements to.
     - `int destinationIndex` — starting index in the destination array.
     - `int length` — number of elements to copy.
-- **Notes:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
+- **Remarks:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
 
 #### `GetEnumerator()`
 ```csharp
@@ -135,12 +133,7 @@ IEnumerator<T> GetEnumerator();
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
 
-#### `GetEnumerator()`
-```csharp
-IEnumerator GetEnumerator();
-```
-- **Description:** Returns an enumerator that iterates through the collection.
-- **Remarks:** Non-generic version, inherited from `IEnumerable`.
+---
 
 ## 🗂 Example of Usage
 ```csharp
