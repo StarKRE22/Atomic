@@ -1,4 +1,4 @@
-# 🧩 IReactiveCollection<T>
+# 🧩 IReactiveCollection&lt;T&gt;
 
 `IReactiveCollection<T>` represents a **reactive collection** that provides notifications when items are added, removed, or when the overall state changes. Allows **modification of the collection**. It extends [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md) and `ICollection<T>`.
 
