@@ -33,6 +33,16 @@ public event Action<int, T> OnItemRemoved;
 - **Parameters:**
   - `index` — The zero-based index from which the item was removed.
   - `value` — The item that was removed.
+
+#### `OnItemChanged`
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+  - `index` — index of the changed element.
+  - `value` — `T` the new value of the element.
+
 ---
 
 ## Properties
