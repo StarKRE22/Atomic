@@ -60,14 +60,14 @@ public T this[int index] { get; set; }
 
 #### `Clear()`
 ```csharp
-void Clear();
+public void Clear();
 ```
 - **Description:** Removes all elements from the array.
 - **Remarks:** Triggers the `OnStateChanged` event.
 
 #### `Populate(IEnumerable<T>)`
 ```csharp
-void Populate(IEnumerable<T> newItems);
+public void Populate(IEnumerable<T> newItems);
 ```
 - **Description:** Updates the contents of the array with values from the specified collection.
 - **Parameters:** `newItems` — collection of new elements to populate the array with.
@@ -75,7 +75,7 @@ void Populate(IEnumerable<T> newItems);
 
 #### `Fill(T)`
 ```csharp
-void Fill(T value);
+public void Fill(T value);
 ```
 - **Description:** Sets all elements of the array to the specified value.
 - **Parameters:** `value` — the value to assign to each element.
@@ -83,7 +83,7 @@ void Fill(T value);
 
 #### `Resize(int)`
 ```csharp
-void Resize(int newSize);
+public void Resize(int newSize);
 ```
 - **Description:** Changes the size of the array to the specified length.
 - **Parameters:** `newSize` — new length of the array. Must be non-negative.
@@ -91,7 +91,7 @@ void Resize(int newSize);
 
 #### `Contains(T)`
 ```csharp
-bool Contains(T item);
+public bool Contains(T item);
 ```
 - **Description:** Determines whether the array contains a specific element.
 - **Parameter:** `item` — The object to locate in the array.
@@ -99,7 +99,7 @@ bool Contains(T item);
 
 #### `IndexOf(T)`
 ```csharp
-int IndexOf(T item);
+public int IndexOf(T item);
 ```
 - **Description:** Returns the index of a specific item in the array.
 - **Parameter:** `item` — The object to locate in the array.
@@ -128,7 +128,7 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
 
 #### `GetEnumerator()`
 ```csharp
-IEnumerator<T> GetEnumerator();
+public IEnumerator<T> GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
