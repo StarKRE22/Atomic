@@ -1,110 +1,306 @@
-# 🧩 Reactive Linked List
+# 🧩 ReactiveLinkedList<T>
 
-A reactive singly linked list that allows observation of its elements.  
-Supports dynamic resizing and triggers events when items are added, removed, modified, or when the list’s state changes.  
-Ideal for UI updates, reactive programming, and event-driven scenarios.
+`ReactiveLinkedList<T>` represents a **reactive linked list** that notifies subscribers about changes to its elements. It supports fast insertions at head and tail, maintains a free-list for removed nodes, and implements [IReactiveList<T>](IReactiveList.md) and `IDisposable`.
 
-> **Key advantage:** Linked list allows **efficient O(1) insertions and removals** once the node is located, unlike `List` which may require shifting elements.
+> [!NOTE]  
+> Use this class when you need a **reactive linked list** that supports frequent insertions and removals at arbitrary positions, with notifications for every change.
 
----
+> [!IMPORTANT]
+> Insertions and removals are **O(1)**, unlike a standard `List<T>` which may require shifting elements for each operation.
 
-## ReactiveLinkedList\<T\>
-
-`ReactiveLinkedList<T>` is a reactive, resizable singly linked list that **implements the `IReactiveList<T>` interface**.  
-It emits events when items are added, removed, changed, or when the global state changes.  
-Supports indexed access, enumeration, and manual event handling.
-
-### Constructors
-
-- `ReactiveLinkedList(int capacity = 1)`  
-  Initializes an empty list with the specified initial capacity.
-
-- `ReactiveLinkedList(params T[] items)`  
-  Initializes the list with the provided array of items.
-
-- `ReactiveLinkedList(IEnumerable<T> items)`  
-  Initializes the list as a copy of the given enumerable.
-
-### Properties
-
-- `int Count` – number of elements in the list.
-- `bool IsReadOnly` – always `false`.
-- `T this[int index]` – read/write element access.
-  > Throws `ArgumentOutOfRangeException` if index is out of range.
-
-### Events
-
-- `event StateChangedHandler OnStateChanged` – triggered on any state change.
-- `event ChangeItemHandler<T> OnItemChanged` – triggered when an element is updated.
-- `event InsertItemHandler<T> OnItemInserted` – triggered when a new element is inserted.
-- `event DeleteItemHandler<T> OnItemDeleted` – triggered when an element is removed.
-
-### Methods
-
-- `void Add(T item)`  
-  Adds a new item at the end of the list.
-  - Triggers `OnItemInserted` and `OnStateChanged`.
-
-
-- `void Insert(int index, T item)`  
-  Inserts an item at the specified index.
-  - Triggers `OnItemInserted` and `OnStateChanged`.  
-  - Throws `ArgumentOutOfRangeException` if index is invalid.
-
-
-- `bool Remove(T item)`  
-  Removes the first occurrence of the specified item.
-  - Triggers `OnItemDeleted` and `OnStateChanged` if successful.
-
-
-- `void RemoveAt(int index)`  
-  Removes the item at the specified index.
-  - Triggers `OnItemDeleted` and `OnStateChanged`.  
-  - Throws `ArgumentOutOfRangeException` if index is invalid.
-
-
-- `void Clear()`  
-  Removes all elements.
-  - Triggers `OnItemDeleted` for each element and `OnStateChanged` once.
-
-
-- `int IndexOf(T item)` – returns the index of the first occurrence of `item`, or `-1` if not found.
-
-
-- `bool Contains(T item)` – determines whether the list contains the specified item.
-
-
-- `void CopyTo(T[] array, int arrayIndex)` – copies elements to an external array starting at `arrayIndex`.
-
-
-- `Enumerator GetEnumerator()` – returns a lightweight struct-based enumerator for iteration.
+> [!IMPORTANT]
+> For high performance always use `foreach` to iterate over the collection, and **never** use `for` loops for index-based traversal!
 
 ---
 
-### Example Usage
+## Constructors
+
+#### `ReactiveLinkedList(int)`
+```csharp
+public ReactiveLinkedList(int capacity);
+```
+- **Description:** Initializes a new list with the specified initial capacity.
+- **Parameters:** `capacity` — the initial number of nodes to allocate. Default is `4`
+- **Example:**
+  
+  ```csharp
+  var list = new ReactiveLinkedList<string>(10); // Preallocates space for 10 elements
+  ```
+
+#### `ReactiveLinkedList(params T[] items)`
+```csharp
+public ReactiveLinkedList(params T[] items);
+```
+- **Description:** Initializes a new list and adds the provided items.
+- **Parameters:** `items` — initial elements to populate the list.
+- **Example:**
+  
+  ```csharp
+  var list = new ReactiveLinkedList<int>(1, 2, 3); // Adds 1, 2, 3 to the list
+  ```
+
+#### `ReactiveLinkedList(IEnumerable<T> items)`
+```csharp
+public ReactiveLinkedList(IEnumerable<T> items);
+```
+- **Description:** Initializes a new list from an enumerable collection.
+- **Parameters:** `items` — collection of items to populate the list.
+- **Example:**
+  
+  ```csharp
+  var list = new ReactiveLinkedList<string>(new[] { "a", "b", "c" });
+  ```
+
+---
+
+## Events
+
+#### `OnItemInserted`
+```csharp
+public event InsertItemHandler<T> OnItemInserted;
+```
+- **Description:** Triggered when a new item is inserted.
+- **Parameters:**
+  - `index` — zero-based index of the inserted element.
+  - `item` — the inserted element of type `T`.
+
+#### `OnItemDeleted`
+```csharp
+public event DeleteItemHandler<T> OnItemDeleted;
+```
+- **Description:** Triggered when an item is removed.
+- **Parameters:**
+  - `index` — zero-based index of the removed element.
+  - `item` — the removed element of type `T`.
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<T> OnItemChanged;
+```
+- **Description:** Triggered when an existing item is replaced or modified.
+- **Parameters:**
+  - `index` — zero-based index of the changed element.
+  - `newValue` — the new value of type `T`.
+
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Triggered whenever the list state changes globally (add, remove, clear).
+
+---
+
+## Properties
+
+#### `Count`
+```csharp
+public int Count { get; }
+```
+- **Description:** Gets the number of elements in the list.
+
+#### `IsReadOnly`
+```csharp
+public bool IsReadOnly => false;
+```
+- **Description:** Always returns false; the list is mutable.
+
+---
+
+## Indexer
+
+#### `[int index]`
+```csharp
+public T this[int index] { get; set; }
+```
+- **Description:** Gets or sets the element at the specified index.
+- **Exception:** `ArgumentOutOfRangeException` if the index is invalid.
+- **Note:** Setting a value triggers `OnItemChanged` and `OnStateChanged`.
+
+---
+
+## Methods
+#### `Add(T)`
+```csharp
+public void Add(T item);
+```
+- **Description:** Adds an item to the end of the list. Automatically expands the internal storage if necessary.
+- **Parameter:** `item` — the element to add. Cannot be `null`.
+- **Remarks:** Triggers `OnItemInserted` and `OnStateChanged` events.
+- **Example:**
+  
+  ```csharp
+  list.Add("apple");
+  ```
+
+#### `AddRange(IEnumerable<T> items)`
+```csharp
+public void AddRange(IEnumerable<T> items);
+```
+- **Description:** Efficiently adds multiple items to the end of the list.
+- **Parameter:** `items` — collection of elements to add. Cannot be `null`.
+- **Remarks:** Always use this method instead of multiple `Add` calls when adding a group of items to reduce overhead. Triggers `OnItemInserted` for each item and `OnStateChanged` once.
+- **Exceptions:** `ArgumentNullException` if `items` is `null`.
+- **Example:**
+  
+  ```csharp
+  list.AddRange(new[] { "banana", "cherry" });
+  ```
+
+#### `Insert(int, T)`
+```csharp
+public void Insert(int index, T item);
+```
+- **Description:** Inserts an item at the specified zero-based index.
+- **Parameters:**  
+  `index` — the position at which to insert the item.  
+  `item` — the element to insert. Cannot be `null`.
+- **Remarks:** Triggers `OnItemInserted` and `OnStateChanged` events.
+- **Exceptions:** `ArgumentOutOfRangeException` if `index` is invalid.
+
+#### `Remove(T)`
+```csharp
+public bool Remove(T item);
+```
+- **Description:** Removes the first occurrence of the specified item from the list.
+- **Parameter:** `item` — the element to remove.
+- **Returns:** `true` if the item was removed; otherwise, `false`.
+- **Remarks:** Triggers `OnItemDeleted` and `OnStateChanged` if successful.
+
+#### `RemoveAt(int)`
+```csharp
+public void RemoveAt(int index);
+```
+- **Description:** Removes the item at the specified zero-based index.
+- **Parameter:** `index` — the index of the item to remove.
+- **Remarks:** Triggers `OnItemDeleted` and `OnStateChanged`.
+
+#### `Clear()`
+```csharp
+public void Clear();
+```
+- **Description:** Removes all elements from the list.
+- **Remarks:** Triggers `OnItemDeleted` for each removed item and `OnStateChanged` once.
+
+#### `IndexOf(T)`
+```csharp
+public int IndexOf(T item);
+```
+- **Description:** Searches for the first occurrence of the specified item.
+- **Parameter:** `item` — the element to locate.
+- **Returns:** The zero-based index of the item if found; otherwise `-1`.
+
+#### `Contains(T)`
+```csharp
+public bool Contains(T item);
+```
+- **Description:** Determines whether the list contains a specific value.
+- **Parameter:** `item` — the element to locate.
+- **Returns:** `true` if the item exists; otherwise `false`.
+
+#### `CopyTo(T[], int)`
+```csharp
+public void CopyTo(T[] array, int arrayIndex);
+```
+- **Description:** Copies the elements of the list to the specified array starting at the given index.
+- **Parameters:**  
+  `array` — the destination array.  
+  `arrayIndex` — the starting index in the destination array.
+- **Exceptions:** `ArgumentNullException`, `ArgumentOutOfRangeException`, `ArgumentException`.
+
+#### `CopyTo(int, T[], int, int)`
+```csharp
+public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
+```
+- **Description:** Copies a range of elements from the list to the destination array.
+- **Parameters:**  
+  `sourceIndex` — zero-based index in the list where copying starts.  
+  `destination` — target array.  
+  `destinationIndex` — starting index in the target array.  
+  `length` — number of elements to copy.
+- **Exceptions:** `ArgumentNullException`, `ArgumentOutOfRangeException`, `ArgumentException`.
+
+#### `Populate(IEnumerable<T>)`
+```csharp
+public void Populate(IEnumerable<T> newItems);
+```
+- **Description:** Replaces the current contents of the list with the provided collection.
+- **Parameter:** `newItems` — collection of items to populate the list. Cannot be `null`.
+- **Remarks:** Updates existing items, adds new items, and removes excess items. Triggers `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged`.
+
+#### `Dispose()`
+```csharp
+public void Dispose();
+```
+- **Description:** Clears the list and unsubscribes all event handlers.
+- **Remarks:** Releases internal resources and prevents further event notifications.
+
+#### `GetEnumerator()`
+```csharp
+public Enumerator GetEnumerator();
+```
+- **Description:** Returns a struct enumerator that iterates over the elements of the `ReactiveLinkedList<T>`.
+- **Returns:** An `Enumerator` struct that implements `IEnumerator<T>` for the list.
+- **Remarks:**
+  - This enumerator allows `foreach` iteration without allocating on the heap.
+  - Iterating through the list with this enumerator **does not trigger any events**.
+  - Use `MoveNext()` to advance and `Current` to access the current element.
+- **Example:**
+  
+  ```csharp
+  var list = new ReactiveLinkedList<string>("apple", "banana", "cherry");
+  var enumerator = list.GetEnumerator();
+  while (enumerator.MoveNext())
+  {
+      Console.WriteLine(enumerator.Current);
+  }
+  ```
+---
+
+## 🗂 Example of Usage
 
 ```csharp
-var list = new ReactiveLinkedList<int>();
+// Create a reactive linked list
+var reactiveList = new ReactiveLinkedList<string>();
 
-list.OnItemInserted += (index, value) => Console.WriteLine($"Inserted {value} at {index}");
-list.OnItemDeleted += (index, value) => Console.WriteLine($"Deleted {value} at {index}");
-list.OnItemChanged += (index, value) => Console.WriteLine($"Changed {index} to {value}");
-list.OnStateChanged += () => Console.WriteLine("List state changed");
+// Subscribe to events
+reactiveList.OnItemInserted += (index, item) =>
+    Console.WriteLine($"Inserted '{item}' at index {index}");
 
-list.Add(1);
-list.Add(2);
-list.Insert(1, 99);
-list[0] = 42;
-list.RemoveAt(2);
-list.Clear();
+reactiveList.OnItemDeleted += (index, item) =>
+    Console.WriteLine($"Deleted '{item}' from index {index}");
 
-foreach (var item in list)
+reactiveList.OnItemChanged += (index, newValue) =>
+    Console.WriteLine($"Item at index {index} changed to '{newValue}'");
+
+reactiveList.OnStateChanged += () =>
+    Console.WriteLine("List state changed");
+
+// Add items
+reactiveList.Add("Apple");
+reactiveList.Add("Banana");
+
+// Insert item at index 1
+reactiveList.Insert(1, "Orange");
+
+// Modify an item
+reactiveList[0] = "Grapes";
+
+// Remove an item
+reactiveList.Remove("Banana");
+
+// Enumerate items
+foreach (var item in reactiveList)
     Console.WriteLine(item);
+
+// Use AddRange to add multiple items efficiently
+reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
 ```
 
+---
 
-### 🔥 Performance
+## 🔥 Performance
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
+
 The table shows median execution times of key operations.
 
 | Operation       | List<T> Avg (μs) | ReactiveList Avg (μs) | ReactiveLinkedList Avg (μs) |
@@ -121,9 +317,9 @@ The table shows median execution times of key operations.
 | Remove At Last  | 11.08            | 3.03                  | 2539.79                     |
 | Insert At First | 226.36           | 225.46                | 16.07                       |
 
-#### Notes
+### Explanation
 
-- `ReactiveLinkedList` excels in scenarios with frequent insertions/removals at the head or tail.
-- Index-based access (`Get`/`Set`) is significantly slower than arrays due to traversal.
-- Iteration using `foreach` is acceptable, but for high-performance scenarios, direct node traversal is recommended.
-- Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`) add a slight overhead.
+- `ReactiveLinkedList` **excels** in scenarios with **frequent insertions or removals** at arbitrary positions, especially at the head or tail.
+- Index-based access (`Get` / `Set`) is **significantly slower** than arrays or lists because it requires traversal from the head.
+- Iteration should be done using **`foreach`**, which is efficient and safe. Never use `for` loop for traversal!
+- Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, `OnStateChanged`) introduce a **slight performance overhead**, but provide real-time updates on all changes.

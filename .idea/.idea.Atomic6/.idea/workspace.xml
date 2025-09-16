@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveLinkedList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveLinkedList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,23 +177,7 @@
       <workItem from="1758013872689" duration="853000" />
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
-      <workItem from="1758016683531" duration="6370000" />
-    </task>
-    <task id="LOCAL-00252" summary="Пилим AndExpression.md">
-      <option name="closed" value="true" />
-      <created>1757662468541</created>
-      <option name="number" value="00252" />
-      <option name="presentableId" value="LOCAL-00252" />
-      <option name="project" value="LOCAL" />
-      <updated>1757662468541</updated>
-    </task>
-    <task id="LOCAL-00253" summary="Написал AndExpression.md">
-      <option name="closed" value="true" />
-      <created>1757663639889</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1757663639889</updated>
+      <workItem from="1758016683531" duration="8372000" />
     </task>
     <task id="LOCAL-00254" summary="Сделал AndExpression.md">
       <option name="closed" value="true" />
@@ -573,7 +555,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758020934942</updated>
     </task>
-    <option name="localTasksCounter" value="301" />
+    <task id="LOCAL-00301" summary="Сделал ReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758023140505</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1758023140505</updated>
+    </task>
+    <task id="LOCAL-00302" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758023198119</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1758023198119</updated>
+    </task>
+    <option name="localTasksCounter" value="303" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +598,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал AndExpression.md" />
     <MESSAGE value="Сделал OR EXPRESSION" />
     <MESSAGE value="Пилим IntMulExpression.md" />
     <MESSAGE value="Пилим IntSumExpression.md" />
@@ -624,6 +621,7 @@
     <MESSAGE value="Сделал IReadOnlyReactiveArray.cs" />
     <MESSAGE value="Написал ReactiveArray.md" />
     <MESSAGE value="Сделал IReadOnlyReactiveList.md" />
+    <MESSAGE value="Сделал ReactiveList.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
