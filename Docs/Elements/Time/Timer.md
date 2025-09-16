@@ -12,14 +12,14 @@
     <h2>🔻 Constructors</h2>
   </summary>
 
-### `Timer()`
+#### `Timer()`
 ```csharp
 public Timer();
 ```
 - **Description:** Initializes a new instance of the `Timer` class with default values.
 - **Remarks:** Duration defaults to `0` and state is `IDLE`. The timer must be started with `Start()`.
 
-### `Timer(float duration)`
+#### `Timer(float duration)`
 ```csharp
 public Timer(float duration);
 ```
