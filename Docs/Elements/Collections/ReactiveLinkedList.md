@@ -7,7 +7,6 @@
 
 > [!IMPORTANT]
 > Insertions and removals are **O(1)**, unlike a standard `List<T>` which may require shifting elements for each operation.
->
 > For high performance always use `foreach` to iterate over the collection, and **never** use `for` loops for index-based traversal!
 
 ---
@@ -279,7 +278,7 @@ The performance comparison below was measured on a **MacBook with Apple M1** for
 | Insert At First | 226.36           | 225.46                | 16.07                       |
 
 ### Explanation
-1. `ReactiveLinkedList` **excels** in scenarios with **frequent insertions or removals** at arbitrary positions, especially at the head or tail.
-2. Index-based access (`Get` / `Set`) is **significantly slower** than arrays or lists because it requires traversal from the head.
-3. Iteration should be done using **`foreach`**, which is efficient and safe. Never use `for` loop for traversal!
-4. Event notifications (`OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, `OnStateChanged`) introduce a **slight performance overhead**, but provide real-time updates on all changes.
+- **Best for frequent insertions / removals** at any position, especially head or tail.
+- **Index-based access is slow** (`Get`/`Set`) due to traversal from the head.
+- **Always use `foreach` for iteration**; avoid `for` loops.
+- **Event notifications** add minor overhead but give real-time updates.
