@@ -1,3 +1,129 @@
+# 🧩 IReadOnlyReactiveDictionary&lt;K, V&gt;
+
+`IReadOnlyReactiveDictionary<K, V>` represents a **read-only reactive key-value dictionary** that provides notifications when items are added, removed, updated, or when the overall state changes. It extends [`IReadOnlyDictionary<K, V>`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ireadonlydictionary-2) and [`IReadOnlyReactiveCollection<KeyValuePair<K, V>>`](IReadOnlyReactiveCollection.md).
+
+> [!NOTE]  
+> Use this interface when you need **read-only dictionary access** but still want **reactive notifications** on changes.
+
+---
+
+## Events
+
+#### `OnItemAdded`
+!!!
+public event Action<K, V> OnItemAdded;
+!!!
+- **Description:** Triggered when a new key-value pair is added to the dictionary.
+- **Parameters:**
+  - `K` — the key that was added.
+  - `V` — the value associated with the key.
+
+#### `OnItemRemoved`
+!!!
+public event Action<K, V> OnItemRemoved;
+!!!
+- **Description:** Triggered when a key-value pair is removed from the dictionary.
+- **Parameters:**
+  - `K` — the key that was removed.
+  - `V` — the value associated with the removed key.
+
+#### `OnItemChanged`
+!!!
+public event Action<K, V> OnItemChanged;
+!!!
+- **Description:** Triggered when the value of an existing key changes.
+- **Parameters:**
+  - `K` — the key whose value was changed.
+  - `V` — the new value of the key.
+
+---
+
+## Properties
+
+`IReadOnlyReactiveDictionary<K, V>` inherits all properties from `IReadOnlyDictionary<K, V>`:
+
+#### `Count`
+!!!
+public int Count { get; }
+!!!
+- **Description:** Gets the number of key-value pairs in the dictionary.
+
+#### `Keys`
+!!!
+public IEnumerable<K> Keys { get; }
+!!!
+- **Description:** Gets a collection containing all the keys in the dictionary.
+
+#### `Values`
+!!!
+public IEnumerable<V> Values { get; }
+!!!
+- **Description:** Gets a collection containing all the values in the dictionary.
+
+---
+
+## Indexer
+
+#### `[K key]`
+!!!
+public V this[K key] { get; }
+!!!
+- **Description:** Gets the value associated with the specified key.
+- **Parameters:** `key` — the key to locate in the dictionary.
+- **Returns:** `V` — the value corresponding to the key.
+- **Exception:** Throws `KeyNotFoundException` if the key does not exist.
+
+---
+
+## Methods
+
+`IReadOnlyReactiveDictionary<K, V>` inherits all standard read-only dictionary methods:
+
+- `bool ContainsKey(K key)` — Determines whether the dictionary contains the specified key.
+- `bool TryGetValue(K key, out V value)` — Tries to get the value associated with the specified key.
+- `IEnumerator<KeyValuePair<K, V>> GetEnumerator()` — Returns an enumerator for iterating through the dictionary.
+
+---
+
+## 🗂 Example of Usage
+!!!
+IReadOnlyReactiveDictionary<string, int> reactiveDict = ...;
+
+// Subscribe to item addition
+reactiveDict.OnItemAdded += (key, value) =>
+{
+Console.WriteLine($"Added {key}: {value}");
+};
+
+// Subscribe to item removal
+reactiveDict.OnItemRemoved += (key, value) =>
+{
+Console.WriteLine($"Removed {key}: {value}");
+};
+
+// Subscribe to value changes
+reactiveDict.OnItemChanged += (key, value) =>
+{
+Console.WriteLine($"Changed {key} to {value}");
+};
+
+// Access value by key
+if (reactiveDict.TryGetValue("apple", out var value))
+{
+Console.WriteLine($"Value for 'apple': {value}");
+}
+
+// Iterate over all items
+foreach (var kvp in reactiveDict)
+{
+Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+}
+!!!
+
+
+=============
+=============
+
 # 🧩 `IReadOnlyReactiveDictionary<K, V>`
 
 `IReadOnlyReactiveDictionary<K, V>` represents a **read-only reactive dictionary** that provides notifications when items are added, removed, updated, or when the overall state changes. It extends `IReadOnlyDictionary<K, V>`.

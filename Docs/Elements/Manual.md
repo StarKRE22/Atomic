@@ -106,8 +106,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IReadOnlyReactiveDictionary](Collections/IReadOnlyReactiveDictionary.md)
   - [IReactiveDictionary](Collections/IReactiveDictionary.md)
   - [ReactiveDictionary](Collections/ReactiveDictionary.md)
-  - [IReadOnlyReactiveHashSet](Collections/IReadOnlyReactiveHashSet.md)
-  - [IReactiveHashSet](Collections/IReactiveHashSet.md)
+  - [IReactiveSet](Collections/IReactiveHashSet.md)
   - [ReactiveHashSet](Collections/ReactiveHashSet.md)
 - **Time**
   - [Sources](Time/Sources.md)  <!-- + -->
@@ -132,16 +131,14 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [TriggerEvents](UnityComponents/TriggerEvents.md)
   - [CollisionEvents](UnityComponents/CollisionEvents.md)
 - **Utils**
-  - [Delegates](Collections/Delegates.md) 
   - [DisposableComposite](Utils/DisposableComposite.md)
   - [Reference](Utils/Reference.md)
   - [Optional](Utils/Optional.md)
 
 ## 🔥 Performance
-
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
 
-**Collections**
+### Collections
   - [ReactiveArray](Collections/ReactiveArray.md/#-performance) – performance benchmarks for reactive arrays.
   - [ReactiveList](Collections/ReactiveList.md/#-performance) – performance benchmarks for reactive lists.
   - [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#-performance) – performance benchmarks for reactive linked lists.

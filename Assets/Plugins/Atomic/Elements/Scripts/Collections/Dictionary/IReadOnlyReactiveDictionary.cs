@@ -13,9 +13,9 @@ namespace Atomic.Elements
         IReadOnlyDictionary<K, V>,
         IReadOnlyReactiveCollection<KeyValuePair<K, V>>
     {
-        event Action<K, V> OnItemAdded; 
+        new event Action<K, V> OnItemAdded; 
         
-        event Action<K, V> OnItemRemoved; 
+        new event Action<K, V> OnItemRemoved; 
         
         /// <summary>
         /// Event triggered when an existing key's value is changed.
