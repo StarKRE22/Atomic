@@ -102,6 +102,34 @@ namespace Atomic.Elements
         }
 
         /// <summary>
+        /// Copies all elements from this reactive array to the specified destination array,
+        /// starting at the given index in the destination array.
+        /// </summary>
+        /// <param name="array">The destination array to copy elements into.</param>
+        /// <param name="arrayIndex">The zero-based index in the destination array at which copying begins.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="arrayIndex"/> is negative.</exception>
+        /// <exception cref="ArgumentException">Thrown if the destination array does not have enough space to hold all elements starting at <paramref name="arrayIndex"/>.</exception>
+        /// <example>
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(1, 2, 3, 4, 5);
+        /// int[] target = new int[5];
+        /// array.CopyTo(target, 0); // target = [1, 2, 3, 4, 5]
+        /// </code>
+        /// </example>
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            if (arrayIndex < 0)
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Array index cannot be negative.");
+            if (array.Length - arrayIndex < this.items.Length)
+                throw new ArgumentException("The destination array is too small to contain all elements.", nameof(array));
+
+            Array.Copy(this.items, 0, array, arrayIndex, this.items.Length);
+        }
+
+        /// <summary>
         /// Copies a range of elements from this reactive array to a destination array.
         /// </summary>
         /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>

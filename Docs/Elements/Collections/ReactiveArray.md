@@ -1,331 +1,255 @@
-# 🧩 ReactiveArray\<T\>
+# 🧩 ReactiveArray&lt;T&gt;
 
-`ReactiveArray<T>` is a **fixed-size reactive array** that emits events when elements change.  
-It provides indexed access, enumeration, and supports event-driven updates for reactive programming.
+`ReactiveArray<T>` represents a **fixed-size reactive array** that emits events when elements change. It provides indexed access, supports enumeration, and implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`.
 
 > [!NOTE]  
-> Useful in **UI binding, reactive systems, and data-driven game logic** where you want automatic notifications on array changes.
+> Use this class when you need a read-write reactive array with change notifications and iteration support.
 
----
-
-## Events
-
-#### `event ChangeItemHandler<T> OnItemChanged`
-!!!
-public event ChangeItemHandler<T> OnItemChanged;
-!!!
-- **Description:** Invoked when an element at a specific index changes.
-- **Parameters:**
-  - `int index` — the index of the changed element.
-  - `T newValue` — the new value of the element.
-
-#### `event StateChangedHandler OnStateChanged`
-!!!
-public event StateChangedHandler OnStateChanged;
-!!!
-- **Description:** Invoked when the overall state of the array changes (e.g., after `Clear`, `Fill`, `Resize`, or `Populate`).
-
----
-
-## Properties
-
-#### `int Length`
-!!!
-public int Length { get; }
-!!!
-- **Description:** Gets the number of elements in the array.
+> [!TIP]
+> For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
 
 ---
 
 ## Constructors
 
-#### `ReactiveArray(int capacity)`
-!!!
+#### `ReactiveArray(int)`
+```csharp
 public ReactiveArray(int capacity);
-!!!
-- **Description:** Creates a new reactive array with a fixed capacity.
-- **Parameters:** `int capacity` — the size of the internal array (must be non-negative).
+```
+- **Description:** Creates a new reactive array with the specified capacity.
+- **Parameters:** `capacity` — the size of the internal array. Must be non-negative.
+- **Exceptions:** Throws `ArgumentOutOfRangeException` if `capacity` is negative.
+- **Remarks:** The array is initialized with default values for type `T`.
+- **Example of usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(5); // Creates an array of length 5, all elements = 0
+  ```
 
-#### `ReactiveArray(params T[] elements)`
-!!!
+#### `ReactiveArray(params T[])`
+```csharp
 public ReactiveArray(params T[] elements);
-!!!
+```
 - **Description:** Creates a reactive array initialized with the given elements.
-- **Parameters:** `T[] elements` — initial array elements.
+- **Parameters:** `elements` — elements to initialize the array with.
+- **Remarks:** The array length matches the number of provided elements.
+- **Example of usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(1, 2, 3, 4); // Creates an array with elements [1, 2, 3, 4]
+  ```
+
+## Events
+
+#### `OnItemChanged`
+```csharp
+public event ChangeItemHandler<T> OnItemChanged;
+```
+- **Description:** Triggered when an element at a specific index changes.
+- **Parameters:**
+  - `index` — index of the changed element.
+  - `newValue` — `T` the new value of the element.
+- **Remarks:** See [ChangeItemHandler&lt;T&gt;](Delegates.md/#-changeitemhandlert)
+
+#### `OnStateChanged`
+```csharp
+public event StateChangedHandler OnStateChanged;
+```
+- **Description:** Triggered when the array’s state changes globally (e.g., multiple items updated, cleared, resized, or populated).
+- **Remarks:** See [StateChangedHandler](Delegates.md/#-statechangedhandler)
+
+---
+
+## Properties
+
+#### `Length`
+```csharp
+public int Length { get; }
+```
+- **Description:** Gets the total number of elements in the array.
+
+#### `Count`
+```csharp
+public int Count => Length;
+```
+- **Description:** Returns the same value as `Length`.
+
+---
+
+## Indexers
+
+#### `[int index]`
+```csharp
+public T this[int index] { get; set; }
+```
+- **Description:** Gets or sets the element at the specified index.  
+  Setting a value triggers `OnItemChanged` if the value changes.
+- **Parameters:** `index` — zero-based index.
+- **Returns:** `T` — the element at the specified index.
 
 ---
 
 ## Methods
 
-#### `T this[int index] { get; set; }`
-!!!
-public T this[int index] { get; set; }
-!!!
-- **Description:** Gets or sets the element at the specified index.
-- **Notes:** Setting a new value triggers `OnItemChanged` and `OnStateChanged`.
-
-#### `void Clear()`
-!!!
+#### `Clear()`
+```csharp
 public void Clear();
-!!!
+```
 - **Description:** Resets all elements to their default values.
-- **Notes:** Fires `OnItemChanged` for elements that change and `OnStateChanged` once at the end.
+- **Remarks:**
+  - Triggers `OnItemChanged` only for elements that were not already default.
+  - Triggers `OnStateChanged` once at the end.
+- **Example of usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(1, 2, 3);
+  array.Clear(); // All elements set to 0, OnItemChanged fired for all
+  ```
 
-#### `void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)`
-!!!
-public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
-!!!
-- **Description:** Copies a range of elements to a destination array.
+#### `CopyTo(T[] array, int arrayIndex)`
+```csharp
+public void CopyTo(T[] array, int arrayIndex)
+```
+- **Description:** Copies all elements from this reactive array to the specified destination array, starting at the given index in the destination array.
 - **Parameters:**
-  - `int sourceIndex` — starting index in this array.
-  - `T[] destination` — the array to copy to.
-  - `int destinationIndex` — starting index in the destination array.
-  - `int length` — number of elements to copy.
-- **Exceptions:** Throws if indices or lengths are invalid, or destination is too small.
+  - `array` — The destination array to copy elements into.
+  - `arrayIndex` — The zero-based index in the destination array at which copying begins.
+- **Exceptions:**
+  - `ArgumentNullException` — Thrown if `array` is `null`.
+  - `ArgumentOutOfRangeException` — Thrown if `arrayIndex` is negative.
+  - `ArgumentException` — Thrown if the destination array does not have enough space to hold all elements starting at `arrayIndex`.
+- **Example of Usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
+  int[] target = new int[5];
+  array.CopyTo(target, 0); // target = [1, 2, 3, 4, 5]
+  ```
+- **Remarks:**
+  - This method ensures that all elements are copied safely to the destination array.
+  - Throws descriptive exceptions if parameters are invalid.
 
-#### `void Populate(IEnumerable<T> newItems)`
-!!!
+
+#### `CopyTo(int, T[], int, int)`
+```csharp
+public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
+```
+- **Description:** Copies a range of elements from this reactive array to a destination array.
+- **Parameters:**
+  - `sourceIndex` — start index in this array.
+  - `destination` — the target array.
+  - `destinationIndex` — start index in the destination array.
+  - `length` — number of elements to copy.
+- **Exceptions:** `ArgumentNullException`, `ArgumentOutOfRangeException`, `ArgumentException`.
+- **Example of usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
+  int[] target = new int[5];
+  array.CopyTo(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
+  ```
+
+#### `Populate(IEnumerable<T>)`
+```csharp
 public void Populate(IEnumerable<T> newItems);
-!!!
-- **Description:** Updates array elements from the specified collection.
-- **Notes:**
-  - Triggers `OnItemChanged` for differing elements.
-  - Throws if the collection length does not match array length.
-  - Remaining elements are cleared if the collection is smaller.
-  - Triggers `OnStateChanged` at the end.
+```
+- **Description:** Updates the array with new values.
+- **Parameters:** `newItems` — collection of new elements.
+- **Remarks:**
+  - Updates existing elements that differ, triggering `OnItemChanged`.
+  - Throws `ArgumentException` if collection size does not match array length.
+  - Clears remaining elements if fewer items, triggering `OnItemChanged` for removed elements.
+  - Always triggers `OnStateChanged` at the end.
 
-#### `void Fill(T value)`
-!!!
+#### `Fill(T value)`
+```csharp
 public void Fill(T value);
-!!!
+```
 - **Description:** Sets all elements to the specified value.
-- **Notes:** Fires `OnItemChanged` for each element that changes and `OnStateChanged` once at the end.
+- **Parameters:** `value` — value to assign.
+- **Remarks:**
+  - Triggers `OnItemChanged` for each changed element.
+  - Triggers `OnStateChanged` once at the end.
+- **Example of usage:**
+  
+  ```csharp
+  var array = new ReactiveArray<int>(3);
+  array.Fill(42); // All elements set to 42, events triggered
+  ```
 
-#### `void Resize(int newSize)`
-!!!
+#### `Resize(int newSize)`
+```csharp
 public void Resize(int newSize);
-!!!
+```
 - **Description:** Changes the size of the array.
-- **Notes:**
-  - New elements are initialized with default values.
-  - Excess elements are discarded.
-  - Fires `OnItemChanged` for new/changed elements and `OnStateChanged` once at the end.
-- **Exceptions:** Throws if `newSize` is negative.
+- **Parameters:** `newSize` — new length (must be non-negative).
+- **Remarks:**
+  - Expands with default(T) if larger.
+  - Discards excess elements if smaller.
+  - Triggers `OnItemChanged` for all new or changed elements.
+  - Triggers `OnStateChanged` once at the end.
+- **Exceptions:** `ArgumentOutOfRangeException` if `newSize` is negative.
 
-#### `Enumerator GetEnumerator()`
-!!!
+#### `GetEnumerator()`
+```csharp
 public Enumerator GetEnumerator();
-!!!
-- **Description:** Returns a struct-based enumerator for the array.
+```
+- **Description:** Returns a struct-based enumerator for iterating over the elements of the reactive array.
+- **Returns:** `Enumerator` — a lightweight struct enumerator that implements `IEnumerator<T>` for this array.
+- **Remarks:**
+  - The returned enumerator is value-type, avoiding heap allocations during iteration.
+  - Use it in `foreach` loops or manually with `MoveNext()` and `Current`.
+  - Does **not** trigger any events; it only reads the current state of the array.
 
-#### `void Dispose()`
-!!!
+#### `Dispose()`
+```csharp
 public void Dispose();
-!!!
-- **Description:** Clears event subscriptions.
+```
+- **Description:** Clears event subscriptions and disposes the array.
 
 ---
 
-## Enumerator
+## 🗂 Example of Usage
 
-`ReactiveArray<T>.Enumerator` is a lightweight enumerator for iterating over the array.
+```csharp
+// Create a reactive array with initial values
+var reactiveArray = new ReactiveArray<int>(1, 2, 3, 4);
 
-#### `bool MoveNext()`
-!!!
-public bool MoveNext();
-!!!
-- **Description:** Advances the enumerator to the next element.
-- **Returns:** `true` if there is a next element; otherwise, `false`.
+// Subscribe to events
+reactiveArray.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
+reactiveArray.OnStateChanged += () => Console.WriteLine("Array state changed");
 
-#### `T Current`
-!!!
-public T Current { get; }
-!!!
-- **Description:** Gets the current element.
+// Access and modify elements
+reactiveArray[1] = 20; // Triggers OnItemChanged and OnStateChanged
 
-#### `void Reset()`
-!!!
-public void Reset();
-!!!
-- **Description:** Resets the enumerator to its initial state.
+// Fill all elements
+reactiveArray.Fill(10);
 
----
+// Populate new values
+reactiveArray.Populate(new int[] { 5, 6, 7, 8 });
 
-## Example Usage
-
-!!!
-// Create a reactive array of integers
-ReactiveArray<int> array = new ReactiveArray<int>(3);
-
-// Subscribe to item changes
-array.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
-array.OnStateChanged += () => Console.WriteLine("Array state changed");
-
-// Set values
-array[0] = 10;
-array[1] = 20;
-
-// Fill all elements with 5
-array.Fill(5);
+// Resize the array
+reactiveArray.Resize(6); // Adds two default elements
 
 // Clear the array
-array.Clear();
+reactiveArray.Clear();
 
-// Populate from a collection
-array.Populate(new List<int> { 1, 2, 3 });
-!!!
-
-
-
-
-
-=====
-=====
-
-# 🧩 Reactive Array
-
-A reactive array is designed to provide a fixed set of elements that can be observed.  
-This is especially useful for UI rendering and event handling.  
-The class follows reactive programming principles, allowing subscribers to be notified of changes.  
-Instead of just storing data, `ReactiveArray<T>` supports observation and the observer pattern, making it easy to react
-to element updates and global state changes.
-
----
-
-## IReadOnlyReactiveArray\<T\>
-
-Represents a **read-only** reactive array that notifies about element changes and global state changes.
-
-### Properties
-
-- `int Length` – the size of the array.
-- `T this[int index]` – access an element by index.
-- `int Count` – the size of array (`IReadOnlyCollection<T>` implementation).
-
-### Events
-
-- `event ChangeItemHandler<T> OnItemChanged` – triggered when an element at a specific index is changed.
-- `event StateChangedHandler OnStateChanged` – triggered when the array’s **global state** changes (e.g., cleared,
-  replaced, or reset).
-
-### Methods
-
-- `void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)`  
-  Copies a range of elements from this reactive array to a specified destination array.
-  - `sourceIndex` – zero-based index in this array where copying starts.
-  - `destination` – the target array.
-  - `destinationIndex` – zero-based index in the target array where storing begins.
-  - `length` – number of elements to copy.
-  - **Example**:
-    ```csharp
-    var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
-    int[] target = new int[5];
-    array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
-    ```
----
-
-## IReactiveArray\<T\>
-
-Implements `IReadOnlyReactiveArray<T>` and provides write access to the array.
-
-### Additional Members
-
-- `new T this[int index] { get; set; }` – read / write element access.
-- `void Clear()` – clears the array and triggers `OnStateChanged`.
-
----
-
-## ReactiveArray\<T\>
-A fixed-size reactive array that emits events when elements change.  
-Supports indexed access, enumeration, and event notifications.
-
-### Constructors
-
-- `ReactiveArray(int capacity)`  
-  Creates a new reactive array with the specified capacity.
-    - Throws `ArgumentOutOfRangeException` if `capacity < 0`.
-
-
-- `ReactiveArray(params T[] elements)`  
-  Creates a reactive array initialized with the provided elements.
-
-### Properties
-
-- `int Length` – the size of the array.
-- `T this[int index]` – indexed access with bounds checking.
-    - Throws `IndexOutOfRangeException` if index is out of range.
-
-### Events
-
-- `event ChangeItemHandler<T> OnItemChanged` – raised when an element changes.
-- `event StateChangedHandler OnStateChanged` – raised when the array's global state changes (clear, replace, reset).
-
-### Methods
-
-- `void Clear()`  
-  Resets all elements to `default(T)`.
-    - `OnItemChanged` is triggered only for elements that changed.
-    - `OnStateChanged` is triggered once at the end.
-
-
-- `void Populate(IEnumerable<T> newItems)`  
-  Updates the array elements with the values from `newItems`.
-  - Any existing elements that differ from the new values are replaced and `OnItemChanged` is fired for each updated element.
-  - If `newItems` has fewer elements than the array length, the remaining elements are cleared (set to default) and `OnItemDeleted` is fired for each cleared element.
-  - If `newItems` has more elements than the array length, an `ArgumentException` is thrown.
-  - Throws `ArgumentNullException` if `newItems` is `null`.
-  - `OnStateChanged` is fired once at the end.
-
-
-- `void Fill(T value)`  
-  Sets all elements to the specified value.
-  - `OnItemChanged` is triggered for each element that changes.
-  - `OnStateChanged` is triggered once at the end.
-
-
-- `void Resize(int newSize)`  
-  Changes the array length to `newSize`.
-  - If new size is larger, new elements are initialized with `default(T)`.
-  - If new size is smaller, excess elements are discarded.
-  - `OnItemChanged` is triggered for all new or changed elements.
-  - `OnStateChanged` is triggered once at the end.
-  - Throws `ArgumentOutOfRangeException` if `newSize` is negative.
-
-- `Enumerator GetEnumerator()`  
-  Returns a lightweight struct-based enumerator.
-
-- `void Dispose()`  
-  Clears all event subscriptions.
-
-### Example of Usage
-```csharp
-var array = new ReactiveArray<int>(3);
-
-array.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
-array.OnStateChanged += () => Console.WriteLine("Array state changed");
-
-// Setting an individual element
-array[0] = 10; 
-
-// Clearing the array
-array.Clear();  
-
-// Replacing all elements
-array.Replace(new[] {1, 2, 3}); 
-
-// Filling the array with a single value
-array.Fill(42); 
-
-// Resizing the array to a larger size
-array.Resize(5); 
-
-//Lightweight struct-based enumerator for efficient iteration:
-foreach (var item in array)
+// Iterate through elements
+foreach (var item in reactiveArray)
+{
     Console.WriteLine(item);
+}
+
+// Copy to standard array
+int[] target = new int[reactiveArray.Length];
+reactiveArray.Copy(0, target, 0, reactiveArray.Length);
 ```
 
-### 🔥 Performance
+---
+
+## 🔥 Performance
 The performance comparison below was measured on a **MacBook with Apple M1** and for collections containing **1000 elements of type `object`**.  
+
 The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper.
 
 | Operation | Array (Median μs) | ReactiveArray (Median μs) |
@@ -337,8 +261,6 @@ The table shows median execution times of key operations, illustrating the overh
 | For       | 0.70              | 0.70                      |
 | Clear     | 0.40              | 41.50                     |
 
-Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations.  
-It is well-suited for scenarios where element change notifications are needed.
+Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations. It is well-suited for scenarios where element change notifications are needed.
 
-However, writing to an element or iterating with `foreach` is noticeably slower due to event invocations.  
-For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
+However, **iterating** with `foreach` or **writing** to an element is **noticeably** **slower** due to event invocations.  

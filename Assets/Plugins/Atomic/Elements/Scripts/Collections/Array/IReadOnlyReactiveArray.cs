@@ -37,6 +37,13 @@ namespace Atomic.Elements
         /// <summary>
         /// Copies a range of elements from this array to the specified destination array.
         /// </summary>
+        /// <param name="array">The destination array.</param>
+        /// <param name="arrayIndex">The zero-based index in the destination array at which storing begins.</param>
+        void CopyTo(T[] array, int arrayIndex);
+        
+        /// <summary>
+        /// Copies a range of elements from this array to the specified destination array.
+        /// </summary>
         /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>
         /// <param name="destination">The destination array.</param>
         /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
