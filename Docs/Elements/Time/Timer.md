@@ -9,7 +9,7 @@
 
 <details>
   <summary>
-    <h2>🔹 Constructors</h2>
+    <h2>🔻 Constructors</h2>
   </summary>
 
 ### `Timer()`
@@ -33,7 +33,7 @@ public Timer(float duration);
 
 <details>
   <summary>
-    <h2>🔹 Events</h2>
+    <h2>🔻 Events</h2>
   </summary>
 
 #### `event Action OnStarted`
@@ -113,7 +113,7 @@ public event Action<TimerState> OnStateChanged;
 
 <details>
   <summary>
-    <h2>🔹 Properties</h2>
+    <h2>🔻 Properties</h2>
   </summary>
 
 #### `TimerState CurrentState`
@@ -150,7 +150,7 @@ public float Progress { get; set; }
 
 <details>
   <summary>
-    <h2>🔹 Methods</h2>
+    <h2>🔻 Methods</h2>
   </summary>
 
 #### `void Start()`
@@ -278,7 +278,7 @@ public void Tick(float deltaTime);
 
 <details>
   <summary>
-    <h2>🔹 Operators</h2>
+    <h2>🔻 Operators</h2>
   </summary>
 
 #### `implicit operator Timer(float duration)`
