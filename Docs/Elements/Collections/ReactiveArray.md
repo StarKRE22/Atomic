@@ -20,11 +20,6 @@ public ReactiveArray(int capacity);
 - **Parameters:** `capacity` — the size of the internal array. Must be non-negative.
 - **Exceptions:** Throws `ArgumentOutOfRangeException` if `capacity` is negative.
 - **Remarks:** The array is initialized with default values for type `T`.
-- **Example of usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(5); // Creates an array of length 5, all elements = 0
-  ```
 
 #### `ReactiveArray(params T[])`
 ```csharp
@@ -33,30 +28,25 @@ public ReactiveArray(params T[] elements);
 - **Description:** Creates a reactive array initialized with the given elements.
 - **Parameters:** `elements` — elements to initialize the array with.
 - **Remarks:** The array length matches the number of provided elements.
-- **Example of usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(1, 2, 3, 4); // Creates an array with elements [1, 2, 3, 4]
-  ```
+
+---
 
 ## Events
-
-#### `OnItemChanged`
-```csharp
-public event ChangeItemHandler<T> OnItemChanged;
-```
-- **Description:** Triggered when an element at a specific index changes.
-- **Parameters:**
-  - `index` — index of the changed element.
-  - `newValue` — `T` the new value of the element.
-- **Remarks:** See [ChangeItemHandler&lt;T&gt;](Delegates.md/#-changeitemhandlert)
 
 #### `OnStateChanged`
 ```csharp
 public event StateChangedHandler OnStateChanged;
 ```
-- **Description:** Triggered when the array’s state changes globally (e.g., multiple items updated, cleared, resized, or populated).
-- **Remarks:** See [StateChangedHandler](Delegates.md/#-statechangedhandler)
+- **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).
+
+#### `OnItemChanged`
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+  - `index` — index of the changed element.
+  - `value` — `T` the new value of the element.
 
 ---
 
@@ -70,22 +60,23 @@ public int Length { get; }
 
 #### `Count`
 ```csharp
-public int Count => Length;
+public int Count { get; }
 ```
-- **Description:** Returns the same value as `Length`.
+- **Description:** Gets the number of elements in the collection.
+- **Notes:** Implemented explicitly from `IReadOnlyCollection<T>`. Returns the same value as `Length`.
 
 ---
 
-## Indexers
+## Indexer
 
 #### `[int index]`
 ```csharp
 public T this[int index] { get; set; }
 ```
-- **Description:** Gets or sets the element at the specified index.  
-  Setting a value triggers `OnItemChanged` if the value changes.
-- **Parameters:** `index` — zero-based index.
+- **Description:** Gets or sets the element at the specified index.
+- **Parameters:** `index` — zero-based index of the element.
 - **Returns:** `T` — the element at the specified index.
+- **Remarks:** Setting a new value triggers the `OnItemChanged` event if the value changes.
 
 ---
 
@@ -95,111 +86,76 @@ public T this[int index] { get; set; }
 ```csharp
 public void Clear();
 ```
-- **Description:** Resets all elements to their default values.
-- **Remarks:**
-  - Triggers `OnItemChanged` only for elements that were not already default.
-  - Triggers `OnStateChanged` once at the end.
-- **Example of usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(1, 2, 3);
-  array.Clear(); // All elements set to 0, OnItemChanged fired for all
-  ```
-
-#### `CopyTo(T[], int)`
-```csharp
-public void CopyTo(T[] array, int arrayIndex)
-```
-- **Description:** Copies all elements from this reactive array to the specified destination array, starting at the given index in the destination array.
-- **Parameters:**
-  - `array` — The destination array to copy elements into.
-  - `arrayIndex` — The zero-based index in the destination array at which copying begins.
-- **Exceptions:**
-  - `ArgumentNullException` — Thrown if `array` is `null`.
-  - `ArgumentOutOfRangeException` — Thrown if `arrayIndex` is negative.
-  - `ArgumentException` — Thrown if the destination array does not have enough space to hold all elements starting at `arrayIndex`.
-- **Example of Usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
-  int[] target = new int[5];
-  array.CopyTo(target, 0); // target = [1, 2, 3, 4, 5]
-  ```
-- **Remarks:**
-  - This method ensures that all elements are copied safely to the destination array.
-  - Throws descriptive exceptions if parameters are invalid.
-
-
-#### `CopyTo(int, T[], int, int)`
-```csharp
-public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
-```
-- **Description:** Copies a range of elements from this reactive array to a destination array.
-- **Parameters:**
-  - `sourceIndex` — start index in this array.
-  - `destination` — the target array.
-  - `destinationIndex` — start index in the destination array.
-  - `length` — number of elements to copy.
-- **Exceptions:** `ArgumentNullException`, `ArgumentOutOfRangeException`, `ArgumentException`.
-- **Example of usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(1, 2, 3, 4, 5);
-  int[] target = new int[5];
-  array.CopyTo(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
-  ```
+- **Description:** Removes all elements from the array.
+- **Remarks:** Triggers the `OnStateChanged` event.
 
 #### `Populate(IEnumerable<T>)`
 ```csharp
 public void Populate(IEnumerable<T> newItems);
 ```
-- **Description:** Updates the array with new values.
-- **Parameters:** `newItems` — collection of new elements.
-- **Remarks:**
-  - Updates existing elements that differ, triggering `OnItemChanged`.
-  - Throws `ArgumentException` if collection size does not match array length.
-  - Clears remaining elements if fewer items, triggering `OnItemChanged` for removed elements.
-  - Always triggers `OnStateChanged` at the end.
+- **Description:** Updates the contents of the array with values from the specified collection.
+- **Parameters:** `newItems` — collection of new elements to populate the array with.
+- **Remarks:** Triggers the `OnStateChanged` event.
 
 #### `Fill(T)`
 ```csharp
 public void Fill(T value);
 ```
-- **Description:** Sets all elements to the specified value.
-- **Parameters:** `value` — value to assign.
-- **Remarks:**
-  - Triggers `OnItemChanged` for each changed element.
-  - Triggers `OnStateChanged` once at the end.
-- **Example of usage:**
-  
-  ```csharp
-  var array = new ReactiveArray<int>(3);
-  array.Fill(42); // All elements set to 42, events triggered
-  ```
+- **Description:** Sets all elements of the array to the specified value.
+- **Parameters:** `value` — the value to assign to each element.
+- **Remarks:** Triggers the `OnStateChanged` event.
 
 #### `Resize(int)`
 ```csharp
 public void Resize(int newSize);
 ```
-- **Description:** Changes the size of the array.
-- **Parameters:** `newSize` — new length (must be non-negative).
-- **Remarks:**
-  - Expands with default(T) if larger.
-  - Discards excess elements if smaller.
-  - Triggers `OnItemChanged` for all new or changed elements.
-  - Triggers `OnStateChanged` once at the end.
-- **Exceptions:** `ArgumentOutOfRangeException` if `newSize` is negative.
+- **Description:** Changes the size of the array to the specified length.
+- **Parameters:** `newSize` — new length of the array. Must be non-negative.
+- **Remarks:** Triggers the `OnStateChanged` event.
+
+#### `Contains(T)`
+```csharp
+public bool Contains(T item);
+```
+- **Description:** Determines whether the array contains a specific element.
+- **Parameter:** `item` — The object to locate in the array.
+- **Returns:** `true` if the item is found; otherwise, `false`.
+
+#### `IndexOf(T)`
+```csharp
+public int IndexOf(T item);
+```
+- **Description:** Returns the index of a specific item in the array.
+- **Parameter:** `item` — The object to locate in the array.
+- **Returns:** The index of the item if found; otherwise, `-1`.
+
+#### `CopyTo(T[] array, int arrayIndex)`
+```csharp
+public void CopyTo(T[] array, int arrayIndex)
+```
+- **Description:** Copies all items in the array to the specified array starting at the given index.
+- **Parameters:**
+  - `array` — The destination array.
+  - `arrayIndex` — The starting index in the array.
+
+#### `CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)`
+```csharp
+public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+```
+- **Description:** Copies a range of elements from this array to a destination array.
+- **Parameters:**
+  - `int sourceIndex` — starting index in this array.
+  - `T[] destination` — array to copy elements to.
+  - `int destinationIndex` — starting index in the destination array.
+  - `int length` — number of elements to copy.
+- **Remarks:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
 
 #### `GetEnumerator()`
 ```csharp
-public Enumerator GetEnumerator();
+public IEnumerator<T> GetEnumerator();
 ```
-- **Description:** Returns a struct-based enumerator for iterating over the elements of the reactive array.
-- **Returns:** `Enumerator` — a lightweight struct enumerator that implements `IEnumerator<T>` for this array.
-- **Remarks:**
-  - The returned enumerator is value-type, avoiding heap allocations during iteration.
-  - Use it in `foreach` loops or manually with `MoveNext()` and `Current`.
-  - Does **not** trigger any events; it only reads the current state of the array.
+- **Description:** Returns an enumerator that iterates through the collection.
+- **Remarks:** Inherited from `IEnumerable<T>`.
 
 #### `Dispose()`
 ```csharp
