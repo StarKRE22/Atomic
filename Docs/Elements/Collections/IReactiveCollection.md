@@ -1,6 +1,6 @@
 # 🧩 IReactiveCollection<T>
 
-`IReactiveCollection<T>` represents a **reactive collection** that not only provides notifications when items are added, removed, or when the overall state changes, but also allows **modification of the collection**. It extends [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md) and `ICollection<T>`.
+`IReactiveCollection<T>` represents a **reactive collection** that provides notifications when items are added, removed, or when the overall state changes. Allows **modification of the collection**. It extends [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md) and `ICollection<T>`.
 
 > [!NOTE]  
 > Use this interface when you need both **reactive notifications** and **write access** (add, remove, clear) to the collection.
