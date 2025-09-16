@@ -131,7 +131,7 @@ public void Add(T item);
   list.Add("apple");
   ```
 
-#### `AddRange(IEnumerable<T> items)`
+#### `AddRange(IEnumerable<T>)`
 ```csharp
 public void AddRange(IEnumerable<T> items);
 ```
