@@ -181,8 +181,7 @@ foreach (var item in destinationArray)
 }
 ```
 
-> [!NOTE]
-> Also, you can cast a read-only reactive list to a read-only reactive collection in order to subscribe to non-indexed addition and removal events. These events notify you whenever an item is added or removed, without providing the specific index of the change.
+Also, you can cast a read-only reactive list to a read-only reactive collection in order to subscribe to non-indexed addition and removal events. These events notify you whenever an item is added or removed, without providing the specific index of the change.
 
 ```csharp
 // Assume we have a read-only reactive list
