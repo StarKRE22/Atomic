@@ -7,10 +7,7 @@
 
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Constructors</h2>
-  </summary>
+## Constructors
 
 #### `Timer()`
 ```csharp
@@ -27,14 +24,9 @@ public Timer(float duration);
 - **Parameters:** `duration` — total duration of the timer in seconds.
 - **Remarks:** The timer is in `IDLE` state after construction and must be started with `Start()`.
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Events</h2>
-  </summary>
+## Events
 
 #### `event Action OnStarted`
 ```csharp
@@ -107,14 +99,9 @@ public event Action<TimerState> OnStateChanged;
 - **Description:** Raised when the timer’s internal state changes.
 - **Parameter:** [TimerState](TimerState.md) — new state (Idle, Playing, Paused, Completed).
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Properties</h2>
-  </summary>
+## Properties
 
 #### `TimerState CurrentState`
 ```csharp
@@ -144,14 +131,9 @@ public float Progress { get; set; }
 - **Description:** Gets or sets the normalized progress of the timer (0–1).
 - **Remarks:** Setting this property updates the current time and triggers `OnTimeChanged` and `OnProgressChanged`.
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Methods</h2>
-  </summary>
+## Methods
 
 #### `void Start()`
 ```csharp
@@ -272,14 +254,10 @@ public void Tick(float deltaTime);
 - **Description:** Advances the timer by a specified time increment.
 - **Parameter:** `deltaTime` — time in seconds.
 - **Remarks:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` as appropriate.
-</details>
 
 ---
 
-<details>
-  <summary>
-    <h2>🔻 Operators</h2>
-  </summary>
+## Operators
 
 #### `implicit operator Timer(float duration)`
 ```csharp
@@ -306,8 +284,6 @@ public static implicit operator Timer(int duration);
   ```csharp
   Timer timer = 3; // creates a Timer with duration = 3 seconds
   ```
-
-</details>
 
 ---
 
