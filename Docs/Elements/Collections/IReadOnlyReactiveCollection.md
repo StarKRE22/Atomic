@@ -11,14 +11,14 @@
 
 #### `OnStateChanged`
 ```csharp
-event Action OnStateChanged;
+public event Action OnStateChanged;
 ```
 - **Description:** Occurs when the overall state of the collection changes.
 - **Remarks:** This can happen due to bulk operations or significant modifications.
 
 #### `OnItemAdded`
 ```csharp
-event Action<T> OnItemAdded;
+public event Action<T> OnItemAdded;
 ```
 - **Description:** Occurs when a new item is added to the collection.
 - **Parameter:** `value` — the item that was added to the collection.
@@ -26,7 +26,7 @@ event Action<T> OnItemAdded;
 
 #### `OnItemRemoved`
 ```csharp
-event Action<T> OnItemRemoved;
+public event Action<T> OnItemRemoved;
 ```
 - **Description:** Occurs when an existing item is removed from the collection.
 - **Parameter:** `value` — the item that was removed from the collection.
@@ -53,13 +53,6 @@ public IEnumerator<T> GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Returns:** An `IEnumerator<T>` for iterating over the collection’s elements.
-
-#### `IEnumerable.GetEnumerator()`
-```csharp
-System.Collections.IEnumerator IEnumerable.GetEnumerator();
-```
-- **Description:** Returns a non-generic enumerator for iterating through the collection.
-- **Returns:** An `IEnumerator` for iterating over the elements.
 
 ---
 
