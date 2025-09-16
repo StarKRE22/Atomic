@@ -101,13 +101,6 @@ public IEnumerator<T> GetEnumerator();
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
 
-#### `GetEnumerator()`
-```csharp
-public IEnumerator GetEnumerator();
-```
-- **Description:** Returns an enumerator that iterates through the collection.
-- **Remarks:** Non-generic version, inherited from `IEnumerable`.
-
 ---
 
 ## 🗂 Example of Usage

@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,31 +183,7 @@
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
       <workItem from="1758016683531" duration="12669000" />
-      <workItem from="1758035034709" duration="5875000" />
-    </task>
-    <task id="LOCAL-00262" summary="FloatMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1757757525913</created>
-      <option name="number" value="00262" />
-      <option name="presentableId" value="LOCAL-00262" />
-      <option name="project" value="LOCAL" />
-      <updated>1757757525913</updated>
-    </task>
-    <task id="LOCAL-00263" summary="Сделал FloatSumExpression.md">
-      <option name="closed" value="true" />
-      <created>1757825404048</created>
-      <option name="number" value="00263" />
-      <option name="presentableId" value="LOCAL-00263" />
-      <option name="project" value="LOCAL" />
-      <updated>1757825404049</updated>
-    </task>
-    <task id="LOCAL-00264" summary="Пилим Inline Expression">
-      <option name="closed" value="true" />
-      <created>1757826008350</created>
-      <option name="number" value="00264" />
-      <option name="presentableId" value="LOCAL-00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1757826008350</updated>
+      <workItem from="1758035034709" duration="6351000" />
     </task>
     <task id="LOCAL-00265" summary="Пилим InlineExpression.md">
       <option name="closed" value="true" />
@@ -578,7 +553,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758040429255</updated>
     </task>
-    <option name="localTasksCounter" value="311" />
+    <task id="LOCAL-00311" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1758040993770</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1758040993770</updated>
+    </task>
+    <task id="LOCAL-00312" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758041088245</created>
+      <option name="number" value="00312" />
+      <option name="presentableId" value="LOCAL-00312" />
+      <option name="project" value="LOCAL" />
+      <updated>1758041088245</updated>
+    </task>
+    <task id="LOCAL-00313" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758041106667</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1758041106667</updated>
+    </task>
+    <option name="localTasksCounter" value="314" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +604,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FloatMulExpression.md" />
     <MESSAGE value="Сделал FloatSumExpression.md" />
     <MESSAGE value="Пилим Inline Expression" />
     <MESSAGE value="Пилим InlineExpression.md" />
@@ -629,6 +627,7 @@
     <MESSAGE value="Сделал IReadOnlyReactiveDictionary.md, IReactiveDictionary.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал IReadOnlyReactiveCollection.md" />
+    <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
