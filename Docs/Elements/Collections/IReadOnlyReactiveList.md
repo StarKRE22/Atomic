@@ -39,14 +39,14 @@ public event Action<int, T> OnItemRemoved;
 
 #### `Length`
 ```csharp
-int Length { get; }
+public int Length { get; }
 ```
 - **Description:** Gets the number of elements in the list.
 - **Remarks:** Implemented from [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md); usually returns the same value as `Count`.
 
 #### `Count`
-```
-int Count { get; }
+```csharp
+public int Count { get; }
 ```
 - **Description:** Gets the number of elements in the collection.
 - **Remarks:** Implemented from [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md); returns the total number of items.
