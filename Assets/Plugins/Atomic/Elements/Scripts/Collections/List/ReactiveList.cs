@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -293,11 +292,14 @@ namespace Atomic.Elements
             return -1;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IReadOnlyReactiveList{T}" />
         public void CopyTo(T[] array, int arrayIndex = 0) =>
             Array.Copy(this.items, 0, array, arrayIndex, this.count);
 
-
+        /// <inheritdoc cref="IReadOnlyReactiveList{T}" />
+        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length) => 
+            Array.Copy(this.items, sourceIndex, destination, destinationIndex, length);
+        
         /// <summary>
         /// Updates the contents of the list with the values from the specified <paramref name="newItems"/> collection.
         /// </summary>
