@@ -1,4 +1,4 @@
-# 🧩 ReactiveLinkedList<T>
+# 🧩 ReactiveLinkedList&lt;T&gt;
 
 `ReactiveLinkedList<T>` represents a **reactive linked list** that notifies subscribers about changes to its elements. It supports fast insertions at head and tail, maintains a free-list for removed nodes, and implements [IReactiveList<T>](IReactiveList.md) and `IDisposable`.
 
