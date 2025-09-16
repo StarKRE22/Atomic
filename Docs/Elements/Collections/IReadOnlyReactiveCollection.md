@@ -1,7 +1,6 @@
 # 🧩 IReadOnlyReactiveCollection&lt;T&gt;
 
-`IReadOnlyReactiveCollection<T>` represents a **read-only reactive collection** that provides notifications when items are added, removed, or when the overall state changes.  
-It extends `IReadOnlyCollection<T>`, `IEnumerable<T>`, and `IEnumerable`.
+`IReadOnlyReactiveCollection<T>` represents a **read-only reactive collection** that provides notifications when items are added, removed, or when the overall state changes. It extends `IReadOnlyCollection<T>`, `IEnumerable<T>`, and `IEnumerable`.
 
 > [!NOTE]  
 > Use this interface when you need **read-only access** to a collection but still require **reactive notifications** on changes.
