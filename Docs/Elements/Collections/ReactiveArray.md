@@ -215,6 +215,4 @@ The performance comparison below was measured on a **MacBook with Apple M1** and
 | For       | 0.70              | 0.70                      |
 | Clear     | 0.40              | 41.50                     |
 
-Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations. It is well-suited for scenarios where element change notifications are needed.
-
-However, **iterating** with `foreach` or **writing** to an element is **noticeably** **slower** due to event invocations.  
+Thus, `ReactiveArray` performs almost as fast as a regular array for reading operations. It is well-suited for scenarios where element change notifications are needed. However, **iterating** with `foreach` or **writing** to an element is **noticeably** **slower** due to event invocations.  
