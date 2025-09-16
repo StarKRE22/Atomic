@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveCollection.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
@@ -184,31 +184,7 @@
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
       <workItem from="1758016683531" duration="12669000" />
-      <workItem from="1758035034709" duration="5075000" />
-    </task>
-    <task id="LOCAL-00259" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1757756532823</created>
-      <option name="number" value="00259" />
-      <option name="presentableId" value="LOCAL-00259" />
-      <option name="project" value="LOCAL" />
-      <updated>1757756532824</updated>
-    </task>
-    <task id="LOCAL-00260" summary="Пилим IntSumExpression.md">
-      <option name="closed" value="true" />
-      <created>1757756838045</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1757756838045</updated>
-    </task>
-    <task id="LOCAL-00261" summary="Пилим IntSumExpression.md">
-      <option name="closed" value="true" />
-      <created>1757756934128</created>
-      <option name="number" value="00261" />
-      <option name="presentableId" value="LOCAL-00261" />
-      <option name="project" value="LOCAL" />
-      <updated>1757756934128</updated>
+      <workItem from="1758035034709" duration="5875000" />
     </task>
     <task id="LOCAL-00262" summary="FloatMulExpression.md">
       <option name="closed" value="true" />
@@ -578,7 +554,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758039412230</updated>
     </task>
-    <option name="localTasksCounter" value="308" />
+    <task id="LOCAL-00308" summary="Сделал IReadOnlyReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1758040343322</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1758040343322</updated>
+    </task>
+    <task id="LOCAL-00309" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758040377129</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1758040377129</updated>
+    </task>
+    <task id="LOCAL-00310" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758040429255</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1758040429255</updated>
+    </task>
+    <option name="localTasksCounter" value="311" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,7 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим IntSumExpression.md" />
     <MESSAGE value="FloatMulExpression.md" />
     <MESSAGE value="Сделал FloatSumExpression.md" />
     <MESSAGE value="Пилим Inline Expression" />
@@ -627,10 +626,11 @@
     <MESSAGE value="Сделал IReadOnlyReactiveList.md" />
     <MESSAGE value="Сделал ReactiveList.md" />
     <MESSAGE value="Сделал ReactiveLinkedList.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал IReadOnlyReactiveDictionary.md, IReactiveDictionary.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Сделал IReadOnlyReactiveCollection.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -94,7 +94,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [FloatSumExpression](Expressions/FloatSumExpression.md) <!-- + -->
   - [InlineExpression](Expressions/InlineExpression.md) <!-- + -->
 - **Collections**
-  - [IReadOnlyReactiveCollection](Collections/IReadOnlyReactiveCollection.md) 
+  - [IReadOnlyReactiveCollection](Collections/IReadOnlyReactiveCollection.md) <!-- + -->
+  - [IReactiveCollection](Collections/IReactiveCollection.md) <!-- + -->
   - 
   - [IReadOnlyReactiveArray](Collections/IReadOnlyReactiveArray.md)
   - [IReactiveArray](Collections/IReactiveArray.md)
