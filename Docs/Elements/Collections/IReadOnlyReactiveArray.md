@@ -1,8 +1,6 @@
 # 🧩 IReadOnlyReactiveArray&lt;T&gt;
 
-`IReadOnlyReactiveArray<T>` represents a **read-only reactive array** that notifies subscribers about changes to its elements and global state.
-
-It extends `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, and `IEnumerable<T>`.
+`IReadOnlyReactiveArray<T>` represents a **read-only reactive array** that notifies subscribers about changes to its elements and global state. It extends `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, and `IEnumerable<T>`.
 
 > [!NOTE]  
 > This interface is ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled updates trigger events.
