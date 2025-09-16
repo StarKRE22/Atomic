@@ -26,7 +26,6 @@ public event Action OnStarted;
 ```
 - **Description:** Invoked when the timer starts running.
 - **Remarks:** Triggered whenever `Start()` is called and the timer begins counting.
-- **Parameters:** None.
 
 #### `event Action OnStopped`
 ```csharp
@@ -34,7 +33,6 @@ public event Action OnStopped;
 ```
 - **Description:** Invoked when the timer is stopped.
 - **Remarks:** Triggered whenever `Stop()` is called. The current time may be reset depending on implementation.
-- **Parameters:** None.
 
 #### `event Action OnPaused`
 ```csharp
@@ -42,7 +40,6 @@ public event Action OnPaused;
 ```
 - **Description:** Raised when the timer is paused.
 - **Remarks:** Triggered whenever `Pause()` is called. The timer stops progressing until `Resume()` is invoked.
-- **Parameters:** None.
 
 #### `event Action OnResumed`
 ```csharp
@@ -50,7 +47,6 @@ public event Action OnResumed;
 ```
 - **Description:** Raised when the timer resumes from a paused state.
 - **Remarks:** Triggered whenever `Resume()` is called. The timer continues counting from the paused time.
-- **Parameters:** None.
 
 #### `event Action OnCompleted`
 ```csharp
@@ -58,7 +54,6 @@ public event Action OnCompleted;
 ```
 - **Description:** Invoked when the timer finishes (remaining time reaches zero or completes its duration).
 - **Remarks:** Triggered once per completion. Can be used to notify gameplay logic that the timer ended.
-- **Parameters:** None.
 
 #### `event Action<float> OnTimeChanged`
 ```csharp
@@ -66,16 +61,14 @@ public event Action<float> OnTimeChanged;
 ```
 - **Description:** Invoked whenever the current time changes.
 - **Remarks:** Useful to track the countdown or elapsed time.
-- **Parameters:**
-    - `float` — the current time of the timer in seconds.
+- **Parameter:** `float` — the current time of the timer in seconds.
 
 #### `event Action<float> OnDurationChanged`
 ```csharp
 public event Action<float> OnDurationChanged;
 ```
 - **Description:** Invoked whenever the total duration changes.
-- **Parameters:**
-    - `float` — the new total duration in seconds.
+- **Parameter:** `float` — the new total duration in seconds.
 
 #### `event Action<float> OnProgressChanged`
 ```csharp
@@ -83,8 +76,7 @@ public event Action<float> OnProgressChanged;
 ```
 - **Description:** Raised when the normalized progress changes (0–1).
 - **Remarks:** Can be used to update UI or trigger game logic based on progress.
-- **Parameters:**
-    - `float` — the current progress, normalized between 0 and 1.
+- **Parameter:** `float` — the current progress, normalized between 0 and 1.
 
 #### `event Action<TimerState> OnStateChanged`
 ```csharp
@@ -109,8 +101,7 @@ public void Start();
 public void Start(float time);
 ```
 - **Description:** Starts the timer from a specific time.
-- **Parameters:**
-    - `time` — starting time in seconds.
+- **Parameter:** `time` — starting time in seconds.
 - **Remarks:** Triggers `OnStarted` event.
 
 #### `void Stop()`
@@ -175,8 +166,7 @@ public float GetTime();
 public void SetTime(float time);
 ```
 - **Description:** Sets the current timer value.
-- **Parameters:**
-    - `time` — the new time in seconds.
+- **Parameter:** `time` — the new time in seconds.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged` if value changes.
 
 #### `float GetDuration()`
@@ -191,8 +181,7 @@ public float GetDuration();
 public void SetDuration(float duration);
 ```
 - **Description:** Sets a new total duration.
-- **Parameters:**
-    - `duration` — total duration in seconds.
+- **Parameter:** `duration` — total duration in seconds.
 - **Remarks:** Triggers `OnDurationChanged` and `OnProgressChanged`.
 
 #### `float GetProgress()`
@@ -207,8 +196,7 @@ public float GetProgress();
 public void SetProgress(float progress);
 ```
 - **Description:** Sets the normalized progress and updates the current time accordingly.
-- **Parameters:**
-    - `progress` — normalized value between `0` and `1`.
+- **Parameter:** `progress` — normalized value between `0` and `1`.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
 #### `TimerState GetState()`
@@ -224,13 +212,12 @@ public TimerState GetState();
 public void Tick(float deltaTime);
 ```
 - **Description:** Updates the timer by a specified time increment.
-- **Parameters:**
-    - `deltaTime` — time in seconds to advance the timer.
+- **Parameter:** `deltaTime` — time in seconds to advance the timer.
 - **Remarks:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` as appropriate.
 
 ---
 
-## 🗂 Example Usage
+## 🗂 Example of Usage
 ```csharp
 // Create a timer of 30 seconds
 ITimer timer = new Timer(30f);

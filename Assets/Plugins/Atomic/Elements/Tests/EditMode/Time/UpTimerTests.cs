@@ -3,13 +3,13 @@ using NUnit.Framework;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class TimerTests
+    public sealed class UpTimerTests
     {
         [Test]
         public void Instantiate()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
 
             //Assert:
             Assert.AreEqual(5, timer.GetDuration());
@@ -20,7 +20,7 @@ namespace Atomic.Elements
         public void Start()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool wasEvent = false;
             TimerState stateChanged = default;
 
@@ -41,7 +41,7 @@ namespace Atomic.Elements
         public void StartWithTime()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool wasEvent = false;
 
             //Act:
@@ -58,7 +58,7 @@ namespace Atomic.Elements
         public void Play()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool wasEvent = false;
 
             //Act:
@@ -74,7 +74,7 @@ namespace Atomic.Elements
         [Test]
         public void WhenGetProgressOfNotStartedThenReturnZero()
         {
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             Assert.AreEqual(0, timer.GetProgress());
         }
 
@@ -82,7 +82,7 @@ namespace Atomic.Elements
         public void WhenTickNotStartedThenNothing()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool wasTimeEvent = false;
             bool wasProgressEvent = false;
 
@@ -104,7 +104,7 @@ namespace Atomic.Elements
         public void WhenTickThenProgressChanged()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             float progress = -1;
 
             //Act:
@@ -121,7 +121,7 @@ namespace Atomic.Elements
         public void WhenStartTimerFromEndedStateThenWillPlaying()
         {
             //Arrange:
-            Timer timer = new Timer(4);
+            UpTimer timer = new UpTimer(4);
             bool wasComplete = false;
             bool wasStarted = false;
 
@@ -153,7 +153,7 @@ namespace Atomic.Elements
         public void OnEnded()
         {
             //Arrange:
-            Timer timer = new Timer(4);
+            UpTimer timer = new UpTimer(4);
             bool wasComplete = false;
             TimerState stateChanged = default;
 
@@ -185,7 +185,7 @@ namespace Atomic.Elements
         public void Pause()
         {
             //Arrange:
-            Timer timer = new Timer(1);
+            UpTimer timer = new UpTimer(1);
             bool wasPause = false;
 
             //Act:
@@ -202,7 +202,7 @@ namespace Atomic.Elements
         public void WhenTickInPausedThenNothing()
         {
             //Arrange:
-            Timer timer = new Timer(0.8f);
+            UpTimer timer = new UpTimer(0.8f);
             bool progressChanged = false;
             bool timeChanged = false;
             bool completed = false;
@@ -235,7 +235,7 @@ namespace Atomic.Elements
         public void WhenPauseTimerThatNotStartedThenNothing()
         {
             //Arrange:
-            Timer timer = new Timer(0.8f);
+            UpTimer timer = new UpTimer(0.8f);
             bool wasPause = false;
 
             //Act:
@@ -251,7 +251,7 @@ namespace Atomic.Elements
         public void Resume()
         {
             //Arrange:
-            Timer timer = new Timer(1);
+            UpTimer timer = new UpTimer(1);
             bool wasResume = false;
 
             timer.OnResumed += () => wasResume = true;
@@ -274,7 +274,7 @@ namespace Atomic.Elements
         public void WhenResumeThatNotStartedThenNothing()
         {
             //Arrange:
-            Timer timer = new Timer(1);
+            UpTimer timer = new UpTimer(1);
             bool wasResume = false;
 
             //Act:
@@ -291,7 +291,7 @@ namespace Atomic.Elements
         public void WhenTickThenCurrentTimeChanged()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             float currentTime = -1;
 
             //Act:
@@ -308,7 +308,7 @@ namespace Atomic.Elements
         public void Stop()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool wasStop = false;
             timer.Start();
 
@@ -329,7 +329,7 @@ namespace Atomic.Elements
         public void Restart()
         {
             //Arrange:
-            Timer timer = new Timer(10);
+            UpTimer timer = new UpTimer(10);
 
             bool canceled = false;
             bool started = false;
@@ -362,7 +362,7 @@ namespace Atomic.Elements
         public void ForceStartWithTime()
         {
             //Arrange:
-            Timer timer = new Timer(10);
+            UpTimer timer = new UpTimer(10);
 
             bool canceled = false;
             bool started = false;
@@ -395,7 +395,7 @@ namespace Atomic.Elements
         public void WhenStopNotStartedTimerThenNoEvent()
         {
             //Arrange:
-            Timer timer = new Timer(10);
+            UpTimer timer = new UpTimer(10);
             bool wasEvent = false;
 
             //Act:
@@ -410,7 +410,7 @@ namespace Atomic.Elements
         public void WhenResumeProductionThatIsNotPausedThenNothing()
         {
             //Arrange:
-            Timer timer = new Timer(10);
+            UpTimer timer = new UpTimer(10);
             bool wasResume = false;
             timer.OnResumed += () => wasResume = true;
             timer.Start();
@@ -429,7 +429,7 @@ namespace Atomic.Elements
         public void WhenStopPausedTimerThenWillIdle()
         {
             //Arrange:
-            Timer timer = new Timer(5);
+            UpTimer timer = new UpTimer(5);
             bool canceled = false;
 
             timer.Start();

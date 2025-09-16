@@ -15,7 +15,7 @@ namespace Atomic.Elements
     /// while broadcasting progress and state changes.
     /// </summary>
     [Serializable]
-    public class Countdown : ICountdown
+    public class DownTimer : ITimer
     {
         /// <summary>Raised when the countdown starts.</summary>
         public event Action OnStarted;
@@ -33,7 +33,7 @@ namespace Atomic.Elements
         public event Action OnCompleted;
 
         /// <summary>Raised when the state changes.</summary>
-        public event Action<CountdownState> OnStateChanged;
+        public event Action<TimerState> OnStateChanged;
 
         /// <summary>Raised when the current time changes.</summary>
         public event Action<float> OnTimeChanged;
@@ -48,7 +48,7 @@ namespace Atomic.Elements
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
-        public CountdownState State => this.state;
+        public TimerState State => this.state;
 
         /// <summary>Gets or sets the total duration of the countdown.</summary>
 #if ODIN_INSPECTOR
@@ -90,33 +90,57 @@ namespace Atomic.Elements
 
         private float time;
 
-        private CountdownState state;
+        private TimerState state;
 
-        /// <summary>Initializes a new instance of <see cref="Countdown"/>.</summary>
-        public Countdown()
+        /// <summary>Initializes a new instance of <see cref="DownTimer"/>.</summary>
+        public DownTimer()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Countdown"/> with a specific duration and optional looping.
+        /// Initializes a new instance of <see cref="DownTimer"/> with a specific duration and optional looping.
         /// </summary>
         /// <param name="duration">The countdown duration.</param>
-        public Countdown(float duration) => this.duration = duration;
+        public DownTimer(float duration) => this.duration = duration;
+        
+        /// <summary>
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="DownTimer"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="DownTimer"/>.</param>
+        /// <returns>A new <see cref="DownTimer"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// DownTimer timer = 5f; // creates a countdown timer with duration = 5 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator DownTimer(float duration) => new(duration);
+
+        /// <summary>
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="DownTimer"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="DownTimer"/>.</param>
+        /// <returns>A new <see cref="DownTimer"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// DownTimer timer = 3; // creates a countdown timer with duration = 3 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator DownTimer(int duration) => new(duration);
 
         /// <summary>Gets the current internal state.</summary>
-        public CountdownState GetState() => this.state;
+        public TimerState GetState() => this.state;
 
         /// <summary>Returns true if the countdown has not started yet.</summary>
-        public bool IsIdle() => this.state == CountdownState.IDLE;
+        public bool IsIdle() => this.state == TimerState.IDLE;
 
         /// <summary>Returns true if the countdown is running.</summary>
-        public bool IsStarted() => this.state == CountdownState.PLAYING;
+        public bool IsStarted() => this.state == TimerState.PLAYING;
 
         /// <summary>Returns true if the countdown is paused.</summary>
-        public bool IsPaused() => this.state == CountdownState.PAUSED;
+        public bool IsPaused() => this.state == TimerState.PAUSED;
 
         /// <summary>Returns true if the countdown has finished.</summary>
-        public bool IsCompleted() => this.state == CountdownState.COMPLETED;
+        public bool IsCompleted() => this.state == TimerState.COMPLETED;
 
         /// <summary>Gets the total duration.</summary>
         public float GetDuration() => this.duration;
@@ -131,12 +155,12 @@ namespace Atomic.Elements
 #endif
         public void Start(float time)
         {
-            if (this.state is not (CountdownState.IDLE or CountdownState.COMPLETED))
+            if (this.state is not (TimerState.IDLE or TimerState.COMPLETED))
                 return;
 
             this.SetTime(time);
-            this.state = CountdownState.PLAYING;
-            this.OnStateChanged?.Invoke(CountdownState.PLAYING);
+            this.state = TimerState.PLAYING;
+            this.OnStateChanged?.Invoke(TimerState.PLAYING);
             this.OnStarted?.Invoke();
         }
 
@@ -146,11 +170,11 @@ namespace Atomic.Elements
 #endif
         public void Pause()
         {
-            if (this.state != CountdownState.PLAYING)
+            if (this.state != TimerState.PLAYING)
                 return;
 
-            this.state = CountdownState.PAUSED;
-            this.OnStateChanged?.Invoke(CountdownState.PAUSED);
+            this.state = TimerState.PAUSED;
+            this.OnStateChanged?.Invoke(TimerState.PAUSED);
             this.OnPaused?.Invoke();
         }
 
@@ -160,11 +184,11 @@ namespace Atomic.Elements
 #endif
         public void Resume()
         {
-            if (this.state != CountdownState.PAUSED)
+            if (this.state != TimerState.PAUSED)
                 return;
 
-            this.state = CountdownState.PLAYING;
-            this.OnStateChanged?.Invoke(CountdownState.PLAYING);
+            this.state = TimerState.PLAYING;
+            this.OnStateChanged?.Invoke(TimerState.PLAYING);
             this.OnResumed?.Invoke();
         }
 
@@ -174,12 +198,12 @@ namespace Atomic.Elements
 #endif
         public void Stop()
         {
-            if (this.state == CountdownState.IDLE)
+            if (this.state == TimerState.IDLE)
                 return;
 
             this.time = 0;
-            this.state = CountdownState.IDLE;
-            this.OnStateChanged?.Invoke(CountdownState.IDLE);
+            this.state = TimerState.IDLE;
+            this.OnStateChanged?.Invoke(TimerState.IDLE);
             this.OnStopped?.Invoke();
         }
 
@@ -189,7 +213,7 @@ namespace Atomic.Elements
 #endif
         public void Tick(float deltaTime)
         {
-            if (this.state != CountdownState.PLAYING)
+            if (this.state != TimerState.PLAYING)
                 return;
 
             this.time = Math.Max(0, this.time - deltaTime);
@@ -206,8 +230,8 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Complete()
         {
-            this.state = CountdownState.COMPLETED;
-            this.OnStateChanged?.Invoke(CountdownState.COMPLETED);
+            this.state = TimerState.COMPLETED;
+            this.OnStateChanged?.Invoke(TimerState.COMPLETED);
             this.OnCompleted?.Invoke();
         }
 
@@ -216,8 +240,8 @@ namespace Atomic.Elements
         {
             return this.state switch
             {
-                CountdownState.PLAYING or CountdownState.PAUSED => 1 - this.time / this.duration,
-                CountdownState.COMPLETED => 1,
+                TimerState.PLAYING or TimerState.PAUSED => 1 - this.time / this.duration,
+                TimerState.COMPLETED => 1,
                 _ => 0
             };
         }

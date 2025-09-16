@@ -101,6 +101,30 @@ namespace Atomic.Elements
         /// <param name="duration">The duration of each cycle.</param>
         public Period(float duration) => this.duration = duration;
 
+        /// <summary>
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="Period"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Period"/>.</param>
+        /// <returns>A new <see cref="Period"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Period timer = 5f; // creates a Period with duration = 5 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Period(float duration) => new(duration);
+
+        /// <summary>
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="Period"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Period"/>.</param>
+        /// <returns>A new <see cref="Period"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Period timer = 3; // creates a Period with duration = 3 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Period(int duration) => new(duration);
+        
         /// <summary>Returns the current state of the timer.</summary>
         public PeriodState GetState() => this.state;
 

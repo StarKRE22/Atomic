@@ -2,27 +2,27 @@
 
 `TimerState` represents the current state of a timer. It is used by `ITimer` (or similar timer implementations) to track the lifecycle of a timer and respond to state changes.
 
-## Enum Values
+## Enum
 
-### `IDLE` = 0
+### `IDLE`
 - **Description:** The timer is not running and has not been started.
 - **Usage:** Initial state of a timer before `Start()` is called.
 
-### `PLAYING` = 1
+### `PLAYING`
 - **Description:** The timer is currently counting down or running.
 - **Usage:** Indicates that the timer is active and `Tick()` is advancing its time.
 
-### `PAUSED` = 2
+### `PAUSED`
 - **Description:** The timer is paused and can be resumed.
 - **Usage:** Timer is temporarily halted by `Pause()` and can continue counting when `Resume()` is called.
 
-### `COMPLETED` = 3
+### `COMPLETED`
 - **Description:** The timer has finished counting down and expired.
 - **Usage:** Indicates that the timer has reached its end, and `OnCompleted` is typically triggered. To restart, the timer should be started again.
 
 ---
 
-## 🗂 Example Usage
+## 🗂 Example of Usage
 The following example demonstrates how the `TimerState` changes during the timer lifecycle, and how to respond using `OnStateChanged`.
 
 ```csharp

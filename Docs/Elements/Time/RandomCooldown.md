@@ -1,22 +1,153 @@
+# 🧩 RandomCooldown
 
-## RandomCooldown
-`RandomCooldown` is a variant of `Cooldown` where the duration is chosen randomly
-within the range `[minDuration, maxDuration]`.
-### Constructor
-- `RandomCooldown(float minDuration, float maxDuration)` – creates a cooldown with random duration in the given range.
-### Behavior
-- On `ResetTime()`, the duration is randomized again within `[minDuration, maxDuration]`.
-- Supports all methods and events from `ICooldown`.
-### Example of Usage
+`RandomCooldown` is an implementation of [ICooldown](ICooldown.md) that represents a **cooldown timer with a random duration**.  
+
+Each time the cooldown is reset (`ResetTime`), it is assigned a new random value between a specified minimum and maximum duration.
+
+> [!IMPORTANT]  
+> Useful for game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event timers, or procedural ability cooldowns.
+
+---
+
+## Constructors
+
+#### `RandomCooldown(float minDuration, float maxDuration)`
 ```csharp
-var randomCooldown = new RandomCooldown(3f, 7f);
+public RandomCooldown(float minDuration, float maxDuration);
+```
+- **Description:** Initializes a new instance of `RandomCooldown` with a specified range of durations.
+- **Parameters:**
+    - `minDuration` — minimum cooldown duration in seconds.
+    - `maxDuration` — maximum cooldown duration in seconds.
+- **Remarks:** The initial cooldown duration is randomly chosen within the given range.
 
-randomCooldown.OnCompleted += () => Console.WriteLine("Random cooldown expired!");
+---
 
-randomCooldown.ResetTime();
-while (!randomCooldown.IsCompleted())
+## Events
+
+#### `event Action<float> OnTimeChanged`
+```csharp
+public event Action<float> OnTimeChanged;
+```
+- **Description:** Invoked whenever the remaining time of the cooldown changes.
+- **Parameters:** `float` — the new remaining time in seconds.
+- **Notes:** Triggered whenever `SetTime`, `Tick`, or `SetProgress` changes the current time.
+
+#### `event Action<float> OnDurationChanged`
+```csharp
+public event Action<float> OnDurationChanged;
+```
+- **Description:** Invoked whenever the total duration of the cooldown changes.
+- **Parameters:** `float` — the new total duration in seconds.
+- **Notes:** Triggered when `SetDuration` is called or when `ResetTime` sets a new random duration.
+
+#### `event Action<float> OnProgressChanged`
+```csharp
+public event Action<float> OnProgressChanged;
+```
+- **Description:** Raised when the normalized progress of the cooldown changes.
+- **Parameters:** `float` — current progress between 0 and 1.
+- **Notes:** Progress is updated whenever time or duration changes, e.g., via `Tick`, `SetTime`, `SetDuration`, or `SetProgress`.
+
+#### `event Action OnCompleted`
+```csharp
+public event Action OnCompleted;
+```
+- **Description:** Invoked when the cooldown has finished (remaining time reaches zero).
+- **Notes:** Can be used to trigger actions like enabling abilities or firing events once the cooldown expires.
+
+---
+
+## Methods
+
+#### `float GetTime()`
+```csharp
+public float GetTime();
+```
+- **Description:** Returns the current remaining time of the cooldown.
+- **Returns:** `float` — remaining time in seconds.
+
+#### `void SetTime(float time)`
+```csharp
+public void SetTime(float time);
+```
+- **Description:** Sets the current remaining time.
+- **Parameters:** `float time` — the new time to set, clamped between `0` and the current duration.
+- **Notes:** Triggers `OnTimeChanged` and `OnProgressChanged` if the value changes.
+
+#### `void ResetTime()`
+```csharp
+public void ResetTime();
+```
+- **Description:** Resets the cooldown to a new random duration between `minDuration` and `maxDuration`.
+- **Notes:** Triggers `OnDurationChanged`, `OnTimeChanged`, `OnProgressChanged`, and may trigger `OnCompleted`.
+
+#### `float GetDuration()`
+```csharp
+public float GetDuration();
+```
+- **Description:** Returns the total duration of the current cooldown.
+- **Returns:** `float` — current duration in seconds.
+
+#### `void SetDuration(float duration)`
+```csharp
+public void SetDuration(float duration);
+```
+- **Description:** Sets a specific duration for the cooldown.
+- **Parameters:** `float duration` — new duration value.
+- **Notes:** Triggers `OnDurationChanged` and `OnProgressChanged`.
+
+#### `float GetProgress()`
+```csharp
+public float GetProgress();
+```
+- **Description:** Returns the normalized progress of the cooldown.
+- **Returns:** `float` — progress value between `0` and `1`.
+
+#### `void SetProgress(float progress)`
+```csharp
+public void SetProgress(float progress);
+```
+- **Description:** Sets the normalized progress of the cooldown, updating remaining time accordingly.
+- **Parameters:** `float progress` — new progress value (0–1).
+- **Notes:** Triggers `OnTimeChanged` and `OnProgressChanged`.
+
+#### `bool IsCompleted()`
+```csharp
+public bool IsCompleted();
+```
+- **Description:** Returns whether the cooldown has finished.
+- **Returns:** `true` if remaining time is zero; otherwise `false`.
+
+#### `void Tick(float deltaTime)`
+```csharp
+public void Tick(float deltaTime);
+```
+- **Description:** Advances the cooldown by a given time increment.
+- **Parameters:** `float deltaTime` — time to subtract from the current remaining time.
+- **Notes:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` if the cooldown expires.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a random cooldown between 2 and 5 seconds
+ICooldown cooldown = new RandomCooldown(2f, 5f);
+
+cooldown.OnTimeChanged += t => Console.WriteLine($"Time: {t:F2}s");
+cooldown.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
+cooldown.OnCompleted += () => Console.WriteLine("Cooldown complete!");
+
+// Simulate ticking
+float deltaTime = 1f;
+while (!cooldown.IsCompleted())
 {
-    randomCooldown.Tick(1f);
-    Console.WriteLine($"Time left: {randomCooldown.GetTime()}s");
+    cooldown.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
 }
+
+// Reset to new random duration
+cooldown.ResetTime();
+Console.WriteLine($"Cooldown reset. Duration: {cooldown.GetDuration():F2}s");
 ```

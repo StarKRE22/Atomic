@@ -16,7 +16,7 @@ namespace Atomic.Elements
     /// Provides methods for controlling playback and raises events on changes.
     /// </summary>
     [Serializable]
-    public class Timer : ITimer
+    public class UpTimer : ITimer
     {
         /// <inheritdoc/>
         public event Action OnStarted;
@@ -101,41 +101,41 @@ namespace Atomic.Elements
         private TimerState currentState;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Timer"/> class.
+        /// Initializes a new instance of the <see cref="UpTimer"/> class.
         /// </summary>
-        public Timer()
+        public UpTimer()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Timer"/> class with a given duration.
+        /// Initializes a new instance of the <see cref="UpTimer"/> class with a given duration.
         /// </summary>
         /// <param name="duration">The duration of the timer.</param>
-        public Timer(float duration) => this.duration = duration;
+        public UpTimer(float duration) => this.duration = duration;
 
         /// <summary>
-        /// Implicitly converts a <see cref="float"/> value to a <see cref="Timer"/> instance.
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="UpTimer"/> instance.
         /// </summary>
-        /// <param name="duration">The duration in seconds for the new <see cref="Timer"/>.</param>
-        /// <returns>A new <see cref="Timer"/> initialized with the specified duration.</returns>
+        /// <param name="duration">The duration in seconds for the new <see cref="UpTimer"/>.</param>
+        /// <returns>A new <see cref="UpTimer"/> initialized with the specified duration.</returns>
         /// <example>
         /// <code>
-        /// Timer timer = 5f; // creates a Timer with duration = 5 seconds
+        /// UpTimer timer = 5f; // creates a count up timer with duration = 5 seconds
         /// </code>
         /// </example>
-        public static implicit operator Timer(float duration) => new(duration);
+        public static implicit operator UpTimer(float duration) => new(duration);
 
         /// <summary>
-        /// Implicitly converts an <see cref="int"/> value to a <see cref="Timer"/> instance.
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="UpTimer"/> instance.
         /// </summary>
-        /// <param name="duration">The duration in seconds for the new <see cref="Timer"/>.</param>
-        /// <returns>A new <see cref="Timer"/> initialized with the specified duration.</returns>
+        /// <param name="duration">The duration in seconds for the new <see cref="UpTimer"/>.</param>
+        /// <returns>A new <see cref="UpTimer"/> initialized with the specified duration.</returns>
         /// <example>
         /// <code>
-        /// Timer timer = 3; // creates a Timer with duration = 3 seconds
+        /// UpTimer timer = 3; // creates a count up timer with duration = 3 seconds
         /// </code>
         /// </example>
-        public static implicit operator Timer(int duration) => new(duration);
+        public static implicit operator UpTimer(int duration) => new(duration);
         
         /// <summary>
         /// Gets the current state of the timer.

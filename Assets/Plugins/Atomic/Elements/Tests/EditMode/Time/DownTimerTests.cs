@@ -3,13 +3,13 @@ using NUnit.Framework;
 namespace Atomic.Elements
 {
     [TestFixture]
-    public sealed class CountdownTests
+    public sealed class DownTimerTests
     {
         [Test]
         public void Instantiate()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
 
             //Assert:
             Assert.AreEqual(5, countdown.GetDuration());
@@ -20,9 +20,9 @@ namespace Atomic.Elements
         public void Start()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool wasEvent = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
             
             //Act:
             countdown.OnStarted += () => wasEvent = true;
@@ -31,8 +31,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasEvent);
-            Assert.AreEqual(CountdownState.PLAYING, stateChanged);
-            Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, countdown.GetState());
             Assert.AreEqual(5, countdown.GetTime());
             Assert.IsTrue(countdown.IsStarted());
         }
@@ -41,9 +41,9 @@ namespace Atomic.Elements
         public void Play()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool wasEvent = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             countdown.OnStarted += () => wasEvent = true;
             countdown.OnStateChanged += s => stateChanged = s;
@@ -52,8 +52,8 @@ namespace Atomic.Elements
             countdown.Start(2);
 
             //Assert:
-            Assert.AreEqual(CountdownState.PLAYING, stateChanged);
-            Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, countdown.GetState());
             Assert.AreEqual(2, countdown.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(countdown.IsStarted());
@@ -71,9 +71,9 @@ namespace Atomic.Elements
         public void StartWithTime()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool wasEvent = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             //Act:
             countdown.OnStarted += () => wasEvent = true;
@@ -81,8 +81,8 @@ namespace Atomic.Elements
             countdown.Start(3);
 
             //Assert:
-            Assert.AreEqual(CountdownState.PLAYING, stateChanged);
-            Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, countdown.GetState());
             Assert.AreEqual(3, countdown.GetTime());
             Assert.IsTrue(wasEvent);
             Assert.IsTrue(countdown.IsStarted());
@@ -91,7 +91,7 @@ namespace Atomic.Elements
         [Test]
         public void WhenGetProgressOfNotStartedThenReturnZero()
         {
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             Assert.AreEqual(0, countdown.GetProgress());
         }
 
@@ -99,7 +99,7 @@ namespace Atomic.Elements
         public void WhenTickNotStartedThenNothing()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool wasTimeEvent = false;
             bool wasProgressEvent = false;
 
@@ -121,7 +121,7 @@ namespace Atomic.Elements
         public void WhenTickThenProgressChanged()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             float progress = -1;
 
             //Act:
@@ -138,10 +138,10 @@ namespace Atomic.Elements
         public void WhenStartCountdownFromEndedStateThenWillPlaying()
         {
             //Arrange:
-            Countdown countdown = new Countdown(4);
+            DownTimer countdown = new DownTimer(4);
             bool wasComplete = false;
             bool wasStarted = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             countdown.Start();
             countdown.OnCompleted += () => wasComplete = true;
@@ -154,7 +154,7 @@ namespace Atomic.Elements
             //Pre-assert:
             Assert.IsTrue(wasComplete);
             Assert.IsTrue(countdown.IsCompleted());
-            Assert.AreEqual(CountdownState.COMPLETED, countdown.GetState());
+            Assert.AreEqual(TimerState.COMPLETED, countdown.GetState());
 
             //Act:
             countdown.OnStateChanged += s => stateChanged = s;
@@ -163,8 +163,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasStarted);
-            Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
-            Assert.AreEqual(CountdownState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, countdown.GetState());
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
 
             Assert.IsTrue(countdown.IsStarted());
             Assert.IsFalse(countdown.IsCompleted());
@@ -175,9 +175,9 @@ namespace Atomic.Elements
         public void OnEnded()
         {
             //Arrange:
-            Countdown countdown = new Countdown(4);
+            DownTimer countdown = new DownTimer(4);
             bool wasComplete = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
                 
             //Act:
             countdown.Start();
@@ -192,8 +192,8 @@ namespace Atomic.Elements
             //Assert:
             Assert.IsTrue(wasComplete);
 
-            Assert.AreEqual(CountdownState.COMPLETED, stateChanged);
-            Assert.AreEqual(CountdownState.COMPLETED, countdown.GetState());
+            Assert.AreEqual(TimerState.COMPLETED, stateChanged);
+            Assert.AreEqual(TimerState.COMPLETED, countdown.GetState());
             
             Assert.AreEqual(1, countdown.GetProgress());
             Assert.AreEqual(0, countdown.GetTime());
@@ -208,9 +208,9 @@ namespace Atomic.Elements
         public void Pause()
         {
             //Arrange:
-            Countdown countdown = new Countdown(1);
+            DownTimer countdown = new DownTimer(1);
             bool wasPause = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             countdown.Start();
 
@@ -221,8 +221,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasPause);
-            Assert.AreEqual(CountdownState.PAUSED, stateChanged);
-            Assert.AreEqual(CountdownState.PAUSED, countdown.GetState());
+            Assert.AreEqual(TimerState.PAUSED, stateChanged);
+            Assert.AreEqual(TimerState.PAUSED, countdown.GetState());
             Assert.IsTrue(countdown.IsPaused());
         }
 
@@ -230,7 +230,7 @@ namespace Atomic.Elements
         public void WhenTickInPausedThenNothing()
         {
             //Arrange:
-            Countdown countdown = new Countdown(0.8f);
+            DownTimer countdown = new DownTimer(0.8f);
             bool progressChanged = false;
             bool timeChanged = false;
             bool completed = false;
@@ -263,7 +263,7 @@ namespace Atomic.Elements
         public void WhenPauseCountdownThatNotStartedThenNothing()
         {
             //Arrange:
-            Countdown countdown = new Countdown(0.8f);
+            DownTimer countdown = new DownTimer(0.8f);
             bool wasPause = false;
 
             //Act:
@@ -279,9 +279,9 @@ namespace Atomic.Elements
         public void Resume()
         {
             //Arrange:
-            Countdown countdown = new Countdown(1);
+            DownTimer countdown = new DownTimer(1);
             bool wasResume = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             countdown.Start();
             countdown.Pause();
@@ -296,8 +296,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasResume);
-            Assert.AreEqual(CountdownState.PLAYING, stateChanged);
-            Assert.AreEqual(CountdownState.PLAYING, countdown.GetState());
+            Assert.AreEqual(TimerState.PLAYING, stateChanged);
+            Assert.AreEqual(TimerState.PLAYING, countdown.GetState());
 
             Assert.IsTrue(!countdown.IsPaused());
             Assert.IsTrue(countdown.IsStarted());
@@ -307,7 +307,7 @@ namespace Atomic.Elements
         public void WhenResumeThatNotStartedThenNothing()
         {
             //Arrange:
-            Countdown countdown = new Countdown(1);
+            DownTimer countdown = new DownTimer(1);
             bool wasResume = false;
 
             //Act:
@@ -316,7 +316,7 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsFalse(wasResume);
-            Assert.AreEqual(CountdownState.IDLE, countdown.GetState());
+            Assert.AreEqual(TimerState.IDLE, countdown.GetState());
             Assert.IsFalse(countdown.IsStarted());
             Assert.IsFalse(countdown.IsPaused());
         }
@@ -325,7 +325,7 @@ namespace Atomic.Elements
         public void WhenTickThenCurrentTimeChanged()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             float currentTime = -1;
 
             //Act:
@@ -342,9 +342,9 @@ namespace Atomic.Elements
         public void Stop()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool wasStop = false;
-            CountdownState stateChanged = default;
+            TimerState stateChanged = default;
 
             countdown.Start();
 
@@ -355,8 +355,8 @@ namespace Atomic.Elements
 
             //Assert:
             Assert.IsTrue(wasStop);
-            Assert.AreEqual(CountdownState.IDLE, countdown.GetState());
-            Assert.AreEqual(CountdownState.IDLE, stateChanged);
+            Assert.AreEqual(TimerState.IDLE, countdown.GetState());
+            Assert.AreEqual(TimerState.IDLE, stateChanged);
 
             Assert.IsFalse(countdown.IsStarted());
             Assert.IsTrue(countdown.IsIdle());
@@ -369,7 +369,7 @@ namespace Atomic.Elements
         public void Restart()
         {
             //Arrange:
-            Countdown countdown = new Countdown(10);
+            DownTimer countdown = new DownTimer(10);
 
             bool canceled = false;
             bool started = false;
@@ -402,7 +402,7 @@ namespace Atomic.Elements
         public void RestartWithTime()
         {
             //Arrange:
-            Countdown countdown = new Countdown(10);
+            DownTimer countdown = new DownTimer(10);
 
             bool canceled = false;
             bool started = false;
@@ -435,7 +435,7 @@ namespace Atomic.Elements
         public void WhenStopNotStartedCountdownThenNoEvent()
         {
             //Arrange:
-            Countdown countdown = new Countdown(10);
+            DownTimer countdown = new DownTimer(10);
             bool wasEvent = false;
 
             //Act:
@@ -450,7 +450,7 @@ namespace Atomic.Elements
         public void WhenResumeProductionThatIsNotPausedThenNothing()
         {
             //Arrange:
-            Countdown countdown = new Countdown(10);
+            DownTimer countdown = new DownTimer(10);
             bool wasResume = false;
             countdown.OnResumed += () => wasResume = true;
             countdown.Start();
@@ -469,7 +469,7 @@ namespace Atomic.Elements
         public void WhenStopPausedCountdownThenWillIdle()
         {
             //Arrange:
-            Countdown countdown = new Countdown(5);
+            DownTimer countdown = new DownTimer(5);
             bool canceled = false;
 
             countdown.Start();

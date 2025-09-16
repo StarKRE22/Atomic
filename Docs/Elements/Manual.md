@@ -103,14 +103,17 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [Sources](Time/Sources.md)  <!-- + -->
   - [ICooldown](Time/ICooldown.md) <!-- + -->
   - [Cooldown](Time/Cooldown.md) <!-- + -->
+  - [RandomCooldown](Time/RandomCooldown.md) <!-- + -->
   - [ITimer](Time/ITimer.md) <!-- + -->
+  - [UpTimer](Time/UpTimer.md) <!-- + -->
+  - [DownTimer](Time/DownTimer.md) <!-- + -->
   - [TimerState](Time/TimerState.md) <!-- + -->
-  - [Timer](Time/Timer.md) <!-- + -->
-  - [ICountdown](Time/ICountdown.md)
-  - [Countdown](Time/Countdown.md)
-  - [CountdownState](Time/CountdownState.md)
-  - [Stopwatch](Time/Stopwatch.md)
-  - [Period](Time/Period.md)
+  - [IStopwatch](Time/IStopwatch.md) <!-- + -->
+  - [Stopwatch](Time/Stopwatch.md) <!-- + -->
+  - [StopwatchState](Time/StopwatchState.md) <!-- + -->
+  - [IPeriod](Time/IPeriod.md) <!-- + -->
+  - [Period](Time/Period.md) <!-- + -->
+  - [PeriodState](Time/PeriodState.md) <!-- + -->
   - [Timestamp](Time/Timestamp.md)
   - [Extensions](Time/Extensions.md)
   - [Source Interfaces](Time/SourceInterfaces.md)
