@@ -98,7 +98,7 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
 ```csharp
 public IEnumerator<T> GetEnumerator();
 ```
-- **Description:** Returns an enumerator that iterates through the collection.
+- **Description:** Returns an enumerator that iterates through the array.
 - **Remarks:** Inherited from `IEnumerable<T>`.
 
 ---
