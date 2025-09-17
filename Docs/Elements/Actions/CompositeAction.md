@@ -15,6 +15,9 @@ public class CompositeAction : IAction
 ### Constructors
 
 #### `CompositeAction()`
+```csharp
+public CompositeAction()
+```
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
@@ -51,6 +54,7 @@ var composite = new CompositeAction(
 );
 
 composite.Invoke();
+
 // Output:
 // Action 1
 // Action 2
@@ -68,6 +72,9 @@ public class CompositeAction<T> : IAction<T>
 ### Constructors
 
 #### `CompositeAction()`
+```csharp
+public CompositeAction()
+```
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
@@ -123,6 +130,9 @@ public class CompositeAction<T1, T2> : IAction<T1, T2>
 ### Constructors
 
 #### `CompositeAction()`
+```csharp
+public CompositeAction()
+```
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
