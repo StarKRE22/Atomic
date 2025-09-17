@@ -1,21 +1,46 @@
-### AddTo(IDisposable, DisposableComposite)
+# 🧩 Utils Extensions
 
+Represents a set of **utility extension methods** for working with `IDisposable` objects, collections, and other helper operations.
 
-## Extension Method
+These extensions simplify common tasks such as **adding disposables to a composite**, chaining operations, and improving code readability.
 
-### `AddTo(this IDisposable it, DisposableComposite composite)`
-
-Adds a disposable to a composite using an extension method for fluent syntax.
-
-- **Parameters:**  
-  `it` — the `IDisposable` to add.  
-  `composite` — the `DisposableComposite` instance.
-
-- **Usage:**  
-  Allows chaining subscriptions and disposables directly into the composite:
-
-```csharp
-_fireEvent.Subscribe(_fireVFX.Play).AddTo(_disposables);
-_fireEvent.Subscribe(_fireSFX.Play).AddTo(_disposables);
-```
 ---
+
+
+### AddTo(IDisposable, DisposableComposite)
+```csharp
+public static void AddTo(this IDisposable it, DisposableComposite composite);
+```
+- **Description:** Adds the current `IDisposable` instance (`it`) to a `DisposableComposite`.
+- **Parameters:**
+  - `it` — The `IDisposable` instance to add.
+  - `composite` — The `DisposableComposite` that will manage the disposable.
+- **Remarks:**
+  - Allows chaining multiple disposables directly into a composite.
+  - Useful in reactive or event-driven setups to automatically clean up subscriptions or actions.
+
+- **Examples of Usage:**
+
+  ```csharp
+  //Subscribing to events with automatic disposal
+  var composite = new DisposableComposite();
+  
+  ISignal fireEvent = GetFireEvent();
+  fireEvent.Subscribe(() => Console.WriteLine("Fired!")).AddTo(composite);
+  
+  // Later, when disposing
+  composite.Dispose(); // All disposables including the subscription are disposed
+  ```
+
+  ```csharp
+  var composite = new DisposableComposite();
+  
+  new DisposableAction(() => Console.WriteLine("Action 1")).AddTo(composite);
+  new DisposableAction(() => Console.WriteLine("Action 2")).AddTo(composite);
+  
+  // Composite disposes all added actions at once
+  composite.Dispose();
+  // Output:
+  // Action 1
+  // Action 2
+  ```
