@@ -107,7 +107,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [IReactiveDictionary](Collections/IReactiveDictionary.md) <!-- + -->
   - [ReactiveDictionary](Collections/ReactiveDictionary.md) <!-- + -->
   - [IReactiveSet](Collections/IReactiveHashSet.md)  <!-- + -->
-  - [ReactiveHashSet](Collections/ReactiveHashSet.md)
+  - [ReactiveHashSet](Collections/ReactiveHashSet.md) <!-- + -->
 - **Time**
   - [Sources](Time/Sources.md)  <!-- + -->
   - [ICooldown](Time/ICooldown.md) <!-- + -->
@@ -131,7 +131,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [TriggerEvents](UnityComponents/TriggerEvents.md)
   - [CollisionEvents](UnityComponents/CollisionEvents.md)
 - **Utils**
-  - [DisposableComposite](Utils/DisposableComposite.md)
+  - [DisposableAction](Utils/DisposableAction.md) 
+  - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->
   - [Reference](Utils/Reference.md)
   - [Optional](Utils/Optional.md)
 
