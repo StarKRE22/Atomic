@@ -139,8 +139,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
 - **Utils**
   - [DisposableAction](Utils/DisposableAction.md) <!-- + -->
   - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->
-  - [Reference](Utils/Reference.md)
-  - [Optional](Utils/Optional.md)
+  - [Reference](Utils/Reference.md) <!-- + -->
+  - [Optional](Utils/Optional.md) <!-- + -->
   - [Extensions](Utils/Extensions.md) <!-- + -->
 
 ---
