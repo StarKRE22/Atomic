@@ -86,8 +86,16 @@ namespace Atomic.Elements
         /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(params T[] elements) : this(elements.Length) => this.UnionWith(elements);
 
+        /// <summary>
+        /// Initializes the set with a collection of elements.
+        /// </summary>
+        /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(IReadOnlyCollection<T> elements) : this(elements.Count) => this.UnionWith(elements);
 
+        /// <summary>
+        /// Initializes the set with a collection of elements.
+        /// </summary>
+        /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(IEnumerable<T> elements) : this(elements.Count()) => this.UnionWith(elements);
 
         /// <summary>

@@ -1,6 +1,6 @@
 # 🧩 ReactiveList&lt;T&gt;
 
-`ReactiveList<T>` represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed, changed, or when the list state changes globally. It implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`.
+`ReactiveList<T>` represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed, changed, or when the list state changes globally. It implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally supports Unity serialization (`ISerializationCallbackReceiver`) for use in Unity projects.
 
 > [!NOTE]  
 > Use this class when you need a **mutable, growable list** with reactive notifications.
