@@ -189,15 +189,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="25370000" />
-    </task>
-    <task id="LOCAL-00332" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758046181421</created>
-      <option name="number" value="00332" />
-      <option name="presentableId" value="LOCAL-00332" />
-      <option name="project" value="LOCAL" />
-      <updated>1758046181421</updated>
+      <workItem from="1758087033777" duration="26189000" />
     </task>
     <task id="LOCAL-00333" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -583,7 +575,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758134354489</updated>
     </task>
-    <option name="localTasksCounter" value="381" />
+    <task id="LOCAL-00381" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758135191490</created>
+      <option name="number" value="00381" />
+      <option name="presentableId" value="LOCAL-00381" />
+      <option name="project" value="LOCAL" />
+      <updated>1758135191490</updated>
+    </task>
+    <option name="localTasksCounter" value="382" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,9 +633,9 @@
     <MESSAGE value="Сделал ReactiveDictionary.md" />
     <MESSAGE value="Сделал AnimationEvents.md" />
     <MESSAGE value="Сделал Triggers &amp; Collision Events" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
