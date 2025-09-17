@@ -156,21 +156,6 @@ Provides a collection of **utility classes and components** that simplify common
 - [Optional](Utils/Optional.md) <!-- + -->
 - [Extensions](Utils/Extensions.md) <!-- + -->
 
-<!--
-
-- `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
-- `Setters` – inline and interface-based property setters.
-- `Events` & `Signals` – event abstractions, subscriptions, and reactive signals.
-- `Requests` – encapsulated request objects for decoupled communication.
-- `Expressions` – logical and arithmetic expressions for flexible evaluation.
-- `Collections` – reactive collections such as arrays, lists, dictionaries, and sets.
-- `Time` – timers, cooldowns, countdowns, stopwatches, and time sources.
-- `Unity Components` – MonoBehaviour wrappers for animation, collision, and trigger events.
-- `Utils` – helper classes including disposable management, optional values, and reference wrappers.
-
--->
-
-
 ---
 
 ## 📌 Best Practices
