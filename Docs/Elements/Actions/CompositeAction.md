@@ -1,6 +1,6 @@
 # 🧩 CompositeAction Classes
 
-The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md) interfaces. They follow the [Composite design pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction` both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
+The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md) interfaces. They follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction` both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
 
 This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is especially important when game objects and scripts need to execute complex action scenarios.
 
