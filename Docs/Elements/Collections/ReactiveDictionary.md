@@ -290,7 +290,7 @@ public Enumerator GetEnumerator();
 <details>
   <summary>
     <h2>🧩 ReadOnlyKeyCollection</h2>
-    <br> Represents a read-only collection of keys.
+    <br> <b>Represents a read-only collection of keys</b>.
   </summary>
 
 ### Properties
@@ -355,7 +355,7 @@ bool ICollection<K>.Remove(K item);
 <details>
   <summary>
     <h2>🧩 ReadOnlyValueCollection</h2>
-    <br> Represents a read-only collection of values.
+    <br> <b>Represents a read-only collection of values</b>.
   </summary>
 
 ### Properties
