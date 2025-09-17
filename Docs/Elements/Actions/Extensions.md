@@ -3,7 +3,6 @@
 The **ActionExtensions** class provides utility methods for invoking arrays or collections of [IAction](IAction.md). These methods automatically skip `null` actions and execute them sequentially.
 
 ---
-### 🧩 Enumerable Overloads
 
 #### `InvokeRange(IEnumerable<IAction>)`
 ```csharp
@@ -97,8 +96,6 @@ public static void InvokeRange<T1, T2, T3, T4>(this IEnumerable<IAction<T1, T2, 
     ```
 
 ---
-
-### 🧩 Array Overloads
 
 #### `InvokeRange(IAction[])`
 ```csharp
