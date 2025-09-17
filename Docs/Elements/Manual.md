@@ -31,8 +31,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 <details>
   <summary>
-    <h4>🧩 Values</h4>
-    <br> Represents interfaces and implementations for reactive and constant values
+    <br>Values — interfaces and implementations for reactive and constant values
   </summary>
 
 - [IValue](Values/IValue.md) <!-- + -->
