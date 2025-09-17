@@ -137,7 +137,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [TriggerEvents](UnityComponents/TriggerEvents.md)
   - [CollisionEvents](UnityComponents/CollisionEvents.md)
 - **Utils**
-  - [DisposableAction](Utils/DisposableAction.md) 
+  - [DisposableAction](Utils/DisposableAction.md) <!-- + -->
   - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->
   - [Reference](Utils/Reference.md)
   - [Optional](Utils/Optional.md)
