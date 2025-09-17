@@ -82,6 +82,61 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 </details>
 
+<details>
+  <summary>
+    <h4>  🧩 Functions</h4>
+    <br> Represents reusable functions and predicates.
+  </summary>
+  <br>
+
+- [IFunction](Functions/IFunction.md) <!-- + -->
+- [InlineFunction](Functions/InlineFunction.md)  <!-- + -->
+- [IPredicate](Functions/IPredicate.md)  <!-- + -->
+- [InlinePredicate](Functions/InlinePredicate.md)  <!-- + -->
+- [Extensions](Functions/Extensions.md) <!-- + -->
+
+</details>
+
+<details>
+  <summary>
+    <h4>  🧩 Setters</h4>
+    <br> Represents inline and interface-based property setters.
+  </summary>
+  <br>
+
+- [ISetter](Setters/ISetter.md) <!-- + -->
+- [InlineSetter](Setters/InlineSetter.md) <!-- + -->
+
+</details>
+
+<details>
+  <summary>
+    <h4>  🧩 Observables </h4>
+    <br> Represents event abstractions, subscriptions, and reactive signals.
+  </summary>
+  <br>
+
+- [ISignal](Signals/ISignal.md) <!-- + -->
+- [InlineSignal](Signals/InlineSignal.md) <!-- + -->
+- [IEvent](Events/IEvent.md) <!-- + -->
+- [BaseEvent](Events/BaseEvent.md) <!-- + -->
+- [Subscription](Signals/Subscription.md) <!-- + -->
+- [Extensions](Signals/Extensions.md) <!-- + -->
+
+</details>
+
+<details>
+  <summary>
+    <h4>  🧩 Requests </h4>
+    <br> Represents delayed actions.
+  </summary>
+  <br>
+
+- [IRequest](Requests/IRequest.md) <!-- + -->
+- [BaseRequest](Requests/BaseRequest.md) <!-- + -->
+
+</details>
+
 <!--
 
 - `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
@@ -96,6 +151,38 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 Use this documentation as a guide for integrating `Atomic.Elements` into your `Unity` projects or `C#` applications, leveraging reactive patterns, composable structures, and modular design.
 -->
+
+
+---
+
+## 📌 Best Practices
+
+This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
+- [Prefer Atomic Interfaces to Concrete Classes](../../Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Use Shared Constants](../../Docs/BestPractices/SharedConstants.md)
+- [Iterating over Reactive Collections](../../Docs/BestPractices/IteratingReactiveCollections.md)
+- [Requests vs Actions](../../Docs/BestPractices/RequestsVsActions.md)
+- [Request-Condition-Action-Event Flow](../../Docs/BestPractices/RequestConditionActionEvent.md)
+- [Using InlineActions](Actions/InlineAction.md/#-best-practice)
+- [Using InlineFunctions](Functions/InlineFunction.md/#-best-practice)
+- [Insert Constant to AndExpression](Expressions/AndExpression.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](Time/ITimer.md/#-best-practice)
+- [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)
+
+---
+
+## 🔥 Performance
+The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
+
+### Collections
+  - [ReactiveArray](Collections/ReactiveArray.md/#-performance) – performance benchmarks for reactive arrays.
+  - [ReactiveList](Collections/ReactiveList.md/#-performance) – performance benchmarks for reactive lists.
+  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#-performance) – performance benchmarks for reactive linked lists.
+  - [ReactiveDictionary](Collections/ReactiveDictionary.md/#-performance) – performance benchmarks for reactive dictionaries.
+  - [ReactiveHashSet](Collections/ReactiveHashSet.md/#-performance) – performance benchmarks for reactive hash sets.
+
+
+
 
 - **Values**
   - [IValue](Values/IValue.md) <!-- + -->
@@ -190,38 +277,10 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [CollisionEvents2D](UnityComponents/CollisionEvents2D.md) <!-- + -->
   - [TriggerEvents](UnityComponents/TriggerEvents.md) <!-- + -->
   - [TriggerEvents2D](UnityComponents/TriggerEvents2D.md) <!-- + -->
- 
+
 - **Utils**
   - [DisposableAction](Utils/DisposableAction.md) <!-- + -->
   - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->
   - [Reference](Utils/Reference.md) <!-- + -->
   - [Optional](Utils/Optional.md) <!-- + -->
   - [Extensions](Utils/Extensions.md) <!-- + -->
-
----
-
-## 📌 Best Practices
-
-This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
-- [Prefer Atomic Interfaces to Concrete Classes](../../Docs/BestPractices/PreferAbstractInterfaces.md)
-- [Use Shared Constants](../../Docs/BestPractices/SharedConstants.md)
-- [Iterating over Reactive Collections](../../Docs/BestPractices/IteratingReactiveCollections.md)
-- [Requests vs Actions](../../Docs/BestPractices/RequestsVsActions.md)
-- [Request-Condition-Action-Event Flow](../../Docs/BestPractices/RequestConditionActionEvent.md)
-- [Using InlineActions](Actions/InlineAction.md/#-best-practice)
-- [Using InlineFunctions](Functions/InlineFunction.md/#-best-practice)
-- [Insert Constant to AndExpression](Expressions/AndExpression.md/#-best-practice)
-- [Choosing Between Timer and Cooldown](Time/ITimer.md/#-best-practice)
-- [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)
-
----
-
-## 🔥 Performance
-The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
-
-### Collections
-  - [ReactiveArray](Collections/ReactiveArray.md/#-performance) – performance benchmarks for reactive arrays.
-  - [ReactiveList](Collections/ReactiveList.md/#-performance) – performance benchmarks for reactive lists.
-  - [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#-performance) – performance benchmarks for reactive linked lists.
-  - [ReactiveDictionary](Collections/ReactiveDictionary.md/#-performance) – performance benchmarks for reactive dictionaries.
-  - [ReactiveHashSet](Collections/ReactiveHashSet.md/#-performance) – performance benchmarks for reactive hash sets.
