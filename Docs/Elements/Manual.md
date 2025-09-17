@@ -32,7 +32,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 <details>
   <summary>
     <h4>  🧩 Values</h4>
-    <br> Represents interfaces and implementations for reactive and constant values
+    <br> Represents interfaces and implementations for reactive and constant values.
   </summary>
   <br>
 
@@ -62,10 +62,28 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 </details>
 
+
+<details>
+  <summary>
+    <h4>  🧩 Actions</h4>
+    <br> Represents reusable actions.
+  </summary>
+  <br>
+
+- [IAction](Actions/IAction.md) <!-- + -->
+- [InlineAction](Actions/InlineAction.md)  <!-- + -->
+- [CompositeAction](Actions/CompositeAction.md) <!-- + -->
+- [PrintAction](Actions/PrintAction.md) <!-- + -->
+- [SceneActionAbstract](Actions/SceneActionAbstract.md)  <!-- + -->
+- [SceneActionDefault](Actions/SceneActionDefault.md) <!-- + -->
+- [SceneActionComposite](Actions/SceneActionComposite.md) <!-- + -->
+- [SceneActionReference](Actions/SceneActionReference.md) <!-- + -->
+- [Extensions](Actions/Extensions.md) <!-- + -->
+
+</details>
+
 <!--
 
-- `Values` – interfaces and implementations for reactive and constant values.
-- `Variables` – reactive variables, proxies, and Unity-specific variable types.
 - `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
 - `Setters` – inline and interface-based property setters.
 - `Events` & `Signals` – event abstractions, subscriptions, and reactive signals.
