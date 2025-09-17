@@ -4,7 +4,6 @@ Represents a set of **utility extension methods** for working with `IDisposable`
 
 ---
 
-
 ### AddTo(IDisposable, DisposableComposite)
 ```csharp
 public static void AddTo(this IDisposable it, DisposableComposite composite);
@@ -17,7 +16,7 @@ public static void AddTo(this IDisposable it, DisposableComposite composite);
   - Allows chaining multiple disposables directly into a composite.
   - Useful in reactive or event-driven setups to automatically clean up subscriptions or actions.
 
-- **Examples of Usage:**
+- **Example of Usage:**
 
   ```csharp
   //Subscribing to events with automatic disposal

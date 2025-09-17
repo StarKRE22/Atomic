@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/Delegates.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/Delegates.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/Reference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/Reference.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,23 +190,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="8560000" />
-    </task>
-    <task id="LOCAL-00308" summary="Сделал IReadOnlyReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1758040343322</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1758040343322</updated>
-    </task>
-    <task id="LOCAL-00309" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758040377129</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1758040377129</updated>
+      <workItem from="1758087033777" duration="10676000" />
     </task>
     <task id="LOCAL-00310" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -584,7 +568,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758095617641</updated>
     </task>
-    <option name="localTasksCounter" value="357" />
+    <task id="LOCAL-00357" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758096084247</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1758096084248</updated>
+    </task>
+    <task id="LOCAL-00358" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758096112116</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1758096112116</updated>
+    </task>
+    <option name="localTasksCounter" value="359" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

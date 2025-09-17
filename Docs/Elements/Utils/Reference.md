@@ -1,77 +1,72 @@
-# 🧩 Reference<T>
+# 🧩 Reference&lt;T&gt;
 
-`Reference<T>` is a serialized wrapper for a value of type `T`.  
-It allows you to store and reference a value in a way that Unity can serialize, while still providing direct access to the underlying value via a reference.
+A **serialized reference wrapper** for a value of type `T`. This class is useful when you want to **wrap a value** so it can be **serialized, displayed in inspectors**, or **passed by reference safely**.
 
-It can also be used as a lightweight shared reference for multiple objects, allowing them to access and modify the same value instance without duplicating data.
+> [!NOTE]
+> It can also be used as a lightweight shared reference for multiple objects, allowing them to access and modify the same value instance without duplicating data.
 
----
-
-## Overview
-
-- Wraps a value of type `T` for serialization.
-- Provides a `ref` accessor to the wrapped value for direct modification.
-- Can act as a lightweight shared reference for multiple objects.
-- Compatible with Unity serialization and optionally Odin Inspector.
 
 ---
 
 ## Type Parameters
 
-- `T` — The type of the value being wrapped.
+- `T` — The type of the value being referenced.
 
 ---
 
-## Properties
+## Property
 
-### `ref T Value { get; }`
-
-Provides a reference to the wrapped value, allowing read and write access directly.
+### `Value`
+```csharp
+public ref T Value { get; }
+```
+- **Description:** Provides a **reference** to the wrapped value.
+- **Remarks:** Modifying this reference will update the underlying value directly.
 
 ---
 
 ## Constructor
 
 ### `Reference(T value = default)`
-
-Initializes a new instance of `Reference<T>` with an optional initial value.
-
-- **Parameters:**  
-  `value` — the initial value to wrap (default is `default(T)`).
+```csharp
+public Reference(T value = default);
+```
+- **Description:** Initializes a new instance of the `Reference<T>` class.
+- **Parameter:** `value` — The initial value to wrap. Defaults to `default(T)`.
 
 ---
 
-## Example Usage
+## Operator
 
-### Single Object Reference
-
+#### `implicit operator Reference<T>(T)`
 ```csharp
-using Atomic.Elements;
-using UnityEngine;
-
-public class ReferenceExample : MonoBehaviour
-{
-    [SerializeField]
-    private Reference<int> health = new Reference<int>(100);
-
-    private void Start()
-    {
-        // Access and modify the value directly
-        ref int currentHealth = ref health.Value;
-        currentHealth -= 10;
-        
-        Debug.Log($"Current health: {health.Value}");
-    }
-}
+public static implicit operator Reference<T>(T value) => new Reference<T>(value);
 ```
-### Shared Reference Across Multiple Objects
-```csharp
-using Atomic.Elements;
-using UnityEngine;
+- **Description:** Allows seamless conversion from a raw value of type `T` to a `Reference<T>`.
+- **Parameter:** `value` — The value to wrap inside a `Reference<T>`.
+- **Returns:** A new `Reference<T>` instance containing the provided value.
+- **Remarks:** Useful for writing cleaner code without explicitly creating a `Reference<T>` instance.
 
-public class SharedReferenceExample : MonoBehaviour
+---
+
+## 🗂 Example of Usage
+
+### Basic Usage
+```csharp
+var health = new Reference<int>(100);
+
+// Accessing the value by reference
+ref int healthRef = ref health.Value;
+healthRef += 50;
+
+Console.WriteLine(health.Value); // Output: 150
+```
+
+### Shared Reference
+```csharp
+public class Example : MonoBehaviour
 {
-    private Reference<int> sharedScore = new Reference<int>(0);
+    private readonly Reference<int> sharedScore = 0;
 
     private void Awake()
     {
@@ -101,32 +96,33 @@ public class Player
     }
 }
 ```
-
 - Multiple objects can safely share a single `Reference<T>` instance.
 - Modifications from any object are reflected in all objects referencing the same instance.
 
-## Example Usage with Coroutines
-`Reference<T>` can also serve as a lightweight container for "out" parameters in Unity coroutines or asynchronous tasks.  
-This allows coroutines or async methods to update a value that the caller can access after the operation completes.
+### Result for Coroutines
+`Reference<T>` can also serve as a lightweight container for `out` parameters in Unity coroutines or asynchronous tasks. This allows coroutines or async methods to update a value that the caller can access after the operation completes.
 
 ```csharp
-using Atomic.Elements;
-using UnityEngine;
-using System.Collections;
-
-public class CoroutineReferenceExample : MonoBehaviour
+public class Example : MonoBehaviour
 {
-    private Reference<int> result = new Reference<int>();
+    private Reference<int> result = new();
 
     private void Start()
     {
-        StartCoroutine(CalculateAsync(result));
+        StartCoroutine(CalculateRoutine(result));
     }
 
-    private IEnumerator CalculateAsync(Reference<int> output)
+    private IEnumerator CalculateRoutine(Reference<int> output)
     {
         yield return new WaitForSeconds(2f);
         output.Value = 42; // Set the result
     }
 }
 ```
+---
+
+## 📝 Notes
+- Wraps a value of type `T` for serialization.
+- Provides a `ref` accessor to the wrapped value for direct modification.
+- Can act as a lightweight shared reference for multiple objects.
+- Compatible with Unity serialization and optionally Odin Inspector.

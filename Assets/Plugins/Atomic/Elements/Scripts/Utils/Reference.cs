@@ -33,6 +33,16 @@ namespace Atomic.Elements
 #endif
         private T value;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Reference{T}"/> class with the specified value.
+        /// </summary>
+        /// <param name="value">The initial value to wrap. Defaults to <c>default(T)</c> if not provided.</param>
         public Reference(T value = default) => this.value = value;
+        
+        /// <summary>
+        /// Implicitly converts a value of type <typeparamref name="T"/> to a <see cref="Reference{T}"/>.
+        /// </summary>
+        /// <param name="value">The value to wrap.</param>
+        public static implicit operator Reference<T>(T value) => new Reference<T>(value);
     }
 }
