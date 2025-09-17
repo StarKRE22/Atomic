@@ -1,4 +1,4 @@
-# 🧩 `ReactiveDictionary<K, V>`
+````# 🧩 `ReactiveDictionary<K, V>`
 
 `ReactiveDictionary<K, V>` is a **reactive key-value dictionary** that provides notifications when items are added, removed, or updated. It implements [IReactiveDictionary<K, V>](IReactiveDictionary.md).
 
@@ -417,6 +417,112 @@ bool ICollection<V>.Remove(V item);
 
 ---
 
+## 🗂 Examples of Usage
+
+### Basic Usage
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+dict.Add("One", 1);
+dict.Add("Two", 2);
+
+Console.WriteLine(dict["One"]); // Output: 1
+
+dict["Two"] = 22; // Updates the value
+Console.WriteLine(dict["Two"]); // Output: 22
+
+```
+
+### Using TryAdd
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+bool added = dict.TryAdd("One", 1); // true
+added = dict.TryAdd("One", 11);     // false, key already exists
+
+Console.WriteLine(dict["One"]); // Output: 1
+```
+
+### Removing Elements
+```csharp
+var dict = new ReactiveDictionary<string, int>
+{
+    { "A", 1 },
+    { "B", 2 }
+};
+
+bool removed = dict.Remove("A"); // true
+removed = dict.Remove("C");      // false, key does not exist
+
+if (dict.Remove("B", out int value))
+{
+    Console.WriteLine(value); // Output: 2
+}
+```
+
+### Iterating Keys and Values
+```csharp
+var dict = new ReactiveDictionary<string, int>
+{
+    { "X", 10 },
+    { "Y", 20 }
+};
+
+// Iterate over keys without allocation
+foreach (var key in dict.Keys)
+{
+    Console.WriteLine(key); // X, Y
+}
+
+// Iterate over values without allocation
+foreach (var val in dict.Values)
+{
+    Console.WriteLine(val); // 10, 20
+}
+
+// Iterate over key-value pairs without allocation
+foreach (var kv in dict)
+{
+    Console.WriteLine($"{kv.Key}: {kv.Value}");
+}
+```
+
+---
+
+### Subscribing to Events
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+dict.OnItemAdded += (key, value) => Console.WriteLine($"Added {key}={value}");
+dict.OnItemChanged += (key, value) => Console.WriteLine($"Changed {key}={value}");
+dict.OnItemRemoved += (key, value) => Console.WriteLine($"Removed {key}={value}");
+
+dict.Add("A", 1);    // Output: Added A=1
+dict["A"] = 100;     // Output: Changed A=100
+dict.Remove("A");    // Output: Removed A=100
+```
+
+---
+
+### Initializing from Collections
+```csharp
+var pairs = ;
+
+var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>
+{
+    new("One", 1),
+    new("Two", 2)
+});
+
+var dictFromTuples = new ReactiveDictionary<string, int>(new (string, int)[]
+{
+    ("Three", 3),
+    ("Four", 4)
+});
+```
+
+---
+
 ## 🔥 Performance
 
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**. The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper compared to a standard `Dictionary`.
@@ -432,4 +538,4 @@ The performance comparison below was measured on a **MacBook with Apple M1** for
 | Remove          | 7.20                   | 11.50                          |
 | TryGetValue     | 12.30                  | 10.40                          |
 
-`ReactiveDictionary` introduces minimal overhead for common operations like `Add` and `Clear`. In some operations like `Indexer Get` and `TryGetValue`, it can even be slightly faster due to internal optimizations. `Remove` and `Indexer Set` may have slightly higher latency compared to a standard `Dictionary` because of event invocation and reactive state management.
+Thus, `ReactiveDictionary` introduces minimal overhead for common operations like `Add` and `Clear`. In some operations like `Indexer Get` and `TryGetValue`, it can even be slightly faster due to internal optimizations. `Remove` and `Indexer Set` may have slightly higher latency compared to a standard `Dictionary` because of event invocation and reactive state management.

@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Enumerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Enumerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Set/ReactiveHashSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Set/ReactiveHashSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,31 +185,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="3040000" />
-    </task>
-    <task id="LOCAL-00293" summary="Сделал раздел с Time!">
-      <option name="closed" value="true" />
-      <created>1758012102798</created>
-      <option name="number" value="00293" />
-      <option name="presentableId" value="LOCAL-00293" />
-      <option name="project" value="LOCAL" />
-      <updated>1758012102798</updated>
-    </task>
-    <task id="LOCAL-00294" summary="Сделал IReadOnlyReactiveArray.cs">
-      <option name="closed" value="true" />
-      <created>1758017163017</created>
-      <option name="number" value="00294" />
-      <option name="presentableId" value="LOCAL-00294" />
-      <option name="project" value="LOCAL" />
-      <updated>1758017163018</updated>
-    </task>
-    <task id="LOCAL-00295" summary="Написал ReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758019400916</created>
-      <option name="number" value="00295" />
-      <option name="presentableId" value="LOCAL-00295" />
-      <option name="project" value="LOCAL" />
-      <updated>1758019400916</updated>
+      <workItem from="1758087033777" duration="3373000" />
     </task>
     <task id="LOCAL-00296" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -586,7 +555,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758090087725</updated>
     </task>
-    <option name="localTasksCounter" value="342" />
+    <task id="LOCAL-00342" summary="Пилим ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758090490938</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1758090490938</updated>
+    </task>
+    <task id="LOCAL-00343" summary="Пилим ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758090746942</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1758090746942</updated>
+    </task>
+    <task id="LOCAL-00344" summary="Пилим ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758090814407</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1758090814407</updated>
+    </task>
+    <option name="localTasksCounter" value="345" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
