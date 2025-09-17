@@ -3,9 +3,9 @@
 The **ActionExtensions** class provides utility methods for invoking arrays or collections of [IAction](IAction.md). These methods automatically skip `null` actions and execute them sequentially.
 
 ---
-## 🔹 Enumerable Overloads
+### 🧩 Enumerable Overloads
 
-### `InvokeRange(IEnumerable<IAction>)`
+#### `InvokeRange(IEnumerable<IAction>)`
 ```csharp
 public static void InvokeRange(this IEnumerable<IAction> actions)
 ```
@@ -20,7 +20,7 @@ public static void InvokeRange(this IEnumerable<IAction> actions)
 
 ---
 
-### `InvokeRange<T>(IEnumerable<IAction<T>>, T)`
+#### `InvokeRange<T>(IEnumerable<IAction<T>>, T)`
 ```csharp
 public static void InvokeRange<T>(this IEnumerable<IAction<T>> actions, T arg)
 ```
@@ -38,7 +38,7 @@ public static void InvokeRange<T>(this IEnumerable<IAction<T>> actions, T arg)
 
 ---
 
-### `InvokeRange<T1, T2>(IEnumerable<IAction<T1, T2>>, T1, T2)`
+#### `InvokeRange<T1, T2>(IEnumerable<IAction<T1, T2>>, T1, T2)`
 ```csharp
 public static void InvokeRange<T1, T2>(this IEnumerable<IAction<T1, T2>> actions, T1 arg1, T2 arg2)
 ```
@@ -57,7 +57,7 @@ public static void InvokeRange<T1, T2>(this IEnumerable<IAction<T1, T2>> actions
 
 ---
 
-### `InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>>, T1, T2, T3)`
+#### `InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>>, T1, T2, T3)`
 ```csharp
 public static void InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>> actions, T1 arg1, T2 arg2, T3 arg3)
 ```
@@ -77,7 +77,7 @@ public static void InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>>
 
 ---
 
-### `InvokeRange<T1, T2, T3, T4>(IEnumerable<IAction<T1, T2, T3, T4>>, T1, T2, T3, T4)`
+#### `InvokeRange<T1, T2, T3, T4>(IEnumerable<IAction<T1, T2, T3, T4>>, T1, T2, T3, T4)`
 ```csharp
 public static void InvokeRange<T1, T2, T3, T4>(this IEnumerable<IAction<T1, T2, T3, T4>> actions, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
@@ -98,9 +98,9 @@ public static void InvokeRange<T1, T2, T3, T4>(this IEnumerable<IAction<T1, T2, 
 
 ---
 
-## 🔹 Array Overloads
+### 🧩 Array Overloads
 
-### `InvokeRange(IAction[])`
+#### `InvokeRange(IAction[])`
 ```csharp
 public static void InvokeRange(this IAction[] actions)
 ```
@@ -115,7 +115,7 @@ public static void InvokeRange(this IAction[] actions)
 
 ---
 
-### `InvokeRange<T>(IAction<T>[], T)`
+#### `InvokeRange<T>(IAction<T>[], T)`
 ```csharp
 public static void InvokeRange<T>(this IAction<T>[] actions, T arg)
 ```
@@ -128,7 +128,7 @@ public static void InvokeRange<T>(this IAction<T>[] actions, T arg)
   ```
 ---
 
-### `InvokeRange<T1, T2>(IAction<T1, T2>[], T1, T2)`
+#### `InvokeRange<T1, T2>(IAction<T1, T2>[], T1, T2)`
 ```csharp
 public static void InvokeRange<T1, T2>(this IAction<T1, T2>[] actions, T1 arg1, T2 arg2)
 ```
@@ -141,7 +141,7 @@ public static void InvokeRange<T1, T2>(this IAction<T1, T2>[] actions, T1 arg1, 
     ```
 ---
 
-### `InvokeRange<T1, T2, T3>(IAction<T1, T2, T3>[], T1, T2, T3)`
+#### `InvokeRange<T1, T2, T3>(IAction<T1, T2, T3>[], T1, T2, T3)`
 ```csharp
 public static void InvokeRange<T1, T2, T3>(this IAction<T1, T2, T3>[] actions, T1 arg1, T2 arg2, T3 arg3)
 ```
@@ -155,7 +155,7 @@ public static void InvokeRange<T1, T2, T3>(this IAction<T1, T2, T3>[] actions, T
 
 ---
 
-### `InvokeRange<T1, T2, T3, T4>(IAction<T1, T2, T3, T4>[] actions, T1, T2, T3, T4)`
+#### `InvokeRange<T1, T2, T3, T4>(IAction<T1, T2, T3, T4>[] actions, T1, T2, T3, T4)`
 ```csharp
 public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] actions, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
@@ -169,7 +169,7 @@ public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] ac
 
 ----
 
-## 📝 Notes
+### 📝 Notes
 - **Null Safety** – Both the collection and individual actions are checked for null.
 - **Performance** – Aggressively inlined for minimal call overhead.
 - **Batch Execution** – Useful for invoking multiple actions in one operation.

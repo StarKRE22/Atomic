@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,39 +188,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="27189000" />
-    </task>
-    <task id="LOCAL-00338" summary="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!">
-      <option name="closed" value="true" />
-      <created>1758053006607</created>
-      <option name="number" value="00338" />
-      <option name="presentableId" value="LOCAL-00338" />
-      <option name="project" value="LOCAL" />
-      <updated>1758053006608</updated>
-    </task>
-    <task id="LOCAL-00339" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758053037506</created>
-      <option name="number" value="00339" />
-      <option name="presentableId" value="LOCAL-00339" />
-      <option name="project" value="LOCAL" />
-      <updated>1758053037506</updated>
-    </task>
-    <task id="LOCAL-00340" summary="Пилим ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758090020571</created>
-      <option name="number" value="00340" />
-      <option name="presentableId" value="LOCAL-00340" />
-      <option name="project" value="LOCAL" />
-      <updated>1758090020571</updated>
-    </task>
-    <task id="LOCAL-00341" summary="Пилим ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758090087725</created>
-      <option name="number" value="00341" />
-      <option name="presentableId" value="LOCAL-00341" />
-      <option name="project" value="LOCAL" />
-      <updated>1758090087725</updated>
+      <workItem from="1758087033777" duration="27499000" />
     </task>
     <task id="LOCAL-00342" summary="Пилим ReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -584,7 +550,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758136654639</updated>
     </task>
-    <option name="localTasksCounter" value="387" />
+    <task id="LOCAL-00387" summary="Обновляем CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1758137026146</created>
+      <option name="number" value="00387" />
+      <option name="presentableId" value="LOCAL-00387" />
+      <option name="project" value="LOCAL" />
+      <updated>1758137026146</updated>
+    </task>
+    <task id="LOCAL-00388" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758137115812</created>
+      <option name="number" value="00388" />
+      <option name="presentableId" value="LOCAL-00388" />
+      <option name="project" value="LOCAL" />
+      <updated>1758137115812</updated>
+    </task>
+    <task id="LOCAL-00389" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758137147900</created>
+      <option name="number" value="00389" />
+      <option name="presentableId" value="LOCAL-00389" />
+      <option name="project" value="LOCAL" />
+      <updated>1758137147900</updated>
+    </task>
+    <task id="LOCAL-00390" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758137235550</created>
+      <option name="number" value="00390" />
+      <option name="presentableId" value="LOCAL-00390" />
+      <option name="project" value="LOCAL" />
+      <updated>1758137235550</updated>
+    </task>
+    <option name="localTasksCounter" value="391" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим Cooldown!" />
     <MESSAGE value="Сделал Cooldown.md" />
     <MESSAGE value="Сделал интерфейс для таймера!" />
     <MESSAGE value="Сделали Timer!" />
@@ -635,6 +632,7 @@
     <MESSAGE value="Сделал AnimationEvents.md" />
     <MESSAGE value="Сделал Triggers &amp; Collision Events" />
     <MESSAGE value="Пилим!" />
+    <MESSAGE value="Обновляем CompositeAction.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
