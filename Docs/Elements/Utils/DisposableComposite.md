@@ -88,7 +88,7 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 }
 ```
 
-### 🔹 How it works
+### How it works
 
 1. **Creating the composite:** `_disposables` stores all subscriptions and disposable objects.
 2. **Subscribing with AddTo:** The `AddTo(_disposables)` method automatically adds each disposable to the composite.

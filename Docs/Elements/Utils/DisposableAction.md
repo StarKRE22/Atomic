@@ -30,14 +30,14 @@ public void Dispose();
 
 ## 🗂 Example of Usage
 
-### Inline Cleanup
+### 🔹 Inline Cleanup
 
 ```csharp
 var disposable = new DisposableAction(() => Console.WriteLine("Cleanup executed."));
 disposable.Dispose(); // Prints: "Cleanup executed."
 ```
 
-### Event Unsubscription
+### 🔹 Event Unsubscription
 
 ```csharp
 EventHandler handler = (s, e) => Console.WriteLine("Event fired.");
