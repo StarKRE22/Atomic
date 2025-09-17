@@ -133,9 +133,12 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [FixedTimestamp](Time/FixedTimestamp.md) <!-- + -->
   - [Extensions](Time/Extensions.md) <!-- + -->
 - **Unity Components**
-  - [AnimationEvents](UnityComponents/AnimationEvents.md)  <!-- + -->
-  - [TriggerEvents](UnityComponents/TriggerEvents.md)
-  - [CollisionEvents](UnityComponents/CollisionEvents.md)
+  - [AnimationEvents](UnityComponents/AnimationEvents.md) <!-- + -->
+  - [CollisionEvents](UnityComponents/CollisionEvents.md) <!-- + -->
+  - [CollisionEvents2D](UnityComponents/CollisionEvents2D.md) <!-- + -->
+  - [TriggerEvents](UnityComponents/TriggerEvents.md) <!-- + -->
+  - [TriggerEvents2D](UnityComponents/TriggerEvents2D.md) <!-- + -->
+ 
 - **Utils**
   - [DisposableAction](Utils/DisposableAction.md) <!-- + -->
   - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->

@@ -33,21 +33,21 @@ namespace Atomic.Elements
         /// Calls the <see cref="OnEntered"/> event.
         /// </summary>
         /// <param name="other">The 2D collider that entered the trigger area.</param>
-        private void OnTriggerEnter2D(Collider2D other) => this.OnEntered?.Invoke(other);
+        public void OnTriggerEnter2D(Collider2D other) => this.OnEntered?.Invoke(other);
 
         /// <summary>
         /// Unity callback invoked when another 2D collider exits this trigger.
         /// Calls the <see cref="OnExited"/> event.
         /// </summary>
         /// <param name="other">The 2D collider that exited the trigger area.</param>
-        private void OnTriggerExit2D(Collider2D other) => this.OnExited?.Invoke(other);
+        public void OnTriggerExit2D(Collider2D other) => this.OnExited?.Invoke(other);
 
         /// <summary>
         /// Unity callback invoked every frame while another 2D collider remains within this trigger collider.
         /// Triggers the <see cref="OnStay"/> event if any listeners are registered.
         /// </summary>
         /// <param name="other">The <see cref="Collider2D"/> currently staying inside the trigger.</param>
-        private void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
+        public void OnTriggerStay2D(Collider2D other) => this.OnStay?.Invoke(other);
     }
 }
 #endif

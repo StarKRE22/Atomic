@@ -33,21 +33,21 @@ namespace Atomic.Elements
         /// Triggers the <see cref="OnEntered"/> event.
         /// </summary>
         /// <param name="other">The Collider that entered the trigger zone.</param>
-        private void OnTriggerEnter(Collider other) => this.OnEntered?.Invoke(other);
+        public void OnTriggerEnter(Collider other) => this.OnEntered?.Invoke(other);
 
         /// <summary>
         /// Unity callback when another Collider exits the trigger.
         /// Triggers the <see cref="OnExited"/> event.
         /// </summary>
         /// <param name="other">The Collider that exited the trigger zone.</param>
-        private void OnTriggerExit(Collider other) => this.OnExited?.Invoke(other);
+        public void OnTriggerExit(Collider other) => this.OnExited?.Invoke(other);
 
         /// <summary>
-        /// Unity callback invoked every frame while anothercollider remains within this trigger collider.
+        /// Unity callback invoked every frame while another collider remains within this trigger collider.
         /// Triggers the <see cref="OnStay"/> event if any listeners are registered.
         /// </summary>
         /// <param name="other">The <see cref="Collider2D"/> currently staying inside the trigger.</param>
-        private void OnTriggerStay(Collider other) => this.OnStay?.Invoke(other);
+        public void OnTriggerStay(Collider other) => this.OnStay?.Invoke(other);
     }
 }
 #endif
