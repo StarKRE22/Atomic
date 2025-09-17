@@ -28,9 +28,8 @@ pattern and using `Atomic` elements for data organization.
 
 ## 📝 Requirements
 
-> [!IMPORTANT]  
-> The Atomic Framework requires **Unity 6** or **.NET 7+**.  
-> Make sure your development environment meets these requirements before using the framework.
+The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements before using the framework.
+
 ---
 
 ## 📦 Installation
@@ -42,23 +41,19 @@ pattern and using `Atomic` elements for data organization.
   from [release notes](https://github.com/StarKRE22/Atomic/releases)_
 - _Option #3: Install via Unity Package Manager using the Git
   URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
+
 ---
 
-## 🧩 Using Odin Inspector
+## 🎛 Using Odin Inspector
 
-> [!TIP]  
-> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-> using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 ---
 
-## 🔌 Using Atomic Plugin for Rider
+## 🔌 Using Plugin for Rider
 
-> [!TIP]  
-> For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing
-> the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
-> By default the code generation works with Unity, but with the plugin, development experience in `Rider` become
-> smoother and more powerful than in Unity.
+For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default the code generation works with Unity, but with the plugin, development experience in `Rider IDE` become
+smoother and more powerful than in Unity.
 ---
 
 ## 💡 Key Concepts

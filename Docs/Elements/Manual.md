@@ -13,16 +13,13 @@ The solution includes **constants, variables, reactive properties, collections, 
 ---
 
 ## 📝 Requirements
-> [!IMPORTANT]  
-> The Atomic.Elements requires **Unity 6** or **.NET 7+**.  
-> Make sure your development environment meets these requirements before using the framework.
+The Atomic.Elements requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements before using the framework.
 
 ---
 
-## 🧩 Using Odin Inspector
-> [!TIP]  
-> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework works **without Odin**, but Odin makes inspection and tweaking much easier.
+## 🎛 Using Odin Inspector
+For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
 ---
 
@@ -34,7 +31,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 <details>
   <summary>
-    <h4>Values</h4>
+    <h4>🧩 Values</h4>
     <br> interfaces and implementations for reactive and constant values
   </summary>
 
