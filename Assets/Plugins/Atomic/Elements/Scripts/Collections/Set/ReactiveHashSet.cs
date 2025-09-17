@@ -826,7 +826,7 @@ namespace Atomic.Elements
             public T Current => _current;
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveHashSet<T> set)
+            internal Enumerator(ReactiveHashSet<T> set)
             {
                 _set = set;
                 _index = 0;

@@ -402,7 +402,7 @@ namespace Atomic.Elements
             public T Current => _current;
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveList<T> list)
+            internal Enumerator(ReactiveList<T> list)
             {
                 _list = list;
                 _index = -1;

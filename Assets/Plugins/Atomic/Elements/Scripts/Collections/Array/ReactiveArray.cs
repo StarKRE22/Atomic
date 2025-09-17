@@ -317,7 +317,7 @@ namespace Atomic.Elements
 
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveArray<T> array)
+            internal Enumerator(ReactiveArray<T> array)
             {
                 _array = array;
                 _index = -1;

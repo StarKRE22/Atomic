@@ -34,7 +34,7 @@ namespace Atomic.Elements
             /// Initializes a new instance of the <see cref="Enumerator"/> struct for the specified dictionary.
             /// </summary>
             /// <param name="dictionary">The dictionary to enumerate.</param>
-            public Enumerator(ReactiveDictionary<K, V> dictionary)
+            internal Enumerator(ReactiveDictionary<K, V> dictionary)
             {
                 _dictionary = dictionary;
                 _index = 0;
