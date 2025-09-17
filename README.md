@@ -412,7 +412,11 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
 - [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md)
-
+- [Using InlineActions](Docs/Elements/Actions/InlineAction.md/#-best-practice)
+- [Using InlineFunctions](Docs/Elements/Functions/InlineFunction.md/#-best-practice)
+- [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpression.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](Docs/Elements/Time/ITimer.md/#-best-practice)
+- [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
 ## ⚖️ License
 
 This project is licensed under the [MIT License](./LICENSE.md).

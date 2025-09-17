@@ -110,7 +110,6 @@ public IEnumerator<KeyValuePair<K, V>> GetEnumerator();
 ---
 
 ## 🗂 Example of Usage
-
 ```csharp
 // Get a reactive dictionary
 IReadOnlyReactiveDictionary<string, int> dictionary = ...;

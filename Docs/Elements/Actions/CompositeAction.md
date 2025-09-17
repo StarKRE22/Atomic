@@ -264,7 +264,7 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 
 ---
 
-## 🎛️ Using `Odin Inspector` and `[SerializeReference]` 
+## Using `Odin Inspector` and `[SerializeReference]` 
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene, `CompositeAction` combined with `[SerializeReference]` is very convenient.
 
