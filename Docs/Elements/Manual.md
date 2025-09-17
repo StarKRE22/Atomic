@@ -34,6 +34,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
     <h4>  🧩 Values</h4>
     <br> Represents interfaces and implementations for reactive and constant values
   </summary>
+  <br>
 
 - [IValue](Values/IValue.md) <!-- + -->
 - [IReactiveValue](Values/IReactiveValue.md) <!-- + -->
@@ -49,6 +50,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
     <h4>  🧩 Variables</h4>
     <br> Represents reactive variables, proxies, and Unity-specific variable types.
   </summary>
+  <br>
 
 - [IVariable](Variables/IVariable.md) <!-- + -->
 - [BaseVariable](Variables/BaseVariable.md) <!-- + -->
