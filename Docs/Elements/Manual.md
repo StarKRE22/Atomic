@@ -32,7 +32,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 <details>
   <summary>
     <h4>🧩 Values</h4>
-    <br> interfaces and implementations for reactive and constant values
+    <br> Represents interfaces and implementations for reactive and constant values
   </summary>
 
 - [IValue](Values/IValue.md) <!-- + -->
@@ -44,6 +44,23 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 </details>
 
+<details>
+  <summary>
+    <h4>🧩 Variables</h4>
+    <br> Represents reactive variables, proxies, and Unity-specific variable types.
+  </summary>
+
+- [IVariable](Variables/IVariable.md) <!-- + -->
+- [BaseVariable](Variables/BaseVariable.md) <!-- + -->
+- [IReactiveVariable](Variables/IReactiveVariable.md) <!-- + -->
+- [ReactiveVariable](Variables/ReactiveVariable.md) <!-- + -->
+- [ProxyVariable](Variables/ProxyVariable.md)  <!-- + -->
+- [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)  <!-- + -->
+- [Extensions](Variables/Extensions.md) <!-- + -->
+
+</details>
+
+<!--
 - `Values` – interfaces and implementations for reactive and constant values.
 - `Variables` – reactive variables, proxies, and Unity-specific variable types.
 - `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
@@ -158,6 +175,7 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [Reference](Utils/Reference.md) <!-- + -->
   - [Optional](Utils/Optional.md) <!-- + -->
   - [Extensions](Utils/Extensions.md) <!-- + -->
+-->
 
 ---
 
