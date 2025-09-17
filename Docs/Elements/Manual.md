@@ -61,6 +61,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 </details>
 
 <!--
+
 - `Values` – interfaces and implementations for reactive and constant values.
 - `Variables` – reactive variables, proxies, and Unity-specific variable types.
 - `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
@@ -74,6 +75,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - `Utils` – helper classes including disposable management, optional values, and reference wrappers.
 
 Use this documentation as a guide for integrating `Atomic.Elements` into your `Unity` projects or `C#` applications, leveraging reactive patterns, composable structures, and modular design.
+-->
 
 - **Values**
   - [IValue](Values/IValue.md) <!-- + -->
@@ -175,7 +177,6 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [Reference](Utils/Reference.md) <!-- + -->
   - [Optional](Utils/Optional.md) <!-- + -->
   - [Extensions](Utils/Extensions.md) <!-- + -->
--->
 
 ---
 
