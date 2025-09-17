@@ -6,11 +6,17 @@ This allows combining multiple actions into a sequence, which will be invoked **
 
 ---
 
-## 🧩 CompositeAction
+<details>
+  <summary>
+    <h2>🧩 CompositeAction</h2>
+    <br>  Represents a group of <b>parameterless actions</b> that are executed sequentially.
+  </summary>
+
+<br>
+
 ```csharp
 public class CompositeAction : IAction
 ```
-- **Description:** Represents a group of **parameterless actions** that are executed sequentially.
 
 ### Constructors
 
@@ -20,7 +26,6 @@ public CompositeAction()
 ```
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
-
 
 #### `CompositeAction(params IAction[])`
 ```csharp
@@ -60,13 +65,21 @@ composite.Invoke();
 // Action 2
 ```
 
+</details>
+
 ---
 
-## 🧩 CompositeAction&lt;T&gt;
+<details>
+  <summary>
+    <h2>🧩 CompositeAction&lt;T&gt;</h2>
+    <br>  Represents a group of actions <b>with one parameter</b> that are executed sequentially.
+  </summary>
+
+<br>
+
 ```csharp
 public class CompositeAction<T> : IAction<T>
 ```
-- **Description:** Represents a group of actions with one parameter executed sequentially.
 - **Type parameter:** `T` — the input parameter.
 
 ### Constructors
@@ -87,7 +100,6 @@ public CompositeAction(params IAction<T>[] actions)
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
 #### `CompositeAction(IEnumerable<Action<T>)`
-
 ```csharp
 public CompositeAction(IEnumerable<IAction<T>> actions)
 ```
@@ -96,6 +108,8 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
 ### Methods
+
+#### `Invoke(T arg)`
 ```csharp
 public void Invoke(T arg)
 ```
@@ -116,16 +130,24 @@ composite.Invoke("World");
 // Bye World
 ```
 
+</details>
+
 ---
 
-## 🧩 CompositeAction<T1, T2>
+<details>
+  <summary>
+    <h2>🧩 CompositeAction&lt;T1, T2&gt;</h2>
+    <br>  Represents a group of actions <b>with two parameters</b> that are executed sequentially.
+  </summary>
+
+<br>
+
 ```csharp
 public class CompositeAction<T1, T2> : IAction<T1, T2>
 ```
-- **Description:** Represents a group of actions with two parameters executed sequentially.
 - **Type parameters:**
-    - `T1` — the first argument
-    - `T2` — the second argument
+  - `T1` — the first argument
+  - `T2` — the second argument
 
 ### Constructors
 
@@ -168,18 +190,27 @@ var composite = new CompositeAction<int, int>(
 );
 
 composite.Invoke(3, 4);
+
 // Output:
 // 7
 // 12
 ```
 
+</details>
+
 ---
 
-## 🧩 CompositeAction<T1, T2, T3>
+<details>
+  <summary>
+    <h2>🧩 CompositeAction&lt;T1, T2, T3&gt;</h2>
+    <br>  Represents a group of actions <b>with three parameters</b> that are executed sequentially.
+  </summary>
+
+<br>
+
 ```csharp
 public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```
-- **Description:** Represents a group of actions with three parameters executed sequentially.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -223,18 +254,27 @@ var composite = new CompositeAction<int, int, int>(
 );
 
 composite.Invoke(3, 4, 2);
+
 // Output:
 // 14
 // 24
 ```
 
+</details>
+
 ---
 
-## 🧩 CompositeAction<T1, T2, T3, T4>
+<details>
+  <summary>
+    <h2>🧩 CompositeAction&lt;T1, T2, T3, T4&gt;</h2>
+    <br>  Represents a group of actions <b>with four parameters</b> that are executed sequentially.
+  </summary>
+
+<br>
+
 ```csharp
 public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
-- **Description:** Represents a group of actions with four parameters executed sequentially.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -269,6 +309,8 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
 - **Description:** Invokes all actions sequentially with the given arguments.
+
+</details>
 
 ---
 

@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,39 +190,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="26530000" />
-    </task>
-    <task id="LOCAL-00334" summary="IReadOnlyReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758050653664</created>
-      <option name="number" value="00334" />
-      <option name="presentableId" value="LOCAL-00334" />
-      <option name="project" value="LOCAL" />
-      <updated>1758050653664</updated>
-    </task>
-    <task id="LOCAL-00335" summary="Обновил IReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758051471150</created>
-      <option name="number" value="00335" />
-      <option name="presentableId" value="LOCAL-00335" />
-      <option name="project" value="LOCAL" />
-      <updated>1758051471150</updated>
-    </task>
-    <task id="LOCAL-00336" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758051515414</created>
-      <option name="number" value="00336" />
-      <option name="presentableId" value="LOCAL-00336" />
-      <option name="project" value="LOCAL" />
-      <updated>1758051515414</updated>
-    </task>
-    <task id="LOCAL-00337" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758051567319</created>
-      <option name="number" value="00337" />
-      <option name="presentableId" value="LOCAL-00337" />
-      <option name="project" value="LOCAL" />
-      <updated>1758051567319</updated>
+      <workItem from="1758087033777" duration="27189000" />
     </task>
     <task id="LOCAL-00338" summary="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!">
       <option name="closed" value="true" />
@@ -582,7 +552,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758136276109</updated>
     </task>
-    <option name="localTasksCounter" value="383" />
+    <task id="LOCAL-00383" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758136402570</created>
+      <option name="number" value="00383" />
+      <option name="presentableId" value="LOCAL-00383" />
+      <option name="project" value="LOCAL" />
+      <updated>1758136402570</updated>
+    </task>
+    <task id="LOCAL-00384" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758136511886</created>
+      <option name="number" value="00384" />
+      <option name="presentableId" value="LOCAL-00384" />
+      <option name="project" value="LOCAL" />
+      <updated>1758136511886</updated>
+    </task>
+    <task id="LOCAL-00385" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758136545532</created>
+      <option name="number" value="00385" />
+      <option name="presentableId" value="LOCAL-00385" />
+      <option name="project" value="LOCAL" />
+      <updated>1758136545532</updated>
+    </task>
+    <task id="LOCAL-00386" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758136654639</created>
+      <option name="number" value="00386" />
+      <option name="presentableId" value="LOCAL-00386" />
+      <option name="project" value="LOCAL" />
+      <updated>1758136654639</updated>
+    </task>
+    <option name="localTasksCounter" value="387" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

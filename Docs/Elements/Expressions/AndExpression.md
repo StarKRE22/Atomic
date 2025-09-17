@@ -213,8 +213,7 @@ public void Dispose()
 ```csharp
 public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 ```
-- **Type Parameters:**
-  - `T` - The input parameter type of the functions.
+- **Type Parameter:** `T` - The input parameter type of the functions.
 
 ### Constructors
 
