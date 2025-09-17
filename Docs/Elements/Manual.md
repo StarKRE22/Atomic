@@ -31,7 +31,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 <details>
   <summary>
-    <br><b>🧩 Values</b>
+    <h4>  🧩 Values</h4>
     <br> Represents interfaces and implementations for reactive and constant values
   </summary>
 
@@ -46,7 +46,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 <details>
   <summary>
-    <br><b>🧩 Variables</b>
+    <h4>  🧩 Variables</h4>
     <br> Represents reactive variables, proxies, and Unity-specific variable types.
   </summary>
 

@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,39 +188,7 @@
       <workItem from="1758035034709" duration="15440000" />
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
-      <workItem from="1758087033777" duration="23705000" />
-    </task>
-    <task id="LOCAL-00323" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758043758299</created>
-      <option name="number" value="00323" />
-      <option name="presentableId" value="LOCAL-00323" />
-      <option name="project" value="LOCAL" />
-      <updated>1758043758299</updated>
-    </task>
-    <task id="LOCAL-00324" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758043797491</created>
-      <option name="number" value="00324" />
-      <option name="presentableId" value="LOCAL-00324" />
-      <option name="project" value="LOCAL" />
-      <updated>1758043797491</updated>
-    </task>
-    <task id="LOCAL-00325" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758043826511</created>
-      <option name="number" value="00325" />
-      <option name="presentableId" value="LOCAL-00325" />
-      <option name="project" value="LOCAL" />
-      <updated>1758043826511</updated>
-    </task>
-    <task id="LOCAL-00326" summary="Обновил IReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1758044761102</created>
-      <option name="number" value="00326" />
-      <option name="presentableId" value="LOCAL-00326" />
-      <option name="project" value="LOCAL" />
-      <updated>1758044761102</updated>
+      <workItem from="1758087033777" duration="24062000" />
     </task>
     <task id="LOCAL-00327" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -584,7 +550,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758128954340</updated>
     </task>
-    <option name="localTasksCounter" value="372" />
+    <task id="LOCAL-00372" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758133519526</created>
+      <option name="number" value="00372" />
+      <option name="presentableId" value="LOCAL-00372" />
+      <option name="project" value="LOCAL" />
+      <updated>1758133519526</updated>
+    </task>
+    <task id="LOCAL-00373" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758133637321</created>
+      <option name="number" value="00373" />
+      <option name="presentableId" value="LOCAL-00373" />
+      <option name="project" value="LOCAL" />
+      <updated>1758133637321</updated>
+    </task>
+    <task id="LOCAL-00374" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758133701846</created>
+      <option name="number" value="00374" />
+      <option name="presentableId" value="LOCAL-00374" />
+      <option name="project" value="LOCAL" />
+      <updated>1758133701846</updated>
+    </task>
+    <task id="LOCAL-00375" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758133809321</created>
+      <option name="number" value="00375" />
+      <option name="presentableId" value="LOCAL-00375" />
+      <option name="project" value="LOCAL" />
+      <updated>1758133809321</updated>
+    </task>
+    <option name="localTasksCounter" value="376" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,10 +631,10 @@
     <MESSAGE value="Пилим ReactiveDictionary.md" />
     <MESSAGE value="Сделал ReactiveDictionary.md" />
     <MESSAGE value="Сделал AnimationEvents.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал Triggers &amp; Collision Events" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
