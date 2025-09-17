@@ -506,8 +506,6 @@ dict.Remove("A");    // Output: Removed A=100
 
 ### Initializing from Collections
 ```csharp
-var pairs = ;
-
 var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>
 {
     new("One", 1),
