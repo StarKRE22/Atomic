@@ -11,21 +11,21 @@ Represents a **reactive set** that supports notifications when items are added, 
 
 #### `OnStateChanged`
 ```csharp
-event Action OnStateChanged;
+public event Action OnStateChanged;
 ```
 - **Description:** Triggered when the set’s state changes globally (e.g., clear or bulk update).
 - **Remarks:** Useful for reacting to any modifications in the set without subscribing to individual item events.
 
 #### `OnItemAdded`
 ```csharp
-event Action<T> OnItemAdded;
+public event Action<T> OnItemAdded;
 ```
 - **Description:** Triggered when a new item is added to the set.
 - **Parameters:** `T` — the item that was added.
 
 #### `OnItemRemoved`
 ```csharp
-event Action<T> OnItemRemoved;
+public event Action<T> OnItemRemoved;
 ```
 - **Description:** Triggered when an item is removed from the set.
 - **Parameters:** `T` — the item that was removed.
@@ -36,13 +36,13 @@ event Action<T> OnItemRemoved;
 
 #### `Count`
 ```csharp
-int Count { get; }
+public int Count { get; }
 ```
 - **Description:** Gets the number of elements in the set.
 
 #### `IsReadOnly`
 ```csharp
-bool IsReadOnly { get; }
+public bool IsReadOnly { get; }
 ```
 - **Description:** Indicates whether the set is read-only. Typically `false` for reactive sets.
 
@@ -52,7 +52,7 @@ bool IsReadOnly { get; }
 
 #### `Add(T)`
 ```csharp
-bool Add(T item);
+public bool Add(T item);
 ```
 - **Description:** Adds an element to the set if it does not already exist.
 - **Parameter:** `item` — The element to add. Cannot be `null` for reference types.
@@ -62,7 +62,7 @@ bool Add(T item);
 
 #### `Remove(T)`
 ```csharp
-bool Remove(T item);
+public bool Remove(T item);
 ```
 - **Description:** Removes the specified element from the set.
 - **Parameter:** `item` — The element to remove.
@@ -72,7 +72,7 @@ bool Remove(T item);
 
 #### `Contains(T)`
 ```csharp
-bool Contains(T item);
+public bool Contains(T item);
 ```
 - **Description:** Determines whether the set contains a specific element.
 - **Parameter:** `item` — The element to locate in the set.
@@ -81,7 +81,7 @@ bool Contains(T item);
 
 #### `Clear()`
 ```csharp
-void Clear();
+public void Clear();
 ```
 - **Description:** Removes all elements from the set.
 - **Events:** Triggers `OnItemRemoved` for each removed element and `OnStateChanged`.
@@ -89,7 +89,7 @@ void Clear();
 
 #### `UnionWith(IEnumerable<T>)`
 ```csharp
-void UnionWith(IEnumerable<T> other);
+public void UnionWith(IEnumerable<T> other);
 ```
 - **Description:** Modifies the set to include all elements from the specified collection.
 - **Parameter:** `other` — A collection of elements to merge into the set. Cannot be `null`.
@@ -98,7 +98,7 @@ void UnionWith(IEnumerable<T> other);
 
 #### `IntersectWith(IEnumerable<T>)`
 ```csharp
-void IntersectWith(IEnumerable<T> other);
+public void IntersectWith(IEnumerable<T> other);
 ```
 - **Description:** Modifies the set to contain only elements that exist in both the set and the specified collection.
 - **Parameter:** `other` — The collection to intersect with. Cannot be `null`.
@@ -107,7 +107,7 @@ void IntersectWith(IEnumerable<T> other);
 
 #### `ExceptWith(IEnumerable<T>)`
 ```csharp
-void ExceptWith(IEnumerable<T> other);
+public void ExceptWith(IEnumerable<T> other);
 ```
 - **Description:** Removes all elements in the specified collection from the set.
 - **Parameter:** `other` — The collection of elements to remove. Cannot be `null`.
@@ -116,7 +116,7 @@ void ExceptWith(IEnumerable<T> other);
 
 #### `SymmetricExceptWith(IEnumerable<T>)`
 ```csharp
-void SymmetricExceptWith(IEnumerable<T> other);
+public void SymmetricExceptWith(IEnumerable<T> other);
 ```
 - **Description:** Modifies the set to contain only elements that are in either the set or the specified collection, but not both.
 - **Parameter:** `other` — The collection to compare with. Cannot be `null`.
@@ -125,7 +125,7 @@ void SymmetricExceptWith(IEnumerable<T> other);
 
 #### `IsSubsetOf(IEnumerable<T>)`
 ```csharp
-bool IsSubsetOf(IEnumerable<T> other);
+public bool IsSubsetOf(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set is a subset of the specified collection.
 - **Parameter:** `other` — The collection to compare against. Cannot be `null`.
@@ -134,7 +134,7 @@ bool IsSubsetOf(IEnumerable<T> other);
 
 #### `IsProperSubsetOf(IEnumerable<T>)`
 ```csharp
-bool IsProperSubsetOf(IEnumerable<T> other);
+public bool IsProperSubsetOf(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set is a proper subset of the specified collection.
 - **Parameter:** `other` — The collection to compare against. Cannot be `null`.
@@ -143,7 +143,7 @@ bool IsProperSubsetOf(IEnumerable<T> other);
 
 #### `IsSupersetOf(IEnumerable<T>)`
 ```csharp
-bool IsSupersetOf(IEnumerable<T> other);
+public bool IsSupersetOf(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set is a superset of the specified collection.
 - **Parameter:** `other` — The collection to compare against. Cannot be `null`.
@@ -151,7 +151,7 @@ bool IsSupersetOf(IEnumerable<T> other);
 
 #### `IsProperSupersetOf(IEnumerable<T>)`
 ```csharp
-bool IsProperSupersetOf(IEnumerable<T> other);
+public bool IsProperSupersetOf(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set is a proper superset of the specified collection.
 - **Parameter:** `other` — The collection to compare against. Cannot be `null`.
@@ -160,7 +160,7 @@ bool IsProperSupersetOf(IEnumerable<T> other);
 
 #### `Overlaps(IEnumerable<T>)`
 ```csharp
-bool Overlaps(IEnumerable<T> other);
+public bool Overlaps(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set and the specified collection share any elements.
 - **Parameter:** `other` — The collection to compare with. Cannot be `null`.
@@ -168,7 +168,7 @@ bool Overlaps(IEnumerable<T> other);
 
 #### `SetEquals(IEnumerable<T>)`
 ```csharp
-bool SetEquals(IEnumerable<T> other);
+public bool SetEquals(IEnumerable<T> other);
 ```
 - **Description:** Determines whether the set and the specified collection contain the same elements.
 - **Parameters:** `other` — The collection to compare with. Cannot be `null`.
@@ -177,7 +177,7 @@ bool SetEquals(IEnumerable<T> other);
 
 #### `GetEnumerator()`
 ```csharp
-IEnumerator<T> GetEnumerator();
+public IEnumerator<T> GetEnumerator();
 ```
 - **Description:** Returns an enumerator that iterates through the set.
 - **Returns:** An `IEnumerator<T>` for enumerating the elements.
