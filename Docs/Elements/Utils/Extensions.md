@@ -2,8 +2,6 @@
 
 Represents a set of **utility extension methods** for working with `IDisposable` objects, collections, and other helper operations.
 
-These extensions simplify common tasks such as **adding disposables to a composite**, chaining operations, and improving code readability.
-
 ---
 
 
