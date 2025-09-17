@@ -252,7 +252,7 @@ bool added = reactiveSet.Add("Apple"); // false, already exists
 // Check if an item exists
 if (reactiveSet.Contains("Banana"))
 {
-Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
+    Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
 }
 
 // Removing an item
@@ -276,7 +276,7 @@ reactiveSet.SymmetricExceptWith(new[] { "Date", "Fig", "Grape" });
 // Iterate through the set
 foreach (var item in reactiveSet)
 {
-Console.WriteLine($"Set item: {item}");
+    Console.WriteLine($"Set item: {item}");
 }
 
 // Clear the set
