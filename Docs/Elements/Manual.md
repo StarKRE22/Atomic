@@ -9,15 +9,21 @@ The solution includes **constants, variables, reactive properties, collections, 
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
 
+---
+
 ## 📝 Requirements
 > [!IMPORTANT]  
 > The Atomic.Elements requires **Unity 6** or **.NET 7+**.  
 > Make sure your development environment meets these requirements before using the framework.
 
+---
+
 ## 🧩 Using Odin Inspector
 > [!TIP]  
 > For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend** using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
 > The framework works **without Odin**, but Odin makes inspection and tweaking much easier.
+
+---
 
 ## 🔍 API Reference
 
@@ -135,6 +141,8 @@ Use this documentation as a guide for integrating `Atomic.Elements` into your `U
   - [DisposableComposite](Utils/DisposableComposite.md) <!-- + -->
   - [Reference](Utils/Reference.md)
   - [Optional](Utils/Optional.md)
+
+---
 
 ## 🔥 Performance
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
