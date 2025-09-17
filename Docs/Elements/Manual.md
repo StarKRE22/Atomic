@@ -32,6 +32,21 @@ This section provides a complete reference to the core interfaces, classes, and 
 
 Here you will find detailed explanations, usage examples, and extension methods for:
 
+<details>
+  <summary>
+    <h4>🧩 Values</h4>
+    <br> interfaces and implementations for reactive and constant values
+  </summary>
+
+- [IValue](Values/IValue.md) <!-- + -->
+- [IReactiveValue](Values/IReactiveValue.md) <!-- + -->
+- [Const](Values/Const.md) <!-- + -->
+- [ScriptableConst](Values/ScriptableConst.md) <!-- + -->
+- [DefaultConstants](Values/DefaultConstants.md) <!-- + -->
+- [Extensions](Values/Extensions.md) <!-- + -->
+
+</details>
+
 - `Values` – interfaces and implementations for reactive and constant values.
 - `Variables` – reactive variables, proxies, and Unity-specific variable types.
 - `Actions` & `Functions` – reusable actions, predicates, and function abstractions.
