@@ -41,15 +41,11 @@ public void Unsubscribe(string evt, Action action);
   - `action` — the action to remove from the handler list.
 - **Remarks:** If the action was not registered, nothing happens.
 
----
-
-## Unity Callback
-
 #### `ReceiveEvent(string)`
 ```csharp
-private void ReceiveEvent(string message);
+public void ReceiveEvent(string message);
 ```
-- **Description:** Internal method called by Unity’s Animation Event system.
+- **Description:** Method called by Unity’s Animation Event system.
 - **Parameter:** `message` — the string key sent from the animation timeline.
 - **Remarks:** Dispatches the event to both specific handlers registered via `Subscribe` and the generic `OnEvent`.
 

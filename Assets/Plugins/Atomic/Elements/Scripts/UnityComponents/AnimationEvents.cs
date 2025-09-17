@@ -44,7 +44,7 @@ namespace Atomic.Elements
         /// Matches the <paramref name="evt"/> string used in <see cref="Subscribe"/>.
         /// </param>
         [UsedImplicitly]
-        private void ReceiveEvent(string message)
+        public void ReceiveEvent(string message)
         {
             if (_handlers.TryGetValue(message, out Action handler))
                 handler?.Invoke();
