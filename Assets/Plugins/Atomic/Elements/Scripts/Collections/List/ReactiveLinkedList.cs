@@ -102,7 +102,7 @@ namespace Atomic.Elements
         /// <param name="items">The items to add to the list.</param>
         public ReactiveLinkedList(params T[] items) : this(items.Length)
         {
-            foreach (var item in items) Add(item);
+            foreach (T item in items) Add(item);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Atomic.Elements
         /// <param name="items">The collection of items to add.</param>
         public ReactiveLinkedList(IEnumerable<T> items) : this(items.Count())
         {
-            foreach (var item in items) Add(item);
+            foreach (T item in items) Add(item);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
@@ -51,7 +52,13 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="elements">Elements to initialize the array with.</param>
         public ReactiveArray(params T[] elements) => this.items = elements;
-
+        
+        /// <summary>
+        /// Creates a reactive array initialized with the given elements.
+        /// </summary>
+        /// <param name="elements">Elements to initialize the array with.</param>
+        public ReactiveArray(IEnumerable<T> elements) => this.items = elements.ToArray();
+        
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {

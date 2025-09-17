@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace Atomic.Elements
@@ -118,6 +119,58 @@ namespace Atomic.Elements
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ReactiveDictionary{K,V}"/> class 
+        /// with elements from the specified collection of key-value pairs.
+        /// </summary>
+        /// <param name="source">The sequence of key-value pairs to copy into the dictionary.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> contains duplicate keys.</exception>
+        public ReactiveDictionary(IEnumerable<KeyValuePair<K, V>> source) : this(source.Count())
+        {
+            foreach (KeyValuePair<K, V> pair in source) this.Add(pair);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReactiveDictionary{K,V}"/> class 
+        /// with elements from the specified sequence of tuples.
+        /// </summary>
+        /// <param name="source">The sequence of (key, value) tuples to copy into the dictionary.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> contains duplicate keys.</exception>
+        public ReactiveDictionary(IEnumerable<(K, V)> source) : this(source.Count())
+        {
+            foreach ((K, V) pair in source) this.Add(pair.Item1, pair.Item2);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReactiveDictionary{K,V}"/> class 
+        /// with elements from the specified array of key-value pairs.
+        /// </summary>
+        /// <param name="source">An array of key-value pairs to copy into the dictionary.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> contains duplicate keys.</exception>
+        public ReactiveDictionary(params KeyValuePair<K, V>[] source) : this(source.Length)
+        {
+            for (int i = 0, count = source.Length; i < count; i++) this.Add(source[i]);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReactiveDictionary{K,V}"/> class 
+        /// with elements from the specified array of (key, value) tuples.
+        /// </summary>
+        /// <param name="source">An array of (key, value) tuples to copy into the dictionary.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> is null.</exception>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="source"/> contains duplicate keys.</exception>
+        public ReactiveDictionary(params (K, V)[] source) : this(source.Length)
+        {
+            for (int i = 0, count = source.Length; i < count; i++)
+            {
+                (K, V) tuple = source[i];
+                this.Add(tuple.Item1, tuple.Item2);
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the value associated with the specified key.
         /// </summary>
         /// <param name="key">The key of the value to get or set.</param>
@@ -215,38 +268,7 @@ namespace Atomic.Elements
                 }
             }
         }
-
-        /// <summary>
-        /// Attempts to get the value associated with the specified key.
-        /// </summary>
-        /// <param name="key">The key to locate.</param>
-        /// <param name="value">The value if found.</param>
-        /// <returns>True if the key was found; otherwise, false.</returns>
-        public bool TryGetValue(K key, out V value)
-        {
-            value = default;
-            if (_count == 0)
-                return false;
-
-            int hash = key.GetHashCode() & 0x7FFFFFFF;
-            int bucket = hash % _capacity;
-            int index = _buckets[bucket];
-
-            while (index >= 0)
-            {
-                ref readonly Slot slot = ref _slots[index];
-                if (slot.exists && s_keyComparer.Equals(slot.key, key))
-                {
-                    value = slot.value;
-                    return true;
-                }
-
-                index = slot.next;
-            }
-
-            return false;
-        }
-
+        
         /// <summary>
         /// Adds a <see cref="KeyValuePair{K,V}"/> to the dictionary.
         /// </summary>
@@ -313,7 +335,91 @@ namespace Atomic.Elements
             this.OnItemAdded?.Invoke(key, value);
             this.onItemAdded?.Invoke(new KeyValuePair<K, V>(key, value));
         }
+        
+        /// <summary>
+        /// Attempts to add the specified <see cref="KeyValuePair{K,V}"/> to the dictionary.
+        /// </summary>
+        /// <param name="item">The key/value pair to add. The key must be unique within the dictionary.</param>
+        /// <returns>
+        /// <c>true</c> if the key/value pair was added successfully; 
+        /// <c>false</c> if the key already exists in the dictionary.
+        /// </returns>
+        /// <remarks>
+        /// This method does not throw an exception if the key already exists, 
+        /// unlike <see cref="Add(K,V)"/>.
+        /// </remarks>
+        public bool TryAdd(KeyValuePair<K, V> item)
+        {
+            (K key, V value) = item;
+            return this.TryAdd(key, value);
+        }
+        
+        /// <summary>
+        /// Attempts to add key/value pair to the dictionary.
+        /// </summary>
+        /// <param name="key">The key of the element to add.</param>
+        /// <param name="value">The value of the element to add.</param>
+        /// <returns>
+        /// <c>true</c> if the key/value pair was added successfully; 
+        /// <c>false</c> if the key already exists in the dictionary.
+        /// </returns>
+        /// <remarks>
+        /// This method does not throw an exception if the key already exists, 
+        /// unlike <see cref="Add(K,V)"/>.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool TryAdd(K key, V value)
+        {
+            if (value == null)
+                return false;
 
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int index = _buckets[bucket];
+
+            while (index >= 0)
+            {
+                ref readonly Slot slot = ref _slots[index];
+                if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                    return false;
+                
+                index = slot.next;
+            }
+
+            if (_freeList >= 0)
+            {
+                index = _freeList;
+                _freeList = _slots[index].next;
+            }
+            else
+            {
+                if (_lastIndex == _capacity)
+                    this.IncreaseCapacity();
+
+                index = _lastIndex;
+                bucket = hash % _capacity;
+
+                _lastIndex++;
+            }
+
+            ref int next = ref _buckets[bucket];
+            _slots[index] = new Slot
+            {
+                key = key,
+                value = value,
+                next = next,
+                exists = true
+            };
+            next = index;
+
+            _count++;
+
+            this.OnStateChanged?.Invoke();
+            this.OnItemAdded?.Invoke(key, value);
+            this.onItemAdded?.Invoke(new KeyValuePair<K, V>(key, value));
+            return true;
+        }
+        
         /// <summary>
         /// Removes the value with the specified key from the dictionary.
         /// </summary>
@@ -437,7 +543,7 @@ namespace Atomic.Elements
         {
             return this.Contains(item) && this.Remove(item.Key);
         }
-
+        
         /// <summary>
         /// Determines whether the dictionary contains the specified key.
         /// </summary>
@@ -474,6 +580,37 @@ namespace Atomic.Elements
             return this.TryGetValue(item.Key, out V value) && s_valueComparer.Equals(value, item.Value);
         }
 
+        /// <summary>
+        /// Attempts to get the value associated with the specified key.
+        /// </summary>
+        /// <param name="key">The key to locate.</param>
+        /// <param name="value">The value if found.</param>
+        /// <returns>True if the key was found; otherwise, false.</returns>
+        public bool TryGetValue(K key, out V value)
+        {
+            value = default;
+            if (_count == 0)
+                return false;
+
+            int hash = key.GetHashCode() & 0x7FFFFFFF;
+            int bucket = hash % _capacity;
+            int index = _buckets[bucket];
+
+            while (index >= 0)
+            {
+                ref readonly Slot slot = ref _slots[index];
+                if (slot.exists && s_keyComparer.Equals(slot.key, key))
+                {
+                    value = slot.value;
+                    return true;
+                }
+
+                index = slot.next;
+            }
+
+            return false;
+        }
+        
         /// <summary>
         /// Removes all keys and values from the dictionary.
         /// </summary>

@@ -29,6 +29,14 @@ public ReactiveArray(params T[] elements);
 - **Parameters:** `elements` — elements to initialize the array with.
 - **Remarks:** The array length matches the number of provided elements.
 
+#### `ReactiveArray(IEnumerable<T>)`
+```csharp
+public ReactiveArray(IEnumerable<T> elements);
+```
+- **Description:** Creates a reactive array initialized with the given elements.
+- **Parameters:** `elements` — elements to initialize the array with.
+- **Remarks:** The array length matches the number of provided elements.
+
 ---
 
 ## Events

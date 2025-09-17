@@ -85,7 +85,7 @@ namespace Atomic.Elements
         /// </summary>
         public ReactiveList(params T[] items)
         {
-            this.items = items;
+            this.items = items ?? Array.Empty<T>();
             this.count = this.items.Length;
         }
 
@@ -94,7 +94,7 @@ namespace Atomic.Elements
         /// </summary>
         public ReactiveList(IEnumerable<T> items)
         {
-            this.items = items.ToArray();
+            this.items = items == null ? Array.Empty<T>() : items.ToArray();
             this.count = this.items.Length;
         }
 

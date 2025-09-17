@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Enumerator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Enumerator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_KeyCollection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_KeyCollection.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Unity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_Unity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_ValueCollection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary_ValueCollection.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/IReadOnlyReactiveDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/IReadOnlyReactiveDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveLinkedList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveLinkedList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveDictionaryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Collections/ReactiveDictionaryTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +43,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReadOnlyReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="SKIP_HIGHLIGHTING" />
@@ -68,6 +62,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/31528bc1/IReadOnlyList`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/85/48702da0/IReadOnlyCollection`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/89/349fc9dd/ICollection`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/8c/783bbc49/ISet`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b1/f259ccdd/IDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b8/d3b9e340/IEnumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f2/c7924853/IReadOnlyDictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
@@ -97,7 +92,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#60 on dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -195,23 +190,10 @@
       <workItem from="1758014902308" duration="1081000" />
       <workItem from="1758015997866" duration="621000" />
       <workItem from="1758016683531" duration="12669000" />
-      <workItem from="1758035034709" duration="14765000" />
-    </task>
-    <task id="LOCAL-00289" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758003543230</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1758003543230</updated>
-    </task>
-    <task id="LOCAL-00290" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758003717107</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1758003717107</updated>
+      <workItem from="1758035034709" duration="15440000" />
+      <workItem from="1758086721821" duration="250000" />
+      <workItem from="1758086977799" duration="44000" />
+      <workItem from="1758087033777" duration="2291000" />
     </task>
     <task id="LOCAL-00291" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -589,7 +571,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758051567319</updated>
     </task>
-    <option name="localTasksCounter" value="338" />
+    <task id="LOCAL-00338" summary="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!">
+      <option name="closed" value="true" />
+      <created>1758053006607</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1758053006608</updated>
+    </task>
+    <task id="LOCAL-00339" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758053037506</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1758053037506</updated>
+    </task>
+    <option name="localTasksCounter" value="340" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал Expressions!" />
     <MESSAGE value="Делаем Time!" />
     <MESSAGE value="Сделал TimeSources.md" />
     <MESSAGE value="Причесал Expressions!" />
@@ -640,6 +637,7 @@
     <MESSAGE value="Обновил IReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="Обновил IReactiveDictionary.md" />
+    <MESSAGE value="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>

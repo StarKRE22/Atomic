@@ -7,15 +7,72 @@
 
 ---
 
+## Constructors
+
+#### `ReactiveDictionary(int)`
+```csharp
+public ReactiveDictionary(int capacity = 0);
+```
+- **Description:** Initializes a new instance of the `ReactiveDictionary<K,V>` class with the specified capacity.
+- **Parameter:** `capacity` — The initial number of elements the dictionary can contain. Must be non-negative.
+- **Exception:** Throws `ArgumentOutOfRangeException` if `capacity` is less than 0.
+- **Remarks:** The actual internal capacity is adjusted to the nearest prime number greater than or equal to `capacity`.
+
+#### `ReactiveDictionary(IEnumerable<KeyValuePair<K, V>>)`
+```csharp
+public ReactiveDictionary(IEnumerable<KeyValuePair<K, V>> source);
+```
+- **Description:** Initializes a new instance of the dictionary and populates it with elements from the specified collection of key-value pairs.
+- **Parameter:** `source` — The sequence of key-value pairs to copy into the dictionary. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `source` is null.
+  - Throws `ArgumentException` if `source` contains duplicate keys.
+- **Remarks:** The dictionary is initialized with a capacity equal to the number of elements in `source`.
+
+#### `ReactiveDictionary(IEnumerable<(K, V)>)`
+```csharp
+public ReactiveDictionary(IEnumerable<(K, V)> source);
+```
+- **Description:** Initializes a new instance of the dictionary and populates it with elements from the specified sequence of tuples.
+- **Parameter:** `source` — The sequence of `(key, value)` tuples to copy into the dictionary. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `source` is null.
+  - Throws `ArgumentException` if `source` contains duplicate keys.
+- **Remarks:** The dictionary is initialized with a capacity equal to the number of elements in `source`.
+
+#### `ReactiveDictionary(params KeyValuePair<K, V>[])`
+```csharp
+public ReactiveDictionary(params KeyValuePair<K, V>[] source);
+```
+- **Description:** Initializes a new instance of the dictionary and populates it with elements from the specified array of key-value pairs.
+- **Parameter:** `source` — An array of key-value pairs to copy into the dictionary. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `source` is null.
+  - Throws `ArgumentException` if `source` contains duplicate keys.
+- **Remarks:** This constructor supports convenient inline initialization with `KeyValuePair` arguments.
+
+#### `ReactiveDictionary(params (K, V)[])`
+```csharp
+public ReactiveDictionary(params (K, V)[] source);
+```
+- **Description:** Initializes a new instance of the dictionary and populates it with elements from the specified array of `(key, value)` tuples.
+- **Parameter:** `source` — An array of `(key, value)` tuples to copy into the dictionary. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `source` is null.
+  - Throws `ArgumentException` if `source` contains duplicate keys.
+- **Remarks:** This constructor supports convenient inline initialization with tuple arguments.
+
+---
+
 ## Events
 
-### `OnStateChanged`
+#### `OnStateChanged`
 ```csharp
 event StateChangedHandler OnStateChanged;
 ```
 - **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
 
-### `OnItemChanged`
+#### `OnItemChanged`
 ```csharp
 event SetItemHandler<K, V> OnItemChanged;
 ```
@@ -24,7 +81,7 @@ event SetItemHandler<K, V> OnItemChanged;
   - `key` — the key that changed.
   - `value` — the new value of the key.
 
-### `OnItemAdded`
+#### `OnItemAdded`
 ```csharp
 event AddItemHandler<K, V> OnItemAdded;
 ```
@@ -33,7 +90,7 @@ event AddItemHandler<K, V> OnItemAdded;
   - `key` — the added key.
   - `value` — the value of the added key.
 
-### `OnItemRemoved`
+#### `OnItemRemoved`
 ```csharp
 event RemoveItemHandler<K, V> OnItemRemoved;
 ```
@@ -46,31 +103,35 @@ event RemoveItemHandler<K, V> OnItemRemoved;
 
 ## Properties
 
-### `Count`
+#### `Count`
 ```csharp
 public int Count { get; }
 ```
 - **Description:** Gets the total number of key-value pairs in the dictionary.
 
-### `IsReadOnly`
+#### `IsReadOnly`
 ```csharp
 public bool IsReadOnly { get; }
 ```
 - **Description:** Always returns `false` for `ReactiveDictionary` since it supports full modification.
 
-### `Keys`
+#### `Keys`
 ```csharp
 public ReadOnlyKeyCollection Keys { get; }
 ```
 - **Description:** Gets a read-only collection of all keys.
 
-### `Values`
+#### `Values`
 ```csharp
 public ReadOnlyValueCollection Values { get; }
 ```
 - **Description:** Gets a read-only collection of all values.
 
-### Indexer `this[K key]`
+---
+
+## Indexer
+
+#### `[K key]`
 ```csharp
 public V this[K key] { get; set; }
 ```
@@ -82,7 +143,7 @@ public V this[K key] { get; set; }
 
 ## Methods
 
-### `Add(K, V)`
+#### `Add(K, V)`
 ```csharp
 public void Add(K key, V value);
 ```
@@ -96,9 +157,44 @@ public void Add(K key, V value);
 - **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
 - **Remarks:** Use this method to insert new entries.
 
----
+#### `Add(KeyValuePair<K, V>)`
+```csharp
+public void Add(KeyValuePair<K, V> item);
+```
+- **Description:** Adds a new key-value pair to the dictionary.
+- **Parameter:** `item` — The `KeyValuePair<K, V>` to add. Cannot be null.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `item.Value` is null.
+  - Throws `ArgumentException` if `item.Key` already exists.
+- **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
+- **Remarks:** This is an overload of <see cref="Add(K,V)"/> that accepts a `KeyValuePair`.
 
-### `Remove(K)`
+#### `TryAdd(KeyValuePair<K, V>)`
+```csharp
+public bool TryAdd(KeyValuePair<K, V> item);
+```
+- **Description:** Attempts to add the specified `KeyValuePair<K, V>` to the dictionary.
+- **Parameter:** `item` — The key/value pair to add. The key must be unique within the dictionary.
+- **Returns:**
+  - `true` if the key/value pair was added successfully.
+  - `false` if the key already exists in the dictionary.
+- **Remarks:** This method does not throw an exception if the key already exists, unlike `Add(K,V)`.
+
+#### `TryAdd(K, V)`
+```csharp
+public bool TryAdd(K key, V value);
+```
+- **Description:** Attempts to add the specified key and value to the dictionary.
+- **Parameters:**
+  - `key` — The key of the element to add.
+  - `value` — The value of the element to add. Cannot be null.
+- **Returns:**
+  - `true` if the key/value pair was added successfully.
+  - `false` if the key already exists in the dictionary or if `value` is `null`.
+- **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
+- **Remarks:** This method does not throw an exception if the key already exists, unlike `Add(K,V)`.
+
+#### `Remove(K)`
 ```csharp
 public bool Remove(K key);
 ```
@@ -109,9 +205,7 @@ public bool Remove(K key);
 - **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
 - **Remarks:** Does not throw an exception if the key does not exist.
 
----
-
-### `Remove(K, out V)`
+#### `Remove(K, out V)`
 ```csharp
 public bool Remove(K key, out V value);
 ```
@@ -123,19 +217,17 @@ public bool Remove(K key, out V value);
 - **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
 - **Remarks:** Provides the removed value for further processing.
 
----
-
-### `Clear()`
+#### `Remove(KeyValuePair<K, V> item)`
 ```csharp
-public void Clear();
+public bool Remove(KeyValuePair<K, V> item);
 ```
-- **Description:** Removes all key-value pairs from the dictionary.
-- **Events:** Triggers `OnItemRemoved` for each item and `OnStateChanged`.
-- **Remarks:** Resets the internal state. Use with caution as all data is lost.
+- **Description:** Removes the specified key/value pair from the dictionary.
+- **Parameter:** `item` — The key/value pair to remove.
+- **Returns:** `true` if the item was found and successfully removed; otherwise `false`.
+- **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
+- **Remarks:** The method checks for the existence of the exact key/value pair before removal.
 
----
-
-### `ContainsKey(K)`
+#### `ContainsKey(K)`
 ```csharp
 public bool ContainsKey(K key);
 ```
@@ -145,9 +237,16 @@ public bool ContainsKey(K key);
 - **Returns:** `true` if the key exists; otherwise `false`.
 - **Remarks:** Use this method to check existence before accessing a key to avoid exceptions.
 
----
+#### `Contains(KeyValuePair<K, V>)`
+```csharp
+public bool Contains(KeyValuePair<K, V> item);
+```
+- **Description:** Determines whether the dictionary contains the specified key/value pair.
+- **Parameter:** `item` — The key/value pair to locate.
+- **Returns:** `true` if the dictionary contains an element with the specified key and value; otherwise `false`.
+- **Remarks:** Comparison of values is performed using the dictionary's equality comparer.
 
-### `TryGetValue(K, out V)`
+#### `TryGetValue(K, out V)`
 ```csharp
 public bool TryGetValue(K key, out V value);
 ```
@@ -158,9 +257,27 @@ public bool TryGetValue(K key, out V value);
 - **Returns:** `true` if the key exists; otherwise `false`.
 - **Remarks:** Preferred method for safe retrieval of values.
 
----
+#### `Clear()`
+```csharp
+public void Clear();
+```
+- **Description:** Removes all key-value pairs from the dictionary.
+- **Events:** Triggers `OnItemRemoved` for each item and `OnStateChanged`.
+- **Remarks:** Resets the internal state. Use with caution as all data is lost.
 
-### `GetEnumerator()`
+#### `CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0)`
+```csharp
+public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0);
+```
+- **Description:** Copies the elements of the dictionary to the specified array, starting at the specified index.
+- **Parameters:**
+  - `array` — The destination array. Cannot be null.
+  - `arrayIndex` — The zero-based index in the array at which copying begins. Must be non-negative.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `array` is null.
+  - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
+
+#### `GetEnumerator()`
 ```csharp
 public Enumerator GetEnumerator();
 ```
@@ -171,18 +288,29 @@ public Enumerator GetEnumerator();
 ---
 
 
-
-
-
 ## Nested Collections
 
-### `ReadOnlyKeyCollection`
-- Represents a read-only collection of keys.
-- Supports enumeration and `Contains` checks, but cannot be modified.
+<details>
+  <summary>
+    <h3>🧩 ReadOnlyKeyCollection</h3>
+    <br> Represents a read-only collection of keys.
+  </summary>
 
-### `ReadOnlyValueCollection`
-- Represents a read-only collection of values.
-- Supports enumeration and `Contains` checks, but cannot be modified.
+</details>
+
+---
+
+<details>
+  <summary>
+    <h3>🧩 ReadOnlyValueCollection</h3>
+    <br> Represents a read-only collection of keys.
+  </summary>
+
+</details>
+
+
+
+
 
 ---
 
