@@ -3,7 +3,7 @@
 Represents a **reactive key-value dictionary** that provides notifications when items are added, removed, or updated. It implements [IReactiveDictionary<K, V>](IReactiveDictionary.md).
 
 > [!NOTE]  
-> Use this class when you need a dictionary with full read/write access and **reactive notifications** on changes.
+> Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
 
 ---
 
