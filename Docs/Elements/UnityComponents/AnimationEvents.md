@@ -41,6 +41,10 @@ public void Unsubscribe(string evt, Action action);
   - `action` — the action to remove from the handler list.
 - **Remarks:** If the action was not registered, nothing happens.
 
+---
+
+## Unity Callback
+
 #### `ReceiveEvent(string)`
 ```csharp
 public void ReceiveEvent(string message);
