@@ -29,12 +29,8 @@ This section provides a complete reference to the core interfaces, classes, and 
 
 Here you will find detailed explanations, usage examples, and extension methods for:
 
-<details>
-  <summary>
-    <h4>  🧩 Values</h4>
-    <br> Represents interfaces and implementations for reactive and constant values.
-  </summary>
-  <br>
+### 🧩 Values
+Represents reactive values and constants.
 
 - [IValue](Values/IValue.md) <!-- + -->
 - [IReactiveValue](Values/IReactiveValue.md) <!-- + -->
@@ -43,14 +39,8 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - [DefaultConstants](Values/DefaultConstants.md) <!-- + -->
 - [Extensions](Values/Extensions.md) <!-- + -->
 
-</details>
-
-<details>
-  <summary>
-    <h4>  🧩 Variables</h4>
-    <br> Represents reactive variables, proxies, and Unity-specific variable types.
-  </summary>
-  <br>
+### 🧩 Variables
+Represents reactive variables, proxies, and Unity-specific variable types.
 
 - [IVariable](Variables/IVariable.md) <!-- + -->
 - [BaseVariable](Variables/BaseVariable.md) <!-- + -->
@@ -60,15 +50,9 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)  <!-- + -->
 - [Extensions](Variables/Extensions.md) <!-- + -->
 
-</details>
+###  🧩 Actions
+Represents a family of actions with varying numbers of input parameters. They provide a lightweight abstraction for invoking logic, often used in event systems, command patterns, or reactive programming.
 
-
-<details>
-  <summary>
-    <h4>  🧩 Actions</h4>
-    <br> Represents reusable actions.
-  </summary>
-  <br>
 
 - [IAction](Actions/IAction.md) <!-- + -->
 - [InlineAction](Actions/InlineAction.md)  <!-- + -->
@@ -80,14 +64,8 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - [SceneActionReference](Actions/SceneActionReference.md) <!-- + -->
 - [Extensions](Actions/Extensions.md) <!-- + -->
 
-</details>
-
-<details>
-  <summary>
-    <h4>  🧩 Functions</h4>
-    <br> Represents reusable functions and predicates.
-  </summary>
-  <br>
+### 🧩 Functions
+Represents a family of functions with varying numbers of input parameters. They provide a lightweight abstraction for defining logic that returns a value, making them useful for callbacks, computations, and functional programming patterns.
 
 - [IFunction](Functions/IFunction.md) <!-- + -->
 - [InlineFunction](Functions/InlineFunction.md)  <!-- + -->
@@ -95,26 +73,14 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - [InlinePredicate](Functions/InlinePredicate.md)  <!-- + -->
 - [Extensions](Functions/Extensions.md) <!-- + -->
 
-</details>
-
-<details>
-  <summary>
-    <h4>  🧩 Setters</h4>
-    <br> Represents inline and interface-based property setters.
-  </summary>
-  <br>
+### 🧩 Setters
+Represents interfaces and classes for **assigning values**.  
 
 - [ISetter](Setters/ISetter.md) <!-- + -->
 - [InlineSetter](Setters/InlineSetter.md) <!-- + -->
 
-</details>
-
-<details>
-  <summary>
-    <h4>  🧩 Observables </h4>
-    <br> Represents event abstractions, subscriptions, and reactive signals.
-  </summary>
-  <br>
+### 🧩 Events
+Represents a family of events, subscriptions, and signals.
 
 - [ISignal](Signals/ISignal.md) <!-- + -->
 - [InlineSignal](Signals/InlineSignal.md) <!-- + -->
@@ -123,19 +89,17 @@ Here you will find detailed explanations, usage examples, and extension methods 
 - [Subscription](Signals/Subscription.md) <!-- + -->
 - [Extensions](Signals/Extensions.md) <!-- + -->
 
-</details>
-
-<details>
-  <summary>
-    <h4>  🧩 Requests </h4>
-    <br> Represents delayed actions.
-  </summary>
-  <br>
+### 🧩 Requests
+Represent a deferred action that can be executed later. This is particularly useful when **player input occurs in `Update`**, but the request is processed in `FixedUpdate`. Requests also prevent **duplicate commands** if the same request is already active.
 
 - [IRequest](Requests/IRequest.md) <!-- + -->
 - [BaseRequest](Requests/BaseRequest.md) <!-- + -->
 
-</details>
+### 🧩 Expressions
+
+Represent **expressions composed of function members** that can be dynamically added, removed, and
+evaluated. They support parameterless functions as well as functions with one or more parameters.
+
 
 <!--
 
