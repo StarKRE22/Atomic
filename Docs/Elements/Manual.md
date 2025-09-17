@@ -34,7 +34,7 @@ Here you will find detailed explanations, usage examples, and extension methods 
 
 <details>
   <summary>
-    <h4>🧩 Values</h4>
+    <h4>Values</h4>
     <br> interfaces and implementations for reactive and constant values
   </summary>
 
