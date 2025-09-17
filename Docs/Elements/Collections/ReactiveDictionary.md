@@ -68,13 +68,13 @@ public ReactiveDictionary(params (K, V)[] source);
 
 #### `OnStateChanged`
 ```csharp
-event StateChangedHandler OnStateChanged;
+public event StateChangedHandler OnStateChanged;
 ```
 - **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
 
 #### `OnItemChanged`
 ```csharp
-event SetItemHandler<K, V> OnItemChanged;
+public event SetItemHandler<K, V> OnItemChanged;
 ```
 - **Description:** Triggered when the value of an existing key changes.
 - **Parameters:**
@@ -83,7 +83,7 @@ event SetItemHandler<K, V> OnItemChanged;
 
 #### `OnItemAdded`
 ```csharp
-event AddItemHandler<K, V> OnItemAdded;
+public event AddItemHandler<K, V> OnItemAdded;
 ```
 - **Description:** Triggered when a new key-value pair is added.
 - **Parameters:**
@@ -92,7 +92,7 @@ event AddItemHandler<K, V> OnItemAdded;
 
 #### `OnItemRemoved`
 ```csharp
-event RemoveItemHandler<K, V> OnItemRemoved;
+public event RemoveItemHandler<K, V> OnItemRemoved;
 ```
 - **Description:** Triggered when a key-value pair is removed.
 - **Parameters:**
