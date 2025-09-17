@@ -307,18 +307,11 @@ public bool IsReadOnly { get; }
 ```
 - **Description:** Gets a value indicating whether the collection is read-only. Always `true`.
 
-#### `GetEnumerator()`
-```csharp
-public Enumerator GetEnumerator();
-```
-- **Description:** Returns an enumerator that iterates through the keys in the dictionary.
-- **Returns:** An `Enumerator` struct for iterating over keys.
-
 ---
 
 ### Methods
 
-#### `Contains(K item)`
+#### `Contains(K)`
 ```csharp
 public bool Contains(K item);
 ```
@@ -338,6 +331,13 @@ public void CopyTo(K[] array, int arrayIndex);
   - Throws `ArgumentNullException` if `array` is null.
   - Throws `ArgumentOutOfRangeException` if `arrayIndex` is negative.
 
+#### `GetEnumerator()`
+```csharp
+public Enumerator GetEnumerator();
+```
+- **Description:** Returns an enumerator that iterates through the keys in the dictionary.
+- **Returns:** An `Enumerator` struct for iterating over keys.
+
 ---
 
 ### Unsupported Methods
@@ -355,163 +355,71 @@ bool ICollection<K>.Remove(K item);
 <details>
   <summary>
     <h2>🧩 ReadOnlyValueCollection</h2>
-    <br> Represents a read-only collection of keys.
+    <br> Represents a read-only collection of values.
   </summary>
-
-</details>
-
-
-
-
-
----
-
-## Example of Usage
-
-```
-ReactiveDictionary<string, int> dict = new ReactiveDictionary<string, int>();
-
-dict.OnItemAdded += (k, v) => Console.WriteLine($"Added: {k} => {v}");
-dict.OnItemChanged += (k, v) => Console.WriteLine($"Changed: {k} => {v}");
-dict.OnItemRemoved += (k, v) => Console.WriteLine($"Removed: {k} => {v}");
-dict.OnStateChanged += () => Console.WriteLine("Dictionary state changed.");
-
-dict.Add("apple", 5);
-dict["apple"] = 10;
-dict.Remove("apple");
-
-foreach (var kvp in dict)
-{
-Console.WriteLine($"{kvp.Key} => {kvp.Value}");
-}
-```
-
-
-
-
-=====
-=====
-
-# 🧩 Reactive Dictionary
-
-A reactive key-value dictionary that allows observation of its elements.  
-Supports dynamic resizing and triggers events when items are added, removed, modified, or when the dictionary’s state changes.  
-Ideal for **UI updates, reactive programming, caching layers, and event-driven scenarios**.
-
-> **Key advantage:** Unlike a plain `Dictionary<K,V>`, the reactive version provides **notifications on every structural change**, making it suitable for synchronization with UI or external systems.
-
----
-
-
-## ReactiveDictionary<K,V>
-
-`ReactiveDictionary<K,V>` is the concrete implementation of `IReactiveDictionary<K,V>`.  
-Internally it uses hash buckets, dynamic slot arrays, and free lists for efficient memory reuse.
-
-### Constructors
-
-- `ReactiveDictionary(int capacity = 1)`  
-  Initializes an empty dictionary with given initial capacity.
-
-- `ReactiveDictionary(IDictionary<K,V> dictionary)`  
-  Initializes from an existing dictionary.
-
-- `ReactiveDictionary(IEnumerable<KeyValuePair<K,V>> items)`  
-  Initializes from an enumerable of key-value pairs.
-
----
 
 ### Properties
 
-- `int Count` – number of key-value pairs.
-- `bool IsReadOnly` – always `false`.
-- `ICollection<K> Keys` – read-only view of keys.
-- `ICollection<V> Values` – read-only view of values.
-- `V this[K key]` – access value by key. Throws if not found.
+#### `Count`
+```csharp
+public int Count { get; }
+```
+- **Description:** Gets the number of values in the collection.
 
----
-
-### Events
-
-- `event StateChangedHandler OnStateChanged` – fired on global changes.
-- `event SetItemHandler<K,V> OnItemChanged` – fired when a value is replaced.
-- `event AddItemHandler<K,V> OnItemAdded` – fired when a new pair is inserted.
-- `event RemoveItemHandler<K,V> OnItemRemoved` – fired when a pair is removed.
+#### `IsReadOnly`
+```csharp
+public bool IsReadOnly { get; }
+```
+- **Description:** Gets a value indicating whether the collection is read-only. Always `true`.
 
 ---
 
 ### Methods
 
-- `void Add(K key, V value)`  
-  Adds a new entry. Triggers `OnItemAdded` + `OnStateChanged`.
-
-
-- `bool Remove(K key)`  
-  Removes an entry by key. Triggers `OnItemRemoved` + `OnStateChanged`.
-
-
-- `void Clear()`  
-  Removes all entries. Triggers multiple `OnItemRemoved` + `OnStateChanged`.
-
-
-- `bool ContainsKey(K key)`  
-  Checks if key exists.
-
-
-- `bool TryGetValue(K key, out V value)`  
-  Gets value safely.
-
-
-- `IEnumerator<KeyValuePair<K,V>> GetEnumerator()`  
-  Lightweight struct-based enumerator.
-
-
-- `void CopyTo(KeyValuePair<K,V>[] array, int arrayIndex)`  
-  Copies all entries to external array.
-
----
-
-### Nested Types
-
-- `Enumerator` – struct enumerator over dictionary items.
-- `ReadOnlyKeyCollection` – read-only view over keys.
-- `ReadOnlyValueCollection` – read-only view over values.
-
----
-
-### Unity Integration
-
-When used in Unity (`UNITY_5_3_OR_NEWER`),  
-`ReactiveDictionary<K,V>` implements `ISerializationCallbackReceiver` to support **serialization**:
-
-- `OnBeforeSerialize()` – flattens dictionary into an array.
-- `OnAfterDeserialize()` – reconstructs dictionary after load.
-
----
-
-### Example Usage
-
+#### `Contains(V)`
 ```csharp
-var dict = new ReactiveDictionary<string, int>();
-
-dict.OnItemAdded += (key, value) => Console.WriteLine($"Added {key}:{value}");
-dict.OnItemRemoved += (key, value) => Console.WriteLine($"Removed {key}:{value}");
-dict.OnItemChanged += (key, value) => Console.WriteLine($"Updated {key} -> {value}");
-dict.OnStateChanged += () => Console.WriteLine("Dictionary state changed");
-
-dict.Add("x", 1);
-dict["x"] = 42;
-dict.Remove("x");
-dict.Add("y", 99);
-
-foreach (var kv in dict)
-    Console.WriteLine($"{kv.Key} = {kv.Value}");
+public bool Contains(V item);
 ```
+- **Description:** Determines whether the collection contains the specified value.
+- **Parameter:** `item` — The value to locate.
+- **Returns:** `true` if the value exists; otherwise `false`.
+
+#### `CopyTo(V[] array, int arrayIndex)`
+```csharp
+public void CopyTo(V[] array, int arrayIndex);
+```
+- **Description:** Copies the values to the specified array, starting at the specified index.
+- **Parameters:**
+  - `array` — The destination array. Cannot be null.
+  - `arrayIndex` — The zero-based index at which to begin copying. Must be non-negative.
+- **Exceptions:**
+  - Throws `ArgumentNullException` if `array` is null.
+  - Throws `ArgumentOutOfRangeException` if `arrayIndex` is negative.
+
+#### `GetEnumerator()`
+```csharp
+public Enumerator GetEnumerator();
+```
+- **Description:** Returns an enumerator that iterates through the values in the dictionary.
+- **Returns:** An `Enumerator` struct for iterating over values.
+
+---
+
+### Unsupported Methods
+```csharp
+void ICollection<V>.Add(V item);
+void ICollection<V>.Clear();
+bool ICollection<V>.Remove(V item);
+```
+- **Description:** All modification methods throw `NotSupportedException` because the collection is read-only.
+
+</details>
+
+---
 
 ## 🔥 Performance
 
-The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**.  
-The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper compared to a standard `Dictionary`.
+The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements of type `object`**. The table shows median execution times of key operations, illustrating the overhead of the reactive wrapper compared to a standard `Dictionary`.
 
 | Operation       | Dictionary (Median μs) | ReactiveDictionary (Median μs) |
 |-----------------|------------------------|--------------------------------|
@@ -524,4 +432,4 @@ The table shows median execution times of key operations, illustrating the overh
 | Remove          | 7.20                   | 11.50                          |
 | TryGetValue     | 12.30                  | 10.40                          |
 
-> **Note:** `ReactiveDictionary` introduces minimal overhead for common operations like `Add` and `Clear`. In some operations like `Indexer Get` and `TryGetValue`, it can even be slightly faster due to internal optimizations. `Remove` and `Indexer Set` may have slightly higher latency compared to a standard `Dictionary` because of event invocation and reactive state management.
+`ReactiveDictionary` introduces minimal overhead for common operations like `Add` and `Clear`. In some operations like `Indexer Get` and `TryGetValue`, it can even be slightly faster due to internal optimizations. `Remove` and `Indexer Set` may have slightly higher latency compared to a standard `Dictionary` because of event invocation and reactive state management.
