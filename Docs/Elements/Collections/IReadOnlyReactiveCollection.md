@@ -7,7 +7,7 @@
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -34,7 +34,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-##  Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -45,7 +45,7 @@ public int Count { get; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `GetEnumerator()`
 ```csharp
