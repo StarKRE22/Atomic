@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/IExpression.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Expressions/IExpression.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +191,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="19616000" />
-    </task>
-    <task id="LOCAL-00401" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758183763985</created>
-      <option name="number" value="00401" />
-      <option name="presentableId" value="LOCAL-00401" />
-      <option name="project" value="LOCAL" />
-      <updated>1758183763985</updated>
+      <workItem from="1758177750643" duration="20340000" />
     </task>
     <task id="LOCAL-00402" summary="SceneActionComposite.md">
       <option name="closed" value="true" />
@@ -586,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758211044017</updated>
     </task>
-    <option name="localTasksCounter" value="450" />
+    <task id="LOCAL-00450" summary="IExpression.md">
+      <option name="closed" value="true" />
+      <created>1758211827424</created>
+      <option name="number" value="00450" />
+      <option name="presentableId" value="LOCAL-00450" />
+      <option name="project" value="LOCAL" />
+      <updated>1758211827424</updated>
+    </task>
+    <option name="localTasksCounter" value="451" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал InlineAction.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="SceneActionReference.md" />
@@ -638,7 +636,8 @@
     <MESSAGE value="ExpressionBase.md" />
     <MESSAGE value="Прочесал FloatMulExpression.md" />
     <MESSAGE value="Прочесал FloatSumExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прочесал FloatSumExpression.md" />
+    <MESSAGE value="IExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
