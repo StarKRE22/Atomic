@@ -309,10 +309,10 @@ public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3);
   </summary>
 
 <br>
+
 ```csharp
 public class BaseRequest<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
 ```
-- **Description:** Represents a request with four arguments.
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
