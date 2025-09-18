@@ -1,6 +1,6 @@
 # 🧩 ReactiveArray&lt;T&gt;
 
-`ReactiveArray<T>` represents a **fixed-size reactive array** that emits events when elements change. It provides indexed access, supports enumeration, and implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`. Optionally supports Unity serialization (`ISerializationCallbackReceiver`) for use in Unity projects.
+Represents a **fixed-size reactive array** that emits events when elements change. It provides indexed access, supports enumeration, and implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`. Optionally supports serialization for Unity projects.
 
 > [!NOTE]  
 > Use this class when you need a read-write reactive array with change notifications and iteration support.
@@ -10,7 +10,7 @@
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
 #### `ReactiveArray(int)`
 ```csharp
@@ -39,7 +39,7 @@ public ReactiveArray(IEnumerable<T> elements);
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -58,7 +58,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Length`
 ```csharp
@@ -75,7 +75,7 @@ public int Count { get; }
 
 ---
 
-## Indexer
+## 🏷️ Indexers
 
 #### `[int index]`
 ```csharp
@@ -88,7 +88,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Clear()`
 ```csharp
