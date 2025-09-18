@@ -18,7 +18,7 @@ This allows combining multiple actions into a sequence, which will be invoked **
 public class CompositeAction : IAction
 ```
 
-### Constructors
+### 🏗️ Constructors
 
 #### `CompositeAction()`
 ```csharp
@@ -43,7 +43,7 @@ public CompositeAction(IEnumerable<IAction> actions)
 - **Parameter:** `actions` – A collection of actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### Methods
+### 🏹 Method
 
 #### `Invoke()`
 ```csharp
@@ -82,7 +82,7 @@ public class CompositeAction<T> : IAction<T>
 ```
 - **Type parameter:** `T` — the input parameter.
 
-### Constructors
+### 🏗️ Constructors
 
 #### `CompositeAction()`
 ```csharp
@@ -107,7 +107,7 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### Methods
+### 🏹 Method
 
 #### `Invoke(T arg)`
 ```csharp
@@ -149,7 +149,7 @@ public class CompositeAction<T1, T2> : IAction<T1, T2>
   - `T1` — the first argument
   - `T2` — the second argument
 
-### Constructors
+### 🏗️ Constructors
 
 #### `CompositeAction()`
 ```csharp
@@ -176,7 +176,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### Methods
+### 🏹 Method
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
 ```
@@ -216,7 +216,7 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
     - `T2` — the second argument
     - `T3` — the third argument
 
-### Constructors
+### 🏗️ Constructors
 
 #### `CompositeAction()`
 - **Description:** Initializes a new instance
@@ -240,7 +240,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### Methods
+### 🏹 Method
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3)
 ```
@@ -281,7 +281,7 @@ public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
     - `T3` — the third argument
     - `T4` — the fourth argument
 
-### Constructors
+### 🏗️ Constructors
 
 #### `CompositeAction()`
 - **Description:** Initializes a new instance
@@ -304,7 +304,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### Methods
+### 🏹 Method
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
