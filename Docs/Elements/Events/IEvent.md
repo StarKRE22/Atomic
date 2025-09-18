@@ -89,7 +89,7 @@ public void Unsubscribe(Action<T> action)
 ```
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
 
 #### `Invoke(T)`
 
@@ -142,7 +142,7 @@ public void Unsubscribe(Action<T1, T2> action)
 ```
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
 
 #### `Invoke(T1, T2)`
 
@@ -198,7 +198,7 @@ public void Unsubscribe(Action<T1, T2, T3> action)
 ```
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
 
 #### `Invoke(T1, T2, T3)`
 
@@ -253,7 +253,7 @@ public void Unsubscribe(Action<T1, T2, T3, T4> action)
 ```
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
 
 #### `Invoke(T1, T2, T3, T4)`
 
