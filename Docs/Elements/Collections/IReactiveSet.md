@@ -7,7 +7,7 @@ Represents a **reactive set** that supports notifications when items are added, 
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -32,7 +32,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -48,7 +48,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Add(T)`
 ```csharp

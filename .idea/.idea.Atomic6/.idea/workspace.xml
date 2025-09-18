@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveSet.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,31 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="10407000" />
-    </task>
-    <task id="LOCAL-00374" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758133701846</created>
-      <option name="number" value="00374" />
-      <option name="presentableId" value="LOCAL-00374" />
-      <option name="project" value="LOCAL" />
-      <updated>1758133701846</updated>
-    </task>
-    <task id="LOCAL-00375" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758133809321</created>
-      <option name="number" value="00375" />
-      <option name="presentableId" value="LOCAL-00375" />
-      <option name="project" value="LOCAL" />
-      <updated>1758133809321</updated>
-    </task>
-    <task id="LOCAL-00376" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758133878116</created>
-      <option name="number" value="00376" />
-      <option name="presentableId" value="LOCAL-00376" />
-      <option name="project" value="LOCAL" />
-      <updated>1758133878116</updated>
+      <workItem from="1758177750643" duration="10712000" />
     </task>
     <task id="LOCAL-00377" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -582,7 +560,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758188583059</updated>
     </task>
-    <option name="localTasksCounter" value="423" />
+    <task id="LOCAL-00423" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758188677709</created>
+      <option name="number" value="00423" />
+      <option name="presentableId" value="LOCAL-00423" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188677709</updated>
+    </task>
+    <task id="LOCAL-00424" summary="IReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758188759032</created>
+      <option name="number" value="00424" />
+      <option name="presentableId" value="LOCAL-00424" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188759032</updated>
+    </task>
+    <task id="LOCAL-00425" summary="IReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758188850532</created>
+      <option name="number" value="00425" />
+      <option name="presentableId" value="LOCAL-00425" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188850532</updated>
+    </task>
+    <option name="localTasksCounter" value="426" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,8 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал раздел с Time!" />
-    <MESSAGE value="Сделал IReadOnlyReactiveArray.cs" />
     <MESSAGE value="Написал ReactiveArray.md" />
     <MESSAGE value="Сделал IReadOnlyReactiveList.md" />
     <MESSAGE value="Сделал ReactiveList.md" />
@@ -634,7 +634,9 @@
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="IReactiveDictionary.md" />
+    <MESSAGE value="IReactiveList.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReactiveList.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
