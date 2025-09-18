@@ -39,7 +39,7 @@ public void Unsubscribe(Action action)
 ```
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
 
 #### `Invoke()`
 
