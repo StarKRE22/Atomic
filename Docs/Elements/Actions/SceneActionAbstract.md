@@ -92,6 +92,7 @@ public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
 public abstract void Invoke(T arg);
 ```
 - **Description:** Executes the action logic with the provided argument.
+- **Parameter:** `arg` – The input argument.
 
 ### 🗂 Example of Usage
 This example shows how to use `SceneActionAbstract<T>` to create an action that destroys objects when they enter a trigger.
@@ -151,7 +152,10 @@ public abstract class SceneActionAbstract<T1, T2> : MonoBehaviour, IAction<T1, T
 public abstract void Invoke(T1 arg1, T2 arg2);
 ```
 - **Description:** Executes the action logic with the provided arguments.
-
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
+  
 ### 🗂 Example of Usage
 This example shows how to use `SceneActionAbstract<T1, T2>` to apply damage to a character.
 
@@ -201,6 +205,10 @@ public abstract class SceneActionAbstract<T1, T2, T3> : MonoBehaviour, IAction<T
 public abstract void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 - **Description:** Executes the action logic with the provided arguments.
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
+  - `arg3` – The third argument
 
 ### 🗂 Example of Usage
 
@@ -255,6 +263,12 @@ public abstract class SceneActionAbstract<T1, T2, T3, T4> : MonoBehaviour, IActi
 public abstract void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 - **Description:** Executes the action logic with the provided arguments.
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
+  - `arg3` – The third argument
+  - `arg4` – The fourth argument
+
 
 ### 🗂 Example of Usage
 
