@@ -38,7 +38,7 @@ public void Invoke()
     - In Unity, uses the specified `LogType`.
     - Outside Unity, prints to standard console.
 
-#### ToString()
+#### `ToString()`
 ```csharp
 public string ToString();
 ```

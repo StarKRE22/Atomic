@@ -26,7 +26,7 @@ void Invoke();
 
 ### 🗂 Example of Usage
 ```csharp
-public class HelloWorldAction : IAction
+public sealed class HelloWorldAction : IAction
 {
     public void Invoke() => Console.WriteLine("Hello World!");
 }
@@ -63,7 +63,7 @@ void Invoke(T arg);
 
 ### 🗂 Example of Usage
 ```csharp
-public class DestroyGameObjectAction : IAction<GameObject>
+public sealed class DestroyGameObjectAction : IAction<GameObject>
 {
     public void Invoke(GameObject go) => GameObject.Destroy(go);
 }
@@ -104,7 +104,7 @@ void Invoke(T1 arg1, T2 arg2);
 
 ### 🗂 Example of Usage
 ```csharp
-public class DealDamageAction : IAction<Character, int>
+public sealed class DealDamageAction : IAction<Character, int>
 {
     public void Invoke(Character character, int damage) => character.TakeDamage(damage);
 }
@@ -147,7 +147,7 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3);
 
 ### 🗂 Example of Usage
 ```csharp
-public class MoveResourcesAction : IAction<Storage, Storage, int>
+public sealed class MoveResourcesAction : IAction<Storage, Storage, int>
 {
     public void Invoke(Storage source, Storage destination, int amount)
     {
@@ -196,7 +196,7 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 
 ### 🗂 Example of Usage
 ```csharp
-public class MoveTransformAction : IAction<Transform, Vector3, float, float>
+public sealed class MoveTransformAction : IAction<Transform, Vector3, float, float>
 {
     public void Invoke(Transform transform, Vector3 direction, float speed, float deltaTime) 
     {
