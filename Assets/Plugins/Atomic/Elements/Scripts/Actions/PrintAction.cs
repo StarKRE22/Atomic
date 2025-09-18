@@ -54,7 +54,7 @@ namespace Atomic.Elements
             _logType = logType;
         }
 #else
-        public ConsoleAction(string message)
+        public PrintAction(string message)
         {
             _message = message;
         }
@@ -69,6 +69,37 @@ namespace Atomic.Elements
             Debug.unityLogger.Log(_logType, _message);
 #else
             Console.WriteLine(_message);
+#endif
+        }
+
+        /// <summary>
+        /// Returns a message representation.
+        /// </summary>
+        /// <remarks>
+        /// The output depends on the Unity version:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If compiled with <c>UNITY_5_3_OR_NEWER</c>, the method returns a string in the format 
+        /// "<c>{LogType}: {Message}</c>", where <c>_logType</c> is the log type and <c>_message</c> is the log text.
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Otherwise, only the log message (<c>_message</c>) is returned.
+        /// </description>
+        /// </item>
+        /// </list>
+        /// </remarks>
+        /// <returns>
+        /// A string that represents the object: either the log type with the message or just the message.
+        /// </returns>
+        public override string ToString()
+        {
+#if UNITY_5_3_OR_NEWER
+        return $"{_logType}: {_message}";   
+#else       
+        return _message;
 #endif
         }
     }

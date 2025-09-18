@@ -48,12 +48,14 @@ The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your develop
 
 For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
 using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+
 ---
 
 ## 🔌 Using Plugin for Rider
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default the code generation works with Unity, but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
+
 ---
 
 ## 💡 Key Concepts

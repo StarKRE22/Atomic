@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,15 +192,8 @@
       <workItem from="1758086721821" duration="250000" />
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
-      <workItem from="1758175918148" duration="1723000" />
-    </task>
-    <task id="LOCAL-00345" summary="Сделал ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758091147151</created>
-      <option name="number" value="00345" />
-      <option name="presentableId" value="LOCAL-00345" />
-      <option name="project" value="LOCAL" />
-      <updated>1758091147151</updated>
+      <workItem from="1758175918148" duration="1812000" />
+      <workItem from="1758177750643" duration="1121000" />
     </task>
     <task id="LOCAL-00346" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -584,7 +579,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758137818300</updated>
     </task>
-    <option name="localTasksCounter" value="394" />
+    <task id="LOCAL-00394" summary="Написал InlineAction.md">
+      <option name="closed" value="true" />
+      <created>1758177652540</created>
+      <option name="number" value="00394" />
+      <option name="presentableId" value="LOCAL-00394" />
+      <option name="project" value="LOCAL" />
+      <updated>1758177652541</updated>
+    </task>
+    <option name="localTasksCounter" value="395" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал интерфейс для таймера!" />
     <MESSAGE value="Сделали Timer!" />
     <MESSAGE value="Написал таймеры!" />
     <MESSAGE value="Сделал раздел с Time!" />
@@ -636,7 +638,8 @@
     <MESSAGE value="Обновляем CompositeAction.md" />
     <MESSAGE value="Обновил IAction" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Написал InlineAction.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал InlineAction.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
