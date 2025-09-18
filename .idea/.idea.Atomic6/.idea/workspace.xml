@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/UnitySpecificActions.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,23 +194,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="9777000" />
-    </task>
-    <task id="LOCAL-00369" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758128752026</created>
-      <option name="number" value="00369" />
-      <option name="presentableId" value="LOCAL-00369" />
-      <option name="project" value="LOCAL" />
-      <updated>1758128752026</updated>
-    </task>
-    <task id="LOCAL-00370" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758128913680</created>
-      <option name="number" value="00370" />
-      <option name="presentableId" value="LOCAL-00370" />
-      <option name="project" value="LOCAL" />
-      <updated>1758128913681</updated>
+      <workItem from="1758177750643" duration="10099000" />
     </task>
     <task id="LOCAL-00371" summary="Пилим!">
       <option name="closed" value="true" />
@@ -586,7 +572,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758186983464</updated>
     </task>
-    <option name="localTasksCounter" value="418" />
+    <task id="LOCAL-00418" summary="SceneActionReference.md">
+      <option name="closed" value="true" />
+      <created>1758188063547</created>
+      <option name="number" value="00418" />
+      <option name="presentableId" value="LOCAL-00418" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188063547</updated>
+    </task>
+    <task id="LOCAL-00419" summary="SceneActionReference.md">
+      <option name="closed" value="true" />
+      <created>1758188265338</created>
+      <option name="number" value="00419" />
+      <option name="presentableId" value="LOCAL-00419" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188265338</updated>
+    </task>
+    <option name="localTasksCounter" value="420" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +615,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал таймеры!" />
     <MESSAGE value="Сделал раздел с Time!" />
     <MESSAGE value="Сделал IReadOnlyReactiveArray.cs" />
     <MESSAGE value="Написал ReactiveArray.md" />
@@ -638,7 +639,8 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="SceneActionReference.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

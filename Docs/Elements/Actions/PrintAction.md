@@ -11,7 +11,7 @@ environments, which is especially useful when debugging or logging events in cro
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `PrintAction(string)`
 
@@ -37,7 +37,7 @@ public PrintAction(string message, LogType logType = LogType.Log)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -62,7 +62,7 @@ public string ToString();
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 #if UNITY_5_3_OR_NEWER
