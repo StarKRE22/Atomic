@@ -16,16 +16,16 @@ They also support implicit conversion from the underlying `Func` delegates.
 
 <br>
 
-- **Type parameter:** `T` — the return type
+- **Type parameter:** `R` — the return type
 
 ---
 
 ### 🏗️ Constructors
 
-#### `InlineFunction(Func<T>)`
+#### `InlineFunction(Func<R>)`
 
 ```csharp
-public InlineFunction(Func<T> func)
+public InlineFunction(Func<R> func)
 ```
 
 - **Description:** Initializes a new instance with the specified function delegate.
@@ -43,7 +43,7 @@ public T Value { get; }
 ```
 
 - **Description:** Invokes the wrapped function and returns the result.
-- **Returns:** The result of type `T`.
+- **Returns:** The result of type `R`.
 
 ---
 
@@ -52,7 +52,7 @@ public T Value { get; }
 #### `Invoke()`
 
 ```csharp
-public T Invoke()
+public R Invoke()
 ```
 
 - **Description:** Invokes the function and returns its result.
@@ -71,15 +71,15 @@ public override string ToString();
 
 ### 🪄 Operators
 
-#### `operator InlineFunction<T>(Func<T>)`
+#### `operator InlineFunction<R>(Func<R>)`
 
 ```csharp
-public static implicit operator InlineFunction<T>(Func<T> value);
+public static implicit operator InlineFunction<R>(Func<R> value);
 ```
 
-- **Description:** Implicitly converts a delegate of type `Func<T>` to an `InlineFunction<T>`.
+- **Description:** Implicitly converts a delegate of type `Func<R>` to an `InlineFunction<R>`.
 - **Parameter:** `value` — the delegate to wrap.
-- **Returns:** A new `InlineFunction<T>` containing the specified delegate.
+- **Returns:** A new `InlineFunction<R>` containing the specified delegate.
 
 ---
 
