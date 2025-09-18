@@ -1,7 +1,8 @@
 # 🧩 IRequest
 
 Represents a **deferred action** that can be executed at a later time. It is particularly useful for scenarios where
-input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help **prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
+input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help *
+*prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
 
 It extends the [IAction](../Actions/IAction.md) interface and provide s**required flags** and **argument retrieval /
 consumption** functionality.
@@ -469,7 +470,9 @@ public sealed class MoveController : IEntityInit, IEntityTick
         _moveRequest.Invoke(moveDirection);
     }
 }
+```
 
+```csharp
 // MoveBehaviour consumes the request
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
@@ -536,11 +539,27 @@ public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
         _moveRequest.Invoke(moveDirection);
     }
 }
-
+```
+```csharp
 // MoveBehaviour consumes the request
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
-    //Same code 
+    private Transform _transform;
+    private IValue<float> _moveSpeed;
+    private IRequest<Vector3> _moveRequest;
+
+    public void Init(IEntity entity)
+    {
+        _transform = entity.GetTransform();
+        _moveSpeed = entity.GetMoveSpeed();
+        _moveRequest = entity.GetMoveRequest();
+    }
+
+    public void FixedTick((IEntity entity, float deltaTime))
+    {
+        if (_moveRequest.Consume(out Vector3 moveDirection))
+            _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
+    }
 }
 ```
 

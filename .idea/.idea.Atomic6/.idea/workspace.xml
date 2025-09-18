@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/UnityComponents.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,23 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="26390000" />
-    </task>
-    <task id="LOCAL-00414" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758185729069</created>
-      <option name="number" value="00414" />
-      <option name="presentableId" value="LOCAL-00414" />
-      <option name="project" value="LOCAL" />
-      <updated>1758185729069</updated>
-    </task>
-    <task id="LOCAL-00415" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758185754981</created>
-      <option name="number" value="00415" />
-      <option name="presentableId" value="LOCAL-00415" />
-      <option name="project" value="LOCAL" />
-      <updated>1758185754981</updated>
+      <workItem from="1758177750643" duration="26759000" />
     </task>
     <task id="LOCAL-00416" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -599,7 +568,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758218279016</updated>
     </task>
-    <option name="localTasksCounter" value="463" />
+    <task id="LOCAL-00463" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221170457</created>
+      <option name="number" value="00463" />
+      <option name="presentableId" value="LOCAL-00463" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221170457</updated>
+    </task>
+    <task id="LOCAL-00464" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221219166</created>
+      <option name="number" value="00464" />
+      <option name="presentableId" value="LOCAL-00464" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221219166</updated>
+    </task>
+    <option name="localTasksCounter" value="465" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="ReactiveArray.md" />
@@ -651,7 +635,8 @@
     <MESSAGE value="InlineFunction.md" />
     <MESSAGE value="IPredicate.md" />
     <MESSAGE value="InlinePredicate.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate.md" />
+    <MESSAGE value="IRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
