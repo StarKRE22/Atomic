@@ -22,10 +22,10 @@ group itself behaves as a single scene action, while internally invoking all con
 ```csharp
 public class SceneActionComposite : SceneActionAbstract
 ```
-
-- **Description:** Represents a **parameterless composite scene action**.
 - **Usage:** Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
   will be invoked sequentially.
+
+---
 
 ### 🛠 Inspector Settings
 
@@ -45,6 +45,8 @@ public SceneActionAbstract[] actions;
 
 - **Description:** The array of scene actions to invoke in order.
 - **Access:** Read / Write
+
+---
 
 ### 🏹 Methods
 
@@ -73,12 +75,14 @@ public class SceneActionComposite<T> : SceneActionAbstract<T>
 ```
 
 - **Type parameter:** `T` — the argument type.
+---
 
 ### 🛠 Inspector Settings
 
 | Parameter | Description                                                      |
 |-----------|------------------------------------------------------------------|
 | `actions` | The array of scene actions to invoke in order  with one argument |
+---
 
 ### 🧱Fields
 
@@ -90,6 +94,7 @@ public SceneActionAbstract<T>[] actions;
 
 - **Description:** The array of scene actions to invoke in order.
 - **Access:** Read / Write
+---
 
 ### 🏹 Methods
 
@@ -121,12 +126,14 @@ public class SceneActionComposite<T1, T2> : SceneActionAbstract<T1, T2>
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
+---
 
 ### 🛠 Inspector Settings
 
 | Parameter | Description                                                     |
 |-----------|-----------------------------------------------------------------|
 | `actions` | The array of actions to execute sequentially with two arguments |
+---
 
 ### 🧱Fields
 
@@ -138,6 +145,7 @@ public SceneActionAbstract<T1, T2>[] actions;
 
 - **Description:** The array of scene actions to invoke in order.
 - **Access:** Read / Write
+---
 
 ### 🏹 Methods
 
@@ -173,12 +181,14 @@ public class SceneActionComposite<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
     - `T1` — first argument
     - `T2` — second argument
     - `T3` — third argument
+---
 
 ### 🛠 Inspector Settings
 
 | Parameter | Description                                                       |
 |-----------|-------------------------------------------------------------------|
 | `actions` | The array of actions to execute sequentially with three arguments |
+---
 
 ### 🧱Fields
 
@@ -190,6 +200,7 @@ public SceneActionComposite<T1, T2, T3>[] actions;
 
 - **Description:** The array of scene actions to invoke in order.
 - **Access:** Read / Write
+---
 
 ### 🏹 Methods
 
@@ -227,6 +238,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
     - `T2` — second argument
     - `T3` — third argument
     - `T4` — fourth argument
+---
 
 ### 🛠 Inspector Settings
 
@@ -234,6 +246,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
 |-----------|------------------------------------------------------------------|
 | `actions` | The array of actions to execute sequentially with four arguments |
 
+---
 
 ### 🧱Fields
 
@@ -245,6 +258,7 @@ public SceneActionComposite<T1, T2, T3, T4>[] actions;
 
 - **Description:** The array of scene actions to invoke in order.
 - **Access:** Read / Write
+---
 
 ### 🏹 Methods
 
@@ -269,6 +283,7 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 
 `SceneActionComposite` can be used similarly to [SceneActionDefault](SceneActionDefault.md) but is **strictly a
 composite container for `SceneActionAbstract`**.
+---
 
 ### 🔹 Non-generic Usage
 
@@ -284,6 +299,7 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
     public override void Invoke() => Debug.Log("Hello world");
 }
 ```
+---
 
 ### 🔹 Generic Usage
 
