@@ -266,14 +266,14 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 
 - **Description:** Executes each action sequentially with the provided arguments.
 
+</details>
+
 ---
 
 ## 🗂 Example of Usage
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
 `SceneAction` combined with `[SerializeReference]` is very convenient.
-
-</details>
 
 ---
 
