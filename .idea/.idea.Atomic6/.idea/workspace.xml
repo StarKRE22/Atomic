@@ -188,15 +188,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="11348000" />
-    </task>
-    <task id="LOCAL-00383" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758136402570</created>
-      <option name="number" value="00383" />
-      <option name="presentableId" value="LOCAL-00383" />
-      <option name="project" value="LOCAL" />
-      <updated>1758136402570</updated>
+      <workItem from="1758177750643" duration="11656000" />
     </task>
     <task id="LOCAL-00384" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -582,7 +574,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758189497472</updated>
     </task>
-    <option name="localTasksCounter" value="432" />
+    <task id="LOCAL-00432" summary="ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758189770162</created>
+      <option name="number" value="00432" />
+      <option name="presentableId" value="LOCAL-00432" />
+      <option name="project" value="LOCAL" />
+      <updated>1758189770162</updated>
+    </task>
+    <option name="localTasksCounter" value="433" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="Обновил IReactiveList.md" />
     <MESSAGE value="Обновил IReactiveLinkedList.md" />
@@ -634,7 +633,8 @@
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="ReactiveArray.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveArray.md" />
+    <MESSAGE value="ReactiveDictionary.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveDictionary.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

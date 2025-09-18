@@ -7,7 +7,7 @@ Represents a **reactive hash set** that supports **notifications** when items ar
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
 #### `ReactiveHashSet(int capacity)`
 ```csharp
@@ -55,7 +55,7 @@ public ReactiveHashSet(IEnumerable<T> elements);
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -80,7 +80,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -96,7 +96,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Add(T)`
 ```csharp
