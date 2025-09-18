@@ -1,9 +1,11 @@
 # 🧩 InlineAction Classes
 
-The **InlineAction** classes provide wrappers around standard `System.Action` delegates. 
-They implement the corresponding [IAction](IAction.md) interfaces and allow invoking actions directly, optionally with parameters. 
+The **InlineAction** classes provide wrappers around standard `System.Action` delegates.
+They implement the corresponding [IAction](IAction.md) interfaces and allow invoking actions directly, optionally with
+parameters.
 
-They also support implicit conversion from the underlying `Action` delegates and, if using Odin Inspector, inline display and buttons.
+They also support implicit conversion from the underlying `Action` delegates and, if using Odin Inspector, inline
+display and buttons.
 
 ---
 
@@ -19,40 +21,56 @@ They also support implicit conversion from the underlying `Action` delegates and
 public class InlineAction : IAction
 ```
 
+---
+
 ### 🏗️ Constructors
 
 #### `InlineAction(Action action)`
+
 ```csharp
 public InlineAction(Action action)
 ```
+
 - **Description:** Initializes a new instance with the specified action.
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
 public void Invoke()
 ```
+
 - **Description:** Invokes the wrapped action.
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
+
+---
 
 ### 🪄 Operators
 
 #### `operator InlineAction(Action)`
+
 ```csharp
 public static implicit operator InlineAction(Action action);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Action` to a `InlineAction`.
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -76,40 +94,55 @@ helloAction.Invoke(); // Output: Hello World!
 ```csharp
 public class InlineAction<T> : IAction<T>
 ```
+
 - **Type parameter** `T` — the input parameter
+
+---
 
 ### 🏗️ Constructors
 
 #### `InlineAction(Action<T> action)`
+
 ```csharp
 public InlineAction(Action<T> action)
 ```
+
 - **Description:** Initializes a new instance with the specified action.
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T arg)`
+
 ```csharp
 public void Invoke(T arg)
 ```
+
 - **Description:** Invokes the wrapped action with the specified argument.
 - **Parameter:** `arg` – The argument to pass to the action.
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
+
+---
 
 ### 🪄 Operators
 
 #### `operator InlineAction<T>(Action<T>)`
+
 ```csharp
 public static implicit operator InlineAction<T>(Action<T> action);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Action<T>` to a `InlineAction<T>`.
 - **Type Parameter:** `T` — input parameter.
 - **Parameter:** `action` – the delegate to wrap.
@@ -137,52 +170,70 @@ destroyAction.Invoke(gameObject);
 ```csharp
 public class InlineAction<T1, T2> : IAction<T1, T2>
 ```
+
 - **Type parameters**
-  - `T1` — the first argument
-  - `T2` — the second argument
+    - `T1` — the first argument
+    - `T2` — the second argument
+
+---
 
 ### 🏗️ Constructors
 
 #### `InlineAction(Action<T1, T2> action)`
+
 ```csharp
 public InlineAction(Action<T1, T2> action)
 ```
+
 - **Description:** Initializes a new instance with the specified action.
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
 ```
+
 - **Description:** Invokes the wrapped action with the specified arguments.
 - **Parameters:**
-  - `arg1` – The first argument
-  - `arg2` – The second argument
+    - `arg1` – The first argument
+    - `arg2` – The second argument
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
+
+---
 
 ### 🪄 Operators
 
 #### `operator InlineAction<T1, T2>(Action<T1, T2>)`
+
 ```csharp
 public static implicit operator InlineAction<T1, T2>(Action<T1, T2> action);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Action<T1, T2>` to a `InlineAction<T1, T2>`.
 - **Type Parameters:**
-  - `T1` — the first argument
-  - `T2` — the second argument
+    - `T1` — the first argument
+    - `T2` — the second argument
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T1, T2>` containing the specified delegate.
 
+---
+
 ### 🗂 Example of Usage
+
 ```csharp
 var damageAction = new InlineAction<Character, int>(
     (character, damage) => character.TakeDamage(damage));
@@ -205,54 +256,71 @@ damageAction.Invoke(enemy, 5);
 ```csharp
 public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```
+
 - **Description:** Represents an action with three parameters that can be invoked.
 - **Type parameters**
-  - `T1` — the first argument
-  - `T2` — the second argument
-  - `T3` — the third argument
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
+
+---
 
 ### 🏗️ Constructors
 
 #### `InlineAction(Action<T1, T2, T3> action)`
+
 ```csharp
 public InlineAction(Action<T1, T2, T3> action)
 ```
+
 - **Description:** Initializes a new instance with the specified action.
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3)
 ```
+
 - **Description:** Invokes the wrapped action with the specified arguments.
 - **Parameters:**
-  - `arg1` – The first argument
-  - `arg2` – The second argument
-  - `arg3` – The third argument
+    - `arg1` – The first argument
+    - `arg2` – The second argument
+    - `arg3` – The third argument
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
+
+---
 
 ### 🪄 Operators
 
 #### `operator InlineAction<T1, T2, T3>(Action<T1, T2, T3>)`
+
 ```csharp
 public static implicit operator InlineAction<T1, T2, T3>(Action<T1, T2, T3> action);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Action<T1, T2, T3>` to a `InlineAction<T1, T2, T3>`.
 - **Type Parameters:**
-  - `T1` — the first argument
-  - `T2` — the second argument
-  - `T3` — the third argument
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T1, T2, T3>` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -281,56 +349,73 @@ moveResourcesAction.Invoke(storageA, storageB, 100);
 ```csharp
 public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
+
 - **Type parameters**
-  - `T1` — the first argument
-  - `T2` — the second argument
-  - `T3` — the third argument
-  - `T4` — the fourth argument
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
+    - `T4` — the fourth argument
+
+---
 
 ### 🏗️ Constructors
 
 #### `InlineAction(Action<T1, T2, T3, T4> action)`
+
 ```csharp
 public InlineAction(Action<T1, T2, T3, T4> action)
 ```
+
 - **Description:** Initializes a new instance with the specified action.
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
+
 - **Description:** Invokes the wrapped action with the specified arguments.
 - **Parameters:**
-  - `arg1` – The first argument
-  - `arg2` – The second argument
-  - `arg3` – The third argument
-  - `arg4` – The fourth argument
+    - `arg1` – The first argument
+    - `arg2` – The second argument
+    - `arg3` – The third argument
+    - `arg4` – The fourth argument
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
+
+---
 
 ### 🪄 Operators
 
 #### `operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4>)`
+
 ```csharp
 public static implicit operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4> action);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Action<T1, T2, T3, T4>` to a `InlineAction<T1, T2, T3, T4>`.
 - **Type Parameters:**
-  - `T1` — the first argument
-  - `T2` — the second argument
-  - `T3` — the third argument
-  - `T4` — the third argument
+    - `T1` — the first argument
+    - `T2` — the second argument
+    - `T3` — the third argument
+    - `T4` — the third argument
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T1, T2, T3, T4>` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -347,10 +432,12 @@ moveAction.Invoke(transform, Vector3.forward, 10, 0.02);
 
 ## 📌 Best Practice
 
-`InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for events, commands, or reactive systems.
+`InlineAction` is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to
+define custom behavior inline for events, commands, or reactive systems.
 
-Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using `InlineAction`:
- 
+Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using
+`InlineAction`:
+
 ```csharp
 public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
 {
