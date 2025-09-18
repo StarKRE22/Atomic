@@ -1,62 +1,87 @@
 # 🧩 InlineFunction Classes
 
-The **InlineFunction** classes provide wrappers around standard `System.Func` delegates. They implement the corresponding [IValue](../Values/IValue.md) and [IFunction](IFunction.md) interfaces and allow invoking functions directly, optionally with parameters.  
+The **InlineFunction** classes provide wrappers around standard `System.Func` delegates. They implement the
+corresponding [IValue](../Values/IValue.md) and [IFunction](IFunction.md) interfaces and allow invoking functions
+directly, optionally with parameters.
 
-They also support implicit conversion from the underlying `Func` delegates and, if using Odin Inspector, inline display and buttons.
+They also support implicit conversion from the underlying `Func` delegates.
 
 ---
 
-## 🧩 InlineFunction&lt;T&gt;
-```csharp
-public class InlineFunction<T> : IValue<T>
-```
-- **Description:** Represents a **parameterless function** returning a value of type `T`.
+<details>
+  <summary>
+    <h2>🧩 InlineFunction&lt;R&gt;</h2>
+    <br> Represents a <b>parameterless</b> function that returns a result.
+  </summary>
+
+<br>
+
 - **Type parameter:** `T` — the return type
 
-### Constructors
+---
 
-#### `InlineFunction(Func<T> func)`
+### 🏗️ Constructors
+
+#### `InlineFunction(Func<T>)`
+
 ```csharp
 public InlineFunction(Func<T> func)
 ```
+
 - **Description:** Initializes a new instance with the specified function delegate.
 - **Parameter:** `func` — the function to invoke.
 - **Throws:** `ArgumentNullException` if `func` is null.
 
-### Properties
+--- 
+
+### 🔑 Properties
 
 #### `Value`
+
 ```csharp
 public T Value { get; }
 ```
+
 - **Description:** Invokes the wrapped function and returns the result.
 - **Returns:** The result of type `T`.
 
-### Methods
+---
+
+### 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
 public T Invoke()
 ```
+
 - **Description:** Invokes the function and returns its result.
 - **Returns:** The result of the function.
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of function.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operators
+---
 
-#### `implicit operator InlineFunction<T>(Func<T>)`
+### 🪄 Operators
+
+#### `operator InlineFunction<T>(Func<T>)`
+
 ```csharp
 public static implicit operator InlineFunction<T>(Func<T> value);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Func<T>` to an `InlineFunction<T>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<T>` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -66,53 +91,78 @@ IFunction<bool> function = new InlineFunction<bool>(() => gameObject.activeSelf)
 function.Invoke();
 ```
 
+</details>
+
 ---
 
-## 🧩 InlineFunction&lt;T, R&gt;
+<details>
+  <summary>
+    <h2>🧩 InlineFunction&lt;T, R&gt;</h2>
+    <br> Represents a function with <b>one input argument</b> that returns a result.
+  </summary>
+
+<br>
+
 ```csharp
 public class InlineFunction<T, R> : IFunction<T, R>
 ```
-- **Description:** Represents a function with **one input argument** that returns a value of type `R`.
+
 - **Type parameters:**
     - `T` — the input parameter type
     - `R` — the return type
 
-### Constructors
+---
 
-#### `InlineFunction(Func<T, R> func)`
+### 🏗️ Constructors
+
+#### `InlineFunction(Func<T, R>)`
+
 ```csharp
 public InlineFunction(Func<T, R> func)
 ```
+
 - **Description:** Initializes a new instance with the specified function delegate.
 - **Parameter:** `func` — the function to invoke.
 - **Throws:** `ArgumentNullException` if `func` is null.
 
-### Methods
+---
 
-#### `Invoke(T args)`
+### 🏹 Methods
+
+#### `Invoke(T)`
+
 ```csharp
 public R Invoke(T args)
 ```
+
 - **Description:** Invokes the function with the provided argument.
 - **Parameter:** `args` — the input parameter.
 - **Returns:** The result of the function.
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of function.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operators
+---
 
-#### `implicit operator InlineFunction<T, R>(Func<T, R>)`
+### 🪄 Operators
+
+#### `operator InlineFunction<T, R>(Func<T, R>)`
+
 ```csharp
 public static implicit operator InlineFunction<T, R>(Func<T, R> value);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Func<T, R>` to an `InlineFunction<T, R>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<T, R>` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -124,34 +174,52 @@ IFunction<bool> isEnemies = new InlineFunction<Character, bool>(other => player.
 Character enemy = ...
 isEnemies.Invoke(enemy);
 ```
+
+</details>
+
 ---
 
-## 🧩 InlineFunction&lt;T1, T2, R&gt;
+<details>
+  <summary>
+    <h2>🧩 InlineFunction&lt;T1, T2, R&gt;</h2>
+    <br> Represents a function with <b>two input arguments</b> that returns a result.
+  </summary>
+
+<br>
+
 ```csharp
 public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
 ```
-- **Description:** Represents a function with **two input arguments** that returns a value of type `R`.
+
 - **Type parameters:**
     - `T1` — the first input parameter type
     - `T2` — the second input parameter type
     - `R` — the return type
 
-### Constructors
+---
 
-#### `InlineFunction(Func<T1, T2, R> func)`
+### 🏗️ Constructors
+
+#### `InlineFunction(Func<T1, T2, R>)`
+
 ```csharp
 public InlineFunction(Func<T1, T2, R> func)
 ```
+
 - **Description:** Initializes a new instance with the specified function delegate.
 - **Parameter:** `func` — the function to invoke.
 - **Throws:** `ArgumentNullException` if `func` is null.
 
-### Methods
+---
 
-#### `Invoke(T1 arg1, T2 arg2)`
+### 🏹 Methods
+
+#### `Invoke(T1, T2)`
+
 ```csharp
 public R Invoke(T1 arg1, T2 arg2)
 ```
+
 - **Description:** Invokes the function with the provided arguments.
 - **Parameters:**
     - `arg1` — the first argument
@@ -159,21 +227,29 @@ public R Invoke(T1 arg1, T2 arg2)
 - **Returns:** The result of the function.
 
 #### `ToString()`
+
 ```csharp
 public override string ToString();
 ```
+
 - **Description:** Returns a string that represents the method name of function.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operators
+---
 
-#### `implicit operator InlineFunction<T1, T2, R>(Func<T1, T2, R>)`
+### 🪄 Operators
+
+#### `operator InlineFunction<T1, T2, R>(Func<T1, T2, R>)`
+
 ```csharp
 public static implicit operator InlineFunction<T1, T2, R>(Func<T1, T2, R> value);
 ```
+
 - **Description:** Implicitly converts a delegate of type `Func<T1, T2, R>` to an `InlineFunction<T1, T2, R>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<T1, T2, R>` containing the specified delegate.
+
+---
 
 ### 🗂 Example of Usage
 
@@ -182,9 +258,14 @@ IFunction<int, int, int> sumFunc = new InlineFunction<int, int, int>((a, b) => a
 int sum = sumFunc.Invoke(3, 4); // sum = 7
 ```
 
+</details>
+
+---
+
 ## 📌 Best Practice
 
-> `InlineFunction` is ideal for creating functions for specific game objects using **lambda expressions**, making it easy to define custom behavior inline for values, computations, or reactive systems.
+`InlineFunction` is ideal for creating functions for specific game objects using **lambda expressions**, making it
+easy to define custom behavior inline for values, computations, or reactive systems.
 
 Below is an example of using `InlineFunction` to provide dynamic values for different entities.
 

@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Functions/InlineFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Functions/InlineFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,23 +192,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="22117000" />
-    </task>
-    <task id="LOCAL-00406" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758185052662</created>
-      <option name="number" value="00406" />
-      <option name="presentableId" value="LOCAL-00406" />
-      <option name="project" value="LOCAL" />
-      <updated>1758185052662</updated>
-    </task>
-    <task id="LOCAL-00407" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758185117479</created>
-      <option name="number" value="00407" />
-      <option name="presentableId" value="LOCAL-00407" />
-      <option name="project" value="LOCAL" />
-      <updated>1758185117479</updated>
+      <workItem from="1758177750643" duration="23326000" />
     </task>
     <task id="LOCAL-00408" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -591,7 +570,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758213758948</updated>
     </task>
-    <option name="localTasksCounter" value="455" />
+    <task id="LOCAL-00455" summary="IFunction.md">
+      <option name="closed" value="true" />
+      <created>1758214252888</created>
+      <option name="number" value="00455" />
+      <option name="presentableId" value="LOCAL-00455" />
+      <option name="project" value="LOCAL" />
+      <updated>1758214252888</updated>
+    </task>
+    <task id="LOCAL-00456" summary="IFunction.md">
+      <option name="closed" value="true" />
+      <created>1758214279777</created>
+      <option name="number" value="00456" />
+      <option name="presentableId" value="LOCAL-00456" />
+      <option name="project" value="LOCAL" />
+      <updated>1758214279777</updated>
+    </task>
+    <option name="localTasksCounter" value="457" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReactiveDictionary.md" />
     <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="IReactiveSet.md" />
     <MESSAGE value="IReadOnlyReactiveArray.md" />
@@ -643,7 +637,8 @@
     <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="IntSumExpression.md" />
     <MESSAGE value="OrExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="OrExpression.md" />
+    <MESSAGE value="IFunction.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IFunction.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
