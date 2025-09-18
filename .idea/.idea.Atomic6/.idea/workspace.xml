@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -191,55 +188,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="6617000" />
-    </task>
-    <task id="LOCAL-00354" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758095310557</created>
-      <option name="number" value="00354" />
-      <option name="presentableId" value="LOCAL-00354" />
-      <option name="project" value="LOCAL" />
-      <updated>1758095310557</updated>
-    </task>
-    <task id="LOCAL-00355" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758095339223</created>
-      <option name="number" value="00355" />
-      <option name="presentableId" value="LOCAL-00355" />
-      <option name="project" value="LOCAL" />
-      <updated>1758095339223</updated>
-    </task>
-    <task id="LOCAL-00356" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758095617641</created>
-      <option name="number" value="00356" />
-      <option name="presentableId" value="LOCAL-00356" />
-      <option name="project" value="LOCAL" />
-      <updated>1758095617641</updated>
-    </task>
-    <task id="LOCAL-00357" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758096084247</created>
-      <option name="number" value="00357" />
-      <option name="presentableId" value="LOCAL-00357" />
-      <option name="project" value="LOCAL" />
-      <updated>1758096084248</updated>
-    </task>
-    <task id="LOCAL-00358" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758096112116</created>
-      <option name="number" value="00358" />
-      <option name="presentableId" value="LOCAL-00358" />
-      <option name="project" value="LOCAL" />
-      <updated>1758096112116</updated>
-    </task>
-    <task id="LOCAL-00359" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758099626460</created>
-      <option name="number" value="00359" />
-      <option name="presentableId" value="LOCAL-00359" />
-      <option name="project" value="LOCAL" />
-      <updated>1758099626460</updated>
+      <workItem from="1758177750643" duration="6974000" />
     </task>
     <task id="LOCAL-00360" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -585,7 +534,55 @@
       <option name="project" value="LOCAL" />
       <updated>1758184631301</updated>
     </task>
-    <option name="localTasksCounter" value="403" />
+    <task id="LOCAL-00403" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758184888025</created>
+      <option name="number" value="00403" />
+      <option name="presentableId" value="LOCAL-00403" />
+      <option name="project" value="LOCAL" />
+      <updated>1758184888025</updated>
+    </task>
+    <task id="LOCAL-00404" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758185011498</created>
+      <option name="number" value="00404" />
+      <option name="presentableId" value="LOCAL-00404" />
+      <option name="project" value="LOCAL" />
+      <updated>1758185011498</updated>
+    </task>
+    <task id="LOCAL-00405" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758185033303</created>
+      <option name="number" value="00405" />
+      <option name="presentableId" value="LOCAL-00405" />
+      <option name="project" value="LOCAL" />
+      <updated>1758185033303</updated>
+    </task>
+    <task id="LOCAL-00406" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758185052662</created>
+      <option name="number" value="00406" />
+      <option name="presentableId" value="LOCAL-00406" />
+      <option name="project" value="LOCAL" />
+      <updated>1758185052662</updated>
+    </task>
+    <task id="LOCAL-00407" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758185117479</created>
+      <option name="number" value="00407" />
+      <option name="presentableId" value="LOCAL-00407" />
+      <option name="project" value="LOCAL" />
+      <updated>1758185117479</updated>
+    </task>
+    <task id="LOCAL-00408" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758185177824</created>
+      <option name="number" value="00408" />
+      <option name="presentableId" value="LOCAL-00408" />
+      <option name="project" value="LOCAL" />
+      <updated>1758185177824</updated>
+    </task>
+    <option name="localTasksCounter" value="409" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,9 +632,9 @@
     <MESSAGE value="Обновил IAction" />
     <MESSAGE value="Написал InlineAction.md" />
     <MESSAGE value="Пилим!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneActionComposite.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionComposite.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
