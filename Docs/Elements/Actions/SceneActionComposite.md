@@ -33,6 +33,8 @@ public class SceneActionComposite : SceneActionAbstract
 |-----------|-----------------------------------------------|
 | `actions` | The array of scene actions to invoke in order |
 
+---
+
 ### 🧱 Fields
 
 #### `actions`
@@ -231,6 +233,18 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
 | Parameter | Description                                                      |
 |-----------|------------------------------------------------------------------|
 | `actions` | The array of actions to execute sequentially with four arguments |
+
+
+### 🧱Fields
+
+#### `actions`
+
+```csharp
+public SceneActionComposite<T1, T2, T3, T4>[] actions;
+```
+
+- **Description:** The array of scene actions to invoke in order.
+- **Access:** Read / Write
 
 ### 🏹 Methods
 

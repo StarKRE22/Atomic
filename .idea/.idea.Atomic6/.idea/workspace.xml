@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +191,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="6293000" />
-    </task>
-    <task id="LOCAL-00353" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758093964865</created>
-      <option name="number" value="00353" />
-      <option name="presentableId" value="LOCAL-00353" />
-      <option name="project" value="LOCAL" />
-      <updated>1758093964865</updated>
+      <workItem from="1758177750643" duration="6617000" />
     </task>
     <task id="LOCAL-00354" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -586,7 +577,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758183763985</updated>
     </task>
-    <option name="localTasksCounter" value="402" />
+    <task id="LOCAL-00402" summary="SceneActionComposite.md">
+      <option name="closed" value="true" />
+      <created>1758184631301</created>
+      <option name="number" value="00402" />
+      <option name="presentableId" value="LOCAL-00402" />
+      <option name="project" value="LOCAL" />
+      <updated>1758184631301</updated>
+    </task>
+    <option name="localTasksCounter" value="403" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделали Timer!" />
     <MESSAGE value="Написал таймеры!" />
     <MESSAGE value="Сделал раздел с Time!" />
     <MESSAGE value="Сделал IReadOnlyReactiveArray.cs" />
@@ -638,7 +636,8 @@
     <MESSAGE value="Написал InlineAction.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="SceneActionComposite.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionComposite.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

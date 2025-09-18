@@ -1,91 +1,130 @@
 # 🧩 SceneActionDefault Classes
 
-The `SceneActionDefault` class implements the [IAction](IAction.md) interface and inherits from [SceneActionAbstract](SceneActionAbstract.md). It allows game designers to build **composite actions directly in the Unity scene** — chaining multiple `IAction` instances (including generic variants like `IAction<T>`) without writing additional code.
-
-In essence, `SceneActionDefault` acts as a **container of actions**, executing them sequentially as configured in the **Inspector** through `[SerializeReference]`.
+The `SceneActionDefault` class implements the [IAction](IAction.md) interface and inherits
+from [SceneActionAbstract](SceneActionAbstract.md). It allows game designers to build **composite actions directly in
+the Unity scene** — chaining multiple `IAction` instances (including generic variants like `IAction<T>`) without writing
+additional code.
 
 > [!NOTE]  
 > Actions are executed in the order they appear in the array.  
 > Null references are automatically skipped, making partially configured lists safe to use.
 
+In essence, `SceneActionDefault` acts as a **container of actions**, executing them sequentially as configured in the *
+*Inspector** through `[SerializeReference]`.
+
 > [!WARNING]
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
+> clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
 
 ---
 
-## 🧩 SceneActionDefault
+<details>
+  <summary>
+    <h2>🧩 SceneActionDefault</h2>
+    <br> Represents a <b>parameterless</b> composite scene action that can be invoked.
+  </summary>
+
+<br>
+
 ```csharp
 public class SceneActionDefault : SceneActionAbstract
 ```
-- **Description:** Represents a **parameterless composite scene action**.
-- **Usage:** Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be invoked sequentially.
 
-### Inspector Settings
+- **Usage:** Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+  invoked sequentially.
 
-| Parameter | Type        | Description                             |
-|-----------|-------------|-----------------------------------------|
-| `actions` | `IAction[]` | The array of actions to execute in order|
+### 🛠 Inspector Settings
 
-### Methods
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+### 🧱Fields
+
+#### `actions`
+
+```csharp
+public SceneActionComposite<T1, T2, T3, T4>[] actions;
+```
+
+### 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
 public override void Invoke();
 ```
+
 - **Description:** Executes each action in the `actions` array sequentially.
+
+</details>
+
+
 
 ---
 
 ## 🧩 SceneActionDefault&lt;T&gt;
+
 ```csharp
 public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 ```
+
 - **Description:** Represents a scene-based composite action with **one parameter**.
 - **Type parameter:** `T` — the input argument type.
 
 ### Inspector Settings
 
-| Parameter | Type           | Description                             |
-|-----------|----------------|-----------------------------------------|
-| `actions` | `IAction<T>[]` | The array of actions to execute in order|
+| Parameter | Type           | Description                              |
+|-----------|----------------|------------------------------------------|
+| `actions` | `IAction<T>[]` | The array of actions to execute in order |
 
 ### Methods
 
 #### `Invoke(T arg)`
+
 ```csharp
 public override void Invoke(T arg);
 ```
+
 - **Description:** Executes each action sequentially with the provided argument.
 
 ---
 
 ## 🧩 SceneActionDefault&lt;T1, T2&gt;
+
 ```csharp
 public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 ```
+
 - **Description:** Represents a scene-based composite action with **two parameters**.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
 
 ### Inspector Settings
-| Parameter | Type        | Description                             |
-|-----------|-------------|-----------------------------------------|
-| `actions` | `IAction<T1, T2>[]` | The array of actions to execute in order|
+
+| Parameter | Type                | Description                              |
+|-----------|---------------------|------------------------------------------|
+| `actions` | `IAction<T1, T2>[]` | The array of actions to execute in order |
 
 ### Methods
+
 #### `Invoke(T1 arg1, T2 arg2)`
+
 ```csharp
 public override void Invoke(T1 arg1, T2 arg2);
 ```
+
 - **Description:** Executes each action sequentially with the provided arguments.
 
 ---
 
 ## 🧩 SceneActionDefault&lt;T1, T2, T3&gt;
+
 ```csharp
 public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
 ```
+
 - **Description:** Represents a scene-based composite action with **three parameters**.
 - **Type parameters:**
     - `T1` — the first argument
@@ -93,24 +132,29 @@ public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T
     - `T3` — the third argument
 
 ### Inspector Settings
-| Parameter | Type        | Description                             |
-|-----------|-------------|-----------------------------------------|
-| `actions` | `IAction<T1, T2, T3>[]` | The array of actions to execute in order|
+
+| Parameter | Type                    | Description                              |
+|-----------|-------------------------|------------------------------------------|
+| `actions` | `IAction<T1, T2, T3>[]` | The array of actions to execute in order |
 
 ### Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
+
 ```csharp
 public override void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
+
 - **Description:** Executes each action sequentially with the provided arguments.
 
 ---
 
 ## 🧩 SceneActionDefault&lt;T1, T2, T3, T4&gt;
+
 ```csharp
 public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
 ```
+
 - **Description:** Represents a scene-based composite action with **four parameters**.
 - **Type parameters:**
     - `T1` — the first argument
@@ -119,23 +163,25 @@ public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T
     - `T4` — the fourth argument
 
 ### Inspector Settings
-| Parameter | Type        | Description                             |
-|-----------|-------------|-----------------------------------------|
-| `actions` | `IAction<T1, T2, T3, T4>[]` | The array of actions to execute in order|
 
+| Parameter | Type                        | Description                              |
+|-----------|-----------------------------|------------------------------------------|
+| `actions` | `IAction<T1, T2, T3, T4>[]` | The array of actions to execute in order |
 
 ### Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
+
 ```csharp
 public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
-- **Description:** Executes each action sequentially with the provided arguments.
 
+- **Description:** Executes each action sequentially with the provided arguments.
 
 ## 🗂 Example of Usage
 
-For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene, `SceneAction` combined with `[SerializeReference]` is very convenient.
+For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
+`SceneAction` combined with `[SerializeReference]` is very convenient.
 
 ---
 
@@ -144,6 +190,7 @@ For **narrative or scenario-driven games**, where designers need to configure a 
 Below is an example of using `SceneActionDefault`
 
 #### 1. Add the `Atomic/Elements/Action` component.
+
 <img src="../../Images/SceneAction.png" alt="SceneAction example" width="384" height="137">
 
 #### 2. In the **Inspector**, assign the `PrintAction` value to the `Action` parameter.
@@ -159,6 +206,7 @@ public sealed class GameStartup : MonoBehaviour
     private void Start() => _startup.Invoke();
 }
 ```
+
 ---
 
 ### 🔹 Generic Usage
