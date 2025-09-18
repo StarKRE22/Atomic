@@ -278,6 +278,8 @@ public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
     - `T3` — The third argument
     - `T4` — The fourth argument
 
+---
+
 ### 🏹 Methods
 
 #### `Subscribe(Action<T1, T2, T3, T4>)`
