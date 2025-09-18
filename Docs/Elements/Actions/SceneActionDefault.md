@@ -33,19 +33,28 @@ public class SceneActionDefault : SceneActionAbstract
 - **Usage:** Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
   invoked sequentially.
 
+---
+
 ### 🛠 Inspector Settings
 
 | Parameter | Description                              |
 |-----------|------------------------------------------|
 | `actions` | The array of actions to execute in order |
 
+---
+
 ### 🧱Fields
 
 #### `actions`
 
 ```csharp
-public SceneActionComposite<T1, T2, T3, T4>[] actions;
+public IAction[] actions;
 ```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
+
+---
 
 ### 🏹 Methods
 
@@ -59,26 +68,46 @@ public override void Invoke();
 
 </details>
 
-
-
 ---
 
-## 🧩 SceneActionDefault&lt;T&gt;
+<details>
+  <summary>
+    <h2>🧩 SceneActionDefault&lt;T&gt;</h2>
+    <br> Represents a scene-based composite action with <b>one parameter</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 ```
 
-- **Description:** Represents a scene-based composite action with **one parameter**.
 - **Type parameter:** `T` — the input argument type.
 
-### Inspector Settings
+---
 
-| Parameter | Type           | Description                              |
-|-----------|----------------|------------------------------------------|
-| `actions` | `IAction<T>[]` | The array of actions to execute in order |
+### 🛠 Inspector Settings
 
-### Methods
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
+### 🧱Fields
+
+#### `actions`
+
+```csharp
+public IAction<T>[] actions;
+```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T arg)`
 
@@ -88,26 +117,50 @@ public override void Invoke(T arg);
 
 - **Description:** Executes each action sequentially with the provided argument.
 
+</details>
+
 ---
 
-## 🧩 SceneActionDefault&lt;T1, T2&gt;
+<details>
+  <summary>
+    <h2>🧩 SceneActionDefault&lt;T1, T2&gt;</h2>
+    <br> Represents a scene-based composite action with <b>two parameters</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 ```
 
-- **Description:** Represents a scene-based composite action with **two parameters**.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
 
-### Inspector Settings
+---
 
-| Parameter | Type                | Description                              |
-|-----------|---------------------|------------------------------------------|
-| `actions` | `IAction<T1, T2>[]` | The array of actions to execute in order |
+### 🛠 Inspector Settings
 
-### Methods
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
+### 🧱Fields
+
+#### `actions`
+
+```csharp
+public IAction<T1, T2>[] actions;
+```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
 
@@ -117,27 +170,51 @@ public override void Invoke(T1 arg1, T2 arg2);
 
 - **Description:** Executes each action sequentially with the provided arguments.
 
+</details>
+
 ---
 
-## 🧩 SceneActionDefault&lt;T1, T2, T3&gt;
+<details>
+  <summary>
+    <h2>🧩 SceneActionDefault&lt;T1, T2, T3&gt;</h2>
+    <br> Represents a scene-based composite action with <b>three parameters</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
 ```
 
-- **Description:** Represents a scene-based composite action with **three parameters**.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
 
-### Inspector Settings
+---
 
-| Parameter | Type                    | Description                              |
-|-----------|-------------------------|------------------------------------------|
-| `actions` | `IAction<T1, T2, T3>[]` | The array of actions to execute in order |
+### 🛠 Inspector Settings
 
-### Methods
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
+### 🧱Fields
+
+#### `actions`
+
+```csharp
+public IAction<T1, T2, T3>[] actions;
+```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
 
@@ -147,28 +224,39 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3);
 
 - **Description:** Executes each action sequentially with the provided arguments.
 
+</details>
+
 ---
 
-## 🧩 SceneActionDefault&lt;T1, T2, T3, T4&gt;
+<details>
+  <summary>
+    <h2>🧩 SceneActionDefault&lt;T1, T2, T3, T4&gt;</h2>
+    <br> Represents a scene-based composite action with <b>four parameters</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
 ```
 
-- **Description:** Represents a scene-based composite action with **four parameters**.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
     - `T4` — the fourth argument
 
-### Inspector Settings
+---
 
-| Parameter | Type                        | Description                              |
-|-----------|-----------------------------|------------------------------------------|
-| `actions` | `IAction<T1, T2, T3, T4>[]` | The array of actions to execute in order |
+### 🛠 Inspector Settings
 
-### Methods
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
 
@@ -178,10 +266,14 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 
 - **Description:** Executes each action sequentially with the provided arguments.
 
+---
+
 ## 🗂 Example of Usage
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
 `SceneAction` combined with `[SerializeReference]` is very convenient.
+
+</details>
 
 ---
 
