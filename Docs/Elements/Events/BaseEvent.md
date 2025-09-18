@@ -1,4 +1,4 @@
-# 🧩 BaseEvent Classes
+# 🧩 BaseEvent
 
 The **BaseEvent** classes provide **parameterless and generic reactive events** that can be **subscribed to, invoked,
 and disposed**. They implement the corresponding [IEvent](IEvent.md) interfaces and allow both reactive tracking and

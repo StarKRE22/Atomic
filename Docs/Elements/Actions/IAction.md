@@ -1,4 +1,4 @@
-# 🧩 Action Interfaces
+# 🧩 IAction
 
 The **IAction** interfaces define a family of contracts for executing parameterized actions. They provide a lightweight
 abstraction for invoking logic, often used in event systems, command patterns, or reactive programming.

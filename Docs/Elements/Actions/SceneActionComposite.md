@@ -1,6 +1,6 @@
-# 🧩 SceneActionComposite Classes
+# 🧩 SceneActionComposite
 
-The `SceneActionComposite` class represents a **group** of [SceneActionAbstract](SceneActionAbstract.md) instances that
+The **SceneActionComposite** classes represent a **group** of [SceneActionAbstract](SceneActionAbstract.md) instances that
 can be invoked sequentially. It follows the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern): the
 group itself behaves as a single scene action, while internally invoking all contained scene actions in order.
 

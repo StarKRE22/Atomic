@@ -1,6 +1,6 @@
-# 🧩 AndExpression Classes
+# 🧩 AndExpression
 
-Represent **logical AND expressions** composed of one or more boolean-returning functions. They extend from
+Represents **logical AND expressions** composed of one or more boolean-returning functions. They extend from
 the [ExpressionBase](ExpressionBase.md) family of classes and implement the
 corresponding [IPredicate](../Functions/IPredicate.md) interfaces.
 
@@ -60,7 +60,7 @@ public AndExpression(IEnumerable<Func<bool>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when functions are added, removed, or the list
@@ -69,7 +69,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<bool>> OnItemChanged;
+public event Action<int, Func<bool>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -77,7 +77,7 @@ public event ChangeItemHandler<Func<bool>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<bool>> OnItemInserted;
+public event Action<int, Func<bool>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted into the expression at a specific position.
@@ -85,7 +85,7 @@ public event InsertItemHandler<Func<bool>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<bool>> OnItemDeleted;
+public event Action<int, Func<bool>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.
@@ -317,7 +317,7 @@ public AndExpression(IEnumerable<Func<T, bool>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when functions are added, removed, or the list
@@ -326,7 +326,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<T, bool>> OnItemChanged;
+public event Action<int, Func<T, bool>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -334,7 +334,7 @@ public event ChangeItemHandler<Func<T, bool>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<T, bool>> OnItemInserted;
+public event Action<int, Func<T, bool>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted into the expression at a specific position.
@@ -342,7 +342,7 @@ public event InsertItemHandler<Func<T, bool>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<T, bool>> OnItemDeleted;
+public event Action<int, Func<T, bool>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.
@@ -567,7 +567,7 @@ public AndExpression(IEnumerable<Func<T1, T2, bool>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when functions are added, removed, or the list
@@ -576,7 +576,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<T1, T2, bool>> OnItemChanged;
+public event Action<int, Func<T1, T2, bool>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -584,7 +584,7 @@ public event ChangeItemHandler<Func<T1, T2, bool>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<T1, T2, bool>> OnItemInserted;
+public event Action<int, Func<T1, T2, bool>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted into the expression at a specific position.
@@ -592,7 +592,7 @@ public event InsertItemHandler<Func<T1, T2, bool>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<T1, T2, bool>> OnItemDeleted;
+public event Action<int, Func<T1, T2, bool>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.

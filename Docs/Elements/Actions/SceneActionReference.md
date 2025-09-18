@@ -1,4 +1,4 @@
-# 🧩 SceneActionReference Classes
+# 🧩 SceneActionReference
 
 The `SceneActionReference` is **pointer** for [SceneActionAbstract](SceneActionAbstract.md). It is primarily used when a
 game designer works with [SceneActionDefault](SceneActionDefault.md) and needs to reference or invoke another

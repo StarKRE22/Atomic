@@ -47,7 +47,7 @@ public ReactiveList(IEnumerable<T> items);
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).

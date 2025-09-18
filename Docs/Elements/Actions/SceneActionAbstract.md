@@ -1,4 +1,4 @@
-# 🧩 SceneActionAbstract Classes
+# 🧩 SceneActionAbstract
 
 The **SceneActionAbstract** classes define **scene-based actions** in Unity that implement the
 corresponding [IAction](IAction.md) interfaces.

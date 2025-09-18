@@ -1,6 +1,6 @@
-# 🧩 ExpressionBase Classes
+# 🧩 ExpressionBase
 
-Provide **base implementations** of the [IExpression](IExpression.md) interfaces extending
+Provides **base implementations** of the [IExpression](IExpression.md) interfaces extending
 from [ReactiveLinkedList&lt;R&gt;](../Collections/ReactiveLinkedList.md). They allow **aggregating multiple function
 members** and provide **dynamic evaluation** based on parameterless or parameterized functions.
 
@@ -64,7 +64,7 @@ public ExpressionBase(IEnumerable<Func<R>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is
@@ -73,7 +73,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<R>> OnItemChanged;
+public event Action<int, Func<R>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
@@ -81,7 +81,7 @@ public event ChangeItemHandler<Func<R>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<R>> OnItemInserted;
+public event Action<int, Func<R>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
@@ -89,7 +89,7 @@ public event InsertItemHandler<Func<R>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<R>> OnItemDeleted;
+public event Action<int, Func<R>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function delegate is removed from the expression.
@@ -330,7 +330,7 @@ protected ExpressionBase(IEnumerable<Func<T, R>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is
@@ -339,7 +339,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<T, R>> OnItemChanged;
+public event Action<int, Func<T, R>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
@@ -347,7 +347,7 @@ public event ChangeItemHandler<Func<T, R>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<T, R>> OnItemInserted;
+public event Action<int, Func<T, R>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
@@ -355,7 +355,7 @@ public event InsertItemHandler<Func<T, R>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<T, R>> OnItemDeleted;
+public event Action<int, Func<T, R>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function delegate is removed from the expression.
@@ -587,7 +587,7 @@ protected ExpressionBase(IEnumerable<Func<T1, T2, R>> members)
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Occurs when the state of the expression changes (e.g., when items are added, removed, or the list is
@@ -596,7 +596,7 @@ public event StateChangedHandler OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event ChangeItemHandler<Func<T1, T2, R>> OnItemChanged;
+public event Action<int, Func<T1, T2, R>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function delegate in the expression is replaced or modified.
@@ -604,7 +604,7 @@ public event ChangeItemHandler<Func<T1, T2, R>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event InsertItemHandler<Func<T1, T2, R>> OnItemInserted;
+public event Action<int, Func<T1, T2, R>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function delegate is inserted into the expression at a specific position.
@@ -612,7 +612,7 @@ public event InsertItemHandler<Func<T1, T2, R>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event DeleteItemHandler<Func<T1, T2, R>> OnItemDeleted;
+public event Action<int, Func<T1, T2, R>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function delegate is removed from the expression.

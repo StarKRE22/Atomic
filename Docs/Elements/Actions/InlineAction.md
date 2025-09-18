@@ -1,4 +1,4 @@
-# 🧩 InlineAction Classes
+# 🧩 InlineAction
 
 The **InlineAction** classes provide wrappers around standard `System.Action` delegates.
 They implement the corresponding [IAction](IAction.md) interfaces and allow invoking actions directly, optionally with

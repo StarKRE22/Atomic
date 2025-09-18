@@ -53,7 +53,7 @@ public ReactiveLinkedList(IEnumerable<T> items);
 #### `OnStateChanged`
 
 ```csharp
-public event StateChangedHandler OnStateChanged;
+public event Action OnStateChanged;
 ```
 
 - **Description:** Triggered whenever the list state changes globally (add, remove, clear).

@@ -11,7 +11,7 @@ Represents a **read-only reactive key-value dictionary** that provides notificat
 
 #### `OnStateChanged`
 ```csharp
-event Action OnStateChanged;
+public event Action OnStateChanged;
 ```
 - **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
 - **Remarks:** Useful for reacting to any modifications in the dictionary without subscribing to individual item events.
