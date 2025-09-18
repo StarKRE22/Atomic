@@ -7,7 +7,7 @@ Represents a **reactive key-value dictionary** that provides notifications when 
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
 #### `ReactiveDictionary(int)`
 ```csharp
@@ -64,7 +64,7 @@ public ReactiveDictionary(params (K, V)[] source);
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -101,7 +101,7 @@ public event RemoveItemHandler<K, V> OnItemRemoved;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -129,7 +129,7 @@ public ReadOnlyValueCollection Values { get; }
 
 ---
 
-## Indexer
+## 🏷️ Indexers
 
 #### `[K key]`
 ```csharp
@@ -141,7 +141,7 @@ public V this[K key] { get; set; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Add(K, V)`
 ```csharp
@@ -293,7 +293,7 @@ public Enumerator GetEnumerator();
     <br> <b>Represents a read-only collection of keys</b>.
   </summary>
 
-### Properties
+### 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -309,7 +309,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### Methods
+### 🏹 Methods
 
 #### `Contains(K)`
 ```csharp
@@ -340,7 +340,7 @@ public Enumerator GetEnumerator();
 
 ---
 
-### Unsupported Methods
+### ⛔ Unsupported Methods
 ```csharp
 void ICollection<K>.Add(K item);
 void ICollection<K>.Clear();
@@ -358,7 +358,7 @@ bool ICollection<K>.Remove(K item);
     <br> <b>Represents a read-only collection of values</b>.
   </summary>
 
-### Properties
+### 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -374,7 +374,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### Methods
+### 🏹 Methods
 
 #### `Contains(V)`
 ```csharp
@@ -405,7 +405,7 @@ public Enumerator GetEnumerator();
 
 ---
 
-### Unsupported Methods
+### ⛔ Unsupported Methods
 ```csharp
 void ICollection<V>.Add(V item);
 void ICollection<V>.Clear();
@@ -419,7 +419,7 @@ bool ICollection<V>.Remove(V item);
 
 ## 🗂 Examples of Usage
 
-### Basic Usage
+### 🔹 Basic Usage
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
 
@@ -433,7 +433,7 @@ Console.WriteLine(dict["Two"]); // Output: 22
 
 ```
 
-### Using TryAdd
+### 🔹 Using TryAdd
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
 
@@ -443,7 +443,7 @@ added = dict.TryAdd("One", 11);     // false, key already exists
 Console.WriteLine(dict["One"]); // Output: 1
 ```
 
-### Removing Elements
+### 🔹 Removing Elements
 ```csharp
 var dict = new ReactiveDictionary<string, int>
 {
@@ -460,7 +460,7 @@ if (dict.Remove("B", out int value))
 }
 ```
 
-### Iterating Keys and Values
+### 🔹 Iterating Keys and Values
 ```csharp
 var dict = new ReactiveDictionary<string, int>
 {
@@ -489,7 +489,7 @@ foreach (var kv in dict)
 
 ---
 
-### Subscribing to Events
+### 🔹 Subscribing to Events
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
 
@@ -504,7 +504,7 @@ dict.Remove("A");    // Output: Removed A=100
 
 ---
 
-### Initializing from Collections
+### 🔹 Initializing from Collections
 ```csharp
 var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>
 {
