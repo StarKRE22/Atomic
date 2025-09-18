@@ -43,7 +43,7 @@ public CompositeAction(IEnumerable<IAction> actions)
 - **Parameter:** `actions` – A collection of actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### 🏹 Method
+### 🏹 Methods
 
 #### `Invoke()`
 ```csharp
@@ -107,7 +107,7 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### 🏹 Method
+### 🏹 Methods
 
 #### `Invoke(T arg)`
 ```csharp
@@ -176,7 +176,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### 🏹 Method
+### 🏹 Methods
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
 ```
@@ -240,7 +240,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### 🏹 Method
+### 🏹 Methods
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3)
 ```
@@ -304,7 +304,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-### 🏹 Method
+### 🏹 Methods
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```

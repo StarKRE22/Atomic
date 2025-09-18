@@ -23,7 +23,7 @@ public abstract class SceneActionAbstract : MonoBehaviour, IAction
 - **Description:** Represents a **parameterless scene action**.
 - **Usage:** Attach to a GameObject and implement `Invoke()` to define custom behavior.
 
-### Method
+### 🏹 Methods
 
 #### `Invoke()`
 ```csharp
@@ -85,7 +85,7 @@ public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
 ```
 - **Type parameter:** `T` — the input argument type.
 
-### Method
+### 🏹 Methods
 
 #### `Invoke(T arg)`
 ```csharp
@@ -144,7 +144,7 @@ public abstract class SceneActionAbstract<T1, T2> : MonoBehaviour, IAction<T1, T
   - `T1` — the first argument
   - `T2` — the second argument
 
-### Method
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
@@ -194,7 +194,7 @@ public abstract class SceneActionAbstract<T1, T2, T3> : MonoBehaviour, IAction<T
   - `T2` — the second argument
   - `T3` — the third argument
 
-### Method
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
 ```csharp
@@ -248,7 +248,7 @@ public abstract class SceneActionAbstract<T1, T2, T3, T4> : MonoBehaviour, IActi
   - `T3` — the third argument
   - `T4` — the fourth argument
 
-### Method
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
 ```csharp
