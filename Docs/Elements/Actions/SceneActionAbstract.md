@@ -15,6 +15,8 @@ They serve as a base for **custom scene logic** and are designed to be subclasse
     <br> Represents a <b>parameterless</b> scene action that can be invoked.
   </summary>
 
+<br>
+
 ```csharp
 public abstract class SceneActionAbstract : MonoBehaviour, IAction
 ```
@@ -76,6 +78,8 @@ When you start the game, the action is triggered and **"Hello World!"** is print
     <br> Represents a scene action with <b>one parameter</b> that can be invoked.
   </summary>
 
+<br>
+
 ```csharp
 public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
 ```
@@ -131,7 +135,8 @@ Enter **Play Mode** in Unity and any objects that collide with the trigger will 
     <br> Represents a scene action with <b>two parameters</b> that can be invoked.
   </summary>
 
-## 🧩 SceneActionAbstract<T1, T2>
+<br>
+
 ```csharp
 public abstract class SceneActionAbstract<T1, T2> : MonoBehaviour, IAction<T1, T2>
 ```
@@ -178,6 +183,8 @@ The specified character’s `TakeDamage` method will be executed, reducing its h
     <br> Represents a scene action with <b>three parameters</b> that can be invoked.
   </summary>
 
+<br>
+
 ```csharp
 public abstract class SceneActionAbstract<T1, T2, T3> : MonoBehaviour, IAction<T1, T2, T3>
 ```
@@ -197,7 +204,7 @@ public abstract void Invoke(T1 arg1, T2 arg2, T3 arg3);
 
 ### 🗂 Example of Usage
 
-This example shows how to use `SceneActionAbstract` with multiple parameters to transfer resources between two `Storage` components.
+This example shows how to use `SceneActionAbstract<T1, T2, T3>` with multiple parameters to transfer resources between two `Storage` components.
 
 #### 1. Create `MoveResourcesAction`
 This action takes a **source storage**, a **destination storage**, and an **amount** of resources to move:
@@ -229,6 +236,7 @@ For example, when a player collects items or trades between inventories, the res
     <br> Represents a scene action with <b>four parameters</b> that can be invoked.
   </summary>
 
+<br>
 
 ```csharp
 public abstract class SceneActionAbstract<T1, T2, T3, T4> : MonoBehaviour, IAction<T1, T2, T3, T4>

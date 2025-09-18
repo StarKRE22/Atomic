@@ -13,6 +13,8 @@ They also support implicit conversion from the underlying `Action` delegates and
     <br> Represents a <b>parameterless action</b> that can be invoked.
   </summary>
 
+<br>
+
 ```csharp
 public class InlineAction : IAction
 ```
@@ -68,6 +70,8 @@ helloAction.Invoke(); // Output: Hello World!
     <h2>🧩 InlineAction&lt;T&gt;</h2>
     <br> Represents an action <b>with one parameter</b> that can be invoked.
   </summary>
+
+<br>
 
 ```csharp
 public class InlineAction<T> : IAction<T>
@@ -127,6 +131,8 @@ destroyAction.Invoke(gameObject);
     <h2>🧩 InlineAction&lt;T1, T2&gt;</h2>
     <br> Represents an action <b>with two parameters</b> that can be invoked.
   </summary>
+
+<br>
 
 ```csharp
 public class InlineAction<T1, T2> : IAction<T1, T2>
@@ -193,6 +199,8 @@ damageAction.Invoke(enemy, 5);
     <h2>🧩 InlineAction&lt;T1, T2, T3&gt;</h2>
     <br> Represents an action <b>with three parameters</b> that can be invoked.
   </summary>
+
+<br>
 
 ```csharp
 public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
@@ -267,6 +275,8 @@ moveResourcesAction.Invoke(storageA, storageB, 100);
     <h2>🧩 InlineAction&lt;T1, T2, T3, T4&gt;</h2>
     <br> Represents an action <b>with four parameters</b> that can be invoked.
   </summary>
+
+<br>
 
 ```csharp
 public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
