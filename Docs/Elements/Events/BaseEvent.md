@@ -44,7 +44,7 @@ public void Unsubscribe(Action action)
 #### `Invoke()`
 
 ```csharp
-void Invoke();
+public void Invoke();
 ```
 
 - **Description:** Executes the event logic
