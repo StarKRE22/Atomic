@@ -56,7 +56,7 @@ public SceneActionReference(SceneActionAbstract action);
 
 ---
 
-### 🧱Fields
+### 🧱 Fields
 
 #### `action`
 
@@ -129,6 +129,19 @@ public SceneActionReference(SceneActionAbstract<T> action);
 
 ---
 
+### 🧱 Fields
+
+#### `action`
+
+```csharp
+public SceneActionAbstract<T> action;
+```
+
+- **Description:** Reference to the scene action to invoke.
+- **Access:** Read / Write
+
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T)`
@@ -190,6 +203,19 @@ public SceneActionReference(SceneActionAbstract<T1, T2> action);
 - **Description:** Creates a new reference wrapping the specified `SceneActionAbstract<T1, T2>`.
 - **Parameters:**
     - `action` — The `SceneActionAbstract<T1, T2>` to reference.
+
+---
+
+### 🧱 Fields
+
+#### `action`
+
+```csharp
+public SceneActionAbstract<T1, T2> action;
+```
+
+- **Description:** Reference to the scene action to invoke.
+- **Access:** Read / Write
 
 ---
 
@@ -256,6 +282,19 @@ public SceneActionReference(SceneActionAbstract<T1, T2, T3> action);
 
 ---
 
+### 🧱 Fields
+
+#### `action`
+
+```csharp
+public SceneActionAbstract<T1, T2, T3> action;
+```
+
+- **Description:** Reference to the scene action to invoke.
+- **Access:** Read / Write
+
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
@@ -316,6 +355,19 @@ public SceneActionReference(SceneActionAbstract<T1, T2, T3, T4> action);
 
 - **Description:** Creates a new reference wrapping the specified `SceneActionAbstract<T1, T2, T3, T4>`.
 - **Parameter:** `action` — The `SceneActionAbstract<T1, T2, T3, T4>` to reference.
+
+---
+
+### 🧱 Fields
+
+#### `action`
+
+```csharp
+public SceneActionAbstract<T1, T2, T3> action;
+```
+
+- **Description:** Reference to the scene action to invoke.
+- **Access:** Read / Write
 
 ---
 
