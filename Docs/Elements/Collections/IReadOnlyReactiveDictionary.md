@@ -7,7 +7,7 @@ Represents a **read-only reactive key-value dictionary** that provides notificat
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -45,7 +45,7 @@ public event Action<K, V> OnItemChanged;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -67,7 +67,7 @@ public IEnumerable<V> Values { get; }
 
 ---
 
-## Indexer
+## 🏷️ Indexers
 
 #### `[K key]`
 ```csharp
@@ -80,7 +80,7 @@ public V this[K key] { get; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `bool ContainsKey(K)`
 ```csharp
