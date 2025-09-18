@@ -1,6 +1,6 @@
 # 🧩 ReactiveLinkedList&lt;T&gt;
 
-`ReactiveLinkedList<T>` represents a **reactive linked list** that notifies subscribers about changes to its elements. It supports fast insertions at head and tail, maintains a free-list for removed nodes, and implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally supports Unity serialization (`ISerializationCallbackReceiver`) for use in Unity projects.
+Represents a **reactive linked list** that notifies subscribers about changes to its elements. It supports fast insertions at head and tail, maintains a free-list for removed nodes, and implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally supports Unity serialization (`ISerializationCallbackReceiver`) for use in Unity projects.
 
 > [!NOTE]  
 > Use this class when you need a **reactive linked list** that supports frequent insertions and removals at arbitrary positions, with notifications for every change.
@@ -11,7 +11,7 @@
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
 #### `ReactiveLinkedList(int)`
 ```csharp
@@ -36,7 +36,7 @@ public ReactiveLinkedList(IEnumerable<T> items);
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -73,7 +73,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Count`
 ```csharp
@@ -89,7 +89,7 @@ public bool IsReadOnly => false;
 
 ---
 
-## Indexer
+## 🏷️ Indexers
 
 #### `[int index]`
 ```csharp
@@ -101,7 +101,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Add(T)`
 ```csharp
