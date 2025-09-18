@@ -1,8 +1,7 @@
 # 🧩 IRequest
 
 Represents a **deferred action** that can be executed at a later time. It is particularly useful for scenarios where
-input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help *
-*prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
+input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help **prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
 
 It extends the [IAction](../Actions/IAction.md) interface and provide s**required flags** and **argument retrieval /
 consumption** functionality.
