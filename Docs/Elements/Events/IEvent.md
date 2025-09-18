@@ -4,14 +4,20 @@ The **IEvent** interfaces define a family of contracts for **reactive events** t
 
 ---
 
-## 🧩 IEvent
+<details>
+  <summary>
+    <h2>🧩 IEvent</h2>
+    <br> Represents a <b>parameterless event</b> that can be subscribed to and invoked.
+  </summary>
+
+<br>
 
 ```csharp
 public interface IEvent : ISignal, IAction
 ```
-- **Description:** Represents a **parameterless reactive event**.
+---
 
-### Methods
+### 🏹 Methods
 
 #### `Subscribe(Action)`
 ```csharp
@@ -34,6 +40,9 @@ void Unsubscribe(Action action)
 void Invoke();
 ```
 - **Description:** Executes the event logic
+
+</details>
+
 ---
 
 ## 🧩 IEvent&lt;T&gt;

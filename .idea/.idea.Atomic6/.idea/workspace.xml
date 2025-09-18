@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,15 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="12721000" />
-    </task>
-    <task id="LOCAL-00387" summary="Обновляем CompositeAction.md">
-      <option name="closed" value="true" />
-      <created>1758137026146</created>
-      <option name="number" value="00387" />
-      <option name="presentableId" value="LOCAL-00387" />
-      <option name="project" value="LOCAL" />
-      <updated>1758137026146</updated>
+      <workItem from="1758177750643" duration="13049000" />
     </task>
     <task id="LOCAL-00388" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -585,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758190144999</updated>
     </task>
-    <option name="localTasksCounter" value="436" />
+    <task id="LOCAL-00436" summary="BaseEvent.md">
+      <option name="closed" value="true" />
+      <created>1758191247079</created>
+      <option name="number" value="00436" />
+      <option name="presentableId" value="LOCAL-00436" />
+      <option name="project" value="LOCAL" />
+      <updated>1758191247079</updated>
+    </task>
+    <option name="localTasksCounter" value="437" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Обновил IReactiveDictionary.md" />
     <MESSAGE value="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!" />
     <MESSAGE value="Пилим ReactiveDictionary.md" />
     <MESSAGE value="Сделал ReactiveDictionary.md" />
@@ -637,7 +635,8 @@
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveList.md" />
+    <MESSAGE value="BaseEvent.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseEvent.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
