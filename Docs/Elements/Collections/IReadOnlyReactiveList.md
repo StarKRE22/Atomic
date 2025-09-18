@@ -1,13 +1,13 @@
 # 🧩 IReadOnlyReactiveList&lt;T&gt;
 
-`IReadOnlyReactiveList<T>` represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed notifications** for insertions, deletions, and overall state changes. It extends [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md) and [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
+Represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed notifications** for insertions, deletions, and overall state changes. It extends [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md) and [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
 
 > [!NOTE]  
 > Use this interface when you need **read-only indexed access** to a collection but still require **reactive notifications** on changes.
 
 ---
 
-## Events
+## ⚡ Events
 
 #### `OnStateChanged`
 ```csharp
@@ -45,7 +45,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Length`
 ```csharp
@@ -63,7 +63,7 @@ public int Count { get; }
 
 ---
 
-## Indexer
+## 🏷️ Indexers
 
 #### `[int index]`
 ```csharp
@@ -75,7 +75,7 @@ public T this[int index] { get; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Contains(T)`
 ```csharp
