@@ -399,7 +399,7 @@ logic or events.
 
 ---
 
-### 🗂 Example of Usage
+### Example of Usage
 
 Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the
 designer directly in the **Inspector**.

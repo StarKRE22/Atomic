@@ -90,7 +90,7 @@ a `MonoBehaviour` and configured in the inspector, making it convenient for debu
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
 > clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
 
-### 🗂 Example of Usage
+### Example of Usage
 
 Create a `PlayerActionTrigger` that executes an action **when triggered by the player**. The specific action can be
 assigned by the designer directly in the **Inspector**.
