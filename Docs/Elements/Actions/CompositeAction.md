@@ -21,6 +21,8 @@ especially important when game objects and scripts need to execute complex actio
 public class CompositeAction : IAction
 ```
 
+---
+
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
@@ -98,6 +100,8 @@ public class CompositeAction<T> : IAction<T>
 ```
 
 - **Type parameter:** `T` — the input parameter.
+
+---
 
 ### 🏗️ Constructors
 
@@ -180,6 +184,8 @@ public class CompositeAction<T1, T2> : IAction<T1, T2>
     - `T1` — the first argument
     - `T2` — the second argument
 
+---
+
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
@@ -259,6 +265,8 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
     - `T2` — the second argument
     - `T3` — the third argument
 
+---
+
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
@@ -334,6 +342,8 @@ public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
     - `T2` — the second argument
     - `T3` — the third argument
     - `T4` — the fourth argument
+
+---
 
 ### 🏗️ Constructors
 
