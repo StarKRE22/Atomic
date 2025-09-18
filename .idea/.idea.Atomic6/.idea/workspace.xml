@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/UnitySpecificActions.md.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,31 +188,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="10099000" />
-    </task>
-    <task id="LOCAL-00371" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758128954340</created>
-      <option name="number" value="00371" />
-      <option name="presentableId" value="LOCAL-00371" />
-      <option name="project" value="LOCAL" />
-      <updated>1758128954340</updated>
-    </task>
-    <task id="LOCAL-00372" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758133519526</created>
-      <option name="number" value="00372" />
-      <option name="presentableId" value="LOCAL-00372" />
-      <option name="project" value="LOCAL" />
-      <updated>1758133519526</updated>
-    </task>
-    <task id="LOCAL-00373" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758133637321</created>
-      <option name="number" value="00373" />
-      <option name="presentableId" value="LOCAL-00373" />
-      <option name="project" value="LOCAL" />
-      <updated>1758133637321</updated>
+      <workItem from="1758177750643" duration="10407000" />
     </task>
     <task id="LOCAL-00374" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -588,7 +558,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758188265338</updated>
     </task>
-    <option name="localTasksCounter" value="420" />
+    <task id="LOCAL-00420" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758188324654</created>
+      <option name="number" value="00420" />
+      <option name="presentableId" value="LOCAL-00420" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188324654</updated>
+    </task>
+    <task id="LOCAL-00421" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758188499072</created>
+      <option name="number" value="00421" />
+      <option name="presentableId" value="LOCAL-00421" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188499072</updated>
+    </task>
+    <task id="LOCAL-00422" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758188583059</created>
+      <option name="number" value="00422" />
+      <option name="presentableId" value="LOCAL-00422" />
+      <option name="project" value="LOCAL" />
+      <updated>1758188583059</updated>
+    </task>
+    <option name="localTasksCounter" value="423" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,9 +632,9 @@
     <MESSAGE value="Написал InlineAction.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneActionComposite.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneActionReference.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
