@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,23 +188,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="28116000" />
-    </task>
-    <task id="LOCAL-00418" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1758188063547</created>
-      <option name="number" value="00418" />
-      <option name="presentableId" value="LOCAL-00418" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188063547</updated>
-    </task>
-    <task id="LOCAL-00419" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1758188265338</created>
-      <option name="number" value="00419" />
-      <option name="presentableId" value="LOCAL-00419" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188265338</updated>
+      <workItem from="1758177750643" duration="28420000" />
     </task>
     <task id="LOCAL-00420" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -588,7 +566,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758221526034</updated>
     </task>
-    <option name="localTasksCounter" value="467" />
+    <task id="LOCAL-00467" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758223079085</created>
+      <option name="number" value="00467" />
+      <option name="presentableId" value="LOCAL-00467" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223079085</updated>
+    </task>
+    <task id="LOCAL-00468" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758223152442</created>
+      <option name="number" value="00468" />
+      <option name="presentableId" value="LOCAL-00468" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223152442</updated>
+    </task>
+    <option name="localTasksCounter" value="469" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -615,7 +609,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="ReactiveDictionary.md" />
@@ -640,7 +633,8 @@
     <MESSAGE value="IPredicate.md" />
     <MESSAGE value="InlinePredicate.md" />
     <MESSAGE value="IRequest.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IRequest.md" />
+    <MESSAGE value="BaseRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -398,6 +398,8 @@ public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
 
 </details>
 
+---
+
 ## 🗂 Example of Usage
 
 Below are examples of using `IRequest` with the `Atomic.Entities` framework.
