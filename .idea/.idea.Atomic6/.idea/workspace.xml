@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,23 +191,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="4849000" />
-    </task>
-    <task id="LOCAL-00349" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758091318451</created>
-      <option name="number" value="00349" />
-      <option name="presentableId" value="LOCAL-00349" />
-      <option name="project" value="LOCAL" />
-      <updated>1758091318451</updated>
-    </task>
-    <task id="LOCAL-00350" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758092487947</created>
-      <option name="number" value="00350" />
-      <option name="presentableId" value="LOCAL-00350" />
-      <option name="project" value="LOCAL" />
-      <updated>1758092487947</updated>
+      <workItem from="1758177750643" duration="5182000" />
     </task>
     <task id="LOCAL-00351" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -585,7 +569,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758182631298</updated>
     </task>
-    <option name="localTasksCounter" value="398" />
+    <task id="LOCAL-00398" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758183120572</created>
+      <option name="number" value="00398" />
+      <option name="presentableId" value="LOCAL-00398" />
+      <option name="project" value="LOCAL" />
+      <updated>1758183120572</updated>
+    </task>
+    <task id="LOCAL-00399" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758183177824</created>
+      <option name="number" value="00399" />
+      <option name="presentableId" value="LOCAL-00399" />
+      <option name="project" value="LOCAL" />
+      <updated>1758183177824</updated>
+    </task>
+    <option name="localTasksCounter" value="400" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,9 +635,9 @@
     <MESSAGE value="Обновляем CompositeAction.md" />
     <MESSAGE value="Обновил IAction" />
     <MESSAGE value="Написал InlineAction.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

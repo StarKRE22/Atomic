@@ -19,7 +19,7 @@ They also support implicit conversion from the underlying `Action` delegates and
 public class InlineAction : IAction
 ```
 
-### Constructor
+### 🏗️ Constructor
 
 #### `InlineAction(Action action)`
 ```csharp
@@ -29,7 +29,7 @@ public InlineAction(Action action)
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-### Methods
+### 🏹 Methods
 
 #### `Invoke()`
 ```csharp
@@ -44,7 +44,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operator
+### 🪄 Operator
 
 #### `operator InlineAction(Action)`
 ```csharp
@@ -78,7 +78,7 @@ public class InlineAction<T> : IAction<T>
 ```
 - **Type parameter** `T` — the input parameter
 
-### Constructor
+### 🏗️ Constructor
 
 #### `InlineAction(Action<T> action)`
 ```csharp
@@ -88,7 +88,7 @@ public InlineAction(Action<T> action)
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-### Methods
+### 🏹 Methods
 
 #### `Invoke(T arg)`
 ```csharp
@@ -104,7 +104,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operator
+### 🪄 Operator
 
 #### `operator InlineAction<T>(Action<T>)`
 ```csharp
@@ -141,7 +141,7 @@ public class InlineAction<T1, T2> : IAction<T1, T2>
   - `T1` — the first argument
   - `T2` — the second argument
 
-### Constructor
+### 🏗️ Constructor
 
 #### `InlineAction(Action<T1, T2> action)`
 ```csharp
@@ -151,7 +151,7 @@ public InlineAction(Action<T1, T2> action)
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-### Methods
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
 ```csharp
@@ -169,7 +169,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operator
+### 🪄 Operator
 
 #### `operator InlineAction<T1, T2>(Action<T1, T2>)`
 ```csharp
@@ -211,7 +211,7 @@ public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
   - `T2` — the second argument
   - `T3` — the third argument
 
-### Constructor
+### 🏗️ Constructor
 
 #### `InlineAction(Action<T1, T2, T3> action)`
 ```csharp
@@ -221,7 +221,7 @@ public InlineAction(Action<T1, T2, T3> action)
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-### Methods
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
 ```csharp
@@ -240,7 +240,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operator
+### 🪄 Operator
 
 #### `operator InlineAction<T1, T2, T3>(Action<T1, T2, T3>)`
 ```csharp
@@ -287,7 +287,7 @@ public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
   - `T3` — the third argument
   - `T4` — the fourth argument
 
-### Constructor
+### 🏗️ Constructor
 
 #### `InlineAction(Action<T1, T2, T3, T4> action)`
 ```csharp
@@ -297,7 +297,7 @@ public InlineAction(Action<T1, T2, T3, T4> action)
 - **Parameter:** `action` – The action to invoke.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-### Methods
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
 ```csharp
@@ -317,7 +317,7 @@ public override string ToString();
 - **Description:** Returns a string that represents the method name of action.
 - **Returns:** A string representation of the method name of delegate.
 
-### Operators
+### 🪄 Operator
 
 #### `operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4>)`
 ```csharp

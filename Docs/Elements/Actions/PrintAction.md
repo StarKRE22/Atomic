@@ -8,7 +8,7 @@ The **PrintAction** class represents an action that **logs a message**. It imple
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
 #### `PrintAction(string)`
 ```csharp
@@ -28,7 +28,7 @@ public PrintAction(string message, LogType logType = LogType.Log)
     - `logType` – The type of log (default is `LogType.Log`).
 - **Note:** Works in Unity.
 
-## Methods
+## 🏹 Methods
 
 #### `Invoke()`
 ```csharp
@@ -64,10 +64,9 @@ printAction.Invoke(); // Logs message to standard console
 
 ---
 
-## Using [SerializeReference]
+## ❗️Using [SerializeReference]
 
 In Unity, **PrintAction** is perfect for **visualizing the occurrence of an action**—for example, when temporarily replacing a real action or using it inside a composite.  It can also be easily serialized using `[SerializeReference]` in a `MonoBehaviour` and configured in the inspector, making it convenient for debugging or testing action pipelines.
-
 
 > [!WARNING]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.

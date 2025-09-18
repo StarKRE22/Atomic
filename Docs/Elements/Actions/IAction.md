@@ -17,7 +17,7 @@ abstraction for invoking logic, often used in event systems, command patterns, o
 public interface IAction
 ```
 
-### Method
+### 🏹 Method
 #### `Invoke()`
 ```csharp
 void Invoke();
@@ -53,7 +53,7 @@ public interface IAction<in T>
 ```
 - **Type parameter:** `T` — the input parameter
 
-### Method
+### 🏹 Method
 #### `Invoke(T)`
 ```csharp
 void Invoke(T arg);
@@ -92,7 +92,7 @@ public interface IAction<in T1, in T2>
   - `T1` — the first argument
   - `T2` — the second argument
 
-### Methods
+### 🏹 Method
 #### `Invoke(T1, T2)`
 ```csharp
 void Invoke(T1 arg1, T2 arg2);
@@ -134,7 +134,7 @@ public interface IAction<in T1, in T2, in T3>
   - `T2` — the second argument
   - `T3` — the third argument
 
-### Methods
+### 🏹 Method
 #### `Invoke(T1, T2, T3)`
 ```csharp
 void Invoke(T1 arg1, T2 arg2, T3 arg3);
@@ -182,7 +182,7 @@ public interface IAction<in T1, in T2, in T3, in T4>
   - `T3` — the third argument
   - `T4` — the fourth argument
 
-### Methods
+### 🏹 Method
 #### `Invoke(T1, T2, T3, T4)`
 ```csharp
 void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
