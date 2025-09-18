@@ -15,7 +15,6 @@ The **IEvent** interfaces define a family of contracts for **reactive events** t
 ```csharp
 public interface IEvent : ISignal, IAction
 ```
----
 
 ### 🏹 Methods
 
@@ -45,15 +44,20 @@ void Invoke();
 
 ---
 
-## 🧩 IEvent&lt;T&gt;
+<details>
+  <summary>
+    <h2>🧩 IEvent&lt;T1&gt;</h2>
+    <br> Represents an event that emits <b>one parameter</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public interface IEvent<T> : ISignal<T>, IAction<T>
 ```
-- **Description:** Represents a reactive event that emits **one parameter**.
 - **Type parameter:** `T` — The type of the event parameter.
 
-### Methods
+### 🏹 Methods
 
 #### `Subscribe(Action<T>)`
 ```csharp
@@ -77,6 +81,10 @@ void Invoke(T arg);
 ```
 - **Description:** Executes the event with the specified argument
 - **Parameter:** `arg` — the input parameter
+
+</details>
+
+
 ---
 
 ## 🧩 IEvent<T1, T2>
