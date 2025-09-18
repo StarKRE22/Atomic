@@ -1,12 +1,13 @@
 # 🧩 CompositeAction Classes
 
-The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md) interfaces. They follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction` both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
+The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md)
+interfaces. They follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction`
+both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
 
-This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is especially important when game objects and scripts need to execute complex action scenarios.
+This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is
+especially important when game objects and scripts need to execute complex action scenarios.
 
 ---
-
-<hr style="height: 10px; border: none; background-color: #505050;">
 
 <details>
   <summary>
@@ -23,24 +24,30 @@ public class CompositeAction : IAction
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
+
 ```csharp
 public CompositeAction()
 ```
+
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
 #### `CompositeAction(params IAction[])`
+
 ```csharp
 public CompositeAction(params IAction[] actions)
 ```
+
 - **Description:** Initializes a new instance with the specified array of actions.
 - **Parameter:** `actions` – One or more actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
 #### `CompositeAction(IEnumerable<IAction>)`
+
 ```csharp
 public CompositeAction(IEnumerable<IAction> actions)
 ```
+
 - **Description:** Initializes a new instance with the specified collection of actions.
 - **Parameter:** `actions` – A collection of actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
@@ -50,14 +57,17 @@ public CompositeAction(IEnumerable<IAction> actions)
 ### 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
 public void Invoke()
 ```
+
 - **Description:** Invokes all actions in the group sequentially.
 
 ---
 
 ### 🗂 Example of Usage
+
 ```csharp
 var composite = new CompositeAction(
     new InlineAction(() => Console.WriteLine("Action 1")),
@@ -86,29 +96,36 @@ composite.Invoke();
 ```csharp
 public class CompositeAction<T> : IAction<T>
 ```
+
 - **Type parameter:** `T` — the input parameter.
 
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
+
 ```csharp
 public CompositeAction()
 ```
+
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
 #### `CompositeAction(params IAction<T>[])`
+
 ```csharp
 public CompositeAction(params IAction<T>[] actions)
 ```
+
 - **Description:** Initializes a new instance with the specified array of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
 #### `CompositeAction(IEnumerable<Action<T>)`
+
 ```csharp
 public CompositeAction(IEnumerable<IAction<T>> actions)
 ```
+
 - **Description:** Initializes a new instance with the specified collection of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
@@ -118,15 +135,18 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 ### 🏹 Methods
 
 #### `Invoke(T arg)`
+
 ```csharp
 public void Invoke(T arg)
 ```
+
 - **Description:** Invokes all actions sequentially with the given argument.
 - **Parameter:** `arg` – The input argument.
 
 ---
 
 ### 🗂 Example of Usage
+
 ```csharp
 var composite = new CompositeAction<string>(
     new InlineAction<string>(msg => Console.WriteLine("Hello " + msg)),
@@ -155,16 +175,19 @@ composite.Invoke("World");
 ```csharp
 public class CompositeAction<T1, T2> : IAction<T1, T2>
 ```
+
 - **Type parameters:**
-  - `T1` — the first argument
-  - `T2` — the second argument
+    - `T1` — the first argument
+    - `T2` — the second argument
 
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
+
 ```csharp
 public CompositeAction()
 ```
+
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
@@ -173,6 +196,7 @@ public CompositeAction()
 ```csharp
 public CompositeAction(params IAction<T1, T2>[] actions)
 ```
+
 - **Description:** Initializes a new instance with the specified array of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
@@ -182,17 +206,25 @@ public CompositeAction(params IAction<T1, T2>[] actions)
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
 ```
+
 - **Description:** Initializes a new instance with the specified collection of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
+---
+
 ### 🏹 Methods
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
 ```
+
 - **Description:** Invokes all actions sequentially with the given arguments.
 
+---
+
 ### 🗂 Example of Usage
+
 ```csharp
 var composite = new CompositeAction<int, int>(
     new InlineAction<int, int>((a, b) => Console.WriteLine(a + b)),
@@ -221,6 +253,7 @@ composite.Invoke(3, 4);
 ```csharp
 public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```
+
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -229,6 +262,7 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
+
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
@@ -237,6 +271,7 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```csharp
 public CompositeAction(params IAction<T1, T2, T3>[] actions)
 ```
+
 - **Description:** Initializes a new instance with the specified array of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
@@ -246,17 +281,25 @@ public CompositeAction(params IAction<T1, T2, T3>[] actions)
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
 ```
+
 - **Description:** Initializes a new instance with the specified collection of actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
+---
+
 ### 🏹 Methods
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3)
 ```
+
 - **Description:** Invokes all actions sequentially with the given arguments.
 
+---
+
 ### 🗂 Example of Usage
+
 ```csharp
 var composite = new CompositeAction<int, int, int>(
     new InlineAction<int, int>((a, b, c) => Console.WriteLine(a + b + c)),
@@ -285,6 +328,7 @@ composite.Invoke(3, 4, 2);
 ```csharp
 public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
+
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -294,30 +338,38 @@ public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ### 🏗️ Constructors
 
 #### `CompositeAction()`
+
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
 #### `CompositeAction(params IAction<T1, T2, T3, T4>[])`
+
 ```csharp
 public CompositeAction(params IAction<T1, T2, T3, T4>[] actions)
 ```
+
 - **Description:** Initializes a new instance with the specified actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-
 #### `CompositeAction(IEnumerable<T1, T2, T3, T4>)`
+
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 ```
+
 - **Description:** Initializes a new instance with the specified actions.
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
+---
+
 ### 🏹 Methods
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
+
 - **Description:** Invokes all actions sequentially with the given arguments.
 
 </details>
@@ -326,14 +378,21 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 
 ## ❗️Using [SerializeReference]
 
-For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene, `CompositeAction` combined with `[SerializeReference]` is very convenient. It allows designers to visually chain multiple actions in the inspector without writing extra code. This is especially useful for quickly iterating on game logic or events.
+For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
+`CompositeAction` combined with `[SerializeReference]` is very convenient. It allows designers to visually chain
+multiple actions in the inspector without writing extra code. This is especially useful for quickly iterating on game
+logic or events.
 
 > [!WARNING]
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
+> clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
+
+---
 
 ### 🗂 Example of Usage
 
-Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the designer directly in the **Inspector**.
+Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the
+designer directly in the **Inspector**.
 
 ```csharp
 using UnityEngine;
@@ -353,7 +412,7 @@ public sealed class PlayerActionTrigger : MonoBehaviour
 }
 ```
 
-In the **Inspector**, we can assign the `CompositeAction` value to the `Action` parameter. 
+In the **Inspector**, we can assign the `CompositeAction` value to the `Action` parameter.
 
 For example, we can add [PrintAction](PrintAction.md) to the action array.
 
