@@ -24,7 +24,7 @@ public interface IPredicate : IFunction<bool>
 #### `Invoke()`
 
 ```csharp
-bool Invoke();
+public bool Invoke();
 ```
 
 - **Description:** Evaluates the predicate and returns a boolean result.
@@ -53,8 +53,6 @@ bool isActive = predicate.Invoke();
 
 </details>
 
-
-
 ---
 
 <details>
@@ -78,7 +76,7 @@ public interface IPredicate<in T> : IFunction<T, bool>
 #### `Invoke(T)`
 
 ```csharp
-bool Invoke(T arg);
+public bool Invoke(T arg);
 ```
 
 - **Description:** Evaluates the predicate with the specified argument.
@@ -133,7 +131,7 @@ public interface IPredicate<in T1, in T2> : IFunction<T1, T2, bool>
 #### `Invoke(T1, T2)`
 
 ```csharp
-bool Invoke(T1 arg1, T2 arg2);
+public bool Invoke(T1 arg1, T2 arg2);
 ```
 
 - **Description:** Evaluates the predicate with the specified arguments.
