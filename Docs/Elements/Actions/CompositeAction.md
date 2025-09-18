@@ -6,6 +6,8 @@ This allows combining multiple actions into a sequence, which will be invoked **
 
 ---
 
+<hr style="height: 2px; border: none; background-color: #505050;">
+
 <details>
   <summary>
     <h2>🧩 CompositeAction</h2>
@@ -43,6 +45,8 @@ public CompositeAction(IEnumerable<IAction> actions)
 - **Parameter:** `actions` – A collection of actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke()`
@@ -50,6 +54,8 @@ public CompositeAction(IEnumerable<IAction> actions)
 public void Invoke()
 ```
 - **Description:** Invokes all actions in the group sequentially.
+
+---
 
 ### 🗂 Example of Usage
 ```csharp
@@ -107,6 +113,8 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
+---
+
 ### 🏹 Methods
 
 #### `Invoke(T arg)`
@@ -115,6 +123,8 @@ public void Invoke(T arg)
 ```
 - **Description:** Invokes all actions sequentially with the given argument.
 - **Parameter:** `arg` – The input argument.
+
+---
 
 ### 🗂 Example of Usage
 ```csharp
