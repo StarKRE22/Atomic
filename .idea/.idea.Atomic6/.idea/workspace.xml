@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,39 +191,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="13354000" />
-    </task>
-    <task id="LOCAL-00390" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758137235550</created>
-      <option name="number" value="00390" />
-      <option name="presentableId" value="LOCAL-00390" />
-      <option name="project" value="LOCAL" />
-      <updated>1758137235550</updated>
-    </task>
-    <task id="LOCAL-00391" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758137367068</created>
-      <option name="number" value="00391" />
-      <option name="presentableId" value="LOCAL-00391" />
-      <option name="project" value="LOCAL" />
-      <updated>1758137367068</updated>
-    </task>
-    <task id="LOCAL-00392" summary="Обновил IAction">
-      <option name="closed" value="true" />
-      <created>1758137767925</created>
-      <option name="number" value="00392" />
-      <option name="presentableId" value="LOCAL-00392" />
-      <option name="project" value="LOCAL" />
-      <updated>1758137767925</updated>
-    </task>
-    <task id="LOCAL-00393" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758137818300</created>
-      <option name="number" value="00393" />
-      <option name="presentableId" value="LOCAL-00393" />
-      <option name="project" value="LOCAL" />
-      <updated>1758137818300</updated>
+      <workItem from="1758177750643" duration="14016000" />
     </task>
     <task id="LOCAL-00394" summary="Написал InlineAction.md">
       <option name="closed" value="true" />
@@ -584,7 +553,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758191503584</updated>
     </task>
-    <option name="localTasksCounter" value="439" />
+    <task id="LOCAL-00439" summary="CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1758191659857</created>
+      <option name="number" value="00439" />
+      <option name="presentableId" value="LOCAL-00439" />
+      <option name="project" value="LOCAL" />
+      <updated>1758191659857</updated>
+    </task>
+    <task id="LOCAL-00440" summary="CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1758191710838</created>
+      <option name="number" value="00440" />
+      <option name="presentableId" value="LOCAL-00440" />
+      <option name="project" value="LOCAL" />
+      <updated>1758191710838</updated>
+    </task>
+    <task id="LOCAL-00441" summary="BaseEvent.md">
+      <option name="closed" value="true" />
+      <created>1758191790974</created>
+      <option name="number" value="00441" />
+      <option name="presentableId" value="LOCAL-00441" />
+      <option name="project" value="LOCAL" />
+      <updated>1758191790974</updated>
+    </task>
+    <task id="LOCAL-00442" summary="BaseEvent.md">
+      <option name="closed" value="true" />
+      <created>1758191829340</created>
+      <option name="number" value="00442" />
+      <option name="presentableId" value="LOCAL-00442" />
+      <option name="project" value="LOCAL" />
+      <updated>1758191829340</updated>
+    </task>
+    <option name="localTasksCounter" value="443" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Распилил ReactiveDictionary.cs, завтра продолжу писать ReactiveDictionary.md!" />
     <MESSAGE value="Пилим ReactiveDictionary.md" />
     <MESSAGE value="Сделал ReactiveDictionary.md" />
     <MESSAGE value="Сделал AnimationEvents.md" />
@@ -635,6 +635,7 @@
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
+    <MESSAGE value="CompositeAction.md" />
     <MESSAGE value="BaseEvent.md" />
     <option name="LAST_COMMIT_MESSAGE" value="BaseEvent.md" />
   </component>
