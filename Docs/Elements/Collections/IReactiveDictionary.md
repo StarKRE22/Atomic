@@ -1,6 +1,9 @@
 # 🧩 IReactiveDictionary&lt;K, V&gt;
 
-Represents a **reactive key-value dictionary** that supports notifications when items are added, removed, updated, or when the overall state changes. It extends `IDictionary<K, V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md), and [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md).
+Represents a **reactive key-value dictionary** that supports notifications when items are added, removed, updated, or
+when the overall state changes. It extends
+`IDictionary<K, V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md),
+and [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md).
 
 > [!NOTE]  
 > Use this interface when you need **mutable dictionary access** with **reactive notifications** for all changes.
@@ -10,59 +13,73 @@ Represents a **reactive key-value dictionary** that supports notifications when 
 ## ⚡ Events
 
 #### `OnStateChanged`
+
 ```csharp
 public event Action OnStateChanged;
 ```
+
 - **Description:** Triggered when the dictionary’s state changes globally (e.g., bulk update, clear).
 - **Remarks:** Useful for reacting to any modifications in the dictionary without subscribing to individual item events.
 
 #### `OnItemAdded`
+
 ```csharp
 public event Action<K, V> OnItemAdded;
 ```
+
 - **Description:** Triggered when a new key-value pair is added to the dictionary.
 - **Parameters:**
-  - `K` — the key that was added.
-  - `V` — the value associated with the key.
+    - `K` — the key that was added.
+    - `V` — the value associated with the key.
 
 #### `OnItemRemoved`
+
 ```csharp
 public event Action<K, V> OnItemRemoved;
 ```
+
 - **Description:** Triggered when a key-value pair is removed from the dictionary.
 - **Parameters:**
-  - `K` — the key that was removed.
-  - `V` — the value associated with the removed key.
+    - `K` — the key that was removed.
+    - `V` — the value associated with the removed key.
 
 #### `OnItemChanged`
+
 ```csharp
 public event Action<K, V> OnItemChanged;
 ```
+
 - **Description:** Triggered when the value of an existing key changes.
 - **Parameters:**
-  - `K` — the key whose value was changed.
-  - `V` — the new value of the key.
+    - `K` — the key whose value was changed.
+    - `V` — the new value of the key.
 
 ---
 
 ## 🔑 Properties
 
 #### `Count`
+
 ```csharp
 public int Count { get; }
 ```
+
 - **Description:** Gets the number of key-value pairs in the dictionary.
 
 #### `Keys`
+
 ```csharp
 public IEnumerable<K> Keys { get; }
 ```
+
 - **Description:** Gets a collection containing all the keys in the dictionary.
 
 #### `Values`
+
 ```csharp
 public IEnumerable<V> Values { get; }
 ```
+
 - **Description:** Gets a collection containing all the values in the dictionary.
 
 ---
@@ -70,9 +87,11 @@ public IEnumerable<V> Values { get; }
 ## 🏷️ Indexers
 
 #### `[K key]`
+
 ```csharp
 public V this[K key] { get; set; }
 ```
+
 - **Description:** Gets or sets the value associated with the specified key.
 - **Parameters:** `key` — the key to locate in the dictionary.
 - **Returns:** `V` — the value corresponding to the key.
@@ -83,20 +102,24 @@ public V this[K key] { get; set; }
 ## 🏹 Methods
 
 #### `Add(K, V)`
+
 ```csharp
 public void Add(K key, V value);
 ```
+
 - **Description:** Adds a new key-value pair to the dictionary.
 - **Parameters:**
-  - `key` — the key to add.
-  - `value` — the value associated with the key.
+    - `key` — the key to add.
+    - `value` — the value associated with the key.
 - **Exceptions:** Throws an exception if the key already exists.
 - **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
 
 #### `Add(KeyValuePair<K, V>)`
+
 ```csharp
 public void Add(KeyValuePair<K, V> item);
 ```
+
 - **Description:** Adds a key-value pair to the dictionary.
 - **Parameter:** `item` — A `KeyValuePair<K, V>` representing the key and value to add.
 - **Exceptions:** Throws if the key already exists or the value is null.
@@ -104,18 +127,22 @@ public void Add(KeyValuePair<K, V> item);
 - **Remarks:** Internally calls `Add(K key, V value)`.
 
 #### `Remove(K)`
+
 ```csharp
 public bool Remove(K key);
 ```
+
 - **Description:** Removes the value with the specified key from the dictionary.
 - **Parameters:** `key` — the key of the element to remove.
 - **Returns:** `true` if the element was successfully removed; otherwise, `false`.
 - **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
 
 #### `Remove(KeyValuePair<K, V>)`
+
 ```csharp
 public bool Remove(KeyValuePair<K, V> item);
 ```
+
 - **Description:** Removes the specified key-value pair from the dictionary.
 - **Parameter:** `item` — The `KeyValuePair<K, V>` to remove.
 - **Returns:** `true` if the item was removed; otherwise, `false`.
@@ -123,67 +150,81 @@ public bool Remove(KeyValuePair<K, V> item);
 - **Remarks:** Only removes the pair if both the key exists and the value matches.
 
 #### `ContainsKey(K)`
+
 ```csharp
 public bool ContainsKey(K key);
 ```
+
 - **Description:** Checks whether the dictionary contains a specific key.
 - **Parameters:** `key` — the key to locate in the dictionary.
 - **Returns:** `true` if the key exists; otherwise `false`.
 
 #### `Contains(KeyValuePair<K, V>)`
+
 ```csharp
 public bool Contains(KeyValuePair<K, V> item);
 ```
+
 - **Description:** Determines whether the dictionary contains the specified key-value pair.
 - **Parameter:** `item` — The `KeyValuePair<K, V>` to locate.
 - **Returns:** `true` if the pair exists; otherwise, `false`.
 - **Remarks:** Both key and value must match for the pair to be considered present.
 
 #### `TryGetValue(K, out V)`
+
 ```csharp
 public bool TryGetValue(K key, out V value);
 ```
+
 - **Description:** Attempts to get the value associated with the specified key without throwing an exception.
 - **Parameters:**
-  - `key` — the key to look up.
-  - `value` — outputs the value associated with the key if found; otherwise, the default value for type `V`.
+    - `key` — the key to look up.
+    - `value` — outputs the value associated with the key if found; otherwise, the default value for type `V`.
 - **Returns:** `true` if the key exists and value is returned; otherwise, `false`.
 
 #### `CopyTo(KeyValuePair<K, V>[], int)`
+
 ```csharp
 public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0);
 ```
+
 - **Description:** Copies the elements of the dictionary to a provided array, starting at the specified index.
 - **Parameters:**
-  - `array` — The destination array.
-  - `arrayIndex` — The zero-based index in the array at which copying begins.
+    - `array` — The destination array.
+    - `arrayIndex` — The zero-based index in the array at which copying begins.
 - **Exceptions:**
-  - Throws `ArgumentNullException` if `array` is null.
-  - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
+    - Throws `ArgumentNullException` if `array` is null.
+    - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
 
 #### `void Clear()`
+
 ```csharp
 public void Clear();
 ```
+
 - **Description:** Removes all key-value pairs from the dictionary.
 - **Events:** Triggers `OnItemRemoved` for each item and `OnStateChanged`.
 
 #### `GetEnumerator()`
+
 ```csharp
 public IEnumerator<KeyValuePair<K, V>> GetEnumerator();
 ```
+
 - **Description:** Returns an enumerator that iterates through the key-value pairs in the dictionary.
 - **Returns:** An `IEnumerator<KeyValuePair<K, V>>` for iterating over the dictionary entries.
 
 #### `Dispose()`
+
 ```csharp
 public void Dispose();
 ```
+
 - **Description:** Releases all resources used by the dictionary.
 - **Remarks:**
-  - Clears the dictionary.
-  - Unsubscribes all event handlers.
-  - After calling `Dispose`, the dictionary is empty and no longer raises events.
+    - Clears the dictionary.
+    - Unsubscribes all event handlers.
+    - After calling `Dispose`, the dictionary is empty and no longer raises events.
 
 ---
 
