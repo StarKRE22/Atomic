@@ -6,7 +6,7 @@ This allows combining multiple actions into a sequence, which will be invoked **
 
 ---
 
-<hr style="height: 1px; border: none; background-color: #505050;">
+<hr style="height: 10px; border: none; background-color: #505050;">
 
 <details>
   <summary>
