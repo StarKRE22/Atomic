@@ -27,7 +27,7 @@ public interface IRequest : IAction
 #### `Required`
 
 ```csharp
-bool Required { get; }
+public bool Required { get; }
 ```
 
 - **Description:** Indicates whether the request must be handled.
@@ -39,7 +39,7 @@ bool Required { get; }
 #### `Invoke()`
 
 ```csharp
-void Invoke();
+public void Invoke();
 ```
 
 - **Description:** Executes the request.
@@ -48,7 +48,7 @@ void Invoke();
 #### `Consume()`
 
 ```csharp
-bool Consume();
+public bool Consume();
 ```
 
 - **Description:** Attempts to consume the request.
@@ -80,7 +80,7 @@ public interface IRequest<T> : IAction<T>
 #### `Required`
 
 ```csharp
-bool Required { get; }
+public bool Required { get; }
 ```
 
 - **Description:** Indicates whether the request must be handled.
@@ -88,7 +88,7 @@ bool Required { get; }
 #### `Arg`
 
 ```csharp
-T Arg { get; }
+public T Arg { get; }
 ```
 
 - **Description:** Gets the request argument.
@@ -100,7 +100,7 @@ T Arg { get; }
 #### `Invoke(T)`
 
 ```csharp
-void Invoke(T arg);
+public void Invoke(T arg);
 ```
 
 - **Description:** Executes the request.
@@ -110,7 +110,7 @@ void Invoke(T arg);
 #### `Consume(out T)`
 
 ```csharp
-bool Consume(out T arg);
+public bool Consume(out T arg);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the argument.
@@ -120,7 +120,7 @@ bool Consume(out T arg);
 #### `TryGet(out T arg)`
 
 ```csharp
-bool TryGet(out T arg);
+public bool TryGet(out T arg);
 ```
 
 - **Description:** Attempts to retrieve the argument.
@@ -154,7 +154,7 @@ public interface IRequest<T1, T2> : IAction<T1, T2>
 #### `Required`
 
 ```csharp
-bool Required { get; }
+public bool Required { get; }
 ```
 
 - **Description:** Indicates whether the request must be handled.
@@ -162,7 +162,7 @@ bool Required { get; }
 #### `Arg1`
 
 ```csharp
-T1 Arg1 { get; }
+public T1 Arg1 { get; }
 ```
 
 - **Description:** Get the first argument of the request.
@@ -170,7 +170,7 @@ T1 Arg1 { get; }
 #### `Arg2`
 
 ```csharp
-T2 Arg2 { get; }
+public T2 Arg2 { get; }
 ```
 
 - **Description:** Get the second argument of the request.
@@ -182,7 +182,7 @@ T2 Arg2 { get; }
 #### `Invoke(T1, T2)`
 
 ```csharp
-void Invoke(T1 arg1, T2 arg2);
+public void Invoke(T1 arg1, T2 arg2);
 ```
 
 - **Description:** Executes the request.
@@ -194,7 +194,7 @@ void Invoke(T1 arg1, T2 arg2);
 #### `Consume(out T1, out T2)`
 
 ```csharp
-bool Consume(out T1 arg1, out T2 arg2);
+public bool Consume(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the arguments.
@@ -206,7 +206,7 @@ bool Consume(out T1 arg1, out T2 arg2);
 #### `TryGet(out T1, out T2)`
 
 ```csharp
-bool TryGet(out T1 arg1, out T2 arg2);
+public bool TryGet(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:**  Attempts to retrieve both arguments.
@@ -243,7 +243,7 @@ public interface IRequest<T1, T2, T3> : IAction<T1, T2, T3>
 #### `Required`
 
 ```csharp
-bool Required { get; }
+public bool Required { get; }
 ```
 
 - **Description:** Indicates whether the request must be handled.
@@ -251,7 +251,7 @@ bool Required { get; }
 #### `Arg1`
 
 ```csharp
-T1 Arg1 { get; }
+public T1 Arg1 { get; }
 ```
 
 - **Description:** Get the first argument of the request.
@@ -259,7 +259,7 @@ T1 Arg1 { get; }
 #### `Arg2`
 
 ```csharp
-T2 Arg2 { get; }
+public T2 Arg2 { get; }
 ```
 
 - **Description:** Get the second argument of the request.
@@ -267,7 +267,7 @@ T2 Arg2 { get; }
 #### `Arg3`
 
 ```csharp
-T3 Arg3 { get; }
+public T3 Arg3 { get; }
 ```
 
 - **Description:** Get the third argument of the request.
@@ -279,7 +279,7 @@ T3 Arg3 { get; }
 #### `Invoke(T1, T2, T3)`
 
 ```csharp
-void Invoke(T1 arg1, T2 arg2, T3 arg3);
+public void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
 - **Description:** Executes the request.
@@ -292,7 +292,7 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3);
 #### `Consume(out T1, out T2, out T3)`
 
 ```csharp
-bool Consume(out T1 arg1, out T2 arg2, out T3 arg3);
+public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the arguments.
@@ -305,7 +305,7 @@ bool Consume(out T1 arg1, out T2 arg2, out T3 arg3);
 #### `TryGet(out T1, out T2, out T3)`
 
 ```csharp
-bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3);
+public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3);
 ```
 
 - **Description:**  Attempts to retrieve both arguments.
@@ -345,7 +345,7 @@ public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 #### `Required`
 
 ```csharp
-bool Required { get; }
+public bool Required { get; }
 ```
 
 - **Description:** Indicates whether the request must be handled.
@@ -353,7 +353,7 @@ bool Required { get; }
 #### `Arg1`
 
 ```csharp
-T1 Arg1 { get; }
+public T1 Arg1 { get; }
 ```
 
 - **Description:** Get the first argument of the request.
@@ -361,7 +361,7 @@ T1 Arg1 { get; }
 #### `Arg2`
 
 ```csharp
-T2 Arg2 { get; }
+public T2 Arg2 { get; }
 ```
 
 - **Description:** Get the second argument of the request.
@@ -369,7 +369,7 @@ T2 Arg2 { get; }
 #### `Arg3`
 
 ```csharp
-T3 Arg3 { get; }
+public T3 Arg3 { get; }
 ```
 
 - **Description:** Get the third argument of the request.
@@ -377,7 +377,7 @@ T3 Arg3 { get; }
 #### `Arg4`
 
 ```csharp
-T4 Arg4 { get; }
+public T4 Arg4 { get; }
 ```
 
 - **Description:** Get the fourth argument of the request.
@@ -389,7 +389,7 @@ T4 Arg4 { get; }
 #### `Invoke(T1, T2, T3, T4)`
 
 ```csharp
-void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
 - **Description:** Executes the request.
@@ -403,7 +403,7 @@ void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 #### `Consume(out T1, out T2, out T3, out T4)`
 
 ```csharp
-bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
+public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the arguments.
@@ -417,7 +417,7 @@ bool Consume(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
 #### `TryGet(out T1, out T2, out T3, out T4)`
 
 ```csharp
-bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
+public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
 ```
 
 - **Description:**  Attempts to retrieve both arguments.
