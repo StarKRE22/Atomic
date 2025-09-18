@@ -116,6 +116,7 @@ public override void Invoke(T arg);
 ```
 
 - **Description:** Executes each action sequentially with the provided argument.
+- **Parameter:** `arg` – The input argument.
 
 </details>
 
@@ -169,6 +170,9 @@ public override void Invoke(T1 arg1, T2 arg2);
 ```
 
 - **Description:** Executes each action sequentially with the provided arguments.
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
 
 </details>
 
@@ -223,6 +227,10 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
 - **Description:** Executes each action sequentially with the provided arguments.
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
+  - `arg3` – The third argument
 
 </details>
 
@@ -265,6 +273,11 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
 ```
 
 - **Description:** Executes each action sequentially with the provided arguments.
+- **Parameters:**
+  - `arg1` – The first argument
+  - `arg2` – The second argument
+  - `arg3` – The third argument
+  - `arg4` – The fourth argument
 
 </details>
 
