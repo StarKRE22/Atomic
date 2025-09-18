@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,31 +191,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="14343000" />
-    </task>
-    <task id="LOCAL-00395" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758178878658</created>
-      <option name="number" value="00395" />
-      <option name="presentableId" value="LOCAL-00395" />
-      <option name="project" value="LOCAL" />
-      <updated>1758178878658</updated>
-    </task>
-    <task id="LOCAL-00396" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758180189675</created>
-      <option name="number" value="00396" />
-      <option name="presentableId" value="LOCAL-00396" />
-      <option name="project" value="LOCAL" />
-      <updated>1758180189675</updated>
-    </task>
-    <task id="LOCAL-00397" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758182631298</created>
-      <option name="number" value="00397" />
-      <option name="presentableId" value="LOCAL-00397" />
-      <option name="project" value="LOCAL" />
-      <updated>1758182631298</updated>
+      <workItem from="1758177750643" duration="16157000" />
     </task>
     <task id="LOCAL-00398" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -584,7 +561,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758192257751</updated>
     </task>
-    <option name="localTasksCounter" value="444" />
+    <task id="LOCAL-00444" summary="Minor Fixes">
+      <option name="closed" value="true" />
+      <created>1758192589355</created>
+      <option name="number" value="00444" />
+      <option name="presentableId" value="LOCAL-00444" />
+      <option name="project" value="LOCAL" />
+      <updated>1758192589355</updated>
+    </task>
+    <task id="LOCAL-00445" summary="Minor Fixes">
+      <option name="closed" value="true" />
+      <created>1758192654034</created>
+      <option name="number" value="00445" />
+      <option name="presentableId" value="LOCAL-00445" />
+      <option name="project" value="LOCAL" />
+      <updated>1758192654034</updated>
+    </task>
+    <task id="LOCAL-00446" summary="AndExpression.md">
+      <option name="closed" value="true" />
+      <created>1758193050943</created>
+      <option name="number" value="00446" />
+      <option name="presentableId" value="LOCAL-00446" />
+      <option name="project" value="LOCAL" />
+      <updated>1758193050943</updated>
+    </task>
+    <option name="localTasksCounter" value="447" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,8 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал ReactiveDictionary.md" />
-    <MESSAGE value="Сделал AnimationEvents.md" />
     <MESSAGE value="Сделал Triggers &amp; Collision Events" />
     <MESSAGE value="Обновляем CompositeAction.md" />
     <MESSAGE value="Обновил IAction" />
@@ -636,7 +635,9 @@
     <MESSAGE value="CompositeAction.md" />
     <MESSAGE value="BaseEvent.md" />
     <MESSAGE value="IEvent.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEvent.md" />
+    <MESSAGE value="Minor Fixes" />
+    <MESSAGE value="AndExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="AndExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
