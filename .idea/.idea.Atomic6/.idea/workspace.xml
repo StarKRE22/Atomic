@@ -5,36 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveDictionary.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,15 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="18452000" />
-    </task>
-    <task id="LOCAL-00399" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758183177824</created>
-      <option name="number" value="00399" />
-      <option name="presentableId" value="LOCAL-00399" />
-      <option name="project" value="LOCAL" />
-      <updated>1758183177824</updated>
+      <workItem from="1758177750643" duration="18797000" />
     </task>
     <task id="LOCAL-00400" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -613,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758194406040</updated>
     </task>
-    <option name="localTasksCounter" value="448" />
+    <task id="LOCAL-00448" summary="Прочесал FloatMulExpression.md">
+      <option name="closed" value="true" />
+      <created>1758210502447</created>
+      <option name="number" value="00448" />
+      <option name="presentableId" value="LOCAL-00448" />
+      <option name="project" value="LOCAL" />
+      <updated>1758210502447</updated>
+    </task>
+    <option name="localTasksCounter" value="449" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Обновляем CompositeAction.md" />
     <MESSAGE value="Обновил IAction" />
     <MESSAGE value="Написал InlineAction.md" />
     <MESSAGE value="Пилим!" />
@@ -665,7 +635,8 @@
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="AndExpression.md" />
     <MESSAGE value="ExpressionBase.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExpressionBase.md" />
+    <MESSAGE value="Прочесал FloatMulExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Прочесал FloatMulExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
