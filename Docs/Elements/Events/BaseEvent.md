@@ -18,6 +18,8 @@ action-based invocation.
 public class BaseEvent : IEvent, IDisposable
 ```
 
+---
+
 ### 🏹 Methods
 
 #### `Subscribe(Action)`
@@ -72,6 +74,8 @@ public class BaseEvent<T> : IEvent<T>, IDisposable
 ```
 
 - **Type parameter:** `T` — The type of the event argument.
+
+---
 
 ### 🏹 Methods
 
@@ -130,6 +134,8 @@ public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
 - **Type parameters:**
     - `T1` — The first argument
     - `T2` — The second argument
+
+---
 
 ### 🏹 Methods
 
@@ -192,6 +198,8 @@ public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
     - `T1` — The first argument
     - `T2` — The second argument
     - `T3` — The third argument
+
+---
 
 ### 🏹 Methods
 
@@ -257,6 +265,8 @@ public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
     - `T2` — The second argument
     - `T3` — The third argument
     - `T4` — The fourth argument
+
+---
 
 ### 🏹 Methods
 
@@ -350,6 +360,7 @@ public class FireSFXBehaviour : IEntityInit, IEntityDispose
 ```
 
 #### 3. Invoke `FireEvent` through the `IAction` interface
+
 ```csharp
 IAction fireEvent = entity.GetValue<IAction>("FireEvent");
 fireEvent.Invoke();
