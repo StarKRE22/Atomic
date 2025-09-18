@@ -124,6 +124,8 @@ bool isEnemies = func.Invoke(otherCharacter);
 
 </details>
 
+---
+
 <details>
   <summary>
     <h2>🧩 IFunction&lt;T1, T2, R&gt;</h2>
