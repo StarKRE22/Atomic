@@ -5,8 +5,6 @@ One of the most useful helpers is `Invert`, which creates a new function that re
 
 ---
 
-## 🔹 Invert
-
 ### `Invert(IFunction<bool>)`
 ```csharp
 public static InlineFunction<bool> Invert(this IFunction<bool> it)
@@ -63,8 +61,6 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
   bool allies = isAllyPair.Invoke(player, teammate); // true if same team
   ````
 ---
-
-## 🔹 Collections
 
 ### `Add<R>(ICollection<Func<R>>, IFunction<R>)`
 ```csharp
