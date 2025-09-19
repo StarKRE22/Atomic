@@ -110,7 +110,9 @@ public sealed class CharacterConfig : ScriptableObject
     [SerializeField] 
     public Const<float> moveSpeed = 5.0f;
 }
+```
 
+```csharp
 //Many instances
 public sealed class Character : MonoBehaviour
 {
