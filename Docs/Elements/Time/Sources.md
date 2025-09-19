@@ -384,11 +384,11 @@ public void SetProgress(float progress);
     <br> Represents a source that <b>provides state notifications</b>.
   </summary>
 
-- **Type Parameter:** `T` — Enum type representing the state.
-
 ```csharp
 public interface IStateSource<T>
 ```
+
+- **Type Parameter:** `T` — Enum type representing the state.
 
 --- 
 
