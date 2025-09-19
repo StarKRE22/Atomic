@@ -1,29 +1,39 @@
 # 🧩 TimerState
 
-`TimerState` represents the current state of a timer. It is used by `ITimer` (or similar timer implementations) to track the lifecycle of a timer and respond to state changes.
+Represents the current state of a timer. It is used by
+[ITimer](ITimer.md), [DownTimer](DownTimer.md) and [UpTimer](UpTimer.md) to track the lifecycle of a timer and respond to state changes.
 
-## Enum
+---
 
-### `IDLE`
+## 🔢 Enum
+
+#### `IDLE`
+
 - **Description:** The timer is not running and has not been started.
 - **Usage:** Initial state of a timer before `Start()` is called.
 
-### `PLAYING`
+#### `PLAYING`
+
 - **Description:** The timer is currently counting down or running.
 - **Usage:** Indicates that the timer is active and `Tick()` is advancing its time.
 
-### `PAUSED`
+#### `PAUSED`
+
 - **Description:** The timer is paused and can be resumed.
 - **Usage:** Timer is temporarily halted by `Pause()` and can continue counting when `Resume()` is called.
 
-### `COMPLETED`
+#### `COMPLETED`
+
 - **Description:** The timer has finished counting down and expired.
-- **Usage:** Indicates that the timer has reached its end, and `OnCompleted` is typically triggered. To restart, the timer should be started again.
+- **Usage:** Indicates that the timer has reached its end, and `OnCompleted` is typically triggered. To restart, the
+  timer should be started again.
 
 ---
 
 ## 🗂 Example of Usage
-The following example demonstrates how the `TimerState` changes during the timer lifecycle, and how to respond using `OnStateChanged`.
+
+The following example demonstrates how the `TimerState` changes during the timer lifecycle, and how to respond using
+`OnStateChanged`.
 
 ```csharp
 ITimer timer = new Timer(10f);

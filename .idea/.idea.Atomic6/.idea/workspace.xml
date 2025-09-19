@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,15 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="624000" />
-    </task>
-    <task id="LOCAL-00481" summary="IReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758270365272</created>
-      <option name="number" value="00481" />
-      <option name="presentableId" value="LOCAL-00481" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270365272</updated>
+      <workItem from="1758300054327" duration="942000" />
     </task>
     <task id="LOCAL-00482" summary="IReactiveArray.md, IReactiveList.md, IReactiveSet.md">
       <option name="closed" value="true" />
@@ -592,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758300506387</updated>
     </task>
-    <option name="localTasksCounter" value="530" />
+    <task id="LOCAL-00530" summary="Stopwatch.md">
+      <option name="closed" value="true" />
+      <created>1758300811843</created>
+      <option name="number" value="00530" />
+      <option name="presentableId" value="LOCAL-00530" />
+      <option name="project" value="LOCAL" />
+      <updated>1758300811843</updated>
+    </task>
+    <option name="localTasksCounter" value="531" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Reactiv" />
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReactiveHashSet.md" />
@@ -644,7 +643,8 @@
     <MESSAGE value="PeriodState.md" />
     <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="Sources.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sources.md" />
+    <MESSAGE value="Stopwatch.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stopwatch.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
