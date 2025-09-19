@@ -41,7 +41,7 @@ public float RemainingTime { get; }
 #### `StartFromSeconds(float)`
 
 ```csharp
-void StartFromSeconds(float seconds);
+public void StartFromSeconds(float seconds);
 ```
 
 - **Description:** Starts the timestamp from the current time with a specified duration.
@@ -50,7 +50,7 @@ void StartFromSeconds(float seconds);
 #### `StartFromTicks(int)`
 
 ```csharp
-void StartFromTicks(int ticks);
+public void StartFromTicks(int ticks);
 ```
 
 - **Description:** Starts the timestamp using a specified number of ticks.
@@ -59,7 +59,7 @@ void StartFromTicks(int ticks);
 #### `Stop()`
 
 ```csharp
-void Stop();
+public void Stop();
 ```
 
 - **Description:** Stops and resets the timestamp. After calling this, the timestamp is idle.
@@ -67,7 +67,7 @@ void Stop();
 #### `GetProgress(float)`
 
 ```csharp
-float GetProgress(float duration);
+public float GetProgress(float duration);
 ```
 
 - **Description:** Returns the progress of the timestamp relative to a given duration.
@@ -77,7 +77,7 @@ float GetProgress(float duration);
 #### `IsIdle()`
 
 ```csharp
-bool IsIdle();
+public bool IsIdle();
 ```
 
 - **Description:** Indicates whether the timestamp is stopped and has not started.
@@ -86,7 +86,7 @@ bool IsIdle();
 #### `IsPlaying()`
 
 ```csharp
-bool IsPlaying();
+public bool IsPlaying();
 ```
 
 - **Description:** Indicates whether the timestamp is currently active and counting.
@@ -95,7 +95,7 @@ bool IsPlaying();
 #### `IsExpired()`
 
 ```csharp
-bool IsExpired();
+public bool IsExpired();
 ```
 
 - **Description:** Indicates whether the timestamp has expired.
