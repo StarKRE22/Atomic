@@ -14,8 +14,7 @@ public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializati
 - **Notes:**
     - Use this class when you need a **reactive linked list** that supports frequent insertions and removals at
       arbitrary positions, with notifications for every change
-    - Insertions and removals are **O(1)** complexity, unlike a standard `List<T>` which may require shifting elements
-      for each operation
+    - Insertions and removals are **O(1)** complexity
     - Supports Unity serialization
 
 > [!TIP]
