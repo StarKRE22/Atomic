@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/BaseVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/BaseVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,23 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="6921000" />
-    </task>
-    <task id="LOCAL-00505" summary="InlineSignal.md">
-      <option name="closed" value="true" />
-      <created>1758293155158</created>
-      <option name="number" value="00505" />
-      <option name="presentableId" value="LOCAL-00505" />
-      <option name="project" value="LOCAL" />
-      <updated>1758293155158</updated>
-    </task>
-    <task id="LOCAL-00506" summary="InlineSignal.md">
-      <option name="closed" value="true" />
-      <created>1758293302675</created>
-      <option name="number" value="00506" />
-      <option name="presentableId" value="LOCAL-00506" />
-      <option name="project" value="LOCAL" />
-      <updated>1758293302675</updated>
+      <workItem from="1758300054327" duration="7262000" />
     </task>
     <task id="LOCAL-00507" summary="Subscription.md">
       <option name="closed" value="true" />
@@ -600,7 +576,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758309267484</updated>
     </task>
-    <option name="localTasksCounter" value="554" />
+    <task id="LOCAL-00554" summary="BaseVariable.md">
+      <option name="closed" value="true" />
+      <created>1758310280415</created>
+      <option name="number" value="00554" />
+      <option name="presentableId" value="LOCAL-00554" />
+      <option name="project" value="LOCAL" />
+      <updated>1758310280415</updated>
+    </task>
+    <task id="LOCAL-00555" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758310357050</created>
+      <option name="number" value="00555" />
+      <option name="presentableId" value="LOCAL-00555" />
+      <option name="project" value="LOCAL" />
+      <updated>1758310357050</updated>
+    </task>
+    <option name="localTasksCounter" value="556" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,8 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Cooldown.md" />
-    <MESSAGE value="DownTimer.md" />
     <MESSAGE value="FixedTimestamp.md" />
     <MESSAGE value="IPeriod.md" />
     <MESSAGE value="IStopwatch.md" />
@@ -652,7 +642,9 @@
     <MESSAGE value="IReactiveValue.md" />
     <MESSAGE value="IValue.md" />
     <MESSAGE value="ScriptableConst.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ScriptableConst.md" />
+    <MESSAGE value="BaseVariable.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

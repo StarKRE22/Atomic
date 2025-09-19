@@ -1,21 +1,25 @@
 # 🧩 IReactiveVariable&lt;T&gt;
 
-`IReactiveVariable<T>` represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**. It inherits from [IVariable&lt;T&gt;](IVariable.md) (read-write access) and [IReactiveValue&lt;T&gt;](../Values/IReactiveValue.md) (reactive observation).
+Represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**.
+It inherits from [IVariable&lt;T&gt;](IVariable.md) (read-write access)
+and [IReactiveValue&lt;T&gt;](../Values/IReactiveValue.md) (reactive observation).
+
+```csharp
+public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
+```
+
+- **Type Parameter:** `T` – The type of the value.
 
 ---
 
-## Type Parameter
-
-- `T` – The type of the value.
-
----
-
-## Properties
+## 🔑 Properties
 
 #### `Value`
+
 ```csharp
-new T Value { get; set; }
+public T Value { get; set; }
 ```
+
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
 - **Notes:**
@@ -24,46 +28,59 @@ new T Value { get; set; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
-T Invoke()
+public T Invoke();
 ```
+
 - **Description:** Invokes the variable and returns its current value.
 - **Returns:** The current value of type `T`.
 - **Note:** Default implementation comes from [IFunction<R>.Invoke()](../Functions/IFunction.md#invoke).
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
+
 ```csharp
-void Invoke(T arg)
+public void Invoke(T arg)
 ```
+
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
-- **Notes:** 
-  - Acts as a setter method, complementing the `Value` property.
-  - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+- **Notes:**
+    - Acts as a setter method, complementing the `Value` property.
+    - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
 
 #### `Subscribe(Action)`
+
 ```csharp
-Subscription<T> Subscribe(Action action)  
+public Subscription<T> Subscribe(Action action)  
 ```
+
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
-- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active
+  subscription.
+- **Notes**: This is the default implementation
+  from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
 
 #### `Unsubscribe(Action)`
+
 ```csharp
-void Unsubscribe(Action action)  
+public void Unsubscribe(Action action)  
 ```
+
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
-- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
+- **Notes**: This is the default implementation
+  from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
 
 ---
 
 ## 🗂 Example of Usage
+
+Below is an example of creating a reactive wrapper around `Transform.position`
 
 ```csharp
 public class ReactiveTransformPosition : IReactiveVariable<Vector3>
