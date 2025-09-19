@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,23 +197,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="44223000" />
-    </task>
-    <task id="LOCAL-00472" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758269777658</created>
-      <option name="number" value="00472" />
-      <option name="presentableId" value="LOCAL-00472" />
-      <option name="project" value="LOCAL" />
-      <updated>1758269777658</updated>
-    </task>
-    <task id="LOCAL-00473" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758269825955</created>
-      <option name="number" value="00473" />
-      <option name="presentableId" value="LOCAL-00473" />
-      <option name="project" value="LOCAL" />
-      <updated>1758269825955</updated>
+      <workItem from="1758177750643" duration="44583000" />
     </task>
     <task id="LOCAL-00474" summary="IReactiveArray.md">
       <option name="closed" value="true" />
@@ -589,7 +575,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758298925452</updated>
     </task>
-    <option name="localTasksCounter" value="521" />
+    <task id="LOCAL-00521" summary="Period.md">
+      <option name="closed" value="true" />
+      <created>1758299176401</created>
+      <option name="number" value="00521" />
+      <option name="presentableId" value="LOCAL-00521" />
+      <option name="project" value="LOCAL" />
+      <updated>1758299176401</updated>
+    </task>
+    <task id="LOCAL-00522" summary="Period.md">
+      <option name="closed" value="true" />
+      <created>1758299214100</created>
+      <option name="number" value="00522" />
+      <option name="presentableId" value="LOCAL-00522" />
+      <option name="project" value="LOCAL" />
+      <updated>1758299214100</updated>
+    </task>
+    <option name="localTasksCounter" value="523" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
@@ -641,7 +642,8 @@
     <MESSAGE value="IStopwatch.md" />
     <MESSAGE value="ITimer.md" />
     <MESSAGE value="ITimestamp.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ITimestamp.md" />
+    <MESSAGE value="Period.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Period.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
