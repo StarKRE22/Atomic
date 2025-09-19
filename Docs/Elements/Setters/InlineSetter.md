@@ -28,7 +28,7 @@ public InlineSetter(Action<T> action)
 #### `Value`
 
 ```csharp
-T Value { set; }
+public T Value { set; }
 ```
 
 - **Description:** Assigns the provided value.
@@ -39,7 +39,7 @@ T Value { set; }
 #### `Invoke(T arg)`
 
 ```csharp
-void Invoke(T arg);
+public void Invoke(T arg);
 ```
 
 - **Description:** Invokes the setter by assigning the provided value.

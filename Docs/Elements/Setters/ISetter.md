@@ -29,7 +29,7 @@ public T Value { set; }
 #### `Invoke(T)`
 
 ```csharp
-public  void Invoke(T arg);
+public void Invoke(T arg);
 ```
 
 - **Description:** Invokes the setter by assigning the provided value.
