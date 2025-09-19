@@ -1,179 +1,217 @@
 # 🧩 IPeriod
 
-`IPeriod` represents a **looping cycle timer interface** that supports starting, pausing, resuming, progress tracking, state change notifications, and emits an event each time the period completes.
+Represents a **looping cycle timer interface** that supports starting, pausing, resuming, progress tracking, state
+change notifications, and emits an event each time the period completes. The interface combines multiple sources
+internally: [IStartSource](Sources.md/#istartsource),  [IPauseSource](Sources.md/#ipausesource), [IStateSource](Sources.md/#istatesource), [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [IProgressSource](Sources.md/#iprogresssource), [ITickSource](Sources.md/#iticksource).
+Useful for repeating cycles, gameplay loops, animations, and any system requiring continuous cyclic timing.
 
-The interface combines multiple sources internally:
-
-- [IStartSource](Sources.md/#istartsource) — start / stop control
-- [IPauseSource](Sources.md/#ipausesource) — pause / resume control
-- [IStateSource<PeriodState>](Sources.md/#istatesource) — state tracking
-- [ITimeSource](Sources.md/#itimesource) — current time tracking
-- [IDurationSource](Sources.md/#idurationsource) — total duration of each period
-- [IProgressSource](Sources.md/#iprogresssource) — normalized progress
-- [ITickSource](Sources.md/#iticksource) — incremental updates
-
-> [!IMPORTANT]  
-> Useful for repeating cycles, gameplay loops, animations, and any system requiring continuous cyclic timing.
+```csharp
+public interface IPeriod : IStartSource, IPauseSource, IStateSource<PeriodState>, ITimeSource, IProgressSource, IDurationSource, ITickSource;
+```
 
 ---
 
-## Events
+## ⚡ Events
 
-#### `event Action OnPeriod`
+#### `OnPeriod`
+
 ```csharp
 public event Action OnPeriod;
 ```
+
 - **Description:** Invoked each time a period completes and automatically restarts.
 - **Remarks:** Can be used to trigger repeating game logic or system events.
 
-#### `event Action OnStarted`
+#### `OnStarted`
+
 ```csharp
 public event Action OnStarted;
 ```
+
 - **Description:** Invoked when the period timer starts running.
 - **Remarks:** Triggered whenever `Start()` is called and the timer begins counting.
 
-#### `event Action OnPaused`
+#### `OnPaused`
+
 ```csharp
 public event Action OnPaused;
 ```
+
 - **Description:** Raised when the period timer is paused.
 - **Remarks:** Triggered whenever `Pause()` is called.
 
-#### `event Action OnResumed`
+#### `OnResumed`
+
 ```csharp
 public event Action OnResumed;
 ```
+
 - **Description:** Raised when the period timer resumes from a paused state.
 
-#### `event Action<float> OnTimeChanged`
+#### `OnTimeChanged`
+
 ```csharp
 public event Action<float> OnTimeChanged;
 ```
+
 - **Description:** Invoked whenever the current time of the period changes.
 - **Parameter:** `float` — the current time in seconds.
 
-#### `event Action<float> OnProgressChanged`
+#### `OnProgressChanged`
+
 ```csharp
 public event Action<float> OnProgressChanged;
 ```
+
 - **Description:** Raised when normalized progress changes (0–1).
 - **Parameter:** `float` — current progress, normalized between 0 and 1.
 
-#### `event Action<float> OnDurationChanged`
+#### `OnDurationChanged`
+
 ```csharp
 public event Action<float> OnDurationChanged;
 ```
+
 - **Description:** Invoked whenever the total duration of the period changes.
 - **Parameter:** `float` — new period duration in seconds.
 
-#### `event Action<PeriodState> OnStateChanged`
+#### `OnStateChanged`
+
 ```csharp
 public event Action<PeriodState> OnStateChanged;
 ```
+
 - **Description:** Invoked whenever the period’s internal state changes.
 - **Parameters:** [PeriodState](PeriodState.md) — the new state of the period.
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `void Start()`
+
 ```csharp
 public void Start();
 ```
+
 - **Description:** Starts the period from the beginning.
 - **Remarks:** Triggers `OnStarted` event.
 
 #### `void Stop()`
+
 ```csharp
 public void Stop();
 ```
+
 - **Description:** Stops the period and resets the current time.
 - **Remarks:** Triggers `OnStateChanged`.
 
-#### `bool IsStarted()`
+#### `IsStarted()`
+
 ```csharp
 public bool IsStarted();
 ```
+
 - **Description:** Returns whether the period timer is currently running.
 - **Returns:** `true` if running; otherwise `false`.
 
-#### `void Pause()`
+#### `Pause()`
+
 ```csharp
 public void Pause();
 ```
+
 - **Description:** Pauses the period timer.
 - **Remarks:** Triggers `OnPaused`.
 
-#### `void Resume()`
+#### `Resume()`
+
 ```csharp
 public void Resume();
 ```
+
 - **Description:** Resumes the period timer from paused state.
 - **Remarks:** Triggers `OnResumed`.
 
-#### `bool IsPaused()`
+#### `IsPaused()`
+
 ```csharp
 public bool IsPaused();
 ```
+
 - **Description:** Returns whether the period timer is currently paused.
 - **Returns:** `true` if paused; otherwise `false`.
 
-#### `float GetTime()`
+#### `GetTime()`
+
 ```csharp
 public float GetTime();
 ```
+
 - **Description:** Returns the current time of the period.
 - **Returns:** Time in seconds.
 
-#### `void SetTime(float time)`
+#### `SetTime(float)`
+
 ```csharp
 public void SetTime(float time);
 ```
+
 - **Description:** Sets the current time of the period.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `float GetDuration()`
+#### `GetDuration()`
+
 ```csharp
 public float GetDuration();
 ```
+
 - **Description:** Returns the duration of each period.
 - **Returns:** Duration in seconds.
 
-#### `void SetDuration(float duration)`
+#### `SetDuration(float)`
+
 ```csharp
 public void SetDuration(float duration);
 ```
+
 - **Description:** Sets a new period duration.
 - **Remarks:** Triggers `OnDurationChanged` and `OnProgressChanged`.
 
-#### `float GetProgress()`
+#### `GetProgress()`
+
 ```csharp
 public float GetProgress();
 ```
+
 - **Description:** Returns the normalized progress of the period.
 - **Returns:** Value between 0 and 1.
 
-#### `void SetProgress(float progress)`
+#### `SetProgress(float)`
+
 ```csharp
 public void SetProgress(float progress);
 ```
+
 - **Description:** Sets normalized progress and updates current time accordingly.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `PeriodState GetState()`
+#### `GetState()`
+
 ```csharp
 public PeriodState GetState();
 ```
+
 - **Description:** Returns the current state of the period.
 - **Returns:** [PeriodState](PeriodState.md) — e.g., `IDLE`, `PLAYING`, `PAUSED`.
 - **Remarks:** Can be used along with `OnStateChanged` for state tracking.
 
-#### `void Tick(float deltaTime)`
+#### `Tick(float)`
+
 ```csharp
 public void Tick(float deltaTime);
 ```
+
 - **Description:** Updates the period by a specified time increment.
 - **Parameter:** `deltaTime` — time in seconds to advance the period.
 - **Remarks:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnPeriod` when a cycle completes.
@@ -181,6 +219,7 @@ public void Tick(float deltaTime);
 ---
 
 ## 🗂 Example of Usage
+
 ```csharp
 // Create a period timer with a cycle duration of 10 seconds
 IPeriod period = new Period(10f);

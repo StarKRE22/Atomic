@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,15 +49,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReadOnlyReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Elements/Scripts/UnityComponents/AnimationEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/float3_variable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Time/PeriodTests.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
@@ -201,15 +198,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="42305000" />
-    </task>
-    <task id="LOCAL-00465" summary="IRequest.md">
-      <option name="closed" value="true" />
-      <created>1758221345460</created>
-      <option name="number" value="00465" />
-      <option name="presentableId" value="LOCAL-00465" />
-      <option name="project" value="LOCAL" />
-      <updated>1758221345460</updated>
+      <workItem from="1758177750643" duration="42921000" />
     </task>
     <task id="LOCAL-00466" summary="IRequest.md">
       <option name="closed" value="true" />
@@ -595,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758296866813</updated>
     </task>
-    <option name="localTasksCounter" value="514" />
+    <task id="LOCAL-00514" summary="FixedTimestamp.md">
+      <option name="closed" value="true" />
+      <created>1758297216898</created>
+      <option name="number" value="00514" />
+      <option name="presentableId" value="LOCAL-00514" />
+      <option name="project" value="LOCAL" />
+      <updated>1758297216898</updated>
+    </task>
+    <option name="localTasksCounter" value="515" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -622,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="PrintAction.md" />
     <MESSAGE value="IReactiveArray.md" />
     <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="IReactiveDictionary.md" />
@@ -647,7 +643,8 @@
     <MESSAGE value="ICooldown" />
     <MESSAGE value="Cooldown.md" />
     <MESSAGE value="DownTimer.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="DownTimer.md" />
+    <MESSAGE value="FixedTimestamp.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="FixedTimestamp.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,9 +5,7 @@ when its state changes. The interface combines multiple sources: [ITimeSource](S
 to provide flexible access to timer data and notifications. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
 ```csharp
-public interface ICooldown : IDurationSource, ITimeSource, IProgressSource, ICompleteSource, ITickSource
-{
-}
+public interface ICooldown : IDurationSource, ITimeSource, IProgressSource, ICompleteSource, ITickSource;
 ```
 
 ---
