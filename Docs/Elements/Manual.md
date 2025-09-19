@@ -168,6 +168,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Request-Condition-Action-Event Flow](../../Docs/BestPractices/RequestConditionActionEvent.md)
 - [Using InlineActions](Actions/InlineAction.md/#-best-practice)
 - [Using InlineFunctions](Functions/InlineFunction.md/#-best-practice)
+- [Using Cooldowns](Time/Cooldown.md/#-best-practice)
 - [Insert Constant to AndExpression](Expressions/AndExpression.md/#-best-practice)
 - [Choosing Between Timer and Cooldown](Time/ITimer.md/#-best-practice)
 - [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)

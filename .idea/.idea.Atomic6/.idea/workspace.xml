@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,23 +204,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="41477000" />
-    </task>
-    <task id="LOCAL-00462" summary="InlinePredicate.md">
-      <option name="closed" value="true" />
-      <created>1758218279016</created>
-      <option name="number" value="00462" />
-      <option name="presentableId" value="LOCAL-00462" />
-      <option name="project" value="LOCAL" />
-      <updated>1758218279016</updated>
-    </task>
-    <task id="LOCAL-00463" summary="IRequest.md">
-      <option name="closed" value="true" />
-      <created>1758221170457</created>
-      <option name="number" value="00463" />
-      <option name="presentableId" value="LOCAL-00463" />
-      <option name="project" value="LOCAL" />
-      <updated>1758221170457</updated>
+      <workItem from="1758177750643" duration="41889000" />
     </task>
     <task id="LOCAL-00464" summary="IRequest.md">
       <option name="closed" value="true" />
@@ -597,7 +582,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758296069989</updated>
     </task>
-    <option name="localTasksCounter" value="511" />
+    <task id="LOCAL-00511" summary="Cooldown.md">
+      <option name="closed" value="true" />
+      <created>1758296254138</created>
+      <option name="number" value="00511" />
+      <option name="presentableId" value="LOCAL-00511" />
+      <option name="project" value="LOCAL" />
+      <updated>1758296254138</updated>
+    </task>
+    <task id="LOCAL-00512" summary="Cooldown.md">
+      <option name="closed" value="true" />
+      <created>1758296388402</created>
+      <option name="number" value="00512" />
+      <option name="presentableId" value="LOCAL-00512" />
+      <option name="project" value="LOCAL" />
+      <updated>1758296388402</updated>
+    </task>
+    <option name="localTasksCounter" value="513" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,7 +625,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IRequest.md" />
     <MESSAGE value="BaseRequest.md" />
     <MESSAGE value="PrintAction.md" />
     <MESSAGE value="IReactiveArray.md" />
@@ -649,7 +649,8 @@
     <MESSAGE value="Fix README.md" />
     <MESSAGE value="Subscription.md" />
     <MESSAGE value="ICooldown" />
-    <option name="LAST_COMMIT_MESSAGE" value="ICooldown" />
+    <MESSAGE value="Cooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
