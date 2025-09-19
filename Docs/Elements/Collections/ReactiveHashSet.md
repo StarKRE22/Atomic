@@ -4,8 +4,15 @@ Represents a **reactive hash set** that supports **notifications** when items ar
 state changes. It implements `IReactiveSet<T>`, `ISet<T>`, `ICollection<T>`, `IEnumerable<T>`, and `IDisposable`.
 Optionally supports serialization for Unity projects.
 
-> [!NOTE]  
-> Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
+```csharp
+public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCallbackReceiver
+```
+
+- **Type Parameters:**
+  - `T` — The type of elements stored in the set.
+- **Notes:**
+  - Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
+  - Supports Unity serialization
 
 ---
 
