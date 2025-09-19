@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/InlineSetter.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/ISignal.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/InlineSignal.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Subscription.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,23 +197,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="33333000" />
-    </task>
-    <task id="LOCAL-00452" summary="IntMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1758212849956</created>
-      <option name="number" value="00452" />
-      <option name="presentableId" value="LOCAL-00452" />
-      <option name="project" value="LOCAL" />
-      <updated>1758212849956</updated>
-    </task>
-    <task id="LOCAL-00453" summary="IntSumExpression.md">
-      <option name="closed" value="true" />
-      <created>1758213282678</created>
-      <option name="number" value="00453" />
-      <option name="presentableId" value="LOCAL-00453" />
-      <option name="project" value="LOCAL" />
-      <updated>1758213282678</updated>
+      <workItem from="1758177750643" duration="34064000" />
     </task>
     <task id="LOCAL-00454" summary="OrExpression.md">
       <option name="closed" value="true" />
@@ -584,7 +575,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758272326253</updated>
     </task>
-    <option name="localTasksCounter" value="501" />
+    <task id="LOCAL-00501" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758272415699</created>
+      <option name="number" value="00501" />
+      <option name="presentableId" value="LOCAL-00501" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272415699</updated>
+    </task>
+    <task id="LOCAL-00502" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758272477013</created>
+      <option name="number" value="00502" />
+      <option name="presentableId" value="LOCAL-00502" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272477013</updated>
+    </task>
+    <option name="localTasksCounter" value="503" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="IntSumExpression.md" />
     <MESSAGE value="OrExpression.md" />
     <MESSAGE value="IFunction.md" />
@@ -636,7 +642,8 @@
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ISetter.md, InlineSetter.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ISetter.md, InlineSetter.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
