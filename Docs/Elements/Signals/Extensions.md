@@ -4,7 +4,7 @@ The **Extensions** class provides utility methods for **subscribing** and **unsu
 
 ---
 
-## 🔹 Subscribe Methods
+## 🏹 Subscribe Methods
 
 ### `Subscribe(this ISignal, IAction)`
 ```csharp
@@ -109,7 +109,7 @@ public static Subscription<T1, T2, T3, T4> Subscribe<T1, T2, T3, T4>(
 
 ---
 
-## 🔹 Unsubscribe Methods
+## 🏹 Unsubscribe Methods
 
 ### `Unsubscribe(this ISignal, IAction)`
 ```csharp
@@ -226,7 +226,7 @@ public static void Unsubscribe<T1, T2, T3, T4>(
   ```
 ---
 
-## 🔹 SubscribeRange Methods
+## 🏹 SubscribeRange Methods
 
 ### `SubscribeRange(this ISignal, IEnumerable<IAction>)`
 ```csharp
@@ -348,7 +348,7 @@ public static void SubscribeRange<T1, T2, T3, T4>(
   ```
 ---
 
-## 🔹 UnsubscribeRange Methods
+## 🏹 UnsubscribeRange Methods
 
 ### `UnsubscribeRange(this ISignal, IEnumerable<IAction>)`
 ```csharp
