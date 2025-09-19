@@ -9,7 +9,7 @@ namespace Atomic.Elements
     /// Represents a cooldown timer with a random duration between a specified minimum and maximum.
     /// </summary>
     [Serializable]
-    public sealed class RandomCooldown : ICooldown
+    public class RandomCooldown : ICooldown
     {
         /// <summary>
         /// Occurs when the cooldown has completed.

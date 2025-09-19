@@ -1,20 +1,24 @@
 # 🧩 RandomCooldown
 
-`RandomCooldown` is an implementation of [ICooldown](ICooldown.md) that represents a **cooldown timer with a random duration**.  
+An implementation of [ICooldown](ICooldown.md) that represents a **cooldown timer with a random duration**. Each time
+the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration. Useful for
+game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event timers, or
+procedural ability cooldowns.
 
-Each time the cooldown is reset (`ResetTime`), it is assigned a new random value between a specified minimum and maximum duration.
-
-> [!IMPORTANT]  
-> Useful for game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event timers, or procedural ability cooldowns.
+```csharp
+public class RandomCooldown : ICooldown
+```
 
 ---
 
-## Constructors
+## 🏗️ Constructors
 
-#### `RandomCooldown(float minDuration, float maxDuration)`
+#### `RandomCooldown(float, float)`
+
 ```csharp
 public RandomCooldown(float minDuration, float maxDuration);
 ```
+
 - **Description:** Initializes a new instance of `RandomCooldown` with a specified range of durations.
 - **Parameters:**
     - `minDuration` — minimum cooldown duration in seconds.
@@ -23,106 +27,133 @@ public RandomCooldown(float minDuration, float maxDuration);
 
 ---
 
-## Events
+## ⚡ Events
 
-#### `event Action<float> OnTimeChanged`
+#### `OnTimeChanged`
+
 ```csharp
 public event Action<float> OnTimeChanged;
 ```
+
 - **Description:** Invoked whenever the remaining time of the cooldown changes.
 - **Parameters:** `float` — the new remaining time in seconds.
 - **Notes:** Triggered whenever `SetTime`, `Tick`, or `SetProgress` changes the current time.
 
-#### `event Action<float> OnDurationChanged`
+#### `OnDurationChanged`
+
 ```csharp
 public event Action<float> OnDurationChanged;
 ```
+
 - **Description:** Invoked whenever the total duration of the cooldown changes.
 - **Parameters:** `float` — the new total duration in seconds.
 - **Notes:** Triggered when `SetDuration` is called or when `ResetTime` sets a new random duration.
 
-#### `event Action<float> OnProgressChanged`
+#### `OnProgressChanged`
+
 ```csharp
 public event Action<float> OnProgressChanged;
 ```
+
 - **Description:** Raised when the normalized progress of the cooldown changes.
 - **Parameters:** `float` — current progress between 0 and 1.
-- **Notes:** Progress is updated whenever time or duration changes, e.g., via `Tick`, `SetTime`, `SetDuration`, or `SetProgress`.
+- **Notes:** Progress is updated whenever time or duration changes, e.g., via `Tick`, `SetTime`, `SetDuration`, or
+  `SetProgress`.
 
-#### `event Action OnCompleted`
+#### `OnCompleted`
+
 ```csharp
 public event Action OnCompleted;
 ```
+
 - **Description:** Invoked when the cooldown has finished (remaining time reaches zero).
 - **Notes:** Can be used to trigger actions like enabling abilities or firing events once the cooldown expires.
 
 ---
 
-## Methods
+## 🏹 Methods
 
-#### `float GetTime()`
+#### `GetTime()`
+
 ```csharp
 public float GetTime();
 ```
+
 - **Description:** Returns the current remaining time of the cooldown.
 - **Returns:** `float` — remaining time in seconds.
 
-#### `void SetTime(float time)`
+#### `SetTime(float)`
+
 ```csharp
 public void SetTime(float time);
 ```
+
 - **Description:** Sets the current remaining time.
 - **Parameters:** `float time` — the new time to set, clamped between `0` and the current duration.
 - **Notes:** Triggers `OnTimeChanged` and `OnProgressChanged` if the value changes.
 
-#### `void ResetTime()`
+#### `ResetTime()`
+
 ```csharp
 public void ResetTime();
 ```
+
 - **Description:** Resets the cooldown to a new random duration between `minDuration` and `maxDuration`.
 - **Notes:** Triggers `OnDurationChanged`, `OnTimeChanged`, `OnProgressChanged`, and may trigger `OnCompleted`.
 
-#### `float GetDuration()`
+#### `GetDuration()`
+
 ```csharp
 public float GetDuration();
 ```
+
 - **Description:** Returns the total duration of the current cooldown.
 - **Returns:** `float` — current duration in seconds.
 
-#### `void SetDuration(float duration)`
+#### `SetDuration(float)`
+
 ```csharp
 public void SetDuration(float duration);
 ```
+
 - **Description:** Sets a specific duration for the cooldown.
 - **Parameters:** `float duration` — new duration value.
 - **Notes:** Triggers `OnDurationChanged` and `OnProgressChanged`.
 
-#### `float GetProgress()`
+#### `GetProgress()`
+
 ```csharp
 public float GetProgress();
 ```
+
 - **Description:** Returns the normalized progress of the cooldown.
 - **Returns:** `float` — progress value between `0` and `1`.
 
-#### `void SetProgress(float progress)`
+#### `SetProgress(float)`
+
 ```csharp
 public void SetProgress(float progress);
 ```
+
 - **Description:** Sets the normalized progress of the cooldown, updating remaining time accordingly.
 - **Parameters:** `float progress` — new progress value (0–1).
 - **Notes:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `bool IsCompleted()`
+#### `IsCompleted()`
+
 ```csharp
 public bool IsCompleted();
 ```
+
 - **Description:** Returns whether the cooldown has finished.
 - **Returns:** `true` if remaining time is zero; otherwise `false`.
 
-#### `void Tick(float deltaTime)`
+#### `Tick(float)`
+
 ```csharp
 public void Tick(float deltaTime);
 ```
+
 - **Description:** Advances the cooldown by a given time increment.
 - **Parameters:** `float deltaTime` — time to subtract from the current remaining time.
 - **Notes:** Triggers `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` if the cooldown expires.
