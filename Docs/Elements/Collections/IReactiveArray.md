@@ -5,8 +5,8 @@ Represents a **reactive array with writable access** that provides notifications
 ```csharp
 public interface IReactiveArray<T> : IReadOnlyReactiveArray<T>
 ```
-- **Type Parameter:** - `T` — The type of elements stored in the array.
-- **Remarks:** Use this interface when you need read-write access and reactive updates for array elements.
+- **Type Parameter:** `T` — The type of elements stored in the array.
+- **Note:** Use this interface when you need read-write access and reactive updates for array elements.
 ---
 
 ## ⚡ Events
