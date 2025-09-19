@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,39 +199,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="4044000" />
-    </task>
-    <task id="LOCAL-00492" summary="ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758271459644</created>
-      <option name="number" value="00492" />
-      <option name="presentableId" value="LOCAL-00492" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271459644</updated>
-    </task>
-    <task id="LOCAL-00493" summary="ReactiveHashSet.md">
-      <option name="closed" value="true" />
-      <created>1758271539555</created>
-      <option name="number" value="00493" />
-      <option name="presentableId" value="LOCAL-00493" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271539555</updated>
-    </task>
-    <task id="LOCAL-00494" summary="ReactiveLinkedList.md">
-      <option name="closed" value="true" />
-      <created>1758271754659</created>
-      <option name="number" value="00494" />
-      <option name="presentableId" value="LOCAL-00494" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271754659</updated>
-    </task>
-    <task id="LOCAL-00495" summary="ReactiveLinkedList.md">
-      <option name="closed" value="true" />
-      <created>1758271865259</created>
-      <option name="number" value="00495" />
-      <option name="presentableId" value="LOCAL-00495" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271865259</updated>
+      <workItem from="1758300054327" duration="4648000" />
     </task>
     <task id="LOCAL-00496" summary="ReactiveLinkedList.md">
       <option name="closed" value="true" />
@@ -590,7 +561,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758307166056</updated>
     </task>
-    <option name="localTasksCounter" value="541" />
+    <task id="LOCAL-00541" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1758307285759</created>
+      <option name="number" value="00541" />
+      <option name="presentableId" value="LOCAL-00541" />
+      <option name="project" value="LOCAL" />
+      <updated>1758307285759</updated>
+    </task>
+    <task id="LOCAL-00542" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1758307305706</created>
+      <option name="number" value="00542" />
+      <option name="presentableId" value="LOCAL-00542" />
+      <option name="project" value="LOCAL" />
+      <updated>1758307305706</updated>
+    </task>
+    <task id="LOCAL-00543" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1758307345225</created>
+      <option name="number" value="00543" />
+      <option name="presentableId" value="LOCAL-00543" />
+      <option name="project" value="LOCAL" />
+      <updated>1758307345225</updated>
+    </task>
+    <task id="LOCAL-00544" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1758307426225</created>
+      <option name="number" value="00544" />
+      <option name="presentableId" value="LOCAL-00544" />
+      <option name="project" value="LOCAL" />
+      <updated>1758307426225</updated>
+    </task>
+    <option name="localTasksCounter" value="545" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ISignal.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="Fix README.md" />
@@ -642,7 +644,8 @@
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="DisposableAction.md" />
     <MESSAGE value="Optional.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optional.md" />
+    <MESSAGE value="Reference.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reference.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
