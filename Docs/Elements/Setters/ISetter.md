@@ -1,9 +1,7 @@
 # 🧩 ISetter&lt;T&gt;
 
-The **ISetter** interface defines a contract for **assigning values**.  
-It extends the [IAction&lt;T&gt;](../Actions/IAction.md#-iactiont) interface, enabling its usage both as an **action** and as a **value setter**.
-
----
+Defines a contract for **assigning values**. It extends the [IAction&lt;T&gt;](../Actions/IAction.md#-iactiont)
+interface, enabling its usage both as an **action** and as a **value setter**.
 
 ```csharp
 public interface ISetter<in T> : IAction<T>
@@ -13,29 +11,38 @@ public interface ISetter<in T> : IAction<T>
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Value`
+
 ```csharp
-T Value { set; }
+public T Value { set; }
 ```
+
 - **Description:** Assigns the provided value.
 - **Parameter:** `value` — the new value to be set.
 
-## Methods
+---
 
-#### `Invoke(T arg)`
+## 🏹 Methods
+
+#### `Invoke(T)`
 
 ```csharp
-void Invoke(T arg);
+public  void Invoke(T arg);
 ```
+
 - **Description:** Invokes the setter by assigning the provided value.
 - **Parameter:** `arg` — the value to set.
 - **Notes:** Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
 
+---
+
 ## 🗂 Example of Usage
 
-Below is an example of using `ISetter<Vector3>` inside a movement input controller built with `Atomic.Entities`. This approach cleanly separates **input handling** from the **entity’s movement logic**, while relying only on the `ISetter` interface.
+Below is an example of using `ISetter<Vector3>` inside a movement input controller built with `Atomic.Entities`. This
+approach cleanly separates **input handling** from the **entity’s movement logic**, while relying only on the `ISetter`
+interface.
 
 ```csharp
 //Create entity with "MoveDirection" property

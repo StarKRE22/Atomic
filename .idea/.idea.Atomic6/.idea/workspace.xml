@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,31 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="32676000" />
-    </task>
-    <task id="LOCAL-00445" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1758192654034</created>
-      <option name="number" value="00445" />
-      <option name="presentableId" value="LOCAL-00445" />
-      <option name="project" value="LOCAL" />
-      <updated>1758192654034</updated>
-    </task>
-    <task id="LOCAL-00446" summary="AndExpression.md">
-      <option name="closed" value="true" />
-      <created>1758193050943</created>
-      <option name="number" value="00446" />
-      <option name="presentableId" value="LOCAL-00446" />
-      <option name="project" value="LOCAL" />
-      <updated>1758193050943</updated>
-    </task>
-    <task id="LOCAL-00447" summary="ExpressionBase.md">
-      <option name="closed" value="true" />
-      <created>1758194406040</created>
-      <option name="number" value="00447" />
-      <option name="presentableId" value="LOCAL-00447" />
-      <option name="project" value="LOCAL" />
-      <updated>1758194406040</updated>
+      <workItem from="1758177750643" duration="33008000" />
     </task>
     <task id="LOCAL-00448" summary="Прочесал FloatMulExpression.md">
       <option name="closed" value="true" />
@@ -584,7 +560,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758271539555</updated>
     </task>
-    <option name="localTasksCounter" value="494" />
+    <task id="LOCAL-00494" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271754659</created>
+      <option name="number" value="00494" />
+      <option name="presentableId" value="LOCAL-00494" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271754659</updated>
+    </task>
+    <task id="LOCAL-00495" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271865259</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271865259</updated>
+    </task>
+    <task id="LOCAL-00496" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271964488</created>
+      <option name="number" value="00496" />
+      <option name="presentableId" value="LOCAL-00496" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271964488</updated>
+    </task>
+    <option name="localTasksCounter" value="497" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Прочесал FloatSumExpression.md" />
     <MESSAGE value="IExpression.md" />
     <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="IntMulExpression.md" />
@@ -636,7 +635,8 @@
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReactiveHashSet.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveHashSet.md" />
+    <MESSAGE value="ReactiveLinkedList.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveLinkedList.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
