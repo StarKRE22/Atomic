@@ -1,7 +1,7 @@
 # 🧩 ProxyVariable&lt;T&gt;
 
-`ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions
-**. It implements [IVariable&lt;T&gt;](IVariable.md), allowing you to **wrap existing data sources** and expose them
+Provides a **read-write variable** that delegates its value to **external getter and setter functions. It
+implements [IVariable&lt;T&gt;](IVariable.md), allowing you to **wrap existing data sources** and expose them
 through a unified variable interface. This is useful when you want to integrate third-party or existing fields /
 properties into systems expecting `IVariable<T>` without duplicating state.
 
