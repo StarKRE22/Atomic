@@ -1,55 +1,64 @@
 # 🧩 IVariable&lt;T&gt;
 
-`IVariable<T>` represents a **read-write variable** that exposes both **getter** and **setter** interfaces. It combines the functionality of [IValue&lt;T&gt;](../Values/IValue.md) (read-only access) and [ISetter&lt;T&gt;](../Setters/ISetter.md) (write access).
+Represents a **read-write variable** that exposes both **getter** and **setter** interfaces. It combines the
+functionality of [IValue&lt;T&gt;](../Values/IValue.md) (read-only access)
+and [ISetter&lt;T&gt;](../Setters/ISetter.md) (write access).
+
+```csharp
+public interface IVariable<T> : IValue<T>, ISetter<T>
+```
+
+- **Type Parameter:** `T` – The type of the value.
 
 ---
 
-## Type Parameter
-
-- `T` – The type of the value.
-
----
-
-## Properties
+## 🔑 Properties
 
 #### `Value`
+
 ```csharp
-new T Value { get; set; }
+public T Value { get; set; }
 ```
+
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
 - **Notes:**
-  - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
-  - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
+    - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
+    - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
-T Invoke()
+public T Invoke()
 ```
+
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
 - **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
 
+#### `Invoke(T)`
 
-#### `Invoke(T arg)`
 ```csharp
-void Invoke(T arg)
+public void Invoke(T arg)
 ```
+
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
-  - Acts as a setter method, complementing the `Value` property.
-  - Default implementation comes from [IAction&lt;R&gt;.Invoke()](../Actions/IAction.md#invoket).
+    - Acts as a setter method, complementing the `Value` property.
+    - Default implementation comes from [IAction&lt;R&gt;.Invoke()](../Actions/IAction.md#invoket).
 
 ---
 
 ## 🗂 Example of Usage
 
-This section demonstrates how to implement `IVariable<T>` for **Transform position** and a **networked variable**.
+This section demonstrates how to implement `IVariable<T>` for different cases.
+
+### Example #1: Wrap `Transform.position`
 
 ```csharp
 public class TransformPositionVariable : IVariable<Vector3>
@@ -69,22 +78,24 @@ public class TransformPositionVariable : IVariable<Vector3>
 }
 ```
 
+### Example #2: Wrap Pointer of `Network Buffer`
+
 ```csharp
 public class NetworkVariable<T> : IVariable<T> where T : unmanaged
 {
-    private readonly NetworkObject _networkObject;
+    private readonly NetworkBuffer _networkBuffer;
     private IntPtr _ptr;
     
-    public NetworkVariable(NetworkObject networkObject, IntPtr ptr)
+    public NetworkVariable(NetworkBuffer networkBuffer, IntPtr ptr)
     {
-        _networkObject = networkObject ?? throw new ArgumentNullException(nameof(networkObject));
+        _networkBuffer = networkBuffer;
         _ptr = ptr;
     }
 
     public T Value
     {
-        get => _networkObject.ReadData<T>(_ptr);
-        set => _networkObject.WriteData<T>(_ptr, value);
+        get => _networkBuffer.ReadData<T>(_ptr);
+        set => _networkBuffer.WriteData<T>(_ptr, value);
     }
 }
 ```
