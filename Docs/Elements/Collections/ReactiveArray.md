@@ -8,10 +8,12 @@ serialization for Unity projects.
 public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 ```
 
-- **Type Parameter:** `T` — The type of elements stored in the array.
+- **Type Parameters:** 
+  - `T` — The type of elements stored in the array.
 - **Notes:** 
   - Use this class when you need a read-write reactive array with change notifications and iteration support.
   - For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
+  - Supports Unity Serialization 
 
 ---
 
