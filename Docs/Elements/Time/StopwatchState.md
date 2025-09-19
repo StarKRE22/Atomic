@@ -1,11 +1,10 @@
 # 🧩 StopwatchState
 
-`StopwatchState` represents the **current state of a stopwatch**.  
-It is used by [IStopwatch](IStopwatch.md) to indicate whether the stopwatch is idle, running, paused, or stopped.
+Represents the **current state of a stopwatch**. It is used by [IStopwatch](IStopwatch.md) and [Stopwatch](Stopwatch.md) to indicate whether the stopwatch is idle, running, paused, or stopped.
 
 ---
 
-## Enum
+## 🔢 Enum
 
 #### `IDLE`
 - **Description:** The stopwatch has not been started yet.
