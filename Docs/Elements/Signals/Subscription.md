@@ -350,9 +350,7 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 
 ```
 
-This pattern ensures that all subscriptions are automatically cleaned up when the object is destroyed, preventing memory
+Using the [AddTo](../Utils/Extensions.md#addtoidisposable-disposablecomposite) extension method ties each subscription
+to a composite disposable for easy lifecycle management. This pattern ensures that all subscriptions are automatically
+cleaned up when the object is destroyed, preventing memory
 leaks or lingering event handlers.
-
-> [!NOTE]
-> Using the [AddTo](../Utils/Extensions.md#addtoidisposable-disposablecomposite) extension method ties each subscription
-> to a composite disposable for easy lifecycle management.
