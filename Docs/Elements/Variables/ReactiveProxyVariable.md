@@ -94,7 +94,7 @@ public void Unsubscribe(Action action)
 
 ---
 
-## 👷‍ Builder
+## 👷‍♂️ Builder
 
 **`ReactiveProxyVariable<T>` provides a convenient fluent builder**
 

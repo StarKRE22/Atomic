@@ -164,7 +164,7 @@ score.Dispose();
 
 ## 🧩 Subclasses
 
-For convenience, several specialized implementations of base variables are provided. It is recommended to use them, as
+For convenience, several specialized implementations of reactive variables are provided. It is recommended to use them, as
 they compare values without relying on `EqualityComparer`, which makes them slightly faster than the generic
 `Reactiveariable<T>` version.
 
