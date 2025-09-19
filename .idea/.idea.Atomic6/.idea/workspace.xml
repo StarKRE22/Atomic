@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/UnityComponents/AnimationEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/UnityComponents/AnimationEvents.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,23 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="1641000" />
-    </task>
-    <task id="LOCAL-00484" summary="IReadOnlyReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758270794591</created>
-      <option name="number" value="00484" />
-      <option name="presentableId" value="LOCAL-00484" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270794591</updated>
-    </task>
-    <task id="LOCAL-00485" summary="IReadOnlyReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1758270899763</created>
-      <option name="number" value="00485" />
-      <option name="presentableId" value="LOCAL-00485" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270899763</updated>
+      <workItem from="1758300054327" duration="1978000" />
     </task>
     <task id="LOCAL-00486" summary="IReadOnlyReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -593,7 +576,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758301277338</updated>
     </task>
-    <option name="localTasksCounter" value="533" />
+    <task id="LOCAL-00533" summary="UpTimer.md">
+      <option name="closed" value="true" />
+      <created>1758301707121</created>
+      <option name="number" value="00533" />
+      <option name="presentableId" value="LOCAL-00533" />
+      <option name="project" value="LOCAL" />
+      <updated>1758301707121</updated>
+    </task>
+    <task id="LOCAL-00534" summary="UpTimer.md">
+      <option name="closed" value="true" />
+      <created>1758301746744</created>
+      <option name="number" value="00534" />
+      <option name="presentableId" value="LOCAL-00534" />
+      <option name="project" value="LOCAL" />
+      <updated>1758301746744</updated>
+    </task>
+    <option name="localTasksCounter" value="535" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ISetter.md, InlineSetter.md" />
@@ -645,7 +643,8 @@
     <MESSAGE value="Stopwatch.md" />
     <MESSAGE value="StopwatchState.md" />
     <MESSAGE value="TimerState.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="TimerState.md" />
+    <MESSAGE value="UpTimer.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="UpTimer.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
