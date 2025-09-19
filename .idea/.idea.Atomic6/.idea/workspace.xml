@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,39 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="32206000" />
-    </task>
-    <task id="LOCAL-00441" summary="BaseEvent.md">
-      <option name="closed" value="true" />
-      <created>1758191790974</created>
-      <option name="number" value="00441" />
-      <option name="presentableId" value="LOCAL-00441" />
-      <option name="project" value="LOCAL" />
-      <updated>1758191790974</updated>
-    </task>
-    <task id="LOCAL-00442" summary="BaseEvent.md">
-      <option name="closed" value="true" />
-      <created>1758191829340</created>
-      <option name="number" value="00442" />
-      <option name="presentableId" value="LOCAL-00442" />
-      <option name="project" value="LOCAL" />
-      <updated>1758191829340</updated>
-    </task>
-    <task id="LOCAL-00443" summary="IEvent.md">
-      <option name="closed" value="true" />
-      <created>1758192257751</created>
-      <option name="number" value="00443" />
-      <option name="presentableId" value="LOCAL-00443" />
-      <option name="project" value="LOCAL" />
-      <updated>1758192257751</updated>
-    </task>
-    <task id="LOCAL-00444" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1758192589355</created>
-      <option name="number" value="00444" />
-      <option name="presentableId" value="LOCAL-00444" />
-      <option name="project" value="LOCAL" />
-      <updated>1758192589355</updated>
+      <workItem from="1758177750643" duration="32676000" />
     </task>
     <task id="LOCAL-00445" summary="Minor Fixes">
       <option name="closed" value="true" />
@@ -582,7 +552,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758271273097</updated>
     </task>
-    <option name="localTasksCounter" value="490" />
+    <task id="LOCAL-00490" summary="ReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758271341932</created>
+      <option name="number" value="00490" />
+      <option name="presentableId" value="LOCAL-00490" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271341932</updated>
+    </task>
+    <task id="LOCAL-00491" summary="ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758271435554</created>
+      <option name="number" value="00491" />
+      <option name="presentableId" value="LOCAL-00491" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271435554</updated>
+    </task>
+    <task id="LOCAL-00492" summary="ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758271459644</created>
+      <option name="number" value="00492" />
+      <option name="presentableId" value="LOCAL-00492" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271459644</updated>
+    </task>
+    <task id="LOCAL-00493" summary="ReactiveHashSet.md">
+      <option name="closed" value="true" />
+      <created>1758271539555</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271539555</updated>
+    </task>
+    <option name="localTasksCounter" value="494" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,8 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExpressionBase.md" />
-    <MESSAGE value="Прочесал FloatMulExpression.md" />
     <MESSAGE value="Прочесал FloatSumExpression.md" />
     <MESSAGE value="IExpression.md" />
     <MESSAGE value="InlineExpression.md" />
@@ -632,9 +632,11 @@
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
-    <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="Reactiv" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reactiv" />
+    <MESSAGE value="ReactiveArray.md" />
+    <MESSAGE value="ReactiveDictionary.md" />
+    <MESSAGE value="ReactiveHashSet.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveHashSet.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
