@@ -10,7 +10,7 @@ public sealed class PrintAction : IAction
 
 > [!NOTE]
 > In **Unity**, it uses `Debug.Log`, `Debug.LogWarning`, or `Debug.LogError` depending on the specified `LogType`.
-> Outside of Unity, it uses `Console.WriteLine`.
+> <br> Outside of Unity, it uses `Console.WriteLine`.
 
 ---
 

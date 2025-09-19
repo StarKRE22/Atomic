@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,39 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="30524000" />
-    </task>
-    <task id="LOCAL-00423" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758188677709</created>
-      <option name="number" value="00423" />
-      <option name="presentableId" value="LOCAL-00423" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188677709</updated>
-    </task>
-    <task id="LOCAL-00424" summary="IReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758188759032</created>
-      <option name="number" value="00424" />
-      <option name="presentableId" value="LOCAL-00424" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188759032</updated>
-    </task>
-    <task id="LOCAL-00425" summary="IReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1758188850532</created>
-      <option name="number" value="00425" />
-      <option name="presentableId" value="LOCAL-00425" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188850532</updated>
-    </task>
-    <task id="LOCAL-00426" summary="IReactiveSet.md">
-      <option name="closed" value="true" />
-      <created>1758189005598</created>
-      <option name="number" value="00426" />
-      <option name="presentableId" value="LOCAL-00426" />
-      <option name="project" value="LOCAL" />
-      <updated>1758189005598</updated>
+      <workItem from="1758177750643" duration="30883000" />
     </task>
     <task id="LOCAL-00427" summary="IReadOnlyReactiveArray.md">
       <option name="closed" value="true" />
@@ -584,7 +552,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758269256271</updated>
     </task>
-    <option name="localTasksCounter" value="472" />
+    <task id="LOCAL-00472" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269777658</created>
+      <option name="number" value="00472" />
+      <option name="presentableId" value="LOCAL-00472" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269777658</updated>
+    </task>
+    <task id="LOCAL-00473" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269825955</created>
+      <option name="number" value="00473" />
+      <option name="presentableId" value="LOCAL-00473" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269825955</updated>
+    </task>
+    <task id="LOCAL-00474" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269843825</created>
+      <option name="number" value="00474" />
+      <option name="presentableId" value="LOCAL-00474" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269843825</updated>
+    </task>
+    <task id="LOCAL-00475" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269874761</created>
+      <option name="number" value="00475" />
+      <option name="presentableId" value="LOCAL-00475" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269874761</updated>
+    </task>
+    <option name="localTasksCounter" value="476" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
