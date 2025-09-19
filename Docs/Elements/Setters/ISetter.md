@@ -5,8 +5,12 @@ It extends the [IAction&lt;T&gt;](../Actions/IAction.md#-iactiont) interface, en
 
 ---
 
-## Type Parameter
-- `T` – the type of the value to be set.
+```csharp
+public interface ISetter<in T> : IAction<T>
+```
+
+- **Type Parameter:** `T` – the type of the value to be set.
+
 ---
 
 ## Properties
