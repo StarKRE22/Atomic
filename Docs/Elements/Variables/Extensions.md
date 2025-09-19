@@ -1,12 +1,10 @@
 # 🧩 Variable Extensions
 
-The **Extensions** class provides utility methods for creating **variable wrappers**, including standard, reactive, and proxy variables.  
-
-These methods simplify the creation of variables that support encapsulation, reactivity, and indirect access.
+The **Extensions** class provides utility methods for creating **variable wrappers**, including standard, reactive, and proxy variables. These methods simplify the creation of variables that support encapsulation, reactivity, and indirect access.
 
 ---
 
-### `AsVariable<T>()`
+#### `AsVariable<T>()`
 ```csharp
 public static BaseVariable<T> AsVariable<T>(this T it)
 ```
@@ -22,7 +20,7 @@ public static BaseVariable<T> AsVariable<T>(this T it)
     Console.WriteLine(variable.Value); // Output: 42
     ```
 ---
-### `AsReactiveVariable<T>()`
+#### `AsReactiveVariable<T>()`
 ```csharp
 public static ReactiveVariable<T> AsReactiveVariable<T>(this T it)
 ```
@@ -42,7 +40,7 @@ public static ReactiveVariable<T> AsReactiveVariable<T>(this T it)
     ```
 ---
 
-### `AsProxyVariable<T, R>()`
+#### `AsProxyVariable<T, R>()`
 ```csharp
 public static ProxyVariable<R> AsProxyVariable<T, R>(this T it, Func<T, R> getter, Action<T, R> setter)
 ```
