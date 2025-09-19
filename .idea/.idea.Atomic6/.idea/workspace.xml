@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,23 +196,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="3742000" />
-    </task>
-    <task id="LOCAL-00490" summary="ReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758271341932</created>
-      <option name="number" value="00490" />
-      <option name="presentableId" value="LOCAL-00490" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271341932</updated>
-    </task>
-    <task id="LOCAL-00491" summary="ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758271435554</created>
-      <option name="number" value="00491" />
-      <option name="presentableId" value="LOCAL-00491" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271435554</updated>
+      <workItem from="1758300054327" duration="4044000" />
     </task>
     <task id="LOCAL-00492" summary="ReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -592,7 +574,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758306792841</updated>
     </task>
-    <option name="localTasksCounter" value="539" />
+    <task id="LOCAL-00539" summary="DisposableAction.md">
+      <option name="closed" value="true" />
+      <created>1758306917386</created>
+      <option name="number" value="00539" />
+      <option name="presentableId" value="LOCAL-00539" />
+      <option name="project" value="LOCAL" />
+      <updated>1758306917386</updated>
+    </task>
+    <task id="LOCAL-00540" summary="Optional.md">
+      <option name="closed" value="true" />
+      <created>1758307166056</created>
+      <option name="number" value="00540" />
+      <option name="presentableId" value="LOCAL-00540" />
+      <option name="project" value="LOCAL" />
+      <updated>1758307166056</updated>
+    </task>
+    <option name="localTasksCounter" value="541" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Extensions.md" />
     <MESSAGE value="ISignal.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="InlineSignal.md" />
@@ -644,7 +641,8 @@
     <MESSAGE value="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="DisposableAction.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="DisposableAction.md" />
+    <MESSAGE value="Optional.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optional.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
