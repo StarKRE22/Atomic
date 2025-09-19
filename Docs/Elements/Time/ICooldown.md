@@ -108,7 +108,7 @@ public void Tick(float deltaTime);
 - **Parameter:** `deltaTime` — The amount of time (in seconds) to advance the source.
 - **Remarks:** This method is typically called repeatedly (e.g., once per frame) to progress time-dependent systems.
 
-#### `float GetProgress()`
+#### `GetProgress()`
 
 ```csharp
 public float GetProgress();  

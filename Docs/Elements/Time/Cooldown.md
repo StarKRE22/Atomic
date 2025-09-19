@@ -23,7 +23,7 @@ public Cooldown();
 - **Description:** Initializes a new instance of the `Cooldown` class with default values.
 - **Remarks:** Duration defaults to `0` and remaining time is `0`. The cooldown must be set or reset before use.
 
-#### `Cooldown(float duration)`
+#### `Cooldown(float)`
 
 ```csharp
 public Cooldown(float duration);
@@ -37,7 +37,7 @@ public Cooldown(float duration);
 
 ## ⚡ Events
 
-#### `event Action<float> OnTimeChanged`
+#### `OnTimeChanged`
 
 ```csharp
 public event Action<float> OnTimeChanged;
@@ -46,7 +46,7 @@ public event Action<float> OnTimeChanged;
 - **Description:** Invoked whenever the current remaining time changes.
 - **Parameters:** `float` — the new remaining time in seconds.
 
-#### `event Action<float> OnDurationChanged`
+#### `OnDurationChanged`
 
 ```csharp
 public event Action<float> OnDurationChanged;
@@ -55,7 +55,7 @@ public event Action<float> OnDurationChanged;
 - **Description:** Invoked whenever the total duration changes.
 - **Parameters:** `float` — the new total duration in seconds.
 
-#### `event Action<float> OnProgressChanged`
+#### `OnProgressChanged`
 
 ```csharp
 public event Action<float> OnProgressChanged;
@@ -64,7 +64,7 @@ public event Action<float> OnProgressChanged;
 - **Description:** Raised when the normalized progress changes.
 - **Parameters:** `float` — the current progress (0–1).
 
-#### `event Action OnCompleted`
+#### `OnCompleted`
 
 ```csharp
 public event Action OnCompleted;
@@ -76,7 +76,7 @@ public event Action OnCompleted;
 
 ## 🏹 Methods
 
-#### `float GetTime()`
+#### `GetTime()`
 
 ```csharp
 public float GetTime();
@@ -85,7 +85,7 @@ public float GetTime();
 - **Description:** Returns the current remaining time of the cooldown.
 - **Returns:** `float` — remaining time in seconds.
 
-#### `void SetTime(float time)`
+#### `SetTime(float)`
 
 ```csharp
 public void SetTime(float time);
@@ -95,7 +95,7 @@ public void SetTime(float time);
 - **Parameters:** `time` — new time to set, clamped between `0` and the total duration.
 - **Notes:** Invokes `OnTimeChanged` and `OnProgressChanged` if the value changes.
 
-#### `void ResetTime()`
+#### `ResetTime()`
 
 ```csharp
 public void ResetTime();
@@ -103,7 +103,7 @@ public void ResetTime();
 
 - **Description:** Resets the cooldown to its full duration.
 
-#### `float GetDuration()`
+#### `GetDuration()`
 
 ```csharp
 public float GetDuration();
@@ -112,7 +112,7 @@ public float GetDuration();
 - **Description:** Returns the total duration of the cooldown.
 - **Returns:** `float` — total duration in seconds.
 
-#### `void SetDuration(float duration)`
+#### `SetDuration(float)`
 
 ```csharp
 public void SetDuration(float duration);
@@ -122,7 +122,7 @@ public void SetDuration(float duration);
 - **Parameters:** `duration` — new duration value.
 - **Notes:** Invokes `OnDurationChanged` and `OnProgressChanged` if the value changes.
 
-#### `void Tick(float deltaTime)`
+#### `Tick(float)`
 
 ```csharp
 public void Tick(float deltaTime);
@@ -132,7 +132,7 @@ public void Tick(float deltaTime);
 - **Parameters:** `deltaTime` — time to subtract from the current remaining time.
 - **Notes:** Invokes `OnTimeChanged`, `OnProgressChanged`, and `OnCompleted` if the cooldown expires.
 
-#### `float GetProgress()`
+#### `GetProgress()`
 
 ```csharp
 public float GetProgress();
@@ -141,7 +141,7 @@ public float GetProgress();
 - **Description:** Returns the normalized progress of the cooldown.
 - **Returns:** `float` — progress between 0 and 1.
 
-#### `void SetProgress(float progress)`
+#### `SetProgress(float)`
 
 ```csharp
 public void SetProgress(float progress);
@@ -151,7 +151,7 @@ public void SetProgress(float progress);
 - **Parameters:** `progress` — new progress value between 0 and 1.
 - **Notes:** Invokes `OnTimeChanged` and `OnProgressChanged`.
 
-#### `bool IsCompleted()`
+#### `IsCompleted()`
 
 ```csharp
 public bool IsCompleted();
@@ -160,7 +160,7 @@ public bool IsCompleted();
 - **Description:** Returns whether the cooldown has finished.
 - **Returns:** `true` if remaining time is zero; otherwise `false`.
 
-#### `override string ToString()`
+#### `ToString()`
 
 ```csharp
 public override string ToString();
@@ -173,7 +173,7 @@ public override string ToString();
 
 ## 🪄 Operators
 
-#### `public static implicit operator Cooldown(float)`
+#### `operator Cooldown(float)`
 
 ```csharp
 public static implicit operator Cooldown(float duration) => new(duration);
@@ -188,7 +188,7 @@ public static implicit operator Cooldown(float duration) => new(duration);
   Cooldown cooldown = 5f; // creates a Cooldown with duration = 5 seconds
   ```
 
-#### `public static implicit operator Cooldown(int)`
+#### `operator Cooldown(int)`
 
 ```csharp
 public static implicit operator Cooldown(int duration) => new(duration);
