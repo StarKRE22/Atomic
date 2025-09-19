@@ -7,6 +7,17 @@ The solution includes **constants, variables, reactive properties, collections, 
 - [Requirements](#-requirements)
 - [Using Odin Inspector](#-using-odin-inspector)
 - [API Reference](#-api-reference)
+  - [Values](#-values)
+  - [Variables](#-variables)
+  - [Actions](#-actions)
+  - [Functions](#-functions)
+  - [Setters](#-setters)
+  - [Events](#-events)
+  - [Requests](#-requests)
+  - [Expressions](#-expressions)
+  - [Collections](#-collections)
+  - [Time](#-time)
+  - [Utilities](#-utilities)
 - [Best Practices](#-best-practices)
 - [Performance](#-performance)
 
@@ -48,7 +59,6 @@ Provides a set of interfaces and classes for working with **reactive variables, 
 
 ###  🧩 Actions
 Provides a set of abstractions for defining and invoking logic with varying numbers of input parameters. These action types are lightweight and flexible, making them ideal for use in **event systems, command patterns, or reactive programming**. They allow developers to encapsulate behavior, combine multiple actions, or reference scene-specific logic in a clean, reusable way.
-
 
 - [IAction](Actions/IAction.md) <!-- + -->
 - [InlineAction](Actions/InlineAction.md)  <!-- + -->
@@ -142,7 +152,7 @@ Provides a set of tools for managing **timers, cooldowns, countdowns, stopwatche
 - [FixedTimestamp](Time/FixedTimestamp.md) <!-- + -->
 - [Extensions](Time/Extensions.md) <!-- + -->
 
-### 🧩 Utils
+### 🧩 Utilities
 Provides a collection of **utility classes and components** that simplify common tasks in Unity and C# development. This includes handling animation and collision events, trigger detection, disposable actions, optional references, and various helper extensions. These utilities help reduce boilerplate code and make systems more modular and maintainable.
 
 - [AnimationEvents](UnityComponents/AnimationEvents.md) <!-- + -->
