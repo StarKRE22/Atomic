@@ -6,7 +6,7 @@ The **Extensions** class provides utility methods for **subscribing** and **unsu
 
 ## 🏹 Subscribe Methods
 
-### `Subscribe(this ISignal, IAction)`
+#### `Subscribe(this ISignal, IAction)`
 ```csharp
 public static Subscription Subscribe(this ISignal it, IAction action)
 ```
@@ -22,7 +22,7 @@ public static Subscription Subscribe(this ISignal it, IAction action)
   fireSignal.Subscribe(new InlineAction(() => Debug.Log("OnFire")));
   ``` 
 
-### `Subscribe<T>(this ISignal<T>, IAction<T>)`
+#### `Subscribe<T>(this ISignal<T>, IAction<T>)`
 ```csharp
 public static Subscription<T> Subscribe<T>(this ISignal<T> it, IAction<T> action)
 ```
@@ -39,7 +39,7 @@ public static Subscription<T> Subscribe<T>(this ISignal<T> it, IAction<T> action
   pickUpSignal.Subscribe(new InlineAction(pickUp => Debug.Log($"OnPickUp: {pickUp.Name}")));
   ```  
 
-### `Subscribe<T1, T2>(this ISignal<T1,T2>, IAction<T1,T2>)`
+#### `Subscribe<T1, T2>(this ISignal<T1,T2>, IAction<T1,T2>)`
 ```csharp
 public static Subscription<T1, T2> Subscribe<T1, T2>(this ISignal<T1, T2> it, IAction<T1, T2> action)
 ```
@@ -59,7 +59,7 @@ public static Subscription<T1, T2> Subscribe<T1, T2>(this ISignal<T1, T2> it, IA
       Debug.Log($"{entity.Name} received {damage} damage")));
   ```
 
-### `Subscribe<T1,T2,T3>(this ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
+#### `Subscribe<T1,T2,T3>(this ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
 ```csharp
 public static Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<T1, T2, T3> action)
 ```
@@ -80,7 +80,7 @@ public static Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(this ISignal<T1, T2
         Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})")));
   ```
 
-### `Subscribe<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
+#### `Subscribe<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
 ```csharp
 public static Subscription<T1, T2, T3, T4> Subscribe<T1, T2, T3, T4>(
     this ISignal<T1, T2, T3, T4> it, 
@@ -111,7 +111,7 @@ public static Subscription<T1, T2, T3, T4> Subscribe<T1, T2, T3, T4>(
 
 ## 🏹 Unsubscribe Methods
 
-### `Unsubscribe(this ISignal, IAction)`
+#### `Unsubscribe(this ISignal, IAction)`
 ```csharp
 public static void Unsubscribe(this ISignal it, IAction action)
 ```
@@ -130,7 +130,7 @@ public static void Unsubscribe(this ISignal it, IAction action)
   fireSignal.Unsubscribe(action);
   ```
 
-### `Unsubscribe<T>(this ISignal<T>, IAction<T>)`
+#### `Unsubscribe<T>(this ISignal<T>, IAction<T>)`
 ```csharp
 public static void Unsubscribe<T>(this ISignal<T> it, IAction<T> action)
 ```
@@ -150,7 +150,7 @@ public static void Unsubscribe<T>(this ISignal<T> it, IAction<T> action)
   pickUpSignal.Unsubscribe(action);
   ```
 
-### `Unsubscribe<T1, T2>(this ISignal<T1,T2>, IAction<T1,T2>)`
+#### `Unsubscribe<T1, T2>(this ISignal<T1,T2>, IAction<T1,T2>)`
 ```csharp
 public static void Unsubscribe<T1, T2>(this ISignal<T1, T2> it, IAction<T1, T2> action)
 ```
@@ -173,7 +173,7 @@ public static void Unsubscribe<T1, T2>(this ISignal<T1, T2> it, IAction<T1, T2> 
   hitSignal.Unsubscribe(action);
   ```
 
-### `Unsubscribe<T1,T2,T3>(this ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
+#### `Unsubscribe<T1,T2,T3>(this ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
 ```csharp
 public static void Unsubscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<T1, T2, T3> action)
 ```
@@ -197,7 +197,7 @@ public static void Unsubscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<
   attackSignal.Unsubscribe(action);
   ```
 
-### `Unsubscribe<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
+#### `Unsubscribe<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
 ```csharp
 public static void Unsubscribe<T1, T2, T3, T4>(
     this ISignal<T1, T2, T3, T4> it,
@@ -228,7 +228,7 @@ public static void Unsubscribe<T1, T2, T3, T4>(
 
 ## 🏹 SubscribeRange Methods
 
-### `SubscribeRange(this ISignal, IEnumerable<IAction>)`
+#### `SubscribeRange(this ISignal, IEnumerable<IAction>)`
 ```csharp
 public static void SubscribeRange(this ISignal it, IEnumerable<IAction> actions)
 ```
@@ -248,7 +248,7 @@ public static void SubscribeRange(this ISignal it, IEnumerable<IAction> actions)
   fireSignal.SubscribeRange(actions);
   ```
 
-### `SubscribeRange<T>(this ISignal<T>, IEnumerable<IAction<T>>)`
+#### `SubscribeRange<T>(this ISignal<T>, IEnumerable<IAction<T>>)`
 ```csharp
 public static void SubscribeRange<T>(this ISignal<T> it, IEnumerable<IAction<T>> actions)
 ```
@@ -269,7 +269,7 @@ public static void SubscribeRange<T>(this ISignal<T> it, IEnumerable<IAction<T>>
   pickUpSignal.SubscribeRange(actions);
   ```
 
-### `SubscribeRange<T1,T2>(this ISignal<T1,T2>, IEnumerable<IAction<T1,T2>>)`
+#### `SubscribeRange<T1,T2>(this ISignal<T1,T2>, IEnumerable<IAction<T1,T2>>)`
 ```csharp
 public static void SubscribeRange<T1, T2>(this ISignal<T1, T2> it, IEnumerable<IAction<T1, T2>> actions)
 ```
@@ -292,7 +292,7 @@ public static void SubscribeRange<T1, T2>(this ISignal<T1, T2> it, IEnumerable<I
   hitSignal.SubscribeRange(actions);
   ```
 
-### `SubscribeRange<T1,T2,T3>(this ISignal<T1,T2,T3>, IEnumerable<IAction<T1,T2,T3>>)`
+#### `SubscribeRange<T1,T2,T3>(this ISignal<T1,T2,T3>, IEnumerable<IAction<T1,T2,T3>>)`
 ```csharp
 public static void SubscribeRange<T1, T2, T3>(this ISignal<T1, T2, T3> it, IEnumerable<IAction<T1, T2, T3>> actions)
 ```
@@ -316,7 +316,7 @@ public static void SubscribeRange<T1, T2, T3>(this ISignal<T1, T2, T3> it, IEnum
   attackSignal.SubscribeRange(actions);
   ```
 
-### `SubscribeRange<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IEnumerable<IAction<T1,T2,T3,T4>>)`
+#### `SubscribeRange<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IEnumerable<IAction<T1,T2,T3,T4>>)`
 ```csharp
 public static void SubscribeRange<T1, T2, T3, T4>(
     this ISignal<T1, T2, T3, T4> it,
@@ -350,7 +350,7 @@ public static void SubscribeRange<T1, T2, T3, T4>(
 
 ## 🏹 UnsubscribeRange Methods
 
-### `UnsubscribeRange(this ISignal, IEnumerable<IAction>)`
+#### `UnsubscribeRange(this ISignal, IEnumerable<IAction>)`
 ```csharp
 public static void UnsubscribeRange(this ISignal it, IEnumerable<IAction> actions)
 ```
@@ -372,7 +372,7 @@ public static void UnsubscribeRange(this ISignal it, IEnumerable<IAction> action
   fireSignal.UnsubscribeRange(actions);
   ```
 
-### `UnsubscribeRange<T>(this ISignal<T>, IEnumerable<IAction<T>>)`
+#### `UnsubscribeRange<T>(this ISignal<T>, IEnumerable<IAction<T>>)`
 ```csharp
 public static void UnsubscribeRange<T>(this ISignal<T> it, IEnumerable<IAction<T>> actions)
 ```
@@ -395,7 +395,7 @@ public static void UnsubscribeRange<T>(this ISignal<T> it, IEnumerable<IAction<T
   pickUpSignal.UnsubscribeRange(actions);
   ```
 
-### `UnsubscribeRange<T1,T2>(this ISignal<T1,T2>, IEnumerable<IAction<T1,T2>>)`
+#### `UnsubscribeRange<T1,T2>(this ISignal<T1,T2>, IEnumerable<IAction<T1,T2>>)`
 ```csharp
 public static void UnsubscribeRange<T1, T2>(this ISignal<T1, T2> it, IEnumerable<IAction<T1, T2>> actions)
 ```
@@ -420,7 +420,7 @@ public static void UnsubscribeRange<T1, T2>(this ISignal<T1, T2> it, IEnumerable
   hitSignal.UnsubscribeRange(actions);
   ```
 
-### `UnsubscribeRange<T1,T2,T3>(this ISignal<T1,T2,T3>, IEnumerable<IAction<T1,T2,T3>>)`
+#### `UnsubscribeRange<T1,T2,T3>(this ISignal<T1,T2,T3>, IEnumerable<IAction<T1,T2,T3>>)`
 ```csharp
 public static void UnsubscribeRange<T1, T2, T3>(this ISignal<T1, T2, T3> it, IEnumerable<IAction<T1, T2, T3>> actions)
 ```
@@ -446,7 +446,7 @@ public static void UnsubscribeRange<T1, T2, T3>(this ISignal<T1, T2, T3> it, IEn
   attackSignal.UnsubscribeRange(actions);
   ```
 
-### `UnsubscribeRange<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IEnumerable<IAction<T1,T2,T3,T4>>)`
+#### `UnsubscribeRange<T1,T2,T3,T4>(this ISignal<T1,T2,T3,T4>, IEnumerable<IAction<T1,T2,T3,T4>>)`
 ```csharp
 public static void UnsubscribeRange<T1, T2, T3, T4>(
     this ISignal<T1, T2, T3, T4> it,

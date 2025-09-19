@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Signals/Extensions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,39 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="33008000" />
-    </task>
-    <task id="LOCAL-00448" summary="Прочесал FloatMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1758210502447</created>
-      <option name="number" value="00448" />
-      <option name="presentableId" value="LOCAL-00448" />
-      <option name="project" value="LOCAL" />
-      <updated>1758210502447</updated>
-    </task>
-    <task id="LOCAL-00449" summary="Прочесал FloatSumExpression.md">
-      <option name="closed" value="true" />
-      <created>1758211044017</created>
-      <option name="number" value="00449" />
-      <option name="presentableId" value="LOCAL-00449" />
-      <option name="project" value="LOCAL" />
-      <updated>1758211044017</updated>
-    </task>
-    <task id="LOCAL-00450" summary="IExpression.md">
-      <option name="closed" value="true" />
-      <created>1758211827424</created>
-      <option name="number" value="00450" />
-      <option name="presentableId" value="LOCAL-00450" />
-      <option name="project" value="LOCAL" />
-      <updated>1758211827424</updated>
-    </task>
-    <task id="LOCAL-00451" summary="InlineExpression.md">
-      <option name="closed" value="true" />
-      <created>1758212322748</created>
-      <option name="number" value="00451" />
-      <option name="presentableId" value="LOCAL-00451" />
-      <option name="project" value="LOCAL" />
-      <updated>1758212322748</updated>
+      <workItem from="1758177750643" duration="33333000" />
     </task>
     <task id="LOCAL-00452" summary="IntMulExpression.md">
       <option name="closed" value="true" />
@@ -584,7 +552,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758271964488</updated>
     </task>
-    <option name="localTasksCounter" value="497" />
+    <task id="LOCAL-00497" summary="ReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758272091264</created>
+      <option name="number" value="00497" />
+      <option name="presentableId" value="LOCAL-00497" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272091264</updated>
+    </task>
+    <task id="LOCAL-00498" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272275875</created>
+      <option name="number" value="00498" />
+      <option name="presentableId" value="LOCAL-00498" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272275875</updated>
+    </task>
+    <task id="LOCAL-00499" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272314077</created>
+      <option name="number" value="00499" />
+      <option name="presentableId" value="LOCAL-00499" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272314077</updated>
+    </task>
+    <task id="LOCAL-00500" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272326253</created>
+      <option name="number" value="00500" />
+      <option name="presentableId" value="LOCAL-00500" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272326253</updated>
+    </task>
+    <option name="localTasksCounter" value="501" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,8 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IExpression.md" />
-    <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="IntSumExpression.md" />
     <MESSAGE value="OrExpression.md" />
@@ -636,7 +634,9 @@
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveLinkedList.md" />
+    <MESSAGE value="ReactiveList.md" />
+    <MESSAGE value="ISetter.md, InlineSetter.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ISetter.md, InlineSetter.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
