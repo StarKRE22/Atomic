@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,23 +199,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="942000" />
-    </task>
-    <task id="LOCAL-00482" summary="IReactiveArray.md, IReactiveList.md, IReactiveSet.md">
-      <option name="closed" value="true" />
-      <created>1758270665509</created>
-      <option name="number" value="00482" />
-      <option name="presentableId" value="LOCAL-00482" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270665509</updated>
-    </task>
-    <task id="LOCAL-00483" summary="IReadOnlyReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758270762711</created>
-      <option name="number" value="00483" />
-      <option name="presentableId" value="LOCAL-00483" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270762711</updated>
+      <workItem from="1758300054327" duration="1641000" />
     </task>
     <task id="LOCAL-00484" summary="IReadOnlyReactiveArray.md">
       <option name="closed" value="true" />
@@ -592,7 +577,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758300811843</updated>
     </task>
-    <option name="localTasksCounter" value="531" />
+    <task id="LOCAL-00531" summary="StopwatchState.md">
+      <option name="closed" value="true" />
+      <created>1758301012145</created>
+      <option name="number" value="00531" />
+      <option name="presentableId" value="LOCAL-00531" />
+      <option name="project" value="LOCAL" />
+      <updated>1758301012145</updated>
+    </task>
+    <task id="LOCAL-00532" summary="TimerState.md">
+      <option name="closed" value="true" />
+      <created>1758301277338</created>
+      <option name="number" value="00532" />
+      <option name="presentableId" value="LOCAL-00532" />
+      <option name="project" value="LOCAL" />
+      <updated>1758301277338</updated>
+    </task>
+    <option name="localTasksCounter" value="533" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,8 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveArray.md" />
-    <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
@@ -644,7 +643,9 @@
     <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="Sources.md" />
     <MESSAGE value="Stopwatch.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stopwatch.md" />
+    <MESSAGE value="StopwatchState.md" />
+    <MESSAGE value="TimerState.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TimerState.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
