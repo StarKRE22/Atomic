@@ -5,8 +5,18 @@ when the overall state changes. It extends
 `IDictionary<K, V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md),
 and [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md).
 
-> [!NOTE]  
-> Use this interface when you need **mutable dictionary access** with **reactive notifications** for all changes.
+```csharp
+public interface IReactiveDictionary<K, V> : 
+    IDictionary<K, V>, 
+    IReadOnlyReactiveDictionary<K, V>,
+    IReactiveCollection<KeyValuePair<K, V>>
+```
+
+- **Type Parameters:**
+    - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
+    - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
+- **Note:** Use this interface when you need **mutable dictionary access** with **reactive notifications** for all
+  changes.
 
 ---
 
