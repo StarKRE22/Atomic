@@ -4,7 +4,7 @@ Represents a set of **utility extension methods** for working with `IDisposable`
 
 ---
 
-### AddTo(IDisposable, DisposableComposite)
+#### AddTo(IDisposable, DisposableComposite)
 ```csharp
 public static void AddTo(this IDisposable it, DisposableComposite composite);
 ```

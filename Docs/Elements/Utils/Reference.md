@@ -16,7 +16,7 @@ public class Reference<T>
 
 ## 🔑 Properties
 
-### `Value`
+#### `Value`
 
 ```csharp
 public ref T Value { get; }
@@ -29,7 +29,7 @@ public ref T Value { get; }
 
 ## 🏗️ Constructors
 
-### `Reference(T)`
+#### `Reference(T)`
 
 ```csharp
 public Reference(T value = default);
