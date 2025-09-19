@@ -5,7 +5,7 @@ updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable f
 updates. Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
 
 ```csharp
-public class FixedTimestamp : ITimestamp
+public class FixedTimestamp : ITimestamp;
 ```
 
 ---

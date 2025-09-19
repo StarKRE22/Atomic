@@ -6,7 +6,14 @@ internally: [IStartSource](Sources.md/#istartsource),  [IPauseSource](Sources.md
 Useful for repeating cycles, gameplay loops, animations, and any system requiring continuous cyclic timing.
 
 ```csharp
-public interface IPeriod : IStartSource, IPauseSource, IStateSource<PeriodState>, ITimeSource, IProgressSource, IDurationSource, ITickSource;
+public interface IPeriod : 
+    IStartSource,
+    IPauseSource,
+    IStateSource<PeriodState>,
+    ITimeSource,
+    IProgressSource,
+    IDurationSource,
+    ITickSource
 ```
 
 ---
