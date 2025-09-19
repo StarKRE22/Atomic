@@ -5,18 +5,6 @@ Represents a **composite disposable container** that manages multiple `IDisposab
 ---
 
 
-
-## Properties
-
-#### `Count`
-```csharp
-public int Count { get; }
-```
-- **Description:** Gets the number of disposables currently in the composite.
-- **Remarks:** Useful to check how many disposables are managed before disposal.
-
----
-
 ## Constructors
 
 #### `DisposableComposite(IEnumerable<IDisposable>)`
@@ -36,6 +24,18 @@ public DisposableComposite(params IDisposable[] disposables);
 - **Remarks:** Provides a convenient way to pass multiple disposables inline.
 
 ---
+
+## Properties
+
+#### `Count`
+```csharp
+public int Count { get; }
+```
+- **Description:** Gets the number of disposables currently in the composite.
+- **Remarks:** Useful to check how many disposables are managed before disposal.
+
+---
+
 
 ## Methods
 

@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/UnityComponents/AnimationEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/UnityComponents/AnimationEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,15 +199,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="2307000" />
-    </task>
-    <task id="LOCAL-00487" summary="IReadOnlyReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1758271046633</created>
-      <option name="number" value="00487" />
-      <option name="presentableId" value="LOCAL-00487" />
-      <option name="project" value="LOCAL" />
-      <updated>1758271046633</updated>
+      <workItem from="1758300054327" duration="3414000" />
     </task>
     <task id="LOCAL-00488" summary="ReactiveArray.md">
       <option name="closed" value="true" />
@@ -592,7 +585,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758302319458</updated>
     </task>
-    <option name="localTasksCounter" value="536" />
+    <task id="LOCAL-00536" summary="TriggerEvents.md">
+      <option name="closed" value="true" />
+      <created>1758302537484</created>
+      <option name="number" value="00536" />
+      <option name="presentableId" value="LOCAL-00536" />
+      <option name="project" value="LOCAL" />
+      <updated>1758302537484</updated>
+    </task>
+    <option name="localTasksCounter" value="537" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +620,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ISetter.md, InlineSetter.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="ISignal.md" />
@@ -644,7 +644,8 @@
     <MESSAGE value="TimerState.md" />
     <MESSAGE value="UpTimer.md" />
     <MESSAGE value="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md" />
+    <MESSAGE value="TriggerEvents.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TriggerEvents.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
