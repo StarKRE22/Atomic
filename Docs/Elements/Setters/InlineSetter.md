@@ -36,7 +36,7 @@ public T Value { set; }
 
 ## 🏹 Methods
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public void Invoke(T arg);
