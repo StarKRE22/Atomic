@@ -8,7 +8,7 @@ throughout your projects.
 
 ---
 
-## Boolean Constants
+## 🧩 Boolean Constants
 
 | Name    | Value   | Description        |
 |---------|---------|--------------------|
@@ -17,7 +17,7 @@ throughout your projects.
 
 ---
 
-## Mathematical Constants
+## 🧩 Mathematical Constants
 
 | Name          | Value      | Description                         |
 |---------------|------------|-------------------------------------|
@@ -31,7 +31,7 @@ throughout your projects.
 
 ---
 
-## Time Constants
+## 🧩 Time Constants
 
 | Name             | Value    | Description           |
 |------------------|----------|-----------------------|
@@ -42,7 +42,7 @@ throughout your projects.
 
 ---
 
-## Common Values
+## 🧩 Common Values
 
 | Name          | Value | Description        |
 |---------------|-------|--------------------|
@@ -55,7 +55,7 @@ throughout your projects.
 
 ---
 
-## Physics Constants
+## 🧩 Physics Constants
 
 | Name           | Value | Description               |
 |----------------|-------|---------------------------|
@@ -64,7 +64,7 @@ throughout your projects.
 
 ---
 
-## Unity-Specific Vectors
+## 🧩 Unity-Specific Vectors
 
 | Name         | Value    | Description         |
 |--------------|----------|---------------------|
@@ -79,7 +79,7 @@ throughout your projects.
 
 ---
 
-## Unity-Specific Colors
+## 🧩 Unity-Specific Colors
 
 | Name          | Value     | Description       |
 |---------------|-----------|-------------------|
