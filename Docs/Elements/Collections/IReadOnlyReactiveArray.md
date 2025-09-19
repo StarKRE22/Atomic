@@ -8,8 +8,8 @@ public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
 ```
 
 - **Type Parameter:** `T` — The type of elements stored in the array.
-- **Note:** This interface is ideal for exposing reactive arrays without allowing external modifications, ensuring that
-  only controlled updates trigger events.
+- **Note:** Ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled
+  updates trigger events.
 
 ---
 
