@@ -1,6 +1,6 @@
 # 🧩 InlineSignal
 
-Provide wrappers for reactive event sources. They implement the corresponding [ISignal](ISignal.md) interfaces and allow
+Provides a wrapper for reactive event source. Implements the corresponding [ISignal](ISignal.md) interface and allow
 entities to **subscribe / unsubscribe** from events, optionally with parameters. When subscribing to a signal, the
 method returns
 a [subscription](../Signals/Subscription.md) struct.
