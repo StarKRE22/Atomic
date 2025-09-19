@@ -29,7 +29,7 @@ public ref T Value { get; }
 
 ## 🏗️ Constructors
 
-### `Reference(T value = default)`
+### `Reference(T)`
 
 ```csharp
 public Reference(T value = default);
