@@ -110,7 +110,7 @@ Console.WriteLine(score.Value);  // Output: 20
 
 ---
 
-## 🧩 Specialized Variables
+## 🧩 Subclasses
 
 For convenience, several specialized implementations of base variables are provided. It is recommended to use them, as
 they compare values without relying on `EqualityComparer`, which makes them slightly faster than the generic

@@ -1,21 +1,24 @@
 # 🧩 ProxyVariable&lt;T&gt;
 
-`ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions**. It implements [IVariable&lt;T&gt;](IVariable.md), allowing you to **wrap existing data sources** and expose them through a unified variable interface.
+`ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions
+**. It implements [IVariable&lt;T&gt;](IVariable.md), allowing you to **wrap existing data sources** and expose them
+through a unified variable interface. This is useful when you want to integrate third-party or existing fields /
+properties into systems expecting `IVariable<T>` without duplicating state.
 
-This is useful when you want to integrate third-party or existing fields / properties into systems expecting `IVariable<T>` without duplicating state.
+```csharp
+public class ProxyVariable<T> : IVariable<T>
+```
+
+- **Type Parameter:** `T` – The type of the value being proxied.
 
 ---
 
-## Type Parameter
-- `T` – The type of the value being proxied.
-
----
-
-## Constructor
+## 🏗️ Constructors
 
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
 ```
+
 - **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.
 - **Parameters:**
     - `getter` – A function to retrieve the value.
@@ -24,12 +27,14 @@ public ProxyVariable(Func<T> getter, Action<T> setter)
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Value`
+
 ```csharp
-new T Value { get; set; }
+public T Value { get; set; }
 ```
+
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
 - **Notes:**
@@ -38,21 +43,24 @@ new T Value { get; set; }
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `Invoke()`
+
 ```csharp
-T Invoke()
+public T Invoke();
 ```
+
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
 - **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
 
-
 #### `Invoke(T arg)`
+
 ```csharp
-void Invoke(T arg)
+public void Invoke(T arg)
 ```
+
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
@@ -61,7 +69,8 @@ void Invoke(T arg)
 
 ---
 
-## Builder
+## 👷‍♂️ Builder
+
 **`ProxyVariable<T>` also includes a fluent builder to simplify creation:**
 
 ```csharp
@@ -72,9 +81,11 @@ var variable = ProxyVariable<int>
     .Build();
 ```
 
+---
+
 ## 🗂 Example of Usage
 
-**Wrapping a Transform’s Position**
+### Wrapping a Transform’s Position
 
 ```csharp
 //Create a new proxy of Transform.position
@@ -87,7 +98,7 @@ IVariable<Vector3> position = new ProxyVariable<Vector3>(
 position.Value += Vector3.forward; 
 ```
 
-**Using the Fluent Builder**
+### Using the Fluent Builder
 
 ```csharp
 //Create a new proxy of Transform.position
@@ -101,20 +112,27 @@ IVariable<Vector3> position = ProxyVariable<Vector3>
 position.Value += Vector3.forward; 
 ```
 
-## 🧩 Specialized Proxy Variables
-**For convenience, several specialized proxy variable implementations are provided.**
+---
 
-### Player Prefs
+## 🧩 Subclasses
+
+For convenience, several specialized proxy variable implementations are provided.
+
+### 🧩 Player Prefs
+
 - `BoolPrefsVariable` – Boolean variable stored in PlayerPrefs
 - `IntPrefsVariable` – Integer variable stored in PlayerPrefs
 - `FloatPrefsVariable` – Float variable stored in PlayerPrefs
 - `StringPrefsVariable` – String variable stored in PlayerPrefs
 
-### Transform
+### 🧩 Transform
+
 - `TransformParentVariable` – Stores a `Transform` parent reference
 - `TransformPositionVariable` – Stores a `Vector3` position
 - `TransformRotationVariable` – Stores a `Quaternion` rotation
 - `TransformScaleVariable` – Stores a `Vector3` scale
+
+---
 
 ## 📝 Notes
 

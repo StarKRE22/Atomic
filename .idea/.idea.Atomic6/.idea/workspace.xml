@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,23 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="7722000" />
-    </task>
-    <task id="LOCAL-00508" summary="Fix README.md">
-      <option name="closed" value="true" />
-      <created>1758295029402</created>
-      <option name="number" value="00508" />
-      <option name="presentableId" value="LOCAL-00508" />
-      <option name="project" value="LOCAL" />
-      <updated>1758295029402</updated>
-    </task>
-    <task id="LOCAL-00509" summary="Subscription.md">
-      <option name="closed" value="true" />
-      <created>1758295661903</created>
-      <option name="number" value="00509" />
-      <option name="presentableId" value="LOCAL-00509" />
-      <option name="project" value="LOCAL" />
-      <updated>1758295661903</updated>
+      <workItem from="1758300054327" duration="8024000" />
     </task>
     <task id="LOCAL-00510" summary="ICooldown">
       <option name="closed" value="true" />
@@ -592,7 +576,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758310536130</updated>
     </task>
-    <option name="localTasksCounter" value="557" />
+    <task id="LOCAL-00557" summary="IVariable.md">
+      <option name="closed" value="true" />
+      <created>1758310871673</created>
+      <option name="number" value="00557" />
+      <option name="presentableId" value="LOCAL-00557" />
+      <option name="project" value="LOCAL" />
+      <updated>1758310871673</updated>
+    </task>
+    <task id="LOCAL-00558" summary="IVariable.md">
+      <option name="closed" value="true" />
+      <created>1758311028407</created>
+      <option name="number" value="00558" />
+      <option name="presentableId" value="LOCAL-00558" />
+      <option name="project" value="LOCAL" />
+      <updated>1758311028407</updated>
+    </task>
+    <option name="localTasksCounter" value="559" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPeriod.md" />
     <MESSAGE value="IStopwatch.md" />
     <MESSAGE value="ITimer.md" />
     <MESSAGE value="ITimestamp.md" />
@@ -644,7 +643,8 @@
     <MESSAGE value="BaseVariable.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IReactiveVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IReactiveVariable.md" />
+    <MESSAGE value="IVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
