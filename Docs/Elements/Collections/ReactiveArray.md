@@ -13,7 +13,7 @@ public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 - **Notes:** 
   - Use this class when you need a read-write reactive array with change notifications and iteration support.
   - For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
-  - Supports Unity Serialization 
+  - Supports Unity serialization
 
 ---
 

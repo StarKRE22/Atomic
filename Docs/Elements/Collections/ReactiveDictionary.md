@@ -4,13 +4,17 @@ Represents a **reactive key-value dictionary** that provides notifications when 
 implements [IReactiveDictionary<K, V>](IReactiveDictionary.md). Optionally supports serialization for Unity projects.
 
 ```csharp
-public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable
+public class ReactiveDictionary<K, V> : 
+    IReactiveDictionary<K, V>, 
+    IDisposable,
+    ISerializationCallbackReceiver
 ```
 - **Type Parameters:**
   - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
   - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
 - **Notes:**
   - Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
+  - Supports Unity serialization
 
 ---
 
