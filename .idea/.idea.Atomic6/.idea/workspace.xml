@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,31 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="323000" />
-    </task>
-    <task id="LOCAL-00478" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758270158579</created>
-      <option name="number" value="00478" />
-      <option name="presentableId" value="LOCAL-00478" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270158579</updated>
-    </task>
-    <task id="LOCAL-00479" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758270188414</created>
-      <option name="number" value="00479" />
-      <option name="presentableId" value="LOCAL-00479" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270188414</updated>
-    </task>
-    <task id="LOCAL-00480" summary="IReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1758270238869</created>
-      <option name="number" value="00480" />
-      <option name="presentableId" value="LOCAL-00480" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270238869</updated>
+      <workItem from="1758300054327" duration="624000" />
     </task>
     <task id="LOCAL-00481" summary="IReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -592,7 +568,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758300104573</updated>
     </task>
-    <option name="localTasksCounter" value="527" />
+    <task id="LOCAL-00527" summary="Sources.md">
+      <option name="closed" value="true" />
+      <created>1758300383371</created>
+      <option name="number" value="00527" />
+      <option name="presentableId" value="LOCAL-00527" />
+      <option name="project" value="LOCAL" />
+      <updated>1758300383371</updated>
+    </task>
+    <task id="LOCAL-00528" summary="Sources.md">
+      <option name="closed" value="true" />
+      <created>1758300432974</created>
+      <option name="number" value="00528" />
+      <option name="presentableId" value="LOCAL-00528" />
+      <option name="project" value="LOCAL" />
+      <updated>1758300432974</updated>
+    </task>
+    <task id="LOCAL-00529" summary="Sources.md">
+      <option name="closed" value="true" />
+      <created>1758300506387</created>
+      <option name="number" value="00529" />
+      <option name="presentableId" value="LOCAL-00529" />
+      <option name="project" value="LOCAL" />
+      <updated>1758300506387</updated>
+    </task>
+    <option name="localTasksCounter" value="530" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
