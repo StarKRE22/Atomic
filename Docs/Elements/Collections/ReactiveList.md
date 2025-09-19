@@ -4,8 +4,17 @@ Represents a **dynamic, resizable reactive list** that emits events when items a
 the list state changes globally. It implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally
 supports serialization for Unity projects.
 
-> [!NOTE]  
-> Use this class when you need a **mutable, growable list** with reactive notifications.
+```csharp
+public class ReactiveList<T> : IReactiveList<T>, IDisposable
+```
+- **Type Parameters:** 
+  - `T` — The type of elements stored in the list.
+- **Notes:**
+  - Use this class when you need a **mutable, growable list** with reactive notifications.
+  - Supports Unity serialization
+
+> [!TIP]
+> For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
 
 ---
 
