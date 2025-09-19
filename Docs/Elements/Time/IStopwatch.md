@@ -1,58 +1,60 @@
 # 🧩 IStopwatch
 
-`IStopwatch` represents a **stopwatch interface** that supports starting, pausing, resuming, stopping, and tracking **elapsed time**. It also provides **state change notifications** and incremental time updates.
-
-The interface combines multiple sources internally:
-
-- [IStartSource](Sources.md/#istartsource) — start / stop control
-- [IPauseSource](Sources.md/#ipausesource) — pause / resume control
-- [ITimeSource](Sources.md/#itimesource) — elapsed time tracking
-- [IStateSource](Sources.md/#istatesource) — stopwatch state tracking
-- [ITickSource](Sources.md/#iticksource) — incremental updates
+Represents a **stopwatch interface** that supports starting, pausing, resuming, stopping, and tracking **elapsed time**. It also provides **state change notifications** and incremental time updates.
+The interface combines multiple sources internally: [IStartSource](Sources.md/#istartsource), [IPauseSource](Sources.md/#ipausesource), [ITimeSource](Sources.md/#itimesource), [IStateSource](Sources.md/#istatesource), [ITickSource](Sources.md/#iticksource).
 
 > [!IMPORTANT]  
 > Use `IStopwatch` when you need to **measure elapsed time** (e.g., performance tracking, gameplay session time, speedrun timers). Unlike [ITimer](ITimer.md), a stopwatch does not count down toward a duration — it only measures how long something has been running.
 
+```csharp
+public interface IStopwatch :
+    IStartSource,
+    IPauseSource,
+    ITimeSource,
+    IStateSource<StopwatchState>,
+    ITickSource
+```
+
 ---
 
-## Events
+## ⚡ Events
 
-#### `event Action OnStarted`
+#### `OnStarted`
 ```csharp
 public event Action OnStarted;
 ```
 - **Description:** Invoked when the stopwatch starts.
 - **Remarks:** Triggered whenever `Start()` is called.
 
-#### `event Action OnStopped`
+#### `OnStopped`
 ```csharp
 public event Action OnStopped;
 ```
 - **Description:** Invoked when the stopwatch is stopped.
 - **Remarks:** Triggered whenever `Stop()` is called. Elapsed time resets depending on implementation.
 
-#### `event Action OnPaused`
+#### `OnPaused`
 ```csharp
 public event Action OnPaused;
 ```
 - **Description:** Raised when the stopwatch is paused.
 - **Remarks:** Triggered whenever `Pause()` is called. Elapsed time stops updating until resumed.
 
-#### `event Action OnResumed`
+#### `OnResumed`
 ```csharp
 public event Action OnResumed;
 ```
 - **Description:** Raised when the stopwatch resumes from a paused state.
 - **Remarks:** Triggered whenever `Resume()` is called. Stopwatch continues counting from its paused time.
 
-#### `event Action<float> OnTimeChanged`
+#### `OnTimeChanged`
 ```csharp
 public event Action<float> OnTimeChanged;
 ```
 - **Description:** Raised whenever elapsed time changes.
 - **Parameter:** `float` — elapsed time in seconds.
 
-#### `event Action<StopwatchState> OnStateChanged`
+#### `OnStateChanged`
 ```csharp
 public event Action<StopwatchState> OnStateChanged;
 ```
@@ -61,65 +63,65 @@ public event Action<StopwatchState> OnStateChanged;
 
 ---
 
-## Methods
+## 🏹 Methods
 
-#### `void Start()`
+#### `Start()`
 ```csharp
 public void Start();
 ```
 - **Description:** Starts measuring elapsed time.
 - **Remarks:** Triggers `OnStarted`.
 
-#### `void Stop()`
+#### `Stop()`
 ```csharp
 public void Stop();
 ```
 - **Description:** Stops measuring and resets elapsed time.
 - **Remarks:** Triggers `OnStopped`.
 
-#### `void Pause()`
+#### `Pause()`
 ```csharp
 public void Pause();
 ```
 - **Description:** Pauses the stopwatch.
 - **Remarks:** Triggers `OnPaused`.
 
-#### `void Resume()`
+#### `Resume()`
 ```csharp
 public void Resume();
 ```
 - **Description:** Resumes from paused state.
 - **Remarks:** Triggers `OnResumed`.
 
-#### `bool IsStarted()`
+#### `IsStarted()`
 ```csharp
 public bool IsStarted();
 ```
 - **Description:** Returns whether the stopwatch is currently running.
 - **Returns:** `true` if running; otherwise `false`.
 
-#### `bool IsPaused()`
+#### `IsPaused()`
 ```csharp
 public bool IsPaused();
 ```
 - **Description:** Returns whether the stopwatch is currently paused.
 - **Returns:** `true` if paused; otherwise `false`.
 
-#### `StopwatchState GetState()`
+#### `GetState()`
 ```csharp
 public StopwatchState GetState();
 ```
 - **Description:** Returns the current state of the stopwatch.
 - **Returns:** [StopwatchState](StopwatchState.md) value.
 
-#### `float GetTime()`
+#### `GetTime()`
 ```csharp
 public float GetTime();
 ```
 - **Description:** Returns the elapsed time in seconds.
 - **Returns:** Elapsed time.
 
-#### `void SetTime(float time)`
+#### `SetTime(float)`
 ```csharp
 public void SetTime(float time);
 ```
@@ -127,7 +129,7 @@ public void SetTime(float time);
 - **Parameter:** `time` — new elapsed time in seconds.
 - **Remarks:** Triggers `OnTimeChanged`.
 
-#### `void Tick(float deltaTime)`
+#### `Tick(float)`
 ```csharp
 public void Tick(float deltaTime);
 ```
