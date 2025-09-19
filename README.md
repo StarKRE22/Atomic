@@ -308,12 +308,18 @@ Coming Soon
 -->
 
 ## 🗂 Game Examples
-This section includes **three sample projects** demonstrating different use cases of the `Atomic Framework`
+
+This section includes **three sample projects** demonstrating different use cases of the framework.
+<br> All examples are located in the **[Assets/Examples](Assets/Examples)** folder.
+
+- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game designed to introduce the core concepts of the framework
+- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** —  a more **complex game architecture**, suitable for mid-sized games.
+- **[RTS Sample](Assets/Examples/RTS)** — **high-performance entity management** with a large number of units.
 
 ### 1️⃣ Beginner Sample
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
-The `Beginner Sample` is a **simple 2-player mini-game** designed to introduce the core concepts of the framework
+**Simple 2-player mini-game** designed to introduce the core concepts of the framework
 
 > **Gameplay:**
 > - **Players:** Two players share the same scene.
