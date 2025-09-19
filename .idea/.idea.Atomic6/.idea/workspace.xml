@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +190,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="29990000" />
-    </task>
-    <task id="LOCAL-00422" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758188583059</created>
-      <option name="number" value="00422" />
-      <option name="presentableId" value="LOCAL-00422" />
-      <option name="project" value="LOCAL" />
-      <updated>1758188583059</updated>
+      <workItem from="1758177750643" duration="30524000" />
     </task>
     <task id="LOCAL-00423" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -586,7 +576,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758224402235</updated>
     </task>
-    <option name="localTasksCounter" value="471" />
+    <task id="LOCAL-00471" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269256271</created>
+      <option name="number" value="00471" />
+      <option name="presentableId" value="LOCAL-00471" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269256271</updated>
+    </task>
+    <option name="localTasksCounter" value="472" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReactiveHashSet.md" />
@@ -638,7 +635,8 @@
     <MESSAGE value="InlinePredicate.md" />
     <MESSAGE value="IRequest.md" />
     <MESSAGE value="BaseRequest.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="BaseRequest.md" />
+    <MESSAGE value="IReactiveArray.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReactiveArray.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
