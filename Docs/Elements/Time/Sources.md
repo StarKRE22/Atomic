@@ -20,6 +20,12 @@ reactive systems. These interfaces allow you to create sources that:
     <br> Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time changes</b>.
   </summary>
 
+```csharp
+public interface ITimeSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnTimeChanged`
@@ -30,6 +36,8 @@ public event Action<float> OnTimeChanged;
 
 - **Description:** Raised whenever the current time changes.
 - **Parameters:** `float` — the new current time in seconds.
+
+---
 
 ### 🏹 Methods
 
@@ -71,6 +79,12 @@ public void ResetTime();
     <br> Represents a source that <b>has a total duration and can notify changes</b>.
   </summary>
 
+```csharp
+public interface IDurationSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnDurationChanged`
@@ -80,6 +94,8 @@ public event Action<float> OnDurationChanged;
 ```
 
 - **Description:** Invoked when the duration value changes.
+
+---
 
 ### 🏹 Methods
 
@@ -111,6 +127,12 @@ public void SetDuration(float duration);
     <br> Represents a source that <b>can be updated over time through the ticks</b>.
   </summary>
 
+```csharp
+public interface ITickSource
+```
+
+---
+
 ### 🏹 Methods
 
 #### `Tick(float)`
@@ -133,6 +155,12 @@ public void Tick(float deltaTime);
     <br> Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
   </summary>
 
+```csharp
+public interface IStartSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnStarted`
@@ -150,6 +178,8 @@ public event Action OnStopped;
 ```
 
 - **Description:** Raised when the source stops.
+
+---
 
 ### 🏹 Methods
 
@@ -204,6 +234,12 @@ public void Stop();
     <br> Represents a source that <b>can complete and notify listeners</b>.
   </summary>
 
+```csharp
+public interface ICompleteSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnCompleted`
@@ -213,6 +249,8 @@ public event Action OnCompleted;
 ```
 
 - **Description:** Invoked when the source has completed.
+
+---
 
 ### 🏹 Methods
 
@@ -235,6 +273,12 @@ public bool IsCompleted();
     <br> Represents a source that <b>can be paused and resumed</b>.
   </summary>
 
+```csharp
+public interface IPauseSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnPaused`
@@ -252,6 +296,8 @@ public event Action OnResumed;
 ```
 
 - **Description:** Raised when the source is resumed.
+
+---
 
 ### 🏹 Methods
 
@@ -290,6 +336,12 @@ public void Resume();
     <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
   </summary>
 
+```csharp
+public interface IProgressSource
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnProgressChanged`
@@ -299,6 +351,8 @@ public event Action<float> OnProgressChanged;
 ```
 
 - **Description:** Raised when the progress changes.
+
+---
 
 ### 🏹 Methods
 
@@ -332,6 +386,12 @@ public void SetProgress(float progress);
 
 - **Type Parameter:** `T` — Enum type representing the state.
 
+```csharp
+public interface IStateSource<T>
+```
+
+--- 
+
 ### ⚡ Events
 
 #### `OnStateChanged`
@@ -341,6 +401,8 @@ public event Action<T> OnStateChanged;
 ```
 
 - **Description:** Raised when the state changes.
+
+---
 
 ### 🏹 Methods
 
