@@ -10,8 +10,7 @@ can be **serialized, displayed in inspectors**, or **passed by reference safely*
 ```csharp
 public class Reference<T>
 ```
-
-**Type Parameter:** `T` — The type of the value being referenced.
+- **Type Parameter:** `T` — The type of the value being referenced.
 
 ---
 
