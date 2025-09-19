@@ -414,6 +414,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpression.md/#-best-practice)
 - [Choosing Between Timer and Cooldown](Docs/Elements/Time/ITimer.md/#-best-practice)
 - [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
+- [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
 
 ## ⚖️ License
 

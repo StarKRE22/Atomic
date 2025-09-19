@@ -171,6 +171,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Insert Constant to AndExpression](Expressions/AndExpression.md/#-best-practice)
 - [Choosing Between Timer and Cooldown](Time/ITimer.md/#-best-practice)
 - [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)
+- [Using Subscriptions with DisposeComposite](Signals/Subscription.md/#-best-practice)
 
 ---
 
