@@ -2,8 +2,6 @@
 
 Represents a **reactive array with writable access** that provides notifications when elements are modified. It extends [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md) and allows controlled modifications while triggering reactive events.
 
----
-
 ```csharp
 public interface IReactiveArray<T> : IReadOnlyReactiveArray<T>
 ```
