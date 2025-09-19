@@ -13,19 +13,25 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression"/> class.
         /// </summary>
-        public OrExpression() { }
+        public OrExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with a collection of function members.
         /// </summary>
         /// <param name="members">A collection of functions that return <c>true</c> or <c>false</c>.</param>
-        public OrExpression(IEnumerable<Func<bool>> members) : base(members) { }
+        public OrExpression(IEnumerable<Func<bool>> members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with an array of function members.
         /// </summary>
         /// <param name="members">An array of functions that return <c>true</c> or <c>false</c>.</param>
-        public OrExpression(params Func<bool>[] members) : base(members) { }
+        public OrExpression(params Func<bool>[] members) : base(members)
+        {
+        }
 
         protected override bool Invoke(Enumerator enumerator)
         {
@@ -47,19 +53,26 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression{T}"/> class.
         /// </summary>
-        public OrExpression() { }
+        public OrExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
+
 
         /// <summary>
         /// Initializes the expression with an array of predicate functions.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T"/> and return a boolean.</param>
-        public OrExpression(params Func<T, bool>[] members) : base(members) { }
+        public OrExpression(params Func<T, bool>[] members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with a collection of predicate functions.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T"/> and return a boolean.</param>
-        public OrExpression(IEnumerable<Func<T, bool>> members) : base(members) { }
+        public OrExpression(IEnumerable<Func<T, bool>> members) : base(members)
+        {
+        }
 
         protected override bool Invoke(Enumerator enumerator, T arg)
         {
@@ -82,19 +95,25 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="OrExpression{T1, T2}"/> class.
         /// </summary>
-        public OrExpression() { }
+        public OrExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with an array of binary predicate functions.
         /// </summary>
         /// <param name="members">An array of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a boolean.</param>
-        public OrExpression(params Func<T1, T2, bool>[] members) : base(members) { }
+        public OrExpression(params Func<T1, T2, bool>[] members) : base(members)
+        {
+        }
 
         /// <summary>
         /// Initializes the expression with a collection of binary predicate functions.
         /// </summary>
         /// <param name="members">A collection of functions that take <typeparamref name="T1"/> and <typeparamref name="T2"/> and return a boolean.</param>
-        public OrExpression(IEnumerable<Func<T1, T2, bool>> members) : base(members) { }
+        public OrExpression(IEnumerable<Func<T1, T2, bool>> members) : base(members)
+        {
+        }
 
         protected override bool Invoke(Enumerator enumerator, T1 arg1, T2 arg2)
         {

@@ -23,7 +23,7 @@ namespace BeginnerGame
             _spawnPeriod.Tick(deltaTime);
             if (_spawnPeriod.IsCompleted())
             {
-                CoinUseCase.Spawn(_context);
+                CoinsUseCase.Spawn(_context);
                 _spawnPeriod.ResetTime();
             }
         }

@@ -1,5 +1,5 @@
-# 📌 Project Folder Organization
-Here, I would like to share how I organize my projects using the `Atomic Framework`, so they can be easily scaled, and the file structure remains as intuitive as possible.
+# 📌 File System Organization
+Here, I would like to share how I organize my project file system using the `Atomic Framework`, so they can be easily scaled, and the file structure remains as intuitive as possible.
 
 > [!TIP]
 > **As an example, you can check out the prototype game `Top Down Shooter` in the [Game Examples](../../README.md/#-game-examples) section**
@@ -109,3 +109,8 @@ Assets/
 ```
 
 This approach ensures that **reusable systems are separated from project-specific content**, making it easier to maintain, test, and extend them across different games.
+
+<!---
+TODO: простые правила, что делает механика, в том домене она и лежит
+TODO: Как папка называется, то такой же UseCase
+--->

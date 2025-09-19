@@ -58,7 +58,7 @@ namespace Atomic.Elements
             var array = new ReactiveArray<object>(_source);
             object[] destination = new object[N];
 
-            Measure.Method(() => { array.Copy(0, destination, 0, N); })
+            Measure.Method(() => { array.CopyTo(0, destination, 0, N); })
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveArray.Copy()", SampleUnit.Microsecond))

@@ -74,10 +74,10 @@ namespace Atomic.Elements
         /// <summary>
         /// Attempts to retrieve both arguments.
         /// </summary>
-        /// <param name="args1">The output first argument.</param>
-        /// <param name="args2">The output second argument.</param>
+        /// <param name="arg1">The output first argument.</param>
+        /// <param name="arg2">The output second argument.</param>
         /// <returns>True if the arguments were retrieved successfully; otherwise, false.</returns>
-        bool TryGet(out T1 args1, out T2 args2);
+        bool TryGet(out T1 arg1, out T2 arg2);
 
         /// <summary>
         /// Attempts to consume the request and retrieve both arguments.

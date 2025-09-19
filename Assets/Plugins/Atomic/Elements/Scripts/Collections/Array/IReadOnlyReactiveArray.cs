@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Atomic.Elements
@@ -8,6 +9,17 @@ namespace Atomic.Elements
     /// <typeparam name="T">The type of elements contained in the array.</typeparam>
     public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
     {
+        /// <summary>
+        /// Occurs when an item at a specific index is changed.
+        /// </summary>
+        event Action<int, T> OnItemChanged;
+
+        /// <summary>
+        /// Occurs when the state of the array is changed globally.
+        /// For example, when multiple items are updated, cleared, or reset.
+        /// </summary>
+        event Action OnStateChanged;
+        
         /// <summary>
         /// Gets the total number of elements in the array.
         /// </summary>
@@ -20,20 +32,16 @@ namespace Atomic.Elements
         /// <returns>The element at the specified index.</returns>
         new T this[int index] { get; }
 
-        /// <summary>
-        /// Occurs when an item at a specific index is changed.
-        /// </summary>
-        event ChangeItemHandler<T> OnItemChanged;
-
-        /// <summary>
-        /// Occurs when the state of the array is changed globally.
-        /// For example, when multiple items are updated, cleared, or reset.
-        /// </summary>
-        event StateChangedHandler OnStateChanged;
-
         /// <inheritdoc/>
         int IReadOnlyCollection<T>.Count => this.Length;
 
+        /// <summary>
+        /// Copies a range of elements from this array to the specified destination array.
+        /// </summary>
+        /// <param name="array">The destination array.</param>
+        /// <param name="arrayIndex">The zero-based index in the destination array at which storing begins.</param>
+        void CopyTo(T[] array, int arrayIndex);
+        
         /// <summary>
         /// Copies a range of elements from this array to the specified destination array.
         /// </summary>
@@ -41,6 +49,6 @@ namespace Atomic.Elements
         /// <param name="destination">The destination array.</param>
         /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
         /// <param name="length">The number of elements to copy.</param>
-        void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+        void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
     }
 }

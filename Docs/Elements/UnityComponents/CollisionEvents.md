@@ -1,90 +1,120 @@
-# 🧩️ CollisionEvents
+# 🧩 CollisionEvents
 
-`CollisionEvents` and `CollisionEvents2D` are Unity `MonoBehaviour` components that expose collision callbacks as C# events.  
-They allow you to subscribe to collision start, stay, and end events without writing custom `MonoBehaviour` methods.
+A **Unity MonoBehaviour** that exposes Unity’s collision callbacks as C# events. This makes it easier to react to physics interactions without overriding `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay` in custom scripts.
+
+> [!NOTE]  
+> Attach this component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`) to receive collision events as C# events.
 
 ---
 
-## CollisionEvents
+## Events
 
-Exposes 3D physics collision events.
+#### `OnEntered`
+```csharp
+public event Action<Collision> OnEntered;
+```
+- **Description:** Invoked when a collision **starts**.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Unity Equivalent:** `MonoBehaviour.OnCollisionEnter(Collision)`
 
-### Events
+#### `OnExited`
+```csharp
+public event Action<Collision> OnExited;
+```
+- **Description:** Invoked when a collision **ends**.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Unity Equivalent:** `MonoBehaviour.OnCollisionExit(Collision)`
 
-- `event Action<Collision> OnEntered` – invoked when a collision begins (`OnCollisionEnter`).
-- `event Action<Collision> OnExited` – invoked when a collision ends (`OnCollisionExit`).
-- `event Action<Collision> OnStay` – invoked every frame while a collision persists (`OnCollisionStay`).
+#### `OnStay`
+```csharp
+public event Action<Collision> OnStay;
+```
+- **Description:** Invoked **every frame** while a collision persists.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Unity Equivalent:** `MonoBehaviour.OnCollisionStay(Collision)`
 
-### Behavior
+---
 
-- Automatically triggers the corresponding event when Unity's physics system calls `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay`.
-- Allows multiple subscribers to react to collisions without overriding MonoBehaviour methods.
-- Decouples collision response logic from GameObject scripts.
+## Unity Callbacks
 
-### Example Usage
+These methods are automatically called by Unity’s physics engine and forward events to C# subscribers.
+
+#### `OnCollisionEnter(Collision)`
+```csharp
+public void OnCollisionEnter(Collision collision);
+```
+- **Description:** Called by Unity when a collider / rigidbody **starts colliding**.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Dispatches:** `OnEntered`
+
+#### `OnCollisionExit(Collision)`
+```csharp
+public void OnCollisionExit(Collision collision);
+```
+- **Description:** Called by Unity when a collider / rigidbody **stops colliding**.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Dispatches:** `OnExited`
+
+#### `OnCollisionStay(Collision)`
+```csharp
+public void OnCollisionStay(Collision collision);
+```
+- **Description:** Called by Unity **each frame** while colliders remain in contact.
+- **Parameter:** `Collision` — detailed information about the collision.
+- **Dispatches:** `OnStay`
+
+---
+
+## 🗂 Example Usage
+Here’s how to use `CollisionEvents` to detect and respond to physics collisions:
+
+### 1. Add Component
+Add a **`CollisionEvents`** component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
+
+### 2. Create Script
+Create a script called `CollisionExample`:
 
 ```csharp
-using UnityEngine;
-using Atomic.Elements;
-
 public class CollisionExample : MonoBehaviour
 {
-    private CollisionEvents collisionEvents;
+    [SerializeField]
+    private CollisionEvents _collisionEvents;
 
-    private void Awake()
+    private void OnEnable()
     {
-        collisionEvents = gameObject.AddComponent<CollisionEvents>();
-
-        collisionEvents.OnEntered += collision => 
-            Debug.Log($"Collision started with {collision.gameObject.name}");
-
-        collisionEvents.OnStay += collision =>
-            Debug.Log($"Collision ongoing with {collision.gameObject.name}");
-
-        collisionEvents.OnExited += collision =>
-            Debug.Log($"Collision ended with {collision.gameObject.name}");
+        _collisionEvents.OnEntered += HandleEnter;
+        _collisionEvents.OnExited  += HandleExit;
+        _collisionEvents.OnStay    += HandleStay;
     }
+
+    private void OnDisable()
+    {
+        _collisionEvents.OnEntered -= HandleEnter;
+        _collisionEvents.OnExited  -= HandleExit;
+        _collisionEvents.OnStay    -= HandleStay;
+    }
+
+    private void HandleEnter(Collision collision)
+        => Debug.Log($"Collision started with {collision.gameObject.name}");
+
+    private void HandleExit(Collision collision)
+        => Debug.Log($"Collision ended with {collision.gameObject.name}");
+
+    private void HandleStay(Collision collision)
+        => Debug.Log($"Still colliding with {collision.gameObject.name}");
 }
 ```
+
+### 3. Attach Script
+Attach the `CollisionExample` script to the **same GameObject**.
+
+### 4. Run and Test
+Enter **Play Mode** in Unity. When colliding with other objects, you’ll see logs in the **Console**.
+
 ---
-## CollisionEvents2D
 
-`CollisionEvents2D` exposes Unity 2D physics collision events as C# events, allowing you to react to collisions without writing custom `MonoBehaviour` methods.
-
-### Events
-
-- `event Action<Collision2D> OnEntered` – Invoked when a 2D collision begins (`OnCollisionEnter2D`).
-- `event Action<Collision2D> OnExited` – Invoked when a 2D collision ends (`OnCollisionExit2D`).
-- `event Action<Collision2D> OnStay` – Invoked every frame while a 2D collision persists (`OnCollisionStay2D`).
-
-### Behavior
-
-- Automatically triggers the corresponding event when Unity’s 2D physics system invokes `OnCollisionEnter2D`, `OnCollisionExit2D`, or `OnCollisionStay2D`.
-- Supports multiple external subscribers without modifying the `MonoBehaviour`.
-- Keeps collision handling modular, decoupled, and reusable across multiple GameObjects.
-
-### Example Usage
-
-```csharp
-using UnityEngine;
-using Atomic.Elements;
-
-public class Collision2DExample : MonoBehaviour
-{
-    private CollisionEvents2D collisionEvents;
-
-    private void Awake()
-    {
-        collisionEvents = gameObject.AddComponent<CollisionEvents2D>();
-
-        collisionEvents.OnEntered += collision =>
-            Debug.Log($"2D Collision started with {collision.gameObject.name}");
-
-        collisionEvents.OnStay += collision =>
-            Debug.Log($"2D Collision ongoing with {collision.gameObject.name}");
-
-        collisionEvents.OnExited += collision =>
-            Debug.Log($"2D Collision ended with {collision.gameObject.name}");
-    }
-}
-```
+## 📝 Notes
+- Requires a `Collider` and (for dynamic collisions) a `Rigidbody`.
+- Works with both **3D physics** (`Collision`) and is not compatible with **2D physics** (`Collision2D`).
+- Decouples collision handling logic from `MonoBehaviour` lifecycle methods.
+- Supports multiple subscribers per event.

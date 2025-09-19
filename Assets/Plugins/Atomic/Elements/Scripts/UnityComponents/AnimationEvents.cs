@@ -33,7 +33,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Internal mapping between animation event keys and their associated handlers.
         /// </summary>
-        private readonly Dictionary<string, Action> _handlers = new();
+        private readonly Dictionary<string, Action> _handlers = new(StringComparer.Ordinal);
 
         /// <summary>
         /// Unity callback for receiving animation events.
@@ -44,10 +44,10 @@ namespace Atomic.Elements
         /// Matches the <paramref name="evt"/> string used in <see cref="Subscribe"/>.
         /// </param>
         [UsedImplicitly]
-        private void ReceiveEvent(string message)
+        public void ReceiveEvent(string message)
         {
             if (_handlers.TryGetValue(message, out Action handler))
-                handler.Invoke();
+                handler?.Invoke();
 
             this.OnEvent?.Invoke(message);
         }
@@ -60,6 +60,12 @@ namespace Atomic.Elements
         /// <param name="action">The action to invoke when the event is received.</param>
         public void Subscribe(string evt, Action action)
         {
+            if (string.IsNullOrEmpty(evt))
+                throw new ArgumentNullException(nameof(evt));
+            
+            if (action == null)
+                throw new ArgumentNullException(nameof(action));
+            
             if (_handlers.TryGetValue(evt, out Action handler))
                 handler += action;
             else
@@ -76,11 +82,18 @@ namespace Atomic.Elements
         /// <param name="action">The action to remove from the event's handler list.</param>
         public void Unsubscribe(string evt, Action action)
         {
-            if (_handlers.TryGetValue(evt, out Action handler))
-            {
-                handler -= action;
+            if (string.IsNullOrEmpty(evt) || action == null)
+                return;
+
+            if (!_handlers.TryGetValue(evt, out Action handler)) 
+                return;
+            
+            handler -= action;
+
+            if (handler != null)
                 _handlers[evt] = handler;
-            }
+            else
+                _handlers.Remove(evt); // remove key if no more handlers
         }
     }
 }

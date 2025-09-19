@@ -28,9 +28,8 @@ pattern and using `Atomic` elements for data organization.
 
 ## 📝 Requirements
 
-> [!IMPORTANT]  
-> The Atomic Framework requires **Unity 6** or **.NET 7+**.  
-> Make sure your development environment meets these requirements before using the framework.
+The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements before using the framework.
+
 ---
 
 ## 📦 Installation
@@ -42,23 +41,21 @@ pattern and using `Atomic` elements for data organization.
   from [release notes](https://github.com/StarKRE22/Atomic/releases)_
 - _Option #3: Install via Unity Package Manager using the Git
   URL: `https://github.com/StarKRE22/Atomic.git?path=Assets/Plugins/Atomic`_
+
 ---
 
-## 🧩 Using Odin Inspector
+## 🎛 Using Odin Inspector
 
-> [!TIP]  
-> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-> using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+
 ---
 
-## 🔌 Using Atomic Plugin for Rider
+## 🔌 Using Plugin for Rider
 
-> [!TIP]  
-> For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing
-> the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
-> By default the code generation works with Unity, but with the plugin, development experience in `Rider` become
-> smoother and more powerful than in Unity.
+For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default the code generation works with Unity, but with the plugin, development experience in `Rider IDE` become
+smoother and more powerful than in Unity.
+
 ---
 
 ## 💡 Key Concepts
@@ -311,12 +308,18 @@ Coming Soon
 -->
 
 ## 🗂 Game Examples
-This section includes **three sample projects** demonstrating different use cases of the `Atomic Framework`
+
+This section includes **three sample projects** demonstrating different use cases of the framework.
+<br> All examples are located in the **[Assets/Examples](Assets/Examples)** folder.
+
+- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game designed to introduce the core concepts of the framework
+- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** —  a more **complex game architecture**, suitable for mid-sized games.
+- **[RTS Sample](Assets/Examples/RTS)** — **high-performance entity management** with a large number of units.
 
 ### 1️⃣ Beginner Sample
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
-The `Beginner Sample` is a **simple 2-player mini-game** designed to introduce the core concepts of the framework
+**Simple 2-player mini-game** designed to introduce the core concepts of the framework
 
 > **Gameplay:**
 > - **Players:** Two players share the same scene.
@@ -411,7 +414,13 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
-- [Project Folder Organization](Docs/BestPractices/ProjectFolderOrganization.md)
+- [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md)
+- [Using InlineActions](Docs/Elements/Actions/InlineAction.md/#-best-practice)
+- [Using InlineFunctions](Docs/Elements/Functions/InlineFunction.md/#-best-practice)
+- [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpression.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](Docs/Elements/Time/ITimer.md/#-best-practice)
+- [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
+- [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
 
 ## ⚖️ License
 

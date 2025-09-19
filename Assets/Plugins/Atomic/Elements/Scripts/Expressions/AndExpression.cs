@@ -13,7 +13,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression"/> class.
         /// </summary>
-        public AndExpression()
+        public AndExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 
@@ -54,7 +54,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression{T}"/> class.
         /// </summary>
-        public AndExpression()
+        public AndExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
     
@@ -96,7 +96,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="AndExpression{T1, T2}"/> class.
         /// </summary>
-        public AndExpression()
+        public AndExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
     

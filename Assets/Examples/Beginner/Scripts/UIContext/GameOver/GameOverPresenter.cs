@@ -17,7 +17,7 @@ namespace BeginnerGame
             TeamType teamType = GameContext.Instance.GetWinnerTeam().Value;
             _view.SetMessage($"{teamType} PLAYER \nWINS");
             _view.SetMessageColor(_catalog.GetInfo(teamType).Material.color);
-            _view.OnRestartClicked += RestartGameUseCase.RestartGame;
+            _view.OnRestartClicked += RestartUseCase.RestartGame;
             _view.OnCloseClicked += this.OnCloseClicked;
         }
 
@@ -28,13 +28,13 @@ namespace BeginnerGame
 
         public void Dispose(IEntity context)
         {
-            _view.OnRestartClicked -= RestartGameUseCase.RestartGame;
+            _view.OnRestartClicked -= RestartUseCase.RestartGame;
             _view.OnCloseClicked -= this.OnCloseClicked;
         }
 
         private void OnCloseClicked()
         {
-            GameOverViewUseCase.HidePopup(_context);
+            GameOverUseCase.HidePopup(_context);
         }
     }
 }

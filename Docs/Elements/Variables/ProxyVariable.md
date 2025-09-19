@@ -1,9 +1,8 @@
-# 🧩 ProxyVariable<T>
+# 🧩 ProxyVariable&lt;T&gt;
 
-`ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions**.  
-It implements `IVariable<T>`, allowing you to **wrap existing data sources** and expose them through a unified variable interface.
+`ProxyVariable<T>` provides a **read-write variable** that delegates its value to **external getter and setter functions**. It implements [IVariable&lt;T&gt;](IVariable.md), allowing you to **wrap existing data sources** and expose them through a unified variable interface.
 
-This is useful when you want to integrate third-party or existing fields/properties into systems expecting `IVariable<T>` without duplicating state.
+This is useful when you want to integrate third-party or existing fields / properties into systems expecting `IVariable<T>` without duplicating state.
 
 ---
 
@@ -12,24 +11,58 @@ This is useful when you want to integrate third-party or existing fields/propert
 
 ---
 
-## Constructors
+## Constructor
 
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
 ```
-- getter – A function to retrieve the value.
-- setter – An action to update the value.
-- Throws: ArgumentNullException if either argument is null.
+- **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.
+- **Parameters:**
+    - `getter` – A function to retrieve the value.
+    - `setter` – An action to update the value.
+- **Throws:** `ArgumentNullException` if either `getter` or `setter` is null.
+
+---
 
 ## Properties
-```csharp
-T Value { get; set; }
-```
-- Gets or sets the proxied value.
-- Returns the default value if getter is not assigned.
 
-## Builder API
-ProxyVariable<T> also includes a fluent builder to simplify creation:
+#### `Value`
+```csharp
+new T Value { get; set; }
+```
+- **Description:** Gets or sets the current value.
+- **Access:** Read-write
+- **Notes:**
+    - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
+    - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
+
+---
+
+## Methods
+
+#### `Invoke()`
+```csharp
+T Invoke()
+```
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+
+
+#### `Invoke(T arg)`
+```csharp
+void Invoke(T arg)
+```
+- **Description:** Sets the value of the variable to the provided argument.
+- **Parameter:** `arg` – The new value to assign to the variable.
+- **Notes:**
+    - Acts as a setter method, complementing the `Value` property.
+    - Default implementation comes from [IAction&lt;R&gt;.Invoke()](../Actions/IAction.md#invoket).
+
+---
+
+## Builder
+**`ProxyVariable<T>` also includes a fluent builder to simplify creation:**
 
 ```csharp
 var variable = ProxyVariable<int>
@@ -39,48 +72,55 @@ var variable = ProxyVariable<int>
     .Build();
 ```
 
-## Example Usage
-Wrapping a Transform’s Position
+## 🗂 Example of Usage
+
+**Wrapping a Transform’s Position**
 
 ```csharp
-using UnityEngine;
-using Atomic.Elements;
+//Create a new proxy of Transform.position
+IVariable<Vector3> position = new ProxyVariable<Vector3>(
+    getter: () => transform.position,
+    setter: value => transform.position = value
+);
 
-public class Player
-{
-    private readonly IVariable<Vector3> _position;
-
-    public Player(Transform transform)
-    {
-        _position = new ProxyVariable<Vector3>(
-            getter: () => transform.position,
-            setter: v => transform.position = v
-        );
-    }
-
-    public void Move(Vector3 delta)
-    {
-        _position.Value += delta;
-    }
-}
+//Move position:
+position.Value += Vector3.forward; 
 ```
-## Using the Fluent Builder
+
+**Using the Fluent Builder**
 
 ```csharp
-int health = 100;
-
-IVariable<int> healthVariable = ProxyVariable<int>
+//Create a new proxy of Transform.position
+IVariable<Vector3> position = ProxyVariable<Vector3>
     .StartBuild()
-    .WithGetter(() => health)
-    .WithSetter(v => health = v)
+    .WithGetter(() => transform.position)
+    .WithSetter(value => transform.position = value)
     .Build();
 
-Debug.Log(healthVariable.Value); // Output: 100
-healthVariable.Value = 80;
-Debug.Log(health);               // Output: 80
+//Move position:
+position.Value += Vector3.forward; 
 ```
 
-## When to Use
-- Integrating external or third-party APIs (e.g., Unity’s Transform, networking states).
-- Adapting existing properties/fields to IVariable<T> without refactoring.
-- Testing: Makes it easy to substitute mock getters/setters in unit tests.
+## 🧩 Specialized Proxy Variables
+**For convenience, several specialized proxy variable implementations are provided.**
+
+### Player Prefs
+- `BoolPrefsVariable` – Boolean variable stored in PlayerPrefs
+- `IntPrefsVariable` – Integer variable stored in PlayerPrefs
+- `FloatPrefsVariable` – Float variable stored in PlayerPrefs
+- `StringPrefsVariable` – String variable stored in PlayerPrefs
+
+### Transform
+- `TransformParentVariable` – Stores a `Transform` parent reference
+- `TransformPositionVariable` – Stores a `Vector3` position
+- `TransformRotationVariable` – Stores a `Quaternion` rotation
+- `TransformScaleVariable` – Stores a `Vector3` scale
+
+## 📝 Notes
+
+Below are some notes on when to use `ProxyVariable<T>`:
+
+- Integrating external or third-party APIs (e.g., Unity’s `Transform`, networking states).
+- Adapting existing properties / fields to `IVariable<T>` without refactoring.
+- Testing: Makes it easy to substitute mock getters / setters in unit tests.
+

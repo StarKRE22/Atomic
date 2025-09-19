@@ -21,5 +21,23 @@ namespace Atomic.Elements
         /// Removes all elements from the array and triggers the <see cref="IReadOnlyReactiveArray{T}.OnStateChanged"/> event.
         /// </summary>
         void Clear();
+
+        /// <summary>
+        /// Updates the contents of the reactive array with values from the specified <paramref name="newItems"/> collection.
+        /// </summary>
+        /// <param name="newItems">The collection of new items to populate the array with.</param>
+        void Populate(IEnumerable<T> newItems);
+
+        /// <summary>
+        /// Fills the array with the specified value.
+        /// </summary>
+        /// <param name="value">The value to set for all elements.</param>
+        void Fill(T value);
+
+        /// <summary>
+        /// Resizes the array to the specified new size.
+        /// </summary>
+        /// <param name="newSize">The new length of the array. Must be non-negative.</param>
+        void Resize(int newSize);
     }
 }

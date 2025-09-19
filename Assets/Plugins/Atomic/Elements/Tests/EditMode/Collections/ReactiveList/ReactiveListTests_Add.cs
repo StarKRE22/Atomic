@@ -27,7 +27,7 @@ namespace Atomic.Elements
             int insertedIndex = -1;
 
             var list = new ReactiveList<string>();
-            list.OnItemInserted += (i, v) =>
+            list.OnItemAdded += (i, v) =>
             {
                 insertedIndex = i;
                 insertedItem = v;

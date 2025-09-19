@@ -6,7 +6,7 @@ namespace ShooterGame.App
     public sealed class AppContextInstaller : SceneEntityInstaller<IAppContext>
     {
         [SerializeField]
-        private ExitAppInstaller _exitAppInstaller;
+        private QuitInstaller _exitAppInstaller;
 
         [SerializeField]
         private LevelsInstaller _levelsInstaller;
@@ -19,6 +19,7 @@ namespace ShooterGame.App
             _exitAppInstaller.Install(context);
             _levelsInstaller.Install(context);
             _loadGameInstaller.Install(context);
+            context.AddBehaviour<MenuLoadController>();
         }
     }
 }

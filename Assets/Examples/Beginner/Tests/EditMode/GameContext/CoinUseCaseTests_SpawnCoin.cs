@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 namespace BeginnerGame
 {
     [TestFixture]
-    public partial class CoinUseCaseTests
+    public partial class CoinsUseCaseTests
     {
         [Test]
         public void SpawnCoin_Successfully()
@@ -32,7 +32,7 @@ namespace BeginnerGame
             Random.InitState(12345);
             
             //Act:
-            IGameEntity coin = CoinUseCase.Spawn(gameContext);
+            IGameEntity coin = CoinsUseCase.Spawn(gameContext);
             var coinPos = coin.GetPosition().Value;
             
             //Assert:
@@ -49,7 +49,7 @@ namespace BeginnerGame
             );
             
             Random.InitState(12345);
-            Vector3 coinPos2 = CoinUseCase.RandomSpawnPosition(gameContext);
+            Vector3 coinPos2 = CoinsUseCase.RandomSpawnPosition(gameContext);
             Assert.That(coinPos2, Is.EqualTo(coinPos), "Coin position should be deterministic with fixed seed");
         }
     }

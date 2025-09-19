@@ -1,84 +1,110 @@
-# 🧩️ AnimationEvents
+# 🧩 AnimationEvents
 
-`AnimationEvents` is a Unity `MonoBehaviour` that bridges **Unity animation events** to C# event subscriptions.  
-It allows you to listen to animation events without hardcoding method names in the inspector.
+A **Unity MonoBehaviour** that bridges Unity animation events to C# event subscriptions. Allows listening for animation events without hardcoding method names in the inspector.
 
-Attach this component to a `GameObject` with an `Animator` or `Animation` component to use it.
-
----
-
-## Description
-
-- Animation events in Unity can call the **private** `ReceiveEvent(string)` method from the animation timeline.
-- Events are dispatched:
-    - Through the **generic event** `OnEvent` (string-based)
-    - Through **strongly-typed subscriptions** using `Subscribe` and `Unsubscribe`.
-- This design keeps animation logic **loosely coupled** and avoids multiple MonoBehaviour scripts with hardcoded handlers.
+> [!NOTE]  
+> Attach this component to a GameObject with an `Animator` or `Animation` to dispatch animation events through C# events.
 
 ---
 
 ## Events
 
-- `event Action<string> OnEvent` – invoked whenever any animation event sends a string message to this component.  
-  The string contains the event name or key from the animation timeline.
+#### `OnEvent`
+```csharp
+public event Action<string> OnEvent;
+```
+- **Description:** Invoked whenever an animation event sends a string message.
+- **Parameter:** `string` — the event key or name from the animation timeline.
+- **Remarks:** Works for any animation event, providing a generic subscription mechanism.
 
 ---
 
 ## Methods
 
-### ReceiveEvent(string message)
+#### `Subscribe(string, Action)`
+```csharp
+public void Subscribe(string evt, Action action);
+```
+- **Description:** Registers an action for a specific animation event key.
+- **Parameters:**
+  - `evt` — the animation event key to listen for.
+  - `action` — the action to execute when the event is received.
+- **Remarks:** Multiple actions can be subscribed to the same event.
 
-- **Private method**, intended to be called by Unity animation events.
-- Invokes all handlers subscribed to `message` and raises `OnEvent`.
-- Parameters:
-    - `message` – the string key passed from the animation timeline.
-
-### Subscribe(string evt, Action action)
-
-- Subscribes a C# `Action` to a specific animation event key.
-- Multiple actions can be registered for the same event.
-- Parameters:
-    - `evt` – the animation event key to listen for.
-    - `action` – the action to invoke when the event occurs.
-
-### Unsubscribe(string evt, Action action)
-
-- Removes a previously subscribed action from an animation event key.
-- Safe to call even if the action was not registered.
-- Parameters:
-    - `evt` – the animation event key.
-    - `action` – the action to remove.
+#### `Unsubscribe(string, Action)`
+```csharp
+public void Unsubscribe(string evt, Action action);
+```
+- **Description:** Removes a previously registered action from a specific animation event key.
+- **Parameters:**
+  - `evt` — the animation event key to stop listening for.
+  - `action` — the action to remove from the handler list.
+- **Remarks:** If the action was not registered, nothing happens.
 
 ---
 
-## Example Usage
+## Unity Callback
 
+#### `ReceiveEvent(string)`
 ```csharp
-public class Character : MonoBehaviour
+public void ReceiveEvent(string message);
+```
+- **Description:** Method called by Unity’s Animation Event system.
+- **Parameter:** `message` — the string key sent from the animation timeline.
+- **Remarks:** Dispatches the event to both specific handlers registered via `Subscribe` and the generic `OnEvent`.
+
+---
+
+## 🗂 Example Usage
+Here’s an example of using `AnimationEvents` together with `Animator` in Unity.
+
+### 1. Add Components
+Add both an `Animator` and `AnimationEvents` component to your `GameObject`.
+- <img src="../../Images/AnimationEvents.png" alt="AnimationEvents example" width="" height="320">
+
+### 2. Set Up Animator
+Configure your `AnimatorController` and animation clips, then assign it to the `Animator` on the scene.
+
+### 3. Create Animation Event
+On the timeline of your `AnimationClip`, create an `AnimationEvent` and set its `Function` to: `AnimationEvents/Methods/ReceiveEvent(string)`
+- <img src="../../Images/AnimationEvent.png" alt="AnimationEvent example" width="" height="128">
+
+### 4. Handle Animation Events in Script
+Create a script to subscribe to animation events from `AnimationEvents`:
+```csharp
+public class Example : MonoBehaviour
 {
-    public AnimationEvents animEvents;
+    [SerializeField]
+    private AnimationEvents _animEvents;
 
-    private void Awake()
+    private void OnEnable()
     {
-        animEvents.Subscribe("JumpStart", OnJumpStart);
-        animEvents.Subscribe("JumpEnd", OnJumpEnd);
-        animEvents.OnEvent += OnAnyAnimationEvent;
+        _animEvents.Subscribe("Hello", OnHello);
+        _animEvents.OnEvent += OnAnimationEvent;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        animEvents.Unsubscribe("JumpStart", OnJumpStart);
-        animEvents.Unsubscribe("JumpEnd", OnJumpEnd);
-        animEvents.OnEvent -= OnAnyAnimationEvent;
+        _animEvents.Unsubscribe("Hello", OnHello);
+        _animEvents.OnEvent -= OnAnimationEvent;
     }
 
-    private void OnJumpStart() => Debug.Log("Jump started!");
-    private void OnJumpEnd() => Debug.Log("Jump ended!");
-    private void OnAnyAnimationEvent(string evt) => Debug.Log($"Event triggered: {evt}");
+    private void OnHello() => Debug.Log("Hello!");
+    
+    private void OnAnimationEvent(string evt) => Debug.Log($"Event triggered: {evt}");
 }
 ```
+
+### 5. Attach Script
+Attach the script to a GameObject and assign the `AnimationEvents` component to it.
+- <img src="../../Images/AnimationEvents_Example.png" alt="SceneActionComposite example" width="" height="80">
+
+### 6. Play and Test
+Enter Play Mode in Unity and verify that the Console shows logs:
+
 ---
-### Behavior
+
+## 📝 Notes
 - Handles animation events without requiring hardcoded method names in the Unity inspector.
 - Supports multiple subscribers per event key.
 - Provides both **generic** (`OnEvent`) and **strongly-typed** (`Subscribe`) notifications.

@@ -15,7 +15,6 @@ namespace Atomic.Elements
     [Serializable]
     public class BaseEvent : IEvent, IDisposable
     {
-        /// <inheritdoc/>
         public event Action OnEvent;
 
         /// <summary>
@@ -55,7 +54,6 @@ namespace Atomic.Elements
     [Serializable]
     public class BaseEvent<T> : IEvent<T>, IDisposable
     {
-        /// <inheritdoc/>
         public event Action<T> OnEvent;
 
         /// <summary>
@@ -95,7 +93,6 @@ namespace Atomic.Elements
     [Serializable]
     public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
     {
-        /// <inheritdoc/>
         public event Action<T1, T2> OnEvent;
 
         /// <summary>
@@ -135,7 +132,6 @@ namespace Atomic.Elements
     [Serializable]
     public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
     {
-        /// <inheritdoc/>
         public event Action<T1, T2, T3> OnEvent;
 
         /// <summary>
@@ -176,7 +172,6 @@ namespace Atomic.Elements
     [Serializable]
     public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
     {
-        /// <inheritdoc/>
         public event Action<T1, T2, T3, T4> OnEvent;
 
         /// <summary>

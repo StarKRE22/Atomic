@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;StarKRE22&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/StarKRE22/Atomic&quot;,
+    &quot;accountId&quot;: &quot;7e4d7979-8bc1-43b4-9e2f-89d48163d907&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReadOnlyReactiveCollection.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Elements/Scripts/UnityComponents/AnimationEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/Mathematics/float3_variable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Time/PeriodTests.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Elements/Values/Const.md.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float2.gen.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/28/cf2c2873/Func`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/55/ddc32d82/IEnumerable`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/70/31528bc1/IReadOnlyList`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/85/48702da0/IReadOnlyCollection`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/89/349fc9dd/ICollection`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/8c/783bbc49/ISet`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b1/f259ccdd/IDictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b8/d3b9e340/IEnumerable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f2/c7924853/IReadOnlyDictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f4/dd213227/MethodImplOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/a9/4957b382/Scene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5995835e2565222bd845851833bf32626f8a8e23753c86c8cc54d6f22587cd6a/System.Globalization.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="31uB6OkL3hlquhmT2NUI760SYMt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath $PROJECT_DIR$ -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath $PROJECT_DIR$ -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+      <created>1756363900869</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756363900869</updated>
+      <workItem from="1756363902007" duration="31058000" />
+      <workItem from="1756476136561" duration="14908000" />
+      <workItem from="1756495539034" duration="2413000" />
+      <workItem from="1756539673777" duration="29798000" />
+      <workItem from="1756623383023" duration="1565000" />
+      <workItem from="1756648271486" duration="12677000" />
+      <workItem from="1756720401549" duration="18150000" />
+      <workItem from="1756758064424" duration="257000" />
+      <workItem from="1756796999392" duration="24705000" />
+      <workItem from="1756887175704" duration="19598000" />
+      <workItem from="1756969059457" duration="23633000" />
+      <workItem from="1757058837081" duration="7166000" />
+      <workItem from="1757083042019" duration="16490000" />
+      <workItem from="1757153357747" duration="9119000" />
+      <workItem from="1757167610415" duration="10944000" />
+      <workItem from="1757234040454" duration="26668000" />
+      <workItem from="1757314938895" duration="22901000" />
+      <workItem from="1757404317436" duration="12119000" />
+      <workItem from="1757441777610" duration="135000" />
+      <workItem from="1757480216447" duration="557000" />
+      <workItem from="1757480778920" duration="23560000" />
+      <workItem from="1757584369536" duration="27454000" />
+      <workItem from="1757657871544" duration="11299000" />
+      <workItem from="1757738347120" duration="42263000" />
+      <workItem from="1758003143971" duration="9586000" />
+      <workItem from="1758013832046" duration="35000" />
+      <workItem from="1758013872689" duration="853000" />
+      <workItem from="1758014902308" duration="1081000" />
+      <workItem from="1758015997866" duration="621000" />
+      <workItem from="1758016683531" duration="12669000" />
+      <workItem from="1758035034709" duration="15440000" />
+      <workItem from="1758086721821" duration="250000" />
+      <workItem from="1758086977799" duration="44000" />
+      <workItem from="1758087033777" duration="28099000" />
+      <workItem from="1758175918148" duration="1812000" />
+      <workItem from="1758177750643" duration="40068000" />
+    </task>
+    <task id="LOCAL-00459" summary="InlineFunction.md">
+      <option name="closed" value="true" />
+      <created>1758217615900</created>
+      <option name="number" value="00459" />
+      <option name="presentableId" value="LOCAL-00459" />
+      <option name="project" value="LOCAL" />
+      <updated>1758217615900</updated>
+    </task>
+    <task id="LOCAL-00460" summary="IPredicate.md">
+      <option name="closed" value="true" />
+      <created>1758217873113</created>
+      <option name="number" value="00460" />
+      <option name="presentableId" value="LOCAL-00460" />
+      <option name="project" value="LOCAL" />
+      <updated>1758217873113</updated>
+    </task>
+    <task id="LOCAL-00461" summary="IPredicate.md">
+      <option name="closed" value="true" />
+      <created>1758217913123</created>
+      <option name="number" value="00461" />
+      <option name="presentableId" value="LOCAL-00461" />
+      <option name="project" value="LOCAL" />
+      <updated>1758217913123</updated>
+    </task>
+    <task id="LOCAL-00462" summary="InlinePredicate.md">
+      <option name="closed" value="true" />
+      <created>1758218279016</created>
+      <option name="number" value="00462" />
+      <option name="presentableId" value="LOCAL-00462" />
+      <option name="project" value="LOCAL" />
+      <updated>1758218279016</updated>
+    </task>
+    <task id="LOCAL-00463" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221170457</created>
+      <option name="number" value="00463" />
+      <option name="presentableId" value="LOCAL-00463" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221170457</updated>
+    </task>
+    <task id="LOCAL-00464" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221219166</created>
+      <option name="number" value="00464" />
+      <option name="presentableId" value="LOCAL-00464" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221219166</updated>
+    </task>
+    <task id="LOCAL-00465" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221345460</created>
+      <option name="number" value="00465" />
+      <option name="presentableId" value="LOCAL-00465" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221345460</updated>
+    </task>
+    <task id="LOCAL-00466" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758221526034</created>
+      <option name="number" value="00466" />
+      <option name="presentableId" value="LOCAL-00466" />
+      <option name="project" value="LOCAL" />
+      <updated>1758221526034</updated>
+    </task>
+    <task id="LOCAL-00467" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758223079085</created>
+      <option name="number" value="00467" />
+      <option name="presentableId" value="LOCAL-00467" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223079085</updated>
+    </task>
+    <task id="LOCAL-00468" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758223152442</created>
+      <option name="number" value="00468" />
+      <option name="presentableId" value="LOCAL-00468" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223152442</updated>
+    </task>
+    <task id="LOCAL-00469" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758223184827</created>
+      <option name="number" value="00469" />
+      <option name="presentableId" value="LOCAL-00469" />
+      <option name="project" value="LOCAL" />
+      <updated>1758223184827</updated>
+    </task>
+    <task id="LOCAL-00470" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758224402235</created>
+      <option name="number" value="00470" />
+      <option name="presentableId" value="LOCAL-00470" />
+      <option name="project" value="LOCAL" />
+      <updated>1758224402235</updated>
+    </task>
+    <task id="LOCAL-00471" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269256271</created>
+      <option name="number" value="00471" />
+      <option name="presentableId" value="LOCAL-00471" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269256271</updated>
+    </task>
+    <task id="LOCAL-00472" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269777658</created>
+      <option name="number" value="00472" />
+      <option name="presentableId" value="LOCAL-00472" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269777658</updated>
+    </task>
+    <task id="LOCAL-00473" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269825955</created>
+      <option name="number" value="00473" />
+      <option name="presentableId" value="LOCAL-00473" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269825955</updated>
+    </task>
+    <task id="LOCAL-00474" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269843825</created>
+      <option name="number" value="00474" />
+      <option name="presentableId" value="LOCAL-00474" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269843825</updated>
+    </task>
+    <task id="LOCAL-00475" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758269874761</created>
+      <option name="number" value="00475" />
+      <option name="presentableId" value="LOCAL-00475" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269874761</updated>
+    </task>
+    <task id="LOCAL-00476" summary="PrintAction.md">
+      <option name="closed" value="true" />
+      <created>1758269958667</created>
+      <option name="number" value="00476" />
+      <option name="presentableId" value="LOCAL-00476" />
+      <option name="project" value="LOCAL" />
+      <updated>1758269958667</updated>
+    </task>
+    <task id="LOCAL-00477" summary="PrintAction.md">
+      <option name="closed" value="true" />
+      <created>1758270103100</created>
+      <option name="number" value="00477" />
+      <option name="presentableId" value="LOCAL-00477" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270103100</updated>
+    </task>
+    <task id="LOCAL-00478" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758270158579</created>
+      <option name="number" value="00478" />
+      <option name="presentableId" value="LOCAL-00478" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270158579</updated>
+    </task>
+    <task id="LOCAL-00479" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758270188414</created>
+      <option name="number" value="00479" />
+      <option name="presentableId" value="LOCAL-00479" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270188414</updated>
+    </task>
+    <task id="LOCAL-00480" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1758270238869</created>
+      <option name="number" value="00480" />
+      <option name="presentableId" value="LOCAL-00480" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270238869</updated>
+    </task>
+    <task id="LOCAL-00481" summary="IReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758270365272</created>
+      <option name="number" value="00481" />
+      <option name="presentableId" value="LOCAL-00481" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270365272</updated>
+    </task>
+    <task id="LOCAL-00482" summary="IReactiveArray.md, IReactiveList.md, IReactiveSet.md">
+      <option name="closed" value="true" />
+      <created>1758270665509</created>
+      <option name="number" value="00482" />
+      <option name="presentableId" value="LOCAL-00482" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270665509</updated>
+    </task>
+    <task id="LOCAL-00483" summary="IReadOnlyReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758270762711</created>
+      <option name="number" value="00483" />
+      <option name="presentableId" value="LOCAL-00483" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270762711</updated>
+    </task>
+    <task id="LOCAL-00484" summary="IReadOnlyReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758270794591</created>
+      <option name="number" value="00484" />
+      <option name="presentableId" value="LOCAL-00484" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270794591</updated>
+    </task>
+    <task id="LOCAL-00485" summary="IReadOnlyReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1758270899763</created>
+      <option name="number" value="00485" />
+      <option name="presentableId" value="LOCAL-00485" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270899763</updated>
+    </task>
+    <task id="LOCAL-00486" summary="IReadOnlyReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758270977887</created>
+      <option name="number" value="00486" />
+      <option name="presentableId" value="LOCAL-00486" />
+      <option name="project" value="LOCAL" />
+      <updated>1758270977887</updated>
+    </task>
+    <task id="LOCAL-00487" summary="IReadOnlyReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758271046633</created>
+      <option name="number" value="00487" />
+      <option name="presentableId" value="LOCAL-00487" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271046633</updated>
+    </task>
+    <task id="LOCAL-00488" summary="ReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758271155504</created>
+      <option name="number" value="00488" />
+      <option name="presentableId" value="LOCAL-00488" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271155504</updated>
+    </task>
+    <task id="LOCAL-00489" summary="Reactiv">
+      <option name="closed" value="true" />
+      <created>1758271273097</created>
+      <option name="number" value="00489" />
+      <option name="presentableId" value="LOCAL-00489" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271273097</updated>
+    </task>
+    <task id="LOCAL-00490" summary="ReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758271341932</created>
+      <option name="number" value="00490" />
+      <option name="presentableId" value="LOCAL-00490" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271341932</updated>
+    </task>
+    <task id="LOCAL-00491" summary="ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758271435554</created>
+      <option name="number" value="00491" />
+      <option name="presentableId" value="LOCAL-00491" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271435554</updated>
+    </task>
+    <task id="LOCAL-00492" summary="ReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758271459644</created>
+      <option name="number" value="00492" />
+      <option name="presentableId" value="LOCAL-00492" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271459644</updated>
+    </task>
+    <task id="LOCAL-00493" summary="ReactiveHashSet.md">
+      <option name="closed" value="true" />
+      <created>1758271539555</created>
+      <option name="number" value="00493" />
+      <option name="presentableId" value="LOCAL-00493" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271539555</updated>
+    </task>
+    <task id="LOCAL-00494" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271754659</created>
+      <option name="number" value="00494" />
+      <option name="presentableId" value="LOCAL-00494" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271754659</updated>
+    </task>
+    <task id="LOCAL-00495" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271865259</created>
+      <option name="number" value="00495" />
+      <option name="presentableId" value="LOCAL-00495" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271865259</updated>
+    </task>
+    <task id="LOCAL-00496" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1758271964488</created>
+      <option name="number" value="00496" />
+      <option name="presentableId" value="LOCAL-00496" />
+      <option name="project" value="LOCAL" />
+      <updated>1758271964488</updated>
+    </task>
+    <task id="LOCAL-00497" summary="ReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758272091264</created>
+      <option name="number" value="00497" />
+      <option name="presentableId" value="LOCAL-00497" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272091264</updated>
+    </task>
+    <task id="LOCAL-00498" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272275875</created>
+      <option name="number" value="00498" />
+      <option name="presentableId" value="LOCAL-00498" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272275875</updated>
+    </task>
+    <task id="LOCAL-00499" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272314077</created>
+      <option name="number" value="00499" />
+      <option name="presentableId" value="LOCAL-00499" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272314077</updated>
+    </task>
+    <task id="LOCAL-00500" summary="ISetter.md, InlineSetter.md">
+      <option name="closed" value="true" />
+      <created>1758272326253</created>
+      <option name="number" value="00500" />
+      <option name="presentableId" value="LOCAL-00500" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272326253</updated>
+    </task>
+    <task id="LOCAL-00501" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758272415699</created>
+      <option name="number" value="00501" />
+      <option name="presentableId" value="LOCAL-00501" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272415699</updated>
+    </task>
+    <task id="LOCAL-00502" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758272477013</created>
+      <option name="number" value="00502" />
+      <option name="presentableId" value="LOCAL-00502" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272477013</updated>
+    </task>
+    <task id="LOCAL-00503" summary="ISignal.md">
+      <option name="closed" value="true" />
+      <created>1758273364918</created>
+      <option name="number" value="00503" />
+      <option name="presentableId" value="LOCAL-00503" />
+      <option name="project" value="LOCAL" />
+      <updated>1758273364918</updated>
+    </task>
+    <task id="LOCAL-00504" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758292750145</created>
+      <option name="number" value="00504" />
+      <option name="presentableId" value="LOCAL-00504" />
+      <option name="project" value="LOCAL" />
+      <updated>1758292750145</updated>
+    </task>
+    <task id="LOCAL-00505" summary="InlineSignal.md">
+      <option name="closed" value="true" />
+      <created>1758293155158</created>
+      <option name="number" value="00505" />
+      <option name="presentableId" value="LOCAL-00505" />
+      <option name="project" value="LOCAL" />
+      <updated>1758293155158</updated>
+    </task>
+    <task id="LOCAL-00506" summary="InlineSignal.md">
+      <option name="closed" value="true" />
+      <created>1758293302675</created>
+      <option name="number" value="00506" />
+      <option name="presentableId" value="LOCAL-00506" />
+      <option name="project" value="LOCAL" />
+      <updated>1758293302675</updated>
+    </task>
+    <task id="LOCAL-00507" summary="Subscription.md">
+      <option name="closed" value="true" />
+      <created>1758294621618</created>
+      <option name="number" value="00507" />
+      <option name="presentableId" value="LOCAL-00507" />
+      <option name="project" value="LOCAL" />
+      <updated>1758294621618</updated>
+    </task>
+    <option name="localTasksCounter" value="508" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="IPredicate.md" />
+    <MESSAGE value="InlinePredicate.md" />
+    <MESSAGE value="IRequest.md" />
+    <MESSAGE value="BaseRequest.md" />
+    <MESSAGE value="PrintAction.md" />
+    <MESSAGE value="IReactiveArray.md" />
+    <MESSAGE value="IReactiveCollection.md" />
+    <MESSAGE value="IReactiveDictionary.md" />
+    <MESSAGE value="IReactiveArray.md, IReactiveList.md, IReactiveSet.md" />
+    <MESSAGE value="IReadOnlyReactiveArray.md" />
+    <MESSAGE value="IReadOnlyReactiveCollection.md" />
+    <MESSAGE value="IReadOnlyReactiveDictionary.md" />
+    <MESSAGE value="IReadOnlyReactiveList.md" />
+    <MESSAGE value="Reactiv" />
+    <MESSAGE value="ReactiveArray.md" />
+    <MESSAGE value="ReactiveDictionary.md" />
+    <MESSAGE value="ReactiveHashSet.md" />
+    <MESSAGE value="ReactiveLinkedList.md" />
+    <MESSAGE value="ReactiveList.md" />
+    <MESSAGE value="ISetter.md, InlineSetter.md" />
+    <MESSAGE value="Extensions.md" />
+    <MESSAGE value="ISignal.md" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="InlineSignal.md" />
+    <MESSAGE value="Subscription.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscription.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -74,7 +74,7 @@ namespace Atomic.Elements
         private float GetRemainingTime()
         {
             int ticks = this.GetRemainingTicks();
-            return ticks != -1 ? ticks * Time.fixedDeltaTime : default;
+            return ticks != -1 ? ticks * Time.fixedDeltaTime : 0;
         }
 
         private int GetRemainingTicks() => _endTick > 0

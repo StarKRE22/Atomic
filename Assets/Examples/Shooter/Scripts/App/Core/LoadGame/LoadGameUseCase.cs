@@ -16,7 +16,7 @@ namespace ShooterGame.App
             if (level <= 0 || level > context.GetMaxLevel().Value)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
-            var bundle = new LoadingBundle
+            var bundle = new LoadGameBundle
             {
                 {"level", level}
             };

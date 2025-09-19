@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
@@ -26,10 +27,10 @@ namespace Atomic.Elements
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
         /// <inheritdoc/>
-        public event ChangeItemHandler<T> OnItemChanged;
+        public event Action<int, T> OnItemChanged;
 
         /// <inheritdoc/>
-        public event StateChangedHandler OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
         public int Length => this.items.Length;
@@ -51,7 +52,13 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="elements">Elements to initialize the array with.</param>
         public ReactiveArray(params T[] elements) => this.items = elements;
-
+        
+        /// <summary>
+        /// Creates a reactive array initialized with the given elements.
+        /// </summary>
+        /// <param name="elements">Elements to initialize the array with.</param>
+        public ReactiveArray(IEnumerable<T> elements) => this.items = elements.ToArray();
+        
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {
@@ -102,6 +109,34 @@ namespace Atomic.Elements
         }
 
         /// <summary>
+        /// Copies all elements from this reactive array to the specified destination array,
+        /// starting at the given index in the destination array.
+        /// </summary>
+        /// <param name="array">The destination array to copy elements into.</param>
+        /// <param name="arrayIndex">The zero-based index in the destination array at which copying begins.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="array"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown if <paramref name="arrayIndex"/> is negative.</exception>
+        /// <exception cref="ArgumentException">Thrown if the destination array does not have enough space to hold all elements starting at <paramref name="arrayIndex"/>.</exception>
+        /// <example>
+        /// <code>
+        /// var array = new ReactiveArray&lt;int&gt;(1, 2, 3, 4, 5);
+        /// int[] target = new int[5];
+        /// array.CopyTo(target, 0); // target = [1, 2, 3, 4, 5]
+        /// </code>
+        /// </example>
+        public void CopyTo(T[] array, int arrayIndex)
+        {
+            if (array == null)
+                throw new ArgumentNullException(nameof(array));
+            if (arrayIndex < 0)
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Array index cannot be negative.");
+            if (array.Length - arrayIndex < this.items.Length)
+                throw new ArgumentException("The destination array is too small to contain all elements.", nameof(array));
+
+            Array.Copy(this.items, 0, array, arrayIndex, this.items.Length);
+        }
+
+        /// <summary>
         /// Copies a range of elements from this reactive array to a destination array.
         /// </summary>
         /// <param name="sourceIndex">The zero-based index in this array at which copying begins.</param>
@@ -118,7 +153,7 @@ namespace Atomic.Elements
         /// array.Copy(1, target, 0, 3); // target = [2, 3, 4, 0, 0]
         /// </code>
         /// </example>
-        public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length)
+        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
         {
             if (destination == null)
                 throw new ArgumentNullException(nameof(destination));
@@ -282,7 +317,7 @@ namespace Atomic.Elements
 
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveArray<T> array)
+            internal Enumerator(ReactiveArray<T> array)
             {
                 _array = array;
                 _index = -1;

@@ -292,6 +292,13 @@ Lifecycle events allow reactive systems to respond to changes in the entity's st
 The **Installing** section describes how a `SceneEntity` is populated with **tags**, **values**, and **behaviours** at runtime or in the editor.  
 It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
 
+<!--
+//TODO: FORMAT TO INSTALL ACTION!
+> [!NOTE]  
+> Actions are executed in the order they appear in the array.  
+> Null references are automatically skipped, making partially configured lists safe to use.
+-->
+
 ### Inspector Settings
 
 | Field                      | Type                         | Default | Description                                                                                                                                                                                                   |

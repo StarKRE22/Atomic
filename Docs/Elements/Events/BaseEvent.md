@@ -1,115 +1,367 @@
-# 🧩 BaseEvent Classes
-The **BaseEvent** classes provide a concrete implementation of the `IEvent` interfaces.  
-They support **subscription**, **invocation**, and **disposal** of event handlers, and optionally integrate with **Odin Inspector** for editor buttons and inline property visualization.
-## Key Features
-- **Reactive Events** – Implements `IEvent` interfaces for 0–4 parameters.
-- **Subscription Management** – Allows subscribing and unsubscribing handlers.
-- **Invocation** – Provides `Invoke` methods to trigger all subscribers.
-- **Disposal** – Implements `IDisposable` to clear all subscriptions.
-- **Odin Inspector Support** – Optional attributes `[InlineProperty]` and `[Button]` for editor integration.
+# 🧩 BaseEvent
+
+The **BaseEvent** classes provide **parameterless and generic reactive events** that can be **subscribed to, invoked,
+and disposed**. They implement the corresponding [IEvent](IEvent.md) interfaces and allow both reactive tracking and
+action-based invocation.
+
 ---
-## BaseEvent
-Represents a **parameterless event**.
+
+<details>
+  <summary>
+    <h2>🧩 BaseEvent</h2>
+    <br> Represents a <b>parameterless event</b> that can be subscribed to and invoked.
+  </summary>
+
+<br>
+
 ```csharp
 public class BaseEvent : IEvent, IDisposable
-{
-    public event Action OnEvent;
-    public Subscription Subscribe(Action action);
-    public void Unsubscribe(Action action);
-    public void Invoke();
-    public void Dispose();
-}
 ```
-### Members
 
-- **Subscribe(Action action)** – Subscribes a handler and returns a `Subscription`.
-- **Unsubscribe(Action action)** – Removes a previously subscribed handler.
-- **Invoke()** – Triggers the event, calling all subscribed handlers.
-- **Dispose()** – Clears all subscriptions.
 ---
-## BaseEvent&lt;T&gt;
-Represents an **event with one argument**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action)`
+
+```csharp
+public Subscription Subscribe(Action action)  
+```
+
+- **Description:** Subscribes an action to be invoked whenever the event is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription](../Signals/Subscription.md#subscription) struct representing the active subscription.
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)  
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the event is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+#### `Invoke()`
+
+```csharp
+public void Invoke();
+```
+
+- **Description:** Executes the event logic
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Clears all subscriptions for this event.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 BaseEvent&lt;T&gt;</h2>
+    <br> Represents an event that emits <b>one parameter</b>.
+  </summary>
+
+<br>
 
 ```csharp
 public class BaseEvent<T> : IEvent<T>, IDisposable
-{
-    public event Action<T> OnEvent;
-    public Subscription<T> Subscribe(Action<T> action);
-    public void Unsubscribe(Action<T> action);
-    public void Invoke(T arg);
-    public void Dispose();
-}
 ```
+
+- **Type parameter:** `T` — The type of the event argument.
+
 ---
-## BaseEvent<T1, T2>
-Represents an **event with two arguments**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T>)`
+
+```csharp
+public Subscription<T> Subscribe(Action<T> action)
+```
+
+- **Description:** Subscribes a handler to the event.
+- **Parameter:** `action` – The delegate to invoke when the event triggers.
+- **Returns:** A [Subscription<T>](../Signals/Subscription.md#subscriptiont) representing the active subscription.
+
+#### `Unsubscribe(Action<T>)`
+
+```csharp
+public void Unsubscribe(Action<T> action)
+```
+
+- **Description:** Removes a previously registered handler from the event.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+#### `Invoke(T)`
+
+```csharp
+public void Invoke(T arg)
+```
+
+- **Description:** Triggers the event with the specified argument.
+- **Parameter:** `arg` — The input parameter.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Clears all subscriptions for this event.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 BaseEvent&lt;T1, T2&gt;</h2>
+    <br> Represents an event that emits <b>two parameters</b>.
+  </summary>
+
+<br>
+
 ```csharp
 public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
-{
-    public event Action<T1, T2> OnEvent;
-    public Subscription<T1, T2> Subscribe(Action<T1, T2> action);
-    public void Unsubscribe(Action<T1, T2> action);
-    public void Invoke(T1 arg1, T2 arg2);
-    public void Dispose();
-}
 ```
+
+- **Type parameters:**
+    - `T1` — The first argument
+    - `T2` — The second argument
+
 ---
-## BaseEvent<T1, T2, T3>
-Represents an **event with three arguments**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2>)`
+
+```csharp
+public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
+```
+
+- **Description:** Subscribes a handler to the event.
+- **Parameter:** `action` – The delegate to invoke when the event triggers.
+- **Returns:** A [Subscription<T1, T2>](../Signals/Subscription.md#subscriptiont1-t2) representing the active
+  subscription.
+
+#### `Unsubscribe(Action<T1, T2>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2> action)
+```
+
+- **Description:** Removes a previously registered handler from the event.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+#### `Invoke(T1, T2)`
+
+```csharp
+public void Invoke(T1 arg1, T2 arg2)
+```
+
+- **Description:** Triggers the event with the specified arguments.
+- **Parameters:**
+    - `arg1` — The first argument
+    - `arg2` — The second argument
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Clears all subscriptions for this event.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 BaseEvent&lt;T1, T2, T3&gt;</h2>
+    <br> Represents an event that emits <b>three parameters</b>.
+  </summary>
+
+<br>
+
 ```csharp
 public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
-{
-    public event Action<T1, T2, T3> OnEvent;
-    public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action);
-    public void Unsubscribe(Action<T1, T2, T3> action);
-    public void Invoke(T1 arg1, T2 arg2, T3 arg3);
-    public void Dispose();
-}
 ```
+
+- **Type parameters:**
+    - `T1` — The first argument
+    - `T2` — The second argument
+    - `T3` — The third argument
+
 ---
-## BaseEvent<T1, T2, T3, T4>
-Represents an **event with four arguments**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2, T3>)`
+
+```csharp
+public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
+```
+
+- **Description:** Subscribes a handler to the event.
+- **Parameter:** `action` – The delegate to invoke when the event triggers.
+- **Returns:** A [Subscription<T1, T2, T3>](../Signals/Subscription.md#subscriptiont1-t2-t3) representing the active
+  subscription.
+
+#### `Unsubscribe(Action<T1, T2, T3>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3> action)
+```
+
+- **Description:** Removes a previously registered handler from the event.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+#### `Invoke(T1, T2, T3)`
+
+```csharp
+public void Invoke(T1 arg1, T2 arg2, T3 arg3)
+```
+
+- **Description:** Triggers the event with the specified arguments.
+- **Parameters:**
+    - `arg1` — The first argument
+    - `arg2` — The second argument
+    - `arg3` — The third argument
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Clears all subscriptions for this event.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 BaseEvent&lt;T1, T2, T3, T4&gt;</h2>
+    <br> Represents an event that emits <b>four parameters</b>.
+  </summary>
+
+<br>
+
 ```csharp
 public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
-{
-    public event Action<T1, T2, T3, T4> OnEvent;
-    public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action);
-    public void Unsubscribe(Action<T1, T2, T3, T4> action);
-    public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
-    public void Dispose();
-}
 ```
-## Notes
-- **IDisposable** – Disposing a BaseEvent clears all subscribers.
-- **Subscription Objects** – Returned from Subscribe, useful for automatic unsubscription.
-- **Thread Safety** – Invocation is not inherently thread-safe; synchronize externally if needed.
-- **Odin Inspector** – [InlineProperty] and [Button] attributes enhance editor interaction when enabled.
-### Example of Usage
-Take damage animation
-```csharp
-//Create a solider entity
-var soldier = new Entity("Soldier");
-soldier.AddValue<IEvent<int>>("TakeDamageEvent", new BaseEvent<int>());
-soldier.AddValue<Animator>("Animator", _animator);
-```
-```csharp
-//Create a take damage visualization
-class TakeDamagePresenter : IDisposable
-{
-    private readonly IEvent<int> _takeDamageEvent;
-    private readonly Animator _animator;
 
-    public TakeDamagePresenter(Entity entity)
+- **Description:** Represents an event that emits **four parameters**.
+- **Type parameters:**
+    - `T1` — The first argument
+    - `T2` — The second argument
+    - `T3` — The third argument
+    - `T4` — The fourth argument
+
+---
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2, T3, T4>)`
+
+```csharp
+public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
+```
+
+- **Description:** Subscribes a handler to the event.
+- **Parameter:** `action` – The delegate to invoke when the event triggers.
+- **Returns:** A [Subscription<T1, T2, T3, T4>](../Signals/Subscription.md#subscriptiont1-t2-t3-t4) representing the
+  active subscription.
+
+#### `Unsubscribe(Action<T1, T2, T3, T4>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3, T4> action)
+```
+
+- **Description:** Removes a previously registered handler from the event.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+#### `Invoke(T1, T2, T3, T4)`
+
+```csharp
+public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+```
+
+- **Description:** Triggers the event with the specified arguments.
+- **Parameters:**
+    - `arg1` — The first argument
+    - `arg2` — The second argument
+    - `arg3` — The third argument
+    - `arg4` — The fourth argument
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()
+```
+
+- **Description:** Clears all subscriptions for this event.
+
+</details>
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of how to use `BaseEvent` for triggering a **sound effect** together with the `Atomic.Entities`
+framework.
+
+#### 1. Create an entity with a `FireEvent` property
+
+```csharp
+var entity = new Entity("Character");
+entity.AddValue("FireEvent", new BaseEvent());
+entity.AddValue("AudioSource", audioSource);
+```
+
+#### 2. Use `FireEvent` through the `ISignal` interface
+
+```csharp
+[Serializable]
+public class FireSFXBehaviour : IEntityInit, IEntityDispose
+{
+    [Serializable]
+    private AudioClip _fireSFX;
+
+    private AudioSource _audioSource;
+    private ISignal _fireSignal; //IEvent
+    
+    public void Init(IEntity entity)
     {
-        _animator = entity.GetValue<Animator>("Animator");
-        _takeDamageEvent = entity.GetValue<IEvent<int>>("TakeDamageEvent");
-        _takeDamageEvent.Subscribe(this.OnTakeDamage);
+        _audioSource = entity.GetValue<AudioSource>("AudioSource");
+        _fireSignal = entity.GetValue<ISignal>("FireEvent");
+        _fireSignal.Subscribe(this.OnFire);
     }
-
-    public void Dispose() =>
-        _takeDamageEvent.Unsubscribe(this.OnTakeDamage);
-
-    private void OnTakeDamage(int damage) =>
-        _animator.SetTrigger("TakeDamage");
+    
+    public void Dispose(IEntity entity)
+    {
+        _fireSignal.Unsubscribe(this.OnFire);
+    }
+    
+    private void OnFire()
+    {
+        _audioSource.PlayOneShot(_fireSFX);
+    }
 }
+```
+
+#### 3. Invoke `FireEvent` through the `IAction` interface
+
+```csharp
+IAction fireEvent = entity.GetValue<IAction>("FireEvent");
+fireEvent.Invoke();
 ```

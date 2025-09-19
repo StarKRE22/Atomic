@@ -24,23 +24,41 @@ namespace Atomic.Elements
         /// <summary>
         /// Occurs when the state of the list changes (e.g., add, remove, clear).
         /// </summary>
-        public event StateChangedHandler OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <summary>
         /// Occurs when an existing item is replaced or modified.
         /// </summary>
-        public event ChangeItemHandler<T> OnItemChanged;
+        public event Action<int, T> OnItemChanged;
 
         /// <summary>
         /// Occurs when a new item is inserted into the list.
         /// </summary>
-        public event InsertItemHandler<T> OnItemInserted;
-
+        public event Action<int, T> OnItemAdded;
+        
         /// <summary>
         /// Occurs when an item is removed from the list.
         /// </summary>
-        public event DeleteItemHandler<T> OnItemDeleted;
+        public event Action<int, T> OnItemRemoved;
+        
+        /// <inheritdoc/>
+        event Action<T> IReadOnlyReactiveCollection<T>.OnItemAdded
+        {
+            add => this.onItemAdded += value;
+            remove => this.onItemRemoved -= value;
+        }
 
+        /// <inheritdoc/>
+        event Action<T> IReadOnlyReactiveCollection<T>.OnItemRemoved
+        {
+            add => this.onItemRemoved += value;
+            remove => this.onItemRemoved -= value;
+        }
+
+        private event Action<T> onItemAdded;
+      
+        private event Action<T> onItemRemoved;
+        
         /// <summary>
         /// Gets the number of elements contained in the list.
         /// </summary>
@@ -84,7 +102,7 @@ namespace Atomic.Elements
         /// <param name="items">The items to add to the list.</param>
         public ReactiveLinkedList(params T[] items) : this(items.Length)
         {
-            foreach (var item in items) Add(item);
+            foreach (T item in items) Add(item);
         }
 
         /// <summary>
@@ -94,7 +112,7 @@ namespace Atomic.Elements
         /// <param name="items">The collection of items to add.</param>
         public ReactiveLinkedList(IEnumerable<T> items) : this(items.Count())
         {
-            foreach (var item in items) Add(item);
+            foreach (T item in items) Add(item);
         }
 
         /// <summary>
@@ -104,9 +122,11 @@ namespace Atomic.Elements
         {
             this.Clear();
 
+            this.onItemAdded = null;
+            this.onItemRemoved = null;
+            this.OnItemAdded = null;
+            this.OnItemRemoved = null;
             this.OnItemChanged = null;
-            this.OnItemInserted = null;
-            this.OnItemDeleted = null;
             this.OnStateChanged = null;
         }
 
@@ -154,7 +174,8 @@ namespace Atomic.Elements
                 _head = nodeIndex;
 
             _count++;
-            OnItemInserted?.Invoke(_count - 1, item);
+            OnItemAdded?.Invoke(_count - 1, item);
+            onItemAdded?.Invoke(item);
             OnStateChanged?.Invoke();
         }
 
@@ -204,7 +225,8 @@ namespace Atomic.Elements
             }
 
             _count++;
-            OnItemInserted?.Invoke(index, item);
+            OnItemAdded?.Invoke(index, item);
+            onItemAdded?.Invoke(item);
             OnStateChanged?.Invoke();
         }
 
@@ -286,15 +308,65 @@ namespace Atomic.Elements
         /// <param name="arrayIndex">The starting index in the destination array.</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (array == null) throw new ArgumentNullException(nameof(array));
-            if (arrayIndex < 0) throw new ArgumentOutOfRangeException(nameof(arrayIndex));
-            if (arrayIndex + _count > array.Length)
+            if (array == null) 
+                throw new ArgumentNullException(nameof(array));
+            if (arrayIndex < 0) 
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
+            if (arrayIndex + _count > array.Length) 
                 throw new ArgumentException("Array too small");
 
             int current = _head;
             while (current != UNDEFINED_INDEX)
             {
                 array[arrayIndex++] = _nodes[current].item;
+                current = _nodes[current].next;
+            }
+        }
+
+        /// <summary>
+        /// Copies a range of elements from the list to a specified array.
+        /// </summary>
+        /// <param name="sourceIndex">The zero-based index in the list at which copying begins.</param>
+        /// <param name="destination">The destination array.</param>
+        /// <param name="destinationIndex">The zero-based index in the destination array at which storing begins.</param>
+        /// <param name="length">The number of elements to copy.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="destination"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// Thrown if <paramref name="sourceIndex"/>, <paramref name="destinationIndex"/>, or <paramref name="length"/> is negative.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// Thrown if <paramref name="sourceIndex"/> + <paramref name="length"/> exceeds the list count,
+        /// or if <paramref name="destinationIndex"/> + <paramref name="length"/> exceeds the destination array length.
+        /// </exception>
+        public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
+        {
+            if (destination == null)
+                throw new ArgumentNullException(nameof(destination));
+            if (sourceIndex < 0 || sourceIndex >= _count)
+                throw new ArgumentOutOfRangeException(nameof(sourceIndex));
+            if (destinationIndex < 0)
+                throw new ArgumentOutOfRangeException(nameof(destinationIndex));
+            if (length < 0)
+                throw new ArgumentOutOfRangeException(nameof(length));
+            if (sourceIndex + length > _count)
+                throw new ArgumentException("Source range exceeds list length");
+            if (destinationIndex + length > destination.Length)
+                throw new ArgumentException("Destination array too small");
+
+            int current = _head;
+            int skipped = 0;
+
+            // Skip nodes until reaching sourceIndex
+            while (skipped < sourceIndex)
+            {
+                current = _nodes[current].next;
+                skipped++;
+            }
+
+            // Copy the requested number of elements
+            for (int i = 0; i < length; i++)
+            {
+                destination[destinationIndex + i] = _nodes[current].item;
                 current = _nodes[current].next;
             }
         }
@@ -307,8 +379,18 @@ namespace Atomic.Elements
             int current = _head;
             while (current != UNDEFINED_INDEX)
             {
-                int next = _nodes[current].next;
-                FreeNode(current);
+                ref Node node = ref _nodes[current];
+                int next = node.next;
+                T removed = node.item;
+                
+                node.item = default;
+                node.next = _freeList;
+                
+                _freeList = current;
+                
+                OnItemRemoved?.Invoke(current, removed);
+                onItemRemoved?.Invoke(removed);
+
                 current = next;
             }
 
@@ -324,6 +406,7 @@ namespace Atomic.Elements
         public Enumerator GetEnumerator() => new(this);
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
+      
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
@@ -388,14 +471,6 @@ namespace Atomic.Elements
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void FreeNode(int index)
-        {
-            _nodes[index].item = default;
-            _nodes[index].next = _freeList;
-            _freeList = index;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int GetNodeIndex(int index)
         {
             if (index < 0 || index >= _count)
@@ -411,19 +486,26 @@ namespace Atomic.Elements
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void RemoveNode(int current, int prev, int index)
         {
+            ref Node node = ref _nodes[current];
+            
             if (prev != UNDEFINED_INDEX)
-                _nodes[prev].next = _nodes[current].next;
+                _nodes[prev].next = node.next;
             else
-                _head = _nodes[current].next;
+                _head = node.next;
 
             if (_tail == current)
                 _tail = prev;
 
-            T removed = _nodes[current].item;
-            FreeNode(current);
-
+            T removed = node.item;
+        
+            node.item = default;
+            node.next = _freeList;
+            
+            _freeList = current;
             _count--;
-            OnItemDeleted?.Invoke(index, removed);
+            
+            OnItemRemoved?.Invoke(index, removed);
+            onItemRemoved?.Invoke(removed);
             OnStateChanged?.Invoke();
         }
     }

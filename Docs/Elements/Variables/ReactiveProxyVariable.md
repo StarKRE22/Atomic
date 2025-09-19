@@ -1,7 +1,8 @@
-# 🧩 ReactiveProxyVariable<T>
+# 🧩 ReactiveProxyVariable&lt;T&gt;
 
 `ReactiveProxyVariable<T>` is a **reactive proxy variable** that delegates reading, writing, and subscription operations to external handlers.  
-This is useful when you need to **wrap an existing data source or event system** and expose it through the unified `IReactiveVariable<T>` interface.
+
+This is useful when you need to **wrap an existing data source or event system** and expose it through the unified [IReactiveVariable&lt;T&gt;](IReactiveVariable.md) interface.
 
 ---
 
@@ -10,54 +11,77 @@ This is useful when you need to **wrap an existing data source or event system**
 
 ---
 
-## Constructors
+## Constructor
 
 ```csharp
-public ReactiveProxyVariable()
+public ReactiveProxyVariable(Func<T> getter, Action<T> setter)
 ```
-- Creates an empty instance. Delegates must be provided later using the builder.
-
-```csharp
-public ReactiveProxyVariable(
-    Func<T> getter,
-    Action<T> setter,
-    Action<Action<T>> subscribe,
-    Action<Action<T>> unsubscribe
-)
-```
-- getter – function to retrieve the current value.
-- setter – action to update the value.
-- subscribe – handler for subscribing to change notifications.
-- unsubscribe – handler for unsubscribing.
-- Throws: ArgumentNullException if any argument is null.
-
+- **Description:** Initializes a new instance of `ProxyVariable<T>` using the provided getter and setter functions.
+- **Parameters:**
+    - `getter` – A function to retrieve the value.
+    - `setter` – An action to update the value.
+    - `subscribe` – An action to handle the subscription.
+    - `unsubscribe` – An action to handle the unsubscription.
+- **Throws:** `ArgumentNullException` if either `getter`, `setter` `subscription` or `unsubscription` is null.
 
 ## Properties
-```csharp
-T Value { get; set; }
-```
-- gets or sets the current value using delegated functions.
 
-## Events
+#### `Value`
 ```csharp
-event Action<T> OnValueChanged;
+new T Value { get; set; }
 ```
-- invoked whenever the value changes.
+- **Description:** Gets or sets the current value.
+- **Access:** Read-write
+- **Notes:**
+    - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
+    - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
+
+---
 
 ## Methods
-```csharp
-//registers a listener and returns a subscription handle.
-Subscription<T> Subscribe(Action<T> action)
 
-//removes a previously registered listener.
-void Unsubscribe(Action<T> action)
+#### `Invoke()`
+```csharp
+T Invoke()
 ```
+- **Description:** Invokes the variable and returns its current value.
+- **Returns:** The current value of type `T`.
+- **Note:** Default implementation comes from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke).
 
-## Fluent Builder
-ReactiveProxyVariable<T> provides a convenient fluent builder
+#### `Invoke(T arg)`
+```csharp
+void Invoke(T arg)
+```
+- **Description:** Sets the value of the variable to the provided argument.
+- **Parameter:** `arg` – The new value to assign to the variable.
+- **Notes:**
+  - Acts as a setter method, complementing the `Value` property.
+  - Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
+
+#### `Subscribe(Action)`
+```csharp
+Subscription<T> Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
+
+#### `Unsubscribe(Action)`
+```csharp
+void Unsubscribe(Action action)  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
+
+---
+
+## Builder
+**`ReactiveProxyVariable<T>` provides a convenient fluent builder**
 
 ```csharp
-var variable = ReactiveProxyVariable<int>
+IReactiveVariable<int> variable = ReactiveProxyVariable<int>
     .StartBuild()
     .WithGetter(() => someInt)
     .WithSetter(v => someInt = v)
@@ -66,52 +90,26 @@ var variable = ReactiveProxyVariable<int>
     .Build();
 ```
 
-## Example Usage
-Wrapping an external field and event
-```csharp
-using System;
-using Atomic.Elements;
 
-public class Player
-{
-    private int _health;
-    public event Action<int> HealthChanged;
+## 🧩 Specialized Proxy Variables
+**For convenience, several specialized proxy variable implementations are provided.**
 
-    public IReactiveVariable<int> Health { get; }
+### Player Prefs
+- `BoolPrefsVariable` – Boolean variable stored in PlayerPrefs
+- `IntPrefsVariable` – Integer variable stored in PlayerPrefs
+- `FloatPrefsVariable` – Float variable stored in PlayerPrefs
+- `StringPrefsVariable` – String variable stored in PlayerPrefs
 
-    public Player()
-    {
-        Health = new ReactiveProxyVariable<int>(
-            getter: () => _health,
-            setter: v => { _health = v; HealthChanged?.Invoke(v); },
-            subscribe: h => HealthChanged += h,
-            unsubscribe: h => HealthChanged -= h
-        );
-    }
-}
-```
+### Transform
+- `TransformParentVariable` – Stores a `Transform` parent reference
+- `TransformPositionVariable` – Stores a `Vector3` position
+- `TransformRotationVariable` – Stores a `Quaternion` rotation
+- `TransformScaleVariable` – Stores a `Vector3` scale
 
-## Testing with the builder
-```csharp
-int score = 0;
-event Action<int> scoreChanged;
+## 📝 Notes
 
-var scoreVar = ReactiveProxyVariable<int>
-    .StartBuild()
-    .WithGetter(() => score)
-    .WithSetter(v => { score = v; scoreChanged?.Invoke(v); })
-    .WithSubscribe(cb => scoreChanged += cb)
-    .WithUnsubscribe(cb => scoreChanged -= cb)
-    .Build();
+Below are some notes on when to use `ReactiveProxyVariable<T>`:
 
-// Subscribe
-scoreVar.Subscribe(v => Console.WriteLine($"Score updated: {v}"));
-
-// Update value
-scoreVar.Value = 100; // Output: "Score updated: 100"
-```
-
-## When to Use
-- To integrate with external APIs or event systems.
-- To adapt existing fields or properties into IReactiveVariable<T>.
-- Testing: easily substitute mocks or test delegates.
+- Integrating external or third-party APIs (e.g., Unity’s `Transform`, networking states).
+- Adapting existing properties / fields to `IReactiveVariable<T>` without refactoring.
+- Testing: Makes it easy to substitute mock getters / setters in unit tests.

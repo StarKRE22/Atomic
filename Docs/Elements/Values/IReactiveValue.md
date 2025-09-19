@@ -1,9 +1,9 @@
-# 🧩 IReactiveValue<T>
+# 🧩 IReactiveValue&lt;T&gt;
 
 `IReactiveValue<T>` represents a **reactive value** that combines:
 
-- **Read-only access** through `IValue<T>`
-- **Reactive observation** through `ISignal<T>`
+- **Read-only access** through [IValue&lt;T&gt;](IValue.md)
+- **Reactive observation** through [ISignal&lt;T&gt;](../Signals/ISignal.md#-isignalt)
 
 It allows you to both **read the current value** and **subscribe to changes**.
 
@@ -15,26 +15,54 @@ It allows you to both **read the current value** and **subscribe to changes**.
 
 ---
 
-## Inheritance
+## Properties
+#### `Value`
 
-- `IValue<T>` – Provides read-only access via `Value` and `Invoke()`.
-- `ISignal<T>` – Provides reactive subscriptions for when the value changes.
-
----
-
-## Description
-
-- `IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
-- It merges the benefits of a **value provider** and a **signal emitter** in a single interface.
+```csharp
+T Value { get; }
+```
+- **Description:** Gets the current value.
+- **Access:** Read-only
 
 ---
 
-## Example of Usage
+## Methods
+
+#### `Invoke()`
+```csharp
+T Invoke()
+```
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+
+#### `Subscribe(Action)`
+```csharp
+Subscription<T> Subscribe(Action action)  
+```
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active subscription.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
+
+#### `Unsubscribe(Action)`
+```csharp
+void Unsubscribe(Action action)  
+```
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Notes**: This is the default implementation from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
+
+---
+
+## 🗂 Example of Usage
+`IReactiveValue<T>` is useful in **reactive programming** or **UI binding scenarios**, where you want to **observe changes** to a value while keeping it **read-only**.
+
 For example, rendering score text on a UI in Unity:
-
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text
+
 using Atomic.Elements;
 using System;
 
@@ -69,10 +97,12 @@ public sealed class ScorePresenter : IDisposable
 }
 ```
 
-You can use extension Observe and cache subscription handle
+## 📌 Best Practice
+It is recommended to use the [`Observe`](Extensions.md/#observe) extension method and store (cache) the returned subscription handle for proper disposal or reuse.
 ```csharp
 using UnityEngine;
 using UnityEngine.UI; // Required for Text
+
 using Atomic.Elements;
 using System;
 

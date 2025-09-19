@@ -10,7 +10,7 @@ namespace Atomic.Elements
     {
         private readonly Action<Action> subscribe;
         private readonly Action<Action> unsubscribe;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineSignal"/> class with subscription delegates.
         /// </summary>
@@ -18,8 +18,8 @@ namespace Atomic.Elements
         /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
         public InlineSignal(Action<Action> subscribe, Action<Action> unsubscribe)
         {
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
 
         /// <summary>
@@ -57,10 +57,10 @@ namespace Atomic.Elements
         /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
         public InlineSignal(Action<Action<T>> subscribe, Action<Action<T>> unsubscribe)
         {
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-        
+
         /// <summary>
         /// Subscribes to the reactive source.
         /// </summary>
@@ -100,8 +100,8 @@ namespace Atomic.Elements
         /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
         public InlineSignal(Action<Action<T1, T2>> subscribe, Action<Action<T1, T2>> unsubscribe)
         {
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Atomic.Elements
     {
         private readonly Action<Action<T1, T2, T3>> subscribe;
         private readonly Action<Action<T1, T2, T3>> unsubscribe;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineSignal{T1,T2,T3}"/> class with subscription delegates.
         /// </summary>
@@ -141,8 +141,8 @@ namespace Atomic.Elements
         /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
         public InlineSignal(Action<Action<T1, T2, T3>> subscribe, Action<Action<T1, T2, T3>> unsubscribe)
         {
-            this.subscribe = subscribe;
-            this.unsubscribe = unsubscribe;
+            this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
+            this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Atomic.Elements
         /// <param name="action">The action to remove.</param>
         public void Unsubscribe(Action<T1, T2, T3> action) => this.unsubscribe.Invoke(action);
     }
-    
+
     /// <summary>
     /// A base implementation of a reactive source with four parameters.
     /// </summary>
@@ -181,9 +181,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="subscribe">The action to handle subscription logic.</param>
         /// <param name="unsubscribe">The action to handle unsubscription logic.</param>
-        public InlineSignal(
-            Action<Action<T1, T2, T3, T4>> subscribe,
-            Action<Action<T1, T2, T3, T4>> unsubscribe)
+        public InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)
         {
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));

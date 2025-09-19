@@ -1,96 +1,203 @@
-# 🧩️️ Stopwatch
+# 🧩 Stopwatch
 
-`Stopwatch` represents a stopwatch timer that can start, pause, resume, stop,  
-and track elapsed time. It is useful for measuring intervals, performance, or gameplay events.
+`Stopwatch` is a **stateful stopwatch timer** that tracks elapsed time and supports **start, pause, resume, stop**, time updates, and state notifications.  
 
----
+It implements the [IStopwatch](IStopwatch.md) interface and provides a simple way to track elapsed time in gameplay, animations, or any time-dependent system.
 
-## IStopwatch
-
-Defines the **contract** for a stopwatch timer.
-
-> The interface combines multiple sources (`IStartSource`, `IPauseSource`, `ITimeSource`, `IStateSource<StopwatchState>`, `ITickSource`)  
-to provide full control over elapsed time and state notifications.
-
-### Events
-
-- `event Action OnStarted` – invoked when the stopwatch starts.
-- `event Action OnStopped` – invoked when the stopwatch is stopped.
-- `event Action OnPaused` – invoked when the stopwatch is paused.
-- `event Action OnResumed` – invoked when the stopwatch resumes.
-- `event Action<float> OnTimeChanged` – invoked when the elapsed time changes.
-- `event Action<StopwatchState> OnStateChanged` – invoked when the stopwatch state changes.
-
-### Methods
-
-- `StopwatchState GetState()` – returns the current state (`IDLE`, `PLAYING`, `PAUSED`).
-- `bool IsIdle()` – returns `true` if the stopwatch hasn’t started yet.
-- `bool IsStarted()` – returns `true` if the stopwatch is running.
-- `bool IsPaused()` – returns `true` if the stopwatch is paused.
-
-- `float GetTime()` – returns the current elapsed time.
-- `void SetTime(float time)` – sets the elapsed time (must be ≥ 0).
-- `void ResetTime()` – resets the elapsed time to zero.
-
-- `void Start()` – starts the stopwatch from zero.
-- `void Start(float time)` – starts the stopwatch from a specific elapsed time.
-- `void Pause()` – pauses the stopwatch if running.
-- `void Resume()` – resumes the stopwatch if paused.
-- `void Stop()` – stops the stopwatch and resets elapsed time to zero.
-- `void Tick(float deltaTime)` – advances the stopwatch by `deltaTime` (only if running).
+> [!IMPORTANT]  
+> Use `IStopwatch` when you need to **measure elapsed time** (e.g., performance tracking, gameplay session time, speedrun timers). Unlike [ITimer](ITimer.md), a stopwatch does not count down toward a duration — it only measures how long something has been running.
 
 ---
 
-## Stopwatch
+## Events
 
-The `Stopwatch` class implements `IStopwatch`.  
-It tracks elapsed time, supports start, pause, resume, stop, reset, and notifies listeners on state and time changes.
-
-### Constructors
-
-- `Stopwatch()` – creates a stopwatch (time starts at zero).
-
-### Example of Usage
-
+#### `event Action OnStarted`
 ```csharp
-var stopwatch = new Stopwatch();
+public event Action OnStarted;  
+```
+- **Description:** Invoked when the stopwatch starts.
+- **Remarks:** Triggered whenever `Start()` is called.
 
+#### `event Action OnStopped`
+```csharp
+public event Action OnStopped;  
+```
+- **Description:** Invoked when the stopwatch stops.
+- **Remarks:** Triggered whenever `Stop()` is called.
+
+#### `event Action OnPaused`
+```csharp
+public event Action OnPaused;  
+```
+- **Description:** Invoked when the stopwatch is paused.
+- **Remarks:** Triggered whenever `Pause()` is called.
+
+#### `event Action OnResumed`
+```csharp
+public event Action OnResumed;  
+```
+- **Description:** Invoked when the stopwatch resumes from paused state.
+- **Remarks:** Triggered whenever `Resume()` is called.
+
+#### `event Action<float> OnTimeChanged`
+```csharp  
+public event Action<float> OnTimeChanged;  
+```
+- **Description:** Raised when the current elapsed time changes.
+- **Parameter:** `float` — elapsed time in seconds.
+
+#### `event Action<StopwatchState> OnStateChanged`
+```csharp  
+public event Action<StopwatchState> OnStateChanged;  
+```
+- **Description:** Raised whenever the stopwatch state changes.
+- **Parameters:** [StopwatchState](StopwatchState.md) — current state (`IDLE`, `PLAYING`, `PAUSED`).
+
+---
+
+## Properties
+
+#### `State`
+```csharp  
+public StopwatchState State { get; }  
+```
+- **Description:** Gets the current state of the stopwatch (`IDLE`, `PLAYING`, `PAUSED`).
+- **Remarks:** Read-only; use `GetState()` to query state programmatically.
+
+#### `Time`
+```csharp 
+public float Time { get; set; }  
+```
+- **Description:** Gets or sets the current elapsed time.
+- **Remarks:** Setting triggers `OnTimeChanged`.
+
+---
+
+## Methods
+
+#### `void Start()`
+```csharp  
+public void Start();  
+```
+- **Description:** Starts the stopwatch from `0` seconds.
+- **Remarks:** Triggers `OnStarted` and sets state to `PLAYING`.
+
+#### `void Start(float time)`
+```csharp  
+public void Start(float time);  
+```
+- **Description:** Starts the stopwatch from a specified elapsed time.
+- **Parameter:** `time` — starting elapsed time in seconds.
+- **Remarks:** Triggers `OnStarted` and sets state to `PLAYING`.
+
+#### `void Pause()`
+```csharp  
+public void Pause();  
+```
+- **Description:** Pauses the stopwatch.
+- **Remarks:** Triggers `OnPaused` and sets state to `PAUSED`.
+
+#### `void Resume()`
+```csharp  
+public void Resume();  
+```
+- **Description:** Resumes the stopwatch from paused state.
+- **Remarks:** Triggers `OnResumed` and sets state to `PLAYING`.
+
+#### `void Stop()`
+```csharp  
+public void Stop();  
+```
+- **Description:** Stops the stopwatch and resets elapsed time to `0`.
+- **Remarks:** Triggers `OnStopped` and sets state to `IDLE`.
+
+#### `bool IsStarted()`
+```csharp  
+public bool IsStarted();  
+```
+- **Description:** Returns whether the stopwatch is currently running.
+- **Returns:** `true` if `PLAYING`; otherwise `false`.
+
+#### `bool IsPaused()`
+```csharp  
+public bool IsPaused();  
+```
+- **Description:** Returns whether the stopwatch is currently paused.
+- **Returns:** `true` if `PAUSED`; otherwise `false`.
+
+#### `bool IsIdle()`
+```csharp  
+public bool IsIdle();  
+```
+- **Description:** Returns whether the stopwatch is idle.
+- **Returns:** `true` if `IDLE`; otherwise `false`.
+
+#### `float GetTime()`
+```csharp  
+public float GetTime();  
+```
+- **Description:** Returns the current elapsed time.
+- **Returns:** Time in seconds.
+
+#### `void SetTime(float time)`
+```csharp  
+public void SetTime(float time);  
+```
+- **Description:** Sets the current elapsed time.
+- **Parameter:** `time` — new elapsed time in seconds (>=0).
+- **Remarks:** Triggers `OnTimeChanged` if value changes.
+
+#### `StopwatchState GetState()`
+```csharp  
+public StopwatchState GetState();  
+```
+- **Description:** Returns the current state of the stopwatch.
+
+#### `void Tick(float deltaTime)`
+```csharp  
+public void Tick(float deltaTime);  
+```
+- **Description:** Advances the stopwatch by a time increment.
+- **Parameter:** `deltaTime` — seconds to add to elapsed time.
+- **Remarks:** Only works in `PLAYING` state; triggers `OnTimeChanged`.
+
+#### `void ResetTime()`
+```csharp  
+public void ResetTime();  
+```
+- **Description:** Resets the elapsed time to `0`.
+- **Remarks:** Equivalent to `SetTime(0)`.
+
+---
+
+## 🗂 Example of Usage
+```csharp  
+// Create a stopwatch
+IStopwatch stopwatch = new Stopwatch();
+
+// Subscribe to events
 stopwatch.OnStarted += () => Console.WriteLine("Stopwatch started!");
-stopwatch.OnTimeChanged += t => Console.WriteLine($"Elapsed: {t}s");
-stopwatch.OnStopped += () => Console.WriteLine("Stopwatch stopped!");
+stopwatch.OnTimeChanged += t => Console.WriteLine($"Elapsed: {t:F1}s");
+stopwatch.OnPaused += () => Console.WriteLine("Stopwatch paused.");
+stopwatch.OnResumed += () => Console.WriteLine("Stopwatch resumed.");
+stopwatch.OnStopped += () => Console.WriteLine("Stopwatch stopped.");
 
-// start the stopwatch
+// Start the stopwatch
 stopwatch.Start();
 
-// simulate ticking
+// Simulate ticking
+float deltaTime = 1f;
 for (int i = 0; i < 5; i++)
 {
-    stopwatch.Tick(1f);
+    stopwatch.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
 }
 
-// pause and resume
+// Pause and resume
 stopwatch.Pause();
 stopwatch.Resume();
 
-// stop
+// Stop and reset
 stopwatch.Stop();
+stopwatch.ResetTime();
 ```
-
-### Behavior
-
-- Supports all methods and events defined by `IStopwatch`.
-- Tracks state changes (`IDLE`, `PLAYING`, `PAUSED`).
-- `Tick()` increases elapsed time only when running.
-- `ResetTime()` restores elapsed time to zero.
-
----
-
-### StopwatchState
-
-Represents the current state of a `Stopwatch`.
-
-| State     | Description                            |
-|-----------|----------------------------------------|
-| `IDLE`    | The stopwatch is idle and not running. |
-| `PLAYING` | The stopwatch is currently running.    |
-| `PAUSED`  | The stopwatch is paused.               |

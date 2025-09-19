@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Atomic.Entities;
 
-namespace Atomic.Extensions
+namespace Atomic.Elements
 {
     public static class Extensions
     {

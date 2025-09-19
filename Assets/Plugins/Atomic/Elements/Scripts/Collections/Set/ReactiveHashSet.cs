@@ -28,13 +28,13 @@ namespace Atomic.Elements
     public partial class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable
     {
         /// <inheritdoc/>
-        public event StateChangedHandler OnStateChanged;
+        public event Action OnStateChanged;
 
         /// <inheritdoc/>
-        public event AddItemHandler<T> OnItemAdded;
+        public event Action<T> OnItemAdded;
 
         /// <inheritdoc/>
-        public event RemoveItemHandler<T> OnItemRemoved;
+        public event Action<T> OnItemRemoved;
 
         /// <inheritdoc cref="ICollection{T}.Count" />
         public int Count => _count;
@@ -86,8 +86,16 @@ namespace Atomic.Elements
         /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(params T[] elements) : this(elements.Length) => this.UnionWith(elements);
 
+        /// <summary>
+        /// Initializes the set with a collection of elements.
+        /// </summary>
+        /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(IReadOnlyCollection<T> elements) : this(elements.Count) => this.UnionWith(elements);
 
+        /// <summary>
+        /// Initializes the set with a collection of elements.
+        /// </summary>
+        /// <param name="elements">The initial elements to add.</param>
         public ReactiveHashSet(IEnumerable<T> elements) : this(elements.Count()) => this.UnionWith(elements);
 
         /// <summary>
@@ -826,7 +834,7 @@ namespace Atomic.Elements
             public T Current => _current;
             object IEnumerator.Current => _current;
 
-            public Enumerator(ReactiveHashSet<T> set)
+            internal Enumerator(ReactiveHashSet<T> set)
             {
                 _set = set;
                 _index = 0;

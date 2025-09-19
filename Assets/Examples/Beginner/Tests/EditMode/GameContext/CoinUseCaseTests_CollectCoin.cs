@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace BeginnerGame
 {
     [TestFixture]
-    public partial class CoinUseCaseTests
+    public partial class CoinsUseCaseTests
     {
         [Test]
         public void CollectCoin_Successful()
@@ -36,7 +36,7 @@ namespace BeginnerGame
             });
             
             //Act:
-            bool success = CoinUseCase.Collect(gameContext, character, coin);
+            bool success = CoinsUseCase.Collect(gameContext, character, coin);
             
             //Assert:
             Assert.IsTrue(success);
@@ -71,7 +71,7 @@ namespace BeginnerGame
             });
             
             //Act:
-            bool success = CoinUseCase.Collect(gameContext, character, coin);
+            bool success = CoinsUseCase.Collect(gameContext, character, coin);
             
             //Assert:
             Assert.IsFalse(success);

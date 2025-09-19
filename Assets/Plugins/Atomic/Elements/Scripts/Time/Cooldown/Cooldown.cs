@@ -62,9 +62,31 @@ namespace Atomic.Elements
             _duration = Math.Max(0, duration);
             _time = Math.Min(current, _duration);
         }
-
+        
+        /// <summary>
+        /// Implicitly converts a <see cref="float"/> value to a <see cref="Cooldown"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Cooldown"/>.</param>
+        /// <returns>A new <see cref="Cooldown"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Cooldown cooldown = 5f; // creates a Cooldown with duration = 5 seconds
+        /// </code>
+        /// </example>
         public static implicit operator Cooldown(float duration) => new(duration);
 
+        /// <summary>
+        /// Implicitly converts an <see cref="int"/> value to a <see cref="Cooldown"/> instance.
+        /// </summary>
+        /// <param name="duration">The duration in seconds for the new <see cref="Cooldown"/>.</param>
+        /// <returns>A new <see cref="Cooldown"/> initialized with the specified duration.</returns>
+        /// <example>
+        /// <code>
+        /// Cooldown cooldown = 3; // creates a Cooldown with duration = 3 seconds
+        /// </code>
+        /// </example>
+        public static implicit operator Cooldown(int duration) => new(duration);
+        
         /// <summary>
         /// Returns whether the cooldown has expired (i.e., current time is zero or less).
         /// </summary>
@@ -112,12 +134,7 @@ namespace Atomic.Elements
             if (_time <= 0)
                 this.OnCompleted?.Invoke();
         }
-
-        /// <summary>
-        /// Returns a string representation of the cooldown's duration and current time.
-        /// </summary>
-        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_time)}: {_time}";
-
+        
         /// <summary>
         /// Gets the total duration of the cooldown.
         /// </summary>
@@ -162,5 +179,10 @@ namespace Atomic.Elements
             this.OnTimeChanged?.Invoke(newTime);
             this.OnProgressChanged?.Invoke(this.GetProgress());
         }
+        
+        /// <summary>
+        /// Returns a string representation of the cooldown's duration and current time.
+        /// </summary>
+        public override string ToString() => $"{nameof(_duration)}: {_duration}, {nameof(_time)}: {_time}";
     }
 }

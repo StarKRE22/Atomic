@@ -17,8 +17,8 @@ tags:
 values:
   
 #Transform
-- Position: IReactiveVariable<Vector3>
-- Rotation: IReactiveVariable<Quaternion>
+- Position: IVariable<Vector3>
+- Rotation: IVariable<Quaternion>
 - Parent: IVariable<Transform>
 
 #Movement  

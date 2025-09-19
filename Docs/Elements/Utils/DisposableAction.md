@@ -1,68 +1,43 @@
 # 🧩 DisposableAction
 
-A simple **`IDisposable`** implementation that invokes a specified action when disposed.  
-Useful for inline or ad-hoc cleanup logic, such as unsubscribing from events or releasing temporary resources.
-
----
-
-## Overview
-
-`DisposableAction` allows you to define a **disposable object** whose disposal logic is defined by a single `Action`.  
-When `Dispose()` is called, the action provided at construction is executed.
-
----
-
-## Struct Definition
-
-```csharp
-public readonly struct DisposableAction : IDisposable
-```
+Represents a lightweight `IDisposable` implementation that invokes a specified action when disposed. Ideal for inline or ad-hoc cleanup logic.
 
 ---
 
 ## Constructor
 
+#### `DisposableAction(Action)`
 ```csharp
-public DisposableAction(Action action)
+public DisposableAction(Action action);
 ```
-- **Parameters:**
-    - `action` — The action to invoke when `Dispose()` is called.
-- **Exceptions:**
-    - `ArgumentNullException` — Thrown if `action` is `null`.
+- **Description:** Initializes a new instance of `DisposableAction` with the specified action.
+- **Parameter:** `action` — The action to invoke when `Dispose` is called.
+- **Exceptions:** Throws `ArgumentNullException` if `action` is `null`.
+- **Remarks:** Use this to create disposable behavior without defining a separate class.
 
 ---
 
-## Methods
+## Method
 
-### Dispose
+#### `Dispose()`
 ```csharp
-public void Dispose()
+public void Dispose();
 ```
-- Invokes the action specified at construction time.
-- Can be used in `using` statements or manually to ensure cleanup.
+- **Description:** Invokes the action provided at construction.
+- **Remarks:** Once called, the action executes. Useful for automatic cleanup in `using` blocks or when chaining disposables.
 
 ---
 
-## Usage Examples
+## 🗂 Example of Usage
 
-### Inline Cleanup
+### 🔹 Inline Cleanup
 
 ```csharp
 var disposable = new DisposableAction(() => Console.WriteLine("Cleanup executed."));
 disposable.Dispose(); // Prints: "Cleanup executed."
 ```
 
-### Using `using` Statement
-
-```csharp
-using (var disposable = new DisposableAction(() => Console.WriteLine("Resource released.")))
-{
-    // Do something while resource is active
-}   // Automatically calls Dispose() at the end of the block, prints: "Resource released."
-
-```
-
-### Event Unsubscription Example
+### 🔹 Event Unsubscription
 
 ```csharp
 EventHandler handler = (s, e) => Console.WriteLine("Event fired.");
@@ -70,5 +45,4 @@ someEvent += handler;
 
 using var unsub = new DisposableAction(() => someEvent -= handler);
 // Event will be unsubscribed automatically when `unsub.Dispose()` is called
-
 ```

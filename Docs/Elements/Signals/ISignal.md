@@ -1,81 +1,257 @@
-# 🧩 ISignal Interfaces
+# 🧩 ISignal
 
-The **ISignal** interfaces define a family of contracts for **reactive sources** that notify subscribers of events or data changes.  
+Defines a family of contracts for **reactive event sources**. It provides a lightweight abstraction for subscribing to
+notifications and reacting to events, optionally with arguments. When subscribing to a signal, the method returns
+a [subscription](../Signals/Subscription.md) struct.
 
-### Notes
-- **Subscription Management** – Each `Subscribe` method returns a `Subscription ` struct for later unsubscription.
-- **Reactive Design** – Supports 0–4 parameters for maximum flexibility in reactive systems.
 ---
 
-## ISignal
+<details>
+  <summary>
+    <h2>🧩 ISignal</h2>
+    <br> Represents a signal that can notify subscribers of events <b>without passing any data</b>.
+  </summary>
 
-Represents a **signal without data**.
+<br>
 
 ```csharp
 public interface ISignal
-{
-    Subscription Subscribe(Action action);
-    void Unsubscribe(Action action);
-}
 ```
-### Members
-- **Subscribe(Action action)** – Subscribes an action to be invoked when the signal is triggered.
-- **Unsubscribe(Action action)** – Removes a previously registered action.
+
 ---
-## ISignal&lt;T&gt;
-Represents a **reactive source with one value**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action)`
+
+```csharp
+public Subscription Subscribe(Action action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** The active [subscription](../Signals/Subscription.md#subscription) that can be used to dispose of it.
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 ISignal&lt;T&gt;</h2>
+    <br> Represents a signal that notifies subscribers with a <b>single value</b>.
+  </summary>
+
 ```csharp
 public interface ISignal<T>
-{
-    Subscription<T> Subscribe(Action<T> action);
-    void Unsubscribe(Action<T> action);
-}
 ```
-### Type Parameters
-- **T** – The type of the value emitted to subscribers.
-### Members
-- **Subscribe(Action<T> action)** – Subscribes an action to be invoked with the emitted value.
-- **Unsubscribe(Action<T> action)** – Unsubscribes a previously registered action.
+
+- **Type parameter:** `T` — the emitted value type.
+
 ---
-## ISignal<T1, T2>
-Represents a **reactive source with two values**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T>)`
+
+```csharp
+public Subscription<T> Subscribe(Action<T> action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** The active [subscription](../Signals/Subscription.md#subscriptiont) that can be used to dispose of it.
+
+#### `Unsubscribe(Action<T>)`
+
+```csharp
+public void Unsubscribe(Action<T> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 ISignal&lt;T1, T2&gt;</h2>
+    <br> Represents a signal that notifies subscribers with <b>two values</b>.
+  </summary>
+
 ```csharp
 public interface ISignal<T1, T2>
-{
-    Subscription<T1, T2> Subscribe(Action<T1, T2> action);
-    void Unsubscribe(Action<T1, T2> action);
-}
 ```
-### Type Parameters
-- **T1** – Type of the first emitted value.
-- **T2** – Type of the second emitted value.
+
+- **Type parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+
 ---
-## ISignal<T1, T2, T3>
-Represents a **reactive source with three values**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2>)`
+
+```csharp
+public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:**  The active [subscription](../Signals/Subscription.md#subscriptiont1-t2) that can be used to dispose of
+  it.
+
+#### `Unsubscribe(Action<T1, T2>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 ISignal&lt;T1, T2, T3&gt;</h2>
+    <br> Represents a signal that notifies subscribers with <b>three values</b>.
+  </summary>
+
 ```csharp
 public interface ISignal<T1, T2, T3>
-{
-    Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action);
-    void Unsubscribe(Action<T1, T2, T3> action);
-}
 ```
-### Type Parameters
-- **T1** – Type of the first emitted value.
-- **T2** – Type of the second emitted value.
-- **T3** – Type of the third emitted value.
+
+- **Type parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+
 ---
-## ISignal<T1, T2, T3, T4>
-Represents a **reactive source with four values**.
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2, T3>)`
+
+```csharp
+public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** The active [subscription](../Signals/Subscription.md#subscriptiont1-t2-t3) that can be used to dispose of
+  it.
+
+#### `Unsubscribe(Action<T1, T2, T3>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2>🧩 ISignal&lt;T1, T2, T3, T4&gt;</h2>
+    <br> Represents a signal that notifies subscribers with <b>four values</b>.
+  </summary>
+
 ```csharp
 public interface ISignal<T1, T2, T3, T4>
+```
+
+- **Description:** Represents a signal that notifies subscribers with **four values**.
+- **Type parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+    - `T4` — the fourth emitted value
+
+---
+
+### 🏹 Methods
+
+#### `Subscribe(Action<T1, T2, T3, T4>)`
+
+```csharp
+public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** The active [subscription](../Signals/Subscription.md#subscriptiont1-t2-t3-t4) that can be used to dispose
+  of it.
+
+#### `Unsubscribe(Action<T1, T2, T3, T4>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3, T4> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+</details>
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of how to use `ISignal` for triggering a **sound effect** together with the `Atomic.Entities`
+framework.
+
+```csharp
+// Create an entity with a "FireEvent" signal property
+var entity = new Entity("Character");
+entity.AddValue("FireEvent", new BaseEvent()); //ISignal
+entity.AddValue("AudioSource", audioSource);
+```
+
+```csharp
+// Use "FireEvent" through the ISignal interface
+[Serializable]
+public class FireSFXBehaviour : IEntityInit, IEntityDispose
 {
-    Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action);
-    void Unsubscribe(Action<T1, T2, T3, T4> action);
+    [Serializable]
+    private AudioClip _fireSFX;
+
+    private AudioSource _audioSource;
+    private ISignal _fireSignal;
+    
+    public void Init(IEntity entity)
+    {
+        _audioSource = entity.GetValue<AudioSource>("AudioSource");
+        _fireSignal = entity.GetValue<ISignal>("FireEvent");
+        _fireSignal.Subscribe(this.OnFire);
+    }
+    
+    public void Dispose(IEntity entity)
+    {
+        _fireSignal.Unsubscribe(this.OnFire);
+    }
+    
+    private void OnFire()
+    {
+        _audioSource.PlayOneShot(_fireSFX);
+    }
 }
 ```
-### Type Parameters
-- **T1** – Type of the first emitted value.
-- **T2** – Type of the second emitted value.
-- **T3** – Type of the third emitted value.
-- **T4** – Type of the fourth emitted value.
----

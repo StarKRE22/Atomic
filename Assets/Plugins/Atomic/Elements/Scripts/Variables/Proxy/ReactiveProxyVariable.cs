@@ -41,13 +41,6 @@ namespace Atomic.Elements
         private readonly Action<Action<T>> unsubscribe;
 
         /// <summary>
-        /// Initializes an empty instance of <see cref="ReactiveProxyVariable{T}"/>.
-        /// </summary>
-        public ReactiveProxyVariable()
-        {
-        }
-
-        /// <summary>
         /// Initializes a new instance of <see cref="ReactiveProxyVariable{T}"/> with delegates.
         /// </summary>
         /// <param name="getter">Function to retrieve the current value.</param>

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 
 namespace ShooterGame.App
 {
-    public interface ILoadingTask : IFunction<IAppContext, LoadingBundle, UniTask>
+    public interface ILoadingTask : IFunction<IAppContext, LoadGameBundle, UniTask>
     {
     }
 }

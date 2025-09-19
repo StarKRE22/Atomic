@@ -279,8 +279,8 @@ namespace Atomic.Elements
             ((ISerializationCallbackReceiver) dictionary).OnBeforeSerialize();
 
             //Assert:
-            SerializedKeyValuePair[] items = dictionary.serializedItems;
-            Assert.AreEqual(new SerializedKeyValuePair[]
+            Pair[] items = dictionary.serializedItems;
+            Assert.AreEqual(new Pair[]
             {
                 new() {key = "Milk", value = 5},
                 new() {key = "Bread", value = 3},
@@ -297,7 +297,7 @@ namespace Atomic.Elements
             var dictionary = new ReactiveDictionary<string, int>();
             dictionary.OnStateChanged += () => stateChanged = true;
 
-            dictionary.serializedItems = new SerializedKeyValuePair[]
+            dictionary.serializedItems = new Pair[]
             {
                 new() {key = "Milk", value = 5},
                 new() {key = "Bread", value = 3},

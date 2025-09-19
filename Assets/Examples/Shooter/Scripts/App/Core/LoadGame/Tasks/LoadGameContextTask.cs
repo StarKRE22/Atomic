@@ -14,7 +14,7 @@ namespace ShooterGame.App
             _prefab = prefab;
         }
 
-        public UniTask Invoke(IAppContext context, LoadingBundle bundle)
+        public UniTask Invoke(IAppContext context, LoadGameBundle bundle)
         {
             GameContext gameContext = GameObject.Instantiate(_prefab);
             gameContext.AddBehaviour<GameOverObserver>();

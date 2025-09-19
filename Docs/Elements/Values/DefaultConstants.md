@@ -1,4 +1,15 @@
 # 🧩 Default Constants
+The **Default Constants** collection provides a centralized set of commonly used values across multiple domains, including Boolean logic, mathematics, time, physics, and Unity-specific utilities.  
+
+These constants are designed to improve **code readability**, **reduce magic numbers**, and ensure **consistency** throughout your projects.
+
+- **Boolean Constants:** Standard `true` and `false` values.
+- **Mathematical Constants:** Common mathematical numbers such as π (`PI`), Euler's number (`E`), and conversion factors like `Deg2Rad`.
+- **Time Constants:** Convenient values for seconds, minutes, hours, and frame durations at 60 FPS.
+- **Common Values:** Frequently used numeric constants (`Zero`, `One`, `Half`, `NegativeOne`) for integers and floats.
+- **Physics Constants:** Default physics values, including Earth's gravity and standard mass.
+- **Unity-Specific Vectors:** Standard unit vectors and directional helpers for 3D space (`Up`, `Forward`, `ZeroVector`, etc.).
+- **Unity-Specific Colors:** Predefined colors and transparency for quick usage in Unity (`White`, `Red`, `Transparent`, etc.).
 
 ## Boolean Constants
 | Name    | Value   | Description        |

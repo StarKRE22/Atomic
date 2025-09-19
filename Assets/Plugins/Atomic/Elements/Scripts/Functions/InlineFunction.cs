@@ -7,33 +7,33 @@ using Sirenix.OdinInspector;
 namespace Atomic.Elements
 {
     /// <summary>
-    /// Represents a parameterless function returning a value of type <typeparamref name="T"/>.
+    /// Represents a parameterless function returning a value of type <typeparamref name="R"/>.
     /// </summary>
-    /// <typeparam name="T">The return type of the function.</typeparam>
+    /// <typeparam name="R">The return type of the function.</typeparam>
 #if ODIN_INSPECTOR
     [InlineProperty]
 #endif
     [Serializable]
-    public class InlineFunction<T> : IValue<T>
+    public class InlineFunction<R> : IValue<R>
     {
-        private readonly Func<T> func;
+        private readonly Func<R> func;
 
         /// <summary>
         /// Initializes the function with the provided delegate.
         /// </summary>
         /// <param name="func">The function delegate.</param>
-        public InlineFunction(Func<T> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
+        public InlineFunction(Func<R> func) => this.func = func ?? throw new ArgumentNullException(nameof(func));
 
         /// <summary>
         /// Implicit conversion from a <see cref="Func{T}"/> to <see cref="InlineFunction{T}"/>.
         /// </summary>
         /// <param name="value">The function delegate.</param>
-        public static implicit operator InlineFunction<T>(Func<T> value) => new(value);
+        public static implicit operator InlineFunction<R>(Func<R> value) => new(value);
 
 #if ODIN_INSPECTOR
         [ShowInInspector]
 #endif
-        public T Value => this.func.Invoke();
+        public R Value => this.func.Invoke();
         
 #if ODIN_INSPECTOR
         [Button]
@@ -42,7 +42,9 @@ namespace Atomic.Elements
         /// <summary>
         /// Invokes the function and returns its result.
         /// </summary>
-        public T Invoke() => this.func.Invoke();
+        public R Invoke() => this.func.Invoke();
+        
+        public override string ToString() => this.func.Method.Name;
     }
 
     /// <summary>
@@ -79,6 +81,8 @@ namespace Atomic.Elements
         /// <param name="args">The argument passed to the function.</param>
         /// <returns>The result of the function call.</returns>
         public R Invoke(T args) => this.func.Invoke(args);
+        
+        public override string ToString() => this.func.Method.Name;
     }
 
     /// <summary>
@@ -117,5 +121,7 @@ namespace Atomic.Elements
         /// <param name="arg2">The second input parameter.</param>
         /// <returns>The result of the function call.</returns>
         public R Invoke(T1 arg1, T2 arg2) => this.func.Invoke(arg1, arg2);
+        
+        public override string ToString() => this.func.Method.Name;
     }
 }

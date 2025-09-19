@@ -12,7 +12,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression"/> class.
         /// </summary>
-        public FloatSumExpression()
+        public FloatSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 
@@ -52,7 +52,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression{T}"/> class.
         /// </summary>
-        public FloatSumExpression()
+        public FloatSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 
@@ -93,7 +93,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new empty instance of the <see cref="FloatSumExpression{T1, T2}"/> class.
         /// </summary>
-        public FloatSumExpression()
+        public FloatSumExpression(int capacity = INITIAL_CAPACITY) : base(capacity)
         {
         }
 

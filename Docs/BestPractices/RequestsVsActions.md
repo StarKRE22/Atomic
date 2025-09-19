@@ -31,6 +31,7 @@ interactAction.Invoke(character); // Executes immediately!
 A **Request** has a slightly different nature: it represents a deferred action that can be executed later. This is particularly useful when **player input occurs in `Update`**, but the request is processed in `FixedUpdate`. Requests also prevent **duplicate commands** if the same request is already active.
 
 ### 1. Move Input Using Requests
+This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume it later in fixed update**:
 
 ```csharp
 // MoveController produces the request
@@ -66,20 +67,20 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
         _moveRequest = entity.GetMoveRequest();
     }
 
-    public void FixedUpdate()
+    public void FixedTick(IEntity entity, float deltaTime)
     {
         if (_moveRequest.Consume(out Vector3 moveDirection))
-        {
             _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
-        }
     }
 }
 ```
 
 ### 2. Target Following Using Requests
+In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
+
 ```csharp
-// FollowAIBehaviour produces the request
-public sealed class FollowAIBehaviour : IEntityInit, IEntityTick
+// AIFollowBehaviour produces the request
+public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
 {
     private IValue<IEntity> _target;
     private IValue<Vector3> _position;

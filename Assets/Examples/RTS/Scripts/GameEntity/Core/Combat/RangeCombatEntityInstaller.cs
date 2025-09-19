@@ -29,7 +29,7 @@ namespace RTSGame
             entity.AddFireRequest(new BaseRequest<IGameEntity>());
             entity.WhenFixedTick(_ =>
             {
-                if (HealthUseCase.IsAlive(entity) &&
+                if (LifeUseCase.IsAlive(entity) &&
                     entity.GetFireCooldown().IsCompleted() &&
                     entity.GetFireRequest().Consume(out IGameEntity target))
                 {

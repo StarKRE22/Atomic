@@ -1,19 +1,38 @@
-# 🧩️ IStartSource Extensions
+# 🧩 Time Extensions
 
-These extension methods provide convenient ways to **restart** timers, countdowns, or other objects implementing `IStartSource`.
+Provides **extension methods for** [Sources](Sources.md) to simplify restarting timers, countdowns, or other startable sources.
 
 ---
 
-## Methods
-
-### `Restart(this IStartSource source, float time)`
-Stops the source and restarts it from the specified time.
+#### `void Restart(this IStartSource source, float time)`
 ```csharp
-timer.Restart(5f); // stops and starts from 5 seconds
+public static void Restart(this IStartSource source, float time);
 ```
+- **Description:** Stops the source and restarts it from a specific time.
+- **Parameters:**
+    - `source` — the source to restart.
+    - `time` — the time to start the source from.
+- **Notes:** Internally calls `Stop()` and then `Start(time)` on the source.
+- **Example:**
+    
+    ```csharp
+    // Restart a countdown from a specific time
+    IStartSource countdown = ...;
+    countdown.Restart(5f); // stops and starts from 5 seconds
+    ```
+---
 
-### `Restart(this IStartSource source)`
-Stops the source and restarts it from its default start time.
+#### `void Restart(this IStartSource source)`
 ```csharp
-timer.Restart(); // stops and starts from default
+public static void Restart(this IStartSource source);
 ```
+- **Description:** Stops the source and restarts it from the default start time.
+- **Parameter:** `source` — the source to restart.
+- **Notes:** Internally calls `Stop()` and then `Start()` on the source.
+- **Example:**
+
+    ```csharp
+    // Restart a countdown from its default start time
+    countdown.Restart(); // stops and starts from default
+    ```
+---
