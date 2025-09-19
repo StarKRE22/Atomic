@@ -1,85 +1,110 @@
 # 🧩 Optional&lt;T&gt;
 
-Represents a **Unity-friendly optional value** that can be serialized and displayed in the Inspector. It supports activation state, implicit conversions, and safe value access.
+Represents a **Unity-friendly optional value** that can be serialized and displayed in the Inspector. It supports
+activation state, implicit conversions, and safe value access.
+
+```csharp
+public struct Optional<T>
+```
 
 ---
 
-## Properties
+## 🔑 Properties
 
 #### `Value`
+
 ```csharp
 public T Value { get; set; }
 ```
-- **Description:** Accesses the underlying value. Assigning a value automatically sets the optional as active (if not `null`).
+
+- **Description:** Accesses the underlying value. Assigning a value automatically sets the optional as active (if not
+  `null`).
 - **Remarks:** Use this property to modify or read the contained value safely.
 
 #### `Active`
+
 ```csharp
 public bool Active { get; set; }
 ```
+
 - **Description:** Shows whether the optional contains a valid value.
 - **Remarks:** You can manually activate or deactivate the optional.
 
 ---
 
-## Methods
+## 🏹 Methods
 
 #### `TryGetValue(out T)`
+
 ```csharp
 public bool TryGetValue(out T value)
 ```
+
 - **Description:** Attempts to retrieve the value.
 - **Parameter:** `value` — Output parameter that will hold the optional's value if active.
 - **Returns:** `true` if the optional is active; otherwise `false`.
 
 #### `GetValueOrDefault(T)`
+
 ```csharp
 public T GetValueOrDefault(T defaultValue)
 ```
+
 - **Description:** Retrieves the value if active; otherwise returns a provided default value.
 - **Parameter:** `defaultValue` — The fallback value to return if the optional is inactive.
 - **Returns:** The active value or the provided default.
 
 ---
 
-## Operators
+## 🪄 Operators
 
 #### `operator Optional<T>(T)`
+
 ```csharp
 public static implicit operator Optional<T>(T it)
 ```
+
 - **Description:** Automatically wraps a value of type `T` in an active optional.
 - **Remarks:** Useful for clean initialization and assignment.
 
 #### `operator T(Optional<T>)`
+
 ```csharp
 public static implicit operator T(Optional<T> it)
 ```
+
 - **Description:** Extracts the underlying value from the optional.
 - **Remarks:** Does not check for `Active`; ensure optional is active before using.
 
 #### `operator true(Optional<T>)`
+
 ```csharp
 public static bool operator true(Optional<T> it)
 ```
+
 - **Description:** Returns `true` if the optional is active.
 
 #### `operator false(Optional<T>)`
+
 ```csharp
 public static bool operator false(Optional<T> it)
 ```
+
 - **Description:** Returns `false` if the optional is not active.
 
 ---
 
 ## 🗂 Example of Usage
 
-`Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible configuration.
+`Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible
+configuration.
 
 Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
 
 ### 🔹 Optional State
-If your weapon has optional components, you can connect them using the `Optional<T>` field. This allows you to **enable or disable features dynamically** without changing the core logic of the weapon.
+
+If your weapon has optional components, you can connect them using the `Optional<T>` field. This allows you to **enable
+or disable features dynamically** without changing the core logic of the weapon.
 
 ```csharp
 public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
@@ -105,7 +130,9 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
 ```
 
 ### 🔹 Optional Visualization
-Also, if your weapon has optional visualization, you can connect them using the `Optional<T>` field. This allows you to **enable or disable features in Inspector** without changing the core logic of the weapon.
+
+Also, if your weapon has optional visualization, you can connect them using the `Optional<T>` field. This allows you to
+**enable or disable features in Inspector** without changing the core logic of the weapon.
 
 ```csharp
 public sealed class WeaponViewInstaller : SceneEntityInstaller

@@ -422,6 +422,7 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Choosing Between Timer and Cooldown](Docs/Elements/Time/ITimer.md/#-best-practice)
 - [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
 - [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
+- [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-example-of-usage)
 
 ## ⚖️ License
 

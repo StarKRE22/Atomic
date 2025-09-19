@@ -5,6 +5,10 @@ A **serialized reference wrapper** for a value of type `T`. This class is useful
 > [!NOTE]
 > It can also be used as a lightweight shared reference for multiple objects, allowing them to access and modify the same value instance without duplicating data.
 
+```csharp
+public class Reference<T>
+```
+
 ---
 
 ## Type Parameters
