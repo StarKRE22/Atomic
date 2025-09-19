@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -195,15 +197,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="44889000" />
-    </task>
-    <task id="LOCAL-00476" summary="PrintAction.md">
-      <option name="closed" value="true" />
-      <created>1758269958667</created>
-      <option name="number" value="00476" />
-      <option name="presentableId" value="LOCAL-00476" />
-      <option name="project" value="LOCAL" />
-      <updated>1758269958667</updated>
+      <workItem from="1758177750643" duration="45317000" />
     </task>
     <task id="LOCAL-00477" summary="PrintAction.md">
       <option name="closed" value="true" />
@@ -589,7 +583,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758299539705</updated>
     </task>
-    <option name="localTasksCounter" value="525" />
+    <task id="LOCAL-00525" summary="RandomCooldown.md">
+      <option name="closed" value="true" />
+      <created>1758299815202</created>
+      <option name="number" value="00525" />
+      <option name="presentableId" value="LOCAL-00525" />
+      <option name="project" value="LOCAL" />
+      <updated>1758299815202</updated>
+    </task>
+    <option name="localTasksCounter" value="526" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +618,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="Reactiv" />
     <MESSAGE value="ReactiveArray.md" />
@@ -641,7 +642,8 @@
     <MESSAGE value="ITimestamp.md" />
     <MESSAGE value="Period.md" />
     <MESSAGE value="PeriodState.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="PeriodState.md" />
+    <MESSAGE value="RandomCooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="RandomCooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
