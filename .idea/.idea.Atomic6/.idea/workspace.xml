@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,31 +195,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="43916000" />
-    </task>
-    <task id="LOCAL-00469" summary="BaseRequest.md">
-      <option name="closed" value="true" />
-      <created>1758223184827</created>
-      <option name="number" value="00469" />
-      <option name="presentableId" value="LOCAL-00469" />
-      <option name="project" value="LOCAL" />
-      <updated>1758223184827</updated>
-    </task>
-    <task id="LOCAL-00470" summary="BaseRequest.md">
-      <option name="closed" value="true" />
-      <created>1758224402235</created>
-      <option name="number" value="00470" />
-      <option name="presentableId" value="LOCAL-00470" />
-      <option name="project" value="LOCAL" />
-      <updated>1758224402235</updated>
-    </task>
-    <task id="LOCAL-00471" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758269256271</created>
-      <option name="number" value="00471" />
-      <option name="presentableId" value="LOCAL-00471" />
-      <option name="project" value="LOCAL" />
-      <updated>1758269256271</updated>
+      <workItem from="1758177750643" duration="44223000" />
     </task>
     <task id="LOCAL-00472" summary="IReactiveArray.md">
       <option name="closed" value="true" />
@@ -592,7 +565,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758298089282</updated>
     </task>
-    <option name="localTasksCounter" value="518" />
+    <task id="LOCAL-00518" summary="ITimer.md">
+      <option name="closed" value="true" />
+      <created>1758298627071</created>
+      <option name="number" value="00518" />
+      <option name="presentableId" value="LOCAL-00518" />
+      <option name="project" value="LOCAL" />
+      <updated>1758298627071</updated>
+    </task>
+    <task id="LOCAL-00519" summary="ITimestamp.md">
+      <option name="closed" value="true" />
+      <created>1758298863845</created>
+      <option name="number" value="00519" />
+      <option name="presentableId" value="LOCAL-00519" />
+      <option name="project" value="LOCAL" />
+      <updated>1758298863845</updated>
+    </task>
+    <task id="LOCAL-00520" summary="ITimestamp.md">
+      <option name="closed" value="true" />
+      <created>1758298925452</created>
+      <option name="number" value="00520" />
+      <option name="presentableId" value="LOCAL-00520" />
+      <option name="project" value="LOCAL" />
+      <updated>1758298925452</updated>
+    </task>
+    <option name="localTasksCounter" value="521" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,8 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReactiveDictionary.md" />
-    <MESSAGE value="IReactiveArray.md, IReactiveList.md, IReactiveSet.md" />
     <MESSAGE value="IReadOnlyReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
@@ -644,7 +639,9 @@
     <MESSAGE value="FixedTimestamp.md" />
     <MESSAGE value="IPeriod.md" />
     <MESSAGE value="IStopwatch.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IStopwatch.md" />
+    <MESSAGE value="ITimer.md" />
+    <MESSAGE value="ITimestamp.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ITimestamp.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
