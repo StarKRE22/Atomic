@@ -198,15 +198,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="1978000" />
-    </task>
-    <task id="LOCAL-00486" summary="IReadOnlyReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758270977887</created>
-      <option name="number" value="00486" />
-      <option name="presentableId" value="LOCAL-00486" />
-      <option name="project" value="LOCAL" />
-      <updated>1758270977887</updated>
+      <workItem from="1758300054327" duration="2307000" />
     </task>
     <task id="LOCAL-00487" summary="IReadOnlyReactiveList.md">
       <option name="closed" value="true" />
@@ -592,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758301746744</updated>
     </task>
-    <option name="localTasksCounter" value="535" />
+    <task id="LOCAL-00535" summary="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md">
+      <option name="closed" value="true" />
+      <created>1758302319458</created>
+      <option name="number" value="00535" />
+      <option name="presentableId" value="LOCAL-00535" />
+      <option name="project" value="LOCAL" />
+      <updated>1758302319458</updated>
+    </task>
+    <option name="localTasksCounter" value="536" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +619,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ISetter.md, InlineSetter.md" />
     <MESSAGE value="Extensions.md" />
@@ -644,7 +643,8 @@
     <MESSAGE value="StopwatchState.md" />
     <MESSAGE value="TimerState.md" />
     <MESSAGE value="UpTimer.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="UpTimer.md" />
+    <MESSAGE value="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="AnimationEvents.md, CollisionEvents.md, CollisionEvents2D.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

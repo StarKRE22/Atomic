@@ -52,7 +52,7 @@ public void Unsubscribe(string evt, Action action);
 
 ---
 
-## 🪝 Unity Callback
+## 🪝 Unity Callbacks
 
 #### `ReceiveEvent(string)`
 
