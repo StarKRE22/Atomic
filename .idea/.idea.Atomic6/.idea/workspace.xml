@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Countdown.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timer.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timestamp.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,15 +210,7 @@
       <workItem from="1758086977799" duration="44000" />
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
-      <workItem from="1758177750643" duration="40766000" />
-    </task>
-    <task id="LOCAL-00460" summary="IPredicate.md">
-      <option name="closed" value="true" />
-      <created>1758217873113</created>
-      <option name="number" value="00460" />
-      <option name="presentableId" value="LOCAL-00460" />
-      <option name="project" value="LOCAL" />
-      <updated>1758217873113</updated>
+      <workItem from="1758177750643" duration="41080000" />
     </task>
     <task id="LOCAL-00461" summary="IPredicate.md">
       <option name="closed" value="true" />
@@ -597,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758295029402</updated>
     </task>
-    <option name="localTasksCounter" value="509" />
+    <task id="LOCAL-00509" summary="Subscription.md">
+      <option name="closed" value="true" />
+      <created>1758295661903</created>
+      <option name="number" value="00509" />
+      <option name="presentableId" value="LOCAL-00509" />
+      <option name="project" value="LOCAL" />
+      <updated>1758295661903</updated>
+    </task>
+    <option name="localTasksCounter" value="510" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,9 +654,9 @@
     <MESSAGE value="ISignal.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="InlineSignal.md" />
-    <MESSAGE value="Subscription.md" />
     <MESSAGE value="Fix README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix README.md" />
+    <MESSAGE value="Subscription.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscription.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

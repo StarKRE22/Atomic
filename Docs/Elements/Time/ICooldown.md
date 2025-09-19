@@ -1,117 +1,148 @@
 # 🧩️ ICooldown
 
-`ICooldown` represents a contract of **cooldown timer** that tracks remaining time,  
-provides progress feedback and raises events when its state changes. 
+Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
+when its state changes. The interface combines multiple sources: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource)
+to provide flexible access to timer data and notifications. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
-The interface combines multiple sources: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource) to provide flexible access to timer data and notifications.
-
-> [!IMPORTANT]
-> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
+```csharp
+public interface ICooldown : IDurationSource, ITimeSource, IProgressSource, ICompleteSource, ITickSource
+{
+}
+```
 
 ---
 
-## Events
+## ⚡ Events
 
-#### `event Action<float> OnTimeChanged`
+#### `OnTimeChanged`
+
 ```csharp
 public event Action<float> OnTimeChanged;
 ```
+
 - **Description:** Raised whenever the current time changes.
 - **Parameters:** `float` — the new current time in seconds.
 
-#### `event Action<float> OnDurationChanged`
+#### `OnDurationChanged`
+
 ```csharp
 public event Action<float> OnDurationChanged;
 ```
+
 - **Description:** Invoked when the duration value changes.
 
-#### `event Action<float> OnProgressChanged`
+#### `OnProgressChanged`
+
 ```csharp
 public event Action<float> OnProgressChanged;  
 ```
+
 - **Description:** Raised when the progress changes.
 
-#### `event Action OnCompleted`
+#### `OnCompleted`
+
 ```csharp
 public event Action OnCompleted;  
 ```
+
 - **Description:** Invoked when the source has completed.
 
 ---
 
-## Methods
+## 🏹 Methods
 
-#### `float GetTime()`
+#### `GetTime()`
+
 ```csharp
 public float GetTime();
 ```
+
 - **Description:** Gets the current time from the source.
 - **Returns:** `float` — current time in seconds.
 
-#### `void SetTime(float time)`
+#### `SetTime(float)`
+
 ```csharp
 public void SetTime(float time);
 ```
+
 - **Description:** Sets the current time.
 - **Parameters:**
     - `time` — The new time to set, expected to be in the range `0` to the duration of the source.
 
-#### `void ResetTime()`
+#### `ResetTime()`
+
 ```csharp
 public void ResetTime();  
 ```
-- **Description:** Resets the time source to its initial state.
-- **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via `OnTimeChanged`.
 
-#### `float GetDuration()`
+- **Description:** Resets the time source to its initial state.
+- **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via
+  `OnTimeChanged`.
+
+#### `GetDuration()`
+
 ```csharp
 public float GetDuration();  
 ```
+
 - **Description:** Gets the total duration.
 - **Returns:** The duration in seconds.
 
-#### `void SetDuration(float duration)`
+#### `SetDuration(float)`
+
 ```csharp
 public void SetDuration(float duration);  
 ```
+
 - **Description:** Sets the total duration.
 - **Parameter:** `duration` — The new duration value in seconds.
 
-#### `void Tick(float deltaTime)`
+#### `Tick(float)`
+
 ```csharp
 public void Tick(float deltaTime);  
 ```
+
 - **Description:** Updates the source by a specified time increment.
-- **Parameters:**
-  - `deltaTime` — The amount of time (in seconds) to advance the source.
+- **Parameter:** `deltaTime` — The amount of time (in seconds) to advance the source.
 - **Remarks:** This method is typically called repeatedly (e.g., once per frame) to progress time-dependent systems.
 
 #### `float GetProgress()`
+
 ```csharp
 public float GetProgress();  
 ```
+
 - **Description:** Gets the current progress.
 - **Returns:** Normalized progress (0–1).
 
-#### `void SetProgress(float progress)`
+#### `SetProgress(float)`
+
 ```csharp
 public void SetProgress(float progress);  
 ```
+
 - **Description:** Sets the current progress.
 - **Parameter:** `progress` — Progress value (0–1).
 
-#### `bool IsCompleted()`
+#### `IsCompleted()`
+
 ```csharp
 public bool IsCompleted();  
 ```
+
 - **Description:** Returns whether the source has completed.
 - **Returns:** `true` if completed; otherwise `false`.
 
+---
+
 ## 🗂 Example of Usage
 
-The following example demonstrates how to use `ICooldown` for spawning coins as game objects in a scene, together with the `Atomic.Entities` framework.
+The following example demonstrates how to use `ICooldown` for spawning coins as game objects in a scene, together with
+the `Atomic.Entities` framework.
 
-### CoinSpawnController
+### 1. Create `CoinSpawnController`
 
 ```csharp
 public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedTick
@@ -138,7 +169,8 @@ public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixe
 }
 ```
 
-### GameContextInstaller
+### 2. Attach `Cooldown` to `GameContextInstaller`
+
 Below we bind the `Cooldown` implementation and attach the coin spawn controller.
 
 ```csharp
