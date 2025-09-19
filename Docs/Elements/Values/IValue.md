@@ -63,7 +63,8 @@ public class TransformPositionProvider : IValue<Vector3>
 ```csharp
 public class UsageExample : MonoBehaviour
 {
-    [SerializeField] private Transform _transform;
+    [SerializeField] 
+    private Transform _transform;
     
     private void Awake()
     {
@@ -96,7 +97,8 @@ public class IntPlayerPrefsProvider : IValue<int>
 ```csharp
 public class UsageExample : MonoBehaviour
 {
-    [SerializeField] private int _defaultScore;
+    [SerializeField] 
+    private int _defaultScore;
     
     private void Awake()
     {
@@ -134,7 +136,8 @@ public class RandomAudioClipProvider : IValue<AudioClip>
 ```csharp
 public class UsageExample : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] _audioClips;
+    [SerializeField] 
+    private AudioClip[] _audioClips;
     
     private void Awake()
     {
