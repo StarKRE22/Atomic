@@ -40,39 +40,14 @@ public T Invoke()
 
 ## 🗂 Example of Usage
 
-**`IValue<T>` can wrap any data source, for example:**
-
-```csharp
-public class UsageExample : MonoBehaviour
-{
-    [SerializeField] private Transform _transform;
-    [SerializeField] private int _defaultScore;
-    [SerializeField] private AudioClip[] _audioClips;
-    
-    private void Awake()
-    {
-        // Transform position as a value provider
-        IValue<Vector3> playerPosition = new TransformPositionValueProvider(_transform);
-        
-        // PlayerPrefs as a value provider
-        IValue<int> highScore = new PlayerPrefsIntProvider("HighScore", 0));
-    
-        // Random audio clip provider
-        IValue<Vector3> audioClip = new RandomAudioClipProvider();
-        
-        Debug.Log("High Score: " + highScore.Value);
-        Debug.Log("Player Position: " + playerPosition.Value);
-        Debug.Log("Audio clip: " + audioClip.Value);
-    }
-}
-```
+`IValue<T>` can wrap any data source, for example:
 
 ---
 
 ### Example #1: Position from Transform
 
 ```csharp
-public sealed class TransformPositionProvider : IValue<Vector3>
+public class TransformPositionProvider : IValue<Vector3>
 {
     private readonly Transform _transform;
     
@@ -85,22 +60,48 @@ public sealed class TransformPositionProvider : IValue<Vector3>
 }
 ```
 
+```csharp
+public class UsageExample : MonoBehaviour
+{
+    [SerializeField] private Transform _transform;
+    
+    private void Awake()
+    {
+        IValue<Vector3> position = new TransformPositionProvider(_transform);
+        Debug.Log("Position: " + playerPosition.Value);
+    }
+}
+```
+
 ---
 
 ### Example #2: Integer value from PlayerPrefs
 
 ```csharp
-public sealed class PlayerPrefsIntProvider : IValue<int>
+public class IntPlayerPrefsProvider : IValue<int>
 {
     private readonly string key;
     private readonly int defaultValue;
 
     public int Value => PlayerPrefs.GetInt(key, defaultValue);
     
-    public PlayerPrefsIntProvider(string key, int defaultValue = 0)
+    public IntPlayerPrefsProvider(string key, int defaultValue = 0)
     {
         this.key = key;
         this.defaultValue = defaultValue;
+    }
+}
+```
+
+```csharp
+public class UsageExample : MonoBehaviour
+{
+    [SerializeField] private int _defaultScore;
+    
+    private void Awake()
+    {
+        IValue<int> highScore = new IntPlayerPrefsProvider("HighScore", _defaultScore));
+        Debug.Log("High Score: " + highScore.Value);
     }
 }
 ```
@@ -126,6 +127,19 @@ public class RandomAudioClipProvider : IValue<AudioClip>
             int index = Random.Range(0, this.clips.Count);
             return this.clips[index];
         }
+    }
+}
+```
+
+```csharp
+public class UsageExample : MonoBehaviour
+{
+    [SerializeField] private AudioClip[] _audioClips;
+    
+    private void Awake()
+    {
+        IValue<Vector3> audioClip = new RandomAudioClipProvider(_audioClips);
+        Debug.Log("Audio clip: " + audioClip.Value.name);
     }
 }
 ```
