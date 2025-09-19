@@ -2,11 +2,8 @@
 
 Represents a **count up timer** that tracks duration, current time, progress, and state. It implements
 the [ITimer](ITimer.md) interface and provides full control over **start, pause, resume, stop**, progress updates, and
-state notifications.
-
-> [!IMPORTANT]  
-> Use `UpTimer` when you need a stateful timer with events and full control over its lifecycle. For simple countdowns,
-> consider [ICooldown](ICooldown.md)`.
+state notifications. Use `UpTimer` when you need a stateful timer with events and full control over its lifecycle. For
+simple countdowns, consider [ICooldown](ICooldown.md)`.
 
 ```csharp
 public class UpTimer : ITimer
