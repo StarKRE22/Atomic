@@ -4,13 +4,13 @@ Represents a **stateful looping cycle timer** that tracks time progression and e
 It implements the [IPeriod](IPeriod.md) interface and provides full control over **start, pause, resume, stop**,
 progress tracking, duration management, and state notifications.
 
-> [!IMPORTANT]  
-> Use `Period` when you need **repeating timers or cycle-based events**, such as gameplay loops, animations, or periodic
-> system updates. Unlike [ITimer](ITimer.md), `Period` automatically loops on completion.
-
 ```csharp
 public class Period : IPeriod
 ```
+
+> [!IMPORTANT]  
+> Use `Period` when you need **repeating timers or cycle-based events**, such as gameplay loops, animations, or periodic
+> system updates. Unlike [ITimer](ITimer.md), `Period` automatically loops on completion.
 
 ---
 
