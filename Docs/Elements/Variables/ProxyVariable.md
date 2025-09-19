@@ -74,7 +74,7 @@ public void Invoke(T arg)
 **`ProxyVariable<T>` also includes a fluent builder to simplify creation:**
 
 ```csharp
-var variable = ProxyVariable<int>
+IVariable<int> variable = ProxyVariable<int>
     .StartBuild()
     .WithGetter(() => myField)
     .WithSetter(v => myField = v)

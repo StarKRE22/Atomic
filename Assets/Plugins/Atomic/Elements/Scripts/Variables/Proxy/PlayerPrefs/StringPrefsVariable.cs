@@ -43,7 +43,7 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="key">The key to store and retrieve the value in <see cref="PlayerPrefs"/>.</param>
         /// <param name="defaultValue">The default value returned if the key does not exist.</param>
-        public StringPrefsVariable(string key, string defaultValue = default)
+        public StringPrefsVariable(string key, string defaultValue = null)
         {
             this.key = key;
             this.defaultValue = defaultValue;
