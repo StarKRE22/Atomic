@@ -2,7 +2,7 @@
 
 Defines a family of contracts for **reactive event sources**. It provides a lightweight abstraction for subscribing to
 notifications and reacting to events, optionally with arguments. When subscribing to a signal, the method returns
-a [Subscription](../Signals/Subscription.md) struct.
+a [subscription](../Signals/Subscription.md) struct.
 
 ---
 
@@ -17,6 +17,8 @@ a [Subscription](../Signals/Subscription.md) struct.
 ```csharp
 public interface ISignal
 ```
+
+---
 
 ### 🏹 Methods
 
@@ -54,6 +56,8 @@ public interface ISignal<T>
 ```
 
 - **Type parameter:** `T` — the emitted value type.
+
+---
 
 ### 🏹 Methods
 
@@ -93,6 +97,8 @@ public interface ISignal<T1, T2>
 - **Type parameters:**
     - `T1` — the first emitted value
     - `T2` — the second emitted value
+
+---
 
 ### 🏹 Methods
 
@@ -134,6 +140,8 @@ public interface ISignal<T1, T2, T3>
     - `T1` — the first emitted value
     - `T2` — the second emitted value
     - `T3` — the third emitted value
+
+---
 
 ### 🏹 Methods
 
@@ -177,6 +185,8 @@ public interface ISignal<T1, T2, T3, T4>
     - `T2` — the second emitted value
     - `T3` — the third emitted value
     - `T4` — the fourth emitted value
+
+---
 
 ### 🏹 Methods
 
