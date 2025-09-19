@@ -5,15 +5,20 @@ insertions at head and tail, maintains a free-list for removed nodes, and
 implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally supports serialization for Unity
 projects.
 
-> [!NOTE]  
-> Use this class when you need a **reactive linked list** that supports frequent insertions and removals at arbitrary
-> positions, with notifications for every change.
+```csharp
+public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
+```
 
-> [!IMPORTANT]
-> Insertions and removals are **O(1)**, unlike a standard `List<T>` which may require shifting elements for each
-> operation.
-> For high performance always use `foreach` to iterate over the collection, and **never** use `for` loops for
-> index-based traversal!
+- **Type Parameters:**
+    - `T` — The type of elements stored in the list.
+- **Notes:**
+    - Use this class when you need a **reactive linked list** that supports frequent insertions and removals at
+      arbitrary positions, with notifications for every change
+    - Supports Unity serialization
+    - Insertions and removals are **O(1)** complexity, unlike a standard `List<T>` which may require shifting elements
+      for each operation
+    - For high performance always use `foreach` to iterate over the collection
+    - **Never** use `for` loop for index-based traversal
 
 ---
 
