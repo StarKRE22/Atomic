@@ -12,7 +12,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of the value to store.</typeparam>
     [Serializable]
-    public sealed class BaseVariable<T> : IVariable<T>
+    public class BaseVariable<T> : IVariable<T>
     {
         /// <summary>
         /// Gets or sets the stored value.

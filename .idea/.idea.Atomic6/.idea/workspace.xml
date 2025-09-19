@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/BaseVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Base/BaseVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,31 +206,7 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="5914000" />
-    </task>
-    <task id="LOCAL-00502" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1758272477013</created>
-      <option name="number" value="00502" />
-      <option name="presentableId" value="LOCAL-00502" />
-      <option name="project" value="LOCAL" />
-      <updated>1758272477013</updated>
-    </task>
-    <task id="LOCAL-00503" summary="ISignal.md">
-      <option name="closed" value="true" />
-      <created>1758273364918</created>
-      <option name="number" value="00503" />
-      <option name="presentableId" value="LOCAL-00503" />
-      <option name="project" value="LOCAL" />
-      <updated>1758273364918</updated>
-    </task>
-    <task id="LOCAL-00504" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758292750145</created>
-      <option name="number" value="00504" />
-      <option name="presentableId" value="LOCAL-00504" />
-      <option name="project" value="LOCAL" />
-      <updated>1758292750145</updated>
+      <workItem from="1758300054327" duration="6921000" />
     </task>
     <task id="LOCAL-00505" summary="InlineSignal.md">
       <option name="closed" value="true" />
@@ -592,7 +576,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758308746650</updated>
     </task>
-    <option name="localTasksCounter" value="551" />
+    <task id="LOCAL-00551" summary="IValue.md">
+      <option name="closed" value="true" />
+      <created>1758309058232</created>
+      <option name="number" value="00551" />
+      <option name="presentableId" value="LOCAL-00551" />
+      <option name="project" value="LOCAL" />
+      <updated>1758309058233</updated>
+    </task>
+    <task id="LOCAL-00552" summary="IValue.md">
+      <option name="closed" value="true" />
+      <created>1758309109052</created>
+      <option name="number" value="00552" />
+      <option name="presentableId" value="LOCAL-00552" />
+      <option name="project" value="LOCAL" />
+      <updated>1758309109052</updated>
+    </task>
+    <task id="LOCAL-00553" summary="ScriptableConst.md">
+      <option name="closed" value="true" />
+      <created>1758309267484</created>
+      <option name="number" value="00553" />
+      <option name="presentableId" value="LOCAL-00553" />
+      <option name="project" value="LOCAL" />
+      <updated>1758309267484</updated>
+    </task>
+    <option name="localTasksCounter" value="554" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ICooldown" />
     <MESSAGE value="Cooldown.md" />
     <MESSAGE value="DownTimer.md" />
     <MESSAGE value="FixedTimestamp.md" />
@@ -644,7 +651,8 @@
     <MESSAGE value="DefaultConstants.md" />
     <MESSAGE value="IReactiveValue.md" />
     <MESSAGE value="IValue.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IValue.md" />
+    <MESSAGE value="ScriptableConst.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ScriptableConst.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
