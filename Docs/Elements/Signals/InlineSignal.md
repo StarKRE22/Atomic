@@ -307,6 +307,9 @@ The following example demonstrates how to wrap the `OnEntered` event from
 the [TriggerEvents](../UnityComponents/TriggerEvents.md) class into a `Signal<Collider>`:
 
 ```csharp
+//Assume we have the "TriggerEvents" component on a gameObject
+TriggerEvents triggerEvents = gameObject.GetComponent<TriggerEvents>();
+
 // Wrap the Unity event into an InlineSignal
 ISignal<Collider> onTriggerEnter = new InlineSignal<Collider>(
     subscribe: action => triggerEvents.OnEntered += action,
