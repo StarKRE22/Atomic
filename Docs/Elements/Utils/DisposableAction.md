@@ -53,6 +53,6 @@ disposable.Dispose(); // Prints: "Cleanup executed."
 EventHandler handler = (s, e) => Console.WriteLine("Event fired.");
 someEvent += handler;
 
-using var unsub = new DisposableAction(() => someEvent -= handler);
-// Event will be unsubscribed automatically when `unsub.Dispose()` is called
+var unsub = new DisposableAction(() => someEvent -= handler);
+unsub.Dispose();
 ```
