@@ -5,7 +5,7 @@ provides a modular container for **dynamic state**, **tags**, **values**, **beha
 
 ```csharp
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
-```
+``` 
 
 - **Inheritance:**
     - [IInitLifecycle](../Lifecycle/Sources/IInitLifecycle.md) – Supports explicit initialization and disposal.
@@ -201,52 +201,244 @@ public IEnumerator<int> GetTagEnumerator()
 Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
 identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
-### Events
+---
 
-| Event            | Description                        |
-|------------------|------------------------------------|
-| `OnValueAdded`   | Triggered when a value is added.   |
-| `OnValueDeleted` | Triggered when a value is deleted. |
-| `OnValueChanged` | Triggered when a value is updated. |
+### ⚡ Events
 
-### Properties
+#### `OnValueAdded`
 
-| Property     | Type | Description              |
-|--------------|------|--------------------------|
-| `ValueCount` | int  | Number of stored values. |
+```csharp
+public event Action<IEntity, int> OnValueAdded  
+```
 
-### Methods
+-
+- **Description:** Triggered when a value is added.
+- **Parameters:**
+    - `IEntity` – The entity where the value was added.
+    - `int` – The key of the value that was added.
+- **Note:** Allows subscribers to react whenever a new key-value pair is inserted.
 
-| Method                                    | Description                              |
-|-------------------------------------------|------------------------------------------|
-| `GetValue<T>(int)`                        | Retrieves a value by key.                |
-| `GetValueUnsafe<T>(int)`                  | Retrieves a value by reference (unsafe). |
-| `GetValue(int)`                           | Retrieves a value as `object`.           |
-| `TryGetValue<T>(int, out T)`              | Tries to retrieve a typed value.         |
-| `TryGetValueUnsafe<T>(int, out T)`        | Tries to retrieve by reference.          |
-| `TryGetValue(int, out object)`            | Tries to retrieve as `object`.           |
-| `SetValue<T>(int, T)`                     | Sets or updates a struct value.          |
-| `SetValue(int, object)`                   | Sets or updates a reference value.       |
-| `HasValue(int)`                           | Checks if a value exists.                |
-| `AddValue<T>(int, T)`                     | Adds a struct value.                     |
-| `AddValue(int, object)`                   | Adds a reference value.                  |
-| `DelValue(int)`                           | Deletes a value.                         |
-| `ClearValues()`                           | Clears all values.                       |
-| `GetValues()`                             | Returns all key-value pairs.             |
-| `CopyValues(KeyValuePair<int, object>[])` | Copies all key-value pairs.              |
-| `GetValueEnumerator()`                    | Enumerates all values.                   |
+#### `OnValueDeleted`
+
+```csharp
+public event Action<IEntity, int> OnValueDeleted  
+```
+
+- **Description:** Triggered when a value is deleted.
+- **Parameters:**
+    - `IEntity` – The entity where the value was deleted.
+    - `int` – The key of the value that was removed.
+- **Note:** Useful for cleanup or reactive updates when values are removed.
+
+#### `OnValueChanged`
+
+```csharp
+public event Action<IEntity, int> OnValueChanged  
+```
+
+- **Description:** Triggered when a value is changed.
+- **Parameters:**
+    - `IEntity` – The entity where the value was changed.
+    - `int` – The key of the value that was updated.
+- **Note:** Enables reactive programming patterns when values are updated.
+
+---
+
+### 🔑 Properties
+
+#### `ValueCount`
+
+```csharp
+public int ValueCount { get; }  
+```
+
+- **Description:** Number of stored values in the entity.
+- **Note:** Provides a quick way to check how many key-value pairs are currently stored.
+
+---
+
+### 🏹 Methods
+
+#### `GetValue<T>(int)`
+
+```csharp
+public T GetValue<T>(int key)  
+```
+
+- **Description:** Retrieves a value by key and casts it to the specified type.
+- **Parameters:** `key` – The key of the value to retrieve.
+- **Returns:** `T` – The value associated with the key.
+- **Note:** Throws if the key does not exist or cannot be cast.
+
+#### `GetValueUnsafe<T>(int)`
+
+```csharp
+public ref T GetValueUnsafe<T>(int key)  
+```
+
+- **Description:** Retrieves a value by key as a reference (unsafe, no boxing).
+- **Parameters:** `int key` – The key of the value to retrieve.
+- **Returns:** `ref T` – Reference to the stored value.
+- **Note:** Use carefully; modifying the reference directly changes the stored value.
+
+#### `GetValue(int)`
+
+```csharp
+public object GetValue(int key)  
+```
+
+- **Description:** Retrieves a value by key as an `object`.
+- **Parameters:** `key` – The key of the value to retrieve.
+- **Returns:** `object` – The value stored at the key.
+
+#### `TryGetValue<T>(int, out T)`
+
+```csharp
+public bool TryGetValue<T>(int key, out T value)  
+```
+
+- **Description:** Tries to retrieve a typed value by key.
+- **Parameters:**
+    - `int key` – The key of the value to retrieve.
+    - `out T value` – Output parameter for the retrieved value.
+- **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
+
+#### `TryGetValueUnsafe<T>(int, out T)`
+
+```csharp
+public bool TryGetValueUnsafe<T>(int key, out T value)  
+```
+
+- **Description:** Tries to retrieve a value by reference (unsafe).
+- **Parameters:**
+    - `int key` – The key of the value.
+    - `out T value` – Output reference to the value.
+- **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
+
+#### `TryGetValue(int, out object)`
+
+```csharp
+public bool TryGetValue(int key, out object value)  
+```
+
+- **Description:** Tries to retrieve a value as `object`.
+- **Parameters:**
+    - `int key` – The key of the value.
+    - `out object value` – Output parameter for the value.
+- **Returns:** `true` if the key exists, otherwise `false`.
+
+#### `SetValue<T>(int, T)`
+
+```csharp
+public void SetValue<T>(int key, T value) where T : struct  
+```
+
+- **Description:** Sets or updates a struct value.
+- **Parameters:**
+    - `int key` – The key to set.
+    - `T value` – The value to store.
+
+#### `SetValue(int, object)`
+
+```csharp
+public void SetValue(int key, object value)  
+```
+
+- **Description:** Sets or updates a reference value.
+- **Parameters:**
+    - `int key` – The key to set.
+    - `object value` – The value to store.
+
+#### `HasValue(int)`
+
+```csharp
+public bool HasValue(int key)  
+```
+
+- **Description:** Checks if a value exists for the given key.
+- **Parameters:** `key` – The key to check.
+- **Returns:** `true` if the key exists, otherwise `false`.
+
+#### `AddValue<T>(int, T)`
+
+```csharp
+public void AddValue<T>(int key, T value) where T : struct  
+```
+
+- **Description:** Adds a struct value.
+- **Parameters:**
+    - `int key` – The key to add.
+    - `T value` – The value to add.
+
+#### `AddValue(int, object)`
+
+```csharp
+public void AddValue(int key, object value)  
+```
+
+-
+- **Description:** Adds a reference value.
+- **Parameters:**
+    - `int key` – The key to add.
+    - `object value` – The value to add.
+
+#### `DelValue(int)`
+
+```csharp
+public bool DelValue(int key)  
+```
+
+- **Description:** Deletes a value by key.
+- **Parameters:** `int key` – The key to delete.
+- **Returns:** `true` if the value existed and was removed, otherwise `false`.
+
+#### `ClearValues()`
+
+```csharp
+public void ClearValues()  
+```
+
+- **Description:** Clears all values from the entity.
+
+#### `GetValues()`
+
+```csharp
+public KeyValuePair<int, object>[] GetValues()  
+```
+
+- **Description:** Returns all key-value pairs currently stored.
+- **Returns:** Array of `KeyValuePair<int, object>`.
+
+#### `CopyValues(KeyValuePair<int, object>[])`
+
+```csharp
+public int CopyValues(KeyValuePair<int, object>[] results)  
+```
+
+- **Description:** Copies all key-value pairs into the provided array.
+- **Parameters:** `results` – Array to copy key-value pairs into.
+- **Returns:** Number of values copied.
+
+#### `GetValueEnumerator()`
+
+```csharp
+public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()  
+```
+
+- **Description:** Enumerates all key-value pairs.
+- **Returns:** Enumerator for iterating through stored values.
 
 ---
 
 ## 💠️ Behaviour Members
 
-The **Behaviours** section manages modular logic attached to the entity.  
-Behaviours implement `IEntityBehaviour` interfaces and can be added, removed, queried, or enumerated at runtime.  
-This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity
-structure.
-
-Behaviours can respond to lifecycle events (`Init`, `Enable`, `Update`, `Disable`, `Dispose`),
+Manage modular logic attached to the entity. Behaviours implement `IEntityBehaviour` interfaces and can be added,
+removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
+functionality without changing the core entity
+structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
 enabling dynamic logic composition without changing the core entity structure.
+
+---
 
 ### Events
 
