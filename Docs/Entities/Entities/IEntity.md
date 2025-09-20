@@ -184,6 +184,7 @@ public int CopyTags(int[] results)
 - **Description:** Copies tag keys into the provided array.
 - **Parameter:** `results` – Array to copy the tags into.
 - **Returns:** Number of tags copied.
+- **Throws:** `ArgumentNullException` if `results` is null
 
 #### `GetTagEnumerator`
 
@@ -268,7 +269,7 @@ public T GetValue<T>(int key)
 - **Description:** Retrieves a value by key and casts it to the specified type.
 - **Parameters:** `key` – The key of the value to retrieve.
 - **Returns:** `T` – The value associated with the key.
-- **Note:** Throws if the key does not exist or cannot be cast.
+- **Exceptions:** Throws if the key does not exist or cannot be cast.
 
 #### `GetValueUnsafe<T>(int)`
 
@@ -277,9 +278,9 @@ public ref T GetValueUnsafe<T>(int key)
 ```
 
 - **Description:** Retrieves a value by key as a reference (unsafe, no boxing).
-- **Parameters:** `int key` – The key of the value to retrieve.
+- **Parameters:** `key` – The key of the value to retrieve.
 - **Returns:** `ref T` – Reference to the stored value.
-- **Note:** Use carefully; modifying the reference directly changes the stored value.
+- **Exceptions:** Throws if the key does not exist or cannot be cast.
 
 #### `GetValue(int)`
 
@@ -290,6 +291,7 @@ public object GetValue(int key)
 - **Description:** Retrieves a value by key as an `object`.
 - **Parameters:** `key` – The key of the value to retrieve.
 - **Returns:** `object` – The value stored at the key.
+- **Exceptions:** Throws if the key does not exist.
 
 #### `TryGetValue<T>(int, out T)`
 
@@ -299,8 +301,8 @@ public bool TryGetValue<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a typed value by key.
 - **Parameters:**
-    - `int key` – The key of the value to retrieve.
-    - `out T value` – Output parameter for the retrieved value.
+    - `key` – The key of the value to retrieve.
+    - `out value` – Output parameter for the retrieved value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValueUnsafe<T>(int, out T)`
@@ -311,8 +313,8 @@ public bool TryGetValueUnsafe<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a value by reference (unsafe).
 - **Parameters:**
-    - `int key` – The key of the value.
-    - `out T value` – Output reference to the value.
+    - `key` – The key of the value.
+    - `out value` – Output reference to the value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValue(int, out object)`
@@ -323,8 +325,8 @@ public bool TryGetValue(int key, out object value)
 
 - **Description:** Tries to retrieve a value as `object`.
 - **Parameters:**
-    - `int key` – The key of the value.
-    - `out object value` – Output parameter for the value.
+    - `key` – The key of the value.
+    - `out value` – Output parameter for the value.
 - **Returns:** `true` if the key exists, otherwise `false`.
 
 #### `SetValue<T>(int, T)`
@@ -335,8 +337,13 @@ public void SetValue<T>(int key, T value) where T : struct
 
 - **Description:** Sets or updates a struct value.
 - **Parameters:**
-    - `int key` – The key to set.
-    - `T value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
+- **Triggers:**
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
+- **Exceptions:** Throws if key is invalid.
 
 #### `SetValue(int, object)`
 
@@ -346,8 +353,13 @@ public void SetValue(int key, object value)
 
 - **Description:** Sets or updates a reference value.
 - **Parameters:**
-    - `int key` – The key to set.
-    - `object value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
+- **Triggers:**
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
+- **Exceptions:** Throws if key is invalid or value is null.
 
 #### `HasValue(int)`
 
@@ -358,6 +370,8 @@ public bool HasValue(int key)
 - **Description:** Checks if a value exists for the given key.
 - **Parameters:** `key` – The key to check.
 - **Returns:** `true` if the key exists, otherwise `false`.
+- **Triggers:** None.
+- **Exceptions:** None.
 
 #### `AddValue<T>(int, T)`
 
@@ -367,8 +381,10 @@ public void AddValue<T>(int key, T value) where T : struct
 
 - **Description:** Adds a struct value.
 - **Parameters:**
-    - `int key` – The key to add.
-    - `T value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
+- **Triggers:** `OnValueAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if key already exists.
 
 #### `AddValue(int, object)`
 
@@ -376,11 +392,12 @@ public void AddValue<T>(int key, T value) where T : struct
 public void AddValue(int key, object value)  
 ```
 
--
 - **Description:** Adds a reference value.
 - **Parameters:**
-    - `int key` – The key to add.
-    - `object value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
+- **Triggers:** `OnValueAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if key already exists or value is null.
 
 #### `DelValue(int)`
 
@@ -389,8 +406,9 @@ public bool DelValue(int key)
 ```
 
 - **Description:** Deletes a value by key.
-- **Parameters:** `int key` – The key to delete.
+- **Parameters:** `key` – The key to delete.
 - **Returns:** `true` if the value existed and was removed, otherwise `false`.
+- **Triggers:** `OnValueDeleted` and `OnStateChanged` if the value existed.
 
 #### `ClearValues()`
 
@@ -399,6 +417,7 @@ public void ClearValues()
 ```
 
 - **Description:** Clears all values from the entity.
+- **Triggers:** `OnValueDeleted` for each key removed and `OnStateChanged`.
 
 #### `GetValues()`
 
@@ -418,6 +437,7 @@ public int CopyValues(KeyValuePair<int, object>[] results)
 - **Description:** Copies all key-value pairs into the provided array.
 - **Parameters:** `results` – Array to copy key-value pairs into.
 - **Returns:** Number of values copied.
+- **Exceptions:** Throws if `results` is null or too small.
 
 #### `GetValueEnumerator()`
 
@@ -440,37 +460,197 @@ enabling dynamic logic composition without changing the core entity structure.
 
 ---
 
-### Events
+### ⚡ Events
 
-| Event                | Description                            |
-|----------------------|----------------------------------------|
-| `OnBehaviourAdded`   | Triggered when a behaviour is added.   |
-| `OnBehaviourDeleted` | Triggered when a behaviour is removed. |
+#### `OnBehaviourAdded`
 
-### Properties
+```csharp
+public event Action<IEntity, IEntityBehaviour> OnBehaviourAdded  
+```
 
-| Property         | Type | Description                    |
-|------------------|------|--------------------------------|
-| `BehaviourCount` | int  | Number of attached behaviours. |
+- **Description:** Triggered when a behaviour is added to the entity.
+- **Parameters:**
+    - `IEntity` – The entity where the behaviour was added.
+    - `IEntityBehaviour` – The behaviour that was added.
+- **Note:** Allows subscribers to react whenever a new behaviour is attached.
 
-### Methods
+#### `OnBehaviourDeleted`
 
-| Method                               | Description                               |
-|--------------------------------------|-------------------------------------------|
-| `AddBehaviour(IEntityBehaviour)`     | Adds a behaviour.                         |
-| `GetBehaviour<T>()`                  | Returns first behaviour of type `T`.      |
-| `TryGetBehaviour<T>(out T)`          | Tries to get a behaviour of type `T`.     |
-| `HasBehaviour(IEntityBehaviour)`     | Checks if a specific behaviour exists.    |
-| `HasBehaviour<T>()`                  | Checks if a behaviour of type `T` exists. |
-| `DelBehaviour(IEntityBehaviour)`     | Removes a specific behaviour.             |
-| `DelBehaviour<T>()`                  | Removes the first behaviour of type `T`.  |
-| `DelBehaviours<T>()`                 | Removes all behaviours of type `T`.       |
-| `ClearBehaviours()`                  | Removes all behaviours.                   |
-| `GetBehaviours()`                    | Returns all behaviours.                   |
-| `GetBehaviours<T>()`                 | Returns all behaviours of type `T`.       |
-| `CopyBehaviours(IEntityBehaviour[])` | Copies behaviours into an array.          |
-| `CopyBehaviours<T>(T[])`             | Copies behaviours of type `T`.            |
-| `GetBehaviourEnumerator()`           | Enumerates behaviours.                    |
+```csharp
+public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted  
+```
+
+- **Description:** Triggered when a behaviour is removed from the entity.
+- **Parameters:**
+    - `IEntity` – The entity where the behaviour was removed.
+    - `IEntityBehaviour` – The behaviour that was removed.
+- **Note:** Useful for cleanup or reactive updates when behaviours are detached.
+
+---
+
+### 🔑 Properties
+
+#### `BehaviourCount`
+
+```csharp
+public int BehaviourCount { get; }  
+```
+
+- **Description:** Number of behaviours currently attached to the entity.
+- **Note:** Provides a quick way to check how many behaviours are associated with this entity.
+
+---
+
+### 🏹 Methods
+
+#### `AddBehaviour(IEntityBehaviour)`
+
+```csharp
+public void AddBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Adds a behaviour to the entity.
+- **Parameters:** `behaviour` – The behaviour instance to attach.
+- **Triggers:** `OnBehaviourAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if `behaviour` is null.
+
+#### `GetBehaviour<T>()`
+
+```csharp
+public T GetBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Gets the first behaviour of the specified type.
+- **Returns:** The first attached behaviour of type `T`.
+- **Exceptions:** Throws if no behaviour of type `T` exists.
+
+#### `GetBehaviourAt(int)`
+
+```csharp
+public IEntityBehaviour GetBehaviour(int index)  
+```
+
+- **Description:** Returns the behaviour instance at the given index.
+- **Parameters:** `index` – The zero-based index of the behaviour.
+- **Returns:** The behaviour at the specified index.
+- **Exceptions:** Throws if `index` is out of range.
+
+#### `TryGetBehaviour<T>(out T)`
+
+```csharp
+public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour  
+```
+
+- **Description:** Tries to get a behaviour of the specified type.
+- **Parameters:** `out behaviour` – Output parameter for the behaviour.
+- **Returns:** `true` if a behaviour of type `T` exists, otherwise `false`.
+
+#### `HasBehaviour(IEntityBehaviour)`
+
+```csharp
+public bool HasBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Checks if a specific behaviour exists.
+- **Parameters:** `behaviour` – The behaviour instance to check.
+- **Returns:** `true` if the behaviour is attached, otherwise `false`.
+
+#### `HasBehaviour<T>()`
+
+```csharp
+public bool HasBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Checks if a behaviour of the specified type exists.
+- **Returns:** `true` if any behaviour of type `T` is attached, otherwise `false`.
+
+#### `DelBehaviour(IEntityBehaviour)`
+
+```csharp
+public bool DelBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Removes a specific behaviour.
+- **Parameters:** `behaviour` – The behaviour to remove.
+- **Returns:** `true` if the behaviour existed and was removed, otherwise `false`.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged`.
+
+#### `DelBehaviour<T>()`
+
+```csharp
+public bool DelBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Removes a behaviour of the specified type.
+- **Returns:** `true` if a behaviour of type `T` was removed, otherwise `false`.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged`.
+
+#### `DelBehaviours<T>()`
+
+```csharp
+public void DelBehaviours<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Removes all behaviours of the specified type.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged` for each removed behaviour.
+
+#### `ClearBehaviours()`
+
+```csharp
+public void ClearBehaviours()  
+```
+
+- **Description:** Clears all behaviours from the entity.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged` for each removed behaviour.
+
+#### `GetBehaviours()`
+
+```csharp
+public IEntityBehaviour[] GetBehaviours()  
+```
+
+- **Description:** Returns all behaviours attached to the entity.
+- **Returns:** Array of all behaviours.
+
+#### `GetBehaviours<T>()`
+
+```csharp
+public T[] GetBehaviours<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Returns all behaviours of type `T` attached to the entity.
+- **Returns:** Array of behaviours of type `T`.
+
+#### `CopyBehaviours(IEntityBehaviour[])`
+
+```csharp
+public int CopyBehaviours(IEntityBehaviour[] results)  
+```
+
+- **Description:** Copies all behaviours into the provided array.
+- **Parameters:** `results` – Array to copy behaviours into.
+- **Returns:** Number of behaviours copied.
+- **Exceptions:** Throws if `results` is null or too small.
+
+#### `CopyBehaviours<T>(T[])`
+
+```csharp
+public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour  
+```
+
+- **Description:** Copies behaviours of type `T` into the provided array.
+- **Parameters:** `results` – Array to copy behaviours into.
+- **Returns:** Number of behaviours copied.
+- **Exceptions:** Throws if `results` is null or too small.
+
+#### `GetBehaviourEnumerator()`
+
+```csharp
+public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()  
+```
+
+- **Description:** Enumerates all behaviours attached to the entity.
+- **Returns:** Enumerator for iterating through behaviours.
 
 ----
 

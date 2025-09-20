@@ -200,15 +200,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="5524000" />
-    </task>
-    <task id="LOCAL-00518" summary="ITimer.md">
-      <option name="closed" value="true" />
-      <created>1758298627071</created>
-      <option name="number" value="00518" />
-      <option name="presentableId" value="LOCAL-00518" />
-      <option name="project" value="LOCAL" />
-      <updated>1758298627071</updated>
+      <workItem from="1758351834194" duration="6855000" />
     </task>
     <task id="LOCAL-00519" summary="ITimestamp.md">
       <option name="closed" value="true" />
@@ -594,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758354196760</updated>
     </task>
-    <option name="localTasksCounter" value="567" />
+    <task id="LOCAL-00567" summary="Пилим IEntity!">
+      <option name="closed" value="true" />
+      <created>1758361399397</created>
+      <option name="number" value="00567" />
+      <option name="presentableId" value="LOCAL-00567" />
+      <option name="project" value="LOCAL" />
+      <updated>1758361399397</updated>
+    </task>
+    <option name="localTasksCounter" value="568" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
