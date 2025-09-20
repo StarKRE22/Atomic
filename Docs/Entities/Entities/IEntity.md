@@ -197,6 +197,181 @@ public IEnumerator<int> GetTagEnumerator()
 
 ---
 
+### 🗂 Example of Usage
+
+This example demonstrates how to use tags with `IEntity`, including adding, removing, and checking tags. Two approaches
+are shown: using numeric keys for performance and string names for readability. Subscriptions to `OnTagAdded` and
+`OnTagDeleted` events are included to react to changes in real time.
+
+
+---
+
+#### 1️⃣ Using Numeric Keys
+
+By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Subscribe to tag events
+entity.OnTagAdded += (e, tagId) => 
+    Console.WriteLine($"Tag added: {tagId}");
+entity.OnTagDeleted += (e, tagId) => 
+    Console.WriteLine($"Tag removed: {tagId}");
+
+// Add tags by numeric ID
+entity.AddTag(1);         // Player
+entity.AddTag(2);         // NPC
+
+// Check tags
+if (entity.HasTag(1))
+    Console.WriteLine("Entity has tag ID 1 (Player)");
+
+// Remove a tag
+entity.DelTag(2);
+
+// Add multiple tags
+entity.AddTags(new int[] { 3, 4 }); // Ally, Merchant
+
+// Enumerate all tags
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+#### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](Extensions.md#-tags) for the entity. This format is more
+user-friendly but slightly slower than using numeric keys.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+#### 3️⃣ Using Code Generation
+
+Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
+To
+make this process easier and **type-safe**, the Atomic Framework supports **code generation**. This means you describe
+all your tags (and values) once in a small config file, and the framework will automatically generate C# helpers. You
+can learn more about this in the Manual under
+the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
+
+**Step 1:** Create a `.yaml` file where you list all your tags and values:
+
+```yaml
+header: EntityAPI
+entityType: IEntity
+aggressiveInlining: true
+namespace: PROJECT_NAMESPACE
+className: EntityAPI
+directory: CODE_GENERATION_PATH
+
+imports:
+  - UnityEngine
+  - Atomic.Entities
+  - Atomic.Elements
+
+tags:
+  - Player
+  - NPC
+
+values:
+```
+
+- `namespace` — the namespace of the generated code
+- `tags` — list of tags that will be turned into constants
+- `values` — same for values (empty in this example)
+
+---
+
+**Step 2:** Based on this config, the framework creates a **static API class**:
+
+```csharp
+/**
+ * Code generation. Don't modify! 
+ **/
+
+public static class EntityAPI
+{
+
+    ///Tags
+    public static readonly int Player;
+    public static readonly int NPC;
+
+    ///Values
+
+    static GameEntityAPI()
+    {
+        //Tags
+        Player = NameToId(nameof(Player));
+        NPC = NameToId(nameof(NPC));
+
+        //Values
+    }
+
+
+    ///Tag Extensions
+
+    #region Player
+    public static bool HasPlayerTag(this IGameEntity entity) => entity.HasTag(Player);
+    public static bool AddPlayerTag(this IGameEntity entity) => entity.AddTag(Player);
+    public static bool DelPlayerTag(this IGameEntity entity) => entity.DelTag(Player);
+    #endregion
+    
+    #region NPC
+    public static bool HasNPCTag(this IGameEntity entity) => entity.HasTag(NPC);
+    public static bool AddNPCTag(this IGameEntity entity) => entity.AddTag(NPC);
+    public static bool DelNPCTag(this IGameEntity entity) => entity.DelTag(NPC);
+    #endregion
+}
+```
+
+**Step 3:** Now you get ready-to-use methods for each tag: `AddPlayerTag()`, `HasPlayerTag()`, `DelPlayerTag()`, etc. No more “magic
+strings” or manual ID lookups.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add tags by string name
+entity.AddPlayerTag();
+entity.AddNPCTag(); // Get numeric ID
+
+// Check tags
+if (entity.HasPlayerTag())
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelNPCTag();
+```
+
+---
+
 ## 💠 Value Members
 
 Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
@@ -853,21 +1028,21 @@ public void Dispose()
 
 ---
 
-## 💡 Example Usage
+## 🗂 Example of Usage
 
 ```csharp
-// Create a new entity in pure C#
+// Create a new entity in C#
 IEntity entity = new Entity();
-entity.Name = "Player";
+entity.Name = "Character";
 
 // Add a tag
-entity.AddTag(1); // 1 = PlayerTag
+entity.AddTag("Player");
 
 // Add a value
-entity.AddValue("Health".GetHashCode(), 100);
+entity.AddValue("Health", 100);
 
 // Add a behaviour
-entity.AddBehaviour(new MovementBehaviour());
+entity.AddBehaviour<MovementBehaviour>();
 
 // Initialize and enable the entity
 entity.Init();
@@ -875,6 +1050,8 @@ entity.Enable();
 
 // Update manually (for example in a game loop)
 entity.OnUpdate(Time.deltaTime);
+
+
 ```
 
 ## 📝 Notes

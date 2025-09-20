@@ -12,7 +12,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Tags
+## 🏹 Tags
 
 | Method                                                   | Description                            |
 |----------------------------------------------------------|----------------------------------------|

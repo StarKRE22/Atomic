@@ -12,8 +12,9 @@ Atomic.Entities provides:
 ## 🔍 Table of Contents
 - [Requirements](#requirements)
 - [Using Odin Inspector](#using-odin-inspector)
-- [Using Atomic Plugin for Rider](#using-atomic-plugin-for-rider)
+- [Using Rider Plugin](#using-atomic-plugin-for-rider)
 - [API Reference](#api-reference)
+- [Generate Entity API]()
 - [Performance](#performance)
 - [Best Practices](#-best-practices)
 
@@ -133,6 +134,7 @@ Atomic.Entities provides:
   - [EntityViewPool](UI/EntityViewPool.md)
   - [EntityCollectionView](UI/EntityViewPool.md)
 
+## 🤖 Generate Entity API
 
 ## Performance
 

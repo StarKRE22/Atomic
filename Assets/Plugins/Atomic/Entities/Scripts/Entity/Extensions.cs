@@ -30,7 +30,7 @@ namespace Atomic.Entities
         #endregion
 
         #region Tags
-
+        
         /// <summary>
         /// Adds multiple tags to the entity.
         /// </summary>
