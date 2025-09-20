@@ -656,40 +656,200 @@ public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()
 
 ## 💠 Lifecycle Members
 
-The **Lifecycle** section manages the entity's state transitions and update phases.  
-It covers initialization, enabling, per-frame updates, disabling, and disposal.  
-Lifecycle events allow reactive systems to respond to changes in the entity's state.
+Manage the entity's state transitions and update phases. It covers initialization, enabling,
+per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
+entity's state.
 
-### Events
+### ⚡ Events
 
-| Event                   | Description                                 |
-|-------------------------|---------------------------------------------|
-| `OnInitialize`          | Triggered when the entity is initialized.   |
-| `OnEnabled`             | Triggered when the entity is enabled.       |
-| `OnDisabled`            | Triggered when the entity is disabled.      |
-| `OnDisposed`            | Triggered when the entity is disposed.      |
-| `OnUpdated(float)`      | Triggered when the entity is updated.       |
-| `OnFixedUpdated(float)` | Triggered when the entity is fixed updated. |
-| `OnLateUpdated(float)`  | Triggered when the entity is late updated.  |
+#### `OnInitialized`
 
-### Properties
+```csharp
+public event Action OnInitialized  
+```
 
-| Property      | Type | Description                        |
-|---------------|------|------------------------------------|
-| `Initialized` | bool | True if the entity is initialized. |
-| `Enabled`     | bool | True if the entity is enabled.     |
+- **Description:** Occurs when the object has been successfully initialized.
+- **Triggers:** Fired by the `Init()` method after successful initialization.
 
-### Methods
+#### `OnDisposed`
 
-| Method                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Init()`                         | Initializes the entity. <ul><li>Transitions the entity to the `Initialized` state.</li><li>Calls `Init` on all behaviours implementing `IEntityInit`.</li><li>Triggers the `OnInitialized` event.</li><li>If the entity is already initialized, does nothing.</li></ul>                                                                                                                                                                                                                                                     |
-| `Enable()`                       | Enables the entity for updates. <ul><li>Transitions the entity to the `Enabled` state.</li><li>Calls `Enable` on all behaviours implementing `IEntityEnable`.</li><li>Triggers the `OnEnabled` event.</li><li>If the entity is not initialized yet, it will be initialized automatically.</li><li>If the entity is already enabled, does nothing.</li></ul>                                                                                                                                                                 |
-| `OnUpdate(float deltaTime)`      | Calls `Update` on all behaviours implementing `IEntityUpdate`. <ul><li>Triggers the `OnUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                      |
-| `OnFixedUpdate(float deltaTime)` | Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`. <ul><li>Triggers the `OnFixedUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                       |
-| `OnLateUpdate(float deltaTime)`  | Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`. <ul><li>Triggers the `OnLateUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                          |
-| `Disable()`                      | Disables the entity for updates. <ul><li>Transitions the entity to a not `Enabled` state.</li><li>Calls `Disable` on all behaviours implementing `IEntityDisable`.</li><li>Triggers the `OnDisabled` event.</li><li>If the entity is not enabled yet, does nothing.</li></ul>                                                                                                                                                                                                                                               |
-| `Dispose()`                      | Cleans up all resources used by the entity. <ul><li>Transitions the entity to a not `Initialized` state.</li><li>Calls `Dispose` on all behaviours implementing `IEntityDispose`.</li><li>Clears all tags, values, and behaviours.</li><li>Unsubscribes from all events.</li><li>Unregisters the entity from the `EntityRegistry`.</li><li>If the entity is enabled, calls `Disable` automatically.</li><li>If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.</li></ul> |
+```csharp
+public event Action OnDisposed  
+```
+
+- **Description:** Occurs when the object has been disposed and its resources released.
+- **Triggers:** Fired when `Dispose()` is called.
+
+#### `OnEnabled`
+
+```csharp
+public event Action OnEnabled  
+```
+
+- **Description:** Occurs when the object is enabled.
+- **Triggers:** Fired by the `Enable()` method.
+
+#### `OnDisabled`
+
+```csharp
+public event Action OnDisabled  
+```
+
+- **Description:** Occurs when the object is disabled.
+- **Triggers:** Fired by the `Disable()` method.
+
+#### `OnTicked`
+
+```csharp
+public event Action<float> OnTicked  
+```
+
+- **Description:** Occurs during the regular `Update` phase, once per frame.
+- **Triggers:** Fired inside `Tick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+
+#### `OnFixedTicked`
+
+```csharp
+public event Action<float> OnFixedTicked  
+```
+
+- **Description:** Occurs during the `FixedUpdate` phase, typically used for physics updates.
+- **Triggers:** Fired inside `FixedTick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
+- **Exceptions:** None.
+
+#### `OnLateTicked`
+
+```csharp
+public event Action<float> OnLateTicked  
+```
+
+- **Description:** Occurs during the `LateUpdate` phase, after all `Update` calls have been made.
+- **Triggers:** Fired inside `LateTick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+
+---
+
+### 🔑 Properties
+
+#### `Initialized`
+
+```csharp
+public bool Initialized { get; }  
+```
+
+- **Description:** Indicates whether the object is currently initialized.
+- **Returns:** `true` if the object has been initialized, otherwise `false`.
+
+#### `Enabled`
+
+```csharp
+public bool Enabled { get; }  
+```
+
+- **Description:** Indicates whether the object is currently enabled.
+- **Returns:** `true` if enabled, otherwise `false`.
+
+---
+
+### 🏹 Methods
+
+#### `Init()`
+
+```csharp
+public void Init()  
+```
+
+- **Description:** Initializes the entity.
+- **Behavior:**
+    - Transitions the entity to the `Initialized` state.
+    - Calls `Init` on all behaviours implementing `IEntityInit`.
+    - Triggers the `OnInitialized` event.
+    - If the entity is already initialized, does nothing.
+
+#### `Enable()`
+
+```csharp
+public void Enable()  
+```
+
+- **Description:** Enables the entity for updates.
+- **Behavior:**
+    - Transitions the entity to the `Enabled` state.
+    - Calls `Enable` on all behaviours implementing `IEntityEnable`.
+    - Triggers the `OnEnabled` event.
+    - If the entity is not initialized yet, it will be initialized automatically.
+    - If the entity is already enabled, does nothing.
+
+#### `Tick(float)`
+
+```csharp
+public void Tick(float deltaTime)  
+```
+
+- **Description:** Calls `Update` on all behaviours implementing `IEntityUpdate`.
+- **Behavior:**
+    - Triggers the `OnTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `FixedTick(float)`
+
+```csharp
+public void FixedTick(float deltaTime)  
+```
+
+- **Description:** Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`.
+- **Behavior:**
+    - Triggers the `OnFixedTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `LateTick(float)`
+
+```csharp
+public void LateTick(float deltaTime)  
+```
+
+- **Description:** Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`.
+- **Behavior:**
+    - Triggers the `OnLateTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `Disable()`
+
+```csharp
+public void Disable()  
+```
+
+- **Description:** Disables the entity for updates.
+- **Behavior:**
+    - Transitions the entity to a not `Enabled` state.
+    - Calls `Disable` on all behaviours implementing `IEntityDisable`.
+    - Triggers the `OnDisabled` event.
+    - If the entity is not enabled yet, does nothing.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()  
+```
+
+- **Description:** Cleans up all resources used by the entity.
+- **Behavior:**
+    - Transitions the entity to a not `Initialized` state.
+    - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
+    - Clears all tags, values, and behaviours.
+    - Unsubscribes from all events.
+    - Unregisters the entity from the `EntityRegistry`.
+    - Disposes stored values if `Settings.disposeValues` is `true`.
+    - If the entity is enabled, calls `Disable()` automatically.
+    - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
 ---
 
