@@ -4,7 +4,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Clearing
+## 🏹 Clearing
 
 | Method                       | Description                                    |
 |------------------------------|------------------------------------------------|
@@ -32,7 +32,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Values
+## 🏹 Values
 
 | Method                                                                             | Description                                             |
 |------------------------------------------------------------------------------------|---------------------------------------------------------|
@@ -55,7 +55,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Behaviours
+## 🏹 Behaviours
 
 | Method                                                                                         | Description                                                  |
 |------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
@@ -68,7 +68,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Entity Installation
+## 🏹 Entity Installation
 
 | Method                                                                            | Description                                                      |
 |-----------------------------------------------------------------------------------|------------------------------------------------------------------|
@@ -79,7 +79,7 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 
 ---
 
-## Entity Retrieval (Unity Only)
+## 🏹 Entity Retrieval (Unity Only)
 
 | Method                                                                 | Description                                  |
 |------------------------------------------------------------------------|----------------------------------------------|

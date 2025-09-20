@@ -283,89 +283,15 @@ all your tags (and values) once in a small config file, and the framework will a
 can learn more about this in the Manual under
 the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
 
-**Step 1:** Create a `.yaml` file where you list all your tags and values:
-
-```yaml
-header: EntityAPI
-entityType: IEntity
-aggressiveInlining: true
-namespace: PROJECT_NAMESPACE
-className: EntityAPI
-directory: CODE_GENERATION_PATH
-
-imports:
-  - UnityEngine
-  - Atomic.Entities
-  - Atomic.Elements
-
-tags:
-  - Player
-  - NPC
-
-values:
-```
-
-- `namespace` — the namespace of the generated code
-- `tags` — list of tags that will be turned into constants
-- `values` — same for values (empty in this example)
-
----
-
-**Step 2:** Based on this config, the framework creates a **static API class**:
-
-```csharp
-/**
- * Code generation. Don't modify! 
- **/
-
-public static class EntityAPI
-{
-
-    ///Tags
-    public static readonly int Player;
-    public static readonly int NPC;
-
-    ///Values
-
-    static GameEntityAPI()
-    {
-        //Tags
-        Player = NameToId(nameof(Player));
-        NPC = NameToId(nameof(NPC));
-
-        //Values
-    }
-
-
-    ///Tag Extensions
-
-    #region Player
-    public static bool HasPlayerTag(this IGameEntity entity) => entity.HasTag(Player);
-    public static bool AddPlayerTag(this IGameEntity entity) => entity.AddTag(Player);
-    public static bool DelPlayerTag(this IGameEntity entity) => entity.DelTag(Player);
-    #endregion
-    
-    #region NPC
-    public static bool HasNPCTag(this IGameEntity entity) => entity.HasTag(NPC);
-    public static bool AddNPCTag(this IGameEntity entity) => entity.AddTag(NPC);
-    public static bool DelNPCTag(this IGameEntity entity) => entity.DelTag(NPC);
-    #endregion
-}
-```
-
-**Step 3:** Now you get ready-to-use methods for each tag: `AddPlayerTag()`, `HasPlayerTag()`, `DelPlayerTag()`, etc. No
-more “magic
-strings” or manual ID lookups.
-
 ```csharp
 // Create a new entity
 IEntity entity = new Entity();
 
-// Add tags by string name
+// Add tags
 entity.AddPlayerTag();
-entity.AddNPCTag(); // Get numeric ID
+entity.AddNPCTag();
 
-// Check tags
+// Check tag
 if (entity.HasPlayerTag())
     Console.WriteLine("Entity is a Player");
 
@@ -705,94 +631,11 @@ values once in a small config file, and the framework automatically generates
 strongly-typed C# helpers. More details are in the Manual under
 the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
 
-**Step 1:** Create a `.yaml` file where you list all your tags and values:
-
-```yaml
-header: EntityAPI
-entityType: IEntity
-aggressiveInlining: true
-namespace: PROJECT_NAMESPACE
-className: EntityAPI
-directory: CODE_GENERATION_PATH
-
-imports:
-
-  - UnityEngine
-  - Atomic.Entities
-  - Atomic.Elements
-
-tags:
-
-values:
-
-  - Health: int
-  - Speed: float
-  - Inventory: IInventory
-```
-
----
-
-**Step 2:** Generated code looks like this:
-
-```csharp
-/**
- * Code generation. Don't modify! 
- **/
-public static class EntityAPI
-{
-    ///Values
-    public static readonly int Health; //int
-    public static readonly int Speed; //float
-    public static readonly int Inventory; //IInventory
-
-    static EntityAPI()
-    {
-        // Values
-        Health = NameToId(nameof(Health));
-        Speed = NameToId(nameof(Speed));
-        Inventory = NameToId(nameof(Inventory));
-    }
-
-    ///Value Extensions
-    
-    #region Health
-    public static IVariable<int> GetHealth(this IEntity entity) => entity.GetValue<IVariable<int>>(Health);
-    public static bool TryGetHealth(this IEntity entity, out IVariable<int> value) => entity.TryGetValue(Health, out value);
-    public static void AddHealth(this IEntity entity, IVariable<int> value) => entity.AddValue(Health, value);
-    public static bool HasHealth(this IEntity entity) => entity.HasValue(Health);
-    public static bool DelHealth(this IEntity entity) => entity.DelValue(Health);
-    public static void SetHealth(this IEntity entity, IVariable<int> value) => entity.SetValue(Health, value);
-    #endregion
-    
-    #region Speed
-    public static IVariable<float> GetSpeed(this IEntity entity) => entity.GetValue<IVariable<float>>(Speed);
-    public static bool TryGetSpeed(this IEntity entity, out IVariable<float> value) => entity.TryGetValue(Speed, out value);
-    public static void AddSpeed(this IEntity entity, IVariable<float> value) => entity.AddValue(Speed, value);
-    public static bool HasSpeed(this IEntity entity) => entity.HasValue(Speed);
-    public static bool DelSpeed(this IEntity entity) => entity.DelValue(Speed);
-    public static void SetSpeed(this IEntity entity, IVariable<float> value) => entity.SetValue(Speed, value);
-    #endregion
-    
-    #region Inventory
-    public static IVariable<IInventory> GetInventory(this IEntity entity) => entity.GetValue<IVariable<IInventory>>(Inventory);
-    public static bool TryGetInventory(this IEntity entity, out IVariable<IInventory> value) => entity.TryGetValue(Inventory, out value);
-    public static void AddInventory(this IEntity entity, IVariable<IInventory> value) => entity.AddValue(Inventory, value);
-    public static bool HasInventory(this IEntity entity) => entity.HasValue(Inventory);
-    public static bool DelInventory(this IEntity entity) => entity.DelValue(Inventory);
-    public static void SetInventory(this IEntity entity, IVariable<IInventory> value) => entity.SetValue(Inventory, value);
-    #endregion
-}
-```
-
----
-
-**Step 3:** Now you get ready-to-use methods for each value:
-
 ```csharp
 // Create a new entity
 IEntity entity = new Entity();
 
-// Add values by string key
+// Add values
 entity.AddHealth(100);
 entity.AddSpeed(12.5f);
 entity.AddInventory(new GridInventory());
@@ -1012,13 +855,93 @@ public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Enumerator for iterating through behaviours.
 
-----
+---
+
+### 🗂 Example of Usage
+
+Below is an example of working with behaviours in `IEntity`.
+
+#### 1️⃣ Basic Usage
+
+```csharp
+// Create a new entity
+IEntity player = new Entity();
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
+
+#### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](Extensions.md#-behaviours) for convenient handling of behaviours.
+
+```csharp
+// Create a new entity
+IEntity enemy = new Entity();
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```
+
+---
 
 ## 💠 Lifecycle Members
 
 Manage the entity's state transitions and update phases. It covers initialization, enabling,
 per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
 entity's state.
+
+---
 
 ### ⚡ Events
 
@@ -1213,6 +1136,42 @@ public void Dispose()
 
 ---
 
+### 🗂 Example of Usage
+
+This example demonstrates how to manage the lifecycle of an entity, including initialization, enabling, per-frame
+updates, disabling, and disposal. Event subscriptions allow reacting to state changes in real time.
+
+```csharp
+// Create a new entity
+IEntity player = new Entity();
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
+
+---
+
 ## 🗂 Example of Usage
 
 ```csharp
@@ -1239,12 +1198,7 @@ entity.OnUpdate(Time.deltaTime);
 
 ```
 
-## 📝 Notes
-
-- Supports **reactive programming** via `OnStateChanged`.
-- Focused on **interface contract**, not implementation.
-- Can be implemented by pure C# classes or Unity `MonoBehaviour`s.
-- Interface-based design enables **easy mocking and testing**.
+---
 
 ## 📝 Notes
 
