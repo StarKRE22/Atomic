@@ -36,7 +36,7 @@ Atomic.Entities provides:
 ## API Reference
 
 - **Entities**
-  - [IEntity](Entities/IEntity.md)
+  - [IEntity](Entities/IEntity.md) <!-- + -->
   - [Entity](Entities/Entity.md)
   - [EntitySingleton](Entities/EntitySingleton.md)
   - [SceneEntity](Entities/SceneEntity.md)
