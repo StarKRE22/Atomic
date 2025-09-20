@@ -1193,7 +1193,7 @@ entity.Init();
 entity.Enable();
 
 // Update manually (for example in a game loop)
-entity.OnUpdate(Time.deltaTime);
+entity.Tick(Time.deltaTime);
 
 
 ```
