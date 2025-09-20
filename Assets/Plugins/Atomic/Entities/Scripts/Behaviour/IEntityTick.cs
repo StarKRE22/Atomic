@@ -4,7 +4,7 @@ namespace Atomic.Entities
     /// Defines a behavior that executes logic during the regular update cycle of an <see cref="IEntity"/>.
     /// </summary>
     /// <remarks>
-    /// This method is automatically called by <see cref="ITickSource.Tick"/> once per frame during the main game loop.
+    /// This method is automatically called by <see cref="ITickLifecycle.Tick"/> once per frame during the main game loop.
     /// </remarks>
     public interface IEntityTick : IEntityBehaviour
     {
@@ -22,7 +22,7 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The concrete entity type this behavior is associated with.</typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="ITickSource.Tick"/> 
+    /// This method is automatically invoked by <see cref="ITickLifecycle.Tick"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityTick<in E> : IEntityTick where E : IEntity

@@ -5,8 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityFixedTick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityFixedTick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityInit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityInit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityLateTick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityLateTick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityTick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Behaviour/IEntityTick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IEnableSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IEnableLifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IEnableSource.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IEnableLifecycle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IInitSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IInitLifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IInitSource.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/IInitLifecycle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/ITickSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/ITickLifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/ITickSource.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Sources/ITickLifecycle.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisableSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisableSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisposeSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisposeSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/EnableSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/EnableSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/FixedTickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/FixedTickSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/InitSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/InitSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/LateTickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/LateTickSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/TickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/TickSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/TickableLoop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/TickableLoop.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/UpdateLoopTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/TickableLoopTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/UpdateLoopTests.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/TickableLoopTests.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Contracts/TickSourceDummy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Contracts/TickSourceDummy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableSource.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitSource.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IUpdateSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IUpdateSource.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,31 +232,8 @@
       <workItem from="1758087033777" duration="28099000" />
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
-      <workItem from="1758300054327" duration="8707000" />
-    </task>
-    <task id="LOCAL-00514" summary="FixedTimestamp.md">
-      <option name="closed" value="true" />
-      <created>1758297216898</created>
-      <option name="number" value="00514" />
-      <option name="presentableId" value="LOCAL-00514" />
-      <option name="project" value="LOCAL" />
-      <updated>1758297216898</updated>
-    </task>
-    <task id="LOCAL-00515" summary="IPeriod.md">
-      <option name="closed" value="true" />
-      <created>1758297744509</created>
-      <option name="number" value="00515" />
-      <option name="presentableId" value="LOCAL-00515" />
-      <option name="project" value="LOCAL" />
-      <updated>1758297744509</updated>
-    </task>
-    <task id="LOCAL-00516" summary="IPeriod.md">
-      <option name="closed" value="true" />
-      <created>1758297843740</created>
-      <option name="number" value="00516" />
-      <option name="presentableId" value="LOCAL-00516" />
-      <option name="project" value="LOCAL" />
-      <updated>1758297843740</updated>
+      <workItem from="1758300054327" duration="10252000" />
+      <workItem from="1758351834194" duration="2323000" />
     </task>
     <task id="LOCAL-00517" summary="IStopwatch.md">
       <option name="closed" value="true" />
@@ -593,7 +603,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758311784212</updated>
     </task>
-    <option name="localTasksCounter" value="563" />
+    <task id="LOCAL-00563" summary="ReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1758311977892</created>
+      <option name="number" value="00563" />
+      <option name="presentableId" value="LOCAL-00563" />
+      <option name="project" value="LOCAL" />
+      <updated>1758311977892</updated>
+    </task>
+    <task id="LOCAL-00564" summary="Minor Fixes">
+      <option name="closed" value="true" />
+      <created>1758312028707</created>
+      <option name="number" value="00564" />
+      <option name="presentableId" value="LOCAL-00564" />
+      <option name="project" value="LOCAL" />
+      <updated>1758312028707</updated>
+    </task>
+    <task id="LOCAL-00565" summary="Готово!">
+      <option name="closed" value="true" />
+      <created>1758312242143</created>
+      <option name="number" value="00565" />
+      <option name="presentableId" value="LOCAL-00565" />
+      <option name="project" value="LOCAL" />
+      <updated>1758312242143</updated>
+    </task>
+    <option name="localTasksCounter" value="566" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,9 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ITimestamp.md" />
-    <MESSAGE value="Period.md" />
-    <MESSAGE value="PeriodState.md" />
     <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="Sources.md" />
     <MESSAGE value="Stopwatch.md" />
@@ -645,7 +676,10 @@
     <MESSAGE value="IVariable.md" />
     <MESSAGE value="ProxyVariable.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveProxyVariable.md" />
+    <MESSAGE value="ReactiveVariable.md" />
+    <MESSAGE value="Minor Fixes" />
+    <MESSAGE value="Готово!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готово!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

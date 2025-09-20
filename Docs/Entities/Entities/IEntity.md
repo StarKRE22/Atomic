@@ -1,105 +1,205 @@
 # 🧩 IEntity
 
-`IEntity` is the fundamental interface representing an entity in the framework.  
-It follows the **Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
+Represents the fundamental interface of entity in the framework. It follows the **Entity–State–Behaviour** pattern and
+provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
+
+```csharp
+public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
+```
+
+- **Inheritance:**
+    - [IInitLifecycle](../Lifecycle/Sources/IInitLifecycle.md) – Supports explicit initialization and disposal.
+    - [IEnableLifecycle](../Lifecycle/Sources/IEnableLifecycle.md) – Supports runtime enabling and disabling.
+    - [ITickLifecycle](../Lifecycle/Sources/ITickLifecycle.md) – Supports `Tick`, `FixedTick`, and `LateTick` callbacks.
 
 ---
 
 ## 📚 Content
 
-- [Key Features](#-key-features)
-- [Inheritance](#-inheritance)
-- [Core State](#-core-state)
-- [Tags](#-tags)
-- [Values](#-values)
-- [Behaviours](#-behaviours)
-- [Lifecycle](#-lifecycle)
+- [Core](#-core-members)
+- [Tags](#-tag-members)
+- [Values](#-value-members)
+- [Behaviours](#-behaviour-members)
+- [Lifecycle](#-lifecycle-members)
 - [Example Usage](#-example-usage)
 - [Notes](#-notes)
 
+---
 
-## 🔑 Key Features
+## 💠 Core Members
 
-- **Event-Driven** – Reactive programming support via state change notifications.
-- **Unique Identity** – Runtime-generated instance ID for entity tracking.
-- **Tag System** – Lightweight categorization and filtering.
-- **State Management** – Dynamic key-value storage for runtime data.
-- **Behaviour Composition** – Attach or detach modular logic at runtime.
-- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
+Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+debugging or tooling, and the main event for reactive state
+changes.
 
 ---
 
-## 🧬 Inheritance
+### ⚡ Events
 
-- `IInitSource` – Supports explicit initialization and disposal.
-- `IEnableSource` – Supports runtime enabling and disabling.
-- `IUpdateSource` – Supports `Update`, `FixedUpdate`, and `LateUpdate` callbacks.
+#### `OnStateChanged`
 
----
+```csharp
+public event Action<IEntity> OnStateChanged
+```
 
-## 🧩 Core State
+- **Description:** Triggered whenever the entity’s internal state changes.
+- **Parameter:** `IEntity` – This entity.
+- **Note:** Useful for reacting to lifecycle or state transitions of an entity.
 
-The **Core State** section represents the fundamental identity and state of the entity.  
-It includes unique identifiers, optional names for debugging or tooling, and the main event for reactive state changes.  
-This section provides the minimal information needed to track and observe the entity’s lifecycle.
+### 🔑 Properties
 
-### Events
+#### `InstanceID`
 
-| Event                   | Description                                             |
-|-------------------------|---------------------------------------------------------|
-| `OnStateChanged`        | Triggered whenever the entity’s internal state changes. |
+```csharp
+public int InstanceID { get; }
+```
 
-### Properties
-
-| Property     | Type   | Description                                          |
-|--------------|--------|------------------------------------------------------|
-| `InstanceID` | int    | Runtime-generated unique identifier.                 |
-| `Name`       | string | Optional user-defined name for debugging or tooling. |
+- **Description:** Runtime-generated unique identifier.
+- **Notes:**
+    - Ensures uniqueness of the entity instance during runtime.
+    - Should not be used for persistence or serialization.
 
 ---
 
-## 🏷 Tags
+#### `Name`
 
-The **Tags** section manages lightweight categorization and filtering of entities.  
-Tags are integer-based labels that can be added, removed, enumerated, or checked.  
-They are useful for grouping entities, querying, and driving logic based on assigned tags.
+```csharp
+public string Name { get; set; }
+```
 
-### Events
-
-| Event          | Description                      |
-|----------------|----------------------------------|
-| `OnTagAdded`   | Triggered when a tag is added.   |
-| `OnTagDeleted` | Triggered when a tag is removed. |
-
-### Properties
-
-| Property             | Type   | Description                                           |
-|----------------------|--------|-------------------------------------------------------|
-| `TagCount`           | int    | Number of associated tags.                            |
-
-### Methods
-
-| Method               | Description                             |
-|----------------------|-----------------------------------------|
-| `HasTag(int)`        | Checks if the entity has the given tag. |
-| `AddTag(int)`        | Adds a tag.                             |
-| `DelTag(int)`        | Removes a tag.                          |
-| `ClearTags()`        | Removes all tags.                       |
-| `GetTags()`          | Returns all tag keys.                   |
-| `CopyTags(int[])`    | Copies tag keys into an array.          |
-| `GetTagEnumerator()` | Enumerates all tags.                    |
+- **Description:** Optional user-defined name for debugging or tooling.
+- **Note:** Useful for logging, inspector display, or editor tooling.
 
 ---
 
+## 💠 Tag Members
 
-## 💾 Values
+Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
 
-The **Values** section manages dynamic key-value storage for the entity.  
-Values can be of any type (structs or reference types) and are identified by integer keys.  
-This allows flexible runtime data storage, reactive updates, and modular logic.
+---
 
-Values support reactive updates via associated events (`OnValueAdded`, `OnValueDeleted`, `OnValueChanged`),
-allowing other systems to respond automatically to state changes.
+### ⚡ Events
+
+#### `OnTagAdded`
+
+```csharp
+public event Action<IEntity, int> OnTagAdded
+```
+
+- **Description:** Triggered when a tag is added.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was added.
+- **Note:** Useful for reacting to dynamic tagging of entities.
+
+---
+
+#### `OnTagDeleted`
+
+```csharp
+public event Action<IEntity, int> OnTagDeleted
+```
+
+- **Description:** Triggered when a tag is removed.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was removed.
+
+- **Note:** Allows cleanup or logic adjustment when tags are deleted.
+
+---
+
+### 🔑 Properties
+
+#### `TagCount`
+
+```csharp
+public int TagCount { get; }
+```
+
+- **Description:** Number of associated tags.
+- **Note:** Reflects how many tags are currently attached to the entity.
+
+---
+
+### 🏹 Methods
+
+#### `HasTag`
+
+```csharp
+public bool HasTag(int tag)
+```
+
+- **Description:** Checks if the entity has the given tag.
+- **Parameter:** `tag` – The tag to check for.
+- **Returns:** `true` if the tag exists, otherwise `false`.
+
+#### `AddTag`
+
+```csharp
+public bool AddTag(int tag)
+```
+
+- **Description:** Adds a tag to the entity.
+- **Parameter:** `int tag` – The tag to add.
+- **Returns:** `true` if the tag was added, otherwise `false`.
+- **Triggers:** `OnTagAdded` and `OnStateChanged`
+
+#### `DelTag`
+
+```csharp
+public bool DelTag(int tag)
+```
+
+- **Description:** Removes a tag from the entity.
+- **Parameter:** `tag` – The tag to remove.
+- **Returns:** `true` if the tag was removed, otherwise `false`.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `ClearTags`
+
+```csharp
+public void ClearTags()
+```
+
+- **Description:** Removes all tags from the entity.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `GetTags`
+
+```csharp
+public int[] GetTags()
+```
+
+- **Description:** Returns all tag keys associated with the entity.
+- **Returns:** Array of tag keys.
+
+#### `CopyTags`
+
+```csharp
+public int CopyTags(int[] results)
+```
+
+- **Description:** Copies tag keys into the provided array.
+- **Parameter:** `results` – Array to copy the tags into.
+- **Returns:** Number of tags copied.
+
+#### `GetTagEnumerator`
+
+```csharp
+public IEnumerator<int> GetTagEnumerator()
+```
+
+- **Description:** Enumerates all tags of the entity.
+- **Returns:** `IEnumerator<int>` – Enumerator over tag keys.
+
+---
+
+## 💠 Value Members
+
+Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
 ### Events
 
@@ -114,7 +214,6 @@ allowing other systems to respond automatically to state changes.
 | Property     | Type | Description              |
 |--------------|------|--------------------------|
 | `ValueCount` | int  | Number of stored values. |
-
 
 ### Methods
 
@@ -139,11 +238,12 @@ allowing other systems to respond automatically to state changes.
 
 ---
 
-## ⚙️ Behaviours
+## 💠️ Behaviour Members
 
 The **Behaviours** section manages modular logic attached to the entity.  
 Behaviours implement `IEntityBehaviour` interfaces and can be added, removed, queried, or enumerated at runtime.  
-This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure.
+This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity
+structure.
 
 Behaviours can respond to lifecycle events (`Init`, `Enable`, `Update`, `Disable`, `Dispose`),
 enabling dynamic logic composition without changing the core entity structure.
@@ -154,7 +254,6 @@ enabling dynamic logic composition without changing the core entity structure.
 |----------------------|----------------------------------------|
 | `OnBehaviourAdded`   | Triggered when a behaviour is added.   |
 | `OnBehaviourDeleted` | Triggered when a behaviour is removed. |
-
 
 ### Properties
 
@@ -183,7 +282,7 @@ enabling dynamic logic composition without changing the core entity structure.
 
 ----
 
-## 🔄 Lifecycle
+## 💠 Lifecycle Members
 
 The **Lifecycle** section manages the entity's state transitions and update phases.  
 It covers initialization, enabling, per-frame updates, disabling, and disposal.  
@@ -191,15 +290,15 @@ Lifecycle events allow reactive systems to respond to changes in the entity's st
 
 ### Events
 
-| Event                   | Description                                             |
-|-------------------------|---------------------------------------------------------|
-| `OnInitialize`          | Triggered when the entity is initialized.               |
-| `OnEnabled`             | Triggered when the entity is enabled.                   |
-| `OnDisabled`            | Triggered when the entity is disabled.                  |
-| `OnDisposed`            | Triggered when the entity is disposed.                  |
-| `OnUpdated(float)`      | Triggered when the entity is updated.                   |
-| `OnFixedUpdated(float)` | Triggered when the entity is fixed updated.             |
-| `OnLateUpdated(float)`  | Triggered when the entity is late updated.              |
+| Event                   | Description                                 |
+|-------------------------|---------------------------------------------|
+| `OnInitialize`          | Triggered when the entity is initialized.   |
+| `OnEnabled`             | Triggered when the entity is enabled.       |
+| `OnDisabled`            | Triggered when the entity is disabled.      |
+| `OnDisposed`            | Triggered when the entity is disposed.      |
+| `OnUpdated(float)`      | Triggered when the entity is updated.       |
+| `OnFixedUpdated(float)` | Triggered when the entity is fixed updated. |
+| `OnLateUpdated(float)`  | Triggered when the entity is late updated.  |
 
 ### Properties
 
@@ -247,7 +346,17 @@ entity.OnUpdate(Time.deltaTime);
 ```
 
 ## 📝 Notes
+
 - Supports **reactive programming** via `OnStateChanged`.
 - Focused on **interface contract**, not implementation.
 - Can be implemented by pure C# classes or Unity `MonoBehaviour`s.
 - Interface-based design enables **easy mocking and testing**.
+
+## 📝 Notes
+
+- **Event-Driven** – Reactive programming support via state change notifications.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.

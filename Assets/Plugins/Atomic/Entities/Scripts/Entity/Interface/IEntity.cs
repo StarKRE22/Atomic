@@ -18,7 +18,7 @@ namespace Atomic.Entities
     ///   <item>Unique Identity<description>Runtime instance ID for entity tracking</description></item>
     /// </list>
     /// </remarks>
-    public partial interface IEntity : IInitSource, IEnableSource, ITickSource
+    public partial interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
     {
         /// <summary>
         /// Raised when the internal state of the entity changes.

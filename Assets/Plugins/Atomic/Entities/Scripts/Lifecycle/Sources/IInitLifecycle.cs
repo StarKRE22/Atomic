@@ -5,7 +5,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Represents a contract that can be explicitly initialized and disposed during its lifecycle.
     /// </summary>
-    public interface IInitSource : IDisposable
+    public interface IInitLifecycle : IDisposable
     {
         /// <summary>
         /// Occurs when the object has been successfully initialized.

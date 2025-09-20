@@ -3,7 +3,7 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="ITickSource"/>'s <see cref="ITickSource.OnLateTicked"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="ITickLifecycle"/>'s <see cref="ITickLifecycle.OnLateTicked"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for managing lifecycle-scoped or temporary subscriptions to late update events,
@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// </remarks>
     public readonly struct LateTickSubscription : IDisposable
     {
-        private readonly ITickSource _source;
+        private readonly ITickLifecycle _source;
         private readonly Action<float> _callback;
 
         /// <summary>
@@ -19,14 +19,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The updatable source to subscribe to.</param>
         /// <param name="callback">The callback invoked during <c>LateUpdate</c> cycles.</param>
-        internal LateTickSubscription(ITickSource source, Action<float> callback)
+        internal LateTickSubscription(ITickLifecycle source, Action<float> callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="ITickSource.OnLateTicked"/> event.
+        /// Unsubscribes the callback from the <see cref="ITickLifecycle.OnLateTicked"/> event.
         /// </summary>
         public void Dispose()
         {

@@ -3,14 +3,14 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="IInitSource"/>'s <see cref="IInitSource.OnInitialized"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="IInitLifecycle"/>'s <see cref="IInitLifecycle.OnInitialized"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for temporarily reacting to spawn events and ensuring automatic unsubscription upon disposal.
     /// </remarks>
     public readonly struct InitSubscription : IDisposable
     {
-        private readonly IInitSource _source;
+        private readonly IInitLifecycle _source;
         private readonly Action _callback;
 
         /// <summary>
@@ -18,14 +18,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The spawnable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke on spawn.</param>
-        internal InitSubscription(IInitSource source, Action callback)
+        internal InitSubscription(IInitLifecycle source, Action callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="IInitSource.OnInitialized"/> event.
+        /// Unsubscribes the callback from the <see cref="IInitLifecycle.OnInitialized"/> event.
         /// </summary>
         public void Dispose()
         {

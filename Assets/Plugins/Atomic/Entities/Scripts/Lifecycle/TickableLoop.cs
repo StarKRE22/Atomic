@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Internal MonoBehaviour singleton that manages and dispatches Unity update callbacks
     /// (<see cref="Update"/>, <see cref="FixedUpdate"/>, <see cref="LateUpdate"/>)
-    /// to all registered <see cref="ITickSource"/> instances.
+    /// to all registered <see cref="ITickLifecycle"/> instances.
     /// </summary>
     /// <remarks>
     /// The UpdateManager is instantiated automatically and hidden from the hierarchy. 
@@ -17,21 +17,21 @@ namespace Atomic.Entities
     /// </remarks>
     [AddComponentMenu("")]
     [DisallowMultipleComponent]
-    internal sealed class UpdateLoop : MonoBehaviour
+    internal sealed class TickableLoop : MonoBehaviour
     {
-        private static readonly IEqualityComparer<ITickSource> s_comparer = EqualityComparer<ITickSource>.Default;
+        private static readonly IEqualityComparer<ITickLifecycle> s_comparer = EqualityComparer<ITickLifecycle>.Default;
 
-        private static UpdateLoop _instance;
+        private static TickableLoop _instance;
         private static bool _spawned;
 
-        internal ITickSource[] _updatables;
+        internal ITickLifecycle[] _updatables;
         private int _count;
 
         /// <summary>
         /// Gets the singleton instance of the UpdateManager.
         /// Automatically creates and registers itself if needed.
         /// </summary>
-        internal static UpdateLoop Instance
+        internal static TickableLoop Instance
         {
             get
             {
@@ -49,7 +49,7 @@ namespace Atomic.Entities
         /// Registers an IUpdatable instance for update callbacks.
         /// </summary>
         /// <param name="tickSource">The instance to register.</param>
-        internal void Register(ITickSource tickSource)
+        internal void Register(ITickLifecycle tickSource)
         {
             if (tickSource == null)
                 return;
@@ -58,7 +58,7 @@ namespace Atomic.Entities
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateLoop instance = Instance;
+            TickableLoop instance = Instance;
             AddIfAbsent(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
 
@@ -66,13 +66,13 @@ namespace Atomic.Entities
         /// Unregisters a previously registered IUpdatable instance.
         /// </summary>
         /// <param name="tickSource">The instance to unregister.</param>
-        internal void Unregister(ITickSource tickSource)
+        internal void Unregister(ITickLifecycle tickSource)
         {
 #if UNITY_EDITOR
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateLoop instance = Instance;
+            TickableLoop instance = Instance;
             Remove(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
         
@@ -110,12 +110,12 @@ namespace Atomic.Entities
         /// Creates the hidden singleton GameObject and attaches UpdateManager component.
         /// </summary>
         /// <returns>The created UpdateManager instance.</returns>
-        private static UpdateLoop CreateInstance()
+        private static TickableLoop CreateInstance()
         {
             GameObject go = new GameObject("Update Manager");
             go.hideFlags = HideFlags.HideAndDontSave;
             DontDestroyOnLoad(go);
-            return go.AddComponent<UpdateLoop>();
+            return go.AddComponent<TickableLoop>();
         }
 
 #if UNITY_EDITOR

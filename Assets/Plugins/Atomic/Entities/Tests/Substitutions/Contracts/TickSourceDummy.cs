@@ -2,7 +2,7 @@ using System;
 
 namespace Atomic.Entities
 {
-    public class TickSourceDummy : ITickSource
+    public class TickSourceDummy : ITickLifecycle
     {
         public event Action<float> OnTicked;
         public event Action<float> OnFixedTicked;

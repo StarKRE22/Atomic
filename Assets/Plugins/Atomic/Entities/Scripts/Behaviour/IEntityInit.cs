@@ -25,7 +25,7 @@ namespace Atomic.Entities
     /// The concrete entity type this behavior is associated with.
     /// </typeparam>
     /// <remarks>
-    /// This method is automatically invoked by <see cref="IInitSource.Init"/> 
+    /// This method is automatically invoked by <see cref="IInitLifecycle.Init"/> 
     /// when the behavior is registered on an entity of type <typeparamref name="E"/>.
     /// </remarks>
     public interface IEntityInit<in E> : IEntityInit where E : IEntity

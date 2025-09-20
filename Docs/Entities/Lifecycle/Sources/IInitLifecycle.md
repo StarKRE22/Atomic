@@ -1,4 +1,4 @@
-# 🧩 IInitSource
+# 🧩 IInitLifecycle
 
 An interface used internally by the framework to represent a **runtime-controllable initialization / disposal contract**.  
 Provides **events** for initialization and disposal state changes, as well as a method to explicitly initialize the object.

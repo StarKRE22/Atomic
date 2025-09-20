@@ -3,14 +3,14 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="ITickSource"/>'s <see cref="ITickSource.OnTicked"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="ITickLifecycle"/>'s <see cref="ITickLifecycle.OnTicked"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for subscribing to frame-based updates and ensuring clean unsubscription to prevent memory leaks.
     /// </remarks>
     public readonly struct TickSubscription : IDisposable
     {
-        private readonly ITickSource _source;
+        private readonly ITickLifecycle _source;
         private readonly Action<float> _callback;
 
         /// <summary>
@@ -18,14 +18,14 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The updatable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke on update.</param>
-        internal TickSubscription(ITickSource source, Action<float> callback)
+        internal TickSubscription(ITickLifecycle source, Action<float> callback)
         {
             _source = source;
             _callback = callback;
         }
 
         /// <summary>
-        /// Unsubscribes the callback from the <see cref="ITickSource.OnTicked"/> event.
+        /// Unsubscribes the callback from the <see cref="ITickLifecycle.OnTicked"/> event.
         /// </summary>
         public void Dispose()
         {

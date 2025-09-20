@@ -6,7 +6,7 @@ namespace Atomic.Entities
     /// Represents a contract that supports update callbacks during the loop,
     /// including regular, fixed, and late update phases.
     /// </summary>
-    public interface ITickSource
+    public interface ITickLifecycle
     {
         /// <summary>
         /// Occurs during the regular Update phase, once per frame.
