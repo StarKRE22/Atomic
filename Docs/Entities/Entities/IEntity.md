@@ -33,8 +33,6 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
          debugging or tooling, and the main event for reactive state changes.
   </summary>
 
-<br>
-
 ### ⚡ Events
 
 #### `OnStateChanged`
@@ -83,8 +81,6 @@ public string Name { get; set; }
     <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
          enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
   </summary>
-
-<br>
 
 ### ⚡ Events
 
@@ -316,8 +312,6 @@ entity.DelNPCTag();
          identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
   </summary>
-
-<br>
 
 ### ⚡ Events
 
