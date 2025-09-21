@@ -663,13 +663,12 @@ entity.DelInventory();
 <details>
   <summary>
     <h2>⚙️ Behaviours</h2>
-    <p>
+    <br>
     Manage modular logic attached to the entity. Behaviours implement 
     <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
     This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
     Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
     enabling dynamic logic composition without changing the core entity structure.
-    </p>
   </summary>
 
 ### ⚡ Events
@@ -949,11 +948,10 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 <details>
   <summary>
     <h2>♻️ Lifecycle</h2>
-    <p>
+    <br>
     Manage the entity's state transitions and update phases. It covers initialization, enabling,
     per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
     entity's state.
-    </p>
   </summary>
 
 ### ⚡ Events
