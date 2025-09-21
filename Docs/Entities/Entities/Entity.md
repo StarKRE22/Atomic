@@ -1,7 +1,8 @@
 # 🧩️ Entity
 
-Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the *
-*Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
+Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the
+**Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**,
+**behaviours**, and **lifecycle management**.
 
 ```csharp
 public class Entity : IEntity
@@ -1019,7 +1020,6 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
     entity's state.
   </summary>
 
-
 ### ⚡ Events
 
 #### `OnInitialized`
@@ -1123,10 +1123,10 @@ public void Init()
 
 - **Description:** Initializes the entity.
 - **Behavior:**
-  - Transitions the entity to the `Initialized` state.
-  - Calls `Init` on all behaviours implementing `IEntityInit`.
-  - Triggers the `OnInitialized` event.
-  - If the entity is already initialized, does nothing.
+    - Transitions the entity to the `Initialized` state.
+    - Calls `Init` on all behaviours implementing `IEntityInit`.
+    - Triggers the `OnInitialized` event.
+    - If the entity is already initialized, does nothing.
 
 #### `Enable()`
 
@@ -1136,11 +1136,11 @@ public void Enable()
 
 - **Description:** Enables the entity for updates.
 - **Behavior:**
-  - Transitions the entity to the `Enabled` state.
-  - Calls `Enable` on all behaviours implementing `IEntityEnable`.
-  - Triggers the `OnEnabled` event.
-  - If the entity is not initialized yet, it will be initialized automatically.
-  - If the entity is already enabled, does nothing.
+    - Transitions the entity to the `Enabled` state.
+    - Calls `Enable` on all behaviours implementing `IEntityEnable`.
+    - Triggers the `OnEnabled` event.
+    - If the entity is not initialized yet, it will be initialized automatically.
+    - If the entity is already enabled, does nothing.
 
 #### `Tick(float)`
 
@@ -1150,8 +1150,8 @@ public void Tick(float deltaTime)
 
 - **Description:** Calls `Update` on all behaviours implementing `IEntityUpdate`.
 - **Behavior:**
-  - Triggers the `OnTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1163,8 +1163,8 @@ public void FixedTick(float deltaTime)
 
 - **Description:** Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`.
 - **Behavior:**
-  - Triggers the `OnFixedTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnFixedTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1176,8 +1176,8 @@ public void LateTick(float deltaTime)
 
 - **Description:** Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`.
 - **Behavior:**
-  - Triggers the `OnLateTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnLateTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1189,10 +1189,10 @@ public void Disable()
 
 - **Description:** Disables the entity for updates.
 - **Behavior:**
-  - Transitions the entity to a not `Enabled` state.
-  - Calls `Disable` on all behaviours implementing `IEntityDisable`.
-  - Triggers the `OnDisabled` event.
-  - If the entity is not enabled yet, does nothing.
+    - Transitions the entity to a not `Enabled` state.
+    - Calls `Disable` on all behaviours implementing `IEntityDisable`.
+    - Triggers the `OnDisabled` event.
+    - If the entity is not enabled yet, does nothing.
 
 #### `Dispose()`
 
@@ -1202,22 +1202,23 @@ public void Dispose()
 
 - **Description:** Cleans up all resources used by the entity.
 - **Behavior:**
-  - Transitions the entity to a not `Initialized` state.
-  - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
-  - Clears all tags, values, and behaviours.
-  - Unsubscribes from all events.
-  - Unregisters the entity from the `EntityRegistry`.
-  - Disposes stored values if `Settings.disposeValues` is `true`.
-  - If the entity is enabled, calls `Disable()` automatically.
-  - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
-
+    - Transitions the entity to a not `Initialized` state.
+    - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
+    - Clears all tags, values, and behaviours.
+    - Unsubscribes from all events.
+    - Unregisters the entity from the `EntityRegistry`.
+    - Disposes stored values if `Settings.disposeValues` is `true`.
+    - If the entity is enabled, calls `Disable()` automatically.
+    - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
 #### `OnDispose()`
 
 ```csharp
 protected virtual void OnDispose()  
 ```
-- **Description:**  Called during the disposal process of a `Entity`. Provides a hook for derived classes to execute custom cleanup logic when the entity is being disposed.
+
+- **Description:**  Called during the disposal process of a `Entity`. Provides a hook for derived classes to execute
+  custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`
 
 ---
