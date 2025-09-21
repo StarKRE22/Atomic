@@ -655,7 +655,7 @@ entity.DelInventory();
 
 ## 💠️ Behaviour Members
 
-Manage modular logic attached to the entity. Behaviours implement `IEntityBehaviour` interfaces and can be added,
+Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md) interfaces and can be added,
 removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
 functionality without changing the core entity
 structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
@@ -864,8 +864,8 @@ Below is an example of working with behaviours in `IEntity`.
 #### 1️⃣ Basic Usage
 
 ```csharp
-// Create a new entity
-IEntity player = new Entity();
+// Assume we have a player entity:
+IEntity player = ...
 
 // Subscribe to events
 player.OnBehaviourAdded += (e, b) => 
@@ -1174,28 +1174,40 @@ player.Dispose();
 
 ## 🗂 Example of Usage
 
+The example below demonstrates quick entity creation and configuration with `Atomic.Elements`:
+
 ```csharp
 // Create a new entity in C#
 IEntity entity = new Entity();
-entity.Name = "Character";
+entity.Name = "Player Character";
 
-// Add a tag
-entity.AddTag("Player");
+// Add tags
+entity.AddTag("Character");
+entity.AddTag("Moveable");
+entity.AddTag("Damageable");
 
-// Add a value
-entity.AddValue("Health", 100);
+// Add values
+entity.AddValue("Health", new ReactiveVariable<int>(100));
+entity.AddValue("MoveSpeed", new ReactiveVariable<float>(5));
+entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 
 // Add a behaviour
 entity.AddBehaviour<MovementBehaviour>();
 
-// Initialize and enable the entity
+// Initialize entity after configuration
 entity.Init();
+
+// Enable entity for updates (e.g., when retrieved from a pool)
 entity.Enable();
 
-// Update manually (for example in a game loop)
+// Update manually (e.g., in a game loop)
 entity.Tick(Time.deltaTime);
 
+// Disable entity (e.g., if it moved back into a pool)
+entity.Disable();
 
+// Dispose entity when game is unloading
+entity.Dispose();
 ```
 
 ---
