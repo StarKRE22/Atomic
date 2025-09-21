@@ -1463,7 +1463,7 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 <details>
   <summary>
     <h2 id="-entity-creation"> ✨ Entity Creation</h2>
-    <br> The following are methods that allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
+    <br> The following methods allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
   </summary>
 
 ### 🔹 Parameterized Instantiation
@@ -1471,9 +1471,28 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
 new GameObject with a `SceneEntity` component.
 
+---
+`CreateArgs`
+
 ```csharp
 [Serializable]  
-public struct CreateArgs  
+public struct CreateArgs
+{
+      public string name;
+      public IEnumerable<int> tags;
+      public IReadOnlyDictionary<int, object> values;
+      public IEnumerable<IEntityBehaviour> behaviours;
+      public List<SceneEntityInstaller> installers;
+      public List<SceneEntity> children;
+
+      public int initialTagCapacity;
+      public int initialValueCapacity;
+      public int initialBehaviourCapacity;
+
+      public bool installOnAwake;
+      public bool disposeValues;
+      public bool useUnityLifecycle;
+}
 ```
 
 - **Description:** Defines a set of parameters for creating a dynamic entity.
@@ -1697,7 +1716,7 @@ SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 <details>
   <summary>
     <h2 id="-entity-destruction"> 🗑️ Entity Destruction</h2>
-    <br> This section provides examples of how to destroy entities at runtime.
+    <br> This section provides methods of how to destroy entities at runtime.
   </summary>
 
 #### `Destroy(IEntity, float)`
