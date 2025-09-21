@@ -319,7 +319,6 @@ entity.DelNPCTag();
 
 <br>
 
-
 ### ⚡ Events
 
 #### `OnValueAdded`
@@ -331,8 +330,8 @@ public event Action<IEntity, int> OnValueAdded
 -
 - **Description:** Triggered when a value is added.
 - **Parameters:**
-  - `IEntity` – The entity where the value was added.
-  - `int` – The key of the value that was added.
+    - `IEntity` – The entity where the value was added.
+    - `int` – The key of the value that was added.
 - **Note:** Allows subscribers to react whenever a new key-value pair is inserted.
 
 #### `OnValueDeleted`
@@ -343,8 +342,8 @@ public event Action<IEntity, int> OnValueDeleted
 
 - **Description:** Triggered when a value is deleted.
 - **Parameters:**
-  - `IEntity` – The entity where the value was deleted.
-  - `int` – The key of the value that was removed.
+    - `IEntity` – The entity where the value was deleted.
+    - `int` – The key of the value that was removed.
 - **Note:** Useful for cleanup or reactive updates when values are removed.
 
 #### `OnValueChanged`
@@ -355,8 +354,8 @@ public event Action<IEntity, int> OnValueChanged
 
 - **Description:** Triggered when a value is changed.
 - **Parameters:**
-  - `IEntity` – The entity where the value was changed.
-  - `int` – The key of the value that was updated.
+    - `IEntity` – The entity where the value was changed.
+    - `int` – The key of the value that was updated.
 - **Note:** Enables reactive programming patterns when values are updated.
 
 ---
@@ -417,8 +416,8 @@ public bool TryGetValue<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a typed value by key.
 - **Parameters:**
-  - `key` – The key of the value to retrieve.
-  - `out value` – Output parameter for the retrieved value.
+    - `key` – The key of the value to retrieve.
+    - `out value` – Output parameter for the retrieved value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValueUnsafe<T>(int, out T)`
@@ -429,8 +428,8 @@ public bool TryGetValueUnsafe<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a value by reference (unsafe).
 - **Parameters:**
-  - `key` – The key of the value.
-  - `out value` – Output reference to the value.
+    - `key` – The key of the value.
+    - `out value` – Output reference to the value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValue(int, out object)`
@@ -441,8 +440,8 @@ public bool TryGetValue(int key, out object value)
 
 - **Description:** Tries to retrieve a value as `object`.
 - **Parameters:**
-  - `key` – The key of the value.
-  - `out value` – Output parameter for the value.
+    - `key` – The key of the value.
+    - `out value` – Output parameter for the value.
 - **Returns:** `true` if the key exists, otherwise `false`.
 
 #### `SetValue<T>(int, T)`
@@ -453,12 +452,12 @@ public void SetValue<T>(int key, T value) where T : struct
 
 - **Description:** Sets or updates a struct value.
 - **Parameters:**
-  - `key` – The key to set.
-  - `value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
 - **Triggers:**
-  - `OnValueAdded` if the key did not exist.
-  - `OnValueChanged` if the key already existed.
-  - `OnStateChanged` in both cases.
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid.
 
 #### `SetValue(int, object)`
@@ -469,12 +468,12 @@ public void SetValue(int key, object value)
 
 - **Description:** Sets or updates a reference value.
 - **Parameters:**
-  - `key` – The key to set.
-  - `value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
 - **Triggers:**
-  - `OnValueAdded` if the key did not exist.
-  - `OnValueChanged` if the key already existed.
-  - `OnStateChanged` in both cases.
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid or value is null.
 
 #### `HasValue(int)`
@@ -497,8 +496,8 @@ public void AddValue<T>(int key, T value) where T : struct
 
 - **Description:** Adds a struct value.
 - **Parameters:**
-  - `key` – The key to add.
-  - `value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists.
 
@@ -510,8 +509,8 @@ public void AddValue(int key, object value)
 
 - **Description:** Adds a reference value.
 - **Parameters:**
-  - `key` – The key to add.
-  - `value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists or value is null.
 
@@ -667,14 +666,21 @@ entity.DelInventory();
 
 ---
 
-## 💠️ Behaviour Members
+<details>
+  <summary>
+    <h2>💠 Behaviour Members</h2>
+    <p>
+    Manage modular logic attached to the entity. Behaviours implement 
+    <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
+    This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
+    Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
+    enabling dynamic logic composition without changing the core entity structure.
+    </p>
+  </summary>
 
-Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
-interfaces and can be added,
-removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
-functionality without changing the core entity
-structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
-enabling dynamic logic composition without changing the core entity structure.
+
+
+</details>
 
 ---
 
