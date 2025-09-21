@@ -28,7 +28,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 
 <details>
   <summary>
-    <h2>💠 Core</h2>
+    <h2 id="-core-members">💠 Core</h2>
     <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
          debugging or tooling, and the main event for reactive state changes.
   </summary>
@@ -77,7 +77,7 @@ public string Name { get; set; }
 
 <details>
   <summary>
-    <h2>🏷️ Tags</h2>
+    <h2 id="-tag-members">🏷️ Tags</h2>
     <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
          enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
   </summary>
@@ -307,7 +307,7 @@ entity.DelNPCTag();
 
 <details>
   <summary>
-    <h2>🔑 Values</h2>
+    <h2 id="-value-members">🔑 Values</h2>
     <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
          identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
@@ -662,7 +662,7 @@ entity.DelInventory();
 
 <details>
   <summary>
-    <h2>⚙️ Behaviours</h2>
+    <h2 id="-behaviour-members">⚙️ Behaviours</h2>
     <br>
     Manage modular logic attached to the entity. Behaviours implement 
     <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
@@ -947,7 +947,7 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 
 <details>
   <summary>
-    <h2>♻️ Lifecycle</h2>
+    <h2 id="-lifecycle-members">♻️ Lifecycle</h2>
     <br>
     Manage the entity's state transitions and update phases. It covers initialization, enabling,
     per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
