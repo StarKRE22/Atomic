@@ -1866,31 +1866,19 @@ else
 
 ---
 
-
-
-
-## 💡 Example Usage
+## 🗂 Example Usage
 
 TODO: с картинками
 
 ---
 
-## Performance
+## 🔥 Performance
 
 TODO:
 
 ---
 
-
-## Notes
-
-- `SceneEntity` is Unity-specific (requires `UNITY_5_3_OR_NEWER`)
-- Implements `ISerializationCallbackReceiver` for Unity serialization
-- Default execution order is `-1000` (runs early)
-- `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
-- Supports `Odin Inspector` attributes for enhanced editor experience
-
-## 🔑 Key Features
+## 📝 Notes
 
 - **Event-Driven** – Reactive programming support via state change notifications.
 - **Unique Identity** – Runtime-generated instance ID for entity tracking.
@@ -1905,7 +1893,10 @@ TODO:
 - **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
 - **Gizmos Support** – Conditional drawing in Scene view.
 - **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
-- **Casting & Proxies** – Safe conversion between `IEntity` and `SceneEntity`.
+- **Casting & Proxies** – Safe conversion between `IEntity`, `SceneEntity` and `SceneEntityProxy`.
 - **Scene-Wide Installation** – Can install all SceneEntities in a scene.
 - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-- All operations should be performed on the main Unity thread.
+- **Not Thread Safe** — All operations should be performed on the main Unity thread.
+- `SceneEntity` is Unity-specific
+- Default execution order is `-1000` (runs early)
+- `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
