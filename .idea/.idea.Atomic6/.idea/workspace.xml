@@ -199,31 +199,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="26118000" />
-    </task>
-    <task id="LOCAL-00531" summary="StopwatchState.md">
-      <option name="closed" value="true" />
-      <created>1758301012145</created>
-      <option name="number" value="00531" />
-      <option name="presentableId" value="LOCAL-00531" />
-      <option name="project" value="LOCAL" />
-      <updated>1758301012145</updated>
-    </task>
-    <task id="LOCAL-00532" summary="TimerState.md">
-      <option name="closed" value="true" />
-      <created>1758301277338</created>
-      <option name="number" value="00532" />
-      <option name="presentableId" value="LOCAL-00532" />
-      <option name="project" value="LOCAL" />
-      <updated>1758301277338</updated>
-    </task>
-    <task id="LOCAL-00533" summary="UpTimer.md">
-      <option name="closed" value="true" />
-      <created>1758301707121</created>
-      <option name="number" value="00533" />
-      <option name="presentableId" value="LOCAL-00533" />
-      <option name="project" value="LOCAL" />
-      <updated>1758301707121</updated>
+      <workItem from="1758351834194" duration="26436000" />
     </task>
     <task id="LOCAL-00534" summary="UpTimer.md">
       <option name="closed" value="true" />
@@ -593,7 +569,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758445483897</updated>
     </task>
-    <option name="localTasksCounter" value="580" />
+    <task id="LOCAL-00580" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1758445783240</created>
+      <option name="number" value="00580" />
+      <option name="presentableId" value="LOCAL-00580" />
+      <option name="project" value="LOCAL" />
+      <updated>1758445783240</updated>
+    </task>
+    <task id="LOCAL-00581" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1758445830376</created>
+      <option name="number" value="00581" />
+      <option name="presentableId" value="LOCAL-00581" />
+      <option name="project" value="LOCAL" />
+      <updated>1758445830376</updated>
+    </task>
+    <task id="LOCAL-00582" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1758445899645</created>
+      <option name="number" value="00582" />
+      <option name="presentableId" value="LOCAL-00582" />
+      <option name="project" value="LOCAL" />
+      <updated>1758445899645</updated>
+    </task>
+    <option name="localTasksCounter" value="583" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,10 +642,10 @@
     <MESSAGE value="Сделал Lifecycle!" />
     <MESSAGE value="Сделал раздел для Tag" />
     <MESSAGE value="Сделал раздел для Values!" />
-    <MESSAGE value="IEntity.md" />
     <MESSAGE value="Сделал Entity!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="IEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
