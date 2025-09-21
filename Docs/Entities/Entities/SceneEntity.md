@@ -66,8 +66,6 @@ public int InstanceID { get; }
     - Ensures uniqueness of the entity instance during runtime.
     - Should not be used for persistence or serialization.
 
----
-
 #### `Name`
 
 ```csharp
@@ -76,6 +74,28 @@ public string Name { get; set; }
 
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
+{
+    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
+
+// Change name
+entity.Name = "Hero"; //Triggers state changed
+
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
+```
 
 </details>
 
@@ -1452,18 +1472,18 @@ public struct CreateArgs
 
 - **Description:** Определяет набор параметров для создания динамической сущности
 - **Fields:**
-  - `string name` – optional name for the GameObject.
-  - `IEnumerable<int> tags` – optional tags to assign.
-  - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
-  - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
-  - `List<SceneEntityInstaller> installers` – optional installers to run.
-  - `List<SceneEntity> children` – optional child entities.
-  - `int initialTagCapacity` – initial capacity for tags.
-  - `int initialValueCapacity` – initial capacity for values.
-  - `int initialBehaviourCapacity` – initial capacity for behaviours.
-  - `bool installOnAwake` – if true, installs automatically on Awake.
-  - `bool disposeValues` – if true, disposes values on destruction.
-  - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
+    - `string name` – optional name for the GameObject.
+    - `IEnumerable<int> tags` – optional tags to assign.
+    - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
+    - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
+    - `List<SceneEntityInstaller> installers` – optional installers to run.
+    - `List<SceneEntity> children` – optional child entities.
+    - `int initialTagCapacity` – initial capacity for tags.
+    - `int initialValueCapacity` – initial capacity for values.
+    - `int initialBehaviourCapacity` – initial capacity for behaviours.
+    - `bool installOnAwake` – if true, installs automatically on Awake.
+    - `bool disposeValues` – if true, disposes values on destruction.
+    - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
 
 ---
 
@@ -1513,16 +1533,16 @@ public static E Create<E>(
 - **Description:** Convenience overload that constructs a `CreateArgs` internally and calls
   `Create<E>(in CreateArgs args)`.
 - **Parameters:**
-  - `name` – optional GameObject name.
-  - `tags` – optional collection of integer tags.
-  - `values` – optional key-value pairs.
-  - `behaviours` – optional behaviours to attach.
-  - `installOnAwake` – if true, runs installers on Awake.
-  - `disposeValues` – if true, disposes values on destruction.
-  - `useUnityLifecycle` – if true, uses Unity lifecycle.
-  - `initialTagCount` – initial tag capacity.
-  - `initialValueCount` – initial value capacity.
-  - `initialBehaviourCount` – initial behaviour capacity.
+    - `name` – optional GameObject name.
+    - `tags` – optional collection of integer tags.
+    - `values` – optional key-value pairs.
+    - `behaviours` – optional behaviours to attach.
+    - `installOnAwake` – if true, runs installers on Awake.
+    - `disposeValues` – if true, disposes values on destruction.
+    - `useUnityLifecycle` – if true, uses Unity lifecycle.
+    - `initialTagCount` – initial tag capacity.
+    - `initialValueCount` – initial value capacity.
+    - `initialBehaviourCount` – initial behaviour capacity.
 
 - **Returns:** A newly created `SceneEntity` of type `<E>`.
 - **Exception:** Throws if provided values are invalid.
@@ -1540,11 +1560,10 @@ public static SceneEntity Create(SceneEntity prefab, Transform parent = null)
 
 - **Description:** Instantiates a prefab and installs the resulting entity under an optional parent.
 - **Parameters:**
-  - `prefab` – The prefab to instantiate.
-  - `parent` – Optional parent transform.
+    - `prefab` – The prefab to instantiate.
+    - `parent` – Optional parent transform.
 
 - **Returns:** The newly instantiated `SceneEntity`.
-
 
 #### `Create<E>(E, Transform parent)`
 
@@ -1555,11 +1574,10 @@ public static E Create<E>(E prefab, Transform parent = null) where E : SceneEnti
 - **Description:** Generic version of prefab instantiation. Defaults position to `Vector3.zero` and rotation to
   `Quaternion.identity`.
 - **Parameters:**
-  - `prefab` – Prefab to instantiate.
-  - `parent` – Optional parent transform.
+    - `prefab` – Prefab to instantiate.
+    - `parent` – Optional parent transform.
 
 - **Returns:** The newly instantiated SceneEntity of type `E`.
-
 
 #### `Create(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null)`
 
@@ -1572,13 +1590,13 @@ public static SceneEntity Create(SceneEntity prefab, Vector3 position, Quaternio
   Instantiates a prefab at a given position and rotation with an optional parent, then installs it.
 
 - **Parameters:**
-  - `prefab` – Prefab to instantiate.
-  - `position` – Position for the new entity.
-  - `rotation` – Rotation for the new entity.
-  - `parent` – Optional parent transform.
+    - `prefab` – Prefab to instantiate.
+    - `position` – Position for the new entity.
+    - `rotation` – Rotation for the new entity.
+    - `parent` – Optional parent transform.
 
 - **Returns:**
-  - The newly instantiated `SceneEntity`.
+    - The newly instantiated `SceneEntity`.
 
 ---
 
@@ -1594,16 +1612,16 @@ SceneEntity
   Generic version of prefab instantiation at a specific position and rotation.
 
 - **Parameters:**
-  - `prefab` – Prefab to instantiate.
-  - `position` – Position for the new entity.
-  - `rotation` – Rotation for the new entity.
-  - `parent` – Optional parent transform.
+    - `prefab` – Prefab to instantiate.
+    - `position` – Position for the new entity.
+    - `rotation` – Rotation for the new entity.
+    - `parent` – Optional parent transform.
 
 - **Returns:**
-  - The newly instantiated SceneEntity of type `<E>`.
+    - The newly instantiated SceneEntity of type `<E>`.
 
 - **Notes:**
-  - Automatically calls `Install()` on the created entity.
+    - Automatically calls `Install()` on the created entity.
 
 ---
 
@@ -1618,16 +1636,15 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
   Instantiates the prefab at the position and rotation of a reference transform (`point`) with an optional parent.
 
 - **Parameters:**
-  - `prefab` – Prefab to instantiate.
-  - `point` – Reference transform for position and rotation.
-  - `parent` – Optional parent transform.
+    - `prefab` – Prefab to instantiate.
+    - `point` – Reference transform for position and rotation.
+    - `parent` – Optional parent transform.
 
 - **Returns:**
-  - The newly instantiated SceneEntity of type `<E>`.
+    - The newly instantiated SceneEntity of type `<E>`.
 
 - **Notes:**
-  - Automatically calls `Install()` on the created entity.
-
+    - Automatically calls `Install()` on the created entity.
 
 </details>
 

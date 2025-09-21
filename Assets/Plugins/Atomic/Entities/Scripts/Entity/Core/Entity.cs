@@ -25,7 +25,14 @@ namespace Atomic.Entities
         public string Name
         {
             get => _name;
-            set => _name = value;
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    this.OnStateChanged?.Invoke(this);
+                }
+            }
         }
 
         private string _name;
@@ -44,7 +51,7 @@ namespace Atomic.Entities
         }
 
         private readonly Settings _settings;
-        
+
         /// <summary>
         /// Creates a new entity with the specified name, tags, values, behaviours, and optional settings.
         /// </summary>

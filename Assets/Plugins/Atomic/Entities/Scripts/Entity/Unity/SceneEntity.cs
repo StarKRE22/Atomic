@@ -35,7 +35,14 @@ namespace Atomic.Entities
         public string Name
         {
             get => this.name;
-            set => this.name = value;
+            set
+            {
+                if (this.name != value)
+                {
+                    this.name = value;
+                    this.OnStateChanged?.Invoke(this);
+                }
+            }
         }
 
 #if ODIN_INSPECTOR
