@@ -115,7 +115,7 @@ namespace Atomic.Entities
         /// <param name="behaviourCapacity">Initial capacity for behaviour storage to minimize memory allocations.</param>
         /// <param name="settings">Optional entity settings. If <c>null</c>, <see cref="Settings.disposeValues"/> defaults to <c>true</c>.</param>
         /// <remarks>
-        /// Preallocates internal structures for efficient usage and registers the entity in <see cref="EntityRegistry"/>.
+        /// Initializes internal structures for efficient usage and registers the entity in <see cref="EntityRegistry"/>.
         /// </remarks>
         public Entity(
             string name = null,

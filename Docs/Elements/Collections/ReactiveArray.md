@@ -8,11 +8,11 @@ serialization for Unity projects.
 public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 ```
 
-- **Type Parameters:** 
-  - `T` — The type of elements stored in the array.
-- **Notes:** 
-  - Use this class when you need a read-write reactive array with change notifications and iteration support.
-  - Supports Unity serialization
+- **Type Parameters:**
+    - `T` — The type of elements stored in the array.
+- **Notes:**
+    - Use this class when you need a read-write reactive array with change notifications and iteration support.
+    - Supports Unity serialization
 
 > [!TIP]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
@@ -202,11 +202,10 @@ public void Copy(int sourceIndex, T[] destination, int destinationIndex, int len
 #### `GetEnumerator()`
 
 ```csharp
-public IEnumerator<T> GetEnumerator();
+public Enumerator GetEnumerator();
 ```
 
-- **Description:** Returns an enumerator that iterates through the collection.
-- **Remarks:** Inherited from `IEnumerable<T>`.
+- **Description:** Returns a struct-based enumerator that iterates through the collection.
 
 #### `Dispose()`
 

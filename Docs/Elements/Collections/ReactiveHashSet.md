@@ -282,11 +282,11 @@ public bool SetEquals(IEnumerable<T> other);
 #### `GetEnumerator()`
 
 ```csharp
-public IEnumerator<T> GetEnumerator();
+public Enumerator GetEnumerator();
 ```
 
 - **Description:** Returns an enumerator that iterates through the set.
-- **Returns:** An `IEnumerator<T>` for enumerating the elements.
+- **Returns:** An struct-based enumerator for iterating the elements.
 - **Remarks:** Enumeration is safe for reading but modifying the set during iteration may cause exceptions.
 
 ---

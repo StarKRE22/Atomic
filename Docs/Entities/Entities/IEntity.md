@@ -21,7 +21,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 - [Values](#-value-members)
 - [Behaviours](#-behaviour-members)
 - [Lifecycle](#-lifecycle-members)
-- [Example Usage](#-example-usage)
+- [Example Usage](#-example-of-usage-4)
 - [Notes](#-notes)
 
 ---
@@ -204,7 +204,6 @@ approaches
 are shown: using **numeric keys** for performance, **string names** for readability and **code generation** for real
 projects. Subscriptions to `OnTagAdded` and
 `OnTagDeleted` events are included to react to changes in real time.
-
 
 ---
 
