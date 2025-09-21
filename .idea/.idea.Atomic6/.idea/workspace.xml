@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Destruction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Destruction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -198,23 +202,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="39190000" />
-    </task>
-    <task id="LOCAL-00552" summary="IValue.md">
-      <option name="closed" value="true" />
-      <created>1758309109052</created>
-      <option name="number" value="00552" />
-      <option name="presentableId" value="LOCAL-00552" />
-      <option name="project" value="LOCAL" />
-      <updated>1758309109052</updated>
-    </task>
-    <task id="LOCAL-00553" summary="ScriptableConst.md">
-      <option name="closed" value="true" />
-      <created>1758309267484</created>
-      <option name="number" value="00553" />
-      <option name="presentableId" value="LOCAL-00553" />
-      <option name="project" value="LOCAL" />
-      <updated>1758309267484</updated>
+      <workItem from="1758351834194" duration="40937000" />
     </task>
     <task id="LOCAL-00554" summary="BaseVariable.md">
       <option name="closed" value="true" />
@@ -592,7 +580,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758476844687</updated>
     </task>
-    <option name="localTasksCounter" value="601" />
+    <task id="LOCAL-00601" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1758477057188</created>
+      <option name="number" value="00601" />
+      <option name="presentableId" value="LOCAL-00601" />
+      <option name="project" value="LOCAL" />
+      <updated>1758477057188</updated>
+    </task>
+    <task id="LOCAL-00602" summary="Fixes">
+      <option name="closed" value="true" />
+      <created>1758477220961</created>
+      <option name="number" value="00602" />
+      <option name="presentableId" value="LOCAL-00602" />
+      <option name="project" value="LOCAL" />
+      <updated>1758477220961</updated>
+    </task>
+    <option name="localTasksCounter" value="603" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

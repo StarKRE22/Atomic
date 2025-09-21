@@ -1471,8 +1471,6 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
 new GameObject with a `SceneEntity` component.
 
----
-
 ```csharp
 [Serializable]  
 public struct CreateArgs  
@@ -1558,8 +1556,36 @@ public static E Create<E>(
 
 ---
 
-### 🔹 Prefab Instantiation
+#### 🗂 Example of Usage
 
+```csharp
+//Non-generic version
+var args = new CreateArgs
+{
+    Name = "Enemy",
+    TagCapacity = 2,
+    ValueCapacity = 2,
+    BehaviourCapacity = 2
+};
+
+SceneEntity enemy = SceneEntity.Create(args);
+```
+
+```csharp
+//Generic version
+WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
+    new CreateArgs
+    {
+        Name = "MachineGun",
+        TagCapacity = 3,
+        ValueCapacity = 5
+    }
+);
+```
+
+---
+
+### 🔹 Prefab Instantiation
 
 Another approach is creating game entities from prefabs.
 
@@ -1609,8 +1635,6 @@ public static SceneEntity Create(
     - `parent` – Optional parent transform.
 - **Returns:** The newly instantiated `SceneEntity`.
 
----
-
 #### `Create<E>(E, Vector3, Quaternion, Transform)`
 
 ```csharp
@@ -1649,77 +1673,67 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 - **Returns:** The newly instantiated SceneEntity of type `E`.
 - **Note:** Automatically calls `Install()` on the created entity.
 
-</details>
-
 ---
 
-## Destruction
-
-В этом разделе приведены примеры уничтожения сущностей в Runtime
-
-### Methods
-
-| Method                                                                                | Description                                        |
-|---------------------------------------------------------------------------------------|----------------------------------------------------|
-| `Create(in CreateArgs args)`                                                          | Creates a new entity with configuration.           |
-| `Create<E>(...)`                                                                      | Generic creation for type `E : SceneEntity`.       |
-| `Create(SceneEntity prefab, Transform parent = null)`                                 | Instantiate prefab at origin.                      |
-| `Create<E>(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)` | Instantiate prefab at position/rotation.           |
-| `Destroy(IEntity entity, float t = 0)`                                                | Destroys entity's GameObject after optional delay. |
-
----
-
-### Examples
-
-#### Example #1: Creating an entity with `CreateArgs`
+#### 🗂 Example of Usage
 
 ```csharp
-var args = new CreateArgs
-{
-    Name = "Enemy",
-    TagCapacity = 2,
-    ValueCapacity = 2,
-    BehaviourCapacity = 2
-};
-
-SceneEntity enemy = SceneEntity.Create(args);
-```
-
-#### Example #2: Generic creation for a specific `SceneEntity` type
-
-```csharp
-WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
-    new CreateArgs
-    {
-        Name = "MachineGun",
-        TagCapacity = 3,
-        ValueCapacity = 5
-    }
-);
-
-```
-
-#### Example #3: Instantiating a prefab at the origin
-
-```csharp
+//Instantiating a prefab at the origin
 SceneEntity enemyPrefab = Resources.Load<SceneEntity>("Prefabs/Enemy");
 SceneEntity instance = SceneEntity.Create(enemyPrefab);
 ```
 
-#### Example #4: Instantiating a prefab at a specific position and rotation
-
 ```csharp
+//Instantiating a prefab at a specific position and rotation
 Vector3 spawnPos = new Vector3(0, 0, 0);
 Quaternion rotation = Quaternion.Euler(0, 180, 0);
-
 SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 ```
 
-#### Example #5: Destroying an entity after a delay
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="-entity-destruction"> 🗑️ Entity Destruction</h2>
+    <br> This section provides examples of how to destroy entities at runtime.
+  </summary>
+
+#### `Destroy(IEntity, float)`
 
 ```csharp
-SceneEntity.Destroy(bossInstance, 3f); // Destroys entity after 3 seconds
+public static void Destroy(IEntity entity, float t = 0)  
 ```
+
+- **Description:** Destroys the associated `GameObject` of the specified `IEntity` if it can be cast to a `SceneEntity`.
+- **Parameters:**
+    - `entity` – The entity whose `GameObject` should be destroyed.
+    - `t` – Optional delay in seconds before destruction. Defaults to `0`.
+- **Note:** Internally casts the `IEntity` to `SceneEntity` before destroying.
+
+#### `Destroy(SceneEntity, float)`
+
+```csharp
+public static void Destroy(SceneEntity entity, float t = 0)  
+```
+
+- **Description:** Destroys the specified `SceneEntity`'s `GameObject` after an optional delay.
+- **Parameters:**
+    - `entity` – The `SceneEntity` to destroy.
+    - `t` – Optional delay in seconds before destruction. Defaults to `0`.
+- **Note:** If `entity` is `null`, no action is taken.
+
+---
+
+#### 🗂 Example of Usage
+
+```csharp
+// Destroys entity after 3 seconds
+SceneEntity.Destroy(sceneEntity, 3f);
+```
+
+</details>
 
 ## Casting & Proxies
 
@@ -1775,17 +1789,6 @@ if (SceneEntity.TryCast<EnemyEntity>(entity, out EnemyEntity enemy))
 else
     Debug.LogWarning("Entity is not of type EnemyEntity");
 ```
-
-## Install All Entities
-
-Installs all `SceneEntity` instances in a scene that are not yet installed.
-
-### Methods
-
-| Method                       | Description                                                    |
-|------------------------------|----------------------------------------------------------------|
-| `InstallAll(Scene scene)`    | Installs all `SceneEntity` instances in the scene.             |
-| `InstallAll<E>(Scene scene)` | Installs all `SceneEntity` instances of type `E` in the scene. |
 
 ---
 
