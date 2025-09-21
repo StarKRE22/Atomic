@@ -102,7 +102,7 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 
 <details>
   <summary>
-    <h2 id="-tag-members">🏷️ Tags</h2>
+    <h2 id="-tags">🏷️ Tags</h2>
     <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
          enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
   </summary>
@@ -339,7 +339,7 @@ entity.DelNPCTag();
 
 <details>
   <summary>
-    <h2 id="-value-members">🔑 Values</h2>
+    <h2 id="-values">🔑 Values</h2>
     <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
          identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
@@ -701,7 +701,7 @@ entity.DelInventory();
 
 <details>
   <summary>
-    <h2 id="-behaviour-members">⚙️ Behaviours</h2>
+    <h2 id="-behaviours">⚙️ Behaviours</h2>
     <br>
     Manage modular logic attached to the entity. Behaviours implement 
     <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
@@ -994,7 +994,7 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 
 <details>
   <summary>
-    <h2 id="-lifecycle-members">♻️ Lifecycle</h2>
+    <h2 id="-lifecycle">♻️ Lifecycle</h2>
     <br>
     Manage the entity's state transitions and update phases. It covers initialization, enabling,
     per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
@@ -1463,10 +1463,10 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 <details>
   <summary>
     <h2 id="-entity-creation"> ✨ Entity Creation</h2>
-    <br> Дальше приведены методы, с помощью которых можно создавать сущности в Runtime, например префабы или абсолютно новые игровые объекты
+    <br> The following are methods that allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
   </summary>
 
-### 🔹 Parameter Instantiation
+### 🔹 Parameterized Instantiation
 
 The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
 new GameObject with a `SceneEntity` component.
