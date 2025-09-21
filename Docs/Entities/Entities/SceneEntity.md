@@ -20,11 +20,11 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 - [Lifecycle](#-lifecycle)
 - [Installing](#-installing)
 - [Optimization](#-optimization)
-- [Gizmos Support](#-gizmos-support)
+- [Gizmos](#-gizmos)
 - [Debug Properties](#-debug-properties)
-- [Entity Creation](#-entity-creation)
-- [Entity Destruction](#-entity-destruction)
-- [Entity Casting](#-entity-casting)
+- [Creation](#-entity-creation)
+- [Destruction](#-entity-destruction)
+- [Casting](#-entity-casting)
 - [Example of Usage](#-example)
 - [Performance](#-performance)
 - [Notes](#-notes)
@@ -1328,7 +1328,7 @@ protected virtual void OnUninstall()
 
 ---
 
-### Static Methods
+### 🏹 Static Methods
 
 There are also static methods that allow installing entities globally in a scene.
 
@@ -1395,7 +1395,7 @@ TODO:
 
 <details>
   <summary>
-    <h2 id="-gizmos-support"> 🖌️ Gizmos Support</h2>
+    <h2 id="-gizmos"> 🖌️ Gizmos</h2>
     <br>
     Provides visual debugging support through Unity Gizmos in the Scene view.
   </summary>
@@ -1406,6 +1406,8 @@ TODO:
 |----------------------|-----------------------------------------------------------------------|
 | `onlySelectedGizmos` | Draw gizmos only when this GameObject is selected. Default is `false` |
 | `onlyEditModeGizmos` | Draw gizmos only when Unity is not in Play mode.Default is `false`    |
+
+---
 
 ### 🗂 Example of Usage
 
@@ -1423,7 +1425,7 @@ public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
 }
 ```
 
-Add it in a `SceneEntityInstaller:`
+Add it in a `SceneEntityInstaller`:
 
 ```csharp
 [Serializable]
@@ -1462,7 +1464,7 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 
 <details>
   <summary>
-    <h2 id="-entity-creation"> ✨ Entity Creation</h2>
+    <h2 id="-entity-creation"> 🏗️ Creation</h2>
     <br> The following methods allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
   </summary>
 
@@ -1472,7 +1474,8 @@ The first way to create entities is through `CreateArgs`, which allows a develop
 new GameObject with a `SceneEntity` component.
 
 ---
-`CreateArgs`
+
+#### `CreateArgs`
 
 ```csharp
 [Serializable]  
@@ -1575,7 +1578,7 @@ public static E Create<E>(
 
 ---
 
-#### 🗂 Example of Usage
+#### 🗂 Examples of Usage
 
 ```csharp
 //Non-generic version
@@ -1694,16 +1697,16 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 
 ---
 
-#### 🗂 Example of Usage
+#### 🗂 Examples of Usage
 
 ```csharp
-//Instantiating a prefab at the origin
+// Instantiating a prefab at the origin
 SceneEntity enemyPrefab = Resources.Load<SceneEntity>("Prefabs/Enemy");
 SceneEntity instance = SceneEntity.Create(enemyPrefab);
 ```
 
 ```csharp
-//Instantiating a prefab at a specific position and rotation
+// Instantiating a prefab at a specific position and rotation
 Vector3 spawnPos = new Vector3(0, 0, 0);
 Quaternion rotation = Quaternion.Euler(0, 180, 0);
 SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
@@ -1715,9 +1718,11 @@ SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 
 <details>
   <summary>
-    <h2 id="-entity-destruction"> 🗑️ Entity Destruction</h2>
+    <h2 id="-entity-destruction"> 🗑️ Destruction</h2>
     <br> This section provides methods of how to destroy entities at runtime.
   </summary>
+
+### 🏹 Methods
 
 #### `Destroy(IEntity, float)`
 
@@ -1745,7 +1750,7 @@ public static void Destroy(SceneEntity entity, float t = 0)
 
 ---
 
-#### 🗂 Example of Usage
+### 🗂 Example of Usage
 
 ```csharp
 // Destroys entity after 3 seconds
@@ -1754,24 +1759,72 @@ SceneEntity.Destroy(sceneEntity, 3f);
 
 </details>
 
-## Casting & Proxies
+---
 
-Methods for safe casting between `IEntity` and `SceneEntity`.
+<details>
+  <summary>
+    <h2 id="-entity-casting"> 🪄 Casting</h2>
+    <br> This section provides methods for safe casting between <code>IEntity</code> and <code>SceneEntity</code>.
+  </summary>
 
-### Methods
+### 🏹 Methods
 
-| Method                                            | Description                                           |
-|---------------------------------------------------|-------------------------------------------------------|
-| `Cast(IEntity entity)`                            | Casts to `SceneEntity` or throws.                     |
-| `Cast<E>(IEntity entity)`                         | Casts to generic `E : SceneEntity`, supports proxies. |
-| `TryCast(IEntity entity, out SceneEntity result)` | Attempts cast, returns bool.                          |
-| `TryCast<E>(IEntity entity, out E result)`        | Attempts generic cast, supports proxies.              |
+#### `Cast(IEntity)`
+
+```csharp
+public static SceneEntity Cast(IEntity entity)  
+```
+
+- **Description:** Casts the specified `IEntity` to a `SceneEntity` if possible.
+- **Parameter:** `entity` – The entity to cast.
+- **Returns:** The entity cast to `SceneEntity`, or `null` if the input is `null`.
+- **Exceptions:** Throws `InvalidCastException` if the entity cannot be cast to `SceneEntity`.
+- **Note:** Uses `AggressiveInlining` for performance.
+
+#### `Cast<E>(IEntity)`
+
+```csharp
+public static E Cast<E>(IEntity entity) where E : SceneEntity  
+```
+
+- **Description:** Casts the specified `IEntity` to the target type `E`. Supports direct `SceneEntity` instances and
+  `SceneEntityProxy<E>` wrappers.
+- **Type Parameter:** `E` – The type of `SceneEntity` to cast to.
+- **Parameter:** `entity` – The entity to cast.
+- **Returns:** The entity cast to type `E`, or `null` if the input is `null`.
+- **Exceptions:** Throws `InvalidCastException` if the entity cannot be cast to the target type `E`.
+
+#### `TryCast(IEntity, out SceneEntity)`
+
+```csharp
+public static bool TryCast(IEntity entity, out SceneEntity result)  
+```
+
+- **Description:** Attempts to cast the specified `IEntity` to a `SceneEntity`.
+- **Parameters:**
+    - `entity` – The entity to cast.
+    - `result` – The cast result if successful; otherwise, `null`.
+- **Returns:** `true` if the cast was successful; otherwise, `false`.
+
+#### `TryCast<E>(IEntity, out E)`
+
+```csharp
+public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity  
+```
+
+- **Description:** Attempts to cast the specified `IEntity` to the target type `E`. Supports direct `SceneEntity`
+  instances and `SceneEntityProxy<E>` wrappers.
+- **Type Parameter:** `E` – The type of `SceneEntity` to cast to.
+- **Parameters:**
+    - `entity` – The entity to cast.
+    - `result` – The cast result if successful; otherwise, `null`.
+- **Returns:** `true` if the cast was successful; otherwise, `false`.
 
 ---
 
-### Examples
+### 🗂 Examples of Usage
 
-#### Example #1: Simple cast to `SceneEntity`
+#### Simple cast to `SceneEntity`
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -1780,7 +1833,7 @@ SceneEntity sceneEntity = SceneEntity.Cast(entity);
 
 > Throws an exception if `entity` is not a `SceneEntity`.
 
-#### Example #2: Generic cast to a specific `SceneEntity` type
+#### Generic cast to a specific `SceneEntity` type
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -1789,7 +1842,7 @@ EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
 
 > Throws an exception if entity is not of type `EnemyEntity` or a proxy of it.
 
-#### Example #3: Safe cast using `TryCast`
+#### Safe cast using `TryCast`
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -1799,7 +1852,7 @@ else
     Debug.LogWarning("Entity is not a SceneEntity");
 ```
 
-#### Example #4: Safe generic cast using TryCast<E>
+#### Safe generic cast using TryCast<E>
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -1809,15 +1862,25 @@ else
     Debug.LogWarning("Entity is not of type EnemyEntity");
 ```
 
+</details>
+
 ---
+
+
+
 
 ## 💡 Example Usage
 
 TODO: с картинками
 
+---
+
 ## Performance
 
 TODO:
+
+---
+
 
 ## Notes
 
@@ -1845,9 +1908,4 @@ TODO:
 - **Casting & Proxies** – Safe conversion between `IEntity` and `SceneEntity`.
 - **Scene-Wide Installation** – Can install all SceneEntities in a scene.
 - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-
-## 🔒 Thread Safety
-
-- `SceneEntity` is **NOT thread-safe**.
 - All operations should be performed on the main Unity thread.
-- Use external synchronization if accessing from multiple threads.
