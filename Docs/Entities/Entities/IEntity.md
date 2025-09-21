@@ -21,7 +21,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 - [Values](#-value-members)
 - [Behaviours](#-behaviour-members)
 - [Lifecycle](#-lifecycle-members)
-- [Example Usage](#-example-of-usage-4)
+- [Example of Usage](#-example-of-usage-4)
 - [Notes](#-notes)
 
 ---
