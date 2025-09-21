@@ -1471,14 +1471,14 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
 new GameObject with a `SceneEntity` component.
 
-#### `CreateArgs`
+---
 
 ```csharp
 [Serializable]  
 public struct CreateArgs  
 ```
 
-- **Description:** Определяет набор параметров для создания динамической сущности
+- **Description:** Defines a set of parameters for creating a dynamic entity.
 - **Fields:**
     - `string name` – optional name for the GameObject.
     - `IEnumerable<int> tags` – optional tags to assign.
@@ -1492,6 +1492,8 @@ public struct CreateArgs
     - `bool installOnAwake` – if true, installs automatically on Awake.
     - `bool disposeValues` – if true, disposes values on destruction.
     - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
+
+---
 
 #### `Create(in CreateArgs)`
 
@@ -1554,7 +1556,10 @@ public static E Create<E>(
 - **Exception:** Throws if provided values are invalid.
 - **Notes:** Null references are skipped.
 
+---
+
 ### 🔹 Prefab Instantiation
+
 
 Another approach is creating game entities from prefabs.
 
