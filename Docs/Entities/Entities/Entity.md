@@ -25,13 +25,12 @@ public class Entity : IEntity
 
 ---
 
-## 💠 Core Members
-
-Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
-debugging or tooling, and the main event for reactive state
-changes.
-
----
+<details>
+  <summary>
+    <h2 id="-core-members">💠 Core</h2>
+    <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+         debugging or tooling, and the main event for reactive state changes.
+  </summary>
 
 ### 🏗️ Constructors
 
@@ -139,14 +138,16 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
----
-
-## 💠 Tag Members
-
-Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
-enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-tag-members">🏷️ Tags</h2>
+    <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+         enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+  </summary>
 
 ### ⚡ Events
 
@@ -274,7 +275,6 @@ are shown: using **numeric keys** for performance, **string names** for readabil
 projects. Subscriptions to `OnTagAdded` and
 `OnTagDeleted` events are included to react to changes in real time.
 
-
 ---
 
 #### 1️⃣ Using Numeric Keys
@@ -368,14 +368,17 @@ if (entity.HasPlayerTag())
 entity.DelNPCTag();
 ```
 
----
-
-## 💠 Value Members
-
-Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
-identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-value-members">🔑 Values</h2>
+    <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+         identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+
+  </summary>
 
 ### ⚡ Events
 
@@ -385,7 +388,6 @@ identified by integer keys. This allows flexible runtime data storage, reactive 
 public event Action<IEntity, int> OnValueAdded  
 ```
 
--
 - **Description:** Triggered when a value is added.
 - **Parameters:**
     - `IEntity` – The entity where the value was added.
@@ -720,18 +722,20 @@ entity.SetHealth(150);
 entity.DelInventory();
 ```
 
----
-
-## 💠️ Behaviour Members
-
-Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
-interfaces and can be added,
-removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
-functionality without changing the core entity
-structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
-enabling dynamic logic composition without changing the core entity structure.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-behaviour-members">⚙️ Behaviours</h2>
+    <br>
+    Manage modular logic attached to the entity. Behaviours implement 
+    <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
+    This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
+    Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
+    enabling dynamic logic composition without changing the core entity structure.
+  </summary>
 
 ### ⚡ Events
 
@@ -1003,15 +1007,19 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 });
 ```
 
----
-
-## 💠 Lifecycle Members
-
-Manage the entity's state transitions and update phases. It covers initialization, enabling,
-per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
-entity's state.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-lifecycle-members">♻️ Lifecycle</h2>
+    <br>
+    Manage the entity's state transitions and update phases. It covers initialization, enabling,
+    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
+    entity's state.
+  </summary>
+
 
 ### ⚡ Events
 
@@ -1116,10 +1124,10 @@ public void Init()
 
 - **Description:** Initializes the entity.
 - **Behavior:**
-    - Transitions the entity to the `Initialized` state.
-    - Calls `Init` on all behaviours implementing `IEntityInit`.
-    - Triggers the `OnInitialized` event.
-    - If the entity is already initialized, does nothing.
+  - Transitions the entity to the `Initialized` state.
+  - Calls `Init` on all behaviours implementing `IEntityInit`.
+  - Triggers the `OnInitialized` event.
+  - If the entity is already initialized, does nothing.
 
 #### `Enable()`
 
@@ -1129,11 +1137,11 @@ public void Enable()
 
 - **Description:** Enables the entity for updates.
 - **Behavior:**
-    - Transitions the entity to the `Enabled` state.
-    - Calls `Enable` on all behaviours implementing `IEntityEnable`.
-    - Triggers the `OnEnabled` event.
-    - If the entity is not initialized yet, it will be initialized automatically.
-    - If the entity is already enabled, does nothing.
+  - Transitions the entity to the `Enabled` state.
+  - Calls `Enable` on all behaviours implementing `IEntityEnable`.
+  - Triggers the `OnEnabled` event.
+  - If the entity is not initialized yet, it will be initialized automatically.
+  - If the entity is already enabled, does nothing.
 
 #### `Tick(float)`
 
@@ -1143,8 +1151,8 @@ public void Tick(float deltaTime)
 
 - **Description:** Calls `Update` on all behaviours implementing `IEntityUpdate`.
 - **Behavior:**
-    - Triggers the `OnTicked` event.
-    - Can only be invoked if the entity is enabled.
+  - Triggers the `OnTicked` event.
+  - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1156,8 +1164,8 @@ public void FixedTick(float deltaTime)
 
 - **Description:** Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`.
 - **Behavior:**
-    - Triggers the `OnFixedTicked` event.
-    - Can only be invoked if the entity is enabled.
+  - Triggers the `OnFixedTicked` event.
+  - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1169,8 +1177,8 @@ public void LateTick(float deltaTime)
 
 - **Description:** Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`.
 - **Behavior:**
-    - Triggers the `OnLateTicked` event.
-    - Can only be invoked if the entity is enabled.
+  - Triggers the `OnLateTicked` event.
+  - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1182,10 +1190,10 @@ public void Disable()
 
 - **Description:** Disables the entity for updates.
 - **Behavior:**
-    - Transitions the entity to a not `Enabled` state.
-    - Calls `Disable` on all behaviours implementing `IEntityDisable`.
-    - Triggers the `OnDisabled` event.
-    - If the entity is not enabled yet, does nothing.
+  - Transitions the entity to a not `Enabled` state.
+  - Calls `Disable` on all behaviours implementing `IEntityDisable`.
+  - Triggers the `OnDisabled` event.
+  - If the entity is not enabled yet, does nothing.
 
 #### `Dispose()`
 
@@ -1195,14 +1203,14 @@ public void Dispose()
 
 - **Description:** Cleans up all resources used by the entity.
 - **Behavior:**
-    - Transitions the entity to a not `Initialized` state.
-    - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
-    - Clears all tags, values, and behaviours.
-    - Unsubscribes from all events.
-    - Unregisters the entity from the `EntityRegistry`.
-    - Disposes stored values if `Settings.disposeValues` is `true`.
-    - If the entity is enabled, calls `Disable()` automatically.
-    - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
+  - Transitions the entity to a not `Initialized` state.
+  - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
+  - Clears all tags, values, and behaviours.
+  - Unsubscribes from all events.
+  - Unregisters the entity from the `EntityRegistry`.
+  - Disposes stored values if `Settings.disposeValues` is `true`.
+  - If the entity is enabled, calls `Disable()` automatically.
+  - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
 ---
 
@@ -1239,6 +1247,8 @@ player.Disable();
 // Dispose the entity
 player.Dispose();
 ```
+
+</details>
 
 ---
 

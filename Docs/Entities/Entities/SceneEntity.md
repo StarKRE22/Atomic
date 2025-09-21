@@ -340,7 +340,6 @@ allowing other systems to respond automatically to state changes.
 public event Action<IEntity, int> OnValueAdded  
 ```
 
--
 - **Description:** Triggered when a value is added.
 - **Parameters:**
     - `IEntity` – The entity where the value was added.
@@ -693,12 +692,6 @@ enabling dynamic logic composition without changing the core entity structure.
 | Field                      | Type                                                                          | 
 |----------------------------|-------------------------------------------------------------------------------|
 | `initialBehaviourCapacity` | Initial capacity for behaviours to optimize memory allocation. Default is `0` |
-
-
-
-
-
-
 
 ----
 
