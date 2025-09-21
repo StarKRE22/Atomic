@@ -17,8 +17,8 @@ public class Entity : IEntity
 - [Behaviours](#-behaviour-members)
 - [Lifecycle](#-lifecycle-members)
 - [Nested Types](#-nested-types)
-- [Debug Properties](#-debug)
-- [Example Usage](#-example-of-usage-4)
+- [Debug Properties](#-debug-properties)
+- [Example of Usage](#-example-of-usage-4)
 - [Performance](#-performance)
 - [Notes](#-notes)
 
@@ -1260,7 +1260,7 @@ player.Dispose();
 
 ---
 
-## 🐞 Debug
+## 🐞 Debug Properties
 
 These properties are available only in **Unity Editor** when using **Odin Inspector**
 
@@ -1275,7 +1275,7 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 
 ## 🗂 Example of Usage
 
-### Example #1: Creating and setting up an entity
+### 🔹 Example #1: Creating and setting up
 
 ```csharp
 var entity = new Entity(
@@ -1299,7 +1299,7 @@ entity.AddBehaviour(new MoveBehaviour());
 entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
 ```
 
-### Example #2. Creating an entity through constructor
+### 🔹 Example #2. Creating through constructor
 
 ```csharp
 var entity = new Entity(
@@ -1318,7 +1318,7 @@ var entity = new Entity(
 );
 ```
 
-### Example #3. Lifecycle management
+### 🔹 Example #3. Lifecycle management
 
 ```csharp
 // Create a new entity
@@ -1332,9 +1332,10 @@ entity.Enable();
 
 // Simulate game loop updates
 float deltaTime = 0.016f; // Example: 60 FPS
+float fixedDeltaTime = 0.016f; // Example: 60 FPS
 
 entity.Tick(deltaTime);       // Calls Tick on all IEntityTick behaviours
-entity.FixedTick(deltaTime);  // Calls FixedTick on all IEntityFixedTick behaviours
+entity.FixedTick(fixedDeltaTime);  // Calls FixedTick on all IEntityFixedTick behaviours
 entity.LateTick(deltaTime);   // Calls LateTick on all IEntityLateTick behaviours
 
 // Disable the entity (unregisters update behaviours)
