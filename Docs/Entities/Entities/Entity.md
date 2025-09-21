@@ -1,10 +1,13 @@
 # 🧩️ Entity
 
-Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the **Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
+Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the *
+*Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, *
+*behaviours**, and **lifecycle management**.
 
 ```csharp
 public class Entity : IEntity
 ```
+
 ---
 
 ## 📚 Content
@@ -19,7 +22,6 @@ public class Entity : IEntity
 - [Example Usage](#-example-of-usage-4)
 - [Performance](#-performance)
 - [Notes](#-notes)
-
 
 ---
 
@@ -44,7 +46,9 @@ public Entity(
     Settings? settings = null
 ) 
 ```
-- **Description:** Creates a new entity with the specified name, string tags, values, and behaviours. Initializes internal capacities and immediately adds all specified tags, values, and behaviours.
+
+- **Description:** Creates a new entity with the specified name, string tags, values, and behaviours. Initializes
+  internal capacities and immediately adds all specified tags, values, and behaviours.
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tags` – Optional collection of string tag identifiers.
@@ -63,7 +67,9 @@ public Entity(
     Settings? settings = null
 )
 ```
-- **Description:** Creates a new entity with the specified name, integer tags, values, and behaviours. Initializes internal capacities and immediately adds all specified tags, values, and behaviours.
+
+- **Description:** Creates a new entity with the specified name, integer tags, values, and behaviours. Initializes
+  internal capacities and immediately adds all specified tags, values, and behaviours.
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tags` – Optional collection of integer tag identifiers.
@@ -82,7 +88,10 @@ public Entity(
     Settings? settings = null
 ) 
 ```
-- **Description:** Creates a new entity with the specified name and initial capacities for tags, values, and behaviours. Initializes internal structures efficiently and registers the entity in [EntityRegistry](../Registry/EntityRegistry.md).
+
+- **Description:** Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
+  Initializes internal structures efficiently and registers the entity
+  in [EntityRegistry](../Registry/EntityRegistry.md).
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tagCapacity` – Initial capacity for tag storage to minimize memory allocations.
@@ -103,6 +112,8 @@ public event Action<IEntity> OnStateChanged
 - **Description:** Triggered whenever the entity’s internal state changes.
 - **Parameter:** `IEntity` – This entity.
 - **Note:** Useful for reacting to lifecycle or state transitions of an entity.
+
+---
 
 ### 🔑 Properties
 
@@ -147,8 +158,8 @@ public event Action<IEntity, int> OnTagAdded
 
 - **Description:** Triggered when a tag is added.
 - **Parameters:**
-  - `IEntity` — This entity.
-  - `int` – The tag that was added.
+    - `IEntity` — This entity.
+    - `int` – The tag that was added.
 - **Note:** Useful for reacting to dynamic tagging of entities.
 
 ---
@@ -161,8 +172,8 @@ public event Action<IEntity, int> OnTagDeleted
 
 - **Description:** Triggered when a tag is removed.
 - **Parameters:**
-  - `IEntity` — This entity.
-  - `int` – The tag that was removed.
+    - `IEntity` — This entity.
+    - `int` – The tag that was removed.
 
 - **Note:** Allows cleanup or logic adjustment when tags are deleted.
 
@@ -247,17 +258,17 @@ public int CopyTags(int[] results)
 #### `GetTagEnumerator`
 
 ```csharp
-public IEnumerator<int> GetTagEnumerator()
+public TagEnumerator GetTagEnumerator()
 ```
 
 - **Description:** Enumerates all tags of the entity.
-- **Returns:** `IEnumerator<int>` – Enumerator over tag keys.
+- **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
 
 ---
 
 ### 🗂 Example of Usage
 
-This example demonstrates how to use tags with `IEntity`, including adding, removing, and checking tags. Three
+This example demonstrates how to use tags with `Entity`, including adding, removing, and checking tags. Three
 approaches
 are shown: using **numeric keys** for performance, **string names** for readability and **code generation** for real
 projects. Subscriptions to `OnTagAdded` and
@@ -377,8 +388,8 @@ public event Action<IEntity, int> OnValueAdded
 -
 - **Description:** Triggered when a value is added.
 - **Parameters:**
-  - `IEntity` – The entity where the value was added.
-  - `int` – The key of the value that was added.
+    - `IEntity` – The entity where the value was added.
+    - `int` – The key of the value that was added.
 - **Note:** Allows subscribers to react whenever a new key-value pair is inserted.
 
 #### `OnValueDeleted`
@@ -389,8 +400,8 @@ public event Action<IEntity, int> OnValueDeleted
 
 - **Description:** Triggered when a value is deleted.
 - **Parameters:**
-  - `IEntity` – The entity where the value was deleted.
-  - `int` – The key of the value that was removed.
+    - `IEntity` – The entity where the value was deleted.
+    - `int` – The key of the value that was removed.
 - **Note:** Useful for cleanup or reactive updates when values are removed.
 
 #### `OnValueChanged`
@@ -401,8 +412,8 @@ public event Action<IEntity, int> OnValueChanged
 
 - **Description:** Triggered when a value is changed.
 - **Parameters:**
-  - `IEntity` – The entity where the value was changed.
-  - `int` – The key of the value that was updated.
+    - `IEntity` – The entity where the value was changed.
+    - `int` – The key of the value that was updated.
 - **Note:** Enables reactive programming patterns when values are updated.
 
 ---
@@ -463,8 +474,8 @@ public bool TryGetValue<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a typed value by key.
 - **Parameters:**
-  - `key` – The key of the value to retrieve.
-  - `out value` – Output parameter for the retrieved value.
+    - `key` – The key of the value to retrieve.
+    - `out value` – Output parameter for the retrieved value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValueUnsafe<T>(int, out T)`
@@ -475,8 +486,8 @@ public bool TryGetValueUnsafe<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a value by reference (unsafe).
 - **Parameters:**
-  - `key` – The key of the value.
-  - `out value` – Output reference to the value.
+    - `key` – The key of the value.
+    - `out value` – Output reference to the value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValue(int, out object)`
@@ -487,8 +498,8 @@ public bool TryGetValue(int key, out object value)
 
 - **Description:** Tries to retrieve a value as `object`.
 - **Parameters:**
-  - `key` – The key of the value.
-  - `out value` – Output parameter for the value.
+    - `key` – The key of the value.
+    - `out value` – Output parameter for the value.
 - **Returns:** `true` if the key exists, otherwise `false`.
 
 #### `SetValue<T>(int, T)`
@@ -499,12 +510,12 @@ public void SetValue<T>(int key, T value) where T : struct
 
 - **Description:** Sets or updates a struct value.
 - **Parameters:**
-  - `key` – The key to set.
-  - `value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
 - **Triggers:**
-  - `OnValueAdded` if the key did not exist.
-  - `OnValueChanged` if the key already existed.
-  - `OnStateChanged` in both cases.
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid.
 
 #### `SetValue(int, object)`
@@ -515,12 +526,12 @@ public void SetValue(int key, object value)
 
 - **Description:** Sets or updates a reference value.
 - **Parameters:**
-  - `key` – The key to set.
-  - `value` – The value to store.
+    - `key` – The key to set.
+    - `value` – The value to store.
 - **Triggers:**
-  - `OnValueAdded` if the key did not exist.
-  - `OnValueChanged` if the key already existed.
-  - `OnStateChanged` in both cases.
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid or value is null.
 
 #### `HasValue(int)`
@@ -543,8 +554,8 @@ public void AddValue<T>(int key, T value) where T : struct
 
 - **Description:** Adds a struct value.
 - **Parameters:**
-  - `key` – The key to add.
-  - `value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists.
 
@@ -556,8 +567,8 @@ public void AddValue(int key, object value)
 
 - **Description:** Adds a reference value.
 - **Parameters:**
-  - `key` – The key to add.
-  - `value` – The value to add.
+    - `key` – The key to add.
+    - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists or value is null.
 
@@ -604,17 +615,17 @@ public int CopyValues(KeyValuePair<int, object>[] results)
 #### `GetValueEnumerator()`
 
 ```csharp
-public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()  
+public ValueEnumerator GetValueEnumerator()  
 ```
 
 - **Description:** Enumerates all key-value pairs.
-- **Returns:** Enumerator for iterating through stored values.
+- **Returns:** Struct enumerator for iterating through stored values.
 
 ---
 
 ### 🗂 Example of Usage
 
-This example demonstrates how to use **values** with `IEntity`, including adding, retrieving, updating, and removing
+This example demonstrates how to use **values** with `Entity`, including adding, retrieving, updating, and removing
 values. Three approaches are shown: using **numeric keys** for performance, **string names** for readability, and **code
 generation** for real projects. Subscriptions to `OnValueChanged` events are included to react to changes in real time.
 
@@ -713,7 +724,8 @@ entity.DelInventory();
 
 ## 💠️ Behaviour Members
 
-Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md) interfaces and can be added,
+Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
+interfaces and can be added,
 removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
 functionality without changing the core entity
 structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
@@ -731,8 +743,8 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourAdded
 
 - **Description:** Triggered when a behaviour is added to the entity.
 - **Parameters:**
-  - `IEntity` – The entity where the behaviour was added.
-  - `IEntityBehaviour` – The behaviour that was added.
+    - `IEntity` – The entity where the behaviour was added.
+    - `IEntityBehaviour` – The behaviour that was added.
 - **Note:** Allows subscribers to react whenever a new behaviour is attached.
 
 #### `OnBehaviourDeleted`
@@ -743,8 +755,8 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted
 
 - **Description:** Triggered when a behaviour is removed from the entity.
 - **Parameters:**
-  - `IEntity` – The entity where the behaviour was removed.
-  - `IEntityBehaviour` – The behaviour that was removed.
+    - `IEntity` – The entity where the behaviour was removed.
+    - `IEntityBehaviour` – The behaviour that was removed.
 - **Note:** Useful for cleanup or reactive updates when behaviours are detached.
 
 ---
@@ -907,11 +919,11 @@ public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour
 #### `GetBehaviourEnumerator()`
 
 ```csharp
-public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()  
+public BehaviourEnumerator GetBehaviourEnumerator()  
 ```
 
 - **Description:** Enumerates all behaviours attached to the entity.
-- **Returns:** Enumerator for iterating through behaviours.
+- **Returns:** Struct enumerator for iterating through behaviours.
 
 ---
 
@@ -1104,10 +1116,10 @@ public void Init()
 
 - **Description:** Initializes the entity.
 - **Behavior:**
-  - Transitions the entity to the `Initialized` state.
-  - Calls `Init` on all behaviours implementing `IEntityInit`.
-  - Triggers the `OnInitialized` event.
-  - If the entity is already initialized, does nothing.
+    - Transitions the entity to the `Initialized` state.
+    - Calls `Init` on all behaviours implementing `IEntityInit`.
+    - Triggers the `OnInitialized` event.
+    - If the entity is already initialized, does nothing.
 
 #### `Enable()`
 
@@ -1117,11 +1129,11 @@ public void Enable()
 
 - **Description:** Enables the entity for updates.
 - **Behavior:**
-  - Transitions the entity to the `Enabled` state.
-  - Calls `Enable` on all behaviours implementing `IEntityEnable`.
-  - Triggers the `OnEnabled` event.
-  - If the entity is not initialized yet, it will be initialized automatically.
-  - If the entity is already enabled, does nothing.
+    - Transitions the entity to the `Enabled` state.
+    - Calls `Enable` on all behaviours implementing `IEntityEnable`.
+    - Triggers the `OnEnabled` event.
+    - If the entity is not initialized yet, it will be initialized automatically.
+    - If the entity is already enabled, does nothing.
 
 #### `Tick(float)`
 
@@ -1131,8 +1143,8 @@ public void Tick(float deltaTime)
 
 - **Description:** Calls `Update` on all behaviours implementing `IEntityUpdate`.
 - **Behavior:**
-  - Triggers the `OnTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1144,8 +1156,8 @@ public void FixedTick(float deltaTime)
 
 - **Description:** Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`.
 - **Behavior:**
-  - Triggers the `OnFixedTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnFixedTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1157,8 +1169,8 @@ public void LateTick(float deltaTime)
 
 - **Description:** Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`.
 - **Behavior:**
-  - Triggers the `OnLateTicked` event.
-  - Can only be invoked if the entity is enabled.
+    - Triggers the `OnLateTicked` event.
+    - Can only be invoked if the entity is enabled.
 - **Parameter:** `deltaTime` – Time in seconds since the last frame.
 - **Exceptions:** Throws if the entity is not enabled.
 
@@ -1170,10 +1182,10 @@ public void Disable()
 
 - **Description:** Disables the entity for updates.
 - **Behavior:**
-  - Transitions the entity to a not `Enabled` state.
-  - Calls `Disable` on all behaviours implementing `IEntityDisable`.
-  - Triggers the `OnDisabled` event.
-  - If the entity is not enabled yet, does nothing.
+    - Transitions the entity to a not `Enabled` state.
+    - Calls `Disable` on all behaviours implementing `IEntityDisable`.
+    - Triggers the `OnDisabled` event.
+    - If the entity is not enabled yet, does nothing.
 
 #### `Dispose()`
 
@@ -1183,14 +1195,14 @@ public void Dispose()
 
 - **Description:** Cleans up all resources used by the entity.
 - **Behavior:**
-  - Transitions the entity to a not `Initialized` state.
-  - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
-  - Clears all tags, values, and behaviours.
-  - Unsubscribes from all events.
-  - Unregisters the entity from the `EntityRegistry`.
-  - Disposes stored values if `Settings.disposeValues` is `true`.
-  - If the entity is enabled, calls `Disable()` automatically.
-  - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
+    - Transitions the entity to a not `Initialized` state.
+    - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
+    - Clears all tags, values, and behaviours.
+    - Unsubscribes from all events.
+    - Unregisters the entity from the `EntityRegistry`.
+    - Disposes stored values if `Settings.disposeValues` is `true`.
+    - If the entity is enabled, calls `Disable()` automatically.
+    - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
 ---
 
@@ -1279,6 +1291,7 @@ entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
 ```
 
 ### Example #2. Creating an entity through constructor
+
 ```csharp
 var entity = new Entity(
     name: "Character",
@@ -1325,6 +1338,7 @@ entity.Dispose();
 ---
 
 ## 🔥 Performance
+
 //TODO:
 
 
@@ -1341,6 +1355,9 @@ entity.Dispose();
 - **Registry Integration** – Automatic registration with EntityRegistry
 - **Memory Efficient** – Pre-allocation support for collections
 - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-- **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into the entity state, tags, values, and behaviours.
-- **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be synchronized externally.
-- **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core entity class.
+- **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into the
+  entity state, tags, values, and behaviours.
+- **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be
+  synchronized externally.
+- **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core entity
+  class.

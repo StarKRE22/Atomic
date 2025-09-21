@@ -1,17 +1,19 @@
 # 🧩️ SceneEntity
 
-`SceneEntity` is a Unity component implementation of an `IEntity`.  
-This class follows the Entity–State–Behaviour pattern, providing a modular container for dynamic state, tags, values,
-behaviours, and lifecycle management.  
-It allows installation from the Unity Scene and composition through the Inspector or installers.
+Represents a Unity component implementation of an [IEntity](IEntity.md). This class follows the **Entity–State–Behaviour
+** pattern, providing a modular container for dynamic state, tags, values,
+behaviours, and lifecycle management. It allows installation from the Unity Scene and composition through the Inspector
+or installers.
+
+```csharp
+public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+```
 
 ---
 
 ## 📚 Content
 
-- [Key Features](#-key-features)
-- [Thread Safety](#-thread-safety)
-- [Core State](#-core-state)
+- [Core](#-core-state)
 - [Tags](#-tags)
 - [Values](#-values)
 - [Behaviours](#-behaviours)
@@ -28,209 +30,675 @@ It allows installation from the Unity Scene and composition through the Inspecto
 - [Performance](#-performance)
 - [Notes](#-notes)
 
-## 🔑 Key Features
+---
 
-- **Event-Driven** – Reactive programming support via state change notifications.
-- **Unique Identity** – Runtime-generated instance ID for entity tracking.
-- **Tag System** – Lightweight categorization and filtering.
-- **State Management** – Dynamic key-value storage for runtime data.
-- **Behaviour Composition** – Attach or detach modular logic at runtime.
-- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
-- **Registry Integration** – Automatic registration with EntityRegistry
-- **Memory Efficient** – Pre-allocation support for collections
-- **Unity Component** – Attach directly to GameObjects.
-- **Scene Installation** – Automatically installs child entities and configured installers.
-- **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
-- **Gizmos Support** – Conditional drawing in Scene view.
-- **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
-- **Casting & Proxies** – Safe conversion between `IEntity` and `SceneEntity`.
-- **Scene-Wide Installation** – Can install all SceneEntities in a scene.
-- **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
+## 💠 Core Members
 
-## 🔒 Thread Safety
-
-- `SceneEntity` is **NOT thread-safe**.
-- All operations should be performed on the main Unity thread.
-- Use external synchronization if accessing from multiple threads.
+Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for debugging
+or tooling, and the main event for reactive state
+changes. This section provides the minimal information needed to track and observe the entity’s lifecycle.
 
 ---
 
-## 🛠️ Inspector Settings
+### ⚡ Events
 
-These fields are serialized and configurable from the Unity Inspector.
+#### `OnStateChanged`
 
-| Field                      | Type                         | Default | Description                                                                                                                                                                                                   |
-|----------------------------|------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `installOnAwake`           | `bool`                       | `true`  | If enabled, `Install()` is automatically called in `Awake()`.                                                                                                                                                 |
-| `installInEditMode`        | `bool`                       | `false` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. **Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
-| `disposeValues`            | `bool`                       | `true`  | Determines whether values are disposed when `Dispose()` is called.                                                                                                                                            |
-| `useUnityLifecycle`        | `bool`                       | `true`  | Enables automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`).                                                                                                              |
-| `installers`               | `List<SceneEntityInstaller>` | `null`  | List of installers that configure values and systems in this entity.                                                                                                                                          |
-| `children`                 | `List<SceneEntity>`          | `null`  | Child entities installed together with this entity.                                                                                                                                                           |
-| `initialBehaviourCapacity` | `int`                        | `0`     | Initial capacity for behaviours to optimize memory allocation.                                                                                                                                                |
+```csharp
+public event Action<IEntity> OnStateChanged
+```
+
+- **Description:** Triggered whenever the entity’s internal state changes.
+- **Parameter:** `IEntity` – This entity.
+- **Note:** Useful for reacting to lifecycle or state transitions of an entity.
 
 ---
 
-## 🧩 Core State
+### 🔑 Properties
 
-The **Core State** section represents the fundamental identity and state of the entity.  
-It includes unique identifiers, optional names for debugging or tooling, and the main event for reactive state
-changes.  
-This section provides the minimal information needed to track and observe the entity’s lifecycle.
+#### `InstanceID`
 
-### Events
+```csharp
+public int InstanceID { get; }
+```
 
-| Event            | Description                                             |
-|------------------|---------------------------------------------------------|
-| `OnStateChanged` | Triggered whenever the entity’s internal state changes. |
-
-### Properties
-
-| Property     | Type   | Description                                                                      |
-|--------------|--------|----------------------------------------------------------------------------------|
-| `InstanceID` | int    | Runtime-generated unique identifier.                                             |
-| `Name`       | string | Optional user-defined name for debugging or tooling. Equals to `GameObject.name` |
+- **Description:** Runtime-generated unique identifier.
+- **Notes:**
+    - Ensures uniqueness of the entity instance during runtime.
+    - Should not be used for persistence or serialization.
 
 ---
 
-## 🏷 Tags
+#### `Name`
 
-The **Tags** section manages lightweight categorization and filtering of entities.  
-Tags are integer-based labels that can be added, removed, enumerated, or checked.  
-They are useful for grouping entities, querying, and driving logic based on assigned tags.
+```csharp
+public string Name { get; set; }
+```
 
-### Events
-
-| Event          | Description                      |
-|----------------|----------------------------------|
-| `OnTagAdded`   | Triggered when a tag is added.   |
-| `OnTagDeleted` | Triggered when a tag is removed. |
-
-### Inspector Settings
-
-| Field                | Type  | Default | Description                                              |
-|----------------------|-------|---------|----------------------------------------------------------|
-| `initialTagCapacity` | `int` | `1`     | Initial capacity for tags to optimize memory allocation. |
-
-### Properties
-
-| Property   | Type | Description                |
-|------------|------|----------------------------|
-| `TagCount` | int  | Number of associated tags. |
-
-### Methods
-
-| Method               | Description                             |
-|----------------------|-----------------------------------------|
-| `HasTag(int)`        | Checks if the entity has the given tag. |
-| `AddTag(int)`        | Adds a tag.                             |
-| `DelTag(int)`        | Removes a tag.                          |
-| `ClearTags()`        | Removes all tags.                       |
-| `GetTags()`          | Returns all tag keys.                   |
-| `CopyTags(int[])`    | Copies tag keys into an array.          |
-| `GetTagEnumerator()` | Enumerates all tags.                    |
+- **Description:** Optional user-defined name for debugging or tooling.
+- **Note:** Useful for logging, inspector display, or editor tooling.
 
 ---
 
-## 💾 Values
+## 💠 Tag Members
 
-The **Values** section manages dynamic key-value storage for the entity.  
-Values can be of any type (structs or reference types) and are identified by integer keys.  
-This allows flexible runtime data storage, reactive updates, and modular logic.
+Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
 
-Values support reactive updates via associated events (`OnValueAdded`, `OnValueDeleted`, `OnValueChanged`),
+---
+
+### 🛠 Inspector Settings
+
+| Parameter            | Description                                                             |
+|----------------------|-------------------------------------------------------------------------|
+| `initialTagCapacity` | Initial capacity for tags to optimize memory allocation. Default is `1` |
+
+---
+
+### ⚡ Events
+
+#### `OnTagAdded`
+
+```csharp
+public event Action<IEntity, int> OnTagAdded
+```
+
+- **Description:** Triggered when a tag is added.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was added.
+- **Note:** Useful for reacting to dynamic tagging of entities.
+
+---
+
+#### `OnTagDeleted`
+
+```csharp
+public event Action<IEntity, int> OnTagDeleted
+```
+
+- **Description:** Triggered when a tag is removed.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was removed.
+
+- **Note:** Allows cleanup or logic adjustment when tags are deleted.
+
+---
+
+### 🔑 Properties
+
+#### `TagCount`
+
+```csharp
+public int TagCount { get; }
+```
+
+- **Description:** Number of associated tags.
+- **Note:** Reflects how many tags are currently attached to the entity.
+
+---
+
+### 🏹 Methods
+
+#### `HasTag`
+
+```csharp
+public bool HasTag(int tag)
+```
+
+- **Description:** Checks if the entity has the given tag.
+- **Parameter:** `tag` – The tag to check for.
+- **Returns:** `true` if the tag exists, otherwise `false`.
+
+#### `AddTag`
+
+```csharp
+public bool AddTag(int tag)
+```
+
+- **Description:** Adds a tag to the entity.
+- **Parameter:** `int tag` – The tag to add.
+- **Returns:** `true` if the tag was added, otherwise `false`.
+- **Triggers:** `OnTagAdded` and `OnStateChanged`
+
+#### `DelTag`
+
+```csharp
+public bool DelTag(int tag)
+```
+
+- **Description:** Removes a tag from the entity.
+- **Parameter:** `tag` – The tag to remove.
+- **Returns:** `true` if the tag was removed, otherwise `false`.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `ClearTags`
+
+```csharp
+public void ClearTags()
+```
+
+- **Description:** Removes all tags from the entity.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `GetTags`
+
+```csharp
+public int[] GetTags()
+```
+
+- **Description:** Returns all tag keys associated with the entity.
+- **Returns:** Array of tag keys.
+
+#### `CopyTags`
+
+```csharp
+public int CopyTags(int[] results)
+```
+
+- **Description:** Copies tag keys into the provided array.
+- **Parameter:** `results` – Array to copy the tags into.
+- **Returns:** Number of tags copied.
+- **Throws:** `ArgumentNullException` if `results` is null
+
+#### `GetTagEnumerator`
+
+```csharp
+public TagEnumerator GetTagEnumerator()
+```
+
+- **Description:** Enumerates all tags of the entity.
+- **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
+
+---
+
+### 🗂 Example of Usage
+
+This example demonstrates how to use tags with `SceneEntity`, including adding, removing, and checking tags. Three
+approaches are shown: using **numeric keys** for performance, **string names** for readability and **code generation**
+for real projects. Subscriptions to `OnTagAdded` and `OnTagDeleted` events are included to react to changes in real
+time.
+
+---
+
+#### 1️⃣ Using Numeric Keys
+
+By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Subscribe to tag events
+entity.OnTagAdded += (e, tagId) => 
+    Console.WriteLine($"Tag added: {tagId}");
+entity.OnTagDeleted += (e, tagId) => 
+    Console.WriteLine($"Tag removed: {tagId}");
+
+// Add tags by numeric ID
+entity.AddTag(1);         // Player tag = 1
+entity.AddTag(2);         // NPC tag = 2
+
+// Check tags
+if (entity.HasTag(1)) //Check if  Player tag exists
+    Console.WriteLine("Entity has tag ID 1 (Player)");
+
+// Remove a NPC tag
+entity.DelTag(2);
+
+// Add multiple tags
+entity.AddTags(new int[] { 3, 4 }); // Ally, Merchant
+
+// Enumerate all tags
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+#### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](Extensions.md#-tags) for the entity. This format is more
+user-friendly but slightly slower than using numeric keys.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+#### 3️⃣ Using Code Generation
+
+Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
+To
+make this process easier and **type-safe**, the Atomic Framework supports **code generation**. This means you describe
+all your tags (and values) once in a small config file, and the framework will automatically generate C# helpers. You
+can learn more about this in the Manual under
+the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Add tags
+entity.AddPlayerTag();
+entity.AddNPCTag();
+
+// Check tag
+if (entity.HasPlayerTag())
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelNPCTag();
+```
+
+---
+
+## 💠 Value Members
+
+Manages dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic. Values
+support reactive updates via associated events (`OnValueAdded`, `OnValueDeleted`, `OnValueChanged`),
 allowing other systems to respond automatically to state changes.
 
-### Inspector Settings
+---
 
-| Field                  | Type  | Default | Description                                                |
-|------------------------|-------|---------|------------------------------------------------------------|
-| `initialValueCapacity` | `int` | `1`     | Initial capacity for values to optimize memory allocation. |
+### 🛠 Inspector Settings
 
-### Events
-
-| Event            | Description                        |
-|------------------|------------------------------------|
-| `OnValueAdded`   | Triggered when a value is added.   |
-| `OnValueDeleted` | Triggered when a value is deleted. |
-| `OnValueChanged` | Triggered when a value is updated. |
-
-### Properties
-
-| Property     | Type | Description              |
-|--------------|------|--------------------------|
-| `ValueCount` | int  | Number of stored values. |
-
-### Methods
-
-| Method                                    | Description                              |
-|-------------------------------------------|------------------------------------------|
-| `GetValue<T>(int)`                        | Retrieves a value by key.                |
-| `GetValueUnsafe<T>(int)`                  | Retrieves a value by reference (unsafe). |
-| `GetValue(int)`                           | Retrieves a value as `object`.           |
-| `TryGetValue<T>(int, out T)`              | Tries to retrieve a typed value.         |
-| `TryGetValueUnsafe<T>(int, out T)`        | Tries to retrieve by reference.          |
-| `TryGetValue(int, out object)`            | Tries to retrieve as `object`.           |
-| `SetValue<T>(int, T)`                     | Sets or updates a struct value.          |
-| `SetValue(int, object)`                   | Sets or updates a reference value.       |
-| `HasValue(int)`                           | Checks if a value exists.                |
-| `AddValue<T>(int, T)`                     | Adds a struct value.                     |
-| `AddValue(int, object)`                   | Adds a reference value.                  |
-| `DelValue(int)`                           | Deletes a value.                         |
-| `ClearValues()`                           | Clears all values.                       |
-| `GetValues()`                             | Returns all key-value pairs.             |
-| `CopyValues(KeyValuePair<int, object>[])` | Copies all key-value pairs.              |
-| `GetValueEnumerator()`                    | Enumerates all values.                   |
+| Parameters             | Description                                                               |
+|------------------------|---------------------------------------------------------------------------|
+| `initialValueCapacity` | Initial capacity for values to optimize memory allocation. Default is `1` |
 
 ---
 
-## ⚙️ Behaviours
+### ⚡ Events
 
-The **Behaviours** section manages modular logic attached to the entity.  
-Behaviours implement `IEntityBehaviour` interfaces and can be added, removed, queried, or enumerated at runtime.  
-This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity
-structure.
+#### `OnValueAdded`
 
-Behaviours can respond to lifecycle events (`Init`, `Enable`, `Update`, `Disable`, `Dispose`),
+```csharp
+public event Action<IEntity, int> OnValueAdded  
+```
+
+-
+- **Description:** Triggered when a value is added.
+- **Parameters:**
+    - `IEntity` – The entity where the value was added.
+    - `int` – The key of the value that was added.
+- **Note:** Allows subscribers to react whenever a new key-value pair is inserted.
+
+#### `OnValueDeleted`
+
+```csharp
+public event Action<IEntity, int> OnValueDeleted  
+```
+
+- **Description:** Triggered when a value is deleted.
+- **Parameters:**
+    - `IEntity` – The entity where the value was deleted.
+    - `int` – The key of the value that was removed.
+- **Note:** Useful for cleanup or reactive updates when values are removed.
+
+#### `OnValueChanged`
+
+```csharp
+public event Action<IEntity, int> OnValueChanged  
+```
+
+- **Description:** Triggered when a value is changed.
+- **Parameters:**
+    - `IEntity` – The entity where the value was changed.
+    - `int` – The key of the value that was updated.
+- **Note:** Enables reactive programming patterns when values are updated.
+
+---
+
+### 🔑 Properties
+
+#### `ValueCount`
+
+```csharp
+public int ValueCount { get; }  
+```
+
+- **Description:** Number of stored values in the entity.
+- **Note:** Provides a quick way to check how many key-value pairs are currently stored.
+
+---
+
+### 🏹 Methods
+
+#### `GetValue<T>(int)`
+
+```csharp
+public T GetValue<T>(int key)  
+```
+
+- **Description:** Retrieves a value by key and casts it to the specified type.
+- **Parameters:** `key` – The key of the value to retrieve.
+- **Returns:** `T` – The value associated with the key.
+- **Exceptions:** Throws if the key does not exist or cannot be cast.
+
+#### `GetValueUnsafe<T>(int)`
+
+```csharp
+public ref T GetValueUnsafe<T>(int key)  
+```
+
+- **Description:** Retrieves a value by key as a reference (unsafe, no boxing).
+- **Parameters:** `key` – The key of the value to retrieve.
+- **Returns:** `ref T` – Reference to the stored value.
+- **Exceptions:** Throws if the key does not exist or cannot be cast.
+
+#### `GetValue(int)`
+
+```csharp
+public object GetValue(int key)  
+```
+
+- **Description:** Retrieves a value by key as an `object`.
+- **Parameters:** `key` – The key of the value to retrieve.
+- **Returns:** `object` – The value stored at the key.
+- **Exceptions:** Throws if the key does not exist.
+
+#### `TryGetValue<T>(int, out T)`
+
+```csharp
+public bool TryGetValue<T>(int key, out T value)  
+```
+
+- **Description:** Tries to retrieve a typed value by key.
+- **Parameters:**
+    - `key` – The key of the value to retrieve.
+    - `out value` – Output parameter for the retrieved value.
+- **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
+
+#### `TryGetValueUnsafe<T>(int, out T)`
+
+```csharp
+public bool TryGetValueUnsafe<T>(int key, out T value)  
+```
+
+- **Description:** Tries to retrieve a value by reference (unsafe).
+- **Parameters:**
+    - `key` – The key of the value.
+    - `out value` – Output reference to the value.
+- **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
+
+#### `TryGetValue(int, out object)`
+
+```csharp
+public bool TryGetValue(int key, out object value)  
+```
+
+- **Description:** Tries to retrieve a value as `object`.
+- **Parameters:**
+    - `key` – The key of the value.
+    - `out value` – Output parameter for the value.
+- **Returns:** `true` if the key exists, otherwise `false`.
+
+#### `SetValue<T>(int, T)`
+
+```csharp
+public void SetValue<T>(int key, T value) where T : struct  
+```
+
+- **Description:** Sets or updates a struct value.
+- **Parameters:**
+    - `key` – The key to set.
+    - `value` – The value to store.
+- **Triggers:**
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
+- **Exceptions:** Throws if key is invalid.
+
+#### `SetValue(int, object)`
+
+```csharp
+public void SetValue(int key, object value)  
+```
+
+- **Description:** Sets or updates a reference value.
+- **Parameters:**
+    - `key` – The key to set.
+    - `value` – The value to store.
+- **Triggers:**
+    - `OnValueAdded` if the key did not exist.
+    - `OnValueChanged` if the key already existed.
+    - `OnStateChanged` in both cases.
+- **Exceptions:** Throws if key is invalid or value is null.
+
+#### `HasValue(int)`
+
+```csharp
+public bool HasValue(int key)  
+```
+
+- **Description:** Checks if a value exists for the given key.
+- **Parameters:** `key` – The key to check.
+- **Returns:** `true` if the key exists, otherwise `false`.
+- **Triggers:** None.
+- **Exceptions:** None.
+
+#### `AddValue<T>(int, T)`
+
+```csharp
+public void AddValue<T>(int key, T value) where T : struct  
+```
+
+- **Description:** Adds a struct value.
+- **Parameters:**
+    - `key` – The key to add.
+    - `value` – The value to add.
+- **Triggers:** `OnValueAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if key already exists.
+
+#### `AddValue(int, object)`
+
+```csharp
+public void AddValue(int key, object value)  
+```
+
+- **Description:** Adds a reference value.
+- **Parameters:**
+    - `key` – The key to add.
+    - `value` – The value to add.
+- **Triggers:** `OnValueAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if key already exists or value is null.
+
+#### `DelValue(int)`
+
+```csharp
+public bool DelValue(int key)  
+```
+
+- **Description:** Deletes a value by key.
+- **Parameters:** `key` – The key to delete.
+- **Returns:** `true` if the value existed and was removed, otherwise `false`.
+- **Triggers:** `OnValueDeleted` and `OnStateChanged` if the value existed.
+
+#### `ClearValues()`
+
+```csharp
+public void ClearValues()  
+```
+
+- **Description:** Clears all values from the entity.
+- **Triggers:** `OnValueDeleted` for each key removed and `OnStateChanged`.
+
+#### `GetValues()`
+
+```csharp
+public KeyValuePair<int, object>[] GetValues()  
+```
+
+- **Description:** Returns all key-value pairs currently stored.
+- **Returns:** Array of `KeyValuePair<int, object>`.
+
+#### `CopyValues(KeyValuePair<int, object>[])`
+
+```csharp
+public int CopyValues(KeyValuePair<int, object>[] results)  
+```
+
+- **Description:** Copies all key-value pairs into the provided array.
+- **Parameters:** `results` – Array to copy key-value pairs into.
+- **Returns:** Number of values copied.
+- **Exceptions:** Throws if `results` is null or too small.
+
+#### `GetValueEnumerator()`
+
+```csharp
+public ValueEnumerator GetValueEnumerator()  
+```
+
+- **Description:** Enumerates all key-value pairs.
+- **Returns:** Struct enumerator for iterating through stored values.
+
+---
+
+### 🗂 Example of Usage
+
+This example demonstrates how to use **values** with `SceneEntity`, including adding, retrieving, updating, and removing
+values. Three approaches are shown: using **numeric keys** for performance, **string names** for readability, and **code
+generation** for real projects. Subscriptions to `OnValueChanged` events are included to react to changes in real time.
+
+---
+
+#### 1️⃣ Using Numeric Keys
+
+By default, all values use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Subscribe to value events
+entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
+
+//Add health property
+entity.AddValue(1, 100); //Health = 1
+
+//Add speed property
+entity.AddValue(2, 12.5f); //Speed = 2
+
+//Add inventory property
+entity.AddValue(3, new Inventory()); //Inventory = 3
+
+// Get a value
+int health = entity.GetValue<int>(1);
+Console.WriteLine($"Health: {health}");
+
+// Update a Health
+entity.SetValue(1, 150);
+
+// Remove a Speed value
+entity.DelValue(2);
+```
+
+---
+
+#### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](Extensions.md#-values) for the entity. This format is
+more user-friendly but slightly slower than using numeric keys.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+    
+// Add values by string key
+entity.AddValue("Health", 100);
+entity.AddValue("Speed", 12.5f);
+entity.AddValue("Inventory", new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>("Health");
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetValue("Health", 150);
+
+// Remove a value
+entity.DelValue("Inventory");
+```
+
+---
+
+#### 3️⃣ Using Code Generation
+
+Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
+process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
+values once in a small config file, and the framework automatically generates
+strongly-typed C# helpers. More details are in the Manual under
+the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Add values
+entity.AddHealth(100);
+entity.AddSpeed(12.5f);
+entity.AddInventory(new GridInventory());
+
+// Get a value
+int health = entity.GetHealth();
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetHealth(150);
+
+// Remove a value
+entity.DelInventory();
+```
+
+---
+
+## 💠 Behaviours
+
+Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
+interfaces and can be added,
+removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
+functionality without changing the core entity
+structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
 enabling dynamic logic composition without changing the core entity structure.
 
-### Inspector Settings
+---
 
-| Field                      | Type  | Default | Description                                                    |
-|----------------------------|-------|---------|----------------------------------------------------------------|
-| `initialBehaviourCapacity` | `int` | `0`     | Initial capacity for behaviours to optimize memory allocation. |
+### 🛠 Inspector Settings
 
-### Events
+| Field                      | Type                                                                          | 
+|----------------------------|-------------------------------------------------------------------------------|
+| `initialBehaviourCapacity` | Initial capacity for behaviours to optimize memory allocation. Default is `0` |
 
-| Event                | Description                            |
-|----------------------|----------------------------------------|
-| `OnBehaviourAdded`   | Triggered when a behaviour is added.   |
-| `OnBehaviourDeleted` | Triggered when a behaviour is removed. |
 
-### Properties
 
-| Property         | Type | Description                    |
-|------------------|------|--------------------------------|
-| `BehaviourCount` | int  | Number of attached behaviours. |
 
-### Methods
 
-| Method                               | Description                               |
-|--------------------------------------|-------------------------------------------|
-| `AddBehaviour(IEntityBehaviour)`     | Adds a behaviour.                         |
-| `GetBehaviour<T>()`                  | Returns first behaviour of type `T`.      |
-| `TryGetBehaviour<T>(out T)`          | Tries to get a behaviour of type `T`.     |
-| `HasBehaviour(IEntityBehaviour)`     | Checks if a specific behaviour exists.    |
-| `HasBehaviour<T>()`                  | Checks if a behaviour of type `T` exists. |
-| `DelBehaviour(IEntityBehaviour)`     | Removes a specific behaviour.             |
-| `DelBehaviour<T>()`                  | Removes the first behaviour of type `T`.  |
-| `DelBehaviours<T>()`                 | Removes all behaviours of type `T`.       |
-| `ClearBehaviours()`                  | Removes all behaviours.                   |
-| `GetBehaviours()`                    | Returns all behaviours.                   |
-| `GetBehaviours<T>()`                 | Returns all behaviours of type `T`.       |
-| `CopyBehaviours(IEntityBehaviour[])` | Copies behaviours into an array.          |
-| `CopyBehaviours<T>(T[])`             | Copies behaviours of type `T`.            |
-| `GetBehaviourEnumerator()`           | Enumerates behaviours.                    |
+
 
 ----
 
@@ -281,6 +749,7 @@ Lifecycle events allow reactive systems to respond to changes in the entity's st
 ---
 
 ## 🔹 Nested Types
+
 - `BehaviourEnumerator` — Enumerator for behaviours.
 - `TagEnumerator` — Enumerator for tags.
 - `ValueEnumerator` — Enumerator for values.
@@ -289,7 +758,8 @@ Lifecycle events allow reactive systems to respond to changes in the entity's st
 
 ## 🛠️ Installing
 
-The **Installing** section describes how a `SceneEntity` is populated with **tags**, **values**, and **behaviours** at runtime or in the editor.  
+The **Installing** section describes how a `SceneEntity` is populated with **tags**, **values**, and **behaviours** at
+runtime or in the editor.  
 It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
 
 <!--
@@ -301,25 +771,25 @@ It also manages child entities through installers, ensuring that all dependencie
 
 ### Inspector Settings
 
-| Field                      | Type                         | Default | Description                                                                                                                                                                                                   |
-|----------------------------|------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `installOnAwake`           | `bool`                       | `true`  | If enabled, `Install()` is automatically called in `Awake()`.                                                                                                                                                 |
-| `installInEditMode`        | `bool`                       | `false` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. **Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
-| `installers`               | `List<SceneEntityInstaller>` | `null`  | List of installers that configure values and systems in this entity.                                                                                                                                          |
-| `children`                 | `List<SceneEntity>`          | `null`  | Child entities installed together with this entity.                                                                                                                                                           |
+| Field               | Type                         | Default | Description                                                                                                                                                                                                   |
+|---------------------|------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `installOnAwake`    | `bool`                       | `true`  | If enabled, `Install()` is automatically called in `Awake()`.                                                                                                                                                 |
+| `installInEditMode` | `bool`                       | `false` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. **Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
+| `installers`        | `List<SceneEntityInstaller>` | `null`  | List of installers that configure values and systems in this entity.                                                                                                                                          |
+| `children`          | `List<SceneEntity>`          | `null`  | Child entities installed together with this entity.                                                                                                                                                           |
 
 ### Properties
 
-| Property           | Type   | Description                                      |
-|--------------------|--------|--------------------------------------------------|
-| `bool Installed`   | `bool` | Returns true if the entity has been installed.   |
+| Property         | Type   | Description                                    |
+|------------------|--------|------------------------------------------------|
+| `bool Installed` | `bool` | Returns true if the entity has been installed. |
 
 ### Methods
 
-| Method                           | Description                                                                                                                                                                                                                                                                                                                                                 |
-|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Install()`                      | Installs all configured installers and child entities. <ul><li>Marks the entity as installed.</li><li>Calls `Install` on all `SceneEntityInstaller` instances.</li><li>Installs all child `SceneEntity` instances recursively.</li><li>Does nothing if the entity is already installed.</li></ul>                                                           |
-| `MarkAsNotInstalled()`           | Marks the entity as not installed, allowing reinstallation.                                                                                                                                                                                                                                                                                                 |
+| Method                 | Description                                                                                                                                                                                                                                                                                       |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Install()`            | Installs all configured installers and child entities. <ul><li>Marks the entity as installed.</li><li>Calls `Install` on all `SceneEntityInstaller` instances.</li><li>Installs all child `SceneEntity` instances recursively.</li><li>Does nothing if the entity is already installed.</li></ul> |
+| `MarkAsNotInstalled()` | Marks the entity as not installed, allowing reinstallation.                                                                                                                                                                                                                                       |
 
 ---
 
@@ -365,6 +835,7 @@ The **Optimization** section provides a simple workflow for precomputing entity 
 ---
 
 ## Creation & Destruction
+
 Provides static factory methods for creating and destroying entities.
 
 ### Methods
@@ -432,6 +903,7 @@ SceneEntity.Destroy(bossInstance, 3f); // Destroys entity after 3 seconds
 ```
 
 ## Casting & Proxies
+
 Methods for safe casting between `IEntity` and `SceneEntity`.
 
 ### Methods
@@ -499,10 +971,12 @@ Installs all `SceneEntity` instances in a scene that are not yet installed.
 ---
 
 ## 💡 Example Usage
+
 TODO: с картинками
 
 ## Performance
-TODO: 
+
+TODO:
 
 ## Notes
 
@@ -512,3 +986,27 @@ TODO:
 - `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
 - Supports `Odin Inspector` attributes for enhanced editor experience
 
+## 🔑 Key Features
+
+- **Event-Driven** – Reactive programming support via state change notifications.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
+- **Registry Integration** – Automatic registration with EntityRegistry
+- **Memory Efficient** – Pre-allocation support for collections
+- **Unity Component** – Attach directly to GameObjects.
+- **Scene Installation** – Automatically installs child entities and configured installers.
+- **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
+- **Gizmos Support** – Conditional drawing in Scene view.
+- **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
+- **Casting & Proxies** – Safe conversion between `IEntity` and `SceneEntity`.
+- **Scene-Wide Installation** – Can install all SceneEntities in a scene.
+- **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
+
+## 🔒 Thread Safety
+
+- `SceneEntity` is **NOT thread-safe**.
+- All operations should be performed on the main Unity thread.
+- Use external synchronization if accessing from multiple threads.

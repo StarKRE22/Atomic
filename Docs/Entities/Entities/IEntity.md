@@ -26,6 +26,8 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 
 ---
 
+
+
 ## 💠 Core Members
 
 Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
@@ -45,6 +47,8 @@ public event Action<IEntity> OnStateChanged
 - **Description:** Triggered whenever the entity’s internal state changes.
 - **Parameter:** `IEntity` – This entity.
 - **Note:** Useful for reacting to lifecycle or state transitions of an entity.
+
+---
 
 ### 🔑 Properties
 
