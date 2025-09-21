@@ -2,6 +2,9 @@
 
 Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the **Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
 
+```csharp
+public class Entity : IEntity
+```
 ---
 
 ## 📚 Content
