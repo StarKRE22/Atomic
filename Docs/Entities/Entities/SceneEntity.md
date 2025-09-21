@@ -1374,19 +1374,23 @@ TODO:
 
 ---
 
-## 📈 Optimization
-
-Provides a simple workflow for precomputing entity capacities in the Unity Editor.
+<details>
+  <summary>
+    <h2 id="-optimization"> 📈 Optimization</h2>
+    <br>
+    Provides a simple workflow for precomputing entity capacities in the Unity Editor.
+  </summary>
 
 - **Compile Button** – Available in the context menu or as a button in the Inspector.  
   Pressing **Compile** will precompute and store the current sizes of **tags**, **values**, and **behaviours**.
 
 > This feature helps inspect and optimize memory usage without affecting runtime behaviour.
 
-
 ### 🗂 Example of Usage
 
 TODO:
+
+</details>
 
 ---
 
