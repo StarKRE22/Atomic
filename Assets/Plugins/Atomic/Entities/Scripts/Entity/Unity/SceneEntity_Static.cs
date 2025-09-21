@@ -13,6 +13,8 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity
     {
+        #region Creation
+
         [Serializable]
         public struct CreateArgs
         {
@@ -227,6 +229,10 @@ namespace Atomic.Entities
             return entity;
         }
 
+        #endregion
+
+        #region Destroy
+
         /// <summary>
         /// Destroys the associated GameObject of the specified <see cref="IEntity"/> if it can be cast to a <see cref="SceneEntity"/>.
         /// </summary>
@@ -246,6 +252,11 @@ namespace Atomic.Entities
             if (entity)
                 Destroy(entity.gameObject, t);
         }
+
+        #endregion
+
+
+        
 
         /// <summary>
         /// Casts the specified <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.

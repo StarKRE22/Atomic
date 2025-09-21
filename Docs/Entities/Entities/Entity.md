@@ -932,13 +932,13 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 
 ### 🗂 Example of Usage
 
-Below is an example of working with behaviours in `IEntity`.
+Below is an example of working with behaviours in `Entity`.
 
 #### 1️⃣ Basic Usage
 
 ```csharp
 // Assume we have a player entity:
-IEntity player = ...
+Entity player = ...
 
 // Subscribe to events
 player.OnBehaviourAdded += (e, b) => 
@@ -1211,6 +1211,15 @@ public void Dispose()
   - If the entity is enabled, calls `Disable()` automatically.
   - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
+
+#### `OnDispose()`
+
+```csharp
+protected virtual void OnDispose()  
+```
+- **Description:**  Called during the disposal process of a `Entity`. Provides a hook for derived classes to execute custom cleanup logic when the entity is being disposed.
+- **Notes:** This method is invoked by `Dispose()`
+
 ---
 
 ### 🗂 Example of Usage
@@ -1248,15 +1257,6 @@ player.Dispose();
 ```
 
 </details>
-
----
-
-## 🧩️ Nested Types
-
-- `Settings` — Entity configuration (e.g., `disposeValues`).
-- `BehaviourEnumerator` — struct Enumerator for behaviours.
-- `TagEnumerator` — struct Enumerator for tags.
-- `ValueEnumerator` — struct Enumerator for values.
 
 ---
 

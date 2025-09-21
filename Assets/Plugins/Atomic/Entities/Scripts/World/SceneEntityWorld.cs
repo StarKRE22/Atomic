@@ -121,7 +121,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && this.isStarted)
             {
                 this.Enable();
-                TickableLoop.Instance.Register(this);
+                UpdateLoop.Instance.Register(this);
             }
         }
 
@@ -130,7 +130,7 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle)
             {
                 this.Enable();
-                TickableLoop.Instance.Register(this);
+                UpdateLoop.Instance.Register(this);
                 this.isStarted = true;
             }
         }
@@ -139,7 +139,7 @@ namespace Atomic.Entities
         {
             if (this.useUnityLifecycle && this.isStarted)
             {
-                TickableLoop.Instance.Unregister(this);
+                UpdateLoop.Instance.Unregister(this);
                 this.Disable();
             }
         }

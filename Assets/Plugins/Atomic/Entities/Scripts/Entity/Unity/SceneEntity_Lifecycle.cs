@@ -245,9 +245,45 @@ namespace Atomic.Entities
 
             this.OnLateTicked?.Invoke(deltaTime);
         }
+        
+         #region Dispose
 
+         /// <summary>
+        /// Cleans up all resources used by the entity.
+        /// </summary>
+        /// <remarks>
+        /// <list type="bullet">
+        /// <item><description>Transitions an entity to not <c>Initialized</c> state.</description></item>
+        /// <item><description>Calls <see cref="IEntityDispose.Dispose"/> on all registered behaviours implementing <see cref="IEntityDispose"/>.</description></item>
+        /// <item><description>Clears all tags, values, and behaviours.</description></item>
+        /// <item><description>Unsubscribes from all events.</description></item>
+        /// <item><description>Unregisters the entity from <see cref="EntityRegistry"/>.</description></item>
+        /// <item><description>Disposes stored values if <see cref="disposeValues"/> is <c>true</c>.</description></item>
+        /// <item><description>If the entity is enabled, this method automatically calls <see cref="Disable"/>.</description></item>
+        /// <item><description>If the entity is not initialized yet, this method does not call <see cref="IEntityDispose.Dispose"/> or <see cref="OnDisposed"/>.</description></item>
+        /// </list>
+        /// </remarks>
+        public void Dispose()
+        {
+            this.OnDispose();
+            this.Deinitialize();
+
+            if (this.disposeValues)
+                this.DisposeValues();
+
+            this.ClearTags();
+            this.ClearValues();
+            this.ClearBehaviours();
+
+            this.OnStateChanged?.Invoke(this);
+
+            this.UnsubscribeEvents();
+            EntityRegistry.Instance.Unregister(ref _instanceId);
+        }
+         
+         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void DisposeInternal()
+        private void Deinitialize()
         {
             if (!_initialized)
                 return;
@@ -261,6 +297,38 @@ namespace Atomic.Entities
             _initialized = false;
             this.OnDisposed?.Invoke();
         }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        protected virtual void OnDispose()
+        {
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void UnsubscribeEvents()
+        {
+            this.OnStateChanged = null;
+
+            this.OnInitialized = null;
+            this.OnDisposed = null;
+            this.OnEnabled = null;
+            this.OnDisabled = null;
+
+            this.OnTicked = null;
+            this.OnFixedTicked = null;
+            this.OnLateTicked = null;
+
+            this.OnBehaviourAdded = null;
+            this.OnBehaviourDeleted = null;
+
+            this.OnValueAdded = null;
+            this.OnValueDeleted = null;
+            this.OnValueChanged = null;
+
+            this.OnTagAdded = null;
+            this.OnTagDeleted = null;
+        }
+
+        #endregion
     }
 }
 #endif

@@ -93,7 +93,7 @@ namespace Atomic.Entities
                 }
 
                 this.Construct();
-                this.MarkAsNotInstalled();
+                this.Uninstall();
                 this.Install();
                 this.Precompile();
 

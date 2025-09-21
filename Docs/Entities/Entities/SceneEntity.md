@@ -18,13 +18,13 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 - [Values](#-values)
 - [Behaviours](#-behaviours)
 - [Lifecycle](#-lifecycle)
-- [Nested Types](#-nested-types)
 - [Installing](#-installing)
-- [Gizmos Support](#-gizmos-support)
 - [Optimization](#-optimization)
+- [Gizmos Support](#-gizmos-support)
 - [Debug Properties](#-debug-properties)
-- [Creation & Destruction](#creation--destruction)
-- [Casting & Proxies](#casting--proxies)
+- [Creation](#creation)
+- [Destruction](#-destruction)
+- [Casting](#-casting)
 - [Install All Entities](#install-all-entities)
 - [Example Usage](#-example-usage)
 - [Performance](#-performance)
@@ -32,13 +32,12 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 
 ---
 
-## 💠 Core Members
-
-Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for debugging
-or tooling, and the main event for reactive state
-changes. This section provides the minimal information needed to track and observe the entity’s lifecycle.
-
----
+<details>
+  <summary>
+    <h2 id="-core-members">💠 Core</h2>
+    <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+         debugging or tooling, and the main event for reactive state changes.
+  </summary>
 
 ### ⚡ Events
 
@@ -78,14 +77,16 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
----
-
-## 💠 Tag Members
-
-Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
-enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-tag-members">🏷️ Tags</h2>
+    <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+         enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+  </summary>
 
 ### 🛠 Inspector Settings
 
@@ -313,16 +314,17 @@ if (entity.HasPlayerTag())
 entity.DelNPCTag();
 ```
 
----
-
-## 💠 Value Members
-
-Manages dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
-identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic. Values
-support reactive updates via associated events (`OnValueAdded`, `OnValueDeleted`, `OnValueChanged`),
-allowing other systems to respond automatically to state changes.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-value-members">🔑 Values</h2>
+    <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+         identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+
+  </summary>
 
 ### 🛠 Inspector Settings
 
@@ -674,150 +676,748 @@ entity.SetHealth(150);
 entity.DelInventory();
 ```
 
----
-
-## 💠 Behaviours
-
-Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
-interfaces and can be added,
-removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
-functionality without changing the core entity
-structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
-enabling dynamic logic composition without changing the core entity structure.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2 id="-behaviour-members">⚙️ Behaviours</h2>
+    <br>
+    Manage modular logic attached to the entity. Behaviours implement 
+    <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
+    This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
+    Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
+    enabling dynamic logic composition without changing the core entity structure.
+  </summary>
 
 ### 🛠 Inspector Settings
 
-| Field                      | Type                                                                          | 
+| Parameters                 | Description                                                                   | 
 |----------------------------|-------------------------------------------------------------------------------|
 | `initialBehaviourCapacity` | Initial capacity for behaviours to optimize memory allocation. Default is `0` |
 
+---
+
+### ⚡ Events
+
+#### `OnBehaviourAdded`
+
+```csharp
+public event Action<IEntity, IEntityBehaviour> OnBehaviourAdded  
+```
+
+- **Description:** Triggered when a behaviour is added to the entity.
+- **Parameters:**
+    - `IEntity` – The entity where the behaviour was added.
+    - `IEntityBehaviour` – The behaviour that was added.
+- **Note:** Allows subscribers to react whenever a new behaviour is attached.
+
+#### `OnBehaviourDeleted`
+
+```csharp
+public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted  
+```
+
+- **Description:** Triggered when a behaviour is removed from the entity.
+- **Parameters:**
+    - `IEntity` – The entity where the behaviour was removed.
+    - `IEntityBehaviour` – The behaviour that was removed.
+- **Note:** Useful for cleanup or reactive updates when behaviours are detached.
+
+---
+
+### 🔑 Properties
+
+#### `BehaviourCount`
+
+```csharp
+public int BehaviourCount { get; }  
+```
+
+- **Description:** Number of behaviours currently attached to the entity.
+- **Note:** Provides a quick way to check how many behaviours are associated with this entity.
+
+---
+
+### 🏹 Methods
+
+#### `AddBehaviour(IEntityBehaviour)`
+
+```csharp
+public void AddBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Adds a behaviour to the entity.
+- **Parameters:** `behaviour` – The behaviour instance to attach.
+- **Triggers:** `OnBehaviourAdded` and `OnStateChanged`.
+- **Exceptions:** Throws if `behaviour` is null.
+
+#### `GetBehaviour<T>()`
+
+```csharp
+public T GetBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Gets the first behaviour of the specified type.
+- **Returns:** The first attached behaviour of type `T`.
+- **Exceptions:** Throws if no behaviour of type `T` exists.
+
+#### `GetBehaviourAt(int)`
+
+```csharp
+public IEntityBehaviour GetBehaviour(int index)  
+```
+
+- **Description:** Returns the behaviour instance at the given index.
+- **Parameters:** `index` – The zero-based index of the behaviour.
+- **Returns:** The behaviour at the specified index.
+- **Exceptions:** Throws if `index` is out of range.
+
+#### `TryGetBehaviour<T>(out T)`
+
+```csharp
+public bool TryGetBehaviour<T>(out T behaviour) where T : IEntityBehaviour  
+```
+
+- **Description:** Tries to get a behaviour of the specified type.
+- **Parameters:** `out behaviour` – Output parameter for the behaviour.
+- **Returns:** `true` if a behaviour of type `T` exists, otherwise `false`.
+
+#### `HasBehaviour(IEntityBehaviour)`
+
+```csharp
+public bool HasBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Checks if a specific behaviour exists.
+- **Parameters:** `behaviour` – The behaviour instance to check.
+- **Returns:** `true` if the behaviour is attached, otherwise `false`.
+
+#### `HasBehaviour<T>()`
+
+```csharp
+public bool HasBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Checks if a behaviour of the specified type exists.
+- **Returns:** `true` if any behaviour of type `T` is attached, otherwise `false`.
+
+#### `DelBehaviour(IEntityBehaviour)`
+
+```csharp
+public bool DelBehaviour(IEntityBehaviour behaviour)  
+```
+
+- **Description:** Removes a specific behaviour.
+- **Parameters:** `behaviour` – The behaviour to remove.
+- **Returns:** `true` if the behaviour existed and was removed, otherwise `false`.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged`.
+
+#### `DelBehaviour<T>()`
+
+```csharp
+public bool DelBehaviour<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Removes a behaviour of the specified type.
+- **Returns:** `true` if a behaviour of type `T` was removed, otherwise `false`.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged`.
+
+#### `DelBehaviours<T>()`
+
+```csharp
+public void DelBehaviours<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Removes all behaviours of the specified type.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged` for each removed behaviour.
+
+#### `ClearBehaviours()`
+
+```csharp
+public void ClearBehaviours()  
+```
+
+- **Description:** Clears all behaviours from the entity.
+- **Triggers:** `OnBehaviourDeleted` and `OnStateChanged` for each removed behaviour.
+
+#### `GetBehaviours()`
+
+```csharp
+public IEntityBehaviour[] GetBehaviours()  
+```
+
+- **Description:** Returns all behaviours attached to the entity.
+- **Returns:** Array of all behaviours.
+
+#### `GetBehaviours<T>()`
+
+```csharp
+public T[] GetBehaviours<T>() where T : IEntityBehaviour  
+```
+
+- **Description:** Returns all behaviours of type `T` attached to the entity.
+- **Returns:** Array of behaviours of type `T`.
+
+#### `CopyBehaviours(IEntityBehaviour[])`
+
+```csharp
+public int CopyBehaviours(IEntityBehaviour[] results)  
+```
+
+- **Description:** Copies all behaviours into the provided array.
+- **Parameters:** `results` – Array to copy behaviours into.
+- **Returns:** Number of behaviours copied.
+- **Exceptions:** Throws if `results` is null or too small.
+
+#### `CopyBehaviours<T>(T[])`
+
+```csharp
+public int CopyBehaviours<T>(T[] results) where T : IEntityBehaviour  
+```
+
+- **Description:** Copies behaviours of type `T` into the provided array.
+- **Parameters:** `results` – Array to copy behaviours into.
+- **Returns:** Number of behaviours copied.
+- **Exceptions:** Throws if `results` is null or too small.
+
+#### `GetBehaviourEnumerator()`
+
+```csharp
+public BehaviourEnumerator GetBehaviourEnumerator()  
+```
+
+- **Description:** Enumerates all behaviours attached to the entity.
+- **Returns:** Struct enumerator for iterating through behaviours.
+
+---
+
+### 🗂 Example of Usage
+
+Below is an example of working with behaviours in `SceneEntity`.
+
+#### 1️⃣ Basic Usage
+
+```csharp
+// Assume we have a player entity:
+Entity player = ...
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
+
+#### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](Extensions.md#-behaviours) for convenient handling of behaviours.
+
+```csharp
+// Create a new entity
+IEntity enemy = new Entity();
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```
+
+</details>
+
 ----
 
-## 🔄 Lifecycle
+<details>
+  <summary>
+    <h2 id="-lifecycle-members">♻️ Lifecycle</h2>
+    <br>
+    Manage the entity's state transitions and update phases. It covers initialization, enabling,
+    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
+    entity's state.
+  </summary>
 
-The **Lifecycle** section manages the entity's state transitions and update phases.  
-It covers initialization, enabling, per-frame updates, disabling, and disposal.  
-Lifecycle events allow reactive systems to respond to changes in the entity's state.
+### 🛠 Inspector Settings
 
-### Inspector Settings
-
-| Field               | Type   | Default | Description                                                                                      |
-|---------------------|--------|---------|--------------------------------------------------------------------------------------------------|
-| `useUnityLifecycle` | `bool` | `true`  | Enables automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). |
-| `disposeValues`     | `bool` | `true`  | Determines whether values are disposed when `Dispose()` is called.                               |
-
-### Events
-
-| Event                   | Description                                 |
-|-------------------------|---------------------------------------------|
-| `OnInitialize`          | Triggered when the entity is initialized.   |
-| `OnEnabled`             | Triggered when the entity is enabled.       |
-| `OnDisabled`            | Triggered when the entity is disabled.      |
-| `OnDisposed`            | Triggered when the entity is disposed.      |
-| `OnUpdated(float)`      | Triggered when the entity is updated.       |
-| `OnFixedUpdated(float)` | Triggered when the entity is fixed updated. |
-| `OnLateUpdated(float)`  | Triggered when the entity is late updated.  |
-
-### Properties
-
-| Property      | Type | Description                        |
-|---------------|------|------------------------------------|
-| `Initialized` | bool | True if the entity is initialized. |
-| `Enabled`     | bool | True if the entity is enabled.     |
-
-### Methods
-
-| Method                           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Init()`                         | Initializes the entity. <ul><li>Transitions the entity to the `Initialized` state.</li><li>Calls `Init` on all behaviours implementing `IEntityInit`.</li><li>Triggers the `OnInitialized` event.</li><li>If the entity is already initialized, does nothing.</li></ul>                                                                                                                                                                                                                                                                                                                  |
-| `Enable()`                       | Enables the entity for updates. <ul><li>Transitions the entity to the `Enabled` state.</li><li>Calls `Enable` on all behaviours implementing `IEntityEnable`.</li><li>Triggers the `OnEnabled` event.</li><li>If the entity is not initialized yet, it will be initialized automatically.</li><li>If the entity is already enabled, does nothing.</li></ul>                                                                                                                                                                                                                              |
-| `OnUpdate(float deltaTime)`      | Calls `Update` on all behaviours implementing `IEntityUpdate`. <ul><li>Triggers the `OnUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| `OnFixedUpdate(float deltaTime)` | Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`. <ul><li>Triggers the `OnFixedUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `OnLateUpdate(float deltaTime)`  | Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`. <ul><li>Triggers the `OnLateUpdated` event.</li><li>Can only be invoked if the entity is enabled.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `Disable()`                      | Disables the entity for updates. <ul><li>Transitions the entity to a not `Enabled` state.</li><li>Calls `Disable` on all behaviours implementing `IEntityDisable`.</li><li>Triggers the `OnDisabled` event.</li><li>If the entity is not enabled yet, does nothing.</li></ul>                                                                                                                                                                                                                                                                                                            |
-| `Dispose()`                      | Cleans up all resources used by the entity. <ul><li>Transitions the entity to a not `Initialized` state.</li><li>Calls `Dispose` on all behaviours implementing `IEntityDispose`.</li><li>Clears all tags, values, and behaviours.</li><li>Unsubscribes from all events.</li><li>Unregisters the entity from the `EntityRegistry`.</li><li>Disposes stored values if `disposeValues` is `true`.</li><li>If the entity is enabled, calls `Disable` automatically.</li><li>If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.</li></ul> |
+| Parameters          | Description                                                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------|
+| `useUnityLifecycle` | Enables automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). |
+| `disposeValues`     | Determines whether values are disposed when `Dispose()` is called.                               |
 
 ---
 
-## 🔹 Nested Types
+### ⚡ Events
 
-- `BehaviourEnumerator` — Enumerator for behaviours.
-- `TagEnumerator` — Enumerator for tags.
-- `ValueEnumerator` — Enumerator for values.
+#### `OnInitialized`
+
+```csharp
+public event Action OnInitialized  
+```
+
+- **Description:** Occurs when the object has been successfully initialized.
+- **Triggers:** Fired by the `Init()` method after successful initialization.
+
+#### `OnDisposed`
+
+```csharp
+public event Action OnDisposed  
+```
+
+- **Description:** Occurs when the object has been disposed and its resources released.
+- **Triggers:** Fired when `Dispose()` is called.
+
+#### `OnEnabled`
+
+```csharp
+public event Action OnEnabled  
+```
+
+- **Description:** Occurs when the object is enabled.
+- **Triggers:** Fired by the `Enable()` method.
+
+#### `OnDisabled`
+
+```csharp
+public event Action OnDisabled  
+```
+
+- **Description:** Occurs when the object is disabled.
+- **Triggers:** Fired by the `Disable()` method.
+
+#### `OnTicked`
+
+```csharp
+public event Action<float> OnTicked  
+```
+
+- **Description:** Occurs during the regular `Update` phase, once per frame.
+- **Triggers:** Fired inside `Tick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+
+#### `OnFixedTicked`
+
+```csharp
+public event Action<float> OnFixedTicked  
+```
+
+- **Description:** Occurs during the `FixedUpdate` phase, typically used for physics updates.
+- **Triggers:** Fired inside `FixedTick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
+- **Exceptions:** None.
+
+#### `OnLateTicked`
+
+```csharp
+public event Action<float> OnLateTicked  
+```
+
+- **Description:** Occurs during the `LateUpdate` phase, after all `Update` calls have been made.
+- **Triggers:** Fired inside `LateTick(float deltaTime)`.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
 
 ---
 
-## 🛠️ Installing
+### 🔑 Properties
 
-The **Installing** section describes how a `SceneEntity` is populated with **tags**, **values**, and **behaviours** at
-runtime or in the editor.  
-It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
+#### `Initialized`
 
-<!--
-//TODO: FORMAT TO INSTALL ACTION!
-> [!NOTE]  
-> Actions are executed in the order they appear in the array.  
-> Null references are automatically skipped, making partially configured lists safe to use.
--->
+```csharp
+public bool Initialized { get; }  
+```
 
-### Inspector Settings
+- **Description:** Indicates whether the object is currently initialized.
+- **Returns:** `true` if the object has been initialized, otherwise `false`.
 
-| Field               | Type                         | Default | Description                                                                                                                                                                                                   |
-|---------------------|------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `installOnAwake`    | `bool`                       | `true`  | If enabled, `Install()` is automatically called in `Awake()`.                                                                                                                                                 |
-| `installInEditMode` | `bool`                       | `false` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. **Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
-| `installers`        | `List<SceneEntityInstaller>` | `null`  | List of installers that configure values and systems in this entity.                                                                                                                                          |
-| `children`          | `List<SceneEntity>`          | `null`  | Child entities installed together with this entity.                                                                                                                                                           |
+#### `Enabled`
 
-### Properties
+```csharp
+public bool Enabled { get; }  
+```
 
-| Property         | Type   | Description                                    |
-|------------------|--------|------------------------------------------------|
-| `bool Installed` | `bool` | Returns true if the entity has been installed. |
-
-### Methods
-
-| Method                 | Description                                                                                                                                                                                                                                                                                       |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Install()`            | Installs all configured installers and child entities. <ul><li>Marks the entity as installed.</li><li>Calls `Install` on all `SceneEntityInstaller` instances.</li><li>Installs all child `SceneEntity` instances recursively.</li><li>Does nothing if the entity is already installed.</li></ul> |
-| `MarkAsNotInstalled()` | Marks the entity as not installed, allowing reinstallation.                                                                                                                                                                                                                                       |
+- **Description:** Indicates whether the object is currently enabled.
+- **Returns:** `true` if enabled, otherwise `false`.
 
 ---
 
-## 🖌️ Gizmos Support
+### 🏹 Methods
 
-`SceneEntity` provides visual debugging support through Unity Gizmos in the Scene view.
+#### `Init()`
 
-### Inspector Settings
+```csharp
+public void Init()  
+```
 
-| Field                | Type   | Default | Description                                        |
-|----------------------|--------|---------|----------------------------------------------------|
-| `onlySelectedGizmos` | `bool` | `false` | Draw gizmos only when this GameObject is selected. |
-| `onlyEditModeGizmos` | `bool` | `false` | Draw gizmos only when Unity is not in Play mode.   |
+- **Description:** Initializes the entity.
+- **Behavior:**
+    - Transitions the entity to the `Initialized` state.
+    - Calls `Init` on all behaviours implementing `IEntityInit`.
+    - Triggers the `OnInitialized` event.
+    - If the entity is already initialized, does nothing.
 
-### Methods
+#### `Enable()`
 
-| Method                   | Description                                                                                                                                                                             |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `OnDrawGizmos()`         | Called by Unity to draw gizmos in the scene view. Delegates to `OnDrawGizmosSelected()` unless `_onlySelectedGizmos` is enabled.                                                        |
-| `OnDrawGizmosSelected()` | Draws gizmos for this entity and all attached behaviours implementing `IEntityGizmos`. Skips drawing in play mode if `_onlyEditModeGizmos` is enabled. Catches and logs any exceptions. |
+```csharp
+public void Enable()  
+```
 
-----
+- **Description:** Enables the entity for updates.
+- **Behavior:**
+    - Transitions the entity to the `Enabled` state.
+    - Calls `Enable` on all behaviours implementing `IEntityEnable`.
+    - Triggers the `OnEnabled` event.
+    - If the entity is not initialized yet, it will be initialized automatically.
+    - If the entity is already enabled, does nothing.
 
-## ⚡ Optimization
+#### `Tick(float)`
 
-The **Optimization** section provides a simple workflow for precomputing entity capacities in the Unity Editor.
+```csharp
+public void Tick(float deltaTime)  
+```
+
+- **Description:** Calls `Update` on all behaviours implementing `IEntityUpdate`.
+- **Behavior:**
+    - Triggers the `OnTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `FixedTick(float)`
+
+```csharp
+public void FixedTick(float deltaTime)  
+```
+
+- **Description:** Calls `FixedUpdate` on all behaviours implementing `IEntityFixedUpdate`.
+- **Behavior:**
+    - Triggers the `OnFixedTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Fixed time step used by the physics engine.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `LateTick(float)`
+
+```csharp
+public void LateTick(float deltaTime)  
+```
+
+- **Description:** Calls `LateUpdate` on all behaviours implementing `IEntityLateUpdate`.
+- **Behavior:**
+    - Triggers the `OnLateTicked` event.
+    - Can only be invoked if the entity is enabled.
+- **Parameter:** `deltaTime` – Time in seconds since the last frame.
+- **Exceptions:** Throws if the entity is not enabled.
+
+#### `Disable()`
+
+```csharp
+public void Disable()  
+```
+
+- **Description:** Disables the entity for updates.
+- **Behavior:**
+    - Transitions the entity to a not `Enabled` state.
+    - Calls `Disable` on all behaviours implementing `IEntityDisable`.
+    - Triggers the `OnDisabled` event.
+    - If the entity is not enabled yet, does nothing.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose()  
+```
+
+- **Description:** Cleans up all resources used by the entity.
+- **Behavior:**
+    - Transitions the entity to a not `Initialized` state.
+    - Calls `Dispose` on all behaviours implementing `IEntityDispose`.
+    - Clears all tags, values, and behaviours.
+    - Unsubscribes from all events.
+    - Unregisters the entity from the `EntityRegistry`.
+    - Disposes stored values if `Settings.disposeValues` is `true`.
+    - If the entity is enabled, calls `Disable()` automatically.
+    - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
+
+#### `OnDispose()`
+
+```csharp
+protected virtual void OnDispose()  
+```
+
+- **Description:**  Called during the disposal process of a `SceneEntity`. Provides a hook for derived classes to
+  execute custom cleanup logic when the entity is being disposed.
+- **Notes:** This method is invoked by `Dispose()`
+
+---
+
+### 🗂 Example of Usage
+
+This example demonstrates how to manage the lifecycle of an entity, including initialization, enabling, per-frame
+updates, disabling, and disposal. Event subscriptions allow reacting to state changes in real time.
+
+```csharp
+// Assume we have SceneEntity instance
+SceneEntity player = ...
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="-installing"> 🔧 Installing</h2>
+    <br>
+    Describes how a <code>SceneEntity</code> is populated with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
+    runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
+  </summary>
+
+### 🛠 Inspector Settings
+
+| Parameter           | Description                                                                                                                                                                                                                            |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `installOnAwake`    | If enabled, `Install()` is automatically called in `Awake()`. Default is `true`                                                                                                                                                        |
+| `installInEditMode` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. Default is `false`. <br/>**Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
+| `installers`        | List of installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.          |
+| `children`          | Child entities installed together with this entity. Children are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.                             |
+
+---
+
+### 🔑 Properties
+
+#### `Installed`
+
+```csharp
+public bool Installed { get; }
+```
+
+- **Description:** Returns true if the entity already has been installed.
+
+</details>
+
+---
+
+### 🏹 Methods
+
+#### `Install()`
+
+```csharp
+public void Install()  
+```
+
+- **Description:** Installs all configured installers and child entities into this `SceneEntity`. Ensures that tags,
+  values, and behaviours are properly set up at runtime or in the editor.
+- **Warnings:** Logs warnings when null references are found.
+- **Notes:** Skips null installers and null children.
+
+#### `OnInstall()`
+
+```csharp
+protected virtual void OnInstall()  
+```
+
+- **Description:** Called during the installation process of a `SceneEntity`. Provides a hook for derived classes to
+  execute custom logic when the entity is being installed.
+- **Notes:** This method is invoked by `Install()` before processing installers and child entities.
+
+#### `Uninstall()`
+
+```csharp
+public void Uninstall()  
+```
+
+- **Description:** Uninstalls all configured installers and child entities from this `SceneEntity`. Marks the entity as
+  not installed, allowing it to be reinstalled.
+- **Warnings:** Warnings are logged for null references to help debugging.
+- **Notes:** Null installers and null children are safely skipped.
+
+#### `OnUninstall()`
+
+```csharp
+protected virtual void OnUninstall()  
+```
+
+- **Description:** Called during the uninstallation process of a `SceneEntity`. Provides a hook for derived classes to
+  execute custom logic when the entity is being uninstalled.
+- **Notes:** This method is invoked by `Uninstall()` before processing installers and child entities.
+
+---
+
+### 🔹Static Methods
+
+Также есть статические методы, которые позволяют устанавливать сущности глобально на сцене
+
+#### `InstallAll(Scene)`
+
+```csharp
+public static void InstallAll(Scene scene)  
+```
+
+- **Description:** Installs all `SceneEntity` instances found in the given `Scene` that are not yet installed. This is a
+  convenience method that calls the generic version `InstallAll<SceneEntity>(scene)`.
+- **Parameter:** `scene` – The `Scene` in which to search for `SceneEntity` instances.
+- **Exception:** Throws if `scene` is not valid or not loaded.
+- **Note:**
+    - Skips entities that are already installed.
+    - Null GameObjects are skipped.
+    - Entities that are already installed are ignored.
+
+#### `InstallAll<E>(Scene)`
+
+```csharp
+public static void InstallAll<E>(Scene scene) where E : SceneEntity  
+```
+
+- **Description:** Installs all `SceneEntity` instances of type `<E>` found in the specified `Scene` that are not yet
+  installed. Iterates through all root GameObjects and all child objects to find entities of type `<E>`.
+- **Type Parameters:** `E` – The type of `SceneEntity` to search for and install.
+- **Parameter:** `scene` – The `Scene` in which to search for `<E>` instances.
+- **Exception:** Throws if `scene` is not valid or not loaded.
+- **Note:**
+    - Skips entities that are already installed.
+    - Null GameObjects are skipped.
+    - Entities that are already installed are ignored.
+
+---
+
+## 🗂 Example of Usage
+
+---
+
+## 📈 Optimization
+
+Provides a simple workflow for precomputing entity capacities in the Unity Editor.
 
 - **Compile Button** – Available in the context menu or as a button in the Inspector.  
   Pressing **Compile** will precompute and store the current sizes of **tags**, **values**, and **behaviours**.
 
 > This feature helps inspect and optimize memory usage without affecting runtime behaviour.
 
+## 🗂 Example of Usage
+
+---
+
+## 🖌️ Gizmos Support
+
+Provides visual debugging support through Unity Gizmos in the Scene view.
+
+### 🛠 Inspector Settings
+
+| Parameter            | Description                                                           |
+|----------------------|-----------------------------------------------------------------------|
+| `onlySelectedGizmos` | Draw gizmos only when this GameObject is selected. Default is `false` |
+| `onlyEditModeGizmos` | Draw gizmos only when Unity is not in Play mode.Default is `false`    |
+
+### 🗂 Example of Usage
+
+Ниже приведен пример отрисовки кружочка для юнита с позицией и Scale
+
+```csharp
+public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
+{
+    public void DrawGizmos(IGameEntity entity)
+    {
+        Vector3 center = entity.GetPosition().Value;
+        float scale = entity.GetScale().Value;
+        Handles.DrawWireDisc(center, Vector3.up, scale);
+    }
+}
+```
+
+Добавляем в SceneEntityInstaller
+
+```csharp
+[Serializable]
+public sealed class TransformEntityInstaller : IEntityInstaller<IGameEntity>
+{
+    [SerializeField]
+    private Const<float> _scale = 1;
+    
+    public void Install(IGameEntity entity)
+    {
+        entity.AddPosition(new ReactiveVector3());
+        entity.AddRotation(new ReactiveQuaternion());
+        entity.AddScale(_scale);
+        
+        //Подключаем логику отрисовки
+        entity.AddBehaviour<TransformGizmos>();
+    }
+}
+```
+
+---
+
 ## 🐞 Debug Properties
 
-> **Note:** These properties are available only in **Unity Editor** when using **Odin Inspector**.
+These properties are available only in **Unity Editor** when using **Odin Inspector**.
 
 - `Initialized` — Displays if the entity is initialized.
 - `Enabled` — Displays if the entity is enabled.
@@ -827,9 +1427,38 @@ The **Optimization** section provides a simple workflow for precomputing entity 
 
 ---
 
-## Creation & Destruction
+## ✨ Creation
 
-Provides static factory methods for creating and destroying entities.
+Дальше приведены методы, с помощью которых можно создавать сущности в Runtime, например префабы или абсолютно новые игровые объекты 
+
+### `CreateArgs`
+
+```csharp
+[Serializable]  
+public struct CreateArgs  
+```
+- **Description:** Определяет набор параметров для создания динамической сущности 
+- **Fields:**
+    - `string name` – optional name for the GameObject.
+    - `IEnumerable<int> tags` – optional tags to assign.
+    - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
+    - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
+    - `List<SceneEntityInstaller> installers` – optional installers to run.
+    - `List<SceneEntity> children` – optional child entities.
+    - `int initialTagCapacity` – initial capacity for tags.
+    - `int initialValueCapacity` – initial capacity for values.
+    - `int initialBehaviourCapacity` – initial capacity for behaviours.
+    - `bool installOnAwake` – if true, installs automatically on Awake.
+    - `bool disposeValues` – if true, disposes values on destruction.
+    - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
+
+### Static Methods
+
+---
+
+## Destruction
+
+В этом разделе приведены примеры уничтожения сущностей в Runtime
 
 ### Methods
 

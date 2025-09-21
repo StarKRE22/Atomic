@@ -17,7 +17,7 @@ namespace Atomic.Entities
     /// </summary>
     [AddComponentMenu("Atomic/Entities/Entity")]
     [DisallowMultipleComponent, DefaultExecutionOrder(-1000)]
-    public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+    public partial class SceneEntity : MonoBehaviour, IEntity
     {
         private const int UNDEFINED_INDEX = -1;
 
@@ -38,11 +38,6 @@ namespace Atomic.Entities
             set => this.name = value;
         }
 
-        /// <summary>
-        /// Indicates whether this entity has already been installed.
-        /// </summary>
-        public bool Installed => _installed;
-
 #if ODIN_INSPECTOR
         [GUIColor(0f, 0.83f, 1f)]
         [DisableInPlayMode]
@@ -51,7 +46,8 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool installOnAwake = true;
 
-        [Tooltip("If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
+        [Tooltip(
+            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
 #if ODIN_INSPECTOR
         [PropertySpace(SpaceBefore = 0)]
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -133,102 +129,6 @@ namespace Atomic.Entities
         private int _initialBehaviourCapacity;
 
         private int _instanceId;
-        private bool _installed;
-        private bool _started;
-
-        protected virtual void Awake()
-        {
-            EntityRegistry.Instance.Register(this, out _instanceId);
-
-            if (this.installOnAwake)
-                this.Install();
-        }
-
-        protected virtual void OnEnable()
-        {
-            if (this.useUnityLifecycle && _started)
-            {
-                this.Enable();
-                TickableLoop.Instance.Register(this);
-            }
-        }
-
-        protected virtual void Start()
-        {
-            if (this.useUnityLifecycle)
-            {
-                this.Init();
-                this.Enable();
-                TickableLoop.Instance.Register(this);
-                _started = true;
-            }
-        }
-
-        protected virtual void OnDisable()
-        {
-            if (this.useUnityLifecycle && _started)
-            {
-                this.Disable();
-                TickableLoop.Instance.Unregister(this);
-            }
-        }
-
-        protected virtual void OnDestroy()
-        {
-            if (this.useUnityLifecycle && _started)
-            {
-                this.Dispose();
-                _started = false;
-            }
-        }
-
-        /// <summary>
-        /// Installs all configured installers and child entities into this SceneEntity.
-        /// </summary>
-        public void Install()
-        {
-            if (_installed)
-                return;
-
-            this.OnInstall();
-
-            if (this.installers != null)
-            {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
-                {
-                    SceneEntityInstaller installer = this.installers[i];
-                    if (installer != null)
-                        installer.Install(this);
-                    else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
-                }
-            }
-
-            if (this.children != null)
-            {
-                for (int i = 0, count = this.children.Count; i < count; i++)
-                {
-                    SceneEntity child = this.children[i];
-                    if (child != null)
-                        child.Install();
-                    else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
-                }
-            }
-
-            _installed = true;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnInstall()
-        {
-        }
-
-        /// <summary>
-        /// Marks the entity as not installed, allowing reinstallation.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void MarkAsNotInstalled() => _installed = false;
 
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
@@ -241,78 +141,9 @@ namespace Atomic.Entities
 
         /// <inheritdoc/>
         public override int GetHashCode() => _instanceId;
-        
-        /// <summary>
-        /// Cleans up all resources used by the entity.
-        /// </summary>
-        /// <remarks>
-        /// <list type="bullet">
-        /// <item><description>Transitions an entity to not <c>Initialized</c> state.</description></item>
-        /// <item><description>Calls <see cref="IEntityDispose.Dispose"/> on all registered behaviours implementing <see cref="IEntityDispose"/>.</description></item>
-        /// <item><description>Clears all tags, values, and behaviours.</description></item>
-        /// <item><description>Unsubscribes from all events.</description></item>
-        /// <item><description>Unregisters the entity from <see cref="EntityRegistry"/>.</description></item>
-        /// <item><description>Disposes stored values if <see cref="disposeValues"/> is <c>true</c>.</description></item>
-        /// <item><description>If the entity is enabled, this method automatically calls <see cref="Disable"/>.</description></item>
-        /// <item><description>If the entity is not initialized yet, this method does not call <see cref="IEntityDispose.Dispose"/> or <see cref="OnDisposed"/>.</description></item>
-        /// </list>
-        /// </remarks>
-        public void Dispose()
-        {
-            this.OnDispose();
-            this.DisposeInternal();
-
-            if (this.disposeValues)
-                this.DisposeValues();
-
-            this.ClearTags();
-            this.ClearValues();
-            this.ClearBehaviours();
-
-            this.OnStateChanged?.Invoke(this);
-
-            this.UnsubscribeEvents();
-            EntityRegistry.Instance.Unregister(ref _instanceId);
-        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void OnDispose()
-        {
-        }
-        
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private void UnsubscribeEvents()
-        {
-            this.OnStateChanged = null;
-
-            this.OnInitialized = null;
-            this.OnDisposed = null;
-            this.OnEnabled = null;
-            this.OnDisabled = null;
-
-            this.OnTicked = null;
-            this.OnFixedTicked = null;
-            this.OnLateTicked = null;
-
-            this.OnBehaviourAdded = null;
-            this.OnBehaviourDeleted = null;
-
-            this.OnValueAdded = null;
-            this.OnValueDeleted = null;
-            this.OnValueChanged = null;
-
-            this.OnTagAdded = null;
-            this.OnTagDeleted = null;
-        }
-
-        void ISerializationCallbackReceiver.OnAfterDeserialize() => this.Construct();
-
-        void ISerializationCallbackReceiver.OnBeforeSerialize()
-        {
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        protected virtual void Construct()
+        private void Construct()
         {
             this.ConstructTags();
             this.ConstructValues();

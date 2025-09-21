@@ -26,7 +26,7 @@ namespace Atomic.Entities
         {
             _go = new GameObject("TestEntity");
             _entity = _go.AddComponent<SceneEntity>();
-            _entity.MarkAsNotInstalled();
+            _entity.Uninstall();
         }
 
         [TearDown]
@@ -75,7 +75,7 @@ namespace Atomic.Entities
             var childGO = new GameObject("Child");
             childGO.transform.parent = _go.transform;
             var childEntity = childGO.AddComponent<SceneEntity>();
-            childEntity.MarkAsNotInstalled();
+            childEntity.Uninstall();
 
             _entity.children = new List<SceneEntity> {childEntity};
 

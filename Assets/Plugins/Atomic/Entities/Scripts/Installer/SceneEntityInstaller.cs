@@ -32,6 +32,19 @@ namespace Atomic.Entities
         public abstract void Install(IEntity entity);
 
         /// <summary>
+        /// Removes previously installed data or behavior from the specified entity.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to uninstall configuration, components, or behavior from.
+        /// </param>
+        /// <remarks>
+        /// The default implementation does nothing. Override this method to provide custom uninstall logic.
+        /// </remarks>
+        public virtual void Uninstall(IEntity entity)
+        {
+        }
+
+        /// <summary>
         /// Called by Unity when the component is modified in the Inspector.
         /// Triggers the <see cref="refreshCallback"/> in Editor to update related systems or previews.
         /// </summary>
