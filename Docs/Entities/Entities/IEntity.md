@@ -26,15 +26,14 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 
 ---
 
+<details>
+  <summary>
+    <h2>💠 Core Members</h2>
+    <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+         debugging or tooling, and the main event for reactive state changes.
+  </summary>
 
-
-## 💠 Core Members
-
-Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
-debugging or tooling, and the main event for reactive state
-changes.
-
----
+<br>
 
 ### ⚡ Events
 
@@ -74,14 +73,18 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
----
-
-## 💠 Tag Members
-
-Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
-enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2>💠 Tag Members</h2>
+    <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+         enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
+  </summary>
+
+<br>
 
 ### ⚡ Events
 
@@ -302,14 +305,20 @@ if (entity.HasPlayerTag())
 entity.DelNPCTag();
 ```
 
----
-
-## 💠 Value Members
-
-Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
-identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+</details>
 
 ---
+
+<details>
+  <summary>
+    <h2>💠 Value Members</h2>
+    <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+         identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+
+  </summary>
+
+<br>
+
 
 ### ⚡ Events
 
@@ -322,8 +331,8 @@ public event Action<IEntity, int> OnValueAdded
 -
 - **Description:** Triggered when a value is added.
 - **Parameters:**
-    - `IEntity` – The entity where the value was added.
-    - `int` – The key of the value that was added.
+  - `IEntity` – The entity where the value was added.
+  - `int` – The key of the value that was added.
 - **Note:** Allows subscribers to react whenever a new key-value pair is inserted.
 
 #### `OnValueDeleted`
@@ -334,8 +343,8 @@ public event Action<IEntity, int> OnValueDeleted
 
 - **Description:** Triggered when a value is deleted.
 - **Parameters:**
-    - `IEntity` – The entity where the value was deleted.
-    - `int` – The key of the value that was removed.
+  - `IEntity` – The entity where the value was deleted.
+  - `int` – The key of the value that was removed.
 - **Note:** Useful for cleanup or reactive updates when values are removed.
 
 #### `OnValueChanged`
@@ -346,8 +355,8 @@ public event Action<IEntity, int> OnValueChanged
 
 - **Description:** Triggered when a value is changed.
 - **Parameters:**
-    - `IEntity` – The entity where the value was changed.
-    - `int` – The key of the value that was updated.
+  - `IEntity` – The entity where the value was changed.
+  - `int` – The key of the value that was updated.
 - **Note:** Enables reactive programming patterns when values are updated.
 
 ---
@@ -408,8 +417,8 @@ public bool TryGetValue<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a typed value by key.
 - **Parameters:**
-    - `key` – The key of the value to retrieve.
-    - `out value` – Output parameter for the retrieved value.
+  - `key` – The key of the value to retrieve.
+  - `out value` – Output parameter for the retrieved value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValueUnsafe<T>(int, out T)`
@@ -420,8 +429,8 @@ public bool TryGetValueUnsafe<T>(int key, out T value)
 
 - **Description:** Tries to retrieve a value by reference (unsafe).
 - **Parameters:**
-    - `key` – The key of the value.
-    - `out value` – Output reference to the value.
+  - `key` – The key of the value.
+  - `out value` – Output reference to the value.
 - **Returns:** `true` if the value exists and is of type `T`, otherwise `false`.
 
 #### `TryGetValue(int, out object)`
@@ -432,8 +441,8 @@ public bool TryGetValue(int key, out object value)
 
 - **Description:** Tries to retrieve a value as `object`.
 - **Parameters:**
-    - `key` – The key of the value.
-    - `out value` – Output parameter for the value.
+  - `key` – The key of the value.
+  - `out value` – Output parameter for the value.
 - **Returns:** `true` if the key exists, otherwise `false`.
 
 #### `SetValue<T>(int, T)`
@@ -444,12 +453,12 @@ public void SetValue<T>(int key, T value) where T : struct
 
 - **Description:** Sets or updates a struct value.
 - **Parameters:**
-    - `key` – The key to set.
-    - `value` – The value to store.
+  - `key` – The key to set.
+  - `value` – The value to store.
 - **Triggers:**
-    - `OnValueAdded` if the key did not exist.
-    - `OnValueChanged` if the key already existed.
-    - `OnStateChanged` in both cases.
+  - `OnValueAdded` if the key did not exist.
+  - `OnValueChanged` if the key already existed.
+  - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid.
 
 #### `SetValue(int, object)`
@@ -460,12 +469,12 @@ public void SetValue(int key, object value)
 
 - **Description:** Sets or updates a reference value.
 - **Parameters:**
-    - `key` – The key to set.
-    - `value` – The value to store.
+  - `key` – The key to set.
+  - `value` – The value to store.
 - **Triggers:**
-    - `OnValueAdded` if the key did not exist.
-    - `OnValueChanged` if the key already existed.
-    - `OnStateChanged` in both cases.
+  - `OnValueAdded` if the key did not exist.
+  - `OnValueChanged` if the key already existed.
+  - `OnStateChanged` in both cases.
 - **Exceptions:** Throws if key is invalid or value is null.
 
 #### `HasValue(int)`
@@ -488,8 +497,8 @@ public void AddValue<T>(int key, T value) where T : struct
 
 - **Description:** Adds a struct value.
 - **Parameters:**
-    - `key` – The key to add.
-    - `value` – The value to add.
+  - `key` – The key to add.
+  - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists.
 
@@ -501,8 +510,8 @@ public void AddValue(int key, object value)
 
 - **Description:** Adds a reference value.
 - **Parameters:**
-    - `key` – The key to add.
-    - `value` – The value to add.
+  - `key` – The key to add.
+  - `value` – The value to add.
 - **Triggers:** `OnValueAdded` and `OnStateChanged`.
 - **Exceptions:** Throws if key already exists or value is null.
 
@@ -654,11 +663,14 @@ entity.SetHealth(150);
 entity.DelInventory();
 ```
 
+</details>
+
 ---
 
 ## 💠️ Behaviour Members
 
-Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md) interfaces and can be added,
+Manage modular logic attached to the entity. Behaviours implement [IEntityBehaviour](../Behaviours/IEntityBehaviour.md)
+interfaces and can be added,
 removed, queried, or enumerated at runtime. This allows flexible composition of entity logic, enabling dynamic
 functionality without changing the core entity
 structure. Behaviours can respond to lifecycle events (`Init`, `Enable`, `Tick`, `Disable`, `Dispose`),
