@@ -679,11 +679,6 @@ entity.DelInventory();
   </summary>
 
 
-
-</details>
-
----
-
 ### ⚡ Events
 
 #### `OnBehaviourAdded`
@@ -694,8 +689,8 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourAdded
 
 - **Description:** Triggered when a behaviour is added to the entity.
 - **Parameters:**
-    - `IEntity` – The entity where the behaviour was added.
-    - `IEntityBehaviour` – The behaviour that was added.
+  - `IEntity` – The entity where the behaviour was added.
+  - `IEntityBehaviour` – The behaviour that was added.
 - **Note:** Allows subscribers to react whenever a new behaviour is attached.
 
 #### `OnBehaviourDeleted`
@@ -706,8 +701,8 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted
 
 - **Description:** Triggered when a behaviour is removed from the entity.
 - **Parameters:**
-    - `IEntity` – The entity where the behaviour was removed.
-    - `IEntityBehaviour` – The behaviour that was removed.
+  - `IEntity` – The entity where the behaviour was removed.
+  - `IEntityBehaviour` – The behaviour that was removed.
 - **Note:** Useful for cleanup or reactive updates when behaviours are detached.
 
 ---
@@ -953,6 +948,9 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
     attackBehaviour, defenseBehaviour
 });
 ```
+
+
+</details>
 
 ---
 
