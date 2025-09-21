@@ -73,7 +73,7 @@ public string Name { get; set; }
 ```
 
 - **Description:** Optional user-defined name for debugging or tooling.
-- **Note:** Useful for logging, inspector display, or editor tooling.
+- **Note:** Equals `GameObject` name
 
 ---
 
@@ -89,7 +89,7 @@ entity.OnStateChanged += (IEntity e) =>
     Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
 };
 
-// Change name
+// Change game object name
 entity.Name = "Hero"; //Triggers state changed
 
 // Read the unique runtime identifier
@@ -1281,8 +1281,6 @@ public bool Installed { get; }
 
 - **Description:** Returns true if the entity already has been installed.
 
-</details>
-
 ---
 
 ### 🏹 Methods
@@ -1333,7 +1331,7 @@ protected virtual void OnUninstall()
 
 ### Static Methods
 
-Также есть статические методы, которые позволяют устанавливать сущности глобально на сцене
+There are also static methods that allow installing entities globally in a scene.
 
 #### `InstallAll(Scene)`
 
@@ -1368,7 +1366,11 @@ public static void InstallAll<E>(Scene scene) where E : SceneEntity
 
 ---
 
-## 🗂 Example of Usage
+### 🗂 Example of Usage
+
+TODO:
+
+</details>
 
 ---
 
@@ -1381,7 +1383,10 @@ Provides a simple workflow for precomputing entity capacities in the Unity Edito
 
 > This feature helps inspect and optimize memory usage without affecting runtime behaviour.
 
-## 🗂 Example of Usage
+
+### 🗂 Example of Usage
+
+TODO:
 
 ---
 
@@ -1401,7 +1406,7 @@ Provides a simple workflow for precomputing entity capacities in the Unity Edito
 
 ### 🗂 Example of Usage
 
-Ниже приведен пример отрисовки кружочка для юнита с позицией и Scale
+Below is an example of drawing a circle for a unit using its position and scale:
 
 ```csharp
 public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
@@ -1415,11 +1420,11 @@ public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
 }
 ```
 
-Добавляем в SceneEntityInstaller
+Add it in a `SceneEntityInstaller:`
 
 ```csharp
 [Serializable]
-public sealed class TransformEntityInstaller : IEntityInstaller<IGameEntity>
+public sealed class TransformEntityInstaller : SceneEntityInstaller<IGameEntity>
 {
     [SerializeField]
     private Const<float> _scale = 1;
@@ -1430,7 +1435,7 @@ public sealed class TransformEntityInstaller : IEntityInstaller<IGameEntity>
         entity.AddRotation(new ReactiveQuaternion());
         entity.AddScale(_scale);
         
-        //Подключаем логику отрисовки
+       // Connect the gizmos drawing logic
         entity.AddBehaviour<TransformGizmos>();
     }
 }
