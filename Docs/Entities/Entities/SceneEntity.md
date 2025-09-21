@@ -13,7 +13,7 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 
 ## 📚 Content
 
-- [Core](#-core-state)
+- [Core](#-core)
 - [Tags](#-tags)
 - [Values](#-values)
 - [Behaviours](#-behaviours)
@@ -34,7 +34,7 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 
 <details>
   <summary>
-    <h2 id="-core-members">💠 Core</h2>
+    <h2 id="-core">💠 Core</h2>
     <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
          debugging or tooling, and the main event for reactive state changes.
   </summary>
