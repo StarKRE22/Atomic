@@ -1,20 +1,12 @@
-#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// Provides static factory and utility methods for working with <see cref="SceneEntity"/>.
-    /// Includes creation, casting, and batch installation logic.
-    /// </summary>
     public partial class SceneEntity
     {
-        #region Creation
-
         [Serializable]
         public struct CreateArgs
         {
@@ -228,131 +220,5 @@ namespace Atomic.Entities
             entity.Install();
             return entity;
         }
-
-        #endregion
-
-        #region Destroy
-
-        /// <summary>
-        /// Destroys the associated GameObject of the specified <see cref="IEntity"/> if it can be cast to a <see cref="SceneEntity"/>.
-        /// </summary>
-        /// <param name="entity">The entity whose GameObject should be destroyed.</param>
-        /// <param name="t">Optional delay in seconds before destruction. Defaults to 0.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Destroy(IEntity entity, float t = 0) => Destroy(Cast(entity), t);
-
-        /// <summary>
-        /// Destroys the specified <see cref="SceneEntity"/>'s GameObject after an optional delay.
-        /// </summary>
-        /// <param name="entity">The <see cref="SceneEntity"/> to destroy.</param>
-        /// <param name="t">Optional delay in seconds before destruction. Defaults to 0.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Destroy(SceneEntity entity, float t = 0)
-        {
-            if (entity)
-                Destroy(entity.gameObject, t);
-        }
-
-        #endregion
-
-
-        
-
-        /// <summary>
-        /// Casts the specified <see cref="IEntity"/> to a <see cref="SceneEntity"/> if possible.
-        /// </summary>
-        /// <param name="entity">The entity to cast.</param>
-        /// <returns>The entity cast to <see cref="SceneEntity"/>, or <c>null</c> if the input is <c>null</c>.</returns>
-        /// <exception cref="InvalidCastException">Thrown if the entity cannot be cast to <see cref="SceneEntity"/>.</exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SceneEntity Cast(IEntity entity) => Cast<SceneEntity>(entity);
-
-        /// <summary>
-        /// Casts the specified <see cref="IEntity"/> to the target type <typeparamref name="E"/> if possible.
-        /// Supports direct SceneEntity instances and <see cref="SceneEntityProxy{E}"/> wrappers.
-        /// </summary>
-        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to cast to.</typeparam>
-        /// <param name="entity">The entity to cast.</param>
-        /// <returns>
-        /// The entity cast to type <typeparamref name="E"/>, or <c>null</c> if the input is <c>null</c>.
-        /// </returns>
-        /// <exception cref="InvalidCastException">
-        /// Thrown if the entity cannot be cast to the target type <typeparamref name="E"/>.
-        /// </exception>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static E Cast<E>(IEntity entity) where E : SceneEntity => entity switch
-        {
-            null => null,
-            E sceneEntity => sceneEntity,
-            SceneEntityProxy<E> proxy => proxy.Source,
-            _ => throw new InvalidCastException($"Can't cast {entity.Name} to {typeof(E).Name}")
-        };
-
-        /// <summary>
-        /// Attempts to cast the specified <see cref="IEntity"/> to a <see cref="SceneEntity"/>.
-        /// </summary>
-        /// <param name="entity">The entity to cast.</param>
-        /// <param name="result">The cast result if successful; otherwise, <c>null</c>.</param>
-        /// <returns><c>true</c> if the cast was successful; otherwise, <c>false</c>.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryCast(IEntity entity, out SceneEntity result) =>
-            TryCast<SceneEntity>(entity, out result);
-
-        /// <summary>
-        /// Attempts to cast the specified <see cref="IEntity"/> to the target type <typeparamref name="E"/>.
-        /// Supports direct <see cref="SceneEntity"/> instances and <see cref="SceneEntityProxy{E}"/> wrappers.
-        /// </summary>
-        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to cast to.</typeparam>
-        /// <param name="entity">The entity to cast.</param>
-        /// <param name="result">The cast result if successful; otherwise, <c>null</c>.</param>
-        /// <returns><c>true</c> if the cast was successful; otherwise, <c>false</c>.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntity
-        {
-            if (entity is E sceneEntity)
-            {
-                result = sceneEntity;
-                return true;
-            }
-
-            if (entity is SceneEntityProxy<E> proxy)
-            {
-                result = proxy.Source;
-                return true;
-            }
-
-            result = null;
-            return false;
-        }
-
-        /// <summary>
-        /// Installs all <see cref="SceneEntity"/> instances found in the given scene that are not yet installed.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallAll(Scene scene) => InstallAll<SceneEntity>(scene);
-
-        /// <summary>
-        /// Installs all <see cref="SceneEntity"/> instances of type <typeparamref name="E"/> found in the specified <see cref="Scene"/> 
-        /// that are not yet installed.
-        /// </summary>
-        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to search for and install.</typeparam>
-        /// <param name="scene">The scene in which to search for <typeparamref name="E"/> instances.</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void InstallAll<E>(Scene scene) where E : SceneEntity
-        {
-            GameObject[] gameObjects = scene.GetRootGameObjects();
-            for (int g = 0, gameObjectCount = gameObjects.Length; g < gameObjectCount; g++)
-            {
-                GameObject gameObject = gameObjects[g];
-                E[] entities = gameObject.GetComponentsInChildren<E>();
-                for (int e = 0, entityCount = entities.Length; e < entityCount; e++)
-                {
-                    E entity = entities[e];
-                    if (!entity.Installed)
-                        entity.Install();
-                }
-            }
-        }
     }
 }
-#endif

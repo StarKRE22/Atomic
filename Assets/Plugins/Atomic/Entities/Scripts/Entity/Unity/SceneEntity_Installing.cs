@@ -1,6 +1,7 @@
 #if UNITY_5_3_OR_NEWER
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Atomic.Entities
 {
@@ -97,6 +98,35 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnUninstall()
         {
+        }
+        
+        /// <summary>
+        /// Installs all <see cref="SceneEntity"/> instances found in the given scene that are not yet installed.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void InstallAll(Scene scene) => InstallAll<SceneEntity>(scene);
+
+        /// <summary>
+        /// Installs all <see cref="SceneEntity"/> instances of type <typeparamref name="E"/> found in the specified <see cref="Scene"/> 
+        /// that are not yet installed.
+        /// </summary>
+        /// <typeparam name="E">The type of <see cref="SceneEntity"/> to search for and install.</typeparam>
+        /// <param name="scene">The scene in which to search for <typeparamref name="E"/> instances.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void InstallAll<E>(Scene scene) where E : SceneEntity
+        {
+            GameObject[] gameObjects = scene.GetRootGameObjects();
+            for (int g = 0, gameObjectCount = gameObjects.Length; g < gameObjectCount; g++)
+            {
+                GameObject gameObject = gameObjects[g];
+                E[] entities = gameObject.GetComponentsInChildren<E>();
+                for (int e = 0, entityCount = entities.Length; e < entityCount; e++)
+                {
+                    E entity = entities[e];
+                    if (!entity.Installed)
+                        entity.Install();
+                }
+            }
         }
     }
 }
