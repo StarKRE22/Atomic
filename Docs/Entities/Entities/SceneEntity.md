@@ -22,11 +22,10 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 - [Optimization](#-optimization)
 - [Gizmos Support](#-gizmos-support)
 - [Debug Properties](#-debug-properties)
-- [Creation](#creation)
-- [Destruction](#-destruction)
-- [Casting](#-casting)
-- [Install All Entities](#install-all-entities)
-- [Example Usage](#-example-usage)
+- [Entity Creation](#-entity-creation)
+- [Entity Destruction](#-entity-destruction)
+- [Entity Casting](#-entity-casting)
+- [Example of Usage](#-example)
 - [Performance](#-performance)
 - [Notes](#-notes)
 
@@ -1463,14 +1462,14 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 
 <details>
   <summary>
-    <h2 id="-gizmos-support"> ✨ Creation</h2>
+    <h2 id="-entity-creation"> ✨ Entity Creation</h2>
     <br> Дальше приведены методы, с помощью которых можно создавать сущности в Runtime, например префабы или абсолютно новые игровые объекты
   </summary>
 
-### Parameter Instantiation
+### 🔹 Parameter Instantiation
 
-Первый вариан создания сущностей заключается через `CreateArgs`, когда разработчик может указать настройки для создания
-нового игрового объекта с компонентом `SceneEntity`
+The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
+new GameObject with a `SceneEntity` component.
 
 #### `CreateArgs`
 
@@ -1493,8 +1492,6 @@ public struct CreateArgs
     - `bool installOnAwake` – if true, installs automatically on Awake.
     - `bool disposeValues` – if true, disposes values on destruction.
     - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
-
----
 
 #### `Create(in CreateArgs)`
 
@@ -1557,9 +1554,9 @@ public static E Create<E>(
 - **Exception:** Throws if provided values are invalid.
 - **Notes:** Null references are skipped.
 
-### Prefab Instantiation
+### 🔹 Prefab Instantiation
 
-Способ заключается в том, чтобы создавать игровые сущности через префабы
+Another approach is creating game entities from prefabs.
 
 #### `Create(SceneEntity, Transform)`
 
@@ -1574,7 +1571,7 @@ public static SceneEntity Create(SceneEntity prefab, Transform parent = null)
 
 - **Returns:** The newly instantiated `SceneEntity`.
 
-#### `Create<E>(E, Transform parent)`
+#### `Create<E>(E, Transform)`
 
 ```csharp
 public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity  
@@ -1588,15 +1585,39 @@ public static E Create<E>(E prefab, Transform parent = null) where E : SceneEnti
 
 - **Returns:** The newly instantiated SceneEntity of type `E`.
 
-#### `Create(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null)`
+#### `Create(SceneEntity, Vector3, Quaternion, Transform)`
 
-!!!  
-[MethodImpl(MethodImplOptions.AggressiveInlining)]  
-public static SceneEntity Create(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null)  
-!!!
+```csharp
+public static SceneEntity Create(
+    SceneEntity prefab,
+    Vector3 position,
+    Quaternion rotation,
+    Transform parent = null
+)  
+```
 
-- **Description:**  
-  Instantiates a prefab at a given position and rotation with an optional parent, then installs it.
+- **Description:** Instantiates a prefab at a given position and rotation with an optional parent, then installs it.
+- **Parameters:**
+    - `prefab` – Prefab to instantiate.
+    - `position` – Position for the new entity.
+    - `rotation` – Rotation for the new entity.
+    - `parent` – Optional parent transform.
+- **Returns:** The newly instantiated `SceneEntity`.
+
+---
+
+#### `Create<E>(E, Vector3, Quaternion, Transform)`
+
+```csharp
+public static E Create<E>(
+    E prefab,
+    Vector3 position,
+    Quaternion rotation,
+    Transform parent = null
+) where E : SceneEntity  
+```
+
+- **Description:** Generic version of prefab instantiation at a specific position and rotation.
 
 - **Parameters:**
     - `prefab` – Prefab to instantiate.
@@ -1604,62 +1625,26 @@ public static SceneEntity Create(SceneEntity prefab, Vector3 position, Quaternio
     - `rotation` – Rotation for the new entity.
     - `parent` – Optional parent transform.
 
-- **Returns:**
-    - The newly instantiated `SceneEntity`.
+- **Returns:** The newly instantiated SceneEntity of type `E`.
+- **Notes:** Automatically calls `Install()` on the created entity.
 
----
+#### `Create<E>(E, Transform, Transform)`
 
-##### `Create<E>(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)`
-
-!!!  
-[MethodImpl(MethodImplOptions.AggressiveInlining)]  
-public static E Create<E>(E prefab, Vector3 position, Quaternion rotation, Transform parent = null) where E :
-SceneEntity  
-!!!
-
-- **Description:**  
-  Generic version of prefab instantiation at a specific position and rotation.
-
-- **Parameters:**
-    - `prefab` – Prefab to instantiate.
-    - `position` – Position for the new entity.
-    - `rotation` – Rotation for the new entity.
-    - `parent` – Optional parent transform.
-
-- **Returns:**
-    - The newly instantiated SceneEntity of type `<E>`.
-
-- **Notes:**
-    - Automatically calls `Install()` on the created entity.
-
----
-
-##### `Create<E>(E prefab, Transform point, Transform parent)`
-
-!!!  
-[MethodImpl(MethodImplOptions.AggressiveInlining)]  
+```csharp
 public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity  
-!!!
+```
 
-- **Description:**  
-  Instantiates the prefab at the position and rotation of a reference transform (`point`) with an optional parent.
-
+- **Description:** Instantiates the prefab at the position and rotation of a reference transform (`point`) with an
+  optional parent.
 - **Parameters:**
     - `prefab` – Prefab to instantiate.
     - `point` – Reference transform for position and rotation.
     - `parent` – Optional parent transform.
 
-- **Returns:**
-    - The newly instantiated SceneEntity of type `<E>`.
-
-- **Notes:**
-    - Automatically calls `Install()` on the created entity.
+- **Returns:** The newly instantiated SceneEntity of type `E`.
+- **Note:** Automatically calls `Install()` on the created entity.
 
 </details>
-
-
-
-
 
 ---
 
