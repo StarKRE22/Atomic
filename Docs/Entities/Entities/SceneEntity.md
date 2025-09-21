@@ -1311,7 +1311,7 @@ protected virtual void OnUninstall()
 
 ---
 
-### 🔹Static Methods
+### Static Methods
 
 Также есть статические методы, которые позволяют устанавливать сущности глобально на сцене
 
@@ -1365,9 +1365,12 @@ Provides a simple workflow for precomputing entity capacities in the Unity Edito
 
 ---
 
-## 🖌️ Gizmos Support
-
-Provides visual debugging support through Unity Gizmos in the Scene view.
+<details>
+  <summary>
+    <h2 id="-gizmos-support"> 🖌️ Gizmos Support</h2>
+    <br>
+    Provides visual debugging support through Unity Gizmos in the Scene view.
+  </summary>
 
 ### 🛠 Inspector Settings
 
@@ -1413,6 +1416,8 @@ public sealed class TransformEntityInstaller : IEntityInstaller<IGameEntity>
 }
 ```
 
+</details>
+
 ---
 
 ## 🐞 Debug Properties
@@ -1427,32 +1432,208 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 
 ---
 
-## ✨ Creation
+<details>
+  <summary>
+    <h2 id="-gizmos-support"> ✨ Creation</h2>
+    <br> Дальше приведены методы, с помощью которых можно создавать сущности в Runtime, например префабы или абсолютно новые игровые объекты
+  </summary>
 
-Дальше приведены методы, с помощью которых можно создавать сущности в Runtime, например префабы или абсолютно новые игровые объекты 
+### Parameter Instantiation
 
-### `CreateArgs`
+Первый вариан создания сущностей заключается через `CreateArgs`, когда разработчик может указать настройки для создания
+нового игрового объекта с компонентом `SceneEntity`
+
+#### `CreateArgs`
 
 ```csharp
 [Serializable]  
 public struct CreateArgs  
 ```
-- **Description:** Определяет набор параметров для создания динамической сущности 
-- **Fields:**
-    - `string name` – optional name for the GameObject.
-    - `IEnumerable<int> tags` – optional tags to assign.
-    - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
-    - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
-    - `List<SceneEntityInstaller> installers` – optional installers to run.
-    - `List<SceneEntity> children` – optional child entities.
-    - `int initialTagCapacity` – initial capacity for tags.
-    - `int initialValueCapacity` – initial capacity for values.
-    - `int initialBehaviourCapacity` – initial capacity for behaviours.
-    - `bool installOnAwake` – if true, installs automatically on Awake.
-    - `bool disposeValues` – if true, disposes values on destruction.
-    - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
 
-### Static Methods
+- **Description:** Определяет набор параметров для создания динамической сущности
+- **Fields:**
+  - `string name` – optional name for the GameObject.
+  - `IEnumerable<int> tags` – optional tags to assign.
+  - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
+  - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
+  - `List<SceneEntityInstaller> installers` – optional installers to run.
+  - `List<SceneEntity> children` – optional child entities.
+  - `int initialTagCapacity` – initial capacity for tags.
+  - `int initialValueCapacity` – initial capacity for values.
+  - `int initialBehaviourCapacity` – initial capacity for behaviours.
+  - `bool installOnAwake` – if true, installs automatically on Awake.
+  - `bool disposeValues` – if true, disposes values on destruction.
+  - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
+
+---
+
+#### `Create(in CreateArgs)`
+
+```csharp
+public static SceneEntity Create(in CreateArgs args)  
+```
+
+- **Description:** Creates a new `SceneEntity` GameObject and configures it with optional tags, values, behaviours,
+  installers, and children.
+- **Parameter:** `args` – Configuration options in a `CreateArgs` structure.
+- **Returns:** The newly created `SceneEntity` instance.
+- **Exception:** Throws if `args` contains invalid references.
+- **Note:** Skips null installers or children.
+
+#### `Create<E>(in CreateArgs)`
+
+```csharp
+public static E Create<E>(in CreateArgs args) where E : SceneEntity  
+```
+
+- **Description:** Generic version of `Create` that returns a `SceneEntity` of type `<E>`.
+- **Type Parameter:** `E` – The type of SceneEntity to create.
+- **Parameter:** `args` – Configuration options in a `CreateArgs` structure.
+- **Returns:** A newly created `SceneEntity` of type `E`.
+- **Exception:** Throws if `args` contains invalid references.
+- **Note:** Skips null installers or children.
+
+#### `Create<E>(...)`
+
+```csharp
+public static E Create<E>(  
+    string name = null,  
+    IEnumerable<int> tags = null,  
+    IReadOnlyDictionary<int, object> values = null,  
+    IEnumerable<IEntityBehaviour> behaviours = null,  
+    bool installOnAwake = true,  
+    bool disposeValues = true,  
+    bool useUnityLifecycle = true,  
+    int initialTagCount = 1,  
+    int initialValueCount = 1,  
+    int initialBehaviourCount = 1  
+) where E : SceneEntity  
+```
+
+- **Description:** Convenience overload that constructs a `CreateArgs` internally and calls
+  `Create<E>(in CreateArgs args)`.
+- **Parameters:**
+  - `name` – optional GameObject name.
+  - `tags` – optional collection of integer tags.
+  - `values` – optional key-value pairs.
+  - `behaviours` – optional behaviours to attach.
+  - `installOnAwake` – if true, runs installers on Awake.
+  - `disposeValues` – if true, disposes values on destruction.
+  - `useUnityLifecycle` – if true, uses Unity lifecycle.
+  - `initialTagCount` – initial tag capacity.
+  - `initialValueCount` – initial value capacity.
+  - `initialBehaviourCount` – initial behaviour capacity.
+
+- **Returns:** A newly created `SceneEntity` of type `<E>`.
+- **Exception:** Throws if provided values are invalid.
+- **Notes:** Null references are skipped.
+
+### Prefab Instantiation
+
+Способ заключается в том, чтобы создавать игровые сущности через префабы
+
+#### `Create(SceneEntity, Transform)`
+
+```csharp
+public static SceneEntity Create(SceneEntity prefab, Transform parent = null)  
+```
+
+- **Description:** Instantiates a prefab and installs the resulting entity under an optional parent.
+- **Parameters:**
+  - `prefab` – The prefab to instantiate.
+  - `parent` – Optional parent transform.
+
+- **Returns:** The newly instantiated `SceneEntity`.
+
+
+#### `Create<E>(E, Transform parent)`
+
+```csharp
+public static E Create<E>(E prefab, Transform parent = null) where E : SceneEntity  
+```
+
+- **Description:** Generic version of prefab instantiation. Defaults position to `Vector3.zero` and rotation to
+  `Quaternion.identity`.
+- **Parameters:**
+  - `prefab` – Prefab to instantiate.
+  - `parent` – Optional parent transform.
+
+- **Returns:** The newly instantiated SceneEntity of type `E`.
+
+
+#### `Create(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null)`
+
+!!!  
+[MethodImpl(MethodImplOptions.AggressiveInlining)]  
+public static SceneEntity Create(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null)  
+!!!
+
+- **Description:**  
+  Instantiates a prefab at a given position and rotation with an optional parent, then installs it.
+
+- **Parameters:**
+  - `prefab` – Prefab to instantiate.
+  - `position` – Position for the new entity.
+  - `rotation` – Rotation for the new entity.
+  - `parent` – Optional parent transform.
+
+- **Returns:**
+  - The newly instantiated `SceneEntity`.
+
+---
+
+##### `Create<E>(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)`
+
+!!!  
+[MethodImpl(MethodImplOptions.AggressiveInlining)]  
+public static E Create<E>(E prefab, Vector3 position, Quaternion rotation, Transform parent = null) where E :
+SceneEntity  
+!!!
+
+- **Description:**  
+  Generic version of prefab instantiation at a specific position and rotation.
+
+- **Parameters:**
+  - `prefab` – Prefab to instantiate.
+  - `position` – Position for the new entity.
+  - `rotation` – Rotation for the new entity.
+  - `parent` – Optional parent transform.
+
+- **Returns:**
+  - The newly instantiated SceneEntity of type `<E>`.
+
+- **Notes:**
+  - Automatically calls `Install()` on the created entity.
+
+---
+
+##### `Create<E>(E prefab, Transform point, Transform parent)`
+
+!!!  
+[MethodImpl(MethodImplOptions.AggressiveInlining)]  
+public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity  
+!!!
+
+- **Description:**  
+  Instantiates the prefab at the position and rotation of a reference transform (`point`) with an optional parent.
+
+- **Parameters:**
+  - `prefab` – Prefab to instantiate.
+  - `point` – Reference transform for position and rotation.
+  - `parent` – Optional parent transform.
+
+- **Returns:**
+  - The newly instantiated SceneEntity of type `<E>`.
+
+- **Notes:**
+  - Automatically calls `Install()` on the created entity.
+
+
+</details>
+
+
+
+
 
 ---
 
