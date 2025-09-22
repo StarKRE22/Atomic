@@ -4,18 +4,39 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Entities
 {
-    public class Entity_GetValue_Performance
+    public partial class EntityPerformance
     {
         [Test, Performance]
-        public void GetValue_Entity_AsReference()
+        public void GetValue_AsObject()
         {
             var entity = new Entity();
-            for (int i = 0; i < 1000; i++)
-                entity.AddValue(i, "Sample");
+            for (int i = 0; i < N; i++)
+                entity.AddValue(i, Dummy);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
+                    {
+                        object unused = entity.GetValue(i);
+                    }
+                })
+                .WarmupCount(10)
+                .MeasurementCount(30)
+                .SampleGroup(new SampleGroup("Time", SampleUnit.Microsecond))
+                .Run();
+        }
+
+        
+        [Test, Performance]
+        public void GetValue_AsReference()
+        {
+            var entity = new Entity();
+            for (int i = 0; i < N; i++)
+                entity.AddValue(i, SAMPLE);
+
+            Measure.Method(() =>
+                {
+                    for (int i = 0; i < N; i++)
                     {
                         string unused = entity.GetValue<string>(i);
                     }
@@ -27,15 +48,15 @@ namespace Atomic.Entities
         }
 
         [Test, Performance]
-        public void GetValue_Entity_AsPrimitive()
+        public void GetValue_Primitive()
         {
             var entity = new Entity();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < N; i++)
                 entity.AddValue(i, 777);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
                         int unused = entity.GetValue<int>(i);
                     }
@@ -48,15 +69,15 @@ namespace Atomic.Entities
 
 
         [Test, Performance]
-        public void GetValue_Entity_AsReferenceUnsafe()
+        public void GetValueUnsafe_AsReference()
         {
             var entity = new Entity();
-            for (int i = 0; i < 1000; i++)
-                entity.AddValue(i, "Sample");
+            for (int i = 0; i < N; i++)
+                entity.AddValue(i, SAMPLE);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
                         string unused = entity.GetValueUnsafe<string>(i);
                     }
@@ -68,15 +89,15 @@ namespace Atomic.Entities
         }
 
         [Test, Performance]
-        public void GetValue_Entity_AsPrimitiveUnsafe()
+        public void GetValueUnsafe_AsPrimitive()
         {
             var entity = new Entity();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < N; i++)
                 entity.AddValue(i, 777);
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < N; i++)
                     {
                         int unused = entity.GetValueUnsafe<int>(i);
                     }
