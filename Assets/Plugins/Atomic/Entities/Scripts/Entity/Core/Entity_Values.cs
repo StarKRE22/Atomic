@@ -54,6 +54,15 @@ namespace Atomic.Entities
 
         private sealed class Boxing<T> : IBoxing
         {
+            public Boxing()
+            {
+            }
+
+            public Boxing(T value)
+            {
+                this.value = value;
+            }
+
             object IBoxing.Value => value;
 
             Type IBoxing.Type => typeof(T);
@@ -286,21 +295,6 @@ namespace Atomic.Entities
         /// <returns>True if a value exists for the key; otherwise, false.</returns>
         public bool HasValue(int key) => this.FindValueIndex(key, out _);
 
-        /// Adds a strongly-typed struct value to the entity.
-        /// </summary>
-        /// <typeparam name="T">The struct type of the value.</typeparam>
-        /// <param name="key">The key for the value.</param>
-        /// <param name="value">The value to add.</param>
-        /// <exception cref="ArgumentException">Thrown if a value with the same key already exists.</exception>
-        public void AddValue<T>(int key, T value) where T : struct
-        {
-            if (this.FindValueIndex(key, out _))
-                throw ValueAlreadyAddedException(key);
-
-            this.AddValueInternal(key, new Boxing<T> {value = value}, boxing: true);
-            this.NotifyAboutValueAdded(key);
-        }
-
         /// <summary>
         /// Adds a reference type value to the entity.
         /// </summary>
@@ -314,11 +308,116 @@ namespace Atomic.Entities
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            if (this.FindValueIndex(key, out _))
-                throw ValueAlreadyAddedException(key);
+            int hash, bucket, index;
 
-            this.AddValueInternal(key, value, boxing: false);
-            this.NotifyAboutValueAdded(key);
+            if (_valueCount > 0)
+            {
+                hash = key & 0x7FFFFFFF;
+                bucket = hash % _valueCapacity;
+                index = _valueBuckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly ValueSlot slot = ref _valueSlots[index];
+                    if (slot.exists && slot.key == key)
+                        throw ValueAlreadyAddedException(key);
+
+                    index = slot.next;
+                }
+            }
+
+            if (_valueFreeList >= 0)
+            {
+                index = _valueFreeList;
+                _valueFreeList = _valueSlots[index].next;
+            }
+            else
+            {
+                if (_valueLastIndex == _valueCapacity)
+                    this.IncreaseValueCapacity();
+
+                index = _valueLastIndex;
+                _valueLastIndex++;
+            }
+
+            hash = key & 0x7FFFFFFF;
+            bucket = hash % _valueCapacity;
+            ref int next = ref _valueBuckets[bucket];
+
+            _valueSlots[index] = new ValueSlot
+            {
+                key = key,
+                value = value,
+                primitive = false,
+                next = next,
+                exists = true
+            };
+
+            next = index;
+            _valueCount++;
+
+            this.OnValueAdded?.Invoke(this, key);
+            this.OnStateChanged?.Invoke(this);
+        }
+
+        /// Adds a strongly-typed struct value to the entity.
+        /// </summary>
+        /// <typeparam name="T">The struct type of the value.</typeparam>
+        /// <param name="key">The key for the value.</param>
+        /// <param name="value">The value to add.</param>
+        /// <exception cref="ArgumentException">Thrown if a value with the same key already exists.</exception>
+        public void AddValue<T>(int key, T value) where T : struct
+        {
+            int hash, bucket, index;
+
+            if (_valueCount > 0)
+            {
+                hash = key & 0x7FFFFFFF;
+                bucket = hash % _valueCapacity;
+                index = _valueBuckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly ValueSlot slot = ref _valueSlots[index];
+                    if (slot.exists && slot.key == key)
+                        throw ValueAlreadyAddedException(key);
+
+                    index = slot.next;
+                }
+            }
+
+            if (_valueFreeList >= 0)
+            {
+                index = _valueFreeList;
+                _valueFreeList = _valueSlots[index].next;
+            }
+            else
+            {
+                if (_valueLastIndex == _valueCapacity)
+                    this.IncreaseValueCapacity();
+
+                index = _valueLastIndex;
+                _valueLastIndex++;
+            }
+
+            hash = key & 0x7FFFFFFF;
+            bucket = hash % _valueCapacity;
+            ref int next = ref _valueBuckets[bucket];
+
+            _valueSlots[index] = new ValueSlot
+            {
+                key = key,
+                value = new Boxing<T>(value),
+                primitive = true,
+                next = next,
+                exists = true
+            };
+
+            next = index;
+            _valueCount++;
+
+            this.OnValueAdded?.Invoke(this, key);
+            this.OnStateChanged?.Invoke(this);
         }
 
         /// <summary>

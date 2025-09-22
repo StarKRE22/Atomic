@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_HasValue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_HasValue.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ListPerformance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ListPerformance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_AddValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_AddValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Behaviours.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,31 +212,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="51383000" />
-    </task>
-    <task id="LOCAL-00567" summary="Пилим IEntity!">
-      <option name="closed" value="true" />
-      <created>1758361399397</created>
-      <option name="number" value="00567" />
-      <option name="presentableId" value="LOCAL-00567" />
-      <option name="project" value="LOCAL" />
-      <updated>1758361399397</updated>
-    </task>
-    <task id="LOCAL-00568" summary="Behaviours!">
-      <option name="closed" value="true" />
-      <created>1758362618179</created>
-      <option name="number" value="00568" />
-      <option name="presentableId" value="LOCAL-00568" />
-      <option name="project" value="LOCAL" />
-      <updated>1758362618179</updated>
-    </task>
-    <task id="LOCAL-00569" summary="Сделал Lifecycle!">
-      <option name="closed" value="true" />
-      <created>1758369230862</created>
-      <option name="number" value="00569" />
-      <option name="presentableId" value="LOCAL-00569" />
-      <option name="project" value="LOCAL" />
-      <updated>1758369230862</updated>
+      <workItem from="1758351834194" duration="56459000" />
     </task>
     <task id="LOCAL-00570" summary="Сделал раздел для Tag">
       <option name="closed" value="true" />
@@ -598,7 +582,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758529206613</updated>
     </task>
-    <option name="localTasksCounter" value="616" />
+    <task id="LOCAL-00616" summary="Сделал NOTES!">
+      <option name="closed" value="true" />
+      <created>1758529459170</created>
+      <option name="number" value="00616" />
+      <option name="presentableId" value="LOCAL-00616" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529459170</updated>
+    </task>
+    <task id="LOCAL-00617" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758529570776</created>
+      <option name="number" value="00617" />
+      <option name="presentableId" value="LOCAL-00617" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529570776</updated>
+    </task>
+    <task id="LOCAL-00618" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758529671361</created>
+      <option name="number" value="00618" />
+      <option name="presentableId" value="LOCAL-00618" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529671361</updated>
+    </task>
+    <option name="localTasksCounter" value="619" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ProxyVariable.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="ReactiveVariable.md" />
     <MESSAGE value="Minor Fixes" />
@@ -640,7 +647,6 @@
     <MESSAGE value="Обновляем SceneEntity.cs" />
     <MESSAGE value="Пилим SceneEntity.md" />
     <MESSAGE value="Entity.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Gizmos +" />
     <MESSAGE value="Optimization" />
     <MESSAGE value="Creation" />
@@ -650,7 +656,9 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Написал Performance Tests Values!" />
     <MESSAGE value="Написал Notes для контейнеров!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал Notes для контейнеров!" />
+    <MESSAGE value="Сделал NOTES!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

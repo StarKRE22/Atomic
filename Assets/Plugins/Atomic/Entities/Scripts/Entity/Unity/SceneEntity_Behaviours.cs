@@ -15,12 +15,6 @@ namespace Atomic.Entities
     public partial class SceneEntity
     {
         /// <summary>
-        /// Shared pool used to temporarily store behaviour arrays.
-        /// </summary>
-        private static readonly ArrayPool<IEntityBehaviour> s_behaviourPool =
-            ArrayPool<IEntityBehaviour>.Shared;
-
-        /// <summary>
         /// Invoked when a new behaviour is added.
         /// </summary>
         public event Action<IEntity, IEntityBehaviour> OnBehaviourAdded;
@@ -166,24 +160,23 @@ namespace Atomic.Entities
         {
             if (_behaviourCount == 0)
                 return;
-
-            int count = _behaviourCount;
-            IEntityBehaviour[] clearedBehaviours = s_behaviourPool.Rent(count);
-            Array.Copy(_behaviours, clearedBehaviours, count);
-
-            _behaviourCount = 0;
-
-            try
+            
+            while (_behaviourCount > 0)
             {
-                for (int i = 0; i < count; i++)
-                    this.OnBehaviourDeleted?.Invoke(this, clearedBehaviours[i]);
+                _behaviourCount--;
+                IEntityBehaviour behaviour = _behaviours[_behaviourCount];
+                _behaviours[_behaviourCount] = null;
 
-                this.OnStateChanged?.Invoke(this);
+                if (_enabled)
+                    this.DisableBehaviour(behaviour);
+
+                if (_initialized && behaviour is IEntityDispose dispose)
+                    dispose.Dispose(this);
+
+                this.OnBehaviourDeleted?.Invoke(this, behaviour);
             }
-            finally
-            {
-                s_behaviourPool.Return(clearedBehaviours);
-            }
+
+            this.OnStateChanged?.Invoke(this);
         }
 
         /// <summary>

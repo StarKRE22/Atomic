@@ -169,11 +169,12 @@ namespace Atomic.Elements
         public void Contains()
         {
             var list = new ReactiveList<object>(_source);
-
+            var absent = new object();
+            
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++)
-                        _ = list.Contains(_source[i]);
+                        _ = list.Contains(absent);
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)

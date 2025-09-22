@@ -8,14 +8,12 @@ namespace Atomic.Entities
         [Test, Performance]
         public void AddValue_AsObject()
         {
-            var entity = new Entity();
+            var entity = new Entity(valueCapacity: N);
 
             Measure.Method(() =>
                 {
                     for (int i = 0; i < N; i++)
-                    {
                         entity.AddValue(i, Dummy);
-                    }
                 })
                 .CleanUp(entity.ClearValues)
                 .WarmupCount(10)

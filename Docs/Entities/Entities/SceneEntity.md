@@ -1,6 +1,6 @@
 # 🧩️ SceneEntity
 
-Represents a Unity component implementation of an [IEntity](IEntity.md). This class follows the 
+Represents a Unity component implementation of an [IEntity](IEntity.md). This class follows the
 **Entity–State–Behaviour** pattern, providing a modular container for dynamic state, tags, values,
 behaviours, and lifecycle management. It allows installation from the Unity Scene and composition through the Inspector
 or installers.
@@ -355,9 +355,11 @@ entity.DelNPCTag();
 
 <br>
 
-> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and removal
+> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
+> removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
-> reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic API
+> reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
+> API
 > avoids boxing.
 
 ---
@@ -729,7 +731,8 @@ entity.DelInventory();
 
 <br>
 
-> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have **List-like time complexity**. 
+> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have *
+*List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
 > so duplicate entries are allowed.
 
@@ -1897,9 +1900,66 @@ TODO: с картинками
 
 ---
 
-## 🔥 Performance
+### 🔥 Performance
 
-TODO:
+The performance measurements below were conducted on a **MacBook with Apple M1**, using **1,000 elements** for each
+container type.  
+All times are **median execution times** in microseconds (μs).
+
+### 🏷️ Tags
+
+Tags are implemented as a **HashSet of integers**, optimized for fast lookups, additions, and removals.
+
+| Operation | HashSet (Median μs) | Tags (Median μs) |
+|-----------|---------------------|------------------|
+| Add       | 57.40               | 10.30            |
+| Clear     | 0.10                | 2.80             |
+| Contains  | 47.85               | 3.80             |
+| Remove    | 24.30               | 5.50             |
+
+> Tags are extremely lightweight and provide **O(1) average time complexity** for key operations.
+
+---
+
+Values act as a **Dictionary-like storage** mapping integer keys to objects or structs, supporting generic access and
+unsafe references for high performance.
+
+### 🔑 Values
+
+| Operation     | Dictionary (Median μs) | Values (Median μs)                    |
+|---------------|------------------------|---------------------------------------|
+| Clear         | 1.30                   | 2.60                                  |
+| Contains      | 6.90                   | 5.95                                  |
+| Remove        | 6.70                   | 5.90                                  |
+| Get           | 7.45                   | 4.10 (object)                         |
+| Get & Cast    | 8.25                   | 12.00 (reference) / 4.70 (primitive)  |
+| Get & Unsafe  | 7.80                   | 4.50 (primitive) / 4.20 (ref)         |
+| Set           | 37.50                  | 62.50 (object) / 187.35 (primitive)   |
+| TryGet        | 34.20                  | 33.80 (object)                        |
+| TryGet Cast   | -                      | 50.75 (reference) / 4.90  (primitive) |
+| TryGet Unsafe | -                      | 31.90 (reference) / 6.94  (primitive) |
+| Add           | 34.10                  | 62.15 (object) / 178.45 (primitive)   |
+
+> Values provide flexible access patterns with **minimal overhead**, especially for primitives and unsafe references.
+
+---
+
+### ⚙️ Behaviours
+
+Behaviours are stored in a **list-like container**, supporting multiple references to the same instance. Operations
+include addition, removal, and indexed access.
+
+| Operation    | List (Median μs) | Behaviours (Median μs) |
+|--------------|------------------|------------------------|
+| Add          | 29.30            | 34.30                  |
+| Clear        | 0.40             | 1.20                   |
+| Not Contains | 1825.95          | 650.60                 |
+| Remove       | 312.63           | 243.91                 |
+| Get By Index | 1.60             | 2.30                   |
+
+> Behaviours combine fast index access with flexibility to store duplicate references, though some operations are **O(n)
+** in the worst case.
+
 
 ---
 
