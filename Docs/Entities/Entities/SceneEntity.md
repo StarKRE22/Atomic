@@ -1449,13 +1449,13 @@ public sealed class CharacterInstaller : SceneEntityInstaller
     You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
   </summary>
 
-<img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
 
 After adding installers and configuring your entity, you can use the `Compile` option in the context menu. This will
 initialize your entity in **Edit Mode** and determine the exact memory requirements. To reset the entity state, use the
 `Reset` button in the context menu.
 
 <img width="144" height="" alt="изображение" src="../../Images/Scene%20Entity%20Reset%20and%20Compile.png" />
+<img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
 
 </details>
 
