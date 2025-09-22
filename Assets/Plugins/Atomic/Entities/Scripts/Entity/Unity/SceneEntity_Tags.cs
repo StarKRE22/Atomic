@@ -63,18 +63,84 @@ namespace Atomic.Entities
             _tagFreeList = UNDEFINED_INDEX;
         }
 
-        /// <summary>
+       
+         /// <summary>
         /// Checks if the entity has a tag with the specified key.
         /// </summary>
-        public bool HasTag(int key) => this.FindTagIndex(key, out _);
+        public bool HasTag(int key)
+        {
+            if (_tagCount > 0)
+            {
+                int hash = key & 0x7FFFFFFF;
+                int bucket = hash % _tagCapacity;
+                int index = _tagBuckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly TagSlot slot = ref _tagSlots[index];
+                    if (slot.exists && slot.key == key)
+                        return true;
+
+                    index = slot.next;
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Adds a tag to the entity.
         /// </summary>
         public bool AddTag(int key)
         {
-            if (!this.AddTagInternal(key))
-                return false;
+            int hash = key & 0x7FFFFFFF;
+            int bucket = hash % _tagCapacity;
+            int index;
+
+            if (_tagCount > 0)
+            {
+                bucket = hash % _tagCapacity;
+                index = _tagBuckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly TagSlot slot = ref _tagSlots[index];
+                    if (slot.exists && slot.key == key)
+                        return false;
+
+                    index = slot.next;
+                }
+            }
+
+            if (_tagFreeList >= 0)
+            {
+                index = _tagFreeList;
+                _tagFreeList = _tagSlots[index].next;
+            }
+            else
+            {
+                if (_tagLastIndex == _tagCapacity)
+                {
+                    this.IncreaseTagCapacity();
+                    bucket = hash % _tagCapacity;
+                }
+
+                index = _tagLastIndex;
+                _tagLastIndex++;
+            }
+
+            ref int next = ref _tagBuckets[bucket];
+
+            _tagSlots[index] = new TagSlot
+            {
+                key = key,
+                next = next,
+                exists = true
+            };
+
+            next = index;
+
+            _tagCount++;
 
             this.OnTagAdded?.Invoke(this, key);
             this.OnStateChanged?.Invoke(this);
@@ -86,12 +152,51 @@ namespace Atomic.Entities
         /// </summary>
         public bool DelTag(int key)
         {
-            if (!this.DelTagInternal(key))
-                return false;
+            if (_tagCount > 0)
+            {
+                int hash = key & 0x7FFFFFFF;
+                int bucket = hash % _tagCapacity;
+                ref int next = ref _tagBuckets[bucket];
 
-            this.OnTagDeleted?.Invoke(this, key);
-            this.OnStateChanged?.Invoke(this);
-            return true;
+                int index = next;
+                int last = UNDEFINED_INDEX;
+
+                while (index >= 0)
+                {
+                    ref TagSlot slot = ref _tagSlots[index];
+                    if (slot.key == key)
+                    {
+                        if (last == UNDEFINED_INDEX)
+                            next = slot.next;
+                        else
+                            _tagSlots[last].next = slot.next;
+
+                        slot.next = _tagFreeList;
+                        slot.exists = false;
+
+                        _tagCount--;
+
+                        if (_tagCount == 0)
+                        {
+                            _tagLastIndex = 0;
+                            _tagFreeList = UNDEFINED_INDEX;
+                        }
+                        else
+                        {
+                            _tagFreeList = index;
+                        }
+
+                        this.OnTagDeleted?.Invoke(this, key);
+                        this.OnStateChanged?.Invoke(this);
+                        return true;
+                    }
+
+                    last = index;
+                    index = slot.next;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -100,7 +205,15 @@ namespace Atomic.Entities
         public int[] GetTags()
         {
             int[] results = new int[_tagCount];
-            this.CopyTags(results);
+            int index = 0;
+
+            for (int i = 0; i < _tagLastIndex; i++)
+            {
+                ref readonly TagSlot slot = ref _tagSlots[i];
+                if (slot.exists)
+                    results[index++] = slot.key;
+            }
+
             return results;
         }
 
@@ -162,12 +275,18 @@ namespace Atomic.Entities
         /// <summary>
         /// Returns an enumerator over the tag keys of the entity.
         /// </summary>
-        IEnumerator<int> IEntity.GetTagEnumerator() => new TagEnumerator(this);
+        IEnumerator<int> IEntity.GetTagEnumerator()
+        {
+            return new TagEnumerator(this);
+        }
 
         /// <summary>
         /// Returns an enumerator over the tag keys of the entity.
         /// </summary>
-        public TagEnumerator GetTagEnumerator() => new(this);
+        public TagEnumerator GetTagEnumerator()
+        {
+            return new TagEnumerator(this);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void IncreaseTagCapacity()

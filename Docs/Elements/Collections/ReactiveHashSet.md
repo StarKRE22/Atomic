@@ -9,10 +9,10 @@ public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCa
 ```
 
 - **Type Parameters:**
-  - `T` — The type of elements stored in the set.
+    - `T` — The type of elements stored in the set.
 - **Notes:**
-  - Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
-  - Supports Unity serialization
+    - Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
+    - Supports Unity serialization
 
 ---
 
@@ -356,11 +356,11 @@ wrapper compared to a standard `HashSet<T>`.
 
 | Operation  | HashSet (Median μs) | ReactiveHashSet (Median μs) |
 |------------|---------------------|-----------------------------|
-| Add        | 51.70               | 21.20                       |
-| Clear      | 0.10                | 9.30                        |
-| Contains   | 46.00               | 9.60                        |
-| Enumerator | 11.00               | 7.40                        |
-| Remove     | 23.50               | 53.90                       |
+| Add        | 69.30               | 64.30                       |
+| Clear      | 1.10                | 32.00                        |
+| Contains   | 50.10               | 10.00                        |
+| Enumerator | 29.60               | 29.60                        |
+| Remove     | 50.30               | 54.80                       |
 
 `ReactiveHashSet` shows **much lower median times for Add, Contains, and Enumerator**, thanks to internal optimizations
 and preallocated slots. Operations like `Clear` and `Remove` are slightly more expensive due to **event invocation** and

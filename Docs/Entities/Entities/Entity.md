@@ -1402,16 +1402,17 @@ The performance measurements below were conducted on a **MacBook with Apple M1**
 container type.  
 All times are **median execution times** in microseconds (μs).
 
-### 🏷️ Tags
+### 🏷️ Tags <!-- + -->
 
 Tags are implemented as a **HashSet of integers**, optimized for fast lookups, additions, and removals.
 
-| Operation | HashSet (Median μs) | Tags (Median μs) |
-|-----------|---------------------|------------------|
-| Add       | 57.40               | 10.30            |
-| Clear     | 0.10                | 2.80             |
-| Contains  | 47.85               | 3.80             |
-| Remove    | 24.30               | 5.50             |
+| Operation  | HashSet (Median μs) | Tags (Median μs) |
+|------------|---------------------|------------------|
+| Contains   | 47.85               | 3.80             |
+| Add        | 57.40               | 8.30             |
+| Remove     | 50.45               | 5.40             |
+| Clear      | 1.10                | 2.80             |
+| Enumerator | 29.75               | 2.30             |
 
 > Tags are extremely lightweight and provide **O(1) average time complexity** for key operations.
 
@@ -1422,19 +1423,20 @@ unsafe references for high performance.
 
 ### 🔑 Values
 
-| Operation     | Dictionary (Median μs) | Values (Median μs)                    |
-|---------------|------------------------|---------------------------------------|
-| Clear         | 1.30                   | 2.60                                  |
-| Contains      | 6.90                   | 5.95                                  |
-| Remove        | 6.70                   | 5.90                                  |
-| Get           | 7.45                   | 4.10 (object)                         |
-| Get & Cast    | 8.25                   | 12.00 (reference) / 4.70 (primitive)  |
-| Get & Unsafe  | 7.80                   | 4.50 (primitive) / 4.20 (ref)         |
-| Set           | 37.50                  | 62.50 (object) / 187.35 (primitive)   |
-| TryGet        | 34.20                  | 33.80 (object)                        |
-| TryGet Cast   | -                      | 50.75 (reference) / 4.90  (primitive) |
-| TryGet Unsafe | -                      | 31.90 (reference) / 6.94  (primitive) |
-| Add           | 34.10                  | 62.15 (object) / 178.45 (primitive)   |
+| Operation            | Dictionary (Median μs) | Values (Median μs)                 |
+|----------------------|------------------------|------------------------------------|
+| Get                  | 7.40                   | 4.10 (object)                      |
+| Get + Cast           | 8.25                   | 12.00 (reference) / 4.70 (value)   |
+| Get + Unsafe Cast    | 7.80                   | 4.20 (reference) / 4.50 (value)    |
+| TryGet               | 34.20                  | 31.20 (object)                     |
+| TryGet + Cast        | -                      | 50.75 (reference) / 4.90  (value)  |
+| TryGet + Unsafe Cast | -                      | 30.50 (reference) / 6.90  (value)  |
+| Add                  | 34.10                  | 62.15 (reference) / 178.45 (value) |
+| Remove               | 6.70                   | 5.20 (reference) / 5.50 (value)    |
+| Clear                | 1.30                   | 2.60                               |
+| Contains             | 6.90                   | 4.00                               |
+| Set                  | 37.50                  | 62.50 (reference) / 187.35 (value) |
+| Enumerator           | 56.60                  | 56.80 (reference) / 171.75 (value) |
 
 > Values provide flexible access patterns with **minimal overhead**, especially for primitives and unsafe references.
 
@@ -1442,7 +1444,8 @@ unsafe references for high performance.
 
 ### ⚙️ Behaviours
 
-Behaviours are stored in a **list-like container**, supporting multiple references to the same instance. Operations include addition, removal, and indexed access.
+Behaviours are stored in a **list-like container**, supporting multiple references to the same instance. Operations
+include addition, removal, and indexed access.
 
 | Operation    | List (Median μs) | Behaviours (Median μs) |
 |--------------|------------------|------------------------|
@@ -1451,8 +1454,10 @@ Behaviours are stored in a **list-like container**, supporting multiple referenc
 | Not Contains | 1825.95          | 650.60                 |
 | Remove       | 312.63           | 243.91                 |
 | Get By Index | 1.60             | 2.30                   |
+| Enumerator   | 29.95            | 2.30                   |
 
-> Behaviours combine fast index access with flexibility to store duplicate references, though some operations are **O(n)** in the worst case.
+> Behaviours combine fast index access with flexibility to store duplicate references, though some operations are **O(n)
+** in the worst case.
 
 ---
 

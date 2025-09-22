@@ -130,10 +130,10 @@ namespace Atomic.Elements
         [Test, Performance]
         public void Clear()
         {
-            var list = new ReactiveLinkedList<object>(_source);
+            var list = new ReactiveLinkedList<object>();
 
             Measure.Method(list.Clear)
-                .SetUp(() => list = new ReactiveLinkedList<object>(_source))
+                .SetUp(() => list.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
                 .SampleGroup(new SampleGroup("ReactiveLinkedList.Clear()", SampleUnit.Microsecond))
@@ -173,11 +173,12 @@ namespace Atomic.Elements
         public void Contains()
         {
             var list = new ReactiveLinkedList<object>(_source);
+            var absent = new object();
 
             Measure.Method(() =>
                 {
                     for (var i = 0; i < N; i++)
-                        _ = list.Contains(_source[i]);
+                        _ = list.Contains(absent);
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)

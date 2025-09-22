@@ -8,7 +8,6 @@ namespace Atomic.Elements
     public sealed class HashSetPerformance
     {
         private const int N = 1000;
-        private static readonly object Dummy = new();
         private object[] _source;
 
         [OneTimeSetUp]
@@ -16,7 +15,7 @@ namespace Atomic.Elements
         {
             _source = new object[N];
             for (int i = 0; i < N; i++)
-                _source[i] = Dummy;
+                _source[i] = new object();
         }
 
         [Test, Performance]
@@ -38,8 +37,7 @@ namespace Atomic.Elements
         [Test, Performance]
         public void Contains()
         {
-            var set = new HashSet<object>();
-            set.UnionWith(_source);
+            var set = new HashSet<object>(_source);
 
             Measure.Method(() =>
                 {
@@ -70,13 +68,13 @@ namespace Atomic.Elements
         [Test, Performance]
         public void Enumerator()
         {
-            var set = new HashSet<object>();
-            set.UnionWith(_source);
+            var set = new HashSet<object>(_source);
 
             Measure.Method(() =>
                 {
-                    foreach (object entity in set)
-                        _ = entity;
+                    foreach (object unused in set)
+                    {
+                    }
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)

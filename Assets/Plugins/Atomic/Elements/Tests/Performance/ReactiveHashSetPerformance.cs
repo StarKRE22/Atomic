@@ -73,9 +73,8 @@ namespace Atomic.Elements
 
             Measure.Method(() =>
                 {
-                    foreach (object e in set)
+                    foreach (object unused in set)
                     {
-                        _ = e;
                     }
                 })
                 .WarmupCount(5)

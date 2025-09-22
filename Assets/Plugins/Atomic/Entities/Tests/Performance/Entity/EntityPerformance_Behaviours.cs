@@ -73,7 +73,7 @@ namespace Atomic.Entities
                 .SampleGroup(new SampleGroup("ClearBehaviours", SampleUnit.Microsecond))
                 .Run();
         }
-        
+
         [Test, Performance]
         public void GetBehaviourAt()
         {
@@ -114,6 +114,27 @@ namespace Atomic.Entities
                     for (int i = 0; i < N; i++)
                     {
                         _ = entity.HasBehaviour(absent);
+                    }
+                })
+                .WarmupCount(5)
+                .MeasurementCount(20)
+                .SampleGroup(new SampleGroup("HasBehaviour", SampleUnit.Microsecond))
+                .Run();
+        }
+
+        [Test, Performance]
+        public void EnumerateBehaviours()
+        {
+            var entity = new Entity();
+            for (int i = 0; i < N; i++)
+                entity.AddBehaviour(new EntityBehaviourDummy());
+
+            Measure.Method(() =>
+                {
+                    Entity.BehaviourEnumerator enumerator = entity.GetBehaviourEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        _ = enumerator.Current;
                     }
                 })
                 .WarmupCount(5)

@@ -6,12 +6,13 @@ implements [IReactiveDictionary<K, V>](IReactiveDictionary.md). Optionally suppo
 ```csharp
 public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, ISerializationCallbackReceiver
 ```
+
 - **Type Parameters:**
-  - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
-  - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
+    - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
+    - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
 - **Notes:**
-  - Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
-  - Supports Unity serialization
+    - Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
+    - Supports Unity serialization
 
 ---
 
@@ -625,14 +626,14 @@ wrapper compared to a standard `Dictionary`.
 
 | Operation   | Dictionary (Median μs) | ReactiveDictionary (Median μs) |
 |-------------|------------------------|--------------------------------|
-| Add         | 14.60                  | 17.60                          |
-| Clear       | 1.30                   | 2.10                           |
-| ContainsKey | 6.70                   | 5.70                           |
-| Enumerator  | 13.00                  | 13.40                          |
-| Indexer Get | 7.30                   | 5.70                           |
-| Indexer Set | 13.20                  | 9.80                           |
-| Remove      | 7.20                   | 11.50                          |
-| TryGetValue | 12.30                  | 10.40                          |
+| Add         | 34.10                  | 64.40                          |
+| Clear       | 7.10                   | 2.40                           |
+| ContainsKey | 7.10                   | 5.70                           |
+| Enumerator  | 56.60                  | 58.60                          |
+| Get         | 7.40                   | 5.80                           |
+| Set         | 35.50                  | 10.10                          |
+| Remove      | 7.40                   | 6.80                           |
+| TryGetValue | 34.20                  | 32.90                          |
 
 Thus, `ReactiveDictionary` introduces minimal overhead for common operations like `Add` and `Clear`. In some operations
 like `Indexer Get` and `TryGetValue`, it can even be slightly faster due to internal optimizations. `Remove` and

@@ -7,11 +7,12 @@ supports serialization for Unity projects.
 ```csharp
 public class ReactiveList<T> : IReactiveList<T>, IDisposable
 ```
-- **Type Parameters:** 
-  - `T` — The type of elements stored in the list.
+
+- **Type Parameters:**
+    - `T` — The type of elements stored in the list.
 - **Notes:**
-  - Use this class when you need a **mutable, growable list** with reactive notifications.
-  - Supports Unity serialization
+    - Use this class when you need a **mutable, growable list** with reactive notifications.
+    - Supports Unity serialization
 
 > [!TIP]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
@@ -347,17 +348,17 @@ reactive wrapper.
 
 | Operation       | List (Median μs) | ReactiveList (Median μs) |
 |-----------------|------------------|--------------------------|
-| Add             | 8.60             | 10.70                    |
+| Add             | 30.15            | 31.20                    |
 | Clear           | 0.40             | 1.20                     |
-| Contains        | 62.80            | 41.90                    |
-| CopyTo          | 0.40             | 0.50                     |
-| Enumerator      | 7.00             | 7.10                     |
+| Contains Absent | 1821.35          | 33455.75                 |
+| CopyTo          | 0.40             | 0.40                     |
+| Enumerator      | 29.35            | 28.80                    |
 | For             | 1.70             | 1.70                     |
-| Indexer Get     | 1.50             | 1.70                     |
-| Indexer Set     | 9.50             | 42.00                    |
-| Remove          | 293.35           | 254.25                   |
-| Remove At Last  | 10.80            | 3.00                     |
-| Insert At First | 222.65           | 223.60                   |
+| Get             | 1.50             | 1.75                     |
+| Set             | 30.40            | 42.00                    |
+| Remove          | 307.40           | 254.25                   |
+| Remove At Last  | 29.55            | 3.00                     |
+| Insert At First | 242.85           | 245.85                   |
 
 `ReactiveList` shows slightly higher latency when setting elements (`Indexer Set`) due to event invocation, but is
 faster in some removal operations (`RemoveAt`) thanks to internal optimizations.

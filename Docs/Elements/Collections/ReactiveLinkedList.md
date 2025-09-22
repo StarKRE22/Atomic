@@ -327,19 +327,19 @@ reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements
 of type `object`**. The table shows median execution times of key operations.
 
-| Operation       | List<T> Avg (μs) | ReactiveList Avg (μs) | ReactiveLinkedList Avg (μs) |
-|-----------------|------------------|-----------------------|-----------------------------|
-| Add             | 8.63             | 10.69                 | 16.74                       |
-| Clear           | 0.44             | 1.22                  | 0.04                        |
-| Contains        | 63.35            | 42.70                 | 51.59                       |
-| CopyTo          | 0.45             | 0.48                  | 8.02                        |
-| Enumerator      | 7.11             | 7.16                  | 6.81                        |
-| ForLoop         | 1.72             | 1.75                  | 1269.22                     |
-| Indexer Get     | 1.53             | 1.74                  | 1275.63                     |
-| Indexer Set     | 10.13            | 42.12                 | 1316.02                     |
-| Remove          | 295.79           | 257.58                | 48.58                       |
-| Remove At Last  | 11.08            | 3.03                  | 2539.79                     |
-| Insert At First | 226.36           | 225.46                | 16.07                       |
+| Operation       | List (Median μs) | ReactiveList (Median μs) | ReactiveLinkedList Avg (μs) |
+|-----------------|------------------|--------------------------|-----------------------------|
+| Add             | 30.15            | 31.20                    | 60.00                       |
+| Clear           | 0.40             | 1.20                     | 2.65                        |
+| Contains        | 1821.35          | 33455.75                 | 33605.80                    |
+| CopyTo          | 0.40             | 0.40                     | 30.65 μs                    |
+| Enumerator      | 29.35            | 28.80                    | 28.50 μs                    |
+| For             | 1.70             | 1.70                     | 1273.55                     |
+| Get             | 1.50             | 1.75                     | 1277.70                     |
+| Set             | 30.40            | 42.00                    | 1304.00                     |
+| Remove          | 307.40           | 254.25                   | 43.50                       |
+| Remove At Last  | 29.55            | 3.00                     | 2546.10                     |
+| Insert At First | 242.85           | 245.85                   | 60.80                       |
 
 ### Explanation
 

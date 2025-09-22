@@ -8,7 +8,6 @@ namespace Atomic.Elements
     [TestFixture]
     public sealed class ListPerformance
     {
-        private static readonly object Dummy = new();
         private const int N = 1000;
         private object[] _source;
 
@@ -17,7 +16,7 @@ namespace Atomic.Elements
         {
             _source = new object[N];
             for (int i = 0; i < N; i++)
-                _source[i] = Dummy;
+                _source[i] = new object();
         }
 
         [Test, Performance]

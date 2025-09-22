@@ -12,7 +12,7 @@ namespace Atomic.Entities
 
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < N; i++) 
+                    for (int i = 0; i < N; i++)
                         entity.AddTag(i);
                 })
                 .CleanUp(entity.ClearTags)
@@ -23,7 +23,7 @@ namespace Atomic.Entities
         }
 
         [Test, Performance]
-        public void HasTag_Performance()
+        public void HasTag()
         {
             var entity = new Entity();
 
@@ -34,7 +34,7 @@ namespace Atomic.Entities
                 {
                     for (int i = 0; i < N; i++)
                     {
-                        bool exists = entity.HasTag(i);
+                        _ = entity.HasTag(i);
                     }
                 })
                 .WarmupCount(10)
@@ -47,10 +47,10 @@ namespace Atomic.Entities
         public void DelTag()
         {
             var entity = new Entity();
-            
+
             Measure.Method(() =>
                 {
-                    for (int i = 0; i < N; i++) 
+                    for (int i = 0; i < N; i++)
                         entity.DelTag(i);
                 })
                 .SetUp(() =>
@@ -78,6 +78,27 @@ namespace Atomic.Entities
                 .WarmupCount(10)
                 .MeasurementCount(30)
                 .SampleGroup(new SampleGroup("ClearTags", SampleUnit.Microsecond))
+                .Run();
+        }
+
+        [Test, Performance]
+        public void EnumerateTags()
+        {
+            var entity = new Entity();
+            for (int i = 0; i < N; i++)
+                entity.AddTag(i);
+
+            Measure.Method(() =>
+                {
+                    Entity.TagEnumerator enumerator = entity.GetTagEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        _ = enumerator.Current;
+                    }
+                })
+                .WarmupCount(10)
+                .MeasurementCount(30)
+                .SampleGroup(new SampleGroup("EnumerateTags", SampleUnit.Microsecond))
                 .Run();
         }
     }
