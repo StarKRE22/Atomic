@@ -1,7 +1,7 @@
 # 🧩️ SceneEntity
 
-Represents a Unity component implementation of an [IEntity](IEntity.md). This class follows the **Entity–State–Behaviour
-** pattern, providing a modular container for dynamic state, tags, values,
+Represents a Unity component implementation of an [IEntity](IEntity.md). This class follows the 
+**Entity–State–Behaviour** pattern, providing a modular container for dynamic state, tags, values,
 behaviours, and lifecycle management. It allows installation from the Unity Scene and composition through the Inspector
 or installers.
 
