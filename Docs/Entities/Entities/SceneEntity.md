@@ -1446,11 +1446,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller
     <h2 id="-optimization"> 📈 Optimization</h2>
     <br>
     Provides a simple workflow for precomputing entity capacities in the Unity Editor.
+    You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
   </summary>
-
-<br> 
-
-You can optimize your entity’s size by precomputing the capacity of **tags**, **values**, and **behaviours**.
 
 <img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
 

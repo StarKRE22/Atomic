@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterInstaller.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,15 +200,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="65501000" />
-    </task>
-    <task id="LOCAL-00575" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1758437237708</created>
-      <option name="number" value="00575" />
-      <option name="presentableId" value="LOCAL-00575" />
-      <option name="project" value="LOCAL" />
-      <updated>1758437237708</updated>
+      <workItem from="1758351834194" duration="65824000" />
     </task>
     <task id="LOCAL-00576" summary="Сделал Entity!">
       <option name="closed" value="true" />
@@ -601,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758566563097</updated>
     </task>
-    <option name="localTasksCounter" value="624" />
+    <task id="LOCAL-00624" summary="Сделал SceneEntity.md">
+      <option name="closed" value="true" />
+      <created>1758568695400</created>
+      <option name="number" value="00624" />
+      <option name="presentableId" value="LOCAL-00624" />
+      <option name="project" value="LOCAL" />
+      <updated>1758568695400</updated>
+    </task>
+    <option name="localTasksCounter" value="625" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим IEntity!" />
     <MESSAGE value="Behaviours!" />
     <MESSAGE value="Сделал Lifecycle!" />
     <MESSAGE value="Сделал раздел для Tag" />
@@ -653,7 +645,8 @@
     <MESSAGE value="Подкрутил Performance!" />
     <MESSAGE value="Вот теперь performance корректный!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Сделал SceneEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал SceneEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
