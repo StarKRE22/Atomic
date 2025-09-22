@@ -1449,6 +1449,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
     You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
   </summary>
 
+<br>
 
 After adding installers and configuring your entity, you can use the `Compile` option in the context menu. This will
 initialize your entity in **Edit Mode** and determine the exact memory requirements. To reset the entity state, use the
