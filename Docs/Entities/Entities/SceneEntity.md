@@ -353,6 +353,8 @@ entity.DelNPCTag();
 
   </summary>
 
+<br>
+
 > ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
 > reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic API
@@ -724,6 +726,8 @@ entity.DelInventory();
     Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
     enabling dynamic logic composition without changing the core entity structure.
   </summary>
+
+<br>
 
 > ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have **List-like time complexity**. 
 > Additionally, the entity **can store multiple references to the same behaviour instance**,

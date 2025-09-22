@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,39 +204,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="50943000" />
-    </task>
-    <task id="LOCAL-00563" summary="ReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1758311977892</created>
-      <option name="number" value="00563" />
-      <option name="presentableId" value="LOCAL-00563" />
-      <option name="project" value="LOCAL" />
-      <updated>1758311977892</updated>
-    </task>
-    <task id="LOCAL-00564" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1758312028707</created>
-      <option name="number" value="00564" />
-      <option name="presentableId" value="LOCAL-00564" />
-      <option name="project" value="LOCAL" />
-      <updated>1758312028707</updated>
-    </task>
-    <task id="LOCAL-00565" summary="Готово!">
-      <option name="closed" value="true" />
-      <created>1758312242143</created>
-      <option name="number" value="00565" />
-      <option name="presentableId" value="LOCAL-00565" />
-      <option name="project" value="LOCAL" />
-      <updated>1758312242143</updated>
-    </task>
-    <task id="LOCAL-00566" summary="Пилим IEntity!">
-      <option name="closed" value="true" />
-      <created>1758354196760</created>
-      <option name="number" value="00566" />
-      <option name="presentableId" value="LOCAL-00566" />
-      <option name="project" value="LOCAL" />
-      <updated>1758354196760</updated>
+      <workItem from="1758351834194" duration="51383000" />
     </task>
     <task id="LOCAL-00567" summary="Пилим IEntity!">
       <option name="closed" value="true" />
@@ -594,7 +566,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758528980778</updated>
     </task>
-    <option name="localTasksCounter" value="612" />
+    <task id="LOCAL-00612" summary="Написал Notes для контейнеров!">
+      <option name="closed" value="true" />
+      <created>1758529021387</created>
+      <option name="number" value="00612" />
+      <option name="presentableId" value="LOCAL-00612" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529021387</updated>
+    </task>
+    <task id="LOCAL-00613" summary="Написал Notes для контейнеров!">
+      <option name="closed" value="true" />
+      <created>1758529129436</created>
+      <option name="number" value="00613" />
+      <option name="presentableId" value="LOCAL-00613" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529129436</updated>
+    </task>
+    <task id="LOCAL-00614" summary="Написал Notes для контейнеров!">
+      <option name="closed" value="true" />
+      <created>1758529179443</created>
+      <option name="number" value="00614" />
+      <option name="presentableId" value="LOCAL-00614" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529179443</updated>
+    </task>
+    <task id="LOCAL-00615" summary="Написал Notes для контейнеров!">
+      <option name="closed" value="true" />
+      <created>1758529206613</created>
+      <option name="number" value="00615" />
+      <option name="presentableId" value="LOCAL-00615" />
+      <option name="project" value="LOCAL" />
+      <updated>1758529206613</updated>
+    </task>
+    <option name="localTasksCounter" value="616" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
