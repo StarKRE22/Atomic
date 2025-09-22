@@ -581,7 +581,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => wasEvent = true;
@@ -697,7 +697,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisposed += () => wasEvent = true;
@@ -806,7 +806,7 @@ namespace Atomic.Entities
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             var initEvent = false;
             var enabledEvent = false;
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnInitialized += () => initEvent = true;
@@ -840,7 +840,7 @@ namespace Atomic.Entities
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
             var wasEvent = false;
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
 
             entity.AddBehaviour(behaviourStub);
             entity.OnDisabled += () => wasEvent = true;
@@ -951,7 +951,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1099,7 +1099,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);
@@ -1186,7 +1186,7 @@ namespace Atomic.Entities
         {
             //Arrange
             var entity = SceneEntity.Create(useUnityLifecycle: false);
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var wasUpdate = false;
 
             entity.AddBehaviour(behaviourStub);

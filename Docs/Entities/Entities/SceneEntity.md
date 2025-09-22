@@ -107,6 +107,9 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
          enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
   </summary>
 
+> [!IMPORTANT]
+> Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1) average time complexity**, and duplicate tags are **not allowed**.
+
 ### 🛠 Inspector Settings
 
 | Parameter            | Description                                                             |
@@ -344,6 +347,9 @@ entity.DelNPCTag();
          identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
   </summary>
+
+> [!IMPORTANT]
+> Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and removal operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic API avoids boxing.
 
 ### 🛠 Inspector Settings
 
@@ -709,6 +715,9 @@ entity.DelInventory();
     Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
     enabling dynamic logic composition without changing the core entity structure.
   </summary>
+
+> [!IMPORTANT]
+> For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have **List-like time complexity**. Additionally, the entity **can store multiple references to the same behaviour instance**, so duplicate entries are allowed.
 
 ### 🛠 Inspector Settings
 

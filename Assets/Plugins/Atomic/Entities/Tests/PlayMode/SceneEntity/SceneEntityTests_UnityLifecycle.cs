@@ -11,7 +11,7 @@ namespace Atomic.Entities
         public IEnumerator EntityLifecycle_ByUnityLifecycle()
         {
             //Arrange:
-            DummyEntityBehaviour stub = new DummyEntityBehaviour();
+            EntityBehaviourStub stub = new EntityBehaviourStub();
 
             //Act:
             SceneEntity entity = SceneEntity.Create(behaviours: new IEntityBehaviour[]
@@ -61,7 +61,7 @@ namespace Atomic.Entities
         public IEnumerator AddBehaviour_EntityIsActive_ByUnityLifecycle()
         {
             //Arrange:
-            DummyEntityBehaviour stub = new DummyEntityBehaviour();
+            EntityBehaviourStub stub = new EntityBehaviourStub();
 
             //Act:
             SceneEntity entity = SceneEntity.Create();
@@ -98,7 +98,7 @@ namespace Atomic.Entities
         public IEnumerator Add_And_Remove_EntityBehaviour_EntityIsActive()
         {
             //Arrange:
-            DummyEntityBehaviour stub = new DummyEntityBehaviour();
+            EntityBehaviourStub stub = new EntityBehaviourStub();
 
             //Act:
             SceneEntity entity = SceneEntity.Create(behaviours: new IEntityBehaviour[]

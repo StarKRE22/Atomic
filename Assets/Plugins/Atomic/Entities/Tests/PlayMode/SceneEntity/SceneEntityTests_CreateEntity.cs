@@ -50,9 +50,9 @@ namespace Atomic.Entities
         [Test]
         public void CreateEntity_SetsBehavioursCorrectly()
         {
-            IEntityBehaviour b1 = new DummyEntityBehaviour();
-            IEntityBehaviour b2 = new DummyEntityBehaviour();
-            IEntityBehaviour b3 = new DummyEntityBehaviour();
+            IEntityBehaviour b1 = new EntityBehaviourStub();
+            IEntityBehaviour b2 = new EntityBehaviourStub();
+            IEntityBehaviour b3 = new EntityBehaviourStub();
 
             var entity = SceneEntity.Create("123", null, null, new[] { b1, b2, b3 });
 
@@ -102,8 +102,8 @@ namespace Atomic.Entities
         [Test]
         public void CreateTEntity_AssignsBehaviours()
         {
-            var b1 = new DummyEntityBehaviour();
-            var b2 = new DummyEntityBehaviour();
+            var b1 = new EntityBehaviourStub();
+            var b2 = new EntityBehaviourStub();
 
             var entity = SceneEntity.Create<SceneEntityDummy>("Entity", behaviours: new[] { b1, b2 });
 

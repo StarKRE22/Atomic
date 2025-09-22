@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Atomic.Entities
 {
-    public class DummyEntityBehaviour :
+    public class EntityBehaviourStub :
         IEntityInit,
         IEntityEnable,
         IEntityDisable,

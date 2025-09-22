@@ -5,21 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_AddValue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_AddValue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_ClearValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_ClearValues.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_DelValue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_DelValue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_SetValue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_SetValue.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_TryGetValue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_TryGetValue.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Behaviours.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Behaviours.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Tags.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Tags.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourDummy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourDummy.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/Entity_GetValue_Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_GetValue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/Entity_GetValue_Performance.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_GetValue.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Behaviours.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Behaviours.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Constructor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Constructor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Dispose.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Dispose.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Lifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Atomic.Entites.Tests.Performance.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Atomic.Entites.Tests.Performance.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_ClearValues.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_ClearValues.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Behaviours.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_CreateEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_CreateEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Lifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_UnityLifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_UnityLifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityProxy/SceneEntityProxyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityProxy/SceneEntityProxyTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityWorld/SceneEntityWorldTests_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityWorld/SceneEntityWorldTests_Lifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityWorld/SceneEntityWorldTests_UseUnityLifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityWorld/SceneEntityWorldTests_UseUnityLifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Behaviours/EntityBehaviourStub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,15 +225,7 @@
       <workItem from="1758175918148" duration="1812000" />
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
-      <workItem from="1758351834194" duration="47636000" />
-    </task>
-    <task id="LOCAL-00559" summary="ProxyVariable.md">
-      <option name="closed" value="true" />
-      <created>1758311395399</created>
-      <option name="number" value="00559" />
-      <option name="presentableId" value="LOCAL-00559" />
-      <option name="project" value="LOCAL" />
-      <updated>1758311395399</updated>
+      <workItem from="1758351834194" duration="50632000" />
     </task>
     <task id="LOCAL-00560" summary="ProxyVariable.md">
       <option name="closed" value="true" />
@@ -610,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758523396367</updated>
     </task>
-    <option name="localTasksCounter" value="608" />
+    <task id="LOCAL-00608" summary="Написал Performance Tests Values!">
+      <option name="closed" value="true" />
+      <created>1758525932068</created>
+      <option name="number" value="00608" />
+      <option name="presentableId" value="LOCAL-00608" />
+      <option name="project" value="LOCAL" />
+      <updated>1758525932068</updated>
+    </task>
+    <option name="localTasksCounter" value="609" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="IVariable.md" />
     <MESSAGE value="ProxyVariable.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
@@ -662,7 +670,8 @@
     <MESSAGE value="Casting" />
     <MESSAGE value="Fixes" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Написал Performance Tests Values!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал Performance Tests Values!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

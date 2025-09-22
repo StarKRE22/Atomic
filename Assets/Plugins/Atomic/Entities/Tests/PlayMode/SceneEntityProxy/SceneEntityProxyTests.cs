@@ -21,9 +21,9 @@ namespace Atomic.Entities
             object val1 = new object();
             string val2 = new string("Test");
 
-            IEntityBehaviour behaviour1 = new DummyEntityBehaviour();
-            IEntityBehaviour behaviour2 = new DummyEntityBehaviour();
-            IEntityBehaviour behaviour3 = new DummyEntityBehaviour();
+            IEntityBehaviour behaviour1 = new EntityBehaviourStub();
+            IEntityBehaviour behaviour2 = new EntityBehaviourStub();
+            IEntityBehaviour behaviour3 = new EntityBehaviourStub();
 
             //Act:
 

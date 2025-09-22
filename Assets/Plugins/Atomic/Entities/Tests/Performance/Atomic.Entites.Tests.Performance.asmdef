@@ -3,6 +3,7 @@
     "rootNamespace": "Atomic.Entities",
     "references": [
         "Atomic.Entities",
+        "Atomic.Entities.Substitutions",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Unity.PerformanceTesting"

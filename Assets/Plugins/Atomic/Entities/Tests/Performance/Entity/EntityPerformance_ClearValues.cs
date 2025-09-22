@@ -11,7 +11,7 @@ namespace Atomic.Entities
             var entity = new Entity();
 
             Measure
-                .Method(() => entity.ClearValues())
+                .Method(entity.ClearValues)
                 .SetUp(() =>
                 {
                     for (int i = 0; i < N; i++)

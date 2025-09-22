@@ -8,7 +8,7 @@ namespace Atomic.Entities
         [Test]
         public void EnableEntities()
         {
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
@@ -29,7 +29,7 @@ namespace Atomic.Entities
         [Test]
         public void UpdateEntities()
         {
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
@@ -55,7 +55,7 @@ namespace Atomic.Entities
         [Test]
         public void FixedUpdateEntities()
         {
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
 
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         [Test]
         public void LateUpdateEntities()
         {
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
             
@@ -101,7 +101,7 @@ namespace Atomic.Entities
         [Test]
         public void DeactivateEntities()
         {
-            var behaviourStub = new DummyEntityBehaviour();
+            var behaviourStub = new EntityBehaviourStub();
             var entity = SceneEntity.Create("E", useUnityLifecycle: false);
             entity.AddBehaviour(behaviourStub);
             
