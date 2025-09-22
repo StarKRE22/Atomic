@@ -7,7 +7,7 @@ namespace Atomic.Entities
     {
         private bool _started;
 
-        private void Awake()
+        private protected virtual void Awake()
         {
             EntityRegistry.Instance.Register(this, out _instanceId);
 
@@ -15,7 +15,7 @@ namespace Atomic.Entities
                 this.Install();
         }
 
-        private void OnEnable()
+        private protected virtual void OnEnable()
         {
             if (this.useUnityLifecycle && _started)
             {
@@ -24,7 +24,7 @@ namespace Atomic.Entities
             }
         }
 
-        private void Start()
+        private protected virtual void Start()
         {
             if (this.useUnityLifecycle)
             {
@@ -35,7 +35,7 @@ namespace Atomic.Entities
             }
         }
 
-        private void OnDisable()
+        private protected virtual void OnDisable()
         {
             if (this.useUnityLifecycle && _started)
             {
@@ -44,7 +44,7 @@ namespace Atomic.Entities
             }
         }
 
-        private void OnDestroy()
+        private protected virtual void OnDestroy()
         {
             if (this.useUnityLifecycle && _started)
             {

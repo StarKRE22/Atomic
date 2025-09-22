@@ -67,7 +67,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Assigns the singleton instance and optionally makes it persistent across scenes.
         /// </summary>
-        protected override void Awake()
+        private protected override void Awake()
         {
             if (_instance == null && _isGlobal)
                 _instance = (E) this;
@@ -81,7 +81,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Clears the singleton reference when destroyed.
         /// </summary>
-        protected override void OnDestroy()
+        private protected override void OnDestroy()
         {
             base.OnDestroy();
 
