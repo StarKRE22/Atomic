@@ -110,7 +110,7 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 
 <br>
 
-> ❗️ **Important:** Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1) average time complexity**, and duplicate tags are **not allowed**.
+> ❗️ Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1) average time complexity**, and duplicate tags are **not allowed**.
 
 ### 🛠 Inspector Settings
 
