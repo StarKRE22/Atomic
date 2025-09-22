@@ -28,7 +28,8 @@ pattern and using `Atomic` elements for data organization.
 
 ## 📝 Requirements
 
-The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements before using the framework.
+The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these
+requirements before using the framework.
 
 ---
 
@@ -47,13 +48,16 @@ The Atomic Framework requires **Unity 6** or **.NET 7+**. Make sure your develop
 ## 🎛 Using Odin Inspector
 
 For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
+framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
 ---
 
 ## 🔌 Using Plugin for Rider
 
-For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default the code generation works with Unity, but with the plugin, development experience in `Rider IDE` become
+For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
+the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default the code generation works with Unity, but
+with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
 ---
@@ -88,7 +92,11 @@ unnecessary complexity. **Atomic Framework** encourages a **procedural approach*
 and a `centralized data registry` instead of decentralized objects.
 
 ### 4. Reactive Programming
-   The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the flow of game logic consistent.
+
+The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real
+time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using
+reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the
+flow of game logic consistent.
 
 ---
 
@@ -97,52 +105,34 @@ and a `centralized data registry` instead of decentralized objects.
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
-### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)  
+### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)
+
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
-  The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling developers to quickly assemble any game entity **like a LEGO constructor**.
+The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling
+developers to quickly assemble any game entity **like a LEGO constructor**.
 
+### `Atomic.Entities` [(Read More)](Docs/Entities/Manual.md)
 
-### `Atomic.Entities` [(Read More)](Docs/Entities/Manual.md)  
-  **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used as the presentation layer.
+**A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and
+behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used
+as the presentation layer.
 
 ---
 
 ## 🚀 Unity Quick Start
+
 **Below is the process for quickly creating a character entity in Unity**
 
 ### 1. Create a new `GameObject`
+
 <img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
 ### 2. Add `Entity` Component to the GameObject
+
 <img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
 
-### 3. Create `CharacterInstaller` script
- ```csharp
-//Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
-{
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
-    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
+### 3. Create `MoveBehaviour` for your entity
 
-    public override void Install(IEntity entity)
-    {
-        //Add tags to a character
-        entity.AddTag("Character");
-        entity.AddTag("Moveable");
-
-        //Add properties to a character
-        entity.AddValue("Transform", _transform);
-        entity.AddValue("MoveSpeed", _moveSpeed);
-        entity.AddValue("MoveDirection", _moveDirection);
-    }
-}
-```
-
-### 4. Attach `CharacterInstaller` script to the GameObject
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
-
-### 5. Create `MoveBehaviour` class
 ```csharp
 // Controller that moves entity by its direction
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
@@ -168,9 +158,11 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
     }
 }
 ```
-### 6. Add `MoveBehaviour` to `CharacterInstaller`
+
+### 4. Create `CharacterInstaller` script
 
  ```csharp
+//Populates entity with tags, values and behaviours
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
@@ -179,22 +171,35 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
     public override void Install(IEntity entity)
     {
-        //Add tags to a character 
-        {...}
-        
+        //Add tags to a character
+        entity.AddTag("Character");
+        entity.AddTag("Moveable");
+
         //Add properties to a character
-        {...}
+        entity.AddValue("Transform", _transform);
+        entity.AddValue("MoveSpeed", _moveSpeed);
+        entity.AddValue("MoveDirection", _moveDirection);
         
         //Add behaviours to a character
         entity.AddBehaviour<MoveBehaviour>();
     }
 }
 ```
+
+### 5. Attach `CharacterInstaller` script to the GameObject
+
+<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+
+### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
+
+<img width="464" height="" alt="изображение" src="Docs/Images/SceneEntity%20Attach%20Installer.png" />
+
 ### 7. Enter `PlayMode` and check your character movement!
 
 ---
 
 ## ⚡ CSharp Quick Start
+
 **Below is the process for quickly creating an entity in plain C#**
 
 ### 1. Create a new entity
@@ -212,7 +217,7 @@ entity.AddValue("MoveSpeed", new Const<float>(3.5f));
 entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 ```
 
-### 2. Create `MoveBehaviour` class
+### 2. Create `MoveBehaviour` for your entity
 
 ```csharp
 //Controller that moves entity by its direction
@@ -247,6 +252,7 @@ entity.AddBehaviour<MoveBehaviour>();
 ```
 
 ### 4. Initialize the entity when game is loading
+
 ```csharp
 //Calls IEntityInit
 entity.Init();
@@ -280,15 +286,19 @@ while(_isGameRunning)
 character.Disable();
 ```
 
-### 8. Dispose the entity when unloading game resources 
+### 8. Dispose the entity when unloading game resources
+
 ```csharp
 //Dispose entity resources
 //Calls IEntityDispose
 entity.Dispose();
 ```
 
+---
+
 ## 📖 Tutorials
-Coming Soon
+
+To be added...
 
 <!-- 
 - **What is Entity**
@@ -307,16 +317,23 @@ Coming Soon
     - **Rider Plugin Guide**
 -->
 
+---
+
 ## 🗂 Game Examples
 
 This section includes **three sample projects** demonstrating different use cases of the framework.
 <br> All examples are located in the **[Assets/Examples](Assets/Examples)** folder.
 
-- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game designed to introduce the core concepts of the framework
-- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** —  a more **complex game architecture**, suitable for mid-sized games.
+- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game designed to introduce the core concepts
+  of the framework
+- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** — a more **complex game architecture**, suitable for mid-sized
+  games.
 - **[RTS Sample](Assets/Examples/RTS)** — **high-performance entity management** with a large number of units.
 
+---
+
 ### 1️⃣ Beginner Sample
+
 <img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
 **Simple 2-player mini-game** designed to introduce the core concepts of the framework
@@ -325,12 +342,16 @@ This section includes **three sample projects** demonstrating different use case
 > - **Players:** Two players share the same scene.
 > - **Objective:** Collect more coins than the opponent within a **limited time**.
 > - **Controls:**
->    - Player (Blue): Arrow keys
->    - Player (Red): `W`, `A`, `S`, `D`
+    >
+
+- Player (Blue): Arrow keys
+
+> - Player (Red): `W`, `A`, `S`, `D`
 > - **UI Feedback:** Victory screen appears showing the winning player.
 > - **Restart:** Players can restart the game to try again.
 
 #### This Sample Demonstrates
+
 1. How to create and configure **SceneEntity** in Unity.
 2. Demonstrates project architecture based on the **Entity–State–Behaviour** pattern.
 3. Usage of **atomic properties** and **events**.
@@ -339,7 +360,10 @@ This section includes **three sample projects** demonstrating different use case
 6. Developing **Atomic UI** using the **MVP-Passive View** pattern.
 7. Writing **Unit tests** to validate entity logic and behaviors.
 
+---
+
 ### 2️⃣ Top-Down Shooter Sample
+
 <img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
 The Top-Down Shooter Sample demonstrates a more **complex game architecture**, suitable for mid-sized games.
@@ -348,28 +372,44 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 > - **Players:** Two players share the same scene.
 > - **Objective:** Kill your opponent more times than he does within a **limited time**.
 > - **Controls:**
->   - Player (Blue): Arrow keys to move, `Space` to shoot 
->   - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
+    >
+
+- Player (Blue): Arrow keys to move, `Space` to shoot
+
+> - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
 > - **Mechanics**
->   - **Character Movement:** Kinematic movement using `Transform`, with collision handling using `Rigidbody.SweepTest`.
->   - **Combat:** Characters use weapon, which are separate entities, and these weapons fire physical projectiles.
->   - **Projectile:** A kinematic object that interacts via trigger collisions and has a limited lifetime.
->   - **Respawning:** Units respawn at random point dynamically after being defeated.
+    >
+
+- **Character Movement:** Kinematic movement using `Transform`, with collision handling using `Rigidbody.SweepTest`.
+
+> - **Combat:** Characters use weapon, which are separate entities, and these weapons fire physical projectiles.
+    >
+
+- **Projectile:** A kinematic object that interacts via trigger collisions and has a limited lifetime.
+
+> - **Respawning:** Units respawn at random point dynamically after being defeated.
 >   - **Limited Time:**  The game ends when the time limit is reached.
 > - **Visualization**
->   - **Character:** Equipped with canvas, animations, VFX, and sound effects. 
->   - **UI:** Displays the kill count for each player and a session timer.
+    >
+
+- **Character:** Equipped with canvas, animations, VFX, and sound effects.
+
+> - **UI:** Displays the kill count for each player and a session timer.
 
 > **Application**
 > - **Scenes:**
->  - `Bootstrap` — starting scene that initializes the game.
->  - `Menu` — separate scene for main menu and navigation.
+    >
+
+- `Bootstrap` — starting scene that initializes the game.
+
+> - `Menu` — separate scene for main menu and navigation.
 > - **Start:** Game is launched through the `Bootstrap` scene.
 > - **Levels:** Three separate levels where players and enemies spawn.
 > - **Save System:** Stores the last completed level.
 > - **Game Load Flow:** Hierarchical structure of game loading sequence.
 
 #### This Sample Demonstrates
+
 1. How to structure a full-fledged **game architecture** for seamless scalability
 2. How to build an **application context** leveraging the `Entity-State-Behaviour` pattern
 3. How to design a **menu interface** in a procedural style
@@ -379,6 +419,8 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 7. How to create and manage a **projectile pool** efficiently
 8. How to organize scalable file system for your project
 
+---
+
 ### 3️⃣ RTS Sample
 
 <img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
@@ -386,7 +428,8 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 The RTS Sample is designed to demonstrate **high-performance entity management** with a large number of units.
 
 > **Gameplay**
-> - **Armies:** Two large armies are placed on the scene and attack each other automatically. Each army consists of infantry, tanks, and buildings.
+> - **Armies:** Two large armies are placed on the scene and attack each other automatically. Each army consists of
+    infantry, tanks, and buildings.
 > - **Building:** Has health points.
 > - **Infantry:** Has health, performs melee attacks, and can detect the nearest available enemy.
 > - **Tank:** Has health, fires projectiles, and can detect the nearest available enemy.
@@ -398,16 +441,21 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 > - **Entity Baking Scene** — converts Unity objects into pure C# entities for the game simulation.
 
 #### This Sample Demonstrates
+
 1. An architecture where the game logic runs purely in C#, with Unity serving as the presentation layer
 2. The use of `EntityWorld`, `EntityFactory`, `EntityPools`, `EntityFilter`, and `EntityTriggers`
 3. How to use `EntityView`, `EntityCollectView`, `EntityViewPool` to represent game objects in Unity
 4. Handling 5,000 to 10,000 game objects on a single thread
 5. Baking Unity scene objects into a C# game system
+
 ---
 
 ## 📌 Best Practices
 
-This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player or multiplayer games.
+This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these
+practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
+or multiplayer games.
+
 - [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
 - [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
 - [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)
@@ -423,6 +471,8 @@ This section outlines **recommended approaches and patterns** when working with 
 - [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
 - [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
 - [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-example-of-usage)
+
+---
 
 ## ⚖️ License
 
@@ -451,6 +501,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+---
 
 ## 📧 Contacts
 
