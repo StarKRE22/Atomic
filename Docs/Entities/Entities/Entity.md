@@ -1421,7 +1421,7 @@ Tags are implemented as a **HashSet of integers**, optimized for fast lookups, a
 Values act as a **Dictionary-like storage** mapping integer keys to objects or structs, supporting generic access and
 unsafe references for high performance.
 
-### 🔑 Values
+### 🔑 Values <!-- + -->
 
 | Operation            | Dictionary (Median μs) | Values (Median μs)                 |
 |----------------------|------------------------|------------------------------------|
@@ -1442,19 +1442,19 @@ unsafe references for high performance.
 
 ---
 
-### ⚙️ Behaviours
+### ⚙️ Behaviours  <!-- + -->
 
 Behaviours are stored in a **list-like container**, supporting multiple references to the same instance. Operations
 include addition, removal, and indexed access.
 
-| Operation    | List (Median μs) | Behaviours (Median μs) |
-|--------------|------------------|------------------------|
-| Add          | 29.30            | 34.30                  |
-| Clear        | 0.40             | 1.20                   |
-| Not Contains | 1825.95          | 650.60                 |
-| Remove       | 312.63           | 243.91                 |
-| Get By Index | 1.60             | 2.30                   |
-| Enumerator   | 29.95            | 2.30                   |
+| Operation       | List (Median μs) | Behaviours (Median μs) |
+|-----------------|------------------|------------------------|
+| Add             | 29.30            | 34.30                  |
+| Clear           | 0.40             | 1.20                   |
+| Contains Absent | 1825.95          | 650.60                 |
+| Remove          | 312.63           | 243.91                 |
+| Get At          | 1.60             | 2.30                   |
+| Enumerator      | 29.95            | 28.80                  |
 
 > Behaviours combine fast index access with flexibility to store duplicate references, though some operations are **O(n)
 ** in the worst case.
