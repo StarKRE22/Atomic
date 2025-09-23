@@ -8,7 +8,7 @@ especially important when game objects and scripts need to execute complex actio
 
 There are several implementations of composite actions, depending on the number of arguments the actions take:
 
-- [CompositeAction](#composite-action) — Non-generic version; works with `IAction` without parameters.
+- [CompositeAction](#composite-action) — Non-generic version; works without parameters.
 - [CompositeAction&lt;T&gt;](#composite-action-t) — Holds actions that take one argument of type `T`.
 - [CompositeAction&lt;T1, T2&gt;](#composite-action-t1-t2) — Holds actions that take two arguments of types `T1` and `T2`.
 - [CompositeAction&lt;T1, T2, T3&gt;](#composite-action-t1-t2-t3) — Holds actions that take three arguments of types `T1`, `T2`, `T3`.

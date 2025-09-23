@@ -206,23 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="33857000" />
-    </task>
-    <task id="LOCAL-00625" summary="Сделал SceneEntity.md">
-      <option name="closed" value="true" />
-      <created>1758569111620</created>
-      <option name="number" value="00625" />
-      <option name="presentableId" value="LOCAL-00625" />
-      <option name="project" value="LOCAL" />
-      <updated>1758569111620</updated>
-    </task>
-    <task id="LOCAL-00626" summary="Сделал SceneEntity.md">
-      <option name="closed" value="true" />
-      <created>1758569134641</created>
-      <option name="number" value="00626" />
-      <option name="presentableId" value="LOCAL-00626" />
-      <option name="project" value="LOCAL" />
-      <updated>1758569134641</updated>
+      <workItem from="1758604662186" duration="34158000" />
     </task>
     <task id="LOCAL-00627" summary="Сделал SceneEntity.md">
       <option name="closed" value="true" />
@@ -600,7 +584,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758655860539</updated>
     </task>
-    <option name="localTasksCounter" value="674" />
+    <task id="LOCAL-00674" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758655981264</created>
+      <option name="number" value="00674" />
+      <option name="presentableId" value="LOCAL-00674" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655981265</updated>
+    </task>
+    <task id="LOCAL-00675" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656243551</created>
+      <option name="number" value="00675" />
+      <option name="presentableId" value="LOCAL-00675" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656243551</updated>
+    </task>
+    <option name="localTasksCounter" value="676" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
