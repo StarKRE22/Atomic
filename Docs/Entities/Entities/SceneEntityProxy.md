@@ -1,35 +1,15 @@
-# 🧩 SceneEntityProxy
+# 🧩 SceneEntityProxy&lt;E&gt;
 
 Unity component that acts as a proxy or reference to an existing [SceneEntity](SceneEntity.md).
 It allows multiple `GameObjects` to share and reference the same entity instance, enabling flexible entity
 architectures.
 
----
-
-### 🔹 Generic Version
-
 ```csharp
 public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
     where E : SceneEntity
 ```
-
-- **Description:** Represents a proxy that forwards [IEntity](IEntity.md) calls to an underlying `E` source entity
-- **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
-- **Inheritance:**
-    - extends `MonoBehaviour`
-    - implements [IEntity](IEntity.md)
-
----
-
-### 🔹 Non-Generic Version
-
-```csharp
-public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
-```
-
-- **Description:** Non-generic proxy component for exposing and interacting with a `SceneEntity` in the Unity scene.
-- **Inheritance:** extends `SceneEntityProxy<E>`
-
+- **Type Parameter:** `E` — The type of the source entity, must inherit from `SceneEntity`
+- **Inheritance:** derived from `MonoBehaviour` and implemented [IEntity](IEntity.md)
 ---
 
 ## 🛠 Inspector Settings
@@ -41,16 +21,30 @@ public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
 ## 🔑 Properties
 
 #### `Source`
+
 ```csharp
 public E Source { get; }
 ```
+
 - **Description:** The source entity that this proxy forwards calls to.
+
+---
+
+## 🧩 SceneEntityProxy
+
+```csharp
+public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
+```
+
+- **Description:** Non-generic proxy component for exposing and interacting with a `SceneEntity` in the Unity scene.
+- **Inheritance:** extends `SceneEntityProxy<E>`
 
 ---
 
 ## 🗂 Example of Usage
 
-`SceneEntityProxy` works seamlessly with entities that have multiple child colliders (e.g., hitboxes, triggers). By placing a proxy on each child collider, you can ensure that interactions such as raycasts, triggers, or hits always
+`SceneEntityProxy` works seamlessly with entities that have multiple child colliders (e.g., hitboxes, triggers). By
+placing a proxy on each child collider, you can ensure that interactions such as raycasts, triggers, or hits always
 reference the same logical entity, regardless of which physical collider was involved.
 
 #### 1. Create a new `GameObject`
