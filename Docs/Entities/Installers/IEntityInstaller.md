@@ -1,104 +1,137 @@
-# 🧩️ IEntityInstaller
+# 🧩 IEntityInstaller Interfaces
 
-`IEntityInstaller` defines a **generic mechanism for configuring or injecting data** into an `IEntity` instance.  
-It allows setting up entity data, components, or behaviors during initialization or configuration phases.
-
----
-
-## Key Features
-
-- **Entity Configuration** – Install data, components, or behaviors into entities.
-- **Strongly-Typed Option** – `IEntityInstaller<E>` allows type-safe configuration for specific entity types.
-- **Composable** – Multiple installers can be applied to a single entity.
-- **Automatic Casting** – Generic interface automatically implements the non-generic `Install` method.
+Represents a behavior interface that configures or injects data into an [IEntity](../Entities/IEntity.md) instance. It
+allows setting up values, components, or behaviors during initialization or configuration phases.
 
 ---
 
-## Interface: IEntityInstaller
+<details>
+  <summary>
+    <h2 id="entity-installer"> 🧩 IEntityInstaller</h2>
+    <br>Defines a behavior that installs configuration into an <code>IEntity</code>.
+  </summary>
+
+<br>
+
 ```csharp
 public interface IEntityInstaller
-{
-    void Install(IEntity entity);
-}
 ```
+
+- **Description:** Provides a generic mechanism for configuring an entity.
+- **Use Case:** Add tags, values, or behaviors to an entity during its setup phase.
 
 ---
 
-## Interface: IEntityInstaller&lt;E&gt;
+### 🏹 Methods
+
+#### `Install(IEntity)`
+
 ```csharp
-public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
-{
-    void Install(E entity);
-}
+public void Install(IEntity entity);
 ```
-- Implements `IEntityInstaller.Install(IEntity)` automatically by casting to `E`.
-- Ensures type-safe installation logic for specific entity types.
+
+- **Description:** Called to install data or behaviors into the entity.
+- **Parameter:** `entity` – The entity being configured.
+- **Remarks:** Provides a flexible, non-generic entry point for entity configuration.
 
 ---
 
-## Example Usage
+### 🗂 Example of Usage
 
-### Example #1. Non-Generic (IEntity)
+Add tags, values, and behaviors to a character entity:
+
 ```csharp
 [Serializable]
 public sealed class CharacterInstaller : IEntityInstaller
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private float _moveSpeed = 5.0f; 
-    [SerializeField] private Vector3 _moveDirection; 
+    [SerializeField] private float _moveSpeed = 5.0f;
+    [SerializeField] private Vector3 _moveDirection;
 
-    public override void Install(IEntity entity)
+    public void Install(IEntity entity)
     {
-        //Add tags to the character
         entity.AddTag("Character");
         entity.AddTag("Moveable");
 
-        //Add properties to the character
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
         entity.AddValue("MoveDirection", _moveDirection);
         
-        //Add behaviours to the character
         entity.AddBehaviour<MoveBehaviour>();
         entity.AddBehaviour<LookBehaviour>();
     }
+
 }
 ```
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-installer-t"> 🧩 IEntityInstaller&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that installs configuration into an <code>IEntity</code> of type <code>E</code>.
+  </summary>
+
+<br>
+
+```csharp
+public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
+```
+- **Description:** Provides a strongly-typed mechanism for installing entity configuration.
+- **Type Parameter:** `E` – The specific entity type this installer targets.
+- **Inherits:** [IEntityInstaller](#entity-installer)
+- **Remarks:** Automatically implements the base `Install(IEntity)` by casting the entity to `E`.
+
+### 🏹 Methods
+
+#### `Install(E)`
+
+```csharp
+public void Install(E entity);
+```
+- **Description:** Called when the typed entity is configured.
+- **Parameter:** `entity` – The entity instance of type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Strongly-typed installer for `ICharacterEntity`:
+
 ```csharp
 [Serializable]
 public sealed class CharacterInstaller : IEntityInstaller<ICharacterEntity>
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private float _moveSpeed = 5.0f; 
-    [SerializeField] private Vector3 _moveDirection; 
+    [SerializeField] private float _moveSpeed = 5.0f;
+    [SerializeField] private Vector3 _moveDirection;
 
-    public override void Install(ICharacterEntity entity)
+    public void Install(ICharacterEntity entity)
     {
-        //Add tags to the character
         entity.AddTag("Character");
         entity.AddTag("Moveable");
 
-        //Add properties to the character
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
         entity.AddValue("MoveDirection", _moveDirection);
         
-        //Add behaviours to the character
         entity.AddBehaviour<MoveBehaviour>();
         entity.AddBehaviour<LookBehaviour>();
     }
 }
 ```
 
-> Note: Using the generic `ICharacterEntity` version allows type-safe access to entity-specific properties without casting.
+</details>
 
 ---
 
-## Remarks
+## 📝 Notes
 
+- **Entity Configuration** – Encapsulates setup routines for entities.
+- **Strongly-Typed Option** – `IEntityInstaller<E>` allows type-safe configuration.
+- **Composable** – Multiple installers can be applied to the same entity.
+- **Integration** – Works in both runtime and editor simulation workflows.
 - `IEntityInstaller` is intended for configuring or initializing entities before or during their lifecycle.
 - `IEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
-- Multiple installers can be combined to modularly configure entities.
-- Works with both runtime and editor simulation workflows.
