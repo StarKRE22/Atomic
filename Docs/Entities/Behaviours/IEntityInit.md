@@ -129,4 +129,3 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 
 - `IEntityInit` is intended for setup routines that must run when an entity becomes initialized.
 - `IEntityInit<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during initialization.
