@@ -1,57 +1,55 @@
-# 🧩️  IEntityLateUpdate
+# 🧩️ IEntityLateTick Interfaces
 
-`IEntityLateUpdate` is a behavior interface that executes logic during the **late update cycle** of an `IEntity`.  
-It is automatically invoked by the entity’s `OnLateUpdate` method once per frame, after all regular updates have been processed.  
-This phase is useful for things like camera follow, animation corrections, or logic that depends on the latest entity positions.
+Represents a behavior interface that executes logic during the **late update cycle** of
+an [IEntity](../Entities/IEntity.md). It is automatically invoked once per frame by the entity’s `LateTick()`, after all
+regular updates have been processed. This phase is useful for camera follow, animation corrections, or logic that
+depends on the latest entity positions.
 
----
+<details>
+  <summary>
+    <h2 id="entity-late-tick"> 🧩 IEntityLateTick</h2>
+    <br>Defines a behavior that executes logic during the late update phase of an <code>IEntity</code>.
+  </summary>
 
-## Key Features
-
-- **Post-Update Logic** – Executes routines after all standard updates in the frame.
-- **Strongly-Typed Option** – `IEntityLateUpdate<E>` allows type-specific late update logic.
-- **Automatic Invocation** – Called automatically by `IEntity.OnLateUpdate`.
-- **Composable** – Can be combined with other behaviours for modular entity logic.
-
----
-
-## Interface: IEntityLateUpdate
+<br>
 
 ```csharp
-public interface IEntityLateUpdate : IEntityBehaviour
-{
-    void LateUpdate(IEntity entity, float deltaTime);
-}
-```
----
-
-## Interface: IEntityLateUpdate&lt;E&gt;
-
-```csharp
-public interface IEntityLateUpdate<in E> : IEntityLateUpdate where E : IEntity
-{
-    void LateUpdate(E entity, float deltaTime);
-}
+public interface IEntityLateTick : IEntityBehaviour
 ```
 
-- Implements `IEntityLateUpdate.LateUpdate(IEntity)` automatically by casting to `E`.
-- Ensures type-safe late update logic for specific entity types.
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
 ---
 
-## Example Usage
-Make a camera follow a `PlayerEntity` smoothly:
+### 🏹 Methods
 
-### Example #1. Non-Generic (IEntity)
+#### `LateTick(IEntity, float)`
+
 ```csharp
-public class CameraFollowBehaviour : IEntityLateUpdate
+void LateTick(IEntity entity, float deltaTime);
+```
+
+- **Description:** Called during the late update phase of the frame.
+- **Parameters:**
+    - `entity` – The entity being updated.
+    - `deltaTime` – Elapsed time since the last frame.
+- **Remarks:** Automatically called once per frame by `IEntity.LateTick()`.
+
+---
+
+### 🗂 Example of Usage
+
+Make a camera follow an entity smoothly
+
+```csharp
+public class CameraFollowBehaviour : IEntityLateTick
 {
-    public void LateUpdate(IEntity entity, float deltaTime)
+    public void LateTick(IEntity entity, float deltaTime)
     {
         var camera = entity.GetValue<Camera>("Camera");
         var target = entity.GetValue<Transform>("Target");
         var smoothSpeed = entity.GetValue<float>("SmoothSpeed");
-    
+
         camera.transform.position = Vector3.Lerp(
             camera.transform.position,
             target.position,
@@ -63,16 +61,64 @@ public class CameraFollowBehaviour : IEntityLateUpdate
 
 > Note: Assumes `Camera` and `Target` are set on the entity.
 
-### Example #2. Generic with PlayerEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-late-tick-t"> 🧩 IEntityLateTick&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that executes late update logic on an <code>IEntity</code> of type <code>E</code>.
+  </summary>
+
+<br>
+
 ```csharp
-public class CameraFollowBehaviour : IEntityLateUpdate<PlayerEntity>
+public interface IEntityLateTick<in E> : IEntityLateTick where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityLateTick` for handling late update logic on a specific entity type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityLateTick](#entity-late-tick)
+- **Remarks:** Automatically invoked by `IEntity.LateTick()` on entities of type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `LateTick(E, float)`
+
+```csharp
+void LateTick(E entity, float deltaTime);
+```
+
+- **Description:** Called during the late update phase of the frame for the strongly-typed entity.
+- **Parameters:**
+  - `entity` – The strongly-typed entity being updated.
+  - `deltaTime` – Elapsed time since the last frame.
+- **Remarks:** Implements the base `IEntityLateTick.LateTick(IEntity, float)` explicitly by casting the entity to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Make a camera follow a `PlayerEntity` smoothly
+
+```csharp
+public class PlayerEntity : Entity
 {
-    public void LateUpdate(PlayerEntity entity, float deltaTime)
+}
+```
+
+```csharp
+public class CameraFollowBehaviour : IEntityLateTick<PlayerEntity>
+{
+    public void LateTick(PlayerEntity entity, float deltaTime)
     {
         var camera = entity.GetValue<Camera>("Camera");
         var target = entity.GetValue<Transform>("Target");
         var smoothSpeed = entity.GetValue<float>("SmoothSpeed");
-    
+
         camera.transform.position = Vector3.Lerp(
             camera.transform.position,
             target.position,
@@ -84,11 +130,16 @@ public class CameraFollowBehaviour : IEntityLateUpdate<PlayerEntity>
 
 > Note: Uses the strongly-typed `PlayerEntity`, so no casting from `IEntity` is required.
 
+</details>
+
 ---
 
-## Remarks
+## 📝 Notes
 
-- `IEntityLateUpdate` is intended for logic that depends on the final positions or states of entities in the frame.
-- `IEntityLateUpdate<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during the late update phase.
-- Does not handle initialization, enabling, disabling, updating, fixed update, or disposal; separate interfaces exist for those phases (`IEntityInit`, `IEntityEnable`, `IEntityDisable`, `IEntityUpdate`, `IEntityFixedUpdate`, `IEntityDispose`).
+- **Late Update Logic** – Encapsulates routines executed after all standard updates in the frame.
+- **Strongly-Typed Option** – `IEntityLateTick<E>` allows type-specific late update logic.
+- **Integration** – Called automatically by `IEntity.LateTick()`.
+- **Composable** – Can be combined with other behaviours for modular entity logic.
+
+- `IEntityLateTick` is intended for logic that depends on the final positions or states of entities in the frame.
+- `IEntityLateTick<E>` is useful when the behaviour is specific to a particular entity type.

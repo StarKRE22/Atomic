@@ -1,20 +1,13 @@
 # 🧩️ RunInEditModeAttribute
 
-`RunInEditModeAttribute` is a marker attribute for entity behaviour classes that instructs the system to **invoke entity lifecycle callbacks** (`Init`, `Enable`, `Disable`, `Dispose`) even when running in the **Unity Editor mode**.  
-It is intended for use only on types implementing `IEntityBehaviour<T>`.
+Represents a marker attribute for entity behaviour classes that instructs the system to **invoke entity lifecycle
+callbacks** (`Init`, `Enable`, `Disable`, `Dispose`) even when running in the **Unity Editor mode**. It is intended for
+use only on types implementing [IEntityBehaviour](../Behaviours/IEntityBehaviour.md).
 
 ---
 
-## Key Features
+## 🗂 Example of Usage
 
-- **Editor Simulation** – Allows lifecycle logic to execute in the editor without entering Play Mode.
-- **Selective Application** – Only affects classes marked with this attribute.
-- **Lifecycle Coverage** – Applies to `Init`, `Enable`, `Disable`, and `Dispose` methods.
-- **Non-Intrusive** – Does not alter runtime behavior; only affects editor execution.
-
----
-
-## Usage
 Mark your entity behaviour class with `[RunInEditMode]`:
 
 ```csharp
@@ -34,7 +27,14 @@ public class InitColorBehaviour : IEntityInit
 
 ---
 
-## Remarks
+## 📝 Notes
+
+- **Editor Simulation** – Allows lifecycle logic to execute in the editor without entering Play Mode.
+- **Selective Application** – Only affects classes marked with this attribute.
+- **Lifecycle Coverage** – Applies to `Init`, `Enable`, `Disable`, and `Dispose` methods.
+- **Non-Intrusive** – Does not alter runtime behavior; only affects editor execution.
+
+####
 
 - Intended primarily for editor tooling and debugging workflows.
 - Only applies to classes implementing `IEntityBehaviour`.

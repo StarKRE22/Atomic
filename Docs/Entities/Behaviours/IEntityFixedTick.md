@@ -1,79 +1,134 @@
-# 🧩️ IEntityFixedUpdate
+# 🧩️ IEntityFixedTick Interfaces
 
-`IEntityFixedUpdate` is a behavior interface that executes logic during the **fixed update cycle** of an `IEntity`.  
-It is automatically invoked by the entity’s `OnFixedUpdate` method at a consistent interval, typically used for physics or time-sensitive calculations.
+Represents a behavior interface that executes logic during the fixed update cycle of
+an [IEntity](../Entities/IEntity.md). It is automatically invoked at a fixed timestep by the entity’s `FixedTick`,
+typically used for physics updates.
 
----
+<details>
+  <summary>
+    <h2 id="entity-fixed-tick"> 🧩 IEntityFixedTick</h2>
+    <br>Defines a behavior that executes logic during the fixed update phase of an <code>IEntity</code>.
+  </summary>
 
-## Key Features
+<br>
 
-- **Fixed-Timestep Logic** – Executes routines at consistent intervals, independent of frame rate.
-- **Strongly-Typed Option** – `IEntityFixedUpdate<E>` allows type-specific fixed update logic.
-- **Automatic Invocation** – Called automatically by `IEntity.OnFixedUpdate`.
-- **Composable** – Can be combined with other behaviours for modular entity logic.
-
----
-
-## Interface: IEntityFixedUpdate
 ```csharp
-public interface IEntityFixedUpdate : IEntityBehaviour
-{
-    void FixedUpdate(IEntity entity, float fixedDeltaTime);
-}
-```
----
-
-## Interface: IEntityFixedUpdate&lt;E&gt;
-```csharp
-public interface IEntityFixedUpdate<in E> : IEntityFixedUpdate where E : IEntity
-{
-    void OnFixedUpdate(E entity, float fixedDeltaTime);
-}
+public interface IEntityFixedTick : IEntityBehaviour
 ```
 
-- Implements `IEntityFixedUpdate.FixedUpdate(IEntity)` automatically by casting to `E`.
-- Ensures type-safe fixed update logic for specific entity types.
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
 ---
 
-## Example Usage
-Move a `Rigidbody` component at a fixed interval for an entity
+### 🏹 Methods
 
-### Example #1. Non-Generic (IEntity)
+#### `FixedTick(IEntity, float)`
+
 ```csharp
-public class MoveUnitFixedBehaviour : IEntityFixedUpdate
+void FixedTick(IEntity entity, float fixedDeltaTime);
+```
+
+- **Description:** Called during the fixed update phase of the frame.
+- **Parameters:**
+    - `entity` – The entity being updated.
+    - `fixedDeltaTime` – The fixed time step elapsed since the last fixed update.
+- **Remarks:** Automatically called once per fixed timestep by `IEntity.FixedTick()`.
+
+---
+
+### 🗂 Example of Usage
+
+Apply physics forces to an entity
+
+```csharp
+public class ApplyPhysicsBehaviour : IEntityFixedTick
 {
-    public void OnFixedUpdate(IEntity entity, float fixedDeltaTime)
+    public void FixedTick(IEntity entity, float fixedDeltaTime)
     {
-        var rigidbody = entity.GetValue<Rigidbody>("Rigidbody");
-        var speed = entity.GetValue<float>("Speed");
-        var direction = entity.GetValue<Vector3>("Direction");
-        rigidbody.MovePosition(rigidbody.position + direction * (speed * fixedDeltaTime));
+        Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
+        Vector3 force = entity.GetValue<Vector3>("Force");
+        rb.AddForce(force * fixedDeltaTime);
     }
 }
 ```
 
-> Note: `GetValue<T>` assumes the entity has the relevant components and values already set.
+> Note: `GetValue<T>` assumes the entity has the relevant components already set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-fixed-tick-t"> 🧩 IEntityFixedTick&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that executes fixed update logic on an <code>IEntity</code> of type <code>E</code>.
+  </summary>
+
+<br>
+
 ```csharp
-public class MoveUnitFixedBehaviour : IEntityFixedUpdate<UnitEntity>
+public interface IEntityFixedTick<in E> : IEntityFixedTick where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityFixedTick` for handling fixed update logic on a specific
+  entity type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityFixedTick](#entity-fixed-tick)
+- **Remarks:** Automatically invoked by `IEntity.FixedTick()` on entities of type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `FixedTick(E, float)`
+
+```csharp
+void FixedTick(E entity, float fixedDeltaTime);
+```
+
+- **Description:** Called during the fixed update phase of the frame for the strongly-typed entity.
+- **Parameters:**
+    - `entity` – The strongly-typed entity being updated.
+    - `fixedDeltaTime` – The fixed time step elapsed since the last fixed update.
+- **Remarks:** Implements the base `IEntityFixedTick.FixedTick(IEntity, float)` explicitly by casting the entity to type
+  `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Apply physics forces to a `UnitEntity` every fixed update
+
+```csharp
+public class UnitEntity : Entity
 {
-    public void OnFixedUpdate(UnitEntity entity, float fixedDeltaTime)
+}
+```
+
+```csharp
+public class ApplyPhysicsBehaviour : IEntityFixedTick<UnitEntity>
+{
+    public void FixedTick(UnitEntity entity, float fixedDeltaTime)
     {
-        var rigidbody = entity.GetValue<Rigidbody>("Rigidbody");
-        var speed = entity.GetValue<float>("Speed");
-        var direction = entity.GetValue<Vector3>("Direction");
-        rigidbody.MovePosition(rigidbody.position + direction * (speed * fixedDeltaTime));
+        Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
+        Vector3 force = entity.GetValue<Vector3>("Force");
+        rb.AddForce(force * fixedDeltaTime);
     }
 }
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
 
-## Remarks
+</details>
 
-- `IEntityFixedUpdate` is intended for time-sensitive logic that must run at a fixed timestep.
-- `IEntityFixedUpdate<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during the fixed update cycle.
-- Does not handle initialization, enabling, disabling, updating, or disposal; separate interfaces exist for those phases (`IEntityInit`, `IEntityEnable`, `IEntityDisable`, `IEntityUpdate`, `IEntityDispose`).  
+---
+
+## 📝 Notes
+
+- **Fixed Update Logic** – Encapsulates routines executed at fixed timesteps.
+- **Strongly-Typed Option** – `IEntityFixedTick<E>` allows type-specific fixed update logic.
+- **Integration** – Called automatically by `IEntity.FixedTick()`.
+- **Composable** – Can be combined with other behaviours for modular entity logic.
+
+- `IEntityFixedTick` is intended for physics or deterministic updates.
+- `IEntityFixedTick<E>` is useful when the behaviour is specific to a particular entity type.

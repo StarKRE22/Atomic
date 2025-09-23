@@ -1,55 +1,52 @@
-# 🧩 IEntityUpdate
+# 🧩️ IEntityTick Interfaces
 
-`IEntityUpdate` is a behavior interface that executes logic during the **regular update cycle** of an `IEntity`.  
-It is automatically invoked by the entity’s `OnUpdate` method once per frame during the main game loop.
+Represents a behavior interface that executes logic during the regular update cycle of
+an [IEntity](../Entities/IEntity.md). It is automatically invoked once per frame by the entity’s `Tick`.
 
----
+<details>
+  <summary>
+    <h2 id="entity-tick"> 🧩 IEntityTick</h2>
+    <br>Defines a behavior that executes logic during the main update phase of an <code>IEntity</code>.
+  </summary>
 
-## Key Features
-
-- **Per-Frame Logic** – Executes routines each frame during the game loop.
-- **Strongly-Typed Option** – `IEntityUpdate<E>` allows type-specific update logic.
-- **Automatic Invocation** – Called automatically by `IEntity.OnUpdate`.
-- **Composable** – Can be combined with other behaviours for modular entity logic.
-
----
-
-## Interface: IEntityUpdate
+<br>
 
 ```csharp
-public interface IEntityUpdate : IEntityBehaviour
-{
-    void Update(IEntity entity, float deltaTime);
-}
+public interface IEntityTick : IEntityBehaviour
 ```
+
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
 ---
 
-## Interface: IEntityUpdate&lt;E&gt;
+### 🏹 Methods
+
+#### `Tick(IEntity, float)`
+
 ```csharp
-public interface IEntityUpdate<in E> : IEntityUpdate where E : IEntity
-{
-    void OnUpdate(E entity, float deltaTime);
-}
+public void Tick(IEntity entity, float deltaTime);
 ```
 
-- Implements `IEntityUpdate.Update(IEntity)` automatically by casting to `E`.
-- Ensures type-safe update logic for specific entity types.
+- **Description:** Called during the main update phase of the frame.
+- **Parameters:**
+    - `entity` – The entity being updated.
+    - `deltaTime` – Elapsed time since the last frame.
+- **Remarks:** Automatically called once per frame by `IEntity.Tick()`.
 
 ---
 
-## Example Usage
+### 🗂 Example of Usage
+
 Update a `Transform` component every frame for an entity
 
-### Example #1. Non-Generic (IEntity)
 ```csharp
-public class MoveUnitBehaviour : IEntityUpdate
+public class MoveBehaviour : IEntityTick
 {
-    public void OnUpdate(IEntity entity, float deltaTime)
+    public void Tick(IEntity entity, float deltaTime)
     {
-        var transform = entity.GetValue<Transform>("Transform");
-        var speed = entity.GetValue<float>("Speed");
-        var direction = entity.GetValue<Vector3>("Direction");
+        Transform transform = entity.GetValue<Transform>("Transform");
+        float speed = entity.GetValue<float>("Speed");
+        Vector3 direction = entity.GetValue<Vector3>("MoveDirection");
         transform.position += direction * (speed * deltaTime);
     }
 }
@@ -57,25 +54,82 @@ public class MoveUnitBehaviour : IEntityUpdate
 
 > Note: `GetValue<T>` assumes the entity has the relevant components and values already set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-tick-t"> 🧩 IEntityTick&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that executes update logic on an <code>IEntity</code> of type <code>E</code>.
+  </summary>
+
+<br>
+
 ```csharp
-public class MoveUnitBehaviour : IEntityUpdate<UnitEntity>
+public interface IEntityTick<in E> : IEntityTick where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityTick` for handling update logic on a specific entity
+  type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityTick](#entity-tick)
+
+---
+
+## 🏹 Methods
+
+#### `Tick(E, float)`
+
+```csharp
+void Tick(E entity, float deltaTime);
+```
+
+- **Description:** Called during the main update phase of the frame for the strongly-typed entity.
+- **Parameters:**
+    - `entity` – The strongly-typed entity being updated.
+    - `deltaTime` – Elapsed time since the last frame.
+- **Remarks:** Implements the base `IEntityTick.Tick(IEntity, float)` explicitly by casting the entity to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Update the position of a `UnitEntity` every frame
+
+```csharp
+public class UnitEntity : Entity
 {
-    public void OnUpdate(UnitEntity entity, float deltaTime)
+}
+```
+
+```csharp
+public class MoveBehaviour : IEntityTick<UnitEntity>
+{
+    public void Tick(UnitEntity entity, float deltaTime)
     {
-        var transform = entity.GetValue<Transform>("Transform");
-        var speed = entity.GetValue<float>("Speed");
-        var direction = entity.GetValue<Vector3>("Direction");
-        transform.position += direction * (speed * deltaTime);
+        float speed = entity.GetValue<float>("Speed");
+        Vector3 position = entity.GetValue<Vector3>("Position");
+        Vector3 direction = entity.GetValue<Vector3>("MoveDirection");
+        
+        Vector3 newPosition = position + direction * (speed * deltaTime);
+        entity.SetValue("Position", newPosition);
     }
 }
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
 
-## Remarks
+</details>
 
-- `IEntityUpdate` is intended for per-frame logic that must run during the game loop.
-- `IEntityUpdate<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during updates.
-- Does not handle initialization, enabling, disabling, or disposal; separate interfaces exist for those phases (`IEntityInit`, `IEntityEnable`, `IEntityDisable`, `IEntityDispose`).  
+---
+
+## 📝 Notes
+
+- **Update Logic** – Encapsulates routines executed every frame.
+- **Strongly-Typed Option** – `IEntityTick<E>` allows type-specific update logic.
+- **Integration** – Called automatically by `IEntity.Tick()`.
+- **Composable** – Can be combined with other behaviours for modular entity logic.
+
+- `IEntityTick` is intended for per-frame update logic.
+- `IEntityTick<E>` is useful when the behaviour is specific to a particular entity type.

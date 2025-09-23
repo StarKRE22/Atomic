@@ -1,65 +1,112 @@
-# 🧩 IEntityGizmos
+# 🧩️ IEntityGizmos Interfaces
 
-`IEntityGizmos` is a behavior interface that allows drawing gizmos for an `IEntity` during the **editor or debug rendering phase**.  
-It is automatically invoked by `SceneEntity.OnDrawGizmos()` or `SceneEntity.OnDrawGizmosSelected()` in the Unity Editor, allowing visualization of entity data in the scene view.
+Represents a behavior interface that allows drawing gizmos for an [IEntity](../Entities/IEntity.md) during the **editor or debug rendering phase**. It is automatically invoked by `SceneEntity.OnDrawGizmos()` or `SceneEntity.OnDrawGizmosSelected()` in the Unity Editor, allowing visualization of entity data in the scene view.
 
----
+<details>
+  <summary>
+    <h2 id="entity-gizmos"> 🧩 IEntityGizmos</h2>
+    <br>Defines a behavior that draws gizmos for an <code>IEntity</code>.
+  </summary>
 
-## Key Features
+<br>
 
-- **Editor Visualization** – Draw gizmos to debug or visualize entity state.
-- **Strongly-Typed Option** – `IEntityGizmos<E>` allows type-specific gizmo logic.
-- **Automatic Invocation** – Called automatically by Unity editor methods.
-- **Composable** – Can be combined with other behaviours to visualize multiple aspects of an entity.
-
----
-
-## Interface: IEntityGizmos
 ```csharp
 public interface IEntityGizmos : IEntityBehaviour
-{
-    void DrawGizmos(IEntity entity);
-}
 ```
+
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
+
 ---
 
-## Interface: IEntityGizmos&lt;E&gt;
+### 🏹 Methods
+
+#### `DrawGizmos(IEntity)`
+
 ```csharp
-public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
-{
-    void DrawGizmos(E entity);
-}
+void DrawGizmos(IEntity entity);
 ```
-- Implements `IEntityGizmos.DrawGizmos(IEntity)` automatically by casting to `E`.
-- Ensures type-safe gizmo logic for specific entity types.
+
+- **Description:** Draws editor or debug gizmos for the entity.
+- **Parameter:** `entity` – The entity to visualize.
+- **Remarks:** Automatically called by `SceneEntity.OnDrawGizmos()` or `SceneEntity.OnDrawGizmosSelected()` in the Unity Editor.
 
 ---
 
-## Example Usage
-Draw a debug sphere at the entity's position in the editor
+### 🗂 Example of Usage
 
-### Example #1. Non-Generic (IEntity)
+Draw a debug sphere at the entity’s position
+
 ```csharp
 public class DrawSphereGizmo : IEntityGizmos
 {
     public void DrawGizmos(IEntity entity)
     {
-        var position = entity.GetValue<Vector3>("Position");
+        Vector3 position = entity.GetValue<Vector3>("Position");
+        float scale = entity.GetValue<float>("Scale");
+        
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(position, 0.5f);
+        Gizmos.DrawSphere(position, scale);
     }
 }
 ```
 
 > Note: Assumes the entity has a `Position` value set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-gizmos-t"> 🧩 IEntityGizmos&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that draws gizmos for an <code>IEntity</code> of type <code>E</code>.
+  </summary>
+
+<br>
+
+```csharp
+public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityGizmos` for handling gizmo drawing on a specific entity type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityGizmos](#entity-gizmos)
+- **Remarks:** Automatically invoked by Unity Editor gizmo methods on entities of type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `DrawGizmos(E)`
+
+```csharp
+void DrawGizmos(E entity);
+```
+
+- **Description:** Draws gizmos for the strongly-typed entity.
+- **Parameter:** `entity` – The strongly-typed entity.
+- **Remarks:** Implements the base `IEntityGizmos.DrawGizmos(IEntity)` explicitly by casting to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Draw a debug sphere for a `UnitEntity`
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
 ```csharp
 public class DrawSphereGizmo : IEntityGizmos<UnitEntity>
 {
     public void DrawGizmos(UnitEntity entity)
     {
-        var position = entity.GetValue<Vector3>("Position");
+        Vector3 position = entity.GetValue<Vector3>("Position");
+        float scale = entity.GetValue<float>("Scale");
+        
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(position, 0.5f);
     }
@@ -68,11 +115,14 @@ public class DrawSphereGizmo : IEntityGizmos<UnitEntity>
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
 
+</details>
+
 ---
 
-## Remarks
+## 📝 Notes
 
-- `IEntityGizmos` is intended for editor visualization and debug purposes only.
-- `IEntityGizmos<E>` is useful when the behavior is specific to a particular entity type.
-- Works only in the Unity Editor (`#if UNITY_5_3_OR_NEWER`).
-- Can be used alongside other gizmo behaviours to visualize multiple entity aspects simultaneously.  
+- **Editor Visualization** – Intended for editor/debug visualization only.
+- **Strongly-Typed Option** – `IEntityGizmos<E>` allows type-specific gizmo logic.
+- **Integration** – Automatically invoked by Unity Editor methods (`OnDrawGizmos`, `OnDrawGizmosSelected`).
+- **Composable** – Can be combined with other gizmo behaviours to visualize multiple entity aspects simultaneously.
+- **Editor Only** – Works only in the Unity Editor
