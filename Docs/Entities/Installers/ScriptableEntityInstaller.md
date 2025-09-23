@@ -11,7 +11,6 @@ utility methods.
 > Use `SceneEntityInstaller` only if there are scene dependencies or if entity instances in the scene need to differ. In
 > other cases, use [ScriptableEntityInstaller](ScriptableEntityInstaller.md) as a shared installer.
 
-
 ---
 
 <details>
