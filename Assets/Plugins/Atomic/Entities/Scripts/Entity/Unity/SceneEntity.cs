@@ -61,7 +61,7 @@ namespace Atomic.Entities
 #endif
         [SerializeField]
         private bool disposeValues = true;
-        
+
 #if ODIN_INSPECTOR
         // [GUIColor(0f, 0.83f, 1f)]
         [DisableInPlayMode]
@@ -94,18 +94,18 @@ namespace Atomic.Entities
         [DisableInPlayMode]
 #endif
         [Space]
+        [Tooltip("Specify the ScriptableObject installers that will put values and behaviours to this entity")]
         [SerializeField]
-        [Tooltip("Specify the MonoBehaviour installers that will put values and behaviours to this entity")]
-        [FormerlySerializedAs("installers")]
-        internal List<SceneEntityInstaller> sceneInstallers;
+        internal List<ScriptableEntityInstaller> scriptableInstallers;
 
 #if ODIN_INSPECTOR
         [DisableInPlayMode]
 #endif
         [Space]
-        [Tooltip("Specify the ScriptableObject installers that will put values and behaviours to this entity")]
         [SerializeField]
-        internal List<ScriptableEntityInstaller> scriptableInstallers;
+        [Tooltip("Specify the MonoBehaviour installers that will put values and behaviours to this entity")]
+        [FormerlySerializedAs("installers")]
+        internal List<SceneEntityInstaller> sceneInstallers;
 
 #if ODIN_INSPECTOR
         [DisableInPlayMode]

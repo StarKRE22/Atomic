@@ -21,23 +21,7 @@ namespace Atomic.Entities
         {
             if (_installed)
                 return;
-
-            this.OnInstall();
-
-            if (this.sceneInstallers != null)
-            {
-                for (int i = 0, count = this.sceneInstallers.Count; i < count; i++)
-                {
-                    SceneEntityInstaller installer = this.sceneInstallers[i];
-                    if (installer != null)
-                        installer.Install(this);
-                    else
-                        Debug.LogWarning(
-                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(SceneEntityInstaller)} at index {i}!",
-                            this);
-                }
-            }
-
+            
             if (this.scriptableInstallers != null)
             {
                 for (int i = 0, count = this.scriptableInstallers.Count; i < count; i++)
@@ -52,6 +36,22 @@ namespace Atomic.Entities
                 }
             }
 
+            if (this.sceneInstallers != null)
+            {
+                for (int i = 0, count = this.sceneInstallers.Count; i < count; i++)
+                {
+                    SceneEntityInstaller installer = this.sceneInstallers[i];
+                    if (installer != null)
+                        installer.Install(this);
+                    else
+                        Debug.LogWarning(
+                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(SceneEntityInstaller)} at index {i}!",
+                            this);
+                }
+            }
+            
+            this.OnInstall();
+
             if (this.children != null)
             {
                 for (int i = 0, count = this.children.Count; i < count; i++)
@@ -64,7 +64,7 @@ namespace Atomic.Entities
                             this);
                 }
             }
-
+            
             _installed = true;
         }
 
@@ -82,6 +82,19 @@ namespace Atomic.Entities
         {
             if (!_installed)
                 return;
+            
+            if (this.children != null)
+            {
+                for (int i = 0, count = this.children.Count; i < count; i++)
+                {
+                    SceneEntity child = this.children[i];
+                    if (child != null)
+                        child.Uninstall();
+                    else
+                        Debug.LogWarning($"SceneEntity {this.name}: Ops! Detected missing child entity at index {i}!",
+                            this);
+                }
+            }
 
             this.OnUninstall();
 
@@ -98,7 +111,7 @@ namespace Atomic.Entities
                             this);
                 }
             }
-            
+
             if (this.scriptableInstallers != null)
             {
                 for (int i = 0, count = this.scriptableInstallers.Count; i < count; i++)
@@ -112,20 +125,7 @@ namespace Atomic.Entities
                             this);
                 }
             }
-
-            if (this.children != null)
-            {
-                for (int i = 0, count = this.children.Count; i < count; i++)
-                {
-                    SceneEntity child = this.children[i];
-                    if (child != null)
-                        child.Uninstall();
-                    else
-                        Debug.LogWarning($"SceneEntity {this.name}: Ops! Detected missing child entity at index {i}!",
-                            this);
-                }
-            }
-
+            
             _installed = false;
         }
 

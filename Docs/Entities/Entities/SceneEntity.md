@@ -1289,12 +1289,14 @@ player.Dispose();
 
 ### 🛠 Inspector Settings
 
-| Parameter           | Description                                                                                                                                                                                                                            |
-|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `installOnAwake`    | If enabled, `Install()` is automatically called in `Awake()`. Default is `true`                                                                                                                                                        |
-| `installInEditMode` | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. Default is `false`. <br/>**Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues. |
-| `installers`        | List of installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.          |
-| `children`          | Child entities installed together with this entity. Children are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.                             |
+| Parameter              | Description                                                                                                                                                                                                                                    |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `installOnAwake`       | If enabled, `Install()` is automatically called in `Awake()`. Default is `true`                                                                                                                                                                |
+| `installInEditMode`    | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. Default is `false`. <br/>**Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues.         |
+| `uninstallOnDestroy`   | If enabled, `Uninstall()` is automatically called in `OnDestroy`. Default is `true`                                                                                                                                                            |
+| `sceneInstallers`      | List of MonoBehaviour installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.    |
+| `scriptableInstallers` | List of ScriptableObject installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use. |
+| `children`             | Child entities installed together with this entity. Children are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.                                     |
 
 ---
 
@@ -1554,7 +1556,8 @@ public struct CreateArgs
       public IEnumerable<int> tags;
       public IReadOnlyDictionary<int, object> values;
       public IEnumerable<IEntityBehaviour> behaviours;
-      public List<SceneEntityInstaller> installers;
+      public List<SceneEntityInstaller> sceneInstallers;
+      public List<ScriptableEntityInstaller> scriptableInstallers;
       public List<SceneEntity> children;
 
       public int initialTagCapacity;
@@ -1573,12 +1576,14 @@ public struct CreateArgs
     - `IEnumerable<int> tags` – optional tags to assign.
     - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
     - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
-    - `List<SceneEntityInstaller> installers` – optional installers to run.
+    - `List<SceneEntityInstaller> sceneInstallers` – optional MonoBehaviour installers to run.
+    - `List<SceneEntityInstaller> scriptableInstallers` – optional ScriptableObject installers to run.
     - `List<SceneEntity> children` – optional child entities.
     - `int initialTagCapacity` – initial capacity for tags.
     - `int initialValueCapacity` – initial capacity for values.
     - `int initialBehaviourCapacity` – initial capacity for behaviours.
     - `bool installOnAwake` – if true, installs automatically on Awake.
+    - `bool uninstallOnDestroy` – if true, uninstalls automatically on Destroy.
     - `bool disposeValues` – if true, disposes values on destruction.
     - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
 
@@ -1635,6 +1640,7 @@ public static E Create<E>(
     - `values` – optional key-value pairs.
     - `behaviours` – optional behaviours to attach.
     - `installOnAwake` – if true, runs installers on Awake.
+    - `uninstallOnDestroy` – if true, runs Uninstall on OnDestroy.
     - `disposeValues` – if true, disposes values on destruction.
     - `useUnityLifecycle` – if true, uses Unity lifecycle.
     - `initialTagCount` – initial tag capacity.

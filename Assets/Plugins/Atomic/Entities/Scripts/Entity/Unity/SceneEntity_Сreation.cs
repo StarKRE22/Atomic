@@ -14,7 +14,8 @@ namespace Atomic.Entities
             public IEnumerable<int> tags;
             public IReadOnlyDictionary<int, object> values;
             public IEnumerable<IEntityBehaviour> behaviours;
-            public List<SceneEntityInstaller> installers;
+            public List<SceneEntityInstaller> sceneInstallers;
+            public List<ScriptableEntityInstaller> scriptableInstallers;
             public List<SceneEntity> children;
 
             public int initialTagCapacity;
@@ -48,7 +49,8 @@ namespace Atomic.Entities
             E sceneEntity = gameObject.AddComponent<E>();
             sceneEntity.name = args.name;
 
-            sceneEntity.sceneInstallers = args.installers;
+            sceneEntity.sceneInstallers = args.sceneInstallers;
+            sceneEntity.scriptableInstallers = args.scriptableInstallers;
             sceneEntity.children = args.children;
 
             sceneEntity.installOnAwake = args.installOnAwake;
