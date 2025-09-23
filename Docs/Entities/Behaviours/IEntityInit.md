@@ -80,7 +80,7 @@ public interface IEntityInit<in E> : IEntityInit where E : IEntity
 
 ## 🏹 Methods
 
-#### `Init(E entity)`
+#### `Init(E)`
 
 ```csharp
 void Init(E entity);

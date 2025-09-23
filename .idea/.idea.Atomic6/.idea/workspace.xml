@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxy.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxy.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,23 +203,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="13873000" />
-    </task>
-    <task id="LOCAL-00589" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1758447663440</created>
-      <option name="number" value="00589" />
-      <option name="presentableId" value="LOCAL-00589" />
-      <option name="project" value="LOCAL" />
-      <updated>1758447663440</updated>
-    </task>
-    <task id="LOCAL-00590" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1758451523920</created>
-      <option name="number" value="00590" />
-      <option name="presentableId" value="LOCAL-00590" />
-      <option name="project" value="LOCAL" />
-      <updated>1758451523920</updated>
+      <workItem from="1758604662186" duration="14678000" />
     </task>
     <task id="LOCAL-00591" summary="Обновляем SceneEntity.cs">
       <option name="closed" value="true" />
@@ -598,7 +581,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758619687868</updated>
     </task>
-    <option name="localTasksCounter" value="638" />
+    <task id="LOCAL-00638" summary="SceneEntityProxy.md">
+      <option name="closed" value="true" />
+      <created>1758620214833</created>
+      <option name="number" value="00638" />
+      <option name="presentableId" value="LOCAL-00638" />
+      <option name="project" value="LOCAL" />
+      <updated>1758620214833</updated>
+    </task>
+    <task id="LOCAL-00639" summary="SceneEntityProxy.md">
+      <option name="closed" value="true" />
+      <created>1758620267833</created>
+      <option name="number" value="00639" />
+      <option name="presentableId" value="LOCAL-00639" />
+      <option name="project" value="LOCAL" />
+      <updated>1758620267833</updated>
+    </task>
+    <option name="localTasksCounter" value="640" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,13 +643,13 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал EntitySingleton.md" />
     <MESSAGE value="SceneEntitySingleton.md" />
-    <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Minor fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes!" />
+    <MESSAGE value="SceneEntityProxy.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityProxy.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
