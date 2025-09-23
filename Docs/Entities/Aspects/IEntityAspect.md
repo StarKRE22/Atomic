@@ -1,11 +1,6 @@
 # 🧩 IEntityAspect Classes
 
-Represents a reusable piece of behavior or logic that can be **applied to entities and later discarded**. It comes in
-two forms:
-
-* **Non-generic** version (`IEntityAspect`) for working with `IEntity`
-* **Generic** version (`IEntityAspect<E>`) for specific entity types
-
+Represents a reusable piece of behavior or logic that can be **applied to [entities](../Entities) and later discarded**.
 > [!TIP]
 > Use `IEntityAspect` when you want modular, reusable behavior that can be dynamically applied or removed from entities
 > at runtime.
