@@ -1,4 +1,4 @@
-# 🧩 IPredicate
+# 🧩 IPredicate Interfaces
 
 The **IPredicate** interfaces are specialized forms of [functions](IFunction.md) that evaluate a condition and return
 `true` or `false`, useful in filtering, validation, and decision-making logic.

@@ -1,4 +1,4 @@
-# 🧩 InlineFunction
+# 🧩 InlineFunction Classes
 
 The **InlineFunction** classes provide wrappers around standard `System.Func` delegates. They implement the
 corresponding [IValue](../Values/IValue.md) and [IFunction](IFunction.md) interfaces and allow invoking functions

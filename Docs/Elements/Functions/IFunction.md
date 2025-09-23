@@ -1,4 +1,4 @@
-# 🧩 IFunction
+# 🧩 IFunction Interfaces
 
 The **IFunction** interfaces define a family of contracts for representing functions with varying numbers of input
 parameters. They provide a lightweight abstraction for defining logic that returns a value, making them useful for

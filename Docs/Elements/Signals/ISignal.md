@@ -1,4 +1,4 @@
-# 🧩 ISignal
+# 🧩 ISignal Interfaces
 
 Defines a family of contracts for **reactive event sources**. It provides a lightweight abstraction for subscribing to
 notifications and reacting to events, optionally with arguments. When subscribing to a signal, the method returns

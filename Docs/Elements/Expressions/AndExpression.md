@@ -1,4 +1,4 @@
-# 🧩 AndExpression
+# 🧩 AndExpression Classes
 
 Represents **logical AND expressions** composed of one or more boolean-returning functions. They extend from
 the [ExpressionBase](ExpressionBase.md) family of classes and implement the

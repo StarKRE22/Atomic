@@ -1,4 +1,4 @@
-# 🧩 FloatMulExpression
+# 🧩 FloatMulExpression Classes
 
 Represents an expression that computes the **product** of multiple float-returning functions. It extends from
 the [ExpressionBase](ExpressionBase.md) family of classes.

@@ -1,4 +1,4 @@
-# 🧩 Subscription
+# 🧩 Subscription Classes
 
 Represents a **subscription** to a [Signal](ISignal.md). Disposing an instance will automatically **unsubscribe the
 associated action** from the **signal**, ensuring proper cleanup of event handlers.

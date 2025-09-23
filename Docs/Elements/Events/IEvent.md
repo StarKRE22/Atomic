@@ -1,4 +1,4 @@
-# 🧩 IEvent
+# 🧩 IEvent Interfaces
 
 The **IEvent** interfaces define a family of contracts for **reactive events** that can be both **observed** and *
 *invoked**. They combine the capabilities of [ISignal](../Signals/ISignal.md) and [IAction](../Actions/IAction.md),

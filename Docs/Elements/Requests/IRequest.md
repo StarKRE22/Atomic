@@ -1,4 +1,4 @@
-# 🧩 IRequest
+# 🧩 IRequest Interfaces
 
 Represents a **deferred action** that can be executed at a later time. It is particularly useful for scenarios where
 input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help *

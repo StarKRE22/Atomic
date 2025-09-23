@@ -1,4 +1,4 @@
-# 🧩 CompositeAction
+# 🧩 CompositeAction Classes
 
 The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md)
 interfaces. They follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction`

@@ -1,4 +1,4 @@
-# 🧩 InlinePredicate
+# 🧩 InlinePredicate Classes
 
 Provides wrappers around standard `System.Func` delegates that return a boolean value. It extends
 from [InlineFunction](InlineFunction.md) and implements the corresponding [Predicate](IPredicate.md) interfaces and

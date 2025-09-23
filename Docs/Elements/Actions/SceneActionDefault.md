@@ -1,4 +1,4 @@
-# 🧩 SceneActionDefault
+# 🧩 SceneActionDefault Classes
 
 The **SceneActionDefault** classes implement the [IAction](IAction.md) interfaces and inherit
 from [SceneActionAbstract](SceneActionAbstract.md). It allows game designers to build **composite actions directly in

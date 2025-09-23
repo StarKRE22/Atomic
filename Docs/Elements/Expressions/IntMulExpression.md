@@ -1,4 +1,4 @@
-# 🧩 IntMulExpression
+# 🧩 IntMulExpression Classes
 
 Represents an expression that computes the **product** of multiple integer-returning functions. They extend from
 the [ExpressionBase](ExpressionBase.md) family of classes.

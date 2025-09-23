@@ -1,4 +1,4 @@
-# 🧩 OrExpression
+# 🧩 OrExpression Classes
 
 Represents **logical OR expressions** composed of one or more boolean-returning functions. They extend from
 the [ExpressionBase](ExpressionBase.md) family of classes and implement the

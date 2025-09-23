@@ -1,4 +1,4 @@
-# 🧩 IExpression
+# 🧩 IExpression Interfaces
 
 These interfaces represent **expressions composed of function members** that can be dynamically added, removed, and
 evaluated. They support parameterless functions as well as functions with one or more parameters.

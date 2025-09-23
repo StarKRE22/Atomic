@@ -1,4 +1,4 @@
-# 🧩 BaseRequest
+# 🧩 BaseRequest Classes
 
 The **BaseRequest** classes provide **concrete implementations** of the [IRequest](IRequest.md) interfaces. They are
 designed to store request state and optionally one to four arguments. These classes **track whether a request is

@@ -1,4 +1,4 @@
-# 🧩 InlineExpression
+# 🧩 InlineExpression Classes
 
 A flexible class for creating expressions with **custom evaluation logic**. It allows you to define how a list of
 functions is evaluated to produce a result. Extends from [ExpressionBase](ExpressionBase.md).

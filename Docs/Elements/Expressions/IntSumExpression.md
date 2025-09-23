@@ -1,4 +1,4 @@
-# 🧩 IntSumExpression
+# 🧩 IntSumExpression Classes
 
 Represents an expression that computes the **sum** of multiple integer-returning functions. These classes extend from
 the [ExpressionBase](ExpressionBase.md) family.

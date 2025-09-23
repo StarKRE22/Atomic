@@ -1,4 +1,4 @@
-# 🧩 ExpressionBase
+# 🧩 ExpressionBase Classes
 
 Provides **base implementations** of the [IExpression](IExpression.md) interfaces extending
 from [ReactiveLinkedList&lt;R&gt;](../Collections/ReactiveLinkedList.md). They allow **aggregating multiple function
