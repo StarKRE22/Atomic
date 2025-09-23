@@ -82,7 +82,7 @@ public interface IEntityTick<in E> : IEntityTick where E : IEntity
 #### `Tick(E, float)`
 
 ```csharp
-void Tick(E entity, float deltaTime);
+public void Tick(E entity, float deltaTime);
 ```
 
 - **Description:** Called during the main update phase of the frame for the strongly-typed entity.
