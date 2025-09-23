@@ -4,13 +4,13 @@ The **PrintAction** class represents an action that **logs a message**. It imple
 interface and works across platforms. This allows printing messages consistently in both Unity and non-Unity
 environments, which is especially useful when debugging or logging events in cross-platform code.
 
-```csharp
-public sealed class PrintAction : IAction
-```
-
 > [!NOTE]
 > In **Unity**, it uses `Debug.Log`, `Debug.LogWarning`, or `Debug.LogError` depending on the specified `LogType`.
 > <br> Outside of Unity, it uses `Console.WriteLine`.
+
+```csharp
+public sealed class PrintAction : IAction
+```
 
 ---
 
