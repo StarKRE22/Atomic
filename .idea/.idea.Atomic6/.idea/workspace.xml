@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,23 +209,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="25354000" />
-    </task>
-    <task id="LOCAL-00607" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758523396367</created>
-      <option name="number" value="00607" />
-      <option name="presentableId" value="LOCAL-00607" />
-      <option name="project" value="LOCAL" />
-      <updated>1758523396367</updated>
-    </task>
-    <task id="LOCAL-00608" summary="Написал Performance Tests Values!">
-      <option name="closed" value="true" />
-      <created>1758525932068</created>
-      <option name="number" value="00608" />
-      <option name="presentableId" value="LOCAL-00608" />
-      <option name="project" value="LOCAL" />
-      <updated>1758525932068</updated>
+      <workItem from="1758604662186" duration="27960000" />
     </task>
     <task id="LOCAL-00609" summary="Написал Notes для контейнеров!">
       <option name="closed" value="true" />
@@ -600,7 +587,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758643906647</updated>
     </task>
-    <option name="localTasksCounter" value="656" />
+    <task id="LOCAL-00656" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758644445378</created>
+      <option name="number" value="00656" />
+      <option name="presentableId" value="LOCAL-00656" />
+      <option name="project" value="LOCAL" />
+      <updated>1758644445378</updated>
+    </task>
+    <task id="LOCAL-00657" summary="Сделал SceneEntityInstaller.md">
+      <option name="closed" value="true" />
+      <created>1758645531342</created>
+      <option name="number" value="00657" />
+      <option name="presentableId" value="LOCAL-00657" />
+      <option name="project" value="LOCAL" />
+      <updated>1758645531342</updated>
+    </task>
+    <option name="localTasksCounter" value="658" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,14 +630,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Написал Performance Tests Values!" />
     <MESSAGE value="Написал Notes для контейнеров!" />
     <MESSAGE value="Сделал NOTES!" />
     <MESSAGE value="Сделал Performance для Entity!" />
     <MESSAGE value="Minor Fix!" />
     <MESSAGE value="Подкрутил Performance!" />
     <MESSAGE value="Вот теперь performance корректный!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал SceneEntity.md" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал EntitySingleton.md" />
@@ -652,7 +653,9 @@
     <MESSAGE value="Фиксы в SceneEntity.cs" />
     <MESSAGE value="Minor fixes!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="Сделал SceneEntityInstaller.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал SceneEntityInstaller.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

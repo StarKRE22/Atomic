@@ -93,15 +93,15 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-#### 5. Attach `CharacterInstaller` script to the GameObject
+#### 4. Attach `CharacterInstaller` script to the GameObject
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-#### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
+#### 5. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
 <img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
 
-#### 7. Now your `Entity` has tags and properties.
+#### 6. Now your `Entity` has tags and properties.
 
 </details>
 
@@ -191,6 +191,37 @@ public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
 > Note: Using the generic `UnitEntity` version allows type-safe access to entity-specific properties without casting.
 
 </details>
+
+---
+
+## 📌 Best Practice
+`SceneEntityInstaller` also has an `Uninstall` method, which can be useful for unsubscribing or cleaning up when a `SceneEntity` is destroyed or removed from the scene.
+```csharp
+public sealed class WeaponViewInstaller : SceneEntityInstaller
+{
+    [SerializeField] private ParticleSystem _fireVFX;
+    [SerializeField] private AudioSource _fireSFX;
+    [SerializeField] private Animator _animator;
+
+    private readonly DisposableComposite _disposables = new();
+    
+    public override void Install(IEntity entity)
+    {
+        ISignal fireEvent = entity.GetFireEvent();
+        
+        // Subscribe to the "Fire" event and automatically add to the composite
+        fireEvent.Subscribe(_fireVFX.Play).AddTo(_disposables);
+        fireEvent.Subscribe(_fireSFX.Play).AddTo(_disposables);
+        fireEvent.Subscribe(() => _animator.SetTrigger("Fire")).AddTo(_disposables);
+    }
+    
+    public override void Uninstall()
+    {
+         // Dispose all resources when the object is destroyed
+        _disposables.Dispose();
+    }
+}
+```
 
 ---
 
