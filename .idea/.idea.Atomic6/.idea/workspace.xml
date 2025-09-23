@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,47 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="34158000" />
-    </task>
-    <task id="LOCAL-00627" summary="Сделал SceneEntity.md">
-      <option name="closed" value="true" />
-      <created>1758569146962</created>
-      <option name="number" value="00627" />
-      <option name="presentableId" value="LOCAL-00627" />
-      <option name="project" value="LOCAL" />
-      <updated>1758569146962</updated>
-    </task>
-    <task id="LOCAL-00628" summary="Manual.md">
-      <option name="closed" value="true" />
-      <created>1758569260251</created>
-      <option name="number" value="00628" />
-      <option name="presentableId" value="LOCAL-00628" />
-      <option name="project" value="LOCAL" />
-      <updated>1758569260251</updated>
-    </task>
-    <task id="LOCAL-00629" summary="Сделал EntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1758609208031</created>
-      <option name="number" value="00629" />
-      <option name="presentableId" value="LOCAL-00629" />
-      <option name="project" value="LOCAL" />
-      <updated>1758609208031</updated>
-    </task>
-    <task id="LOCAL-00630" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758611192389</created>
-      <option name="number" value="00630" />
-      <option name="presentableId" value="LOCAL-00630" />
-      <option name="project" value="LOCAL" />
-      <updated>1758611192389</updated>
-    </task>
-    <task id="LOCAL-00631" summary="SceneEntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1758611501843</created>
-      <option name="number" value="00631" />
-      <option name="presentableId" value="LOCAL-00631" />
-      <option name="project" value="LOCAL" />
-      <updated>1758611501843</updated>
+      <workItem from="1758604662186" duration="34516000" />
     </task>
     <task id="LOCAL-00632" summary="SceneEntityProxy.md">
       <option name="closed" value="true" />
@@ -600,7 +560,47 @@
       <option name="project" value="LOCAL" />
       <updated>1758656243551</updated>
     </task>
-    <option name="localTasksCounter" value="676" />
+    <task id="LOCAL-00676" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656282900</created>
+      <option name="number" value="00676" />
+      <option name="presentableId" value="LOCAL-00676" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656282900</updated>
+    </task>
+    <task id="LOCAL-00677" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656324379</created>
+      <option name="number" value="00677" />
+      <option name="presentableId" value="LOCAL-00677" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656324380</updated>
+    </task>
+    <task id="LOCAL-00678" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656376722</created>
+      <option name="number" value="00678" />
+      <option name="presentableId" value="LOCAL-00678" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656376722</updated>
+    </task>
+    <task id="LOCAL-00679" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656523769</created>
+      <option name="number" value="00679" />
+      <option name="presentableId" value="LOCAL-00679" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656523769</updated>
+    </task>
+    <task id="LOCAL-00680" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758656580991</created>
+      <option name="number" value="00680" />
+      <option name="presentableId" value="LOCAL-00680" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656580991</updated>
+    </task>
+    <option name="localTasksCounter" value="681" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
