@@ -9,7 +9,7 @@ environments, which is especially useful when debugging or logging events in cro
 public sealed class PrintAction : IAction
 ```
 
-- **Inheritance:** Implements [IAction](IAction.md)
+- **Inherits:** [IAction](IAction.md)
 - **Remarks:** Allows serialization in Unity
 
 > [!IMPORTANT]
