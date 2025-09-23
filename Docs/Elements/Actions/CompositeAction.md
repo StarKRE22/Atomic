@@ -1,13 +1,14 @@
 # 🧩 CompositeAction Classes
 
 The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md)
-interfaces. They follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — a `CompositeAction`
-both **groups actions** and itself **acts as a single action**, preserving a uniform interface.
+interfaces. Its follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — an action both **groups actions**
+and itself **acts as a single action**, preserving a uniform interface.
 
 This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is
 especially important when game objects and scripts need to execute complex action scenarios.
 
 ---
+
 ## 🗂 Example of Usage
 
 Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the
@@ -31,10 +32,12 @@ public sealed class PlayerActionTrigger : MonoBehaviour
 }
 ```
 
-In the **Inspector**, we can assign the [CompositeAction]() value to the `Action` parameter. For example, we can add [PrintAction](PrintAction.md) to the action array.
+In the **Inspector**, we can assign the [CompositeAction]() value to the `Action` parameter. For example, we can
+add [PrintAction](PrintAction.md) to the action array.
 
 <img src="../../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
 
+---
 
 ## ❗️Using [SerializeReference]
 
