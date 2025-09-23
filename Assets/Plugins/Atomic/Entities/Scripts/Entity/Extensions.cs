@@ -15,21 +15,24 @@ namespace Atomic.Entities
     /// </summary>
     public static partial class Extensions
     {
-        #region Clearing
+        #region Tags
+        
+        /// <summary>
+        /// Adds a tag to the entity.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTag(this IEntity entity, string key) => entity.AddTag(NameToId(key));
 
         /// <summary>
-        /// Clears all data (tags, values, behaviours) from this entity.
+        /// Adds a tag to the entity and returns its numeric ID.
         /// </summary>
-        public static void Clear(this IEntity entity)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTag(this IEntity entity, string key, out int id)
         {
-            entity.ClearTags();
-            entity.ClearValues();
-            entity.ClearBehaviours();
+            id = NameToId(key);
+            return entity.AddTag(id);
         }
 
-        #endregion
-
-        #region Tags
         
         /// <summary>
         /// Adds multiple tags to the entity.
@@ -58,32 +61,17 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Checks if the entity has the specified tag.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasTag(this IEntity entity, string key) => entity.HasTag(NameToId(key));
-
-        /// <summary>
-        /// Adds a tag to the entity.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddTag(this IEntity entity, string key) => entity.AddTag(NameToId(key));
-
-        /// <summary>
-        /// Adds a tag to the entity and returns its numeric ID.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddTag(this IEntity entity, string key, out int id)
-        {
-            id = NameToId(key);
-            return entity.AddTag(id);
-        }
-
-        /// <summary>
         /// Removes a tag from the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool DelTag(this IEntity entity, string tag) => entity.DelTag(NameToId(tag));
+
+
+        /// <summary>
+        /// Checks if the entity has the specified tag.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasTag(this IEntity entity, string key) => entity.HasTag(NameToId(key));
 
         /// <summary>
         /// Checks if the entity contains all of the specified tags.
@@ -319,6 +307,20 @@ namespace Atomic.Entities
 
             for (int i = startIndex, end = startIndex + count; i < end; i++)
                 entity.DelBehaviour(behaviours[i]);
+        }
+
+        #endregion
+        
+        #region Clearing
+
+        /// <summary>
+        /// Clears all data (tags, values, behaviours) from this entity.
+        /// </summary>
+        public static void Clear(this IEntity entity)
+        {
+            entity.ClearTags();
+            entity.ClearValues();
+            entity.ClearBehaviours();
         }
 
         #endregion

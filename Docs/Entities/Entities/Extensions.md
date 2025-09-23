@@ -1,34 +1,118 @@
-# IEntity Extensions
+# 🧩Entity Extensions
 
-Provides extension methods for `IEntity` to simplify common operations like adding/removing tags, values, and behaviours, as well as installing installers and retrieving entities from GameObjects or collisions.
-
----
-
-## 🏹 Clearing
-
-| Method                       | Description                                    |
-|------------------------------|------------------------------------------------|
-| `Clear(this IEntity entity)` | Clears all data: tags, values, and behaviours. |
+Provides extension methods for [IEntity](IEntity.md) to simplify common operations like adding / removing tags, values,
+and behaviours, as well as installing installers and retrieving entities from GameObjects or collisions.
 
 ---
 
-## 🏹 Tags
 
-| Method                                                   | Description                            |
-|----------------------------------------------------------|----------------------------------------|
-| `AddTag(this IEntity entity, int key)`                   | Adds a tag by numeric ID.              |
-| `AddTag(this IEntity entity, string key)`                | Adds a tag by string name.             |
-| `AddTag(this IEntity entity, string key, out int id)`    | Adds a tag and returns its numeric ID. |
-| `DelTag(this IEntity entity, int key)`                   | Removes a tag by numeric ID.           |
-| `DelTag(this IEntity entity, string key)`                | Removes a tag by string name.          |
-| `HasTag(this IEntity entity, int key)`                   | Checks for a tag by numeric ID.        |
-| `HasTag(this IEntity entity, string key)`                | Checks for a tag by string name.       |
-| `HasAllTags(this IEntity entity, params int[] tags)`     | Checks if all numeric tags exist.      |
-| `HasAllTags(this IEntity entity, params string[] tags)`  | Checks if all named tags exist.        |
-| `HasAnyTag(this IEntity entity, params int[] tags)`      | Checks if any numeric tag exists.      |
-| `HasAnyTag(this IEntity entity, params string[] tags)`   | Checks if any named tag exists.        |
-| `AddTags(this IEntity entity, IEnumerable<int> tags)`    | Adds multiple numeric tags.            |
-| `AddTags(this IEntity entity, IEnumerable<string> tags)` | Adds multiple named tags.              |
+<details>
+  <summary>
+    <h2 id="-tags">🏷️ Tags</h2>
+  </summary>
+
+#### `AddTag(string)`
+
+```csharp
+public static bool AddTag(this IEntity entity, string key)
+```
+
+- **Description:** Adds a tag to the entity by name.
+- **Parameter:** `key` – The name of the tag to add.
+- **Returns:** `true` if the tag was successfully added; otherwise, `false`.
+
+#### `AddTag(string, out int)`
+
+```csharp
+public static bool AddTag(this IEntity entity, string key, out int id)
+```
+
+- **Description:** Adds a tag to the entity and returns its numeric ID.
+- **Parameter:** `key` – The name of the tag to add.
+- **Output:** `id` – The numeric ID assigned to the tag.
+- **Returns:** `true` if the tag was successfully added; otherwise, `false`.
+
+#### `AddTags(IEnumerable<int>)`
+
+```csharp
+public static void AddTags(this IEntity entity, IEnumerable<int> tags)
+```
+
+- **Description:** Adds multiple tags to the entity.
+- **Parameter:** `tags` – Collection of numeric tag IDs to add.
+
+#### `AddTags(IEnumerable<string>)`
+
+```csharp
+public static void AddTags(this IEntity entity, IEnumerable<string> tags)
+```
+
+- **Description:** Adds multiple tags to the entity by string identifiers.
+- **Parameter:** `tags` – Collection of tag names to add.
+
+#### `DelTag(string)`
+
+```csharp
+public static bool DelTag(this IEntity entity, string tag)
+```
+
+- **Description:** Removes a tag from the entity.
+- **Parameter:** `tag` – The name of the tag to remove.
+- **Returns:** `true` if the tag was successfully removed; otherwise, `false`.
+
+#### `HasTag(string)`
+
+```csharp
+public static bool HasTag(this IEntity entity, string key)
+```
+
+- **Description:** Checks if the entity has the specified tag.
+- **Parameter:** `key` – The name of the tag to check.
+- **Returns:** `true` if the entity has the tag; otherwise, `false`.
+
+#### `HasAllTags(params int[])`
+
+```csharp
+public static bool HasAllTags(this IEntity entity, params int[] tags)
+```
+
+- **Description:** Checks if the entity contains all the specified numeric tags.
+- **Parameter:** `tags` – Array of numeric tag IDs.
+- **Returns:** `true` if the entity has all the tags; otherwise, `false`.
+
+#### `HasAllTags(params string[])`
+
+```csharp
+public static bool HasAllTags(this IEntity entity, params string[] tags)
+```
+
+- **Description:** Checks if the entity has all the specified tags by name.
+- **Parameter:** `tags` – Array of tag names.
+- **Returns:** `true` if the entity has all the tags; otherwise, `false`.
+
+---
+
+#### `HasAnyTag(params string[])`
+
+```csharp
+public static bool HasAnyTag(this IEntity entity, params string[] tags)
+```
+
+- **Description:** Checks if the entity has any of the specified tags by name.
+- **Parameter:** `tags` – Array of tag names.
+- **Returns:** `true` if the entity has at least one of the tags; otherwise, `false`.
+
+#### `HasAnyTag(params int[])`
+
+```csharp
+public static bool HasAnyTag(this IEntity entity, params int[] tags)
+```
+
+- **Description:** Checks if the entity contains any of the specified numeric tags.
+- **Parameter:** `tags` – Array of numeric tag IDs.
+- **Returns:** `true` if the entity has at least one of the tags; otherwise, `false`.
+
+</details>
 
 ---
 
@@ -67,6 +151,15 @@ Provides extension methods for `IEntity` to simplify common operations like addi
 | `DelBehaviours(this IEntity entity, IEntityBehaviour[] behaviours, int startIndex, int count)` | Removes a subset of behaviours from an array.                |
 
 ---
+
+
+---
+
+## 🏹 Clearing
+
+| Method                       | Description                                    |
+|------------------------------|------------------------------------------------|
+| `Clear(this IEntity entity)` | Clears all data: tags, values, and behaviours. |
 
 ## 🏹 Entity Installation
 
