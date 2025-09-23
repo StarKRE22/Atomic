@@ -76,7 +76,7 @@ public static E Resolve(Scene scene)
 
 ## 🗂 Examples of Usage
 
-The following examples demonstrate how to access the `SceneEntitySingleton` and resolve it for each scene 
+The following examples demonstrate how to access the `SceneEntitySingleton` and resolve it for each scene
 
 ---
 
@@ -123,8 +123,7 @@ GameContext context = GameContext.Resolve(myScene);
 ## 📝 Notes
 
 - **Singleton Pattern** – Guarantees only one instance of the entity type per scene or globally.
-- **Entity Integration** – Inherits all `SceneEntity` features: lifecycle (`Init/Enable/Disable/Dispose`), behaviours,
-  tags, values, and events.
+- **Entity Integration** – Inherits all `SceneEntity` features: lifecycle, behaviours, tags, values, and events.
 - **Lazy Lookup** – Singleton instance is assigned automatically on first access.
 - **Global Access** – Use `isGlobal = true` if you want the singleton to be accessible via `Instance` from anywhere.
 - **Persistence Across Scenes** – Use `dontDestroyOnLoad` to keep the singleton alive when loading new scenes.
