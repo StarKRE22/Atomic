@@ -3,6 +3,7 @@
 Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is initialized. It is
 automatically invoked by the entity’s `Init` method during its transition to the initialized state.
 
+---
 
 <details>
   <summary>

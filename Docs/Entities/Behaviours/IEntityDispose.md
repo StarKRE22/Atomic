@@ -1,78 +1,126 @@
-# 🧩️️ IEntityDispose
+# 🧩️ IEntityDispose Interfaces
 
-`IEntityDispose` is a behavior interface that executes cleanup or resource release logic when an `IEntity` **is being disposed**.  
-It is automatically invoked by the entity’s `Dispose` method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
-
----
-
-## Key Features
-
-- **Cleanup Logic** – Executes routines to release references, unsubscribe from events, or return pooled resources.
-- **Strongly-Typed Option** – `IEntityDispose<E>` allows type-specific disposal logic.
-- **Automatic Invocation** – Called automatically by `IEntity.Dispose`.
-- **Composable** – Can be combined with other behaviours for modular entity logic.
+Represents a behavior interface that executes cleanup or resource release logic when an [IEntity](../Entities/IEntity.md) **is being disposed**. It is automatically invoked by the entity’s `Dispose` method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
 
 ---
 
-## Interface: IEntityDispose
+<details>
+  <summary>
+    <h2 id="entity-dispose"> 🧩 IEntityDispose</h2>
+    <br>Defines a behavior that executes logic when an <code>IEntity</code> is disposed.
+  </summary>
+
+<br>
 
 ```csharp
 public interface IEntityDispose : IEntityBehaviour
-{
-    void Dispose(IEntity entity);
-}
 ```
+
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
 ---
 
-## Interface: IEntityDispose&lt;E&gt;
+### 🏹 Methods
+
+#### `Dispose(IEntity)`
 
 ```csharp
-public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
-{
-    void Dispose(E entity);
-}
+void Dispose(IEntity entity);
 ```
 
-- Implements `IEntityDispose.Dispose(IEntity)` automatically by casting to `E`.
-- Ensures type-safe disposal logic for specific entity types.
+- **Description:** Called when the entity is being disposed.
+- **Parameter:** `entity` – The entity being disposed.
+- **Remarks:** Automatically called by `IEntity.Dispose` when the entity is permanently removed or released.
 
 ---
 
-## Example Usage
-Dispose a `Renderer` component when an entity is being disposed
+### 🗂 Example of Usage
 
-### Example #1. Non-Generic (IEntity)
+Dispose a `Collider` component
+
 ```csharp
-public class DisposeRendererBehaviour : IEntityDispose
+public class DisposeColliderBehaviour : IEntityDispose
 {
     public void Dispose(IEntity entity)
     {
-        var renderer = entity.GetValue<Renderer>("Renderer");
-        Object.Destroy(renderer);
+        var collider = entity.GetValue<Collider>("Collider");
+        Object.Destroy(collider);
     }
 }
 ```
 
-> Note: `GetValue<T>` assumes the entity has a `Renderer` component already set.
+> Note: `GetValue<T>` assumes the entity has a `Collider` component already set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-dispose-t"> 🧩 IEntityDispose&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that executes logic when an <code>IEntity</code> of type <code>E</code> is disposed.
+  </summary>
+
+<br>
+
 ```csharp
-public class DisposeRendererBehaviour : IEntityDispose<UnitEntity>
+public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityDispose` for handling disposal logic for a specific `IEntity` type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityDispose](#entity-dispose)
+- **Remarks:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `Dispose(E)`
+
+```csharp
+void Dispose(E entity);
+```
+
+- **Description:** Called when the typed entity is being disposed.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityDispose.Dispose(IEntity)` explicitly by casting the `IEntity` to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Dispose a `Collider` component
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
+```csharp
+public class DisposeColliderBehaviour : IEntityDispose<UnitEntity>
 {
     public void Dispose(UnitEntity entity)
     {
-        var renderer = entity.GetValue<Renderer>("Renderer");
-        Object.Destroy(renderer);
+        var collider = entity.GetValue<Collider>("Collider");
+        Object.Destroy(collider);
     }
 }
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
 
-## Remarks
+</details>
+
+---
+
+## 📝 Notes
+
+- **Dispose Logic** – Encapsulates routines to clean up resources or release references when an entity is removed.
+- **Strongly-Typed Option** – `IEntityDispose<E>` allows type-specific disposal logic.
+- **Integration** – Called automatically by `IEntity.Dispose`.
+- **Composable** – Can be combined with other behaviours to form modular entity logic.
 
 - `IEntityDispose` is intended for logic that must run when an entity is permanently removed.
 - `IEntityDispose<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during disposal.
-- Does not handle initialization, enabling, or updating; separate interfaces exist for those phases (`IEntityInit`, `IEntityEnable`, `IEntityUpdate`, `IEntityDisable`).  

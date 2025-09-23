@@ -46,9 +46,9 @@ Atomic.Entities provides:
   
 - **Behaviours**
   - [IEntityBehaviour](Behaviours/IEntityBehaviour.md) <!-- + -->
-  - [IEntityInit](Behaviours/IEntityInit.md)
+  - [IEntityInit](Behaviours/IEntityInit.md) <!-- + -->
   - [IEntityDispose](Behaviours/IEntityDispose.md)
-  - [IEntityEnable](Behaviours/IEntityEnable.md)
+  - [IEntityEnable](Behaviours/IEntityEnable.md) <!-- + -->
   - [IEntityDisable](Behaviours/IEntityDisable.md)
   - [IEntityUpdate](Behaviours/IEntityUpdate.md)
   - [IEntityFixedUpdate](Behaviours/IEntityFixedUpdate.md)

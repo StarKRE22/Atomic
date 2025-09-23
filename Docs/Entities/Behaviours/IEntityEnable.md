@@ -2,6 +2,8 @@
 
 Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) **is enabled**. It is automatically invoked by the entity’s `Enable` method during its transition to the active state, such as after spawning or resuming from a disabled state.
 
+---
+
 <details>
   <summary>
     <h2 id="entity-enable"> 🧩 IEntityEnable</h2>
