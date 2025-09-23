@@ -1,58 +1,44 @@
-# 🧩️ IEntityInit
+# 🧩️ IEntityInit Interfaces
 
-Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is initialized. It is automatically invoked by the entity’s `Init` method during its transition to the initialized state.
+Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is initialized. It is
+automatically invoked by the entity’s `Init` method during its transition to the initialized state.
+
+
+<details>
+  <summary>
+    <h2 id="entity-init"> 🧩 IEntityInit</h2>
+    <br>Defines a behavior that executes logic when an <code>IEntity</code> is initialized.
+  </summary>
+
+<br>
 
 ```csharp
 public interface IEntityInit : IEntityBehaviour
 ```
-- **Description:** Defines a behavior that executes logic when an `IEntity` is initialized.
+
 - **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
-##  🧩 IEntityInit&lt;E&gt;
+---
+
+### 🏹 Methods
+
+#### `Init(IEntity)`
+
 ```csharp
-public interface IEntityInit<in E> : IEntityInit where E : IEntity
+void Init(IEntity entity);
 ```
 
+- **Description:** Called when the entity is initialized.
+- **Parameter:** `entity` – The entity being initialized.
+- **Remarks:** This method is automatically called by `IEntity.Init` when the entity transitions into its initialized
+  state, such as after construction or deserialization.
 
 ---
 
+### 🗂 Example of Usage
 
-```csharp
-public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
-    where E : SceneEntity
-```
-
-- **Description:** Represents a proxy that forwards [IEntity](IEntity.md) calls to an underlying `E` source entity
-- **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
-- **Inheritance:**
-    - extends `MonoBehaviour`
-    - implements [IEntity](IEntity.md)
----
-
-## Interface: IEntityInit
-
-```csharp
-public interface IEntityInit : IEntityBehaviour
-{
-    void Init(IEntity entity);
-}
-```
----
-## Interface: IEntityInit&lt;E&gt;
-
-```csharp
-public interface IEntityInit<in E> : IEntityInit where E : IEntity
-{
-    void Init(E entity);
-}
-```
-- Implements `IEntityInit.Init(IEntity)` automatically by casting to `E`.
-- Ensures type-safe initialization for specific entity types.
-
-## Example Usage
 Set up a `Color` for the entity `Renderer`
 
-### Example #1. Non-Generic (IEntity)
 ```csharp
 public class InitColorBehaviour : IEntityInit
 {
@@ -64,9 +50,57 @@ public class InitColorBehaviour : IEntityInit
     }
 }
 ```
+
 > Note: `GetValue<T>` assumes the entity has these values already set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-init-t"> 🧩 IEntityInit&lt;E&gt;</h2>
+    <br>Defines a behavior that executes logic when an <code>IEntity</code> is initialized.
+  </summary>
+
+<br>
+
+```csharp
+public interface IEntityInit<in E> : IEntityInit where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityInit` for handling initialization logic for a specific
+  `IEntity` type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityInit](#entity-init)
+- **Remarks:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
+  type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `Init(E entity)`
+
+```csharp
+void Init(E entity);
+```
+
+- **Description:** Called when the typed entity is initialized.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityInit.Init(IEntity)` explicitly by casting the `IEntity` to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Set up a `Color` for the `Renderer` of unit entity
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
 
 ```csharp
 public class InitColorBehaviour : IEntityInit<UnitEntity>
@@ -81,20 +115,18 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required
+
+</details>
+
 ---
 
-## Remarks
-
-- `IEntityInit` is intended for setup routines that must run when an entity becomes initialized.
-- `IEntityInit<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during initialization.
-- Does not handle enabling, updating, or disposal; separate interfaces exist for those phases (`IEntityEnable`, `IEntityUpdate`, `IEntityDispose`).
-
-
-
-## Key Features
+## 📝 Notes
 
 - **Initialization Logic** – Encapsulates setup routines for entities.
 - **Strongly-Typed Option** – `IEntityInit<T>` allows type-specific initialization.
 - **Integration** – Called automatically by `IEntity.Init`.
 - **Composable** – Can be combined with other behaviours to form modular entity logic.
+
+- `IEntityInit` is intended for setup routines that must run when an entity becomes initialized.
+- `IEntityInit<E>` is useful when the behaviour is specific to a particular entity type.
+- Behaviours can interact with other entity behaviours during initialization.
