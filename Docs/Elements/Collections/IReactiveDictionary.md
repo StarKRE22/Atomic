@@ -9,7 +9,7 @@ public interface IReactiveDictionary<K, V> :
 
 - **Description:** Represents a **reactive key-value dictionary** that supports notifications when items are added,
   removed, updated, or when the overall state changes.
-- **Inheritance:** `Object` → `IDictionary<K,V>` → [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md) → [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md)
+- **Inheritance:** `IDictionary<K,V>` → [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md) → [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md)
  
 - **Type Parameters:**
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
