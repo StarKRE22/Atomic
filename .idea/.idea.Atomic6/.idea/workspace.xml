@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -207,31 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="32275000" />
-    </task>
-    <task id="LOCAL-00616" summary="Сделал NOTES!">
-      <option name="closed" value="true" />
-      <created>1758529459170</created>
-      <option name="number" value="00616" />
-      <option name="presentableId" value="LOCAL-00616" />
-      <option name="project" value="LOCAL" />
-      <updated>1758529459170</updated>
-    </task>
-    <task id="LOCAL-00617" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758529570776</created>
-      <option name="number" value="00617" />
-      <option name="presentableId" value="LOCAL-00617" />
-      <option name="project" value="LOCAL" />
-      <updated>1758529570776</updated>
-    </task>
-    <task id="LOCAL-00618" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758529671361</created>
-      <option name="number" value="00618" />
-      <option name="presentableId" value="LOCAL-00618" />
-      <option name="project" value="LOCAL" />
-      <updated>1758529671361</updated>
+      <workItem from="1758604662186" duration="32589000" />
     </task>
     <task id="LOCAL-00619" summary="Сделал Performance для Entity!">
       <option name="closed" value="true" />
@@ -601,7 +576,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758653891593</updated>
     </task>
-    <option name="localTasksCounter" value="665" />
+    <task id="LOCAL-00665" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758654394003</created>
+      <option name="number" value="00665" />
+      <option name="presentableId" value="LOCAL-00665" />
+      <option name="project" value="LOCAL" />
+      <updated>1758654394003</updated>
+    </task>
+    <task id="LOCAL-00666" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758654528320</created>
+      <option name="number" value="00666" />
+      <option name="presentableId" value="LOCAL-00666" />
+      <option name="project" value="LOCAL" />
+      <updated>1758654528321</updated>
+    </task>
+    <task id="LOCAL-00667" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758654596179</created>
+      <option name="number" value="00667" />
+      <option name="presentableId" value="LOCAL-00667" />
+      <option name="project" value="LOCAL" />
+      <updated>1758654596179</updated>
+    </task>
+    <option name="localTasksCounter" value="668" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +644,6 @@
     <MESSAGE value="Фиксы в SceneEntity.cs" />
     <MESSAGE value="Minor fixes!" />
     <MESSAGE value="Пилим!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал SceneEntityInstaller.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
     <MESSAGE value="Думаем!" />
@@ -653,7 +651,8 @@
     <MESSAGE value="SceneEntityAspect.md" />
     <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="Сделал Aspects!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал Aspects!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

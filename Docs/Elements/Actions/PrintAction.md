@@ -1,7 +1,7 @@
 # 🧩 PrintAction
 
-The **PrintAction** class represents an action that **logs a message**. It implements the [IAction](IAction.md)
-interface and works across platforms. This allows printing messages consistently in both Unity and non-Unity
+The **PrintAction** class represents an action that **logs a message** and **works across platforms**. This allows printing
+messages consistently in both Unity and non-Unity
 environments, which is especially useful when debugging or logging events in cross-platform code.
 
 > [!NOTE]
@@ -10,10 +10,15 @@ environments, which is especially useful when debugging or logging events in cro
 
 ---
 
+## 🏛️ Class
+
 ```csharp
+[Serializable]
 public sealed class PrintAction : IAction
 ```
-  - **Inheritance:** implements [IAction](IAction.md) 
+
+- **Inheritance:** Implements [IAction](IAction.md)
+- **Notes:** Allows serialization in Unity
 
 ---
 
