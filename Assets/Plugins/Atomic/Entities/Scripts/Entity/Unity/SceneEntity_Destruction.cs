@@ -20,7 +20,11 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Destroy(SceneEntity entity, float t = 0)
         {
-            if (entity) Destroy(entity.gameObject, t);
+            if (entity)
+            {
+                entity.Uninstall();
+                Destroy(entity.gameObject, t);
+            }
         }
     }
 }
