@@ -6,24 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Editor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Installing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Installing.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Lifecycle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Tags.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Tags.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Сreation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Сreation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Installer/SceneEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Installer/SceneEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Installer/ScriptableEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Installer/ScriptableEntityInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,31 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="23986000" />
-    </task>
-    <task id="LOCAL-00604" summary="Fixes">
-      <option name="closed" value="true" />
-      <created>1758478907593</created>
-      <option name="number" value="00604" />
-      <option name="presentableId" value="LOCAL-00604" />
-      <option name="project" value="LOCAL" />
-      <updated>1758478907593</updated>
-    </task>
-    <task id="LOCAL-00605" summary="Casting">
-      <option name="closed" value="true" />
-      <created>1758480024242</created>
-      <option name="number" value="00605" />
-      <option name="presentableId" value="LOCAL-00605" />
-      <option name="project" value="LOCAL" />
-      <updated>1758480024242</updated>
-    </task>
-    <task id="LOCAL-00606" summary="Fixes">
-      <option name="closed" value="true" />
-      <created>1758481762383</created>
-      <option name="number" value="00606" />
-      <option name="presentableId" value="LOCAL-00606" />
-      <option name="project" value="LOCAL" />
-      <updated>1758481762383</updated>
+      <workItem from="1758604662186" duration="25354000" />
     </task>
     <task id="LOCAL-00607" summary="Пилим!">
       <option name="closed" value="true" />
@@ -616,7 +576,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758640451141</updated>
     </task>
-    <option name="localTasksCounter" value="653" />
+    <task id="LOCAL-00653" summary="Фиксы в SceneEntity.cs">
+      <option name="closed" value="true" />
+      <created>1758643074722</created>
+      <option name="number" value="00653" />
+      <option name="presentableId" value="LOCAL-00653" />
+      <option name="project" value="LOCAL" />
+      <updated>1758643074723</updated>
+    </task>
+    <task id="LOCAL-00654" summary="Minor fixes!">
+      <option name="closed" value="true" />
+      <created>1758643194339</created>
+      <option name="number" value="00654" />
+      <option name="presentableId" value="LOCAL-00654" />
+      <option name="project" value="LOCAL" />
+      <updated>1758643194339</updated>
+    </task>
+    <task id="LOCAL-00655" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758643906647</created>
+      <option name="number" value="00655" />
+      <option name="presentableId" value="LOCAL-00655" />
+      <option name="project" value="LOCAL" />
+      <updated>1758643906647</updated>
+    </task>
+    <option name="localTasksCounter" value="656" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +627,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Fixes" />
     <MESSAGE value="Написал Performance Tests Values!" />
     <MESSAGE value="Написал Notes для контейнеров!" />
     <MESSAGE value="Сделал NOTES!" />
@@ -656,11 +639,9 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал EntitySingleton.md" />
     <MESSAGE value="SceneEntitySingleton.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="Думаем!" />
-    <MESSAGE value="Minor fixes!" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="IEntityInit.md" />
     <MESSAGE value="IEntityEnable.md" />
@@ -668,7 +649,10 @@
     <MESSAGE value="IEntityDisable.md" />
     <MESSAGE value="Сделал раздел Behaviours" />
     <MESSAGE value="IEntityInstaller.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityInstaller.md" />
+    <MESSAGE value="Фиксы в SceneEntity.cs" />
+    <MESSAGE value="Minor fixes!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
