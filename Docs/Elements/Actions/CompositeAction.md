@@ -6,10 +6,6 @@ and itself **acts as a single action**, preserving a uniform interface.
 This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is
 especially important when game objects and scripts need to execute complex action scenarios.
 
----
-
-## 🏛️ Classes
-
 There are several implementations of composite actions, depending on the number of arguments the actions take:
 
 - [CompositeAction](#composite-action) — Non-generic version; works with `IAction` without parameters.
