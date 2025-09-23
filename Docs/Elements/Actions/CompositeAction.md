@@ -69,14 +69,17 @@ logic or events.
 <details>
   <summary>
     <h2 id="composite-action">🧩 CompositeAction</h2>
-    <br>  Represents a group of <b>parameterless actions</b> that are executed sequentially.
   </summary>
 
 <br>
 
 ```csharp
+[Serializable]
 public class CompositeAction : IAction
 ```
+- **Description:** Represents a group of **parameterless actions** that are executed sequentially.
+- **Inheritance:** [IAction](IAction.md)
+- **Notes:** Supports Unity serialization
 
 ---
 
