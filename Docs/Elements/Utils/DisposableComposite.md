@@ -90,7 +90,7 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 
     private readonly DisposableComposite _disposables = new();
     
-    public void Install(IEntity entity)
+    public override void Install(IEntity entity)
     {
         ISignal fireEvent = entity.GetFireEvent();
         
@@ -100,9 +100,9 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
         fireEvent.Subscribe(() => _animator.SetTrigger("Fire")).AddTo(_disposables);
     }
     
-    private void OnDestroy()
+    public override void Uninstall()
     {
-        // Dispose all resources when the object is destroyed
+         // Dispose all resources when the object is destroyed
         _disposables.Dispose();
     }
 }
