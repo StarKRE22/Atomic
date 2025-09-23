@@ -10,8 +10,6 @@ environments, which is especially useful when debugging or logging events in cro
 
 ---
 
-## 🏛️ Class
-
 ```csharp
 [Serializable]
 public sealed class PrintAction : IAction
