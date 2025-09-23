@@ -18,7 +18,10 @@ public interface IReactiveDictionary<K, V> :
 
 ---
 
-## ⚡ Events
+<details>
+  <summary>
+    <h2>⚡ Events</h2>
+  </summary>
 
 #### `OnStateChanged`
 
@@ -62,9 +65,14 @@ public event Action<K, V> OnItemChanged;
     - `K` — the key whose value was changed.
     - `V` — the new value of the key.
 
+</details>
+
 ---
 
-## 🔑 Properties
+<details>
+  <summary>
+    <h2>🔑 Properties</h2>
+  </summary>
 
 #### `Count`
 
@@ -90,9 +98,14 @@ public IEnumerable<V> Values { get; }
 
 - **Description:** Gets a collection containing all the values in the dictionary.
 
+</details>
+
 ---
 
-## 🏷️ Indexers
+<details>
+  <summary>
+    <h2>🏷️ Indexers</h2>
+  </summary>
 
 #### `[K key]`
 
@@ -105,9 +118,15 @@ public V this[K key] { get; set; }
 - **Returns:** `V` — the value corresponding to the key.
 - **Remarks:** Setting a value triggers `OnItemChanged` if the key already exists, or `OnItemAdded` if it's new.
 
+</details>
+
 ---
 
-## 🏹 Methods
+<details>
+  <summary>
+    <h2>🏹 Methods</h2>
+  </summary>
+
 
 #### `Add(K, V)`
 
@@ -117,8 +136,8 @@ public void Add(K key, V value);
 
 - **Description:** Adds a new key-value pair to the dictionary.
 - **Parameters:**
-    - `key` — the key to add.
-    - `value` — the value associated with the key.
+  - `key` — the key to add.
+  - `value` — the value associated with the key.
 - **Exceptions:** Throws an exception if the key already exists.
 - **Events:** Triggers `OnItemAdded` and `OnStateChanged`.
 
@@ -186,8 +205,8 @@ public bool TryGetValue(K key, out V value);
 
 - **Description:** Attempts to get the value associated with the specified key without throwing an exception.
 - **Parameters:**
-    - `key` — the key to look up.
-    - `value` — outputs the value associated with the key if found; otherwise, the default value for type `V`.
+  - `key` — the key to look up.
+  - `value` — outputs the value associated with the key if found; otherwise, the default value for type `V`.
 - **Returns:** `true` if the key exists and value is returned; otherwise, `false`.
 
 #### `CopyTo(KeyValuePair<K, V>[], int)`
@@ -198,11 +217,11 @@ public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0);
 
 - **Description:** Copies the elements of the dictionary to a provided array, starting at the specified index.
 - **Parameters:**
-    - `array` — The destination array.
-    - `arrayIndex` — The zero-based index in the array at which copying begins.
+  - `array` — The destination array.
+  - `arrayIndex` — The zero-based index in the array at which copying begins.
 - **Exceptions:**
-    - Throws `ArgumentNullException` if `array` is null.
-    - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
+  - Throws `ArgumentNullException` if `array` is null.
+  - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
 
 #### `void Clear()`
 
@@ -230,9 +249,11 @@ public void Dispose();
 
 - **Description:** Releases all resources used by the dictionary.
 - **Remarks:**
-    - Clears the dictionary.
-    - Unsubscribes all event handlers.
-    - After calling `Dispose`, the dictionary is empty and no longer raises events.
+  - Clears the dictionary.
+  - Unsubscribes all event handlers.
+  - After calling `Dispose`, the dictionary is empty and no longer raises events.
+
+</details>
 
 ---
 
