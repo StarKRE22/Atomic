@@ -8,11 +8,12 @@ environments, which is especially useful when debugging or logging events in cro
 > In **Unity**, it uses `Debug.Log`, `Debug.LogWarning`, or `Debug.LogError` depending on the specified `LogType`.
 > <br> Outside of Unity, it uses `Console.WriteLine`.
 
-<!--
+---
+
 ```csharp
 public sealed class PrintAction : IAction
 ```
--->
+  - **Inheritance:** implements [IAction](IAction.md) 
 
 ---
 
