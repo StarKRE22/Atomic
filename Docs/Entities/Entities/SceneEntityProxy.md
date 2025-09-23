@@ -18,11 +18,15 @@ public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
 
 - **Inheritance:** extends [SceneEntityProxy&lt;E&gt;](#-scene-entity-proxy-t)
 
+---
+
 ### 🛠 Inspector Settings
 
 | Parameter | Description                                                        |
 |-----------|--------------------------------------------------------------------|
 | `source`  | Reference to the actual `SceneEntity` object that this proxy wraps |
+
+---
 
 ### 🔑 Properties
 
@@ -54,11 +58,15 @@ public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
 - **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
 - **Inheritance:** derived from `MonoBehaviour` and implemented [IEntity](IEntity.md)
 
+---
+
 ### 🛠 Inspector Settings
 
 | Parameter | Description                                              |
 |-----------|----------------------------------------------------------|
 | `source`  | Reference to the actual `E` object that this proxy wraps |
+
+---
 
 ### 🔑 Properties
 
@@ -69,7 +77,6 @@ public E Source { get; }
 ```
 
 - **Description:** The source entity that this proxy forwards calls to.
-
 
 </details>
 
