@@ -25,7 +25,7 @@ public interface IEntityDispose : IEntityBehaviour
 #### `Dispose(IEntity)`
 
 ```csharp
-void Dispose(IEntity entity);
+public void Dispose(IEntity entity);
 ```
 
 - **Description:** Called when the entity is being disposed.
@@ -79,7 +79,7 @@ public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
 #### `Dispose(E)`
 
 ```csharp
-void Dispose(E entity);
+public void Dispose(E entity);
 ```
 
 - **Description:** Called when the typed entity is being disposed.

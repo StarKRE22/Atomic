@@ -26,7 +26,7 @@ public interface IEntityInit : IEntityBehaviour
 #### `Init(IEntity)`
 
 ```csharp
-void Init(IEntity entity);
+public void Init(IEntity entity);
 ```
 
 - **Description:** Called when the entity is initialized.
@@ -84,7 +84,7 @@ public interface IEntityInit<in E> : IEntityInit where E : IEntity
 #### `Init(E)`
 
 ```csharp
-void Init(E entity);
+public void Init(E entity);
 ```
 
 - **Description:** Called when the typed entity is initialized.

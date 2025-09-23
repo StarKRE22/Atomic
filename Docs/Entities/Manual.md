@@ -47,12 +47,12 @@ Atomic.Entities provides:
 - **Behaviours**
   - [IEntityBehaviour](Behaviours/IEntityBehaviour.md) <!-- + -->
   - [IEntityInit](Behaviours/IEntityInit.md) <!-- + -->
-  - [IEntityDispose](Behaviours/IEntityDispose.md)
+  - [IEntityDispose](Behaviours/IEntityDispose.md) <!-- + -->
   - [IEntityEnable](Behaviours/IEntityEnable.md) <!-- + -->
   - [IEntityDisable](Behaviours/IEntityDisable.md)
-  - [IEntityUpdate](Behaviours/IEntityUpdate.md)
-  - [IEntityFixedUpdate](Behaviours/IEntityFixedUpdate.md)
-  - [IEntityLateUpdate](Behaviours/IEntityLateUpdate.md)
+  - [IEntityTick](Behaviours/IEntityTick.md)
+  - [IEntityFixedTick](Behaviours/IEntityFixedTick.md)
+  - [IEntityLateTick](Behaviours/IEntityLateTick.md)
   - [IEntityGizmos](Behaviours/IEntityGizmos.md)
   - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md)
   

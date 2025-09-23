@@ -1,42 +1,43 @@
-# 🧩️ IEntityDisable
+# 🧩️ IEntityDisable Interfaces
 
-`IEntityDisable` is a behavior interface that executes logic when an `IEntity` **is disabled**.  
-It is automatically invoked by the entity’s `Disable` method when the entity exits the active state, such as during pause, unloading, or before being despawned.
+Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) **is disabled**.It is
+automatically invoked by the entity’s `Disable` method when the entity exits the active state, such as during pause,
+unloading, or before being despawned.
 
----
+<details>
+  <summary>
+    <h2 id="entity-disable"> 🧩 IEntityDisable</h2>
+    <br>Defines a behavior that executes logic when an <code>IEntity</code> is disabled.
+  </summary>
 
-## Key Features
-
-- **Disable-Time Logic** – Executes routines when an entity becomes inactive.
-- **Strongly-Typed Option** – `IEntityDisable<E>` allows type-specific disable logic.
-- **Automatic Invocation** – Called automatically by `IEntity.Disable`.
-- **Composable** – Can be combined with other behaviours for modular entity logic.
-
----
-
-## Interface: IEntityDisable
+<br>
 
 ```csharp
 public interface IEntityDisable : IEntityBehaviour
-{
-    void Disable(IEntity entity);
-}
 ```
----
-## Interface: IEntityDisable&lt;E&gt;
-```csharp
-public interface IEntityDisable<in E> : IEntityDisable where E : IEntity
-{
-    void Disable(E entity);
-}
-```
-- Implements `IEntityDisable.Disable(IEntity)` automatically by casting to `E`.
-- Ensures type-safe disable logic for specific entity types.
----
-## Example Usage
-Disable a `Renderer` component when an entity becomes inactive
 
-### Example #1. Non-Generic (IEntity)
+- **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
+
+---
+
+### 🏹 Methods
+
+#### `Disable(IEntity)`
+
+```csharp
+public void Disable(IEntity entity);
+```
+
+- **Description:** Called when the entity is disabled.
+- **Parameter:** `entity` – The entity being disabled.
+- **Remarks:** Automatically called by `IEntity.Disable` when the entity exits the active state.
+
+---
+
+### 🗂 Example of Usage
+
+Disable a `Renderer` component
+
 ```csharp
 public class DisableRendererBehaviour : IEntityDisable
 {
@@ -50,7 +51,54 @@ public class DisableRendererBehaviour : IEntityDisable
 
 > Note: `GetValue<T>` assumes the entity has a `Renderer` component already set.
 
-### Example #2. Generic with UnitEntity (strongly-typed)
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="entity-disable-t"> 🧩 IEntityDisable&lt;E&gt;</h2>
+    <br>Defines a strongly-typed behavior that executes logic when an <code>IEntity</code> of type <code>E</code> is disabled.
+  </summary>
+
+<br>
+
+```
+public interface IEntityDisable<in E> : IEntityDisable where E : IEntity
+```
+
+- **Description:** Provides a strongly-typed version of `IEntityDisable` for handling disable logic for a specific
+  `IEntity` type.
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityDisable](#entity-disable)
+- **Remarks:** Automatically invoked by `IEntity.Disable` when the behavior is registered on an entity of type `E`.
+
+---
+
+## 🏹 Methods
+
+#### `Disable(E)`
+
+```csharp
+public void Disable(E entity);
+```
+
+- **Description:** Called when the typed entity is disabled.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityDisable.Disable(IEntity)` explicitly by casting the `IEntity` to type `E`.
+
+---
+
+### 🗂 Example of Usage
+
+Disable a `Renderer` for a unit entity
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
 ```csharp
 public class DisableRendererBehaviour : IEntityDisable<UnitEntity>
 {
@@ -64,9 +112,16 @@ public class DisableRendererBehaviour : IEntityDisable<UnitEntity>
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
 
-## Remarks
+</details>
+
+---
+
+## 📝 Notes
+
+- **Disable Logic** – Encapsulates routines for when an entity becomes inactive.
+- **Strongly-Typed Option** – `IEntityDisable<E>` allows type-specific disable logic.
+- **Integration** – Called automatically by `IEntity.Disable`.
+- **Composable** – Can be combined with other behaviours to form modular entity logic.
 
 - `IEntityDisable` is intended for logic that must run when an entity becomes inactive.
 - `IEntityDisable<E>` is useful when the behaviour is specific to a particular entity type.
-- Behaviours can interact with other entity behaviours during disabling.
-- Does not handle initialization, enabling, updating, or disposal; separate interfaces exist for those phases (`IEntityInit`, `IEntityEnable`, `IEntityUpdate`, `IEntityDispose`).

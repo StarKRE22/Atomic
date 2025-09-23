@@ -25,7 +25,7 @@ public interface IEntityEnable : IEntityBehaviour
 #### `Enable(IEntity)`
 
 ```csharp
-void Enable(IEntity entity);
+public void Enable(IEntity entity);
 ```
 
 - **Description:** Called when the entity is enabled.
@@ -79,7 +79,7 @@ public interface IEntityEnable<in E> : IEntityEnable where E : IEntity
 #### `Enable(E)`
 
 ```csharp
-void Enable(E entity);
+public void Enable(E entity);
 ```
 
 - **Description:** Called when the typed entity is enabled.
