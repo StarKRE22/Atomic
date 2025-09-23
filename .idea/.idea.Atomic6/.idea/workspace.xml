@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,31 +207,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="32589000" />
-    </task>
-    <task id="LOCAL-00619" summary="Сделал Performance для Entity!">
-      <option name="closed" value="true" />
-      <created>1758534628435</created>
-      <option name="number" value="00619" />
-      <option name="presentableId" value="LOCAL-00619" />
-      <option name="project" value="LOCAL" />
-      <updated>1758534628435</updated>
-    </task>
-    <task id="LOCAL-00620" summary="Minor Fix!">
-      <option name="closed" value="true" />
-      <created>1758534688057</created>
-      <option name="number" value="00620" />
-      <option name="presentableId" value="LOCAL-00620" />
-      <option name="project" value="LOCAL" />
-      <updated>1758534688057</updated>
-    </task>
-    <task id="LOCAL-00621" summary="Подкрутил Performance!">
-      <option name="closed" value="true" />
-      <created>1758566276856</created>
-      <option name="number" value="00621" />
-      <option name="presentableId" value="LOCAL-00621" />
-      <option name="project" value="LOCAL" />
-      <updated>1758566276856</updated>
+      <workItem from="1758604662186" duration="33555000" />
     </task>
     <task id="LOCAL-00622" summary="Вот теперь performance корректный!">
       <option name="closed" value="true" />
@@ -600,7 +577,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758654596179</updated>
     </task>
-    <option name="localTasksCounter" value="668" />
+    <task id="LOCAL-00668" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758654707040</created>
+      <option name="number" value="00668" />
+      <option name="presentableId" value="LOCAL-00668" />
+      <option name="project" value="LOCAL" />
+      <updated>1758654707040</updated>
+    </task>
+    <task id="LOCAL-00669" summary="Print Action">
+      <option name="closed" value="true" />
+      <created>1758655256824</created>
+      <option name="number" value="00669" />
+      <option name="presentableId" value="LOCAL-00669" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655256824</updated>
+    </task>
+    <task id="LOCAL-00670" summary="Print Action">
+      <option name="closed" value="true" />
+      <created>1758655274349</created>
+      <option name="number" value="00670" />
+      <option name="presentableId" value="LOCAL-00670" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655274349</updated>
+    </task>
+    <option name="localTasksCounter" value="671" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +628,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Вот теперь performance корректный!" />
     <MESSAGE value="Сделал SceneEntity.md" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал EntitySingleton.md" />
@@ -652,7 +652,8 @@
     <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="Сделал Aspects!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Print Action" />
+    <option name="LAST_COMMIT_MESSAGE" value="Print Action" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

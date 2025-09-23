@@ -1,11 +1,23 @@
-# 🧩 CompositeAction Classes
+# 🧩 CompositeAction Family
 
-The **CompositeAction** classes represent **groups of actions** that implement the corresponding [IAction](IAction.md)
+Represents **groups of actions** that implement the corresponding [IAction](IAction.md)
 interfaces. Its follow the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern) — an action both **groups actions**
 and itself **acts as a single action**, preserving a uniform interface.
 
 This allows combining multiple actions into a sequence, which will be invoked **sequentially** when triggered. This is
 especially important when game objects and scripts need to execute complex action scenarios.
+
+---
+
+## 🏛️ Classes
+
+There are several implementations of composite actons, depending on the number of arguments the actions take:
+
+- **`CompositeAction`** - Non-generic version; works with `IAction` without parameters.
+- **`CompositeAction<T>`** - Holds actions that take one argument of type `T`.
+- **`CompositeAction<T1, T2>`** - Holds actions that take two arguments of types `T1` and `T2`.
+- **`CompositeAction<T1, T2, T3>`** - Holds actions that take three arguments of types `T1`, `T2`, `T3`.
+- **`CompositeAction<T1, T2, T3, T4>`** - Holds actions that take four arguments of types `T1`, `T2`, `T3`, `T4`.
 
 ---
 
