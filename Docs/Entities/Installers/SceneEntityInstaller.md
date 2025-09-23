@@ -1,7 +1,54 @@
-# 🧩️ SceneEntityInstaller
+# 🧩️ SceneEntityInstaller Classes
 
-`SceneEntityInstaller` is a Unity `MonoBehaviour` that can be attached to a GameObject to **perform installation logic on an `IEntity`** during runtime or initialization.  
+Represents a Unity `MonoBehaviour` that can be attached to a GameObject to **perform installation logic on an `IEntity`** during runtime or initialization. 
 It allows declarative configuration of entities placed in a scene. In the Editor, it supports automatic refresh via `OnValidate`.
+
+> [!TIP]
+> Use `SceneEntityInstaller` only if there are scene dependencies or if entity instances in the scene need to differ.  
+> In other cases, use [ScriptableEntityInstaller](ScriptableEntityInstaller.md) as a shared installer.
+
+---
+
+<details>
+  <summary>
+    <h2 id="scene-entity-installer"> 🧩 SceneEntityInstaller</h2>
+    <br>Abstract MonoBehaviour for configuring an <code>IEntity</code> in a Unity scene.
+  </summary>
+
+<br>
+
+```csharp
+public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
+{
+    public abstract void Install(IEntity entity);
+}
+```
+- **Description:** Implements `IEntityInstaller` to allow entity configuration via Unity components.
+- **Remarks:** Supports editor refresh through `OnValidate` without entering Play Mode.
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 

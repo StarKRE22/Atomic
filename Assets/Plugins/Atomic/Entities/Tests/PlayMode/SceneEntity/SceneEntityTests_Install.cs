@@ -61,7 +61,7 @@ namespace Atomic.Entities
             yield return null;
 
             var mockInstaller = _go.AddComponent<MockInstaller>();
-            _entity.installers = new List<SceneEntityInstaller> {mockInstaller};
+            _entity.sceneInstallers = new List<SceneEntityInstaller> {mockInstaller};
             _entity.Install();
 
             Assert.IsTrue(mockInstaller.called);
@@ -91,7 +91,7 @@ namespace Atomic.Entities
         {
             yield return null;
 
-            _entity.installers = new List<SceneEntityInstaller> {null};
+            _entity.sceneInstallers = new List<SceneEntityInstaller> {null};
 
             LogAssert.Expect(LogType.Warning, "SceneEntity: Ops! Detected null installer!");
 
@@ -122,14 +122,14 @@ namespace Atomic.Entities
             _entity.Install();
             Assert.IsTrue(_entity.Installed);
 
-            _entity.installers = new List<SceneEntityInstaller>
+            _entity.sceneInstallers = new List<SceneEntityInstaller>
             {
                 new GameObject("ignoredInstaller").AddComponent<MockInstaller>()
             };
 
             _entity.Install(); // повторная установка должна быть проигнорирована
 
-            var installer = (MockInstaller) _entity.installers[0];
+            var installer = (MockInstaller) _entity.sceneInstallers[0];
             Assert.IsFalse(installer.called);
 
             Object.DestroyImmediate(installer.gameObject);

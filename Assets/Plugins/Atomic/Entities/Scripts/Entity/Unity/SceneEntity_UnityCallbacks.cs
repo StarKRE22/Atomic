@@ -31,8 +31,9 @@ namespace Atomic.Entities
                 this.Init();
                 this.Enable();
                 UpdateLoop.Instance.Register(this);
-                _started = true;
             }
+
+            _started = true;
         }
 
         private protected virtual void OnDisable()
@@ -46,11 +47,14 @@ namespace Atomic.Entities
 
         private protected virtual void OnDestroy()
         {
-            if (this.useUnityLifecycle && _started)
-            {
+            if (this.useUnityLifecycle && _started) 
                 this.Dispose();
-                _started = false;
-            }
+
+            if (this.uninstallOnDestroy) 
+                this.Uninstall();
+            
+            EntityRegistry.Instance.Unregister(ref _instanceId);
+            
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()

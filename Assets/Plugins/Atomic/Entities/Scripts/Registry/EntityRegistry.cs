@@ -14,6 +14,8 @@ namespace Atomic.Entities
     /// </summary>
     public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>
     {
+        private const int UNDEFINED_INDEX = -1;
+        
         /// <summary>
         /// Gets the singleton instance of the <see cref="EntityRegistry"/>.
         /// </summary>
@@ -72,7 +74,7 @@ namespace Atomic.Entities
             if (_entities.Remove(id, out IEntity entity))
             {
                 _recycledIds.Push(id);
-                id = -1;
+                id = UNDEFINED_INDEX;
                 this.OnRemoved?.Invoke(entity);
             }
         }

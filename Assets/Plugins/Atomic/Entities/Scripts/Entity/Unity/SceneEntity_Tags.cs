@@ -53,7 +53,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructTags()
         {
-            _tagCapacity = CeilToPrime(_initialTagCapacity, out _tagPrimeIndex);
+            _tagCapacity = CeilToPrime(initialTagCapacity, out _tagPrimeIndex);
             _tagSlots = new TagSlot[_tagCapacity];
             _tagBuckets = new int[_tagCapacity];
             Array.Fill(_tagBuckets, UNDEFINED_INDEX);

@@ -29,7 +29,7 @@ namespace Atomic.Entities
 #endif
         private void Reset()
         {
-            this.installers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
+            this.sceneInstallers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
             this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
             this.children.Remove(this);
             Debug.Log($"<color=#FFEB04>{this.name} Reset successfully!</color>", this);
@@ -62,9 +62,9 @@ namespace Atomic.Entities
         /// </summary>
         private void SetRefreshCallbackToInstallers()
         {
-            for (int i = 0, count = this.installers.Count; i < count; i++)
+            for (int i = 0, count = this.sceneInstallers.Count; i < count; i++)
             {
-                SceneEntityInstaller installer = this.installers[i];
+                SceneEntityInstaller installer = this.sceneInstallers[i];
                 if (installer != null)
                     installer.refreshCallback = this.Compile;
             }
@@ -118,9 +118,9 @@ namespace Atomic.Entities
         /// </summary>
         private void Precompile()
         {
-            _initialTagCapacity = _tagCount;
-            _initialValueCapacity = _valueCount;
-            _initialBehaviourCapacity = _behaviourCount;
+            initialTagCapacity = _tagCount;
+            initialValueCapacity = _valueCount;
+            initialBehaviourCapacity = _behaviourCount;
         }
 
         /// <summary>

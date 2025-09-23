@@ -278,7 +278,6 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke(this);
 
             this.UnsubscribeEvents();
-            EntityRegistry.Instance.Unregister(ref _instanceId);
         }
          
          

@@ -22,6 +22,7 @@ namespace Atomic.Entities
             public int initialBehaviourCapacity;
 
             public bool installOnAwake;
+            public bool uninstallOnDestroy;
             public bool disposeValues;
             public bool useUnityLifecycle;
         }
@@ -47,16 +48,17 @@ namespace Atomic.Entities
             E sceneEntity = gameObject.AddComponent<E>();
             sceneEntity.name = args.name;
 
-            sceneEntity.installers = args.installers;
+            sceneEntity.sceneInstallers = args.installers;
             sceneEntity.children = args.children;
 
             sceneEntity.installOnAwake = args.installOnAwake;
+            sceneEntity.uninstallOnDestroy = args.uninstallOnDestroy;
             sceneEntity.disposeValues = args.disposeValues;
             sceneEntity.useUnityLifecycle = args.useUnityLifecycle;
 
-            sceneEntity._initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
-            sceneEntity._initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
-            sceneEntity._initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+            sceneEntity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
+            sceneEntity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
+            sceneEntity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
 
             sceneEntity.Construct();
 
@@ -91,6 +93,7 @@ namespace Atomic.Entities
             IReadOnlyDictionary<int, object> values = null,
             IEnumerable<IEntityBehaviour> behaviours = null,
             bool installOnAwake = true,
+            bool uninstallOnDestroy = true,
             bool disposeValues = true,
             bool useUnityLifecycle = true,
             int initialTagCount = 1,
@@ -103,6 +106,7 @@ namespace Atomic.Entities
             values = values,
             behaviours = behaviours,
             installOnAwake = installOnAwake,
+            uninstallOnDestroy = uninstallOnDestroy,
             disposeValues = disposeValues,
             useUnityLifecycle = useUnityLifecycle,
             initialTagCapacity = initialTagCount,
@@ -119,6 +123,7 @@ namespace Atomic.Entities
         /// <param name="values">Optional dictionary of key-value pairs to assign to the entity.</param>
         /// <param name="behaviours">Optional collection of behaviours to attach to the entity.</param>
         /// <param name="installOnAwake">If true, installers will be run on Awake.</param>
+        /// <param name="uninstallOnDestroy">If true, installers will be run on Awake.</param>
         /// <param name="disposeValues">If true, values will be disposed when the entity is destroyed.</param>
         /// <param name="useUnityLifecycle">If true, the entity will use Unity's lifecycle methods.</param>
         /// <param name="initialTagCount">Initial capacity for tags.</param>
@@ -132,6 +137,7 @@ namespace Atomic.Entities
             IReadOnlyDictionary<int, object> values = null,
             IEnumerable<IEntityBehaviour> behaviours = null,
             bool installOnAwake = true,
+            bool uninstallOnDestroy = true,
             bool disposeValues = true,
             bool useUnityLifecycle = true,
             int initialTagCount = 1,
@@ -144,6 +150,7 @@ namespace Atomic.Entities
             values = values,
             behaviours = behaviours,
             installOnAwake = installOnAwake,
+            uninstallOnDestroy = uninstallOnDestroy,
             disposeValues = disposeValues,
             useUnityLifecycle = useUnityLifecycle,
             initialTagCapacity = initialTagCount,

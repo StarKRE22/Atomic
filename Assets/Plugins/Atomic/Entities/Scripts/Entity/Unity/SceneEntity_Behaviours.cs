@@ -336,7 +336,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructBehaviours()
         {
-            _behaviours = new IEntityBehaviour[_initialBehaviourCapacity];
+            _behaviours = new IEntityBehaviour[initialBehaviourCapacity];
             _behaviourCount = 0;
         }
         

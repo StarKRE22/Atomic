@@ -24,15 +24,31 @@ namespace Atomic.Entities
 
             this.OnInstall();
 
-            if (this.installers != null)
+            if (this.sceneInstallers != null)
             {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
+                for (int i = 0, count = this.sceneInstallers.Count; i < count; i++)
                 {
-                    SceneEntityInstaller installer = this.installers[i];
+                    SceneEntityInstaller installer = this.sceneInstallers[i];
                     if (installer != null)
                         installer.Install(this);
                     else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
+                        Debug.LogWarning(
+                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(SceneEntityInstaller)} at index {i}!",
+                            this);
+                }
+            }
+
+            if (this.scriptableInstallers != null)
+            {
+                for (int i = 0, count = this.scriptableInstallers.Count; i < count; i++)
+                {
+                    ScriptableEntityInstaller installer = this.scriptableInstallers[i];
+                    if (installer != null)
+                        installer.Install(this);
+                    else
+                        Debug.LogWarning(
+                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
+                            this);
                 }
             }
 
@@ -44,7 +60,8 @@ namespace Atomic.Entities
                     if (child != null)
                         child.Install();
                     else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
+                        Debug.LogWarning($"SceneEntity {this.name}: Ops! Detected missing child entity at index {i}!",
+                            this);
                 }
             }
 
@@ -68,15 +85,31 @@ namespace Atomic.Entities
 
             this.OnUninstall();
 
-            if (this.installers != null)
+            if (this.sceneInstallers != null)
             {
-                for (int i = 0, count = this.installers.Count; i < count; i++)
+                for (int i = 0, count = this.sceneInstallers.Count; i < count; i++)
                 {
-                    SceneEntityInstaller installer = this.installers[i];
+                    SceneEntityInstaller installer = this.sceneInstallers[i];
                     if (installer != null)
                         installer.Uninstall(this);
                     else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null installer!", this);
+                        Debug.LogWarning(
+                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(SceneEntityInstaller)} at index {i}!",
+                            this);
+                }
+            }
+            
+            if (this.scriptableInstallers != null)
+            {
+                for (int i = 0, count = this.scriptableInstallers.Count; i < count; i++)
+                {
+                    ScriptableEntityInstaller installer = this.scriptableInstallers[i];
+                    if (installer != null)
+                        installer.Uninstall(this);
+                    else
+                        Debug.LogWarning(
+                            $"SceneEntity {this.name}: Ops! Detected missing {nameof(ScriptableEntityInstaller)} at index {i}!",
+                            this);
                 }
             }
 
@@ -88,7 +121,8 @@ namespace Atomic.Entities
                     if (child != null)
                         child.Uninstall();
                     else
-                        Debug.LogWarning("SceneEntity: Ops! Detected null child entity!", this);
+                        Debug.LogWarning($"SceneEntity {this.name}: Ops! Detected missing child entity at index {i}!",
+                            this);
                 }
             }
 
@@ -99,7 +133,7 @@ namespace Atomic.Entities
         protected virtual void OnUninstall()
         {
         }
-        
+
         /// <summary>
         /// Installs all <see cref="SceneEntity"/> instances found in the given scene that are not yet installed.
         /// </summary>

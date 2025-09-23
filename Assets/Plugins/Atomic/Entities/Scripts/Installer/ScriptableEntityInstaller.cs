@@ -18,6 +18,19 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to configure or initialize.</param>
         public abstract void Install(IEntity entity);
+
+        /// <summary>
+        /// Removes previously installed data or behavior from the specified entity.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to uninstall configuration, components, or behavior from.
+        /// </param>
+        /// <remarks>
+        /// The default implementation does nothing. Override this method to provide custom uninstall logic.
+        /// </remarks>
+        public virtual void Uninstall(IEntity entity)
+        {
+        }
     }
 
     /// <summary>
@@ -27,7 +40,8 @@ namespace Atomic.Entities
     /// <remarks>
     /// This class enforces type safety and avoids manual casting in derived implementations.
     /// </remarks>
-    public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, IEntityInstaller<E> where E : class, IEntity
+    public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, IEntityInstaller<E>
+        where E : class, IEntity
     {
         /// <inheritdoc cref="ScriptableEntityInstaller.Install" />
         public sealed override void Install(IEntity entity) => this.Install((E) entity);
@@ -37,6 +51,22 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="entity">The entity to install.</param>
         public abstract void Install(E entity);
+
+        /// <inheritdoc cref="ScriptableEntityInstaller.Uninstall" />
+        public sealed override void Uninstall(IEntity entity) => this.Uninstall((E) entity);
+
+        /// <summary>
+        /// Removes previously installed data or behavior from the specified entity.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity to uninstall configuration, components, or behavior from.
+        /// </param>
+        /// <remarks>
+        /// The default implementation does nothing. Override this method to provide custom uninstall logic.
+        /// </remarks>
+        public virtual void Uninstall(E entity)
+        {
+        }
     }
 }
 #endif

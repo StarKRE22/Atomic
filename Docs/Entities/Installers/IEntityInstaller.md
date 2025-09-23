@@ -79,6 +79,7 @@ public sealed class CharacterInstaller : IEntityInstaller
 ```csharp
 public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
 ```
+
 - **Description:** Provides a strongly-typed mechanism for installing entity configuration.
 - **Type Parameter:** `E` – The specific entity type this installer targets.
 - **Inherits:** [IEntityInstaller](#entity-installer)
@@ -91,6 +92,7 @@ public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
 ```csharp
 public void Install(E entity);
 ```
+
 - **Description:** Called when the typed entity is configured.
 - **Parameter:** `entity` – The entity instance of type `E`.
 
@@ -99,6 +101,12 @@ public void Install(E entity);
 ### 🗂 Example of Usage
 
 Strongly-typed installer for `ICharacterEntity`:
+
+```csharp
+public interface ICharacterEntity : IEntity
+{
+}
+```
 
 ```csharp
 [Serializable]

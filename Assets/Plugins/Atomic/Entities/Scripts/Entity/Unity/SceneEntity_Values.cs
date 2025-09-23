@@ -77,7 +77,7 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void ConstructValues()
         {
-            _valueCapacity = CeilToPrime(_initialValueCapacity, out _valuePrimeIndex);
+            _valueCapacity = CeilToPrime(initialValueCapacity, out _valuePrimeIndex);
             _valueSlots = new ValueSlot[_valueCapacity];
             _valueBuckets = new int[_valueCapacity];
             Array.Fill(_valueBuckets, UNDEFINED_INDEX);

@@ -22,8 +22,9 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
         [DisableInPlayMode]
-        [GUIColor(0f, 0.83f, 1f)]
+        // [GUIColor(0f, 0.83f, 1f)]
 #endif
+        [Header("Singleton")]
         [Tooltip("Is it possible to contact via SceneEntitySingleton<T>.Instance?")]
         [SerializeField]
         private bool _isGlobal = true;
@@ -31,7 +32,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
         [DisableInPlayMode]
-        [PropertySpace(SpaceBefore = 0, SpaceAfter = 8)]
+        [PropertySpace(SpaceBefore = 0)]
 #endif
         [Tooltip("Do not destroy the target Object when loading a new Scene?")]
         [SerializeField]

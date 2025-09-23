@@ -57,7 +57,7 @@ Atomic.Entities provides:
   - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md)  <!-- + -->
   
 - **Installers**
-  - [IEntityInstaller](Installers/IEntityInstaller.md)
+  - [IEntityInstaller](Installers/IEntityInstaller.md) <!-- + -->
   - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
   - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
   
