@@ -33,9 +33,6 @@ public class InitColorBehaviour : IEntityInit
 - **Selective Application** – Only affects classes marked with this attribute.
 - **Lifecycle Coverage** – Applies to `Init`, `Enable`, `Disable`, and `Dispose` methods.
 - **Non-Intrusive** – Does not alter runtime behavior; only affects editor execution.
-
-####
-
 - Intended primarily for editor tooling and debugging workflows.
 - Only applies to classes implementing `IEntityBehaviour`.
 - Useful for previewing runtime logic, setting up scene simulations, or verifying entity behaviors during development.
