@@ -1,4 +1,4 @@
-# 🧩 `ReactiveDictionary<K, V>`
+# 🧩 ReactiveDictionary<K, V>
 
 Represents a **reactive key-value dictionary** that provides notifications when items are added, removed, or updated. It
 implements [IReactiveDictionary<K, V>](IReactiveDictionary.md). Optionally supports serialization for Unity projects.
