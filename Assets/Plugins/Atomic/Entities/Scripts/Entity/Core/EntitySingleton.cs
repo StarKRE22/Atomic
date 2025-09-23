@@ -40,10 +40,8 @@ namespace Atomic.Entities
         /// The factory that will be used to create new instances of <typeparamref name="E"/>.
         /// </param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is <c>null</c>.</exception>
-        public static void SetFactory(IEntityFactory<E> factory)
-        {
+        public static void SetFactory(IEntityFactory<E> factory) => 
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
-        }
 
         /// <summary>
         /// Disposes the current singleton instance, if it exists, 

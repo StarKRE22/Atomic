@@ -58,7 +58,7 @@ public Entity(
 #### `Int-keyed Constructor`
 
 ```csharp
-    public Entity(
+public Entity(
     string name,
     IEnumerable<int> tags,
     IEnumerable<KeyValuePair<int, object>> values,

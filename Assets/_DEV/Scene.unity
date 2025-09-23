@@ -554,8 +554,8 @@ MonoBehaviour:
   installers:
   - {fileID: 2085088264}
   children: []
-  _initialTagCapacity: 1
-  _initialValueCapacity: 1
+  _initialTagCapacity: 2
+  _initialValueCapacity: 3
   _initialBehaviourCapacity: 0
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
