@@ -130,32 +130,6 @@ namespace Atomic.Entities
         #region Values
 
         /// <summary>
-        /// Adds multiple values to the entity.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<int, object>> values)
-        {
-            if (values == null)
-                return;
-
-            foreach ((int key, object value) in values)
-                entity.AddValue(key, value);
-        }
-
-        /// <summary>
-        /// Retrieves a value of type T associated with the given key.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T GetValue<T>(this IEntity entity, string key) => entity.GetValue<T>(NameToId(key));
-
-        /// <summary>
-        /// Tries to retrieve a value of type T associated with the given key.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetValue<T>(this IEntity entity, string key, out T value) =>
-            entity.TryGetValue(NameToId(key), out value);
-
-        /// <summary>
         /// Adds a value to the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -171,20 +145,7 @@ namespace Atomic.Entities
             id = NameToId(key);
             entity.AddValue(id, value);
         }
-
-        /// <summary>
-        /// Adds multiple values by string keys.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<string, object>> values)
-        {
-            if (values == null)
-                return;
-
-            foreach ((string key, object value) in values)
-                entity.AddValue(key, value);
-        }
-
+        
         /// <summary>
         /// Adds a strongly-typed value to the entity.
         /// </summary>
@@ -201,14 +162,55 @@ namespace Atomic.Entities
             id = NameToId(key);
             entity.AddValue(id, value);
         }
+        
+        /// <summary>
+        /// Adds multiple values to the entity.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<int, object>> values)
+        {
+            if (values == null)
+                return;
 
+            foreach ((int key, object value) in values)
+                entity.AddValue(key, value);
+        }
+        
+        /// <summary>
+        /// Adds multiple values by string keys.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddValues(this IEntity entity, IEnumerable<KeyValuePair<string, object>> values)
+        {
+            if (values == null)
+                return;
+
+            foreach ((string key, object value) in values)
+                entity.AddValue(key, value);
+        }
+           
         /// <summary>
         /// Removes a value from the entity.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool DelValue(this IEntity entity, string key) =>
             entity.DelValue(NameToId(key));
+        
+        /// <summary>
+        /// Retrieves a value of type T associated with the given key.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T GetValue<T>(this IEntity entity, string key) =>
+            entity.GetValue<T>(NameToId(key));
 
+        /// <summary>
+        /// Tries to retrieve a value of type T associated with the given key.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetValue<T>(this IEntity entity, string key, out T value) =>
+            entity.TryGetValue(NameToId(key), out value);
+        
+        
         /// <summary>
         /// Sets a value in the entity.
         /// </summary>
@@ -299,6 +301,12 @@ namespace Atomic.Entities
                 entity.DelBehaviour(behaviour);
         }
 
+        /// <summary>
+        /// Removes multiple behaviours from the entity.
+        /// </summary>
+        /// <param name="behaviours">An array of behaviours to remove. Can be <c>null</c>, in which case nothing is removed.</param>
+        /// <param name="startIndex">The starting index in the <paramref name="behaviours"/> array.</param>
+        /// <param name="count">The number of behaviours to remove from <paramref name="startIndex"/>.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void DelBehaviours(this IEntity entity, IEntityBehaviour[] behaviours, int startIndex, int count)
         {
@@ -324,90 +332,8 @@ namespace Atomic.Entities
         }
 
         #endregion
-
-        #region Entity Retrieval
-
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Tries to retrieve the <see cref="IEntity"/> component from the specified GameObject.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this GameObject gameObject, out IEntity entity) =>
-            gameObject.TryGetComponent(out entity);
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Tries to retrieve the <see cref="IEntity"/> component from the specified Component.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this Component component, out IEntity entity) =>
-            component.TryGetComponent(out entity);
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Tries to retrieve the <see cref="IEntity"/> component from a 2D collision.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this Collision2D collision2D, out IEntity entity) =>
-            collision2D.gameObject.TryGetComponent(out entity);
-#endif
-
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Tries to retrieve the <see cref="IEntity"/> component from a 3D collision.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetEntity(this Collision collision, out IEntity entity) =>
-            collision.gameObject.TryGetComponent(out entity);
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Finds an <see cref="IEntity"/> in the parent hierarchy of the GameObject.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent(this GameObject gameObject, out IEntity entity)
-        {
-            entity = gameObject.GetComponentInParent<IEntity>();
-            return entity != null;
-        }
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Finds an <see cref="IEntity"/> in the parent hierarchy of the Component.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent(this Component component, out IEntity entity)
-        {
-            entity = component.GetComponentInParent<IEntity>();
-            return entity != null;
-        }
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent(this Collision2D collision2D, out IEntity entity)
-        {
-            entity = collision2D.gameObject.GetComponentInParent<IEntity>();
-            return entity != null;
-        }
-#endif
-#if UNITY_5_3_OR_NEWER
-        /// <summary>
-        /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 3D collision.
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool FindEntityInParent(this Collision collision, out IEntity entity)
-        {
-            entity = collision.gameObject.GetComponentInParent<IEntity>();
-            return entity != null;
-        }
-#endif
-
-        #endregion
-
-        #region Entity Installation
+        
+        #region Installing
 
         /// <summary>
         /// Installs logic from a single <see cref="IEntityInstaller"/> into the specified entity.
@@ -499,6 +425,88 @@ namespace Atomic.Entities
                     installer.Install(entity);
                 }
             }
+        }
+#endif
+
+        #endregion
+        
+        #region Retrieval
+
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Tries to retrieve the <see cref="IEntity"/> component from the specified GameObject.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetEntity(this GameObject gameObject, out IEntity entity) =>
+            gameObject.TryGetComponent(out entity);
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Tries to retrieve the <see cref="IEntity"/> component from the specified Component.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetEntity(this Component component, out IEntity entity) =>
+            component.TryGetComponent(out entity);
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Tries to retrieve the <see cref="IEntity"/> component from a 2D collision.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetEntity(this Collision2D collision2D, out IEntity entity) =>
+            collision2D.gameObject.TryGetComponent(out entity);
+#endif
+
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Tries to retrieve the <see cref="IEntity"/> component from a 3D collision.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetEntity(this Collision collision, out IEntity entity) =>
+            collision.gameObject.TryGetComponent(out entity);
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Finds an <see cref="IEntity"/> in the parent hierarchy of the GameObject.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool FindEntityInParent(this GameObject gameObject, out IEntity entity)
+        {
+            entity = gameObject.GetComponentInParent<IEntity>();
+            return entity != null;
+        }
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Finds an <see cref="IEntity"/> in the parent hierarchy of the Component.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool FindEntityInParent(this Component component, out IEntity entity)
+        {
+            entity = component.GetComponentInParent<IEntity>();
+            return entity != null;
+        }
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 2D collision.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool FindEntityInParent(this Collision2D collision2D, out IEntity entity)
+        {
+            entity = collision2D.gameObject.GetComponentInParent<IEntity>();
+            return entity != null;
+        }
+#endif
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Finds an <see cref="IEntity"/> in the parent hierarchy from a 3D collision.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool FindEntityInParent(this Collision collision, out IEntity entity)
+        {
+            entity = collision.gameObject.GetComponentInParent<IEntity>();
+            return entity != null;
         }
 #endif
 
