@@ -3,7 +3,8 @@
 ```csharp
 public interface IReactiveArray<T> : IReadOnlyReactiveArray<T>
 ```
-- **Description:** Represents a **reactive array with writable access** that provides notifications when elements are modified. It extends [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md) and allows controlled modifications while triggering reactive events.
+- **Description:** Represents a **reactive array with writable access** that provides notifications when elements are modified. 
+- **Inherits:** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md) 
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Use this interface when you need read-write access and reactive updates for array elements.
 
