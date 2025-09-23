@@ -1,14 +1,13 @@
 # 🧩 PrintAction
 
-Represents an action that **logs a message** and **works across platforms**. This allows printing
-messages consistently in both Unity and non-Unity
-environments, which is especially useful when debugging or logging events in cross-platform code.
-
 ```csharp
 [Serializable]
 public sealed class PrintAction : IAction
 ```
 
+- **Description:** Represents an action that **logs a message** and **works across platforms**. This allows printing
+messages consistently in both Unity and non-Unity
+environments, which is especially useful when debugging or logging events in cross-platform code.
 - **Inherits:** [IAction](IAction.md)
 - **Remarks:** Allows serialization in Unity
 
