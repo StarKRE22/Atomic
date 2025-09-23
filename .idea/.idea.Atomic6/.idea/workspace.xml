@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Installers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Installers/SceneEntityInstallerStub.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Installers/SceneEntityInstallerStub.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Static.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/EntityView/EntityViewTests_Hide.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/EntityView/EntityViewTests_Hide.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/EntityView/EntityViewTests_Show.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/EntityView/EntityViewTests_Show.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,23 +207,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="29701000" />
-    </task>
-    <task id="LOCAL-00612" summary="Написал Notes для контейнеров!">
-      <option name="closed" value="true" />
-      <created>1758529021387</created>
-      <option name="number" value="00612" />
-      <option name="presentableId" value="LOCAL-00612" />
-      <option name="project" value="LOCAL" />
-      <updated>1758529021387</updated>
-    </task>
-    <task id="LOCAL-00613" summary="Написал Notes для контейнеров!">
-      <option name="closed" value="true" />
-      <created>1758529129436</created>
-      <option name="number" value="00613" />
-      <option name="presentableId" value="LOCAL-00613" />
-      <option name="project" value="LOCAL" />
-      <updated>1758529129436</updated>
+      <workItem from="1758604662186" duration="31544000" />
     </task>
     <task id="LOCAL-00614" summary="Написал Notes для контейнеров!">
       <option name="closed" value="true" />
@@ -612,7 +585,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758647510113</updated>
     </task>
-    <option name="localTasksCounter" value="661" />
+    <task id="LOCAL-00661" summary="IEntityAspect.md">
+      <option name="closed" value="true" />
+      <created>1758648811220</created>
+      <option name="number" value="00661" />
+      <option name="presentableId" value="LOCAL-00661" />
+      <option name="project" value="LOCAL" />
+      <updated>1758648811220</updated>
+    </task>
+    <task id="LOCAL-00662" summary="SceneEntityAspect.md">
+      <option name="closed" value="true" />
+      <created>1758653117464</created>
+      <option name="number" value="00662" />
+      <option name="presentableId" value="LOCAL-00662" />
+      <option name="project" value="LOCAL" />
+      <updated>1758653117464</updated>
+    </task>
+    <option name="localTasksCounter" value="663" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,8 +628,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал NOTES!" />
-    <MESSAGE value="Сделал Performance для Entity!" />
     <MESSAGE value="Minor Fix!" />
     <MESSAGE value="Подкрутил Performance!" />
     <MESSAGE value="Вот теперь performance корректный!" />
@@ -664,7 +651,9 @@
     <MESSAGE value="Сделал SceneEntityInstaller.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
     <MESSAGE value="Думаем!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Думаем!" />
+    <MESSAGE value="IEntityAspect.md" />
+    <MESSAGE value="SceneEntityAspect.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityAspect.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
