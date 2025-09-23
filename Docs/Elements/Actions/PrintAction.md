@@ -4,19 +4,17 @@ Represents an action that **logs a message** and **works across platforms**. Thi
 messages consistently in both Unity and non-Unity
 environments, which is especially useful when debugging or logging events in cross-platform code.
 
-> [!NOTE]
-> In **Unity**, it uses `Debug.Log`, `Debug.LogWarning`, or `Debug.LogError` depending on the specified `LogType`.
-> <br> Outside of Unity, it uses `Console.WriteLine`.
-
----
-
 ```csharp
 [Serializable]
 public sealed class PrintAction : IAction
 ```
 
 - **Inheritance:** Implements [IAction](IAction.md)
-- **Notes:** Allows serialization in Unity
+- **Remarks:** Allows serialization in Unity
+
+> [!IMPORTANT]
+> In **Unity**, it uses `Debug.Log`, `Debug.LogWarning`, or `Debug.LogError` depending on the specified `LogType`.
+> <br> Outside of Unity, it uses `Console.WriteLine`.
 
 ---
 
