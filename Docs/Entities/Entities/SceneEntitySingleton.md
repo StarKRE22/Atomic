@@ -18,7 +18,7 @@ public abstract class SceneEntitySingleton<E> : SceneEntity
 
 ## 🛠 Inspector Settings
 
-| Field               | Type                                                                                      |
+| Parameter           | Type                                                                                      |
 |---------------------|-------------------------------------------------------------------------------------------|
 | `isGlobal`          | Allows access via `Instance`. Determines if the singleton is global. Default is `true`    |
 | `dontDestroyOnLoad` | Prevents the GameObject from being destroyed when loading a new scene. Default is `false` |

@@ -1,76 +1,87 @@
 # 🧩 SceneEntityProxy
 
-`SceneEntityProxy` is a Unity component that acts as a proxy or reference to an existing `SceneEntity`. It allows multiple `GameObjects` to share and reference the same entity instance, enabling flexible entity architectures.
+Unity component that acts as a proxy or reference to an existing [SceneEntity](SceneEntity.md).
+It allows multiple `GameObjects` to share and reference the same entity instance, enabling flexible entity
+architectures.
 
 ---
 
-## Key Features
+### 🔹 Generic Version
 
-- **Entity Reference** – Points to an existing SceneEntity
-- **Proxy Pattern** – Multiple proxies can reference one entity
-- **Inspector Configuration** – Set entity reference in Unity Editor
-- **Delegation** – Forwards IEntity interface calls to target
+```csharp
+public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
+    where E : SceneEntity
+```
 
----
-
-## Properties
-
-| Property      | Type     | Description                                          |
-|---------------|----------|------------------------------------------------------|
-| `Source`      | `E`      | The source entity that this proxy forwards calls to. |
-| `InstanceID`  | `int`    | The instance ID of the source entity.                |
-| `Name`        | `string` | The name of the source entity.                       |
-| `Initialized` | `bool`   | True if the source entity is initialized.            |
-| `Enabled`     | `bool`   | True if the source entity is enabled.                |
+- **Description:** Represents a proxy that forwards [IEntity](IEntity.md) calls to an underlying `E` source entity
+- **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
+- **Inheritance:**
+    - extends `MonoBehaviour`
+    - implements [IEntity](IEntity.md)
 
 ---
 
-## Lifecycle Methods
+### 🔹 Non-Generic Version
 
-| Method                    | Description                                                 |
-|---------------------------|-------------------------------------------------------------|
-| `Init()`                  | Delegates initialization to the source entity.              |
-| `Enable()`                | Delegates enabling to the source entity.                    |
-| `Disable()`               | Delegates disabling to the source entity.                   |
-| `Dispose()`               | Delegates cleanup and disposal to the source entity.        |
-| `OnUpdate(float dt)`      | Delegates `Update` calls to all `IEntityUpdate` behaviours. |
-| `OnFixedUpdate(float dt)` | Delegates `FixedUpdate` calls.                              |
-| `OnLateUpdate(float dt)`  | Delegates `LateUpdate` calls.                               |
+```csharp
+public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
+```
+
+- **Description:** Non-generic proxy component for exposing and interacting with a `SceneEntity` in the Unity scene.
+- **Inheritance:** extends `SceneEntityProxy<E>`
 
 ---
 
-## Tags, Values & Behaviours
+## 🛠 Inspector Settings
 
-`SceneEntityProxy` fully supports working with tags, values, and behaviours by delegating:
+| Parameter | Description                                                        |
+|-----------|--------------------------------------------------------------------|
+| `source`  | Reference to the actual `SceneEntity` object that this proxy wraps |
 
-- `AddTag`, `DelTag`, `HasTag`, `ClearTags`, `GetTags`, `GetTagEnumerator`
-- `AddValue`, `SetValue`, `GetValue`, `TryGetValue`, `DelValue`, `ClearValues`, `GetValueEnumerator`
-- `AddBehaviour`, `DelBehaviour`, `GetBehaviour`, `GetBehaviours`, `ClearBehaviours`, `GetBehaviourEnumerator`
+## 🔑 Properties
 
----
-
-## Events
-
-| Event                                              | Description                              |
-|----------------------------------------------------|------------------------------------------|
-| `OnStateChanged`                                   | Triggered when the entity state changes. |
-| `OnInitialized`                                    | Delegated from the source entity.        |
-| `OnEnabled`                                        | Delegated from the source entity.        |
-| `OnDisabled`                                       | Delegated from the source entity.        |
-| `OnDisposed`                                       | Delegated from the source entity.        |
-| `OnUpdated(float dt)`                              | Delegated from the source entity.        |
-| `OnFixedUpdated(float dt)`                         | Delegated from the source entity.        |
-| `OnLateUpdated(float dt)`                          | Delegated from the source entity.        |
-| `OnTagAdded`, `OnTagDeleted`                       | Delegated from the source entity.        |
-| `OnValueAdded`, `OnValueDeleted`, `OnValueChanged` | Delegated from the source entity.        |
-| `OnBehaviourAdded`, `OnBehaviourDeleted`           | Delegated from the source entity.        |
+#### `Source`
+```csharp
+public E Source { get; }
+```
+- **Description:** The source entity that this proxy forwards calls to.
 
 ---
 
-## Using Child Colliders
+## 🗂 Example of Usage
 
-`SceneEntityProxy` works seamlessly with entities that have multiple child colliders (e.g., hitboxes, triggers).  
-By placing a proxy on each child collider, you can ensure that interactions such as raycasts, triggers, or hits always reference the same logical entity, regardless of which physical collider was involved.
+`SceneEntityProxy` works seamlessly with entities that have multiple child colliders (e.g., hitboxes, triggers). By placing a proxy on each child collider, you can ensure that interactions such as raycasts, triggers, or hits always
+reference the same logical entity, regardless of which physical collider was involved.
+
+#### 1. Create a new `GameObject`
+
+<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+
+#### 2. Add `Entity` Component to the GameObject
+
+<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
+
+#### 3. Add `Entity Proxy` and `Collider` for a child GameObject of the entity
+
+<img width="350" height="" alt="Entity component" src="../../Images/EntityProxy.png" />
+
+#### 4. Create `TriggerExample` script
+
+```csharp
+public class TriggerExample : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out IEntity proxy)) // proxy is SceneEntityProxy
+            Debug.Log($"Hit entity: {proxy.Name}");
+    }
+}
+```
+
+#### 5. When your entity enters the trigger, it will be logged in the console.
+
+> This approach ensures that all colliders contribute to the same entity logic, making entity management consistent and
+> modular.
 
 ### Benefits
 
@@ -79,16 +90,11 @@ By placing a proxy on each child collider, you can ensure that interactions such
 - Eliminates the need for manual mapping between colliders and entities.
 - Works for both generic (`SceneEntityProxy<E>`) and non-generic (`SceneEntityProxy`) proxies.
 
-### Example
+---
 
-```csharp
-void OnTriggerEnter(Collider other)
-{
-    if (other.TryGetComponent(out IEntity proxy)) // proxy is SceneEntityProxy
-    {
-        Debug.Log($"Hit entity: {proxy.Name}");
-        proxy.AddTag(Tag.Hit);
-    }
-}
-```
-> This approach ensures that all colliders contribute to the same entity logic, making entity management consistent and modular.
+## 📝 Notes
+
+- **Entity Reference** – Points to an existing `SceneEntity`
+- **Delegation** – Forwards `IEntity` interface calls to target
+- **Proxy Pattern** – Multiple proxies can reference one entity
+- **Inspector Configuration** – Set entity reference in Unity Editor

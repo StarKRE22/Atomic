@@ -40,8 +40,8 @@ Atomic.Entities provides:
   - [Entity](Entities/Entity.md) <!-- + -->
   - [EntitySingleton](Entities/EntitySingleton.md) <!-- + -->
   - [SceneEntity](Entities/SceneEntity.md) <!-- + -->
+  - [SceneEntitySingleton](Entities/SceneEntitySingleton.md) <!-- + -->
   - [SceneEntityProxy](Entities/SceneEntityProxy.md)
-  - [SceneEntitySingleton](Entities/SceneEntitySingleton.md)
   - [Extensions](Entities/Extensions.md)
   
 - **Behaviours**
