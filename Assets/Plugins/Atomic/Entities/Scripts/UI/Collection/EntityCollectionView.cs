@@ -30,7 +30,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) managed by this collection.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) associated with entities.</typeparam>
     public abstract class EntityCollectionView<E, V> : MonoBehaviour, IEnumerable<KeyValuePair<E, V>>
-        where E : IEntity
+        where E : class, IEntity
         where V : EntityView<E>
     {
         private static readonly ArrayPool<E> s_entityPool = ArrayPool<E>.Shared;

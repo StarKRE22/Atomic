@@ -22,7 +22,7 @@ namespace Atomic.Entities
     public class EntityView : EntityView<IEntity>
     {
         /// <summary>
-        /// Creates a new <see cref="EntityView"/> GameObject and sets up its aspects.
+        /// Creates a new <see cref="EntityView"/> GameObject and sets up its installers.
         /// </summary>
         /// <param name="args">The creation arguments.</param>
         /// <returns>The created <see cref="EntityView"/> instance.</returns>
@@ -35,7 +35,7 @@ namespace Atomic.Entities
     /// Provides core functionality for showing, hiding, and naming views bound to <see cref="IEntity"/>.
     /// </summary>
     /// <typeparam name="E">The type of <see cref="IEntity"/> associated with this view.</typeparam>
-    public abstract partial class EntityView<E> : MonoBehaviour where E : IEntity
+    public abstract partial class EntityView<E> : MonoBehaviour where E : class, IEntity
     {
         /// <summary>
         /// If true, <see cref="GameObject.SetActive"/> will be called when <see cref="Show(E)"/> and <see cref="Hide"/> are invoked.
@@ -60,12 +60,11 @@ namespace Atomic.Entities
         internal string customName;
 
         /// <summary>
-        /// List of aspects that provide values and behaviors to the attached entity.
+        /// List of installers that provide values and behaviors to the attached entity.
         /// </summary>
-        [Header("Aspects")]
-        [Tooltip("Specify the aspects that will put values and behaviours to an attached entity")]
+        [Tooltip("Specify the installers that will put values and behaviours to an attached entity")]
         [SerializeField]
-        internal List<SceneEntityAspect<E>> aspects;
+        internal List<SceneEntityInstaller> installers;
 
         /// <summary>
         /// Gets the display name of the view.
@@ -103,15 +102,15 @@ namespace Atomic.Entities
 
             this.OnShow(entity);
 
-            if (this.aspects != null)
+            if (this.installers != null)
             {
-                for (int i = 0, count = this.aspects.Count; i < count; i++)
+                for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneEntityAspect<E> aspect = this.aspects[i];
-                    if (aspect)
-                        aspect.Apply(entity);
+                    SceneEntityInstaller installer = this.installers[i];
+                    if (installer)
+                        installer.Install(entity);
                     else
-                        Debug.LogWarning("EntityView: Oops! Detected null aspect!", this);
+                        Debug.LogWarning("EntityView: Oops! Detected null installer!", this);
                 }
             }
         }
@@ -134,15 +133,15 @@ namespace Atomic.Entities
             if (_entity == null)
                 return;
 
-            if (this.aspects != null)
+            if (this.installers != null)
             {
-                for (int i = 0, count = this.aspects.Count; i < count; i++)
+                for (int i = 0, count = this.installers.Count; i < count; i++)
                 {
-                    SceneEntityAspect<E> aspect = this.aspects[i];
-                    if (aspect)
-                        aspect.Discard(_entity);
+                    SceneEntityInstaller installer = this.installers[i];
+                    if (installer)
+                        installer.Uninstall(_entity);
                     else
-                        Debug.LogWarning("EntityView: Oops! Detected null aspect!", this);
+                        Debug.LogWarning("EntityView: Oops! Detected null installer!", this);
                 }
             }
 
@@ -151,7 +150,7 @@ namespace Atomic.Entities
             if (this.controlGameObject)
                 this.gameObject.SetActive(false);
 
-            _entity = default;
+            _entity = null;
         }
 
         /// <summary>

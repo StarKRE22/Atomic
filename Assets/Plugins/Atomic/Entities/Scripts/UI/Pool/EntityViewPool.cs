@@ -19,7 +19,7 @@ namespace Atomic.Entities
     }
     
     public abstract class EntityViewPool<E, V> : MonoBehaviour 
-        where E : IEntity
+        where E : class, IEntity
         where V : EntityView<E>
     {
         [Tooltip("The parent transform under which all pooled views will be stored")]

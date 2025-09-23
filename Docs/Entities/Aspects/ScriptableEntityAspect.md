@@ -104,6 +104,10 @@ The `PlayerFlyAspect` adds flying capability to a specific entity type implement
 - Can encapsulate reusable logic for multiple entities
 
 ```csharp
+[CreateAssetMenu(
+    fileName = "MoveInstaller",
+    menuName = "SampleGame/New MoveInstaller"
+)]
 public sealed class PlayerFlyAspect : ScriptableEntityAspect<IPlayerEntity>
 {
     [SerializeField] private float _flyForce = 2f;

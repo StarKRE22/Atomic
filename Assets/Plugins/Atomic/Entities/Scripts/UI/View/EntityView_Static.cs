@@ -19,8 +19,8 @@ namespace Atomic.Entities
             [Tooltip("Should activate and deactivate GameObject when Show / Hide are invoked?")]
             public bool controlGameObject;
             
-            [Tooltip("Aspects that will configure the EntityView upon creation.")]
-            public List<SceneEntityAspect<E>> aspects;
+            [Tooltip("Installers that will configure the EntityView upon creation.")]
+            public List<SceneEntityInstaller> installers;
             
             [Header("Gizmos")]
             [Tooltip("If true, gizmos will be drawn only in Edit Mode.")]
@@ -43,7 +43,7 @@ namespace Atomic.Entities
 
             T view = gameObject.AddComponent<T>();
             
-            view.aspects = args.aspects;
+            view.installers = args.installers;
             view.controlGameObject = args.controlGameObject;
             view._onlyEditModeGizmos = args.onlyEditModeGizmos;
             view._onlySelectedGizmos = args.onlySelectedGizmos;

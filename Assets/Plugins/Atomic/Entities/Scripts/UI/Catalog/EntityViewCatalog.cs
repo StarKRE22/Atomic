@@ -29,7 +29,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The type of entity (<see cref="IEntity"/>) associated with the views in this catalog.</typeparam>
     /// <typeparam name="V">The type of entity view (<see cref="EntityView{E}"/>) stored in this catalog.</typeparam>
     public abstract class EntityViewCatalog<E, V> : ScriptableObject
-        where E : IEntity
+        where E : class, IEntity
         where V : EntityView<E>
     {
         /// <summary>

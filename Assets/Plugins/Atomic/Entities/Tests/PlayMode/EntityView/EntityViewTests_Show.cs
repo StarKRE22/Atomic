@@ -128,8 +128,8 @@ namespace Atomic.Entities
             var go = new GameObject();
             var view = go.AddComponent<EntityView>();
 
-            var aspect = go.AddComponent<SceneEntityAspectStub>();
-            view.aspects = new List<SceneEntityAspect<IEntity>> {aspect};
+            var aspect = go.AddComponent<SceneEntityInstallerStub>();
+            view.installers = new List<SceneEntityInstaller> {aspect};
 
             var entity = new Entity();
 
@@ -137,7 +137,7 @@ namespace Atomic.Entities
             view.Show(entity);
 
             //Assert:
-            Assert.IsTrue(aspect.Applied);
+            Assert.IsTrue(aspect.Installed);
             
             //Dispose:
             Object.DestroyImmediate(go);

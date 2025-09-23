@@ -25,18 +25,17 @@ namespace Atomic.Entities
             var go = new GameObject();
             var view = go.AddComponent<EntityView>();
 
-            var aspect = go.AddComponent<SceneEntityAspectStub>();
-            view.aspects = new List<SceneEntityAspect<IEntity>> {aspect};
+            var installer = go.AddComponent<SceneEntityInstallerStub>();
+            view.installers = new List<SceneEntityInstaller> {installer};
 
             var entity = new Entity();
             view.Show(entity);
 
             //Act:
             view.Hide();
-
-
+            
             //Assert:
-            Assert.IsTrue(aspect.Discarded);
+            Assert.IsTrue(installer.Uninstalled);
 
             //Dispose:
             Object.DestroyImmediate(go);
