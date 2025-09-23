@@ -54,7 +54,7 @@ Atomic.Entities provides:
   - [IEntityFixedTick](Behaviours/IEntityFixedTick.md)  <!-- + -->
   - [IEntityLateTick](Behaviours/IEntityLateTick.md)  <!-- + -->
   - [IEntityGizmos](Behaviours/IEntityGizmos.md)  <!-- + -->
-  - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md)
+  - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md)  <!-- + -->
   
 - **Installers**
   - [IEntityInstaller](Installers/IEntityInstaller.md)

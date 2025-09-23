@@ -1,6 +1,6 @@
 # 🧩️ IEntityDisable Interfaces
 
-Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) **is disabled**.It is
+Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) **is disabled**. It is
 automatically invoked by the entity’s `Disable` method when the entity exits the active state, such as during pause,
 unloading, or before being despawned.
 
