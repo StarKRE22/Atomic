@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -207,31 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="33555000" />
-    </task>
-    <task id="LOCAL-00622" summary="Вот теперь performance корректный!">
-      <option name="closed" value="true" />
-      <created>1758566456303</created>
-      <option name="number" value="00622" />
-      <option name="presentableId" value="LOCAL-00622" />
-      <option name="project" value="LOCAL" />
-      <updated>1758566456303</updated>
-    </task>
-    <task id="LOCAL-00623" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758566563097</created>
-      <option name="number" value="00623" />
-      <option name="presentableId" value="LOCAL-00623" />
-      <option name="project" value="LOCAL" />
-      <updated>1758566563097</updated>
-    </task>
-    <task id="LOCAL-00624" summary="Сделал SceneEntity.md">
-      <option name="closed" value="true" />
-      <created>1758568695400</created>
-      <option name="number" value="00624" />
-      <option name="presentableId" value="LOCAL-00624" />
-      <option name="project" value="LOCAL" />
-      <updated>1758568695400</updated>
+      <workItem from="1758604662186" duration="33857000" />
     </task>
     <task id="LOCAL-00625" summary="Сделал SceneEntity.md">
       <option name="closed" value="true" />
@@ -601,7 +576,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758655274349</updated>
     </task>
-    <option name="localTasksCounter" value="671" />
+    <task id="LOCAL-00671" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758655678077</created>
+      <option name="number" value="00671" />
+      <option name="presentableId" value="LOCAL-00671" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655678078</updated>
+    </task>
+    <task id="LOCAL-00672" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758655708125</created>
+      <option name="number" value="00672" />
+      <option name="presentableId" value="LOCAL-00672" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655708125</updated>
+    </task>
+    <task id="LOCAL-00673" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758655860539</created>
+      <option name="number" value="00673" />
+      <option name="presentableId" value="LOCAL-00673" />
+      <option name="project" value="LOCAL" />
+      <updated>1758655860539</updated>
+    </task>
+    <option name="localTasksCounter" value="674" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +642,6 @@
     <MESSAGE value="IEntityInstaller.md" />
     <MESSAGE value="Фиксы в SceneEntity.cs" />
     <MESSAGE value="Minor fixes!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Сделал SceneEntityInstaller.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
     <MESSAGE value="Думаем!" />
@@ -653,7 +651,8 @@
     <MESSAGE value="Сделал Aspects!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Print Action" />
-    <option name="LAST_COMMIT_MESSAGE" value="Print Action" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

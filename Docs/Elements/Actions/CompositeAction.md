@@ -10,13 +10,13 @@ especially important when game objects and scripts need to execute complex actio
 
 ## 🏛️ Classes
 
-There are several implementations of composite actons, depending on the number of arguments the actions take:
+There are several implementations of composite actions, depending on the number of arguments the actions take:
 
-- **`CompositeAction`** - Non-generic version; works with `IAction` without parameters.
-- **`CompositeAction<T>`** - Holds actions that take one argument of type `T`.
-- **`CompositeAction<T1, T2>`** - Holds actions that take two arguments of types `T1` and `T2`.
-- **`CompositeAction<T1, T2, T3>`** - Holds actions that take three arguments of types `T1`, `T2`, `T3`.
-- **`CompositeAction<T1, T2, T3, T4>`** - Holds actions that take four arguments of types `T1`, `T2`, `T3`, `T4`.
+- [CompositeAction](#composite-action) — Non-generic version; works with `IAction` without parameters.
+- [CompositeAction&lt;T&gt;](#composite-action-t) — Holds actions that take one argument of type `T`.
+- [CompositeAction&lt;T1, T2&gt;](#composite-action-t1-t2) — Holds actions that take two arguments of types `T1` and `T2`.
+- [CompositeAction&lt;T1, T2, T3&gt;](#composite-action-t1-t2-t3) — Holds actions that take three arguments of types `T1`, `T2`, `T3`.
+- [CompositeAction&lt;T1, T2, T3, T4&gt;](#composite-action-t1-t2-t3-t4) — Holds actions that take four arguments of types `T1`, `T2`, `T3`, `T4`.
 
 ---
 
@@ -70,12 +70,9 @@ logic or events.
 
 ---
 
-
----
-
 <details>
   <summary>
-    <h2>🧩 CompositeAction</h2>
+    <h2 id="composite-action">🧩 CompositeAction</h2>
     <br>  Represents a group of <b>parameterless actions</b> that are executed sequentially.
   </summary>
 
@@ -153,7 +150,7 @@ composite.Invoke();
 
 <details>
   <summary>
-    <h2>🧩 CompositeAction&lt;T&gt;</h2>
+    <h2 id="composite-action-t">🧩 CompositeAction&lt;T&gt;</h2>
     <br>  Represents a group of actions <b>with one parameter</b> that are executed sequentially.
   </summary>
 
@@ -234,7 +231,7 @@ composite.Invoke("World");
 
 <details>
   <summary>
-    <h2>🧩 CompositeAction&lt;T1, T2&gt;</h2>
+    <h2 id="composite-action-t1-t2">🧩 CompositeAction&lt;T1, T2&gt;</h2>
     <br>  Represents a group of actions <b>with two parameters</b> that are executed sequentially.
   </summary>
 
@@ -314,7 +311,7 @@ composite.Invoke(3, 4);
 
 <details>
   <summary>
-    <h2>🧩 CompositeAction&lt;T1, T2, T3&gt;</h2>
+    <h2 id="composite-action-t1-t2-t3">🧩 CompositeAction&lt;T1, T2, T3&gt;</h2>
     <br>  Represents a group of actions <b>with three parameters</b> that are executed sequentially.
   </summary>
 
@@ -391,7 +388,7 @@ composite.Invoke(3, 4, 2);
 
 <details>
   <summary>
-    <h2>🧩 CompositeAction&lt;T1, T2, T3, T4&gt;</h2>
+    <h2 id="composite-action-t1-t2-t3-t4">🧩 CompositeAction&lt;T1, T2, T3, T4&gt;</h2>
     <br>  Represents a group of actions <b>with four parameters</b> that are executed sequentially.
   </summary>
 
