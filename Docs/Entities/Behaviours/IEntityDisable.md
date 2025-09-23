@@ -63,7 +63,7 @@ public class DisableRendererBehaviour : IEntityDisable
 
 <br>
 
-```
+```csharp
 public interface IEntityDisable<in E> : IEntityDisable where E : IEntity
 ```
 
