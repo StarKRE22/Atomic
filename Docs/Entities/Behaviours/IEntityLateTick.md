@@ -26,7 +26,7 @@ public interface IEntityLateTick : IEntityBehaviour
 #### `LateTick(IEntity, float)`
 
 ```csharp
-void LateTick(IEntity entity, float deltaTime);
+public void LateTick(IEntity entity, float deltaTime);
 ```
 
 - **Description:** Called during the late update phase of the frame.
@@ -89,7 +89,7 @@ public interface IEntityLateTick<in E> : IEntityLateTick where E : IEntity
 #### `LateTick(E, float)`
 
 ```csharp
-void LateTick(E entity, float deltaTime);
+public void LateTick(E entity, float deltaTime);
 ```
 
 - **Description:** Called during the late update phase of the frame for the strongly-typed entity.

@@ -25,7 +25,7 @@ public interface IEntityFixedTick : IEntityBehaviour
 #### `FixedTick(IEntity, float)`
 
 ```csharp
-void FixedTick(IEntity entity, float fixedDeltaTime);
+public void FixedTick(IEntity entity, float fixedDeltaTime);
 ```
 
 - **Description:** Called during the fixed update phase of the frame.
@@ -83,7 +83,7 @@ public interface IEntityFixedTick<in E> : IEntityFixedTick where E : IEntity
 #### `FixedTick(E, float)`
 
 ```csharp
-void FixedTick(E entity, float fixedDeltaTime);
+public void FixedTick(E entity, float fixedDeltaTime);
 ```
 
 - **Description:** Called during the fixed update phase of the frame for the strongly-typed entity.
