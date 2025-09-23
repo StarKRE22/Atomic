@@ -23,7 +23,7 @@ public interface IEntityGizmos : IEntityBehaviour
 #### `DrawGizmos(IEntity)`
 
 ```csharp
-void DrawGizmos(IEntity entity);
+public void DrawGizmos(IEntity entity);
 ```
 
 - **Description:** Draws editor or debug gizmos for the entity.
@@ -80,7 +80,7 @@ public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
 #### `DrawGizmos(E)`
 
 ```csharp
-void DrawGizmos(E entity);
+public void DrawGizmos(E entity);
 ```
 
 - **Description:** Draws gizmos for the strongly-typed entity.
