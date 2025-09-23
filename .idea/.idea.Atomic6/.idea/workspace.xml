@@ -206,39 +206,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="34825000" />
-    </task>
-    <task id="LOCAL-00637" summary="Minor fixes!">
-      <option name="closed" value="true" />
-      <created>1758619687868</created>
-      <option name="number" value="00637" />
-      <option name="presentableId" value="LOCAL-00637" />
-      <option name="project" value="LOCAL" />
-      <updated>1758619687868</updated>
-    </task>
-    <task id="LOCAL-00638" summary="SceneEntityProxy.md">
-      <option name="closed" value="true" />
-      <created>1758620214833</created>
-      <option name="number" value="00638" />
-      <option name="presentableId" value="LOCAL-00638" />
-      <option name="project" value="LOCAL" />
-      <updated>1758620214833</updated>
-    </task>
-    <task id="LOCAL-00639" summary="SceneEntityProxy.md">
-      <option name="closed" value="true" />
-      <created>1758620267833</created>
-      <option name="number" value="00639" />
-      <option name="presentableId" value="LOCAL-00639" />
-      <option name="project" value="LOCAL" />
-      <updated>1758620267833</updated>
-    </task>
-    <task id="LOCAL-00640" summary="IEntityInit.md">
-      <option name="closed" value="true" />
-      <created>1758621023748</created>
-      <option name="number" value="00640" />
-      <option name="presentableId" value="LOCAL-00640" />
-      <option name="project" value="LOCAL" />
-      <updated>1758621023748</updated>
+      <workItem from="1758604662186" duration="35166000" />
     </task>
     <task id="LOCAL-00641" summary="IEntityInit.md">
       <option name="closed" value="true" />
@@ -600,7 +568,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758656914530</updated>
     </task>
-    <option name="localTasksCounter" value="686" />
+    <task id="LOCAL-00686" summary="Фиксы!">
+      <option name="closed" value="true" />
+      <created>1758656953962</created>
+      <option name="number" value="00686" />
+      <option name="presentableId" value="LOCAL-00686" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656953963</updated>
+    </task>
+    <task id="LOCAL-00687" summary="Фиксы!">
+      <option name="closed" value="true" />
+      <created>1758656978705</created>
+      <option name="number" value="00687" />
+      <option name="presentableId" value="LOCAL-00687" />
+      <option name="project" value="LOCAL" />
+      <updated>1758656978705</updated>
+    </task>
+    <task id="LOCAL-00688" summary="Фиксы!">
+      <option name="closed" value="true" />
+      <created>1758657007993</created>
+      <option name="number" value="00688" />
+      <option name="presentableId" value="LOCAL-00688" />
+      <option name="project" value="LOCAL" />
+      <updated>1758657007993</updated>
+    </task>
+    <task id="LOCAL-00689" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1758657176868</created>
+      <option name="number" value="00689" />
+      <option name="presentableId" value="LOCAL-00689" />
+      <option name="project" value="LOCAL" />
+      <updated>1758657176868</updated>
+    </task>
+    <option name="localTasksCounter" value="690" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,9 +650,9 @@
     <MESSAGE value="Сделал Aspects!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Print Action" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Фиксы!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фиксы!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
