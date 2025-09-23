@@ -63,19 +63,19 @@ Atomic.Entities provides:
   
 - **Aspects**
   - [IEntityAspect](Aspects/IEntityAspect.md) <!-- + -->
-  - [SceneEntityAspect](Aspects/SceneEntityAspect.md)
-  - [ScriptableEntityAspect](Aspects/ScriptableEntityAspect.md)
+  - [SceneEntityAspect](Aspects/SceneEntityAspect.md) <!-- + -->
+  - [ScriptableEntityAspect](Aspects/ScriptableEntityAspect.md) <!-- + -->
 
 - **Factories**
   - [IEntityFactory](Factories/IEntityFactory.md)
-  - [ScriptableEntityFactory](Factories/ScriptableEntityFactory.md)
   - [SceneEntityFactory](Factories/SceneEntityFactory.md)
+  - [ScriptableEntityFactory](Factories/ScriptableEntityFactory.md)
   - [InlineEntityFactory](Factories/InlineEntityFactory.md)
   - [IMultiEntityFactory](Factories/IMultiEntityFactory.md)
   - [MultiEntityFactory](Factories/MultiEntityFactory.md)
-  - [SceneEntityBaker](Factories/SceneEntityBaker.md)
   - [IEntityFactoryCatalog](Factories/IEntityFactoryCatalog.md)
   - [ScriptableEntityFactoryCatalog](Factories/ScriptableEntityFactoryCatalog.md)
+  - [SceneEntityBaker](Factories/SceneEntityBaker.md)
 
 - **Pooling**
   - [IEntityPool](Pooling/IEntityPool.md)

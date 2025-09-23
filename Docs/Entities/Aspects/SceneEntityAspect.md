@@ -1,12 +1,9 @@
 # 🧩 SceneEntityAspect Classes
 
 Represents a reusable `MonoBehaviour` that can **apply or discard behaviors on [entities](../Entities/IEntity.md) within
-a Unity scene**. It comes
-in two forms:
-
-> [!TIP]
-> Use `SceneEntityAspect` when you want modular, reusable behaviors that can be dynamically applied or removed from
-> scene entities.
+a Unity scene**. 
+Use `SceneEntityAspect` when you want modular, reusable behaviors that can be dynamically applied or removed from
+scene entities.
 
 ---
 

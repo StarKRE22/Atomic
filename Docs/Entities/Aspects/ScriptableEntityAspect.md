@@ -1,11 +1,8 @@
 # 🧩 ScriptableEntityAspect Classes
 
 Represents a reusable `ScriptableObject` that can **apply or discard behaviors on [entities](../Entities/IEntity.md)**.
-It comes in two forms:
-
-> [!TIP]
-> Use `ScriptableEntityAspect` for lightweight, reusable logic such as buffs and debuffs that can be dynamically applied
-> or removed from entities.
+Use `ScriptableEntityAspect` for lightweight, reusable logic such as buffs and debuffs that can be dynamically applied
+or removed from entities.
 
 ---
 
