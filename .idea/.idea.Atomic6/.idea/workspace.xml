@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,15 +204,7 @@
       <workItem from="1758177750643" duration="45317000" />
       <workItem from="1758300054327" duration="10252000" />
       <workItem from="1758351834194" duration="67122000" />
-      <workItem from="1758604662186" duration="3106000" />
-    </task>
-    <task id="LOCAL-00580" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1758445783240</created>
-      <option name="number" value="00580" />
-      <option name="presentableId" value="LOCAL-00580" />
-      <option name="project" value="LOCAL" />
-      <updated>1758445783240</updated>
+      <workItem from="1758604662186" duration="5076000" />
     </task>
     <task id="LOCAL-00581" summary="IEntity.md">
       <option name="closed" value="true" />
@@ -600,7 +590,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758569260251</updated>
     </task>
-    <option name="localTasksCounter" value="629" />
+    <task id="LOCAL-00629" summary="Сделал EntitySingleton.md">
+      <option name="closed" value="true" />
+      <created>1758609208031</created>
+      <option name="number" value="00629" />
+      <option name="presentableId" value="LOCAL-00629" />
+      <option name="project" value="LOCAL" />
+      <updated>1758609208031</updated>
+    </task>
+    <option name="localTasksCounter" value="630" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +625,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал Lifecycle!" />
     <MESSAGE value="Сделал раздел для Tag" />
     <MESSAGE value="Сделал раздел для Values!" />
     <MESSAGE value="Сделал Entity!" />
@@ -652,7 +649,8 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Сделал SceneEntity.md" />
     <MESSAGE value="Manual.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Manual.md" />
+    <MESSAGE value="Сделал EntitySingleton.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал EntitySingleton.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
