@@ -1,28 +1,18 @@
 # 🧩️ IEntityBehaviour
 
-`IEntityBehaviour` represents a modular unit of logic that can be attached to an `IEntity`.  
-It allows entities to dynamically compose functionality at runtime, following the Entity-State-Behaviour pattern.
+Represents a modular unit of logic that can be attached to an [IEntity](../Entities/IEntity.md). It allows entities to
+dynamically compose functionality at runtime, following the **Entity-State-Behaviour** pattern.
+
+```csharp
+public interface IEntityBehaviour
+```
 
 ---
 
-## Key Features
+## 🗂 Example Usage
 
-- **Modular Logic** – Encapsulates a single responsibility or feature of an entity
-- **Dynamic Composition** – Can be attached or removed from an entity at runtime
-- **Integration with Entity Lifecycle** – Behaviours can respond to Init, Enable, Disable, and Dispose events
-- **Lightweight** – Interface only, implementation is left to the developer
+#### 1. Create an entity
 
----
-
-## Remarks
-
-- Behaviours are typically stateless or encapsulate entity-specific state.
-- They can be used to implement features such as movement, attack, game systems, AI, input, or UI controllers.
-- `IEntityBehaviour` is intentionally minimal; lifecycle hooks and event handling are defined by optional interfaces (e.g., `IEntityInit`, `IEntityEnable`, `IEntityUpdate`).
-
-## Example Usage
-
-#### 1. Create a character entity
 ```csharp
 //Create a new entity
 var character = new Entity("Character");
@@ -36,10 +26,11 @@ character.AddValue("MoveSpeed", new Const<float>(3.5f));
 character.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 ```
 
-#### 2. Write `MoveBehaviour` for the character
+#### 2. Create `MoveBehaviour` for the entity
+
 ```csharp
 //Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
+public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
     private IVariable<Vector3> _position;
     private IValue<float> _moveSpeed;
@@ -53,8 +44,8 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
         _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
     }
 
-    //Calls when Entity.OnUpdate()
-    public void OnUpdate(IEntity entity, float deltaTime)
+    //Calls when Entity.FixedTick()
+    public void FixedTick(IEntity entity, float deltaTime)
     {
         Vector3 direction = _moveDirection.Value;
         if (direction != Vector3.zero) 
@@ -62,22 +53,21 @@ public sealed class MoveBehaviour : IEntityInit, IEntityUpdate
     }
 }
 ```
-#### 3. Add `MoveBehaviour` to the character
+
+#### 3. Attach `MoveBehaviour` to the entity
+
 ```csharp
+//Add behaviour
 character.AddBehaviour<MoveBehaviour>();
 ```
-#### 4. **Activate the character when game started**
-```csharp
-//Make entity active and calls IEntityActivate
-character.Activate(); 
-```
-6. **Update the character while a game is running**
-```csharp
-const float deltaTime = 0.02f;
 
-while(_isGameRunning)
-{
-   //Calls IEntityUpdate
-   character.OnUpdate(deltaTime); 
-}
-```
+---
+
+## 📝 Notes
+
+- **Modular Logic** – Encapsulates a single responsibility or feature of an entity
+- **Dynamic Composition** – Can be attached or removed from an entity at runtime
+- **Integration with Entity Lifecycle** – Behaviours can respond to Init, Enable, Disable, and Dispose events
+- **Lightweight** – Interface only, implementation is left to the developer
+- Behaviours are typically stateless or encapsulate entity-specific state.
+- They can be used to implement features such as movement, attack, game systems, AI, input, or UI controllers.
