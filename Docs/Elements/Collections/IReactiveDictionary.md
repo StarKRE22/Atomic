@@ -1,8 +1,7 @@
 # 🧩 IReactiveDictionary&lt;K, V&gt;
 
 ```csharp
-public interface IReactiveDictionary<K, V> : 
-    IDictionary<K, V>, 
+public interface IReactiveDictionary<K, V> : IDictionary<K, V>, 
     IReadOnlyReactiveDictionary<K, V>,
     IReactiveCollection<KeyValuePair<K, V>>
 ```
