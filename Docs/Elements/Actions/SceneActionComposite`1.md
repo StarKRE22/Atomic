@@ -1,35 +1,34 @@
 
 <details>
   <summary>
-    <h2>🧩 SceneActionComposite</h2>
-    <br> Represents a <b>parameterless</b> composite scene action that can be invoked.
+    <h2>🧩 SceneActionComposite&lt;T&gt;</h2>
+    <br> Represents a composite scene action with <b>one parameter</b> that can be invoked.
   </summary>
 
 <br>
 
 ```csharp
-public class SceneActionComposite : SceneActionAbstract
+public class SceneActionComposite<T> : SceneActionAbstract<T>
 ```
 
-- **Usage:** Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
-  will be invoked sequentially.
+- **Type parameter:** `T` — the argument type.
 
 ---
 
 ### 🛠 Inspector Settings
 
-| Parameter | Description                                   |
-|-----------|-----------------------------------------------|
-| `actions` | The array of scene actions to invoke in order |
+| Parameter | Description                                                      |
+|-----------|------------------------------------------------------------------|
+| `actions` | The array of scene actions to invoke in order  with one argument |
 
 ---
 
-### 🧱 Fields
+### 🧱Fields
 
 #### `actions`
 
 ```csharp
-public SceneActionAbstract[] actions;
+public SceneActionAbstract<T>[] actions;
 ```
 
 - **Description:** The array of scene actions to invoke in order.
@@ -39,29 +38,17 @@ public SceneActionAbstract[] actions;
 
 ### 🏹 Methods
 
-#### `Invoke()`
+#### `Invoke(T arg)`
 
 ```csharp
-public override void Invoke();
+public override void Invoke(T arg);
 ```
 
-- **Description:** Executes each action in the `actions` array sequentially.
+- **Description:** Executes each action sequentially with the provided argument.
+- **Parameter:** `arg` – The input argument.
 
 </details>
 
----------
-
-
----
-
-
----
-
-
----
-
-
----
 
 ## 🗂 Example of Usage
 
