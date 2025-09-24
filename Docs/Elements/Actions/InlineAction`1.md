@@ -60,10 +60,12 @@ public static implicit operator InlineAction<T>(Action<T> action);
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T>` containing the specified delegate.
 
-### 🗂 Example of Usage
+---
+
+## 🗂 Example of Usage
 
 ```csharp
-IAction destroyAction = new InlineAction<GameObject>(GameObject.Destroy);
+IAction<GameObject> destroyAction = new InlineAction<GameObject>(GameObject.Destroy);
 destroyAction.Invoke(gameObject);
 ```
 

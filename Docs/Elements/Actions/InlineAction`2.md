@@ -1,25 +1,21 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineAction&lt;T1, T2&gt;</h2>
-    <br> Represents an action <b>with two parameters</b> that can be invoked.
-  </summary>
-
-<br>
+# 🧩 InlineAction&lt;T1, T2&gt;
 
 ```csharp
 public class InlineAction<T1, T2> : IAction<T1, T2>
 ```
 
+- **Description:** Represents an action <b>with two parameters</b> that can be invoked.
 - **Type parameters**
     - `T1` — the first argument
     - `T2` — the second argument
+- **Inheritance:** [IAction&lt;T1, T2&gt;](IAction%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
-#### `InlineAction(Action<T1, T2> action)`
+#### `InlineAction(Action<T1, T2>)`
 
 ```csharp
 public InlineAction(Action<T1, T2> action)
@@ -31,9 +27,9 @@ public InlineAction(Action<T1, T2> action)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T1 arg1, T2 arg2)`
+#### `Invoke(T1, T2)`
 
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
@@ -55,7 +51,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlineAction<T1, T2>(Action<T1, T2>)`
 
@@ -72,13 +68,13 @@ public static implicit operator InlineAction<T1, T2>(Action<T1, T2> action);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-var damageAction = new InlineAction<Character, int>(
-    (character, damage) => character.TakeDamage(damage));
+IAction<Character, int> damageAction = new InlineAction<Character, int>(
+    (character, damage) => character.TakeDamage(damage)
+);
 
 damageAction.Invoke(enemy, 5);
 ```
 
-</details>

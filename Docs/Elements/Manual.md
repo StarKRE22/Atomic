@@ -89,9 +89,9 @@ There are several abstractions of actions, depending on the number of arguments 
     - [IAction&lt;T1, T2&gt;]()  <!-- + -->
     - [IAction&lt;T1, T2, T3&gt;]() <!-- + -->
     - [IAction&lt;T1, T2, T3, T4&gt;]() <!-- + -->
-- [InlineActions]()
-    - [InlineAction]()
-    - [InlineAction&lt;T&gt;]()
+- [InlineActions]() <!-- + -->
+    - [InlineAction]() <!-- + -->
+    - [InlineAction&lt;T&gt;]() <!-- + -->
     - [InlineAction&lt;T1, T2&gt;]()
     - [InlineAction&lt;T1, T2, T3&gt;]()
     - [InlineAction&lt;T1, T2, T3, T4&gt;]()
