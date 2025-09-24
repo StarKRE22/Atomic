@@ -1,21 +1,20 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionDefault&lt;T&gt;</h2>
-    <br> Represents a scene-based composite action with <b>one parameter</b>.
-  </summary>
-
-<br>
+# 🧩 SceneActionDefault&lt;T&gt;
 
 ```csharp
 public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 ```
 
+- **Description:** Represents a scene-based composite action with <b>one parameter</b>.
+- **Inheritance:** [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md)
 - **Type parameter:** `T` — the input argument type.
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+      invoked sequentially.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                              |
 |-----------|------------------------------------------|
@@ -23,7 +22,7 @@ public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 
 ---
 
-### 🧱Fields
+## 🧱Fields
 
 #### `actions`
 
@@ -36,9 +35,9 @@ public IAction<T>[] actions;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public override void Invoke(T arg);
@@ -47,45 +46,9 @@ public override void Invoke(T arg);
 - **Description:** Executes each action sequentially with the provided argument.
 - **Parameter:** `arg` – The input argument.
 
-</details>
-
 ---
-
 
 ## 🗂 Example of Usage
-
-For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
-`SceneAction` combined with `[SerializeReference]` is very convenient.
-
----
-
-### 🔹 Non-generic Usage
-
-Below is an example of using `SceneActionDefault`
-
-#### 1. Add the `Atomic/Elements/Action` component.
-
-<img src="../../Images/SceneAction.png" alt="SceneAction example" width="384" height="137">
-
-#### 2. In the **Inspector**, assign the `PrintAction` value to the `Action` parameter.
-
-#### 3. Use `SceneActionDefault` as `SceneActionAbstract` in your components.
-
-```csharp
-// Example of usage "SceneActionDefault"
-public sealed class GameStartup : MonoBehaviour
-{
-    [SerializeField] private SceneActionAbstract _startup;
-
-    private void Start() => _startup.Invoke();
-}
-```
-
----
-
-### 🔹 Generic Usage
-
-Below is an example of using `SceneActionDefault<T>` with a `GameObject`.
 
 #### 1. Create a `GameObjectSceneActionDefault` component
 

@@ -14,7 +14,7 @@ public class SceneActionDefault : SceneActionAbstract
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                              |
 |-----------|------------------------------------------|
