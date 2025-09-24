@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeActions.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/CompositeAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/CompositeAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/CompositeAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/CompositeAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/InlineAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/InlineAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/InlineAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/InlineAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/PrintAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/PrintAction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Actions/Core/PrintAction.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Actions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -228,15 +216,7 @@
       <workItem from="1758351834194" duration="67122000" />
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
-      <workItem from="1758692893392" duration="829000" />
-    </task>
-    <task id="LOCAL-00645" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758624989593</created>
-      <option name="number" value="00645" />
-      <option name="presentableId" value="LOCAL-00645" />
-      <option name="project" value="LOCAL" />
-      <updated>1758624989593</updated>
+      <workItem from="1758692893392" duration="2026000" />
     </task>
     <task id="LOCAL-00646" summary="Сделал раздел Behaviours">
       <option name="closed" value="true" />
@@ -622,7 +602,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758657677372</updated>
     </task>
-    <option name="localTasksCounter" value="694" />
+    <task id="LOCAL-00694" summary="Перепиливаем Atomic.Elements!">
+      <option name="closed" value="true" />
+      <created>1758693735703</created>
+      <option name="number" value="00694" />
+      <option name="presentableId" value="LOCAL-00694" />
+      <option name="project" value="LOCAL" />
+      <updated>1758693735703</updated>
+    </task>
+    <option name="localTasksCounter" value="695" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал EntitySingleton.md" />
     <MESSAGE value="SceneEntitySingleton.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IEntityBehaviour.md" />
@@ -674,7 +661,8 @@
     <MESSAGE value="Фиксы!" />
     <MESSAGE value="Назад!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Перепиливаем Atomic.Elements!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перепиливаем Atomic.Elements!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
