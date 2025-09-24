@@ -28,7 +28,7 @@ public abstract void Invoke();
 This example demonstrates how to create a simple action based on `SceneActionAbstract` and run it from a `GameStartup`
 script in Unity.
 
-#### 1. Create Scene Action
+#### 1. Create `HelloWorldAction`
 
 Here we implement a simple action that prints `Hello World!` when invoked:
 
@@ -61,6 +61,6 @@ public sealed class GameStartup : MonoBehaviour
 - Attach the `GameStartup` script to a GameObject in your scene.
 - Drag and drop the `HelloWorldAction` component into the `action` parameter in the Inspector.
 
-#### 4. Run the Scene
+#### 4. Run the scene
 
 When you start the game, the action is triggered and **"Hello World!"** is printed to the console.

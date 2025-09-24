@@ -1,21 +1,17 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionAbstract&lt;T&gt;</h2>
-    <br> Represents a scene action with <b>one parameter</b> that can be invoked.
-  </summary>
-
-<br>
+# 🧩 SceneActionAbstract&lt;T&gt;
 
 ```csharp
 public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
 ```
 
+- **Description:** Represents a scene action with <b>one parameter</b> that can be invoked.
+- **Inheritance:** `MonoBehaviour`, [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the input argument type.
+- **Note:** Attach to a GameObject and implement `Invoke(T)` to define custom behavior.
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T arg)`
 
@@ -28,7 +24,7 @@ public abstract void Invoke(T arg);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 This example shows how to use `SceneActionAbstract<T>` to create an action that destroys objects when they enter a
 trigger.
@@ -64,5 +60,3 @@ public sealed class ActionTrigger : MonoBehaviour
 #### 3. Run the scene
 
 Enter **Play Mode** in Unity and any objects that collide with the trigger will be **destroyed automatically**.
-
-</details>
