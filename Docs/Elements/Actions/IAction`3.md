@@ -37,10 +37,26 @@ public sealed class MoveResourcesAction : IAction<Storage, Storage, int>
 {
     public void Invoke(Storage source, Storage destination, int amount)
     {
+        if (source == null) 
+            throw new ArgumentNullException(nameof(source));
+
+        if (destination == null) 
+            throw new ArgumentNullException(nameof(destination));
+
+        if (amount <= 0)
+            throw new ArgumentException("Amount of resources must be greater than zero.", nameof(amount));
+
+        if (source.AvailableResources < amount)
+            throw new InvalidOperationException("Source does not have enough resources.");
+
+        if (destination.FreeCapacity < amount)
+            throw new InvalidOperationException("Destination does not have enough free capacity.");
+
         source.SpendResources(amount);
         destination.EarnResources(amount);
     }
 }
+
 ```
 
 ```csharp

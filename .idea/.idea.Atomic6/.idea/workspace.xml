@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,31 +209,7 @@
       <workItem from="1758351834194" duration="67122000" />
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
-      <workItem from="1758692893392" duration="2640000" />
-    </task>
-    <task id="LOCAL-00649" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625339648</created>
-      <option name="number" value="00649" />
-      <option name="presentableId" value="LOCAL-00649" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625339648</updated>
-    </task>
-    <task id="LOCAL-00650" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625400153</created>
-      <option name="number" value="00650" />
-      <option name="presentableId" value="LOCAL-00650" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625400153</updated>
-    </task>
-    <task id="LOCAL-00651" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625453097</created>
-      <option name="number" value="00651" />
-      <option name="presentableId" value="LOCAL-00651" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625453097</updated>
+      <workItem from="1758692893392" duration="2986000" />
     </task>
     <task id="LOCAL-00652" summary="IEntityInstaller.md">
       <option name="closed" value="true" />
@@ -607,7 +579,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758695210732</updated>
     </task>
-    <option name="localTasksCounter" value="698" />
+    <task id="LOCAL-00698" summary="IAction`2.md">
+      <option name="closed" value="true" />
+      <created>1758695552048</created>
+      <option name="number" value="00698" />
+      <option name="presentableId" value="LOCAL-00698" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695552048</updated>
+    </task>
+    <task id="LOCAL-00699" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758695578144</created>
+      <option name="number" value="00699" />
+      <option name="presentableId" value="LOCAL-00699" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695578144</updated>
+    </task>
+    <task id="LOCAL-00700" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758695590105</created>
+      <option name="number" value="00700" />
+      <option name="presentableId" value="LOCAL-00700" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695590105</updated>
+    </task>
+    <option name="localTasksCounter" value="701" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +630,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Extensions.md" />
     <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="IEntityInit.md" />
@@ -658,6 +653,7 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Перепиливаем Atomic.Elements!" />
     <MESSAGE value="Офигенно, я понял как это правильно структурировать!" />
+    <MESSAGE value="IAction`2.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
