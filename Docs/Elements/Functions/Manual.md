@@ -11,7 +11,7 @@ inline or composable functions for clean and maintainable code.
     - [IFunction&lt;T1, T2, R&gt;](IFunction%602.md) <!-- + -->
 - [InlineFunctions](InlineFunctions.md) <!-- + -->
     - [InlineFunction&lt;R&gt;](InlineFunction.md) <!-- + -->
-    - [InlineFunction&lt;T, R&gt;]()
+    - [InlineFunction&lt;T, R&gt;](InlineFunction%601.md) <!-- + -->
     - [InlineFunction&lt;T1, T2, R&gt;]()
 - [IPredicates]()
   - [IPredicate]()

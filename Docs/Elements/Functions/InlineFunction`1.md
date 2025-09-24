@@ -1,23 +1,19 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineFunction&lt;T, R&gt;</h2>
-    <br> Represents a function with <b>one input argument</b> that returns a result.
-  </summary>
-
-<br>
+# 🧩 InlineFunction&lt;T, R&gt;
 
 ```csharp
 public class InlineFunction<T, R> : IFunction<T, R>
 ```
 
+- **Description:** Represents a function with <b>one input argument</b> that returns a result.
 - **Type parameters:**
     - `T` — the input parameter type
     - `R` — the return type
+- **Inheritance:** [IFunction&lt;T, R&gt;](IFunction%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlineFunction(Func<T, R>)`
 
@@ -31,7 +27,7 @@ public InlineFunction(Func<T, R> func)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -54,7 +50,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlineFunction<T, R>(Func<T, R>)`
 
@@ -68,15 +64,13 @@ public static implicit operator InlineFunction<T, R>(Func<T, R> value);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-Character player = ...
-IFunction<bool> isEnemies = new InlineFunction<Character, bool>(other => player.Team != other.Team);
+Character player, enemy = ...
+IFunction<bool> function = new InlineFunction<Character, bool>(
+    other => player.Team != other.Team
+);
 
-//Usage
-Character enemy = ...
-isEnemies.Invoke(enemy);
+bool isEnemies = function.Invoke(enemy);
 ```
-
-</details>
