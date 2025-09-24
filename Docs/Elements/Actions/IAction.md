@@ -6,7 +6,7 @@ public interface IAction
 - **Description:** Represents a <b>parameterless executable action</b>.
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -18,7 +18,7 @@ void Invoke();
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public sealed class HelloWorldAction : IAction

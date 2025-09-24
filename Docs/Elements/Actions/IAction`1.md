@@ -1,21 +1,15 @@
-
-<details>
-  <summary>
-    <h2>🧩 IAction&lt;T&gt;</h2>
-    <br> Represents an executable action that <b>takes one argument</b>.
-  </summary>
-
-<br>
+# 🧩 IAction&lt;T&gt;
 
 ```csharp
 public interface IAction<in T>
 ```
 
+- **Description:** Represents an executable action that <b>takes one argument</b>.
 - **Type parameter:** `T` — the input parameter
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -28,17 +22,19 @@ void Invoke(T arg);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public sealed class DestroyGameObjectAction : IAction<GameObject>
 {
-    public void Invoke(GameObject go) => GameObject.Destroy(go);
+    public void Invoke(GameObject go) 
+    {
+        GameObject.Destroy(go);  
+    } 
 }
-
+```
+```csharp
 // Usage
 IAction<GameObject> action = new DestroyGameObjectAction();
 action.Invoke(gameObject);
 ```
-
-</details>
