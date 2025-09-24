@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,23 +209,7 @@
       <workItem from="1758351834194" duration="67122000" />
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
-      <workItem from="1758692893392" duration="2986000" />
-    </task>
-    <task id="LOCAL-00652" summary="IEntityInstaller.md">
-      <option name="closed" value="true" />
-      <created>1758640451141</created>
-      <option name="number" value="00652" />
-      <option name="presentableId" value="LOCAL-00652" />
-      <option name="project" value="LOCAL" />
-      <updated>1758640451141</updated>
-    </task>
-    <task id="LOCAL-00653" summary="Фиксы в SceneEntity.cs">
-      <option name="closed" value="true" />
-      <created>1758643074722</created>
-      <option name="number" value="00653" />
-      <option name="presentableId" value="LOCAL-00653" />
-      <option name="project" value="LOCAL" />
-      <updated>1758643074723</updated>
+      <workItem from="1758692893392" duration="3322000" />
     </task>
     <task id="LOCAL-00654" summary="Minor fixes!">
       <option name="closed" value="true" />
@@ -603,7 +587,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758695590105</updated>
     </task>
-    <option name="localTasksCounter" value="701" />
+    <task id="LOCAL-00701" summary="IAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758695897052</created>
+      <option name="number" value="00701" />
+      <option name="presentableId" value="LOCAL-00701" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695897052</updated>
+    </task>
+    <task id="LOCAL-00702" summary="IAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758696055010</created>
+      <option name="number" value="00702" />
+      <option name="presentableId" value="LOCAL-00702" />
+      <option name="project" value="LOCAL" />
+      <updated>1758696055010</updated>
+    </task>
+    <option name="localTasksCounter" value="703" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,7 +630,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="IEntityInit.md" />
     <MESSAGE value="IEntityEnable.md" />
@@ -655,7 +654,8 @@
     <MESSAGE value="Офигенно, я понял как это правильно структурировать!" />
     <MESSAGE value="IAction`2.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="IAction`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IAction`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
