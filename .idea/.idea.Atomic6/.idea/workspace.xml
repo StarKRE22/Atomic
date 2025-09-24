@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,23 +213,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="18099000" />
-    </task>
-    <task id="LOCAL-00708" summary="InlineAction`3.md">
-      <option name="closed" value="true" />
-      <created>1758699159981</created>
-      <option name="number" value="00708" />
-      <option name="presentableId" value="LOCAL-00708" />
-      <option name="project" value="LOCAL" />
-      <updated>1758699159981</updated>
-    </task>
-    <task id="LOCAL-00709" summary="InlineAction`4.md">
-      <option name="closed" value="true" />
-      <created>1758699530988</created>
-      <option name="number" value="00709" />
-      <option name="presentableId" value="LOCAL-00709" />
-      <option name="project" value="LOCAL" />
-      <updated>1758699530988</updated>
+      <workItem from="1758697936272" duration="19280000" />
     </task>
     <task id="LOCAL-00710" summary="Переделал InlineAction">
       <option name="closed" value="true" />
@@ -604,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758735648111</updated>
     </task>
-    <option name="localTasksCounter" value="757" />
+    <task id="LOCAL-00757" summary="InlineFunction`2.md">
+      <option name="closed" value="true" />
+      <created>1758736654865</created>
+      <option name="number" value="00757" />
+      <option name="presentableId" value="LOCAL-00757" />
+      <option name="project" value="LOCAL" />
+      <updated>1758736654865</updated>
+    </task>
+    <task id="LOCAL-00758" summary="IPredicates.md">
+      <option name="closed" value="true" />
+      <created>1758737372336</created>
+      <option name="number" value="00758" />
+      <option name="presentableId" value="LOCAL-00758" />
+      <option name="project" value="LOCAL" />
+      <updated>1758737372336</updated>
+    </task>
+    <option name="localTasksCounter" value="759" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionDefault`2.md" />
-    <MESSAGE value="SceneActionDefault`3.md" />
     <MESSAGE value="SceneActionDefault`4.md" />
     <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="SceneActionComposite`1.md" />
@@ -656,7 +657,9 @@
     <MESSAGE value="InlineFunctions.md" />
     <MESSAGE value="InlineFunction.md" />
     <MESSAGE value="InlineFunction`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineFunction`1.md" />
+    <MESSAGE value="InlineFunction`2.md" />
+    <MESSAGE value="IPredicates.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IPredicates.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
