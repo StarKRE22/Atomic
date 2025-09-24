@@ -4,7 +4,7 @@ Define **scene-based actions** in Unity that implement the corresponding [IActio
 These abstract classes inherit from `MonoBehaviour`, allowing actions to be attached to GameObjects in a scene.
 They serve as a base for **custom scene logic** and are designed to be subclassed to implement specific behavior.
 
-> [!NOTE]
+> [!TIP]
 > Extremely useful for cutscenes, trigger-based actions, level initialization, and similar scene-driven logic.
 
 There are several implementations of abstract scene actions, depending on the number of arguments the actions take:
