@@ -1,23 +1,22 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionDefault&lt;T1, T2&gt;</h2>
-    <br> Represents a scene-based composite action with <b>two parameters</b>.
-  </summary>
-
-<br>
+# 🧩 SceneActionDefault&lt;T1, T2&gt;
 
 ```csharp
 public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 ```
 
+- **Description:** Represents a scene-based composite action with <b>two parameters</b>.
+- **Inheritance:** [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md)
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+      invoked sequentially.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                              |
 |-----------|------------------------------------------|
@@ -25,7 +24,7 @@ public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 
 ---
 
-### 🧱Fields
+## 🧱Fields
 
 #### `actions`
 
@@ -38,9 +37,9 @@ public IAction<T1, T2>[] actions;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T1 arg1, T2 arg2)`
+#### `Invoke(T1, T2)`
 
 ```csharp
 public override void Invoke(T1 arg1, T2 arg2);
@@ -50,5 +49,3 @@ public override void Invoke(T1 arg1, T2 arg2);
 - **Parameters:**
     - `arg1` – The first argument
     - `arg2` – The second argument
-
-</details>
