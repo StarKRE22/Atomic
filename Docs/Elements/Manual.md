@@ -124,7 +124,7 @@ There are several abstractions of actions, depending on the number of arguments 
     - [SceneActionReference&lt;T&gt;](Actions/SceneActionReference%601.md) <!-- + -->
     - [SceneActionReference&lt;T1, T2&gt;](Actions/SceneActionReference%602.md) <!-- + -->
     - [SceneActionReference&lt;T1, T2, T3&gt;](Actions/SceneActionReference%603.md) <!-- + -->
-    - [SceneActionReference&lt;T1, T2, T3, T4&gt;](Actions/SceneActionReference%604.md)
+    - [SceneActionReference&lt;T1, T2, T3, T4&gt;](Actions/SceneActionReference%604.md) <!-- + -->
 - [PrintAction](Actions/PrintAction.md)
 - [Extensions](Actions/Extensions.md)
 

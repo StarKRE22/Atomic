@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionComposite`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,23 +224,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="12331000" />
-    </task>
-    <task id="LOCAL-00693" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758657677372</created>
-      <option name="number" value="00693" />
-      <option name="presentableId" value="LOCAL-00693" />
-      <option name="project" value="LOCAL" />
-      <updated>1758657677372</updated>
-    </task>
-    <task id="LOCAL-00694" summary="Перепиливаем Atomic.Elements!">
-      <option name="closed" value="true" />
-      <created>1758693735703</created>
-      <option name="number" value="00694" />
-      <option name="presentableId" value="LOCAL-00694" />
-      <option name="project" value="LOCAL" />
-      <updated>1758693735703</updated>
+      <workItem from="1758697936272" duration="13236000" />
     </task>
     <task id="LOCAL-00695" summary="Офигенно, я понял как это правильно структурировать!">
       <option name="closed" value="true" />
@@ -606,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758729644618</updated>
     </task>
-    <option name="localTasksCounter" value="742" />
+    <task id="LOCAL-00742" summary="SceneActionReference`2.md">
+      <option name="closed" value="true" />
+      <created>1758730137710</created>
+      <option name="number" value="00742" />
+      <option name="presentableId" value="LOCAL-00742" />
+      <option name="project" value="LOCAL" />
+      <updated>1758730137710</updated>
+    </task>
+    <task id="LOCAL-00743" summary="SceneActionReference`3.md">
+      <option name="closed" value="true" />
+      <created>1758730378198</created>
+      <option name="number" value="00743" />
+      <option name="presentableId" value="LOCAL-00743" />
+      <option name="project" value="LOCAL" />
+      <updated>1758730378198</updated>
+    </task>
+    <option name="localTasksCounter" value="744" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,8 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="CompositeActions.md" />
-    <MESSAGE value="CompositeAction`2.md" />
     <MESSAGE value="CompositeAction`3.md" />
     <MESSAGE value="CompositeAction`4.md" />
     <MESSAGE value="Прочесал CompositeActions" />
@@ -658,7 +668,9 @@
     <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneActionReference`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference`1.md" />
+    <MESSAGE value="SceneActionReference`2.md" />
+    <MESSAGE value="SceneActionReference`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

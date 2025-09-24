@@ -37,6 +37,7 @@ public SceneActionReference();
 #### `SceneActionReference(SceneActionAbstract<T1, T2, T3, T4>)`
 
 ```csharp
+[Serializable]
 public SceneActionReference(SceneActionAbstract<T1, T2, T3, T4> action);
 ```
 
