@@ -1,22 +1,20 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionComposite</h2>
-    <br> Represents a <b>parameterless</b> composite scene action that can be invoked.
-  </summary>
-
-<br>
+# 🧩 SceneActionComposite
 
 ```csharp
+[AddComponentMenu("Atomic/Elements/Action Composite")]
 public class SceneActionComposite : SceneActionAbstract
 ```
 
-- **Usage:** Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
-  will be invoked sequentially.
+- **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
+- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
+      will be invoked sequentially.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                                   |
 |-----------|-----------------------------------------------|
@@ -24,7 +22,7 @@ public class SceneActionComposite : SceneActionAbstract
 
 ---
 
-### 🧱 Fields
+## 🧱 Fields
 
 #### `actions`
 
@@ -37,7 +35,7 @@ public SceneActionAbstract[] actions;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -46,31 +44,12 @@ public override void Invoke();
 ```
 
 - **Description:** Executes each action in the `actions` array sequentially.
-
-</details>
-
----------
-
-
----
-
-
----
-
-
----
-
-
 ---
 
 ## 🗂 Example of Usage
 
-`SceneActionComposite` can be used similarly to [SceneActionDefault](SceneActionDefault.md) but is **strictly a
+**SceneActionComposite** can be used similarly to [SceneActionDefault](SceneActionDefault.md) but is **strictly a
 composite container for `SceneActionAbstract`**.
-
----
-
-### 🔹 Non-generic Usage
 
 #### 1. Add the `Atomic/Elements/Action Composite` component to a `GameObject`.
 
@@ -84,34 +63,3 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
     public override void Invoke() => Debug.Log("Hello world");
 }
 ```
-
----
-
-### 🔹 Generic Usage
-
-#### 1. Create a `GameObjectSceneActionComposite` component.
-
-```csharp
-using Atomic.Elements;
-using UnityEngine;
-
-public sealed class GameObjectSceneActionComposite : SceneActionComposite<GameObject>
-{
-}
-```
-
-#### 2. Add the `GameObjectSceneActionComposite` component to a `GameObject`
-
-<img src="../../Images/GameObjectSceneActionComposite.png" alt="SceneActionComposite example" width="" height="100">
-
-#### 3. Create an action that destroys a `GameObject` (example)
-
-```csharp
-public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
-{
-    public override void Invoke(GameObject arg) => Destroy(arg);
-}
-```
-
-#### 4. Assign `DestroyGameObjectSceneAction` to the **Actions** parameter of the
-`GameObjectSceneActionComposite` component

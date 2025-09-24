@@ -15,7 +15,6 @@ namespace Atomic.Elements
     /// while internally invoking all contained scene actions in order.
     /// </summary>
     [AddComponentMenu("Atomic/Elements/Action Composite")]
-    [Serializable]
     public class SceneActionComposite : SceneActionAbstract
     {
 #if ODIN_INSPECTOR
@@ -49,7 +48,6 @@ namespace Atomic.Elements
     /// Composite scene action with one generic parameter.
     /// </summary>
     /// <typeparam name="T">The type of the argument.</typeparam>
-    [Serializable]
     public class SceneActionComposite<T> : SceneActionAbstract<T>
     {
 #if ODIN_INSPECTOR
@@ -82,7 +80,6 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with two generic parameters.
     /// </summary>
-    [Serializable]
     public class SceneActionComposite<T1, T2> : SceneActionAbstract<T1, T2>
     {
 #if ODIN_INSPECTOR
@@ -148,7 +145,6 @@ namespace Atomic.Elements
     /// <summary>
     /// Composite scene action with four generic parameters.
     /// </summary>
-    [Serializable]
     public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
     {
 #if ODIN_INSPECTOR
