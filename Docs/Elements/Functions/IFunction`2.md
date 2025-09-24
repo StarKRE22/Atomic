@@ -1,16 +1,10 @@
-
-<details>
-  <summary>
-    <h2>🧩 IFunction&lt;T1, T2, R&gt;</h2>
-    <br> Represents a function with <b>two input arguments</b> that returns a result.
-  </summary>
-
-<br>
+# 🧩 IFunction&lt;T1, T2, R&gt;
 
 ```csharp
 public interface IFunction<in T1, in T2, out R>
 ```
 
+- **Description:**  Represents a function with <b>two input arguments</b> that returns a result.
 - **Type parameters:**
     - `T1` — the first input argument type
     - `T2` — the second input argument type
@@ -18,7 +12,7 @@ public interface IFunction<in T1, in T2, out R>
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -34,7 +28,7 @@ public R Invoke(T1 arg1, T2 arg2);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public class SumFunction : IFunction<int, int, int>
@@ -44,9 +38,6 @@ public class SumFunction : IFunction<int, int, int>
 ```
 
 ```csharp
-//Usage
 IFunction<int, int, int> func = new SumFunction();
 int sum = func.Invoke(3, 4); // sum = 7
 ```
-
-</details>
