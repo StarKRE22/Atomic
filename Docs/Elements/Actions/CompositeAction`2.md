@@ -1,4 +1,4 @@
-🧩 CompositeAction&lt;T1, T2&gt;
+# 🧩 CompositeAction&lt;T1, T2&gt;
 
 ```csharp
 [Serializable]
