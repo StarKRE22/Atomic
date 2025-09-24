@@ -1,25 +1,23 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionComposite&lt;T1, T2, T3&gt;</h2>
-    <br> Represents a composite scene action with <b>three parameters</b> that can be invoked.
-  </summary>
-
-<br>
+# 🧩 SceneActionComposite&lt;T1, T2, T3&gt;
 
 ```csharp
 public class SceneActionComposite<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
 ```
 
 - **Description:** Composite scene action with **three parameters**.
+- **Inheritance:** [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%602.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
     - `T3` — third argument
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `SceneActionAbstract<T1, T2, T3>` implementations in the Inspector, and
+      they will be invoked sequentially.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                                                       |
 |-----------|-------------------------------------------------------------------|
@@ -27,7 +25,7 @@ public class SceneActionComposite<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
 
 ---
 
-### 🧱Fields
+## 🧱 Fields
 
 #### `actions`
 
@@ -40,9 +38,9 @@ public SceneActionComposite<T1, T2, T3>[] actions;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T1 arg1, T2 arg2, T3 arg3)`
+#### `Invoke(T1, T2, T3)`
 
 ```csharp
 public override void Invoke(T1 arg1, T2 arg2, T3 arg3);
@@ -53,5 +51,3 @@ public override void Invoke(T1 arg1, T2 arg2, T3 arg3);
     - `arg1` – The first argument
     - `arg2` – The second argument
     - `arg3` – The third argument
-
-</details>
