@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunctions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsAbstract.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsComposite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsReference.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,23 +212,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="14595000" />
-    </task>
-    <task id="LOCAL-00699" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758695578144</created>
-      <option name="number" value="00699" />
-      <option name="presentableId" value="LOCAL-00699" />
-      <option name="project" value="LOCAL" />
-      <updated>1758695578144</updated>
-    </task>
-    <task id="LOCAL-00700" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758695590105</created>
-      <option name="number" value="00700" />
-      <option name="presentableId" value="LOCAL-00700" />
-      <option name="project" value="LOCAL" />
-      <updated>1758695590105</updated>
+      <workItem from="1758697936272" duration="15516000" />
     </task>
     <task id="LOCAL-00701" summary="IAction`3.md">
       <option name="closed" value="true" />
@@ -609,7 +590,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758731837214</updated>
     </task>
-    <option name="localTasksCounter" value="748" />
+    <task id="LOCAL-00748" summary="Сделал IFunctions.md">
+      <option name="closed" value="true" />
+      <created>1758732435513</created>
+      <option name="number" value="00748" />
+      <option name="presentableId" value="LOCAL-00748" />
+      <option name="project" value="LOCAL" />
+      <updated>1758732435513</updated>
+    </task>
+    <task id="LOCAL-00749" summary="Сделал IFunctions.md">
+      <option name="closed" value="true" />
+      <created>1758732496574</created>
+      <option name="number" value="00749" />
+      <option name="presentableId" value="LOCAL-00749" />
+      <option name="project" value="LOCAL" />
+      <updated>1758732496574</updated>
+    </task>
+    <option name="localTasksCounter" value="750" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionAbstract.md" />
     <MESSAGE value="SceneActionAbstract`1.md" />
     <MESSAGE value="SceneActionAbstract`2.md" />
     <MESSAGE value="SceneActionAbstract`3.md" />
@@ -661,7 +657,8 @@
     <MESSAGE value="Оформил раздел Actions!" />
     <MESSAGE value="Сделал раздел для Actions" />
     <MESSAGE value="Начинаем работать с разделом Functions!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем работать с разделом Functions!" />
+    <MESSAGE value="Сделал IFunctions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал IFunctions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,23 +1,17 @@
-
-<details>
-  <summary>
-    <h2>🧩 IFunction&lt;T, R&gt;</h2>
-    <br> Represents a function with <b>one input argument</b> that returns a result.
-  </summary>
-
-<br>
+# 🧩 IFunction&lt;T, R&gt;
 
 ```csharp
 public interface IFunction<in T, out R>
 ```
 
+- **Description:** Represents a function with <b>one input argument</b> that returns a result.
 - **Type parameters:**
     - `T` — the input argument type
     - `R` — the return type
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -31,7 +25,7 @@ public R Invoke(T arg);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public sealed class IsEnemyFunction : IFunction<Character, bool>
@@ -51,9 +45,7 @@ public sealed class IsEnemyFunction : IFunction<Character, bool>
 ```
 
 ```csharp
-//Usage
-IFunction<Character, bool> func = new IsEnemyFunction(character);
+Character myCharacter, otherCharacter = ...
+IFunction<Character, bool> func = new IsEnemyFunction(myCharacter);
 bool isEnemies = func.Invoke(otherCharacter);
 ```
-
-</details>
