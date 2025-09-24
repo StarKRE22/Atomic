@@ -8,10 +8,10 @@ There are several implementations of inline actions, depending on the number of 
 
 
 - [InlineAction](InlineAction.md) — Non-generic version; works without parameters.
-- [InlineAction&lt;T&gt;](InlineAction%601.md) — Inline action that take one argument.
-- [InlineAction&lt;T1, T2&gt;](InlineAction%602.md) — Inline action that take two arguments.
-- [InlineAction&lt;T1, T2, T3&gt;](InlineAction%603.md) — Inline action that take three arguments.
-- [InlineAction&lt;T1, T2, T3, T4&gt;](InlineAction%604.md) — Inline action that take four arguments.
+- [InlineAction&lt;T&gt;](InlineAction%601.md) — Inline action that takes one argument.
+- [InlineAction&lt;T1, T2&gt;](InlineAction%602.md) — Inline action that takes two arguments.
+- [InlineAction&lt;T1, T2, T3&gt;](InlineAction%603.md) — Inline action that takes three arguments.
+- [InlineAction&lt;T1, T2, T3, T4&gt;](InlineAction%604.md) — Inline action that takes four arguments.
 
 ---
 

@@ -13,10 +13,10 @@ group itself behaves as a single scene action, while internally invoking all con
 There are several implementations of composite scene actions, depending on the number of arguments the actions take:
 
 - [SceneActionComposite](SceneActionComposite.md) — Non-generic version; works without parameters.
-- [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) — Action that take one argument.
-- [SceneActionComposite&lt;T1, T2&gt;](SceneActionComposite%602.md) — Action that take two arguments.
-- [SceneActionComposite&lt;T1, T2, T3&gt;](SceneActionComposite%603.md) — Action that take three arguments.
-- [SceneActionComposite&lt;T1, T2, T3, T4&gt;](SceneActionComposite%604.md) — Action that take four arguments.
+- [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) — Action that takes one argument.
+- [SceneActionComposite&lt;T1, T2&gt;](SceneActionComposite%602.md) — Action that takes two arguments.
+- [SceneActionComposite&lt;T1, T2, T3&gt;](SceneActionComposite%603.md) — Action that takes three arguments.
+- [SceneActionComposite&lt;T1, T2, T3, T4&gt;](SceneActionComposite%604.md) — Action that takes four arguments.
 
 ---
 

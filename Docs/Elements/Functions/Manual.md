@@ -5,7 +5,7 @@ parameters. These function types are lightweight and flexible, making them ideal
 functional programming patterns**. They allow developers to encapsulate reusable logic, implement predicates, and create
 inline or composable functions for clean and maintainable code.
 
-- [IFunctions]()
+- [IFunctions](IFunctions.md) <!-- + -->
     - [IFunction&lt;R&gt;]()
     - [IFunction&lt;T, R&gt;]()
     - [IFunction&lt;T1, T2, R&gt;]()

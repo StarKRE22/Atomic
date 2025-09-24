@@ -12,10 +12,10 @@ and can be used in **Inspector-driven workflows**.
 There are several implementations of reference actions, depending on the number of arguments the actions take:
 
 - [SceneActionReference](SceneActionReference.md) — Non-generic version; works without parameters.
-- [SceneActionReference&lt;T&gt;](SceneActionReference%601.md) — Reference that take one argument.
-- [SceneActionReference&lt;T1, T2&gt;](SceneActionReference%602.md) — Reference that take two arguments.
-- [SceneActionReference&lt;T1, T2, T3&gt;](SceneActionReference%603.md) — Reference that take three arguments.
-- [SceneActionReference&lt;T1, T2, T3, T4&gt;](SceneActionReference%604.md) — Reference that take four arguments.
+- [SceneActionReference&lt;T&gt;](SceneActionReference%601.md) — Reference that takes one argument.
+- [SceneActionReference&lt;T1, T2&gt;](SceneActionReference%602.md) — Reference that takes two arguments.
+- [SceneActionReference&lt;T1, T2, T3&gt;](SceneActionReference%603.md) — Reference that takes three arguments.
+- [SceneActionReference&lt;T1, T2, T3, T4&gt;](SceneActionReference%604.md) — Reference that takes four arguments.
 
 ---
 

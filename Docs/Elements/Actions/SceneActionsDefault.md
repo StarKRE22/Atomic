@@ -20,10 +20,10 @@ additional code.
 There are several implementations of default scene actions, depending on the number of arguments the actions take:
 
 - [SceneActionDefault](SceneActionDefault.md) — Non-generic version; works without parameters.
-- [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) — Action that take one argument.
-- [SceneActionDefault&lt;T1, T2&gt;](SceneActionDefault%602.md) — Action that take two arguments.
-- [SceneActionDefault&lt;T1, T2, T3&gt;](SceneActionDefault%603.md) — Action that take three arguments.
-- [SceneActionDefault&lt;T1, T2, T3, T4&gt;](SceneActionDefault%604.md) — Action that take four arguments.
+- [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) — Action that takes one argument.
+- [SceneActionDefault&lt;T1, T2&gt;](SceneActionDefault%602.md) — Action that takes two arguments.
+- [SceneActionDefault&lt;T1, T2, T3&gt;](SceneActionDefault%603.md) — Action that takes three arguments.
+- [SceneActionDefault&lt;T1, T2, T3, T4&gt;](SceneActionDefault%604.md) — Action that takes four arguments.
 
 
 ---
