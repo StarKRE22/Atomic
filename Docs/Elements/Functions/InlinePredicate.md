@@ -5,7 +5,7 @@ public class InlinePredicate : InlineFunction<bool>, IPredicate
 ```
 
 - **Description:** Represents a <b>parameterless</b> predicate that returns a boolean result.
-- **Inheritance:** [InlineFunction&lt;R&gt;](InlineFunction.md)
+- **Inheritance:** [InlineFunction&lt;R&gt;](InlineFunction.md), [IPredicate](IPredicate.md)
 - **Note:** Supports Odin Inspector
 
 ---
