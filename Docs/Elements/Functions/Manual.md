@@ -13,7 +13,7 @@ inline or composable functions for clean and maintainable code.
     - [InlineFunction&lt;R&gt;](InlineFunction.md) <!-- + -->
     - [InlineFunction&lt;T, R&gt;](InlineFunction%601.md) <!-- + -->
     - [InlineFunction&lt;T1, T2, R&gt;](InlineFunction%602.md) <!-- + -->
-- [IPredicates]()
+- [IPredicates](IPredicates.md)
   - [IPredicate]()
   - [IPredicate&lt;T&gt;]()
   - [IPredicate&lt;T1, T2&gt;]()

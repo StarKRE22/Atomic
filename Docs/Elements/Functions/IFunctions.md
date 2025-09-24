@@ -4,7 +4,7 @@ The **IFunction** interfaces define a family of contracts for representing funct
 parameters. They provide a lightweight abstraction for defining logic that returns a value, making them useful for
 callbacks, computations, and functional programming patterns.
 
-There are several implementations of functions, depending on the number of arguments the actions take:
+There are several interfaces of functions, depending on the number of arguments the actions take:
 
 - [IFunction&lt;R&gt;](IFunction.md) — Function without parameters.
 - [IFunction&lt;T, R&gt;](IFunction%601.md) — Function that takes one argument.

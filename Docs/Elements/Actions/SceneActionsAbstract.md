@@ -7,7 +7,7 @@ They serve as a base for **custom scene logic** and are designed to be subclasse
 > [!TIP]
 > Extremely useful for cutscenes, trigger-based actions, level initialization, and similar scene-driven logic.
 
-There are several implementations of abstract scene actions, depending on the number of arguments the actions take:
+There are several classes of abstract scene actions, depending on the number of arguments the actions take:
 
 - [SceneActionAbstract](SceneActionAbstract.md) — Non-generic version; works without parameters.
 - [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) — Action that takes one argument.
