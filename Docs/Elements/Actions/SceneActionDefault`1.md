@@ -9,7 +9,7 @@ public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 - **Type parameter:** `T` — the input argument type.
 - **Notes:**
     - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+    - Attach to a `GameObject`, assign a list of `IAction<T>` implementations in the `Inspector`, and they will be
       invoked sequentially.
 
 ---

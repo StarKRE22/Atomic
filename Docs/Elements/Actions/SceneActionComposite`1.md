@@ -1,21 +1,20 @@
+# 🧩 SceneActionComposite&lt;T&gt;
 
-<details>
-  <summary>
-    <h2>🧩 SceneActionComposite&lt;T&gt;</h2>
-    <br> Represents a composite scene action with <b>one parameter</b> that can be invoked.
-  </summary>
-
-<br>
 
 ```csharp
 public class SceneActionComposite<T> : SceneActionAbstract<T>
 ```
 
+- **Description:** Represents a composite scene action with <b>one parameter</b> that can be invoked.
+- **Inheritance:** [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md)
 - **Type parameter:** `T` — the argument type.
-
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `SceneActionAbstract<T>` implementations in the Inspector, and they
+      will be invoked sequentially.
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                                                      |
 |-----------|------------------------------------------------------------------|
@@ -23,7 +22,7 @@ public class SceneActionComposite<T> : SceneActionAbstract<T>
 
 ---
 
-### 🧱Fields
+## 🧱Fields
 
 #### `actions`
 
@@ -36,9 +35,9 @@ public SceneActionAbstract<T>[] actions;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public override void Invoke(T arg);
@@ -47,41 +46,16 @@ public override void Invoke(T arg);
 - **Description:** Executes each action sequentially with the provided argument.
 - **Parameter:** `arg` – The input argument.
 
-</details>
-
+---
 
 ## 🗂 Example of Usage
 
-`SceneActionComposite` can be used similarly to [SceneActionDefault](SceneActionDefault.md) but is **strictly a
-composite container for `SceneActionAbstract`**.
-
----
-
-### 🔹 Non-generic Usage
-
-#### 1. Add the `Atomic/Elements/Action Composite` component to a `GameObject`.
-
-<img src="../../Images/SceneActionComposite.png" alt="SceneActionComposite example" width="" height="100">
-
-#### 2. Assign `HelloWorldSceneAction` component to the **Actions** array in the Inspector.
-
-```csharp
-public sealed class HelloWorldSceneAction : SceneActionAbstract
-{
-    public override void Invoke() => Debug.Log("Hello world");
-}
-```
-
----
-
-### 🔹 Generic Usage
+`SceneActionComposite<T>` can be used similarly to [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) but is **strictly a
+composite container for `SceneActionAbstract<T>`**.
 
 #### 1. Create a `GameObjectSceneActionComposite` component.
 
 ```csharp
-using Atomic.Elements;
-using UnityEngine;
-
 public sealed class GameObjectSceneActionComposite : SceneActionComposite<GameObject>
 {
 }

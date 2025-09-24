@@ -13,7 +13,7 @@ public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T
     - `T4` — the fourth argument
 - **Notes:**
   - Supports Odin Inspector
-  - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+  - Attach to a `GameObject`, assign a list of `IAction<T1, T2, T3, T4>` implementations in the `Inspector`, and they will be
     invoked sequentially.
 ---
 
