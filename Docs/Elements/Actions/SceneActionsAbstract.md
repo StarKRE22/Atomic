@@ -11,6 +11,6 @@ There are several implementations of abstract scene actions, depending on the nu
 
 - [SceneActionAbstract](SceneActionAbstract.md) — Non-generic version; works without parameters.
 - [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) — Action that take one argument.
-- [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) — Action that take two arguments .
+- [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) — Action that take two arguments.
 - [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md) — Action that take three arguments.
 - [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](SceneActionAbstract%604.md) — Action that take four arguments.

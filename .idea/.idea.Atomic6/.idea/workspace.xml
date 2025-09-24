@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsAbstract.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsAbstract.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,39 +215,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="3466000" />
-    </task>
-    <task id="LOCAL-00669" summary="Print Action">
-      <option name="closed" value="true" />
-      <created>1758655256824</created>
-      <option name="number" value="00669" />
-      <option name="presentableId" value="LOCAL-00669" />
-      <option name="project" value="LOCAL" />
-      <updated>1758655256824</updated>
-    </task>
-    <task id="LOCAL-00670" summary="Print Action">
-      <option name="closed" value="true" />
-      <created>1758655274349</created>
-      <option name="number" value="00670" />
-      <option name="presentableId" value="LOCAL-00670" />
-      <option name="project" value="LOCAL" />
-      <updated>1758655274349</updated>
-    </task>
-    <task id="LOCAL-00671" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758655678077</created>
-      <option name="number" value="00671" />
-      <option name="presentableId" value="LOCAL-00671" />
-      <option name="project" value="LOCAL" />
-      <updated>1758655678078</updated>
-    </task>
-    <task id="LOCAL-00672" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758655708125</created>
-      <option name="number" value="00672" />
-      <option name="presentableId" value="LOCAL-00672" />
-      <option name="project" value="LOCAL" />
-      <updated>1758655708125</updated>
+      <workItem from="1758697936272" duration="5335000" />
     </task>
     <task id="LOCAL-00673" summary="Пилим!">
       <option name="closed" value="true" />
@@ -609,7 +577,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758701050108</updated>
     </task>
-    <option name="localTasksCounter" value="718" />
+    <task id="LOCAL-00718" summary="SceneActionAbstract.md">
+      <option name="closed" value="true" />
+      <created>1758701419319</created>
+      <option name="number" value="00718" />
+      <option name="presentableId" value="LOCAL-00718" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701419319</updated>
+    </task>
+    <task id="LOCAL-00719" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758701492071</created>
+      <option name="number" value="00719" />
+      <option name="presentableId" value="LOCAL-00719" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701492071</updated>
+    </task>
+    <task id="LOCAL-00720" summary="SceneActionAbstract`1.md">
+      <option name="closed" value="true" />
+      <created>1758701632539</created>
+      <option name="number" value="00720" />
+      <option name="presentableId" value="LOCAL-00720" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701632539</updated>
+    </task>
+    <task id="LOCAL-00721" summary="SceneActionAbstract`2.md">
+      <option name="closed" value="true" />
+      <created>1758701867160</created>
+      <option name="number" value="00721" />
+      <option name="presentableId" value="LOCAL-00721" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701867160</updated>
+    </task>
+    <option name="localTasksCounter" value="722" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,9 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityAspect.md" />
-    <MESSAGE value="SceneEntityAspect.md" />
-    <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="Сделал Aspects!" />
     <MESSAGE value="Print Action" />
     <MESSAGE value="Фиксы!" />
@@ -647,7 +644,6 @@
     <MESSAGE value="Перепиливаем Atomic.Elements!" />
     <MESSAGE value="Офигенно, я понял как это правильно структурировать!" />
     <MESSAGE value="IAction`2.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IAction`3.md" />
     <MESSAGE value="IAction`4.md" />
     <MESSAGE value="Пилим Inline Actions" />
@@ -661,7 +657,11 @@
     <MESSAGE value="CompositeAction`4.md" />
     <MESSAGE value="Прочесал CompositeActions" />
     <MESSAGE value="SceneActionsAbstract.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionsAbstract.md" />
+    <MESSAGE value="SceneActionAbstract.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="SceneActionAbstract`1.md" />
+    <MESSAGE value="SceneActionAbstract`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionAbstract`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

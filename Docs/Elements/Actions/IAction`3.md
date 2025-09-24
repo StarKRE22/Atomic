@@ -9,6 +9,7 @@ public interface IAction<in T1, in T2, in T3>
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
+- **Note:** Attach to a GameObject and implement `Invoke(T1, T2, T3)` to define custom behavior.
 
 ---
 
