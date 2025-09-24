@@ -8,7 +8,7 @@ There are several implementations of functions, depending on the number of argum
 
 - [IFunction&lt;R&gt;](IFunction.md) — Function without parameters.
 - [IFunction&lt;T, R&gt;](IFunction%601.md) — Function that takes one argument.
-- [IAction&lt;T1, T2, R&gt;](IFunction%602.md) — Function that takes two arguments.
+- [IFunction&lt;T1, T2, R&gt;](IFunction%602.md) — Function that takes two arguments.
 
 ---
 
