@@ -9,8 +9,9 @@ additional code.
 > Actions are executed in the order they appear in the array.  
 > Null references are automatically skipped, making partially configured lists safe to use.
 
-In essence, **SceneActionDefault** acts as a **container of actions**, executing them sequentially as configured in
-the **Inspector** through `[SerializeReference]`.
+> [!TIP]
+> In essence, **SceneActionDefault** acts as a **container of actions**, executing them sequentially as configured in
+> the **Inspector** through `[SerializeReference]`.
 
 > [!WARNING]
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
