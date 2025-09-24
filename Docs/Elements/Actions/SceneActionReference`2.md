@@ -10,7 +10,7 @@ public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
     - `T1` — first argument
     - `T2` — second argument
 - **Notes:** Supports Unity serialization and Odin Inspector
-- **Usage:** Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
+- **Usage:** Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
