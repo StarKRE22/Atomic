@@ -19,7 +19,8 @@ There are several implementations of inline functions, depending on the number o
 ```csharp
 GameObject gameObject = ...
 IFunction<bool> function = new InlineFunction<bool>(
-    () => gameObject.activeSelf);
+    () => gameObject.activeSelf
+);
 
 bool activeSelf = function.Invoke();
 ```
@@ -31,7 +32,8 @@ bool activeSelf = function.Invoke();
 ```csharp
 Character player, enemy = ...
 IFunction<bool> function = new InlineFunction<Character, bool>(
-    other => player.Team != other.Team);
+    other => player.Team != other.Team
+);
 
 bool isEnemies = function.Invoke(enemy);
 ```
@@ -40,7 +42,8 @@ bool isEnemies = function.Invoke(enemy);
 
 ```csharp
 IFunction<int, int, int> function = new InlineFunction<int, int, int>(
-    (a, b) => a + b);
+    (a, b) => a + b
+);
 
 int sum = function.Invoke(3, 4); // 7
 ```
