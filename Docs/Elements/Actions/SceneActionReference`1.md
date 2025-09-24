@@ -70,3 +70,27 @@ public void Invoke(T arg);
 - **Parameter:** `arg` – The input argument.
 
 </details>
+
+---
+
+## 🗂 Example of Usage
+
+
+Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
+
+<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
+
+
+```csharp
+public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
+{
+}
+```
+
+```csharp
+[Serializable]
+public sealed class DestroyGameObjectAction : IAction<GameObject>
+{
+    public void Invoke(GameObject arg) => GameObject.Destroy(arg);
+}
+```

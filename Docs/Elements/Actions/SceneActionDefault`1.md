@@ -53,9 +53,6 @@ public override void Invoke(T arg);
 #### 1. Create a `GameObjectSceneActionDefault` component
 
 ```csharp
-using Atomic.Elements;
-using UnityEngine;
-
 public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
 {
 }

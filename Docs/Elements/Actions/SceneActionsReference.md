@@ -35,6 +35,13 @@ Below is an example of referencing a `SceneActionDefault` with a `HelloWorldScen
 
 <img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
 
+```csharp
+public sealed class HelloWorldAction : SceneActionAbstract
+{
+    public override void Invoke() => Debug.Log("Hello World!");
+}
+```
+
 ---
 
 ### 🔹 Generic Example
@@ -42,3 +49,17 @@ Below is an example of referencing a `SceneActionDefault` with a `HelloWorldScen
 Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
 
 <img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
+
+```csharp
+public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
+{
+}
+```
+
+```csharp
+[Serializable]
+public sealed class DestroyGameObjectAction : IAction<GameObject>
+{
+    public void Invoke(GameObject arg) => GameObject.Destroy(arg);
+}
+```

@@ -1,20 +1,18 @@
-<details>
-  <summary>
-    <h2>🧩 SceneActionReference</h2>
-    <br> A parameterless reference wrapper for a <code>SceneActionAbstract</code>.
-  </summary>
-
-<br>
+# 🧩 SceneActionReference
 
 ```csharp
+[Serializable]
 public sealed class SceneActionReference : IAction
 ```
 
+- **Description:** A parameterless reference wrapper for a <code>SceneActionAbstract</code>.
+- **Inheritance:** [IAction](IAction.md)
+- **Notes:** Supports Unity serialization and Odin Inspector
 - **Usage:** Assign a `SceneActionAbstract` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                             |
 |-----------|-----------------------------------------|
@@ -22,7 +20,7 @@ public sealed class SceneActionReference : IAction
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -44,7 +42,7 @@ public SceneActionReference(SceneActionAbstract action);
 
 ---
 
-### 🧱 Fields
+## 🧱 Fields
 
 #### `action`
 
@@ -57,7 +55,7 @@ public SceneActionAbstract action;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -67,42 +65,17 @@ public void Invoke();
 
 - **Description:** Invokes the referenced scene action if it exists.
 
-</details>
-
----
-
-
----
-
-
----
-
-
----
-
-
 ---
 
 ## 🗂 Example of Usage
-
-`SceneActionReference` is useful for creating a reference to another `SceneActionAbstract` via `[SerializeReference]`.
-
-> [!WARNING]  
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code for clarity
-> and maintainability, as `[SerializeReference]` can be fragile during refactoring.
-
----
-
-### 🔹 Non-generic Example
 
 Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
 
 <img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
 
----
-
-### 🔹 Generic Example
-
-Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
-
-<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
+```csharp
+public sealed class HelloWorldAction : SceneActionAbstract
+{
+    public override void Invoke() => Debug.Log("Hello World!");
+}
+```
