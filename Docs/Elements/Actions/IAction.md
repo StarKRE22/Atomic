@@ -3,7 +3,9 @@
 ```csharp
 public interface IAction
 ```
+
 - **Description:** Represents a <b>parameterless executable action</b>.
+
 ---
 
 ## 🏹 Methods
@@ -29,8 +31,11 @@ public sealed class HelloWorldAction : IAction
     } 
 }
 ```
+
 ```csharp
 // Usage
 IAction action = new HelloWorldAction();
-action.Invoke(); // Output: Hello World!
+action.Invoke(); 
+
+// Output: Hello World!
 ```
