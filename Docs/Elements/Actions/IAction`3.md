@@ -23,7 +23,7 @@ public interface IAction<in T1, in T2, in T3>
 #### `Invoke(T1, T2, T3)`
 
 ```csharp
-void Invoke(T1 arg1, T2 arg2, T3 arg3);
+public void Invoke(T1 arg1, T2 arg2, T3 arg3);
 ```
 
 - **Description:** Executes the action with the specified arguments

@@ -14,7 +14,7 @@ public interface IAction<in T>
 #### `Invoke(T)`
 
 ```csharp
-void Invoke(T arg);
+public void Invoke(T arg);
 ```
 
 - **Description:** Executes the action with the specified argument
@@ -34,7 +34,10 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 }
 ```
 ```csharp
-// Usage
+// Assume we have a GameObject
+GameObject gameObject = ...
+
+// Destroy object
 IAction<GameObject> action = new DestroyGameObjectAction();
 action.Invoke(gameObject);
 ```

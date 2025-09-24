@@ -11,7 +11,7 @@ public interface IAction
 #### `Invoke()`
 
 ```csharp
-void Invoke();
+public void Invoke();
 ```
 
 - **Description:** Executes the action logic
