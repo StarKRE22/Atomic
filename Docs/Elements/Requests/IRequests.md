@@ -3,9 +3,7 @@
 Represents a **deferred action** that can be executed at a later time. It is particularly useful for scenarios where
 input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`).
 Requests also help **prevent duplicate commands** by ensuring the same request is not processed multiple times while
-active.
-
-It extends the [IAction](../Actions/IActions.md) interface and provides **required flags** and **argument retrieval /
+active. It extends the [IAction](../Actions/IActions.md) interface and provides **required flags** and **argument retrieval /
 consumption** functionality.
 
 There are several interfaces of requests, depending on the number of arguments they take:
