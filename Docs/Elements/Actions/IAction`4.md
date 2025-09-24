@@ -1,16 +1,10 @@
-
-<details>
-  <summary>
-    <h2>🧩 IAction&lt;T1, T2, T3, T4&gt;</h2>
-    <br> Represents an executable action that <b>takes four arguments</b>.
-  </summary>
-
-<br>
+# 🧩 IAction&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 public interface IAction<in T1, in T2, in T3, in T4>
 ```
 
+- **Description:** Represents an executable action that <b>takes four arguments</b>.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -46,10 +40,11 @@ public sealed class MoveTransformAction : IAction<Transform, Vector3, float, flo
         transform.position += direction * (speed * deltaTime);
     }
 }
+```
 
+```csharp
 // Usage
 IAction<Transform, Vector3, float, float> action = new MoveTransformAction();
 action.Invoke(transform, Vector3.forward, 10, 0.02);
 ```
 
-</details>
