@@ -1,7 +1,6 @@
 # 🧩 Function Extensions
 
-The **FunctionExtensions** class provides utility methods for composing and transforming [IFunction](IFunction.md) instances.  
-One of the most useful helpers is `Invert`, which creates a new function that represents the **logical negation** of an existing boolean-returning function.
+Provides utility methods for composing and transforming [function](IFunctions.md) instances. One of the most useful helpers is `Invert`, which creates a new function that represents the **logical negation** of an existing boolean-returning function.
 
 ---
 

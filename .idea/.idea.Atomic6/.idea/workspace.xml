@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,31 +210,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="20598000" />
-    </task>
-    <task id="LOCAL-00715" summary="CompositeAction`4.md">
-      <option name="closed" value="true" />
-      <created>1758700759817</created>
-      <option name="number" value="00715" />
-      <option name="presentableId" value="LOCAL-00715" />
-      <option name="project" value="LOCAL" />
-      <updated>1758700759817</updated>
-    </task>
-    <task id="LOCAL-00716" summary="Прочесал CompositeActions">
-      <option name="closed" value="true" />
-      <created>1758700807875</created>
-      <option name="number" value="00716" />
-      <option name="presentableId" value="LOCAL-00716" />
-      <option name="project" value="LOCAL" />
-      <updated>1758700807875</updated>
-    </task>
-    <task id="LOCAL-00717" summary="SceneActionsAbstract.md">
-      <option name="closed" value="true" />
-      <created>1758701050108</created>
-      <option name="number" value="00717" />
-      <option name="presentableId" value="LOCAL-00717" />
-      <option name="project" value="LOCAL" />
-      <updated>1758701050108</updated>
+      <workItem from="1758697936272" duration="21030000" />
     </task>
     <task id="LOCAL-00718" summary="SceneActionAbstract.md">
       <option name="closed" value="true" />
@@ -603,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758739122190</updated>
     </task>
-    <option name="localTasksCounter" value="764" />
+    <task id="LOCAL-00764" summary="InlinePredicate.md">
+      <option name="closed" value="true" />
+      <created>1758739153130</created>
+      <option name="number" value="00764" />
+      <option name="presentableId" value="LOCAL-00764" />
+      <option name="project" value="LOCAL" />
+      <updated>1758739153130</updated>
+    </task>
+    <task id="LOCAL-00765" summary="InlinePredicate`1.md">
+      <option name="closed" value="true" />
+      <created>1758739299276</created>
+      <option name="number" value="00765" />
+      <option name="presentableId" value="LOCAL-00765" />
+      <option name="project" value="LOCAL" />
+      <updated>1758739299276</updated>
+    </task>
+    <task id="LOCAL-00766" summary="InlinePredicate`2.md">
+      <option name="closed" value="true" />
+      <created>1758739447372</created>
+      <option name="number" value="00766" />
+      <option name="presentableId" value="LOCAL-00766" />
+      <option name="project" value="LOCAL" />
+      <updated>1758739447373</updated>
+    </task>
+    <option name="localTasksCounter" value="767" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -630,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionComposite`4.md" />
-    <MESSAGE value="SceneActionsReference.md" />
     <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneActionReference`1.md" />
@@ -655,7 +654,9 @@
     <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="InlinePredicates.md" />
     <MESSAGE value="InlinePredicate.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate.md" />
+    <MESSAGE value="InlinePredicate`1.md" />
+    <MESSAGE value="InlinePredicate`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

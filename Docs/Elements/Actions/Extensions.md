@@ -1,6 +1,6 @@
 # 🧩 Action Extensions
 
-The **ActionExtensions** class provides utility methods for invoking arrays or collections of [IAction](IAction.md). These methods automatically skip `null` actions and execute them sequentially.
+The **ActionExtensions** class provides utility methods for invoking arrays or collections of [IAction](IActions.md). These methods automatically skip `null` actions and execute them sequentially.
 
 ---
 
