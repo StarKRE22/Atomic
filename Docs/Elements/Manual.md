@@ -36,18 +36,17 @@ covers tools for **reactive programming, event handling, Unity integration, and 
 section as a guide for integrating `Atomic.Elements` into your Unity or C# projects, taking advantage of **reactive
 patterns, composable structures, and modular design**.
 
-  - [Values](#-values)
-  - [Variables](#-variables)
-  - [Actions](Actions/Manual.md) <!-- + -->
-  - [Functions](Functions/Manual.md) <!-- + -->
-  - [Setters](#-setters)
-  - [Events](#-events)
-  - [Requests](#-requests)
-  - [Expressions](#-expressions)
-  - [Collections](#-collections)
-  - [Time](#-time)
-  - [Utilities](#-utilities)
-
+- [Values](#-values)
+- [Variables](#-variables)
+- [Actions](Actions/Manual.md) <!-- + -->
+- [Functions](Functions/Manual.md) <!-- + -->
+- [Setters](Setters/Manual) <!-- + -->
+- [Events](#-events)
+- [Requests](#-requests)
+- [Expressions](#-expressions)
+- [Collections](#-collections)
+- [Time](#-time)
+- [Utilities](#-utilities)
 
 ### 🧩 Values
 
@@ -75,19 +74,6 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 - [ProxyVariable](Variables/ProxyVariable.md)
 - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
 - [Extensions](Variables/Extensions.md)
-
-
-
-
-
-
-### 🧩 Setters
-
-Provides interfaces and classes for **assigning values**. It offers a lightweight and consistent way to encapsulate
-value assignment logic, enabling clean, reusable, and decoupled code for modifying data.
-
-- [ISetter](Setters/ISetter.md)
-- [InlineSetter](Setters/InlineSetter.md)
 
 ### 🧩 Events
 
