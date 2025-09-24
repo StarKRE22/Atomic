@@ -3,7 +3,7 @@
 The **IPredicate** interfaces are specialized forms of [functions](IFunctions.md) that evaluate a condition and return
 `true` or `false`, useful in filtering, validation, and decision-making logic.
 
-There are several interfaces of predicaes, depending on the number of arguments the actions take:
+There are several interfaces of predicates, depending on the number of arguments they take:
 
 - [IPredicate&lt;R&gt;](IPredicate.md) — Predicate without parameters.
 - [IPredicate&lt;T, R&gt;](IPredicate%601.md) — Predicate that takes one argument.

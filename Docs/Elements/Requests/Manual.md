@@ -1,21 +1,23 @@
 # 🧩 Requests
 
 Represents **deferred actions** that can be executed at a later time. It is particularly useful for scenarios where
-input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help *
-*prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
+input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`).
+Requests also help **prevent duplicate commands** by ensuring the same request is not processed multiple times while
+active.
 
-- [IRequests]()
-  - [IRequest]()
-  - [IRequest&lt;T&gt;]()
-  - [IRequest&lt;T1, T2&gt;]()
-  - [IRequest&lt;T1, T2, T3&gt;]()
-  - [IRequest&lt;T1, T2, T3, T4&gt;]()
+- [IRequests](IRequests.md) <!-- + -->
+    - [IRequest]()
+    - [IRequest&lt;T&gt;]()
+    - [IRequest&lt;T1, T2&gt;]()
+    - [IRequest&lt;T1, T2, T3&gt;]()
+    - [IRequest&lt;T1, T2, T3, T4&gt;]()
 - [BaseRequests]()
     - [BaseRequest]()
     - [BaseRequest&lt;T&gt;]()
     - [BaseRequest&lt;T1, T2&gt;]()
     - [BaseRequest&lt;T1, T2, T3&gt;]()
     - [BaseRequest&lt;T1, T2, T3, T4&gt;]()
+
 ---
 
 ## 🗂 Examples of Usage
@@ -148,3 +150,11 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
     }
 }
 ```
+
+## 📝 Notes
+
+- **Deferred execution** – Requests can be stored and processed later via `Consume()`.
+- **Duplicate prevention** – Multiple identical requests can be avoided because `Consume()` only processes requests that
+  are still required.
+- **Required** – Indicates whether the request currently needs handling.
+- **TryGet / Consume** – Methods to safely inspect or process the request arguments.

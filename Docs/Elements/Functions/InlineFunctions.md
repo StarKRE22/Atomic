@@ -4,7 +4,7 @@ The **InlineFunction** classes provide wrappers around standard `System.Func` de
 corresponding [IFunction](IFunctions.md) interfaces and allow invoking functions
 directly, optionally with parameters.
 
-There are several implementations of inline functions, depending on the number of arguments the actions take:
+There are several implementations of inline functions, depending on the number of arguments they take:
 
 - [InlineFunction&lt;R&gt;](InlineFunction.md) — Function without parameters.
 - [InlineFunction&lt;T, R&gt;](InlineFunction%601.md) — Function that takes one argument.

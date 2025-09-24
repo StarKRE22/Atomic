@@ -4,7 +4,7 @@ Provides wrappers around standard `System.Func` delegates that return a boolean 
 from [InlineFunction](InlineFunctions.md) and implements the corresponding [IPredicate](IPredicates.md) interfaces and
 allow invoking predicates directly, optionally with parameters.
 
-There are several implementations of inline predicates, depending on the number of arguments the actions take:
+There are several implementations of inline predicates, depending on the number of arguments they take:
 
 - [InlinePredicate](InlinePredicate.md) — Predicate without parameters.
 - [InlinePredicate&lt;T&gt;](InlinePredicate%601.md) — Predicate that takes one argument.
