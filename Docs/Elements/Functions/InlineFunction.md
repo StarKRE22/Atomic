@@ -261,24 +261,3 @@ int sum = sumFunc.Invoke(3, 4); // sum = 7
 </details>
 
 ---
-
-## 📌 Best Practice
-
-`InlineFunction` is ideal for creating functions for specific game objects using **lambda expressions**, making it
-easy to define custom behavior inline for values, computations, or reactive systems.
-
-Below is an example of using `InlineFunction` to provide dynamic values for different entities.
-
-```csharp
-//Using position and rotation from Rigidbody
-var entity = new Entity("Tank");
-entity.AddPosition(new InlineFunction<Vector3>(() => rigidbody.position));
-entity.AddRotation(new InlineFunction<Quaternion>(() => rigidbody.rotation));
-```
-
-```csharp
-//Using position and rotation from Transform
-var entity = new Entity("Ship");
-entity.AddPosition(new InlineFunction<Vector3>(() => transform.position));
-entity.AddRotation(new InlineFunction<Quaternion>(() => transform.rotation));
-```
