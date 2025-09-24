@@ -5,7 +5,7 @@ public class SceneActionComposite<T1, T2, T3> : SceneActionAbstract<T1, T2, T3>
 ```
 
 - **Description:** Composite scene action with **three parameters**.
-- **Inheritance:** [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%602.md)
+- **Inheritance:** [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
