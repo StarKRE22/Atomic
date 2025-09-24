@@ -1,23 +1,20 @@
+# 🧩 InlinePredicate&lt;T1, T2&gt;
 
-<details>
-  <summary>
-    <h2>🧩 InlinePredicate&lt;T1, T2&gt;</h2>
-    <br> Represents a predicate with <b>two input arguments</b> that returns a boolean result.
-  </summary>
+- **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
+- **Type Parameters:**
+  - `T1` — the first input type
+  - `T2` — the second input type
+- **Inheritance:** [InlineFunction&lt;T1, T2, R&gt;](InlineFunction%602.md), [IPredicate&lt;T1, T2&gt;](IPredicate%602.md)
 
-<br>
 
 ```csharp
 public class InlinePredicate<T1, T2> : InlineFunction<T1, T2, bool>, IPredicate<T1, T2>
-`````
+```
 
-- **Type Parameters:**
-    - `T1` — the first input type
-    - `T2` — the second input type
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlinePredicate(Func<T1, T2, bool>)`
 
@@ -31,7 +28,7 @@ public InlinePredicate(Func<T1, T2, bool> func)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -56,7 +53,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlinePredicate<T1, T2>(Func<T1, T2, bool>)`
 
@@ -70,12 +67,13 @@ public static implicit operator InlinePredicate<T1, T2>(Func<T1, T2, bool> value
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-Character player = ...
-IPredicate<Character, Character> isEnemyPair = new InlinePredicate<Character, Character>((a, b) => a.Team != b.Team);
-bool result = isEnemyPair.Invoke(player, enemy);
+Character player, enemy = ...
+IPredicate<Character, Character> predicate = new InlinePredicate<Character, Character>(
+    (a, b) => a.Team != b.Team
+);
+bool areEnemies = predicate.Invoke(player, enemy);
 ```
 
-</details>
