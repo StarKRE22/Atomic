@@ -1,27 +1,23 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineAction&lt;T1, T2, T3, T4&gt;</h2>
-    <br> Represents an action <b>with four parameters</b> that can be invoked.
-  </summary>
-
-<br>
+# 🧩 InlineAction&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
 
+- **Description:** Represents an action <b>with four parameters</b> that can be invoked.
 - **Type parameters**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
     - `T4` — the fourth argument
+- **Inheritance:** [IAction&lt;T1, T2, T3, T4&gt;](IAction%604.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
-#### `InlineAction(Action<T1, T2, T3, T4> action)`
+#### `InlineAction(Action<T1, T2, T3, T4>)`
 
 ```csharp
 public InlineAction(Action<T1, T2, T3, T4> action)
@@ -33,9 +29,9 @@ public InlineAction(Action<T1, T2, T3, T4> action)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)`
+#### `Invoke(T1, T2, T3, T4)`
 
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
@@ -59,7 +55,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4>)`
 
@@ -75,16 +71,3 @@ public static implicit operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, 
     - `T4` — the third argument
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T1, T2, T3, T4>` containing the specified delegate.
-
----
-
-### 🗂 Example of Usage
-
-```csharp
-var moveAction = new InlineAction<Transform, Vector3, float, float>(
-    (transform, direction, speed, deltaTime) => transform.position += direction * (speed * deltaTime)    
-);
-moveAction.Invoke(transform, Vector3.forward, 10, 0.02);
-```
-
-</details>
