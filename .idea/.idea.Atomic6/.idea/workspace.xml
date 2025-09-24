@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,23 +210,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="17433000" />
-    </task>
-    <task id="LOCAL-00706" summary="InlineAction`2.md">
-      <option name="closed" value="true" />
-      <created>1758698952460</created>
-      <option name="number" value="00706" />
-      <option name="presentableId" value="LOCAL-00706" />
-      <option name="project" value="LOCAL" />
-      <updated>1758698952460</updated>
-    </task>
-    <task id="LOCAL-00707" summary="InlineAction`3.md">
-      <option name="closed" value="true" />
-      <created>1758699131547</created>
-      <option name="number" value="00707" />
-      <option name="presentableId" value="LOCAL-00707" />
-      <option name="project" value="LOCAL" />
-      <updated>1758699131547</updated>
+      <workItem from="1758697936272" duration="18099000" />
     </task>
     <task id="LOCAL-00708" summary="InlineAction`3.md">
       <option name="closed" value="true" />
@@ -607,7 +588,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758735117402</updated>
     </task>
-    <option name="localTasksCounter" value="755" />
+    <task id="LOCAL-00755" summary="InlineFunction.md">
+      <option name="closed" value="true" />
+      <created>1758735454723</created>
+      <option name="number" value="00755" />
+      <option name="presentableId" value="LOCAL-00755" />
+      <option name="project" value="LOCAL" />
+      <updated>1758735454723</updated>
+    </task>
+    <task id="LOCAL-00756" summary="InlineFunction`1.md">
+      <option name="closed" value="true" />
+      <created>1758735648111</created>
+      <option name="number" value="00756" />
+      <option name="presentableId" value="LOCAL-00756" />
+      <option name="project" value="LOCAL" />
+      <updated>1758735648111</updated>
+    </task>
+    <option name="localTasksCounter" value="757" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionsDefault.md" />
-    <MESSAGE value="SceneActionDefault`1.md" />
     <MESSAGE value="SceneActionDefault`2.md" />
     <MESSAGE value="SceneActionDefault`3.md" />
     <MESSAGE value="SceneActionDefault`4.md" />
@@ -659,7 +654,9 @@
     <MESSAGE value="IFunction`1.md" />
     <MESSAGE value="IFunction`2.md" />
     <MESSAGE value="InlineFunctions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineFunctions.md" />
+    <MESSAGE value="InlineFunction.md" />
+    <MESSAGE value="InlineFunction`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineFunction`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

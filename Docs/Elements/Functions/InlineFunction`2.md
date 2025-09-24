@@ -1,24 +1,20 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineFunction&lt;T1, T2, R&gt;</h2>
-    <br> Represents a function with <b>two input arguments</b> that returns a result.
-  </summary>
-
-<br>
+# 🧩 InlineFunction&lt;T1, T2, R&gt;
 
 ```csharp
 public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
 ```
 
+- **Description:** Represents a function with <b>two input arguments</b> that returns a result.
 - **Type parameters:**
     - `T1` — the first input parameter type
     - `T2` — the second input parameter type
     - `R` — the return type
+- **Inheritance:** [IFunction&lt;T1, T2, R&gt;](IFunction%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlineFunction(Func<T1, T2, R>)`
 
@@ -32,7 +28,7 @@ public InlineFunction(Func<T1, T2, R> func)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -57,7 +53,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlineFunction<T1, T2, R>(Func<T1, T2, R>)`
 
@@ -71,11 +67,12 @@ public static implicit operator InlineFunction<T1, T2, R>(Func<T1, T2, R> value)
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-IFunction<int, int, int> sumFunc = new InlineFunction<int, int, int>((a, b) => a + b);
-int sum = sumFunc.Invoke(3, 4); // sum = 7
-```
+IFunction<int, int, int> function = new InlineFunction<int, int, int>(
+    (a, b) => a + b
+);
 
-</details>
+int sum = function.Invoke(3, 4); // 7
+```
