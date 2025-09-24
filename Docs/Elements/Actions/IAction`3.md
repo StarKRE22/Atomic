@@ -1,16 +1,10 @@
-
-<details>
-  <summary>
-    <h2>🧩 IAction&lt;T1, T2, T3&gt;</h2>
-    <br> Represents an executable action that <b>takes three arguments</b>.
-  </summary>
-
-<br>
+# 🧩 IAction&lt;T1, T2, T3&gt;
 
 ```csharp
 public interface IAction<in T1, in T2, in T3>
 ```
 
+- **Description:** Represents an executable action that <b>takes three arguments</b>.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
@@ -18,7 +12,7 @@ public interface IAction<in T1, in T2, in T3>
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 
@@ -34,7 +28,9 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
+
+Below is an example of moving resources between storages using `Action<T1, T2, T2>`
 
 ```csharp
 public sealed class MoveResourcesAction : IAction<Storage, Storage, int>
@@ -45,10 +41,13 @@ public sealed class MoveResourcesAction : IAction<Storage, Storage, int>
         destination.EarnResources(amount);
     }
 }
+```
+
+```csharp
+// Assume we have two resource storages
+Storage storageA, storageB = ...
 
 // Usage
 IAction<Storage, Storage, int> action = new MoveResourcesAction();
 action.Invoke(storageA, storageB, 100);
 ```
-
-</details>
