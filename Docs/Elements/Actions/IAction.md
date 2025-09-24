@@ -28,7 +28,8 @@ public sealed class HelloWorldAction : IAction
         Console.WriteLine("Hello World!");  
     } 
 }
-
+```
+```csharp
 // Usage
 IAction action = new HelloWorldAction();
 action.Invoke(); // Output: Hello World!

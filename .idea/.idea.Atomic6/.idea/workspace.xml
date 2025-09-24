@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Actions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,31 +213,7 @@
       <workItem from="1758351834194" duration="67122000" />
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
-      <workItem from="1758692893392" duration="2026000" />
-    </task>
-    <task id="LOCAL-00646" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625044135</created>
-      <option name="number" value="00646" />
-      <option name="presentableId" value="LOCAL-00646" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625044135</updated>
-    </task>
-    <task id="LOCAL-00647" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625125362</created>
-      <option name="number" value="00647" />
-      <option name="presentableId" value="LOCAL-00647" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625125362</updated>
-    </task>
-    <task id="LOCAL-00648" summary="Сделал раздел Behaviours">
-      <option name="closed" value="true" />
-      <created>1758625266796</created>
-      <option name="number" value="00648" />
-      <option name="presentableId" value="LOCAL-00648" />
-      <option name="project" value="LOCAL" />
-      <updated>1758625266796</updated>
+      <workItem from="1758692893392" duration="2640000" />
     </task>
     <task id="LOCAL-00649" summary="Сделал раздел Behaviours">
       <option name="closed" value="true" />
@@ -610,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758693735703</updated>
     </task>
-    <option name="localTasksCounter" value="695" />
+    <task id="LOCAL-00695" summary="Офигенно, я понял как это правильно структурировать!">
+      <option name="closed" value="true" />
+      <created>1758694940074</created>
+      <option name="number" value="00695" />
+      <option name="presentableId" value="LOCAL-00695" />
+      <option name="project" value="LOCAL" />
+      <updated>1758694940075</updated>
+    </task>
+    <task id="LOCAL-00696" summary="Офигенно, я понял как это правильно структурировать!">
+      <option name="closed" value="true" />
+      <created>1758694994498</created>
+      <option name="number" value="00696" />
+      <option name="presentableId" value="LOCAL-00696" />
+      <option name="project" value="LOCAL" />
+      <updated>1758694994498</updated>
+    </task>
+    <task id="LOCAL-00697" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1758695210732</created>
+      <option name="number" value="00697" />
+      <option name="presentableId" value="LOCAL-00697" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695210732</updated>
+    </task>
+    <option name="localTasksCounter" value="698" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntitySingleton.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="SceneEntityProxy.md" />
@@ -656,13 +652,14 @@
     <MESSAGE value="SceneEntityAspect.md" />
     <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="Сделал Aspects!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Print Action" />
     <MESSAGE value="Фиксы!" />
     <MESSAGE value="Назад!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Перепиливаем Atomic.Elements!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перепиливаем Atomic.Elements!" />
+    <MESSAGE value="Офигенно, я понял как это правильно структурировать!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
