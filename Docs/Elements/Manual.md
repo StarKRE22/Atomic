@@ -105,8 +105,8 @@ There are several abstractions of actions, depending on the number of arguments 
     - [SceneActionAbstract](Actions/SceneActionAbstract.md)  <!-- + -->
     - [SceneActionAbstract&lt;T&gt;](Actions/SceneActionAbstract%601.md)  <!-- + -->
     - [SceneActionAbstract&lt;T1, T2&gt;](Actions/SceneActionAbstract%602.md) <!-- + -->
-    - [SceneActionAbstract&lt;T1, T2, T3&gt;](Actions/SceneActionAbstract%603.md)
-    - [SceneActionAbstract&lt;T1, T2, T3, T4&gt;]()
+    - [SceneActionAbstract&lt;T1, T2, T3&gt;](Actions/SceneActionAbstract%603.md)  <!-- + -->
+    - [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](Actions/SceneActionAbstract%604.md)
 - [SceneActions Default]()
     - [SceneActionDefault]()
     - [SceneActionDefault&lt;T&gt;]()
