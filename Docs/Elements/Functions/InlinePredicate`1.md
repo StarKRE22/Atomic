@@ -1,21 +1,18 @@
+# 🧩 InlinePredicate&lt;T&gt;
 
-<details>
-  <summary>
-    <h2>🧩 InlinePredicate&lt;T&gt;</h2>
-    <br> Represents a predicate with <b>one input argument</b> that returns a boolean result.
-  </summary>
-
-<br>
+- **Description:** Represents a predicate with <b>one input argument</b> that returns a boolean result.
+- **Type Parameter:** `T` — the type of the input parameter.
+- **Inheritance:** [InlineFunction&lt;T, R&gt;](InlineFunction%601.md), [IPredicate&lt;T&gt;](IPredicate%601.md)
+- **Note:** Supports Odin Inspector
 
 ```csharp
 public class InlinePredicate<T> : InlineFunction<T, bool>, IPredicate<T>
 ```
 
-- **Type Parameter:** `T` — the type of the input parameter.
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlinePredicate(Func<T, bool>)`
 
@@ -29,7 +26,7 @@ public InlinePredicate(Func<T, bool> func)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -52,7 +49,7 @@ public override string ToString();
 
 ---
 
-### 🪄 Operators
+## 🪄 Operators
 
 #### `operator InlinePredicate<T>(Func<T, bool>)`
 
@@ -66,12 +63,12 @@ public static implicit operator InlinePredicate<T>(Func<T, bool> value);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-Character player = ...
-IPredicate<Character> isEnemy = new InlinePredicate<Character>(other => player.Team != other.Team);
-bool result = isEnemy.Invoke(enemy);
+Character player, enemy = ...
+IPredicate<Character> predicate = new InlinePredicate<Character>(
+    other => player.Team != other.Team
+);
+bool isEnemy = predicate.Invoke(enemy);
 ```
-
-</details>
