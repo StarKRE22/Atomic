@@ -1,12 +1,14 @@
 # 🧩 SceneActionReference&lt;T&gt;
 
 ```csharp
+[Serializable]
 public sealed class SceneActionReference<T> : IAction<T>
 ```
 
-- **Description:** A reference wrapper for a <code>SceneActionAbstract&lt;T&gt;</code> with <b>one parameter</b>.
+- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) with <b>one parameter</b>.
 - **Inheritance:** [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the argument type.
+- **Notes:** Supports Unity serialization and Odin Inspector
 - **Usage:** Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
 
 ---

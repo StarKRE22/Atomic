@@ -1,23 +1,20 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionReference&lt;T1, T2&gt;</h2>
-    <br> A reference wrapper for a <code>SceneActionAbstract&lt;T1, T2&gt;</code> with <b>two parameters</b>.
-  </summary>
-
-<br>
+# 🧩 SceneActionReference&lt;T1, T2&gt;
 
 ```csharp
 public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 ```
 
+- **Description:**  A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two parameters</b>.
+- **Inheritance:** [IAction&lt;T1, T2&gt;](IAction%602.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
+- **Notes:** Supports Unity serialization and Odin Inspector
+- **Usage:** Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                           |
 |-----------|---------------------------------------|
@@ -25,7 +22,7 @@ public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -43,12 +40,11 @@ public SceneActionReference(SceneActionAbstract<T1, T2> action);
 ```
 
 - **Description:** Creates a new reference wrapping the specified `SceneActionAbstract<T1, T2>`.
-- **Parameters:**
-    - `action` — The `SceneActionAbstract<T1, T2>` to reference.
+- **Parameter:** `action` — The `SceneActionAbstract<T1, T2>` to reference.
 
 ---
 
-### 🧱 Fields
+## 🧱 Fields
 
 #### `action`
 
@@ -61,7 +57,7 @@ public SceneActionAbstract<T1, T2> action;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -73,5 +69,3 @@ public void Invoke(T1 arg1, T2 arg2);
 - **Parameters:**
     - `arg1` – The first argument
     - `arg2` – The second argument
-
-</details>

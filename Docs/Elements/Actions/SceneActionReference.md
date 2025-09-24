@@ -5,7 +5,7 @@
 public sealed class SceneActionReference : IAction
 ```
 
-- **Description:** A parameterless reference wrapper for a <code>SceneActionAbstract</code>.
+- **Description:** A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstract.md).
 - **Inheritance:** [IAction](IAction.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
 - **Usage:** Assign a `SceneActionAbstract` component in the Inspector and invoke it using `Invoke()`.
