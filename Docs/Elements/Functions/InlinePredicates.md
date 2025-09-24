@@ -22,7 +22,7 @@ IPredicate predicate = new InlinePredicate(
     () => gameObject.activeSelf
 );
 
-bool result = predicate.Invoke();
+bool activeSelf = predicate.Invoke();
 ```
 
 ---
