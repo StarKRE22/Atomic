@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,23 +210,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="15836000" />
-    </task>
-    <task id="LOCAL-00703" summary="IAction`4.md">
-      <option name="closed" value="true" />
-      <created>1758696236455</created>
-      <option name="number" value="00703" />
-      <option name="presentableId" value="LOCAL-00703" />
-      <option name="project" value="LOCAL" />
-      <updated>1758696236455</updated>
-    </task>
-    <task id="LOCAL-00704" summary="IAction`4.md">
-      <option name="closed" value="true" />
-      <created>1758696254431</created>
-      <option name="number" value="00704" />
-      <option name="presentableId" value="LOCAL-00704" />
-      <option name="project" value="LOCAL" />
-      <updated>1758696254431</updated>
+      <workItem from="1758697936272" duration="17115000" />
     </task>
     <task id="LOCAL-00705" summary="Пилим Inline Actions">
       <option name="closed" value="true" />
@@ -604,7 +588,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758733702704</updated>
     </task>
-    <option name="localTasksCounter" value="752" />
+    <task id="LOCAL-00752" summary="IFunction`2.md">
+      <option name="closed" value="true" />
+      <created>1758733839851</created>
+      <option name="number" value="00752" />
+      <option name="presentableId" value="LOCAL-00752" />
+      <option name="project" value="LOCAL" />
+      <updated>1758733839851</updated>
+    </task>
+    <task id="LOCAL-00753" summary="InlineFunctions.md">
+      <option name="closed" value="true" />
+      <created>1758734595295</created>
+      <option name="number" value="00753" />
+      <option name="presentableId" value="LOCAL-00753" />
+      <option name="project" value="LOCAL" />
+      <updated>1758734595295</updated>
+    </task>
+    <option name="localTasksCounter" value="754" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionAbstract`3.md" />
-    <MESSAGE value="SceneActionAbstract`4.md" />
     <MESSAGE value="SceneActionsDefault.md" />
     <MESSAGE value="SceneActionDefault`1.md" />
     <MESSAGE value="SceneActionDefault`2.md" />
@@ -656,7 +654,9 @@
     <MESSAGE value="Сделал IFunctions.md" />
     <MESSAGE value="IFunction.md" />
     <MESSAGE value="IFunction`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IFunction`1.md" />
+    <MESSAGE value="IFunction`2.md" />
+    <MESSAGE value="InlineFunctions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineFunctions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

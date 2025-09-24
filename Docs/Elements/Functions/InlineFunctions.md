@@ -50,20 +50,47 @@ int sum = function.Invoke(3, 4); // 7
 ## 📌 Best Practice
 
 `InlineFunction` is ideal for creating functions for specific game objects using **lambda expressions**, making it
-easy to define custom behavior inline for values, computations, or reactive systems.
+easy to define custom behavior inline for values, computations, reactive systems and tests.
 
-Below is an example of using `InlineFunction` to provide dynamic values for different entities.
+Below is a demonstration of how to dynamically provide values for different types of transformations in
+`AtomicEntities`:
+
+### Setting transform via `Rigidbody`
 
 ```csharp
-//Using position and rotation from Rigidbody
-var entity = new Entity("Tank");
-entity.AddPosition(new InlineFunction<Vector3>(() => rigidbody.position));
-entity.AddRotation(new InlineFunction<Quaternion>(() => rigidbody.rotation));
+public class PhysicsTransformInstaller : SceneEntityInstaller
+{
+    [SerializeField]
+    private Rigidbody _rigidbody;
+
+    public void Install(IEntity entity)
+    {
+        entity.AddPosition(new InlineFunction<Vector3>(() => _rigidbody.position));
+        entity.AddRotation(new InlineFunction<Quaternion>(() => _rigidbody.rotation));
+    }
+}
 ```
 
+### Setting transform via `Transform`
+
 ```csharp
-//Using position and rotation from Transform
-var entity = new Entity("Ship");
-entity.AddPosition(new InlineFunction<Vector3>(() => transform.position));
-entity.AddRotation(new InlineFunction<Quaternion>(() => transform.rotation));
+public class KinematicTransformInstaller : SceneEntityInstaller
+{
+    [SerializeField]
+    private Transform _transform;
+
+    public void Install(IEntity entity)
+    {
+        entity.AddPosition(new InlineFunction<Vector3>(() => _transform.position));
+        entity.AddRotation(new InlineFunction<Quaternion>(() => _transform.rotation));
+    }
+}
+```
+
+### Usage in code
+
+```csharp
+// Now it doesn’t matter where the object’s coordinates come from — it’s abstracted away
+IFunction<Vector3> position = entity.GetPosition();
+IFunction<Quaternion> rotation = entity.GetRotation();
 ```
