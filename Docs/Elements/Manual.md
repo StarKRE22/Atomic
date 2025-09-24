@@ -39,7 +39,7 @@ patterns, composable structures, and modular design**.
   - [Values](#-values)
   - [Variables](#-variables)
   - [Actions](Actions/Manual.md) <!-- + -->
-  - [Functions](#-functions)
+  - [Functions](Functions/Manual.md) <!-- + -->
   - [Setters](#-setters)
   - [Events](#-events)
   - [Requests](#-requests)
@@ -79,18 +79,7 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 
 
 
-### 🧩 Functions
 
-Provides a set of abstractions for defining logic that **returns a value** and can accept varying numbers of input
-parameters. These function types are lightweight and flexible, making them ideal for **callbacks, computations, or
-functional programming patterns**. They allow developers to encapsulate reusable logic, implement predicates, and create
-inline or composable functions for clean and maintainable code.
-
-- [IFunction](Functions/IFunction.md)
-- [InlineFunction](Functions/InlineFunction.md)
-- [IPredicate](Functions/IPredicate.md)
-- [InlinePredicate](Functions/InlinePredicate.md)
-- [Extensions](Functions/Extensions.md)
 
 ### 🧩 Setters
 

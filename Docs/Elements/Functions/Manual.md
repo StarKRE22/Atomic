@@ -1,0 +1,24 @@
+# 🧩 Functions
+
+Provides a set of abstractions for defining logic that **returns a value** and can accept varying numbers of input
+parameters. These function types are lightweight and flexible, making them ideal for **callbacks, computations, or
+functional programming patterns**. They allow developers to encapsulate reusable logic, implement predicates, and create
+inline or composable functions for clean and maintainable code.
+
+- [IFunctions]()
+    - [IFunction&lt;R&gt;]()
+    - [IFunction&lt;T, R&gt;]()
+    - [IFunction&lt;T1, T2, R&gt;]()
+- [InlineFunctions]()
+    - [InlineFunction&lt;R&gt;]()
+    - [InlineFunction&lt;T, R&gt;]()
+    - [InlineFunction&lt;T1, T2, R&gt;]()
+- [IPredicates]()
+  - [IPredicate]()
+  - [IPredicate&lt;T&gt;]()
+  - [IPredicate&lt;T1, T2&gt;]()
+- [InlinePredicates]()
+  - [InlinePredicate]()
+  - [InlinePredicate&lt;T&gt;]()
+  - [InlinePredicate&lt;T1, T2&gt;]()
+- [Extensions](Extensions.md)

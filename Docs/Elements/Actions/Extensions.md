@@ -166,7 +166,7 @@ public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] ac
 
 ----
 
-### 📝 Notes
+## 📝 Notes
 - **Null Safety** – Both the collection and individual actions are checked for null.
 - **Performance** – Aggressively inlined for minimal call overhead.
 - **Batch Execution** – Useful for invoking multiple actions in one operation.

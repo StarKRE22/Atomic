@@ -5,7 +5,7 @@ One of the most useful helpers is `Invert`, which creates a new function that re
 
 ---
 
-### `Invert(IFunction<bool>)`
+#### `Invert(IFunction<bool>)`
 ```csharp
 public static InlineFunction<bool> Invert(this IFunction<bool> it)
 `````
@@ -23,7 +23,7 @@ public static InlineFunction<bool> Invert(this IFunction<bool> it)
 
 ---
 
-### `Invert<T>(IFunction<T, bool>)`
+#### `Invert<T>(IFunction<T, bool>)`
 ```csharp
 public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it)
 ````
@@ -42,7 +42,7 @@ public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it)
 
 ---
 
-### `Invert<T1, T2>(IFunction<T1, T2, bool>)`
+#### `Invert<T1, T2>(IFunction<T1, T2, bool>)`
 ```csharp
 public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2, bool> it)
 ````
@@ -62,7 +62,7 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
   ````
 ---
 
-### `Add<R>(ICollection<Func<R>>, IFunction<R>)`
+#### `Add<R>(ICollection<Func<R>>, IFunction<R>)`
 ```csharp
 public static void Add<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Add(member.Invoke);  
 ```
@@ -74,7 +74,7 @@ public static void Add<R>(this ICollection<Func<R>> it, IFunction<R> member) => 
 
 ---
 
-### `Remove<R>(ICollection<Func<R>>, IFunction<R>)`
+#### `Remove<R>(ICollection<Func<R>>, IFunction<R>)`
 ```csharp
 public static void Remove<R>(this ICollection<Func<R>> it, IFunction<R> member) => it.Remove(member.Invoke);  
 ```
