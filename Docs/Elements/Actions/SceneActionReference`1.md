@@ -1,21 +1,17 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionReference&lt;T&gt;</h2>
-    <br> A reference wrapper for a <code>SceneActionAbstract&lt;T&gt;</code> with <b>one parameter</b>.
-  </summary>
-
-<br>
+# 🧩 SceneActionReference&lt;T&gt;
 
 ```csharp
 public sealed class SceneActionReference<T> : IAction<T>
 ```
 
+- **Description:** A reference wrapper for a <code>SceneActionAbstract&lt;T&gt;</code> with <b>one parameter</b>.
+- **Inheritance:** [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the argument type.
+- **Usage:** Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Description                           |
 |-----------|---------------------------------------|
@@ -23,7 +19,7 @@ public sealed class SceneActionReference<T> : IAction<T>
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -45,7 +41,7 @@ public SceneActionReference(SceneActionAbstract<T> action);
 
 ---
 
-### 🧱 Fields
+## 🧱 Fields
 
 #### `action`
 
@@ -58,7 +54,7 @@ public SceneActionAbstract<T> action;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -69,17 +65,13 @@ public void Invoke(T arg);
 - **Description:** Invokes the referenced scene action with the provided argument.
 - **Parameter:** `arg` – The input argument.
 
-</details>
-
 ---
 
 ## 🗂 Example of Usage
 
-
 Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
 
 <img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
-
 
 ```csharp
 public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
@@ -88,9 +80,8 @@ public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject
 ```
 
 ```csharp
-[Serializable]
-public sealed class DestroyGameObjectAction : IAction<GameObject>
+public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
 {
-    public void Invoke(GameObject arg) => GameObject.Destroy(arg);
+    public override void Invoke(GameObject arg) => GameObject.Destroy(arg);
 }
 ```

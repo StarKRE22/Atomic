@@ -57,7 +57,6 @@ public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject
 ```
 
 ```csharp
-[Serializable]
 public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
 {
     public void Invoke(GameObject arg) => GameObject.Destroy(arg);
