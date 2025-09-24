@@ -40,9 +40,9 @@ patterns, composable structures, and modular design**.
 - [Variables](#-variables)
 - [Actions](Actions/Manual.md) <!-- + -->
 - [Functions](Functions/Manual.md) <!-- + -->
-- [Setters](Setters/Manual) <!-- + -->
+- [Setters](Setters/Manual.md) <!-- + -->
+- [Requests](Requests/Manual.md) <!-- + -->
 - [Events](#-events)
-- [Requests](#-requests)
 - [Expressions](#-expressions)
 - [Collections](#-collections)
 - [Time](#-time)
@@ -88,14 +88,7 @@ systems.
 - [Subscription](Signals/Subscription.md)
 - [Extensions](Signals/Extensions.md)
 
-### 🧩 Requests
 
-Represents **deferred actions** that can be executed at a later time. It is particularly useful for scenarios where
-input is collected in one phase (e.g., `Update`) but processed in another (e.g., `FixedUpdate`). Requests also help *
-*prevent duplicate commands** by ensuring the same request is not processed multiple times while active.
-
-- [IRequest](Requests/IRequest.md)
-- [BaseRequest](Requests/BaseRequest.md)
 
 ### 🧩 Expressions
 
