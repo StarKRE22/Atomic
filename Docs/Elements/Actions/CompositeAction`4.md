@@ -1,25 +1,22 @@
-
-<details>
-  <summary>
-    <h2 id="composite-action-t1-t2-t3-t4">🧩 CompositeAction&lt;T1, T2, T3, T4&gt;</h2>
-    <br>  Represents a group of actions <b>with four parameters</b> that are executed sequentially.
-  </summary>
-
-<br>
+# 🧩 CompositeAction&lt;T1, T2, T3, T4&gt;
 
 ```csharp
+[Serializable]
 public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
 
+- **Description:** Represents a group of actions <b>with four parameters</b> that are executed sequentially.
+- **Inheritance:** [IAction&lt;T1, T2, T3, T4&gt;](IAction%604.md)
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
     - `T4` — the fourth argument
+- **Notes:** Supports Unity serialization and Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `CompositeAction()`
 
@@ -48,7 +45,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
@@ -57,5 +54,8 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
 
 - **Description:** Invokes all actions sequentially with the given arguments.
-
-</details>
+- **Parameters:**
+    - `arg1` — the first argument
+    - `arg2` — the second argument
+    - `arg3` — the third argument
+    - `arg4` — the fourth argument

@@ -1,6 +1,7 @@
 # 🧩 CompositeAction&lt;T1, T2, T3&gt;
 
 ```csharp
+[Serializable]
 public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```
 
