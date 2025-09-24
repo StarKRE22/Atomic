@@ -37,7 +37,7 @@ startupAction.Invoke();
 
 ---
 
-## ❗️Using [SerializeReference]
+## ❗️Using  Serialize Reference
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
 `CompositeAction` combined with `[SerializeReference]` is very convenient. It allows designers to visually chain
