@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,31 +210,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="1008000" />
-    </task>
-    <task id="LOCAL-00657" summary="Сделал SceneEntityInstaller.md">
-      <option name="closed" value="true" />
-      <created>1758645531342</created>
-      <option name="number" value="00657" />
-      <option name="presentableId" value="LOCAL-00657" />
-      <option name="project" value="LOCAL" />
-      <updated>1758645531342</updated>
-    </task>
-    <task id="LOCAL-00658" summary="ScriptableEntityInstaller.md">
-      <option name="closed" value="true" />
-      <created>1758647065489</created>
-      <option name="number" value="00658" />
-      <option name="presentableId" value="LOCAL-00658" />
-      <option name="project" value="LOCAL" />
-      <updated>1758647065489</updated>
-    </task>
-    <task id="LOCAL-00659" summary="ScriptableEntityInstaller.md">
-      <option name="closed" value="true" />
-      <created>1758647104547</created>
-      <option name="number" value="00659" />
-      <option name="presentableId" value="LOCAL-00659" />
-      <option name="project" value="LOCAL" />
-      <updated>1758647104547</updated>
+      <workItem from="1758697936272" duration="1583000" />
     </task>
     <task id="LOCAL-00660" summary="Думаем!">
       <option name="closed" value="true" />
@@ -605,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758698637733</updated>
     </task>
-    <option name="localTasksCounter" value="706" />
+    <task id="LOCAL-00706" summary="InlineAction`2.md">
+      <option name="closed" value="true" />
+      <created>1758698952460</created>
+      <option name="number" value="00706" />
+      <option name="presentableId" value="LOCAL-00706" />
+      <option name="project" value="LOCAL" />
+      <updated>1758698952460</updated>
+    </task>
+    <task id="LOCAL-00707" summary="InlineAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758699131547</created>
+      <option name="number" value="00707" />
+      <option name="presentableId" value="LOCAL-00707" />
+      <option name="project" value="LOCAL" />
+      <updated>1758699131547</updated>
+    </task>
+    <task id="LOCAL-00708" summary="InlineAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758699159981</created>
+      <option name="number" value="00708" />
+      <option name="presentableId" value="LOCAL-00708" />
+      <option name="project" value="LOCAL" />
+      <updated>1758699159981</updated>
+    </task>
+    <option name="localTasksCounter" value="709" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityEnable.md" />
-    <MESSAGE value="IEntityDispose.md" />
     <MESSAGE value="IEntityDisable.md" />
     <MESSAGE value="Сделал раздел Behaviours" />
     <MESSAGE value="IEntityInstaller.md" />
@@ -657,7 +654,9 @@
     <MESSAGE value="IAction`3.md" />
     <MESSAGE value="IAction`4.md" />
     <MESSAGE value="Пилим Inline Actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим Inline Actions" />
+    <MESSAGE value="InlineAction`2.md" />
+    <MESSAGE value="InlineAction`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineAction`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
