@@ -6,7 +6,7 @@ functional programming patterns**. They allow developers to encapsulate reusable
 inline or composable functions for clean and maintainable code.
 
 - [IFunctions](IFunctions.md) <!-- + -->
-    - [IFunction&lt;R&gt;]()
+    - [IFunction&lt;R&gt;](IFunction.md) <!-- + -->
     - [IFunction&lt;T, R&gt;]()
     - [IFunction&lt;T1, T2, R&gt;]()
 - [InlineFunctions]()
