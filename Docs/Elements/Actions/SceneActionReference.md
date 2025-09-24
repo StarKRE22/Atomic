@@ -74,7 +74,7 @@ Below is an example of referencing a `SceneActionDefault` with a `HelloWorldScen
 <img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
 
 ```csharp
-public sealed class HelloWorldAction : SceneActionAbstract
+public sealed class HelloWorldSceneAction : SceneActionAbstract
 {
     public override void Invoke() => Debug.Log("Hello World!");
 }

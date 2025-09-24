@@ -36,7 +36,7 @@ Below is an example of referencing a `SceneActionDefault` with a `HelloWorldScen
 <img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
 
 ```csharp
-public sealed class HelloWorldAction : SceneActionAbstract
+public sealed class HelloWorldSceneAction : SceneActionAbstract
 {
     public override void Invoke() => Debug.Log("Hello World!");
 }
@@ -58,7 +58,7 @@ public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject
 
 ```csharp
 [Serializable]
-public sealed class DestroyGameObjectAction : IAction<GameObject>
+public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
 {
     public void Invoke(GameObject arg) => GameObject.Destroy(arg);
 }
