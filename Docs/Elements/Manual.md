@@ -96,8 +96,8 @@ There are several abstractions of actions, depending on the number of arguments 
     - [InlineAction&lt;T1, T2, T3&gt;]() <!-- + -->
     - [InlineAction&lt;T1, T2, T3, T4&gt;]() <!-- + -->
 - [CompositeActions](Actions/CompositeActions.md) <!-- + -->
-    - [CompositeAction](Actions/CompositeAction.md)
-    - [CompositeAction&lt;T&gt;](Actions/CompositeAction%601.md)
+    - [CompositeAction](Actions/CompositeAction.md) <!-- + -->
+    - [CompositeAction&lt;T&gt;](Actions/CompositeAction%601.md) <!-- + -->
     - [CompositeAction&lt;T1, T2&gt;](Actions/CompositeAction%602.md)
     - [CompositeAction&lt;T1, T2, T3&gt;](Actions/CompositeAction%603.md)
     - [CompositeAction&lt;T1, T2, T3, T4&gt;](Actions/CompositeAction%604.md)

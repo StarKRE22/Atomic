@@ -11,7 +11,7 @@ public class CompositeAction<T> : IAction<T>
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `CompositeAction()`
 
@@ -44,9 +44,9 @@ public CompositeAction(IEnumerable<IAction<T>> actions)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public void Invoke(T arg)
@@ -57,10 +57,10 @@ public void Invoke(T arg)
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-var composite = new CompositeAction<string>(
+IAction<string> composite = new CompositeAction<string>(
     new InlineAction<string>(msg => Console.WriteLine("Hello " + msg)),
     new InlineAction<string>(msg => Console.WriteLine("Bye " + msg))
 );

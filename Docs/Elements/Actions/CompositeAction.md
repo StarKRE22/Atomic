@@ -10,7 +10,7 @@ public class CompositeAction : IAction
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `CompositeAction()`
 
@@ -43,7 +43,7 @@ public CompositeAction(IEnumerable<IAction> actions)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -55,10 +55,10 @@ public void Invoke()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-var composite = new CompositeAction(
+IAction composite = new CompositeAction(
     new InlineAction(() => Console.WriteLine("Action 1")),
     new InlineAction(() => Console.WriteLine("Action 2"))
 );

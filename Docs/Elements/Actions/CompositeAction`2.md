@@ -1,23 +1,20 @@
-
-<details>
-  <summary>
-    <h2 id="composite-action-t1-t2">🧩 CompositeAction&lt;T1, T2&gt;</h2>
-    <br>  Represents a group of actions <b>with two parameters</b> that are executed sequentially.
-  </summary>
-
-<br>
+🧩 CompositeAction&lt;T1, T2&gt;
 
 ```csharp
+[Serializable]
 public class CompositeAction<T1, T2> : IAction<T1, T2>
 ```
 
+- **Description:** Represents a group of actions <b>with two parameters</b> that are executed sequentially.
+- **Inheritance:** [IAction&lt;T1, T2&gt;](IAction%602.md)
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument
+- **Notes:** Supports Unity serialization and Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `CompositeAction()`
 
@@ -50,23 +47,28 @@ public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
+
+#### `Invoke(T1, T2)`
 
 ```csharp
 public void Invoke(T1 arg1, T2 arg2)
 ```
 
 - **Description:** Invokes all actions sequentially with the given arguments.
+- **Parameters:**
+    - `arg1` – The first argument
+    - `arg2` – The second argument
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
-var composite = new CompositeAction<int, int>(
+IAction<int, int> composite = new CompositeAction<int, int>(
     new InlineAction<int, int>((a, b) => Console.WriteLine(a + b)),
     new InlineAction<int, int>((a, b) => Console.WriteLine(a * b))
-);
+);z
 
 composite.Invoke(3, 4);
 
@@ -74,5 +76,3 @@ composite.Invoke(3, 4);
 // 7
 // 12
 ```
-
-</details>

@@ -51,6 +51,8 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
 
 ### 🏹 Methods
 
+#### `Invoke(T1, T2, T3)`
+
 ```csharp
 public void Invoke(T1 arg1, T2 arg2, T3 arg3)
 ```
