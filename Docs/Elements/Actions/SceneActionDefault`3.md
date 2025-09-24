@@ -27,7 +27,7 @@ public abstract class SceneActionDefault<T1, T2, T3> : SceneActionAbstract<T1, T
 
 ## 🧱Fields
 
-#### `actions`
+#### `Actions`
 
 ```csharp
 public IAction<T1, T2, T3>[] actions;

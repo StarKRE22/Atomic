@@ -47,7 +47,7 @@ public SceneActionReference(SceneActionAbstract<T1, T2, T3> action);
 
 ## 🧱 Fields
 
-#### `action`
+#### `Action`
 
 ```csharp
 public SceneActionAbstract<T1, T2, T3> action;

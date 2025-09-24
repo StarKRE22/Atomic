@@ -24,7 +24,7 @@ public class SceneActionDefault : SceneActionAbstract
 
 ## 🧱 Fields
 
-#### `actions`
+#### `Actions`
 
 ```csharp
 public IAction[] actions;

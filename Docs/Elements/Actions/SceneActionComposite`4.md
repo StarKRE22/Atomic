@@ -27,7 +27,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
 
 ## 🧱 Fields
 
-#### `actions`
+#### `Actions`
 
 ```csharp
 public SceneActionComposite<T1, T2, T3, T4>[] actions;

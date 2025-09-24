@@ -12,9 +12,11 @@ public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T
     - `T3` — the third argument
     - `T4` — the fourth argument
 - **Notes:**
-  - Supports Odin Inspector
-  - Attach to a `GameObject`, assign a list of `IAction<T1, T2, T3, T4>` implementations in the `Inspector`, and they will be
-    invoked sequentially.
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `IAction<T1, T2, T3, T4>` implementations in the `Inspector`, and they
+      will be
+      invoked sequentially.
+
 ---
 
 ## 🛠 Inspector Settings
@@ -22,6 +24,19 @@ public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T
 | Parameter | Description                              |
 |-----------|------------------------------------------|
 | `actions` | The array of actions to execute in order |
+
+---
+
+## 🧱Fields
+
+#### `Actions`
+
+```csharp
+public IAction<T1, T2, T3, T4>[] actions;
+```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
 
 ---
 

@@ -1,20 +1,21 @@
-
-<details>
-  <summary>
-    <h2>🧩 SceneActionReference&lt;T1, T2, T3, T4&gt;</h2>
-    <br> A reference wrapper for a <code>SceneActionAbstract&lt;T1, T2, T3, T4&gt;</code> with <b>four parameters</b>.
-  </summary>
-
-<br>
+# 🧩 SceneActionReference&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 public sealed class SceneActionReference<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
 
-- **Description:** Reference wrapper for a scene action with **four parameters**.
-- **Type parameters:** `T1`, `T2`, `T3`, `T4` — the arguments.
+- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](SceneActionAbstract%604.md)
+  with <b>four parameters</b>.
+- **Inheritance:** [IAction&lt;T1, T2, T3, T4&gt;](IAction%604.md)
+- **Type parameters:**
+    - `T1` — first argument
+    - `T2` — second argument
+    - `T3` — third argument
+    - `T4` — fourth argument
+- **Notes:** Supports Unity serialization and Odin Inspector
+- **Usage:** Assign a `SceneActionAbstract<T1, T2, T3, T4>` component in the Inspector and invoke it using `Invoke()`.
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter | Type                               | Description                           |
 |-----------|------------------------------------|---------------------------------------|
@@ -22,7 +23,7 @@ public sealed class SceneActionReference<T1, T2, T3, T4> : IAction<T1, T2, T3, T
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -33,7 +34,7 @@ public SceneActionReference();
 - **Description:** Default constructor, intended **only for use by the Unity Inspector**.
 - **Usage:** Required for Unity to serialize the reference in the Inspector.
 
-#### `SceneActionReference(SceneActionAbstract<T1, T2, T3, T4> action)`
+#### `SceneActionReference(SceneActionAbstract<T1, T2, T3, T4>)`
 
 ```csharp
 public SceneActionReference(SceneActionAbstract<T1, T2, T3, T4> action);
@@ -44,12 +45,12 @@ public SceneActionReference(SceneActionAbstract<T1, T2, T3, T4> action);
 
 ---
 
-### 🧱 Fields
+## 🧱 Fields
 
-#### `action`
+#### `Action`
 
 ```csharp
-public SceneActionAbstract<T1, T2, T3> action;
+public SceneActionAbstract<T1, T2, T3, T4> action;
 ```
 
 - **Description:** Reference to the scene action to invoke.
@@ -57,7 +58,7 @@ public SceneActionAbstract<T1, T2, T3> action;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
@@ -71,5 +72,3 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     - `arg2` – The second argument
     - `arg3` – The third argument
     - `arg4` – The fourth argument
-
-</details>
