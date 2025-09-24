@@ -17,7 +17,7 @@ additional code.
 > Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
 > clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
 
-There are several implementations of scene actions, depending on the number of arguments the actions take:
+There are several implementations of default scene actions, depending on the number of arguments the actions take:
 
 - [SceneActionDefault](SceneActionDefault.md) — Non-generic version; works without parameters.
 - [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) — Action that take one argument.

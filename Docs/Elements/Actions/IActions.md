@@ -3,7 +3,6 @@
 Define a family of fundamental contracts for executing parameterized actions. They provide a lightweight
 abstraction for invoking logic, often used in game mechanics and command patterns.
 
-
 There are several implementations of actions, depending on the number of arguments the actions take:
 
 - [IAction](IAction.md) — Non-generic version; works without parameters.

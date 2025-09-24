@@ -10,7 +10,7 @@ group itself behaves as a single scene action, while internally invoking all con
 > partially configured lists safe to use.
 
 
-There are several implementations of scene actions, depending on the number of arguments the actions take:
+There are several implementations of composite scene actions, depending on the number of arguments the actions take:
 
 - [SceneActionComposite](SceneActionComposite.md) — Non-generic version; works without parameters.
 - [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) — Action that take one argument.
