@@ -9,7 +9,7 @@ public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
     - `T1` — the first argument
     - `T2` — the second argument
     - `T3` — the third argument
-- **Inheritance:** [IAction&lt;T1, T2, T3&gt;](IAction%602.md)
+- **Inheritance:** [IAction&lt;T1, T2, T3&gt;](IAction%603.md)
 - **Note:** Supports Odin Inspector
 
 ---
