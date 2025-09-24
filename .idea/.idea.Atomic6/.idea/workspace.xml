@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionDefault`3.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,23 +209,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="6647000" />
-    </task>
-    <task id="LOCAL-00677" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758656324379</created>
-      <option name="number" value="00677" />
-      <option name="presentableId" value="LOCAL-00677" />
-      <option name="project" value="LOCAL" />
-      <updated>1758656324380</updated>
-    </task>
-    <task id="LOCAL-00678" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1758656376722</created>
-      <option name="number" value="00678" />
-      <option name="presentableId" value="LOCAL-00678" />
-      <option name="project" value="LOCAL" />
-      <updated>1758656376722</updated>
+      <workItem from="1758697936272" duration="6951000" />
     </task>
     <task id="LOCAL-00679" summary="Пилим!">
       <option name="closed" value="true" />
@@ -605,7 +587,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758704890204</updated>
     </task>
-    <option name="localTasksCounter" value="726" />
+    <task id="LOCAL-00726" summary="SceneActionDefault`1.md">
+      <option name="closed" value="true" />
+      <created>1758705109886</created>
+      <option name="number" value="00726" />
+      <option name="presentableId" value="LOCAL-00726" />
+      <option name="project" value="LOCAL" />
+      <updated>1758705109886</updated>
+    </task>
+    <task id="LOCAL-00727" summary="SceneActionDefault`2.md">
+      <option name="closed" value="true" />
+      <created>1758705271997</created>
+      <option name="number" value="00727" />
+      <option name="presentableId" value="LOCAL-00727" />
+      <option name="project" value="LOCAL" />
+      <updated>1758705271997</updated>
+    </task>
+    <option name="localTasksCounter" value="728" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +630,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Назад!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Перепиливаем Atomic.Elements!" />
     <MESSAGE value="Офигенно, я понял как это правильно структурировать!" />
     <MESSAGE value="IAction`2.md" />
@@ -657,7 +653,9 @@
     <MESSAGE value="SceneActionAbstract`4.md" />
     <MESSAGE value="SceneActionsDefault.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="SceneActionDefault`1.md" />
+    <MESSAGE value="SceneActionDefault`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionDefault`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
