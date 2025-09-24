@@ -1,21 +1,16 @@
-
-<details>
-  <summary>
-    <h2>🧩 IPredicate&lt;T&gt;</h2>
-    <br> Represents a predicate with <b>one input argument</b> that returns a boolean result.
-  </summary>
-
-<br>
+# 🧩 IPredicate&lt;T&gt;
 
 ```csharp
 public interface IPredicate<in T> : IFunction<T, bool>
 ```
 
+- **Description:**  Represents a predicate with <b>one input argument</b> that returns a boolean result.
+- **Inheritance:** [IFunction&lt;T, R&gt;](IFunction%601.md)
 - **Type parameter:** `T` — the input argument type.
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -29,7 +24,7 @@ public bool Invoke(T arg);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public class IsEnemyPredicate : IPredicate<Character>
@@ -43,9 +38,8 @@ public class IsEnemyPredicate : IPredicate<Character>
 ```
 
 ```csharp
-//Usage
-IPredicate<Character> predicate = new IsEnemyPredicate(character);
-bool isEnemy = predicate.Invoke(otherCharacter);
+Character player, enemy = ...;
+IPredicate<Character> predicate = new IsEnemyPredicate(player);
+bool isEnemy = predicate.Invoke(enemy);
 ```
 
-</details>
