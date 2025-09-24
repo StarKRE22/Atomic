@@ -1,13 +1,12 @@
 # 🧩 InlineSetter&lt;T&gt;
 
-The **InlineSetter** class provides a wrapper around a standard `System.Action<T>` delegate. It implements
-the [ISetter&lt;T&gt;](ISetter.md) interface, enabling **value assignment** through a delegate.
-
 ```csharp
 public class InlineSetter<T> : ISetter<T>
 ```
-
+- **Description:** Provides a wrapper around a standard `System.Action<T>` delegate
+- **Inheritance:** [ISetter&lt;T&gt;](ISetter.md)
 - **Type Parameter:** `T` – the type of the value to be set.
+- **Note:** Supports Odin Inspector
 
 ---
 

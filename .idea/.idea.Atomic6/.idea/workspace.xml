@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Extensions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Setters/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,15 +211,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="21030000" />
-    </task>
-    <task id="LOCAL-00718" summary="SceneActionAbstract.md">
-      <option name="closed" value="true" />
-      <created>1758701419319</created>
-      <option name="number" value="00718" />
-      <option name="presentableId" value="LOCAL-00718" />
-      <option name="project" value="LOCAL" />
-      <updated>1758701419319</updated>
+      <workItem from="1758697936272" duration="21558000" />
     </task>
     <task id="LOCAL-00719" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -604,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758739447373</updated>
     </task>
-    <option name="localTasksCounter" value="767" />
+    <task id="LOCAL-00767" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758739596679</created>
+      <option name="number" value="00767" />
+      <option name="presentableId" value="LOCAL-00767" />
+      <option name="project" value="LOCAL" />
+      <updated>1758739596679</updated>
+    </task>
+    <option name="localTasksCounter" value="768" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneActionReference`1.md" />
     <MESSAGE value="SceneActionReference`2.md" />
@@ -656,7 +656,8 @@
     <MESSAGE value="InlinePredicate.md" />
     <MESSAGE value="InlinePredicate`1.md" />
     <MESSAGE value="InlinePredicate`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate`2.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

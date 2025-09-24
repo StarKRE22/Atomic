@@ -5,6 +5,7 @@
   - `T1` — the first input type
   - `T2` — the second input type
 - **Inheritance:** [InlineFunction&lt;T1, T2, R&gt;](InlineFunction%602.md), [IPredicate&lt;T1, T2&gt;](IPredicate%602.md)
+- **Note:** Supports Odin Inspector
 
 
 ```csharp

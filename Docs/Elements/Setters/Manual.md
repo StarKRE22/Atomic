@@ -4,7 +4,7 @@ Provides interfaces and classes for **assigning values**. It offers a lightweigh
 value assignment logic, enabling clean, reusable, and decoupled code for modifying data.
 
 - [ISetter](ISetter.md) <!-- + -->
-- [InlineSetter](InlineSetter.md)
+- [InlineSetter](InlineSetter.md) <!-- + -->
 
 ---
 
