@@ -17,7 +17,7 @@ inline or composable functions for clean and maintainable code.
   - [IPredicate](IPredicate.md) <!-- + -->
   - [IPredicate&lt;T&gt;](IPredicate%601.md) <!-- + -->
   - [IPredicate&lt;T1, T2&gt;](IPredicate%602.md) <!-- + -->
-- [InlinePredicates]()
+- [InlinePredicates](InlinePredicates.md) <!-- + -->
   - [InlinePredicate]()
   - [InlinePredicate&lt;T&gt;]()
   - [InlinePredicate&lt;T1, T2&gt;]()

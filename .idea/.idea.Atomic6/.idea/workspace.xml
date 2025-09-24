@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,31 +213,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="19280000" />
-    </task>
-    <task id="LOCAL-00710" summary="Переделал InlineAction">
-      <option name="closed" value="true" />
-      <created>1758699626423</created>
-      <option name="number" value="00710" />
-      <option name="presentableId" value="LOCAL-00710" />
-      <option name="project" value="LOCAL" />
-      <updated>1758699626423</updated>
-    </task>
-    <task id="LOCAL-00711" summary="CompositeActions.md">
-      <option name="closed" value="true" />
-      <created>1758699756373</created>
-      <option name="number" value="00711" />
-      <option name="presentableId" value="LOCAL-00711" />
-      <option name="project" value="LOCAL" />
-      <updated>1758699756373</updated>
-    </task>
-    <task id="LOCAL-00712" summary="CompositeAction`3.md">
-      <option name="closed" value="true" />
-      <created>1758700288333</created>
-      <option name="number" value="00712" />
-      <option name="presentableId" value="LOCAL-00712" />
-      <option name="project" value="LOCAL" />
-      <updated>1758700288333</updated>
+      <workItem from="1758697936272" duration="20291000" />
     </task>
     <task id="LOCAL-00713" summary="CompositeAction`2.md">
       <option name="closed" value="true" />
@@ -607,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758737372336</updated>
     </task>
-    <option name="localTasksCounter" value="759" />
+    <task id="LOCAL-00759" summary="IPredicate.md">
+      <option name="closed" value="true" />
+      <created>1758737833524</created>
+      <option name="number" value="00759" />
+      <option name="presentableId" value="LOCAL-00759" />
+      <option name="project" value="LOCAL" />
+      <updated>1758737833524</updated>
+    </task>
+    <task id="LOCAL-00760" summary="IPredicate`1.md">
+      <option name="closed" value="true" />
+      <created>1758737983189</created>
+      <option name="number" value="00760" />
+      <option name="presentableId" value="LOCAL-00760" />
+      <option name="project" value="LOCAL" />
+      <updated>1758737983189</updated>
+    </task>
+    <task id="LOCAL-00761" summary="IPredicate`2.md">
+      <option name="closed" value="true" />
+      <created>1758738156843</created>
+      <option name="number" value="00761" />
+      <option name="presentableId" value="LOCAL-00761" />
+      <option name="project" value="LOCAL" />
+      <updated>1758738156843</updated>
+    </task>
+    <option name="localTasksCounter" value="762" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,9 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionDefault`4.md" />
-    <MESSAGE value="SceneActionComposite.md" />
-    <MESSAGE value="SceneActionComposite`1.md" />
     <MESSAGE value="SceneActionComposite`2.md" />
     <MESSAGE value="SceneActionComposite`3.md" />
     <MESSAGE value="SceneActionComposite`4.md" />
@@ -659,7 +656,10 @@
     <MESSAGE value="InlineFunction`1.md" />
     <MESSAGE value="InlineFunction`2.md" />
     <MESSAGE value="IPredicates.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IPredicates.md" />
+    <MESSAGE value="IPredicate.md" />
+    <MESSAGE value="IPredicate`1.md" />
+    <MESSAGE value="IPredicate`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IPredicate`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
