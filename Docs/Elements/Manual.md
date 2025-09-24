@@ -101,7 +101,7 @@ There are several abstractions of actions, depending on the number of arguments 
     - [CompositeAction&lt;T1, T2&gt;](Actions/CompositeAction%602.md)  <!-- + -->
     - [CompositeAction&lt;T1, T2, T3&gt;](Actions/CompositeAction%603.md) <!-- + -->
     - [CompositeAction&lt;T1, T2, T3, T4&gt;](Actions/CompositeAction%604.md)  <!-- + -->
-- [SceneActions Abstract]()
+- [SceneActions Abstract]()  <!-- + -->
     - [SceneActionAbstract]()
     - [SceneActionAbstract&lt;T&gt;]()
     - [SceneActionAbstract&lt;T1, T2&gt;]()
