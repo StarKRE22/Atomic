@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
@@ -214,31 +211,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="2334000" />
-    </task>
-    <task id="LOCAL-00663" summary="ScriptableEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1758653659486</created>
-      <option name="number" value="00663" />
-      <option name="presentableId" value="LOCAL-00663" />
-      <option name="project" value="LOCAL" />
-      <updated>1758653659486</updated>
-    </task>
-    <task id="LOCAL-00664" summary="Сделал Aspects!">
-      <option name="closed" value="true" />
-      <created>1758653891593</created>
-      <option name="number" value="00664" />
-      <option name="presentableId" value="LOCAL-00664" />
-      <option name="project" value="LOCAL" />
-      <updated>1758653891593</updated>
-    </task>
-    <task id="LOCAL-00665" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758654394003</created>
-      <option name="number" value="00665" />
-      <option name="presentableId" value="LOCAL-00665" />
-      <option name="project" value="LOCAL" />
-      <updated>1758654394003</updated>
+      <workItem from="1758697936272" duration="2809000" />
     </task>
     <task id="LOCAL-00666" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -608,7 +581,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758699756373</updated>
     </task>
-    <option name="localTasksCounter" value="712" />
+    <task id="LOCAL-00712" summary="CompositeAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758700288333</created>
+      <option name="number" value="00712" />
+      <option name="presentableId" value="LOCAL-00712" />
+      <option name="project" value="LOCAL" />
+      <updated>1758700288333</updated>
+    </task>
+    <task id="LOCAL-00713" summary="CompositeAction`2.md">
+      <option name="closed" value="true" />
+      <created>1758700321936</created>
+      <option name="number" value="00713" />
+      <option name="presentableId" value="LOCAL-00713" />
+      <option name="project" value="LOCAL" />
+      <updated>1758700321936</updated>
+    </task>
+    <task id="LOCAL-00714" summary="CompositeAction`3.md">
+      <option name="closed" value="true" />
+      <created>1758700561039</created>
+      <option name="number" value="00714" />
+      <option name="presentableId" value="LOCAL-00714" />
+      <option name="project" value="LOCAL" />
+      <updated>1758700561039</updated>
+    </task>
+    <option name="localTasksCounter" value="715" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,8 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Фиксы в SceneEntity.cs" />
-    <MESSAGE value="Minor fixes!" />
     <MESSAGE value="Сделал SceneEntityInstaller.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
     <MESSAGE value="Думаем!" />
@@ -660,7 +655,9 @@
     <MESSAGE value="InlineAction`4.md" />
     <MESSAGE value="Переделал InlineAction" />
     <MESSAGE value="CompositeActions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="CompositeActions.md" />
+    <MESSAGE value="CompositeAction`2.md" />
+    <MESSAGE value="CompositeAction`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="CompositeAction`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
