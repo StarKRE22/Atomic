@@ -43,7 +43,7 @@ public void Invoke(T arg);
 
 - **Description:** Invokes the setter by assigning the provided value.
 - **Parameter:** `arg` — the value to set.
-- **Notes:** Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
+- **Notes:** Default implementation comes from [IAction&lt;T&gt;](../Actions/IAction%601.md).
 
 #### `ToString()`
 
