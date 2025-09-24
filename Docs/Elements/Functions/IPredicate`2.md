@@ -1,23 +1,18 @@
-
-<details>
-  <summary>
-    <h2>🧩 IPredicate&lt;T1, T2&gt;</h2>
-    <br> Represents a predicate with <b>two input arguments</b> that returns a boolean result.
-  </summary>
-
-<br>
+# 🧩 IPredicate&lt;T1, T2&gt;
 
 ```csharp
 public interface IPredicate<in T1, in T2> : IFunction<T1, T2, bool>
 ```
 
+- **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
+- **Inheritance:** [IFunction&lt;T1, T2, R&gt;](IFunction%602.md)
 - **Type parameters:**
     - `T1` — the first input argument type
     - `T2` — the second input argument type
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -33,7 +28,7 @@ public bool Invoke(T1 arg1, T2 arg2);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public class AreAlliesPredicate : IPredicate<Character, Character>
@@ -43,9 +38,8 @@ public class AreAlliesPredicate : IPredicate<Character, Character>
 ```
 
 ```csharp
-//Usage
+Character player, npc = ...;
 IPredicate<Character, Character> predicate = new AreAlliesPredicate();
-bool areAllies = predicate.Invoke(characterA, characterB);
+bool areAllies = predicate.Invoke(player, npc);
 ```
 
-</details>
