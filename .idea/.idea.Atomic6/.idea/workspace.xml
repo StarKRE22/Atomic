@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunctions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -221,23 +207,7 @@
       <workItem from="1758604662186" duration="36380000" />
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
-      <workItem from="1758697936272" duration="22609000" />
-    </task>
-    <task id="LOCAL-00723" summary="SceneActionAbstract`4.md">
-      <option name="closed" value="true" />
-      <created>1758703957406</created>
-      <option name="number" value="00723" />
-      <option name="presentableId" value="LOCAL-00723" />
-      <option name="project" value="LOCAL" />
-      <updated>1758703957406</updated>
-    </task>
-    <task id="LOCAL-00724" summary="SceneActionsDefault.md">
-      <option name="closed" value="true" />
-      <created>1758704795035</created>
-      <option name="number" value="00724" />
-      <option name="presentableId" value="LOCAL-00724" />
-      <option name="project" value="LOCAL" />
-      <updated>1758704795035</updated>
+      <workItem from="1758697936272" duration="23420000" />
     </task>
     <task id="LOCAL-00725" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -615,7 +585,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758740651967</updated>
     </task>
-    <option name="localTasksCounter" value="772" />
+    <task id="LOCAL-00772" summary="Сделал IRequests.md">
+      <option name="closed" value="true" />
+      <created>1758741176584</created>
+      <option name="number" value="00772" />
+      <option name="presentableId" value="LOCAL-00772" />
+      <option name="project" value="LOCAL" />
+      <updated>1758741176584</updated>
+    </task>
+    <task id="LOCAL-00773" summary="Сделал IRequests.md">
+      <option name="closed" value="true" />
+      <created>1758741264494</created>
+      <option name="number" value="00773" />
+      <option name="presentableId" value="LOCAL-00773" />
+      <option name="project" value="LOCAL" />
+      <updated>1758741264494</updated>
+    </task>
+    <option name="localTasksCounter" value="774" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +628,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionReference`3.md" />
     <MESSAGE value="SceneActionReference`4.md" />
     <MESSAGE value="Оформил раздел Actions!" />
     <MESSAGE value="Сделал раздел для Actions" />
@@ -667,7 +652,8 @@
     <MESSAGE value="Manual.md, ISetter.md" />
     <MESSAGE value="InlineSetter.md" />
     <MESSAGE value="Начинаем перепиливать раздел Requests.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем перепиливать раздел Requests.md" />
+    <MESSAGE value="Сделал IRequests.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал IRequests.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

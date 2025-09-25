@@ -6,7 +6,7 @@ Requests also help **prevent duplicate commands** by ensuring the same request i
 active.
 
 - [IRequests](IRequests.md) <!-- + -->
-    - [IRequest]()
+    - [IRequest](IRequest.md) <!-- + -->
     - [IRequest&lt;T&gt;]()
     - [IRequest&lt;T1, T2&gt;]()
     - [IRequest&lt;T1, T2, T3&gt;]()

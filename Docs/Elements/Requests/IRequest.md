@@ -1,21 +1,15 @@
-
----
-
-<details>
-  <summary>
-    <h2>🧩 IRequest</h2>
-    <br> Represents a <b>parameterless</b> request action.
-  </summary>
-
-<br>
+# 🧩 IRequest
 
 ```csharp
 public interface IRequest : IAction
 ```
 
+- **Description:** Represents a <b>parameterless</b> request action.
+- **Inheritance:** [IAction](../Actions/IAction.md)
+
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -27,7 +21,7 @@ public bool Required { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -36,7 +30,7 @@ public void Invoke();
 ```
 
 - **Description:** Executes the request.
-- **Note:** This method derived from [IAction.Invoke()](../Actions/IAction.md#invoke)
+- **Note:** This method derived from `IAction`
 
 #### `Consume()`
 
@@ -46,5 +40,3 @@ public bool Consume();
 
 - **Description:** Attempts to consume the request.
 - **Returns:** `true` if successfully consumed; otherwise `false`.
-
-</details>
