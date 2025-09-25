@@ -49,7 +49,10 @@ public static Subscription<T> Subscribe<T>(this ISignal<T> it, IAction<T> action
 #### `Subscribe<T1, T2>(ISignal<T1,T2>, IAction<T1,T2>)`
 
 ```csharp
-public static Subscription<T1, T2> Subscribe<T1, T2>(this ISignal<T1, T2> it, IAction<T1, T2> action)
+public static Subscription<T1, T2> Subscribe<T1, T2>(
+    this ISignal<T1, T2> it, 
+    IAction<T1, T2> action
+)
 ```
 
 - **Description:** Subscribes a two-argument action to a signal.
@@ -73,7 +76,10 @@ public static Subscription<T1, T2> Subscribe<T1, T2>(this ISignal<T1, T2> it, IA
 #### `Subscribe<T1,T2,T3>(ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
 
 ```csharp
-public static Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<T1, T2, T3> action)
+public static Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(
+    this ISignal<T1, T2, T3> it,
+    IAction<T1, T2, T3> action
+)
 ```
 
 - **Description:** Subscribes a three-argument action to a signal.
