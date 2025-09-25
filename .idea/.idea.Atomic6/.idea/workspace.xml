@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,23 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="1252000" />
-    </task>
-    <task id="LOCAL-00731" summary="SceneActionComposite.md">
-      <option name="closed" value="true" />
-      <created>1758706333354</created>
-      <option name="number" value="00731" />
-      <option name="presentableId" value="LOCAL-00731" />
-      <option name="project" value="LOCAL" />
-      <updated>1758706333354</updated>
-    </task>
-    <task id="LOCAL-00732" summary="SceneActionComposite`1.md">
-      <option name="closed" value="true" />
-      <created>1758706656301</created>
-      <option name="number" value="00732" />
-      <option name="presentableId" value="LOCAL-00732" />
-      <option name="project" value="LOCAL" />
-      <updated>1758706656301</updated>
+      <workItem from="1758779433987" duration="1953000" />
     </task>
     <task id="LOCAL-00733" summary="SceneActionComposite`2.md">
       <option name="closed" value="true" />
@@ -610,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758780468060</updated>
     </task>
-    <option name="localTasksCounter" value="780" />
+    <task id="LOCAL-00780" summary="BaseRequests.md">
+      <option name="closed" value="true" />
+      <created>1758780696028</created>
+      <option name="number" value="00780" />
+      <option name="presentableId" value="LOCAL-00780" />
+      <option name="project" value="LOCAL" />
+      <updated>1758780696028</updated>
+    </task>
+    <task id="LOCAL-00781" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1758780976116</created>
+      <option name="number" value="00781" />
+      <option name="presentableId" value="LOCAL-00781" />
+      <option name="project" value="LOCAL" />
+      <updated>1758780976117</updated>
+    </task>
+    <option name="localTasksCounter" value="782" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IFunction.md" />
-    <MESSAGE value="IFunction`1.md" />
     <MESSAGE value="IFunction`2.md" />
     <MESSAGE value="InlineFunctions.md" />
     <MESSAGE value="InlineFunction.md" />
@@ -662,7 +657,9 @@
     <MESSAGE value="IRequest`2.md" />
     <MESSAGE value="IRequest`3.md" />
     <MESSAGE value="IRequest`4.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IRequest`4.md" />
+    <MESSAGE value="BaseRequests.md" />
+    <MESSAGE value="BaseRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

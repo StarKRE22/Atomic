@@ -1,23 +1,18 @@
-
-<details>
-  <summary>
-    <h2>🧩 IRequest&lt;T1, T2&gt;</h2>
-    <br> Represents a request action with <b>two input arguments</b>.
-  </summary>
-
-<br>
+# 🧩 BaseRequest&lt;T1, T2&gt;
 
 ```csharp
 public class BaseRequest<T1, T2> : IRequest<T1, T2>
 ```
 
+- **Description:** Represents a request action with <b>two input arguments</b>.
+- **Inheritance:** [IRequest&lt;T1, T2&gt;](IRequest%602.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -45,7 +40,7 @@ public T2 Arg2 { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -63,7 +58,7 @@ public bool Consume(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:** Attempts to consume the request and retrieve both arguments.
-- **Output parameters:** `arg1`, `arg2` — the stored arguments.
+- **Output:** `arg1`, `arg2` — the stored arguments.
 - **Returns:** `true` if the request was required and is now consumed.
 
 #### `TryGet(out T1, out T2)`
@@ -73,7 +68,5 @@ public bool TryGet(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:** Attempts to retrieve both arguments without consuming the request.
-- **Output parameters:** `arg1`, `arg2` — the stored arguments.
+- **Output:** `arg1`, `arg2` — the stored arguments.
 - **Returns:** `true` if the request is currently required.
-
-</details>
