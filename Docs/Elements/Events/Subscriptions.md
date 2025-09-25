@@ -14,6 +14,37 @@ There are several subscriptions, depending on the number of arguments they take:
 
 ---
 
+## 🗂 Examples of Usage
+
+### Non-generic Subscription
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal signal = ...
+
+//Subscribe on the signal    
+Subscription subscription = signal.Subscribe(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
+### Generic Subscription
+```csharp
+//Assume we have a instance of ISignal
+ISignal<T> signal = ...
+
+//Subscribe on the signal
+Subscription<T> subscription = signal.Subscribe<T>(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
 ## 📌 Best Practice
 
 The following example demonstrates how to use `Subscription` together

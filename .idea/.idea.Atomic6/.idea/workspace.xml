@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignals.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignals.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignals.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignals.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscriptions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscriptions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,23 +216,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="9578000" />
-    </task>
-    <task id="LOCAL-00765" summary="InlinePredicate`1.md">
-      <option name="closed" value="true" />
-      <created>1758739299276</created>
-      <option name="number" value="00765" />
-      <option name="presentableId" value="LOCAL-00765" />
-      <option name="project" value="LOCAL" />
-      <updated>1758739299276</updated>
-    </task>
-    <task id="LOCAL-00766" summary="InlinePredicate`2.md">
-      <option name="closed" value="true" />
-      <created>1758739447372</created>
-      <option name="number" value="00766" />
-      <option name="presentableId" value="LOCAL-00766" />
-      <option name="project" value="LOCAL" />
-      <updated>1758739447373</updated>
+      <workItem from="1758779433987" duration="9999000" />
     </task>
     <task id="LOCAL-00767" summary="Extensions.md">
       <option name="closed" value="true" />
@@ -605,7 +594,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758790643612</updated>
     </task>
-    <option name="localTasksCounter" value="814" />
+    <task id="LOCAL-00814" summary="BaseEvent`3.md">
+      <option name="closed" value="true" />
+      <created>1758790814731</created>
+      <option name="number" value="00814" />
+      <option name="presentableId" value="LOCAL-00814" />
+      <option name="project" value="LOCAL" />
+      <updated>1758790814731</updated>
+    </task>
+    <task id="LOCAL-00815" summary="BaseEvent`4.md">
+      <option name="closed" value="true" />
+      <created>1758790919234</created>
+      <option name="number" value="00815" />
+      <option name="presentableId" value="LOCAL-00815" />
+      <option name="project" value="LOCAL" />
+      <updated>1758790919234</updated>
+    </task>
+    <option name="localTasksCounter" value="816" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BaseRequest`3.md" />
-    <MESSAGE value="BaseRequest`4.md" />
     <MESSAGE value="Сделал Manual для Signals" />
     <MESSAGE value="Сделал ISignals.md" />
     <MESSAGE value="ISignal.md" />
@@ -657,7 +660,9 @@
     <MESSAGE value="BaseEvent.md" />
     <MESSAGE value="BaseEvent`1.md" />
     <MESSAGE value="BaseEvent`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="BaseEvent`2.md" />
+    <MESSAGE value="BaseEvent`3.md" />
+    <MESSAGE value="BaseEvent`4.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseEvent`4.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
