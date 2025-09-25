@@ -15,8 +15,8 @@ public class Const<T> : IValue<T>
 
 > [!TIP]
 > Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
-> a [Flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern), for example, to share a constant value across
-> multiple instances without copying the value.
+> [flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern). For example, to **share a constant value** across
+> **multiple instances** without copying the value.
 
 ---
 
@@ -65,7 +65,7 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;)](../Functions/IFunction.md)
 
 #### `ToString()`
 
