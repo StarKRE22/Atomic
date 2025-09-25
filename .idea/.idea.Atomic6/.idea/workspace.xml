@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,23 +212,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="12083000" />
-    </task>
-    <task id="LOCAL-00778" summary="IRequest`3.md">
-      <option name="closed" value="true" />
-      <created>1758780332241</created>
-      <option name="number" value="00778" />
-      <option name="presentableId" value="LOCAL-00778" />
-      <option name="project" value="LOCAL" />
-      <updated>1758780332241</updated>
-    </task>
-    <task id="LOCAL-00779" summary="IRequest`4.md">
-      <option name="closed" value="true" />
-      <created>1758780468059</created>
-      <option name="number" value="00779" />
-      <option name="presentableId" value="LOCAL-00779" />
-      <option name="project" value="LOCAL" />
-      <updated>1758780468060</updated>
+      <workItem from="1758779433987" duration="13085000" />
     </task>
     <task id="LOCAL-00780" summary="BaseRequests.md">
       <option name="closed" value="true" />
@@ -604,7 +590,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758793306779</updated>
     </task>
-    <option name="localTasksCounter" value="827" />
+    <task id="LOCAL-00827" summary="ExtensionsUnsubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793330729</created>
+      <option name="number" value="00827" />
+      <option name="presentableId" value="LOCAL-00827" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793330730</updated>
+    </task>
+    <task id="LOCAL-00828" summary="ExtensionsUnsubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793362044</created>
+      <option name="number" value="00828" />
+      <option name="presentableId" value="LOCAL-00828" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793362044</updated>
+    </task>
+    <option name="localTasksCounter" value="829" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
