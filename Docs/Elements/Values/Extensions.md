@@ -29,7 +29,7 @@ public static Subscription<T> Observe<T>(this IReactiveValue<T> it, Action<T> ac
 
 ---
 
-## Examples of Usage
+## 🗂 Examples of Usage
 
 #### Using `AsConst`
    
@@ -53,4 +53,4 @@ reactive.Value = 20;
 
 // Output:
 // Current value: 20
-```   
+```
