@@ -38,6 +38,9 @@ int number = 42;
 Const<int> constant = number.AsConst();
 Console.WriteLine(constant.Value); // Output: 42
 ```
+
+---
+
 #### Using `Observe`
     
 ```csharp
