@@ -99,6 +99,8 @@ public static Subscription<T1, T2, T3> Subscribe<T1, T2, T3>(
         Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})")));
   ```
 
+---
+
 #### `Subscribe<T1,T2,T3,T4>(ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
 
 ```csharp
