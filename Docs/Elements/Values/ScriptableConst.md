@@ -1,18 +1,24 @@
 # 🧩 ScriptableConst&lt;T&gt;
 
-Represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**. It
-implements [IValue&lt;T&gt;](IValue.md) making it perfect for sharing constant values across multiple objects or scenes
-in Unity.
+```csharp
+public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
+```
+
+- **Description:** Represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**
+  making it perfect for sharing constant values across multiple objects or scenes
+- **Inheritance:** `ScriptableObject`, [IValue&lt;T&gt;](IValue.md)
+- **Type Parameter:** `T` – The type of the wrapped constant value.
+- **Notes:** Supports Unity serialization and Odin Inspector
 
 > [!TIP]  
 > Using `ScriptableConst<T>` allows you to change the value in the editor and automatically propagate it to all objects
 > that reference it, without changing any code.
 
-```csharp
-public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
-```
+## 🛠 Inspector Settings
 
-- **Type Parameter:** `T` – The type of the wrapped constant value.
+| Parameter            | Description                                                             |
+|----------------------|-------------------------------------------------------------------------|
+| `value` | Constant value |
 
 ---
 
@@ -39,7 +45,7 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
 #### `ToString()`
 
