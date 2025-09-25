@@ -1,9 +1,4 @@
-
-<details>
-  <summary>
-    <h2>🧩 ISignal&lt;T1, T2, T3, T4&gt;</h2>
-    <br> Represents a signal that notifies subscribers with <b>four values</b>.
-  </summary>
+# 🧩 ISignal&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 public interface ISignal<T1, T2, T3, T4>
@@ -18,7 +13,7 @@ public interface ISignal<T1, T2, T3, T4>
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Subscribe(Action<T1, T2, T3, T4>)`
 
@@ -28,7 +23,7 @@ public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
 
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](../Signals/Subscription.md#subscriptiont1-t2-t3-t4) that can be used to dispose
+- **Returns:** The active [subscription](Subscription%604.md) that can be used to dispose
   of it.
 
 #### `Unsubscribe(Action<T1, T2, T3, T4>)`
@@ -39,5 +34,3 @@ public void Unsubscribe(Action<T1, T2, T3, T4> action)
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
-
-</details>
