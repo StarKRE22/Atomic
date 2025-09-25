@@ -60,7 +60,7 @@ public bool Consume(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the arguments.
-- **Output parameters:**
+- **Output:**
     - `arg1` — the first argument value if the request was consumed successfully.
     - `arg2` — the second argument value if the request was consumed successfully.
 - **Returns:** `true` if successfully consumed.
@@ -72,7 +72,7 @@ public bool TryGet(out T1 arg1, out T2 arg2);
 ```
 
 - **Description:**  Attempts to retrieve both arguments.
-- **Output parameters:**
+- **Output:**
     - `arg1` — the first argument value if successfully retrieved.
     - `arg2` — the second argument value if successfully retrieved.
 - **Returns:** `true` if the argument was retrieved successfully.
