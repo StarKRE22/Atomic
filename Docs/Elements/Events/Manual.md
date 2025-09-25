@@ -32,7 +32,7 @@ systems.
     - [Subscription](Subscription.md) <!-- + -->
     - [Subscription&lt;T&gt;](Subscription%601.md) <!-- + -->
     - [Subscription&lt;T1, T2&gt;](Subscription%602.md) <!-- + -->
-    - [Subscription&lt;T1, T2, T3&gt;]()
+    - [Subscription&lt;T1, T2, T3&gt;](Subscription%603.md) <!-- + -->
     - [Subscription&lt;T1, T2, T3, T4&gt;]()
 - Extensions
   - [Subscribe]()
