@@ -1,15 +1,9 @@
-
-<details>
-  <summary>
-    <h2>🧩 IRequest&lt;T1, T2&gt;</h2>
-    <br> Represents a request action with <b>two input arguments</b>.
-  </summary>
-
-<br>
-
+# 🧩 IRequest&lt;T1, T2&gt;
 ```csharp
 public interface IRequest<T1, T2> : IAction<T1, T2>
 ```
+- **Description:** Represents a request action with <b>two input arguments</b>.
+- **Inheritance:** [IAction&lt;T1, T2&gt;](../Actions/IAction%602.md)
 
 - **Type parameters:**
     - `T1` — first argument
@@ -17,7 +11,7 @@ public interface IRequest<T1, T2> : IAction<T1, T2>
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -45,7 +39,7 @@ public T2 Arg2 { get; }
 
 ---
 
-### 🏹 Methods
+##  🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -57,7 +51,7 @@ public void Invoke(T1 arg1, T2 arg2);
 - **Parameters:**
     - `arg1` — the first input parameter
     - `arg2` — the second input parameter
-- **Note:** This method derived from [IAction<T1, T2>.Invoke()](../Actions/IAction.md#invoket1-t2)
+- **Note:** This method derived from `IAction<T1, T2>`
 
 #### `Consume(out T1, out T2)`
 
@@ -82,5 +76,3 @@ public bool TryGet(out T1 arg1, out T2 arg2);
     - `arg1` — the first argument value if successfully retrieved.
     - `arg2` — the second argument value if successfully retrieved.
 - **Returns:** `true` if the argument was retrieved successfully.
-
-</details>

@@ -67,7 +67,7 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3);
     - `arg1` — the first input parameter
     - `arg2` — the second input parameter
     - `arg3` — the third input parameter
-- **Note:** This method derived from [IAction<T1, T2, T3>.Invoke()](../Actions/IAction.md#invoket1-t2-t3)
+- **Note:** This method derived from `IAction<T1, T2, T3>`
 
 #### `Consume(out T1, out T2, out T3)`
 
