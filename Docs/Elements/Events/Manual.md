@@ -4,7 +4,7 @@ Provides a set of abstractions for **events, subscriptions, and signals**. It al
 and trigger events in a decoupled and reactive manner, making it ideal for event-driven architectures and real-time
 systems.
 
-- [ISignals]()
+- [ISignals](ISignals.md) <!-- + -->
     - [ISignal]()
     - [ISignal&lt;T&gt;]()
     - [ISignal&lt;T1, T2&gt;]()
