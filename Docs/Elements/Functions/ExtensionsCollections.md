@@ -1,6 +1,6 @@
-# 🧩 Function Extensions
+# 🧩 Collections Function Extensions
 
-Provides utility methods for adding and removing [functions](IFunctions.md) to collections.
+Provide utility methods for adding and removing [functions](IFunctions.md) to collections.
 
 ---
 

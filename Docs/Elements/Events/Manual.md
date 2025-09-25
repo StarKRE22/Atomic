@@ -35,7 +35,7 @@ systems.
     - [Subscription&lt;T1, T2, T3&gt;](Subscription%603.md) <!-- + -->
     - [Subscription&lt;T1, T2, T3, T4&gt;](Subscription%604.md) <!-- + -->
 - Extensions
-  - [Subscribe]()
+  - [Subscribe](ExtensionsSubscribe.md) <!-- + -->
   - [Unsubscribe]()
   - [SubscribeRange]()
   - [UnsubscribeRange]()

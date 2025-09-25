@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Extensions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,39 +216,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="10855000" />
-    </task>
-    <task id="LOCAL-00770" summary="InlineSetter.md">
-      <option name="closed" value="true" />
-      <created>1758740307182</created>
-      <option name="number" value="00770" />
-      <option name="presentableId" value="LOCAL-00770" />
-      <option name="project" value="LOCAL" />
-      <updated>1758740307182</updated>
-    </task>
-    <task id="LOCAL-00771" summary="Начинаем перепиливать раздел Requests.md">
-      <option name="closed" value="true" />
-      <created>1758740651967</created>
-      <option name="number" value="00771" />
-      <option name="presentableId" value="LOCAL-00771" />
-      <option name="project" value="LOCAL" />
-      <updated>1758740651967</updated>
-    </task>
-    <task id="LOCAL-00772" summary="Сделал IRequests.md">
-      <option name="closed" value="true" />
-      <created>1758741176584</created>
-      <option name="number" value="00772" />
-      <option name="presentableId" value="LOCAL-00772" />
-      <option name="project" value="LOCAL" />
-      <updated>1758741176584</updated>
-    </task>
-    <task id="LOCAL-00773" summary="Сделал IRequests.md">
-      <option name="closed" value="true" />
-      <created>1758741264494</created>
-      <option name="number" value="00773" />
-      <option name="presentableId" value="LOCAL-00773" />
-      <option name="project" value="LOCAL" />
-      <updated>1758741264494</updated>
+      <workItem from="1758779433987" duration="11764000" />
     </task>
     <task id="LOCAL-00774" summary="IRequest.md">
       <option name="closed" value="true" />
@@ -606,7 +578,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758791664694</updated>
     </task>
-    <option name="localTasksCounter" value="819" />
+    <task id="LOCAL-00819" summary="Subscription`1.md">
+      <option name="closed" value="true" />
+      <created>1758792101513</created>
+      <option name="number" value="00819" />
+      <option name="presentableId" value="LOCAL-00819" />
+      <option name="project" value="LOCAL" />
+      <updated>1758792101513</updated>
+    </task>
+    <task id="LOCAL-00820" summary="Subscription`2.md">
+      <option name="closed" value="true" />
+      <created>1758792297605</created>
+      <option name="number" value="00820" />
+      <option name="presentableId" value="LOCAL-00820" />
+      <option name="project" value="LOCAL" />
+      <updated>1758792297605</updated>
+    </task>
+    <task id="LOCAL-00821" summary="Subscription`3.md">
+      <option name="closed" value="true" />
+      <created>1758792390616</created>
+      <option name="number" value="00821" />
+      <option name="presentableId" value="LOCAL-00821" />
+      <option name="project" value="LOCAL" />
+      <updated>1758792390616</updated>
+    </task>
+    <task id="LOCAL-00822" summary="Subscription`4.md">
+      <option name="closed" value="true" />
+      <created>1758792492019</created>
+      <option name="number" value="00822" />
+      <option name="presentableId" value="LOCAL-00822" />
+      <option name="project" value="LOCAL" />
+      <updated>1758792492019</updated>
+    </task>
+    <option name="localTasksCounter" value="823" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,10 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ISignal.md" />
-    <MESSAGE value="ISignal`1.md" />
-    <MESSAGE value="ISignal`2.md" />
-    <MESSAGE value="ISignal`3.md" />
     <MESSAGE value="ISignal`4.md" />
     <MESSAGE value="InlineSignals.md" />
     <MESSAGE value="InlineSignal.md" />
@@ -658,7 +658,11 @@
     <MESSAGE value="BaseEvent`4.md" />
     <MESSAGE value="Subscriptions.md" />
     <MESSAGE value="Subscription.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription.md" />
+    <MESSAGE value="Subscription`1.md" />
+    <MESSAGE value="Subscription`2.md" />
+    <MESSAGE value="Subscription`3.md" />
+    <MESSAGE value="Subscription`4.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscription`4.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

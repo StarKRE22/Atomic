@@ -1,6 +1,6 @@
-# 🧩 Invert Extensions
+# 🧩 Invert Function Extensions
 
-Provides utility methods those create a new function that represents the **logical negation** of an existing
+Provide utility methods those create a new function that represents the **logical negation** of an existing
 boolean-returning [function](IFunctions.md).
 
 ---

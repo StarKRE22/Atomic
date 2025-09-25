@@ -56,7 +56,7 @@ public static void InvokeRange<T1, T2>(this IEnumerable<IAction<T1, T2>> actions
 
 ---
 
-#### `InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>>, T1, T2, T3)`
+#### `InvokeRange<T1, T2, T3>(IEnumerable<IAction<T1, T2, T3>>, T1, T2, T3)`
 ```csharp
 public static void InvokeRange<T1, T2, T3>(this IEnumerable<IAction<T1, T2, T3>> actions, T1 arg1, T2 arg2, T3 arg3)
 ```
@@ -152,7 +152,7 @@ public static void InvokeRange<T1, T2, T3>(this IAction<T1, T2, T3>[] actions, T
 
 ---
 
-#### `InvokeRange<T1, T2, T3, T4>(IAction<T1, T2, T3, T4>[] actions, T1, T2, T3, T4)`
+#### `InvokeRange<T1, T2, T3, T4>(IAction<T1, T2, T3, T4>[], T1, T2, T3, T4)`
 ```csharp
 public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] actions, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
 ```
@@ -163,10 +163,3 @@ public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] ac
   IAction<GameObject, int, string, bool>[] actions = new IAction<GameObject, int, string, bool>[] { action1 };
   actions.InvokeRange(go, 5, "Hello", true);
   ```
-
----
-
-## 📝 Notes
-- **Null Safety** – Both the collection and individual actions are checked for null.
-- **Performance** – Aggressively inlined for minimal call overhead.
-- **Batch Execution** – Useful for invoking multiple actions in one operation.
