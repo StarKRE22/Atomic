@@ -23,10 +23,11 @@ systems.
     - [IEvent&lt;T1, T2, T3&gt;](IEvent%603.md) <!-- + -->
     - [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) <!-- + -->
 - [BaseEvents](BaseEvents.md) <!-- + -->
-    - [BaseEvent&lt;T&gt;](BaseEvent.md) <!-- + -->
-    - [BaseEvent&lt;T1, T2&gt;](BaseEvent%601.md) <!-- + -->
-    - [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%602.md) <!-- + -->
-    - [BaseEvent&lt;T1, T2, T3, T4&gt;]()
+    - [BaseEvent](BaseEvent.md) <!-- + -->
+    - [BaseEvent&lt;T&gt;](BaseEvent%601.md) <!-- + -->
+    - [BaseEvent&lt;T1, T2&gt;](BaseEvent%602.md) <!-- + -->
+    - [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%603.md) <!-- + -->
+    - [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) <!-- + -->
 - [Subscriptions]()
     - [Subscription]()
     - [Subscription&lt;T&gt;]()
