@@ -10,7 +10,7 @@ active.
     - [IRequest&lt;T&gt;](IRequest%601.md) <!-- + -->
     - [IRequest&lt;T1, T2&gt;](IRequest%602.md) <!-- + -->
     - [IRequest&lt;T1, T2, T3&gt;](IRequest%603.md)  <!-- + -->
-    - [IRequest&lt;T1, T2, T3, T4&gt;]()
+    - [IRequest&lt;T1, T2, T3, T4&gt;](IRequest%604.md) <!-- + -->
 - [BaseRequests]()
     - [BaseRequest]()
     - [BaseRequest&lt;T&gt;]()

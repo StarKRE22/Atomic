@@ -1,16 +1,11 @@
-
-<details>
-  <summary>
-    <h2>🧩 IRequest&lt;T1, T2, T3, T4&gt;</h2>
-    <br> Represents a request action with <b>four input arguments</b>.
-  </summary>
-
-<br>
+# 🧩 IRequest&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
 
+- **Description:** Represents a request action with <b>four input arguments</b>.
+- **Inheritance:** [IAction&lt;T1, T2, T3, T4&gt;](../Actions/IAction%604.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
@@ -19,7 +14,7 @@ public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -63,7 +58,7 @@ public T4 Arg4 { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
@@ -106,5 +101,3 @@ public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3, out T4 arg4);
     - `arg3` — the third argument value if successfully retrieved.
     - `arg4` — the fourth argument value if successfully retrieved.
 - **Returns:** `true` if the argument was retrieved successfully.
-
-</details>
