@@ -1,4 +1,4 @@
-# 🧩 Action Extensions — InvokeRange
+# 🧩 InvokeRange — Action Extensions 
 
 Provide utility methods for invoking arrays or collections of [IAction](IActions.md). These methods automatically skip
 `null` actions and execute them sequentially.
