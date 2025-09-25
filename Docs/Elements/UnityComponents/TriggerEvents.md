@@ -1,7 +1,7 @@
 # 🧩 TriggerEvents
 
-A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks (`OnTriggerEnter`, `OnTriggerExit`, `OnTriggerStay`)
-as C# events. This allows external scripts to react to trigger interactions without overriding Unity callbacks. Attach
+A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks as C# events. This allows external scripts to react
+to trigger interactions without overriding Unity callbacks. Attach
 this component to a `GameObject` with a **Collider** set as a **Trigger** to receive events.
 
 ```csharp
