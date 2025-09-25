@@ -200,6 +200,3 @@ actions.InvokeRange(go, 5, "Hello");
 IAction<GameObject, int, string, bool>[] actions = new IAction<GameObject, int, string, bool>[] { action1 };
 actions.InvokeRange(go, 5, "Hello", true);
 ```
-
-Provide utility methods for invoking arrays or collections of [IAction](IActions.md). These methods automatically skip
-`null` actions and execute them sequentially.

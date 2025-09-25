@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,39 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="13085000" />
-    </task>
-    <task id="LOCAL-00780" summary="BaseRequests.md">
-      <option name="closed" value="true" />
-      <created>1758780696028</created>
-      <option name="number" value="00780" />
-      <option name="presentableId" value="LOCAL-00780" />
-      <option name="project" value="LOCAL" />
-      <updated>1758780696028</updated>
-    </task>
-    <task id="LOCAL-00781" summary="BaseRequest.md">
-      <option name="closed" value="true" />
-      <created>1758780976116</created>
-      <option name="number" value="00781" />
-      <option name="presentableId" value="LOCAL-00781" />
-      <option name="project" value="LOCAL" />
-      <updated>1758780976117</updated>
-    </task>
-    <task id="LOCAL-00782" summary="BaseRequest`1.md">
-      <option name="closed" value="true" />
-      <created>1758781400201</created>
-      <option name="number" value="00782" />
-      <option name="presentableId" value="LOCAL-00782" />
-      <option name="project" value="LOCAL" />
-      <updated>1758781400201</updated>
-    </task>
-    <task id="LOCAL-00783" summary="BaseRequest`2.md">
-      <option name="closed" value="true" />
-      <created>1758781649237</created>
-      <option name="number" value="00783" />
-      <option name="presentableId" value="LOCAL-00783" />
-      <option name="project" value="LOCAL" />
-      <updated>1758781649237</updated>
+      <workItem from="1758779433987" duration="13442000" />
     </task>
     <task id="LOCAL-00784" summary="BaseRequest`3.md">
       <option name="closed" value="true" />
@@ -606,7 +573,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758793362044</updated>
     </task>
-    <option name="localTasksCounter" value="829" />
+    <task id="LOCAL-00829" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794337665</created>
+      <option name="number" value="00829" />
+      <option name="presentableId" value="LOCAL-00829" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794337665</updated>
+    </task>
+    <task id="LOCAL-00830" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794393740</created>
+      <option name="number" value="00830" />
+      <option name="presentableId" value="LOCAL-00830" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794393740</updated>
+    </task>
+    <task id="LOCAL-00831" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794502676</created>
+      <option name="number" value="00831" />
+      <option name="presentableId" value="LOCAL-00831" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794502676</updated>
+    </task>
+    <task id="LOCAL-00832" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794534371</created>
+      <option name="number" value="00832" />
+      <option name="presentableId" value="LOCAL-00832" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794534371</updated>
+    </task>
+    <option name="localTasksCounter" value="833" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="InlineSignal`1.md" />
     <MESSAGE value="InlineSignal`2.md" />
     <MESSAGE value="InlineSignal`3.md" />
@@ -658,7 +656,8 @@
     <MESSAGE value="Subscription`4.md" />
     <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsUnsubscribe.md" />
+    <MESSAGE value="ExtensionsInvokeRange.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsInvokeRange.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
