@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,39 +210,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="11764000" />
-    </task>
-    <task id="LOCAL-00774" summary="IRequest.md">
-      <option name="closed" value="true" />
-      <created>1758779656077</created>
-      <option name="number" value="00774" />
-      <option name="presentableId" value="LOCAL-00774" />
-      <option name="project" value="LOCAL" />
-      <updated>1758779656078</updated>
-    </task>
-    <task id="LOCAL-00775" summary="IRequest`1.md">
-      <option name="closed" value="true" />
-      <created>1758779873925</created>
-      <option name="number" value="00775" />
-      <option name="presentableId" value="LOCAL-00775" />
-      <option name="project" value="LOCAL" />
-      <updated>1758779873925</updated>
-    </task>
-    <task id="LOCAL-00776" summary="IRequest`1.md">
-      <option name="closed" value="true" />
-      <created>1758779944722</created>
-      <option name="number" value="00776" />
-      <option name="presentableId" value="LOCAL-00776" />
-      <option name="project" value="LOCAL" />
-      <updated>1758779944722</updated>
-    </task>
-    <task id="LOCAL-00777" summary="IRequest`2.md">
-      <option name="closed" value="true" />
-      <created>1758780155420</created>
-      <option name="number" value="00777" />
-      <option name="presentableId" value="LOCAL-00777" />
-      <option name="project" value="LOCAL" />
-      <updated>1758780155420</updated>
+      <workItem from="1758779433987" duration="12083000" />
     </task>
     <task id="LOCAL-00778" summary="IRequest`3.md">
       <option name="closed" value="true" />
@@ -610,7 +572,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758792492019</updated>
     </task>
-    <option name="localTasksCounter" value="823" />
+    <task id="LOCAL-00823" summary="ExtensionsSubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793019164</created>
+      <option name="number" value="00823" />
+      <option name="presentableId" value="LOCAL-00823" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793019164</updated>
+    </task>
+    <task id="LOCAL-00824" summary="ExtensionsSubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793126825</created>
+      <option name="number" value="00824" />
+      <option name="presentableId" value="LOCAL-00824" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793126825</updated>
+    </task>
+    <task id="LOCAL-00825" summary="ExtensionsSubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793138411</created>
+      <option name="number" value="00825" />
+      <option name="presentableId" value="LOCAL-00825" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793138411</updated>
+    </task>
+    <task id="LOCAL-00826" summary="ExtensionsUnsubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758793306779</created>
+      <option name="number" value="00826" />
+      <option name="presentableId" value="LOCAL-00826" />
+      <option name="project" value="LOCAL" />
+      <updated>1758793306779</updated>
+    </task>
+    <option name="localTasksCounter" value="827" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ISignal`4.md" />
-    <MESSAGE value="InlineSignals.md" />
     <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="InlineSignal`1.md" />
     <MESSAGE value="InlineSignal`2.md" />
@@ -662,7 +654,9 @@
     <MESSAGE value="Subscription`2.md" />
     <MESSAGE value="Subscription`3.md" />
     <MESSAGE value="Subscription`4.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription`4.md" />
+    <MESSAGE value="ExtensionsSubscribe.md" />
+    <MESSAGE value="ExtensionsUnsubscribe.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsUnsubscribe.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
