@@ -1,21 +1,15 @@
-
----
-
-<details>
-  <summary>
-    <h2 id="subscription">🧩 Subscription</h2>
-    <br> Represents a subscription to a <b>parameterless signal</b>.
-  </summary>
-
-<br>
+# 🧩 Subscription
 
 ```csharp
 public readonly struct Subscription : IDisposable
 ```
 
+- **Description:** Represents a subscription to a <b>parameterless signal</b>.
+- **Inheritance:** `IDisposable`
+
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `Subscription(ISignal, Action)`
 
@@ -30,7 +24,7 @@ public Subscription(ISignal signal, Action action)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Dispose()`
 
@@ -42,7 +36,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 //Assume we have a instance of ISignal
@@ -54,17 +48,3 @@ Subscription subscription = signal.Subscribe(lambda);
 // Later, dispose to unsubscribe
 subscription.Dispose();
 ```
-
-</details>
-
----
-
-
----
-
-
----
-
-
----
-

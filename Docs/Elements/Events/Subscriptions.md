@@ -11,7 +11,6 @@ There are several subscriptions, depending on the number of arguments they take:
 - [Subscription&lt;T1, T2, T3&gt;](Subscription%603.md) — Subscription that takes three arguments.
 - [Subscription&lt;T1, T2, T3, T4&gt;](Subscription%604.md) — Subscription that takes four arguments.
 
-
 ---
 
 ## 🗂 Examples of Usage
