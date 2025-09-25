@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,31 +212,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="7281000" />
-    </task>
-    <task id="LOCAL-00750" summary="IFunction.md">
-      <option name="closed" value="true" />
-      <created>1758733511045</created>
-      <option name="number" value="00750" />
-      <option name="presentableId" value="LOCAL-00750" />
-      <option name="project" value="LOCAL" />
-      <updated>1758733511045</updated>
-    </task>
-    <task id="LOCAL-00751" summary="IFunction`1.md">
-      <option name="closed" value="true" />
-      <created>1758733702704</created>
-      <option name="number" value="00751" />
-      <option name="presentableId" value="LOCAL-00751" />
-      <option name="project" value="LOCAL" />
-      <updated>1758733702704</updated>
-    </task>
-    <task id="LOCAL-00752" summary="IFunction`2.md">
-      <option name="closed" value="true" />
-      <created>1758733839851</created>
-      <option name="number" value="00752" />
-      <option name="presentableId" value="LOCAL-00752" />
-      <option name="project" value="LOCAL" />
-      <updated>1758733839851</updated>
+      <workItem from="1758779433987" duration="7611000" />
     </task>
     <task id="LOCAL-00753" summary="InlineFunctions.md">
       <option name="closed" value="true" />
@@ -615,7 +582,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758788155836</updated>
     </task>
-    <option name="localTasksCounter" value="799" />
+    <task id="LOCAL-00799" summary="InlineSignal`3.md">
+      <option name="closed" value="true" />
+      <created>1758788512482</created>
+      <option name="number" value="00799" />
+      <option name="presentableId" value="LOCAL-00799" />
+      <option name="project" value="LOCAL" />
+      <updated>1758788512482</updated>
+    </task>
+    <task id="LOCAL-00800" summary="InlineSignal`3.md">
+      <option name="closed" value="true" />
+      <created>1758788567965</created>
+      <option name="number" value="00800" />
+      <option name="presentableId" value="LOCAL-00800" />
+      <option name="project" value="LOCAL" />
+      <updated>1758788567965</updated>
+    </task>
+    <task id="LOCAL-00801" summary="InlineSignal`4.md">
+      <option name="closed" value="true" />
+      <created>1758788644117</created>
+      <option name="number" value="00801" />
+      <option name="presentableId" value="LOCAL-00801" />
+      <option name="project" value="LOCAL" />
+      <updated>1758788644117</updated>
+    </task>
+    <option name="localTasksCounter" value="802" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,8 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineSetter.md" />
-    <MESSAGE value="Начинаем перепиливать раздел Requests.md" />
     <MESSAGE value="Сделал IRequests.md" />
     <MESSAGE value="IRequest.md" />
     <MESSAGE value="IRequest`1.md" />
@@ -667,7 +656,9 @@
     <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="InlineSignal`1.md" />
     <MESSAGE value="InlineSignal`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineSignal`2.md" />
+    <MESSAGE value="InlineSignal`3.md" />
+    <MESSAGE value="InlineSignal`4.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineSignal`4.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
