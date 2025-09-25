@@ -1,13 +1,12 @@
 # 🧩 IReactiveValue&lt;T&gt;
 
-Represents a **reactive value** that combines **read-only access** through [IValue&lt;T&gt;](IValue.md) and **reactive
-observation** through [ISignal&lt;T&gt;](../Signals/ISignal.md#-isignalt). It allows you to both **read the current
-value** and **subscribe to changes**.
-
 ```csharp
 public interface IReactiveValue<T> : IValue<T>, ISignal<T>
 ```
 
+- **Description:** Represents a **reactive value** that combines **read-only access** and **reactive
+  observation**. It allows you to both **read the current value** and **subscribe to changes**.
+- **Inheritance:**  [IValue&lt;T&gt;](IValue.md), [ISignal&lt;T&gt;](../Events/ISignal%601.md)
 - **Type Parameter:** `T` – The type of the value.
 
 ---
@@ -35,7 +34,7 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
 #### `Subscribe(Action)`
 
@@ -45,10 +44,8 @@ public Subscription<T> Subscribe(Action action)
 
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active
+- **Returns:** A [Subscription&lt;T&gt;](../Events/Subscription%601.md) struct representing the active
   subscription.
-- **Notes**: This is the default implementation
-  from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
 
 #### `Unsubscribe(Action)`
 
@@ -58,8 +55,6 @@ public void Unsubscribe(Action action)
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
-- **Notes**: This is the default implementation
-  from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
 
 ---
 
