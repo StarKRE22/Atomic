@@ -25,7 +25,7 @@ public static Subscription<T> Observe<T>(this IReactiveValue<T> it, Action<T> ac
 - **Parameters:**
   - `it` – The reactive value to observe.
   - `action` – The callback to invoke on value changes and immediately with the current value.
-- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) representing the active subscription.
+- **Returns:** A [Subscription&lt;T&gt;](../Events/Subscription%601.md) representing the active subscription.
 
 ---
 
