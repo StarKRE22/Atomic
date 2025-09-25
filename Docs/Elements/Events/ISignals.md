@@ -9,8 +9,8 @@ There are several interfaces of signals, depending on the number of arguments th
 - [ISignal](ISignal.md) — Signal without parameters.
 - [ISignal&lt;T&gt;](ISignal%601.md) — Signal that takes one argument.
 - [ISignal&lt;T1, T2&gt;](ISignal%602.md) — Signal that takes two arguments.
-- [ISignal&lt;T1, T2, T3&gt;](ISignal%603.md) — Signal that takes two arguments.
-- [ISignal&lt;T1, T2, T3, T4&gt;](ISignal%604.md) — Signal that takes two arguments.
+- [ISignal&lt;T1, T2, T3&gt;](ISignal%603.md) — Signal that takes three arguments.
+- [ISignal&lt;T1, T2, T3, T4&gt;](ISignal%604.md) — Signal that takes four arguments.
 
 ---
 

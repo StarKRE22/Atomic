@@ -9,8 +9,8 @@ There are several interfaces of events, depending on the number of arguments the
 - [IEvent](IEvent.md) — Event without parameters.
 - [IEvent&lt;T&gt;](IEvent%601.md) — Event that takes one argument.
 - [IEvent&lt;T1, T2&gt;](IEvent%602.md) — Event that takes two arguments.
-- [IEvent&lt;T1, T2, T3&gt;](IEvent%603.md) — Event that takes two arguments.
-- [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) — Event that takes two arguments.
+- [IEvent&lt;T1, T2, T3&gt;](IEvent%603.md) — Event that takes three arguments.
+- [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) — Event that takes four arguments.
 
 ---
 

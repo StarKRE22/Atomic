@@ -9,8 +9,8 @@ There are several implementations of events, depending on the number of argument
 - [BaseEvent](BaseEvent.md) — Event without parameters.
 - [BaseEvent&lt;T&gt;](BaseEvent%601.md) — Event that takes one argument.
 - [BaseEvent&lt;T1, T2&gt;](BaseEvent%602.md) — Event that takes two arguments.
-- [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%603.md) — Event that takes two arguments.
-- [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) — Event that takes two arguments.
+- [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%603.md) — Event that takes three arguments.
+- [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) — Event that takes four arguments.
 
 
 ---
