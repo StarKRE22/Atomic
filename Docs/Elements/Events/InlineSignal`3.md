@@ -4,6 +4,7 @@
     <h2>🧩 InlineSignal&lt;T1, T2, T3&gt;</h2>
     <br> Represents a signal that notifies subscribers with <b>three values</b>.
   </summary>
+- **Note:** Supports Odin Inspector
 
 ```csharp
 public sealed class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>

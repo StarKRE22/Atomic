@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignals.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,31 +214,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="6304000" />
-    </task>
-    <task id="LOCAL-00745" summary="Оформил раздел Actions!">
-      <option name="closed" value="true" />
-      <created>1758731166047</created>
-      <option name="number" value="00745" />
-      <option name="presentableId" value="LOCAL-00745" />
-      <option name="project" value="LOCAL" />
-      <updated>1758731166047</updated>
-    </task>
-    <task id="LOCAL-00746" summary="Сделал раздел для Actions">
-      <option name="closed" value="true" />
-      <created>1758731451912</created>
-      <option name="number" value="00746" />
-      <option name="presentableId" value="LOCAL-00746" />
-      <option name="project" value="LOCAL" />
-      <updated>1758731451912</updated>
-    </task>
-    <task id="LOCAL-00747" summary="Начинаем работать с разделом Functions!">
-      <option name="closed" value="true" />
-      <created>1758731837214</created>
-      <option name="number" value="00747" />
-      <option name="presentableId" value="LOCAL-00747" />
-      <option name="project" value="LOCAL" />
-      <updated>1758731837214</updated>
+      <workItem from="1758779433987" duration="6800000" />
     </task>
     <task id="LOCAL-00748" summary="Сделал IFunctions.md">
       <option name="closed" value="true" />
@@ -609,7 +584,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758787325930</updated>
     </task>
-    <option name="localTasksCounter" value="794" />
+    <task id="LOCAL-00794" summary="InlineSignals.md">
+      <option name="closed" value="true" />
+      <created>1758787529128</created>
+      <option name="number" value="00794" />
+      <option name="presentableId" value="LOCAL-00794" />
+      <option name="project" value="LOCAL" />
+      <updated>1758787529128</updated>
+    </task>
+    <task id="LOCAL-00795" summary="InlineSignals.md">
+      <option name="closed" value="true" />
+      <created>1758787660418</created>
+      <option name="number" value="00795" />
+      <option name="presentableId" value="LOCAL-00795" />
+      <option name="project" value="LOCAL" />
+      <updated>1758787660418</updated>
+    </task>
+    <task id="LOCAL-00796" summary="InlineSignal.md">
+      <option name="closed" value="true" />
+      <created>1758787827654</created>
+      <option name="number" value="00796" />
+      <option name="presentableId" value="LOCAL-00796" />
+      <option name="project" value="LOCAL" />
+      <updated>1758787827654</updated>
+    </task>
+    <option name="localTasksCounter" value="797" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,8 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlinePredicate`1.md" />
-    <MESSAGE value="InlinePredicate`2.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="Manual.md, ISetter.md" />
     <MESSAGE value="InlineSetter.md" />
@@ -661,7 +658,9 @@
     <MESSAGE value="ISignal`2.md" />
     <MESSAGE value="ISignal`3.md" />
     <MESSAGE value="ISignal`4.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ISignal`4.md" />
+    <MESSAGE value="InlineSignals.md" />
+    <MESSAGE value="InlineSignal.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineSignal.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
