@@ -7,6 +7,6 @@ where values need to be observed or updated in real-time, such as game developme
 - [IValue](IValue.md) <!-- + -->
 - [IReactiveValue](IReactiveValue.md)  <!-- + -->
 - [Const](Const.md) <!-- + -->
-- [ScriptableConst](ScriptableConst.md)
-- [DefaultConstants](DefaultConstants.md)
-- [Extensions](Extensions.md)
+- [ScriptableConst](ScriptableConst.md)  <!-- + -->
+- [DefaultConstants](DefaultConstants.md)  <!-- + -->
+- [Extensions](Extensions.md)  <!-- + -->
