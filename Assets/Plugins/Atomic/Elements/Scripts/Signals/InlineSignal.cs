@@ -129,7 +129,7 @@ namespace Atomic.Elements
     /// <typeparam name="T2">The type of the second emitted value.</typeparam>
     /// <typeparam name="T3">The type of the third emitted value.</typeparam>
     [Serializable]
-    public sealed class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
+    public class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
     {
         private readonly Action<Action<T1, T2, T3>> subscribe;
         private readonly Action<Action<T1, T2, T3>> unsubscribe;
@@ -171,7 +171,7 @@ namespace Atomic.Elements
     /// <typeparam name="T3">The type of the third emitted value.</typeparam>
     /// <typeparam name="T4">The type of the fourth emitted value.</typeparam>
     [Serializable]
-    public sealed class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
+    public class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
     {
         private readonly Action<Action<T1, T2, T3, T4>> subscribe;
         private readonly Action<Action<T1, T2, T3, T4>> unsubscribe;

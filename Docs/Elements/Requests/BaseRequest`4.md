@@ -1,6 +1,7 @@
 # 🧩 BaseRequest&lt;T1, T2, T3, T4&gt;
 
 ```csharp
+[Serializable]
 public class BaseRequest<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
 ```
 
@@ -11,7 +12,7 @@ public class BaseRequest<T1, T2, T3, T4> : IRequest<T1, T2, T3, T4>
     - `T2` — second argument
     - `T3` — third argument
     - `T4` — fourth argument
-- **Note:** Supports Odin Inspector
+- **Note:** Supports Unity serialization and Odin Inspector
 
 ---
 

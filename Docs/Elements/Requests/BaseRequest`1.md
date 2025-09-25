@@ -1,13 +1,14 @@
 # 🧩 BaseRequest&lt;T&gt;
 
 ```csharp
+[Serializable]
 public class BaseRequest<T> : IRequest<T>
 ```
 
 - **Description:** Represents a request action with <b>one input argument</b>.
 - **Inheritance:** [IRequest&lt;T&gt;](IRequest%601.md)
 - **Type parameter:** `T` — type of the argument.
-- **Note:** Supports Odin Inspector
+- **Note:** Supports Unity serialization and Odin Inspector
 
 ---
 

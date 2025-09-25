@@ -1,6 +1,7 @@
 # 🧩 BaseRequest&lt;T1, T2&gt;
 
 ```csharp
+[Serializable]
 public class BaseRequest<T1, T2> : IRequest<T1, T2>
 ```
 
@@ -9,7 +10,7 @@ public class BaseRequest<T1, T2> : IRequest<T1, T2>
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
-- **Note:** Supports Odin Inspector
+- **Note:** Supports Unity serialization and Odin Inspector
 
 ---
 

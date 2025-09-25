@@ -9,7 +9,6 @@ public class InlineSignal<T1, T2> : ISignal<T1, T2>
 - **Type parameters:**
     - `T1` — the first emitted value
     - `T2` — the second emitted value
-- **Note:** Supports Odin Inspector
 
 ---
 

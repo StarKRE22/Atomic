@@ -6,7 +6,6 @@ public class InlineSignal<T> : ISignal<T>
 - **Description:** Represents a signal that notifies subscribers with a **single value**.
 - **Type parameter:** `T` — the emitted value type.
 - **Inheritance:** [ISignal&lt;T&gt;](ISignal%601.md)
-- **Note:** Supports Odin Inspector
 
 ---
 

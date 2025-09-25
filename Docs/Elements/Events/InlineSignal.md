@@ -6,7 +6,6 @@ public class InlineSignal : ISignal
 
 - **Description:** Represents a signal that can notify subscribers of events <b>without passing any data</b>.
 - **Inheritance:** [ISignal](ISignal.md)
-- **Note:** Supports Odin Inspector
 
 ---
 
