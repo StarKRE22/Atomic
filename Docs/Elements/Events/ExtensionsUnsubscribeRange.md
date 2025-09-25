@@ -89,8 +89,8 @@ public static void UnsubscribeRange<T1, T2, T3, T4>(
 ISignal fireSignal = ...;
 var actions = new List<IAction>
 {
-new InlineAction(() => Debug.Log("🔥 Fire VFX")),
-new InlineAction(() => Debug.Log("🔊 Fire SFX"))
+    new InlineAction(() => Debug.Log("🔥 Fire VFX")),
+    new InlineAction(() => Debug.Log("🔊 Fire SFX"))
 };
 
 // Later, unsubscribe all
