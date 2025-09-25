@@ -18,6 +18,7 @@ There are several interfaces of events, depending on the number of arguments the
 
 Below is an example of how to use `IEvent` for triggering a **sound effect** together with the `Atomic.Entities`
 framework.
+
 ---
 
 #### 1. Create an entity with a `FireEvent` property

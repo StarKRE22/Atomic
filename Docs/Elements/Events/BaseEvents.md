@@ -19,6 +19,7 @@ There are several implementations of events, depending on the number of argument
 
 Below is an example of how to use `BaseEvent` for triggering a **sound effect** together with the `Atomic.Entities`
 framework.
+
 ---
 
 #### 1. Create an entity with a `FireEvent` property
