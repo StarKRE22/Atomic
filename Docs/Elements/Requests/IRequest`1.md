@@ -1,21 +1,16 @@
-
-<details>
-  <summary>
-    <h2>🧩 IRequest&lt;T&gt;</h2>
-    <br> Represents a request action with <b>one input argument</b>.
-  </summary>
-
-<br>
+# 🧩 IRequest&lt;T&gt;
 
 ```csharp
 public interface IRequest<T> : IAction<T>
 ```
 
+- **Description:** Represents a request action with <b>one input argument</b>.
 - **Type parameter:** `T` — the type of the argument.
+- **Inheritance:** [IAction&lt;T&gt;](../Actions/IAction%601.md)
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -54,7 +49,7 @@ public bool Consume(out T arg);
 ```
 
 - **Description:** Attempts to consume the request and retrieve the argument.
-- **Output parameter:** `arg` — the argument value if the request was consumed successfully.
+- **Output:** `arg` — the argument value if the request was consumed successfully.
 - **Returns:** `true` if successfully consumed.
 
 #### `TryGet(out T arg)`
@@ -64,7 +59,5 @@ public bool TryGet(out T arg);
 ```
 
 - **Description:** Attempts to retrieve the argument.
-- **Output parameter:** `arg` — the argument value if successfully retrieved.
+- **Output:** `arg` — the argument value if successfully retrieved.
 - **Returns:** `true` if the argument was retrieved successfully.
-
-</details>
