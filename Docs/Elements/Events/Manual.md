@@ -16,7 +16,7 @@ systems.
     - [InlineSignal&lt;T1, T2&gt;](InlineSignal%602.md) <!-- + -->
     - [InlineSignal&lt;T1, T2, T3&gt;](InlineSignal%603.md) <!-- + -->
     - [InlineSignal&lt;T1, T2, T3, T4&gt;](InlineSignal%604.md) <!-- + -->
-- [IEvents]()
+- [IEvents](IEvents.md) <!-- + -->
     - [IEvent]()
     - [IEvent&lt;T&gt;]()
     - [IEvent&lt;T1, T2&gt;]()

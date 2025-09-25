@@ -1,10 +1,4 @@
-# 🧩 IEvent Interfaces
 
-The **IEvent** interfaces define a family of contracts for **reactive events** that can be both **observed** and *
-*invoked**. They combine the capabilities of [ISignal](../Signals/ISignal.md) and [IAction](../Actions/IAction.md),
-allowing subscription-based reactive tracking and direct action-based invocation.
-
----
 
 <details>
   <summary>
@@ -268,56 +262,3 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     - `arg3` — the third argument
 
 </details>
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of how to use `IEvent` for triggering a **sound effect** together with the `Atomic.Entities`
-framework.
-
-#### 1. Create an entity with a `FireEvent` property
-
-```csharp
-var entity = new Entity("Character");
-entity.AddValue("FireEvent", new BaseEvent()); //IEvent
-entity.AddValue("AudioSource", audioSource);
-```
-
-#### 2. Use `FireEvent` through the `ISignal` interface
-
-```csharp
-[Serializable]
-public class FireSFXBehaviour : IEntityInit, IEntityDispose
-{
-    [Serializable]
-    private AudioClip _fireSFX;
-
-    private AudioSource _audioSource;
-    private ISignal _fireSignal; //IEvent
-    
-    public void Init(IEntity entity)
-    {
-        _audioSource = entity.GetValue<AudioSource>("AudioSource");
-        _fireSignal = entity.GetValue<ISignal>("FireEvent");
-        _fireSignal.Subscribe(this.OnFire);
-    }
-    
-    public void Dispose(IEntity entity)
-    {
-        _fireSignal.Unsubscribe(this.OnFire);
-    }
-    
-    private void OnFire()
-    {
-        _audioSource.PlayOneShot(_fireSFX);
-    }
-}
-```
-
-#### 3. Invoke `FireEvent` through the `IAction` interface
-
-```csharp
-IAction fireEvent = entity.GetValue<IAction>("FireEvent");
-fireEvent.Invoke();
-```
