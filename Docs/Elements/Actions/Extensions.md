@@ -164,7 +164,7 @@ public static void InvokeRange<T1, T2, T3, T4>(this IAction<T1, T2, T3, T4>[] ac
   actions.InvokeRange(go, 5, "Hello", true);
   ```
 
-----
+---
 
 ## 📝 Notes
 - **Null Safety** – Both the collection and individual actions are checked for null.

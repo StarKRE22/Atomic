@@ -42,7 +42,7 @@ patterns, composable structures, and modular design**.
 - [Functions](Functions/Manual.md) <!-- + -->
 - [Setters](Setters/Manual.md) <!-- + -->
 - [Requests](Requests/Manual.md) <!-- + -->
-- [Events](#-events)
+- [Events](Events/Manual.md)  <!-- + -->
 - [Time](#-time)
 - [Collections](#-collections)
 - [Expressions](#-expressions)
@@ -75,18 +75,6 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 - [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
 - [Extensions](Variables/Extensions.md)
 
-### 🧩 Events
-
-Provides a set of abstractions for **events, subscriptions, and signals**. It allows developers to define, subscribe to,
-and trigger events in a decoupled and reactive manner, making it ideal for event-driven architectures and real-time
-systems.
-
-- [ISignal](Signals/ISignal.md)
-- [InlineSignal](Signals/InlineSignal.md)
-- [IEvent](Events/IEvent.md)
-- [BaseEvent](Events/BaseEvent.md)
-- [Subscription](Signals/Subscription.md)
-- [Extensions](Signals/Extensions.md)
 
 
 
