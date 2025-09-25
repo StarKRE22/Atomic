@@ -19,7 +19,7 @@ systems.
 - [IEvents](IEvents.md) <!-- + -->
     - [IEvent](IEvent.md) <!-- + -->
     - [IEvent&lt;T&gt;](IEvent%601.md) <!-- + -->
-    - [IEvent&lt;T1, T2&gt;]()
+    - [IEvent&lt;T1, T2&gt;](IEvent%602.md) <!-- + -->
     - [IEvent&lt;T1, T2, T3&gt;]()
     - [IEvent&lt;T1, T2, T3, T4&gt;]()
 - [BaseEvents]()
