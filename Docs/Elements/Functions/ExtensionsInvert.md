@@ -57,7 +57,9 @@ bool dead = isDead.Invoke(); // true if health <= 0
 #### `IFunction<T, bool>` (with one parameter)
 
 ```csharp
-IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
+IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(
+    c => c.Team != player.Team
+);
 IFunction<Character, bool> isAlly = isEnemy.Invert();
 
 bool ally = isAlly.Invoke(otherCharacter); // true if same team
@@ -66,7 +68,9 @@ bool ally = isAlly.Invoke(otherCharacter); // true if same team
 #### `IFunction<T1, T2, bool>` (with two parameters)
 
 ```csharp
-IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>((a, b) => a.Team != b.Team);
+IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>(
+    (a, b) => a.Team != b.Team
+);
 IFunction<Character, Character, bool> isAllyPair = isEnemyPair.Invert();
 
 bool allies = isAllyPair.Invoke(player, teammate); // true if same team

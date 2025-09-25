@@ -125,7 +125,7 @@ hitSignal.Unsubscribe(action);
 ```csharp
 ISignal<IEntity, int, bool> attackSignal = ...;
 var action = new InlineAction<IEntity, int, bool>((entity, damage, critical) =>
-Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})"));
+    Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})"));
 attackSignal.Subscribe(action);
 
 // Later, unsubscribe
@@ -137,7 +137,7 @@ attackSignal.Unsubscribe(action);
 ```csharp
 ISignal<IEntity, int, bool, Vector3> shootSignal = ...;
 var action = new InlineAction<IEntity, int, bool, Vector3>((entity, ammo, success, position) =>
-Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}"));
+    Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}"));
 shootSignal.Subscribe(action);
 
 // Later, unsubscribe

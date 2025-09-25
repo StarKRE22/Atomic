@@ -103,26 +103,27 @@ fireSignal.Subscribe(new InlineAction(() => Debug.Log("OnFire")));
 #### `ISignal<T>` (with one parameter)
 ```csharp
 ISignal<IEntity> pickUpSignal = ...;
-pickUpSignal.Subscribe(new InlineAction(pickUp => Debug.Log($"OnPickUp: {pickUp.Name}")));
+pickUpSignal.Subscribe(new InlineAction(
+    pickUp => Debug.Log($"OnPickUp: {pickUp.Name}")));
 ```
 
 #### `ISignal<T1, T2>` (with two parameters)
 ```csharp
 ISignal<IEntity, int> hitSignal = ...
 hitSignal.Subscribe(new InlineAction<IEntity, int>((entity, damage) =>
-Debug.Log($"{entity.Name} received {damage} damage")));
+    Debug.Log($"{entity.Name} received {damage} damage")));
 ```
 
 #### `ISignal<T1, T2, T3>` (with three parameters)
 ```csharp
 ISignal<IEntity, int, bool> attackSignal = ...;
 attackSignal.Subscribe(new InlineAction<IEntity, int, bool>((entity, damage, critical) =>
-Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})")));
+    Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})")));
 ```
 
 #### `ISignal<T1, T2, T3, T4>` (with four parameters)
 ```csharp
 ISignal<IEntity, int, bool, Vector3> shootSignal = ...
 shootSignal.Subscribe(new InlineAction<IEntity, int, bool, Vector3>((entity, ammo, success, position) =>
-Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}")));
+    Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}")));
 ```

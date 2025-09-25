@@ -37,5 +37,5 @@ systems.
 - Extensions
   - [Subscribe](ExtensionsSubscribe.md) <!-- + -->
   - [Unsubscribe](ExtensionsUnsubscribe.md) <!-- + -->
-  - [SubscribeRange]()
+  - [SubscribeRange](ExtensionsSubscribeRange.md)
   - [UnsubscribeRange]()
