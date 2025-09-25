@@ -10,7 +10,7 @@ systems.
     - [ISignal&lt;T1, T2&gt;](ISignal%602.md) <!-- + -->
     - [ISignal&lt;T1, T2, T3&gt;](ISignal%603.md) <!-- + -->
     - [ISignal&lt;T1, T2, T3, T4&gt;](ISignal%604.md) <!-- + -->
-- [InlineSignals]()
+- [InlineSignals](InlineSignals.md) <!-- + -->
     - [InlineSignal]()
     - [InlineSignal&lt;T&gt;]()
     - [InlineSignal&lt;T1, T2&gt;]()
