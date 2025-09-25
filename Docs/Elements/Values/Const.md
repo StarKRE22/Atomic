@@ -20,6 +20,14 @@ public class Const<T> : IValue<T>
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter            | Description                                                             |
+|----------------------|-------------------------------------------------------------------------|
+| `value` | value of this constant |
+
+---
+
 ## 🏗️ Constructors
 
 #### `Const()`
