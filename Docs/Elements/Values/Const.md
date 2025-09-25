@@ -1,19 +1,22 @@
 # 🧩 Const&lt;T&gt;
 
-Represents a **serialized, immutable (read-only) constant value wrapper**. It implements [IValue&lt;T&gt;](IValue.md)
-and supports **implicit conversions**, making it useful in systems where values must be serialized or treated as data
-sources.
-
-> [!NOTE]
-> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
-> a [Flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern), for example, to share a constant value across
-> multiple systems without copying the value.
-
 ```csharp
+[Serializable]
 public class Const<T> : IValue<T>
 ```
 
+- **Description:** Represents a **serialized, immutable (read-only) constant value wrapper**.
+- **Inheritance:** [IValue&lt;T&gt;](IValue.md)
 - **Type Parameter:** `T` – The type of the wrapped constant value.
+- **Remarks:**
+    - Supports **implicit conversions** for convinience
+    - Supports Unity serialization
+    - Supports Odin Inspector
+
+> [!TIP]
+> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
+> a [Flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern), for example, to share a constant value across
+> multiple instances without copying the value.
 
 ---
 
