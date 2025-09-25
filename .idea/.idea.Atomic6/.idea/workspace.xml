@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,14 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-    </task>
-    <task id="LOCAL-00725" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758704890204</created>
-      <option name="number" value="00725" />
-      <option name="presentableId" value="LOCAL-00725" />
-      <option name="project" value="LOCAL" />
-      <updated>1758704890204</updated>
+      <workItem from="1758779433987" duration="432000" />
     </task>
     <task id="LOCAL-00726" summary="SceneActionDefault`1.md">
       <option name="closed" value="true" />
@@ -601,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758741264494</updated>
     </task>
-    <option name="localTasksCounter" value="774" />
+    <task id="LOCAL-00774" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1758779656077</created>
+      <option name="number" value="00774" />
+      <option name="presentableId" value="LOCAL-00774" />
+      <option name="project" value="LOCAL" />
+      <updated>1758779656078</updated>
+    </task>
+    <option name="localTasksCounter" value="775" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionReference`4.md" />
     <MESSAGE value="Оформил раздел Actions!" />
     <MESSAGE value="Сделал раздел для Actions" />
     <MESSAGE value="Начинаем работать с разделом Functions!" />
@@ -653,7 +656,8 @@
     <MESSAGE value="InlineSetter.md" />
     <MESSAGE value="Начинаем перепиливать раздел Requests.md" />
     <MESSAGE value="Сделал IRequests.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал IRequests.md" />
+    <MESSAGE value="IRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

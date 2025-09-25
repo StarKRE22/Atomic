@@ -40,7 +40,7 @@ public void Invoke(T arg);
 
 - **Description:** Executes the request.
 - **Parameter:** `arg` — the input parameter
-- **Note:** This method derived from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket)
+- **Note:** This method derived from `IAction<T>`
 
 #### `Consume(out T)`
 
