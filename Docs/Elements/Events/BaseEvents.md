@@ -1,22 +1,23 @@
-# 🧩 IEvents
+# 🧩 BaseEvents
 
-Define a family of contracts for **reactive events** that can be both **observed** and **invoked**.
-They combine the capabilities of [ISignal](ISignals.md) and [IAction](../Actions/IActions.md),
-allowing subscription-based reactive tracking and direct action-based invocation.
+Provide **parameterless and generic reactive events** that can be **subscribed to, invoked,
+and disposed**. They implement the corresponding [IEvent](IEvents.md) interfaces and allow both reactive tracking and
+action-based invocation.
 
-There are several interfaces of events, depending on the number of arguments they take:
+There are several implementations of events, depending on the number of arguments they take:
 
-- [IEvent](IEvent.md) — Event without parameters.
-- [IEvent&lt;T&gt;](IEvent%601.md) — Event that takes one argument.
-- [IEvent&lt;T1, T2&gt;](IEvent%602.md) — Event that takes two arguments.
-- [IEvent&lt;T1, T2, T3&gt;](IEvent%603.md) — Event that takes two arguments.
-- [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) — Event that takes two arguments.
+- [BaseEvent](BaseEvent.md) — Event without parameters.
+- [BaseEvent&lt;T&gt;](BaseEvent%601.md) — Event that takes one argument.
+- [BaseEvent&lt;T1, T2&gt;](BaseEvent%602.md) — Event that takes two arguments.
+- [BaseEvent&lt;T1, T2, T3&gt;](BaseEvent%603.md) — Event that takes two arguments.
+- [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) — Event that takes two arguments.
+
 
 ---
 
 ## 🗂 Example of Usage
 
-Below is an example of how to use `IEvent` for triggering a **sound effect** together with the `Atomic.Entities`
+Below is an example of how to use `BaseEvent` for triggering a **sound effect** together with the `Atomic.Entities`
 framework.
 ---
 
@@ -24,7 +25,7 @@ framework.
 
 ```csharp
 var entity = new Entity("Character");
-entity.AddValue("FireEvent", new BaseEvent()); //IEvent
+entity.AddValue("FireEvent", new BaseEvent());
 ```
 
 #### 2. Use `FireEvent` through the `ISignal` interface
@@ -38,7 +39,7 @@ public class FireSFXBehaviour : IEntityInit, IEntityDispose
 
     [Serializable]
     private AudioSource _audioSource;
-  
+    
     private ISignal _fireSignal; //IEvent
     
     public void Init(IEntity entity)

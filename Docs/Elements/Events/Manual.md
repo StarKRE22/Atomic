@@ -22,7 +22,7 @@ systems.
     - [IEvent&lt;T1, T2&gt;](IEvent%602.md) <!-- + -->
     - [IEvent&lt;T1, T2, T3&gt;](IEvent%603.md) <!-- + -->
     - [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) <!-- + -->
-- [BaseEvents]()
+- [BaseEvents](BaseEvents.md) <!-- + -->
     - [BaseEvent&lt;T&gt;]()
     - [BaseEvent&lt;T1, T2&gt;]()
     - [BaseEvent&lt;T1, T2, T3&gt;]()

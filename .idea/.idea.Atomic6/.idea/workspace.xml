@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,31 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="7980000" />
-    </task>
-    <task id="LOCAL-00756" summary="InlineFunction`1.md">
-      <option name="closed" value="true" />
-      <created>1758735648111</created>
-      <option name="number" value="00756" />
-      <option name="presentableId" value="LOCAL-00756" />
-      <option name="project" value="LOCAL" />
-      <updated>1758735648111</updated>
-    </task>
-    <task id="LOCAL-00757" summary="InlineFunction`2.md">
-      <option name="closed" value="true" />
-      <created>1758736654865</created>
-      <option name="number" value="00757" />
-      <option name="presentableId" value="LOCAL-00757" />
-      <option name="project" value="LOCAL" />
-      <updated>1758736654865</updated>
-    </task>
-    <task id="LOCAL-00758" summary="IPredicates.md">
-      <option name="closed" value="true" />
-      <created>1758737372336</created>
-      <option name="number" value="00758" />
-      <option name="presentableId" value="LOCAL-00758" />
-      <option name="project" value="LOCAL" />
-      <updated>1758737372336</updated>
+      <workItem from="1758779433987" duration="8346000" />
     </task>
     <task id="LOCAL-00759" summary="IPredicate.md">
       <option name="closed" value="true" />
@@ -605,7 +581,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758789061093</updated>
     </task>
-    <option name="localTasksCounter" value="805" />
+    <task id="LOCAL-00805" summary="IEvent`1.md">
+      <option name="closed" value="true" />
+      <created>1758789210727</created>
+      <option name="number" value="00805" />
+      <option name="presentableId" value="LOCAL-00805" />
+      <option name="project" value="LOCAL" />
+      <updated>1758789210727</updated>
+    </task>
+    <task id="LOCAL-00806" summary="IEvent`2.md">
+      <option name="closed" value="true" />
+      <created>1758789316110</created>
+      <option name="number" value="00806" />
+      <option name="presentableId" value="LOCAL-00806" />
+      <option name="project" value="LOCAL" />
+      <updated>1758789316110</updated>
+    </task>
+    <task id="LOCAL-00807" summary="IEvent`3.md">
+      <option name="closed" value="true" />
+      <created>1758789445711</created>
+      <option name="number" value="00807" />
+      <option name="presentableId" value="LOCAL-00807" />
+      <option name="project" value="LOCAL" />
+      <updated>1758789445711</updated>
+    </task>
+    <option name="localTasksCounter" value="808" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,9 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IRequest`1.md" />
-    <MESSAGE value="IRequest`2.md" />
-    <MESSAGE value="IRequest`3.md" />
     <MESSAGE value="IRequest`4.md" />
     <MESSAGE value="BaseRequests.md" />
     <MESSAGE value="BaseRequest.md" />
@@ -657,7 +654,10 @@
     <MESSAGE value="InlineSignal`4.md" />
     <MESSAGE value="IEvents.md" />
     <MESSAGE value="IEvent.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEvent.md" />
+    <MESSAGE value="IEvent`1.md" />
+    <MESSAGE value="IEvent`2.md" />
+    <MESSAGE value="IEvent`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEvent`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
