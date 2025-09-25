@@ -1,11 +1,4 @@
-
-<details>
-  <summary>
-    <h2>🧩 BaseEvent&lt;T1, T2, T3, T4&gt;</h2>
-    <br> Represents an event that emits <b>four parameters</b>.
-  </summary>
-
-<br>
+# 🧩 BaseEvent&lt;T1, T2, T3, T4&gt;
 
 ```csharp
 [Serializable]
@@ -13,6 +6,7 @@ public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
 ```
 
 - **Description:** Represents an event that emits **four parameters**.
+- **Inheritance:** [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md), `IDisposable`
 - **Type parameters:**
     - `T1` — The first argument
     - `T2` — The second argument
@@ -22,7 +16,7 @@ public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Subscribe(Action<T1, T2, T3, T4>)`
 
@@ -32,7 +26,7 @@ public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
 
 - **Description:** Subscribes a handler to the event.
 - **Parameter:** `action` – The delegate to invoke when the event triggers.
-- **Returns:** A [Subscription<T1, T2, T3, T4>](../Signals/Subscription.md#subscriptiont1-t2-t3-t4) representing the
+- **Returns:** A [subscription](Subscription%604.md) representing the
   active subscription.
 
 #### `Unsubscribe(Action<T1, T2, T3, T4>)`
@@ -64,5 +58,3 @@ public void Dispose()
 ```
 
 - **Description:** Clears all subscriptions for this event.
-
-</details>
