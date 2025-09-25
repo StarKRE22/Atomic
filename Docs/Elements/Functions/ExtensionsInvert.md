@@ -43,33 +43,31 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
 
 ---
 
-## Examples of Usage
+## 🗂 Examples of Usage
 
-- **Example of Usage:**
+#### `IFunction<bool>` (no parameters)
 
-  ```csharp
-  IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
-  IFunction<bool> isDead = isAlive.Invert();
+```csharp
+IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
+IFunction<bool> isDead = isAlive.Invert();
 
-  bool dead = isDead.Invoke(); // true if health <= 0
-  ````
+bool dead = isDead.Invoke(); // true if health <= 0
+```
 
-- **Example of Usage:**
+#### `IFunction<T, bool>` (with one parameter)
 
-  ```csharp
-  IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
-  IFunction<Character, bool> isAlly = isEnemy.Invert();
+```csharp
+IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
+IFunction<Character, bool> isAlly = isEnemy.Invert();
 
-  bool ally = isAlly.Invoke(otherCharacter); // true if same team
-  ````
+bool ally = isAlly.Invoke(otherCharacter); // true if same team
+```
 
----
+#### `IFunction<T1, T2, bool>` (with two parameters)
 
-- **Example of Usage:**
+```csharp
+IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>((a, b) => a.Team != b.Team);
+IFunction<Character, Character, bool> isAllyPair = isEnemyPair.Invert();
 
-  ```csharp
-  IFunction<Character, Character, bool> isEnemyPair = new InlineFunction<Character, Character, bool>((a, b) => a.Team != b.Team);
-  IFunction<Character, Character, bool> isAllyPair = isEnemyPair.Invert();
-
-  bool allies = isAllyPair.Invoke(player, teammate); // true if same team
-  ````
+bool allies = isAllyPair.Invoke(player, teammate); // true if same team
+```
