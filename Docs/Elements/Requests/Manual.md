@@ -16,7 +16,7 @@ active.
     - [BaseRequest&lt;T&gt;](BaseRequest%601.md) <!-- + -->
     - [BaseRequest&lt;T1, T2&gt;](BaseRequest%602.md) <!-- + -->
     - [BaseRequest&lt;T1, T2, T3&gt;](BaseRequest%603.md) <!-- + -->
-    - [BaseRequest&lt;T1, T2, T3, T4&gt;]()
+    - [BaseRequest&lt;T1, T2, T3, T4&gt;](BaseRequest%604.md) <!-- + -->
 
 ---
 

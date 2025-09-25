@@ -67,7 +67,7 @@ public bool Consume(out T1 arg1, out T2 arg2, out T3 arg3);
 ```
 
 - **Description:** Attempts to consume the request and retrieve all arguments.
-- **Output parameters:** `arg1`, `arg2`, `arg3` — the stored arguments.
+- **Output:** `arg1`, `arg2`, `arg3` — the stored arguments.
 - **Returns:** `true` if the request was required and is now consumed.
 
 #### `TryGet(out T1, out T2, out T3)`
@@ -77,5 +77,5 @@ public bool TryGet(out T1 arg1, out T2 arg2, out T3 arg3);
 ```
 
 - **Description:** Attempts to retrieve all arguments without consuming the request.
-- **Output parameters:** `arg1`, `arg2`, `arg3` — the stored arguments.
+- **Output:** `arg1`, `arg2`, `arg3` — the stored arguments.
 - **Returns:** `true` if the request is currently required.
