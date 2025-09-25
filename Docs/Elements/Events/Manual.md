@@ -6,7 +6,7 @@ systems.
 
 - [ISignals](ISignals.md) <!-- + -->
     - [ISignal](ISignal.md) <!-- + -->
-    - [ISignal&lt;T&gt;]()
+    - [ISignal&lt;T&gt;](ISignal%601.md) <!-- + -->
     - [ISignal&lt;T1, T2&gt;]()
     - [ISignal&lt;T1, T2, T3&gt;]()
     - [ISignal&lt;T1, T2, T3, T4&gt;]()
