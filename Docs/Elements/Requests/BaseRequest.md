@@ -1,21 +1,15 @@
-
----
-
-<details>
-  <summary>
-    <h2>🧩 BaseRequest</h2>
-    <br> Represents a <b>parameterless</b> request action.
-  </summary>
-
-<br>
+# 🧩 BaseRequest
 
 ```csharp
 public class BaseRequest : IRequest
 ```
 
+- **Description:** Represents a <b>parameterless</b> request action.
+- **Inheritance:** [IRequest](IRequest.md)
+
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Required`
 
@@ -27,7 +21,7 @@ public bool Required { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -45,20 +39,3 @@ public bool Consume();
 
 - **Description:** Attempts to consume the request.
 - **Returns:** `true` if successfully consumed; otherwise `false`.
-
-</details>
-
----
-
-
----
-
-
-
----
-
-
----
-
-
----
