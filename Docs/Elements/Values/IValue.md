@@ -1,17 +1,15 @@
 # 🧩 IValue&lt;T&gt;
 
-Represents a **read-only value provider interface**. It inherits
-from [IFunction&lt;R&gt;](../Functions/IFunction.md#ifunctionr) and exposes a strongly-typed `Value` property.
-
 ```csharp
 public interface IValue<out T> : IFunction<T>
 ```
-
-- **Type Parameters:** `T` – The type of the value being returned.
+- **Description:** Represents a **read-only value provider interface** and exposes a strongly-typed `Value` property.
+- **Inheritance:** [IFunction&lt;R&gt;](../Functions/IFunction.md) 
+- **Type Parameter:** `T` – The type of the value being returned.
 
 ---
 
-## 🔑 Properties
+# 🔑 Properties
 
 #### `Value`
 
@@ -24,7 +22,7 @@ public T Value { get; }
 
 ---
 
-## 🏹 Methods
+# 🏹 Methods
 
 #### `Invoke()`
 
@@ -34,11 +32,11 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt](../Functions/IFunction.md)
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 ExampleS of Usage
 
 `IValue<T>` can wrap any data source, for example:
 
@@ -146,4 +144,3 @@ public class UsageExample : MonoBehaviour
     }
 }
 ```
-
