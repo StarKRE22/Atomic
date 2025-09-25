@@ -1,7 +1,7 @@
 # 🧩 InlineSignal&lt;T1, T2, T3&gt;
 
 ```csharp
-public  class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
+public class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
 ```
 
 - **Description:** Represents a signal that notifies subscribers with **three values**.
