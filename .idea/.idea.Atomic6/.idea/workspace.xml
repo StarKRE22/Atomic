@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`3.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,23 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="5527000" />
-    </task>
-    <task id="LOCAL-00739" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1758708748276</created>
-      <option name="number" value="00739" />
-      <option name="presentableId" value="LOCAL-00739" />
-      <option name="project" value="LOCAL" />
-      <updated>1758708748276</updated>
-    </task>
-    <task id="LOCAL-00740" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1758708838473</created>
-      <option name="number" value="00740" />
-      <option name="presentableId" value="LOCAL-00740" />
-      <option name="project" value="LOCAL" />
-      <updated>1758708838473</updated>
+      <workItem from="1758779433987" duration="5928000" />
     </task>
     <task id="LOCAL-00741" summary="SceneActionReference`1.md">
       <option name="closed" value="true" />
@@ -609,7 +589,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758783399896</updated>
     </task>
-    <option name="localTasksCounter" value="788" />
+    <task id="LOCAL-00788" summary="ISignal.md">
+      <option name="closed" value="true" />
+      <created>1758786749539</created>
+      <option name="number" value="00788" />
+      <option name="presentableId" value="LOCAL-00788" />
+      <option name="project" value="LOCAL" />
+      <updated>1758786749539</updated>
+    </task>
+    <task id="LOCAL-00789" summary="ISignal`1.md">
+      <option name="closed" value="true" />
+      <created>1758786951753</created>
+      <option name="number" value="00789" />
+      <option name="presentableId" value="LOCAL-00789" />
+      <option name="project" value="LOCAL" />
+      <updated>1758786951753</updated>
+    </task>
+    <option name="localTasksCounter" value="790" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,8 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPredicate.md" />
-    <MESSAGE value="IPredicate`1.md" />
     <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="InlinePredicates.md" />
     <MESSAGE value="InlinePredicate.md" />
@@ -661,7 +655,9 @@
     <MESSAGE value="BaseRequest`4.md" />
     <MESSAGE value="Сделал Manual для Signals" />
     <MESSAGE value="Сделал ISignals.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал ISignals.md" />
+    <MESSAGE value="ISignal.md" />
+    <MESSAGE value="ISignal`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ISignal`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
