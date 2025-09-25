@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,47 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="13442000" />
-    </task>
-    <task id="LOCAL-00784" summary="BaseRequest`3.md">
-      <option name="closed" value="true" />
-      <created>1758781942542</created>
-      <option name="number" value="00784" />
-      <option name="presentableId" value="LOCAL-00784" />
-      <option name="project" value="LOCAL" />
-      <updated>1758781942542</updated>
-    </task>
-    <task id="LOCAL-00785" summary="BaseRequest`4.md">
-      <option name="closed" value="true" />
-      <created>1758782058342</created>
-      <option name="number" value="00785" />
-      <option name="presentableId" value="LOCAL-00785" />
-      <option name="project" value="LOCAL" />
-      <updated>1758782058342</updated>
-    </task>
-    <task id="LOCAL-00786" summary="Сделал Manual для Signals">
-      <option name="closed" value="true" />
-      <created>1758782978532</created>
-      <option name="number" value="00786" />
-      <option name="presentableId" value="LOCAL-00786" />
-      <option name="project" value="LOCAL" />
-      <updated>1758782978532</updated>
-    </task>
-    <task id="LOCAL-00787" summary="Сделал ISignals.md">
-      <option name="closed" value="true" />
-      <created>1758783399896</created>
-      <option name="number" value="00787" />
-      <option name="presentableId" value="LOCAL-00787" />
-      <option name="project" value="LOCAL" />
-      <updated>1758783399896</updated>
-    </task>
-    <task id="LOCAL-00788" summary="ISignal.md">
-      <option name="closed" value="true" />
-      <created>1758786749539</created>
-      <option name="number" value="00788" />
-      <option name="presentableId" value="LOCAL-00788" />
-      <option name="project" value="LOCAL" />
-      <updated>1758786749539</updated>
+      <workItem from="1758779433987" duration="14563000" />
     </task>
     <task id="LOCAL-00789" summary="ISignal`1.md">
       <option name="closed" value="true" />
@@ -605,7 +565,47 @@
       <option name="project" value="LOCAL" />
       <updated>1758794534371</updated>
     </task>
-    <option name="localTasksCounter" value="833" />
+    <task id="LOCAL-00833" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794692554</created>
+      <option name="number" value="00833" />
+      <option name="presentableId" value="LOCAL-00833" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794692554</updated>
+    </task>
+    <task id="LOCAL-00834" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1758794714011</created>
+      <option name="number" value="00834" />
+      <option name="presentableId" value="LOCAL-00834" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794714011</updated>
+    </task>
+    <task id="LOCAL-00835" summary="ExtensionsInvert.md">
+      <option name="closed" value="true" />
+      <created>1758794861351</created>
+      <option name="number" value="00835" />
+      <option name="presentableId" value="LOCAL-00835" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794861351</updated>
+    </task>
+    <task id="LOCAL-00836" summary="ExtensionsCollections.md">
+      <option name="closed" value="true" />
+      <created>1758794927429</created>
+      <option name="number" value="00836" />
+      <option name="presentableId" value="LOCAL-00836" />
+      <option name="project" value="LOCAL" />
+      <updated>1758794927429</updated>
+    </task>
+    <task id="LOCAL-00837" summary="ExtensionsSubscribe.md">
+      <option name="closed" value="true" />
+      <created>1758795143945</created>
+      <option name="number" value="00837" />
+      <option name="presentableId" value="LOCAL-00837" />
+      <option name="project" value="LOCAL" />
+      <updated>1758795143945</updated>
+    </task>
+    <option name="localTasksCounter" value="838" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineSignal`1.md" />
-    <MESSAGE value="InlineSignal`2.md" />
     <MESSAGE value="InlineSignal`3.md" />
     <MESSAGE value="InlineSignal`4.md" />
     <MESSAGE value="IEvents.md" />
@@ -654,10 +652,12 @@
     <MESSAGE value="Subscription`2.md" />
     <MESSAGE value="Subscription`3.md" />
     <MESSAGE value="Subscription`4.md" />
-    <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsInvokeRange.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsInvokeRange.md" />
+    <MESSAGE value="ExtensionsInvert.md" />
+    <MESSAGE value="ExtensionsCollections.md" />
+    <MESSAGE value="ExtensionsSubscribe.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsSubscribe.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

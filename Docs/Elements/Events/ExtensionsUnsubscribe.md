@@ -5,6 +5,8 @@ sources.
 
 ---
 
+## 🏹 Methods
+
 #### `Unsubscribe(ISignal, IAction)`
 
 ```csharp
@@ -15,18 +17,6 @@ public static void Unsubscribe(this ISignal it, IAction action)
 - **Parameters:**
     - `it` – The signal source.
     - `action` – The action to unsubscribe.
-- **Example of Usage:**
-
-  ```csharp
-  ISignal fireSignal = ...;
-  var action = new InlineAction(() => Debug.Log("OnFire"));
-  fireSignal.Subscribe(action);
-  
-  //Later, unsubscribe
-  fireSignal.Unsubscribe(action);
-  ```
-
----
 
 #### `Unsubscribe<T>(ISignal<T>, IAction<T>)`
 
@@ -39,18 +29,6 @@ public static void Unsubscribe<T>(this ISignal<T> it, IAction<T> action)
 - **Parameters:**
     - `it` – The signal source.
     - `action` – The action to unsubscribe.
-- **Example of Usage:**
-
-  ```csharp
-  ISignal<IEntity> pickUpSignal = ...;
-  var action = new InlineAction<IEntity>(entity => Debug.Log($"PickUp {entity.Name}"));
-  pickUpSignal.Subscribe(action);
-  
-  //Later, unsubscribe
-  pickUpSignal.Unsubscribe(action);
-  ```
-
----
 
 #### `Unsubscribe<T1, T2>(ISignal<T1,T2>, IAction<T1,T2>)`
 
@@ -65,24 +43,14 @@ public static void Unsubscribe<T1, T2>(this ISignal<T1, T2> it, IAction<T1, T2> 
 - **Parameters:**
     - `it` – The signal source.
     - `action` – The action to unsubscribe.
-- **Example of Usage:**
-
-  ```csharp
-  ISignal<IEntity, int> hitSignal = ...;
-  var action = new InlineAction<IEntity, int>((entity, damage) =>
-        Debug.Log($"{entity.Name} received {damage} damage"));
-  hitSignal.Subscribe(action);
-  
-  //Later, unsubscribe
-  hitSignal.Unsubscribe(action);
-  ```
-
----
 
 #### `Unsubscribe<T1,T2,T3>(ISignal<T1,T2,T3>, IAction<T1,T2,T3>)`
 
 ```csharp
-public static void Unsubscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<T1, T2, T3> action)
+public static void Unsubscribe<T1, T2, T3>(
+    this ISignal<T1, T2, T3> it,
+    IAction<T1, T2, T3> action
+)
 ```
 
 - **Description:** Unsubscribes a three-argument action from a signal.
@@ -93,19 +61,6 @@ public static void Unsubscribe<T1, T2, T3>(this ISignal<T1, T2, T3> it, IAction<
 - **Parameters:**
     - `it` – The signal source.
     - `action` – The action to unsubscribe.
-- **Example of Usage:**
-
-  ```csharp
-  ISignal<IEntity, int, bool> attackSignal = ...;
-  var action = new InlineAction<IEntity, int, bool>((entity, damage, critical) =>
-        Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})"));
-  attackSignal.Subscribe(action);
-  
-  //Later, unsubscribe
-  attackSignal.Unsubscribe(action);
-  ```
-
----
 
 #### `Unsubscribe<T1,T2,T3,T4>(ISignal<T1,T2,T3,T4>, IAction<T1,T2,T3,T4>)`
 
@@ -125,14 +80,66 @@ public static void Unsubscribe<T1, T2, T3, T4>(
 - **Parameters:**
     - `it` – The signal source.
     - `action` – The action to unsubscribe.
-- **Example of Usage:**
 
-  ```csharp
-  ISignal<IEntity, int, bool, Vector3> shootSignal = ...;
-  var action = new InlineAction<IEntity, int, bool, Vector3>((entity, ammo, success, position) =>
-        Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}"));
-  shootSignal.Subscribe(action);
-  
-  //Later, unsubscribe
-  shootSignal.Unsubscribe(action);
-  ```
+---
+
+## 🗂 Examples of Usage
+
+#### `ISignal` (no parameters)
+
+```csharp
+ISignal fireSignal = ...;
+var action = new InlineAction(() => Debug.Log("OnFire"));
+fireSignal.Subscribe(action);
+
+// Later, unsubscribe
+fireSignal.Unsubscribe(action);
+```
+
+#### `ISignal<T>` (with one parameter)
+
+```csharp
+ISignal<IEntity> pickUpSignal = ...;
+var action = new InlineAction<IEntity>(entity => Debug.Log($"PickUp {entity.Name}"));
+pickUpSignal.Subscribe(action);
+
+// Later, unsubscribe
+pickUpSignal.Unsubscribe(action);
+```
+
+#### `ISignal<T1, T2>` (with two parameters)
+
+```csharp
+ISignal<IEntity, int> hitSignal = ...;
+var action = new InlineAction<IEntity, int>((entity, damage) =>
+    Debug.Log($"{entity.Name} received {damage} damage"));
+
+hitSignal.Subscribe(action);
+
+// Later, unsubscribe
+hitSignal.Unsubscribe(action);
+```
+
+#### `ISignal<T1, T2, T3>` (with three parameters)
+
+```csharp
+ISignal<IEntity, int, bool> attackSignal = ...;
+var action = new InlineAction<IEntity, int, bool>((entity, damage, critical) =>
+Debug.Log($"{entity.Name} dealt {damage} damage (Critical: {critical})"));
+attackSignal.Subscribe(action);
+
+// Later, unsubscribe
+attackSignal.Unsubscribe(action);
+```
+
+#### `ISignal<T1, T2, T3, T4>` (with four parameters)
+
+```csharp
+ISignal<IEntity, int, bool, Vector3> shootSignal = ...;
+var action = new InlineAction<IEntity, int, bool, Vector3>((entity, ammo, success, position) =>
+Debug.Log($"{entity.Name} fired {ammo} bullets (Success: {success}) at {position}"));
+shootSignal.Subscribe(action);
+
+// Later, unsubscribe
+shootSignal.Unsubscribe(action);
+```
