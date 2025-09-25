@@ -36,8 +36,8 @@ covers tools for **reactive programming, event handling, Unity integration, and 
 section as a guide for integrating `Atomic.Elements` into your Unity or C# projects, taking advantage of **reactive
 patterns, composable structures, and modular design**.
 
-- [Values](#-values)
-- [Variables](#-variables)
+- [Values](Values/Manual.md)  <!-- + -->
+- [Variables](Variables/Manual.md) <!-- + -->
 - [Actions](Actions/Manual.md) <!-- + -->
 - [Functions](Functions/Manual.md) <!-- + -->
 - [Setters](Setters/Manual.md) <!-- + -->
@@ -48,51 +48,11 @@ patterns, composable structures, and modular design**.
 - [Expressions](#-expressions)
 - [Utilities](#-utilities)
 
-### 🧩 Values
-
-Provides a set of interfaces and classes for working with **reactive values and constants**. It allows developers to
-handle both immutable constants and dynamic, reactive data in a consistent way. This is particularly useful in scenarios
-where values need to be observed or updated in real-time, such as game development, UI bindings, or simulation systems.
-
-- [IValue](Values/IValue.md)
-- [IReactiveValue](Values/IReactiveValue.md)
-- [Const](Values/Const.md)
-- [ScriptableConst](Values/ScriptableConst.md)
-- [DefaultConstants](Values/DefaultConstants.md)
-- [Extensions](Values/Extensions.md)
-
-### 🧩 Variables
-
-Provides a set of interfaces and classes for working with **reactive variables, proxy variables, and Unity-specific
-variable types**. It builds on the concept of reactive values but adds more flexibility by allowing variables to act as
-intermediaries or proxies, which can observe, modify, or synchronize underlying data.
-
-- [IVariable](Variables/IVariable.md)
-- [BaseVariable](Variables/BaseVariable.md)
-- [IReactiveVariable](Variables/IReactiveVariable.md)
-- [ReactiveVariable](Variables/ReactiveVariable.md)
-- [ProxyVariable](Variables/ProxyVariable.md)
-- [ReactiveProxyVariable](Variables/ReactiveProxyVariable.md)
-- [Extensions](Variables/Extensions.md)
 
 
 
 
-### 🧩 Expressions
 
-Represents **expressions composed of function members** that can be dynamically added, removed, and evaluated. It
-supports both parameterless functions and functions with one or more parameters, enabling flexible and reusable logic
-composition.
-
-- [IExpression](Expressions/IExpression.md)
-- [ExpressionBase](Expressions/ExpressionBase.md)
-- [AndExpression](Expressions/AndExpression.md)
-- [OrExpression](Expressions/OrExpression.md)
-- [IntMulExpression](Expressions/IntMulExpression.md)
-- [IntSumExpression](Expressions/IntSumExpression.md)
-- [FloatMulExpression](Expressions/FloatMulExpression.md)
-- [FloatSumExpression](Expressions/FloatSumExpression.md)
-- [InlineExpression](Expressions/InlineExpression.md)
 
 ### 🧩 Collections
 
