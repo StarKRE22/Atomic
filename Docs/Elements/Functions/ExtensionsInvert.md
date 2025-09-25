@@ -1,9 +1,11 @@
-# 🧩 Invert Function Extensions
+# 🧩 Invert Extensions
 
 Provide utility methods those create a new function that represents the **logical negation** of an existing
 boolean-returning [function](IFunctions.md).
 
 ---
+
+## 🏹 Methods
 
 #### `Invert(IFunction<bool>)`
 
@@ -14,16 +16,6 @@ public static InlineFunction<bool> Invert(this IFunction<bool> it)
 - **Description:** Creates a new function that returns the **negation** of the current boolean value.
 - **Parameter:** `it` – The reactive boolean function to negate.
 - **Returns:** A new `InlineFunction<bool>` that returns the opposite of the original function’s result.
-- **Example of Usage:**
-
-  ```csharp
-  IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
-  IFunction<bool> isDead = isAlive.Invert();
-
-  bool dead = isDead.Invoke(); // true if health <= 0
-  ````
-
----
 
 #### `Invert<T>(IFunction<T, bool>)`
 
@@ -35,16 +27,6 @@ public static InlineFunction<T, bool> Invert<T>(this IFunction<T, bool> it)
 - **Type Parameter:** `T` – The input parameter type.
 - **Parameter:** `it` – The predicate function to negate.
 - **Returns:** A new `InlineFunction<T, bool>` that returns the opposite of the original function’s result.
-- **Example of Usage:**
-
-  ```csharp
-  IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
-  IFunction<Character, bool> isAlly = isEnemy.Invert();
-
-  bool ally = isAlly.Invoke(otherCharacter); // true if same team
-  ````
-
----
 
 #### `Invert<T1, T2>(IFunction<T1, T2, bool>)`
 
@@ -58,6 +40,31 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
     - `T2` – The second input parameter type.
 - **Parameter:** `it` – The predicate function to negate.
 - **Returns:** A new `InlineFunction<T1, T2, bool>` that returns the opposite of the original function’s result.
+
+---
+
+## Examples of Usage
+
+- **Example of Usage:**
+
+  ```csharp
+  IFunction<bool> isAlive = new InlineFunction<bool>(() => health > 0);
+  IFunction<bool> isDead = isAlive.Invert();
+
+  bool dead = isDead.Invoke(); // true if health <= 0
+  ````
+
+- **Example of Usage:**
+
+  ```csharp
+  IFunction<Character, bool> isEnemy = new InlineFunction<Character, bool>(c => c.Team != player.Team);
+  IFunction<Character, bool> isAlly = isEnemy.Invert();
+
+  bool ally = isAlly.Invoke(otherCharacter); // true if same team
+  ````
+
+---
+
 - **Example of Usage:**
 
   ```csharp
@@ -66,5 +73,3 @@ public static InlineFunction<T1, T2, bool> Invert<T1, T2>(this IFunction<T1, T2,
 
   bool allies = isAllyPair.Invoke(player, teammate); // true if same team
   ````
-
----
