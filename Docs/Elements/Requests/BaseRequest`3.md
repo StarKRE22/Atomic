@@ -10,6 +10,7 @@ public class BaseRequest<T1, T2, T3> : IRequest<T1, T2, T3>
     - `T1` — first argument
     - `T2` — second argument
     - `T3` — third argument
+- **Note:** Supports Odin Inspector
 
 ---
 

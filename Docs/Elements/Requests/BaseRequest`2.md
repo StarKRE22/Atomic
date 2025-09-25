@@ -9,6 +9,7 @@ public class BaseRequest<T1, T2> : IRequest<T1, T2>
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
+- **Note:** Supports Odin Inspector
 
 ---
 

@@ -6,6 +6,7 @@ public class BaseRequest : IRequest
 
 - **Description:** Represents a <b>parameterless</b> request action.
 - **Inheritance:** [IRequest](IRequest.md)
+- **Note:** Supports Odin Inspector
 
 ---
 

@@ -4,6 +4,7 @@
     <h2>🧩 InlineSignal&lt;T&gt;</h2>
     <br> Represents a signal that notifies subscribers with a <b>single value</b>.
   </summary>
+- **Inheritance:** [IFunction&lt;R&gt;](IFunction.md), [IValue&lt;T&gt;](../Values/IValue.md)
 
 ```csharp
 public class InlineSignal<T> : ISignal<T>
