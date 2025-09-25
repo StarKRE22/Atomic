@@ -30,7 +30,7 @@ systems.
     - [BaseEvent&lt;T1, T2, T3, T4&gt;](BaseEvent%604.md) <!-- + -->
 - [Subscriptions](Subscriptions.md) <!-- + -->
     - [Subscription](Subscription.md) <!-- + -->
-    - [Subscription&lt;T&gt;]()
+    - [Subscription&lt;T&gt;](Subscription%601.md) <!-- + -->
     - [Subscription&lt;T1, T2&gt;]()
     - [Subscription&lt;T1, T2, T3&gt;]()
     - [Subscription&lt;T1, T2, T3, T4&gt;]()

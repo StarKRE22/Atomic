@@ -1,21 +1,16 @@
-
-<details>
-  <summary>
-    <h2 id="subscriptiont">🧩 Subscription&lt;T&gt;</h2>
-    <br> Represents a subscription to a <b>signal emitting one value</b>.
-  </summary>
-
-<br>
+# 🧩 Subscription&lt;T&gt;
 
 ```csharp
 public readonly struct Subscription<T> : IDisposable
 ```
 
+- **Description:** Represents a subscription to a <b>signal emitting one value</b>.
 - **Type parameter:** `T` — The type of the emitted value.
+- **Inheritance:** `IDisposable`
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `Subscription(ISignal<T>, Action<T>)`
 
@@ -30,7 +25,7 @@ public Subscription(ISignal<T> signal, Action<T> action)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Dispose()`
 
@@ -42,7 +37,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 //Assume we have a instance of ISignal
@@ -54,5 +49,3 @@ Subscription<T> subscription = signal.Subscribe<T>(lambda);
 // Later, dispose to unsubscribe
 subscription.Dispose();
 ```
-
-</details>
