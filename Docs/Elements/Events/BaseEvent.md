@@ -1,11 +1,13 @@
 # 🧩 BaseEvent
 
 ```csharp
+[Serializable]
 public class BaseEvent : IEvent, IDisposable
 ```
 
 - **Description:** Represents a <b>parameterless event</b> that can be subscribed to and invoked.
 - **Inheritance:** [IEvent](IEvent.md), `IDisposable`
+- **Note:** Supports Unity serialization and Odin Inspector
 
 ---
 

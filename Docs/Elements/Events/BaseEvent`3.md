@@ -8,6 +8,7 @@
 <br>
 
 ```csharp
+[Serializable]
 public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
 ```
 
@@ -15,6 +16,7 @@ public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
     - `T1` — The first argument
     - `T2` — The second argument
     - `T3` — The third argument
+- **Note:** Supports Unity serialization and Odin Inspector
 
 ---
 

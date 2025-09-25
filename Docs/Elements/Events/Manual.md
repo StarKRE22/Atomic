@@ -24,7 +24,7 @@ systems.
     - [IEvent&lt;T1, T2, T3, T4&gt;](IEvent%604.md) <!-- + -->
 - [BaseEvents](BaseEvents.md) <!-- + -->
     - [BaseEvent&lt;T&gt;](BaseEvent.md) <!-- + -->
-    - [BaseEvent&lt;T1, T2&gt;]()
+    - [BaseEvent&lt;T1, T2&gt;](BaseEvent%601.md) <!-- + -->
     - [BaseEvent&lt;T1, T2, T3&gt;]()
     - [BaseEvent&lt;T1, T2, T3, T4&gt;]()
 - [Subscriptions]()
