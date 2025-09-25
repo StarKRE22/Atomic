@@ -5,7 +5,7 @@ and trigger events in a decoupled and reactive manner, making it ideal for event
 systems.
 
 - [ISignals](ISignals.md) <!-- + -->
-    - [ISignal]()
+    - [ISignal](ISignal.md) <!-- + -->
     - [ISignal&lt;T&gt;]()
     - [ISignal&lt;T1, T2&gt;]()
     - [ISignal&lt;T1, T2, T3&gt;]()
