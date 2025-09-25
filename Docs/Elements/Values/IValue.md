@@ -32,11 +32,11 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt](../Functions/IFunction.md)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
 ---
 
-## 🗂 ExampleS of Usage
+## 🗂 Examples of Usage
 
 `IValue<T>` can wrap any data source, for example:
 
