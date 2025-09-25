@@ -14,11 +14,13 @@ public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
 > Using `ScriptableConst<T>` allows you to change the value in the editor and automatically propagate it to all objects
 > that reference it, without changing any code.
 
+---
+
 ## 🛠 Inspector Settings
 
 | Parameter            | Description                                                             |
 |----------------------|-------------------------------------------------------------------------|
-| `value` | Constant value |
+| `value` | value of this constant |
 
 ---
 
