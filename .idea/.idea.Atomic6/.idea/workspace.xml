@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,39 +211,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="24082000" />
-    </task>
-    <task id="LOCAL-00813" summary="BaseEvent`2.md">
-      <option name="closed" value="true" />
-      <created>1758790643612</created>
-      <option name="number" value="00813" />
-      <option name="presentableId" value="LOCAL-00813" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790643612</updated>
-    </task>
-    <task id="LOCAL-00814" summary="BaseEvent`3.md">
-      <option name="closed" value="true" />
-      <created>1758790814731</created>
-      <option name="number" value="00814" />
-      <option name="presentableId" value="LOCAL-00814" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790814731</updated>
-    </task>
-    <task id="LOCAL-00815" summary="BaseEvent`4.md">
-      <option name="closed" value="true" />
-      <created>1758790919234</created>
-      <option name="number" value="00815" />
-      <option name="presentableId" value="LOCAL-00815" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790919234</updated>
-    </task>
-    <task id="LOCAL-00816" summary="Subscriptions.md">
-      <option name="closed" value="true" />
-      <created>1758791236039</created>
-      <option name="number" value="00816" />
-      <option name="presentableId" value="LOCAL-00816" />
-      <option name="project" value="LOCAL" />
-      <updated>1758791236039</updated>
+      <workItem from="1758779433987" duration="24393000" />
     </task>
     <task id="LOCAL-00817" summary="Subscriptions.md">
       <option name="closed" value="true" />
@@ -606,7 +573,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758878143310</updated>
     </task>
-    <option name="localTasksCounter" value="862" />
+    <task id="LOCAL-00862" summary="ITickSource.md">
+      <option name="closed" value="true" />
+      <created>1758878776956</created>
+      <option name="number" value="00862" />
+      <option name="presentableId" value="LOCAL-00862" />
+      <option name="project" value="LOCAL" />
+      <updated>1758878776956</updated>
+    </task>
+    <task id="LOCAL-00863" summary="IStartSource.md">
+      <option name="closed" value="true" />
+      <created>1758878866640</created>
+      <option name="number" value="00863" />
+      <option name="presentableId" value="LOCAL-00863" />
+      <option name="project" value="LOCAL" />
+      <updated>1758878866640</updated>
+    </task>
+    <task id="LOCAL-00864" summary="IPauseSource.md">
+      <option name="closed" value="true" />
+      <created>1758878986875</created>
+      <option name="number" value="00864" />
+      <option name="presentableId" value="LOCAL-00864" />
+      <option name="project" value="LOCAL" />
+      <updated>1758878986875</updated>
+    </task>
+    <task id="LOCAL-00865" summary="IStartSource.md">
+      <option name="closed" value="true" />
+      <created>1758879014446</created>
+      <option name="number" value="00865" />
+      <option name="presentableId" value="LOCAL-00865" />
+      <option name="project" value="LOCAL" />
+      <updated>1758879014446</updated>
+    </task>
+    <option name="localTasksCounter" value="866" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,9 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Subscriptions.md" />
-    <MESSAGE value="Subscription.md" />
-    <MESSAGE value="Subscription`1.md" />
     <MESSAGE value="Subscription`2.md" />
     <MESSAGE value="Subscription`3.md" />
     <MESSAGE value="Subscription`4.md" />
@@ -658,7 +654,10 @@
     <MESSAGE value="Sources.md" />
     <MESSAGE value="ITimeSource.md" />
     <MESSAGE value="IDurationSource.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IDurationSource.md" />
+    <MESSAGE value="ITickSource.md" />
+    <MESSAGE value="IPauseSource.md" />
+    <MESSAGE value="IStartSource.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IStartSource.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

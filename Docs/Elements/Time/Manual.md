@@ -12,8 +12,8 @@ variable intervals, as well as reactive notifications for state changes.
     - [IDurationSource](IDurationSource.md) <!-- + -->
     - [ITickSource](ITickSource.md) <!-- + -->
     - [IStartSource](IStartSource.md) <!-- + -->
-    - [IPauseSource](IPauseSource.md)
-    - [ICompleteSource]()
+    - [IPauseSource](IPauseSource.md) <!-- + -->
+    - [ICompleteSource](ICompleteSource.md) <!-- + -->
     - [IProgressSource]()
     - [IStateSource&lt;T&gt;]()
 - [Cooldowns]()

@@ -1,19 +1,14 @@
-
-<details>
-  <summary>
-    <h2 id="icompletesource">🧩 ICompleteSource</h2>
-    <br> Represents a source that <b>can complete and notify listeners</b>.
-  </summary>
-
-<br>
+# 🧩 ICompleteSource
 
 ```csharp
 public interface ICompleteSource
 ```
 
+- **Description:** Represents a source that <b>can complete and notify listeners</b>.
+
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnCompleted`
 
@@ -25,7 +20,7 @@ public event Action OnCompleted;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `IsCompleted()`
 
@@ -35,5 +30,3 @@ public bool IsCompleted();
 
 - **Description:** Returns whether the source has completed.
 - **Returns:** `true` if completed; otherwise `false`.
-
-</details>
