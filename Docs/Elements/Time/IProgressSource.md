@@ -1,19 +1,14 @@
-
-<details>
-  <summary>
-    <h2 id="iprogresssource">🧩 IProgressSource</h2>
-    <br> Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
-  </summary>
-
-<br>
+# 🧩 IProgressSource
 
 ```csharp
 public interface IProgressSource
 ```
 
+- **Description:**  Represents a source that <b>tracks progress (0–1) and notifies listeners</b>.
+
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnProgressChanged`
 
@@ -25,7 +20,7 @@ public event Action<float> OnProgressChanged;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `GetProgress()`
 
@@ -44,5 +39,3 @@ public void SetProgress(float progress);
 
 - **Description:** Sets the current progress.
 - **Parameter:** `progress` — Progress value (0–1).
-
-</details>
