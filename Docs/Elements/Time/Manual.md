@@ -33,7 +33,7 @@ variable intervals, as well as reactive notifications for state changes.
     - [IPeriod](IPeriod.md) <!-- + -->
     - [Period](Period.md) <!-- + -->
     - [PeriodState](PeriodState.md) <!-- + -->
-- [Timestamps]()
+- [Timestamps](Timestamps.md) <!-- + -->
     - [ITimestamp](ITimestamp.md)
     - [FixedTimestamp](FixedTimestamp.md)
 - [Extensions](Extensions.md)
