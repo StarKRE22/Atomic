@@ -5,8 +5,6 @@ Represents the current state of a timer. It is used by
 
 ---
 
-## 🔢 Enum
-
 #### `IDLE`
 
 - **Description:** The timer is not running and has not been started.

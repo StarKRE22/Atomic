@@ -1,13 +1,17 @@
 # 🧩 DownTimer
 
-Represents a **countdown timer** that tracks duration, remaining time, progress, and state. It implements
-the [ITimer](ITimer.md) interface and provides full control over **start, pause, resume, stop**, progress updates, and
-state notifications. Use `DownTimer` when you need a stateful timer that counts down and broadcasts progress and state
-changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md).
-
 ```csharp
+[Serializable]
 public class DownTimer : ITimer
 ```
+
+- **Description:** Represents a **countdown timer** that tracks duration, remaining time, progress, and state.
+  It provides full control over **start, pause, resume, stop**, progress updates, and state notifications.
+- **Inheritance:** [ITimer](ITimer.md)
+
+> [!TIP]
+> Use `DownTimer` when you need a stateful timer that counts down and broadcasts progress and state
+> changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md).
 
 ---
 
@@ -128,7 +132,7 @@ public TimerState State { get; }
 ```
 
 - **Description:** Gets the current state of the countdown.
-- **Remarks:** Read-only property reflecting the [timer state](TimerState.md).
+- **Remarks:** Read-only property reflecting the [TimerState](TimerState.md).
 
 #### `Duration`
 
@@ -328,11 +332,6 @@ public static implicit operator DownTimer(float duration);
 - **Description:** Implicitly converts a `float` value to a `DownTimer` instance.
 - **Parameters:** `duration` — duration in seconds for the new countdown.
 - **Returns:** A new `DownTimer` initialized with the specified duration.
-- **Example:**
-
-  ```csharp
-  DownTimer timer = 5f; // creates a DownTimer with duration = 5 seconds
-  ```
 
 #### `operator DownTimer(int)`
 
@@ -343,18 +342,13 @@ public static implicit operator DownTimer(int duration);
 - **Description:** Implicitly converts an `int` value to a `DownTimer` instance.
 - **Parameters:** `duration` — duration in seconds for the new countdown.
 - **Returns:** A new `DownTimer` initialized with the specified duration.
-- **Example:**
-
-  ```csharp
-  DownTimer timer = 3; // creates a DownTimer with duration = 3 seconds
-  ```
 
 ---
 
 ## 🗂 Example of Usage
 
 ```csharp
-ITimer timer = new DownTimer(30f);
+DownTimer timer = 30;
 
 // Subscribe to events
 timer.OnStarted += () => Console.WriteLine("Countdown started!");
