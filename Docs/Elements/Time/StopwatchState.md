@@ -4,8 +4,6 @@ Represents the **current state of a stopwatch**. It is used by [IStopwatch](ISto
 
 ---
 
-## 🔢 Enum
-
 #### `IDLE`
 - **Description:** The stopwatch has not been started yet.
 - **Usage:** Returned by `IStopwatch.GetState()` before `Start()` is called.

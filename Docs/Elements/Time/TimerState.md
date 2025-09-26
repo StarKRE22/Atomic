@@ -1,7 +1,12 @@
 # 🧩 TimerState
 
-Represents the current state of a timer. It is used by
-[ITimer](ITimer.md), [DownTimer](DownTimer.md) and [UpTimer](UpTimer.md) to track the lifecycle of a timer and respond to state changes.
+```csharp
+public enum TimerState
+```
+
+- **Description** Represents the current state of a timer.
+- **Note:** It is used by [ITimer](ITimer.md), [DownTimer](DownTimer.md) and [UpTimer](UpTimer.md) to track the
+  lifecycle of a timer and respond to state changes.
 
 ---
 

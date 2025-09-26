@@ -8,6 +8,9 @@ public class DownTimer : ITimer
 - **Description:** Represents a **countdown timer** that tracks duration, remaining time, progress, and state.
   It provides full control over **start, pause, resume, stop**, progress updates, and state notifications.
 - **Inheritance:** [ITimer](ITimer.md)
+- **Notes:**
+  - [TimerState](TimerState.md) represents current state of the timer
+  - Supports Unity serialization and Odin Inspector
 
 > [!TIP]
 > Use `DownTimer` when you need a stateful timer that counts down and broadcasts progress and state

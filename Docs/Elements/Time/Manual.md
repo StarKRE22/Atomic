@@ -22,9 +22,9 @@ variable intervals, as well as reactive notifications for state changes.
     - [RandomCooldown](RandomCooldown.md) <!-- + -->
 - [Timers](Timers.md) <!-- + -->
     - [ITimer](ITimer.md) <!-- + -->
-    - [UpTimer](UpTimer.md)
-    - [DownTimer](DownTimer.md)
-    - [TimerState](TimerState.md)
+    - [UpTimer](UpTimer.md) <!-- + -->
+    - [DownTimer](DownTimer.md) <!-- + -->
+    - [TimerState](TimerState.md) <!-- + -->
 - [Stopwatches]()
     - [IStopwatch](IStopwatch.md)
     - [Stopwatch](Stopwatch.md)
