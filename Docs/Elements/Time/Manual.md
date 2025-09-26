@@ -7,7 +7,7 @@ mechanics, scheduling, and periodic updates.
 The module supports flexible time representations, including fixed and
 variable intervals, as well as reactive notifications for state changes.
 
-- [Time Contracts](TimeContracts.md)
+- [Source Contracts](Sources.md) <!-- + -->
     - [ITimeSource]() 
     - [IDurationSource]()
     - [ITickSource]()
