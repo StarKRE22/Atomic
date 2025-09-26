@@ -19,6 +19,8 @@ public interface ITimer :
   [ICompleteSource](ICompleteSource.md), [IStateSource](IStateSource.md), [ITimeSource](ITimeSource.md),
   [IDurationSource](IDurationSource.md), [IProgressSource](IProgressSource.md), [ITickSource](ITickSource.md).
 
+- **Note:** [TimerState](TimerState.md) represents current state of the timer
+
 > [!TIP]
 > Useful for gameplay timers, ability cooldowns, animation timers, and any system requiring precise time management.
 
@@ -107,7 +109,7 @@ public event Action<TimerState> OnStateChanged;
 ```
 
 - **Description:** Invoked whenever the timer’s internal state changes.
-- **Remarks:** States may include Idle, Running, Paused, Completed depending on `TimerState` enum.
+- **Remarks:** States may include Idle, Playing, Paused, Completed depending on `TimerState` enum.
 - **Parameter:** [TimerState](TimerState.md) — the new state of the timer.
 
 ---
@@ -261,7 +263,7 @@ public TimerState GetState();
 ```
 
 - **Description:** Returns the current internal state of the timer.
-- **Returns:** [TimerState](TimerState.md) — e.g., Idle, Running, Paused, Completed.
+- **Returns:** [TimerState](TimerState.md) — e.g., Idle, Playing, Paused, Completed.
 - **Remarks:** Can be used to track state transitions along with `OnStateChanged`.
 
 #### `void Tick(float)`
