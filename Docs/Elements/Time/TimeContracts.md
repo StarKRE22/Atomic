@@ -1,4 +1,4 @@
-# 🧩 Time Sources
+# 🧩 Time Contracts
 
 Provides a set of flexible interfaces for **time tracking**, **state management**, and **progress monitoring** in
 reactive systems. These interfaces allow you to create sources that:

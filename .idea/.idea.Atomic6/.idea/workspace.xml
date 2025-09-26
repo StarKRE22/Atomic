@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,31 +210,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="21669000" />
-    </task>
-    <task id="LOCAL-00804" summary="IEvent.md">
-      <option name="closed" value="true" />
-      <created>1758789061093</created>
-      <option name="number" value="00804" />
-      <option name="presentableId" value="LOCAL-00804" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789061093</updated>
-    </task>
-    <task id="LOCAL-00805" summary="IEvent`1.md">
-      <option name="closed" value="true" />
-      <created>1758789210727</created>
-      <option name="number" value="00805" />
-      <option name="presentableId" value="LOCAL-00805" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789210727</updated>
-    </task>
-    <task id="LOCAL-00806" summary="IEvent`2.md">
-      <option name="closed" value="true" />
-      <created>1758789316110</created>
-      <option name="number" value="00806" />
-      <option name="presentableId" value="LOCAL-00806" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789316110</updated>
+      <workItem from="1758779433987" duration="22001000" />
     </task>
     <task id="LOCAL-00807" summary="IEvent`3.md">
       <option name="closed" value="true" />
@@ -605,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758876052000</updated>
     </task>
-    <option name="localTasksCounter" value="853" />
+    <task id="LOCAL-00853" summary="ReactiveProxyVariable.md">
+      <option name="closed" value="true" />
+      <created>1758876354283</created>
+      <option name="number" value="00853" />
+      <option name="presentableId" value="LOCAL-00853" />
+      <option name="project" value="LOCAL" />
+      <updated>1758876354283</updated>
+    </task>
+    <task id="LOCAL-00854" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758876605137</created>
+      <option name="number" value="00854" />
+      <option name="presentableId" value="LOCAL-00854" />
+      <option name="project" value="LOCAL" />
+      <updated>1758876605137</updated>
+    </task>
+    <task id="LOCAL-00855" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758876651614</created>
+      <option name="number" value="00855" />
+      <option name="presentableId" value="LOCAL-00855" />
+      <option name="project" value="LOCAL" />
+      <updated>1758876651614</updated>
+    </task>
+    <option name="localTasksCounter" value="856" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BaseEvents.md" />
-    <MESSAGE value="BaseEvent.md" />
     <MESSAGE value="BaseEvent`1.md" />
     <MESSAGE value="BaseEvent`2.md" />
     <MESSAGE value="BaseEvent`3.md" />
@@ -657,7 +654,9 @@
     <MESSAGE value="ReactiveVariable.md" />
     <MESSAGE value="ReactiveVariables.md" />
     <MESSAGE value="ProxyVariables.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProxyVariables.md" />
+    <MESSAGE value="ReactiveProxyVariable.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

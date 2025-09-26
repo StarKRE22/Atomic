@@ -1,25 +1,39 @@
-
 # 🧩 Time
 
 Provides a set of tools for managing **timers, cooldowns, countdowns, stopwatches, and time sources**. It allows
 developers to track and control time-related events in a consistent and reactive manner, making it useful for gameplay
-mechanics, scheduling, and periodic updates. The module supports flexible time representations, including fixed and
+mechanics, scheduling, and periodic updates.
+
+The module supports flexible time representations, including fixed and
 variable intervals, as well as reactive notifications for state changes.
 
-- [Time Sources](Time/Sources.md)
-- [ICooldown](Time/ICooldown.md)
-- [Cooldown](Time/Cooldown.md)
-- [RandomCooldown](Time/RandomCooldown.md)
-- [ITimer](Time/ITimer.md)
-- [UpTimer](Time/UpTimer.md)
-- [DownTimer](Time/DownTimer.md)
-- [TimerState](Time/TimerState.md)
-- [IStopwatch](Time/IStopwatch.md)
-- [Stopwatch](Time/Stopwatch.md)
-- [StopwatchState](Time/StopwatchState.md)
-- [IPeriod](Time/IPeriod.md)
-- [Period](Time/Period.md)
-- [PeriodState](Time/PeriodState.md)
-- [ITimestamp](Time/ITimestamp.md)
-- [FixedTimestamp](Time/FixedTimestamp.md)
-- [Extensions](Time/Extensions.md)
+- [Time Contracts](TimeContracts.md)
+    - [ITimeSource]() 
+    - [IDurationSource]()
+    - [ITickSource]()
+    - [IStartSource]()
+    - [IPauseSource]()
+    - [ICompleteSource]()
+    - [IProgressSource]()
+    - [IStateSource&lt;T&gt;]()
+- [Cooldowns]()
+    - [ICooldown](ICooldown.md)
+    - [Cooldown](Cooldown.md)
+    - [RandomCooldown](RandomCooldown.md)
+- [Timers]()
+    - [ITimer](ITimer.md)
+    - [UpTimer](UpTimer.md)
+    - [DownTimer](DownTimer.md)
+    - [TimerState](TimerState.md)
+- [Stopwatches]()
+    - [IStopwatch](IStopwatch.md)
+    - [Stopwatch](Stopwatch.md)
+    - [StopwatchState](StopwatchState.md)
+- [Periods]()
+    - [IPeriod](IPeriod.md)
+    - [Period](Period.md)
+    - [PeriodState](PeriodState.md)
+- [Timestamps]()
+    - [ITimestamp](ITimestamp.md)
+    - [FixedTimestamp](FixedTimestamp.md)
+- [Extensions](Extensions.md)
