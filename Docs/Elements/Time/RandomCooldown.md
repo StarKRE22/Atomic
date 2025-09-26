@@ -1,6 +1,7 @@
 # 🧩 RandomCooldown
 
 ```csharp
+[Serializable]
 public class RandomCooldown : ICooldown
 ```
 
