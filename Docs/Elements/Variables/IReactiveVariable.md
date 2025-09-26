@@ -33,7 +33,7 @@ public T Invoke();
 
 - **Description:** Invokes the variable and returns its current value.
 - **Returns:** The current value of type `T`.
-- **Note:** Default implementation comes from [IFunction<R>](../Functions/IFunction.md).
+- **Note:** Default implementation comes from [IFunction&lt;R&gt;](../Functions/IFunction.md).
 
 #### `Invoke(T)`
 
@@ -45,7 +45,7 @@ public void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction<T>](../Actions/IAction%601.md).
+    - Default implementation comes from [IAction&lt;T&gt;](../Actions/IAction%601.md).
 
 #### `Subscribe(Action)`
 
