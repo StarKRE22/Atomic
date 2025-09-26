@@ -26,9 +26,9 @@ variable intervals, as well as reactive notifications for state changes.
     - [DownTimer](DownTimer.md) <!-- + -->
     - [TimerState](TimerState.md) <!-- + -->
 - [Stopwatches](Stopwatches.md)  <!-- + -->
-    - [IStopwatch](IStopwatch.md)  <!-- + -->
-    - [Stopwatch](Stopwatch.md)
-    - [StopwatchState](StopwatchState.md)
+    - [IStopwatch](IStopwatch.md) <!-- + -->
+    - [Stopwatch](Stopwatch.md) <!-- + -->
+    - [StopwatchState](StopwatchState.md) <!-- + -->
 - [Periods]()
     - [IPeriod](IPeriod.md)
     - [Period](Period.md)
