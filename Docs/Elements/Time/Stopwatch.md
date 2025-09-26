@@ -1,6 +1,7 @@
 # 🧩 Stopwatch
 
 ```csharp
+[Serializable]
 public class Stopwatch : IStopwatch
 ```
 
