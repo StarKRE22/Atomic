@@ -3,6 +3,7 @@
 For convenience, several specialized implementations of reactive variables are provided. It is recommended to use them,
 as they compare values without relying on `EqualityComparer`, which makes them slightly faster than the generic
 [ReactiveVariable&lt;T&gt;](ReactiveVariable.md) version.
+
 ---
 
 ## 🧩 Common Types

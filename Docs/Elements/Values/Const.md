@@ -9,9 +9,10 @@ public class Const<T> : IValue<T>
 - **Inheritance:** [IValue&lt;T&gt;](IValue.md)
 - **Type Parameter:** `T` – The type of the wrapped constant value.
 - **Remarks:**
-    - Supports **implicit conversions** for convinience
+    - Supports **implicit conversions** for convenience
     - Supports Unity serialization
     - Supports Odin Inspector
+- **See also:** [Default Constants](DefaultConstants.md), [ScriptableConst](ScriptableConst.md)
 
 > [!TIP]
 > Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as

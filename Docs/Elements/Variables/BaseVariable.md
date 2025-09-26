@@ -9,6 +9,7 @@ public class BaseVariable<T> : IVariable<T>
 - **Inheritance** [IVariable&lt;T&gt;](IVariable.md)
 - **Type Parameter:** `T` – The type of the value to store.
 - **Notes:** Support Unity serialization and Odin Inspector
+- **See also:** [Base Variables](BaseVariables.md), [ProxyVariable&lt;T&gt;](ProxyVariable.md)
 
 ---
 

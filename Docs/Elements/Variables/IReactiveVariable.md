@@ -7,6 +7,7 @@ public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
 - **Description:** Represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**.
 - **Inheritance:** [IVariable&lt;T&gt;](IVariable.md), [IReactiveValue&lt;T&gt;](../Values/IReactiveValue.md)
 - **Type Parameter:** `T` – The type of the value.
+- **See also:** [ReactiveVariable&lt;T&gt;](ReactiveVariable.md)
 
 ---
 

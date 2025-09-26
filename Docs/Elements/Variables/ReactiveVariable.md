@@ -9,6 +9,7 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 - **Inheritance:** [IReactiveVariable&lt;T&gt;](IReactiveVariable.md), `IDisposable`,
 - **Type Parameter:** `T` – The type of the value.
 - **Notes:** Support Unity serialization and Odin Inspector
+- **See also:** [Reactive Variables](ReactiveVariables.md)
 
 ---
 
