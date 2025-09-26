@@ -1,10 +1,5 @@
 # 🧩 ITimer
 
-Represents a general-purpose **timer interface** that supports starting, pausing, resuming, stopping, progress tracking,
-and state change notifications. The interface combines multiple sources
-internally: [IStartSource](Sources.md/#istartsource), [IPauseSource](Sources.md/#ipausesource), [ICompleteSource](Sources.md/#icompletesource), [IStateSource](Sources.md/#istatesource), [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [IProgressSource](Sources.md/#iprogresssource), [ITickSource](Sources.md/#iticksource).
-Useful for gameplay timers, ability cooldowns, animation timers, and any system requiring precise time management.
-
 ```csharp
 public interface ITimer :
     IStartSource,
@@ -16,6 +11,16 @@ public interface ITimer :
     IProgressSource,
     ITickSource
 ```
+
+- **Description:** Represents a general-purpose **timer interface** that supports starting, pausing, resuming, stopping,
+  progress tracking, and state change notifications.
+
+- **Inheritance:** [IStartSource](IStartSource.md), [IPauseSource](IPauseSource.md),
+  [ICompleteSource](ICompleteSource.md), [IStateSource](IStateSource.md), [ITimeSource](ITimeSource.md),
+  [IDurationSource](IDurationSource.md), [IProgressSource](IProgressSource.md), [ITickSource](ITickSource.md).
+
+> [!TIP]
+> Useful for gameplay timers, ability cooldowns, animation timers, and any system requiring precise time management.
 
 ---
 
