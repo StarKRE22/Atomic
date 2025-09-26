@@ -1,17 +1,16 @@
 # 🧩 Stopwatch
 
-Represents a **stateful stopwatch timer** that tracks elapsed time and supports **start, pause, resume, stop**, time
-updates, and state notifications. It implements the [IStopwatch](IStopwatch.md) interface and provides a simple way to
-track elapsed time in gameplay, animations, or any time-dependent system.
-
-> [!IMPORTANT]  
-> Use `IStopwatch` when you need to **measure elapsed time** (e.g., performance tracking, gameplay session time,
-> speedrun timers). Unlike [ITimer](ITimer.md), a stopwatch does not count down toward a duration — it only measures how
-> long something has been running.
-
 ```csharp
 public class Stopwatch : IStopwatch
 ```
+
+- **Description:** Represents a **stateful stopwatch timer** that tracks elapsed time and supports **start, pause,
+  resume, stop**, time updates, and state notifications. It provides a simple way to
+  track elapsed time in gameplay, animations, or any time-dependent system.
+- **Inheritance:** [IStopwatch](IStopwatch.md)
+- **Notes:**
+    - [StopwatchState](StopwatchState.md) represents current state of a stopwatch
+    - Supports Unity serialization and Odin Inspector
 
 ---
 
