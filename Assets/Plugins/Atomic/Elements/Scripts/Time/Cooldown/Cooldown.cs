@@ -62,8 +62,7 @@ namespace Atomic.Elements
             get => this.GetProgress();
             set => this.SetProgress(value);
         }
-
-
+        
 #if UNITY_5_3_OR_NEWER
         [Min(float.Epsilon)]
         [SerializeField]

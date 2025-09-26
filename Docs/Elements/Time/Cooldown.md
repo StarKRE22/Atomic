@@ -1,14 +1,18 @@
 # 🧩 Cooldown
 
-Represents a concrete implementation of the [ICooldown](ICooldown.md) interface that represents a **cooldown timer**. It
-tracks the remaining time, provides normalized progress, and raises events when its state changes. The class combines
-multiple sources
-internally: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource).
-Useful for game mechanics such as ability cooldowns, weapon reloads, or timed delays.
-
 ```csharp
+[Serializable]
 public class Cooldown : ICooldown
 ```
+
+- **Description:** Concrete implementation of the **cooldown** that tracks the remaining time, provides normalized
+  progress, and raises events when its state changes.
+- **Inheritance:** [ICooldown](ICooldown.md)
+- **Notes:** Supports Unity serialization and Odin Inspector
+
+> [!TIP]
+> Useful for game mechanics such as ability cooldowns, weapon reloads, or timed delays.
+
 
 ---
 
@@ -183,7 +187,6 @@ public static implicit operator Cooldown(float duration) => new(duration);
 - **Parameter:** `duration` — The duration value in seconds.
 - **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
 
-
 #### `operator Cooldown(int)`
 
 ```csharp
@@ -194,8 +197,7 @@ public static implicit operator Cooldown(int duration) => new(duration);
 - **Parameter:** `duration` — The duration value in seconds.
 - **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
 
-
-
+---
 
 ## 🗂 Example of Usage
 
