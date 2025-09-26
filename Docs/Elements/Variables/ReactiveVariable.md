@@ -16,7 +16,7 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 
 | Parameter | Description                    |
 |-----------|--------------------------------|
-| `value`   | current value of this variable |
+| `value`   | Current value of this variable |
 
 ---
 

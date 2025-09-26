@@ -20,7 +20,7 @@ public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
 
 | Parameter            | Description                                                             |
 |----------------------|-------------------------------------------------------------------------|
-| `value` | value of this constant |
+| `value` | The value of this constant |
 
 ---
 
