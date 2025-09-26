@@ -1,21 +1,15 @@
-
-<details>
-  <summary>
-    <h2 id="istatesource">🧩 IStateSource&lt;T&gt;</h2>
-    <br> Represents a source that <b>provides state notifications</b>.
-  </summary>
-
-<br>
+# 🧩 IStateSource&lt;T&gt;
 
 ```csharp
 public interface IStateSource<T>
 ```
 
+- **Description:** Represents a source that <b>provides state notifications</b>.
 - **Type Parameter:** `T` — Enum type representing the state.
 
 --- 
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -27,7 +21,7 @@ public event Action<T> OnStateChanged;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `GetState()`
 
@@ -37,5 +31,3 @@ public T GetState();
 
 - **Description:** Gets the current internal state.
 - **Returns:** The current state of type `T`.
-
-</details>
