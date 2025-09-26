@@ -12,9 +12,6 @@ public interface IStopwatch :
   It also provides **state change notifications** and incremental time updates.
 - **Inheritance:** [IStartSource](IStartSource.md), [IPauseSource](IPauseSource.md), [ITimeSource](ITimeSource.md), [IStateSource](IStateSource.md), [ITickSource](ITickSource.md).
 
-> [!IMPORTANT]  
-> Use `IStopwatch` when you need to **measure elapsed time** (e.g., performance tracking, gameplay session time, speedrun timers). Unlike [ITimer](ITimer.md), a stopwatch does not count down toward a duration — it only measures how long something has been running.
-
 ---
 
 ## ⚡ Events
