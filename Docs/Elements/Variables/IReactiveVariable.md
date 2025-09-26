@@ -1,13 +1,11 @@
 # 🧩 IReactiveVariable&lt;T&gt;
 
-Represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**.
-It inherits from [IVariable&lt;T&gt;](IVariable.md) (read-write access)
-and [IReactiveValue&lt;T&gt;](../Values/IReactiveValue.md) (reactive observation).
-
 ```csharp
 public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
 ```
 
+- **Description:** Represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**.
+- **Inheritance:** [IVariable&lt;T&gt;](IVariable.md), [IReactiveValue&lt;T&gt;](../Values/IReactiveValue.md)
 - **Type Parameter:** `T` – The type of the value.
 
 ---
@@ -22,9 +20,6 @@ public T Value { get; set; }
 
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
-- **Notes:**
-    - Implements [IVariable<T>.Value](IVariable.md#value) for read-write access.
-    - Implements [IReactiveValue<T>.Value](../Values/IReactiveValue.md#value) for reactive observation.
 
 ---
 
@@ -38,7 +33,7 @@ public T Invoke();
 
 - **Description:** Invokes the variable and returns its current value.
 - **Returns:** The current value of type `T`.
-- **Note:** Default implementation comes from [IFunction<R>.Invoke()](../Functions/IFunction.md#invoke).
+- **Note:** Default implementation comes from [IFunction<R>](../Functions/IFunction.md).
 
 #### `Invoke(T)`
 
@@ -50,7 +45,7 @@ public void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction<T>.Invoke()](../Actions/IAction.md#invoket).
+    - Default implementation comes from [IAction<T>](../Actions/IAction%601.md).
 
 #### `Subscribe(Action)`
 
@@ -60,10 +55,9 @@ public Subscription<T> Subscribe(Action action)
 
 - **Description:** Subscribes an action to be invoked whenever the signal is triggered.
 - **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription&lt;T&gt;](../Signals/Subscription.md#subscriptiont) struct representing the active
+- **Returns:** A [Subscription&lt;T&gt;](../Events/Subscription%601.md) struct representing the active
   subscription.
-- **Notes**: This is the default implementation
-  from [ISignal&lt;T&gt;.Subscribe()](../Signals/ISignal.md#subscribeactiont)
+
 
 #### `Unsubscribe(Action)`
 
@@ -73,8 +67,6 @@ public void Unsubscribe(Action action)
 
 - **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
 - **Parameters:** `action` – The delegate to remove from the subscription list.
-- **Notes**: This is the default implementation
-  from [ISignal&lt;T&gt;.Unsubscribe()](../Signals/ISignal.md#unsubscribeactiont)
 
 ---
 
