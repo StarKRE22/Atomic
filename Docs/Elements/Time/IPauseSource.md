@@ -1,19 +1,14 @@
-
-<details>
-  <summary>
-    <h2 id="ipausesource">🧩 IPauseSource</h2>
-    <br> Represents a source that <b>can be paused and resumed</b>.
-  </summary>
-
-<br>
+# 🧩 IPauseSource
 
 ```csharp
 public interface IPauseSource
 ```
 
+- **Description:**  Represents a source that <b>can be paused and resumed</b>.
+
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnPaused`
 
@@ -33,7 +28,7 @@ public event Action OnResumed;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `IsPaused()`
 
@@ -59,5 +54,3 @@ public void Resume();
 ```
 
 - **Description:** Resumes the source.
-
-</details>

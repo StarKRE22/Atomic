@@ -10,9 +10,9 @@ variable intervals, as well as reactive notifications for state changes.
 - [Source Contracts](Sources.md) <!-- + -->
     - [ITimeSource](ITimeSource.md) <!-- + -->
     - [IDurationSource](IDurationSource.md) <!-- + -->
-    - [ITickSource](ITickSource.md)
-    - [IStartSource](IStartSource.md)
-    - [IPauseSource]()
+    - [ITickSource](ITickSource.md) <!-- + -->
+    - [IStartSource](IStartSource.md) <!-- + -->
+    - [IPauseSource](IPauseSource.md)
     - [ICompleteSource]()
     - [IProgressSource]()
     - [IStateSource&lt;T&gt;]()
