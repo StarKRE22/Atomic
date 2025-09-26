@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/TimeContracts.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,39 +212,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="22743000" />
-    </task>
-    <task id="LOCAL-00809" summary="BaseEvents.md">
-      <option name="closed" value="true" />
-      <created>1758789819601</created>
-      <option name="number" value="00809" />
-      <option name="presentableId" value="LOCAL-00809" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789819601</updated>
-    </task>
-    <task id="LOCAL-00810" summary="BaseEvents.md">
-      <option name="closed" value="true" />
-      <created>1758790037835</created>
-      <option name="number" value="00810" />
-      <option name="presentableId" value="LOCAL-00810" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790037835</updated>
-    </task>
-    <task id="LOCAL-00811" summary="BaseEvent.md">
-      <option name="closed" value="true" />
-      <created>1758790307285</created>
-      <option name="number" value="00811" />
-      <option name="presentableId" value="LOCAL-00811" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790307285</updated>
-    </task>
-    <task id="LOCAL-00812" summary="BaseEvent`1.md">
-      <option name="closed" value="true" />
-      <created>1758790507861</created>
-      <option name="number" value="00812" />
-      <option name="presentableId" value="LOCAL-00812" />
-      <option name="project" value="LOCAL" />
-      <updated>1758790507861</updated>
+      <workItem from="1758779433987" duration="24082000" />
     </task>
     <task id="LOCAL-00813" summary="BaseEvent`2.md">
       <option name="closed" value="true" />
@@ -613,7 +574,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758876981910</updated>
     </task>
-    <option name="localTasksCounter" value="858" />
+    <task id="LOCAL-00858" summary="Sources.md">
+      <option name="closed" value="true" />
+      <created>1758877433368</created>
+      <option name="number" value="00858" />
+      <option name="presentableId" value="LOCAL-00858" />
+      <option name="project" value="LOCAL" />
+      <updated>1758877433368</updated>
+    </task>
+    <task id="LOCAL-00859" summary="Sources.md">
+      <option name="closed" value="true" />
+      <created>1758877479412</created>
+      <option name="number" value="00859" />
+      <option name="presentableId" value="LOCAL-00859" />
+      <option name="project" value="LOCAL" />
+      <updated>1758877479412</updated>
+    </task>
+    <task id="LOCAL-00860" summary="ITimeSource.md">
+      <option name="closed" value="true" />
+      <created>1758877563867</created>
+      <option name="number" value="00860" />
+      <option name="presentableId" value="LOCAL-00860" />
+      <option name="project" value="LOCAL" />
+      <updated>1758877563867</updated>
+    </task>
+    <task id="LOCAL-00861" summary="IDurationSource.md">
+      <option name="closed" value="true" />
+      <created>1758878143310</created>
+      <option name="number" value="00861" />
+      <option name="presentableId" value="LOCAL-00861" />
+      <option name="project" value="LOCAL" />
+      <updated>1758878143310</updated>
+    </task>
+    <option name="localTasksCounter" value="862" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,9 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BaseEvent`2.md" />
-    <MESSAGE value="BaseEvent`3.md" />
-    <MESSAGE value="BaseEvent`4.md" />
     <MESSAGE value="Subscriptions.md" />
     <MESSAGE value="Subscription.md" />
     <MESSAGE value="Subscription`1.md" />
@@ -665,7 +655,10 @@
     <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="Начинаем делать раздел Time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем делать раздел Time" />
+    <MESSAGE value="Sources.md" />
+    <MESSAGE value="ITimeSource.md" />
+    <MESSAGE value="IDurationSource.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IDurationSource.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
