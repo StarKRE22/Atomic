@@ -4,13 +4,13 @@ Provides a collection of **utility classes and components** that simplify common
 includes handling animation and collision events, trigger detection, disposable actions, optional references, and
 various helper extensions. These utilities help reduce boilerplate code and make systems more modular and maintainable.
 
-- [AnimationEvents](UnityComponents/AnimationEvents.md)
-- [CollisionEvents](UnityComponents/CollisionEvents.md)
-- [CollisionEvents2D](UnityComponents/CollisionEvents2D.md)
-- [TriggerEvents](UnityComponents/TriggerEvents.md)
-- [TriggerEvents2D](UnityComponents/TriggerEvents2D.md)
-- [DisposableAction](Utils/DisposableAction.md)
-- [DisposableComposite](Utils/DisposableComposite.md)
-- [Reference](Utils/Reference.md)
-- [Optional](Utils/Optional.md)
-- [Extensions](Utils/Extensions.md)
+- [AnimationEvents](AnimationEvents.md)
+- [CollisionEvents](CollisionEvents.md)
+- [CollisionEvents2D](CollisionEvents2D.md)
+- [TriggerEvents](TriggerEvents.md)
+- [TriggerEvents2D](TriggerEvents2D.md)
+- [DisposableAction](DisposableAction.md)
+- [DisposableComposite](DisposableComposite.md)
+- [Reference](Reference.md)
+- [Optional](Optional.md)
+- [Extensions](Extensions.md)
