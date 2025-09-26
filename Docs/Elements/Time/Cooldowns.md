@@ -3,10 +3,11 @@
 Represents a **cooldown timer** that tracks remaining time, provides progress feedback and raises events
 when its state changes. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
-There is an interface and an implementation of the **cooldown**
+There are an interface and two implementations of the timer.
 
 - [ICooldown](ICooldown.md)
 - [Cooldown](Cooldown.md)
+- [RandomCooldown](RandomCooldown.md)
 
 ---
 

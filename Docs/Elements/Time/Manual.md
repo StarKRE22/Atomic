@@ -18,8 +18,8 @@ variable intervals, as well as reactive notifications for state changes.
     - [IStateSource&lt;T&gt;](IStateSource.md) <!-- + -->
 - [Cooldowns](Cooldowns.md) <!-- + -->
     - [ICooldown](ICooldown.md) <!-- + -->
-    - [Cooldown](Cooldown.md)
-    - [RandomCooldown](RandomCooldown.md)
+    - [Cooldown](Cooldown.md) <!-- + -->
+    - [RandomCooldown](RandomCooldown.md) <!-- + -->
 - [Timers]()
     - [ITimer](ITimer.md)
     - [UpTimer](UpTimer.md)

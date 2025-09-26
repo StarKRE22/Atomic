@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,31 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="25145000" />
-    </task>
-    <task id="LOCAL-00820" summary="Subscription`2.md">
-      <option name="closed" value="true" />
-      <created>1758792297605</created>
-      <option name="number" value="00820" />
-      <option name="presentableId" value="LOCAL-00820" />
-      <option name="project" value="LOCAL" />
-      <updated>1758792297605</updated>
-    </task>
-    <task id="LOCAL-00821" summary="Subscription`3.md">
-      <option name="closed" value="true" />
-      <created>1758792390616</created>
-      <option name="number" value="00821" />
-      <option name="presentableId" value="LOCAL-00821" />
-      <option name="project" value="LOCAL" />
-      <updated>1758792390616</updated>
-    </task>
-    <task id="LOCAL-00822" summary="Subscription`4.md">
-      <option name="closed" value="true" />
-      <created>1758792492019</created>
-      <option name="number" value="00822" />
-      <option name="presentableId" value="LOCAL-00822" />
-      <option name="project" value="LOCAL" />
-      <updated>1758792492019</updated>
+      <workItem from="1758779433987" duration="26129000" />
     </task>
     <task id="LOCAL-00823" summary="ExtensionsSubscribe.md">
       <option name="closed" value="true" />
@@ -607,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758879292734</updated>
     </task>
-    <option name="localTasksCounter" value="869" />
+    <task id="LOCAL-00869" summary="Cooldowns.md">
+      <option name="closed" value="true" />
+      <created>1758879845025</created>
+      <option name="number" value="00869" />
+      <option name="presentableId" value="LOCAL-00869" />
+      <option name="project" value="LOCAL" />
+      <updated>1758879845025</updated>
+    </task>
+    <task id="LOCAL-00870" summary="ICooldown.md">
+      <option name="closed" value="true" />
+      <created>1758880109010</created>
+      <option name="number" value="00870" />
+      <option name="presentableId" value="LOCAL-00870" />
+      <option name="project" value="LOCAL" />
+      <updated>1758880109010</updated>
+    </task>
+    <task id="LOCAL-00871" summary="Cooldown.md">
+      <option name="closed" value="true" />
+      <created>1758880421608</created>
+      <option name="number" value="00871" />
+      <option name="presentableId" value="LOCAL-00871" />
+      <option name="project" value="LOCAL" />
+      <updated>1758880421608</updated>
+    </task>
+    <option name="localTasksCounter" value="872" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,9 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsInvokeRange.md" />
-    <MESSAGE value="ExtensionsInvert.md" />
-    <MESSAGE value="ExtensionsCollections.md" />
     <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsSubscribeRange.md" />
@@ -659,7 +656,10 @@
     <MESSAGE value="ICompleteSource.md" />
     <MESSAGE value="IProgressSource.md" />
     <MESSAGE value="IStateSource.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IStateSource.md" />
+    <MESSAGE value="Cooldowns.md" />
+    <MESSAGE value="ICooldown.md" />
+    <MESSAGE value="Cooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

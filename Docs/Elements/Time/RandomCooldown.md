@@ -1,13 +1,17 @@
 # 🧩 RandomCooldown
 
-An implementation of [ICooldown](ICooldown.md) that represents a **cooldown timer with a random duration**. Each time
-the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration. Useful for
-game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event timers, or
-procedural ability cooldowns.
-
 ```csharp
 public class RandomCooldown : ICooldown
 ```
+
+- **Description:** Represents a **cooldown timer with a random duration**. Each time
+  the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration.
+- **Inheritance:** [ICooldown](ICooldown.md)
+- **Note:** Supports Unity serialization and Odin Inspector
+
+> [!TIP]
+> Useful for game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event
+> timers, or procedural ability cooldowns.
 
 ---
 
