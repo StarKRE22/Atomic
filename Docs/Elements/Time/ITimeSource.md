@@ -1,19 +1,15 @@
-
-<details>
-  <summary>
-    <h2 id="itimesource">🧩 ITimeSource</h2>
-    <br> Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time changes</b>.
-  </summary>
-
-<br>
+# 🧩 ITimeSource
 
 ```csharp
 public interface ITimeSource
 ```
 
+- **Description:** Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time
+  changes</b>.
+
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnTimeChanged`
 
@@ -26,7 +22,7 @@ public event Action<float> OnTimeChanged;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `GetTime()`
 
@@ -55,5 +51,3 @@ public void ResetTime();
 - **Description:** Resets the time source to its initial state.
 - **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via
   `OnTimeChanged`.
-
-</details>
