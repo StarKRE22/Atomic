@@ -1,13 +1,22 @@
 # 🧩 BaseVariable&lt;T&gt;
 
-Represents a **simple serialized container** for a value of type `T`. It implements [IVariable&lt;T&gt;](IVariable.md),
-providing **read-write access** to the stored value.
-
 ```csharp
+[Serializable]
 public class BaseVariable<T> : IVariable<T>
 ```
 
+- **Description:** Represents a **simple serialized container** for a value of type `T`.
+- **Inheritance** [IVariable&lt;T&gt;](IVariable.md)
 - **Type Parameter:** `T` – The type of the value to store.
+- **Notes:** Support Unity serialization and Odin Inspector
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                    |
+|-----------|--------------------------------|
+| `value`   | current value of this variable |
 
 ---
 
@@ -55,7 +64,7 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
 #### `Invoke(T arg)`
 
@@ -67,7 +76,7 @@ public void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction&lt;T&gt;.Invoke()](../Actions/IAction.md#invoket).
+    - Default implementation comes from [IAction&lt;T&gt;](../Actions/IAction%601.md).
 
 #### `ToString()`
 
@@ -82,7 +91,7 @@ public override string ToString();
 
 ## 🪄 Operators
 
-#### `operator BaseVariable<T>(T value)`
+#### `operator BaseVariable<T>(T)`
 
 ```csharp
 public static implicit operator BaseVariable<T>(T value);
@@ -107,36 +116,3 @@ Console.WriteLine(score.Value);  // Output: 10
 score.Value = 20;
 Console.WriteLine(score.Value);  // Output: 20
 ```
-
----
-
-## 🧩 Subclasses
-
-For convenience, several specialized implementations of base variables are provided. It is recommended to use them, as
-they compare values without relying on `EqualityComparer`, which makes them slightly faster than the generic
-`BaseVariable<T>` version.
-
-### 🧩 Common Types
-
-- `BoolVariable` – Boolean variable
-- `IntVariable` – Integer variable
-- `FloatVariable` – Float variable
-
-### 🧩 Unity Types
-
-- `QuaternionVariable` – Stores a `Quaternion`
-- `Vector2Variable` – Stores a `Vector2`
-- `Vector3Variable` – Stores a `Vector3`
-- `Vector4Variable` – Stores a `Vector4`
-- `Vector2IntVariable` – Stores a `Vector2Int`
-- `Vector3IntVariable` – Stores a `Vector3Int`
-
-### 🧩 Unity Mathematics Types
-
-- `int2_variable` – Stores an `int2`
-- `int3_variable` – Stores an `int3`
-- `int4_variable` – Stores an `int4`
-- `float2_variable` – Stores a `float2`
-- `float3_variable` – Stores a `float3`
-- `float4_variable` – Stores a `float4`
-- `quaternion_variable` – Stores a `quaternion`

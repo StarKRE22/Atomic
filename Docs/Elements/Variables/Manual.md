@@ -5,7 +5,8 @@ variable types**. It builds on the concept of reactive values but adds more flex
 intermediaries or proxies, which can observe, modify, or synchronize underlying data.
 
 - [IVariable&lt;T&gt;](IVariable.md) <!-- + -->
-- [BaseVariable&lt;T&gt;](BaseVariable.md)
+- [BaseVariable&lt;T&gt;](BaseVariable.md) <!-- + -->
+- [BaseVariables](BaseVariables.md) <!-- + -->
 - [IReactiveVariable&lt;T&gt;](IReactiveVariable.md)
 - [ReactiveVariable&lt;T&gt;](ReactiveVariable.md)
 - [ProxyVariable&lt;T&gt;](ProxyVariable.md)
