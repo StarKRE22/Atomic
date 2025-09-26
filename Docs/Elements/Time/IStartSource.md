@@ -1,10 +1,10 @@
 # 🧩 IStartSource
 
-- **Description:** Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
-
 ```csharp
 public interface IStartSource
 ```
+
+- **Description:** Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
 
 ---
 
