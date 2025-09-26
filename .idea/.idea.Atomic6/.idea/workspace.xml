@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/TimeContracts.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Sources.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,23 +219,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="22001000" />
-    </task>
-    <task id="LOCAL-00807" summary="IEvent`3.md">
-      <option name="closed" value="true" />
-      <created>1758789445711</created>
-      <option name="number" value="00807" />
-      <option name="presentableId" value="LOCAL-00807" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789445711</updated>
-    </task>
-    <task id="LOCAL-00808" summary="IEvent`4.md">
-      <option name="closed" value="true" />
-      <created>1758789576191</created>
-      <option name="number" value="00808" />
-      <option name="presentableId" value="LOCAL-00808" />
-      <option name="project" value="LOCAL" />
-      <updated>1758789576191</updated>
+      <workItem from="1758779433987" duration="22743000" />
     </task>
     <task id="LOCAL-00809" summary="BaseEvents.md">
       <option name="closed" value="true" />
@@ -604,7 +597,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758876651614</updated>
     </task>
-    <option name="localTasksCounter" value="856" />
+    <task id="LOCAL-00856" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1758876687378</created>
+      <option name="number" value="00856" />
+      <option name="presentableId" value="LOCAL-00856" />
+      <option name="project" value="LOCAL" />
+      <updated>1758876687378</updated>
+    </task>
+    <task id="LOCAL-00857" summary="Начинаем делать раздел Time">
+      <option name="closed" value="true" />
+      <created>1758876981910</created>
+      <option name="number" value="00857" />
+      <option name="presentableId" value="LOCAL-00857" />
+      <option name="project" value="LOCAL" />
+      <updated>1758876981910</updated>
+    </task>
+    <option name="localTasksCounter" value="858" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,7 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BaseEvent`1.md" />
     <MESSAGE value="BaseEvent`2.md" />
     <MESSAGE value="BaseEvent`3.md" />
     <MESSAGE value="BaseEvent`4.md" />
@@ -656,7 +664,8 @@
     <MESSAGE value="ProxyVariables.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="Extensions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
+    <MESSAGE value="Начинаем делать раздел Time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начинаем делать раздел Time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

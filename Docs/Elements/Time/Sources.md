@@ -5,7 +5,7 @@ reactive systems. These interfaces allow you to create sources that:
 
 There are several **source interfaces** depending on the required properties, methods, and events:
 
-- [ITimeSource](ITickSource.md) — Track **current time**  and notify listeners of changes.
+- [ITimeSource](ITimeSource.md) — Track **current time**  and notify listeners of changes.
 - [IDurationSource](IDurationSource.md) — Handle total duration tracking.
 - [ITickSource](ITickSource.md) — Update incrementally via **ticks** .
 - [IStartSource](IStartSource.md) — Start, stop execution.
