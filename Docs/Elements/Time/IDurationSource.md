@@ -1,19 +1,14 @@
-
-<details>
-  <summary>
-    <h2 id="idurationsource">🧩 IDurationSource</h2>
-    <br> Represents a source that <b>has a total duration and can notify changes</b>.
-  </summary>
-
-<br>
+# 🧩 IDurationSource
 
 ```csharp
 public interface IDurationSource
 ```
 
+- **Description:** Represents a source that <b>has a total duration and can notify changes</b>.
+
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnDurationChanged`
 
@@ -25,7 +20,7 @@ public event Action<float> OnDurationChanged;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `GetDuration()`
 
@@ -44,5 +39,3 @@ public void SetDuration(float duration);
 
 - **Description:** Sets the total duration.
 - **Parameter:** `duration` — The new duration value in seconds.
-
-</details>

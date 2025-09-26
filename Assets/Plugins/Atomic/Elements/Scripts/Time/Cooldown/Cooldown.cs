@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 #if UNITY_5_3_OR_NEWER
 using UnityEngine;
 #endif
@@ -31,6 +32,37 @@ namespace Atomic.Elements
         /// Invoked when the cooldown has expired (time reaches zero).
         /// </summary>
         public event Action OnCompleted;
+        
+        /// <summary>Gets or sets the total duration of the cooldown.</summary>
+#if ODIN_INSPECTOR
+        [ShowInInspector, HideInEditorMode]
+#endif
+        public float Duration
+        {
+            get => _duration;
+            set => this.SetDuration(value);
+        }
+
+        /// <summary>Gets or sets the current remaining time.</summary>
+#if ODIN_INSPECTOR
+        [ShowInInspector, HideInEditorMode]
+#endif
+        public float CurrentTime
+        {
+            get => _time;
+            set => this.SetTime(value);
+        }
+        
+        /// <summary>Gets or sets the progress of the cooldown (0–1).</summary>
+#if ODIN_INSPECTOR
+        [ShowInInspector, HideInEditorMode]
+#endif
+        public float Progress
+        {
+            get => this.GetProgress();
+            set => this.SetProgress(value);
+        }
+
 
 #if UNITY_5_3_OR_NEWER
         [Min(float.Epsilon)]
