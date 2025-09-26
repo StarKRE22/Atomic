@@ -45,11 +45,10 @@ public static ProxyVariable<R> AsProxyVariable<T, R>(
     - **T** – The type of the source object.
     - **R** – The type of the value being proxied.
 - **Parameters:**
-- **it** – The source object.
-- **getter** – A function to retrieve the value from the object.
-- **setter** – An action to set the value on the object.
+  - **it** – The source object.
+  - **getter** – A function to retrieve the value from the object.
+  - **setter** – An action to set the value on the object.
 - **Returns:** A `ProxyVariable<R>` that reflects the value through the provided getter and setter.
-- **Note:** `ProxyVariable` allows controlled access to external fields or properties
 
 ## 🗂 Examples of Usage
 
