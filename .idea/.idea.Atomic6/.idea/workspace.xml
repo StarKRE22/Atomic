@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariables.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/ScriptableConst.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,23 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="19700000" />
-    </task>
-    <task id="LOCAL-00800" summary="InlineSignal`3.md">
-      <option name="closed" value="true" />
-      <created>1758788567965</created>
-      <option name="number" value="00800" />
-      <option name="presentableId" value="LOCAL-00800" />
-      <option name="project" value="LOCAL" />
-      <updated>1758788567965</updated>
-    </task>
-    <task id="LOCAL-00801" summary="InlineSignal`4.md">
-      <option name="closed" value="true" />
-      <created>1758788644117</created>
-      <option name="number" value="00801" />
-      <option name="presentableId" value="LOCAL-00801" />
-      <option name="project" value="LOCAL" />
-      <updated>1758788644117</updated>
+      <workItem from="1758779433987" duration="21326000" />
     </task>
     <task id="LOCAL-00802" summary="IEvents.md">
       <option name="closed" value="true" />
@@ -606,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758874197527</updated>
     </task>
-    <option name="localTasksCounter" value="849" />
+    <task id="LOCAL-00849" summary="ReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1758874276848</created>
+      <option name="number" value="00849" />
+      <option name="presentableId" value="LOCAL-00849" />
+      <option name="project" value="LOCAL" />
+      <updated>1758874276848</updated>
+    </task>
+    <task id="LOCAL-00850" summary="ReactiveVariables.md">
+      <option name="closed" value="true" />
+      <created>1758874533232</created>
+      <option name="number" value="00850" />
+      <option name="presentableId" value="LOCAL-00850" />
+      <option name="project" value="LOCAL" />
+      <updated>1758874533232</updated>
+    </task>
+    <option name="localTasksCounter" value="851" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEvent`3.md" />
     <MESSAGE value="IEvent`4.md" />
     <MESSAGE value="BaseEvents.md" />
     <MESSAGE value="BaseEvent.md" />
@@ -658,7 +658,8 @@
     <MESSAGE value="BaseVariable.md" />
     <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="ReactiveVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveVariable.md" />
+    <MESSAGE value="ReactiveVariables.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveVariables.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

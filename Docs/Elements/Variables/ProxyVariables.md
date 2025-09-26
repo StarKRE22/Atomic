@@ -1,4 +1,4 @@
-## 🧩 Proxy Variables
+# 🧩 Proxy Variables
 
 For convenience, several specialized proxy variable implementations are provided.
 
