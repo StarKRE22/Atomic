@@ -1,13 +1,20 @@
 # 🧩 UpTimer
 
-Represents a **count up timer** that tracks duration, current time, progress, and state. It implements
-the [ITimer](ITimer.md) interface and provides full control over **start, pause, resume, stop**, progress updates, and
-state notifications. Use `UpTimer` when you need a stateful timer with events and full control over its lifecycle. For
-simple countdowns, consider [ICooldown](ICooldown.md)`.
-
 ```csharp
+[Serializable]
 public class UpTimer : ITimer
 ```
+
+- **Description:** Represents a **count up timer** that tracks duration, current time, progress, and state. It provides
+  full control over **start, pause, resume, stop**, progress updates, and state notifications.
+- **Inheritance:** [ITimer](ITimer.md)
+- **Notes:**
+  - [TimerState](TimerState.md) represents current state of the timer
+  - Supports Unity serialization and Odin Inspector
+
+> [!TIP]
+> Use `UpTimer` when you need a stateful timer with events and full control over its lifecycle. For
+> simple countdowns, consider [ICooldown](ICooldown.md).
 
 ---
 
@@ -128,8 +135,8 @@ public TimerState CurrentState { get; }
 ```
 
 - **Description:** Gets the current state of the timer.
-- **Remarks:** Read-only property reflecting the [timer state](TimerState.md): `IDLE`, `PLAYING`, `PAUSED`, or
-  `COMPLETED`.
+- **Remarks:** Read-only property reflecting the [TimerState](TimerState.md): (`IDLE`, `PLAYING`, `PAUSED`,
+  `COMPLETED`).
 
 #### `Duration`
 
@@ -329,11 +336,6 @@ public static implicit operator UpTimer(float duration);
 - **Description:** Implicitly converts a `float` value to a `UpTimer` instance.
 - **Parameters:** `duration` — The duration in seconds for the new `UpTimer`.
 - **Returns:** A new `UpTimer` initialized with the specified duration.
-- **Example:**
-
-  ```csharp
-  UpTimer timer = 5f; // creates a Timer with duration = 5 seconds
-  ```
 
 #### `operator UpTimer(int)`
 
@@ -344,11 +346,6 @@ public static implicit operator UpTimer(int duration);
 - **Description:** Implicitly converts an `int` value to a `UpTimer` instance.
 - **Parameters:** `duration` — The duration in seconds for the new `UpTimer`.
 - **Returns:** A new `UpTimer` initialized with the specified duration.
-- **Example:**
-
-  ```csharp
-  UpTimer timer = 3; // creates a Timer with duration = 3 seconds
-  ```
 
 ---
 
@@ -356,7 +353,7 @@ public static implicit operator UpTimer(int duration);
 
 ```csharp
 // Create a timer of 30 seconds
-ITimer timer = new UpTimer(30f);
+UpTimer timer = 30f;
 
 // Subscribe to events
 timer.OnStarted += () => Console.WriteLine("Timer started!");

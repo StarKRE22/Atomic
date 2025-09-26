@@ -19,7 +19,7 @@ public interface ITimer :
   [ICompleteSource](ICompleteSource.md), [IStateSource](IStateSource.md), [ITimeSource](ITimeSource.md),
   [IDurationSource](IDurationSource.md), [IProgressSource](IProgressSource.md), [ITickSource](ITickSource.md).
 
-- **Note:** [TimerState](TimerState.md) represents current state of the timer
+- **Note:** [TimerState](TimerState.md) represents current state of the timer.
 
 > [!TIP]
 > Useful for gameplay timers, ability cooldowns, animation timers, and any system requiring precise time management.
