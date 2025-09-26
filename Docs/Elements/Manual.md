@@ -37,16 +37,16 @@ section as a guide for integrating `Atomic.Elements` into your Unity or C# proje
 patterns, composable structures, and modular design**.
 
 - [Values](Values/Manual.md)  <!-- + -->
-- [Variables](Variables/Manual.md) <!-- + -->
+- [Variables](Variables/Manual.md) 
 - [Actions](Actions/Manual.md) <!-- + -->
 - [Functions](Functions/Manual.md) <!-- + -->
 - [Setters](Setters/Manual.md) <!-- + -->
 - [Requests](Requests/Manual.md) <!-- + -->
 - [Events](Events/Manual.md) <!-- + -->
-- [Time](Time/Manual.md) <!-- + -->
-- [Collections](Collections/Manual.md) <!-- + -->
-- [Expressions](Expressions/Manual.md) <!-- + -->
-- [Utilities](Utilities/Manual.md) <!-- + -->
+- [Time](Time/Manual.md) 
+- [Collections](Collections/Manual.md)
+- [Expressions](Expressions/Manual.md)
+- [Utilities](Utilities/Manual.md) 
 
 ---
 

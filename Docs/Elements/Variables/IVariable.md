@@ -1,13 +1,11 @@
 # 🧩 IVariable&lt;T&gt;
 
-Represents a **read-write variable** that exposes both **getter** and **setter** interfaces. It combines the
-functionality of [IValue&lt;T&gt;](../Values/IValue.md) (read-only access)
-and [ISetter&lt;T&gt;](../Setters/ISetter.md) (write access).
-
 ```csharp
 public interface IVariable<T> : IValue<T>, ISetter<T>
 ```
 
+- **Description:** Represents a **read-write variable** that exposes both **getter** and **setter** interfaces.
+- **Inheritance:** [IValue&lt;T&gt;](../Values/IValue.md), [ISetter&lt;T&gt;](../Setters/ISetter.md)
 - **Type Parameter:** `T` – The type of the value.
 
 ---
@@ -22,9 +20,6 @@ public T Value { get; set; }
 
 - **Description:** Gets or sets the current value.
 - **Access:** Read-write
-- **Notes:**
-    - Implements [IValue&lt;T&gt;.Value](../Values/IValue.md#value) for read access.
-    - Implements [ISetter&lt;T&gt;.Value](../Setters/ISetter.md/#value) for write access.
 
 ---
 
@@ -38,7 +33,7 @@ public T Invoke()
 
 - **Description:** Invokes the function and returns the value.
 - **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;.Invoke()](../Functions/IFunction.md#invoke)
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
 #### `Invoke(T)`
 
@@ -50,15 +45,15 @@ public void Invoke(T arg)
 - **Parameter:** `arg` – The new value to assign to the variable.
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
-    - Default implementation comes from [IAction&lt;R&gt;.Invoke()](../Actions/IAction.md#invoket).
+    - Default implementation comes from [IAction&lt;T&gt;](../Actions/IAction%601.md).
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 This section demonstrates how to implement `IVariable<T>` for different cases.
 
-### Example #1: Wrapping Transform.position
+### Example #1: Wrapping Transform Position
 
 ```csharp
 public class TransformPositionVariable : IVariable<Vector3>
@@ -78,7 +73,7 @@ public class TransformPositionVariable : IVariable<Vector3>
 }
 ```
 
-### Example #2: Wrapping network buffer data pointer
+### Example #2: Wrapping Network Buffer Data
 
 ```csharp
 public class NetworkVariable<T> : IVariable<T> where T : unmanaged

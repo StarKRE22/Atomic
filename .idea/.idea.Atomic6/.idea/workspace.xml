@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribeRange.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribeRange.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribeRange.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,23 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="15598000" />
-    </task>
-    <task id="LOCAL-00792" summary="ISignal`4.md">
-      <option name="closed" value="true" />
-      <created>1758787314254</created>
-      <option name="number" value="00792" />
-      <option name="presentableId" value="LOCAL-00792" />
-      <option name="project" value="LOCAL" />
-      <updated>1758787314254</updated>
-    </task>
-    <task id="LOCAL-00793" summary="ISignal`4.md">
-      <option name="closed" value="true" />
-      <created>1758787325930</created>
-      <option name="number" value="00793" />
-      <option name="presentableId" value="LOCAL-00793" />
-      <option name="project" value="LOCAL" />
-      <updated>1758787325930</updated>
+      <workItem from="1758779433987" duration="17254000" />
     </task>
     <task id="LOCAL-00794" summary="InlineSignals.md">
       <option name="closed" value="true" />
@@ -607,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758796290876</updated>
     </task>
-    <option name="localTasksCounter" value="841" />
+    <task id="LOCAL-00841" summary="ExtensionsUnsubscribeRange.md">
+      <option name="closed" value="true" />
+      <created>1758796857897</created>
+      <option name="number" value="00841" />
+      <option name="presentableId" value="LOCAL-00841" />
+      <option name="project" value="LOCAL" />
+      <updated>1758796857897</updated>
+    </task>
+    <task id="LOCAL-00842" summary="ExtensionsUnsubscribeRange.md">
+      <option name="closed" value="true" />
+      <created>1758796994140</created>
+      <option name="number" value="00842" />
+      <option name="presentableId" value="LOCAL-00842" />
+      <option name="project" value="LOCAL" />
+      <updated>1758796994140</updated>
+    </task>
+    <option name="localTasksCounter" value="843" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineSignal`4.md" />
     <MESSAGE value="IEvents.md" />
     <MESSAGE value="IEvent.md" />
     <MESSAGE value="IEvent`1.md" />
@@ -659,7 +658,8 @@
     <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsSubscribeRange.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsSubscribeRange.md" />
+    <MESSAGE value="ExtensionsUnsubscribeRange.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsUnsubscribeRange.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
