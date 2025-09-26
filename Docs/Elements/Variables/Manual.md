@@ -12,5 +12,5 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
 - [Reactive Variables](ReactiveVariables) <!-- + -->
 - [ProxyVariable&lt;T&gt;](ProxyVariable.md) <!-- + -->
 - [Proxy Variables](ProxyVariables.md) <!-- + -->
-- [ReactiveProxyVariable&lt;T&gt;](ReactiveProxyVariable.md)
+- [ReactiveProxyVariable&lt;T&gt;](ReactiveProxyVariable.md)  <!-- + -->
 - [Extensions](Extensions.md)
