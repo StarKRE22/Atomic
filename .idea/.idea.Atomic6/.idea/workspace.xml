@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,31 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="24393000" />
-    </task>
-    <task id="LOCAL-00817" summary="Subscriptions.md">
-      <option name="closed" value="true" />
-      <created>1758791528157</created>
-      <option name="number" value="00817" />
-      <option name="presentableId" value="LOCAL-00817" />
-      <option name="project" value="LOCAL" />
-      <updated>1758791528157</updated>
-    </task>
-    <task id="LOCAL-00818" summary="Subscription.md">
-      <option name="closed" value="true" />
-      <created>1758791664694</created>
-      <option name="number" value="00818" />
-      <option name="presentableId" value="LOCAL-00818" />
-      <option name="project" value="LOCAL" />
-      <updated>1758791664694</updated>
-    </task>
-    <task id="LOCAL-00819" summary="Subscription`1.md">
-      <option name="closed" value="true" />
-      <created>1758792101513</created>
-      <option name="number" value="00819" />
-      <option name="presentableId" value="LOCAL-00819" />
-      <option name="project" value="LOCAL" />
-      <updated>1758792101513</updated>
+      <workItem from="1758779433987" duration="25145000" />
     </task>
     <task id="LOCAL-00820" summary="Subscription`2.md">
       <option name="closed" value="true" />
@@ -605,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758879014446</updated>
     </task>
-    <option name="localTasksCounter" value="866" />
+    <task id="LOCAL-00866" summary="ICompleteSource.md">
+      <option name="closed" value="true" />
+      <created>1758879095406</created>
+      <option name="number" value="00866" />
+      <option name="presentableId" value="LOCAL-00866" />
+      <option name="project" value="LOCAL" />
+      <updated>1758879095406</updated>
+    </task>
+    <task id="LOCAL-00867" summary="IProgressSource.md">
+      <option name="closed" value="true" />
+      <created>1758879165463</created>
+      <option name="number" value="00867" />
+      <option name="presentableId" value="LOCAL-00867" />
+      <option name="project" value="LOCAL" />
+      <updated>1758879165463</updated>
+    </task>
+    <task id="LOCAL-00868" summary="IStateSource.md">
+      <option name="closed" value="true" />
+      <created>1758879292734</created>
+      <option name="number" value="00868" />
+      <option name="presentableId" value="LOCAL-00868" />
+      <option name="project" value="LOCAL" />
+      <updated>1758879292734</updated>
+    </task>
+    <option name="localTasksCounter" value="869" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,9 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Subscription`2.md" />
-    <MESSAGE value="Subscription`3.md" />
-    <MESSAGE value="Subscription`4.md" />
     <MESSAGE value="ExtensionsInvokeRange.md" />
     <MESSAGE value="ExtensionsInvert.md" />
     <MESSAGE value="ExtensionsCollections.md" />
@@ -657,7 +656,10 @@
     <MESSAGE value="ITickSource.md" />
     <MESSAGE value="IPauseSource.md" />
     <MESSAGE value="IStartSource.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IStartSource.md" />
+    <MESSAGE value="ICompleteSource.md" />
+    <MESSAGE value="IProgressSource.md" />
+    <MESSAGE value="IStateSource.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IStateSource.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

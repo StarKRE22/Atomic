@@ -1,12 +1,14 @@
 # 🧩️ ICooldown
 
-Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
-when its state changes. The interface combines multiple sources: [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [ITickSource](Sources.md/#iticksource), [IProgressSource](Sources.md/#iprogresssource), [ICompleteSource](Sources.md/#icompletesource)
-to provide flexible access to timer data and notifications. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
-
 ```csharp
-public interface ICooldown : IDurationSource, ITimeSource, IProgressSource, ICompleteSource, ITickSource;
+public interface ICooldown : ITimeSource, IDurationSource, ITickSource, IProgressSource, ICompleteSource;
 ```
+- **Description:** Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
+when its state changes.
+- **Inheritance:** [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
+
+> [!TIP]
+> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
 ---
 
