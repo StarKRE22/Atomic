@@ -43,7 +43,7 @@ patterns, composable structures, and modular design**.
 - [Setters](Setters/Manual.md) <!-- + -->
 - [Requests](Requests/Manual.md) <!-- + -->
 - [Events](Events/Manual.md) <!-- + -->
-- [Time](Time/Manual.md) 
+- [Time](Time/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md)
 - [Expressions](Expressions/Manual.md)
 - [Utilities](Utilities/Manual.md) 

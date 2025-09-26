@@ -12,3 +12,38 @@ track elapsed time in gameplay, animations, or any time-dependent system.
 - [IStopwatch](IStopwatch.md) – Stopwatch interface
 - [Stopwatch](Stopwatch.md) — Stopwatch implementation
 - [StopwatchState](StopwatchState.md) — Current state of a stopwatch
+
+---
+
+## 🗂 Example of Usage
+
+```csharp  
+// Create a stopwatch
+IStopwatch stopwatch = new Stopwatch();
+
+// Subscribe to events
+stopwatch.OnStarted += () => Console.WriteLine("Stopwatch started!");
+stopwatch.OnTimeChanged += t => Console.WriteLine($"Elapsed: {t:F1}s");
+stopwatch.OnPaused += () => Console.WriteLine("Stopwatch paused.");
+stopwatch.OnResumed += () => Console.WriteLine("Stopwatch resumed.");
+stopwatch.OnStopped += () => Console.WriteLine("Stopwatch stopped.");
+
+// Start the stopwatch
+stopwatch.Start();
+
+// Simulate ticking
+float deltaTime = 1f;
+for (int i = 0; i < 5; i++)
+{
+    stopwatch.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
+}
+
+// Pause and resume
+stopwatch.Pause();
+stopwatch.Resume();
+
+// Stop and reset
+stopwatch.Stop();
+stopwatch.ResetTime();
+```

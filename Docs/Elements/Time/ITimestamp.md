@@ -1,10 +1,11 @@
 # 🧩 ITimestamp
 
-Represents a **timestamp that can be tracked over time using ticks**. It provides properties and methods to start, stop,
-and query the state of a timestamp, including remaining time, progress, and expiration status. `ITimestamp` is
-especially useful in **tick-based systems**, where the game logic updates in discrete ticks. It is ideal for multiplayer
-scenarios with **client-side prediction**, as it allows precise tracking of time and progress independently of frame
-rate.
+```csharp
+public interface ITimestamp
+```
+
+- **Description:** Represents a **timestamp that can be tracked over time using ticks**. It provides properties and
+  methods to start, stop, and query the state of a timestamp, including remaining time, progress, and expiration status.
 
 ---
 
@@ -100,30 +101,3 @@ public bool IsExpired();
 
 - **Description:** Indicates whether the timestamp has expired.
 - **Returns:** `true` if expired; otherwise, `false`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-public class Example : MonoBehaviour 
-{
-    ITimestamp _timestamp = new FixedTimestamp();
-    
-    private void Awake()
-    {
-        _timestamp.StartFromSeconds(5f);
-        //_timestamp.StartFromTicks(250); (equivalent to 5 seconds)
-    }
-    
-    private void FixedUpdate()
-    {
-        if (_timestamp.IsExpired())
-            Debug.Log("Timestamp expired!");
-        else if (_timestamp.IsPlaying())
-            Debug.Log("Timestamp is still running.");
-        else if (_timestamp.IsIdle())
-            Debug.Log("Timestamp is idle.");
-    }
-}
-```

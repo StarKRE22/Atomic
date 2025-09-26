@@ -10,3 +10,30 @@ and query the state of a timestamp, including remaining time, progress, and expi
 
 - [ITimestamp](ITimestamp.md) — Contract of the timestamp 
 - [FixedTimestamp](FixedTimestamp.md) — Concrete implementation of the timestamp driven by Unity's `Time.fixedTime`
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+public class Example : MonoBehaviour 
+{
+    ITimestamp _timestamp = new FixedTimestamp();
+    
+    private void Awake()
+    {
+        _timestamp.StartFromSeconds(5f);
+        //_timestamp.StartFromTicks(250); (equivalent to 5 seconds)
+    }
+    
+    private void FixedUpdate()
+    {
+        if (_timestamp.IsExpired())
+            Debug.Log("Timestamp expired!");
+        else if (_timestamp.IsPlaying())
+            Debug.Log("Timestamp is still running.");
+        else if (_timestamp.IsIdle())
+            Debug.Log("Timestamp is idle.");
+    }
+}
+```

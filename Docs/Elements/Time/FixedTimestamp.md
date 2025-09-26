@@ -1,12 +1,17 @@
 # 🧩 FixedTimestamp
 
-Represents a concrete implementation of [ITimestamp](ITimestamp.md) that is **driven by Unity's `Time.fixedTime`** and
-updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable for tick-based game logic and physics
-updates. Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
 
 ```csharp
 public class FixedTimestamp : ITimestamp;
 ```
+- **Description:** Represents a concrete implementation of  that is **driven by Unity's `Time.fixedTime`** and
+  updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable for tick-based game logic and physics
+  updates.
+- **Inheritance:** [ITimestamp](ITimestamp.md)
+- **Notes:** Supports Odin Inspector
+
+> [!TIP]
+> Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
 
 ---
 
@@ -117,30 +122,3 @@ public bool IsExpired();
 
 - **Description:** Indicates whether the timestamp has expired.
 - **Returns:** `true` if expired; otherwise, `false`.
-
-----
-
-## 🗂 Example of Usage
-
-```csharp
-public class Example : MonoBehaviour 
-{
-    ITimestamp _timestamp = new FixedTimestamp();
-    
-    private void Awake()
-    {
-        _timestamp.StartFromSeconds(5f);
-        //_timestamp.StartFromTicks(250); (equivalent to 5 seconds)
-    }
-    
-    private void FixedUpdate()
-    {
-        if (_timestamp.IsExpired())
-            Debug.Log("Timestamp expired!");
-        else if (_timestamp.IsPlaying())
-            Debug.Log("Timestamp is still running.");
-        else if (_timestamp.IsIdle())
-            Debug.Log("Timestamp is idle.");
-    }
-}
-```
