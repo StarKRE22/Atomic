@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,31 +213,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="26129000" />
-    </task>
-    <task id="LOCAL-00823" summary="ExtensionsSubscribe.md">
-      <option name="closed" value="true" />
-      <created>1758793019164</created>
-      <option name="number" value="00823" />
-      <option name="presentableId" value="LOCAL-00823" />
-      <option name="project" value="LOCAL" />
-      <updated>1758793019164</updated>
-    </task>
-    <task id="LOCAL-00824" summary="ExtensionsSubscribe.md">
-      <option name="closed" value="true" />
-      <created>1758793126825</created>
-      <option name="number" value="00824" />
-      <option name="presentableId" value="LOCAL-00824" />
-      <option name="project" value="LOCAL" />
-      <updated>1758793126825</updated>
-    </task>
-    <task id="LOCAL-00825" summary="ExtensionsSubscribe.md">
-      <option name="closed" value="true" />
-      <created>1758793138411</created>
-      <option name="number" value="00825" />
-      <option name="presentableId" value="LOCAL-00825" />
-      <option name="project" value="LOCAL" />
-      <updated>1758793138411</updated>
+      <workItem from="1758779433987" duration="30020000" />
     </task>
     <task id="LOCAL-00826" summary="ExtensionsUnsubscribe.md">
       <option name="closed" value="true" />
@@ -607,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758880421608</updated>
     </task>
-    <option name="localTasksCounter" value="872" />
+    <task id="LOCAL-00872" summary="RandomCooldown.md">
+      <option name="closed" value="true" />
+      <created>1758880831780</created>
+      <option name="number" value="00872" />
+      <option name="presentableId" value="LOCAL-00872" />
+      <option name="project" value="LOCAL" />
+      <updated>1758880831780</updated>
+    </task>
+    <task id="LOCAL-00873" summary="RandomCooldown.md">
+      <option name="closed" value="true" />
+      <created>1758880858397</created>
+      <option name="number" value="00873" />
+      <option name="presentableId" value="LOCAL-00873" />
+      <option name="project" value="LOCAL" />
+      <updated>1758880858397</updated>
+    </task>
+    <task id="LOCAL-00874" summary="Пилим Timers!">
+      <option name="closed" value="true" />
+      <created>1758882517343</created>
+      <option name="number" value="00874" />
+      <option name="presentableId" value="LOCAL-00874" />
+      <option name="project" value="LOCAL" />
+      <updated>1758882517343</updated>
+    </task>
+    <option name="localTasksCounter" value="875" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsSubscribe.md" />
-    <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsSubscribeRange.md" />
     <MESSAGE value="ExtensionsUnsubscribeRange.md" />
     <MESSAGE value="IVariable.md" />
@@ -659,7 +657,9 @@
     <MESSAGE value="Cooldowns.md" />
     <MESSAGE value="ICooldown.md" />
     <MESSAGE value="Cooldown.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cooldown.md" />
+    <MESSAGE value="RandomCooldown.md" />
+    <MESSAGE value="Пилим Timers!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим Timers!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
