@@ -182,11 +182,7 @@ public static implicit operator Cooldown(float duration) => new(duration);
 - **Description:** Allows implicit conversion from a `float` to a `Cooldown`.
 - **Parameter:** `duration` — The duration value in seconds.
 - **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
-- **Usage Example:**
 
-  ```csharp
-  Cooldown cooldown = 5f; // creates a Cooldown with duration = 5 seconds
-  ```
 
 #### `operator Cooldown(int)`
 
@@ -197,19 +193,15 @@ public static implicit operator Cooldown(int duration) => new(duration);
 - **Description:** Allows implicit conversion from a `int` to a `Cooldown`.
 - **Parameter:** `duration` — The duration value in seconds.
 - **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
-- **Usage Example:**
 
-  ```csharp
-  Cooldown cooldown = 3; // creates a Cooldown with duration = 3 seconds
-  ```
 
----
+
 
 ## 🗂 Example of Usage
 
 ```csharp
 // Create a cooldown of 5 seconds
-ICooldown cooldown = new Cooldown(5f);
+Cooldown cooldown = 5f;
 
 // Subscribe to events
 cooldown.OnTimeChanged += time => 
@@ -236,169 +228,4 @@ Console.WriteLine($"Cooldown reset. Time remaining: {cooldown.GetTime()}s");
 // Set progress to 50%
 cooldown.SetProgress(0.5f);
 Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetTime()}s");
-```
-
----
-
-## 📌 Best Practice
-
-Below are real-world examples of using the `Cooldown` class in different gameplay scenarios.
-
-### 🗂 Example #1: Weapon Shooting
-
-Cooldown for a weapon that shoots bullets. Implemented with `Atomic.Entities` to handle the firing logic.
-
-```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
-{
-    [SerializeField] private Transform _firePoint;
-    [SerializeField] private Cooldown _cooldown = 0.5f;
-
-    public override void Install(IWeaponEntity weapon)
-    {
-        weapon.AddFireAction(new InlineAction(() =>
-        {
-            // Check cooldown before firing
-            if (!_cooldown.IsCompleted())
-                return;
-
-            // TODO: weapon shooting logic
-            
-            // Reset cooldown after shot
-            _cooldown.ResetTime();
-        }));
-        
-        // Tick cooldown each FixedUpdate
-        weapon.WhenFixedTick(_cooldown.Tick);
-    }
-}
-```
-
-> [!TIP]  
-> For ticking cooldowns it’s convenient to use `WhenTick`/`WhenFixedTick`/`WhenLateTick` extensions for `IEntity` from
-`Atomic.Entities` to synchronize updates.
-
----
-
-### 🗂 Example #2: Melee Combat
-
-The same approach works for melee attacks.  
-Here is a more complete combat setup with cooldown control.
-
-```csharp
-[Serializable]
-public sealed class MeleeCombatEntityInstaller : IEntityInstaller<IGameEntity>
-{
-    [SerializeField] private float _fireCooldown = 1;
-    [SerializeField] private Const<float> _fireDistance = 1;
-    [SerializeField] private Const<int> _damage;
-    
-    public void Install(IGameEntity entity)
-    {
-        entity.AddDamage(_damage);
-        entity.AddFireCooldown(new Cooldown(_fireCooldown));
-        entity.AddFireRequest(new BaseRequest<IGameEntity>());
-        entity.WhenFixedTick(_ =>
-        {
-            if (LifeUseCase.IsAlive(entity) &&
-                entity.GetFireCooldown().IsCompleted() &&
-                entity.GetFireRequest().Consume(out IGameEntity target))
-            {
-                DamageUseCase.DealDamage(entity, target);
-                entity.GetFireCooldown().ResetTime();
-                entity.GetFireEvent().Invoke(target);
-            }
-        });
-        
-        entity.WhenFixedTick(entity.GetFireCooldown().Tick);
-        entity.AddFireDistance(_fireDistance);
-        entity.AddFireEvent(new BaseEvent<IGameEntity>());
-    }
-}
-```
-
----
-
-### 🗂 Example #3: Game Timer
-
-Using `Cooldown` as a countdown timer for game sessions.
-
-#### 🔹 Countdown Controller
-
-Reduces the countdown each frame (`FixedTick`).  
-When the timer reaches zero, the `GameOver` event is triggered.
-
-```csharp
-public sealed class GameCountdownController : IEntityInit<IGameContext>, IEntityFixedTick
-{
-    private ICooldown _countdown;
-    private IEvent _overEvent;
-
-    public void Init(IGameContext context)
-    {
-        _countdown = context.GetGameCountdown();
-        _overEvent = context.GetGameOverEvent();
-    }
-
-    public void FixedTick(IEntity entity, float deltaTime)
-    {
-        if (_countdown.IsCompleted())
-            _overEvent.Invoke();
-        else
-            _countdown.Tick(deltaTime);
-    }
-}
-```
-
-#### 🔹 Countdown Installing
-
-The `Cooldown` is initialized with `60` seconds.  
-The countdown and `GameOverEvent` are registered in the game context, and the controller is attached.
-
-```csharp
-public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
-{
-    [SerializeField] private Cooldown _gameCountdown = 60.0f; // 60 seconds game session
-
-    public override void Install(IGameContext context)
-    {
-        context.AddGameCountdown(_gameCountdown);
-        context.AddGameOverEvent(new BaseEvent());
-        context.AddBehaviour<GameCountdownController>();
-    }
-}
-```
-
-#### 🔹 Countdown Visualization
-
-`CountdownPresenter` subscribes to the `OnTimeChanged` event and updates the UI view with the current time in `MM:SS`
-format.  
-Thanks to the [MVP Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html) pattern, the UI stays simple and
-reactive.
-
-```csharp
-public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
-{
-    private ICooldown _countdown;
-    private CountdownView _view;
-
-    public void Init(IUIContext context)
-    {
-        _countdown = GameContext.Instance.GetGameCountdown();
-        _countdown.OnTimeChanged += this.OnTimeChanged;
-        _view = context.GetGameCountdownView();
-    }
-
-    public void Dispose(IEntity entity)
-    {
-        _countdown.OnTimeChanged -= this.OnTimeChanged;
-    }
-
-    private void OnTimeChanged(float time)
-    {
-        int minutes = Mathf.FloorToInt(time / 60f);
-        int seconds = Mathf.FloorToInt(time % 60f);
-        _view.SetTime($"{minutes:00}:{seconds:00}");
-    }
-}
 ```
