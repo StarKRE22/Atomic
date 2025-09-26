@@ -75,7 +75,7 @@ public void Unsubscribe(Action action)
 Below is an example of creating a reactive wrapper around `Transform.position`
 
 ```csharp
-public class ReactiveTransformPosition : IReactiveVariable<Vector3>
+public sealed class ReactiveTransformPosition : IReactiveVariable<Vector3>
 {
     public event Action<Vector3> OnValueChanged;
     

@@ -12,6 +12,14 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                    |
+|-----------|--------------------------------|
+| `value`   | current value of this variable |
+
+---
+
 ## 🏗️ Constructors
 
 #### `ReactiveVariable()`
@@ -22,7 +30,7 @@ public ReactiveVariable()
 
 - **Description:** Initializes a new instance with the default value of `T`.
 
-#### `ReactiveVariable(T value)`
+#### `ReactiveVariable(T)`
 
 ```csharp
 public ReactiveVariable(T value)
