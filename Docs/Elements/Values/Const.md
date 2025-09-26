@@ -12,7 +12,7 @@ public class Const<T> : IValue<T>
     - Supports **implicit conversions** for convenience
     - Supports Unity serialization
     - Supports Odin Inspector
-- **See also:** [Default Constants](DefaultConstants.md), [ScriptableConst](ScriptableConst.md)
+- **See also:** [Default Constants](DefaultConstants.md), [ScriptableConst&lt;T&gt;](ScriptableConst.md)
 
 > [!TIP]
 > Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
