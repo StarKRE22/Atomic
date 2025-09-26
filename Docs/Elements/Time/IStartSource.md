@@ -1,11 +1,6 @@
+# 🧩 IStartSource
 
-<details>
-  <summary>
-    <h2 id="istartsource">🧩 IStartSource</h2>
-    <br> Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
-  </summary>
-
-<br>
+- **Description:** Represents a source that <b>can be started, stopped, and notify start/stop events</b>.
 
 ```csharp
 public interface IStartSource
@@ -13,7 +8,7 @@ public interface IStartSource
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStarted`
 
@@ -33,7 +28,7 @@ public event Action OnStopped;
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `IsIdle()`
 
@@ -75,5 +70,3 @@ public void Stop();
 ```
 
 - **Description:** Stops the source and resets its time.
-
-</details>
