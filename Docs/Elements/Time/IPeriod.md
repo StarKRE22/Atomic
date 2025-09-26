@@ -1,10 +1,5 @@
 # 🧩 IPeriod
 
-Represents a **looping cycle timer interface** that supports starting, pausing, resuming, progress tracking, state
-change notifications, and emits an event each time the period completes. The interface combines multiple sources
-internally: [IStartSource](Sources.md/#istartsource),  [IPauseSource](Sources.md/#ipausesource), [IStateSource](Sources.md/#istatesource), [ITimeSource](Sources.md/#itimesource), [IDurationSource](Sources.md/#idurationsource), [IProgressSource](Sources.md/#iprogresssource), [ITickSource](Sources.md/#iticksource).
-Useful for repeating cycles, gameplay loops, animations, and any system requiring continuous cyclic timing.
-
 ```csharp
 public interface IPeriod : 
     IStartSource,
@@ -13,9 +8,17 @@ public interface IPeriod :
     ITimeSource,
     IProgressSource,
     IDurationSource,
-    ITickSource
+    ITickSource;
 ```
 
+- **Description:** Represents a **looping cycle timer interface** that supports starting, pausing, resuming, progress
+  tracking, state
+  change notifications, and emits an event each time the period completes.
+
+- **Inheritance:** [IStartSource](IStartSource.md),  [IPauseSource](IPauseSource.md), [IStateSource](IStateSource.md), 
+  [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [IProgressSource](IProgressSource.md),
+  [ITickSource](ITickSource.md).
+- **Notes:** [PeriodState](PeriodState.md) represents current state of a period
 ---
 
 ## ⚡ Events
@@ -228,8 +231,8 @@ public void Tick(float deltaTime);
 ## 🗂 Example of Usage
 
 ```csharp
-// Create a period timer with a cycle duration of 10 seconds
-IPeriod period = new Period(10f);
+// Assume we have a period instance
+IPeriod period = ...
 
 // Subscribe to events
 // Triggered each time the period completes and restarts

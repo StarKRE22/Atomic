@@ -1,16 +1,17 @@
 # 🧩 Period
 
-Represents a **stateful looping cycle timer** that tracks time progression and emits events on completion of each cycle.
-It implements the [IPeriod](IPeriod.md) interface and provides full control over **start, pause, resume, stop**,
-progress tracking, duration management, and state notifications. 
-
-Use `Period` when you need **repeating timers or
-cycle-based events**, such as gameplay loops, animations, or periodic system updates. Unlike [ITimer](ITimer.md),
-`Period` automatically loops on completion.
-
 ```csharp
+[Serializable]
 public class Period : IPeriod
 ```
+
+- **Description:** Represents a **stateful looping cycle timer** that tracks time progression and emits events on
+  completion of each cycle. It provides full control over **start, pause, resume, stop**,
+  progress tracking, duration management, and state notifications.
+- **Inheritance:** [IPeriod](IPeriod.md)
+- **Notes:**
+    - [PeriodState](PeriodState.md) represents current state of a period
+    - Supports Unity serialization and Odin Inspector
 
 ---
 
@@ -326,11 +327,6 @@ public static implicit operator Period(float duration);
 ```
 
 - **Description:** Allows creating a `Period` directly from a float.
-- **Usage Example:**
-
-  ```csharp
-  Period timer = 5f; // creates a Period with duration = 5 seconds
-  ```
 
 #### `operator Period(int duration)`
 
@@ -339,18 +335,13 @@ public static implicit operator Period(int duration);
 ```
 
 - **Description:** Allows creating a `Period` directly from an integer.
-- **Usage Example:**
-
-  ```csharp
-  Period timer = 3; // creates a Period with duration = 3 seconds
-  ```
 
 ---
 
 ## 🗂 Example of Usage
 
 ```csharp
-IPeriod period = new Period(10f);
+IPeriod period = 10f;
 
 // Subscribe to events
 period.OnStarted += () => Console.WriteLine("Period started!");

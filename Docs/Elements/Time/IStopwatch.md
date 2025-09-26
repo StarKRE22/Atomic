@@ -12,7 +12,8 @@ public interface IStopwatch :
 - **Description:**  Represents a **stopwatch interface** that supports starting, pausing, resuming, stopping, and
   tracking **elapsed time**.
   It also provides **state change notifications** and incremental time updates.
-- **Inheritance:** [IStartSource](IStartSource.md), [IPauseSource](IPauseSource.md), [ITimeSource](ITimeSource.md), [IStateSource](IStateSource.md), [ITickSource](ITickSource.md).
+- **Inheritance:** [IStartSource](IStartSource.md), [IPauseSource](IPauseSource.md), [ITimeSource](ITimeSource.md),
+- [IStateSource](IStateSource.md), [ITickSource](ITickSource.md).
 - **Notes:** [StopwatchState](StopwatchState.md) represents current state of a stopwatch
 
 ---
@@ -174,7 +175,8 @@ public void Tick(float deltaTime);
 ## 🗂 Example of Usage
 
 ```csharp
-IStopwatch stopwatch = new Stopwatch();
+//Assume we have a stopwatch instance
+IStopwatch stopwatch = ...
 
 // Subscribe to events
 stopwatch.OnStarted += () => Console.WriteLine("Stopwatch started!");

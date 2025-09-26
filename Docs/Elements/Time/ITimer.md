@@ -281,8 +281,8 @@ public void Tick(float deltaTime);
 ## 🗂 Example of Usage
 
 ```csharp
-// Create a timer of 30 seconds
-ITimer timer = new Timer(30f);
+//Assume we have a timer
+ITimer timer = ...
 
 // Subscribe to events
 timer.OnStarted += () => Console.WriteLine("Timer started!");

@@ -29,10 +29,10 @@ variable intervals, as well as reactive notifications for state changes.
     - [IStopwatch](IStopwatch.md) <!-- + -->
     - [Stopwatch](Stopwatch.md) <!-- + -->
     - [StopwatchState](StopwatchState.md) <!-- + -->
-- [Periods]()
-    - [IPeriod](IPeriod.md)
-    - [Period](Period.md)
-    - [PeriodState](PeriodState.md)
+- [Periods](Periods.md) <!-- + -->
+    - [IPeriod](IPeriod.md) <!-- + -->
+    - [Period](Period.md) <!-- + -->
+    - [PeriodState](PeriodState.md) <!-- + -->
 - [Timestamps]()
     - [ITimestamp](ITimestamp.md)
     - [FixedTimestamp](FixedTimestamp.md)

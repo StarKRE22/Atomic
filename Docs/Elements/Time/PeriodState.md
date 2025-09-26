@@ -1,11 +1,14 @@
 # 🧩 PeriodState
 
-Represents the current state of a period. It is used by [IPeriod](IPeriod.md) and [Period](Period.md) to track the
+```csharp
+public enum PeriodState
+```
+
+- **Description:** Represents the current state of a period. 
+- **Note:** It is used by [IPeriod](IPeriod.md) and [Period](Period.md) to track the
 lifecycle of a timer and respond to state changes.
 
 ---
-
-## 🔢 Enum
 
 #### `IDLE`
 

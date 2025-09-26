@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Time/Periods.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/PeriodState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/PeriodState.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,31 +217,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="32719000" />
-    </task>
-    <task id="LOCAL-00834" summary="ExtensionsInvokeRange.md">
-      <option name="closed" value="true" />
-      <created>1758794714011</created>
-      <option name="number" value="00834" />
-      <option name="presentableId" value="LOCAL-00834" />
-      <option name="project" value="LOCAL" />
-      <updated>1758794714011</updated>
-    </task>
-    <task id="LOCAL-00835" summary="ExtensionsInvert.md">
-      <option name="closed" value="true" />
-      <created>1758794861351</created>
-      <option name="number" value="00835" />
-      <option name="presentableId" value="LOCAL-00835" />
-      <option name="project" value="LOCAL" />
-      <updated>1758794861351</updated>
-    </task>
-    <task id="LOCAL-00836" summary="ExtensionsCollections.md">
-      <option name="closed" value="true" />
-      <created>1758794927429</created>
-      <option name="number" value="00836" />
-      <option name="presentableId" value="LOCAL-00836" />
-      <option name="project" value="LOCAL" />
-      <updated>1758794927429</updated>
+      <workItem from="1758779433987" duration="34174000" />
     </task>
     <task id="LOCAL-00837" summary="ExtensionsSubscribe.md">
       <option name="closed" value="true" />
@@ -605,7 +587,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758911590745</updated>
     </task>
-    <option name="localTasksCounter" value="883" />
+    <task id="LOCAL-00883" summary="Stopwatch.md">
+      <option name="closed" value="true" />
+      <created>1758911888542</created>
+      <option name="number" value="00883" />
+      <option name="presentableId" value="LOCAL-00883" />
+      <option name="project" value="LOCAL" />
+      <updated>1758911888542</updated>
+    </task>
+    <task id="LOCAL-00884" summary="Stopwatch.md">
+      <option name="closed" value="true" />
+      <created>1758911918584</created>
+      <option name="number" value="00884" />
+      <option name="presentableId" value="LOCAL-00884" />
+      <option name="project" value="LOCAL" />
+      <updated>1758911918584</updated>
+    </task>
+    <task id="LOCAL-00885" summary="StopwatchState.md">
+      <option name="closed" value="true" />
+      <created>1758912562993</created>
+      <option name="number" value="00885" />
+      <option name="presentableId" value="LOCAL-00885" />
+      <option name="project" value="LOCAL" />
+      <updated>1758912562993</updated>
+    </task>
+    <option name="localTasksCounter" value="886" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveVariables.md" />
-    <MESSAGE value="ProxyVariables.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="Начинаем делать раздел Time" />
@@ -657,7 +661,9 @@
     <MESSAGE value="DownTimer.md" />
     <MESSAGE value="TimerState.md" />
     <MESSAGE value="Stopwatches.md, IStopwatch.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stopwatches.md, IStopwatch.md" />
+    <MESSAGE value="Stopwatch.md" />
+    <MESSAGE value="StopwatchState.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="StopwatchState.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
