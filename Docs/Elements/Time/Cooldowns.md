@@ -1,6 +1,6 @@
 # 🧩 Cooldowns
 
-Represents a **cooldown timer** that tracks remaining time, provides progress feedback and raises events
+Represent a **family of cooldown timers**. It tracks remaining time, provides progress feedback and raises events
 when its state changes. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
 There are an interface and two implementations of the timer.

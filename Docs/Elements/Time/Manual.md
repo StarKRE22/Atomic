@@ -20,7 +20,7 @@ variable intervals, as well as reactive notifications for state changes.
     - [ICooldown](ICooldown.md) <!-- + -->
     - [Cooldown](Cooldown.md) <!-- + -->
     - [RandomCooldown](RandomCooldown.md) <!-- + -->
-- [Timers]()
+- [Timers](Timers.md)
     - [ITimer](ITimer.md)
     - [UpTimer](UpTimer.md)
     - [DownTimer](DownTimer.md)
