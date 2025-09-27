@@ -1,21 +1,29 @@
 # 🧩 ReactiveList&lt;T&gt;
 
-Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed, changed, or when
-the list state changes globally. It implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally
-supports serialization for Unity projects.
-
 ```csharp
+[Serializable]
 public class ReactiveList<T> : IReactiveList<T>, IDisposable
 ```
 
-- **Type Parameters:**
-    - `T` — The type of elements stored in the list.
+- **Description:** Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed,
+  changed, or when
+  the list state changes globally.
+- **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`.
+- **Type Parameter:** `T` — The type of elements stored in the list.
 - **Notes:**
     - Use this class when you need a **mutable, growable list** with reactive notifications.
-    - Supports Unity serialization
+    - Supports Unity serialization and Odin Inspector
 
 > [!TIP]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter         | Description                       |
+|-------------------|-----------------------------------|
+| `serializedItems` | The initial elements of the list. |
 
 ---
 

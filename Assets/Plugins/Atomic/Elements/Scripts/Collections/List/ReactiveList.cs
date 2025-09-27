@@ -15,7 +15,7 @@ namespace Atomic.Elements
     /// </summary>
     /// <typeparam name="T">The type of elements in the list.</typeparam>
     [Serializable]
-    public class ReactiveList<T> : IReactiveList<T>, IDisposable
+    public partial class ReactiveList<T> : IReactiveList<T>, IDisposable
     {
         private static readonly IEqualityComparer<T> s_comparer = EqualityComparer.GetDefault<T>();
 
@@ -58,13 +58,9 @@ namespace Atomic.Elements
         /// <summary>
         /// Gets the current internal array capacity.
         /// </summary>
-        public int Capacity => items.Length;
+        public int Capacity => this.items.Length;
 
-#if UNITY_5_3_OR_NEWER
-        [SerializeField]
-#endif
         private T[] items;
-
         private int count;
 
         /// <summary>
@@ -431,4 +427,23 @@ namespace Atomic.Elements
             }
         }
     }
+    
+#if UNITY_5_3_OR_NEWER
+    public partial class ReactiveList<T> : ISerializationCallbackReceiver
+    {
+        [SerializeField]
+        internal T[] serializedItems;
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            if (this.serializedItems != null) 
+                this.Populate(this.serializedItems);
+        }
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+            this.serializedItems = this.ToArray();
+        }
+    }
+#endif
 }
