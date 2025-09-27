@@ -1,31 +1,29 @@
-
-<details>
-  <summary>
-    <h2>🧩 OrExpression&lt;T&gt;</h2>
-    <br> Represents a <b>logical OR expression</b> with <b>single parameter</b> aggregating multiple <code>Func&lt;T, bool&gt;</code> members
-  </summary>
-
-<br>
+# 🧩 OrExpression&lt;T&gt;
 
 ```csharp
+[Serializable]
 public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 ```
 
-- **Type Parameters:**
-    - `T` — The input type of the functions.
+- **Description:** Represents a <b>logical OR expression</b> with <b>single parameter</b> aggregating multiple
+  <code>Func&lt;T, bool&gt;</code> members
+- **Type Parameter:** `T` — The input type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md),
+  [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `OrExpression(int)`
 
 ```csharp
 public OrExpression(int capacity)
 ```
+
 - **Description:** Initializes a new empty `OrExpression` with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
-
 
 #### `OrExpression(params Func<T, bool>[])`
 
@@ -49,7 +47,7 @@ public OrExpression(IEnumerable<Func<T, bool>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -86,7 +84,7 @@ public event Action<int, Func<T, bool>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -108,7 +106,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -122,7 +120,7 @@ public Func<T, bool> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -243,5 +241,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-</details>

@@ -1,6 +1,7 @@
 # 🧩 OrExpression
 
 ```csharp
+[Serializable]
 public class OrExpression : ExpressionBase<bool>, IPredicate
 ```
 

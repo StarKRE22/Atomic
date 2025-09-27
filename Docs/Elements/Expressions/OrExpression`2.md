@@ -8,6 +8,7 @@
 <br>
 
 ```csharp
+[Serializable]
 public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
 ```
 
