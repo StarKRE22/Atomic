@@ -1,11 +1,12 @@
 # 🧩 DisposableAction
 
-Represents a lightweight `IDisposable` implementation that invokes a specified action when disposed. Ideal for inline or
-ad-hoc cleanup logic.
-
 ```csharp
 public readonly struct DisposableAction : IDisposable
 ```
+
+- **Description:** Represents a lightweight **disposable** implementation that invokes a specified action when disposed.
+- **Inheritance:** `IDisposable`
+- **Note:** Ideal for inline or ad-hoc cleanup logic.
 
 ---
 
@@ -40,14 +41,14 @@ public void Dispose();
 
 ## 🗂 Example of Usage
 
-### 🔹 Inline Cleanup
+#### `Inline Cleanup`
 
 ```csharp
 var disposable = new DisposableAction(() => Console.WriteLine("Cleanup executed."));
 disposable.Dispose(); // Prints: "Cleanup executed."
 ```
 
-### 🔹 Event Unsubscription
+#### `Event Unsubscription`
 
 ```csharp
 EventHandler handler = (s, e) => Console.WriteLine("Event fired.");
