@@ -1,7 +1,7 @@
 # 🧩 Expressions Base
 
 Provides **base implementations** of the [IExpression](IExpressions.md) interfaces extending
-from [ReactiveLinkedList&lt;R&gt;](../Collections/ReactiveLinkedList.md). They allow **aggregating multiple function
+from [ReactiveLinkedList&lt;T&gt;](../Collections/ReactiveLinkedList.md). They allow **aggregating multiple function
 members** and provide **dynamic evaluation** based on parameterless or parameterized functions.
 
 > [!NOTE]
