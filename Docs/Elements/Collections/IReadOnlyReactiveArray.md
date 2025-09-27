@@ -1,12 +1,11 @@
 # 🧩 IReadOnlyReactiveArray&lt;T&gt;
 
-Represents a **read-only reactive array** that notifies subscribers about changes to its elements and global state. It
-extends `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, and `IEnumerable<T>`.
 
 ```csharp
 public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
 ```
-
+- **Description:** Represents a **read-only reactive array** that notifies subscribers about changes to its elements and global state. 
+- **Inheritance:** `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, `IEnumerable<T>`.
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled
   updates trigger events.
