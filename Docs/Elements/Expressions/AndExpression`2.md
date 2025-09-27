@@ -1,23 +1,21 @@
-
-<details>
-  <summary>
-    <h2>🧩 AndExpression&lt;T1, T2&gt;</h2>
-    <br> Represents a <b>logical AND expression</b> aggregating multiple <code>Func&lt;T1, T2, bool&gt;</code> members
-  </summary>
-
-<br>
+# 🧩 AndExpression&lt;T1, T2&gt;
 
 ```csharp
+[Serializable]
 public class AndExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
 ```
 
+- **Description:**  <br> Represents a <b>logical AND expression</b> aggregating multiple 
+- <code>Func&lt;T1, T2, bool&gt;</code> members
 - **Type Parameters:**
     - `T1` - The first input parameter type of the functions.
     - `T2` - The second input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md), [IPredicate&lt;T1, T2&gt;](../Functions/IPredicate%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `AndExpression(int)`
 
@@ -50,7 +48,7 @@ public AndExpression(IEnumerable<Func<T1, T2, bool>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -87,7 +85,7 @@ public event Action<int, Func<T1, T2, bool>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -109,7 +107,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `this[int index]`
 
@@ -123,7 +121,7 @@ public Func<T1, T2, bool> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
 
@@ -246,5 +244,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-</details>

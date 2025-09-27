@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpressions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,31 +211,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="9402000" />
-    </task>
-    <task id="LOCAL-00870" summary="ICooldown.md">
-      <option name="closed" value="true" />
-      <created>1758880109010</created>
-      <option name="number" value="00870" />
-      <option name="presentableId" value="LOCAL-00870" />
-      <option name="project" value="LOCAL" />
-      <updated>1758880109010</updated>
-    </task>
-    <task id="LOCAL-00871" summary="Cooldown.md">
-      <option name="closed" value="true" />
-      <created>1758880421608</created>
-      <option name="number" value="00871" />
-      <option name="presentableId" value="LOCAL-00871" />
-      <option name="project" value="LOCAL" />
-      <updated>1758880421608</updated>
-    </task>
-    <task id="LOCAL-00872" summary="RandomCooldown.md">
-      <option name="closed" value="true" />
-      <created>1758880831780</created>
-      <option name="number" value="00872" />
-      <option name="presentableId" value="LOCAL-00872" />
-      <option name="project" value="LOCAL" />
-      <updated>1758880831780</updated>
+      <workItem from="1758961405633" duration="9822000" />
     </task>
     <task id="LOCAL-00873" summary="RandomCooldown.md">
       <option name="closed" value="true" />
@@ -608,7 +581,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758994843816</updated>
     </task>
-    <option name="localTasksCounter" value="919" />
+    <task id="LOCAL-00919" summary="AndExpressions.md, AndExpression.md">
+      <option name="closed" value="true" />
+      <created>1759000471193</created>
+      <option name="number" value="00919" />
+      <option name="presentableId" value="LOCAL-00919" />
+      <option name="project" value="LOCAL" />
+      <updated>1759000471193</updated>
+    </task>
+    <task id="LOCAL-00920" summary="AndExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1759000633554</created>
+      <option name="number" value="00920" />
+      <option name="presentableId" value="LOCAL-00920" />
+      <option name="project" value="LOCAL" />
+      <updated>1759000633554</updated>
+    </task>
+    <task id="LOCAL-00921" summary="AndExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1759000661420</created>
+      <option name="number" value="00921" />
+      <option name="presentableId" value="LOCAL-00921" />
+      <option name="project" value="LOCAL" />
+      <updated>1759000661420</updated>
+    </task>
+    <option name="localTasksCounter" value="922" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,8 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Periods.md" />
-    <MESSAGE value="Timestamps.md" />
     <MESSAGE value="Time" />
     <MESSAGE value="Сделал раздел Time!" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
@@ -660,7 +655,9 @@
     <MESSAGE value="ExpressionBase.md" />
     <MESSAGE value="ExpressionBase`1.md" />
     <MESSAGE value="ExpressionBase`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExpressionBase`2.md" />
+    <MESSAGE value="AndExpressions.md, AndExpression.md" />
+    <MESSAGE value="AndExpression`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="AndExpression`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

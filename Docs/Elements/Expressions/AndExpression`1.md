@@ -8,7 +8,8 @@ public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 - **Description:** Represents a <b>logical AND expression</b> with <b>single parameter</b> aggregating multiple
   <code>Func&lt;T, bool&gt;</code> members
 - **Type Parameter:** `T` - The input parameter type of the functions.
-- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate](../Functions/IPredicate%601.md)
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
@@ -118,7 +119,7 @@ public Func<T, bool> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T arg)`
 
