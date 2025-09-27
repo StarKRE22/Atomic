@@ -75,7 +75,7 @@ public T this[int index] { get; }
 #### `Contains(T)`
 
 ```csharp
-bool Contains(T item);
+public bool Contains(T item);
 ```
 
 - **Description:** Determines whether the array contains a specific element.
@@ -85,7 +85,7 @@ bool Contains(T item);
 #### `IndexOf(T)`
 
 ```csharp
-int IndexOf(T item);
+public int IndexOf(T item);
 ```
 
 - **Description:** Returns the index of a specific item in the array.
