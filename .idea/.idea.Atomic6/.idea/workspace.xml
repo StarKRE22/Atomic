@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpressions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,31 +214,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="8418000" />
-    </task>
-    <task id="LOCAL-00867" summary="IProgressSource.md">
-      <option name="closed" value="true" />
-      <created>1758879165463</created>
-      <option name="number" value="00867" />
-      <option name="presentableId" value="LOCAL-00867" />
-      <option name="project" value="LOCAL" />
-      <updated>1758879165463</updated>
-    </task>
-    <task id="LOCAL-00868" summary="IStateSource.md">
-      <option name="closed" value="true" />
-      <created>1758879292734</created>
-      <option name="number" value="00868" />
-      <option name="presentableId" value="LOCAL-00868" />
-      <option name="project" value="LOCAL" />
-      <updated>1758879292734</updated>
-    </task>
-    <task id="LOCAL-00869" summary="Cooldowns.md">
-      <option name="closed" value="true" />
-      <created>1758879845025</created>
-      <option name="number" value="00869" />
-      <option name="presentableId" value="LOCAL-00869" />
-      <option name="project" value="LOCAL" />
-      <updated>1758879845025</updated>
+      <workItem from="1758961405633" duration="9402000" />
     </task>
     <task id="LOCAL-00870" summary="ICooldown.md">
       <option name="closed" value="true" />
@@ -605,7 +584,31 @@
       <option name="project" value="LOCAL" />
       <updated>1758994194173</updated>
     </task>
-    <option name="localTasksCounter" value="916" />
+    <task id="LOCAL-00916" summary="ExpressionBase`2.md">
+      <option name="closed" value="true" />
+      <created>1758994554557</created>
+      <option name="number" value="00916" />
+      <option name="presentableId" value="LOCAL-00916" />
+      <option name="project" value="LOCAL" />
+      <updated>1758994554557</updated>
+    </task>
+    <task id="LOCAL-00917" summary="ExpressionBase`2.md">
+      <option name="closed" value="true" />
+      <created>1758994616591</created>
+      <option name="number" value="00917" />
+      <option name="presentableId" value="LOCAL-00917" />
+      <option name="project" value="LOCAL" />
+      <updated>1758994616591</updated>
+    </task>
+    <task id="LOCAL-00918" summary="ExpressionBase`2.md">
+      <option name="closed" value="true" />
+      <created>1758994843816</created>
+      <option name="number" value="00918" />
+      <option name="presentableId" value="LOCAL-00918" />
+      <option name="project" value="LOCAL" />
+      <updated>1758994843816</updated>
+    </task>
+    <option name="localTasksCounter" value="919" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="StopwatchState.md" />
     <MESSAGE value="Periods.md" />
     <MESSAGE value="Timestamps.md" />
     <MESSAGE value="Time" />
@@ -657,7 +659,8 @@
     <MESSAGE value="ExpressionsBase.md" />
     <MESSAGE value="ExpressionBase.md" />
     <MESSAGE value="ExpressionBase`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExpressionBase`1.md" />
+    <MESSAGE value="ExpressionBase`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExpressionBase`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
