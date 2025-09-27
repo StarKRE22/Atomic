@@ -1,11 +1,14 @@
 # 🧩 Optional&lt;T&gt;
 
-Represents a **Unity-friendly optional value** that can be serialized and displayed in the Inspector. It supports
-activation state, implicit conversions, and safe value access.
-
 ```csharp
+[Serializable]
 public struct Optional<T>
 ```
+
+- **Description:**  Represents a **Unity-friendly optional value** that can be serialized and displayed in the
+  Inspector. It supports activation state, implicit conversions, and safe value access.
+- **Type Parameter:** `T` – The type of the value to store.
+- **Notes:** Support Unity serialization and Odin Inspector
 
 ---
 
@@ -97,11 +100,9 @@ public static bool operator false(Optional<T> it)
 ## 🗂 Example of Usage
 
 `Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible
-configuration.
+configuration. Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
 
-Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
-
-### 🔹 Optional State
+### Example #1: Optional State
 
 If your weapon has optional components, you can connect them using the `Optional<T>` field. This allows you to **enable
 or disable features dynamically** without changing the core logic of the weapon.
@@ -129,7 +130,7 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
 }
 ```
 
-### 🔹 Optional Visualization
+### Example #2: Optional Visualization
 
 Also, if your weapon has optional visualization, you can connect them using the `Optional<T>` field. This allows you to
 **enable or disable features in Inspector** without changing the core logic of the weapon.
@@ -160,7 +161,7 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 }
 ```
 
-### 🔹 Override entity installing
+### Example #3: Override entity installing
 
 If you have an installer that configures enemies and is used as a **Shared Entity Installer**, it might look like this:
 
@@ -208,7 +209,7 @@ public sealed class OverrideEnemyInstaller : SceneEntityInstaller<IEnemyEntity>
 }
 ```
 
-----
+---
 
 ## 📝 Notes
 

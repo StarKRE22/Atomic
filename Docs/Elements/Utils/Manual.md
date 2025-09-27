@@ -12,5 +12,5 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - [DisposableAction](DisposableAction.md) <!-- + -->
 - [DisposableComposite](DisposableComposite.md) <!-- + -->
 - [Reference](Reference.md) <!-- + -->
-- [Optional](Optional.md)
+- [Optional](Optional.md) <!-- + -->
 - [Extensions](Extensions.md) <!-- + -->
