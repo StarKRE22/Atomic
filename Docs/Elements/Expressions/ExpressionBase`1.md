@@ -7,7 +7,7 @@ public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IEx
 - **Description:** Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates
   multiple functions returning a value of type <code>R</code>
 - **Inheritance:** [ReactiveLinkedList&lt;T&gt;](../Collections/ReactiveLinkedList.md),
-  [IExpression&lt;T, R&gt;](IExpression.md)
+  [IExpression&lt;T, R&gt;](IExpression%601.md)
 - **Type Parameters:**
     - `T` - The input parameter type of the functions.
     - `R` - The return type of the expression.

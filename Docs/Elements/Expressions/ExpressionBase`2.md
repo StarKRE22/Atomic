@@ -7,6 +7,8 @@ public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2
 
 - **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and 
   <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+- **Inheritance:** [ReactiveLinkedList&lt;T&gt;](../Collections/ReactiveLinkedList.md),
+  [IExpression&lt;T1, T2, R&gt;](IExpression%602.md)
 - **Type Parameters:**
     - `T1` — The first input parameter type.
     - `T2` — The second input parameter type.
@@ -193,7 +195,7 @@ public void CopyTo(Func<T1, T2, R>[] array, int arrayIndex)
     - `array` — Destination array.
     - `arrayIndex` — Starting index in the array.
 
-#### `IndexOf(Func<T1, T2, R> item)`
+#### `IndexOf(Func<T1, T2, R>)`
 
 ```csharp
 public int IndexOf(Func<T1, T2, R> item)
