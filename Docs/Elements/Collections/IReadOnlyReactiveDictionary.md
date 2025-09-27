@@ -18,6 +18,7 @@ public interface IReadOnlyReactiveDictionary<K, V> :
 > [!TIP]
 > Use this interface when you need **read-only dictionary access** but still want **reactive notifications**
 > on changes.
+
 ---
 
 ## ⚡ Events
