@@ -6,7 +6,7 @@ public class AndExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1
 ```
 
 - **Description:**  <br> Represents a <b>logical AND expression</b> aggregating multiple 
-- <code>Func&lt;T1, T2, bool&gt;</code> members
+  <code>Func&lt;T1, T2, bool&gt;</code> members
 - **Type Parameters:**
     - `T1` - The first input parameter type of the functions.
     - `T2` - The second input parameter type of the functions.
