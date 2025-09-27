@@ -22,7 +22,7 @@ There are several interfaces of expressions, depending on the number of argument
 
 ```csharp
 // Suppose we have a concrete implementation of IExpression<int>
-IExpression<int> expression = ...;
+IExpression<int> expression = ...
 
 // Add some functions
 expression.Add(() => 10);
