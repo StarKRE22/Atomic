@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,31 +210,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="12444000" />
-    </task>
-    <task id="LOCAL-00890" summary="IReadOnlyReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1758961670024</created>
-      <option name="number" value="00890" />
-      <option name="presentableId" value="LOCAL-00890" />
-      <option name="project" value="LOCAL" />
-      <updated>1758961670024</updated>
-    </task>
-    <task id="LOCAL-00891" summary="IReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1758961791053</created>
-      <option name="number" value="00891" />
-      <option name="presentableId" value="LOCAL-00891" />
-      <option name="project" value="LOCAL" />
-      <updated>1758961791053</updated>
-    </task>
-    <task id="LOCAL-00892" summary="IReadOnlyReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758961881228</created>
-      <option name="number" value="00892" />
-      <option name="presentableId" value="LOCAL-00892" />
-      <option name="project" value="LOCAL" />
-      <updated>1758961881229</updated>
+      <workItem from="1758961405633" duration="12750000" />
     </task>
     <task id="LOCAL-00893" summary="IReadOnlyReactiveArray.md">
       <option name="closed" value="true" />
@@ -606,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759003184669</updated>
     </task>
-    <option name="localTasksCounter" value="939" />
+    <task id="LOCAL-00939" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1759003525097</created>
+      <option name="number" value="00939" />
+      <option name="presentableId" value="LOCAL-00939" />
+      <option name="project" value="LOCAL" />
+      <updated>1759003525097</updated>
+    </task>
+    <task id="LOCAL-00940" summary="Reference.md">
+      <option name="closed" value="true" />
+      <created>1759003554473</created>
+      <option name="number" value="00940" />
+      <option name="presentableId" value="LOCAL-00940" />
+      <option name="project" value="LOCAL" />
+      <updated>1759003554473</updated>
+    </task>
+    <task id="LOCAL-00941" summary="Сделал Utilities">
+      <option name="closed" value="true" />
+      <created>1759003813429</created>
+      <option name="number" value="00941" />
+      <option name="presentableId" value="LOCAL-00941" />
+      <option name="project" value="LOCAL" />
+      <updated>1759003813429</updated>
+    </task>
+    <option name="localTasksCounter" value="942" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Expressions Manual.md" />
-    <MESSAGE value="IExpression.md" />
     <MESSAGE value="IExpressions.md" />
     <MESSAGE value="IExpression`1.md" />
     <MESSAGE value="IExpression`2.md" />
@@ -658,7 +654,9 @@
     <MESSAGE value="DisposableAction.md" />
     <MESSAGE value="DisposableComposite.md" />
     <MESSAGE value="Extensions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
+    <MESSAGE value="Reference.md" />
+    <MESSAGE value="Сделал Utilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал Utilities" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
