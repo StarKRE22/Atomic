@@ -15,6 +15,13 @@ public class Period : IPeriod
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                          |
+|---------------|--------------------------------------|
+| `duration`    | The total duration of the one cycle. |
+
+
 ## 🏗️ Constructors
 
 #### `Period()`

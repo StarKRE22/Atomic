@@ -10,7 +10,7 @@ data access and modification.
   - [IReactiveCollection](IReactiveCollection.md) <!-- + -->
 - ReactiveArrays
   - [IReadOnlyReactiveArray](IReadOnlyReactiveArray.md) <!-- + -->
-  - [IReactiveArray](IReactiveArray.md)
+  - [IReactiveArray](IReactiveArray.md) <!-- + -->
   - [ReactiveArray](ReactiveArray.md)
 - ReactiveLists
   - [IReadOnlyReactiveList](IReadOnlyReactiveList.md)

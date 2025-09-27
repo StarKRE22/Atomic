@@ -98,6 +98,7 @@ namespace Atomic.Elements
         private float duration;
 
         private float currentTime;
+        
         private TimerState currentState;
 
         /// <summary>

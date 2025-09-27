@@ -1,21 +1,29 @@
 # 🧩 ReactiveArray&lt;T&gt;
 
-Represents a **fixed-size reactive array** that emits events when elements change. It provides indexed access, supports
-enumeration, and implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`. Optionally supports
-serialization for Unity projects.
-
 ```csharp
+[Serializable]
 public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 ```
 
-- **Type Parameters:**
-    - `T` — The type of elements stored in the array.
-- **Notes:**
-    - Use this class when you need a read-write reactive array with change notifications and iteration support.
-    - Supports Unity serialization
+- **Description:** Represents a **fixed-size reactive array** that emits events when elements change.
+  It provides indexed access, supports enumeration
+- **Inheritance:** implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`
+- **Type Parameter:** `T` — The type of elements stored in the array.
+- **Note:** Supports Unity serialization and Odin Inspector
 
 > [!TIP]
+> Use this class when you need a read-write reactive array with change notifications and iteration support.
+
+> [!IMPORTANT]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                        |
+|-----------|------------------------------------|
+| `items`   | The initial elements of the array. |
 
 ---
 
@@ -266,7 +274,7 @@ reactive wrapper.
 | Get        | 1.10              | 1.20                      |
 | Set        | 28.00             | 76.90                     |
 | Copy       | 0.70              | 0.50                      |
-| Enumerator | 0.80              | 28.50                      |
+| Enumerator | 0.80              | 28.50                     |
 | For        | 0.70              | 0.70                      |
 | Clear      | 0.40              | 41.50                     |
 

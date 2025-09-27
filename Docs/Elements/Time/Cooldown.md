@@ -16,6 +16,15 @@ public class Cooldown : ICooldown
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                            |
+|---------------|----------------------------------------|
+| `duration`    | Total duration of the cooldown         |
+| `currentTime` | Current remaining time of the cooldown |
+
+---
+
 ## 🏗️ Constructors
 
 #### `Cooldown()`

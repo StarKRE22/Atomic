@@ -16,6 +16,15 @@ public class RandomCooldown : ICooldown
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                           |
+|---------------|---------------------------------------|
+| `minDuration` | The minimum duration of the cooldown. |
+| `maxDuration` | The maximum duration of the cooldown. |
+
+---
+
 ## 🏗️ Constructors
 
 #### `RandomCooldown(float, float)`

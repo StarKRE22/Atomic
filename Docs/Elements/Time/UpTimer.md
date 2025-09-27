@@ -18,6 +18,14 @@ public class UpTimer : ITimer
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                           |
+|---------------|---------------------------------------|
+| `duration`    | The total duration of the timer.      |
+
+---
+
 ## 🏗️ Constructors
 
 #### `UpTimer()`

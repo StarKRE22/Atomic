@@ -18,6 +18,14 @@ public class DownTimer : ITimer
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                           |
+|---------------|---------------------------------------|
+| `duration`    | The total duration of the timer.      |
+
+---
+
 ## 🏗️ Constructors
 
 #### `DownTimer()`
