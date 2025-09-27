@@ -4,8 +4,13 @@ Represents **expressions composed of function members** that can be dynamically 
 supports both parameterless functions and functions with one or more parameters, enabling flexible and reusable logic
 composition.
 
-- [IExpressions]()
-    - [IExpression&lt;R&gt;]()
+> [!NOTE]
+> Expressions act as dynamic functions that evaluate all registered members, making them ideal for flexible,
+> runtime-adjustable calculations. For example, you can add multipliers for speed, apply effects when an object is
+> frozen, or modify a value based on boosts.
+
+- [IExpressions](IExpressions.md) <!-- + -->
+    - [IExpression&lt;R&gt;](IExpression.md) <!-- + -->
     - [IExpression&lt;T, R&gt;]()
     - [IExpression&lt;T1, T2, R&gt;]()
 - [Expressions Base]()
