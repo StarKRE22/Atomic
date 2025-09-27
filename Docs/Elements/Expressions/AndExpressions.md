@@ -10,9 +10,9 @@ corresponding [IPredicate](../Functions/IPredicates.md) interfaces.
 
 There are several classes of **AND** expressions, depending on the number of arguments the actions take:
 
-- [AndExpression&lt;R&gt;](AndExpression.md) — Non-generic version; works without parameters.
-- [AndExpression&lt;T, R&gt;](AndExpression%601.md) — Expression that takes one argument.
-- [AndExpression&lt;T1, T2, R&gt;](AndExpression%602.md) — Expression that takes two arguments.
+- [AndExpression](AndExpression.md) — Non-generic version; works without parameters.
+- [AndExpression&lt;T&gt;](AndExpression%601.md) — Expression that takes one argument.
+- [AndExpression&lt;T1, T2&gt;](AndExpression%602.md) — Expression that takes two arguments.
 
 ---
 
