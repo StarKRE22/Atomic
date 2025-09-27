@@ -1,6 +1,8 @@
 # 🧩 CollisionEvents2D
 
 ```csharp
+[AddComponentMenu("Atomic/Elements/Collision Events 2D")]
+[DisallowMultipleComponent]
 public sealed class CollisionEvents2D : MonoBehaviour
 ```
 
