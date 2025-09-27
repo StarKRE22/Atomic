@@ -6,10 +6,12 @@ public class OrExpression : ExpressionBase<bool>, IPredicate
 
 - **Description:** Represents a <b>parameterless logical OR expression</b> aggregating multiple
   <code>Func&lt;bool&gt;</code> members
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md), [IPredicate](../Functions/IPredicate.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `OrExpression(int)`
 
@@ -38,7 +40,7 @@ public OrExpression(IEnumerable<Func<bool>> members)
 - **Description:** Initializes the expression with a collection of parameterless boolean-returning functions.
 - **Parameter:** `members` — Enumerable of `Func<bool>` delegates.
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -75,7 +77,7 @@ public event Action<int, Func<bool>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -107,7 +109,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -121,7 +123,7 @@ public Func<bool> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 

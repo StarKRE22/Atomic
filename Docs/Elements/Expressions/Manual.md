@@ -21,8 +21,8 @@ composition.
     - [AndExpression&lt;R&gt;](AndExpression.md) <!-- + -->
     - [AndExpression&lt;T, R&gt;](AndExpression%601.md) <!-- + -->
     - [AndExpression&lt;T1, T2, R&gt;](AndExpression%602.md) <!-- + -->
-- [OrExpressions](OrExpressions.md)
-    - [OrExpression&lt;R&gt;]()
+- [OrExpressions](OrExpressions.md) <!-- + -->
+    - [OrExpression&lt;R&gt;](OrExpression.md) <!-- + -->
     - [OrExpression&lt;T, R&gt;]()
     - [OrExpression&lt;T1, T2, R&gt;]()
 - [IntMulExpressions]()

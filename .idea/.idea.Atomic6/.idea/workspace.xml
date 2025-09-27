@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/AndExpression`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/OrExpression.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,31 +214,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="9822000" />
-    </task>
-    <task id="LOCAL-00873" summary="RandomCooldown.md">
-      <option name="closed" value="true" />
-      <created>1758880858397</created>
-      <option name="number" value="00873" />
-      <option name="presentableId" value="LOCAL-00873" />
-      <option name="project" value="LOCAL" />
-      <updated>1758880858397</updated>
-    </task>
-    <task id="LOCAL-00874" summary="Пилим Timers!">
-      <option name="closed" value="true" />
-      <created>1758882517343</created>
-      <option name="number" value="00874" />
-      <option name="presentableId" value="LOCAL-00874" />
-      <option name="project" value="LOCAL" />
-      <updated>1758882517343</updated>
-    </task>
-    <task id="LOCAL-00875" summary="Timers.md">
-      <option name="closed" value="true" />
-      <created>1758908033318</created>
-      <option name="number" value="00875" />
-      <option name="presentableId" value="LOCAL-00875" />
-      <option name="project" value="LOCAL" />
-      <updated>1758908033318</updated>
+      <workItem from="1758961405633" duration="10264000" />
     </task>
     <task id="LOCAL-00876" summary="ITimer.md">
       <option name="closed" value="true" />
@@ -605,7 +584,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759000661420</updated>
     </task>
-    <option name="localTasksCounter" value="922" />
+    <task id="LOCAL-00922" summary="AndExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1759000976592</created>
+      <option name="number" value="00922" />
+      <option name="presentableId" value="LOCAL-00922" />
+      <option name="project" value="LOCAL" />
+      <updated>1759000976592</updated>
+    </task>
+    <task id="LOCAL-00923" summary="AndExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1759001048727</created>
+      <option name="number" value="00923" />
+      <option name="presentableId" value="LOCAL-00923" />
+      <option name="project" value="LOCAL" />
+      <updated>1759001048727</updated>
+    </task>
+    <task id="LOCAL-00924" summary="AndExpressions">
+      <option name="closed" value="true" />
+      <created>1759001125847</created>
+      <option name="number" value="00924" />
+      <option name="presentableId" value="LOCAL-00924" />
+      <option name="project" value="LOCAL" />
+      <updated>1759001125847</updated>
+    </task>
+    <option name="localTasksCounter" value="925" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Time" />
-    <MESSAGE value="Сделал раздел Time!" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveArray.md" />
@@ -657,7 +658,9 @@
     <MESSAGE value="ExpressionBase`2.md" />
     <MESSAGE value="AndExpressions.md, AndExpression.md" />
     <MESSAGE value="AndExpression`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="AndExpression`1.md" />
+    <MESSAGE value="AndExpression`2.md" />
+    <MESSAGE value="AndExpressions" />
+    <option name="LAST_COMMIT_MESSAGE" value="AndExpressions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
