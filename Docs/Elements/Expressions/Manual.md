@@ -16,7 +16,7 @@ composition.
 - [Expressions Base](ExpressionsBase.md) <!-- + -->
     - [ExpressionBase&lt;R&gt;](ExpressionBase.md) <!-- + -->
     - [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md) <!-- + -->
-    - [ExpressionBase&lt;T1, T2, R&gt;]()
+    - [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md) <!-- + -->
 - [AndExpressions]()
     - [AndExpression&lt;R&gt;]()
     - [AndExpression&lt;T, R&gt;]()

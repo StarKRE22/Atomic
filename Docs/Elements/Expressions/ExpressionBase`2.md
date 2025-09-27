@@ -1,16 +1,11 @@
-
-<details>
-  <summary>
-    <h2>🧩 ExpressionBase&lt;T1, T2, R&gt;</h2>
-    <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
-  </summary>
-
-<br>
+# 🧩 ExpressionBase&lt;T1, T2, R&gt;
 
 ```csharp
 public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
 ```
 
+- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>
+  T2</code> that aggregates multiple functions returning a value of type <code>R</code>
 - **Type Parameters:**
     - `T1` — The first input parameter type.
     - `T2` — The second input parameter type.
@@ -18,7 +13,7 @@ public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `ExpressionBase(int)`
 
@@ -49,7 +44,7 @@ protected ExpressionBase(IEnumerable<Func<T1, T2, R>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -86,7 +81,7 @@ public event Action<int, Func<T1, T2, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -108,7 +103,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -120,7 +115,9 @@ public Func<T1, T2, R> this[int index] { get; set; }
 - **Parameter:** `index` — The position of the function.
 - **Returns:** `Func<T1, T2, R>` — The function at the given index.
 
-### 🏹 Methods
+---
+
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -252,5 +249,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-</details>
