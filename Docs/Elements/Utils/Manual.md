@@ -7,8 +7,8 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - [AnimationEvents](AnimationEvents.md) <!-- + -->
 - [CollisionEvents](CollisionEvents.md) <!-- + -->
 - [CollisionEvents2D](CollisionEvents2D.md) <!-- + -->
-- [TriggerEvents](TriggerEvents.md)
-- [TriggerEvents2D](TriggerEvents2D.md)
+- [TriggerEvents](TriggerEvents.md) <!-- + -->
+- [TriggerEvents2D](TriggerEvents2D.md) <!-- + -->
 - [DisposableAction](DisposableAction.md)
 - [DisposableComposite](DisposableComposite.md)
 - [Reference](Reference.md)

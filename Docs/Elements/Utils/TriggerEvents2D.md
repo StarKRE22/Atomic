@@ -1,12 +1,17 @@
 # 🧩 TriggerEvents2D
 
-A **Unity MonoBehaviour** that exposes Unity’s 2D trigger callbacks (`OnTriggerEnter2D`, `OnTriggerExit2D`,
-`OnTriggerStay2D`) as C# events. This allows external scripts to react to 2D trigger interactions without overriding
-Unity callbacks. Attach this component to a `GameObject` with a **2D Collider** set as a **Trigger** to receive events.
-
 ```csharp
+[AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
+[DisallowMultipleComponent]
 public sealed class TriggerEvents2D : MonoBehaviour
-```
+``` 
+
+- **Description:** A **Unity MonoBehaviour** that exposes Unity’s 2D trigger callbacks (`OnTriggerEnter2D`,
+  `OnTriggerExit2D`,
+  `OnTriggerStay2D`) as C# events. This allows external scripts to react to 2D trigger interactions without overriding
+  Unity callbacks. Attach this component to a `GameObject` with a **2D Collider** set as a **Trigger** to receive
+  events.
+
 - **Inheritance:** `MonoBehaviour`
 
 ---
@@ -80,11 +85,11 @@ public void OnTriggerStay2D(Collider2D other);
 
 ## 🗂 Example Usage
 
-### 1. Add Component
+#### 1. Add Component
 
 Add a **`TriggerEvents2D`** component to a `GameObject` with a **2D Collider** set as a trigger.
 
-### 2. Create Script
+#### 2. Create Script
 
 Create a script called `Trigger2DExample`:
 
@@ -119,11 +124,11 @@ public class Trigger2DExample : MonoBehaviour
 }
 ```
 
-### 3. Attach Script
+#### 3. Attach Script
 
 Attach the `Trigger2DExample` script to the **same GameObject**.
 
-### 4. Run and Test
+#### 4. Run and Test
 
 Enter **Play Mode** in Unity. When other 2D colliders interact with the trigger, logs will appear in the **Console**.
 
