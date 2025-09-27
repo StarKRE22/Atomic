@@ -1,13 +1,11 @@
 # 🧩 IReactiveCollection&lt;T&gt;
 
-Represents a **reactive collection** that provides notifications when items are added, removed, or when the overall
-state changes. Allows **modification of the collection**. It
-extends [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md) and `ICollection<T>`.
-
 ```csharp
 public interface IReactiveCollection<T> : IReadOnlyReactiveCollection<T>, ICollection<T>
 ```
-
+- **Description:** Represents a **reactive collection** that provides notifications when items are added, removed, or when the overall
+state changes. Allows **modification of the collection**. 
+- **Inheritance:** [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md), `ICollection<T>`.
 - **Type Parameter:** `T` — The type of elements stored in the collection.
 - **Note:** Use this interface when you need both **reactive notifications** and **write access** (add, remove, clear)
   to the collection.
@@ -136,6 +134,7 @@ public IEnumerator<T> GetEnumerator();
 ## 🗂 Example of Usage
 
 ```csharp
+//Assume we have a collection
 IReactiveCollection<string> collection = ...;
 
 // Subscribe to events

@@ -75,7 +75,7 @@ public IEnumerator<T> GetEnumerator();
 ## 🗂 Example of Usage
 
 ```csharp
-//Assume we have collection
+//Assume we have a collection
 IReadOnlyReactiveCollection<string> collection = ...;
 
 // Subscribe to events

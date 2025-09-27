@@ -6,8 +6,8 @@ programming**. Both read-only and fully mutable reactive collections are support
 data access and modification.
 
 - Base Interfaces
-  - [IReadOnlyReactiveCollection](IReadOnlyReactiveCollection.md)
-  - [IReactiveCollection](IReactiveCollection.md)
+  - [IReadOnlyReactiveCollection](IReadOnlyReactiveCollection.md) <!-- + -->
+  - [IReactiveCollection](IReactiveCollection.md) <!-- + -->
 - ReactiveArrays
   - [IReadOnlyReactiveArray](IReadOnlyReactiveArray.md)
   - [IReactiveArray](IReactiveArray.md)
