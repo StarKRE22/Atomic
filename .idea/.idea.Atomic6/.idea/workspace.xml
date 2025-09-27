@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveSet.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,15 +212,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="5031000" />
-    </task>
-    <task id="LOCAL-00855" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1758876651614</created>
-      <option name="number" value="00855" />
-      <option name="presentableId" value="LOCAL-00855" />
-      <option name="project" value="LOCAL" />
-      <updated>1758876651614</updated>
+      <workItem from="1758961405633" duration="5801000" />
     </task>
     <task id="LOCAL-00856" summary="Extensions.md">
       <option name="closed" value="true" />
@@ -606,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758990679084</updated>
     </task>
-    <option name="localTasksCounter" value="904" />
+    <task id="LOCAL-00904" summary="ReactiveHashSet.md">
+      <option name="closed" value="true" />
+      <created>1758991201157</created>
+      <option name="number" value="00904" />
+      <option name="presentableId" value="LOCAL-00904" />
+      <option name="project" value="LOCAL" />
+      <updated>1758991201157</updated>
+    </task>
+    <option name="localTasksCounter" value="905" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="Пилим Timers!" />
     <MESSAGE value="Timers.md" />
     <MESSAGE value="ITimer.md" />
@@ -658,7 +657,8 @@
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="ReactiveDictionary.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveDictionary.md" />
+    <MESSAGE value="ReactiveHashSet.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveHashSet.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
