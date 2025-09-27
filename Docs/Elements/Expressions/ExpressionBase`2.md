@@ -1,15 +1,17 @@
 # 🧩 ExpressionBase&lt;T1, T2, R&gt;
 
 ```csharp
+[Serializable]
 public abstract class ExpressionBase<T1, T2, R> : ReactiveLinkedList<Func<T1, T2, R>>, IExpression<T1, T2, R>
 ```
 
-- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>
-  T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and 
+  <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
 - **Type Parameters:**
     - `T1` — The first input parameter type.
     - `T2` — The second input parameter type.
     - `R` — The return type of the expression.
+- **Note:** Supports Odin Inspector
 
 ---
 
