@@ -8,10 +8,10 @@ public sealed class AnimationEvents : MonoBehaviour
 
 - **Description:** A **Unity MonoBehaviour** that bridges Unity animation events to C# event subscriptions. Allows
   listening for animation
-  events without hardcoding method names in the inspector.
-- **Inheritance:** `MonoBehaviour`
-- **Usage:** Attach this component to a GameObject with an `Animator` or
+  events without hardcoding method names in the inspector. Attach this component to a GameObject with an `Animator` or
   `Animation` to dispatch animation events through C# events.
+
+- **Inheritance:** `MonoBehaviour`
 
 ---
 

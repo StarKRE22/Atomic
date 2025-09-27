@@ -1,10 +1,14 @@
 # 🧩 CollisionEvents
 
-A **Unity MonoBehaviour** that exposes Unity’s collision callbacks as C# events. This makes it easier to react to physics interactions without overriding `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay` in custom scripts. Attach this component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`) to receive collision events as C# events.
-
 ```csharp
+[AddComponentMenu("Atomic/Elements/Collision Events")]
+[DisallowMultipleComponent]
 public sealed class CollisionEvents : MonoBehaviour
 ```
+
+- **Description:** A **Unity MonoBehaviour** that exposes Unity’s collision callbacks as C# events. This makes it easier to react to physics interactions without overriding `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay` in custom scripts. Attach this component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`) to receive collision events as C# events.
+
+
 
 ---
 
