@@ -1,21 +1,23 @@
 # 🧩 IReadOnlyReactiveDictionary&lt;K, V&gt;
 
-Represents a **read-only reactive key-value dictionary** that provides notifications when items are added, removed,
-updated, or when the overall state changes. It extends `IReadOnlyDictionary<K, V>`
-and [IReadOnlyReactiveCollection<KeyValuePair<K, V>>](IReadOnlyReactiveCollection.md).
-
 ```csharp
 public interface IReadOnlyReactiveDictionary<K, V> : 
     IReadOnlyDictionary<K, V>,
     IReadOnlyReactiveCollection<KeyValuePair<K, V>>
 ```
 
+- **Description:** Represents a **read-only reactive key-value dictionary** that provides notifications when items are
+  added, removed,
+  updated, or when the overall state changes.
+- **Inheritance:**
+  `IReadOnlyDictionary<K, V>`, [IReadOnlyReactiveCollection<KeyValuePair<K, V>>](IReadOnlyReactiveCollection.md).
 - **Type Parameters:**
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
-- **Note:** Use this interface when you need **read-only dictionary access** but still want **reactive notifications**
-  on changes.
 
+> [!TIP]
+> Use this interface when you need **read-only dictionary access** but still want **reactive notifications**
+> on changes.
 ---
 
 ## ⚡ Events
