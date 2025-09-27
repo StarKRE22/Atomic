@@ -1,24 +1,33 @@
 # 🧩 ReactiveHashSet&lt;T&gt;
 
-Represents a **reactive hash set** that supports **notifications** when items are added, removed, or when the overall
-state changes. It implements `IReactiveSet<T>`, `ISet<T>`, `ICollection<T>`, `IEnumerable<T>`, and `IDisposable`.
-Optionally supports serialization for Unity projects.
-
 ```csharp
+[Serializable]
 public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCallbackReceiver
 ```
 
-- **Type Parameters:**
-    - `T` — The type of elements stored in the set.
-- **Notes:**
-    - Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
-    - Supports Unity serialization
+- **Description:** Represents a **reactive hash set** that supports **notifications** when items are added, removed, or
+  when the overall state changes.
+- **Inheritance:** [IReactiveSet&lt;T&gt;](IReactiveSet.md), `ISet<T>`, `ICollection<T>`, `IEnumerable<T>`,
+  `IDisposable`.
+- **Type Parameter:** `T` — The type of elements stored in the set.
+- **Note:** Supports Unity serialization and Odin Inspector
+
+> [!TIP]
+> Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter         | Description                              |
+|-------------------|------------------------------------------|
+| `serializedItems` | The initial elements of the set. |
 
 ---
 
 ## 🏗️ Constructors
 
-#### `ReactiveHashSet(int capacity)`
+#### `ReactiveHashSet(int)`
 
 ```csharp
 public ReactiveHashSet(int capacity = 0);
@@ -57,7 +66,7 @@ public ReactiveHashSet(IReadOnlyCollection<T> elements);
     - Adds all unique elements from the collection.
 - **Events:** Triggers `OnItemAdded` and `OnStateChanged` for each element added.
 
-#### `ReactiveHashSet(IEnumerable<T> elements)`
+#### `ReactiveHashSet(IEnumerable<T>)`
 
 ```csharp
 public ReactiveHashSet(IEnumerable<T> elements);
@@ -357,9 +366,9 @@ wrapper compared to a standard `HashSet<T>`.
 | Operation  | HashSet (Median μs) | ReactiveHashSet (Median μs) |
 |------------|---------------------|-----------------------------|
 | Add        | 69.30               | 64.30                       |
-| Clear      | 1.10                | 32.00                        |
-| Contains   | 50.10               | 10.00                        |
-| Enumerator | 29.60               | 29.60                        |
+| Clear      | 1.10                | 32.00                       |
+| Contains   | 50.10               | 10.00                       |
+| Enumerator | 29.60               | 29.60                       |
 | Remove     | 50.30               | 54.80                       |
 
 `ReactiveHashSet` shows **much lower median times for Add, Contains, and Enumerator**, thanks to internal optimizations

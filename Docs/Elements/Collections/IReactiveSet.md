@@ -1,14 +1,16 @@
 # 🧩 IReactiveSet&lt;T&gt;
 
-Represents a **reactive set** that supports notifications when items are added, removed, or when the overall state
-changes. It extends `ISet<T>` and [IReactiveCollection&lt;T&gt;](IReactiveCollection.md).
-
 ```csharp
 public interface IReactiveSet<T> : ISet<T>, IReactiveCollection<T>
 ```
 
+- **Description:** Represents a **reactive set** that supports notifications when items are added, removed, or when the
+  overall state changes.
+- **Inheritance:** `ISet<T>`, [IReactiveCollection&lt;T&gt;](IReactiveCollection.md).
 - **Type Parameter:** `T` — The type of elements stored in the set.
-- **Notes:** Use this interface when you need **mutable set access** with **reactive notifications** for all changes.
+
+> [!TIP]
+> Use this interface when you need **mutable set access** with **reactive notifications** for all changes.
 
 ---
 
