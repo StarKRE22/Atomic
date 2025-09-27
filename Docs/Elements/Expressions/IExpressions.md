@@ -4,8 +4,8 @@ These interfaces represent **expressions composed of function members** that can
 evaluated. They support parameterless functions as well as functions with one or more parameters.
 
 > [!NOTE]  
-> Additionally, `IExpression` **implements** [IReactiveList](../Collections/IReactiveList.md)
-> and [IFunction](../Functions/IFunctions.md).
+> Additionally, expression **implement** [IReactiveList&lt;T&gt;](../Collections/IReactiveList.md)
+> and inherit [IFunction](../Functions/IFunctions.md) interfaces. 
 > So it can hold multiple function members and can be evaluated as a function.
 
 ---
