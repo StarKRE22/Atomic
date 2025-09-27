@@ -11,9 +11,9 @@ data access and modification.
 - ReactiveArrays
   - [IReadOnlyReactiveArray](IReadOnlyReactiveArray.md) <!-- + -->
   - [IReactiveArray](IReactiveArray.md) <!-- + -->
-  - [ReactiveArray](ReactiveArray.md)
+  - [ReactiveArray](ReactiveArray.md) <!-- + -->
 - ReactiveLists
-  - [IReadOnlyReactiveList](IReadOnlyReactiveList.md)
+  - [IReadOnlyReactiveList](IReadOnlyReactiveList.md) <!-- + -->
   - [IReactiveList](IReactiveList.md)
   - [ReactiveList](ReactiveList.md)
   - [ReactiveLinkedList](ReactiveLinkedList.md)

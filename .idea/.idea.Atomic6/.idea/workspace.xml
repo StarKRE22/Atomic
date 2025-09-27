@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timer/UpTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timer/UpTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/DownTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/DownTimer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,39 +218,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="372000" />
-    </task>
-    <task id="LOCAL-00842" summary="ExtensionsUnsubscribeRange.md">
-      <option name="closed" value="true" />
-      <created>1758796994140</created>
-      <option name="number" value="00842" />
-      <option name="presentableId" value="LOCAL-00842" />
-      <option name="project" value="LOCAL" />
-      <updated>1758796994140</updated>
-    </task>
-    <task id="LOCAL-00843" summary="IVariable.md">
-      <option name="closed" value="true" />
-      <created>1758871824229</created>
-      <option name="number" value="00843" />
-      <option name="presentableId" value="LOCAL-00843" />
-      <option name="project" value="LOCAL" />
-      <updated>1758871824229</updated>
-    </task>
-    <task id="LOCAL-00844" summary="BaseVariable.md">
-      <option name="closed" value="true" />
-      <created>1758873114278</created>
-      <option name="number" value="00844" />
-      <option name="presentableId" value="LOCAL-00844" />
-      <option name="project" value="LOCAL" />
-      <updated>1758873114278</updated>
-    </task>
-    <task id="LOCAL-00845" summary="IReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1758873314725</created>
-      <option name="number" value="00845" />
-      <option name="presentableId" value="LOCAL-00845" />
-      <option name="project" value="LOCAL" />
-      <updated>1758873314725</updated>
+      <workItem from="1758961405633" duration="1385000" />
     </task>
     <task id="LOCAL-00846" summary="IReactiveVariable.md">
       <option name="closed" value="true" />
@@ -607,7 +580,39 @@
       <option name="project" value="LOCAL" />
       <updated>1758961670024</updated>
     </task>
-    <option name="localTasksCounter" value="891" />
+    <task id="LOCAL-00891" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1758961791053</created>
+      <option name="number" value="00891" />
+      <option name="presentableId" value="LOCAL-00891" />
+      <option name="project" value="LOCAL" />
+      <updated>1758961791053</updated>
+    </task>
+    <task id="LOCAL-00892" summary="IReadOnlyReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758961881228</created>
+      <option name="number" value="00892" />
+      <option name="presentableId" value="LOCAL-00892" />
+      <option name="project" value="LOCAL" />
+      <updated>1758961881229</updated>
+    </task>
+    <task id="LOCAL-00893" summary="IReadOnlyReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758961958426</created>
+      <option name="number" value="00893" />
+      <option name="presentableId" value="LOCAL-00893" />
+      <option name="project" value="LOCAL" />
+      <updated>1758961958426</updated>
+    </task>
+    <task id="LOCAL-00894" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1758962009328</created>
+      <option name="number" value="00894" />
+      <option name="presentableId" value="LOCAL-00894" />
+      <option name="project" value="LOCAL" />
+      <updated>1758962009328</updated>
+    </task>
+    <option name="localTasksCounter" value="895" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,9 +639,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IDurationSource.md" />
-    <MESSAGE value="ITickSource.md" />
-    <MESSAGE value="IPauseSource.md" />
     <MESSAGE value="IStartSource.md" />
     <MESSAGE value="ICompleteSource.md" />
     <MESSAGE value="IProgressSource.md" />
@@ -659,7 +661,10 @@
     <MESSAGE value="Time" />
     <MESSAGE value="Сделал раздел Time!" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyReactiveCollection.md" />
+    <MESSAGE value="IReactiveCollection.md" />
+    <MESSAGE value="IReadOnlyReactiveArray.md" />
+    <MESSAGE value="IReactiveArray.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReactiveArray.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

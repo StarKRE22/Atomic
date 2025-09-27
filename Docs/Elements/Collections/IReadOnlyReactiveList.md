@@ -1,14 +1,12 @@
 # 🧩 IReadOnlyReactiveList&lt;T&gt;
 
-Represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed
-notifications** for insertions, deletions, and overall state changes. It
-extends [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md)
-and [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
-
 ```csharp
 public interface IReadOnlyReactiveList<T> : IReadOnlyReactiveArray<T>, IReadOnlyReactiveCollection<T>
 ```
 
+- **Description:** Represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed
+notifications** for insertions, deletions, and overall state changes. 
+- **Inheritance:** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md), [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
 - **Type Parameter:** `T` — The type of elements stored in the list.
 - **Note:** Use this interface when you need **read-only indexed access** to a collection but still require **reactive
   notifications** on changes.
