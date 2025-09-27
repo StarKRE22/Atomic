@@ -88,6 +88,8 @@ public void OnCollisionStay(Collision collision);
 
 Here’s how to use `CollisionEvents` to detect and respond to physics collisions:
 
+---
+
 #### 1. Add Component
 
 Add a **`CollisionEvents`** component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).

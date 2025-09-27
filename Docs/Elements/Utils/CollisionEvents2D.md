@@ -1,14 +1,16 @@
 # 🧩 CollisionEvents2D
 
-A **Unity MonoBehaviour** that exposes Unity’s **2D collision callbacks** as C# events. This makes it easier to react to
-2D physics interactions without overriding `OnCollisionEnter2D`, `OnCollisionExit2D` or `OnCollisionStay2D` in custom
-scripts. Attach this component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`) to receive 2D
-collision events as C# events.
-- **Inheritance:** `MonoBehaviour`
-
 ```csharp
 public sealed class CollisionEvents2D : MonoBehaviour
 ```
+
+- **Description:** A **Unity MonoBehaviour** that exposes Unity’s **2D collision callbacks** as C# events. This makes it
+  easier to react to
+  2D physics interactions without overriding `OnCollisionEnter2D`, `OnCollisionExit2D` or `OnCollisionStay2D` in custom
+  scripts. Attach this component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`) to receive 2D
+  collision events as C# events.
+
+- **Inheritance:** `MonoBehaviour`
 
 ---
 
@@ -86,11 +88,12 @@ public void OnCollisionStay2D(Collision2D collision);
 
 Here’s how to use `CollisionEvents2D` to detect and respond to 2D physics collisions.
 
-### 1. Add Component
+---
+#### 1. Add Component
 
 Add a **`CollisionEvents2D`** component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`).
 
-### 2. Create Script
+#### 2. Create Script
 
 Create a script called `Collision2DExample`:
 
@@ -125,11 +128,11 @@ public class Collision2DExample : MonoBehaviour
 }
 ```
 
-### 3. Attach Script
+#### 3. Attach Script
 
 Attach the `Collision2DExample` script to the **same GameObject**.
 
-### 4. Run and Test
+#### 4. Run and Test
 
 Enter **Play Mode** in Unity. When colliding with other 2D objects, you’ll see logs in the **Console**.
 
