@@ -1,12 +1,12 @@
 # 🧩 IReadOnlyReactiveCollection&lt;T&gt;
 
-Represents a **read-only reactive collection** that provides notifications when items are added, removed, or when the
-overall state changes. It extends `IReadOnlyCollection<T>`, `IEnumerable<T>`, and `IEnumerable`.
-
 ```csharp
 public interface IReadOnlyReactiveCollection<out T> : IReadOnlyCollection<T>
 ```
 
+- **Description:** Represents a **read-only reactive collection** that provides notifications when items are added,
+  removed, or when the overall state changes.
+- **Inheritance:**  `IReadOnlyCollection<T>`, `IEnumerable<T>`, `IEnumerable`
 - **Type Parameter:** `T` — The type of elements stored in the collection.
 - **Note:** Use this interface when you need **read-only access** to a collection but still require **reactive
   notifications** on changes.
@@ -75,6 +75,7 @@ public IEnumerator<T> GetEnumerator();
 ## 🗂 Example of Usage
 
 ```csharp
+//Assume we have collection
 IReadOnlyReactiveCollection<string> collection = ...;
 
 // Subscribe to events

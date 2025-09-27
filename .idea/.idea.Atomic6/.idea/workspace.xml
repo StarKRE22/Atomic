@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Periods.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Periods.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatches.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatches.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,23 +208,7 @@
       <workItem from="1758692391231" duration="497000" />
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
-      <workItem from="1758779433987" duration="35298000" />
-    </task>
-    <task id="LOCAL-00839" summary="ExtensionsUnsubscribe.md">
-      <option name="closed" value="true" />
-      <created>1758795840834</created>
-      <option name="number" value="00839" />
-      <option name="presentableId" value="LOCAL-00839" />
-      <option name="project" value="LOCAL" />
-      <updated>1758795840834</updated>
-    </task>
-    <task id="LOCAL-00840" summary="ExtensionsSubscribeRange.md">
-      <option name="closed" value="true" />
-      <created>1758796290876</created>
-      <option name="number" value="00840" />
-      <option name="presentableId" value="LOCAL-00840" />
-      <option name="project" value="LOCAL" />
-      <updated>1758796290876</updated>
+      <workItem from="1758779433987" duration="35835000" />
     </task>
     <task id="LOCAL-00841" summary="ExtensionsUnsubscribeRange.md">
       <option name="closed" value="true" />
@@ -618,7 +586,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758913715366</updated>
     </task>
-    <option name="localTasksCounter" value="888" />
+    <task id="LOCAL-00888" summary="Time">
+      <option name="closed" value="true" />
+      <created>1758914471266</created>
+      <option name="number" value="00888" />
+      <option name="presentableId" value="LOCAL-00888" />
+      <option name="project" value="LOCAL" />
+      <updated>1758914471266</updated>
+    </task>
+    <task id="LOCAL-00889" summary="Сделал раздел Time!">
+      <option name="closed" value="true" />
+      <created>1758914717168</created>
+      <option name="number" value="00889" />
+      <option name="presentableId" value="LOCAL-00889" />
+      <option name="project" value="LOCAL" />
+      <updated>1758914717168</updated>
+    </task>
+    <option name="localTasksCounter" value="890" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,8 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Начинаем делать раздел Time" />
-    <MESSAGE value="Sources.md" />
     <MESSAGE value="ITimeSource.md" />
     <MESSAGE value="IDurationSource.md" />
     <MESSAGE value="ITickSource.md" />
@@ -670,7 +652,9 @@
     <MESSAGE value="StopwatchState.md" />
     <MESSAGE value="Periods.md" />
     <MESSAGE value="Timestamps.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Timestamps.md" />
+    <MESSAGE value="Time" />
+    <MESSAGE value="Сделал раздел Time!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел Time!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
