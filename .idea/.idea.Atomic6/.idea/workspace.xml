@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/AnimationEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/AnimationEvents.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/CollisionEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/CollisionEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/CollisionEvents2D.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/CollisionEvents2D.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,31 +210,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="10962000" />
-    </task>
-    <task id="LOCAL-00881" summary="Stopwatches.md, IStopwatch.md">
-      <option name="closed" value="true" />
-      <created>1758911549001</created>
-      <option name="number" value="00881" />
-      <option name="presentableId" value="LOCAL-00881" />
-      <option name="project" value="LOCAL" />
-      <updated>1758911549001</updated>
-    </task>
-    <task id="LOCAL-00882" summary="Stopwatches.md, IStopwatch.md">
-      <option name="closed" value="true" />
-      <created>1758911590745</created>
-      <option name="number" value="00882" />
-      <option name="presentableId" value="LOCAL-00882" />
-      <option name="project" value="LOCAL" />
-      <updated>1758911590745</updated>
-    </task>
-    <task id="LOCAL-00883" summary="Stopwatch.md">
-      <option name="closed" value="true" />
-      <created>1758911888542</created>
-      <option name="number" value="00883" />
-      <option name="presentableId" value="LOCAL-00883" />
-      <option name="project" value="LOCAL" />
-      <updated>1758911888542</updated>
+      <workItem from="1758961405633" duration="11276000" />
     </task>
     <task id="LOCAL-00884" summary="Stopwatch.md">
       <option name="closed" value="true" />
@@ -605,7 +580,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759001908513</updated>
     </task>
-    <option name="localTasksCounter" value="930" />
+    <task id="LOCAL-00930" summary="AnimationEvents.md">
+      <option name="closed" value="true" />
+      <created>1759002033905</created>
+      <option name="number" value="00930" />
+      <option name="presentableId" value="LOCAL-00930" />
+      <option name="project" value="LOCAL" />
+      <updated>1759002033905</updated>
+    </task>
+    <task id="LOCAL-00931" summary="CollisionEvents.md">
+      <option name="closed" value="true" />
+      <created>1759002244275</created>
+      <option name="number" value="00931" />
+      <option name="presentableId" value="LOCAL-00931" />
+      <option name="project" value="LOCAL" />
+      <updated>1759002244275</updated>
+    </task>
+    <task id="LOCAL-00932" summary="CollisionEvents2D.md">
+      <option name="closed" value="true" />
+      <created>1759002320133</created>
+      <option name="number" value="00932" />
+      <option name="presentableId" value="LOCAL-00932" />
+      <option name="project" value="LOCAL" />
+      <updated>1759002320133</updated>
+    </task>
+    <option name="localTasksCounter" value="933" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveList.md" />
-    <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
@@ -657,7 +654,9 @@
     <MESSAGE value="OrExpression`1.md" />
     <MESSAGE value="OrExpression`2.md" />
     <MESSAGE value="AnimationEvents.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="AnimationEvents.md" />
+    <MESSAGE value="CollisionEvents.md" />
+    <MESSAGE value="CollisionEvents2D.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="CollisionEvents2D.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

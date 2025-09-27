@@ -75,8 +75,6 @@ public void ReceiveEvent(string message);
 
 Here’s an example of using `AnimationEvents` together with `Animator` in Unity.
 
----
-
 #### 1. Add Components
 
 Add both an `Animator` and `AnimationEvents` component to your `GameObject`.

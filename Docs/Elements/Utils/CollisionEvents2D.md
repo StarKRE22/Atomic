@@ -90,7 +90,6 @@ public void OnCollisionStay2D(Collision2D collision);
 
 Here’s how to use `CollisionEvents2D` to detect and respond to 2D physics collisions.
 
----
 #### 1. Add Component
 
 Add a **`CollisionEvents2D`** component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`).

@@ -1,12 +1,16 @@
 # 🧩 TriggerEvents
 
-A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks as C# events. This allows external scripts to react
-to trigger interactions without overriding Unity callbacks. Attach
-this component to a `GameObject` with a **Collider** set as a **Trigger** to receive events.
-
 ```csharp
+[AddComponentMenu("Atomic/Elements/Trigger Events")]
+[DisallowMultipleComponent]
 public sealed class TriggerEvents : MonoBehaviour
 ```
+
+- **Description:** A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks as C# events. This allows
+  external scripts to react
+  to trigger interactions without overriding Unity callbacks. Attach
+  this component to a `GameObject` with a **Collider** set as a **Trigger** to receive events.
+
 - **Inheritance:** `MonoBehaviour`
 
 ---
@@ -83,11 +87,11 @@ public void OnTriggerStay(Collider other);
 
 ## 🗂 Example Usage
 
-### 1. Add Component
+#### 1. Add Component
 
 Add a **`TriggerEvents`** component to a `GameObject` with a **Collider** set as a trigger.
 
-### 2. Create Script
+#### 2. Create Script
 
 Create a script called `TriggerExample`:
 
@@ -122,11 +126,11 @@ public class TriggerExample : MonoBehaviour
 }
 ```
 
-### 3. Attach Script
+#### 3. Attach Script
 
 Attach the `TriggerExample` script to the **same GameObject**.
 
-### 4. Run and Test
+#### 4. Run and Test
 
 Enter **Play Mode** in Unity. When other colliders interact with the trigger, you’ll see logs in the **Console**.
 
