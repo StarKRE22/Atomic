@@ -1,21 +1,18 @@
-
-<details>
-  <summary>
-    <h2>🧩 AndExpression&lt;T&gt;</h2>
-    <br> Represents a <b>logical AND expression</b> with <b>single parameter</b> aggregating multiple <code>Func&lt;T, bool&gt;</code> members
-  </summary>
-
-<br>
+# 🧩 AndExpression&lt;T&gt;
 
 ```csharp
+[Serializable]
 public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 ```
 
+- **Description:** Represents a <b>logical AND expression</b> with <b>single parameter</b> aggregating multiple
+  <code>Func&lt;T, bool&gt;</code> members
 - **Type Parameter:** `T` - The input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate](../Functions/IPredicate%601.md)
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `AndExpression(int)`
 
@@ -48,7 +45,7 @@ public AndExpression(IEnumerable<Func<T, bool>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -85,7 +82,7 @@ public event Action<int, Func<T, bool>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -107,7 +104,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `this[int index]`
 
@@ -242,5 +239,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-</details>

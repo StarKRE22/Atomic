@@ -8,7 +8,7 @@ corresponding [IPredicate](../Functions/IPredicates.md) interfaces.
 > The expression evaluates to `true` **only if all function members return `true`**.
 > If the collection is empty, the expression evaluates to `true` by default.
 
-There are several base classes of expressions, depending on the number of arguments the actions take:
+There are several classes of **AND** expressions, depending on the number of arguments the actions take:
 
 - [AndExpression&lt;R&gt;](AndExpression.md) — Non-generic version; works without parameters.
 - [AndExpression&lt;T, R&gt;](AndExpression%601.md) — Expression that takes one argument.
