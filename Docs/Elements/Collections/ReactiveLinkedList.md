@@ -8,9 +8,9 @@ public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializati
 - **Description:** Represents a **reactive linked list** that notifies subscribers about changes to its elements.
   It supports fast insertions at head and tail, maintains a free-list for removed nodes
 - **Type Parameter:** `T` — The type of elements stored in the list.
-- **Inheritance:** [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`
+- **Inheritance:** [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`, `ISerializationCallbackReceiver`
 - **Notes:**
-    - Insertions and removals are **O(1)** complexity
+    - Insertions and removals are **O(1)** complexity, traversal — **O(N)**
     - Supports Unity serialization and Odin Inspector
 
 > [!TIP]

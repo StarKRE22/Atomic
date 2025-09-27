@@ -2,13 +2,13 @@
 
 ```csharp
 [Serializable]
-public class ReactiveList<T> : IReactiveList<T>, IDisposable
+public class ReactiveList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
 ```
 
 - **Description:** Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed,
   changed, or when
   the list state changes globally.
-- **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`.
+- **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`, `ISerializationCallbackReceiver`
 - **Type Parameter:** `T` — The type of elements stored in the list.
 - **Notes:** Supports Unity serialization and Odin Inspector
 

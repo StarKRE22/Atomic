@@ -1,18 +1,28 @@
 # 🧩 ReactiveDictionary<K, V>
 
-Represents a **reactive key-value dictionary** that provides notifications when items are added, removed, or updated. It
-implements [IReactiveDictionary<K, V>](IReactiveDictionary.md). Optionally supports serialization for Unity projects.
-
 ```csharp
+[Serializable]
 public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, ISerializationCallbackReceiver
 ```
 
+- **Description:** Represents a **reactive key-value dictionary** that provides notifications when items are added,
+  removed, or updated.
+- **Inheritance:** [IReactiveDictionary<K, V>](IReactiveDictionary.md)
 - **Type Parameters:**
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
-- **Notes:**
-    - Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
-    - Supports Unity serialization
+- **Notes:** Supports Unity serialization and Odin Inspector
+
+> [!TIP]
+> Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter         | Description                                      |
+|-------------------|--------------------------------------------------|
+| `serializedItems` | The initial elements of the reactive dictionary. |
 
 ---
 
@@ -357,8 +367,16 @@ public Enumerator GetEnumerator();
 <details>
   <summary>
     <h2>🧩 ReadOnlyKeyCollection</h2>
-    <br> <b>Represents a read-only collection of keys</b>.
   </summary>
+
+```csharp
+public readonly struct ReadOnlyKeyCollection : ICollection<K>
+```
+
+- **Description:** Represents a read-only collection of keys
+- **Inheritance:** `ICollection<T>`
+
+---
 
 ### 🔑 Properties
 
@@ -434,8 +452,16 @@ bool ICollection<K>.Remove(K item);
 <details>
   <summary>
     <h2>🧩 ReadOnlyValueCollection</h2>
-    <br> <b>Represents a read-only collection of values</b>.
   </summary>
+
+```csharp
+public readonly struct ReadOnlyValueCollection : ICollection<V>
+```
+
+- **Description:** <b>Represents a read-only collection of values</b>.
+- **Inheritance:** `ICollection<T>`
+
+---
 
 ### 🔑 Properties
 
@@ -510,7 +536,7 @@ bool ICollection<V>.Remove(V item);
 
 ## 🗂 Examples of Usage
 
-### 🔹 Basic Usage
+### Example #1: Basic Usage
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -522,10 +548,11 @@ Console.WriteLine(dict["One"]); // Output: 1
 
 dict["Two"] = 22; // Updates the value
 Console.WriteLine(dict["Two"]); // Output: 22
-
 ```
 
-### 🔹 Using TryAdd
+---
+
+### Example #2:  Using TryAdd
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -536,7 +563,9 @@ added = dict.TryAdd("One", 11);     // false, key already exists
 Console.WriteLine(dict["One"]); // Output: 1
 ```
 
-### 🔹 Removing Elements
+---
+
+### Example #3: Removing Elements
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>
@@ -554,7 +583,9 @@ if (dict.Remove("B", out int value))
 }
 ```
 
-### 🔹 Iterating Keys and Values
+---
+
+### Example #4:  Iterating Keys and Values
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>
@@ -584,7 +615,7 @@ foreach (var kv in dict)
 
 ---
 
-### 🔹 Subscribing to Events
+### Example #5:  Subscribing to Events
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -600,7 +631,7 @@ dict.Remove("A");    // Output: Removed A=100
 
 ---
 
-### 🔹 Initializing from Collections
+### Example #6: Initializing from Collections
 
 ```csharp
 var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>

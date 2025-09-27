@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,23 +215,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="2902000" />
-    </task>
-    <task id="LOCAL-00852" summary="ProxyVariables.md">
-      <option name="closed" value="true" />
-      <created>1758876051999</created>
-      <option name="number" value="00852" />
-      <option name="presentableId" value="LOCAL-00852" />
-      <option name="project" value="LOCAL" />
-      <updated>1758876052000</updated>
-    </task>
-    <task id="LOCAL-00853" summary="ReactiveProxyVariable.md">
-      <option name="closed" value="true" />
-      <created>1758876354283</created>
-      <option name="number" value="00853" />
-      <option name="presentableId" value="LOCAL-00853" />
-      <option name="project" value="LOCAL" />
-      <updated>1758876354283</updated>
+      <workItem from="1758961405633" duration="4635000" />
     </task>
     <task id="LOCAL-00854" summary="Extensions.md">
       <option name="closed" value="true" />
@@ -602,7 +593,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758964072643</updated>
     </task>
-    <option name="localTasksCounter" value="901" />
+    <task id="LOCAL-00901" summary="IReadOnlyReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758964411711</created>
+      <option name="number" value="00901" />
+      <option name="presentableId" value="LOCAL-00901" />
+      <option name="project" value="LOCAL" />
+      <updated>1758964411711</updated>
+    </task>
+    <task id="LOCAL-00902" summary="IReadOnlyReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1758964502247</created>
+      <option name="number" value="00902" />
+      <option name="presentableId" value="LOCAL-00902" />
+      <option name="project" value="LOCAL" />
+      <updated>1758964502247</updated>
+    </task>
+    <option name="localTasksCounter" value="903" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ICooldown.md" />
     <MESSAGE value="Cooldown.md" />
     <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="Пилим Timers!" />
@@ -654,7 +660,8 @@
     <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveLinkedList.md" />
+    <MESSAGE value="IReadOnlyReactiveDictionary.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyReactiveDictionary.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

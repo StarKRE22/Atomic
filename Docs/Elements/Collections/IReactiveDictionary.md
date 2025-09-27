@@ -13,8 +13,10 @@ public interface IReactiveDictionary<K, V> :
 - **Type Parameters:**
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
-- **Note:** Use this interface when you need **mutable dictionary access** with **reactive notifications** for all
-  changes.
+
+> [!TIP]
+> Use this interface when you need **mutable dictionary access** with **reactive notifications** for all
+changes.
 
 ---
 
