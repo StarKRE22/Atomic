@@ -13,7 +13,7 @@ composition.
     - [IExpression&lt;R&gt;](IExpression.md) <!-- + -->
     - [IExpression&lt;T, R&gt;](IExpression%601.md) <!-- + -->
     - [IExpression&lt;T1, T2, R&gt;](IExpression%602.md) <!-- + -->
-- [Expressions Base]()
+- [Expressions Base](ExpressionsBase.md) <!-- + -->
     - [ExpressionBase&lt;R&gt;]()
     - [ExpressionBase&lt;T, R&gt;]()
     - [ExpressionBase&lt;T1, T2, R&gt;]()
