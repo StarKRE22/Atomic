@@ -11,8 +11,8 @@ composition.
 
 - [IExpressions](IExpressions.md) <!-- + -->
     - [IExpression&lt;R&gt;](IExpression.md) <!-- + -->
-    - [IExpression&lt;T, R&gt;]()
-    - [IExpression&lt;T1, T2, R&gt;]()
+    - [IExpression&lt;T, R&gt;](IExpression%601.md) <!-- + -->
+    - [IExpression&lt;T1, T2, R&gt;](IExpression%602.md) <!-- + -->
 - [Expressions Base]()
     - [ExpressionBase&lt;R&gt;]()
     - [ExpressionBase&lt;T, R&gt;]()

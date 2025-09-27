@@ -1,16 +1,11 @@
+# 🧩 IExpression&lt;T1, T2, R&gt;
 
-
-<details>
-  <summary>
-    <h2>🧩 IExpression&lt;T1, T2, R&gt;</h2>
-    <br>Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
-  </summary>
-<br>
 
 ```csharp
 public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
 ```
-
+- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+- **Inheritance:** `IList<T>`, [IFunction&lt;T1, T2, R&gt;](../Functions/IFunction%602.md)
 - **Type Parameters:**
     - `T1` — The first input parameter type.
     - `T2` — The second input parameter type.
@@ -18,7 +13,7 @@ public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, 
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -55,7 +50,7 @@ public event Action<int, Func<T1, T2, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -77,7 +72,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -91,7 +86,7 @@ public Func<T1, T2, R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -201,5 +196,3 @@ public IEnumerator<Func<T1, T2, R>> GetEnumerator()
 
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T1, T2, R>>` — Enumerator for the function members.
-
-</details>
