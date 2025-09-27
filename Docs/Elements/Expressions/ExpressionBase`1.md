@@ -1,25 +1,23 @@
-
-<details>
-  <summary>
-    <h2>🧩 ExpressionBase&lt;T, R&gt;</h2>
-    <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
-  </summary>
-
-<br>
+# 🧩 ExpressionBase&lt;T, R&gt;
 
 ```csharp
 public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
 ```
 
+- **Description:** Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates
+  multiple functions returning a value of type <code>R</code>
+- **Inheritance:** [ReactiveLinkedList&lt;T&gt;](../Collections/ReactiveLinkedList.md),
+  [IExpression&lt;T, R&gt;](IExpression.md)
 - **Type Parameters:**
     - `T` - The input parameter type of the functions.
     - `R` - The return type of the expression.
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
-#### `ExpressionBase(int capacity)`
+#### `ExpressionBase(int)`
 
 ```csharp
 protected ExpressionBase(int capacity)
@@ -28,7 +26,7 @@ protected ExpressionBase(int capacity)
 - **Description:** Initializes an empty expression with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default value is `4`.
 
-#### `ExpressionBase(params Func<T, R>[] members)`
+#### `ExpressionBase(params Func<T, R>[])`
 
 ```csharp
 protected ExpressionBase(params Func<T, R>[] members)
@@ -37,7 +35,7 @@ protected ExpressionBase(params Func<T, R>[] members)
 - **Description:** Initializes the expression with an array of function members.
 - **Parameter:** `members` — Array of functions to include in the expression.
 
-#### `ExpressionBase(IEnumerable<Func<T, R>> members)`
+#### `ExpressionBase(IEnumerable<Func<T, R>>)`
 
 ```csharp
 protected ExpressionBase(IEnumerable<Func<T, R>> members)
@@ -48,7 +46,7 @@ protected ExpressionBase(IEnumerable<Func<T, R>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -85,7 +83,7 @@ public event Action<int, Func<T, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -107,7 +105,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -121,7 +119,7 @@ public Func<T, R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -250,5 +248,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-</details>
