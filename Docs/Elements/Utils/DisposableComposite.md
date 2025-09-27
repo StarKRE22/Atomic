@@ -10,7 +10,7 @@ public class DisposableComposite : IDisposable
 - **Inheritance:** `IDisposable`
 
 > [!TIP]
-> It also works seamlessly with the [AddTo](Extensions.md/#addtoidisposable-disposablecomposite) extension method for
+> For greater convenience, use [AddTo](Extensions.md/#addtoidisposable-disposablecomposite) extension method for
 > chaining disposables into a composite.
 
 

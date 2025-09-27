@@ -11,6 +11,6 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - [TriggerEvents2D](TriggerEvents2D.md) <!-- + -->
 - [DisposableAction](DisposableAction.md) <!-- + -->
 - [DisposableComposite](DisposableComposite.md) <!-- + -->
-- [Reference](Reference.md)
+- [Reference](Reference.md) <!-- + -->
 - [Optional](Optional.md)
 - [Extensions](Extensions.md) <!-- + -->
