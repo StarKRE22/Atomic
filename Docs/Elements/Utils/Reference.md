@@ -1,6 +1,7 @@
 # 🧩 Reference&lt;T&gt;
 
 ```csharp
+[Serializable]
 public class Reference<T>
 ```
 
