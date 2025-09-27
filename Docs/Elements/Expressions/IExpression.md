@@ -6,8 +6,8 @@ public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>
 
 - **Description:** Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of
   type <code>R</code>
-- **Type parameter**: `R` — The return type of the expression.
 - **Inheritance:** `IList<T>`, [IValue&lt;T&gt;](../Values/IValue.md), [IFunction&lt;R&gt;](../Functions/IFunction.md)
+- **Type parameter**: `R` — The return type of the expression.
 
 ---
 

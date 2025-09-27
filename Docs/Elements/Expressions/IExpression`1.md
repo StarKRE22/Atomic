@@ -1,22 +1,19 @@
-
-<details>
-  <summary>
-    <h2>🧩 IExpression&lt;T, R&gt;</h2>
-    <br>Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates multiple functions returning a value of type <code>R</code>>
-  </summary>
-<br>
+# 🧩 IExpression&lt;T, R&gt;
 
 ```csharp
 public interface IExpression<T, R> : IList<Func<T, R>>, IFunction<T, R>
 ```
 
+- **Description:** Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates
+  multiple functions returning a value of type <code>R</code>
+- **Inheritance:** `IList<T>`, [IFunction&lt;T, R&gt;](../Functions/IFunction%601.md)
 - **Type Parameters:**
     - `T` - The input parameter type of the functions.
     - `R` - The return type of the expression.
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -53,7 +50,7 @@ public event Action<int, Func<T, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -75,7 +72,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -89,7 +86,7 @@ public Func<T, R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -196,5 +193,3 @@ public IEnumerator<Func<T, R>> GetEnumerator()
 
 - **Description:** Returns an enumerator for iterating the functions.
 - **Returns:** `IEnumerator<Func<T, R>>` — Enumerator for the function members.
-
-</details>
