@@ -1,11 +1,18 @@
-# 🧩 OrExpression
+
+<details>
+  <summary>
+    <h2>🧩 OrExpression&lt;T&gt;</h2>
+    <br> Represents a <b>logical OR expression</b> with <b>single parameter</b> aggregating multiple <code>Func&lt;T, bool&gt;</code> members
+  </summary>
+
+<br>
 
 ```csharp
-public class OrExpression : ExpressionBase<bool>, IPredicate
+public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 ```
 
-- **Description:** Represents a <b>parameterless logical OR expression</b> aggregating multiple
-  <code>Func&lt;bool&gt;</code> members
+- **Type Parameters:**
+    - `T` — The input type of the functions.
 
 ---
 
@@ -16,27 +23,31 @@ public class OrExpression : ExpressionBase<bool>, IPredicate
 ```csharp
 public OrExpression(int capacity)
 ```
-
 - **Description:** Initializes a new empty `OrExpression` with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `OrExpression(params Func<bool>[])`
+
+#### `OrExpression(params Func<T, bool>[])`
 
 ```csharp
-public OrExpression(params Func<bool>[] members)
+public OrExpression(params Func<T, bool>[] members)
 ```
 
-- **Description:** Initializes the expression with an array of parameterless boolean-returning functions.
-- **Parameter:** `members` — Array of `Func<bool>` delegates.
+- **Description:** Initializes the expression with an array of boolean-returning functions that take an argument of type
+  `T`.
+- **Parameter:** `members` — Array of `Func<T, bool>` delegates.
 
-#### `OrExpression(IEnumerable<Func<bool>>)`
+#### `OrExpression(IEnumerable<Func<T, bool>>)`
 
 ```csharp
-public OrExpression(IEnumerable<Func<bool>> members)
+public OrExpression(IEnumerable<Func<T, bool>> members)
 ```
 
-- **Description:** Initializes the expression with a collection of parameterless boolean-returning functions.
-- **Parameter:** `members` — Enumerable of `Func<bool>` delegates.
+- **Description:** Initializes the expression with a collection of boolean-returning functions that take an argument of
+  type `T`.
+- **Parameter:** `members` — Enumerable of `Func<T, bool>` delegates.
+
+---
 
 ### ⚡ Events
 
@@ -52,7 +63,7 @@ public event Action OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event Action<int, Func<bool>> OnItemChanged;
+public event Action<int, Func<T, bool>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -60,7 +71,7 @@ public event Action<int, Func<bool>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event Action<int, Func<bool>> OnItemInserted;
+public event Action<int, Func<T, bool>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted into the expression at a specific position.
@@ -68,7 +79,7 @@ public event Action<int, Func<bool>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event Action<int, Func<bool>> OnItemDeleted;
+public event Action<int, Func<T, bool>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.
@@ -76,16 +87,6 @@ public event Action<int, Func<bool>> OnItemDeleted;
 ---
 
 ### 🔑 Properties
-
-#### `Value`
-
-```csharp
-public bool Value { get; }
-```
-
-- **Description:** Evaluates all functions and returns `true` if all functions return `true`.  
-  If no functions are present, returns `true` by default.
-- **Returns:** `bool` — The evaluated logical AND result.
 
 #### `Count`
 
@@ -112,44 +113,45 @@ public bool IsReadOnly { get; }
 #### `[int index]`
 
 ```csharp
-public Func<bool> this[int index] { get; set; }
+public Func<T, bool> this[int index] { get; set; }
 ```
 
 - **Description:** Indexer to access a function at a specific position.
 - **Parameter:** `index` — The position of the function.
-- **Returns:** `Func<bool>` — The function at the given index.
+- **Returns:** `Func<T, bool>` — The function at the given index.
 
 ---
 
 ### 🏹 Methods
 
-#### `Invoke()`
+#### `Invoke(T)`
 
 ```csharp
-public bool Invoke()
+public bool Invoke(T arg)
 ```
 
-- **Description:** Evaluates all function members of the expression.  
+- **Description:** Evaluates all function members of the expression using the provided argument.  
   Returns `false` immediately if any function evaluates to `false`; otherwise returns `true`.
+- **Parameter:** `arg` — The input value of type `T`.
 - **Returns:** `bool` — The aggregated logical AND result.
 
-#### `Add(Func<bool>)`
+#### `Add(Func<T, bool>)`
 
 ```csharp
-public void Add(Func<bool> item)
+public void Add(Func<T, bool> item)
 ```
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
 
-#### `AddRange(IEnumerable<Func<bool>>)`
+#### `AddRange(IEnumerable<Func<T, bool>>)`
 
 ```csharp
-public void AddRange(IEnumerable<Func<bool>> items)
+public void AddRange(IEnumerable<Func<T, bool>> items)
 ```
 
 - **Description:** Adds multiple functions to the expression at once.
-- **Parameter:** `items` — An enumerable collection of `Func<bool>` delegates to add.
+- **Parameter:** `items` — An enumerable collection of `Func<T, bool>` delegates to add.
 - **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
@@ -160,20 +162,20 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
-#### `Contains(Func<bool>)`
+#### `Contains(Func<T, bool>)`
 
 ```csharp
-public bool Contains(Func<bool> item)
+public bool Contains(Func<T, bool> item)
 ```
 
 - **Description:** Checks if the specified function exists in the expression.
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<bool>[], int)`
+#### `CopyTo(Func<T, bool>[], int)`
 
 ```csharp
-public void CopyTo(Func<bool>[] array, int arrayIndex)
+public void CopyTo(Func<T, bool>[] array, int arrayIndex)
 ```
 
 - **Description:** Copies all functions in the expression to the specified array starting at the given index.
@@ -181,20 +183,20 @@ public void CopyTo(Func<bool>[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
-#### `IndexOf(Func<bool>)`
+#### `IndexOf(Func<T, bool>)`
 
 ```csharp
-public int IndexOf(Func<bool> item)
+public int IndexOf(Func<T, bool> item)
 ```
 
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `int` — The index of the function, or `-1` if not found.
 
-#### `Insert(int, Func<bool>)`
+#### `Insert(int, Func<T, bool>)`
 
 ```csharp
-public void Insert(int index, Func<bool> item)
+public void Insert(int index, Func<T, bool> item)
 ```
 
 - **Description:** Inserts a function at the specified index.
@@ -202,10 +204,10 @@ public void Insert(int index, Func<bool> item)
     - `index` — The position at which to insert.
     - `item` — The function to insert.
 
-#### `Remove(Func<bool>)`
+#### `Remove(Func<T, bool>)`
 
 ```csharp
-public bool Remove(Func<bool> item)
+public bool Remove(Func<T, bool> item)
 ```
 
 - **Description:** Removes the specified function from the expression.
@@ -224,11 +226,11 @@ public void RemoveAt(int index)
 #### `GetEnumerator()`
 
 ```csharp
-public IEnumerator<Func<bool>> GetEnumerator()
+public IEnumerator<Func<T, bool>> GetEnumerator()
 ```
 
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
-- **Returns:** `IEnumerator<Func<bool>>` — Enumerator over the functions.
+- **Returns:** `IEnumerator<Func<T, bool>>` — Enumerator over the functions.
 
 #### `Dispose()`
 
@@ -241,3 +243,5 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
+
+</details>
