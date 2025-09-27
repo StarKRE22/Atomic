@@ -1,14 +1,13 @@
 # 🧩 IReactiveList&lt;T&gt;
 
-Represents a **reactive list** that notifies subscribers whenever its contents change. It provides **indexed
-notifications** for insertions, deletions, updates, and overall state changes. It extends
-`IList<T>` [IReadOnlyReactiveList&lt;T&gt;](IReadOnlyReactiveList.md),
-and [IReactiveCollection&lt;T&gt;](IReactiveCollection.md).
-
 ```csharp
 public interface IReactiveList<T> : IList<T>, IReadOnlyReactiveList<T>, IReactiveCollection<T>
 ```
 
+- **Description:** Represents a **reactive list** that notifies subscribers whenever its contents change.
+  It provides **indexed notifications** for insertions, deletions, updates, and overall state changes.
+- **Inheritance:**
+  `IList<T>` [IReadOnlyReactiveList&lt;T&gt;](IReadOnlyReactiveList.md), [IReactiveCollection&lt;T&gt;](IReactiveCollection.md).
 - **Type Parameter:** `T` — The type of elements stored in the list.
 - **Note:** Use this interface when you need **fully mutable indexed access** to a collection with **reactive
   notifications** on any changes.
