@@ -10,11 +10,12 @@ public class ReactiveList<T> : IReactiveList<T>, IDisposable
   the list state changes globally.
 - **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`.
 - **Type Parameter:** `T` — The type of elements stored in the list.
-- **Notes:**
-    - Use this class when you need a **mutable, growable list** with reactive notifications.
-    - Supports Unity serialization and Odin Inspector
+- **Notes:** Supports Unity serialization and Odin Inspector
 
 > [!TIP]
+>  Use this class when you need a **mutable, growable list** with reactive notifications.
+
+> [!IMPORTANT]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
 
 ---

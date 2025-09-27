@@ -1,27 +1,35 @@
 # 🧩 ReactiveLinkedList&lt;T&gt;
 
-Represents a **reactive linked list** that notifies subscribers about changes to its elements. It supports fast
-insertions at head and tail, maintains a free-list for removed nodes, and
-implements [IReactiveList&lt;T&gt;](IReactiveList.md) and `IDisposable`. Optionally supports serialization for Unity
-projects.
-
 ```csharp
+[Serializable]
 public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
 ```
 
-- **Type Parameters:**
-    - `T` — The type of elements stored in the list.
+- **Description:** Represents a **reactive linked list** that notifies subscribers about changes to its elements.
+  It supports fast insertions at head and tail, maintains a free-list for removed nodes
+- **Type Parameter:** `T` — The type of elements stored in the list.
+- **Inheritance:** [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`
 - **Notes:**
-    - Use this class when you need a **reactive linked list** that supports frequent insertions and removals at
-      arbitrary positions, with notifications for every change
     - Insertions and removals are **O(1)** complexity
-    - Supports Unity serialization
+    - Supports Unity serialization and Odin Inspector
 
 > [!TIP]
+> Use this class when you need a **reactive linked list** that supports frequent insertions and removals at
+> arbitrary positions, with notifications for every change
+
+> [!IMPORTANT]
 > For high performance always use `foreach` to iterate over the collection
 
 > [!WARNING]
 > **Never** use `for` loop for index-based traversal
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter         | Description                              |
+|-------------------|------------------------------------------|
+| `serializedItems` | The initial elements of the linked list. |
 
 ---
 

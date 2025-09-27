@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,15 +212,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="2066000" />
-    </task>
-    <task id="LOCAL-00849" summary="ReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1758874276848</created>
-      <option name="number" value="00849" />
-      <option name="presentableId" value="LOCAL-00849" />
-      <option name="project" value="LOCAL" />
-      <updated>1758874276848</updated>
+      <workItem from="1758961405633" duration="2460000" />
     </task>
     <task id="LOCAL-00850" summary="ReactiveVariables.md">
       <option name="closed" value="true" />
@@ -606,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758963040641</updated>
     </task>
-    <option name="localTasksCounter" value="898" />
+    <task id="LOCAL-00898" summary="ReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1758963609426</created>
+      <option name="number" value="00898" />
+      <option name="presentableId" value="LOCAL-00898" />
+      <option name="project" value="LOCAL" />
+      <updated>1758963609426</updated>
+    </task>
+    <option name="localTasksCounter" value="899" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IStateSource.md" />
     <MESSAGE value="Cooldowns.md" />
     <MESSAGE value="ICooldown.md" />
     <MESSAGE value="Cooldown.md" />
@@ -658,7 +657,8 @@
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="IReactiveList.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IReactiveList.md" />
+    <MESSAGE value="ReactiveList.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveList.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

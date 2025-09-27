@@ -16,7 +16,7 @@ data access and modification.
   - [IReadOnlyReactiveList](IReadOnlyReactiveList.md) <!-- + -->
   - [IReactiveList](IReactiveList.md) <!-- + -->
   - [ReactiveList](ReactiveList.md) <!-- + -->
-  - [ReactiveLinkedList](ReactiveLinkedList.md)
+  - [ReactiveLinkedList](ReactiveLinkedList.md) <!-- + -->
 - ReactiveDictionaries
   - [IReadOnlyReactiveDictionary](IReadOnlyReactiveDictionary.md)
   - [IReactiveDictionary](IReactiveDictionary.md)
