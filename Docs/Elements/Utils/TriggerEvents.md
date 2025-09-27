@@ -7,6 +7,7 @@ this component to a `GameObject` with a **Collider** set as a **Trigger** to rec
 ```csharp
 public sealed class TriggerEvents : MonoBehaviour
 ```
+- **Inheritance:** `MonoBehaviour`
 
 ---
 

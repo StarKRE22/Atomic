@@ -4,6 +4,7 @@ A **Unity MonoBehaviour** that exposes Unity’s **2D collision callbacks** as C
 2D physics interactions without overriding `OnCollisionEnter2D`, `OnCollisionExit2D` or `OnCollisionStay2D` in custom
 scripts. Attach this component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`) to receive 2D
 collision events as C# events.
+- **Inheritance:** `MonoBehaviour`
 
 ```csharp
 public sealed class CollisionEvents2D : MonoBehaviour

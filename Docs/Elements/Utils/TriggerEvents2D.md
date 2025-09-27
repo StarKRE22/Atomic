@@ -7,6 +7,7 @@ Unity callbacks. Attach this component to a `GameObject` with a **2D Collider** 
 ```csharp
 public sealed class TriggerEvents2D : MonoBehaviour
 ```
+- **Inheritance:** `MonoBehaviour`
 
 ---
 
