@@ -1,13 +1,18 @@
 # 🧩 DisposableComposite
 
-Represents a **composite disposable container** that manages multiple `IDisposable` objects. Disposing the composite
-will automatically dispose all contained objects, making resource management easier and safer. It also works seamlessly
-with the [AddTo](Extensions.md/#addtoidisposable-disposablecomposite) extension method for chaining disposables into a
-composite.
-
 ```csharp
 public class DisposableComposite : IDisposable
 ```
+
+- **Description:** Represents a **composite disposable container** that manages multiple `IDisposable` objects.
+  Disposing the composite
+  will automatically dispose all contained objects, making resource management easier and safer.
+- **Inheritance:** `IDisposable`
+
+> [!TIP]
+> It also works seamlessly with the [AddTo](Extensions.md/#addtoidisposable-disposablecomposite) extension method for
+> chaining disposables into a composite.
+
 
 ---
 
