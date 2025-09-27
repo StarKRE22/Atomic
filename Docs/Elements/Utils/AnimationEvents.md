@@ -1,12 +1,17 @@
 # 🧩 AnimationEvents
 
-A **Unity MonoBehaviour** that bridges Unity animation events to C# event subscriptions. Allows listening for animation
-events without hardcoding method names in the inspector. Attach this component to a GameObject with an `Animator` or
-`Animation` to dispatch animation events through C# events.
-
 ```csharp
+[AddComponentMenu("Atomic/Elements/Animation Events")]
+[DisallowMultipleComponent]
 public sealed class AnimationEvents : MonoBehaviour
 ```
+
+- **Description:** A **Unity MonoBehaviour** that bridges Unity animation events to C# event subscriptions. Allows
+  listening for animation
+  events without hardcoding method names in the inspector.
+- **Inheritance:** `MonoBehaviour`
+- **Usage:** Attach this component to a GameObject with an `Animator` or
+  `Animation` to dispatch animation events through C# events.
 
 ---
 
@@ -70,24 +75,26 @@ public void ReceiveEvent(string message);
 
 Here’s an example of using `AnimationEvents` together with `Animator` in Unity.
 
-### 1. Add Components
+---
+
+#### 1. Add Components
 
 Add both an `Animator` and `AnimationEvents` component to your `GameObject`.
 
 - <img src="../../Images/AnimationEvents.png" alt="AnimationEvents example" width="" height="320">
 
-### 2. Set Up Animator
+#### 2. Set Up Animator
 
 Configure your `AnimatorController` and animation clips, then assign it to the `Animator` on the scene.
 
-### 3. Create Animation Event
+#### 3. Create Animation Event
 
 On the timeline of your `AnimationClip`, create an `AnimationEvent` and set its `Function` to:
 `AnimationEvents/Methods/ReceiveEvent(string)`
 
 - <img src="../../Images/AnimationEvent.png" alt="AnimationEvent example" width="" height="128">
 
-### 4. Handle Animation Events in Script
+#### 4. Handle Animation Events in Script
 
 Create a script to subscribe to animation events from `AnimationEvents`:
 
@@ -115,13 +122,13 @@ public class Example : MonoBehaviour
 }
 ```
 
-### 5. Attach Script
+#### 5. Attach Script
 
 Attach the script to a GameObject and assign the `AnimationEvents` component to it.
 
 - <img src="../../Images/AnimationEvents_Example.png" alt="SceneActionComposite example" width="" height="80">
 
-### 6. Play and Test
+#### 6. Play and Test
 
 Enter Play Mode in Unity and verify that the Console shows logs:
 
