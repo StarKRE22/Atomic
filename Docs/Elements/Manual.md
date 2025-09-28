@@ -45,7 +45,7 @@ patterns, composable structures, and modular design**.
 - [Events](Events/Manual.md) <!-- + -->
 - [Time](Time/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
-- [Expressions](Expressions/Manual.md)
+- [Expressions](Expressions/Manual.md) <!-- + -->
 - [Utilities](Utils/Manual.md) <!-- + -->
 
 ---
@@ -61,14 +61,14 @@ or multiplayer games.
 - [Iterating over Reactive Collections](../../Docs/BestPractices/IteratingReactiveCollections.md)
 - [Requests vs Actions](../../Docs/BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](../../Docs/BestPractices/RequestConditionActionEvent.md)
-- [Using InlineActions](Actions/InlineAction.md/#-best-practice)
-- [Using InlineFunctions](Functions/InlineFunction.md/#-best-practice)
-- [Using Cooldowns](Time/Cooldown.md/#-best-practice)
-- [Insert Constant to AndExpression](Expressions/AndExpression.md/#-best-practice)
-- [Choosing Between Timer and Cooldown](Time/ITimer.md/#-best-practice)
+- [Using InlineActions](Actions/InlineActions.md/#-best-practice)
+- [Using InlineFunctions](Functions/InlineFunctions.md/#-best-practice)
+- [Using Cooldowns](Time/Cooldowns.md/#-best-practice)
+- [Insert Constant to AndExpression](Expressions/AndExpressions.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](../BestPractices/ChosingBetweenTimerAndCooldown.md)
 - [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)
-- [Using Subscriptions with DisposeComposite](Signals/Subscription.md/#-best-practice)
-- [Using Optional Wrappers](Utils/Optional.md/#-example-of-usage)
+- [Using Subscriptions with DisposeComposite](Events/Subscriptions.md/#-best-practice)
+- [Using Optional Wrappers](Utils/Optional.md/#-best-practice)
 
 ---
 

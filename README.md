@@ -467,7 +467,7 @@ or multiplayer games.
 - [Using InlineFunctions](Docs/Elements/Functions/InlineFunction.md/#-best-practice)
 - [Using Cooldowns](Docs/Elements/Time/Cooldown.md/#-best-practice)
 - [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpression.md/#-best-practice)
-- [Choosing Between Timer and Cooldown](Docs/Elements/Time/ITimer.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md)
 - [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
 - [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
 - [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-example-of-usage)

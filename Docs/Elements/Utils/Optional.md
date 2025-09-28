@@ -97,7 +97,7 @@ public static bool operator false(Optional<T> it)
 
 ---
 
-## 🗂 Example of Usage
+## 📌 Best Practice
 
 `Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible
 configuration. Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
