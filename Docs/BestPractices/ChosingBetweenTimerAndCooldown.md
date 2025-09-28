@@ -13,10 +13,10 @@ Examples:
 
 Below is a comparison table between a timer and a cooldown:
 
-| Feature        | `ITimer`                                                                                                                     | `ICooldown`                                                                                    |
-|----------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| **Complexity** | Advanced, stateful timer                                                                                                     | Lightweight countdown                                                                          |
-| **Control**    | Start, Pause, Resume, Stop                                                                                                   | Only tracks remaining time                                                                     |
-| **Events**     | OnStarted, OnPaused, OnResumed, OnStopped, OnCompleted, OnTimeChanged, OnProgressChanged, OnStateChanged |  OnCompleted, OnTimeChanged, OnProgressChanged, OnStateChanged                                                                                        |
-| **Use Case**   | Timed buffs, game rounds, special abilities — when the timer is part of game logic                                           | Simple countdowns, repeated delays, ability cooldowns where pausing/state control isn’t needed |
+| Feature        | `ITimer`                                                                                                 | `ICooldown`                                                                                      |
+|----------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Complexity** | Advanced, stateful timer                                                                                 | Lightweight countdown                                                                            |
+| **Control**    | Start, Pause, Resume, Stop                                                                               | Only tracks remaining time                                                                       |
+| **Events**     | OnStarted, OnPaused, OnResumed, OnStopped, OnCompleted, OnTimeChanged, OnProgressChanged, OnStateChanged | OnCompleted, OnTimeChanged, OnProgressChanged, OnStateChanged                                    |
+| **Use Case**   | Timed buffs, game rounds, special abilities — when the timer is part of game logic                       | Simple countdowns, repeated delays, ability cooldowns where pausing / state control isn’t needed |
 
