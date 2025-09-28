@@ -1,22 +1,19 @@
-
-<details>
- <summary>
- <h2>🧩 FloatSumExpression&lt;T&gt;</h2>
- <br> Represents an expression that computes the sum of float values returned from functions with a <b>single input parameter</b>
- </summary>
-
-##
+# 🧩 FloatSumExpression&lt;T&gt;
 
 ```csharp
 [Serializable]
 public class FloatSumExpression<T> : ExpressionBase<T, float>
 ```
 
+- **Description:** Represents an expression that computes the sum of float values returned from functions with a <b>
+  single input parameter</b>
 - **Type Parameter:** `T` — The input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `FloatSumExpression()`
 
@@ -47,7 +44,7 @@ public FloatSumExpression(IEnumerable<Func<T, float>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -84,7 +81,7 @@ public event Action<int, Func<T, float>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -106,7 +103,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -120,9 +117,9 @@ public Func<T, float> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public float Invoke(T arg)
@@ -133,7 +130,7 @@ public float Invoke(T arg)
 - **Returns:** `float` — The computed sum.
 - **Note:** Returns `0` if no functions are present.
 
-#### `Add(Func<T, float> item)`
+#### `Add(Func<T, float>)`
 
 ```csharp
 public void Add(Func<T, float> item)
@@ -142,7 +139,7 @@ public void Add(Func<T, float> item)
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
 
-#### `AddRange(IEnumerable<Func<T, float>> items)`
+#### `AddRange(IEnumerable<Func<T, float>>)`
 
 ```csharp
 public void AddRange(IEnumerable<Func<T, float>> items)
@@ -160,7 +157,7 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
-#### `Contains(Func<T, float> item)`
+#### `Contains(Func<T, float>)`
 
 ```csharp
 public bool Contains(Func<T, float> item)
@@ -170,7 +167,7 @@ public bool Contains(Func<T, float> item)
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<T, float>[] array, int arrayIndex)`
+#### `CopyTo(Func<T, float>[], int)`
 
 ```csharp
 public void CopyTo(Func<T, float>[] array, int arrayIndex)
@@ -181,7 +178,7 @@ public void CopyTo(Func<T, float>[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
-#### `IndexOf(Func<T, float> item)`
+#### `IndexOf(Func<T, float>)`
 
 ```csharp
 public float IndexOf(Func<T, float> item)
@@ -191,7 +188,7 @@ public float IndexOf(Func<T, float> item)
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `float` — The index of the function, or `-1` if not found.
 
-#### `Insert(int index, Func<T, float> item)`
+#### `Insert(int, Func<T, float>)`
 
 ```csharp
 public void Insert(int index, Func<T, float> item)
@@ -202,7 +199,7 @@ public void Insert(int index, Func<T, float> item)
     - `index` — The position at which to insert.
     - `item` — The function to insert.
 
-#### `Remove(Func<T, float> item)`
+#### `Remove(Func<T, float>)`
 
 ```csharp
 public bool Remove(Func<T, float> item)
@@ -212,7 +209,7 @@ public bool Remove(Func<T, float> item)
 - **Parameter:** `item` — The function to remove.
 - **Returns:** `bool` — `true` if removed successfully, otherwise `false`.
 
-#### `RemoveAt(int index)`
+#### `RemoveAt(int)`
 
 ```csharp
 public void RemoveAt(int index)
@@ -244,7 +241,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 var expression = new FloatSumExpression<float>(
@@ -253,5 +250,3 @@ var expression = new FloatSumExpression<float>(
 );
 float result = expression.Invoke(3.5f); // 3.5f + (3.5f + 0.5f) = 7.5f
 ```
-
-</details>
