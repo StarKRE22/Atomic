@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,23 +215,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="15938000" />
-    </task>
-    <task id="LOCAL-00900" summary="ReactiveLinkedList.md">
-      <option name="closed" value="true" />
-      <created>1758964072643</created>
-      <option name="number" value="00900" />
-      <option name="presentableId" value="LOCAL-00900" />
-      <option name="project" value="LOCAL" />
-      <updated>1758964072643</updated>
-    </task>
-    <task id="LOCAL-00901" summary="IReadOnlyReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758964411711</created>
-      <option name="number" value="00901" />
-      <option name="presentableId" value="LOCAL-00901" />
-      <option name="project" value="LOCAL" />
-      <updated>1758964411711</updated>
+      <workItem from="1758961405633" duration="16605000" />
     </task>
     <task id="LOCAL-00902" summary="IReadOnlyReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -605,7 +593,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759050138290</updated>
     </task>
-    <option name="localTasksCounter" value="949" />
+    <task id="LOCAL-00949" summary="IntSumExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1759050742997</created>
+      <option name="number" value="00949" />
+      <option name="presentableId" value="LOCAL-00949" />
+      <option name="project" value="LOCAL" />
+      <updated>1759050742997</updated>
+    </task>
+    <task id="LOCAL-00950" summary="IntSumExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1759050841447</created>
+      <option name="number" value="00950" />
+      <option name="presentableId" value="LOCAL-00950" />
+      <option name="project" value="LOCAL" />
+      <updated>1759050841447</updated>
+    </task>
+    <option name="localTasksCounter" value="951" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExpressionBase`2.md" />
-    <MESSAGE value="AndExpressions.md, AndExpression.md" />
     <MESSAGE value="AndExpression`1.md" />
     <MESSAGE value="AndExpression`2.md" />
     <MESSAGE value="AndExpressions" />
@@ -657,7 +659,9 @@
     <MESSAGE value="IntMulExpression`2.md" />
     <MESSAGE value="IntSumExpressions.md" />
     <MESSAGE value="IntSumExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntSumExpression.md" />
+    <MESSAGE value="IntSumExpression`1.md" />
+    <MESSAGE value="IntSumExpression`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IntSumExpression`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

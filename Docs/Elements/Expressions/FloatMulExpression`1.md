@@ -2,15 +2,17 @@
 
 <details>
  <summary>
- <h2>🧩 FloatMulExpression</h2>
- <br> Represents an expression that computes the <b>product</b> of multiple <b>parameterless float-returning</b> functions
+ <h2>🧩 FloatMulExpression&lt;T&gt;</h2>
+ <br> Represents an expression that computes the <b>product</b> of float values returned from functions with a <b>single input parameter</b>
  </summary>
 
-<br> 
+<br>
 
 ```csharp
-public class FloatMulExpression : ExpressionBase<float>
+public class FloatMulExpression<T> : ExpressionBase<T, float>
 ```
+
+- **Type Parameter:** `T` — The input parameter type of the functions.
 
 ---
 
@@ -22,26 +24,26 @@ public class FloatMulExpression : ExpressionBase<float>
 public FloatMulExpression(int capacity)
 ```
 
-- **Description:** Initializes a new empty instance of the `FloatMulExpression` class.
+- **Description:** Initializes a new empty instance of the `FloatMulExpression<T>` class.
 - **Parameter:** `capacity` — Initial capacity for the function list. Default is `4`.
 
-#### `FloatMulExpression(Func<float>[])`
+#### `FloatMulExpression(Func<T, float>[])`
 
 ```csharp
-public FloatMulExpression(params Func<float>[] members)
+public FloatMulExpression(params Func<T, float>[] members)
 ```
 
-- **Description:** Initializes the expression with an array of float-returning functions.
-- **Parameter:** `members` — Array of `Func<float>` delegates.
+- **Description:** Initializes the expression with an array of functions that take a `T` and return an float.
+- **Parameter:** `members` — Array of `Func<T, float>` delegates.
 
-#### `FloatMulExpression(IEnumerable<Func<float>>)`
+#### `FloatMulExpression(IEnumerable<Func<T, float>>)`
 
 ```csharp
-public FloatMulExpression(IEnumerable<Func<float>> members)
+public FloatMulExpression(IEnumerable<Func<T, float>> members)
 ```
 
-- **Description:** Initializes the expression with a collection of float-returning functions.
-- **Parameter:** `members` — Enumerable collection of `Func<float>` delegates.
+- **Description:** Initializes the expression with a collection of functions that take a `T` and return an float.
+- **Parameter:** `members` — Enumerable collection of `Func<T, float>` delegates.
 
 ---
 
@@ -53,12 +55,13 @@ public FloatMulExpression(IEnumerable<Func<float>> members)
 public event Action OnStateChanged;
 ```
 
-- **Description:** Occurs when the state of the expression changes.
+- **Description:** Occurs when the state of the expression changes (e.g., when functions are added, removed, or the list
+  is cleared).
 
 #### `OnItemChanged`
 
 ```csharp
-public event Action<int, Func<float>> OnItemChanged;
+public event Action<int, Func<T, float>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -66,7 +69,7 @@ public event Action<int, Func<float>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event Action<int, Func<float>> OnItemInserted;
+public event Action<int, Func<T, float>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted floato the expression at a specific position.
@@ -74,7 +77,7 @@ public event Action<int, Func<float>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event Action<int, Func<float>> OnItemDeleted;
+public event Action<int, Func<T, float>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.
@@ -82,16 +85,6 @@ public event Action<int, Func<float>> OnItemDeleted;
 ---
 
 ### 🔑 Properties
-
-#### `Value`
-
-```csharp
-public float Value { get; }
-```
-
-- **Description:** Evaluates all functions and returns the product of their results.
-  If no functions are present, returns 1 by default.
-- **Returns:** `float` — The computed product.
 
 #### `Count`
 
@@ -118,44 +111,46 @@ public bool IsReadOnly { get; }
 #### `[int index]`
 
 ```csharp
-public Func<float> this[int index] { get; set; }
+public Func<T, float> this[int index] { get; set; }
 ```
 
 - **Description:** Indexer to access a function at a specific position.
 - **Parameter:** `index` — The position of the function.
-- **Returns:** `Func<float>` — The function at the given index.
+- **Returns:** `Func<T, float>` — The function at the given index.
 
 ---
 
 ### 🏹 Methods
 
-#### `Invoke()`
+#### `Invoke(T)`
 
 ```csharp
-public float Invoke()
+public float Invoke(T arg)
 ```
 
-- **Description:** Evaluates all function members of the expression and returns their product.
+- **Description:** Evaluates all function members of the expression with the provided argument and returns their
+  product.
+- **Parameter:** `arg` — The input argument of type T.
 - **Returns:** `float` — The computed product.
 - **Note:** -Returns `1` if no functions are present.
 
-#### `Add(Func<float>)`
+#### `Add(Func<T, float>)`
 
 ```csharp
-public void Add(Func<float> item)
+public void Add(Func<T, float> item)
 ```
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
 
-#### `AddRange(IEnumerable<Func<float>>)`
+#### `AddRange(IEnumerable<Func<T, float>>)`
 
 ```csharp
-public void AddRange(IEnumerable<Func<float>> items)
+public void AddRange(IEnumerable<Func<T, float>> items)
 ```
 
 - **Description:** Adds multiple functions to the expression at once.
-- **Parameter:** `items` — An enumerable collection of `Func<float>` delegates to add.
+- **Parameter:** `items` — An enumerable collection of `Func<T, float>` delegates to add.
 - **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
@@ -166,52 +161,52 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
-#### `Contains(Func<float>)`
+#### `Contains(Func<T, float>)`
 
 ```csharp
-public bool Contains(Func<float> item)
+public bool Contains(Func<T, float> item)
 ```
 
 - **Description:** Checks if the specified function exists in the expression.
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<float>[], int)`
+#### `CopyTo(Func<T, float>[], int)`
 
 ```csharp
-public void CopyTo(Func<float>[] array, int arrayIndex)
+public void CopyTo(Func<T, float>[] array, int arrayIndex)
 ```
 
 - **Description:** Copies all functions in the expression to the specified array starting at the given index.
 - **Parameters:**
-- `array` — The destination array.
-- `arrayIndex` — The starting index in the array.
+    - `array` — The destination array.
+    - `arrayIndex` — The starting index in the array.
 
-#### `IndexOf(Func<float>)`
+#### `IndexOf(Func<T, float>)`
 
 ```csharp
-public float IndexOf(Func<float> item)
+public float IndexOf(Func<T, float> item)
 ```
 
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `float` — The index of the function, or `-1` if not found.
 
-#### `Insert(int, Func<float>)`
+#### `Insert(int, Func<T, float>)`
 
 ```csharp
-public void Insert(int index, Func<float> item)
+public void Insert(int index, Func<T, float> item)
 ```
 
 - **Description:** Inserts a function at the specified index.
 - **Parameters:**
-- `index` — The position at which to insert.
-- `item` — The function to insert.
+    - `index` — The position at which to insert.
+    - `item` — The function to insert.
 
-#### `Remove(Func<float>)`
+#### `Remove(Func<T, float>)`
 
 ```csharp
-public bool Remove(Func<float> item)
+public bool Remove(Func<T, float> item)
 ```
 
 - **Description:** Removes the specified function from the expression.
@@ -230,11 +225,11 @@ public void RemoveAt(int index)
 #### `GetEnumerator()`
 
 ```csharp
-public IEnumerator<Func<float>> GetEnumerator()
+public IEnumerator<Func<T, float>> GetEnumerator()
 ```
 
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
-- **Returns:** `IEnumerator<Func<float>>` — Enumerator over the functions.
+- **Returns:** `IEnumerator<Func<T, float>>` — Enumerator over the functions.
 
 #### `Dispose()`
 
@@ -253,16 +248,11 @@ public void Dispose()
 ### 🗂 Example Usage
 
 ```csharp
-var multiply = new FloatMulExpression(
-    () => 2,
-    () => 3,
-    () => 4
+var expression = new FloatMulExpression<float>(
+    x => x,
+    x => x + 1
 );
-float result = multiply.Invoke(); // 24
+float result = expression.Invoke(3); // 3 * (3 + 1) = 12
 ```
 
 </details>
-
----
-
----
