@@ -388,7 +388,8 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 - **Projectile:** A kinematic object that interacts via trigger collisions and has a limited lifetime.
 
 > - **Respawning:** Units respawn at random point dynamically after being defeated.
->   - **Limited Time:**  The game ends when the time limit is reached.
+    >
+- **Limited Time:**  The game ends when the time limit is reached.
 > - **Visualization**
     >
 
@@ -463,14 +464,14 @@ or multiplayer games.
 - [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
 - [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md)
-- [Using InlineActions](Docs/Elements/Actions/InlineAction.md/#-best-practice)
-- [Using InlineFunctions](Docs/Elements/Functions/InlineFunction.md/#-best-practice)
-- [Using Cooldowns](Docs/Elements/Time/Cooldown.md/#-best-practice)
-- [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpression.md/#-best-practice)
+- [Using InlineActions](Docs/Elements/Actions/InlineActions.md/#-best-practice)
+- [Using InlineFunctions](Docs/Elements/Functions/InlineFunctions.md/#-best-practice)
+- [Using Cooldowns](Docs/Elements/Time/Cooldowns.md/#-best-practice)
+- [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpressions.md/#-best-practice)
 - [Choosing Between Timer and Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md)
 - [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
-- [Using Subscriptions with DisposeComposite](Docs/Elements/Signals/Subscription.md/#-best-practice)
-- [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-example-of-usage)
+- [Using Subscriptions with DisposeComposite](Docs/Elements/Events/Subscriptions.md/#-best-practice)
+- [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-best-practice)
 
 ---
 
