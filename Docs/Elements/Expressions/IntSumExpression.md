@@ -257,5 +257,6 @@ var expression = new IntSumExpression(
     () => 3,
     () => 4
 );
+
 int result = expression.Invoke(); // 9
 ```

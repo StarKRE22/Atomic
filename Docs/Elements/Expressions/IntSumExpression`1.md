@@ -1,22 +1,19 @@
-
-<details>
- <summary>
- <h2>🧩 IntSumExpression&lt;T&gt;</h2>
- <br> Represents an expression that computes the sum of integer values returned from functions with a <b>single input parameter</b>
- </summary>
-
-<br>
+# 🧩 IntSumExpression&lt;T&gt;
 
 ```csharp
 [Serializable]
 public class IntSumExpression<T> : ExpressionBase<T, int>
 ```
 
+- **Description:** Represents an expression that computes the sum of integer values returned from functions with a <b>
+  single input parameter</b>
 - **Type Parameter:** `T` — The input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `IntSumExpression(int)`
 
@@ -47,7 +44,7 @@ public IntSumExpression(IEnumerable<Func<T, int>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -84,7 +81,7 @@ public event Action<int, Func<T, int>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -106,7 +103,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -120,7 +117,7 @@ public Func<T, int> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -244,7 +241,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 ```csharp
 var expression = new IntSumExpression<int>(
@@ -253,5 +250,3 @@ var expression = new IntSumExpression<int>(
 );
 int result = expression.Invoke(3); // 3 + (3 + 1) = 7
 ```
-
-</details>
