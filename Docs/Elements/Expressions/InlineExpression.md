@@ -1,6 +1,7 @@
 # 🧩 InlineExpression&lt;R&gt;
 
 ```csharp
+[Serializable]
 public class InlineExpression<R> : ExpressionBase<R>
 ```
 

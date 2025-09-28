@@ -8,6 +8,7 @@
 <br>
 
 ```csharp
+[Serializable]
 public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
 ```
 

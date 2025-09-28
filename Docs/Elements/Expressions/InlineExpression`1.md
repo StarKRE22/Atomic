@@ -1,23 +1,21 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineExpression&lt;T, R&gt;</h2>
-    <br>  Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a list of functions of type <code>Func&lt;T, R&gt;</code>.
-  </summary>
-
-<br>
+# 🧩 InlineExpression&lt;T, R&gt;
 
 ```csharp
+[Serializable]
 public class InlineExpression<T, R> : ExpressionBase<T, R>
 ```
 
+- **Description:** Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a
+  list of functions of type <code>Func&lt;T, R&gt;</code>.
 - **Type Parameters:**
     - `T` — The input type of the expression.
     - `R` — The return type of the expression.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlineExpression(Func<Enumerator, T, R>, int)`
 
@@ -55,7 +53,7 @@ public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>>
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -92,7 +90,7 @@ public event Action<int, Func<T, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -114,7 +112,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -128,7 +126,7 @@ public Func<T, R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -251,7 +249,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 Below is an example of using `InlineExpression<T, R>` to extend a simple **PRODUCT** expression:
 
@@ -271,5 +269,3 @@ expression.Add(x => x + 2);
 //Evaluate:
 int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
 ```
-
-</details>
