@@ -35,117 +35,18 @@ framework, all game objects, systems, UI elements, and application contexts can 
 > By default the code generation works with Unity, but with the plugin, development experience in `Rider` become
 > smoother and more powerful than in Unity.
 
-## API Reference
+## 🔍 API Reference
 
-- [Entities]()
-  - [IEntity](Entities/IEntity.md)
-  - [Entity](Entities/Entity.md) 
-  - [SceneEntity](Entities/SceneEntity.md)
-  - [Extensions](Entities/Extensions.md)
-
-- [Behaviours]()
-  - [IEntityBehaviour](Behaviours/IEntityBehaviour.md)
-  - [IEntityInit](Behaviours/IEntityInit.md)
-  - [IEntityDispose](Behaviours/IEntityDispose.md)
-  - [IEntityEnable](Behaviours/IEntityEnable.md)
-  - [IEntityDisable](Behaviours/IEntityDisable.md) 
-  - [IEntityTick](Behaviours/IEntityTick.md) 
-  - [IEntityFixedTick](Behaviours/IEntityFixedTick.md) 
-  - [IEntityLateTick](Behaviours/IEntityLateTick.md) 
-  - [IEntityGizmos](Behaviours/IEntityGizmos.md) 
-  - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md) 
-  - [Extensions](Entities/Extensions.md)
-
-- [Installers]()
-  - [IEntityInstaller](Installers/IEntityInstaller.md)
-  - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
-  - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
-  - [Extensions](Entities/Extensions.md)
-
-- [Proxies]()
-  - [SceneEntityProxy](Entities/SceneEntityProxy.md)
-  - [Extensions](Entities/Extensions.md)
-
-- [Singletons]()
-    - [EntitySingleton](Entities/EntitySingleton.md)
-    - [SceneEntitySingleton](Entities/SceneEntitySingleton.md)
-
-- [Factories]
-  - [IEntityFactory](Factories/IEntityFactory.md)
-  - [SceneEntityFactory](Factories/SceneEntityFactory.md)
-  - [ScriptableEntityFactory](Factories/ScriptableEntityFactory.md)
-  - [InlineEntityFactory](Factories/InlineEntityFactory.md)
-  - [IMultiEntityFactory](Factories/IMultiEntityFactory.md)
-  - [MultiEntityFactory](Factories/MultiEntityFactory.md)
-  - [IEntityFactoryCatalog](Factories/IEntityFactoryCatalog.md)
-  - [ScriptableEntityFactoryCatalog](Factories/ScriptableEntityFactoryCatalog.md)
-
-- [Baking]
-  - [SceneEntityBaker](Factories/SceneEntityBaker.md)
-
-- [Pooling]
-  - [IEntityPool](Pooling/IEntityPool.md)
-  - [EntityPool](Pooling/EntityPool.md)
-  - [SceneEntityPool](Pooling/SceneEntityPool.md)
-  - [IMultiEntityPool](Pooling/IMultiEntityPool.md)
-  - [MultiEntityPool](Pooling/MultiEntityPool.md)
-  - [IPrefabEntityPool](Pooling/IPrefabEntityPool.md)
-  - [PrefabEntityPool](Pooling/PrefabEntityPool.md)
-
-- [Collections]
-  - [IReadOnlyEntityCollection](Collections/IReadOnlyEntityCollection.md)
-  - [IEntityCollection](Collections/IEntityCollection.md)
-  - [EntityCollection](Collections/EntityCollection.md)
-  - [Extensions](Collections/Extensions.md)
-
-- [Worlds]
-  - [IEntityWorld](Worlds/IEntityWorld.md)
-  - [EntityWorld](Worlds/EntityWorld.md)
-  - [SceneEntityWorld](Worlds/SceneEntityWorld.md)
-
-- [Filters & Triggers]
-  - [EntityFilter](Filters/EntityFilter.md)
-  - [IEntityTrigger](Filters/IEntityTrigger.md)
-  - [EntityTriggerBase](Filters/EntityTriggerBase.md)
-  - [TagEntityTrigger](Filters/TagEntityTrigger.md)
-  - [ValueEntityTrigger](Filters/ValueEntityTrigger.md)
-  - [BehaviourEntityTrigger](Filters/BehaviourEntityTrigger.md)
-  - [StateChangedEntityTrigger](Filters/StateChangedEntityTrigger.md)
-  - [SubscriptionEntityTrigger](Filters/SubscriptionEntityTrigger.md)
-  - [InlineEntityTrigger](Filters/InlineEntityTrigger.md)
-
-- [Registry]
-  - [EntityRegistry](Registry/EntityRegistry.md)
-
-- [UI]
-  - [EntityView](UI/EntityView.md)
-  - [EntityViewCatalog](UI/EntityViewCatalog.md)
-  - [EntityViewPool](UI/EntityViewPool.md)
-  - [EntityCollectionView](UI/EntityViewPool.md)
-
-- [Aspects]
-  - [IEntityAspect](Aspects/IEntityAspect.md)
-  - [SceneEntityAspect](Aspects/SceneEntityAspect.md)
-  - [ScriptableEntityAspect](Aspects/ScriptableEntityAspect.md)
-
-- [Utils]
-  - [EntityUtils](Utils/EntityUtils.md)
-  - [EntityNames](Utils/EntityNames.md)
-
-- [Framework Lifecycle]
-  - [IInitSource](Lifecycle/Sources/IInitSource.md)
-  - [IEnableSource](Lifecycle/Sources/IEnableSource.md)
-  - [IUpdateSource](Lifecycle/Sources/IUpdateSource.md)
-  - [InitSubscription](Lifecycle/Subscriptions/InitSubscription.md)
-  - [EnableSubscription](Lifecycle/Subscriptions/EnableSubscription.md)
-  - [DisableSubscription](Lifecycle/Subscriptions/DisableSubscription.md)
-  - [DisposeSubscription](Lifecycle/Subscriptions/DisposeSubscription.md)
-  - [UpdateSubscription](Lifecycle/Subscriptions/UpdateSubscription.md)
-  - [FixedUpdateSubscription](Lifecycle/Subscriptions/FixedUpdateSubscription.md)
-  - [LateUpdateSubscription](Lifecycle/Subscriptions/LateUpdateSubscription.md)
-  - [Extensions](Lifecycle/Extensions.md)
-
-## 🤖 Generate Entity API
+- [Entities](Entities/Manual.md)
+- [Entity API](EntityAPI/Manual.md)
+- [Factories](Factories/Manual.md)
+- [Baking](Baking/Manual.md)
+- [Collections](Collections/Manual.md)
+- [Worlds](Worlds/Manual.md)
+- [Filters](Filters/Manual.md)
+- [UI](UI/Manual.md)
+- [Utilities](Utils/Manual.md)
+- [Lifecycle](Lifecycle/Manual.md)
 
 ## Performance
 
