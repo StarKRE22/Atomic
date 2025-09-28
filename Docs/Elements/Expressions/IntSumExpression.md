@@ -1,21 +1,18 @@
-
----
-
-<details>
- <summary>
- <h2>🧩 IntSumExpression</h2>
- <br> Represents an expression that computes the sum of multiple <b>parameterless integer-returning</b> functions
- </summary>
-
-<br>
+# 🧩 IntSumExpression
 
 ```csharp
+[Serializable]
 public class IntSumExpression : ExpressionBase<int>
 ```
 
+- **Description:** Represents an expression that computes the sum of multiple <b>parameterless integer-returning</b>
+  functions
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md)
+- **Note:** Supports Odin Inspector
+
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `IntSumExpression(int)`
 
@@ -46,7 +43,7 @@ public IntSumExpression(IEnumerable<Func<int>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -83,7 +80,7 @@ public event Action<int, Func<int>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -115,7 +112,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -129,7 +126,7 @@ public Func<int> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -252,7 +249,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 ```csharp
 var expression = new IntSumExpression(
@@ -262,10 +259,3 @@ var expression = new IntSumExpression(
 );
 int result = expression.Invoke(); // 9
 ```
-
-</details>
-
----
-
-
----

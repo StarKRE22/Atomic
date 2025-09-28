@@ -8,6 +8,7 @@
 <br>
 
 ```csharp
+[Serializable]
 public class IntSumExpression<T> : ExpressionBase<T, int>
 ```
 

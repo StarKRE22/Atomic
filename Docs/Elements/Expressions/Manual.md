@@ -18,30 +18,30 @@ composition.
     - [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md) <!-- + -->
     - [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md) <!-- + -->
 - [AndExpressions](AndExpressions.md) <!-- + -->
-    - [AndExpression&lt;R&gt;](AndExpression.md) <!-- + -->
-    - [AndExpression&lt;T, R&gt;](AndExpression%601.md) <!-- + -->
-    - [AndExpression&lt;T1, T2, R&gt;](AndExpression%602.md) <!-- + -->
+    - [AndExpression](AndExpression.md) <!-- + -->
+    - [AndExpression&lt;T&gt;](AndExpression%601.md) <!-- + -->
+    - [AndExpression&lt;T1, T2&gt;](AndExpression%602.md) <!-- + -->
 - [OrExpressions](OrExpressions.md) <!-- + -->
-    - [OrExpression&lt;R&gt;](OrExpression.md) <!-- + -->
-    - [OrExpression&lt;T, R&gt;](OrExpression%601.md) <!-- + -->
-    - [OrExpression&lt;T1, T2, R&gt;](OrExpression%602.md) <!-- + -->
+    - [OrExpression](OrExpression.md) <!-- + -->
+    - [OrExpression&lt;T&gt;](OrExpression%601.md) <!-- + -->
+    - [OrExpression&lt;T1, T2&gt;](OrExpression%602.md) <!-- + -->
 - [IntMulExpressions](IntMulExpressions.md) <!-- + -->
-    - [IntMulExpression&lt;R&gt;](IntMulExpression.md) <!-- + -->
-    - [IntMulExpression&lt;T, R&gt;](IntMulExpression%601.md) <!-- + -->
-    - [IntMulExpression&lt;T1, T2, R&gt;](IntMulExpression%602.md) <!-- + -->
+    - [IntMulExpression](IntMulExpression.md) <!-- + -->
+    - [IntMulExpression&lt;T&gt;](IntMulExpression%601.md) <!-- + -->
+    - [IntMulExpression&lt;T1, T2&gt;](IntMulExpression%602.md) <!-- + -->
 - [IntSumExpressions](IntSumExpressions.md) <!-- + -->
-    - [IntSumExpression&lt;R&gt;]()
-    - [IntSumExpression&lt;T, R&gt;]()
-    - [IntSumExpression&lt;T1, T2, R&gt;]()
+    - [IntSumExpression](IntSumExpression.md) <!-- + -->
+    - [IntSumExpression&lt;T&gt;]()
+    - [IntSumExpression&lt;T1, T2&gt;]()
 - [FloatMulExpressions]()
-    - [FloatMulExpression&lt;R&gt;]()
-    - [FloatMulExpression&lt;T, R&gt;]()
-    - [FloatMulExpression&lt;T1, T2, R&gt;]()
+    - [FloatMulExpression]()
+    - [FloatMulExpression&lt;T&gt;]()
+    - [FloatMulExpression&lt;T1, T2&gt;]()
 - [FloatSumExpressions]()
-    - [FloatSumExpression&lt;R&gt;]()
-    - [FloatSumExpression&lt;T, R&gt;]()
-    - [FloatSumExpression&lt;T1, T2, R&gt;]()
+    - [FloatSumExpression]()
+    - [FloatSumExpression&lt;T&gt;]()
+    - [FloatSumExpression&lt;T1, T2&gt;]()
 - [InlineExpressions]()
-    - [InlineExpression&lt;R&gt;]()
-    - [InlineExpression&lt;T, R&gt;]()
-    - [InlineExpression&lt;T1, T2, R&gt;]()
+    - [InlineExpression]()
+    - [InlineExpression&lt;T&gt;]()
+    - [InlineExpression&lt;T1, T2&gt;]()
