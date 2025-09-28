@@ -7,6 +7,7 @@
 
 
 ```csharp
+[Serializable]
 public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
 ```
 

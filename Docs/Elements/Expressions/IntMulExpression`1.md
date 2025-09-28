@@ -1,11 +1,12 @@
 # 🧩 IntMulExpression&lt;T&gt;
 
 ```csharp
+[Serializable]
 public class IntMulExpression<T> : ExpressionBase<T, int>
 ```
 - **Description:** Represents an expression that computes the product of integer values returned from functions with a <b>single input parameter</b>
 - **Type Parameter:** `T` — The input parameter type of the functions.
-- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md)
 - **Note:** Supports Odin Inspector
 
 ## 🏗️ Constructors
