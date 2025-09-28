@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,31 +211,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="22869000" />
-    </task>
-    <task id="LOCAL-00918" summary="ExpressionBase`2.md">
-      <option name="closed" value="true" />
-      <created>1758994843816</created>
-      <option name="number" value="00918" />
-      <option name="presentableId" value="LOCAL-00918" />
-      <option name="project" value="LOCAL" />
-      <updated>1758994843816</updated>
-    </task>
-    <task id="LOCAL-00919" summary="AndExpressions.md, AndExpression.md">
-      <option name="closed" value="true" />
-      <created>1759000471193</created>
-      <option name="number" value="00919" />
-      <option name="presentableId" value="LOCAL-00919" />
-      <option name="project" value="LOCAL" />
-      <updated>1759000471193</updated>
-    </task>
-    <task id="LOCAL-00920" summary="AndExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1759000633554</created>
-      <option name="number" value="00920" />
-      <option name="presentableId" value="LOCAL-00920" />
-      <option name="project" value="LOCAL" />
-      <updated>1759000633554</updated>
+      <workItem from="1758961405633" duration="24402000" />
     </task>
     <task id="LOCAL-00921" summary="AndExpression`1.md">
       <option name="closed" value="true" />
@@ -602,7 +581,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759085198017</updated>
     </task>
-    <option name="localTasksCounter" value="967" />
+    <task id="LOCAL-00967" summary="ChosingBetweenTimerAndCooldown.md">
+      <option name="closed" value="true" />
+      <created>1759085584597</created>
+      <option name="number" value="00967" />
+      <option name="presentableId" value="LOCAL-00967" />
+      <option name="project" value="LOCAL" />
+      <updated>1759085584597</updated>
+    </task>
+    <task id="LOCAL-00968" summary="ChosingBetweenTimerAndCooldown.md">
+      <option name="closed" value="true" />
+      <created>1759085605468</created>
+      <option name="number" value="00968" />
+      <option name="presentableId" value="LOCAL-00968" />
+      <option name="project" value="LOCAL" />
+      <updated>1759085605468</updated>
+    </task>
+    <task id="LOCAL-00969" summary="Обновил Best Practices">
+      <option name="closed" value="true" />
+      <created>1759085747456</created>
+      <option name="number" value="00969" />
+      <option name="presentableId" value="LOCAL-00969" />
+      <option name="project" value="LOCAL" />
+      <updated>1759085747456</updated>
+    </task>
+    <option name="localTasksCounter" value="970" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Reference.md" />
     <MESSAGE value="Сделал Utilities" />
     <MESSAGE value="IntMulExpressions.md" />
     <MESSAGE value="IntMulExpression.md" />
@@ -654,7 +656,8 @@
     <MESSAGE value="InlineExpression`2.md" />
     <MESSAGE value="Поправил Best Practice" />
     <MESSAGE value="ChosingBetweenTimerAndCooldown.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChosingBetweenTimerAndCooldown.md" />
+    <MESSAGE value="Обновил Best Practices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновил Best Practices" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
