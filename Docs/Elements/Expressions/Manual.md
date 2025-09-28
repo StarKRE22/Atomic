@@ -32,7 +32,7 @@ composition.
 - [IntSumExpressions](IntSumExpressions.md) <!-- + -->
     - [IntSumExpression](IntSumExpression.md) <!-- + -->
     - [IntSumExpression&lt;T&gt;](IntSumExpression%601.md) <!-- + -->
-    - [IntSumExpression&lt;T1, T2&gt;]()
+    - [IntSumExpression&lt;T1, T2&gt;](IntSumExpression%602.md)  <!-- + -->
 - [FloatMulExpressions]()
     - [FloatMulExpression]()
     - [FloatMulExpression&lt;T&gt;]()
