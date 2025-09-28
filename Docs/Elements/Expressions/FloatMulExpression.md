@@ -1,20 +1,18 @@
-
-
-<details>
- <summary>
- <h2>🧩 FloatMulExpression</h2>
- <br> Represents an expression that computes the <b>product</b> of multiple <b>parameterless float-returning</b> functions
- </summary>
-
-<br> 
+# 🧩 FloatMulExpression
 
 ```csharp
+[Serializable]
 public class FloatMulExpression : ExpressionBase<float>
 ```
 
+- **Description:** Represents an expression that computes the <b>product</b> of multiple <b>parameterless
+  float-returning</b> functions
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md)
+- **Note:** Supports Odin Inspector
+
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `FloatMulExpression(int)`
 
@@ -45,7 +43,7 @@ public FloatMulExpression(IEnumerable<Func<float>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -81,7 +79,7 @@ public event Action<int, Func<float>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -113,7 +111,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -127,7 +125,7 @@ public Func<float> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -250,7 +248,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 ```csharp
 var multiply = new FloatMulExpression(
@@ -260,9 +258,3 @@ var multiply = new FloatMulExpression(
 );
 float result = multiply.Invoke(); // 24
 ```
-
-</details>
-
----
-
----

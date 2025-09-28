@@ -9,6 +9,7 @@
 <br>
 
 ```csharp
+[Serializable]
 public class FloatMulExpression<T> : ExpressionBase<T, float>
 ```
 
