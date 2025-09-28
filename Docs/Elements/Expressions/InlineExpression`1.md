@@ -1,27 +1,28 @@
----
 
 <details>
   <summary>
-    <h2>🧩 InlineExpression&lt;R&gt;</h2>
-    <br> A flexible expression that uses a <b>custom evaluation function</b> to compute a result from a list of parameterless functions  
+    <h2>🧩 InlineExpression&lt;T, R&gt;</h2>
+    <br>  Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a list of functions of type <code>Func&lt;T, R&gt;</code>.
   </summary>
 
 <br>
 
 ```csharp
-public class InlineExpression<R> : ExpressionBase<R>
+public class InlineExpression<T, R> : ExpressionBase<T, R>
 ```
 
-- **Type Parameter:** `R` — The return type of the expression.
+- **Type Parameters:**
+    - `T` — The input type of the expression.
+    - `R` — The return type of the expression.
 
 ---
 
 ### 🏗️ Constructors
 
-#### `InlineExpression(Func<Enumerator, R>, int)`
+#### `InlineExpression(Func<Enumerator, T, R>, int)`
 
 ```csharp
-public InlineExpression(Func<Enumerator, R> function, int capacity)
+public InlineExpression(Func<Enumerator, T, R> function, int capacity)
 ```
 
 - **Description:** Initializes a new empty `InlineExpression` with a **custom evaluation function** and the given
@@ -30,10 +31,10 @@ public InlineExpression(Func<Enumerator, R> function, int capacity)
     - `function` — The function that defines how to evaluate the collection of functions.
     - `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `InlineExpression(Func<Enumerator, R>, params Func<R>[])`
+#### `InlineExpression(Func<Enumerator, T, R>, params Func<T, R>[])`
 
 ```csharp
-public InlineExpression(Func<Enumerator, R> function, params Func<R>[] array)
+public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] array)
 ```
 
 - **Description:** Initializes a new instance with a **custom evaluation function** and initial array
@@ -41,10 +42,10 @@ public InlineExpression(Func<Enumerator, R> function, params Func<R>[] array)
     - `function` — The evaluation logic to be applied to the functions.
     - `array` — An array of functions to add to the expression.
 
-#### `InlineExpression(Func<Enumerator, R>, IEnumerable<Func<R>>)`
+#### `InlineExpression(Func<Enumerator, T, R>, IEnumerable<Func<T, R>>)`
 
 ```csharp
-public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enumerable)
+public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>> enumerable)
 ```
 
 - **Description:** Initializes a new instance with a **custom evaluation function** and initial collection of functions
@@ -68,7 +69,7 @@ public event Action OnStateChanged;
 #### `OnItemChanged`
 
 ```csharp
-public event Action<int, Func<R>> OnItemChanged;
+public event Action<int, Func<T, R>> OnItemChanged;
 ```
 
 - **Description:** Occurs when an existing function in the expression is replaced or modified.
@@ -76,7 +77,7 @@ public event Action<int, Func<R>> OnItemChanged;
 #### `OnItemInserted`
 
 ```csharp
-public event Action<int, Func<R>> OnItemInserted;
+public event Action<int, Func<T, R>> OnItemInserted;
 ```
 
 - **Description:** Occurs when a new function is inserted into the expression at a specific position.
@@ -84,7 +85,7 @@ public event Action<int, Func<R>> OnItemInserted;
 #### `OnItemDeleted`
 
 ```csharp
-public event Action<int, Func<R>> OnItemDeleted;
+public event Action<int, Func<T, R>> OnItemDeleted;
 ```
 
 - **Description:** Occurs when a function is removed from the expression.
@@ -92,15 +93,6 @@ public event Action<int, Func<R>> OnItemDeleted;
 ---
 
 ### 🔑 Properties
-
-#### `Value`
-
-```csharp
-public R Value { get; }
-```
-
-- **Description:** Evaluates all functions and returns their computed result.
-- **Returns:** `R` — The evaluated custom result.
 
 #### `Count`
 
@@ -127,43 +119,44 @@ public bool IsReadOnly { get; }
 #### `[int index]`
 
 ```csharp
-public Func<R> this[int index] { get; set; }
+public Func<T, R> this[int index] { get; set; }
 ```
 
 - **Description:** Indexer to access a function at a specific position.
 - **Parameter:** `index` — The position of the function.
-- **Returns:** `Func<R>` — The function at the given index.
+- **Returns:** `Func<T, R>` — The function at the given index.
 
 ---
 
 ### 🏹 Methods
 
-#### `Invoke()`
+#### `Invoke(T)`
 
 ```csharp
-public R Invoke()
+public R Invoke(T arg)
 ```
 
-- **Description:** Evaluates all function members of the expression.
+- **Description:** Evaluates all function members of the expression with the given input.
+- **Parameter:** `T` — The input parameter.
 - **Returns:** `R` — The evaluated custom result.
 
-#### `Add(Func<R>)`
+#### `Add(Func<T, R>)`
 
 ```csharp
-public void Add(Func<R> item)
+public void Add(Func<T, R> item)
 ```
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
 
-#### `AddRange(IEnumerable<Func<R>>)`
+#### `AddRange(IEnumerable<Func<T, R>> items)`
 
 ```csharp
-public void AddRange(IEnumerable<Func<R>> items)
+public void AddRange(IEnumerable<Func<T, R>> items)
 ```
 
 - **Description:** Adds multiple functions to the expression at once.
-- **Parameter:** `items` — An enumerable collection of `Func<R>` delegates to add.
+- **Parameter:** `items` — An enumerable collection of `Func<T, R>` delegates to add.
 - **Throws:** `ArgumentNullException` if `items` is `null`.
 
 #### `Clear()`
@@ -174,20 +167,20 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
-#### `Contains(Func<R>)`
+#### `Contains(Func<T, R>)`
 
 ```csharp
-public bool Contains(Func<R> item)
+public bool Contains(Func<T, R> item)
 ```
 
 - **Description:** Checks if the specified function exists in the expression.
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
-#### `CopyTo(Func<R>[], int)`
+#### `CopyTo(Func<T, R>[], int)`
 
 ```csharp
-public void CopyTo(Func<R>[] array, int arrayIndex)
+public void CopyTo(Func<T, R>[] array, int arrayIndex)
 ```
 
 - **Description:** Copies all functions in the expression to the specified array starting at the given index.
@@ -195,20 +188,20 @@ public void CopyTo(Func<R>[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
-#### `IndexOf(Func<R>)`
+#### `IndexOf(Func<T, R>)`
 
 ```csharp
-public int IndexOf(Func<R> item)
+public int IndexOf(Func<T, R> item)
 ```
 
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `int` — The index of the function, or `-1` if not found.
 
-#### `Insert(int, Func<R>)`
+#### `Insert(int, Func<T, R>)`
 
 ```csharp
-public void Insert(int index, Func<R> item)
+public void Insert(int index, Func<T, R> item)
 ```
 
 - **Description:** Inserts a function at the specified index.
@@ -216,10 +209,10 @@ public void Insert(int index, Func<R> item)
     - `index` — The position at which to insert.
     - `item` — The function to insert.
 
-#### `Remove(Func<R>)`
+#### `Remove(Func<T, R>)`
 
 ```csharp
-public bool Remove(Func<R> item)
+public bool Remove(Func<T, R> item)
 ```
 
 - **Description:** Removes the specified function from the expression.
@@ -238,11 +231,11 @@ public void RemoveAt(int index)
 #### `GetEnumerator()`
 
 ```csharp
-public IEnumerator<Func<R>> GetEnumerator()
+public IEnumerator<Func<T, R>> GetEnumerator()
 ```
 
 - **Description:** Returns an enumerator for iterating over all function members in the expression.
-- **Returns:** `IEnumerator<Func<R>>` — Enumerator over the functions.
+- **Returns:** `IEnumerator<Func<T, R>>` — Enumerator over the functions.
 
 #### `Dispose()`
 
@@ -260,22 +253,23 @@ public void Dispose()
 
 ### 🗂 Example Usage
 
-Below is an example of using `InlineExpression<R>` to extend a simple **SUM** expression:
+Below is an example of using `InlineExpression<T, R>` to extend a simple **PRODUCT** expression:
 
 ```csharp
-//Create an instance of "SUM" expression
-var expression = new InlineExpression<int>(enumerator => {
-    int sum = 0;
+//Create an instance of "PRODUCT" expression
+var expression = new InlineExpression<int, int>((enumerator, x) => {
+    int product = 1;
     while (enumerator.MoveNext())
-        sum += enumerator.Current.Invoke();
-    return sum;
+        product *= enumerator.Current.Invoke(x);
+    return product;
 });
 
 //Add functions:
-expression.Add(() => 1);
-expression.Add(() => 2);
-expression.Add(() => 3);
+expression.Add(x => x + 1);
+expression.Add(x => x + 2);
 
 //Evaluate:
-int sum = expression.Invoke(); // 1 + 2 + 3 = 6
+int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
 ```
+
+</details>
