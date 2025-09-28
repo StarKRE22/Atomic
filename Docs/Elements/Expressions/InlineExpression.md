@@ -1,22 +1,18 @@
----
-
-<details>
-  <summary>
-    <h2>🧩 InlineExpression&lt;R&gt;</h2>
-    <br> A flexible expression that uses a <b>custom evaluation function</b> to compute a result from a list of parameterless functions  
-  </summary>
-
-<br>
+# 🧩 InlineExpression&lt;R&gt;
 
 ```csharp
 public class InlineExpression<R> : ExpressionBase<R>
 ```
 
+- **Description:** A flexible expression that uses a <b>custom evaluation function</b> to compute a result from a list
+  of parameterless functions
 - **Type Parameter:** `R` — The return type of the expression.
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlineExpression(Func<Enumerator, R>, int)`
 
@@ -54,7 +50,7 @@ public InlineExpression(Func<Enumerator, R> function, IEnumerable<Func<R>> enume
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -91,7 +87,7 @@ public event Action<int, Func<R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -122,7 +118,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -136,7 +132,7 @@ public Func<R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -258,7 +254,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 Below is an example of using `InlineExpression<R>` to extend a simple **SUM** expression:
 

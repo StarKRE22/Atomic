@@ -59,6 +59,7 @@ int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
 #### `InlineExpression<T1, T2, R>`
 
 ```csharp
+//Create an instance of "SUM" expression
 var expression = new InlineExpression<int, int, int>((enumerator, x, y) => {
     int sum = 0;
     while (enumerator.MoveNext())

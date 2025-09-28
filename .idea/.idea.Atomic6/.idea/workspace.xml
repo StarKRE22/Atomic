@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,23 +213,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="20364000" />
-    </task>
-    <task id="LOCAL-00911" summary="IExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1758993153647</created>
-      <option name="number" value="00911" />
-      <option name="presentableId" value="LOCAL-00911" />
-      <option name="project" value="LOCAL" />
-      <updated>1758993153647</updated>
-    </task>
-    <task id="LOCAL-00912" summary="ExpressionsBase.md">
-      <option name="closed" value="true" />
-      <created>1758993449443</created>
-      <option name="number" value="00912" />
-      <option name="presentableId" value="LOCAL-00912" />
-      <option name="project" value="LOCAL" />
-      <updated>1758993449443</updated>
+      <workItem from="1758961405633" duration="21123000" />
     </task>
     <task id="LOCAL-00913" summary="ExpressionsBase.md">
       <option name="closed" value="true" />
@@ -602,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759080653444</updated>
     </task>
-    <option name="localTasksCounter" value="960" />
+    <task id="LOCAL-00960" summary="FloatSumExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1759081748495</created>
+      <option name="number" value="00960" />
+      <option name="presentableId" value="LOCAL-00960" />
+      <option name="project" value="LOCAL" />
+      <updated>1759081748495</updated>
+    </task>
+    <task id="LOCAL-00961" summary="InlineExpressions.md">
+      <option name="closed" value="true" />
+      <created>1759082035243</created>
+      <option name="number" value="00961" />
+      <option name="presentableId" value="LOCAL-00961" />
+      <option name="project" value="LOCAL" />
+      <updated>1759082035243</updated>
+    </task>
+    <option name="localTasksCounter" value="962" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="CollisionEvents.md" />
-    <MESSAGE value="CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="TriggerEvents2D.md" />
     <MESSAGE value="DisposableAction.md" />
@@ -654,7 +657,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="FloatSumExpression.md" />
     <MESSAGE value="FloatSumExpression`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="FloatSumExpression`1.md" />
+    <MESSAGE value="FloatSumExpression`2.md" />
+    <MESSAGE value="InlineExpressions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineExpressions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

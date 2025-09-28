@@ -42,6 +42,6 @@ composition.
     - [FloatSumExpression&lt;T&gt;](FloatSumExpression%601.md) <!-- + -->
     - [FloatSumExpression&lt;T1, T2&gt;](FloatSumExpression%602.md) <!-- + -->
 - [InlineExpressions](InlineExpressions.md) <!-- + -->
-    - [InlineExpression]()
+    - [InlineExpression](InlineExpression.md) <!-- + -->
     - [InlineExpression&lt;T&gt;]()
     - [InlineExpression&lt;T1, T2&gt;]()
