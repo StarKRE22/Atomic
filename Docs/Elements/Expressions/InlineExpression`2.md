@@ -1,25 +1,22 @@
-
-<details>
-  <summary>
-    <h2>🧩 InlineExpression&lt;T1, T2, R&gt;</h2>
-    <br> Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a list of functions of type <code>Func&lt;T1, T2, R&gt;</code>.
-  </summary>
-
-<br>
+# 🧩 InlineExpression&lt;T1, T2, R&gt;
 
 ```csharp
 [Serializable]
 public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
 ```
 
+- **Description:** Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a
+  list of functions of type <code>Func&lt;T1, T2, R&gt;</code>.
 - **Type Parameters:**
     - `T1` — The first input type of the expression.
     - `T2` — The second input type of the expression.
     - `R` — The return type of the expression.
+- **Inheritance:** [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `InlineExpression(Func<Enumerator, T1, T2, R>, int)`
 
@@ -58,7 +55,7 @@ public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -95,7 +92,7 @@ public event Action<int, Func<T1, T2, R>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -117,7 +114,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -131,7 +128,7 @@ public Func<T1, T2, R> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -256,7 +253,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 Below is an example of using `InlineExpression<T1, T2, R>` to extend a simple **SUM** expression:
 
@@ -275,5 +272,3 @@ expression.Add((a, b) => a * b);
 //Evaluate:
 int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
 ```
-
-</details>

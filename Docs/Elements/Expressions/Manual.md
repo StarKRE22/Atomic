@@ -44,4 +44,4 @@ composition.
 - [InlineExpressions](InlineExpressions.md) <!-- + -->
     - [InlineExpression](InlineExpression.md) <!-- + -->
     - [InlineExpression&lt;T&gt;](InlineExpression%601.md) <!-- + -->
-    - [InlineExpression&lt;T1, T2&gt;]()
+    - [InlineExpression&lt;T1, T2&gt;](InlineExpression%602.md) <!-- + -->
