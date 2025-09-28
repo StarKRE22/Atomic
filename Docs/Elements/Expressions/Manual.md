@@ -40,7 +40,7 @@ composition.
 - [FloatSumExpressions](FloatSumExpressions.md) <!-- + -->
     - [FloatSumExpression](FloatSumExpression.md) <!-- + -->
     - [FloatSumExpression&lt;T&gt;](FloatSumExpression%601.md) <!-- + -->
-    - [FloatSumExpression&lt;T1, T2&gt;]()
+    - [FloatSumExpression&lt;T1, T2&gt;](FloatSumExpression%602.md) <!-- + -->
 - [InlineExpressions]()
     - [InlineExpression]()
     - [InlineExpression&lt;T&gt;]()
