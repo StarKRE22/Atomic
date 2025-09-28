@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`2.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,15 +215,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="12750000" />
-    </task>
-    <task id="LOCAL-00893" summary="IReadOnlyReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758961958426</created>
-      <option name="number" value="00893" />
-      <option name="presentableId" value="LOCAL-00893" />
-      <option name="project" value="LOCAL" />
-      <updated>1758961958426</updated>
+      <workItem from="1758961405633" duration="13523000" />
     </task>
     <task id="LOCAL-00894" summary="IReactiveArray.md">
       <option name="closed" value="true" />
@@ -604,7 +601,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759003813429</updated>
     </task>
-    <option name="localTasksCounter" value="942" />
+    <task id="LOCAL-00942" summary="Сделал Utilities">
+      <option name="closed" value="true" />
+      <created>1759003925863</created>
+      <option name="number" value="00942" />
+      <option name="presentableId" value="LOCAL-00942" />
+      <option name="project" value="LOCAL" />
+      <updated>1759003925864</updated>
+    </task>
+    <option name="localTasksCounter" value="943" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
