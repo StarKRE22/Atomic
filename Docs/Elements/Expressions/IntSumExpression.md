@@ -249,7 +249,7 @@ public void Dispose()
 
 ---
 
-## 🗂 Example Usage
+## 🗂 Example of Usage
 
 ```csharp
 var expression = new IntSumExpression(

@@ -18,7 +18,7 @@ There are several interfaces of expressions, depending on the number of argument
 
 ---
 
-## 🗂 Example Usage
+## 🗂 Example of Usage
 
 ```csharp
 // Suppose we have a concrete implementation of IExpression<int>

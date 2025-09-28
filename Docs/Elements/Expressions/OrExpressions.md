@@ -8,7 +8,6 @@ corresponding [IPredicate](../Functions/IPredicates.md) interfaces.
 > The expression evaluates to `true` **if at least one function member returns `true`**.  
 > If the collection is empty, the expression evaluates to `false` by default.
 
-
 There are several classes of **OR** expressions, depending on the number of arguments the actions take:
 
 - [OrExpression](OrExpression.md) — Non-generic version; works without parameters.

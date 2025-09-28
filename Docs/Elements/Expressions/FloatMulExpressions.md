@@ -3,6 +3,9 @@
 Represents an expression that computes the **product** of multiple float-returning functions. It extends from
 the [ExpressionBase](ExpressionsBase.md) family of classes.
 
+> [NOTE]
+> If the collection is empty, the expression evaluates to `1` by default.
+
 There are several implementations of expressions, depending on the number of arguments the actions take:
 
 - [FloatMulExpression](FloatMulExpression.md) — Non-generic version; works without parameters.

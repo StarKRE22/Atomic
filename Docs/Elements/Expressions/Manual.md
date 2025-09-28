@@ -34,10 +34,10 @@ composition.
     - [IntSumExpression&lt;T&gt;](IntSumExpression%601.md) <!-- + -->
     - [IntSumExpression&lt;T1, T2&gt;](IntSumExpression%602.md) <!-- + -->
 - [FloatMulExpressions](FloatMulExpressions.md) <!-- + -->
-    - [FloatMulExpression]()
-    - [FloatMulExpression&lt;T&gt;]()
-    - [FloatMulExpression&lt;T1, T2&gt;]()
-- [FloatSumExpressions]()
+    - [FloatMulExpression](FloatMulExpression.md) <!-- + -->
+    - [FloatMulExpression&lt;T&gt;](FloatMulExpression%601.md) <!-- + -->
+    - [FloatMulExpression&lt;T1, T2&gt;](FloatMulExpression%602.md) <!-- + -->
+- [FloatSumExpressions](FloatSumExpressions.md) <!-- + -->
     - [FloatSumExpression]()
     - [FloatSumExpression&lt;T&gt;]()
     - [FloatSumExpression&lt;T1, T2&gt;]()

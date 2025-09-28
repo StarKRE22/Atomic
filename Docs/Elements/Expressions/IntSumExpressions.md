@@ -3,6 +3,9 @@
 Represent expressions those compute the **sum** of multiple integer-returning functions. These classes extend from
 the [ExpressionBase](ExpressionsBase.md) family.
 
+> [NOTE]
+> If the collection is empty, the expression evaluates to `0` by default.
+
 There are several implementations of expressions, depending on the number of arguments the actions take:
 
 - [IntSumExpression](IntSumExpression.md) — Non-generic version; works without parameters.
