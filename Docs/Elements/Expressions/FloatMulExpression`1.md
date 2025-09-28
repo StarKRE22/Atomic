@@ -243,6 +243,7 @@ public void Dispose()
 ---
 
 ## 🗂 Example Usage
+
 ```csharp
 var expression = new FloatMulExpression<float>(
     x => x,

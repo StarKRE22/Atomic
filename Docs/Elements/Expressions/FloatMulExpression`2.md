@@ -1,24 +1,21 @@
-
-<details>
- <summary>
- <h2>🧩 FloatMulExpression&lt;T1, T2&gt;</h2>
- <br> Represents an expression that computes the product of float values returned from functions with <b>two input parameters</b>
- </summary>
-
-<br>
+# 🧩 FloatMulExpression&lt;T1, T2&gt;
 
 ```csharp
 [Serializable]
 public class FloatMulExpression<T1, T2> : ExpressionBase<T1, T2, float>
 ```
 
+- **Description:** Represents an expression that computes the product of float values returned from functions with <b>
+  two input parameters</b>
 - **Type Parameters:**
-- `T1` — The first input parameter type.
-- `T2` — The second input parameter type.
+    - `T1` — The first input parameter type.
+    - `T2` — The second input parameter type.
+- **Inheritance:** [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `FloatMulExpression()`
 
@@ -50,7 +47,7 @@ public FloatMulExpression(IEnumerable<Func<T1, T2, float>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -86,7 +83,7 @@ public event Action<int, Func<T1, T2, float>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -108,7 +105,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -122,7 +119,7 @@ public Func<T1, T2, float> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -246,7 +243,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
+## 🗂 Example Usage
 
 ```csharp
 var expression = new FloatMulExpression<float, float>(
@@ -256,5 +253,3 @@ var expression = new FloatMulExpression<float, float>(
 );
 float result = expression.Invoke(2, 3); // 2 * 3 * (2 + 3) = 30
 ```
-
-</details>
