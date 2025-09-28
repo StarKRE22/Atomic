@@ -3,7 +3,7 @@
 Represents an expression that computes the **sum** of multiple float-returning functions. These classes extend from
 the [ExpressionBase](ExpressionsBase.md) family.
 
-> [NOTE]
+> [!NOTE]
 > If the collection is empty, the expression evaluates to `0` by default.
 
 There are several implementations of expressions, depending on the number of arguments the actions take:

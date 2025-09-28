@@ -3,7 +3,7 @@
 Represents an expression that computes the **product** of multiple integer-returning functions. They extend from
 the [ExpressionBase](ExpressionsBase.md) family of classes.
 
-> [NOTE]
+> [!NOTE]
 > If the collection is empty, the expression evaluates to `1` by default.
 
 There are several implementations of expressions, depending on the number of arguments the actions take:
