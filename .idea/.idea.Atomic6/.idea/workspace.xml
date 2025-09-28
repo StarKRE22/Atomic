@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Optional.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Optional.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -213,15 +208,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="22236000" />
-    </task>
-    <task id="LOCAL-00916" summary="ExpressionBase`2.md">
-      <option name="closed" value="true" />
-      <created>1758994554557</created>
-      <option name="number" value="00916" />
-      <option name="presentableId" value="LOCAL-00916" />
-      <option name="project" value="LOCAL" />
-      <updated>1758994554557</updated>
+      <workItem from="1758961405633" duration="22493000" />
     </task>
     <task id="LOCAL-00917" summary="ExpressionBase`2.md">
       <option name="closed" value="true" />
@@ -607,7 +594,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759082773758</updated>
     </task>
-    <option name="localTasksCounter" value="965" />
+    <task id="LOCAL-00965" summary="Поправил Best Practice">
+      <option name="closed" value="true" />
+      <created>1759083497951</created>
+      <option name="number" value="00965" />
+      <option name="presentableId" value="LOCAL-00965" />
+      <option name="project" value="LOCAL" />
+      <updated>1759083497951</updated>
+    </task>
+    <option name="localTasksCounter" value="966" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="DisposableComposite.md" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="Reference.md" />
     <MESSAGE value="Сделал Utilities" />
@@ -659,7 +653,8 @@
     <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="InlineExpression`1.md" />
     <MESSAGE value="InlineExpression`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineExpression`2.md" />
+    <MESSAGE value="Поправил Best Practice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Поправил Best Practice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
