@@ -208,15 +208,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="22493000" />
-    </task>
-    <task id="LOCAL-00917" summary="ExpressionBase`2.md">
-      <option name="closed" value="true" />
-      <created>1758994616591</created>
-      <option name="number" value="00917" />
-      <option name="presentableId" value="LOCAL-00917" />
-      <option name="project" value="LOCAL" />
-      <updated>1758994616591</updated>
+      <workItem from="1758961405633" duration="22869000" />
     </task>
     <task id="LOCAL-00918" summary="ExpressionBase`2.md">
       <option name="closed" value="true" />
@@ -602,7 +594,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759083497951</updated>
     </task>
-    <option name="localTasksCounter" value="966" />
+    <task id="LOCAL-00966" summary="ChosingBetweenTimerAndCooldown.md">
+      <option name="closed" value="true" />
+      <created>1759085198017</created>
+      <option name="number" value="00966" />
+      <option name="presentableId" value="LOCAL-00966" />
+      <option name="project" value="LOCAL" />
+      <updated>1759085198017</updated>
+    </task>
+    <option name="localTasksCounter" value="967" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Extensions.md" />
     <MESSAGE value="Reference.md" />
     <MESSAGE value="Сделал Utilities" />
     <MESSAGE value="IntMulExpressions.md" />
@@ -654,7 +653,8 @@
     <MESSAGE value="InlineExpression`1.md" />
     <MESSAGE value="InlineExpression`2.md" />
     <MESSAGE value="Поправил Best Practice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поправил Best Practice" />
+    <MESSAGE value="ChosingBetweenTimerAndCooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChosingBetweenTimerAndCooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
