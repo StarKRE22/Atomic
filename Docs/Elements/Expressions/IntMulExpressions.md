@@ -27,11 +27,9 @@ int result = multiply.Invoke(); // 2 * 3 * 4 = 24
 
 ---
 
-#### Expression with one arg
+#### Expression with single arg
 
 ```csharp
-
-// Single-parameter
 var expression = new IntMulExpression<int>(
     x => x,
     x => x + 1

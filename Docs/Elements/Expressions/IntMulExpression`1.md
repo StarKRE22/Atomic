@@ -1,19 +1,14 @@
-
-<details>
- <summary>
- <h2>🧩 IntMulExpression&lt;T&gt;</h2>
- <br> Represents an expression that computes the product of integer values returned from functions with a <b>single input parameter</b>
- </summary>
-
-<br>
+# 🧩 IntMulExpression&lt;T&gt;
 
 ```csharp
 public class IntMulExpression<T> : ExpressionBase<T, int>
 ```
-
+- **Description:** Represents an expression that computes the product of integer values returned from functions with a <b>single input parameter</b>
 - **Type Parameter:** `T` — The input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
+- **Note:** Supports Odin Inspector
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 ---
 
@@ -46,7 +41,7 @@ public IntMulExpression(IEnumerable<Func<T, int>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -83,7 +78,7 @@ public event Action<int, Func<T, int>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -105,7 +100,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -119,7 +114,7 @@ public Func<T, int> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T arg)`
 
@@ -241,9 +236,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
-### 🗂 Example Usage
-
----
-
-

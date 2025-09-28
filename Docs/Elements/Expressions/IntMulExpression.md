@@ -1,15 +1,18 @@
 # 🧩 IntMulExpression
 
 ```csharp
+[Serializable]
 public class IntMulExpression : ExpressionBase<int>
 ```
 
-- **Description:** Represents an expression that computes the product of multiple <b>parameterless integer-returning</b>
-  functions
+- **Description:** Represents an expression that computes the product of multiple
+  <b>parameterless integer-returning</b> functions
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `IntMulExpression(int)`
 
@@ -40,7 +43,7 @@ public IntMulExpression(IEnumerable<Func<int>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -77,7 +80,7 @@ public event Action<int, Func<int>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -109,7 +112,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -123,7 +126,7 @@ public Func<int> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
