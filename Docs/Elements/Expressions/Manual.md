@@ -29,7 +29,7 @@ composition.
     - [IntMulExpression&lt;R&gt;](IntMulExpression.md) <!-- + -->
     - [IntMulExpression&lt;T, R&gt;](IntMulExpression%601.md) <!-- + -->
     - [IntMulExpression&lt;T1, T2, R&gt;](IntMulExpression%602.md) <!-- + -->
-- [IntSumExpressions]()
+- [IntSumExpressions](IntSumExpressions.md) <!-- + -->
     - [IntSumExpression&lt;R&gt;]()
     - [IntSumExpression&lt;T, R&gt;]()
     - [IntSumExpression&lt;T1, T2, R&gt;]()
