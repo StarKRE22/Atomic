@@ -38,7 +38,7 @@ composition.
     - [FloatMulExpression&lt;T&gt;](FloatMulExpression%601.md) <!-- + -->
     - [FloatMulExpression&lt;T1, T2&gt;](FloatMulExpression%602.md) <!-- + -->
 - [FloatSumExpressions](FloatSumExpressions.md) <!-- + -->
-    - [FloatSumExpression]()
+    - [FloatSumExpression](FloatSumExpression.md) <!-- + -->
     - [FloatSumExpression&lt;T&gt;]()
     - [FloatSumExpression&lt;T1, T2&gt;]()
 - [InlineExpressions]()

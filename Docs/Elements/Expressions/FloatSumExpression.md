@@ -5,18 +5,14 @@
 public class FloatSumExpression : ExpressionBase<float>
 ```
 
-<details>
- <summary>
- <h2></h2>
- <br> Represents an expression that computes the sum of multiple <b>parameterless float-returning</b> functions
- </summary>
- <br>
-
-
+- **Description:** Represents an expression that computes the sum of multiple <b>parameterless float-returning</b>
+  functions
+- **Inheritance:** [ExpressionBase&lt;R&gt;](ExpressionBase.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `FloatSumExpression(int capacity)`
 
@@ -47,7 +43,7 @@ public FloatSumExpression(IEnumerable<Func<float>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -84,7 +80,7 @@ public event Action<int, Func<float>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Value`
 
@@ -116,7 +112,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -130,7 +126,7 @@ public Func<float> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke()`
 
@@ -253,7 +249,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 var expression = new FloatSumExpression(
@@ -263,10 +259,3 @@ var expression = new FloatSumExpression(
 );
 float result = expression.Invoke(); // 2.0f + 3.0f + 4.0f = 9
 ```
-
-</details>
-
----
-
-
----
