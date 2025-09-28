@@ -1,23 +1,21 @@
-
-<details>
- <summary>
- <h2>🧩 IntMulExpression&lt;T1, T2&gt;</h2>
- <br> Represents an expression that computes the product of integer values returned from functions with <b>two input parameters</b>
- </summary>
-
+# 🧩 IntMulExpression&lt;T1, T2&gt;
 
 ```csharp
 [Serializable]
 public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
 ```
 
+- **Description:** Represents an expression that computes the product of integer values returned from functions with <b>
+  two input parameters</b>
 - **Type Parameters:**
-- `T1` — The first input parameter type.
-- `T2` — The second input parameter type.
+    - `T1` — The first input parameter type.
+    - `T2` — The second input parameter type.
+- **Inheritance:** [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `IntMulExpression()`
 
@@ -49,7 +47,7 @@ public IntMulExpression(IEnumerable<Func<T1, T2, int>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -85,7 +83,7 @@ public event Action<int, Func<T1, T2, int>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 ### `Count`
 
@@ -107,7 +105,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -121,7 +119,7 @@ public Func<T1, T2, int> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -242,5 +240,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets event handlers to null.
-
----

@@ -26,9 +26,9 @@ composition.
     - [OrExpression&lt;T, R&gt;](OrExpression%601.md) <!-- + -->
     - [OrExpression&lt;T1, T2, R&gt;](OrExpression%602.md) <!-- + -->
 - [IntMulExpressions](IntMulExpressions.md) <!-- + -->
-    - [IntMulExpression&lt;R&gt;](IntMulExpression.md)
-    - [IntMulExpression&lt;T, R&gt;]()
-    - [IntMulExpression&lt;T1, T2, R&gt;]()
+    - [IntMulExpression&lt;R&gt;](IntMulExpression.md) <!-- + -->
+    - [IntMulExpression&lt;T, R&gt;](IntMulExpression%601.md) <!-- + -->
+    - [IntMulExpression&lt;T1, T2, R&gt;](IntMulExpression%602.md) <!-- + -->
 - [IntSumExpressions]()
     - [IntSumExpression&lt;R&gt;]()
     - [IntSumExpression&lt;T, R&gt;]()

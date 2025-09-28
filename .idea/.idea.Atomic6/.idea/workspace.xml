@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,23 +208,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="14249000" />
-    </task>
-    <task id="LOCAL-00895" summary="ReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1758962802582</created>
-      <option name="number" value="00895" />
-      <option name="presentableId" value="LOCAL-00895" />
-      <option name="project" value="LOCAL" />
-      <updated>1758962802583</updated>
-    </task>
-    <task id="LOCAL-00896" summary="IReadOnlyReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1758962921622</created>
-      <option name="number" value="00896" />
-      <option name="presentableId" value="LOCAL-00896" />
-      <option name="project" value="LOCAL" />
-      <updated>1758962921622</updated>
+      <workItem from="1758961405633" duration="14549000" />
     </task>
     <task id="LOCAL-00897" summary="IReactiveList.md">
       <option name="closed" value="true" />
@@ -605,7 +586,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759044939167</updated>
     </task>
-    <option name="localTasksCounter" value="944" />
+    <task id="LOCAL-00944" summary="IntMulExpression.md">
+      <option name="closed" value="true" />
+      <created>1759049110835</created>
+      <option name="number" value="00944" />
+      <option name="presentableId" value="LOCAL-00944" />
+      <option name="project" value="LOCAL" />
+      <updated>1759049110835</updated>
+    </task>
+    <task id="LOCAL-00945" summary="IntMulExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1759049200632</created>
+      <option name="number" value="00945" />
+      <option name="presentableId" value="LOCAL-00945" />
+      <option name="project" value="LOCAL" />
+      <updated>1759049200632</updated>
+    </task>
+    <option name="localTasksCounter" value="946" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,8 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IExpression`1.md" />
-    <MESSAGE value="IExpression`2.md" />
     <MESSAGE value="ExpressionsBase.md" />
     <MESSAGE value="ExpressionBase.md" />
     <MESSAGE value="ExpressionBase`1.md" />
@@ -657,7 +652,9 @@
     <MESSAGE value="Reference.md" />
     <MESSAGE value="Сделал Utilities" />
     <MESSAGE value="IntMulExpressions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntMulExpressions.md" />
+    <MESSAGE value="IntMulExpression.md" />
+    <MESSAGE value="IntMulExpression`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IntMulExpression`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
