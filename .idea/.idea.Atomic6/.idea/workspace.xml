@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`1.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,23 +211,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="17218000" />
-    </task>
-    <task id="LOCAL-00903" summary="ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758990679084</created>
-      <option name="number" value="00903" />
-      <option name="presentableId" value="LOCAL-00903" />
-      <option name="project" value="LOCAL" />
-      <updated>1758990679084</updated>
-    </task>
-    <task id="LOCAL-00904" summary="ReactiveHashSet.md">
-      <option name="closed" value="true" />
-      <created>1758991201157</created>
-      <option name="number" value="00904" />
-      <option name="presentableId" value="LOCAL-00904" />
-      <option name="project" value="LOCAL" />
-      <updated>1758991201157</updated>
+      <workItem from="1758961405633" duration="17981000" />
     </task>
     <task id="LOCAL-00905" summary="Expressions Manual.md">
       <option name="closed" value="true" />
@@ -602,7 +589,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759051274022</updated>
     </task>
-    <option name="localTasksCounter" value="952" />
+    <task id="LOCAL-00952" summary="FloatMulExpressions.md">
+      <option name="closed" value="true" />
+      <created>1759078190071</created>
+      <option name="number" value="00952" />
+      <option name="presentableId" value="LOCAL-00952" />
+      <option name="project" value="LOCAL" />
+      <updated>1759078190071</updated>
+    </task>
+    <task id="LOCAL-00953" summary="FloatMulExpression.md">
+      <option name="closed" value="true" />
+      <created>1759078376372</created>
+      <option name="number" value="00953" />
+      <option name="presentableId" value="LOCAL-00953" />
+      <option name="project" value="LOCAL" />
+      <updated>1759078376372</updated>
+    </task>
+    <option name="localTasksCounter" value="954" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="AndExpression`2.md" />
     <MESSAGE value="AndExpressions" />
     <MESSAGE value="OrExpressions.md" />
     <MESSAGE value="OrExpression.md" />
@@ -654,7 +656,8 @@
     <MESSAGE value="IntSumExpression`1.md" />
     <MESSAGE value="IntSumExpression`2.md" />
     <MESSAGE value="FloatMulExpressions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="FloatMulExpressions.md" />
+    <MESSAGE value="FloatMulExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="FloatMulExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

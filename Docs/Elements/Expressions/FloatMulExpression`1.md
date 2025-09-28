@@ -1,23 +1,19 @@
-
-
-<details>
- <summary>
- <h2>🧩 FloatMulExpression&lt;T&gt;</h2>
- <br> Represents an expression that computes the <b>product</b> of float values returned from functions with a <b>single input parameter</b>
- </summary>
-
-<br>
+# 🧩 FloatMulExpression&lt;T&gt;
 
 ```csharp
 [Serializable]
 public class FloatMulExpression<T> : ExpressionBase<T, float>
 ```
 
+- **Description:**  Represents an expression that computes the <b>product</b> of float values returned from functions
+  with a <b>single input parameter</b>
 - **Type Parameter:** `T` — The input parameter type of the functions.
+- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `FloatMulExpression(int)`
 
@@ -48,7 +44,7 @@ public FloatMulExpression(IEnumerable<Func<T, float>> members)
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -85,7 +81,7 @@ public event Action<int, Func<T, float>> OnItemDeleted;
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Count`
 
@@ -107,7 +103,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-### 🏷️ Indexers
+## 🏷️ Indexers
 
 #### `[int index]`
 
@@ -121,7 +117,7 @@ public Func<T, float> this[int index] { get; set; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -246,8 +242,7 @@ public void Dispose()
 
 ---
 
-### 🗂 Example Usage
-
+## 🗂 Example Usage
 ```csharp
 var expression = new FloatMulExpression<float>(
     x => x,
@@ -255,5 +250,3 @@ var expression = new FloatMulExpression<float>(
 );
 float result = expression.Invoke(3); // 3 * (3 + 1) = 12
 ```
-
-</details>
