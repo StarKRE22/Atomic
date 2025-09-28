@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression`2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpressions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/Manual.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,15 +208,7 @@
       <workItem from="1758692893392" duration="5010000" />
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
-      <workItem from="1758961405633" duration="16605000" />
-    </task>
-    <task id="LOCAL-00902" summary="IReadOnlyReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1758964502247</created>
-      <option name="number" value="00902" />
-      <option name="presentableId" value="LOCAL-00902" />
-      <option name="project" value="LOCAL" />
-      <updated>1758964502247</updated>
+      <workItem from="1758961405633" duration="17218000" />
     </task>
     <task id="LOCAL-00903" summary="ReactiveDictionary.md">
       <option name="closed" value="true" />
@@ -609,7 +594,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759050841447</updated>
     </task>
-    <option name="localTasksCounter" value="951" />
+    <task id="LOCAL-00951" summary="FloatMulExpressions.md">
+      <option name="closed" value="true" />
+      <created>1759051274022</created>
+      <option name="number" value="00951" />
+      <option name="presentableId" value="LOCAL-00951" />
+      <option name="project" value="LOCAL" />
+      <updated>1759051274022</updated>
+    </task>
+    <option name="localTasksCounter" value="952" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="AndExpression`1.md" />
     <MESSAGE value="AndExpression`2.md" />
     <MESSAGE value="AndExpressions" />
     <MESSAGE value="OrExpressions.md" />
@@ -661,7 +653,8 @@
     <MESSAGE value="IntSumExpression.md" />
     <MESSAGE value="IntSumExpression`1.md" />
     <MESSAGE value="IntSumExpression`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IntSumExpression`2.md" />
+    <MESSAGE value="FloatMulExpressions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="FloatMulExpressions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
