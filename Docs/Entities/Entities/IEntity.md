@@ -910,6 +910,7 @@ public void Dispose()
     <h2 id="-example-of-usage"> 🗂 Example of Usage</h2>
     <br> The example below demonstrates quick entity creation and configuration with <code>Atomic.Elements</code>:
   </summary>
+<br>
 
 ```csharp
 // Create a new entity in C#
@@ -944,5 +945,4 @@ entity.Disable();
 // Dispose entity when game is unloading
 entity.Dispose();
 ```
-
 </details>
