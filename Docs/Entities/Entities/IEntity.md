@@ -220,7 +220,7 @@ public IEnumerator<int> GetTagEnumerator()
 
 <br>
 
-> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
+> Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
 > removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
 > reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
