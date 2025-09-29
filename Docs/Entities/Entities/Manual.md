@@ -9,8 +9,20 @@ system is a **composition**.
 
 ## 📑 Table of Contents
 
-- [Theory]()
 - [API Reference](#-api-reference)
+    - [IEntity](IEntity.md)
+    - [Entity](Entity.md)
+    - [EntitySingleton](EntitySingleton.md)
+    - [SceneEntity](SceneEntity.md)
+    - [SceneEntityProxy](SceneEntityProxy.md)
+    - [SceneEntitySingleton](SceneEntitySingleton.md)
+    - [Extensions](Extensions.md)
+- [Theory]()
+  - [Entity]
+  - [Tags]
+  - [Values]
+  - [Behaviours]
+  - [Lifecycle]
 - [Core Concept](#-core-concept)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
@@ -23,13 +35,7 @@ system is a **composition**.
 
 Below are the interfaces and classes for working with entities.
 
-- [IEntity](IEntity.md)
-- [Entity](Entity.md)
-- [EntitySingleton](EntitySingleton.md)
-- [SceneEntity](SceneEntity.md)
-- [SceneEntityProxy](SceneEntityProxy.md)
-- [SceneEntitySingleton](SceneEntitySingleton.md)
-- [Extensions](Extensions.md)
+
 
 ---
 
@@ -461,8 +467,6 @@ entity.DelInventory();
 ```
 
 ---
-
-
 
 ### ⚙️ Behaviours Usage
 
