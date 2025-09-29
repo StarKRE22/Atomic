@@ -977,13 +977,10 @@ protected virtual void OnDispose()
   <summary>
     <h2 id="-debug">🐞 Debug Properties</h2>
     <br>
-    Manage the entity's state transitions and update phases. It covers initialization, enabling,
-    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
-    entity's state.
+    These properties are available only in <b>Unity Editor</b> when using <b>Odin Inspector</b>
   </summary>
 <br>
 
-These properties are available only in **Unity Editor** when using **Odin Inspector**
 
 - `DebugName` — Displays entity name in the Unity Editor.
 - `DebugInitialized` — Displays if the entity is initialized.
