@@ -26,7 +26,7 @@ foreach(string item in items)
 
 ### ✅ No Boxing
 ```csharp
-IReactiveList<string> items = new ReactiveList<string>
+ReactiveList<string> items = new ReactiveList<string>
 {
     "Axe", 
     "Helmet",
