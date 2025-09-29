@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,31 +212,7 @@
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
-      <workItem from="1759129146428" duration="21315000" />
-    </task>
-    <task id="LOCAL-00945" summary="IntMulExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1759049200632</created>
-      <option name="number" value="00945" />
-      <option name="presentableId" value="LOCAL-00945" />
-      <option name="project" value="LOCAL" />
-      <updated>1759049200632</updated>
-    </task>
-    <task id="LOCAL-00946" summary="IntMulExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1759049464522</created>
-      <option name="number" value="00946" />
-      <option name="presentableId" value="LOCAL-00946" />
-      <option name="project" value="LOCAL" />
-      <updated>1759049464522</updated>
-    </task>
-    <task id="LOCAL-00947" summary="IntSumExpressions.md">
-      <option name="closed" value="true" />
-      <created>1759049727746</created>
-      <option name="number" value="00947" />
-      <option name="presentableId" value="LOCAL-00947" />
-      <option name="project" value="LOCAL" />
-      <updated>1759049727746</updated>
+      <workItem from="1759129146428" duration="21651000" />
     </task>
     <task id="LOCAL-00948" summary="IntSumExpression.md">
       <option name="closed" value="true" />
@@ -606,7 +582,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759173537948</updated>
     </task>
-    <option name="localTasksCounter" value="994" />
+    <task id="LOCAL-00994" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759173987054</created>
+      <option name="number" value="00994" />
+      <option name="presentableId" value="LOCAL-00994" />
+      <option name="project" value="LOCAL" />
+      <updated>1759173987054</updated>
+    </task>
+    <task id="LOCAL-00995" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759174039802</created>
+      <option name="number" value="00995" />
+      <option name="presentableId" value="LOCAL-00995" />
+      <option name="project" value="LOCAL" />
+      <updated>1759174039802</updated>
+    </task>
+    <task id="LOCAL-00996" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759174222842</created>
+      <option name="number" value="00996" />
+      <option name="presentableId" value="LOCAL-00996" />
+      <option name="project" value="LOCAL" />
+      <updated>1759174222842</updated>
+    </task>
+    <option name="localTasksCounter" value="997" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
