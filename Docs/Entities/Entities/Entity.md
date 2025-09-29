@@ -9,7 +9,23 @@ public class Entity : IEntity
   **behaviours**, and **lifecycle management**.
 
 - **Inheritance:** [IEntity](IEntity.md)
-- **Note:** Supports Odin Inspector
+- **Notes:**
+    - **Event-Driven** – Reactive programming support via state change notifications.
+    - **Unique Identity** – Runtime-generated instance ID for entity tracking.
+    - **Tag System** – Lightweight categorization and filtering.
+    - **State Management** – Dynamic key-value storage for runtime data.
+    - **Behaviour Composition** – Attach or detach modular logic at runtime.
+    - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
+    - **Registry Integration** – Automatic registration with EntityRegistry
+    - **Memory Efficient** – Pre-allocation support for collections
+    - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
+    - **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into
+      the
+      entity state, tags, values, and behaviours.
+    - **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be
+      synchronized externally.
+    - **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core
+      entity class.
 
 <details>
   <summary>
@@ -255,7 +271,6 @@ public TagEnumerator GetTagEnumerator()
 
 - **Description:** Enumerates all tags of the entity.
 - **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
-
 
 </details>
 
@@ -540,8 +555,8 @@ public ValueEnumerator GetValueEnumerator()
 
 <br>
 
-> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have *
-*List-like time complexity**.
+> For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
+> **List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
 > so duplicate entries are allowed.
 
@@ -958,7 +973,15 @@ protected virtual void OnDispose()
 
 ---
 
-## 🐞 Debug Properties
+<details>
+  <summary>
+    <h2 id="-debug">🐞 Debug Properties</h2>
+    <br>
+    Manage the entity's state transitions and update phases. It covers initialization, enabling,
+    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
+    entity's state.
+  </summary>
+<br>
 
 These properties are available only in **Unity Editor** when using **Odin Inspector**
 
@@ -969,11 +992,38 @@ These properties are available only in **Unity Editor** when using **Odin Inspec
 - `DebugValues` — Sorted list of values for debug display.
 - `DebugBehaviours` — Sorted list of attached behaviours for debug display.
 
+</details>
+
+
 ---
 
-## 🗂 Example of Usage
+<details>
+  <summary>
+    <h2 id="-example"> 🗂 Examples of Usage</h2>
+  </summary>
 
-### 🔹 Example #1: Creating and setting up
+### 1️⃣ String-keyed constructor
+
+```csharp
+var entity = new Entity(
+    name: "Character",
+    tags: new[] { "Moveable", "Damageable" },
+    values: new[]
+    {
+        new KeyValuePair<string, object>("Health", 100),
+        new KeyValuePair<string, object>("Speed", 5.5f)
+    }, 
+    behaviours: new IEntityBehaviour[]
+    {
+        new MoveBehaviour(),
+        new HealthBehaviour()
+    }
+);
+```
+
+---
+
+### 2️⃣ Capacity-based setup
 
 ```csharp
 var entity = new Entity(
@@ -997,26 +1047,9 @@ entity.AddBehaviour(new MoveBehaviour());
 entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
 ```
 
-### 🔹 Example #2. Creating through constructor
+---
 
-```csharp
-var entity = new Entity(
-    name: "Character",
-    tags: new[] { "Moveable", "Damageable" },
-    values: new[]
-    {
-        new KeyValuePair<string, object>("Health", 100),
-        new KeyValuePair<string, object>("Speed", 5.5f)
-    }, 
-    behaviours: new IEntityBehaviour[]
-    {
-        new MoveBehaviour(),
-        new HealthBehaviour()
-    }
-);
-```
-
-### 🔹 Example #3. Lifecycle management
+### 3️⃣ Lifecycle Usage
 
 ```csharp
 // Create a new entity
@@ -1043,22 +1076,4 @@ entity.Disable();
 entity.Dispose();
 ```
 
----
-
-## 📝 Notes
-
-- **Event-Driven** – Reactive programming support via state change notifications.
-- **Unique Identity** – Runtime-generated instance ID for entity tracking.
-- **Tag System** – Lightweight categorization and filtering.
-- **State Management** – Dynamic key-value storage for runtime data.
-- **Behaviour Composition** – Attach or detach modular logic at runtime.
-- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
-- **Registry Integration** – Automatic registration with EntityRegistry
-- **Memory Efficient** – Pre-allocation support for collections
-- **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-- **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into the
-  entity state, tags, values, and behaviours.
-- **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be
-  synchronized externally.
-- **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core entity
-  class.
+</details>
