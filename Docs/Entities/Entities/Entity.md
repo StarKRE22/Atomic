@@ -138,6 +138,75 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
+### 🗂 Examples of Usage
+
+#### 1️⃣ Basic Usage
+
+```csharp
+// Create a new instance of entity
+Entity entity = new Entity();
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
+{
+    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
+
+// Change name
+entity.Name = "Hero"; //Triggers state changed
+
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
+```
+
+---
+
+#### 2️⃣ String-keyed constructor
+
+```csharp
+var entity = new Entity(
+    name: "Character",
+    tags: new[] { "Moveable", "Damageable" },
+    values: new[]
+    {
+        new KeyValuePair<string, object>("Health", 100),
+        new KeyValuePair<string, object>("Speed", 5.5f)
+    }, 
+    behaviours: new IEntityBehaviour[]
+    {
+        new MoveBehaviour(),
+        new HealthBehaviour()
+    }
+);
+```
+
+---
+
+#### 3️⃣ Capacity-based setup
+
+```csharp
+var entity = new Entity(
+    "Character", 
+    tagCapacity: 2, //Optionally precompile memory for tags
+    valueCapacity: 2, //Optionally precompile memory for values
+    behaviourCapacity: 2, //Optionally precompile memory for behaviours
+    new Settings { disposeValues = false } //Optionally don't dispose values when Entity.Dispose()
+);
+
+// Add tags
+entity.AddTag(EntityNames.NameToId("Moveable"));
+entity.AddTag("Damageable"); //There is an extension method
+
+// Add values
+entity.AddValue(EntityNames.NameToId("Health"), 100);
+entity.AddValue("Speed", 5.5f); //There is an extension method
+
+// Add behaviours
+entity.AddBehaviour(new MoveBehaviour());
+entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
+```
+
 </details>
 
 ---
@@ -981,7 +1050,6 @@ protected virtual void OnDispose()
   </summary>
 <br>
 
-
 - `DebugName` — Displays entity name in the Unity Editor.
 - `DebugInitialized` — Displays if the entity is initialized.
 - `DebugEnabled` — Displays if the entity is enabled.
@@ -999,50 +1067,6 @@ protected virtual void OnDispose()
     <h2 id="-example"> 🗂 Examples of Usage</h2>
   </summary>
 
-### 1️⃣ String-keyed constructor
-
-```csharp
-var entity = new Entity(
-    name: "Character",
-    tags: new[] { "Moveable", "Damageable" },
-    values: new[]
-    {
-        new KeyValuePair<string, object>("Health", 100),
-        new KeyValuePair<string, object>("Speed", 5.5f)
-    }, 
-    behaviours: new IEntityBehaviour[]
-    {
-        new MoveBehaviour(),
-        new HealthBehaviour()
-    }
-);
-```
-
----
-
-### 2️⃣ Capacity-based setup
-
-```csharp
-var entity = new Entity(
-    "Character", 
-    tagCapacity: 2, //Optionally precompile memory for tags
-    valueCapacity: 2, //Optionally precompile memory for values
-    behaviourCapacity: 2, //Optionally precompile memory for behaviours
-    new Settings { disposeValues = false } //Optionally don't dispose values when Entity.Dispose()
-);
-
-// Add tags
-entity.AddTag(EntityNames.NameToId("Moveable"));
-entity.AddTag("Damageable"); //There is an extension method
-
-// Add values
-entity.AddValue(EntityNames.NameToId("Health"), 100);
-entity.AddValue("Speed", 5.5f); //There is an extension method
-
-// Add behaviours
-entity.AddBehaviour(new MoveBehaviour());
-entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
-```
 
 ---
 
