@@ -9,18 +9,33 @@ system is a **composition**.
 
 ## 📑 Table of Contents
 
-- [Core Concept](#-core-concept)
-- [CSharp Quick Start](#-csharp-quick-start)
-- [Unity Quick Start](#-unity-quick-start)
 - [API Reference](#-api-reference)
+- [Core Concept](#-core-concept)
+- [Unity Quick Start](#-unity-quick-start)
+- [CSharp Quick Start](#-csharp-quick-start)
+- [Examples of Usage](#-examples-of-usage)
 - [Performance](#-performance)
+
+---
+
+## 🔍 API Reference
+
+Below are the interfaces and classes for working with entities.
+
+- [IEntity](IEntity.md)
+- [Entity](Entity.md)
+- [EntitySingleton](EntitySingleton.md)
+- [SceneEntity](SceneEntity.md)
+- [SceneEntityProxy](SceneEntityProxy.md)
+- [SceneEntitySingleton](SceneEntitySingleton.md)
+- [Extensions](Extensions.md)
 
 ---
 
 ## 💡 Core Concept
 
 At the core of all entities lies the **Entity-State-Behaviour (ESB)** pattern.
-The idea of the **ESB** pattern is that any object, system, or AI can be represented as an **Entity** with a 
+The idea of the **ESB** pattern is that any object, system, or AI can be represented as an **Entity** with a
 **composition** of data (**State**) and logic (**Behaviour**), but with a strict separation between them.
 
 Since State and Behaviour are strictly separated, this makes it possible to **reuse components** and **modify the
@@ -35,7 +50,88 @@ of gameplay interactions.
 
 ---
 
-## 🚀 CSharp Quick Start
+## 🚀 Unity Quick Start
+
+Below is the process for quickly creating a character entity in Unity:
+
+#### 1. Create a new `GameObject`
+
+<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+
+#### 2. Add `Entity` Component to the GameObject
+
+<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
+
+#### 3. Create `MoveBehaviour` for your entity
+
+```csharp
+// Controller that moves entity by its direction
+public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
+{
+    private Transform _transform;
+    private IValue<float> _moveSpeed;
+    private IValue<Vector3> _moveDirection;
+
+    // Called when MonoBehaviour.Start() is invoked
+    public void Init(IEntity entity)
+    {
+        _transform = entity.GetValue<Transform>("Transform");
+        _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
+        _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
+    }
+
+    // Called when MonoBehaviour.FixedUpdate() is invoked
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        Vector3 direction = _moveDirection.Value;
+        if (direction != Vector3.zero) 
+            _transform.position += _moveSpeed.Value * deltaTime * direction;
+    }
+}
+```
+
+#### 4. Create `CharacterInstaller` script
+
+ ```csharp
+//Populates entity with tags, values and behaviours
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
+    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
+
+    public override void Install(IEntity entity)
+    {
+        //Add tags to a character
+        entity.AddTag("Character");
+        entity.AddTag("Moveable");
+
+        //Add properties to a character
+        entity.AddValue("Transform", _transform);
+        entity.AddValue("MoveSpeed", _moveSpeed);
+        entity.AddValue("MoveDirection", _moveDirection);
+        
+        //Add behaviours to a character
+        entity.AddBehaviour<MoveBehaviour>();
+    }
+}
+```
+
+#### 5. Attach `CharacterInstaller` script to the GameObject
+
+<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+
+#### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
+
+<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
+
+#### 7. Enter `PlayMode` and check your character movement!
+
+---
+
+## ⚡ CSharp Quick Start
+
+Below is the process for quickly creating an entity in plain C#
 
 #### 1. Create a new entity
 
@@ -131,96 +227,317 @@ entity.Dispose();
 
 ---
 
-## 🚀 Unity Quick Start
+## 🗂 Examples of Usage
 
-#### 1. Create a new `GameObject`
+Below are examples of working with an entity, which include **Core**, **Tags**, **Values**, **Behaviours**, and *
+*Lifecycle**.
 
-<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+---
 
-#### 2. Add `Entity` Component to the GameObject
+### 💠 Core Usage
 
-<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
-
-#### 3. Create `MoveBehaviour` for your entity
+This example demonstrates the basic operations you can perform with an entity:
 
 ```csharp
-// Controller that moves entity by its direction
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
 {
-    private Transform _transform;
-    private IValue<float> _moveSpeed;
-    private IValue<Vector3> _moveDirection;
+    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
 
-    // Called when MonoBehaviour.Start() is invoked
-    public void Init(IEntity entity)
-    {
-        _transform = entity.GetValue<Transform>("Transform");
-        _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
-        _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
-    }
+// Change name
+entity.Name = "Hero"; //Triggers state changed
 
-    // Called when MonoBehaviour.FixedUpdate() is invoked
-    public void FixedTick(IEntity entity, float deltaTime)
-    {
-        Vector3 direction = _moveDirection.Value;
-        if (direction != Vector3.zero) 
-            _transform.position += _moveSpeed.Value * deltaTime * direction;
-    }
-}
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 ```
 
-#### 4. Create `CharacterInstaller` script
+### 🏷️ Tag Usage
 
- ```csharp
-//Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
-{
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
-    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
+This example demonstrates how to use tags with entity, including adding, removing, and checking tags. Three
+approaches are shown:
 
-    public override void Install(IEntity entity)
-    {
-        //Add tags to a character
-        entity.AddTag("Character");
-        entity.AddTag("Moveable");
-
-        //Add properties to a character
-        entity.AddValue("Transform", _transform);
-        entity.AddValue("MoveSpeed", _moveSpeed);
-        entity.AddValue("MoveDirection", _moveDirection);
-        
-        //Add behaviours to a character
-        entity.AddBehaviour<MoveBehaviour>();
-    }
-}
-```
-
-#### 5. Attach `CharacterInstaller` script to the GameObject
-
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
-
-#### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
-
-<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
-
-#### 7. Enter `PlayMode` and check your character movement!
+1. Using **numeric keys** for performance
+2. Using **string names** for readability
+3. Using **code generation** for real projects.
 
 ---
 
-## 🔍 API Reference
+#### 1️⃣ Using Numeric Keys
 
-Below are the interfaces and classes for working with entities.
+By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
 
-- [IEntity](IEntity.md)
-- [Entity](Entity.md)
-- [EntitySingleton](EntitySingleton.md)
-- [SceneEntity](SceneEntity.md)
-- [SceneEntityProxy](SceneEntityProxy.md)
-- [SceneEntitySingleton](SceneEntitySingleton.md)
-- [Extensions](Extensions.md)
+```csharp
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Subscribe to tag events
+entity.OnTagAdded += (e, tagId) => 
+    Console.WriteLine($"Tag added: {tagId}");
+entity.OnTagDeleted += (e, tagId) => 
+    Console.WriteLine($"Tag removed: {tagId}");
+
+// Add tags by numeric ID
+entity.AddTag(1);         // Player tag = 1
+entity.AddTag(2);         // NPC tag = 2
+
+// Check tags
+if (entity.HasTag(1)) //Check if  Player tag exists
+    Console.WriteLine("Entity has tag ID 1 (Player)");
+
+// Remove a NPC tag
+entity.DelTag(2);
+
+// Add multiple tags
+entity.AddTags(new int[] { 3, 4 }); // Ally, Merchant
+
+// Enumerate all tags
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
 
 ---
+
+#### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](ExtensionsTags.md) for the entity. This format is more
+user-friendly but slightly slower than using numeric keys.
+
+```csharp
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+#### 3️⃣ Using Entity API
+
+Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
+To make this process easier and **type-safe**, the Atomic Framework supports **code generation**.
+This means you describe all your tags (and values) once in a small config file, and the framework will automatically
+generate C# helpers. You can learn more about this in the Manual under
+the [Entity API](../EntityAPI/Manual.md) feature.
+
+```csharp
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Add tags
+entity.AddPlayerTag();
+entity.AddNPCTag();
+
+// Check tag
+if (entity.HasPlayerTag())
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelNPCTag();
+```
+
+---
+
+### 🔑 Value Usage
+
+This example demonstrates how to use **values** with entity, including adding, retrieving, updating, and removing
+values. Three approaches are shown:
+
+1. Using **numeric keys** for performance
+2. Using **string names** for readability
+3. Using **code generation** for real projects.
+
+---
+
+#### 1️⃣ Using Numeric Keys
+
+By default, all values use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Subscribe to value events
+entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
+
+//Add health property
+entity.AddValue(1, 100); //Health = 1
+
+//Add speed property
+entity.AddValue(2, 12.5f); //Speed = 2
+
+//Add inventory property
+entity.AddValue(3, new Inventory()); //Inventory = 3
+
+// Get a value
+int health = entity.GetValue<int>(1);
+Console.WriteLine($"Health: {health}");
+
+// Update a Health
+entity.SetValue(1, 150);
+
+// Remove a Speed value
+entity.DelValue(2);
+```
+
+---
+
+#### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](ExtensionsValues.md) for the entity. This format is
+more user-friendly but slightly slower than using numeric keys.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add values by string key
+entity.AddValue("Health", 100);
+entity.AddValue("Speed", 12.5f);
+entity.AddValue("Inventory", new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>("Health");
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetValue("Health", 150);
+
+// Remove a value
+entity.DelValue("Inventory");
+```
+
+---
+
+#### 3️⃣ Using Entity API
+
+Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
+process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
+values once in a small config file, and the framework automatically generates
+strongly-typed C# helpers. More details are in the Manual under
+the [Entity API](../EntityAPI/Manual.md) section.
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add values
+entity.AddHealth(100);
+entity.AddSpeed(12.5f);
+entity.AddInventory(new GridInventory());
+
+// Get a value
+int health = entity.GetHealth();
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetHealth(150);
+
+// Remove a value
+entity.DelInventory();
+```
+
+---
+
+
+
+### ⚙️ Behaviours Usage
+
+Below is an example of working with behaviours in `IEntity`.
+
+#### 1️⃣ Basic Usage
+
+```csharp
+// Assume we have a player entity:
+IEntity player = ...
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
+
+#### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](Extensions.md#-behaviours) for convenient handling of behaviours.
+
+```csharp
+// Create a new entity
+IEntity enemy = new Entity();
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```
 
 ## 🔥 Performance
 
@@ -281,5 +598,7 @@ include addition, removal, and indexed access.
 | Get At     | 1.60             | 2.30                   |
 | Enumerator | 29.95            | 28.80                  |
 
-> Behaviours combine fast index access with flexibility to store duplicate references, though some operations are 
+> Behaviours combine fast index access with flexibility to store duplicate references, though some operations are
 > **O(n)** in the worst case.
+
+---
