@@ -4,9 +4,8 @@
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
-- **Description:** Represents the fundamental interface of entity in the framework. It follows the
-  [Entity–State–Behaviour](Manual.md/#-core-concept) pattern and
-  provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
+- **Description:** Represents the fundamental interface of entity in the framework. 
+  It provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
   and **lifecycle management**.
 
 - **Inheritance:**

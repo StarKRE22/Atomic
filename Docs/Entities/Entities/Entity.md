@@ -1,29 +1,15 @@
 # 🧩️ Entity
 
-Represents the fundamental implementation of an [IEntity](IEntity.md) in the framework. It follows the
-**Entity–State–Behaviour** pattern and provides a modular container for **dynamic state**, **tags**, **values**,
-**behaviours**, and **lifecycle management**.
-
 ```csharp
 public class Entity : IEntity
 ```
 
----
+- **Description:** Represents the fundamental implementation of the entity.
+  It provides a modular container for **dynamic state**, **tags**, **values**,
+  **behaviours**, and **lifecycle management**.
 
-## 📚 Content
-
-- [Core](#-core-members)
-- [Tags](#-tag-members)
-- [Values](#-value-members)
-- [Behaviours](#-behaviour-members)
-- [Lifecycle](#-lifecycle-members)
-- [Nested Types](#-nested-types)
-- [Debug Properties](#-debug-properties)
-- [Example of Usage](#-example-of-usage-4)
-- [Performance](#-performance)
-- [Notes](#-notes)
-
----
+- **Inheritance:** [IEntity](IEntity.md)
+- **Note:** Supports Odin Inspector
 
 <details>
   <summary>
@@ -136,28 +122,6 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Assume we have instance of entity
-Entity entity = ...
-
-// Subscribe to the OnStateChanged event
-entity.OnStateChanged += (IEntity e) =>
-{
-    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
-};
-
-// Change name
-entity.Name = "Hero"; //Triggers state changed
-
-// Read the unique runtime identifier
-int id = entity.InstanceID;
-Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
-```
-
 </details>
 
 ---
@@ -171,7 +135,7 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 
 <br>
 
-> ❗️ Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
+> Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
 average time complexity**, and duplicate tags are **not allowed**.
 
 ---
@@ -292,108 +256,6 @@ public TagEnumerator GetTagEnumerator()
 - **Description:** Enumerates all tags of the entity.
 - **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
 
----
-
-### 🗂 Example of Usage
-
-This example demonstrates how to use tags with `Entity`, including adding, removing, and checking tags. Three
-approaches
-are shown: using **numeric keys** for performance, **string names** for readability and **code generation** for real
-projects. Subscriptions to `OnTagAdded` and
-`OnTagDeleted` events are included to react to changes in real time.
-
----
-
-#### 1️⃣ Using Numeric Keys
-
-By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
-below uses numeric keys as the default approach.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Subscribe to tag events
-entity.OnTagAdded += (e, tagId) => 
-    Console.WriteLine($"Tag added: {tagId}");
-entity.OnTagDeleted += (e, tagId) => 
-    Console.WriteLine($"Tag removed: {tagId}");
-
-// Add tags by numeric ID
-entity.AddTag(1);         // Player tag = 1
-entity.AddTag(2);         // NPC tag = 2
-
-// Check tags
-if (entity.HasTag(1)) //Check if  Player tag exists
-    Console.WriteLine("Entity has tag ID 1 (Player)");
-
-// Remove a NPC tag
-entity.DelTag(2);
-
-// Add multiple tags
-entity.AddTags(new int[] { 3, 4 }); // Ally, Merchant
-
-// Enumerate all tags
-foreach (int id in entity.GetTags())
-    Console.WriteLine($"Entity tag ID: {id}");
-```
-
----
-
-#### 2️⃣ Using String Names
-
-In this example, for convenience, there are [extension methods](Extensions.md#-tags) for the entity. This format is more
-user-friendly but slightly slower than using numeric keys.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Add tags by string name
-entity.AddTag("Player");
-entity.AddTag("NPC");
-
-// Check tags
-if (entity.HasTag("Player"))
-    Console.WriteLine("Entity is a Player");
-
-// Remove a tag
-entity.DelTag("NPC");
-
-// Add multiple tags at once
-entity.AddTags(new string[] { "Ally", "Merchant" });
-
-// Enumerate all tags (numeric IDs)
-foreach (int id in entity.GetTags())
-    Console.WriteLine($"Entity tag ID: {id}");
-```
-
----
-
-#### 3️⃣ Using Code Generation
-
-Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
-To
-make this process easier and **type-safe**, the Atomic Framework supports **code generation**. This means you describe
-all your tags (and values) once in a small config file, and the framework will automatically generate C# helpers. You
-can learn more about this in the Manual under
-the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Add tags
-entity.AddPlayerTag();
-entity.AddNPCTag();
-
-// Check tag
-if (entity.HasPlayerTag())
-    Console.WriteLine("Entity is a Player");
-
-// Remove a tag
-entity.DelNPCTag();
-```
 
 </details>
 
@@ -409,7 +271,7 @@ entity.DelNPCTag();
 
 <br>
 
-> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
+> Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
 > removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
 > reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
@@ -661,105 +523,6 @@ public ValueEnumerator GetValueEnumerator()
 - **Description:** Enumerates all key-value pairs.
 - **Returns:** Struct enumerator for iterating through stored values.
 
----
-
-### 🗂 Example of Usage
-
-This example demonstrates how to use **values** with `Entity`, including adding, retrieving, updating, and removing
-values. Three approaches are shown: using **numeric keys** for performance, **string names** for readability, and **code
-generation** for real projects. Subscriptions to `OnValueChanged` events are included to react to changes in real time.
-
----
-
-#### 1️⃣ Using Numeric Keys
-
-By default, all values use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
-below uses numeric keys as the default approach.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Subscribe to value events
-entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
-
-//Add health property
-entity.AddValue(1, 100); //Health = 1
-
-//Add speed property
-entity.AddValue(2, 12.5f); //Speed = 2
-
-//Add inventory property
-entity.AddValue(3, new Inventory()); //Inventory = 3
-
-// Get a value
-int health = entity.GetValue<int>(1);
-Console.WriteLine($"Health: {health}");
-
-// Update a Health
-entity.SetValue(1, 150);
-
-// Remove a Speed value
-entity.DelValue(2);
-```
-
----
-
-#### 2️⃣ Using String Names
-
-In this example, for convenience, there are [extension methods](Extensions.md#-values) for the entity. This format is
-more user-friendly but slightly slower than using numeric keys.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Add values by string key
-entity.AddValue("Health", 100);
-entity.AddValue("Speed", 12.5f);
-entity.AddValue("Inventory", new Inventory());
-
-// Get a value
-int health = entity.GetValue<int>("Health");
-Console.WriteLine($"Health: {health}");
-
-// Update a value
-entity.SetValue("Health", 150);
-
-// Remove a value
-entity.DelValue("Inventory");
-```
-
----
-
-#### 3️⃣ Using Code Generation
-
-Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
-process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
-values once in a small config file, and the framework automatically generates
-strongly-typed C# helpers. More details are in the Manual under
-the [Entity API Generation](../Manual.md/#-generate-entity-api) section.
-
-```csharp
-// Create a new entity
-IEntity entity = new Entity();
-
-// Add values
-entity.AddHealth(100);
-entity.AddSpeed(12.5f);
-entity.AddInventory(new GridInventory());
-
-// Get a value
-int health = entity.GetHealth();
-Console.WriteLine($"Health: {health}");
-
-// Update a value
-entity.SetHealth(150);
-
-// Remove a value
-entity.DelInventory();
-```
-
 </details>
 
 ---
@@ -977,84 +740,6 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Struct enumerator for iterating through behaviours.
 
----
-
-### 🗂 Example of Usage
-
-Below is an example of working with behaviours in `Entity`.
-
-#### 1️⃣ Basic Usage
-
-```csharp
-// Assume we have a player entity:
-Entity player = ...
-
-// Subscribe to events
-player.OnBehaviourAdded += (e, b) => 
-    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
-
-player.OnBehaviourDeleted += (e, b) => 
-    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
-
-// Add behaviours
-player.AddBehaviour(new MovementBehaviour());
-player.AddBehaviour(new RotationBehaviour());
-
-// Check count
-Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
-
-// Retrieve behaviour by type
-MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
-
-// Try to retrieve behaviour by type
-if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
-    Console.WriteLine("Found RotationBehaviour");
-
-// Remove behaviour
-player.DelBehaviour<MovementBehaviour>();
-
-// Clear all behaviours
-player.ClearBehaviours();
-
-// Enumerate all behaviours
-foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
-    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
-
-// Get array of behaviours
-IEntityBehaviour[] behaviours = player.GetBehaviours();
-
-// Copy to array
-IEntityBehaviour[] buffer = new IEntityBehaviour[10];
-int copied = player.CopyBehaviours(buffer);
-
-Console.WriteLine($"Copied {copied} behaviours into buffer");
-```
-
-#### 2️⃣ Using Extension Methods
-
-The framework also provides [extension methods](Extensions.md#-behaviours) for convenient handling of behaviours.
-
-```csharp
-// Create a new entity
-IEntity enemy = new Entity();
-
-// Add behaviour by type (using new T())
-enemy.AddBehaviour<MoveBehaviour>();
-
-// Add multiple behaviours at once
-var attackBehaviour = new AttackBehaviour();
-var defenseBehaviour = new DefenseBehaviour();
-
-enemy.AddBehaviours(new IEntityBehaviour[] {
-    attackBehaviour, defenseBehaviour
-});
-
-// Remove multiple behaviours at once
-enemy.DelBehaviours(new IEntityBehaviour[] {
-    attackBehaviour, defenseBehaviour
-});
-```
-
 </details>
 
 ---
@@ -1269,42 +954,6 @@ protected virtual void OnDispose()
   custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`
 
----
-
-### 🗂 Example of Usage
-
-This example demonstrates how to manage the lifecycle of an entity, including initialization, enabling, per-frame
-updates, disabling, and disposal. Event subscriptions allow reacting to state changes in real time.
-
-```csharp
-// Create a new entity
-IEntity player = new Entity();
-
-// Subscribe to lifecycle events
-player.OnInitialized += () => Console.WriteLine("Entity initialized");
-player.OnDisposed += () => Console.WriteLine("Entity disposed");
-player.OnEnabled += () => Console.WriteLine("Entity enabled");
-player.OnDisabled += () => Console.WriteLine("Entity disabled");
-player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
-player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
-player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
-
-// Initialize and enable the entity
-player.Init();
-player.Enable();
-
-// Simulate game loop updates
-player.Tick(0.016f);       // Update (frame)
-player.FixedTick(0.02f);   // Physics update
-player.LateTick(0.016f);   // Late update
-
-// Disable the entity
-player.Disable();
-
-// Dispose the entity
-player.Dispose();
-```
-
 </details>
 
 ---
@@ -1395,7 +1044,6 @@ entity.Dispose();
 ```
 
 ---
-
 
 ## 📝 Notes
 

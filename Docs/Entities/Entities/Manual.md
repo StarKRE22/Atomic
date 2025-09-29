@@ -7,7 +7,7 @@ system is a **composition**.
 
 Below are the interfaces and classes for working with entities.
 
-- [IEntity](IEntity.md)
+- [IEntity](IEntity.md) <!-- + -->
 - [Entity](Entity.md)
 - [EntitySingleton](EntitySingleton.md)
 - [SceneEntity](SceneEntity.md)

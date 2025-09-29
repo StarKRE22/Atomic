@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,23 +213,7 @@
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
-      <workItem from="1759129146428" duration="14650000" />
-    </task>
-    <task id="LOCAL-00937" summary="DisposableComposite.md">
-      <option name="closed" value="true" />
-      <created>1759002863925</created>
-      <option name="number" value="00937" />
-      <option name="presentableId" value="LOCAL-00937" />
-      <option name="project" value="LOCAL" />
-      <updated>1759002863925</updated>
-    </task>
-    <task id="LOCAL-00938" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1759003184669</created>
-      <option name="number" value="00938" />
-      <option name="presentableId" value="LOCAL-00938" />
-      <option name="project" value="LOCAL" />
-      <updated>1759003184669</updated>
+      <workItem from="1759129146428" duration="15074000" />
     </task>
     <task id="LOCAL-00939" summary="Reference.md">
       <option name="closed" value="true" />
@@ -605,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759164968019</updated>
     </task>
-    <option name="localTasksCounter" value="986" />
+    <task id="LOCAL-00986" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759165033863</created>
+      <option name="number" value="00986" />
+      <option name="presentableId" value="LOCAL-00986" />
+      <option name="project" value="LOCAL" />
+      <updated>1759165033863</updated>
+    </task>
+    <task id="LOCAL-00987" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759165101424</created>
+      <option name="number" value="00987" />
+      <option name="presentableId" value="LOCAL-00987" />
+      <option name="project" value="LOCAL" />
+      <updated>1759165101424</updated>
+    </task>
+    <option name="localTasksCounter" value="988" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
