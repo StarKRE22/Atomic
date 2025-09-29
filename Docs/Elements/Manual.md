@@ -1,8 +1,10 @@
-# ⚛️ Atomic.Elements
+# 🧩 Atomic.Elements
 
-A library of atomic elements for constructing complex game objects and systems in `Unity` and `C#`.
+Represents a library of **atomic elements** for constructing complex game objects and systems in `Unity` and `C#`.
 The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling
-developers to quickly assemble any game entity like a `LEGO Constructor`.
+developers to quickly assemble any game entity like a **LEGO**.
+
+---
 
 ## 📑 Table of Contents
 
@@ -16,7 +18,7 @@ developers to quickly assemble any game entity like a `LEGO Constructor`.
 
 ## 📝 Requirements
 
-The Atomic.Elements requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements
+The library requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements
 before using the framework.
 
 ---
@@ -31,9 +33,9 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 ## 🔍 API Reference
 
-This section provides a comprehensive overview of the core interfaces, classes, and utilities in `Atomic.Elements`. It
+Provides a comprehensive overview of the core interfaces, classes, and utilities in the library. It
 covers tools for **reactive programming, event handling, Unity integration, and general-purpose development**. Use this
-section as a guide for integrating `Atomic.Elements` into your Unity or C# projects, taking advantage of **reactive
+section as a guide for integrating features into your Unity or C# projects, taking advantage of **reactive
 patterns, composable structures, and modular design**.
 
 - [Values](Values/Manual.md)  <!-- + -->
@@ -52,7 +54,7 @@ patterns, composable structures, and modular design**.
 
 ## 📌 Best Practices
 
-This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these
+This section outlines **recommended approaches and patterns** when working with the library. Following these
 practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
 or multiplayer games.
 

@@ -1,8 +1,8 @@
-# ⚛️ Atomic.Entities
+# 🧩️ Atomic.Entities
 
-`Atomic.Entities` is a framework for Unity and C# that allows you to **architect your game using entities**. With this
+Represents a framework for Unity and C# that allows you to **architect your game using entities**. With this
 framework, all game objects, systems, UI elements, and application contexts can be represented as
-**entities**, each containing **state** (data) and **behaviour** (logic).
+**entities**, each containing **state** and **behaviour**.
 
 ## 🔍 Table of Contents
 
@@ -14,26 +14,29 @@ framework, all game objects, systems, UI elements, and application contexts can 
 - [Performance](#performance)
 - [Best Practices](#-best-practices)
 
-## Requirements
+## 📝 Requirements
 
-> [!IMPORTANT]  
-> The Atomic Framework requires **Unity 6** or **.NET 7+**.  
-> Make sure your development environment meets these requirements before using the framework.
+The framework requires **Unity 6** or **.NET 7+**. Make sure your development environment meets these requirements
+before using the framework.
 
-## Using Odin Inspector
+---
 
-> [!TIP]  
-> For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-> using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041).  
-> The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+## 🎛 Using Odin Inspector
 
-## Using Atomic Plugin for Rider
+For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
+framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
-> [!TIP]  
-> For better **code generation** and more convenient workflow in `Rider`, we **optionally recommend** installing
-> the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin).  
-> By default the code generation works with Unity, but with the plugin, development experience in `Rider` become
-> smoother and more powerful than in Unity.
+---
+
+## 🔌 Using Plugin for Rider
+
+For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
+the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
+but
+with the plugin, development experience in `Rider IDE` become
+smoother and more powerful than in Unity.
+---
 
 ## 🔍 API Reference
 
@@ -48,9 +51,50 @@ framework, all game objects, systems, UI elements, and application contexts can 
 - [Utilities](Utils/Manual.md)
 - [Lifecycle](Lifecycle/Manual.md)
 
-## Performance
+
+
+<!-- 
+
+- [Behaviours]()
+  - [IEntityBehaviour](Behaviours/IEntityBehaviour.md)
+  - [IEntityInit](Behaviours/IEntityInit.md)
+  - [IEntityDispose](Behaviours/IEntityDispose.md)
+  - [IEntityEnable](Behaviours/IEntityEnable.md)
+  - [IEntityDisable](Behaviours/IEntityDisable.md)
+  - [IEntityTick](Behaviours/IEntityTick.md)
+  - [IEntityFixedTick](Behaviours/IEntityFixedTick.md)
+  - [IEntityLateTick](Behaviours/IEntityLateTick.md)
+  - [IEntityGizmos](Behaviours/IEntityGizmos.md)
+  - [RunInEditModeAttribute](Attributes/RunInEditModeAttribute.md)
+  - [Extensions](Entities/Extensions.md)
+
+- [Installers]()
+  - [IEntityInstaller](Installers/IEntityInstaller.md)
+  - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
+  - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
+  - [Extensions](Entities/Extensions.md)
+
+- [Proxies]()
+  - [SceneEntityProxy](Entities/SceneEntityProxy.md)
+  - [Extensions](Entities/Extensions.md)
+
+- [Singletons]()
+  - [EntitySingleton](Entities/EntitySingleton.md)
+  - [SceneEntitySingleton](Entities/SceneEntitySingleton.md)
+- [Registry]
+  - [EntityRegistry](Registry/EntityRegistry.md)
+
+-->
+
+---
+
+## 🔥 Performance
+
+---
 
 ## 📌 Best Practices
+
+---
 
 ## Notes
 
