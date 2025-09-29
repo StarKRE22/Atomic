@@ -4,7 +4,7 @@ Represents a framework for Unity and C# that allows you to **architect your game
 framework, all game objects, systems, UI elements, and application contexts can be represented as
 **entities**, each containing **state** and **behaviour**.
 
-## 🔍 Table of Contents
+## 📑 Table of Contents
 
 - [Requirements](#-requirements)
 - [Using Odin Inspector](#-using-odin-inspector)

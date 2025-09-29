@@ -1,20 +1,31 @@
 # 🧩 IEntity
 
-Represents the fundamental interface of entity in the framework. It follows the **Entity–State–Behaviour** pattern and
-provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**, and **lifecycle management**.
-
 ```csharp
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
+
+- **Description:** Represents the fundamental interface of entity in the framework. It follows the 
+  [Entity–State–Behaviour](Manual.md/#-core-concept) pattern and
+  provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
+  and **lifecycle management**.
 
 - **Inheritance:**
     - [IInitLifecycle](../Lifecycle/Sources/IInitLifecycle.md) – Supports explicit initialization and disposal.
     - [IEnableLifecycle](../Lifecycle/Sources/IEnableLifecycle.md) – Supports runtime enabling and disabling.
     - [ITickLifecycle](../Lifecycle/Sources/ITickLifecycle.md) – Supports `Tick`, `FixedTick`, and `LateTick` callbacks.
 
+- **Notes:**
+  - **Event-Driven** – Reactive programming support via state change notifications.
+  - **Unique Identity** – Runtime-generated instance ID for entity tracking.
+  - **Tag System** – Lightweight categorization and filtering.
+  - **State Management** – Dynamic key-value storage for runtime data.
+  - **Behaviour Composition** – Attach or detach modular logic at runtime.
+  - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
+
+
 ---
 
-## 📚 Content
+## 📑 Table of Contents
 
 - [Core](#-core-members)
 - [Tags](#-tag-members)
@@ -22,7 +33,6 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 - [Behaviours](#-behaviour-members)
 - [Lifecycle](#-lifecycle-members)
 - [Example of Usage](#-example-of-usage-4)
-- [Notes](#-notes)
 
 ---
 
@@ -342,9 +352,11 @@ entity.DelNPCTag();
 
 <br>
 
-> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and removal
+> ❗️ Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
+> removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
-> reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic API
+> reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
+> API
 > avoids boxing.
 
 ---
@@ -708,7 +720,8 @@ entity.DelInventory();
 
 <br>
 
-> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have **List-like time complexity**.
+> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have *
+*List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
 > so duplicate entries are allowed.
 
@@ -1270,10 +1283,3 @@ entity.Dispose();
 ---
 
 ## 📝 Notes
-
-- **Event-Driven** – Reactive programming support via state change notifications.
-- **Unique Identity** – Runtime-generated instance ID for entity tracking.
-- **Tag System** – Lightweight categorization and filtering.
-- **State Management** – Dynamic key-value storage for runtime data.
-- **Behaviour Composition** – Attach or detach modular logic at runtime.
-- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
