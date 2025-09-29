@@ -1193,9 +1193,8 @@ entity.Dispose();
 <details>
   <summary>
     <h2 id="-example"> 🗂 Example of Usage</h2>
+    <br> Below is the process for quickly creating an <code>Entity</code>
   </summary>
-
-Below is the process for quickly creating an `Entity`
 
 #### 1. Create a new entity
 
