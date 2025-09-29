@@ -1081,7 +1081,10 @@ entity.Dispose();
 
 ---
 
-## 📝 Notes
+<details>
+  <summary>
+    <h2 id="-notes">📝 Notes</h2>
+  </summary>
 
 - **Event-Driven** – Reactive programming support via state change notifications.
 - **Unique Identity** – Runtime-generated instance ID for entity tracking.
@@ -1089,3 +1092,4 @@ entity.Dispose();
 - **State Management** – Dynamic key-value storage for runtime data.
 - **Behaviour Composition** – Attach or detach modular logic at runtime.
 - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
+</details>

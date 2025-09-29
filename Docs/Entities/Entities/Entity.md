@@ -1276,20 +1276,25 @@ entity.Dispose();
 
 ---
 
-## 📝 Notes
+<details>
+  <summary>
+    <h2 id="-notes">📝 Notes</h2>
+  </summary>
+
 - **Event-Driven** – Reactive programming support via state change notifications.
-  - **Unique Identity** – Runtime-generated instance ID for entity tracking.
-  - **Tag System** – Lightweight categorization and filtering.
-  - **State Management** – Dynamic key-value storage for runtime data.
-  - **Behaviour Composition** – Attach or detach modular logic at runtime.
-  - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
-  - **Registry Integration** – Automatic registration with EntityRegistry
-  - **Memory Efficient** – Pre-allocation support for collections
-  - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-  - **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into
-    the
-    entity state, tags, values, and behaviours.
-  - **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be
-    synchronized externally.
-  - **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core
-    entity class.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
+- **Registry Integration** – Automatic registration with EntityRegistry
+- **Memory Efficient** – Pre-allocation support for collections
+- **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
+- **Debug Support** – When used with Unity Editor and Odin Inspector, debug properties provide quick insight into
+  the
+  entity state, tags, values, and behaviours.
+- **Thread Safety** – `Entity` is **NOT thread-safe**; all interactions should occur on the main thread or be
+  synchronized externally.
+- **Composition** – Behaviours, tags, and values can be added dynamically at runtime without modifying the core
+  entity class.
+</details>
