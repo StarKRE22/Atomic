@@ -329,6 +329,42 @@ enemy.DelBehaviours(new IEntityBehaviour[] {
 });
 ```
 
+---
+
+### ♻️ Lifecycle Usage
+
+This example demonstrates how to manage the lifecycle of an entity, including initialization, enabling, per-frame
+updates, disabling, and disposal. Event subscriptions allow reacting to state changes in real time.
+
+```csharp
+// Create a new entity
+IEntity player = new Entity();
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
+
 </details>
 
 ---
