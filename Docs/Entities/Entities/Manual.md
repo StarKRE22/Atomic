@@ -9,6 +9,7 @@ system is a **composition**.
 
 ## 📑 Table of Contents
 
+- [Theory]()
 - [API Reference](#-api-reference)
 - [Core Concept](#-core-concept)
 - [Unity Quick Start](#-unity-quick-start)
