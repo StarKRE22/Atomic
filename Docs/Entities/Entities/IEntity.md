@@ -4,7 +4,7 @@
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
-- **Description:** Represents the fundamental interface of entity in the framework. 
+- **Description:** Represents the fundamental interface of entity in the framework.
   It provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
   and **lifecycle management**.
 
@@ -1007,9 +1007,9 @@ public void Dispose()
     - If the entity is enabled, calls `Disable()` automatically.
     - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
+---
 
 ### 🗂 Example of Usage
-
 
 ```csharp
 // Create a new entity
@@ -1039,7 +1039,6 @@ player.Disable();
 // Dispose the entity
 player.Dispose();
 ```
-
 
 </details>
 
@@ -1085,4 +1084,5 @@ entity.Disable();
 // Dispose entity when game is unloading
 entity.Dispose();
 ```
+
 </details>
