@@ -80,7 +80,6 @@ public string Name { get; set; }
 
 <br>
 
-> [!IMPORTANT]
 > Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
 average time complexity**, and duplicate tags are **not allowed**.
 
