@@ -24,17 +24,6 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 
 ---
 
-## 📑 Table of Contents
-
-- [Core](#-core-members)
-- [Tags](#-tag-members)
-- [Values](#-value-members)
-- [Behaviours](#-behaviour-members)
-- [Lifecycle](#-lifecycle-members)
-- [Example of Usage](#-example-of-usage-4)
-
----
-
 <details>
   <summary>
     <h2 id="-core-members">💠 Core</h2>
@@ -79,7 +68,6 @@ public string Name { get; set; }
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
 ---
-
 
 </details>
 
@@ -920,9 +908,11 @@ public void Dispose()
 
 ---
 
-## 🗂 Example of Usage
-
-The example below demonstrates quick entity creation and configuration with `Atomic.Elements`:
+<details>
+  <summary>
+    <h2 id="-example-of-usage"> 🗂 Example of Usage</h2>
+    <br> The example below demonstrates quick entity creation and configuration with <code>Atomic.Elements</code>:
+  </summary>
 
 ```csharp
 // Create a new entity in C#
@@ -958,6 +948,4 @@ entity.Disable();
 entity.Dispose();
 ```
 
----
-
-## 📝 Notes
+</details>
