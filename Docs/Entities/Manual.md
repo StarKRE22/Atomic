@@ -6,12 +6,11 @@ framework, all game objects, systems, UI elements, and application contexts can 
 
 ## 🔍 Table of Contents
 
-- [Requirements](#requirements)
-- [Using Odin Inspector](#using-odin-inspector)
-- [Using Rider Plugin](#using-atomic-plugin-for-rider)
-- [API Reference](#api-reference)
-- [Generate Entity API]()
-- [Performance](#performance)
+- [Requirements](#-requirements)
+- [Using Odin Inspector](#-using-odin-inspector)
+- [Using Rider Plugin](#-using-atomic-plugin-for-rider)
+- [API Reference](#-api-reference)
+- [Performance](#-performance)
 - [Best Practices](#-best-practices)
 
 ## 📝 Requirements
@@ -36,6 +35,7 @@ the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default, 
 but
 with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
+
 ---
 
 ## 🔍 API Reference
@@ -95,12 +95,3 @@ smoother and more powerful than in Unity.
 ## 📌 Best Practices
 
 ---
-
-## Notes
-
-Atomic.Entities provides
-
-- **Clear separation of data and logic** through the Entity–State–Behaviour pattern;
-- **Composition over inheritance**, allowing flexible and reusable designs;
-- **Flexibility and scalability** for building game systems of any size;
-- **Seamless integration with Unity** and the ability to extend for specific game projects.
