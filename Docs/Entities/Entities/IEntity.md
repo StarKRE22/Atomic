@@ -13,14 +13,6 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
     - [IEnableLifecycle](../Lifecycle/Sources/IEnableLifecycle.md) – Supports runtime enabling and disabling.
     - [ITickLifecycle](../Lifecycle/Sources/ITickLifecycle.md) – Supports `Tick`, `FixedTick`, and `LateTick` callbacks.
 
-- **Notes:**
-    - **Event-Driven** – Reactive programming support via state change notifications.
-    - **Unique Identity** – Runtime-generated instance ID for entity tracking.
-    - **Tag System** – Lightweight categorization and filtering.
-    - **State Management** – Dynamic key-value storage for runtime data.
-    - **Behaviour Composition** – Attach or detach modular logic at runtime.
-    - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
-
 ---
 
 <details>
@@ -1086,3 +1078,14 @@ entity.Dispose();
 ```
 
 </details>
+
+---
+
+## 📝 Notes
+
+- **Event-Driven** – Reactive programming support via state change notifications.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
