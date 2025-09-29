@@ -4,7 +4,7 @@
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
-- **Description:** Represents the fundamental interface of entity in the framework. It follows the 
+- **Description:** Represents the fundamental interface of entity in the framework. It follows the
   [Entity–State–Behaviour](Manual.md/#-core-concept) pattern and
   provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
   and **lifecycle management**.
@@ -15,12 +15,12 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
     - [ITickLifecycle](../Lifecycle/Sources/ITickLifecycle.md) – Supports `Tick`, `FixedTick`, and `LateTick` callbacks.
 
 - **Notes:**
-  - **Event-Driven** – Reactive programming support via state change notifications.
-  - **Unique Identity** – Runtime-generated instance ID for entity tracking.
-  - **Tag System** – Lightweight categorization and filtering.
-  - **State Management** – Dynamic key-value storage for runtime data.
-  - **Behaviour Composition** – Attach or detach modular logic at runtime.
-  - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
+    - **Event-Driven** – Reactive programming support via state change notifications.
+    - **Unique Identity** – Runtime-generated instance ID for entity tracking.
+    - **Tag System** – Lightweight categorization and filtering.
+    - **State Management** – Dynamic key-value storage for runtime data.
+    - **Behaviour Composition** – Attach or detach modular logic at runtime.
+    - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
 
 ---
 
@@ -204,7 +204,6 @@ public IEnumerator<int> GetTagEnumerator()
 ---
 
 ### 🗂 Example of Usage
-
 
 </details>
 
@@ -492,8 +491,8 @@ public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()
 
 <br>
 
-> ❗ For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have *
-*List-like time complexity**.
+> For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
+> **List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
 > so duplicate entries are allowed.
 

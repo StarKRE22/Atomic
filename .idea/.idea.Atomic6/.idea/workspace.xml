@@ -211,39 +211,7 @@
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
-      <workItem from="1759129146428" duration="14321000" />
-    </task>
-    <task id="LOCAL-00933" summary="CollisionEvents2D.md">
-      <option name="closed" value="true" />
-      <created>1759002346963</created>
-      <option name="number" value="00933" />
-      <option name="presentableId" value="LOCAL-00933" />
-      <option name="project" value="LOCAL" />
-      <updated>1759002346963</updated>
-    </task>
-    <task id="LOCAL-00934" summary="TriggerEvents.md">
-      <option name="closed" value="true" />
-      <created>1759002458563</created>
-      <option name="number" value="00934" />
-      <option name="presentableId" value="LOCAL-00934" />
-      <option name="project" value="LOCAL" />
-      <updated>1759002458563</updated>
-    </task>
-    <task id="LOCAL-00935" summary="TriggerEvents2D.md">
-      <option name="closed" value="true" />
-      <created>1759002538743</created>
-      <option name="number" value="00935" />
-      <option name="presentableId" value="LOCAL-00935" />
-      <option name="project" value="LOCAL" />
-      <updated>1759002538743</updated>
-    </task>
-    <task id="LOCAL-00936" summary="DisposableAction.md">
-      <option name="closed" value="true" />
-      <created>1759002676612</created>
-      <option name="number" value="00936" />
-      <option name="presentableId" value="LOCAL-00936" />
-      <option name="project" value="LOCAL" />
-      <updated>1759002676612</updated>
+      <workItem from="1759129146428" duration="14650000" />
     </task>
     <task id="LOCAL-00937" summary="DisposableComposite.md">
       <option name="closed" value="true" />
@@ -605,7 +573,39 @@
       <option name="project" value="LOCAL" />
       <updated>1759164456151</updated>
     </task>
-    <option name="localTasksCounter" value="982" />
+    <task id="LOCAL-00982" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759164684781</created>
+      <option name="number" value="00982" />
+      <option name="presentableId" value="LOCAL-00982" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164684781</updated>
+    </task>
+    <task id="LOCAL-00983" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759164813407</created>
+      <option name="number" value="00983" />
+      <option name="presentableId" value="LOCAL-00983" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164813407</updated>
+    </task>
+    <task id="LOCAL-00984" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759164945189</created>
+      <option name="number" value="00984" />
+      <option name="presentableId" value="LOCAL-00984" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164945189</updated>
+    </task>
+    <task id="LOCAL-00985" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759164968018</created>
+      <option name="number" value="00985" />
+      <option name="presentableId" value="LOCAL-00985" />
+      <option name="project" value="LOCAL" />
+      <updated>1759164968019</updated>
+    </task>
+    <option name="localTasksCounter" value="986" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FloatMulExpression.md" />
     <MESSAGE value="FloatMulExpression`1.md" />
     <MESSAGE value="FloatMulExpression`2.md" />
     <MESSAGE value="FloatSumExpressions.md" />
@@ -657,7 +656,8 @@
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Entities Manual.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entities Manual.md" />
+    <MESSAGE value="IEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
