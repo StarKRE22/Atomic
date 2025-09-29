@@ -66,6 +66,26 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
+{
+    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
+
+// Change name
+entity.Name = "Hero"; //Triggers state changed
+
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
+```
+
 </details>
 
 ---
@@ -203,6 +223,29 @@ public IEnumerator<int> GetTagEnumerator()
 ---
 
 ### 🗂 Example of Usage
+
+```csharp
+// Assume we have instance of entity
+IEntity entity = ...
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
 
 </details>
 
@@ -472,6 +515,27 @@ public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()
 
 ---
 
+### 🗂 Example of Usage
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add values by string key
+entity.AddValue("Health", 100);
+entity.AddValue("Speed", 12.5f);
+entity.AddValue("Inventory", new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>("Health");
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetValue("Health", 150);
+
+// Remove a value
+entity.DelValue("Inventory");
+```
 
 </details>
 
@@ -692,6 +756,52 @@ public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()
 
 ---
 
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have a player entity:
+IEntity player = ...
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
 
 </details>
 
@@ -897,7 +1007,38 @@ public void Dispose()
     - If the entity is enabled, calls `Disable()` automatically.
     - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
 
----
+
+### 🗂 Example of Usage
+
+
+```csharp
+// Create a new entity
+IEntity player = new Entity();
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
 
 
 </details>

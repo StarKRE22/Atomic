@@ -8,11 +8,11 @@ system is a **composition**.
 Below are the interfaces and classes for working with entities.
 
 - [IEntity](IEntity.md) <!-- + -->
-- [Entity](Entity.md)
-- [EntitySingleton](EntitySingleton.md)
+- [Entity](Entity.md) <!-- + -->
 - [SceneEntity](SceneEntity.md)
-- [SceneEntityProxy](SceneEntityProxy.md)
+- [EntitySingleton](EntitySingleton.md)
 - [SceneEntitySingleton](SceneEntitySingleton.md)
+- [SceneEntityProxy](SceneEntityProxy.md)
 - [Extensions](Extensions.md)
 
 ---

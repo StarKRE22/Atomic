@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,23 +215,7 @@
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
-      <workItem from="1759129146428" duration="16323000" />
-    </task>
-    <task id="LOCAL-00940" summary="Reference.md">
-      <option name="closed" value="true" />
-      <created>1759003554473</created>
-      <option name="number" value="00940" />
-      <option name="presentableId" value="LOCAL-00940" />
-      <option name="project" value="LOCAL" />
-      <updated>1759003554473</updated>
-    </task>
-    <task id="LOCAL-00941" summary="Сделал Utilities">
-      <option name="closed" value="true" />
-      <created>1759003813429</created>
-      <option name="number" value="00941" />
-      <option name="presentableId" value="LOCAL-00941" />
-      <option name="project" value="LOCAL" />
-      <updated>1759003813429</updated>
+      <workItem from="1759129146428" duration="20469000" />
     </task>
     <task id="LOCAL-00942" summary="Сделал Utilities">
       <option name="closed" value="true" />
@@ -606,7 +593,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759165673629</updated>
     </task>
-    <option name="localTasksCounter" value="989" />
+    <task id="LOCAL-00989" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759166694175</created>
+      <option name="number" value="00989" />
+      <option name="presentableId" value="LOCAL-00989" />
+      <option name="project" value="LOCAL" />
+      <updated>1759166694175</updated>
+    </task>
+    <task id="LOCAL-00990" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759166831638</created>
+      <option name="number" value="00990" />
+      <option name="presentableId" value="LOCAL-00990" />
+      <option name="project" value="LOCAL" />
+      <updated>1759166831638</updated>
+    </task>
+    <option name="localTasksCounter" value="991" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FloatMulExpression`2.md" />
     <MESSAGE value="FloatSumExpressions.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="FloatSumExpression.md" />
@@ -658,7 +660,8 @@
     <MESSAGE value="Entities Manual.md" />
     <MESSAGE value="IEntity.md" />
     <MESSAGE value="Пилим Entity.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим Entity.md" />
+    <MESSAGE value="Entity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Entity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
