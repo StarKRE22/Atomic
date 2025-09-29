@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,31 +212,7 @@
       <workItem from="1758697936272" duration="23420000" />
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
-      <workItem from="1759129146428" duration="20469000" />
-    </task>
-    <task id="LOCAL-00942" summary="Сделал Utilities">
-      <option name="closed" value="true" />
-      <created>1759003925863</created>
-      <option name="number" value="00942" />
-      <option name="presentableId" value="LOCAL-00942" />
-      <option name="project" value="LOCAL" />
-      <updated>1759003925864</updated>
-    </task>
-    <task id="LOCAL-00943" summary="IntMulExpressions.md">
-      <option name="closed" value="true" />
-      <created>1759044939167</created>
-      <option name="number" value="00943" />
-      <option name="presentableId" value="LOCAL-00943" />
-      <option name="project" value="LOCAL" />
-      <updated>1759044939167</updated>
-    </task>
-    <task id="LOCAL-00944" summary="IntMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1759049110835</created>
-      <option name="number" value="00944" />
-      <option name="presentableId" value="LOCAL-00944" />
-      <option name="project" value="LOCAL" />
-      <updated>1759049110835</updated>
+      <workItem from="1759129146428" duration="21315000" />
     </task>
     <task id="LOCAL-00945" summary="IntMulExpression`1.md">
       <option name="closed" value="true" />
@@ -609,7 +582,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759166831638</updated>
     </task>
-    <option name="localTasksCounter" value="991" />
+    <task id="LOCAL-00991" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759173138216</created>
+      <option name="number" value="00991" />
+      <option name="presentableId" value="LOCAL-00991" />
+      <option name="project" value="LOCAL" />
+      <updated>1759173138217</updated>
+    </task>
+    <task id="LOCAL-00992" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759173211979</created>
+      <option name="number" value="00992" />
+      <option name="presentableId" value="LOCAL-00992" />
+      <option name="project" value="LOCAL" />
+      <updated>1759173211979</updated>
+    </task>
+    <task id="LOCAL-00993" summary="Entity.md">
+      <option name="closed" value="true" />
+      <created>1759173537948</created>
+      <option name="number" value="00993" />
+      <option name="presentableId" value="LOCAL-00993" />
+      <option name="project" value="LOCAL" />
+      <updated>1759173537948</updated>
+    </task>
+    <option name="localTasksCounter" value="994" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,8 +655,8 @@
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Entities Manual.md" />
-    <MESSAGE value="IEntity.md" />
     <MESSAGE value="Пилим Entity.md" />
+    <MESSAGE value="IEntity.md" />
     <MESSAGE value="Entity.md" />
     <option name="LAST_COMMIT_MESSAGE" value="Entity.md" />
   </component>

@@ -341,6 +341,33 @@ public TagEnumerator GetTagEnumerator()
 - **Description:** Enumerates all tags of the entity.
 - **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
 
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Create a new instance of entity
+Entity entity = new Entity();
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
 </details>
 
 ---
@@ -607,6 +634,30 @@ public ValueEnumerator GetValueEnumerator()
 - **Description:** Enumerates all key-value pairs.
 - **Returns:** Struct enumerator for iterating through stored values.
 
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Create a new entity
+IEntity entity = new Entity();
+
+// Add values by string key
+entity.AddValue("Health", 100);
+entity.AddValue("Speed", 12.5f);
+entity.AddValue("Inventory", new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>("Health");
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetValue("Health", 150);
+
+// Remove a value
+entity.DelValue("Inventory");
+```
+
 </details>
 
 ---
@@ -824,6 +875,55 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Struct enumerator for iterating through behaviours.
 
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have a player entity:
+IEntity player = ...
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
+
 </details>
 
 ---
@@ -1038,39 +1138,9 @@ protected virtual void OnDispose()
   custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2 id="-debug">🐞 Debug Properties</h2>
-    <br>
-    These properties are available only in <b>Unity Editor</b> when using <b>Odin Inspector</b>
-  </summary>
-<br>
-
-- `DebugName` — Displays entity name in the Unity Editor.
-- `DebugInitialized` — Displays if the entity is initialized.
-- `DebugEnabled` — Displays if the entity is enabled.
-- `DebugTags` — Sorted list of tags for debug display.
-- `DebugValues` — Sorted list of values for debug display.
-- `DebugBehaviours` — Sorted list of attached behaviours for debug display.
-
-</details>
-
-
----
-
-<details>
-  <summary>
-    <h2 id="-example"> 🗂 Examples of Usage</h2>
-  </summary>
-
-
----
-
-### 3️⃣ Lifecycle Usage
+### 🗂 Example of Usage
 
 ```csharp
 // Create a new entity
@@ -1094,6 +1164,128 @@ entity.LateTick(deltaTime);   // Calls LateTick on all IEntityLateTick behaviour
 entity.Disable();
 
 // Dispose the entity when it is no longer needed
+entity.Dispose();
+```
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="-debug">🐞 Debug Properties</h2>
+    <br>
+    These properties are available only in <b>Unity Editor</b> when using <b>Odin Inspector</b>
+  </summary>
+<br>
+
+- `DebugName` — Displays entity name in the Unity Editor.
+- `DebugInitialized` — Displays if the entity is initialized.
+- `DebugEnabled` — Displays if the entity is enabled.
+- `DebugTags` — Sorted list of tags for debug display.
+- `DebugValues` — Sorted list of values for debug display.
+- `DebugBehaviours` — Sorted list of attached behaviours for debug display.
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="-example"> 🗂 Example of Usage</h2>
+  </summary>
+
+Below is the process for quickly creating an `Entity`
+
+#### 1. Create a new entity
+
+```csharp
+//Create a new entity
+IEntity entity = new Entity("Character");
+
+//Add tags
+entity.AddTag("Moveable");
+
+//Add properties
+entity.AddValue("Position", new ReactiveVariable<Vector3>());
+entity.AddValue("MoveSpeed", new Const<float>(3.5f));
+entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
+```
+
+#### 2. Create `MoveBehaviour` for the entity
+
+```csharp
+//Controller that moves entity by its direction
+public sealed class MoveBehaviour : IEntityInit, IEntityTick
+{
+    private IVariable<Vector3> _position;
+    private IValue<float> _moveSpeed;
+    private IValue<Vector3> _moveDirection;
+
+    //Called when Entity.Init()
+    public void Init(IEntity entity)
+    {
+        _position = entity.GetValue<IVariable<Vector3>>("Position");
+        _moveSpeed = entity.GetValue<IValue<float>>("MoveSpeed");
+        _moveDirection = entity.GetValue<IValue<Vector3>>("MoveDirection");
+    }
+
+    //Called when Entity.OnUpdate()
+    public void Tick(IEntity entity, float deltaTime)
+    {
+        Vector3 direction = _moveDirection.Value;
+        if (direction != Vector3.zero) 
+            _position.Value += _moveSpeed.Value * deltaTime * direction;
+    }
+}
+```
+
+#### 3. Add `MoveBehaviour` to the entity
+
+```csharp
+entity.AddBehaviour<MoveBehaviour>();
+```
+
+#### 4. Initialize the entity when game is loading
+
+```csharp
+//Calls IEntityInit
+entity.Init();
+```
+
+#### 5. Enable the entity when game is started
+
+```csharp
+//Enable entity for updates
+//Calls IEntityEnable
+entity.Enable(); 
+```
+
+#### 6. Update the entity while a game is running
+
+```csharp
+const float deltaTime = 0.02f;
+
+while(_isGameRunning)
+{ 
+   //Calls IEntityTick
+   entity.Tick(deltaTime); 
+}
+```
+
+#### 7. When game is finished disable the entity
+
+```csharp
+//Disable entity for updates
+//Calls IEntityDisable
+character.Disable();
+```
+
+#### 8. Dispose the entity when unloading game resources
+
+```csharp
+//Dispose entity resources
+//Calls IEntityDispose
 entity.Dispose();
 ```
 
