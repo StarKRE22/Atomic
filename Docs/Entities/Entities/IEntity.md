@@ -20,7 +20,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
   - **Tag System** – Lightweight categorization and filtering.
   - **State Management** – Dynamic key-value storage for runtime data.
   - **Behaviour Composition** – Attach or detach modular logic at runtime.
-  - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
+  - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
 
 ---
 
@@ -67,8 +67,6 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
----
-
 </details>
 
 ---
@@ -82,7 +80,8 @@ public string Name { get; set; }
 
 <br>
 
-> ❗️ Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
+> [!IMPORTANT]
+> Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
 average time complexity**, and duplicate tags are **not allowed**.
 
 ---
