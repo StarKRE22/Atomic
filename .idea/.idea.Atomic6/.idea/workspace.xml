@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityBehaviours.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,23 +213,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="9378000" />
-    </task>
-    <task id="LOCAL-00956" summary="FloatSumExpressions.md">
-      <option name="closed" value="true" />
-      <created>1759079947824</created>
-      <option name="number" value="00956" />
-      <option name="presentableId" value="LOCAL-00956" />
-      <option name="project" value="LOCAL" />
-      <updated>1759079947824</updated>
-    </task>
-    <task id="LOCAL-00957" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1759080003854</created>
-      <option name="number" value="00957" />
-      <option name="presentableId" value="LOCAL-00957" />
-      <option name="project" value="LOCAL" />
-      <updated>1759080003854</updated>
+      <workItem from="1759213195784" duration="9764000" />
     </task>
     <task id="LOCAL-00958" summary="FloatSumExpression.md">
       <option name="closed" value="true" />
@@ -607,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759224631713</updated>
     </task>
-    <option name="localTasksCounter" value="1005" />
+    <task id="LOCAL-01005" summary="IEntityValues.md">
+      <option name="closed" value="true" />
+      <created>1759224952302</created>
+      <option name="number" value="01005" />
+      <option name="presentableId" value="LOCAL-01005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759224952302</updated>
+    </task>
+    <task id="LOCAL-01006" summary="IEntityTags.md">
+      <option name="closed" value="true" />
+      <created>1759225197425</created>
+      <option name="number" value="01006" />
+      <option name="presentableId" value="LOCAL-01006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759225197425</updated>
+    </task>
+    <option name="localTasksCounter" value="1007" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FloatSumExpression`2.md" />
-    <MESSAGE value="InlineExpressions.md" />
     <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="InlineExpression`1.md" />
     <MESSAGE value="InlineExpression`2.md" />
@@ -659,7 +657,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityCore.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityCore.md" />
+    <MESSAGE value="IEntityValues.md" />
+    <MESSAGE value="IEntityTags.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityTags.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
