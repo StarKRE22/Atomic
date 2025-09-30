@@ -1,17 +1,9 @@
+# 🧩 Entity Behaviours
 
-<details>
-  <summary>
-    <h2 id="-behaviour-members">⚙️ Behaviours</h2>
-    <br>
-    Manage modular logic attached to the entity. Behaviours implement 
-    <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
-    This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
-    Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
-    enabling dynamic logic composition without changing the core entity structure.
-  </summary>
+Manage modular logic attached to the entity. Behaviours can be added, removed, queried, or enumerated at runtime. This allows flexible composition of entity
+logic, enabling dynamic functionality without changing the core entity structure.
 
-<br>
-
+> [!IMPORTANT]
 > For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
 > **List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
@@ -19,7 +11,7 @@
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnBehaviourAdded`
 
@@ -47,7 +39,7 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `BehaviourCount`
 
@@ -60,7 +52,7 @@ public int BehaviourCount { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `AddBehaviour(IEntityBehaviour)`
 
@@ -214,11 +206,15 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
+
+Below is an example of working with behaviours in the entity.
+
+### 1️⃣ Basic Usage
 
 ```csharp
-// Assume we have a player entity:
-IEntity player = ...
+// Create a new instance of entity
+Entity entity = new Entity();
 
 // Subscribe to events
 player.OnBehaviourAdded += (e, b) => 
@@ -261,4 +257,27 @@ int copied = player.CopyBehaviours(buffer);
 Console.WriteLine($"Copied {copied} behaviours into buffer");
 ```
 
-</details>
+### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](ExtensionsBehaviours.md) for convenient handling of behaviours.
+
+```csharp
+// Create a new instance of entity
+Entity entity = new Entity();
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```

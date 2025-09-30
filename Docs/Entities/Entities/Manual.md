@@ -17,7 +17,7 @@ Below are the interfaces and classes for working with entities.
     - [Core](EntityCore.md) <!-- + -->
     - [Tags](EntityTags.md) <!-- + -->
     - [Values](EntityValues.md) <!-- + -->
-    - [Behaviours](EntityBehaviours.md)
+    - [Behaviours](EntityBehaviours.md) <!-- + -->
     - [Lifecycle](EntityLifecycle.md)
 - [SceneEntity](SceneEntity.md) !!!
 - [EntitySingleton](EntitySingleton.md)

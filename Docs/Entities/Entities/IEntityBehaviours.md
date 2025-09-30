@@ -210,7 +210,7 @@ public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()
 
 Below is an example of working with behaviours in the entity.
 
-#### 1️⃣ Basic Usage
+### 1️⃣ Basic Usage
 
 ```csharp
 // Assume we have a player entity:
@@ -257,13 +257,13 @@ int copied = player.CopyBehaviours(buffer);
 Console.WriteLine($"Copied {copied} behaviours into buffer");
 ```
 
-#### 2️⃣ Using Extension Methods
+### 2️⃣ Using Extension Methods
 
 The framework also provides [extension methods](ExtensionsBehaviours.md) for convenient handling of behaviours.
 
 ```csharp
-// Create a new entity
-IEntity enemy = new Entity();
+// Assume we have a player entity:
+IEntity player = ...
 
 // Add behaviour by type (using new T())
 enemy.AddBehaviour<MoveBehaviour>();

@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntityCore.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityCore.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntityValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,23 +214,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="12211000" />
-    </task>
-    <task id="LOCAL-00965" summary="Поправил Best Practice">
-      <option name="closed" value="true" />
-      <created>1759083497951</created>
-      <option name="number" value="00965" />
-      <option name="presentableId" value="LOCAL-00965" />
-      <option name="project" value="LOCAL" />
-      <updated>1759083497951</updated>
-    </task>
-    <task id="LOCAL-00966" summary="ChosingBetweenTimerAndCooldown.md">
-      <option name="closed" value="true" />
-      <created>1759085198017</created>
-      <option name="number" value="00966" />
-      <option name="presentableId" value="LOCAL-00966" />
-      <option name="project" value="LOCAL" />
-      <updated>1759085198017</updated>
+      <workItem from="1759213195784" duration="12650000" />
     </task>
     <task id="LOCAL-00967" summary="ChosingBetweenTimerAndCooldown.md">
       <option name="closed" value="true" />
@@ -607,7 +592,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759227591051</updated>
     </task>
-    <option name="localTasksCounter" value="1014" />
+    <task id="LOCAL-01014" summary="EntityCore.md">
+      <option name="closed" value="true" />
+      <created>1759227794000</created>
+      <option name="number" value="01014" />
+      <option name="presentableId" value="LOCAL-01014" />
+      <option name="project" value="LOCAL" />
+      <updated>1759227794000</updated>
+    </task>
+    <task id="LOCAL-01015" summary="EntityTags.md">
+      <option name="closed" value="true" />
+      <created>1759227967979</created>
+      <option name="number" value="01015" />
+      <option name="presentableId" value="LOCAL-01015" />
+      <option name="project" value="LOCAL" />
+      <updated>1759227967979</updated>
+    </task>
+    <option name="localTasksCounter" value="1016" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,8 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineExpression`2.md" />
-    <MESSAGE value="Поправил Best Practice" />
     <MESSAGE value="ChosingBetweenTimerAndCooldown.md" />
     <MESSAGE value="Обновил Best Practices" />
     <MESSAGE value="Начинаем собирать Entities" />
@@ -659,7 +658,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IEntity.md" />
     <MESSAGE value="Перепиливаем Entity.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перепиливаем Entity.md" />
+    <MESSAGE value="EntityCore.md" />
+    <MESSAGE value="EntityTags.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityTags.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
