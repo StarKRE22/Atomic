@@ -19,10 +19,10 @@ Below are the interfaces and classes for working with entities.
     - [Values](EntityValues.md) <!-- + -->
     - [Behaviours](EntityBehaviours.md) <!-- + -->
     - [Lifecycle](EntityLifecycle.md) <!-- + -->
-    - [Debug](EntityDebug.md)
-- **[SceneEntity](SceneEntity.md)** 
-    - [Core](SceneEntityCore.md) 
-    - [Tags](SceneEntityTags.md) 
+    - [Debug](EntityDebug.md) <!-- + -->
+- **[SceneEntity](SceneEntity.md)** <!-- + -->
+    - [Core](SceneEntityCore.md)
+    - [Tags](SceneEntityTags.md)
     - [Values](SceneEntityValues.md)
     - [Behaviours](SceneEntityBehaviours.md)
     - [Lifecycle](SceneEntityLifecycle.md)
