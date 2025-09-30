@@ -8,12 +8,17 @@ system is a **composition**.
 Below are the interfaces and classes for working with entities.
 
 - [IEntity](IEntity.md) <!-- + -->
-  - [Core](IEntityCore.md)
-  - [Tags](IEntityTags.md)
-  - [Values]
-  - [Behaviours]
-  - [Lifecycle]
+    - [Core](IEntityCore.md) <!-- + -->
+    - [Tags](IEntityTags.md) <!-- + -->
+    - [Values](IEntityValues.md) <!-- + -->
+    - [Behaviours](IEntityBehaviours.md) <!-- + -->
+    - [Lifecycle](IEntityLifecycle.md) <!-- + -->
 - [Entity](Entity.md) <!-- + -->
+    - [Core](EntityCore.md) <!-- + -->
+    - [Tags](EntityTags.md)
+    - [Values](EntityValues.md)
+    - [Behaviours](EntityBehaviours.md)
+    - [Lifecycle](EntityLifecycle.md)
 - [SceneEntity](SceneEntity.md) !!!
 - [EntitySingleton](EntitySingleton.md)
 - [SceneEntitySingleton](SceneEntitySingleton.md)

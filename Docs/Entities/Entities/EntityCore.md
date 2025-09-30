@@ -1,12 +1,11 @@
+# 🧩 Entity Core
 
-<details>
-  <summary>
-    <h2 id="-core-members">💠 Core</h2>
-    <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
-         debugging or tooling, and the main event for reactive state changes.
-  </summary>
+Represents the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+debugging or tooling, and the main event for reactive state changes.
 
-### 🏗️ Constructors
+---
+
+## 🏗️ Constructors
 
 #### `String-keyed Constructor`
 
@@ -21,7 +20,8 @@ public Entity(
 ```
 
 - **Description:** Creates a new entity with the specified name, string tags, values, and behaviours. Initializes
-  internal capacities and immediately adds all specified tags, values, and behaviours.
+  internal capacities and immediately adds all specified tags, values, and behaviours. Registers the entity
+  in [EntityRegistry](../Registry/EntityRegistry.md).
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tags` – Optional collection of string tag identifiers.
@@ -42,7 +42,8 @@ public Entity(
 ```
 
 - **Description:** Creates a new entity with the specified name, integer tags, values, and behaviours. Initializes
-  internal capacities and immediately adds all specified tags, values, and behaviours.
+  internal capacities and immediately adds all specified tags, values, and behaviours. Registers the entity
+  in [EntityRegistry](../Registry/EntityRegistry.md).
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tags` – Optional collection of integer tag identifiers.
@@ -74,7 +75,7 @@ public Entity(
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -88,7 +89,7 @@ public event Action<IEntity> OnStateChanged
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `InstanceID`
 
@@ -110,7 +111,9 @@ public string Name { get; set; }
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Useful for logging, inspector display, or editor tooling.
 
-### 🗂 Examples of Usage
+---
+
+## 🗂 Examples of Usage
 
 #### 1️⃣ Basic Usage
 
@@ -178,5 +181,3 @@ entity.AddValue("Speed", 5.5f); //There is an extension method
 entity.AddBehaviour(new MoveBehaviour());
 entity.AddBehaviour<HealthBehaviour>(); //There is an extension method
 ```
-
-</details>
