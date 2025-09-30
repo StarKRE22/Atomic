@@ -54,8 +54,8 @@ foreach(string item in items)
 ### 2. Iterating over `ReactiveArray` & `ReactiveList`
 
 When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop
-over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the stack
-**, which can slightly slow down iteration.
+over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the 
+stack**, which can slightly slow down iteration.
 
 > [!NOTE]  
 > Performance tests confirm this behavior for both [ReactiveList](../Elements/Performance/ReactiveListPerformance.md)
@@ -92,8 +92,8 @@ for (int i = 0, count = items.Count; i < count; i++)
 ### 3. Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
 
 In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`,
-`ReactiveDictionary`, or `ReactiveHashSet`. This is especially important for `ReactiveLinkedList`, which is a *
-*doubly-linked list** where accessing elements by index has **O(N) complexity**. Using a `for` loop with indexing would
+`ReactiveDictionary`, or `ReactiveHashSet`. This is especially important for `ReactiveLinkedList`, which is 
+a **doubly-linked list** where accessing elements by index has **O(N) complexity**. Using a `for` loop with indexing would
 therefore be very inefficient.
 
 #### ❌ Bad Practice
