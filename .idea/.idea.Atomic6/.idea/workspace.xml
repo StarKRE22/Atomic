@@ -212,31 +212,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="16493000" />
-    </task>
-    <task id="LOCAL-00984" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1759164945189</created>
-      <option name="number" value="00984" />
-      <option name="presentableId" value="LOCAL-00984" />
-      <option name="project" value="LOCAL" />
-      <updated>1759164945189</updated>
-    </task>
-    <task id="LOCAL-00985" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1759164968018</created>
-      <option name="number" value="00985" />
-      <option name="presentableId" value="LOCAL-00985" />
-      <option name="project" value="LOCAL" />
-      <updated>1759164968019</updated>
-    </task>
-    <task id="LOCAL-00986" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1759165033863</created>
-      <option name="number" value="00986" />
-      <option name="presentableId" value="LOCAL-00986" />
-      <option name="project" value="LOCAL" />
-      <updated>1759165033863</updated>
+      <workItem from="1759213195784" duration="16793000" />
     </task>
     <task id="LOCAL-00987" summary="IEntity.md">
       <option name="closed" value="true" />
@@ -606,7 +582,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759231970875</updated>
     </task>
-    <option name="localTasksCounter" value="1033" />
+    <task id="LOCAL-01033" summary="SceneEntityCreation.md">
+      <option name="closed" value="true" />
+      <created>1759232249946</created>
+      <option name="number" value="01033" />
+      <option name="presentableId" value="LOCAL-01033" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232249946</updated>
+    </task>
+    <task id="LOCAL-01034" summary="SceneEntityCreation.md">
+      <option name="closed" value="true" />
+      <created>1759232317256</created>
+      <option name="number" value="01034" />
+      <option name="presentableId" value="LOCAL-01034" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232317256</updated>
+    </task>
+    <task id="LOCAL-01035" summary="SceneEntityCreation.md">
+      <option name="closed" value="true" />
+      <created>1759232356786</created>
+      <option name="number" value="01035" />
+      <option name="presentableId" value="LOCAL-01035" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232356786</updated>
+    </task>
+    <option name="localTasksCounter" value="1036" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим Entity.md" />
     <MESSAGE value="Entity.md" />
     <MESSAGE value="Остановился на SceneEntity!" />
     <MESSAGE value="IEntityCore.md" />
@@ -658,7 +657,8 @@
     <MESSAGE value="SceneEntityGizmos.md" />
     <MESSAGE value="SceneEntityEditor.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="SceneEntityCreation.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityCreation.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

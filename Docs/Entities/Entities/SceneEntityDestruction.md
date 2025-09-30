@@ -1,11 +1,10 @@
+# 🧩 SceneEntity Destruction
 
-<details>
-  <summary>
-    <h2 id="-entity-destruction"> 🗑️ Destruction</h2>
-    <br> This section provides methods of how to destroy entities at runtime.
-  </summary>
+Provides methods of how to destroy entities at runtime.
 
-### 🏹 Methods
+---
+
+## 🏹 Methods
 
 #### `Destroy(IEntity, float)`
 
@@ -33,11 +32,9 @@ public static void Destroy(SceneEntity entity, float t = 0)
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 // Destroys entity after 3 seconds
 SceneEntity.Destroy(sceneEntity, 3f);
 ```
-
-</details>
