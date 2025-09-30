@@ -1,19 +1,15 @@
+# 🧩 SceneEntity Installing
 
-<details>
-  <summary>
-    <h2 id="-installing"> 🔧 Installing</h2>
-    <br>
-Provides entity configuration
-    Describes how a <code>SceneEntity</code> is populated with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
-    runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
-  </summary>
+Provides API for `SceneEntity` configuration  with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
+runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
 
-### 🛠 Inspector Settings
+---
+
+## 🛠 Inspector Settings
 
 | Parameter              | Description                                                                                                                                                                                                                                    |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `installOnAwake`       | If enabled, `Install()` is automatically called in `Awake()`. Default is `true`                                                                                                                                                                |
-| `installInEditMode`    | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. Default is `false`. <br/>**Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues.         |
 | `uninstallOnDestroy`   | If enabled, `Uninstall()` is automatically called in `OnDestroy`. Default is `true`                                                                                                                                                            |
 | `sceneInstallers`      | List of MonoBehaviour installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use.    |
 | `scriptableInstallers` | List of ScriptableObject installers that configure values and systems in this entity. Installers are executed in the order they appear in the array. Null references are automatically skipped, making partially configured lists safe to use. |
@@ -21,7 +17,7 @@ Provides entity configuration
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Installed`
 
@@ -33,7 +29,7 @@ public bool Installed { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Install()`
 
@@ -79,7 +75,7 @@ protected virtual void OnUninstall()
 
 ---
 
-### 🏹 Static Methods
+## 🏹 Static Methods
 
 There are also static methods that allow installing entities globally in a scene.
 
@@ -116,7 +112,9 @@ public static void InstallAll<E>(Scene scene) where E : SceneEntity
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
+
+Below is an example how to install `SceneEntity` and populate it wit **tags** and **values**:
 
 #### 1. Create `CharacterInstaller` script
 
@@ -150,6 +148,4 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
 
-#### 4. Now your `Entity` has tags and properties.
-
-</details>
+#### 4. Now your `SceneEntity` has tags and properties.

@@ -6,6 +6,7 @@
 <br>
 
 ### 🏹 Methods
+| `installInEditMode`    | If enabled, `Install()` is called every time `OnValidate` is invoked in Edit Mode. Default is `false`. <br/>**Warning:** If you create Unity objects or other heavy objects in `Install()`, turn this off to avoid performance issues.         |
 
 #### `Compile`
 
