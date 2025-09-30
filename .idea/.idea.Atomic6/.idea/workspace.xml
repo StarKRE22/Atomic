@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityCore.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityTags.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,15 +216,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="8299000" />
-    </task>
-    <task id="LOCAL-00953" summary="FloatMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1759078376372</created>
-      <option name="number" value="00953" />
-      <option name="presentableId" value="LOCAL-00953" />
-      <option name="project" value="LOCAL" />
-      <updated>1759078376372</updated>
+      <workItem from="1759213195784" duration="8989000" />
     </task>
     <task id="LOCAL-00954" summary="FloatMulExpression`1.md">
       <option name="closed" value="true" />
@@ -608,7 +602,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759221043858</updated>
     </task>
-    <option name="localTasksCounter" value="1002" />
+    <task id="LOCAL-01002" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759222318169</created>
+      <option name="number" value="01002" />
+      <option name="presentableId" value="LOCAL-01002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759222318169</updated>
+    </task>
+    <option name="localTasksCounter" value="1003" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
