@@ -50,5 +50,5 @@ There are several abstractions of actions, depending on the number of arguments 
     - [SceneActionReference&lt;T1, T2, T3&gt;](SceneActionReference%603.md) <!-- + -->
     - [SceneActionReference&lt;T1, T2, T3, T4&gt;](SceneActionReference%604.md) <!-- + -->
 - [PrintAction](PrintAction.md)
-- Extensions
+- **Extensions**
   - [InvokeRange](ExtensionsInvokeRange.md)

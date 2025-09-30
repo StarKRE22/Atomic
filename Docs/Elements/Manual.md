@@ -81,10 +81,10 @@ of type `object`**.
 
 ### Collections
 
-- [ReactiveArray](Collections/ReactiveArray.md/#-performance) – performance benchmarks for reactive arrays.
-- [ReactiveList](Collections/ReactiveList.md/#-performance) – performance benchmarks for reactive lists.
-- [ReactiveLinkedList](Collections/ReactiveLinkedList.md/#-performance) – performance benchmarks for reactive linked
+- [ReactiveArray](Performance/ReactiveArrayPerformance.md) – performance benchmarks for reactive arrays.
+- [ReactiveList](Performance/ReactiveListPerformance.md) – performance benchmarks for reactive lists.
+- [ReactiveLinkedList](Performance/ReactiveLinkedListPerformance.md) – performance benchmarks for reactive linked
   lists.
-- [ReactiveDictionary](Collections/ReactiveDictionary.md/#-performance) – performance benchmarks for reactive
+- [ReactiveDictionary](Performance/ReactiveDictionaryPerformance.md) – performance benchmarks for reactive
   dictionaries.
-- [ReactiveHashSet](Collections/ReactiveHashSet.md/#-performance) – performance benchmarks for reactive hash sets.
+- [ReactiveHashSet](Performance/ReactiveHashSetPerformance.md) – performance benchmarks for reactive hash sets.
