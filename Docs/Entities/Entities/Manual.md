@@ -31,8 +31,8 @@ Below are the interfaces and classes for working with entities.
     - [Debug](SceneEntityDebug.md) <!-- + -->
     - [Editor](SceneEntityEditor.md) <!-- + -->
     - [Creation](SceneEntityCreation.md) <!-- + -->
-    - [Destruction](SceneEntityDestruction.md)
-    - [Casting](SceneEntityCasting.md)
+    - [Destruction](SceneEntityDestruction.md) <!-- + -->
+    - [Casting](SceneEntityCasting.md) <!-- + -->
 
 - **[EntitySingleton](EntitySingleton.md)**
 - **[SceneEntitySingleton](SceneEntitySingleton.md)**

@@ -1,11 +1,10 @@
+# 🧩 SceneEntity Casting
 
-<details>
-  <summary>
-    <h2 id="-entity-casting"> 🪄 Casting</h2>
-    <br> This section provides methods for safe casting between <code>IEntity</code> and <code>SceneEntity</code>.
-  </summary>
+Provides methods for safe casting between <code>IEntity</code> and <code>SceneEntity</code>.
 
-### 🏹 Methods
+---
+
+## 🏹 Methods
 
 #### `Cast(IEntity)`
 
@@ -60,9 +59,9 @@ public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntit
 
 ---
 
-### 🗂 Examples of Usage
+## 🗂 Examples of Usage
 
-#### Simple cast to `SceneEntity`
+### 1️⃣ Simple cast to `SceneEntity`
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -71,7 +70,9 @@ SceneEntity sceneEntity = SceneEntity.Cast(entity);
 
 > Throws an exception if `entity` is not a `SceneEntity`.
 
-#### Generic cast to a specific `SceneEntity` type
+---
+
+### 2️⃣ Generic cast to a specific `SceneEntity` type
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -80,7 +81,9 @@ EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
 
 > Throws an exception if entity is not of type `EnemyEntity` or a proxy of it.
 
-#### Safe cast using `TryCast`
+---
+
+### 3️⃣ Safe cast using `TryCast`
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -90,7 +93,9 @@ else
     Debug.LogWarning("Entity is not a SceneEntity");
 ```
 
-#### Safe generic cast using TryCast<E>
+---
+
+### 4️⃣ Safe generic cast using TryCast<E>
 
 ```csharp
 IEntity entity = GetEntityFromRegistry();
@@ -100,4 +105,3 @@ else
     Debug.LogWarning("Entity is not of type EnemyEntity");
 ```
 
-</details>
