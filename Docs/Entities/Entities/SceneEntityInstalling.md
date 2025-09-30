@@ -3,6 +3,7 @@
   <summary>
     <h2 id="-installing"> 🔧 Installing</h2>
     <br>
+Provides entity configuration
     Describes how a <code>SceneEntity</code> is populated with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
     runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
   </summary>

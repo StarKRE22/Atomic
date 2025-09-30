@@ -12,6 +12,19 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 
 - **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
+- **Modules:**
+  - [Core](SceneEntityCore.md) — Represents the fundamental identity and state of the entity
+  - [Tags](SceneEntityTags.md) — Manage lightweight categorization and filtering of entities
+  - [Values](SceneEntityValues.md) — Manage dynamic key-value storage for the entity
+  - [Behaviours](SceneEntityBehaviours.md) — Manage modular logic attached to the entity
+  - [Lifecycle](SceneEntityLifecycle.md) — Manages the entity's state transitions and update phases
+  - [Installing](SceneEntityInstalling.md) — Provides entity configuration with tags, values and behaviours
+  - [Gizmos](SceneEntityGizmos.md) —  Provides gizmo drawing functionality
+  - [Debug](SceneEntityDebug.md) — Represents debug properties
+  - [Editor](SceneEntityEditor.md) — Provides editor-time lifecycle support
+  - [Creation](SceneEntityCreation.md) — Allows you to create entities at runtime
+  - [Destruction](SceneEntityDestruction.md) — Destroys the game objects with entities
+  - [Casting](SceneEntityCasting.md) — Provides safe casting between `IEntity` to `SceneEntity`
 
 ---
 

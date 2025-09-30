@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityBehaviours.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityCore.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityDebug.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityEditor.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityGizmos.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityLifecycle.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityTags.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityValues.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntityDebug.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityDebug.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,23 +214,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="13274000" />
-    </task>
-    <task id="LOCAL-00970" summary="Начинаем собирать Entities">
-      <option name="closed" value="true" />
-      <created>1759087389306</created>
-      <option name="number" value="00970" />
-      <option name="presentableId" value="LOCAL-00970" />
-      <option name="project" value="LOCAL" />
-      <updated>1759087389306</updated>
-    </task>
-    <task id="LOCAL-00971" summary="Переделываем Atomic.Entities">
-      <option name="closed" value="true" />
-      <created>1759088181795</created>
-      <option name="number" value="00971" />
-      <option name="presentableId" value="LOCAL-00971" />
-      <option name="project" value="LOCAL" />
-      <updated>1759088181795</updated>
+      <workItem from="1759213195784" duration="14085000" />
     </task>
     <task id="LOCAL-00972" summary="пилим!">
       <option name="closed" value="true" />
@@ -619,7 +592,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759228534197</updated>
     </task>
-    <option name="localTasksCounter" value="1019" />
+    <task id="LOCAL-01019" summary="Распиливаем SceneEntity.md">
+      <option name="closed" value="true" />
+      <created>1759229084431</created>
+      <option name="number" value="01019" />
+      <option name="presentableId" value="LOCAL-01019" />
+      <option name="project" value="LOCAL" />
+      <updated>1759229084431</updated>
+    </task>
+    <task id="LOCAL-01020" summary="SceneEntity.md">
+      <option name="closed" value="true" />
+      <created>1759229226100</created>
+      <option name="number" value="01020" />
+      <option name="presentableId" value="LOCAL-01020" />
+      <option name="project" value="LOCAL" />
+      <updated>1759229226100</updated>
+    </task>
+    <option name="localTasksCounter" value="1021" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Начинаем собирать Entities" />
     <MESSAGE value="Переделываем Atomic.Entities" />
     <MESSAGE value="пилим!" />
     <MESSAGE value="Пилим раздел Entities" />
@@ -658,7 +646,6 @@
     <MESSAGE value="Пилим Entity.md" />
     <MESSAGE value="Entity.md" />
     <MESSAGE value="Остановился на SceneEntity!" />
-    <MESSAGE value="SceneEntity.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityCore.md" />
     <MESSAGE value="IEntityTags.md" />
@@ -671,7 +658,9 @@
     <MESSAGE value="IEntityValues.md" />
     <MESSAGE value="EntityBehaviours.md" />
     <MESSAGE value="EntityLifecycle.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityLifecycle.md" />
+    <MESSAGE value="Распиливаем SceneEntity.md" />
+    <MESSAGE value="SceneEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
