@@ -12,6 +12,7 @@ public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceive
 
 - **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
+
 ---
 
 <details>
@@ -247,7 +248,6 @@ entity.AddTags(new string[] { "Ally", "Merchant" });
 foreach (int id in entity.GetTags())
     Console.WriteLine($"Entity tag ID: {id}");
 ```
-
 
 </details>
 
@@ -523,7 +523,6 @@ public ValueEnumerator GetValueEnumerator()
 - **Description:** Enumerates all key-value pairs.
 - **Returns:** Struct enumerator for iterating through stored values.
 
-
 ### 🗂 Example of Usage
 
 ```csharp
@@ -769,7 +768,6 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Struct enumerator for iterating through behaviours.
-
 
 ---
 
@@ -1238,42 +1236,6 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <details>
   <summary>
-    <h2 id="-context"> ▶️ Context Menu</h2>
-  </summary>
-<br>
-
-### 🏹 Methods
-
-
-#### `Compile`
-```csharp
-[ContextMenu("Compile")]
-private void Compile()
-```
-- **Description:** Refresh   
-- Precomputes **capacity**, **tags**, **values**, **behaviours** of the entity
-
-
-Provides a simple workflow for <b>precomputing entity capacities</b> in the Unity Editor.
-You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
-
-
-
-
-| Button    | Action |
-|-----------|--------|
-| 🛠 Compile |  |
-| 🔄 Reset   | Resets the entity state |
-
-
-
-
-</details>
-
----
-
-<details>
-  <summary>
     <h2 id="-gizmos"> 🖌️ Gizmos</h2>
     <br>
     Provides visual debugging support through Unity Gizmos in the Scene view.
@@ -1287,6 +1249,49 @@ You can optimize your entity’s size by precomputing the capacity of <b>tags</b
 | `onlyEditModeGizmos` | Draw gizmos only when Unity is not in Play mode.Default is `false`    |
 
 ---
+
+</details>
+
+---
+
+<details>
+  <summary>
+    <h2 id="-context"> ▶️ Context Menu</h2>
+  </summary>
+<br>
+
+### 🏹 Methods
+
+#### `Compile`
+
+```csharp
+[ContextMenu("Compile")]
+private void Compile();
+```
+
+- **Description:** Fully compiles entity state:
+- **Behaviour**:
+    1. Disable and Dispose entity in Edit mode if gameObject is not prefab. Only for behaviours
+       with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+    2. Uninstall previous entity state
+    3. Install new entity state
+    4. Precomputes **capacity**, **tags**, **values**, **behaviours** of the entity
+    5. Init and Enable entity in Edit mode if gameObject is not prefab. Only for behaviours
+       with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+
+#### `Reset`
+
+```csharp
+[ContextMenu("Reset")]
+private void Reset();
+```
+
+- **Description:** Fully resets entity state:
+    1. Disable and Dispose entity in Edit mode if gameObject is not prefab. Only for behaviours
+       with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+    2. Uninstall previous entity state
+    3. Resets all parameters to default
+    4. Gathers all SceneEntityInstallers and child Entities
 
 </details>
 
@@ -1719,17 +1724,17 @@ else
 
 ## 🗂 Example Usage
 
-**Below is the process for quickly creating a character entity in Unity**
+Below is the process for quickly creating a character entity in Unity
 
-### 1. Create a new `GameObject`
+#### 1. Create a new `GameObject`
 
 <img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
-### 2. Add `Entity` Component to the GameObject
+#### 2. Add `Entity` Component to the GameObject
 
 <img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
 
-### 3. Create `MoveBehaviour` for your entity
+#### 3. Create `MoveBehaviour` for your entity
 
 ```csharp
 // Controller that moves entity by its direction
@@ -1757,7 +1762,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-### 4. Create `CharacterInstaller` script
+#### 4. Create `CharacterInstaller` script
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -1784,15 +1789,15 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-### 5. Attach `CharacterInstaller` script to the GameObject
+#### 5. Attach `CharacterInstaller` script to the GameObject
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
+#### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
-<img width="464" height="" alt="изображение" src="Docs/Images/SceneEntity%20Attach%20Installer.png" />
+<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
 
-### 7. Enter `PlayMode` and check your character movement!
+#### 7. Enter `PlayMode` and check your character movement!
 
 ---
 

@@ -18,6 +18,10 @@ initialize your entity in **Edit Mode** and determine the exact memory requireme
 <br>
 
 
+Provides a simple workflow for <b>precomputing entity capacities</b> in the Unity Editor.
+You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
+
+
 - [Core Concept](#-core-concept)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
