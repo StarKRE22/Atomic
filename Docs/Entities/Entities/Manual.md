@@ -23,8 +23,8 @@ Below are the interfaces and classes for working with entities.
 - **[SceneEntity](SceneEntity.md)** <!-- + -->
     - [Core](SceneEntityCore.md) <!-- + -->
     - [Tags](SceneEntityTags.md) <!-- + -->
-    - [Values](SceneEntityValues.md)  <!-- + -->
-    - [Behaviours](SceneEntityBehaviours.md)
+    - [Values](SceneEntityValues.md) <!-- + -->
+    - [Behaviours](SceneEntityBehaviours.md) <!-- + -->
     - [Lifecycle](SceneEntityLifecycle.md)
 - **[EntitySingleton](EntitySingleton.md)**
 - **[SceneEntitySingleton](SceneEntitySingleton.md)**

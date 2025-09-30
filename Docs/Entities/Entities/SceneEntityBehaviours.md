@@ -1,17 +1,10 @@
+# 🧩 SceneEntity Behaviours
 
-<details>
-  <summary>
-    <h2 id="-behaviours">⚙️ Behaviours</h2>
-    <br>
-    Manage modular logic attached to the entity. Behaviours implement 
-    <a href="../Behaviours/IEntityBehaviour.md">IEntityBehaviour</a> interfaces and can be added, removed, queried, or enumerated at runtime. 
-    This allows flexible composition of entity logic, enabling dynamic functionality without changing the core entity structure. 
-    Behaviours can respond to lifecycle events (<code>Init</code>, <code>Enable</code>, <code>Tick</code>, <code>Disable</code>, <code>Dispose</code>), 
-    enabling dynamic logic composition without changing the core entity structure.
-  </summary>
+Manage modular logic attached to the entity. Behaviours can be added, removed, queried, or enumerated at runtime. This
+allows flexible composition of entity
+logic, enabling dynamic functionality without changing the core entity structure.
 
-<br>
-
+> [!IMPORTANT]
 > For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
 > **List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
@@ -19,7 +12,7 @@
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameters                 | Description                                                                   | 
 |----------------------------|-------------------------------------------------------------------------------|
@@ -27,7 +20,7 @@
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnBehaviourAdded`
 
@@ -55,7 +48,7 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `BehaviourCount`
 
@@ -68,7 +61,7 @@ public int BehaviourCount { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `AddBehaviour(IEntityBehaviour)`
 
@@ -221,17 +214,22 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 
 ---
 
-### 🗂 Example of Usage
+
+## 🗂 Example of Usage
+
+Below is an example of working with behaviours in the entity.
+
+### 1️⃣ Basic Usage
 
 ```csharp
-// Assume we have an instance of entity
-SceneEntity entity = ...
+// Assume we have a player entity:
+SceneEntity player = ...
 
 // Subscribe to events
-entity.OnBehaviourAdded += (e, b) => 
+player.OnBehaviourAdded += (e, b) => 
     Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
 
-entity.OnBehaviourDeleted += (e, b) => 
+player.OnBehaviourDeleted += (e, b) => 
     Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
 
 // Add behaviours
@@ -239,33 +237,56 @@ player.AddBehaviour(new MovementBehaviour());
 player.AddBehaviour(new RotationBehaviour());
 
 // Check count
-Console.WriteLine($"Total behaviours: {entity.BehaviourCount}");
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
 
 // Retrieve behaviour by type
-MovementBehaviour movementBehaviour = entity.GetBehaviour<MovementBehaviour>();
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
 
 // Try to retrieve behaviour by type
-if (entity.TryGetBehaviour(out RotationBehaviour rotation))
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
     Console.WriteLine("Found RotationBehaviour");
 
 // Remove behaviour
-entity.DelBehaviour<MovementBehaviour>();
+player.DelBehaviour<MovementBehaviour>();
 
 // Clear all behaviours
-entity.ClearBehaviours();
+player.ClearBehaviours();
 
 // Enumerate all behaviours
-foreach (IEntityBehaviour behaviour in entity.GetBehaviourEnumerator())
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
     Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
 
 // Get array of behaviours
-IEntityBehaviour[] behaviours = entity.GetBehaviours();
+IEntityBehaviour[] behaviours = player.GetBehaviours();
 
 // Copy to array
 IEntityBehaviour[] buffer = new IEntityBehaviour[10];
-int copied = entity.CopyBehaviours(buffer);
+int copied = player.CopyBehaviours(buffer);
 
 Console.WriteLine($"Copied {copied} behaviours into buffer");
 ```
 
-</details>
+### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](ExtensionsBehaviours.md) for convenient handling of behaviours.
+
+```csharp
+// Assume we have a player entity:
+SceneEntity player = ...
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```
