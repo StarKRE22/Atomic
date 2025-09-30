@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -214,15 +210,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="1333000" />
-    </task>
-    <task id="LOCAL-00950" summary="IntSumExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1759050841447</created>
-      <option name="number" value="00950" />
-      <option name="presentableId" value="LOCAL-00950" />
-      <option name="project" value="LOCAL" />
-      <updated>1759050841447</updated>
+      <workItem from="1759213195784" duration="1657000" />
     </task>
     <task id="LOCAL-00951" summary="FloatMulExpressions.md">
       <option name="closed" value="true" />
@@ -608,7 +596,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759174381415</updated>
     </task>
-    <option name="localTasksCounter" value="999" />
+    <task id="LOCAL-00999" summary="SceneEntity.md">
+      <option name="closed" value="true" />
+      <created>1759215121428</created>
+      <option name="number" value="00999" />
+      <option name="presentableId" value="LOCAL-00999" />
+      <option name="project" value="LOCAL" />
+      <updated>1759215121428</updated>
+    </task>
+    <option name="localTasksCounter" value="1000" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +631,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="FloatSumExpression.md" />
     <MESSAGE value="FloatSumExpression`1.md" />
     <MESSAGE value="FloatSumExpression`2.md" />
@@ -660,7 +655,8 @@
     <MESSAGE value="IEntity.md" />
     <MESSAGE value="Entity.md" />
     <MESSAGE value="Остановился на SceneEntity!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Остановился на SceneEntity!" />
+    <MESSAGE value="SceneEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
