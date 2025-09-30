@@ -89,26 +89,17 @@ entity.Dispose();
 
 
 
-## 🔥 Performance
-
-The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements
-of type `object`**.
-
-## 📑 Table of Contents
 
 
-After adding installers and configuring your entity, you can use the `Compile` option in the context menu. This will
-initialize your entity in **Edit Mode** and determine the exact memory requirements. To reset the entity state, use the
-`Reset` button in the context menu.
+
+
 
 
 <details>
   <summary>
     <h2 id="-optimization"> 📈 Optimization</h2>
     <br>
-    Provides a simple workflow for <b>precomputing entity capacities</b> in the Unity Editor.
-    You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
-  </summary>
+    </summary>
 
 <br>
 

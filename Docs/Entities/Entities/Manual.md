@@ -28,7 +28,7 @@ Below are the interfaces and classes for working with entities.
     - [Lifecycle](SceneEntityLifecycle.md) <!-- + -->
     - [Installing](SceneEntityInstalling.md) <!-- + -->
     - [Gizmos](SceneEntityGizmos.md) <!-- + -->
-    - [Debug](SceneEntityDebug.md)
+    - [Debug](SceneEntityDebug.md) <!-- + -->
     - [Editor](SceneEntityEditor.md)
     - [Creation](SceneEntityCreation.md)
     - [Destruction](SceneEntityDestruction.md)

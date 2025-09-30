@@ -4,9 +4,9 @@ Represents debug properties are available only in <b>Unity Editor</b> when using
 
 | Parameter          | Description                                           |
 |--------------------|-------------------------------------------------------|
-| `DebugName`        | Displays entity name in the Unity Editor.             |
-| `DebugInitialized` | Displays if the entity is initialized.                |
-| `DebugEnabled`     | Displays if the entity is enabled.                    |
-| `DebugTags`        | Sorted list of tags for debug display.                |
-| `DebugValues`      | Sorted list of values for debug display.              |
-| `DebugBehaviours`  | Sorted list of attached behaviours for debug display. |
+| `Name`        | Displays entity name in the Unity Editor.             |
+| `Initialized` | Displays if the entity is initialized.                |
+| `Enabled`     | Displays if the entity is enabled.                    |
+| `Tags`        | Sorted list of tags for debug display.                |
+| `Values`      | Sorted list of values for debug display.              |
+| `Behaviours`  | Sorted list of attached behaviours for debug display. |
