@@ -8,8 +8,7 @@ identified by integer keys. This allows flexible runtime data storage, reactive 
 > removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
 > reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
-> API
-> avoids boxing.
+> API avoids boxing.
 
 ---
 
@@ -260,7 +259,6 @@ public IEnumerator<KeyValuePair<int, object>> GetValueEnumerator()
 
 ## 🗂 Example of Usage
 
-
 This example demonstrates how to use **values** with entity, including adding, retrieving, updating, and removing
 values. Three approaches are shown:
 
@@ -270,7 +268,7 @@ values. Three approaches are shown:
 
 ---
 
-#### 1️⃣ Using Numeric Keys
+### 1️⃣ Using Numeric Keys
 
 By default, all values use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
 below uses numeric keys as the default approach.
@@ -309,7 +307,7 @@ entity.DelValue(Speed);
 
 ---
 
-#### 2️⃣ Using String Names
+### 2️⃣ Using String Names
 
 In this example, for convenience, there are [extension methods](ExtensionsValues.md) for the entity. This format is
 more user-friendly but slightly slower than using numeric keys.
@@ -336,7 +334,7 @@ entity.DelValue("Inventory");
 
 ---
 
-#### 3️⃣ Using Entity API
+### 3️⃣ Using Entity API
 
 Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
 process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
