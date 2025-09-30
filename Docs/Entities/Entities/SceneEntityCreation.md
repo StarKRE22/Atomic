@@ -135,16 +135,9 @@ public bool useUnityLifecycle;
 
 </details>
 
-### 🔹 Parameterized Instantiation
-
-The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
-new GameObject with a `SceneEntity` component.
-
 ---
 
-
-
----
+## 🏹 Methods
 
 #### `Create(in CreateArgs)`
 
@@ -210,38 +203,7 @@ public static E Create<E>(
 
 ---
 
-#### 🗂 Examples of Usage
 
-```csharp
-//Non-generic version
-var args = new CreateArgs
-{
-    Name = "Enemy",
-    TagCapacity = 2,
-    ValueCapacity = 2,
-    BehaviourCapacity = 2
-};
-
-SceneEntity enemy = SceneEntity.Create(args);
-```
-
-```csharp
-//Generic version
-WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
-    new CreateArgs
-    {
-        Name = "MachineGun",
-        TagCapacity = 3,
-        ValueCapacity = 5
-    }
-);
-```
-
----
-
-### 🔹 Prefab Instantiation
-
-Another approach is creating game entities from prefabs.
 
 #### `Create(SceneEntity, Transform)`
 
@@ -329,7 +291,45 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 
 ---
 
-#### 🗂 Examples of Usage
+## 🗂 Examples of Usage
+
+There are two ways of entity creation:
+1. The first way to create entities is through `CreateArgs`, which allows a developer to specify settings for creating a
+   new GameObject with a `SceneEntity` component.
+2. Another approach is creating game entities from prefabs.
+
+---
+
+### 1️⃣ Using Create Args
+
+```csharp
+//Non-generic version
+var args = new CreateArgs
+{
+    Name = "Enemy",
+    TagCapacity = 2,
+    ValueCapacity = 2,
+    BehaviourCapacity = 2
+};
+
+SceneEntity enemy = SceneEntity.Create(args);
+```
+
+```csharp
+//Generic version
+WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
+    new CreateArgs
+    {
+        Name = "MachineGun",
+        TagCapacity = 3,
+        ValueCapacity = 5
+    }
+);
+```
+
+---
+
+### 2️⃣ Prefab Instantiation
 
 ```csharp
 // Instantiating a prefab at the origin
