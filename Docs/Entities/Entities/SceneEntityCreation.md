@@ -161,6 +161,7 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 <details>
   <summary>
     <h2 id="create-args"> 🧩 CreateArgs</h2>
+    <br> Defines a set of parameters for creating a dynamic entity.
   </summary>
 <br>
 
@@ -168,10 +169,6 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 [Serializable]  
 public struct CreateArgs
 ```
-
-- **Description:** Defines a set of parameters for creating a dynamic entity.
-
----
 
 ### 🧱 Fields
 
