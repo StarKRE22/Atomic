@@ -18,44 +18,47 @@ namespace Atomic.Entities
     public partial class SceneEntity
     {
         /// <summary>
-        /// Automatically gathers installers and child entities when the component is reset.
+        /// Compiles the entity's state in the Unity Editor, simulating the full entity lifecycle.
         /// </summary>
-
 #if ODIN_INSPECTOR
-        // [FoldoutGroup("Debug")]
-        [PropertyOrder(96)]
-        [Button(nameof(Reset)), HideInPlayMode]
-        [GUIColor(1f, 0.92f, 0.02f)]
+        [Button("Compile"), HideInPlayMode]
+        [GUIColor(0f, 0.83f, 1f)]
+        [PropertySpace(SpaceBefore = 4)]
+        [PropertyTooltip(
+            "Compiles the entity's state in the Unity Editor, simulating installing, precomputing, and lifecycle")]
 #endif
-        private void Reset()
+        [ContextMenu(nameof(Compile), false, 0)]
+        private void Compile()
         {
-            this.sceneInstallers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
-            this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
-            this.children.Remove(this);
-            Debug.Log($"<color=#FFEB04>{this.name} Reset successfully!</color>", this);
-        }
-
-        /// <summary>
-        /// Automatically refreshes the entity in Edit Mode if <c>installInEditMode</c> is true.
-        /// </summary>
-        private void OnValidate()
-        {
-            if (!this.installInEditMode)
-                return;
-
-            if (EditorApplication.isPlaying || EditorApplication.isCompiling)
-                return;
+            bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
 
             try
             {
-                this.SetRefreshCallbackToInstallers();
-                this.Compile();
+                if (!isPrefab)
+                {
+                    this.DisableInEditMode();
+                    this.DisposeInEditMode();
+                }
+
+                this.Uninstall();
+                this.Construct();
+                this.Install();
+                this.PrecomputeCapacities();
+
+                if (!isPrefab)
+                {
+                    this.InitInEditMode();
+                    this.EnableInEditMode();
+                }
+
+                Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {e.Message}</color>\n{e.StackTrace}", this);
             }
         }
+
 
         /// <summary>
         /// Sets refresh callbacks on all associated installers.
@@ -70,57 +73,16 @@ namespace Atomic.Entities
             }
         }
 
-        /// <summary>
-        /// Refreshes the entity's state in the Unity Editor, simulating the full entity lifecycle.
-        /// </summary>
-#if ODIN_INSPECTOR
-        [PropertyOrder(95)]
-        [Button("Compile"), HideInPlayMode]
-        [GUIColor(0f, 0.83f, 1f)]
-        [PropertySpace(SpaceAfter = 8)]
-#endif
-        [ContextMenu(nameof(Compile))]
-        private void Compile()
-        {
-            bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
-
-            try
-            {
-                if (!isPrefab)
-                {
-                    this.DisableInEditMode();
-                    this.DisposeInEditMode();
-                }
-
-                this.Construct();
-                this.Uninstall();
-                this.Install();
-                this.Precompile();
-
-                if (!isPrefab)
-                {
-                    this.InitInEditMode();
-                    this.EnableInEditMode();
-                }
-
-                Debug.Log($"<color=#00D4FF>{this.name} Compiled successfully!</color>", this);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"<color=#FF3C3C>{this.name} Compile failed: {e.Message}</color>\n{e.StackTrace}",
-                    this);
-            }
-        }
 
         /// <summary>
-        /// Precompiles current capacities from the entity and stores them into serialized fields
+        /// Precompute current capacities from the entity and stores them into serialized fields
         /// for inspection and editor-time optimization.
         /// </summary>
-        private void Precompile()
+        private void PrecomputeCapacities()
         {
-            initialTagCapacity = _tagCount;
-            initialValueCapacity = _valueCount;
-            initialBehaviourCapacity = _behaviourCount;
+            this.initialTagCapacity = _tagCount;
+            this.initialValueCapacity = _valueCount;
+            this.initialBehaviourCapacity = _behaviourCount;
         }
 
         /// <summary>
@@ -185,6 +147,85 @@ namespace Atomic.Entities
                 if (behaviour is IEntityDispose dispose && IsRunInEditModeDefined(behaviour))
                     dispose.Dispose(this);
             }
+        }
+
+        /// <summary>
+        /// Automatically compiles the entity in Edit Mode if <c>autoCompile</c> is true.
+        /// </summary>
+        private void OnValidate()
+        {
+            if (!this.autoCompile)
+                return;
+
+            if (EditorApplication.isPlaying || EditorApplication.isCompiling)
+                return;
+
+            try
+            {
+                this.SetRefreshCallbackToInstallers();
+                this.Compile();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        /// <summary>
+        /// Automatically gathers installers and child entities when the component is reset.
+        /// </summary>
+
+#if ODIN_INSPECTOR
+        [Button(nameof(Reset)), HideInPlayMode]
+        [GUIColor(1f, 0.92f, 0.02f)]
+        [PropertySpace(SpaceBefore = 4, SpaceAfter = 8)]
+        [PropertyTooltip("Automatically gathers installers and child entities and resets to default state")]
+#endif
+        private protected virtual void Reset()
+        {
+            bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
+
+            try
+            {
+                if (!isPrefab)
+                {
+                    this.DisableInEditMode();
+                    this.DisposeInEditMode();
+                }
+
+                this.Uninstall();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"<color=#FF3C3C>{this.name} Reset failed: {e.Message}</color>\n{e.StackTrace}", this);
+            }
+
+            //Reset lifecycle:
+            this.useUnityLifecycle = true;
+            this.disposeValues = true;
+
+            //Reset installing:
+            this.installOnAwake = true;
+            this.uninstallOnDestroy = true;
+            this.sceneInstallers = new List<SceneEntityInstaller>(this.GetComponentsInChildren<SceneEntityInstaller>());
+            this.scriptableInstallers = new List<ScriptableEntityInstaller>();
+            this.children = new List<SceneEntity>(this.GetComponentsInChildren<SceneEntity>());
+            this.children.Remove(this);
+
+            //Reset gizmos:
+            this.onlySelectedGizmos = false;
+            this.onlyEditModeGizmos = false;
+
+            //Reset editor:
+            this.autoCompile = false;
+
+            //Reset optimization:
+            this.initialTagCapacity = 1;
+            this.initialValueCapacity = 1;
+            this.initialBehaviourCapacity = 0;
+            this.Construct();
+
+            Debug.Log($"<color=#FFEB04>{this.name} Reset completed successfully!</color>", this);
         }
     }
 }

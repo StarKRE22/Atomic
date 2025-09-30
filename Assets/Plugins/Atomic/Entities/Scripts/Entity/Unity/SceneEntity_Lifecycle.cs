@@ -73,9 +73,9 @@ namespace Atomic.Entities
         /// </summary>
         ///
 #if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
+        [FoldoutGroup("Debug", 0)]
         [LabelText("Initialized")]
-        [ShowInInspector, ReadOnly]
+        [ShowInInspector, ReadOnly, PropertyOrder(98)]
 
 #endif
         public bool Initialized => _initialized;
@@ -84,8 +84,8 @@ namespace Atomic.Entities
         /// Indicates whether the entity is currently enabled.
         /// </summary>
 #if ODIN_INSPECTOR
-        [FoldoutGroup("Debug")]
-        [ShowInInspector, ReadOnly]
+        [FoldoutGroup("Debug", order: 1)]
+        [ShowInInspector, ReadOnly, PropertyOrder(99)]
         [LabelText("Enabled")]
 #endif
         public bool Enabled => _enabled;
@@ -245,10 +245,10 @@ namespace Atomic.Entities
 
             this.OnLateTicked?.Invoke(deltaTime);
         }
-        
-         #region Dispose
 
-         /// <summary>
+        #region Dispose
+
+        /// <summary>
         /// Cleans up all resources used by the entity.
         /// </summary>
         /// <remarks>
@@ -279,8 +279,8 @@ namespace Atomic.Entities
 
             this.UnsubscribeEvents();
         }
-         
-         
+
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void Deinitialize()
         {

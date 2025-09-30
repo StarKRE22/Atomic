@@ -71,21 +71,6 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool installOnAwake = true;
 
-        [Tooltip(
-            "If this option is enabled, the Install() method will be called every time OnValidate is called in Edit Mode")]
-#if ODIN_INSPECTOR
-        [PropertySpace(SpaceBefore = 0)]
-        // [GUIColor(1f, 0.92156863f, 0.015686275f)]
-        [DisableInPlayMode]
-        [InfoBox(
-            "WARNING: If you create Unity objects or another heavy objects in the Install() method, be sure to turn off!",
-            InfoMessageType.Warning,
-            nameof(installInEditMode))
-        ]
-#endif
-        [SerializeField]
-        private bool installInEditMode;
-
         [Tooltip("Should invoke Uninstall() when OnDestroy() called")]
         [SerializeField]
         private bool uninstallOnDestroy = true;
@@ -113,12 +98,38 @@ namespace Atomic.Entities
         [Tooltip("Specify child entities that will installed with this entity")]
         [Space(8), SerializeField]
         internal List<SceneEntity> children;
+        
+        [Header("Gizmos")]
+        [Tooltip("Should draw gizmos only when this GameObject is selected?")]
+        [SerializeField]
+        private bool onlySelectedGizmos;
 
+        [Tooltip("Should draw gizmos only when Unity is not playing?")]
+        [SerializeField]
+        private bool onlyEditModeGizmos;
+        
+        
+        [Tooltip(
+                "If this option is enabled, the installing, precomputing, and lifecycle will be called every time OnValidate is called in Edit Mode")]
+#if ODIN_INSPECTOR
+        [PropertySpace(SpaceBefore = 0)]
+        // [GUIColor(0f, 0.83f, 1f)]
+        // [GUIColor(1f, 0.92156863f, 0.015686275f)]
+        [DisableInPlayMode]
+        [InfoBox(
+                "WARNING: If you create Unity objects or another heavy objects in the Install() method, be sure to turn off!",
+                InfoMessageType.Warning,
+                nameof(autoCompile))
+        ]
+#endif
+        [Header("Editor")]
+        [SerializeField]
+        private bool autoCompile;
+        
         /// <summary>
         /// Initial tag capacity used to optimize tag allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [PropertyOrder(100)]
         [ReadOnly]
         [FoldoutGroup("Optimization", 1)]
 #else
@@ -132,7 +143,6 @@ namespace Atomic.Entities
         /// Initial value capacity used to optimize value allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [PropertyOrder(101)]
         [ReadOnly]
         [FoldoutGroup("Optimization", 2)]
 #endif
@@ -144,14 +154,13 @@ namespace Atomic.Entities
         /// Initial behaviour capacity used to optimize behaviour allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [PropertyOrder(102)]
         [FoldoutGroup("Optimization")]
         [ReadOnly]
 #endif
         [Min(0)]
         [SerializeField]
         private int initialBehaviourCapacity;
-
+        
         private int _instanceId;
 
         /// <inheritdoc/>

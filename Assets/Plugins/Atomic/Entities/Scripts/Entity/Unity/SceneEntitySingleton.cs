@@ -90,6 +90,13 @@ namespace Atomic.Entities
                 _instance = null;
         }
 
+        private protected override void Reset()
+        {
+            base.Reset();
+            _isGlobal = true;
+            _dontDestroyOnLoad = false;
+        }
+
         #endregion
 
         #region Resolve

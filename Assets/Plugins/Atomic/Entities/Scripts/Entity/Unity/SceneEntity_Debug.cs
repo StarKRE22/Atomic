@@ -38,9 +38,10 @@ namespace Atomic.Entities
         /// Gets a sorted list of tag elements currently assigned to the entity.
         /// </summary>
         [Searchable]
-        [FoldoutGroup("Debug")]
+        [FoldoutGroup("Debug", order: 2)]
         [LabelText("Tags")]
-        [ShowInInspector, PropertyOrder(100)]
+        [ShowInInspector]
+        [PropertyOrder(100)]
         [ListDrawerSettings(
             CustomRemoveElementFunction = nameof(RemoveDebugTag),
             CustomRemoveIndexFunction = nameof(RemoveDebugTagAt),
@@ -100,7 +101,7 @@ namespace Atomic.Entities
                 this.id = id;
             }
 
-            public int CompareTo(DebugValue other) => 
+            public int CompareTo(DebugValue other) =>
                 string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
@@ -108,9 +109,10 @@ namespace Atomic.Entities
         /// Gets a sorted list of values currently stored in the entity.
         /// </summary>
         [Searchable]
-        [FoldoutGroup("Debug")]
+        [FoldoutGroup("Debug", order: 3)]
         [LabelText("Values")]
-        [ShowInInspector, PropertyOrder(100)]
+        [ShowInInspector]
+        [PropertyOrder(100)]
         [ListDrawerSettings(
             CustomRemoveElementFunction = nameof(RemoveDebugValue),
             CustomRemoveIndexFunction = nameof(RemoveDebugValueAt),
@@ -140,10 +142,10 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveDebugValue(DebugValue debugValue) => 
+        private void RemoveDebugValue(DebugValue debugValue) =>
             this.DelValue(debugValue.id);
 
-        private void RemoveDebugValueAt(int index) => 
+        private void RemoveDebugValueAt(int index) =>
             this.DelValue(this.DebugValues[index].id);
 
         #endregion
@@ -169,16 +171,18 @@ namespace Atomic.Entities
                 this.value = value;
             }
 
-            public int CompareTo(DebugBehaviour other) => string.Compare(this.name, other.name, StringComparison.Ordinal);
+            public int CompareTo(DebugBehaviour other) =>
+                string.Compare(this.name, other.name, StringComparison.Ordinal);
         }
 
         /// <summary>
         /// Gets a sorted list of behaviours currently attached to the entity.
         /// </summary>
         [Searchable]
-        [FoldoutGroup("Debug")]
+        [FoldoutGroup("Debug", order: 4)]
         [LabelText("Behaviours")]
-        [ShowInInspector, PropertyOrder(100)]
+        [ShowInInspector]
+        [PropertyOrder(100)]
         [ListDrawerSettings(
             CustomRemoveElementFunction = nameof(RemoveDebugBehaviour),
             CustomRemoveIndexFunction = nameof(RemoveDebugBehaviourAt),
@@ -206,10 +210,10 @@ namespace Atomic.Entities
             }
         }
 
-        private void RemoveDebugBehaviour(DebugBehaviour debugBehaviour) => 
+        private void RemoveDebugBehaviour(DebugBehaviour debugBehaviour) =>
             this.DelBehaviour(debugBehaviour.value);
 
-        private void RemoveDebugBehaviourAt(int index) => 
+        private void RemoveDebugBehaviourAt(int index) =>
             this.DelBehaviour(this.DebugBehaviours[index].value);
 
         #endregion

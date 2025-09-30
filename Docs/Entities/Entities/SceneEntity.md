@@ -1198,7 +1198,6 @@ public static void InstallAll<E>(Scene scene) where E : SceneEntity
 
 ### 🗂 Example of Usage
 
-
 #### 1. Create `CharacterInstaller` script
 
  ```csharp
@@ -1239,17 +1238,35 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <details>
   <summary>
-    <h2 id="-optimization"> 📈 Optimization</h2>
-    <br>
-    Provides a simple workflow for precomputing entity capacities in the Unity Editor.
-    You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
+    <h2 id="-context"> ▶️ Context Menu</h2>
   </summary>
-
 <br>
 
-After adding installers and configuring your entity, you can use the `Compile` option in the context menu. This will
-initialize your entity in **Edit Mode** and determine the exact memory requirements. To reset the entity state, use the
-`Reset` button in the context menu.
+### 🏹 Methods
+
+
+#### `Compile`
+```csharp
+[ContextMenu("Compile")]
+private void Compile()
+```
+- **Description:** Refresh   
+- Precomputes **capacity**, **tags**, **values**, **behaviours** of the entity
+
+
+Provides a simple workflow for <b>precomputing entity capacities</b> in the Unity Editor.
+You can optimize your entity’s size by precomputing the capacity of <b>tags</b>, <b>values</b>, and <b>behaviours</b>.
+
+
+
+
+| Button    | Action |
+|-----------|--------|
+| 🛠 Compile |  |
+| 🔄 Reset   | Resets the entity state |
+
+
+
 
 </details>
 

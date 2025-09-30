@@ -11,22 +11,13 @@ namespace Atomic.Entities
     /// </summary>
     public partial class SceneEntity
     {
-        [Header("Gizmos")]
-        [Tooltip("Should draw gizmos only when this GameObject is selected?")]
-        [SerializeField]
-        private bool _onlySelectedGizmos;
-
-        [Tooltip("Should draw gizmos only when Unity is not playing?")]
-        [SerializeField]
-        private bool _onlyEditModeGizmos;
-
         /// <summary>
         /// Called by Unity to draw gizmos in the scene view.
         /// Will delegate to <see cref="OnDrawGizmosSelected"/> unless only selected drawing is enabled.
         /// </summary>
         private void OnDrawGizmos()
         {
-            if (!_onlySelectedGizmos)
+            if (!onlySelectedGizmos)
                 this.OnDrawGizmosSelected();
         }
 
@@ -36,7 +27,7 @@ namespace Atomic.Entities
         /// </summary>
         private void OnDrawGizmosSelected()
         {
-            if (EditorApplication.isPlaying && _onlyEditModeGizmos)
+            if (EditorApplication.isPlaying && onlyEditModeGizmos)
                 return;
 
             try
