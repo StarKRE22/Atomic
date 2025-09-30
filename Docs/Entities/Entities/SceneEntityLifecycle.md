@@ -1,23 +1,20 @@
+# 🧩 SceneEntity Lifecycle
 
-<details>
-  <summary>
-    <h2 id="-lifecycle">♻️ Lifecycle</h2>
-    <br>
-    Manage the entity's state transitions and update phases. It covers initialization, enabling,
-    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
-    entity's state.
-  </summary>
+Manage the entity's state transitions and update phases. It covers initialization, enabling,
+per-frame updates, disabling, and disposal.
 
-### 🛠 Inspector Settings
+---
+
+## 🛠 Inspector Settings
 
 | Parameters          | Description                                                                                      |
 |---------------------|--------------------------------------------------------------------------------------------------|
 | `useUnityLifecycle` | Enables automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). |
-| `disposeValues`     | Determines whether values are disposed when `Dispose()` is called.                               |
+| `disposeValues`     | Determines whether **values** are disposed when `Dispose()` is called.                               |
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnInitialized`
 
@@ -88,7 +85,7 @@ public event Action<float> OnLateTicked
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Initialized`
 
@@ -110,7 +107,7 @@ public bool Enabled { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Init()`
 
@@ -220,7 +217,7 @@ protected virtual void OnDispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 // Assume we have an instance of entity
@@ -250,5 +247,3 @@ player.Disable();
 // Dispose the entity
 player.Dispose();
 ```
-
-</details>
