@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityCore.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityTags.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,23 +213,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="8989000" />
-    </task>
-    <task id="LOCAL-00954" summary="FloatMulExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1759078931367</created>
-      <option name="number" value="00954" />
-      <option name="presentableId" value="LOCAL-00954" />
-      <option name="project" value="LOCAL" />
-      <updated>1759078931367</updated>
-    </task>
-    <task id="LOCAL-00955" summary="FloatMulExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1759079165394</created>
-      <option name="number" value="00955" />
-      <option name="presentableId" value="LOCAL-00955" />
-      <option name="project" value="LOCAL" />
-      <updated>1759079165394</updated>
+      <workItem from="1759213195784" duration="9378000" />
     </task>
     <task id="LOCAL-00956" summary="FloatSumExpressions.md">
       <option name="closed" value="true" />
@@ -610,7 +591,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759222318169</updated>
     </task>
-    <option name="localTasksCounter" value="1003" />
+    <task id="LOCAL-01003" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759224559878</created>
+      <option name="number" value="01003" />
+      <option name="presentableId" value="LOCAL-01003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759224559878</updated>
+    </task>
+    <task id="LOCAL-01004" summary="IEntityCore.md">
+      <option name="closed" value="true" />
+      <created>1759224631713</created>
+      <option name="number" value="01004" />
+      <option name="presentableId" value="LOCAL-01004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759224631713</updated>
+    </task>
+    <option name="localTasksCounter" value="1005" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FloatSumExpression`1.md" />
     <MESSAGE value="FloatSumExpression`2.md" />
     <MESSAGE value="InlineExpressions.md" />
     <MESSAGE value="InlineExpression.md" />
@@ -654,7 +650,6 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Пилим IEntity.md" />
     <MESSAGE value="Думаем!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Entities Manual.md" />
     <MESSAGE value="Пилим Entity.md" />
     <MESSAGE value="IEntity.md" />
@@ -662,7 +657,9 @@
     <MESSAGE value="Остановился на SceneEntity!" />
     <MESSAGE value="SceneEntity.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="IEntityCore.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityCore.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

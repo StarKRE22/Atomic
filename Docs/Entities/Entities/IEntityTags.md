@@ -144,6 +144,12 @@ By default, all tags use `int` keys because this avoids computing hash codes and
 below uses numeric keys as the default approach.
 
 ```csharp
+//Define tag keys
+const int Player tag = 1;
+const int NPC tag = 2;
+const int Ally ally = 3;
+const int Merchant ally = 4;
+
 // Assume we have instance of entity
 IEntity entity = ...
 
@@ -153,19 +159,18 @@ entity.OnTagAdded += (e, tagId) =>
 entity.OnTagDeleted += (e, tagId) => 
     Console.WriteLine($"Tag removed: {tagId}");
 
-// Add tags by numeric ID
-entity.AddTag(1);         // Player tag = 1
-entity.AddTag(2);         // NPC tag = 2
+entity.AddTag(Player);
+entity.AddTag(NPC);
 
 // Check tags
-if (entity.HasTag(1)) //Check if  Player tag exists
+if (entity.HasTag(Player)) //Check if  Player tag exists
     Console.WriteLine("Entity has tag ID 1 (Player)");
 
 // Remove a NPC tag
-entity.DelTag(2);
+entity.DelTag(NPC);
 
 // Add multiple tags
-entity.AddTags(new int[] { 3, 4 }); // Ally, Merchant
+entity.AddTags(new int[] { Ally, Merchant }); // Ally, Merchant
 
 // Enumerate all tags
 foreach (int id in entity.GetTags())

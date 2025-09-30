@@ -276,6 +276,11 @@ By default, all values use `int` keys because this avoids computing hash codes a
 below uses numeric keys as the default approach.
 
 ```csharp
+//Define value keys 
+const int Health = 1;
+const int Speed = 2;
+const int Inventory = 3;
+
 // Assume we have an instance of entity
 IEntity entity = ...
 
@@ -283,23 +288,23 @@ IEntity entity = ...
 entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
 
 //Add health property
-entity.AddValue(1, 100); //Health = 1
+entity.AddValue(Health, 100);
 
 //Add speed property
-entity.AddValue(2, 12.5f); //Speed = 2
+entity.AddValue(Speed, 12.5f);
 
 //Add inventory property
-entity.AddValue(3, new Inventory()); //Inventory = 3
+entity.AddValue(Inventory, new Inventory());
 
 // Get a value
-int health = entity.GetValue<int>(1);
+int health = entity.GetValue<int>(Health);
 Console.WriteLine($"Health: {health}");
 
 // Update a Health
-entity.SetValue(1, 150);
+entity.SetValue(Health, 150);
 
 // Remove a Speed value
-entity.DelValue(2);
+entity.DelValue(Speed);
 ```
 
 ---
