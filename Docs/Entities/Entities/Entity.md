@@ -16,6 +16,7 @@ public class Entity : IEntity
     - [Values](EntityValues.md) — Manage dynamic key-value storage for the entity
     - [Behaviours](EntityBehaviours.md) — Manage modular logic attached to the entity
     - [Lifecycle](EntityLifecycle.md) — Manages the entity's state transitions and update phases
+    - [Debug](EntityDebug.md) — Represents debug properties
 
 ---
 

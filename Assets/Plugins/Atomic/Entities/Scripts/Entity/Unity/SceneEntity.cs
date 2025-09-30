@@ -130,7 +130,6 @@ namespace Atomic.Entities
         /// Initial tag capacity used to optimize tag allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [ReadOnly]
         [FoldoutGroup("Optimization", 1)]
 #else
         [Header("Optimization")]
@@ -143,7 +142,6 @@ namespace Atomic.Entities
         /// Initial value capacity used to optimize value allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [ReadOnly]
         [FoldoutGroup("Optimization", 2)]
 #endif
         [Min(1)]
@@ -154,8 +152,7 @@ namespace Atomic.Entities
         /// Initial behaviour capacity used to optimize behaviour allocation.
         /// </summary>
 #if ODIN_INSPECTOR
-        [FoldoutGroup("Optimization")]
-        [ReadOnly]
+        [FoldoutGroup("Optimization", 3)]
 #endif
         [Min(0)]
         [SerializeField]

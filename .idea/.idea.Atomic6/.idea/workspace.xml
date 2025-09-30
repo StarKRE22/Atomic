@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntityValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityValues.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityBehaviours.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityCore.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityDebug.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityEditor.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityGizmos.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityLifecycle.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityTags.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntityDebug.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityDebug.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntity.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,31 +225,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="12650000" />
-    </task>
-    <task id="LOCAL-00967" summary="ChosingBetweenTimerAndCooldown.md">
-      <option name="closed" value="true" />
-      <created>1759085584597</created>
-      <option name="number" value="00967" />
-      <option name="presentableId" value="LOCAL-00967" />
-      <option name="project" value="LOCAL" />
-      <updated>1759085584597</updated>
-    </task>
-    <task id="LOCAL-00968" summary="ChosingBetweenTimerAndCooldown.md">
-      <option name="closed" value="true" />
-      <created>1759085605468</created>
-      <option name="number" value="00968" />
-      <option name="presentableId" value="LOCAL-00968" />
-      <option name="project" value="LOCAL" />
-      <updated>1759085605468</updated>
-    </task>
-    <task id="LOCAL-00969" summary="Обновил Best Practices">
-      <option name="closed" value="true" />
-      <created>1759085747456</created>
-      <option name="number" value="00969" />
-      <option name="presentableId" value="LOCAL-00969" />
-      <option name="project" value="LOCAL" />
-      <updated>1759085747456</updated>
+      <workItem from="1759213195784" duration="13274000" />
     </task>
     <task id="LOCAL-00970" summary="Начинаем собирать Entities">
       <option name="closed" value="true" />
@@ -608,7 +595,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759227967979</updated>
     </task>
-    <option name="localTasksCounter" value="1016" />
+    <task id="LOCAL-01016" summary="IEntityValues.md">
+      <option name="closed" value="true" />
+      <created>1759228234490</created>
+      <option name="number" value="01016" />
+      <option name="presentableId" value="LOCAL-01016" />
+      <option name="project" value="LOCAL" />
+      <updated>1759228234490</updated>
+    </task>
+    <task id="LOCAL-01017" summary="EntityBehaviours.md">
+      <option name="closed" value="true" />
+      <created>1759228388811</created>
+      <option name="number" value="01017" />
+      <option name="presentableId" value="LOCAL-01017" />
+      <option name="project" value="LOCAL" />
+      <updated>1759228388811</updated>
+    </task>
+    <task id="LOCAL-01018" summary="EntityLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1759228534197</created>
+      <option name="number" value="01018" />
+      <option name="presentableId" value="LOCAL-01018" />
+      <option name="project" value="LOCAL" />
+      <updated>1759228534197</updated>
+    </task>
+    <option name="localTasksCounter" value="1019" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,8 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ChosingBetweenTimerAndCooldown.md" />
-    <MESSAGE value="Обновил Best Practices" />
     <MESSAGE value="Начинаем собирать Entities" />
     <MESSAGE value="Переделываем Atomic.Entities" />
     <MESSAGE value="пилим!" />
@@ -652,7 +661,6 @@
     <MESSAGE value="SceneEntity.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityCore.md" />
-    <MESSAGE value="IEntityValues.md" />
     <MESSAGE value="IEntityTags.md" />
     <MESSAGE value="IEntityBehaviours.md" />
     <MESSAGE value="Minor Fixes!" />
@@ -660,7 +668,10 @@
     <MESSAGE value="Перепиливаем Entity.md" />
     <MESSAGE value="EntityCore.md" />
     <MESSAGE value="EntityTags.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityTags.md" />
+    <MESSAGE value="IEntityValues.md" />
+    <MESSAGE value="EntityBehaviours.md" />
+    <MESSAGE value="EntityLifecycle.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityLifecycle.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

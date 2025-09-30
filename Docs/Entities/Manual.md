@@ -90,6 +90,8 @@ smoother and more powerful than in Unity.
 
 ## 🔥 Performance
 
+[Entities](Entities/EntityPerformance.md)
+
 ---
 
 ## 📌 Best Practices
