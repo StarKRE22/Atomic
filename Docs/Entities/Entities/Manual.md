@@ -29,7 +29,7 @@ Below are the interfaces and classes for working with entities.
     - [Installing](SceneEntityInstalling.md) <!-- + -->
     - [Gizmos](SceneEntityGizmos.md) <!-- + -->
     - [Debug](SceneEntityDebug.md) <!-- + -->
-    - [Editor](SceneEntityEditor.md)
+    - [Editor](SceneEntityEditor.md) <!-- + -->
     - [Creation](SceneEntityCreation.md)
     - [Destruction](SceneEntityDestruction.md)
     - [Casting](SceneEntityCasting.md)

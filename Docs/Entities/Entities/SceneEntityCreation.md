@@ -1,9 +1,139 @@
+# 🧩 SceneEntity Creation
+
+The following methods allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
+
+---
 
 <details>
   <summary>
-    <h2 id="-entity-creation"> 🏗️ Creation</h2>
-    <br> The following methods allow you to create entities at runtime, for example from prefabs or entirely new GameObjects.
+    <h2 id="create-args"> 🧩 CreateArgs</h2>
   </summary>
+<br>
+
+```csharp
+[Serializable]  
+public struct CreateArgs
+```
+
+- **Description:** Defines a set of parameters for creating a dynamic entity.
+
+---
+
+### 🧱 Fields
+
+#### `Name`
+
+```csharp
+public string name;
+```
+
+- **Description:** Name of the entity (Unity object name).
+
+#### `Tags`
+
+```csharp
+public IEnumerable<int> tags;
+```
+
+- **Description:** Optional tags to assign to the entity.
+
+#### `Values`
+
+```csharp
+public IReadOnlyDictionary<int, object> values;
+```
+
+- **Description:** Optional key-value pairs assigned to the entity.
+
+#### `Behaviours`
+
+```csharp
+public IEnumerable<IEntityBehaviour> behaviours;
+```
+
+- **Description:** Optional behaviours attached to the entity.
+
+#### `SceneInstallers`
+
+```csharp
+public List<SceneEntityInstaller> sceneInstallers;
+```
+
+- **Description:** Optional **MonoBehaviour installers** to run in the scene.
+
+#### `ScriptableInstallers`
+
+```csharp
+public List<ScriptableEntityInstaller> scriptableInstallers;
+```
+
+- **Description:** Optional **ScriptableObject installers** to run.
+
+#### `Children`
+
+```csharp
+public List<SceneEntity> children;
+```
+
+- **Description:** Optional child entities attached to this entity.
+
+#### `InitialTagCapacity`
+
+```csharp
+public int initialTagCapacity;
+```
+
+- **Description:** Initial capacity for tags.
+
+#### `InitialValueCapacity`
+
+```csharp
+public int initialValueCapacity;
+```
+
+- **Description:** Initial capacity for values.
+
+#### `InitialBehaviourCapacity`
+
+```csharp
+public int initialBehaviourCapacity;
+```
+
+- **Description:** Initial capacity for behaviours.
+
+#### `InstallOnAwake`
+
+```csharp
+public bool installOnAwake;
+```
+
+- **Description:** If true, the entity installs automatically on **Awake**.
+
+#### `UninstallOnDestroy`
+
+```csharp
+public bool uninstallOnDestroy;
+```
+
+- **Description:** If true, the entity uninstalls automatically on **Destroy**.
+
+#### `DisposeValues`
+
+```csharp
+public bool disposeValues;
+```
+
+- **Description:** If true, values are disposed when the entity is destroyed.
+
+#### `UseUnityLifecycle`
+
+```csharp
+public bool useUnityLifecycle;
+```
+
+- **Description:** If true, uses Unity lifecycle methods (**Awake**, **OnEnable**, **OnDisable**, **OnDestroy**).
+
+</details>
 
 ### 🔹 Parameterized Instantiation
 
@@ -12,46 +142,7 @@ new GameObject with a `SceneEntity` component.
 
 ---
 
-#### `CreateArgs`
 
-```csharp
-[Serializable]  
-public struct CreateArgs
-{
-      public string name;
-      public IEnumerable<int> tags;
-      public IReadOnlyDictionary<int, object> values;
-      public IEnumerable<IEntityBehaviour> behaviours;
-      public List<SceneEntityInstaller> sceneInstallers;
-      public List<ScriptableEntityInstaller> scriptableInstallers;
-      public List<SceneEntity> children;
-
-      public int initialTagCapacity;
-      public int initialValueCapacity;
-      public int initialBehaviourCapacity;
-
-      public bool installOnAwake;
-      public bool disposeValues;
-      public bool useUnityLifecycle;
-}
-```
-
-- **Description:** Defines a set of parameters for creating a dynamic entity.
-- **Fields:**
-    - `string name` – optional name for the GameObject.
-    - `IEnumerable<int> tags` – optional tags to assign.
-    - `IReadOnlyDictionary<int, object> values` – optional key-value pairs.
-    - `IEnumerable<IEntityBehaviour> behaviours` – optional behaviours to attach.
-    - `List<SceneEntityInstaller> sceneInstallers` – optional MonoBehaviour installers to run.
-    - `List<SceneEntityInstaller> scriptableInstallers` – optional ScriptableObject installers to run.
-    - `List<SceneEntity> children` – optional child entities.
-    - `int initialTagCapacity` – initial capacity for tags.
-    - `int initialValueCapacity` – initial capacity for values.
-    - `int initialBehaviourCapacity` – initial capacity for behaviours.
-    - `bool installOnAwake` – if true, installs automatically on Awake.
-    - `bool uninstallOnDestroy` – if true, uninstalls automatically on Destroy.
-    - `bool disposeValues` – if true, disposes values on destruction.
-    - `bool useUnityLifecycle` – if true, uses Unity lifecycle methods.
 
 ---
 
@@ -252,5 +343,3 @@ Vector3 spawnPos = new Vector3(0, 0, 0);
 Quaternion rotation = Quaternion.Euler(0, 180, 0);
 SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 ```
-
-</details>
