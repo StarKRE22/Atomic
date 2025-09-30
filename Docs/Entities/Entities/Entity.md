@@ -4,7 +4,7 @@
 public class Entity : IEntity
 ```
 
-- **Description:** Represents the fundamental implementation of the entity.
+- **Description:** Represents the base implementation of the entity.
   It provides a modular container for **dynamic state**, **tags**, **values**,
   **behaviours**, and **lifecycle management**.
 

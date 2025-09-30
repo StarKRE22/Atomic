@@ -7,35 +7,11 @@
 public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
 ```
 
-- **Description:** Represents a base implementation of the entity. It allows installation from the Unity
+- **Description:** Represents the Unity implementation of the entity. It allows installation from the Unity
   Scene and composition through the Inspector or installers.
 
 - **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
-- **Notes:**
-    - **Event-Driven** – Reactive programming support via state change notifications.
-    - **Unique Identity** – Runtime-generated instance ID for entity tracking.
-    - **Tag System** – Lightweight categorization and filtering.
-    - **State Management** – Dynamic key-value storage for runtime data.
-    - **Behaviour Composition** – Attach or detach modular logic at runtime.
-    - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
-    - **Registry Integration** – Automatic registration with EntityRegistry
-    - **Memory Efficient** – Pre-allocation support for collections
-    - **Unity Component** – Attach directly to GameObjects.
-    - **Scene Installation** – Automatically installs child entities and configured installers.
-    - **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
-    - **Gizmos Support** – Conditional drawing in Scene view.
-    - **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
-    - **Casting & Proxies** – Safe conversion between `IEntity`, `SceneEntity` and `SceneEntityProxy`.
-    - **Scene-Wide Installation** – Can install all SceneEntities in a scene.
-    - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
-    - **Not Thread Safe** — All operations should be performed on the main Unity thread.
-    - `SceneEntity` is Unity-specific
-    - Default execution order is `-1000` (runs early)
-    - `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
-
----
-  
-
+- **Notes:** Supports Unity serialization and Odin Inspector
 ---
 
 <details>
@@ -82,6 +58,26 @@ public string Name { get; set; }
 - **Note:** Equals `GameObject` name
 
 ---
+
+### 🗂 Examples of Usage
+
+```csharp
+// Create a new instance of entity
+SceneEntity entity = ...
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
+{
+    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
+
+// Change name
+entity.Name = "Hero"; //Triggers state changed
+
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
+```
 
 </details>
 
@@ -224,6 +220,34 @@ public TagEnumerator GetTagEnumerator()
 
 - **Description:** Enumerates all tags of the entity.
 - **Returns:** `TagEnumerator` – Struct enumerator over tag keys.
+
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have instance of entity
+SceneEntity entity = ...
+
+// Add tags by string name
+entity.AddTag("Player");
+entity.AddTag("NPC");
+
+// Check tags
+if (entity.HasTag("Player"))
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelTag("NPC");
+
+// Add multiple tags at once
+entity.AddTags(new string[] { "Ally", "Merchant" });
+
+// Enumerate all tags (numeric IDs)
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
 
 </details>
 
@@ -499,6 +523,29 @@ public ValueEnumerator GetValueEnumerator()
 - **Description:** Enumerates all key-value pairs.
 - **Returns:** Struct enumerator for iterating through stored values.
 
+
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of entity
+SceneEntity entity = ...
+
+// Add values by string key
+entity.AddValue("Health", 100);
+entity.AddValue("Speed", 12.5f);
+entity.AddValue("Inventory", new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>("Health");
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetValue("Health", 150);
+
+// Remove a value
+entity.DelValue("Inventory");
+```
+
 </details>
 
 ---
@@ -516,7 +563,7 @@ public ValueEnumerator GetValueEnumerator()
 
 <br>
 
->  For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have 
+> For behaviours entity acts as a container using a **List**, which means that all algorithmic operations have
 > **List-like time complexity**.
 > Additionally, the entity **can store multiple references to the same behaviour instance**,
 > so duplicate entries are allowed.
@@ -722,6 +769,56 @@ public BehaviourEnumerator GetBehaviourEnumerator()
 
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Struct enumerator for iterating through behaviours.
+
+
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of entity
+SceneEntity entity = ...
+
+// Subscribe to events
+entity.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+entity.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {entity.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = entity.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (entity.TryGetBehaviour(out RotationBehaviour rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+entity.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+entity.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in entity.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = entity.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = entity.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
 
 </details>
 
@@ -945,6 +1042,39 @@ protected virtual void OnDispose()
 - **Description:**  Called during the disposal process of a `SceneEntity`. Provides a hook for derived classes to
   execute custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`
+
+---
+
+### 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of entity
+SceneEntity player = ...
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
 
 </details>
 
@@ -1612,4 +1742,30 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 ---
 
-## 📝 Notes
+<details>
+  <summary>
+    <h2 id="-notes">📝 Notes</h2>
+  </summary>
+
+- **Event-Driven** – Reactive programming support via state change notifications.
+- **Unique Identity** – Runtime-generated instance ID for entity tracking.
+- **Tag System** – Lightweight categorization and filtering.
+- **State Management** – Dynamic key-value storage for runtime data.
+- **Behaviour Composition** – Attach or detach modular logic at runtime.
+- **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Update`, `Disable`, and `Dispose` phases.
+- **Registry Integration** – Automatic registration with EntityRegistry
+- **Memory Efficient** – Pre-allocation support for collections
+- **Unity Component** – Attach directly to GameObjects.
+- **Scene Installation** – Automatically installs child entities and configured installers.
+- **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
+- **Gizmos Support** – Conditional drawing in Scene view.
+- **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
+- **Casting & Proxies** – Safe conversion between `IEntity`, `SceneEntity` and `SceneEntityProxy`.
+- **Scene-Wide Installation** – Can install all SceneEntities in a scene.
+- **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
+- **Not Thread Safe** — All operations should be performed on the main Unity thread.
+- `SceneEntity` is Unity-specific
+- Default execution order is `-1000` (runs early)
+- `[DisallowMultipleComponent]` prevents multiple entities per `GameObject`
+
+</details>
