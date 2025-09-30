@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Performance/ReactiveArrayPerformance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Performance/ReactiveDictionaryPerformance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Performance/ReactiveHashSetPerformance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Performance/ReactiveLinkedListPerformance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Performance/ReactiveListPerformance.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityLifecycle.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityBehaviours.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityCore.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityDebug.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityLifecycle.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityTags.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntityValues.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Archive.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Entity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,47 +221,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="10819000" />
-    </task>
-    <task id="LOCAL-00959" summary="FloatSumExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1759080653444</created>
-      <option name="number" value="00959" />
-      <option name="presentableId" value="LOCAL-00959" />
-      <option name="project" value="LOCAL" />
-      <updated>1759080653444</updated>
-    </task>
-    <task id="LOCAL-00960" summary="FloatSumExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1759081748495</created>
-      <option name="number" value="00960" />
-      <option name="presentableId" value="LOCAL-00960" />
-      <option name="project" value="LOCAL" />
-      <updated>1759081748495</updated>
-    </task>
-    <task id="LOCAL-00961" summary="InlineExpressions.md">
-      <option name="closed" value="true" />
-      <created>1759082035243</created>
-      <option name="number" value="00961" />
-      <option name="presentableId" value="LOCAL-00961" />
-      <option name="project" value="LOCAL" />
-      <updated>1759082035243</updated>
-    </task>
-    <task id="LOCAL-00962" summary="InlineExpression.md">
-      <option name="closed" value="true" />
-      <created>1759082366052</created>
-      <option name="number" value="00962" />
-      <option name="presentableId" value="LOCAL-00962" />
-      <option name="project" value="LOCAL" />
-      <updated>1759082366052</updated>
-    </task>
-    <task id="LOCAL-00963" summary="InlineExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1759082580389</created>
-      <option name="number" value="00963" />
-      <option name="presentableId" value="LOCAL-00963" />
-      <option name="project" value="LOCAL" />
-      <updated>1759082580389</updated>
+      <workItem from="1759213195784" duration="11850000" />
     </task>
     <task id="LOCAL-00964" summary="InlineExpression`2.md">
       <option name="closed" value="true" />
@@ -621,7 +575,47 @@
       <option name="project" value="LOCAL" />
       <updated>1759225619665</updated>
     </task>
-    <option name="localTasksCounter" value="1008" />
+    <task id="LOCAL-01008" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759226398863</created>
+      <option name="number" value="01008" />
+      <option name="presentableId" value="LOCAL-01008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759226398863</updated>
+    </task>
+    <task id="LOCAL-01009" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759226571544</created>
+      <option name="number" value="01009" />
+      <option name="presentableId" value="LOCAL-01009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759226571544</updated>
+    </task>
+    <task id="LOCAL-01010" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759226622265</created>
+      <option name="number" value="01010" />
+      <option name="presentableId" value="LOCAL-01010" />
+      <option name="project" value="LOCAL" />
+      <updated>1759226622265</updated>
+    </task>
+    <task id="LOCAL-01011" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759226656132</created>
+      <option name="number" value="01011" />
+      <option name="presentableId" value="LOCAL-01011" />
+      <option name="project" value="LOCAL" />
+      <updated>1759226656132</updated>
+    </task>
+    <task id="LOCAL-01012" summary="IEntity.md">
+      <option name="closed" value="true" />
+      <created>1759227109875</created>
+      <option name="number" value="01012" />
+      <option name="presentableId" value="LOCAL-01012" />
+      <option name="project" value="LOCAL" />
+      <updated>1759227109875</updated>
+    </task>
+    <option name="localTasksCounter" value="1013" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,17 +657,17 @@
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Entities Manual.md" />
     <MESSAGE value="Пилим Entity.md" />
-    <MESSAGE value="IEntity.md" />
     <MESSAGE value="Entity.md" />
     <MESSAGE value="Остановился на SceneEntity!" />
     <MESSAGE value="SceneEntity.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityCore.md" />
     <MESSAGE value="IEntityValues.md" />
     <MESSAGE value="IEntityTags.md" />
     <MESSAGE value="IEntityBehaviours.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityBehaviours.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="IEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
