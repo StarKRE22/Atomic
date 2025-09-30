@@ -1,19 +1,15 @@
+# 🧩 Entity Tags
 
-<details>
-  <summary>
-    <h2 id="-tag-members">🏷️ Tags</h2>
-    <br> Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
-         enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
-  </summary>
+Manage lightweight categorization and filtering of entities. Tags are integer-based labels that can be added, removed,
+enumerated, or checked. They are useful for grouping entities, querying, and driving logic based on assigned tags.
 
-<br>
-
+> [!IMPORTANT]
 > Tags in the entity behave like a **HashSet of integers**. All operations such as add, check, or remove have **O(1)
-average time complexity**, and duplicate tags are **not allowed**.
+> average time complexity**, and duplicate tags are **not allowed**.
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnTagAdded`
 
@@ -44,7 +40,7 @@ public event Action<IEntity, int> OnTagDeleted
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `TagCount`
 
@@ -57,7 +53,7 @@ public int TagCount { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `HasTag`
 
@@ -131,7 +127,63 @@ public TagEnumerator GetTagEnumerator()
 
 ---
 
-### 🗂 Example of Usage
+
+## 🗂 Example of Usage
+
+This example demonstrates how to use tags with entity, including adding, removing, and checking tags. Three
+approaches are shown:
+
+1. Using **numeric keys** for performance
+2. Using **string names** for readability
+3. Using **code generation** for real projects.
+
+---
+
+### 1️⃣ Using Numeric Keys
+
+By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+//Define tag keys
+const int Player tag = 1;
+const int NPC tag = 2;
+const int Ally ally = 3;
+const int Merchant ally = 4;
+
+// Create a new instance of entity
+Entity entity = new Entity();
+
+// Subscribe to tag events
+entity.OnTagAdded += (e, tagId) => 
+    Console.WriteLine($"Tag added: {tagId}");
+entity.OnTagDeleted += (e, tagId) => 
+    Console.WriteLine($"Tag removed: {tagId}");
+
+entity.AddTag(Player);
+entity.AddTag(NPC);
+
+// Check tags
+if (entity.HasTag(Player)) //Check if  Player tag exists
+    Console.WriteLine("Entity has tag ID 1 (Player)");
+
+// Remove a NPC tag
+entity.DelTag(NPC);
+
+// Add multiple tags
+entity.AddTags(new int[] { Ally, Merchant }); // Ally, Merchant
+
+// Enumerate all tags
+foreach (int id in entity.GetTags())
+    Console.WriteLine($"Entity tag ID: {id}");
+```
+
+---
+
+### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](ExtensionsTags.md) for the entity. This format is more
+user-friendly but slightly slower than using numeric keys.
 
 ```csharp
 // Create a new instance of entity
@@ -156,4 +208,28 @@ foreach (int id in entity.GetTags())
     Console.WriteLine($"Entity tag ID: {id}");
 ```
 
-</details>
+---
+
+### 3️⃣ Using Entity API
+
+Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
+To make this process easier and **type-safe**, the Atomic Framework supports **code generation**.
+This means you describe all your tags (and values) once in a small config file, and the framework will automatically
+generate C# helpers. You can learn more about this in the Manual under
+the [Entity API](../EntityAPI/Manual.md) feature.
+
+```csharp
+// Create a new instance of entity
+Entity entity = new Entity();
+
+// Add tags
+entity.AddPlayerTag();
+entity.AddNPCTag();
+
+// Check tag
+if (entity.HasPlayerTag())
+    Console.WriteLine("Entity is a Player");
+
+// Remove a tag
+entity.DelNPCTag();
+```
