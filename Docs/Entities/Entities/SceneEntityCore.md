@@ -1,12 +1,11 @@
+# 🧩 SceneEntity Core
 
-<details>
-  <summary>
-    <h2 id="-core">💠 Core</h2>
-    <br> Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
-         debugging or tooling, and the main event for reactive state changes.
-  </summary>
+Represents the core identity and state of the entity. It includes unique identifiers, optional names for
+debugging or tooling, and the main event for reactive state changes.
 
-### ⚡ Events
+---
+
+## ⚡ Events
 
 #### `OnStateChanged`
 
@@ -20,7 +19,7 @@ public event Action<IEntity> OnStateChanged
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `InstanceID`
 
@@ -44,10 +43,10 @@ public string Name { get; set; }
 
 ---
 
-### 🗂 Examples of Usage
+## 🗂 Examples of Usage
 
 ```csharp
-// Create a new instance of entity
+// Assume we have an instance of SceneEntity
 SceneEntity entity = ...
 
 // Subscribe to the OnStateChanged event
@@ -63,5 +62,3 @@ entity.Name = "Hero"; //Triggers state changed
 int id = entity.InstanceID;
 Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 ```
-
-</details>
