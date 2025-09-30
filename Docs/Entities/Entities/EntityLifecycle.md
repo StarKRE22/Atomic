@@ -1,14 +1,11 @@
+# 🧩 Entity Lifecycle
 
-<details>
-  <summary>
-    <h2 id="-lifecycle-members">♻️ Lifecycle</h2>
-    <br>
-    Manage the entity's state transitions and update phases. It covers initialization, enabling,
-    per-frame updates, disabling, and disposal. Lifecycle events allow reactive systems to respond to changes in the
-    entity's state.
-  </summary>
+Manage the entity's state transitions and update phases. It covers initialization, enabling,
+per-frame updates, disabling, and disposal.
 
-### ⚡ Events
+---
+
+## ⚡ Events
 
 #### `OnInitialized`
 
@@ -79,7 +76,7 @@ public event Action<float> OnLateTicked
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `Initialized`
 
@@ -101,7 +98,7 @@ public bool Enabled { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Init()`
 
@@ -211,7 +208,7 @@ protected virtual void OnDispose()
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 // Create a new entity
@@ -224,8 +221,8 @@ entity.Init();
 entity.Enable();
 
 // Simulate game loop updates
-float deltaTime = 0.016f; // Example: 60 FPS
-float fixedDeltaTime = 0.016f; // Example: 60 FPS
+const float deltaTime = 0.016f; // Example: 60 FPS
+const float fixedDeltaTime = 0.016f; // Example: 60 FPS
 
 entity.Tick(deltaTime);       // Calls Tick on all IEntityTick behaviours
 entity.FixedTick(fixedDeltaTime);  // Calls FixedTick on all IEntityFixedTick behaviours
@@ -237,5 +234,3 @@ entity.Disable();
 // Dispose the entity when it is no longer needed
 entity.Dispose();
 ```
-
-</details>
