@@ -125,8 +125,6 @@ You can optimize your entity’s size by precomputing the capacity of <b>tags</b
 
 OPTIMIZATION
 
-<img width="144" height="" alt="изображение" src="../../Images/Scene%20Entity%20Reset%20and%20Compile.png" />
-<img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
 
 
 

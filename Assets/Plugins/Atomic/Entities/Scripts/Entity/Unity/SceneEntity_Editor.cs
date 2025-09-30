@@ -27,7 +27,7 @@ namespace Atomic.Entities
         [PropertyTooltip(
             "Compiles the entity's state in the Unity Editor, simulating installing, precomputing, and lifecycle")]
 #endif
-        [ContextMenu(nameof(Compile), false, 0)]
+        [ContextMenu(nameof(Compile))]
         private void Compile()
         {
             bool isPrefab = PrefabUtility.GetPrefabInstanceHandle(this.gameObject) == this.gameObject;
@@ -58,8 +58,7 @@ namespace Atomic.Entities
                 Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {e.Message}</color>\n{e.StackTrace}", this);
             }
         }
-
-
+        
         /// <summary>
         /// Sets refresh callbacks on all associated installers.
         /// </summary>
