@@ -1,6 +1,6 @@
 # 🧩 IEntity Core
 
-Represent the fundamental identity and state of the entity. It includes unique identifiers, optional names for
+Represents the fundamental identity and state of the entity. It includes unique identifiers, optional names for
 debugging or tooling, and the main event for reactive state changes.
 
 ---

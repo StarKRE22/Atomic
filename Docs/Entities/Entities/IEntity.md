@@ -4,39 +4,26 @@
 public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
-- **Description:** Represents the fundamental interface of entity in the framework.
-  It provides a modular container for **dynamic state**, **tags**, **values**, **behaviours**
-  and **lifecycle management**.
+- **Description:** Represents the fundamental interface of the entity. It provides a modular container for **dynamic
+  state**, **tags**, **values**, **behaviours** and **lifecycle management**.
 
 - **Inheritance:**
     - [IInitLifecycle](../Lifecycle/Sources/IInitLifecycle.md) – Supports explicit initialization and disposal.
     - [IEnableLifecycle](../Lifecycle/Sources/IEnableLifecycle.md) – Supports runtime enabling and disabling.
     - [ITickLifecycle](../Lifecycle/Sources/ITickLifecycle.md) – Supports `Tick`, `FixedTick`, and `LateTick` callbacks.
 
-- **Sections:**
-  - [Core]
-  - [Tags]
-  - [Values]
-  - [Behaviours]
-  - [Lifecycle]
+- **Modules:**
+    - [Core](IEntityCore.md) — Represents the fundamental identity and state of the entity
+    - [Tags](IEntityTags.md) — Manage lightweight categorization and filtering of entities
+    - [Values](IEntityValues.md) — Manage dynamic key-value storage for the entity
+    - [Behaviours](IEntityBehaviours.md) — Manage modular logic attached to the entity
+    - [Lifecycle](IEntityLifecycle.md) — Manages the entity's state transitions and update phases
 
 ---
 
+## 🗂 Example of Usage
 
----
-
-
----
-
-
----
-
-<details>
-  <summary>
-    <h2 id="-example-of-usage"> 🗂 Example of Usage</h2>
-    <br> The example below demonstrates quick entity creation and configuration with <code>Atomic.Elements</code>:
-  </summary>
-<br>
+The example below demonstrates quick entity creation and configuration with <code>Atomic.Elements</code>:
 
 ```csharp
 // Create a new entity in C#
@@ -72,14 +59,9 @@ entity.Disable();
 entity.Dispose();
 ```
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2 id="-notes">📝 Notes</h2>
-  </summary>
+## 📝 Notes
 
 - **Event-Driven** – Reactive programming support via state change notifications.
 - **Unique Identity** – Runtime-generated instance ID for entity tracking.
@@ -87,4 +69,3 @@ entity.Dispose();
 - **State Management** – Dynamic key-value storage for runtime data.
 - **Behaviour Composition** – Attach or detach modular logic at runtime.
 - **Lifecycle Control** – Built-in support for `Init`, `Enable`, `Tick`, `Disable`, and `Dispose` phases.
-</details>
