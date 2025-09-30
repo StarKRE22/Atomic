@@ -4,139 +4,6 @@ The following methods allow you to create entities at runtime, for example from 
 
 ---
 
-<details>
-  <summary>
-    <h2 id="create-args"> 🧩 CreateArgs</h2>
-  </summary>
-<br>
-
-```csharp
-[Serializable]  
-public struct CreateArgs
-```
-
-- **Description:** Defines a set of parameters for creating a dynamic entity.
-
----
-
-### 🧱 Fields
-
-#### `Name`
-
-```csharp
-public string name;
-```
-
-- **Description:** Name of the entity (Unity object name).
-
-#### `Tags`
-
-```csharp
-public IEnumerable<int> tags;
-```
-
-- **Description:** Optional tags to assign to the entity.
-
-#### `Values`
-
-```csharp
-public IReadOnlyDictionary<int, object> values;
-```
-
-- **Description:** Optional key-value pairs assigned to the entity.
-
-#### `Behaviours`
-
-```csharp
-public IEnumerable<IEntityBehaviour> behaviours;
-```
-
-- **Description:** Optional behaviours attached to the entity.
-
-#### `SceneInstallers`
-
-```csharp
-public List<SceneEntityInstaller> sceneInstallers;
-```
-
-- **Description:** Optional **MonoBehaviour installers** to run in the scene.
-
-#### `ScriptableInstallers`
-
-```csharp
-public List<ScriptableEntityInstaller> scriptableInstallers;
-```
-
-- **Description:** Optional **ScriptableObject installers** to run.
-
-#### `Children`
-
-```csharp
-public List<SceneEntity> children;
-```
-
-- **Description:** Optional child entities attached to this entity.
-
-#### `InitialTagCapacity`
-
-```csharp
-public int initialTagCapacity;
-```
-
-- **Description:** Initial capacity for tags.
-
-#### `InitialValueCapacity`
-
-```csharp
-public int initialValueCapacity;
-```
-
-- **Description:** Initial capacity for values.
-
-#### `InitialBehaviourCapacity`
-
-```csharp
-public int initialBehaviourCapacity;
-```
-
-- **Description:** Initial capacity for behaviours.
-
-#### `InstallOnAwake`
-
-```csharp
-public bool installOnAwake;
-```
-
-- **Description:** If true, the entity installs automatically on **Awake**.
-
-#### `UninstallOnDestroy`
-
-```csharp
-public bool uninstallOnDestroy;
-```
-
-- **Description:** If true, the entity uninstalls automatically on **Destroy**.
-
-#### `DisposeValues`
-
-```csharp
-public bool disposeValues;
-```
-
-- **Description:** If true, values are disposed when the entity is destroyed.
-
-#### `UseUnityLifecycle`
-
-```csharp
-public bool useUnityLifecycle;
-```
-
-- **Description:** If true, uses Unity lifecycle methods (**Awake**, **OnEnable**, **OnDisable**, **OnDestroy**).
-
-</details>
-
----
-
 ## 🏹 Methods
 
 #### `Create(in CreateArgs)`
@@ -288,6 +155,139 @@ public static E Create<E>(E prefab, Transform point, Transform parent) where E :
 
 - **Returns:** The newly instantiated SceneEntity of type `E`.
 - **Note:** Automatically calls `Install()` on the created entity.
+
+---
+
+<details>
+  <summary>
+    <h2 id="create-args"> 🧩 CreateArgs</h2>
+  </summary>
+<br>
+
+```csharp
+[Serializable]  
+public struct CreateArgs
+```
+
+- **Description:** Defines a set of parameters for creating a dynamic entity.
+
+---
+
+### 🧱 Fields
+
+#### `Name`
+
+```csharp
+public string name;
+```
+
+- **Description:** Name of the entity (Unity object name).
+
+#### `Tags`
+
+```csharp
+public IEnumerable<int> tags;
+```
+
+- **Description:** Optional tags to assign to the entity.
+
+#### `Values`
+
+```csharp
+public IReadOnlyDictionary<int, object> values;
+```
+
+- **Description:** Optional key-value pairs assigned to the entity.
+
+#### `Behaviours`
+
+```csharp
+public IEnumerable<IEntityBehaviour> behaviours;
+```
+
+- **Description:** Optional behaviours attached to the entity.
+
+#### `SceneInstallers`
+
+```csharp
+public List<SceneEntityInstaller> sceneInstallers;
+```
+
+- **Description:** Optional **MonoBehaviour installers** to run in the scene.
+
+#### `ScriptableInstallers`
+
+```csharp
+public List<ScriptableEntityInstaller> scriptableInstallers;
+```
+
+- **Description:** Optional **ScriptableObject installers** to run.
+
+#### `Children`
+
+```csharp
+public List<SceneEntity> children;
+```
+
+- **Description:** Optional child entities attached to this entity.
+
+#### `InitialTagCapacity`
+
+```csharp
+public int initialTagCapacity;
+```
+
+- **Description:** Initial capacity for tags.
+
+#### `InitialValueCapacity`
+
+```csharp
+public int initialValueCapacity;
+```
+
+- **Description:** Initial capacity for values.
+
+#### `InitialBehaviourCapacity`
+
+```csharp
+public int initialBehaviourCapacity;
+```
+
+- **Description:** Initial capacity for behaviours.
+
+#### `InstallOnAwake`
+
+```csharp
+public bool installOnAwake;
+```
+
+- **Description:** If true, the entity installs automatically on **Awake**.
+
+#### `UninstallOnDestroy`
+
+```csharp
+public bool uninstallOnDestroy;
+```
+
+- **Description:** If true, the entity uninstalls automatically on **Destroy**.
+
+#### `DisposeValues`
+
+```csharp
+public bool disposeValues;
+```
+
+- **Description:** If true, values are disposed when the entity is destroyed.
+
+#### `UseUnityLifecycle`
+
+```csharp
+public bool useUnityLifecycle;
+```
+
+- **Description:** If true, uses Unity lifecycle methods (**Awake**, **OnEnable**, **OnDisable**, **OnDestroy**).
+
+</details>
 
 ---
 
