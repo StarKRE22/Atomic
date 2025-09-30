@@ -1,24 +1,18 @@
+# 🧩 SceneEntity Values
 
-<details>
-  <summary>
-    <h2 id="-values">🔑 Values</h2>
-    <br> Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
-         identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
+Manage dynamic key-value storage for the entity. Values can be of any type (structs or reference types) and are
+identified by integer keys. This allows flexible runtime data storage, reactive updates, and modular logic.
 
-  </summary>
-
-<br>
-
+> [!IMPORTANT]
 > Values in the entity are stored as a **key-value collection with integer keys**. Access, addition, update, and
 > removal
 > operations generally have **dictionary-like time complexity**. Values can be of any type, including structs and
 > reference types, and multiple types can coexist under different keys. Note that adding a struct through the generic
-> API
-> avoids boxing.
+> API avoids boxing.
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameters             | Description                                                               |
 |------------------------|---------------------------------------------------------------------------|
@@ -26,7 +20,7 @@
 
 ---
 
-### ⚡ Events
+## ⚡ Events
 
 #### `OnValueAdded`
 
@@ -66,7 +60,7 @@ public event Action<IEntity, int> OnValueChanged
 
 ---
 
-### 🔑 Properties
+## 🔑 Properties
 
 #### `ValueCount`
 
@@ -79,7 +73,7 @@ public int ValueCount { get; }
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `GetValue<T>(int)`
 
@@ -269,7 +263,62 @@ public ValueEnumerator GetValueEnumerator()
 - **Description:** Enumerates all key-value pairs.
 - **Returns:** Struct enumerator for iterating through stored values.
 
-### 🗂 Example of Usage
+---
+
+## 🗂 Example of Usage
+
+This example demonstrates how to use **values** with entity, including adding, retrieving, updating, and removing
+values. Three approaches are shown:
+
+1. Using **numeric keys** for performance
+2. Using **string names** for readability
+3. Using **code generation** for real projects.
+
+---
+
+### 1️⃣ Using Numeric Keys
+
+By default, all values use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
+below uses numeric keys as the default approach.
+
+```csharp
+//Define value keys 
+const int Health = 1;
+const int Speed = 2;
+const int Inventory = 3;
+
+// Assume we have an instance of entity
+SceneEntity entity = ...
+
+// Subscribe to value events
+entity.OnValueChanged += (e, key) => Console.WriteLine($"Value {key} changed");
+
+//Add health property
+entity.AddValue(Health, 100);
+
+//Add speed property
+entity.AddValue(Speed, 12.5f);
+
+//Add inventory property
+entity.AddValue(Inventory, new Inventory());
+
+// Get a value
+int health = entity.GetValue<int>(Health);
+Console.WriteLine($"Health: {health}");
+
+// Update a Health
+entity.SetValue(Health, 150);
+
+// Remove a Speed value
+entity.DelValue(Speed);
+```
+
+---
+
+### 2️⃣ Using String Names
+
+In this example, for convenience, there are [extension methods](ExtensionsValues.md) for the entity. This format is
+more user-friendly but slightly slower than using numeric keys.
 
 ```csharp
 // Assume we have an instance of entity
@@ -291,4 +340,32 @@ entity.SetValue("Health", 150);
 entity.DelValue("Inventory");
 ```
 
-</details>
+---
+
+### 3️⃣ Using Entity API
+
+Managing values by raw `int` keys or `string` names can be error-prone, especially in larger projects. To make the
+process easier and **type-safe**, the Atomic Framework supports **code generation**. You describe all your tags and
+values once in a small config file, and the framework automatically generates
+strongly-typed C# helpers. More details are in the Manual under
+the [Entity API](../EntityAPI/Manual.md) section.
+
+```csharp
+// Assume we have an instance of entity
+SceneEntity entity = ...
+
+// Add values
+entity.AddHealth(100);
+entity.AddSpeed(12.5f);
+entity.AddInventory(new GridInventory());
+
+// Get a value
+int health = entity.GetHealth();
+Console.WriteLine($"Health: {health}");
+
+// Update a value
+entity.SetHealth(150);
+
+// Remove a value
+entity.DelInventory();
+```
