@@ -138,57 +138,6 @@ OPTIMIZATION
 <img width="320" height="" alt="изображение" src="../../Images/SceneEntity%20Optimization.png" />
 
 
-GIZMOS
-
-
-### 🗂 Example of Usage
-
-Below is an example of drawing a circle for a unit using its position and scale:
-
-```csharp
-public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
-{
-    public void DrawGizmos(IGameEntity entity)
-    {
-        Vector3 center = entity.GetPosition().Value;
-        float scale = entity.GetScale().Value;
-        Handles.DrawWireDisc(center, Vector3.up, scale);
-    }
-}
-```
-
-Add it in a `SceneEntityInstaller`:
-
-```csharp
-[Serializable]
-public sealed class TransformEntityInstaller : SceneEntityInstaller<IGameEntity>
-{
-    [SerializeField]
-    private Const<float> _scale = 1;
-    
-    public void Install(IGameEntity entity)
-    {
-        entity.AddPosition(new ReactiveVector3());
-        entity.AddRotation(new ReactiveQuaternion());
-        entity.AddScale(_scale);
-        
-       // Connect the gizmos drawing logic
-        entity.AddBehaviour<TransformGizmos>();
-    }
-}
-```
-
-INSTALLING
-### 🗂 Example of Usage
-
-### 1. Create a new `GameObject`
-
-<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
-
-### 2. Add `Entity` Component to the GameObject
-
-<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
-
 
 
 ## 💡 Core Concept
