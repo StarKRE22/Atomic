@@ -1,24 +1,23 @@
 # 🧩 EntitySingleton&lt;E&gt;
 
-Represents an abstract class for **singleton entities**. Ensures a single globally accessible entity of type `E`. This
-class combines the **Entity–State–Behaviour** model with
-the [Singleton Pattern](https://en.wikipedia.org/wiki/Singleton_pattern).
-Supports both **default constructor** and **factory-based creation**.
-
 ```csharp
 public abstract class EntitySingleton<E> : Entity 
     where E : EntitySingleton<E>, new()
 ```
 
+- **Description:** Represents an abstract class for **singleton entities**. Ensures a single globally accessible entity
+  of type `E`.
 - **Type Parameter:** `E` — The concrete entity singleton type.
 - **Inheritance:** derived from [Entity](Entity.md)
 - **Notes:**
     - Subclass must inherit from `EntitySingleton<E>`
-    - Provide instantiation either a **public parameterless constructor** or a registered [factory](../Factories/IEntityFactory.md) via [SetFactory](#setfactoryientityfactorye).
+    - Combines the patterns: **ESB** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
+    - Supports both **default constructor** and **[factory-based creation](../Factories/IEntityFactory.md)**
+      via [SetFactory()](#setfactoryientityfactorye).
 
 ---
 
-### 🏗️ Constructors
+## 🏗️ Constructors
 
 #### `String-keyed Constructor`
 
@@ -137,7 +136,9 @@ public static E ResetInstance()
 
 ## 🗂 Examples of Usage
 
-### 🔹 Example #1. Using default constructor
+Below are examples of using `EntitySingleton`:
+
+### 1️⃣ Using default constructor
 
 ```csharp
 public class GameContext : EntitySingleton<GameContext>
@@ -153,9 +154,9 @@ context.AddBehaviour<EnemySpawnBehaviour>();
 context.Init();
 ```
 
-----
+---
 
-### 🔹 Example #2. Using entity factory
+### 2️⃣ Using entity factory
 
 ```csharp
 //Custom entity
@@ -221,7 +222,9 @@ context.AddBehaviour<EnemySpawnBehaviour>();
 context.Init();
 ```
 
-### 🔹 Example #3. Upgrading factory to builder
+---
+
+### 3️⃣ Upgrading factory to builder
 
 ```csharp
 // Builder-based factory implementation
@@ -279,7 +282,9 @@ context.AddBehaviour<EnemySpawnBehaviour>();
 context.Init();
 ```
 
-### Example #4. Resetting singleton
+---
+
+### 4️⃣ Resetting singleton
 
 ```csharp
 // Get current instance
@@ -309,8 +314,6 @@ var newContext = GameContext.ResetInstance();
 - **Lifecycle Integration** – Singleton can be disposed and recreated
 - **Entity Inheritance** – Inherits all features of `Entity` (state, behaviours, tags, values, events)
 - **NOT thread-safe** — The `Instance` property should only be accessed from the **main thread**
-
-
 - Use `SetFactory` if your singleton requires **arguments** or **custom setup**.
 - Use `DisposeInstance` or `ResetInstance` in **tests** or when context changes (e.g., editor mode vs runtime).
 - For regular global managers, the default `new()` constructor is usually enough.

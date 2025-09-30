@@ -33,10 +33,13 @@ Below are the interfaces and classes for working with entities.
     - [Creation](SceneEntityCreation.md) <!-- + -->
     - [Destruction](SceneEntityDestruction.md) <!-- + -->
     - [Casting](SceneEntityCasting.md) <!-- + -->
-
-- **[EntitySingleton](EntitySingleton.md)**
-- **[SceneEntitySingleton](SceneEntitySingleton.md)**
-- **[SceneEntityProxy](SceneEntityProxy.md)**
-- **[Extensions](Extensions.md)**
-
----
+- **Singletons**
+    - [EntitySingleton](EntitySingleton.md) <!-- + -->
+    - [SceneEntitySingleton](SceneEntitySingleton.md)
+- **Proxies**
+  - [SceneEntityProxy](SceneEntityProxy.md)
+- **Extensions**
+    - [Core](ExtensionsCore.md)
+    - [Tags](ExtensionsTags.md)
+    - [Values](ExtensionsValues.md)
+    - [Behaviours](ExtensionsBehaviours.md)

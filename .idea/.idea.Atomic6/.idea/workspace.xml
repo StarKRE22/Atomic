@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityCreation.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityCreation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,31 +213,7 @@
       <workItem from="1758779433987" duration="35835000" />
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
-      <workItem from="1759213195784" duration="16793000" />
-    </task>
-    <task id="LOCAL-00987" summary="IEntity.md">
-      <option name="closed" value="true" />
-      <created>1759165101424</created>
-      <option name="number" value="00987" />
-      <option name="presentableId" value="LOCAL-00987" />
-      <option name="project" value="LOCAL" />
-      <updated>1759165101424</updated>
-    </task>
-    <task id="LOCAL-00988" summary="Пилим Entity.md">
-      <option name="closed" value="true" />
-      <created>1759165673629</created>
-      <option name="number" value="00988" />
-      <option name="presentableId" value="LOCAL-00988" />
-      <option name="project" value="LOCAL" />
-      <updated>1759165673629</updated>
-    </task>
-    <task id="LOCAL-00989" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1759166694175</created>
-      <option name="number" value="00989" />
-      <option name="presentableId" value="LOCAL-00989" />
-      <option name="project" value="LOCAL" />
-      <updated>1759166694175</updated>
+      <workItem from="1759213195784" duration="17381000" />
     </task>
     <task id="LOCAL-00990" summary="Entity.md">
       <option name="closed" value="true" />
@@ -606,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759232356786</updated>
     </task>
-    <option name="localTasksCounter" value="1036" />
+    <task id="LOCAL-01036" summary="SceneEntityCreation.md">
+      <option name="closed" value="true" />
+      <created>1759232394138</created>
+      <option name="number" value="01036" />
+      <option name="presentableId" value="LOCAL-01036" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232394138</updated>
+    </task>
+    <task id="LOCAL-01037" summary="SceneEntityDestruction.md">
+      <option name="closed" value="true" />
+      <created>1759232475873</created>
+      <option name="number" value="01037" />
+      <option name="presentableId" value="LOCAL-01037" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232475873</updated>
+    </task>
+    <task id="LOCAL-01038" summary="SceneEntityCasting.md">
+      <option name="closed" value="true" />
+      <created>1759232607384</created>
+      <option name="number" value="01038" />
+      <option name="presentableId" value="LOCAL-01038" />
+      <option name="project" value="LOCAL" />
+      <updated>1759232607384</updated>
+    </task>
+    <option name="localTasksCounter" value="1039" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,8 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Entity.md" />
-    <MESSAGE value="Остановился на SceneEntity!" />
     <MESSAGE value="IEntityCore.md" />
     <MESSAGE value="IEntityTags.md" />
     <MESSAGE value="IEntityBehaviours.md" />
@@ -658,7 +657,9 @@
     <MESSAGE value="SceneEntityEditor.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneEntityCreation.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityCreation.md" />
+    <MESSAGE value="SceneEntityDestruction.md" />
+    <MESSAGE value="SceneEntityCasting.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityCasting.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
