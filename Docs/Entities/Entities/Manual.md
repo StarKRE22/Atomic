@@ -20,6 +20,19 @@ Below are the interfaces and classes for working with entities.
 
 </details>
 
+<details>
+<summary><a href="Entity.md"><strong>Entity</strong></a></summary>
+
+<ul>
+  <li><a href="EntityCore.md">Core</a></li>
+  <li><a href="EntityTags.md">Tags</a></li>
+  <li><a href="EntityValues.md">Values</a></li>
+  <li><a href="EntityBehaviours.md">Behaviours</a></li>
+  <li><a href="EntityLifecycle.md">Lifecycle</a></li>
+  <li><a href="EntityDebug.md">Debug</a></li>
+</ul>
+
+</details>
 
 <details>
 <summary><a href="SceneEntity.md"><strong>SceneEntity</strong></a></summary>
@@ -41,17 +54,19 @@ Below are the interfaces and classes for working with entities.
 
 </details>
 
-- **Singletons**
-    - [EntitySingleton](EntitySingleton.md) <!-- + -->
-    - [SceneEntitySingleton](SceneEntitySingleton.md) <!-- + -->
-- **Proxies**
-    - [SceneEntityProxies](SceneEntityProxies.md) <!-- + -->
-        - [SceneEntityProxy](SceneEntityProxy.md) <!-- + -->
-        - [SceneEntityProxy&lt;T&gt;](SceneEntityProxy.md) <!-- + -->
-- **Extensions**
-    - [Core](ExtensionsCore.md)  <!-- + -->
-    - [Tags](ExtensionsTags.md) <!-- + -->
-    - [Values](ExtensionsValues.md) <!-- + -->
-    - [Behaviours](ExtensionsBehaviours.md) <!-- + -->
-    - [Installing](ExtensionsInstalling.md) <!-- + -->
-    - [Retrieval](ExtensionsRetrieval.md) <!-- + -->
+**Singletons**
+  - [EntitySingleton](EntitySingleton.md) <!-- + -->
+  - [SceneEntitySingleton](SceneEntitySingleton.md) <!-- + -->
+
+**Proxies**
+  - [SceneEntityProxies](SceneEntityProxies.md) <!-- + -->
+      - [SceneEntityProxy](SceneEntityProxy.md) <!-- + -->
+      - [SceneEntityProxy&lt;T&gt;](SceneEntityProxy.md) <!-- + -->
+    
+**Extensions**
+  - [Core](ExtensionsCore.md)  <!-- + -->
+  - [Tags](ExtensionsTags.md) <!-- + -->
+  - [Values](ExtensionsValues.md) <!-- + -->
+  - [Behaviours](ExtensionsBehaviours.md) <!-- + -->
+  - [Installing](ExtensionsInstalling.md) <!-- + -->
+  - [Retrieval](ExtensionsRetrieval.md) <!-- + -->
