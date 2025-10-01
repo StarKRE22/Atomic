@@ -41,7 +41,7 @@ smoother and more powerful than in Unity.
 ## 🔍 API Reference
 
 - [Entities](Entities/Manual.md) <!-- + -->
-- [Behaviours](Behaviours/Manual.md)
+- [Behaviours](Behaviours/Manual.md) <!-- + -->
 - [Installers](Installers/Manual.md)
 - [Aspects](Aspects/Manual.md)
 - [Entity API](EntityAPI/Manual.md)
@@ -56,20 +56,6 @@ smoother and more powerful than in Unity.
 - [Lifecycle](Lifecycle/Manual.md)
 
 
-
-<!-- 
-
-
-- [Installers]()
-  - [IEntityInstaller](Installers/IEntityInstaller.md)
-  - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
-  - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
-
- 
-- [Registry]
-  - [EntityRegistry](Registry/EntityRegistry.md)
-
--->
 
 ---
 

@@ -165,12 +165,3 @@ public sealed class MoveInstaller<UnitEntity> : ScriptableEntityInstaller<UnitEn
 </details>
 
 ---
-
-## 📝 Notes
-
-- **Shared Configuration** – Use `ScriptableEntityInstaller` for reusable entity setup logic across multiple entities.
-- **Strongly-Typed Option** – `ScriptableEntityInstaller<E>` ensures type-safe installation for specific entity types.
-- **Runtime & Edit-Time Support** – Can be used in both runtime and editor contexts.
-- **Modular** – Can be combined with other installers or entity behaviors to create complex, composable setups.
-- `ScriptableEntityInstaller` is intended for **shared and reusable entity configuration**.
-- `ScriptableEntityInstaller<E>` is useful when the installer targets a specific entity type.

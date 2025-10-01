@@ -224,14 +224,3 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
 ```
 
 ---
-
-## 📝 Notes
-
-- **Scene Configuration** – Attach to a GameObject to configure entities in the scene.
-- **Editor Support** – Automatically refreshes when properties are changed in the Inspector.
-- **Runtime Installation** – Applies configuration and behaviors during runtime.
-- **Strongly-Typed Option** – `SceneEntityInstaller<E>` ensures type-safe installation for specific entity types.
-- Supports editor workflows via `OnValidate` to refresh previews or dependent systems.
-- Can be combined with other installers or entity behaviors to modularly set up complex entities.
-- `SceneEntityInstaller` is intended for configuring or initializing entities **directly in the Unity scene**.
-- `SceneEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
