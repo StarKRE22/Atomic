@@ -91,13 +91,6 @@ systems. Object-Oriented Programming (OOP) often struggles to model these intera
 unnecessary complexity. **Atomic Framework** encourages a **procedural approach**, promoting the use of `static methods`
 and a `centralized data registry` instead of decentralized objects.
 
-### 4. Reactive Programming
-
-The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real
-time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using
-reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the
-flow of game logic consistent.
-
 ---
 
 ## 📚 Documentation
