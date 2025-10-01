@@ -7,7 +7,7 @@ public interface IEntityInit<in E> : IEntityInit where E : IEntity
 - **Description:** Provides a strongly-typed version of `IEntityInit` for handling initialization logic for a specific
   `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityInit](IEntityInit.md)
+- **Inheritance:** [IEntityInit](IEntityInit.md)
 - **Remarks:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
   type `E`.
 

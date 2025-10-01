@@ -28,7 +28,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityInit](IEntityInit.md) <!-- + -->
     - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
 - **Dispose**
-    - [IEntityDispose](IEntityDispose.md)
+    - [IEntityDispose](IEntityDispose.md) <!-- + -->
     - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md)
 - **Enable**
     - [IEntityEnable](IEntityEnable.md)
