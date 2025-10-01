@@ -21,27 +21,26 @@ Below are the interfaces and classes for working with entities.
 </details>
 
 
+<details>
+<summary><a href="SceneEntity.md"><strong>SceneEntity</strong></a></summary>
 
-- **[Entity](Entity.md)** <!-- + -->
-    - [Core](EntityCore.md) <!-- + -->
-    - [Tags](EntityTags.md) <!-- + -->
-    - [Values](EntityValues.md) <!-- + -->
-    - [Behaviours](EntityBehaviours.md) <!-- + -->
-    - [Lifecycle](EntityLifecycle.md) <!-- + -->
-    - [Debug](EntityDebug.md) <!-- + -->
-- **[SceneEntity](SceneEntity.md)** <!-- + -->
-    - [Core](SceneEntityCore.md) <!-- + -->
-    - [Tags](SceneEntityTags.md) <!-- + -->
-    - [Values](SceneEntityValues.md) <!-- + -->
-    - [Behaviours](SceneEntityBehaviours.md) <!-- + -->
-    - [Lifecycle](SceneEntityLifecycle.md) <!-- + -->
-    - [Installing](SceneEntityInstalling.md) <!-- + -->
-    - [Gizmos](SceneEntityGizmos.md) <!-- + -->
-    - [Debug](SceneEntityDebug.md) <!-- + -->
-    - [Editor](SceneEntityEditor.md) <!-- + -->
-    - [Creation](SceneEntityCreation.md) <!-- + -->
-    - [Destruction](SceneEntityDestruction.md) <!-- + -->
-    - [Casting](SceneEntityCasting.md) <!-- + -->
+<ul>
+  <li><a href="SceneEntityCore.md">Core</a></li>
+  <li><a href="SceneEntityTags.md">Tags</a></li>
+  <li><a href="SceneEntityValues.md">Values</a></li>
+  <li><a href="SceneEntityBehaviours.md">Behaviours</a></li>
+  <li><a href="SceneEntityLifecycle.md">Lifecycle</a></li>
+  <li><a href="SceneEntityInstalling.md">Installing</a></li>
+  <li><a href="SceneEntityGizmos.md">Gizmos</a></li>
+  <li><a href="SceneEntityDebug.md">Debug</a></li>
+  <li><a href="SceneEntityEditor.md">Editor</a></li>
+  <li><a href="SceneEntityCreation.md">Creation</a></li>
+  <li><a href="SceneEntityDestruction.md">Destruction</a></li>
+  <li><a href="SceneEntityCasting.md">Casting</a></li>
+</ul>
+
+</details>
+
 - **Singletons**
     - [EntitySingleton](EntitySingleton.md) <!-- + -->
     - [SceneEntitySingleton](SceneEntitySingleton.md) <!-- + -->
