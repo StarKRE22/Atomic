@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGIzmos`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGIzmos`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGizmos.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityGizmos.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,31 +213,7 @@
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
       <workItem from="1759213195784" duration="21402000" />
-      <workItem from="1759308429689" duration="10810000" />
-    </task>
-    <task id="LOCAL-01029" summary="SceneEntityGizmos.md">
-      <option name="closed" value="true" />
-      <created>1759230773359</created>
-      <option name="number" value="01029" />
-      <option name="presentableId" value="LOCAL-01029" />
-      <option name="project" value="LOCAL" />
-      <updated>1759230773359</updated>
-    </task>
-    <task id="LOCAL-01030" summary="SceneEntityEditor.md">
-      <option name="closed" value="true" />
-      <created>1759231239044</created>
-      <option name="number" value="01030" />
-      <option name="presentableId" value="LOCAL-01030" />
-      <option name="project" value="LOCAL" />
-      <updated>1759231239044</updated>
-    </task>
-    <task id="LOCAL-01031" summary="SceneEntityEditor.md">
-      <option name="closed" value="true" />
-      <created>1759231524101</created>
-      <option name="number" value="01031" />
-      <option name="presentableId" value="LOCAL-01031" />
-      <option name="project" value="LOCAL" />
-      <updated>1759231524101</updated>
+      <workItem from="1759308429689" duration="11712000" />
     </task>
     <task id="LOCAL-01032" summary="Пилим!">
       <option name="closed" value="true" />
@@ -609,7 +583,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759344824482</updated>
     </task>
-    <option name="localTasksCounter" value="1078" />
+    <task id="LOCAL-01078" summary="IEntityGizmos.md">
+      <option name="closed" value="true" />
+      <created>1759345010708</created>
+      <option name="number" value="01078" />
+      <option name="presentableId" value="LOCAL-01078" />
+      <option name="project" value="LOCAL" />
+      <updated>1759345010708</updated>
+    </task>
+    <task id="LOCAL-01079" summary="IEntityGizmos`1.md">
+      <option name="closed" value="true" />
+      <created>1759345108020</created>
+      <option name="number" value="01079" />
+      <option name="presentableId" value="LOCAL-01079" />
+      <option name="project" value="LOCAL" />
+      <updated>1759345108020</updated>
+    </task>
+    <task id="LOCAL-01080" summary="Начинаем пилить инсталлеры!">
+      <option name="closed" value="true" />
+      <created>1759345311912</created>
+      <option name="number" value="01080" />
+      <option name="presentableId" value="LOCAL-01080" />
+      <option name="project" value="LOCAL" />
+      <updated>1759345311912</updated>
+    </task>
+    <option name="localTasksCounter" value="1081" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,9 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityProxy`1.md" />
-    <MESSAGE value="ExtensionsCore.md" />
-    <MESSAGE value="ExtensionsTags.md" />
     <MESSAGE value="ExtensionsValues.md" />
     <MESSAGE value="ExtensionsBehaviours.md" />
     <MESSAGE value="ExtensionsInstalling.md" />
@@ -661,7 +656,10 @@
     <MESSAGE value="IEntityFixedTick`1.md" />
     <MESSAGE value="IEntityLateTick.md" />
     <MESSAGE value="IEntityLateTick`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityLateTick`1.md" />
+    <MESSAGE value="IEntityGizmos.md" />
+    <MESSAGE value="IEntityGizmos`1.md" />
+    <MESSAGE value="Начинаем пилить инсталлеры!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начинаем пилить инсталлеры!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

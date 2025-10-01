@@ -23,34 +23,23 @@ Each phase has a separate interface that handles the corresponding lifecycle sta
 
 For each event, there is a dedicated interface that represents that phase:
 
-- **Init**
-    - [IEntityInit](IEntityInit.md) <!-- + -->
-    - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
-- **Dispose**
-    - [IEntityDispose](IEntityDispose.md) <!-- + -->
-    - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
-- **Enable**
-    - [IEntityEnable](IEntityEnable.md) <!-- + -->
-    - [IEntityEnable&lt;E&gt;](IEntityEnable%601.md) <!-- + -->
-- **Disable**
-    - [IEntityDisable](IEntityDisable.md) <!-- + -->
-    - [IEntityDisable&lt;E&gt;](IEntityDisable%601.md) <!-- + -->
-- **Tick**
-    - [IEntityTick](IEntityTick.md) <!-- + -->
-    - [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
-- **FixedTick**
-    - [IEntityFixedTick](IEntityFixedTick.md) <!-- + -->
-    - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md) <!-- + -->
-- **LateTick**
-    - [IEntityLateTick](IEntityLateTick.md) <!-- + -->
-    - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
-- **Gizmos**
-    - [IEntityGizmos](IEntityGizmos.md) <!-- + -->
-    - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
 - [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
-
-> This approach makes entities flexible and extensible, allowing new behaviours to be added easily without modifying the
-> core code.
+- [IEntityInit](IEntityInit.md) <!-- + -->
+- [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
+- [IEntityDispose](IEntityDispose.md) <!-- + -->
+- [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
+- [IEntityEnable](IEntityEnable.md) <!-- + -->
+- [IEntityEnable&lt;E&gt;](IEntityEnable%601.md) <!-- + -->
+- [IEntityDisable](IEntityDisable.md) <!-- + -->
+- [IEntityDisable&lt;E&gt;](IEntityDisable%601.md) <!-- + -->
+- [IEntityTick](IEntityTick.md) <!-- + -->
+- [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
+- [IEntityFixedTick](IEntityFixedTick.md) <!-- + -->
+- [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md) <!-- + -->
+- [IEntityLateTick](IEntityLateTick.md) <!-- + -->
+- [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
+- [IEntityGizmos](IEntityGizmos.md) <!-- + -->
+- [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
 
 ---
 
