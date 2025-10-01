@@ -8,7 +8,7 @@ public interface IEntityInit<in E> : IEntityInit where E : IEntity
   `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
 - **Inheritance:** [IEntityInit](IEntityInit.md)
-- **Remarks:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
+- **Note:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
   type `E`.
 
 ---

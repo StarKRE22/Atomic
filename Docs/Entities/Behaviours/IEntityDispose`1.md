@@ -1,11 +1,4 @@
-
-<details>
-  <summary>
-    <h2 id="entity-dispose-t"> 🧩 IEntityDispose&lt;E&gt;</h2>
-    <br>Defines a strongly-typed behavior that executes logic when an <code>IEntity</code> of type <code>E</code> is disposed.
-  </summary>
-
-<br>
+#  🧩 IEntityDispose&lt;E&gt;
 
 ```csharp
 public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
@@ -14,7 +7,7 @@ public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
 - **Description:** Provides a strongly-typed version of `IEntityDispose` for handling disposal logic for a specific `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
 - **Inherits:** [IEntityDispose](#entity-dispose)
-- **Remarks:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
+- **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
 
 ---
 
@@ -32,7 +25,7 @@ public void Dispose(E entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Dispose a `Collider` component
 
