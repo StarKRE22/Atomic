@@ -7,7 +7,7 @@ public interface IEntityEnable<in E> : IEntityEnable where E : IEntity
 - **Description:** Provides a strongly-typed version of `IEntityEnable` for handling enable logic for a specific
   `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityEnable](#entity-enable)
+- **Inherits:** [IEntityEnable](IEntityEnable.md)
 - **Remarks:** Automatically invoked by `IEntity.Enable` when the behavior is registered on an entity of type `E`.
 
 ---

@@ -6,7 +6,7 @@ public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
 
 - **Description:** Provides a strongly-typed version of `IEntityDispose` for handling disposal logic for a specific `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityDispose](#entity-dispose)
+- **Inherits:** [IEntityDispose](IEntityDispose.md)
 - **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
 
 ---
