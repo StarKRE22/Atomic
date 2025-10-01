@@ -39,7 +39,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityTick](IEntityTick.md) <!-- + -->
     - [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
 - **FixedTick**
-    - [IEntityFixedTick](IEntityFixedTick.md)
+    - [IEntityFixedTick](IEntityFixedTick.md) <!-- + -->
     - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md)
 - **LateTick**
     - [IEntityLateTick](IEntityLateTick.md)
