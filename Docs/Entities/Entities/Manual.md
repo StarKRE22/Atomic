@@ -55,26 +55,33 @@ Below are the interfaces and classes for working with entities.
 
 </details>
 
+<details>
+<summary><a href="SceneEntityProxies.md"><strong>SceneEntityProxies</strong></a></summary>
+    <ul>
+      <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
+      <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;T&gt;</a></li>
+    </ul>
+</details>
 
-<li><a href="SceneEntityProxies.md">SceneEntityProxies</a>
-<ul>
-  <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
-  <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;T&gt;</a></li>
-</ul>
-</li>
-<li><strong>Singletons</strong>
-<ul>
-  <li><a href="EntitySingleton.md">EntitySingleton</a></li>
-  <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
-</ul>
-</li>
-<li><strong>Extensions</strong>
-<ul>
-  <li><a href="ExtensionsCore.md">Core</a></li>
-  <li><a href="ExtensionsTags.md">Tags</a></li>
-  <li><a href="ExtensionsValues.md">Values</a></li>
-  <li><a href="ExtensionsBehaviours.md">Behaviours</a></li>
-  <li><a href="ExtensionsInstalling.md">Installing</a></li>
-  <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
-</ul>
-</li>
+<details>
+<summary><strong>Singletons</strong></summary>
+    <ul>
+      <li><a href="EntitySingleton.md">EntitySingleton</a></li>
+      <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
+    </ul>
+</details>
+
+<details>
+<summary><strong>Extensions</strong></summary>
+    <ul>
+      <li><a href="ExtensionsCore.md">Core</a></li>
+      <li><a href="ExtensionsTags.md">Tags</a></li>
+      <li><a href="ExtensionsValues.md">Values</a></li>
+      <li><a href="ExtensionsBehaviours.md">Behaviours</a></li>
+      <li><a href="ExtensionsInstalling.md">Installing</a></li>
+      <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
+    </ul>
+</details>
+
+
+
