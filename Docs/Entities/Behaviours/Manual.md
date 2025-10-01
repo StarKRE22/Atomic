@@ -23,7 +23,6 @@ Each phase has a separate interface that handles the corresponding lifecycle sta
 
 For each event, there is a dedicated interface that represents that phase:
 
-- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 - **Init**
     - [IEntityInit](IEntityInit.md) <!-- + -->
     - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
@@ -48,6 +47,7 @@ For each event, there is a dedicated interface that represents that phase:
 - **Gizmos**
     - [IEntityGizmos](IEntityGizmos.md)
     - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md)
+- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 
 > This approach makes entities flexible and extensible, allowing new behaviours to be added easily without modifying the
 > core code.
