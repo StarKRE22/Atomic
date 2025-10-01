@@ -3,25 +3,6 @@
 Provides extension methods for [IEntity](IEntity.md) to simplify common operations like adding / removing tags, values,
 and behaviours, as well as installing installers and retrieving entities from GameObjects or collisions.
 
----
-
-<details>
-  <summary>
-    <h2 id="-common"> 💠️ Core</h2>
-    <br> Provides extension methods for base features
-  </summary>
-
-#### `Clear()`
-
-```csharp
-public static void Clear(this IEntity entity)
-```
-
-- **Description:** Clears all data from the entity, including tags, values, and behaviours.
-
-</details>
-
----
 
 <details>
   <summary>
