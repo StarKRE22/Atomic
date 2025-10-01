@@ -42,6 +42,7 @@ Below are the interfaces and classes for working with entities.
         - [SceneEntityProxy&lt;T&gt;](SceneEntityProxy.md) <!-- + -->
 - **Extensions**
     - [Core](ExtensionsCore.md)  <!-- + -->
-    - [Tags](ExtensionsTags.md)
+    - [Tags](ExtensionsTags.md) <!-- + -->
     - [Values](ExtensionsValues.md)
     - [Behaviours](ExtensionsBehaviours.md)
+    - [Retrieval](ExtensionsRetrieval.md)

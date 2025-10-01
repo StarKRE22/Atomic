@@ -13,3 +13,4 @@ public static void Clear(this IEntity entity)
 ```
 
 - **Description:** Clears all data from the entity, including tags, values, and behaviours.
+- **Parameter:** `entity` — target entity
