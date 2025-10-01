@@ -19,12 +19,26 @@ Each phase has a separate interface that handles the corresponding lifecycle sta
 
 ---
 
-### Behaviour Interfaces
+## 🔍 API Reference
 
 For each event, there is a dedicated interface that represents that phase:
 
 - [IEntityBehaviour](IEntityBehaviour.md) — base behaviour interface.
-- [IEntityInit](IEntityInit.md) — handles initialization.
+- **EntityInit** — handles initialization.
+  - [IEntityInit](IEntityInit.md)
+  - [IEntityInit&lt;E&gt;](IEntityInit%601.md) 
+- [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
+- [IEntityEnable](IEntityEnable.md) — handles activation.
+- [IEntityDisable](IEntityDisable.md) — handles deactivation.
+- [IEntityTick](IEntityTick.md) — handles per-frame updates.
+- [IEntityFixedTick](IEntityFixedTick.md) — handles fixed-timestep updates (physics, mechanics).
+- [IEntityLateTick](IEntityLateTick.md) — handles post-render updates.
+- [IEntityGizmos](IEntityGizmos.md) — handles debug visualization and gizmos in the scene.
+
+
+
+- [IEntityBehaviour](IEntityBehaviour.md) — base behaviour interface.
+- [IEntityInit](IEntityInit.md), [IEntityInit&lt;E&gt;](IEntityInit%601.md) — handles initialization.
 - [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
 - [IEntityEnable](IEntityEnable.md) — handles activation.
 - [IEntityDisable](IEntityDisable.md) — handles deactivation.
