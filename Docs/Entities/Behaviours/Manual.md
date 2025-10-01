@@ -30,7 +30,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityDispose](IEntityDispose.md) <!-- + -->
     - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
 - **Enable**
-    - [IEntityEnable](IEntityEnable.md)
+    - [IEntityEnable](IEntityEnable.md) <!-- + -->
     - [IEntityEnable&lt;E&gt;](IEntityEnable%601.md)
 - **Disable**
     - [IEntityDisable](IEntityDisable.md)
@@ -46,7 +46,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md)
 - **Gizmos**
     - [IEntityGizmos](IEntityGizmos.md)
-    - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md)
+    - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) 
 - [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 
 > This approach makes entities flexible and extensible, allowing new behaviours to be added easily without modifying the
