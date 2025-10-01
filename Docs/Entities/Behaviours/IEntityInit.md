@@ -1,27 +1,17 @@
-# 🧩️ IEntityInit Interfaces
-
-Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is initialized. It is
-automatically invoked by the entity’s `Init` method during its transition to the initialized state.
-
----
-
-<details>
-  <summary>
-    <h2 id="entity-init"> 🧩 IEntityInit</h2>
-    <br>Defines a behavior that executes logic when an <code>IEntity</code> is initialized.
-  </summary>
-
-<br>
+# 🧩️ IEntityInit
 
 ```csharp
 public interface IEntityInit : IEntityBehaviour
 ```
 
+- **Description:** Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is
+  initialized. It is
+  automatically invoked by the entity’s `Init` method during its transition to the initialized state.
 - **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Init(IEntity)`
 
@@ -36,7 +26,7 @@ public void Init(IEntity entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Set up a `Color` for the entity `Renderer`
 
@@ -54,17 +44,9 @@ public class InitColorBehaviour : IEntityInit
 
 > Note: `GetValue<T>` assumes the entity has these values already set.
 
-</details>
-
 ---
 
-<details>
-  <summary>
-    <h2 id="entity-init-t"> 🧩 IEntityInit&lt;E&gt;</h2>
-    <br>Defines a behavior that executes logic when an <code>IEntity</code> is initialized.
-  </summary>
-
-<br>
+#  🧩 IEntityInit&lt;E&gt;
 
 ```csharp
 public interface IEntityInit<in E> : IEntityInit where E : IEntity
@@ -93,7 +75,7 @@ public void Init(E entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Set up a `Color` for the `Renderer` of unit entity
 
@@ -117,7 +99,6 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required
 
-</details>
 
 ---
 
