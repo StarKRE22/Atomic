@@ -1,17 +1,11 @@
-
-<details>
-  <summary>
-    <h2 id="entity-enable-t"> 🧩 IEntityEnable&lt;E&gt;</h2>
-    <br>Defines a strongly-typed behavior that executes logic when an <code>IEntity</code> of type <code>E</code> is enabled.
-  </summary>
-
-<br>
+# 🧩 IEntityEnable&lt;E&gt;
 
 ```csharp
 public interface IEntityEnable<in E> : IEntityEnable where E : IEntity
 ```
 
-- **Description:** Provides a strongly-typed version of `IEntityEnable` for handling enable logic for a specific `IEntity` type.
+- **Description:** Provides a strongly-typed version of `IEntityEnable` for handling enable logic for a specific
+  `IEntity` type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
 - **Inherits:** [IEntityEnable](#entity-enable)
 - **Remarks:** Automatically invoked by `IEntity.Enable` when the behavior is registered on an entity of type `E`.
@@ -32,7 +26,7 @@ public void Enable(E entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Enable a `Renderer` for a unit entity
 
@@ -54,5 +48,3 @@ public class EnableRendererBehaviour : IEntityEnable<UnitEntity>
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
-
-</details>
