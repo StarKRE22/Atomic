@@ -45,7 +45,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityLateTick](IEntityLateTick.md) <!-- + -->
     - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
 - **Gizmos**
-    - [IEntityGizmos](IEntityGizmos.md)
+    - [IEntityGizmos](IEntityGizmos.md) <!-- + -->
     - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) 
 - [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 
@@ -55,6 +55,8 @@ For each event, there is a dedicated interface that represents that phase:
 ---
 
 ## 🗂 Example Usage
+
+Below is an example of using `MoveBehaviour` for the entity:
 
 #### 1. Create a new instance of entity
 
