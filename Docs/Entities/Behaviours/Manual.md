@@ -43,7 +43,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md) <!-- + -->
 - **LateTick**
     - [IEntityLateTick](IEntityLateTick.md) <!-- + -->
-    - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md)
+    - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
 - **Gizmos**
     - [IEntityGizmos](IEntityGizmos.md)
     - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) 
