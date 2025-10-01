@@ -35,7 +35,7 @@ Below are the interfaces and classes for working with entities.
     - [Casting](SceneEntityCasting.md) <!-- + -->
 - **Singletons**
     - [EntitySingleton](EntitySingleton.md) <!-- + -->
-    - [SceneEntitySingleton](SceneEntitySingleton.md)
+    - [SceneEntitySingleton](SceneEntitySingleton.md) <!-- + -->
 - **Proxies**
   - [SceneEntityProxy](SceneEntityProxy.md)
 - **Extensions**

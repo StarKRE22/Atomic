@@ -8,7 +8,7 @@ public abstract class EntitySingleton<E> : Entity
 - **Description:** Represents an abstract class for **singleton entities**. Ensures a single globally accessible entity
   of type `E`.
 - **Type Parameter:** `E` — The concrete entity singleton type.
-- **Inheritance:** derived from [Entity](Entity.md)
+- **Inheritance:** [Entity](Entity.md)
 - **Notes:**
     - Subclass must inherit from `EntitySingleton<E>`
     - Combines the patterns: **ESB** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).

@@ -22,7 +22,6 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [PropertyOrder(-10)]
         [DisableInPlayMode]
-        // [GUIColor(0f, 0.83f, 1f)]
 #endif
         [Header("Singleton")]
         [Tooltip("Is it possible to contact via SceneEntitySingleton<T>.Instance?")]

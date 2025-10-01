@@ -1,18 +1,19 @@
 # 🧩 SceneEntitySingleton&lt;E&gt;
 
-Represents a specialized [SceneEntity](SceneEntity.md) that ensures only one instance exists per scene or globally. This
-class combines the **Entity–State–Behaviour** model with
-the [Singleton Pattern](https://en.wikipedia.org/wiki/Singleton_pattern). It provides easy access via a static
-`Instance` property and optional persistence across scenes.
-
 ```csharp
 public abstract class SceneEntitySingleton<E> : SceneEntity 
     where E : SceneEntitySingleton<E>
 ```
 
+- **Description:** Represents a specialized `SceneEntity` that ensures only one instance exists per scene or globally.
+  It provides easy access via a static
+  `Instance` property and optional persistence across scenes.
 - **Type Parameter:** `E` — The concrete entity singleton type.
-- **Inheritance:** derived from [SceneEntity](SceneEntity.md)
-- **Notes:** Subclass must inherit from `SceneEntitySingleton<E>`
+- **Inheritance:** [SceneEntity](SceneEntity.md)
+- **Notes:**
+    - Subclass must inherit from `SceneEntitySingleton<E>`
+    - Combines the patterns: **ESB** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
+    - Supports Odin Inspector
 
 ---
 
@@ -80,7 +81,7 @@ The following examples demonstrate how to access the `SceneEntitySingleton` and 
 
 ---
 
-### 🔹 Example #1: Using Global Singleton
+### 1️⃣ Using Global Singleton
 
 ```csharp
 public class GameContext : SceneEntitySingleton<GameContext>
@@ -99,7 +100,7 @@ Debug.Log(score); // 42
 
 ---
 
-### 🔹Example #2: Resolving Singletons
+### 2️⃣ Resolving Singletons
 
 Allows get instance for each scene using `Component`, `GameObject` and `Scene`
 
