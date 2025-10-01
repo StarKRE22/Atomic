@@ -64,9 +64,7 @@ smoother and more powerful than in Unity.
 
 ## 💡 Key Concepts
 
-**This section describes the key concepts promoted by the Atomic Framework**
-
-### 1. Entity–State–Behaviour Pattern
+### 1️⃣ Entity–State–Behaviour Pattern
 
 - **Entity** — a **container** that contains set of **data** (`State`) and **logic** (`Behaviour`), strictly separated
   from each other.
@@ -75,7 +73,7 @@ smoother and more powerful than in Unity.
 
 > Thus, any game object, system, AI or UI can be described as a `composition` of data and logic.
 
-### 2. Atomic Elements instead of Components
+### 2️⃣ Atomic Elements instead of Components
 
 Complex systems should be built from `atomic elements`.  
 Instead of creating large, monolithic objects and components, you can compose entity’s `State` from **simple, reusable
@@ -84,19 +82,12 @@ atomic elements**.
 > Thus ensures that data remains modular, predictable, and reusable, while behaviours operate on these atomic building
 > blocks.
 
-### 3. Procedural Programming over OOP
+### 3️⃣ Procedural Programming over OOP
 
 Game development differs from traditional software development because of the **high number of interactions** between
 systems. Object-Oriented Programming (OOP) often struggles to model these interactions effectively, leading to
 unnecessary complexity. **Atomic Framework** encourages a **procedural approach**, promoting the use of `static methods`
 and a `centralized data registry` instead of decentralized objects.
-
-### 4. Reactive Programming
-
-The framework uses **reactive properties and collections** to observe entity state and respond to data changes in real
-time. Games naturally fit the **event-chain model**, where changes in one entity trigger reactions in others. Using
-reactive programming, these interactions can be expressed clearly and efficiently, reducing boilerplate and keeping the
-flow of game logic consistent.
 
 ---
 
