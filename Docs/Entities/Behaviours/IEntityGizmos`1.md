@@ -1,11 +1,4 @@
-
-<details>
-  <summary>
-    <h2 id="entity-gizmos-t"> 🧩 IEntityGizmos&lt;E&gt;</h2>
-    <br>Defines a strongly-typed behavior that draws gizmos for an <code>IEntity</code> of type <code>E</code>.
-  </summary>
-
-<br>
+#  🧩 IEntityGizmos&lt;E&gt;
 
 ```csharp
 public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
@@ -13,8 +6,8 @@ public interface IEntityGizmos<in E> : IEntityGizmos where E : IEntity
 
 - **Description:** Provides a strongly-typed version of `IEntityGizmos` for handling gizmo drawing on a specific entity type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityGizmos](#entity-gizmos)
-- **Remarks:** Automatically invoked by Unity Editor gizmo methods on entities of type `E`.
+- **Inherits:** [IEntityGizmos](IEntityGizmos.md)
+- **Note:** Automatically invoked by Unity Editor gizmo methods on entities of type `E`.
 
 ---
 
@@ -32,7 +25,7 @@ public void DrawGizmos(E entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Draw a debug sphere for a `UnitEntity`
 
@@ -57,5 +50,3 @@ public class DrawSphereGizmo : IEntityGizmos<UnitEntity>
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
-
-</details>
