@@ -8,8 +8,6 @@ system is a **composition**.
 Below are the interfaces and classes for working with entities.
 
 
-<ul>
-<li>
 <details>
 <summary><a href="IEntity.md"><strong>IEntity</strong></a></summary>
 
@@ -22,9 +20,7 @@ Below are the interfaces and classes for working with entities.
 </ul>
 
 </details>
-</li>
 
-<li>
 <details>
 <summary><a href="Entity.md"><strong>Entity</strong></a></summary>
 
@@ -38,8 +34,7 @@ Below are the interfaces and classes for working with entities.
 </ul>
 
 </details>
-</li>
-<li>
+
 <details>
 <summary><a href="SceneEntity.md"><strong>SceneEntity</strong></a></summary>
 
@@ -59,27 +54,27 @@ Below are the interfaces and classes for working with entities.
 </ul>
 
 </details>
-  </li>
-  <li><a href="SceneEntityProxies.md">SceneEntityProxies</a>
-    <ul>
-      <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
-      <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;T&gt;</a></li>
-    </ul>
-  </li>
-  <li><strong>Singletons</strong>
-    <ul>
-      <li><a href="EntitySingleton.md">EntitySingleton</a></li>
-      <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
-    </ul>
-  </li>
-  <li><strong>Extensions</strong>
-    <ul>
-      <li><a href="ExtensionsCore.md">Core</a></li>
-      <li><a href="ExtensionsTags.md">Tags</a></li>
-      <li><a href="ExtensionsValues.md">Values</a></li>
-      <li><a href="ExtensionsBehaviours.md">Behaviours</a></li>
-      <li><a href="ExtensionsInstalling.md">Installing</a></li>
-      <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
-    </ul>
-  </li>
+
+
+<li><a href="SceneEntityProxies.md">SceneEntityProxies</a>
+<ul>
+  <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
+  <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;T&gt;</a></li>
 </ul>
+</li>
+<li><strong>Singletons</strong>
+<ul>
+  <li><a href="EntitySingleton.md">EntitySingleton</a></li>
+  <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
+</ul>
+</li>
+<li><strong>Extensions</strong>
+<ul>
+  <li><a href="ExtensionsCore.md">Core</a></li>
+  <li><a href="ExtensionsTags.md">Tags</a></li>
+  <li><a href="ExtensionsValues.md">Values</a></li>
+  <li><a href="ExtensionsBehaviours.md">Behaviours</a></li>
+  <li><a href="ExtensionsInstalling.md">Installing</a></li>
+  <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
+</ul>
+</li>
