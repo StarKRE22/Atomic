@@ -5,8 +5,9 @@ public interface IEntityInit : IEntityBehaviour
 ```
 
 - **Description:** Represents a behavior interface that executes logic when an [IEntity](../Entities/IEntity.md) is
-  initialized. It is automatically invoked by the entity’s `Init` method during its transition to the initialized state.
+  initialized.
 - **Inheritance:** [IEntityBehaviour](IEntityBehaviour.md)
+- **Note:** It is automatically invoked by the entity’s `Init` method during its transition to the initialized state.
 - **See also:** [IEntityInit&lt;E&gt;](IEntityInit%601.md)
 
 ---

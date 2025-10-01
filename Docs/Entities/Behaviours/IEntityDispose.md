@@ -5,9 +5,10 @@ public interface IEntityDispose : IEntityBehaviour
 ```
 
 - **Description:** Represents a behavior interface that executes cleanup or resource release logic when
-  an [IEntity](../Entities/IEntity.md) **is being disposed**. It is automatically invoked by the entity’s `Dispose`
-  method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
+  an [IEntity](../Entities/IEntity.md) **is being disposed**. 
 - **Inheritance:** [IEntityBehaviour](IEntityBehaviour.md)
+- **Note:** It is automatically invoked by the entity’s `Dispose`
+  method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
 - **See also:** [IEntityDispose&lt;E&gt;](IEntityDispose%601.md)
 
 ---
