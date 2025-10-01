@@ -8,7 +8,7 @@ public class SceneEntityProxy : SceneEntityProxy<SceneEntity>
 
 - **Description:**  Represents non-generic proxy component for exposing and interacting with
   a [SceneEntity](SceneEntity.md) in the Unity scene.
-- **Inheritance:** extends [SceneEntityProxy&lt;E&gt;](SceneEntityProxy%601.md)
+- **Inheritance:** [SceneEntityProxy&lt;E&gt;](SceneEntityProxy%601.md)
 - **Note:** Supports Odin Inspector
 
 ---
