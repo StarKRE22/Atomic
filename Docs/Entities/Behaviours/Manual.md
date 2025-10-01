@@ -5,15 +5,15 @@ It allows entities to dynamically compose functionality at runtime, following th
 
 Each behaviour can handle different events of the entity:
 
-| Event        | Purpose |
-|--------------|---------|
-| `Init`       | Initialization of the behaviour when the entity is created |
-| `Enable`     | Activating the entity on the scene or in a pool |
-| `Disable`    | Deactivating the entity and returning it to the pool |
-| `Tick`       | Updates every frame (logic, state) |
-| `FixedTick`  | Physics and game mechanics updates with a fixed timestep |
-| `LateTick`   | Updates after rendering (e.g., UI) |
-| `Dispose`    | Releasing entity resources when it is destroyed |
+| Event       | Purpose                                                    |
+|-------------|------------------------------------------------------------|
+| `Init`      | Initialization of the behaviour when the entity is created |
+| `Enable`    | Activating the entity on the scene or in a pool            |
+| `Disable`   | Deactivating the entity and returning it to the pool       |
+| `Tick`      | Updates every frame (logic, state)                         |
+| `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
+| `LateTick`  | Updates after rendering (e.g., UI)                         |
+| `Dispose`   | Releasing entity resources when it is destroyed            |
 
 Each phase has a separate interface that handles the corresponding lifecycle stage of the entity.
 
@@ -23,31 +23,34 @@ Each phase has a separate interface that handles the corresponding lifecycle sta
 
 For each event, there is a dedicated interface that represents that phase:
 
-- [IEntityBehaviour](IEntityBehaviour.md) — base behaviour interface.
-- **EntityInit** — handles initialization.
-  - [IEntityInit](IEntityInit.md)
-  - [IEntityInit&lt;E&gt;](IEntityInit%601.md) 
-- [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
-- [IEntityEnable](IEntityEnable.md) — handles activation.
-- [IEntityDisable](IEntityDisable.md) — handles deactivation.
-- [IEntityTick](IEntityTick.md) — handles per-frame updates.
-- [IEntityFixedTick](IEntityFixedTick.md) — handles fixed-timestep updates (physics, mechanics).
-- [IEntityLateTick](IEntityLateTick.md) — handles post-render updates.
-- [IEntityGizmos](IEntityGizmos.md) — handles debug visualization and gizmos in the scene.
+- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
+- **Init**
+    - [IEntityInit](IEntityInit.md) <!-- + -->
+    - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
+- **Dispose**
+    - [IEntityDispose](IEntityDispose.md)
+    - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md)
+- **Enable**
+    - [IEntityEnable](IEntityEnable.md)
+    - [IEntityEnable&lt;E&gt;](IEntityEnable%601.md)
+- **Disable**
+    - [IEntityDisable](IEntityDisable.md)
+    - [IEntityDisable&lt;E&gt;](IEntityDisable%601.md)
+- **Tick**
+    - [IEntityTick](IEntityTick.md)
+    - [IEntityTick&lt;E&gt;](IEntityTick%601.md)
+- **FixedTick**
+    - [IEntityFixedTick](IEntityFixedTick.md)
+    - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md)
+- **LateTick**
+    - [IEntityLateTick](IEntityLateTick.md)
+    - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md)
+- **Gizmos**
+    - [IEntityGizmos](IEntityGizmos.md)
+    - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md)
 
-
-
-- [IEntityBehaviour](IEntityBehaviour.md) — base behaviour interface.
-- [IEntityInit](IEntityInit.md), [IEntityInit&lt;E&gt;](IEntityInit%601.md) — handles initialization.
-- [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
-- [IEntityEnable](IEntityEnable.md) — handles activation.
-- [IEntityDisable](IEntityDisable.md) — handles deactivation.
-- [IEntityTick](IEntityTick.md) — handles per-frame updates.
-- [IEntityFixedTick](IEntityFixedTick.md) — handles fixed-timestep updates (physics, mechanics).
-- [IEntityLateTick](IEntityLateTick.md) — handles post-render updates.
-- [IEntityGizmos](IEntityGizmos.md) — handles debug visualization and gizmos in the scene.
-
-> This approach makes entities flexible and extensible, allowing new behaviours to be added easily without modifying the core code.
+> This approach makes entities flexible and extensible, allowing new behaviours to be added easily without modifying the
+> core code.
 
 ---
 

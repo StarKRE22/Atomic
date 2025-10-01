@@ -8,6 +8,7 @@ public interface IEntityInit : IEntityBehaviour
   initialized. It is
   automatically invoked by the entity’s `Init` method during its transition to the initialized state.
 - **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
+- **See also:** [IEntityInit&lt;E&gt;](IEntityInit%601.md)
 
 ---
 
