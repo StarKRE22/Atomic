@@ -1,7 +1,7 @@
 # 🧩 Behaviours
 
-**Behaviour** is a modular unit of logic that can be attached to an [IEntity](../Entities/IEntity.md).  
-It allows entities to dynamically compose functionality at runtime, following the **Entity-State-Behaviour** pattern.
+**Behaviour** is a modular unit of logic that can be attached to an [IEntity](../Entities/IEntity.md). It allows
+entities to dynamically compose functionality at runtime, following the **Entity-State-Behaviour** pattern.
 
 Each behaviour can handle different events of the entity:
 
@@ -15,13 +15,12 @@ Each behaviour can handle different events of the entity:
 | `LateTick`  | Updates after rendering (e.g., UI)                         |
 | `Dispose`   | Releasing entity resources when it is destroyed            |
 
-Each phase has a separate interface that handles the corresponding lifecycle stage of the entity.
 
 ---
 
 ## 🔍 API Reference
 
-For each event, there is a dedicated interface that represents that phase:
+Each phase has a separate interface that handles the corresponding lifecycle stage of the entity.
 
 - [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 - [IEntityInit](IEntityInit.md) <!-- + -->
