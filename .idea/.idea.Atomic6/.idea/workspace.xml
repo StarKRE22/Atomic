@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsRetrieval.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsRetrieval.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,47 +214,7 @@
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
       <workItem from="1759213195784" duration="21402000" />
-      <workItem from="1759308429689" duration="3301000" />
-    </task>
-    <task id="LOCAL-01002" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1759222318169</created>
-      <option name="number" value="01002" />
-      <option name="presentableId" value="LOCAL-01002" />
-      <option name="project" value="LOCAL" />
-      <updated>1759222318169</updated>
-    </task>
-    <task id="LOCAL-01003" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759224559878</created>
-      <option name="number" value="01003" />
-      <option name="presentableId" value="LOCAL-01003" />
-      <option name="project" value="LOCAL" />
-      <updated>1759224559878</updated>
-    </task>
-    <task id="LOCAL-01004" summary="IEntityCore.md">
-      <option name="closed" value="true" />
-      <created>1759224631713</created>
-      <option name="number" value="01004" />
-      <option name="presentableId" value="LOCAL-01004" />
-      <option name="project" value="LOCAL" />
-      <updated>1759224631713</updated>
-    </task>
-    <task id="LOCAL-01005" summary="IEntityValues.md">
-      <option name="closed" value="true" />
-      <created>1759224952302</created>
-      <option name="number" value="01005" />
-      <option name="presentableId" value="LOCAL-01005" />
-      <option name="project" value="LOCAL" />
-      <updated>1759224952302</updated>
-    </task>
-    <task id="LOCAL-01006" summary="IEntityTags.md">
-      <option name="closed" value="true" />
-      <created>1759225197425</created>
-      <option name="number" value="01006" />
-      <option name="presentableId" value="LOCAL-01006" />
-      <option name="project" value="LOCAL" />
-      <updated>1759225197425</updated>
+      <workItem from="1759308429689" duration="3863000" />
     </task>
     <task id="LOCAL-01007" summary="IEntityBehaviours.md">
       <option name="closed" value="true" />
@@ -610,7 +568,47 @@
       <option name="project" value="LOCAL" />
       <updated>1759311308957</updated>
     </task>
-    <option name="localTasksCounter" value="1051" />
+    <task id="LOCAL-01051" summary="Фиксим!">
+      <option name="closed" value="true" />
+      <created>1759311747527</created>
+      <option name="number" value="01051" />
+      <option name="presentableId" value="LOCAL-01051" />
+      <option name="project" value="LOCAL" />
+      <updated>1759311747527</updated>
+    </task>
+    <task id="LOCAL-01052" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759311804283</created>
+      <option name="number" value="01052" />
+      <option name="presentableId" value="LOCAL-01052" />
+      <option name="project" value="LOCAL" />
+      <updated>1759311804283</updated>
+    </task>
+    <task id="LOCAL-01053" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759311855584</created>
+      <option name="number" value="01053" />
+      <option name="presentableId" value="LOCAL-01053" />
+      <option name="project" value="LOCAL" />
+      <updated>1759311855584</updated>
+    </task>
+    <task id="LOCAL-01054" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759312029621</created>
+      <option name="number" value="01054" />
+      <option name="presentableId" value="LOCAL-01054" />
+      <option name="project" value="LOCAL" />
+      <updated>1759312029621</updated>
+    </task>
+    <task id="LOCAL-01055" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759312091867</created>
+      <option name="number" value="01055" />
+      <option name="presentableId" value="LOCAL-01055" />
+      <option name="project" value="LOCAL" />
+      <updated>1759312091867</updated>
+    </task>
+    <option name="localTasksCounter" value="1056" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Распиливаем SceneEntity.md" />
     <MESSAGE value="SceneEntity.md" />
     <MESSAGE value="SceneEntityCore.md" />
     <MESSAGE value="SceneEntityTags.md" />
@@ -647,7 +644,6 @@
     <MESSAGE value="SceneEntityInstalling.md" />
     <MESSAGE value="SceneEntityGizmos.md" />
     <MESSAGE value="SceneEntityEditor.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneEntityCreation.md" />
     <MESSAGE value="SceneEntityDestruction.md" />
     <MESSAGE value="SceneEntityCasting.md" />
@@ -662,7 +658,9 @@
     <MESSAGE value="ExtensionsBehaviours.md" />
     <MESSAGE value="ExtensionsInstalling.md" />
     <MESSAGE value="ExtensionsRetrieval.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsRetrieval.md" />
+    <MESSAGE value="Фиксим!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
