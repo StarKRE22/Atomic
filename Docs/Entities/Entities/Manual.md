@@ -44,5 +44,6 @@ Below are the interfaces and classes for working with entities.
     - [Core](ExtensionsCore.md)  <!-- + -->
     - [Tags](ExtensionsTags.md) <!-- + -->
     - [Values](ExtensionsValues.md) <!-- + -->
-    - [Behaviours](ExtensionsBehaviours.md)
+    - [Behaviours](ExtensionsBehaviours.md) <!-- + -->
+    - [Installing](ExtensionsInstalling.md)
     - [Retrieval](ExtensionsRetrieval.md)

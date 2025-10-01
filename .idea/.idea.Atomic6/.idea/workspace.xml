@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsCore.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsCore.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsValues.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,23 +215,7 @@
       <workItem from="1758961405633" duration="26665000" />
       <workItem from="1759129146428" duration="21930000" />
       <workItem from="1759213195784" duration="21402000" />
-      <workItem from="1759308429689" duration="2050000" />
-    </task>
-    <task id="LOCAL-00996" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1759174222842</created>
-      <option name="number" value="00996" />
-      <option name="presentableId" value="LOCAL-00996" />
-      <option name="project" value="LOCAL" />
-      <updated>1759174222842</updated>
-    </task>
-    <task id="LOCAL-00997" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1759174323606</created>
-      <option name="number" value="00997" />
-      <option name="presentableId" value="LOCAL-00997" />
-      <option name="project" value="LOCAL" />
-      <updated>1759174323607</updated>
+      <workItem from="1759308429689" duration="2467000" />
     </task>
     <task id="LOCAL-00998" summary="Остановился на SceneEntity!">
       <option name="closed" value="true" />
@@ -610,7 +593,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759310143025</updated>
     </task>
-    <option name="localTasksCounter" value="1045" />
+    <task id="LOCAL-01045" summary="ExtensionsCore.md">
+      <option name="closed" value="true" />
+      <created>1759310492946</created>
+      <option name="number" value="01045" />
+      <option name="presentableId" value="LOCAL-01045" />
+      <option name="project" value="LOCAL" />
+      <updated>1759310492946</updated>
+    </task>
+    <task id="LOCAL-01046" summary="ExtensionsTags.md">
+      <option name="closed" value="true" />
+      <created>1759310716857</created>
+      <option name="number" value="01046" />
+      <option name="presentableId" value="LOCAL-01046" />
+      <option name="project" value="LOCAL" />
+      <updated>1759310716857</updated>
+    </task>
+    <option name="localTasksCounter" value="1047" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,8 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Перепиливаем Entity.md" />
-    <MESSAGE value="EntityCore.md" />
     <MESSAGE value="EntityTags.md" />
     <MESSAGE value="IEntityValues.md" />
     <MESSAGE value="EntityBehaviours.md" />
@@ -662,7 +659,9 @@
     <MESSAGE value="SceneEntityProxies.md" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="SceneEntityProxy`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityProxy`1.md" />
+    <MESSAGE value="ExtensionsCore.md" />
+    <MESSAGE value="ExtensionsTags.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsTags.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
