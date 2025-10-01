@@ -1,11 +1,4 @@
-
-<details>
-  <summary>
-    <h2 id="entity-tick-t"> 🧩 IEntityTick&lt;E&gt;</h2>
-    <br>Defines a strongly-typed behavior that executes update logic on an <code>IEntity</code> of type <code>E</code>.
-  </summary>
-
-<br>
+# 🧩 IEntityTick&lt;E&gt;
 
 ```csharp
 public interface IEntityTick<in E> : IEntityTick where E : IEntity
@@ -14,7 +7,7 @@ public interface IEntityTick<in E> : IEntityTick where E : IEntity
 - **Description:** Provides a strongly-typed version of `IEntityTick` for handling update logic on a specific entity
   type.
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityTick](#entity-tick)
+- **Inherits:** [IEntityTick](IEntityTick.md)
 
 ---
 
@@ -34,7 +27,7 @@ public void Tick(E entity, float deltaTime);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Update the position of a `UnitEntity` every frame
 
@@ -60,5 +53,3 @@ public class MoveBehaviour : IEntityTick<UnitEntity>
 ```
 
 > Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
-
-</details>

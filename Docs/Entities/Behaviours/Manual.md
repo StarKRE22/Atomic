@@ -37,7 +37,7 @@ For each event, there is a dedicated interface that represents that phase:
     - [IEntityDisable&lt;E&gt;](IEntityDisable%601.md) <!-- + -->
 - **Tick**
     - [IEntityTick](IEntityTick.md) <!-- + -->
-    - [IEntityTick&lt;E&gt;](IEntityTick%601.md)
+    - [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
 - **FixedTick**
     - [IEntityFixedTick](IEntityFixedTick.md)
     - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md)
