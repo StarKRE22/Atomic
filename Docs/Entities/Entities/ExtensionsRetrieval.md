@@ -1,6 +1,6 @@
 # 🧩 Retrieval Extensions
 
-Provides extension methods for [IEntity](IEntity.md) searching and retrieving
+Provides extension methods for [IEntity](IEntity.md) searching and retrieving.
 
 ---
 

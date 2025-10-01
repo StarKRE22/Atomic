@@ -7,6 +7,31 @@ system is a **composition**.
 
 Below are the interfaces and classes for working with entities.
 
+<details>
+<summary><a href="IEntity.md">IEntity</a></summary>
+
+<ul>
+  <li><a href="IEntityCore.md">Core</a></li>
+  <li><a href="IEntityTags.md">Tags</a></li>
+  <li><a href="IEntityValues.md">Values</a></li>
+  <li><a href="IEntityBehaviours.md">Behaviours</a></li>
+  <li><a href="IEntityLifecycle.md">Lifecycle</a></li>
+</ul>
+
+</details>
+
+
+<details>
+<summary><strong>IEntity</strong></summary>
+
+- [Core](IEntityCore.md)
+- [Tags](IEntityTags.md)
+- [Values](IEntityValues.md)
+- [Behaviours](IEntityBehaviours.md)
+- [Lifecycle](IEntityLifecycle.md)
+
+</details>
+
 - **[IEntity](IEntity.md)** <!-- + -->
     - [Core](IEntityCore.md) <!-- + -->
     - [Tags](IEntityTags.md) <!-- + -->

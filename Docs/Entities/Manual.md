@@ -72,11 +72,10 @@ smoother and more powerful than in Unity.
   - [IEntityInstaller](Installers/IEntityInstaller.md)
   - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
   - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
-  - [Extensions](Entities/Extensions.md)
 
 - [Proxies]()
   - [SceneEntityProxy](Entities/SceneEntityProxy.md)
-  - [Extensions](Entities/Extensions.md)
+ 
 
 - [Singletons]()
   - [EntitySingleton](Entities/EntitySingleton.md)
