@@ -1,12 +1,19 @@
-- [Framework Lifecycle]
-    - [IInitSource](Lifecycle/Sources/IInitSource.md)
-    - [IEnableSource](Lifecycle/Sources/IEnableSource.md)
-    - [IUpdateSource](Lifecycle/Sources/IUpdateSource.md)
-    - [InitSubscription](Lifecycle/Subscriptions/InitSubscription.md)
-    - [EnableSubscription](Lifecycle/Subscriptions/EnableSubscription.md)
-    - [DisableSubscription](Lifecycle/Subscriptions/DisableSubscription.md)
-    - [DisposeSubscription](Lifecycle/Subscriptions/DisposeSubscription.md)
-    - [UpdateSubscription](Lifecycle/Subscriptions/UpdateSubscription.md)
-    - [FixedUpdateSubscription](Lifecycle/Subscriptions/FixedUpdateSubscription.md)
-    - [LateUpdateSubscription](Lifecycle/Subscriptions/LateUpdateSubscription.md)
-    - [Extensions](Lifecycle/Extensions.md)
+# 🧩 Lifecycle
+
+**Lifecycle** defines standardized interfaces for different stages of an entity or system lifecycle, such as
+initialization, enabling, and ticking. **Subscriptions** provide a declarative mechanism to register actions that
+execute automatically at specific lifecycle events.
+
+- **Contracts**
+    - [IInitLifecycle](Sources/IInitLifecycle.md)
+    - [IEnableLifecycle](Sources/IEnableLifecycle.md)
+    - [ITIckLifecycle](Sources/ITickLifecycle.md)
+- **Subscriptions**
+    - [InitSubscription](Subscriptions/InitSubscription.md)
+    - [EnableSubscription](Subscriptions/EnableSubscription.md)
+    - [DisableSubscription](Subscriptions/DisableSubscription.md)
+    - [DisposeSubscription](Subscriptions/DisposeSubscription.md)
+    - [TickSubscription](Subscriptions/TickSubscription.md)
+    - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md)
+    - [LateTickSubscription](Subscriptions/LateTickSubscription.md)
+- [Extensions](Extensions.md)

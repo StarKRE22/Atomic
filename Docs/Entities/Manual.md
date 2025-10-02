@@ -43,8 +43,7 @@ smoother and more powerful than in Unity.
 - [Entities](Entities/Manual.md) <!-- + -->
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
 - [Installers](Installers/Manual.md) <!-- + -->
-- [Aspects](Aspects/Manual.md)
-- [Entity API](EntityAPI/Manual.md)
+- [Aspects](Aspects/Manual.md) <!-- + -->
 - [Factories](Factories/Manual.md)
 - [Baking](Baking/Manual.md)
 - [Collections](Collections/Manual.md)
@@ -54,6 +53,7 @@ smoother and more powerful than in Unity.
 - [UI](UI/Manual.md)
 - [Utilities](Utils/Manual.md)
 - [Lifecycle](Lifecycle/Manual.md)
+- [Entity API](EntityAPI/Manual.md)
 
 
 

@@ -1,4 +1,4 @@
-# 🧩 IUpdateSource
+# 🧩 ITickSource
 
 An interface used internally by the framework to represent a **runtime-controllable update contract**.  
 Supports **regular**, **fixed**, and **late** update callbacks during the loop.
