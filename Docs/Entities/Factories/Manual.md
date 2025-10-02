@@ -6,7 +6,7 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 
 Below is a list of available factory types:
 
-- [IEntityFactory](IEntityFactory.md)
+- [IEntityFactory](IEntityFactory.md) <!-- + --> 
 - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md)
 - [SceneEntityFactory](SceneEntityFactory.md)
 - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md)

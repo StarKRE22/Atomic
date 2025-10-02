@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Values.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float2.gen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@c58b4ee65782/Editor/CustomEditors/CustomTimelineEditorCache.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -219,23 +216,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="18391000" />
-    </task>
-    <task id="LOCAL-01069" summary="IEntityEnable.md">
-      <option name="closed" value="true" />
-      <created>1759343978383</created>
-      <option name="number" value="01069" />
-      <option name="presentableId" value="LOCAL-01069" />
-      <option name="project" value="LOCAL" />
-      <updated>1759343978383</updated>
-    </task>
-    <task id="LOCAL-01070" summary="IEntityEnable`1.md">
-      <option name="closed" value="true" />
-      <created>1759344030098</created>
-      <option name="number" value="01070" />
-      <option name="presentableId" value="LOCAL-01070" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344030098</updated>
+      <workItem from="1759387244615" duration="26118000" />
     </task>
     <task id="LOCAL-01071" summary="IEntityDisable.md">
       <option name="closed" value="true" />
@@ -613,7 +594,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759405750655</updated>
     </task>
-    <option name="localTasksCounter" value="1118" />
+    <task id="LOCAL-01118" summary="Пилим фабрики!">
+      <option name="closed" value="true" />
+      <created>1759406554440</created>
+      <option name="number" value="01118" />
+      <option name="presentableId" value="LOCAL-01118" />
+      <option name="project" value="LOCAL" />
+      <updated>1759406554440</updated>
+    </task>
+    <task id="LOCAL-01119" summary="Прочесал Atomic.Elements">
+      <option name="closed" value="true" />
+      <created>1759426494490</created>
+      <option name="number" value="01119" />
+      <option name="presentableId" value="LOCAL-01119" />
+      <option name="project" value="LOCAL" />
+      <updated>1759426494490</updated>
+    </task>
+    <option name="localTasksCounter" value="1120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,8 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityInstaller`1.md" />
-    <MESSAGE value="SceneEntityInstaller.md" />
     <MESSAGE value="SceneEntityInstaller`1.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
     <MESSAGE value="ScriptableEntityInstaller`1.md" />
@@ -665,7 +660,9 @@
     <MESSAGE value="FixedTickSubscription.md" />
     <MESSAGE value="Lifecycle расписали!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Пилим фабрики!" />
+    <MESSAGE value="Прочесал Atomic.Elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Прочесал Atomic.Elements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
