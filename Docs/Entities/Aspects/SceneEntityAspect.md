@@ -5,7 +5,7 @@ public abstract class SceneEntityAspect : SceneEntityAspect<IEntity>, IEntityAsp
 ```
 
 - **Description:** Represents a non-generic `MonoBehaviour` that applies or discards reusable behavior on any [IEntity](../Entities/IEntity.md) within a Unity scene.
-- **Inheritance:** [SceneEntityAspect&lt;IEntity&gt;](SceneEntityAspect%601.md)
+- **Inheritance:** [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md)
 - **Note:** Ideal for modular behaviors that can be dynamically applied or removed at runtime.
 
 ---
