@@ -53,7 +53,7 @@ public MultiEntityFactory(params KeyValuePair<string, IEntityFactory<IEntity>>[]
 
 ## 🏹 Methods
 
-#### `Register`
+#### `Register(string, IEntityFactory<IEntity>)`
 
 ```csharp
 public void Register(string key, IEntityFactory<IEntity> factory);
@@ -68,7 +68,7 @@ public void Register(string key, IEntityFactory<IEntity> factory);
 
 ---
 
-#### `Unregister`
+#### `Unregister(string)`
 
 ```csharp
 public void Unregister(string key);
@@ -81,7 +81,7 @@ public void Unregister(string key);
 
 ---
 
-#### `Create`
+#### `Create(string)`
 
 ```csharp
 public IEntity Create(string key);

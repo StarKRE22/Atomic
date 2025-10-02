@@ -26,9 +26,6 @@ Below is a list of available factory types:
     - [ScriptableEntityFactoryCatalog](ScriptableEntityFactoryCatalog%601.md)
     - [ScriptableEntityFactoryCatalog&lt;E&gt;](ScriptableEntityFactoryCatalog.md)
 
----
-
-
 
 
 
