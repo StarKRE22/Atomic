@@ -109,38 +109,22 @@ protected virtual void Reset();
 
 ## 🗂 Example of Usage
 
-### 1️⃣ Simple Scene Factory
-
 ```csharp
 public class EnemySceneFactory : SceneEntityFactory<EnemyEntity>
 {
     public override EnemyEntity Create()
     {
-        var enemy = new EnemyEntity();
+        var enemy = new EnemyEntity(
+            this.name,
+            this.InitialTagCount,
+            this.InitialValueCount,
+            this.InitialBehaviourCount
+        );
+        enemy.AddTag("Enemy");
         enemy.AddValue<int>("Health", 100);
         enemy.AddValue<int>("Damage", 15);
+        enemy.AddBehaviour<AttackBehaviour>();
         return enemy;
-    }
-}
-```
-
-### 2️⃣ Using Precompile for Editor Metadata
-
-```csharp
-public class WeaponSceneFactory : SceneEntityFactory<WeaponEntity>
-{
-    public override WeaponEntity Create()
-    {
-        var weapon = new WeaponEntity();
-        weapon.AddValue<int>("Ammo", 30);
-        return weapon;
-    }
-
-    [ContextMenu("Update Metadata")]
-    protected override void Precompile()
-    {
-        base.Precompile();
-        Debug.Log($"Weapon factory precompiled: Tags={InitialTagCount}, Values={InitialValueCount}");
     }
 }
 ```

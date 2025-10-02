@@ -14,24 +14,7 @@ It is designed for **runtime instantiation, prototyping, and scene baking**, all
 
 ## Class: SceneEntityFactory (Non-Generic)
 
-```csharp
-public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityFactory
-{
-    public sealed override IEntity Create()
-    {
-        var entity = new Entity(
-            this.name,
-            this.InitialTagCount,
-            this.InitialValueCount,
-            this.InitialBehaviourCount
-        );
-        this.Install(entity);
-        return entity;
-    }
 
-    protected abstract void Install(IEntity entity);
-}
-```
 - Provides a **sealed** `Create()` method that constructs a base `Entity`.
 - Subclasses implement `Install(IEntity)` to apply custom configurations.
 
