@@ -19,7 +19,7 @@ Below are the different types of installers depending on the usage scenario:
 public sealed class CharacterInstaller : SceneEntityInstaller
 {
     [SerializeField] private Transform _transform;
-    [SerializeField] private float _moveSpeed = 5.0f;
+    [SerializeField] private float _moveSpeed  5.0f;
 
     public override void Install(IEntity entity)
     {
@@ -44,9 +44,9 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 ## 📝 Notes
 
-- **Installer** = declarative way of configuring entities.
-- **SceneEntityInstaller** = configuration via `MonoBehaviour`, bound to the scene.
-- **ScriptableEntityInstaller** = configuration via `ScriptableObject`, reusable logic.
-- **Generic Installers** = strongly typed variant for improved safety and readability.
+- **Installer** — declarative way of configuring entities.
+- **SceneEntityInstaller** — configuration via `MonoBehaviour`, bound to the scene.
+- **ScriptableEntityInstaller** — configuration via `ScriptableObject`, reusable logic.
+- **Generic Installers** — strongly typed variant for improved safety and readability.
 - Keep installers focused on **entity configuration only**; avoid embedding business logic.
 - Always override `Uninstall` when working with subscriptions or `IDisposable` objects to ensure proper cleanup.  
