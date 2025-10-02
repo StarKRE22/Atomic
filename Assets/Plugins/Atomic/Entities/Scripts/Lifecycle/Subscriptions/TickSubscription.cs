@@ -3,11 +3,14 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="ITickLifecycle"/>'s
-    /// <see cref="ITickLifecycle.OnTicked"/> event when disposed.
+    /// Represents a disposable subscription handle to an <see cref="ITickLifecycle"/>'s <see cref="ITickLifecycle.OnTicked"/> event.
     /// </summary>
     /// <remarks>
-    /// Useful for subscribing to frame-based updates and ensuring clean unsubscription to prevent memory leaks.
+    /// Allows temporarily reacting to frame-based updates of an <see cref="ITickLifecycle"/> instance.
+    /// When disposed, the subscription automatically detaches the callback to prevent memory leaks 
+    /// or repeated invocations.
+    /// 
+    /// Subscriptions are intended to be short-lived and can be safely used in a <c>using</c> statement or manually disposed.
     /// </remarks>
     public readonly struct TickSubscription : IDisposable
     {
@@ -15,10 +18,12 @@ namespace Atomic.Entities
         private readonly Action<float> _callback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TickSubscription"/> struct.
+        /// Initializes a new <see cref="TickSubscription"/> instance.
+        /// Subscribes the specified callback to the <see cref="ITickLifecycle.OnTicked"/> event of the provided source.
         /// </summary>
-        /// <param name="source">The updatable source to subscribe to.</param>
-        /// <param name="callback">The callback to invoke on update.</param>
+        /// <param name="source">The <see cref="ITickLifecycle"/> instance to subscribe to.</param>
+        /// <param name="callback">The callback action to invoke on each update tick.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="callback"/> is <c>null</c>.</exception>
         public TickSubscription(ITickLifecycle source, Action<float> callback)
         {
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -28,6 +33,8 @@ namespace Atomic.Entities
 
         /// <summary>
         /// Unsubscribes the callback from the <see cref="ITickLifecycle.OnTicked"/> event.
+        /// Calling this method ensures the callback will no longer be invoked.
+        /// Safe to call multiple times.
         /// </summary>
         public void Dispose()
         {

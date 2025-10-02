@@ -9,7 +9,7 @@ execute automatically at specific lifecycle events.
     - [IEnableLifecycle](Sources/IEnableLifecycle.md) <!-- + -->
     - [ITIckLifecycle](Sources/ITickLifecycle.md) <!-- + -->
 - **Subscriptions**
-    - [InitSubscription](Subscriptions/InitSubscription.md)
+    - [InitSubscription](Subscriptions/InitSubscription.md)  <!-- + -->
     - [EnableSubscription](Subscriptions/EnableSubscription.md)
     - [DisableSubscription](Subscriptions/DisableSubscription.md)
     - [DisposeSubscription](Subscriptions/DisposeSubscription.md)

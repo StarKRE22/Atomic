@@ -4,25 +4,22 @@
 public readonly struct InitSubscription : IDisposable
 ```
 
-- **Description:** A disposable subscription that detaches a callback from an `IInitSource`'s **OnInitialized** event
-  when disposed. Ensures **automatic unsubscription** and prevents memory leaks or unintended event calls.
+- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md) **OnInitialized** event.  
+  Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated invocations.
 - **Inheritance:** `IDisposable`
-- **Note:**
-    - Provides a safe way to subscribe temporarily to initialization events without manually unsubscribing.
-    - Not intended for direct use in typical user code; mainly used by framework infrastructure.
 
 ---
 
 ## 🏗️ Constructor
 
-```
-internal InitSubscription(IInitSource source, Action callback)
+```csharp
+public InitSubscription(IInitLifecycle source, Action callback)
 ```
 
-- **Description:** Initializes a new subscription to the `OnInitialized` event of the given `IInitSource`.
+- **Description:** Subscribes the provided callback to the `OnInitialized` event of the given source.
 - **Parameters:**
-    - `source` — The initialization source to subscribe to.
-    - `callback` — The callback to invoke when initialization occurs.
+  - `source` — The initialization source to subscribe to.
+  - `callback` — The callback action invoked upon initialization.
 
 ---
 
@@ -30,21 +27,9 @@ internal InitSubscription(IInitSource source, Action callback)
 
 ### `Dispose`
 
-```
+```csharp
 public void Dispose();
 ```
 
-- **Description:** Unsubscribes the callback from the `IInitSource.OnInitialized` event.
-- **Remarks:** Safe to call multiple times; should be called when the subscription is no longer needed.
-
----
-
-## 🗂 Example of Usage
-
-```
-// Use extension method "WhenInit()"
-InitSubscription handle = entity.WhenInit(() => Console.WriteLine("Entity initialized!"));
-
-// Unsubscribe later:
-handle.Dispose();
-```
+- **Description:** Detaches the callback from the `OnInitialized` event.
+- **Remarks:** Safe to call multiple times; should be invoked when the subscription is no longer needed.

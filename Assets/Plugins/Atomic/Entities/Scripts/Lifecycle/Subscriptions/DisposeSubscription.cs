@@ -3,11 +3,14 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription handle that unregisters a callback from an <see cref="IInitLifecycle"/>'s
-    /// <see cref="IInitLifecycle.OnDisposed"/> event upon disposal.
+    /// Represents a disposable subscription handle to an <see cref="IInitLifecycle"/>'s <see cref="IInitLifecycle.OnDisposed"/> event.
     /// </summary>
     /// <remarks>
-    /// Useful for managing temporary or one-time subscriptions to despawn events in a safe and deterministic way.
+    /// This struct allows temporarily reacting to disposal events of an <see cref="IInitLifecycle"/> instance.
+    /// When the subscription is disposed, it automatically unsubscribes the callback, preventing memory leaks 
+    /// or unintended repeated invocations.
+    /// 
+    /// Subscriptions are intended to be short-lived and can be safely used in a <c>using</c> statement or manually disposed.
     /// </remarks>
     public readonly struct DisposeSubscription : IDisposable
     {
@@ -15,10 +18,12 @@ namespace Atomic.Entities
         private readonly Action _callback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DisposeSubscription"/> struct.
+        /// Initializes a new <see cref="DisposeSubscription"/> instance.
+        /// Subscribes the specified callback to the <see cref="IInitLifecycle.OnDisposed"/> event of the provided source.
         /// </summary>
-        /// <param name="source">The spawnable entity the callback is subscribed to.</param>
-        /// <param name="callback">The callback to invoke on despawn.</param>
+        /// <param name="source">The <see cref="IInitLifecycle"/> instance to subscribe to.</param>
+        /// <param name="callback">The callback action to invoke when the source is disposed.</param>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="source"/> or <paramref name="callback"/> is <c>null</c>.</exception>
         public DisposeSubscription(IInitLifecycle source, Action callback)
         {
             _source = source ?? throw new ArgumentNullException(nameof(source));
@@ -28,6 +33,8 @@ namespace Atomic.Entities
 
         /// <summary>
         /// Unsubscribes the callback from the <see cref="IInitLifecycle.OnDisposed"/> event.
+        /// Calling this method ensures the callback will no longer be invoked.
+        /// Safe to call multiple times.
         /// </summary>
         public void Dispose()
         {
