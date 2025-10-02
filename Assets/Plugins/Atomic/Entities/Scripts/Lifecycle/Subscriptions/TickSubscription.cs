@@ -3,7 +3,8 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="ITickLifecycle"/>'s <see cref="ITickLifecycle.OnTicked"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="ITickLifecycle"/>'s
+    /// <see cref="ITickLifecycle.OnTicked"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for subscribing to frame-based updates and ensuring clean unsubscription to prevent memory leaks.
@@ -18,10 +19,11 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The updatable source to subscribe to.</param>
         /// <param name="callback">The callback to invoke on update.</param>
-        internal TickSubscription(ITickLifecycle source, Action<float> callback)
+        public TickSubscription(ITickLifecycle source, Action<float> callback)
         {
-            _source = source;
-            _callback = callback;
+            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
+            _source.OnTicked += _callback;
         }
 
         /// <summary>
@@ -29,8 +31,7 @@ namespace Atomic.Entities
         /// </summary>
         public void Dispose()
         {
-            if (_source != null && _callback != null)
-                _source.OnTicked -= _callback;
+            _source.OnTicked -= _callback;
         }
     }
 }

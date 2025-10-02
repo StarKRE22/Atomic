@@ -19,10 +19,11 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="source">The updatable source object to subscribe to.</param>
         /// <param name="callback">The callback to invoke on each fixed update.</param>
-        internal FixedTickSubscription(ITickLifecycle source, Action<float> callback)
+        public FixedTickSubscription(ITickLifecycle source, Action<float> callback)
         {
-            _source = source;
-            _callback = callback;
+            _source = source ?? throw new ArgumentNullException(nameof(source));
+            _callback = callback ?? throw new ArgumentNullException(nameof(callback));
+            _source.OnFixedTicked += _callback;
         }
 
         /// <summary>
@@ -30,8 +31,7 @@ namespace Atomic.Entities
         /// </summary>
         public void Dispose()
         {
-            if (_source != null && _callback != null)
-                _source.OnFixedTicked -= _callback;
+            _source.OnFixedTicked -= _callback;
         }
     }
 }

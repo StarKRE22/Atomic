@@ -3,7 +3,8 @@ using System;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A disposable subscription that detaches a callback from an <see cref="IInitLifecycle"/>'s <see cref="IInitLifecycle.OnInitialized"/> event when disposed.
+    /// A disposable subscription that detaches a callback from an <see cref="IInitLifecycle"/>'s
+    /// <see cref="IInitLifecycle.OnInitialized"/> event when disposed.
     /// </summary>
     /// <remarks>
     /// Useful for temporarily reacting to spawn events and ensuring automatic unsubscription upon disposal.
@@ -22,7 +23,7 @@ namespace Atomic.Entities
         {
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _callback = callback ?? throw new ArgumentNullException(nameof(callback));
-            _source.OnInitialized += callback;
+            _source.OnInitialized += _callback;
         }
 
         /// <summary>
