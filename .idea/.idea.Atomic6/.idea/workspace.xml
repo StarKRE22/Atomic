@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -218,23 +219,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="16956000" />
-    </task>
-    <task id="LOCAL-01067" summary="IEntityDispose`1.md">
-      <option name="closed" value="true" />
-      <created>1759340617715</created>
-      <option name="number" value="01067" />
-      <option name="presentableId" value="LOCAL-01067" />
-      <option name="project" value="LOCAL" />
-      <updated>1759340617715</updated>
-    </task>
-    <task id="LOCAL-01068" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759340674611</created>
-      <option name="number" value="01068" />
-      <option name="presentableId" value="LOCAL-01068" />
-      <option name="project" value="LOCAL" />
-      <updated>1759340674611</updated>
+      <workItem from="1759387244615" duration="18391000" />
     </task>
     <task id="LOCAL-01069" summary="IEntityEnable.md">
       <option name="closed" value="true" />
@@ -612,7 +597,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759404187892</updated>
     </task>
-    <option name="localTasksCounter" value="1116" />
+    <task id="LOCAL-01116" summary="Lifecycle расписали!">
+      <option name="closed" value="true" />
+      <created>1759405111604</created>
+      <option name="number" value="01116" />
+      <option name="presentableId" value="LOCAL-01116" />
+      <option name="project" value="LOCAL" />
+      <updated>1759405111604</updated>
+    </task>
+    <task id="LOCAL-01117" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759405750655</created>
+      <option name="number" value="01117" />
+      <option name="presentableId" value="LOCAL-01117" />
+      <option name="project" value="LOCAL" />
+      <updated>1759405750655</updated>
+    </task>
+    <option name="localTasksCounter" value="1118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityInstaller.md" />
     <MESSAGE value="IEntityInstaller`1.md" />
     <MESSAGE value="SceneEntityInstaller.md" />
     <MESSAGE value="SceneEntityInstaller`1.md" />
@@ -655,7 +655,6 @@
     <MESSAGE value="IInitLifecycle.md" />
     <MESSAGE value="IEnableLifecycle.md" />
     <MESSAGE value="Lifecycle" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Переделал подписки" />
     <MESSAGE value="Переписал подписки!" />
     <MESSAGE value="Обновил подписки!" />
@@ -664,7 +663,9 @@
     <MESSAGE value="DisableSubscription.md" />
     <MESSAGE value="TickSubscription.md" />
     <MESSAGE value="FixedTickSubscription.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="FixedTickSubscription.md" />
+    <MESSAGE value="Lifecycle расписали!" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,7 +1,61 @@
+# 🧩 IEntityFactory\<E>
+
+```csharp
+public interface IEntityFactory<out E> where E : IEntity
+```
+
+- **Description:** Defines a generic factory interface for creating instances of [IEntity](../Entities/IEntity.md)-based
+  types.
+- **Type Parameter:** `E` — The type of `IEntity` this factory creates.
+
+---
+
+## 🏹 Methods
+
+### `Create()`
+
+!!!
+E Create();
+!!!
+
+- **Description:** Creates and returns a new instance of the entity type `E`.  
+  Implementations may optionally preconfigure the entity with default tags, values, or behaviours before returning it.
+- **Returns:** A new instance of type `E`.
+
+---
+
+## 🗂 Example of Usage
+
+Create a generic factory for a `UnitEntity`:
+
+!!!
+public sealed class UnitEntityFactory : IEntityFactory<UnitEntity>
+{
+public UnitEntity Create()
+{
+var unit = new UnitEntity();
+unit.AddValue<int>("Health", 150);
+unit.AddValue<int>("AttackPower", 25);
+unit.AddTag("Unit");
+unit.AddBehaviour<MoveBehaviour>();
+return unit;
+}
+}
+!!!
+
+!!!
+IEntityFactory<UnitEntity> factory = new UnitEntityFactory();
+UnitEntity unit = factory.Create();
+!!!
+
+- **Description:** Factory encapsulates creation logic, ensures type-safety, and optionally initializes default data and
+  behaviours.
+
 # 🧩️ IEntityFactory
 
 `IEntityFactory` is a factory interface responsible for creating new instances of `IEntity`.  
-It provides both a **non-generic** and a **generic** version, making it useful in scenarios where entities are created dynamically at runtime (e.g., registries, catalogs, or data-driven systems).
+It provides both a **non-generic** and a **generic** version, making it useful in scenarios where entities are created
+dynamically at runtime (e.g., registries, catalogs, or data-driven systems).
 
 ---
 
@@ -10,7 +64,8 @@ It provides both a **non-generic** and a **generic** version, making it useful i
 - **Factory Pattern** – Encapsulates the creation of entity instances.
 - **Generic & Non-Generic** – Supports both `IEntity` and strongly-typed factories.
 - **Configurable Instantiation** – Implementations may apply default tags, values, or behaviours during creation.
-- **Integration Friendly** – Commonly used with registries, pools, and data-driven systems such as `ScriptableObject` or `MonoBehaviour`.
+- **Integration Friendly** – Commonly used with registries, pools, and data-driven systems such as `ScriptableObject` or
+  `MonoBehaviour`.
 - **Builder Support** – Factories can be extended into builders, allowing pre-configuration before entity creation.
 
 ---
@@ -29,12 +84,14 @@ public interface IEntityFactory : IEntityFactory<IEntity>
 ---
 
 ## Interface: IEntityFactory&lt;E&gt; (Generic)
+
 ```csharp
 public interface IEntityFactory<out E> where T : IEntity
 {
     T Create();
 }
 ```
+
 - Strongly-typed factory that produces instances of a specific entity type.
 - Ensures type safety and avoids unnecessary casting.
 - Can configure entity instances before returning them.
@@ -44,6 +101,7 @@ public interface IEntityFactory<out E> where T : IEntity
 ## Example Usage
 
 ### Example #1. Non-Generic Factory
+
 ```csharp
 public class BasicEntityFactory : IEntityFactory
 {
@@ -62,6 +120,7 @@ public class BasicEntityFactory : IEntityFactory
 ---
 
 ### Example #2. Generic Factory (Typed)
+
 ```csharp
 public class UnitEntityFactory : IEntityFactory<UnitEntity>
 {
@@ -80,6 +139,7 @@ public class UnitEntityFactory : IEntityFactory<UnitEntity>
 ---
 
 ### Example #3. Using Factory as a Builder
+
 Factories can also act like **builders**, allowing configuration before creation.  
 This is useful when the entity requires external dependencies or custom initialization.
 
@@ -134,9 +194,9 @@ var playerContext = new PlayerContextBuilder()
 > In this pattern, the factory provides `Set...` methods to configure parameters,  
 > and the final `Create()` produces a fully prepared `IPlayerContext`.
 
-
 ## Remarks
 
-- `IEntityFactory` is most useful for registries, catalogs, and data-driven systems where entities are created dynamically.
+- `IEntityFactory` is most useful for registries, catalogs, and data-driven systems where entities are created
+  dynamically.
 - The generic form `IEntityFactory<T>` should be preferred when working with a single known entity type.
 - Factories may be combined with pooling systems for efficient runtime entity management.  
