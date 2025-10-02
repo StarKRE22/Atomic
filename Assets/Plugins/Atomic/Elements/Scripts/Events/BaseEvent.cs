@@ -16,21 +16,7 @@ namespace Atomic.Elements
     public class BaseEvent : IEvent, IDisposable
     {
         public event Action OnEvent;
-
-        /// <summary>
-        /// Subscribes a handler to the event.
-        /// </summary>
-        public Subscription Subscribe(Action action)
-        {
-            this.OnEvent += action;
-            return new Subscription(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a handler from the event.
-        /// </summary>
-        public void Unsubscribe(Action action) => this.OnEvent -= action;
-
+        
         /// <summary>
         /// Invokes the event, notifying all subscribers.
         /// </summary>
@@ -55,21 +41,7 @@ namespace Atomic.Elements
     public class BaseEvent<T> : IEvent<T>, IDisposable
     {
         public event Action<T> OnEvent;
-
-        /// <summary>
-        /// Subscribes a handler to the event.
-        /// </summary>
-        public Subscription<T> Subscribe(Action<T> action)
-        {
-            this.OnEvent += action;
-            return new Subscription<T>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a handler from the event.
-        /// </summary>
-        public void Unsubscribe(Action<T> action) => this.OnEvent -= action;
-
+        
         /// <summary>
         /// Invokes the event with the specified argument.
         /// </summary>
@@ -94,21 +66,7 @@ namespace Atomic.Elements
     public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
     {
         public event Action<T1, T2> OnEvent;
-
-        /// <summary>
-        /// Subscribes a handler to the event.
-        /// </summary>
-        public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
-        {
-            this.OnEvent += action;
-            return new Subscription<T1, T2>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a handler from the event.
-        /// </summary>
-        public void Unsubscribe(Action<T1, T2> action) => this.OnEvent -= action;
-
+        
         /// <summary>
         /// Invokes the event with the specified arguments.
         /// </summary>
@@ -133,21 +91,7 @@ namespace Atomic.Elements
     public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
     {
         public event Action<T1, T2, T3> OnEvent;
-
-        /// <summary>
-        /// Subscribes a handler to the event.
-        /// </summary>
-        public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
-        {
-            this.OnEvent += action;
-            return new Subscription<T1, T2, T3>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a handler from the event.
-        /// </summary>
-        public void Unsubscribe(Action<T1, T2, T3> action) => this.OnEvent -= action;
-
+        
         /// <summary>
         /// Invokes the event with the specified arguments.
         /// </summary>
@@ -161,8 +105,7 @@ namespace Atomic.Elements
         /// </summary>
         public void Dispose() => this.OnEvent = null;
     }
-
-
+    
     /// <summary>
     /// Represents an event with three arguments that supports subscription, invocation, and disposal.
     /// </summary>
@@ -173,21 +116,7 @@ namespace Atomic.Elements
     public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
     {
         public event Action<T1, T2, T3, T4> OnEvent;
-
-        /// <summary>
-        /// Subscribes a handler to the event.
-        /// </summary>
-        public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
-        {
-            this.OnEvent += action;
-            return new Subscription<T1, T2, T3, T4>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a handler from the event.
-        /// </summary>
-        public void Unsubscribe(Action<T1, T2, T3, T4> action) => this.OnEvent -= action;
-
+        
         /// <summary>
         /// Invokes the event with the specified arguments.
         /// </summary>
