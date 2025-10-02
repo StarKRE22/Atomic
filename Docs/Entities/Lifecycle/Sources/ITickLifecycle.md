@@ -7,12 +7,8 @@ public interface ITickLifecycle
 - **Description:** Represents a **runtime-controllable update contract** for entities or systems.  
   Provides events and methods for subscribing to or triggering **Update**, **FixedUpdate**, and **LateUpdate**
   callbacks.
-- **Remarks:** Allows systems or entities to hook into the Unity or custom game loop without requiring MonoBehaviour
-  inheritance.
-
-> [!NOTE]
-> This is an **internal framework interface**. You should **not implement it manually** — it is used by the
-> framework infrastructure.
+- **Note:** This is an **internal framework interface**. You should **not implement it manually** — it is used by the
+  framework infrastructure.
 
 ---
 

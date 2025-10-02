@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,23 +217,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="8498000" />
-    </task>
-    <task id="LOCAL-01052" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759311804283</created>
-      <option name="number" value="01052" />
-      <option name="presentableId" value="LOCAL-01052" />
-      <option name="project" value="LOCAL" />
-      <updated>1759311804283</updated>
-    </task>
-    <task id="LOCAL-01053" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759311855584</created>
-      <option name="number" value="01053" />
-      <option name="presentableId" value="LOCAL-01053" />
-      <option name="project" value="LOCAL" />
-      <updated>1759311855584</updated>
+      <workItem from="1759387244615" duration="8971000" />
     </task>
     <task id="LOCAL-01054" summary="Пилим!">
       <option name="closed" value="true" />
@@ -610,7 +595,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759395404684</updated>
     </task>
-    <option name="localTasksCounter" value="1101" />
+    <task id="LOCAL-01101" summary="IInitLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1759396176641</created>
+      <option name="number" value="01101" />
+      <option name="presentableId" value="LOCAL-01101" />
+      <option name="project" value="LOCAL" />
+      <updated>1759396176641</updated>
+    </task>
+    <task id="LOCAL-01102" summary="IInitLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1759396247605</created>
+      <option name="number" value="01102" />
+      <option name="presentableId" value="LOCAL-01102" />
+      <option name="project" value="LOCAL" />
+      <updated>1759396247605</updated>
+    </task>
+    <option name="localTasksCounter" value="1103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityDisable.md" />
     <MESSAGE value="IEntityTick.md" />
     <MESSAGE value="IEntityTick`1.md" />
     <MESSAGE value="IEntityFixedTick.md" />
@@ -662,7 +662,8 @@
     <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="ScriptableEntityAspect`1.md" />
     <MESSAGE value="Lifecycle.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lifecycle.md" />
+    <MESSAGE value="IInitLifecycle.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IInitLifecycle.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

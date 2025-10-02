@@ -8,10 +8,8 @@ public interface IInitLifecycle
   Provides events for initialization and disposal state changes, as well as a method to explicitly initialize the
   object.
 - **Inheritance:** `IDisposable`
-
-> [!NOTE]
-> This is an **internal framework interface**. You should **not implement it manually** — it is used by the
-> framework infrastructure.
+- **Note:** This is an **internal framework interface**. You should **not implement it manually** — it is used by the
+  framework infrastructure.
 
 ---
 

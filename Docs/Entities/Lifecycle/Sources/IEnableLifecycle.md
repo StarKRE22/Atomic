@@ -6,10 +6,8 @@ public interface IEnableLifecycle
 
 - **Description:** Represents a **runtime-controllable enable and disable contract** for entities or systems. Provides
   events for enable and disable state changes, as well as methods to programmatically toggle the state.
-
-> [!NOTE]
-> This is an **internal framework interface**. You should **not implement it manually** — it is used by the framework
-> infrastructure.
+- Note: This is an **internal framework interface**. You should **not implement it manually** — it is used by the
+  framework infrastructure.
 
 ---
 
