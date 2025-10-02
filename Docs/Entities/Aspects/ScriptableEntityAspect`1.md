@@ -1,24 +1,18 @@
-
-<details>
-  <summary>
-    <h2 id="scriptable-entity-aspect-e"> 🧩 ScriptableEntityAspect&lt;E&gt;</h2>
-    <br>Generic base class for applying/discarding behavior on a specific entity type.
-  </summary>
-
-<br>
+# 🧩 ScriptableEntityAspect&lt;E&gt;
 
 ```csharp
 public abstract class ScriptableEntityAspect<E> : ScriptableObject, IEntityAspect<E> where E : IEntity
 ```
 
+- **Description:** Represents a generic `ScriptableObject` that applies or discards reusable behavior on a strongly-typed entity.
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
-- **Description:** Provides type-safe application and discard of behavior for a specific entity type.
-- **Inheritance:** Implements [IEntityAspect&lt;E&gt;](IEntityAspect.md/#ienity-aspect-e)
-- **Use Case:** Great for type-specific buffs/debuffs applied to multiple entities.
+- **Inheritance:** `ScriptableObject`, [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
+- **Note:** Great for type-specific buffs or debuffs applied to multiple entities.
+- **See also:** [ScriptableEntityAspect](ScriptableEntityAspect.md)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Apply(E)`
 
@@ -27,7 +21,7 @@ public abstract void Apply(E entity);
 ```
 
 - **Description:** Applies the aspect to the strongly-typed entity.
-- **Parameters:** `entity` – The entity of type `E` to which the aspect will be applied.
+- **Parameter:** `entity` – The entity of type `E` to which the aspect will be applied.
 
 #### `Discard(E)`
 
@@ -36,13 +30,19 @@ public abstract void Discard(E entity);
 ```
 
 - **Description:** Reverses the effects of `Apply` on the strongly-typed entity.
-- **Parameters:** `entity` – The entity from which the aspect should be removed.
+- **Parameter:** `entity` – The entity from which the aspect should be removed.
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
-The `PlayerFlyAspect` adds flying capabilities to a specific entity type implementing `IPlayerEntity`.
+Adds flying capabilities to a specific entity type implementing `IPlayerEntity`:
+
+```csharp
+public interface IPlayerEntity : IEntity
+{
+}
+```
 
 ```csharp
 [CreateAssetMenu(
@@ -51,7 +51,7 @@ The `PlayerFlyAspect` adds flying capabilities to a specific entity type impleme
 )]
 public sealed class PlayerFlyAspect : ScriptableEntityAspect<IPlayerEntity>
 {
-    [SerializeField] 
+    [SerializeField]
     private float _flyForce = 2f;
 
     public override void Apply(IPlayerEntity entity)
@@ -70,7 +70,4 @@ public sealed class PlayerFlyAspect : ScriptableEntityAspect<IPlayerEntity>
 }
 ```
 
-> Note: Using the generic `ScriptableEntityAspect<IPlayerEntity>` allows type-safe access to entity-specific properties
-> without casting.
-
-</details>
+> Note: Using the generic `ScriptableEntityAspect<IPlayerEntity>` allows type-safe access to entity-specific properties without casting.

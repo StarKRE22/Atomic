@@ -8,7 +8,6 @@ public abstract class ScriptableEntityAspect : ScriptableEntityAspect<IEntity>, 
   any [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [ScriptableEntityAspect&lt;E&gt;](SceneEntityAspect%601.md), [IEntityAspect](IEntityAspect.md)
 - **Note:** Ideal for lightweight buffs or debuffs stored as `ScriptableObject` assets.
-- **See also:** [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md)
 
 ---
 
