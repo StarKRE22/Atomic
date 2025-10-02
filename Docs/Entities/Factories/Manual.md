@@ -11,7 +11,7 @@ Below is a list of available factory types:
 - [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
 - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
 - [ScriptableEntityFactory](ScriptableEntityFactory.md)
-- [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md)
+- [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
 - [InlineEntityFactory](InlineEntityFactory.md)
 - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md)
 - [IMultiEntityFactory](IMultiEntityFactory.md)

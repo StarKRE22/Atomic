@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
@@ -215,31 +216,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="27824000" />
-    </task>
-    <task id="LOCAL-01076" summary="IEntityLateTick.md">
-      <option name="closed" value="true" />
-      <created>1759344776469</created>
-      <option name="number" value="01076" />
-      <option name="presentableId" value="LOCAL-01076" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344776469</updated>
-    </task>
-    <task id="LOCAL-01077" summary="IEntityLateTick`1.md">
-      <option name="closed" value="true" />
-      <created>1759344824482</created>
-      <option name="number" value="01077" />
-      <option name="presentableId" value="LOCAL-01077" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344824482</updated>
-    </task>
-    <task id="LOCAL-01078" summary="IEntityGizmos.md">
-      <option name="closed" value="true" />
-      <created>1759345010708</created>
-      <option name="number" value="01078" />
-      <option name="presentableId" value="LOCAL-01078" />
-      <option name="project" value="LOCAL" />
-      <updated>1759345010708</updated>
+      <workItem from="1759387244615" duration="28764000" />
     </task>
     <task id="LOCAL-01079" summary="IEntityGizmos`1.md">
       <option name="closed" value="true" />
@@ -609,7 +586,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759430412499</updated>
     </task>
-    <option name="localTasksCounter" value="1125" />
+    <task id="LOCAL-01125" summary="SceneEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759430663573</created>
+      <option name="number" value="01125" />
+      <option name="presentableId" value="LOCAL-01125" />
+      <option name="project" value="LOCAL" />
+      <updated>1759430663573</updated>
+    </task>
+    <task id="LOCAL-01126" summary="SceneEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759430842341</created>
+      <option name="number" value="01126" />
+      <option name="presentableId" value="LOCAL-01126" />
+      <option name="project" value="LOCAL" />
+      <updated>1759430842341</updated>
+    </task>
+    <task id="LOCAL-01127" summary="SceneEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1759431301527</created>
+      <option name="number" value="01127" />
+      <option name="presentableId" value="LOCAL-01127" />
+      <option name="project" value="LOCAL" />
+      <updated>1759431301527</updated>
+    </task>
+    <option name="localTasksCounter" value="1128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityInstallers" />
     <MESSAGE value="IEntityAspect.md" />
     <MESSAGE value="IEntityAspect`1.md" />
     <MESSAGE value="SceneEntityAspect.md" />
@@ -661,7 +661,8 @@
     <MESSAGE value="IEntityFactory.md" />
     <MESSAGE value="IEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory`1.md" />
+    <MESSAGE value="SceneEntityFactory.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
