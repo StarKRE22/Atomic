@@ -8,15 +8,16 @@ public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> w
   entities with customizable initial settings.
 - **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
-- **Notes:** Stores initial tag, value, and behaviour counts for optimization.
+- **Notes:** Stores initial tag, value, and behaviour capacities for optimization.
+- **See also:** [SceneEntityFactory](SceneEntityFactory.md)
 
 ---
 
 ## 🛠 Inspector Settings
 
-| Parameters              | Description                                          | 
-|-------------------------|------------------------------------------------------|
-| `initialTagCapacity`    | Initial number of tags to assign to the entity       |
+| Parameters                 | Description                                          | 
+|----------------------------|------------------------------------------------------|
+| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
 | `initialValueCapacity`     | Initial number of values to assign to the entity     |
 | `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
 
@@ -103,7 +104,6 @@ protected virtual void Reset();
 
 - **Description:** Unity callback that resets factory fields to default values.
 - **Remarks:** Only affects editor workflows.
-
 
 ---
 

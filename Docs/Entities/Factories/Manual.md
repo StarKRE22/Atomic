@@ -8,7 +8,7 @@ Below is a list of available factory types:
 
 - [IEntityFactory](IEntityFactory.md) <!-- + --> 
 - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
-- [SceneEntityFactory](SceneEntityFactory.md)
+- [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
 - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
 - [ScriptableEntityFactory](ScriptableEntityFactory.md)
 - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md)

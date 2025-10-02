@@ -1,163 +1,133 @@
 # 🧩️ SceneEntityFactory
 
-`SceneEntityFactory` is an **abstract Unity-based factory** for creating and configuring `IEntity` instances in **scene-based workflows**.  
-It is designed for **runtime instantiation, prototyping, and scene baking**, allowing custom logic to be applied after creation via `Install`.
-
----
-
-## Key Features
-
-- **Predefined Parameters** – Stores initial tag, value, and behaviour counts for optimization.
-
-
----
-
-## Class: SceneEntityFactory (Non-Generic)
-
-
-- Provides a **sealed** `Create()` method that constructs a base `Entity`.
-- Subclasses implement `Install(IEntity)` to apply custom configurations.
-
----
-
-## Class: SceneEntityFactory&lt;E&gt; (Generic)
 ```csharp
-public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
-{
-    [SerializeField] protected int InitialTagCount;
-    [SerializeField] protected int InitialValueCount;
-    [SerializeField] protected int InitialBehaviourCount;
-
-    public abstract E Create();
-
-    protected virtual void Reset()
-    {
-        this.InitialTagCount = 0;
-        this.InitialValueCount = 0;
-        this.InitialBehaviourCount = 0;
-    }
-
-    protected virtual void Precompile()
-    {
-        E entity = this.Create();
-        if (entity != null)
-        {
-            this.InitialTagCount = entity.TagCount;
-            this.InitialValueCount = entity.ValueCount;
-            this.InitialBehaviourCount = entity.BehaviourCount;
-        }
-        else
-        {
-            Debug.LogWarning($"{nameof(SceneEntityFactory<E>)}: Create() returned null.", this);
-        }
-    }
-}
-```
----
-
-## Example Usage
-
-### Example #1. Simple Scene Factory
-```csharp
-public class EnemySceneFactory : SceneEntityFactory<EnemyEntity>
-{
-    public override EnemyEntity Create()
-    {
-        var enemy = new EnemyEntity();
-        enemy.AddValue<int>("Health", 100);
-        enemy.AddValue<int>("Damage", 15);
-        return enemy;
-    }
-}
+public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityFactory
 ```
 
+- **Description:** Abstract class for Unity-based factories that create and configure [Entity](../Entities/Entity.md)
+  instances.
+- **Inheritance:** [SceneEntityFactory\<IEntity>](SceneEntityFactory%601.md), [IEntityFactory](IEntityFactory.md)
+- **Notes:** Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
+
 ---
 
-### Example #2. Custom Installation
+## 🛠 Inspector Settings
+
+| Parameters                 | Description                                          | 
+|----------------------------|------------------------------------------------------|
+| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
+| `initialValueCapacity`     | Initial number of values to assign to the entity     |
+| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
+
+> These parameters are primarily used for **Editor optimization** and scene baking workflows.
+
+---
+
+## 🧱 Fields
+
+#### `InitialTagCapacity`
+
+```csharp
+[SerializeField] 
+protected int initialTagCount;
+```
+
+- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and scene
+  baking.
+
+#### `InitialValueCapacity`
+
+```csharp
+[SerializeField]
+protected int initialValueCount;
+```
+
+- **Description:** Initial number of values to assign to the entity.
+
+#### `InitialBehaviourCapacity`
+
+```csharp
+[SerializeField] 
+protected int initialBehaviourCount;
+```
+
+- **Description:** Initial number of behaviours to assign to the entity.
+
+---
+
+## 🏹 Methods
+
+#### `Create()`
+
+```csharp
+public sealed override IEntity Create();
+```
+
+- **Description:** Creates a new [Entity](../Entities/Entity.md) using predefined initialization values and then applies
+  custom logic via the `Install` method.
+- **Returns:** A new instance of [IEntity](../Entities/IEntity.md).
+- **Note:** This method is `sealed`; override `Install(IEntity)` for custom configuration.
+
+#### `Install(IEntity)`
+
+```csharp
+protected abstract void Install(IEntity entity);
+```
+
+- **Description:** Called after entity creation to add tags, values, or behaviours.
+- **Parameter:** `entity` — The [IEntity](../Entities/IEntity.md) instance to configure.
+- **Note:** Must be implemented by derived classes to provide custom setup logic.
+
+#### `OnValidate()`
+
+```csharp
+protected virtual void OnValidate();
+```
+
+- **Description:** Unity callback invoked when script values change in the Inspector. Updates cached metadata by calling
+  `Precompile()` by default.
+- **Remarks:** Only executed in the Editor outside of Play mode.
+
+---
+
+## ▶️ Context Menu
+
+#### `Precompile()`
+
+```csharp
+[ContextMenu(nameof(Precompile))]
+protected virtual void Precompile();
+```
+
+- **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
+  count, and behaviour count. Useful for editor previews, scene baking, and optimization.
+- **Remarks:** Useful for optimization. Only executed in the Editor. Logs a warning if `Create()` returns `null`.
+
+#### `Reset()`
+
+```csharp
+protected virtual void Reset();
+```
+
+- **Description:** Unity callback that resets factory fields to default values.
+- **Remarks:** Only affects editor workflows.
+
+---
+
+## 🗂 Example of Usage
+
 ```csharp
 public class CharacterSceneFactory : SceneEntityFactory
 {
     protected override void Install(IEntity entity)
     {
+        entity.AddTag("Player");
         entity.AddValue<int>("Health", 200);
         entity.AddValue<string>("Name", "Hero");
         entity.AddBehaviour<DeathBehaviour>();
     }
 }
 ```
----
 
-### Example #3. Using Factory as a Builder
-
-This builder is **lightweight** — can be reused across multiple objects and configured via fluent interface.
-
-```csharp
-public sealed class PlayerContextSceneBuilder : SceneEntityFactory<PlayerContext>
-{
-    private GameContext _gameContext;
-    private TeamType _teamType;
-    private Camera _camera;
-
-    public PlayerContextSceneBuilder SetGameContext(GameContext gameContext)
-    {
-        _gameContext = gameContext;
-        return this;
-    }
-
-    public PlayerContextSceneBuilder SetTeamType(TeamType teamType)
-    {
-        _teamType = teamType;
-        return this;
-    }
-
-    public PlayerContextSceneBuilder SetCamera(Camera camera)
-    {
-        _camera = camera;
-        return this;
-    }
-
-    public override PlayerContext Create()
-    {
-        if (_gameContext == null)
-            throw new InvalidOperationException("GameContext must be set before creating PlayerContext.");
-        if (_camera == null)
-            throw new InvalidOperationException("Camera must be set before creating PlayerContext.");
-        if (_teamType == default)
-            throw new InvalidOperationException("TeamType must be set before creating PlayerContext.");
-
-        var playerContext = new PlayerContext();
-        playerContext.AddValue<TeamType>("TeamType", _teamType);
-        playerContext.AddValue<GameContext>("GameContext", _gameContext);
-        playerContext.AddValue<Camera>("Camera", _camera);
-
-        return playerContext;
-    }
-}
-```
-
-```csharp
-// Usage:
-public class Example : MonoBehaviour
-{
-    [SerializeField] private PlayerContextSceneBuilder _playerBuilder;
-
-    private void Start()
-    {
-        var playerContext = _playerBuilder
-            .SetGameContext(gameContext)
-            .SetTeamType(teamType)
-            .SetCamera(camera)
-            .Create();
-    }
-}
-```
-
----
-
-## Remarks
-
-- Use **non-generic** `SceneEntityFactory` for heterogeneous entities in scene workflows.
-- Use **generic** `SceneEntityFactory<E>` for type-safe creation when the entity type is known.
-- `Precompile` caches metadata (`TagCount`, `ValueCount`, `BehaviourCount`) to optimize editor previews and scene baking.
-- `Install(IEntity)` allows injecting behaviours, components, or custom configuration after creation.
-- Builder-style factories are **lightweight** and suitable for multiple reuses without performance overhead.  
+> This pattern allows creating a fully configured `Entity` in a scene-based workflow, combining predefined capacities
+> with custom logic via `Install()`.
