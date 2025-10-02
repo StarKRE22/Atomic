@@ -20,7 +20,7 @@ public interface IInitLifecycle
 #### `OnInitialized`
 
 ```csharp
-event Action OnInitialized;
+public event Action OnInitialized;
 ```
 
 - **Description:** Triggered when the object has been successfully initialized.
@@ -28,7 +28,7 @@ event Action OnInitialized;
 #### `OnDisposed`
 
 ```csharp
-event Action OnDisposed;
+public event Action OnDisposed;
 ```
 
 - **Description:** Triggered when the object has been disposed and its resources released.
@@ -40,7 +40,7 @@ event Action OnDisposed;
 #### `Initialized`
 
 ```csharp
-bool Initialized { get; }
+public bool Initialized { get; }
 ```
 
 - **Description:** Indicates whether the object is currently initialized.
@@ -52,7 +52,7 @@ bool Initialized { get; }
 #### `Init`
 
 ```csharp
-void Init();
+public void Init();
 ```
 
 - **Description:** Initializes the object, transitioning it into the **initialized state**.
@@ -61,7 +61,7 @@ void Init();
 #### `Dispose`
 
 ```csharp
-void Dispose();
+public void Dispose();
 ```
 
 - **Description:** Disposes the object and releases its resources, transitioning it into the **disposed state**.
