@@ -4,8 +4,9 @@
 public readonly struct InitSubscription : IDisposable
 ```
 
-- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md) **OnInitialized** event.  
-  Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated invocations.
+- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md)
+  **OnInitialized** event. Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated
+  invocations.
 - **Inheritance:** `IDisposable`
 
 ---
@@ -18,8 +19,8 @@ public InitSubscription(IInitLifecycle source, Action callback)
 
 - **Description:** Subscribes the provided callback to the `OnInitialized` event of the given source.
 - **Parameters:**
-  - `source` — The initialization source to subscribe to.
-  - `callback` — The callback action invoked upon initialization.
+    - `source` — The initialization source to subscribe to.
+    - `callback` — The callback action invoked upon initialization.
 
 ---
 

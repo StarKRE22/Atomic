@@ -4,16 +4,15 @@
 public readonly struct DisposeSubscription : IDisposable
 ```
 
-- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md) *
-  *OnDisposed** event.  
-  Automatically unsubscribes the callback when disposed, ensuring safe cleanup and preventing memory leaks.
+- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md) 
+  **OnDisposed** event. Automatically unsubscribes the callback when disposed, ensuring safe cleanup and preventing memory leaks.
 - **Inheritance:** `IDisposable`
 
 ---
 
 ## 🏗️ Constructor
 
-```
+```csharp
 public DisposeSubscription(IInitLifecycle source, Action callback)
 ```
 
@@ -28,7 +27,7 @@ public DisposeSubscription(IInitLifecycle source, Action callback)
 
 ### `Dispose`
 
-```
+```csharp
 public void Dispose();
 ```
 
