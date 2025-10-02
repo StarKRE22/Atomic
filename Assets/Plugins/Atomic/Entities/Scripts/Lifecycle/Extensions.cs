@@ -17,7 +17,6 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static InitSubscription WhenInit(this IInitLifecycle source, Action action)
         {
-            source.OnInitialized += action;
             return new InitSubscription(source, action);
         }
 
