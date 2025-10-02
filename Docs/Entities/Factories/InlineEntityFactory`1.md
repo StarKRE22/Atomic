@@ -12,7 +12,9 @@ public class InlineEntityFactory<E> : IEntityFactory<E> where E : IEntity
 - **See also:** [InlineEntityFactory](InlineEntityFactory.md)
 
 > [!TIP]
-> **InlineFactory** can be used as great mock for Unit-tests.
+> **InlineEntityFactory** can be used as a lightweight mock for unit tests, allowing quick creation of test entities
+> without implementing a full factory class.
+
 ---
 
 ## 🏗️ Constructors
