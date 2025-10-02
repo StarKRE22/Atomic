@@ -1,28 +1,16 @@
-# 🧩 IEntityInstaller Interfaces
+# 🧩 IEntityInstaller
 
-Represents a interface that configures or injects data into an [IEntity](../Entities/IEntity.md) instance. It
-allows setting up values, components, or behaviors during initialization or configuration phases.
-
----
-
-<details>
-  <summary>
-    <h2 id="entity-installer"> 🧩 IEntityInstaller</h2>
-    <br>Defines a behavior that installs configuration into an <code>IEntity</code>.
-  </summary>
-
-<br>
 
 ```csharp
 public interface IEntityInstaller
 ```
 
-- **Description:** Provides a generic mechanism for configuring an entity.
-- **Use Case:** Add tags, values, or behaviors to an entity during its setup phase.
-
+- **Description:** Represents an interface that configures or injects data into an [IEntity](../Entities/IEntity.md) instance. 
+- **Note:** It allows setting up values, components, or behaviors during initialization or configuration phases.
+- **See also:** [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Install(IEntity)`
 
@@ -36,7 +24,7 @@ public void Install(IEntity entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Add tags, values, and behaviors to a character entity:
 
@@ -60,8 +48,5 @@ public sealed class CharacterInstaller : IEntityInstaller
         entity.AddBehaviour<MoveBehaviour>();
         entity.AddBehaviour<LookBehaviour>();
     }
-
 }
 ```
-
-</details>
