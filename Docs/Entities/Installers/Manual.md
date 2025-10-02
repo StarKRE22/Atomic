@@ -1,11 +1,8 @@
 # 🧩 Entity Installers
 
-**Entity Installer** — это компонент, который выполняет установку тэгов, значений и поведений в экземпляр сущности. Он
-представляет собой декларативный механизм настройки сущностей на этапе инициализации или во время выполнения.
+**Entity Installer** is a component that installs tags, values, and behaviors into an entity instance. It provides a **declarative mechanism** for configuring entities during initialization or runtime.
 
----
-
-Ниже описаны все типы инсталлеров в зависимости от необходимости использования
+Below are the different types of installers depending on the usage scenario:
 
 - [IEntityInstaller](IEntityInstaller.md)
 - [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
@@ -31,30 +28,25 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
         entity.AddValue("Transform", _transform);
         entity.AddValue("MoveSpeed", _moveSpeed);
+        entity.AddValue("MoveDirection", Vector3.zero);
 
         entity.AddBehaviour<MoveBehaviour>();
     }
 
     public override void Uninstall(IEntity entity)
     {
-        // Очистка или отписка от событий при уничтожении
+        // Cleanup or unsubscribe from events when the entity is destroyed
     }
-
 }
 ```
-!!!
-
-!!!
 
 ---
 
 ## 📝 Notes
 
-
-- **Installer** = декларативный способ конфигурации сущностей.
-- **SceneEntityInstaller** = настройка через `MonoBehaviour`, привязка к сцене.
-- **ScriptableEntityInstaller** = настройка через `ScriptableObject`, переиспользуемая логика.
-- **Generic Installers** = строго типизированный вариант для повышения безопасности и читаемости кода.
-- Старайтесь описывать в инсталлере только **настройку** сущности, избегая бизнес-логики.
-- Для корректного освобождения ресурсов всегда переопределяйте метод `Uninstall`, если есть подписки или
-  IDisposable-объекты.
+- **Installer** = declarative way of configuring entities.
+- **SceneEntityInstaller** = configuration via `MonoBehaviour`, bound to the scene.
+- **ScriptableEntityInstaller** = configuration via `ScriptableObject`, reusable logic.
+- **Generic Installers** = strongly typed variant for improved safety and readability.
+- Keep installers focused on **entity configuration only**; avoid embedding business logic.
+- Always override `Uninstall` when working with subscriptions or `IDisposable` objects to ensure proper cleanup.  
