@@ -48,9 +48,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the factory using a params array of key-factory pairs.
         /// </summary>
-        /// <param name="factory">The key-factory pairs to initialize with.</param>
-        public MultiEntityFactory(params KeyValuePair<string, IEntityFactory<IEntity>>[] factory) :
-            base(factory)
+        /// <param name="factories">The key-factory pairs to initialize with.</param>
+        public MultiEntityFactory(params KeyValuePair<string, IEntityFactory<IEntity>>[] factories) :
+            base(factories)
         {
         }
     }
@@ -81,9 +81,9 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes the factory with a params array of key-factory pairs.
         /// </summary>
-        /// <param name="factory">The key-factory pairs to initialize with.</param>
-        public MultiEntityFactory(params KeyValuePair<TKey, IEntityFactory<E>>[] factory) =>
-            _factories = new Dictionary<TKey, IEntityFactory<E>>(factory);
+        /// <param name="factories">The key-factory pairs to initialize with.</param>
+        public MultiEntityFactory(params KeyValuePair<TKey, IEntityFactory<E>>[] factories) =>
+            _factories = new Dictionary<TKey, IEntityFactory<E>>(factories);
 
         /// <inheritdoc />
         public void Register(TKey key, IEntityFactory<E> factory) => _factories.Add(key, factory);

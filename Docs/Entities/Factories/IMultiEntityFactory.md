@@ -1,39 +1,60 @@
 # 🧩 IMultiEntityFactory
 
-`IMultiEntityFactory` is a **registry interface** for storing and retrieving entity factories by key.  
-It allows dynamic registration, removal, and creation of entities in a type-safe and structured way.
-
----
-
-## Key Features
-
-- **Dynamic Registration** – Factories can be added or removed at runtime.
-- **Generic & Non-Generic** – Supports typed keys (`TKey`) and a convenient string-keyed shortcut.
-- **Factory Integration** – Factories implement `IEntityFactory<E>` and encapsulate entity creation logic.
-- **Type Safety** – Ensures that entities created by factories conform to `IEntity`.
-
----
-
-## Interface: IMultiEntityFactory
 ```csharp
 public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
-{
-}
 ```
-- Shortcut for the common case of **string-keyed factory registry**.
-- Useful for managing collections of entity factories by name.
+
+- **Description:** A non-generic registry interface for storing and retrieving entity factories by key.
+- **Inheritance:** [IMultiEntityFactory\<TKey, E>](IMultiEntityFactory%601.md)
+- **See also:** [MultiEntityFactory](MultiEntityFactory.md)
 
 ---
 
----
+## 🏹 Methods
 
-## Example Usage
+#### `Register(string, IEntityFactory<IEntity>)`
 
-### Example #1. String-Keyed Registry
 ```csharp
-IMultiEntityFactory factoryRegistry = new MultiEntityFactory();
-factoryRegistry.Add("Orc", new InlineEntityFactory(() => new EnemyEntity("Orc")));
-factoryRegistry.Add("Goblin", new InlineEntityFactory(() => new EnemyEntity("Goblin")));
+public void Register(string key, IEntityFactory<IEntity> factory);
+```
 
-var orc = factoryRegistry.Create("Orc");
-var goblin = factoryRegistry.Create("Goblin");
+- **Description:** Registers an entity factory with the specified string key.
+- **Parameters:**
+    - `key` — The string key to associate with the factory.
+    - `factory` — The factory instance to register.
+
+#### `Unregister(string)`
+
+```csharp
+public void Unregister(string key);
+```
+
+- **Description:** Removes the entity factory associated with the specified key.
+- **Parameter:** `key` — The key of the factory to remove.
+
+#### `Create(string)`
+
+```csharp
+public IEntity Create(string key);
+```
+
+- **Description:** Creates an entity using the factory associated with the specified key.
+- **Parameter:** `key` — The key of the factory to use.
+- **Returns:** A new instance of type `IEntity`.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have instance of multi factory
+IMultiEntityFactory multiFactory = ...
+
+// Registers factories for different entities
+multiFactory.Register("Orc", new InlineEntityFactory<IEntity>(() => new EnemyEntity("Orc")));
+multiFactory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new EnemyEntity("Goblin")));
+
+//Usage
+IEntity orc = multiFactory.Create("Orc");
+IEntity goblin = multiFactory.Create("Goblin");
+```

@@ -6,24 +6,52 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 
 Below is a list of available factory types:
 
-- [IEntityFactory](IEntityFactory.md) <!-- + --> 
-- [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
-- [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
-- [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
-- [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
-- [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
-- [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
-- [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
-- [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
-- [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md)
-- [MultiEntityFactory](MultiEntityFactory.md)
-- [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)
-- [IEntityFactoryCatalog](IEntityFactoryCatalog.md)
-- [IEntityFactoryCatalog&lt;E&gt;](IEntityFactoryCatalog%601.md)
-- [ScriptableEntityFactoryCatalog](ScriptableEntityFactoryCatalog%601.md)
-- [ScriptableEntityFactoryCatalog&lt;E&gt;](ScriptableEntityFactoryCatalog.md)
+- **Factories**
+    - [IEntityFactory](IEntityFactory.md) <!-- + -->
+    - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
+    - [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
+    - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
+    - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
+    - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
+    - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
+    - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
+- **Multi Factories**
+    - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
+    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
+    - [MultiEntityFactory](MultiEntityFactory.md)
+    - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md) <!-- + -->
+- **Factory Catalogs**
+    - [IEntityFactoryCatalog](IEntityFactoryCatalog.md)
+    - [IEntityFactoryCatalog&lt;E&gt;](IEntityFactoryCatalog%601.md)
+    - [ScriptableEntityFactoryCatalog](ScriptableEntityFactoryCatalog%601.md)
+    - [ScriptableEntityFactoryCatalog&lt;E&gt;](ScriptableEntityFactoryCatalog.md)
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🗂 Examples of Usage
 

@@ -8,6 +8,7 @@ public interface IMultiEntityFactory<in TKey, E> where E : IEntity
 - **Type Parameters:**
     - `TKey` — The type of the key used to identify factories.
     - `E` — The type of entity created by the factories. Must implement [IEntity](../Entities/IEntity.md).
+- **See also:** [IMultiEntityFactory](IMultiEntityFactory.md), [MultiEntityFactory\<E>](MultiEntityFactory%601.md)
 
 ---
 
@@ -33,7 +34,7 @@ public void Unregister(TKey key);
 - **Description:** Removes the entity factory associated with the specified key.
 - **Parameter:** `key` — The key of the factory to remove.
 
-#### `Create(TKey key)`
+#### `Create(TKey)`
 
 ```csharp
 public E Create(TKey key);
