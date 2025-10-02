@@ -52,7 +52,7 @@ smoother and more powerful than in Unity.
 - [Filters](Filters/Manual.md)
 - [UI](UI/Manual.md)
 - [Utilities](Utils/Manual.md)
-- [Lifecycle](Lifecycle/Manual.md)
+- [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Entity API](EntityAPI/Manual.md)
 
 

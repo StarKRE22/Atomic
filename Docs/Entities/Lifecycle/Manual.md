@@ -14,6 +14,6 @@ execute automatically at specific lifecycle events.
     - [DisableSubscription](Subscriptions/DisableSubscription.md) <!-- + -->
     - [DisposeSubscription](Subscriptions/DisposeSubscription.md) <!-- + -->
     - [TickSubscription](Subscriptions/TickSubscription.md) <!-- + -->
-    - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md) <!-- + -->F
-    - [LateTickSubscription](Subscriptions/LateTickSubscription.md)
-- [Extensions](Extensions.md)
+    - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md) <!-- + -->
+    - [LateTickSubscription](Subscriptions/LateTickSubscription.md) <!-- + -->
+- [Extensions](Extensions.md) <!-- + -->
