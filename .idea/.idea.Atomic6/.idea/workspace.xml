@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityEditor.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityEditor.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,31 +215,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="27383000" />
-    </task>
-    <task id="LOCAL-01073" summary="IEntityTick`1.md">
-      <option name="closed" value="true" />
-      <created>1759344416973</created>
-      <option name="number" value="01073" />
-      <option name="presentableId" value="LOCAL-01073" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344416973</updated>
-    </task>
-    <task id="LOCAL-01074" summary="IEntityFixedTick.md">
-      <option name="closed" value="true" />
-      <created>1759344550059</created>
-      <option name="number" value="01074" />
-      <option name="presentableId" value="LOCAL-01074" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344550059</updated>
-    </task>
-    <task id="LOCAL-01075" summary="IEntityFixedTick`1.md">
-      <option name="closed" value="true" />
-      <created>1759344642926</created>
-      <option name="number" value="01075" />
-      <option name="presentableId" value="LOCAL-01075" />
-      <option name="project" value="LOCAL" />
-      <updated>1759344642926</updated>
+      <workItem from="1759387244615" duration="27824000" />
     </task>
     <task id="LOCAL-01076" summary="IEntityLateTick.md">
       <option name="closed" value="true" />
@@ -611,7 +585,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759429005427</updated>
     </task>
-    <option name="localTasksCounter" value="1122" />
+    <task id="LOCAL-01122" summary="SceneEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759430221280</created>
+      <option name="number" value="01122" />
+      <option name="presentableId" value="LOCAL-01122" />
+      <option name="project" value="LOCAL" />
+      <updated>1759430221280</updated>
+    </task>
+    <task id="LOCAL-01123" summary="SceneEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759430380027</created>
+      <option name="number" value="01123" />
+      <option name="presentableId" value="LOCAL-01123" />
+      <option name="project" value="LOCAL" />
+      <updated>1759430380027</updated>
+    </task>
+    <task id="LOCAL-01124" summary="SceneEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759430412499</created>
+      <option name="number" value="01124" />
+      <option name="presentableId" value="LOCAL-01124" />
+      <option name="project" value="LOCAL" />
+      <updated>1759430412499</updated>
+    </task>
+    <option name="localTasksCounter" value="1125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ScriptableEntityInstaller`1.md" />
     <MESSAGE value="EntityInstallers" />
     <MESSAGE value="IEntityAspect.md" />
     <MESSAGE value="IEntityAspect`1.md" />
@@ -663,7 +660,8 @@
     <MESSAGE value="Прочесал Atomic.Elements" />
     <MESSAGE value="IEntityFactory.md" />
     <MESSAGE value="IEntityFactory`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityFactory`1.md" />
+    <MESSAGE value="SceneEntityFactory`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -16,9 +16,9 @@ public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> w
 
 | Parameters              | Description                                          | 
 |-------------------------|------------------------------------------------------|
-| `initialTagCount`       | Initial number of tags to assign to the entity       |
-| `initialValueCount`     | Initial number of values to assign to the entity     |
-| `initialBehaviourCount` | Initial number of behaviours to assign to the entity |
+| `initialTagCapacity`    | Initial number of tags to assign to the entity       |
+| `initialValueCapacity`     | Initial number of values to assign to the entity     |
+| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
 
 > These parameters are primarily used for **Editor optimization** and scene baking workflows.
 
@@ -26,30 +26,30 @@ public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> w
 
 ## 🧱 Fields
 
-#### `InitialTagCount`
+#### `InitialTagCapacity`
 
 ```csharp
 [SerializeField] 
-protected int InitialTagCount;
+protected int initialTagCount;
 ```
 
 - **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and scene
   baking.
 
-#### `InitialValueCount`
+#### `InitialValueCapacity`
 
 ```csharp
 [SerializeField]
-protected int InitialValueCount;
+protected int initialValueCount;
 ```
 
 - **Description:** Initial number of values to assign to the entity.
 
-#### `InitialBehaviourCount`
+#### `InitialBehaviourCapacity`
 
 ```csharp
 [SerializeField] 
-protected int InitialBehaviourCount;
+protected int initialBehaviourCount;
 ```
 
 - **Description:** Initial number of behaviours to assign to the entity.
@@ -114,16 +114,19 @@ public class EnemySceneFactory : SceneEntityFactory<EnemyEntity>
 {
     public override EnemyEntity Create()
     {
+        //Create an instance of entity with precomputed capacities
         var enemy = new EnemyEntity(
             this.name,
-            this.InitialTagCount,
-            this.InitialValueCount,
-            this.InitialBehaviourCount
+            this.initialTagCount,
+            this.initialValueCount,
+            this.initialBehaviourCount
         );
+        
         enemy.AddTag("Enemy");
         enemy.AddValue<int>("Health", 100);
         enemy.AddValue<int>("Damage", 15);
         enemy.AddBehaviour<AttackBehaviour>();
+        
         return enemy;
     }
 }

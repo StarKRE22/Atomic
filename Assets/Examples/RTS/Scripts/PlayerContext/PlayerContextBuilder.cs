@@ -35,9 +35,9 @@ namespace RTSGame
             
             var playerContext = new PlayerContext(
                 string.Format(PLAYER_CONTEXT_NAME_FORMAT, _teamType),
-                this.InitialTagCount,
-                this.InitialValueCount,
-                this.InitialBehaviourCount
+                this.initialTagCapacity,
+                this.initialValueCapacity,
+                this.initialBehaviourCapacity
             );
 
             playerContext.AddTeam(new Const<TeamType>(_teamType));

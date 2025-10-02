@@ -10,9 +10,9 @@ namespace RTSGame
         {
             var entity = new GameEntity(
                 this.Name,
-                this.InitialTagCount,
-                this.InitialValueCount,
-                this.InitialBehaviourCount
+                this.initialTagCapacity,
+                this.initialValueCapacity,
+                this.initialBehaviourCapacity
             );
             this.Install(entity);
             return entity;

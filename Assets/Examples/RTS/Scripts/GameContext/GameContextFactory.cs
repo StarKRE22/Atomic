@@ -22,9 +22,9 @@ namespace RTSGame
         {
             var context = new GameContext(
                 this.name,
-                this.InitialTagCount,
-                this.InitialValueCount,
-                this.InitialBehaviourCount
+                this.initialTagCapacity,
+                this.initialValueCapacity,
+                this.initialBehaviourCapacity
             );
             _gameEntityInstaller.Install(context);
             _playerSystemInstaller.Install(context);

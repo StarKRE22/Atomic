@@ -30,9 +30,9 @@ namespace Atomic.Entities
         {
             var entity = new Entity(
                 this.name,
-                this.InitialTagCount,
-                this.InitialValueCount,
-                this.InitialBehaviourCount
+                this.initialTagCapacity,
+                this.initialValueCapacity,
+                this.initialBehaviourCapacity
             );
             this.Install(entity);
             return entity;
@@ -59,7 +59,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
-        protected int InitialTagCount;
+        protected int initialTagCapacity;
 
 #if ODIN_INSPECTOR
         [ReadOnly]
@@ -68,7 +68,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
-        protected int InitialValueCount;
+        protected int initialValueCapacity;
 
 #if ODIN_INSPECTOR
         [ReadOnly]
@@ -77,7 +77,7 @@ namespace Atomic.Entities
 #endif
         [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
-        protected int InitialBehaviourCount;
+        protected int initialBehaviourCapacity;
 
         /// <summary>
         /// Creates and returns a new instance of the entity.
@@ -112,9 +112,9 @@ namespace Atomic.Entities
         protected virtual void Reset()
         {
 #if UNITY_EDITOR
-            this.InitialTagCount = 0;
-            this.InitialValueCount = 0;
-            this.InitialBehaviourCount = 0;
+            this.initialTagCapacity = 0;
+            this.initialValueCapacity = 0;
+            this.initialBehaviourCapacity = 0;
 #endif
         }
 
@@ -137,9 +137,9 @@ namespace Atomic.Entities
             }
             else
             {
-                this.InitialTagCount = entity.TagCount;
-                this.InitialValueCount = entity.ValueCount;
-                this.InitialBehaviourCount = entity.BehaviourCount;
+                this.initialTagCapacity = entity.TagCount;
+                this.initialValueCapacity = entity.ValueCount;
+                this.initialBehaviourCapacity = entity.BehaviourCount;
             }
 #endif
         }
