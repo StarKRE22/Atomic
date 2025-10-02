@@ -6,7 +6,7 @@ a **declarative mechanism** for dynamically extending or modifying entities at r
 Below are the different types of aspects depending on the usage scenario:
 
 - [IEntityAspect](IEntityAspect.md) <!-- + -->
-- [IEntityAspect&lt;E&gt;](IEntityAspect%601.md) 
+- [IEntityAspect&lt;E&gt;](IEntityAspect%601.md) <!-- + -->
 - [SceneEntityAspect](SceneEntityAspect.md)
 - [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md)
 - [ScriptableEntityAspect](ScriptableEntityAspect.md)
