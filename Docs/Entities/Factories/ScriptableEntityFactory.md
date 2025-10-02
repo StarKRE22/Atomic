@@ -6,7 +6,7 @@ public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>
 
 - **Description:** Abstract class for ScriptableObject-based factories that create and
   configure [Entity](../Entities/Entity.md) instances.
-- **Inheritance:** [ScriptableEntityFactory\<IEntity>](ScriptableEntityFactory%601.md),
+- **Inheritance:** [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md),
   [IEntityFactory](IEntityFactory.md)
 - **Notes:** 
   - Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.

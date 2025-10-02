@@ -4,12 +4,15 @@
 public class InlineEntityFactory<E> : IEntityFactory<E> where E : IEntity
 ```
 
-- **Description:** A lightweight, inline implementation that wraps a
-  creation delegate.
-- **Inheritance:** [IEntityFactory\<E>](IEntityFactory%601.md)
-- **Type Parameter:** `E` — The type of [IEntity](../Entities/IEntity.md) to produce.
-- **Notes:** Useful for quick, on-the-fly entity creation without creating a full factory class.
+- **Description:** A lightweight, inline factory implementation that wraps a **delegate (`Func<E>`)**, allowing fast
+  entity creation without defining a full class.
 
+- **Type Parameter:** `E` — The type of [IEntity](../Entities/IEntity.md) to produce.
+- **Inheritance:** [IEntityFactory\<E>](IEntityFactory%601.md)
+- **See also:** [InlineEntityFactory](InlineEntityFactory.md)
+
+> [!TIP]
+> **InlineFactory** can be used as great mock for Unit-tests.
 ---
 
 ## 🏗️ Constructors

@@ -1,64 +1,47 @@
-
-
-
-
 # 🧩️ InlineEntityFactory
 
-
-
-
-
-
-`InlineEntityFactory` is a **lightweight, inline factory** for creating `IEntity` instances.  
-It wraps a **delegate (`Func<E>`)**, allowing fast, disposable, or inline entity creation without defining a full class.
-
----
-
-## Key Features
-
-- **Lightweight** – Minimal overhead, stores only a delegate reference.
-- **Flexible** – Can be used for quick inline factories or lambda-based creation.
-- **Generic & Non-Generic** – Supports both `IEntity` and strongly-typed entities.
-- **Reusable** – Can be instantiated wherever a factory is required, without creating a separate class.
-- **Type-Safe** – Generic version ensures correct entity type is produced without casting.
-
----
-
-## Class: InlineEntityFactory (Non-Generic)
 ```csharp
 public class InlineEntityFactory : InlineEntityFactory<IEntity>, IEntityFactory
-{
-    public InlineEntityFactory(Func<IEntity> createFunc) : base(createFunc)
-    {
-    }
-}
 ```
-- Wraps a `Func<IEntity>` delegate to create entities inline.
-- Useful when a quick non-generic factory is needed without extra class definitions.
+
+- **Description:** A lightweight, inline implementation of the non-generic entity factory.
+- **Inheritance:** [InlineEntityFactory\<E>](InlineEntityFactory%601.md), [IEntityFactory](IEntityFactory.md)
+
+> [!TIP]
+> **InlineFactory** can be used as great mock for Unit-tests.
 
 ---
 
-## Class: InlineEntityFactory&lt;E&gt; (Generic)
+## 🏗️ Constructor
+
+#### `InlineEntityFactory(Func<IEntity> createFunc)`
+
 ```csharp
-public class InlineEntityFactory<E> : IEntityFactory<E> where E : IEntity
-{
-    private readonly Func<E> createFunc;
-
-    public InlineEntityFactory(Func<E> createFunc) =>
-        _creator = createFunc ?? throw new ArgumentNullException(nameof(creator));
-
-    public T Create() => createFunc.Invoke();
-}
+public InlineEntityFactory(Func<IEntity> createFunc);
 ```
-- Wraps a `Func<E>` delegate to create strongly-typed entities.
-- Throws `ArgumentNullException` if the creator delegate is null.
-- Ensures type safety for `IEntity` subclasses.
+
+- **Description:** Initializes a new inline factory using the specified creation function.
+- **Parameter:** `createFunc` — The delegate used to instantiate the entity. Cannot be `null`.
+- **Throws:** `ArgumentNullException` if `createFunc` is `null`.
 
 ---
 
-## Example Usage
+## 🏹 Methods
 
-### Example #1. Non-Generic Inline Factory
+#### `Create()`
+
+```csharp
+public override IEntity Create();
+```
+
+- **Description:** Invokes the wrapped creation delegate to produce a new instance of [IEntity](../Entities/IEntity.md).
+- **Returns:** A new [IEntity](../Entities/IEntity.md) instance.
+- **Notes:** Inherited from [InlineEntityFactory\<IEntity>](InlineEntityFactory%601.md).
+
+---
+
+## 🗂 Example of Usage
+
 ```csharp
 //Create a factory
 var factory = new InlineEntityFactory(() =>
@@ -71,18 +54,3 @@ var factory = new InlineEntityFactory(() =>
 //Create an entity
 IEntity myEntity = factory.Create();
 ```
-- Quick and simple entity creation without defining a separate class.
-- Useful for temporary or disposable entity setups.
-
----
-
-### Example #2. Generic Inline Factory
-
-- Type-safe creation for specific entity types.
-- No casting needed when retrieving the entity instance.
-
----
-
-## Remarks
-- `InlineEntityFactory` is ideal for **lightweight, reusable, and inline** entity creation.
-- Particularly useful in tests, procedural content generation, or temporary scene entities.  

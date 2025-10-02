@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,31 +220,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="28764000" />
-    </task>
-    <task id="LOCAL-01079" summary="IEntityGizmos`1.md">
-      <option name="closed" value="true" />
-      <created>1759345108020</created>
-      <option name="number" value="01079" />
-      <option name="presentableId" value="LOCAL-01079" />
-      <option name="project" value="LOCAL" />
-      <updated>1759345108020</updated>
-    </task>
-    <task id="LOCAL-01080" summary="Начинаем пилить инсталлеры!">
-      <option name="closed" value="true" />
-      <created>1759345311912</created>
-      <option name="number" value="01080" />
-      <option name="presentableId" value="LOCAL-01080" />
-      <option name="project" value="LOCAL" />
-      <updated>1759345311912</updated>
-    </task>
-    <task id="LOCAL-01081" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1759349395928</created>
-      <option name="number" value="01081" />
-      <option name="presentableId" value="LOCAL-01081" />
-      <option name="project" value="LOCAL" />
-      <updated>1759349395928</updated>
+      <workItem from="1759387244615" duration="30118000" />
     </task>
     <task id="LOCAL-01082" summary="Minor Fixes">
       <option name="closed" value="true" />
@@ -610,7 +590,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759431301527</updated>
     </task>
-    <option name="localTasksCounter" value="1128" />
+    <task id="LOCAL-01128" summary="ScriptableEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759431615301</created>
+      <option name="number" value="01128" />
+      <option name="presentableId" value="LOCAL-01128" />
+      <option name="project" value="LOCAL" />
+      <updated>1759431615301</updated>
+    </task>
+    <task id="LOCAL-01129" summary="ScriptableEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1759431877350</created>
+      <option name="number" value="01129" />
+      <option name="presentableId" value="LOCAL-01129" />
+      <option name="project" value="LOCAL" />
+      <updated>1759431877350</updated>
+    </task>
+    <task id="LOCAL-01130" summary="InlineEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759432514226</created>
+      <option name="number" value="01130" />
+      <option name="presentableId" value="LOCAL-01130" />
+      <option name="project" value="LOCAL" />
+      <updated>1759432514226</updated>
+    </task>
+    <option name="localTasksCounter" value="1131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,9 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityAspect.md" />
-    <MESSAGE value="IEntityAspect`1.md" />
-    <MESSAGE value="SceneEntityAspect.md" />
     <MESSAGE value="ScriptableEntityAspect.md" />
     <MESSAGE value="ScriptableEntityAspect`1.md" />
     <MESSAGE value="Lifecycle.md" />
@@ -662,7 +663,10 @@
     <MESSAGE value="IEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory.md" />
+    <MESSAGE value="ScriptableEntityFactory`1.md" />
+    <MESSAGE value="ScriptableEntityFactory.md" />
+    <MESSAGE value="InlineEntityFactory`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineEntityFactory`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
