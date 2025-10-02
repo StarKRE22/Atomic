@@ -19,6 +19,10 @@ You can optimize your entity’s size by precomputing the capacity of <b>tags</b
 ## ▶️ Context Menu
 
 #### `Compile()`
+```csharp
+[ContextMenu("Compile")]
+private void Compile();
+```
 
 - **Description:** Fully compiles entity state:
 - **Behaviour**:
@@ -31,6 +35,9 @@ You can optimize your entity’s size by precomputing the capacity of <b>tags</b
        with [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
 
 #### `Reset()`
+```csharp
+private void Reset();
+```
 
 - **Description:** Fully resets entity state
 - **Behaviour**:

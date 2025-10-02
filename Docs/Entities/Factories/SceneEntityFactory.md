@@ -8,13 +8,12 @@ It is designed for **runtime instantiation, prototyping, and scene baking**, all
 ## Key Features
 
 - **Unity Integration** – Built on top of `MonoBehaviour`, easily used in the Unity Editor.
-- **Predefined Parameters** – Stores initial tag, value, and behaviour counts for optimization.
 - **Custom Installation** – Override `Install(IEntity)` to add behaviours, tags, or values after creation.
+- **Predefined Parameters** – Stores initial tag, value, and behaviour counts for optimization.
 - **Editor Support** – Updates cached metadata via `OnValidate` and `Precompile`.
-- **Generic Version** – `SceneEntityFactory<E>` supports strongly-typed entity creation.
 - **Lightweight & Reusable** – Can be used across multiple objects without performance overhead.
 
-> Note: `[SerializeField]` fields (`InitialTagCount`, `InitialValueCount`, `InitialBehaviourCount`) are primarily used for **Editor optimization** and scene baking workflows.
+- **Generic Version** – `SceneEntityFactory<E>` supports strongly-typed entity creation.
 
 ---
 
