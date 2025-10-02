@@ -1,8 +1,15 @@
-# 🧩️ SceneEntityInstaller Classes
+# 🧩️ SceneEntityInstaller
 
-Represents a Unity `MonoBehaviour` that can be attached to a GameObject to
-perform **installation logic** on an [IEntity](../Entities/IEntity.md) during runtime or initialization.
-It allows declarative configuration of entities placed in a scene.
+```csharp
+public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
+```
+
+- **Description:** Represents a Unity `MonoBehaviour` that can be attached to a GameObject to
+  perform **installation logic** on an [IEntity](../Entities/IEntity.md) during runtime or initialization.
+- **Inheritance:** `MonoBehaviour`, [IEntityInstaller](IEntityInstaller.md)
+- **Note:** It allows declarative configuration of entities placed in a scene.
+- **See also:
+  ** [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
 
 > [!TIP]
 > Use `SceneEntityInstaller` only if there are scene dependencies or if entity instances in the scene need to differ. In
@@ -10,25 +17,7 @@ It allows declarative configuration of entities placed in a scene.
 
 ---
 
-<details>
-  <summary>
-    <h2 id="scene-entity-installer"> 🧩 SceneEntityInstaller</h2>
-    <br>Abstract MonoBehaviour for configuring an <code>IEntity</code> in a Unity scene.
-  </summary>
-
-<br>
-
-```csharp
-public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
-```
-
-- **Inheritance:** Implements [IEntityInstaller](IEntityInstaller.md) to allow entity configuration via Unity
-  components.
-- **Remarks:** Supports editor refresh through `OnValidate` without entering Play Mode.
-
----
-
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Install(IEntity)`
 
@@ -59,17 +48,11 @@ protected virtual void OnValidate();
 - **Description:** Called by Unity when the component is modified in the Inspector.
 - **Note:** Runs only in the Unity Editor; does not execute at runtime.
 
-### 🗂 Example of Usage
+---
 
-#### 1. Create a new `GameObject`
+## 🗂 Example of Usage
 
-<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
-
-#### 2. Add `Entity` Component to the GameObject
-
-<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
-
-#### 3. Create `CharacterInstaller` script
+#### 1. Create `CharacterInstaller` script
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -93,109 +76,23 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 }
 ```
 
-#### 4. Attach `CharacterInstaller` script to the GameObject
+#### 2. Attach `CharacterInstaller` script to the GameObject
 
 <img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
-#### 5. Drag & drop `CharacterInstaller` into `installers` field of the entity
+#### 3. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
 <img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
 
-#### 6. Now your `Entity` has tags and properties.
-
-</details>
-
----
-
-<details>
-  <summary>
-    <h2 id="scene-entity-installer-t"> 🧩 SceneEntityInstaller&lt;E&gt;</h2>
-    <br>Strongly-typed variant of <code>SceneEntityInstaller</code>.
-  </summary>
-
-<br>
-
-```csharp
-public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> 
-    where E : class, IEntity
-```
-
-- **Type Parameter:** `E` – The specific type of `IEntity` this installer operates on.
-- **Inheritance:** Inherits from [SceneEntityInstaller](#scene-entity-installer) and
-  implements [IEntityInstaller&lt;E&gt;](IEntityInstaller.md/#entity-installer-t).
-- **Notes:** Eliminates the need for manual casting in derived installer classes.
-
----
-
-### 🏹 Methods
-
-#### `Install(E entity)`
-
-```csharp
-public abstract void Install(E entity);
-```
-
-- **Description:** Installs data, values, or behaviors into the strongly-typed entity.
-- **Parameters:** `entity` – The entity of type `E` to install configuration or components into.
-- **Remarks:** Must be implemented by derived classes.
-
-#### `Uninstall(E entity)`
-
-```csharp
-public virtual void Uninstall(E entity);
-```
-
-- **Description:** Removes previously installed data or behavior from the strongly-typed entity.
-- **Parameters:** `entity` – The entity of type `E` to uninstall configuration, components, or behavior from.
-- **Remarks:** Default implementation does nothing. Override to provide custom uninstall behavior.
-
-#### `OnValidate()`
-
-```csharp
-protected virtual void OnValidate();
-```
-
-- **Description:** Called by Unity when the component is modified in the Inspector.
-- **Note:** Runs only in the Unity Editor; does not execute at runtime.
-
----
-
-### 🗂 Example of Usage
-
-```csharp
-public sealed class UnitEntity : SceneEntity
-{
-}
-```
-
-```csharp
-public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
-{
-    [SerializeField] private Transform _transform;
-    [SerializeField] private float _moveSpeed = 5.0f;
-
-    protected override void Install(UnitEntity entity)
-    {
-        entity.AddTag("Character");
-        entity.AddTag("Moveable");
-        
-        entity.AddValue("Transform", _transform);
-        entity.AddValue("MoveSpeed", _moveSpeed);
-        entity.AddValue("MoveDirection", Vector3.zero);
-        
-        entity.AddBehaviour<MoveBehaviour>();
-    }
-}
-```
-
-> Note: Using the generic `UnitEntity` version allows type-safe access to entity-specific properties without casting.
-
-</details>
+#### 4. Now your `Entity` has tags and properties.
 
 ---
 
 ## 📌 Best Practice
-`SceneEntityInstaller` also has an `Uninstall` method, which can be useful for unsubscribing or cleaning up when a `SceneEntity` is destroyed or removed from the scene.
+
+**SceneEntityInstaller** also has an `Uninstall` method, which can be useful for unsubscribing or cleaning up when an
+entity is destroyed or removed from the scene.
+
 ```csharp
 public sealed class WeaponViewInstaller : SceneEntityInstaller
 {
@@ -222,5 +119,3 @@ public sealed class WeaponViewInstaller : SceneEntityInstaller
     }
 }
 ```
-
----

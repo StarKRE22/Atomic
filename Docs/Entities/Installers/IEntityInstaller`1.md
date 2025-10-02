@@ -6,7 +6,7 @@ public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
 
 - **Description:** Provides a strongly-typed mechanism for installing entity configuration.
 - **Type Parameter:** `E` – The specific entity type this installer targets.
-- **Inherits:** [IEntityInstaller](IEntityInstaller.md)
+- **Inheritance:** [IEntityInstaller](IEntityInstaller.md)
 - **Remarks:** Automatically implements the base `Install(IEntity)` by casting the entity to `E`.
 
 ---
