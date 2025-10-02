@@ -5,7 +5,7 @@
 Below are the different types of installers depending on the usage scenario:
 
 - [IEntityInstaller](IEntityInstaller.md) <!-- + -->
-- [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
+- [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md) <!-- + -->
 - [SceneEntityInstaller](SceneEntityInstaller.md)
 - [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md)
 - [ScriptableEntityInstaller](ScriptableEntityInstaller.md)

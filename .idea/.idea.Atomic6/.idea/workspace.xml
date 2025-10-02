@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,31 +217,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="2612000" />
-    </task>
-    <task id="LOCAL-01034" summary="SceneEntityCreation.md">
-      <option name="closed" value="true" />
-      <created>1759232317256</created>
-      <option name="number" value="01034" />
-      <option name="presentableId" value="LOCAL-01034" />
-      <option name="project" value="LOCAL" />
-      <updated>1759232317256</updated>
-    </task>
-    <task id="LOCAL-01035" summary="SceneEntityCreation.md">
-      <option name="closed" value="true" />
-      <created>1759232356786</created>
-      <option name="number" value="01035" />
-      <option name="presentableId" value="LOCAL-01035" />
-      <option name="project" value="LOCAL" />
-      <updated>1759232356786</updated>
-    </task>
-    <task id="LOCAL-01036" summary="SceneEntityCreation.md">
-      <option name="closed" value="true" />
-      <created>1759232394138</created>
-      <option name="number" value="01036" />
-      <option name="presentableId" value="LOCAL-01036" />
-      <option name="project" value="LOCAL" />
-      <updated>1759232394138</updated>
+      <workItem from="1759387244615" duration="3783000" />
     </task>
     <task id="LOCAL-01037" summary="SceneEntityDestruction.md">
       <option name="closed" value="true" />
@@ -612,7 +587,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759349452648</updated>
     </task>
-    <option name="localTasksCounter" value="1083" />
+    <task id="LOCAL-01083" summary="EntityBehaviours">
+      <option name="closed" value="true" />
+      <created>1759390267716</created>
+      <option name="number" value="01083" />
+      <option name="presentableId" value="LOCAL-01083" />
+      <option name="project" value="LOCAL" />
+      <updated>1759390267716</updated>
+    </task>
+    <task id="LOCAL-01084" summary="EntityInstallers">
+      <option name="closed" value="true" />
+      <created>1759390542865</created>
+      <option name="number" value="01084" />
+      <option name="presentableId" value="LOCAL-01084" />
+      <option name="project" value="LOCAL" />
+      <updated>1759390542865</updated>
+    </task>
+    <task id="LOCAL-01085" summary="IEntityInstaller.md">
+      <option name="closed" value="true" />
+      <created>1759390788426</created>
+      <option name="number" value="01085" />
+      <option name="presentableId" value="LOCAL-01085" />
+      <option name="project" value="LOCAL" />
+      <updated>1759390788426</updated>
+    </task>
+    <option name="localTasksCounter" value="1086" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,9 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsBehaviours.md" />
-    <MESSAGE value="ExtensionsInstalling.md" />
-    <MESSAGE value="ExtensionsRetrieval.md" />
     <MESSAGE value="Фиксим!" />
     <MESSAGE value="Manual,md" />
     <MESSAGE value="Manual.md" />
@@ -664,7 +660,10 @@
     <MESSAGE value="IEntityGizmos`1.md" />
     <MESSAGE value="Начинаем пилить инсталлеры!" />
     <MESSAGE value="Minor Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes" />
+    <MESSAGE value="EntityBehaviours" />
+    <MESSAGE value="EntityInstallers" />
+    <MESSAGE value="IEntityInstaller.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityInstaller.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

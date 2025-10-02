@@ -1,11 +1,4 @@
-
-<details>
-  <summary>
-    <h2 id="entity-installer-t"> 🧩 IEntityInstaller&lt;E&gt;</h2>
-    <br>Defines a strongly-typed behavior that installs configuration into an <code>IEntity</code> of type <code>E</code>.
-  </summary>
-
-<br>
+#  🧩 IEntityInstaller&lt;E&gt;
 
 ```csharp
 public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
@@ -13,10 +6,12 @@ public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
 
 - **Description:** Provides a strongly-typed mechanism for installing entity configuration.
 - **Type Parameter:** `E` – The specific entity type this installer targets.
-- **Inherits:** [IEntityInstaller](#entity-installer)
+- **Inherits:** [IEntityInstaller](IEntityInstaller.md)
 - **Remarks:** Automatically implements the base `Install(IEntity)` by casting the entity to `E`.
 
-### 🏹 Methods
+---
+
+## 🏹 Methods
 
 #### `Install(E)`
 
@@ -29,7 +24,7 @@ public void Install(E entity);
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 Strongly-typed installer for `ICharacterEntity`:
 
@@ -61,5 +56,3 @@ public sealed class CharacterInstaller : IEntityInstaller<ICharacterEntity>
     }
 }
 ```
-
-</details>
