@@ -42,7 +42,7 @@ smoother and more powerful than in Unity.
 
 - [Entities](Entities/Manual.md) <!-- + -->
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
-- [Installers](Installers/Manual.md)
+- [Installers](Installers/Manual.md) <!-- + -->
 - [Aspects](Aspects/Manual.md)
 - [Entity API](EntityAPI/Manual.md)
 - [Factories](Factories/Manual.md)

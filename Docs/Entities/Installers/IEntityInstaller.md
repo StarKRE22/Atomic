@@ -1,6 +1,5 @@
 # 🧩 IEntityInstaller
 
-
 ```csharp
 public interface IEntityInstaller
 ```
