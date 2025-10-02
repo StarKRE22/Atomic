@@ -13,7 +13,7 @@ execute automatically at specific lifecycle events.
     - [EnableSubscription](Subscriptions/EnableSubscription.md) <!-- + -->
     - [DisableSubscription](Subscriptions/DisableSubscription.md) <!-- + -->
     - [DisposeSubscription](Subscriptions/DisposeSubscription.md) <!-- + -->
-    - [TickSubscription](Subscriptions/TickSubscription.md)
+    - [TickSubscription](Subscriptions/TickSubscription.md) <!-- + -->
     - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md)
     - [LateTickSubscription](Subscriptions/LateTickSubscription.md)
 - [Extensions](Extensions.md)

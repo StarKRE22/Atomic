@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Subscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisableSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisableSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisposeSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/DisposeSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/EnableSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/EnableSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/FixedTickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/FixedTickSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/InitSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/InitSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/LateTickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/LateTickSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/TickSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/Subscriptions/TickSubscription.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,31 +216,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="15281000" />
-    </task>
-    <task id="LOCAL-01060" summary="IEntityBehaviour.md">
-      <option name="closed" value="true" />
-      <created>1759313730392</created>
-      <option name="number" value="01060" />
-      <option name="presentableId" value="LOCAL-01060" />
-      <option name="project" value="LOCAL" />
-      <updated>1759313730392</updated>
-    </task>
-    <task id="LOCAL-01061" summary="IEntityInit.md">
-      <option name="closed" value="true" />
-      <created>1759314232420</created>
-      <option name="number" value="01061" />
-      <option name="presentableId" value="LOCAL-01061" />
-      <option name="project" value="LOCAL" />
-      <updated>1759314232420</updated>
-    </task>
-    <task id="LOCAL-01062" summary="IEntityInit.md">
-      <option name="closed" value="true" />
-      <created>1759314285821</created>
-      <option name="number" value="01062" />
-      <option name="presentableId" value="LOCAL-01062" />
-      <option name="project" value="LOCAL" />
-      <updated>1759314285821</updated>
+      <workItem from="1759387244615" duration="15696000" />
     </task>
     <task id="LOCAL-01063" summary="Пилим!">
       <option name="closed" value="true" />
@@ -620,7 +586,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759401275046</updated>
     </task>
-    <option name="localTasksCounter" value="1109" />
+    <task id="LOCAL-01109" summary="Обновил подписки!">
+      <option name="closed" value="true" />
+      <created>1759403433952</created>
+      <option name="number" value="01109" />
+      <option name="presentableId" value="LOCAL-01109" />
+      <option name="project" value="LOCAL" />
+      <updated>1759403433952</updated>
+    </task>
+    <task id="LOCAL-01110" summary="DisposeSubscription.md">
+      <option name="closed" value="true" />
+      <created>1759403518530</created>
+      <option name="number" value="01110" />
+      <option name="presentableId" value="LOCAL-01110" />
+      <option name="project" value="LOCAL" />
+      <updated>1759403518530</updated>
+    </task>
+    <task id="LOCAL-01111" summary="EnableSubscription.md">
+      <option name="closed" value="true" />
+      <created>1759403659185</created>
+      <option name="number" value="01111" />
+      <option name="presentableId" value="LOCAL-01111" />
+      <option name="project" value="LOCAL" />
+      <updated>1759403659186</updated>
+    </task>
+    <option name="localTasksCounter" value="1112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,9 +637,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityLateTick`1.md" />
-    <MESSAGE value="IEntityGizmos.md" />
-    <MESSAGE value="IEntityGizmos`1.md" />
     <MESSAGE value="Начинаем пилить инсталлеры!" />
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="EntityBehaviours" />
@@ -672,7 +659,10 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Переделал подписки" />
     <MESSAGE value="Переписал подписки!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переписал подписки!" />
+    <MESSAGE value="Обновил подписки!" />
+    <MESSAGE value="DisposeSubscription.md" />
+    <MESSAGE value="EnableSubscription.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EnableSubscription.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
