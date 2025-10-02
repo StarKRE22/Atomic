@@ -23,7 +23,7 @@ public MultiEntityFactory();
 
 - **Description:** Initializes a new, empty factory.
 
-#### `IEnumerable Constructor`
+#### `Enumerable Constructor`
 
 ```csharp
 public MultiEntityFactory(IEnumerable<KeyValuePair<TKey, IEntityFactory<E>>> factories);

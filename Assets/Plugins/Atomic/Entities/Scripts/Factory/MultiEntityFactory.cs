@@ -10,14 +10,6 @@ namespace Atomic.Entities
     /// Inherits from the generic <see cref="MultiEntityFactory{TKey,E}"/> 
     /// with <c>TKey</c> as <see cref="string"/> and <c>TValue</c> as <see cref="IEntity"/>.
     /// </remarks>
-    /// <example>
-    /// Example usage:
-    /// <code>
-    /// var registry = new EntityFactoryRegistry();
-    /// registry.Register("Enemy", () => new EnemyEntity());
-    /// var entity = registry.Create("Enemy");
-    /// </code>
-    /// </example>
     public class MultiEntityFactory : MultiEntityFactory<string, IEntity>, IMultiEntityFactory
     {
         /// <summary>
