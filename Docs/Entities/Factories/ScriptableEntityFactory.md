@@ -1,107 +1,131 @@
 # 🧩️ ScriptableEntityFactory
 
-`ScriptableEntityFactory` is an **abstract Unity-based factory** for creating and configuring `IEntity` instances.  
-It leverages Unity’s `ScriptableObject` to store initial parameters (**tags**, **values**, **behaviours**) and provides hooks for extending entity creation logic.
-
----
-
-## Key Features
-
-- **Unity Integration** – Built on top of `ScriptableObject`, easily configurable in the Unity Inspector.
-- **Predefined Parameters** – Stores initial tag, value, and behaviour counts for optimization.
-- **Custom Installation** – Extend `Install(IEntity)` to inject components, behaviours, or extra configuration.
-- **Editor Support** – Automatically updates cached metadata via `OnValidate` and `Precompile`.
-- **Generic Version** – `ScriptableEntityFactory<E>` allows strongly-typed entity creation.
-- **Lightweight & Reusable** – Can be reused across multiple objects without heavy dependencies.
-> Note: `[SerializeField]` fields (`InitialTagCount`, `InitialValueCount`, `InitialBehaviourCount`) are primarily used for **Editor optimization** and can be adjusted in the Inspector to preallocate resources for entities.
-
----
-
-## Class: ScriptableEntityFactory (Non-Generic)
-
 ```csharp
 public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
-{
-    public sealed override IEntity Create()
-    {
-        var entity = new Entity(
-            this.name,
-            this.InitialTagCount,
-            this.InitialValueCount,
-            this.InitialBehaviourCount
-        );
-        this.Install(entity);
-        return entity;
-    }
-
-    protected abstract void Install(IEntity entity);
-}
 ```
-- Provides a **sealed** `Create()` method that constructs a base `Entity`.
-- Subclasses implement `Install(IEntity)` to configure entities with custom behaviours.
+
+- **Description:** Abstract class for ScriptableObject-based factories that create and
+  configure [Entity](../Entities/Entity.md) instances.
+- **Inheritance:** [ScriptableEntityFactory\<IEntity>](ScriptableEntityFactory%601.md),
+  [IEntityFactory](IEntityFactory.md)
+- **Notes:** 
+  - Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
+  -  Can be reused across multiple objects without heavy dependencies.
 
 ---
 
-## Class: ScriptableEntityFactory&lt;E&gt; (Generic)
-```csharp
-public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
-{
-    [SerializeField] protected int InitialTagCount;
-    [SerializeField] protected int InitialValueCount;
-    [SerializeField] protected int InitialBehaviourCount;
-    
-    public abstract E Create();
+## 🛠 Inspector Settings
 
-    protected virtual void Reset()
-    {
-        this.InitialTagCount = 0;
-        this.InitialValueCount = 0;
-        this.InitialBehaviourCount = 0;
-    }
+| Parameters                 | Description                                          | 
+|----------------------------|------------------------------------------------------|
+| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
+| `initialValueCapacity`     | Initial number of values to assign to the entity     |
+| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
 
-    protected virtual void Precompile()
-    {
-        E entity = this.Create();
-        if (entity != null)
-        {
-            this.InitialTagCount = entity.TagCount;
-            this.InitialValueCount = entity.ValueCount;
-            this.InitialBehaviourCount = entity.BehaviourCount;
-        }
-        else
-        {
-            Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.", this);
-        }
-    }
-}
-```
+> These parameters are primarily used for **Editor optimization** and asset baking workflows.
+
 ---
 
-## Example Usage
+## 🧱 Fields
 
-### Example #1. Simple Scriptable Factory
+#### `InitialTagCapacity`
+
 ```csharp
-[CreateAssetMenu(menuName = "Factories/Enemy")]
-public class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
-{
-    public override EnemyEntity Create()
-    {
-        var enemy = new EnemyEntity();
-        enemy.AddValue<int>("Health", 100);
-        enemy.AddValue<int>("Damage", 10);
-        return enemy;
-    }
-}
+[SerializeField]
+protected int initialTagCount;
 ```
+
+- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and asset
+  baking.
+
+#### `InitialValueCapacity`
+
+```csharp
+[SerializeField]
+protected int initialValueCount;
+```
+
+- **Description:** Initial number of values to assign to the entity.
+
+#### `InitialBehaviourCapacity`
+
+```csharp
+[SerializeField]
+protected int initialBehaviourCount;
+```
+
+- **Description:** Initial number of behaviours to assign to the entity.
+
 ---
 
-### Example #2. Custom Installation
+## 🏹 Methods
+
+#### `Create()`
+
 ```csharp
-[CreateAssetMenu(menuName = "Factories/Character")]
-public class CharacterFactory : ScriptableEntityFactory
+public sealed override IEntity Create();
+```
+
+- **Description:** Creates a new [Entity](../Entities/Entity.md) using predefined initialization values and then applies
+  custom logic via the `Install` method.
+- **Returns:** A new instance of [IEntity](../Entities/IEntity.md).
+- **Note:** This method is `sealed`; override `Install(IEntity)` for custom configuration.
+
+#### `Install(IEntity)`
+
+```csharp
+protected abstract void Install(IEntity entity);
+```
+
+- **Description:** Called after entity creation to add tags, values, or behaviours.
+- **Parameter:** `entity` — The [IEntity](../Entities/IEntity.md) instance to configure.
+- **Note:** Must be implemented by derived classes to provide custom setup logic.
+
+#### `OnValidate()`
+
+```csharp
+protected virtual void OnValidate();
+```
+
+- **Description:** ScriptableObject callback invoked when values change in the Inspector. Updates cached metadata by
+  calling `Precompile()` by default.
+- **Remarks:** Only executed in the Editor outside of Play mode.
+
+---
+
+## ▶️ Context Menu
+
+#### `Precompile()`
+
+```csharp
+[ContextMenu(nameof(Precompile))]
+protected virtual void Precompile();
+```
+
+- **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
+  count, and behaviour count. Useful for editor previews, asset baking, and optimization.
+- **Remarks:** Only executed in the Editor. Logs a warning if `Create()` returns `null`.
+
+#### `Reset()`
+
+```csharp
+protected virtual void Reset();
+```
+
+- **Description:** Resets factory fields to default values.
+- **Remarks:** Only affects editor workflows.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+[CreateAssetMenu(menuName = "Examples/Player Factory")]
+public class PlayerScriptableFactory : ScriptableEntityFactory
 {
     protected override void Install(IEntity entity)
     {
+        entity.AddTag("Player");
         entity.AddValue<int>("Health", 200);
         entity.AddValue<string>("Name", "Hero");
         entity.AddBehaviour<DeathBehaviour>();
@@ -109,76 +133,5 @@ public class CharacterFactory : ScriptableEntityFactory
 }
 ```
 
----
-
-### Example #3. Using Factory as a Builder
-This builder is **lightweight** — stores only simple state and can be reused by multiple systems without performance cost.
-
-```csharp
-public sealed class PlayerContextBuilder : ScriptableEntityFactory<PlayerContext>
-{
-    private GameContext _gameContext;
-    private TeamType _teamType;
-    private Camera _camera;
-
-    public PlayerContextBuilder SetGameContext(GameContext gameContext)
-    {
-        _gameContext = gameContext;
-        return this;
-    }
-
-    public PlayerContextBuilder SetTeamType(TeamType teamType)
-    {
-        _teamType = teamType;
-        return this;
-    }
-
-    public PlayerContextBuilder SetCamera(Camera camera)
-    {
-        _camera = camera;
-        return this;
-    }
-
-    public override PlayerContext Create()
-    {
-        if (_gameContext == null)
-            throw new InvalidOperationException("GameContext must be set before creating PlayerContext.");
-        if (_camera == null)
-            throw new InvalidOperationException("Camera must be set before creating PlayerContext.");
-        if (_teamType == default)
-            throw new InvalidOperationException("TeamType must be set before creating PlayerContext.");
-
-        var playerContext = new PlayerContext();
-        playerContext.AddValue<TeamType>("TeamType", _teamType);
-        playerContext.AddValue<GameContext>("GameContext", _gameContext);
-        playerContext.AddValue<Camera>("Camera", _camera);
-
-        return playerContext;
-    }
-}
-```
-
-```csharp
-// Usage:
-public class Example : MonoBehaviour 
-{
-    [SerializeField] 
-    private PlayerContextBuilder _playerBuilder;
-
-    private void Start()
-    {
-        var playerContext = _playerBuilder
-            .SetGameContext(gameContext)
-            .SetTeamType(teamType)
-            .SetCamera(camera)
-            .Create();
-    }
-}
-```
-
-## Remarks
-- Use **non-generic** `ScriptableEntityFactory` for heterogeneous entities in registries or catalogs.
-- Use **generic** `ScriptableEntityFactory<E>` for type-safe creation when the entity type is known.
-- `Precompile` caches metadata (`TagCount`, `ValueCount`, `BehaviourCount`) to reduce runtime introspection.
-- `Install(IEntity)` allows injecting behaviours or components into newly created entities.
-- Builder-style factories are **lightweight** and suitable for reusing across multiple objects without performance overhead.  
+> This pattern allows creating a fully configured `Entity` via ScriptableObject-based workflows, combining predefined
+> capacities with custom logic via `Install()`.
