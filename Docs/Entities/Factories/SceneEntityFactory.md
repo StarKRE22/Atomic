@@ -7,13 +7,8 @@ It is designed for **runtime instantiation, prototyping, and scene baking**, all
 
 ## Key Features
 
-- **Unity Integration** – Built on top of `MonoBehaviour`, easily used in the Unity Editor.
-- **Custom Installation** – Override `Install(IEntity)` to add behaviours, tags, or values after creation.
 - **Predefined Parameters** – Stores initial tag, value, and behaviour counts for optimization.
-- **Editor Support** – Updates cached metadata via `OnValidate` and `Precompile`.
-- **Lightweight & Reusable** – Can be used across multiple objects without performance overhead.
 
-- **Generic Version** – `SceneEntityFactory<E>` supports strongly-typed entity creation.
 
 ---
 

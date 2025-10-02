@@ -4,13 +4,11 @@
 public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
 ```
 
-- **Description:** Abstract base class for Unity-based factories that create [IEntity](../Entities/IEntity.md)-based
+- **Description:** Abstract class for Unity-based factories that create
   entities with customizable initial settings.
 - **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
-- **Notes:**
-    - Supports runtime instantiation, editor-time previews, and scene baking workflows.
-    - Can be used across multiple objects without performance overhead
+- **Notes:** Stores initial tag, value, and behaviour counts for optimization.
 
 ---
 
@@ -22,7 +20,6 @@ public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> w
 | `initialValueCount`     | Initial number of values to assign to the entity     |
 | `initialBehaviourCount` | Initial number of behaviours to assign to the entity |
 
-> [!IMPORTANT]
 > `initialTagCount`, `initialValueCount`, `initialBehaviourCount` are primarily used for **Editor optimization** and scene baking workflows.
 
 ---
