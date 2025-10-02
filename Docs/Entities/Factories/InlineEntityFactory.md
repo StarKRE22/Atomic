@@ -1,4 +1,13 @@
+
+
+
+
 # 🧩️ InlineEntityFactory
+
+
+
+
+
 
 `InlineEntityFactory` is a **lightweight, inline factory** for creating `IEntity` instances.  
 It wraps a **delegate (`Func<E>`)**, allowing fast, disposable, or inline entity creation without defining a full class.
@@ -68,17 +77,7 @@ IEntity myEntity = factory.Create();
 ---
 
 ### Example #2. Generic Inline Factory
-```csharp
-var unitFactory = new InlineEntityFactory<UnitEntity>(() =>
-{
-    var unit = new UnitEntity();
-    unit.AddValue<int>("Health", 150);
-    unit.AddValue<int>("Attack", 25);
-    return unit;
-});
 
-UnitEntity myUnit = unitFactory.Create();
-```
 - Type-safe creation for specific entity types.
 - No casting needed when retrieving the entity instance.
 
