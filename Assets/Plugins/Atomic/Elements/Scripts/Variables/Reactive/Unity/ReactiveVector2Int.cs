@@ -18,7 +18,7 @@ namespace Atomic.Elements
     public class ReactiveVector2Int : IReactiveVariable<Vector2Int>, IDisposable
     {
         /// <inheritdoc/>
-        public event Action<Vector2Int> OnValueChanged;
+        public event Action<Vector2Int> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -28,7 +28,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current <see cref="Vector2Int"/> value.
-        /// Invokes <see cref="OnValueChanged"/> if the new value is different.
+        /// Invokes <see cref="OnEvent"/> if the new value is different.
         /// </summary>
         public Vector2Int Value
         {
@@ -38,7 +38,7 @@ namespace Atomic.Elements
                 if (this.value != value)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -59,33 +59,16 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="value">The value to wrap.</param>
         public static implicit operator ReactiveVector2Int(Vector2Int value) => new(value);
-
+        
         /// <summary>
-        /// Subscribes a listener to value change notifications.
+        /// Manually invokes the <see cref="OnEvent"/> event with the given value.
         /// </summary>
-        /// <param name="listener">The callback to invoke when the value changes.</param>
-        /// <returns>A subscription token for later unsubscription.</returns>
-        public Subscription<Vector2Int> Subscribe(Action<Vector2Int> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<Vector2Int>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a previously registered listener.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<Vector2Int> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually invokes the <see cref="OnValueChanged"/> event with the given value.
-        /// </summary>
-        private void InvokeEvent(Vector2Int value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(Vector2Int value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Disposes the variable by removing all event listeners.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

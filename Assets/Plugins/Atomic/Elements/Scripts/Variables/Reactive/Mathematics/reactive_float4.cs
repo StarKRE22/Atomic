@@ -12,7 +12,7 @@ namespace Atomic.Elements
 {
     /// <summary>
     /// A reactive wrapper for a <see cref="float4"/> value.
-    /// Invokes <see cref="OnValueChanged"/> whenever the value changes.
+    /// Invokes <see cref="OnEvent"/> whenever the value changes.
     /// </summary>
 #if ODIN_INSPECTOR
     [InlineProperty]
@@ -23,11 +23,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the value changes.
         /// </summary>
-        public event Action<float4> OnValueChanged;
+        public event Action<float4> OnEvent;
 
         /// <summary>
         /// The wrapped <see cref="float4"/> value.
-        /// Triggers <see cref="OnValueChanged"/> when changed to a different value.
+        /// Triggers <see cref="OnEvent"/> when changed to a different value.
         /// </summary>
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -37,7 +37,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current value.
-        /// Setting a new value will trigger <see cref="OnValueChanged"/> if the value differs.
+        /// Setting a new value will trigger <see cref="OnEvent"/> if the value differs.
         /// </summary>
         public float4 Value
         {
@@ -47,7 +47,7 @@ namespace Atomic.Elements
                 if (!this.value.Equals(value))
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -68,30 +68,13 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="value">The value to wrap.</param>
         public static implicit operator reactive_float4(float4 value) => new(value);
-
-        /// <summary>
-        /// Subscribes to value changes.
-        /// </summary>
-        /// <param name="action">Callback to invoke on value change.</param>
-        /// <returns>A subscription object for unsubscribing.</returns>
-        public Subscription<float4> Subscribe(Action<float4> action)
-        {
-            this.OnValueChanged += action;
-            return new Subscription<float4>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from the value change event.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<float4> listener) => this.OnValueChanged -= listener;
-
+        
         /// <summary>
         /// Invokes the value changed event manually.
         /// Used internally by the Odin Inspector callback.
         /// </summary>
         /// <param name="value">The value to broadcast.</param>
-        private void InvokeEvent(float4 value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(float4 value) => this.OnEvent?.Invoke(value);
     }
 }
 #endif

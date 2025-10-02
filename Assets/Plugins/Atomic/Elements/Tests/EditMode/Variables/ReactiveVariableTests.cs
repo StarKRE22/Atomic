@@ -24,7 +24,7 @@ namespace Atomic.Elements
             //Arrange:
             var variable = new ReactiveVariable<int>(5);
 
-            variable.OnValueChanged += v => r1 = v;
+            variable.OnEvent += v => r1 = v;
             variable.Subscribe(v => r2 = v);
             
             //Act:
@@ -37,15 +37,15 @@ namespace Atomic.Elements
         }
 
         [Test]
-        public void SetValue_SameValue_OnValueChangedNotRisen()
+        public void SetValue_SameValue_OnEventNotRisen()
         {
             int r1 = -1;
             int r2 = -1;
             
             //Arrange:
-            var variable = new ReactiveVariable<int>(5);
+            ReactiveVariable<int> variable = new ReactiveVariable<int>(5);
 
-            variable.OnValueChanged += v => r1 = v;
+            variable.OnEvent += v => r1 = v;
             variable.Subscribe(v => r2 = v);
             
             //Act:
@@ -66,7 +66,7 @@ namespace Atomic.Elements
             //Arrange:
             var variable = new ReactiveVariable<int>(5);
 
-            variable.OnValueChanged += v => r1 = v;
+            variable.OnEvent += v => r1 = v;
             variable.Subscribe(v => r2 = v);
             
             variable.Value = 3;
@@ -93,12 +93,12 @@ namespace Atomic.Elements
             int r1 = -1;
             int r2 = -1;
 
-            void OnValueChanged1(int value)
+            void OnEvent1(int value)
             {
                 r1 = value;
             }
             
-            void OnValueChanged2(int value)
+            void OnEvent2(int value)
             {
                 r2 = value;
             }
@@ -106,8 +106,8 @@ namespace Atomic.Elements
             //Arrange:
             var variable = new ReactiveVariable<int>(5);
 
-            variable.OnValueChanged += OnValueChanged1;
-            variable.Subscribe(OnValueChanged2);
+            variable.OnEvent += OnEvent1;
+            variable.Subscribe(OnEvent2);
             
             variable.Value = 3;
             Assert.AreEqual(3, variable.Value);
@@ -118,8 +118,8 @@ namespace Atomic.Elements
             r1 = -1;
             r2 = -1;
             
-            variable.OnValueChanged -= OnValueChanged1;
-            variable.Unsubscribe(OnValueChanged2);
+            variable.OnEvent -= OnEvent1;
+            variable.Unsubscribe(OnEvent2);
             variable.Value = 5;
 
             //Assert:

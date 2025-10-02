@@ -18,7 +18,7 @@ namespace Atomic.Elements
     [Serializable]
     public class ReactiveQuaternion : IReactiveVariable<Quaternion>, IDisposable
     {
-        public event Action<Quaternion> OnValueChanged;
+        public event Action<Quaternion> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -27,7 +27,7 @@ namespace Atomic.Elements
         private Quaternion value;
 
         /// <summary>
-        /// Gets or sets the quaternion value. Invokes <see cref="OnValueChanged"/> when the value changes.
+        /// Gets or sets the quaternion value. Invokes <see cref="OnEvent"/> when the value changes.
         /// </summary>
         public Quaternion Value
         {
@@ -37,7 +37,7 @@ namespace Atomic.Elements
                 if (this.value != value)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -66,33 +66,16 @@ namespace Atomic.Elements
         /// Implicitly converts a quaternion to a <see cref="ReactiveQuaternion"/>.
         /// </summary>
         public static implicit operator ReactiveQuaternion(Quaternion value) => new(value);
-
-        /// <summary>
-        /// Subscribes to value change notifications.
-        /// </summary>
-        /// <param name="listener">Callback to invoke on value change.</param>
-        /// <returns>A subscription object to manage the listener.</returns>
-        public Subscription<Quaternion> Subscribe(Action<Quaternion> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<Quaternion>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes from value change notifications.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<Quaternion> listener) => this.OnValueChanged -= listener;
-
+        
         /// <summary>
         /// Manually invokes the value change event.
         /// </summary>
-        private void InvokeEvent(Quaternion value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(Quaternion value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Disposes the object by clearing all listeners.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

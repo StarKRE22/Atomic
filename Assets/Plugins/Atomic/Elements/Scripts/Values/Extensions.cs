@@ -27,7 +27,7 @@ namespace Atomic.Elements
         public static Subscription<T> Observe<T>(this IReactiveValue<T> it, Action<T> action)
         {
             action.Invoke(it.Value);
-            return it.Subscribe(action);
+            return new Subscription<T>(it, action);
         }
     }
 }

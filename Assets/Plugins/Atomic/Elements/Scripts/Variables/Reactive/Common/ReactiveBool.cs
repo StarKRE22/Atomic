@@ -21,7 +21,7 @@ namespace Atomic.Elements
     public class ReactiveBool : IReactiveVariable<bool>, IDisposable
     {
         /// <inheritdoc />
-        public event Action<bool> OnValueChanged;
+        public event Action<bool> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -33,7 +33,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current value.
-        /// Triggers <see cref="OnValueChanged"/> if the value is different from the previous.
+        /// Triggers <see cref="OnEvent"/> if the value is different from the previous.
         /// </summary>
         public bool Value
         {
@@ -43,7 +43,7 @@ namespace Atomic.Elements
                 if (this.value != value)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Creates a new instance of <see cref="ReactiveBool"/> with the default value (false).
         /// </summary>
-        public ReactiveBool() => this.value = default;
+        public ReactiveBool() => this.value = false;
 
         /// <summary>
         /// Creates a new instance of <see cref="ReactiveBool"/> with the specified value.
@@ -64,34 +64,17 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="value">The boolean value to wrap.</param>
         public static implicit operator ReactiveBool(bool value) => new(value);
-
+        
         /// <summary>
-        /// Subscribes a listener to the <see cref="OnValueChanged"/> event.
-        /// </summary>
-        /// <param name="listener">The callback to invoke on value changes.</param>
-        /// <returns>A disposable subscription object.</returns>
-        public Subscription<bool> Subscribe(Action<bool> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<bool>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from the <see cref="OnValueChanged"/> event.
-        /// </summary>
-        /// <param name="listener">The callback to remove.</param>
-        public void Unsubscribe(Action<bool> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually triggers the <see cref="OnValueChanged"/> event with the current value.
+        /// Manually triggers the <see cref="OnEvent"/> event with the current value.
         /// </summary>
         /// <param name="value">The value to invoke with.</param>
-        private void InvokeEvent(bool value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(bool value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Disposes the instance and clears all subscriptions.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

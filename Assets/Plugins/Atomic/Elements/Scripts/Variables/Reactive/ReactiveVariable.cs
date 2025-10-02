@@ -22,10 +22,10 @@ namespace Atomic.Elements
     {
         private static readonly IEqualityComparer<T> s_equalityComparer = EqualityComparer.GetDefault<T>();
 
-        public event Action<T> OnValueChanged;
+        public event Action<T> OnEvent;
 
 #if ODIN_INSPECTOR
-        [HideLabel, OnValueChanged(nameof(InvokeValueChanged))]
+        [HideLabel, OnValueChanged(nameof(InvokeEvent))]
 #endif
 #if UNITY_5_3_OR_NEWER
         [SerializeField]
@@ -34,7 +34,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current value.
-        /// When a new value is assigned that differs from the previous one, the <see cref="OnValueChanged"/> event is triggered.
+        /// When a new value is assigned that differs from the previous one, the <see cref="OnEvent"/> event is triggered.
         /// </summary>
         public T Value
         {
@@ -44,7 +44,7 @@ namespace Atomic.Elements
                 if (!s_equalityComparer.Equals(this.value, value))
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -72,31 +72,14 @@ namespace Atomic.Elements
         public T Invoke() => this.value;
 
         /// <summary>
-        /// Subscribes a listener to be notified when the value changes.
+        /// Manually triggers the <see cref="OnEvent"/> event with the given value.
         /// </summary>
-        /// <param name="listener">The callback to invoke on value change.</param>
-        /// <returns>A subscription that can be used to unsubscribe later.</returns>
-        public Subscription<T> Subscribe(Action<T> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<T>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a previously registered listener from value change notifications.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<T> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually triggers the <see cref="OnValueChanged"/> event with the given value.
-        /// </summary>
-        private void InvokeValueChanged(T value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(T value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Disposes the object by clearing all subscribed listeners.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

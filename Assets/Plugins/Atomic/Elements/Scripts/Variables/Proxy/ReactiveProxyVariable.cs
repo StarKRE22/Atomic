@@ -16,7 +16,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Subscribes or unsubscribes to value change notifications using delegated handlers.
         /// </summary>
-        public event Action<T> OnValueChanged
+        public event Action<T> OnEvent
         {
             add => this.subscribe.Invoke(value);
             remove => this.unsubscribe.Invoke(value);
@@ -59,23 +59,7 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to value changes and returns a subscription handle.
-        /// </summary>
-        /// <param name="action">Callback to invoke when value changes.</param>
-        public Subscription<T> Subscribe(Action<T> action)
-        {
-            this.subscribe.Invoke(action);
-            return new Subscription<T>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from value changes.
-        /// </summary>
-        /// <param name="action">Callback to remove.</param>
-        public void Unsubscribe(Action<T> action) => this.unsubscribe.Invoke(action);
-
+        
         /// <summary>
         /// Returns the string representation of the current value.
         /// </summary>

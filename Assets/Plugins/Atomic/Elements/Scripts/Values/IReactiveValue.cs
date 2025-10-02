@@ -5,7 +5,7 @@ namespace Atomic.Elements
     /// with reactive observation (<see cref="ISignal{T}"/>).
     /// </summary>
     /// <typeparam name="T">The type of the value.</typeparam>
-    public interface IReactiveValue<T> : IValue<T>, ISignal<T>
+    public interface IReactiveValue<out T> : IValue<T>, ISignal<T>
     {
     }
 }

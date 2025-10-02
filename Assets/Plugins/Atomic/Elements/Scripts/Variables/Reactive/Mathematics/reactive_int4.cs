@@ -12,14 +12,14 @@ namespace Atomic.Elements
 {
     /// <summary>
     /// A reactive wrapper for a <see cref="int4"/> value.
-    /// Invokes <see cref="OnValueChanged"/> whenever the value changes.
+    /// Invokes <see cref="OnEvent"/> whenever the value changes.
     /// Implements <see cref="IReactiveVariable{int4}"/>.
     /// </summary>
     [Serializable]
     public sealed class reactive_int4 : IReactiveVariable<int4>, IDisposable
     {
         /// <inheritdoc/>
-        public event Action<int4> OnValueChanged;
+        public event Action<int4> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -29,7 +29,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current <see cref="int4"/> value.
-        /// Triggers <see cref="OnValueChanged"/> when changed.
+        /// Triggers <see cref="OnEvent"/> when changed.
         /// </summary>
         public int4 Value
         {
@@ -39,7 +39,7 @@ namespace Atomic.Elements
                 if (!this.value.Equals(value))
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -61,32 +61,15 @@ namespace Atomic.Elements
         public static implicit operator reactive_int4(int4 value) => new(value);
 
         /// <summary>
-        /// Subscribes to value changes.
-        /// </summary>
-        /// <param name="action">Callback to invoke on value change.</param>
-        /// <returns>A subscription object for unsubscribing.</returns>
-        public Subscription<int4> Subscribe(Action<int4> action)
-        {
-            this.OnValueChanged += action;
-            return new Subscription<int4>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from the value change event.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<int4> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
         /// Invokes the value changed event manually (used by Odin Inspector).
         /// </summary>
         /// <param name="value">The value to broadcast.</param>
-        private void InvokeEvent(int4 value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(int4 value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Disposes the reactive variable by clearing all listeners.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value.

@@ -22,7 +22,7 @@ namespace Atomic.Elements
     public class ReactiveFloat : IReactiveVariable<float>, IDisposable
     {
         /// <inheritdoc/>
-        public event Action<float> OnValueChanged;
+        public event Action<float> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -33,7 +33,7 @@ namespace Atomic.Elements
         private float value;
 
         /// <summary>
-        /// Gets or sets the float value. Raises <see cref="OnValueChanged"/> if the value is different.
+        /// Gets or sets the float value. Raises <see cref="OnEvent"/> if the value is different.
         /// </summary>
         public float Value
         {
@@ -43,7 +43,7 @@ namespace Atomic.Elements
                 if (Math.Abs(this.value - value) > float.Epsilon)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -63,34 +63,17 @@ namespace Atomic.Elements
         /// Implicitly converts a float to a <see cref="ReactiveFloat"/>.
         /// </summary>
         public static implicit operator ReactiveFloat(float value) => new(value);
-
+        
         /// <summary>
-        /// Subscribes to the <see cref="OnValueChanged"/> event.
-        /// </summary>
-        /// <param name="listener">Callback to invoke when the value changes.</param>
-        /// <returns>A subscription that can be used for later unsubscription.</returns>
-        public Subscription<float> Subscribe(Action<float> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<float>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from the <see cref="OnValueChanged"/> event.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<float> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually invokes the <see cref="OnValueChanged"/> event.
+        /// Manually invokes the <see cref="OnEvent"/> event.
         /// </summary>
         /// <param name="value">The value to broadcast.</param>
-        private void InvokeEvent(float value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(float value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
-        /// Disposes the instance and removes all listeners from the <see cref="OnValueChanged"/> event.
+        /// Disposes the instance and removes all listeners from the <see cref="OnEvent"/> event.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string representation of the current value using invariant culture.

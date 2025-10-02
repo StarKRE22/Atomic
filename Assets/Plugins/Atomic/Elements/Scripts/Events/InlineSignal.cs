@@ -8,6 +8,12 @@ namespace Atomic.Elements
     [Serializable]
     public class InlineSignal : ISignal
     {
+        public event Action OnEvent
+        {
+            add => this.subscribe.Invoke(value);
+            remove => this.unsubscribe.Invoke(value);
+        }
+
         private readonly Action<Action> subscribe;
         private readonly Action<Action> unsubscribe;
 
@@ -21,23 +27,6 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to the reactive source.
-        /// </summary>
-        /// <param name="action">The action to invoke when the source changes.</param>
-        /// <returns>A <see cref="Subscription"/> representing the subscription.</returns>
-        public Subscription Subscribe(Action action)
-        {
-            this.subscribe?.Invoke(action);
-            return new Subscription(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes the specified action from the reactive source.
-        /// </summary>
-        /// <param name="action">The action to remove.</param>
-        public void Unsubscribe(Action action) => this.unsubscribe?.Invoke(action);
     }
 
     /// <summary>
@@ -47,6 +36,12 @@ namespace Atomic.Elements
     [Serializable]
     public class InlineSignal<T> : ISignal<T>
     {
+        public event Action<T> OnEvent
+        {
+            add => this.subscribe.Invoke(value);
+            remove => this.unsubscribe.Invoke(value);
+        }
+
         private readonly Action<Action<T>> subscribe;
         private readonly Action<Action<T>> unsubscribe;
 
@@ -60,26 +55,6 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to the reactive source.
-        /// </summary>
-        /// <param name="action">The action to invoke with emitted values.</param>
-        /// <returns>A <see cref="Subscription{T}"/> representing the subscription.</returns>
-        public Subscription<T> Subscribe(Action<T> action)
-        {
-            this.subscribe.Invoke(action);
-            return new Subscription<T>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes the specified action from the reactive source.
-        /// </summary>
-        /// <param name="action">The action to remove.</param>
-        public void Unsubscribe(Action<T> action)
-        {
-            this.unsubscribe.Invoke(action);
-        }
     }
 
     /// <summary>
@@ -90,6 +65,12 @@ namespace Atomic.Elements
     [Serializable]
     public class InlineSignal<T1, T2> : ISignal<T1, T2>
     {
+        public event Action<T1, T2> OnEvent
+        {
+            add => this.subscribe.Invoke(value);
+            remove => this.unsubscribe.Invoke(value);
+        }
+
         private readonly Action<Action<T1, T2>> subscribe;
         private readonly Action<Action<T1, T2>> unsubscribe;
 
@@ -103,23 +84,6 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to the reactive source.
-        /// </summary>
-        /// <param name="action">The action to invoke with emitted values.</param>
-        /// <returns>A <see cref="Subscription{T1, T2}"/> representing the subscription.</returns>
-        public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
-        {
-            this.subscribe.Invoke(action);
-            return new Subscription<T1, T2>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes the specified action from the reactive source.
-        /// </summary>
-        /// <param name="action">The action to remove.</param>
-        public void Unsubscribe(Action<T1, T2> action) => this.unsubscribe.Invoke(action);
     }
 
     /// <summary>
@@ -131,6 +95,12 @@ namespace Atomic.Elements
     [Serializable]
     public class InlineSignal<T1, T2, T3> : ISignal<T1, T2, T3>
     {
+        public event Action<T1, T2, T3> OnEvent
+        {
+            add => this.subscribe.Invoke(value);
+            remove => this.unsubscribe.Invoke(value);
+        }
+
         private readonly Action<Action<T1, T2, T3>> subscribe;
         private readonly Action<Action<T1, T2, T3>> unsubscribe;
 
@@ -144,23 +114,6 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to the reactive source.
-        /// </summary>
-        /// <param name="action">The action to invoke with emitted values.</param>
-        /// <returns>A <see cref="Subscription{T1, T2, T3}"/> representing the subscription.</returns>
-        public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
-        {
-            this.subscribe.Invoke(action);
-            return new Subscription<T1, T2, T3>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes the specified action from the reactive source.
-        /// </summary>
-        /// <param name="action">The action to remove.</param>
-        public void Unsubscribe(Action<T1, T2, T3> action) => this.unsubscribe.Invoke(action);
     }
 
     /// <summary>
@@ -173,6 +126,12 @@ namespace Atomic.Elements
     [Serializable]
     public class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
     {
+        public event Action<T1, T2, T3, T4> OnEvent
+        {
+            add => this.subscribe.Invoke(value);
+            remove => this.unsubscribe.Invoke(value);
+        }
+
         private readonly Action<Action<T1, T2, T3, T4>> subscribe;
         private readonly Action<Action<T1, T2, T3, T4>> unsubscribe;
 
@@ -186,22 +145,5 @@ namespace Atomic.Elements
             this.subscribe = subscribe ?? throw new ArgumentNullException(nameof(subscribe));
             this.unsubscribe = unsubscribe ?? throw new ArgumentNullException(nameof(unsubscribe));
         }
-
-        /// <summary>
-        /// Subscribes to the reactive source.
-        /// </summary>
-        /// <param name="action">The action to invoke with emitted values.</param>
-        /// <returns>A <see cref="Subscription{T1, T2, T3, T4}"/> representing the subscription.</returns>
-        public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)
-        {
-            this.subscribe.Invoke(action);
-            return new Subscription<T1, T2, T3, T4>(this, action);
-        }
-
-        /// <summary>
-        /// Unsubscribes the specified action from the reactive source.
-        /// </summary>
-        /// <param name="action">The action to remove.</param>
-        public void Unsubscribe(Action<T1, T2, T3, T4> action) => this.unsubscribe.Invoke(action);
     }
 }

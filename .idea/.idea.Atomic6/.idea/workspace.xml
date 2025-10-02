@@ -5,9 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TakeDamageViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TakeDamageViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/WeaponRecoilViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/WeaponRecoilViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Character/CharacterViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/WeaponViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/Weapon/Content/WeaponViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/Extensions.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Extensions.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/ISignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/ISignal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/ISignal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/ISignal.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/InlineSignal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/InlineSignal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/InlineSignal.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/Subscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Subscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Signals/Subscription.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/Subscription.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/IReactiveValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/IReactiveValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/ReactiveProxyVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Proxy/ReactiveProxyVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveBool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveBool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveFloat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveFloat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveInt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Common/ReactiveInt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_float4.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_int4.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_quaternion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Mathematics/reactive_quaternion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/ReactiveVariable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveQuaternion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector2Int.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector2Int.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector3Int.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector3Int.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Variables/Reactive/Unity/ReactiveVector4.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Variables/ReactiveVariableTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Variables/ReactiveVariableTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,31 +250,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="8971000" />
-    </task>
-    <task id="LOCAL-01054" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759312029621</created>
-      <option name="number" value="01054" />
-      <option name="presentableId" value="LOCAL-01054" />
-      <option name="project" value="LOCAL" />
-      <updated>1759312029621</updated>
-    </task>
-    <task id="LOCAL-01055" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759312091867</created>
-      <option name="number" value="01055" />
-      <option name="presentableId" value="LOCAL-01055" />
-      <option name="project" value="LOCAL" />
-      <updated>1759312091867</updated>
-    </task>
-    <task id="LOCAL-01056" summary="Manual,md">
-      <option name="closed" value="true" />
-      <created>1759312321634</created>
-      <option name="number" value="01056" />
-      <option name="presentableId" value="LOCAL-01056" />
-      <option name="project" value="LOCAL" />
-      <updated>1759312321634</updated>
+      <workItem from="1759387244615" duration="12548000" />
     </task>
     <task id="LOCAL-01057" summary="Manual,md">
       <option name="closed" value="true" />
@@ -611,7 +620,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759396247605</updated>
     </task>
-    <option name="localTasksCounter" value="1103" />
+    <task id="LOCAL-01103" summary="IEnableLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1759396652163</created>
+      <option name="number" value="01103" />
+      <option name="presentableId" value="LOCAL-01103" />
+      <option name="project" value="LOCAL" />
+      <updated>1759396652163</updated>
+    </task>
+    <task id="LOCAL-01104" summary="Lifecycle">
+      <option name="closed" value="true" />
+      <created>1759396729197</created>
+      <option name="number" value="01104" />
+      <option name="presentableId" value="LOCAL-01104" />
+      <option name="project" value="LOCAL" />
+      <updated>1759396729197</updated>
+    </task>
+    <task id="LOCAL-01105" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759397409150</created>
+      <option name="number" value="01105" />
+      <option name="presentableId" value="LOCAL-01105" />
+      <option name="project" value="LOCAL" />
+      <updated>1759397409150</updated>
+    </task>
+    <option name="localTasksCounter" value="1106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,9 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityTick.md" />
-    <MESSAGE value="IEntityTick`1.md" />
-    <MESSAGE value="IEntityFixedTick.md" />
     <MESSAGE value="IEntityFixedTick`1.md" />
     <MESSAGE value="IEntityLateTick.md" />
     <MESSAGE value="IEntityLateTick`1.md" />
@@ -663,7 +693,10 @@
     <MESSAGE value="ScriptableEntityAspect`1.md" />
     <MESSAGE value="Lifecycle.md" />
     <MESSAGE value="IInitLifecycle.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IInitLifecycle.md" />
+    <MESSAGE value="IEnableLifecycle.md" />
+    <MESSAGE value="Lifecycle" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

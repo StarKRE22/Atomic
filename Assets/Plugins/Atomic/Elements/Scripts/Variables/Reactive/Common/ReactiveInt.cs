@@ -19,7 +19,7 @@ namespace Atomic.Elements
     public class ReactiveInt : IReactiveVariable<int>, IDisposable
     {
         /// <inheritdoc/>
-        public event Action<int> OnValueChanged;
+        public event Action<int> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -30,7 +30,7 @@ namespace Atomic.Elements
         private int value;
 
         /// <summary>
-        /// Gets or sets the integer value. Triggers <see cref="OnValueChanged"/> when the value changes.
+        /// Gets or sets the integer value. Triggers <see cref="OnEvent"/> when the value changes.
         /// </summary>
         public int Value
         {
@@ -40,7 +40,7 @@ namespace Atomic.Elements
                 if (this.value != value)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -48,7 +48,7 @@ namespace Atomic.Elements
         /// <summary>
         /// Initializes a new instance of <see cref="ReactiveInt"/> with a default value of 0.
         /// </summary>
-        public ReactiveInt() => this.value = default;
+        public ReactiveInt() => this.value = 0;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ReactiveInt"/> with a specific value.
@@ -60,33 +60,16 @@ namespace Atomic.Elements
         /// Implicitly converts an integer to a <see cref="ReactiveInt"/>.
         /// </summary>
         public static implicit operator ReactiveInt(int value) => new(value);
+        
+        /// <summary>
+        /// Invokes the <see cref="OnEvent"/> event manually with the given value.
+        /// </summary>
+        private void InvokeEvent(int value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
-        /// Subscribes to value change events.
+        /// Disposes the variable by clearing all listeners from <see cref="OnEvent"/>.
         /// </summary>
-        /// <param name="listener">Callback invoked when the value changes.</param>
-        /// <returns>A subscription object for managing the listener.</returns>
-        public Subscription<int> Subscribe(Action<int> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<int>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from value change events.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<int> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Invokes the <see cref="OnValueChanged"/> event manually with the given value.
-        /// </summary>
-        private void InvokeEvent(int value) => this.OnValueChanged?.Invoke(value);
-
-        /// <summary>
-        /// Disposes the variable by clearing all listeners from <see cref="OnValueChanged"/>.
-        /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string that represents the current value.

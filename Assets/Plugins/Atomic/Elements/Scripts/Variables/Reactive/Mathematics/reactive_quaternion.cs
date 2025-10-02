@@ -23,11 +23,11 @@ namespace Atomic.Elements
         /// <summary>
         /// Invoked when the value changes.
         /// </summary>
-        public event Action<quaternion> OnValueChanged;
+        public event Action<quaternion> OnEvent;
 
         /// <summary>
         /// The internal quaternion value.
-        /// Triggers <see cref="OnValueChanged"/> when set to a new value.
+        /// Triggers <see cref="OnEvent"/> when set to a new value.
         /// </summary>
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -37,7 +37,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current quaternion value.
-        /// Setting a new value invokes <see cref="OnValueChanged"/> if it differs from the previous value.
+        /// Setting a new value invokes <see cref="OnEvent"/> if it differs from the previous value.
         /// </summary>
         public quaternion Value
         {
@@ -47,7 +47,7 @@ namespace Atomic.Elements
                 if (!this.value.Equals(value))
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -70,28 +70,11 @@ namespace Atomic.Elements
         public static implicit operator reactive_quaternion(quaternion value) => new(value);
 
         /// <summary>
-        /// Subscribes to value change events.
-        /// </summary>
-        /// <param name="listener">Callback to invoke when the value changes.</param>
-        /// <returns>A subscription object for managing the listener.</returns>
-        public Subscription<quaternion> Subscribe(Action<quaternion> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<quaternion>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a listener from the value change event.
-        /// </summary>
-        /// <param name="listener">The callback to remove.</param>
-        public void Unsubscribe(Action<quaternion> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually invokes the <see cref="OnValueChanged"/> event with the given value.
+        /// Manually invokes the <see cref="OnEvent"/> event with the given value.
         /// Used internally by the inspector.
         /// </summary>
         /// <param name="value">The value to invoke with.</param>
-        private void InvokeEvent(quaternion value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(quaternion value) => this.OnEvent?.Invoke(value);
     }
 }
 #endif

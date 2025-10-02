@@ -18,14 +18,15 @@ namespace Atomic.Elements
         /// <param name="action">The action to unsubscribe when disposed.</param>
         public Subscription(ISignal signal, Action action)
         {
-            this.signal = signal;
-            this.action = action;
+            this.signal = signal ?? throw new ArgumentNullException(nameof(signal));
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+            this.signal.OnEvent += this.action;
         }
 
         /// <summary>
         /// Unsubscribes the associated action from the signal source.
         /// </summary>
-        public void Dispose() => this.signal?.Unsubscribe(this.action);
+        public void Dispose() => this.signal.OnEvent -= this.action;
     }
 
     /// <summary>
@@ -45,14 +46,15 @@ namespace Atomic.Elements
         /// <param name="action">The action to unsubscribe when disposed.</param>
         public Subscription(ISignal<T> signal, Action<T> action)
         {
-            this.signal = signal;
-            this.action = action;
+            this.signal = signal ?? throw new ArgumentNullException(nameof(signal));
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+            this.signal.OnEvent += this.action;
         }
 
         /// <summary>
         /// Unsubscribes the associated action from the signal source.
         /// </summary>
-        public void Dispose() => this.signal?.Unsubscribe(this.action);
+        public void Dispose() => this.signal.OnEvent -= this.action;
     }
 
     /// <summary>
@@ -73,14 +75,15 @@ namespace Atomic.Elements
         /// <param name="action">The action to unsubscribe when disposed.</param>
         public Subscription(ISignal<T1, T2> signal, Action<T1, T2> action)
         {
-            this.signal = signal;
-            this.action = action;
+            this.signal = signal ?? throw new ArgumentNullException(nameof(signal));
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+            this.signal.OnEvent += this.action;
         }
 
         /// <summary>
         /// Unsubscribes the associated action from the signal source.
         /// </summary>
-        public void Dispose() => this.signal?.Unsubscribe(this.action);
+        public void Dispose() => this.signal.OnEvent -= this.action;
     }
 
     /// <summary>
@@ -102,14 +105,15 @@ namespace Atomic.Elements
         /// <param name="action">The action to unsubscribe when disposed.</param>
         public Subscription(ISignal<T1, T2, T3> signal, Action<T1, T2, T3> action)
         {
-            this.signal = signal;
-            this.action = action;
+            this.signal = signal ?? throw new ArgumentNullException(nameof(signal));
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+            this.signal.OnEvent += this.action;
         }
 
         /// <summary>
         /// Unsubscribes the associated action from the signal source.
         /// </summary>
-        public void Dispose() => this.signal?.Unsubscribe(this.action);
+        public void Dispose() => this.signal.OnEvent -= this.action;
     }
 
     /// <summary>
@@ -132,13 +136,14 @@ namespace Atomic.Elements
         /// <param name="action">The action to unsubscribe when disposed.</param>
         public Subscription(ISignal<T1, T2, T3, T4> signal, Action<T1, T2, T3, T4> action)
         {
-            this.signal = signal;
-            this.action = action;
+            this.signal = signal ?? throw new ArgumentNullException(nameof(signal));
+            this.action = action ?? throw new ArgumentNullException(nameof(action));
+            this.signal.OnEvent += this.action;
         }
 
         /// <summary>
         /// Unsubscribes the associated action from the signal source.
         /// </summary>
-        public void Dispose() => this.signal?.Unsubscribe(this.action);
+        public void Dispose() => this.signal.OnEvent -= this.action;
     }
 }

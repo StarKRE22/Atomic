@@ -19,7 +19,7 @@ namespace Atomic.Elements
     public class ReactiveVector3 : IReactiveVariable<Vector3>, IDisposable
     {
         /// <inheritdoc/>
-        public event Action<Vector3> OnValueChanged;
+        public event Action<Vector3> OnEvent;
 
 #if ODIN_INSPECTOR
         [HideLabel, OnValueChanged(nameof(InvokeEvent))]
@@ -29,7 +29,7 @@ namespace Atomic.Elements
 
         /// <summary>
         /// Gets or sets the current <see cref="Vector3"/> value.
-        /// Notifies listeners via <see cref="OnValueChanged"/> if the value changes.
+        /// Notifies listeners via <see cref="OnEvent"/> if the value changes.
         /// </summary>
         public Vector3 Value
         {
@@ -39,7 +39,7 @@ namespace Atomic.Elements
                 if (this.value != value)
                 {
                     this.value = value;
-                    this.OnValueChanged?.Invoke(value);
+                    this.OnEvent?.Invoke(value);
                 }
             }
         }
@@ -70,31 +70,14 @@ namespace Atomic.Elements
         public static implicit operator ReactiveVector3(Vector3 value) => new(value);
 
         /// <summary>
-        /// Subscribes to value change events.
+        /// Manually invokes the <see cref="OnEvent"/> event.
         /// </summary>
-        /// <param name="listener">The listener to invoke when the value changes.</param>
-        /// <returns>A subscription that can be disposed to unsubscribe.</returns>
-        public Subscription<Vector3> Subscribe(Action<Vector3> listener)
-        {
-            this.OnValueChanged += listener;
-            return new Subscription<Vector3>(this, listener);
-        }
-
-        /// <summary>
-        /// Unsubscribes a previously registered listener.
-        /// </summary>
-        /// <param name="listener">The listener to remove.</param>
-        public void Unsubscribe(Action<Vector3> listener) => this.OnValueChanged -= listener;
-
-        /// <summary>
-        /// Manually invokes the <see cref="OnValueChanged"/> event.
-        /// </summary>
-        private void InvokeEvent(Vector3 value) => this.OnValueChanged?.Invoke(value);
+        private void InvokeEvent(Vector3 value) => this.OnEvent?.Invoke(value);
 
         /// <summary>
         /// Removes all listeners and releases references.
         /// </summary>
-        public void Dispose() => this.OnValueChanged = null;
+        public void Dispose() => this.OnEvent = null;
 
         /// <summary>
         /// Returns a string that represents the current value.
