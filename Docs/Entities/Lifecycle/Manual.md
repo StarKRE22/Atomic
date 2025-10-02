@@ -11,7 +11,7 @@ execute automatically at specific lifecycle events.
 - **Subscriptions**
     - [InitSubscription](Subscriptions/InitSubscription.md) <!-- + -->
     - [EnableSubscription](Subscriptions/EnableSubscription.md) <!-- + -->
-    - [DisableSubscription](Subscriptions/DisableSubscription.md)
+    - [DisableSubscription](Subscriptions/DisableSubscription.md) <!-- + -->
     - [DisposeSubscription](Subscriptions/DisposeSubscription.md) <!-- + -->
     - [TickSubscription](Subscriptions/TickSubscription.md)
     - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md)
