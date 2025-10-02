@@ -1,25 +1,17 @@
-
-<details>
-  <summary>
-    <h2 id="scriptable-entity-installer-t"> 🧩 ScriptableEntityInstaller&lt;E&gt;</h2>
-    <br>Strongly-typed variant of <code>ScriptableEntityInstaller</code>.
-  </summary>
-
-<br>
+# 🧩 ScriptableEntityInstaller&lt;E&gt;
 
 ```csharp
 public abstract class ScriptableEntityInstaller<E> : ScriptableEntityInstaller, IEntityInstaller<E>
     where E : class, IEntity
 ```
 
+- **Description:** Strongly-typed variant of <code>ScriptableEntityInstaller</code>.
 - **Type Parameter:** `E` – The specific entity type this installer supports.
-- **Inheritance:** Inherits from [ScriptableEntityInstaller](#scriptable-entity-installer) and
-  implements [IEntityInstaller&lt;E&gt;](IEntityInstaller.md/#entity-installer-t).
-- **Remarks:** Eliminates the need for manual casting in derived installer classes.
+- **Inheritance:** [ScriptableEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Install(E)`
 
@@ -43,7 +35,7 @@ public virtual void Uninstall(E entity)
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 [CreateAssetMenu(
@@ -64,7 +56,3 @@ public sealed class MoveInstaller<UnitEntity> : ScriptableEntityInstaller<UnitEn
 ```
 
 > Note: Using the generic `UnitEntity` version allows type-safe access to entity-specific properties without casting.
-
-</details>
-
----
