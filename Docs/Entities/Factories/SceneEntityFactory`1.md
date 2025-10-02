@@ -20,7 +20,7 @@ public abstract class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> w
 | `initialValueCount`     | Initial number of values to assign to the entity     |
 | `initialBehaviourCount` | Initial number of behaviours to assign to the entity |
 
-> `initialTagCount`, `initialValueCount`, `initialBehaviourCount` are primarily used for **Editor optimization** and scene baking workflows.
+> These parameters are primarily used for **Editor optimization** and scene baking workflows.
 
 ---
 
