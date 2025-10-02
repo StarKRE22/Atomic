@@ -56,8 +56,3 @@ public sealed class UnitEntityFactory : IEntityFactory<UnitEntity>
 IEntityFactory<UnitEntity> factory = new UnitEntityFactory();
 UnitEntity unit = factory.Create();
 ```
-
-> This approach is type-safe and avoids casting, ideal for systems working with specific entity types.
-
----
-
