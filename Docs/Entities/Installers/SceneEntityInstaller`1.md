@@ -1,24 +1,19 @@
-<details>
-  <summary>
-    <h2 id="scene-entity-installer-t"> 🧩 SceneEntityInstaller&lt;E&gt;</h2>
-    <br>Strongly-typed variant of <code>SceneEntityInstaller</code>.
-  </summary>
-
-<br>
+#  🧩 SceneEntityInstaller&lt;E&gt;
 
 ```csharp
 public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> 
     where E : class, IEntity
 ```
 
-- **Type Parameter:** `E` – The specific type of `IEntity` this installer operates on.
-- **Inheritance:** Inherits from [SceneEntityInstaller](#scene-entity-installer) and
-  implements [IEntityInstaller&lt;E&gt;](IEntityInstaller.md/#entity-installer-t).
+- **Description:** Strongly-typed variant of `SceneEntityInstaller`
+- **Type Parameter:** `E` – The specific type of [IEntity](../Entities/IEntity.md) this installer operates on.
+- **Inheritance:** [SceneEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
 - **Notes:** Eliminates the need for manual casting in derived installer classes.
+- **See also:** [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md)
 
 ---
 
-### 🏹 Methods
+## 🏹 Methods
 
 #### `Install(E entity)`
 
@@ -51,7 +46,7 @@ protected virtual void OnValidate();
 
 ---
 
-### 🗂 Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 public sealed class UnitEntity : SceneEntity
@@ -80,5 +75,3 @@ public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
 ```
 
 > Note: Using the generic `UnitEntity` version allows type-safe access to entity-specific properties without casting.
-
-</details>
