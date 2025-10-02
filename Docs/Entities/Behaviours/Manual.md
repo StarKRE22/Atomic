@@ -1,26 +1,10 @@
-# 🧩 Behaviours
+# 🧩 Entity Behaviours
 
-**Behaviour** is a modular unit of logic that can be attached to an [IEntity](../Entities/IEntity.md). It allows
+**Entity Behaviour** is a modular controller that handles [IEntity](../Entities/IEntity.md) lifecycle events and
+attached to concrete instance of entity. It allows
 entities to dynamically compose functionality at runtime, following the **Entity-State-Behaviour** pattern.
 
-Each behaviour can handle different events of the entity:
-
-| Event       | Purpose                                                    |
-|-------------|------------------------------------------------------------|
-| `Init`      | Initialization of the behaviour when the entity is created |
-| `Enable`    | Activating the entity on the scene or in a pool            |
-| `Disable`   | Deactivating the entity and returning it to the pool       |
-| `Tick`      | Updates every frame (logic, state)                         |
-| `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
-| `LateTick`  | Updates after rendering (e.g., UI)                         |
-| `Dispose`   | Releasing entity resources when it is destroyed            |
-
-
----
-
-## 🔍 API Reference
-
-Each phase has a separate interface that handles the corresponding lifecycle stage of the entity.
+There are separate interfaces that handles the corresponding lifecycle events of the entity.
 
 - [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
 - [IEntityInit](IEntityInit.md) <!-- + -->

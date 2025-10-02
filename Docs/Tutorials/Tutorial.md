@@ -326,3 +326,106 @@ entity.Dispose();
 ```
 
 ---
+
+
+
+## 🏗 Key Concepts
+
+### IEntityInstaller
+
+- Базовый интерфейс для конфигурации сущности.
+- Определяет метод:
+
+!!!
+void Install(IEntity entity);
+!!!
+
+- Используется для добавления тегов, значений и поведения в сущность.
+
+### SceneEntityInstaller
+
+- Абстрактный `MonoBehaviour`.
+- Применяется, если сущность существует в **сцене Unity**.
+- Позволяет привязывать сценовые зависимости (`Transform`, `Animator`, `AudioSource` и т.д.).
+- Поддерживает `OnValidate` для обновления конфигурации в редакторе.
+
+### ScriptableEntityInstaller
+
+- Абстрактный `ScriptableObject`.
+- Предназначен для **переиспользуемых конфигураций**, которые можно применять к множеству сущностей.
+- Не зависит от конкретной сцены и может использоваться как "глобальный шаблон" установки.
+
+### Generic Installers
+
+- `SceneEntityInstaller<E>` и `ScriptableEntityInstaller<E>`
+- Обеспечивают **строгую типизацию** и устраняют необходимость ручного кастинга.
+- Применяются, если требуется доступ к специфическим свойствам конкретного типа сущности.
+
+---
+
+## 🔄 Lifecycle
+
+1. **Install**
+
+- Вызывается при инициализации сущности.
+- Добавляет теги, значения, поведение или подписки.
+- Пример:
+
+!!!
+entity.AddValue("MoveSpeed", 5.0f);
+!!!
+
+2. **Uninstall** *(опционально)*
+
+- Вызывается при уничтожении или отключении сущности.
+- Используется для очистки ресурсов, отписки от событий и высвобождения зависимостей.
+- По умолчанию не реализован.
+
+---
+
+
+
+## 📝 Notes
+
+- **Entity Configuration** – Encapsulates setup routines for entities.
+- **Strongly-Typed Option** – `IEntityInstaller<E>` allows type-safe configuration.
+- **Composable** – Multiple installers can be applied to the same entity.
+- **Integration** – Works in both runtime and editor simulation workflows.
+- `IEntityInstaller` is intended for configuring or initializing entities before or during their lifecycle.
+- `IEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
+
+## 📝 Notes
+
+- **Scene Configuration** – Attach to a GameObject to configure entities in the scene.
+- **Editor Support** – Automatically refreshes when properties are changed in the Inspector.
+- **Runtime Installation** – Applies configuration and behaviors during runtime.
+- **Strongly-Typed Option** – `SceneEntityInstaller<E>` ensures type-safe installation for specific entity types.
+- Supports editor workflows via `OnValidate` to refresh previews or dependent systems.
+- Can be combined with other installers or entity behaviors to modularly set up complex entities.
+- `SceneEntityInstaller` is intended for configuring or initializing entities **directly in the Unity scene**.
+- `SceneEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
+
+## 📝 Notes
+
+- **Shared Configuration** – Use `ScriptableEntityInstaller` for reusable entity setup logic across multiple entities.
+- **Strongly-Typed Option** – `ScriptableEntityInstaller<E>` ensures type-safe installation for specific entity types.
+- **Runtime & Edit-Time Support** – Can be used in both runtime and editor contexts.
+- **Modular** – Can be combined with other installers or entity behaviors to create complex, composable setups.
+- `ScriptableEntityInstaller` is intended for **shared and reusable entity configuration**.
+- `ScriptableEntityInstaller<E>` is useful when the installer targets a specific entity type.
+
+
+
+Each behaviour can handle different events of the entity:
+
+## Lifecycle Events
+
+| Event       | Purpose                                                    |
+|-------------|------------------------------------------------------------|
+| `Init`      | Initialization of the behaviour when the entity is created |
+| `Enable`    | Activating the entity on the scene or in a pool            |
+| `Disable`   | Deactivating the entity and returning it to the pool       |
+| `Tick`      | Updates every frame (logic, state)                         |
+| `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
+| `LateTick`  | Updates after rendering (e.g., UI)                         |
+| `Dispose`   | Releasing entity resources when it is destroyed            |

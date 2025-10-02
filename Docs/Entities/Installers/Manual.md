@@ -1,39 +1,60 @@
 # 🧩 Entity Installers
 
+**Entity Installer** — это компонент, который выполняет установку тэгов, значений и поведений в экземпляр сущности. Он
+представляет собой декларативный механизм настройки сущностей на этапе инициализации или во время выполнения.
 
-- [Installers]()
-    - [IEntityInstaller](Installers/IEntityInstaller.md)
-    - [SceneEntityInstaller](Installers/SceneEntityInstaller.md)
-    - [ScriptableEntityInstaller](Installers/ScriptableEntityInstaller.md)
+---
 
+Ниже описаны все типы инсталлеров в зависимости от необходимости использования
+
+- [IEntityInstaller](IEntityInstaller.md)
+- [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
+- [SceneEntityInstaller](SceneEntityInstaller.md)
+- [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md)
+- [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
+- [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private Transform _transform;
+    [SerializeField] private float _moveSpeed = 5.0f;
+
+    public override void Install(IEntity entity)
+    {
+        entity.AddTag("Character");
+        entity.AddTag("Moveable");
+
+        entity.AddValue("Transform", _transform);
+        entity.AddValue("MoveSpeed", _moveSpeed);
+
+        entity.AddBehaviour<MoveBehaviour>();
+    }
+
+    public override void Uninstall(IEntity entity)
+    {
+        // Очистка или отписка от событий при уничтожении
+    }
+
+}
+```
+!!!
+
+!!!
+
+---
 
 ## 📝 Notes
 
-- **Entity Configuration** – Encapsulates setup routines for entities.
-- **Strongly-Typed Option** – `IEntityInstaller<E>` allows type-safe configuration.
-- **Composable** – Multiple installers can be applied to the same entity.
-- **Integration** – Works in both runtime and editor simulation workflows.
-- `IEntityInstaller` is intended for configuring or initializing entities before or during their lifecycle.
-- `IEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
 
-
-## 📝 Notes
-
-- **Scene Configuration** – Attach to a GameObject to configure entities in the scene.
-- **Editor Support** – Automatically refreshes when properties are changed in the Inspector.
-- **Runtime Installation** – Applies configuration and behaviors during runtime.
-- **Strongly-Typed Option** – `SceneEntityInstaller<E>` ensures type-safe installation for specific entity types.
-- Supports editor workflows via `OnValidate` to refresh previews or dependent systems.
-- Can be combined with other installers or entity behaviors to modularly set up complex entities.
-- `SceneEntityInstaller` is intended for configuring or initializing entities **directly in the Unity scene**.
-- `SceneEntityInstaller<E>` is useful when the installer is specific to a particular entity type.
-
-
-## 📝 Notes
-
-- **Shared Configuration** – Use `ScriptableEntityInstaller` for reusable entity setup logic across multiple entities.
-- **Strongly-Typed Option** – `ScriptableEntityInstaller<E>` ensures type-safe installation for specific entity types.
-- **Runtime & Edit-Time Support** – Can be used in both runtime and editor contexts.
-- **Modular** – Can be combined with other installers or entity behaviors to create complex, composable setups.
-- `ScriptableEntityInstaller` is intended for **shared and reusable entity configuration**.
-- `ScriptableEntityInstaller<E>` is useful when the installer targets a specific entity type.
+- **Installer** = декларативный способ конфигурации сущностей.
+- **SceneEntityInstaller** = настройка через `MonoBehaviour`, привязка к сцене.
+- **ScriptableEntityInstaller** = настройка через `ScriptableObject`, переиспользуемая логика.
+- **Generic Installers** = строго типизированный вариант для повышения безопасности и читаемости кода.
+- Старайтесь описывать в инсталлере только **настройку** сущности, избегая бизнес-логики.
+- Для корректного освобождения ресурсов всегда переопределяйте метод `Uninstall`, если есть подписки или
+  IDisposable-объекты.
