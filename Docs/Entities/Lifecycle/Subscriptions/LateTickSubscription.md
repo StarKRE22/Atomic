@@ -1,56 +1,36 @@
-# 🧩 LateUpdateSubscription
+# 🧩 LateTickSubscription
 
-A disposable subscription that detaches a callback from an `IUpdateSource`'s **OnLateUpdated** event when disposed.  
-Ensures **automatic unsubscription** and prevents memory leaks or unintended event calls.
-
----
-
-## Overview
-`LateUpdateSubscription` provides a **disposable wrapper** for subscriptions to the `IUpdateSource.OnLateUpdated` event.  
-When disposed, it automatically unsubscribes the callback, ensuring **safe event handling**.
-
-- Used by the framework for **temporary or lifecycle-scoped subscriptions** to late update events.
-- Prevents **manual unsubscription mistakes**.
-- Not intended for direct usage in user code.
-
----
-
-## LateUpdateSubscription
 ```csharp
-public readonly struct LateUpdateSubscription : IDisposable
+public readonly struct LateTickSubscription : IDisposable
 ```
+
+- **Description:** Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
+  **OnLateTicked** event. Automatically unsubscribes the callback when disposed, ensuring safe handling of late update
+  logic.
+- **Inheritance:** `IDisposable`
+
 ---
 
-## Members
+## 🏗️ Constructor
 
-### Constructor
 ```csharp
-internal LateUpdateSubscription(IUpdateSource source, Action<float> callback)
+public LateTickSubscription(ITickLifecycle source, Action<float> callback)
 ```
-- Initializes a new subscription to the `OnLateUpdated` event of the given `IUpdateSource`.
+
+- **Description:** Subscribes the provided callback to the `OnLateTicked` event of the given source.
 - **Parameters:**
-    - `source` — The updatable source object to subscribe to.
-    - `callback` — The callback invoked during LateUpdate cycles.
+    - `source` — The updatable source to subscribe to.
+    - `callback` — The callback action invoked during the LateUpdate phase.
 
 ---
 
-### Methods
+## 🏹 Methods
 
-#### Dispose
+#### `Dispose`
+
 ```csharp
 public void Dispose();
 ```
-- Unsubscribes the callback from the `IUpdateSource.OnLateUpdated` event.
-- Should be called when the subscription is no longer needed.
-- Safe to call multiple times.
 
----
-
-## Example Usage
-```csharp
-//Use extension method "WhenLateUpdate()"
-LateUpdateSubscription handle = entity.WhenLateUpdate(delta => Console.WriteLine($"Entity late updated: {delta}"));
-
-//Unsubcribe later
-handle.Dispose();
-```
+- **Description:** Detaches the callback from the `OnLateTicked` event.
+- **Remarks:** Safe to call multiple times; should be invoked when the subscription is no longer needed.
