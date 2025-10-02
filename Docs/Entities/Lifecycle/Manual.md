@@ -6,7 +6,7 @@ execute automatically at specific lifecycle events.
 
 - **Contracts**
     - [IInitLifecycle](Sources/IInitLifecycle.md) <!-- + -->
-    - [IEnableLifecycle](Sources/IEnableLifecycle.md)
+    - [IEnableLifecycle](Sources/IEnableLifecycle.md) <!-- + -->
     - [ITIckLifecycle](Sources/ITickLifecycle.md)
 - **Subscriptions**
     - [InitSubscription](Subscriptions/InitSubscription.md)

@@ -1,68 +1,66 @@
-# 🧩 IEnableSource
+# 🧩 IEnableLifecycle
 
-An interface used internally by the framework to represent a **runtime-controllable enable / disable contract**.  
-Provides **events** for enable / disable state changes and methods to toggle state programmatically.
+```csharp
+public interface IEnableLifecycle
+```
+
+- **Description:** Represents a **runtime-controllable enable and disable contract** for entities or systems. Provides
+  events for enable and disable state changes, as well as methods to programmatically toggle the state.
 
 > [!NOTE]
-> This is an **internal framework interface**. You should **not implement it manually** — it is used by the framework infrastructure.
+> This is an **internal framework interface**. You should **not implement it manually** — it is used by the framework
+> infrastructure.
 
 ---
 
-## Overview
-`IEnableSource` defines a standard way for objects to be **enabled** and **disabled** during runtime.  
-It exposes events for observing state changes, a property to check the state, and methods to control it.
-- Used by the framework for **lifecycle management**.
-- Not intended for direct implementation in user code.
+## ⚡ Events
+
+#### `OnEnabled`
+
+```csharp
+public event Action OnEnabled;
+```
+
+- **Description:** Triggered when the object has been enabled.
+
+#### `OnDisabled`
+
+```csharp
+public event Action OnDisabled;
+```
+
+- **Description:** Triggered when the object has been disabled.
 
 ---
 
-## IEnableSource
+## 🔑 Properties
+
+#### `Enabled`
+
 ```csharp
-public interface IEnableSource
+public bool Enabled { get; }
 ```
+
+- **Description:** Indicates whether the object is currently enabled.
 
 ---
 
-## Members
+## 🏹 Methods
 
-### Events
+#### `Enable`
 
-#### OnEnabled
 ```csharp
-event Action OnEnabled;
+public void Enable();
 ```
-- Occurs when the object is enabled.
 
-#### OnDisabled
+- **Description:** Enables the object, transitioning it into the **enabled state**.
+- **Remarks:** Triggers `OnEnabled`.
+
+#### `Disable`
+
 ```csharp
-event Action OnDisabled;
+public void Disable();
 ```
-- Occurs when the object is disabled.
 
----
-
-### Properties
-
-#### Enabled
-```csharp
-bool Enabled { get; }
-```
-- Gets a value indicating whether the object is currently enabled.
-
----
-
-### Methods
-
-#### Enable
-```csharp
-void Enable();
-```
-- Enables the object.
-- Triggers `OnEnabled`.
-
-#### Disable
-```csharp
-void Disable();
-```
-- Disables the object.
-- Triggers `OnDisabled`.
+- **Description:** Disables the object, transitioning it into the **disabled state**.
+- **Remarks:** Triggers `OnDisabled`.
