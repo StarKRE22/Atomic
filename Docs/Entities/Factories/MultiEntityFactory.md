@@ -100,8 +100,8 @@ public IEntity Create(string key);
 ```csharp
 IMultiEntityFactory factory = new MultiEntityFactory();
 
-factory.Register("Orc", new InlineEntityFactory<IEntity>(() => new EnemyEntity("Orc")));
-factory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new EnemyEntity("Goblin")));
+factory.Register("Orc", new InlineEntityFactory<IEntity>(() => new Entity("Orc")));
+factory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new Entity("Goblin")));
 
 IEntity orc = factory.Create("Orc");
 IEntity goblin = factory.Create("Goblin");
