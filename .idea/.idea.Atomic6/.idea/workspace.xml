@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,31 +221,7 @@
       <workItem from="1759213195784" duration="21402000" />
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
-      <workItem from="1759387244615" duration="5348000" />
-    </task>
-    <task id="LOCAL-01041" summary="SceneEntityProxies.md">
-      <option name="closed" value="true" />
-      <created>1759309745754</created>
-      <option name="number" value="01041" />
-      <option name="presentableId" value="LOCAL-01041" />
-      <option name="project" value="LOCAL" />
-      <updated>1759309745754</updated>
-    </task>
-    <task id="LOCAL-01042" summary="SceneEntityProxy.md">
-      <option name="closed" value="true" />
-      <created>1759309970571</created>
-      <option name="number" value="01042" />
-      <option name="presentableId" value="LOCAL-01042" />
-      <option name="project" value="LOCAL" />
-      <updated>1759309970571</updated>
-    </task>
-    <task id="LOCAL-01043" summary="SceneEntityProxy.md">
-      <option name="closed" value="true" />
-      <created>1759310018389</created>
-      <option name="number" value="01043" />
-      <option name="presentableId" value="LOCAL-01043" />
-      <option name="project" value="LOCAL" />
-      <updated>1759310018389</updated>
+      <workItem from="1759387244615" duration="6021000" />
     </task>
     <task id="LOCAL-01044" summary="SceneEntityProxy`1.md">
       <option name="closed" value="true" />
@@ -612,7 +591,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759392649784</updated>
     </task>
-    <option name="localTasksCounter" value="1090" />
+    <task id="LOCAL-01090" summary="ScriptableEntityInstaller.md">
+      <option name="closed" value="true" />
+      <created>1759393013265</created>
+      <option name="number" value="01090" />
+      <option name="presentableId" value="LOCAL-01090" />
+      <option name="project" value="LOCAL" />
+      <updated>1759393013265</updated>
+    </task>
+    <task id="LOCAL-01091" summary="ScriptableEntityInstaller`1.md">
+      <option name="closed" value="true" />
+      <created>1759393158957</created>
+      <option name="number" value="01091" />
+      <option name="presentableId" value="LOCAL-01091" />
+      <option name="project" value="LOCAL" />
+      <updated>1759393158958</updated>
+    </task>
+    <task id="LOCAL-01092" summary="EntityInstallers">
+      <option name="closed" value="true" />
+      <created>1759393269609</created>
+      <option name="number" value="01092" />
+      <option name="presentableId" value="LOCAL-01092" />
+      <option name="project" value="LOCAL" />
+      <updated>1759393269609</updated>
+    </task>
+    <option name="localTasksCounter" value="1093" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,8 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Behavious Manual.md" />
-    <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="IEntityInit.md" />
     <MESSAGE value="IEntityDispose.md" />
     <MESSAGE value="IEntityDispose`1.md" />
@@ -659,12 +660,14 @@
     <MESSAGE value="Начинаем пилить инсталлеры!" />
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="EntityBehaviours" />
-    <MESSAGE value="EntityInstallers" />
     <MESSAGE value="IEntityInstaller.md" />
     <MESSAGE value="IEntityInstaller`1.md" />
     <MESSAGE value="SceneEntityInstaller.md" />
     <MESSAGE value="SceneEntityInstaller`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityInstaller`1.md" />
+    <MESSAGE value="ScriptableEntityInstaller.md" />
+    <MESSAGE value="ScriptableEntityInstaller`1.md" />
+    <MESSAGE value="EntityInstallers" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityInstallers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

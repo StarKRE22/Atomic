@@ -15,7 +15,7 @@ public interface IEntityAspect : IEntityAspect<IEntity>
 #### `Apply(IEntity)`
 
 ```csharp
-void Apply(IEntity entity);
+public void Apply(IEntity entity);
 ```
 
 - **Description:** Applies the aspect to the specified entity.
@@ -24,7 +24,7 @@ void Apply(IEntity entity);
 #### `Discard(IEntity)`
 
 ```csharp
-void Discard(IEntity entity);
+public void Discard(IEntity entity);
 ```
 
 - **Description:** Reverses the effects of `Apply` on the specified entity.
