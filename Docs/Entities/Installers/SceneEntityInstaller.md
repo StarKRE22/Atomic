@@ -8,8 +8,7 @@ public abstract class SceneEntityInstaller : MonoBehaviour, IEntityInstaller
   perform **installation logic** on an [IEntity](../Entities/IEntity.md) during runtime or initialization.
 - **Inheritance:** `MonoBehaviour`, [IEntityInstaller](IEntityInstaller.md)
 - **Note:** It allows declarative configuration of entities placed in a scene.
-- **See also:
-  ** [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
+- **See also:** [SceneEntityInstaller&lt;E&gt;](SceneEntityInstaller%601.md), [ScriptableEntityInstaller](ScriptableEntityInstaller.md)
 
 > [!TIP]
 > Use `SceneEntityInstaller` only if there are scene dependencies or if entity instances in the scene need to differ. In
