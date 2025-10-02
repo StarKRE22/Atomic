@@ -3,8 +3,9 @@
 ```csharp
 public interface IValue<out T> : IFunction<T>
 ```
+
 - **Description:** Represents a **read-only value provider interface** and exposes a strongly-typed `Value` property.
-- **Inheritance:** [IFunction&lt;R&gt;](../Functions/IFunction.md) 
+- **Inheritance:** [IFunction&lt;R&gt;](../Functions/IFunction.md)
 - **Type Parameter:** `T` – The type of the value being returned.
 
 ---
@@ -42,7 +43,7 @@ public T Invoke()
 
 ---
 
-### Example #1: Position from Transform
+### 1️⃣ Position from Transform
 
 ```csharp
 public class TransformPositionProvider : IValue<Vector3>
@@ -74,7 +75,7 @@ public class UsageExample : MonoBehaviour
 
 ---
 
-### Example #2: Integer value from PlayerPrefs
+### 2️⃣ Integer value from PlayerPrefs
 
 ```csharp
 public class IntPlayerPrefsProvider : IValue<int>
@@ -108,7 +109,7 @@ public class UsageExample : MonoBehaviour
 
 ---
 
-### Example #3: Random AudioClip from a list
+### 3️⃣ Random AudioClip from a list
 
 ```csharp
 public class RandomAudioClipProvider : IValue<AudioClip>

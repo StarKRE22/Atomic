@@ -20,7 +20,7 @@ There are several classes of abstract scene actions, depending on the number of 
 
 ## 🗂 Examples of Usage
 
-### Non-generic action
+### 1️⃣ Non-generic action
 
 ```csharp
 public sealed class HelloWorldAction : SceneActionAbstract
@@ -34,7 +34,7 @@ public sealed class HelloWorldAction : SceneActionAbstract
 
 ---
 
-### Action with one parameter
+### 2️⃣ Action with one parameter
 
 ```csharp
 public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
@@ -48,7 +48,7 @@ public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 
 ---
 
-### Action with two parameters
+### 3️⃣ Action with two parameters
 
 ```csharp
 public sealed class DealDamageAction : SceneActionAbstract<Character, int>

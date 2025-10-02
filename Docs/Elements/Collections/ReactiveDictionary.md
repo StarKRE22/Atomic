@@ -536,7 +536,9 @@ bool ICollection<V>.Remove(V item);
 
 ## 🗂 Examples of Usage
 
-### Example #1: Basic Usage
+Below are examples of using `ReactiveDictionary` in different scenarios:
+
+### 1️⃣ Basic Usage
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -552,7 +554,7 @@ Console.WriteLine(dict["Two"]); // Output: 22
 
 ---
 
-### Example #2:  Using TryAdd
+### 2️⃣ Using TryAdd
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -565,7 +567,7 @@ Console.WriteLine(dict["One"]); // Output: 1
 
 ---
 
-### Example #3: Removing Elements
+### 3️⃣ Removing Elements
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>
@@ -585,7 +587,7 @@ if (dict.Remove("B", out int value))
 
 ---
 
-### Example #4:  Iterating Keys and Values
+### 4️⃣ Iterating Keys and Values
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>
@@ -615,7 +617,7 @@ foreach (var kv in dict)
 
 ---
 
-### Example #5:  Subscribing to Events
+### 5️⃣ Subscribing to Events
 
 ```csharp
 var dict = new ReactiveDictionary<string, int>();
@@ -631,7 +633,7 @@ dict.Remove("A");    // Output: Removed A=100
 
 ---
 
-### Example #6: Initializing from Collections
+### 6️⃣ Initializing from Collections
 
 ```csharp
 var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>

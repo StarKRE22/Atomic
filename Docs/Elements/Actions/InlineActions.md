@@ -6,7 +6,6 @@ parameters.
 
 There are several implementations of inline actions, depending on the number of arguments the actions take:
 
-
 - [InlineAction](InlineAction.md) — Non-generic version; works without parameters.
 - [InlineAction&lt;T&gt;](InlineAction%601.md) — Inline action that takes one argument.
 - [InlineAction&lt;T1, T2&gt;](InlineAction%602.md) — Inline action that takes two arguments.
@@ -15,42 +14,32 @@ There are several implementations of inline actions, depending on the number of 
 
 ---
 
-## 📌 Best Practice
+## 🗂 Example of Usage
 
-**InlineAction** is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to
-define custom behavior inline for events, commands, or reactive systems.
-
-Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using
-inline action:
+### 1️⃣ Non-generic action
 
 ```csharp
-public sealed class WeaponInstaller : SceneEntityInstaller<IWeapon>
-{
-    [SerializeField] private GameEntity _owner;
-    [SerializeField] private Transform _firePoint;
-    [SerializeField] private ReactiveVariable<int> _ammo = 100;
-    [SerializeField] private Cooldown _cooldown = 0.5f;
+IAction action = new InlineAction(() => Console.WriteLine("Hello World!"));
+action.Invoke(); // Output: Hello World!
+```
 
-    public override void Install(IWeapon weapon)
-    {
-        weapon.AddFireEvent(new BaseEvent());
-        weapon.AddFireAction(new InlineAction(() =>
-        {
-            if (_ammo.Value <= 0 || !_cooldown.IsCompleted())
-                return;
+---
 
-            _ammo.Value--;
-            
-            BulletUseCase.Spawn(
-                GameContext.Instance,
-                _firePoint.position,
-                _firePoint.rotation,
-                _owner.GetTeamType().Value
-            );
-            
-            _cooldown.ResetTime();
-            weapon.GetFireEvent().Invoke();
-        }));
-    }
-}
+### 2️⃣ Action with one parameter
+
+```csharp
+IAction<GameObject> destroyAction = new InlineAction<GameObject>(GameObject.Destroy);
+destroyAction.Invoke(gameObject);
+```
+
+---
+
+### 3️⃣ Action with two parameters
+
+```csharp
+IAction<Character, int> damageAction = new InlineAction<Character, int>(
+    (character, damage) => character.TakeDamage(damage)
+);
+
+damageAction.Invoke(enemy, 5);
 ```

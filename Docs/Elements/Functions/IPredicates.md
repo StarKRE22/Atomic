@@ -14,7 +14,7 @@ There are several interfaces of predicates, depending on the number of arguments
 
 ## 🗂 Examples of Usage
 
-### Predicate without arguments
+### 1️⃣ Predicate without arguments
 
 ```csharp
 public class IsGameActivePredicate : IPredicate
@@ -29,7 +29,7 @@ public class IsGameActivePredicate : IPredicate
 
 ---
 
-### Predicate with one argument
+### 2️⃣ Predicate with one argument
 
 ```csharp
 public class IsEnemyPredicate : IPredicate<Character>
@@ -44,7 +44,7 @@ public class IsEnemyPredicate : IPredicate<Character>
 
 ---
 
-### Predicate with two arguments
+### 3️⃣ Predicate with two arguments
 
 ```csharp
 public class AreAlliesPredicate : IPredicate<Character, Character>

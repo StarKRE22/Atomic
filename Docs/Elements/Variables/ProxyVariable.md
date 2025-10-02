@@ -81,7 +81,7 @@ IVariable<int> variable = ProxyVariable<int>
 
 ## 🗂 Examples of Usage
 
-### Example #1: Wrapping a Transform’s Position
+### 1️⃣ Wrapping a Transform’s Position
 
 ```csharp
 //Create a new proxy of Transform.position
@@ -94,7 +94,9 @@ IVariable<Vector3> position = new ProxyVariable<Vector3>(
 position.Value += Vector3.forward; 
 ```
 
-### Example #2: Using the Fluent Builder
+---
+
+### 2️⃣ Using the Fluent Builder
 
 ```csharp
 //Create a new proxy of Transform.position

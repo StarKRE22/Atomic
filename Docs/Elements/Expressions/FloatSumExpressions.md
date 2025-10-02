@@ -16,7 +16,7 @@ There are several implementations of expressions, depending on the number of arg
 
 ## 🗂 Examples of Usage
 
-#### Expression without args
+### 1️⃣ Expression without args
 
 ```csharp
 var expression = new FloatSumExpression(
@@ -27,7 +27,7 @@ var expression = new FloatSumExpression(
 float result = expression.Invoke(); // 2.0f + 3.0f + 4.0f = 9
 ```
 
-#### Expression with single arg
+### 2️⃣ Expression with single arg
 
 ```csharp
 var expression = new FloatSumExpression<float>(
@@ -37,7 +37,7 @@ var expression = new FloatSumExpression<float>(
 float result = expression.Invoke(3.5f); // 3.5f + (3.5f + 0.5f) = 7.5f
 ```
 
-#### Expression with two args
+### 3️⃣ Expression with two args
 
 ```csharp
 var expression = new FloatSumExpression<float, float>(

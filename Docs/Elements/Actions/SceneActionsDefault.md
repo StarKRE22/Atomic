@@ -35,7 +35,7 @@ For **narrative or scenario-driven games**, where designers need to configure a 
 
 ---
 
-### 🔹 Non-generic Usage
+### 1️⃣ Non-generic Usage
 
 Below is an example of using `SceneActionDefault`
 
@@ -60,7 +60,7 @@ public sealed class GameStartup : MonoBehaviour
 
 ---
 
-### 🔹 Generic Usage
+### 2️⃣ Generic Usage
 
 Below is an example of using `SceneActionDefault<T>` with a `GameObject`.
 

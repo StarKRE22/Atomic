@@ -14,7 +14,7 @@ There are several implementations of inline predicates, depending on the number 
 
 ## 🗂 Examples of Usage
 
-### Predicate without arguments
+### 1️⃣ Predicate without arguments
 
 ```csharp
 GameObject gameObject = ...
@@ -27,7 +27,7 @@ bool activeSelf = predicate.Invoke();
 
 ---
 
-### Predicate with one argument
+### 2️⃣ Predicate with one argument
 
 ```csharp
 Character player = ...
@@ -40,7 +40,7 @@ bool isEnemy = predicate.Invoke(enemy);
 
 ---
 
-### Predicate with two arguments
+### 3️⃣ Predicate with two arguments
 
 ```csharp
 Character player, enemy = ...

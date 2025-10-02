@@ -16,7 +16,7 @@ There are several implementations of expressions, depending on the number of arg
 
 ## 🗂 Examples of Usage
 
-#### Expression without args
+### 1️⃣ Expression without args
 
 ```csharp
 var multiply = new FloatMulExpression(
@@ -29,7 +29,7 @@ float result = multiply.Invoke(); // 24
 
 ---
 
-#### Expression with single arg
+### 2️⃣ Expression with single arg
 
 ```csharp
 var expression = new FloatMulExpression<float>(
@@ -41,7 +41,7 @@ float result = expression.Invoke(3); // 3 * (3 + 1) = 12
 
 ---
 
-#### Expression with two args
+### 3️⃣ Expression with two args
 
 ```csharp
 var expression = new FloatMulExpression<float, float>(

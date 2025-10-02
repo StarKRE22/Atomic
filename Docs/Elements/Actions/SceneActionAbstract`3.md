@@ -25,5 +25,3 @@ public abstract void Invoke(T1 arg1, T2 arg2, T3 arg3);
     - `arg1` – The first argument
     - `arg2` – The second argument
     - `arg3` – The third argument
-
----

@@ -60,7 +60,7 @@ public static implicit operator Reference<T>(T value);
 
 ## 🗂 Example of Usage
 
-### Example #1: Basic Usage
+### 1️⃣ Basic Usage
 
 ```csharp
 var health = new Reference<int>(100);
@@ -74,7 +74,7 @@ Console.WriteLine(health.Value); // Output: 150
 
 ---
 
-### Example #2: Shared Reference
+### 2️⃣ Shared Reference
 
 ```csharp
 public class Example : MonoBehaviour
@@ -115,7 +115,7 @@ public class Player
 
 ---
 
-### Example #3: Result for Coroutines
+### 3️⃣ Result for Coroutines
 
 `Reference<T>` can also serve as a lightweight container for `out` parameters in Unity coroutines or asynchronous tasks.
 This allows coroutines or async methods to update a value that the caller can access after the operation completes.

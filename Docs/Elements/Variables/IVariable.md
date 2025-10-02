@@ -53,7 +53,7 @@ public void Invoke(T arg)
 
 This section demonstrates how to implement `IVariable<T>` for different cases.
 
-### Example #1: Wrapping Transform Position
+### 1️⃣ Wrapping Transform Position
 
 ```csharp
 public class TransformPositionVariable : IVariable<Vector3>
@@ -73,7 +73,9 @@ public class TransformPositionVariable : IVariable<Vector3>
 }
 ```
 
-### Example #2: Wrapping Network Buffer Data
+---
+
+### 2️⃣ Wrapping Network Buffer Data
 
 ```csharp
 public class NetworkVariable<T> : IVariable<T> where T : unmanaged

@@ -14,7 +14,7 @@ There are several implementations of inline functions, depending on the number o
 
 ## 🗂 Examples of Usage
 
-### Function without arguments
+### 1️⃣ Function without arguments
 
 ```csharp
 GameObject gameObject = ...
@@ -27,7 +27,7 @@ bool activeSelf = function.Invoke();
 
 ---
 
-### Function with one argument
+### 2️⃣ Function with one argument
 
 ```csharp
 Character player, enemy = ...
@@ -38,7 +38,7 @@ IFunction<bool> function = new InlineFunction<Character, bool>(
 bool isEnemies = function.Invoke(enemy);
 ```
 
-### Function with two arguments
+### 3️⃣ Function with two arguments
 
 ```csharp
 IFunction<int, int, int> function = new InlineFunction<int, int, int>(
@@ -46,54 +46,4 @@ IFunction<int, int, int> function = new InlineFunction<int, int, int>(
 );
 
 int sum = function.Invoke(3, 4); // 7
-```
-
----
-
-## 📌 Best Practice
-
-`InlineFunction` is ideal for creating functions for specific game objects using **lambda expressions**, making it
-easy to define custom behavior inline for values, computations, reactive systems and tests.
-
-Below is a demonstration of how to dynamically provide values for different types of transformations in
-`AtomicEntities`:
-
-### Setting transform via `Rigidbody`
-
-```csharp
-public class PhysicsTransformInstaller : SceneEntityInstaller
-{
-    [SerializeField]
-    private Rigidbody _rigidbody;
-
-    public void Install(IEntity entity)
-    {
-        entity.AddPosition(new InlineFunction<Vector3>(() => _rigidbody.position));
-        entity.AddRotation(new InlineFunction<Quaternion>(() => _rigidbody.rotation));
-    }
-}
-```
-
-### Setting transform via `Transform`
-
-```csharp
-public class KinematicTransformInstaller : SceneEntityInstaller
-{
-    [SerializeField]
-    private Transform _transform;
-
-    public void Install(IEntity entity)
-    {
-        entity.AddPosition(new InlineFunction<Vector3>(() => _transform.position));
-        entity.AddRotation(new InlineFunction<Quaternion>(() => _transform.rotation));
-    }
-}
-```
-
-### Usage in code
-
-```csharp
-// Now it doesn’t matter where the object’s coordinates come from — it’s abstracted away
-IFunction<Vector3> position = entity.GetPosition();
-IFunction<Quaternion> rotation = entity.GetRotation();
 ```

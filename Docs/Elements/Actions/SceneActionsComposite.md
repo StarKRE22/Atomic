@@ -27,7 +27,7 @@ composite container for `SceneActionAbstract`**.
 
 ---
 
-### 🔹 Non-generic Usage
+### 1️⃣ Non-generic Usage
 
 #### 1. Add the `Atomic/Elements/Action Composite` component to a `GameObject`.
 
@@ -44,7 +44,7 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
 
 ---
 
-### 🔹 Generic Usage
+### 2️⃣ Generic Usage
 
 #### 1. Create a `GameObjectSceneActionComposite` component.
 

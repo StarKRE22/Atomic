@@ -29,7 +29,7 @@ There are several implementations of reference actions, depending on the number 
 
 ---
 
-### 🔹 Non-generic Example
+### 1️⃣ Non-generic Example
 
 Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
 
@@ -44,7 +44,7 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
 
 ---
 
-### 🔹 Generic Example
+### 2️⃣ Generic Example
 
 Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
 

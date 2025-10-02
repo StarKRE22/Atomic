@@ -15,7 +15,7 @@ There are several interfaces of actions, depending on the number of arguments th
 
 ## 🗂 Examples of Usage
 
-### Non-generic action
+### 1️⃣ Non-generic action
 
 ```csharp
 public sealed class HelloWorldAction : IAction
@@ -29,7 +29,7 @@ public sealed class HelloWorldAction : IAction
 
 ---
 
-### Action with one parameter
+### 2️⃣ Action with one parameter
 
 ```csharp
 public sealed class DestroyGameObjectAction : IAction<GameObject>
@@ -43,7 +43,7 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 
 ---
 
-### Action with two parameters
+### 3️⃣ Action with two parameters
 
 ```csharp
 public sealed class DealDamageAction : IAction<Character, int>

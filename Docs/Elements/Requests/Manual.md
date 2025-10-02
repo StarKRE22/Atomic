@@ -26,7 +26,7 @@ Below are examples of using request with the `Atomic.Entities` framework.
 
 ---
 
-### Example #1: Move Input Using Requests
+### 1️⃣ Move Input Using Requests
 
 This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume
 it later in fixed update**:
@@ -84,7 +84,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 
 ---
 
-### Example #2: Target Following Using Requests
+### 2️⃣ Target Following Using Requests
 
 In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
 

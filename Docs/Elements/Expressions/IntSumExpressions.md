@@ -16,7 +16,7 @@ There are several implementations of expressions, depending on the number of arg
 
 ## 🗂 Examples of Usage
 
-#### Expression without parameters
+### 1️⃣ Expression without parameters
 
 ```csharp
 var expression = new IntSumExpression(
@@ -29,7 +29,7 @@ int result = expression.Invoke(); // 9
 
 ---
 
-#### Expression with one parameter
+### 2️⃣ Expression with one parameter
 
 ```csharp
 var expression = new IntSumExpression<int>(
@@ -41,7 +41,7 @@ int result = expression.Invoke(3); // 3 + (3 + 1) = 7
 
 ---
 
-#### Expression with two parameters
+### 3️⃣ Expression with two parameters
 
 ```csharp
 var expression = new IntSumExpression<int, int>(

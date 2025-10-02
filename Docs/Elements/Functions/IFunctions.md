@@ -14,7 +14,7 @@ There are several interfaces of functions, depending on the number of arguments 
 
 ## 🗂 Examples of Usage
 
-### Function without arguments
+### 1️⃣ Function without arguments
 
 ```csharp
 public class IsGameObjectActiveFunction : IFunction<bool>
@@ -36,7 +36,7 @@ public class IsGameObjectActiveFunction : IFunction<bool>
 
 ---
 
-### Function with one argument
+### 2️⃣ Function with one argument
 
 ```csharp
 public sealed class IsEnemyFunction : IFunction<Character, bool>
@@ -57,7 +57,7 @@ public sealed class IsEnemyFunction : IFunction<Character, bool>
 
 ---
 
-### Function with two arguments
+### 3️⃣ Function with two arguments
 
 ```csharp
 public class SumFunction : IFunction<int, int, int>
