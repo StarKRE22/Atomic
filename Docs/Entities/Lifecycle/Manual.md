@@ -9,10 +9,10 @@ execute automatically at specific lifecycle events.
     - [IEnableLifecycle](Sources/IEnableLifecycle.md) <!-- + -->
     - [ITIckLifecycle](Sources/ITickLifecycle.md) <!-- + -->
 - **Subscriptions**
-    - [InitSubscription](Subscriptions/InitSubscription.md)  <!-- + -->
-    - [EnableSubscription](Subscriptions/EnableSubscription.md)
+    - [InitSubscription](Subscriptions/InitSubscription.md) <!-- + -->
+    - [EnableSubscription](Subscriptions/EnableSubscription.md) <!-- + -->
     - [DisableSubscription](Subscriptions/DisableSubscription.md)
-    - [DisposeSubscription](Subscriptions/DisposeSubscription.md)
+    - [DisposeSubscription](Subscriptions/DisposeSubscription.md) <!-- + -->
     - [TickSubscription](Subscriptions/TickSubscription.md)
     - [FixedTickSubscription](Subscriptions/FixedTickSubscription.md)
     - [LateTickSubscription](Subscriptions/LateTickSubscription.md)

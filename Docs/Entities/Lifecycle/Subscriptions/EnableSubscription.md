@@ -1,56 +1,36 @@
 # 🧩 EnableSubscription
 
-A disposable subscription that detaches a callback from an `IEnableSource`'s **OnEnabled** event when disposed.  
-Ensures **automatic unsubscription** and prevents memory leaks or unintended event calls.
-
----
-
-## Overview
-`EnableSubscription` provides a **disposable wrapper** for subscriptions to the `IEnableSource.OnEnabled` event.  
-When disposed, it automatically unsubscribes the callback, ensuring **safe event handling**.
-
-- Used by the framework for **temporary subscriptions** to enable events.
-- Prevents **manual unsubscription mistakes**.
-- Not intended for direct usage in user code.
-
----
-
-## EnableSubscription
 ```csharp
 public readonly struct EnableSubscription : IDisposable
 ```
+
+- **Description:** Represents a disposable subscription handle for
+  an [IEnableLifecycle's](../Sources/IEnableLifecycle.md) **OnEnabled** event. Automatically unsubscribes the callback
+  when disposed, ensuring safe event management and preventing repeated invocations.
+- **Inheritance:** `IDisposable`
+
 ---
 
-## Members
+## 🏗️ Constructor
 
-### Constructor
 ```csharp
-internal EnableSubscription(IEnableSource source, Action callback)
+public EnableSubscription(IEnableLifecycle source, Action callback)
 ```
-- Initializes a new subscription to the `OnEnabled` event of the given `IEnableSource`.
+
+- **Description:** Subscribes the provided callback to the `OnEnabled` event of the given source.
 - **Parameters:**
-    - `source` — The activatable source object to subscribe to.
-    - `callback` — The callback to invoke when the source is enabled.
+    - `source` — The activatable source to subscribe to.
+    - `callback` — The callback action invoked when the source is enabled.
 
 ---
 
-### Methods
+## 🏹 Methods
 
-#### Dispose
+#### `Dispose`
+
 ```csharp
 public void Dispose();
 ```
-- Unsubscribes the callback from the `IEnableSource.OnEnabled` event.
-- Should be called when the subscription is no longer needed.
-- Safe to call multiple times.
 
----
-
-## Example Usage
-```csharp
-//Use extension method "WhenEnable()"
-EnableSubscription handle = entity.WhenEnable(() => Console.WriteLine("Entity enabled!"));
-
-//Unsubscribe later:
-handle.Dispose();
-```
+- **Description:** Detaches the callback from the `OnEnabled` event.
+- **Remarks:** Safe to call multiple times; should be invoked when the subscription is no longer needed.

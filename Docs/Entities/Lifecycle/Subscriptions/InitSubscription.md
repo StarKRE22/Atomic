@@ -26,7 +26,7 @@ public InitSubscription(IInitLifecycle source, Action callback)
 
 ## 🏹 Methods
 
-### `Dispose`
+#### `Dispose`
 
 ```csharp
 public void Dispose();
