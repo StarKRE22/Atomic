@@ -46,49 +46,4 @@ namespace Atomic.Entities
         {
         }
     }
-
-    /// <summary>
-    /// A generic implementation of <see cref="IMultiEntityFactory{TKey,E}"/> that manages entity factories by key.
-    /// </summary>
-    /// <typeparam name="TKey">The type of keys used to retrieve factories.</typeparam>
-    public class MultiEntityFactory<TKey, E> : IMultiEntityFactory<TKey, E> where E : IEntity
-    {
-        private readonly Dictionary<TKey, IEntityFactory<E>> _factories;
-
-        /// <summary>
-        /// Initializes a new empty factory dictionary.
-        /// </summary>
-        public MultiEntityFactory() => _factories = new Dictionary<TKey, IEntityFactory<E>>();
-
-        /// <summary>
-        /// Initializes the factory with a collection of key-factory pairs.
-        /// </summary>
-        /// <param name="factories">The key-factory pairs to initialize with.</param>
-        public MultiEntityFactory(IEnumerable<KeyValuePair<TKey, IEntityFactory<E>>> factories) =>
-            _factories = new Dictionary<TKey, IEntityFactory<E>>(factories);
-
-        public MultiEntityFactory(IReadOnlyDictionary<TKey, IEntityFactory<E>> factories) =>
-            _factories = new Dictionary<TKey, IEntityFactory<E>>(factories);
-
-        /// <summary>
-        /// Initializes the factory with a params array of key-factory pairs.
-        /// </summary>
-        /// <param name="factories">The key-factory pairs to initialize with.</param>
-        public MultiEntityFactory(params KeyValuePair<TKey, IEntityFactory<E>>[] factories) =>
-            _factories = new Dictionary<TKey, IEntityFactory<E>>(factories);
-
-        /// <inheritdoc />
-        public void Register(TKey key, IEntityFactory<E> factory) => _factories.Add(key, factory);
-
-        /// <inheritdoc />
-        public void Unregister(TKey key) => _factories.Remove(key);
-
-        /// <inheritdoc />
-        public E Create(TKey key)
-        {
-            return !_factories.TryGetValue(key, out IEntityFactory<E> factory)
-                ? throw new KeyNotFoundException($"Entity Factory with key \"{key}\" is not found!")
-                : factory.Create();
-        }
-    }
 }

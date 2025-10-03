@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 # 🧩️ IEntityFactoryCatalog
 
 `IEntityFactoryCatalog` is a **read-only catalog of entity factories**, providing a structured and lookup-efficient way to access creation logic for `IEntity` instances.  
@@ -75,41 +82,3 @@ public sealed class EntityCatalog : IEntityFactoryCatalog
 ```
 
 > Useful for dynamically creating entities by string identifiers.
-
-### Example #2. Generic Key Catalog
-
-```csharp
-public enum EnemyType 
-{
-    Orc,
-    Goblin,
-    Troll
-}
-
-public sealed class EnemyCatalog : IEntityFactoryCatalog<EnemyType, EnemyEntity>
-{
-    public int Count => _factories.Count;
-    
-    private readonly Dictionary<EnemyType, IEntityFactory<EnemyEntity>> _factories = new();
-
-    public TypedEnemyCatalog()
-    {
-        _factories[EnemyType.Orc] = new InlineEntityFactory<EnemyEntity>(() => new EnemyEntity("Orc"));
-        _factories[EnemyType.Goblin] = new InlineEntityFactory<EnemyEntity>(() => new EnemyEntity("Goblin"));
-    }
-
-    public IEntityFactory<EnemyEntity> this[EnemyType key] => _factories[key];
-   
-    public IEnumerable<EnemyType> Keys => _factories.Keys;
-   
-    public IEnumerable<IEntityFactory<EnemyEntity>> Values => _factories.Values;
-    
-    public bool ContainsKey(EnemyType key) => _factories.ContainsKey(key);
-   
-    public IEnumerator<KeyValuePair<EnemyType, IEntityFactory<EnemyEntity>>> GetEnumerator() => _factories.GetEnumerator();
-   
-    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => _factories.GetEnumerator();
-   
-    public bool TryGetValue(EnemyType key, out IEntityFactory<EnemyEntity> value) => _factories.TryGetValue(key, out value);
-}
-```
