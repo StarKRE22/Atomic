@@ -17,7 +17,7 @@ Below is a list of available factory types:
     - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
 - **Multi Factories**
     - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
-    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md)
+    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
     - [MultiEntityFactory](MultiEntityFactory.md)
     - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)
     - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md)
