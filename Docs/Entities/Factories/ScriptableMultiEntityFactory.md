@@ -1,125 +1,105 @@
-# 🧩️ ScriptableEntityFactoryCatalog
-
-`ScriptableEntityFactoryCatalog` is a **ScriptableObject-based catalog** for managing collections of `ScriptableEntityFactory<E>` instances.  
-It provides a dictionary-like interface for retrieving entity factories by key, typically used for **runtime entity creation**, **prototyping**, or **editor tools**.
-
----
-
----
-
-## Class: ScriptableEntityFactoryCatalog
+# 🧩 ScriptableMultiEntityFactory
 
 ```csharp
 [CreateAssetMenu(
     fileName = "EntityFactoryCatalog",
     menuName = "Atomic/Entities/New EntityFactoryCatalog"
 )]
-public class ScriptableEntityFactoryCatalog :
-    ScriptableEntityFactoryCatalog<string, IEntity, ScriptableEntityFactory>,
-    IEntityFactoryCatalog
-{
-    protected override string GetKey(ScriptableEntityFactory factory) => factory.name;
-}
+public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
+    IMultiEntityFactory
 ```
-- Maps `ScriptableEntityFactory` assets by **name**.
-- Can be used as a drop-in asset for dynamic entity creation, prototyping, or editor tools.
-- Shortcut for the common case of a **string-keyed catalog**.
+
+- **Description:** A Unity `ScriptableObject`-based concrete implementation of
+  specialized for `string` keys , [IEntity](../Entities/IEntity.md)
+  entities and [ScriptableEntityFactory](ScriptableEntityFactory.md) factories.
+- **Inheritance:** [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md),
+  [IMultiEntityFactory](IMultiEntityFactory.md)
+- **Notes:**
+    - Can be used as a Flyweight pattern across the project, sharing a single instance for efficient entity creation.
+    - Designed to serve as a central multi-factory of entity factories in Unity projects.
+    - Can be created as an asset via **Unity Create Menu**:  
+      `Atomic/Entities/New EntityFactoryCatalog`.
+
+- **See also:** [ScriptableEntityFactory](ScriptableEntityFactory.md)
 
 ---
 
-## Class: ScriptableEntityFactoryCatalog<TKey, E, F>
+## 🛠 Inspector Settings
 
-```csharp
-public abstract class ScriptableEntityFactoryCatalog<TKey, E, F> :
-    ScriptableObject, IEntityFactoryCatalog<TKey, E>
-    where E : IEntity
-    where F : ScriptableEntityFactory<E>
-{
-}
-```
-
-| Member                                               | Type                                                 | Description                                                                                      |
-|------------------------------------------------------|------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| `Count`                                              | `int`                                                | Returns the number of factories in the catalog. Lazy initialization via `EnsureInitialized()`.   |
-| `Keys`                                               | `IEnumerable<TKey>`                                  | Returns all keys in the catalog.                                                                 |
-| `Values`                                             | `IEnumerable<IEntityFactory<E>>`                     | Returns all factory instances in the catalog.                                                    |
-| `ContainsKey(TKey key)`                              | `bool`                                               | Checks if a factory with the specified key exists.                                               |
-| `TryGetValue(TKey key, out IEntityFactory<E> value)` | `bool`                                               | Attempts to retrieve a factory by key. Returns `true` if found.                                  |
-| `this[TKey key]`                                     | `IEntityFactory<E>`                                  | Indexer for accessing a factory by key.                                                          |
-| `GetEnumerator()`                                    | `IEnumerator<KeyValuePair<TKey, IEntityFactory<E>>>` | Returns an enumerator over key-factory pairs.                                                    |
-| `IEnumerator IEnumerable.GetEnumerator()`            | `IEnumerator`                                        | Non-generic enumerator implementation.                                                           |
-| `protected abstract GetKey(F factory)`               | `TKey`                                               | Extracts a key for the given factory. Must be implemented by derived classes.                    |
+| Parameter   | Description                                                                                                                                   |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `factories` | Array of [ScriptableEntityFactory](ScriptableEntityFactory.md) assets used for entity creation. Each factory is identified by its asset name. |
 
 ---
 
-## Example Usage
+## 🏹 Methods
 
-### Example #1. String-Keyed Catalog
+#### `Create(string)`
 
 ```csharp
-var catalog = Resources.Load<ScriptableEntityFactoryCatalog>("EntityFactoryCatalog");
-var factory = catalog["Enemy"];
-var enemy = factory.Create();
+public IEntity Create(string key);
 ```
-- Loads a catalog asset from Resources.
-- Retrieves a factory by **string name**.
-- Creates a new entity using the retrieved factory.
+
+- **Description:** Creates a new entity associated with the specified factory asset name.
+- **Parameter:** `key` — The asset name identifying the factory.
+- **Returns:** A new instance of `IEntity`.
+
+#### `TryCreate(string, out IEntity)`
+
+```csharp
+public bool TryCreate(string key, out IEntity entity);
+```
+
+- **Description:** Attempts to create a new entity associated with the specified factory asset name.
+- **Parameters:**
+    - `key` — The asset name identifying the factory.
+    - `entity` — When the method returns, contains the created entity if the factory exists; otherwise, `null`.
+- **Returns:** `true` if the entity was created successfully; otherwise, `false`.
+
+#### `Contains(string)`
+
+```csharp
+public bool Contains(string key);
+```
+
+- **Description:** Determines whether a factory with the given asset name exists.
+- **Parameter:** `key` — The asset name to check.
+- **Returns:** `true` if a factory with the given asset name exists; otherwise, `false`.
+
+#### `GetKey(ScriptableEntityFactory)`
+
+```csharp
+protected override string GetKey(ScriptableEntityFactory factory);
+```
+
+- **Description:** Extracts the string key for a given factory.
+- **Parameter:** `factory` — The factory instance.
+- **Returns:** The factory’s Unity asset name.
 
 ---
 
-### Example #2. Generic Key Catalog
+## 🗂 Example of Usage
 
 ```csharp
-public enum EnemyType
+ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("EntityFactoryCatalog");
+
+if (factory.Contains("Orc"))
 {
-    Orc,
-    Goblin,
-    Troll
+    IEntity orc = factory.Create("Orc");
 }
 
-public abstract class EnemyEntityFactory : ScriptableEntityFactory<EnemyEntity>
+if (factory.TryCreate("Goblin", out IEntity goblin))
 {
-    [field: SerializeField]
-    public EnemyType Type { get; private set;}
-
-    public sealed override Enemy Create()
-    {
-        var entity = new Enemy(
-            this.name,
-            this.InitialTagCount,
-            this.InitialValueCount,
-            this.InitialBehaviourCount
-        );
-        entity.AddValue("EnemyType", this.Type);
-        this.Install(entity);
-        return entity;
-    }
-
-    protected abstract void Install(Enemy entity);
-}
-
-[CreateAssetMenu(
-    fileName = "EnemyFactoryCatalog",
-    menuName = "Entities/New EnemyFactoryCatalog"
-)]
-public sealed class EnemyFactoryCatalog : ScriptableEntityFactoryCatalog<EnemyType, EnemyEntity, EnemyEntityFactory>
-{
-    protected override EnemyType GetKey(EnemyEntityFactory factory) => factory.Type;
+    // use goblin entity
 }
 ```
-```csharp
-var catalog = Resources.Load<EnemyFactoryCatalog>("EnemyFactoryCatalog");
-var factory = catalog[EnemyType.Goblin];
-var goblin = factory.Create();
-```
-- Uses a **typed key** (enum) for lookup.
-- Provides type-safe access to factories and entities.
 
 ---
 
-## Remarks
-- Use **`ScriptableEntityFactoryCatalog`** for common string-keyed entity creation scenarios.
-- Use **`ScriptableEntityFactoryCatalog<TKey, E, F>`** for more advanced cases with typed keys.
-- The catalog is **lazy-initialized**: the `_map` dictionary is created on first access.
-- Duplicate keys in `_factories` will log warnings and skip additional entries.
-- Designed for **Editor-friendly workflows**, **runtime instantiation**, and **modular entity management**.
+## 📝 Notes
+
+- This is a **concrete Unity ScriptableObject implementation** that can be instantiated as an asset.
+- Uses the **factory asset name** (`ScriptableEntityFactory.name`) as the lookup key.
+- The internal dictionary of factories is initialized lazily on first access.
+- Duplicate keys are overwritten with a warning in the Unity console.
+- Can be used as a **Flyweight** across the project for efficient shared entity creation.
