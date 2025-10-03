@@ -1,9 +1,11 @@
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A non-generic registry interface for storing and retrieving entity factories by key.
+    /// A specialized version of <see cref="IMultiEntityFactory{TKey, E}"/> 
+    /// where the key type is <see cref="string"/> and the entity type is <see cref="IEntity"/>.
     /// </summary>
     public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
     {
     }
+
 }

@@ -1,32 +1,44 @@
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A generic registry interface for storing and retrieving entity factories by key.
+    /// Defines a factory for creating and managing multiple entities identified by a key of type <typeparamref name="TKey"/>.
     /// </summary>
-    /// <typeparam name="TKey">The type of the key used to identify factories.</typeparam>
-    /// <typeparam name="E">The type of entity created by the factories.</typeparam>
+    /// <typeparam name="TKey">
+    /// The type of key used to identify an entity.
+    /// </typeparam>
+    /// <typeparam name="E">
+    /// The type of entity to be created, which must implement the <see cref="IEntity"/> interface.
+    /// </typeparam>
     public interface IMultiEntityFactory<in TKey, E> where E : IEntity
     {
         /// <summary>
-        /// Creates an entity using the factory associated with the specified key.
+        /// Creates a new entity based on the specified key.
         /// </summary>
-        /// <param name="key">The key of the factory to use.</param>
-        /// <returns>A new instance of <typeparamref name="E"/>.</returns>
+        /// <param name="key">The key used to create the entity.</param>
+        /// <returns>The newly created entity of type <typeparamref name="E"/>.</returns>
         E Create(TKey key);
 
         /// <summary>
-        /// Tries to create an entity using the factory associated with the specified key.
+        /// Attempts to create an entity based on the specified key.
         /// </summary>
-        /// <param name="key">The key of the factory to use.</param>
-        /// <param name="entity">When this method returns, contains the created entity if the key was found; otherwise, the default value for <typeparamref name="E"/>.</param>
-        /// <returns><c>true</c> if a factory was found and the entity was created; otherwise, <c>false</c>.</returns>
+        /// <param name="key">The key used to create the entity.</param>
+        /// <param name="entity">
+        /// When this method returns, contains the created entity if the operation succeeded; otherwise, the default value of <typeparamref name="E"/>.
+        /// </param>
+        /// <returns>
+        /// <c>true</c> if the entity was successfully created; 
+        /// <c>false</c> if creation failed (e.g., an entity with the same key already exists or the key is invalid).
+        /// </returns>
         bool TryCreate(TKey key, out E entity);
 
         /// <summary>
-        /// Determines whether a factory with the specified key exists in the registry.
+        /// Checks whether an entity with the specified key exists.
         /// </summary>
-        /// <param name="key">The key to locate.</param>
-        /// <returns><c>true</c> if the factory exists; otherwise, <c>false</c>.</returns>
+        /// <param name="key">The key of the entity to check for existence.</param>
+        /// <returns>
+        /// <c>true</c> if an entity with the given key exists; 
+        /// <c>false</c> otherwise.
+        /// </returns>
         bool Contains(TKey key);
     }
 }

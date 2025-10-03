@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory`1.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactoryCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,15 +225,7 @@
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
-      <workItem from="1759473604356" duration="4942000" />
-    </task>
-    <task id="LOCAL-01093" summary="IEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1759393689316</created>
-      <option name="number" value="01093" />
-      <option name="presentableId" value="LOCAL-01093" />
-      <option name="project" value="LOCAL" />
-      <updated>1759393689316</updated>
+      <workItem from="1759473604356" duration="5622000" />
     </task>
     <task id="LOCAL-01094" summary="IEntityAspect.md">
       <option name="closed" value="true" />
@@ -614,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759477635123</updated>
     </task>
-    <option name="localTasksCounter" value="1142" />
+    <task id="LOCAL-01142" summary="IMultiEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1759478806650</created>
+      <option name="number" value="01142" />
+      <option name="presentableId" value="LOCAL-01142" />
+      <option name="project" value="LOCAL" />
+      <updated>1759478806650</updated>
+    </task>
+    <option name="localTasksCounter" value="1143" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Обновил подписки!" />
     <MESSAGE value="DisposeSubscription.md" />
     <MESSAGE value="EnableSubscription.md" />
     <MESSAGE value="DisableSubscription.md" />
@@ -666,7 +670,8 @@
     <MESSAGE value="Обновили фабрики!" />
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="Начинаем переписывать MultiFactory Docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем переписывать MultiFactory Docs" />
+    <MESSAGE value="IMultiEntityFactory.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IMultiEntityFactory.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
