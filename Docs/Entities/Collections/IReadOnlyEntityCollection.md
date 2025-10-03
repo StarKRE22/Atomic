@@ -1,9 +1,17 @@
+
+
+
+
+======
+======
+
 # 🧩️ IReadOnlyEntityCollection
 
 A read-only, observable collection of entities of type `E`.  
 Provides enumeration, presence checking, and notifications for changes in the collection.
 
 ### Type Parameters
+
 - `E` – The type of entity contained in the collection. Must implement [`IEntity`](#).
 
 ---
@@ -11,7 +19,8 @@ Provides enumeration, presence checking, and notifications for changes in the co
 ## Key Features
 
 - **Read-only access** – Prevents direct modifications to the collection, ensuring controlled entity management.
-- **Change notifications** – Provides events (`OnStateChanged`, `OnAdded`, `OnRemoved`) for reactive programming or UI updates.
+- **Change notifications** – Provides events (`OnStateChanged`, `OnAdded`, `OnRemoved`) for reactive programming or UI
+  updates.
 - **Entity presence checks** – Quickly determine if a specific entity exists in the collection via `Contains`.
 - **Copy support** – Easily copy entities into arrays or other collections for processing.
 - **Enumerable** – Implements `IReadOnlyCollection<E>` allowing iteration over all entities.
@@ -37,7 +46,3 @@ Provides enumeration, presence checking, and notifications for changes in the co
 | `void CopyTo(E[] array, int arrayIndex)` | Copies all entities into the specified array starting at the given index.           |
 
 ---
-
-## Remarks
-- Developed for maximum efficiency in memory and speed.
-- External modifications are not allowed; collection changes are managed by the system owning the entities.

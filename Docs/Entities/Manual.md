@@ -44,8 +44,8 @@ smoother and more powerful than in Unity.
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
 - [Installers](Installers/Manual.md) <!-- + -->
 - [Aspects](Aspects/Manual.md) <!-- + -->
-- [Factories](Factories/Manual.md) 
-- [Collections](Collections/Manual.md)
+- [Factories](Factories/Manual.md) <!-- + -->
+- [Collections](Collections/Manual.md) <!-- + -->
 - [Worlds](Worlds/Manual.md)
 - [Registry](Registry/EntityRegistry.md)
 - [Filters](Filters/Manual.md)
