@@ -50,7 +50,7 @@ public bool Add(IEntity entity);
 #### `Remove(IEntity)`
 
 ```csharp
-bool Remove(IEntity entity);
+public bool Remove(IEntity entity);
 ```
 
 - **Description:** Removes the first occurrence of a specific entity from the collection.
