@@ -7,7 +7,7 @@ public class EntityCollection : EntityCollection<IEntity>, IEntityCollection
 - **Description:** A **non-generic, high-performance mutable collection** for storing
   unique [IEntity](../Entities/IEntity.md) instances.  
   Provides the same functionality as the generic base class but simplifies usage when generic typing is unnecessary.
-- **Inheritance:** [EntityCollection\<E>](EntityCollection.md), [IEntityCollection](IEntityCollection.md).
+- **Inheritance:** [EntityCollection\<E>](EntityCollection%601.md), [IEntityCollection](IEntityCollection.md).
 
 ---
 
