@@ -77,51 +77,7 @@ protected abstract K GetKey(F factory);
 
 ## 🗂 Example of Usage
 
-Below an example of using multi entity factory for enemy entities:
-
-```csharp
-// Enum of enemy types
-public enum EnemyType 
-{
-    Orc,
-    Goblin,
-    Troll
-}
-```
-
-```csharp
-// Class of Enemy 
-public class EnemyEntity : Entity {...}
-```
-
-```csharp
-// Base class of Enemy Factory 
-public abstract class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
-{
-    public EnemyType Type { get; private set; } 
-    
-    public sealed override IGameEntity Create()
-    {
-        var entity = new EnemyEntity(
-            this.Type.ToString(),
-            this.initialTagCapacity,
-            this.initialValueCapacity,
-            this.initialBehaviourCapacity
-        );
-        this.Install(entity);
-        return entity;
-    }
-
-    protected abstract void Install(EnemyEntity entity);
-}
-
-//Implementations
-public class OrcFactory : EnemyFactory {...}
-
-public class GoblinFactory : EnemyFactory {...}
-
-public class TrollFactory : EnemyFactory {...}
-```
+An example demonstrates using multi entity factory for enemy entities:
 
 ```csharp
 // Multi Enemy Factory
@@ -145,6 +101,65 @@ if (factory.TryCreate(EnemyType.Goblin, out IEntity goblin))
     // use goblin
 }
 ```
+
+Below is required some infrastructure for enemies
+
+```csharp
+// Enum of enemy types
+public enum EnemyType 
+{
+    Orc,
+    Goblin,
+    Troll
+}
+```
+
+```csharp
+// Class of Enemy 
+public class EnemyEntity : Entity 
+{
+    public EnemyEntity(
+        string name = null,
+        int tagCapacity = 0,
+        int valueCapacity = 0,
+        int behaviourCapacity = 0
+    ) : base(name, tagCapacity, valueCapacity, behaviourCapacity)
+    {
+    }
+}
+```
+
+```csharp
+// Base class of Enemy Factory 
+public abstract class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
+{
+    public EnemyType Type { get; private set; } 
+    
+    public sealed override IGameEntity Create()
+    {
+        var entity = new EnemyEntity(
+            this.Type.ToString(),
+            this.initialTagCapacity,
+            this.initialValueCapacity,
+            this.initialBehaviourCapacity
+        );
+        this.Install(entity);
+        return entity;
+    }
+
+    protected abstract void Install(EnemyEntity entity);
+}
+```
+
+```csharp
+//Enemy Factory implementations:
+public class OrcFactory : EnemyFactory {...}
+
+public class GoblinFactory : EnemyFactory {...}
+
+public class TrollFactory : EnemyFactory {...}
+```
+
 
 ---
 
