@@ -8,7 +8,7 @@ disposing collections.
 
 ## 🏹 Methods
 
-### `AddRange(params E[])`
+#### `AddRange(params E[])`
 
 ```csharp
 public static void AddRange<E>(this IEntityCollection<E> it, params E[] entities) 
@@ -22,7 +22,7 @@ public static void AddRange<E>(this IEntityCollection<E> it, params E[] entities
 - **Exceptions:** Throws `ArgumentNullException` if `entities` is `null`.
 - **Behavior:** Iterates over the array and calls `Add` for each entity.
 
-### `AddRange(IEnumerable<E>)`
+#### `AddRange(IEnumerable<E>)`
 
 ```csharp
 public static void AddRange<E>(this IEntityCollection<E> it, IEnumerable<E> entities) 
@@ -72,7 +72,7 @@ public static void DestroyEntity<E>(this IEntityCollection<E> it, E entity, floa
     - `delay` — Optional delay before destruction in seconds.
 - **Behavior:** Calls `Remove` on the collection; if successful, destroys the entity using `GameObject.Destroy`.
 
-### `InitEntities`
+#### `InitEntities`
 
 ```csharp
 public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEntity;
@@ -83,7 +83,7 @@ public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEnti
     - `it` — The collection of entities to initialize.
 - **Behavior:** Iterates over the collection and invokes `IEntity.Init` on each entity.
 
-### `DisposeEntities`
+#### `DisposeEntities`
 
 ```csharp
 public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IEntity;
