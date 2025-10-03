@@ -1,18 +1,14 @@
-
-
-
-
-
-=====
-=====
-
 # 🧩 MultiEntityFactory
 
 ```csharp
 public class MultiEntityFactory : MultiEntityFactory<string, IEntity>, IMultiEntityFactory
 ```
 
-
+- **Description:** a non-generic registry for managing entity factories
+  using keys for registration and lookup.
+- **Inheritance:** [MultiEntityFactory<K, E>](MultiEntityFactory%601.md),
+  [IMultiEntityFactory](IMultiEntityFactory.md)
+- **Note:** Uses `string` as the key type and [IEntity](../Entities/IEntity.md) as the entity type.
 
 ---
 
@@ -96,6 +92,29 @@ public IEntity Create(string key);
 - **Returns:** A new instance of type `IEntity`.
 - **Exceptions:**  
   Throws `KeyNotFoundException` if no factory is registered for the given key.
+
+#### `TryCreate(string, out IEntity)`
+
+```csharp
+public bool TryCreate(string key, out IEntity entity);  
+```
+
+- **Description:** Attempts to create a new entity associated with the specified key.
+- **Parameters:**
+  - `key` — The string key identifying the entity to create.
+  - `entity` — When the method returns, contains the created entity if the key exists; otherwise, `null`.
+- **Returns:** `true` if the entity was created successfully; otherwise, `false`.
+
+#### `Contains(string)`
+
+```csharp
+public bool Contains(string key);  
+```
+
+- **Description:** Determines whether an entity associated with the specified key exists.
+- **Parameter:** `key` — The string key to check.
+- **Returns:** `true` if an entity with the given key exists; otherwise, `false`.
+
 
 ---
 
