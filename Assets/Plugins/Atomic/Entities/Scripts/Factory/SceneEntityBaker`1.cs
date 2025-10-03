@@ -13,16 +13,15 @@ using UnityEditor;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Abstract base class for Unity-based factories that create <typeparamref name="E"/> entities
-    /// with customizable initial settings and optional support for scene baking workflows.
+    /// Base factory / baker class for creating scene entities.
     /// </summary>
-    /// <typeparam name="E">The type of entity to create. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="E">The type of entity produced by this factory. Must implement <see cref="IEntity"/>.</typeparam>
     /// <remarks>
-    /// This factory is useful for building entity templates in the Unity Editor,
-    /// where entities can be created at runtime or during a "bake" phase by converting authoring components into runtime data.
-    ///
-    /// You can override <see cref="Create"/> to define custom instantiation logic,
-    /// and use <see cref="Precompile"/> to extract editor-time metadata like name or component counts.
+    /// This class inherits from <see cref="MonoBehaviour"/> and is designed to be used both at runtime
+    /// and in the Unity Editor. Several operations (such as <see cref="Precompile"/>) are editor-only
+    /// and wrapped in <c>UNITY_EDITOR</c> compilation directives.
+    /// 
+    /// Derived classes must implement <see cref="Create"/> to construct new entity instances.
     /// </remarks>
     public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {

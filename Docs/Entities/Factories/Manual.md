@@ -9,8 +9,6 @@ Below is a list of available factory types:
 - **Factories**
     - [IEntityFactory](IEntityFactory.md) <!-- + -->
     - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
-    - [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
-    - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
     - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
     - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
     - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
@@ -22,6 +20,9 @@ Below is a list of available factory types:
     - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)  <!-- + -->
     - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
     - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
+- **Bakers**
+    - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
+    - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
 
 ---
 
@@ -48,10 +49,10 @@ IEntity myEntity = factory.Create();
 
 ---
 
-### 2️⃣ Scene Entity Factory
+### 2️⃣ Scene Entity Baker
 
 ```csharp
-public class EnemySceneFactory : SceneEntityFactory<EnemyEntity>
+public class EnemyBaker : SceneEntityBaker<EnemyEntity>
 {
     public override EnemyEntity Create()
     {
@@ -107,6 +108,6 @@ IEntity orc = registry.Create("Orc");
 
 - Use **`IEntityFactory`** for standard creation interfaces.
 - Use **`IMultiEntityFactory`** / **`MultiEntityFactory`** for registry-like scenarios.
-- Use **`SceneEntityFactory`** or **`ScriptableEntityFactory`** when integrating with Unity workflows.
+- Use **`SceneEntityBaker`** or **`ScriptableEntityFactory`** when integrating with Unity workflows.
 - Use **`InlineEntityFactory`** for lightweight, temporary, or lambda-based entity creation.
 - **Generic versions** provide type-safety and avoid unnecessary casting.

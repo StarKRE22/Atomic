@@ -1,88 +1,147 @@
-# 🧩 SceneEntityBaker<E>
+# 🧩️ SceneEntityBaker\<E>
 
 ```csharp
-public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E>
-    where E : IEntity
+public abstract class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
 ```
 
-- **Description:** An abstract Unity `MonoBehaviour` that serves as a scene-based entity baker. It creates entities of
-  type `E` using a [ScriptableEntityFactory\<E>](../Factories/ScriptableEntityFactory%601.md) and optionally destroys
-  its GameObject after
-  baking.
-
-- **Type Parameter:** `E` — The type of entity to bake, must implement [IEntity](../Entities/IEntity.md).
-- **Inheritance:** `MonoBehaviour`, [IEntityFactory<E>](../Factories/IEntityFactory%601.md)
-
-- **Note:** Can be used to spawn or initialize entities in a Unity scene and immediately transfer them to runtime logic.
-
-- **See also:** [ScriptableEntityFactory<E>](../Factories/ScriptableEntityFactory%601.md),
-  [IEntityFactory<E>](../Factories/IEntityFactory%601.md)
+- **Description:** Abstract class for Unity-based factories that create
+  entities with customizable initial settings.
+- **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
+- **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
+- **Notes:** Stores initial tag, value, and behaviour capacities for optimization.
+- **See also:** [SceneEntityBaker](SceneEntityBaker.md)
 
 ---
 
 ## 🛠 Inspector Settings
 
-| Parameter          | Description                                                           |
-|--------------------|-----------------------------------------------------------------------|
-| `destroyAfterBake` | Should destroy this GameObject after baking? Default is `true`.       |
-| `factory`          | The `ScriptableEntityFactory<E>` that this baker will use / override. |
+| Parameters                 | Description                                          | 
+|----------------------------|------------------------------------------------------|
+| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
+| `initialValueCapacity`     | Initial number of values to assign to the entity     |
+| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
+
+> These parameters are primarily used for **Editor optimization** and scene baking workflows.
+
+---
+
+## 🧱 Fields
+
+#### `InitialTagCapacity`
+
+```csharp
+[SerializeField] 
+protected int initialTagCount;
+```
+
+- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and scene
+  baking.
+
+#### `InitialValueCapacity`
+
+```csharp
+[SerializeField]
+protected int initialValueCount;
+```
+
+- **Description:** Initial number of values to assign to the entity.
+
+#### `InitialBehaviourCapacity`
+
+```csharp
+[SerializeField] 
+protected int initialBehaviourCount;
+```
+
+- **Description:** Initial number of behaviours to assign to the entity.
 
 ---
 
 ## 🏹 Methods
 
-#### `Bake()`
+#### `Create()`
 
 ```csharp
-public E Bake();
+public abstract E Create();
 ```
 
-- **Description:** Creates a new entity using the assigned factory, installs it, and optionally destroys the baker's
-  GameObject.
-- **Returns:** The created entity of type `E`.
+- **Description:** Creates and returns a new instance of the entity type `E`.
+- **Returns:** A new instance of type `E`.
+- **Note:** Override this method to implement custom instantiation logic.
 
-#### `Install(E)`
+---
+
+#### `OnValidate()`
 
 ```csharp
-protected abstract void Install(E entity);
+protected virtual void OnValidate();
 ```
 
-- **Description:** Abstract method to perform custom installation or initialization logic on the baked entity.
-- **Parameter:** `entity` — The entity instance being installed.
+- **Description:** Unity callback invoked when script values change in the Inspector. Updates cached metadata by calling
+  `Precompile()` by default.
+- **Remarks:** Only executed in the Editor outside of Play mode.
 
-#### `IEntityFactory<E>.Create()`
+---
+
+## ▶️ Context Menu
+
+#### `Precompile()`
 
 ```csharp
-E IEntityFactory<E>.Create();
+[ContextMenu(nameof(Precompile))]
+protected virtual void Precompile();
 ```
 
-- **Description:** Interface implementation that simply calls `Bake()`.
+- **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
+  count, and behaviour count. Useful for editor previews, scene baking, and optimization.
+- **Remarks:** Useful for optimization. Only executed in the Editor. Logs a warning if `Create()` returns `null`.
+
+#### `Reset()`
+
+```csharp
+protected virtual void Reset();
+```
+
+- **Description:** Unity callback that resets factory fields to default values.
+- **Remarks:** Only affects editor workflows.
 
 ---
 
 ## 🗂 Example of Usage
 
-```
+```csharp
 public class EnemyBaker : SceneEntityBaker<EnemyEntity>
 {
-protected override void Install(EnemyEntity entity)
-{
-// Custom initialization for EnemyEntity
-entity.Health = 100;
-entity.SetPosition(this.transform.position);
-}
-}
+    public override EnemyEntity Create()
+    {
+        //Create an instance of entity with precomputed capacities
+        var enemy = new EnemyEntity(
+            this.name,
+            this.initialTagCount,
+            this.initialValueCount,
+            this.initialBehaviourCount
+        );
+        
+        enemy.AddTag("Enemy");
+        enemy.AddValue<int>("Health", 100);
+        enemy.AddValue<int>("Damage", 15);
+        enemy.AddBehaviour<AttackBehaviour>();
 
-// Usage in scene
-EnemyBaker baker = FindObjectOfType<EnemyBaker>();
-EnemyEntity enemy = baker.Bake();
+        // Destroy unnecessary game object after creation
+        Destroy(this.gameObject);
+        
+        return enemy;
+    }
+}
 ```
 
----
+```csharp
+// Create all associated enemies by EnemyBakers those found on all active scenes
+EnemyEntity[] enemies = EnemyBaker.BakeAll();
 
-## 📝 Notes
+//Assume we have entity world
+EntityWorld world = new EntityWorld();
 
-- The baker uses the assigned `ScriptableEntityFactory<E>` to create entities.
-- If `_destroyAfterBake` is `true`, the GameObject with the baker will be destroyed immediately after baking.
-- Derived classes must implement `Install(E)` to define custom initialization logic for the baked entity.
-- Can be used as a **scene-level factory** to pre-instantiate or configure entities in the Unity Editor.
+//Add enemies to entity world
+world.AddRange(enemies);
+```

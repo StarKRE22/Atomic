@@ -429,3 +429,36 @@ Each behaviour can handle different events of the entity:
 | `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
 | `LateTick`  | Updates after rendering (e.g., UI)                         |
 | `Dispose`   | Releasing entity resources when it is destroyed            |
+
+
+BAKING
+
+
+### What is Baking?
+
+In the context of `SceneEntityBaker`, **Baking** is the process of taking a **GameObject** from a Unity scene and converting it into a fully configured **entity**.
+
+Baking can be thought of as **overriding factory defaults**. The `ScriptableEntityFactory<E>` provides default properties for an entity (e.g., health, damage, stats). During baking, a `SceneEntityBaker` can:
+
+- Customize these properties for the specific GameObject.
+- Apply scene-specific values.
+- Optionally destroy the GameObject after baking.
+
+Additionally, **the Baker itself implements the `IEntityFactory<E>` interface**, meaning it can act as a factory directly, allowing code to create entities either via the assigned factory or via baking logic.
+
+This allows you to reuse factory defaults while still customizing entities directly in the scene without manually changing the factory itself.
+
+## Key Features
+
+- **Generic and non-generic versions**: Supports both specific entity types (`SceneEntityBaker<E>`) and a shortcut for general `IEntity` (`SceneEntityBaker`).
+- **Factory-based entity creation**: Uses `ScriptableEntityFactory<E>` to instantiate entities, ensuring consistent creation logic.
+- **Baker as a factory**: Can be used as an `IEntityFactory<E>` itself, providing flexible entity creation directly from the Baker.
+- **Customizable entity setup**: Subclasses implement `Install(E entity)` to configure baked entities with scene-specific data.
+- **Automatic GameObject cleanup**: Optionally destroys the GameObject after baking to avoid leftover objects in the scene.
+- **Batch baking support**:
+  - Bake all entities in the current scene.
+  - Bake all entities under a specific `GameObject`.
+  - Bake all entities in a specific `Scene`.
+  - Bake directly into an existing `ICollection<E>` to reuse memory or append results.
+- **Active/inactive inclusion**: Can optionally include inactive GameObjects when searching for bakers.
+- **Editor-friendly**: Inspector fields allow configuring destruction behavior and linking the factory directly in the Unity Editor.
