@@ -241,7 +241,7 @@ entities.CopyTo(array, 0);
 // Iterate over collection
 foreach (var entity in entities)
 {
-Console.WriteLine(entity.Name);
+    Console.WriteLine(entity.Name);
 }
 
 // Dispose when done

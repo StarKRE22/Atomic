@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,22 +219,6 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-    </task>
-    <task id="LOCAL-01112" summary="DisableSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759403844297</created>
-      <option name="number" value="01112" />
-      <option name="presentableId" value="LOCAL-01112" />
-      <option name="project" value="LOCAL" />
-      <updated>1759403844297</updated>
-    </task>
-    <task id="LOCAL-01113" summary="TickSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759403989222</created>
-      <option name="number" value="01113" />
-      <option name="presentableId" value="LOCAL-01113" />
-      <option name="project" value="LOCAL" />
-      <updated>1759403989222</updated>
     </task>
     <task id="LOCAL-01114" summary="FixedTickSubscription.md">
       <option name="closed" value="true" />
@@ -616,7 +596,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759521360142</updated>
     </task>
-    <option name="localTasksCounter" value="1161" />
+    <task id="LOCAL-01161" summary="EntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1759521931329</created>
+      <option name="number" value="01161" />
+      <option name="presentableId" value="LOCAL-01161" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521931329</updated>
+    </task>
+    <task id="LOCAL-01162" summary="EntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1759521968350</created>
+      <option name="number" value="01162" />
+      <option name="presentableId" value="LOCAL-01162" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521968350</updated>
+    </task>
+    <option name="localTasksCounter" value="1163" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +639,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="ScriptableEntityFactory`1.md" />
@@ -668,7 +663,8 @@
     <MESSAGE value="IEntityCollection`1.md" />
     <MESSAGE value="IEntityCollection.md" />
     <MESSAGE value="EntityCollection`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityCollection`1.md" />
+    <MESSAGE value="EntityCollection.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityCollection.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
