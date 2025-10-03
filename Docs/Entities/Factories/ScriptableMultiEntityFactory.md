@@ -5,16 +5,6 @@ It provides a dictionary-like interface for retrieving entity factories by key, 
 
 ---
 
-## Key Features
-
-- **Unity Integration** – Built on top of `ScriptableObject`, can be created as an asset via the Inspector.
-- **Read-Only Access** – Implements `IEntityFactoryCatalog<TKey, E>` for safe dictionary-like lookups.
-- **Flexible Keys** – Supports generic keys (`TKey`) or common string-keyed usage.
-- **Editor-Friendly** – Serialized factory array (`_factories`) can be displayed and managed in the Inspector.
-- **Duplicate Detection** – Logs warnings if multiple factories share the same key.
-- **Lazy Initialization** – The internal `_map` dictionary is built on first access.
-- **Lightweight** – Factory references are reused; entities are created only when `Create()` is called.
-
 ---
 
 ## Class: ScriptableEntityFactoryCatalog
