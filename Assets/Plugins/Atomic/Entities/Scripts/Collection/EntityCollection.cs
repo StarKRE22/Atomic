@@ -6,7 +6,7 @@ namespace Atomic.Entities
     /// A non-generic version of <see cref="EntityCollection{E}"/> that operates specifically on <see cref="IEntity"/> instances.
     /// Provides the same functionality as the generic base class but simplifies usage when generic typing is unnecessary.
     /// </summary>
-    public class EntityCollection : EntityCollection<IEntity>
+    public class EntityCollection : EntityCollection<IEntity>, IEntityCollection
     {
         /// <summary>
         /// Initializes a new empty instance of the <see cref="EntityCollection"/> class.

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,30 +223,6 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-    </task>
-    <task id="LOCAL-01109" summary="Обновил подписки!">
-      <option name="closed" value="true" />
-      <created>1759403433952</created>
-      <option name="number" value="01109" />
-      <option name="presentableId" value="LOCAL-01109" />
-      <option name="project" value="LOCAL" />
-      <updated>1759403433952</updated>
-    </task>
-    <task id="LOCAL-01110" summary="DisposeSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759403518530</created>
-      <option name="number" value="01110" />
-      <option name="presentableId" value="LOCAL-01110" />
-      <option name="project" value="LOCAL" />
-      <updated>1759403518530</updated>
-    </task>
-    <task id="LOCAL-01111" summary="EnableSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759403659185</created>
-      <option name="number" value="01111" />
-      <option name="presentableId" value="LOCAL-01111" />
-      <option name="project" value="LOCAL" />
-      <updated>1759403659186</updated>
     </task>
     <task id="LOCAL-01112" summary="DisableSubscription.md">
       <option name="closed" value="true" />
@@ -612,7 +592,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759520838639</updated>
     </task>
-    <option name="localTasksCounter" value="1158" />
+    <task id="LOCAL-01158" summary="IEntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1759521039705</created>
+      <option name="number" value="01158" />
+      <option name="presentableId" value="LOCAL-01158" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521039705</updated>
+    </task>
+    <task id="LOCAL-01159" summary="IEntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1759521080022</created>
+      <option name="number" value="01159" />
+      <option name="presentableId" value="LOCAL-01159" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521080022</updated>
+    </task>
+    <task id="LOCAL-01160" summary="EntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1759521360142</created>
+      <option name="number" value="01160" />
+      <option name="presentableId" value="LOCAL-01160" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521360142</updated>
+    </task>
+    <option name="localTasksCounter" value="1161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,8 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Прочесал Atomic.Elements" />
-    <MESSAGE value="IEntityFactory.md" />
     <MESSAGE value="IEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory.md" />
@@ -664,7 +666,9 @@
     <MESSAGE value="Пилим раздел EntityCollection`1.md" />
     <MESSAGE value="IReadOnlyEntityCollection.md" />
     <MESSAGE value="IEntityCollection`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityCollection`1.md" />
+    <MESSAGE value="IEntityCollection.md" />
+    <MESSAGE value="EntityCollection`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityCollection`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -7,8 +7,65 @@ public class EntityCollection<E> : IEntityCollection<E> where E : IEntity
 - **Description:** A **high-performance, mutable collection** for storing unique entities of type `E`.  
   Combines **hash table semantics** for fast lookup and **linked list semantics** for ordered enumeration.  
   Supports standard collection operations, lifecycle management, and reactive notifications.
-- **Type Parameter:** `E` — The type of entity stored in the collection, must implement [IEntity](../Entities/IEntity.md).
+- **Type Parameter:** `E` — The type of entity stored in the collection, must
+  implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityCollection\<E>](IEntityCollection%601.md).
+
+---
+
+## 🏗 Constructors
+
+#### `EntityCollection()`
+
+```csharp
+public EntityCollection();
+```
+
+- **Description:** Initializes a new instance of the `EntityCollection<E>` class with a **default capacity**.
+- **Default Capacity:** 3 entities.
+
+#### `EntityCollection(int)`
+
+```csharp
+public EntityCollection(int capacity);
+```
+
+- **Description:** Initializes a new instance of the `EntityCollection<E>` class with a **predefined capacity**.
+- **Parameter:** `capacity` — Initial capacity of the collection.
+- **Exceptions:**
+    - `ArgumentOutOfRangeException` if `capacity` is negative.
+
+#### `EntityCollection(params E[])`
+
+```csharp
+public EntityCollection(params E[] entities);
+```
+
+- **Description:** Initializes a new instance with the provided array of entities.
+- **Parameter:** `entities` — Array of entities to populate the collection.
+- **Behavior:** Internally sets capacity to `entities.Length` and adds all entities via `AddRange`.
+
+---
+
+#### `EntityCollection(IReadOnlyCollection<E>)`
+
+```csharp
+public EntityCollection(IReadOnlyCollection<E> elements);
+```
+
+- **Description:** Initializes a new instance with a collection of entities.
+- **Parameter:** `elements` — Collection of entities to populate the collection.
+- **Behavior:** Sets capacity to `elements.Count` and adds all entities via `AddRange`.
+
+#### `EntityCollection(IEnumerable<E>)`
+
+```csharp
+public EntityCollection(IEnumerable<E> elements);
+```
+
+- **Description:** Initializes a new instance with an enumerable of entities.
+- **Parameter:** `elements` — Enumerable of entities to populate the collection.
+- **Behavior:** Sets capacity to the number of elements (`elements.Count()`) and adds all entities via `AddRange`.
 
 ---
 
