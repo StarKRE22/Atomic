@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace Atomic.Entities
 {
-    public abstract partial class SceneEntityFactory<E>
+    public abstract partial class SceneEntityBaker<E>
     {
         /// <summary>
-        /// Finds all <see cref="SceneEntityFactoryProxy{E}"/> components in the scene and bakes them into entities.
+        /// Finds all <see cref="SceneEntityBaker{E}"/> components in the scene and bakes them into entities.
         /// All corresponding GameObjects will be destroyed after baking.
         /// </summary>
         /// <param name="includeInactive">Whether to include inactive objects in the search.</param>
@@ -22,7 +22,7 @@ namespace Atomic.Entities
                 ? FindObjectsInactive.Include
                 : FindObjectsInactive.Exclude;
 
-            SceneEntityFactoryProxy<E>[] bakers = FindObjectsByType<SceneEntityFactoryProxy<E>>(include, FindObjectsSortMode.None);
+            SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
             SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
@@ -31,10 +31,10 @@ namespace Atomic.Entities
 
             for (int i = 0; i < count; i++)
             {
-                SceneEntityFactoryProxy<E> baker = bakers[i];
+                SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Bake();
+                    E entity = baker.Create();
                     entities[i] = entity;
                 }
             }
@@ -53,7 +53,7 @@ namespace Atomic.Entities
                 ? FindObjectsInactive.Include
                 : FindObjectsInactive.Exclude;
 
-            SceneEntityFactoryProxy<E>[] bakers = FindObjectsByType<SceneEntityFactoryProxy<E>>(include, FindObjectsSortMode.None);
+            SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
             SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
@@ -61,17 +61,17 @@ namespace Atomic.Entities
             int count = bakers.Length;
             for (int i = 0; i < count; i++)
             {
-                SceneEntityFactoryProxy<E> baker = bakers[i];
+                SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Bake();
+                    E entity = baker.Create();
                     destination.Add(entity);
                 }
             }
         }
 
         /// <summary>
-        /// Bakes all <see cref="SceneEntityFactoryProxy{E}"/>s in a specific <see cref="Scene"/>.
+        /// Bakes all <see cref="SceneEntityBaker{E}"/>s in a specific <see cref="Scene"/>.
         /// </summary>
         /// <param name="scene">The scene whose root objects should be searched.</param>
         /// <returns>List of baked entities.</returns>
@@ -83,13 +83,13 @@ namespace Atomic.Entities
             for (int i = 0, rootCount = rootObjects.Length; i < rootCount; i++)
             {
                 GameObject rootObject = rootObjects[i];
-                SceneEntityFactoryProxy<E>[] bakers = rootObject.GetComponentsInChildren<SceneEntityFactoryProxy<E>>(includeInactive);
+                SceneEntityBaker<E>[] bakers = rootObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
                 for (int j = 0, bakerCount = bakers.Length; j < bakerCount; j++)
                 {
-                    SceneEntityFactoryProxy<E> baker = bakers[j];
+                    SceneEntityBaker<E> baker = bakers[j];
                     if (includeInactive || baker.gameObject.activeInHierarchy)
                     {
-                        E entity = baker.Bake();
+                        E entity = baker.Create();
                         result.Add(entity);
                     }
                 }
@@ -99,7 +99,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Bakes all <see cref="SceneEntityFactoryProxy{E}"/>s in a specific <see cref="Scene"/> and adds them to the provided collection.
+        /// Bakes all <see cref="SceneEntityBaker{E}"/>s in a specific <see cref="Scene"/> and adds them to the provided collection.
         /// </summary>
         /// <param name="scene">The scene whose root objects should be searched.</param>
         /// <param name="results">The collection where baked entities will be added.</param>
@@ -113,14 +113,14 @@ namespace Atomic.Entities
             for (int i = 0, objectCount = objects.Length; i < objectCount; i++)
             {
                 GameObject go = objects[i];
-                SceneEntityFactoryProxy<E>[] bakers = go.GetComponentsInChildren<SceneEntityFactoryProxy<E>>(includeInactive);
+                SceneEntityBaker<E>[] bakers = go.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
 
                 for (int j = 0, bakerCount = bakers.Length; j < bakerCount; j++)
                 {
-                    SceneEntityFactoryProxy<E> baker = bakers[j];
+                    SceneEntityBaker<E> baker = bakers[j];
                     if (includeInactive || baker.gameObject.activeInHierarchy)
                     {
-                        E entity = baker.Bake();
+                        E entity = baker.Create();
                         results.Add(entity);
                     }
                 }
@@ -129,23 +129,23 @@ namespace Atomic.Entities
 
 
         /// <summary>
-        /// Bakes all <see cref="SceneEntityFactoryProxy{E}"/> components attached to or under the specified GameObject.
+        /// Bakes all <see cref="SceneEntityBaker{E}"/> components attached to or under the specified GameObject.
         /// </summary>
         /// <param name="gameObject">The GameObject to search.</param>
         /// <returns>Array of baked entities.</returns>
         public static E[] Bake(GameObject gameObject, bool includeInactive = true)
         {
-            SceneEntityFactoryProxy<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityFactoryProxy<E>>(includeInactive);
+            SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
             int count = bakers.Length;
             E[] entities = new E[count];
 
             for (int i = 0; i < count; i++)
             {
-                SceneEntityFactoryProxy<E> baker = bakers[i];
+                SceneEntityBaker<E> baker = bakers[i];
                 if (!includeInactive && !baker.gameObject.activeInHierarchy)
                     continue;
 
-                E entity = baker.Bake();
+                E entity = baker.Create();
                 entities[i] = entity;
             }
 
@@ -153,7 +153,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Bakes all <see cref="SceneEntityFactoryProxy{E}"/> components attached to or under the specified GameObject
+        /// Bakes all <see cref="SceneEntityBaker{E}"/> components attached to or under the specified GameObject
         /// and adds them to the provided collection.
         /// </summary>
         /// <param name="gameObject">The GameObject to search.</param>
@@ -164,13 +164,13 @@ namespace Atomic.Entities
             if (results == null)
                 throw new System.ArgumentNullException(nameof(results));
 
-            SceneEntityFactoryProxy<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityFactoryProxy<E>>(includeInactive);
+            SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
             for (int i = 0, count = bakers.Length; i < count; i++)
             {
-                SceneEntityFactoryProxy<E> baker = bakers[i];
+                SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Bake();
+                    E entity = baker.Create();
                     results.Add(entity);
                 }
             }

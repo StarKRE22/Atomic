@@ -24,17 +24,8 @@ namespace Atomic.Entities
     /// You can override <see cref="Create"/> to define custom instantiation logic,
     /// and use <see cref="Precompile"/> to extract editor-time metadata like name or component counts.
     /// </remarks>
-    public abstract partial class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
+    public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
-        
-#if ODIN_INSPECTOR
-        [GUIColor(0f, 0.83f, 1f)]
-        [DisableInPlayMode]
-#endif
-        [Tooltip("Should destroy this Game Object after baking?")]
-        [SerializeField]
-        protected internal bool _destroyAfterBake = true;
-        
 #if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
@@ -61,7 +52,6 @@ namespace Atomic.Entities
         [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
         protected int initialBehaviourCapacity;
-        
 
         /// <summary>
         /// Creates and returns a new instance of the entity.
@@ -114,7 +104,7 @@ namespace Atomic.Entities
             E entity = this.Create();
             if (entity == null)
             {
-                Debug.LogWarning($"{nameof(SceneEntityFactory<E>)}: Create() returned null.", this);
+                Debug.LogWarning($"{nameof(SceneEntityBaker<E>)}: Create() returned null.", this);
                 return;
             }
 

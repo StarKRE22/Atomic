@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// It also defines an <see cref="Install"/> method that allows injecting custom configuration logic,
     /// such as adding tags, values, or behaviors after the entity has been created.
     /// </remarks>
-    public abstract class SceneEntityFactory : SceneEntityFactory<IEntity>, IEntityFactory
+    public abstract class SceneEntityBaker : SceneEntityBaker<IEntity>, IEntityFactory
     {
         /// <summary>
         /// Creates a new <see cref="Entity"/> using the predefined initialization values,
@@ -30,18 +30,6 @@ namespace Atomic.Entities
         }
 
         protected abstract void Install(IEntity entity);
-        
-        public E Bake()
-        {
-            E entity = _factory.Create();
-            this.Install(entity);
-
-            if (_destroyAfterBake)
-                Destroy(this.gameObject);
-
-            return entity;
-        }
-
     }
 }
 #endif
