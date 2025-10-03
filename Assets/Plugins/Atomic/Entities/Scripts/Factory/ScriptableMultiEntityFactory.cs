@@ -10,8 +10,8 @@ namespace Atomic.Entities
     /// Implements <see cref="IMultiEntityFactory"/>.
     /// </summary>
     [CreateAssetMenu(
-        fileName = "EntityFactoryCatalog",
-        menuName = "Atomic/Entities/New EntityFactoryCatalog"
+        fileName = "MultiEntityFactory",
+        menuName = "Atomic/Entities/New MultiEntityFactory"
     )]
     public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
         IMultiEntityFactory
