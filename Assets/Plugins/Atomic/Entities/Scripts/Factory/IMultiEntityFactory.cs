@@ -7,5 +7,4 @@ namespace Atomic.Entities
     public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
     {
     }
-
 }
