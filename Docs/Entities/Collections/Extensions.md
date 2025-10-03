@@ -1,42 +1,123 @@
-# 🧩️ IEntityCollection Extensions
+# 🧩 EntityCollection Extensions
 
-Extension methods for working with [`IEntityCollection<E>`](#) that simplify adding, initializing, disposing, and managing entities.  
-Provides convenient utilities for batch operations and scene-based entity handling.
-
----
-
-## Key Features
-
-- **Batch addition** – Add multiple entities at once via arrays or enumerables.
-- **Scene entity management** – Instantiate or destroy `SceneEntity` objects directly from the collection (Unity only).
-- **Reactive lifecycle** – Initialize or dispose all entities in the collection efficiently.
-- **Optional parent assignment** – When creating entities, you can assign a parent transform.
-- **Delay support** – Destroy entities with an optional delay in Unity.
+Provides **extension methods** for working with [IEntityCollection\<E>](IEntityCollection%601.md).  
+These methods simplify adding multiple entities, creating/destroying scene entities (Unity), and initializing or
+disposing collections.
 
 ---
 
-## Methods
+## 🏹 Methods
 
-| Method                                                                                   | Description                                                                                                       |
-|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| `AddRange(params E[] entities)`                                                          | Adds an array of entities to the collection. Throws if the array is null.                                         |
-| `AddRange(IEnumerable<E> entities)`                                                      | Adds entities from an enumerable to the collection. Ignores null entities.                                        |
-| `CreateEntity(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)` | Instantiates a prefab as a new entity, adds it to the collection, and optionally assigns a parent. Unity only.    |
-| `DestroyEntity(E entity, float delay = 0)`                                               | Removes an entity from the collection and destroys its GameObject. Optional delay before destruction. Unity only. |
-| `InitEntities()`                                                                         | Calls `Init()` on every entity in the collection.                                                                 |
-| `DisposeEntities()`                                                                      | Calls `Dispose()` on every entity in the collection.                                                              |
+### `AddRange(params E[])`
+
+```csharp
+public static void AddRange<E>(this IEntityCollection<E> it, params E[] entities) 
+    where E : IEntity;
+```
+
+- **Description:** Adds a range of entities to the collection.
+- **Parameters:**
+    - `it` — The target entity collection.
+    - `entities` — Array of entities to add.
+- **Exceptions:** Throws `ArgumentNullException` if `entities` is `null`.
+- **Behavior:** Iterates over the array and calls `Add` for each entity.
+
+### `AddRange(IEnumerable<E>)`
+
+```csharp
+public static void AddRange<E>(this IEntityCollection<E> it, IEnumerable<E> entities) 
+    where E : IEntity;
+```
+
+- **Description:** Adds a range of entities from an enumerable.
+- **Parameters:**
+    - `it` — The target entity collection.
+    - `entities` — Enumerable of entities to add.
+- **Exceptions:** Throws `ArgumentNullException` if `entities` is `null`.
+- **Behavior:** Iterates over the enumerable and calls `Add` for each entity.
+
+#### `CreateEntity`
+
+```csharp
+public static E CreateEntity<E>(
+    this IEntityCollection<E> it,
+    E prefab,
+    Vector3 position,
+    Quaternion rotation,
+    Transform parent = null
+) where E : SceneEntity;
+```
+
+- **Description:** Instantiates a new `SceneEntity` based on a prefab and adds it to the collection.
+- **Parameters:**
+    - `it` — Target collection.
+    - `prefab` — Prefab to instantiate.
+    - `position` — Spawn position.
+    - `rotation` — Spawn rotation.
+    - `parent` — Optional parent transform.
+- **Returns:** The newly created entity.
+- **Behavior:** Calls `SceneEntity.Create`, adds the entity to the collection, and returns it.
+
+#### `DestroyEntity`
+
+```csharp
+public static void DestroyEntity<E>(this IEntityCollection<E> it, E entity, float delay = 0) 
+    where E : SceneEntity;
+```
+
+- **Description:** Removes an entity from the collection and destroys its GameObject.
+- **Parameters:**
+    - `it` — Target collection.
+    - `entity` — Entity to remove and destroy.
+    - `delay` — Optional delay before destruction in seconds.
+- **Behavior:** Calls `Remove` on the collection; if successful, destroys the entity using `GameObject.Destroy`.
+
+### `InitEntities`
+
+```csharp
+public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEntity;
+```
+
+- **Description:** Calls `Init` on all entities in the collection.
+- **Parameters:**
+    - `it` — The collection of entities to initialize.
+- **Behavior:** Iterates over the collection and invokes `IEntity.Init` on each entity.
+
+### `DisposeEntities`
+
+```csharp
+public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IEntity;
+```
+
+- **Description:** Calls `Dispose` on all entities in the collection.
+- **Parameters:**
+    - `it` — The collection of entities to dispose.
+- **Behavior:** Iterates over the collection and invokes `IDisposable.Dispose` on each entity.
 
 ---
 
-## Type Parameters
+## 🗂 Example Usage
 
-- `E` – The type of entity in the collection. Must implement [`IEntity`](#).  
-  When using Unity-specific methods, `E` must inherit from [`SceneEntity`](#).
+```csharp
+IEntityCollection<EnemyEntity> collection = new EntityCollection<EnemyEntity>();
 
----
+// Add multiple entities
+collection.AddRange(new EnemyEntity("A"), new EnemyEntity("B"));
 
-## Remarks
+// Add entities from enumerable
+var moreEntities = new List<EnemyEntity> { new EnemyEntity("C"), new EnemyEntity("D") };
+collection.AddRange(moreEntities);
 
-- Designed for **maximum efficiency** in batch operations on entity collections.
-- Enables **clean and concise entity lifecycle management** across large sets of entities.
-- All Unity-specific methods are wrapped with `#if UNITY_5_3_OR_NEWER` to ensure compatibility.
+// Initialize all entities
+collection.InitEntities();
+
+// Dispose all entities
+collection.DisposeEntities();
+
+// Unity-specific usage
+#if UNITY_5_3_OR_NEWER
+var prefab = ...; // Some SceneEntity prefab
+var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
+collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
+#endif
+```

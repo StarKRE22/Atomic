@@ -8,4 +8,4 @@
 - [IEntityCollection&lt;E&gt;](IEntityCollection%601.md) <!-- + -->
 - [EntityCollection](EntityCollection.md) <!-- + -->
 - [EntityCollection&lt;E&gt;](EntityCollection%601.md) <!-- + -->
-- [Extensions](Extensions.md)
+- [Extensions](Extensions.md) <!-- + -->
