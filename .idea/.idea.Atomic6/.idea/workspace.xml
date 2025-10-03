@@ -217,23 +217,7 @@
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
-      <workItem from="1759473604356" duration="9275000" />
-    </task>
-    <task id="LOCAL-01100" summary="Lifecycle.md">
-      <option name="closed" value="true" />
-      <created>1759395404684</created>
-      <option name="number" value="01100" />
-      <option name="presentableId" value="LOCAL-01100" />
-      <option name="project" value="LOCAL" />
-      <updated>1759395404684</updated>
-    </task>
-    <task id="LOCAL-01101" summary="IInitLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1759396176641</created>
-      <option name="number" value="01101" />
-      <option name="presentableId" value="LOCAL-01101" />
-      <option name="project" value="LOCAL" />
-      <updated>1759396176641</updated>
+      <workItem from="1759473604356" duration="10411000" />
     </task>
     <task id="LOCAL-01102" summary="IInitLifecycle.md">
       <option name="closed" value="true" />
@@ -611,7 +595,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759481476847</updated>
     </task>
-    <option name="localTasksCounter" value="1149" />
+    <task id="LOCAL-01149" summary="ScriptableMultiEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1759484111310</created>
+      <option name="number" value="01149" />
+      <option name="presentableId" value="LOCAL-01149" />
+      <option name="project" value="LOCAL" />
+      <updated>1759484111310</updated>
+    </task>
+    <task id="LOCAL-01150" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759484178477</created>
+      <option name="number" value="01150" />
+      <option name="presentableId" value="LOCAL-01150" />
+      <option name="project" value="LOCAL" />
+      <updated>1759484178478</updated>
+    </task>
+    <option name="localTasksCounter" value="1151" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="DisableSubscription.md" />
     <MESSAGE value="TickSubscription.md" />
     <MESSAGE value="FixedTickSubscription.md" />
     <MESSAGE value="Lifecycle расписали!" />
@@ -653,7 +652,6 @@
     <MESSAGE value="ScriptableEntityFactory.md" />
     <MESSAGE value="InlineEntityFactory`1.md" />
     <MESSAGE value="InlineEntityFactory.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Обновили фабрики!" />
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="Начинаем переписывать MultiFactory Docs" />
@@ -663,7 +661,9 @@
     <MESSAGE value="Вот теперь ок!" />
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="MultiEntityFactory.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="MultiEntityFactory.md" />
+    <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

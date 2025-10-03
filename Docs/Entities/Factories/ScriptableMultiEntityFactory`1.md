@@ -6,14 +6,15 @@ public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, 
     where F : ScriptableEntityFactory<E>
 ```
 
-- **Description:** A Unity asset-based abstract multi factory that allows creating and managing entities by key.
+- **Description:** A Unity ScriptableObject-based abstract multi-entity factory that allows creating and managing entities by key.
 - **Type Parameters:**
     - `K` — The type of key used to identify entities.
     - `E` — The type of entity to create, which must implement [IEntity](../Entities/IEntity.md).
     - `F` — The type of scriptable entity factory, which must inherit
       from [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md).
 - **Inheritance:** `ScriptableObject`, [IMultiEntityFactory<K, E>](IMultiEntityFactory%601.md)
-- **Note:** Can be used as a Flyweight pattern across the entire project, sharing a single instance of this factory for efficient entity creation.
+- **Note:** Can be used as a Flyweight pattern across the entire project, sharing a single instance of this factory for
+  efficient entity creation.
 - **See also:** [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md),
   [MultiEntityFactory<K, E>](MultiEntityFactory%601.md),
 
@@ -21,9 +22,9 @@ public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, 
 
 ## 🛠 Inspector Settings
 
-| Parameter | Description                                                           |
-|-----------|-----------------------------------------------------------------------|
-| `factories`  | Initial map of `ScriptableEntityFactory` to be used for entity creation |
+| Parameter   | Description                                                             |
+|-------------|-------------------------------------------------------------------------|
+| `factories` | Initial map of `ScriptableEntityFactory` to be used for entity creation |
 
 ---
 
@@ -76,6 +77,8 @@ protected abstract K GetKey(F factory);
 
 ## 🗂 Example of Usage
 
+Below an example of using multi entity factory for enemy entities:
+
 ```csharp
 // Enum of enemy types
 public enum EnemyType 
@@ -87,8 +90,50 @@ public enum EnemyType
 ```
 
 ```csharp
-// Assume we have a concrete ScriptableMultiEntityFactory
-ScriptableMultiEntityFactory<EnemyType, EnemyEntity, EnemyEntityFactory> factory = ...
+// Class of Enemy 
+public class EnemyEntity : Entity {...}
+```
+
+```csharp
+// Base class of Enemy Factory 
+public abstract class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
+{
+    public EnemyType Type { get; private set; } 
+    
+    public sealed override IGameEntity Create()
+    {
+        var entity = new EnemyEntity(
+            this.Type.ToString(),
+            this.initialTagCapacity,
+            this.initialValueCapacity,
+            this.initialBehaviourCapacity
+        );
+        this.Install(entity);
+        return entity;
+    }
+
+    protected abstract void Install(EnemyEntity entity);
+}
+
+//Implementations
+public class OrcFactory : EnemyFactory {...}
+
+public class GoblinFactory : EnemyFactory {...}
+
+public class TrollFactory : EnemyFactory {...}
+```
+
+```csharp
+// Multi Enemy Factory
+public class EnemyMultiFactory : ScriptableMultiEntityFactory<EnemyType, EnemyEntity, EnemyFactory>
+{
+    protected override EnemyType GetKey(EnemyFactory factory) => factory.Type;
+}
+```
+
+```csharp
+//Usage:
+EnemyMultiFactory factory = Resources.Load<EnemyMultiFactory>(nameof(EnemyMultiFactory));
 
 if (factory.Contains(EnemyType.Orc))  
 {  
@@ -109,3 +154,4 @@ if (factory.TryCreate(EnemyType.Goblin, out IEntity goblin))
 - Derived classes must implement `GetKey(F)` to define how keys are extracted.
 - The internal dictionary of entities is initialized lazily on first access.
 - Duplicate keys are overwritten with a warning in the Unity console.
+- Can be used as a Flyweight across the project
