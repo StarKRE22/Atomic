@@ -13,11 +13,9 @@ public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, 
     - `F` — The type of scriptable entity factory, which must inherit
       from [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md).
 - **Inheritance:** `ScriptableObject`, [IMultiEntityFactory<K, E>](IMultiEntityFactory%601.md)
+- **Note:** Can be used as a Flyweight pattern across the entire project, sharing a single instance of this factory for efficient entity creation.
 - **See also:** [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md),
   [MultiEntityFactory<K, E>](MultiEntityFactory%601.md),
-
-> [!NOTE]
-> Can be used as a Flyweight pattern across the entire project, sharing a single instance of this factory for efficient entity creation.
 
 ---
 
