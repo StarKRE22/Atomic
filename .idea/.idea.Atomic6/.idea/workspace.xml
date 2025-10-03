@@ -220,30 +220,6 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
     </task>
-    <task id="LOCAL-01114" summary="FixedTickSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759404083247</created>
-      <option name="number" value="01114" />
-      <option name="presentableId" value="LOCAL-01114" />
-      <option name="project" value="LOCAL" />
-      <updated>1759404083247</updated>
-    </task>
-    <task id="LOCAL-01115" summary="FixedTickSubscription.md">
-      <option name="closed" value="true" />
-      <created>1759404187892</created>
-      <option name="number" value="01115" />
-      <option name="presentableId" value="LOCAL-01115" />
-      <option name="project" value="LOCAL" />
-      <updated>1759404187892</updated>
-    </task>
-    <task id="LOCAL-01116" summary="Lifecycle расписали!">
-      <option name="closed" value="true" />
-      <created>1759405111604</created>
-      <option name="number" value="01116" />
-      <option name="presentableId" value="LOCAL-01116" />
-      <option name="project" value="LOCAL" />
-      <updated>1759405111604</updated>
-    </task>
     <task id="LOCAL-01117" summary="Пилим!">
       <option name="closed" value="true" />
       <created>1759405750655</created>
@@ -612,7 +588,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759521968350</updated>
     </task>
-    <option name="localTasksCounter" value="1163" />
+    <task id="LOCAL-01163" summary="EntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1759521993843</created>
+      <option name="number" value="01163" />
+      <option name="presentableId" value="LOCAL-01163" />
+      <option name="project" value="LOCAL" />
+      <updated>1759521993843</updated>
+    </task>
+    <task id="LOCAL-01164" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1759522232080</created>
+      <option name="number" value="01164" />
+      <option name="presentableId" value="LOCAL-01164" />
+      <option name="project" value="LOCAL" />
+      <updated>1759522232080</updated>
+    </task>
+    <task id="LOCAL-01165" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1759522269041</created>
+      <option name="number" value="01165" />
+      <option name="presentableId" value="LOCAL-01165" />
+      <option name="project" value="LOCAL" />
+      <updated>1759522269041</updated>
+    </task>
+    <option name="localTasksCounter" value="1166" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +639,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityFactory`1.md" />
     <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="ScriptableEntityFactory`1.md" />
     <MESSAGE value="ScriptableEntityFactory.md" />
@@ -664,7 +663,8 @@
     <MESSAGE value="IEntityCollection.md" />
     <MESSAGE value="EntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityCollection.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
