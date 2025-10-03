@@ -1,34 +1,34 @@
-# 🧩 IMultiEntityFactory<TKey, E>
+# 🧩 IMultiEntityFactory<K, E>
 
 ```csharp
-public interface IMultiEntityFactory<in TKey, E> where E : IEntity
+public interface IMultiEntityFactory<in K, E> where E : IEntity
 ```
 
 - **Description:** A generic interface for creating and managing multiple entities identified by a key.
 - **Type Parameters:**
-    - `TKey` — The type of key used to identify an entity.
+    - `K` — The type of key used to identify an entity.
     - `E` — The type of entity to create, which must implement [IEntity](../Entities/IEntity.md)
 - **See also:** [IMultiEntityFactory](IMultiEntityFactory.md),
-  [MultiEntityFactory<TKey, E>](MultiEntityFactory%601.md), [ScriptableMultiEntityFactory<TKey, E, F>](ScriptableMultiEntityFactory%601.md)
+  [MultiEntityFactory<K, E>](MultiEntityFactory%601.md), [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md)
 
 ---
 
 ## 🏹 Methods
 
-#### `Create(TKey)`
+#### `Create(K)`
 
 ```csharp
-E Create(TKey key);
+E Create(K key);
 ```
 
 - **Description:** Creates a new entity associated with the specified key.
 - **Parameter:** `key` — The key identifying the entity to create.
 - **Returns:** A new instance of type `E`.
 
-#### `TryCreate(TKey, out E)`
+#### `TryCreate(K, out E)`
 
 ```csharp
-bool TryCreate(TKey key, out E entity);
+bool TryCreate(K key, out E entity);
 ```
 
 - **Description:** Attempts to create a new entity associated with the specified key.
@@ -38,10 +38,10 @@ bool TryCreate(TKey key, out E entity);
       `E`.
 - **Returns:** `true` if the entity was created successfully; otherwise, `false`.
 
-#### `Contains(TKey)`
+#### `Contains(K)`
 
 ```csharp
-bool Contains(TKey key);
+bool Contains(K key);
 ```
 
 - **Description:** Determines whether an entity associated with the specified key exists.

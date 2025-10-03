@@ -13,10 +13,10 @@ namespace Atomic.Entities
     /// A Unity <see cref="ScriptableObject"/>-based abstract implementation of <see cref="IMultiEntityFactory{TKey, E}"/> 
     /// that manages multiple <see cref="ScriptableEntityFactory{E}"/> instances.
     /// </summary>
-    /// <typeparam name="TKey">The type of key used to identify factories.</typeparam>
+    /// <typeparam name="K">The type of key used to identify factories.</typeparam>
     /// <typeparam name="E">The type of entity to be created, which must implement <see cref="IEntity"/>.</typeparam>
     /// <typeparam name="F">The type of scriptable entity factory, which must inherit from <see cref="ScriptableEntityFactory{E}"/>.</typeparam>
-    public abstract class ScriptableMultiEntityFactory<TKey, E, F> : ScriptableObject, IMultiEntityFactory<TKey, E>
+    public abstract class ScriptableMultiEntityFactory<K, E, F> : ScriptableObject, IMultiEntityFactory<K, E>
         where E : IEntity
         where F : ScriptableEntityFactory<E>
     {
@@ -27,10 +27,10 @@ namespace Atomic.Entities
         [SerializeField]
         internal F[] _factories;
 
-        private Dictionary<TKey, F> _factoryMap;
+        private Dictionary<K, F> _factoryMap;
 
         /// <inheritdoc />
-        public E Create(TKey key)
+        public E Create(K key)
         {
             this.EnsureInitialized();
             F factory = _factoryMap[key];
@@ -38,7 +38,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public bool TryCreate(TKey key, out E entity)
+        public bool TryCreate(K key, out E entity)
         {
             this.EnsureInitialized();
             bool exists = _factoryMap.TryGetValue(key, out F factory);
@@ -47,7 +47,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public bool Contains(TKey key)
+        public bool Contains(K key)
         {
             this.EnsureInitialized();
             return _factoryMap.ContainsKey(key);
@@ -58,7 +58,7 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="factory">The factory instance from which to extract the key.</param>
         /// <returns>The key corresponding to the given factory.</returns>
-        protected abstract TKey GetKey(F factory);
+        protected abstract K GetKey(F factory);
 
         /// <summary>
         /// Ensures that the internal dictionary of factories is initialized.
@@ -69,7 +69,7 @@ namespace Atomic.Entities
             if (_factoryMap != null)
                 return;
 
-            _factoryMap = new Dictionary<TKey, F>();
+            _factoryMap = new Dictionary<K, F>();
 
             if (_factories == null)
                 return;
@@ -80,7 +80,7 @@ namespace Atomic.Entities
                 if (factory == null)
                     continue;
 
-                TKey key = this.GetKey(factory);
+                K key = this.GetKey(factory);
 
                 if (_factoryMap.ContainsKey(key))
                     Debug.LogWarning(

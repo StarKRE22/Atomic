@@ -5,7 +5,7 @@ public interface IMultiEntityFactory : IMultiEntityFactory<string, IEntity>
 ```
 
 - **Description:** A non-generic registry interface for creating and managing entities using string keys.
-- **Inheritance:** [IMultiEntityFactory\<TKey, E>](IMultiEntityFactory%601.md)
+- **Inheritance:** [IMultiEntityFactory\<K, E>](IMultiEntityFactory%601.md)
 - **See also:** [MultiEntityFactory](MultiEntityFactory.md),
   [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md)
 
