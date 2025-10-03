@@ -1,14 +1,18 @@
+
+
+
+
+
+=====
+=====
+
 # 🧩 MultiEntityFactory
 
 ```csharp
 public class MultiEntityFactory : MultiEntityFactory<string, IEntity>, IMultiEntityFactory
 ```
 
-- **Description:** a non-generic registry for managing entity factories
-  using keys for registration and lookup.
-- **Inheritance:** [MultiEntityFactory<TKey, E>](MultiEntityFactory%601.md),
-  [IMultiEntityFactory](IMultiEntityFactory.md)
-- **Note:** Uses `string` as the key type and [IEntity](../Entities/IEntity.md) as the entity type.
+
 
 ---
 
