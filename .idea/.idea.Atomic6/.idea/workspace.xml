@@ -5,36 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IEntityFactory`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IEntityFactory`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFctory`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFctory`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/InlineEntityFactory`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/InlineEntityFactory`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityFactoryCatalog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityMultiFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityFactoryCatalog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityMultiFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker_Static.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Baking/SceneEntityBaker_Static.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker_Static.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Catalog.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Catalog/IEntityFactoryCatalog.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Catalog/IEntityFactoryCatalog.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Catalog/ScriptableEntityFactoryCatalog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/Catalog/ScriptableEntityFactoryCatalog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/IMultiEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/InlineEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/InlineEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/MultiEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/ScriptableEntityFactoryCatalog/ScriptableEntityFactoryCatalogTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/ScriptableEntityFactoryCatalog/ScriptableEntityFactoryCatalogTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Factory/MultiEntityFactoryMock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Factory/MultiEntityFactoryMock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactoryCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,31 +220,7 @@
       <workItem from="1759308429689" duration="11712000" />
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
-      <workItem from="1759473604356" duration="3637000" />
-    </task>
-    <task id="LOCAL-01090" summary="ScriptableEntityInstaller.md">
-      <option name="closed" value="true" />
-      <created>1759393013265</created>
-      <option name="number" value="01090" />
-      <option name="presentableId" value="LOCAL-01090" />
-      <option name="project" value="LOCAL" />
-      <updated>1759393013265</updated>
-    </task>
-    <task id="LOCAL-01091" summary="ScriptableEntityInstaller`1.md">
-      <option name="closed" value="true" />
-      <created>1759393158957</created>
-      <option name="number" value="01091" />
-      <option name="presentableId" value="LOCAL-01091" />
-      <option name="project" value="LOCAL" />
-      <updated>1759393158958</updated>
-    </task>
-    <task id="LOCAL-01092" summary="EntityInstallers">
-      <option name="closed" value="true" />
-      <created>1759393269609</created>
-      <option name="number" value="01092" />
-      <option name="presentableId" value="LOCAL-01092" />
-      <option name="project" value="LOCAL" />
-      <updated>1759393269609</updated>
+      <workItem from="1759473604356" duration="4942000" />
     </task>
     <task id="LOCAL-01093" summary="IEntityAspect.md">
       <option name="closed" value="true" />
@@ -639,7 +590,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759436091886</updated>
     </task>
-    <option name="localTasksCounter" value="1139" />
+    <task id="LOCAL-01139" summary="Обновили фабрики!">
+      <option name="closed" value="true" />
+      <created>1759477401030</created>
+      <option name="number" value="01139" />
+      <option name="presentableId" value="LOCAL-01139" />
+      <option name="project" value="LOCAL" />
+      <updated>1759477401031</updated>
+    </task>
+    <task id="LOCAL-01140" summary="Minor Fixes">
+      <option name="closed" value="true" />
+      <created>1759477442106</created>
+      <option name="number" value="01140" />
+      <option name="presentableId" value="LOCAL-01140" />
+      <option name="project" value="LOCAL" />
+      <updated>1759477442106</updated>
+    </task>
+    <task id="LOCAL-01141" summary="Начинаем переписывать MultiFactory Docs">
+      <option name="closed" value="true" />
+      <created>1759477635123</created>
+      <option name="number" value="01141" />
+      <option name="presentableId" value="LOCAL-01141" />
+      <option name="project" value="LOCAL" />
+      <updated>1759477635123</updated>
+    </task>
+    <option name="localTasksCounter" value="1142" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,8 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Переделал подписки" />
-    <MESSAGE value="Переписал подписки!" />
     <MESSAGE value="Обновил подписки!" />
     <MESSAGE value="DisposeSubscription.md" />
     <MESSAGE value="EnableSubscription.md" />
@@ -690,8 +663,10 @@
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="MultiEntityFactory.md" />
     <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="Обновили фабрики!" />
     <MESSAGE value="Minor Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes" />
+    <MESSAGE value="Начинаем переписывать MultiFactory Docs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начинаем переписывать MultiFactory Docs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
