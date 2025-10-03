@@ -63,11 +63,3 @@ smoother and more powerful than in Unity.
 [Entities](Entities/EntityPerformance.md)
 
 ---
-
-## 📌 Best Practices
-
-- [Upgrading Entity Factory to Builder]()
-- [Using Proxies for SceneEntities]()
-- [Using Uninstall Method for EntityInstallers]()
-
----
