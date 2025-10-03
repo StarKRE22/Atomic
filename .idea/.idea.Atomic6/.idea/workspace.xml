@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IEntityCollection`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IEntityCollection`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IReadOnlyEntityCollection`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IReadOnlyEntityCollection`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IEntityCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IEntityCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IReadOnlyEntityCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/IReadOnlyEntityCollection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +222,6 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-    </task>
-    <task id="LOCAL-01106" summary="Переделал подписки">
-      <option name="closed" value="true" />
-      <created>1759400252477</created>
-      <option name="number" value="01106" />
-      <option name="presentableId" value="LOCAL-01106" />
-      <option name="project" value="LOCAL" />
-      <updated>1759400252477</updated>
     </task>
     <task id="LOCAL-01107" summary="Переделал подписки">
       <option name="closed" value="true" />
@@ -635,7 +607,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759518862327</updated>
     </task>
-    <option name="localTasksCounter" value="1155" />
+    <task id="LOCAL-01155" summary="Пилим раздел EntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1759520246566</created>
+      <option name="number" value="01155" />
+      <option name="presentableId" value="LOCAL-01155" />
+      <option name="project" value="LOCAL" />
+      <updated>1759520246566</updated>
+    </task>
+    <option name="localTasksCounter" value="1156" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Lifecycle расписали!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Пилим фабрики!" />
     <MESSAGE value="Прочесал Atomic.Elements" />
@@ -687,7 +666,8 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Вот теперь с Bakers ок!" />
     <MESSAGE value="Сделал SceneEntityBaker.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал SceneEntityBaker.md" />
+    <MESSAGE value="Пилим раздел EntityCollection`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим раздел EntityCollection`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
