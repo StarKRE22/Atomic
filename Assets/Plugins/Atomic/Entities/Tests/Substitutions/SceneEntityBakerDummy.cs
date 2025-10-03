@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Atomic.Entities
 {
     [AddComponentMenu("")]
-    public class SceneEntityBakerDummy : SceneEntityBaker<EntityDummy>
+    public class SceneEntityBakerDummy : SceneEntityFactoryProxy<EntityDummy>
     {
         public static int CreateCallCount;
 

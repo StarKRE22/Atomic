@@ -69,7 +69,7 @@ namespace RTSGame
         private void SpawnUnits()
         {
             if (_bakeUnits)
-                SceneEntityBaker<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
+                SceneEntityFactoryProxy<IGameEntity>.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
             else
                 InitGameCase.SpawnUnits(_gameContext, _unitColumns);
         }
