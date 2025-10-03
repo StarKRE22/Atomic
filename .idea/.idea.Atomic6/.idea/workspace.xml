@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -222,22 +219,6 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-    </task>
-    <task id="LOCAL-01107" summary="Переделал подписки">
-      <option name="closed" value="true" />
-      <created>1759400486472</created>
-      <option name="number" value="01107" />
-      <option name="presentableId" value="LOCAL-01107" />
-      <option name="project" value="LOCAL" />
-      <updated>1759400486472</updated>
-    </task>
-    <task id="LOCAL-01108" summary="Переписал подписки!">
-      <option name="closed" value="true" />
-      <created>1759401275046</created>
-      <option name="number" value="01108" />
-      <option name="presentableId" value="LOCAL-01108" />
-      <option name="project" value="LOCAL" />
-      <updated>1759401275046</updated>
     </task>
     <task id="LOCAL-01109" summary="Обновил подписки!">
       <option name="closed" value="true" />
@@ -615,7 +596,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759520246566</updated>
     </task>
-    <option name="localTasksCounter" value="1156" />
+    <task id="LOCAL-01156" summary="IReadOnlyEntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1759520551937</created>
+      <option name="number" value="01156" />
+      <option name="presentableId" value="LOCAL-01156" />
+      <option name="project" value="LOCAL" />
+      <updated>1759520551937</updated>
+    </task>
+    <task id="LOCAL-01157" summary="IEntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1759520838639</created>
+      <option name="number" value="01157" />
+      <option name="presentableId" value="LOCAL-01157" />
+      <option name="project" value="LOCAL" />
+      <updated>1759520838639</updated>
+    </task>
+    <option name="localTasksCounter" value="1158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,8 +639,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим!" />
-    <MESSAGE value="Пилим фабрики!" />
     <MESSAGE value="Прочесал Atomic.Elements" />
     <MESSAGE value="IEntityFactory.md" />
     <MESSAGE value="IEntityFactory`1.md" />
@@ -667,7 +662,9 @@
     <MESSAGE value="Вот теперь с Bakers ок!" />
     <MESSAGE value="Сделал SceneEntityBaker.md" />
     <MESSAGE value="Пилим раздел EntityCollection`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим раздел EntityCollection`1.md" />
+    <MESSAGE value="IReadOnlyEntityCollection.md" />
+    <MESSAGE value="IEntityCollection`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityCollection`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

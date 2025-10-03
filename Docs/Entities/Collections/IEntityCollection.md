@@ -1,57 +1,143 @@
-# 🧩️ IEntityCollection
+# 🧩 IEntityCollection
 
-A mutable collection of entities of type `E`.  
-Supports standard collection operations and provides utility methods for entity lifecycle management.
+```csharp
+public interface IEntityCollection : IEntityCollection<IEntity>, IReadOnlyEntityCollection
+```
 
-### Type Parameters
-- `E` – The type of entity stored in the collection. Must implement [`IEntity`](#).
-
----
-
-## Key Features
-
-- **Optimized storage** – Designed for minimal memory usage and fast entity operations.
-- **Fast operations** – Efficient insertion, presence checking, and removal of entities.
-- **Reactive** – Inherits `OnStateChanged`, `OnAdded`, and `OnRemoved` from `IReadOnlyEntityCollection<E>`.
-- **Enumerable and mutable** – Implements `ICollection<E>` for iteration and modification.
-- **Lifecycle-aware** – Designed for managing entities with proper disposal and lifecycle handling.
+- **Description:** A **non-generic, mutable collection of entities**, specialized for the base [IEntity](../Entities/IEntity.md) type.
+  Provides a common interface for managing entity collections without specifying a generic entity type.
+- **Inheritance:** [IEntityCollection\<E>](IEntityCollection%601.md), 
+  [IReadOnlyEntityCollection](IReadOnlyEntityCollection.md).
+- **Note:** Use this interface when you need a **mutable entity collection** without generics, but still want access to
+  events and utility methods from the base interfaces.
 
 ---
 
-## Events
+## 🔑 Properties
 
-| Event            | Description                                                                                          |
-|------------------|------------------------------------------------------------------------------------------------------|
-| `OnStateChanged` | Raised whenever the collection’s state changes (an entity is added or removed).                      |
-| `OnAdded`        | Raised when an entity is added to the collection. The added entity is provided as an argument.       |
-| `OnRemoved`      | Raised when an entity is removed from the collection. The removed entity is provided as an argument. |
+#### `Count`
 
+```csharp
+public int Count { get; }
+```
 
-## Properties
+- **Description:** Gets the number of entities in the collection.
 
-| Property          | Description                                                                                |
-|-------------------|--------------------------------------------------------------------------------------------|
-| `int Count`       | Gets the number of entities in the collection.                                             |
-| `bool IsReadOnly` | Indicates whether the collection is read-only. Returns `false` for `IEntityCollection<E>`. |
+#### `IsReadOnly`
 
----
+```csharp
+public bool IsReadOnly { get; }
+```
 
-## Methods
-
-| Method                                   | Description                                                                         |
-|------------------------------------------|-------------------------------------------------------------------------------------|
-| `bool Contains(E entity)`                | Checks if the specified entity exists in the collection. Returns `true` if present. |
-| `bool Add(E entity)`                     | Adds the entity to the collection. Returns `false` if the entity already exists.    |
-| `bool Remove(E entity)`                  | Removes the entity from the collection. Returns `true` if the entity was removed.   |
-| `void Clear()`                           | Removes all entities from the collection and raises appropriate events.             |
-| `void CopyTo(E[] array, int arrayIndex)` | Copies all entities into the specified array starting at the given index.           |
-| `void CopyTo(ICollection<E> results)`    | Copies all entities into the provided `ICollection<E>`.                             |
-| `void Dispose()`                         | Releases resources held by the collection and disposes entities if necessary.       |
+- **Description:** Indicates whether the collection is read-only.
+- **Returns:** Usually `false` for mutable collections.
 
 ---
 
-### Remarks
+## 🏹 Methods
 
-- Mutable counterpart of [`IReadOnlyEntityCollection<E>`](#).
-- Designed for high-performance use in game and simulation environments.
-- Supports efficient tracking of entity presence and reactive event notifications.
+#### `Add(IEntity)`
+
+```csharp
+public bool Add(IEntity entity);
+```
+
+- **Description:** Adds an entity to the collection.
+- **Parameter:** `entity` — The entity to add.
+- **Returns:** `true` if the entity was successfully added; `false` if it already existed.
+- **Events:** Triggers `OnAdded` and `OnStateChanged`.
+
+#### `Remove(IEntity)`
+
+```csharp
+bool Remove(IEntity entity);
+```
+
+- **Description:** Removes the first occurrence of a specific entity from the collection.
+- **Parameter:** `entity` — The entity to remove.
+- **Returns:** `true` if the entity was removed; otherwise `false`.
+- **Events:** Triggers `OnRemoved` and `OnStateChanged`.
+
+#### `Clear()`
+
+```csharp
+public void Clear();
+```
+
+- **Description:** Removes all entities from the collection.
+- **Events:** Triggers multiple `OnRemoved` events (one per entity) and `OnStateChanged`.
+
+#### `Contains(IEntity)`
+
+```csharp
+public bool Contains(IEntity entity);
+```
+
+- **Description:** Determines whether the collection contains a specific entity.
+- **Parameter:** `entity` — The entity to locate.
+- **Returns:** `true` if the entity is found; otherwise `false`.
+
+#### `CopyTo(IEntity[], int)`
+
+```csharp
+public void CopyTo(IEntity[] array, int arrayIndex);
+```
+
+- **Description:** Copies all entities into the specified array, starting at a particular index.
+- **Parameters:**
+    - `array` — The destination array.
+    - `arrayIndex` — The zero-based index in the array where copying begins.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Releases resources used by the collection.
+- **Remarks:** Call this when the collection is no longer needed to clean up internal resources or subscriptions.
+
+#### `GetEnumerator()`
+
+```csharp
+public IEnumerator<IEntity> GetEnumerator();
+```
+
+- **Description:** Returns an enumerator that iterates through the collection.
+- **Returns:** An `IEnumerator<IEntity>` for enumeration.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IEntityCollection entities = ...;
+
+// Subscribe to events
+entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
+
+// Add and remove entities
+entities.Add(new MyEntity("Entity1"));
+entities.Remove(someEntity);
+
+// Check for existence
+if (entities.Contains(someEntity))
+{
+    Console.WriteLine("Entity exists in the collection");
+}
+
+// Copy to array
+var array = new IEntity[entities.Count];
+entities.CopyTo(array, 0);
+
+// Iterate over entities
+foreach (var entity in entities)
+{
+    Console.WriteLine(entity.Name);
+}
+
+// Dispose when done
+entities.Dispose();
+```
