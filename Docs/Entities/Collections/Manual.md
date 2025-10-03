@@ -2,7 +2,7 @@
 
 
 
-- [IReadOnlyEntityCollection](IReadOnlyEntityCollection.md)
+- [IReadOnlyEntityCollection](IReadOnlyEntityCollection.md)  <!-- + -->
 - [IReadOnlyEntityCollection&lt;E&gt;](IReadOnlyEntityCollection%601.md) <!-- + -->
 - [IEntityCollection](IEntityCollection.md)
 - [IEntityCollection&lt;E&gt;](IEntityCollection%601.md)
