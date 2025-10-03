@@ -16,15 +16,12 @@ Below is a list of available factory types:
     - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
     - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
 - **Multi Factories**
-    - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
-    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
-    - [MultiEntityFactory](MultiEntityFactory.md) <!-- + -->
-    - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md) <!-- + -->
-- **Factory Catalogs**
-    - [IEntityFactoryCatalog](IEntityFactoryCatalog.md)
-    - [IEntityFactoryCatalog&lt;E&gt;](IEntityFactoryCatalog%601.md)
-    - [ScriptableEntityFactoryCatalog](ScriptableEntityFactoryCatalog%601.md)
-    - [ScriptableEntityFactoryCatalog&lt;E&gt;](ScriptableEntityFactoryCatalog.md)
+    - [IMultiEntityFactory](IMultiEntityFactory.md)
+    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md)
+    - [MultiEntityFactory](MultiEntityFactory.md)
+    - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)
+    - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md)
+    - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md)
 
 ---
 
@@ -94,11 +91,11 @@ public class EnemyScriptableFactory : ScriptableEntityFactory<EnemyEntity>
 ### 4️⃣ Multi-Entity Factory
 
 ```csharp
-var registry = new MultiEntityFactory();
-registry.Add("Orc", new InlineEntityFactory(() => new EnemyEntity("Orc")));
-registry.Add("Goblin", new InlineEntityFactory(() => new EnemyEntity("Goblin")));
+IMultiEntityFactory multiFactory = new MultiEntityFactory();
+multiFactory.Register("Orc", new InlineEntityFactory(() => new EnemyEntity("Orc")));
+multiFactory.Register("Goblin", new InlineEntityFactory(() => new EnemyEntity("Goblin")));
 
-var orc = registry.Create("Orc");
+IEntity orc = registry.Create("Orc");
 ```
 
 - **Description:** Factory registry keyed by string or generic type.
