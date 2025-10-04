@@ -202,6 +202,30 @@ public Enumerator GetEnumerator();
 - **Description:** Returns a struct enumerator for iterating through the collection.
 - **Returns:** `Enumerator` struct implementing `IEnumerator<IEntity>`.
 
+#### `OnAdd(IEntity)`
+
+```csharp
+protected virtual void OnAdd(IEntity entity);
+```
+
+- **Description:** Called automatically when an entity is **added** to the collection.
+- **Parameter:** `entity` — The entity that was added.
+- **Remarks:** Can be **overridden** in derived classes to implement custom logic, such as enabling the entity, logging,
+  or triggering events.
+- **Default behavior:** Does nothing.
+
+#### `OnRemove(IEntity)`
+
+```csharp
+protected virtual void OnRemove(IEntity entity);
+```
+
+- **Description:** Called automatically when an entity is **removed** from the collection.
+- **Parameter:** `entity` — The entity that was removed.
+- **Remarks:** Can be **overridden** in derived classes to implement custom logic, such as disabling the entity,
+  logging, or triggering events.
+- **Default behavior:** Does nothing.
+
 ---
 
 ## 🧩 Enumerator
@@ -210,10 +234,9 @@ public Enumerator GetEnumerator();
 public struct Enumerator : IEnumerator<E>
 ```
 
-- **Description:** Struct-based enumerator for iterating over `EntityCollection<E>` without heap allocations.
+- **Description:** Struct-based enumerator for iterating over `EntityCollection` without heap allocations.
 - **Properties:** `Current` — The current entity.
 - **Methods:** `MoveNext()`, `Reset()`, `Dispose()`.
-
 
 ---
 

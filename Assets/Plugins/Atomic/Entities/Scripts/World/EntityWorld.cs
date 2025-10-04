@@ -4,7 +4,7 @@ namespace Atomic.Entities
 {
     /// <summary>
     /// A non-generic shortcut for <see cref="EntityWorld{IEntity}"/>.
-    /// Manages a world of general-purpose <see cref="IEntity"/> instances with support for spawning, enabling,
+    /// Manages a world of general-purpose <see cref="IEntity"/> instances with support for enabling,
     /// updating, and disposing all contained entities.
     /// </summary>
     /// <remarks>

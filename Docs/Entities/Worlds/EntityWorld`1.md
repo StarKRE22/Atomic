@@ -1,5 +1,10 @@
 # 🧩 EntityWorld\<E>
 
+```csharp
+public class EntityWorld<E> : EntityCollection<E>, IEntityWorld<E> 
+    where E : IEntity
+```
+
 - **Description:** A **runtime-managed world composed of entities of type `E`**.  
   Provides lifecycle management including enabling, updating, and disposing all entities in the collection.
 - **Type Parameter:** `E` — The specific type of entity managed by this world. Must
@@ -329,7 +334,7 @@ protected virtual void OnRemove(E entity);
 public struct Enumerator : IEnumerator<E>
 ```
 
-- **Description:** Struct-based enumerator for iterating over `EntityCollection<E>` without heap allocations.
+- **Description:** Struct-based enumerator for iterating over `EntityCollection` without heap allocations.
 - **Properties:** `Current` — The current entity.
 - **Methods:** `MoveNext()`, `Reset()`, `Dispose()`.
 

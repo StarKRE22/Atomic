@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsAndWorld.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityWorldWithEntityPool.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,15 +229,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="6687000" />
-    </task>
-    <task id="LOCAL-01124" summary="SceneEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1759430412499</created>
-      <option name="number" value="01124" />
-      <option name="presentableId" value="LOCAL-01124" />
-      <option name="project" value="LOCAL" />
-      <updated>1759430412499</updated>
+      <workItem from="1759562206582" duration="7964000" />
     </task>
     <task id="LOCAL-01125" summary="SceneEntityFactory`1.md">
       <option name="closed" value="true" />
@@ -619,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759571437539</updated>
     </task>
-    <option name="localTasksCounter" value="1173" />
+    <task id="LOCAL-01173" summary="Сделал EntityWorld`1.md">
+      <option name="closed" value="true" />
+      <created>1759573036411</created>
+      <option name="number" value="01173" />
+      <option name="presentableId" value="LOCAL-01173" />
+      <option name="project" value="LOCAL" />
+      <updated>1759573036411</updated>
+    </task>
+    <option name="localTasksCounter" value="1174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineEntityFactory`1.md" />
     <MESSAGE value="InlineEntityFactory.md" />
     <MESSAGE value="Обновили фабрики!" />
     <MESSAGE value="Minor Fixes" />
@@ -671,7 +674,8 @@
     <MESSAGE value="Подкрутил SceneEntityBakerStatic.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityWorld`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityWorld`1.md" />
+    <MESSAGE value="Сделал EntityWorld`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал EntityWorld`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

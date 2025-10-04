@@ -1,83 +1,283 @@
 # 🧩 IEntityWorld
 
-Represents a world that manages a collection of entities and controls their lifecycle events.  
-Extends `IEntityCollection`, `IEnableSource`, and `IUpdateSource`.
+```csharp
+public interface IEntityWorld : IEntityWorld<IEntity>
+```
+
+- **Description:** Non-generic version of `IEntityWorld<E>` specialized for [IEntity](../Entities/IEntity.md).
+- **Inheritance:** [IEntityWorld\<E>](IEntityWorld%601.md).
+- **Note:** Useful for scenarios where managing a collection of heterogeneous entities is sufficient.
+- **See also:** [EntityWorld](EntityWorld.md)
 
 ---
 
-## Key Features
+## ⚡ Events
 
-- **Entity collection management** – Serves as a container for entities with fast insertion, removal, and iteration.
-- **Lifecycle control** – Integrates with `IEnableSource` and `IUpdateSource` for enabling, disabling, and frame-based updates (Update, FixedUpdate, LateUpdate).
-- **Generic and non-generic support** – Can be used with a specific entity type (`IEntityWorld<E>`) or without specifying a type (`IEntityWorld`).
-- **Identifiable** – Each world has a `Name` property for easier tracking in logs, UI, or debugging.
-- **Reactive events** – Exposes events for entity addition, removal, state changes, and world enable/disable.
+#### `OnStateChanged`
 
-## Interfaces
+```csharp
+public event Action OnStateChanged;
+```
 
-### `IEntityWorld`
+- **Description:** Raised when entities are added or removed.
 
-A **non-generic version** of [`IEntityWorld<E>`](#) specialized for `IEntity`.  
-Use this interface when you do not need to specify a particular entity type.
+#### `OnAdded`
+
+```csharp
+public event Action<IEntity> OnAdded;
+```
+
+- **Description:** Raised when an entity is added.
+- **Parameter:** `entity` — The entity that was added.
+
+#### `OnRemoved`
+
+```csharp
+public event Action<IEntity> OnRemoved;
+```
+
+- **Description:** Raised when an entity is removed.
+- **Parameter:** `entity` — The entity that was removed.
+
+#### `OnEnabled`
+
+```csharp
+public event Action OnEnabled;
+```
+
+- **Description:** Raised when the world is enabled.
+
+#### `OnDisabled`
+
+```csharp
+public event Action OnDisabled;
+```
+
+- **Description:** Raised when the world is disabled.
+
+#### `OnTicked`
+
+```csharp
+public event Action<float> OnTicked;
+```
+
+- **Description:** Raised every `Tick`.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
+
+#### `OnFixedTicked`
+
+```csharp
+public event Action<float> OnFixedTicked;
+```
+
+- **Description:** Raised every `FixedTick`.
+- **Parameter:** `deltaTime` — Fixed time step used by the physics engine.
+
+#### `OnLateTicked`
+
+```csharp
+public event Action<float> OnLateTicked;
+```
+
+- **Description:** Raised every `LateTick`.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
 
 ---
 
-### `IEntityWorld<E>`
+## 🔑 Properties
 
-A **generic interface** representing a world that manages a collection of entities of type `E`.  
+#### `Name`
 
-#### Type Parameters
-- `E` – The type of entity managed by this world. Must implement [`IEntity`](#).
+```csharp
+public string Name { get; set; }
+```
 
----
+- **Description:** Gets or sets the name of the entity world.
+- **Note:** Can be used for debugging, identification, or UI representation purposes.
 
-## Events
+#### `Enabled`
 
-| Event            | Parameters        | Description                                                                     |
-|------------------|-------------------|---------------------------------------------------------------------------------|
-| `OnStateChanged` | —                 | From `IReadOnlyEntityCollection<E>`. Raised when entities are added or removed. |
-| `OnAdded`        | `E entity`        | From `IReadOnlyEntityCollection<E>`. Raised when an entity is added.            |
-| `OnRemoved`      | `E entity`        | From `IReadOnlyEntityCollection<E>`. Raised when an entity is removed.          |
-| `OnEnabled`      | —                 | From `IEnableSource`. Raised when the world is enabled.                         |
-| `OnDisabled`     | —                 | From `IEnableSource`. Raised when the world is disabled.                        |
-| `OnUpdated`      | `float deltaTime` | From `IUpdateSource`. Raised every Update.                                      |
-| `OnFixedUpdated` | `float deltaTime` | From `IUpdateSource`. Raised every FixedUpdate.                                 |
-| `OnLateUpdated`  | `float deltaTime` | From `IUpdateSource`. Raised every LateUpdate.                                  |
+```csharp
+public bool Enabled { get; }
+```
 
----
+- **Description:** Indicates whether the world is currently enabled.
 
-## Properties
+#### `Count`
 
-| Property     | Type     | Description                                                                    |
-|--------------|----------|--------------------------------------------------------------------------------|
-| `Name`       | `string` | Gets or sets the name of the entity world, useful for debugging or UI display. |
-| `Enabled`    | `bool`   | From `IEnableSource`. Indicates whether the world is currently enabled.        |
-| `Count`      | `int`    | From `IEntityCollection<E>`. Number of entities in the world.                  |
-| `IsReadOnly` | `bool`   | From `IEntityCollection<E>`. Indicates if the collection is read-only.         |
+```csharp
+public int Count { get; }
+```
 
----
+- **Description:** Gets the number of entities currently in the world.
 
-## Methods
+#### `IsReadOnly`
 
-| Method                              | Parameters                          | Description                                                                         |
-|-------------------------------------|-------------------------------------|-------------------------------------------------------------------------------------|
-| `Enable()`                          | —                                   | From `IEnableSource`. Enables the world.                                            |
-| `Disable()`                         | —                                   | From `IEnableSource`. Disables the world.                                           |
-| `OnUpdate(float deltaTime)`         | `deltaTime` – Time since last frame | From `IUpdateSource`. Called once per frame.                                        |
-| `OnFixedUpdate(float deltaTime)`    | `deltaTime` – Fixed time step       | From `IUpdateSource`. Called during FixedUpdate.                                    |
-| `OnLateUpdate(float deltaTime)`     | `deltaTime` – Time since last frame | From `IUpdateSource`. Called during LateUpdate.                                     |
-| `Add(E entity)`                     | `entity` – Entity to add            | From `IEntityCollection<E>`. Adds an entity to the world.                           |
-| `Remove(E entity)`                  | `entity` – Entity to remove         | From `IEntityCollection<E>`. Removes an entity from the world.                      |
-| `Clear()`                           | —                                   | From `IEntityCollection<E>`. Removes all entities.                                  |
-| `Contains(E entity)`                | `entity` – Entity to check          | From `IEntityCollection<E>`. Returns `true` if entity exists.                       |
-| `CopyTo(E[] array, int arrayIndex)` | `array`, `arrayIndex`               | Copies entities to an array.                                                        |
-| `CopyTo(ICollection<E> results)`    | `results`                           | Copies entities to a collection.                                                    |
-| `Dispose()`                         | —                                   | From `IEntityCollection<E>` and `IDisposable`. Disposes the world and its entities. |
+```csharp
+public bool IsReadOnly { get; }
+```
+
+- **Description:** Indicates whether the collection is read-only.
 
 ---
 
-## Remarks
+## 🏹 Methods
 
-- Designed for **scalable and reactive entity management**.
-- Allows combining **collection operations** with **update and enable/disable control** in a single abstraction.
-- Works seamlessly with other `Atomic.Entities` systems, such as `IEntityCollection` and lifecycle extension methods.
+#### `Enable()`
+
+```csharp
+public void Enable();
+```
+
+- **Description:** Enables the world and all contained entities.
+- **Triggers:** `OnEnabled` event.
+
+#### `Disable()`
+
+```csharp
+public void Disable();
+```
+
+- **Description:** Disables the world and all contained entities.
+- **Triggers:** `OnDisabled` event.
+
+#### `Tick(float)`
+
+```csharp
+public void Tick(float deltaTime);
+```
+
+- **Description:** Called once per frame during the `Tick` phase for all contained entities.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
+- **Triggers:** `OnTicked` event.
+
+#### `FixedTick(float)`
+
+```csharp
+public void FixedTick(float deltaTime);
+```
+
+- **Description:** Called during the `FixedTick` phase for all contained entities, typically for physics calculations.
+- **Parameter:** `deltaTime` — Fixed time step used by the physics engine.
+- **Triggers:** `OnFixedTicked` event.
+
+#### `LateTick(float)`
+
+```csharp
+public void LateTick(float deltaTime);
+```
+
+- **Description:** Called during the `LateTick` phase for all contained entities, after all Tick calls.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
+- **Triggers:** `OnLateTicked` event.
+
+#### `Add(IEntity)`
+
+```csharp
+public bool Add(IEntity entity);
+```
+
+- **Description:** Adds an entity to the world.
+- **Parameter:** `entity` — The entity to add.
+- **Returns:** `true` if the entity was successfully added; `false` if it already exists.
+
+#### `Remove(IEntity)`
+
+```csharp
+public bool Remove(IEntity entity);
+```
+
+- **Description:** Removes a specific entity from the world.
+- **Parameter:** `entity` — The entity to remove.
+- **Returns:** `true` if the entity was removed; otherwise `false`.
+
+#### `Contains(IEntity)`
+
+```csharp
+public bool Contains(IEntity entity);
+```
+
+- **Description:** Checks whether the specified entity exists in the world.
+- **Parameter:** `entity` — The entity to check.
+- **Returns:** `true` if the entity exists; otherwise `false`.
+
+#### `Clear()`
+
+```csharp
+public void Clear();
+```
+
+- **Description:** Removes all entities from the world.
+- **Events:** Triggers multiple `OnRemoved` events (one per entity) and `OnStateChanged`.
+
+#### `CopyTo(IEntity[], int)`
+
+```csharp
+public void CopyTo(IEntity[] array, int arrayIndex);
+```
+
+- **Description:** Copies all entities into the specified array starting at the given index.
+- **Parameters:**
+    - `array` — The destination array.
+    - `arrayIndex` — The zero-based index at which copying begins.
+
+#### `CopyTo(ICollection<IEntity>)`
+
+```csharp
+public void CopyTo(ICollection<IEntity> results);
+```
+
+- **Description:** Copies all entities into the provided collection.
+- **Parameter:** `results` — The target collection.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Disposes the world and its entities.
+- **Remarks:** Unsubscribes all event handlers and clears the collection.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have an IEntityWorld instance
+IEntityWorld world = ...
+
+// Subscribe to events
+world.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+world.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+world.OnStateChanged += () => Console.WriteLine("World state changed");
+world.OnEnabled += () => Console.WriteLine("World enabled");
+world.OnDisabled += () => Console.WriteLine("World disabled");
+world.OnTicked += dt => Console.WriteLine($"Ticked: {dt} seconds");
+
+// Enable the world
+world.Enable();
+
+// Add entities
+var entity1 = new Entity("Entity1");
+var entity2 = new Entity("Entity2");
+world.Add(entity1);
+world.Add(entity2);
+
+// Tick the world
+world.Tick(0.016f);
+
+// Remove an entity
+world.Remove(entity1);
+
+// Dispose when done
+world.Dispose();
+```
+
+---
+
+## 📝 Notes
+
+- **Entity management:** Add, remove, query, and enumerate entities.
+- **Lifecycle management:** Enable / disable world and entities dynamically.
+- **Per-frame updates:** Regular, fixed, and late update callbacks.
