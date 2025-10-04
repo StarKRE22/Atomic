@@ -1,93 +1,212 @@
 # 🧩 PrefabEntityPool
 
-`PrefabEntityPool` provides a **multi-prefab pooling system for Unity `SceneEntity` objects**.  
-It allows efficient reuse of scene entities across multiple scenes, supporting centralized renting, returning, and disposal.
-
----
-
-## Key Features
-
-- **Non-generic and generic variants**
-    - `PrefabEntityPool` (non-generic) for base `SceneEntity`.
-    - `PrefabEntityPool<E>` for any `SceneEntity` subtype.
-
-- **Prefab-based pools**
-    - Each pool corresponds to a prefab and tracks its own stack of instances.
-    - Prefab names are sanitized to group entities correctly.
-
-- **Flexible renting**
-    - Rent entities with optional parent, position, and rotation.
-
-- **Pre-initialization**
-    - Warm up pools using `Init(prefab, count)`.
-
-- **Automatic entity lifecycle management**
-    - Entities are activated on rent, deactivated on return, and properly disposed on pool destruction.
-
-- **Scene persistence**
-    - Optional `DontDestroyOnLoad` support for persistent pools across scenes.
-
----
-
-## Class `PrefabEntityPool`
-Non-generic entry point for pooling `SceneEntity` instances.
-
 ```csharp
 [AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
 [DisallowMultipleComponent]
 public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
 ```
-**Remarks:**  
-Use this class when you don't need a generic type and just want to pool base `SceneEntity` objects.
+
+- **Description:** Default implementation of [PrefabEntityPool\<E>](PrefabEntityPool%601.md) for
+  base [SceneEntity](../Entities/SceneEntity.md) types.  
+  Provides a convenient non-generic entry point for working with pooled `SceneEntity` instances across multiple Unity
+  scenes.
+- **Inheritance:** [PrefabEntityPool\<E>](PrefabEntityPool%601.md), [IPrefabEntityPool](IPrefabEntityPool.md)
+- **Note:** Use this when generic type inference is not needed.
 
 ---
 
-## Class `PrefabEntityPool<E>`
-Generic pool class for scene entities.
+## 🛠 Inspector Settings
+
+| Parameter           | Description                                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------|
+| `container`         | Root container transform for pooled entities. Defaults to the GameObject this script is attached to. |
+| `dontDestroyOnLoad` | If true, the pool GameObject persists across scene loads.                                            |
+
+---
+
+## 🏹 Methods
+
+#### `Awake()`
 
 ```csharp
-public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
-````
+protected virtual void Awake();
+```
 
-### Inspector Settings
+- **Description:** Called by Unity when the GameObject is initialized.
+- **Behavior:**
+    - Assigns `_container` to `this.transform` if it is `null`.
+    - Calls `DontDestroyOnLoad` on the GameObject if `_dontDestroyOnLoad` is `true`.
+- **Usage:** Ensures that the pool is properly initialized before any entities are rented.
 
-| Field               | Description                                                                                                                                         |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| `container`         | The root transform under which all pooled entities will be parented. If not assigned, defaults to the GameObject this script is attached to.        |
-| `dontDestroyOnLoad` | If `true`, the pool GameObject will persist across scene changes using `DontDestroyOnLoad`. Otherwise, it will be destroyed when the scene unloads. |
+#### `Init(SceneEntity, int)`
 
+```csharp
+public void Init(SceneEntity prefab, int count);
+```
 
-### Public Methods
+- **Description:** Pre-initializes a pool for a specific prefab.
+- **Parameters:**
+    - `prefab` — The prefab to pre-instantiate and track in the pool.
+    - `count` — The number of inactive instances to create.
+- **Behavior:** Creates the internal pool if it does not exist and populates it with `count` entities.
+- **Note:** Each instance is deactivated and stored under a container specific to the prefab.
 
-| Method                                                                             | Description                                                                                                             |
-|------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `void Init(E prefab, int count)`                                                   | Pre-instantiate a number of entities for a prefab, adding them to the pool in inactive state.                           |
-| `E Rent(E prefab)`                                                                 | Rent an entity from the pool at the origin with identity rotation. If none are available, a new instance is created.    |
-| `E Rent(E prefab, Transform parent)`                                               | Rent an entity and parent it under the specified transform, preserving parent's position and rotation.                  |
-| `E Rent(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)` | Rent an entity from the pool or create a new one, set its position, rotation, and optional parent.                      |
-| `void Return(E entity)`                                                            | Return a previously rented entity to its corresponding pool. If the entity is already in the pool, the call is ignored. |
-| `void Dispose(E prefab)`                                                           | Clear and destroy all entities in the pool associated with the specified prefab, including its container.               |
-| `void Dispose()`                                                                   | Clear all pools and destroy all pooled entities across all prefabs.                                                     |
+#### `Rent(SceneEntity)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab);
+```
+
+- **Description:** Rents an entity from the pool associated with the given prefab.
+- **Behavior:** Uses default position `(0,0,0)` and rotation `Quaternion.identity`.
+- **Returns:** A `SceneEntity` instance from the pool or a newly created one if the pool is empty.
+- **Note:** Calls `OnRent` to activate the entity before returning.
+
+#### `Rent(SceneEntity, Transform)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab, Transform parent);
+```
+
+- **Description:** Rents an entity and parents it to the specified transform.
+- **Parameters:**
+    - `prefab` — The prefab to rent.
+    - `parent` — The transform under which the entity should be parented.
+- **Behavior:** Uses the parent's position and rotation for the entity.
+- **Returns:** A rented `SceneEntity` instance.
+
+#### `Rent(SceneEntity, Vector3, Quaternion, Transform)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null);
+```
+
+- **Description:** Rents an entity instance with a specific position, rotation, and optional parent.
+- **Parameters:**
+    - `prefab` — The prefab to rent.
+    - `position` — The world position for the rented entity.
+    - `rotation` — The rotation for the entity.
+    - `parent` — Optional transform to parent the entity under.
+- **Returns:** A rented `SceneEntity` instance, positioned and rotated as specified.
+- **Behavior:** Creates the pool if it does not exist and instantiates a new entity if the pool is empty.
+
+#### `Return(SceneEntity)`
+
+```csharp
+public void Return(SceneEntity entity);
+```
+
+- **Description:** Returns a rented entity to its pool.
+- **Parameter:** `entity` — The entity instance being returned.
+- **Behavior:**
+    - Calls `OnReturn` to deactivate the entity.
+    - Reparents the entity under its prefab-specific container.
+    - Ignores the entity if it is already in the pool.
+
+#### `Dispose(SceneEntity)`
+
+```csharp
+public void Dispose(SceneEntity prefab);
+```
+
+- **Description:** Clears the pool for a specific prefab and destroys all associated entities and container.
+- **Parameter:** `prefab` — The prefab whose pool should be cleared.
+- **Behavior:** Calls `OnDispose` on each entity before destroying it and destroys the prefab container.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Clears all prefab pools and destroys all pooled entities and containers.
+- **Behavior:** Iterates over all internal pools and calls `OnDispose` on each entity before destroying it.
+
+#### `OnCreate(SceneEntity)`
+
+```csharp
+protected virtual void OnCreate(SceneEntity entity);
+```
+
+- **Description:** Called whenever a new entity instance is created for pooling.
+- **Default Behavior:** Deactivates the entity GameObject.
+- **Override Use:** Set default state, initialize components, or perform setup on newly created entities.
+
+#### `OnRent(SceneEntity)`
+
+```csharp
+protected virtual void OnRent(SceneEntity entity);
+```
+
+- **Description:** Called when an entity is rented from the pool.
+- **Default Behavior:** Activates the entity GameObject.
+
+#### `OnReturn(SceneEntity)`
+
+```csharp
+protected virtual void OnReturn(SceneEntity entity);
+```
+
+- **Description:** Called when an entity is returned to the pool.
+- **Default Behavior:** Deactivates the entity GameObject.
+
+#### `OnDispose(SceneEntity)`
+
+```csharp
+protected virtual void OnDispose(SceneEntity entity);
+```
+
+- **Description:** Called when a pooled entity is destroyed (e.g., during pool cleanup).
+- **Default Behavior:** Empty. Override to release resources, unregister events, or perform additional cleanup.
+
+#### `GetEntityName(SceneEntity)`
+
+```csharp
+protected virtual string GetEntityName(SceneEntity entity);
+```
+
+- **Description:** Extracts a clean base name from a prefab or entity instance.
+- **Behavior:** Removes Unity-generated numeric suffixes like `(1)`, `(2)` etc.
+- **Returns:** A string used as a key for pooling.
 
 ---
 
-### Protected Hooks
+## 🗂 Example of Usage
 
-| Method                    | Description                                                                                                                            |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `OnCreate(E entity)`      | Called when a new entity instance is created. Default behavior: deactivates the entity.                                                |
-| `OnRent(E entity)`        | Called when an entity is rented. Default behavior: activates the entity.                                                               |
-| `OnReturn(E entity)`      | Called when an entity is returned. Default behavior: deactivates the entity.                                                           |
-| `OnDispose(E entity)`     | Called when an entity is destroyed, either via `Dispose(E prefab)` or `Dispose()`. Override to release resources or unregister events. |
-| `GetEntityName(E entity)` | Returns a clean name for the prefab or entity, stripping Unity's automatic suffixes like " (1)". Used as a key for internal pooling.   |
+#### 1. Add `PrefabEntityPool` component to a GameObject
+
+#### 2. Use `PrefabEntityPool` in your code
+
+```csharp
+// Reference the pool from the scene
+PrefabEntityPool pool = ...;
+
+// Pre-initialize pools
+pool.Init(orcPrefab, 5);
+pool.Init(goblinPrefab, 3);
+
+// Rent entities
+SceneEntity orc = pool.Rent(orcPrefab);
+SceneEntity goblin = pool.Rent(goblinPrefab, parentTransform);
+SceneEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
+
+// Return entities to the pool
+pool.Return(orc);
+pool.Return(goblin);
+pool.Return(troll);
+
+// Clear a specific prefab pool
+pool.Dispose(orcPrefab);
+
+// Clear all pools
+pool.Dispose();
+```
 
 ---
 
-
-### Notes
+### 📝 Notes
 
 - Pools are **created lazily** on first rent or init.
 - Returned entities are **reparented** to their internal container to keep hierarchy clean.
 - `dontDestroyOnLoad` allows pools to persist across scene changes.
 - Override **protected hooks** to customize entity behavior on create, rent, return, or dispose.
-

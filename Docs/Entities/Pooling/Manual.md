@@ -13,10 +13,8 @@
 - **Prefab Pools**
     - [IPrefabEntityPool](IPrefabEntityPool.md) <!-- + -->
     - [IPrefabEntityPool&lt;E&gt;](IPrefabEntityPool%601.md) <!-- + -->
-    - [PrefabEntityPool](PrefabEntityPool.md)
+    - [PrefabEntityPool](PrefabEntityPool.md) <!-- + -->
     - [PrefabEntityPool&lt;E&gt;](PrefabEntityPool%601.md) <!-- + -->
-
-
 
 
 ---
