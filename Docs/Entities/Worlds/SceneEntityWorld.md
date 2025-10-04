@@ -12,7 +12,7 @@ public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
 - **Inheritance:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md)
 - **Note:** Use this class when you do not need to specialize the world with a custom entity type.  
   Ideal for simple scenarios where only `SceneEntity` is involved.
-- **See also:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md), [SceneEntity](../Entities/SceneEntity.md)
+- **See also:** [SceneEntity](../Entities/SceneEntity.md)
 
 ---
 
