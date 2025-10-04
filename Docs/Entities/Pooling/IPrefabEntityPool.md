@@ -7,7 +7,7 @@ public interface IPrefabEntityPool : IPrefabEntityPool<SceneEntity>
 - **Description:** Non-generic version of `IPrefabEntityPool<E>` specialized for
   base [SceneEntity](../Entities/SceneEntity.md) types. Provides a simple abstraction for working with multiple scene
   entity pools, typically used for pooling and managing `SceneEntity` instances across multiple scenes.
-- **Inheritance:** [IPrefabEntityPool<E>](IPrefabEntityPool%601.md), IDisposable
+- **Inheritance:** [IPrefabEntityPool\<E>](IPrefabEntityPool%601.md), IDisposable
 
 ---
 
