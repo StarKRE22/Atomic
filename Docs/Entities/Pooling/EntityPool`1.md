@@ -5,8 +5,8 @@ public class EntityPool<E> : IEntityPool<E> where E : IEntity
 ```
 
 - **Description:** A **generic object pool** for managing entities of type `E`.  
-  Entities are created via an `IEntityFactory<E>` and reused through the pool to reduce allocations.  
-  Supports lifecycle hooks for creation, renting, returning, and disposal of entities.
+  Entities are created via an `IEntityFactory<E>` and reused through the pool to reduce allocations. Supports lifecycle
+  hooks for creation, renting, returning, and disposal of entities.
 - **Type Parameter:** `E` — The entity type managed by the pool. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityPool\<E>](IEntityPool%601.md)
 - **Note:** Useful in scenarios with frequent entity creation and destruction to improve performance.
@@ -22,12 +22,12 @@ public class EntityPool<E> : IEntityPool<E> where E : IEntity
 public EntityPool(IEntityFactory<E> factory);
 ```
 
-- **Description:** Initializes a new instance of the [EntityPool{E}](./EntityPool{E}.md) class using the specified factory.
+- **Description:** Initializes a new instance of the [EntityPool{E}](./EntityPool{E}.md) class using the specified
+  factory.
 - **Parameter:** `factory` — The factory used to create new entity instances when needed.
 - **Exception:** Throws `ArgumentNullException` if `factory` is null.
-- **Note:** Ensures that the pool has a valid factory for creating entities, preventing null reference issues during runtime.
-
-
+- **Note:** Ensures that the pool has a valid factory for creating entities, preventing null reference issues during
+  runtime.
 
 ---
 
@@ -77,7 +77,6 @@ public void Dispose();
 
 - **Description:** Clears the pool and disposes of all entities.
 - **Note:** Calls the virtual `OnDispose` hook for each pooled or rented entity.
-
 
 #### `OnCreate(E)`
 
