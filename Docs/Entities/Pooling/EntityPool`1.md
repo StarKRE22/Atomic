@@ -8,9 +8,26 @@ public class EntityPool<E> : IEntityPool<E> where E : IEntity
   Entities are created via an `IEntityFactory<E>` and reused through the pool to reduce allocations.  
   Supports lifecycle hooks for creation, renting, returning, and disposal of entities.
 - **Type Parameter:** `E` — The entity type managed by the pool. Must implement [IEntity](../Entities/IEntity.md).
-- **Inheritance:** `IEntityPool<E>`
+- **Inheritance:** [IEntityPool\<E>](IEntityPool%601.md)
 - **Note:** Useful in scenarios with frequent entity creation and destruction to improve performance.
 - **See also** [IEntityFactory\<E>](../Factories/IEntityFactory%601.md)
+
+---
+
+## 🏗️ Constructor
+
+#### `EntityPool(IEntityFactory<E>)`
+
+```csharp
+public EntityPool(IEntityFactory<E> factory);
+```
+
+- **Description:** Initializes a new instance of the [EntityPool{E}](./EntityPool{E}.md) class using the specified factory.
+- **Parameter:** `factory` — The factory used to create new entity instances when needed.
+- **Exception:** Throws `ArgumentNullException` if `factory` is null.
+- **Note:** Ensures that the pool has a valid factory for creating entities, preventing null reference issues during runtime.
+
+
 
 ---
 

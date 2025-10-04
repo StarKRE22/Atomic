@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,23 +224,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="19707000" />
-    </task>
-    <task id="LOCAL-01140" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1759477442106</created>
-      <option name="number" value="01140" />
-      <option name="presentableId" value="LOCAL-01140" />
-      <option name="project" value="LOCAL" />
-      <updated>1759477442106</updated>
-    </task>
-    <task id="LOCAL-01141" summary="Начинаем переписывать MultiFactory Docs">
-      <option name="closed" value="true" />
-      <created>1759477635123</created>
-      <option name="number" value="01141" />
-      <option name="presentableId" value="LOCAL-01141" />
-      <option name="project" value="LOCAL" />
-      <updated>1759477635123</updated>
+      <workItem from="1759562206582" duration="21104000" />
     </task>
     <task id="LOCAL-01142" summary="IMultiEntityFactory.md">
       <option name="closed" value="true" />
@@ -616,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759590089870</updated>
     </task>
-    <option name="localTasksCounter" value="1189" />
+    <task id="LOCAL-01189" summary="EntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1759592659767</created>
+      <option name="number" value="01189" />
+      <option name="presentableId" value="LOCAL-01189" />
+      <option name="project" value="LOCAL" />
+      <updated>1759592659767</updated>
+    </task>
+    <task id="LOCAL-01190" summary="EntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1759592698592</created>
+      <option name="number" value="01190" />
+      <option name="presentableId" value="LOCAL-01190" />
+      <option name="project" value="LOCAL" />
+      <updated>1759592698592</updated>
+    </task>
+    <option name="localTasksCounter" value="1191" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
     <MESSAGE value="Вот теперь с Bakers ок!" />
     <MESSAGE value="Сделал SceneEntityBaker.md" />
     <MESSAGE value="Пилим раздел EntityCollection`1.md" />
@@ -668,7 +669,8 @@
     <MESSAGE value="Пилим пулы!" />
     <MESSAGE value="IEntityPool`1.md" />
     <MESSAGE value="IEntityPool.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityPool.md" />
+    <MESSAGE value="EntityPool`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityPool`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
