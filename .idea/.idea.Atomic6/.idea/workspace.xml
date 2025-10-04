@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakerStatic.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/ApiReference.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/BestPractices.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld.md.meta" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,14 +246,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-    </task>
-    <task id="LOCAL-01117" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759405750655</created>
-      <option name="number" value="01117" />
-      <option name="presentableId" value="LOCAL-01117" />
-      <option name="project" value="LOCAL" />
-      <updated>1759405750655</updated>
+      <workItem from="1759562206582" duration="1640000" />
     </task>
     <task id="LOCAL-01118" summary="Пилим фабрики!">
       <option name="closed" value="true" />
@@ -612,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759522269041</updated>
     </task>
-    <option name="localTasksCounter" value="1166" />
+    <task id="LOCAL-01166" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759522540830</created>
+      <option name="number" value="01166" />
+      <option name="presentableId" value="LOCAL-01166" />
+      <option name="project" value="LOCAL" />
+      <updated>1759522540830</updated>
+    </task>
+    <option name="localTasksCounter" value="1167" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="ScriptableEntityFactory`1.md" />
     <MESSAGE value="ScriptableEntityFactory.md" />
     <MESSAGE value="InlineEntityFactory`1.md" />
@@ -664,7 +691,8 @@
     <MESSAGE value="EntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
     <MESSAGE value="Extensions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

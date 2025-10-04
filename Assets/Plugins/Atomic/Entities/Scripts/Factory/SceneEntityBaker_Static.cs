@@ -42,6 +42,27 @@ namespace Atomic.Entities
             return entities;
         }
 
+        /// <summary>
+        /// Collects entities from all <see cref="SceneEntityBaker{E}"/> components in the scene
+        /// and adds them to the specified <paramref name="destination"/> collection.
+        /// </summary>
+        /// <typeparam name="E">The type of entity created by the bakers.</typeparam>
+        /// <param name="destination">
+        /// The collection where all baked entities will be stored.  
+        /// Must not be <c>null</c>.
+        /// </param>
+        /// <param name="includeInactive">
+        /// Whether to include bakers attached to inactive GameObjects.  
+        /// If <c>false</c>, only active bakers are considered.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// Thrown if <paramref name="destination"/> is <c>null</c>.
+        /// </exception>
+        /// <remarks>
+        /// This method finds all <see cref="SceneEntityBaker{E}"/> instances in the scene and
+        /// invokes their <c>Create</c> method to generate entities.  
+        /// The resulting entities are then added to <paramref name="destination"/>.
+        /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void BakeAll(ICollection<E> destination, bool includeInactive = true)
         {

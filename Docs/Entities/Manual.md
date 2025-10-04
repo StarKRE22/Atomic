@@ -60,6 +60,7 @@ smoother and more powerful than in Unity.
 
 ## 🔥 Performance
 
-[Entities](Entities/EntityPerformance.md)
+- [Entities](Entities/EntityPerformance.md)
+- [Collections](Collections/EntityCollectionPerformance.md)
 
 ---
