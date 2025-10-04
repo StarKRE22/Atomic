@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/MultiEntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool`1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,15 +222,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="16837000" />
-    </task>
-    <task id="LOCAL-01136" summary="MultiEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1759435942638</created>
-      <option name="number" value="01136" />
-      <option name="presentableId" value="LOCAL-01136" />
-      <option name="project" value="LOCAL" />
-      <updated>1759435942638</updated>
+      <workItem from="1759562206582" duration="17205000" />
     </task>
     <task id="LOCAL-01137" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -624,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759585179159</updated>
     </task>
-    <option name="localTasksCounter" value="1185" />
+    <task id="LOCAL-01185" summary="Пилим пулы!">
+      <option name="closed" value="true" />
+      <created>1759585751492</created>
+      <option name="number" value="01185" />
+      <option name="presentableId" value="LOCAL-01185" />
+      <option name="project" value="LOCAL" />
+      <updated>1759585751492</updated>
+    </task>
+    <option name="localTasksCounter" value="1186" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Вот теперь ок!" />
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="MultiEntityFactory.md" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
@@ -676,7 +667,8 @@
     <MESSAGE value="Написал EntityWorlds" />
     <MESSAGE value="EntityRegistry.md" />
     <MESSAGE value="Начинаем делать раздел для пулов!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем делать раздел для пулов!" />
+    <MESSAGE value="Пилим пулы!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим пулы!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
