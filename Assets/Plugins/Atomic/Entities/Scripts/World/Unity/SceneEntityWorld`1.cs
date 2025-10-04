@@ -10,7 +10,7 @@ namespace Atomic.Entities
     /// <typeparam name="E">The specific type of scene entity this world manages. Must inherit from <see cref="SceneEntity"/>.</typeparam>
     /// <remarks>
     /// This component integrates with Unity’s lifecycle events (Awake, Start, OnEnable, etc.) to automatically
-    /// manage entity spawning, enabling, updating, and cleanup. It wraps a runtime <see cref="EntityWorld{E}"/> instance internally.
+    /// manage entity enabling, updating, and cleanup. It wraps a runtime <see cref="EntityWorld{E}"/> instance internally.
     /// </remarks>
     /// <example>
     /// Attach this component to a GameObject in the scene to automatically scan and manage entities of type <typeparamref name="E"/>.
