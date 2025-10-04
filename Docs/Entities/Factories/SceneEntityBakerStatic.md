@@ -1,4 +1,4 @@
-# 🧩️ Static API SceneEntityBaker\<E> 
+# 🧩️ SceneEntityBaker\<E> — Static API
 
 Represents static methods for baking entities under Unity scenes and GameObject domains.
 
