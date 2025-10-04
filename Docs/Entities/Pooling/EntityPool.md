@@ -111,8 +111,7 @@ protected virtual void OnReturn(IEntity entity);
 ## 🗂 Example of Usage
 
 ```csharp
-// Non-generic IEntityPool for any IEntity
-IEntityFactory<IEntity> factory = ...
+IEntityFactory factory = ...
 EntityPool pool = new(factory);
 
 // Initialize pool
