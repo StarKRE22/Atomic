@@ -40,7 +40,7 @@ namespace BeginnerGame
             context.AddMoney(_money);
             context.AddCamera(_camera);
 
-            if (EntityUtils.IsPlayMode())
+            if (ApplicationUtils.IsPlayMode())
             {
                 //Character:
                 GameEntity character = CharactersUseCase.Spawn(gameContext, _characterPrefab, _spawnPoint, _teamType);

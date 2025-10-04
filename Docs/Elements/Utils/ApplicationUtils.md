@@ -1,7 +1,7 @@
-# 🧩 EntityUtils
+# 🧩 ApplicationUtils
 
 ```csharp
-public static class EntityUtils
+public static class ApplicationUtils
 `````
 
 - **Description:** Provides **utility methods** for checking the current Unity application mode.  
@@ -42,7 +42,7 @@ public static bool IsEditMode()
 #### `IsPlayMode()`
 
 ```csharp
-if (EntityUtils.IsPlayMode())
+if (ApplicationUtils.IsPlayMode())
     Console.WriteLine("Application is running in Play Mode.");
 ````
 
@@ -50,6 +50,6 @@ if (EntityUtils.IsPlayMode())
 
 
 ```csharp
-if (EntityUtils.IsEditMode())
+if (ApplicationUtils.IsEditMode())
     Console.WriteLine("Application is in Edit Mode and not compiling.");
 ````

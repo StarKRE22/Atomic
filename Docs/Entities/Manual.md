@@ -32,8 +32,7 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
-but
-with the plugin, development experience in `Rider IDE` become
+but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
 ---
@@ -51,7 +50,6 @@ smoother and more powerful than in Unity.
 - [Registry](Registry/EntityRegistry.md) <!-- + -->
 - [Filters](Filters/Manual.md)
 - [UI](UI/Manual.md)
-- [Utilities](Utils/EntityUtils.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Entity API](EntityAPI/Manual.md)
 

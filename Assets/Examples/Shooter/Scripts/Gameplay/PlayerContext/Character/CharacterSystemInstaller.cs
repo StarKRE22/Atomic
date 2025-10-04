@@ -1,4 +1,5 @@
 using System;
+using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace ShooterGame.Gameplay
 
         public void Install(IPlayerContext context)
         {
-            if (EntityUtils.IsPlayMode())
+            if (ApplicationUtils.IsPlayMode())
             {
                 GameContext gameContext = GameContext.Instance;
                 GameEntity character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);

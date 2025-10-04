@@ -3,7 +3,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using static Atomic.Entities.EntityUtils;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {

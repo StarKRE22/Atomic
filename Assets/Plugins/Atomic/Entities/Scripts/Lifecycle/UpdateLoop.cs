@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static Atomic.Entities.EntityUtils;
+using static Atomic.Entities.InternalUtils;
 
 namespace Atomic.Entities
 {

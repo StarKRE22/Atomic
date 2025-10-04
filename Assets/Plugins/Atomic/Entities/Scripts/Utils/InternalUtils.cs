@@ -9,7 +9,7 @@ namespace Atomic.Entities
     /// Contains low-level utility methods for internal use within the Atomic.Entities framework.
     /// Includes optimized helpers for delegate management, primitive operations, and array manipulation.
     /// </summary>
-    public static partial class EntityUtils
+    internal static class InternalUtils
     {
         /// <summary>
         /// Predefined table of prime numbers used for sizing collections or other internal computations.

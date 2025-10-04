@@ -1,14 +1,15 @@
 using System.Runtime.CompilerServices;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace Atomic.Entities
+namespace Atomic.Elements
 {
     /// <summary>
     /// Provides utility methods for checking the current Unity application mode.
     /// </summary>
-    public static partial class EntityUtils
+    public static class ApplicationUtils
     {
         /// <summary>
         /// Determines whether the application is currently in Play Mode.

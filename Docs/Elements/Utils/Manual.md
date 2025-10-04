@@ -14,3 +14,4 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - [Reference](Reference.md) <!-- + -->
 - [Optional](Optional.md) <!-- + -->
 - [Extensions](Extensions.md) <!-- + -->
+- [ApplicationUtils](ApplicationUtils.md)  <!-- + -->
