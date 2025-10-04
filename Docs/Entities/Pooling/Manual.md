@@ -7,9 +7,9 @@
     - [SceneEntityPool&lt;E&gt;](SceneEntityPool%601.md) <!-- + -->
 - **Multi Pools**
     - [IMultiEntityPool](IMultiEntityPool.md) <!-- + -->
-    - [IMultiEntityPool&lt;E&gt;](IMultiEntityPool%601.md) <!-- + -->
+    - [IMultiEntityPool&lt;K, E&gt;](IMultiEntityPool%601.md) <!-- + -->
     - [MultiEntityPool](MultiEntityPool.md) <!-- + -->
-    - [MultiEntityPool&lt;E&gt;](MultiEntityPool%601.md) <!-- + -->
+    - [MultiEntityPool&lt;K, E&gt;](MultiEntityPool%601.md) <!-- + -->
 - **Prefab Pools**
     - [IPrefabEntityPool](IPrefabEntityPool.md)
     - [IPrefabEntityPool&lt;E&gt;](IPrefabEntityPool%601.md)
