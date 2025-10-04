@@ -25,7 +25,7 @@ public E Rent();
   created.
 - **Returns:** An entity instance of type `E`.
 
-#### `Return(E entity)`
+#### `Return(E)`
 
 ```csharp
 public void Return(E entity);
@@ -34,7 +34,7 @@ public void Return(E entity);
 - **Description:** Returns a previously rented entity back to the pool, making it available for reuse.
 - **Parameter:** `entity` — The entity instance to return to the pool.
 
-#### `Init(int initialCount)`
+#### `Init(int)`
 
 ```csharp
 public void Init(int initialCount);
