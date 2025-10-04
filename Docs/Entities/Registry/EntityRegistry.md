@@ -1,71 +1,165 @@
 # 🧩 EntityRegistry
 
-A global singleton registry responsible for tracking and managing all `IEntity` instances.  
-Provides unique ID assignment, fast lookup, and name-based search utilities.
+```csharp  
+public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>  
+```
+
+- **Description:** A **global registry** responsible for tracking and managing all [IEntity](../Entities/IEntity.md)
+  instances. Provides **unique ID assignment**, **lookup by ID**, and **name-based search utilities**.
+- **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md).
+- **Note:** Automatically reused IDs for unregistered entities to avoid ID overflow.
+- **See also:** [EntityWorld](../Worlds/EntityWorld.md), [EntityCollection](../Collections/EntityCollection.md).
 
 ---
 
-## Key Features
+## ⚡ Events
 
-- **Singleton access** – Only one instance exists via `EntityRegistry.Instance`.
-- **Unique ID management** – Automatically assigns and recycles integer IDs for entities.
-- **Entity lookup** – Supports search by ID or by reference.
-- **Collection support** – Implements `IReadOnlyEntityCollection<IEntity>` for enumeration and copying.
-- **Events** – Notifies when entities are added, removed, or the registry state changes.
-- **Editor integration** – Can automatically reset in Unity Editor before entering Play Mode.
+#### `OnStateChanged`
+
+```csharp  
+public event Action OnStateChanged;  
+```
+
+- **Description:** Raised whenever the registry state changes (entity added/removed).
+
+#### `OnAdded`
+
+```csharp  
+public event Action<IEntity> OnAdded;  
+```
+
+- **Description:** Raised when a new entity is registered.
+- **Parameter:** `entity` — The entity that was added.
+
+#### `OnRemoved`
+
+```csharp  
+public event Action<IEntity> OnRemoved;  
+```
+
+- **Description:** Raised when an entity is removed from the registry.
+- **Parameter:** `entity` — The entity that was removed.
 
 ---
 
-## Static Properties
+## 🔑 Properties
 
-| Property   | Description                                             |
-|------------|---------------------------------------------------------|
-| `Instance` | Returns the singleton instance of the `EntityRegistry`. |
+#### `Instance`
 
-## Events
+```csharp  
+public static EntityRegistry Instance { get; }  
+```
 
-| Event            | Description                                                                                 |
-|------------------|---------------------------------------------------------------------------------------------|
-| `OnStateChanged` | Triggered whenever the registry’s state changes (e.g., entities added or removed).          |
-| `OnAdded`        | Triggered when an entity is registered in the registry. The added entity is provided.       |
-| `OnRemoved`      | Triggered when an entity is unregistered from the registry. The removed entity is provided. |
+- **Description:** Gets the global singleton instance of the registry.
 
-## Properties
+#### `Count`
 
-| Property          | Description                                             |
-|-------------------|---------------------------------------------------------|
-| `int Count`       | Gets the total number of entities currently registered. |
+```csharp  
+public int Count { get; }  
+```
 
-## Methods
+- **Description:** Gets the number of currently registered entities.
 
-| Method                                         | Description                                                                          |
-|------------------------------------------------|--------------------------------------------------------------------------------------|
-| `bool Contains(int id)`                        | Checks if an entity with the specified ID exists in the registry.                    |
-| `bool Contains(IEntity entity)`                | Checks if the specified entity exists in the registry.                               |
-| `void CopyTo(ICollection<IEntity> results)`    | Copies all registered entities into the provided collection.                         |
-| `void CopyTo(IEntity[] array, int arrayIndex)` | Copies all registered entities into the given array starting at the specified index. |
-| `bool TryGet(int id, out IEntity entity)`      | Attempts to retrieve an entity by its ID. Returns `true` if found.                   |
-| `IEntity Get(int id)`                          | Retrieves an entity by its ID. Throws an exception if not found.                     |
-| `IEnumerator<IEntity> GetEnumerator()`         | Returns an enumerator over all registered entities.                                  |
-| `void ResetAll()`                              | **Editor only:** Clears the registry when entering Play Mode.                        |
+---
 
-## Usage Example
+## 🏹 Methods
 
-```csharp
-// Get the singleton instance
-var registry = EntityRegistry.Instance;
+#### `Contains(int)`
 
-// Check if entity exists
-if (registry.Contains(id))
+```csharp  
+public bool Contains(int id);  
+```
+
+- **Description:** Checks whether an entity with the given unique ID is currently registered in the registry.
+- **Parameter:** `id` — The unique identifier of the entity.
+- **Returns:** `true` if the entity exists, otherwise `false`.
+
+#### `Contains(IEntity)`
+
+```csharp  
+public bool Contains(IEntity entity);  
+```
+
+- **Description:** Checks whether the provided entity instance is currently registered in the registry.
+- **Parameter:** `entity` — The entity instance to check.
+- **Returns:** `true` if the entity is found, otherwise `false`.
+
+#### `CopyTo(ICollection<IEntity>)`
+
+```csharp  
+public void CopyTo(ICollection<IEntity> results);  
+```
+
+- **Description:** Copies all registered entities into the provided collection.
+- **Parameter:** `results` — The target collection. The method will clear it before adding entities.
+
+#### `CopyTo(IEntity[], int)`
+
+```csharp  
+public void CopyTo(IEntity[] array, int arrayIndex);  
+```
+
+- **Description:** Copies all registered entities into the specified array, starting at the given index.
+- **Parameters:**
+    - `array` — Target array to copy entities into.
+    - `arrayIndex` — The starting position in the target array.
+- **Exception:** `ArgumentException` — If the array is too small.
+
+#### `TryGet(int, out IEntity)`
+
+```csharp  
+public bool TryGet(int id, out IEntity entity);  
+```
+
+- **Description:** Attempts to retrieve an entity by its unique ID without throwing exceptions.
+- **Parameters:**
+    - `id` — The unique identifier of the entity.
+    - `entity` — Output parameter that contains the found entity if successful; otherwise `null`.
+- **Returns:** `true` if the entity was found, otherwise `false`.
+
+#### `Get(int)`
+
+```csharp  
+public IEntity Get(int id);  
+```
+
+- **Description:** Retrieves an entity by its unique ID.
+- **Parameter:** `id` — The unique identifier of the entity.
+- **Return:** The entity instance.
+- **Exception:**`KeyNotFoundException` — If no entity with the specified ID exists.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp  
+EntityRegistry registry = EntityRegistry.Instance;
+
+//Retrieving entity by id
+if (registry.TryGet(id, out IEntity found))  
+{  
+    Debug.Log($"Found entity: {found}");  
+}  
+
+//Check for entity existance
+if (registry.Contains(someEntity))
 {
-    IEntity entity = registry.Get(id);
-    Console.WriteLine($"Entity found: {entity}");
+    //Do something
 }
 
-// Enumerate all entities
-foreach (var e in registry)
-    Console.WriteLine($"Entity: {e}");
-
-// Unregister entity
-registry.Unregister(ref id);
+//Iterating over all entities
+foreach (var entity in registry)  
+{  
+    Debug.Log($"Entity: {entity}");  
+}  
 ```
+
+---
+
+## 📝 Notes
+
+- Acts as a **global tracker** — unlike `EntityWorld`, which is scoped per world.
+- Provides **fast lookup** by ID using dictionaries.
+- Uses **stack recycling** for IDs to avoid fragmentation.
+- Events (`OnAdded`, `OnRemoved`) make it easy to **react to entity lifecycle** globally.
+- Automatically reset in **Unity Editor** before Play Mode starts.
