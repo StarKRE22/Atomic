@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -219,23 +224,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="2430000" />
-    </task>
-    <task id="LOCAL-01119" summary="Прочесал Atomic.Elements">
-      <option name="closed" value="true" />
-      <created>1759426494490</created>
-      <option name="number" value="01119" />
-      <option name="presentableId" value="LOCAL-01119" />
-      <option name="project" value="LOCAL" />
-      <updated>1759426494490</updated>
-    </task>
-    <task id="LOCAL-01120" summary="IEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1759428953677</created>
-      <option name="number" value="01120" />
-      <option name="presentableId" value="LOCAL-01120" />
-      <option name="project" value="LOCAL" />
-      <updated>1759428953677</updated>
+      <workItem from="1759562206582" duration="5072000" />
     </task>
     <task id="LOCAL-01121" summary="IEntityFactory`1.md">
       <option name="closed" value="true" />
@@ -613,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759564868713</updated>
     </task>
-    <option name="localTasksCounter" value="1168" />
+    <task id="LOCAL-01168" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759568646026</created>
+      <option name="number" value="01168" />
+      <option name="presentableId" value="LOCAL-01168" />
+      <option name="project" value="LOCAL" />
+      <updated>1759568646026</updated>
+    </task>
+    <task id="LOCAL-01169" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1759568668670</created>
+      <option name="number" value="01169" />
+      <option name="presentableId" value="LOCAL-01169" />
+      <option name="project" value="LOCAL" />
+      <updated>1759568668670</updated>
+    </task>
+    <option name="localTasksCounter" value="1170" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,9 +668,9 @@
     <MESSAGE value="EntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
     <MESSAGE value="Extensions.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Подкрутил SceneEntityBakerStatic.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Подкрутил SceneEntityBakerStatic.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
