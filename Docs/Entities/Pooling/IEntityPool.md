@@ -1,70 +1,80 @@
-# 🧩️ IEntityPool
-
-The `IEntityPool` interfaces define a **pooling system** for reusing `IEntity` instances, reducing allocation overhead and improving runtime performance in **Entity-based architectures**.  
-They provide both a **non-generic alias** (`IEntityPool`) and a **generic version** (`IEntityPool<E>`) for type-safe pooling.
-
-## Key Features
-
-- **Generic and non-generic support**
-    - `IEntityPool` for general-purpose pooling of `IEntity`.
-    - `IEntityPool<E>` for type-safe pooling of specific entity types.
-
-- **Reduced allocations**
-    - Entities are reused instead of being constantly created and destroyed.
-
-- **Preallocation**
-    - Pools can be initialized with a number of pre-created entities to avoid runtime spikes.
-
-- **Safe return mechanism**
-    - Entities can be returned back into the pool for consistent lifecycle management.
-
-- **Disposable**
-    - Pools implement `IDisposable`, ensuring resources can be properly released.
-
-
----
-
-## Interfaces
-
-### Interface IEntityPool
-A non-generic alias bound to the base `IEntity` type.
+# 🧩 IEntityPool
 
 ```csharp
 public interface IEntityPool : IEntityPool<IEntity>
 ```
 
-**Usage**:  
-Use this interface when you don’t need type-specific entity access and want a pool that can work with any `IEntity`.
+- **Description:** Represents a **non-generic object pool** for reusing instances
+  of [IEntity](../Entities/IEntity.md).  
+  Provides the same pooling functionality as `IEntityPool<E>`, but operates on the base `IEntity` type.  
+  Useful when type-specific access is not required.
+- **Inheritance:** [IEntityPool\<E>](IEntityPool%601.md)
+- **Note:** Ideal for scenarios where you want a simple pool for any entity without specifying a type parameter.
 
 ---
 
-### Interface IEntityPool&lt;E&gt;
-Represents a reusable pool for entity instances of type `E`.
+## 🏹 Methods
+
+#### `Rent()`
 
 ```csharp
-public interface IEntityPool<E> : IDisposable where E : IEntity
+public IEntity Rent();
 ```
+
+- **Description:** Retrieves an entity instance from the pool. If the pool is empty, a new instance may be created.
+- **Returns:** An `IEntity` instance.
 
 ---
 
-## Methods
+#### `Return(IEntity)`
 
-| Method                        | Description                                                                    |
-|-------------------------------|--------------------------------------------------------------------------------|
-| `E Rent()`                    | Retrieves an entity instance from the pool. Creates one if none are available. |
-| `void Return(E entity)`       | Returns an entity back to the pool for future reuse.                           |
-| `void Init(int initialCount)` | Preallocates a specified number of entities in the pool.                       |
+```csharp
+public void Return(IEntity entity);
+```
 
-## Notes
+- **Description:** Returns a previously rented entity back to the pool for reuse.
+- **Parameter:** `entity` — The entity instance to return.
 
-- **Entity Lifecycle**:  
-  Entities retrieved via `Rent()` may need to be reset before reuse, depending on the implementation.
+---
 
-- **Disposal Responsibility**:  
-  Always call `Dispose()` when the pool is no longer needed to release internal resources and references.
+#### `Init(int)`
 
-- **Best Practice**:  
-  Use **preallocation** with `Init()` for performance-critical systems (e.g., spawning bullets, units, or projectiles) to avoid runtime allocation spikes.
+```csharp
+public void Init(int initialCount);
+```
 
-- **Implementation Detail**:  
-  The interfaces do not define how entities are created—implementations may use factories, constructors, or cloning strategies.  
+- **Description:** Initializes the pool with a specified number of preallocated entities.
+- **Parameter:** `initialCount` — Number of entities to create initially.
+- **Note:** Helps reduce runtime allocations in high-frequency entity creation scenarios.
+
+---
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Disposes of all pooled entities and releases internal resources.
+- **Note:** Should be called when the pool is no longer needed to prevent memory leaks.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Non-generic IEntityPool operating on base IEntity
+IEntityPool pool = ...
+pool.Init(5);
+
+// Rent entities
+var entity1 = pool.Rent();
+var entity2 = pool.Rent();
+
+// Return entities to the pool
+pool.Return(entity1);
+pool.Return(entity2);
+
+// Dispose pool when done
+pool.Dispose();
+```

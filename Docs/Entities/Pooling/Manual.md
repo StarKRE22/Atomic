@@ -1,5 +1,5 @@
 - **Single Pools**
-    - [IEntityPool](IEntityPool.md)
+    - [IEntityPool](IEntityPool.md) <!-- + -->
     - [IEntityPool&lt;E&gt;](IEntityPool%601.md) <!-- + -->
     - [EntityPool](EntityPool.md)
     - [EntityPool&lt;E&gt;](EntityPool%601.md)
