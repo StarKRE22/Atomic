@@ -184,10 +184,10 @@ public void CopyTo(ICollection<E> results);
 #### `Dispose()`
 
 ```csharp
-public void Dispose();
+public virtual void Dispose();
 ```
 
-- **Description:** Clears the collection and releases resources.
+- **Description:** Clears the collection and releases events.
 - **Remarks:** Unsubscribes all event handlers.
 
 #### `GetEnumerator()`
@@ -198,6 +198,30 @@ public Enumerator GetEnumerator();
 
 - **Description:** Returns a struct enumerator for iterating through the collection.
 - **Returns:** `Enumerator` struct implementing `IEnumerator<E>`.
+
+#### `OnAdd(E)`
+
+```csharp
+protected virtual void OnAdd(E entity);
+```
+
+- **Description:** Called automatically when an entity is **added** to the collection.
+- **Parameter:** `entity` — The entity that was added.
+- **Remarks:** Can be **overridden** in derived classes to implement custom logic, such as enabling the entity, logging,
+  or triggering events.
+- **Default behavior:** Does nothing.
+
+#### `OnRemove(E)`
+
+```csharp
+protected virtual void OnRemove(E entity);
+```
+
+- **Description:** Called automatically when an entity is **removed** from the collection.
+- **Parameter:** `entity` — The entity that was removed.
+- **Remarks:** Can be **overridden** in derived classes to implement custom logic, such as disabling the entity,
+  logging, or triggering events.
+- **Default behavior:** Does nothing.
 
 ---
 

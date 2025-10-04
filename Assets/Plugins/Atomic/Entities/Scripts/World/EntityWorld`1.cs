@@ -10,7 +10,7 @@ namespace Atomic.Entities
 {
     /// <summary>
     /// Represents a runtime-managed world composed of entities of type <typeparamref name="E"/>.
-    /// Provides lifecycle management including spawning, enabling, updating, and disposing all entities in the collection.
+    /// Provides lifecycle management including, enabling, updating, and disposing all entities in the collection.
     /// </summary>
     /// <typeparam name="E">The specific type of entity managed by this world. Must implement <see cref="IEntity"/>.</typeparam>
     public class EntityWorld<E> : EntityCollection<E>, IEntityWorld<E> where E : IEntity
@@ -175,18 +175,29 @@ namespace Atomic.Entities
             this.OnLateTicked?.Invoke(deltaTime);
         }
 
+        /// <summary>
+        /// Enables added entity if world is enabled.
+        /// </summary>
+        /// <param name="entity">Added entity</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnAdd(E entity)
         {
             if (_enabled) entity.Enable();
         }
 
+        /// <summary>
+        /// Disables removed entity if world is enabled. 
+        /// </summary>
+        /// <param name="entity">Removed entity</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected override void OnRemove(E entity)
         {
             if (_enabled) entity.Disable();
         }
 
+        /// <summary>
+        /// Disables this state, clear all entities and release all events
+        /// </summary>
         public override void Dispose()
         {
             if (_enabled)

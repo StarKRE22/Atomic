@@ -227,6 +227,10 @@ namespace Atomic.Entities
             return true;
         }
 
+        /// <summary>
+        /// Called automatically when entity was added.
+        /// </summary>
+        /// <param name="entity">The added entity</param>
         protected virtual void OnAdd(E entity)
         {
         }
@@ -292,6 +296,10 @@ namespace Atomic.Entities
             return false;
         }
 
+        /// <summary>
+        /// Called automatically when entity was removed
+        /// </summary>
+        /// <param name="entity">The removed entity</param>
         protected virtual void OnRemove(E entity)
         {
         }
@@ -342,6 +350,9 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Clears the collection and releases events.
+        /// </summary>
         public virtual void Dispose()
         {
             this.Clear();
@@ -379,6 +390,10 @@ namespace Atomic.Entities
             }
         }
 
+        /// <summary>
+        /// Copies the elements of the set into the specified array, starting at the given index.
+        /// </summary>
+        /// <param name="results">Destination collection</param>
         public void CopyTo(ICollection<E> results)
         {
             if (results == null)
