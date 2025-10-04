@@ -46,7 +46,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Checks whether a object is marked to support edit mode lifecycle.
+        /// Checks whether an object is marked to support edit mode lifecycle.
         /// </summary>
         internal static bool IsRunInEditModeDefined(object obj) =>
             obj.GetType().IsDefined(typeof(RunInEditModeAttribute));

@@ -23,7 +23,7 @@ There are separate interfaces that handles the corresponding lifecycle events of
 - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
 - [IEntityGizmos](IEntityGizmos.md) <!-- + -->
 - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
-
+- [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
 ---
 
 ## 🗂 Example Usage

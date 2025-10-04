@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Internal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Internal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/EntityNames.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/EntityNames.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/EntityNames.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/Manual.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,23 +229,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="27650000" />
-    </task>
-    <task id="LOCAL-01154" summary="Сделал SceneEntityBaker.md">
-      <option name="closed" value="true" />
-      <created>1759518862327</created>
-      <option name="number" value="01154" />
-      <option name="presentableId" value="LOCAL-01154" />
-      <option name="project" value="LOCAL" />
-      <updated>1759518862327</updated>
-    </task>
-    <task id="LOCAL-01155" summary="Пилим раздел EntityCollection`1.md">
-      <option name="closed" value="true" />
-      <created>1759520246566</created>
-      <option name="number" value="01155" />
-      <option name="presentableId" value="LOCAL-01155" />
-      <option name="project" value="LOCAL" />
-      <updated>1759520246566</updated>
+      <workItem from="1759562206582" duration="28506000" />
     </task>
     <task id="LOCAL-01156" summary="IReadOnlyEntityCollection.md">
       <option name="closed" value="true" />
@@ -615,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759600178143</updated>
     </task>
-    <option name="localTasksCounter" value="1203" />
+    <task id="LOCAL-01203" summary="PrefabEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1759600555722</created>
+      <option name="number" value="01203" />
+      <option name="presentableId" value="LOCAL-01203" />
+      <option name="project" value="LOCAL" />
+      <updated>1759600555722</updated>
+    </task>
+    <task id="LOCAL-01204" summary="EntityPools">
+      <option name="closed" value="true" />
+      <created>1759601043581</created>
+      <option name="number" value="01204" />
+      <option name="presentableId" value="LOCAL-01204" />
+      <option name="project" value="LOCAL" />
+      <updated>1759601043581</updated>
+    </task>
+    <option name="localTasksCounter" value="1205" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,8 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Подкрутил SceneEntityBakerStatic.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityWorld`1.md" />
     <MESSAGE value="Сделал EntityWorld`1.md" />
     <MESSAGE value="Сделал IEntityWorld.md!" />
@@ -667,7 +673,9 @@
     <MESSAGE value="IPrefabEntityPool`1.md" />
     <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="PrefabEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="PrefabEntityPool`1.md" />
+    <MESSAGE value="PrefabEntityPool.md" />
+    <MESSAGE value="EntityPools" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityPools" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
