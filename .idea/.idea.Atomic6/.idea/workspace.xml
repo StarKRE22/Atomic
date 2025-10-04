@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityPoolWithFactories" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityPoolWithFactories.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/IMultiEntityPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/IMultiEntityPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/IMultiEntityPool`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/IMultiEntityPool`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,15 +226,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="23026000" />
-    </task>
-    <task id="LOCAL-01144" summary="IMultiEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1759480147693</created>
-      <option name="number" value="01144" />
-      <option name="presentableId" value="LOCAL-01144" />
-      <option name="project" value="LOCAL" />
-      <updated>1759480147693</updated>
+      <workItem from="1759562206582" duration="24277000" />
     </task>
     <task id="LOCAL-01145" summary="IMultiEntityFactory`1.md">
       <option name="closed" value="true" />
@@ -617,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759594981489</updated>
     </task>
-    <option name="localTasksCounter" value="1193" />
+    <task id="LOCAL-01193" summary="SceneEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1759596035848</created>
+      <option name="number" value="01193" />
+      <option name="presentableId" value="LOCAL-01193" />
+      <option name="project" value="LOCAL" />
+      <updated>1759596035848</updated>
+    </task>
+    <option name="localTasksCounter" value="1194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим раздел EntityCollection`1.md" />
     <MESSAGE value="IReadOnlyEntityCollection.md" />
     <MESSAGE value="IEntityCollection`1.md" />
     <MESSAGE value="IEntityCollection.md" />
@@ -669,7 +671,8 @@
     <MESSAGE value="EntityPool`1.md" />
     <MESSAGE value="EntityPool.md" />
     <MESSAGE value="SceneEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool`1.md" />
+    <MESSAGE value="SceneEntityPool.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,85 +1,64 @@
-# 🧩️ IMultiEntityPool
-
-The `IMultiEntityPool` interfaces provide a **multi-pool system** for managing multiple groups of `IEntity` instances, each identified by a **key**.  
-This allows efficient reuse of entities while organizing them under different categories, such as types, tags, or other identifiers.
-
----
-
-## Key Features
-
-- **Generic and non-generic variants**
-    - `IMultiEntityPool` uses **string keys** for general-purpose multi-pooling of `IEntity`.
-    - `IMultiEntityPool<TKey, E>` supports custom key types and type-safe pooling of specific entity types.
-
-- **Reduced allocations**
-    - Entities are reused instead of being constantly created and destroyed.
-
-- **Preallocation**
-    - Each individual pool can be initialized with a number of pre-created entities to avoid runtime spikes.
-
-- **Safe return mechanism**
-    - Entities are returned to their corresponding pool, preventing cross-pool contamination.
-
-- **Disposable**
-    - Implements `IDisposable` to release all resources when the multi-pool is no longer needed.
-
----
-
-## Interfaces
-
-### Interface IMultiEntityPool
-
-A non-generic alias for `IMultiEntityPool<string, IEntity>`.
+# 🧩 IMultiEntityPool
 
 ```csharp
-public interface IMultiEntityPool : IMultiEntityPool<string, IEntity> {}
+public interface IMultiEntityPool : IMultiEntityPool<string, IEntity>
 ```
 
-**Usage**:  
-Use this interface when pooling multiple groups of `IEntity` using string identifiers.
+- **Description:** A **non-generic alias** of `IMultiEntityPool<K, E>` for managing multiple pools of [IEntity](../Entities/IEntity.md) using **string keys**.
+- **Inheritance:** [IMultiEntityPool\<K, E>](IMultiEntityPool%601.md)
+- **Note:** Useful when you want a simple key-based pool registry without specifying type parameters.
 
 ---
 
-### Interface IMultiEntityPool<TKey, E>
+## 🏹 Methods
 
-A generic multi-pool interface that manages multiple pools of entities of type `E` indexed by a key of type `TKey`.
+#### `Init(string, int)`
 
 ```csharp
-public interface IMultiEntityPool<in TKey, E> : IDisposable where E : IEntity
+public void Init(string key, int count);
 ```
 
-**Type Parameters**:
-- `TKey` — the type of key identifying individual pools.
-- `E` — the entity type managed by the pools, must implement `IEntity`.
+- **Description:** Initializes the pool associated with the specified string key.
+- **Parameters:**
+  - `key` — The string key identifying the pool.
+  - `count` — Number of entities to preallocate in the pool.
+
+#### `Rent(string)`
+
+```csharp
+public IEntity Rent(string key);
+```
+
+- **Description:** Rents an entity from the pool associated with the given key.
+- **Parameter:** `key` — The string key identifying the pool.
+- **Returns:** An `IEntity` instance.
+
+#### `Return(IEntity)`
+
+```csharp
+public void Return(IEntity entity);
+````
+
+- **Description:** Returns a previously rented entity to its corresponding pool.
+- **Parameter:** `entity` — The entity to return.
 
 ---
 
-## Methods
+## 🗂 Example of Usage
 
-| Method                           | Description                                                                                        |
-|----------------------------------|----------------------------------------------------------------------------------------------------|
-| `void Init(TKey key, int count)` | Initializes the pool associated with the specified key by pre-populating it with `count` entities. |
-| `E Rent(TKey key)`               | Retrieves an entity from the pool identified by `key`. Creates one if the pool is empty.           |
-| `void Return(E entity)`          | Returns an entity to its corresponding pool.                                                       |
+```csharp
+// Use a multi-entity pool
+IMultiEntityPool enemyPool = ...; // get an instance
 
----
+// Initialize pools for each enemy type
+enemyPool.Init("Goblin", 5);
+enemyPool.Init("Orc", 3);
 
-## Notes
+// Rent entities from pools
+EnemyEntity goblin = enemyPool.Rent("Goblin");
+EnemyEntity orc = enemyPool.Rent("Orc");
 
-- **Entity Lifecycle**:  
-  Ensure entities are reset or initialized between reuse if they maintain internal state.
-
-- **Disposal Responsibility**:  
-  Always call `Dispose()` to release resources and clear all internal pools.
-
-- **Thread Safety**:  
-  The pool is not thread-safe by default. Use synchronization if accessing from multiple threads.
-
-- **Duplicate Return Warning**:  
-  Returning an entity that was not rented from the pool may trigger warnings or undefined behavior.
-
-- **Preallocation Best Practice**:  
-  Use `Init()` to pre-populate pools for performance-critical systems, such as projectiles or AI units.
-
-- **Custom Lifecycle Hooks**:  
-  Implement custom behavior by overriding methods in concrete pool implementations if available.
+// Return entities to the pool when done
+enemyPool.Return(goblin);
+enemyPool.Return(orc);
+```
