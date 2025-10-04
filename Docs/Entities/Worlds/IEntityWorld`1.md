@@ -1,4 +1,4 @@
-# 🧩 IEntityWorld<E>
+# 🧩 IEntityWorld\<E>
 
 ```csharp
 public interface IEntityWorld<E> : IEntityCollection<E>, IEnableLifecycle, ITickLifecycle 
