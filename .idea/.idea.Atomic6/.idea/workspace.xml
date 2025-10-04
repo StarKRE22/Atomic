@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/MultiEntityPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Pooling/MultiEntityPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/MultiEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/MultiEntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,23 +224,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="25276000" />
-    </task>
-    <task id="LOCAL-01148" summary="MultiEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1759481476847</created>
-      <option name="number" value="01148" />
-      <option name="presentableId" value="LOCAL-01148" />
-      <option name="project" value="LOCAL" />
-      <updated>1759481476847</updated>
-    </task>
-    <task id="LOCAL-01149" summary="ScriptableMultiEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1759484111310</created>
-      <option name="number" value="01149" />
-      <option name="presentableId" value="LOCAL-01149" />
-      <option name="project" value="LOCAL" />
-      <updated>1759484111310</updated>
+      <workItem from="1759562206582" duration="26315000" />
     </task>
     <task id="LOCAL-01150" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -618,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759597791118</updated>
     </task>
-    <option name="localTasksCounter" value="1197" />
+    <task id="LOCAL-01197" summary="MultiEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1759598140378</created>
+      <option name="number" value="01197" />
+      <option name="presentableId" value="LOCAL-01197" />
+      <option name="project" value="LOCAL" />
+      <updated>1759598140378</updated>
+    </task>
+    <task id="LOCAL-01198" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759598203986</created>
+      <option name="number" value="01198" />
+      <option name="presentableId" value="LOCAL-01198" />
+      <option name="project" value="LOCAL" />
+      <updated>1759598203986</updated>
+    </task>
+    <option name="localTasksCounter" value="1199" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityCollection.md" />
     <MESSAGE value="EntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
     <MESSAGE value="Extensions.md" />
@@ -656,7 +655,6 @@
     <MESSAGE value="Сделал IEntityWorld.md!" />
     <MESSAGE value="SceneEntityWorld.cs" />
     <MESSAGE value="SceneEntityWorld`1.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SceneEntityWorld.md" />
     <MESSAGE value="Написал EntityWorlds" />
     <MESSAGE value="EntityRegistry.md" />
@@ -670,7 +668,9 @@
     <MESSAGE value="SceneEntityPool.md" />
     <MESSAGE value="IMultiEntityPool.md" />
     <MESSAGE value="MultiEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="MultiEntityPool`1.md" />
+    <MESSAGE value="MultiEntityPool.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

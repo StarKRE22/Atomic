@@ -12,7 +12,7 @@
     - [MultiEntityPool&lt;K, E&gt;](MultiEntityPool%601.md) <!-- + -->
 - **Prefab Pools**
     - [IPrefabEntityPool](IPrefabEntityPool.md)
-    - [IPrefabEntityPool&lt;E&gt;](IPrefabEntityPool%601.md)
+    - [IPrefabEntityPool&lt;E&gt;](IPrefabEntityPool%601.md) <!-- + -->
     - [PrefabEntityPool](PrefabEntityPool.md)
     - [PrefabEntityPool&lt;E&gt;](PrefabEntityPool%601.md)
 
@@ -72,3 +72,41 @@ pool.Return(enemy);
 // Dispose the pool
 pool.Dispose();
 ```
+
+
+### Example Usage
+
+#### Pre-initialize Pool
+
+```csharp
+PrefabEntityPool pool = ...;
+SceneEntity prefab = ...;
+
+// Pre-warm the pool with 5 instances
+pool.Init(prefab, 5);
+```
+
+#### Rent and Return Entity
+
+```csharp
+// Rent entity
+SceneEntity entity = pool.Rent(prefab);
+
+// Use entity in scene...
+
+// Return entity to the pool
+pool.Return(entity);
+```
+
+#### Rent With Position, Rotation, and Parent
+
+```csharp
+Transform parent = someContainerTransform;
+Vector3 position = new Vector3(0, 0, 0);
+Quaternion rotation = Quaternion.identity;
+
+SceneEntity entity = pool.Rent(prefab, position, rotation, parent);
+pool.Return(entity);
+```
+
+---
