@@ -306,14 +306,14 @@ world.Add(entity);
 world.Tick(Time.deltaTime);  
 world.FixedTick(Time.fixedDeltaTime);  
 world.LateTick(Time.deltaTime);
-
-// Destroy world after use  
-GameEntityWorld.Destroy(world);  
 ```
 
-Also, you can create a instance of `GameEntityWorld` dynamically
+Also, you can create and destroy an instance of `GameEntityWorld` dynamically
 
 ```csharp
 // Create a SceneEntityWorld for GameEntity type
 GameEntityWorld world = GameEntityWorld.Create("GameEntityWorld", scanEntities: true);
+
+// Destroy world after use  
+GameEntityWorld.Destroy(world);  
 ```

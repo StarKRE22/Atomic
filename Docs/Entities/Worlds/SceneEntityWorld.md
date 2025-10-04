@@ -1,137 +1,302 @@
 # 🧩 SceneEntityWorld
 
-A Unity-compatible, scene-bound entity world that manages entities derived from `SceneEntity`.  
-Supports automatic integration with Unity lifecycle events and runtime management of entities.
-
-### Type Parameters
-
-- `E` – The specific type of scene entity managed by the world. Must inherit from [`SceneEntity`](#).
-
----
-
-## Key Features
-
-- **Scene-bound management** – Automatically tracks and manages entities in a Unity scene.
-- **Lifecycle integration** – Hooks into Unity's `Awake`, `Start`, `OnEnable`, `OnDisable`, and `OnDestroy`.
-- **Entity scanning** – Optionally scans the scene for entities on awake, including inactive ones.
-- **Reactive events** – Supports `OnAdded`, `OnRemoved`, `OnEnabled`, `OnDisabled`, `OnUpdated`, `OnFixedUpdated`, and
-  `OnLateUpdated`.
-- **Generic and non-generic support** – Use `SceneEntityWorld` for base `SceneEntity` or `SceneEntityWorld<E>` for
-  specialized types.
-- **Unity-friendly** – Can be attached as a component on a `GameObject` and automatically synced with Unity's update
-  loop.
-
----
-
-## Classes
-
-### `SceneEntityWorld`
-
-A **non-generic version** of [`SceneEntityWorld<E>`](#) specialized for `SceneEntity`.  
-Use this component when you do not need to specify a particular entity type.
-
----
-
-### `SceneEntityWorld<E>`
-
-A **generic component** representing a world that manages a collection of entities of type `E`.
-
-#### Type Parameters
-- `E` – The type of entity managed by this world. Must implement [`SceneEntity`](#).
-
----
-
-## Inspector Settings
-
-| Field                        | Description                                                                     |
-|------------------------------|---------------------------------------------------------------------------------|
-| `bool scanEntitiesOnAwake`   | Whether to automatically scan entities in the scene during `Awake()`.           |
-| `bool includeInactiveOnScan` | Whether to include inactive entities when scanning the scene.                   |
-| `bool useUnityLifecycle`     | Whether to sync with Unity lifecycle events (`Start`, `OnEnable`, `OnDisable`). |
-| `bool dontDestroyOnLoad`     | Whether the world GameObject should persist across scene loads.                 |
-
-## Events
-
-| Event            | Description                                                                                |
-|------------------|--------------------------------------------------------------------------------------------|
-| `OnStateChanged` | Raised when the underlying `EntityWorld` state changes (add/remove/clear).                 |
-| `OnAdded`        | Raised when an entity is added to the world. Passes the added entity as an argument.       |
-| `OnRemoved`      | Raised when an entity is removed from the world. Passes the removed entity as an argument. |
-| `OnEnabled`      | Raised when the world is enabled, triggering `Enable()` on all contained entities.         |
-| `OnDisabled`     | Raised when the world is disabled, triggering `Disable()` on all contained entities.       |
-| `OnUpdated`      | Raised during the regular update phase (`OnUpdate`) with `deltaTime`.                      |
-| `OnFixedUpdated` | Raised during the fixed update phase (`OnFixedUpdate`) with `deltaTime`.                   |
-| `OnLateUpdated`  | Raised during the late update phase (`OnLateUpdate`) with `deltaTime`.                     |
-
----
-
-## Properties
-
-| Property                     | Description                                                                     |
-|------------------------------|---------------------------------------------------------------------------------|
-| `string Name`                | The name of the GameObject/world instance.                                      |
-| `bool Enabled`               | Indicates whether the world and all contained entities are currently enabled.   |
-| `bool IsReadOnly`            | Always false; the collection is mutable.                                        |
-| `int Count`                  | Number of entities in the world.                                                |
-| `bool scanEntitiesOnAwake`   | Whether to automatically scan entities in the scene during `Awake()`.           |
-| `bool includeInactiveOnScan` | Whether to include inactive entities when scanning the scene.                   |
-| `bool useUnityLifecycle`     | Whether to sync with Unity lifecycle events (`Start`, `OnEnable`, `OnDisable`). |
-| `bool dontDestroyOnLoad`     | Whether the world GameObject should persist across scene loads.                 |
-
----
-
-## Methods
-
-| Method                                | Description                                                           |
-|---------------------------------------|-----------------------------------------------------------------------|
-| `bool Add(E entity)`                  | Adds a new entity to the world. Returns `false` if it already exists. |
-| `bool Remove(E entity)`               | Removes an entity from the world. Returns `true` if removed.          |
-| `void Clear()`                        | Removes all entities from the world.                                  |
-| `void CopyTo(ICollection<E> results)` | Copies all entities into a provided collection.                       |
-| `IEnumerator<E> GetEnumerator()`      | Returns an enumerator over entities in insertion order.               |
-| `void Enable()`                       | Enables the world and all contained entities.                         |
-| `void Disable()`                      | Disables the world and all contained entities.                        |
-| `void OnUpdate(float deltaTime)`      | Updates all enabled entities during the regular update phase.         |
-| `void OnFixedUpdate(float deltaTime)` | Updates all enabled entities during the fixed update phase.           |
-| `void OnLateUpdate(float deltaTime)`  | Updates all enabled entities during the late update phase.            |
-| `void Dispose()`                      | Disposes all entities and clears the world.                           |
-
-## Static Methods
-
-| Method                                                                       | Description                                                               |
-|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| `static T Create<T>(string name, bool scanEntities, bool useUnityLifecycle)` | Creates a new GameObject with a `SceneEntityWorld<E>` component attached. |
-| `static void Destroy(SceneEntityWorld<E> world, float t = 0)`                | Destroys the GameObject hosting the world after an optional delay.        |
-
----
-
-## Example Usage
-
 ```csharp
-// Create a SceneEntityWorld in code
-SceneEntityWorld world = SceneEntityWorld.Create(
-    "GameplayWorld",
-    scanEntities: true,
-    useUnityLifecycle: true
-);
-
-// Add entities
-world.Add(new MyEntity("Player"));
-world.AddRange(new MyEntity("Enemy1"), new MyEntity("Enemy2"));
-
-// Subscribe to events
-world.OnAdded += entity => Debug.Log($"Entity added: {entity.name}");
-world.OnRemoved += entity => Debug.Log($"Entity removed: {entity.name}");
-world.OnEnabled += () => Debug.Log("World enabled");
-world.OnDisabled += () => Debug.Log("World disabled");
-
-// Update methods are called automatically if useUnityLifecycle = true
+[DefaultExecutionOrder(-1000)]
+[DisallowMultipleComponent]
+[AddComponentMenu("Atomic/Entities/Entity World")]
+public class SceneEntityWorld : SceneEntityWorld<SceneEntity>  
 ```
 
-## Remarks
-- Integrates Unity’s scene and GameObject lifecycle with runtime entity management.
-- Supports both automatic scene scanning and manual entity management.
-- Events provide reactive hooks for gameplay, UI, or system updates.
-- Generic version allows specialized entity types, while non-generic is convenient for SceneEntity only.
+- **Description:** A **non-generic alias for `SceneEntityWorld<E>`**.  
+  Represents a Unity scene-bound entity world operating on the base `SceneEntity` type.
+- **Inheritance:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md)
+- **Note:** Use this class when you do not need to specialize the world with a custom entity type.  
+  Ideal for simple scenarios where only `SceneEntity` is involved.
+- **See also:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md), [SceneEntity](../Entities/SceneEntity.md)
 
-## Performance
+---
+
+## 🛠 Inspector Settings
+
+| Parameter                   | Description                                                                                                        |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------|
+| `useUnityLifecycle`         | Enable automatic syncing with Unity MonoBehaviour lifecycle (`Start`, `OnEnable`, `OnDisable`). Default is `true`. |
+| `dontDestroyOnLoad`         | Prevent this world from being destroyed when the scene changes. Default is `false`.                                |
+| `registerOnAwake`           | If enabled, the world automatically adds all entities in the scene during `Awake()`. Default is `true`.            |
+| `includeInactiveOnRegister` | If enabled, the world will also scan and register inactive entities in the scene. Default is `true`.               |
+
+---
+
+## ⚡ Events
+
+#### `OnStateChanged`
+
+```csharp
+public event Action OnStateChanged;  
+```
+
+- **Description:** Raised when entities are added or removed.
+
+#### `OnAdded`
+
+```csharp  
+public event Action<SceneEntity> OnAdded;  
+```
+
+- **Description:** Raised when an entity is added.
+- **Parameter:** `entity` — The entity that was added.
+
+#### `OnRemoved`
+
+```csharp  
+public event Action<SceneEntity> OnRemoved;  
+```
+
+- **Description:** Raised when an entity is removed.
+- **Parameter:** `entity` — The entity that was removed.
+
+#### `OnEnabled`
+
+```csharp  
+public event Action OnEnabled;  
+```
+
+- **Description:** Raised when the world is enabled.
+
+#### `OnDisabled`
+
+```csharp  
+public event Action OnDisabled;  
+```
+
+- **Description:** Raised when the world is disabled.
+
+#### `OnTicked`
+
+```csharp  
+public event Action<float> OnTicked;  
+```
+
+- **Description:** Raised every `Tick`.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
+
+#### `OnFixedTicked`
+
+```csharp  
+public event Action<float> OnFixedTicked;  
+```
+
+- **Description:** Raised every `FixedTick`.
+- **Parameter:** `deltaTime` — Fixed time step used by the physics engine.
+
+#### `OnLateTicked`
+
+```csharp  
+public event Action<float> OnLateTicked;  
+```
+
+- **Description:** Raised every `LateTick`.
+- **Parameter:** `deltaTime` — Time in seconds since the last frame.
+
+---
+
+## 🔑 Properties
+
+#### `Name`
+
+```csharp  
+public string Name { get; set; }  
+```
+
+- **Description:** Gets or sets the name of the world.
+- **Note:** Automatically tied to the `GameObject` name.
+
+#### `Enabled`
+
+```csharp  
+public bool Enabled { get; }  
+```
+
+- **Description:** Indicates whether the world is currently enabled.
+
+#### `IsReadOnly`
+
+```csharp  
+public bool IsReadOnly { get; }  
+```
+
+- **Description:** Indicates whether the entity collection is read-only.
+
+#### `Count`
+
+```csharp  
+int Count { get; }  
+```
+
+- **Description:** Returns the number of entities in the world.
+
+---
+
+## 🏹 Public Methods
+
+#### `RegisterAllEntities()`
+
+```csharp  
+public void RegisterAllEntities();  
+```
+
+- **Description:** Scans the scene for all entities of type `SceneEntity` and adds them to the world.
+- **Behavior:** Automatically calls `Install()` on entities before adding.
+- **Notes:** Honors `includeInactiveOnRegister` to optionally include inactive GameObjects.
+
+#### `Add(SceneEntity)`
+
+```csharp  
+public bool Add(SceneEntity entity);  
+```
+
+- **Description:** Adds an entity to the world.
+- **Returns:** `true` if added, `false` if it already exists.
+
+#### `Remove(SceneEntity)`
+
+```csharp  
+public bool Remove(SceneEntity entity);  
+```
+
+- **Description:** Removes an entity from the world.
+- **Returns:** `true` if removed.
+
+#### `Clear()`
+
+```csharp  
+public void Clear();  
+```
+
+- **Description:** Removes all entities from the world.
+
+#### `Contains(SceneEntity)`
+
+```csharp  
+public bool Contains(SceneEntity entity);  
+```
+
+- **Description:** Checks whether the entity exists in the world.
+
+#### `CopyTo(ICollection<SceneEntity>)`
+
+```csharp  
+public void CopyTo(ICollection<SceneEntity> results);  
+```
+
+- **Description:** Copies all entities into a provided collection.
+
+#### `Enable()`
+
+```csharp  
+public void Enable();  
+```
+
+- **Description:** Enables the world and all contained entities.
+
+#### `Disable()`
+
+``` csharp 
+public void Disable();  
+```
+
+- **Description:** Disables the world and all contained entities.
+
+#### `Tick(float)`
+
+```csharp  
+public void Tick(float deltaTime);  
+```
+
+- **Description:** Performs the regular update for all enabled entities.
+
+#### `FixedTick(float)`
+
+```csharp  
+public void FixedTick(float deltaTime);  
+```
+
+- **Description:** Performs the fixed update (usually for physics) for all enabled entities.
+
+#### `LateTick(float)`
+
+```csharp  
+public void LateTick(float deltaTime);  
+```
+
+- **Description:** Performs the late update for all enabled entities.
+
+#### `Dispose()`
+
+```csharp  
+public void Dispose();  
+```
+
+- **Description:** Disposes the world and all entities, unsubscribing events.
+
+---
+
+## 🏹 Static Methods
+
+#### `Create(string, bool, bool)`
+
+```csharp  
+public static SceneEntityWorld Create(string name = null, bool scanEntities = true, bool useUnityLifecycle = true);  
+```
+
+- **Description:** Creates a new inactive GameObject with a `SceneEntityWorld` component.
+- **Parameters:**
+    - `name` — Optional GameObject/world name.
+    - `scanEntities` — Whether to automatically scan scene entities on Awake.
+    - `useUnityLifecycle` — Whether to integrate with Unity lifecycle callbacks.
+- **Returns:** The initialized `SceneEntityWorld` instance.
+
+#### `Destroy(SceneEntityWorld, float)`
+
+```csharp  
+public static void Destroy(SceneEntityWorld world, float t = 0);  
+```
+
+- **Description:** Destroys the world and its GameObject after an optional delay.
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of creating and using `SceneEntityWorld`
+
+#### 1. Add and configure `SceneEntityWorld` component
+
+#### 2. Use `SceneEntityWorld` in runtime
+
+```csharp  
+SceneEntityWorld world = ...
+
+// Subscribe to events
+world.OnAdded += e => Debug.Log($"Added entity: {e.name}");
+world.OnRemoved += e => Debug.Log($"Removed entity: {e.name}");
+world.OnEnabled += () => Debug.Log("World enabled");
+
+// Enable the world
+world.Enable();
+
+// Tick updates
+world.Tick(Time.deltaTime);
+world.FixedTick(Time.fixedDeltaTime);
+world.LateTick(Time.deltaTime);
+```
+
+Also, you can create and destroy an instance of `SceneEntityWorld` dynamically
+
+```csharp
+// Create a SceneEntityWorld
+SceneEntityWorld world = SceneEntityWorld.Create("SceneEntityWorld", scanEntities: true);
+
+// Destroy the world when done
+SceneEntityWorld.Destroy(world);
+```
