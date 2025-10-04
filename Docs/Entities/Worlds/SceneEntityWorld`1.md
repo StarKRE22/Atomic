@@ -1,8 +1,7 @@
 # 🧩 SceneEntityWorld\<E>
 
 ```csharp
-public class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> 
-    where E : SceneEntity  
+public class SceneEntityWorld<E> : MonoBehaviour, IEntityWorld<E> where E : SceneEntity  
 ```
 
 - **Description:** A **Unity-compatible world manager for scene-based entities** of type `E`.  
