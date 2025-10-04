@@ -1,103 +1,105 @@
 # 🧩 IPrefabEntityPool
 
-`IPrefabEntityPool` provides an **abstraction for multi-scene entity pooling** in Unity.  
-It allows centralized management of `SceneEntity` instances across multiple pools keyed by prefabs.
-
----
-
-## Key Features
-
-- **Non-generic and generic variants**
-    - `IPrefabEntityPool` is a non-generic alias for `SceneEntity`.
-    - `IPrefabEntityPool<E>` allows pooling for any `SceneEntity` subtype.
-
-- **Prefab-based pooling**
-    - Each pool is associated with a prefab and manages instantiation, reuse, and disposal.
-
-- **Flexible rental methods**
-    - Entities can be rented with optional parent transforms, world positions, and rotations.
-
-- **Centralized disposal**
-    - Pools can be individually cleared, or the entire system disposed to release resources.
-
----
-
-## Interface IPrefabEntityPool
-Non-generic interface for `SceneEntity` pooling.
-
 ```csharp
 public interface IPrefabEntityPool : IPrefabEntityPool<SceneEntity>
 ```
 
-**Remarks:**  
-Use this interface when you need a centralized, non-generic API for managing scene entity pools.
+- **Description:** Non-generic version of `IPrefabEntityPool<E>` specialized for
+  base [SceneEntity](../Entities/SceneEntity.md) types. Provides a simple abstraction for working with multiple scene
+  entity pools, typically used for pooling and managing `SceneEntity` instances across multiple scenes.
+- **Inheritance:** [IPrefabEntityPool<E>](IPrefabEntityPool%601.md), IDisposable
 
 ---
 
-## Interface IPrefabEntityPool<E>
-Generic interface for pooling scene-bound entities.
+## 🏹 Methods
+
+#### `Init(SceneEntity, int)`
 
 ```csharp
-public interface IPrefabEntityPool<E> : IDisposable where E : SceneEntity
-````
+public void Init(SceneEntity prefab, int count);
+```
 
-### Public Methods
+- **Description:** Initializes the pool associated with the specified prefab by pre-populating it with entities.
+- **Parameters:**
+    - `prefab` — The prefab used as the key for the pool.
+    - `count` — Number of entities to preallocate.
 
-| Method                                                                             | Description                                                                       |
-|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| `void Init(E prefab, int count)`                                                   | Pre-populates the pool for the given prefab with a specified number of instances. |
-| `E Rent(E prefab)`                                                                 | Rents an entity from the pool associated with the prefab.                         |
-| `E Rent(E prefab, Transform parent)`                                               | Rents an entity and parents it under the specified transform.                     |
-| `E Rent(E prefab, Vector3 position, Quaternion rotation, Transform parent = null)` | Rents an entity with a specific world position, rotation, and optional parent.    |
-| `void Return(E entity)`                                                            | Returns a rented entity to its corresponding pool.                                |
-| `void Dispose(E prefab)`                                                           | Clears the pool for a given prefab, destroying all pooled instances.              |
+#### `Rent(SceneEntity)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab);
+```
+
+- **Description:** Rents an entity instance from the pool associated with the given prefab.
+- **Parameter:** `prefab` — The prefab used as the key for the pool.
+- **Returns:** A rented instance of the specified prefab.
+
+#### `Rent(SceneEntity, Transform)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab, Transform parent);
+```
+
+- **Description:** Rents an entity instance and parents it under the specified transform.
+- **Parameters:**
+    - `prefab` — The prefab used as the key for the pool.
+    - `parent` — The transform to parent the entity under.
+- **Returns:** A rented and parented instance of the specified prefab.
+
+#### `Rent(SceneEntity, Vector3, Quaternion, Transform)`
+
+```csharp
+public SceneEntity Rent(SceneEntity prefab, Vector3 position, Quaternion rotation, Transform parent = null);
+```
+
+- **Description:** Rents an entity instance with a specific position and rotation, optionally setting a parent.
+- **Parameters:**
+    - `prefab` — The prefab used as the key for the pool.
+    - `position` — The world position for the entity.
+    - `rotation` — The rotation for the entity.
+    - `parent` — Optional parent transform.
+- **Returns:** A rented instance positioned and rotated as specified.
+
+#### `Return(SceneEntity)`
+
+```csharp
+public void Return(SceneEntity entity);
+```
+
+- **Description:** Returns a previously rented entity to its corresponding pool.
+- **Parameter:** `entity` — The entity instance to return.
+
+#### `Dispose(SceneEntity)`
+
+```csharp
+public void Dispose(SceneEntity prefab);
+```
+
+- **Description:** Clears the pool associated with the given prefab, destroying all pooled instances.
+- **Parameter:** `prefab` — The prefab whose pool should be cleared.
 
 ---
 
-## Example Usage
-
-### Rent and Return an Entity
+## 🗂 Example of Usage
 
 ```csharp
-IPrefabEntityPool pool = ...;
-SceneEntity prefab = ...;
+// Assume we have an instance of IPrefabEntityPool
+IPrefabEntityPool enemyPool = ...;
 
-// Initialize pool
-pool.Init(prefab, 5);
+// Initialize pools for different prefabs
+enemyPool.Init(orcPrefab, 5);
+enemyPool.Init(goblinPrefab, 2);
 
-// Rent an entity
-SceneEntity entity = pool.Rent(prefab);
+// Rent enemies from the pool
+SceneEntity orc = enemyPool.Rent(orcPrefab);
+SceneEntity goblin = enemyPool.Rent(goblinPrefab, parentTransform);
+SceneEntity troll = enemyPool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
 
-// Return it later
-pool.Return(entity);
-````
+// Return enemies to the pool when done
+enemyPool.Return(orc);
+enemyPool.Return(goblin);
+enemyPool.Return(troll);
 
-### Rent With Position and Parent
-
-```csharp
-Transform parent = someContainerTransform;
-Vector3 position = new Vector3(0, 0, 0);
-Quaternion rotation = Quaternion.identity;
-
-// Rent an entity
-SceneEntity entity = pool.Rent(prefab, position, rotation, parent);
-
-// Return it later
-pool.Return(entity);
-````
-
-## Notes
-
-- **Entity Lifecycle:**  
-  Entities rented from a prefab pool may require initialization or resetting before reuse.
-
-- **Thread Safety:**  
-  Pools are not inherently thread-safe. Synchronize access if using multiple threads.
-
-- **Custom Parenting and Positioning:**  
-  Use `Rent` overloads with `Transform`, `Vector3`, and `Quaternion` to control entity placement in the scene.
-
-- **Disposal:**  
-  Always call `Dispose` for prefabs or the entire pool system to prevent memory leaks and orphaned GameObjects.
-
----
+// Optionally clear the pool for a specific prefab
+enemyPool.Dispose(orcPrefab);
+```
