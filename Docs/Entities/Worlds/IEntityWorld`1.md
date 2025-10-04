@@ -170,7 +170,7 @@ public void FixedTick(float deltaTime);
 #### `LateTick(float)`
 
 ```csharp
-void LateTick(float deltaTime);
+public void LateTick(float deltaTime);
 ```
 
 - **Description:** Called during the `LateTick` phase for all contained entities, after all Tick calls.
@@ -180,7 +180,7 @@ void LateTick(float deltaTime);
 #### `Add(E)`
 
 ```csharp
-bool Add(E entity);
+public bool Add(E entity);
 ```
 
 - **Description:** Adds an entity to the world.
@@ -190,7 +190,7 @@ bool Add(E entity);
 #### `Remove(E)`
 
 ```csharp
-bool Remove(E entity);
+public bool Remove(E entity);
 ```
 
 - **Description:** Removes a specific entity from the world.
@@ -200,7 +200,7 @@ bool Remove(E entity);
 #### `Contains(E)`
 
 ```csharp
-bool Contains(E entity);
+public bool Contains(E entity);
 ```
 
 - **Description:** Checks whether the specified entity exists in the world.
@@ -210,7 +210,7 @@ bool Contains(E entity);
 #### `Clear()`
 
 ```csharp
-void Clear();
+public void Clear();
 ```
 
 - **Description:** Removes all entities from the world.
@@ -219,7 +219,7 @@ void Clear();
 #### `CopyTo(E[], int)`
 
 ```csharp
-void CopyTo(E[] array, int arrayIndex);
+public void CopyTo(E[] array, int arrayIndex);
 ```
 
 - **Description:** Copies all entities into the specified array starting at the given index.
@@ -230,7 +230,7 @@ void CopyTo(E[] array, int arrayIndex);
 #### `CopyTo(ICollection<E>)`
 
 ```csharp
-void CopyTo(ICollection<E> results);
+public void CopyTo(ICollection<E> results);
 ```
 
 - **Description:** Copies all entities into the provided collection.
@@ -239,7 +239,7 @@ void CopyTo(ICollection<E> results);
 #### `Dispose()`
 
 ```csharp
-void Dispose();
+public void Dispose();
 ```
 
 - **Description:** Disposes the world and its entities.
