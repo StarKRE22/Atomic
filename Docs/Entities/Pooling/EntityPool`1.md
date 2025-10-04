@@ -1,4 +1,4 @@
-# 🧩 EntityPool<E>
+# 🧩 EntityPool\<E>
 
 ```csharp
 public class EntityPool<E> : IEntityPool<E> where E : IEntity
