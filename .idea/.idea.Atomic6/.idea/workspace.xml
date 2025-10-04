@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld`1.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,31 +219,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="14328000" />
-    </task>
-    <task id="LOCAL-01130" summary="InlineEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1759432514226</created>
-      <option name="number" value="01130" />
-      <option name="presentableId" value="LOCAL-01130" />
-      <option name="project" value="LOCAL" />
-      <updated>1759432514226</updated>
-    </task>
-    <task id="LOCAL-01131" summary="InlineEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1759433057248</created>
-      <option name="number" value="01131" />
-      <option name="presentableId" value="LOCAL-01131" />
-      <option name="project" value="LOCAL" />
-      <updated>1759433057248</updated>
-    </task>
-    <task id="LOCAL-01132" summary="Minor Fixes">
-      <option name="closed" value="true" />
-      <created>1759433129198</created>
-      <option name="number" value="01132" />
-      <option name="presentableId" value="LOCAL-01132" />
-      <option name="project" value="LOCAL" />
-      <updated>1759433129198</updated>
+      <workItem from="1759562206582" duration="14632000" />
     </task>
     <task id="LOCAL-01133" summary="IMultiEntityFactory`1.md">
       <option name="closed" value="true" />
@@ -617,7 +589,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759581414524</updated>
     </task>
-    <option name="localTasksCounter" value="1179" />
+    <task id="LOCAL-01179" summary="SceneEntityWorld.md">
+      <option name="closed" value="true" />
+      <created>1759583260772</created>
+      <option name="number" value="01179" />
+      <option name="presentableId" value="LOCAL-01179" />
+      <option name="project" value="LOCAL" />
+      <updated>1759583260772</updated>
+    </task>
+    <task id="LOCAL-01180" summary="SceneEntityWorld.md">
+      <option name="closed" value="true" />
+      <created>1759583294482</created>
+      <option name="number" value="01180" />
+      <option name="presentableId" value="LOCAL-01180" />
+      <option name="project" value="LOCAL" />
+      <updated>1759583294482</updated>
+    </task>
+    <task id="LOCAL-01181" summary="SceneEntityWorld.md">
+      <option name="closed" value="true" />
+      <created>1759583387681</created>
+      <option name="number" value="01181" />
+      <option name="presentableId" value="LOCAL-01181" />
+      <option name="project" value="LOCAL" />
+      <updated>1759583387681</updated>
+    </task>
+    <option name="localTasksCounter" value="1182" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Начинаем переписывать MultiFactory Docs" />
     <MESSAGE value="Документацию для фабрик обновили!" />
     <MESSAGE value="IMultiEntityFactory.md" />
     <MESSAGE value="IMultiEntityFactory`1.md" />
@@ -669,7 +664,8 @@
     <MESSAGE value="SceneEntityWorld.cs" />
     <MESSAGE value="SceneEntityWorld`1.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="SceneEntityWorld.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityWorld.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

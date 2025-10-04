@@ -46,7 +46,7 @@ smoother and more powerful than in Unity.
 - [Aspects](Aspects/Manual.md) <!-- + -->
 - [Factories](Factories/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
-- [Worlds](Worlds/Manual.md)
+- [Worlds](Worlds/Manual.md) <!-- + -->
 - [Registry](Registry/EntityRegistry.md)
 - [Filters](Filters/Manual.md)
 - [UI](UI/Manual.md)
