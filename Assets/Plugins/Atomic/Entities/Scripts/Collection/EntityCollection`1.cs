@@ -17,6 +17,7 @@ namespace Atomic.Entities
     public class EntityCollection<E> : IEntityCollection<E> where E : IEntity
     {
         private protected const int UNDEFINED_INDEX = -1;
+        private protected const int DEFAULT_CAPACITY = 3;
 
         private protected static readonly ArrayPool<E> s_arrayPool = ArrayPool<E>.Shared;
 
@@ -61,7 +62,7 @@ namespace Atomic.Entities
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCollection{E}"/> class with default capacity.
         /// </summary>
-        public EntityCollection() : this(3)
+        public EntityCollection() : this(DEFAULT_CAPACITY)
         {
         }
 
