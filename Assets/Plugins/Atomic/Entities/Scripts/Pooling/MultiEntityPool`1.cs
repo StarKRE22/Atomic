@@ -10,9 +10,9 @@ namespace Atomic.Entities
     /// <summary>
     /// A registry that manages multiple pools of entities, each identified by a unique key.
     /// </summary>
-    /// <typeparam name="TKey">The key type used to identify each pool.</typeparam>
+    /// <typeparam name="K">The key type used to identify each pool.</typeparam>
     /// <typeparam name="E">The entity type managed by the pools. Must implement <see cref="IEntity"/>.</typeparam>
-    public class MultiEntityPool<TKey, E> : IMultiEntityPool<TKey, E> where E : IEntity
+    public class MultiEntityPool<K, E> : IMultiEntityPool<K, E> where E : IEntity
     {
         /// <summary>
         /// Internal storage of pooled (available) entities, mapped by their pool key.
@@ -20,7 +20,7 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Dictionary<TKey, Stack<E>> _pooledEntities = new();
+        private readonly Dictionary<K, Stack<E>> _pooledEntities = new();
 
         /// <summary>
         /// Tracks entities that are currently rented, mapping them back to their original pool key.
@@ -28,23 +28,23 @@ namespace Atomic.Entities
 #if ODIN_INSPECTOR
         [ShowInInspector, ReadOnly]
 #endif
-        private readonly Dictionary<E, TKey> _rentEntities = new();
+        private readonly Dictionary<E, K> _rentEntities = new();
 
         /// <summary>
         /// The factory registry used to create entities on demand.
         /// </summary>
-        private readonly IMultiEntityFactory<TKey, E> _factory;
+        private readonly IMultiEntityFactory<K, E> _factory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MultiEntityPool{TKey,E}"/> class.
         /// </summary>
         /// <param name="factory">The factory registry used to create entities for each key.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is null.</exception>
-        public MultiEntityPool(IMultiEntityFactory<TKey, E> factory) =>
+        public MultiEntityPool(IMultiEntityFactory<K, E> factory) =>
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
         /// <inheritdoc />
-        public void Init(TKey key, int count)
+        public void Init(K key, int count)
         {
             if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
             {
@@ -61,7 +61,7 @@ namespace Atomic.Entities
         }
 
         /// <inheritdoc />
-        public E Rent(TKey key)
+        public E Rent(K key)
         {
             if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
             {
@@ -83,7 +83,7 @@ namespace Atomic.Entities
         /// <inheritdoc />
         public void Return(E entity)
         {
-            if (!_rentEntities.Remove(entity, out TKey key))
+            if (!_rentEntities.Remove(entity, out K key))
                 return;
 
             if (!_pooledEntities.TryGetValue(key, out Stack<E> pool))
@@ -102,7 +102,7 @@ namespace Atomic.Entities
         /// <inheritdoc />
         public void Dispose()
         {
-            foreach (KeyValuePair<TKey, Stack<E>> pool in _pooledEntities)
+            foreach (KeyValuePair<K, Stack<E>> pool in _pooledEntities)
             foreach (E entity in pool.Value)
                 this.OnDispose(entity);
 

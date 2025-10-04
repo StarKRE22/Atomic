@@ -9,7 +9,7 @@
     - [IMultiEntityPool](IMultiEntityPool.md) <!-- + -->
     - [IMultiEntityPool&lt;E&gt;](IMultiEntityPool%601.md) <!-- + -->
     - [MultiEntityPool](MultiEntityPool.md)
-    - [MultiEntityPool&lt;E&gt;](MultiEntityPool%601.md)
+    - [MultiEntityPool&lt;E&gt;](MultiEntityPool%601.md) <!-- + -->
 - **Prefab Pools**
     - [IPrefabEntityPool](IPrefabEntityPool.md)
     - [IPrefabEntityPool&lt;E&gt;](IPrefabEntityPool%601.md)

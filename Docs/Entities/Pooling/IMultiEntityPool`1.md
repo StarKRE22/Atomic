@@ -69,15 +69,15 @@ public interface IEnemyEntity : IEntity
 
 ```csharp
 // Use a multi-entity pool
-IMultiEntityPool<EnemyType, EnemyEntity> enemyPool = ...; // get an instance
+IMultiEntityPool<EnemyType, IEnemyEntity> enemyPool = ...; // get an instance
 
 // Initialize pools for each enemy type
 enemyPool.Init(EnemyType.Goblin, 5);
 enemyPool.Init(EnemyType.Orc, 3);
 
 // Rent entities from pools
-EnemyEntity goblin = enemyPool.Rent(EnemyType.Goblin);
-EnemyEntity orc = enemyPool.Rent(EnemyType.Orc);
+IEnemyEntity goblin = enemyPool.Rent(EnemyType.Goblin);
+IEnemyEntity orc = enemyPool.Rent(EnemyType.Orc);
 
 // Return entities to the pool when done
 enemyPool.Return(goblin);
