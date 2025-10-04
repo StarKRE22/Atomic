@@ -1,4 +1,4 @@
-- [EntityView](UI/EntityView.md)
-- [EntityViewCatalog](UI/EntityViewCatalog.md)
-- [EntityViewPool](UI/EntityViewPool.md)
-- [EntityCollectionView](UI/EntityViewPool.md)
+- [EntityView](EntityView.md)
+- [EntityViewCatalog](EntityViewCatalog.md)
+- [EntityViewPool](EntityViewPool.md)
+- [EntityCollectionView](EntityViewPool.md)

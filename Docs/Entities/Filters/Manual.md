@@ -1,11 +1,20 @@
-
-- [Filters & Triggers]
+- **Filters**
     - [EntityFilter](EntityFilter.md)
+    - [EntityFilter\<E>](EntityFilter.md)
+- **Triggers**
     - [IEntityTrigger](IEntityTrigger.md)
+    - [IEntityTrigger\<E>](IEntityTrigger%601.md)
     - [EntityTriggerBase](EntityTriggerBase.md)
+    - [EntityTriggerBase\<E>](EntityTriggerBase%601.md)
     - [TagEntityTrigger](TagEntityTrigger.md)
+    - [TagEntityTrigger\<E>](TagEntityTrigger%601.md)
     - [ValueEntityTrigger](ValueEntityTrigger.md)
+    - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md)
     - [BehaviourEntityTrigger](BehaviourEntityTrigger.md)
+    - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md)
     - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
+    - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md)
     - [SubscriptionEntityTrigger](SubscriptionEntityTrigger.md)
+    - [SubscriptionEntityTrigger\<E>](SubscriptionEntityTrigger%601.md)
     - [InlineEntityTrigger](InlineEntityTrigger.md)
+    - [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md)
