@@ -126,8 +126,11 @@ public interface IEnemyEntity : IEntity
 ```
 
 ```csharp
-// Use a multi-entity pool
-IMultiEntityPool<EnemyType, IEnemyEntity> enemyPool = ...; // get an instance
+//Assume we have an instance of IMultiEntityFactory
+IMultiEntityFactory<EnemyType, IEnemyEntity> enemyFactory = ...
+
+// Create a multi-entity pool
+var enemyPool = new MultiEntityPool<EnemyType, IEnemyEntity>(factory);
 
 // Initialize pools for each enemy type
 enemyPool.Init(EnemyType.Goblin, 5);
