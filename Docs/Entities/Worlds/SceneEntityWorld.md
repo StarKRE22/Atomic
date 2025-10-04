@@ -130,7 +130,7 @@ public bool IsReadOnly { get; }
 #### `Count`
 
 ```csharp  
-int Count { get; }  
+public int Count { get; }  
 ```
 
 - **Description:** Returns the number of entities in the world.
