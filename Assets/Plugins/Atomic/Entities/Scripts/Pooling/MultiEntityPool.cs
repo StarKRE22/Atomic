@@ -1,7 +1,7 @@
 namespace Atomic.Entities
 {
     /// <summary>
-    /// A non-generic version of <see cref="MultiEntityPool{TKey,E}"/> that uses string keys and <see cref="IEntity"/> values.
+    /// A non-generic version of <see cref="MultiEntityPool{K,E}"/> that uses string keys and <see cref="IEntity"/> values.
     /// </summary>
     public class MultiEntityPool : MultiEntityPool<string, IEntity>, IMultiEntityPool
     {
