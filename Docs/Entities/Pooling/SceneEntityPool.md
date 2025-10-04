@@ -1,115 +1,197 @@
-# 🧩️ SceneEntityPool
-
-The `SceneEntityPool` classes provide a **Unity MonoBehaviour-based pooling system** for managing scene-bound entities (`SceneEntity`).  
-They are designed to **pre-instantiate entities**, **reuse them efficiently**, and handle **activation/deactivation** automatically.
-
-There are **generic (`SceneEntityPool<E>`)** and **non-generic (`SceneEntityPool`)** variants.  
-The non-generic variant operates on the base `SceneEntity` type and implements `IEntityPool` for compatibility with systems expecting non-generic access.
-
----
-
-## Key Features
-
-- **Generic and non-generic support**
-    - `SceneEntityPool<E>` for type-safe pooling of specific `SceneEntity` subclasses.
-    - `SceneEntityPool` for general-purpose pooling of `SceneEntity`.
-
-- **Prefab-based instantiation**
-    - Entities are created from a prefab, allowing configuration in the Unity Editor.
-
-- **Automatic activation/deactivation**
-    - Entities are automatically activated on `Rent()` and deactivated on `Return()`.
-
-- **Preallocation**
-    - Pool can pre-instantiate entities via `Init(int)` or on `Awake()` using `_initialCount`.
-
-- **Safe return mechanism**
-    - Prevents returning entities that were not rented and logs warnings if attempted.
-
-- **Disposable**
-    - Implements `Dispose()` to destroy all pooled and rented entities.
-
-- **Lifecycle hooks**
-    - `OnCreate`, `OnRent`, `OnReturn`, `OnDispose` allow customization of entity behavior.
-
-- **Editor-friendly**
-    - Fields exposed in the Unity Inspector for prefab, container, initial count, and auto-initialization.
-
----
-
-## Class SceneEntityPool
-
-A non-generic pool for base `SceneEntity`.
+# 🧩 SceneEntityPool
 
 ```csharp
+[AddComponentMenu("Atomic/Entities/Entity Pool")]
+[DisallowMultipleComponent]
 public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
 ```
 
-### Static Methods
-
-| Method                                           | Description                                                                                                    |
-|--------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| `static SceneEntityPool Create(CreateArgs args)` | Creates a new non-generic pool in the scene with the specified prefab, container, and initialization settings. |
+- **Description:** A non-generic version of `SceneEntityPool<E>` that operates on
+  base [SceneEntity](../Entities/SceneEntity.md) types. They are designed to **pre-instantiate entities**, **reuse them
+  efficiently**, and handle **activation / deactivation**
+  automatically.
+- **Inheritance:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [IEntityPool](IEntityPool.md)
+- **Note:** Useful when you want a simple scene-bound entity pool without specifying a generic type.
+- **See also:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [SceneEntity](../Entities/SceneEntity.md)
 
 ---
 
-## Class SceneEntityPool<E>
+## 🛠 Inspector Settings
 
-A generic pool for scene-bound entities of type `E`.
+| Parameters     | Description                                                                      |
+|----------------|----------------------------------------------------------------------------------|
+| `initOnAwake`  | Determines whether the pool is automatically initialized in `Awake()`.           |
+| `initialCount` | Initial number of entities to pre-instantiate.                                   |
+| `prefab`       | Prefab used to create pooled entity instances.                                   |
+| `container`    | Optional parent transform for pooled entities (defaults to the pool GameObject). |
+
+---
+
+## 🏹 Public Methods
+
+#### `Rent()`
 
 ```csharp
-public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E> where E : SceneEntity
+public IEntity Rent();
 ```
 
-### Inspector Fields
+- **Description:** Retrieves (activates) an entity from the pool. Creates a new one if the pool is empty.
+- **Returns:** The rented entity instance.
 
-| Field          | Type        | Description                                                            |
-|----------------|-------------|------------------------------------------------------------------------|
-| `initOnAwake`  | `bool`      | If `true`, pool is initialized automatically in `Awake()`.             |
-| `initialCount` | `int`       | Number of entities to pre-instantiate when initializing.               |
-| `prefab`       | `E`         | Prefab used to create pooled entities.                                 |
-| `container`    | `Transform` | Parent transform for pooled entities. Defaults to the pool GameObject. |
+#### `Return(IEntity)`
 
-### Public Methods
+```csharp
+public void Return(IEntity entity);
+```
 
-| Method                  | Description                                                                                                 |
-|-------------------------|-------------------------------------------------------------------------------------------------------------|
-| `void Init(int count)`  | Pre-instantiates `count` entities and adds them to the pool.                                                |
-| `E Rent()`              | Retrieves an entity from the pool. Creates a new one if empty. Activates it automatically.                  |
-| `void Return(E entity)` | Returns an entity to the pool. Deactivates it and re-parents to `_container`. Warns if entity is untracked. |
-| `void Dispose()`        | Destroys all pooled and rented entities, clearing the internal collections.                                 |
+- **Description:** Returns a previously rented entity to the pool.
+- **Parameter:** `entity` — Must be castable to `SceneEntity`.
+- **Note:** Wraps the generic `Return(SceneEntity)` method.
 
-### Lifecycle Hooks
+#### `Init(int initialCount)`
 
-| Method                                       | Description                                                                           |
-|----------------------------------------------|---------------------------------------------------------------------------------------|
-| `protected virtual void OnCreate(E entity)`  | Called when a new entity is created. Default behavior: deactivate entity.             |
-| `protected virtual void OnRent(E entity)`    | Called when an entity is rented. Default behavior: activate entity.                   |
-| `protected virtual void OnReturn(E entity)`  | Called when an entity is returned. Default behavior: deactivate and re-parent entity. |
-| `protected virtual void OnDispose(E entity)` | Called when an entity is destroyed during pool disposal.                              |
+```csharp
+public void Init(int initialCount);
+```
 
-### Static Methods
+- **Description:** Pre-instantiates the specified number of entities into the pool.
+- **Parameter:** `initialCount` — Number of entities to create.
+- **Note:** Calls the `OnCreate` lifecycle hook for each entity.
 
-| Method                                                      | Description                                                                                                                   |
-|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `static T Create<T>(CreateArgs args)`                       | Creates a new pool of type `T` in the scene with the specified prefab, container, initial count, and initialization settings. |
-| `static void Destroy(SceneEntityPool<E> pool, float t = 0)` | Disposes the pool and destroys its GameObject after `t` seconds.                                                              |
+#### `Dispose()`
 
-### CreateArgs
+```csharp
+public virtual void Dispose();
+```
 
-| Field          | Type        | Description                                   |
-|----------------|-------------|-----------------------------------------------|
-| `name`         | `string`    | Name of the new GameObject for the pool.      |
-| `prefab`       | `E`         | Prefab to instantiate entities from.          |
-| `container`    | `Transform` | Parent transform for pooled entities.         |
-| `initOnAwake`  | `bool`      | If `true`, initializes the pool on `Awake()`. |
-| `initialCount` | `int`       | Number of entities to pre-instantiate.        |
+- **Description:** Disposes all pooled and rented entities, destroying their GameObjects and clearing internal
+  collections.
+
+#### `OnCreate(SceneEntity entity)`
+
+```csharp
+protected virtual void OnCreate(SceneEntity entity);
+```
+
+- **Description:** Called when a new entity instance is created.
+- **Default Behavior:** Deactivates the entity GameObject.
+
+#### `OnDispose(SceneEntity entity)`
+
+```csharp
+protected virtual void OnDispose(SceneEntity entity);
+```
+
+- **Description:** Called when an entity is permanently destroyed during disposal.
+- **Default Behavior:** Empty; override for cleanup.
+
+#### `OnRent(SceneEntity entity)`
+
+```csharp
+protected virtual void OnRent(SceneEntity entity);
+```
+
+- **Description:** Called when an entity is rented from the pool.
+- **Default Behavior:** Activates the entity GameObject.
+
+#### `OnReturn(SceneEntity entity)`
+
+```csharp
+protected virtual void OnReturn(SceneEntity entity);
+```
+
+- **Description:** Called when an entity is returned to the pool.
+- **Default Behavior:** Deactivates the entity and sets its parent to `_container`.
+
+#### `Awake()`
+
+```csharp
+protected virtual void Awake();
+```
+
+- **Description:** Unity callback called when the GameObject is activated.
+- **Note:** Automatically initializes the pool if `_initOnAwake` is true.
+
+#### `Reset()`
+
+```csharp
+protected virtual void Reset();
+```
+
+- **Description:** Unity callback in the Editor to reset the `_container` to the pool's GameObject transform.
 
 ---
 
-## Example Usage
+## 🏹 Static Methods
 
-### 1. Creating and Initializing a Pool
+#### `Create(CreateArgs)`
+
+```csharp
+public static SceneEntityPool Create(in CreateArgs args) => Create<SceneEntityPool>(in args);
+```
+
+- **Description:** Creates a new non-generic `SceneEntityPool` instance in the scene.
+- **Parameter:** `args` — Initialization parameters encapsulated in `CreateArgs`.
+- **Returns:** A newly created `SceneEntityPool` attached to a new GameObject.
+
+#### `Destroy(SceneEntityPool, float t = 0)`
+
+```csharp
+public static void Destroy(SceneEntityPool pool, float t = 0);
+```
+
+- **Description:** Disposes the pool and destroys its GameObject after an optional delay.
+- **Parameter:** `pool` — The pool instance to destroy.
+- **Parameter:** `t` — Optional delay in seconds before destruction (default 0).
+
+---
+
+## 🧩 Nested Types
+
+#### `CreateArgs`
+
+```csharp
+[Serializable]
+public struct CreateArgs
+```
+
+- **Description:** Arguments for creating a new `SceneEntityPool<E>`.
+- **Fields:**
+  - `name` — Name of the GameObject hosting the pool.
+  - `prefab` — Prefab used to instantiate entities.
+  - `container` — Optional parent transform.
+  - `initOnAwake` — Whether to auto-initialize in `Awake()`.
+  - `initialCount` — Number of entities to pre-instantiate.
+
+---
+
+## 🗂 Examples of Usage
+
+Below are examples of using the non-generic `SceneEntityPool` for scene entities:
+
+---
+
+### 1️⃣ Basic Usage
+
+#### 1. Add `SceneEntityPool` component to GameObject and configure it
+
+#### 2. Use `SceneEntityPool`
+
+```csharp
+SceneEntity enemyPool = ...;
+
+ // Rent entities
+SceneEntity enemy1 = enemyPool.Rent();
+SceneEntity enemy2 = enemyPool.Rent();
+
+// Return entities to the pool
+enemyPool.Return(enemy1);
+enemyPool.Return(enemy2);
+```
+
+---
+
+### 2️⃣ Dynamic Usage
 
 ```csharp
 var poolArgs = new SceneEntityPool.CreateArgs
@@ -121,46 +203,9 @@ var poolArgs = new SceneEntityPool.CreateArgs
     initialCount = 10
 };
 
+// Create a new pool
 var enemyPool = SceneEntityPool.Create(in poolArgs);
-```
 
----
-
-### 2. Renting and Returning Entities
-
-```csharp
-SceneEntity enemy = enemyPool.Rent();
-
-// Use the enemy in gameplay...
-
-enemyPool.Return(enemy);
-```
-
----
-
-### 3. Disposing the Pool
-
-```csharp
+// Destroy pool
 SceneEntityPool.Destroy(enemyPool);
 ```
----
-
-## Notes
-
-- **Entity Lifecycle**  
-  Entities retrieved via `Rent()` may need to be reset before reuse depending on internal state or gameplay logic.
-
-- **Disposal Responsibility**  
-  Call `Dispose()` when the pool is no longer needed to release references and destroy entities.
-
-- **Thread Safety**  
-  Not thread-safe by default. Synchronize access if used across threads.
-
-- **Duplicate Return Warning**  
-  Returning an entity that was not rented logs a warning via `Debug.LogWarning`.
-
-- **Preallocation Best Practice**  
-  Use `Init()` or `_initialCount` for preloading entities in performance-critical systems.
-
-- **Custom Lifecycle Hooks**  
-  Override `OnCreate`, `OnRent`, `OnReturn`, `OnDispose` for custom behavior.

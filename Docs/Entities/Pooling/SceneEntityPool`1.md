@@ -25,7 +25,7 @@ public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E>
 
 ---
 
-## 🏹 Methods
+## 🏹 Public Methods
 
 #### `Awake()`
 
