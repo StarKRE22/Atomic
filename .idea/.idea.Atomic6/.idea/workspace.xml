@@ -5,15 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsAndWorld.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityWorldWithEntityPool.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Inspector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Inspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Lifecycle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Lifecycle.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/SceneEntityWorld`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityInstalling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakerStatic.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,15 +243,7 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="7964000" />
-    </task>
-    <task id="LOCAL-01125" summary="SceneEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1759430663573</created>
-      <option name="number" value="01125" />
-      <option name="presentableId" value="LOCAL-01125" />
-      <option name="project" value="LOCAL" />
-      <updated>1759430663573</updated>
+      <workItem from="1759562206582" duration="10679000" />
     </task>
     <task id="LOCAL-01126" summary="SceneEntityFactory`1.md">
       <option name="closed" value="true" />
@@ -623,7 +629,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759573036411</updated>
     </task>
-    <option name="localTasksCounter" value="1174" />
+    <task id="LOCAL-01174" summary="Сделал IEntityWorld.md!">
+      <option name="closed" value="true" />
+      <created>1759574203243</created>
+      <option name="number" value="01174" />
+      <option name="presentableId" value="LOCAL-01174" />
+      <option name="project" value="LOCAL" />
+      <updated>1759574203243</updated>
+    </task>
+    <option name="localTasksCounter" value="1175" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +664,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineEntityFactory.md" />
     <MESSAGE value="Обновили фабрики!" />
     <MESSAGE value="Minor Fixes" />
     <MESSAGE value="Начинаем переписывать MultiFactory Docs" />
@@ -675,7 +688,8 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IEntityWorld`1.md" />
     <MESSAGE value="Сделал EntityWorld`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал EntityWorld`1.md" />
+    <MESSAGE value="Сделал IEntityWorld.md!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал IEntityWorld.md!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

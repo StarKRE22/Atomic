@@ -23,7 +23,6 @@ Below is a list of available factory types:
 - **Bakers**
     - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
     - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
-      - [Static API](SceneEntityBakerStatic.md)
 
 ---
 

@@ -29,7 +29,7 @@ public bool Installed { get; }
 
 ---
 
-## 🏹 Methods
+## 🏹 Public Methods
 
 #### `Install()`
 
