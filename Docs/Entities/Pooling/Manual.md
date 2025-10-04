@@ -2,7 +2,7 @@
     - [IEntityPool](IEntityPool.md) <!-- + -->
     - [IEntityPool&lt;E&gt;](IEntityPool%601.md) <!-- + -->
     - [EntityPool](EntityPool.md)
-    - [EntityPool&lt;E&gt;](EntityPool%601.md)
+    - [EntityPool&lt;E&gt;](EntityPool%601.md) <!-- + -->
     - [SceneEntityPool](SceneEntityPool.md)
     - [SceneEntityPool&lt;E&gt;](SceneEntityPool%601.md)
 - **Multi Pools**
