@@ -7,8 +7,6 @@
 - **[EntityTriggers](EntityTriggers.md)**
     - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
-    - [EntityTriggerBase](EntityTriggerBase.md)
-    - [EntityTriggerBase\<E>](EntityTriggerBase%601.md) 
     - [TagEntityTrigger](TagEntityTrigger.md)
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md)
     - [ValueEntityTrigger](ValueEntityTrigger.md)

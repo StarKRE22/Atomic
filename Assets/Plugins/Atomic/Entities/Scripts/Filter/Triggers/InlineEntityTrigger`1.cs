@@ -7,8 +7,10 @@ namespace Atomic.Entities
     /// for a specific entity type.
     /// </summary>
     /// <typeparam name="E">The type of entity to track, constrained to <see cref="IEntity"/>.</typeparam>
-    public class InlineEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    public class InlineEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
     {
+        private Action<E> _action;
+
         private readonly Action<E, Action<E>> _track;
         private readonly Action<E, Action<E>> _untrack;
 
@@ -31,10 +33,22 @@ namespace Atomic.Entities
             _untrack = untrack ?? throw new ArgumentNullException(nameof(untrack));
         }
 
-        /// <inheritdoc />
-        public override void Track(E entity) => _track.Invoke(entity, _action);
+        /// <summary>
+        /// Sets the action to be invoked when the trigger detects a relevant change in the entity.
+        /// </summary>
+        /// <param name="action">The callback action to invoke.</param>
+        public void SetAction(Action<E> action) => _action = action ?? throw new ArgumentNullException(nameof(action));
 
-        /// <inheritdoc />
-        public override void Untrack(E entity) => _untrack.Invoke(entity, _action);
+        /// <summary>
+        /// Begins tracking the specified entity for changes.
+        /// </summary>
+        /// <param name="entity">The entity to track.</param>
+        public void Track(E entity) => _track.Invoke(entity, _action);
+
+        /// <summary>
+        /// Stops tracking the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity to stop tracking.</param>
+        public void Untrack(E entity) => _untrack.Invoke(entity, _action);
     }
 }

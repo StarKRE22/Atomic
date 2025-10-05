@@ -1,11 +1,15 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// A trigger that responds to tag changes (added or removed) on entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The entity type, which must implement <see cref="IEntity"/>.</typeparam>
-    public class TagEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    public class TagEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
     {
+        private Action<E> _action;
+        
         private readonly bool _added;
         private readonly bool _deleted;
 
@@ -19,12 +23,18 @@ namespace Atomic.Entities
             _added = added;
             _deleted = deleted;
         }
+        
+        /// <summary>
+        /// Sets the action to be invoked when the trigger detects a relevant change in the entity.
+        /// </summary>
+        /// <param name="action">The callback action to invoke.</param>
+        public void SetAction(Action<E> action) => _action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
         /// Subscribes to the tag-related events on the given entity.
         /// </summary>
         /// <param name="entity">The entity to track.</param>
-        public override void Track(E entity)
+        public void Track(E entity)
         {
             if (_added) entity.OnTagAdded += this.OnTagAdded;
             if (_deleted) entity.OnTagDeleted += this.OnTagDeleted;
@@ -34,7 +44,7 @@ namespace Atomic.Entities
         /// Unsubscribes from the tag-related events on the given entity.
         /// </summary>
         /// <param name="entity">The entity to untrack.</param>
-        public override void Untrack(E entity)
+        public void Untrack(E entity)
         {
             if (_added) entity.OnTagAdded -= this.OnTagAdded;
             if (_deleted) entity.OnTagDeleted -= this.OnTagDeleted;

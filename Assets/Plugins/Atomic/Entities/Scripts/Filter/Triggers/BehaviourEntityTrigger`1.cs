@@ -1,11 +1,15 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
     /// A trigger that responds to behaviour changes (added or removed) on entities of type <typeparamref name="E"/>.
     /// </summary>
     /// <typeparam name="E">The entity type, which must implement <see cref="IEntity"/>.</typeparam>
-    public class BehaviourEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    public class BehaviourEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
     {
+        private Action<E> _action;
+
         private readonly bool _added;
         private readonly bool _removed;
 
@@ -21,10 +25,16 @@ namespace Atomic.Entities
         }
 
         /// <summary>
+        /// Sets the action to be invoked when the trigger detects a relevant change in the entity.
+        /// </summary>
+        /// <param name="action">The callback action to invoke.</param>
+        public void SetAction(Action<E> action) => _action = action ?? throw new ArgumentNullException(nameof(action));
+
+        /// <summary>
         /// Subscribes to the behaviour-related events on the given entity.
         /// </summary>
         /// <param name="entity">The entity to track.</param>
-        public override void Track(E entity)
+        public void Track(E entity)
         {
             if (_added) entity.OnBehaviourAdded += this.OnBehaviourAdded;
             if (_removed) entity.OnBehaviourDeleted += this.OnBehaviourRemoved;
@@ -34,7 +44,7 @@ namespace Atomic.Entities
         /// Unsubscribes from the behaviour-related events on the given entity.
         /// </summary>
         /// <param name="entity">The entity to untrack.</param>
-        public override void Untrack(E entity)
+        public void Untrack(E entity)
         {
             if (_added) entity.OnBehaviourAdded -= this.OnBehaviourAdded;
             if (_removed) entity.OnBehaviourDeleted -= this.OnBehaviourRemoved;

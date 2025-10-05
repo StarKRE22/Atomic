@@ -10,14 +10,22 @@ namespace Atomic.Entities
     /// </summary>
     /// <typeparam name="E">The type of entity implementing <see cref="IEntity"/>.</typeparam>
     /// <typeparam name="S">The type of subscription.</typeparam>
-    public abstract class SubscriptionEntityTrigger<E, S> : EntityTriggerBase<E>
+    public abstract class SubscriptionEntityTrigger<E, S> : IEntityTrigger<E>
         where E : IEntity
         where S : IDisposable
     {
+        private Action<E> _action;
+        
         /// <summary>
         /// Stores active subscriptions, mapping each entity to its associated disposable subscription.
         /// </summary>
         private readonly Dictionary<IEntity, S> _subscriptions = new();
+
+        /// <summary>
+        /// Sets the action to be invoked when the trigger detects a relevant change in the entity.
+        /// </summary>
+        /// <param name="action">The callback action to invoke.</param>
+        public void SetAction(Action<E> action) => _action = action ?? throw new ArgumentNullException(nameof(action));
 
         /// <summary>
         /// Starts tracking the specified entity.
@@ -25,7 +33,7 @@ namespace Atomic.Entities
         /// for later disposal when untracking.
         /// </summary>
         /// <param name="entity">The entity to track.</param>
-        public sealed override void Track(E entity)
+        public void Track(E entity)
         {
             if (!_subscriptions.ContainsKey(entity))
             {
@@ -39,7 +47,7 @@ namespace Atomic.Entities
         /// Removes the associated subscription and calls <see cref="IDisposable.Dispose"/> to release resources.
         /// </summary>
         /// <param name="entity">The entity to stop tracking.</param>
-        public sealed override void Untrack(E entity)
+        public void Untrack(E entity)
         {
             if (_subscriptions.Remove(entity, out S subscription))
                 subscription.Dispose();

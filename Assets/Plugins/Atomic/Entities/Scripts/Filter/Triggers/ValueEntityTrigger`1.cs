@@ -1,3 +1,5 @@
+using System;
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -5,8 +7,10 @@ namespace Atomic.Entities
     /// It listens for value additions, removals, and modifications using corresponding entity events.
     /// </summary>
     /// <typeparam name="E">The type of entity to track, constrained to <see cref="IEntity"/>.</typeparam>
-    public class ValueEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    public class ValueEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
     {
+        private Action<E> _action;
+        
         private readonly bool _added;
         private readonly bool _deleted;
         private readonly bool _changed;
@@ -24,12 +28,21 @@ namespace Atomic.Entities
             _deleted = deleted;
             _changed = changed;
         }
+        
+        /// <summary>
+        /// Sets the action to be invoked when the trigger detects a relevant change in the entity.
+        /// </summary>
+        /// <param name="action">The callback action to invoke.</param>
+        public void SetAction(Action<E> action)
+        {
+            _action = action ?? throw new ArgumentNullException(nameof(action));
+        }
 
         /// <summary>
         /// Subscribes to value-related events on the given entity, based on the configured flags.
         /// </summary>
         /// <param name="entity">The entity to track.</param>
-        public override void Track(E entity)
+        public void Track(E entity)
         {
             if (_added) entity.OnValueAdded += this.OnValueAdded;
             if (_deleted) entity.OnValueDeleted += this.OnValueDeleted;
@@ -40,7 +53,7 @@ namespace Atomic.Entities
         /// Unsubscribes from value-related events on the given entity.
         /// </summary>
         /// <param name="entity">The entity to stop tracking.</param>
-        public override void Untrack(E entity)
+        public void Untrack(E entity)
         {
             if (_added) entity.OnValueAdded -= this.OnValueAdded;
             if (_deleted) entity.OnValueDeleted -= this.OnValueDeleted;
