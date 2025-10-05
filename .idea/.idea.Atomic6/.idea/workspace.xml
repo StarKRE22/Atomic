@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,23 +222,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="12362000" />
-    </task>
-    <task id="LOCAL-01182" summary="Написал EntityWorlds">
-      <option name="closed" value="true" />
-      <created>1759583795088</created>
-      <option name="number" value="01182" />
-      <option name="presentableId" value="LOCAL-01182" />
-      <option name="project" value="LOCAL" />
-      <updated>1759583795088</updated>
-    </task>
-    <task id="LOCAL-01183" summary="EntityRegistry.md">
-      <option name="closed" value="true" />
-      <created>1759584585091</created>
-      <option name="number" value="01183" />
-      <option name="presentableId" value="LOCAL-01183" />
-      <option name="project" value="LOCAL" />
-      <updated>1759584585091</updated>
+      <workItem from="1759651729723" duration="13085000" />
     </task>
     <task id="LOCAL-01184" summary="Начинаем делать раздел для пулов!">
       <option name="closed" value="true" />
@@ -616,7 +600,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759669960169</updated>
     </task>
-    <option name="localTasksCounter" value="1231" />
+    <task id="LOCAL-01231" summary="SubscriptionEntityTrigger`1.md">
+      <option name="closed" value="true" />
+      <created>1759670332192</created>
+      <option name="number" value="01231" />
+      <option name="presentableId" value="LOCAL-01231" />
+      <option name="project" value="LOCAL" />
+      <updated>1759670332192</updated>
+    </task>
+    <task id="LOCAL-01232" summary="SubscriptionEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1759670716022</created>
+      <option name="number" value="01232" />
+      <option name="presentableId" value="LOCAL-01232" />
+      <option name="project" value="LOCAL" />
+      <updated>1759670716022</updated>
+    </task>
+    <option name="localTasksCounter" value="1233" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,8 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPrefabEntityPool`1.md" />
-    <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="PrefabEntityPool`1.md" />
     <MESSAGE value="PrefabEntityPool.md" />
     <MESSAGE value="EntityPools" />
@@ -668,7 +666,9 @@
     <MESSAGE value="BehaviourEntityTrigger.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="StateChangedEntityTrigger`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="StateChangedEntityTrigger`1.md" />
+    <MESSAGE value="SubscriptionEntityTrigger`1.md" />
+    <MESSAGE value="SubscriptionEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
