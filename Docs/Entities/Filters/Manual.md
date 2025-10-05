@@ -1,35 +1,21 @@
+# 🧩 Entity Filters
 
+**Entity Filters** are core tools for **reactive entity management**. They allow observing and
+filtering [IEntity](../Entities/IEntity.md) collections based on conditions, tags, values, behaviours, state changes, or
+custom logic. Filter provides a **dynamic, observable view** over an existing entity collection, automatically keeping
+track of entities that match a predicate.
 
+- [EntityFilter](EntityFilter.md) <!-- + -->
+- [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
 
-- **EntityFilters**
-    - [EntityFilter](EntityFilter.md) <!-- + -->
-    - [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
-- **[EntityTriggers](EntityTriggers.md)**
-    - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
-    - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
-    - [TagEntityTrigger](TagEntityTrigger.md) <!-- + -->
-    - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
-    - [ValueEntityTrigger](ValueEntityTrigger.md) <!-- + -->
-    - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md) <!-- + -->
-    - [BehaviourEntityTrigger](BehaviourEntityTrigger.md) <!-- + -->
-    - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md) <!-- + -->
-    - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
-    - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md) <!-- + -->
-    - [SubscriptionEntityTrigger\<S>](SubscriptionEntityTrigger.md) <!-- + -->
-    - [SubscriptionEntityTrigger\<E, S>](SubscriptionEntityTrigger%601.md) <!-- + -->
-    - [InlineEntityTrigger](InlineEntityTrigger.md) <!-- + -->
-    - [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md) <!-- + -->
+---
 
+## 🗂 Examples of Usage
 
+### 1️⃣ Basic Filter Creation
 
-
-
-
-## Example Usage
-
-### Basic Filter Creation
 ```csharp
-// Create entites
+// Create entities
 var entity1 = new Entity();
 entity1.AddTag("Unit");
 
@@ -40,7 +26,7 @@ var entity3 = new Entity();
 entity2.AddTag("Building");
 
 // Create a source collection
-var allEntities = new EntityCollection<IEntity>();
+var allEntities = new EntityCollection();
 
 // Add some entities to the source
 allEntities.Add(entity1);
@@ -66,7 +52,8 @@ Assert.IsTrue(unitFilter.Contains(entity2));
 Assert.IsFalse(unitFilter.Contains(entity3));
 ```
 
-### Filter with Tag Trigger
+### 2️⃣ Filter with Tag Trigger
+
 ```csharp
 var entity1 = new Entity();
 entity1.AddTag("Player");
@@ -78,7 +65,7 @@ var entity3 = new Entity();
 entity3.AddTag("Enemy");
 
 // Create a source collection
-var entityCollection = new EntityCollection<IEntity>();
+var entityCollection = new EntityCollection();
 
 // Add some entities to the source
 entityCollection.Add(entity1);
@@ -104,7 +91,8 @@ entity3.AddTag("Player");
 Assert.IsTrue(playerFilter.Contains(entity3));
 ```
 
-### Filter with Value Trigger
+### 3️⃣ Filter with Value Trigger
+
 ```csharp
 // Create entites
 var entity1 = new Entity();
@@ -147,7 +135,8 @@ entity3.SetValue("Health", 20);
 Assert.IsTrue(aliveFilter.Contains(entity3));
 ```
 
-### Chained Filtering Example
+### 4️⃣ Chained Filtering Example
+
 ```csharp
 // Create a first filter
 var playerUnitsFilter = new EntityFilter(
@@ -162,7 +151,8 @@ var buildingsFilter = new EntityFilter(
 );
 ```
 
-### Advanced Usage with Events
+### 5️⃣ Advanced Usage with Events
+
 ```csharp
 // Create a filter with event handling
 var eventFilter = new EntityFilter(
@@ -178,20 +168,8 @@ eventFilter.OnAdded += entity => Console.WriteLine($"Added entity with health: {
 eventFilter.OnRemoved += entity => Console.WriteLine($"Removed entity with health: {entity.GetValue<int>("Health")}");
 
 ```
-### Performance Considerations
-```csharp
-// Check filter count without enumeration
-int count = eventFilter.Count;
 
-// Check if specific entity is in the filter
-bool containsEntity = eventFilter.Contains(someEntity);
-
-// Copy entities to an array
-var entitiesArray = new IEntity[eventFilter.Count];
-eventFilter.CopyTo(entitiesArray, 0);
-```
-
-
+<!--
 
 # 🧩 EntityFilter
 
@@ -215,8 +193,6 @@ maintains a subset of entities based on a predicate and optional triggers, updat
 
 A **non-generic version** of [`EntityFilter<E>`](#) specialized for `IEntity`.  
 Use this class when you do not need to specify a particular entity type.
-
-
 
 ## Best Practices
 
@@ -261,10 +237,10 @@ Use this class when you do not need to specify a particular entity type.
 - Custom trigger with manual control
 - Use for complex conditions
 
-
 # 🧩 IEntityTrigger
 
-The `IEntityTrigger` interface defines a mechanism for monitoring specific aspects of an entity's state and signaling when an entity should be re-evaluated by a filter. It comes in two forms:
+The `IEntityTrigger` interface defines a mechanism for monitoring specific aspects of an entity's state and signaling
+when an entity should be re-evaluated by a filter. It comes in two forms:
 
 * **Non-generic** version (`IEntityTrigger`) for working with `IEntity`
 * **Generic** version (`IEntityTrigger<E>`) for specific entity types
@@ -274,16 +250,19 @@ The `IEntityTrigger` interface defines a mechanism for monitoring specific aspec
 ## Key Features
 
 ### Action-Based Callbacks
+
 - Configurable callback system for re-evaluation notifications
 - Generic action support for type-safe entity handling
 - Flexible trigger response patterns
 
 ### Entity Tracking
+
 - Track/untrack lifecycle for entity monitoring
 - Multiple entity support per trigger instance
 - Clean resource management patterns
 
 ### Type Safety
+
 - Generic interface for specific entity types
 - Compile-time type checking for callbacks
 - Non-generic convenience interface available
@@ -291,6 +270,7 @@ The `IEntityTrigger` interface defines a mechanism for monitoring specific aspec
 ---
 
 ## IEntityTrigger
+
 **A shorthand interface for `IEntityTrigger<IEntity>`.**
 
 ```csharp
@@ -300,6 +280,7 @@ public interface IEntityTrigger : IEntityTrigger<IEntity>
 ```
 
 ## IEntityTrigger&lt;E&gt;
+
 **A generic interface for tracking specific entity types.**
 
 ```csharp
@@ -310,35 +291,42 @@ public interface IEntityTrigger<E> where E : IEntity
     void Untrack(E entity);
 }
 ```
+
 ---
 
 ## Methods
 
 ### SetAction
+
 ```csharp
 void SetAction(Action<E> action);
 ```
+
 - **Purpose**: Sets the callback for re-evaluation
 - **Parameter**:
-  - `action` — The action to invoke when re-evaluation is needed
+    - `action` — The action to invoke when re-evaluation is needed
 - **Usage**: Defines what happens when a tracked condition is met
 
 ### Track
+
 ```csharp
 void Track(E entity);
 ```
+
 - **Purpose**: Begins monitoring the specified entity
 - **Parameter:**
-  - `entity` — The entity to track
+    - `entity` — The entity to track
 - **Behavior**: Starts observing changes relevant to the trigger
 
 ### Untrack
+
 ```csharp
 void Untrack(E entity);
 ```
+
 - **Purpose:** Stops monitoring the specified entity
 - **Parameter:**
-  - `entity` — The entity to stop tracking
+    - `entity` — The entity to stop tracking
 - **Behavior**: Removes the entity from monitoring
 
 ---
@@ -361,7 +349,6 @@ public class TagEntityTrigger : IEntityTrigger
          entity.OnTagAdded -= _callback.Invoke;
 }
 ```
-
 
 ## Usage Examples
 
@@ -398,3 +385,4 @@ public class PlayerTrigger : EntityTriggerBase<PlayerEntity>
     }
 }
 ```
+-->

@@ -48,7 +48,8 @@ smoother and more powerful than in Unity.
 - [Collections](Collections/Manual.md) <!-- + -->
 - [Worlds](Worlds/Manual.md) <!-- + -->
 - [Registry](Registry/EntityRegistry.md) <!-- + -->
-- [Filters](Filters/Manual.md)
+- [Filters](Filters/Manual.md) <!-- + -->
+- [Triggers](Filters/EntityTriggers.md) <!-- + -->
 - [UI](UI/Manual.md)
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Entity API](EntityAPI/Manual.md)
