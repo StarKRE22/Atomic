@@ -1,4 +1,4 @@
-# 🧩 BehaviourEntityTrigger<E>
+# 🧩 BehaviourEntityTrigger\<E>
 
 ```csharp
 public class BehaviourEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
