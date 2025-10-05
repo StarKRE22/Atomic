@@ -106,21 +106,6 @@ playerEntity.AddTag("PoweredUp");      // Triggers callback
 enemyEntity.RemoveTag("Aggressive");   // Triggers callback
 ```
 
-### Using Generic Tag Change Monitoring
-```csharp
-// Monitor all tag changes (additions and deletions)
-var tagTrigger = new TagEntityTrigger<UnitEntity>();
-tagTrigger.SetAction(entity =>
-    Debug.Log($"Tag change detected on entity: {entity.Name}"));
-
-// Track entities
-tagTrigger.Track(playerEntity);
-tagTrigger.Track(enemyEntity);
-
-// When tags change on entities, the trigger automatically responds
-playerEntity.AddTag("PoweredUp");      // Triggers callback
-enemyEntity.RemoveTag("Aggressive");   // Triggers callback
-```
 ### Addition-Only Tag Monitoring
 
 ```csharp
@@ -151,33 +136,3 @@ playerEntity.DelTag("PoweredUp");      // Triggers callback
 ```
 
 ---
-
-## Best Practices
-
-[//]: # (### Monitoring Configuration)
-
-[//]: # (- Use specific monitoring &#40;added/deleted only&#41; when possible)
-
-[//]: # (- Consider system requirements for trigger frequency)
-
-[//]: # (- Balance between reactivity and performance)
-
-[//]: # ()
-[//]: # (### Integration Patterns)
-
-[//]: # (- Combine with other trigger types for complex conditions)
-
-[//]: # (- Use in conjunction with entity filters for reactive systems)
-
-[//]: # (- Implement proper cleanup in disposal patterns)
-
-[//]: # ()
-[//]: # (### Event Handler Design)
-
-[//]: # (- Keep trigger callbacks lightweight and fast)
-
-[//]: # (- Avoid heavy operations in immediate callback execution)
-
-[//]: # (- Consider queuing heavy operations for batch processing)
-
-[//]: # (The `TagEntityTrigger` provides efficient, reactive monitoring of entity tag changes, enabling sophisticated tag-based systems and automatic responses to entity state classification updates within the Atomic framework.)

@@ -25,8 +25,6 @@ public void SetAction(Action<E> action);
 - **Parameter:** `action` — A delegate that takes the entity as a parameter and re-evaluates it in the filter.
 - **Note:** Usually set once by the filter itself.
 
----
-
 #### `Track(E)`
 
 ```csharp
@@ -36,8 +34,6 @@ public void Track(E entity);
 - **Description:** Starts tracking the specified entity for relevant state changes.
 - **Parameter:** `entity` — The entity instance to start monitoring.
 - **Note:** The trigger should subscribe to internal events or state changes of the entity.
-
----
 
 #### `Untrack(E)`
 

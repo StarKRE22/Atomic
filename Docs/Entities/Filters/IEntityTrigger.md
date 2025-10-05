@@ -25,8 +25,6 @@ public void SetAction(Action<IEntity> action);
 - **Description:** Assigns a callback invoked when a tracked entity changes and needs re-evaluation.
 - **Parameter:** `action` — A delegate that takes an `IEntity` instance and triggers re-evaluation in a filter.
 
----
-
 #### `Track(IEntity)`
 
 ```csharp
@@ -35,8 +33,6 @@ public void Track(IEntity entity);
 
 - **Description:** Starts tracking the specified entity for relevant state changes or interactions.
 - **Parameter:** `entity` — The entity instance to monitor.
-
----
 
 #### `Untrack(IEntity)`
 
