@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityFilterChaining.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsAndWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsWorldsAndFilters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,23 +221,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="1059000" />
-    </task>
-    <task id="LOCAL-01160" summary="EntityCollection`1.md">
-      <option name="closed" value="true" />
-      <created>1759521360142</created>
-      <option name="number" value="01160" />
-      <option name="presentableId" value="LOCAL-01160" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521360142</updated>
-    </task>
-    <task id="LOCAL-01161" summary="EntityCollection`1.md">
-      <option name="closed" value="true" />
-      <created>1759521931329</created>
-      <option name="number" value="01161" />
-      <option name="presentableId" value="LOCAL-01161" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521931329</updated>
+      <workItem from="1759651729723" duration="2595000" />
     </task>
     <task id="LOCAL-01162" summary="EntityCollection.md">
       <option name="closed" value="true" />
@@ -619,7 +599,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759602292246</updated>
     </task>
-    <option name="localTasksCounter" value="1209" />
+    <task id="LOCAL-01209" summary="EntityFilter`1.md">
+      <option name="closed" value="true" />
+      <created>1759652799598</created>
+      <option name="number" value="01209" />
+      <option name="presentableId" value="LOCAL-01209" />
+      <option name="project" value="LOCAL" />
+      <updated>1759652799598</updated>
+    </task>
+    <task id="LOCAL-01210" summary="EntityFilter.md">
+      <option name="closed" value="true" />
+      <created>1759653466440</created>
+      <option name="number" value="01210" />
+      <option name="presentableId" value="LOCAL-01210" />
+      <option name="project" value="LOCAL" />
+      <updated>1759653466440</updated>
+    </task>
+    <option name="localTasksCounter" value="1211" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,8 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityWorld`1.md" />
-    <MESSAGE value="SceneEntityWorld.md" />
     <MESSAGE value="Написал EntityWorlds" />
     <MESSAGE value="EntityRegistry.md" />
     <MESSAGE value="Начинаем делать раздел для пулов!" />
@@ -671,7 +665,9 @@
     <MESSAGE value="Подвигал утилиты!" />
     <MESSAGE value="Начинаем делать фильтры!" />
     <MESSAGE value="Так!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Так!" />
+    <MESSAGE value="EntityFilter`1.md" />
+    <MESSAGE value="EntityFilter.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityFilter.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
