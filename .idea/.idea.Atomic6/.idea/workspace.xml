@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/SubscriptionEntityTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/SubscriptionEntityTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/SubscriptionEntityTrigger`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/SubscriptionEntityTrigger`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggerBase`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
@@ -224,23 +228,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="6039000" />
-    </task>
-    <task id="LOCAL-01166" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759522540830</created>
-      <option name="number" value="01166" />
-      <option name="presentableId" value="LOCAL-01166" />
-      <option name="project" value="LOCAL" />
-      <updated>1759522540830</updated>
-    </task>
-    <task id="LOCAL-01167" summary="Подкрутил SceneEntityBakerStatic.md">
-      <option name="closed" value="true" />
-      <created>1759564868712</created>
-      <option name="number" value="01167" />
-      <option name="presentableId" value="LOCAL-01167" />
-      <option name="project" value="LOCAL" />
-      <updated>1759564868713</updated>
+      <workItem from="1759651729723" duration="7400000" />
     </task>
     <task id="LOCAL-01168" summary="Пилим!">
       <option name="closed" value="true" />
@@ -618,7 +606,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759661649368</updated>
     </task>
-    <option name="localTasksCounter" value="1215" />
+    <task id="LOCAL-01215" summary="IEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1759662057951</created>
+      <option name="number" value="01215" />
+      <option name="presentableId" value="LOCAL-01215" />
+      <option name="project" value="LOCAL" />
+      <updated>1759662057952</updated>
+    </task>
+    <task id="LOCAL-01216" summary="EntityTriggerBase`1.md">
+      <option name="closed" value="true" />
+      <created>1759662476009</created>
+      <option name="number" value="01216" />
+      <option name="presentableId" value="LOCAL-01216" />
+      <option name="project" value="LOCAL" />
+      <updated>1759662476009</updated>
+    </task>
+    <option name="localTasksCounter" value="1217" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим пулы!" />
     <MESSAGE value="IEntityPool`1.md" />
     <MESSAGE value="IEntityPool.md" />
     <MESSAGE value="EntityPool`1.md" />
@@ -670,7 +673,8 @@
     <MESSAGE value="Const.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IEntityTrigger.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityTrigger.md" />
+    <MESSAGE value="EntityTriggerBase`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityTriggerBase`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,9 +4,13 @@ using Atomic.Entities;
 
 namespace RTSGame
 {
-    public sealed class TeamEntityTrigger : SubscriptionEntityTrigger<IGameEntity>
+    public sealed class TeamEntityTrigger : SubscriptionEntityTrigger<IGameEntity, Subscription<TeamType>>
     {
-        protected override IDisposable Track(IGameEntity entity, Action<IGameEntity> callback) => 
-            entity.GetTeam().Subscribe(_ => callback.Invoke(entity));
+        protected override Subscription<TeamType> Track(IGameEntity entity, Action<IGameEntity> callback)
+        {
+            IReactiveVariable<TeamType> team = entity.GetTeam();
+            Subscription<TeamType> subscription = team.Subscribe(_ => callback.Invoke(entity));
+            return subscription;
+        }
     }
 }

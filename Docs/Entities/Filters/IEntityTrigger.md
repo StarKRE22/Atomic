@@ -55,6 +55,8 @@ public void Untrack(IEntity entity);
 // A simple trigger that fires when an entity's "IsActive" flag changes
 public class ActiveStateTrigger : IEntityTrigger
 {
+    private readonly Dictionary<IEntity, Subscription<bool>> _subscriptions = new();
+    
     private Action<IEntity> _onChanged;
 
     public void SetAction(Action<IEntity> action)
@@ -64,22 +66,17 @@ public class ActiveStateTrigger : IEntityTrigger
 
     public void Track(IEntity entity)
     {
-        entity
+        Subscription<bool> subscription = entity
             .GetValue<IReactiveValue<bool>>("IsActive")
-            .OnEvent += HandleStateChanged;
+            .Subscribe(_ => _onChanged?.Invoke(entity));
+        
+       _subscriptions.Add(entity, subscription);
     }
 
     public void Untrack(IEntity entity)
     {
-        entity
-            .GetValue<IReactiveValue<bool>>("IsActive")
-            .OnEvent -= HandleStateChanged;
-    }
-
-    private void HandleStateChanged(IEntity entity)
-    {
-        // Notify filter to re-evaluate this entity
-        _onChanged?.Invoke(entity);
+        if (_subscriptions.Remove(entity, out Subscription<int> subscription))
+           subscription.Dispose();
     }
 }
 ```

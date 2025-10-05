@@ -9,12 +9,15 @@ namespace Atomic.Entities
     /// and releases resources when tracking is stopped.
     /// </summary>
     /// <typeparam name="E">The type of entity implementing <see cref="IEntity"/>.</typeparam>
-    public abstract class SubscriptionEntityTrigger<E> : EntityTriggerBase<E> where E : IEntity
+    /// <typeparam name="S">The type of subscription.</typeparam>
+    public abstract class SubscriptionEntityTrigger<E, S> : EntityTriggerBase<E>
+        where E : IEntity
+        where S : IDisposable
     {
         /// <summary>
         /// Stores active subscriptions, mapping each entity to its associated disposable subscription.
         /// </summary>
-        private readonly Dictionary<IEntity, IDisposable> _subscriptions = new();
+        private readonly Dictionary<IEntity, S> _subscriptions = new();
 
         /// <summary>
         /// Starts tracking the specified entity.
@@ -26,7 +29,7 @@ namespace Atomic.Entities
         {
             if (!_subscriptions.ContainsKey(entity))
             {
-                IDisposable subscription = this.Track(entity, _action);
+                S subscription = this.Track(entity, _action);
                 _subscriptions.Add(entity, subscription);
             }
         }
@@ -38,7 +41,7 @@ namespace Atomic.Entities
         /// <param name="entity">The entity to stop tracking.</param>
         public sealed override void Untrack(E entity)
         {
-            if (_subscriptions.Remove(entity, out IDisposable subscription))
+            if (_subscriptions.Remove(entity, out S subscription))
                 subscription.Dispose();
         }
 
@@ -52,6 +55,6 @@ namespace Atomic.Entities
         /// The callback to invoke when the entity changes or needs re-evaluation.
         /// </param>
         /// <returns>An <see cref="IDisposable"/> representing the subscription for this entity.</returns>
-        protected abstract IDisposable Track(E entity, Action<E> callback);
+        protected abstract S Track(E entity, Action<E> callback);
     }
 }

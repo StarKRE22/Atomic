@@ -57,6 +57,8 @@ public void Untrack(E entity);
 // A trigger that listens to Health changes
 public class HealthChangedTrigger : IEntityTrigger<GameEntity>
 {
+    private readonly Dictionary<GameEntity, Subscription<int>> _subscriptions = new();
+    
     private Action<GameEntity> _onChanged;
 
     public void SetAction(Action<GameEntity> action)
@@ -66,22 +68,17 @@ public class HealthChangedTrigger : IEntityTrigger<GameEntity>
 
     public void Track(GameEntity entity)
     {
-        entity
+       Subscription<int> subscription = entity
             .GetValue<IReactiveValue<int>>("Health")
-            .OnEvent += this.OnHealthChanged;
+            .Subscribe(_ => _onChanged?.Invoke(entity));
+        
+       _subscriptions.Add(entity, subscription);
     }
 
     public void Untrack(GameEntity entity)
     {
-        entity
-            .GetValue<IReactiveValue<int>>("Health")
-            .OnEvent -= this.OnHealthChanged;
-    }
-
-    private void OnHealthChanged(GameEntity entity)
-    {
-        // Notify filter to re-evaluate this entity
-        _onChanged?.Invoke(entity);
+        if (_subscriptions.Remove(entity, out Subscription<int> subscription))
+              subscription.Dispose();
     }
 }
 ```

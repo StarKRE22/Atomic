@@ -75,20 +75,20 @@ public class HealthChangedTrigger : EntityTriggerBase<GameEntity>
     {
         entity
             .GetValue<IReactiveValue<int>>("Health")
-            .OnEvent += this.OnHealthChanged;
+            .OnEvent += this.InvokeAction(entity);
     }
 
     public override void Untrack(GameEntity entity)
     {
         entity
             .GetValue<IReactiveValue<int>>("Health")
-            .OnEvent -= this.OnHealthChanged;
+            .OnEvent -= this.InvokeAction(entity);
     }
 
-    private void HandleHealthChanged(GameEntity entity)
+    private void HandleHealthChanged(int health)
     {
         // Notify the filter to re-evaluate this entity
-        InvokeAction(entity);
+        ;
     }
 }
 ```

@@ -8,7 +8,7 @@
     - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
     - [EntityTriggerBase](EntityTriggerBase.md)
-    - [EntityTriggerBase\<E>](EntityTriggerBase%601.md) <!-- + -->
+    - [EntityTriggerBase\<E>](EntityTriggerBase%601.md) 
     - [TagEntityTrigger](TagEntityTrigger.md)
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md)
     - [ValueEntityTrigger](ValueEntityTrigger.md)
@@ -359,5 +359,42 @@ public class TagEntityTrigger : IEntityTrigger
     
     public void Untrack(IEntity entity) =>
          entity.OnTagAdded -= _callback.Invoke;
+}
+```
+
+
+## Usage Examples
+
+### Non-Generic Usage
+
+```csharp
+public class PlayerTrigger : EntityTriggerBase
+{
+    public override void Track(IEntity entity)
+    {
+        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
+    }
+
+    public override void Untrack(IEntity entity)
+    {
+        // Unsubscribe from custom events
+    }
+}
+```
+
+### Generic Usage
+
+```csharp
+public class PlayerTrigger : EntityTriggerBase<PlayerEntity>
+{
+    public override void Track(PlayerEntity entity)
+    {
+        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
+    }
+
+    public override void Untrack(PlayerEntity entity)
+    {
+        // Unsubscribe from custom events
+    }
 }
 ```
