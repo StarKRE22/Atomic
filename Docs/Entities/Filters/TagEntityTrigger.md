@@ -1,5 +1,79 @@
 # 🧩 TagEntityTrigger
 
+```csharp
+public class TagEntityTrigger : TagEntityTrigger<IEntity>
+```
+
+- **Description:** A non-generic shortcut for [TagEntityTrigger\<E>](TagEntityTrigger%601.md). Subscribes to tag-related
+  events (`OnTagAdded`, `OnTagDeleted`) on general [IEntity](../Entities/IEntity.md) instances.
+- **Inheritance:** [TagEntityTrigger\<E>](TagEntityTrigger%601.md)
+
+---
+
+## 🏗️ Constructor
+
+```csharp
+public TagEntityTrigger(bool added = true, bool deleted = true)
+```
+
+- **Description:** Creates a new non-generic `TagEntityTrigger` instance.
+- **Parameters:**
+    - `added` — Whether to react to tag additions via the `OnTagAdded` event. Default is `true`.
+    - `deleted` — Whether to react to tag removals via the `OnTagDeleted` event. Default is `true`.
+
+---
+
+## 🏹 Methods
+
+#### `SetAction(Action<IEntity>)`
+
+```csharp
+public void SetAction(Action<IEntity> action);
+```
+
+- **Description:** Sets the callback action that will be invoked whenever a tracked entity’s tags change.
+- **Parameter:** `action` — The delegate to invoke on the entity. Cannot be `null`.
+- **Exception:** `ArgumentNullException` — Thrown if `action` is `null`.
+
+#### `Track(IEntity)`
+
+```csharp
+public void Track(IEntity entity);
+```
+
+- **Description:** Starts tracking the specified entity for tag changes.
+- **Parameter:** `entity` — The entity to track.
+- **Note:** Subscribes to `OnTagAdded` and/or `OnTagDeleted` events depending on constructor parameters.
+
+#### `Untrack(IEntity)`
+
+```csharp
+public void Untrack(IEntity entity);
+```
+
+- **Description:** Stops tracking the specified entity for tag changes.
+- **Parameter:** `entity` — The entity to stop monitoring.
+- **Note:** Unsubscribes from previously subscribed tag events.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Track general entities for tag additions/removals
+var trigger = new TagEntityTrigger(added: true, deleted: true);
+
+// Usage with non-generic EntityFilter
+var filter = new EntityFilter(
+    allEntities,
+    e => e.HasTag("Enemy"),
+    trigger
+);
+```
+
+<!--
+# 🧩 TagEntityTrigger
+
 A specialized entity trigger that monitors tag-related changes on entities, responding to tag additions and deletions. Provides reactive monitoring for entity tag state changes, enabling automatic system responses to entity classification updates.
 
 ## Overview
@@ -135,4 +209,4 @@ deletionTrigger.Track(npcEntity);
 playerEntity.DelTag("PoweredUp");      // Triggers callback
 ```
 
----
+-->
