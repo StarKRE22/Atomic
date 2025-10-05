@@ -82,6 +82,3 @@ Below are the interfaces and classes for working with entities.
       <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
     </ul>
 </details>
-
-
-

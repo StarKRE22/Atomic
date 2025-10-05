@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Attributes/RunInEditModeAttribute.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
     </list>
@@ -227,23 +224,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="4474000" />
-    </task>
-    <task id="LOCAL-01164" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1759522232080</created>
-      <option name="number" value="01164" />
-      <option name="presentableId" value="LOCAL-01164" />
-      <option name="project" value="LOCAL" />
-      <updated>1759522232080</updated>
-    </task>
-    <task id="LOCAL-01165" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1759522269041</created>
-      <option name="number" value="01165" />
-      <option name="presentableId" value="LOCAL-01165" />
-      <option name="project" value="LOCAL" />
-      <updated>1759522269041</updated>
+      <workItem from="1759651729723" duration="6039000" />
     </task>
     <task id="LOCAL-01166" summary="Пилим!">
       <option name="closed" value="true" />
@@ -621,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759657586236</updated>
     </task>
-    <option name="localTasksCounter" value="1213" />
+    <task id="LOCAL-01213" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759660493179</created>
+      <option name="number" value="01213" />
+      <option name="presentableId" value="LOCAL-01213" />
+      <option name="project" value="LOCAL" />
+      <updated>1759660493179</updated>
+    </task>
+    <task id="LOCAL-01214" summary="IEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1759661649368</created>
+      <option name="number" value="01214" />
+      <option name="presentableId" value="LOCAL-01214" />
+      <option name="project" value="LOCAL" />
+      <updated>1759661649368</updated>
+    </task>
+    <option name="localTasksCounter" value="1215" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Начинаем делать раздел для пулов!" />
     <MESSAGE value="Пилим пулы!" />
     <MESSAGE value="IEntityPool`1.md" />
     <MESSAGE value="IEntityPool.md" />
@@ -659,7 +655,6 @@
     <MESSAGE value="IMultiEntityPool.md" />
     <MESSAGE value="MultiEntityPool`1.md" />
     <MESSAGE value="MultiEntityPool.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IPrefabEntityPool`1.md" />
     <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="PrefabEntityPool`1.md" />
@@ -673,7 +668,9 @@
     <MESSAGE value="EntityFilter.md" />
     <MESSAGE value="ReactiveVariables" />
     <MESSAGE value="Const.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Const.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="IEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

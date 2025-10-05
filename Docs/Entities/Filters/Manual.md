@@ -4,7 +4,7 @@
 - **EntityFilters**
     - [EntityFilter](EntityFilter.md) <!-- + -->
     - [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
-- **[EntityTriggers](Triggers.md)**
+- **[EntityTriggers](EntityTriggers.md)**
     - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
     - [EntityTriggerBase](EntityTriggerBase.md)

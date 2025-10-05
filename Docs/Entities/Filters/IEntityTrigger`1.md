@@ -17,7 +17,7 @@ public interface IEntityTrigger<E> where E : IEntity
 #### `SetAction(Action<E>)`
 
 ```csharp
-void SetAction(Action<E> action);
+public void SetAction(Action<E> action);
 ```
 
 - **Description:** Assigns a callback that will be invoked when the tracked entity changes in a way that may affect
@@ -30,7 +30,7 @@ void SetAction(Action<E> action);
 #### `Track(E)`
 
 ```csharp
-void Track(E entity);
+public void Track(E entity);
 ```
 
 - **Description:** Starts tracking the specified entity for relevant state changes.
@@ -42,7 +42,7 @@ void Track(E entity);
 #### `Untrack(E)`
 
 ```csharp
-void Untrack(E entity);
+public void Untrack(E entity);
 ```
 
 - **Description:** Stops tracking the specified entity.

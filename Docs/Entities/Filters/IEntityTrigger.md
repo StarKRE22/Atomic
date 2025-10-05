@@ -19,7 +19,7 @@ public interface IEntityTrigger : IEntityTrigger<IEntity>
 #### `SetAction(Action<IEntity>)`
 
 ```csharp
-void SetAction(Action<IEntity> action);
+public void SetAction(Action<IEntity> action);
 ```
 
 - **Description:** Assigns a callback invoked when a tracked entity changes and needs re-evaluation.
@@ -30,7 +30,7 @@ void SetAction(Action<IEntity> action);
 #### `Track(IEntity)`
 
 ```csharp
-void Track(IEntity entity);
+public void Track(IEntity entity);
 ```
 
 - **Description:** Starts tracking the specified entity for relevant state changes or interactions.
@@ -41,7 +41,7 @@ void Track(IEntity entity);
 #### `Untrack(IEntity)`
 
 ```csharp
-void Untrack(IEntity entity);
+public void Untrack(IEntity entity);
 ```
 
 - **Description:** Stops tracking the specified entity.
@@ -82,7 +82,9 @@ public class ActiveStateTrigger : IEntityTrigger
         _onChanged?.Invoke(entity);
     }
 }
+```
 
+```csharp
 // Usage with non-generic EntityFilter
 var filter = new EntityFilter(
     allEntities,
