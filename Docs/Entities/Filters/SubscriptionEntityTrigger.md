@@ -83,14 +83,3 @@ public sealed class TeamEntityTrigger : SubscriptionEntityTrigger
 ```
 
 ### Generic version
-```csharp
-public sealed class TeamEntityTrigger : SubscriptionEntityTrigger<IUnitEntity>
-{
-    protected override IDisposable Track(IUnitEntity entity, Action<IUnitEntity> callback) 
-    {
-        IReactiveVariable<TeamType> teamType = entity.GetValue<IReactiveVariable<TeamType>>();
-        IDisposable handle = teamType.Subscribe(_ => callback.Invoke(entity));
-        return handle;
-    } 
-}
-```

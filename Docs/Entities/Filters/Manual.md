@@ -16,7 +16,7 @@
     - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
     - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md) <!-- + -->
     - [SubscriptionEntityTrigger](SubscriptionEntityTrigger.md)
-    - [SubscriptionEntityTrigger\<E>](SubscriptionEntityTrigger%601.md)
+    - [SubscriptionEntityTrigger\<E>](SubscriptionEntityTrigger%601.md) <!-- + -->
     - [InlineEntityTrigger](InlineEntityTrigger.md)
     - [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md)
 
