@@ -1,99 +1,92 @@
 # 🧩 IEntityTrigger
 
-The `IEntityTrigger` interface defines a mechanism for monitoring specific aspects of an entity's state and signaling when an entity should be re-evaluated by a filter. It comes in two forms:
-
-* **Non-generic** version (`IEntityTrigger`) for working with `IEntity`
-* **Generic** version (`IEntityTrigger<E>`) for specific entity types
-
----
-
-## Key Features
-
-### Action-Based Callbacks
-- Configurable callback system for re-evaluation notifications
-- Generic action support for type-safe entity handling
-- Flexible trigger response patterns
-
-### Entity Tracking
-- Track/untrack lifecycle for entity monitoring
-- Multiple entity support per trigger instance
-- Clean resource management patterns
-
-### Type Safety
-- Generic interface for specific entity types
-- Compile-time type checking for callbacks
-- Non-generic convenience interface available
-
----
-
-## IEntityTrigger
-**A shorthand interface for `IEntityTrigger<IEntity>`.**
-
 ```csharp
 public interface IEntityTrigger : IEntityTrigger<IEntity>
-{
-}
 ```
 
-## IEntityTrigger&lt;E&gt;
-**A generic interface for tracking specific entity types.**
+- **Description:** A **non-generic shorthand** for `IEntityTrigger<E>` with the default type `IEntity`.  
+  Represents a trigger that reacts to an `IEntity` interaction or condition.
+- **Inheritance:** [IEntityTrigger\<E>](IEntityTrigger%601.md)
+- **See also:** [IEntity](../Entities/IEntity.md)
 
-```csharp
-public interface IEntityTrigger<E> where E : IEntity
-{
-    void SetAction(Action<E> action);
-    void Track(E entity);
-    void Untrack(E entity);
-}
-```
----
-
-## Methods
-
-### SetAction
-```csharp
-void SetAction(Action<E> action);
-```
-- **Purpose**: Sets the callback for re-evaluation
-- **Parameter**: 
-  - `action` — The action to invoke when re-evaluation is needed
-- **Usage**: Defines what happens when a tracked condition is met
-
-### Track
-```csharp
-void Track(E entity);
-```
-- **Purpose**: Begins monitoring the specified entity
-- **Parameter:**
-  - `entity` — The entity to track
-- **Behavior**: Starts observing changes relevant to the trigger
-
-### Untrack
-```csharp
-void Untrack(E entity);
-```
-- **Purpose:** Stops monitoring the specified entity
-- **Parameter:**
-  - `entity` — The entity to stop tracking
-- **Behavior**: Removes the entity from monitoring
+> [!NOTE]  
+> Use this version when you want to create triggers for **general entities** without binding to a specific type.
 
 ---
 
-## Example Usage
+## 🏹 Methods
+
+#### `SetAction(Action<IEntity>)`
 
 ```csharp
-//Create a simple tag trigger
-public class TagEntityTrigger : IEntityTrigger
-{
-    private Action<IEntity> _callback;
+void SetAction(Action<IEntity> action);
+```
 
-    public void SetAction(Action<IEntity> action) =>
-        _callback = action ?? throw new ArgumentNullException(nameof(action));
-    
-    public void Track(IEntity entity) => 
-        entity.OnTagAdded += _callback.Invoke;
-    
-    public void Untrack(IEntity entity) =>
-         entity.OnTagAdded -= _callback.Invoke;
+- **Description:** Assigns a callback invoked when a tracked entity changes and needs re-evaluation.
+- **Parameter:** `action` — A delegate that takes an `IEntity` instance and triggers re-evaluation in a filter.
+
+---
+
+#### `Track(IEntity)`
+
+```csharp
+void Track(IEntity entity);
+```
+
+- **Description:** Starts tracking the specified entity for relevant state changes or interactions.
+- **Parameter:** `entity` — The entity instance to monitor.
+
+---
+
+#### `Untrack(IEntity)`
+
+```csharp
+void Untrack(IEntity entity);
+```
+
+- **Description:** Stops tracking the specified entity.
+- **Parameter:** `entity` — The entity instance to stop monitoring.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// A simple trigger that fires when an entity's "IsActive" flag changes
+public class ActiveStateTrigger : IEntityTrigger
+{
+    private Action<IEntity> _onChanged;
+
+    public void SetAction(Action<IEntity> action)
+    {
+        _onChanged = action;
+    }
+
+    public void Track(IEntity entity)
+    {
+        entity
+            .GetValue<IReactiveValue<bool>>("IsActive")
+            .OnEvent += HandleStateChanged;
+    }
+
+    public void Untrack(IEntity entity)
+    {
+        entity
+            .GetValue<IReactiveValue<bool>>("IsActive")
+            .OnEvent -= HandleStateChanged;
+    }
+
+    private void HandleStateChanged(IEntity entity)
+    {
+        // Notify filter to re-evaluate this entity
+        _onChanged?.Invoke(entity);
+    }
 }
+
+// Usage with non-generic EntityFilter
+var filter = new EntityFilter(
+    allEntities,
+    e => e.GetValue<IReactiveValue<bool>>("IsActive").Value,
+    new ActiveStateTrigger()
+);
 ```

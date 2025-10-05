@@ -152,7 +152,7 @@ IReadOnlyEntityCollection<IEntity> allEntities = ...
 // Create a non-generic filter: only entities that are visible
 var filter = new EntityFilter(
     allEntities,
-    e => e.GetValue<bool>("IsVisible")
+    e => e.GetValue<bool>("IsVisible").Value
 );
 
 // Subscribe to events

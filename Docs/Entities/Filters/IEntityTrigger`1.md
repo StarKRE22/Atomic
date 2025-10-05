@@ -22,10 +22,8 @@ void SetAction(Action<E> action);
 
 - **Description:** Assigns a callback that will be invoked when the tracked entity changes in a way that may affect
   filter inclusion.
-- **Parameters:**
-    - `action` — A delegate that takes the entity as a parameter and re-evaluates it in the filter.
-- **Notes:**
-    - Usually set once by the filter itself.
+- **Parameter:** `action` — A delegate that takes the entity as a parameter and re-evaluates it in the filter.
+- **Note:** Usually set once by the filter itself.
 
 ---
 
@@ -36,10 +34,8 @@ void Track(E entity);
 ```
 
 - **Description:** Starts tracking the specified entity for relevant state changes.
-- **Parameters:**
-    - `entity` — The entity instance to start monitoring.
-- **Notes:**
-    - The trigger should subscribe to internal events or state changes of the entity.
+- **Parameter:** `entity` — The entity instance to start monitoring.
+- **Note:** The trigger should subscribe to internal events or state changes of the entity.
 
 ---
 
@@ -50,10 +46,8 @@ void Untrack(E entity);
 ```
 
 - **Description:** Stops tracking the specified entity.
-- **Parameters:**
-    - `entity` — The entity instance to stop monitoring.
-- **Notes:**
-    - The trigger should unsubscribe from any previously registered callbacks.
+- **Parameter:** `entity` — The entity instance to stop monitoring.
+- **Note:** The trigger should unsubscribe from any previously registered callbacks.
 
 ---
 
@@ -63,7 +57,7 @@ void Untrack(E entity);
 // A trigger that listens to Health changes
 public class HealthChangedTrigger : IEntityTrigger<GameEntity>
 {
-private Action<GameEntity> _onChanged;
+    private Action<GameEntity> _onChanged;
 
     public void SetAction(Action<GameEntity> action)
     {
@@ -72,25 +66,31 @@ private Action<GameEntity> _onChanged;
 
     public void Track(GameEntity entity)
     {
-        entity.OnHealthChanged += HandleHealthChanged;
+        entity
+            .GetValue<IReactiveValue<int>>("Health")
+            .OnEvent += this.OnHealthChanged;
     }
 
     public void Untrack(GameEntity entity)
     {
-        entity.OnHealthChanged -= HandleHealthChanged;
+        entity
+            .GetValue<IReactiveValue<int>>("Health")
+            .OnEvent -= this.OnHealthChanged;
     }
 
-    private void HandleHealthChanged(GameEntity entity)
+    private void OnHealthChanged(GameEntity entity)
     {
         // Notify filter to re-evaluate this entity
         _onChanged?.Invoke(entity);
     }
 }
+```
 
+```csharp
 // Usage with EntityFilter
 var filter = new EntityFilter<GameEntity>(
-source: allEntities,
-predicate: e => e.Health > 0,
-new HealthChangedTrigger()
+    source: allEntities,
+    predicate: e => e.GetValue<IReactiveValue>("Health").Value > 0,
+    new HealthChangedTrigger()
 );
 ```
