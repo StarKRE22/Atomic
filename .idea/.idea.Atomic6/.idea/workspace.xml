@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/EntityCollection`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Behaviours.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Tags.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Tags.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Editor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Tags.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Tags.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Internal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Internal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Public.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/EntityUtils_Public.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Utils/EntityUtils.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/ApplicationUtils.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityFilterChaining.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsAndWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsWorldsAndFilters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityFilter.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +56,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Behaviours.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -164,7 +154,7 @@
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
-      <option name="listenPortForConnections" value="true" />
+      <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
@@ -234,31 +224,8 @@
       <workItem from="1759349315620" duration="179000" />
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
-      <workItem from="1759562206582" duration="29087000" />
-    </task>
-    <task id="LOCAL-01157" summary="IEntityCollection`1.md">
-      <option name="closed" value="true" />
-      <created>1759520838639</created>
-      <option name="number" value="01157" />
-      <option name="presentableId" value="LOCAL-01157" />
-      <option name="project" value="LOCAL" />
-      <updated>1759520838639</updated>
-    </task>
-    <task id="LOCAL-01158" summary="IEntityCollection.md">
-      <option name="closed" value="true" />
-      <created>1759521039705</created>
-      <option name="number" value="01158" />
-      <option name="presentableId" value="LOCAL-01158" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521039705</updated>
-    </task>
-    <task id="LOCAL-01159" summary="IEntityCollection.md">
-      <option name="closed" value="true" />
-      <created>1759521080022</created>
-      <option name="number" value="01159" />
-      <option name="presentableId" value="LOCAL-01159" />
-      <option name="project" value="LOCAL" />
-      <updated>1759521080022</updated>
+      <workItem from="1759562206582" duration="30072000" />
+      <workItem from="1759651729723" duration="1059000" />
     </task>
     <task id="LOCAL-01160" summary="EntityCollection`1.md">
       <option name="closed" value="true" />
@@ -628,7 +595,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759601381994</updated>
     </task>
-    <option name="localTasksCounter" value="1206" />
+    <task id="LOCAL-01206" summary="Подвигал утилиты!">
+      <option name="closed" value="true" />
+      <created>1759602008595</created>
+      <option name="number" value="01206" />
+      <option name="presentableId" value="LOCAL-01206" />
+      <option name="project" value="LOCAL" />
+      <updated>1759602008595</updated>
+    </task>
+    <task id="LOCAL-01207" summary="Начинаем делать фильтры!">
+      <option name="closed" value="true" />
+      <created>1759602149171</created>
+      <option name="number" value="01207" />
+      <option name="presentableId" value="LOCAL-01207" />
+      <option name="project" value="LOCAL" />
+      <updated>1759602149171</updated>
+    </task>
+    <task id="LOCAL-01208" summary="Так!">
+      <option name="closed" value="true" />
+      <created>1759602292246</created>
+      <option name="number" value="01208" />
+      <option name="presentableId" value="LOCAL-01208" />
+      <option name="project" value="LOCAL" />
+      <updated>1759602292246</updated>
+    </task>
+    <option name="localTasksCounter" value="1209" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,9 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал EntityWorld`1.md" />
-    <MESSAGE value="Сделал IEntityWorld.md!" />
-    <MESSAGE value="SceneEntityWorld.cs" />
     <MESSAGE value="SceneEntityWorld`1.md" />
     <MESSAGE value="SceneEntityWorld.md" />
     <MESSAGE value="Написал EntityWorlds" />
@@ -680,7 +668,10 @@
     <MESSAGE value="PrefabEntityPool.md" />
     <MESSAGE value="EntityPools" />
     <MESSAGE value="EntityUtils.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityUtils.md" />
+    <MESSAGE value="Подвигал утилиты!" />
+    <MESSAGE value="Начинаем делать фильтры!" />
+    <MESSAGE value="Так!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Так!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
