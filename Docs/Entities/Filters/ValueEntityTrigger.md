@@ -14,7 +14,7 @@ public class ValueEntityTrigger : ValueEntityTrigger<IEntity>
 
 ```csharp
 public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed = true)
-````
+```
 
 - **Description:** Creates a new non-generic `ValueEntityTrigger` instance with configurable listening behavior.
 - **Parameters:**
@@ -30,7 +30,7 @@ public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed =
 
 ```csharp
 public void SetAction(Action<IEntity> action);
-````
+```
 
 - **Description:** Sets the callback action that will be invoked whenever a tracked entity’s values change.
 - **Parameter:** `action` — The delegate to invoke on the entity. Cannot be `null`.
@@ -40,7 +40,7 @@ public void SetAction(Action<IEntity> action);
 
 ```csharp
 public void Track(IEntity entity);
-````
+```
 
 - **Description:** Starts tracking the specified entity for value changes.
 - **Parameter:** `entity` — The entity to track.
@@ -50,7 +50,7 @@ public void Track(IEntity entity);
 
 ```csharp
 public void Untrack(IEntity entity);
-````
+```
 
 - **Description:** Stops tracking the specified entity for value changes.
 - **Parameter:** `entity` — The entity to stop monitoring.
@@ -74,7 +74,7 @@ var filter = new EntityFilter(
     e => e.GetValue<int>("Health") > 0,
     trigger
 );
-````
+```
 
 
 

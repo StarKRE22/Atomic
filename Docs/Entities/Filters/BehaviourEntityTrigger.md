@@ -1,5 +1,83 @@
 # 🧩 BehaviourEntityTrigger
 
+```csharp
+public class BehaviourEntityTrigger : BehaviourEntityTrigger<IEntity>
+```
+
+- **Description:** A non-generic shortcut for [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md).  
+  Subscribes to behaviour-related events (`OnBehaviourAdded`, `OnBehaviourRemoved`) on general [IEntity](../Entities/IEntity.md) instances.
+- **Inheritance:** [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md)
+
+---
+
+## 🏗️ Constructor
+
+```csharp
+public BehaviourEntityTrigger(bool added = true, bool removed = true)
+```
+
+- **Description:** Creates a new non-generic `BehaviourEntityTrigger` instance.
+- **Parameters:**
+    - `added` — Whether to react to behaviour additions via the `OnBehaviourAdded` event. Default is `true`.
+    - `removed` — Whether to react to behaviour removals via the `OnBehaviourRemoved` event. Default is `true`.
+
+---
+
+## 🏹 Methods
+
+#### `SetAction(Action<IEntity>)`
+
+```csharp
+public void SetAction(Action<IEntity> action);
+```
+
+- **Description:** Sets the callback action that will be invoked whenever a tracked entity’s behaviours change.
+- **Parameter:** `action` — The delegate to invoke on the entity. Cannot be `null`.
+- **Exception:** `ArgumentNullException` — Thrown if `action` is `null`.
+
+#### `Track(IEntity)`
+
+```csharp
+public void Track(IEntity entity);
+```
+
+- **Description:** Starts tracking the specified entity for behaviour changes.
+- **Parameter:** `entity` — The entity to track.
+- **Note:** Subscribes to `OnBehaviourAdded` and/or `OnBehaviourRemoved` events depending on constructor parameters.
+
+#### `Untrack(IEntity)`
+
+```csharp
+public void Untrack(IEntity entity);
+```
+
+- **Description:** Stops tracking the specified entity for behaviour changes.
+- **Parameter:** `entity` — The entity to stop monitoring.
+- **Note:** Unsubscribes from previously subscribed behaviour events.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Track general entities for behaviour additions and removals
+var trigger = new BehaviourEntityTrigger(added: true, removed: true);
+
+// Usage with non-generic EntityFilter
+var filter = new EntityFilter(
+    allEntities,
+    e => e.HasBehaviour("Attack"),
+    trigger
+);
+```
+
+
+
+
+<!-- 
+
+# 🧩 BehaviourEntityTrigger
+
 A trigger that responds to **behaviour changes** (added or removed) on entities. Provides both a **generic** and a **non-generic** version for flexible use with any entity type.
 
 ---
@@ -132,3 +210,4 @@ removedTrigger.Track(enemyEntity);
 enemyEntity.AddBehaviour(new MovementBehaviour());    // Does NOT trigger
 enemyEntity.RemoveBehaviour(new HealthBehaviour());  // Triggers callback
 ```
+-->

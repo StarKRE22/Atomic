@@ -11,8 +11,8 @@
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
     - [ValueEntityTrigger](ValueEntityTrigger.md) <!-- + -->
     - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md) <!-- + -->
-    - [BehaviourEntityTrigger](BehaviourEntityTrigger.md)
-    - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md)
+    - [BehaviourEntityTrigger](BehaviourEntityTrigger.md) <!-- + -->
+    - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md) <!-- + -->
     - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
     - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md)
     - [SubscriptionEntityTrigger](SubscriptionEntityTrigger.md)
