@@ -4,8 +4,8 @@
 public class TagEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
 ```
 
-- **Description:** A trigger that responds to **tag changes** (added or removed) on entities of type `E`.  
-  Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when tags change.
+- **Description:** A trigger that responds to **tag changes** (added or removed) on entities of type `E`. Allows
+  an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when tags change.
 - **Type Parameter:** `E` — The entity type being tracked. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityTrigger\<E>](IEntityTrigger%601.md)
 
