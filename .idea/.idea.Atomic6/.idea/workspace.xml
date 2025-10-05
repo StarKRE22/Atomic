@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,31 +219,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="9994000" />
-    </task>
-    <task id="LOCAL-01172" summary="IEntityWorld`1.md">
-      <option name="closed" value="true" />
-      <created>1759571437538</created>
-      <option name="number" value="01172" />
-      <option name="presentableId" value="LOCAL-01172" />
-      <option name="project" value="LOCAL" />
-      <updated>1759571437539</updated>
-    </task>
-    <task id="LOCAL-01173" summary="Сделал EntityWorld`1.md">
-      <option name="closed" value="true" />
-      <created>1759573036411</created>
-      <option name="number" value="01173" />
-      <option name="presentableId" value="LOCAL-01173" />
-      <option name="project" value="LOCAL" />
-      <updated>1759573036411</updated>
-    </task>
-    <task id="LOCAL-01174" summary="Сделал IEntityWorld.md!">
-      <option name="closed" value="true" />
-      <created>1759574203243</created>
-      <option name="number" value="01174" />
-      <option name="presentableId" value="LOCAL-01174" />
-      <option name="project" value="LOCAL" />
-      <updated>1759574203243</updated>
+      <workItem from="1759651729723" duration="10297000" />
     </task>
     <task id="LOCAL-01175" summary="SceneEntityWorld.cs">
       <option name="closed" value="true" />
@@ -618,7 +589,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759666795358</updated>
     </task>
-    <option name="localTasksCounter" value="1221" />
+    <task id="LOCAL-01221" summary="TagEntityTrigger`1.md">
+      <option name="closed" value="true" />
+      <created>1759667958589</created>
+      <option name="number" value="01221" />
+      <option name="presentableId" value="LOCAL-01221" />
+      <option name="project" value="LOCAL" />
+      <updated>1759667958589</updated>
+    </task>
+    <task id="LOCAL-01222" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759667994468</created>
+      <option name="number" value="01222" />
+      <option name="presentableId" value="LOCAL-01222" />
+      <option name="project" value="LOCAL" />
+      <updated>1759667994468</updated>
+    </task>
+    <task id="LOCAL-01223" summary="TagEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1759668215923</created>
+      <option name="number" value="01223" />
+      <option name="presentableId" value="LOCAL-01223" />
+      <option name="project" value="LOCAL" />
+      <updated>1759668215923</updated>
+    </task>
+    <option name="localTasksCounter" value="1224" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,8 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityPool`1.md" />
-    <MESSAGE value="EntityPool.md" />
     <MESSAGE value="SceneEntityPool`1.md" />
     <MESSAGE value="SceneEntityPool.md" />
     <MESSAGE value="IMultiEntityPool.md" />
@@ -668,9 +661,11 @@
     <MESSAGE value="IEntityTrigger.md" />
     <MESSAGE value="EntityTriggerBase`1.md" />
     <MESSAGE value="IEntityTrigger`1.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Обновил EntityTriggers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновил EntityTriggers" />
+    <MESSAGE value="TagEntityTrigger`1.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="TagEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TagEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
