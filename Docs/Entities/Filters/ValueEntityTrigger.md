@@ -1,5 +1,87 @@
 # 🧩 ValueEntityTrigger
 
+```csharp
+public class ValueEntityTrigger : ValueEntityTrigger<IEntity>
+```
+
+- **Description:** A non-generic shortcut for [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md).  
+  Provides value-based tracking for general [IEntity](../Entities/IEntity.md) instances, including reactions to value additions, removals, and changes.
+- **Inheritance:** [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md)
+
+---
+
+## 🏗️ Constructor
+
+```csharp
+public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed = true)
+````
+
+- **Description:** Creates a new non-generic `ValueEntityTrigger` instance with configurable listening behavior.
+- **Parameters:**
+  - `added` — Whether to react to value additions via the `OnValueAdded` event. Default is `true`.
+  - `deleted` — Whether to react to value removals via the `OnValueDeleted` event. Default is `true`.
+  - `changed` — Whether to react to value modifications via the `OnValueChanged` event. Default is `true`.
+
+---
+
+## 🏹 Methods
+
+#### `SetAction(Action<IEntity>)`
+
+```csharp
+public void SetAction(Action<IEntity> action);
+````
+
+- **Description:** Sets the callback action that will be invoked whenever a tracked entity’s values change.
+- **Parameter:** `action` — The delegate to invoke on the entity. Cannot be `null`.
+- **Exception:** `ArgumentNullException` — Thrown if `action` is `null`.
+
+#### `Track(IEntity)`
+
+```csharp
+public void Track(IEntity entity);
+````
+
+- **Description:** Starts tracking the specified entity for value changes.
+- **Parameter:** `entity` — The entity to track.
+- **Note:** Subscribes to `OnValueAdded`, `OnValueDeleted`, and/or `OnValueChanged` events depending on constructor parameters.
+
+#### `Untrack(IEntity)`
+
+```csharp
+public void Untrack(IEntity entity);
+````
+
+- **Description:** Stops tracking the specified entity for value changes.
+- **Parameter:** `entity` — The entity to stop monitoring.
+- **Note:** Unsubscribes from previously subscribed value events.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Track general entities for value additions, deletions, and modifications
+var trigger = new ValueEntityTrigger(
+    added: true,
+    deleted: true,
+    changed: true
+);
+
+// Usage with non-generic EntityFilter
+var filter = new EntityFilter(
+    allEntities,
+    e => e.GetValue<int>("Health") > 0,
+    trigger
+);
+````
+
+
+
+<!--
+
+# 🧩 ValueEntityTrigger
+
 A specialized entity trigger that monitors **value-related changes** on entities, responding to additions, removals, and modifications. Provides reactive monitoring for entity value state changes, enabling automatic system responses when entity data is updated.
 
 ## Overview
@@ -182,3 +264,5 @@ enemyEntity.SetValue("Health", 10);   // Triggers callback if "Health" value is 
 
 ## Best Practices
 TODO:
+
+-->

@@ -9,7 +9,7 @@
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
     - [TagEntityTrigger](TagEntityTrigger.md) <!-- + -->
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
-    - [ValueEntityTrigger](ValueEntityTrigger.md)
+    - [ValueEntityTrigger](ValueEntityTrigger.md) <!-- + -->
     - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md) <!-- + -->
     - [BehaviourEntityTrigger](BehaviourEntityTrigger.md)
     - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md)

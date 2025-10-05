@@ -70,15 +70,6 @@ var trigger = new ValueEntityTrigger<GameEntity>(
     changed: true
 );
 
-// Assign a callback to react to value changes
-trigger.SetAction(entity => Console.WriteLine($"Entity {entity.Id} values changed"));
-
-// Track an entity
-trigger.Track(someEntity);
-
-// Later, stop tracking
-trigger.Untrack(someEntity);
-
 // Usage with EntityFilter
 var filter = new EntityFilter<GameEntity>(
     allEntities,
