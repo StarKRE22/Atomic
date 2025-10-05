@@ -6,21 +6,21 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 
 Below is a list of available factory types:
 
-- **Single Factories**
+- **EntityFactories**
     - [IEntityFactory](IEntityFactory.md) <!-- + -->
     - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
     - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
     - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
     - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
     - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
-- **Multi Factories**
+- **MultiEntityFactories**
     - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
     - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
     - [MultiEntityFactory](MultiEntityFactory.md) <!-- + -->
     - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)  <!-- + -->
     - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
     - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
-- **Scene Bakers**
+- **SceneEntityBakers**
     - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
     - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
 

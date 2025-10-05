@@ -25,25 +25,25 @@ There are several abstractions of actions, depending on the number of arguments 
     - [CompositeAction&lt;T1, T2&gt;](CompositeAction%602.md)  <!-- + -->
     - [CompositeAction&lt;T1, T2, T3&gt;](CompositeAction%603.md) <!-- + -->
     - [CompositeAction&lt;T1, T2, T3, T4&gt;](CompositeAction%604.md)  <!-- + -->
-- [SceneActions Abstract](SceneActionsAbstract.md)  <!-- + -->
+- [SceneActionsAbstract](SceneActionsAbstract.md)  <!-- + -->
     - [SceneActionAbstract](SceneActionAbstract.md)  <!-- + -->
     - [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md)  <!-- + -->
     - [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) <!-- + -->
     - [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md)  <!-- + -->
     - [SceneActionAbstract&lt;T1, T2, T3, T4&gt;](SceneActionAbstract%604.md)  <!-- + -->
-- [SceneActions Default](SceneActionsDefault.md) <!-- + -->
+- [SceneActionsDefault](SceneActionsDefault.md) <!-- + -->
     - [SceneActionDefault](SceneActionDefault.md) <!-- + -->
     - [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) <!-- + -->
     - [SceneActionDefault&lt;T1, T2&gt;](SceneActionDefault%602.md) <!-- + -->
     - [SceneActionDefault&lt;T1, T2, T3&gt;](SceneActionDefault%603.md) <!-- + -->
     - [SceneActionDefault&lt;T1, T2, T3, T4&gt;](SceneActionDefault%604.md) <!-- + -->
-- [SceneActions Composite](SceneActionsComposite.md) <!-- + -->
+- [SceneActionsComposite](SceneActionsComposite.md) <!-- + -->
     - [SceneActionComposite](SceneActionComposite.md) <!-- + -->
     - [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) <!-- + -->
     - [SceneActionComposite&lt;T1, T2&gt;](SceneActionComposite%602.md) <!-- + -->
     - [SceneActionComposite&lt;T1, T2, T3&gt;](SceneActionComposite%603.md) <!-- + -->
     - [SceneActionComposite&lt;T1, T2, T3, T4&gt;](SceneActionComposite%604.md)  <!-- + -->
-- [SceneActions Reference](SceneActionsReference.md) <!-- + -->
+- [SceneActionsReference](SceneActionsReference.md) <!-- + -->
     - [SceneActionReference](SceneActionReference.md) <!-- + -->
     - [SceneActionReference&lt;T&gt;](SceneActionReference%601.md) <!-- + -->
     - [SceneActionReference&lt;T1, T2&gt;](SceneActionReference%602.md) <!-- + -->
