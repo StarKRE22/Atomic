@@ -1,4 +1,4 @@
-# 🧩 InlineEntityTrigger<E>
+# 🧩 InlineEntityTrigger\<E>
 
 ```csharp
 public class InlineEntityTrigger<E> : IEntityTrigger<E>
