@@ -55,24 +55,6 @@ public void Untrack(IEntity entity);
 - **Parameter:** `entity` — The entity to stop monitoring.
 - **Note:** Unsubscribes from previously subscribed behaviour events.
 
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Track general entities for behaviour additions and removals
-var trigger = new BehaviourEntityTrigger(added: true, removed: true);
-
-// Usage with non-generic EntityFilter
-var filter = new EntityFilter(
-    allEntities,
-    e => e.HasBehaviour("Attack"),
-    trigger
-);
-```
-
-
-
 
 <!-- 
 
@@ -165,21 +147,7 @@ enemyEntity.RemoveBehaviour(new HealthBehaviour());
 
 ### Generic Usage
 
-```csharp
-var behaviourTrigger = new BehaviourEntityTrigger<UnitEntity>();
-behaviourTrigger.SetAction(entity => 
-    Console.WriteLine($"Behaviour changed on entity: {entity.Name}"));
 
-// Track entities
-behaviourTrigger.Track(playerEntity);
-behaviourTrigger.Track(enemyEntity);
-
-// Adding a behaviour triggers the action
-playerEntity.AddBehaviour(new MovementBehaviour());
-
-// Removing a behaviour triggers the action
-enemyEntity.RemoveBehaviour(new HealthBehaviour());
-```
 
 ### Only Added Behaviours
 
