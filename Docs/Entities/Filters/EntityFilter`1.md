@@ -9,6 +9,7 @@ public class EntityFilter<E> : IReadOnlyEntityCollection<E>, IDisposable where E
   **state triggers**.
 - **Type Parameter:** `E` — the type of entity being filtered. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md), `IDisposable`
+- **See also:** [EntityFilter](EntityFilter.md), [IEntityTrigger\<E>](IEntityTrigger%601.md)
 
 > [!NOTE]
 > Useful for dynamically retrieving subsets of entities (e.g., "all alive enemies", "all objects with a
@@ -74,6 +75,7 @@ public int Count { get; }
 ```
 
 - **Description:** The number of entities currently matching the filter.
+- **Returns:** The current count of entities in the filter.
 
 ---
 
@@ -86,6 +88,7 @@ public bool Contains(E entity);
 ```
 
 - **Description:** Checks whether the given entity is included in the filter.
+- **Parameters:** `entity` — The entity to check.
 - **Returns:** `true` if the entity is present.
 
 #### `CopyTo(ICollection<E>)`
@@ -95,6 +98,7 @@ public void CopyTo(ICollection<E> results);
 ```
 
 - **Description:** Copies all entities in the filter into the provided collection.
+- **Parameter:** `results` — The collection that will receive the entities. Must not be `null`.
 
 #### `CopyTo(E[], int)`
 
@@ -103,6 +107,9 @@ public void CopyTo(E[] array, int arrayIndex);
 ```
 
 - **Description:** Copies all entities in the filter into the given array, starting at the specified index.
+- **Parameters:**
+  - `array` — The destination array. Must not be `null`.
+  - `arrayIndex` — The zero-based index in the array at which copying begins.
 
 #### `Dispose()`
 
@@ -120,6 +127,7 @@ public EntityCollection<E>.Enumerator GetEnumerator();
 ```
 
 - **Description:** Returns an enumerator for iterating over the entities in the filter.
+- **Returns:** A struct-based enumerator that can be used to iterate through the filtered entities.
 
 ---
 

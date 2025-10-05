@@ -1,142 +1,168 @@
-
-
-
 # 🧩 EntityFilter
 
-`EntityFilter` provides a dynamic, observable filtered collection over a source entity collection. It automatically
-maintains a subset of entities based on a predicate and optional triggers, updating in real-time as entities change.
+```csharp
+public class EntityFilter : EntityFilter<IEntity>, IReadOnlyEntityCollection
+```
 
-## Key Features
+- **Description:** A **non-generic wrapper** of `EntityFilter<E>` specialized for [IEntity](../Entities/IEntity.md).  
+  Provides a dynamic, observable, filtered view over a general entity collection without specifying a generic type
+  parameter.
+- **Inheritance:** [EntityFilter\<E>](./EntityFilter.md),
+  [IReadOnlyEntityCollection](../Collections/IReadOnlyEntityCollection.md)
 
-* **Dynamic Filtering** — automatically updates as entities change
-* **Predicate-Based Filtering** — filters entities using custom logic
-* **Chained Filtering** — can use another `EntityFilter` as a data source for nested or complex filtering scenarios
-* **Trigger System** — reacts to specific entity changes
-* **Observable Events** — provides events for tracking filter changes
-* **Lazy Evaluation** — evaluates only when accessed
-* **Memory Efficiency** — does not duplicate entity storage
-* **Collection support** – Implements `IReadOnlyEntityCollection<IEntity>` for checking, enumeration and copying.
+> [!NOTE]  
+> Use this class when you need to filter **heterogeneous collections** of entities without binding to a specific entity
+> type.
 
-## Classes
+---
 
-### `EntityFilter`
-
-A **non-generic version** of [`EntityFilter<E>`](#) specialized for `IEntity`.  
-Use this class when you do not need to specify a particular entity type.
-
-#### Constructor
+## 🏗️ Constructor
 
 ```csharp
 public EntityFilter(
     IReadOnlyEntityCollection<IEntity> source,
     Predicate<IEntity> predicate,
-    params IEntityTrigger<IEntity>[] triggers)
-    : base(source, predicate, triggers)
-{
-}
+    params IEntityTrigger<IEntity>[] triggers
+)
 ```
 
-| Parameter   | Type                                   | Description                                                                                |
-|-------------|----------------------------------------|--------------------------------------------------------------------------------------------|
-| `source`    | `IReadOnlyEntityCollection<IEntity>`   | The source collection of entities to observe and filter.                                   |
-| `predicate` | `Predicate<IEntity>`                   | The predicate function that determines whether an entity should be included in the filter. |
-| `triggers`  | `IEntityTrigger<IEntity>[] (optional)` | Optional triggers for dynamic change tracking. Can be zero or more triggers.               |
+- **Description:** Creates a new entity filter for general `IEntity` objects.
+- **Parameters:**
+    - `source` — The source collection of entities to observe.
+    - `predicate` — A function that determines whether an entity should be included (`true` = include).
+    - `triggers` — (optional) Triggers for re-evaluating entities when their state changes.
+- **Exception:**
+    - `ArgumentNullException` — Thrown if `source` or `predicate` is `null`.
 
 ---
 
-### `EntityFilter<E>`
+## ⚡ Events
 
-A **generic class** representing a filter that automatically maintains an entity subset of type `E`.
-
-#### Type Parameters
-
-- `E` – The type of entity managed by this filter. Must implement [`IEntity`](#).
-
-#### Constructor
+#### `OnStateChanged`
 
 ```csharp
-public EntityFilter(
-    IReadOnlyEntityCollection<E> source,
-    Predicate<E> predicate,
-    params IEntityTrigger<E>[] triggers)
-    : base(source, predicate, triggers)
-{
-}
+public event Action OnStateChanged;
 ```
 
-| Parameter   | Type                             | Description                                                                                |
-|-------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| `source`    | `IReadOnlyEntityCollection<E>`   | The source collection of entities to observe and filter.                                   |
-| `predicate` | `Predicate<E>`                   | The predicate function that determines whether an entity should be included in the filter. |
-| `triggers`  | `IEntityTrigger<E>[] (optional)` | Optional triggers for dynamic change tracking. Can be zero or more triggers.               |
+- **Description:** Raised whenever the filter changes (entity added or removed).
 
 ---
 
-## Events
+#### `OnAdded`
 
-| Event            | Parameters | Description                                |
-|------------------|------------|--------------------------------------------|
-| `OnStateChanged` | —          | Raised when entities are added or removed. |
-| `OnAdded`        | `E entity` | Raised when an entity is added.            |
-| `OnRemoved`      | `E entity` | Raised when an entity is removed.          |
+```csharp
+public event Action<IEntity> OnAdded;
+```
 
-## Properties
+- **Description:** Raised when a new entity satisfies the predicate and is added to the filter.
+- **Parameter:** `IEntity` — The entity that was added.
 
-| Property | Type  | Description                      |
-|----------|-------|----------------------------------|
-| `Count`  | `int` | Count of entities in the filter. |
+---
 
-## Methods
+#### `OnRemoved`
 
-| Method                              | Parameters                                             | Description                           |
-|-------------------------------------|--------------------------------------------------------|---------------------------------------|
-| `Contains(E entity)`                | `entity` – Entity to check                             | Returns `true` if entity exists.      |
-| `CopyTo(E[] array, int arrayIndex)` | `array` — Destination array, `arrayIndex` — startIndex | Copies entities to an array.          |
-| `CopyTo(ICollection<E> results)`    | `results`                                              | Copies entities to a collection.      |
-| `Dispose()`                         | —                                                      | Disposes the filter and its entities. |
+```csharp
+public event Action<IEntity> OnRemoved;
+```
 
+- **Description:** Raised when an entity no longer satisfies the predicate or is removed from the source.
+- **Parameter:** `IEntity` — The entity that was removed.
 
+---
 
+## 🔑 Properties
 
+#### `Count`
 
+```csharp
+public int Count { get; }
+```
 
-## Best Practices
+- **Description:** Gets the number of entities currently matching the filter.
+- **Returns:** The current count of entities in the filter.
 
-1. **Reuse Filters** – Create once, use multiple times
-2. **Chain Filters** – Use filtered results as source for other filters
-3. **Simple Predicates** – Keep predicate logic fast and simple
-4. **Appropriate Triggers** – Only use triggers for values that affect filter
-5. **Dispose Filters** – Call Dispose() to unsubscribe from events
-6. **Cache Results** – Store filter results if used multiple times per frame
+---
 
-## Performance Considerations
+## 🏹 Methods
 
-- **Lazy Evaluation** – Filter only evaluates when accessed
-- **Predicate Cost** – Called for each entity on evaluation
-- **Trigger Overhead** – Each trigger adds event subscriptions
-- **Memory Efficient** – Doesn't duplicate entity references
-- **Re-evaluation Cost** – Full re-filter when triggers fire
+#### `Contains(IEntity)`
 
-## Common Use Cases
+```csharp
+public bool Contains(IEntity entity);
+```
 
-- **Combat Targeting** – Find valid targets
-- **AI Decision Making** – Filter relevant entities
-- **UI Display** – Show filtered entity lists
-- **Spatial Queries** – Entities in range
-- **State Queries** – Entities with specific states
-- **Team Management** – Filter by allegiance
+- **Description:** Determines whether the specified entity is currently included in the filter.
+- **Parameters:** `entity` — The entity to check.
+- **Returns:** `true` if the entity is in the filter; otherwise `false`.
 
-## Trigger Types
+---
 
-### TagEntityTrigger
-- Fires when specified tag is added/removed
-- Use for state-based filtering
+#### `CopyTo(ICollection<IEntity>)`
 
-### ValueEntityTrigger
-- Fires when specified value changes
-- Use for data-based filtering
+```csharp
+public void CopyTo(ICollection<IEntity> results);
+```
 
-### SubscriptionEntityTrigger
-- Custom trigger with manual control
-- Use for complex conditions
+- **Description:** Copies all entities currently in the filter into the provided collection.
+- **Parameter:** `results` — The collection that will receive the entities. Must not be `null`.
 
+---
+
+#### `CopyTo(IEntity[], int)`
+
+```csharp
+public void CopyTo(IEntity[] array, int arrayIndex);
+```
+
+- **Description:** Copies all entities in the filter into the specified array, starting at the given index.
+- **Parameters:**
+    - `array` — The destination array. Must not be `null`.
+    - `arrayIndex` — The zero-based index in the array at which copying begins.
+
+---
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Releases resources used by the filter, unsubscribes from events, and clears internal state.
+- **Note:** Always call `Dispose()` when the filter is no longer needed to prevent memory leaks.
+
+---
+
+#### `GetEnumerator()`
+
+```csharp
+public EntityCollection<IEntity>.Enumerator GetEnumerator();
+```
+
+- **Description:** Returns an enumerator for iterating over entities in the filter.
+- **Returns:** A struct-based enumerator that can be used to iterate through the filtered entities.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Source of all entities (mixed types)
+IReadOnlyEntityCollection<IEntity> allEntities = ...
+
+// Create a non-generic filter: only entities that are visible
+var filter = new EntityFilter(
+    allEntities,
+    e => e.GetValue<bool>("IsVisible")
+);
+
+// Subscribe to events
+filter.OnAdded += e => Console.WriteLine($"[+] {e.Id}");
+filter.OnRemoved += e => Console.WriteLine($"[-] {e.Id}");
+
+// Iterate filtered entities
+foreach (var entity in filter)
+    Console.WriteLine($"Visible: {entity.Id}");
+
+// Cleanup
+filter.Dispose();
+```

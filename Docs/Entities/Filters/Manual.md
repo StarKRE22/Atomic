@@ -1,7 +1,10 @@
+
+
+
 - **Filters**
-    - [EntityFilter](EntityFilter.md)
+    - [EntityFilter](EntityFilter.md) <!-- + -->
     - [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
-- **Triggers**
+- **[Triggers](Triggers.md)**
     - [IEntityTrigger](IEntityTrigger.md)
     - [IEntityTrigger\<E>](IEntityTrigger%601.md)
     - [EntityTriggerBase](EntityTriggerBase.md)
@@ -187,3 +190,74 @@ bool containsEntity = eventFilter.Contains(someEntity);
 var entitiesArray = new IEntity[eventFilter.Count];
 eventFilter.CopyTo(entitiesArray, 0);
 ```
+
+
+
+# 🧩 EntityFilter
+
+`EntityFilter` provides a dynamic, observable filtered collection over a source entity collection. It automatically
+maintains a subset of entities based on a predicate and optional triggers, updating in real-time as entities change.
+
+## Key Features
+
+* **Dynamic Filtering** — automatically updates as entities change
+* **Predicate-Based Filtering** — filters entities using custom logic
+* **Chained Filtering** — can use another `EntityFilter` as a data source for nested or complex filtering scenarios
+* **Trigger System** — reacts to specific entity changes
+* **Observable Events** — provides events for tracking filter changes
+* **Lazy Evaluation** — evaluates only when accessed
+* **Memory Efficiency** — does not duplicate entity storage
+* **Collection support** – Implements `IReadOnlyEntityCollection<IEntity>` for checking, enumeration and copying.
+
+## Classes
+
+### `EntityFilter`
+
+A **non-generic version** of [`EntityFilter<E>`](#) specialized for `IEntity`.  
+Use this class when you do not need to specify a particular entity type.
+
+
+
+## Best Practices
+
+1. **Reuse Filters** – Create once, use multiple times
+2. **Chain Filters** – Use filtered results as source for other filters
+3. **Simple Predicates** – Keep predicate logic fast and simple
+4. **Appropriate Triggers** – Only use triggers for values that affect filter
+5. **Dispose Filters** – Call Dispose() to unsubscribe from events
+6. **Cache Results** – Store filter results if used multiple times per frame
+
+## Performance Considerations
+
+- **Lazy Evaluation** – Filter only evaluates when accessed
+- **Predicate Cost** – Called for each entity on evaluation
+- **Trigger Overhead** – Each trigger adds event subscriptions
+- **Memory Efficient** – Doesn't duplicate entity references
+- **Re-evaluation Cost** – Full re-filter when triggers fire
+
+## Common Use Cases
+
+- **Combat Targeting** – Find valid targets
+- **AI Decision Making** – Filter relevant entities
+- **UI Display** – Show filtered entity lists
+- **Spatial Queries** – Entities in range
+- **State Queries** – Entities with specific states
+- **Team Management** – Filter by allegiance
+
+## Trigger Types
+
+### TagEntityTrigger
+
+- Fires when specified tag is added/removed
+- Use for state-based filtering
+
+### ValueEntityTrigger
+
+- Fires when specified value changes
+- Use for data-based filtering
+
+### SubscriptionEntityTrigger
+
+- Custom trigger with manual control
+- Use for complex conditions
+
