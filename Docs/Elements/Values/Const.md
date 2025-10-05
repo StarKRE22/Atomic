@@ -72,7 +72,7 @@ public T Value { get; }
 public T Invoke()
 ```
 
-- **Description:** Invokes the function and returns the value.
+- **Description:** Invokes the constant value as a function.
 - **Returns:** The current value of type `T`.
 - **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
