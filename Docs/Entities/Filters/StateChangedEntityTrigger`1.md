@@ -1,4 +1,4 @@
-# 🧩 StateChangedEntityTrigger<E>
+# 🧩 StateChangedEntityTrigger\<E>
 
 ```csharp
 public class StateChangedEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
