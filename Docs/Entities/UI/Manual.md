@@ -6,7 +6,7 @@
     - [EntityViewCatalog\<E>](EntityViewCatalog%601.md) <!-- + -->
 - **Pools**
     - [EntityViewPool](EntityViewPool.md)
-    - [EntityViewPool\<E>](EntityViewPool%601.md)
+    - [EntityViewPool\<E>](EntityViewPool%601.md) <!-- + -->
 - **Collections**
     - [EntityCollectionView](EntityViewPool.md)
     - [EntityCollectionView\<E>](EntityViewPool%601.md)
