@@ -18,7 +18,8 @@ namespace Atomic.Entities
     public abstract partial class EntityView<E> : MonoBehaviour where E : class, IEntity
     {
         /// <summary>
-        /// If true, <see cref="GameObject.SetActive"/> will be called when <see cref="Show(E)"/> and <see cref="Hide"/> are invoked.
+        /// If true, <see cref="GameObject.SetActive"/> will be called when <see cref="Show(E)"/>
+        /// and <see cref="Hide"/> are invoked.
         /// </summary>
         [Tooltip("Should activate and deactivate GameObject when Show / Hide are invoked?")]
         [SerializeField]
@@ -51,7 +52,7 @@ namespace Atomic.Entities
         /// Returns <see cref="customName"/> if <see cref="overrideName"/> is true; 
         /// otherwise, returns the <see cref="GameObject.name"/>.
         /// </summary>
-        public virtual string Name => overrideName ? customName : this.name;
+        public virtual string Name => this.overrideName ? this.customName : this.name;
 
         /// <summary>
         /// Gets the entity currently associated with this view.
@@ -90,7 +91,7 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Install(entity);
                     else
-                        Debug.LogWarning("EntityView: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {name}: Oops! Detected null installer!", this);
                 }
             }
         }
@@ -121,7 +122,7 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Uninstall(_entity);
                     else
-                        Debug.LogWarning("EntityView: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {name}: Oops! Detected null installer!", this);
                 }
             }
 
@@ -141,6 +142,15 @@ namespace Atomic.Entities
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         protected virtual void OnHide(E entity)
         {
+        }
+        
+        /// <summary>
+        /// Assigns the GameObject's name to the custom name field.
+        /// </summary>
+        [ContextMenu("Assign Custom Name From GameObject")]
+        private void AssignCustomNameFromGameObject()
+        {
+            customName = this.name;
         }
     }
 }

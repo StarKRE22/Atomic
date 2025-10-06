@@ -1,5 +1,60 @@
 # 🧩 EntityView
 
+```csharp
+public class EntityView : EntityView<IEntity>
+```
+
+- **Description:** Default entity view component.  
+  A **non-generic wrapper** around `EntityView<E>` fixed to [`IEntity`](../Entities/IEntity.md).
+- **Inheritance:** [EntityView\<E>](EntityView%601.md), `MonoBehaviour`
+- **Usage:** Useful when the exact entity type is unknown or irrelevant (e.g., working with heterogeneous entities).
+
+---
+
+## 🏹 Static Methods
+
+### `Create(CreateArgs)`
+
+```csharp
+public static EntityView Create(in CreateArgs args = default);
+````
+
+- **Description:** Creates a new `EntityView` `GameObject` and sets up its installers.
+- **Parameter:** `args` — Arguments for configuring the new view (see [`CreateArgs`](EntityViewE.md#createargs)).
+- **Returns:** A new `EntityView` instance.
+- **Details:**
+  - Calls the generic factory method `Create<EntityView>(args)`.
+  - Automatically applies provided settings (`name`, `installers`, `controlGameObject`, gizmo options).
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a default entity view without knowing the specific entity type
+var args = new EntityView.CreateArgs
+{
+    name = "GenericEntityView",
+    controlGameObject = true,
+    installers = new List<SceneEntityInstaller>()
+};
+
+EntityView view = EntityView.Create(args);
+
+// Show any IEntity instance
+IEntity entity = new SomeEntity();
+view.Show(entity);
+
+// Later, hide or destroy
+view.Hide();
+EntityView.Destroy(view);
+```
+
+
+
+<!--
+# 🧩 EntityView
+
 `EntityView<E>` represents a visual representation of an entity in the Unity scene.  
 It provides a complete system for showing / hiding entities, applying / discarding aspects, editor gizmos, custom naming, and safe creation/destruction.
 
@@ -145,34 +200,7 @@ Each aspect encapsulates a set of behaviors or properties that should be applied
 
 The following aspect configures a tank entity view with multiple behaviors:
 
-```csharp
-public sealed class TankViewAspect : SceneEntityAspect<IGameEntity>
-{
-    [SerializeField] private TakeDamageViewBehaviour _takeDamageBehaviour;
-    [SerializeField] private PositionViewBehaviour _positionBehaviour;
-    [SerializeField] private RotationViewBehaviour _rotationBehaviour;
-    [SerializeField] private TeamColorViewBehaviour _teamColorBehaviour;
-    [SerializeField] private WeaponRecoilViewBehaviour _weaponRecoilBehaviour;
-    
-    public override void Apply(IGameEntity entity)
-    {
-        entity.AddBehaviour(_takeDamageBehaviour);
-        entity.AddBehaviour(_positionBehaviour);
-        entity.AddBehaviour(_rotationBehaviour);
-        entity.AddBehaviour(_teamColorBehaviour);
-        entity.AddBehaviour(_weaponRecoilBehaviour);
-    }
 
-    public override void Discard(IGameEntity entity)
-    {
-        entity.DelBehaviour(_takeDamageBehaviour);
-        entity.DelBehaviour(_positionBehaviour);
-        entity.DelBehaviour(_rotationBehaviour);
-        entity.DelBehaviour(_teamColorBehaviour);
-        entity.DelBehaviour(_weaponRecoilBehaviour);
-    }
-}
-```
 
 **Key Points:**
 - Encapsulates all visual behaviors for the tank entity.
@@ -189,45 +217,9 @@ public sealed class TankViewAspect : SceneEntityAspect<IGameEntity>
 **Notes:**
 - `_onlySelectedGizmos` and `_onlyEditModeGizmos` are editor-only settings affecting gizmo drawing in the Scene view.
 
-### OnDrawGizmos
-```csharp
-protected virtual void OnDrawGizmos();
-```
-- **Purpose**: Unity callback to draw gizmos for this component
-- **Behavior**: Defers to `OnDrawGizmosSelected` if `_onlySelectedGizmos` is false
-
-### OnDrawGizmosSelected
-```csharp
-protected virtual void OnDrawGizmosSelected();
-```
-- **Purpose**: Unity callback invoked when the object is selected
-- **Behavior**: Draws gizmos using entity behaviours that implement `IEntityGizmos<E>`
-- **Editor-Specific**: Respects `_onlyEditModeGizmos` to avoid drawing during Play Mode if desired
-
-### OnGizmosDraw
-```csharp
-internal void OnGizmosDraw();
-```
-- **Purpose**: Internal method for drawing gizmos
-- **Behavior**: Iterates over all entity behaviours and calls `DrawGizmos` on those implementing `IEntityGizmos<E>`
-- **Error Handling**: Catches exceptions and logs warnings
-
----
-
 ### Example Usage
 
-Draws custom gizmos for position and scale
-```csharp
- public sealed class TransformGizmos : IEntityGizmos<IGameEntity>
-    {
-        public void DrawGizmos(IGameEntity entity)
-        {
-            Vector3 center = entity.GetValue<Vector3>("Position");
-            float scale = entity.GetValue<float>("Scale");
-            Handles.DrawWireDisc(center, Vector3.up, scale);
-        }
-    }
-```
+
 ---
 
 ## Creation & Destruction
@@ -278,19 +270,6 @@ public static T Create<T>(in CreateArgs args = default) where T : EntityView<E>;
     3. Assigns aspects and editor settings
     4. Activates the GameObject
 
-#### Example Usage
-```csharp
-var args = new EntityView.CreateArgs
-{
-    name = "PlayerView",
-    controlGameObject = true,
-    aspects = new List<SceneEntityAspect { jumpAspect, speedAspect },
-    onlyEditModeGizmos = false,
-    onlySelectedGizmos = true
-};
-
-var playerView = EntityView.Create(args);
-```
 
 ### Destroy
 
@@ -306,12 +285,11 @@ public static void Destroy(EntityView<E> view, float time = 0);
     2. Destroys the associated GameObject after the optional delay
 
 
-#### Example Usage
-```csharp
-EntityView.Destroy(playerView, 2f); // destroys after 2 seconds
-```
+
 
 ---
 
 ## Example Usage
 //TODO:
+
+-->

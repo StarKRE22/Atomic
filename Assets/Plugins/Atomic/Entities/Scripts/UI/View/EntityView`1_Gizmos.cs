@@ -20,7 +20,7 @@ namespace Atomic.Entities
         /// Unity callback invoked to draw gizmos for this component.
         /// When <see cref="_onlySelectedGizmos"/> is false, defers drawing to <see cref="OnDrawGizmosSelected"/>.
         /// </summary>
-        protected virtual void OnDrawGizmos()
+        private protected virtual void OnDrawGizmos()
         {
             if (!_onlySelectedGizmos)
                 this.OnDrawGizmosSelected();
@@ -30,7 +30,7 @@ namespace Atomic.Entities
         /// Unity callback invoked when the object is selected.
         /// Draws custom gizmos using behaviours that implement <see cref="IEntityGizmos{E}"/>.
         /// </summary>
-        protected virtual void OnDrawGizmosSelected()
+        private protected virtual void OnDrawGizmosSelected()
         {
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying && _onlyEditModeGizmos)
@@ -57,15 +57,6 @@ namespace Atomic.Entities
             {
                 Debug.LogWarning($"Ops: detected exception in gizmos: {e.Message}");
             }
-        }
-
-        /// <summary>
-        /// Assigns the GameObject's name to the custom name field.
-        /// </summary>
-        [ContextMenu("Assign Custom Name From GameObject")]
-        private void AssignCustomNameFromGameObject()
-        {
-            customName = this.name;
         }
     }
 }
