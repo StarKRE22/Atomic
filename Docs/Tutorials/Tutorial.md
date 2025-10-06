@@ -1,5 +1,5 @@
 
-
+<!--
 
 ## 🗂 Example of Usage
 
@@ -462,3 +462,5 @@ This allows you to reuse factory defaults while still customizing entities direc
   - Bake directly into an existing `ICollection<E>` to reuse memory or append results.
 - **Active/inactive inclusion**: Can optionally include inactive GameObjects when searching for bakers.
 - **Editor-friendly**: Inspector fields allow configuring destruction behavior and linking the factory directly in the Unity Editor.
+
+-->
