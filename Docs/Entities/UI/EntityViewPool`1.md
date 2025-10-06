@@ -136,13 +136,13 @@ protected virtual void Awake();
 
 ```csharp
 // Rent a view by name
-PlayerView playerView = pool.Rent("PlayerHUD");
+UnitView playerView = pool.Rent("Player");
 
 // Use the view
 playerView.Show(playerEntity);
 
 // Return view to the pool
-pool.Return("PlayerHUD", playerView);
+pool.Return("Player", playerView);
 ```
 
 ---
