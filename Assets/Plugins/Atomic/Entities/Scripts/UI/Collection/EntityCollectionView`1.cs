@@ -39,7 +39,7 @@ namespace Atomic.Entities
         /// Raised when a view is removed for a despawned or removed entity.
         /// </summary>
         public event Action<E, V> OnRemoved;
-        
+
         /// <summary>
         /// Gets the number of active entity views currently tracked by this collection.
         /// </summary>
@@ -63,7 +63,7 @@ namespace Atomic.Entities
         public void Show(IReadOnlyEntityCollection<E> source)
         {
             this.Hide();
-            
+
             _source = source ?? throw new ArgumentNullException(nameof(source));
             _source.OnAdded += this.Add;
             _source.OnRemoved += this.Remove;
@@ -78,7 +78,7 @@ namespace Atomic.Entities
         public void Hide()
         {
             this.Clear();
-            
+
             if (_source != null)
             {
                 _source.OnAdded -= this.Add;
@@ -95,11 +95,22 @@ namespace Atomic.Entities
         /// <exception cref="KeyNotFoundException">Thrown if the entity is not in the collection.</exception>
         public V Get(E entity) => _views[entity];
 
-        
+
+        /// <summary>
+        /// Tries to retrieve the view for a given entity.
+        /// </summary>
+        /// <param name="entity">The entity whose view is requested.</param>
+        /// <param name="view">The active <see cref="EntityView{E}"/> instance associated with the entity.</param>
+        /// <returns>"true" if a view exists, "false" otherwise.</returns>
         public bool TryGet(E entity, out V view) => _views.TryGetValue(entity, out view);
-        
+
+        /// <summary>
+        /// Checks whether a view exists for the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity whose view is requested.</param>
+        /// <returns>"true" if a view exists, "false" otherwise.</returns>
         public bool Contains(E entity) => _views.ContainsKey(entity);
-        
+
         /// <summary>
         /// Creates and shows a view for the specified entity, if it does not already exist.
         /// </summary>
@@ -133,7 +144,7 @@ namespace Atomic.Entities
             string name = this.GetName(entity);
             this.viewPool.Return(name, view);
         }
-        
+
         /// <summary>
         /// Removes all active entity views, returning them to the view pool.
         /// </summary>

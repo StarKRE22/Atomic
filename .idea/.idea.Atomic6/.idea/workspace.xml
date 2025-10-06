@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,23 +225,8 @@
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
-      <workItem from="1759740339147" duration="2329000" />
-    </task>
-    <task id="LOCAL-01192" summary="SceneEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1759594981489</created>
-      <option name="number" value="01192" />
-      <option name="presentableId" value="LOCAL-01192" />
-      <option name="project" value="LOCAL" />
-      <updated>1759594981489</updated>
-    </task>
-    <task id="LOCAL-01193" summary="SceneEntityPool.md">
-      <option name="closed" value="true" />
-      <created>1759596035848</created>
-      <option name="number" value="01193" />
-      <option name="presentableId" value="LOCAL-01193" />
-      <option name="project" value="LOCAL" />
-      <updated>1759596035848</updated>
+      <workItem from="1759740339147" duration="2530000" />
+      <workItem from="1759742893758" duration="1062000" />
     </task>
     <task id="LOCAL-01194" summary="IMultiEntityPool.md">
       <option name="closed" value="true" />
@@ -617,7 +604,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759742333570</updated>
     </task>
-    <option name="localTasksCounter" value="1241" />
+    <task id="LOCAL-01241" summary="EntityViewPool`1.md">
+      <option name="closed" value="true" />
+      <created>1759742704167</created>
+      <option name="number" value="01241" />
+      <option name="presentableId" value="LOCAL-01241" />
+      <option name="project" value="LOCAL" />
+      <updated>1759742704167</updated>
+    </task>
+    <task id="LOCAL-01242" summary="EntityViewPool.md">
+      <option name="closed" value="true" />
+      <created>1759742818545</created>
+      <option name="number" value="01242" />
+      <option name="presentableId" value="LOCAL-01242" />
+      <option name="project" value="LOCAL" />
+      <updated>1759742818545</updated>
+    </task>
+    <option name="localTasksCounter" value="1243" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityFilter`1.md" />
     <MESSAGE value="EntityFilter.md" />
     <MESSAGE value="ReactiveVariables" />
     <MESSAGE value="Const.md" />
@@ -669,7 +671,8 @@
     <MESSAGE value="EntityView.md" />
     <MESSAGE value="EntityViewCatalog.md" />
     <MESSAGE value="EntityViewPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityViewPool`1.md" />
+    <MESSAGE value="EntityViewPool.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityViewPool.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
