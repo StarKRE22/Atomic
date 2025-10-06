@@ -6,6 +6,6 @@ safety, and IDE autocompletion**.
 
 - [Problem](Problem.md) <!-- + -->
 - [Entity API Generation](ApiGeneration.md) <!-- + -->
-- [Using Unity Editor](UnityCodegen.md)
-- [Using Rider Plugin](PluginCodegen.md)
+- [Using Unity Editor](UnityCodegen.md) <!-- + -->
+- [Using Rider Plugin](PluginCodegen.md)  
 - [EntityNames](EntityNames.md) <!-- + -->

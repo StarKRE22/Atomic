@@ -11,7 +11,7 @@ namespace Atomic.Entities
     /// </summary>
     [CreateAssetMenu(
         fileName = "MultiEntityFactory",
-        menuName = "Atomic/Entities/New MultiEntityFactory"
+        menuName = "Atomic/Entities/MultiEntityFactory"
     )]
     public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
         IMultiEntityFactory

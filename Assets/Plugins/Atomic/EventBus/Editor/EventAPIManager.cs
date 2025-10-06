@@ -93,7 +93,7 @@ namespace Atomic.Events
         [MenuItem("Tools/Atomic/Events/Select Event API Settings", priority = 7)]
         internal static void SelectSetttings() => Selection.activeObject = EventAPISettings.Instance;
 
-        [MenuItem("Assets/Create/Atomic/Events/New Event API", priority = 7)]
+        [MenuItem("Assets/Create/Atomic/Events/Event API", priority = 7)]
         public static void CreateAPI()
         {
             string path = GetSelectedPathOrFallback();

@@ -3,7 +3,7 @@
 ```csharp
 [CreateAssetMenu(
     fileName = "EntityViewCatalog",
-    menuName = "Atomic/Entities/New EntityViewCatalog"
+    menuName = "Atomic/Entities/EntityViewCatalog"
 )]
 public class EntityViewCatalog : EntityViewCatalog<IEntity, EntityView>
 ```

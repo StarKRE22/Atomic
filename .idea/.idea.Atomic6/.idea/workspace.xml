@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/ApiGeneration.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Problem.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/UnityCodegen.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Editor/EntityAPIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Editor/EntityAPIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableMultiEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/EventBus/Editor/EventAPIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/EventBus/Editor/EventAPIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/UnityCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/UnityCodegen.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,15 +234,7 @@
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
-      <workItem from="1759742893758" duration="8684000" />
-    </task>
-    <task id="LOCAL-01199" summary="IPrefabEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1759599182503</created>
-      <option name="number" value="01199" />
-      <option name="presentableId" value="LOCAL-01199" />
-      <option name="project" value="LOCAL" />
-      <updated>1759599182503</updated>
+      <workItem from="1759742893758" duration="9818000" />
     </task>
     <task id="LOCAL-01200" summary="IPrefabEntityPool.md">
       <option name="closed" value="true" />
@@ -621,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759765439701</updated>
     </task>
-    <option name="localTasksCounter" value="1248" />
+    <task id="LOCAL-01248" summary="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen">
+      <option name="closed" value="true" />
+      <created>1759773322066</created>
+      <option name="number" value="01248" />
+      <option name="presentableId" value="LOCAL-01248" />
+      <option name="project" value="LOCAL" />
+      <updated>1759773322066</updated>
+    </task>
+    <option name="localTasksCounter" value="1249" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityTrigger`1.md" />
     <MESSAGE value="Обновил EntityTriggers" />
     <MESSAGE value="TagEntityTrigger`1.md" />
     <MESSAGE value="TagEntityTrigger.md" />
@@ -673,7 +679,8 @@
     <MESSAGE value="Сделал Entity UI.md" />
     <MESSAGE value="Остался раздел с EntityAPI и Performance для коллекций!" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

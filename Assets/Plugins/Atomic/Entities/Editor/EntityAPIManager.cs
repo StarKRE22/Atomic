@@ -91,7 +91,7 @@ namespace Atomic.Entities
             }
         }
         
-        [MenuItem("Assets/Create/Atomic/Entities/New Entity API", priority = 1)]
+        [MenuItem("Assets/Create/Atomic/Entities/Entity API", priority = 1)]
         public static void CreateAPI()
         {
             string path = GetSelectedPathOrFallback();
