@@ -85,8 +85,8 @@ protected virtual string GetName(V prefab);
 ### 1️⃣ Creating a Catalog
 
 ```csharp
-[CreateAssetMenu(menuName = "Game/PlayerViewCatalog")]
-public class PlayerViewCatalog : EntityViewCatalog<PlayerEntity, PlayerView> { }
+[CreateAssetMenu(menuName = "Game/UnitViewCatalog")]
+public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> { }
 ````
 
 ---
@@ -95,12 +95,12 @@ public class PlayerViewCatalog : EntityViewCatalog<PlayerEntity, PlayerView> { }
 
 ```csharp
 // Load from Resources
-PlayerViewCatalog catalog = Resources.Load<PlayerViewCatalog>("PlayerViewCatalog");
+UnitViewCatalog catalog = Resources.Load<UnitViewCatalog>("UnitViewCatalog");
 
 // Get by index
 var kv = catalog.GetPrefab(0);
 Debug.Log($"Prefab {kv.Key} -> {kv.Value}");
 
 // Get by name
-PlayerView playerPrefab = catalog.GetPrefab("PlayerHUD");
+UnitView playerPrefab = catalog.GetPrefab("Player");
 ````

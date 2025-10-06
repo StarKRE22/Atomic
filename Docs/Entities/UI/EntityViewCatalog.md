@@ -87,8 +87,9 @@ protected virtual string GetName(EntityView prefab);
 
 ### 1️⃣ Creating a Catalog Asset
 
-- In Unity:  
-  `Assets → Create → Atomic → Entities → New EntityViewCatalog`
+`Assets → Create → Atomic → Entities → New EntityViewCatalog`
+
+---
 
 ### 2️⃣ Loading and Accessing Prefabs
 
@@ -101,10 +102,7 @@ var kv = catalog.GetPrefab(0);
 Debug.Log($"Prefab {kv.Key} -> {kv.Value}");
 
 // Get prefab by name
-EntityView hudPrefab = catalog.GetPrefab("HUD");
-
-// Use the prefab to instantiate or show
-hudPrefab.Show(someEntity);
+EntityView playerPrefab = catalog.GetPrefab("Player");
 ```
 
 <!--
