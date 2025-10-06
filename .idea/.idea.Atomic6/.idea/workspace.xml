@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Gizmos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Editor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Gizmos.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityView.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityView`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityView`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +223,7 @@
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
-      <workItem from="1759740339147" duration="498000" />
-    </task>
-    <task id="LOCAL-01188" summary="IEntityPool.md">
-      <option name="closed" value="true" />
-      <created>1759590089870</created>
-      <option name="number" value="01188" />
-      <option name="presentableId" value="LOCAL-01188" />
-      <option name="project" value="LOCAL" />
-      <updated>1759590089870</updated>
+      <workItem from="1759740339147" duration="1324000" />
     </task>
     <task id="LOCAL-01189" summary="EntityPool`1.md">
       <option name="closed" value="true" />
@@ -620,7 +609,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759738254747</updated>
     </task>
-    <option name="localTasksCounter" value="1237" />
+    <task id="LOCAL-01237" summary="EntityView.md">
+      <option name="closed" value="true" />
+      <created>1759741118963</created>
+      <option name="number" value="01237" />
+      <option name="presentableId" value="LOCAL-01237" />
+      <option name="project" value="LOCAL" />
+      <updated>1759741118964</updated>
+    </task>
+    <option name="localTasksCounter" value="1238" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Подвигал утилиты!" />
     <MESSAGE value="Начинаем делать фильтры!" />
     <MESSAGE value="Так!" />
     <MESSAGE value="EntityFilter`1.md" />
@@ -672,7 +668,8 @@
     <MESSAGE value="InlineEntityTrigger.md" />
     <MESSAGE value="Остался UI!" />
     <MESSAGE value="Начинаем делать EntityViews" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем делать EntityViews" />
+    <MESSAGE value="EntityView.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityView.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
