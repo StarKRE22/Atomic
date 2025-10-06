@@ -55,8 +55,6 @@ smoother and more powerful than in Unity.
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Entity API](EntityAPI/Manual.md)
 
-
-
 ---
 
 ## 🔥 Performance

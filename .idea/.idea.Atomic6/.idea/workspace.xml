@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/EntityNames.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/EntityNames.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,15 +223,7 @@
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
-      <workItem from="1759742893758" duration="1399000" />
-    </task>
-    <task id="LOCAL-01196" summary="MultiEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1759597791118</created>
-      <option name="number" value="01196" />
-      <option name="presentableId" value="LOCAL-01196" />
-      <option name="project" value="LOCAL" />
-      <updated>1759597791118</updated>
+      <workItem from="1759742893758" duration="1707000" />
     </task>
     <task id="LOCAL-01197" summary="MultiEntityPool.md">
       <option name="closed" value="true" />
@@ -616,7 +609,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759744102386</updated>
     </task>
-    <option name="localTasksCounter" value="1245" />
+    <task id="LOCAL-01245" summary="Сделал Entity UI.md">
+      <option name="closed" value="true" />
+      <created>1759744502222</created>
+      <option name="number" value="01245" />
+      <option name="presentableId" value="LOCAL-01245" />
+      <option name="project" value="LOCAL" />
+      <updated>1759744502222</updated>
+    </task>
+    <option name="localTasksCounter" value="1246" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Const.md" />
     <MESSAGE value="IEntityTrigger.md" />
     <MESSAGE value="EntityTriggerBase`1.md" />
     <MESSAGE value="IEntityTrigger`1.md" />
@@ -668,7 +668,8 @@
     <MESSAGE value="EntityViewPool.md" />
     <MESSAGE value="EntityCollectionView`1.md" />
     <MESSAGE value="EntityCollectionView.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityCollectionView.md" />
+    <MESSAGE value="Сделал Entity UI.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал Entity UI.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
