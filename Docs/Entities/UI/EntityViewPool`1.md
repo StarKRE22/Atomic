@@ -11,7 +11,7 @@ public abstract class EntityViewPool<E, V> : MonoBehaviour
   allocations.
 - **Type Parameters:**
     - `E` — The type of entity associated with the views. Must implement [IEntity](../Entities/IEntity.md).
-    - `V` — The type of entity view ([EntityView\<E>](EntityView%601.md)) stored in the pool.
+    - `V` — The type of entity view stored in the pool.
 - **Inheritance:** `MonoBehaviour`
 - **Usage:** Use for efficient management of frequently spawned or displayed entity views.
 
@@ -39,8 +39,6 @@ public V Rent(string name);
 - **Returns:** A `EntityView` instance of type `V`.
 - **Throws:** `KeyNotFoundException` if no prefab with the specified name was registered.
 
----
-
 #### `Return(string name, V view)`
 
 ```csharp
@@ -52,8 +50,6 @@ public void Return(string name, V view);
     - `name` — The name of the view being returned.
     - `view` — The view instance to return.
 
----
-
 #### `Clear()`
 
 ```csharp
@@ -61,8 +57,6 @@ public void Clear();
 ```
 
 - **Description:** Clears all pooled instances and destroys their GameObjects.
-
----
 
 #### `RegisterPrefab(string entityName, V prefab)`
 
@@ -76,8 +70,6 @@ public void RegisterPrefab(string entityName, V prefab);
     - `prefab` — The prefab instance to register.
 - **Throws:** `ArgumentException` if a prefab with the same name already exists in the dictionary.
 
----
-
 #### `UnregisterPrefab(string entityName)`
 
 ```csharp
@@ -87,8 +79,6 @@ public void UnregisterPrefab(string entityName);
 - **Description:** Removes a previously registered prefab from the pool.
 - **Parameter:** `entityName` — The name key of the prefab to remove.
 
----
-
 #### `RegisterPrefabs(EntityViewCatalog<E, V> catalog)`
 
 ```csharp
@@ -97,8 +87,6 @@ public void RegisterPrefabs(EntityViewCatalog<E, V> catalog);
 
 - **Description:** Registers all prefabs from the specified catalog.
 - **Parameter:** `catalog` — The catalog containing prefabs to register.
-
----
 
 #### `UnregisterPrefabs(EntityViewCatalog<E, V> catalog)`
 

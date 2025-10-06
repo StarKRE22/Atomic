@@ -1,6 +1,8 @@
 # 🧩 EntityViewPool
 
 ```csharp
+[AddComponentMenu("Atomic/Entities/Entity View Pool")]
+[DisallowMultipleComponent]
 public class EntityViewPool : EntityViewPool<IEntity, EntityView>
 ```
 
@@ -37,8 +39,6 @@ public EntityView Rent(string name);
 - **Returns:** A pooled or newly instantiated `EntityView`.
 - **Throws:** `KeyNotFoundException` if no prefab with the specified name was registered.
 
----
-
 #### `Return(string name, EntityView view)`
 
 ```csharp
@@ -50,8 +50,6 @@ public void Return(string name, EntityView view);
     - `name` — The name of the view.
     - `view` — The view instance to return.
 
----
-
 #### `Clear()`
 
 ```csharp
@@ -59,8 +57,6 @@ public void Clear();
 ```
 
 - **Description:** Destroys all pooled instances and clears all pool stacks.
-
----
 
 #### `RegisterPrefab(string entityName, EntityView prefab)`
 
@@ -72,8 +68,6 @@ public void RegisterPrefab(string entityName, EntityView prefab);
 - **Parameters:**
     - `entityName` — Key used to identify the prefab.
     - `prefab` — The prefab to register.
-
----
 
 #### `UnregisterPrefab(string entityName)`
 
@@ -94,8 +88,6 @@ public void RegisterPrefabs(EntityViewCatalog catalog);
 
 - **Description:** Registers all prefabs contained in the specified catalog.
 - **Parameter:** `catalog` — The catalog containing prefabs to register.
-
----
 
 #### `UnregisterPrefabs(EntityViewCatalog catalog)`
 
@@ -124,12 +116,16 @@ public void UnregisterPrefabs(EntityViewCatalog catalog);
 EntityView view = pool.Rent("Player");
 ```
 
+---
+
 ### 3️⃣ Returning Views
 
 ```csharp
 // Return the view to the pool
 pool.Return("Player", view);
 ```
+
+---
 
 ### 4️⃣ Clearing the Pool
 
