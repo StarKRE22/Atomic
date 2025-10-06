@@ -11,7 +11,8 @@ framework, all game objects, systems, UI elements, and application contexts can 
 - [Using Rider Plugin](#-using-atomic-plugin-for-rider)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
-- [Best Practices](#-best-practices)
+
+---
 
 ## 📝 Requirements
 

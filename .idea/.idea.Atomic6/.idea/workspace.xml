@@ -5,10 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityView`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Catalog/EntityViewCatalog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Editor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Editor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Editor.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Static.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView_Static.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1_Static.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityCollectionView.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityView.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +85,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/InlineEntityTrigger`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Values.cs.meta" root0="SKIP_HIGHLIGHTING" />
@@ -222,31 +250,7 @@
       <workItem from="1759387244615" duration="33745000" />
       <workItem from="1759473604356" duration="11564000" />
       <workItem from="1759562206582" duration="30072000" />
-      <workItem from="1759651729723" duration="13085000" />
-    </task>
-    <task id="LOCAL-01184" summary="Начинаем делать раздел для пулов!">
-      <option name="closed" value="true" />
-      <created>1759585179159</created>
-      <option name="number" value="01184" />
-      <option name="presentableId" value="LOCAL-01184" />
-      <option name="project" value="LOCAL" />
-      <updated>1759585179159</updated>
-    </task>
-    <task id="LOCAL-01185" summary="Пилим пулы!">
-      <option name="closed" value="true" />
-      <created>1759585751492</created>
-      <option name="number" value="01185" />
-      <option name="presentableId" value="LOCAL-01185" />
-      <option name="project" value="LOCAL" />
-      <updated>1759585751492</updated>
-    </task>
-    <task id="LOCAL-01186" summary="IEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1759586128768</created>
-      <option name="number" value="01186" />
-      <option name="presentableId" value="LOCAL-01186" />
-      <option name="project" value="LOCAL" />
-      <updated>1759586128768</updated>
+      <workItem from="1759651729723" duration="17293000" />
     </task>
     <task id="LOCAL-01187" summary="IEntityPool`1.md">
       <option name="closed" value="true" />
@@ -616,7 +620,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759670716022</updated>
     </task>
-    <option name="localTasksCounter" value="1233" />
+    <task id="LOCAL-01233" summary="InlineEntityTrigger`1.md">
+      <option name="closed" value="true" />
+      <created>1759671058362</created>
+      <option name="number" value="01233" />
+      <option name="presentableId" value="LOCAL-01233" />
+      <option name="project" value="LOCAL" />
+      <updated>1759671058362</updated>
+    </task>
+    <task id="LOCAL-01234" summary="InlineEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1759671350679</created>
+      <option name="number" value="01234" />
+      <option name="presentableId" value="LOCAL-01234" />
+      <option name="project" value="LOCAL" />
+      <updated>1759671350679</updated>
+    </task>
+    <task id="LOCAL-01235" summary="Остался UI!">
+      <option name="closed" value="true" />
+      <created>1759672543122</created>
+      <option name="number" value="01235" />
+      <option name="presentableId" value="LOCAL-01235" />
+      <option name="project" value="LOCAL" />
+      <updated>1759672543122</updated>
+    </task>
+    <option name="localTasksCounter" value="1236" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,9 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="PrefabEntityPool`1.md" />
-    <MESSAGE value="PrefabEntityPool.md" />
-    <MESSAGE value="EntityPools" />
     <MESSAGE value="EntityUtils.md" />
     <MESSAGE value="Подвигал утилиты!" />
     <MESSAGE value="Начинаем делать фильтры!" />
@@ -668,7 +693,10 @@
     <MESSAGE value="StateChangedEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionEntityTrigger.md" />
+    <MESSAGE value="InlineEntityTrigger`1.md" />
+    <MESSAGE value="InlineEntityTrigger.md" />
+    <MESSAGE value="Остался UI!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Остался UI!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
