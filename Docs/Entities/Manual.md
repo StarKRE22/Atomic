@@ -32,7 +32,7 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 ## 🔌 Using Plugin for Rider
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
-the [Atomic Plugin](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
+the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic) or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
 but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 

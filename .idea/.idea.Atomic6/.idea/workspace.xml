@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -222,15 +220,7 @@
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
-      <workItem from="1759742893758" duration="12455000" />
-    </task>
-    <task id="LOCAL-01202" summary="PrefabEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1759600178143</created>
-      <option name="number" value="01202" />
-      <option name="presentableId" value="LOCAL-01202" />
-      <option name="project" value="LOCAL" />
-      <updated>1759600178143</updated>
+      <workItem from="1759742893758" duration="13145000" />
     </task>
     <task id="LOCAL-01203" summary="PrefabEntityPool.md">
       <option name="closed" value="true" />
@@ -616,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759780881477</updated>
     </task>
-    <option name="localTasksCounter" value="1251" />
+    <task id="LOCAL-01251" summary="Done!">
+      <option name="closed" value="true" />
+      <created>1759781126024</created>
+      <option name="number" value="01251" />
+      <option name="presentableId" value="LOCAL-01251" />
+      <option name="project" value="LOCAL" />
+      <updated>1759781126024</updated>
+    </task>
+    <option name="localTasksCounter" value="1252" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +641,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TagEntityTrigger.md" />
     <MESSAGE value="ValueEntityTrigger`1.md" />
     <MESSAGE value="ValueEntityTrigger.md" />
     <MESSAGE value="BehaviourEntityTrigger.md, BehaviourEntityTrigger`1.md" />
@@ -668,7 +665,8 @@
     <MESSAGE value="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen" />
     <MESSAGE value="Unity Editor Gen" />
     <MESSAGE value="Сделал раздел про EntityAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел про EntityAPI" />
+    <MESSAGE value="Done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
