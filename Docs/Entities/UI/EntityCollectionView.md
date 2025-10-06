@@ -10,7 +10,7 @@ public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
   Provides functionality to show, hide, add, remove, and clear entity views using a pool of reusable instances.
 - **Inheritance:** [EntityCollectionView<E, V>](EntityCollectionView%601.md)
 - **Usage:** Use when you do not need a custom entity type and want a ready-to-use collection of generic [EntityView](EntityView.md)s.
-- **See also:** [EntityViewPool<IEntity, EntityView>](EntityViewPool%601.md)
+- **See also:** [EntityViewPool<E, V>](EntityViewPool%601.md)
 
 ---
 
