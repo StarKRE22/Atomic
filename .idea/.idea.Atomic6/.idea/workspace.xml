@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/SceneEntityBaker___.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/SceneEntityBaker`1___.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Tutorials/Tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,15 +222,7 @@
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
-      <workItem from="1759742893758" duration="12155000" />
-    </task>
-    <task id="LOCAL-01201" summary="IPrefabEntityPool.md">
-      <option name="closed" value="true" />
-      <created>1759599717630</created>
-      <option name="number" value="01201" />
-      <option name="presentableId" value="LOCAL-01201" />
-      <option name="project" value="LOCAL" />
-      <updated>1759599717630</updated>
+      <workItem from="1759742893758" duration="12455000" />
     </task>
     <task id="LOCAL-01202" summary="PrefabEntityPool`1.md">
       <option name="closed" value="true" />
@@ -621,7 +608,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759774533043</updated>
     </task>
-    <option name="localTasksCounter" value="1250" />
+    <task id="LOCAL-01250" summary="Сделал раздел про EntityAPI">
+      <option name="closed" value="true" />
+      <created>1759780881477</created>
+      <option name="number" value="01250" />
+      <option name="presentableId" value="LOCAL-01250" />
+      <option name="project" value="LOCAL" />
+      <updated>1759780881477</updated>
+    </task>
+    <option name="localTasksCounter" value="1251" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TagEntityTrigger`1.md" />
     <MESSAGE value="TagEntityTrigger.md" />
     <MESSAGE value="ValueEntityTrigger`1.md" />
     <MESSAGE value="ValueEntityTrigger.md" />
@@ -673,7 +667,8 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen" />
     <MESSAGE value="Unity Editor Gen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Unity Editor Gen" />
+    <MESSAGE value="Сделал раздел про EntityAPI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел про EntityAPI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

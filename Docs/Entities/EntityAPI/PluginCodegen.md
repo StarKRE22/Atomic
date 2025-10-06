@@ -1,6 +1,11 @@
 # Generating API through Rider Plugin
 
-В этом разделе описано, как можно использовать кодогенерацию для сущностей чере Rider Plugin:
+This section describes how to use code generation of extension methods for entities through
+the [Rider Plugin](https://plugins.jetbrains.com/plugin/28321-atomic). Also, you can install plugin
+from [GitHub](https://github.com/Prylor/atomic-rider-plugin).
+---
+
+## Usage
 
 1. Right-click on your project folder
 2. Select `New` → `Atomic File`
@@ -17,19 +22,19 @@ aggressiveInlining: true
 unsafe: false
 
 imports:
-    System
-    UnityEngine
-    Atomic.Entities
+  System
+  UnityEngine
+  Atomic.Entities
 
 tags:
-    Player
-    Enemy
-    Projectile
+  Player
+  Enemy
+  Projectile
 
 values:
-    Health: int
-    Position: Vector3
-    Damage: float
+  Health: int
+  Position: Vector3
+  Damage: float
 ```
 
 ### Generating Code
@@ -44,11 +49,13 @@ values:
 ### Generated Methods
 
 For **Tags**:
+
 - `HasPlayerTag()` - Check if entity has tag
 - `AddPlayerTag()` - Add tag to entity
 - `DelPlayerTag()` - Remove tag from entity
 
 For **Values**:
+
 - `GetHealth()` - Get value
 - `SetHealth(int value)` - Set value
 - `AddHealth()` - Add component
@@ -57,7 +64,9 @@ For **Values**:
 - `TryGetHealth(out int value)` - Try get value
 - `RefHealth()` - Get reference (if unsafe enabled)
 
-## ⚙️ Configuration
+---
+
+## Configuration
 
 ### Plugin Settings
 
@@ -69,11 +78,11 @@ Access settings via `File` → `Settings` → `Tools` → `Atomic Plugin`
 
 ### Atomic File Properties
 
-| Property | Description | Required |
-|----------|-------------|----------|
-| `entityType` | Base entity type (e.g., Entity, GameObject) | Yes |
-| `namespace` | C# namespace for generated code | Yes |
-| `className` | Name of the generated static class | Yes |
-| `directory` | Output directory (relative to project) | No |
-| `aggressiveInlining` | Enable aggressive inlining optimization | No |
-| `unsafe` | Enable unsafe code for ref returns | No |
+| Property             | Description                                 | Required |
+|----------------------|---------------------------------------------|----------|
+| `entityType`         | Base entity type (e.g., Entity, GameObject) | Yes      |
+| `namespace`          | C# namespace for generated code             | Yes      |
+| `className`          | Name of the generated static class          | Yes      |
+| `directory`          | Output directory (relative to project)      | No       |
+| `aggressiveInlining` | Enable aggressive inlining optimization     | No       |
+| `unsafe`             | Enable unsafe code for ref returns          | No       |
