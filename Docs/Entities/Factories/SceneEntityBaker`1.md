@@ -17,6 +17,7 @@ public abstract class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> whe
 
 | Parameters                 | Description                                          | 
 |----------------------------|------------------------------------------------------|
+| `autoCompile`              | Should precompute capacities when OnValidate happens?       |
 | `initialTagCapacity`       | Initial number of tags to assign to the entity       |
 | `initialValueCapacity`     | Initial number of values to assign to the entity     |
 | `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
@@ -169,7 +170,7 @@ public static void Bake(GameObject gameObject, ICollection<E> results, bool incl
 
 ```csharp
 [ContextMenu(nameof(Precompile))]
-protected virtual void Precompile();
+private void Precompile();
 ```
 
 - **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value

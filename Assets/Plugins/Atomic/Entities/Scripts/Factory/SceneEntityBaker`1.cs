@@ -26,6 +26,15 @@ namespace Atomic.Entities
     public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
+        [FoldoutGroup("Optimization")]
+#else
+        [Header("Editor")]
+#endif
+        [Tooltip("Should precompute capacities when OnValidate happens?")]
+        [SerializeField]
+        private bool autoCompile = true;
+
+#if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
         [PropertyOrder(1000)]
@@ -64,19 +73,8 @@ namespace Atomic.Entities
         /// </summary>
         protected virtual void OnValidate()
         {
-#if UNITY_EDITOR
-            if (EditorApplication.isPlaying)
-                return;
-
-            try
-            {
+            if (this.autoCompile)
                 this.Precompile();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogWarning($"[SceneEntityFactory] Precompile failed: {ex.Message}", this);
-            }
-#endif
         }
 
         /// <summary>
@@ -92,24 +90,40 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Creates a temporary entity using <see cref="Create"/> and extracts basic metadata such as
-        /// name, tag count, value count, and behaviour count. This is useful for editor workflows,
-        /// asset previews, and scene baking optimization.
+        /// Generates a preview entity and extracts metadata such as tag count, value count, and name.
+        /// This is useful for optimizing asset previews and reducing runtime introspection.
         /// </summary>
+#if ODIN_INSPECTOR
+        [Button]
+        [FoldoutGroup("Optimization")]
+        [PropertyOrder(1000)]
+#endif
         [ContextMenu(nameof(Precompile))]
-        protected virtual void Precompile()
+        private protected virtual void Precompile()
         {
 #if UNITY_EDITOR
-            E entity = this.Create();
-            if (entity == null)
-            {
-                Debug.LogWarning($"{nameof(SceneEntityBaker<E>)}: Create() returned null.", this);
+            if (EditorApplication.isPlaying)
                 return;
-            }
 
-            this.initialTagCapacity = entity.TagCount;
-            this.initialValueCapacity = entity.ValueCount;
-            this.initialBehaviourCapacity = entity.BehaviourCount;
+            try
+            {
+                E entity = this.Create();
+                if (entity == null)
+                {
+                    Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.",
+                        this);
+                }
+                else
+                {
+                    this.initialTagCapacity = entity.TagCount;
+                    this.initialValueCapacity = entity.ValueCount;
+                    this.initialBehaviourCapacity = entity.BehaviourCount;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
+            }
 #endif
         }
     }

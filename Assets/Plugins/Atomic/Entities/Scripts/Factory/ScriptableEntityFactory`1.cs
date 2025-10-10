@@ -24,6 +24,15 @@ namespace Atomic.Entities
     public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
+        [FoldoutGroup("Optimization")]
+#else
+        [Header("Editor")]
+#endif
+        [Tooltip("Should precompute capacities when OnValidate happens?")]
+        [SerializeField]
+        private bool autoCompile = true;
+
+#if ODIN_INSPECTOR
         [ReadOnly]
         [FoldoutGroup("Optimization")]
         [PropertyOrder(1000)]
@@ -62,19 +71,8 @@ namespace Atomic.Entities
         /// </summary>
         protected virtual void OnValidate()
         {
-#if UNITY_EDITOR
-            if (EditorApplication.isPlaying)
-                return;
-
-            try
-            {
+            if (this.autoCompile)
                 this.Precompile();
-            }
-            catch (Exception ex)
-            {
-                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
-            }
-#endif
         }
 
         /// <summary>
@@ -98,19 +96,31 @@ namespace Atomic.Entities
         [FoldoutGroup("Optimization")]
         [PropertyOrder(1000)]
 #endif
-        protected virtual void Precompile()
+        [ContextMenu(nameof(Precompile))]
+        private protected virtual void Precompile()
         {
 #if UNITY_EDITOR
-            E entity = this.Create();
-            if (entity == null)
+            if (EditorApplication.isPlaying)
+                return;
+
+            try
             {
-                Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.", this);
+                E entity = this.Create();
+                if (entity == null)
+                {
+                    Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.",
+                        this);
+                }
+                else
+                {
+                    this.initialTagCapacity = entity.TagCount;
+                    this.initialValueCapacity = entity.ValueCount;
+                    this.initialBehaviourCapacity = entity.BehaviourCount;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.initialTagCapacity = entity.TagCount;
-                this.initialValueCapacity = entity.ValueCount;
-                this.initialBehaviourCapacity = entity.BehaviourCount;
+                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
             }
 #endif
         }

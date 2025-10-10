@@ -18,6 +18,7 @@ public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>
 
 | Parameters                 | Description                                          | 
 |----------------------------|------------------------------------------------------|
+| `autoCompile`              | Should precompute capacities when OnValidate happens?       |
 | `initialTagCapacity`       | Initial number of tags to assign to the entity       |
 | `initialValueCapacity`     | Initial number of values to assign to the entity     |
 | `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
@@ -99,7 +100,7 @@ protected virtual void OnValidate();
 
 ```csharp
 [ContextMenu(nameof(Precompile))]
-protected virtual void Precompile();
+private void Precompile();
 ```
 
 - **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
