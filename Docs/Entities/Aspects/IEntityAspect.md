@@ -1,6 +1,6 @@
 # 🧩 IEntityAspect
 
-Represents an interface that applies or discards reusable behavior on any [IEntity](../Entities/IEntity.md) instance.
+Represents an interface that applies or discards reusable behavior on any [entity](../Entities/Manual.md) instance.
 
 ---
 
@@ -17,7 +17,9 @@ Represents an interface that applies or discards reusable behavior on any [IEnti
 
 ## 🗂 Example of Usage
 
+<!--
 Below an example of creating **speed buff** that applies a temporary speed nultiplier to an entity:
+-->
 
 ```csharp
 [Serializable]
