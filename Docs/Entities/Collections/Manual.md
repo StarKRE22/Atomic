@@ -71,6 +71,18 @@ entities.DisposeEntities();
 
 ---
 
+## ⚙️ Key Characteristics
+
+- **Insertion & Removal** – Near constant-time operations thanks to internal hash table management.
+- **Lookup** – O(1) average complexity for `Contains`.
+- **Enumeration** – Iterates in insertion order with minimal overhead.
+- **Memory Efficiency** – Uses pooled arrays for temporary operations, avoiding unnecessary allocations.
+- **Use Case** – Suitable for **real-time applications** (e.g., games, simulations) managing large sets of entities
+  efficiently.
+
+---
+
+
 ## 📝 Notes
 
 - Use **generic collections** (`EntityCollection<E>` / `IEntityCollection<E>`) for type safety.

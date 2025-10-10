@@ -7,7 +7,7 @@ using Unity.PerformanceTesting;
 
 namespace Atomic.Entities
 {
-    public sealed class EntityCollection_Performance
+    public sealed class EntityCollectionPerformance
     {
         private const int N = 1000;
         private Entity[] _source;
@@ -32,7 +32,7 @@ namespace Atomic.Entities
                 .CleanUp(collection.Clear)
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("EntityCollection.Add()"))
+                .SampleGroup(new SampleGroup("EntityCollection.Add()", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -47,7 +47,7 @@ namespace Atomic.Entities
                 })
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("EntityCollection.Contains()"))
+                .SampleGroup(new SampleGroup("EntityCollection.Contains()", SampleUnit.Microsecond))
                 .Run();
         }
 
@@ -63,7 +63,7 @@ namespace Atomic.Entities
                 .SetUp(() => collection.AddRange(_source))
                 .WarmupCount(5)
                 .MeasurementCount(20)
-                .SampleGroup(new SampleGroup("EntityCollection.Remove()"))
+                .SampleGroup(new SampleGroup("EntityCollection.Remove()", SampleUnit.Microsecond))
                 .Run();
         }
 

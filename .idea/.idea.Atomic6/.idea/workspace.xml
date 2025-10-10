@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Collection/EntityCollection_Performance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Collection/EntityCollectionPerformance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Collection/EntityCollection_Performance.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Collection/EntityCollectionPerformance.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollectionPerformance.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollectionPerformance.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,15 +226,8 @@
       <workItem from="1759562206582" duration="30072000" />
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
-      <workItem from="1759742893758" duration="13145000" />
-    </task>
-    <task id="LOCAL-01203" summary="PrefabEntityPool.md">
-      <option name="closed" value="true" />
-      <created>1759600555722</created>
-      <option name="number" value="01203" />
-      <option name="presentableId" value="LOCAL-01203" />
-      <option name="project" value="LOCAL" />
-      <updated>1759600555722</updated>
+      <workItem from="1759742893758" duration="14590000" />
+      <workItem from="1760088001288" duration="839000" />
     </task>
     <task id="LOCAL-01204" summary="EntityPools">
       <option name="closed" value="true" />
@@ -614,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759781126024</updated>
     </task>
-    <option name="localTasksCounter" value="1252" />
+    <task id="LOCAL-01252" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1759781836666</created>
+      <option name="number" value="01252" />
+      <option name="presentableId" value="LOCAL-01252" />
+      <option name="project" value="LOCAL" />
+      <updated>1759781836666</updated>
+    </task>
+    <option name="localTasksCounter" value="1253" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +652,6 @@
     <MESSAGE value="ValueEntityTrigger.md" />
     <MESSAGE value="BehaviourEntityTrigger.md, BehaviourEntityTrigger`1.md" />
     <MESSAGE value="BehaviourEntityTrigger.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="StateChangedEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
@@ -666,7 +672,8 @@
     <MESSAGE value="Unity Editor Gen" />
     <MESSAGE value="Сделал раздел про EntityAPI" />
     <MESSAGE value="Done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
