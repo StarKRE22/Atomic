@@ -62,7 +62,7 @@ public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> whe
 ```
 
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
-- **Inheritance:** Implements [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
+- **Inheritance:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 - **Note:** Provides type-safe application and discard for a specific entity type.
 - **See also:** [SceneEntityAspect](SceneEntityAspect.md)
 
