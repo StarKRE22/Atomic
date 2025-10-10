@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,23 +225,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="6569000" />
-    </task>
-    <task id="LOCAL-01236" summary="Начинаем делать EntityViews">
-      <option name="closed" value="true" />
-      <created>1759738254747</created>
-      <option name="number" value="01236" />
-      <option name="presentableId" value="LOCAL-01236" />
-      <option name="project" value="LOCAL" />
-      <updated>1759738254747</updated>
-    </task>
-    <task id="LOCAL-01237" summary="EntityView.md">
-      <option name="closed" value="true" />
-      <created>1759741118963</created>
-      <option name="number" value="01237" />
-      <option name="presentableId" value="LOCAL-01237" />
-      <option name="project" value="LOCAL" />
-      <updated>1759741118964</updated>
+      <workItem from="1760113573847" duration="7222000" />
     </task>
     <task id="LOCAL-01238" summary="EntityViewCatalog.md">
       <option name="closed" value="true" />
@@ -629,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760123440923</updated>
     </task>
-    <option name="localTasksCounter" value="1285" />
+    <task id="LOCAL-01285" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760123963936</created>
+      <option name="number" value="01285" />
+      <option name="presentableId" value="LOCAL-01285" />
+      <option name="project" value="LOCAL" />
+      <updated>1760123963937</updated>
+    </task>
+    <task id="LOCAL-01286" summary="InlineActions.md">
+      <option name="closed" value="true" />
+      <created>1760124255634</created>
+      <option name="number" value="01286" />
+      <option name="presentableId" value="LOCAL-01286" />
+      <option name="project" value="LOCAL" />
+      <updated>1760124255634</updated>
+    </task>
+    <option name="localTasksCounter" value="1287" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityCollectionView`1.md" />
     <MESSAGE value="EntityCollectionView.md" />
     <MESSAGE value="Сделал Entity UI.md" />
     <MESSAGE value="Остался раздел с EntityAPI и Performance для коллекций!" />
@@ -673,7 +662,6 @@
     <MESSAGE value="Выстругал аспекты!" />
     <MESSAGE value="EntityBehaviours" />
     <MESSAGE value="IEntityBehaviour.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Actions" />
     <MESSAGE value="IActions.md" />
@@ -681,7 +669,9 @@
     <MESSAGE value="IAction`1.md" />
     <MESSAGE value="IAction`2.md" />
     <MESSAGE value="IAction`3.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IAction`3.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="InlineActions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineActions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

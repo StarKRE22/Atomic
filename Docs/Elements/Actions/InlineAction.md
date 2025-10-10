@@ -1,16 +1,50 @@
 # 🧩 InlineAction
 
-- **Description:** Represents a <b>parameterless delegate action</b> that can be invoked.
-- **Inheritance:** [IAction](IAction.md)
-- **Note:** Supports Odin Inspector
+Represents a <b>parameterless delegate action</b> that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+      - [InlineAction(Action)](#inlineactionaction)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+      - [InlineAction(Action)](#operator-inlineactionaction)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using inline action for writing "Hello World" to the Console:
+
+```csharp
+IAction action = new InlineAction(() => Console.WriteLine("Hello World!"));
+action.Invoke(); // Output: Hello World!
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public class InlineAction : IAction
 ```
 
+- **Description:** Represents a <b>parameterless delegate action</b> that can be invoked.
+- **Inheritance:** [IAction](IAction.md)
+- **Note:** Supports Odin Inspector
+
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `InlineAction(Action)`
 
@@ -24,7 +58,7 @@ public InlineAction(Action action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -45,7 +79,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineAction(Action)`
 
@@ -56,12 +90,3 @@ public static implicit operator InlineAction(Action action);
 - **Description:** Implicitly converts a delegate of type `Action` to a `InlineAction`.
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IAction action = new InlineAction(() => Console.WriteLine("Hello World!"));
-action.Invoke(); // Output: Hello World!
-```
