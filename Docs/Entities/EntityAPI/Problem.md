@@ -1,4 +1,4 @@
-# Problem
+# The Problem
 
 When a developer use [entities](../Entities/Manual.md) and works with tags and values, they typically need to reference
 them via `int` keys or `string` names.

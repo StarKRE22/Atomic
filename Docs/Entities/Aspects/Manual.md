@@ -11,7 +11,7 @@ Below are the different types of aspects depending on the usage scenario:
 - [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md) <!-- + -->
 - [ScriptableEntityAspect](ScriptableEntityAspect.md) <!-- + -->
 - [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md) <!-- + -->
-
+- [Extensions](Extensions.md) <!-- + -->
 ---
 
 ## 🗂 Example of Usage

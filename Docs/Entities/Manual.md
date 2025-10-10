@@ -4,6 +4,7 @@ Represents a framework for Unity and C# that allows you to **architect your game
 framework, all game objects, systems, UI elements, and application contexts can be represented as
 **entities**, each containing **state** and **behaviour**.
 
+---
 ## 📑 Table of Contents
 
 - [Requirements](#-requirements)
@@ -32,13 +33,17 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 ## 🔌 Using Plugin for Rider
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
-the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic) or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
+the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
+or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
 but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
 ---
 
 ## 🔍 API Reference
+
+This section provides a complete reference to all major subsystems of the framework. Each module is documented with
+usage examples, lifecycle details, and integration notes to help you build, extend, and optimize your architecture.
 
 - [Entities](Entities/Manual.md) <!-- + -->
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
@@ -53,13 +58,14 @@ smoother and more powerful than in Unity.
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
 - [UI](UI/Manual.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
-- [Entity API](EntityAPI/Manual.md)
+- [Entity API](EntityAPI/Manual.md) <!-- + -->
 
 ---
 
 ## 🔥 Performance
 
+This section focuses on **runtime efficiency** within the framework. It provides detailed benchmarks, comparisons, and
+implementation notes that highlight how different systems and data structures perform under real-world conditions.
+
 - [Entities](Entities/EntityPerformance.md)
 - [Collections](Collections/EntityCollectionPerformance.md)
-
----
