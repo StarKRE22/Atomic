@@ -91,15 +91,85 @@ Each behaviour can handle different events of the entity:
 
 There are separate interfaces that handles the corresponding lifecycle events of the entity.
 
+<details>
+  <summary><b>Common</b></summary>
+  <ul>
+    <li><a href="IEntityBehaviour.md">IEntityBehaviour</a></li>
+    <li><a href="../Attributes/RunInEditModeAttribute.md">RunInEditModeAttribute</a></li>
+  </ul>
+</details>
 
-- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
+<details>
+  <summary><b>Init</b></summary>
+  <ul>
+    <li><a href="IEntityInit.md">IEntityInit</a></li>
+    <li><a href="IEntityInit%601.md">IEntityInit&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Dispose</b></summary>
+  <ul>
+    <li><a href="IEntityDispose.md">IEntityDispose</a></li>
+    <li><a href="IEntityDispose%601.md">IEntityDispose&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Enable</b></summary>
+  <ul>
+    <li><a href="IEntityEnable.md">IEntityEnable</a></li>
+    <li><a href="IEntityEnable%601.md">IEntityEnable&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Disable</b></summary>
+  <ul>
+    <li><a href="IEntityDisable.md">IEntityDisable</a></li>
+    <li><a href="IEntityDisable%601.md">IEntityDisable&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Tick</b></summary>
+  <ul>
+    <li><a href="IEntityTick.md">IEntityTick</a></li>
+    <li><a href="IEntityTick%601.md">IEntityTick&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>FixedTick</b></summary>
+  <ul>
+    <li><a href="IEntityFixedTick.md">IEntityFixedTick</a></li>
+    <li><a href="IEntityFixedTick%601.md">IEntityFixedTick&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>LateTick</b></summary>
+  <ul>
+    <li><a href="IEntityLateTick.md">IEntityLateTick</a></li>
+    <li><a href="IEntityLateTick%601.md">IEntityLateTick&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary><b>Gizmos</b></summary>
+  <ul>
+    <li><a href="IEntityGizmos.md">IEntityGizmos</a></li>
+    <li><a href="IEntityGizmos%601.md">IEntityGizmos&lt;E&gt;</a></li>
+  </ul>
+</details>
+
+
 - **Init**
     - [IEntityInit](IEntityInit.md) <!-- + -->
     - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
 - **Dispose**
     - [IEntityDispose](IEntityDispose.md) <!-- + -->
     - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
-
 - **Enable**
     - [IEntityEnable](IEntityEnable.md) <!-- + -->
     - [IEntityEnable&lt;E&gt;](IEntityEnable%601.md) <!-- + -->
@@ -118,8 +188,6 @@ There are separate interfaces that handles the corresponding lifecycle events of
 - **Gizmos**
     - [IEntityGizmos](IEntityGizmos.md) <!-- + -->
     - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
-- **EditMode**
-    - [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
 
 ---
 
