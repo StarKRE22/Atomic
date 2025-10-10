@@ -1,5 +1,27 @@
 # 🧩 InlineAction&lt;T1, T2, T3, T4&gt;
 
+Represents an action <b>with four parameters</b> that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineAction(Action\<T1, T2, T3, T4>)](#inlineactionactiont1-t2-t3-t4)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineAction(Action\<T1, T2, T3, T4>)](#operator-inlineactiont1-t2-t3-t4actiont1-t2-t3-t4)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
@@ -15,7 +37,7 @@ public class InlineAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineAction(Action<T1, T2, T3, T4>)`
 
@@ -29,7 +51,7 @@ public InlineAction(Action<T1, T2, T3, T4> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
@@ -55,7 +77,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineAction<T1, T2, T3, T4>(Action<T1, T2, T3, T4>)`
 

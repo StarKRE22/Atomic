@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/InlineAction`4.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -222,15 +225,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="9068000" />
-    </task>
-    <task id="LOCAL-01242" summary="EntityViewPool.md">
-      <option name="closed" value="true" />
-      <created>1759742818545</created>
-      <option name="number" value="01242" />
-      <option name="presentableId" value="LOCAL-01242" />
-      <option name="project" value="LOCAL" />
-      <updated>1759742818545</updated>
+      <workItem from="1760113573847" duration="9449000" />
     </task>
     <task id="LOCAL-01243" summary="EntityCollectionView`1.md">
       <option name="closed" value="true" />
@@ -616,7 +611,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760126053872</updated>
     </task>
-    <option name="localTasksCounter" value="1291" />
+    <task id="LOCAL-01291" summary="InlineAction`3.md">
+      <option name="closed" value="true" />
+      <created>1760128368354</created>
+      <option name="number" value="01291" />
+      <option name="presentableId" value="LOCAL-01291" />
+      <option name="project" value="LOCAL" />
+      <updated>1760128368354</updated>
+    </task>
+    <option name="localTasksCounter" value="1292" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen" />
     <MESSAGE value="Unity Editor Gen" />
     <MESSAGE value="Сделал раздел про EntityAPI" />
     <MESSAGE value="Done!" />
@@ -668,7 +670,8 @@
     <MESSAGE value="InlineAction`1.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="InlineAction`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineAction`2.md" />
+    <MESSAGE value="InlineAction`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineAction`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

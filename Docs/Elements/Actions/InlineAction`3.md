@@ -7,14 +7,14 @@ Represents an action with three parameters that can be invoked.
 ## 📑 Table of Contents
 
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Constructors](#-constructors)
-    - [InlineAction(Action\<T1, T2, T3>)](#inlineactionactiont1-t2-t3)
-  - [Methods](#-methods)
-    - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
-    - [ToString()](#tostring)
-  - [Operators](#-operators)
-    - [InlineAction(Action\<T1, T2, T3>)](#operator-inlineactiont1-t2-t3actiont1-t2-t3)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineAction(Action\<T1, T2, T3>)](#inlineactionactiont1-t2-t3)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineAction(Action\<T1, T2, T3>)](#operator-inlineactiont1-t2-t3actiont1-t2-t3)
 
 ---
 
