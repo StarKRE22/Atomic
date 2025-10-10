@@ -475,18 +475,21 @@ or multiplayer games.
 This section outlines **recommended approaches and patterns** when working with the library. Following these
 practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
 or multiplayer games.
-
-- [Prefer Atomic Interfaces to Concrete Classes](../../Docs/BestPractices/PreferAbstractInterfaces.md)
-- [Use Shared Constants](../../Docs/BestPractices/SharedConstants.md)
-- [Iterating over Reactive Collections](../../Docs/BestPractices/IteratingReactiveCollections.md)
-- [Requests vs Actions](../../Docs/BestPractices/RequestsVsActions.md)
-- [Request-Condition-Action-Event Flow](../../Docs/BestPractices/RequestConditionActionEvent.md)
-- [Using InlineActions](../BestPractices/UsingInlineActions.md)
-- [Using InlineFunctions](../BestPractices/UsingInlineFunctions.md)
-- [Using Cooldown in Game Mechanics](../BestPractices/UsingCooldownInGameMechanics.md)
-- [Using Constants with AndExpressions](../BestPractices/UsingConstantsWithAndExpressions.md)
-- [Choosing Between Timer and Cooldown](../BestPractices/ChosingBetweenTimerAndCooldown.md)
-- [Using Observe Extension Method](Values/IReactiveValue.md/#-best-practice)
+- [Choosing Between Timer and Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
+- [Iterating over Entity](Docs/BestPractices/IteratingOverEntity.md)
+- [Iterating over EntityCollections](Docs/BestPractices/IteratingOverEntityCollections.md)
+- [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)  <!-- + -->
+- [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)  <!-- + -->
+- [Overr]
+- [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
+- [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
+- [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
+- [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
+- [Using InlineActions](Docs/BestPractices/UsingInlineActions.md)
+- [Using InlineFunctions](Docs/BestPractices/UsingInlineFunctions.md)
+- [Using Cooldown in Game Mechanics](Docs/BestPractices/UsingCooldownInGameMechanics.md)
+- [Using Constants with AndExpressions](Docs/BestPractices/UsingConstantsWithAndExpressions.md)
+- [Using Observe Extension Method](Docs/BestPractices/UsingObserveWithReactiveValues.md)
 - [Using Entity Installers with DisposeComposite](../BestPractices/UsingSubscriptionsWitDisposeComposite.md)
 - [Using Optional Wrappers](Utils/Optional.md/#-best-practice)
 - [Using [SerializeReference] for Composite Actions](../BestPractices/UsingSerializeReferenceForCompositeActions.md)

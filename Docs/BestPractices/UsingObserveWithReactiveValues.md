@@ -1,5 +1,4 @@
-
-## 📌 Best Practice
+# 📌 Best Practice
 
 It is recommended to use the [Observe](Extensions.md/#observe) extension method and store (cache) the returned
 subscription handle for proper disposal or reuse.

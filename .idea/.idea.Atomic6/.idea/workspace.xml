@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollectionsWorldsAndFilters.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,23 +229,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="706000" />
-    </task>
-    <task id="LOCAL-01219" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1759664090202</created>
-      <option name="number" value="01219" />
-      <option name="presentableId" value="LOCAL-01219" />
-      <option name="project" value="LOCAL" />
-      <updated>1759664090202</updated>
-    </task>
-    <task id="LOCAL-01220" summary="Обновил EntityTriggers">
-      <option name="closed" value="true" />
-      <created>1759666795358</created>
-      <option name="number" value="01220" />
-      <option name="presentableId" value="LOCAL-01220" />
-      <option name="project" value="LOCAL" />
-      <updated>1759666795358</updated>
+      <workItem from="1760113573847" duration="2890000" />
     </task>
     <task id="LOCAL-01221" summary="TagEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -618,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760114014161</updated>
     </task>
-    <option name="localTasksCounter" value="1268" />
+    <task id="LOCAL-01268" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760114313362</created>
+      <option name="number" value="01268" />
+      <option name="presentableId" value="LOCAL-01268" />
+      <option name="project" value="LOCAL" />
+      <updated>1760114313362</updated>
+    </task>
+    <task id="LOCAL-01269" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760114363934</created>
+      <option name="number" value="01269" />
+      <option name="presentableId" value="LOCAL-01269" />
+      <option name="project" value="LOCAL" />
+      <updated>1760114363934</updated>
+    </task>
+    <option name="localTasksCounter" value="1270" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +665,6 @@
     <MESSAGE value="Unity Editor Gen" />
     <MESSAGE value="Сделал раздел про EntityAPI" />
     <MESSAGE value="Done!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="EntityCollectionPerformance.md" />
     <MESSAGE value="Фиксы в доке!" />
     <MESSAGE value="Entity Aspect Extensions.md" />
@@ -670,7 +674,8 @@
     <MESSAGE value="Выстругал аспекты!" />
     <MESSAGE value="EntityBehaviours" />
     <MESSAGE value="IEntityBehaviour.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityBehaviour.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
