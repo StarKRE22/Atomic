@@ -1,5 +1,40 @@
 # 🧩 InlineAction&lt;T&gt;
 
+Represents an action <b>with one parameter</b> that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineAction(Action\<T>)](#inlineactionactiont)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineAction(Action\<T>)](#operator-inlineactiontactiont)
+
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using inline action for destroying game objects: 
+
+```csharp
+IAction<GameObject> destroyAction = new InlineAction<GameObject>(GameObject.Destroy);
+destroyAction.Invoke(gameObject);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineAction<T> : IAction<T>
 ```
@@ -11,7 +46,7 @@ public class InlineAction<T> : IAction<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `InlineAction(Action<T>)`
 
@@ -25,7 +60,7 @@ public InlineAction(Action<T> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -47,7 +82,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineAction<T>(Action<T>)`
 
@@ -59,13 +94,3 @@ public static implicit operator InlineAction<T>(Action<T> action);
 - **Type Parameter:** `T` — input parameter.
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IAction<GameObject> destroyAction = new InlineAction<GameObject>(GameObject.Destroy);
-destroyAction.Invoke(gameObject);
-```
-
