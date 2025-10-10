@@ -1,8 +1,7 @@
 # 🧩 Actions
 
 Provide a set of abstractions for defining and invoking logic with varying numbers of input parameters. These action
-types are lightweight and flexible, making them ideal for use in **event systems, command patterns, or reactive
-programming**. They allow developers to encapsulate behavior, combine multiple actions, or reference scene-specific
+types are lightweight and flexible, making them ideal for use in **command patterns and object-oriented design**. They allow developers to encapsulate behavior, combine multiple actions, or reference scene-specific
 logic in a clean, reusable way.
 
 ---

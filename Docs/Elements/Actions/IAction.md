@@ -1,22 +1,13 @@
 # 🧩 IAction
 
-```csharp
-public interface IAction
-```
-
-- **Description:** Represents a <b>parameterless executable action</b>.
+Represents a <b>parameterless executable action</b>.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Invoke()`
-
-```csharp
-public void Invoke();
-```
-
-- **Description:** Executes the action logic
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
 
 ---
 
@@ -39,3 +30,25 @@ action.Invoke();
 
 // Output: Hello World!
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public interface IAction
+```
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public void Invoke();
+```
+
+- **Description:** Executes the action logic
