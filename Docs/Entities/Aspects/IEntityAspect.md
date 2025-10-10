@@ -1,40 +1,23 @@
 # 🧩 IEntityAspect
 
-```csharp
-public interface IEntityAspect : IEntityAspect<IEntity>
-```
-
-- **Description:** Represents an interface that applies or discards reusable behavior on any [IEntity](../Entities/IEntity.md) instance.
-- **Note:** Allows modular behavior to be dynamically added or removed at runtime.
-- **See also:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
+Represents an interface that applies or discards reusable behavior on any [IEntity](../Entities/IEntity.md) instance.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Apply(IEntity)`
-
-```csharp
-public void Apply(IEntity entity);
-```
-
-- **Description:** Applies the aspect to the specified entity.
-- **Parameter:** `entity` – The entity to which the aspect will be applied.
-
-#### `Discard(IEntity)`
-
-```csharp
-public void Discard(IEntity entity);
-```
-
-- **Description:** Reverses the effects of `Apply` on the specified entity.
-- **Parameter:** `entity` – The entity from which the aspect should be removed.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Apply()](#applyientity)
+    - [Discard()](#discardientity)
 
 ---
 
 ## 🗂 Example of Usage
 
-Applies a temporary speed buff to an entity:
+Below an example of creating **speed buff** that applies a temporary speed nultiplier to an entity:
 
 ```csharp
 [Serializable]
@@ -56,3 +39,39 @@ public sealed class SpeedBuff : IEntityAspect
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🧩 Type
+
+```csharp
+public interface IEntityAspect : IEntityAspect<IEntity>
+```
+
+- **Description:**
+- **Note:** Allows modular behavior to be dynamically added or removed at runtime.
+- **See also:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
+
+---
+
+### 🏹 Methods
+
+#### `Apply(IEntity)`
+
+```csharp
+public void Apply(IEntity entity);
+```
+
+- **Description:** Applies the aspect to the specified entity.
+- **Parameter:** `entity` – The entity to which the aspect will be applied.
+
+#### `Discard(IEntity)`
+
+```csharp
+public void Discard(IEntity entity);
+```
+
+- **Description:** Reverses the effects of `Apply` on the specified entity.
+- **Parameter:** `entity` – The entity from which the aspect should be removed.
