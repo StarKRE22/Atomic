@@ -8,7 +8,9 @@ Represents an executable action that <b>takes one argument</b>.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
 ---
 
 ## 🗂 Example of Usage

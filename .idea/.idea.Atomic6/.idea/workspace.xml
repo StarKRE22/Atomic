@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,23 +225,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="4923000" />
-    </task>
-    <task id="LOCAL-01229" summary="StateChangedEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759669789740</created>
-      <option name="number" value="01229" />
-      <option name="presentableId" value="LOCAL-01229" />
-      <option name="project" value="LOCAL" />
-      <updated>1759669789740</updated>
-    </task>
-    <task id="LOCAL-01230" summary="StateChangedEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759669960169</created>
-      <option name="number" value="01230" />
-      <option name="presentableId" value="LOCAL-01230" />
-      <option name="project" value="LOCAL" />
-      <updated>1759669960169</updated>
+      <workItem from="1760113573847" duration="5367000" />
     </task>
     <task id="LOCAL-01231" summary="SubscriptionEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -618,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760122192188</updated>
     </task>
-    <option name="localTasksCounter" value="1278" />
+    <task id="LOCAL-01278" summary="IActions.md">
+      <option name="closed" value="true" />
+      <created>1760122310212</created>
+      <option name="number" value="01278" />
+      <option name="presentableId" value="LOCAL-01278" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122310212</updated>
+    </task>
+    <task id="LOCAL-01279" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122519005</created>
+      <option name="number" value="01279" />
+      <option name="presentableId" value="LOCAL-01279" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122519005</updated>
+    </task>
+    <option name="localTasksCounter" value="1280" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
