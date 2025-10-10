@@ -1,29 +1,18 @@
 # 🧩 Entity Behaviours
 
 **Entity Behaviour** is a modular controller that handles [IEntity](../Entities/IEntity.md) lifecycle events and
-attached to concrete instance of entity. It allows
-entities to dynamically compose functionality at runtime, following the **Entity-State-Behaviour** pattern.
+attached to concrete instance of entity. It allows entities to dynamically compose functionality at runtime, following
+the **Entity-State-Behaviour** pattern.
 
-There are separate interfaces that handles the corresponding lifecycle events of the entity.
+---
 
-- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
-- [IEntityInit](IEntityInit.md) <!-- + -->
-- [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
-- [IEntityDispose](IEntityDispose.md) <!-- + -->
-- [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
-- [IEntityEnable](IEntityEnable.md) <!-- + -->
-- [IEntityEnable&lt;E&gt;](IEntityEnable%601.md) <!-- + -->
-- [IEntityDisable](IEntityDisable.md) <!-- + -->
-- [IEntityDisable&lt;E&gt;](IEntityDisable%601.md) <!-- + -->
-- [IEntityTick](IEntityTick.md) <!-- + -->
-- [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
-- [IEntityFixedTick](IEntityFixedTick.md) <!-- + -->
-- [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md) <!-- + -->
-- [IEntityLateTick](IEntityLateTick.md) <!-- + -->
-- [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
-- [IEntityGizmos](IEntityGizmos.md) <!-- + -->
-- [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
-- [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Lifecycle Events](#-lifecycle-events)
+- [API Reference](#-api-reference)
+- [Notes](#-notes)
+
 ---
 
 ## 🗂 Example Usage
@@ -79,6 +68,58 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 //Add behaviour
 character.AddBehaviour<MoveBehaviour>();
 ```
+
+---
+
+## 🔄 Lifecycle Events
+
+Each behaviour can handle different events of the entity:
+
+| Event       | Purpose                                                    |
+|-------------|------------------------------------------------------------|
+| `Init`      | Initialization of the behaviour when the entity is created |
+| `Dispose`   | Releasing entity resources when it is destroyed            |
+| `Enable`    | Activating the entity on the scene or in a pool            |
+| `Disable`   | Deactivating the entity and returning it to the pool       |
+| `Tick`      | Updates every frame (logic, state)                         |
+| `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
+| `LateTick`  | Updates after rendering (e.g., UI)                         |
+
+---
+
+## 🔍 API Reference
+
+There are separate interfaces that handles the corresponding lifecycle events of the entity.
+
+
+- [IEntityBehaviour](IEntityBehaviour.md) <!-- + -->
+- **Init**
+    - [IEntityInit](IEntityInit.md) <!-- + -->
+    - [IEntityInit&lt;E&gt;](IEntityInit%601.md) <!-- + -->
+- **Dispose**
+    - [IEntityDispose](IEntityDispose.md) <!-- + -->
+    - [IEntityDispose&lt;E&gt;](IEntityDispose%601.md) <!-- + -->
+
+- **Enable**
+    - [IEntityEnable](IEntityEnable.md) <!-- + -->
+    - [IEntityEnable&lt;E&gt;](IEntityEnable%601.md) <!-- + -->
+- **Disable**
+    - [IEntityDisable](IEntityDisable.md) <!-- + -->
+    - [IEntityDisable&lt;E&gt;](IEntityDisable%601.md) <!-- + -->
+- **Tick**
+    - [IEntityTick](IEntityTick.md) <!-- + -->
+    - [IEntityTick&lt;E&gt;](IEntityTick%601.md) <!-- + -->
+- **FixedTick**
+    - [IEntityFixedTick](IEntityFixedTick.md) <!-- + -->
+    - [IEntityFixedTick&lt;E&gt;](IEntityFixedTick%601.md) <!-- + -->
+- **LateTick**
+    - [IEntityLateTick](IEntityLateTick.md) <!-- + -->
+    - [IEntityLateTick&lt;E&gt;](IEntityLateTick%601.md) <!-- + -->
+- **Gizmos**
+    - [IEntityGizmos](IEntityGizmos.md) <!-- + -->
+    - [IEntityGizmos&lt;E&gt;](IEntityGizmos%601.md) <!-- + -->
+- **EditMode**
+    - [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
 
 ---
 

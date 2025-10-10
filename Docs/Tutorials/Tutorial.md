@@ -416,19 +416,7 @@ entity.AddValue("MoveSpeed", 5.0f);
 
 
 
-Each behaviour can handle different events of the entity:
 
-## Lifecycle Events
-
-| Event       | Purpose                                                    |
-|-------------|------------------------------------------------------------|
-| `Init`      | Initialization of the behaviour when the entity is created |
-| `Enable`    | Activating the entity on the scene or in a pool            |
-| `Disable`   | Deactivating the entity and returning it to the pool       |
-| `Tick`      | Updates every frame (logic, state)                         |
-| `FixedTick` | Physics and game mechanics updates with a fixed timestep   |
-| `LateTick`  | Updates after rendering (e.g., UI)                         |
-| `Dispose`   | Releasing entity resources when it is destroyed            |
 
 
 BAKING
