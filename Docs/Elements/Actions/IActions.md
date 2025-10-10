@@ -19,7 +19,7 @@ abstraction for invoking logic, often used in game mechanics and command pattern
 
 Below are examples of using `IAction` family interface:
 
-### 1️⃣ Non-generic action
+### 1️⃣ Non-generic action <div id="non-generic-action"></div>
 
 ```csharp
 public sealed class HelloWorldAction : IAction
@@ -33,7 +33,7 @@ public sealed class HelloWorldAction : IAction
 
 ---
 
-### 2️⃣ Action with one parameter
+### 2️⃣ Action with one parameter <div id="action-with-one-parameter"></div>
 
 ```csharp
 public sealed class DestroyGameObjectAction : IAction<GameObject>
@@ -47,7 +47,7 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 
 ---
 
-### 3️⃣ Action with two parameters
+### 3️⃣ Action with two parameters <div id="action-with-two-parameters"></div>
 
 ```csharp
 public sealed class DealDamageAction : IAction<Character, int>
