@@ -38,7 +38,7 @@ action.Invoke(gameObject);
 
 ## 🔍 API Reference
 
-### 🏛️ Type
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface IAction<in T>

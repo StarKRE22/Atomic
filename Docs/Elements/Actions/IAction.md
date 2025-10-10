@@ -42,7 +42,7 @@ action.Invoke();
 
 Below is full information about `IAction` interface
 
-### 🏛️ Type
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface IAction
