@@ -1,5 +1,27 @@
 # 🧩 InlineAction&lt;T1, T2, T3&gt;
 
+Represents an action with three parameters that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Constructors](#-constructors)
+    - [InlineAction(Action\<T1, T2, T3>)](#inlineactionactiont1-t2-t3)
+  - [Methods](#-methods)
+    - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+    - [ToString()](#tostring)
+  - [Operators](#-operators)
+    - [InlineAction(Action\<T1, T2, T3>)](#operator-inlineactiont1-t2-t3actiont1-t2-t3)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
 ```
@@ -14,7 +36,7 @@ public class InlineAction<T1, T2, T3> : IAction<T1, T2, T3>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineAction(Action<T1, T2, T3>)`
 
@@ -28,7 +50,7 @@ public InlineAction(Action<T1, T2, T3> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 
@@ -53,7 +75,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineAction<T1, T2, T3>(Action<T1, T2, T3>)`
 
