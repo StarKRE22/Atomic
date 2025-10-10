@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Extensions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Aspect/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Aspect/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Problem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Problem.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/IEntityAspect.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,23 +224,7 @@
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
-      <workItem from="1760088001288" duration="2401000" />
-    </task>
-    <task id="LOCAL-01206" summary="Подвигал утилиты!">
-      <option name="closed" value="true" />
-      <created>1759602008595</created>
-      <option name="number" value="01206" />
-      <option name="presentableId" value="LOCAL-01206" />
-      <option name="project" value="LOCAL" />
-      <updated>1759602008595</updated>
-    </task>
-    <task id="LOCAL-01207" summary="Начинаем делать фильтры!">
-      <option name="closed" value="true" />
-      <created>1759602149171</created>
-      <option name="number" value="01207" />
-      <option name="presentableId" value="LOCAL-01207" />
-      <option name="project" value="LOCAL" />
-      <updated>1759602149171</updated>
+      <workItem from="1760088001288" duration="4255000" />
     </task>
     <task id="LOCAL-01208" summary="Так!">
       <option name="closed" value="true" />
@@ -623,7 +602,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760089846487</updated>
     </task>
-    <option name="localTasksCounter" value="1255" />
+    <task id="LOCAL-01255" summary="Entity Aspect Extensions.md">
+      <option name="closed" value="true" />
+      <created>1760090419626</created>
+      <option name="number" value="01255" />
+      <option name="presentableId" value="LOCAL-01255" />
+      <option name="project" value="LOCAL" />
+      <updated>1760090419626</updated>
+    </task>
+    <task id="LOCAL-01256" summary="Пошурудил EntityAspects">
+      <option name="closed" value="true" />
+      <created>1760091904958</created>
+      <option name="number" value="01256" />
+      <option name="presentableId" value="LOCAL-01256" />
+      <option name="project" value="LOCAL" />
+      <updated>1760091904958</updated>
+    </task>
+    <option name="localTasksCounter" value="1257" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,8 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BehaviourEntityTrigger.md, BehaviourEntityTrigger`1.md" />
-    <MESSAGE value="BehaviourEntityTrigger.md" />
     <MESSAGE value="StateChangedEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger`1.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
@@ -675,7 +668,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="EntityCollectionPerformance.md" />
     <MESSAGE value="Фиксы в доке!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фиксы в доке!" />
+    <MESSAGE value="Entity Aspect Extensions.md" />
+    <MESSAGE value="Пошурудил EntityAspects" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пошурудил EntityAspects" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

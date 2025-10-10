@@ -44,13 +44,14 @@ public sealed class SpeedBuff : IEntityAspect
 
 ## 🔍 API Reference
 
+Below an application programming interface of `IEntityAspect` including all containing methods 
+
 ### 🧩 Type
 
 ```csharp
 public interface IEntityAspect : IEntityAspect<IEntity>
 ```
 
-- **Description:**
 - **Note:** Allows modular behavior to be dynamically added or removed at runtime.
 - **See also:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 
