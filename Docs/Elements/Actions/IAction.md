@@ -28,8 +28,8 @@ public sealed class HelloWorldAction : IAction
 }
 ```
 
+Usage:
 ```csharp
-// Usage
 IAction action = new HelloWorldAction();
 action.Invoke(); 
 

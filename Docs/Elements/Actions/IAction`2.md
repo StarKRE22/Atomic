@@ -12,6 +12,7 @@ Represents an executable action that <b>takes two arguments</b>.
   - [Type](#-type)
   - [Methods](#-methods)
     - [Invoke(T1, T2)](#invoket1-t2)
+
 ---
 
 

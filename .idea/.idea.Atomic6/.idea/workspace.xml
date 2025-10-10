@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,31 +225,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="5367000" />
-    </task>
-    <task id="LOCAL-01231" summary="SubscriptionEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759670332192</created>
-      <option name="number" value="01231" />
-      <option name="presentableId" value="LOCAL-01231" />
-      <option name="project" value="LOCAL" />
-      <updated>1759670332192</updated>
-    </task>
-    <task id="LOCAL-01232" summary="SubscriptionEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1759670716022</created>
-      <option name="number" value="01232" />
-      <option name="presentableId" value="LOCAL-01232" />
-      <option name="project" value="LOCAL" />
-      <updated>1759670716022</updated>
-    </task>
-    <task id="LOCAL-01233" summary="InlineEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759671058362</created>
-      <option name="number" value="01233" />
-      <option name="presentableId" value="LOCAL-01233" />
-      <option name="project" value="LOCAL" />
-      <updated>1759671058362</updated>
+      <workItem from="1760113573847" duration="5795000" />
     </task>
     <task id="LOCAL-01234" summary="InlineEntityTrigger.md">
       <option name="closed" value="true" />
@@ -619,7 +595,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760122519005</updated>
     </task>
-    <option name="localTasksCounter" value="1280" />
+    <task id="LOCAL-01280" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122755744</created>
+      <option name="number" value="01280" />
+      <option name="presentableId" value="LOCAL-01280" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122755744</updated>
+    </task>
+    <task id="LOCAL-01281" summary="IAction`1.md">
+      <option name="closed" value="true" />
+      <created>1760122809412</created>
+      <option name="number" value="01281" />
+      <option name="presentableId" value="LOCAL-01281" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122809412</updated>
+    </task>
+    <task id="LOCAL-01282" summary="IAction`1.md">
+      <option name="closed" value="true" />
+      <created>1760122890838</created>
+      <option name="number" value="01282" />
+      <option name="presentableId" value="LOCAL-01282" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122890838</updated>
+    </task>
+    <option name="localTasksCounter" value="1283" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityViewCatalog.md" />
     <MESSAGE value="EntityViewPool`1.md" />
     <MESSAGE value="EntityViewPool.md" />
     <MESSAGE value="EntityCollectionView`1.md" />
@@ -671,7 +670,8 @@
     <MESSAGE value="Actions" />
     <MESSAGE value="IActions.md" />
     <MESSAGE value="IAction.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IAction.md" />
+    <MESSAGE value="IAction`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IAction`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
