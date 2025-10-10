@@ -8,9 +8,9 @@ abstraction for invoking logic, often used in game mechanics and command pattern
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [Non-generic action](#1-non-generic-action)
-    - [Action with one parameter](#2-action-with-one-parameter)
-    - [Action with two parameters](#3-action-with-two-parameters)
+    - [Non-generic action](#non-generic-action)
+    - [Action with one parameter](#action-with-one-parameter)
+    - [Action with two parameters](#action-with-two-parameters)
 - [API Reference](#-api-reference)
 
 ---
