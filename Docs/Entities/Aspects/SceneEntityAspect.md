@@ -11,8 +11,8 @@ any [IEntity](../Entities/IEntity.md) within a Unity scene.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Apply()](#applye)
-        - [Discard()](#discarde)
+        - [Apply()](#applyientity)
+        - [Discard()](#discardientity)
 
 ---
 
