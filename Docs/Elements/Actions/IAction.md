@@ -13,6 +13,8 @@ Represents a <b>parameterless executable action</b>.
 
 ## 🗂 Example of Usage
 
+Below is an example of using an `IAction` interface:
+
 ```csharp
 public sealed class HelloWorldAction : IAction
 {
@@ -34,6 +36,8 @@ action.Invoke();
 ---
 
 ## 🔍 API Reference
+
+Below is full information about `IAction` interface
 
 ### 🏛️ Type
 

@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IAction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/IActions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,47 +224,7 @@
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
-      <workItem from="1760113573847" duration="4587000" />
-    </task>
-    <task id="LOCAL-01224" summary="ValueEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759668494994</created>
-      <option name="number" value="01224" />
-      <option name="presentableId" value="LOCAL-01224" />
-      <option name="project" value="LOCAL" />
-      <updated>1759668494994</updated>
-    </task>
-    <task id="LOCAL-01225" summary="ValueEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1759668757661</created>
-      <option name="number" value="01225" />
-      <option name="presentableId" value="LOCAL-01225" />
-      <option name="project" value="LOCAL" />
-      <updated>1759668757661</updated>
-    </task>
-    <task id="LOCAL-01226" summary="BehaviourEntityTrigger.md, BehaviourEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1759669306460</created>
-      <option name="number" value="01226" />
-      <option name="presentableId" value="LOCAL-01226" />
-      <option name="project" value="LOCAL" />
-      <updated>1759669306460</updated>
-    </task>
-    <task id="LOCAL-01227" summary="BehaviourEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1759669598562</created>
-      <option name="number" value="01227" />
-      <option name="presentableId" value="LOCAL-01227" />
-      <option name="project" value="LOCAL" />
-      <updated>1759669598562</updated>
-    </task>
-    <task id="LOCAL-01228" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1759669623857</created>
-      <option name="number" value="01228" />
-      <option name="presentableId" value="LOCAL-01228" />
-      <option name="project" value="LOCAL" />
-      <updated>1759669623857</updated>
+      <workItem from="1760113573847" duration="4923000" />
     </task>
     <task id="LOCAL-01229" summary="StateChangedEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -619,7 +578,47 @@
       <option name="project" value="LOCAL" />
       <updated>1760121692927</updated>
     </task>
-    <option name="localTasksCounter" value="1273" />
+    <task id="LOCAL-01273" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760121972602</created>
+      <option name="number" value="01273" />
+      <option name="presentableId" value="LOCAL-01273" />
+      <option name="project" value="LOCAL" />
+      <updated>1760121972602</updated>
+    </task>
+    <task id="LOCAL-01274" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122038902</created>
+      <option name="number" value="01274" />
+      <option name="presentableId" value="LOCAL-01274" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122038902</updated>
+    </task>
+    <task id="LOCAL-01275" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122071989</created>
+      <option name="number" value="01275" />
+      <option name="presentableId" value="LOCAL-01275" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122071989</updated>
+    </task>
+    <task id="LOCAL-01276" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122121041</created>
+      <option name="number" value="01276" />
+      <option name="presentableId" value="LOCAL-01276" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122121041</updated>
+    </task>
+    <task id="LOCAL-01277" summary="IAction.md">
+      <option name="closed" value="true" />
+      <created>1760122192188</created>
+      <option name="number" value="01277" />
+      <option name="presentableId" value="LOCAL-01277" />
+      <option name="project" value="LOCAL" />
+      <updated>1760122192188</updated>
+    </task>
+    <option name="localTasksCounter" value="1278" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityView.md" />
     <MESSAGE value="EntityViewCatalog.md" />
     <MESSAGE value="EntityViewPool`1.md" />
     <MESSAGE value="EntityViewPool.md" />
@@ -671,7 +669,8 @@
     <MESSAGE value="Пилим!" />
     <MESSAGE value="Actions" />
     <MESSAGE value="IActions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IActions.md" />
+    <MESSAGE value="IAction.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IAction.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
