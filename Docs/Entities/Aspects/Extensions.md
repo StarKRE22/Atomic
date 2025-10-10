@@ -1,8 +1,8 @@
 # 🧩 Entity Extensions
 
-Provides utility methods for **applying** and **discarding** [IEntityAspect](../Aspects/IEntityAspect.md)  
-instances to and from [IEntity](../Entities/IEntity.md) objects.  
-These extensions simplify aspect management and are optimized with aggressive inlining.
+Provides utility methods for **applying** and **discarding** [IEntityAspect](../Aspects/IEntityAspect.md) instances to
+and from [IEntity](../Entities/IEntity.md) objects. These extensions simplify aspect management and are optimized with
+aggressive inlining.
 
 ---
 

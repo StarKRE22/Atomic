@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/SceneEntityAspect`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/ScriptableEntityAspect`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Attributes/RunInEditModeAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Attributes/RunInEditModeAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Aspects/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Attributes/RunInEditModeAttribute.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Attributes/RunInEditModeAttribute.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +226,7 @@
       <workItem from="1759651729723" duration="19361000" />
       <workItem from="1759740339147" duration="2530000" />
       <workItem from="1759742893758" duration="14590000" />
-      <workItem from="1760088001288" duration="7751000" />
-    </task>
-    <task id="LOCAL-01214" summary="IEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1759661649368</created>
-      <option name="number" value="01214" />
-      <option name="presentableId" value="LOCAL-01214" />
-      <option name="project" value="LOCAL" />
-      <updated>1759661649368</updated>
+      <workItem from="1760088001288" duration="8233000" />
     </task>
     <task id="LOCAL-01215" summary="IEntityTrigger.md">
       <option name="closed" value="true" />
@@ -620,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760111642383</updated>
     </task>
-    <option name="localTasksCounter" value="1263" />
+    <task id="LOCAL-01263" summary="Выстругал аспекты!">
+      <option name="closed" value="true" />
+      <created>1760112563300</created>
+      <option name="number" value="01263" />
+      <option name="presentableId" value="LOCAL-01263" />
+      <option name="project" value="LOCAL" />
+      <updated>1760112563300</updated>
+    </task>
+    <option name="localTasksCounter" value="1264" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SubscriptionEntityTrigger.md" />
     <MESSAGE value="InlineEntityTrigger`1.md" />
     <MESSAGE value="InlineEntityTrigger.md" />
     <MESSAGE value="Остался UI!" />
@@ -672,7 +671,8 @@
     <MESSAGE value="Пошурудил EntityAspects" />
     <MESSAGE value="IEntityAspect.md" />
     <MESSAGE value="SceneEntityAspect.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityAspect.md" />
+    <MESSAGE value="Выстругал аспекты!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Выстругал аспекты!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
