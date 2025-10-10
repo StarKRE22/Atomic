@@ -41,7 +41,9 @@ public sealed class SpeedBuff : ScriptableEntityAspect
 }
 ```
 
-For example, you can use this aspect in a trigger that applies and discards the speed modifier when an entity enters or exits the trigger:
+For example, you can use this aspect in a trigger that applies and discards the speed modifier when an entity enters or
+exits the trigger:
+
 ```csharp
 public class EntityAspectTrigger : MonoBehaviour
 {
@@ -68,12 +70,15 @@ public class EntityAspectTrigger : MonoBehaviour
 
 Below are the different types of aspects depending on the usage scenario:
 
-- [IEntityAspect](IEntityAspect.md) <!-- + -->
-- [IEntityAspect&lt;E&gt;](IEntityAspect%601.md) <!-- + -->
-- [SceneEntityAspect](SceneEntityAspect.md) <!-- + -->
-- [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md)
-- [ScriptableEntityAspect](ScriptableEntityAspect.md)
-- [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md)
+- **Interfaces**
+    - [IEntityAspect](IEntityAspect.md) <!-- + -->
+    - [IEntityAspect&lt;E&gt;](IEntityAspect%601.md) <!-- + -->
+- **MonoBehaviours**
+    - [SceneEntityAspect](SceneEntityAspect.md) <!-- + -->
+    - [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md) <!-- + -->
+- **ScriptableObjects**
+    - [ScriptableEntityAspect](ScriptableEntityAspect.md)
+    - [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md)
 - [Extensions](Extensions.md)
 
 ---

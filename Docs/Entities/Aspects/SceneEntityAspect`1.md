@@ -1,43 +1,24 @@
 # 🧩 SceneEntityAspect&lt;E&gt;
 
-```csharp
-public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
-```
-
-- **Description:** Represents a generic `MonoBehaviour` that applies or discards reusable behavior on a strongly-typed
-  entity.
-- **Type Parameter:** `E` – The specific entity type this aspect operates on.
-- **Inheritance:** Implements [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
-- **Note:** Provides type-safe application and discard for a specific entity type.
-- **See also:** [SceneEntityAspect](SceneEntityAspect.md)
+Represents a generic `MonoBehaviour` that applies or discards reusable behavior on a strongly-typed
+entity.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Apply(E)`
-
-```csharp
-public abstract void Apply(E entity);
-```
-
-- **Description:** Applies the aspect to the strongly-typed entity.
-- **Parameter:** `entity` – The entity of type `E` to which the aspect will be applied.
-
-#### `Discard(E)`
-
-```csharp
-public abstract void Discard(E entity);
-```
-
-- **Description:** Reverses the effects of `Apply` on the strongly-typed entity.
-- **Parameter:** `entity` – The entity from which the aspect should be removed.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Apply()](#applye)
+        - [Discard()](#discarde)
 
 ---
 
 ## 🗂 Example of Usage
 
-Adds jump capabilities to entities implementing `IGameEntity`:
+Below is an example of using aspect that adds jump capabilities to entities implementing `IGameEntity`:
 
 ```csharp
 public interface IGameEntity : IEntity
@@ -69,3 +50,40 @@ public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
 
 > Note: Using the generic `SceneEntityAspect<IGameEntity>` allows type-safe access to entity-specific properties without
 > casting.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
+```
+
+- **Type Parameter:** `E` – The specific entity type this aspect operates on.
+- **Inheritance:** Implements [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
+- **Note:** Provides type-safe application and discard for a specific entity type.
+- **See also:** [SceneEntityAspect](SceneEntityAspect.md)
+
+---
+
+### 🏹 Methods
+
+#### `Apply(E)`
+
+```csharp
+public abstract void Apply(E entity);
+```
+
+- **Description:** Applies the aspect to the strongly-typed entity.
+- **Parameter:** `entity` – The entity of type `E` to which the aspect will be applied.
+
+#### `Discard(E)`
+
+```csharp
+public abstract void Discard(E entity);
+```
+
+- **Description:** Reverses the effects of `Apply` on the strongly-typed entity.
+- **Parameter:** `entity` – The entity from which the aspect should be removed.

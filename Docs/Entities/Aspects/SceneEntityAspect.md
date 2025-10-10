@@ -1,7 +1,7 @@
 # 🧩 SceneEntityAspect
 
 Represents a non-generic `MonoBehaviour` that applies or discards reusable behavior on
-any [IEntity](../Entities/IEntity.md) within a Unity scene.
+any entity within a Unity scene.
 
 ---
 
@@ -38,7 +38,9 @@ public sealed class SpeedBoost : SceneEntityAspect
 
 #### 2. Attach `SpeedBoost` script to a GameObject
 
-#### 3. For example, use `SpeedBoost` when an entity interacts with some physics trigger 
+<img width="500" height="" alt="изображение" src="../../Images/SpeedBoost.png" />
+
+#### 3. For example, use `SpeedBoost` when an entity interacts with some physics trigger
 
 ```csharp
 public class EntityAspectTrigger : MonoBehaviour
@@ -94,5 +96,3 @@ public abstract void Discard(IEntity entity);
 
 - **Description:** Reverses the effects of `Apply` on the specified entity.
 - **Parameter:** `entity` – The entity from which the aspect should be removed.
-
----

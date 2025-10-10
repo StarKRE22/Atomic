@@ -1,6 +1,6 @@
 # 🧩 IEntityAspect
 
-Represents an interface that applies or discards reusable behavior on any [entity](../Entities/Manual.md) instance.
+Represents an interface that applies or discards reusable behavior on any entity instance.
 
 ---
 
