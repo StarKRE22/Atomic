@@ -61,6 +61,8 @@ public sealed class JumpAspect : SceneEntityAspect<IGameEntity>
 public abstract class SceneEntityAspect<E> : MonoBehaviour, IEntityAspect<E> where E : IEntity
 ```
 
+- **Description:** Represents a generic `MonoBehaviour` that applies or discards reusable behavior on a strongly-typed
+  entity.
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
 - **Inheritance:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 - **Note:** Provides type-safe application and discard for a specific entity type.

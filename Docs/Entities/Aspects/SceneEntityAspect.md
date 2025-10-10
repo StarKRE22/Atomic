@@ -72,6 +72,8 @@ public class EntityAspectTrigger : MonoBehaviour
 public abstract class SceneEntityAspect : SceneEntityAspect<IEntity>, IEntityAspect
 ```
 
+- **Description:** Represents a non-generic `MonoBehaviour` that applies or discards reusable behavior on
+  any entity within a Unity scene.
 - **Inheritance:** [SceneEntityAspect&lt;E&gt;](SceneEntityAspect%601.md)
 - **Note:** Ideal for modular behaviors that can be dynamically applied or removed at runtime.
 

@@ -54,6 +54,7 @@ Below an application programming interface of `IEntityAspect` including all cont
 public interface IEntityAspect : IEntityAspect<IEntity>
 ```
 
+- **Description:** Represents an interface that applies or discards reusable behavior on any entity instance.
 - **Note:** Allows modular behavior to be dynamically added or removed at runtime.
 - **See also:** [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 

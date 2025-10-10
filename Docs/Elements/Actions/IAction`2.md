@@ -2,7 +2,6 @@
 
 Represents an executable action that <b>takes two arguments</b>.
 
-
 ---
 
 ## 📑 Table of Contents
@@ -51,6 +50,7 @@ action.Invoke(enemy, 5);
 public interface IAction<in T1, in T2>
 ```
 
+- **Description:** Represents an executable action that <b>takes two arguments</b>.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument

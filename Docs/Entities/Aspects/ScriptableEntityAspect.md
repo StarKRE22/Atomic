@@ -75,6 +75,8 @@ public class EntityAspectTrigger : MonoBehaviour
 public abstract class ScriptableEntityAspect : ScriptableEntityAspect<IEntity>, IEntityAspect
 ```
 
+- **Description:** Represents a non-generic `ScriptableObject` that applies or discards reusable behavior on
+  any entity.
 - **Inheritance:** [ScriptableEntityAspect&lt;E&gt;](ScriptableEntityAspect%601.md), [IEntityAspect](IEntityAspect.md)
 - **Note:** Ideal for lightweight buffs or debuffs stored as `ScriptableObject` assets.
 

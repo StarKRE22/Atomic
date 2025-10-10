@@ -15,7 +15,6 @@ Represents a generic interface that applies or discards reusable behavior on a s
 
 ---
 
-
 ## 🗂 Example of Usage
 
 Adds jump-related capabilities to entities implementing `IGameEntity`:
@@ -62,6 +61,7 @@ public sealed class JumpAspect : IEntityAspect<IGameEntity>
 public interface IEntityAspect<in E> where E : IEntity
 ```
 
+- **Description:** Represents a generic interface that applies or discards reusable behavior on a strongly-typed entity.
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
 - **Note:** Provides type-safe application and discard of behavior for a specific entity type.
 - **See also:** [IEntityAspect](IEntityAspect.md)

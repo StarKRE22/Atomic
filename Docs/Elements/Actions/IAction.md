@@ -8,9 +8,9 @@ Represents a <b>parameterless executable action</b>.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Methods](#-methods)
-    - [Invoke()](#invoke)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
 
 ---
 
@@ -29,6 +29,7 @@ public sealed class HelloWorldAction : IAction
 ```
 
 Usage:
+
 ```csharp
 IAction action = new HelloWorldAction();
 action.Invoke(); 
@@ -47,6 +48,8 @@ Below is full information about `IAction` interface
 ```csharp
 public interface IAction
 ```
+
+- **Description:** Represents a <b>parameterless executable action</b>.
 
 ---
 

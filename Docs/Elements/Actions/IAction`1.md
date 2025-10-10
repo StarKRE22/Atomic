@@ -11,6 +11,7 @@ Represents an executable action that <b>takes one argument</b>.
     - [Type](#-type)
     - [Methods](#-methods)
         - [Invoke(T)](#invoket)
+
 ---
 
 ## 🗂 Example of Usage
@@ -48,6 +49,7 @@ action.Invoke(gameObject);
 public interface IAction<in T>
 ```
 
+- **Description:** Represents an executable action that <b>takes one argument</b>.
 - **Type parameter:** `T` — the input parameter
 
 ---

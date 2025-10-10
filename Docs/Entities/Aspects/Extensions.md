@@ -20,10 +20,10 @@ aggressive inlining.
 
 ## 🔍 API Reference
 
-### 🏛️ Type
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public static partial class Extensions
+public static class Extensions
 ```
 
 ---

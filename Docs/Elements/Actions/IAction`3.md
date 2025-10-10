@@ -57,6 +57,7 @@ action.Invoke(storageA, storageB, 100);
 public interface IAction<in T1, in T2, in T3>
 ```
 
+- **Description:** Represents an executable action that <b>takes three arguments</b>.
 - **Type parameters:**
     - `T1` — the first argument
     - `T2` — the second argument

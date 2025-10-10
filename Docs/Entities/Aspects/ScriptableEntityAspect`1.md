@@ -65,6 +65,8 @@ public sealed class PlayerFlyAspect : ScriptableEntityAspect<IPlayerEntity>
 public abstract class ScriptableEntityAspect<E> : ScriptableObject, IEntityAspect<E> where E : IEntity
 ```
 
+- **Description:** Represents a generic `ScriptableObject` that applies or discards reusable behavior on a
+  strongly-typed entity.
 - **Type Parameter:** `E` – The specific entity type this aspect operates on.
 - **Inheritance:** `ScriptableObject`, [IEntityAspect&lt;E&gt;](IEntityAspect%601.md)
 - **Note:** Great for type-specific buffs or debuffs applied to multiple entities.
