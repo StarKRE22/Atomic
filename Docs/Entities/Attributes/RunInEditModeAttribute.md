@@ -6,6 +6,12 @@ use only on types implementing [IEntityBehaviour](../Behaviours/IEntityBehaviour
 
 ---
 
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+- [Notes](#-notes)
+
+---
+
 ## 🗂 Example of Usage
 
 Mark your entity behaviour class with `[RunInEditMode]`:
@@ -24,6 +30,18 @@ public class InitColorBehaviour : IEntityInit
 ```
 
 > Note: This allows `Init` (and other lifecycle callbacks) to run in the Unity Editor without entering Play Mode.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+[AttributeUsage(AttributeTargets.Class)]
+public sealed class RunInEditModeAttribute : Attribute
+```
+- **Note:** Allows mark only classes that implements [IEntityBehaviour](../Behaviours/IEntityBehaviour.md) interface
 
 ---
 

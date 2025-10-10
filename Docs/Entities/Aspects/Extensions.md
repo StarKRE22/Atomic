@@ -6,7 +6,29 @@ These extensions simplify aspect management and are optimized with aggressive in
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Apply(IEntity, IEntityAspect)](#applyientity-ientityaspect)
+        - [Apply<E>(E, IEntityAspect<E>)](#applyee-ientityaspecte)
+        - [Discard(IEntity, IEntityAspect)](#discardientity-ientityaspect)
+        - [Discard<E>(E, IEntityAspect<E>)](#discardee-ientityaspecte)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public static partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `Apply(IEntity, IEntityAspect)`
 
