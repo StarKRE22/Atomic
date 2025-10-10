@@ -15,6 +15,8 @@ Represents an executable action that <b>takes one argument</b>.
 
 ## 🗂 Example of Usage
 
+Implement `IAction<T>` for creating destroy action:
+
 ```csharp
 public sealed class DestroyGameObjectAction : IAction<GameObject>
 {
@@ -24,6 +26,8 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
     } 
 }
 ```
+
+Use this action for destroying game objects from scene
 
 ```csharp
 // Assume we have a GameObject
