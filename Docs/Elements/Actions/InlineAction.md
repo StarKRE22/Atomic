@@ -44,7 +44,7 @@ public class InlineAction : IAction
 
 ---
 
-### 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineAction(Action)`
 

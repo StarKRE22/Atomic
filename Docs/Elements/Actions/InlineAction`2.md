@@ -13,7 +13,7 @@ public class InlineAction<T1, T2> : IAction<T1, T2>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineAction(Action<T1, T2>)`
 
