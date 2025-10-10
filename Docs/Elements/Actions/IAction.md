@@ -8,6 +8,9 @@ Represents a <b>parameterless executable action</b>.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Invoke()](#invoke)
 
 ---
 

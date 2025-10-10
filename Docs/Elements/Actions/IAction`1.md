@@ -1,24 +1,13 @@
 # 🧩 IAction&lt;T&gt;
 
-```csharp
-public interface IAction<in T>
-```
-
-- **Description:** Represents an executable action that <b>takes one argument</b>.
-- **Type parameter:** `T` — the input parameter
+Represents an executable action that <b>takes one argument</b>.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Invoke(T)`
-
-```csharp
-public void Invoke(T arg);
-```
-
-- **Description:** Executes the action with the specified argument
-- **Parameter:** `arg` — the input parameter
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
 
 ---
 
@@ -33,6 +22,7 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
     } 
 }
 ```
+
 ```csharp
 // Assume we have a GameObject
 GameObject gameObject = ...
@@ -41,3 +31,28 @@ GameObject gameObject = ...
 IAction<GameObject> action = new DestroyGameObjectAction();
 action.Invoke(gameObject);
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public interface IAction<in T>
+```
+
+- **Type parameter:** `T` — the input parameter
+
+---
+
+### 🏹 Methods
+
+#### `Invoke(T)`
+
+```csharp
+public void Invoke(T arg);
+```
+
+- **Description:** Executes the action with the specified argument
+- **Parameter:** `arg` — the input parameter
