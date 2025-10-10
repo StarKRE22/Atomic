@@ -5,6 +5,7 @@ framework, all game objects, systems, UI elements, and application contexts can 
 **entities**, each containing **state** and **behaviour**.
 
 ---
+
 ## 📑 Table of Contents
 
 - [Requirements](#-requirements)
