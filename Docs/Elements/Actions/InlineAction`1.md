@@ -17,7 +17,6 @@ Represents an action <b>with one parameter</b> that can be invoked.
     - [Operators](#-operators)
         - [InlineAction(Action\<T>)](#operator-inlineactiontactiont)
 
-
 ---
 
 ## 🗂 Example of Usage

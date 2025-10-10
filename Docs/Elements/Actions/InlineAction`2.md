@@ -1,5 +1,42 @@
 # 🧩 InlineAction&lt;T1, T2&gt;
 
+Represents an action <b>with two parameters</b> that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineAction(Action\<T1, T2>)](#inlineactionactiont1-t2)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineAction(Action\<T1, T2>)](#operator-inlineactiont1-t2actiont1-t2)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using inline action for damage dealing to some character:
+
+```csharp
+IAction<Character, int> damageAction = new InlineAction<Character, int>(
+    (character, damage) => character.TakeDamage(damage)
+);
+
+damageAction.Invoke(enemy, 5);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineAction<T1, T2> : IAction<T1, T2>
 ```
@@ -27,7 +64,7 @@ public InlineAction(Action<T1, T2> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -51,7 +88,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineAction<T1, T2>(Action<T1, T2>)`
 
@@ -65,16 +102,3 @@ public static implicit operator InlineAction<T1, T2>(Action<T1, T2> action);
     - `T2` — the second argument
 - **Parameter:** `action` – the delegate to wrap.
 - **Returns:** A new `InlineAction<T1, T2>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IAction<Character, int> damageAction = new InlineAction<Character, int>(
-    (character, damage) => character.TakeDamage(damage)
-);
-
-damageAction.Invoke(enemy, 5);
-```
-
