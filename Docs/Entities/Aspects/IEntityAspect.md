@@ -17,9 +17,7 @@ Represents an interface that applies or discards reusable behavior on any [entit
 
 ## 🗂 Example of Usage
 
-<!--
 Below an example of creating **speed buff** that applies a temporary speed nultiplier to an entity:
--->
 
 ```csharp
 [Serializable]
@@ -46,9 +44,11 @@ public sealed class SpeedBuff : IEntityAspect
 
 ## 🔍 API Reference
 
+<!--
 Below an application programming interface of `IEntityAspect` including all containing methods 
+-->
 
-### 🧩 Type
+### 🏛️ Type
 
 ```csharp
 public interface IEntityAspect : IEntityAspect<IEntity>
