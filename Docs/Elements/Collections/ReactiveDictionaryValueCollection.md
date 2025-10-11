@@ -1,7 +1,30 @@
+# 🧩 ReadOnlyValueCollection
 
-  <summary>
-    <h2>🧩 ReadOnlyValueCollection</h2>
-  </summary>
+<b>Represents a read-only collection of values</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Count](#count)
+        - [IsReadOnly](#isreadonly)
+    - [Methods](#-methods)
+        - [Contains(V)](#containsv)
+        - [CopyTo(V[], int)](#copytov-int)
+        - [GetEnumerator()](#getenumerator)
+    - [Unsupported Methods](#-unsupported-methods)
+        - [Add(V)](#addv)
+        - [Remove(V)](#removev)
+        - [Clear()](#clear)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public readonly struct ReadOnlyValueCollection : ICollection<V>
@@ -44,7 +67,7 @@ public bool Contains(V item);
 - **Parameter:** `item` — The value to locate.
 - **Returns:** `true` if the value exists; otherwise `false`.
 
-#### `CopyTo(V[] array, int arrayIndex)`
+#### `CopyTo(V[], int)`
 
 ```csharp
 public void CopyTo(V[] array, int arrayIndex);
@@ -71,10 +94,22 @@ public Enumerator GetEnumerator();
 
 ### ⛔ Unsupported Methods
 
+All modification methods throw `NotSupportedException` because the collection is read-only.
+
+#### `Add(V)`
+
 ```csharp
 void ICollection<V>.Add(V item);
-void ICollection<V>.Clear();
+```
+
+#### `Remove(V)`
+
+```csharp
 bool ICollection<V>.Remove(V item);
 ```
 
-- **Description:** All modification methods throw `NotSupportedException` because the collection is read-only.
+#### `Clear()`
+
+```csharp
+void ICollection<V>.Clear();
+```

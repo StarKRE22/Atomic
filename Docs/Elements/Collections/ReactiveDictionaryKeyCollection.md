@@ -67,7 +67,7 @@ public bool Contains(K item);
 - **Parameter:** `item` — The key to locate. Cannot be null.
 - **Returns:** `true` if the key exists; otherwise `false`.
 
-#### `CopyTo(K[] array, int arrayIndex)`
+#### `CopyTo(K[], int)`
 
 ```csharp
 public void CopyTo(K[] array, int arrayIndex);
@@ -102,14 +102,14 @@ All modification methods throw `NotSupportedException` because the collection is
 void ICollection<K>.Add(K item);
 ```
 
-#### `Clear`
-
-```csharp
-void ICollection<K>.Clear();
-```
-
 #### `Remove(K)`
 
 ```csharp
 bool ICollection<K>.Remove(K item);
+```
+
+#### `Clear()`
+
+```csharp
+void ICollection<K>.Clear();
 ```
