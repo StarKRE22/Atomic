@@ -9,22 +9,21 @@ global state.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Events](#-events)
-    - [OnStateChanged](#onstatechanged)
-    - [OnItemChanged](#onitemchanged)
-  - [Properties](#-properties)
-    - [Length](#length)
-    - [Count](#count)
-  - [Indexers](#-indexers)
-    - [[int index]](#int-index)
-  - [Methods](#-methods)
-    - [Contains(T)](#containst)
-    - [IndexOf(T)](#indexoft)
-    - [CopyTo(T[], int)](#copytot-int)
-    - [CopyTo(int, T[], int, int)](#copytot-array-int-arrayindex)
-    - [GetEnumerator()](#getenumerator)
-
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Length](#length)
+        - [Count](#count)
+    - [Indexers](#-indexers)
+        - [[int index]](#int-index)
+    - [Methods](#-methods)
+        - [Contains(T)](#containst)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [CopyTo(int, T[], int, int)](#copytot-array-int-arrayindex)
+        - [GetEnumerator()](#getenumerator)
 
 ---
 
@@ -77,8 +76,9 @@ Console.WriteLine("Elements copied to target array");
 ```csharp
 public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
 ```
+
 - **Description:** Represents a **read-only reactive array** that notifies subscribers about changes to its elements and
-  global state. 
+  global state.
 - **Inheritance:** `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, `IEnumerable<T>`.
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled

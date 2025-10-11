@@ -1,162 +1,39 @@
 # 🧩 IReadOnlyReactiveList&lt;T&gt;
 
-```csharp
-public interface IReadOnlyReactiveList<T> : IReadOnlyReactiveArray<T>, IReadOnlyReactiveCollection<T>
-```
-
-- **Description:** Represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed
-notifications** for insertions, deletions, and overall state changes. 
-- **Inheritance:** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md), [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
-- **Type Parameter:** `T` — The type of elements stored in the list.
-- **Note:** Use this interface when you need **read-only indexed access** to a collection but still require **reactive
-  notifications** on changes.
+Represents a **read-only reactive list** that notifies subscribers when its contents change. It provides **indexed
+notifications** for insertions, deletions, and overall state changes.
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
 
-#### `OnStateChanged`
-
-```csharp
-public event Action OnStateChanged;
-```
-
-- **Description:** Triggered when the overall state of the list changes.
-- **Remarks:** Can happen due to bulk operations or significant modifications, including multiple insertions, deletions,
-  or updates.
-
-#### `OnItemAdded`
-
-```csharp
-public event Action<int, T> OnItemAdded;
-```
-
-- **Description:** Triggered when a new item is inserted at a specific index.
-- **Parameters:**
-    - `index` — The zero-based index where the item was added.
-    - `value` — The item that was inserted.
-
-#### `OnItemRemoved`
-
-```csharp
-public event Action<int, T> OnItemRemoved;
-```
-
-- **Description:** Triggered when an item is removed from a specific index.
-- **Parameters:**
-    - `index` — The zero-based index from which the item was removed.
-    - `value` — The item that was removed.
-
-#### `OnItemChanged`
-
-```csharp
-public event Action<int, T> OnItemChanged;
-```
-
-- **Description:** Triggered when an item at a specific index changes.
-- **Parameters:**
-    - `index` — index of the changed element.
-    - `value` — `T` the new value of the element.
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Usage](#-basic-usage)
+    - [Cast to IReadOnlyReactiveCollection](#-cast-to-collection)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Length](#length)
+        - [Count](#count)
+    - [Indexers](#-indexers)
+        - [[int index]](#int-index)
+    - [Methods](#-methods)
+        - [Contains(T)](#containst)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [Copy(int, T[], int, int)](#copytoint-t-int-int)
+        - [GetEnumerator()](#getenumerator)
 
 ---
 
-## 🔑 Properties
+## 🗂 Examples of Usage
 
-#### `Length`
-
-```csharp
-public int Length { get; }
-```
-
-- **Description:** Gets the number of elements in the list.
-- **Remarks:** Implemented from [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md); usually returns the same
-  value as `Count`.
-
-#### `Count`
-
-```csharp
-public int Count { get; }
-```
-
-- **Description:** Gets the number of elements in the collection.
-- **Remarks:** Implemented from [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md); returns the
-  total number of items.
-
----
-
-## 🏷️ Indexers
-
-#### `[int index]`
-
-```csharp
-public T this[int index] { get; }
-```
-
-- **Description:** Gets the element at the specified index.
-- **Parameters:** `index` — zero-based index of the element.
-- **Returns:** `T` — the element at the specified index.
-
----
-
-## 🏹 Methods
-
-#### `Contains(T)`
-
-```csharp
-public bool Contains(T item);
-```
-
-- **Description:** Determines whether the list contains a specific element.
-- **Parameter:** `item` — The object to locate in the list.
-- **Returns:** `true` if the item is found; otherwise, `false`.
-
-#### `IndexOf(T)`
-
-```csharp
-public int IndexOf(T item);
-```
-
-- **Description:** Returns the index of a specific item in the list.
-- **Parameter:** `item` — The object to locate in the list.
-- **Returns:** The index of the item if found; otherwise, `-1`.
-
-#### `CopyTo(T[] array, int arrayIndex)`
-
-```csharp
-public void CopyTo(T[] array, int arrayIndex)
-```
-
-- **Description:** Copies all items in the list to the specified array starting at the given index.
-- **Parameters:**
-    - `array` — The destination array.
-    - `arrayIndex` — The starting index in the array.
-
-#### `CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)`
-
-```csharp
-public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
-```
-
-- **Description:** Copies a range of elements from this list to a destination array.
-- **Parameters:**
-    - `int sourceIndex` — starting index in this list.
-    - `T[] destination` — array to copy elements to.
-    - `int destinationIndex` — starting index in the destination array.
-    - `int length` — number of elements to copy.
-- **Notes:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
-
-#### `GetEnumerator()`
-
-```csharp
-public IEnumerator<T> GetEnumerator();
-```
-
-- **Description:** Returns an enumerator that iterates through the list.
-- **Remarks:** Inherited from `IEnumerable<T>`.
-
----
-
-## 🗂 Example of Usage
+### 1️⃣ Basic usage <div id="-basic-usage"></div>
 
 ```csharp
 // Assume we have a read-only reactive list
@@ -225,6 +102,10 @@ foreach (var item in destinationArray)
 }
 ```
 
+---
+
+### 2️⃣ Cast to IReadOnlyReactiveCollection <div id="-cast-to-collection"></div>
+
 Also, you can cast a read-only reactive list to a read-only reactive collection in order to subscribe to non-indexed
 addition and removal events. These events notify you whenever an item is added or removed, without providing the
 specific index of the change.
@@ -249,3 +130,165 @@ reactiveCollection.OnItemRemoved += item =>
 };
 
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IReadOnlyReactiveList<T> : IReadOnlyReactiveArray<T>, IReadOnlyReactiveCollection<T>
+```
+
+- **Description:** Represents a **read-only reactive list** that notifies subscribers when its contents change. It
+  provides **indexed
+  notifications** for insertions, deletions, and overall state changes.
+- **Inheritance:
+  ** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md), [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md).
+- **Type Parameter:** `T` — The type of elements stored in the list.
+- **Note:** Use this interface when you need **read-only indexed access** to a collection but still require **reactive
+  notifications** on changes.
+
+---
+
+### ⚡ Events
+
+#### `OnStateChanged`
+
+```csharp
+public event Action OnStateChanged;
+```
+
+- **Description:** Triggered when the overall state of the list changes.
+- **Remarks:** Can happen due to bulk operations or significant modifications, including multiple insertions, deletions,
+  or updates.
+
+#### `OnItemAdded`
+
+```csharp
+public event Action<int, T> OnItemAdded;
+```
+
+- **Description:** Triggered when a new item is inserted at a specific index.
+- **Parameters:**
+    - `index` — The zero-based index where the item was added.
+    - `value` — The item that was inserted.
+
+#### `OnItemRemoved`
+
+```csharp
+public event Action<int, T> OnItemRemoved;
+```
+
+- **Description:** Triggered when an item is removed from a specific index.
+- **Parameters:**
+    - `index` — The zero-based index from which the item was removed.
+    - `value` — The item that was removed.
+
+#### `OnItemChanged`
+
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+    - `index` — index of the changed element.
+    - `value` — `T` the new value of the element.
+
+---
+
+### 🔑 Properties
+
+#### `Length`
+
+```csharp
+public int Length { get; }
+```
+
+- **Description:** Gets the number of elements in the list.
+- **Remarks:** Implemented from [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md); usually returns the same
+  value as `Count`.
+
+#### `Count`
+
+```csharp
+public int Count { get; }
+```
+
+- **Description:** Gets the number of elements in the collection.
+- **Remarks:** Implemented from [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md); returns the
+  total number of items.
+
+---
+
+### 🏷️ Indexers
+
+#### `[int index]`
+
+```csharp
+public T this[int index] { get; }
+```
+
+- **Description:** Gets the element at the specified index.
+- **Parameters:** `index` — zero-based index of the element.
+- **Returns:** `T` — the element at the specified index.
+
+---
+
+### 🏹 Methods
+
+#### `Contains(T)`
+
+```csharp
+public bool Contains(T item);
+```
+
+- **Description:** Determines whether the list contains a specific element.
+- **Parameter:** `item` — The object to locate in the list.
+- **Returns:** `true` if the item is found; otherwise, `false`.
+
+#### `IndexOf(T)`
+
+```csharp
+public int IndexOf(T item);
+```
+
+- **Description:** Returns the index of a specific item in the list.
+- **Parameter:** `item` — The object to locate in the list.
+- **Returns:** The index of the item if found; otherwise, `-1`.
+
+#### `CopyTo(T[], int)`
+
+```csharp
+public void CopyTo(T[] array, int arrayIndex)
+```
+
+- **Description:** Copies all items in the list to the specified array starting at the given index.
+- **Parameters:**
+    - `array` — The destination array.
+    - `arrayIndex` — The starting index in the array.
+
+#### `CopyTo(int, T[], int, int)`
+
+```csharp
+public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+```
+
+- **Description:** Copies a range of elements from this list to a destination array.
+- **Parameters:**
+    - `int sourceIndex` — starting index in this list.
+    - `T[] destination` — array to copy elements to.
+    - `int destinationIndex` — starting index in the destination array.
+    - `int length` — number of elements to copy.
+- **Notes:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
+
+#### `GetEnumerator()`
+
+```csharp
+public IEnumerator<T> GetEnumerator();
+```
+
+- **Description:** Returns an enumerator that iterates through the list.
+- **Remarks:** Inherited from `IEnumerable<T>`.
