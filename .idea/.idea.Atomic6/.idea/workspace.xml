@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,23 +225,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="1294000" />
-    </task>
-    <task id="LOCAL-01252" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1759781836666</created>
-      <option name="number" value="01252" />
-      <option name="presentableId" value="LOCAL-01252" />
-      <option name="project" value="LOCAL" />
-      <updated>1759781836666</updated>
-    </task>
-    <task id="LOCAL-01253" summary="EntityCollectionPerformance.md">
-      <option name="closed" value="true" />
-      <created>1760088845975</created>
-      <option name="number" value="01253" />
-      <option name="presentableId" value="LOCAL-01253" />
-      <option name="project" value="LOCAL" />
-      <updated>1760088845976</updated>
+      <workItem from="1760170912545" duration="1626000" />
     </task>
     <task id="LOCAL-01254" summary="Фиксы в доке!">
       <option name="closed" value="true" />
@@ -620,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760171918605</updated>
     </task>
-    <option name="localTasksCounter" value="1301" />
+    <task id="LOCAL-01301" summary="CompositeAction`2.md">
+      <option name="closed" value="true" />
+      <created>1760172214964</created>
+      <option name="number" value="01301" />
+      <option name="presentableId" value="LOCAL-01301" />
+      <option name="project" value="LOCAL" />
+      <updated>1760172214964</updated>
+    </task>
+    <task id="LOCAL-01302" summary="CompositeAction`3.md">
+      <option name="closed" value="true" />
+      <created>1760172413510</created>
+      <option name="number" value="01302" />
+      <option name="presentableId" value="LOCAL-01302" />
+      <option name="project" value="LOCAL" />
+      <updated>1760172413510</updated>
+    </task>
+    <option name="localTasksCounter" value="1303" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,8 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Фиксы в доке!" />
-    <MESSAGE value="Entity Aspect Extensions.md" />
     <MESSAGE value="Пошурудил EntityAspects" />
     <MESSAGE value="IEntityAspect.md" />
     <MESSAGE value="SceneEntityAspect.md" />
@@ -672,7 +669,9 @@
     <MESSAGE value="CompositeAction.md" />
     <MESSAGE value="CompositeAction`1.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="CompositeAction`2.md" />
+    <MESSAGE value="CompositeAction`3.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="CompositeAction`3.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
