@@ -9,36 +9,6 @@ Provide utility methods for invoking arrays or collections of [IAction](IActions
 
 <ul>
   <li>
-      <summary><a href="#-examples-of-usage">Examples of Usage</a></summary>
-      <ul>
-        <li>
-          <details>
-            <summary>IEnumerable</summary>
-            <ul>
-              <li><a href="#ienumerableiaction">IEnumerable&lt;IAction&gt;</a></li>
-              <li><a href="#ienumerableiactiont">IEnumerable&lt;IAction&lt;T&gt;&gt;</a></li>
-              <li><a href="#ienumerableiactiont1-t2">IEnumerable&lt;IAction&lt;T1, T2&gt;&gt;</a></li>
-              <li><a href="#ienumerableiactiont1-t2-t3">IEnumerable&lt;IAction&lt;T1, T2, T3&gt;&gt;</a></li>
-              <li><a href="#ienumerableiactiont1-t2-t3-t4">IEnumerable&lt;IAction&lt;T1, T2, T3, T4&gt;&gt;</a></li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <details>
-            <summary>Array</summary>
-            <ul>
-              <li><a href="#iaction">IAction[]</a></li>
-              <li><a href="#iactiont">IAction&lt;T&gt;[]</a></li>
-              <li><a href="#iactiont1-t2">IAction&lt;T1, T2&gt;[]</a></li>
-              <li><a href="#iactiont1-t2-t3">IAction&lt;T1, T2, T3&gt;[]</a></li>
-              <li><a href="#iactiont1-t2-t3-t4">IAction&lt;T1, T2, T3, T4&gt;[]</a></li>
-            </ul>
-          </details>
-        </li>
-      </ul>
-  </li>
-  <li>
-    <details>
       <summary><a href="#-api-reference">API Reference</a></summary>
       <ul>
         <li><a href="#-type">Type</a></li>
@@ -70,12 +40,12 @@ Provide utility methods for invoking arrays or collections of [IAction](IActions
         </li>
         </ul>
       </ul>
-    </details>
-
   </li>
 </ul>
 
 ---
+
+<!--
 
 ## 🗂 Examples of Usage
 
@@ -154,6 +124,8 @@ actions.InvokeRange(go, 5, "Hello", true);
 ```
 
 ---
+
+-->
 
 ## 🔍 API Reference
 
