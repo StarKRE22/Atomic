@@ -56,8 +56,6 @@ patterns, composable structures, and modular design**.
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements
 of type `object`**.
 
-### Collections
-
 - [ReactiveArray](Performance/ReactiveArrayPerformance.md) – performance benchmarks for reactive arrays.
 - [ReactiveList](Performance/ReactiveListPerformance.md) – performance benchmarks for reactive lists.
 - [ReactiveLinkedList](Performance/ReactiveLinkedListPerformance.md) – performance benchmarks for reactive linked

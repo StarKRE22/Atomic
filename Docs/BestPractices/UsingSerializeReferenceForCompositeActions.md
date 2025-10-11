@@ -5,6 +5,10 @@ For **narrative or scenario-driven games**, where designers need to configure a 
 multiple actions in the inspector without writing extra code. This is especially useful for quickly iterating on game
 logic or events.
 
+---
+
+## 🗂 Example of Usage
+
 #### 1. Create an Action Trigger
 
 Create a component that executes an action **when triggered by the player**. The specific action can be assigned by the
@@ -30,14 +34,9 @@ public sealed class PlayerActionTrigger : MonoBehaviour
 
 #### 2. Add `PlayerActionTrigger` to a GameObject
 
-<img src="../../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
+<img src="../Images/PlayerActionTrigger_Composite.png" alt="Inspector setup example" width="390" height="164">
 
 #### 3. Assign Composite Action
 
 In the **Inspector**, we can assign the [CompositeAction]() value to the `Action` parameter. For example, we can
 add [PrintAction](PrintAction.md) to the action array.
-
-
-> [!WARNING]
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
-> clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.

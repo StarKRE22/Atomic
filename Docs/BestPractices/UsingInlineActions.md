@@ -1,8 +1,11 @@
-
-## 📌 Best Practice
+# 📌 Using Inline Actions
 
 **InlineAction** is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to
 define custom behavior inline for events, commands, or reactive systems.
+
+---
+
+## 🗂 Example of Usage
 
 Below is an example of creating a weapon that shoots bullets, manages ammo, and triggers a cooldown using
 inline action:
