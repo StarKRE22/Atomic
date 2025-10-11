@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,31 +226,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="12075000" />
-    </task>
-    <task id="LOCAL-01287" summary="InlineAction.md">
-      <option name="closed" value="true" />
-      <created>1760124626273</created>
-      <option name="number" value="01287" />
-      <option name="presentableId" value="LOCAL-01287" />
-      <option name="project" value="LOCAL" />
-      <updated>1760124626273</updated>
-    </task>
-    <task id="LOCAL-01288" summary="InlineAction`1.md">
-      <option name="closed" value="true" />
-      <created>1760124840619</created>
-      <option name="number" value="01288" />
-      <option name="presentableId" value="LOCAL-01288" />
-      <option name="project" value="LOCAL" />
-      <updated>1760124840619</updated>
-    </task>
-    <task id="LOCAL-01289" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760124910656</created>
-      <option name="number" value="01289" />
-      <option name="presentableId" value="LOCAL-01289" />
-      <option name="project" value="LOCAL" />
-      <updated>1760124910656</updated>
+      <workItem from="1760170912545" duration="12928000" />
     </task>
     <task id="LOCAL-01290" summary="InlineAction`2.md">
       <option name="closed" value="true" />
@@ -620,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760188017558</updated>
     </task>
-    <option name="localTasksCounter" value="1336" />
+    <task id="LOCAL-01336" summary="SceneActionReference.md">
+      <option name="closed" value="true" />
+      <created>1760188491832</created>
+      <option name="number" value="01336" />
+      <option name="presentableId" value="LOCAL-01336" />
+      <option name="project" value="LOCAL" />
+      <updated>1760188491832</updated>
+    </task>
+    <task id="LOCAL-01337" summary="SceneActionReference`2.md">
+      <option name="closed" value="true" />
+      <created>1760188752408</created>
+      <option name="number" value="01337" />
+      <option name="presentableId" value="LOCAL-01337" />
+      <option name="project" value="LOCAL" />
+      <updated>1760188752408</updated>
+    </task>
+    <task id="LOCAL-01338" summary="SceneActionReference`2.md">
+      <option name="closed" value="true" />
+      <created>1760188799853</created>
+      <option name="number" value="01338" />
+      <option name="presentableId" value="LOCAL-01338" />
+      <option name="project" value="LOCAL" />
+      <updated>1760188799853</updated>
+    </task>
+    <option name="localTasksCounter" value="1339" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="CompositeAction`2.md" />
     <MESSAGE value="CompositeAction`3.md" />
     <MESSAGE value="CompositeAction`4.md" />
@@ -670,9 +669,10 @@
     <MESSAGE value="SceneActionComposite`3.md" />
     <MESSAGE value="SceneActionComposite`4.md" />
     <MESSAGE value="SceneActionsReference.md" />
-    <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="SceneActionReference`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference`1.md" />
+    <MESSAGE value="SceneActionReference.md" />
+    <MESSAGE value="SceneActionReference`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

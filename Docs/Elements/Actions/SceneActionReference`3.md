@@ -1,5 +1,28 @@
 # 🧩 SceneActionReference&lt;T1, T2, T3&gt;
 
+A reference wrapper for a [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md) with <b>three parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Constructors](#-constructors)
+    - [Constructor()](#sceneactionreference)
+    - [Constructor(SceneActionAbstract\<T1, T2, T3>)](#sceneactionreferencesceneactionabstractt1-t2-t3-action)
+  - [Fields](#-fields)
+    - [Action](#action)
+  - [Methods](#-methods)
+    - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public sealed class SceneActionReference<T1, T2, T3> : IAction<T1, T2, T3>
@@ -16,15 +39,15 @@ public sealed class SceneActionReference<T1, T2, T3> : IAction<T1, T2, T3>
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
-| Parameter | Type                            | Description                           |
-|-----------|---------------------------------|---------------------------------------|
-| `action`  | `SceneActionAbstract<T1,T2,T3>` | The referenced scene action to invoke |
+| Parameter | Description                           |
+|-----------|---------------------------------------|
+| `action`  | The referenced scene action to invoke |
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -46,7 +69,7 @@ public SceneActionReference(SceneActionAbstract<T1, T2, T3> action);
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Action`
 
@@ -59,7 +82,7 @@ public SceneActionAbstract<T1, T2, T3> action;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 
