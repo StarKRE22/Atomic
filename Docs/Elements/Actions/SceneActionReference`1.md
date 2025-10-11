@@ -1,11 +1,53 @@
 # 🧩 SceneActionReference&lt;T&gt;
 
+A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) with <b>one parameter</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Constructors](#-constructors)
+        - [SceneActionReference()](#sceneactionreference)
+        - [SceneActionReference(SceneActionAbstract\<T>)](#sceneactionreferencesceneactionabstractt)
+    - [Fields](#-fields)
+        - [Action](#action)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+    
+---
+
+## 🗂 Example of Usage
+
+Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
+
+<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
+
+```csharp
+public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
+{
+}
+```
+
+```csharp
+public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
+{
+    public override void Invoke(GameObject arg) => GameObject.Destroy(arg);
+}
+```
+
+---
+
 ```csharp
 [Serializable]
 public sealed class SceneActionReference<T> : IAction<T>
 ```
 
-- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) with <b>one parameter</b>.
+- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) with <b>one
+  parameter</b>.
 - **Inheritance:** [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the argument type.
 - **Notes:** Supports Unity serialization and Odin Inspector
@@ -13,7 +55,7 @@ public sealed class SceneActionReference<T> : IAction<T>
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                           |
 |-----------|---------------------------------------|
@@ -21,7 +63,7 @@ public sealed class SceneActionReference<T> : IAction<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `SceneActionReference()`
 
@@ -43,7 +85,7 @@ public SceneActionReference(SceneActionAbstract<T> action);
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Action`
 
@@ -56,7 +98,7 @@ public SceneActionAbstract<T> action;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -66,24 +108,3 @@ public void Invoke(T arg);
 
 - **Description:** Invokes the referenced scene action with the provided argument.
 - **Parameter:** `arg` – The input argument.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
-
-<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
-
-```csharp
-public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
-{
-}
-```
-
-```csharp
-public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
-{
-    public override void Invoke(GameObject arg) => GameObject.Destroy(arg);
-}
-```
