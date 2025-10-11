@@ -11,10 +11,9 @@ Represents a <b>parameterless</b> composite scene action that can be invoked.
     - [Type](#-type)
     - [Inspector Settings](#-inspector-settings)
     - [Fields](#-fields)
-      - [Actions](#actions)
+        - [Actions](#actions)
     - [Methods](#-methods)
         - [Invoke()](#invoke)
-
 
 ---
 
