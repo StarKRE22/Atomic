@@ -7,89 +7,74 @@ Provide utility methods for invoking arrays or collections of [IAction](IActions
 
 ## 📑 Table of Contents
 
-<details>
-  <summary>Examples of Usage</summary>
-  <details>
-    <summary>IEnumerable</summary>
-    <ul>
-      <li><a href="#ienumerableiaction">IEnumerable&lt;IAction&gt;</a></li>
-      <li><a href="#ienumerableiactiont">IEnumerable&lt;IAction&lt;T&gt;&gt;</a></li>
-      <li><a href="#ienumerableiactiont1-t2">IEnumerable&lt;IAction&lt;T1, T2&gt;&gt;</a></li>
-      <li><a href="#ienumerableiactiont1-t2-t3">IEnumerable&lt;IAction&lt;T1, T2, T3&gt;&gt;</a></li>
-      <li><a href="#ienumerableiactiont1-t2-t3-t4">IEnumerable&lt;IAction&lt;T1, T2, T3, T4&gt;&gt;</a></li>
-    </ul>
-  </details>
-  <details>
-    <summary>Array</summary>
-    <ul>
-      <li><a href="#iaction">IAction[]</a></li>
-      <li><a href="#iactiont">IAction&lt;T&gt;[]</a></li>
-      <li><a href="#iactiont1-t2">IAction&lt;T1, T2&gt;[]</a></li>
-      <li><a href="#iactiont1-t2-t3">IAction&lt;T1, T2, T3&gt;[]</a></li>
-      <li><a href="#iactiont1-t2-t3-t4">IAction&lt;T1, T2, T3, T4&gt;[]</a></li>
-    </ul>
-  </details>
-</details>
+<ul>
+  <li>
+      <summary><a href="#-examples-of-usage">Examples of Usage</a></summary>
+      <ul>
+        <li>
+          <details>
+            <summary>IEnumerable</summary>
+            <ul>
+              <li><a href="#ienumerableiaction">IEnumerable&lt;IAction&gt;</a></li>
+              <li><a href="#ienumerableiactiont">IEnumerable&lt;IAction&lt;T&gt;&gt;</a></li>
+              <li><a href="#ienumerableiactiont1-t2">IEnumerable&lt;IAction&lt;T1, T2&gt;&gt;</a></li>
+              <li><a href="#ienumerableiactiont1-t2-t3">IEnumerable&lt;IAction&lt;T1, T2, T3&gt;&gt;</a></li>
+              <li><a href="#ienumerableiactiont1-t2-t3-t4">IEnumerable&lt;IAction&lt;T1, T2, T3, T4&gt;&gt;</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Array</summary>
+            <ul>
+              <li><a href="#iaction">IAction[]</a></li>
+              <li><a href="#iactiont">IAction&lt;T&gt;[]</a></li>
+              <li><a href="#iactiont1-t2">IAction&lt;T1, T2&gt;[]</a></li>
+              <li><a href="#iactiont1-t2-t3">IAction&lt;T1, T2, T3&gt;[]</a></li>
+              <li><a href="#iactiont1-t2-t3-t4">IAction&lt;T1, T2, T3, T4&gt;[]</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+  </li>
 
-<details>
-  <summary>API Reference</summary>
-  <ul>
-    <li><a href="#-type">Type</a></li>
-    <li><a href="#-methods">Methods</a></li>
-  </ul>
-  <details>
-    <summary>IEnumerable Methods</summary>
-    <ul>
-      <li><a href="#invokerangeienumerableiaction">InvokeRange(IEnumerable&lt;IAction&gt;)</a></li>
-      <li><a href="#invokerangetiactiont-t">InvokeRange&lt;T&gt;(IEnumerable&lt;IAction&lt;T&gt;&gt;, T)</a></li>
-      <li><a href="#invokeranget1-t2ienumerableiactiont1-t2-t1-t2">InvokeRange&lt;T1, T2&gt;(IEnumerable&lt;IAction&lt;T1, T2&gt;&gt;, T1, T2)</a></li>
-      <li><a href="#invokeranget1-t2-t3ienumerableiactiont1-t2-t3-t1-t2-t3">InvokeRange&lt;T1, T2, T3&gt;(IEnumerable&lt;IAction&lt;T1, T2, T3&gt;&gt;, T1, T2, T3)</a></li>
-      <li><a href="#invokeranget1-t2-t3-t4ienumerableiactiont1-t2-t3-t4-t1-t2-t3-t4">InvokeRange&lt;T1, T2, T3, T4&gt;(IEnumerable&lt;IAction&lt;T1, T2, T3, T4&gt;&gt;, T1, T2, T3, T4)</a></li>
-    </ul>
-  </details>
-  <details>
-    <summary>Array Methods</summary>
-    <ul>
-      <li><a href="#invokerangeiaction">InvokeRange(IAction[])</a></li>
-      <li><a href="#invokerangetiactiont-t">InvokeRange&lt;T&gt;(IAction&lt;T&gt;[], T)</a></li>
-      <li><a href="#invokeranget1-t2iactiont1-t2-t1-t2">InvokeRange&lt;T1, T2&gt;(IAction&lt;T1, T2&gt;[], T1, T2)</a></li>
-      <li><a href="#invokeranget1-t2-t3iactiont1-t2-t3-t1-t2-t3">InvokeRange&lt;T1, T2, T3&gt;(IAction&lt;T1, T2, T3&gt;[], T1, T2, T3)</a></li>
-      <li><a href="#invokeranget1-t2-t3-t4iactiont1-t2-t3-t4-t1-t2-t3-t4">InvokeRange&lt;T1, T2, T3, T4&gt;(IAction&lt;T1, T2, T3, T4&gt;[], T1, T2, T3, T4)</a></li>
-    </ul>
-  </details>
-</details>
+  <li>
+    <details>
+      <summary><a href="#-api-reference">API Reference</a></summary>
+      <ul>
+        <li><a href="#-type">Type</a></li>
+        <li><a href="#-methods">Methods</a></li>
+          <ul>
+          <li>
+          <details>
+            <summary>IEnumerable</summary>
+            <ul>
+              <li><a href="#invokerangeienumerableiaction">InvokeRange(IEnumerable&lt;IAction&gt;)</a></li>
+              <li><a href="#invokerangetiactiont-t">InvokeRange&lt;T&gt;(IEnumerable&lt;IAction&lt;T&gt;&gt;, T)</a></li>
+              <li><a href="#invokeranget1-t2ienumerableiactiont1-t2-t1-t2">InvokeRange&lt;T1, T2&gt;(IEnumerable&lt;IAction&lt;T1, T2&gt;&gt;, T1, T2)</a></li>
+              <li><a href="#invokeranget1-t2-t3ienumerableiactiont1-t2-t3-t1-t2-t3">InvokeRange&lt;T1, T2, T3&gt;(IEnumerable&lt;IAction&lt;T1, T2, T3&gt;&gt;, T1, T2, T3)</a></li>
+              <li><a href="#invokeranget1-t2-t3-t4ienumerableiactiont1-t2-t3-t4-t1-t2-t3-t4">InvokeRange&lt;T1, T2, T3, T4&gt;(IEnumerable&lt;IAction&lt;T1, T2, T3, T4&gt;&gt;, T1, T2, T3, T4)</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Array</summary>
+            <ul>
+              <li><a href="#invokerangeiaction">InvokeRange(IAction[])</a></li>
+              <li><a href="#invokerangetiactiont-t">InvokeRange&lt;T&gt;(IAction&lt;T&gt;[], T)</a></li>
+              <li><a href="#invokeranget1-t2iactiont1-t2-t1-t2">InvokeRange&lt;T1, T2&gt;(IAction&lt;T1, T2&gt;[], T1, T2)</a></li>
+              <li><a href="#invokeranget1-t2-t3iactiont1-t2-t3-t1-t2-t3">InvokeRange&lt;T1, T2, T3&gt;(IAction&lt;T1, T2, T3&gt;[], T1, T2, T3)</a></li>
+              <li><a href="#invokeranget1-t2-t3-t4iactiont1-t2-t3-t4-t1-t2-t3-t4">InvokeRange&lt;T1, T2, T3, T4&gt;(IAction&lt;T1, T2, T3, T4&gt;[], T1, T2, T3, T4)</a></li>
+            </ul>
+          </details>
+        </li>
+        </ul>
+      </ul>
+    </details>
 
-
-
-- [Examples of Usage](#-examples-of-usage)
-    - IEnumerable
-        - [IEnumerable<IAction>](#ienumerableiaction)
-        - [IEnumerable<IAction<T>>](#ienumerableiactiont)
-        - [IEnumerable<IAction<T1, T2>>](#ienumerableiactiont1-t2)
-        - [IEnumerable<IAction<T1, T2, T3>>](#ienumerableiactiont1-t2-t3)
-        - [IEnumerable<IAction<T1, T2, T3, T4>>](#ienumerableiactiont1-t2-t3-t4)
-    - Array
-        - [IAction[]](#iaction)
-        - [IAction<T>[]](#iactiont)
-        - [IAction<T1, T2>[]](#iactiont1-t2)
-        - [IAction<T1, T2, T3>[]](#iactiont1-t2-t3)
-        - [IAction<T1, T2, T3, T4>[]](#iactiont1-t2-t3-t4)
-
-- [API Reference](#-api-reference)
-    - [Type](#-type)
-    - [Methods](#-methods)
-        - IEnumerable
-            - [InvokeRange(IEnumerable<IAction>)](#invokerangeienumerableiaction)
-            - [InvokeRange<T>(IEnumerable<IAction<T>>, T)](#invokerangetiactiont-t)
-            - [InvokeRange<T1, T2>(IEnumerable<IAction<T1, T2>>, T1, T2)](#invokeranget1-t2ienumerableiactiont1-t2-t1-t2)
-            - [InvokeRange<T1, T2, T3>(IEnumerable<IAction<T1, T2, T3>>, T1, T2, T3)](#invokeranget1-t2-t3ienumerableiactiont1-t2-t3-t1-t2-t3)
-            - [InvokeRange<T1, T2, T3, T4>(IEnumerable<IAction<T1, T2, T3, T4>>, T1, T2, T3, T4)](#invokeranget1-t2-t3-t4ienumerableiactiont1-t2-t3-t4-t1-t2-t3-t4)
-        - Array
-            - [InvokeRange(IAction[])](#invokerangeiaction)
-            - [InvokeRange<T>(IAction<T>[], T)](#invokerangetiactiont-t)
-            - [InvokeRange<T1, T2>(IAction<T1, T2>[], T1, T2)](#invokeranget1-t2iactiont1-t2-t1-t2)
-            - [InvokeRange<T1, T2, T3>(IAction<T1, T2, T3>[], T1, T2, T3)](#invokeranget1-t2-t3iactiont1-t2-t3-t1-t2-t3)
-            - [InvokeRange<T1, T2, T3, T4>(IAction<T1, T2, T3, T4>[], T1, T2, T3, T4)](#invokeranget1-t2-t3-t4iactiont1-t2-t3-t4-t1-t2-t3-t4)
+  </li>
+</ul>
 
 ---
 
