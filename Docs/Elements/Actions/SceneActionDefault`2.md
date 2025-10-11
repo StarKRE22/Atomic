@@ -44,7 +44,7 @@ public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 
 ---
 
-### 🧱Fields
+### 🧱 Fields
 
 #### `Actions`
 
