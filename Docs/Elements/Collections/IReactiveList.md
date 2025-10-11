@@ -7,6 +7,64 @@ It provides **indexed notifications** for insertions, deletions, updates, and ov
 
 ## 📑 Table of Contents
 
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemadded">OnItemAdded</a></li>
+            <li><a href="#onitemremoved">OnItemRemoved</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#length">Length</a></li>
+            <li><a href="#count">Count</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#addt">Add(T)</a></li>
+            <li><a href="#insertint-t">Insert(int, T)</a></li>
+            <li><a href="#removet">Remove(T)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containst">Contains(T)</a></li>
+            <li><a href="#indexoft">IndexOf(T)</a></li>
+            <li><a href="#copytot-int">CopyTo(T[], int)</a></li>
+            <li><a href="#copytoint-t-int-int">Copy(int, T[], int, int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<!--
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -31,6 +89,8 @@ It provides **indexed notifications** for insertions, deletions, updates, and ov
         - [CopyTo(T[], int)](#copytot-int)
         - [Copy(int, T[], int, int)](#copytoint-t-int-int)
         - [GetEnumerator()](#getenumerator)
+
+-->
 
 ---
 
