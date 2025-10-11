@@ -5,18 +5,6 @@ from [SceneActionAbstract](SceneActionsAbstract.md). It allows game designers to
 the Unity scene** — chaining multiple action instances, including generic variants, without writing
 additional code.
 
-> [!NOTE]  
-> Actions are executed in the order they appear in the array.  
-> Null references are automatically skipped, making partially configured lists safe to use.
-
-> [!TIP]
-> In essence, **SceneActionDefault** acts as a **container of actions**, executing them sequentially as configured in
-> the **Inspector** through `[SerializeReference]`.
-
-> [!WARNING]
-> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
-> clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
-
 ---
 
 ## 📑 Table of Contents
@@ -25,6 +13,7 @@ additional code.
     - [Non-generic action](#non-generic-action)
     - [Generic action](#generic-action)
 - [API Reference](#-api-reference)
+- [Notes](#-notes)
 
 ---
 
@@ -104,3 +93,19 @@ There are several implementations of default scene actions, depending on the num
 - [SceneActionDefault&lt;T1, T2&gt;](SceneActionDefault%602.md) — Action that takes two arguments.
 - [SceneActionDefault&lt;T1, T2, T3&gt;](SceneActionDefault%603.md) — Action that takes three arguments.
 - [SceneActionDefault&lt;T1, T2, T3, T4&gt;](SceneActionDefault%604.md) — Action that takes four arguments.
+
+---
+
+## 📝 Notes
+
+> [!NOTE]  
+> Actions are executed in the order they appear in the array.  
+> Null references are automatically skipped, making partially configured lists safe to use.
+
+> [!TIP]
+> In essence, **SceneActionDefault** acts as a **container of actions**, executing them sequentially as configured in
+> the **Inspector** through `[SerializeReference]`.
+
+> [!WARNING]
+> Using `[SerializeReference]` should be considered a last resort. If possible, define actions through code instead for
+> clarity and maintainability, because `[SerializeReference]` is very fragile during refactoring.
