@@ -47,7 +47,7 @@ public sealed class SceneActionReference<T1, T2, T3> : IAction<T1, T2, T3>
 
 ---
 
-### 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `SceneActionReference()`
 
