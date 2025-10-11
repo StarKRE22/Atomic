@@ -1,5 +1,25 @@
 # 🧩 SceneActionComposite&lt;T1, T2, T3, T4&gt;
 
+Composite scene action with **four parameters**.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Fields](#-fields)
+    - [Actions](#actions)
+  - [Methods](#-methods)
+    - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, T3, T4>
 ```
@@ -17,7 +37,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
     they will be invoked sequentially.
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                                                      |
 |-----------|------------------------------------------------------------------|
@@ -25,7 +45,7 @@ public class SceneActionComposite<T1, T2, T3, T4> : SceneActionAbstract<T1, T2, 
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Actions`
 
