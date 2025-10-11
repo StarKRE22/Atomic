@@ -9,25 +9,23 @@ group itself behaves as a single scene action, while internally invoking all con
 > code. Actions are executed in the order they appear in the array. Null references are automatically skipped, making
 > partially configured lists safe to use.
 
+---
 
-There are several implementations of composite scene actions, depending on the number of arguments the actions take:
+## 📑 Table of Contents
 
-- [SceneActionComposite](SceneActionComposite.md) — Non-generic version; works without parameters.
-- [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) — Action that takes one argument.
-- [SceneActionComposite&lt;T1, T2&gt;](SceneActionComposite%602.md) — Action that takes two arguments.
-- [SceneActionComposite&lt;T1, T2, T3&gt;](SceneActionComposite%603.md) — Action that takes three arguments.
-- [SceneActionComposite&lt;T1, T2, T3, T4&gt;](SceneActionComposite%604.md) — Action that takes four arguments.
+- [Examples of Usage](#-examples-of-usage)
+    - [Non-generic action](#non-generic-action)
+    - [Generic action](#generic-action)
+- [API Reference](#-api-reference)
 
 ---
 
 ## 🗂 Example of Usage
 
-**SceneActionComposite** can be used similarly to [SceneActionDefault](SceneActionsDefault.md) but is **strictly a
+`SceneActionComposite` can be used similarly to [SceneActionDefault](SceneActionsDefault.md) but is **strictly a
 composite container for `SceneActionAbstract`**.
 
----
-
-### 1️⃣ Non-generic Usage
+### 1️⃣ Non-generic action <div id="non-generic-action"></div>
 
 #### 1. Add the `Atomic/Elements/Action Composite` component to a `GameObject`.
 
@@ -44,7 +42,7 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
 
 ---
 
-### 2️⃣ Generic Usage
+### 2️⃣ Generic action <div id="generic-action"></div>
 
 #### 1. Create a `GameObjectSceneActionComposite` component.
 
@@ -72,3 +70,15 @@ public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObjec
 
 #### 4. Assign `DestroyGameObjectSceneAction` to the **Actions** parameter of the
 `GameObjectSceneActionComposite` component
+
+---
+
+## 🔍 API Reference
+
+There are several implementations of composite scene actions, depending on the number of arguments the actions take:
+
+- [SceneActionComposite](SceneActionComposite.md) — Non-generic version; works without parameters.
+- [SceneActionComposite&lt;T&gt;](SceneActionComposite%601.md) — Action that takes one argument.
+- [SceneActionComposite&lt;T1, T2&gt;](SceneActionComposite%602.md) — Action that takes two arguments.
+- [SceneActionComposite&lt;T1, T2, T3&gt;](SceneActionComposite%603.md) — Action that takes three arguments.
+- [SceneActionComposite&lt;T1, T2, T3, T4&gt;](SceneActionComposite%604.md) — Action that takes four arguments.
