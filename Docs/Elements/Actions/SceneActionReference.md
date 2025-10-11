@@ -24,7 +24,11 @@ A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstrac
 
 Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
 
+#### 1. Assume we have a `SceneActionDefault` component on a scene
+
 <img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
+
+#### 2. Assume we have an another `HelloWorldSceneAction` on a scene
 
 ```csharp
 public sealed class HelloWorldSceneAction : SceneActionAbstract
@@ -32,6 +36,8 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
     public override void Invoke() => Debug.Log("Hello World!");
 }
 ```
+
+#### 3. So we can bind the `HelloWorldSceneAction` to the `SceneActionDefault` via `SceneActionReference` in the Unity Inspector
 
 ---
 

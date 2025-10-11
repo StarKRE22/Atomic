@@ -17,14 +17,14 @@ A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601
         - [Action](#action)
     - [Methods](#-methods)
         - [Invoke(T)](#invoket)
-    
+
 ---
 
 ## 🗂 Example of Usage
 
-Below is an example of referencing a `DestroyGameObjectSceneAction` from the `GameObjectSceneActionDefault`.
+Below is an example of binding `SceneActions` via reference:
 
-<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
+#### 1. Assume we have `SceneActionDefault` for `GameObject`
 
 ```csharp
 public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject>
@@ -32,12 +32,18 @@ public sealed class GameObjectSceneActionDefault : SceneActionDefault<GameObject
 }
 ```
 
+#### 2. Assume we have another `SceneActionAbstract<T>` that destroys a game object
+
 ```csharp
 public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObject>
 {
     public override void Invoke(GameObject arg) => GameObject.Destroy(arg);
 }
 ```
+
+#### 3. So we can bind the `DestroyGameObjectSceneAction` to the `GameObjectSceneActionDefault` via `SceneActionReference` in the Unity Inspector.
+
+<img src="../../Images/GameObjectSceneReference.png" alt="SceneActionReference generic example" width="" height="128">
 
 ---
 
