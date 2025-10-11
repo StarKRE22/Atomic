@@ -1,5 +1,110 @@
 # 🧩 ReactiveHashSet&lt;T&gt;
 
+Represents a **reactive hash set** that supports **notifications** when items are added, removed, or
+when the overall state changes. Use this class when you need a **mutable hash-based set** with **reactive events** for
+any change.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Constructors](#-constructors)
+        - [ReactiveHashSet(int)](#reactivehashsetint)
+        - [ReactiveHashSet(params T[])](#reactivehashsetparams-t)
+        - [ReactiveHashSet(IReadOnlyCollection<T>)](#reactivehashsetireadonlycollectiont)
+        - [ReactiveHashSet(IEnumerable<T>)](#reactivehashsetienumerablet)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+    - [Properties](#-properties)
+        - [Count](#count)
+        - [IsReadOnly](#isreadonly)
+    - [Methods](#-methods)
+        - [Add(T)](#addt)
+        - [Remove(T)](#removet)
+        - [Contains(T)](#containst)
+        - [Clear()](#clear)
+        - [UnionWith(IEnumerable<T>)](#unionwithienumerablet)
+        - [IntersectWith(IEnumerable<T>)](#intersectwithienumerablet)
+        - [ExceptWith(IEnumerable<T>)](#exceptwithienumerablet)
+        - [SymmetricExceptWith(IEnumerable<T>)](#symmetricexceptwithienumerablet)
+        - [IsSubsetOf(IEnumerable<T>)](#issubsetofienumerablet)
+        - [IsProperSubsetOf(IEnumerable<T>)](#ispropersubsetofienumerablet)
+        - [IsSupersetOf(IEnumerable<T>)](#issupersetofienumerablet)
+        - [IsProperSupersetOf(IEnumerable<T>)](#ispropersupersetofienumerablet)
+        - [Overlaps(IEnumerable<T>)](#overlapsienumerablet)
+        - [SetEquals(IEnumerable<T>)](#setequalsienumerablet)
+        - [GetEnumerator()](#getenumerator)
+- [Useful Links](#-useful-links)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IReactiveSet<string> reactiveSet = new ReactiveHashSet<string>();
+
+// Subscribe to events
+reactiveSet.OnItemAdded += item => Console.WriteLine($"Added: {item}");
+reactiveSet.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
+reactiveSet.OnStateChanged += () => Console.WriteLine("Set state changed.");
+
+// Adding items
+reactiveSet.Add("Apple");   // Output: Added: Apple
+reactiveSet.Add("Banana");  // Output: Added: Banana
+
+// Attempt to add an existing item
+bool added = reactiveSet.Add("Apple"); // false, already exists
+
+// Check if an item exists
+if (reactiveSet.Contains("Banana"))
+{
+    Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
+}
+
+// Removing an item
+reactiveSet.Remove("Banana"); // Output: Removed: Banana
+
+// Union with another collection
+reactiveSet.UnionWith(new[] { "Cherry", "Date", "Apple" });
+// Output: Added: Cherry
+// Output: Added: Date
+
+// Intersect with another collection
+reactiveSet.IntersectWith(new[] { "Apple", "Date", "Elderberry" });
+// Output: Removed: Cherry
+
+// Symmetric difference with another collection
+reactiveSet.SymmetricExceptWith(new[] { "Date", "Fig", "Grape" });
+// Output: Removed: Date
+// Output: Added: Fig
+// Output: Added: Grape
+
+// Iterate through the set
+foreach (var item in reactiveSet)
+{
+    Console.WriteLine($"Set item: {item}");
+}
+
+// Clear the set
+reactiveSet.Clear();
+// Output: Removed: Apple
+// Output: Removed: Fig
+// Output: Removed: Grape
+// Output: Set state changed.
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCallbackReceiver
@@ -8,24 +113,21 @@ public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCa
 - **Description:** Represents a **reactive hash set** that supports **notifications** when items are added, removed, or
   when the overall state changes.
 - **Inheritance:** [IReactiveSet&lt;T&gt;](IReactiveSet.md), `ISet<T>`, `ICollection<T>`, `IEnumerable<T>`,
-  `IDisposable`.
+  `IDisposable`, `ISerializationCallbackReceiver`.
 - **Type Parameter:** `T` — The type of elements stored in the set.
 - **Note:** Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Use this class when you need a **mutable hash-based set** with **reactive events** for any change.
-
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
-| Parameter         | Description                              |
-|-------------------|------------------------------------------|
+| Parameter         | Description                      |
+|-------------------|----------------------------------|
 | `serializedItems` | The initial elements of the set. |
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `ReactiveHashSet(int)`
 
@@ -81,7 +183,7 @@ public ReactiveHashSet(IEnumerable<T> elements);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -112,7 +214,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -132,7 +234,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -300,57 +402,8 @@ public Enumerator GetEnumerator();
 
 ---
 
-## 🗂 Example of Usage
+## 🔗 Useful Links
 
-```csharp
-IReactiveSet<string> reactiveSet = new ReactiveHashSet<string>();
-
-// Subscribe to events
-reactiveSet.OnItemAdded += item => Console.WriteLine($"Added: {item}");
-reactiveSet.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
-reactiveSet.OnStateChanged += () => Console.WriteLine("Set state changed.");
-
-// Adding items
-reactiveSet.Add("Apple");   // Output: Added: Apple
-reactiveSet.Add("Banana");  // Output: Added: Banana
-
-// Attempt to add an existing item
-bool added = reactiveSet.Add("Apple"); // false, already exists
-
-// Check if an item exists
-if (reactiveSet.Contains("Banana"))
-{
-    Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
-}
-
-// Removing an item
-reactiveSet.Remove("Banana"); // Output: Removed: Banana
-
-// Union with another collection
-reactiveSet.UnionWith(new[] { "Cherry", "Date", "Apple" });
-// Output: Added: Cherry
-// Output: Added: Date
-
-// Intersect with another collection
-reactiveSet.IntersectWith(new[] { "Apple", "Date", "Elderberry" });
-// Output: Removed: Cherry
-
-// Symmetric difference with another collection
-reactiveSet.SymmetricExceptWith(new[] { "Date", "Fig", "Grape" });
-// Output: Removed: Date
-// Output: Added: Fig
-// Output: Added: Grape
-
-// Iterate through the set
-foreach (var item in reactiveSet)
-{
-    Console.WriteLine($"Set item: {item}");
-}
-
-// Clear the set
-reactiveSet.Clear();
-// Output: Removed: Apple
-// Output: Removed: Fig
-// Output: Removed: Grape
-// Output: Set state changed.
-```
+- [ReactiveHashSet Performance](../Performance/ReactiveHashSetPerformance.md) – performance benchmarks for
+  reactive list.
+- [Iterating over Reactive Collections](../../BestPractices/IteratingReactiveCollections.md) — best practice.
