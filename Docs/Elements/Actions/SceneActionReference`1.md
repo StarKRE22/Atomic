@@ -41,6 +41,10 @@ public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObjec
 
 ---
 
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public sealed class SceneActionReference<T> : IAction<T>
