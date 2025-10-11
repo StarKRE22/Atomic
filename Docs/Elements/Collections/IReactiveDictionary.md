@@ -1,5 +1,110 @@
 # 🧩 IReactiveDictionary&lt;K, V&gt;
 
+Represents a **reactive key-value dictionary** that supports notifications when items are added, removed, updated, or
+when the overall state changes. Use this interface when you need **mutable dictionary access** with **reactive
+notifications** for all
+changes.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Count](#count)
+        - [Keys](#keys)
+        - [Values](#values)
+    - [Indexers](#-indexers)
+        - [[K key]](#k-key)
+    - [Methods](#-methods)
+        - [Add(K, V)](#addk-v)
+        - [Add(KeyValuePair<K, V>)](#addkeyvaluepairk-v)
+        - [Remove(K)](#removek)
+        - [Remove(KeyValuePair<K, V>)](#removekeyvaluepairk-v)
+        - [ContainsKey(K)](#containskeyk)
+        - [Contains(KeyValuePair<K, V>)](#containskeyvaluepairk-v)
+        - [TryGetValue(K, out V)](#trygetvaluek-out-v)
+        - [CopyTo(KeyValuePair<K, V>[], int)](#copytokeyvaluepairk-v-int)
+        - [Clear()](#clear)
+        - [GetEnumerator()](#getenumerator)
+        - [Dispose()](#dispose)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Get a reactive dictionary
+IReactiveDictionary<string, int> dictionary = ...;
+
+// Subscribe to events
+dictionary.OnItemAdded += (key, value) =>
+{
+    Console.WriteLine($"Added: {key} => {value}");
+};
+
+dictionary.OnItemChanged += (key, value) =>
+{
+    Console.WriteLine($"Changed: {key} => {value}");
+};
+
+dictionary.OnItemRemoved += (key, value) =>
+{
+    Console.WriteLine($"Removed: {key} => {value}");
+};
+
+dictionary.OnStateChanged += () =>
+{
+    Console.WriteLine("Dictionary state changed.");
+};
+
+// Example: adding items
+dictionary.Add("apple", 5);
+dictionary.Add("banana", 3);
+
+// Change an existing value
+dictionary["apple"] = 10; // Triggers OnItemChanged
+
+// Remove an item
+dictionary.Remove("banana");
+
+// Access elements using the indexer
+if (dictionary.ContainsKey("apple"))
+{
+    int count = dictionary["apple"];
+    Console.WriteLine($"Apple count: {count}");
+}
+
+// Iterate through the dictionary using foreach (read-only)
+foreach (var kvp in dictionary)
+{
+    Console.WriteLine($"{kvp.Key} => {kvp.Value}");
+}
+
+// Try to get a value safely
+if (dictionary.TryGetValue("orange", out int orangeCount))
+{
+    Console.WriteLine($"Orange count: {orangeCount}");
+}
+else
+{
+    Console.WriteLine("Orange is not in the dictionary.");
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveDictionary<K, V> : 
     IDictionary<K, V>,
@@ -9,18 +114,15 @@ public interface IReactiveDictionary<K, V> :
 
 - **Description:** Represents a **reactive key-value dictionary** that supports notifications when items are added,
   removed, updated, or when the overall state changes.
-- **Inheritance:** `IDictionary<K,V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md), [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md)
+- **Inheritance:**
+  `IDictionary<K,V>`, [IReadOnlyReactiveDictionary<K, V>](IReadOnlyReactiveDictionary.md), [IReactiveCollection<KeyValuePair<K, V>>](IReactiveCollection.md)
 - **Type Parameters:**
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
 
-> [!TIP]
-> Use this interface when you need **mutable dictionary access** with **reactive notifications** for all
-changes.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -66,7 +168,7 @@ public event Action<K, V> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -94,7 +196,7 @@ public IEnumerable<V> Values { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[K key]`
 
@@ -109,7 +211,7 @@ public V this[K key] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(K, V)`
 
@@ -206,7 +308,7 @@ public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0);
     - Throws `ArgumentNullException` if `array` is null.
     - Throws `ArgumentOutOfRangeException` if `arrayIndex` is less than 0.
 
-#### `void Clear()`
+#### `Clear()`
 
 ```csharp
 public void Clear();
@@ -235,66 +337,3 @@ public void Dispose();
     - Clears the dictionary.
     - Unsubscribes all event handlers.
     - After calling `Dispose`, the dictionary is empty and no longer raises events.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Get a reactive dictionary
-IReactiveDictionary<string, int> dictionary = ...;
-
-// Subscribe to events
-dictionary.OnItemAdded += (key, value) =>
-{
-    Console.WriteLine($"Added: {key} => {value}");
-};
-
-dictionary.OnItemChanged += (key, value) =>
-{
-    Console.WriteLine($"Changed: {key} => {value}");
-};
-
-dictionary.OnItemRemoved += (key, value) =>
-{
-    Console.WriteLine($"Removed: {key} => {value}");
-};
-
-dictionary.OnStateChanged += () =>
-{
-    Console.WriteLine("Dictionary state changed.");
-};
-
-// Example: adding items
-dictionary.Add("apple", 5);
-dictionary.Add("banana", 3);
-
-// Change an existing value
-dictionary["apple"] = 10; // Triggers OnItemChanged
-
-// Remove an item
-dictionary.Remove("banana");
-
-// Access elements using the indexer
-if (dictionary.ContainsKey("apple"))
-{
-    int count = dictionary["apple"];
-    Console.WriteLine($"Apple count: {count}");
-}
-
-// Iterate through the dictionary using foreach (read-only)
-foreach (var kvp in dictionary)
-{
-    Console.WriteLine($"{kvp.Key} => {kvp.Value}");
-}
-
-// Try to get a value safely
-if (dictionary.TryGetValue("orange", out int orangeCount))
-{
-    Console.WriteLine($"Orange count: {orangeCount}");
-}
-else
-{
-    Console.WriteLine("Orange is not in the dictionary.");
-}
-```

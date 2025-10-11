@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveDictionary.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,31 +225,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="25517000" />
-    </task>
-    <task id="LOCAL-01310" summary="SceneActionAbstract`3.md">
-      <option name="closed" value="true" />
-      <created>1760173655075</created>
-      <option name="number" value="01310" />
-      <option name="presentableId" value="LOCAL-01310" />
-      <option name="project" value="LOCAL" />
-      <updated>1760173655075</updated>
-    </task>
-    <task id="LOCAL-01311" summary="SceneActionAbstract`4.md">
-      <option name="closed" value="true" />
-      <created>1760173941818</created>
-      <option name="number" value="01311" />
-      <option name="presentableId" value="LOCAL-01311" />
-      <option name="project" value="LOCAL" />
-      <updated>1760173941818</updated>
-    </task>
-    <task id="LOCAL-01312" summary="SceneActionsDefault.md">
-      <option name="closed" value="true" />
-      <created>1760174389396</created>
-      <option name="number" value="01312" />
-      <option name="presentableId" value="LOCAL-01312" />
-      <option name="project" value="LOCAL" />
-      <updated>1760174389396</updated>
+      <workItem from="1760170912545" duration="26424000" />
     </task>
     <task id="LOCAL-01313" summary="SceneActionsDefault.md">
       <option name="closed" value="true" />
@@ -620,7 +595,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760206973311</updated>
     </task>
-    <option name="localTasksCounter" value="1359" />
+    <task id="LOCAL-01359" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1760207345084</created>
+      <option name="number" value="01359" />
+      <option name="presentableId" value="LOCAL-01359" />
+      <option name="project" value="LOCAL" />
+      <updated>1760207345084</updated>
+    </task>
+    <task id="LOCAL-01360" summary="ReactiveLinkedList.md">
+      <option name="closed" value="true" />
+      <created>1760207429228</created>
+      <option name="number" value="01360" />
+      <option name="presentableId" value="LOCAL-01360" />
+      <option name="project" value="LOCAL" />
+      <updated>1760207429228</updated>
+    </task>
+    <task id="LOCAL-01361" summary="IReadOnlyReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1760207948274</created>
+      <option name="number" value="01361" />
+      <option name="presentableId" value="LOCAL-01361" />
+      <option name="project" value="LOCAL" />
+      <updated>1760207948274</updated>
+    </task>
+    <option name="localTasksCounter" value="1362" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,8 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionsComposite.md" />
-    <MESSAGE value="SceneActionComposite.md" />
     <MESSAGE value="SceneActionComposite`1.md" />
     <MESSAGE value="SceneActionComposite`2.md" />
     <MESSAGE value="SceneActionComposite`3.md" />
@@ -672,7 +669,9 @@
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="ReactiveList.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveList.md" />
+    <MESSAGE value="ReactiveLinkedList.md" />
+    <MESSAGE value="IReadOnlyReactiveDictionary.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyReactiveDictionary.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
