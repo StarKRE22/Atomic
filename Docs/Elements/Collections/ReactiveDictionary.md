@@ -1,5 +1,182 @@
 # 🧩 ReactiveDictionary<K, V>
 
+Represents a **reactive key-value dictionary** that provides notifications when items are added,
+removed, or updated. Use this class when you need a dictionary with full read / write access and **reactive
+notifications** on changes.
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Usage](#ex-1)
+    - [Using TryAdd](#ex-2)
+    - [Removing Elements](#ex-3)
+    - [Iterating Keys and Values](#ex-4)
+    - [Subscribing to Events](#ex-5)
+    - [Initializing from Collections](#ex-6)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [ReactiveDictionary(int)](#reactivedictionaryint)
+        - [ReactiveDictionary(IEnumerable\<KeyValuePair<K, V>>)](#reactivedictionaryienumerablekeyvaluepairk-v)
+        - [ReactiveDictionary(IEnumerable\<(K, V)>)](#reactivedictionaryienumerablek-v)
+        - [ReactiveDictionary(params KeyValuePair\<K, V>[])](#reactivedictionaryparams-keyvaluepairk-v)
+        - [ReactiveDictionary(params (K, V)[])](#reactivedictionaryparams-k-v)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemChanged](#onitemchanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+    - [Properties](#-properties)
+        - [Count](#count)
+        - [IsReadOnly](#isreadonly)
+        - [Keys](#keys)
+        - [Values](#values)
+    - [Indexers](#-indexers)
+        - [[K key]](#k-key)
+    - [Methods](#-methods)
+        - [Add(K, V)](#addk-v)
+        - [Add(KeyValuePair<K, V>)](#addkeyvaluepairk-v)
+        - [TryAdd(KeyValuePair<K, V>)](#tryaddkeyvaluepairk-v)
+        - [TryAdd(K, V)](#tryaddk-v)
+        - [Remove(K)](#removek)
+        - [Remove(K, out V)](#removek-out-v)
+        - [Remove(KeyValuePair<K, V>)](#removekeyvaluepairk-v)
+        - [ContainsKey(K)](#containskeyk)
+        - [Contains(KeyValuePair<K, V>)](#containskeyvaluepairk-v)
+        - [TryGetValue(K, out V)](#trygetvaluek-out-v)
+        - [Clear()](#clear)
+        - [CopyTo(KeyValuePair<K, V>[], int)](#copytokeyvaluepairk-v-int)
+        - [GetEnumerator()](#getenumerator)
+    - [Nested Types](#-nested-types)
+        - [KeyCollection](#keycollection)
+        - [ValueCollection](#valuecollection)
+- [Useful Links](#-useful-links)
+
+---
+
+## 🗂 Examples of Usage
+
+Below are examples of using `ReactiveDictionary` in different scenarios:
+
+### 1️⃣ Basic Usage <div id="ex-1"></div>
+
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+dict.Add("One", 1);
+dict.Add("Two", 2);
+
+Console.WriteLine(dict["One"]); // Output: 1
+
+dict["Two"] = 22; // Updates the value
+Console.WriteLine(dict["Two"]); // Output: 22
+```
+
+---
+
+### 2️⃣ Using TryAdd <div id="ex-2"></div>
+
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+bool added = dict.TryAdd("One", 1); // true
+added = dict.TryAdd("One", 11);     // false, key already exists
+
+Console.WriteLine(dict["One"]); // Output: 1
+```
+
+---
+
+### 3️⃣ Removing Elements <div id="ex-3"></div>
+
+```csharp
+var dict = new ReactiveDictionary<string, int>
+{
+    { "A", 1 },
+    { "B", 2 }
+};
+
+bool removed = dict.Remove("A"); // true
+removed = dict.Remove("C");      // false, key does not exist
+
+if (dict.Remove("B", out int value))
+{
+    Console.WriteLine(value); // Output: 2
+}
+```
+
+---
+
+### 4️⃣ Iterating Keys and Values <div id="ex-4"></div>
+
+```csharp
+var dict = new ReactiveDictionary<string, int>
+{
+    { "X", 10 },
+    { "Y", 20 }
+};
+
+// Iterate over keys without allocation
+foreach (var key in dict.Keys)
+{
+    Console.WriteLine(key); // X, Y
+}
+
+// Iterate over values without allocation
+foreach (var val in dict.Values)
+{
+    Console.WriteLine(val); // 10, 20
+}
+
+// Iterate over key-value pairs without allocation
+foreach (var kv in dict)
+{
+    Console.WriteLine($"{kv.Key}: {kv.Value}");
+}
+```
+
+---
+
+### 5️⃣ Subscribing to Events <div id="ex-5"></div>
+
+```csharp
+var dict = new ReactiveDictionary<string, int>();
+
+dict.OnItemAdded += (key, value) => Console.WriteLine($"Added {key}={value}");
+dict.OnItemChanged += (key, value) => Console.WriteLine($"Changed {key}={value}");
+dict.OnItemRemoved += (key, value) => Console.WriteLine($"Removed {key}={value}");
+
+dict.Add("A", 1);    // Output: Added A=1
+dict["A"] = 100;     // Output: Changed A=100
+dict.Remove("A");    // Output: Removed A=100
+```
+
+---
+
+### 6️⃣ Initializing from Collections <div id="ex-6"></div>
+
+```csharp
+var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>
+{
+    new("One", 1),
+    new("Two", 2)
+});
+
+var dictFromTuples = new ReactiveDictionary<string, int>(new (string, int)[]
+{
+    ("Three", 3),
+    ("Four", 4)
+});
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, ISerializationCallbackReceiver
@@ -13,12 +190,9 @@ public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, 
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
 - **Notes:** Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Use this class when you need a dictionary with full read / write access and **reactive notifications** on changes.
-
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter         | Description                                      |
 |-------------------|--------------------------------------------------|
@@ -26,7 +200,7 @@ public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, 
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `ReactiveDictionary(int)`
 
@@ -97,7 +271,7 @@ public ReactiveDictionary(params (K, V)[] source);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -142,7 +316,7 @@ public event Action<K, V> OnItemRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -178,7 +352,7 @@ public ReadOnlyValueCollection Values { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[K key]`
 
@@ -192,7 +366,7 @@ public V this[K key] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(K, V)`
 
@@ -280,7 +454,7 @@ public bool Remove(K key, out V value);
 - **Events:** Triggers `OnItemRemoved` and `OnStateChanged`.
 - **Remarks:** Provides the removed value for further processing.
 
-#### `Remove(KeyValuePair<K, V> item)`
+#### `Remove(KeyValuePair<K, V>)`
 
 ```csharp
 public bool Remove(KeyValuePair<K, V> item);
@@ -338,7 +512,7 @@ public void Clear();
 - **Events:** Triggers `OnItemRemoved` for each item and `OnStateChanged`.
 - **Remarks:** Resets the internal state. Use with caution as all data is lost.
 
-#### `CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0)`
+#### `CopyTo(KeyValuePair<K, V>[], int)`
 
 ```csharp
 public void CopyTo(KeyValuePair<K, V>[] array, int arrayIndex = 0);
@@ -364,10 +538,9 @@ public Enumerator GetEnumerator();
 
 ---
 
-<details>
-  <summary>
-    <h2>🧩 ReadOnlyKeyCollection</h2>
-  </summary>
+### 🧩 Nested Types
+
+#### `KeyCollection`
 
 ```csharp
 public readonly struct ReadOnlyKeyCollection : ICollection<K>
@@ -375,84 +548,9 @@ public readonly struct ReadOnlyKeyCollection : ICollection<K>
 
 - **Description:** Represents a read-only collection of keys
 - **Inheritance:** `ICollection<T>`
+- **See also:** [ReadOnlyKeyCollection Documentation](ReactiveDictionaryKeyCollection.md)
 
----
-
-### 🔑 Properties
-
-#### `Count`
-
-```csharp
-public int Count { get; }
-```
-
-- **Description:** Gets the number of keys in the collection.
-
-#### `IsReadOnly`
-
-```csharp
-public bool IsReadOnly { get; }
-```
-
-- **Description:** Gets a value indicating whether the collection is read-only. Always `true`.
-
----
-
-### 🏹 Methods
-
-#### `Contains(K)`
-
-```csharp
-public bool Contains(K item);
-```
-
-- **Description:** Determines whether the collection contains the specified key.
-- **Parameter:** `item` — The key to locate. Cannot be null.
-- **Returns:** `true` if the key exists; otherwise `false`.
-
-#### `CopyTo(K[] array, int arrayIndex)`
-
-```csharp
-public void CopyTo(K[] array, int arrayIndex);
-```
-
-- **Description:** Copies the keys to the specified array, starting at the specified index.
-- **Parameters:**
-    - `array` — The destination array. Cannot be null.
-    - `arrayIndex` — The zero-based index at which to begin copying. Must be non-negative.
-- **Exceptions:**
-    - Throws `ArgumentNullException` if `array` is null.
-    - Throws `ArgumentOutOfRangeException` if `arrayIndex` is negative.
-
-#### `GetEnumerator()`
-
-```csharp
-public Enumerator GetEnumerator();
-```
-
-- **Description:** Returns an enumerator that iterates through the keys in the dictionary.
-- **Returns:** An `Enumerator` struct for iterating over keys.
-
----
-
-### ⛔ Unsupported Methods
-
-```csharp
-void ICollection<K>.Add(K item);
-void ICollection<K>.Clear();
-bool ICollection<K>.Remove(K item);
-```
-
-- **Description:** All modification methods throw `NotSupportedException` because the collection is read-only.
-
-</details>
-
----
-
-<details>
-  <summary>
-    <h2>🧩 ReadOnlyValueCollection</h2>
-  </summary>
+#### `ValueCollection`
 
 ```csharp
 public readonly struct ReadOnlyValueCollection : ICollection<V>
@@ -460,191 +558,12 @@ public readonly struct ReadOnlyValueCollection : ICollection<V>
 
 - **Description:** <b>Represents a read-only collection of values</b>.
 - **Inheritance:** `ICollection<T>`
+- **See also:** [ReadOnlyValueCollection Documentation](ReactiveDictionaryValueCollection.md)
 
 ---
 
-### 🔑 Properties
+## 🔗 Useful Links
 
-#### `Count`
-
-```csharp
-public int Count { get; }
-```
-
-- **Description:** Gets the number of values in the collection.
-
-#### `IsReadOnly`
-
-```csharp
-public bool IsReadOnly { get; }
-```
-
-- **Description:** Gets a value indicating whether the collection is read-only. Always `true`.
-
----
-
-### 🏹 Methods
-
-#### `Contains(V)`
-
-```csharp
-public bool Contains(V item);
-```
-
-- **Description:** Determines whether the collection contains the specified value.
-- **Parameter:** `item` — The value to locate.
-- **Returns:** `true` if the value exists; otherwise `false`.
-
-#### `CopyTo(V[] array, int arrayIndex)`
-
-```csharp
-public void CopyTo(V[] array, int arrayIndex);
-```
-
-- **Description:** Copies the values to the specified array, starting at the specified index.
-- **Parameters:**
-    - `array` — The destination array. Cannot be null.
-    - `arrayIndex` — The zero-based index at which to begin copying. Must be non-negative.
-- **Exceptions:**
-    - Throws `ArgumentNullException` if `array` is null.
-    - Throws `ArgumentOutOfRangeException` if `arrayIndex` is negative.
-
-#### `GetEnumerator()`
-
-```csharp
-public Enumerator GetEnumerator();
-```
-
-- **Description:** Returns an enumerator that iterates through the values in the dictionary.
-- **Returns:** An `Enumerator` struct for iterating over values.
-
----
-
-### ⛔ Unsupported Methods
-
-```csharp
-void ICollection<V>.Add(V item);
-void ICollection<V>.Clear();
-bool ICollection<V>.Remove(V item);
-```
-
-- **Description:** All modification methods throw `NotSupportedException` because the collection is read-only.
-
-</details>
-
----
-
-## 🗂 Examples of Usage
-
-Below are examples of using `ReactiveDictionary` in different scenarios:
-
-### 1️⃣ Basic Usage
-
-```csharp
-var dict = new ReactiveDictionary<string, int>();
-
-dict.Add("One", 1);
-dict.Add("Two", 2);
-
-Console.WriteLine(dict["One"]); // Output: 1
-
-dict["Two"] = 22; // Updates the value
-Console.WriteLine(dict["Two"]); // Output: 22
-```
-
----
-
-### 2️⃣ Using TryAdd
-
-```csharp
-var dict = new ReactiveDictionary<string, int>();
-
-bool added = dict.TryAdd("One", 1); // true
-added = dict.TryAdd("One", 11);     // false, key already exists
-
-Console.WriteLine(dict["One"]); // Output: 1
-```
-
----
-
-### 3️⃣ Removing Elements
-
-```csharp
-var dict = new ReactiveDictionary<string, int>
-{
-    { "A", 1 },
-    { "B", 2 }
-};
-
-bool removed = dict.Remove("A"); // true
-removed = dict.Remove("C");      // false, key does not exist
-
-if (dict.Remove("B", out int value))
-{
-    Console.WriteLine(value); // Output: 2
-}
-```
-
----
-
-### 4️⃣ Iterating Keys and Values
-
-```csharp
-var dict = new ReactiveDictionary<string, int>
-{
-    { "X", 10 },
-    { "Y", 20 }
-};
-
-// Iterate over keys without allocation
-foreach (var key in dict.Keys)
-{
-    Console.WriteLine(key); // X, Y
-}
-
-// Iterate over values without allocation
-foreach (var val in dict.Values)
-{
-    Console.WriteLine(val); // 10, 20
-}
-
-// Iterate over key-value pairs without allocation
-foreach (var kv in dict)
-{
-    Console.WriteLine($"{kv.Key}: {kv.Value}");
-}
-```
-
----
-
-### 5️⃣ Subscribing to Events
-
-```csharp
-var dict = new ReactiveDictionary<string, int>();
-
-dict.OnItemAdded += (key, value) => Console.WriteLine($"Added {key}={value}");
-dict.OnItemChanged += (key, value) => Console.WriteLine($"Changed {key}={value}");
-dict.OnItemRemoved += (key, value) => Console.WriteLine($"Removed {key}={value}");
-
-dict.Add("A", 1);    // Output: Added A=1
-dict["A"] = 100;     // Output: Changed A=100
-dict.Remove("A");    // Output: Removed A=100
-```
-
----
-
-### 6️⃣ Initializing from Collections
-
-```csharp
-var dictFromPairs = new ReactiveDictionary<string, int>(new List<KeyValuePair<string, int>>
-{
-    new("One", 1),
-    new("Two", 2)
-});
-
-var dictFromTuples = new ReactiveDictionary<string, int>(new (string, int)[]
-{
-    ("Three", 3),
-    ("Four", 4)
-});
-```
+- [ReactiveDictionary Performance](../Performance/ReactiveDictionaryPerformance.md) – performance benchmarks for
+  reactive list.
+- [Iterating over Reactive Collections](../../BestPractices/IteratingReactiveCollections.md) — best practice.

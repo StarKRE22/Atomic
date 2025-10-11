@@ -10,10 +10,10 @@ data access and modification.
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-  - [Reactive Array](#-reactive-array)
-  - [Reactive List](#-reactive-list)
-  - [Reactive Dictionary](#-reactive-dictionary)
-  - [Reactive Hash Set](#-reactive-hash-set)
+    - [Reactive Array](#-reactive-array)
+    - [Reactive List](#-reactive-list)
+    - [Reactive Dictionary](#-reactive-dictionary)
+    - [Reactive Hash Set](#-reactive-hash-set)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
 - [Best Practices](#-best-practices)
@@ -90,6 +90,7 @@ list.Remove("B");
 foreach (var item in list)
     Console.WriteLine(item);
 ```
+
 ---
 
 ### 3️⃣ Reactive Dictionary <div id="-reactive-dictionary"></div>
@@ -143,7 +144,6 @@ Console.WriteLine("Key-Value pairs:");
 foreach (var kv in dict)
     Console.WriteLine($"{kv.Key}: {kv.Value}");
 ```
-
 
 ---
 
@@ -224,6 +224,8 @@ reactiveSet.Clear();
     - [IReadOnlyReactiveDictionary](IReadOnlyReactiveDictionary.md) <!-- + -->
     - [IReactiveDictionary](IReactiveDictionary.md) <!-- + -->
     - [ReactiveDictionary](ReactiveDictionary.md) <!-- + -->
+        - [ReadOnlyKeyCollection](ReactiveDictionaryKeyCollection.md)
+        - [ReadOnlyValueCollection](ReactiveDictionaryValueCollection.md)
 - **ReactiveSets**
     - [IReactiveSet](IReactiveSet.md) <!-- + -->
     - [ReactiveHashSet](ReactiveHashSet.md) <!-- + -->
