@@ -1,5 +1,48 @@
 # 🧩 IReadOnlyReactiveCollection&lt;T&gt;
 
+Represents a **read-only reactive collection** that provides notifications when items are added,
+removed, or when the overall state changes.
+
+---
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+    - [Properties](#-properties)
+        - [Count](#count)
+    - [Methods](#-methods)
+        - [GetEnumerator()](#getenumerator)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have a collection
+IReadOnlyReactiveCollection<string> collection = ...;
+
+// Subscribe to events
+collection.OnItemAdded += item => Console.WriteLine($"Added: {item}");
+collection.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
+collection.OnStateChanged += () => Console.WriteLine("State changed");
+
+// Iterate over items
+foreach (var value in collection)
+{
+    Console.WriteLine(value);
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReadOnlyReactiveCollection<out T> : IReadOnlyCollection<T>
 ```
@@ -13,7 +56,7 @@ public interface IReadOnlyReactiveCollection<out T> : IReadOnlyCollection<T>
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -46,7 +89,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -59,7 +102,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `GetEnumerator()`
 
@@ -69,23 +112,3 @@ public IEnumerator<T> GetEnumerator();
 
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Returns:** An `IEnumerator<T>` for iterating over the collection’s elements.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have a collection
-IReadOnlyReactiveCollection<string> collection = ...;
-
-// Subscribe to events
-collection.OnItemAdded += item => Console.WriteLine($"Added: {item}");
-collection.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
-collection.OnStateChanged += () => Console.WriteLine("State changed");
-
-// Iterate over items
-foreach (var value in collection)
-{
-    Console.WriteLine(value);
-}
-```
