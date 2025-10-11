@@ -1,8 +1,30 @@
+# 🧩 ReadOnlyKeyCollection
 
-<details>
-  <summary>
-    <h2>🧩 ReadOnlyKeyCollection</h2>
-  </summary>
+Represents a read-only collection of keys.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Count](#count)
+        - [IsReadOnly](#isreadonly)
+    - [Methods](#-methods)
+        - [Contains(K)](#containsk)
+        - [CopyTo(K[], int)](#copytok-int)
+        - [GetEnumerator()](#getenumerator)
+    - [Unsupported Methods](#-unsupported-methods)
+        - [Add(K)](#addk)
+        - [Clear()](#clear)
+        - [Remove(K)](#removek)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public readonly struct ReadOnlyKeyCollection : ICollection<K>
@@ -72,12 +94,22 @@ public Enumerator GetEnumerator();
 
 ### ⛔ Unsupported Methods
 
+All modification methods throw `NotSupportedException` because the collection is read-only.
+
+#### `Add(K)`
+
 ```csharp
 void ICollection<K>.Add(K item);
-void ICollection<K>.Clear();
-bool ICollection<K>.Remove(K item);
 ```
 
-- **Description:** All modification methods throw `NotSupportedException` because the collection is read-only.
+#### `Clear`
 
-</details>
+```csharp
+void ICollection<K>.Clear();
+```
+
+#### `Remove(K)`
+
+```csharp
+bool ICollection<K>.Remove(K item);
+```
