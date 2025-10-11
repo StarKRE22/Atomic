@@ -4,6 +4,8 @@ Represents a group of actions <b>with one parameter</b> that are executed sequen
 
 ---
 
+## 📑 Table of Contents
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -13,7 +15,6 @@ Represents a group of actions <b>with one parameter</b> that are executed sequen
         - [IEnumerable Constructor](#ienumerable-constructor)
     - [Methods](#-methods)
         - [Invoke(T)](#invoket)
-
 
 ---
 
@@ -32,10 +33,10 @@ composite.Invoke("World");
 // Bye World
 ```
 
-
-- **See also:** [InlineAction\<T>](InlineAction%601.md)  
+- **See also:** [InlineAction\<T>](InlineAction%601.md)
 
 ---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -44,6 +45,7 @@ composite.Invoke("World");
 [Serializable]
 public class CompositeAction<T> : IAction<T>
 ```
+
 - **Description:** Represents a group of actions <b>with one parameter</b> that are executed sequentially.
 - **Inheritance:** [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the input parameter.

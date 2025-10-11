@@ -1,5 +1,41 @@
 # 🧩 CompositeAction&lt;T1, T2&gt;
 
+Represents a group of actions <b>with two parameters</b> that are executed sequentially.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Default Constructor](#default-constructor)
+        - [Params Constructor](#params-constructor)
+        - [IEnumerable Constructor](#ienumerable-constructor)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IAction<int, int> composite = new CompositeAction<int, int>(
+    new InlineAction<int, int>((a, b) => Console.WriteLine(a + b)),
+    new InlineAction<int, int>((a, b) => Console.WriteLine(a * b))
+);z
+
+composite.Invoke(3, 4);
+
+// Output:
+// 7
+// 12
+```
+
+- **See also:** [InlineAction\<T1, T2>](InlineAction%601.md)
+
+---
 
 ## 🔍 API Reference
 
@@ -19,9 +55,9 @@ public class CompositeAction<T1, T2> : IAction<T1, T2>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `CompositeAction()`
+#### `Default Constructor`
 
 ```csharp
 public CompositeAction()
@@ -30,7 +66,7 @@ public CompositeAction()
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
-#### `CompositeAction(params IAction<T1, T2>[])`
+#### `Params Constructor`
 
 ```csharp
 public CompositeAction(params IAction<T1, T2>[] actions)
@@ -40,7 +76,7 @@ public CompositeAction(params IAction<T1, T2>[] actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-#### `CompositeAction(IEnumerable<Action<T1, T2>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
@@ -52,7 +88,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2>> actions)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -64,20 +100,3 @@ public void Invoke(T1 arg1, T2 arg2)
 - **Parameters:**
     - `arg1` – The first argument
     - `arg2` – The second argument
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IAction<int, int> composite = new CompositeAction<int, int>(
-    new InlineAction<int, int>((a, b) => Console.WriteLine(a + b)),
-    new InlineAction<int, int>((a, b) => Console.WriteLine(a * b))
-);z
-
-composite.Invoke(3, 4);
-
-// Output:
-// 7
-// 12
-```
