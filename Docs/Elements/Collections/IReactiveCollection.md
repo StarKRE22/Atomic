@@ -43,6 +43,12 @@ collection.Add("Apple");
 collection.Add("Banana");
 collection.Remove("Apple");
 
+// Contains
+collection.Contains("Banana");
+
+// Copy to
+collection.CopyTo(someArray, 0);
+
 // Iterate over items
 foreach (var value in collection)
 {

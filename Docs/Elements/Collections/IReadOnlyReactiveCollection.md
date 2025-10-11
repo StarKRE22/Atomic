@@ -17,6 +17,8 @@ removed, or when the overall state changes.
     - [Properties](#-properties)
         - [Count](#count)
     - [Methods](#-methods)
+        - [Contains(T)](#containst)
+        - [CopyTo(T[], int)](#copytot-int)
         - [GetEnumerator()](#getenumerator)
 
 ---
@@ -31,6 +33,12 @@ IReadOnlyReactiveCollection<string> collection = ...;
 collection.OnItemAdded += item => Console.WriteLine($"Added: {item}");
 collection.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
 collection.OnStateChanged += () => Console.WriteLine("State changed");
+
+// Contains
+collection.Contains("Banana");
+
+// Copy to
+collection.CopyTo(someArray, 0);
 
 // Iterate over items
 foreach (var value in collection)
@@ -105,6 +113,27 @@ public int Count { get; }
 ---
 
 ### 🏹 Methods
+
+#### `Contains(T)`
+
+```csharp
+public bool Contains(T item);
+```
+
+- **Description:** Determines whether the collection contains a specific value.
+- **Parameter:** `item` — the object to locate in the collection.
+- **Returns:** `true` if the item is found; otherwise `false`.
+
+#### `CopyTo(T[], int)`
+
+```csharp
+public void CopyTo(T[] array, int arrayIndex);
+```
+
+- **Description:** Copies the elements of the collection to an array, starting at a particular array index.
+- **Parameters:**
+    - `array` — the destination one-dimensional array.
+    - `arrayIndex` — the zero-based index in the array at which copying begins.
 
 #### `GetEnumerator()`
 

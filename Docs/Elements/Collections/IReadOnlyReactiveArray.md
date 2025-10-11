@@ -180,7 +180,7 @@ public void CopyTo(T[] array, int arrayIndex)
 #### `CopyTo(int, T[], int, int)`
 
 ```csharp
-public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length);
 ```
 
 - **Description:** Copies a range of elements from this array to a destination array.

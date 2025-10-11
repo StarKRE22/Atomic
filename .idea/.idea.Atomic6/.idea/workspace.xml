@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReadOnlyReactiveCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/IReadOnlyReactiveCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveCollection.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,39 +228,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="22255000" />
-    </task>
-    <task id="LOCAL-01298" summary="CompositeAction.md">
-      <option name="closed" value="true" />
-      <created>1760171503834</created>
-      <option name="number" value="01298" />
-      <option name="presentableId" value="LOCAL-01298" />
-      <option name="project" value="LOCAL" />
-      <updated>1760171503834</updated>
-    </task>
-    <task id="LOCAL-01299" summary="CompositeAction`1.md">
-      <option name="closed" value="true" />
-      <created>1760171830887</created>
-      <option name="number" value="01299" />
-      <option name="presentableId" value="LOCAL-01299" />
-      <option name="project" value="LOCAL" />
-      <updated>1760171830887</updated>
-    </task>
-    <task id="LOCAL-01300" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760171918605</created>
-      <option name="number" value="01300" />
-      <option name="presentableId" value="LOCAL-01300" />
-      <option name="project" value="LOCAL" />
-      <updated>1760171918605</updated>
-    </task>
-    <task id="LOCAL-01301" summary="CompositeAction`2.md">
-      <option name="closed" value="true" />
-      <created>1760172214964</created>
-      <option name="number" value="01301" />
-      <option name="presentableId" value="LOCAL-01301" />
-      <option name="project" value="LOCAL" />
-      <updated>1760172214964</updated>
+      <workItem from="1760170912545" duration="22996000" />
     </task>
     <task id="LOCAL-01302" summary="CompositeAction`3.md">
       <option name="closed" value="true" />
@@ -618,7 +590,39 @@
       <option name="project" value="LOCAL" />
       <updated>1760201088182</updated>
     </task>
-    <option name="localTasksCounter" value="1347" />
+    <task id="LOCAL-01347" summary="IReadOnlyReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1760204073590</created>
+      <option name="number" value="01347" />
+      <option name="presentableId" value="LOCAL-01347" />
+      <option name="project" value="LOCAL" />
+      <updated>1760204073590</updated>
+    </task>
+    <task id="LOCAL-01348" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1760204252078</created>
+      <option name="number" value="01348" />
+      <option name="presentableId" value="LOCAL-01348" />
+      <option name="project" value="LOCAL" />
+      <updated>1760204252078</updated>
+    </task>
+    <task id="LOCAL-01349" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1760204280808</created>
+      <option name="number" value="01349" />
+      <option name="presentableId" value="LOCAL-01349" />
+      <option name="project" value="LOCAL" />
+      <updated>1760204280808</updated>
+    </task>
+    <task id="LOCAL-01350" summary="IReadOnlyReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1760204493877</created>
+      <option name="number" value="01350" />
+      <option name="presentableId" value="LOCAL-01350" />
+      <option name="project" value="LOCAL" />
+      <updated>1760204493877</updated>
+    </task>
+    <option name="localTasksCounter" value="1351" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,9 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionAbstract`2.md" />
-    <MESSAGE value="SceneActionAbstract`3.md" />
-    <MESSAGE value="SceneActionAbstract`4.md" />
     <MESSAGE value="SceneActionsDefault.md" />
     <MESSAGE value="SceneActionDefault.md" />
     <MESSAGE value="SceneActionDefault`1.md" />
@@ -670,7 +671,10 @@
     <MESSAGE value="ExtensionsInvokeRange.md" />
     <MESSAGE value="IAction ExtensionsInvokeRange.md" />
     <MESSAGE value="Actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actions" />
+    <MESSAGE value="IReadOnlyReactiveCollection.md" />
+    <MESSAGE value="IReactiveCollection.md" />
+    <MESSAGE value="IReadOnlyReactiveArray.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyReactiveArray.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
