@@ -1,5 +1,88 @@
 # 🧩 IReactiveList&lt;T&gt;
 
+Represents a **reactive list** that notifies subscribers whenever its contents change.
+It provides **indexed notifications** for insertions, deletions, updates, and overall state changes.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Length](#length)
+        - [Count](#count)
+    - [Indexers](#-indexers)
+        - [[int index]](#int-index)
+    - [Methods](#-methods)
+        - [Add(T)](#addt)
+        - [Insert(int, T)](#insertint-t)
+        - [Remove(T)](#removet)
+        - [RemoveAt(int)](#removeatint)
+        - [Clear()](#clear)
+        - [Contains(T)](#containst)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [Copy(int, T[], int, int)](#copytoint-t-int-int)
+        - [GetEnumerator()](#getenumerator)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IReactiveList<int> reactiveList = ...;
+
+// Subscribe to item insertion
+reactiveList.OnItemAdded += (index, item) =>
+{
+    Console.WriteLine($"Item {item} inserted at index {index}");
+};
+
+// Subscribe to item removal
+reactiveList.OnItemRemoved += (index, item) =>
+{
+    Console.WriteLine($"Item {item} removed from index {index}");
+};
+
+// Subscribe to item changes
+reactiveList.OnItemChanged += (index, value) =>
+{
+    Console.WriteLine($"Item at index {index} changed to {value}");
+};
+
+// Subscribe to global state changes
+reactiveList.OnStateChanged += () =>
+{
+    Console.WriteLine("List state changed");
+};
+
+// Access elements by index
+int firstItem = reactiveList[0];
+Console.WriteLine($"First item: {firstItem}");
+
+// Iterate over all items
+foreach (var item in reactiveList)
+{
+    Console.WriteLine(item);
+}
+
+// Modify items
+reactiveList[0] = 42;
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveList<T> : IList<T>, IReadOnlyReactiveList<T>, IReactiveCollection<T>
 ```
@@ -14,7 +97,7 @@ public interface IReactiveList<T> : IList<T>, IReadOnlyReactiveList<T>, IReactiv
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -61,7 +144,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Length`
 
@@ -85,7 +168,7 @@ public int Count { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -100,7 +183,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -221,48 +304,3 @@ public IEnumerator<T> GetEnumerator()
 - **Description:** Returns an enumerator that iterates through the list.
 - **Returns:** `IEnumerator<T>` — an enumerator for the list.
 - **Remarks:** Enumeration does not trigger events.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IReactiveList<int> reactiveList = ...;
-
-// Subscribe to item insertion
-reactiveList.OnItemAdded += (index, item) =>
-{
-    Console.WriteLine($"Item {item} inserted at index {index}");
-};
-
-// Subscribe to item removal
-reactiveList.OnItemRemoved += (index, item) =>
-{
-    Console.WriteLine($"Item {item} removed from index {index}");
-};
-
-// Subscribe to item changes
-reactiveList.OnItemChanged += (index, value) =>
-{
-    Console.WriteLine($"Item at index {index} changed to {value}");
-};
-
-// Subscribe to global state changes
-reactiveList.OnStateChanged += () =>
-{
-    Console.WriteLine("List state changed");
-};
-
-// Access elements by index
-int firstItem = reactiveList[0];
-Console.WriteLine($"First item: {firstItem}");
-
-// Iterate over all items
-foreach (var item in reactiveList)
-{
-    Console.WriteLine(item);
-}
-
-// Modify items
-reactiveList[0] = 42;
-```

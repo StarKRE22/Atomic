@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReadOnlyReactiveList.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,23 +225,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="24018000" />
-    </task>
-    <task id="LOCAL-01305" summary="SceneActionAbstract.md">
-      <option name="closed" value="true" />
-      <created>1760173089314</created>
-      <option name="number" value="01305" />
-      <option name="presentableId" value="LOCAL-01305" />
-      <option name="project" value="LOCAL" />
-      <updated>1760173089314</updated>
-    </task>
-    <task id="LOCAL-01306" summary="SceneActionAbstract`1.md">
-      <option name="closed" value="true" />
-      <created>1760173467682</created>
-      <option name="number" value="01306" />
-      <option name="presentableId" value="LOCAL-01306" />
-      <option name="project" value="LOCAL" />
-      <updated>1760173467683</updated>
+      <workItem from="1760170912545" duration="24530000" />
     </task>
     <task id="LOCAL-01307" summary="SceneActionAbstract`2.md">
       <option name="closed" value="true" />
@@ -620,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760205259259</updated>
     </task>
-    <option name="localTasksCounter" value="1354" />
+    <task id="LOCAL-01354" summary="ReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1760205839982</created>
+      <option name="number" value="01354" />
+      <option name="presentableId" value="LOCAL-01354" />
+      <option name="project" value="LOCAL" />
+      <updated>1760205839982</updated>
+    </task>
+    <task id="LOCAL-01355" summary="ReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1760205878248</created>
+      <option name="number" value="01355" />
+      <option name="presentableId" value="LOCAL-01355" />
+      <option name="project" value="LOCAL" />
+      <updated>1760205878248</updated>
+    </task>
+    <option name="localTasksCounter" value="1356" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionDefault`1.md" />
     <MESSAGE value="SceneActionDefault`2.md" />
     <MESSAGE value="SceneActionDefault`3.md" />
     <MESSAGE value="SceneActionDefault`4.md" />
@@ -672,7 +670,8 @@
     <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveArray.cs" />
     <MESSAGE value="IReactiveArray.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IReactiveArray.md" />
+    <MESSAGE value="ReactiveArray.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveArray.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
