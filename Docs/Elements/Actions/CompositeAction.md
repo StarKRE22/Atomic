@@ -4,6 +4,8 @@ Represents a group of **parameterless actions** that are executed sequentially.
 
 ---
 
+## 📑 Table of Contents
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)

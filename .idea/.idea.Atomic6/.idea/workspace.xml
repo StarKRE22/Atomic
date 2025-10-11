@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,30 +229,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-    </task>
-    <task id="LOCAL-01244" summary="EntityCollectionView.md">
-      <option name="closed" value="true" />
-      <created>1759744102386</created>
-      <option name="number" value="01244" />
-      <option name="presentableId" value="LOCAL-01244" />
-      <option name="project" value="LOCAL" />
-      <updated>1759744102386</updated>
-    </task>
-    <task id="LOCAL-01245" summary="Сделал Entity UI.md">
-      <option name="closed" value="true" />
-      <created>1759744502222</created>
-      <option name="number" value="01245" />
-      <option name="presentableId" value="LOCAL-01245" />
-      <option name="project" value="LOCAL" />
-      <updated>1759744502222</updated>
-    </task>
-    <task id="LOCAL-01246" summary="Остался раздел с EntityAPI и Performance для коллекций!">
-      <option name="closed" value="true" />
-      <created>1759744865381</created>
-      <option name="number" value="01246" />
-      <option name="presentableId" value="LOCAL-01246" />
-      <option name="project" value="LOCAL" />
-      <updated>1759744865381</updated>
+      <workItem from="1760170912545" duration="530000" />
     </task>
     <task id="LOCAL-01247" summary="Пилим!">
       <option name="closed" value="true" />
@@ -616,7 +599,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760128547400</updated>
     </task>
-    <option name="localTasksCounter" value="1293" />
+    <task id="LOCAL-01293" summary="CompositeActions.md">
+      <option name="closed" value="true" />
+      <created>1760171053986</created>
+      <option name="number" value="01293" />
+      <option name="presentableId" value="LOCAL-01293" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171053986</updated>
+    </task>
+    <task id="LOCAL-01294" summary="CompositeActions.md">
+      <option name="closed" value="true" />
+      <created>1760171100841</created>
+      <option name="number" value="01294" />
+      <option name="presentableId" value="LOCAL-01294" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171100841</updated>
+    </task>
+    <task id="LOCAL-01295" summary="CompositeActions.md">
+      <option name="closed" value="true" />
+      <created>1760171122489</created>
+      <option name="number" value="01295" />
+      <option name="presentableId" value="LOCAL-01295" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171122489</updated>
+    </task>
+    <option name="localTasksCounter" value="1296" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал раздел про EntityAPI" />
     <MESSAGE value="Done!" />
     <MESSAGE value="EntityCollectionPerformance.md" />
     <MESSAGE value="Фиксы в доке!" />
@@ -668,7 +674,8 @@
     <MESSAGE value="InlineAction`2.md" />
     <MESSAGE value="InlineAction`3.md" />
     <MESSAGE value="InlineActions!" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineActions!" />
+    <MESSAGE value="CompositeActions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="CompositeActions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
