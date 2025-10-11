@@ -4,7 +4,7 @@ The **SceneActionComposite** classes represent a **group** of [SceneActionAbstra
 can be invoked sequentially. It follows the [Composite Pattern](https://en.wikipedia.org/wiki/Composite_pattern): the
 group itself behaves as a single scene action, while internally invoking all contained scene actions in order.
 
-> [!NOTE]
+> [!TIP]
 > This class is ideal for **building complex scene behaviors** directly in the Unity Inspector without writing extra
 > code. Actions are executed in the order they appear in the array. Null references are automatically skipped, making
 > partially configured lists safe to use.
