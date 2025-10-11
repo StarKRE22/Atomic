@@ -9,7 +9,7 @@ Represents a scene action with **three parameters**.
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Methods](#-methods)
-    - [Invoke()](#invoke)
+    - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
 
 ---
 
