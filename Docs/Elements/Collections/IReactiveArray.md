@@ -9,33 +9,32 @@ modified.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Events](#-events)
-    - [OnStateChanged](#onstatechanged)
-    - [OnItemChanged](#onitemchanged)
-  - [Properties](#-properties)
-    - [Length](#length)
-    - [Count](#count)
-  - [Indexers](#-indexers)
-    - [[int index]](#int-index)
-  - [Methods](#-methods)
-    - [Clear()](#clear)
-    - [Populate(IEnumerable<T>)](#populateienumerablet)
-    - [Fill(T)](#fillt)
-    - [Resize(int)](#resizeint)
-    - [Contains(T)](#containst)
-    - [IndexOf(T)](#indexoft)
-    - [CopyTo(T[], int)](#copytot-int)
-    - [Copy(int, T[], int, int)](#copyint-t-int-int-int)
-    - [GetEnumerator()](#getenumerator)
-
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Length](#length)
+        - [Count](#count)
+    - [Indexers](#-indexers)
+        - [[int index]](#int-index)
+    - [Methods](#-methods)
+        - [Clear()](#clear)
+        - [Populate(IEnumerable<T>)](#populateienumerablet)
+        - [Fill(T)](#fillt)
+        - [Resize(int)](#resizeint)
+        - [Contains(T)](#containst)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [Copy(int, T[], int, int)](#copyint-t-int-int-int)
+        - [GetEnumerator()](#getenumerator)
 
 ---
 
 ## 🗂 Example of Usage
 
 ```csharp
-// Assume we have a reactive array
+// Assume we have an instance of reactive array
 IReactiveArray<int> reactiveArray = ...; // your implementation
 
 // Subscribe to item changes

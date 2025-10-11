@@ -1,5 +1,91 @@
 # 🧩 ReactiveArray&lt;T&gt;
 
+Represents a **fixed-size reactive array** that emits events when elements change.
+It provides indexed access, supports enumeration.
+
+> [!TIP]
+> Use this class when you need a read-write reactive array with change notifications and iteration support.
+
+> [!IMPORTANT]
+> For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Constructors](#-constructors)
+        - [ReactiveArray(int)](#reactivearrayint)
+        - [ReactiveArray(params T[])](#reactivearrayparams-t)
+        - [ReactiveArray(IEnumerable<T>)](#reactivearrayienumerablet)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#-properties)
+        - [Length](#length)
+        - [Count](#count)
+    - [Indexers](#-indexers)
+        - [[int index]](#int-index)
+    - [Methods](#-methods)
+        - [Clear()](#clear)
+        - [Populate(IEnumerable<T>)](#populateienumerablet)
+        - [Fill(T)](#fillt)
+        - [Resize(int)](#resizeint)
+        - [Contains(T)](#containst)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [Copy(int, T[], int, int)](#copyint-t-int-int-int)
+        - [GetEnumerator()](#getenumerator)
+        - [Dispose()](#dispose)
+- [Useful links](#-useful-links)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a reactive array with initial values
+var reactiveArray = new ReactiveArray<int>(1, 2, 3, 4);
+
+// Subscribe to events
+reactiveArray.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
+reactiveArray.OnStateChanged += () => Console.WriteLine("Array state changed");
+
+// Access and modify elements
+reactiveArray[1] = 20; // Triggers OnItemChanged and OnStateChanged
+
+// Fill all elements
+reactiveArray.Fill(10);
+
+// Populate new values
+reactiveArray.Populate(new int[] { 5, 6, 7, 8 });
+
+// Resize the array
+reactiveArray.Resize(6); // Adds two default elements
+
+// Clear the array
+reactiveArray.Clear();
+
+// Iterate through elements
+foreach (var item in reactiveArray)
+{
+    Console.WriteLine(item);
+}
+
+// Copy to standard array
+int[] target = new int[reactiveArray.Length];
+reactiveArray.Copy(0, target, 0, reactiveArray.Length);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
@@ -11,15 +97,9 @@ public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Use this class when you need a read-write reactive array with change notifications and iteration support.
-
-> [!IMPORTANT]
-> For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
-
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                        |
 |-----------|------------------------------------|
@@ -27,7 +107,7 @@ public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `ReactiveArray(int)`
 
@@ -62,7 +142,7 @@ public ReactiveArray(IEnumerable<T> elements);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -85,7 +165,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Length`
 
@@ -106,7 +186,7 @@ public int Count { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -121,7 +201,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Clear()`
 
@@ -182,7 +262,7 @@ public int IndexOf(T item);
 - **Parameter:** `item` — The object to locate in the array.
 - **Returns:** The index of the item if found; otherwise, `-1`.
 
-#### `CopyTo(T[] array, int arrayIndex)`
+#### `CopyTo(T[], int)`
 
 ```csharp
 public void CopyTo(T[] array, int arrayIndex)
@@ -193,7 +273,7 @@ public void CopyTo(T[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
-#### `CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)`
+#### `CopyTo(int, T[], int, int)`
 
 ```csharp
 public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
@@ -225,38 +305,7 @@ public void Dispose();
 
 ---
 
-## 🗂 Example of Usage
+## 🔗 Useful Links
 
-```csharp
-// Create a reactive array with initial values
-var reactiveArray = new ReactiveArray<int>(1, 2, 3, 4);
-
-// Subscribe to events
-reactiveArray.OnItemChanged += (index, value) => Console.WriteLine($"Item {index} changed to {value}");
-reactiveArray.OnStateChanged += () => Console.WriteLine("Array state changed");
-
-// Access and modify elements
-reactiveArray[1] = 20; // Triggers OnItemChanged and OnStateChanged
-
-// Fill all elements
-reactiveArray.Fill(10);
-
-// Populate new values
-reactiveArray.Populate(new int[] { 5, 6, 7, 8 });
-
-// Resize the array
-reactiveArray.Resize(6); // Adds two default elements
-
-// Clear the array
-reactiveArray.Clear();
-
-// Iterate through elements
-foreach (var item in reactiveArray)
-{
-    Console.WriteLine(item);
-}
-
-// Copy to standard array
-int[] target = new int[reactiveArray.Length];
-reactiveArray.Copy(0, target, 0, reactiveArray.Length);
-```
+- [ReactiveArray Performance](../Performance/ReactiveArrayPerformance.md) – performance benchmarks for reactive arrays.
+- [Iterating over Reactive Collections](../../BestPractices/IteratingReactiveCollections.md) — best practice.
