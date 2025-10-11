@@ -1,130 +1,30 @@
 # 🧩 IReadOnlyReactiveArray&lt;T&gt;
 
-
-```csharp
-public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
-```
-- **Description:** Represents a **read-only reactive array** that notifies subscribers about changes to its elements and global state. 
-- **Inheritance:** `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, `IEnumerable<T>`.
-- **Type Parameter:** `T` — The type of elements stored in the array.
-- **Note:** Ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled
-  updates trigger events.
+Represents a **read-only reactive array** that notifies subscribers about changes to its elements and
+global state.
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
 
-#### `OnStateChanged`
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnStateChanged](#onstatechanged)
+    - [OnItemChanged](#onitemchanged)
+  - [Properties](#-properties)
+    - [Length](#length)
+    - [Count](#count)
+  - [Indexers](#-indexers)
+    - [[int index]](#int-index)
+  - [Methods](#-methods)
+    - [Contains(T)](#containst)
+    - [IndexOf(T)](#indexoft)
+    - [CopyTo(T[], int)](#copytot-int)
+    - [CopyTo(int, T[], int, int)](#copytot-array-int-arrayindex)
+    - [GetEnumerator()](#getenumerator)
 
-```csharp
-public event Action OnStateChanged;
-```
-
-- **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).
-
-#### `OnItemChanged`
-
-```csharp
-public event Action<int, T> OnItemChanged;
-```
-
-- **Description:** Triggered when an item at a specific index changes.
-- **Parameters:**
-    - `index` — index of the changed element.
-    - `value` — `T` the new value of the element.
-
----
-
-## 🔑 Properties
-
-#### `Length`
-
-```csharp
-public int Length { get; }
-```
-
-- **Description:** Gets the total number of elements in the array.
-
-#### `Count`
-
-```csharp
-public int Count { get; }
-```
-
-- **Description:** Gets the number of elements in the collection.
-- **Notes:** Implemented explicitly from `IReadOnlyCollection<T>`. Returns the same value as `Length`.
-
----
-
-## 🏷️ Indexers
-
-#### `[int index]`
-
-```csharp
-public T this[int index] { get; }
-```
-
-- **Description:** Gets the element at the specified index.
-- **Parameters:** `index` — zero-based index of the element.
-- **Returns:** `T` — the element at the specified index.
-
----
-
-## 🏹 Methods
-
-#### `Contains(T)`
-
-```csharp
-public bool Contains(T item);
-```
-
-- **Description:** Determines whether the array contains a specific element.
-- **Parameter:** `item` — The object to locate in the array.
-- **Returns:** `true` if the item is found; otherwise, `false`.
-
-#### `IndexOf(T)`
-
-```csharp
-public int IndexOf(T item);
-```
-
-- **Description:** Returns the index of a specific item in the array.
-- **Parameter:** `item` — The object to locate in the array.
-- **Returns:** The index of the item if found; otherwise, `-1`.
-
-#### `CopyTo(T[] array, int arrayIndex)`
-
-```csharp
-public void CopyTo(T[] array, int arrayIndex)
-```
-
-- **Description:** Copies all items in the array to the specified array starting at the given index.
-- **Parameters:**
-    - `array` — The destination array.
-    - `arrayIndex` — The starting index in the array.
-
-#### `CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)`
-
-```csharp
-public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
-```
-
-- **Description:** Copies a range of elements from this array to a destination array.
-- **Parameters:**
-    - `int sourceIndex` — starting index in this array.
-    - `T[] destination` — array to copy elements to.
-    - `int destinationIndex` — starting index in the destination array.
-    - `int length` — number of elements to copy.
-- **Notes:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
-
-#### `GetEnumerator()`
-
-```csharp
-public IEnumerator<T> GetEnumerator();
-```
-
-- **Description:** Returns an enumerator that iterates through the array.
-- **Remarks:** Inherited from `IEnumerable<T>`.
 
 ---
 
@@ -167,3 +67,135 @@ int[] target = new int[readOnlyArray.Length];
 readOnlyArray.Copy(0, target, 0, readOnlyArray.Length);
 Console.WriteLine("Elements copied to target array");
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IReadOnlyReactiveArray<T> : IReadOnlyList<T>
+```
+- **Description:** Represents a **read-only reactive array** that notifies subscribers about changes to its elements and
+  global state. 
+- **Inheritance:** `IReadOnlyList<T>`, `IReadOnlyCollection<T>`, `IEnumerable<T>`.
+- **Type Parameter:** `T` — The type of elements stored in the array.
+- **Note:** Ideal for exposing reactive arrays without allowing external modifications, ensuring that only controlled
+  updates trigger events.
+
+---
+
+### ⚡ Events
+
+#### `OnStateChanged`
+
+```csharp
+public event Action OnStateChanged;
+```
+
+- **Description:** Triggered when the array's state changes globally (e.g., multiple items updated, cleared, or reset).
+
+#### `OnItemChanged`
+
+```csharp
+public event Action<int, T> OnItemChanged;
+```
+
+- **Description:** Triggered when an item at a specific index changes.
+- **Parameters:**
+    - `index` — index of the changed element.
+    - `value` — `T` the new value of the element.
+
+---
+
+### 🔑 Properties
+
+#### `Length`
+
+```csharp
+public int Length { get; }
+```
+
+- **Description:** Gets the total number of elements in the array.
+
+#### `Count`
+
+```csharp
+public int Count { get; }
+```
+
+- **Description:** Gets the number of elements in the collection.
+- **Notes:** Implemented explicitly from `IReadOnlyCollection<T>`. Returns the same value as `Length`.
+
+---
+
+### 🏷️ Indexers
+
+#### `[int index]`
+
+```csharp
+public T this[int index] { get; }
+```
+
+- **Description:** Gets the element at the specified index.
+- **Parameters:** `index` — zero-based index of the element.
+- **Returns:** `T` — the element at the specified index.
+
+---
+
+### 🏹 Methods
+
+#### `Contains(T)`
+
+```csharp
+public bool Contains(T item);
+```
+
+- **Description:** Determines whether the array contains a specific element.
+- **Parameter:** `item` — The object to locate in the array.
+- **Returns:** `true` if the item is found; otherwise, `false`.
+
+#### `IndexOf(T)`
+
+```csharp
+public int IndexOf(T item);
+```
+
+- **Description:** Returns the index of a specific item in the array.
+- **Parameter:** `item` — The object to locate in the array.
+- **Returns:** The index of the item if found; otherwise, `-1`.
+
+#### `CopyTo(T[] array, int arrayIndex)`
+
+```csharp
+public void CopyTo(T[] array, int arrayIndex)
+```
+
+- **Description:** Copies all items in the array to the specified array starting at the given index.
+- **Parameters:**
+    - `array` — The destination array.
+    - `arrayIndex` — The starting index in the array.
+
+#### `CopyTo(int, T[], int, int)`
+
+```csharp
+public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
+```
+
+- **Description:** Copies a range of elements from this array to a destination array.
+- **Parameters:**
+    - `int sourceIndex` — starting index in this array.
+    - `T[] destination` — array to copy elements to.
+    - `int destinationIndex` — starting index in the destination array.
+    - `int length` — number of elements to copy.
+- **Notes:** Throws exceptions if indices or lengths are invalid, or if the destination array is too small.
+
+#### `GetEnumerator()`
+
+```csharp
+public IEnumerator<T> GetEnumerator();
+```
+
+- **Description:** Returns an enumerator that iterates through the array.
+- **Remarks:** Inherited from `IEnumerable<T>`.
