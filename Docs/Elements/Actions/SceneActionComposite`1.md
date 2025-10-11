@@ -19,11 +19,10 @@ Represents a composite scene action with <b>one parameter</b> that can be invoke
 
 ## 🗂 Example of Usage
 
-`SceneActionComposite<T>` can be used similarly to [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) but is *
-*strictly a
-composite container for `SceneActionAbstract<T>`**.
+`SceneActionComposite<T>` can be used similarly to [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) but is 
+**strictly a composite container** for [SceneActionAbstract\<T>](SceneActionAbstract%601.md).
 
-#### 1. Create a `GameObjectSceneActionComposite` component.
+#### 1. Create a `GameObjectSceneActionComposite` component extending the base class.
 
 ```csharp
 public sealed class GameObjectSceneActionComposite : SceneActionComposite<GameObject>
