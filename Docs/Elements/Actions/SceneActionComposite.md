@@ -1,49 +1,17 @@
 # 🧩 SceneActionComposite
 
-```csharp
-[AddComponentMenu("Atomic/Elements/Action Composite")]
-public class SceneActionComposite : SceneActionAbstract
-```
-
-- **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
-- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
-- **Notes:**
-    - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
-      will be invoked sequentially.
+Represents a <b>parameterless</b> composite scene action that can be invoked.
 
 ---
 
-## 🛠 Inspector Settings
+## 📑 Table of Contents
 
-| Parameter | Description                                   |
-|-----------|-----------------------------------------------|
-| `actions` | The array of scene actions to invoke in order |
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
 
----
-
-## 🧱 Fields
-
-#### `Actions`
-
-```csharp
-public SceneActionAbstract[] actions;
-```
-
-- **Description:** The array of scene actions to invoke in order.
-- **Access:** Read / Write
-
----
-
-## 🏹 Methods
-
-#### `Invoke()`
-
-```csharp
-public override void Invoke();
-```
-
-- **Description:** Executes each action in the `actions` array sequentially.
 ---
 
 ## 🗂 Example of Usage
@@ -63,3 +31,54 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
     public override void Invoke() => Debug.Log("Hello world");
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[AddComponentMenu("Atomic/Elements/Action Composite")]
+public class SceneActionComposite : SceneActionAbstract
+```
+
+- **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
+- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `SceneActionAbstract` implementations in the Inspector, and they
+      will be invoked sequentially.
+
+---
+
+### 🛠 Inspector Settings
+
+| Parameter | Description                                   |
+|-----------|-----------------------------------------------|
+| `actions` | The array of scene actions to invoke in order |
+
+---
+
+### 🧱 Fields
+
+#### `Actions`
+
+```csharp
+public SceneActionAbstract[] actions;
+```
+
+- **Description:** The array of scene actions to invoke in order.
+- **Access:** Read / Write
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public override void Invoke();
+```
+
+- **Description:** Executes each action in the `actions` array sequentially.
