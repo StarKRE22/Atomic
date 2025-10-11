@@ -1,14 +1,35 @@
 # 🧩 SceneActionAbstract&lt;T1, T2&gt;
 
+Represents a scene action with <b>two parameters</b> that can be invoked.
+
+---
+
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Methods](#-methods)
-    - [Invoke()](#invoke)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke()](#invoket1-t2)
 
 ---
+
+## 🗂 Example of Usage
+
+This example shows how to use `SceneActionAbstract<T1, T2>` to apply damage to a character.
+
+```csharp
+public sealed class DealDamageAction : SceneActionAbstract<Character, int>
+{
+    public override void Invoke(Character character, int damage)
+    {
+        character.TakeDamage(damage);
+    }
+}
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -26,7 +47,7 @@ public abstract class SceneActionAbstract<T1, T2> : MonoBehaviour, IAction<T1, T
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -38,19 +59,3 @@ public abstract void Invoke(T1 arg1, T2 arg2);
 - **Parameters:**
     - `arg1` – The first argument
     - `arg2` – The second argument
-
----
-
-## 🗂 Example of Usage
-
-This example shows how to use `SceneActionAbstract<T1, T2>` to apply damage to a character.
-
-```csharp
-public sealed class DealDamageAction : SceneActionAbstract<Character, int>
-{
-    public override void Invoke(Character character, int damage)
-    {
-        character.TakeDamage(damage);
-    }
-}
-```
