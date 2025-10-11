@@ -1,5 +1,25 @@
 # 🧩 SceneActionDefault&lt;T1, T2&gt;
 
+Represents a scene-based composite action with <b>two parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Fields](#-fields)
+        - [Actions](#actions)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 ```
@@ -16,7 +36,7 @@ public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                              |
 |-----------|------------------------------------------|
@@ -24,7 +44,7 @@ public abstract class SceneActionDefault<T1, T2> : SceneActionAbstract<T1, T2>
 
 ---
 
-## 🧱Fields
+### 🧱Fields
 
 #### `Actions`
 
@@ -37,7 +57,7 @@ public IAction<T1, T2>[] actions;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
