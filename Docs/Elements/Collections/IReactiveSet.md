@@ -1,5 +1,123 @@
 # 🧩 IReactiveSet&lt;T&gt;
 
+Represents a **reactive set** that supports notifications when items are added, removed, or when the
+overall state changes. Use this interface when you need **mutable set access** with **reactive notifications** for all
+changes.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnStateChanged](#onstatechanged)
+    - [OnItemAdded](#onitemadded)
+    - [OnItemRemoved](#onitemremoved)
+    - [OnItemChanged](#onitemchanged)
+  - [Properties](#-properties)
+    - [Count](#count)
+    - [IsReadOnly](#isreadonly)
+  - [Methods](#-methods)
+    - [Add(T)](#addt)
+    - [Remove(T)](#removet)
+    - [Contains(T)](#containst)
+    - [Clear()](#clear)
+    - [UnionWith(IEnumerable<T>)](#unionwithienumerablet)
+    - [IntersectWith(IEnumerable<T>)](#intersectwithienumerablet)
+    - [ExceptWith(IEnumerable<T>)](#exceptwithienumerablet)
+    - [SymmetricExceptWith(IEnumerable<T>)](#symmetricexceptwithienumerablet)
+    - [IsSubsetOf(IEnumerable<T>)](#issubsetofienumerablet)
+    - [IsProperSubsetOf(IEnumerable<T>)](#ispropersubsetofienumerablet)
+    - [IsSupersetOf(IEnumerable<T>)](#issupersetofienumerablet)
+    - [IsProperSupersetOf(IEnumerable<T>)](#ispropersupersetofienumerablet)
+    - [Overlaps(IEnumerable<T>)](#overlapsienumerablet)
+    - [SetEquals(IEnumerable<T>)](#setequalsienumerablet)
+    - [GetEnumerator()](#getenumerator)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Get a reactive set
+IReactiveSet<string> reactiveSet = ...;
+
+// Subscribe to events
+reactiveSet.OnItemAdded += item => Console.WriteLine($"Added: {item}");
+reactiveSet.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
+reactiveSet.OnItemChanged += item => Console.WriteLine($"Changed: {item}");
+reactiveSet.OnStateChanged += () => Console.WriteLine("Set state changed.");
+
+// Adding items
+reactiveSet.Add("Apple");   // Output: Added: Apple
+reactiveSet.Add("Banana");  // Output: Added: Banana
+
+// Attempt to add an existing item
+bool added = reactiveSet.Add("Apple"); // false, item already exists
+
+// Check if an item exists
+if (reactiveSet.Contains("Banana"))
+{
+    Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
+}
+
+// Removing an item
+bool removed = reactiveSet.Remove("Banana"); // Output: Removed: Banana
+removed = reactiveSet.Remove("Cherry");      // false, item does not exist
+
+// Union with another collection
+var otherSet = new List<string> { "Cherry", "Date", "Apple" };
+reactiveSet.UnionWith(otherSet);
+// Output: Added: Cherry
+// Output: Added: Date
+// Note: "Apple" already exists, so it is not added
+
+// Intersect with another collection
+var intersectSet = new List<string> { "Apple", "Date", "Elderberry" };
+reactiveSet.IntersectWith(intersectSet);
+// Output: Removed: Cherry
+// "Apple" and "Date" remain, "Cherry" is removed
+
+// Symmetric difference with another collection
+var symSet = new List<string> { "Date", "Fig", "Grape" };
+reactiveSet.SymmetricExceptWith(symSet);
+// Output: Removed: Date
+// Output: Added: Fig
+// Output: Added: Grape
+
+// Subset and overlap checks
+bool isSubset = reactiveSet.IsSubsetOf(new List<string> { "Apple", "Fig", "Grape", "Honeydew" });
+Console.WriteLine($"IsSubset: {isSubset}"); // Output: IsSubset: True
+
+bool overlaps = reactiveSet.Overlaps(new List<string> { "Apple", "Banana" });
+Console.WriteLine($"Overlaps with 'Apple' and 'Banana': {overlaps}"); // Output: True
+
+// Iterate through the set
+foreach (var item in reactiveSet)
+{
+    Console.WriteLine($"Set item: {item}");
+}
+// Output:
+// Set item: Apple
+// Set item: Fig
+// Set item: Grape
+
+// Clear the set
+reactiveSet.Clear();
+// Output: Removed: Apple
+// Output: Removed: Fig
+// Output: Removed: Grape
+// Output: Set state changed
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveSet<T> : ISet<T>, IReactiveCollection<T>
 ```
@@ -9,12 +127,9 @@ public interface IReactiveSet<T> : ISet<T>, IReactiveCollection<T>
 - **Inheritance:** `ISet<T>`, [IReactiveCollection&lt;T&gt;](IReactiveCollection.md).
 - **Type Parameter:** `T` — The type of elements stored in the set.
 
-> [!TIP]
-> Use this interface when you need **mutable set access** with **reactive notifications** for all changes.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -45,7 +160,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -65,7 +180,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -230,79 +345,3 @@ public IEnumerator<T> GetEnumerator();
 - **Description:** Returns an enumerator that iterates through the set.
 - **Returns:** An `IEnumerator<T>` for enumerating the elements.
 - **Remarks:** Enumeration is safe for reading but modifying the set during iteration may cause exceptions.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Get a reactive set
-IReactiveSet<string> reactiveSet = ...;
-
-// Subscribe to events
-reactiveSet.OnItemAdded += item => Console.WriteLine($"Added: {item}");
-reactiveSet.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
-reactiveSet.OnItemChanged += item => Console.WriteLine($"Changed: {item}");
-reactiveSet.OnStateChanged += () => Console.WriteLine("Set state changed.");
-
-// Adding items
-reactiveSet.Add("Apple");   // Output: Added: Apple
-reactiveSet.Add("Banana");  // Output: Added: Banana
-
-// Attempt to add an existing item
-bool added = reactiveSet.Add("Apple"); // false, item already exists
-
-// Check if an item exists
-if (reactiveSet.Contains("Banana"))
-{
-    Console.WriteLine("Banana is in the set."); // Output: Banana is in the set.
-}
-
-// Removing an item
-bool removed = reactiveSet.Remove("Banana"); // Output: Removed: Banana
-removed = reactiveSet.Remove("Cherry");      // false, item does not exist
-
-// Union with another collection
-var otherSet = new List<string> { "Cherry", "Date", "Apple" };
-reactiveSet.UnionWith(otherSet);
-// Output: Added: Cherry
-// Output: Added: Date
-// Note: "Apple" already exists, so it is not added
-
-// Intersect with another collection
-var intersectSet = new List<string> { "Apple", "Date", "Elderberry" };
-reactiveSet.IntersectWith(intersectSet);
-// Output: Removed: Cherry
-// "Apple" and "Date" remain, "Cherry" is removed
-
-// Symmetric difference with another collection
-var symSet = new List<string> { "Date", "Fig", "Grape" };
-reactiveSet.SymmetricExceptWith(symSet);
-// Output: Removed: Date
-// Output: Added: Fig
-// Output: Added: Grape
-
-// Subset and overlap checks
-bool isSubset = reactiveSet.IsSubsetOf(new List<string> { "Apple", "Fig", "Grape", "Honeydew" });
-Console.WriteLine($"IsSubset: {isSubset}"); // Output: IsSubset: True
-
-bool overlaps = reactiveSet.Overlaps(new List<string> { "Apple", "Banana" });
-Console.WriteLine($"Overlaps with 'Apple' and 'Banana': {overlaps}"); // Output: True
-
-// Iterate through the set
-foreach (var item in reactiveSet)
-{
-    Console.WriteLine($"Set item: {item}");
-}
-// Output:
-// Set item: Apple
-// Set item: Fig
-// Set item: Grape
-
-// Clear the set
-reactiveSet.Clear();
-// Output: Removed: Apple
-// Output: Removed: Fig
-// Output: Removed: Grape
-// Output: Set state changed
-```
