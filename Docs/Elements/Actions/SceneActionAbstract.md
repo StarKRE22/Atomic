@@ -1,27 +1,19 @@
 # 🧩 SceneActionAbstract
 
-```csharp
-public abstract class SceneActionAbstract : MonoBehaviour, IAction
-```
-
-- **Description:** Represents a <b>parameterless</b> scene action that can be invoked.
-- **Inheritance:** `MonoBehaviour`, [IAction](IAction.md)
-- **Note:** Attach to a GameObject and implement `Invoke()` to define custom behavior.
+Represents a <b>parameterless</b> scene action that can be invoked.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Invoke()`
-
-```csharp
-public abstract void Invoke();
-```
-
-- **Description:** Executes the action logic.
-- **Note:** Must be implemented in derived classes.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
 
 ---
+
 
 ## 🗂 Example of Usage
 
@@ -64,3 +56,31 @@ public sealed class GameStartup : MonoBehaviour
 #### 4. Run the scene
 
 When you start the game, the action is triggered and **"Hello World!"** is printed to the console.
+
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class SceneActionAbstract : MonoBehaviour, IAction
+```
+
+- **Description:** Represents a <b>parameterless</b> scene action that can be invoked.
+- **Inheritance:** `MonoBehaviour`, [IAction](IAction.md)
+- **Note:** Attach to a GameObject and implement `Invoke()` to define custom behavior.
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public abstract void Invoke();
+```
+
+- **Description:** Executes the action logic.
+- **Note:** Must be implemented in derived classes.

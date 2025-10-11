@@ -1,5 +1,19 @@
 # 🧩 SceneActionAbstract&lt;T&gt;
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
 ```
