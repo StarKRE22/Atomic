@@ -5,6 +5,8 @@ removed, or when the overall state changes.
 
 ---
 
+## 📑 Table of Contents
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)

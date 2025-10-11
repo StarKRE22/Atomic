@@ -1,10 +1,64 @@
 # 🧩 IReactiveCollection&lt;T&gt;
 
+Represents a **reactive collection** that provides notifications when items are added, removed, or
+when the overall state changes. Allows **modification of the collection**.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnStateChanged](#onstatechanged)
+    - [OnItemAdded](#onitemadded)
+    - [OnItemRemoved](#onitemremoved)
+  - [Properties](#-properties)
+    - [Count](#count)
+    - [IsReadOnly](#isreadonly)
+  - [Methods](#-methods)
+    - [Add(T)](#addt)
+    - [Remove(T)](#removet)
+    - [Clear()](#clear)
+    - [Contains(T)](#containst)
+    - [CopyTo(T[], int)](#copytot-int)
+    - [GetEnumerator()](#getenumerator)
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have a collection
+IReactiveCollection<string> collection = ...;
+
+// Subscribe to events
+collection.OnItemAdded += item => Console.WriteLine($"Added: {item}");
+collection.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
+collection.OnStateChanged += () => Console.WriteLine("State changed");
+
+// Modify collection
+collection.Add("Apple");
+collection.Add("Banana");
+collection.Remove("Apple");
+
+// Iterate over items
+foreach (var value in collection)
+{
+    Console.WriteLine(value);
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveCollection<T> : IReadOnlyReactiveCollection<T>, ICollection<T>
 ```
-- **Description:** Represents a **reactive collection** that provides notifications when items are added, removed, or when the overall
-state changes. Allows **modification of the collection**. 
+- **Description:** Represents a **reactive collection** that provides notifications when items are added, removed, or
+  when the overall state changes. Allows **modification of the collection**. 
 - **Inheritance:** [IReadOnlyReactiveCollection&lt;T&gt;](IReadOnlyReactiveCollection.md), `ICollection<T>`.
 - **Type Parameter:** `T` — The type of elements stored in the collection.
 - **Note:** Use this interface when you need both **reactive notifications** and **write access** (add, remove, clear)
@@ -12,7 +66,7 @@ state changes. Allows **modification of the collection**.
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -45,7 +99,7 @@ public event Action<T> OnItemRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -67,7 +121,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -128,28 +182,3 @@ public IEnumerator<T> GetEnumerator();
 
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Returns:** An `IEnumerator<T>` for iterating over the collection’s elements.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have a collection
-IReactiveCollection<string> collection = ...;
-
-// Subscribe to events
-collection.OnItemAdded += item => Console.WriteLine($"Added: {item}");
-collection.OnItemRemoved += item => Console.WriteLine($"Removed: {item}");
-collection.OnStateChanged += () => Console.WriteLine("State changed");
-
-// Modify collection
-collection.Add("Apple");
-collection.Add("Banana");
-collection.Remove("Apple");
-
-// Iterate over items
-foreach (var value in collection)
-{
-    Console.WriteLine(value);
-}
-```
