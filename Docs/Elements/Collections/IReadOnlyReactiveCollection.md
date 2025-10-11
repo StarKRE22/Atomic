@@ -7,6 +7,47 @@ removed, or when the overall state changes.
 
 ## 📑 Table of Contents
 
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemadded">OnItemAdded</a></li>
+            <li><a href="#onitemremoved">OnItemRemoved</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#containst">Contains(T)</a></li>
+            <li><a href="#copytot-int">CopyTo(T[], int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<!--
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -20,7 +61,7 @@ removed, or when the overall state changes.
         - [Contains(T)](#containst)
         - [CopyTo(T[], int)](#copytot-int)
         - [GetEnumerator()](#getenumerator)
-
+-->
 ---
 
 ## 🗂 Example of Usage

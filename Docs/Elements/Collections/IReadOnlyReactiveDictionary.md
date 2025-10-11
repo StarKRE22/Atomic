@@ -8,6 +8,56 @@ access** but still want **reactive notifications** on changes.
 
 ## 📑 Table of Contents
 
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemadded">OnItemAdded</a></li>
+            <li><a href="#onitemremoved">OnItemRemoved</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#keys">Keys</a></li>
+            <li><a href="#values">Values</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#k-key">[K key]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#containskeyk">ContainsKey(K)</a></li>
+            <li><a href="#trygetvaluek-out-v">TryGetValue(K, out V)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!-- 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#api-reference)
     - [Type](#-type)
@@ -26,7 +76,7 @@ access** but still want **reactive notifications** on changes.
         - [ContainsKey(K)](#containskeyk)
         - [TryGetValue(K, out V)](#trygetvaluek-out-v)
         - [GetEnumerator()](#getenumerator)
-
+-->
 ---
 
 ## 🗂 Example of Usage
