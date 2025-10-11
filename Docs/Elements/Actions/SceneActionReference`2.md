@@ -1,5 +1,28 @@
 # 🧩 SceneActionReference&lt;T1, T2&gt;
 
+A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Constructors](#-constructors)
+    - [Constructor()](#sceneactionreference)
+    - [Constructor(SceneActionAbstract\<T1, T2>)](#sceneactionreferencesceneactionabstractt1-t2)
+  - [Fields](#-fields)
+    - [Action](#action)
+  - [Methods](#-methods)
+    - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
@@ -15,7 +38,7 @@ public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                           |
 |-----------|---------------------------------------|
@@ -23,7 +46,7 @@ public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `SceneActionReference()`
 
@@ -45,7 +68,7 @@ public SceneActionReference(SceneActionAbstract<T1, T2> action);
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Action`
 
@@ -58,7 +81,7 @@ public SceneActionAbstract<T1, T2> action;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
