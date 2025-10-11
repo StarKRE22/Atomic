@@ -6,13 +6,12 @@ parameters.
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [Non-generic action](#non-generic-action)
-    - [Action with one parameter](#action-with-one-parameter)
-    - [Action with two parameters](#action-with-two-parameters)
+  - [Non-generic action](#non-generic-action)
+  - [Action with one parameter](#action-with-one-parameter)
+  - [Action with two parameters](#action-with-two-parameters)
 - [API Reference](#-api-reference)
 
 ---
@@ -51,7 +50,6 @@ damageAction.Invoke(enemy, 5);
 ---
 
 ## 🔍 API Reference
-
 
 There are several implementations of inline actions, depending on the number of arguments the actions take:
 
