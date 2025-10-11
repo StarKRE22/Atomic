@@ -21,8 +21,6 @@ and can be used in **Inspector-driven workflows**.
 
 `SceneActionReference` is useful for creating a reference to another `SceneActionAbstract` via `[SerializeReference]`.
 
----
-
 ### 1️⃣ Non-generic action <div id="non-generic-action"></div>
 
 Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
