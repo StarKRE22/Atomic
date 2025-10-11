@@ -6,6 +6,49 @@ Represents a read-only collection of keys.
 
 ## 📑 Table of Contents
 
+<ul>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+<ul>
+  <li><a href="#-type">Type</a></li>
+
+  <li>
+    <details>
+      <summary><a href="#-properties">Properties</a></summary>
+      <ul>
+        <li><a href="#count">Count</a></li>
+        <li><a href="#isreadonly">IsReadOnly</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-methods">Methods</a></summary>
+      <ul>
+        <li><a href="#containsk">Contains(K)</a></li>
+        <li><a href="#copytok-int">CopyTo(K[], int)</a></li>
+        <li><a href="#getenumerator">GetEnumerator()</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-unsupported-methods">Unsupported Methods</a></summary>
+      <ul>
+        <li><a href="#addk">Add(K)</a></li>
+        <li><a href="#clear">Clear()</a></li>
+        <li><a href="#removek">Remove(K)</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>
+  </li>
+</ul>
+
+
+<!--
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Properties](#-properties)
@@ -19,7 +62,7 @@ Represents a read-only collection of keys.
         - [Add(K)](#addk)
         - [Clear()](#clear)
         - [Remove(K)](#removek)
-
+-->
 ---
 
 ## 🔍 API Reference

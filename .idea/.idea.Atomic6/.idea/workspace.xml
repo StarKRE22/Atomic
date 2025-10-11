@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/IReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,47 +227,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="29469000" />
-    </task>
-    <task id="LOCAL-01320" summary="SceneActionsComposite.md">
-      <option name="closed" value="true" />
-      <created>1760184689638</created>
-      <option name="number" value="01320" />
-      <option name="presentableId" value="LOCAL-01320" />
-      <option name="project" value="LOCAL" />
-      <updated>1760184689638</updated>
-    </task>
-    <task id="LOCAL-01321" summary="SceneActionsComposite.md">
-      <option name="closed" value="true" />
-      <created>1760184737227</created>
-      <option name="number" value="01321" />
-      <option name="presentableId" value="LOCAL-01321" />
-      <option name="project" value="LOCAL" />
-      <updated>1760184737227</updated>
-    </task>
-    <task id="LOCAL-01322" summary="SceneActionComposite.md">
-      <option name="closed" value="true" />
-      <created>1760184865491</created>
-      <option name="number" value="01322" />
-      <option name="presentableId" value="LOCAL-01322" />
-      <option name="project" value="LOCAL" />
-      <updated>1760184865491</updated>
-    </task>
-    <task id="LOCAL-01323" summary="SceneActionComposite.md">
-      <option name="closed" value="true" />
-      <created>1760184952621</created>
-      <option name="number" value="01323" />
-      <option name="presentableId" value="LOCAL-01323" />
-      <option name="project" value="LOCAL" />
-      <updated>1760184952621</updated>
-    </task>
-    <task id="LOCAL-01324" summary="SceneActionComposite`1.md">
-      <option name="closed" value="true" />
-      <created>1760185113630</created>
-      <option name="number" value="01324" />
-      <option name="presentableId" value="LOCAL-01324" />
-      <option name="project" value="LOCAL" />
-      <updated>1760185113630</updated>
+      <workItem from="1760170912545" duration="30339000" />
     </task>
     <task id="LOCAL-01325" summary="SceneActionComposite`1.md">
       <option name="closed" value="true" />
@@ -618,7 +581,47 @@
       <option name="project" value="LOCAL" />
       <updated>1760210942025</updated>
     </task>
-    <option name="localTasksCounter" value="1369" />
+    <task id="LOCAL-01369" summary="IReactiveArray.md">
+      <option name="closed" value="true" />
+      <created>1760211311533</created>
+      <option name="number" value="01369" />
+      <option name="presentableId" value="LOCAL-01369" />
+      <option name="project" value="LOCAL" />
+      <updated>1760211311533</updated>
+    </task>
+    <task id="LOCAL-01370" summary="IReactiveCollection.md">
+      <option name="closed" value="true" />
+      <created>1760211436499</created>
+      <option name="number" value="01370" />
+      <option name="presentableId" value="LOCAL-01370" />
+      <option name="project" value="LOCAL" />
+      <updated>1760211436499</updated>
+    </task>
+    <task id="LOCAL-01371" summary="IReactiveDictionary.md">
+      <option name="closed" value="true" />
+      <created>1760211506381</created>
+      <option name="number" value="01371" />
+      <option name="presentableId" value="LOCAL-01371" />
+      <option name="project" value="LOCAL" />
+      <updated>1760211506381</updated>
+    </task>
+    <task id="LOCAL-01372" summary="IReactiveList.md">
+      <option name="closed" value="true" />
+      <created>1760211599629</created>
+      <option name="number" value="01372" />
+      <option name="presentableId" value="LOCAL-01372" />
+      <option name="project" value="LOCAL" />
+      <updated>1760211599629</updated>
+    </task>
+    <task id="LOCAL-01373" summary="Details!">
+      <option name="closed" value="true" />
+      <created>1760211793931</created>
+      <option name="number" value="01373" />
+      <option name="presentableId" value="LOCAL-01373" />
+      <option name="project" value="LOCAL" />
+      <updated>1760211793931</updated>
+    </task>
+    <option name="localTasksCounter" value="1374" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="SceneActionReference`2.md" />
     <MESSAGE value="SceneActionReference`3.md" />
     <MESSAGE value="SceneActionReference`4.md" />
@@ -654,23 +656,24 @@
     <MESSAGE value="Actions" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveArray.md" />
-    <MESSAGE value="IReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveArray.cs" />
-    <MESSAGE value="IReactiveArray.md" />
     <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
-    <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
-    <MESSAGE value="IReactiveDictionary.md" />
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReadOnlyKeyCollection" />
     <MESSAGE value="ReactiveDictionaryValueCollection.md" />
     <MESSAGE value="IReactiveSet.md" />
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ExtensionsInvokeRange.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsInvokeRange.md" />
+    <MESSAGE value="IReactiveArray.md" />
+    <MESSAGE value="IReactiveCollection.md" />
+    <MESSAGE value="IReactiveDictionary.md" />
+    <MESSAGE value="IReactiveList.md" />
+    <MESSAGE value="Details!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Details!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

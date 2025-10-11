@@ -8,6 +8,100 @@ notifications** on changes.
 
 ## 📑 Table of Contents
 
+<ul>
+  <li>
+    <a href="#-examples-of-usage">Examples of Usage</a>
+    <ul>
+      <li><a href="#ex-1">Basic Usage</a></li>
+      <li><a href="#ex-2">Using TryAdd</a></li>
+      <li><a href="#ex-3">Removing Elements</a></li>
+      <li><a href="#ex-4">Iterating Keys and Values</a></li>
+      <li><a href="#ex-5">Subscribing to Events</a></li>
+      <li><a href="#ex-6">Initializing from Collections</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#reactivedictionaryint">ReactiveDictionary(int)</a></li>
+            <li><a href="#reactivedictionaryienumerablekeyvaluepairk-v">ReactiveDictionary(IEnumerable&lt;KeyValuePair&lt;K, V&gt;&gt;)</a></li>
+            <li><a href="#reactivedictionaryienumerablek-v">ReactiveDictionary(IEnumerable&lt;(K, V)&gt;)</a></li>
+            <li><a href="#reactivedictionaryparams-keyvaluepairk-v">ReactiveDictionary(params KeyValuePair&lt;K, V&gt;[])</a></li>
+            <li><a href="#reactivedictionaryparams-k-v">ReactiveDictionary(params (K, V)[])</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#onitemadded">OnItemAdded</a></li>
+            <li><a href="#onitemremoved">OnItemRemoved</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+            <li><a href="#keys">Keys</a></li>
+            <li><a href="#values">Values</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#k-key">[K key]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#addk-v">Add(K, V)</a></li>
+            <li><a href="#addkeyvaluepairk-v">Add(KeyValuePair&lt;K, V&gt;)</a></li>
+            <li><a href="#tryaddkeyvaluepairk-v">TryAdd(KeyValuePair&lt;K, V&gt;)</a></li>
+            <li><a href="#tryaddk-v">TryAdd(K, V)</a></li>
+            <li><a href="#removek">Remove(K)</a></li>
+            <li><a href="#removek-out-v">Remove(K, out V)</a></li>
+            <li><a href="#removekeyvaluepairk-v">Remove(KeyValuePair&lt;K, V&gt;)</a></li>
+            <li><a href="#containskeyk">ContainsKey(K)</a></li>
+            <li><a href="#containskeyvaluepairk-v">Contains(KeyValuePair&lt;K, V&gt;)</a></li>
+            <li><a href="#trygetvaluek-out-v">TryGetValue(K, out V)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#copytokeyvaluepairk-v-int">CopyTo(KeyValuePair&lt;K, V&gt;[], int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-nested-types">Nested Types</a></summary>
+          <ul>
+            <li><a href="#keycollection">KeyCollection</a></li>
+            <li><a href="#valuecollection">ValueCollection</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-useful-links">Useful Links</a></li>
+</ul>
+
+
+<!--
 - [Examples of Usage](#-examples-of-usage)
     - [Basic Usage](#ex-1)
     - [Using TryAdd](#ex-2)
@@ -53,7 +147,7 @@ notifications** on changes.
         - [KeyCollection](#keycollection)
         - [ValueCollection](#valuecollection)
 - [Useful Links](#-useful-links)
-
+-->
 ---
 
 ## 🗂 Examples of Usage
