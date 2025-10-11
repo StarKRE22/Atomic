@@ -83,9 +83,8 @@ every change
       </ul>
     </details>
   </li>
-
-  <li><a href="#-useful-links">Useful Links</a></li>
 </ul>
+  <li><a href="#-useful-links">Useful Links</a></li>
   </li>
 </ul>
 

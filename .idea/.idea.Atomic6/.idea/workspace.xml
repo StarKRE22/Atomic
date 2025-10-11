@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveArray.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionary.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveHashSet.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveLinkedList.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveList.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,15 +227,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="30339000" />
-    </task>
-    <task id="LOCAL-01325" summary="SceneActionComposite`1.md">
-      <option name="closed" value="true" />
-      <created>1760185137167</created>
-      <option name="number" value="01325" />
-      <option name="presentableId" value="LOCAL-01325" />
-      <option name="project" value="LOCAL" />
-      <updated>1760185137167</updated>
+      <workItem from="1760170912545" duration="30788000" />
     </task>
     <task id="LOCAL-01326" summary="SceneActionComposite`1.md">
       <option name="closed" value="true" />
@@ -621,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760211793931</updated>
     </task>
-    <option name="localTasksCounter" value="1374" />
+    <task id="LOCAL-01374" summary="ReactiveDictionaryKeyCollection.md">
+      <option name="closed" value="true" />
+      <created>1760212186139</created>
+      <option name="number" value="01374" />
+      <option name="presentableId" value="LOCAL-01374" />
+      <option name="project" value="LOCAL" />
+      <updated>1760212186139</updated>
+    </task>
+    <option name="localTasksCounter" value="1375" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionReference`2.md" />
     <MESSAGE value="SceneActionReference`3.md" />
     <MESSAGE value="SceneActionReference`4.md" />
     <MESSAGE value="LogAction.cs" />
@@ -673,7 +672,8 @@
     <MESSAGE value="IReactiveDictionary.md" />
     <MESSAGE value="IReactiveList.md" />
     <MESSAGE value="Details!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Details!" />
+    <MESSAGE value="ReactiveDictionaryKeyCollection.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveDictionaryKeyCollection.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
