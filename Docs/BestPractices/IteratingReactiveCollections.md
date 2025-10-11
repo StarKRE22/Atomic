@@ -8,7 +8,7 @@ with a large number of elements.
 
 ---
 
-### 1. Prefer concrete types
+### 1️⃣ Prefer concrete types
 
 When iterating via interfaces using `IEnumerator<T>`, the iterator may **box**, causing **heap allocations** and **GC
 pressure**. To avoid this, use the **concrete collection type** whenever possible.
@@ -51,7 +51,7 @@ foreach(string item in items)
 
 ---
 
-### 2. Iterating over `ReactiveArray` & `ReactiveList`
+### 2️⃣ Iterating over `ReactiveArray` & `ReactiveList`
 
 When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop
 over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the 
@@ -89,7 +89,7 @@ for (int i = 0, count = items.Count; i < count; i++)
 
 ---
 
-### 3. Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
+### 3️⃣ Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
 
 In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`,
 `ReactiveDictionary`, or `ReactiveHashSet`. This is especially important for `ReactiveLinkedList`, which is 

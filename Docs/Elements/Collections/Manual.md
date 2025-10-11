@@ -15,7 +15,7 @@ data access and modification.
   - [Reactive Dictionary](#-reactive-dictionary)
   - [Reactive Hash Set](#-reactive-hash-set)
 - [API Reference](#-api-reference)
-- [Performance](#-api-reference)
+- [Performance](#-performance)
 - [Best Practices](#-best-practices)
 
 ---
