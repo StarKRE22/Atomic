@@ -7,6 +7,61 @@ modified.
 
 ## 📑 Table of Contents
 
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#length">Length</a></li>
+            <li><a href="#count">Count</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#populateienumerablet">Populate(IEnumerable&lt;T&gt;)</a></li>
+            <li><a href="#fillt">Fill(T)</a></li>
+            <li><a href="#resizeint">Resize(int)</a></li>
+            <li><a href="#containst">Contains(T)</a></li>
+            <li><a href="#indexoft">IndexOf(T)</a></li>
+            <li><a href="#copytot-int">CopyTo(T[], int)</a></li>
+            <li><a href="#copyint-t-int-int-int">Copy(int, T[], int, int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+<!--
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -28,6 +83,7 @@ modified.
         - [CopyTo(T[], int)](#copytot-int)
         - [Copy(int, T[], int, int)](#copyint-t-int-int-int)
         - [GetEnumerator()](#getenumerator)
+-->
 
 ---
 
