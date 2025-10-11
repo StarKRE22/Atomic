@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsDefault.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionsDefault.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,55 +226,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="2543000" />
-    </task>
-    <task id="LOCAL-01257" summary="Пошурудил EntityAspects">
-      <option name="closed" value="true" />
-      <created>1760092278058</created>
-      <option name="number" value="01257" />
-      <option name="presentableId" value="LOCAL-01257" />
-      <option name="project" value="LOCAL" />
-      <updated>1760092278058</updated>
-    </task>
-    <task id="LOCAL-01258" summary="Пошурудил EntityAspects">
-      <option name="closed" value="true" />
-      <created>1760092342039</created>
-      <option name="number" value="01258" />
-      <option name="presentableId" value="LOCAL-01258" />
-      <option name="project" value="LOCAL" />
-      <updated>1760092342039</updated>
-    </task>
-    <task id="LOCAL-01259" summary="IEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1760110491120</created>
-      <option name="number" value="01259" />
-      <option name="presentableId" value="LOCAL-01259" />
-      <option name="project" value="LOCAL" />
-      <updated>1760110491120</updated>
-    </task>
-    <task id="LOCAL-01260" summary="SceneEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1760110998037</created>
-      <option name="number" value="01260" />
-      <option name="presentableId" value="LOCAL-01260" />
-      <option name="project" value="LOCAL" />
-      <updated>1760110998037</updated>
-    </task>
-    <task id="LOCAL-01261" summary="SceneEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1760111041461</created>
-      <option name="number" value="01261" />
-      <option name="presentableId" value="LOCAL-01261" />
-      <option name="project" value="LOCAL" />
-      <updated>1760111041461</updated>
-    </task>
-    <task id="LOCAL-01262" summary="SceneEntityAspect.md">
-      <option name="closed" value="true" />
-      <created>1760111642383</created>
-      <option name="number" value="01262" />
-      <option name="presentableId" value="LOCAL-01262" />
-      <option name="project" value="LOCAL" />
-      <updated>1760111642383</updated>
+      <workItem from="1760170912545" duration="3462000" />
     </task>
     <task id="LOCAL-01263" summary="Выстругал аспекты!">
       <option name="closed" value="true" />
@@ -620,7 +572,55 @@
       <option name="project" value="LOCAL" />
       <updated>1760173089314</updated>
     </task>
-    <option name="localTasksCounter" value="1306" />
+    <task id="LOCAL-01306" summary="SceneActionAbstract`1.md">
+      <option name="closed" value="true" />
+      <created>1760173467682</created>
+      <option name="number" value="01306" />
+      <option name="presentableId" value="LOCAL-01306" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173467683</updated>
+    </task>
+    <task id="LOCAL-01307" summary="SceneActionAbstract`2.md">
+      <option name="closed" value="true" />
+      <created>1760173541374</created>
+      <option name="number" value="01307" />
+      <option name="presentableId" value="LOCAL-01307" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173541374</updated>
+    </task>
+    <task id="LOCAL-01308" summary="SceneActionAbstract`2.md">
+      <option name="closed" value="true" />
+      <created>1760173579997</created>
+      <option name="number" value="01308" />
+      <option name="presentableId" value="LOCAL-01308" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173579997</updated>
+    </task>
+    <task id="LOCAL-01309" summary="SceneActionAbstract`2.md">
+      <option name="closed" value="true" />
+      <created>1760173628226</created>
+      <option name="number" value="01309" />
+      <option name="presentableId" value="LOCAL-01309" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173628226</updated>
+    </task>
+    <task id="LOCAL-01310" summary="SceneActionAbstract`3.md">
+      <option name="closed" value="true" />
+      <created>1760173655075</created>
+      <option name="number" value="01310" />
+      <option name="presentableId" value="LOCAL-01310" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173655075</updated>
+    </task>
+    <task id="LOCAL-01311" summary="SceneActionAbstract`4.md">
+      <option name="closed" value="true" />
+      <created>1760173941818</created>
+      <option name="number" value="01311" />
+      <option name="presentableId" value="LOCAL-01311" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173941818</updated>
+    </task>
+    <option name="localTasksCounter" value="1312" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,10 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Выстругал аспекты!" />
-    <MESSAGE value="EntityBehaviours" />
-    <MESSAGE value="IEntityBehaviour.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Actions" />
     <MESSAGE value="IActions.md" />
     <MESSAGE value="IAction.md" />
@@ -672,7 +668,11 @@
     <MESSAGE value="CompositeAction`4.md" />
     <MESSAGE value="SceneActionsAbstract.md" />
     <MESSAGE value="SceneActionAbstract.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionAbstract.md" />
+    <MESSAGE value="SceneActionAbstract`1.md" />
+    <MESSAGE value="SceneActionAbstract`2.md" />
+    <MESSAGE value="SceneActionAbstract`3.md" />
+    <MESSAGE value="SceneActionAbstract`4.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionAbstract`4.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
