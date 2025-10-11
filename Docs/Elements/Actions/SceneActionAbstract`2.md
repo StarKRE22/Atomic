@@ -10,7 +10,7 @@ Represents a scene action with <b>two parameters</b> that can be invoked.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Invoke()](#invoket1-t2)
+        - [Invoke(T1, T2)](#invoket1-t2)
 
 ---
 

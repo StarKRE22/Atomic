@@ -1,8 +1,11 @@
 # 🧩 SceneActionAbstract&lt;T1, T2, T3&gt;
 
+Represents a scene action with **three parameters**.
+
+---
+
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Methods](#-methods)
