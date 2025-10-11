@@ -14,7 +14,6 @@ Represents a <b>parameterless</b> scene action that can be invoked.
 
 ---
 
-
 ## 🗂 Example of Usage
 
 This example demonstrates how to create a simple action based on `SceneActionAbstract` and run it from a `GameStartup`

@@ -1,5 +1,41 @@
 # 🧩 SceneActionReference
 
+A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstract.md).
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Fields](#-fields)
+        - [Action](#action)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
+
+<img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
+
+```csharp
+public sealed class HelloWorldSceneAction : SceneActionAbstract
+{
+    public override void Invoke() => Debug.Log("Hello World!");
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public sealed class SceneActionReference : IAction
@@ -12,7 +48,7 @@ public sealed class SceneActionReference : IAction
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                             |
 |-----------|-----------------------------------------|
@@ -20,7 +56,7 @@ public sealed class SceneActionReference : IAction
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `SceneActionReference()`
 
@@ -42,7 +78,7 @@ public SceneActionReference(SceneActionAbstract action);
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Action`
 
@@ -55,7 +91,7 @@ public SceneActionAbstract action;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -64,18 +100,3 @@ public void Invoke();
 ```
 
 - **Description:** Invokes the referenced scene action if it exists.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
-
-<img src="../../Images/SceneActionReference.png" alt="SceneActionReference non-generic example" width="" height="128">
-
-```csharp
-public sealed class HelloWorldSceneAction : SceneActionAbstract
-{
-    public override void Invoke() => Debug.Log("Hello World!");
-}
-```
