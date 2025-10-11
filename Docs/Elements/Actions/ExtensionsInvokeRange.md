@@ -37,7 +37,6 @@ Provide utility methods for invoking arrays or collections of [IAction](IActions
         </li>
       </ul>
   </li>
-
   <li>
     <details>
       <summary><a href="#-api-reference">API Reference</a></summary>

@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +224,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="16398000" />
-    </task>
-    <task id="LOCAL-01293" summary="CompositeActions.md">
-      <option name="closed" value="true" />
-      <created>1760171053986</created>
-      <option name="number" value="01293" />
-      <option name="presentableId" value="LOCAL-01293" />
-      <option name="project" value="LOCAL" />
-      <updated>1760171053986</updated>
+      <workItem from="1760170912545" duration="16935000" />
     </task>
     <task id="LOCAL-01294" summary="CompositeActions.md">
       <option name="closed" value="true" />
@@ -620,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760194522652</updated>
     </task>
-    <option name="localTasksCounter" value="1342" />
+    <task id="LOCAL-01342" summary="ExtensionsInvokeRange.md">
+      <option name="closed" value="true" />
+      <created>1760197896722</created>
+      <option name="number" value="01342" />
+      <option name="presentableId" value="LOCAL-01342" />
+      <option name="project" value="LOCAL" />
+      <updated>1760197896722</updated>
+    </task>
+    <option name="localTasksCounter" value="1343" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneActionsAbstract.md" />
     <MESSAGE value="SceneActionAbstract.md" />
     <MESSAGE value="SceneActionAbstract`1.md" />
     <MESSAGE value="SceneActionAbstract`2.md" />
@@ -672,7 +669,8 @@
     <MESSAGE value="SceneActionReference`3.md" />
     <MESSAGE value="SceneActionReference`4.md" />
     <MESSAGE value="LogAction.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="LogAction.cs" />
+    <MESSAGE value="ExtensionsInvokeRange.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsInvokeRange.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
