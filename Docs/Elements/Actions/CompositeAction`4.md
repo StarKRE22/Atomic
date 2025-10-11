@@ -1,5 +1,22 @@
 # 🧩 CompositeAction&lt;T1, T2, T3, T4&gt;
 
+Represents a group of actions <b>with four parameters</b> that are executed sequentially.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Default Constructor](#default-constructor)
+        - [Params Constructor](#params-constructor)
+        - [IEnumerable Constructor](#ienumerable-constructor)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -20,14 +37,14 @@ public class CompositeAction<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `CompositeAction()`
+#### `Default Constructor`
 
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
-#### `CompositeAction(params IAction<T1, T2, T3, T4>[])`
+#### `Params Constructor`
 
 ```csharp
 public CompositeAction(params IAction<T1, T2, T3, T4>[] actions)
@@ -37,7 +54,7 @@ public CompositeAction(params IAction<T1, T2, T3, T4>[] actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-#### `CompositeAction(IEnumerable<T1, T2, T3, T4>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
@@ -49,7 +66,7 @@ public CompositeAction(IEnumerable<IAction<T1, T2, T3, T4>> actions)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
