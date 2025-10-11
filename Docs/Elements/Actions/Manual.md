@@ -151,15 +151,9 @@ There are several abstractions of actions, depending on the number of arguments 
 </details>
 
 <details>
-  <summary><b>Debug</b></summary>
+  <summary><b>Utils</b></summary>
   <ul>
     <li><a href="PrintAction.md">LogAction</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary><b>Extensions</b></summary>
-  <ul>
-    <li><a href="ExtensionsInvokeRange.md">InvokeRange</a></li>
+    <li><a href="ExtensionsInvokeRange.md">Extensions</a></li>
   </ul>
 </details>

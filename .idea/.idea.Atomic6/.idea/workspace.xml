@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionReference`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/ExtensionsInvokeRange.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +56,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Filter/Triggers/InlineEntityTrigger`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Values.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Docs/BestPractices.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float2.gen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@c58b4ee65782/Editor/CustomEditors/CustomTimelineEditorCache.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -74,6 +73,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b8/d3b9e340/IEnumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f2/c7924853/IReadOnlyDictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f4/dd213227/MethodImplOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/28/2023ba66/LogType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/a9/4957b382/Scene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/c1/92091dc6/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/d0/3f501741/SpaceAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -226,31 +226,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="12928000" />
-    </task>
-    <task id="LOCAL-01290" summary="InlineAction`2.md">
-      <option name="closed" value="true" />
-      <created>1760126053872</created>
-      <option name="number" value="01290" />
-      <option name="presentableId" value="LOCAL-01290" />
-      <option name="project" value="LOCAL" />
-      <updated>1760126053872</updated>
-    </task>
-    <task id="LOCAL-01291" summary="InlineAction`3.md">
-      <option name="closed" value="true" />
-      <created>1760128368354</created>
-      <option name="number" value="01291" />
-      <option name="presentableId" value="LOCAL-01291" />
-      <option name="project" value="LOCAL" />
-      <updated>1760128368354</updated>
-    </task>
-    <task id="LOCAL-01292" summary="InlineActions!">
-      <option name="closed" value="true" />
-      <created>1760128547400</created>
-      <option name="number" value="01292" />
-      <option name="presentableId" value="LOCAL-01292" />
-      <option name="project" value="LOCAL" />
-      <updated>1760128547400</updated>
+      <workItem from="1760170912545" duration="16398000" />
     </task>
     <task id="LOCAL-01293" summary="CompositeActions.md">
       <option name="closed" value="true" />
@@ -620,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760188799853</updated>
     </task>
-    <option name="localTasksCounter" value="1339" />
+    <task id="LOCAL-01339" summary="SceneActionReference`3.md">
+      <option name="closed" value="true" />
+      <created>1760190163556</created>
+      <option name="number" value="01339" />
+      <option name="presentableId" value="LOCAL-01339" />
+      <option name="project" value="LOCAL" />
+      <updated>1760190163556</updated>
+    </task>
+    <task id="LOCAL-01340" summary="SceneActionReference`4.md">
+      <option name="closed" value="true" />
+      <created>1760190372897</created>
+      <option name="number" value="01340" />
+      <option name="presentableId" value="LOCAL-01340" />
+      <option name="project" value="LOCAL" />
+      <updated>1760190372897</updated>
+    </task>
+    <task id="LOCAL-01341" summary="LogAction.cs">
+      <option name="closed" value="true" />
+      <created>1760194522652</created>
+      <option name="number" value="01341" />
+      <option name="presentableId" value="LOCAL-01341" />
+      <option name="project" value="LOCAL" />
+      <updated>1760194522652</updated>
+    </task>
+    <option name="localTasksCounter" value="1342" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,9 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="CompositeAction`2.md" />
-    <MESSAGE value="CompositeAction`3.md" />
-    <MESSAGE value="CompositeAction`4.md" />
     <MESSAGE value="SceneActionsAbstract.md" />
     <MESSAGE value="SceneActionAbstract.md" />
     <MESSAGE value="SceneActionAbstract`1.md" />
@@ -672,7 +669,10 @@
     <MESSAGE value="SceneActionReference`1.md" />
     <MESSAGE value="SceneActionReference.md" />
     <MESSAGE value="SceneActionReference`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneActionReference`2.md" />
+    <MESSAGE value="SceneActionReference`3.md" />
+    <MESSAGE value="SceneActionReference`4.md" />
+    <MESSAGE value="LogAction.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="LogAction.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
