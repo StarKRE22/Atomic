@@ -1,5 +1,40 @@
 # 🧩 CompositeAction&lt;T1, T2, T3&gt;
 
+Represents a group of actions <b>with three parameters</b> that are executed sequentially.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Default Constructor](#default-constructor)
+        - [Params Constructor](#params-constructor)
+        - [IEnumerable Constructor](#ienumerable-constructor)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var composite = new CompositeAction<int, int, int>(
+    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a + b + c)),
+    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a * b * c))
+);
+
+composite.Invoke(3, 4, 2);
+
+// Output:
+// 14
+// 24
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -19,9 +54,9 @@ public class CompositeAction<T1, T2, T3> : IAction<T1, T2, T3>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `CompositeAction()`
+#### `Default Constructor`
 
 ```csharp
 public CompositeAction()
@@ -30,7 +65,7 @@ public CompositeAction()
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
-#### `CompositeAction(params IAction<T1, T2, T3>[])`
+#### `Params Constructor`
 
 ```csharp
 public CompositeAction(params IAction<T1, T2, T3>[] actions)
@@ -40,7 +75,7 @@ public CompositeAction(params IAction<T1, T2, T3>[] actions)
 - **Parameter:** `actions` – The actions to include.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-#### `CompositeAction(IEnumerable<Action<T1, T2>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public CompositeAction(IEnumerable<IAction<T1, T2, T3>> actions)
@@ -65,20 +100,3 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3)
     - `arg1` — the first argument
     - `arg2` — the second argument
     - `arg3` — the third argument
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-var composite = new CompositeAction<int, int, int>(
-    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a + b + c)),
-    new InlineAction<int, int>((a, b, c) => Console.WriteLine(a * b * c))
-);
-
-composite.Invoke(3, 4, 2);
-
-// Output:
-// 14
-// 24
-```
