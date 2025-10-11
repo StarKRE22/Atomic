@@ -18,7 +18,7 @@ reactive notifications.
     - [Constructors](#constructors)
         - [ReactiveList(int)](#reactivelistint)
         - [ReactiveList(params T[])](#reactivelistparams-t)
-        - [ReactiveList(IEnumerable<T>)](#reactivelistenumerablet)
+        - [ReactiveList(IEnumerable\<T>)](#reactivelistienumerablet)
     - [Events](#events)
         - [OnStateChanged](#onstatechanged)
         - [OnItemAdded](#onitemadded)

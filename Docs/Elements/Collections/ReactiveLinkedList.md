@@ -1,5 +1,99 @@
 # 🧩 ReactiveLinkedList&lt;T&gt;
 
+Represents a **reactive linked list** that notifies subscribers about changes to its elements.
+It supports fast insertions at head and tail, maintains a free-list for removed nodes. Use this class when you need a
+**reactive linked list** that supports frequent insertions and removals at arbitrary positions, with notifications for
+every change
+
+> [!IMPORTANT]
+> For high performance always use `foreach` to iterate over the collection. **Never** use `for` loop for index-based
+> traversal!
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#example-of-usage)
+- [API Reference](#api-reference)
+    - [Type](#type)
+    - [Inspector Settings](#inspector-settings)
+    - [Constructors](#constructors)
+        - [ReactiveLinkedList(int)](#reactivelinkedlistint)
+        - [ReactiveLinkedList(params T[])](#reactivelinkedlistparams-t)
+        - [ReactiveLinkedList(IEnumerable\<T>)](#reactivelinkedlistienumerablet)
+    - [Events](#events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#properties)
+        - [Count](#count)
+        - [IsReadOnly](#isreadonly)
+    - [Indexers](#indexers)
+        - [[int index]](#int-index)
+    - [Methods](#methods)
+        - [Add(T)](#addt)
+        - [AddRange(IEnumerable<T>)](#addrangeenumerablet)
+        - [Insert(int, T)](#insertint-t)
+        - [Remove(T)](#removet)
+        - [RemoveAt(int)](#removeatint)
+        - [Clear()](#clear)
+        - [IndexOf(T)](#indexoft)
+        - [Contains(T)](#containst)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [CopyTo(int, T[], int, int)](#copytoint-t-int-int)
+        - [Populate(IEnumerable<T>)](#populateenumerablet)
+        - [GetEnumerator()](#getenumerator)
+        - [Dispose()](#dispose)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a reactive linked list
+var reactiveList = new ReactiveLinkedList<string>();
+
+// Subscribe to events
+reactiveList.OnItemAdded += (index, item) =>
+    Console.WriteLine($"Inserted '{item}' at index {index}");
+
+reactiveList.OnItemRemoved += (index, item) =>
+    Console.WriteLine($"Deleted '{item}' from index {index}");
+
+reactiveList.OnItemChanged += (index, newValue) =>
+    Console.WriteLine($"Item at index {index} changed to '{newValue}'");
+
+reactiveList.OnStateChanged += () =>
+    Console.WriteLine("List state changed");
+
+// Add items
+reactiveList.Add("Apple");
+reactiveList.Add("Banana");
+
+// Insert item at index 1
+reactiveList.Insert(1, "Orange");
+
+// Modify an item
+reactiveList[0] = "Grapes";
+
+// Remove an item
+reactiveList.Remove("Banana");
+
+// Enumerate items
+foreach (var item in reactiveList)
+    Console.WriteLine(item);
+
+// Use AddRange to add multiple items efficiently
+reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
@@ -13,19 +107,9 @@ public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializati
     - Insertions and removals are **O(1)** complexity, traversal — **O(N)**
     - Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Use this class when you need a **reactive linked list** that supports frequent insertions and removals at
-> arbitrary positions, with notifications for every change
-
-> [!IMPORTANT]
-> For high performance always use `foreach` to iterate over the collection
-
-> [!WARNING]
-> **Never** use `for` loop for index-based traversal
-
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter         | Description                              |
 |-------------------|------------------------------------------|
@@ -33,7 +117,7 @@ public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializati
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `ReactiveLinkedList(int)`
 
@@ -44,7 +128,7 @@ public ReactiveLinkedList(int capacity);
 - **Description:** Initializes a new list with the specified initial capacity.
 - **Parameters:** `capacity` — the initial number of nodes to allocate. Default is `4`
 
-#### `ReactiveLinkedList(params T[] items)`
+#### `ReactiveLinkedList(params T[])`
 
 ```csharp
 public ReactiveLinkedList(params T[] items);
@@ -53,7 +137,7 @@ public ReactiveLinkedList(params T[] items);
 - **Description:** Initializes a new list and adds the provided items.
 - **Parameters:** `items` — initial elements to populate the list.
 
-#### `ReactiveLinkedList(IEnumerable<T> items)`
+#### `ReactiveLinkedList(IEnumerable<T>)`
 
 ```csharp
 public ReactiveLinkedList(IEnumerable<T> items);
@@ -64,7 +148,7 @@ public ReactiveLinkedList(IEnumerable<T> items);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -109,7 +193,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -129,7 +213,7 @@ public bool IsReadOnly => false;
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -143,7 +227,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -288,42 +372,8 @@ public void Dispose();
 
 ---
 
-## 🗂 Example of Usage
+## 🔗 Useful Links
 
-```csharp
-// Create a reactive linked list
-var reactiveList = new ReactiveLinkedList<string>();
-
-// Subscribe to events
-reactiveList.OnItemAdded += (index, item) =>
-    Console.WriteLine($"Inserted '{item}' at index {index}");
-
-reactiveList.OnItemRemoved += (index, item) =>
-    Console.WriteLine($"Deleted '{item}' from index {index}");
-
-reactiveList.OnItemChanged += (index, newValue) =>
-    Console.WriteLine($"Item at index {index} changed to '{newValue}'");
-
-reactiveList.OnStateChanged += () =>
-    Console.WriteLine("List state changed");
-
-// Add items
-reactiveList.Add("Apple");
-reactiveList.Add("Banana");
-
-// Insert item at index 1
-reactiveList.Insert(1, "Orange");
-
-// Modify an item
-reactiveList[0] = "Grapes";
-
-// Remove an item
-reactiveList.Remove("Banana");
-
-// Enumerate items
-foreach (var item in reactiveList)
-    Console.WriteLine(item);
-
-// Use AddRange to add multiple items efficiently
-reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
-```
+- [ReactiveLinkedList Performance](../Performance/ReactiveLinkedListPerformance.md) – performance benchmarks for
+  reactive list.
+- [Iterating over Reactive Collections](../../BestPractices/IteratingReactiveCollections.md) — best practice.
