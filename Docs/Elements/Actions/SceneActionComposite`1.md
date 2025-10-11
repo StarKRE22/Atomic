@@ -1,5 +1,7 @@
 # 🧩 SceneActionComposite&lt;T&gt;
 
+Represents a composite scene action with <b>one parameter</b> that can be invoked.
+
 ---
 
 ## 📑 Table of Contents
@@ -15,10 +17,10 @@
 
 ---
 
-
 ## 🗂 Example of Usage
 
-`SceneActionComposite<T>` can be used similarly to [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) but is **strictly a
+`SceneActionComposite<T>` can be used similarly to [SceneActionDefault&lt;T&gt;](SceneActionDefault%601.md) but is *
+*strictly a
 composite container for `SceneActionAbstract<T>`**.
 
 #### 1. Create a `GameObjectSceneActionComposite` component.
@@ -43,6 +45,7 @@ public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObjec
 ```
 
 #### 4. Assign `DestroyGameObjectSceneAction` to the **Actions** parameter of the
+
 `GameObjectSceneActionComposite` component
 
 ---
@@ -62,6 +65,7 @@ public class SceneActionComposite<T> : SceneActionAbstract<T>
     - Supports Odin Inspector
     - Attach to a `GameObject`, assign a list of `SceneActionAbstract<T>` implementations in the Inspector, and they
       will be invoked sequentially.
+
 ---
 
 ### 🛠 Inspector Settings
