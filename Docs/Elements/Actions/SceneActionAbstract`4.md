@@ -1,12 +1,15 @@
 # 🧩 SceneActionAbstract&lt;T1, T2, T3, T4&gt;
 
+Represents a scene action with **four parameters**.
+
+---
+
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Methods](#-methods)
-    - [Invoke()](#invoke)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
 
 ---
 
@@ -29,7 +32,7 @@ public abstract class SceneActionAbstract<T1, T2, T3, T4> : MonoBehaviour, IActi
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
