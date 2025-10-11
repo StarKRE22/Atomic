@@ -1,49 +1,20 @@
 # 🧩 SceneActionDefault
 
-```csharp
-[AddComponentMenu("Atomic/Elements/Action")]
-public class SceneActionDefault : SceneActionAbstract
-```
-
-- **Description:**  Represents a <b>parameterless</b> composite scene action that can be invoked.
-- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
-- **Notes:**
-    - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
-      invoked sequentially.
+Represents a <b>parameterless</b> composite scene action that can be invoked.
 
 ---
 
-## 🛠 Inspector Settings
+## 📑 Table of Contents
 
-| Parameter | Description                              |
-|-----------|------------------------------------------|
-| `actions` | The array of actions to execute in order |
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Fields](#-fields)
+      - [Actions](#actions)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
 
----
-
-## 🧱 Fields
-
-#### `Actions`
-
-```csharp
-public IAction[] actions;
-```
-
-- **Description:** The array of actions to invoke in order.
-- **Access:** Read / Write
-
----
-
-## 🏹 Methods
-
-#### `Invoke()`
-
-```csharp
-public override void Invoke();
-```
-
-- **Description:** Executes each action in the `actions` array sequentially.
 
 ---
 
@@ -67,3 +38,54 @@ public sealed class GameStartup : MonoBehaviour
     private void Start() => _startup.Invoke();
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[AddComponentMenu("Atomic/Elements/Action")]
+public class SceneActionDefault : SceneActionAbstract
+```
+
+- **Description:**  Represents a <b>parameterless</b> composite scene action that can be invoked.
+- **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
+- **Notes:**
+    - Supports Odin Inspector
+    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
+      invoked sequentially.
+
+---
+
+### 🛠 Inspector Settings
+
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
+### 🧱 Fields
+
+#### `Actions`
+
+```csharp
+public IAction[] actions;
+```
+
+- **Description:** The array of actions to invoke in order.
+- **Access:** Read / Write
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public override void Invoke();
+```
+
+- **Description:** Executes each action in the `actions` array sequentially.
