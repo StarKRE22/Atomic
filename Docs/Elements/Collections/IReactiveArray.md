@@ -1,18 +1,109 @@
 # 🧩 IReactiveArray&lt;T&gt;
 
+Represents a **reactive array with writable access** that provides notifications when elements are
+modified.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnStateChanged](#onstatechanged)
+    - [OnItemChanged](#onitemchanged)
+  - [Properties](#-properties)
+    - [Length](#length)
+    - [Count](#count)
+  - [Indexers](#-indexers)
+    - [[int index]](#int-index)
+  - [Methods](#-methods)
+    - [Clear()](#clear)
+    - [Populate(IEnumerable<T>)](#populateienumerablet)
+    - [Fill(T)](#fillt)
+    - [Resize(int)](#resizeint)
+    - [Contains(T)](#containst)
+    - [IndexOf(T)](#indexoft)
+    - [CopyTo(T[], int)](#copytot-int)
+    - [Copy(int, T[], int, int)](#copyint-t-int-int-int)
+    - [GetEnumerator()](#getenumerator)
+
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have a reactive array
+IReactiveArray<int> reactiveArray = ...; // your implementation
+
+// Subscribe to item changes
+reactiveArray.OnItemChanged += (index, newValue) =>
+{
+    Console.WriteLine($"Item at index {index} changed to {newValue}");
+};
+
+// Subscribe to global state changes
+reactiveArray.OnStateChanged += () =>
+{
+    Console.WriteLine("Array state changed");
+};
+
+// Access and modify elements
+for (int i = 0; i < reactiveArray.Length; i++)
+{
+    Console.WriteLine($"Element {i}: {reactiveArray[i]}");
+    reactiveArray[i] = reactiveArray[i] + 10; // triggers OnItemChanged if value changes
+}
+
+// Clear the array
+reactiveArray.Clear(); // triggers OnStateChanged
+
+// Populate the array with new values
+reactiveArray.Populate(new List<int> { 1, 2, 3, 4 }); // triggers OnStateChanged
+
+// Fill all elements with the same value
+reactiveArray.Fill(99); // triggers OnStateChanged
+
+// Resize the array
+reactiveArray.Resize(6); // triggers OnStateChanged
+
+// Check if array contains a value
+if (reactiveArray.Contains(99))
+{
+    Console.WriteLine("Array contains 99");
+}
+
+// Get index of a value
+int indexOfValue = reactiveArray.IndexOf(2);
+Console.WriteLine($"Index of 2: {indexOfValue}");
+
+// Copy elements to a standard array
+int[] target = new int[reactiveArray.Length];
+reactiveArray.Copy(0, target, 0, reactiveArray.Length);
+Console.WriteLine("Elements copied to target array");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveArray<T> : IReadOnlyReactiveArray<T>
 ```
 
 - **Description:** Represents a **reactive array with writable access** that provides notifications when elements are
   modified.
-- **Inherits:** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md)
+- **Inheritance:** [IReadOnlyReactiveArray&lt;T&gt;](IReadOnlyReactiveArray.md)
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Use this interface when you need read-write access and reactive updates for array elements.
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -35,7 +126,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Length`
 
@@ -56,7 +147,7 @@ public int Count { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -71,7 +162,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Clear()`
 
@@ -132,7 +223,7 @@ public int IndexOf(T item);
 - **Parameter:** `item` — The object to locate in the array.
 - **Returns:** The index of the item if found; otherwise, `-1`.
 
-#### `CopyTo(T[] array, int arrayIndex)`
+#### `CopyTo(T[], int)`
 
 ```csharp
 public void CopyTo(T[] array, int arrayIndex)
@@ -143,7 +234,7 @@ public void CopyTo(T[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
-#### `CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)`
+#### `CopyTo(int, T[], int, int)`
 
 ```csharp
 public void Copy(int sourceIndex, T[] destination, int destinationIndex, int length);
@@ -165,58 +256,3 @@ public IEnumerator<T> GetEnumerator();
 
 - **Description:** Returns an enumerator that iterates through the collection.
 - **Remarks:** Inherited from `IEnumerable<T>`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Assume we have a reactive array
-IReactiveArray<int> reactiveArray = ...; // your implementation
-
-// Subscribe to item changes
-reactiveArray.OnItemChanged += (index, newValue) =>
-{
-    Console.WriteLine($"Item at index {index} changed to {newValue}");
-};
-
-// Subscribe to global state changes
-reactiveArray.OnStateChanged += () =>
-{
-    Console.WriteLine("Array state changed");
-};
-
-// Access and modify elements
-for (int i = 0; i < reactiveArray.Length; i++)
-{
-    Console.WriteLine($"Element {i}: {reactiveArray[i]}");
-    reactiveArray[i] = reactiveArray[i] + 10; // triggers OnItemChanged if value changes
-}
-
-// Clear the array
-reactiveArray.Clear(); // triggers OnStateChanged
-
-// Populate the array with new values
-reactiveArray.Populate(new List<int> { 1, 2, 3, 4 }); // triggers OnStateChanged
-
-// Fill all elements with the same value
-reactiveArray.Fill(99); // triggers OnStateChanged
-
-// Resize the array
-reactiveArray.Resize(6); // triggers OnStateChanged
-
-// Check if array contains a value
-if (reactiveArray.Contains(99))
-{
-    Console.WriteLine("Array contains 99");
-}
-
-// Get index of a value
-int indexOfValue = reactiveArray.IndexOf(2);
-Console.WriteLine($"Index of 2: {indexOfValue}");
-
-// Copy elements to a standard array
-int[] target = new int[reactiveArray.Length];
-reactiveArray.Copy(0, target, 0, reactiveArray.Length);
-Console.WriteLine("Elements copied to target array");
-```
