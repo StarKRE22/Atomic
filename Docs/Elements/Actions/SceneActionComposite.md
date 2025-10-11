@@ -9,6 +9,9 @@ Represents a <b>parameterless</b> composite scene action that can be invoked.
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Fields](#-fields)
+        - [Actions](#actions)
     - [Methods](#-methods)
         - [Invoke()](#invoke)
 
