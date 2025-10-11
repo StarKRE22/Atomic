@@ -8,9 +8,9 @@ Represents a group of actions <b>with one parameter</b> that are executed sequen
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [DefaultConstructor](#default-constructor)
-        - [ParamsConstructor](#params-constructor)
-        - [IEnumerableConstructor](#ienumerable-constructor)
+        - [Default Constructor](#default-constructor)
+        - [Params Constructor](#params-constructor)
+        - [IEnumerable Constructor](#ienumerable-constructor)
     - [Methods](#-methods)
         - [Invoke(T)](#invoket)
 

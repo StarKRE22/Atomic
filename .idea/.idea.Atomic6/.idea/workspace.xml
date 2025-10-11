@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,31 +225,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="530000" />
-    </task>
-    <task id="LOCAL-01247" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1759765439701</created>
-      <option name="number" value="01247" />
-      <option name="presentableId" value="LOCAL-01247" />
-      <option name="project" value="LOCAL" />
-      <updated>1759765439701</updated>
-    </task>
-    <task id="LOCAL-01248" summary="Осталось расписать UnityCodegen.md &amp; RiderIDECodegen">
-      <option name="closed" value="true" />
-      <created>1759773322066</created>
-      <option name="number" value="01248" />
-      <option name="presentableId" value="LOCAL-01248" />
-      <option name="project" value="LOCAL" />
-      <updated>1759773322066</updated>
-    </task>
-    <task id="LOCAL-01249" summary="Unity Editor Gen">
-      <option name="closed" value="true" />
-      <created>1759774533043</created>
-      <option name="number" value="01249" />
-      <option name="presentableId" value="LOCAL-01249" />
-      <option name="project" value="LOCAL" />
-      <updated>1759774533043</updated>
+      <workItem from="1760170912545" duration="911000" />
     </task>
     <task id="LOCAL-01250" summary="Сделал раздел про EntityAPI">
       <option name="closed" value="true" />
@@ -623,7 +595,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760171122489</updated>
     </task>
-    <option name="localTasksCounter" value="1296" />
+    <task id="LOCAL-01296" summary="CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1760171448230</created>
+      <option name="number" value="01296" />
+      <option name="presentableId" value="LOCAL-01296" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171448230</updated>
+    </task>
+    <task id="LOCAL-01297" summary="CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1760171470383</created>
+      <option name="number" value="01297" />
+      <option name="presentableId" value="LOCAL-01297" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171470384</updated>
+    </task>
+    <task id="LOCAL-01298" summary="CompositeAction.md">
+      <option name="closed" value="true" />
+      <created>1760171503834</created>
+      <option name="number" value="01298" />
+      <option name="presentableId" value="LOCAL-01298" />
+      <option name="project" value="LOCAL" />
+      <updated>1760171503834</updated>
+    </task>
+    <option name="localTasksCounter" value="1299" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Done!" />
     <MESSAGE value="EntityCollectionPerformance.md" />
     <MESSAGE value="Фиксы в доке!" />
     <MESSAGE value="Entity Aspect Extensions.md" />
@@ -675,7 +670,8 @@
     <MESSAGE value="InlineAction`3.md" />
     <MESSAGE value="InlineActions!" />
     <MESSAGE value="CompositeActions.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="CompositeActions.md" />
+    <MESSAGE value="CompositeAction.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="CompositeAction.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
