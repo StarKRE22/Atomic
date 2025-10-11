@@ -10,7 +10,7 @@ especially important when game objects and scripts need to execute complex actio
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-examples-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
 
 ---
