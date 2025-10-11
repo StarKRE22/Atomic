@@ -11,6 +11,85 @@ reactive notifications.
 
 ## 📑 Table of Contents
 
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+<ul>
+  <li><a href="#-type">Type</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
+  <li>
+  <details>
+    <summary> <a href="#-constructors">Constructors</a></summary>
+    <ul>
+      <li><a href="#reactivelistint">ReactiveList(int)</a></li>
+      <li><a href="#reactivelistparams-t">ReactiveList(params T[])</a></li>
+      <li><a href="#reactivelistienumerablet">ReactiveList(IEnumerable&lt;T&gt;)</a></li>
+    </ul>
+  </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-events">Events</a></summary>
+      <ul>
+        <li><a href="#onstatechanged">OnStateChanged</a></li>
+        <li><a href="#onitemadded">OnItemAdded</a></li>
+        <li><a href="#onitemremoved">OnItemRemoved</a></li>
+        <li><a href="#onitemchanged">OnItemChanged</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-properties">Properties</a></summary>
+      <ul>
+        <li><a href="#count">Count</a></li>
+        <li><a href="#capacity">Capacity</a></li>
+        <li><a href="#isreadonly">IsReadOnly</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-indexers">Indexers</a></summary>
+      <ul>
+        <li><a href="#int-index">[int index]</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-methods">Methods</a></summary>
+      <ul>
+        <li><a href="#addt">Add(T)</a></li>
+        <li><a href="#addrangeenumerablet">AddRange(IEnumerable&lt;T&gt;)</a></li>
+        <li><a href="#insertint-t">Insert(int, T)</a></li>
+        <li><a href="#containst">Contains(T)</a></li>
+        <li><a href="#removet">Remove(T)</a></li>
+        <li><a href="#removeatint">RemoveAt(int)</a></li>
+        <li><a href="#clear">Clear()</a></li>
+        <li><a href="#indexoft">IndexOf(T)</a></li>
+        <li><a href="#copytot-int">CopyTo(T[], int)</a></li>
+        <li><a href="#copytoint-t-int-int">CopyTo(int, T[], int, int)</a></li>
+        <li><a href="#populateenumerablet">Populate(IEnumerable&lt;T&gt;)</a></li>
+        <li><a href="#getenumerator">GetEnumerator()</a></li>
+        <li><a href="#dispose">Dispose()</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li><a href="#-useful-links">Useful Links</a></li>
+</ul>
+  </li>
+</ul>
+
+
+
+<!--
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -45,7 +124,7 @@ reactive notifications.
         - [GetEnumerator()](#getenumerator)
         - [Dispose()](#dispose)
     - [Useful Links](#-useful-links)
-
+-->
 ---
 
 ## 🗂 Example of Usage

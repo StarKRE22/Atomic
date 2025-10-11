@@ -6,6 +6,49 @@
 
 ## 📑 Table of Contents
 
+<ul>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+<ul>
+  <li><a href="#-type">Type</a></li>
+
+  <li>
+    <details>
+      <summary><a href="#-properties">Properties</a></summary>
+      <ul>
+        <li><a href="#count">Count</a></li>
+        <li><a href="#isreadonly">IsReadOnly</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-methods">Methods</a></summary>
+      <ul>
+        <li><a href="#containsv">Contains(V)</a></li>
+        <li><a href="#copytov-int">CopyTo(V[], int)</a></li>
+        <li><a href="#getenumerator">GetEnumerator()</a></li>
+      </ul>
+    </details>
+  </li>
+
+  <li>
+    <details>
+      <summary><a href="#-unsupported-methods">Unsupported Methods</a></summary>
+      <ul>
+        <li><a href="#addv">Add(V)</a></li>
+        <li><a href="#removev">Remove(V)</a></li>
+        <li><a href="#clear">Clear()</a></li>
+      </ul>
+    </details>
+  </li>
+</ul>
+  </li>
+</ul>
+
+
+<!--
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Properties](#-properties)
@@ -19,7 +62,7 @@
         - [Add(V)](#addv)
         - [Remove(V)](#removev)
         - [Clear()](#clear)
-
+-->
 ---
 
 ## 🔍 API Reference
