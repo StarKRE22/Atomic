@@ -1,5 +1,25 @@
 # 🧩 SceneActionComposite&lt;T1, T2&gt;
 
+Represents a composite scene action with <b>two parameters</b> that can be invoked.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Fields](#-fields)
+        - [Actions](#actions)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class SceneActionComposite<T1, T2> : SceneActionAbstract<T1, T2>
 ```
@@ -24,7 +44,7 @@ public class SceneActionComposite<T1, T2> : SceneActionAbstract<T1, T2>
 
 ---
 
-## 🧱 Fields
+### 🧱 Fields
 
 #### `Actions`
 
@@ -37,7 +57,7 @@ public SceneActionAbstract<T1, T2>[] actions;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
