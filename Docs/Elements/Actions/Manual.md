@@ -153,7 +153,7 @@ There are several abstractions of actions, depending on the number of arguments 
 <details>
   <summary><b>Debug</b></summary>
   <ul>
-    <li><a href="PrintAction.md">PrintAction</a></li>
+    <li><a href="PrintAction.md">LogAction</a></li>
   </ul>
 </details>
 

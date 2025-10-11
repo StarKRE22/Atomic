@@ -16,7 +16,7 @@ namespace Atomic.Elements
     /// Uses Debug.Log in Unity, Console.WriteLine otherwise.
     /// </remarks>
     [Serializable]
-    public sealed class PrintAction : IAction
+    public sealed class LogAction : IAction
     {
 #if ODIN_INSPECTOR && UNITY_5_3_OR_NEWER
         [GUIColor(1f, 0.92156863f, 0.015686275f)]
@@ -32,13 +32,13 @@ namespace Atomic.Elements
         private string _message;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrintAction"/> class.
+        /// Initializes a new instance of the <see cref="LogAction"/> class.
         /// </summary>
         /// <remarks>
         /// This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
-        /// It allows the inspector to create and serialize a default instance of <see cref="PrintAction"/>.
+        /// It allows the inspector to create and serialize a default instance of <see cref="LogAction"/>.
         /// </remarks>
-        public PrintAction()
+        public LogAction()
         {
         }
         
@@ -48,7 +48,7 @@ namespace Atomic.Elements
         /// <param name="message">The message to log.</param>
 #if UNITY_5_3_OR_NEWER
         /// <param name="logType">The log type (default is <see cref="LogType.Log"/>).</param>
-        public PrintAction(string message, LogType logType = LogType.Log)
+        public LogAction(string message, LogType logType = LogType.Log)
         {
             _message = message;
             _logType = logType;
