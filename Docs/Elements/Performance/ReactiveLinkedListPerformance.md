@@ -1,4 +1,4 @@
-# 🔥 Reactive Linked List
+# 🔥 ReactiveLinkedList Performance
 
 The performance comparison below was measured on a **MacBook with Apple M1** for collections containing **1000 elements
 of type `object`**. The table shows median execution times of key operations.

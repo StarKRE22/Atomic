@@ -104,7 +104,7 @@ public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 
 ---
 
-### 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `ReactiveArray(int)`
 

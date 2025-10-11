@@ -1,26 +1,102 @@
 # 🧩 ReactiveList&lt;T&gt;
 
-```csharp
-[Serializable]
-public class ReactiveList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
-```
-
-- **Description:** Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed,
-  changed, or when
-  the list state changes globally.
-- **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`, `ISerializationCallbackReceiver`
-- **Type Parameter:** `T` — The type of elements stored in the list.
-- **Notes:** Supports Unity serialization and Odin Inspector
-
-> [!TIP]
->  Use this class when you need a **mutable, growable list** with reactive notifications.
+Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed,
+changed, or when the list state changes globally. Use this class when you need a **mutable, growable list** with
+reactive notifications.
 
 > [!IMPORTANT]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
 
 ---
 
-## 🛠 Inspector Settings
+## 📑 Table of Contents
+
+- [Example of Usage](#example-of-usage)
+- [API Reference](#api-reference)
+    - [Type](#type)
+    - [Inspector Settings](#inspector-settings)
+    - [Constructors](#constructors)
+        - [ReactiveList(int)](#reactivelistint)
+        - [ReactiveList(params T[])](#reactivelistparams-t)
+        - [ReactiveList(IEnumerable<T>)](#reactivelistenumerablet)
+    - [Events](#events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnItemAdded](#onitemadded)
+        - [OnItemRemoved](#onitemremoved)
+        - [OnItemChanged](#onitemchanged)
+    - [Properties](#properties)
+        - [Count](#count)
+        - [Capacity](#capacity)
+        - [IsReadOnly](#isreadonly)
+    - [Indexers](#indexers)
+        - [[int index]](#int-index)
+    - [Methods](#methods)
+        - [Add(T)](#addt)
+        - [AddRange(IEnumerable<T>)](#addrangeenumerablet)
+        - [Insert(int, T)](#insertint-t)
+        - [Contains(T)](#containst)
+        - [Remove(T)](#removet)
+        - [RemoveAt(int)](#removeatint)
+        - [Clear()](#clear)
+        - [IndexOf(T)](#indexoft)
+        - [CopyTo(T[], int)](#copytot-int)
+        - [CopyTo(int, T[], int, int)](#copytoint-t-int-int)
+        - [Populate(IEnumerable<T>)](#populateenumerablet)
+        - [GetEnumerator()](#getenumerator)
+        - [Dispose()](#dispose)
+    - [Useful Links](#-useful-links)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var list = new ReactiveList<string>();
+
+// Subscribe to events
+list.OnItemInserted += (i, v) => Console.WriteLine($"Inserted {v} at {i}");
+list.OnItemDeleted += (i, v) => Console.WriteLine($"Deleted {v} from {i}");
+list.OnItemChanged += (i, v) => Console.WriteLine($"Changed {i} to {v}");
+list.OnStateChanged += () => Console.WriteLine("State changed");
+
+// Add items
+list.Add("A");
+list.Add("B");
+
+// Insert
+list.Insert(1, "X");
+
+// Modify
+list[0] = "Z";
+
+// Remove
+list.Remove("B");
+
+// Enumerate
+foreach (var item in list)
+    Console.WriteLine(item);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[Serializable]
+public class ReactiveList<T> : IReactiveList<T>, IDisposable, ISerializationCallbackReceiver
+```
+
+- **Description:** Represents a **dynamic, resizable reactive list** that emits events when items are inserted, removed,
+  changed, or when the list state changes globally.
+- **Inheritance:**  [IReactiveList&lt;T&gt;](IReactiveList.md), `IDisposable`, `ISerializationCallbackReceiver`
+- **Type Parameter:** `T` — The type of elements stored in the list.
+- **Notes:** Supports Unity serialization and Odin Inspector
+
+---
+
+### 🛠 Inspector Settings
 
 | Parameter         | Description                       |
 |-------------------|-----------------------------------|
@@ -28,7 +104,7 @@ public class ReactiveList<T> : IReactiveList<T>, IDisposable, ISerializationCall
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `ReactiveList(int)`
 
@@ -61,7 +137,7 @@ public ReactiveList(IEnumerable<T> items);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -106,7 +182,7 @@ public event Action<int, T> OnItemChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -134,7 +210,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -148,7 +224,7 @@ public T this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(T)`
 
@@ -297,14 +373,6 @@ public void Populate(IEnumerable<T> newItems)
     - Always fires `OnStateChanged` at the end.
 - **Exception:** `ArgumentNullException` — if `newItems` is null.
 
-#### `Dispose()`
-
-```csharp
-public void Dispose()
-```
-
-- **Description:** Clears the list and unsubscribes all events.
-
 #### `GetEnumerator()`
 
 ```csharp
@@ -316,33 +384,17 @@ public Enumerator GetEnumerator()
     - Does **not** trigger events.
     - Returns a struct enumerator for efficient `foreach`.
 
----
-
-## 🗂 Example of Usage
+#### `Dispose()`
 
 ```csharp
-var list = new ReactiveList<string>();
-
-// Subscribe to events
-list.OnItemInserted += (i, v) => Console.WriteLine($"Inserted {v} at {i}");
-list.OnItemDeleted += (i, v) => Console.WriteLine($"Deleted {v} from {i}");
-list.OnItemChanged += (i, v) => Console.WriteLine($"Changed {i} to {v}");
-list.OnStateChanged += () => Console.WriteLine("State changed");
-
-// Add items
-list.Add("A");
-list.Add("B");
-
-// Insert
-list.Insert(1, "X");
-
-// Modify
-list[0] = "Z";
-
-// Remove
-list.Remove("B");
-
-// Enumerate
-foreach (var item in list)
-    Console.WriteLine(item);
+public void Dispose()
 ```
+
+- **Description:** Clears the list and unsubscribes all events.
+
+---
+
+## 🔗 Useful Links
+
+- [ReactiveList Performance](../Performance/ReactiveListPerformance.md) – performance benchmarks for reactive list.
+- [Iterating over Reactive Collections](../../BestPractices/IteratingReactiveCollections.md) — best practice.
