@@ -30,7 +30,7 @@ public abstract class SceneActionAbstract<T1, T2, T3> : MonoBehaviour, IAction<T
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 
