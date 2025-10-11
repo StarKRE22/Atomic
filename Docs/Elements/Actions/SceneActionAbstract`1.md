@@ -1,40 +1,16 @@
 # 🧩 SceneActionAbstract&lt;T&gt;
 
+Represents a scene action with <b>one parameter</b> that can be invoked.
+
+---
+
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Invoke()](#invoke)
-
----
-
-## 🔍 API Reference
-
-### 🏛️ Type <div id="-type"></div>
-
-```csharp
-public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
-```
-
-- **Description:** Represents a scene action with <b>one parameter</b> that can be invoked.
-- **Inheritance:** `MonoBehaviour`, [IAction&lt;T&gt;](IAction%601.md)
-- **Type parameter:** `T` — the input argument type.
-- **Note:** Attach to a GameObject and implement `Invoke(T)` to define custom behavior.
-
----
-
-## 🏹 Methods
-
-#### `Invoke(T arg)`
-
-```csharp
-public abstract void Invoke(T arg);
-```
-
-- **Description:** Executes the action logic with the provided argument.
-- **Parameter:** `arg` – The input argument.
+        - [Invoke(T)](#invoket)
 
 ---
 
@@ -74,3 +50,31 @@ public sealed class ActionTrigger : MonoBehaviour
 #### 3. Run the scene
 
 Enter **Play Mode** in Unity and any objects that collide with the trigger will be **destroyed automatically**.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class SceneActionAbstract<T> : MonoBehaviour, IAction<T>
+```
+
+- **Description:** Represents a scene action with <b>one parameter</b> that can be invoked.
+- **Inheritance:** `MonoBehaviour`, [IAction&lt;T&gt;](IAction%601.md)
+- **Type parameter:** `T` — the input argument type.
+- **Note:** Attach to a GameObject and implement `Invoke(T)` to define custom behavior.
+
+---
+
+### 🏹 Methods
+
+#### `Invoke(T)`
+
+```csharp
+public abstract void Invoke(T arg);
+```
+
+- **Description:** Executes the action logic with the provided argument.
+- **Parameter:** `arg` – The input argument.

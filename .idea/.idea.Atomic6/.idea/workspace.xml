@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/CompositeAction`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/SceneActionAbstract`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,31 +226,7 @@
       <workItem from="1759742893758" duration="14590000" />
       <workItem from="1760088001288" duration="8734000" />
       <workItem from="1760113573847" duration="9558000" />
-      <workItem from="1760170912545" duration="1626000" />
-    </task>
-    <task id="LOCAL-01254" summary="Фиксы в доке!">
-      <option name="closed" value="true" />
-      <created>1760089846487</created>
-      <option name="number" value="01254" />
-      <option name="presentableId" value="LOCAL-01254" />
-      <option name="project" value="LOCAL" />
-      <updated>1760089846487</updated>
-    </task>
-    <task id="LOCAL-01255" summary="Entity Aspect Extensions.md">
-      <option name="closed" value="true" />
-      <created>1760090419626</created>
-      <option name="number" value="01255" />
-      <option name="presentableId" value="LOCAL-01255" />
-      <option name="project" value="LOCAL" />
-      <updated>1760090419626</updated>
-    </task>
-    <task id="LOCAL-01256" summary="Пошурудил EntityAspects">
-      <option name="closed" value="true" />
-      <created>1760091904958</created>
-      <option name="number" value="01256" />
-      <option name="presentableId" value="LOCAL-01256" />
-      <option name="project" value="LOCAL" />
-      <updated>1760091904958</updated>
+      <workItem from="1760170912545" duration="2543000" />
     </task>
     <task id="LOCAL-01257" summary="Пошурудил EntityAspects">
       <option name="closed" value="true" />
@@ -619,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760172413510</updated>
     </task>
-    <option name="localTasksCounter" value="1303" />
+    <task id="LOCAL-01303" summary="CompositeAction`4.md">
+      <option name="closed" value="true" />
+      <created>1760172547218</created>
+      <option name="number" value="01303" />
+      <option name="presentableId" value="LOCAL-01303" />
+      <option name="project" value="LOCAL" />
+      <updated>1760172547218</updated>
+    </task>
+    <task id="LOCAL-01304" summary="SceneActionsAbstract.md">
+      <option name="closed" value="true" />
+      <created>1760172826423</created>
+      <option name="number" value="01304" />
+      <option name="presentableId" value="LOCAL-01304" />
+      <option name="project" value="LOCAL" />
+      <updated>1760172826423</updated>
+    </task>
+    <task id="LOCAL-01305" summary="SceneActionAbstract.md">
+      <option name="closed" value="true" />
+      <created>1760173089314</created>
+      <option name="number" value="01305" />
+      <option name="presentableId" value="LOCAL-01305" />
+      <option name="project" value="LOCAL" />
+      <updated>1760173089314</updated>
+    </task>
+    <option name="localTasksCounter" value="1306" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,9 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пошурудил EntityAspects" />
-    <MESSAGE value="IEntityAspect.md" />
-    <MESSAGE value="SceneEntityAspect.md" />
     <MESSAGE value="Выстругал аспекты!" />
     <MESSAGE value="EntityBehaviours" />
     <MESSAGE value="IEntityBehaviour.md" />
@@ -671,7 +669,10 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="CompositeAction`2.md" />
     <MESSAGE value="CompositeAction`3.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="CompositeAction`3.md" />
+    <MESSAGE value="CompositeAction`4.md" />
+    <MESSAGE value="SceneActionsAbstract.md" />
+    <MESSAGE value="SceneActionAbstract.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneActionAbstract.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
