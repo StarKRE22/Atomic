@@ -1,5 +1,10 @@
 # 🧩 CompositeAction&lt;T1, T2&gt;
 
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class CompositeAction<T1, T2> : IAction<T1, T2>

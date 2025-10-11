@@ -1,18 +1,61 @@
 # 🧩 CompositeAction
 
+Represents a group of **parameterless actions** that are executed sequentially.
+
+---
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+      - [DefaultConstructor](#default-constructor)
+      - [ParamsConstructor](#params-constructor)
+      - [IEnumerableConstructor](#ienumerable-constructor)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using composite action for game startup:
+
+```csharp
+IAction startupAction = new CompositeAction(
+    new ActivatePlayerAction(), //IAction
+    new ActivateEnemiesAction(), //IAction
+    new ActivateWeapons(), //IAction
+    new ActivateGameTimerAction(), //IAction
+);
+
+```
+
+Usage:
+
+```csharp
+startupAction.Invoke();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class CompositeAction : IAction
 ```
+
 - **Description:** Represents a group of **parameterless actions** that are executed sequentially.
 - **Inheritance:** [IAction](IAction.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
-#### `CompositeAction()`
+#### `Default Constructor`
 
 ```csharp
 public CompositeAction()
@@ -21,7 +64,7 @@ public CompositeAction()
 - **Description:** Initializes a new instance
 - **Note:** This constructor is intended **only for use by the Unity Inspector** when using `[SerializeReference]`.
 
-#### `CompositeAction(params IAction[])`
+#### `Params Constructor`
 
 ```csharp
 public CompositeAction(params IAction[] actions)
@@ -31,7 +74,7 @@ public CompositeAction(params IAction[] actions)
 - **Parameter:** `actions` – One or more actions to include in the group.
 - **Throws:** `ArgumentNullException` if `actions` is null.
 
-#### `CompositeAction(IEnumerable<IAction>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public CompositeAction(IEnumerable<IAction> actions)
@@ -43,7 +86,7 @@ public CompositeAction(IEnumerable<IAction> actions)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -52,20 +95,3 @@ public void Invoke()
 ```
 
 - **Description:** Invokes all actions in the group sequentially.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IAction composite = new CompositeAction(
-    new InlineAction(() => Console.WriteLine("Action 1")),
-    new InlineAction(() => Console.WriteLine("Action 2"))
-);
-
-composite.Invoke();
-
-// Output:
-// Action 1
-// Action 2
-```
