@@ -19,7 +19,7 @@ namespace Atomic.Elements
         /// For example, when multiple items are updated, cleared, or reset.
         /// </summary>
         event Action OnStateChanged;
-        
+
         /// <summary>
         /// Gets the total number of elements in the array.
         /// </summary>
@@ -35,13 +35,17 @@ namespace Atomic.Elements
         /// <inheritdoc/>
         int IReadOnlyCollection<T>.Count => this.Length;
 
+        /// <summary><para>Determines whether the current collection contains a specific value.</para></summary>
+        /// <param name="item">The object to locate in the current collection.</param>
+        bool Contains(T item);
+
         /// <summary>
         /// Copies a range of elements from this array to the specified destination array.
         /// </summary>
         /// <param name="array">The destination array.</param>
         /// <param name="arrayIndex">The zero-based index in the destination array at which storing begins.</param>
         void CopyTo(T[] array, int arrayIndex);
-        
+
         /// <summary>
         /// Copies a range of elements from this array to the specified destination array.
         /// </summary>
