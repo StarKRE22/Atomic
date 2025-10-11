@@ -45,6 +45,7 @@ every change
         - [Populate(IEnumerable<T>)](#populateenumerablet)
         - [GetEnumerator()](#getenumerator)
         - [Dispose()](#dispose)
+    - [Useful Links](#-useful-links)
 
 ---
 
