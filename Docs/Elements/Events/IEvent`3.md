@@ -1,8 +1,28 @@
 # 🧩 IEvent&lt;T1, T2, T3&gt;
 
+Represents an event that emits <b>three parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IEvent<T1, T2, T3> : ISignal<T1, T2, T3>, IAction<T1, T2, T3>
 ```
+
 - **Description:** Represents an event that emits <b>three parameters</b>.
 - **Inheritance:** [ISignal&lt;T1, T2, T3&gt;](ISignal%603.md), [IAction&lt;T1, T2, T3&gt;](../Actions/IAction%603.md)
 - **Type parameters:**
@@ -12,27 +32,23 @@ public interface IEvent<T1, T2, T3> : ISignal<T1, T2, T3>, IAction<T1, T2, T3>
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2, T3>)`
-
-```csharp
-public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [subscription](Subscription%603.md) struct representing the
-  active subscription.
-
-#### Unsubscribe(Action<T1, T2, T3>)
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2, T3> action)  
+public event Action<T1, T2, T3> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameter:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with three arguments.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 
