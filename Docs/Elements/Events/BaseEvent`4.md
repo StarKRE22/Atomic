@@ -4,6 +4,17 @@ Represents an event that emits **four parameters**.
 
 ---
 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+        - [Dispose()](#dispose)
+
+---
 
 ## 🔍 API Reference
 
@@ -25,7 +36,6 @@ public class BaseEvent<T1, T2, T3, T4> : IEvent<T1, T2, T3, T4>, IDisposable
 
 ---
 
-
 ### ⚡ Events
 
 #### `OnEvent`
@@ -36,10 +46,10 @@ public event Action<T1, T2, T3, T4> OnEvent;
 
 - **Description:** Occurs when the signal is emitted with four arguments.
 - **Parameters:**
-  - `T1` — the first emitted value
-  - `T2` — the second emitted value
-  - `T3` — the third emitted value
-  - `T4` — the fourth emitted value
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+    - `T4` — the fourth emitted value
 
 ---
 

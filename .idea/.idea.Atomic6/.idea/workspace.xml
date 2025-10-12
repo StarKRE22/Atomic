@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/BaseEvent`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,30 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01351" summary="IReactiveCollection.md">
-      <option name="closed" value="true" />
-      <created>1760204815473</created>
-      <option name="number" value="01351" />
-      <option name="presentableId" value="LOCAL-01351" />
-      <option name="project" value="LOCAL" />
-      <updated>1760204815473</updated>
-    </task>
-    <task id="LOCAL-01352" summary="IReadOnlyReactiveArray.cs">
-      <option name="closed" value="true" />
-      <created>1760205048422</created>
-      <option name="number" value="01352" />
-      <option name="presentableId" value="LOCAL-01352" />
-      <option name="project" value="LOCAL" />
-      <updated>1760205048422</updated>
-    </task>
-    <task id="LOCAL-01353" summary="IReactiveArray.md">
-      <option name="closed" value="true" />
-      <created>1760205259259</created>
-      <option name="number" value="01353" />
-      <option name="presentableId" value="LOCAL-01353" />
-      <option name="project" value="LOCAL" />
-      <updated>1760205259259</updated>
     </task>
     <task id="LOCAL-01354" summary="ReactiveArray.md">
       <option name="closed" value="true" />
@@ -624,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760280890074</updated>
     </task>
-    <option name="localTasksCounter" value="1400" />
+    <task id="LOCAL-01400" summary="BaseEvent.md">
+      <option name="closed" value="true" />
+      <created>1760281628432</created>
+      <option name="number" value="01400" />
+      <option name="presentableId" value="LOCAL-01400" />
+      <option name="project" value="LOCAL" />
+      <updated>1760281628433</updated>
+    </task>
+    <task id="LOCAL-01401" summary="BaseEvent`1.md">
+      <option name="closed" value="true" />
+      <created>1760281743019</created>
+      <option name="number" value="01401" />
+      <option name="presentableId" value="LOCAL-01401" />
+      <option name="project" value="LOCAL" />
+      <updated>1760281743019</updated>
+    </task>
+    <task id="LOCAL-01402" summary="BaseEvent`1.md">
+      <option name="closed" value="true" />
+      <created>1760281793121</created>
+      <option name="number" value="01402" />
+      <option name="presentableId" value="LOCAL-01402" />
+      <option name="project" value="LOCAL" />
+      <updated>1760281793121</updated>
+    </task>
+    <option name="localTasksCounter" value="1403" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,8 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReactiveList.md" />
-    <MESSAGE value="Details!" />
     <MESSAGE value="ReactiveDictionaryKeyCollection.md" />
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="Сделал details для коллекций!" />
@@ -676,7 +670,9 @@
     <MESSAGE value="IEvent`3.md" />
     <MESSAGE value="IEvent`4.md" />
     <MESSAGE value="BaseEvents.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="BaseEvents.md" />
+    <MESSAGE value="BaseEvent.md" />
+    <MESSAGE value="BaseEvent`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseEvent`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
