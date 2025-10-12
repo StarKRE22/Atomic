@@ -1,5 +1,35 @@
 # 🧩 ISignal&lt;T&gt;
 
+Represents a signal that notifies subscribers with a <b>single value</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of "health changed event"
+ISignal<int> healthChangedEvent = ...
+
+// Subscribe to the event
+healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ISignal<T>
 ```
@@ -9,23 +39,13 @@ public interface ISignal<T>
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T>)`
-
-```csharp
-public Subscription<T> Subscribe(Action<T> action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](Subscription%601.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action<T>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T> action)
+public event Action<T> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument.
+- **Parameters:** `T` — the emitted value.
