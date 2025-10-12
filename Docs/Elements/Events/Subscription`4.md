@@ -1,5 +1,22 @@
 # 🧩 Subscription&lt;T1, T2, T3, T4&gt;
 
+Represents a subscription to a <b>signal emitting four values</b>.
+
+---
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Subscription(ISignal, Action)](#subscriptionisignalt1-t2-t3-t4-actiont1-t2-t3-t4)
+    - [Methods](#-methods)
+        - [Dispose()](#dispose)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public readonly struct Subscription<T1, T2, T3, T4> : IDisposable
 ```
@@ -14,7 +31,7 @@ public readonly struct Subscription<T1, T2, T3, T4> : IDisposable
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `Subscription(ISignal<T1, T2, T3, T4>, Action<T1, T2, T3, T4>)`
 
@@ -29,7 +46,7 @@ public Subscription(ISignal<T1, T2, T3, T4> signal, Action<T1, T2, T3, T4> actio
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Dispose()`
 
@@ -38,5 +55,3 @@ public void Dispose()
 ```
 
 - **Description:** Unsubscribes the associated action from the signal source.
-
----
