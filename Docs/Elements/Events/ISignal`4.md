@@ -7,7 +7,6 @@ Represents a signal that notifies subscribers with **four values**.
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Events](#-events)
