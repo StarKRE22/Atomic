@@ -1,7 +1,28 @@
 # 🧩 IEvent&lt;T1, T2, T3, T4&gt;
 
+Represents an event that emits <b>four parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
-public interface IEvent<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>, IAction<T1, T2, T3, T4>
+public interface IEvent<T1, T2, T3, T4> : 
+    ISignal<T1, T2, T3, T4>, 
+    IAction<T1, T2, T3, T4>
 ```
 
 - **Description:** Represents an event that emits <b>four parameters</b>.
@@ -15,27 +36,24 @@ public interface IEvent<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>, IAction<T1, T
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2, T3, T4>)`
-
-```csharp
-public Subscription<T1, T2, T3, T4> Subscribe(Action<T1, T2, T3, T4> action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [subscription](Subscription%604.md) struct representing
-  the active subscription.
-
-#### `Unsubscribe(Action<T1, T2, T3, T4>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2, T3, T4> action)  
+public event Action<T1, T2, T3, T4> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameter:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with four arguments.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+    - `T4` — the fourth emitted value
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 
@@ -48,3 +66,4 @@ public void Invoke(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     - `arg1` — the first argument
     - `arg2` — the second argument
     - `arg3` — the third argument
+    - `arg4` — the fourth argument
