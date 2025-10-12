@@ -5,6 +5,42 @@ sources.
 
 ---
 
+## Examples of Usage
+
+When subscribing to a signal, the method returns
+a [Subscription](Subscriptions.md) struct.
+
+### 3️⃣ Non-generic Subscription <div id="ex-3"></div>
+
+```csharp
+```csharp
+// Assume we have an instance of fire event
+ISignal fireEvent = ...
+
+// Assume we have an AudioSource with fire AudioClip 
+AudioSource fireSFX = ...
+
+// Subscribe on the event    
+Subscription subscription = fireEvent.Subscribe(fireSFX.Play);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+### 4️⃣ Generic Subscription <div id="ex-4"></div>
+
+```csharp
+//Assume we have an instance of ISignal
+ISignal<T> signal = ...
+
+//Subscribe on the signal
+Subscription<T> subscription = signal.Subscribe<T>(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+
 ## 🏹 Methods
 
 #### `Subscribe(ISignal, IAction)`
