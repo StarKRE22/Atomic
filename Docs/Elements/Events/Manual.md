@@ -30,9 +30,6 @@ playerDiedEvent.OnEvent += () => Console.WriteLine("Player died event triggered.
 
 // Invoke the event
 playerDiedEvent.Invoke(); // Output: Player died event triggered.
-
-// Dispose all subscriptions
-playerDiedEvent.Dispose();
 ```
 
 ### 2️⃣ Event with single argument <div id="ex-2"></div>
@@ -46,9 +43,6 @@ healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {
 // Invoke the event with a value
 healthChangedEvent.Invoke(100); // Output: Health changed to: 100
 healthChangedEvent.Invoke(75);  // Output: Health changed to: 75
-
-// Dispose all subscriptions
-healthChangedEvent.Dispose();
 ```
 
 ### 3️⃣ Non-generic Subscription <div id="ex-3"></div>
