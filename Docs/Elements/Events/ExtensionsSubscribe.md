@@ -5,6 +5,59 @@ sources.
 
 ---
 
+
+### 1️⃣ Non-generic Subscription
+
+```csharp
+//Assume we have a instance of ISignal and Action
+ISignal signal = ...
+Action action = ...
+
+//Subscribe on the signal    
+Subscription subscription = new signal.Subscribe(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
+### 2️⃣ Generic Subscription
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal<T> signal = ...
+
+//Subscribe on the signal
+Subscription<T> subscription = signal.Subscribe<T>(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+
+## 🏹 Methods
+
+#### `Subscribe(Action)`
+
+```csharp
+public Subscription Subscribe(Action action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** The active [subscription](Subscription.md) that can be used to dispose of it.
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
 ## Examples of Usage
 
 When subscribing to a signal, the method returns

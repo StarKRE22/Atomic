@@ -1,8 +1,58 @@
 # 🧩 Subscriptions
 
-Represent a **subscription** to a [ISignal](ISignals.md) instance. Disposing an instance will automatically *
-*unsubscribe the
-associated action** from the **signal**, ensuring proper cleanup of event handlers.
+Represent a **subscription** to a [ISignal](ISignals.md) instance. Disposing an instance will automatically
+**unsubscribe the associated action** from the **signal**, ensuring proper cleanup of event handlers.
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Non-generic Subscription](#ex-1)
+    - [Generic Subscription](#ex-2)
+- [API Reference](#-api-reference)
+
+---
+
+## 🗂 Examples of Usage
+
+### 1️⃣ Non-generic Subscription <div id="ex-1"></div>
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal signal = ...
+    
+//Assume we have a instance of Action 
+Action action = ...
+
+//Subscribe on the signal    
+Subscription subscription = new Subscription(signal, action);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
+### 2️⃣ Generic Subscription <div id="ex-2"></div>
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal<T> signal = ...
+    
+//Assume we have a instance of Action 
+Action<T> action = ...
+
+//Subscribe on the signal
+Subscription<T> subscription = new Subscription<T>(signal, action);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
+## 🔍 API Reference
 
 There are several subscriptions, depending on the number of arguments they take:
 
@@ -11,58 +61,3 @@ There are several subscriptions, depending on the number of arguments they take:
 - [Subscription&lt;T1, T2&gt;](Subscription%602.md) — Subscription that takes two arguments.
 - [Subscription&lt;T1, T2, T3&gt;](Subscription%603.md) — Subscription that takes three arguments.
 - [Subscription&lt;T1, T2, T3, T4&gt;](Subscription%604.md) — Subscription that takes four arguments.
-
----
-
-
-
-## 🏹 Methods
-
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription Subscribe(Action action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](Subscription.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action)`
-
-```csharp
-public void Unsubscribe(Action action)
-```
-
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
-
-## 🗂 Examples of Usage
-
-### 1️⃣ Non-generic Subscription
-
-```csharp
-//Assume we have a instance of ISignal
-ISignal signal = ...
-
-//Subscribe on the signal    
-Subscription subscription = signal.Subscribe(lambda);
-
-// Later, dispose to unsubscribe
-subscription.Dispose();
-```
-
----
-
-### 2️⃣ Generic Subscription
-
-```csharp
-//Assume we have a instance of ISignal
-ISignal<T> signal = ...
-
-//Subscribe on the signal
-Subscription<T> subscription = signal.Subscribe<T>(lambda);
-
-// Later, dispose to unsubscribe
-subscription.Dispose();
-```
