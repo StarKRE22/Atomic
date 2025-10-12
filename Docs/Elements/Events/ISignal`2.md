@@ -1,5 +1,14 @@
 # 🧩 ISignal&lt;T1, T2&gt;
 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+
+---
+
 ```csharp
 public interface ISignal<T1, T2>
 ```
@@ -11,23 +20,15 @@ public interface ISignal<T1, T2>
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2>)`
-
-```csharp
-public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:**  The active [subscription](Subscription%602.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action<T1, T2>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2> action)
+public event Action<T1, T2> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value

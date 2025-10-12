@@ -10,25 +10,6 @@ public interface IEvent : ISignal, IAction
 
 ## 🏹 Methods
 
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription Subscribe(Action action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [subscription](Subscription.md) struct representing the active subscription.
-
-#### `Unsubscribe(Action)`
-
-```csharp
-public void Unsubscribe(Action action)  
-```
-
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameter:** `action` – The delegate to remove from the subscription list.
-
 #### `Invoke()`
 
 ```csharp

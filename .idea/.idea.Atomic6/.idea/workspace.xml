@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/ISignal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Events/ISignal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscriptions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscriptions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,14 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01329" summary="SceneActionComposite`4.md">
-      <option name="closed" value="true" />
-      <created>1760185714407</created>
-      <option name="number" value="01329" />
-      <option name="presentableId" value="LOCAL-01329" />
-      <option name="project" value="LOCAL" />
-      <updated>1760185714407</updated>
     </task>
     <task id="LOCAL-01330" summary="SceneActionsReference.md">
       <option name="closed" value="true" />
@@ -622,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760253028696</updated>
     </task>
-    <option name="localTasksCounter" value="1378" />
+    <task id="LOCAL-01378" summary="ISignal.md">
+      <option name="closed" value="true" />
+      <created>1760254172300</created>
+      <option name="number" value="01378" />
+      <option name="presentableId" value="LOCAL-01378" />
+      <option name="project" value="LOCAL" />
+      <updated>1760254172300</updated>
+    </task>
+    <option name="localTasksCounter" value="1379" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="LogAction.cs" />
     <MESSAGE value="IAction ExtensionsInvokeRange.md" />
     <MESSAGE value="Actions" />
     <MESSAGE value="IReadOnlyReactiveCollection.md" />
@@ -674,7 +671,8 @@
     <MESSAGE value="ReactiveList.md" />
     <MESSAGE value="Сделал details для коллекций!" />
     <MESSAGE value="ISignals.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ISignals.md" />
+    <MESSAGE value="ISignal.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ISignal.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

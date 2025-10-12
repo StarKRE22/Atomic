@@ -14,6 +14,47 @@ a [Subscription](Subscriptions.md) struct.
 
 ## 🏹 Methods
 
+
+
+#### `Subscribe(Action)`
+
+```csharp
+public Subscription Subscribe(Action action)  
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:** A [subscription](Subscription.md) struct representing the active subscription.
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)  
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Subscribe(Action<T1, T2>)`
+
+```csharp
+public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
+```
+
+- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
+- **Parameter:** `action` – The delegate to be called when the value changes.
+- **Returns:**  The active [subscription](Subscription%602.md) that can be used to dispose of it.
+
+#### `Unsubscribe(Action<T1, T2>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
 #### `Subscribe(Action<T>)`
 
 ```csharp
