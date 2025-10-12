@@ -1,7 +1,21 @@
 # 🧩 ISignal&lt;T1, T2, T3&gt;
 
+Represents a signal that notifies subscribers with <b>three values</b>.
 
-## Example of Usage
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnEvent](#onevent)
+
+
+---
+
+## 🗂 Example of Usage
 
 ```csharp
 ISignal<string, int, bool> attackEvent = ...
@@ -16,6 +30,12 @@ attackEvent.OnEvent += (attacker, damage, critical) =>
 };
 ```
 
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ISignal<T1, T2, T3>
 ```
@@ -28,23 +48,17 @@ public interface ISignal<T1, T2, T3>
 
 ---
 
-## 🏹 Methods
 
-#### `Subscribe(Action<T1, T2, T3>)`
+### ⚡ Events
 
-```csharp
-public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](Subscription%603.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action<T1, T2, T3>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2, T3> action)
+public event Action<T1, T2, T3> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with three arguments.
+- **Parameters:**
+  - `T1` — the first emitted value
+  - `T2` — the second emitted value
+  - `T3` — the third emitted value

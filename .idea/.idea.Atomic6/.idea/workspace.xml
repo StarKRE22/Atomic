@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`3.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,38 +229,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01330" summary="SceneActionsReference.md">
-      <option name="closed" value="true" />
-      <created>1760186002800</created>
-      <option name="number" value="01330" />
-      <option name="presentableId" value="LOCAL-01330" />
-      <option name="project" value="LOCAL" />
-      <updated>1760186002800</updated>
-    </task>
-    <task id="LOCAL-01331" summary="SceneActionsReference.md">
-      <option name="closed" value="true" />
-      <created>1760186230940</created>
-      <option name="number" value="01331" />
-      <option name="presentableId" value="LOCAL-01331" />
-      <option name="project" value="LOCAL" />
-      <updated>1760186230941</updated>
-    </task>
-    <task id="LOCAL-01332" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1760186467716</created>
-      <option name="number" value="01332" />
-      <option name="presentableId" value="LOCAL-01332" />
-      <option name="project" value="LOCAL" />
-      <updated>1760186467716</updated>
-    </task>
-    <task id="LOCAL-01333" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1760186622935</created>
-      <option name="number" value="01333" />
-      <option name="presentableId" value="LOCAL-01333" />
-      <option name="project" value="LOCAL" />
-      <updated>1760186622935</updated>
     </task>
     <task id="LOCAL-01334" summary="SceneActionReference`1.md">
       <option name="closed" value="true" />
@@ -620,7 +590,39 @@
       <option name="project" value="LOCAL" />
       <updated>1760254172300</updated>
     </task>
-    <option name="localTasksCounter" value="1379" />
+    <task id="LOCAL-01379" summary="ISignal`1.md">
+      <option name="closed" value="true" />
+      <created>1760254525758</created>
+      <option name="number" value="01379" />
+      <option name="presentableId" value="LOCAL-01379" />
+      <option name="project" value="LOCAL" />
+      <updated>1760254525758</updated>
+    </task>
+    <task id="LOCAL-01380" summary="ISignal`2.md">
+      <option name="closed" value="true" />
+      <created>1760254671428</created>
+      <option name="number" value="01380" />
+      <option name="presentableId" value="LOCAL-01380" />
+      <option name="project" value="LOCAL" />
+      <updated>1760254671428</updated>
+    </task>
+    <task id="LOCAL-01381" summary="ISignal`2.md">
+      <option name="closed" value="true" />
+      <created>1760254711078</created>
+      <option name="number" value="01381" />
+      <option name="presentableId" value="LOCAL-01381" />
+      <option name="project" value="LOCAL" />
+      <updated>1760254711078</updated>
+    </task>
+    <task id="LOCAL-01382" summary="Signal`2">
+      <option name="closed" value="true" />
+      <created>1760255374272</created>
+      <option name="number" value="01382" />
+      <option name="presentableId" value="LOCAL-01382" />
+      <option name="project" value="LOCAL" />
+      <updated>1760255374272</updated>
+    </task>
+    <option name="localTasksCounter" value="1383" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,9 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IAction ExtensionsInvokeRange.md" />
-    <MESSAGE value="Actions" />
-    <MESSAGE value="IReadOnlyReactiveCollection.md" />
     <MESSAGE value="IReadOnlyReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveArray.cs" />
     <MESSAGE value="ReactiveArray.md" />
@@ -672,7 +671,10 @@
     <MESSAGE value="Сделал details для коллекций!" />
     <MESSAGE value="ISignals.md" />
     <MESSAGE value="ISignal.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ISignal.md" />
+    <MESSAGE value="ISignal`1.md" />
+    <MESSAGE value="ISignal`2.md" />
+    <MESSAGE value="Signal`2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Signal`2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

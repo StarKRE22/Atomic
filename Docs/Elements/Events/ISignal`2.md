@@ -51,7 +51,7 @@ public interface ISignal<T1, T2>
 public event Action<T1, T2> OnEvent;
 ```
 
-- **Description:** Occurs when the signal is emitted with single argument.
+- **Description:** Occurs when the signal is emitted with two arguments.
 - **Parameters:**
     - `T1` — the first emitted value
     - `T2` — the second emitted value
