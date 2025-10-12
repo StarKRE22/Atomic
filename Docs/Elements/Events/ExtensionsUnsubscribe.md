@@ -7,6 +7,69 @@ sources.
 
 ## 🏹 Methods
 
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Unsubscribe(Action)`
+
+```csharp
+public void Unsubscribe(Action action)  
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameter:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Unsubscribe(Action<T>)`
+
+```csharp
+public void Unsubscribe(Action<T> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Unsubscribe(Action<T1, T2>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Unsubscribe(Action<T1, T2, T3>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
+#### `Unsubscribe(Action<T1, T2, T3, T4>)`
+
+```csharp
+public void Unsubscribe(Action<T1, T2, T3, T4> action)
+```
+
+- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
+- **Parameters:** `action` – The delegate to remove from the subscription list.
+
+
+
+
 #### `Unsubscribe(ISignal, IAction)`
 
 ```csharp

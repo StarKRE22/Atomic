@@ -4,9 +4,22 @@ Provide utility methods for **batch unsubscribing** [IAction](../Actions/IAction
 from [ISignal](ISignals.md) sources.
 Methods handle multiple actions at once, skipping null entries.
 
+
 ---
 
-## 🏹 Methods
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public static class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `UnsubscribeRange(ISignal, IEnumerable<IAction>)`
 
