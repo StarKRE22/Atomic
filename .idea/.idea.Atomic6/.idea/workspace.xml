@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,22 +226,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01337" summary="SceneActionReference`2.md">
-      <option name="closed" value="true" />
-      <created>1760188752408</created>
-      <option name="number" value="01337" />
-      <option name="presentableId" value="LOCAL-01337" />
-      <option name="project" value="LOCAL" />
-      <updated>1760188752408</updated>
-    </task>
-    <task id="LOCAL-01338" summary="SceneActionReference`2.md">
-      <option name="closed" value="true" />
-      <created>1760188799853</created>
-      <option name="number" value="01338" />
-      <option name="presentableId" value="LOCAL-01338" />
-      <option name="project" value="LOCAL" />
-      <updated>1760188799853</updated>
     </task>
     <task id="LOCAL-01339" summary="SceneActionReference`3.md">
       <option name="closed" value="true" />
@@ -620,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760277094932</updated>
     </task>
-    <option name="localTasksCounter" value="1386" />
+    <task id="LOCAL-01386" summary="InlineSignal.md">
+      <option name="closed" value="true" />
+      <created>1760277688778</created>
+      <option name="number" value="01386" />
+      <option name="presentableId" value="LOCAL-01386" />
+      <option name="project" value="LOCAL" />
+      <updated>1760277688778</updated>
+    </task>
+    <task id="LOCAL-01387" summary="InlineSignal`1.md">
+      <option name="closed" value="true" />
+      <created>1760277919111</created>
+      <option name="number" value="01387" />
+      <option name="presentableId" value="LOCAL-01387" />
+      <option name="project" value="LOCAL" />
+      <updated>1760277919111</updated>
+    </task>
+    <option name="localTasksCounter" value="1388" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,8 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveList.md" />
-    <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
     <MESSAGE value="ReactiveDictionary.md" />
     <MESSAGE value="ReadOnlyKeyCollection" />
@@ -672,7 +669,9 @@
     <MESSAGE value="ISignal`3.md" />
     <MESSAGE value="ISignal`4.md" />
     <MESSAGE value="InlineSignals.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineSignals.md" />
+    <MESSAGE value="InlineSignal.md" />
+    <MESSAGE value="InlineSignal`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineSignal`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

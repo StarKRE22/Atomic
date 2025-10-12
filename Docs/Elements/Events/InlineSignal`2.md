@@ -9,7 +9,7 @@ Represents a reactive signal with **two parameters**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [InlineSignal(Action<Action\<T1, T2>>, Action\<Action\<T1, T2>>)](#inlinesignalactionactiont-actionactiont)
+        - [Delegate Constructor](#inlinesignalactionactiont-actionactiont)
     - [Events](#-events)
         - [OnEvent](#onevent)
 

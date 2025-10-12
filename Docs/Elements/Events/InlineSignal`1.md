@@ -9,7 +9,7 @@ Represents a signal that notifies subscribers with a **single value**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [InlineSignal(Action<Action\<T>>, Action\<Action\<T>>)](#inlinesignalactionactiont-actionactiont)
+        - [Delegate Constructor](#inlinesignalactionactiont-actionactiont)
     - [Events](#-events)
         - [OnEvent](#onevent)
 
