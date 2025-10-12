@@ -4,10 +4,12 @@ Represents a subscription to a <b>signal emitting two values</b>.
 
 ---
 
+## 📑 Table of Contents
+
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [Subscription(ISignal\<T1, T2>, Action\<T1, T2>)](#subscriptionisignalt1-t2-actiont1-t2)
+        - [Subscription(ISignal, Action)](#subscriptionisignalt1-t2-actiont1-t2)
     - [Methods](#-methods)
         - [Dispose()](#dispose)
 

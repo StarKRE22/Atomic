@@ -10,7 +10,7 @@ Represents a subscription to a <b>signal emitting one value</b>.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [Subscription(ISignal\<T>, Action\<T>)](#subscriptionisignalt-actiont)
+        - [Subscription(ISignal, Action)](#subscriptionisignalt-actiont)
     - [Methods](#-methods)
         - [Dispose()](#dispose)
 

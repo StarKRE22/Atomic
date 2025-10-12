@@ -20,6 +20,34 @@ Subscription subscription = new signal.Subscribe(lambda);
 subscription.Dispose();
 ```
 
+
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal<T1, T2, T3> signal = ...
+    
+//Subscribe on the signal
+Subscription<T1, T2, T3> subscription = signal.Subscribe<T1, T2, T3>(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have a instance of ISignal
+ISignal<T1, T2, T3, T4> signal = ...
+    
+//Subscribe on the signal
+Subscription<T1, T2, T3, T4> subscription = signal.Subscribe<T1, T2, T3, T4>(lambda);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
 ---
 
 ### 2️⃣ Generic Subscription

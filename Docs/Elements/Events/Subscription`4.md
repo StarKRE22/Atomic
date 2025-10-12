@@ -40,16 +40,3 @@ public void Dispose()
 - **Description:** Unsubscribes the associated action from the signal source.
 
 ---
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have a instance of ISignal
-ISignal<T1, T2, T3, T4> signal = ...
-    
-//Subscribe on the signal
-Subscription<T1, T2, T3, T4> subscription = signal.Subscribe<T1, T2, T3, T4>(lambda);
-
-// Later, dispose to unsubscribe
-subscription.Dispose();
-```
