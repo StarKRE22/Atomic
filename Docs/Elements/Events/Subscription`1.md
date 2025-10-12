@@ -1,5 +1,43 @@
 # 🧩 Subscription&lt;T&gt;
 
+Represents a subscription to a <b>signal emitting one value</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Subscription(ISignal\<T>, Action\<T>)](#subscriptionisignalt-actiont)
+    - [Methods](#-methods)
+        - [Dispose()](#dispose)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have an instance of ISignal
+ISignal<T> signal = ...
+    
+//Assume we have an instance of Action 
+Action<T> action = ...
+
+//Subscribe on the signal
+Subscription<T> subscription = new Subscription<T>(signal, action);
+
+// Later, dispose to unsubscribe
+subscription.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public readonly struct Subscription<T> : IDisposable
 ```
@@ -10,7 +48,7 @@ public readonly struct Subscription<T> : IDisposable
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `Subscription(ISignal<T>, Action<T>)`
 
@@ -25,7 +63,7 @@ public Subscription(ISignal<T> signal, Action<T> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Dispose()`
 
@@ -34,18 +72,3 @@ public void Dispose()
 ```
 
 - **Description:** Unsubscribes the associated action from the signal source.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have an instance of ISignal
-ISignal<T> signal = ...
-
-//Subscribe on the signal
-Subscription<T> subscription = signal.Subscribe<T>(lambda);
-
-// Later, dispose to unsubscribe
-subscription.Dispose();
-```
