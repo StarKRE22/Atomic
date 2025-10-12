@@ -17,6 +17,24 @@ Represents an event that emits <b>one parameter</b>.
 
 ---
 
+## 🗂 Example of Usage
+
+```csharp
+var healthChangedEvent = new BaseEvent<int>();
+
+// Subscribe to the event
+healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
+
+// Invoke the event with a value
+healthChangedEvent.Invoke(100); // Output: Health changed to: 100
+healthChangedEvent.Invoke(75);  // Output: Health changed to: 75
+
+// Dispose all subscriptions
+healthChangedEvent.Dispose();
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
