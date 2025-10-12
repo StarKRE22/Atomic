@@ -4,8 +4,6 @@ Represents a <b>parameterless event</b> that can be subscribed and invoked.
 
 ---
 
-
-
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
