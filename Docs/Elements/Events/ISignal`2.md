@@ -1,7 +1,12 @@
 # 🧩 ISignal&lt;T1, T2&gt;
 
+Represents a signal that notifies subscribers with <b>two values</b>.
+
+---
+
 ## 📑 Table of Contents
 
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Events](#-events)
@@ -9,6 +14,19 @@
 
 ---
 
+## 🗂 Example of Usage
+
+```csharp
+ISignal<string, int> attackEvent = ...
+
+// Subscribe to the event
+attackEvent.OnEvent += (attacker, damage) =>
+{
+    Console.WriteLine($"{attacker} hit for {damage} damage.");
+};
+```
+
+---
 
 ## 🔍 API Reference
 

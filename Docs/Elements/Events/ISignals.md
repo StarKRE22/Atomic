@@ -10,7 +10,7 @@ notifications and reacting to events, optionally with arguments.
 - [Examples of Usage](#-examples-of-usage)
     - [Non-generic Signal](#ex-1)
     - [Signal with single argument](#ex-2)
-    - [Signal with two arguments](#ex-2)
+    - [Signal with three arguments](#ex-2)
 - [API Reference](#-api-reference)
 
 ---
@@ -37,7 +37,7 @@ ISignal<int> healthChangedEvent = ...
 healthChangedEvent.OnEvent += health => Console.WriteLine($"Health changed to: {health}");
 ```
 
-### 3️⃣ Signal with two arguments <div id="ex-3"></div>
+### 3️⃣ Signal with three arguments <div id="ex-3"></div>
 
 ```csharp
 ISignal<string, int, bool> attackEvent = ...

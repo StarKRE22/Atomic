@@ -1,5 +1,21 @@
 # 🧩 ISignal&lt;T1, T2, T3&gt;
 
+
+## Example of Usage
+
+```csharp
+ISignal<string, int, bool> attackEvent = ...
+
+// Subscribe to the event
+attackEvent.OnEvent += (attacker, damage, critical) =>
+{
+    if (critical)
+        Console.WriteLine($"{attacker} performed a CRITICAL hit for {damage} damage!");
+    else
+        Console.WriteLine($"{attacker} hit for {damage} damage.");
+};
+```
+
 ```csharp
 public interface ISignal<T1, T2, T3>
 ```
