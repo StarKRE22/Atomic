@@ -9,6 +9,11 @@
 
 ---
 
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ISignal<T1, T2>
 ```
