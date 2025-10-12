@@ -1,5 +1,22 @@
 # 🧩 Subscription&lt;T1, T2&gt;
 
+Represents a subscription to a <b>signal emitting two values</b>.
+
+---
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Subscription(ISignal\<T1, T2>, Action\<T1, T2>)](#subscriptionisignalt1-t2-actiont1-t2)
+    - [Methods](#-methods)
+        - [Dispose()](#dispose)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public readonly struct Subscription<T1, T2> : IDisposable
 ```
@@ -12,7 +29,7 @@ public readonly struct Subscription<T1, T2> : IDisposable
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `Subscription(ISignal<T1, T2>, Action<T1, T2>)`
 
@@ -27,7 +44,7 @@ public Subscription(ISignal<T1, T2> signal, Action<T1, T2> action)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Dispose()`
 
@@ -36,18 +53,3 @@ public void Dispose()
 ```
 
 - **Description:** Unsubscribes the associated action from the signal source.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have a instance of ISignal
-ISignal<T1, T2> signal = ...
-
-//Subscribe on the signal
-Subscription<T1, T2> subscription = signal.Subscribe<T1, T2>(lambda);
-
-// Later, dispose to unsubscribe
-subscription.Dispose();
-```
