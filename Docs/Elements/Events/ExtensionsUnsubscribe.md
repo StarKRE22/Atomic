@@ -7,7 +7,6 @@ sources.
 
 ## 📑 Table of Contents
 
-
 <ul>
   <li>
     <summary><a href="#-examples-of-usage">Examples of Usage</a></summary>
