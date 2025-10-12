@@ -12,7 +12,6 @@ Represents a signal that notifies subscribers with <b>three values</b>.
   - [Events](#-events)
     - [OnEvent](#onevent)
 
-
 ---
 
 ## 🗂 Example of Usage
@@ -47,7 +46,6 @@ public interface ISignal<T1, T2, T3>
     - `T3` — the third emitted value
 
 ---
-
 
 ### ⚡ Events
 
