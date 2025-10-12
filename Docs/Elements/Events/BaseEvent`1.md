@@ -1,5 +1,13 @@
 # 🧩 BaseEvent&lt;T&gt;
 
+Represents an event that emits <b>one parameter</b>.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseEvent<T> : IEvent<T>, IDisposable
@@ -11,26 +19,20 @@ public class BaseEvent<T> : IEvent<T>, IDisposable
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T>)`
-
-```csharp
-public Subscription<T> Subscribe(Action<T> action)
-```
-
-- **Description:** Subscribes a handler to the event.
-- **Parameter:** `action` – The delegate to invoke when the event triggers.
-- **Returns:** A [subscription](Subscription%601.md) representing the active subscription.
-
-#### `Unsubscribe(Action<T>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T> action)
+public event Action<T> OnEvent;
 ```
 
-- **Description:** Removes a previously registered handler from the event.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument.
+- **Parameters:** `T` — the emitted value.
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T)`
 

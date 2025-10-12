@@ -1,5 +1,13 @@
 # 🧩 BaseEvent&lt;T1, T2, T3&gt;
 
+Represents an event that emits <b>three parameters</b>.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
@@ -15,27 +23,23 @@ public class BaseEvent<T1, T2, T3> : IEvent<T1, T2, T3>, IDisposable
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2, T3>)`
-
-```csharp
-public Subscription<T1, T2, T3> Subscribe(Action<T1, T2, T3> action)
-```
-
-- **Description:** Subscribes a handler to the event.
-- **Parameter:** `action` – The delegate to invoke when the event triggers.
-- **Returns:** A [subscription](Subscription%603.md) representing the active
-  subscription.
-
-#### `Unsubscribe(Action<T1, T2, T3>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2, T3> action)
+public event Action<T1, T2, T3> OnEvent;
 ```
 
-- **Description:** Removes a previously registered handler from the event.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with three arguments.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+    - `T3` — the third emitted value
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3)`
 

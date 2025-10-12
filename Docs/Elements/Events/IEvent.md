@@ -1,6 +1,6 @@
 # 🧩 IEvent
 
-Represents a <b>parameterless event</b> that can be subscribed to and invoked.
+Represents a <b>parameterless event</b> that can be subscribed and invoked.
 
 ---
 

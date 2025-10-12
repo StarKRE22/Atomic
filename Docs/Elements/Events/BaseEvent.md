@@ -1,5 +1,44 @@
 # 🧩 BaseEvent
 
+Represents a <b>parameterless event</b> that can be subscribed and invoked.
+
+---
+
+
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [Dispose()](#dispose)
+---
+
+## 🗂 Examples of Usage
+
+```csharp
+var playerDiedEvent = new BaseEvent();
+
+// Subscribe to the event
+playerDiedEvent.OnEvent += () => Console.WriteLine("Player died event triggered.");
+
+// Invoke the event
+playerDiedEvent.Invoke(); // Output: Player died event triggered.
+
+// Dispose all subscriptions
+playerDiedEvent.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseEvent : IEvent, IDisposable
@@ -11,26 +50,19 @@ public class BaseEvent : IEvent, IDisposable
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription Subscribe(Action action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the event is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [subscription](Subscription.md) struct representing the active subscription.
-
-#### `Unsubscribe(Action)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action action)  
+public event Action OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the event is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument
+
+---
+
+### 🏹 Methods
 
 #### `Invoke()`
 

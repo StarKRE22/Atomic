@@ -1,5 +1,13 @@
 # 🧩 BaseEvent&lt;T1, T2&gt;
 
+Represents an event that emits <b>two parameters</b>.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
@@ -14,27 +22,22 @@ public class BaseEvent<T1, T2> : IEvent<T1, T2>, IDisposable
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2>)`
-
-```csharp
-public Subscription<T1, T2> Subscribe(Action<T1, T2> action)
-```
-
-- **Description:** Subscribes a handler to the event.
-- **Parameter:** `action` – The delegate to invoke when the event triggers.
-- **Returns:** A [subscription](Subscription%602.md) representing the active
-  subscription.
-
-#### `Unsubscribe(Action<T1, T2>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2> action)
+public event Action<T1, T2> OnEvent;
 ```
 
-- **Description:** Removes a previously registered handler from the event.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with two arguments.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
