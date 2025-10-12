@@ -4,6 +4,18 @@ Represents an event that emits <b>three parameters</b>.
 
 ---
 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
+        - [Dispose()](#dispose)
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>

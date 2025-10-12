@@ -4,6 +4,39 @@ Represents an event that emits <b>two parameters</b>.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+        - [Dispose()](#dispose)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var attackEvent = new BaseEvent<string, int>();
+
+// Subscribe to the event
+attackEvent.OnEvent += (attacker, damage) =>
+{
+    Console.WriteLine($"{attacker} hit for {damage} damage.");
+};
+
+// Invoke the event
+attackEvent.Invoke("Player", 10);
+
+// Dispose all subscriptions
+attackEvent.Dispose();
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
