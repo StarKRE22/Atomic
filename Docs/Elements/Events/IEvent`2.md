@@ -1,5 +1,42 @@
 # 🧩 IEvent&lt;T1, T2&gt;
 
+Represents an event that emits <b>two parameters</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IEvent<string, int> attackEvent = ...
+
+// Subscribe to the event
+attackEvent.OnEvent += (attacker, damage) =>
+{
+    Console.WriteLine($"{attacker} hit for {damage} damage.");
+};
+
+// Invoke the event
+attackEvent.Invoke("Player", 10);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IEvent<T1, T2> : ISignal<T1, T2>, IAction<T1, T2>
 ```
@@ -12,27 +49,22 @@ public interface IEvent<T1, T2> : ISignal<T1, T2>, IAction<T1, T2>
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T1, T2>)`
-
-```csharp
-public Subscription<T1, T2> Subscribe(Action<T1, T2> action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [subscription](Subscription%602.md) struct representing the active
-  subscription.
-
-#### `Unsubscribe(Action<T1, T2>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T1, T2> action)  
+public event Action<T1, T2> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameter:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with two arguments.
+- **Parameters:**
+    - `T1` — the first emitted value
+    - `T2` — the second emitted value
+
+---
+
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
