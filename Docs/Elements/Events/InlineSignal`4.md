@@ -16,7 +16,7 @@ public class InlineSignal<T1, T2, T3, T4> : ISignal<T1, T2, T3, T4>
 
 ## 🏗️ Constructors
 
-#### `InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)`
+#### `Delegate Constructor`
 
 ```csharp
 public InlineSignal(Action<Action<T1, T2, T3, T4>> subscribe, Action<Action<T1, T2, T3, T4>> unsubscribe)

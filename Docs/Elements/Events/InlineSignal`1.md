@@ -9,7 +9,7 @@ Represents a signal that notifies subscribers with a **single value**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [Delegate Constructor](#inlinesignalactionactiont-actionactiont)
+        - [Delegate Constructor](#delegate-constructor)
     - [Events](#-events)
         - [OnEvent](#onevent)
 
@@ -31,7 +31,7 @@ public class InlineSignal<T> : ISignal<T>
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `InlineSignal(Action<Action<T>>, Action<Action<T>>)`
+#### `Delegate Constructor`
 
 ```csharp
 public InlineSignal(Action<Action<T>> subscribe, Action<Action<T>> unsubscribe)

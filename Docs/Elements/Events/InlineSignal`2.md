@@ -9,7 +9,7 @@ Represents a reactive signal with **two parameters**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [Delegate Constructor](#inlinesignalactionactiont1-t2-actionactiont1-t2)
+        - [Delegate Constructor](#delegate-constructor)
     - [Events](#-events)
         - [OnEvent](#onevent)
 
@@ -33,7 +33,7 @@ public class InlineSignal<T1, T2> : ISignal<T1, T2>
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `InlineSignal(Action<Action<T1, T2>>, Action<Action<T1, T2>>)`
+#### `Delegate Constructor`
 
 ```csharp
 public InlineSignal(Action<Action<T1, T2>> subscribe, Action<Action<T1, T2>> unsubscribe)
