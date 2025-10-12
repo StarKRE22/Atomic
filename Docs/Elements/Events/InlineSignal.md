@@ -1,5 +1,24 @@
 # 🧩 InlineSignal
 
+Represents a signal that can notify subscribers of events <b>without passing any data</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineSignal(Action<Action>, Action<Action>)](#inlinesignalactionaction-actionaction)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineSignal : ISignal
 ```
@@ -9,7 +28,7 @@ public class InlineSignal : ISignal
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineSignal(Action<Action>, Action<Action>)`
 
@@ -25,23 +44,12 @@ public InlineSignal(Action<Action> subscribe, Action<Action> unsubscribe)
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription Subscribe(Action action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](Subscription.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action action)
+public event Action OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument

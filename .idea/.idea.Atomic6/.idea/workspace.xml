@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ISignal`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,30 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01334" summary="SceneActionReference`1.md">
-      <option name="closed" value="true" />
-      <created>1760187982025</created>
-      <option name="number" value="01334" />
-      <option name="presentableId" value="LOCAL-01334" />
-      <option name="project" value="LOCAL" />
-      <updated>1760187982025</updated>
-    </task>
-    <task id="LOCAL-01335" summary="SceneActionReference`1.md">
-      <option name="closed" value="true" />
-      <created>1760188017558</created>
-      <option name="number" value="01335" />
-      <option name="presentableId" value="LOCAL-01335" />
-      <option name="project" value="LOCAL" />
-      <updated>1760188017558</updated>
-    </task>
-    <task id="LOCAL-01336" summary="SceneActionReference.md">
-      <option name="closed" value="true" />
-      <created>1760188491832</created>
-      <option name="number" value="01336" />
-      <option name="presentableId" value="LOCAL-01336" />
-      <option name="project" value="LOCAL" />
-      <updated>1760188491832</updated>
     </task>
     <task id="LOCAL-01337" summary="SceneActionReference`2.md">
       <option name="closed" value="true" />
@@ -622,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760255374272</updated>
     </task>
-    <option name="localTasksCounter" value="1383" />
+    <task id="LOCAL-01383" summary="ISignal`3.md">
+      <option name="closed" value="true" />
+      <created>1760276547250</created>
+      <option name="number" value="01383" />
+      <option name="presentableId" value="LOCAL-01383" />
+      <option name="project" value="LOCAL" />
+      <updated>1760276547250</updated>
+    </task>
+    <task id="LOCAL-01384" summary="ISignal`4.md">
+      <option name="closed" value="true" />
+      <created>1760276764927</created>
+      <option name="number" value="01384" />
+      <option name="presentableId" value="LOCAL-01384" />
+      <option name="project" value="LOCAL" />
+      <updated>1760276764927</updated>
+    </task>
+    <task id="LOCAL-01385" summary="InlineSignals.md">
+      <option name="closed" value="true" />
+      <created>1760277094932</created>
+      <option name="number" value="01385" />
+      <option name="presentableId" value="LOCAL-01385" />
+      <option name="project" value="LOCAL" />
+      <updated>1760277094932</updated>
+    </task>
+    <option name="localTasksCounter" value="1386" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,9 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyReactiveArray.md" />
-    <MESSAGE value="IReadOnlyReactiveArray.cs" />
-    <MESSAGE value="ReactiveArray.md" />
     <MESSAGE value="IReadOnlyReactiveList.md" />
     <MESSAGE value="ReactiveLinkedList.md" />
     <MESSAGE value="IReadOnlyReactiveDictionary.md" />
@@ -674,7 +669,10 @@
     <MESSAGE value="ISignal`1.md" />
     <MESSAGE value="ISignal`2.md" />
     <MESSAGE value="Signal`2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Signal`2" />
+    <MESSAGE value="ISignal`3.md" />
+    <MESSAGE value="ISignal`4.md" />
+    <MESSAGE value="InlineSignals.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineSignals.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
