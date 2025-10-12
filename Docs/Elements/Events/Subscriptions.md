@@ -19,10 +19,10 @@ Represent a **subscription** to a [ISignal](ISignals.md) instance. Disposing an 
 ### 1️⃣ Non-generic Subscription <div id="ex-1"></div>
 
 ```csharp
-//Assume we have a instance of ISignal
+//Assume we have an instance of ISignal
 ISignal signal = ...
     
-//Assume we have a instance of Action 
+//Assume we have an instance of Action 
 Action action = ...
 
 //Subscribe on the signal    
@@ -37,10 +37,10 @@ subscription.Dispose();
 ### 2️⃣ Generic Subscription <div id="ex-2"></div>
 
 ```csharp
-//Assume we have a instance of ISignal
+//Assume we have an instance of ISignal
 ISignal<T> signal = ...
     
-//Assume we have a instance of Action 
+//Assume we have an instance of Action 
 Action<T> action = ...
 
 //Subscribe on the signal
