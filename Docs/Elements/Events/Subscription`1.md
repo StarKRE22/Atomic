@@ -40,7 +40,7 @@ public void Dispose()
 ## 🗂 Example of Usage
 
 ```csharp
-//Assume we have a instance of ISignal
+//Assume we have an instance of ISignal
 ISignal<T> signal = ...
 
 //Subscribe on the signal

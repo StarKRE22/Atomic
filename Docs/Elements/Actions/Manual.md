@@ -75,7 +75,6 @@ public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 
 There are several abstractions of actions, depending on the number of arguments the actions take:
 
-
 <ul>
  <li>
 <details>
