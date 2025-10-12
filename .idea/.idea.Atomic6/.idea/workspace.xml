@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsSubscribe.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/Subscription`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/ExtensionsUnsubscribe.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,38 +228,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01360" summary="ReactiveLinkedList.md">
-      <option name="closed" value="true" />
-      <created>1760207429228</created>
-      <option name="number" value="01360" />
-      <option name="presentableId" value="LOCAL-01360" />
-      <option name="project" value="LOCAL" />
-      <updated>1760207429228</updated>
-    </task>
-    <task id="LOCAL-01361" summary="IReadOnlyReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1760207948274</created>
-      <option name="number" value="01361" />
-      <option name="presentableId" value="LOCAL-01361" />
-      <option name="project" value="LOCAL" />
-      <updated>1760207948274</updated>
-    </task>
-    <task id="LOCAL-01362" summary="IReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1760208258286</created>
-      <option name="number" value="01362" />
-      <option name="presentableId" value="LOCAL-01362" />
-      <option name="project" value="LOCAL" />
-      <updated>1760208258286</updated>
-    </task>
-    <task id="LOCAL-01363" summary="ReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1760209398120</created>
-      <option name="number" value="01363" />
-      <option name="presentableId" value="LOCAL-01363" />
-      <option name="project" value="LOCAL" />
-      <updated>1760209398120</updated>
     </task>
     <task id="LOCAL-01364" summary="ReadOnlyKeyCollection">
       <option name="closed" value="true" />
@@ -623,7 +589,39 @@
       <option name="project" value="LOCAL" />
       <updated>1760292093284</updated>
     </task>
-    <option name="localTasksCounter" value="1409" />
+    <task id="LOCAL-01409" summary="Subscription`3.md">
+      <option name="closed" value="true" />
+      <created>1760292440948</created>
+      <option name="number" value="01409" />
+      <option name="presentableId" value="LOCAL-01409" />
+      <option name="project" value="LOCAL" />
+      <updated>1760292440948</updated>
+    </task>
+    <task id="LOCAL-01410" summary="Subscription`4.md">
+      <option name="closed" value="true" />
+      <created>1760292548539</created>
+      <option name="number" value="01410" />
+      <option name="presentableId" value="LOCAL-01410" />
+      <option name="project" value="LOCAL" />
+      <updated>1760292548539</updated>
+    </task>
+    <task id="LOCAL-01411" summary="Переходим к Extensions Signals!">
+      <option name="closed" value="true" />
+      <created>1760292659448</created>
+      <option name="number" value="01411" />
+      <option name="presentableId" value="LOCAL-01411" />
+      <option name="project" value="LOCAL" />
+      <updated>1760292659448</updated>
+    </task>
+    <task id="LOCAL-01412" summary="ExtensionsSubscribe.md">
+      <option name="closed" value="true" />
+      <created>1760296874809</created>
+      <option name="number" value="01412" />
+      <option name="presentableId" value="LOCAL-01412" />
+      <option name="project" value="LOCAL" />
+      <updated>1760296874809</updated>
+    </task>
+    <option name="localTasksCounter" value="1413" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,10 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ISignal`2.md" />
-    <MESSAGE value="Signal`2" />
-    <MESSAGE value="ISignal`3.md" />
-    <MESSAGE value="ISignal`4.md" />
     <MESSAGE value="InlineSignals.md" />
     <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="InlineSignal`1.md" />
@@ -675,7 +669,11 @@
     <MESSAGE value="Subscriptions.md, Subscription.md" />
     <MESSAGE value="Subscription`1.md" />
     <MESSAGE value="Subscription`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription`2.md" />
+    <MESSAGE value="Subscription`3.md" />
+    <MESSAGE value="Subscription`4.md" />
+    <MESSAGE value="Переходим к Extensions Signals!" />
+    <MESSAGE value="ExtensionsSubscribe.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsSubscribe.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

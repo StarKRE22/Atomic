@@ -5,7 +5,7 @@ sources.
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
 <ul>
   <li>
@@ -26,7 +26,7 @@ sources.
       <ul>
         <li>
           <details>
-            <summary>Action Overloads</summary>
+            <summary>Action</summary>
             <ul>
               <li><a href="#subscribeaction">Subscribe(Action)</a></li>
               <li><a href="#subscribeactiont">Subscribe(Action&lt;T&gt;)</a></li>
@@ -38,7 +38,7 @@ sources.
         </li>
         <li>
           <details>
-            <summary>IAction Overloads</summary>
+            <summary>IAction</summary>
             <ul>
               <li><a href="#subscribeisignal-iaction">Subscribe(ISignal, IAction)</a></li>
               <li><a href="#subscribetisignalt-iactiont">Subscribe&lt;T&gt;(ISignal&lt;T&gt;, IAction&lt;T&gt;)</a></li>
@@ -58,7 +58,7 @@ sources.
 
 ## 🗂 Examples of Usage
 
-Below are examples of subscribing an `Action` delegate and [IAction](../Actions/Manual.md) instances:
+Below are examples of subscribing an `Action` delegate and [IAction](../Actions/Manual.md) instances to [ISignal](../Events/ISignals.md) instances:
 
 ### 1️⃣ Action Subscription <div id="ex1"></div>
 
@@ -70,7 +70,7 @@ ISignal signal = ...
 Action action = ...
 
 //Subscribe on the signal    
-Subscription subscription = new signal.Subscribe(lambda);
+Subscription subscription = signal.Subscribe(action);
 
 // Later, dispose to unsubscribe
 subscription.Dispose();
@@ -102,7 +102,7 @@ ISignal signal = ...
 IAction action = ...
 
 //Subscribe on the signal
-Subscription subscription = signal.Subscribe(acton);
+Subscription subscription = signal.Subscribe(action);
 
 // Later, dispose to unsubscribe
 subscription.Dispose();
