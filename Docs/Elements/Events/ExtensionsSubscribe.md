@@ -1,4 +1,4 @@
-# 🧩 Subscribe Extensions
+# 🧩 ISignal Subscribe Extensions
 
 Provide utility methods for **subscribing** [IAction](../Actions/IActions.md) instances to [ISignal](ISignals.md)
 sources.

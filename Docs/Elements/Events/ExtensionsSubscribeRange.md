@@ -1,4 +1,4 @@
-# 🧩 SubscribeRange Extensions
+# 🧩 ISignal SubscribeRange Extensions
 
 Provide utility methods for **batch subscribing** [IAction](../Actions/IActions.md) instances to [ISignal](ISignals.md) sources.
 Methods handle multiple actions at once, skipping null entries.

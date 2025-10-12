@@ -1,4 +1,4 @@
-# 🧩 Unsubscribe Extensions
+# 🧩 ISignal Unsubscribe Extensions
 
 Provide utility methods for **unsubscribing** [IAction](../Actions/IActions.md) instances from [ISignal](ISignals.md)
 sources.

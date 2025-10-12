@@ -1,4 +1,4 @@
-# 🧩 UnsubscribeRange Extensions
+# 🧩 ISignal UnsubscribeRange Extensions
 
 Provide utility methods for **batch unsubscribing** [IAction](../Actions/IActions.md) instances
 from [ISignal](ISignals.md) sources.
