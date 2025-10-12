@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/InlineSignal`4.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Events/IEvent.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,30 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01342" summary="ExtensionsInvokeRange.md">
-      <option name="closed" value="true" />
-      <created>1760197896722</created>
-      <option name="number" value="01342" />
-      <option name="presentableId" value="LOCAL-01342" />
-      <option name="project" value="LOCAL" />
-      <updated>1760197896722</updated>
-    </task>
-    <task id="LOCAL-01343" summary="IAction ExtensionsInvokeRange.md">
-      <option name="closed" value="true" />
-      <created>1760198439345</created>
-      <option name="number" value="01343" />
-      <option name="presentableId" value="LOCAL-01343" />
-      <option name="project" value="LOCAL" />
-      <updated>1760198439345</updated>
-    </task>
-    <task id="LOCAL-01344" summary="IAction ExtensionsInvokeRange.md">
-      <option name="closed" value="true" />
-      <created>1760198481834</created>
-      <option name="number" value="01344" />
-      <option name="presentableId" value="LOCAL-01344" />
-      <option name="project" value="LOCAL" />
-      <updated>1760198481834</updated>
     </task>
     <task id="LOCAL-01345" summary="Actions">
       <option name="closed" value="true" />
@@ -622,7 +596,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760278250398</updated>
     </task>
-    <option name="localTasksCounter" value="1391" />
+    <task id="LOCAL-01391" summary="InlineSignal`3.md">
+      <option name="closed" value="true" />
+      <created>1760278456395</created>
+      <option name="number" value="01391" />
+      <option name="presentableId" value="LOCAL-01391" />
+      <option name="project" value="LOCAL" />
+      <updated>1760278456395</updated>
+    </task>
+    <task id="LOCAL-01392" summary="InlineSignal`4.md">
+      <option name="closed" value="true" />
+      <created>1760278666403</created>
+      <option name="number" value="01392" />
+      <option name="presentableId" value="LOCAL-01392" />
+      <option name="project" value="LOCAL" />
+      <updated>1760278666403</updated>
+    </task>
+    <task id="LOCAL-01393" summary="IEvents.md">
+      <option name="closed" value="true" />
+      <created>1760279171215</created>
+      <option name="number" value="01393" />
+      <option name="presentableId" value="LOCAL-01393" />
+      <option name="project" value="LOCAL" />
+      <updated>1760279171215</updated>
+    </task>
+    <option name="localTasksCounter" value="1394" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,9 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveDictionary.md" />
-    <MESSAGE value="ReadOnlyKeyCollection" />
-    <MESSAGE value="ReactiveDictionaryValueCollection.md" />
     <MESSAGE value="IReactiveSet.md" />
     <MESSAGE value="ReactiveHashSet.md" />
     <MESSAGE value="ExtensionsInvokeRange.md" />
@@ -674,7 +669,10 @@
     <MESSAGE value="InlineSignal.md" />
     <MESSAGE value="InlineSignal`1.md" />
     <MESSAGE value="InlineSignal`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineSignal`2.md" />
+    <MESSAGE value="InlineSignal`3.md" />
+    <MESSAGE value="InlineSignal`4.md" />
+    <MESSAGE value="IEvents.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEvents.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
