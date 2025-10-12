@@ -1,15 +1,35 @@
 # 🧩 InlineSignal&lt;T&gt;
 
+Represents a signal that notifies subscribers with a **single value**.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineSignal(Action<Action\<T>>, Action\<Action\<T>>)](#inlinesignalactionactiont-actionactiont)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineSignal<T> : ISignal<T>
 ```
+
 - **Description:** Represents a signal that notifies subscribers with a **single value**.
 - **Type parameter:** `T` — the emitted value type.
 - **Inheritance:** [ISignal&lt;T&gt;](ISignal%601.md)
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineSignal(Action<Action<T>>, Action<Action<T>>)`
 
@@ -25,23 +45,13 @@ public InlineSignal(Action<Action<T>> subscribe, Action<Action<T>> unsubscribe)
 
 ---
 
-## 🏹 Methods
+### ⚡ Events
 
-#### `Subscribe(Action<T>)`
-
-```csharp
-public Subscription<T> Subscribe(Action<T> action)
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** The active [subscription](Subscription%601.md) that can be used to dispose of it.
-
-#### `Unsubscribe(Action<T>)`
+#### `OnEvent`
 
 ```csharp
-public void Unsubscribe(Action<T> action)
+public event Action<T> OnEvent;
 ```
 
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- **Description:** Occurs when the signal is emitted with single argument.
+- **Parameters:** `T` — the emitted value.

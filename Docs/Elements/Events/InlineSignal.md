@@ -9,7 +9,7 @@ Represents a signal that can notify subscribers of events <b>without passing any
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
-        - [InlineSignal(Action<Action>, Action<Action>)](#inlinesignalactionaction-actionaction)
+        - [InlineSignal(Action\<Action>, Action\<Action>)](#inlinesignalactionaction-actionaction)
     - [Events](#-events)
         - [OnEvent](#onevent)
 
