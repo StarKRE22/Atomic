@@ -1,5 +1,97 @@
 # 🧩 AndExpression&lt;T&gt;
 
+Represents a <b>logical AND expression</b> with <b>single parameter</b> aggregating multiple
+<code>Func&lt;T, bool&gt;</code> members
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#capacity-based-constructor">Capacity-based Constructor</a></li>
+            <li><a href="#params-constructor">Params Constructor</a></li>
+            <li><a href="#ienumerable-constructor">IEnumerable Constructor</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#thisint-index">this[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket-arg">Invoke(T arg)</a></li>
+            <li><a href="#addfunct-bool-item">Add(Func&lt;T, bool&gt; item)</a></li>
+            <li><a href="#addrangeienumerablefunct-bool-items">AddRange(IEnumerable&lt;Func&lt;T, bool&gt;&gt; items)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfunct-bool-item">Contains(Func&lt;T, bool&gt; item)</a></li>
+            <li><a href="#copytofunct-bool-array-int-arrayindex">CopyTo(Func&lt;T, bool&gt;[] array, int arrayIndex)</a></li>
+            <li><a href="#indexoffunct-bool-item">IndexOf(Func&lt;T, bool&gt; item)</a></li>
+            <li><a href="#insertint-index-funct-bool-item">Insert(int index, Func&lt;T, bool&gt; item)</a></li>
+            <li><a href="#removefunct-bool-item">Remove(Func&lt;T, bool&gt; item)</a></li>
+            <li><a href="#removeatint-index">RemoveAt(int index)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var attackExpression = new AndExpression<GameObject>()
+
+// Assume we have a group of preconditions for attack
+Func<GameObject, bool> isEnemy, isAlive  = ...
+    
+// Add some functions
+attackExpression.Add(isEnemy);
+attackExpression.Add(isAlive);
+
+// Evaluate the combined expression using Value
+int result = attackExpression.Invoke();
+```
+
+---
 
 ## 🔍 API Reference
 
@@ -13,14 +105,15 @@ public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 - **Description:** Represents a <b>logical AND expression</b> with <b>single parameter</b> aggregating multiple
   <code>Func&lt;T, bool&gt;</code> members
 - **Type Parameter:** `T` - The input parameter type of the functions.
-- **Inheritance:** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
+- **Inheritance:
+  ** [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md), [IPredicate&lt;T&gt;](../Functions/IPredicate%601.md)
 - **Note:** Supports Odin Inspector
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `AndExpression(int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 public AndExpression(int capacity)
@@ -29,7 +122,7 @@ public AndExpression(int capacity)
 - **Description:** Initializes a new empty `AndExpression<T>` with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `AndExpression(params Func<T, bool>[])`
+#### `Params Constructor`
 
 ```csharp
 public AndExpression(params Func<T, bool>[] members)
@@ -39,7 +132,7 @@ public AndExpression(params Func<T, bool>[] members)
   `T`.
 - **Parameter:** `members` — Array of `Func<T, bool>` delegates.
 
-#### `AndExpression(IEnumerable<Func<T, bool>>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public AndExpression(IEnumerable<Func<T, bool>> members)
@@ -51,7 +144,7 @@ public AndExpression(IEnumerable<Func<T, bool>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -88,7 +181,7 @@ public event Action<int, Func<T, bool>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -110,7 +203,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `this[int index]`
 
@@ -124,7 +217,7 @@ public Func<T, bool> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T arg)`
 
@@ -137,6 +230,8 @@ public bool Invoke(T arg)
 - **Parameter:** `arg` — The input value of type `T`.
 - **Returns:** `bool` — The aggregated logical AND result.
 
+<div id="add"></div>
+
 #### `Add(Func<T, bool> item)`
 
 ```csharp
@@ -145,6 +240,8 @@ public void Add(Func<T, bool> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T, bool>> items)`
 
@@ -174,6 +271,8 @@ public bool Contains(Func<T, bool> item)
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
 
+<div id="copyto"></div>
+
 #### `CopyTo(Func<T, bool>[] array, int arrayIndex)`
 
 ```csharp
@@ -185,6 +284,8 @@ public void CopyTo(Func<T, bool>[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<T, bool> item)`
 
 ```csharp
@@ -194,6 +295,8 @@ public int IndexOf(Func<T, bool> item)
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `int` — The index of the function, or `-1` if not found.
+
+<div id="insert"></div>
 
 #### `Insert(int index, Func<T, bool> item)`
 
@@ -206,6 +309,8 @@ public void Insert(int index, Func<T, bool> item)
     - `index` — The position at which to insert.
     - `item` — The function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<T, bool> item)`
 
 ```csharp
@@ -215,6 +320,8 @@ public bool Remove(Func<T, bool> item)
 - **Description:** Removes the specified function from the expression.
 - **Parameter:** `item` — The function to remove.
 - **Returns:** `bool` — `true` if removed successfully, otherwise `false`.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int index)`
 
