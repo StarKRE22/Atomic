@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunctions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,22 +228,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01401" summary="BaseEvent`1.md">
-      <option name="closed" value="true" />
-      <created>1760281743019</created>
-      <option name="number" value="01401" />
-      <option name="presentableId" value="LOCAL-01401" />
-      <option name="project" value="LOCAL" />
-      <updated>1760281743019</updated>
-    </task>
-    <task id="LOCAL-01402" summary="BaseEvent`1.md">
-      <option name="closed" value="true" />
-      <created>1760281793121</created>
-      <option name="number" value="01402" />
-      <option name="presentableId" value="LOCAL-01402" />
-      <option name="project" value="LOCAL" />
-      <updated>1760281793121</updated>
     </task>
     <task id="LOCAL-01403" summary="BaseEvent`3.md">
       <option name="closed" value="true" />
@@ -621,7 +605,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760378392060</updated>
     </task>
-    <option name="localTasksCounter" value="1450" />
+    <task id="LOCAL-01450" summary="IFunctions.md">
+      <option name="closed" value="true" />
+      <created>1760379184889</created>
+      <option name="number" value="01450" />
+      <option name="presentableId" value="LOCAL-01450" />
+      <option name="project" value="LOCAL" />
+      <updated>1760379184889</updated>
+    </task>
+    <task id="LOCAL-01451" summary="IPredicates.md">
+      <option name="closed" value="true" />
+      <created>1760379435529</created>
+      <option name="number" value="01451" />
+      <option name="presentableId" value="LOCAL-01451" />
+      <option name="project" value="LOCAL" />
+      <updated>1760379435529</updated>
+    </task>
+    <option name="localTasksCounter" value="1452" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,8 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Expressions" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IExpressions.md" />
     <MESSAGE value="IExpression.md" />
     <MESSAGE value="IExpression`1.md" />
@@ -673,7 +671,9 @@
     <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="Сделал блок Expressions!" />
     <MESSAGE value="Пилим Functions!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим Functions!" />
+    <MESSAGE value="IFunctions.md" />
+    <MESSAGE value="IPredicates.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IPredicates.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
