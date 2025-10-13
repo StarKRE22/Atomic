@@ -1,5 +1,14 @@
 # 🧩 IExpression&lt;R&gt;
 
+Represents a <b>parameterless expression</b> aggregating multiple functions returning a value of
+type <code>R</code>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>
 ```
@@ -11,7 +20,7 @@ public interface IExpression<R> : IList<Func<R>>, IValue<R>, IFunction<R>
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -48,7 +57,7 @@ public event Action<int, Func<R>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -79,7 +88,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -93,7 +102,7 @@ public Func<R> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
