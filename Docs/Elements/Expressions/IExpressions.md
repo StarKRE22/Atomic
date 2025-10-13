@@ -10,11 +10,9 @@ evaluated. They support parameterless functions as well as functions with one or
 
 ---
 
-There are several interfaces of expressions, depending on the number of arguments the actions take:
-
-- [IExpression&lt;R&gt;](IExpression.md) — Non-generic version; works without parameters.
-- [IExpression&lt;T, R&gt;](IExpression%601.md) — Expression that takes one argument.
-- [IExpression&lt;T1, T2, R&gt;](IExpression%602.md) — Expression that takes two arguments.
+## 📑 Table of Contents
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
 
 ---
 
@@ -47,3 +45,13 @@ expression.Insert(1, () => 42);
 foreach (Func<int> func in expression)
     Console.WriteLine($"Function result: {func()}");
 ```
+
+---
+
+## 🔍 API Reference
+
+There are several interfaces of expressions, depending on the number of arguments the actions take:
+
+- [IExpression&lt;R&gt;](IExpression.md) — Non-generic version; works without parameters.
+- [IExpression&lt;T, R&gt;](IExpression%601.md) — Expression that takes one argument.
+- [IExpression&lt;T1, T2, R&gt;](IExpression%602.md) — Expression that takes two arguments.
