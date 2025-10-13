@@ -2,7 +2,6 @@
 
 Represents a function with <b>one input argument</b> that returns a result.
 
-
 ---
 
 ## 📑 Table of Contents
@@ -17,7 +16,7 @@ Represents a function with <b>one input argument</b> that returns a result.
 
 ## 🗂 Example of Usage
 
-Below is an example of using this interface for enemy checking:  
+Below is an example of using this interface for enemy checking:
 
 ```csharp
 public sealed class IsEnemyFunction : IFunction<Character, bool>

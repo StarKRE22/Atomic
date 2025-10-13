@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicates.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunctions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicates.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,30 +228,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01403" summary="BaseEvent`3.md">
-      <option name="closed" value="true" />
-      <created>1760290993801</created>
-      <option name="number" value="01403" />
-      <option name="presentableId" value="LOCAL-01403" />
-      <option name="project" value="LOCAL" />
-      <updated>1760290993801</updated>
-    </task>
-    <task id="LOCAL-01404" summary="BaseEvent`4.md">
-      <option name="closed" value="true" />
-      <created>1760291108950</created>
-      <option name="number" value="01404" />
-      <option name="presentableId" value="LOCAL-01404" />
-      <option name="project" value="LOCAL" />
-      <updated>1760291108950</updated>
-    </task>
-    <task id="LOCAL-01405" summary="Subscriptions.md">
-      <option name="closed" value="true" />
-      <created>1760291505844</created>
-      <option name="number" value="01405" />
-      <option name="presentableId" value="LOCAL-01405" />
-      <option name="project" value="LOCAL" />
-      <updated>1760291505844</updated>
     </task>
     <task id="LOCAL-01406" summary="Subscriptions.md, Subscription.md">
       <option name="closed" value="true" />
@@ -621,7 +597,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760379435529</updated>
     </task>
-    <option name="localTasksCounter" value="1452" />
+    <task id="LOCAL-01452" summary="Прочесал общие блоки!">
+      <option name="closed" value="true" />
+      <created>1760379845867</created>
+      <option name="number" value="01452" />
+      <option name="presentableId" value="LOCAL-01452" />
+      <option name="project" value="LOCAL" />
+      <updated>1760379845867</updated>
+    </task>
+    <task id="LOCAL-01453" summary="IFunction.md">
+      <option name="closed" value="true" />
+      <created>1760380121541</created>
+      <option name="number" value="01453" />
+      <option name="presentableId" value="LOCAL-01453" />
+      <option name="project" value="LOCAL" />
+      <updated>1760380121541</updated>
+    </task>
+    <task id="LOCAL-01454" summary="IFunction`1.md">
+      <option name="closed" value="true" />
+      <created>1760380702171</created>
+      <option name="number" value="01454" />
+      <option name="presentableId" value="LOCAL-01454" />
+      <option name="project" value="LOCAL" />
+      <updated>1760380702171</updated>
+    </task>
+    <option name="localTasksCounter" value="1455" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,9 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IExpressions.md" />
-    <MESSAGE value="IExpression.md" />
-    <MESSAGE value="IExpression`1.md" />
     <MESSAGE value="IExpression`2.md" />
     <MESSAGE value="ExpressionsBase.md" />
     <MESSAGE value="ExpressionBase.md" />
@@ -673,7 +670,10 @@
     <MESSAGE value="Пилим Functions!" />
     <MESSAGE value="IFunctions.md" />
     <MESSAGE value="IPredicates.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IPredicates.md" />
+    <MESSAGE value="Прочесал общие блоки!" />
+    <MESSAGE value="IFunction.md" />
+    <MESSAGE value="IFunction`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IFunction`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
