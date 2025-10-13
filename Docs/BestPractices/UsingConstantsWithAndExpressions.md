@@ -1,6 +1,6 @@
 # 📌 Using Constants with AndExpressions
 
-When you need to add constant `true` or `false` conditions **without allocations** to `AndExpression`, you can use boolean constants
+If you need to add constant `true` or `false` conditions **without allocations** to the [AndExpression](../Elements/Expressions/AndExpression.md), you can use boolean constants
 from [DefaultConstants](../Values/DefaultConstants.md#-boolean-constants)
 
 ```csharp
