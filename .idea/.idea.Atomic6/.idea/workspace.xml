@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/InlineExpression`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpressions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,22 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01393" summary="IEvents.md">
-      <option name="closed" value="true" />
-      <created>1760279171215</created>
-      <option name="number" value="01393" />
-      <option name="presentableId" value="LOCAL-01393" />
-      <option name="project" value="LOCAL" />
-      <updated>1760279171215</updated>
-    </task>
-    <task id="LOCAL-01394" summary="IEvent.md">
-      <option name="closed" value="true" />
-      <created>1760279486780</created>
-      <option name="number" value="01394" />
-      <option name="presentableId" value="LOCAL-01394" />
-      <option name="project" value="LOCAL" />
-      <updated>1760279486780</updated>
     </task>
     <task id="LOCAL-01395" summary="IEvent`1.md">
       <option name="closed" value="true" />
@@ -621,7 +604,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760368302207</updated>
     </task>
-    <option name="localTasksCounter" value="1442" />
+    <task id="LOCAL-01442" summary="InlineExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1760368698248</created>
+      <option name="number" value="01442" />
+      <option name="presentableId" value="LOCAL-01442" />
+      <option name="project" value="LOCAL" />
+      <updated>1760368698248</updated>
+    </task>
+    <task id="LOCAL-01443" summary="InlineExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1760369140550</created>
+      <option name="number" value="01443" />
+      <option name="presentableId" value="LOCAL-01443" />
+      <option name="project" value="LOCAL" />
+      <updated>1760369140551</updated>
+    </task>
+    <option name="localTasksCounter" value="1444" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,8 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Subscription`3.md" />
-    <MESSAGE value="Subscription`4.md" />
     <MESSAGE value="Переходим к Extensions Signals!" />
     <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
@@ -673,7 +670,9 @@
     <MESSAGE value="OrExpressions.md" />
     <MESSAGE value="InlineExpressions.md" />
     <MESSAGE value="InlineExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineExpression.md" />
+    <MESSAGE value="InlineExpression`1.md" />
+    <MESSAGE value="InlineExpression`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineExpression`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

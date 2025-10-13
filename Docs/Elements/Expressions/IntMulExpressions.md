@@ -6,10 +6,21 @@ the [ExpressionBase](ExpressionsBase.md) family of classes.
 > [!NOTE]
 > If the collection is empty, the expression evaluates to `1` by default.
 
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Expression without args](#ex1)
+    - [Expression with single arg](#ex2)
+    - [Expression with two args](#ex3)
+- [API Reference](#-api-reference)
 
 ---
 
 ## 🗂 Examples of Usage
+
+<div id="ex1"></div>
 
 ### 1️⃣ Expression without args
 
@@ -23,7 +34,7 @@ var multiply = new IntMulExpression(
 int result = multiply.Invoke(); // 2 * 3 * 4 = 24
 ```
 
----
+<div id="ex2"></div>
 
 ### 2️⃣ Expression with single arg
 
@@ -35,7 +46,7 @@ var expression = new IntMulExpression<int>(
 int result = expression.Invoke(3); // 3 * (3 + 1) = 12
 ```
 
----
+<div id="ex3"></div>
 
 ### 3️⃣ Expression with two args
 
