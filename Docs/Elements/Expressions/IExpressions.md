@@ -78,6 +78,8 @@ int result = attackExpression.Invoke();
 
 ```csharp
 IExpression<int, int, int> expression = ...
+    
+// Add some functions
 expression.Add((a, b) => a + b);
 expression.Add((a, b) => a * 2 + b);
 
