@@ -63,7 +63,7 @@ finalResult = expression.Invoke(); // still false
 
 ## 🔍 API Reference
 
-There are several base classes of expressions, depending on the number of arguments the actions take:
+There are several base classes of expressions, depending on the number of arguments the expressions take:
 
 - [ExpressionBase&lt;R&gt;](ExpressionBase.md) — Non-generic version; works without parameters.
 - [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md) — Expression that takes one argument.

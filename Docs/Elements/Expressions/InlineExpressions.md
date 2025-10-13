@@ -89,7 +89,7 @@ int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
 
 ## 🔍 API Reference
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+There are several implementations of expressions, depending on the number of arguments the expressions take:
 
 - [InlineExpression&lt;R&gt;](InlineExpression.md) — Non-generic version; works without parameters.
 - [InlineExpression&lt;T, R&gt;](InlineExpression%601.md) — Expression that takes one argument.

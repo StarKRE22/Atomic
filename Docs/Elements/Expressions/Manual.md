@@ -178,8 +178,8 @@ int result = attackExpression.Invoke();
 
 ## 🔍 API Reference
 
-There are several interfaces and implementations of expressions, depending on a different scenario and the number of
-arguments the actions take:
+There are several interfaces and implementations of expressions, depending on the concrete scenario and the number of
+arguments the expression take:
 
 <details>
   <summary><a href="IExpressions.md">IExpressions</a></summary>

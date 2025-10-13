@@ -81,7 +81,7 @@ int result = attackExpression.Invoke();
 
 ## 🔍 API Reference
 
-There are several classes of **AND** expressions, depending on the number of arguments the actions take:
+There are several classes of **AND** expressions, depending on the number of arguments the expressions take:
 
 - [AndExpression](AndExpression.md) — Non-generic version; works without parameters.
 - [AndExpression&lt;T&gt;](AndExpression%601.md) — Expression that takes one argument.

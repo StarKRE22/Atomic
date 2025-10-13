@@ -63,7 +63,7 @@ int result = expression.Invoke(2, 3); // 2 * 3 * (2 + 3) = 30
 
 ## 🔍 API Reference
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+There are several implementations of expressions, depending on the number of arguments the expressions take:
 
 - [IntMulExpression](IntMulExpression.md) — Non-generic version; works without parameters.
 - [IntMulExpression&lt;T&gt;](IntMulExpression%601.md) — Expression that takes one argument.

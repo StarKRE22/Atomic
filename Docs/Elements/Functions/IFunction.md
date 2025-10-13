@@ -39,7 +39,6 @@ public class IsGameObjectActiveFunction : IFunction<bool>
         return _go.activeSelf;
     } 
 }
-
 ```
 
 ```csharp

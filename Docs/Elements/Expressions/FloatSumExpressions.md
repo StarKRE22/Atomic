@@ -62,7 +62,7 @@ float result = expression.Invoke(2, 3); // 2 + 3 + (2 + 3) = 10
 
 ## 🔍 API Reference
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+There are several implementations of expressions, depending on the number of arguments the expressions take:
 
 - [FloatSumExpression](FloatSumExpression.md) — Non-generic version; works without parameters.
 - [FloatSumExpression&lt;T&gt;](FloatSumExpression%601.md) — Expression that takes one argument.

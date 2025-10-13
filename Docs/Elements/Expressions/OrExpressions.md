@@ -59,7 +59,7 @@ foreach (Func<bool> func in discountCondition)
 
 ## 🔍 API Reference
 
-There are several classes of **OR** expressions, depending on the number of arguments the actions take:
+There are several classes of **OR** expressions, depending on the number of arguments the expressions take:
 
 - [OrExpression](OrExpression.md) — Non-generic version; works without parameters.
 - [OrExpression&lt;T&gt;](OrExpression%601.md) — Expression that takes one argument.

@@ -79,6 +79,8 @@ subscription.Dispose();
 
 ## 🔍 API Reference
 
+Below are interfaces and implementations corresponding with events and depending on the concrete scenario:  
+
  <details>
     <summary><a href="ISignals.md">ISignals</a></summary>
     <ul>

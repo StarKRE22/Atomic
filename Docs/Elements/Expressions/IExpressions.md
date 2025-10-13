@@ -92,7 +92,7 @@ Console.WriteLine($"Result: {result}"); // Output depends on how the expression 
 
 ## 🔍 API Reference
 
-There are several interfaces of expressions, depending on the number of arguments the actions take:
+There are several interfaces of expressions, depending on the number of arguments the expressions take:
 
 - [IExpression&lt;R&gt;](IExpression.md) — Non-generic version; works without parameters.
 - [IExpression&lt;T, R&gt;](IExpression%601.md) — Expression that takes one argument.

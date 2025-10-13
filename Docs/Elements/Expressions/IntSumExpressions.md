@@ -62,7 +62,7 @@ int result = expression.Invoke(2, 3); // 2 + 3 + (2 + 3) = 10
 
 ## 🔍 API Reference
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+There are several implementations of expressions, depending on the number of arguments the expression take:
 
 - [IntSumExpression](IntSumExpression.md) — Non-generic version; works without parameters.
 - [IntSumExpression&lt;T&gt;](IntSumExpression%601.md) — Expression that takes one argument.
