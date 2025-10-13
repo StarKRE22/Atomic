@@ -1,5 +1,126 @@
 # 🧩 OrExpression
 
+Represents a <b>parameterless logical OR expression</b> aggregating multiple
+<code>Func&lt;bool&gt;</code> members.
+
+---
+
+## 📑 Table of Contents
+
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#orexpressionint">OrExpression(int)</a></li>
+            <li><a href="#orexpressionparams-funcbool">OrExpression(params Func&lt;bool&gt;[])</a></li>
+            <li><a href="#orexpressionienumerable-funcbool">OrExpression(IEnumerable&lt;Func&lt;bool&gt;&gt;)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#value">Value</a></li>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoke">Invoke()</a></li>
+            <li><a href="#addfuncbool">Add(Func&lt;bool&gt;)</a></li>
+            <li><a href="#addrangeienumerablefuncbool">AddRange(IEnumerable&lt;Func&lt;bool&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfuncbool">Contains(Func&lt;bool&gt;)</a></li>
+            <li><a href="#copytofuncbool-int">CopyTo(Func&lt;bool&gt;[], int)</a></li>
+            <li><a href="#indexoffuncbool">IndexOf(Func&lt;bool&gt;)</a></li>
+            <li><a href="#insertint-funcbool">Insert(int, Func&lt;bool&gt;)</a></li>
+            <li><a href="#removefuncbool">Remove(Func&lt;bool&gt;)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+In the example, we define three discount conditions for a store customer — checking if they are a VIP member, have a
+discount coupon, or if there is a holiday sale.
+
+```csharp
+// Create an OrExpression for discount eligibility
+OrExpression discountCondition = new OrExpression();
+
+// Define separate conditions for applying a discount
+Func<bool> isVIPCustomer     = () => customer.IsVIP;
+Func<bool> hasCoupon         = () => customer.HasCoupon;
+Func<bool> isHolidaySale     = () => DateTime.Now.DayOfWeek == DayOfWeek.Friday;
+
+// Add conditions to the expression
+discountCondition.Add(isVIPCustomer);
+discountCondition.Add(hasCoupon);
+discountCondition.Add(isHolidaySale);
+
+// Evaluate the combined condition
+bool canApplyDiscount = discountCondition.Invoke();
+Console.WriteLine($"Can apply discount: {canApplyDiscount}");
+
+// Check if a condition exists
+bool contains = discountCondition.Contains(hasCoupon);
+Console.WriteLine($"Contains coupon condition: {contains}");
+
+// Remove a specific condition
+discountCondition.RemoveAt(isHolidaySale);
+
+// Insert a new one at position 1
+discountCondition.Insert(1, () => customer.HasMembership);
+
+// Enumerate all conditions
+foreach (Func<bool> func in discountCondition)
+    Console.WriteLine($"Condition result: {func()}");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class OrExpression : ExpressionBase<bool>, IPredicate
@@ -12,7 +133,7 @@ public class OrExpression : ExpressionBase<bool>, IPredicate
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `OrExpression(int)`
 
@@ -41,7 +162,7 @@ public OrExpression(IEnumerable<Func<bool>> members)
 - **Description:** Initializes the expression with a collection of parameterless boolean-returning functions.
 - **Parameter:** `members` — Enumerable of `Func<bool>` delegates.
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -78,7 +199,7 @@ public event Action<int, Func<bool>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -110,7 +231,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -124,7 +245,7 @@ public Func<bool> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
