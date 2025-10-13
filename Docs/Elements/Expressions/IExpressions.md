@@ -13,8 +13,9 @@ evaluated. They support parameterless functions as well as functions with one or
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
-    - [Non-generic version](#ex-1)
-    - [Generic version](#ex-2)
+    - [Parameterless Expression](#ex-1)
+    - [Expression with single parameter](#ex-2)
+    - [Expression with two parameters](#ex-3)
 - [API Reference](#-api-reference)
 
 ---
@@ -23,7 +24,7 @@ evaluated. They support parameterless functions as well as functions with one or
 
 <div id="ex-1"></div>
 
-### 1️⃣ Non-generic version
+### 1️⃣ Parameterless Expression 
 
 ```csharp
 // Suppose we have a concrete implementation of IExpression<int>
@@ -55,7 +56,7 @@ foreach (Func<int> func in expression)
 
 <div id="ex-2"></div>
 
-### 2️⃣ Generic version
+### 2️⃣ Expression with single parameter
 
 ```csharp
 IExpression<GameObject, bool> attackExpression = ...
@@ -69,6 +70,22 @@ attackExpression.Add(isAlive);
 
 // Evaluate the combined expression using Value
 int result = attackExpression.Invoke();
+```
+
+<div id="ex-3"></div>
+
+### 3️⃣ Expression with two parameters
+
+```csharp
+IExpression<int, int, int> expression = ...
+expression.Add((a, b) => a + b)
+    
+        
+    (a, b) => a * 2 + b
+
+// Evaluate expression
+int result = sumExpression.Invoke(3, 5);
+Console.WriteLine($"Result: {result}"); // Output depends on how the expression combines functions
 ```
 
 ---
