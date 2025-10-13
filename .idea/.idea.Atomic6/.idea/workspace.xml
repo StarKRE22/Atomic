@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,22 +230,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01395" summary="IEvent`1.md">
-      <option name="closed" value="true" />
-      <created>1760279713284</created>
-      <option name="number" value="01395" />
-      <option name="presentableId" value="LOCAL-01395" />
-      <option name="project" value="LOCAL" />
-      <updated>1760279713284</updated>
-    </task>
-    <task id="LOCAL-01396" summary="IEvent`2.md">
-      <option name="closed" value="true" />
-      <created>1760280060978</created>
-      <option name="number" value="01396" />
-      <option name="presentableId" value="LOCAL-01396" />
-      <option name="project" value="LOCAL" />
-      <updated>1760280060978</updated>
     </task>
     <task id="LOCAL-01397" summary="IEvent`3.md">
       <option name="closed" value="true" />
@@ -620,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760369140551</updated>
     </task>
-    <option name="localTasksCounter" value="1444" />
+    <task id="LOCAL-01444" summary="IntMulExpressions.md">
+      <option name="closed" value="true" />
+      <created>1760369539261</created>
+      <option name="number" value="01444" />
+      <option name="presentableId" value="LOCAL-01444" />
+      <option name="project" value="LOCAL" />
+      <updated>1760369539261</updated>
+    </task>
+    <task id="LOCAL-01445" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1760375520493</created>
+      <option name="number" value="01445" />
+      <option name="presentableId" value="LOCAL-01445" />
+      <option name="project" value="LOCAL" />
+      <updated>1760375520494</updated>
+    </task>
+    <option name="localTasksCounter" value="1446" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,8 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Переходим к Extensions Signals!" />
-    <MESSAGE value="ExtensionsSubscribe.md" />
     <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsSubscribeRange.md" />
     <MESSAGE value="ExtensionsUnsubscribeRange.md" />
@@ -672,7 +673,9 @@
     <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="InlineExpression`1.md" />
     <MESSAGE value="InlineExpression`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineExpression`2.md" />
+    <MESSAGE value="IntMulExpressions.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
