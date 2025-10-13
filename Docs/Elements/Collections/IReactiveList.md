@@ -228,6 +228,8 @@ public int Count { get; }
 
 ---
 
+<div id="-indexers"></div>
+
 ### 🏷️ Indexers
 
 #### `[int index]`

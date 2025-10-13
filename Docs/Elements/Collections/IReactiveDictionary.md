@@ -255,6 +255,8 @@ public IEnumerable<V> Values { get; }
 
 ---
 
+<div id="-indexers"></div>
+
 ### 🏷️ Indexers
 
 #### `[K key]`
