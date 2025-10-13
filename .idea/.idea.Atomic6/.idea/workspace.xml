@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,22 +226,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01376" summary="Сделал details для коллекций!">
-      <option name="closed" value="true" />
-      <created>1760212760563</created>
-      <option name="number" value="01376" />
-      <option name="presentableId" value="LOCAL-01376" />
-      <option name="project" value="LOCAL" />
-      <updated>1760212760563</updated>
-    </task>
-    <task id="LOCAL-01377" summary="ISignals.md">
-      <option name="closed" value="true" />
-      <created>1760253028696</created>
-      <option name="number" value="01377" />
-      <option name="presentableId" value="LOCAL-01377" />
-      <option name="project" value="LOCAL" />
-      <updated>1760253028696</updated>
     </task>
     <task id="LOCAL-01378" summary="ISignal.md">
       <option name="closed" value="true" />
@@ -620,7 +603,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760348775891</updated>
     </task>
-    <option name="localTasksCounter" value="1425" />
+    <task id="LOCAL-01425" summary="IExpression`1.md">
+      <option name="closed" value="true" />
+      <created>1760350939192</created>
+      <option name="number" value="01425" />
+      <option name="presentableId" value="LOCAL-01425" />
+      <option name="project" value="LOCAL" />
+      <updated>1760350939193</updated>
+    </task>
+    <task id="LOCAL-01426" summary="IExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1760351234741</created>
+      <option name="number" value="01426" />
+      <option name="presentableId" value="LOCAL-01426" />
+      <option name="project" value="LOCAL" />
+      <updated>1760351234741</updated>
+    </task>
+    <option name="localTasksCounter" value="1427" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,8 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEvent.md" />
-    <MESSAGE value="IEvent`1.md" />
     <MESSAGE value="IEvent`2.md" />
     <MESSAGE value="IEvent`3.md" />
     <MESSAGE value="IEvent`4.md" />
@@ -672,7 +669,9 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="IExpressions.md" />
     <MESSAGE value="IExpression.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IExpression.md" />
+    <MESSAGE value="IExpression`1.md" />
+    <MESSAGE value="IExpression`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IExpression`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

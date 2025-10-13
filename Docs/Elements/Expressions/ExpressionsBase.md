@@ -10,17 +10,18 @@ members** and provide **dynamic evaluation** based on parameterless or parameter
 
 ---
 
-There are several base classes of expressions, depending on the number of arguments the actions take:
+## 📑 Table of Contents
 
-- [ExpressionBase&lt;R&gt;](ExpressionBase.md) — Non-generic version; works without parameters.
-- [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md) — Expression that takes one argument.
-- [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md) — Expression that takes two arguments.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+
 
 ---
 
+
 ## 🗂 Example of Usage
 
-Below is an example of using `ExpressionBase` to extend a simple **logical AND** expression with multiple parameterless
+Below is an example of using [ExpressionBase](ExpressionBase.md) to extend a simple **logical AND** expression with multiple parameterless
 boolean functions.
 
 ```csharp
@@ -40,7 +41,6 @@ public sealed class AndExpression : ExpressionBase<bool>
         return true;
     }
 }
-
 ```
 
 ```csharp
@@ -59,3 +59,13 @@ Console.WriteLine($"AND Expression result: {finalResult}");
 expression.Add(() => true);
 finalResult = expression.Invoke(); // still false
 ```
+
+---
+
+## 🔍 API Reference
+
+There are several base classes of expressions, depending on the number of arguments the actions take:
+
+- [ExpressionBase&lt;R&gt;](ExpressionBase.md) — Non-generic version; works without parameters.
+- [ExpressionBase&lt;T, R&gt;](ExpressionBase%601.md) — Expression that takes one argument.
+- [ExpressionBase&lt;T1, T2, R&gt;](ExpressionBase%602.md) — Expression that takes two arguments.

@@ -12,7 +12,7 @@ evaluated. They support parameterless functions as well as functions with one or
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Examples of Usage](#-examples-of-usage)
     - [Parameterless Expression](#ex-1)
     - [Expression with single parameter](#ex-2)
     - [Expression with two parameters](#ex-3)
@@ -20,7 +20,7 @@ evaluated. They support parameterless functions as well as functions with one or
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 <div id="ex-1"></div>
 
