@@ -1,5 +1,28 @@
 # 🧩 IntSumExpression
 
+Represents an expression that computes the sum of multiple <b>parameterless integer-returning</b>
+functions
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var expression = new IntSumExpression(
+    () => 2,
+    () => 3,
+    () => 4
+);
+
+int result = expression.Invoke(); // 9
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class IntSumExpression : ExpressionBase<int>
@@ -12,7 +35,7 @@ public class IntSumExpression : ExpressionBase<int>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `IntSumExpression(int)`
 
@@ -43,7 +66,7 @@ public IntSumExpression(IEnumerable<Func<int>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -80,7 +103,7 @@ public event Action<int, Func<int>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -112,7 +135,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -126,7 +149,7 @@ public Func<int> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -138,6 +161,8 @@ public int Invoke()
 - **Returns:** `int` — The computed sum.
 - **Note:** Returns `0` if no functions are present.
 
+<div id="add"></div>
+
 #### `Add(Func<int>)`
 
 ```csharp
@@ -146,6 +171,8 @@ public void Add(Func<int> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<int>>)`
 
@@ -165,6 +192,8 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
+<div id="contains"></div>
+
 #### `Contains(Func<int>)`
 
 ```csharp
@@ -174,6 +203,8 @@ public bool Contains(Func<int> item)
 - **Description:** Checks if the specified function exists in the expression.
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
+
+<div id="copyto"></div>
 
 #### `CopyTo(Func<int>[], int)`
 
@@ -186,6 +217,8 @@ public void CopyTo(Func<int>[] array, int arrayIndex)
 - `array` — The destination array.
 - `arrayIndex` — The starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<int>)`
 
 ```csharp
@@ -195,6 +228,8 @@ public int IndexOf(Func<int> item)
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `int` — The index of the function, or `-1` if not found.
+
+<div id="insert"></div>
 
 #### `Insert(int, Func<int>)`
 
@@ -207,6 +242,8 @@ public void Insert(int index, Func<int> item)
 - `index` — The position at which to insert.
 - `item` — The function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<int>)`
 
 ```csharp
@@ -216,6 +253,8 @@ public bool Remove(Func<int> item)
 - **Description:** Removes the specified function from the expression.
 - **Parameter:** `item` — The function to remove.
 - **Returns:** `bool` — `true` if removed successfully, otherwise `false`.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int)`
 
@@ -246,17 +285,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-var expression = new IntSumExpression(
-    () => 2,
-    () => 3,
-    () => 4
-);
-
-int result = expression.Invoke(); // 9
-```

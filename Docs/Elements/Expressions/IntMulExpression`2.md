@@ -1,5 +1,14 @@
 # 🧩 IntMulExpression&lt;T1, T2&gt;
 
+Represents an expression that computes the product of integer values returned from functions with <b>
+two input parameters</b>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
@@ -15,7 +24,7 @@ public class IntMulExpression<T1, T2> : ExpressionBase<T1, T2, int>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `IntMulExpression()`
 
@@ -47,7 +56,7 @@ public IntMulExpression(IEnumerable<Func<T1, T2, int>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -83,9 +92,9 @@ public event Action<int, Func<T1, T2, int>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
-### `Count`
+#### `Count`
 
 ```csharp
 public int Count { get; }
@@ -94,7 +103,7 @@ public int Count { get; }
 - **Description:** Gets the number of functions in the expression.
 - **Returns:** `int` — Number of function members.
 
-### `IsReadOnly`
+#### `IsReadOnly`
 
 ```csharp
 public bool IsReadOnly { get; }
@@ -105,7 +114,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -119,7 +128,7 @@ public Func<T1, T2, int> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -134,6 +143,8 @@ public int Invoke(T1 arg1, T2 arg2)
 - **Returns:** `int` — Computed product.
 - **Note:** -Returns `1` if no functions are present.
 
+<div id="add"></div>
+
 #### `Add(Func<T1, T2, int>)`
 
 ```csharp
@@ -142,6 +153,8 @@ public void Add(Func<T1, T2, int> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — Function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T1, T2, int>>)`
 
@@ -161,6 +174,8 @@ public void Clear()
 
 - **Description:** Removes all functions.
 
+<div id="contains"></div>
+
 #### `Contains(Func<T1, T2, int>)`
 
 ```csharp
@@ -169,6 +184,8 @@ public bool Contains(Func<T1, T2, int> item)
 
 - **Description:** Checks if a function exists.
 - **Returns:** `bool` — True if found.
+
+<div id="copyto"></div>
 
 #### `CopyTo(Func<T1, T2, int>[], int)`
 
@@ -181,6 +198,8 @@ public void CopyTo(Func<T1, T2, int>[] array, int arrayIndex)
     - `array` — Destination array.
     - `arrayIndex` — Starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<T1, T2, int>)`
 
 ```csharp
@@ -190,6 +209,8 @@ public int IndexOf(Func<T1, T2, int> item)
 - **Description:** Returns the index of the specified function.
 - **Parameter:** `item` — Function to locate.
 - **Returns:** `int` — Index of the function, or `-1` if not found.
+
+<div id="insert"></div>
 
 #### `Insert(int, Func<T1, T2, int>)`
 
@@ -202,6 +223,8 @@ public void Insert(int index, Func<T1, T2, int> item)
     - `index` — Position to insert.
     - `item` — Function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<T1, T2, int>)`
 
 ```csharp
@@ -211,6 +234,8 @@ public bool Remove(Func<T1, T2, int> item)
 - **Description:** Removes the specified function.
 - **Parameter:** `item` — Function to remove.
 - **Returns:** `bool` — True if removed successfully.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int)`
 

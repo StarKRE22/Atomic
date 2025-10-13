@@ -15,13 +15,12 @@ members** and provide **dynamic evaluation** based on parameterless or parameter
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
 
-
 ---
-
 
 ## 🗂 Example of Usage
 
-Below is an example of using [ExpressionBase](ExpressionBase.md) to extend a simple **logical AND** expression with multiple parameterless
+Below is an example of using [ExpressionBase](ExpressionBase.md) to extend a simple **logical AND** expression with
+multiple parameterless
 boolean functions.
 
 ```csharp

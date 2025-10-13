@@ -1,5 +1,27 @@
 # 🧩 FloatSumExpression&lt;T1, T2&gt;
 
+Represents an expression that computes the sum of float values returned from functions with <b>two
+input parameters</b>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var expression = new FloatSumExpression<float, float>(
+    (a, b) => a,
+    (a, b) => b,
+    (a, b) => a + b
+);
+float result = expression.Invoke(2, 3); // 2 + 3 + (2 + 3) = 10
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class FloatSumExpression<T1, T2> : ExpressionBase<T1, T2, float>
@@ -15,7 +37,7 @@ public class FloatSumExpression<T1, T2> : ExpressionBase<T1, T2, float>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `FloatSumExpression()`
 
@@ -47,7 +69,7 @@ public FloatSumExpression(IEnumerable<Func<T1, T2, float>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -83,7 +105,7 @@ public event Action<int, Func<T1, T2, float>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -105,7 +127,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -119,7 +141,7 @@ public Func<T1, T2, float> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -134,6 +156,8 @@ public float Invoke(T1 arg1, T2 arg2)
 - **Returns:** `float` — Computed sum.
 - **Note:** -Returns `0` if no functions are present.
 
+<div id="add"></div>
+
 #### `Add(Func<T1, T2, float>)`
 
 ```csharp
@@ -142,6 +166,8 @@ public void Add(Func<T1, T2, float> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — Function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T1, T2, float>>)`
 
@@ -161,6 +187,8 @@ public void Clear()
 
 - **Description:** Removes all functions.
 
+<div id="contains"></div>
+
 #### `Contains(Func<T1, T2, float>)`
 
 ```csharp
@@ -169,6 +197,8 @@ public bool Contains(Func<T1, T2, float> item)
 
 - **Description:** Checks if a function exists.
 - **Returns:** `bool` — True if found.
+
+<div id="copyto"></div>
 
 #### `CopyTo(Func<T1, T2, float>[], int)`
 
@@ -181,6 +211,8 @@ public void CopyTo(Func<T1, T2, float>[] array, int arrayIndex)
     - `array` — Destination array.
     - `arrayIndex` — Starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<T1, T2, float>)`
 
 ```csharp
@@ -190,6 +222,8 @@ public float IndexOf(Func<T1, T2, float> item)
 - **Description:** Returns the index of the specified function.
 - **Parameter:** `item` — Function to locate.
 - **Returns:** `float` — Index of the function, or `-1` if not found.
+
+<div id="insert"></div>
 
 #### `Insert(int, Func<T1, T2, float>)`
 
@@ -202,6 +236,8 @@ public void Insert(int index, Func<T1, T2, float> item)
     - `index` — Position to insert.
     - `item` — Function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<T1, T2, float>)`
 
 ```csharp
@@ -211,6 +247,8 @@ public bool Remove(Func<T1, T2, float> item)
 - **Description:** Removes the specified function.
 - **Parameter:** `item` — Function to remove.
 - **Returns:** `bool` — True if removed successfully.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int)`
 
@@ -240,16 +278,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets event handlers to null.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-var expression = new FloatSumExpression<float, float>(
-    (a, b) => a,
-    (a, b) => b,
-    (a, b) => a + b
-);
-float result = expression.Invoke(2, 3); // 2 + 3 + (2 + 3) = 10
-```
