@@ -1,5 +1,35 @@
 # 🧩 InlineExpression&lt;T1, T2, R&gt;
 
+Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a
+list of functions of type <code>Func&lt;T1, T2, R&gt;</code>.
+---
+
+## 🗂 Example Usage
+
+Below is an example of using `InlineExpression<T1, T2, R>` to extend a simple **SUM** expression:
+
+```csharp
+var expression = new InlineExpression<int, int, int>((enumerator, x, y) => {
+    int sum = 0;
+    while (enumerator.MoveNext())
+        sum += enumerator.Current.Invoke(x, y);
+    return sum;
+});
+
+//Add functions:
+expression.Add((a, b) => a + b);
+expression.Add((a, b) => a * b);
+
+//Evaluate:
+int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
@@ -16,9 +46,9 @@ public class InlineExpression<T1, T2, R> : ExpressionBase<T1, T2, R>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `InlineExpression(Func<Enumerator, T1, T2, R>, int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T1, T2, R> function, int capacity)
@@ -30,7 +60,7 @@ public InlineExpression(Func<Enumerator, T1, T2, R> function, int capacity)
     - `function` — The function that defines how to evaluate the collection of functions.
     - `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `InlineExpression(Func<Enumerator, T1, T2, R>, params Func<T1, T2, R>[])`
+#### `Params Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T1, T2, R> function, params Func<T1, T2, R>[] array)
@@ -41,7 +71,7 @@ public InlineExpression(Func<Enumerator, T1, T2, R> function, params Func<T1, T2
     - `function` — The evaluation logic to be applied to the functions.
     - `array` — An array of functions to add to the expression.
 
-#### `InlineExpression(Func<Enumerator, T1, T2, R>, IEnumerable<Func<T1, T2, R>>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T1, T2, R> function, IEnumerable<Func<T1, T2, R>> enumerable)
@@ -250,25 +280,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
----
-
-## 🗂 Example Usage
-
-Below is an example of using `InlineExpression<T1, T2, R>` to extend a simple **SUM** expression:
-
-```csharp
-var expression = new InlineExpression<int, int, int>((enumerator, x, y) => {
-    int sum = 0;
-    while (enumerator.MoveNext())
-        sum += enumerator.Current.Invoke(x, y);
-    return sum;
-});
-
-//Add functions:
-expression.Add((a, b) => a + b);
-expression.Add((a, b) => a * b);
-
-//Evaluate:
-int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
-```

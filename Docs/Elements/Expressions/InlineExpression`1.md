@@ -1,5 +1,108 @@
 # 🧩 InlineExpression&lt;T, R&gt;
 
+Represents an expression that uses a <b>custom evaluation function</b> to compute a result from a
+list of functions of type <code>Func&lt;T, R&gt;</code>.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-usage">Example Usage</a></li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#capacity-based-constructor">Capacity-based Constructor</a></li>
+            <li><a href="#params-constructor">Params Constructor</a></li>
+            <li><a href="#ienumerable-constructor">IEnumerable Constructor</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket">Invoke(T)</a></li>
+            <li><a href="#addfunct-r">Add(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#addrange">AddRange(IEnumerable&lt;Func&lt;T, R&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfunct-r">Contains(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#copytofunct-r-int">CopyTo(Func&lt;T, R&gt;[], int)</a></li>
+            <li><a href="#indexoffunct-r">IndexOf(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#insertint-funct-r">Insert(int, Func&lt;T, R&gt;)</a></li>
+            <li><a href="#removefunct-r">Remove(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example Usage
+
+Below is an example of using `InlineExpression<T, R>` to extend a simple **PRODUCT** expression:
+
+```csharp
+//Create an instance of "PRODUCT" expression
+var expression = new InlineExpression<int, int>((enumerator, x) => {
+    int product = 1;
+    while (enumerator.MoveNext())
+        product *= enumerator.Current.Invoke(x);
+    return product;
+});
+
+//Add functions:
+expression.Add(x => x + 1);
+expression.Add(x => x + 2);
+
+//Evaluate:
+int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class InlineExpression<T, R> : ExpressionBase<T, R>
@@ -15,9 +118,9 @@ public class InlineExpression<T, R> : ExpressionBase<T, R>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `InlineExpression(Func<Enumerator, T, R>, int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T, R> function, int capacity)
@@ -29,7 +132,7 @@ public InlineExpression(Func<Enumerator, T, R> function, int capacity)
     - `function` — The function that defines how to evaluate the collection of functions.
     - `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `InlineExpression(Func<Enumerator, T, R>, params Func<T, R>[])`
+#### `Params Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] array)
@@ -40,7 +143,7 @@ public InlineExpression(Func<Enumerator, T, R> function, params Func<T, R>[] arr
     - `function` — The evaluation logic to be applied to the functions.
     - `array` — An array of functions to add to the expression.
 
-#### `InlineExpression(Func<Enumerator, T, R>, IEnumerable<Func<T, R>>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>> enumerable)
@@ -53,7 +156,7 @@ public InlineExpression(Func<Enumerator, T, R> function, IEnumerable<Func<T, R>>
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -90,7 +193,7 @@ public event Action<int, Func<T, R>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -112,7 +215,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -126,7 +229,7 @@ public Func<T, R> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -146,6 +249,8 @@ public void Add(Func<T, R> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T, R>> items)`
 
@@ -246,26 +351,3 @@ public void Dispose()
 - **Effects:**
     - Clears the function list.
     - Sets `OnItemChanged`, `OnItemInserted`, `OnItemDeleted`, and `OnStateChanged` to `null`.
-
----
-
-## 🗂 Example Usage
-
-Below is an example of using `InlineExpression<T, R>` to extend a simple **PRODUCT** expression:
-
-```csharp
-//Create an instance of "PRODUCT" expression
-var expression = new InlineExpression<int, int>((enumerator, x) => {
-    int product = 1;
-    while (enumerator.MoveNext())
-        product *= enumerator.Current.Invoke(x);
-    return product;
-});
-
-//Add functions:
-expression.Add(x => x + 1);
-expression.Add(x => x + 2);
-
-//Evaluate:
-int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
-```
