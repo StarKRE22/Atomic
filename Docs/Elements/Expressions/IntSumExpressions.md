@@ -6,15 +6,21 @@ the [ExpressionBase](ExpressionsBase.md) family.
 > [!NOTE]
 > If the collection is empty, the expression evaluates to `0` by default.
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+---
 
-- [IntSumExpression](IntSumExpression.md) — Non-generic version; works without parameters.
-- [IntSumExpression&lt;T&gt;](IntSumExpression%601.md) — Expression that takes one argument.
-- [IntSumExpression&lt;T1, T2&gt;](IntSumExpression%602.md) — Expression that takes two arguments.
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Expression without args](#ex1)
+    - [Expression with single arg](#ex2)
+    - [Expression with two args](#ex3)
+- [API Reference](#-api-reference)
 
 ---
 
 ## 🗂 Examples of Usage
+
+<div id="ex1"></div>
 
 ### 1️⃣ Expression without parameters
 
@@ -27,7 +33,7 @@ var expression = new IntSumExpression(
 int result = expression.Invoke(); // 9
 ```
 
----
+<div id="ex2"></div>
 
 ### 2️⃣ Expression with one parameter
 
@@ -39,7 +45,7 @@ var expression = new IntSumExpression<int>(
 int result = expression.Invoke(3); // 3 + (3 + 1) = 7
 ```
 
----
+<div id="ex3"></div>
 
 ### 3️⃣ Expression with two parameters
 
@@ -52,3 +58,12 @@ var expression = new IntSumExpression<int, int>(
 int result = expression.Invoke(2, 3); // 2 + 3 + (2 + 3) = 10
 ```
 
+---
+
+## 🔍 API Reference
+
+There are several implementations of expressions, depending on the number of arguments the actions take:
+
+- [IntSumExpression](IntSumExpression.md) — Non-generic version; works without parameters.
+- [IntSumExpression&lt;T&gt;](IntSumExpression%601.md) — Expression that takes one argument.
+- [IntSumExpression&lt;T1, T2&gt;](IntSumExpression%602.md) — Expression that takes two arguments.

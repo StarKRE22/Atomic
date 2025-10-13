@@ -5,6 +5,76 @@ single input parameter</b>
 
 ---
 
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#ctor-1">IntSumExpression(int)</a></li>
+            <li><a href="#ctor-2">IntSumExpression(Func&lt;T, int&gt;[])</a></li>
+            <li><a href="#ctor-3">IntSumExpression(IEnumerable&lt;Func&lt;T, int&gt;&gt;)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket">Invoke(T)</a></li>
+            <li><a href="#add">Add(Func&lt;T, int&gt;)</a></li>
+            <li><a href="#addrange">AddRange(IEnumerable&lt;Func&lt;T, int&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#contains">Contains(Func&lt;T, int&gt;)</a></li>
+            <li><a href="#copyto">CopyTo(Func&lt;T, int&gt;[], int)</a></li>
+            <li><a href="#indexof">IndexOf(Func&lt;T, int&gt;)</a></li>
+            <li><a href="#insert">Insert(int, Func&lt;T, int&gt;)</a></li>
+            <li><a href="#remove">Remove(Func&lt;T, int&gt;)</a></li>
+            <li><a href="#removeat">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
 ## 🗂 Example of Usage
 
 ```csharp
@@ -36,6 +106,8 @@ public class IntSumExpression<T> : ExpressionBase<T, int>
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 
+<div id="ctor-1"></div>
+
 #### `IntSumExpression(int)`
 
 ```csharp
@@ -45,6 +117,8 @@ public IntSumExpression(int capacity)
 - **Description:** Initializes a new empty instance of the `IntSumExpression<T>` class.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
+<div id="ctor-2"></div>
+
 #### `IntSumExpression(Func<T, int>[])`
 
 ```csharp
@@ -53,6 +127,8 @@ public IntSumExpression(params Func<T, int>[] members)
 
 - **Description:** Initializes the expression with an array of functions that take a `T` and return an integer.
 - **Parameter:** `members` — Array of `Func<T, int>` delegates.
+
+<div id="ctor-3"></div>
 
 #### `IntSumExpression(IEnumerable<Func<T, int>>)`
 
