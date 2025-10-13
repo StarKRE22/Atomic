@@ -14,11 +14,11 @@ composition.
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-  - [And Expression](#ex-1)
-  - [Or Expression](#ex-2)
-  - [Int Sum Expression](#ex-3)
-  - [Float Mul Expression](#ex-4)
-  - [Generic Expression](#ex-5)
+    - [And Expression](#ex-1)
+    - [Or Expression](#ex-2)
+    - [Int Sum Expression](#ex-3)
+    - [Float Mul Expression](#ex-4)
+    - [Generic Expression](#ex-5)
 - [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
 
@@ -177,6 +177,9 @@ int result = attackExpression.Invoke();
 ---
 
 ## 🔍 API Reference
+
+There are several interfaces and implementations of expressions, depending on a different scenario and the number of
+arguments the actions take:
 
 <details>
   <summary><a href="IExpressions.md">IExpressions</a></summary>

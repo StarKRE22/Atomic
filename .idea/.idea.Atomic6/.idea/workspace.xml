@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpression`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntMulExpression`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatMulExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/FloatSumExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpression`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IntSumExpressions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,14 +231,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01397" summary="IEvent`3.md">
-      <option name="closed" value="true" />
-      <created>1760280290919</created>
-      <option name="number" value="01397" />
-      <option name="presentableId" value="LOCAL-01397" />
-      <option name="project" value="LOCAL" />
-      <updated>1760280290919</updated>
     </task>
     <task id="LOCAL-01398" summary="IEvent`4.md">
       <option name="closed" value="true" />
@@ -623,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760375520494</updated>
     </task>
-    <option name="localTasksCounter" value="1446" />
+    <task id="LOCAL-01446" summary="IntMulExpression.md">
+      <option name="closed" value="true" />
+      <created>1760376442378</created>
+      <option name="number" value="01446" />
+      <option name="presentableId" value="LOCAL-01446" />
+      <option name="project" value="LOCAL" />
+      <updated>1760376442378</updated>
+    </task>
+    <option name="localTasksCounter" value="1447" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsUnsubscribe.md" />
     <MESSAGE value="ExtensionsSubscribeRange.md" />
     <MESSAGE value="ExtensionsUnsubscribeRange.md" />
     <MESSAGE value="Expressions" />
@@ -675,7 +675,8 @@
     <MESSAGE value="InlineExpression`2.md" />
     <MESSAGE value="IntMulExpressions.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="IntMulExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IntMulExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
