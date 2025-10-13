@@ -1,5 +1,10 @@
 # 🧩 AndExpression&lt;T&gt;
 
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class AndExpression<T> : ExpressionBase<T, bool>, IPredicate<T>

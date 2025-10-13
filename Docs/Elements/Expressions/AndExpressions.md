@@ -25,8 +25,6 @@ corresponding [IPredicate](../Functions/IPredicates.md) interfaces.
 
 ### 1️⃣ Non-generic version
 
-In the example, we define three firing conditions for a game character — checking health, ammo, and weapon cooldown.
-
 ```csharp
 // Create an instance of the combined expression
 var fireCondition = new AndExpression();
