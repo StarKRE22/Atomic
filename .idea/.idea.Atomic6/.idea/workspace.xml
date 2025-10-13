@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,46 +227,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01371" summary="IReactiveDictionary.md">
-      <option name="closed" value="true" />
-      <created>1760211506381</created>
-      <option name="number" value="01371" />
-      <option name="presentableId" value="LOCAL-01371" />
-      <option name="project" value="LOCAL" />
-      <updated>1760211506381</updated>
-    </task>
-    <task id="LOCAL-01372" summary="IReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1760211599629</created>
-      <option name="number" value="01372" />
-      <option name="presentableId" value="LOCAL-01372" />
-      <option name="project" value="LOCAL" />
-      <updated>1760211599629</updated>
-    </task>
-    <task id="LOCAL-01373" summary="Details!">
-      <option name="closed" value="true" />
-      <created>1760211793931</created>
-      <option name="number" value="01373" />
-      <option name="presentableId" value="LOCAL-01373" />
-      <option name="project" value="LOCAL" />
-      <updated>1760211793931</updated>
-    </task>
-    <task id="LOCAL-01374" summary="ReactiveDictionaryKeyCollection.md">
-      <option name="closed" value="true" />
-      <created>1760212186139</created>
-      <option name="number" value="01374" />
-      <option name="presentableId" value="LOCAL-01374" />
-      <option name="project" value="LOCAL" />
-      <updated>1760212186139</updated>
-    </task>
-    <task id="LOCAL-01375" summary="ReactiveList.md">
-      <option name="closed" value="true" />
-      <created>1760212636941</created>
-      <option name="number" value="01375" />
-      <option name="presentableId" value="LOCAL-01375" />
-      <option name="project" value="LOCAL" />
-      <updated>1760212636941</updated>
     </task>
     <task id="LOCAL-01376" summary="Сделал details для коллекций!">
       <option name="closed" value="true" />
@@ -621,7 +580,47 @@
       <option name="project" value="LOCAL" />
       <updated>1760332926389</updated>
     </task>
-    <option name="localTasksCounter" value="1420" />
+    <task id="LOCAL-01420" summary="IExpressions.md">
+      <option name="closed" value="true" />
+      <created>1760333486966</created>
+      <option name="number" value="01420" />
+      <option name="presentableId" value="LOCAL-01420" />
+      <option name="project" value="LOCAL" />
+      <updated>1760333486966</updated>
+    </task>
+    <task id="LOCAL-01421" summary="IExpressions.md">
+      <option name="closed" value="true" />
+      <created>1760333614584</created>
+      <option name="number" value="01421" />
+      <option name="presentableId" value="LOCAL-01421" />
+      <option name="project" value="LOCAL" />
+      <updated>1760333614584</updated>
+    </task>
+    <task id="LOCAL-01422" summary="IExpressions.md">
+      <option name="closed" value="true" />
+      <created>1760333677121</created>
+      <option name="number" value="01422" />
+      <option name="presentableId" value="LOCAL-01422" />
+      <option name="project" value="LOCAL" />
+      <updated>1760333677121</updated>
+    </task>
+    <task id="LOCAL-01423" summary="IExpressions.md">
+      <option name="closed" value="true" />
+      <created>1760333702939</created>
+      <option name="number" value="01423" />
+      <option name="presentableId" value="LOCAL-01423" />
+      <option name="project" value="LOCAL" />
+      <updated>1760333702939</updated>
+    </task>
+    <task id="LOCAL-01424" summary="IExpression.md">
+      <option name="closed" value="true" />
+      <created>1760348775891</created>
+      <option name="number" value="01424" />
+      <option name="presentableId" value="LOCAL-01424" />
+      <option name="project" value="LOCAL" />
+      <updated>1760348775891</updated>
+    </task>
+    <option name="localTasksCounter" value="1425" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEvents.md" />
     <MESSAGE value="IEvent.md" />
     <MESSAGE value="IEvent`1.md" />
     <MESSAGE value="IEvent`2.md" />
@@ -671,9 +669,10 @@
     <MESSAGE value="ExtensionsSubscribeRange.md" />
     <MESSAGE value="ExtensionsUnsubscribeRange.md" />
     <MESSAGE value="Expressions" />
-    <MESSAGE value="IExpressions.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="IExpressions.md" />
+    <MESSAGE value="IExpression.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IExpression.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
