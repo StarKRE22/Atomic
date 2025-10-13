@@ -1,5 +1,84 @@
 # 🧩 ExpressionBase&lt;T, R&gt;
 
+Represents an expression with a <b>single input parameter</b> of type <code>T</code> that aggregates
+multiple functions returning a value of type <code>R</code>
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#capacity-based-constructor">Capacity-based Constructor</a></li>
+            <li><a href="#params-constructor">Params Constructor</a></li>
+            <li><a href="#ienumerable-constructor">IEnumerable Constructor</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket">Invoke(T)</a></li>
+            <li><a href="#invokeenumerator-t">Invoke(Enumerator, T)</a></li>
+            <li><a href="#add">Add(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#addrange">AddRange(IEnumerable&lt;Func&lt;T, R&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#contains">Contains(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#copyto">CopyTo(Func&lt;T, R&gt;[], int)</a></li>
+            <li><a href="#indexof">IndexOf(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#insert">Insert(int, Func&lt;T, R&gt;)</a></li>
+            <li><a href="#remove">Remove(Func&lt;T, R&gt;)</a></li>
+            <li><a href="#removeat">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IExpression<T, R>
 ```
@@ -15,9 +94,9 @@ public abstract class ExpressionBase<T, R> : ReactiveLinkedList<Func<T, R>>, IEx
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `ExpressionBase(int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 protected ExpressionBase(int capacity)
@@ -26,7 +105,7 @@ protected ExpressionBase(int capacity)
 - **Description:** Initializes an empty expression with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default value is `4`.
 
-#### `ExpressionBase(params Func<T, R>[])`
+#### `Params Constructor`
 
 ```csharp
 protected ExpressionBase(params Func<T, R>[] members)
@@ -35,7 +114,7 @@ protected ExpressionBase(params Func<T, R>[] members)
 - **Description:** Initializes the expression with an array of function members.
 - **Parameter:** `members` — Array of functions to include in the expression.
 
-#### `ExpressionBase(IEnumerable<Func<T, R>>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 protected ExpressionBase(IEnumerable<Func<T, R>> members)
@@ -46,7 +125,7 @@ protected ExpressionBase(IEnumerable<Func<T, R>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -83,7 +162,7 @@ public event Action<int, Func<T, R>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -105,7 +184,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -119,7 +198,7 @@ public Func<T, R> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -143,6 +222,8 @@ protected abstract R Invoke(Enumerator enumerator, T arg)
     - `arg` — The input argument of type `T`.
 - **Returns:** `R` — The aggregated result.
 
+<div id="add"></div>
+
 #### `Add(Func<T, R>)`
 
 ```csharp
@@ -151,6 +232,8 @@ public void Add(Func<T, R> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T, R>>)`
 
@@ -170,6 +253,8 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
+<div id="contains"></div>
+
 #### `Contains(Func<T, R>)`
 
 ```csharp
@@ -178,6 +263,8 @@ public bool Contains(Func<T, R> item)
 
 - **Description:** Checks if the function exists in the expression.
 - **Returns:** `bool` — `true` if the function is present.
+
+<div id="copyto"></div>
 
 #### `CopyTo(Func<T, R>[], int)`
 
@@ -190,6 +277,8 @@ public void CopyTo(Func<T, R>[] array, int arrayIndex)
     - `array` — Destination array.
     - `arrayIndex` — Starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<T, R>)`
 
 ```csharp
@@ -201,6 +290,8 @@ public int IndexOf(Func<T, R> item)
 
 #### `Insert(int, Func<T, R>)`
 
+<div id="insert"></div>
+
 ```csharp
 public void Insert(int index, Func<T, R> item)
 ```
@@ -210,6 +301,8 @@ public void Insert(int index, Func<T, R> item)
     - `index` — Position at which to insert.
     - `item` — Function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<T, R>)`
 
 ```csharp
@@ -218,6 +311,8 @@ public bool Remove(Func<T, R> item)
 
 - **Description:** Removes the specified function.
 - **Returns:** `bool` — `true` if the function was successfully removed.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int)`
 

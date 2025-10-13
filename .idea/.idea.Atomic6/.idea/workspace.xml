@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/IExpression`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Expressions/ExpressionBase`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,30 +228,6 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01378" summary="ISignal.md">
-      <option name="closed" value="true" />
-      <created>1760254172300</created>
-      <option name="number" value="01378" />
-      <option name="presentableId" value="LOCAL-01378" />
-      <option name="project" value="LOCAL" />
-      <updated>1760254172300</updated>
-    </task>
-    <task id="LOCAL-01379" summary="ISignal`1.md">
-      <option name="closed" value="true" />
-      <created>1760254525758</created>
-      <option name="number" value="01379" />
-      <option name="presentableId" value="LOCAL-01379" />
-      <option name="project" value="LOCAL" />
-      <updated>1760254525758</updated>
-    </task>
-    <task id="LOCAL-01380" summary="ISignal`2.md">
-      <option name="closed" value="true" />
-      <created>1760254671428</created>
-      <option name="number" value="01380" />
-      <option name="presentableId" value="LOCAL-01380" />
-      <option name="project" value="LOCAL" />
-      <updated>1760254671428</updated>
     </task>
     <task id="LOCAL-01381" summary="ISignal`2.md">
       <option name="closed" value="true" />
@@ -619,7 +597,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760351234741</updated>
     </task>
-    <option name="localTasksCounter" value="1427" />
+    <task id="LOCAL-01427" summary="IExpression`2.md">
+      <option name="closed" value="true" />
+      <created>1760351298107</created>
+      <option name="number" value="01427" />
+      <option name="presentableId" value="LOCAL-01427" />
+      <option name="project" value="LOCAL" />
+      <updated>1760351298107</updated>
+    </task>
+    <task id="LOCAL-01428" summary="ExpressionsBase.md">
+      <option name="closed" value="true" />
+      <created>1760351497390</created>
+      <option name="number" value="01428" />
+      <option name="presentableId" value="LOCAL-01428" />
+      <option name="project" value="LOCAL" />
+      <updated>1760351497390</updated>
+    </task>
+    <task id="LOCAL-01429" summary="ExpressionBase.md">
+      <option name="closed" value="true" />
+      <created>1760352015761</created>
+      <option name="number" value="01429" />
+      <option name="presentableId" value="LOCAL-01429" />
+      <option name="project" value="LOCAL" />
+      <updated>1760352015761</updated>
+    </task>
+    <option name="localTasksCounter" value="1430" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -646,8 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEvent`2.md" />
-    <MESSAGE value="IEvent`3.md" />
     <MESSAGE value="IEvent`4.md" />
     <MESSAGE value="BaseEvents.md" />
     <MESSAGE value="BaseEvent.md" />
@@ -671,7 +671,9 @@
     <MESSAGE value="IExpression.md" />
     <MESSAGE value="IExpression`1.md" />
     <MESSAGE value="IExpression`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IExpression`2.md" />
+    <MESSAGE value="ExpressionsBase.md" />
+    <MESSAGE value="ExpressionBase.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExpressionBase.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
