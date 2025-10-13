@@ -1,10 +1,96 @@
 # 🧩 IExpression&lt;T1, T2, R&gt;
 
+Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>
+T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket1-t2">Invoke(T1, T2)</a></li>
+            <li><a href="#invokeenumerator-t1-t2">Invoke(Enumerator, T1, T2)</a></li>
+            <li><a href="#addfunct1-t2-r">Add(Func&lt;T1, T2, R&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfunct1-t2-r">Contains(Func&lt;T1, T2, R&gt;)</a></li>
+            <li><a href="#copytofunct1-t2-r-int">CopyTo(Func&lt;T1, T2, R&gt;[], int)</a></li>
+            <li><a href="#indexoffunct1-t2-r">IndexOf(Func&lt;T1, T2, R&gt;)</a></li>
+            <li><a href="#insertint-funct1-t2-r">Insert(int, Func&lt;T1, T2, R&gt;)</a></li>
+            <li><a href="#removefunct1-t2-r">Remove(Func&lt;T1, T2, R&gt;)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IExpression<int, int, int> expression = ...
+    
+// Add some functions
+expression.Add((a, b) => a + b);
+expression.Add((a, b) => a * 2 + b);
+
+// Evaluate expression
+int result = sumExpression.Invoke(3, 5);
+Console.WriteLine($"Result: {result}"); // Output depends on how the expression combines functions
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, T2, R>
 ```
-- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+
+- **Description:** Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>
+  T2</code> that aggregates multiple functions returning a value of type <code>R</code>
 - **Inheritance:** `IList<T>`, [IFunction&lt;T1, T2, R&gt;](../Functions/IFunction%602.md)
 - **Type Parameters:**
     - `T1` — The first input parameter type.
@@ -13,7 +99,7 @@ public interface IExpression<T1, T2, R> : IList<Func<T1, T2, R>>, IFunction<T1, 
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -50,7 +136,7 @@ public event Action<int, Func<T1, T2, R>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -72,7 +158,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -86,7 +172,7 @@ public Func<T1, T2, R> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 

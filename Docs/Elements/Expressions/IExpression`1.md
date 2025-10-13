@@ -5,6 +5,8 @@ multiple functions returning a value of type <code>R</code>
 
 ---
 
+## 📑 Table of Contents
+
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
   <li>
@@ -60,7 +62,6 @@ multiple functions returning a value of type <code>R</code>
     </ul>
   </li>
 </ul>
-
 
 ---
 
