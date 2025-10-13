@@ -1,6 +1,75 @@
 # 🧩 AndExpression&lt;T1, T2&gt;
 
+<br> Represents a <b>logical AND expression</b> aggregating multiple <code>Func&lt;T1, T2, bool&gt;</code> members.
+
 ---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#capacity-based-constructor">Capacity-based Constructor</a></li>
+            <li><a href="#params-constructor">Params Constructor</a></li>
+            <li><a href="#ienumerable-constructor">IEnumerable Constructor</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#thisint-index">this[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket1-arg1-t2-arg2">Invoke(T1 arg1, T2 arg2)</a></li>
+            <li><a href="#add">Add(Func&lt;T1, T2, bool&gt; item)</a></li>
+            <li><a href="#addrange">AddRange(IEnumerable&lt;Func&lt;T1, T2, bool&gt;&gt; items)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#contains">Contains(Func&lt;T1, T2, bool&gt; item)</a></li>
+            <li><a href="#copyto">CopyTo(Func&lt;T1, T2, bool&gt;[] array, int arrayIndex)</a></li>
+            <li><a href="#indexof">IndexOf(Func&lt;T1, T2, bool&gt; item)</a></li>
+            <li><a href="#insert">Insert(int index, Func&lt;T1, T2, bool&gt; item)</a></li>
+            <li><a href="#remove">Remove(Func&lt;T1, T2, bool&gt; item)</a></li>
+            <li><a href="#removeat">RemoveAt(int index)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
 
 ---
 
@@ -13,7 +82,7 @@
 public class AndExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
 ```
 
-- **Description:**  <br> Represents a <b>logical AND expression</b> aggregating multiple 
+- **Description:** <br> Represents a <b>logical AND expression</b> aggregating multiple 
   <code>Func&lt;T1, T2, bool&gt;</code> members
 - **Type Parameters:**
     - `T1` - The first input parameter type of the functions.
@@ -23,9 +92,9 @@ public class AndExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
-#### `AndExpression(int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 public AndExpression(int capacity)
@@ -34,7 +103,7 @@ public AndExpression(int capacity)
 - **Description:** Initializes a new empty `AndExpression<T1, T2>` with the given capacity.
 - **Parameter:** `capacity` — Initial capacity for the internal function list. Default is `4`.
 
-#### `AndExpression(params Func<T1, T2, bool>[])`
+#### `Params Constructor`
 
 ```csharp
 public AndExpression(params Func<T1, T2, bool>[] members)
@@ -44,7 +113,7 @@ public AndExpression(params Func<T1, T2, bool>[] members)
   `T1` and `T2`.
 - **Parameter:** `members` — Array of `Func<T1, T2, bool>` delegates.
 
-#### `AndExpression(IEnumerable<Func<T1, T2, bool>>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public AndExpression(IEnumerable<Func<T1, T2, bool>> members)
@@ -56,7 +125,7 @@ public AndExpression(IEnumerable<Func<T1, T2, bool>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -93,7 +162,7 @@ public event Action<int, Func<T1, T2, bool>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -115,7 +184,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `this[int index]`
 
@@ -129,7 +198,7 @@ public Func<T1, T2, bool> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1 arg1, T2 arg2)`
 
@@ -144,6 +213,8 @@ public bool Invoke(T1 arg1, T2 arg2)
     - `arg2` — The second input value of type `T2`.
 - **Returns:** `bool` — The aggregated logical AND result.
 
+<div id="add"></div>
+
 #### `Add(Func<T1, T2, bool> item)`
 
 ```csharp
@@ -152,6 +223,8 @@ public void Add(Func<T1, T2, bool> item)
 
 - **Description:** Adds a function to the expression.
 - **Parameter:** `item` — The function to add.
+
+<div id="addrange"></div>
 
 #### `AddRange(IEnumerable<Func<T1, T2, bool>> items)`
 
@@ -171,6 +244,8 @@ public void Clear()
 
 - **Description:** Removes all functions from the expression.
 
+<div id="contains"></div>
+
 #### `Contains(Func<T1, T2, bool> item)`
 
 ```csharp
@@ -180,6 +255,8 @@ public bool Contains(Func<T1, T2, bool> item)
 - **Description:** Checks if the specified function exists in the expression.
 - **Parameter:** `item` — The function to check.
 - **Returns:** `bool` — `true` if the function exists, otherwise `false`.
+
+<div id="copyto"></div>
 
 #### `CopyTo(Func<T1, T2, bool>[] array, int arrayIndex)`
 
@@ -192,6 +269,8 @@ public void CopyTo(Func<T1, T2, bool>[] array, int arrayIndex)
     - `array` — The destination array.
     - `arrayIndex` — The starting index in the array.
 
+<div id="indexof"></div>
+
 #### `IndexOf(Func<T1, T2, bool> item)`
 
 ```csharp
@@ -201,6 +280,8 @@ public int IndexOf(Func<T1, T2, bool> item)
 - **Description:** Returns the index of the specified function in the expression.
 - **Parameter:** `item` — The function to locate.
 - **Returns:** `int` — The index of the function, or `-1` if not found.
+
+<div id="insert"></div>
 
 #### `Insert(int index, Func<T1, T2, bool> item)`
 
@@ -213,6 +294,8 @@ public void Insert(int index, Func<T1, T2, bool> item)
     - `index` — The position at which to insert.
     - `item` — The function to insert.
 
+<div id="remove"></div>
+
 #### `Remove(Func<T1, T2, bool> item)`
 
 ```csharp
@@ -222,6 +305,8 @@ public bool Remove(Func<T1, T2, bool> item)
 - **Description:** Removes the specified function from the expression.
 - **Parameter:** `item` — The function to remove.
 - **Returns:** `bool` — `true` if removed successfully, otherwise `false`.
+
+<div id="removeat"></div>
 
 #### `RemoveAt(int index)`
 
