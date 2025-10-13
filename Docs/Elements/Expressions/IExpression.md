@@ -64,7 +64,6 @@ type <code>R</code>
   </li>
 </ul>
 
-
 ---
 
 ## 🗂 Example of Usage
