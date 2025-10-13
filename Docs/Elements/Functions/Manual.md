@@ -7,7 +7,6 @@ inline or composable functions for clean and maintainable code.
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)

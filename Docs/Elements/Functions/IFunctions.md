@@ -4,15 +4,21 @@ The **IFunction** interfaces define a family of contracts for representing funct
 parameters. They provide a lightweight abstraction for defining logic that returns a value, making them useful for
 callbacks, computations, and functional programming patterns.
 
-There are several interfaces of functions, depending on the number of arguments they take:
+---
 
-- [IFunction&lt;R&gt;](IFunction.md) — Function without parameters.
-- [IFunction&lt;T, R&gt;](IFunction%601.md) — Function that takes one argument.
-- [IFunction&lt;T1, T2, R&gt;](IFunction%602.md) — Function that takes two arguments.
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Function without arguments](#ex-1)
+    - [Function with one argument](#ex-2)
+    - [Function with two arguments](#ex-3)
+- [API Reference](#-api-reference)
 
 ---
 
 ## 🗂 Examples of Usage
+
+<div id="ex-1"></div>
 
 ### 1️⃣ Function without arguments
 
@@ -34,7 +40,7 @@ public class IsGameObjectActiveFunction : IFunction<bool>
 
 ```
 
----
+<div id="ex-2"></div>
 
 ### 2️⃣ Function with one argument
 
@@ -55,7 +61,7 @@ public sealed class IsEnemyFunction : IFunction<Character, bool>
 }
 ```
 
----
+<div id="ex-3"></div>
 
 ### 3️⃣ Function with two arguments
 
@@ -68,3 +74,13 @@ public class SumFunction : IFunction<int, int, int>
     } 
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+There are several interfaces of functions, depending on the number of arguments they take:
+
+- [IFunction&lt;R&gt;](IFunction.md) — Function without parameters.
+- [IFunction&lt;T, R&gt;](IFunction%601.md) — Function that takes one argument.
+- [IFunction&lt;T1, T2, R&gt;](IFunction%602.md) — Function that takes two arguments.
