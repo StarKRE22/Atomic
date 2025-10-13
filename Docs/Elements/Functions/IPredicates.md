@@ -5,7 +5,6 @@ The **IPredicate** interfaces are specialized forms of [functions](IFunctions.md
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
