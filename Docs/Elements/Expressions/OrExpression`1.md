@@ -113,6 +113,8 @@ public OrExpression(params Func<T, bool>[] members)
   `T`.
 - **Parameter:** `members` — Array of `Func<T, bool>` delegates.
 
+<div id="orexpressionienumerable-funct-bool"></div>
+
 #### `OrExpression(IEnumerable<Func<T, bool>>)`
 
 ```csharp

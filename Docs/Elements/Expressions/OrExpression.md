@@ -152,6 +152,8 @@ public OrExpression(params Func<bool>[] members)
 - **Description:** Initializes the expression with an array of parameterless boolean-returning functions.
 - **Parameter:** `members` — Array of `Func<bool>` delegates.
 
+<div id="orexpressionienumerable-funcbool"></div>
+
 #### `OrExpression(IEnumerable<Func<bool>>)`
 
 ```csharp

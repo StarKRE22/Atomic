@@ -1,5 +1,84 @@
 # 🧩 OrExpression&lt;T1, T2&gt;
 
+Represents a <b>logical OR expression</b> aggregating multiple <code>Func&lt;T1, T2, bool&gt;</code>
+members.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#orexpressionint">OrExpression(int)</a></li>
+            <li><a href="#orexpressionparams-funct1-t2-bool">OrExpression(params Func&lt;T1, T2, bool&gt;[])</a></li>
+            <li><a href="#orexpressionienumerable-funct1-t2-bool">OrExpression(IEnumerable&lt;Func&lt;T1, T2, bool&gt;&gt;)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket1-t2">Invoke(T1, T2)</a></li>
+            <li><a href="#addfunct1-t2-bool">Add(Func&lt;T1, T2, bool&gt;)</a></li>
+            <li><a href="#addrangeienumerablefunct1-t2-bool">AddRange(IEnumerable&lt;Func&lt;T1, T2, bool&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfunct1-t2-bool">Contains(Func&lt;T1, T2, bool&gt;)</a></li>
+            <li><a href="#copytofunct1-t2-bool-int">CopyTo(Func&lt;T1, T2, bool&gt;[], int)</a></li>
+            <li><a href="#indexoffunct1-t2-bool">IndexOf(Func&lt;T1, T2, bool&gt;)</a></li>
+            <li><a href="#insertint-funct1-t2-bool">Insert(int, Func&lt;T1, T2, bool&gt;)</a></li>
+            <li><a href="#removefunct1-t2-bool">Remove(Func&lt;T1, T2, bool&gt;)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1, T2>
@@ -16,7 +95,7 @@ public class OrExpression<T1, T2> : ExpressionBase<T1, T2, bool>, IPredicate<T1,
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `OrExpression(int)`
 
@@ -37,6 +116,8 @@ public OrExpression(params Func<T1, T2, bool>[] members)
   return a boolean.
 - **Parameter:** `members` — Array of `Func<T1, T2, bool>` delegates.
 
+<div id="orexpressionienumerable-funct1-t2-bool"></div>
+
 #### `OrExpression(IEnumerable<Func<T1, T2, bool>>)`
 
 ```csharp
@@ -49,7 +130,7 @@ public OrExpression(IEnumerable<Func<T1, T2, bool>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -86,7 +167,7 @@ public event Action<int, Func<T1, T2, bool>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -108,7 +189,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -122,7 +203,7 @@ public Func<T1, T2, bool> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
