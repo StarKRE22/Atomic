@@ -1,5 +1,83 @@
 # 🧩 OrExpression&lt;T&gt;
 
+Represents a <b>logical OR expression</b> with <b>single parameter</b> aggregating multiple
+<code>Func&lt;T, bool&gt;</code> members
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#orexpressionint">OrExpression(int)</a></li>
+            <li><a href="#orexpressionparams-funct-bool">OrExpression(params Func&lt;T, bool&gt;[])</a></li>
+            <li><a href="#orexpressionienumerable-funct-bool">OrExpression(IEnumerable&lt;Func&lt;T, bool&gt;&gt;)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onitemchanged">OnItemChanged</a></li>
+            <li><a href="#oniteminserted">OnItemInserted</a></li>
+            <li><a href="#onitemdeleted">OnItemDeleted</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-indexers">Indexers</a></summary>
+          <ul>
+            <li><a href="#int-index">[int index]</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#invoket">Invoke(T)</a></li>
+            <li><a href="#addfunct-bool">Add(Func&lt;T, bool&gt;)</a></li>
+            <li><a href="#addrangeienumerablefunct-bool">AddRange(IEnumerable&lt;Func&lt;T, bool&gt;&gt;)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containsfunct-bool">Contains(Func&lt;T, bool&gt;)</a></li>
+            <li><a href="#copytofunct-bool-int">CopyTo(Func&lt;T, bool&gt;[], int)</a></li>
+            <li><a href="#indexoffunct-bool">IndexOf(Func&lt;T, bool&gt;)</a></li>
+            <li><a href="#insertint-funct-bool">Insert(int, Func&lt;T, bool&gt;)</a></li>
+            <li><a href="#removefunct-bool">Remove(Func&lt;T, bool&gt;)</a></li>
+            <li><a href="#removeatint">RemoveAt(int)</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
@@ -14,7 +92,7 @@ public class OrExpression<T> : ExpressionBase<T, bool>, IPredicate<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `OrExpression(int)`
 
@@ -47,7 +125,7 @@ public OrExpression(IEnumerable<Func<T, bool>> members)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -84,7 +162,7 @@ public event Action<int, Func<T, bool>> OnItemDeleted;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -106,7 +184,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏷️ Indexers
+### 🏷️ Indexers
 
 #### `[int index]`
 
@@ -120,7 +198,7 @@ public Func<T, bool> this[int index] { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 

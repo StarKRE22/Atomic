@@ -7,7 +7,6 @@ Represents a <b>parameterless logical OR expression</b> aggregating multiple
 
 ## 📑 Table of Contents
 
-
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
   <li><a href="#-api-reference">API Reference</a>
