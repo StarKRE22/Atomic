@@ -1,6 +1,6 @@
 # 🧩 Expressions
 
-Represents **expressions composed of function members** that can be dynamically added, removed, and evaluated. It
+Represent **expressions composed of function members** that can be dynamically added, removed, and evaluated. It
 supports both parameterless functions and functions with one or more parameters, enabling flexible and reusable logic
 composition.
 
