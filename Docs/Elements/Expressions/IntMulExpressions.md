@@ -6,11 +6,6 @@ the [ExpressionBase](ExpressionsBase.md) family of classes.
 > [!NOTE]
 > If the collection is empty, the expression evaluates to `1` by default.
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
-
-- [IntMulExpression](IntMulExpression.md) — Non-generic version; works without parameters.
-- [IntMulExpression&lt;T&gt;](IntMulExpression%601.md) — Expression that takes one argument.
-- [IntMulExpression&lt;T1, T2&gt;](IntMulExpression%602.md) — Expression that takes two arguments.
 
 ---
 
@@ -52,3 +47,13 @@ var expression = new IntMulExpression<int, int>(
 );
 int result = expression.Invoke(2, 3); // 2 * 3 * (2 + 3) = 30
 ```
+
+---
+
+## 🔍 API Reference
+
+There are several implementations of expressions, depending on the number of arguments the actions take:
+
+- [IntMulExpression](IntMulExpression.md) — Non-generic version; works without parameters.
+- [IntMulExpression&lt;T&gt;](IntMulExpression%601.md) — Expression that takes one argument.
+- [IntMulExpression&lt;T1, T2&gt;](IntMulExpression%602.md) — Expression that takes two arguments.

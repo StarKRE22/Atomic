@@ -3,17 +3,23 @@
 A flexible class for creating expressions with **custom evaluation logic**. It allows you to define how a list of
 functions is evaluated to produce a result. Extends from [ExpressionBase](ExpressionBase.md).
 
-There are several implementations of expressions, depending on the number of arguments the actions take:
+---
 
-- [InlineExpression&lt;R&gt;](InlineExpression.md) — Non-generic version; works without parameters.
-- [InlineExpression&lt;T, R&gt;](InlineExpression%601.md) — Expression that takes one argument.
-- [InlineExpression&lt;T1, T2, R&gt;](InlineExpression%602.md) — Expression that takes two arguments.
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+  - [InlineExpression\<R>](#ex1)
+  - [InlineExpression\<T, R>](#ex2)
+  - [InlineExpression\<T1, T2, R>](#ex3)
+- [API Reference](#-api-reference)
 
 ---
 
 ## 🗂 Examples of Usage
 
-#### `InlineExpression<R>`
+<div id="ex1"></div>
+
+### 1️⃣ `InlineExpression<R>`
 
 ```csharp
 //Create an instance of "SUM" expression
@@ -35,7 +41,9 @@ int sum = expression.Invoke(); // 1 + 2 + 3 = 6
 
 ---
 
-#### `InlineExpression<T, R>`
+<div id="ex2"></div>
+
+### 2️⃣ `InlineExpression<T, R>`
 
 ```csharp
 //Create an instance of "PRODUCT" expression
@@ -56,7 +64,9 @@ int product = expression.Invoke(2); // (2 + 1) * (2 + 2) = 12
 
 ---
 
-#### `InlineExpression<T1, T2, R>`
+<div id="ex3"></div>
+
+### 3️⃣ `InlineExpression<T1, T2, R>`
 
 ```csharp
 //Create an instance of "SUM" expression
@@ -74,3 +84,13 @@ expression.Add((a, b) => a * b);
 //Evaluate:
 int result = expression.Invoke(2, 3); // (2 + 3) + (2 * 3) = 11
 ```
+
+---
+
+## 🔍 API Reference
+
+There are several implementations of expressions, depending on the number of arguments the actions take:
+
+- [InlineExpression&lt;R&gt;](InlineExpression.md) — Non-generic version; works without parameters.
+- [InlineExpression&lt;T, R&gt;](InlineExpression%601.md) — Expression that takes one argument.
+- [InlineExpression&lt;T1, T2, R&gt;](InlineExpression%602.md) — Expression that takes two arguments.
