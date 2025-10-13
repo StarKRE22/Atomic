@@ -1,7 +1,7 @@
 # 🧩 IExpression&lt;T1, T2, R&gt;
 
-Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>
-T2</code> that aggregates multiple functions returning a value of type <code>R</code>
+Represents an expression with <b>two input parameters</b> of types <code>T1</code> and <code>T2</code> that aggregates
+multiple functions returning a value of type <code>R</code>
 
 ---
 
