@@ -151,6 +151,8 @@ public class Period : IPeriod
 |------------|--------------------------------------|
 | `duration` | The total duration of the one cycle. |
 
+---
+
 <div id="-constructors"></div>
 
 ### 🏗️ Constructors
