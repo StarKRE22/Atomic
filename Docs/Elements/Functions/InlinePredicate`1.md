@@ -16,6 +16,10 @@ public class InlinePredicate<T> : InlineFunction<T, bool>, IPredicate<T>
 
 ---
 
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlinePredicate(Func<T, bool>)`

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,23 +228,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="2130000" />
-    </task>
-    <task id="LOCAL-01408" summary="Subscription`2.md">
-      <option name="closed" value="true" />
-      <created>1760292093284</created>
-      <option name="number" value="01408" />
-      <option name="presentableId" value="LOCAL-01408" />
-      <option name="project" value="LOCAL" />
-      <updated>1760292093284</updated>
-    </task>
-    <task id="LOCAL-01409" summary="Subscription`3.md">
-      <option name="closed" value="true" />
-      <created>1760292440948</created>
-      <option name="number" value="01409" />
-      <option name="presentableId" value="LOCAL-01409" />
-      <option name="project" value="LOCAL" />
-      <updated>1760292440948</updated>
+      <workItem from="1760420145768" duration="2609000" />
     </task>
     <task id="LOCAL-01410" summary="Subscription`4.md">
       <option name="closed" value="true" />
@@ -621,7 +606,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760423717701</updated>
     </task>
-    <option name="localTasksCounter" value="1457" />
+    <task id="LOCAL-01457" summary="InlineFunction`1.md">
+      <option name="closed" value="true" />
+      <created>1760424075980</created>
+      <option name="number" value="01457" />
+      <option name="presentableId" value="LOCAL-01457" />
+      <option name="project" value="LOCAL" />
+      <updated>1760424075980</updated>
+    </task>
+    <task id="LOCAL-01458" summary="InlineFunction`2.md">
+      <option name="closed" value="true" />
+      <created>1760424273287</created>
+      <option name="number" value="01458" />
+      <option name="presentableId" value="LOCAL-01458" />
+      <option name="project" value="LOCAL" />
+      <updated>1760424273287</updated>
+    </task>
+    <option name="localTasksCounter" value="1459" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,8 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExpressionsBase.md" />
-    <MESSAGE value="ExpressionBase.md" />
     <MESSAGE value="ExpressionBase`1.md" />
     <MESSAGE value="ExpressionBase`2.md" />
     <MESSAGE value="AndExpressions.md" />
@@ -673,7 +672,9 @@
     <MESSAGE value="IFunction.md" />
     <MESSAGE value="IFunction`1.md" />
     <MESSAGE value="InlineFunction.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineFunction.md" />
+    <MESSAGE value="InlineFunction`1.md" />
+    <MESSAGE value="InlineFunction`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineFunction`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

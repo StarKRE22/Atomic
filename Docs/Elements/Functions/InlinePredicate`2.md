@@ -4,6 +4,10 @@ Represents a <b>parameterless</b> function that returns a result.
 
 ---
 
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 - **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
 - **Type Parameters:**
   - `T1` — the first input type
