@@ -2,10 +2,7 @@
 
 Represents a concrete implementation of that is **driven by Unity's `Time.fixedTime`** and
 updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable for tick-based game logic and physics
-updates.
-
-> [!TIP]
-> Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
+updates. Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
 
 ---
 
