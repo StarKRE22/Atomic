@@ -7,13 +7,33 @@ value assignment logic, enabling clean, reusable, and decoupled code for modifyi
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-examples-of-usage)
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Usage](#ex1)
+    - [Controller Usage](#ex2)
 - [API Reference](#-api-reference)
 - [Best Practices](#-best-practices)
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Basic Usage
+
+```csharp
+// Assume we have an ISetter<Vector3> instance
+ISetter<Vector3> moveDirection = ...;
+
+// Assign the forward direction
+moveDirection.Value = Vector3.forward;
+```
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Controller Usage
 
 Below is an example of using `ISetter<Vector3>` inside a movement input controller. This
 approach cleanly separates **input handling** from the **entity’s movement logic**, while relying only on the `ISetter`
@@ -48,4 +68,5 @@ public sealed class MoveController
 ---
 
 ## 📌 Best Practices
+
 - [Using Setters with Entities](../../BestPractices/UsingSetters.md)

@@ -1,8 +1,33 @@
 # 🧩 InlineSetter&lt;T&gt;
 
+Provides a wrapper around a standard `System.Action<T>` delegate
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineSetter(Action\<T>)](#inlinesetteractiont)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineSetter\<T>(Action\<T>)](#operator-inlinesettertactiont)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineSetter<T> : ISetter<T>
 ```
+
 - **Description:** Provides a wrapper around a standard `System.Action<T>` delegate
 - **Inheritance:** [ISetter&lt;T&gt;](ISetter.md)
 - **Type Parameter:** `T` – the type of the value to be set.
@@ -10,7 +35,7 @@ public class InlineSetter<T> : ISetter<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineSetter(Action<T>)`
 
@@ -22,7 +47,7 @@ public InlineSetter(Action<T> action)
 - **Parameter:** `action` — The action to invoke when the value is set.
 - **Throws:** `ArgumentNullException` if `action` is null.
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -33,7 +58,7 @@ public T Value { set; }
 - **Description:** Assigns the provided value.
 - **Parameter:** `value` — the new value to be set.
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -54,7 +79,7 @@ public override string ToString();
 - **Description:** Returns a string representing the method name of the underlying action.
 - **Returns:** A string representation of the method name of the delegate.
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineSetter<T>(Action<T>)`
 

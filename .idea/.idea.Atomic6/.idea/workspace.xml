@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSetters.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/ISetter.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/InlineSetter.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/InlineSetter.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Setters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Setters/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,15 +228,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="12536000" />
-    </task>
-    <task id="LOCAL-01425" summary="IExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1760350939192</created>
-      <option name="number" value="01425" />
-      <option name="presentableId" value="LOCAL-01425" />
-      <option name="project" value="LOCAL" />
-      <updated>1760350939193</updated>
+      <workItem from="1760420145768" duration="13007000" />
     </task>
     <task id="LOCAL-01426" summary="IExpression`2.md">
       <option name="closed" value="true" />
@@ -621,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760435676969</updated>
     </task>
-    <option name="localTasksCounter" value="1474" />
+    <task id="LOCAL-01474" summary="Manual Setter!">
+      <option name="closed" value="true" />
+      <created>1760436126343</created>
+      <option name="number" value="01474" />
+      <option name="presentableId" value="LOCAL-01474" />
+      <option name="project" value="LOCAL" />
+      <updated>1760436126343</updated>
+    </task>
+    <option name="localTasksCounter" value="1475" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="Сделал блок Expressions!" />
     <MESSAGE value="Пилим Functions!" />
     <MESSAGE value="IFunctions.md" />
@@ -673,7 +673,8 @@
     <MESSAGE value="Теперь для BaseRequest.md" />
     <MESSAGE value="BaseRequest.md" />
     <MESSAGE value="BaseRequest`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="BaseRequest`1.md" />
+    <MESSAGE value="Manual Setter!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Manual Setter!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

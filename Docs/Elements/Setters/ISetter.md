@@ -1,5 +1,37 @@
 # 🧩 ISetter&lt;T&gt;
 
+Defines a contract for **assigning values**.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an ISetter<Vector3> instance
+ISetter<Vector3> moveDirection = ...;
+
+// Assign the forward direction
+moveDirection.Value = Vector3.forward;
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ISetter<in T> : IAction<T>
 ```
@@ -10,7 +42,7 @@ public interface ISetter<in T> : IAction<T>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -23,7 +55,7 @@ public T Value { set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
