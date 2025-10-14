@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,23 +226,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="22058000" />
-    </task>
-    <task id="LOCAL-01433" summary="AndExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1760364801200</created>
-      <option name="number" value="01433" />
-      <option name="presentableId" value="LOCAL-01433" />
-      <option name="project" value="LOCAL" />
-      <updated>1760364801200</updated>
-    </task>
-    <task id="LOCAL-01434" summary="AndExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1760365766299</created>
-      <option name="number" value="01434" />
-      <option name="presentableId" value="LOCAL-01434" />
-      <option name="project" value="LOCAL" />
-      <updated>1760365766299</updated>
+      <workItem from="1760420145768" duration="22369000" />
     </task>
     <task id="LOCAL-01435" summary="AndExpression`2.md">
       <option name="closed" value="true" />
@@ -623,7 +604,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760470499413</updated>
     </task>
-    <option name="localTasksCounter" value="1482" />
+    <task id="LOCAL-01482" summary="Сделал Cooldowns!">
+      <option name="closed" value="true" />
+      <created>1760471099873</created>
+      <option name="number" value="01482" />
+      <option name="presentableId" value="LOCAL-01482" />
+      <option name="project" value="LOCAL" />
+      <updated>1760471099873</updated>
+    </task>
+    <task id="LOCAL-01483" summary="RandomCooldown.md">
+      <option name="closed" value="true" />
+      <created>1760471158821</created>
+      <option name="number" value="01483" />
+      <option name="presentableId" value="LOCAL-01483" />
+      <option name="project" value="LOCAL" />
+      <updated>1760471158821</updated>
+    </task>
+    <option name="localTasksCounter" value="1484" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,8 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IFunction`1.md" />
-    <MESSAGE value="InlineFunction.md" />
     <MESSAGE value="InlineFunction`1.md" />
     <MESSAGE value="InlineFunction`2.md" />
     <MESSAGE value="InlinePredicate.md" />
@@ -675,7 +670,9 @@
     <MESSAGE value="ITimeSource.md" />
     <MESSAGE value="Сделал Sources!" />
     <MESSAGE value="Cooldowns.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cooldowns.md" />
+    <MESSAGE value="Сделал Cooldowns!" />
+    <MESSAGE value="RandomCooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="RandomCooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,10 +4,11 @@ Represent a **timer family** that supports starting, pausing, resuming, stopping
 and state change notifications. Useful for gameplay timers, ability cooldowns, animation timers, and any system
 requiring precise time management.
 
-- [ITimer](ITimer.md) — Timer interface
-- [UpTimer](UpTimer.md) — Timer that counts **upwards** 
-- [DownTimer](DownTimer.md) — Timer that counts **down**
-- [TimerState](TimerState.md) — Current state of a timer.
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -54,3 +55,19 @@ Console.WriteLine("Timer stopped!");
 timer.SetTime(15f);        // set remaining time to 15 seconds
 timer.SetProgress(0.5f);   // set progress to 50%
 ```
+
+---
+
+## 🔍 API Reference
+
+- [ITimer](ITimer.md) — Timer interface
+- [UpTimer](UpTimer.md) — Timer that counts **upwards** 
+- [DownTimer](DownTimer.md) — Timer that counts **down**
+- [TimerState](TimerState.md) — Current state of a timer.
+
+---
+
+
+## 📌 Best Practices
+
+- [Cooldown vs Timer](../../BestPractices/ChosingBetweenTimerAndCooldown.md)
