@@ -1,4 +1,4 @@
-# 📌 Using Cooldown in Game Mechanics
+# 📌 Using Cooldown with Entities
 
 Below are real-world examples of using the `Cooldown` class in different gameplay scenarios.
 
@@ -157,6 +157,59 @@ public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
         _view.SetTime($"{minutes:00}:{seconds:00}");
+    }
+}
+```
+
+
+
+
+
+#### 1. Create `CoinSpawnController`
+
+```csharp
+public sealed class CoinSpawnController : IEntityInit<IGameContext>, IEntityFixedTick
+{
+    private ICooldown _cooldown;
+
+    public void Init(IGameContext context)
+    {
+        _cooldown = context.GetCoinSpawnCooldown();
+    }
+
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        _cooldown.Tick(deltaTime);
+        if (_cooldown.IsCompleted())
+        {
+            this.SpawnCoin();
+            _cooldown.ResetTime();
+        }
+    }
+    
+    // Logic for spawning a coin
+    private void SpawnCoin() { ... }
+}
+```
+
+#### 2. Attach `Cooldown` to `GameContextInstaller`
+
+Below we bind the `Cooldown` implementation and attach the coin spawn controller.
+
+```csharp
+public sealed class GameContextInstaller : SceneEntityInstaller<IGameContext>
+{
+    // Using Cooldown as implementation
+    [SerializeField] 
+    private Cooldown _coinSpawnCooldown = new Cooldown(2);
+
+    public override void Install(IGameContext context)
+    {
+        // Register cooldown
+        context.AddCoinSpawnCooldown(_coinSpawnCooldown);
+        
+        // Register coin spawn logic
+        context.AddBehaviour<CoinSpawnController>();
     }
 }
 ```
