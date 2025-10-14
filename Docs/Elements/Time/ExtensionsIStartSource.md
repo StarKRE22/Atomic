@@ -1,6 +1,6 @@
 # 🧩 IStartSource Extensions
 
-Provides **extension methods for** [Sources](Sources.md) to simplify restarting timers, countdowns, or other startable
+Provides **extension methods for** [IStartSource](IStartSource.md) to simplify restarting timers, countdowns, or other startable
 sources.
 
 ---
