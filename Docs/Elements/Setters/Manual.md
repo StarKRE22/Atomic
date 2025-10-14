@@ -3,35 +3,33 @@
 Provides interfaces and classes for **assigning values**. It offers a lightweight and consistent way to encapsulate
 value assignment logic, enabling clean, reusable, and decoupled code for modifying data.
 
-- [ISetter](ISetter.md) <!-- + -->
-- [InlineSetter](InlineSetter.md) <!-- + -->
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-examples-of-usage)
+- [API Reference](#-api-reference)
+- [Best Practices](#-best-practices)
 
 ---
 
 ## 🗂 Example of Usage
 
-Below is an example of using `ISetter<Vector3>` inside a movement input controller built with `Atomic.Entities`. This
+Below is an example of using `ISetter<Vector3>` inside a movement input controller. This
 approach cleanly separates **input handling** from the **entity’s movement logic**, while relying only on the `ISetter`
 interface.
 
 ```csharp
-//Create entity with "MoveDirection" property
-var entity = new Entity("Character");
-entity.AddValue<ISetter<Vector3>>("MoveDirection", new BaseVariable<Vector3>());
-```
-
-```csharp
-//Use "MoveDirection" through the ISetter<Vector3> interface 
-public sealed class MoveController : IEntityInit, IEntityTick
+public sealed class MoveController
 {
-    private ISetter<Vector3> _moveDirection;
-
-    public void Init(IEntity entity)
+    private readonly ISetter<Vector3> _moveDirection;
+    
+    public MoveController(ISetter<Vector3> moveDirection)
     {
-        _moveDirection = entity.GetValue<ISetter<Vector3>>("MoveDirection");
+        _moveDirection = moveDirection;
     }
     
-    public void Tick(IEntity entity, float deltaTime)
+    public void Update()
     {
         float dx = Input.GetAxis("Horizontal");
         float dz = Input.GetAxis("Vertical");
@@ -39,3 +37,15 @@ public sealed class MoveController : IEntityInit, IEntityTick
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+- [ISetter](ISetter.md) <!-- + -->
+- [InlineSetter](InlineSetter.md) <!-- + -->
+
+---
+
+## 📌 Best Practices
+- [Using Setters with Entities](../../BestPractices/UsingSetters.md)
