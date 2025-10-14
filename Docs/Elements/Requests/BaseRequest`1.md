@@ -4,7 +4,6 @@ Represents a request action with <b>one input argument</b>.
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
@@ -17,6 +16,29 @@ Represents a request action with <b>one input argument</b>.
         - [Invoke(T)](#invoket)
         - [Consume(out T)](#consumeout-t)
         - [TryGet(out T)](#trygetout-t)
+---
+
+
+## 🗂 Example of Usage
+
+```csharp
+var damageRequest = new BaseRequest<Character>();
+
+// Trigger the request from gameplay logic
+damageRequest.Invoke(targetCharacter);
+
+// Somewhere in a system that processes damage
+if (damageRequest.TryGet(out Character target))
+{
+    Debug.Log($"Applying damage is required to {target.Name}");
+}
+
+if (damageRequest.Consume(out target))
+{
+    Debug.Log("Damage request handled and consumed.");
+}
+```
+
 ---
 
 ## 🔍 API Reference

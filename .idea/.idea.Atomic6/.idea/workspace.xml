@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,15 +224,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="11315000" />
-    </task>
-    <task id="LOCAL-01423" summary="IExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760333702939</created>
-      <option name="number" value="01423" />
-      <option name="presentableId" value="LOCAL-01423" />
-      <option name="project" value="LOCAL" />
-      <updated>1760333702939</updated>
+      <workItem from="1760420145768" duration="12064000" />
     </task>
     <task id="LOCAL-01424" summary="IExpression.md">
       <option name="closed" value="true" />
@@ -625,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760433758585</updated>
     </task>
-    <option name="localTasksCounter" value="1472" />
+    <task id="LOCAL-01472" summary="BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1760434429200</created>
+      <option name="number" value="01472" />
+      <option name="presentableId" value="LOCAL-01472" />
+      <option name="project" value="LOCAL" />
+      <updated>1760434429200</updated>
+    </task>
+    <option name="localTasksCounter" value="1473" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IntMulExpressions.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IntMulExpression.md" />
     <MESSAGE value="Сделал блок Expressions!" />
@@ -677,7 +669,8 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="IRequest.md" />
     <MESSAGE value="Теперь для BaseRequest.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Теперь для BaseRequest.md" />
+    <MESSAGE value="BaseRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
