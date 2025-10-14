@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,15 +226,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="2914000" />
-    </task>
-    <task id="LOCAL-01411" summary="Переходим к Extensions Signals!">
-      <option name="closed" value="true" />
-      <created>1760292659448</created>
-      <option name="number" value="01411" />
-      <option name="presentableId" value="LOCAL-01411" />
-      <option name="project" value="LOCAL" />
-      <updated>1760292659448</updated>
+      <workItem from="1760420145768" duration="3393000" />
     </task>
     <task id="LOCAL-01412" summary="ExtensionsSubscribe.md">
       <option name="closed" value="true" />
@@ -618,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760424855916</updated>
     </task>
-    <option name="localTasksCounter" value="1460" />
+    <task id="LOCAL-01460" summary="InlinePredicate`1.md">
+      <option name="closed" value="true" />
+      <created>1760425148675</created>
+      <option name="number" value="01460" />
+      <option name="presentableId" value="LOCAL-01460" />
+      <option name="project" value="LOCAL" />
+      <updated>1760425148675</updated>
+    </task>
+    <option name="localTasksCounter" value="1461" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExpressionBase`2.md" />
     <MESSAGE value="AndExpressions.md" />
     <MESSAGE value="AndExpression`1.md" />
     <MESSAGE value="AndExpression`2.md" />
@@ -670,7 +671,8 @@
     <MESSAGE value="InlineFunction`1.md" />
     <MESSAGE value="InlineFunction`2.md" />
     <MESSAGE value="InlinePredicate.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate.md" />
+    <MESSAGE value="InlinePredicate`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

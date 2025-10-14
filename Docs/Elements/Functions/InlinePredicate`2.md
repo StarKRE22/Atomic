@@ -4,22 +4,53 @@ Represents a <b>parameterless</b> function that returns a result.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlinePredicate(Func<T1, T2, bool>)](#inlinepredicatefunct1-t2-bool)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlinePredicate<T1, T2>(Func<T1, T2, bool>)](#operator-inlinepredicatet1-t2funct1-t2-bool)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have instances of some Character class 
+Character player, enemy = ...
+
+// Create the predicate    
+IPredicate<Character, Character> predicate = new InlinePredicate<Character, Character>(
+    (a, b) => a.Team != b.Team
+);
+
+// Get the result
+bool areEnemies = predicate.Invoke(player, enemy);
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
-
-- **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
-- **Type Parameters:**
-  - `T1` — the first input type
-  - `T2` — the second input type
-- **Inheritance:** [InlineFunction&lt;T1, T2, R&gt;](InlineFunction%602.md), [IPredicate&lt;T1, T2&gt;](IPredicate%602.md)
-- **Note:** Supports Odin Inspector
-
 
 ```csharp
 public class InlinePredicate<T1, T2> : InlineFunction<T1, T2, bool>, IPredicate<T1, T2>
 ```
 
+- **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
+- **Type Parameters:**
+    - `T1` — the first input type
+    - `T2` — the second input type
+- **Inheritance:**
+  [InlineFunction&lt;T1, T2, R&gt;](InlineFunction%602.md), [IPredicate&lt;T1, T2&gt;](IPredicate%602.md)
+- **Note:** Supports Odin Inspector
 
 ---
 
@@ -37,7 +68,7 @@ public InlinePredicate(Func<T1, T2, bool> func)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -62,7 +93,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlinePredicate<T1, T2>(Func<T1, T2, bool>)`
 
@@ -73,16 +104,3 @@ public static implicit operator InlinePredicate<T1, T2>(Func<T1, T2, bool> value
 - **Description:** Implicitly converts a delegate of type `Func<T1, T2, bool>` to an `InlinePredicate<T1, T2>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlinePredicate<T1, T2>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-Character player, enemy = ...
-IPredicate<Character, Character> predicate = new InlinePredicate<Character, Character>(
-    (a, b) => a.Team != b.Team
-);
-bool areEnemies = predicate.Invoke(player, enemy);
-```
-
