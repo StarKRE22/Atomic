@@ -6,7 +6,6 @@ mechanics, scheduling, and periodic updates.
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)

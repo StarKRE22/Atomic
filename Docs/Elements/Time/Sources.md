@@ -1,7 +1,11 @@
-# 🧩 Source Contracts
+# 🧩 Source Interfaces
 
 Provides a set of flexible interfaces for **time tracking**, **state management**, and **progress monitoring** in
 reactive systems. These interfaces allow you to create sources that:
+
+---
+
+## 🔍 API Reference
 
 There are several **source interfaces** depending on the required properties, methods, and events:
 
