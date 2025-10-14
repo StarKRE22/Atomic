@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,15 +231,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="10291000" />
-    </task>
-    <task id="LOCAL-01421" summary="IExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760333614584</created>
-      <option name="number" value="01421" />
-      <option name="presentableId" value="LOCAL-01421" />
-      <option name="project" value="LOCAL" />
-      <updated>1760333614584</updated>
+      <workItem from="1760420145768" duration="10650000" />
     </task>
     <task id="LOCAL-01422" summary="IExpressions.md">
       <option name="closed" value="true" />
@@ -621,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760432970434</updated>
     </task>
-    <option name="localTasksCounter" value="1470" />
+    <task id="LOCAL-01470" summary="IRequest.md">
+      <option name="closed" value="true" />
+      <created>1760433294119</created>
+      <option name="number" value="01470" />
+      <option name="presentableId" value="LOCAL-01470" />
+      <option name="project" value="LOCAL" />
+      <updated>1760433294119</updated>
+    </task>
+    <option name="localTasksCounter" value="1471" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

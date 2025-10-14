@@ -17,7 +17,6 @@ Represents a <b>parameterless</b> request action.
 
 ---
 
-
 ## 🗂 Example of Usage
 
 ```csharp

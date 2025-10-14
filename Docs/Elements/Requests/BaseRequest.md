@@ -1,5 +1,6 @@
 # 🧩 BaseRequest
 
+
 ```csharp
 [Serializable]
 public class BaseRequest : IRequest

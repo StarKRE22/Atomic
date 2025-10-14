@@ -21,9 +21,6 @@ consumption** functionality.
 
 <div id="ex-1"></div>
 
-
-<div id="ex-1"></div>
-
 ### 1️⃣ Parameterless Request
 
 ```csharp

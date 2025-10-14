@@ -1,5 +1,30 @@
 # 🧩 IRequest&lt;T1, T2, T3, T4&gt;
 
+Represents a request action with <b>four input arguments</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Required](#required)
+        - [Arg1](#arg1)
+        - [Arg2](#arg2)
+        - [Arg3](#arg3)
+        - [Arg4](#arg4)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+        - [Consume(out T1, out T2, out T3, out T4)](#consumeout-t1-out-t2-out-t3-out-t4)
+        - [TryGet(out T1, out T2, out T3, out T4)](#trygetout-t1-out-t2-out-t3-out-t4)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 ```
@@ -14,7 +39,7 @@ public interface IRequest<T1, T2, T3, T4> : IAction<T1, T2, T3, T4>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Required`
 
@@ -58,7 +83,7 @@ public T4 Arg4 { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2, T3, T4)`
 

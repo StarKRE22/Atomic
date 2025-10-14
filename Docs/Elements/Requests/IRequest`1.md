@@ -1,5 +1,50 @@
 # 🧩 IRequest&lt;T&gt;
 
+Represents a request action with <b>one input argument</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Required](#required)
+        - [Arg](#arg)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+        - [Consume(out T)](#consumeout-t)
+        - [TryGet(out T)](#trygetout-t)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IRequest<Character> damageRequest = ...
+
+// Trigger the request from gameplay logic
+damageRequest.Invoke(targetCharacter);
+
+// Somewhere in a system that processes damage
+if (damageRequest.TryGet(out Character target))
+{
+    Debug.Log($"Applying damage is required to {target.Name}");
+}
+
+if (damageRequest.Consume(out target))
+{
+    Debug.Log("Damage request handled and consumed.");
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IRequest<T> : IAction<T>
 ```
@@ -10,7 +55,7 @@ public interface IRequest<T> : IAction<T>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Required`
 
@@ -52,7 +97,7 @@ public bool Consume(out T arg);
 - **Output:** `arg` — the argument value if the request was consumed successfully.
 - **Returns:** `true` if successfully consumed.
 
-#### `TryGet(out T arg)`
+#### `TryGet(out T)`
 
 ```csharp
 public bool TryGet(out T arg);
