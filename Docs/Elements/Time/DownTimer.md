@@ -1,32 +1,163 @@
 # 🧩 DownTimer
 
+Represents a **countdown timer** that tracks duration, remaining time, progress, and state.
+It provides full control over **start, pause, resume, stop**, progress updates, and state notifications. Use `DownTimer`
+when you need a stateful timer that counts down and broadcasts progress and state
+changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md).
+
+
+---
+
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li><a href="#-inspector-settings">Inspector Settings</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#downtimer">DownTimer()</a></li>
+            <li><a href="#downtimerfloat">DownTimer(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstarted">OnStarted</a></li>
+            <li><a href="#onstopped">OnStopped</a></li>
+            <li><a href="#onpaused">OnPaused</a></li>
+            <li><a href="#onresumed">OnResumed</a></li>
+            <li><a href="#oncompleted">OnCompleted</a></li>
+            <li><a href="#ontimechanged">OnTimeChanged</a></li>
+            <li><a href="#ondurationchanged">OnDurationChanged</a></li>
+            <li><a href="#onprogresschanged">OnProgressChanged</a></li>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#currentstate">CurrentState</a></li>
+            <li><a href="#duration">Duration</a></li>
+            <li><a href="#time">Time</a></li>
+            <li><a href="#progress">Progress</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#start">Start()</a></li>
+            <li><a href="#startfloat">Start(float)</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#isstarted">IsStarted()</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#pause">Pause()</a></li>
+            <li><a href="#resume">Resume()</a></li>
+            <li><a href="#ispaused">IsPaused()</a></li>
+            <li><a href="#iscompleted">IsCompleted()</a></li>
+            <li><a href="#gettime">GetTime()</a></li>
+            <li><a href="#settimefloat">SetTime(float)</a></li>
+            <li><a href="#resettime">ResetTime()</a></li>
+            <li><a href="#getduration">GetDuration()</a></li>
+            <li><a href="#setdurationfloat">SetDuration(float)</a></li>
+            <li><a href="#getprogress">GetProgress()</a></li>
+            <li><a href="#setprogressfloat">SetProgress(float)</a></li>
+            <li><a href="#getstate">GetState()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-operators">Operators</a></summary>
+          <ul>
+            <li><a href="#operator-downtimerfloat">DownTimer(float)</a></li>
+            <li><a href="#operator-downtimerint">DownTimer(int)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+DownTimer timer = 30;
+
+// Subscribe to events
+timer.OnStarted += () => Console.WriteLine("Countdown started!");
+timer.OnTimeChanged += t => Console.WriteLine($"Time remaining: {t:F1}s");
+timer.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
+timer.OnCompleted += () => Console.WriteLine("Countdown completed!");
+
+// 1. Start the countdown
+timer.Start(); // must call Start before ticking
+
+// 2. Tick the countdown (simulate time passing)
+float deltaTime = 1f;
+while (!timer.IsCompleted())
+{
+    timer.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
+}
+
+// 3. Pause and resume
+timer.Pause();
+Console.WriteLine("Countdown paused...");
+timer.Resume();
+
+// 4. Stop the countdown
+timer.Stop();
+Console.WriteLine("Countdown stopped!");
+
+// 5. Reset or manually set time/progress
+timer.SetTime(15f);        // set remaining time to 15 seconds
+timer.SetProgress(0.5f);   // set progress to 50%
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class DownTimer : ITimer
 ```
 
-- **Description:** Represents a **countdown timer** that tracks duration, remaining time, progress, and state.
-  It provides full control over **start, pause, resume, stop**, progress updates, and state notifications.
 - **Inheritance:** [ITimer](ITimer.md)
 - **Notes:**
-  - [TimerState](TimerState.md) represents current state of the timer
-  - Supports Unity serialization and Odin Inspector
-
-> [!TIP]
-> Use `DownTimer` when you need a stateful timer that counts down and broadcasts progress and state
-> changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md).
+    - [TimerState](TimerState.md) represents current state of the timer
+    - Supports Unity serialization and Odin Inspector
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
-| Parameter     | Description                           |
-|---------------|---------------------------------------|
-| `duration`    | The total duration of the timer.      |
+| Parameter  | Description                      |
+|------------|----------------------------------|
+| `duration` | The total duration of the timer. |
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `DownTimer()`
 
@@ -49,7 +180,7 @@ public DownTimer(float duration);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStarted`
 
@@ -134,7 +265,7 @@ public event Action<TimerState> OnStateChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `State`
 
@@ -174,9 +305,9 @@ public float Progress { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `void Start()`
+#### `Start()`
 
 ```csharp
 public void Start();
@@ -185,7 +316,7 @@ public void Start();
 - **Description:** Starts the countdown from its full duration.
 - **Remarks:** Triggers `OnStarted` and sets state to `PLAYING`.
 
-#### `void Start(float)`
+#### `Start(float)`
 
 ```csharp
 public void Start(float time);
@@ -195,7 +326,7 @@ public void Start(float time);
 - **Parameter:** `time` — starting time in seconds.
 - **Remarks:** Triggers `OnStarted` and sets state to `PLAYING`.
 
-#### `void Stop()`
+#### `Stop()`
 
 ```csharp
 public void Stop();
@@ -204,7 +335,7 @@ public void Stop();
 - **Description:** Stops the countdown and resets the current time to zero.
 - **Remarks:** Triggers `OnStopped` and sets state to `IDLE`.
 
-#### `void Pause()`
+#### `Pause()`
 
 ```csharp
 public void Pause();
@@ -213,7 +344,7 @@ public void Pause();
 - **Description:** Pauses the countdown.
 - **Remarks:** Triggers `OnPaused` and sets state to `PAUSED`.
 
-#### `void Resume()`
+#### `Resume()`
 
 ```csharp
 public void Resume();
@@ -222,7 +353,7 @@ public void Resume();
 - **Description:** Resumes the countdown from paused state.
 - **Remarks:** Triggers `OnResumed` and sets state to `PLAYING`.
 
-#### `bool IsIdle()`
+#### `IsIdle()`
 
 ```csharp
 public bool IsIdle();
@@ -231,7 +362,7 @@ public bool IsIdle();
 - **Description:** Returns whether the countdown has not started.
 - **Returns:** `true` if `IDLE`; otherwise `false`.
 
-#### `bool IsStarted()`
+#### `IsStarted()`
 
 ```csharp
 public bool IsStarted();
@@ -240,7 +371,7 @@ public bool IsStarted();
 - **Description:** Returns whether the countdown is running.
 - **Returns:** `true` if `PLAYING`; otherwise `false`.
 
-#### `bool IsPaused()`
+#### `IsPaused()`
 
 ```csharp
 public bool IsPaused();
@@ -249,7 +380,7 @@ public bool IsPaused();
 - **Description:** Returns whether the countdown is paused.
 - **Returns:** `true` if `PAUSED`; otherwise `false`.
 
-#### `bool IsCompleted()`
+#### `IsCompleted()`
 
 ```csharp
 public bool IsCompleted();
@@ -258,7 +389,7 @@ public bool IsCompleted();
 - **Description:** Returns whether the countdown has finished.
 - **Returns:** `true` if `COMPLETED`; otherwise `false`.
 
-#### `float GetTime()`
+#### `GetTime()`
 
 ```csharp
 public float GetTime();
@@ -266,7 +397,7 @@ public float GetTime();
 
 - **Description:** Returns the current remaining time in seconds.
 
-#### `void SetTime(float)`
+#### `SetTime(float)`
 
 ```csharp
 public void SetTime(float time);
@@ -276,7 +407,16 @@ public void SetTime(float time);
 - **Parameter:** `time` — new time in seconds.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `float GetDuration()`
+#### `ResetTime()`
+
+```csharp
+public void ResetTime();  
+```
+
+- **Description:** Resets the current time to the full duration.
+- **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
+
+#### `GetDuration()`
 
 ```csharp
 public float GetDuration();
@@ -284,7 +424,7 @@ public float GetDuration();
 
 - **Description:** Returns the total duration of the countdown.
 
-#### `void SetDuration(float)`
+#### `SetDuration(float)`
 
 ```csharp
 public void SetDuration(float duration);
@@ -294,7 +434,7 @@ public void SetDuration(float duration);
 - **Parameter:** `duration` — new duration in seconds.
 - **Remarks:** Triggers `OnDurationChanged` and `OnProgressChanged`.
 
-#### `float GetProgress()`
+#### `GetProgress()`
 
 ```csharp
 public float GetProgress();
@@ -302,7 +442,7 @@ public float GetProgress();
 
 - **Description:** Returns normalized progress (0–1).
 
-#### `void SetProgress(float)`
+#### `SetProgress(float)`
 
 ```csharp
 public void SetProgress(float progress);
@@ -312,7 +452,7 @@ public void SetProgress(float progress);
 - **Parameter:** `progress` — value between 0 and 1.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `TimerState GetState()`
+#### `GetState()`
 
 ```csharp
 public TimerState GetState();
@@ -320,7 +460,7 @@ public TimerState GetState();
 
 - **Description:** Returns the current state of the countdown (`IDLE`, `PLAYING`, `PAUSED`, `COMPLETED`).
 
-#### `void Tick(float)`
+#### `Tick(float)`
 
 ```csharp
 public void Tick(float deltaTime);
@@ -332,7 +472,7 @@ public void Tick(float deltaTime);
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator DownTimer(float)`
 
@@ -353,41 +493,3 @@ public static implicit operator DownTimer(int duration);
 - **Description:** Implicitly converts an `int` value to a `DownTimer` instance.
 - **Parameters:** `duration` — duration in seconds for the new countdown.
 - **Returns:** A new `DownTimer` initialized with the specified duration.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-DownTimer timer = 30;
-
-// Subscribe to events
-timer.OnStarted += () => Console.WriteLine("Countdown started!");
-timer.OnTimeChanged += t => Console.WriteLine($"Time remaining: {t:F1}s");
-timer.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
-timer.OnCompleted += () => Console.WriteLine("Countdown completed!");
-
-// 1. Start the countdown
-timer.Start(); // must call Start before ticking
-
-// 2. Tick the countdown (simulate time passing)
-float deltaTime = 1f;
-while (!timer.IsCompleted())
-{
-    timer.Tick(deltaTime);
-    System.Threading.Thread.Sleep(1000);
-}
-
-// 3. Pause and resume
-timer.Pause();
-Console.WriteLine("Countdown paused...");
-timer.Resume();
-
-// 4. Stop the countdown
-timer.Stop();
-Console.WriteLine("Countdown stopped!");
-
-// 5. Reset or manually set time/progress
-timer.SetTime(15f);        // set remaining time to 15 seconds
-timer.SetProgress(0.5f);   // set progress to 50%
-```

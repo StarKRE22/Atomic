@@ -1,5 +1,116 @@
 # 🧩 ITimer
 
+Represents a general-purpose **timer interface** that supports starting, pausing, resuming, stopping,
+progress tracking, and state change notifications. Useful for gameplay timers, ability cooldowns, animation timers, and
+any system requiring precise time management.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstarted">OnStarted</a></li>
+            <li><a href="#onstopped">OnStopped</a></li>
+            <li><a href="#onpaused">OnPaused</a></li>
+            <li><a href="#onresumed">OnResumed</a></li>
+            <li><a href="#oncompleted">OnCompleted</a></li>
+            <li><a href="#ontimechanged">OnTimeChanged</a></li>
+            <li><a href="#ondurationchanged">OnDurationChanged</a></li>
+            <li><a href="#onprogresschanged">OnProgressChanged</a></li>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#start">Start()</a></li>
+            <li><a href="#startfloat">Start(float)</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#isstarted">IsStarted()</a></li>
+            <li><a href="#pause">Pause()</a></li>
+            <li><a href="#resume">Resume()</a></li>
+            <li><a href="#ispaused">IsPaused()</a></li>
+            <li><a href="#iscompleted">IsCompleted()</a></li>
+            <li><a href="#gettime">GetTime()</a></li>
+            <li><a href="#settimefloat">SetTime(float)</a></li>
+            <li><a href="#resettime">ResetTime()</a></li>
+            <li><a href="#getduration">GetDuration()</a></li>
+            <li><a href="#setdurationfloat">SetDuration(float)</a></li>
+            <li><a href="#getprogress">GetProgress()</a></li>
+            <li><a href="#setprogressfloat">SetProgress(float)</a></li>
+            <li><a href="#getstate">GetState()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have an ITimer instance
+ITimer timer = ...;
+
+// Subscribe to events
+timer.OnStarted += () => Console.WriteLine("Timer started!");
+timer.OnTimeChanged += t => Console.WriteLine($"Time remaining: {t:F1}s");
+timer.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
+timer.OnCompleted += () => Console.WriteLine("Timer completed!");
+
+// 1. Start the timer
+timer.Start(); // must call Start before ticking
+
+// 2. Tick the timer (simulate time passing, e.g., 1 second per tick)
+float deltaTime = 1f;
+while (!timer.IsCompleted())
+{
+    timer.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000); // wait 1 second (simulation)
+}
+
+// 3. After completion, you can restart the timer
+if (timer.IsCompleted())
+{
+    Console.WriteLine("Restarting timer...");
+    timer.Start();
+}
+
+// 4. Pause and resume (optional)
+timer.Pause();
+Console.WriteLine("Timer paused...");
+timer.Resume();
+
+// 5. Stop the timer (optional)
+timer.Stop();
+Console.WriteLine("Timer stopped!");
+
+// 6. Reset or manually set time/progress (optional)
+timer.SetTime(15f);        // set remaining time to 15 seconds
+timer.SetProgress(0.5f);   // set progress to 50%
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ITimer :
     IStartSource,
@@ -12,21 +123,15 @@ public interface ITimer :
     ITickSource
 ```
 
-- **Description:** Represents a general-purpose **timer interface** that supports starting, pausing, resuming, stopping,
-  progress tracking, and state change notifications.
-
 - **Inheritance:** [IStartSource](IStartSource.md), [IPauseSource](IPauseSource.md),
   [ICompleteSource](ICompleteSource.md), [IStateSource](IStateSource.md), [ITimeSource](ITimeSource.md),
   [IDurationSource](IDurationSource.md), [IProgressSource](IProgressSource.md), [ITickSource](ITickSource.md).
 
 - **Note:** [TimerState](TimerState.md) represents current state of the timer.
 
-> [!TIP]
-> Useful for gameplay timers, ability cooldowns, animation timers, and any system requiring precise time management.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStarted`
 
@@ -114,9 +219,9 @@ public event Action<TimerState> OnStateChanged;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `void Start()`
+#### `Start()`
 
 ```csharp
 public void Start();
@@ -125,7 +230,7 @@ public void Start();
 - **Description:** Starts the timer from its default start time.
 - **Remarks:** Triggers `OnStarted` event.
 
-#### `void Start(float)`
+#### `Start(float)`
 
 ```csharp
 public void Start(float time);
@@ -135,7 +240,7 @@ public void Start(float time);
 - **Parameter:** `time` — starting time in seconds.
 - **Remarks:** Triggers `OnStarted` event.
 
-#### `void Stop()`
+#### `Stop()`
 
 ```csharp
 public void Stop();
@@ -144,7 +249,7 @@ public void Stop();
 - **Description:** Stops the timer and resets the current time.
 - **Remarks:** Triggers `OnStopped` event.
 
-#### `bool IsStarted()`
+#### `IsStarted()`
 
 ```csharp
 public bool IsStarted();
@@ -153,16 +258,7 @@ public bool IsStarted();
 - **Description:** Returns whether the timer is currently running.
 - **Returns:** `true` if the timer is running; otherwise `false`.
 
-#### `bool IsIdle()`
-
-```csharp
-public bool IsIdle();
-```
-
-- **Description:** Returns whether the timer has not started yet.
-- **Returns:** `true` if idle; otherwise `false`.
-
-#### `void Pause()`
+#### `Pause()`
 
 ```csharp
 public void Pause();
@@ -171,7 +267,7 @@ public void Pause();
 - **Description:** Pauses the timer.
 - **Remarks:** Triggers `OnPaused` event.
 
-#### `void Resume()`
+#### `Resume()`
 
 ```csharp
 public void Resume();
@@ -180,7 +276,7 @@ public void Resume();
 - **Description:** Resumes the timer from paused state.
 - **Remarks:** Triggers `OnResumed` event.
 
-#### `bool IsPaused()`
+#### `IsPaused()`
 
 ```csharp
 public bool IsPaused();
@@ -189,7 +285,7 @@ public bool IsPaused();
 - **Description:** Returns whether the timer is currently paused.
 - **Returns:** `true` if paused; otherwise `false`.
 
-#### `bool IsCompleted()`
+#### `IsCompleted()`
 
 ```csharp
 public bool IsCompleted();
@@ -199,7 +295,7 @@ public bool IsCompleted();
 - **Returns:** `true` if completed; otherwise `false`.
 - **Remarks:** Completion triggers `OnCompleted` event.
 
-#### `float GetTime()`
+#### `GetTime()`
 
 ```csharp
 public float GetTime();
@@ -208,7 +304,7 @@ public float GetTime();
 - **Description:** Returns the current timer value.
 - **Returns:** Current time in seconds.
 
-#### `void SetTime(float)`
+#### `SetTime(float)`
 
 ```csharp
 public void SetTime(float time);
@@ -218,7 +314,17 @@ public void SetTime(float time);
 - **Parameter:** `time` — the new time in seconds.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged` if value changes.
 
-#### `float GetDuration()`
+#### `ResetTime()`
+
+```csharp
+public void ResetTime();  
+```
+
+- **Description:** Resets the timer to its initial state.
+- **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via
+  `OnTimeChanged`.
+
+#### `GetDuration()`
 
 ```csharp
 public float GetDuration();
@@ -227,7 +333,7 @@ public float GetDuration();
 - **Description:** Returns the total duration of the timer.
 - **Returns:** Duration in seconds.
 
-#### `void SetDuration(float)`
+#### `SetDuration(float)`
 
 ```csharp
 public void SetDuration(float duration);
@@ -237,7 +343,7 @@ public void SetDuration(float duration);
 - **Parameter:** `duration` — total duration in seconds.
 - **Remarks:** Triggers `OnDurationChanged` and `OnProgressChanged`.
 
-#### `float GetProgress()`
+#### `GetProgress()`
 
 ```csharp
 public float GetProgress();
@@ -246,7 +352,7 @@ public float GetProgress();
 - **Description:** Returns the normalized progress of the timer.
 - **Returns:** Value between `0` and `1`.
 
-#### `void SetProgress(float)`
+#### `SetProgress(float)`
 
 ```csharp
 public void SetProgress(float progress);
@@ -256,7 +362,7 @@ public void SetProgress(float progress);
 - **Parameter:** `progress` — normalized value between `0` and `1`.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
-#### `TimerState GetState()`
+#### `GetState()`
 
 ```csharp
 public TimerState GetState();
@@ -266,7 +372,7 @@ public TimerState GetState();
 - **Returns:** [TimerState](TimerState.md) — e.g., Idle, Playing, Paused, Completed.
 - **Remarks:** Can be used to track state transitions along with `OnStateChanged`.
 
-#### `void Tick(float)`
+#### `Tick(float)`
 
 ```csharp
 public void Tick(float deltaTime);

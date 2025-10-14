@@ -1,32 +1,171 @@
 # 🧩 UpTimer
 
+Represents a **count up timer** that tracks duration, current time, progress, and state. It provides
+full control over **start, pause, resume, stop**, progress updates, and state notifications. Use `UpTimer` when you need
+a stateful timer with events and full control over its lifecycle. For
+simple countdowns, consider [ICooldown](ICooldown.md).
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li><a href="#-inspector-settings">Inspector Settings</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#uptimer">UpTimer()</a></li>
+            <li><a href="#uptimerfloat">UpTimer(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstarted">OnStarted</a></li>
+            <li><a href="#onstopped">OnStopped</a></li>
+            <li><a href="#onpaused">OnPaused</a></li>
+            <li><a href="#onresumed">OnResumed</a></li>
+            <li><a href="#oncompleted">OnCompleted</a></li>
+            <li><a href="#ontimechanged">OnTimeChanged</a></li>
+            <li><a href="#ondurationchanged">OnDurationChanged</a></li>
+            <li><a href="#onprogresschanged">OnProgressChanged</a></li>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#currentstate">CurrentState</a></li>
+            <li><a href="#duration">Duration</a></li>
+            <li><a href="#time">Time</a></li>
+            <li><a href="#progress">Progress</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#start">Start()</a></li>
+            <li><a href="#startfloat">Start(float)</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#isstarted">IsStarted()</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#pause">Pause()</a></li>
+            <li><a href="#resume">Resume()</a></li>
+            <li><a href="#ispaused">IsPaused()</a></li>
+            <li><a href="#iscompleted">IsCompleted()</a></li>
+            <li><a href="#gettime">GetTime()</a></li>
+            <li><a href="#settimefloat">SetTime(float)</a></li>
+            <li><a href="#resettime">ResetTime()</a></li>
+            <li><a href="#getduration">GetDuration()</a></li>
+            <li><a href="#setdurationfloat">SetDuration(float)</a></li>
+            <li><a href="#getprogress">GetProgress()</a></li>
+            <li><a href="#setprogressfloat">SetProgress(float)</a></li>
+            <li><a href="#getstate">GetState()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-operators">Operators</a></summary>
+          <ul>
+            <li><a href="#operator-uptimerfloat">UpTimer(float)</a></li>
+            <li><a href="#operator-uptimerint">UpTimer(int)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a timer of 30 seconds
+UpTimer timer = 30f;
+
+// Subscribe to events
+timer.OnStarted += () => Console.WriteLine("Timer started!");
+timer.OnTimeChanged += t => Console.WriteLine($"Time remaining: {t:F1}s");
+timer.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
+timer.OnCompleted += () => Console.WriteLine("Timer completed!");
+
+// 1. Start the timer
+timer.Start(); // must call Start before ticking
+
+// 2. Tick the timer (simulate time passing, e.g., 1 second per tick)
+float deltaTime = 1f;
+while (!timer.IsCompleted())
+{
+    timer.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000); // wait 1 second (simulation)
+}
+
+// 3. After completion, you can restart the timer
+if (timer.IsCompleted())
+{
+    Console.WriteLine("Restarting timer...");
+    timer.Start();
+}
+
+// 4. Pause and resume (optional)
+timer.Pause();
+Console.WriteLine("Timer paused...");
+timer.Resume();
+
+// 5. Stop the timer (optional)
+timer.Stop();
+Console.WriteLine("Timer stopped!");
+
+// 6. Reset or manually set time/progress (optional)
+timer.SetTime(15f);        // set remaining time to 15 seconds
+timer.SetProgress(0.5f);   // set progress to 50%
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class UpTimer : ITimer
 ```
 
-- **Description:** Represents a **count up timer** that tracks duration, current time, progress, and state. It provides
-  full control over **start, pause, resume, stop**, progress updates, and state notifications.
 - **Inheritance:** [ITimer](ITimer.md)
 - **Notes:**
-  - [TimerState](TimerState.md) represents current state of the timer
-  - Supports Unity serialization and Odin Inspector
+    - [TimerState](TimerState.md) represents current state of the timer
+    - Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Use `UpTimer` when you need a stateful timer with events and full control over its lifecycle. For
-> simple countdowns, consider [ICooldown](ICooldown.md).
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
-| Parameter     | Description                           |
-|---------------|---------------------------------------|
-| `duration`    | The total duration of the timer.      |
+| Parameter  | Description                      |
+|------------|----------------------------------|
+| `duration` | The total duration of the timer. |
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructor"></div>
+
+### 🏗️ Constructors
 
 #### `UpTimer()`
 
@@ -49,7 +188,7 @@ public UpTimer(float duration);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStarted`
 
@@ -134,7 +273,7 @@ public event Action<TimerState> OnStateChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `CurrentState`
 
@@ -175,7 +314,7 @@ public float Progress { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Start()`
 
@@ -277,6 +416,15 @@ public void SetTime(float time);
 - **Parameter:** `time` — new timer value in seconds.
 - **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
 
+#### `ResetTime()`
+
+```csharp
+public void ResetTime();  
+```
+
+- **Description:** Resets the timer's current time to zero
+- **Remarks:** Triggers `OnTimeChanged` and `OnProgressChanged`.
+
 #### `GetDuration()`
 
 ```csharp
@@ -333,7 +481,7 @@ public void Tick(float deltaTime);
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator UpTimer(float)`
 
@@ -354,49 +502,3 @@ public static implicit operator UpTimer(int duration);
 - **Description:** Implicitly converts an `int` value to a `UpTimer` instance.
 - **Parameters:** `duration` — The duration in seconds for the new `UpTimer`.
 - **Returns:** A new `UpTimer` initialized with the specified duration.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Create a timer of 30 seconds
-UpTimer timer = 30f;
-
-// Subscribe to events
-timer.OnStarted += () => Console.WriteLine("Timer started!");
-timer.OnTimeChanged += t => Console.WriteLine($"Time remaining: {t:F1}s");
-timer.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
-timer.OnCompleted += () => Console.WriteLine("Timer completed!");
-
-// 1. Start the timer
-timer.Start(); // must call Start before ticking
-
-// 2. Tick the timer (simulate time passing, e.g., 1 second per tick)
-float deltaTime = 1f;
-while (!timer.IsCompleted())
-{
-    timer.Tick(deltaTime);
-    System.Threading.Thread.Sleep(1000); // wait 1 second (simulation)
-}
-
-// 3. After completion, you can restart the timer
-if (timer.IsCompleted())
-{
-    Console.WriteLine("Restarting timer...");
-    timer.Start();
-}
-
-// 4. Pause and resume (optional)
-timer.Pause();
-Console.WriteLine("Timer paused...");
-timer.Resume();
-
-// 5. Stop the timer (optional)
-timer.Stop();
-Console.WriteLine("Timer stopped!");
-
-// 6. Reset or manually set time/progress (optional)
-timer.SetTime(15f);        // set remaining time to 15 seconds
-timer.SetProgress(0.5f);   // set progress to 50%
-```
