@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,15 +224,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="2609000" />
-    </task>
-    <task id="LOCAL-01410" summary="Subscription`4.md">
-      <option name="closed" value="true" />
-      <created>1760292548539</created>
-      <option name="number" value="01410" />
-      <option name="presentableId" value="LOCAL-01410" />
-      <option name="project" value="LOCAL" />
-      <updated>1760292548539</updated>
+      <workItem from="1760420145768" duration="2914000" />
     </task>
     <task id="LOCAL-01411" summary="Переходим к Extensions Signals!">
       <option name="closed" value="true" />
@@ -622,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760424273287</updated>
     </task>
-    <option name="localTasksCounter" value="1459" />
+    <task id="LOCAL-01459" summary="InlinePredicate.md">
+      <option name="closed" value="true" />
+      <created>1760424855916</created>
+      <option name="number" value="01459" />
+      <option name="presentableId" value="LOCAL-01459" />
+      <option name="project" value="LOCAL" />
+      <updated>1760424855916</updated>
+    </task>
+    <option name="localTasksCounter" value="1460" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +645,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExpressionBase`1.md" />
     <MESSAGE value="ExpressionBase`2.md" />
     <MESSAGE value="AndExpressions.md" />
     <MESSAGE value="AndExpression`1.md" />
@@ -674,7 +669,8 @@
     <MESSAGE value="InlineFunction.md" />
     <MESSAGE value="InlineFunction`1.md" />
     <MESSAGE value="InlineFunction`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineFunction`2.md" />
+    <MESSAGE value="InlinePredicate.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
