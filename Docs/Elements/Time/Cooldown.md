@@ -1,5 +1,83 @@
 # 🧩 Cooldown
 
+Concrete implementation of the **cooldown** that tracks the remaining time, provides normalized
+progress, and raises events when its state changes.
+
+> [!TIP]
+> Useful for game mechanics such as ability cooldowns, weapon reloads, or timed delays.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Constructors](#-constructors)
+        - [Cooldown()](#cooldown)
+        - [Cooldown(float)](#cooldownfloat)
+    - [Events](#-events)
+        - [OnTimeChanged](#ontimechanged)
+        - [OnDurationChanged](#ondurationchanged)
+        - [OnProgressChanged](#onprogresschanged)
+        - [OnCompleted](#oncompleted)
+    - [Methods](#-methods)
+        - [GetTime()](#gettime)
+        - [SetTime(float)](#settimefloat)
+        - [ResetTime()](#resettime)
+        - [GetDuration()](#getduration)
+        - [SetDuration(float)](#setdurationfloat)
+        - [Tick(float)](#tickfloat)
+        - [GetProgress()](#getprogress)
+        - [SetProgress(float)](#setprogressfloat)
+        - [IsCompleted()](#iscompleted)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [Cooldown(float)](#operator-cooldownfloat)
+        - [Cooldown(int)](#operator-cooldownint)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a cooldown of 5 seconds
+Cooldown cooldown = 5f;
+
+// Subscribe to events
+cooldown.OnTimeChanged += time => 
+    Console.WriteLine($"Time remaining: {time:F2}s");
+
+cooldown.OnProgressChanged += progress => 
+    Console.WriteLine($"Progress: {progress:P0}");
+
+cooldown.OnCompleted += () => 
+    Console.WriteLine("Cooldown complete!");
+
+// Simulate a game loop updating the cooldown
+float deltaTime = 1f; // 1 second per tick
+while (!cooldown.IsCompleted())
+{
+    cooldown.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000); // wait 1 second
+}
+
+// Reset the cooldown to full duration
+cooldown.ResetTime();
+Console.WriteLine($"Cooldown reset. Time remaining: {cooldown.GetTime()}s");
+
+// Set progress to 50%
+cooldown.SetProgress(0.5f);
+Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetTime()}s");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class Cooldown : ICooldown
@@ -10,13 +88,9 @@ public class Cooldown : ICooldown
 - **Inheritance:** [ICooldown](ICooldown.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
 
-> [!TIP]
-> Useful for game mechanics such as ability cooldowns, weapon reloads, or timed delays.
-
-
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter     | Description                            |
 |---------------|----------------------------------------|
@@ -25,7 +99,9 @@ public class Cooldown : ICooldown
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructor"></div>
+
+### 🏗️ Constructors
 
 #### `Cooldown()`
 
@@ -48,7 +124,7 @@ public Cooldown(float duration);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnTimeChanged`
 
@@ -87,7 +163,7 @@ public event Action OnCompleted;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `GetTime()`
 
@@ -184,7 +260,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator Cooldown(float)`
 
@@ -205,38 +281,3 @@ public static implicit operator Cooldown(int duration) => new(duration);
 - **Description:** Allows implicit conversion from a `int` to a `Cooldown`.
 - **Parameter:** `duration` — The duration value in seconds.
 - **Returns:** A new instance of `Cooldown` initialized with the given `duration`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Create a cooldown of 5 seconds
-Cooldown cooldown = 5f;
-
-// Subscribe to events
-cooldown.OnTimeChanged += time => 
-    Console.WriteLine($"Time remaining: {time:F2}s");
-
-cooldown.OnProgressChanged += progress => 
-    Console.WriteLine($"Progress: {progress:P0}");
-
-cooldown.OnCompleted += () => 
-    Console.WriteLine("Cooldown complete!");
-
-// Simulate a game loop updating the cooldown
-float deltaTime = 1f; // 1 second per tick
-while (!cooldown.IsCompleted())
-{
-    cooldown.Tick(deltaTime);
-    System.Threading.Thread.Sleep(1000); // wait 1 second
-}
-
-// Reset the cooldown to full duration
-cooldown.ResetTime();
-Console.WriteLine($"Cooldown reset. Time remaining: {cooldown.GetTime()}s");
-
-// Set progress to 50%
-cooldown.SetProgress(0.5f);
-Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetTime()}s");
-```

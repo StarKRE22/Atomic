@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Sources/IStartSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Sources/IStartSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/RandomCooldown.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,23 +229,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="21360000" />
-    </task>
-    <task id="LOCAL-01431" summary="ExpressionBase`2.md">
-      <option name="closed" value="true" />
-      <created>1760364009967</created>
-      <option name="number" value="01431" />
-      <option name="presentableId" value="LOCAL-01431" />
-      <option name="project" value="LOCAL" />
-      <updated>1760364009967</updated>
-    </task>
-    <task id="LOCAL-01432" summary="AndExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760364322734</created>
-      <option name="number" value="01432" />
-      <option name="presentableId" value="LOCAL-01432" />
-      <option name="project" value="LOCAL" />
-      <updated>1760364322734</updated>
+      <workItem from="1760420145768" duration="22058000" />
     </task>
     <task id="LOCAL-01433" summary="AndExpression`1.md">
       <option name="closed" value="true" />
@@ -629,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760442182311</updated>
     </task>
-    <option name="localTasksCounter" value="1480" />
+    <task id="LOCAL-01480" summary="Сделал Sources!">
+      <option name="closed" value="true" />
+      <created>1760470226112</created>
+      <option name="number" value="01480" />
+      <option name="presentableId" value="LOCAL-01480" />
+      <option name="project" value="LOCAL" />
+      <updated>1760470226112</updated>
+    </task>
+    <task id="LOCAL-01481" summary="Cooldowns.md">
+      <option name="closed" value="true" />
+      <created>1760470499413</created>
+      <option name="number" value="01481" />
+      <option name="presentableId" value="LOCAL-01481" />
+      <option name="project" value="LOCAL" />
+      <updated>1760470499413</updated>
+    </task>
+    <option name="localTasksCounter" value="1482" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,8 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Прочесал общие блоки!" />
-    <MESSAGE value="IFunction.md" />
     <MESSAGE value="IFunction`1.md" />
     <MESSAGE value="InlineFunction.md" />
     <MESSAGE value="InlineFunction`1.md" />
@@ -681,7 +673,9 @@
     <MESSAGE value="Timers Manual!" />
     <MESSAGE value="Начинаем пилить ITimeSource!" />
     <MESSAGE value="ITimeSource.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ITimeSource.md" />
+    <MESSAGE value="Сделал Sources!" />
+    <MESSAGE value="Cooldowns.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cooldowns.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

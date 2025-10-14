@@ -1,5 +1,75 @@
 # 🧩️ ICooldown
 
+Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
+when its state changes.
+
+> [!TIP]
+> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnTimeChanged](#ontimechanged)
+    - [OnDurationChanged](#ondurationchanged)
+    - [OnProgressChanged](#onprogresschanged)
+    - [OnCompleted](#oncompleted)
+  - [Methods](#-methods)
+    - [GetTime()](#gettime)
+    - [SetTime(float)](#settimefloat)
+    - [ResetTime()](#resettime)
+    - [GetDuration()](#getduration)
+    - [SetDuration(float)](#setdurationfloat)
+    - [Tick(float)](#tickfloat)
+    - [GetProgress()](#getprogress)
+    - [SetProgress(float)](#setprogressfloat)
+    - [IsCompleted()](#iscompleted)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have a ICooldown instance
+ICooldown cooldown = ...;
+
+// Subscribe to events
+cooldown.OnTimeChanged += time => 
+    Console.WriteLine($"Time remaining: {time:F2}s");
+
+cooldown.OnProgressChanged += progress => 
+    Console.WriteLine($"Progress: {progress:P0}");
+
+cooldown.OnCompleted += () => 
+    Console.WriteLine("Cooldown complete!");
+
+// Simulate a game loop updating the cooldown
+float deltaTime = 1f; // 1 second per tick
+while (!cooldown.IsCompleted())
+{
+    cooldown.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000); // wait 1 second
+}
+
+// Reset the cooldown to full duration
+cooldown.ResetTime();
+Console.WriteLine($"Cooldown reset. Time remaining: {cooldown.GetTime()}s");
+
+// Set progress to 50%
+cooldown.SetProgress(0.5f);
+Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetTime()}s");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ICooldown : ITimeSource, IDurationSource, ITickSource, IProgressSource, ICompleteSource;
 ```
@@ -7,12 +77,9 @@ public interface ICooldown : ITimeSource, IDurationSource, ITickSource, IProgres
 when its state changes.
 - **Inheritance:** [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
 
-> [!TIP]
-> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnTimeChanged`
 
@@ -49,7 +116,7 @@ public event Action OnCompleted;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `GetTime()`
 
