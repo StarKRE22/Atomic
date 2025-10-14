@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ExtensionsIStartSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ExtensionsIStartSource.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,23 +226,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="25761000" />
-    </task>
-    <task id="LOCAL-01444" summary="IntMulExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760369539261</created>
-      <option name="number" value="01444" />
-      <option name="presentableId" value="LOCAL-01444" />
-      <option name="project" value="LOCAL" />
-      <updated>1760369539261</updated>
-    </task>
-    <task id="LOCAL-01445" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1760375520493</created>
-      <option name="number" value="01445" />
-      <option name="presentableId" value="LOCAL-01445" />
-      <option name="project" value="LOCAL" />
-      <updated>1760375520494</updated>
+      <workItem from="1760420145768" duration="26069000" />
     </task>
     <task id="LOCAL-01446" summary="IntMulExpression.md">
       <option name="closed" value="true" />
@@ -622,7 +604,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760474392331</updated>
     </task>
-    <option name="localTasksCounter" value="1493" />
+    <task id="LOCAL-01493" summary="Сделал Timestamps.md">
+      <option name="closed" value="true" />
+      <created>1760474709853</created>
+      <option name="number" value="01493" />
+      <option name="presentableId" value="LOCAL-01493" />
+      <option name="project" value="LOCAL" />
+      <updated>1760474709853</updated>
+    </task>
+    <task id="LOCAL-01494" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760474758241</created>
+      <option name="number" value="01494" />
+      <option name="presentableId" value="LOCAL-01494" />
+      <option name="project" value="LOCAL" />
+      <updated>1760474758241</updated>
+    </task>
+    <option name="localTasksCounter" value="1495" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPredicate`1.md" />
     <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="Request Manual" />
     <MESSAGE value="Manual.md" />
@@ -673,6 +670,7 @@
     <MESSAGE value="Сделал Stopwatches.md" />
     <MESSAGE value="Stopwatches.md" />
     <MESSAGE value="Сделал периоды!" />
+    <MESSAGE value="Сделал Timestamps.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
