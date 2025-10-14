@@ -162,7 +162,10 @@ public class CountdownPresenter : IEntityInit<IUIContext>, IEntityDispose
 ```
 
 
+## 🗂 Example of Usage
 
+The following example demonstrates how to use **cooldown** for spawning coins as game objects in a scene, together with
+the `Atomic.Entities` framework.
 
 
 #### 1. Create `CoinSpawnController`
