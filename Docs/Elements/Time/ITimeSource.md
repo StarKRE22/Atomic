@@ -14,7 +14,7 @@ changes</b>.
   - [Methods](#-methods)
     - [GetTime()](#gettime)
     - [SetTime(float)](#settimefloat)
-    - [ResetTime()](#resettim)
+    - [ResetTime()](#resettime)
 
 ---
 
