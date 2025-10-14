@@ -7,14 +7,39 @@ changes</b>.
 
 ## 📑 Table of Contents
 
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Events](#-events)
-    - [OnTimeChanged](#ontimechanged)
-  - [Methods](#-methods)
-    - [GetTime()](#gettime)
-    - [SetTime(float)](#settimefloat)
-    - [ResetTime()](#resettime)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnTimeChanged](#ontimechanged)
+    - [Methods](#-methods)
+        - [GetTime()](#gettime)
+        - [SetTime(float)](#settimefloat)
+        - [ResetTime()](#resettime)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an ITimeSource instance
+ITimeSource timeSource = ...;
+
+// Subscribe to the event
+timeSource.OnTimeChanged += (time) =>
+{
+    Console.WriteLine($"Time changed: {time:0.00} sec");
+};
+
+// Get current time
+float currentTime = timeSource.GetTime();
+
+// Set current time
+timeSource.SetTime(1.5f);
+
+// Reset current time to default
+timeSource.ResetTime();
+```
 
 ---
 

@@ -13,9 +13,6 @@ namespace Atomic.Elements
         /// <summary>Raised when the source stops.</summary>
         event Action OnStopped;
 
-        /// <summary>Returns true if the source has not started yet.</summary>
-        bool IsIdle();
-
         /// <summary>Returns true if the source is running.</summary>
         bool IsStarted();
 

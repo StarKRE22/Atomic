@@ -6,6 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Sources/IStartSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Sources/IStartSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ICompleteSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IDurationSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPauseSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IProgressSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStartSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStateSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITickSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimeSource.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +235,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="16868000" />
-    </task>
-    <task id="LOCAL-01430" summary="ExpressionBase`1.md">
-      <option name="closed" value="true" />
-      <created>1760363561707</created>
-      <option name="number" value="01430" />
-      <option name="presentableId" value="LOCAL-01430" />
-      <option name="project" value="LOCAL" />
-      <updated>1760363561707</updated>
+      <workItem from="1760420145768" duration="21360000" />
     </task>
     <task id="LOCAL-01431" summary="ExpressionBase`2.md">
       <option name="closed" value="true" />
@@ -620,7 +621,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760439737176</updated>
     </task>
-    <option name="localTasksCounter" value="1479" />
+    <task id="LOCAL-01479" summary="ITimeSource.md">
+      <option name="closed" value="true" />
+      <created>1760442182311</created>
+      <option name="number" value="01479" />
+      <option name="presentableId" value="LOCAL-01479" />
+      <option name="project" value="LOCAL" />
+      <updated>1760442182311</updated>
+    </task>
+    <option name="localTasksCounter" value="1480" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

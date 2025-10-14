@@ -1,14 +1,42 @@
 # 🧩 ITickSource
 
+Represents a source that <b>can be updated over time through the ticks</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Tick(float)](#tickfloat)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an ITickSource instance
+ITickSource tickSource = ...;
+
+// Advance the source by 1 frame (e.g., 16ms)
+tickSource.Tick(0.016f);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ITickSource
 ```
 
-- **Description:** Represents a source that <b>can be updated over time through the ticks</b>.
-
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Tick(float)`
 
