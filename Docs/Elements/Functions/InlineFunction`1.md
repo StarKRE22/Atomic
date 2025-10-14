@@ -1,6 +1,38 @@
 # 🧩 InlineFunction&lt;T, R&gt;
 
-Represents a <b>parameterless</b> function that returns a result.
+Represents a function with <b>one input argument</b> that returns a result.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineFunction(Func<T, R>)](#inlinefunctionfunct-r)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineFunction<T, R>(Func<T, R>)](#operator-inlinefunctiont-rfunct-r)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have instances of some characters
+Character player, enemy = ...
+
+// Create the function
+IFunction<bool> function = new InlineFunction<Character, bool>(
+    other => player.Team != other.Team
+);
+
+// Get result
+bool isEnemies = function.Invoke(enemy);
+```
 
 ---
 
@@ -35,7 +67,7 @@ public InlineFunction(Func<T, R> func)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 
@@ -58,7 +90,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineFunction<T, R>(Func<T, R>)`
 
@@ -69,16 +101,3 @@ public static implicit operator InlineFunction<T, R>(Func<T, R> value);
 - **Description:** Implicitly converts a delegate of type `Func<T, R>` to an `InlineFunction<T, R>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<T, R>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-Character player, enemy = ...
-IFunction<bool> function = new InlineFunction<Character, bool>(
-    other => player.Team != other.Team
-);
-
-bool isEnemies = function.Invoke(enemy);
-```
