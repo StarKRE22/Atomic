@@ -179,3 +179,4 @@ There are several abstractions of actions, depending on the number of arguments 
 - [Using Inline Actions](../../BestPractices/UsingInlineActions.md)
 - [Using SerializeReference for CompositeActions](../../BestPractices/UsingSerializeReferenceForCompositeActions.md)
 - [Using SerializeReference for LogAction](../../BestPractices/UsingSerializeReferenceForPrintActions.md)
+- [Actions vs Requests](../../BestPractices/RequestsVsActions.md)

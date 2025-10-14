@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingRequests.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IPredicate`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/RequestsVsActions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,15 +230,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="7191000" />
-    </task>
-    <task id="LOCAL-01417" summary="Expressions">
-      <option name="closed" value="true" />
-      <created>1760332598765</created>
-      <option name="number" value="01417" />
-      <option name="presentableId" value="LOCAL-01417" />
-      <option name="project" value="LOCAL" />
-      <updated>1760332598765</updated>
+      <workItem from="1760420145768" duration="8673000" />
     </task>
     <task id="LOCAL-01418" summary="IExpressions.md">
       <option name="closed" value="true" />
@@ -621,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760428163168</updated>
     </task>
-    <option name="localTasksCounter" value="1466" />
+    <task id="LOCAL-01466" summary="IPredicate`2.md">
+      <option name="closed" value="true" />
+      <created>1760429157003</created>
+      <option name="number" value="01466" />
+      <option name="presentableId" value="LOCAL-01466" />
+      <option name="project" value="LOCAL" />
+      <updated>1760429157003</updated>
+    </task>
+    <option name="localTasksCounter" value="1467" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="OrExpressions.md" />
     <MESSAGE value="InlineExpressions.md" />
     <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="InlineExpression`1.md" />
@@ -673,7 +675,8 @@
     <MESSAGE value="ExtensionsCollections.md" />
     <MESSAGE value="IPredicate.md" />
     <MESSAGE value="IPredicate`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IPredicate`1.md" />
+    <MESSAGE value="IPredicate`2.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IPredicate`2.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

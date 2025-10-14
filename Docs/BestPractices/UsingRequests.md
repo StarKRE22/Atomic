@@ -1,37 +1,21 @@
-# 📌 Requests vs Actions
 
-When designing game mechanics, you may often wonder **what the difference is between `Requests` and `Actions`**, since both perform operations. Which one should you choose in a given situation?
+## 🗂 Examples of Usage
 
----
-
-## 🏹 Actions
-
-An **Action** executes immediately. For example, if a character triggers a shooting action or interact with pick up, it is performed instantly:
-
-### 1. Shooting weapon
-```csharp
-IEntity character = ...
-IAction fireAction = character.GetFireAction();
-fireAction.Invoke(); // Executes immediately!
-```
-
-### 2. Interacting with item
-```csharp
-IEntity character = ...
-IEntity pickUp = ...
-
-IAction<IEntity> interactAction = pickUp.GetInteractAction();
-interactAction.Invoke(character); // Executes immediately!
-```
+Below are examples of using request with the `Atomic.Entities` framework.
 
 ---
 
-## ⏳ Requests
+### 1️⃣ Move Input Using Requests
 
-A **Request** has a slightly different nature: it represents a deferred action that can be executed later. This is particularly useful when **player input occurs in `Update`**, but the request is processed in `FixedUpdate`. Requests also prevent **duplicate commands** if the same request is already active.
+This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume
+it later in fixed update**:
 
-### 1. Move Input Using Requests
-This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume it later in fixed update**:
+```csharp
+//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
+entity.AddMoveRequest(new BaseRequest<Vector3>());
+entity.AddBehaviour<MoveController>();
+entity.AddBehaviour<MoveBehaviour>();
+```
 
 ```csharp
 // MoveController produces the request
@@ -52,7 +36,9 @@ public sealed class MoveController : IEntityInit, IEntityTick
         _moveRequest.Invoke(moveDirection);
     }
 }
+```
 
+```csharp
 // MoveBehaviour consumes the request
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
@@ -67,7 +53,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
         _moveRequest = entity.GetMoveRequest();
     }
 
-    public void FixedTick(IEntity entity, float deltaTime)
+    public void FixedTick((IEntity entity, float deltaTime))
     {
         if (_moveRequest.Consume(out Vector3 moveDirection))
             _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
@@ -75,8 +61,18 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-### 2. Target Following Using Requests
+---
+
+### 2️⃣ Target Following Using Requests
+
 In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
+
+```csharp
+//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
+entity.AddMoveRequest(new BaseRequest<Vector3>());
+entity.AddBehaviour<AIFollowBehaviour>();
+entity.AddBehaviour<MoveBehaviour>();
+```
 
 ```csharp
 // AIFollowBehaviour produces the request
@@ -109,38 +105,27 @@ public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
         _moveRequest.Invoke(moveDirection);
     }
 }
+```
 
+```csharp
 // MoveBehaviour consumes the request
 public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 {
-    //Same code 
+    private Transform _transform;
+    private IValue<float> _moveSpeed;
+    private IRequest<Vector3> _moveRequest;
+
+    public void Init(IEntity entity)
+    {
+        _transform = entity.GetTransform();
+        _moveSpeed = entity.GetMoveSpeed();
+        _moveRequest = entity.GetMoveRequest();
+    }
+
+    public void FixedTick((IEntity entity, float deltaTime))
+    {
+        if (_moveRequest.Consume(out Vector3 moveDirection))
+            _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
+    }
 }
 ```
-
----
-
-## 🕹 About Multiplayer
-
-In multiplayer games, **Actions are generally preferred over Requests** because:
-
-- The client's **tick-rate is synchronized and re-simulated**, making immediate execution more reliable.
-- Using Requests would require **additional network synchronization** for request flags, which adds unnecessary complexity.
-
----
-
-
-## 🏁 Conclusion
-**Choose Requests for deferred logic, Actions for immediate execution.**
-
-- **Single-player games**  
-  Use **Requests** in systems like `InputControllers` or `AI`.  
-  Requests allow **deferred execution**, ensuring actions are handled cleanly in the next frame without duplication.
-
-
-- **Multiplayer / networked games**  
-  Use **Actions** to propagate events and commands across clients.  
-  Actions are better for **decoupling and broadcasting behavior**.
-
----
-
-

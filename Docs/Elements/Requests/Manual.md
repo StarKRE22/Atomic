@@ -5,6 +5,106 @@ input is collected in one phase (e.g., `Update`) but processed in another (e.g.,
 Requests also help **prevent duplicate commands** by ensuring the same request is not processed multiple times while
 active.
 
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+  - [Parameterless Request](#ex-1)
+  - [Single-Argument Request](#ex-2)
+  - [Component Usage](#ex-3)
+- [API Reference](#-api-reference)
+- [Notes](#-notes)
+- [Best Practices](#-best-practices)
+
+
+---
+
+## 🗂 Examples of Usage
+
+<div id="ex-1"></div>
+
+### 1️⃣ Parameterless Request
+
+```csharp
+// Assume this request signals a simple UI action
+IRequest shootRequest = new BaseRequest();
+
+// Somewhere in the UI system we mark it as required
+shootRequest.Invoke();
+
+// Later in the game loop or system update
+if (shoot.Required)
+{
+    Debug.Log("Shoot request detected!");
+    
+    // Consume it so it's not triggered again
+    if (shoot.Consume())
+    {
+        Debug.Log("Shoot request consumed successfully.");
+    }
+}
+
+```
+
+<div id="ex-2"></div>
+
+### 2️⃣ Single-Argument Request
+
+```csharp
+// Create a request to damage a specific character
+IRequest<Character> damageRequest = new BaseRequest<Character>();
+
+// Trigger the request from gameplay logic
+damageRequest.Invoke(targetCharacter);
+
+// Somewhere in a system that processes damage
+if (damageRequest.TryGet(out Character target))
+{
+    Debug.Log($"Applying damage to {target.Name}");
+
+    if (damageRequest.Consume(out target))
+    {
+        target.ApplyDamage(10);
+        Debug.Log("Damage request handled and consumed.");
+    }
+}
+```
+
+<div id="ex-3"></div>
+
+### 3️⃣ Component Usage
+
+```csharp
+public class AttackComponent : MonoBehaviour
+{
+    private readonly IRequest<GameObject> _request = new BaseRequest<GameObject>();
+    
+    public bool IsAttack => _request.Required;
+
+    //Calls from Update — Input System or UI System
+    public void Attack(GameObject target)
+    {
+        _request.Invoke(target);
+    }
+    
+    private void FixedUpdate()
+    {
+        if (_request.Consume(out GameObject target))
+        {
+            // Deal damage to target or fire bullet...
+        }
+    }
+}
+```
+
+---
+
+## 🔍 API Reference
+
+There are several interfaces and implementations of requests, depending on the concrete scenario and the number of
+arguments:
+
 - [IRequests](IRequests.md) <!-- + -->
     - [IRequest](IRequest.md) <!-- + -->
     - [IRequest&lt;T&gt;](IRequest%601.md) <!-- + -->
@@ -20,137 +120,6 @@ active.
 
 ---
 
-## 🗂 Examples of Usage
-
-Below are examples of using request with the `Atomic.Entities` framework.
-
----
-
-### 1️⃣ Move Input Using Requests
-
-This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume
-it later in fixed update**:
-
-```csharp
-//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
-entity.AddMoveRequest(new BaseRequest<Vector3>());
-entity.AddBehaviour<MoveController>();
-entity.AddBehaviour<MoveBehaviour>();
-```
-
-```csharp
-// MoveController produces the request
-public sealed class MoveController : IEntityInit, IEntityTick
-{
-    private IRequest<Vector3> _moveRequest;
-    
-    public void Init(IEntity entity)
-    {
-        _moveRequest = entity.GetMoveRequest();    
-    }
-
-    public void Tick(IEntity entity, float deltaTime)
-    {
-        float dx = Input.GetAxis("Horizontal");
-        float dz = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(dx, 0, dz );
-        _moveRequest.Invoke(moveDirection);
-    }
-}
-```
-
-```csharp
-// MoveBehaviour consumes the request
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
-{
-    private Transform _transform;
-    private IValue<float> _moveSpeed;
-    private IRequest<Vector3> _moveRequest;
-
-    public void Init(IEntity entity)
-    {
-        _transform = entity.GetTransform();
-        _moveSpeed = entity.GetMoveSpeed();
-        _moveRequest = entity.GetMoveRequest();
-    }
-
-    public void FixedTick((IEntity entity, float deltaTime))
-    {
-        if (_moveRequest.Consume(out Vector3 moveDirection))
-            _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
-    }
-}
-```
-
----
-
-### 2️⃣ Target Following Using Requests
-
-In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
-
-```csharp
-//Add to entity "MoveRequest" as "BaseRequest<Vector3>"
-entity.AddMoveRequest(new BaseRequest<Vector3>());
-entity.AddBehaviour<AIFollowBehaviour>();
-entity.AddBehaviour<MoveBehaviour>();
-```
-
-```csharp
-// AIFollowBehaviour produces the request
-public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
-{
-    private IValue<IEntity> _target;
-    private IValue<Vector3> _position;
-    private IRequest<Vector3> _moveRequest;
-    private IValue<float> _stoppingDistance;
-    
-    public void Init(IEntity entity)
-    {
-        _target = entity.GetTarget();
-        _position = entity.GetPosition();
-        _moveRequest = entity.GetMoveRequest();    
-        _stoppingDistance = entity.GetStoppingDistance();
-    }
-
-    public void Tick(IEntity entity, float deltaTime)
-    {
-        IEntity target = _target.Value;
-        if (target == null)
-            return;
-        
-        Vector3 delta = _target.GetPosition().Value - _position.Value;
-        if (delta.magnitude <= _stoppingDistance.Value)
-            return;
-        
-        Vector3 moveDirection = delta.normalized;
-        _moveRequest.Invoke(moveDirection);
-    }
-}
-```
-
-```csharp
-// MoveBehaviour consumes the request
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
-{
-    private Transform _transform;
-    private IValue<float> _moveSpeed;
-    private IRequest<Vector3> _moveRequest;
-
-    public void Init(IEntity entity)
-    {
-        _transform = entity.GetTransform();
-        _moveSpeed = entity.GetMoveSpeed();
-        _moveRequest = entity.GetMoveRequest();
-    }
-
-    public void FixedTick((IEntity entity, float deltaTime))
-    {
-        if (_moveRequest.Consume(out Vector3 moveDirection))
-            _transform.position += moveDirection * Time.fixedDeltaTime * _moveSpeed.Value;
-    }
-}
-```
-
 ## 📝 Notes
 
 - **Deferred execution** – Requests can be stored and processed later via `Consume()`.
@@ -158,3 +127,12 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
   are still required.
 - **Required** – Indicates whether the request currently needs handling.
 - **TryGet / Consume** – Methods to safely inspect or process the request arguments.
+
+
+---
+
+## 📌 Best Practices
+
+- [Using Requests with Entities](../../BestPractices/UsingRequests.md)
+- [Requests vs Actions](../../BestPractices/RequestsVsActions.md)
+
