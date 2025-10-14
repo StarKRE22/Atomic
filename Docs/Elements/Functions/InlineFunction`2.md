@@ -4,6 +4,33 @@ Represents a function with <b>two input arguments</b> that returns a result.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineFunction(Func<T1, T2, R>)](#inlinefunctionfunct1-t2-r)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineFunction<T1, T2, R>(Func<T1, T2, R>)](#operator-inlinefunctiont1-t2-rfunct1-t2-r)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IFunction<int, int, int> function = new InlineFunction<int, int, int>(
+    (a, b) => a + b
+);
+
+int sum = function.Invoke(3, 4); // 7
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -36,7 +63,7 @@ public InlineFunction(Func<T1, T2, R> func)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T1, T2)`
 
@@ -61,7 +88,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineFunction<T1, T2, R>(Func<T1, T2, R>)`
 
@@ -72,15 +99,3 @@ public static implicit operator InlineFunction<T1, T2, R>(Func<T1, T2, R> value)
 - **Description:** Implicitly converts a delegate of type `Func<T1, T2, R>` to an `InlineFunction<T1, T2, R>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<T1, T2, R>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IFunction<int, int, int> function = new InlineFunction<int, int, int>(
-    (a, b) => a + b
-);
-
-int sum = function.Invoke(3, 4); // 7
-```
