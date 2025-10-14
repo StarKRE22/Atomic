@@ -1,15 +1,58 @@
 # 🧩 ITimestamp
 
+Represents a **timestamp that can be tracked over time using ticks**. It provides properties and
+methods to start, stop, and query the state of a timestamp, including remaining time, progress, and expiration status.
+
+---
+
+## 📑 Table of Contents
+
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#endtick">EndTick</a></li>
+            <li><a href="#remainingticks">RemainingTicks</a></li>
+            <li><a href="#remainingtime">RemainingTime</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#startfromsecondsfloat">StartFromSeconds(float)</a></li>
+            <li><a href="#startfromticksint">StartFromTicks(int)</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#getprogressfloat">GetProgress(float)</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#isplaying">IsPlaying()</a></li>
+            <li><a href="#isexpired">IsExpired()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ITimestamp
 ```
 
-- **Description:** Represents a **timestamp that can be tracked over time using ticks**. It provides properties and
-  methods to start, stop, and query the state of a timestamp, including remaining time, progress, and expiration status.
-
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `EndTick`
 
@@ -37,7 +80,7 @@ public float RemainingTime { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `StartFromSeconds(float)`
 

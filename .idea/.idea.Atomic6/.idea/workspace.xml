@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IPeriod.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Period.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/PeriodState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/PeriodState.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Periods.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Periods.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/FixedTimestamp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimestamp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Timestamps.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,23 +228,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="25451000" />
-    </task>
-    <task id="LOCAL-01442" summary="InlineExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1760368698248</created>
-      <option name="number" value="01442" />
-      <option name="presentableId" value="LOCAL-01442" />
-      <option name="project" value="LOCAL" />
-      <updated>1760368698248</updated>
-    </task>
-    <task id="LOCAL-01443" summary="InlineExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1760369140550</created>
-      <option name="number" value="01443" />
-      <option name="presentableId" value="LOCAL-01443" />
-      <option name="project" value="LOCAL" />
-      <updated>1760369140551</updated>
+      <workItem from="1760420145768" duration="25761000" />
     </task>
     <task id="LOCAL-01444" summary="IntMulExpressions.md">
       <option name="closed" value="true" />
@@ -624,7 +606,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760473655013</updated>
     </task>
-    <option name="localTasksCounter" value="1491" />
+    <task id="LOCAL-01491" summary="Сделал периоды!">
+      <option name="closed" value="true" />
+      <created>1760474299990</created>
+      <option name="number" value="01491" />
+      <option name="presentableId" value="LOCAL-01491" />
+      <option name="project" value="LOCAL" />
+      <updated>1760474299990</updated>
+    </task>
+    <task id="LOCAL-01492" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760474392331</created>
+      <option name="number" value="01492" />
+      <option name="presentableId" value="LOCAL-01492" />
+      <option name="project" value="LOCAL" />
+      <updated>1760474392331</updated>
+    </task>
+    <option name="localTasksCounter" value="1493" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPredicate.md" />
     <MESSAGE value="IPredicate`1.md" />
     <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="Request Manual" />
@@ -672,11 +669,12 @@
     <MESSAGE value="ICooldown.md" />
     <MESSAGE value="Timers.md" />
     <MESSAGE value="Timers Done!" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="TimerState.md" />
     <MESSAGE value="Сделал Stopwatches.md" />
     <MESSAGE value="Stopwatches.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stopwatches.md" />
+    <MESSAGE value="Сделал периоды!" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

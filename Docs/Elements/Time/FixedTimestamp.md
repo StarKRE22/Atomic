@@ -1,21 +1,75 @@
 # 🧩 FixedTimestamp
 
-
-```csharp
-public class FixedTimestamp : ITimestamp;
-```
-- **Description:** Represents a concrete implementation of  that is **driven by Unity's `Time.fixedTime`** and
-  updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable for tick-based game logic and physics
-  updates.
-- **Inheritance:** [ITimestamp](ITimestamp.md)
-- **Notes:** Supports Odin Inspector
+Represents a concrete implementation of that is **driven by Unity's `Time.fixedTime`** and
+updated on `FixedUpdate`. It tracks a timestamp in ticks and seconds, suitable for tick-based game logic and physics
+updates.
 
 > [!TIP]
 > Especially useful in **tick-based systems** as it provides consistent timing independent of frame rate.
 
 ---
 
-## 🏗️ Constructors
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#fixedtimestampint">FixedTimestamp(int)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#endtick">EndTick</a></li>
+            <li><a href="#remainingticks">RemainingTicks</a></li>
+            <li><a href="#remainingtime">RemainingTime</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#startfromsecondsfloat">StartFromSeconds(float)</a></li>
+            <li><a href="#startfromticksint">StartFromTicks(int)</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#getprogressfloat">GetProgress(float)</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#isplaying">IsPlaying()</a></li>
+            <li><a href="#isexpired">IsExpired()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public class FixedTimestamp : ITimestamp;
+```
+
+- **Inheritance:** [ITimestamp](ITimestamp.md)
+- **Notes:** Supports Odin Inspector
+
+
+---
+
+<div id="-constructors"></div>
+
+### 🏗️ Constructors
 
 #### `FixedTimestamp(int)`
 
@@ -28,7 +82,7 @@ public FixedTimestamp(int endTick = -1);
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `EndTick`
 
@@ -56,7 +110,7 @@ public float RemainingTime { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `StartFromSeconds(float)`
 
