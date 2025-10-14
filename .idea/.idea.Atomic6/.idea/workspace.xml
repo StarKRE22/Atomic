@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsInvert.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/ExtensionsCollections.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,15 +227,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="3834000" />
-    </task>
-    <task id="LOCAL-01413" summary="ExtensionsUnsubscribe.md">
-      <option name="closed" value="true" />
-      <created>1760297795625</created>
-      <option name="number" value="01413" />
-      <option name="presentableId" value="LOCAL-01413" />
-      <option name="project" value="LOCAL" />
-      <updated>1760297795625</updated>
+      <workItem from="1760420145768" duration="4942000" />
     </task>
     <task id="LOCAL-01414" summary="ExtensionsSubscribeRange.md">
       <option name="closed" value="true" />
@@ -620,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760425385472</updated>
     </task>
-    <option name="localTasksCounter" value="1462" />
+    <task id="LOCAL-01462" summary="ExtensionsInvert.md">
+      <option name="closed" value="true" />
+      <created>1760425998969</created>
+      <option name="number" value="01462" />
+      <option name="presentableId" value="LOCAL-01462" />
+      <option name="project" value="LOCAL" />
+      <updated>1760425998970</updated>
+    </task>
+    <option name="localTasksCounter" value="1463" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="AndExpression`1.md" />
     <MESSAGE value="AndExpression`2.md" />
     <MESSAGE value="OrExpression.md" />
     <MESSAGE value="OrExpression`1.md" />
@@ -672,7 +672,8 @@
     <MESSAGE value="InlinePredicate.md" />
     <MESSAGE value="InlinePredicate`1.md" />
     <MESSAGE value="InlinePredicate`2.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlinePredicate`2.md" />
+    <MESSAGE value="ExtensionsInvert.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsInvert.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
