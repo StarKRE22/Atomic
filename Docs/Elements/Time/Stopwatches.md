@@ -9,9 +9,12 @@ track elapsed time in gameplay, animations, or any time-dependent system.
 > speedrun timers). Unlike [ITimer](ITimer.md), a stopwatch does not count down toward a duration — it only measures how
 > long something has been running.
 
-- [IStopwatch](IStopwatch.md) – Stopwatch interface
-- [Stopwatch](Stopwatch.md) — Stopwatch implementation
-- [StopwatchState](StopwatchState.md) — Current state of a stopwatch
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
 
 ---
 
@@ -47,3 +50,11 @@ stopwatch.Resume();
 stopwatch.Stop();
 stopwatch.ResetTime();
 ```
+
+---
+
+## 🔍 API Reference
+
+- [IStopwatch](IStopwatch.md) – Stopwatch interface
+- [Stopwatch](Stopwatch.md) — Stopwatch implementation
+- [StopwatchState](StopwatchState.md) — Current state of a stopwatch

@@ -1,14 +1,44 @@
 # 🧩 StopwatchState
 
+Represents the **current state of a stopwatch**. It is used by [IStopwatch](IStopwatch.md) and [Stopwatch](Stopwatch.md) to indicate whether the stopwatch is
+idle, running, paused.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-values">Values</a></summary>
+          <ul>
+            <li><a href="#idle">IDLE</a></li>
+            <li><a href="#playing">PLAYING</a></li>
+            <li><a href="#paused">PAUSED</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public enum StopwatchState
 ```
 
-- **Description:** Represents the **current state of a stopwatch**.
-- **Note:** It is used by [IStopwatch](IStopwatch.md) and [Stopwatch](Stopwatch.md) to indicate whether the stopwatch is
-  idle, running, paused.
-
 ---
+
+### 🔑 Values
 
 #### `IDLE`
 
@@ -26,30 +56,3 @@ public enum StopwatchState
 - **Description:** The stopwatch was running but has been temporarily paused.
 - **Usage:** Returned by `IStopwatch.GetState()` after `Pause()` is called and before `Resume()`.
 - **Remarks:** Elapsed time does not increase until resumed.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IStopwatch stopwatch = new Stopwatch();
-
-// Check initial state
-Console.WriteLine(stopwatch.GetState()); // Output: IDLE
-
-// Start the stopwatch
-stopwatch.Start();
-Console.WriteLine(stopwatch.GetState()); // Output: PLAYING
-
-// Pause the stopwatch
-stopwatch.Pause();
-Console.WriteLine(stopwatch.GetState()); // Output: PAUSED
-
-// Resume
-stopwatch.Resume();
-Console.WriteLine(stopwatch.GetState()); // Output: PLAYING
-
-// Stop
-stopwatch.Stop();
-Console.WriteLine(stopwatch.GetState()); // Output: IDLE
-```

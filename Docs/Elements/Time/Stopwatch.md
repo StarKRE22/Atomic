@@ -1,13 +1,112 @@
 # 🧩 Stopwatch
 
+Represents a **stateful stopwatch timer** that tracks elapsed time and supports **start, pause,
+resume, stop**, time updates, and state notifications. It provides a simple way to
+track elapsed time in gameplay, animations, or any time-dependent system.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstarted">OnStarted</a></li>
+            <li><a href="#onstopped">OnStopped</a></li>
+            <li><a href="#onpaused">OnPaused</a></li>
+            <li><a href="#onresumed">OnResumed</a></li>
+            <li><a href="#ontimechanged">OnTimeChanged</a></li>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#state">State</a></li>
+            <li><a href="#time">Time</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#start">Start()</a></li>
+            <li><a href="#startfloat">Start(float)</a></li>
+            <li><a href="#pause">Pause()</a></li>
+            <li><a href="#resume">Resume()</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#isstarted">IsStarted()</a></li>
+            <li><a href="#ispaused">IsPaused()</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#gettime">GetTime()</a></li>
+            <li><a href="#settimefloat">SetTime(float)</a></li>
+            <li><a href="#getstate">GetState()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+            <li><a href="#resettime">ResetTime()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example of Usage
+
+```csharp  
+// Create a stopwatch
+var stopwatch = new Stopwatch();
+
+// Subscribe to events
+stopwatch.OnStarted += () => Console.WriteLine("Stopwatch started!");
+stopwatch.OnTimeChanged += t => Console.WriteLine($"Elapsed: {t:F1}s");
+stopwatch.OnPaused += () => Console.WriteLine("Stopwatch paused.");
+stopwatch.OnResumed += () => Console.WriteLine("Stopwatch resumed.");
+stopwatch.OnStopped += () => Console.WriteLine("Stopwatch stopped.");
+
+// Start the stopwatch
+stopwatch.Start();
+
+// Simulate ticking
+float deltaTime = 1f;
+for (int i = 0; i < 5; i++)
+{
+    stopwatch.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
+}
+
+// Pause and resume
+stopwatch.Pause();
+stopwatch.Resume();
+
+// Stop and reset
+stopwatch.Stop();
+stopwatch.ResetTime();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class Stopwatch : IStopwatch
 ```
 
-- **Description:** Represents a **stateful stopwatch timer** that tracks elapsed time and supports **start, pause,
-  resume, stop**, time updates, and state notifications. It provides a simple way to
-  track elapsed time in gameplay, animations, or any time-dependent system.
 - **Inheritance:** [IStopwatch](IStopwatch.md)
 - **Notes:**
     - [StopwatchState](StopwatchState.md) represents current state of a stopwatch
@@ -15,7 +114,7 @@ public class Stopwatch : IStopwatch
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStarted`
 
@@ -73,7 +172,7 @@ public event Action<StopwatchState> OnStateChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `State`
 
@@ -95,7 +194,7 @@ public float Time { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Start()`
 

@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/DownTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/DownTimer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ITimer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/TimerState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/TimerState.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/UpTimer.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/IStopwatch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatch.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/StopwatchState.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatches.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Stopwatches.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,31 +230,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="23882000" />
-    </task>
-    <task id="LOCAL-01437" summary="OrExpression.md">
-      <option name="closed" value="true" />
-      <created>1760366691041</created>
-      <option name="number" value="01437" />
-      <option name="presentableId" value="LOCAL-01437" />
-      <option name="project" value="LOCAL" />
-      <updated>1760366691041</updated>
-    </task>
-    <task id="LOCAL-01438" summary="OrExpression`1.md">
-      <option name="closed" value="true" />
-      <created>1760367010457</created>
-      <option name="number" value="01438" />
-      <option name="presentableId" value="LOCAL-01438" />
-      <option name="project" value="LOCAL" />
-      <updated>1760367010457</updated>
-    </task>
-    <task id="LOCAL-01439" summary="OrExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760367325430</created>
-      <option name="number" value="01439" />
-      <option name="presentableId" value="LOCAL-01439" />
-      <option name="project" value="LOCAL" />
-      <updated>1760367325430</updated>
+      <workItem from="1760420145768" duration="24718000" />
     </task>
     <task id="LOCAL-01440" summary="InlineExpressions.md">
       <option name="closed" value="true" />
@@ -624,7 +600,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760471380939</updated>
     </task>
-    <option name="localTasksCounter" value="1486" />
+    <task id="LOCAL-01486" summary="Timers Done!">
+      <option name="closed" value="true" />
+      <created>1760472807048</created>
+      <option name="number" value="01486" />
+      <option name="presentableId" value="LOCAL-01486" />
+      <option name="project" value="LOCAL" />
+      <updated>1760472807048</updated>
+    </task>
+    <task id="LOCAL-01487" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760472931619</created>
+      <option name="number" value="01487" />
+      <option name="presentableId" value="LOCAL-01487" />
+      <option name="project" value="LOCAL" />
+      <updated>1760472931619</updated>
+    </task>
+    <task id="LOCAL-01488" summary="TimerState.md">
+      <option name="closed" value="true" />
+      <created>1760472979169</created>
+      <option name="number" value="01488" />
+      <option name="presentableId" value="LOCAL-01488" />
+      <option name="project" value="LOCAL" />
+      <updated>1760472979169</updated>
+    </task>
+    <option name="localTasksCounter" value="1489" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,9 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlinePredicate.md" />
-    <MESSAGE value="InlinePredicate`1.md" />
-    <MESSAGE value="InlinePredicate`2.md" />
     <MESSAGE value="ExtensionsInvert.md" />
     <MESSAGE value="ExtensionsCollections.md" />
     <MESSAGE value="IPredicate.md" />
@@ -676,7 +673,10 @@
     <MESSAGE value="RandomCooldown.md" />
     <MESSAGE value="ICooldown.md" />
     <MESSAGE value="Timers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Timers.md" />
+    <MESSAGE value="Timers Done!" />
+    <MESSAGE value="Minor Fixes!" />
+    <MESSAGE value="TimerState.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TimerState.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
