@@ -1,12 +1,9 @@
 # 🧩 RandomCooldown
 
 Represents a **cooldown timer with a random duration**. Each time
-the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration.
-
-
-> [!TIP]
-> Useful for game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event
-> timers, or procedural ability cooldowns.
+the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration. Useful for
+game mechanics where cooldowns should be unpredictable, e.g., random attack delays, randomized event timers, or
+procedural ability cooldowns.
 
 ---
 
@@ -14,26 +11,25 @@ the cooldown is reset, it is assigned a new random value between a specified min
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
-  - [Constructors](#-constructors)
-    - [RandomCooldown(float, float)](#randomcooldownfloat-float)
-  - [Events](#-events)
-    - [OnTimeChanged](#ontimechanged)
-    - [OnDurationChanged](#ondurationchanged)
-    - [OnProgressChanged](#onprogresschanged)
-    - [OnCompleted](#oncompleted)
-  - [Methods](#-methods)
-    - [GetTime()](#gettime)
-    - [SetTime(float)](#settimefloat)
-    - [ResetTime()](#resettime)
-    - [GetDuration()](#getduration)
-    - [SetDuration(float)](#setdurationfloat)
-    - [GetProgress()](#getprogress)
-    - [SetProgress(float)](#setprogressfloat)
-    - [IsCompleted()](#iscompleted)
-    - [Tick(float)](#tickfloat)
-
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Constructors](#-constructors)
+        - [RandomCooldown(float, float)](#randomcooldownfloat-float)
+    - [Events](#-events)
+        - [OnTimeChanged](#ontimechanged)
+        - [OnDurationChanged](#ondurationchanged)
+        - [OnProgressChanged](#onprogresschanged)
+        - [OnCompleted](#oncompleted)
+    - [Methods](#-methods)
+        - [GetTime()](#gettime)
+        - [SetTime(float)](#settimefloat)
+        - [ResetTime()](#resettime)
+        - [GetDuration()](#getduration)
+        - [SetDuration(float)](#setdurationfloat)
+        - [GetProgress()](#getprogress)
+        - [SetProgress(float)](#setprogressfloat)
+        - [IsCompleted()](#iscompleted)
+        - [Tick(float)](#tickfloat)
 
 ---
 

@@ -1,10 +1,7 @@
 # 🧩️ ICooldown
 
 Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
-when its state changes.
-
-> [!TIP]
-> It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
+when its state changes. It is useful for game mechanics such as ability cooldowns, weapon reloads, and timed delays.
 
 ---
 
@@ -12,22 +9,22 @@ when its state changes.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Events](#-events)
-    - [OnTimeChanged](#ontimechanged)
-    - [OnDurationChanged](#ondurationchanged)
-    - [OnProgressChanged](#onprogresschanged)
-    - [OnCompleted](#oncompleted)
-  - [Methods](#-methods)
-    - [GetTime()](#gettime)
-    - [SetTime(float)](#settimefloat)
-    - [ResetTime()](#resettime)
-    - [GetDuration()](#getduration)
-    - [SetDuration(float)](#setdurationfloat)
-    - [Tick(float)](#tickfloat)
-    - [GetProgress()](#getprogress)
-    - [SetProgress(float)](#setprogressfloat)
-    - [IsCompleted()](#iscompleted)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnTimeChanged](#ontimechanged)
+        - [OnDurationChanged](#ondurationchanged)
+        - [OnProgressChanged](#onprogresschanged)
+        - [OnCompleted](#oncompleted)
+    - [Methods](#-methods)
+        - [GetTime()](#gettime)
+        - [SetTime(float)](#settimefloat)
+        - [ResetTime()](#resettime)
+        - [GetDuration()](#getduration)
+        - [SetDuration(float)](#setdurationfloat)
+        - [Tick(float)](#tickfloat)
+        - [GetProgress()](#getprogress)
+        - [SetProgress(float)](#setprogressfloat)
+        - [IsCompleted()](#iscompleted)
 
 ---
 
@@ -73,9 +70,12 @@ Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetT
 ```csharp
 public interface ICooldown : ITimeSource, IDurationSource, ITickSource, IProgressSource, ICompleteSource;
 ```
-- **Description:** Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback and raises events
-when its state changes.
-- **Inheritance:** [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
+
+- **Description:** Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback
+  and raises events
+  when its state changes.
+- **Inheritance:
+  ** [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
 
 ---
 

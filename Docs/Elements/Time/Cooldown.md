@@ -1,10 +1,8 @@
 # 🧩 Cooldown
 
 Concrete implementation of the **cooldown** that tracks the remaining time, provides normalized
-progress, and raises events when its state changes.
-
-> [!TIP]
-> Useful for game mechanics such as ability cooldowns, weapon reloads, or timed delays.
+progress, and raises events when its state changes. Useful for game mechanics such as ability cooldowns, weapon reloads,
+or timed delays.
 
 ---
 
