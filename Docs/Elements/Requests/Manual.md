@@ -36,14 +36,13 @@ shootRequest.Invoke();
 if (shoot.Required)
 {
     Debug.Log("Shoot request detected!");
-    
-    // Consume it so it's not triggered again
-    if (shoot.Consume())
-    {
-        Debug.Log("Shoot request consumed successfully.");
-    }
 }
-
+ 
+// Handle it
+if (shoot.Consume())
+{
+    Debug.Log("Shoot request consumed successfully.");
+}
 ```
 
 <div id="ex-2"></div>
@@ -60,12 +59,12 @@ damageRequest.Invoke(targetCharacter);
 // Somewhere in a system that processes damage
 if (damageRequest.TryGet(out Character target))
 {
-    Debug.Log($"Applying damage to {target.Name}");
+    Debug.Log($"Applying damage is required to {target.Name}");
+}
 
-    if (damageRequest.Consume(out target))
-    {
-        Debug.Log("Damage request handled and consumed.");
-    }
+if (damageRequest.Consume(out target))
+{
+    Debug.Log("Damage request handled and consumed.");
 }
 ```
 

@@ -21,6 +21,9 @@ consumption** functionality.
 
 <div id="ex-1"></div>
 
+
+<div id="ex-1"></div>
+
 ### 1️⃣ Parameterless Request
 
 ```csharp
@@ -33,12 +36,12 @@ shootRequest.Invoke();
 if (shoot.Required)
 {
     Debug.Log("Shoot request detected!");
-    
-    // Consume it so it's not triggered again
-    if (shoot.Consume())
-    {
-        Debug.Log("Shoot request consumed successfully.");
-    }
+}
+ 
+// Handle it
+if (shoot.Consume())
+{
+    Debug.Log("Shoot request consumed successfully.");
 }
 ```
 
@@ -55,12 +58,12 @@ damageRequest.Invoke(targetCharacter);
 // Somewhere in a system that processes damage
 if (damageRequest.TryGet(out Character target))
 {
-    Debug.Log($"Applying damage to {target.Name}");
+    Debug.Log($"Applying damage is required to {target.Name}");
+}
 
-    if (damageRequest.Consume(out target))
-    {
-        Debug.Log("Damage request handled and consumed.");
-    }
+if (damageRequest.Consume(out target))
+{
+    Debug.Log("Damage request handled and consumed.");
 }
 ```
 

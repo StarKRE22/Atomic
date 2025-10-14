@@ -30,12 +30,12 @@ shootRequest.Invoke();
 if (shoot.Required)
 {
     Debug.Log("Shoot request detected!");
-    
-    // Consume it so it's not triggered again
-    if (shoot.Consume())
-    {
-        Debug.Log("Shoot request consumed successfully.");
-    }
+}
+ 
+// Handle it
+if (shoot.Consume())
+{
+    Debug.Log("Shoot request consumed successfully.");
 }
 ```
 
