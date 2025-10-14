@@ -1,15 +1,34 @@
 # 🧩 ITimeSource
 
+Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time
+changes</b>.
+
+---
+
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnTimeChanged](#ontimechanged)
+  - [Methods](#-methods)
+    - [GetTime()](#gettime)
+    - [SetTime(float)](#settimefloat)
+    - [ResetTime()](#resettim)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface ITimeSource
 ```
 
-- **Description:** Represents a source that tracks the <b>current time</b> and <b>notifies listeners when the time
-  changes</b>.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnTimeChanged`
 
@@ -22,7 +41,7 @@ public event Action<float> OnTimeChanged;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `GetTime()`
 

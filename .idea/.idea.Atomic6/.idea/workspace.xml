@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingCooldownInGameMechanics.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingCooldownInGameMechanics.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Cooldowns.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ExtensionsIStartSource.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,23 +226,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="14192000" />
-    </task>
-    <task id="LOCAL-01427" summary="IExpression`2.md">
-      <option name="closed" value="true" />
-      <created>1760351298107</created>
-      <option name="number" value="01427" />
-      <option name="presentableId" value="LOCAL-01427" />
-      <option name="project" value="LOCAL" />
-      <updated>1760351298107</updated>
-    </task>
-    <task id="LOCAL-01428" summary="ExpressionsBase.md">
-      <option name="closed" value="true" />
-      <created>1760351497390</created>
-      <option name="number" value="01428" />
-      <option name="presentableId" value="LOCAL-01428" />
-      <option name="project" value="LOCAL" />
-      <updated>1760351497390</updated>
+      <workItem from="1760420145768" duration="15201000" />
     </task>
     <task id="LOCAL-01429" summary="ExpressionBase.md">
       <option name="closed" value="true" />
@@ -624,7 +604,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760436740687</updated>
     </task>
-    <option name="localTasksCounter" value="1476" />
+    <task id="LOCAL-01476" summary="Timers Manual!">
+      <option name="closed" value="true" />
+      <created>1760437728660</created>
+      <option name="number" value="01476" />
+      <option name="presentableId" value="LOCAL-01476" />
+      <option name="project" value="LOCAL" />
+      <updated>1760437728660</updated>
+    </task>
+    <task id="LOCAL-01477" summary="Начинаем пилить ITimeSource!">
+      <option name="closed" value="true" />
+      <created>1760437911289</created>
+      <option name="number" value="01477" />
+      <option name="presentableId" value="LOCAL-01477" />
+      <option name="project" value="LOCAL" />
+      <updated>1760437911289</updated>
+    </task>
+    <option name="localTasksCounter" value="1478" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,8 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим Functions!" />
-    <MESSAGE value="IFunctions.md" />
     <MESSAGE value="IPredicates.md" />
     <MESSAGE value="Прочесал общие блоки!" />
     <MESSAGE value="IFunction.md" />
@@ -676,7 +670,9 @@
     <MESSAGE value="BaseRequest`1.md" />
     <MESSAGE value="Manual Setter!" />
     <MESSAGE value="С сеттерами разобрались!" />
-    <option name="LAST_COMMIT_MESSAGE" value="С сеттерами разобрались!" />
+    <MESSAGE value="Timers Manual!" />
+    <MESSAGE value="Начинаем пилить ITimeSource!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начинаем пилить ITimeSource!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
