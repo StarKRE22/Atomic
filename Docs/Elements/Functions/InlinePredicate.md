@@ -1,5 +1,11 @@
 # 🧩 InlinePredicate
 
+
+Represents a <b>parameterless</b> function that returns a result.
+
+---
+
+
 ```csharp
 public class InlinePredicate : InlineFunction<bool>, IPredicate
 ```
@@ -10,7 +16,7 @@ public class InlinePredicate : InlineFunction<bool>, IPredicate
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlinePredicate(Func<bool>)`
 

@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/IFunction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlineFunction`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Functions/InlinePredicate`2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,21 +100,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -228,14 +232,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-    </task>
-    <task id="LOCAL-01406" summary="Subscriptions.md, Subscription.md">
-      <option name="closed" value="true" />
-      <created>1760291761595</created>
-      <option name="number" value="01406" />
-      <option name="presentableId" value="LOCAL-01406" />
-      <option name="project" value="LOCAL" />
-      <updated>1760291761595</updated>
+      <workItem from="1760420145768" duration="1772000" />
     </task>
     <task id="LOCAL-01407" summary="Subscription`1.md">
       <option name="closed" value="true" />
@@ -621,7 +618,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760380702171</updated>
     </task>
-    <option name="localTasksCounter" value="1455" />
+    <task id="LOCAL-01455" summary="IFunction`1.md">
+      <option name="closed" value="true" />
+      <created>1760381043085</created>
+      <option name="number" value="01455" />
+      <option name="presentableId" value="LOCAL-01455" />
+      <option name="project" value="LOCAL" />
+      <updated>1760381043085</updated>
+    </task>
+    <option name="localTasksCounter" value="1456" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

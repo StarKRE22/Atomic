@@ -1,5 +1,47 @@
 # 🧩 InlineFunction&lt;R&gt;
 
+Represents a <b>parameterless</b> function that returns a result.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [InlineFunction(Func<R>)](#inlinefunctionfuncr)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [ToString()](#tostring)
+    - [Operators](#-operators)
+        - [InlineFunction<R>(Func<R>)](#operator-inlinefunctionrfuncr)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of GameObject
+GameObject gameObject = ...
+
+// Create the inline function    
+IFunction<bool> function = new InlineFunction<bool>(
+    () => gameObject.activeSelf
+);
+
+// Get result
+bool activeSelf = function.Invoke();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineFunction<R> : IFunction<R>, IValue<R>
 ```
@@ -11,7 +53,7 @@ public class InlineFunction<R> : IFunction<R>, IValue<R>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineFunction(Func<R>)`
 
@@ -25,7 +67,7 @@ public InlineFunction(Func<R> func)
 
 --- 
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -38,7 +80,7 @@ public T Value { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -60,7 +102,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator InlineFunction<R>(Func<R>)`
 
@@ -71,16 +113,3 @@ public static implicit operator InlineFunction<R>(Func<R> value);
 - **Description:** Implicitly converts a delegate of type `Func<R>` to an `InlineFunction<R>`.
 - **Parameter:** `value` — the delegate to wrap.
 - **Returns:** A new `InlineFunction<R>` containing the specified delegate.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-GameObject gameObject = ...
-IFunction<bool> function = new InlineFunction<bool>(
-    () => gameObject.activeSelf
-);
-
-function.Invoke();
-```

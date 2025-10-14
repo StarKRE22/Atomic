@@ -1,5 +1,9 @@
 # 🧩 InlinePredicate&lt;T1, T2&gt;
 
+Represents a <b>parameterless</b> function that returns a result.
+
+---
+
 - **Description:** Represents a predicate with <b>two input arguments</b> that returns a boolean result.
 - **Type Parameters:**
   - `T1` — the first input type
@@ -15,7 +19,7 @@ public class InlinePredicate<T1, T2> : InlineFunction<T1, T2, bool>, IPredicate<
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlinePredicate(Func<T1, T2, bool>)`
 

@@ -1,5 +1,14 @@
 # 🧩 InlineFunction&lt;T1, T2, R&gt;
 
+
+Represents a <b>parameterless</b> function that returns a result.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
 ```
@@ -14,7 +23,7 @@ public class InlineFunction<T1, T2, R> : IFunction<T1, T2, R>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors <div id="-constructors"></div>
 
 #### `InlineFunction(Func<T1, T2, R>)`
 
