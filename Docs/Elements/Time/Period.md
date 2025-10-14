@@ -1,13 +1,143 @@
 # 🧩 Period
 
+Represents a **stateful looping cycle timer** that tracks time progression and emits events on
+completion of each cycle. It provides full control over **start, pause, resume, stop**,
+progress tracking, duration management, and state notifications.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li><a href="#-inspector-settings">Inspector Settings</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#period">Period()</a></li>
+            <li><a href="#periodfloat">Period(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstarted">OnStarted</a></li>
+            <li><a href="#onstopped">OnStopped</a></li>
+            <li><a href="#onpaused">OnPaused</a></li>
+            <li><a href="#onresumed">OnResumed</a></li>
+            <li><a href="#onperiod">OnPeriod</a></li>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#ontimechanged">OnTimeChanged</a></li>
+            <li><a href="#onprogresschanged">OnProgressChanged</a></li>
+            <li><a href="#ondurationchanged">OnDurationChanged</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#state">State</a></li>
+            <li><a href="#duration">Duration</a></li>
+            <li><a href="#time">Time</a></li>
+            <li><a href="#progress">Progress</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#start">Start()</a></li>
+            <li><a href="#start-1">Start(float)</a></li>
+            <li><a href="#pause">Pause()</a></li>
+            <li><a href="#resume">Resume()</a></li>
+            <li><a href="#stop">Stop()</a></li>
+            <li><a href="#isstarted">IsStarted()</a></li>
+            <li><a href="#ispaused">IsPaused()</a></li>
+            <li><a href="#isidle">IsIdle()</a></li>
+            <li><a href="#gettime">GetTime()</a></li>
+            <li><a href="#settime">SetTime(float)</a></li>
+            <li><a href="#resettime">ResetTime()</a></li>
+            <li><a href="#getduration">GetDuration()</a></li>
+            <li><a href="#setduration">SetDuration(float)</a></li>
+            <li><a href="#getprogress">GetProgress()</a></li>
+            <li><a href="#setprogress">SetProgress(float)</a></li>
+            <li><a href="#getstate">GetState()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-operators">Operators</a></summary>
+          <ul>
+            <li><a href="#operator-periodfloat-duration">operator Period(float)</a></li>
+            <li><a href="#operator-periodint-duration">operator Period(int)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Create a new period with 10 sec
+Period period = 10f
+
+// Subscribe to events
+period.OnStarted += () => Console.WriteLine("Period started!");
+period.OnTimeChanged += t => Console.WriteLine($"Time: {t:F1}s");
+period.OnProgressChanged += p => Console.WriteLine($"Progress: {p:P0}");
+period.OnPeriod += () => Console.WriteLine("Cycle completed!");
+period.OnPaused += () => Console.WriteLine("Period paused.");
+period.OnResumed += () => Console.WriteLine("Period resumed.");
+period.OnStopped += () => Console.WriteLine("Period stopped.");
+
+// Start the period
+period.Start();
+
+// Simulate ticking 1 second per loop
+float deltaTime = 1f;
+for (int i = 0; i < 25; i++)
+{
+    period.Tick(deltaTime);
+    System.Threading.Thread.Sleep(1000);
+}
+
+// Pause and resume
+period.Pause();
+period.Resume();
+
+// Stop and reset
+period.Stop();
+period.ResetTime();
+```
+
+---
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class Period : IPeriod
 ```
 
-- **Description:** Represents a **stateful looping cycle timer** that tracks time progression and emits events on
-  completion of each cycle. It provides full control over **start, pause, resume, stop**,
-  progress tracking, duration management, and state notifications.
 - **Inheritance:** [IPeriod](IPeriod.md)
 - **Notes:**
     - [PeriodState](PeriodState.md) represents current state of a period
@@ -15,14 +145,15 @@ public class Period : IPeriod
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
-| Parameter     | Description                          |
-|---------------|--------------------------------------|
-| `duration`    | The total duration of the one cycle. |
+| Parameter  | Description                          |
+|------------|--------------------------------------|
+| `duration` | The total duration of the one cycle. |
 
+<div id="-constructors"></div>
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `Period()`
 
@@ -45,7 +176,7 @@ public Period(float duration);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStarted`
 
@@ -130,7 +261,7 @@ public event Action<float> OnDurationChanged;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `State`
 
@@ -170,7 +301,7 @@ public float Progress { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Start()`
 
@@ -262,6 +393,16 @@ public void SetTime(float time);
 - **Description:** Sets the current cycle time.
 - **Remarks:** Clamped to `[0, Duration]` and triggers `OnTimeChanged`.
 
+#### `ResetTime()`
+
+```csharp
+public void ResetTime();  
+```
+
+- **Description:** Resets the time source to its initial state.
+- **Remarks:** After resetting, the current time will be the initial time, and any listeners may be notified via
+  `OnTimeChanged`.
+
 #### `GetDuration()`
 
 ```csharp
@@ -325,7 +466,7 @@ public void ResetTime();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator Period(float duration)`
 

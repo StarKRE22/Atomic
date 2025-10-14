@@ -1,14 +1,44 @@
 # 🧩 PeriodState
 
+Represents the current state of a period. It is used by [IPeriod](IPeriod.md) and [Period](Period.md) to track the
+lifecycle of a timer and respond to state changes.
+
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-values">Values</a></summary>
+          <ul>
+            <li><a href="#idle">IDLE</a></li>
+            <li><a href="#playing">PLAYING</a></li>
+            <li><a href="#paused">PAUSED</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public enum PeriodState
 ```
 
-- **Description:** Represents the current state of a period. 
-- **Note:** It is used by [IPeriod](IPeriod.md) and [Period](Period.md) to track the
-lifecycle of a timer and respond to state changes.
-
 ---
+
+### 🔑 Values
 
 #### `IDLE`
 
@@ -24,29 +54,3 @@ lifecycle of a timer and respond to state changes.
 
 - **Description:** The period timer is paused.
 - **Usage:** Timer is temporarily halted by `Pause()` and can continue counting when `Resume()` is called.
-
----
-
-## 🗂 Example of Usage
-
-The following example demonstrates how `PeriodState` changes during the lifecycle of a period timer and how to respond
-using `OnStateChanged`.
-
-```csharp
-IPeriod period = new Period(10f);
-
-period.OnStateChanged += state =>
-    Console.WriteLine($"Period state changed to: {state}");
-
-period.Start(); // Period state changes from IDLE -> PLAYING
-
-period.Pause(); // Period state changes to PAUSED
-period.Resume(); // Period state changes back to PLAYING
-
-for (int i = 0; i < 15; i++)
-{
-    period.Tick(1f); // Advance period by 1 second per tick
-}
-
-Console.WriteLine(period.GetState()); // Output: PLAYING (loops automatically)
-```
