@@ -5,6 +5,8 @@ lifecycle of a timer and respond to state changes.
 
 ---
 
+## 📑 Table of Contents
+
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Values](#-values)
