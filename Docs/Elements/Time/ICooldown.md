@@ -74,8 +74,8 @@ public interface ICooldown : ITimeSource, IDurationSource, ITickSource, IProgres
 - **Description:** Represents a contract of **cooldown timer** that tracks remaining time, provides progress feedback
   and raises events
   when its state changes.
-- **Inheritance:
-  ** [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
+- **Inheritance:**
+  [ITimeSource](ITimeSource.md), [IDurationSource](IDurationSource.md), [ITickSource](ITickSource.md), [IProgressSource](IProgressSource.md), [ICompleteSource](ICompleteSource.md)
 
 ---
 
