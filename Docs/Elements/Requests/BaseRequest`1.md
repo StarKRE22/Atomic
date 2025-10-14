@@ -1,5 +1,28 @@
 # 🧩 BaseRequest&lt;T&gt;
 
+Represents a request action with <b>one input argument</b>.
+
+---
+
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Required](#required)
+        - [Arg](#arg)
+    - [Methods](#-methods)
+        - [Invoke(T)](#invoket)
+        - [Consume(out T)](#consumeout-t)
+        - [TryGet(out T)](#trygetout-t)
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseRequest<T> : IRequest<T>
@@ -12,7 +35,7 @@ public class BaseRequest<T> : IRequest<T>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Required`
 
@@ -32,7 +55,7 @@ public T Arg { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke(T)`
 

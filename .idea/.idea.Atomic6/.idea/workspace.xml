@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequest`4.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequest`4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,15 +231,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="10650000" />
-    </task>
-    <task id="LOCAL-01422" summary="IExpressions.md">
-      <option name="closed" value="true" />
-      <created>1760333677121</created>
-      <option name="number" value="01422" />
-      <option name="presentableId" value="LOCAL-01422" />
-      <option name="project" value="LOCAL" />
-      <updated>1760333677121</updated>
+      <workItem from="1760420145768" duration="11315000" />
     </task>
     <task id="LOCAL-01423" summary="IExpressions.md">
       <option name="closed" value="true" />
@@ -625,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760433294119</updated>
     </task>
-    <option name="localTasksCounter" value="1471" />
+    <task id="LOCAL-01471" summary="Теперь для BaseRequest.md">
+      <option name="closed" value="true" />
+      <created>1760433758585</created>
+      <option name="number" value="01471" />
+      <option name="presentableId" value="LOCAL-01471" />
+      <option name="project" value="LOCAL" />
+      <updated>1760433758585</updated>
+    </task>
+    <option name="localTasksCounter" value="1472" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +652,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineExpression`2.md" />
     <MESSAGE value="IntMulExpressions.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="IntMulExpression.md" />
@@ -677,7 +676,8 @@
     <MESSAGE value="Request Manual" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="IRequest.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IRequest.md" />
+    <MESSAGE value="Теперь для BaseRequest.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь для BaseRequest.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
