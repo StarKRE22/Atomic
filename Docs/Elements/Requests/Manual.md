@@ -126,7 +126,8 @@ arguments:
 - **Duplicate prevention** – Multiple identical requests can be avoided because `Consume()` only processes requests that
   are still required.
 - **Required** – Indicates whether the request currently needs handling.
-- **TryGet / Consume** – Methods to safely inspect or process the request arguments.
+- **TryGet** – Method to safely inspect the request arguments.
+- **Consume** – Method to process the request.
 
 
 ---
