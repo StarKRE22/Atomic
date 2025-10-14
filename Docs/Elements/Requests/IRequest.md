@@ -1,5 +1,50 @@
 # 🧩 IRequest
 
+Represents a <b>parameterless</b> request action.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Required](#required)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [Consume()](#consume)
+
+---
+
+
+## 🗂 Example of Usage
+
+```csharp
+IRequest shootRequest = ...
+
+// Somewhere in the UI system we mark it as required
+shootRequest.Invoke();
+
+// Later in the game loop or system update
+if (shoot.Required)
+{
+    Debug.Log("Shoot request detected!");
+    
+    // Consume it so it's not triggered again
+    if (shoot.Consume())
+    {
+        Debug.Log("Shoot request consumed successfully.");
+    }
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IRequest : IAction
 ```
@@ -9,7 +54,7 @@ public interface IRequest : IAction
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Required`
 
@@ -21,7 +66,7 @@ public bool Required { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 

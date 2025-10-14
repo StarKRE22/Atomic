@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/BaseRequests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/IRequests.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Requests/Manual.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,15 +228,7 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="9292000" />
-    </task>
-    <task id="LOCAL-01419" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760332926389</created>
-      <option name="number" value="01419" />
-      <option name="presentableId" value="LOCAL-01419" />
-      <option name="project" value="LOCAL" />
-      <updated>1760332926389</updated>
+      <workItem from="1760420145768" duration="9783000" />
     </task>
     <task id="LOCAL-01420" summary="IExpressions.md">
       <option name="closed" value="true" />
@@ -618,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760430645389</updated>
     </task>
-    <option name="localTasksCounter" value="1468" />
+    <task id="LOCAL-01468" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1760432393859</created>
+      <option name="number" value="01468" />
+      <option name="presentableId" value="LOCAL-01468" />
+      <option name="project" value="LOCAL" />
+      <updated>1760432393859</updated>
+    </task>
+    <option name="localTasksCounter" value="1469" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineExpression.md" />
     <MESSAGE value="InlineExpression`1.md" />
     <MESSAGE value="InlineExpression`2.md" />
     <MESSAGE value="IntMulExpressions.md" />
@@ -670,7 +673,8 @@
     <MESSAGE value="IPredicate`1.md" />
     <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="Request Manual" />
-    <option name="LAST_COMMIT_MESSAGE" value="Request Manual" />
+    <MESSAGE value="Manual.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Manual.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

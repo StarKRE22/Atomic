@@ -17,7 +17,6 @@ active.
 - [Notes](#-notes)
 - [Best Practices](#-best-practices)
 
-
 ---
 
 ## 🗂 Examples of Usage
@@ -65,7 +64,6 @@ if (damageRequest.TryGet(out Character target))
 
     if (damageRequest.Consume(out target))
     {
-        target.ApplyDamage(10);
         Debug.Log("Damage request handled and consumed.");
     }
 }
@@ -128,7 +126,6 @@ arguments:
 - **Required** – Indicates whether the request currently needs handling.
 - **TryGet** – Method to safely inspect the request arguments.
 - **Consume** – Method to process the request.
-
 
 ---
 
