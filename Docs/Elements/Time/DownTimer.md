@@ -8,7 +8,6 @@ changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md
 
 ---
 
-
 ## 📑 Table of Contents
 
 <ul>
@@ -156,6 +155,8 @@ public class DownTimer : ITimer
 | `duration` | The total duration of the timer. |
 
 ---
+
+<div id="-constructors"></div>
 
 ### 🏗️ Constructors
 
