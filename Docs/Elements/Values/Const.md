@@ -2,6 +2,12 @@
 
 Represents a **serialized, immutable (read-only) constant value wrapper**.
 
+> [!TIP]
+> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
+> [flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern). For example, to **share a constant value**
+> across
+> **multiple instances** without copying the value.
+
 ---
 
 ## 📑 Table of Contents
@@ -70,12 +76,6 @@ public class Const<T> : IValue<T>
     - Supports Unity serialization
     - Supports Odin Inspector
 - **See also:** [ScriptableConst&lt;T&gt;](ScriptableConst.md)
-
-> [!TIP]
-> Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
-> [flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern). For example, to **share a constant value**
-> across
-> **multiple instances** without copying the value.
 
 ---
 
