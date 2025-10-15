@@ -12,6 +12,7 @@ developers to quickly assemble any game entity like a **LEGO**.
 - [Using Odin Inspector](#-using-odin-inspector)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
+- [Best Practices](#-best-practices) 
 
 ---
 
@@ -63,3 +64,9 @@ of type `object`**.
 - [ReactiveDictionary](Performance/ReactiveDictionaryPerformance.md) – performance benchmarks for reactive
   dictionaries.
 - [ReactiveHashSet](Performance/ReactiveHashSetPerformance.md) – performance benchmarks for reactive hash sets.
+
+---
+
+## 📌 Best Practices
+
+<!-- TO BE ADDED -->
