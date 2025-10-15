@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Const.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,23 +228,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="2360000" />
-    </task>
-    <task id="LOCAL-01449" summary="Пилим Functions!">
-      <option name="closed" value="true" />
-      <created>1760378392060</created>
-      <option name="number" value="01449" />
-      <option name="presentableId" value="LOCAL-01449" />
-      <option name="project" value="LOCAL" />
-      <updated>1760378392060</updated>
-    </task>
-    <task id="LOCAL-01450" summary="IFunctions.md">
-      <option name="closed" value="true" />
-      <created>1760379184889</created>
-      <option name="number" value="01450" />
-      <option name="presentableId" value="LOCAL-01450" />
-      <option name="project" value="LOCAL" />
-      <updated>1760379184889</updated>
+      <workItem from="1760510813056" duration="3009000" />
     </task>
     <task id="LOCAL-01451" summary="IPredicates.md">
       <option name="closed" value="true" />
@@ -621,7 +606,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760512860290</updated>
     </task>
-    <option name="localTasksCounter" value="1498" />
+    <task id="LOCAL-01498" summary="IValue.md">
+      <option name="closed" value="true" />
+      <created>1760513263091</created>
+      <option name="number" value="01498" />
+      <option name="presentableId" value="LOCAL-01498" />
+      <option name="project" value="LOCAL" />
+      <updated>1760513263091</updated>
+    </task>
+    <task id="LOCAL-01499" summary="IReactiveValue.md">
+      <option name="closed" value="true" />
+      <created>1760513528471</created>
+      <option name="number" value="01499" />
+      <option name="presentableId" value="LOCAL-01499" />
+      <option name="project" value="LOCAL" />
+      <updated>1760513528471</updated>
+    </task>
+    <option name="localTasksCounter" value="1500" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,8 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Manual.md" />
-    <MESSAGE value="IRequest.md" />
     <MESSAGE value="Теперь для BaseRequest.md" />
     <MESSAGE value="BaseRequest.md" />
     <MESSAGE value="BaseRequest`1.md" />
@@ -673,7 +672,9 @@
     <MESSAGE value="ExtensionsIStartSource.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Values.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Values.md" />
+    <MESSAGE value="IValue.md" />
+    <MESSAGE value="IReactiveValue.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReactiveValue.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
