@@ -32,7 +32,6 @@ Add a `Atomic/Elements/CollisionEvents` component to a `GameObject` with a `Coll
 
 <img src="../../Images/CollisionEvents.png" alt="AnimationEvents example" width="" height="50">
 
-
 #### Step 2. Create Script
 
 Create a script that will handle collision events:

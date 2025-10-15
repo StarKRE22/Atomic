@@ -29,6 +29,8 @@ easier to react to 2D physics interactions without overriding `OnCollisionEnter2
 
 Add a `Atomic/Elements/CollisionEvents2D` component to a `GameObject` with a `Collider2D` (and optionally a `Rigidbody2D`).
 
+<img src="../../Images/CollisionEvents2D.png" alt="AnimationEvents example" width="" height="50">
+
 #### Step 2. Create Script
 
 Create a script that will handle collision events:
