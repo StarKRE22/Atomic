@@ -1,4 +1,4 @@
-# 🧩 ReadOnlyValueCollection
+# 🧩 ReactiveDictionary\<K, V>.ReadOnlyValueCollection
 
 <b>Represents a read-only collection of values</b>.
 

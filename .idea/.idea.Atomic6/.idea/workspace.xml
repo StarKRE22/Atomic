@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariableBuilder.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,15 +234,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="9887000" />
-    </task>
-    <task id="LOCAL-01462" summary="ExtensionsInvert.md">
-      <option name="closed" value="true" />
-      <created>1760425998969</created>
-      <option name="number" value="01462" />
-      <option name="presentableId" value="LOCAL-01462" />
-      <option name="project" value="LOCAL" />
-      <updated>1760425998970</updated>
+      <workItem from="1760510813056" duration="10807000" />
     </task>
     <task id="LOCAL-01463" summary="ExtensionsCollections.md">
       <option name="closed" value="true" />
@@ -623,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760520916752</updated>
     </task>
-    <option name="localTasksCounter" value="1511" />
+    <task id="LOCAL-01511" summary="ReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1760521218641</created>
+      <option name="number" value="01511" />
+      <option name="presentableId" value="LOCAL-01511" />
+      <option name="project" value="LOCAL" />
+      <updated>1760521218641</updated>
+    </task>
+    <option name="localTasksCounter" value="1512" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ITimeSource.md" />
     <MESSAGE value="Сделал Sources!" />
     <MESSAGE value="Cooldowns.md" />
     <MESSAGE value="Сделал Cooldowns!" />
@@ -675,7 +679,8 @@
     <MESSAGE value="IVariable.md" />
     <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="BaseVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="BaseVariable.md" />
+    <MESSAGE value="ReactiveVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReactiveVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,6 @@
-# 🧩 ReadOnlyKeyCollection
+# 🧩 ReactiveDictionary\<K, V>.ReadOnlyKeyCollection
 
-Represents a read-only collection of keys.
+Represents a read-only collection of keys for [ReactiveDictionary\<K, V>](ReactiveDictionary.md)
 
 ---
 

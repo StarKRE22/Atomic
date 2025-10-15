@@ -1,7 +1,41 @@
 # 🧩 ProxyVariable&lt;T&gt;
 
 Provides a **read-write variable** that delegates its value to **external getter and setter
-functions**.
+functions**. This is useful when you want to integrate third-party or existing fields /
+properties into systems expecting [IVariable\<T>](IVariable.md) without duplicating state.
+
+---
+
+## 🗂 Examples of Usage
+
+### 1️⃣ Transform Position
+
+```csharp
+//Create a new proxy of Transform.position
+IVariable<Vector3> position = new ProxyVariable<Vector3>(
+    getter: () => transform.position,
+    setter: value => transform.position = value
+);
+
+//Move position:
+position.Value += Vector3.forward; 
+```
+
+Also, you can use the [fluent builder](ProxyVariableBuilder.md) for proxy creation:
+
+### 2️⃣ Using Builder
+
+```csharp
+//Create a new proxy of Transform.position
+IVariable<Vector3> position = ProxyVariable<Vector3>
+    .StartBuild()
+    .WithGetter(() => transform.position)
+    .WithSetter(value => transform.position = value)
+    .Build();
+
+//Move position:
+position.Value += Vector3.forward; 
+```
 
 ---
 
@@ -14,16 +48,14 @@ public class ProxyVariable<T> : IVariable<T>
 ```
 
 - **Description:** Provides a **read-write variable** that delegates its value to **external getter and setter
-  functions**. 
+  functions**.
 - **Inheritance:** [IVariable&lt;T&gt;](IVariable.md)
 - **Type Parameter:** `T` – The type of the value.
 - **Note:** Supports Odin Inspector
 
-> [!TIP]
-> This is useful when you want to integrate third-party or existing fields /
-> properties into systems expecting `IVariable<T>` without duplicating state. 
-
 ---
+
+<div id="-constructors"></div>
 
 ### 🏗️ Constructors
 
@@ -74,50 +106,16 @@ public void Invoke(T arg)
 
 ---
 
-### 👷‍♂️ Builder
+### 🧩 Nested Types
 
-`ProxyVariable<T>` also includes a **fluent builder** to simplify creation:
-
-```csharp
-IVariable<int> variable = ProxyVariable<int>
-    .StartBuild()
-    .WithGetter(() => myField)
-    .WithSetter(v => myField = v)
-    .Build();
-```
-
----
-
-## 🗂 Examples of Usage
-
-### 1️⃣ Wrapping a Transform’s Position
+#### `Builder`
 
 ```csharp
-//Create a new proxy of Transform.position
-IVariable<Vector3> position = new ProxyVariable<Vector3>(
-    getter: () => transform.position,
-    setter: value => transform.position = value
-);
-
-//Move position:
-position.Value += Vector3.forward; 
+public struct Builder
 ```
 
----
-
-### 2️⃣ Using the Fluent Builder
-
-```csharp
-//Create a new proxy of Transform.position
-IVariable<Vector3> position = ProxyVariable<Vector3>
-    .StartBuild()
-    .WithGetter(() => transform.position)
-    .WithSetter(value => transform.position = value)
-    .Build();
-
-//Move position:
-position.Value += Vector3.forward; 
-```
+- **Description:** Fluent builder for constructing `ProxyVariable<T>` instances.
+- **See also:** [Builder Documentation](ProxyVariableBuilder.md)
 
 ---
 

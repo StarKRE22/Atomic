@@ -224,8 +224,8 @@ reactiveSet.Clear();
     - [IReadOnlyReactiveDictionary](IReadOnlyReactiveDictionary.md) <!-- + -->
     - [IReactiveDictionary](IReactiveDictionary.md) <!-- + -->
     - [ReactiveDictionary](ReactiveDictionary.md) <!-- + -->
-        - [ReadOnlyKeyCollection](ReactiveDictionaryKeyCollection.md)
-        - [ReadOnlyValueCollection](ReactiveDictionaryValueCollection.md)
+        - [KeyCollection](ReactiveDictionaryKeyCollection.md)
+        - [ValueCollection](ReactiveDictionaryValueCollection.md)
 - **ReactiveSets**
     - [IReactiveSet](IReactiveSet.md) <!-- + -->
     - [ReactiveHashSet](ReactiveHashSet.md) <!-- + -->
