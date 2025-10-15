@@ -131,18 +131,7 @@ public class Reference<T>
 
 ---
 
-### 🔑 Properties
-
-#### `Value`
-
-```csharp
-public ref T Value { get; }
-```
-
-- **Description:** Provides a **reference** to the wrapped value.
-- **Remarks:** Modifying this reference will update the underlying value directly.
-
----
+<div id="-constructors"></div>
 
 ### 🏗️ Constructors
 
@@ -154,6 +143,19 @@ public Reference(T value = default);
 
 - **Description:** Initializes a new instance of the `Reference<T>` class.
 - **Parameter:** `value` — The initial value to wrap. Defaults to `default(T)`.
+
+---
+
+### 🔑 Properties
+
+#### `Value`
+
+```csharp
+public ref T Value { get; }
+```
+
+- **Description:** Provides a **reference** to the wrapped value.
+- **Remarks:** Modifying this reference will update the underlying value directly.
 
 ---
 
