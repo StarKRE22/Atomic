@@ -13,7 +13,7 @@ intermediaries or proxies, which can observe, modify, or synchronize underlying 
     - [ReactiveVariable\<T>](#ex2)
     - [ProxyVariable\<T>](#ex3)
 - [API Reference](#-api-reference)
-- [Specialized Types](#-specialized-types)
+- [Specialized Types](#specialized-types)
     - [BaseVariables](#-basevariables)
     - [ReactiveVariables](#-reactive-variables)
     - [ProxyVariables](#-proxy-variables)
