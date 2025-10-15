@@ -5,6 +5,9 @@ listening for animation events without hardcoding method names in the inspector.
 with an `Animator` or `Animation` to dispatch animation events through C# events.
 
 ---
+
+## 📑 Table of Contents
+
 - [Quick Start](#-quick-start)
 - [API Reference](#-api-reference)
   - [Type](#-type)
