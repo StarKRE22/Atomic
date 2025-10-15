@@ -4,7 +4,7 @@ Represents a **serialized, immutable (read-only) constant value wrapper**.
 
 > [!TIP]
 > Unlike regular value types, `Const<T>` is a **reference type**, making it lightweight to pass around. It can act as
-> [flyweight pattern](https://en.wikipedia.org/wiki/Flyweight_pattern). For example, to **share a constant value**
+> [Flyweight Pattern](https://en.wikipedia.org/wiki/Flyweight_pattern). For example, to **share a constant value**
 > across
 > **multiple instances** without copying the value.
 
