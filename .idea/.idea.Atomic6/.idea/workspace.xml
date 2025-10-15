@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Extensions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariableBuilder.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariableBuilder.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Reference.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,31 +229,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="12367000" />
-    </task>
-    <task id="LOCAL-01467" summary="Request Manual">
-      <option name="closed" value="true" />
-      <created>1760430645389</created>
-      <option name="number" value="01467" />
-      <option name="presentableId" value="LOCAL-01467" />
-      <option name="project" value="LOCAL" />
-      <updated>1760430645389</updated>
-    </task>
-    <task id="LOCAL-01468" summary="Manual.md">
-      <option name="closed" value="true" />
-      <created>1760432393859</created>
-      <option name="number" value="01468" />
-      <option name="presentableId" value="LOCAL-01468" />
-      <option name="project" value="LOCAL" />
-      <updated>1760432393859</updated>
-    </task>
-    <task id="LOCAL-01469" summary="IRequest.md">
-      <option name="closed" value="true" />
-      <created>1760432970434</created>
-      <option name="number" value="01469" />
-      <option name="presentableId" value="LOCAL-01469" />
-      <option name="project" value="LOCAL" />
-      <updated>1760432970434</updated>
+      <workItem from="1760510813056" duration="16149000" />
     </task>
     <task id="LOCAL-01470" summary="IRequest.md">
       <option name="closed" value="true" />
@@ -625,7 +599,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760523104957</updated>
     </task>
-    <option name="localTasksCounter" value="1516" />
+    <task id="LOCAL-01516" summary="Сделал раздел с Variables!">
+      <option name="closed" value="true" />
+      <created>1760523824095</created>
+      <option name="number" value="01516" />
+      <option name="presentableId" value="LOCAL-01516" />
+      <option name="project" value="LOCAL" />
+      <updated>1760523824096</updated>
+    </task>
+    <task id="LOCAL-01517" summary="Остались Utils! И можно переходить к Atomic.Entities!">
+      <option name="closed" value="true" />
+      <created>1760523864999</created>
+      <option name="number" value="01517" />
+      <option name="presentableId" value="LOCAL-01517" />
+      <option name="project" value="LOCAL" />
+      <updated>1760523864999</updated>
+    </task>
+    <task id="LOCAL-01518" summary="Остались утилы!">
+      <option name="closed" value="true" />
+      <created>1760523948707</created>
+      <option name="number" value="01518" />
+      <option name="presentableId" value="LOCAL-01518" />
+      <option name="project" value="LOCAL" />
+      <updated>1760523948707</updated>
+    </task>
+    <option name="localTasksCounter" value="1519" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,9 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="RandomCooldown.md" />
-    <MESSAGE value="ICooldown.md" />
-    <MESSAGE value="Timers.md" />
     <MESSAGE value="Timers Done!" />
     <MESSAGE value="TimerState.md" />
     <MESSAGE value="Сделал Stopwatches.md" />
@@ -677,7 +672,10 @@
     <MESSAGE value="ProxyVariable.md" />
     <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="ProxyVariableBuilder.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProxyVariableBuilder.md" />
+    <MESSAGE value="Сделал раздел с Variables!" />
+    <MESSAGE value="Остались Utils! И можно переходить к Atomic.Entities!" />
+    <MESSAGE value="Остались утилы!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Остались утилы!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
