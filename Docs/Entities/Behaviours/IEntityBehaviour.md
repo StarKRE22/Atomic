@@ -15,7 +15,7 @@ public interface IEntityBehaviour
 
 ---
 
-## 👀 See also:
+## 🔗 Useful Links
 
 - [IEntityInit](IEntityInit.md) — handles initialization.
 - [IEntityDispose](IEntityDispose.md) — handles resource cleanup.

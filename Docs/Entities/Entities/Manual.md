@@ -5,6 +5,12 @@ An **Entity** is the fundamental element in the framework. Each entity is a cont
 **logic**, which allows for rapid development of game mechanics and their reuse. Thus, every game object, entity, and
 system is a **composition**.
 
+---
+
+---
+
+## 🔍 API Reference
+
 Below are the interfaces and classes for working with entities.
 
 

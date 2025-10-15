@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingInlineActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingRequests.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingRequests.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSetters.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSetters.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingUtilsForEntityInstallers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingUtilsForEntityInstallers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,15 +230,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="27820000" />
-    </task>
-    <task id="LOCAL-01491" summary="Сделал периоды!">
-      <option name="closed" value="true" />
-      <created>1760474299990</created>
-      <option name="number" value="01491" />
-      <option name="presentableId" value="LOCAL-01491" />
-      <option name="project" value="LOCAL" />
-      <updated>1760474299990</updated>
+      <workItem from="1760510813056" duration="28989000" />
     </task>
     <task id="LOCAL-01492" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -630,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760552103558</updated>
     </task>
-    <option name="localTasksCounter" value="1540" />
+    <task id="LOCAL-01540" summary="Вот теперь Atomic.Elements готоф!">
+      <option name="closed" value="true" />
+      <created>1760553109085</created>
+      <option name="number" value="01540" />
+      <option name="presentableId" value="LOCAL-01540" />
+      <option name="project" value="LOCAL" />
+      <updated>1760553109085</updated>
+    </task>
+    <option name="localTasksCounter" value="1541" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -657,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Variables Manual!" />
     <MESSAGE value="IVariable.md" />
     <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="BaseVariable.md" />
@@ -682,7 +675,8 @@
     <MESSAGE value="CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="Раздел Utils готоф!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Раздел Utils готоф!" />
+    <MESSAGE value="Вот теперь Atomic.Elements готоф!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Вот теперь Atomic.Elements готоф!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
