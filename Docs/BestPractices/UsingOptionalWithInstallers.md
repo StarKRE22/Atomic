@@ -1,5 +1,5 @@
 
-## 📌 Best Practice
+# 📌 Using Optional with Entity Installers
 
 `Optional<T>` can be used to define optional settings in Unity components or installers, allowing for flexible
 configuration. Below is an example of configuring optional parameters for an entity in `Atomic.Entities` using the `Optional<T>`
@@ -23,7 +23,7 @@ public sealed class WeaponInstaller : SceneEntityInstaller<IWeaponEntity>
         
         // Add cooldown to weapon if active
         if (_cooldown)
-            entity.AddCooldown(_ammo);
+            entity.AddCooldown(_cooldown);
         
         entity.AddFireRequest(new BaseRequest());
         entity.AddFireEvent(new BaseEvent());

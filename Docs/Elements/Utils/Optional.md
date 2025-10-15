@@ -1,18 +1,80 @@
 # 🧩 Optional&lt;T&gt;
 
+Represents a **Unity-friendly optional value** that can be serialized and displayed in the
+Inspector. It supports activation state, implicit conversions, and safe value access.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Value](#value)
+        - [Active](#active)
+    - [Methods](#-methods)
+        - [TryGetValue(out T)](#trygetvalueout-t)
+        - [GetValueOrDefault(T)](#getvalueordefaultt)
+    - [Operators](#-operators)
+        - [Optional<T>(T)](#operator-optionaltt)
+        - [T(Optional<T>)](#operator-toptionalt)
+        - [true(Optional<T>)](#operator-trueoptionalt)
+        - [false(Optional<T>)](#operator-falseoptionalt)
+- [Notes](#-notes)
+- [Best Practices](#-best-practices)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using optional type for weapon visualization:
+
+```csharp
+public sealed class WeaponView : MonoBehaviour
+{
+    [SerializeField] private Weapon _weapon;
+
+    [SerializeField] private Optional<ParticleSystem> _vfx;
+    [SerializeField] private Optional<AudioSource> _sfx;
+    [SerializeField] private Optional<Animation> _animation;
+
+    private void OnEnable()
+    {
+        _weapon.OnFire += this.OnFire;
+    }
+    
+    private void OnDisable()
+    {
+        _weapon.OnFire -= this.OnFire;
+    }
+    
+    private void OnFire()
+    {
+        if (_vfx) _vfx.Play();
+        if (_sfx) _sfx.Play();
+        if (_animation) _animation.Play();
+    }
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public struct Optional<T>
 ```
 
-- **Description:**  Represents a **Unity-friendly optional value** that can be serialized and displayed in the
-  Inspector. It supports activation state, implicit conversions, and safe value access.
 - **Type Parameter:** `T` – The type of the value to store.
 - **Notes:** Support Unity serialization and Odin Inspector
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -35,7 +97,7 @@ public bool Active { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `TryGetValue(out T)`
 
@@ -59,7 +121,7 @@ public T GetValueOrDefault(T defaultValue)
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator Optional<T>(T)`
 
@@ -103,3 +165,9 @@ public static bool operator false(Optional<T> it)
 - Represents optional settings without relying on null references.
 - Supports implicit conversion to and from the underlying type.
 - Provides safe access methods and operators to check for presence.
+
+---
+
+## 📌 Best Practices
+
+- [Using Optional with EntityInstallers](../../BestPractices/UsingOptionalWithInstallers.md)
