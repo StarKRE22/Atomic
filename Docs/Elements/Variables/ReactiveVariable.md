@@ -1,5 +1,13 @@
 # 🧩 ReactiveVariable&lt;T&gt;
 
+Represents a **serialized reactive variable** that raises events whenever its value changes.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
@@ -13,7 +21,7 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                    |
 |-----------|--------------------------------|
@@ -21,7 +29,7 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `ReactiveVariable()`
 
@@ -42,7 +50,7 @@ public ReactiveVariable(T value)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnValueChanged`
 
@@ -56,7 +64,7 @@ event Action<T> OnValueChanged
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -69,7 +77,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -128,7 +136,7 @@ public override string ToString();
 
 --- 
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator ReactiveVariable<T>(T)`
 

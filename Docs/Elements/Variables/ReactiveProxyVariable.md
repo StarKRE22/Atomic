@@ -1,5 +1,14 @@
 # 🧩 ReactiveProxyVariable&lt;T&gt;
 
+Represents a **reactive proxy variable** that delegates reading, writing, and subscription operations
+to external handlers.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class ReactiveProxyVariable<T> : IReactiveVariable<T>
 ```
@@ -17,7 +26,7 @@ public class ReactiveProxyVariable<T> : IReactiveVariable<T>
 
 ---
 
-## 🏗️ Constructor
+### 🏗️ Constructor
 
 ```csharp
 public ReactiveProxyVariable(Func<T> getter, Action<T> setter)
@@ -33,7 +42,7 @@ public ReactiveProxyVariable(Func<T> getter, Action<T> setter)
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -46,7 +55,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -88,7 +97,7 @@ public void Unsubscribe(Action action)
 
 ---
 
-## 👷‍♂️ Builder
+### 👷‍♂️ Builder
 
 `ReactiveProxyVariable<T>` provides a **fluent builder** for convenience
 

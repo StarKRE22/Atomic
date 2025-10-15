@@ -1,5 +1,14 @@
 # 🧩 ProxyVariable&lt;T&gt;
 
+Provides a **read-write variable** that delegates its value to **external getter and setter
+functions**.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class ProxyVariable<T> : IVariable<T>
 ```
@@ -16,7 +25,7 @@ public class ProxyVariable<T> : IVariable<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
@@ -30,7 +39,7 @@ public ProxyVariable(Func<T> getter, Action<T> setter)
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -43,7 +52,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -65,7 +74,7 @@ public void Invoke(T arg)
 
 ---
 
-## 👷‍♂️ Builder
+### 👷‍♂️ Builder
 
 `ProxyVariable<T>` also includes a **fluent builder** to simplify creation:
 

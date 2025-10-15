@@ -1,5 +1,13 @@
 # 🧩 BaseVariable&lt;T&gt;
 
+Represents a **simple serialized container** for a value of type `T`.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [Serializable]
 public class BaseVariable<T> : IVariable<T>
@@ -13,7 +21,7 @@ public class BaseVariable<T> : IVariable<T>
 
 ---
 
-## 🛠 Inspector Settings
+### 🛠 Inspector Settings
 
 | Parameter | Description                    |
 |-----------|--------------------------------|
@@ -21,7 +29,7 @@ public class BaseVariable<T> : IVariable<T>
 
 ---
 
-## 🏗️ Constructors
+### 🏗️ Constructors
 
 #### `BaseVariable()`
 
@@ -42,7 +50,7 @@ public BaseVariable(T value)
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -55,7 +63,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -90,7 +98,7 @@ public override string ToString();
 
 ---
 
-## 🪄 Operators
+### 🪄 Operators
 
 #### `operator BaseVariable<T>(T)`
 

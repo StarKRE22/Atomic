@@ -1,5 +1,13 @@
 # 🧩 IReactiveVariable&lt;T&gt;
 
+Represents a **reactive read-write variable** that combines **getter and setter access** with **change notifications**.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
 ```
@@ -11,7 +19,7 @@ public interface IReactiveVariable<T> : IVariable<T>, IReactiveValue<T>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -24,7 +32,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 

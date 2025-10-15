@@ -1,5 +1,80 @@
 # 🧩 IVariable&lt;T&gt;
 
+Represents a **read-write variable** that exposes both **getter** and **setter** interfaces.
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#examples-of-usage)
+    - [Transform Position](#ex1)
+    - [Native Buffer Data](#ex2)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [Invoke(T)](#invoket)
+
+---
+
+## 🗂 Examples of Usage
+
+This section demonstrates how to implement this interface for different cases:
+
+<div id="ex1"></div>
+
+### 1️⃣ Transform Position
+
+```csharp
+public class TransformPositionVariable : IVariable<Vector3>
+{
+    private readonly Transform _target;
+
+    public TransformPositionVariable(Transform target)
+    {
+        _target = target ?? throw new ArgumentNullException(nameof(target));
+    }
+
+    public Vector3 Value
+    {
+        get => _target.position;
+        set => _target.position = value;
+    }
+}
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Native Buffer Data
+
+```csharp
+public class NativeVariable<T> : IVariable<T> where T : unmanaged
+{
+    private readonly NativeBuffer _buffer;
+    private IntPtr _ptr;
+    
+    public NetworkVariable(NativeBuffer buffer, IntPtr ptr)
+    {
+        _buffer = buffer;
+        _ptr = ptr;
+    }
+
+    public T Value
+    {
+        get => _buffer.ReadData<T>(_ptr);
+        set => _buffer.WriteData<T>(_ptr, value);
+    }
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IVariable<T> : IValue<T>, ISetter<T>
 ```
@@ -10,7 +85,7 @@ public interface IVariable<T> : IValue<T>, ISetter<T>
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Value`
 
@@ -23,7 +98,7 @@ public T Value { get; set; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Invoke()`
 
@@ -46,53 +121,3 @@ public void Invoke(T arg)
 - **Notes:**
     - Acts as a setter method, complementing the `Value` property.
     - Default implementation comes from [IAction&lt;T&gt;](../Actions/IAction%601.md).
-
----
-
-## 🗂 Examples of Usage
-
-This section demonstrates how to implement `IVariable<T>` for different cases.
-
-### 1️⃣ Wrapping Transform Position
-
-```csharp
-public class TransformPositionVariable : IVariable<Vector3>
-{
-    private readonly Transform _target;
-
-    public TransformPositionVariable(Transform target)
-    {
-        _target = target ?? throw new ArgumentNullException(nameof(target));
-    }
-
-    public Vector3 Value
-    {
-        get => _target.position;
-        set => _target.position = value;
-    }
-}
-```
-
----
-
-### 2️⃣ Wrapping Network Buffer Data
-
-```csharp
-public class NetworkVariable<T> : IVariable<T> where T : unmanaged
-{
-    private readonly NetworkBuffer _networkBuffer;
-    private IntPtr _ptr;
-    
-    public NetworkVariable(NetworkBuffer networkBuffer, IntPtr ptr)
-    {
-        _networkBuffer = networkBuffer;
-        _ptr = ptr;
-    }
-
-    public T Value
-    {
-        get => _networkBuffer.ReadData<T>(_ptr);
-        set => _networkBuffer.WriteData<T>(_ptr, value);
-    }
-}
-```
