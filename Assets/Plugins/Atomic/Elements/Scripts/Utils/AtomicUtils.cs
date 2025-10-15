@@ -9,7 +9,7 @@ namespace Atomic.Elements
     /// <summary>
     /// Provides utility methods for checking the current Unity application mode.
     /// </summary>
-    public static class ApplicationUtils
+    public static class AtomicUtils
     {
         /// <summary>
         /// Determines whether the application is currently in Play Mode.

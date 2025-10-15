@@ -11,7 +11,7 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - **Common**
     - [Reference](Reference.md) <!-- + -->
     - [Optional](Optional.md) <!-- + -->
-    - [ApplicationUtils](ApplicationUtils.md)  <!-- + -->
+    - [AtomicUtils](AtomicUtils.md)  <!-- + -->
 - **Disposables**
     - [DisposableAction](DisposableAction.md) <!-- + -->
     - [DisposableComposite](DisposableComposite.md) <!-- + -->

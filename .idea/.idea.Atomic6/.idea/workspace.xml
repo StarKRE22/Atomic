@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingUtilsForEntityInstallers.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingOptionalWithInstallers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Optional.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Optional.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/ApplicationUtils.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/AtomicUtils.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +58,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
@@ -229,15 +234,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="16904000" />
-    </task>
-    <task id="LOCAL-01472" summary="BaseRequest.md">
-      <option name="closed" value="true" />
-      <created>1760434429200</created>
-      <option name="number" value="01472" />
-      <option name="presentableId" value="LOCAL-01472" />
-      <option name="project" value="LOCAL" />
-      <updated>1760434429200</updated>
+      <workItem from="1760510813056" duration="17995000" />
     </task>
     <task id="LOCAL-01473" summary="BaseRequest`1.md">
       <option name="closed" value="true" />
@@ -623,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760538564539</updated>
     </task>
-    <option name="localTasksCounter" value="1521" />
+    <task id="LOCAL-01521" summary="Optional.md">
+      <option name="closed" value="true" />
+      <created>1760539479321</created>
+      <option name="number" value="01521" />
+      <option name="presentableId" value="LOCAL-01521" />
+      <option name="project" value="LOCAL" />
+      <updated>1760539479321</updated>
+    </task>
+    <option name="localTasksCounter" value="1522" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +655,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TimerState.md" />
     <MESSAGE value="Сделал Stopwatches.md" />
     <MESSAGE value="Stopwatches.md" />
     <MESSAGE value="Сделал периоды!" />
@@ -675,7 +679,8 @@
     <MESSAGE value="Остались Utils! И можно переходить к Atomic.Entities!" />
     <MESSAGE value="Остались утилы!" />
     <MESSAGE value="Reference.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reference.md" />
+    <MESSAGE value="Optional.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optional.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

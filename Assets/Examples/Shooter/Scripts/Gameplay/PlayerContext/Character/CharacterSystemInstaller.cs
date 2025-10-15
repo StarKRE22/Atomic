@@ -13,7 +13,7 @@ namespace ShooterGame.Gameplay
 
         public void Install(IPlayerContext context)
         {
-            if (ApplicationUtils.IsPlayMode())
+            if (AtomicUtils.IsPlayMode())
             {
                 GameContext gameContext = GameContext.Instance;
                 GameEntity character = CharacterUseCase.Spawn(context, gameContext, _characterPrefab);
