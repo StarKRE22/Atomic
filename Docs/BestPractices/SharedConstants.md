@@ -1,4 +1,4 @@
-#  📌 Use Shared Constants
+#  📌 Using Flyweight Pattern for Constants
 
 Whenever you have a **read-only, constant value** that multiple objects need to access, wrap it in [Const\<T\>](../Elements/Values/Const.md).  
 

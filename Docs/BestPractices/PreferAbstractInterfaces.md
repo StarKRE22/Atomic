@@ -1,4 +1,4 @@
-# 📌 Prefer Atomic Interfaces to Concrete Classes 
+# 📌 Prefer Interfaces to Concrete Classes 
 
 Always use atomic interfaces such as `IValue`, `IVariable`, `ISignal`, etc., instead of concrete classes. This significantly improves the **maintainability** and **testability** of your project.
 

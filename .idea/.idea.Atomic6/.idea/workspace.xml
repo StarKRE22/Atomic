@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Time/ExtensionsIStartSource.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Time/ExtensionsIStartSource.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/SharedConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/SharedConstants.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/DefaultConstants.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,23 +232,8 @@
       <workItem from="1760113573847" duration="9558000" />
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
-      <workItem from="1760420145768" duration="26069000" />
-    </task>
-    <task id="LOCAL-01446" summary="IntMulExpression.md">
-      <option name="closed" value="true" />
-      <created>1760376442378</created>
-      <option name="number" value="01446" />
-      <option name="presentableId" value="LOCAL-01446" />
-      <option name="project" value="LOCAL" />
-      <updated>1760376442378</updated>
-    </task>
-    <task id="LOCAL-01447" summary="Сделал блок Expressions!">
-      <option name="closed" value="true" />
-      <created>1760377229813</created>
-      <option name="number" value="01447" />
-      <option name="presentableId" value="LOCAL-01447" />
-      <option name="project" value="LOCAL" />
-      <updated>1760377229813</updated>
+      <workItem from="1760420145768" duration="26860000" />
+      <workItem from="1760510813056" duration="2035000" />
     </task>
     <task id="LOCAL-01448" summary="Сделал блок Expressions!">
       <option name="closed" value="true" />
@@ -620,7 +611,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760474758241</updated>
     </task>
-    <option name="localTasksCounter" value="1495" />
+    <task id="LOCAL-01495" summary="ExtensionsIStartSource.md">
+      <option name="closed" value="true" />
+      <created>1760475044967</created>
+      <option name="number" value="01495" />
+      <option name="presentableId" value="LOCAL-01495" />
+      <option name="project" value="LOCAL" />
+      <updated>1760475044967</updated>
+    </task>
+    <task id="LOCAL-01496" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760475083343</created>
+      <option name="number" value="01496" />
+      <option name="presentableId" value="LOCAL-01496" />
+      <option name="project" value="LOCAL" />
+      <updated>1760475083343</updated>
+    </task>
+    <option name="localTasksCounter" value="1497" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +654,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPredicate`2.md" />
     <MESSAGE value="Request Manual" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="IRequest.md" />
@@ -671,6 +677,7 @@
     <MESSAGE value="Stopwatches.md" />
     <MESSAGE value="Сделал периоды!" />
     <MESSAGE value="Сделал Timestamps.md" />
+    <MESSAGE value="ExtensionsIStartSource.md" />
     <MESSAGE value="Minor Fixes!" />
     <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
