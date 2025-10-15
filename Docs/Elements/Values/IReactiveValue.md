@@ -1,60 +1,21 @@
 # 🧩 IReactiveValue&lt;T&gt;
 
-```csharp
-public interface IReactiveValue<T> : IValue<T>, ISignal<T>
-```
-
-- **Description:** Represents a **reactive value** that combines **read-only access** and **reactive
-  observation**. It allows you to both **read the current value** and **subscribe to changes**.
-- **Inheritance:**  [IValue&lt;T&gt;](IValue.md), [ISignal&lt;T&gt;](../Events/ISignal%601.md)
-- **Type Parameter:** `T` – The type of the value.
+Represents a **reactive value** that combines **read-only access** and **reactive
+observation**. It allows you to both **read the current value** and **subscribe to changes**.
 
 ---
 
-## 🔑 Properties
+## 📑 Table of Contents
 
-#### `Value`
-
-```csharp
-public T Value { get; }
-```
-
-- **Description:** Gets the current value.
-- **Access:** Read-only
-
----
-
-## 🏹 Methods
-
-#### `Invoke()`
-
-```csharp
-public T Invoke()
-```
-
-- **Description:** Invokes the function and returns the value.
-- **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
-
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription<T> Subscribe(Action action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription&lt;T&gt;](../Events/Subscription%601.md) struct representing the active
-  subscription.
-
-#### `Unsubscribe(Action)`
-
-```csharp
-public void Unsubscribe(Action action)  
-```
-
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEvent](#onevent)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
 
 ---
 
@@ -94,3 +55,58 @@ public sealed class ScorePresenter : IDisposable
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IReactiveValue<T> : IValue<T>, ISignal<T>
+```
+
+- **Description:** Represents a **reactive value** that combines **read-only access** and **reactive
+  observation**. It allows you to both **read the current value** and **subscribe to changes**.
+- **Inheritance:**  [IValue&lt;T&gt;](IValue.md), [ISignal&lt;T&gt;](../Events/ISignal%601.md)
+- **Type Parameter:** `T` – The type of the value.
+
+---
+
+### ⚡ Events
+
+#### `OnEvent`
+
+```csharp
+public event Action<T> OnEvent;
+```
+
+- **Description:** Occurs when the value changed.
+- **Parameters:** `T` — the emitted value.
+
+---
+
+### 🔑 Properties
+
+#### `Value`
+
+```csharp
+public T Value { get; }
+```
+
+- **Description:** Gets the current value.
+- **Access:** Read-only
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public T Invoke()
+```
+
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
