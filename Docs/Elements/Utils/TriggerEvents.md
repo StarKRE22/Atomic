@@ -32,7 +32,6 @@ Add a **`Atomic/Elements/TriggerEvents`** component to a `GameObject` with a **C
 
 <img src="../../Images/TriggerEvents.png" alt="AnimationEvents example" width="" height="50">
 
-
 #### Step 2. Create Script
 
 Create a script that will handle trigger events:

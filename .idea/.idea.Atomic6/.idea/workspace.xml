@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents2D.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents2D.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -225,15 +233,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="25631000" />
-    </task>
-    <task id="LOCAL-01489" summary="Сделал Stopwatches.md">
-      <option name="closed" value="true" />
-      <created>1760473592267</created>
-      <option name="number" value="01489" />
-      <option name="presentableId" value="LOCAL-01489" />
-      <option name="project" value="LOCAL" />
-      <updated>1760473592267</updated>
+      <workItem from="1760510813056" duration="26977000" />
     </task>
     <task id="LOCAL-01490" summary="Stopwatches.md">
       <option name="closed" value="true" />
@@ -619,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760550738585</updated>
     </task>
-    <option name="localTasksCounter" value="1538" />
+    <task id="LOCAL-01538" summary="TriggerEvents.md">
+      <option name="closed" value="true" />
+      <created>1760550827757</created>
+      <option name="number" value="01538" />
+      <option name="presentableId" value="LOCAL-01538" />
+      <option name="project" value="LOCAL" />
+      <updated>1760550827757</updated>
+    </task>
+    <option name="localTasksCounter" value="1539" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,12 +674,12 @@
     <MESSAGE value="DisposableComposite`1.md" />
     <MESSAGE value="Utility Extensions.md" />
     <MESSAGE value="AnimationEvents.md" />
-    <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="TriggerEvents2D.md" />
     <MESSAGE value="Финализируем Atomic.Elements!" />
     <MESSAGE value="CollisionEvents.md" />
     <MESSAGE value="CollisionEvents2D.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="CollisionEvents2D.md" />
+    <MESSAGE value="TriggerEvents.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TriggerEvents.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

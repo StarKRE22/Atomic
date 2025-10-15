@@ -127,4 +127,4 @@ public void Dispose();
 
 ## 📌 Best Practices
 
-- [Using EntityInstallers with DisposeComposite](../../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
+- [Using DisposeComposite in EntityInstallers](../../BestPractices/UsingSubscriptionsWithDisposeComposite.md)

@@ -1,4 +1,4 @@
-# 📌 Using Entity Installers with DisposeComposite
+# 📌 DisposeComposite in Using Entity Installers 
 
 The following example demonstrates how to use `Subscription` together
 with [DisposeComposite](../Utils/DisposableComposite.md) and `Atomic.Entities` framework to manage reactive event
