@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents2D.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/TriggerEvents2D.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/ReactiveArray.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/List/ReactiveList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,15 +229,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="24725000" />
-    </task>
-    <task id="LOCAL-01484" summary="ICooldown.md">
-      <option name="closed" value="true" />
-      <created>1760471203297</created>
-      <option name="number" value="01484" />
-      <option name="presentableId" value="LOCAL-01484" />
-      <option name="project" value="LOCAL" />
-      <updated>1760471203297</updated>
+      <workItem from="1760510813056" duration="25026000" />
     </task>
     <task id="LOCAL-01485" summary="Timers.md">
       <option name="closed" value="true" />
@@ -622,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760549479020</updated>
     </task>
-    <option name="localTasksCounter" value="1533" />
+    <task id="LOCAL-01533" summary="TriggerEvents2D.md">
+      <option name="closed" value="true" />
+      <created>1760549893026</created>
+      <option name="number" value="01533" />
+      <option name="presentableId" value="LOCAL-01533" />
+      <option name="project" value="LOCAL" />
+      <updated>1760549893026</updated>
+    </task>
+    <option name="localTasksCounter" value="1534" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Const.md" />
     <MESSAGE value="ScriptableConst.md" />
     <MESSAGE value="ValueExtensions" />
     <MESSAGE value="Variables Manual!" />
@@ -674,7 +674,8 @@
     <MESSAGE value="CollisionEvents.md" />
     <MESSAGE value="CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="TriggerEvents.md" />
+    <MESSAGE value="TriggerEvents2D.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TriggerEvents2D.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

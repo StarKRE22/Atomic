@@ -235,8 +235,8 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
         }
 
-        /// <inheritdoc/>
-        /// <inheritdoc/>
+        /// <summary><para>Determines whether the current collection contains a specific value.</para></summary>
+        /// <param name="item">The object to locate in the current collection.</param>
         public bool Contains(T item)
         {
             if (item != null)

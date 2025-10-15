@@ -52,13 +52,13 @@ namespace Atomic.Elements
         /// </summary>
         /// <param name="elements">Elements to initialize the array with.</param>
         public ReactiveArray(params T[] elements) => this.items = elements;
-        
+
         /// <summary>
         /// Creates a reactive array initialized with the given elements.
         /// </summary>
         /// <param name="elements">Elements to initialize the array with.</param>
         public ReactiveArray(IEnumerable<T> elements) => this.items = elements.ToArray();
-        
+
         /// <inheritdoc cref="IReactiveArray{T}.this" />
         public T this[int index]
         {
@@ -108,6 +108,18 @@ namespace Atomic.Elements
             this.OnStateChanged?.Invoke();
         }
 
+        /// <summary><para>Determines whether the current collection contains a specific value.</para></summary>
+        /// <param name="item">The object to locate in the current collection.</param>
+        public bool Contains(T item)
+        {
+            if (item != null)
+                for (int i = 0, count = this.items.Length; i < count; i++)
+                    if (s_comparer.Equals(this.items[i], item))
+                        return true;
+
+            return false;
+        }
+
         /// <summary>
         /// Copies all elements from this reactive array to the specified destination array,
         /// starting at the given index in the destination array.
@@ -131,7 +143,8 @@ namespace Atomic.Elements
             if (arrayIndex < 0)
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Array index cannot be negative.");
             if (array.Length - arrayIndex < this.items.Length)
-                throw new ArgumentException("The destination array is too small to contain all elements.", nameof(array));
+                throw new ArgumentException("The destination array is too small to contain all elements.",
+                    nameof(array));
 
             Array.Copy(this.items, 0, array, arrayIndex, this.items.Length);
         }

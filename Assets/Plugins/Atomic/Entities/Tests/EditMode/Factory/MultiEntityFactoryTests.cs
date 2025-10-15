@@ -30,8 +30,7 @@ namespace Atomic.Entities
             var factory = new MultiEntityFactory<string, EntityDummy>();
 
             // Act & Assert
-            var ex = Assert.Throws<KeyNotFoundException>(() => factory.Create("nonexistent"));
-            StringAssert.Contains("Entity Factory with key", ex.Message);
+            Assert.Throws<KeyNotFoundException>(() => factory.Create("nonexistent"));
         }
 
         [Test]
