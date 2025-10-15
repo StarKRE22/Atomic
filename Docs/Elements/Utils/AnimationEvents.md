@@ -25,7 +25,7 @@ with an `Animator` or `Animation` to dispatch animation events through C# events
 
 #### Step 1. Add Components
 
-Add both an `Animator` and `AnimationEvents` component to your `GameObject`.
+Add both an `Animator` and `Atomic/Elements/AnimationEvents` component to your `GameObject`.
 
 - <img src="../../Images/AnimationEvents.png" alt="AnimationEvents example" width="" height="320">
 

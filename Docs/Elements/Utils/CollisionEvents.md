@@ -28,7 +28,7 @@ collision events as C# events.
 
 #### Step 1. Add Component
 
-Add a **`CollisionEvents`** component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
+Add a `Atomic/Elements/CollisionEvents` component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
 
 #### Step 2. Create Script
 

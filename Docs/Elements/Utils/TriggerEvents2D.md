@@ -1,5 +1,12 @@
 # 🧩 TriggerEvents2D
 
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
 [DisallowMultipleComponent]
@@ -87,7 +94,7 @@ public void OnTriggerStay2D(Collider2D other);
 
 #### 1. Add Component
 
-Add a **`TriggerEvents2D`** component to a `GameObject` with a **2D Collider** set as a trigger.
+Add a **`Atomic/Elements/TriggerEvents2D`** component to a `GameObject` with a **2D Collider** set as a trigger.
 
 #### 2. Create Script
 

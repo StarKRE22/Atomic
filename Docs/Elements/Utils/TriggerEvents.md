@@ -1,21 +1,95 @@
 # 🧩 TriggerEvents
 
+A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks as C# events. This allows
+external scripts to react
+to trigger interactions without overriding Unity callbacks. Attach
+this component to a `GameObject` with a **Collider** set as a **Trigger** to receive events.
+
+---
+
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEntered](#onentered)
+        - [OnExited](#onexited)
+        - [OnStay](#onstay)
+    - [Methods](#-methods)
+        - [OnTriggerEnter(Collider)](#ontriggerentercollider)
+        - [OnTriggerExit(Collider)](#ontriggerexitcollider)
+        - [OnTriggerStay(Collider)](#ontriggerstaycollider)
+- [Notes](#-notes)
+
+---
+
+## 🚀 Quick Start
+
+#### Step 1. Add Component
+
+Add a **`Atomic/Elements/TriggerEvents`** component to a `GameObject` with a **Collider** set as a trigger.
+
+#### Step 2. Create Script
+
+Create a script that will handle trigger events:
+
+```csharp
+public class Example : MonoBehaviour
+{
+    [SerializeField]
+    private TriggerEvents _triggerEvents;
+
+    private void OnEnable()
+    {
+        _triggerEvents.OnEntered += HandleEnter;
+        _triggerEvents.OnExited  += HandleExit;
+        _triggerEvents.OnStay    += HandleStay;
+    }
+
+    private void OnDisable()
+    {
+        _triggerEvents.OnEntered -= HandleEnter;
+        _triggerEvents.OnExited  -= HandleExit;
+        _triggerEvents.OnStay    -= HandleStay;
+    }
+
+    private void HandleEnter(Collider other)
+        => Debug.Log($"Trigger entered by {other.gameObject.name}");
+
+    private void HandleExit(Collider other)
+        => Debug.Log($"Trigger exited by {other.gameObject.name}");
+
+    private void HandleStay(Collider other)
+        => Debug.Log($"Still inside trigger: {other.gameObject.name}");
+}
+```
+
+#### Step 3. Attach Script
+
+Attach the `Example` script to the **same GameObject**.
+
+#### Step 4. Run and Test
+
+Enter **Play Mode** in Unity. When other colliders interact with the trigger, you’ll see logs in the **Console**.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [AddComponentMenu("Atomic/Elements/Trigger Events")]
 [DisallowMultipleComponent]
 public sealed class TriggerEvents : MonoBehaviour
 ```
 
-- **Description:** A **Unity MonoBehaviour** that exposes Unity’s 3D trigger callbacks as C# events. This allows
-  external scripts to react
-  to trigger interactions without overriding Unity callbacks. Attach
-  this component to a `GameObject` with a **Collider** set as a **Trigger** to receive events.
-
 - **Inheritance:** `MonoBehaviour`
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnEntered`
 
@@ -49,7 +123,7 @@ public event Action<Collider> OnStay;
 
 ---
 
-## 🪝 Unity Callbacks
+### 🏹 Methods
 
 These methods are automatically called by Unity and forward events to C# subscribers.
 
@@ -82,57 +156,6 @@ public void OnTriggerStay(Collider other);
 - **Description:** Called every frame while a collider remains in the trigger.
 - **Parameter:** `Collider` — the collider that is staying.
 - **Dispatches:** `OnStay`
-
----
-
-## 🗂 Example Usage
-
-#### 1. Add Component
-
-Add a **`TriggerEvents`** component to a `GameObject` with a **Collider** set as a trigger.
-
-#### 2. Create Script
-
-Create a script called `TriggerExample`:
-
-```csharp
-public class TriggerExample : MonoBehaviour
-{
-    [SerializeField]
-    private TriggerEvents _triggerEvents;
-
-    private void OnEnable()
-    {
-        _triggerEvents.OnEntered += HandleEnter;
-        _triggerEvents.OnExited  += HandleExit;
-        _triggerEvents.OnStay    += HandleStay;
-    }
-
-    private void OnDisable()
-    {
-        _triggerEvents.OnEntered -= HandleEnter;
-        _triggerEvents.OnExited  -= HandleExit;
-        _triggerEvents.OnStay    -= HandleStay;
-    }
-
-    private void HandleEnter(Collider other)
-        => Debug.Log($"Trigger entered by {other.gameObject.name}");
-
-    private void HandleExit(Collider other)
-        => Debug.Log($"Trigger exited by {other.gameObject.name}");
-
-    private void HandleStay(Collider other)
-        => Debug.Log($"Still inside trigger: {other.gameObject.name}");
-}
-```
-
-#### 3. Attach Script
-
-Attach the `TriggerExample` script to the **same GameObject**.
-
-#### 4. Run and Test
-
-Enter **Play Mode** in Unity. When other colliders interact with the trigger, you’ll see logs in the **Console**.
 
 ---
 
