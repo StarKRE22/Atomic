@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariableBuilder.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryKeyCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Collections/ReactiveDictionaryValueCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariableBuilder.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,23 +230,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="10807000" />
-    </task>
-    <task id="LOCAL-01463" summary="ExtensionsCollections.md">
-      <option name="closed" value="true" />
-      <created>1760426948448</created>
-      <option name="number" value="01463" />
-      <option name="presentableId" value="LOCAL-01463" />
-      <option name="project" value="LOCAL" />
-      <updated>1760426948448</updated>
-    </task>
-    <task id="LOCAL-01464" summary="IPredicate.md">
-      <option name="closed" value="true" />
-      <created>1760427418006</created>
-      <option name="number" value="01464" />
-      <option name="presentableId" value="LOCAL-01464" />
-      <option name="project" value="LOCAL" />
-      <updated>1760427418006</updated>
+      <workItem from="1760510813056" duration="11523000" />
     </task>
     <task id="LOCAL-01465" summary="IPredicate`1.md">
       <option name="closed" value="true" />
@@ -628,7 +608,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760521218641</updated>
     </task>
-    <option name="localTasksCounter" value="1512" />
+    <task id="LOCAL-01512" summary="ProxyVariable.md">
+      <option name="closed" value="true" />
+      <created>1760522058266</created>
+      <option name="number" value="01512" />
+      <option name="presentableId" value="LOCAL-01512" />
+      <option name="project" value="LOCAL" />
+      <updated>1760522058266</updated>
+    </task>
+    <task id="LOCAL-01513" summary="ProxyVariable.md">
+      <option name="closed" value="true" />
+      <created>1760522196967</created>
+      <option name="number" value="01513" />
+      <option name="presentableId" value="LOCAL-01513" />
+      <option name="project" value="LOCAL" />
+      <updated>1760522196967</updated>
+    </task>
+    <option name="localTasksCounter" value="1514" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал Sources!" />
     <MESSAGE value="Cooldowns.md" />
     <MESSAGE value="Сделал Cooldowns!" />
     <MESSAGE value="RandomCooldown.md" />
@@ -680,7 +675,8 @@
     <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="BaseVariable.md" />
     <MESSAGE value="ReactiveVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ReactiveVariable.md" />
+    <MESSAGE value="ProxyVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ProxyVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,6 +14,7 @@ properties into systems expecting [IVariable\<T>](IVariable.md) without duplicat
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructors](#-constructors)
+      - [ProxyVariable(Func\<T>, Action\<T>)](#proxyvariablefunct-actiont)
     - [Properties](#-properties)
         - [Value](#value)
     - [Methods](#-methods)
@@ -81,6 +82,8 @@ public class ProxyVariable<T> : IVariable<T>
 <div id="-constructors"></div>
 
 ### 🏗️ Constructors
+
+#### `ProxyVariable(Func<T>, Action<T>)`
 
 ```csharp
 public ProxyVariable(Func<T> getter, Action<T> setter)
