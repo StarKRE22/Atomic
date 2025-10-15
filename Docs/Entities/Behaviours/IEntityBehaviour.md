@@ -5,6 +5,14 @@ interface. It is only used for framework behaviour contracts.
 
 ---
 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+- [Derived Interfaces](#-derived-interfaces)
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type
@@ -15,7 +23,9 @@ public interface IEntityBehaviour
 
 ---
 
-## 🔗 Useful Links
+## 🧬 Derived Interfaces
+
+The following interfaces extend `IEntityBehaviour` and manage different stages of the entity lifecycle.
 
 - [IEntityInit](IEntityInit.md) — handles initialization.
 - [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
@@ -25,4 +35,3 @@ public interface IEntityBehaviour
 - [IEntityFixedTick](IEntityFixedTick.md) — handles fixed-timestep updates (physics, mechanics).
 - [IEntityLateTick](IEntityLateTick.md) — handles post-render updates.
 - [IEntityGizmos](IEntityGizmos.md) — handles debug visualization and gizmos in the scene.
-
