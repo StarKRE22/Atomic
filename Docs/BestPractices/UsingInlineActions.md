@@ -1,4 +1,4 @@
-# 📌 Using Inline Actions
+# 📌 Using Inline Actions with Entities
 
 **InlineAction** is ideal for creating actions for specific game objects using **lambda expressions**, making it easy to
 define custom behavior inline for events, commands, or reactive systems.

@@ -1,0 +1,1 @@
+# 📌 PlayMode & EditMode for EntityInstallers

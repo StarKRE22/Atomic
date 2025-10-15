@@ -1,4 +1,4 @@
-# 📌 Using Serialize Reference for Composite Actions
+# 📌 Using SerializeReference for CompositeActions
 
 For **narrative or scenario-driven games**, where designers need to configure a lot of actions directly on the scene,
 `CompositeAction` combined with `[SerializeReference]` is very convenient. It allows designers to visually chain

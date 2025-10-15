@@ -313,7 +313,7 @@ Also, there is a `TriggerEvents2D` component for 2D Physics
 
 ## 📌 Best Practices
 
-Below are additional resources using these utilities with [Atomic.Entities](../../Entities/Manual.md) framework:
+Below are references to best practices for using these utilities with the [Atomic.Entities](../../Entities/Manual.md) framework:
 
 - [Using Optional with EntityInstallers](../../BestPractices/UsingOptionalWithInstallers.md)
 - [Using AtomicUtils for EntityInstallers](../../BestPractices/UsingUtilsForEntityInstallers.md)

@@ -1,3 +1,5 @@
+# 📌 Using Setters with Entities
+
 ## 🗂 Example of Usage
 
 Below is an example of using `ISetter<Vector3>` inside a movement input controller built with `Atomic.Entities`. This

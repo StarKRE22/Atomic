@@ -1,4 +1,4 @@
-# 📌 Using Constants for IExpression\<bool>
+# 📌 Using Constants for Expressions
 
 If you need to add constant `true` or `false` conditions **without allocations** to the [AndExpression](../Elements/Expressions/AndExpression.md), you can use boolean constants
 from [DefaultConstants](../Values/DefaultConstants.md#-boolean-constants)
