@@ -1,14 +1,7 @@
 # 🧩 ScriptableConst&lt;T&gt;
 
-```csharp
-public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
-```
-
-- **Description:** Represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**
-  making it perfect for sharing constant values across multiple objects or scenes
-- **Inheritance:** `ScriptableObject`, [IValue&lt;T&gt;](IValue.md)
-- **Type Parameter:** `T` – The type of the wrapped constant value.
-- **Notes:** Supports Unity serialization and Odin Inspector
+Represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**
+making it perfect for sharing constant values across multiple objects or scenes
 
 > [!TIP]  
 > Using `ScriptableConst<T>` allows you to change the value in the editor and automatically propagate it to all objects
@@ -16,54 +9,23 @@ public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
 
 ---
 
-## 🛠 Inspector Settings
+## 📑 Table of Contents
 
-| Parameter            | Description                                                             |
-|----------------------|-------------------------------------------------------------------------|
-| `value` | The value of this constant |
-
----
-
-## 🔑 Properties
-
-#### `Value`
-
-```csharp
-public T Value { get; }
-```
-
-- **Description:** Gets the wrapped constant value.
-- **Access:** Read-only
-
----
-
-## 🏹 Methods
-
-#### `Invoke()`
-
-```csharp
-public T Invoke()
-```
-
-- **Description:** Invokes the function and returns the value.
-- **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
-
-#### `ToString()`
-
-```csharp
-public override string ToString();
-```
-
-- **Description:** Returns a string that represents the wrapped constant value.
-- **Returns:** A string representation of the constant value.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Inspector Settings](#-inspector-settings)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [ToString()](#tostring)
 
 ---
 
 ## 🗂 Example of Usage
 
-The example below demonstrates how a speed parameter can be **shared across multiple characters** using
-`ScriptableConst`.
+The example below demonstrates how a speed parameter can be **shared across multiple characters**:
 
 ```csharp
 [CreateAssetMenu(
@@ -87,3 +49,61 @@ public sealed class Character : MonoBehaviour
     }
 }
 ```
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
+```
+
+- **Description:** Represents a **serialized, immutable (read-only) constant value** stored as a **ScriptableObject**
+  making it perfect for sharing constant values across multiple objects or scenes
+- **Inheritance:** `ScriptableObject`, [IValue&lt;T&gt;](IValue.md)
+- **Type Parameter:** `T` – The type of the wrapped constant value.
+- **Notes:** Supports Unity serialization and Odin Inspector
+
+---
+
+### 🛠 Inspector Settings
+
+| Parameter | Description                |
+|-----------|----------------------------|
+| `value`   | The value of this constant |
+
+---
+
+### 🔑 Properties
+
+#### `Value`
+
+```csharp
+public T Value { get; }
+```
+
+- **Description:** Gets the wrapped constant value.
+- **Access:** Read-only
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public T Invoke()
+```
+
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
+
+#### `ToString()`
+
+```csharp
+public override string ToString();
+```
+
+- **Description:** Returns a string that represents the wrapped constant value.
+- **Returns:** A string representation of the constant value.
