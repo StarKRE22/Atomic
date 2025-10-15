@@ -131,7 +131,7 @@ public void Dispose()
 ## 📝 Notes
 
 - Use this generic version when all disposables are of the same type for **type safety** and boxing avoidance.
-- Combine with `AddTo` extension methods if available for **chaining disposables** into the composite.
+- Combine with [AddTo](Extensions.md#addtott-disposablecompositet) extension methods if available for **chaining disposables** into the composite.
 
 ---
 
