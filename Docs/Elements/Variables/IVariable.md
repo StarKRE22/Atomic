@@ -6,7 +6,7 @@ Represents a **read-write variable** that exposes both **getter** and **setter**
 
 ## 📑 Table of Contents
 
-- [Examples of Usage](#examples-of-usage)
+- [Examples of Usage](#-examples-of-usage)
     - [Transform Position](#ex1)
     - [Native Buffer Data](#ex2)
 - [API Reference](#-api-reference)
