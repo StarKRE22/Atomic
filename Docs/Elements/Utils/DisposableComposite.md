@@ -36,10 +36,11 @@ ISignal signal = ...
 //Create a container of disposables 
 var composite = new DisposableComposite();
 
-//Subscribing to events with automatic disposal
-signal
-    .Subscribe(() => Console.WriteLine("Hi!"))
-    .AddTo(composite);
+//Subscribing to the signal
+IDisposable disposable = signal.Subscribe(() => Console.WriteLine("Hi!"));
+
+//Add subscription to the composite
+composite.Add(disposable);
 
 // Later, when disposing
 composite.Dispose(); // All disposables including the subscription are disposed
