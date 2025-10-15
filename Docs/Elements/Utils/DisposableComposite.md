@@ -53,10 +53,10 @@ composite.Dispose(); // All disposables including the subscription are disposed
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public class DisposableComposite : IDisposable
+public class DisposableComposite : DisposableComposite<IDisposable>
 ```
 
-- **Inheritance:** `IDisposable`
+- **Inheritance:** [DisposableComposite\<T>](DisposableComposite%601.md)
 
 ---
 

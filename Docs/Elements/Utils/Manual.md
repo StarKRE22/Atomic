@@ -15,7 +15,7 @@ various helper extensions. These utilities help reduce boilerplate code and make
 - **Disposables**
     - [DisposableAction](DisposableAction.md) <!-- + -->
     - [DisposableComposite](DisposableComposite.md) <!-- + -->
-    - [DisposableComposite\<T>]() //TODO
+    - [DisposableComposite\<T>](DisposableComposite%601.md) <!-- + -->
     - [Extensions](Extensions.md) <!-- + -->
 - **UnityComponents**
     - [AnimationEvents](AnimationEvents.md) <!-- + -->

@@ -1,6 +1,6 @@
 # 🧩 Subscriptions
 
-Represent a **subscription** to a [ISignal](ISignals.md) instance. Disposing an instance will automatically
+Represent a struct **subscription** to a [ISignal](ISignals.md) instance. Disposing an instance will automatically
 **unsubscribe the associated action** from the **signal**, ensuring proper cleanup of event handlers.
 
 ---
