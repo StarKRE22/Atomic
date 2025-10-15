@@ -1,49 +1,30 @@
 # 🧩 IValue&lt;T&gt;
 
-```csharp
-public interface IValue<out T> : IFunction<T>
-```
+Represents a **read-only value provider interface** and exposes a strongly-typed `Value` property.
 
-- **Description:** Represents a **read-only value provider interface** and exposes a strongly-typed `Value` property.
-- **Inheritance:** [IFunction&lt;R&gt;](../Functions/IFunction.md)
-- **Type Parameter:** `T` – The type of the value being returned.
 
 ---
 
-# 🔑 Properties
+## 📑 Table of Contents
 
-#### `Value`
-
-```csharp
-public T Value { get; }
-```
-
-- **Description:** Gets the current value.
-- **Access:** Read-only
-
----
-
-# 🏹 Methods
-
-#### `Invoke()`
-
-```csharp
-public T Invoke()
-```
-
-- **Description:** Invokes the function and returns the value.
-- **Returns:** The current value of type `T`.
-- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
+- [Examples of Usage](#examples-of-usage)
+    - [Transform Position](#ex1)
+    - [PlayerPrefs Value](#ex2)
+    - [Random AudioClip](#ex3)
+- [API Reference](#api-reference)
+    - [Type](#type)
+    - [Properties](#properties)
+        - [Value](#value)
+    - [Methods](#methods)
+        - [Invoke()](#invoke)
 
 ---
 
 ## 🗂 Examples of Usage
 
-`IValue<T>` can wrap any data source, for example:
+<div id="ex1"></div>
 
----
-
-### 1️⃣ Position from Transform
+### 1️⃣ Transform Position
 
 ```csharp
 public class TransformPositionProvider : IValue<Vector3>
@@ -60,7 +41,7 @@ public class TransformPositionProvider : IValue<Vector3>
 ```
 
 ```csharp
-public class UsageExample : MonoBehaviour
+public class Example : MonoBehaviour
 {
     [SerializeField] 
     private Transform _transform;
@@ -75,7 +56,9 @@ public class UsageExample : MonoBehaviour
 
 ---
 
-### 2️⃣ Integer value from PlayerPrefs
+<div id="ex2"></div>
+
+### 2️⃣ PlayerPrefs Value
 
 ```csharp
 public class IntPlayerPrefsProvider : IValue<int>
@@ -94,7 +77,7 @@ public class IntPlayerPrefsProvider : IValue<int>
 ```
 
 ```csharp
-public class UsageExample : MonoBehaviour
+public class Example : MonoBehaviour
 {
     [SerializeField] 
     private int _defaultScore;
@@ -109,7 +92,9 @@ public class UsageExample : MonoBehaviour
 
 ---
 
-### 3️⃣ Random AudioClip from a list
+<div id="ex3"></div>
+
+### 3️⃣ Random AudioClip
 
 ```csharp
 public class RandomAudioClipProvider : IValue<AudioClip>
@@ -133,7 +118,7 @@ public class RandomAudioClipProvider : IValue<AudioClip>
 ```
 
 ```csharp
-public class UsageExample : MonoBehaviour
+public class Example : MonoBehaviour
 {
     [SerializeField] 
     private AudioClip[] _audioClips;
@@ -145,3 +130,44 @@ public class UsageExample : MonoBehaviour
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IValue<out T> : IFunction<T>
+```
+
+- **Description:** Represents a **read-only value provider interface** and exposes a strongly-typed `Value` property.
+- **Inheritance:** [IFunction&lt;R&gt;](../Functions/IFunction.md)
+- **Type Parameter:** `T` – The type of the value being returned.
+
+---
+
+### 🔑 Properties
+
+#### `Value`
+
+```csharp
+public T Value { get; }
+```
+
+- **Description:** Gets the current value.
+- **Access:** Read-only
+
+---
+
+### 🏹 Methods
+
+#### `Invoke()`
+
+```csharp
+public T Invoke()
+```
+
+- **Description:** Invokes the function and returns the value.
+- **Returns:** The current value of type `T`.
+- **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/SharedConstants.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/SharedConstants.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingObserveWithReactiveValues.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/DefaultConstants.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Values/IValue.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,15 +227,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="2035000" />
-    </task>
-    <task id="LOCAL-01448" summary="Сделал блок Expressions!">
-      <option name="closed" value="true" />
-      <created>1760377464983</created>
-      <option name="number" value="01448" />
-      <option name="presentableId" value="LOCAL-01448" />
-      <option name="project" value="LOCAL" />
-      <updated>1760377464983</updated>
+      <workItem from="1760510813056" duration="2360000" />
     </task>
     <task id="LOCAL-01449" summary="Пилим Functions!">
       <option name="closed" value="true" />
@@ -627,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760475083343</updated>
     </task>
-    <option name="localTasksCounter" value="1497" />
+    <task id="LOCAL-01497" summary="Values.md">
+      <option name="closed" value="true" />
+      <created>1760512860290</created>
+      <option name="number" value="01497" />
+      <option name="presentableId" value="LOCAL-01497" />
+      <option name="project" value="LOCAL" />
+      <updated>1760512860290</updated>
+    </task>
+    <option name="localTasksCounter" value="1498" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +648,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Request Manual" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="IRequest.md" />
     <MESSAGE value="Теперь для BaseRequest.md" />
@@ -679,7 +672,8 @@
     <MESSAGE value="Сделал Timestamps.md" />
     <MESSAGE value="ExtensionsIStartSource.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="Values.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Values.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
