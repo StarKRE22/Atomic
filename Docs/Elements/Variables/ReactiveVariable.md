@@ -4,6 +4,47 @@ Represents a **serialized reactive variable** that raises events whenever its va
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Constructors](#-constructors)
+    - [ReactiveVariable()](#reactivevariable)
+    - [ReactiveVariable(T)](#reactivevariablet)
+  - [Events](#-events)
+    - [OnEvent](#onevent)
+  - [Properties](#-properties)
+    - [Value](#value)
+  - [Methods](#-methods)
+    - [Invoke()](#invoke)
+    - [Invoke(T)](#invoket)
+    - [Dispose](#dispose)
+    - [ToString()](#tostring)
+  - [Operators](#-operators)
+    - [ReactiveVariable<T>(T)](#operator-reactivevariablett)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Initialize with a starting value
+var score = new ReactiveVariable<int>(10);
+
+// Subscribe to changes
+score.Subscribe(newValue => Console.WriteLine("Score updated: " + newValue));
+
+// Change the value
+score.Value = 20; // Triggers subscription callback
+
+ // Dispose to clear subscriptions
+score.Dispose();
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -29,6 +70,8 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 
 ---
 
+<div id="-constructors"></div>
+
 ### 🏗️ Constructors
 
 #### `ReactiveVariable()`
@@ -52,10 +95,10 @@ public ReactiveVariable(T value)
 
 ### ⚡ Events
 
-#### `OnValueChanged`
+#### `OnEvent`
 
 ```csharp
-event Action<T> OnValueChanged
+event Action<T> OnEvent
 ```
 
 - **Description:** Triggered whenever the value changes.
@@ -97,26 +140,6 @@ public void Invoke(T arg)
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
 
-#### `Subscribe(Action)`
-
-```csharp
-public Subscription<T> Subscribe(Action action)  
-```
-
-- **Description:** Subscribes an action to be invoked whenever the signal is triggered.
-- **Parameter:** `action` – The delegate to be called when the value changes.
-- **Returns:** A [Subscription&lt;T&gt;](../Events/Subscription%601.md) struct representing the active
-  subscription.
-
-#### `Unsubscribe(Action)`
-
-```csharp
-public void Unsubscribe(Action action)  
-```
-
-- **Description:** Removes a previously registered action so it will no longer be invoked when the signal is triggered.
-- **Parameters:** `action` – The delegate to remove from the subscription list.
-
 #### `Dispose`
 
 ```csharp
@@ -147,21 +170,3 @@ public static implicit operator ReactiveVariable<T>(T value);
 - **Description:** Implicitly converts a value of type `T` to a `ReactiveVariable<T>`.
 - **Parameter:** `value` – The value to wrap in a `ReactiveVariable<T>`.
 - **Returns:** A new `ReactiveVariable<T>` containing the specified value.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Initialize with a starting value
-var score = new ReactiveVariable<int>(10);
-
-// Subscribe to changes
-score.Subscribe(newValue => Console.WriteLine("Score updated: " + newValue));
-
-// Change the value
-score.Value = 20; // Triggers subscription callback
-
- // Dispose to clear subscriptions
-score.Dispose();
-```

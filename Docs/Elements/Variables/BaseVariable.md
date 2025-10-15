@@ -17,7 +17,7 @@ Represents a **simple serialized container** for a value of type `T`.
     - [Value](#value)
   - [Methods](#-methods)
     - [Invoke()](#invoke)
-    - [Invoke(T arg)](#invoket-arg)
+    - [Invoke(T)](#invoket)
     - [ToString()](#tostring)
   - [Operators](#-operators)
     - [BaseVariable<T>(T)](#operator-basevariablett)
@@ -113,7 +113,7 @@ public T Invoke()
 - **Returns:** The current value of type `T`.
 - **Notes**: This is the default implementation from [IFunction&lt;R&gt;](../Functions/IFunction.md)
 
-#### `Invoke(T arg)`
+#### `Invoke(T)`
 
 ```csharp
 public void Invoke(T arg)

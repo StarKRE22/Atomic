@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,23 +229,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="9408000" />
-    </task>
-    <task id="LOCAL-01460" summary="InlinePredicate`1.md">
-      <option name="closed" value="true" />
-      <created>1760425148675</created>
-      <option name="number" value="01460" />
-      <option name="presentableId" value="LOCAL-01460" />
-      <option name="project" value="LOCAL" />
-      <updated>1760425148675</updated>
-    </task>
-    <task id="LOCAL-01461" summary="InlinePredicate`2.md">
-      <option name="closed" value="true" />
-      <created>1760425385472</created>
-      <option name="number" value="01461" />
-      <option name="presentableId" value="LOCAL-01461" />
-      <option name="project" value="LOCAL" />
-      <updated>1760425385472</updated>
+      <workItem from="1760510813056" duration="9887000" />
     </task>
     <task id="LOCAL-01462" summary="ExtensionsInvert.md">
       <option name="closed" value="true" />
@@ -622,7 +607,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760519837014</updated>
     </task>
-    <option name="localTasksCounter" value="1509" />
+    <task id="LOCAL-01509" summary="IReactiveVariable.md">
+      <option name="closed" value="true" />
+      <created>1760520653325</created>
+      <option name="number" value="01509" />
+      <option name="presentableId" value="LOCAL-01509" />
+      <option name="project" value="LOCAL" />
+      <updated>1760520653325</updated>
+    </task>
+    <task id="LOCAL-01510" summary="BaseVariable.md">
+      <option name="closed" value="true" />
+      <created>1760520916752</created>
+      <option name="number" value="01510" />
+      <option name="presentableId" value="LOCAL-01510" />
+      <option name="project" value="LOCAL" />
+      <updated>1760520916752</updated>
+    </task>
+    <option name="localTasksCounter" value="1511" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Timers Manual!" />
-    <MESSAGE value="Начинаем пилить ITimeSource!" />
     <MESSAGE value="ITimeSource.md" />
     <MESSAGE value="Сделал Sources!" />
     <MESSAGE value="Cooldowns.md" />
@@ -674,7 +673,9 @@
     <MESSAGE value="ValueExtensions" />
     <MESSAGE value="Variables Manual!" />
     <MESSAGE value="IVariable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IVariable.md" />
+    <MESSAGE value="IReactiveVariable.md" />
+    <MESSAGE value="BaseVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="BaseVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
