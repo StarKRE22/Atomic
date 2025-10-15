@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableComposite`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/AnimationEvents.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/AnimationEvents.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,15 +228,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="21353000" />
-    </task>
-    <task id="LOCAL-01478" summary="ITimeSource.md">
-      <option name="closed" value="true" />
-      <created>1760439737176</created>
-      <option name="number" value="01478" />
-      <option name="presentableId" value="LOCAL-01478" />
-      <option name="project" value="LOCAL" />
-      <updated>1760439737176</updated>
+      <workItem from="1760510813056" duration="22481000" />
     </task>
     <task id="LOCAL-01479" summary="ITimeSource.md">
       <option name="closed" value="true" />
@@ -622,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760544281370</updated>
     </task>
-    <option name="localTasksCounter" value="1527" />
+    <task id="LOCAL-01527" summary="Utility Extensions.md">
+      <option name="closed" value="true" />
+      <created>1760544778296</created>
+      <option name="number" value="01527" />
+      <option name="presentableId" value="LOCAL-01527" />
+      <option name="project" value="LOCAL" />
+      <updated>1760544778296</updated>
+    </task>
+    <option name="localTasksCounter" value="1528" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ExtensionsIStartSource.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Values.md" />
     <MESSAGE value="IValue.md" />
@@ -674,7 +673,8 @@
     <MESSAGE value="DisposableAction.md" />
     <MESSAGE value="DisposableComposite.md" />
     <MESSAGE value="DisposableComposite`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="DisposableComposite`1.md" />
+    <MESSAGE value="Utility Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Utility Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
