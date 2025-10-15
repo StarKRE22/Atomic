@@ -15,7 +15,7 @@ interface. It is only used for framework behaviour contracts.
 
 ## 🔍 API Reference
 
-### 🏛️ Type
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface IEntityBehaviour
