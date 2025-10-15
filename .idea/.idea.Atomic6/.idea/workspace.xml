@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingUtilsForEntityInstallers.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterSystemInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/ApplicationUtils.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/ApplicationUtils.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/AtomicUtils.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Utils/DisposableAction.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,15 +228,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="17995000" />
-    </task>
-    <task id="LOCAL-01473" summary="BaseRequest`1.md">
-      <option name="closed" value="true" />
-      <created>1760435676969</created>
-      <option name="number" value="01473" />
-      <option name="presentableId" value="LOCAL-01473" />
-      <option name="project" value="LOCAL" />
-      <updated>1760435676969</updated>
+      <workItem from="1760510813056" duration="18718000" />
     </task>
     <task id="LOCAL-01474" summary="Manual Setter!">
       <option name="closed" value="true" />
@@ -628,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760539479321</updated>
     </task>
-    <option name="localTasksCounter" value="1522" />
+    <task id="LOCAL-01522" summary="AtomicUtils.md">
+      <option name="closed" value="true" />
+      <created>1760540495941</created>
+      <option name="number" value="01522" />
+      <option name="presentableId" value="LOCAL-01522" />
+      <option name="project" value="LOCAL" />
+      <updated>1760540495941</updated>
+    </task>
+    <option name="localTasksCounter" value="1523" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал Stopwatches.md" />
     <MESSAGE value="Stopwatches.md" />
     <MESSAGE value="Сделал периоды!" />
     <MESSAGE value="Сделал Timestamps.md" />
@@ -680,7 +673,8 @@
     <MESSAGE value="Остались утилы!" />
     <MESSAGE value="Reference.md" />
     <MESSAGE value="Optional.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optional.md" />
+    <MESSAGE value="AtomicUtils.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="AtomicUtils.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
