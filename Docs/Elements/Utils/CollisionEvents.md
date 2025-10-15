@@ -1,20 +1,95 @@
 # 🧩 CollisionEvents
 
+A **Unity MonoBehaviour** that exposes Unity’s collision callbacks as C# events. This makes it easier
+to react to physics interactions without overriding `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay` in
+custom scripts. Attach this component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`) to receive
+collision events as C# events.
+
+---
+
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEntered](#onentered)
+        - [OnExited](#onexited)
+        - [OnStay](#onstay)
+    - [Methods](#-methods)
+        - [OnCollisionEnter(Collision)](#oncollisionentercollision)
+        - [OnCollisionExit(Collision)](#oncollisionexitcollision)
+        - [OnCollisionStay(Collision)](#oncollisionstaycollision)
+- [Notes](#-notes)
+
+---
+
+## 🚀 Quick Start
+
+#### Step 1. Add Component
+
+Add a **`CollisionEvents`** component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
+
+#### Step 2. Create Script
+
+Create a script that will handle collision events:
+
+```csharp
+public class Example : MonoBehaviour
+{
+    [SerializeField]
+    private CollisionEvents _collisionEvents;
+
+    private void OnEnable()
+    {
+        _collisionEvents.OnEntered += HandleEnter;
+        _collisionEvents.OnExited  += HandleExit;
+        _collisionEvents.OnStay    += HandleStay;
+    }
+
+    private void OnDisable()
+    {
+        _collisionEvents.OnEntered -= HandleEnter;
+        _collisionEvents.OnExited  -= HandleExit;
+        _collisionEvents.OnStay    -= HandleStay;
+    }
+
+    private void HandleEnter(Collision collision)
+        => Debug.Log($"Collision started with {collision.gameObject.name}");
+
+    private void HandleExit(Collision collision)
+        => Debug.Log($"Collision ended with {collision.gameObject.name}");
+
+    private void HandleStay(Collision collision)
+        => Debug.Log($"Still colliding with {collision.gameObject.name}");
+}
+```
+
+#### Step 3. Attach Script
+
+Attach the `Example` script to the **same GameObject**.
+
+#### Step 4. Run and Test
+
+Enter **Play Mode** in Unity. When colliding with other objects, you’ll see logs in the **Console**.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 [AddComponentMenu("Atomic/Elements/Collision Events")]
 [DisallowMultipleComponent]
 public sealed class CollisionEvents : MonoBehaviour
 ```
 
-- **Description:** A **Unity MonoBehaviour** that exposes Unity’s collision callbacks as C# events. This makes it easier
-  to react to physics interactions without overriding `OnCollisionEnter`, `OnCollisionExit`, or `OnCollisionStay` in
-  custom scripts. Attach this component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`) to receive
-  collision events as C# events.
 - **Inheritance:** `MonoBehaviour`
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnEntered`
 
@@ -48,7 +123,7 @@ public event Action<Collision> OnStay;
 
 ---
 
-## 🪝 Unity Callbacks
+### 🏹 Methods
 
 These methods are automatically called by Unity’s physics engine and forward events to C# subscribers.
 
@@ -81,59 +156,6 @@ public void OnCollisionStay(Collision collision);
 - **Description:** Called by Unity **each frame** while colliders remain in contact.
 - **Parameter:** `Collision` — detailed information about the collision.
 - **Dispatches:** `OnStay`
-
----
-
-## 🗂 Example Usage
-
-Here’s how to use `CollisionEvents` to detect and respond to physics collisions:
-
-#### 1. Add Component
-
-Add a **`CollisionEvents`** component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
-
-#### 2. Create Script
-
-Create a script called `CollisionExample`:
-
-```csharp
-public class CollisionExample : MonoBehaviour
-{
-    [SerializeField]
-    private CollisionEvents _collisionEvents;
-
-    private void OnEnable()
-    {
-        _collisionEvents.OnEntered += HandleEnter;
-        _collisionEvents.OnExited  += HandleExit;
-        _collisionEvents.OnStay    += HandleStay;
-    }
-
-    private void OnDisable()
-    {
-        _collisionEvents.OnEntered -= HandleEnter;
-        _collisionEvents.OnExited  -= HandleExit;
-        _collisionEvents.OnStay    -= HandleStay;
-    }
-
-    private void HandleEnter(Collision collision)
-        => Debug.Log($"Collision started with {collision.gameObject.name}");
-
-    private void HandleExit(Collision collision)
-        => Debug.Log($"Collision ended with {collision.gameObject.name}");
-
-    private void HandleStay(Collision collision)
-        => Debug.Log($"Still colliding with {collision.gameObject.name}");
-}
-```
-
-#### 3. Attach Script
-
-Attach the `CollisionExample` script to the **same GameObject**.
-
-#### 4. Run and Test
-
-Enter **Play Mode** in Unity. When colliding with other objects, you’ll see logs in the **Console**.
 
 ---
 
