@@ -6,7 +6,28 @@ properties into systems expecting [IVariable\<T>](IVariable.md) without duplicat
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Transform Position](#ex1)
+    - [Using Builder](#ex2)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+    - [Properties](#-properties)
+        - [Value](#value)
+    - [Methods](#-methods)
+        - [Invoke()](#invoke)
+        - [Invoke(T arg)](#invoket-arg)
+    - [Nested Types](#-nested-types)
+        - [Builder](#builder)
+- [Notes](#-notes)
+
+---
+
 ## 🗂 Examples of Usage
+
+<div id="ex1"></div>
 
 ### 1️⃣ Transform Position
 
@@ -22,6 +43,8 @@ position.Value += Vector3.forward;
 ```
 
 Also, you can use the [fluent builder](ProxyVariableBuilder.md) for proxy creation:
+
+<div id="ex2"></div>
 
 ### 2️⃣ Using Builder
 
@@ -122,6 +145,5 @@ public struct Builder
 ## 📝 Notes
 
 - Integrating external or third-party APIs (e.g., Unity’s `Transform`, networking states).
-- Adapting existing properties / fields to `IVariable<T>` without refactoring.
+- Adapting existing properties / fields to [IVariable\<T>](IVariable.md) without refactoring.
 - Testing: Makes it easy to substitute mock getters / setters in unit tests.
-
