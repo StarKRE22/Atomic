@@ -4,6 +4,42 @@ Represents a **simple serialized container** for a value of type `T`.
 
 ---
 
+## Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Constructors](#-constructors)
+    - [BaseVariable()](#basevariable)
+    - [BaseVariable(T)](#basevariablet)
+  - [Properties](#-properties)
+    - [Value](#value)
+  - [Methods](#-methods)
+    - [Invoke()](#invoke)
+    - [Invoke(T arg)](#invoket-arg)
+    - [ToString()](#tostring)
+  - [Operators](#-operators)
+    - [BaseVariable<T>(T)](#operator-basevariablett)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+ // Create a new variable
+IVariable<int> score = new BaseVariable<int>(10);
+
+// Read value
+Console.WriteLine(score.Value);  // Output: 10
+
+// Write value
+score.Value = 20;
+Console.WriteLine(score.Value);  // Output: 20
+```
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -25,9 +61,11 @@ public class BaseVariable<T> : IVariable<T>
 
 | Parameter | Description                    |
 |-----------|--------------------------------|
-| `value`   | current value of this variable |
+| `value`   | Current value of this variable |
 
 ---
+
+<div id="-constructors"></div>
 
 ### 🏗️ Constructors
 
@@ -109,19 +147,3 @@ public static implicit operator BaseVariable<T>(T value);
 - **Description:** Implicitly converts a value of type `T` to a `BaseVariable<T>`.
 - **Parameter:** `value` – The value to wrap in a `BaseVariable<T>`.
 - **Returns:** A new `BaseVariable<T>` containing the specified value.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
- // Create a new variable
-IVariable<int> score = new BaseVariable<int>(10);
-
-// Read value
-Console.WriteLine(score.Value);  // Output: 10
-
-// Write value
-score.Value = 20;
-Console.WriteLine(score.Value);  // Output: 20
-```

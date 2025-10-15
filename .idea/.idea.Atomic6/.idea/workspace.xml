@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/BaseVariable.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IReactiveVariable.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/IVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveProxyVariable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Variables/ReactiveVariable.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,15 +228,7 @@
       <workItem from="1760170912545" duration="31250000" />
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
-      <workItem from="1760510813056" duration="8475000" />
-    </task>
-    <task id="LOCAL-01459" summary="InlinePredicate.md">
-      <option name="closed" value="true" />
-      <created>1760424855916</created>
-      <option name="number" value="01459" />
-      <option name="presentableId" value="LOCAL-01459" />
-      <option name="project" value="LOCAL" />
-      <updated>1760424855916</updated>
+      <workItem from="1760510813056" duration="9408000" />
     </task>
     <task id="LOCAL-01460" summary="InlinePredicate`1.md">
       <option name="closed" value="true" />
@@ -627,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760518291000</updated>
     </task>
-    <option name="localTasksCounter" value="1508" />
+    <task id="LOCAL-01508" summary="IVariable.md">
+      <option name="closed" value="true" />
+      <created>1760519837014</created>
+      <option name="number" value="01508" />
+      <option name="presentableId" value="LOCAL-01508" />
+      <option name="project" value="LOCAL" />
+      <updated>1760519837014</updated>
+    </task>
+    <option name="localTasksCounter" value="1509" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="С сеттерами разобрались!" />
     <MESSAGE value="Timers Manual!" />
     <MESSAGE value="Начинаем пилить ITimeSource!" />
     <MESSAGE value="ITimeSource.md" />
@@ -679,7 +673,8 @@
     <MESSAGE value="ScriptableConst.md" />
     <MESSAGE value="ValueExtensions" />
     <MESSAGE value="Variables Manual!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Variables Manual!" />
+    <MESSAGE value="IVariable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IVariable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

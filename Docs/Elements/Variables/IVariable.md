@@ -47,7 +47,7 @@ public class TransformPositionVariable : IVariable<Vector3>
 
 <div id="ex2"></div>
 
-### 2️⃣ Native Buffer Data
+### 2️⃣ Native Variable
 
 ```csharp
 public class NativeVariable<T> : IVariable<T> where T : unmanaged
@@ -55,7 +55,7 @@ public class NativeVariable<T> : IVariable<T> where T : unmanaged
     private readonly NativeBuffer _buffer;
     private IntPtr _ptr;
     
-    public NetworkVariable(NativeBuffer buffer, IntPtr ptr)
+    public NativeVariable(NativeBuffer buffer, IntPtr ptr)
     {
         _buffer = buffer;
         _ptr = ptr;
