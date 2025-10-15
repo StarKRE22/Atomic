@@ -15,6 +15,7 @@ on whether the game is running in **Play Mode** or **Edit Mode**.
     - [Methods](#-methods)
         - [IsPlayMode()](#isplaymode)
         - [IsEditMode()](#iseditmode)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -73,3 +74,9 @@ public static bool IsEditMode()
     - `true` if the application is in Edit Mode and not compiling.
     - `false` otherwise.
     - In builds (outside the editor), always returns `false`.
+
+---
+
+## 📌 Best Practices
+
+- [Using AtomicUtils for EntityInstallers](../../BestPractices/UsingUtilsForEntityInstallers.md)
