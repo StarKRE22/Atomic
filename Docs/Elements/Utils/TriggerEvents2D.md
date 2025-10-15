@@ -1,5 +1,78 @@
 # 🧩 TriggerEvents2D
 
+A **Unity MonoBehaviour** that exposes Unity’s 2D trigger callbacks (`OnTriggerEnter2D`,
+`OnTriggerExit2D`,`OnTriggerStay2D`) as C# events. This allows external scripts to react to 2D trigger interactions
+without overriding Unity callbacks. Attach this component to a `GameObject` with a **2D Collider** set as a **Trigger**
+to receive events.
+
+---
+
+
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnEntered](#onentered)
+        - [OnExited](#onexited)
+        - [OnStay](#onstay)
+    - [Methods](#-methods)
+        - [OnTriggerEnter2D(Collider2D)](#ontriggerenter2dcollider2d)
+        - [OnTriggerExit2D(Collider2D)](#ontriggerexit2dcollider2d)
+        - [OnTriggerStay2D(Collider2D)](#ontriggerstay2dcollider2d)
+- [Notes](#-notes)
+
+---
+
+## 🚀 Quick Start
+
+#### Step 1. Add Component
+
+Add a **`Atomic/Elements/TriggerEvents2D`** component to a `GameObject` with a **2D Collider** set as a trigger.
+
+#### Step 2. Create Script
+
+Create a script that will handle trigger events:
+
+```csharp
+public class Trigger2DExample : MonoBehaviour
+{
+    [SerializeField]
+    private TriggerEvents2D _triggerEvents;
+
+    private void OnEnable()
+    {
+        _triggerEvents.OnEntered += HandleEnter;
+        _triggerEvents.OnExited  += HandleExit;
+        _triggerEvents.OnStay    += HandleStay;
+    }
+
+    private void OnDisable()
+    {
+        _triggerEvents.OnEntered -= HandleEnter;
+        _triggerEvents.OnExited  -= HandleExit;
+        _triggerEvents.OnStay    -= HandleStay;
+    }
+
+    private void HandleEnter(Collider2D other)
+        => Debug.Log($"2D Trigger entered by {other.gameObject.name}");
+
+    private void HandleExit(Collider2D other)
+        => Debug.Log($"2D Trigger exited by {other.gameObject.name}");
+
+    private void HandleStay(Collider2D other)
+        => Debug.Log($"Still inside 2D trigger: {other.gameObject.name}");
+}
+```
+
+#### Step 3. Attach Script
+
+Attach the `Trigger2DExample` script to the **same GameObject**.
+
+#### Step 4. Run and Test
+
+Enter **Play Mode** in Unity. When other 2D colliders interact with the trigger, logs will appear in the **Console**.
 
 ---
 
@@ -11,19 +84,13 @@
 [AddComponentMenu("Atomic/Elements/Trigger Events 2D")]
 [DisallowMultipleComponent]
 public sealed class TriggerEvents2D : MonoBehaviour
-``` 
-
-- **Description:** A **Unity MonoBehaviour** that exposes Unity’s 2D trigger callbacks (`OnTriggerEnter2D`,
-  `OnTriggerExit2D`,
-  `OnTriggerStay2D`) as C# events. This allows external scripts to react to 2D trigger interactions without overriding
-  Unity callbacks. Attach this component to a `GameObject` with a **2D Collider** set as a **Trigger** to receive
-  events.
+```
 
 - **Inheritance:** `MonoBehaviour`
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnEntered`
 
@@ -57,7 +124,7 @@ public event Action<Collider2D> OnStay;
 
 ---
 
-## 🪝 Unity Callbacks
+### 🏹 Methods
 
 These methods are automatically called by Unity and forward events to C# subscribers.
 
@@ -87,57 +154,6 @@ public void OnTriggerStay2D(Collider2D other);
 
 - **Description:** Called every frame while a 2D collider remains in the trigger.
 - **Dispatches:** `OnStay`
-
----
-
-## 🗂 Example Usage
-
-#### 1. Add Component
-
-Add a **`Atomic/Elements/TriggerEvents2D`** component to a `GameObject` with a **2D Collider** set as a trigger.
-
-#### 2. Create Script
-
-Create a script called `Trigger2DExample`:
-
-```csharp
-public class Trigger2DExample : MonoBehaviour
-{
-    [SerializeField]
-    private TriggerEvents2D _triggerEvents;
-
-    private void OnEnable()
-    {
-        _triggerEvents.OnEntered += HandleEnter;
-        _triggerEvents.OnExited  += HandleExit;
-        _triggerEvents.OnStay    += HandleStay;
-    }
-
-    private void OnDisable()
-    {
-        _triggerEvents.OnEntered -= HandleEnter;
-        _triggerEvents.OnExited  -= HandleExit;
-        _triggerEvents.OnStay    -= HandleStay;
-    }
-
-    private void HandleEnter(Collider2D other)
-        => Debug.Log($"2D Trigger entered by {other.gameObject.name}");
-
-    private void HandleExit(Collider2D other)
-        => Debug.Log($"2D Trigger exited by {other.gameObject.name}");
-
-    private void HandleStay(Collider2D other)
-        => Debug.Log($"Still inside 2D trigger: {other.gameObject.name}");
-}
-```
-
-#### 3. Attach Script
-
-Attach the `Trigger2DExample` script to the **same GameObject**.
-
-#### 4. Run and Test
-
-Enter **Play Mode** in Unity. When other 2D colliders interact with the trigger, logs will appear in the **Console**.
 
 ---
 
