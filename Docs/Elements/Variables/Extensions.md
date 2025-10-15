@@ -6,7 +6,71 @@ access.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [AsVariable()](#ex1)
+    - [AsReactiveVariable()](#ex2)
+    - [AsProxyVariable()](#ex3)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [AsVariable<T>()](#asvariablet)
+        - [AsReactiveVariable<T>()](#asreactivevariablet)
+        - [AsProxyVariable<T, R>()](#asproxyvariablet-r)
+
+---
+
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Using AsVariable()
+
+```csharp
+BaseVariable<int> variable = 42.AsVariable();
+Console.WriteLine(variable.Value); // Output: 42
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Using  AsReactiveVariable()
+
+```csharp
+ReactiveVariable<int> reactiveVariable = 10.AsReactiveVariable();
+reactiveVariable.Subscribe(value => Console.WriteLine($"Current value: {value}"));
+reactiveVariable.Value = 20; 
+
+// Output:
+// Current value: 20
+```
+
+<div id="ex3"></div>
+
+### 3️⃣ Using  AsProxyVariable()
+
+```csharp
+ProxyVariable<Vector3> positionProxy = transform.AsProxyVariable(
+    getter: t => t.position, 
+    setter: (t, value) => t.position = value
+);
+
+positionProxy.Value = Vector3.zero;
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public static class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `AsVariable<T>()`
 
@@ -49,36 +113,3 @@ public static ProxyVariable<R> AsProxyVariable<T, R>(
     - **getter** – A function to retrieve the value from the object.
     - **setter** – An action to set the value on the object.
 - **Returns:** A `ProxyVariable<R>` that reflects the value through the provided getter and setter.
-
----
-
-## 🗂 Examples of Usage
-
-#### `AsVariable`
-
-```csharp
-BaseVariable<int> variable = 42.AsVariable();
-Console.WriteLine(variable.Value); // Output: 42
-```
-
-#### `AsReactiveVariable`
-
-```csharp
-ReactiveVariable<int> reactiveVariable = 10.AsReactiveVariable();
-reactiveVariable.Subscribe(value => Console.WriteLine($"Current value: {value}"));
-reactiveVariable.Value = 20; 
-
-// Output:
-// Current value: 20
-```
-
-#### `AsProxyVariable`
-
-```csharp
-ProxyVariable<Vector3> positionProxy = transform.AsProxyVariable(
-    getter: t => t.position, 
-    setter: (t, value) => t.position = value
-);
-
-positionProxy.Value = Vector3.zero;
-```

@@ -19,6 +19,7 @@ through the unified [IReactiveVariable\<T>](IReactiveVariable.md) interface.
     - [Methods](#-methods)
         - [Invoke()](#invoke)
         - [Invoke(T)](#invoket)
+        - [StartBuild()](#startbuild)
 - [Notes](#-notes)
 
 ---
@@ -105,6 +106,15 @@ public void Invoke(T arg)
 
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
+
+#### `StartBuild()`
+
+```csharp
+public static Builder StartBuild()
+```
+
+- **Description:** Begins building a proxy variable using a fluent builder pattern.
+- **Returns** A new struct instance of the [Builder](ReactiveProxyVariableBuilder.md)
 
 ---
 

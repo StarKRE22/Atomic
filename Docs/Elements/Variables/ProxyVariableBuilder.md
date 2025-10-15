@@ -22,10 +22,11 @@ proxy variables by specifying getter and setter delegates in a clean, chainable 
 
 ```csharp
 // Using the builder to create a ProxyVariable
-var proxy = ProxyVariable<int>.Builder()
-.WithGetter(() => someValue)
-.WithSetter(value => someValue = value)
-.Build();
+var proxy = ProxyVariable<int>
+    .StartBuild()
+    .WithGetter(() => someValue)
+    .WithSetter(value => someValue = value)
+    .Build();
 ```
 
 ---

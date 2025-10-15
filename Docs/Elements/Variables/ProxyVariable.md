@@ -20,6 +20,7 @@ properties into systems expecting [IVariable\<T>](IVariable.md) without duplicat
     - [Methods](#-methods)
         - [Invoke()](#invoke)
         - [Invoke(T arg)](#invoket-arg)
+        - [StartBuild()](#startbuild)
     - [Nested Types](#-nested-types)
         - [Builder](#builder)
 - [Notes](#-notes)
@@ -129,6 +130,15 @@ public void Invoke(T arg)
 
 - **Description:** Sets the value of the variable to the provided argument.
 - **Parameter:** `arg` – The new value to assign to the variable.
+
+
+#### `StartBuild()`
+
+```csharp
+public static Builder StartBuild()
+```
+- **Description:** Begins building a proxy variable using a fluent builder pattern.
+- **Returns** A new struct instance of the [Builder](ProxyVariableBuilder.md)
 
 ---
 

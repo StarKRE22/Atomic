@@ -22,7 +22,7 @@ The **Extensions** class provides utility methods for working with **reactive va
 
 <div id="ex1"></div>
 
-### 1️⃣ Using `AsConst`
+### 1️⃣ Using AsConst()
 
 ```csharp
 int number = 42;
@@ -32,7 +32,7 @@ Console.WriteLine(constant.Value); // Output: 42
 
 <div id="ex2"></div>
 
-### 2️⃣ Using `Observe`
+### 2️⃣ Using Observe()
 
 ```csharp
 IReactiveValue<int> reactive = new ReactiveValue<int>(10);
