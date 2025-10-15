@@ -30,6 +30,9 @@ collision events as C# events.
 
 Add a `Atomic/Elements/CollisionEvents` component to a `GameObject` with a `Collider` (and optionally a `Rigidbody`).
 
+<img src="../../Images/CollisionEvents.png" alt="AnimationEvents example" width="" height="50">
+
+
 #### Step 2. Create Script
 
 Create a script that will handle collision events:
