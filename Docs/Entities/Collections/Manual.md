@@ -113,10 +113,27 @@ entities.Dispose();
 
 ### 3️⃣ Extensions Usage
 
+
 ```csharp
-entities.AddRange(new GameEntity("Goblin"), new GameEntity("Orc"));
-entities.InitEntities();
-entities.DisposeEntities();
+IEntityCollection<EnemyEntity> collection = ...;
+
+// Add multiple entities
+collection.AddRange(new EnemyEntity("A"), new EnemyEntity("B"));
+
+// Add entities from enumerable
+var moreEntities = new List<EnemyEntity> { new EnemyEntity("C"), new EnemyEntity("D") };
+collection.AddRange(moreEntities);
+
+// Initialize all entities
+collection.InitEntities();
+
+// Dispose all entities
+collection.DisposeEntities();
+
+// Unity-specific usage
+var prefab = ...; // Some SceneEntity prefab
+var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
+collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
 ```
 
 ---

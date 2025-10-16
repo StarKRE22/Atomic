@@ -1,12 +1,76 @@
 # 🧩 EntityCollection Extensions
 
-Provides **extension methods** for working with [IEntityCollection\<E>](IEntityCollection%601.md).  
-These methods simplify adding multiple entities, creating/destroying scene entities (Unity), and initializing or
+Provides **extension methods** for working with [IEntityCollection\<E>](IEntityCollection%601.md). These methods
+simplify adding multiple entities, creating/destroying scene entities (Unity), and initializing or
 disposing collections.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-usage">Example Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#addrangeparams-e">AddRange(params E[])</a></li>
+            <li><a href="#addrangeienumerablee">AddRange(IEnumerable&lt;E&gt;)</a></li>
+            <li><a href="#createentity">CreateEntity()</a></li>
+            <li><a href="#destroyentity">DestroyEntity()</a></li>
+            <li><a href="#initentities">InitEntities()</a></li>
+            <li><a href="#disposeentities">DisposeEntities()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example Usage
+
+```csharp
+IEntityCollection<EnemyEntity> collection = new EntityCollection<EnemyEntity>();
+
+// Add multiple entities
+collection.AddRange(new EnemyEntity("A"), new EnemyEntity("B"));
+
+// Add entities from enumerable
+var moreEntities = new List<EnemyEntity> { new EnemyEntity("C"), new EnemyEntity("D") };
+collection.AddRange(moreEntities);
+
+// Initialize all entities
+collection.InitEntities();
+
+// Dispose all entities
+collection.DisposeEntities();
+
+// Unity-specific usage
+var prefab = ...; // Some SceneEntity prefab
+var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
+collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public static class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `AddRange(params E[])`
 
@@ -36,7 +100,7 @@ public static void AddRange<E>(this IEntityCollection<E> it, IEnumerable<E> enti
 - **Exceptions:** Throws `ArgumentNullException` if `entities` is `null`.
 - **Behavior:** Iterates over the enumerable and calls `Add` for each entity.
 
-#### `CreateEntity`
+#### `CreateEntity()`
 
 ```csharp
 public static E CreateEntity<E>(
@@ -58,7 +122,7 @@ public static E CreateEntity<E>(
 - **Returns:** The newly created entity.
 - **Behavior:** Calls `SceneEntity.Create`, adds the entity to the collection, and returns it.
 
-#### `DestroyEntity`
+#### `DestroyEntity()`
 
 ```csharp
 public static void DestroyEntity<E>(this IEntityCollection<E> it, E entity, float delay = 0) 
@@ -72,7 +136,7 @@ public static void DestroyEntity<E>(this IEntityCollection<E> it, E entity, floa
     - `delay` — Optional delay before destruction in seconds.
 - **Behavior:** Calls `Remove` on the collection; if successful, destroys the entity using `GameObject.Destroy`.
 
-#### `InitEntities`
+#### `InitEntities()`
 
 ```csharp
 public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEntity;
@@ -83,7 +147,7 @@ public static void InitEntities<E>(this IEntityCollection<E> it) where E : IEnti
     - `it` — The collection of entities to initialize.
 - **Behavior:** Iterates over the collection and invokes `IEntity.Init` on each entity.
 
-#### `DisposeEntities`
+#### `DisposeEntities()`
 
 ```csharp
 public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IEntity;
@@ -93,31 +157,3 @@ public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IE
 - **Parameters:**
     - `it` — The collection of entities to dispose.
 - **Behavior:** Iterates over the collection and invokes `IDisposable.Dispose` on each entity.
-
----
-
-## 🗂 Example Usage
-
-```csharp
-IEntityCollection<EnemyEntity> collection = new EntityCollection<EnemyEntity>();
-
-// Add multiple entities
-collection.AddRange(new EnemyEntity("A"), new EnemyEntity("B"));
-
-// Add entities from enumerable
-var moreEntities = new List<EnemyEntity> { new EnemyEntity("C"), new EnemyEntity("D") };
-collection.AddRange(moreEntities);
-
-// Initialize all entities
-collection.InitEntities();
-
-// Dispose all entities
-collection.DisposeEntities();
-
-// Unity-specific usage
-#if UNITY_5_3_OR_NEWER
-var prefab = ...; // Some SceneEntity prefab
-var entity = collection.CreateEntity(prefab, Vector3.zero, Quaternion.identity);
-collection.DestroyEntity(entity, 1.0f); // destroys after 1 second
-#endif
-```
