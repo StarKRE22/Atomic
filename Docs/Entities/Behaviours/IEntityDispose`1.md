@@ -1,39 +1,29 @@
-#  🧩 IEntityDispose&lt;E&gt;
+# 🧩 IEntityDispose&lt;E&gt;
 
-```csharp
-public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
-```
-
-- **Description:** Provides a strongly-typed version of `IEntityDispose` for handling disposal logic for a specific `IEntity` type.
-- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityDispose](IEntityDispose.md)
-- **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
+Provides a strongly-typed version of [IEntityDispose](IEntityDispose.md) for handling disposal logic for a
+specific [Entity](../Entities/Manual.md) type.
 
 ---
 
-## 🏹 Methods
-
-#### `Dispose(E)`
-
-```csharp
-public void Dispose(E entity);
-```
-
-- **Description:** Called when the typed entity is being disposed.
-- **Parameter:** `entity` – The entity instance of type `E`.
-- **Remarks:** Implements the base `IEntityDispose.Dispose(IEntity)` explicitly by casting the `IEntity` to type `E`.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Dispose(E)](#disposee)
 
 ---
 
 ## 🗂 Example of Usage
 
-Dispose a `Collider` component
+Assume we have a concrete entity type:
 
 ```csharp
 public class UnitEntity : Entity
 {
 }
 ```
+
+Dispose a `Collider` component
 
 ```csharp
 public class DisposeColliderBehaviour : IEntityDispose<UnitEntity>
@@ -46,4 +36,31 @@ public class DisposeColliderBehaviour : IEntityDispose<UnitEntity>
 }
 ```
 
-> Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
+```
+
+- **Description:**
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityDispose](IEntityDispose.md)
+- **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
+
+---
+
+### 🏹 Methods
+
+#### `Dispose(E)`
+
+```csharp
+public void Dispose(E entity);
+```
+
+- **Description:** Called when the typed entity is being disposed.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityDispose.Dispose(IEntity)` explicitly by casting the `IEntity` to type `E`.

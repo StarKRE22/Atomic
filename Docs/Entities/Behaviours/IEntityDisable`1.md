@@ -11,7 +11,7 @@ Provides a strongly-typed version of [IEntityDisable](IEntityDisable.md) for han
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Methods](#-methods)
-    - [Disable()](#disablee)
+    - [Disable(E)](#disablee)
 
 ---
 

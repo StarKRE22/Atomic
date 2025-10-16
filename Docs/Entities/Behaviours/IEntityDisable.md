@@ -11,7 +11,7 @@ disabled**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Disable()](#disableientity)
+        - [Disable(IEntity)](#disableientity)
 
 ---
 

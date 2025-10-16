@@ -11,7 +11,7 @@ an [IEntity](../Entities/IEntity.md) **is being disposed**.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Dispose()](#disposeientity)
+        - [Dispose(IEntity)](#disposeientity)
 
 ---
 
