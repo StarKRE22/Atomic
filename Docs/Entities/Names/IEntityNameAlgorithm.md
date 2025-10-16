@@ -36,11 +36,20 @@ public sealed class SequentialEntityNameAlgorithm : IEntityNameAlgorithm
 
     private int _nextId;
 
-    public SequentialEntityNameAlgorithm(int nextId = INITIAL_ID) => _nextId = nextId;
+    public SequentialEntityNameAlgorithm(int nextId = INITIAL_ID) 
+    { 
+        _nextId = nextId;  
+    } 
 
-    public int NameToId(string name) => _nextId++;
+    public int NameToId(string name) 
+    {
+        return _nextId++;
+    } 
 
-    public void Reset() => _nextId = INITIAL_ID;
+    public void Reset() 
+    {
+        _nextId = INITIAL_ID;  
+    } 
 }
 ```
 
