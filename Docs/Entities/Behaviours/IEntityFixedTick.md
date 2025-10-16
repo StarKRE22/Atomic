@@ -1,7 +1,7 @@
 # 🧩️ IEntityFixedTick
 
 Represents a behavior interface that executes logic during the fixed update cycle of
-an [Entity](../Entities/Manual.md). Use this phase to perform physics calculations and update game mechanics with fixed
+an [IEntity](../Entities/IEntity.md). Use this phase to perform physics calculations and update game mechanics with fixed
 timestamp.
 
 ---

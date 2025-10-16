@@ -1,7 +1,7 @@
 # 🧩 IEntityDispose&lt;E&gt;
 
 Provides a strongly-typed version of [IEntityDispose](IEntityDispose.md) for handling disposal logic for a
-specific [Entity](../Entities/Manual.md) type.
+specific entity type.
 
 ---
 

@@ -1,7 +1,7 @@
 # 🧩 IEntityEnable&lt;E&gt;
 
 Provides a strongly-typed version of [IEntityEnable](IEntityEnable.md) for handling enable logic for a specific
-[Entity](../Entities/Manual.md) type.
+entity type.
 
 ---
 

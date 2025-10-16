@@ -1,6 +1,6 @@
 # 🧩 IEntityTick&lt;E&gt;
 
-Provides a strongly-typed version of `IEntityTick` for handling update logic on a specific entity
+Provides a strongly-typed version of [IEntityTick](IEntityTick.md) for handling update logic on a specific entity
 type.
 
 ---

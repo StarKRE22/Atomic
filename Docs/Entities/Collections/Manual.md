@@ -153,8 +153,6 @@ in microseconds (μs).
 | **Enumerator** | 7.57                  | 26.44        |
 | **Remove**     | 11.50                 | 64.53        |
 
-### Summary
-
 While `HashSet` excels at bulk operations like `Clear`, `EntityCollection` offers **significantly faster Add, Contains,
 and Remove** operations on average — making it a strong choice when **iteration order** and **low allocation overhead**
 are essential.
@@ -163,7 +161,7 @@ are essential.
 
 ## 📌 Best Practices
 
-- [Iterating over EntityCollection](../../BestPractices/IteratingOverEntityCollections.md)
+- [Iterating over EntityCollections](../../BestPractices/IteratingOverEntityCollections.md)
 
 ---
 

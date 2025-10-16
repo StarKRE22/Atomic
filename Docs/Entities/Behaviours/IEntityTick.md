@@ -1,7 +1,7 @@
 # 🧩️ IEntityTick
 
 Represents a behavior interface that executes logic during the regular update cycle of
-an [Entity](../Entities/Manual.md).
+an [IEntity](../Entities/IEntity.md).
 
 ---
 
