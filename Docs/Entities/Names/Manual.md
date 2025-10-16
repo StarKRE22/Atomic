@@ -1,7 +1,7 @@
-# 🧩️ Entity Name Algorithms
+# 🧩️ Entity Name
 
-**Entity Name Algorithms** provide structured, deterministic ways to convert string-based entity names into unique
-integer identifiers. They can be **stateful** (like sequential counters) or **stateless** (like hash-based algorithms)
+**Entity Name** provides structured, deterministic algorithms to convert string-based entity names into unique
+integer identifiers. The algorithms can be **stateful** (like sequential counters) or **stateless** (like hash-based algorithms)
 and are designed for **high performance**, with optional caching handled externally, e.g.,
 via [EntityNames](EntityNames.md).
 
