@@ -1,7 +1,17 @@
-#  🧩 IEntityInit&lt;E&gt;
+# 🧩 IEntityInit&lt;E&gt;
 
 Provides a strongly-typed version of [IEntityInit](IEntityInit.md) for handling initialization logic for a specific
 [Entity](../Entities/Manual.md) type.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Init(E)](#inite)
 
 ---
 
@@ -38,6 +48,7 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 ```csharp
 public interface IEntityInit<in E> : IEntityInit where E : IEntity
 ```
+
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
 - **Inheritance:** [IEntityInit](IEntityInit.md)
 - **Note:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
