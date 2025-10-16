@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,15 +231,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="13140000" />
-    </task>
-    <task id="LOCAL-01523" summary="DisposableAction.md">
-      <option name="closed" value="true" />
-      <created>1760541238790</created>
-      <option name="number" value="01523" />
-      <option name="presentableId" value="LOCAL-01523" />
-      <option name="project" value="LOCAL" />
-      <updated>1760541238790</updated>
+      <workItem from="1760597500762" duration="13515000" />
     </task>
     <task id="LOCAL-01524" summary="DisposableComposite.md">
       <option name="closed" value="true" />
@@ -625,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760613724146</updated>
     </task>
-    <option name="localTasksCounter" value="1572" />
+    <task id="LOCAL-01572" summary="IEntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1760614096208</created>
+      <option name="number" value="01572" />
+      <option name="presentableId" value="LOCAL-01572" />
+      <option name="project" value="LOCAL" />
+      <updated>1760614096208</updated>
+    </task>
+    <option name="localTasksCounter" value="1573" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +652,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="Раздел Utils готоф!" />
     <MESSAGE value="Вот теперь Atomic.Elements готоф!" />
@@ -677,7 +676,8 @@
     <MESSAGE value="EntityCollections Manual!" />
     <MESSAGE value="IReadOnlyEntityCollection.md" />
     <MESSAGE value="IReadOnlyEntityCollection`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyEntityCollection`1.md" />
+    <MESSAGE value="IEntityCollection.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityCollection.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
