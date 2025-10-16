@@ -66,7 +66,7 @@ public interface IEntityNameAlgorithm
 #### `NameToId(string)`
 
 ```csharp
-int NameToId(string name)
+public int NameToId(string name)
 ```
 
 - **Description:** Converts a string entity name into a deterministic integer identifier.
@@ -80,7 +80,7 @@ int NameToId(string name)
 #### `Reset()`
 
 ```csharp
-void Reset()
+public void Reset()
 ```
 
 - **Description:** Resets the internal state of the algorithm.
@@ -89,22 +89,20 @@ void Reset()
 
 ---
 
-
-
 ## 📝 Notes
 
-### - Deterministic Behavior
+### Deterministic Behavior
 
 - Every algorithm implementing this interface **must produce the same integer output for the same input string**.
 - Ensures consistency across the system when generating IDs for entity names.
 
-### - Statelessness Design
+### Statelessness Design
 
 - This interface is designed to support **stateless algorithms**.
 - It does **not store any mappings or caches**. Caching and reverse lookups are handled externally, e.g., in
   [EntityNames](EntityNames.md).
 
-### - Stateful Implementations
+### Stateful Implementations
 
 - Some implementations, like sequential ID generators, may maintain internal state.
 - The `Reset()` method allows such algorithms to be reset to their initial state.
