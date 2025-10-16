@@ -1,9 +1,9 @@
 # 🧩 IEntityGizmos&lt;E&gt;
 
-Provides a strongly-typed version of [IEntityGizmos](IEntityGizmos.md) for handling gizmo drawing on a specific entity type.
+Provides a strongly-typed version of [IEntityGizmos](IEntityGizmos.md) for handling gizmo drawing on a specific entity
+type.
 
 ---
-
 
 ## 📑 Table of Contents
 
@@ -17,13 +17,15 @@ Provides a strongly-typed version of [IEntityGizmos](IEntityGizmos.md) for handl
 
 ## 🗂 Example of Usage
 
-Draw a debug sphere for a `UnitEntity`
+Assume we have a concrete entity type:
 
 ```csharp
 public class UnitEntity : Entity
 {
 }
 ```
+
+Draw a debug sphere for a `UnitEntity`
 
 ```csharp
 public class DrawSphereGizmos : IEntityGizmos<UnitEntity>
