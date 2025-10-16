@@ -5,6 +5,8 @@ specific [Entity](../Entities/Manual.md) type.
 
 ---
 
+## 📑 Table of Contents
+
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
@@ -46,7 +48,6 @@ public class DisposeColliderBehaviour : IEntityDispose<UnitEntity>
 public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
 ```
 
-- **Description:**
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
 - **Inherits:** [IEntityDispose](IEntityDispose.md)
 - **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
