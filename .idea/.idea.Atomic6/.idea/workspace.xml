@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/Fnv1aEntityNameStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/Fnv1aEntityNameStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/HashEntityNameStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/HashEntityNameStrategy.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/EntityCollection`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/PersistentEntityNameStrategy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/PersistentEntityNameStrategy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +65,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Values.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float2.gen.cs" root0="SKIP_HIGHLIGHTING" />
@@ -232,23 +243,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="14671000" />
-    </task>
-    <task id="LOCAL-01526" summary="DisposableComposite`1.md">
-      <option name="closed" value="true" />
-      <created>1760544281370</created>
-      <option name="number" value="01526" />
-      <option name="presentableId" value="LOCAL-01526" />
-      <option name="project" value="LOCAL" />
-      <updated>1760544281370</updated>
-    </task>
-    <task id="LOCAL-01527" summary="Utility Extensions.md">
-      <option name="closed" value="true" />
-      <created>1760544778296</created>
-      <option name="number" value="01527" />
-      <option name="presentableId" value="LOCAL-01527" />
-      <option name="project" value="LOCAL" />
-      <updated>1760544778296</updated>
+      <workItem from="1760597500762" duration="18652000" />
     </task>
     <task id="LOCAL-01528" summary="AnimationEvents.md">
       <option name="closed" value="true" />
@@ -626,7 +621,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760614686481</updated>
     </task>
-    <option name="localTasksCounter" value="1575" />
+    <task id="LOCAL-01575" summary="EntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1760615423613</created>
+      <option name="number" value="01575" />
+      <option name="presentableId" value="LOCAL-01575" />
+      <option name="project" value="LOCAL" />
+      <updated>1760615423613</updated>
+    </task>
+    <task id="LOCAL-01576" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1760615811921</created>
+      <option name="number" value="01576" />
+      <option name="presentableId" value="LOCAL-01576" />
+      <option name="project" value="LOCAL" />
+      <updated>1760615811921</updated>
+    </task>
+    <option name="localTasksCounter" value="1577" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,8 +664,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Вот теперь Atomic.Elements готоф!" />
-    <MESSAGE value="IEntityBehaviour.md" />
     <MESSAGE value="IEntityDisable.md" />
     <MESSAGE value="IEntityDispose.md" />
     <MESSAGE value="IEntityDispose`1.md" />
@@ -678,7 +687,9 @@
     <MESSAGE value="IEntityCollection.md" />
     <MESSAGE value="IEntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityCollection.md" />
+    <MESSAGE value="EntityCollection`1.md" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
