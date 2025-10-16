@@ -1,8 +1,7 @@
 # 🧩 IEntityFixedTick&lt;E&gt;
 
-Provides a strongly-typed version of [IEntityFixedTick](IEntityFixedTick.md) for handling fixed update logic on a specific
-entity type.
-
+Provides a strongly-typed version of [IEntityFixedTick](IEntityFixedTick.md) for handling fixed update logic on a
+specific entity type.
 
 ---
 
