@@ -1,6 +1,6 @@
 # 🧩️ IEntityBehaviour
 
-Represents a base contract of logic that can be attached to an [IEntity](../Entities/IEntity.md). Don't implement this
+Represents a base contract of logic that can be attached to an [entity](../Entities/Manual.md). Don't implement this
 interface. It is only used for framework behaviour contracts.
 
 ---
