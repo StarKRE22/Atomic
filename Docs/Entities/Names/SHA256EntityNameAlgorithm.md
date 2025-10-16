@@ -1,4 +1,4 @@
-# 🧩 HashEntityNameAlgorithm
+# 🧩 SHA256EntityNameAlgorithm
 
 A **deterministic, stateless algorithm** for converting string-based entity names into integer IDs using the **SHA-256**
 hash function. This algorithm guarantees that the same entity name always produces the same integer ID.
@@ -33,7 +33,7 @@ Set this algorithm to the [EntityNames](EntityNames.md) system during initializa
 public static void Main(string[] args)
 {
     // Use SHA-256 hashing for entity name IDs
-    EntityNames.SetAlgorithm(new HashEntityNameAlgorithm());
+    EntityNames.SetAlgorithm(new SHA256EntityNameAlgorithm());
 }
 ```
 
@@ -55,7 +55,7 @@ string name = EntityNames.IdToName(playerId);  // "Player"
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public sealed class HashEntityNameAlgorithm : IEntityNameAlgorithm
+public sealed class SHA256EntityNameAlgorithm : IEntityNameAlgorithm
 ```
 
 - **Description:** Provides a hash-based conversion from entity names to integer IDs using the **SHA-256** cryptographic
@@ -103,7 +103,7 @@ public void Reset()
 
 - The same input name will **always** yield the same output ID.
 - Useful for consistent, reproducible mappings across sessions or systems.
-- Unlike sequential algorithms, `HashEntityNameAlgorithm` does **not** maintain or depend on internal state.
+- Unlike sequential algorithms, `SHA256EntityNameAlgorithm` does **not** maintain or depend on internal state.
 - Perfect for deterministic systems where ID order doesn’t matter.
 - Slightly slower than sequential algorithms due to cryptographic hashing.
 - Suitable when stability and reproducibility are more important than raw performance.

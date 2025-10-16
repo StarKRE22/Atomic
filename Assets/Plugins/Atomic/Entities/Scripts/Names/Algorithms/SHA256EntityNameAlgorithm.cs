@@ -7,7 +7,7 @@ namespace Atomic.Entities
     /// <summary>
     /// Provides a hash-based algorithm for converting entity names into integer IDs using SHA-256.
     /// </summary>
-    public sealed class HashEntityNameAlgorithm : IEntityNameAlgorithm
+    public sealed class SHA256EntityNameAlgorithm : IEntityNameAlgorithm
     {
         private static readonly SHA256 _sha256 = SHA256.Create();
 
