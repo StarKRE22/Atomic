@@ -91,6 +91,38 @@ Each behaviour can handle different events of the entity:
 
 There are separate interfaces that handles the corresponding lifecycle events of the entity.
 
+- **Common**
+    - [IEntityBehaviour](IEntityBehaviour.md)
+    - [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
+- **Init**
+    - [IEntityInit](IEntityInit.md)
+    - [IEntityInit<E>](IEntityInit%601.md)
+- **Dispose**
+    - [IEntityDispose](IEntityDispose.md)
+    - [IEntityDispose<E>](IEntityDispose%601.md)
+- **Enable**
+    - [IEntityEnable](IEntityEnable.md)
+    - [IEntityEnable<E>](IEntityEnable%601.md)
+
+- **Disable**
+    - [IEntityDisable](IEntityDisable.md)
+    - [IEntityDisable<E>](IEntityDisable%601.md)
+
+- **Tick**
+    - [IEntityTick](IEntityTick.md)
+    - [IEntityTick<E>](IEntityTick%601.md)
+- **FixedTick**
+    - [IEntityFixedTick](IEntityFixedTick.md)
+    - [IEntityFixedTick<E>](IEntityFixedTick%601.md)
+- **LateTick**
+    - [IEntityLateTick](IEntityLateTick.md)
+    - [IEntityLateTick<E>](IEntityLateTick%601.md)
+- **Gizmos**
+    - [IEntityGizmos](IEntityGizmos.md)
+    - [IEntityGizmos<E>](IEntityGizmos%601.md)
+
+<!--
+
 <details>
   <summary><b>Common</b></summary>
   <ul>
@@ -163,6 +195,7 @@ There are separate interfaces that handles the corresponding lifecycle events of
   </ul>
 </details>
 
+-->
 
 ---
 
@@ -174,53 +207,3 @@ There are separate interfaces that handles the corresponding lifecycle events of
 - **Lightweight** – Interface only, implementation is left to the developer
 - Behaviours are typically stateless or encapsulate entity-specific state.
 - They can be used to implement features such as movement, attack, game systems, AI, input, or UI controllers.
-
-
-[//]: # ()
-[//]: # (- **Init**)
-
-[//]: # (    - [IEntityInit]&#40;IEntityInit.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityInit&lt;E&gt;]&#40;IEntityInit%601.md&#41; <!-- + -->)
-
-[//]: # (- **Dispose**)
-
-[//]: # (    - [IEntityDispose]&#40;IEntityDispose.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityDispose&lt;E&gt;]&#40;IEntityDispose%601.md&#41; <!-- + -->)
-
-[//]: # (- **Enable**)
-
-[//]: # (    - [IEntityEnable]&#40;IEntityEnable.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityEnable&lt;E&gt;]&#40;IEntityEnable%601.md&#41; <!-- + -->)
-
-[//]: # (- **Disable**)
-
-[//]: # (    - [IEntityDisable]&#40;IEntityDisable.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityDisable&lt;E&gt;]&#40;IEntityDisable%601.md&#41; <!-- + -->)
-
-[//]: # (- **Tick**)
-
-[//]: # (    - [IEntityTick]&#40;IEntityTick.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityTick&lt;E&gt;]&#40;IEntityTick%601.md&#41; <!-- + -->)
-
-[//]: # (- **FixedTick**)
-
-[//]: # (    - [IEntityFixedTick]&#40;IEntityFixedTick.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityFixedTick&lt;E&gt;]&#40;IEntityFixedTick%601.md&#41; <!-- + -->)
-
-[//]: # (- **LateTick**)
-
-[//]: # (    - [IEntityLateTick]&#40;IEntityLateTick.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityLateTick&lt;E&gt;]&#40;IEntityLateTick%601.md&#41; <!-- + -->)
-
-[//]: # (- **Gizmos**)
-
-[//]: # (    - [IEntityGizmos]&#40;IEntityGizmos.md&#41; <!-- + -->)
-
-[//]: # (    - [IEntityGizmos&lt;E&gt;]&#40;IEntityGizmos%601.md&#41; <!-- + -->)
