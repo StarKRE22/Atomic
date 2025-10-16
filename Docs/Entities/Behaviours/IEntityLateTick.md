@@ -6,14 +6,13 @@ depends on the latest entity positions.
 
 ---
 
-
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Methods](#-methods)
-    - [LateTick(IEntity, float)](#latetickientity-float)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [LateTick(IEntity, float)](#latetickientity-float)
 
 ---
 

@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityLateTick.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityLateTick.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,31 +228,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="5770000" />
-    </task>
-    <task id="LOCAL-01507" summary="Variables Manual!">
-      <option name="closed" value="true" />
-      <created>1760518291000</created>
-      <option name="number" value="01507" />
-      <option name="presentableId" value="LOCAL-01507" />
-      <option name="project" value="LOCAL" />
-      <updated>1760518291000</updated>
-    </task>
-    <task id="LOCAL-01508" summary="IVariable.md">
-      <option name="closed" value="true" />
-      <created>1760519837014</created>
-      <option name="number" value="01508" />
-      <option name="presentableId" value="LOCAL-01508" />
-      <option name="project" value="LOCAL" />
-      <updated>1760519837014</updated>
-    </task>
-    <task id="LOCAL-01509" summary="IReactiveVariable.md">
-      <option name="closed" value="true" />
-      <created>1760520653325</created>
-      <option name="number" value="01509" />
-      <option name="presentableId" value="LOCAL-01509" />
-      <option name="project" value="LOCAL" />
-      <updated>1760520653325</updated>
+      <workItem from="1760597500762" duration="6091000" />
     </task>
     <task id="LOCAL-01510" summary="BaseVariable.md">
       <option name="closed" value="true" />
@@ -622,7 +598,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760603262097</updated>
     </task>
-    <option name="localTasksCounter" value="1556" />
+    <task id="LOCAL-01556" summary="IEntityInit`1.md">
+      <option name="closed" value="true" />
+      <created>1760605836990</created>
+      <option name="number" value="01556" />
+      <option name="presentableId" value="LOCAL-01556" />
+      <option name="project" value="LOCAL" />
+      <updated>1760605836990</updated>
+    </task>
+    <task id="LOCAL-01557" summary="IEntityInit`1.md">
+      <option name="closed" value="true" />
+      <created>1760605897753</created>
+      <option name="number" value="01557" />
+      <option name="presentableId" value="LOCAL-01557" />
+      <option name="project" value="LOCAL" />
+      <updated>1760605897753</updated>
+    </task>
+    <task id="LOCAL-01558" summary="IEntityLateTick.md">
+      <option name="closed" value="true" />
+      <created>1760605984041</created>
+      <option name="number" value="01558" />
+      <option name="presentableId" value="LOCAL-01558" />
+      <option name="project" value="LOCAL" />
+      <updated>1760605984041</updated>
+    </task>
+    <option name="localTasksCounter" value="1559" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Optional.md" />
-    <MESSAGE value="AtomicUtils.md" />
     <MESSAGE value="DisposableAction.md" />
     <MESSAGE value="DisposableComposite.md" />
     <MESSAGE value="DisposableComposite`1.md" />
@@ -674,7 +672,9 @@
     <MESSAGE value="IEntityGizmos.md" />
     <MESSAGE value="IEntityGizmos`1.md" />
     <MESSAGE value="IEntityInit.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityInit.md" />
+    <MESSAGE value="IEntityInit`1.md" />
+    <MESSAGE value="IEntityLateTick.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityLateTick.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
