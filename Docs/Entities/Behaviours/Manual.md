@@ -96,28 +96,28 @@ There are separate interfaces that handles the corresponding lifecycle events of
     - [RunInEditModeAttribute](../Attributes/RunInEditModeAttribute.md)
 - **Init**
     - [IEntityInit](IEntityInit.md)
-    - [IEntityInit<E>](IEntityInit%601.md)
+    - [IEntityInit\<E>](IEntityInit%601.md)
 - **Dispose**
     - [IEntityDispose](IEntityDispose.md)
-    - [IEntityDispose<E>](IEntityDispose%601.md)
+    - [IEntityDispose\<E>](IEntityDispose%601.md)
 - **Enable**
     - [IEntityEnable](IEntityEnable.md)
-    - [IEntityEnable<E>](IEntityEnable%601.md)
+    - [IEntityEnable\<E>](IEntityEnable%601.md)
 - **Disable**
     - [IEntityDisable](IEntityDisable.md)
-    - [IEntityDisable<E>](IEntityDisable%601.md)
+    - [IEntityDisable\<E>](IEntityDisable%601.md)
 - **Tick**
     - [IEntityTick](IEntityTick.md)
-    - [IEntityTick<E>](IEntityTick%601.md)
+    - [IEntityTick\<E>](IEntityTick%601.md)
 - **FixedTick**
     - [IEntityFixedTick](IEntityFixedTick.md)
-    - [IEntityFixedTick<E>](IEntityFixedTick%601.md)
+    - [IEntityFixedTick\<E>](IEntityFixedTick%601.md)
 - **LateTick**
     - [IEntityLateTick](IEntityLateTick.md)
-    - [IEntityLateTick<E>](IEntityLateTick%601.md)
+    - [IEntityLateTick\<E>](IEntityLateTick%601.md)
 - **Gizmos**
     - [IEntityGizmos](IEntityGizmos.md)
-    - [IEntityGizmos<E>](IEntityGizmos%601.md)
+    - [IEntityGizmos\<E>](IEntityGizmos%601.md)
 
 <!--
 
