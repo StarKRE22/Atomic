@@ -1,25 +1,7 @@
-using System.Runtime.CompilerServices;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// Provides bidirectional mapping between string entity names and unique integer identifiers.
-    /// This is useful for efficiently identifying entities at runtime using compact integer IDs,
-    /// while still allowing reverse lookup for debugging or editor visualization.
-    /// </summary>
-    public static class EntityNames
+    public interface IEntityNameStrategy
     {
-        private static readonly IEntityNameStrategy _strategy;
-
-        static EntityNames()
-        {
-            _strategy = new SequentialEntityNameStrategy();
-        }
-
         /// <summary>
         /// Converts a string entity name to a unique integer ID.
         /// If the name has already been registered, the existing ID is returned.
@@ -27,9 +9,8 @@ namespace Atomic.Entities
         /// </summary>
         /// <param name="name">The string name to convert to an ID.</param>
         /// <returns>A unique integer identifier corresponding to the provided name.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NameToId(string name) => _strategy.NameToId(name);
-
+        public int NameToId(string name);
+        
         /// <summary>
         /// Retrieves the original entity name from a given integer ID.
         /// </summary>
@@ -38,16 +19,12 @@ namespace Atomic.Entities
         /// The original string name associated with the given ID,
         /// or a fallback string in the format <c>#Unknown:{id}</c> if the ID was not registered.
         /// </returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string IdToName(int id) => _strategy.IdToName(id);
+        public string IdToName(int id);
 
         /// <summary>
         /// Clears all name-to-ID mappings and resets the ID counter.
         /// Automatically called when entering play mode in the Unity Editor.
         /// </summary>
-#if UNITY_EDITOR
-        [InitializeOnEnterPlayMode]
-#endif
-        public static void Clear() => _strategy.Clear();
+        public void Clear();
     }
 }

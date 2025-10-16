@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +61,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Names/EntityNames.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/IEntityNameStrategy.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Strategies/SequentialEntityNameStrategy.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -228,31 +238,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="7641000" />
-    </task>
-    <task id="LOCAL-01514" summary="ReactiveProxyVariable.md">
-      <option name="closed" value="true" />
-      <created>1760522776504</created>
-      <option name="number" value="01514" />
-      <option name="presentableId" value="LOCAL-01514" />
-      <option name="project" value="LOCAL" />
-      <updated>1760522776504</updated>
-    </task>
-    <task id="LOCAL-01515" summary="ProxyVariableBuilder.md">
-      <option name="closed" value="true" />
-      <created>1760523104957</created>
-      <option name="number" value="01515" />
-      <option name="presentableId" value="LOCAL-01515" />
-      <option name="project" value="LOCAL" />
-      <updated>1760523104957</updated>
-    </task>
-    <task id="LOCAL-01516" summary="Сделал раздел с Variables!">
-      <option name="closed" value="true" />
-      <created>1760523824095</created>
-      <option name="number" value="01516" />
-      <option name="presentableId" value="LOCAL-01516" />
-      <option name="project" value="LOCAL" />
-      <updated>1760523824096</updated>
+      <workItem from="1760597500762" duration="11421000" />
     </task>
     <task id="LOCAL-01517" summary="Остались Utils! И можно переходить к Atomic.Entities!">
       <option name="closed" value="true" />
@@ -622,7 +608,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760607399911</updated>
     </task>
-    <option name="localTasksCounter" value="1563" />
+    <task id="LOCAL-01563" summary="Сделал раздел с Behaviours!">
+      <option name="closed" value="true" />
+      <created>1760607598631</created>
+      <option name="number" value="01563" />
+      <option name="presentableId" value="LOCAL-01563" />
+      <option name="project" value="LOCAL" />
+      <updated>1760607598631</updated>
+    </task>
+    <task id="LOCAL-01564" summary="Сделал раздел с Behaviours!">
+      <option name="closed" value="true" />
+      <created>1760607622089</created>
+      <option name="number" value="01564" />
+      <option name="presentableId" value="LOCAL-01564" />
+      <option name="project" value="LOCAL" />
+      <updated>1760607622089</updated>
+    </task>
+    <task id="LOCAL-01565" summary="Сделал раздел с Behaviours!">
+      <option name="closed" value="true" />
+      <created>1760607668653</created>
+      <option name="number" value="01565" />
+      <option name="presentableId" value="LOCAL-01565" />
+      <option name="project" value="LOCAL" />
+      <updated>1760607668653</updated>
+    </task>
+    <option name="localTasksCounter" value="1566" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +659,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Utility Extensions.md" />
     <MESSAGE value="AnimationEvents.md" />
     <MESSAGE value="TriggerEvents2D.md" />
     <MESSAGE value="Финализируем Atomic.Elements!" />
@@ -674,7 +683,8 @@
     <MESSAGE value="IEntityLateTick`1.md" />
     <MESSAGE value="IEntityTick.md" />
     <MESSAGE value="IEntityTick`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityTick`1.md" />
+    <MESSAGE value="Сделал раздел с Behaviours!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал раздел с Behaviours!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,10 +1,108 @@
 # 🧩️ Entity Collections
 
 **Entity Collections** provide structured ways to store, access, and manage instances
-of [IEntity](../Entities/IEntity.md) and its subclasses. They can be **read-only** or **mutable**, **generic** or
+of [entity](../Entities/Manual.md) and its subclasses. They can be **read-only** or **mutable**, **generic** or
 **non-generic**, and are designed for **high performance** and **reactive notifications**. Collections may also include
 **utility extensions** for batch operations, initialization, disposal, and Unity-specific
 entity handling.
+
+---
+
+## 🗂 Examples of Usage
+
+### 1️⃣ EntityCollection Usage
+
+```csharp
+var entities = new EntityCollection();
+
+// Subscribe to events
+entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
+
+// Add entities
+entities.Add(new Entity("Entity1"));
+entities.Add(new Entity("Entity2"));
+
+// Remove an entity
+entities.Remove(someEntity);
+
+// Check an entity for existance
+entities.Contains(someEntity);
+
+// Copy to array
+var array = new IEntity[entities.Count];
+entities.CopyTo(array, 0);
+
+// Iterate over collection
+foreach (var entity in entities)
+{
+    Console.WriteLine(entity.Name);
+}
+
+// Dispose when done
+entities.Dispose();
+```
+
+---
+
+### 2️⃣ EntityCollection\<E>
+
+Assume we have a concrete entity type:
+
+```csharp
+public class GameEntity : Entity
+{
+}
+```
+
+Use generic version of the entity collection:
+
+```csharp
+var entities = new EntityCollection<GameEntity>();
+
+// Subscribe to events
+entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
+
+// Add entities
+entities.Add(new GameEntity("Entity1"));
+entities.Add(new GameEntity("Entity2"));
+
+// Remove an entity
+entities.Remove(someEntity);
+
+// Check an entity for existance
+entities.Contains(someEntity);
+
+// Copy to array
+var array = new GameEntity[entities.Count];
+entities.CopyTo(array, 0);
+
+// Iterate over collection
+foreach (var entity in entities)
+{
+    Console.WriteLine(entity.Name);
+}
+
+// Dispose when done
+entities.Dispose();
+```
+
+---
+
+### 3️⃣ Extensions
+
+```csharp
+entities.AddRange(new GameEntity("Goblin"), new GameEntity("Orc"));
+entities.InitEntities();
+entities.DisposeEntities();
+```
+
+---
+
+## 🔍 API Reference
 
 Below is a list of available collection types:
 
@@ -18,59 +116,6 @@ Below is a list of available collection types:
 
 ---
 
-## 🗂 Examples of Usage
-
-### 1️⃣ Creating a Generic Collection
-
-```csharp
-IEntityCollection<GameEntity> entities = new EntityCollection<GameEntity>();
-entities.Add(new GameEntity("Hero"));
-entities.Add(new GameEntity("Enemy"));
-```
-
-- **Description:** Standard mutable collection using generic typing.
-- **Use Case:** When you need type-safe access to entities and full collection operations.
-
----
-
-### 2️⃣ Using a Non-Generic Collection
-
-```csharp
-IEntityCollection allEntities = new EntityCollection();
-allEntities.Add(new Entity("NPC"));
-allEntities.Add(new Entity("Object"));
-```
-
-- **Description:** Non-generic collection for scenarios where entity type specificity is not required.
-- **Use Case:** Managing heterogeneous sets of entities in a single collection.
-
----
-
-### 3️⃣ Using Read-Only Collections
-
-```csharp
-IReadOnlyEntityCollection<GameEntity> readOnly = entities;
-bool hasEnemy = readOnly.Contains(enemyEntity);
-```
-
-- **Description:** Provides safe, **read-only access** with change notifications.
-- **Use Case:** Exposing entity collections to systems that should not modify them.
-
----
-
-### 4️⃣ Batch Operations with Extensions
-
-```csharp
-entities.AddRange(new GameEntity("Goblin"), new GameEntity("Orc"));
-entities.InitEntities();
-entities.DisposeEntities();
-```
-
-- **Description:** Use extension methods to **add multiple entities**, **initialize**, or **dispose** them.
-- **Unity-Specific:** Extensions also support `CreateEntity` and `DestroyEntity` for `SceneEntity` objects.
-
----
-
 ## ⚙️ Key Characteristics
 
 - **Insertion & Removal** – Near constant-time operations thanks to internal hash table management.
@@ -81,7 +126,6 @@ entities.DisposeEntities();
   efficiently.
 
 ---
-
 
 ## 📝 Notes
 
