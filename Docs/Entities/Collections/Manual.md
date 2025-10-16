@@ -141,8 +141,6 @@ Below is a list of available collection types:
 **Dictionary** and a **LinkedList**. It maintains **fast lookups** while preserving **insertion order**, making it ideal
 for systems that require both efficiency and predictable iteration.
 
----
-
 The performance measurements below were conducted on a <b>MacBook with Apple M1</b>,
 using <b>1,000 elements</b> for each container type. All times are <b>median execution times</b>,
 in microseconds (μs).
@@ -154,8 +152,6 @@ in microseconds (μs).
 | **Contains**   | 6.00                  | 76.96        |
 | **Enumerator** | 7.57                  | 26.44        |
 | **Remove**     | 11.50                 | 64.53        |
-
----
 
 ### Summary
 
