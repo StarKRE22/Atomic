@@ -1,3 +1,5 @@
+<!--
+
 # 🧩 EntityNames
 
 ```csharp
@@ -62,3 +64,5 @@ string unknown = EntityNames.IdToName(999);   // "#Unknown:999"
 // Clear all mappings (editor-only auto-call on play mode)
 EntityNames.Clear();
 ```
+
+-->

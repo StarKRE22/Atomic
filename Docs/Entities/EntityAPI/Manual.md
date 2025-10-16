@@ -8,4 +8,3 @@ safety, and IDE autocompletion**.
 - [Entity API Generation](ApiGeneration.md) <!-- + -->
 - [Using Unity Editor](UnityCodegen.md) <!-- + -->
 - [Using Rider Plugin](PluginCodegen.md) <!-- + -->
-- [EntityNames](EntityNames.md) <!-- + -->
