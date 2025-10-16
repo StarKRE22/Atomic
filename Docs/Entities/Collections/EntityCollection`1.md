@@ -1,21 +1,121 @@
 # 🧩 EntityCollection&lt;E&gt;
 
+A **high-performance, mutable collection** for storing unique entities of type `E`. Combines **hash table semantics**
+for fast lookup and **linked list semantics** for ordered enumeration. Supports standard collection operations,
+lifecycle management, and reactive notifications.
+
+---
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-constructors">Constructors</a></summary>
+          <ul>
+            <li><a href="#default-constructor">Default Constructor</a></li>
+            <li><a href="#capacity-based-constructor">Capacity-based Constructor</a></li>
+            <li><a href="#params-constructor">Params Constructor</a></li>
+            <li><a href="#icollection-constructor">ICollection Constructor</a></li>
+            <li><a href="#ienumerable-constructor">IEnumerable Constructor</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onadded">OnAdded</a></li>
+            <li><a href="#onremoved">OnRemoved</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#adde">Add(E)</a></li>
+            <li><a href="#removee">Remove(E)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containse">Contains(E)</a></li>
+            <li><a href="#copytoe-int">CopyTo(E[], int)</a></li>
+            <li><a href="#copytoicollectione">CopyTo(ICollection&lt;E&gt;)</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+            <li><a href="#getenumerator">GetEnumerator()</a></li>
+            <li><a href="#onade">OnAdd(E)</a></li>
+            <li><a href="#onremovee">OnRemove(E)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var entities = new EntityCollection<GameEntity>();
+
+// Subscribe to events
+entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
+
+// Add entities
+entities.Add(new GameEntity("Entity1"));
+entities.Add(new GameEntity("Entity2"));
+
+// Remove an entity
+entities.Remove(someEntity);
+
+// Copy to array
+var array = new GameEntity[entities.Count];
+entities.CopyTo(array, 0);
+
+// Iterate over collection
+foreach (var entity in entities)
+{
+    Console.WriteLine(entity.Name);
+}
+
+// Dispose when done
+entities.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class EntityCollection<E> : IEntityCollection<E> where E : IEntity
 ```
 
-- **Description:** A **high-performance, mutable collection** for storing unique entities of type `E`.  
-  Combines **hash table semantics** for fast lookup and **linked list semantics** for ordered enumeration.  
-  Supports standard collection operations, lifecycle management, and reactive notifications.
 - **Type Parameter:** `E` — The type of entity stored in the collection, must
   implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityCollection\<E>](IEntityCollection%601.md).
 
 ---
 
-## 🏗 Constructors
+### 🏗 Constructors
 
-#### `EntityCollection()`
+#### `Default Constructor`
 
 ```csharp
 public EntityCollection();
@@ -24,7 +124,7 @@ public EntityCollection();
 - **Description:** Initializes a new instance of the `EntityCollection<E>` class with a **default capacity**.
 - **Default Capacity:** 3 entities.
 
-#### `EntityCollection(int)`
+#### `Capacity-based Constructor`
 
 ```csharp
 public EntityCollection(int capacity);
@@ -35,7 +135,7 @@ public EntityCollection(int capacity);
 - **Exceptions:**
     - `ArgumentOutOfRangeException` if `capacity` is negative.
 
-#### `EntityCollection(params E[])`
+#### `Params Constructor`
 
 ```csharp
 public EntityCollection(params E[] entities);
@@ -45,9 +145,7 @@ public EntityCollection(params E[] entities);
 - **Parameter:** `entities` — Array of entities to populate the collection.
 - **Behavior:** Internally sets capacity to `entities.Length` and adds all entities via `AddRange`.
 
----
-
-#### `EntityCollection(IReadOnlyCollection<E>)`
+#### `ICollection Constructor`
 
 ```csharp
 public EntityCollection(IReadOnlyCollection<E> elements);
@@ -57,7 +155,7 @@ public EntityCollection(IReadOnlyCollection<E> elements);
 - **Parameter:** `elements` — Collection of entities to populate the collection.
 - **Behavior:** Sets capacity to `elements.Count` and adds all entities via `AddRange`.
 
-#### `EntityCollection(IEnumerable<E>)`
+#### `IEnumerable Constructor`
 
 ```csharp
 public EntityCollection(IEnumerable<E> elements);
@@ -69,7 +167,7 @@ public EntityCollection(IEnumerable<E> elements);
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -99,7 +197,7 @@ public event Action<E> OnRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -119,7 +217,7 @@ public bool IsReadOnly => false;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Add(E)`
 
@@ -222,48 +320,3 @@ protected virtual void OnRemove(E entity);
 - **Remarks:** Can be **overridden** in derived classes to implement custom logic, such as disabling the entity,
   logging, or triggering events.
 - **Default behavior:** Does nothing.
-
----
-
-## 🧩 Enumerator
-
-```csharp
-public struct Enumerator : IEnumerator<E>
-```
-
-- **Description:** Struct-based enumerator for iterating over `EntityCollection<E>` without heap allocations.
-- **Properties:** `Current` — The current entity.
-- **Methods:** `MoveNext()`, `Reset()`, `Dispose()`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-var entities = new EntityCollection<GameEntity>();
-
-// Subscribe to events
-entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
-entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
-entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
-
-// Add entities
-entities.Add(new GameEntity("Entity1"));
-entities.Add(new GameEntity("Entity2"));
-
-// Remove an entity
-entities.Remove(someEntity);
-
-// Copy to array
-var array = new GameEntity[entities.Count];
-entities.CopyTo(array, 0);
-
-// Iterate over collection
-foreach (var entity in entities)
-{
-    Console.WriteLine(entity.Name);
-}
-
-// Dispose when done
-entities.Dispose();
-```
