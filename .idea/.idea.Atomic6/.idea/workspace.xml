@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityFixedTick.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityFixedTick.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityInit`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityTick.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityTick.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityTick`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityTick`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IReadOnlyEntityCollection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/IEntityCollection.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,23 +231,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="12782000" />
-    </task>
-    <task id="LOCAL-01521" summary="Optional.md">
-      <option name="closed" value="true" />
-      <created>1760539479321</created>
-      <option name="number" value="01521" />
-      <option name="presentableId" value="LOCAL-01521" />
-      <option name="project" value="LOCAL" />
-      <updated>1760539479321</updated>
-    </task>
-    <task id="LOCAL-01522" summary="AtomicUtils.md">
-      <option name="closed" value="true" />
-      <created>1760540495941</created>
-      <option name="number" value="01522" />
-      <option name="presentableId" value="LOCAL-01522" />
-      <option name="project" value="LOCAL" />
-      <updated>1760540495941</updated>
+      <workItem from="1760597500762" duration="13140000" />
     </task>
     <task id="LOCAL-01523" summary="DisposableAction.md">
       <option name="closed" value="true" />
@@ -638,7 +609,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760612990636</updated>
     </task>
-    <option name="localTasksCounter" value="1570" />
+    <task id="LOCAL-01570" summary="IReadOnlyEntityCollection.md">
+      <option name="closed" value="true" />
+      <created>1760613574379</created>
+      <option name="number" value="01570" />
+      <option name="presentableId" value="LOCAL-01570" />
+      <option name="project" value="LOCAL" />
+      <updated>1760613574379</updated>
+    </task>
+    <task id="LOCAL-01571" summary="IReadOnlyEntityCollection`1.md">
+      <option name="closed" value="true" />
+      <created>1760613724146</created>
+      <option name="number" value="01571" />
+      <option name="presentableId" value="LOCAL-01571" />
+      <option name="project" value="LOCAL" />
+      <updated>1760613724146</updated>
+    </task>
+    <option name="localTasksCounter" value="1572" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,8 +652,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Финализируем Atomic.Elements!" />
-    <MESSAGE value="CollisionEvents.md" />
     <MESSAGE value="CollisionEvents2D.md" />
     <MESSAGE value="TriggerEvents.md" />
     <MESSAGE value="Раздел Utils готоф!" />
@@ -690,7 +675,9 @@
     <MESSAGE value="Сделал раздел с Behaviours!" />
     <MESSAGE value="Сделал стратегию для EntityNames.cs" />
     <MESSAGE value="EntityCollections Manual!" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityCollections Manual!" />
+    <MESSAGE value="IReadOnlyEntityCollection.md" />
+    <MESSAGE value="IReadOnlyEntityCollection`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IReadOnlyEntityCollection`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
