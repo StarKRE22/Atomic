@@ -1,0 +1,3 @@
+- [SequentialEntityNameAlgorithm] — Generates sequential IDs starting from a configurable initial value.
+- **HashEntityNameAlgorithm** — Generates deterministic IDs using SHA-256 or another hash function.
+- **Fnv1AEntityNameAlgorithm** — Generates deterministic IDs using the FNV-1a 32-bit hash.

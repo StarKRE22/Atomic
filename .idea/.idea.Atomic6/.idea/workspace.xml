@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/EntityNames.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/EntityNames.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,15 +236,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="20857000" />
-    </task>
-    <task id="LOCAL-01531" summary="CollisionEvents2D.md">
-      <option name="closed" value="true" />
-      <created>1760548949066</created>
-      <option name="number" value="01531" />
-      <option name="presentableId" value="LOCAL-01531" />
-      <option name="project" value="LOCAL" />
-      <updated>1760548949066</updated>
+      <workItem from="1760597500762" duration="22147000" />
     </task>
     <task id="LOCAL-01532" summary="TriggerEvents.md">
       <option name="closed" value="true" />
@@ -629,7 +622,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760642788198</updated>
     </task>
-    <option name="localTasksCounter" value="1580" />
+    <task id="LOCAL-01580" summary="EntityNames.md">
+      <option name="closed" value="true" />
+      <created>1760643410126</created>
+      <option name="number" value="01580" />
+      <option name="presentableId" value="LOCAL-01580" />
+      <option name="project" value="LOCAL" />
+      <updated>1760643410126</updated>
+    </task>
+    <option name="localTasksCounter" value="1581" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +657,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityEnable.md" />
     <MESSAGE value="IEntityEnable`1.md" />
     <MESSAGE value="IEntityFixedTick.md" />
     <MESSAGE value="IEntityFixedTick`1.md" />
@@ -681,7 +681,8 @@
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Сделал EntityNames.cs" />
     <MESSAGE value="Начинаем пилить раздел с EntityNames.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начинаем пилить раздел с EntityNames.md" />
+    <MESSAGE value="EntityNames.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityNames.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
