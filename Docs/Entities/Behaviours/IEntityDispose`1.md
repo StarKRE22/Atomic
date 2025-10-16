@@ -49,7 +49,7 @@ public interface IEntityDispose<in E> : IEntityDispose where E : IEntity
 ```
 
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityDispose](IEntityDispose.md)
+- **Inheritance:** [IEntityDispose](IEntityDispose.md)
 - **Note:** Automatically invoked by `IEntity.Dispose` when the behavior is registered on an entity of type `E`.
 
 ---

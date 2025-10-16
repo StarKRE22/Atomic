@@ -49,7 +49,7 @@ public interface IEntityDisable<in E> : IEntityDisable where E : IEntity
 ```
 
 - **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityDisable](IEntityDisable.md)
+- **Inheritance:** [IEntityDisable](IEntityDisable.md)
 - **Note:** Automatically invoked by `IEntity.Disable` when the behavior is registered on an entity of type `E`.
 
 ---
