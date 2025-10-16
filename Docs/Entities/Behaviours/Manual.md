@@ -1,6 +1,6 @@
 # 🧩 Entity Behaviours
 
-**Entity Behaviour** is a modular controller that handles [entity](../Entities/Manual.md) lifecycle events and
+**Entity Behaviour** is a modular controller that handles [Entity](../Entities/Manual.md) lifecycle events and
 attached to concrete instance of entity. It allows entities to dynamically compose functionality at runtime, following
 the **Entity-State-Behaviour** pattern.
 
