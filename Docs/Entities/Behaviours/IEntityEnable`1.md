@@ -1,40 +1,31 @@
 # 🧩 IEntityEnable&lt;E&gt;
 
-```csharp
-public interface IEntityEnable<in E> : IEntityEnable where E : IEntity
-```
-
-- **Description:** Provides a strongly-typed version of `IEntityEnable` for handling enable logic for a specific
-  `IEntity` type.
-- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inherits:** [IEntityEnable](IEntityEnable.md)
-- **Remarks:** Automatically invoked by `IEntity.Enable` when the behavior is registered on an entity of type `E`.
+Provides a strongly-typed version of [IEntityEnable](IEntityEnable.md) for handling enable logic for a specific
+[Entity](../Entities/Manual.md) type.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Enable(E)`
-
-```csharp
-public void Enable(E entity);
-```
-
-- **Description:** Called when the typed entity is enabled.
-- **Parameter:** `entity` – The entity instance of type `E`.
-- **Remarks:** Implements the base `IEntityEnable.Enable(IEntity)` explicitly by casting the `IEntity` to type `E`.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Enable(E)](#enablee)
 
 ---
 
 ## 🗂 Example of Usage
 
-Enable a `Renderer` for a unit entity
+Assume we have a concrete entity type:
 
 ```csharp
 public class UnitEntity : Entity
 {
 }
 ```
+
+Enable a `Renderer` for a unit entity
 
 ```csharp
 public class EnableRendererBehaviour : IEntityEnable<UnitEntity>
@@ -47,4 +38,30 @@ public class EnableRendererBehaviour : IEntityEnable<UnitEntity>
 }
 ```
 
-> Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required.
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityEnable<in E> : IEntityEnable where E : IEntity
+```
+
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inherits:** [IEntityEnable](IEntityEnable.md)
+- **Remarks:** Automatically invoked by `IEntity.Enable` when the behavior is registered on an entity of type `E`.
+
+---
+
+### 🏹 Methods
+
+#### `Enable(E)`
+
+```csharp
+public void Enable(E entity);
+```
+
+- **Description:** Called when the typed entity is enabled.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityEnable.Enable(IEntity)` explicitly by casting the `IEntity` to type `E`.
