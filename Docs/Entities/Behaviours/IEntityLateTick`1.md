@@ -1,7 +1,8 @@
 # 🧩 IEntityLateTick&lt;E&gt;
 
 Provides a strongly-typed version of [IEntityLateTick](IEntityLateTick.md) for handling late update logic on a specific
-entity type.
+entity type. This phase is useful for rendering including camera follow, animation corrections,
+playing particles and sound effects.
 
 ---
 

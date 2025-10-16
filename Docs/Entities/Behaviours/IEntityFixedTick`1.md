@@ -1,13 +1,15 @@
 # 🧩 IEntityFixedTick&lt;E&gt;
 
 Provides a strongly-typed version of [IEntityFixedTick](IEntityFixedTick.md) for handling fixed update logic on a
-specific entity type.
+specific entity type. Use this phase to perform physics calculations and update game mechanics with fixed timestamp.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Examples of Usage](#-examples-of-usage)
+    - [Apply Physics](#ex1)
+    - [Game Mechanics](#ex2)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
@@ -15,7 +17,7 @@ specific entity type.
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 Assume we have a concrete entity type:
 
@@ -24,6 +26,10 @@ public class UnitEntity : Entity
 {
 }
 ```
+
+<div id="ex1"></div>
+
+### 1️⃣ Apply Physics
 
 Apply physics forces to a `UnitEntity` every fixed update
 
@@ -35,6 +41,27 @@ public class ApplyForceBehaviour : IEntityFixedTick<UnitEntity>
         Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
         Vector3 force = entity.GetValue<Vector3>("Force");
         rb.AddForce(force * fixedDeltaTime);
+    }
+}
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Game Mechanics
+
+Update the position of a `UnitEntity` every frame
+
+```csharp
+public class MoveBehaviour : IEntityFixedTick<UnitEntity>
+{
+    public void FixedTick(UnitEntity entity, float deltaTime)
+    {
+        float speed = entity.GetValue<float>("Speed");
+        Vector3 position = entity.GetValue<Vector3>("Position");
+        Vector3 direction = entity.GetValue<Vector3>("MoveDirection");
+        
+        Vector3 newPosition = position + direction * (speed * deltaTime);
+        entity.SetValue("Position", newPosition);
     }
 }
 ```

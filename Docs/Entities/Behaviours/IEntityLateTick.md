@@ -1,8 +1,8 @@
 # 🧩️ IEntityLateTick
 
 Represents a behavior interface that executes logic during the **late update cycle** of
-an [IEntity](../Entities/IEntity.md). This phase is useful for camera follow, animation corrections, or logic that
-depends on the latest entity positions.
+an [IEntity](../Entities/IEntity.md). This phase is useful for rendering including camera follow, animation corrections,
+playing particles and sound effects.
 
 ---
 

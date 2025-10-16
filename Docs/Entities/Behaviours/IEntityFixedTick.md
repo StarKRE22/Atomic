@@ -1,21 +1,28 @@
 # 🧩️ IEntityFixedTick
 
 Represents a behavior interface that executes logic during the fixed update cycle of
-an [Entity](../Entities/Manual.md).
+an [Entity](../Entities/Manual.md). Use this phase to perform physics calculations and update game mechanics with fixed
+timestamp.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Examples of Usage](#-examples-of-usage)
+    - [Apply Physics](#ex1)
+    - [Game Mechanics](#ex2)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
         - [FixedTick(IEntity, float)](#fixedtickientity-float)
-      
+
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Apply Physics
 
 Apply a physics force to an entity:
 
@@ -27,6 +34,25 @@ public class ApplyForceBehaviour : IEntityFixedTick
         Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
         Vector3 force = entity.GetValue<Vector3>("Force");
         rb.AddForce(force * deltaTime);
+    }
+}
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Game Mechanics
+
+Update a `Transform` component towards move direction every frame for an entity
+
+```csharp
+public class MoveBehaviour : IEntityFixedTick
+{
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        Transform transform = entity.GetValue<Transform>("Transform");
+        float speed = entity.GetValue<float>("Speed");
+        Vector3 direction = entity.GetValue<Vector3>("MoveDirection");
+        transform.position += direction * (speed * deltaTime);
     }
 }
 ```
