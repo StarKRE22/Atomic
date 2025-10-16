@@ -1,41 +1,21 @@
 #  🧩 IEntityInit&lt;E&gt;
 
-```csharp
-public interface IEntityInit<in E> : IEntityInit where E : IEntity
-```
-
-- **Description:** Provides a strongly-typed version of `IEntityInit` for handling initialization logic for a specific
-  `IEntity` type.
-- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
-- **Inheritance:** [IEntityInit](IEntityInit.md)
-- **Note:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
-  type `E`.
-
----
-
-## 🏹 Methods
-
-#### `Init(E)`
-
-```csharp
-public void Init(E entity);
-```
-
-- **Description:** Called when the typed entity is initialized.
-- **Parameter:** `entity` – The entity instance of type `E`.
-- **Remarks:** Implements the base `IEntityInit.Init(IEntity)` explicitly by casting the `IEntity` to type `E`.
+Provides a strongly-typed version of [IEntityInit](IEntityInit.md) for handling initialization logic for a specific
+[Entity](../Entities/Manual.md) type.
 
 ---
 
 ## 🗂 Example of Usage
 
-Set up a `Color` for the `Renderer` of unit entity
+Assume we have a concrete entity type:
 
 ```csharp
 public class UnitEntity : Entity
 {
 }
 ```
+
+Set up a `Color` for the `Renderer` of unit entity
 
 ```csharp
 public class InitColorBehaviour : IEntityInit<UnitEntity>
@@ -49,4 +29,30 @@ public class InitColorBehaviour : IEntityInit<UnitEntity>
 }
 ```
 
-> Note: Uses the strongly-typed `UnitEntity`, so no casting from `IEntity` is required
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityInit<in E> : IEntityInit where E : IEntity
+```
+- **Type Parameter:** `E` – The concrete entity type this behavior is associated with.
+- **Inheritance:** [IEntityInit](IEntityInit.md)
+- **Note:** This method is automatically invoked by `IEntity.Init` when the behavior is registered on an entity of
+  type `E`.
+
+---
+
+### 🏹 Methods
+
+#### `Init(E)`
+
+```csharp
+public void Init(E entity);
+```
+
+- **Description:** Called when the typed entity is initialized.
+- **Parameter:** `entity` – The entity instance of type `E`.
+- **Remarks:** Implements the base `IEntityInit.Init(IEntity)` explicitly by casting the `IEntity` to type `E`.
