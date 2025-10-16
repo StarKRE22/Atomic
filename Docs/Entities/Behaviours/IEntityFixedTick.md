@@ -1,11 +1,46 @@
 # 🧩️ IEntityFixedTick
 
+Represents a behavior interface that executes logic during the fixed update cycle of
+an [Entity](../Entities/Manual.md).
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [FixedTick(IEntity, float)](#fixedtickientity-float)
+      
+---
+
+## 🗂 Example of Usage
+
+Apply a physics force to an entity:
+
+```csharp
+public class ApplyForceBehaviour : IEntityFixedTick
+{
+    public void FixedTick(IEntity entity, float deltaTime)
+    {
+        Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
+        Vector3 force = entity.GetValue<Vector3>("Force");
+        rb.AddForce(force * deltaTime);
+    }
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IEntityFixedTick : IEntityBehaviour
 ```
 
-- **Description:** Represents a behavior interface that executes logic during the fixed update cycle of
-  an [IEntity](../Entities/IEntity.md).
 - **Inheritance:** implements [IEntityBehaviour](IEntityBehaviour.md)
 - **Note:** It is automatically invoked at a fixed timestep by the entity’s `FixedTick`,
   typically used for physics updates.
@@ -13,7 +48,7 @@ public interface IEntityFixedTick : IEntityBehaviour
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `FixedTick(IEntity, float)`
 
@@ -26,23 +61,3 @@ public void FixedTick(IEntity entity, float fixedDeltaTime);
     - `entity` – The entity being updated.
     - `fixedDeltaTime` – The fixed time step elapsed since the last fixed update.
 - **Remarks:** Automatically called once per fixed timestep by `IEntity.FixedTick()`.
-
----
-
-## 🗂 Example of Usage
-
-Apply physics forces to an entity
-
-```csharp
-public class ApplyPhysicsBehaviour : IEntityFixedTick
-{
-    public void FixedTick(IEntity entity, float fixedDeltaTime)
-    {
-        Rigidbody rb = entity.GetValue<Rigidbody>("Rigidbody");
-        Vector3 force = entity.GetValue<Vector3>("Force");
-        rb.AddForce(force * fixedDeltaTime);
-    }
-}
-```
-
-> Note: `GetValue<T>` assumes the entity has the relevant components already set.

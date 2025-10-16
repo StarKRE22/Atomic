@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityEnable`1.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,15 +226,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="2053000" />
-    </task>
-    <task id="LOCAL-01499" summary="IReactiveValue.md">
-      <option name="closed" value="true" />
-      <created>1760513528471</created>
-      <option name="number" value="01499" />
-      <option name="presentableId" value="LOCAL-01499" />
-      <option name="project" value="LOCAL" />
-      <updated>1760513528471</updated>
+      <workItem from="1760597500762" duration="2355000" />
     </task>
     <task id="LOCAL-01500" summary="Const.md">
       <option name="closed" value="true" />
@@ -624,7 +612,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760599837799</updated>
     </task>
-    <option name="localTasksCounter" value="1548" />
+    <task id="LOCAL-01548" summary="IEntityEnable`1.md">
+      <option name="closed" value="true" />
+      <created>1760600139211</created>
+      <option name="number" value="01548" />
+      <option name="presentableId" value="LOCAL-01548" />
+      <option name="project" value="LOCAL" />
+      <updated>1760600139211</updated>
+    </task>
+    <option name="localTasksCounter" value="1549" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ReactiveProxyVariable.md" />
     <MESSAGE value="ProxyVariableBuilder.md" />
     <MESSAGE value="Сделал раздел с Variables!" />
     <MESSAGE value="Остались Utils! И можно переходить к Atomic.Entities!" />
@@ -676,7 +671,8 @@
     <MESSAGE value="IEntityDispose.md" />
     <MESSAGE value="IEntityDispose`1.md" />
     <MESSAGE value="IEntityEnable.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityEnable.md" />
+    <MESSAGE value="IEntityEnable`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityEnable`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
