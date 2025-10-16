@@ -9,9 +9,10 @@ or debug rendering phase**.
 
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Methods](#-methods)
-    - [DrawGizmos(IEntity)](#drawgizmosientity)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [DrawGizmos(IEntity)](#drawgizmosientity)
+
 ---
 
 ## 🗂 Example of Usage
