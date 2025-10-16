@@ -44,6 +44,27 @@ public sealed class SequentialEntityNameAlgorithm : IEntityNameAlgorithm
 }
 ```
 
+Set this algorithm to the [EntityNames](EntityNames.md) when your application starts:
+
+```csharp
+public static void Main(string[] args)
+{
+    // Use sequential ID generation for entity names
+    EntityNames.SetAlgorithm(new SequentialEntityNameAlgorithm());
+}
+```
+
+Usage:
+
+```csharp
+// Generate IDs for some example entity names
+int playerId = EntityNames.NameToId("Player"); // 1
+int enemyId  = EntityNames.NameToId("Enemy");  // 2
+
+// Retrieve original name by ID
+string name = EntityNames.IdToName(playerId);  // "Player"
+```
+
 ---
 
 ## 🔍 API Reference
@@ -91,18 +112,10 @@ public void Reset()
 
 ## 📝 Notes
 
-### Deterministic Behavior
-
 - Every algorithm implementing this interface **must produce the same integer output for the same input string**.
 - Ensures consistency across the system when generating IDs for entity names.
-
-### Statelessness Design
-
 - This interface is designed to support **stateless algorithms**.
 - It does **not store any mappings or caches**. Caching and reverse lookups are handled externally, e.g., in
   [EntityNames](EntityNames.md).
-
-### Stateful Implementations
-
 - Some implementations, like sequential ID generators, may maintain internal state.
 - The `Reset()` method allows such algorithms to be reset to their initial state.

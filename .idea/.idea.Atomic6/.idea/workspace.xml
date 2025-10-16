@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/SequentialEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/SequentialEntityNameAlgorithm.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -232,23 +235,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="22451000" />
-    </task>
-    <task id="LOCAL-01533" summary="TriggerEvents2D.md">
-      <option name="closed" value="true" />
-      <created>1760549893026</created>
-      <option name="number" value="01533" />
-      <option name="presentableId" value="LOCAL-01533" />
-      <option name="project" value="LOCAL" />
-      <updated>1760549893026</updated>
-    </task>
-    <task id="LOCAL-01534" summary="Финализируем Atomic.Elements!">
-      <option name="closed" value="true" />
-      <created>1760550421216</created>
-      <option name="number" value="01534" />
-      <option name="presentableId" value="LOCAL-01534" />
-      <option name="project" value="LOCAL" />
-      <updated>1760550421216</updated>
+      <workItem from="1760597500762" duration="23039000" />
     </task>
     <task id="LOCAL-01535" summary="CollisionEvents.md">
       <option name="closed" value="true" />
@@ -626,7 +613,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760644776885</updated>
     </task>
-    <option name="localTasksCounter" value="1582" />
+    <task id="LOCAL-01582" summary="IEntityNameAlgorithm.md">
+      <option name="closed" value="true" />
+      <created>1760645106766</created>
+      <option name="number" value="01582" />
+      <option name="presentableId" value="LOCAL-01582" />
+      <option name="project" value="LOCAL" />
+      <updated>1760645106766</updated>
+    </task>
+    <task id="LOCAL-01583" summary="IEntityNameAlgorithm.md">
+      <option name="closed" value="true" />
+      <created>1760645270459</created>
+      <option name="number" value="01583" />
+      <option name="presentableId" value="LOCAL-01583" />
+      <option name="project" value="LOCAL" />
+      <updated>1760645270459</updated>
+    </task>
+    <option name="localTasksCounter" value="1584" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
