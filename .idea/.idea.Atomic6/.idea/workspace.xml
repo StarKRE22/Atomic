@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/IEntityNameAlgorithm.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/SequentialEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/SequentialEntityNameAlgorithm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/EntityNames.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/EntityNames.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Names/HashEntityNameAlgorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Names/HashEntityNameAlgorithm.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,23 +236,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="23039000" />
-    </task>
-    <task id="LOCAL-01535" summary="CollisionEvents.md">
-      <option name="closed" value="true" />
-      <created>1760550652482</created>
-      <option name="number" value="01535" />
-      <option name="presentableId" value="LOCAL-01535" />
-      <option name="project" value="LOCAL" />
-      <updated>1760550652482</updated>
-    </task>
-    <task id="LOCAL-01536" summary="CollisionEvents.md">
-      <option name="closed" value="true" />
-      <created>1760550662292</created>
-      <option name="number" value="01536" />
-      <option name="presentableId" value="LOCAL-01536" />
-      <option name="project" value="LOCAL" />
-      <updated>1760550662292</updated>
+      <workItem from="1760597500762" duration="23704000" />
     </task>
     <task id="LOCAL-01537" summary="CollisionEvents2D.md">
       <option name="closed" value="true" />
@@ -629,7 +614,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760645270459</updated>
     </task>
-    <option name="localTasksCounter" value="1584" />
+    <task id="LOCAL-01584" summary="IEntityNameAlgorithm.md, SequentialEntityNameAlgorithm.md">
+      <option name="closed" value="true" />
+      <created>1760645913778</created>
+      <option name="number" value="01584" />
+      <option name="presentableId" value="LOCAL-01584" />
+      <option name="project" value="LOCAL" />
+      <updated>1760645913778</updated>
+    </task>
+    <task id="LOCAL-01585" summary="IEntityNameAlgorithm.md">
+      <option name="closed" value="true" />
+      <created>1760645998712</created>
+      <option name="number" value="01585" />
+      <option name="presentableId" value="LOCAL-01585" />
+      <option name="project" value="LOCAL" />
+      <updated>1760645998712</updated>
+    </task>
+    <option name="localTasksCounter" value="1586" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +657,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityFixedTick.md" />
     <MESSAGE value="IEntityFixedTick`1.md" />
     <MESSAGE value="IEntityGizmos.md" />
     <MESSAGE value="IEntityGizmos`1.md" />
@@ -680,6 +680,7 @@
     <MESSAGE value="Сделал EntityNames.cs" />
     <MESSAGE value="Начинаем пилить раздел с EntityNames.md" />
     <MESSAGE value="EntityNames.md" />
+    <MESSAGE value="IEntityNameAlgorithm.md, SequentialEntityNameAlgorithm.md" />
     <MESSAGE value="IEntityNameAlgorithm.md" />
     <option name="LAST_COMMIT_MESSAGE" value="IEntityNameAlgorithm.md" />
   </component>

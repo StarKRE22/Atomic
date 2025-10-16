@@ -1,6 +1,8 @@
 # 🧩 EntityNames
 
-A **static utility class** providing bidirectional mapping between string-based entity names and unique integer identifiers, with internal caching for fast reverse lookups. This class allows you to switch the underlying ID generation algorithm while maintaining a central cache of names and IDs.
+A **static utility class** providing bidirectional mapping between string-based entity names and unique integer
+identifiers, with internal caching for fast reverse lookups. This class allows you to switch the underlying ID
+generation algorithm while maintaining a central cache of names and IDs.
 
 ---
 
@@ -23,7 +25,6 @@ A **static utility class** providing bidirectional mapping between string-based 
     </ul>
   </li>
 </ul>
-
 
 ---
 
@@ -113,7 +114,8 @@ public static void Reset()
 ````
 
 - **Description:** Clears all cached mappings and resets the current algorithm.
-- **Remarks:** Automatically called in the Unity Editor when entering Play Mode if annotated with `[InitializeOnEnterPlayMode]`.
+- **Remarks:** Automatically called in the Unity Editor when entering Play Mode if annotated with
+  `[InitializeOnEnterPlayMode]`.
 
 <!--
 
