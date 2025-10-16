@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityBehaviour.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDisable.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Behaviours/IEntityDispose.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,15 +229,7 @@
       <workItem from="1760250633531" duration="1320000" />
       <workItem from="1760420145768" duration="26860000" />
       <workItem from="1760510813056" duration="29289000" />
-      <workItem from="1760597500762" duration="322000" />
-    </task>
-    <task id="LOCAL-01494" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760474758241</created>
-      <option name="number" value="01494" />
-      <option name="presentableId" value="LOCAL-01494" />
-      <option name="project" value="LOCAL" />
-      <updated>1760474758241</updated>
+      <workItem from="1760597500762" duration="1373000" />
     </task>
     <task id="LOCAL-01495" summary="ExtensionsIStartSource.md">
       <option name="closed" value="true" />
@@ -624,7 +615,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760597803303</updated>
     </task>
-    <option name="localTasksCounter" value="1543" />
+    <task id="LOCAL-01543" summary="IEntityDisable.md">
+      <option name="closed" value="true" />
+      <created>1760598101182</created>
+      <option name="number" value="01543" />
+      <option name="presentableId" value="LOCAL-01543" />
+      <option name="project" value="LOCAL" />
+      <updated>1760598101182</updated>
+    </task>
+    <option name="localTasksCounter" value="1544" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +650,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReactiveVariable.md" />
     <MESSAGE value="BaseVariable.md" />
     <MESSAGE value="ReactiveVariable.md" />
     <MESSAGE value="ProxyVariable.md" />
@@ -676,7 +674,8 @@
     <MESSAGE value="Раздел Utils готоф!" />
     <MESSAGE value="Вот теперь Atomic.Elements готоф!" />
     <MESSAGE value="IEntityBehaviour.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityBehaviour.md" />
+    <MESSAGE value="IEntityDisable.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityDisable.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

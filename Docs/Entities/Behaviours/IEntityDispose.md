@@ -1,29 +1,17 @@
 # 🧩️ IEntityDispose
 
-```csharp
-public interface IEntityDispose : IEntityBehaviour
-```
-
-- **Description:** Represents a behavior interface that executes cleanup or resource release logic when
-  an [IEntity](../Entities/IEntity.md) **is being disposed**. 
-- **Inheritance:** [IEntityBehaviour](IEntityBehaviour.md)
-- **Note:** It is automatically invoked by the entity’s `Dispose`
-  method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
-- **See also:** [IEntityDispose&lt;E&gt;](IEntityDispose%601.md)
+Represents a behavior interface that executes cleanup or resource release logic when
+an [IEntity](../Entities/IEntity.md) **is being disposed**.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Dispose(IEntity)`
-
-```csharp
-public void Dispose(IEntity entity);
-```
-
-- **Description:** Called when the entity is being disposed.
-- **Parameter:** `entity` – The entity being disposed.
-- **Remarks:** Automatically called by `IEntity.Dispose` when the entity is permanently removed or released.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Dispose()](#disposeientity)
 
 ---
 
@@ -42,4 +30,31 @@ public class DisposeColliderBehaviour : IEntityDispose
 }
 ```
 
-> Note: `GetValue<T>` assumes the entity has a `Collider` component already set.
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityDispose : IEntityBehaviour
+```
+
+- **Inheritance:** [IEntityBehaviour](IEntityBehaviour.md)
+- **Note:** It is automatically invoked by the entity’s `Dispose`
+  method when the entity is permanently destroyed, removed from the game, or otherwise released from use.
+- **See also:** [IEntityDispose&lt;E&gt;](IEntityDispose%601.md)
+
+---
+
+### 🏹 Methods
+
+#### `Dispose(IEntity)`
+
+```csharp
+public void Dispose(IEntity entity);
+```
+
+- **Description:** Called when the entity is being disposed.
+- **Parameter:** `entity` – The entity being disposed.
+- **Remarks:** Automatically called by `IEntity.Dispose` when the entity is permanently removed or released.
