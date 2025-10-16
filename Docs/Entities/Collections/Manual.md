@@ -31,7 +31,7 @@ entity handling.
 var entities = new EntityCollection();
 
 // Subscribe to events
-entities.OnAdded [IReadOnlyEntityCollection`1.md](IReadOnlyEntityCollection%601.md)+= e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
 entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
 entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
 
