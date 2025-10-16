@@ -1,6 +1,6 @@
 # 🧩 IEntityGizmos&lt;E&gt;
 
-Provides a strongly-typed version of [IEntityGizmos]() for handling gizmo drawing on a specific entity type.
+Provides a strongly-typed version of [IEntityGizmos](IEntityGizmos.md) for handling gizmo drawing on a specific entity type.
 
 ---
 
