@@ -8,7 +8,22 @@ entity handling.
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-example-of-usage)
+    - [EntityCollection](#ex1)
+    - [EntityCollection\<E>](#ex2)
+    - [Extensions](#ex3)
+- [API Reference](#-api-reference)
+- [Performance](#-performance)
+- [Best Practices](#-best-practices)
+- [Notes](#-notes)
+
+---
+
 ## 🗂 Examples of Usage
+
+<div id="ex1"></div>
 
 ### 1️⃣ EntityCollection Usage
 
@@ -16,7 +31,7 @@ entity handling.
 var entities = new EntityCollection();
 
 // Subscribe to events
-entities.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+entities.OnAdded [IReadOnlyEntityCollection`1.md](IReadOnlyEntityCollection%601.md)+= e => Console.WriteLine($"Added entity: {e.Name}");
 entities.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
 entities.OnStateChanged += () => Console.WriteLine("Collection state changed");
 
@@ -46,7 +61,9 @@ entities.Dispose();
 
 ---
 
-### 2️⃣ EntityCollection\<E>
+<div id="ex2"></div>
+
+### 2️⃣ EntityCollection\<E> Usage
 
 Assume we have a concrete entity type:
 
@@ -92,7 +109,9 @@ entities.Dispose();
 
 ---
 
-### 3️⃣ Extensions
+<div id="ex3"></div>
+
+### 3️⃣ Extensions Usage
 
 ```csharp
 entities.AddRange(new GameEntity("Goblin"), new GameEntity("Orc"));
@@ -116,22 +135,53 @@ Below is a list of available collection types:
 
 ---
 
-## ⚙️ Key Characteristics
+## 🔥 Performance
 
-- **Insertion & Removal** – Near constant-time operations thanks to internal hash table management.
-- **Lookup** – O(1) average complexity for `Contains`.
-- **Enumeration** – Iterates in insertion order with minimal overhead.
-- **Memory Efficiency** – Uses pooled arrays for temporary operations, avoiding unnecessary allocations.
-- **Use Case** – Suitable for **real-time applications** (e.g., games, simulations) managing large sets of entities
-  efficiently.
+[EntityCollection\<E>](EntityCollection%601.md) is a **hybrid data structure** that combines the strengths of a
+**Dictionary** and a **LinkedList**. It maintains **fast lookups** while preserving **insertion order**, making it ideal
+for systems that require both efficiency and predictable iteration.
+
+---
+
+The performance measurements below were conducted on a <b>MacBook with Apple M1</b>,
+using <b>1,000 elements</b> for each container type. All times are <b>median execution times</b>,
+in microseconds (μs).
+
+| Operation      | EntityCollection (μs) | HashSet (μs) |
+|----------------|-----------------------|--------------|
+| **Add**        | 18.91                 | 77.53        |
+| **Clear**      | 13.24                 | 1.09         |
+| **Contains**   | 6.00                  | 76.96        |
+| **Enumerator** | 7.57                  | 26.44        |
+| **Remove**     | 11.50                 | 64.53        |
+
+---
+
+### Summary
+
+While `HashSet` excels at bulk operations like `Clear`, `EntityCollection` offers **significantly faster Add, Contains,
+and Remove** operations on average — making it a strong choice when **iteration order** and **low allocation overhead**
+are essential.
+
+---
+
+## 📌 Best Practices
+
+- [Iterating over EntityCollection](../../BestPractices/IteratingOverEntityCollections.md)
 
 ---
 
 ## 📝 Notes
 
-- Use **generic collections** (`EntityCollection<E>` / `IEntityCollection<E>`) for type safety.
+- **Insertion & Removal** – Near constant-time operations thanks to internal hash table management.
+- **Lookup** – O(1) average complexity for `Contains`.
+- **Enumeration** – Iterates in insertion order with minimal overhead.
+- Use **generic collections**
+  ([EntityCollection\<E>](EntityCollection%601.md) / [IEntityCollection\<E>](IEntityCollection%601.md) for type
+  safety.
 - Use **non-generic collections** when working with heterogeneous entity types.
-- Use **read-only interfaces** (`IReadOnlyEntityCollection`) to safely expose collections without allowing
+- Use **read-only interfaces** ([IReadOnlyEntityCollection](IReadOnlyEntityCollection.md)) to safely expose collections
+  without allowing
   modifications.
 - Use **Extensions** to simplify batch operations, initialization, and disposal.
 - Collections are optimized for **fast lookup**, **ordered enumeration**, and **reactive notifications** (`OnAdded`,

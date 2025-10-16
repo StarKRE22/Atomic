@@ -1,4 +1,4 @@
-# 📌 Iterating over Reactive Collections
+# 📌 Iterating over Entity Collections
 
 When using reactive collections such
 as [ReactiveArray](../Elements/Collections/ReactiveArray.md), [ReactiveList](../Elements/Collections/ReactiveList.md), [ReactiveLinkedList](../Elements/Collections/ReactiveLinkedList.md), [ReactiveHashSet](../Elements/Collections/ReactiveHashSet.md),
