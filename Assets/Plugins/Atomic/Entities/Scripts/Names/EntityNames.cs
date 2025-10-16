@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 #if UNITY_EDITOR
@@ -8,82 +9,67 @@ using UnityEditor;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Provides a unified interface for converting between string-based entity names and unique integer identifiers.
+    /// Provides a unified interface for converting between string-based entity names and unique integer identifiers,
+    /// with internal caching for fast reverse lookups.
     /// </summary>
-    /// <remarks>
-    /// The <see cref="EntityNames"/> class acts as a static facade over an <see cref="IEntityNameStrategy"/> implementation.
-    /// <para>
-    /// By default, it uses the <see cref="SequentialEntityNameStrategy"/>, which assigns IDs sequentially.
-    /// However, you can replace this behavior by supplying a custom strategy,
-    /// such as <see cref="HashEntityNameStrategy"/> or <see cref="Fnv1aEntityNameStrategy"/>, using the <see cref="SetStrategy"/> method.
-    /// </para>
-    /// <para>
-    /// This mechanism allows systems to efficiently identify entities by numeric ID at runtime,
-    /// while still supporting reverse lookups for debugging or editor visualization.
-    /// </para>
-    /// </remarks>
     public static class EntityNames
     {
+        private static readonly Dictionary<string, int> _nameToId = new();
+        private static readonly Dictionary<int, string> _idToName = new();
+
+        private static IEntityNameAlgorithm _algorithm = new SequentialEntityNameAlgorithm();
+        
         /// <summary>
-        /// The current name-to-ID conversion strategy in use.
-        /// Defaults to <see cref="SequentialEntityNameStrategy"/>.
+        /// Sets the strategy used for generating IDs from entity names.
+        /// Clears the current cache.
         /// </summary>
-        private static IEntityNameStrategy _strategy = new SequentialEntityNameStrategy();
+        /// <param name="algorithm">New strategy to use.</param>
+        public static void SetAlgorithm(IEntityNameAlgorithm algorithm)
+        {
+            _algorithm = algorithm ?? throw new ArgumentNullException(nameof(algorithm));
+            Reset();
+        }
 
         /// <summary>
-        /// Sets the strategy used for mapping entity names to integer identifiers.
+        /// Converts a string entity name into a unique integer ID.
         /// </summary>
-        /// <param name="strategy">The new name-to-ID strategy to use.</param>
-        /// <exception cref="ArgumentNullException">
-        /// Thrown if the provided <paramref name="strategy"/> is <c>null</c>.
-        /// </exception>
-        /// <remarks>
-        /// This method allows switching between different ID generation approaches at runtime.
-        /// Example usage:
-        /// <code>
-        /// EntityNames.SetStrategy(new HashEntityNameStrategy());
-        /// EntityNames.SetStrategy(new Fnv1aEntityNameStrategy());
-        /// </code>
-        /// </remarks>
-        public static void SetStrategy(IEntityNameStrategy strategy) =>
-            _strategy = strategy ?? throw new ArgumentNullException(nameof(strategy));
-
-        /// <summary>
-        /// Converts a string entity name into a unique integer identifier.
-        /// </summary>
-        /// <param name="name">The string name to convert to an ID.</param>
-        /// <returns>
-        /// A unique integer identifier corresponding to the provided name.
-        /// The exact behavior depends on the active <see cref="IEntityNameStrategy"/>:
-        /// <list type="bullet">
-        /// <item><see cref="SequentialEntityNameStrategy"/> assigns sequential IDs.</item>
-        /// <item><see cref="HashEntityNameStrategy"/> or <see cref="Fnv1aEntityNameStrategy"/> generate deterministic hash-based IDs.</item>
-        /// </list>
-        /// </returns>
+        /// <param name="name">The entity name.</param>
+        /// <returns>A unique integer ID corresponding to the name.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int NameToId(string name) => _strategy.NameToId(name);
+        public static int NameToId(string name)
+        {
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
+
+            if (_nameToId.TryGetValue(name, out int id))
+                return id;
+
+            id = _algorithm.NameToId(name);
+            
+            _nameToId[name] = id;
+            _idToName[id] = name;
+            return id;
+        }
 
         /// <summary>
-        /// Retrieves the original entity name associated with a specific integer identifier.
+        /// Retrieves the original entity name for a given ID.
         /// </summary>
-        /// <param name="id">The integer ID to convert back into a string name.</param>
-        /// <returns>
-        /// The original entity name if it was registered,
-        /// or a fallback string in the format <c>#Unknown:{id}</c> if no name is associated with this ID.
-        /// </returns>
+        /// <param name="id">The integer ID.</param>
+        /// <returns>The original name if registered; otherwise <c>#Unknown:{id}</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static string IdToName(int id) => _strategy.IdToName(id);
+        public static string IdToName(int id) => _idToName.TryGetValue(id, out var name) ? name : $"#Unknown:{id}";
 
         /// <summary>
-        /// Clears all mappings and resets the internal state of the active strategy.
+        /// Clears all cached mappings and resets the current algorithm.
         /// </summary>
-        /// <remarks>
-        /// Typically invoked automatically when entering Play Mode in the Unity Editor
-        /// to ensure a clean registry of entity names before runtime initialization.
-        /// </remarks>
 #if UNITY_EDITOR
         [InitializeOnEnterPlayMode]
 #endif
-        public static void Reset() => _strategy.Reset();
+        public static void Reset()
+        {
+            _nameToId.Clear();
+            _idToName.Clear();
+            _algorithm.Reset();
+        }
     }
 }
