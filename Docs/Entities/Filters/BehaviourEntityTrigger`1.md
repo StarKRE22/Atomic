@@ -1,18 +1,59 @@
 # 🧩 BehaviourEntityTrigger\<E>
 
+A trigger that responds to **behaviour changes** (added or removed) on entities of type `E`. Allows
+an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when behaviours are added or
+removed.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<E>)](#setactionactione)
+        - [Track(E)](#tracke)
+        - [Untrack(E)](#untracke)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Track specific entities for behaviour additions and deletions
+var trigger = new BehaviourEntityTrigger<PlayerEntity>(
+    added: true,
+    removed: true,
+);
+
+// Usage with non-generic EntityFilter
+var filter = new EntityFilter<PlayerEntity>(
+    allEntities,
+    e => e.GetValue<int>("Health") > 0,
+    trigger
+);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class BehaviourEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
 ```
 
-- **Description:** A trigger that responds to **behaviour changes** (added or removed) on entities of type `E`.  
-  Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when behaviours are added or
-  removed.
 - **Type Parameter:** `E` — The entity type being tracked. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityTrigger\<E>](IEntityTrigger%601.md)
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public BehaviourEntityTrigger(bool added = true, bool removed = true)
@@ -25,7 +66,7 @@ public BehaviourEntityTrigger(bool added = true, bool removed = true)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<E>)`
 
