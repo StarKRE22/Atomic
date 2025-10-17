@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Registration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Registration.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Unity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Unity.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Сreation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Сreation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/TickManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/UpdateLoop.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Lifecycle/TickManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Dispose.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Entity/EntityTests_Dispose.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Registry/EntityRegistry_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/EditMode/Registry/EntityRegistry_Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/UpdateLoopTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/TickManagerTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/UpdateLoopTests.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/Internal/TickManagerTests.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Entities/EntityStub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/Entities/EntityStub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InitTestScenee90878be-50e9-4608-b97d-04c10d11da7b.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/InitTestScenee90878be-50e9-4608-b97d-04c10d11da7b.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,10 +56,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Unity.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/IEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
@@ -267,15 +255,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="9637000" />
-    </task>
-    <task id="LOCAL-01549" summary="IEntityFixedTick.md">
-      <option name="closed" value="true" />
-      <created>1760600671679</created>
-      <option name="number" value="01549" />
-      <option name="presentableId" value="LOCAL-01549" />
-      <option name="project" value="LOCAL" />
-      <updated>1760600671679</updated>
+      <workItem from="1760693092386" duration="10360000" />
     </task>
     <task id="LOCAL-01550" summary="IEntityFixedTick`1.md">
       <option name="closed" value="true" />
@@ -661,7 +641,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760717120804</updated>
     </task>
-    <option name="localTasksCounter" value="1598" />
+    <task id="LOCAL-01598" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760719187292</created>
+      <option name="number" value="01598" />
+      <option name="presentableId" value="LOCAL-01598" />
+      <option name="project" value="LOCAL" />
+      <updated>1760719187292</updated>
+    </task>
+    <option name="localTasksCounter" value="1599" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

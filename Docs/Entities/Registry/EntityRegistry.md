@@ -1,11 +1,10 @@
 # 🧩 EntityRegistry
 
-A **global registry** responsible for tracking and managing all [IEntity](../Entities/IEntity.md)
-instances. Provides **unique ID assignment**, **lookup by ID**, and **name-based search utilities**. Automatically
-reused IDs for unregistered entities to avoid ID overflow.
+A **global registry** responsible for tracking and managing all [IEntity](../Entities/IEntity.md) instances. Provides *
+*unique ID assignment**, **lookup by ID**, and **name-based search utilities**. Automatically reuses IDs for
+unregistered entities to avoid ID overflow.
 
 ---
-
 
 ## 📑 Table of Contents
 
@@ -43,6 +42,8 @@ reused IDs for unregistered entities to avoid ID overflow.
             <li><a href="#copytoientity-int">CopyTo(IEntity[], int)</a></li>
             <li><a href="#trygetint-out-ientity">TryGet(int, out IEntity)</a></li>
             <li><a href="#getint">Get(int)</a></li>
+            <li><a href="#getunsafe">GetUnsafe&lt;T&gt;(int)</a></li>
+            <li><a href="#trygetunsafe">TryGetUnsafe&lt;T&gt;(int, out T)</a></li>
           </ul>
         </details>
       </li>
@@ -51,9 +52,6 @@ reused IDs for unregistered entities to avoid ID overflow.
   <li><a href="#-notes">Notes</a></li>
 </ul>
 
-
-
-
 ---
 
 ## 🗂 Example of Usage
@@ -61,20 +59,29 @@ reused IDs for unregistered entities to avoid ID overflow.
 ```csharp  
 EntityRegistry registry = EntityRegistry.Instance;
 
-//Retrieving entity by id
+// Retrieving entity by id
 IEntity someEntity = registry.Get(id);
 
-//Attempts to retrieve an entity by id
+// Attempts to retrieve an entity by id
 if (registry.TryGet(id, out IEntity found))  
-    Debug.Log($"Found entity: {found}");  
+    Debug.Log($"Found entity: {found}");
 
-//Check for entity existance
+// Check for entity existence
 if (registry.Contains(someEntity))
-    //Do something...
+    // Do something...
 
-//Iterating over all entities
+// Iterating over all entities
 foreach (IEntity entity in registry)  
-    Debug.Log($"Entity: {entity}");  
+    Debug.Log($"Entity: {entity}");
+
+// Using unsafe generic retrieval
+PlayerEntity playerEntity = registry.GetUnsafe<PlayerEntity>(id);
+
+if (registry.TryGetUnsafe(id, out PlayerEntity maybeEntity))
+    Debug.Log($"Unsafe found: {maybeEntity}");
+
+// Clearing all entities
+registry.Clear();
 ```
 
 ---
@@ -87,8 +94,8 @@ foreach (IEntity entity in registry)
 public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>  
 ```
 
-- **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md).
-- **See also:** [EntityWorld](../Worlds/EntityWorld.md), [EntityCollection](../Collections/EntityCollection.md).
+- **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md)
+- **See also:** [EntityWorld](../Worlds/EntityWorld.md), [EntityCollection](../Collections/EntityCollection.md)
 
 ---
 
@@ -150,7 +157,7 @@ public int Count { get; }
 public bool Contains(int id);  
 ```
 
-- **Description:** Checks whether an entity with the given unique ID is currently registered in the registry.
+- **Description:** Checks whether an entity with the given unique ID is currently registered.
 - **Parameter:** `id` — The unique identifier of the entity.
 - **Returns:** `true` if the entity exists, otherwise `false`.
 
@@ -160,7 +167,7 @@ public bool Contains(int id);
 public bool Contains(IEntity entity);  
 ```
 
-- **Description:** Checks whether the provided entity instance is currently registered in the registry.
+- **Description:** Checks whether the provided entity instance is currently registered.
 - **Parameter:** `entity` — The entity instance to check.
 - **Returns:** `true` if the entity is found, otherwise `false`.
 
@@ -171,7 +178,7 @@ public void CopyTo(ICollection<IEntity> results);
 ```
 
 - **Description:** Copies all registered entities into the provided collection.
-- **Parameter:** `results` — The target collection. The method will clear it before adding entities.
+- **Parameter:** `results` — The target collection.
 
 #### `CopyTo(IEntity[], int)`
 
@@ -183,7 +190,7 @@ public void CopyTo(IEntity[] array, int arrayIndex);
 - **Parameters:**
     - `array` — Target array to copy entities into.
     - `arrayIndex` — The starting position in the target array.
-- **Exception:** `ArgumentException` — If the array is too small.
+- **Exception:** `ArgumentOutOfRangeException` — If the index is invalid.
 
 #### `TryGet(int, out IEntity)`
 
@@ -194,7 +201,7 @@ public bool TryGet(int id, out IEntity entity);
 - **Description:** Attempts to retrieve an entity by its unique ID without throwing exceptions.
 - **Parameters:**
     - `id` — The unique identifier of the entity.
-    - `entity` — Output parameter that contains the found entity if successful; otherwise `null`.
+    - `entity` — Output parameter containing the found entity if successful; otherwise `null`.
 - **Returns:** `true` if the entity was found, otherwise `false`.
 
 #### `Get(int)`
@@ -205,16 +212,41 @@ public IEntity Get(int id);
 
 - **Description:** Retrieves an entity by its unique ID.
 - **Parameter:** `id` — The unique identifier of the entity.
-- **Return:** The entity instance.
-- **Exception:**`KeyNotFoundException` — If no entity with the specified ID exists.
+- **Returns:** The entity instance.
+- **Exception:** `KeyNotFoundException` — If no entity with the specified ID exists.
 
+<div id="getunsafe"></div>
 
+#### `GetUnsafe<T>(int)`
+
+```csharp  
+public T GetUnsafe<T>(int id) where T : class, IEntity;
+```
+
+- **Description:** Retrieves an entity by its unique ID using an unsafe cast for maximum performance.
+- **Parameter:** `id` — The unique identifier of the entity.
+- **Returns:** The entity cast to `<T>` if found.
+- **Exception:** `KeyNotFoundException` — If no entity with the specified ID exists.
+
+<div id="trygetunsafe"></div>
+
+#### `TryGetUnsafe<T>(int, out T)`
+
+```csharp  
+public bool TryGetUnsafe<T>(int id, out T entity) where T : class, IEntity;
+```
+
+- **Description:** Attempts to retrieve an entity by its unique ID using an unsafe cast for maximum performance.
+- **Parameters:**
+    - `id` — The unique identifier of the entity.
+    - `entity` — Output parameter containing the found entity if successful; otherwise `null`.
+- **Returns:** `true` if the entity was found, otherwise `false`.
 ---
 
 ## 📝 Notes
 
-- Acts as a **global tracker** — unlike `EntityWorld`, which is scoped per world.
-- Provides **fast lookup** by ID using dictionaries.
+- Acts as a **global tracker** — unlike [EntityWorld](../Worlds/EntityWorld.md), which is scoped per world.
+- Provides **fast lookup** by ID using an internal hash-based structure.
 - Uses **stack recycling** for IDs to avoid fragmentation.
-- Events (`OnAdded`, `OnRemoved`) make it easy to **react to entity lifecycle** globally.
-- Automatically reset in **Unity Editor** before Play Mode starts.
+- Events (`OnAdded`, `OnRemoved`) allow reacting to entity lifecycle globally.
+- Automatically reset in **Unity Editor** before entering Play Mode.
