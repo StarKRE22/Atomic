@@ -1,6 +1,32 @@
 # 🧩 IEnableLifecycle
 
 ```csharp
+//Assume we have an instance of IEnableLifecycle
+IEnableLifecycle enableSource = ...;
+
+// Subscribe to events
+enableSource.OnEnabled += () => Console.WriteLine("Player enabled");
+enableSource.OnDisabled += () => Console.WriteLine("Player disabled");
+
+// Check initial state
+Console.WriteLine($"Enabled: {enableSource.Enabled}");
+
+// Enable the object
+enableSource.Enable();
+Console.WriteLine($"Enabled: {enableSource.Enabled}");
+
+// Disable the object
+enableSource.Disable();
+Console.WriteLine($"Enabled: {enableSource.Enabled}");
+
+// Try disabling again (no event will fire since it's already disabled)
+enableSource.Disable();
+```
+
+---
+
+
+```csharp
 public interface IEnableLifecycle
 ```
 

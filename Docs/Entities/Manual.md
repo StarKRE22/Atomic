@@ -60,7 +60,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Triggers](Filters/EntityTriggers.md)
 - [Lifecycle](Lifecycle/Manual.md)
 - [UI](UI/Manual.md)
-- [Names](Names/Manual.md)
+- [Names](Names/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md)
 
 ---

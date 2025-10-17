@@ -1,6 +1,32 @@
 # 🧩 ITickLifecycle
 
 ```csharp
+// Assume we have an instance of ITickLifecycle
+ITickLifecycle tickSource = ...;
+
+// Subscribe to events
+tickSource.OnTicked += deltaTime => Console.WriteLine($"Update tick: {deltaTime:F3}s");
+tickSource.OnFixedTicked += deltaTime => Console.WriteLine($"FixedUpdate tick: {deltaTime:F3}s");
+tickSource.OnLateTicked += deltaTime => Console.WriteLine($"LateUpdate tick: {deltaTime:F3}s");
+
+// Simulate update cycles
+float deltaTime = 0.016f; // ~60 FPS
+
+// Regular Update
+tickSource.Tick(deltaTime);
+
+// FixedUpdate
+tickSource.FixedTick(0.02f);
+
+// LateUpdate
+tickSource.LateTick(deltaTime);
+
+// Simulate another frame
+tickSource.Tick(deltaTime);
+tickSource.LateTick(deltaTime);
+```
+
+```csharp
 public interface ITickLifecycle
 ```
 

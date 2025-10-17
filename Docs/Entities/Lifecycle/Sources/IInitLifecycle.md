@@ -1,6 +1,29 @@
 # 🧩 IInitLifecycle
 
 ```csharp
+// Assume we have an instance of IInitLifecycle
+IInitLifecycle initSource = ...;
+
+// Subscribe to events
+initSource.OnInitialized += () => Console.WriteLine("Object initialized");
+initSource.OnDisposed += () => Console.WriteLine("Object disposed");
+
+// Check initial state
+Console.WriteLine($"Initialized: {initSource.Initialized}");
+
+// Initialize the object
+initSource.Init();
+Console.WriteLine($"Initialized: {initSource.Initialized}");
+
+// Dispose the object
+initSource.Dispose();
+Console.WriteLine($"Initialized: {initSource.Initialized}");
+
+// Try disposing again (no event will fire since it's already disposed)
+initSource.Dispose();
+```
+
+```csharp
 public interface IInitLifecycle
 ```
 
