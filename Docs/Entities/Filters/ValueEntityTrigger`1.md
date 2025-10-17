@@ -1,17 +1,84 @@
 # 🧩 ValueEntityTrigger\<E>
 
+A trigger that responds to **value changes** (added, removed, or modified) on entities of type `E`.
+Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when values change.
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [EntityFilter Usage](#ex1)
+    - [Custom Monitoring](#ex2)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<E>)](#setactionactione)
+        - [Track(E)](#tracke)
+        - [Untrack(E)](#untracke)
+
+---
+
+## 🗂 Example of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ EntityFilter Usage
+
+```csharp
+// Track entities for value additions, deletions, and modifications
+var trigger = new ValueEntityTrigger<GameEntity>(
+    added: true,
+    deleted: true,
+    changed: true
+);
+
+// Usage with EntityFilter
+var filter = new EntityFilter<GameEntity>(
+    allEntities,
+    e => e.GetValue<int>("Health") > 0,
+    trigger
+);
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Custom Monitoring
+
+```csharp
+// Monitor all tag changes (additions and deletions)
+var valueTrigger = new ValueEntityTrigger<UnitEntity>();
+valueTrigger.SetAction(entity => Debug.Log($"Value change detected on entity: {entity.Name}"));
+
+// Track entities
+valueTrigger.Track(playerEntity);
+valueTrigger.Track(enemyEntity);
+
+// When values change on entities, the trigger automatically responds
+playerEntity.AddValue("Inventory", new Inventory());      // Triggers callback
+enemyEntity.RemoveValue("Inventory");   // Triggers callback
+enemyEntity.SetValue("Health", 25);   // Triggers callback if "Health" value is alreay added!
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class ValueEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
 ```
 
-- **Description:** A trigger that responds to **value changes** (added, removed, or modified) on entities of type `E`.
-  Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when values change.
 - **Type Parameter:** `E` — The entity type being tracked. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityTrigger\<E>](IEntityTrigger%601.md)
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed = true)
@@ -25,7 +92,7 @@ public ValueEntityTrigger(bool added = true, bool deleted = true, bool changed =
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<E>)`
 
@@ -57,40 +124,3 @@ public void Untrack(E entity);
 - **Description:** Stops tracking the specified entity for value changes.
 - **Parameter:** `entity` — The entity to stop monitoring.
 - **Note:** Unsubscribes from previously subscribed value events.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Track entities for value additions, deletions, and modifications
-var trigger = new ValueEntityTrigger<GameEntity>(
-    added: true,
-    deleted: true,
-    changed: true
-);
-
-// Usage with EntityFilter
-var filter = new EntityFilter<GameEntity>(
-    allEntities,
-    e => e.GetValue<int>("Health") > 0,
-    trigger
-);
-```
-
-### Using Generic Value Change Monitoring
-```csharp
-// Monitor all tag changes (additions and deletions)
-var valueTrigger = new ValueEntityTrigger<UnitEntity>();
-valueTrigger.SetAction(entity =>
-    Debug.Log($"Value change detected on entity: {entity.Name}"));
-
-// Track entities
-valueTrigger.Track(playerEntity);
-valueTrigger.Track(enemyEntity);
-
-// When values change on entities, the trigger automatically responds
-playerEntity.AddValue("Inventory", new Inventory());      // Triggers callback
-enemyEntity.RemoveValue("Inventory");   // Triggers callback
-enemyEntity.SetValue("Health", 25);   // Triggers callback if "Health" value is alreay added!
-```
