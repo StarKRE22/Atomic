@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,15 +236,7 @@
       <workItem from="1760510813056" duration="29289000" />
       <workItem from="1760597500762" duration="25416000" />
       <workItem from="1760685802060" duration="129000" />
-      <workItem from="1760685951621" duration="5031000" />
-    </task>
-    <task id="LOCAL-01545" summary="IEntityDispose`1.md">
-      <option name="closed" value="true" />
-      <created>1760599659897</created>
-      <option name="number" value="01545" />
-      <option name="presentableId" value="LOCAL-01545" />
-      <option name="project" value="LOCAL" />
-      <updated>1760599659897</updated>
+      <workItem from="1760685951621" duration="5837000" />
     </task>
     <task id="LOCAL-01546" summary="IEntityDispose`1.md">
       <option name="closed" value="true" />
@@ -628,7 +622,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760690674659</updated>
     </task>
-    <option name="localTasksCounter" value="1594" />
+    <task id="LOCAL-01594" summary="Extensions.md">
+      <option name="closed" value="true" />
+      <created>1760691258664</created>
+      <option name="number" value="01594" />
+      <option name="presentableId" value="LOCAL-01594" />
+      <option name="project" value="LOCAL" />
+      <updated>1760691258664</updated>
+    </task>
+    <option name="localTasksCounter" value="1595" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +667,6 @@
     <MESSAGE value="IEntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
     <MESSAGE value="EntityCollection`1.md" />
-    <MESSAGE value="Extensions.md" />
     <MESSAGE value="Думаем!" />
     <MESSAGE value="Сделал EntityNames.cs" />
     <MESSAGE value="Начинаем пилить раздел с EntityNames.md" />
@@ -680,7 +681,8 @@
     <MESSAGE value="IInitLifecycle.md" />
     <MESSAGE value="ITickLifecycle.md" />
     <MESSAGE value="Сделал подписки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал подписки" />
+    <MESSAGE value="Extensions.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extensions.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

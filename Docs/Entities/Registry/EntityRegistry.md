@@ -1,18 +1,98 @@
 # 🧩 EntityRegistry
 
+A **global registry** responsible for tracking and managing all [IEntity](../Entities/IEntity.md)
+instances. Provides **unique ID assignment**, **lookup by ID**, and **name-based search utilities**. Automatically
+reused IDs for unregistered entities to avoid ID overflow.
+
+---
+
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onadded">OnAdded</a></li>
+            <li><a href="#onremoved">OnRemoved</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#instance">Instance</a></li>
+            <li><a href="#count">Count</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#containsint">Contains(int)</a></li>
+            <li><a href="#containsientity">Contains(IEntity)</a></li>
+            <li><a href="#copytoicollectionientity">CopyTo(ICollection&lt;IEntity&gt;)</a></li>
+            <li><a href="#copytoientity-int">CopyTo(IEntity[], int)</a></li>
+            <li><a href="#trygetint-out-ientity">TryGet(int, out IEntity)</a></li>
+            <li><a href="#getint">Get(int)</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-notes">Notes</a></li>
+</ul>
+
+
+
+
+---
+
+## 🗂 Example of Usage
+
+```csharp  
+EntityRegistry registry = EntityRegistry.Instance;
+
+//Retrieving entity by id
+IEntity someEntity = registry.Get(id);
+
+//Attempts to retrieve an entity by id
+if (registry.TryGet(id, out IEntity found))  
+    Debug.Log($"Found entity: {found}");  
+
+//Check for entity existance
+if (registry.Contains(someEntity))
+    //Do something...
+
+//Iterating over all entities
+foreach (IEntity entity in registry)  
+    Debug.Log($"Entity: {entity}");  
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp  
 public sealed class EntityRegistry : IReadOnlyEntityCollection<IEntity>  
 ```
 
-- **Description:** A **global registry** responsible for tracking and managing all [IEntity](../Entities/IEntity.md)
-  instances. Provides **unique ID assignment**, **lookup by ID**, and **name-based search utilities**.
 - **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md).
-- **Note:** Automatically reused IDs for unregistered entities to avoid ID overflow.
 - **See also:** [EntityWorld](../Worlds/EntityWorld.md), [EntityCollection](../Collections/EntityCollection.md).
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -42,7 +122,7 @@ public event Action<IEntity> OnRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Instance`
 
@@ -62,7 +142,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Contains(int)`
 
@@ -128,31 +208,6 @@ public IEntity Get(int id);
 - **Return:** The entity instance.
 - **Exception:**`KeyNotFoundException` — If no entity with the specified ID exists.
 
----
-
-## 🗂 Example of Usage
-
-```csharp  
-EntityRegistry registry = EntityRegistry.Instance;
-
-//Retrieving entity by id
-if (registry.TryGet(id, out IEntity found))  
-{  
-    Debug.Log($"Found entity: {found}");  
-}  
-
-//Check for entity existance
-if (registry.Contains(someEntity))
-{
-    //Do something
-}
-
-//Iterating over all entities
-foreach (var entity in registry)  
-{  
-    Debug.Log($"Entity: {entity}");  
-}  
-```
 
 ---
 

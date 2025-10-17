@@ -54,11 +54,11 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Factories](Factories/Manual.md) 
 - [Pooling](Pooling/Manual.md) 
 - [Collections](Collections/Manual.md) <!-- + -->
-- [Worlds](Worlds/Manual.md) <!-- + -->
-- [Registry](Registry/EntityRegistry.md) 
+- [Worlds](Worlds/Manual.md)
+- [Registry](Registry/EntityRegistry.md) <!-- + -->
 - [Filters](Filters/Manual.md) 
 - [Triggers](Filters/EntityTriggers.md)
-- [Lifecycle](Lifecycle/Manual.md)
+- [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [UI](UI/Manual.md)
 - [Names](Names/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md)
