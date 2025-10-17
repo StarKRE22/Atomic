@@ -35,7 +35,7 @@ public sealed class HealthTrigger : SubscriptionEntityTrigger<Subscription<int>>
 ```
 
 This example demonstrates **inheritance without specifying a concrete entity type**. `HealthTrigger` inherits from
-[SubscriptionEntityTrigger\<E>](SubscriptionEntityTrigger%601.md) and subscribes to changes of the `"Health"` property
+[SubscriptionEntityTrigger\<S>](SubscriptionEntityTrigger.md) and subscribes to changes of the `"Health"` property
 on any entity implementing [IEntity](../Entities/IEntity.md). Whenever the reactive property (`IReactiveValue<int>`)
 changes, the provided `callback` is invoked. This approach is suitable for monitoring specific values across all
 entities without tying the trigger to a specific entity type.
