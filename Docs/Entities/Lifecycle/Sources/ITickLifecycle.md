@@ -1,5 +1,48 @@
 # 🧩 ITickLifecycle
 
+Represents a **runtime-controllable update contract** for entities or systems.  
+Provides events and methods for subscribing to or triggering **Update**, **FixedUpdate**, and **LateUpdate**
+callbacks.
+
+> [!NOTE]
+> This is a **core framework interface**. You should **not implement it manually** — it is used by the
+> framework infrastructure.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <a href="#-events">Events</a>
+        <ul>
+          <li><a href="#onticked">OnTicked</a></li>
+          <li><a href="#onfixedticked">OnFixedTicked</a></li>
+          <li><a href="#onlateticked">OnLateTicked</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-methods">Methods</a>
+        <ul>
+          <li><a href="#tick">Tick(float deltaTime)</a></li>
+          <li><a href="#fixedtick">FixedTick(float deltaTime)</a></li>
+          <li><a href="#latetick">LateTick(float deltaTime)</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example of Usage
+
 ```csharp
 // Assume we have an instance of ITickLifecycle
 ITickLifecycle tickSource = ...;
@@ -20,25 +63,21 @@ tickSource.FixedTick(0.02f);
 
 // LateUpdate
 tickSource.LateTick(deltaTime);
-
-// Simulate another frame
-tickSource.Tick(deltaTime);
-tickSource.LateTick(deltaTime);
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface ITickLifecycle
 ```
 
-- **Description:** Represents a **runtime-controllable update contract** for entities or systems.  
-  Provides events and methods for subscribing to or triggering **Update**, **FixedUpdate**, and **LateUpdate**
-  callbacks.
-- **Note:** This is an **internal framework interface**. You should **not implement it manually** — it is used by the
-  framework infrastructure.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnTicked`
 
@@ -69,7 +108,7 @@ public event Action<float> OnLateTicked;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Tick`
 

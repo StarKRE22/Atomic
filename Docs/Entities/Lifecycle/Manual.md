@@ -47,13 +47,8 @@ Console.WriteLine($"Initialized: {initSource.Initialized}");
 
 // Initialize the object
 initSource.Init();
-Console.WriteLine($"Initialized: {initSource.Initialized}");
 
 // Dispose the object
-initSource.Dispose();
-Console.WriteLine($"Initialized: {initSource.Initialized}");
-
-// Try disposing again (no event will fire since it's already disposed)
 initSource.Dispose();
 ```
 
@@ -72,13 +67,8 @@ Console.WriteLine($"Enabled: {enableSource.Enabled}");
 
 // Enable the object
 enableSource.Enable();
-Console.WriteLine($"Enabled: {enableSource.Enabled}");
 
 // Disable the object
-enableSource.Disable();
-Console.WriteLine($"Enabled: {enableSource.Enabled}");
-
-// Try disabling again (no event will fire since it's already disabled)
 enableSource.Disable();
 ```
 
@@ -103,10 +93,6 @@ tickSource.Tick(deltaTime);
 tickSource.FixedTick(0.02f);
 
 // LateUpdate
-tickSource.LateTick(deltaTime);
-
-// Simulate another frame
-tickSource.Tick(deltaTime);
 tickSource.LateTick(deltaTime);
 ```
 

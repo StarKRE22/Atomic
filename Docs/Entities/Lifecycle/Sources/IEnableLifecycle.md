@@ -58,13 +58,8 @@ Console.WriteLine($"Enabled: {enableSource.Enabled}");
 
 // Enable the object
 enableSource.Enable();
-Console.WriteLine($"Enabled: {enableSource.Enabled}");
 
 // Disable the object
-enableSource.Disable();
-Console.WriteLine($"Enabled: {enableSource.Enabled}");
-
-// Try disabling again (no event will fire since it's already disabled)
 enableSource.Disable();
 ```
 

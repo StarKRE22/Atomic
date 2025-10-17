@@ -60,13 +60,8 @@ Console.WriteLine($"Initialized: {initSource.Initialized}");
 
 // Initialize the object
 initSource.Init();
-Console.WriteLine($"Initialized: {initSource.Initialized}");
 
 // Dispose the object
-initSource.Dispose();
-Console.WriteLine($"Initialized: {initSource.Initialized}");
-
-// Try disposing again (no event will fire since it's already disposed)
 initSource.Dispose();
 ```
 
