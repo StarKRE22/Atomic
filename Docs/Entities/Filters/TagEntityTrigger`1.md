@@ -5,8 +5,38 @@ an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<E>)](#setactionactione)
+        - [Track(E)](#tracke)
+        - [Untrack(E)](#untracke)
+
 ---
 
+## 🗂 Example of Usage
+
+```csharp
+// Track entities whose tags change (addition/removal)
+var trigger = new TagEntityTrigger<GameEntity>(added: true, deleted: true);
+
+// Usage with EntityFilter
+var filter = new EntityFilter<GameEntity>(
+    allEntities,
+    e => e.HasTag("Enemy"),
+    trigger
+);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public class TagEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
@@ -17,7 +47,9 @@ public class TagEntityTrigger<E> : IEntityTrigger<E> where E : IEntity
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public TagEntityTrigger(bool added = true, bool deleted = true)
@@ -30,7 +62,7 @@ public TagEntityTrigger(bool added = true, bool deleted = true)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<E>)`
 
@@ -61,25 +93,3 @@ public void Untrack(E entity);
 - **Description:** Stops tracking the specified entity for tag changes.
 - **Parameter:** `entity` — The entity to stop monitoring.
 - **Note:** Unsubscribes from previously subscribed tag events.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Track entities whose tags change (addition/removal)
-var trigger = new TagEntityTrigger<GameEntity>(added: true, deleted: true);
-
-// Usage with EntityFilter
-var filter = new EntityFilter<GameEntity>(
-    allEntities,
-    e => e.HasTag("Enemy"),
-    trigger
-);
-```
-
-
----
-
-
----
