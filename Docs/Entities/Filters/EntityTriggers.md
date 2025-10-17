@@ -127,7 +127,7 @@ Below is a list of available trigger types:
 - [SubscriptionTriggers](SubscriptionEntityTriggers.md)
     - [SubscriptionEntityTrigger\<S>](SubscriptionEntityTrigger.md) <!-- + -->
     - [SubscriptionEntityTrigger\<E, S>](SubscriptionEntityTrigger%601.md) <!-- + -->
-- **InlineTriggers**
+- [InlineTriggers](InlineEntityTriggers.md)
     - [InlineEntityTrigger](InlineEntityTrigger.md) <!-- + -->
     - [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md) <!-- + -->
 
@@ -152,16 +152,3 @@ Below is a list of available trigger types:
 - Generic interface for specific entity types
 - Compile-time type checking for callbacks
 - Non-generic convenience interface available
-
-<!--
-
-### 3️⃣ Inline Trigger
-
-```csharp
-var inlineTrigger = new InlineEntityTrigger<GameEntity>(
-    track: (e, cb) => e.OnTagAdded += _ => cb(e),
-    untrack: (e, cb) => e.OnTagAdded -= _ => cb(e)
-);
-inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
-inlineTrigger.Track(someEntity);
-```

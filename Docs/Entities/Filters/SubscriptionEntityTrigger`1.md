@@ -8,8 +8,7 @@ of `IDisposable` subscription objects for each tracked entity, ensuring proper c
 
 ## 📑 Table of Contents
 
-- [Examples of Usage](#-examples-of-usage)
-    - [Team Entity Trigger](#ex1)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)

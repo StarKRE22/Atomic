@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTriggers.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,31 +259,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="21819000" />
-    </task>
-    <task id="LOCAL-01576" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1760615811921</created>
-      <option name="number" value="01576" />
-      <option name="presentableId" value="LOCAL-01576" />
-      <option name="project" value="LOCAL" />
-      <updated>1760615811921</updated>
-    </task>
-    <task id="LOCAL-01577" summary="Думаем!">
-      <option name="closed" value="true" />
-      <created>1760641206378</created>
-      <option name="number" value="01577" />
-      <option name="presentableId" value="LOCAL-01577" />
-      <option name="project" value="LOCAL" />
-      <updated>1760641206378</updated>
-    </task>
-    <task id="LOCAL-01578" summary="Сделал EntityNames.cs">
-      <option name="closed" value="true" />
-      <created>1760642138088</created>
-      <option name="number" value="01578" />
-      <option name="presentableId" value="LOCAL-01578" />
-      <option name="project" value="LOCAL" />
-      <updated>1760642138088</updated>
+      <workItem from="1760693092386" duration="22480000" />
     </task>
     <task id="LOCAL-01579" summary="Начинаем пилить раздел с EntityNames.md">
       <option name="closed" value="true" />
@@ -650,7 +629,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760732705095</updated>
     </task>
-    <option name="localTasksCounter" value="1625" />
+    <task id="LOCAL-01625" summary="SubscriptionEntityTriggers.md">
+      <option name="closed" value="true" />
+      <created>1760732878018</created>
+      <option name="number" value="01625" />
+      <option name="presentableId" value="LOCAL-01625" />
+      <option name="project" value="LOCAL" />
+      <updated>1760732878018</updated>
+    </task>
+    <task id="LOCAL-01626" summary="SubscriptionEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1760732929994</created>
+      <option name="number" value="01626" />
+      <option name="presentableId" value="LOCAL-01626" />
+      <option name="project" value="LOCAL" />
+      <updated>1760732929994</updated>
+    </task>
+    <task id="LOCAL-01627" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760733182033</created>
+      <option name="number" value="01627" />
+      <option name="presentableId" value="LOCAL-01627" />
+      <option name="project" value="LOCAL" />
+      <updated>1760733182033</updated>
+    </task>
+    <option name="localTasksCounter" value="1628" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -699,10 +702,10 @@
     <MESSAGE value="BehaviourEntityTrigger`1.md" />
     <MESSAGE value="StateChangedEntityTriggers.md" />
     <MESSAGE value="StateChangedEntityTrigger.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionEntityTrigger.md" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
