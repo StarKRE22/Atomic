@@ -256,15 +256,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="21392000" />
-    </task>
-    <task id="LOCAL-01575" summary="EntityCollection`1.md">
-      <option name="closed" value="true" />
-      <created>1760615423613</created>
-      <option name="number" value="01575" />
-      <option name="presentableId" value="LOCAL-01575" />
-      <option name="project" value="LOCAL" />
-      <updated>1760615423613</updated>
+      <workItem from="1760693092386" duration="21819000" />
     </task>
     <task id="LOCAL-01576" summary="Extensions.md">
       <option name="closed" value="true" />
@@ -650,7 +642,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760732239224</updated>
     </task>
-    <option name="localTasksCounter" value="1624" />
+    <task id="LOCAL-01624" summary="SubscriptionEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1760732705095</created>
+      <option name="number" value="01624" />
+      <option name="presentableId" value="LOCAL-01624" />
+      <option name="project" value="LOCAL" />
+      <updated>1760732705095</updated>
+    </task>
+    <option name="localTasksCounter" value="1625" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +677,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IInitLifecycle.md" />
     <MESSAGE value="ITickLifecycle.md" />
     <MESSAGE value="Сделал подписки" />
     <MESSAGE value="Extensions.md" />
@@ -702,7 +701,8 @@
     <MESSAGE value="StateChangedEntityTrigger.md" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionEntityTriggers.md" />
+    <MESSAGE value="SubscriptionEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

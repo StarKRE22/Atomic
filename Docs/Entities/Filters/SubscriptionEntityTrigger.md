@@ -44,7 +44,7 @@ public sealed class HealthTrigger : SubscriptionEntityTrigger<Subscription<int>>
 ```csharp
 public sealed class TeamEntityTrigger : SubscriptionEntityTrigger<Subscription<<TeamType>>>
 {
-    protected override IDisposable Track(IEntity entity, Action<IEntity> callback) 
+    protected override Subscription<<TeamType> Track(IEntity entity, Action<IEntity> callback) 
     {
         IReactiveVariable<TeamType> teamType = entity.GetValue<IReactiveVariable<TeamType>>();
         Subscription<<TeamType> handle = teamType.Subscribe(_ => callback.Invoke(entity)); //IDisposable
