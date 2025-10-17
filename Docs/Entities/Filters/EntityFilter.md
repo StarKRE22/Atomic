@@ -1,13 +1,10 @@
 # 🧩 EntityFilter
 
 A **non-generic wrapper** of [EntityFilter\<E>](EntityFilter%601.md) specialized
-for [IEntity](../Entities/IEntity.md).  
-Provides a dynamic, observable, filtered view over a general entity collection without specifying a generic type
-parameter.
-
-> [!NOTE]  
-> Use this class when you need to filter **heterogeneous collections** of entities without binding to a specific entity
-> type.
+for [IEntity](../Entities/IEntity.md). Provides a dynamic, observable, filtered view over a general entity collection
+without specifying a generic type
+parameter. Use this class when you need to filter **heterogeneous collections** of entities without binding to a
+specific entity type.
 
 ---
 
