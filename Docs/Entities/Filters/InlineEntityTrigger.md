@@ -13,7 +13,7 @@ a generic type parameter.
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
 
@@ -23,8 +23,8 @@ a generic type parameter.
 
 ```csharp
 var inlineTrigger = new InlineEntityTrigger(
-    track: (e, cb) => e.OnTagAdded += _ => cb(e),
-    untrack: (e, cb) => e.OnTagAdded -= _ => cb(e)
+    track: (e, callback) => e.OnTagAdded += _ => callback(e),
+    untrack: (e, callback) => e.OnTagAdded -= _ => callback(e)
 );
 inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
 inlineTrigger.Track(someEntity);

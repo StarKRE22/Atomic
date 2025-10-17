@@ -24,8 +24,8 @@ delegates** to handle the entity monitoring.
 
 ```csharp
 var inlineTrigger = new InlineEntityTrigger(
-    track: (e, cb) => e.OnTagAdded += _ => cb(e),
-    untrack: (e, cb) => e.OnTagAdded -= _ => cb(e)
+    track: (e, callback) => e.OnTagAdded += _ => callback(e),
+    untrack: (e, callback) => e.OnTagAdded -= _ => callback(e)
 );
 inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
 inlineTrigger.Track(someEntity);
@@ -37,8 +37,8 @@ inlineTrigger.Track(someEntity);
 
 ```csharp
 var inlineTrigger = new InlineEntityTrigger<GameEntity>(
-    track: (e, cb) => e.OnTagAdded += _ => cb(e),
-    untrack: (e, cb) => e.OnTagAdded -= _ => cb(e)
+    track: (e, callback) => e.OnTagAdded += _ => callback(e),
+    untrack: (e, callback) => e.OnTagAdded -= _ => callback(e)
 );
 inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
 inlineTrigger.Track(someEntity);

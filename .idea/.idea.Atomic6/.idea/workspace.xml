@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/SubscriptionEntityTrigger`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,23 +257,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="22480000" />
-    </task>
-    <task id="LOCAL-01579" summary="Начинаем пилить раздел с EntityNames.md">
-      <option name="closed" value="true" />
-      <created>1760642788198</created>
-      <option name="number" value="01579" />
-      <option name="presentableId" value="LOCAL-01579" />
-      <option name="project" value="LOCAL" />
-      <updated>1760642788198</updated>
-    </task>
-    <task id="LOCAL-01580" summary="EntityNames.md">
-      <option name="closed" value="true" />
-      <created>1760643410126</created>
-      <option name="number" value="01580" />
-      <option name="presentableId" value="LOCAL-01580" />
-      <option name="project" value="LOCAL" />
-      <updated>1760643410126</updated>
+      <workItem from="1760693092386" duration="22925000" />
     </task>
     <task id="LOCAL-01581" summary="IEntityNameAlgorithm.md">
       <option name="closed" value="true" />
@@ -653,7 +635,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760733182033</updated>
     </task>
-    <option name="localTasksCounter" value="1628" />
+    <task id="LOCAL-01628" summary="InlineEntityTriggers.md">
+      <option name="closed" value="true" />
+      <created>1760733543169</created>
+      <option name="number" value="01628" />
+      <option name="presentableId" value="LOCAL-01628" />
+      <option name="project" value="LOCAL" />
+      <updated>1760733543169</updated>
+    </task>
+    <task id="LOCAL-01629" summary="InlineEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1760733760450</created>
+      <option name="number" value="01629" />
+      <option name="presentableId" value="LOCAL-01629" />
+      <option name="project" value="LOCAL" />
+      <updated>1760733760451</updated>
+    </task>
+    <option name="localTasksCounter" value="1630" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,8 +678,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ITickLifecycle.md" />
-    <MESSAGE value="Сделал подписки" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="Переписал EntityRegistry.cs" />
     <MESSAGE value="EntityRegistry.md" />
@@ -705,7 +701,9 @@
     <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="InlineEntityTriggers.md" />
+    <MESSAGE value="InlineEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
