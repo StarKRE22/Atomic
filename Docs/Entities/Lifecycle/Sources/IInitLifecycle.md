@@ -1,5 +1,52 @@
 # 🧩 IInitLifecycle
 
+Represents a **runtime-controllable initialization and disposal contract** for entities or systems.
+Provides events for initialization and disposal state changes, as well as a method to explicitly initialize the
+object.
+
+> [!NOTE]
+> This is a **core framework interface**. You should **not implement it manually** — it is used by the
+> framework infrastructure.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <a href="#-events">Events</a>
+        <ul>
+          <li><a href="#oninitialized">OnInitialized</a></li>
+          <li><a href="#ondisposed">OnDisposed</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-properties">Properties</a>
+        <ul>
+          <li><a href="#initialized">Initialized</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-methods">Methods</a>
+        <ul>
+          <li><a href="#init">Init()</a></li>
+          <li><a href="#dispose">Dispose()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Example of Usage
+
 ```csharp
 // Assume we have an instance of IInitLifecycle
 IInitLifecycle initSource = ...;
@@ -23,20 +70,21 @@ Console.WriteLine($"Initialized: {initSource.Initialized}");
 initSource.Dispose();
 ```
 
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IInitLifecycle
 ```
 
-- **Description:** Represents a **runtime-controllable initialization and disposal contract** for entities or systems.
-  Provides events for initialization and disposal state changes, as well as a method to explicitly initialize the
-  object.
 - **Inheritance:** `IDisposable`
-- **Note:** This is an **internal framework interface**. You should **not implement it manually** — it is used by the
-  framework infrastructure.
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnInitialized`
 
@@ -56,7 +104,7 @@ public event Action OnDisposed;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Initialized`
 
@@ -68,9 +116,9 @@ public bool Initialized { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `Init`
+#### `Init()`
 
 ```csharp
 public void Init();
@@ -79,7 +127,7 @@ public void Init();
 - **Description:** Initializes the object, transitioning it into the **initialized state**.
 - **Remarks:** Triggers `OnInitialized`.
 
-#### `Dispose`
+#### `Dispose()`
 
 ```csharp
 public void Dispose();
