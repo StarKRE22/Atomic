@@ -63,7 +63,6 @@ filter.Dispose();
 public class EntityFilter : EntityFilter<IEntity>, IReadOnlyEntityCollection
 ```
 
-- **Description:**
 - **Inheritance:** [EntityFilter\<E>](./EntityFilter.md),
   [IReadOnlyEntityCollection](../Collections/IReadOnlyEntityCollection.md)
 
