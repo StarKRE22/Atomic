@@ -9,12 +9,11 @@ together with [EntityFilters](Manual.md) to maintain dynamic subsets of entities
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-  - [Tag Trigger](#ex1)
-  - [Value Trigger](#ex2)
-  - [Custom Trigger](#ex3)
+    - [Tag Trigger](#ex1)
+    - [Value Trigger](#ex2)
+    - [Custom Trigger](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
-
 
 ---
 
@@ -23,6 +22,10 @@ together with [EntityFilters](Manual.md) to maintain dynamic subsets of entities
 <div id="ex1"></div>
 
 ### 1️⃣ Tag Trigger
+
+[TagEntityTrigger](TagEntityTrigger.md) automatically tracks when tags are added to or removed from entities, triggering
+callbacks for reactive system updates. Essential for building systems that respond to entity state classification changes, role
+updates, or behavioral flag modifications.
 
 ```csharp
 // Track general entities for tag additions/removals
@@ -106,10 +109,10 @@ var filter = new EntityFilter(
 
 Below is a list of available trigger types:
 
-- **Interfaces**
+- Interfaces
     - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
-- **TagTriggers**
+- [TagEntityTriggers](TagEntityTriggers.md)
     - [TagEntityTrigger](TagEntityTrigger.md) <!-- + -->
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
 - **ValueTriggers**
@@ -149,7 +152,6 @@ Below is a list of available trigger types:
 - Generic interface for specific entity types
 - Compile-time type checking for callbacks
 - Non-generic convenience interface available
-
 
 <!--
 
