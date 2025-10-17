@@ -1,7 +1,7 @@
 # 🧩 StateChangedEntityTrigger\<E>
 
-A trigger that responds to **state changes** on entities of type `E`.  
-Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate entities when their state changes.
+A trigger that responds to **state changes** on entities of type `E`. Allows an [EntityFilter\<E>](EntityFilter%601.md)
+to automatically re-evaluate entities when their state changes.
 
 ---
 
@@ -52,8 +52,8 @@ stateTrigger.Track(playerEntity);
 stateTrigger.Track(enemyEntity);
 
 // Changing state triggers the action
-playerEntity.ChangeState(UnitState.Moving);
-enemyEntity.ChangeState(UnitState.Attacking);
+playerEntity.AddTag("Frozen");
+enemyEntity.AddValue("Target", playerEntity);
 ```
 
 ---

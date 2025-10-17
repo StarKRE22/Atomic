@@ -53,8 +53,8 @@ stateTrigger.Track(playerEntity);
 stateTrigger.Track(enemyEntity);
 
 // Changing state triggers the action
-playerEntity.ChangeState(UnitState.Moving);
-enemyEntity.ChangeState(UnitState.Attacking);
+playerEntity.AddTag("Frozen");
+enemyEntity.AddValue("Target", playerEntity);
 ```
 
 ---
