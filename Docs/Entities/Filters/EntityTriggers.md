@@ -112,13 +112,13 @@ Below is a list of available trigger types:
 - Interfaces
     - [IEntityTrigger](IEntityTrigger.md) <!-- + -->
     - [IEntityTrigger\<E>](IEntityTrigger%601.md) <!-- + -->
-- [TagEntityTriggers](TagEntityTriggers.md)
+- [TagTriggers](TagEntityTriggers.md)
     - [TagEntityTrigger](TagEntityTrigger.md) <!-- + -->
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
-- [ValueEntityTriggers](ValueEntityTriggers.md)
+- [ValueTriggers](ValueEntityTriggers.md)
     - [ValueEntityTrigger](ValueEntityTrigger.md) <!-- + -->
     - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md) <!-- + -->
-- **BehaviourTriggers**
+- [BehaviourTriggers](BehaviourEntityTriggers.md)
     - [BehaviourEntityTrigger](BehaviourEntityTrigger.md) <!-- + -->
     - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md) <!-- + -->
 - **StateChangeTriggers**
