@@ -1,11 +1,170 @@
-# 🧩 Lifecycle Extension Methods
+# 🧩 Lifecycle Extensions
 
 Provides **extension methods** for convenient and safe subscriptions to lifecycle and update events. Each method returns
 a **disposable subscription**, ensuring automatic unsubscription when no longer needed.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-examples-of-usage">Examples of Usage</a>
+    <ul>
+      <li><a href="#ex1">WhenInit()</a></li>
+      <li><a href="#ex2">WhenDispose()</a></li>
+      <li><a href="#ex3">WhenEnable()</a></li>
+      <li><a href="#ex4">WhenDisable()</a></li>
+      <li><a href="#ex5">WhenTick()</a></li>
+      <li><a href="#ex6">WhenFixedTick()</a></li>
+      <li><a href="#ex7">WhenLateTick()</a></li>
+    </ul>
+  </li>
+  <li><a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+        <summary><a href="#-methods">Methods</a></summary>
+        <ul>
+          <li><a href="#wheninitaction">WhenInit(Action)</a></li>
+          <li><a href="#whendisposeaction">WhenDispose(Action)</a></li>
+          <li><a href="#whenenableaction">WhenEnable(Action)</a></li>
+          <li><a href="#whendisableaction">WhenDisable(Action)</a></li>
+          <li><a href="#whentickactionfloat">WhenTick(Action&lt;float&gt;)</a></li>
+          <li><a href="#whenfixedtickactionfloat">WhenFixedTick(Action&lt;float&gt;)</a></li>
+          <li><a href="#whenlatetickactionfloat">WhenLateTick(Action&lt;float&gt;)</a></li>
+        </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+---
+
+## 🗂 Examples of Usage
+
+Below are examples of using extension methods for lifecycle events:
+
+<div id="ex1"></div>
+
+### 1️⃣ WhenInit()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to initialization
+InitSubscription initSubscription = entity.WhenInit(() => Console.WriteLine("Initialized!"));
+
+//Unsubscribe from initialization
+initSubscription.Dispose(); 
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ WhenDispose()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to disposal
+DisposeSubscription disposeSubscription = entity.WhenDispose(() => Console.WriteLine("Disposed!"));
+
+// Unsubscribe from disposal
+disposeSubscription.Dispose(); 
+```
+
+<div id="ex3"></div>
+
+### 3️⃣ WhenEnable()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to enabling
+EnableSubscription enableSubscription = entity.WhenEnable(() => Console.WriteLine("Enabled!"));
+
+// Unsubscribe from enabling
+enableSubscription.Dispose();
+```
+
+<div id="ex4"></div>
+
+### 4️⃣ WhenDisable()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to disabling
+DisableSubscription disableSubscription = entity.WhenDisable(() => Console.WriteLine("Disabled!"));
+
+// Unsubscribe from disabling 
+disableSubscription.Dispose();
+```
+
+<div id="ex5"></div>
+
+### 5️⃣ WhenTick()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to frame updates
+TickSubscription tickSubscription = entity.WhenTick(delta => Console.WriteLine($"Tick: {delta}"));
+
+// Unsubscribe from frame updates
+tickSubscription.Dispose();
+```
+
+<div id="ex6"></div>
+
+### 6️⃣ WhenFixedTick()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to fixed updates
+FixedTickSubscription fixedTickSubscription = entity.WhenFixedTick(delta => Console.WriteLine($"FixedTick: {delta}"));
+
+// Unsubscribe from fixed updates 
+fixedTickSubscription.Dispose();
+```
+
+<div id="ex7"></div>
+
+### 7️⃣ WhenLateTick()
+
+```csharp
+//Assume we have an instance of entity
+IEntity entity = ...;
+
+// Subscribe to late updates
+LateTickSubscription lateTickSubscription = entity.WhenLateTick(delta => Console.WriteLine($"LateTick: {delta}"));
+
+// Unsubscribe from late updates 
+lateTickSubscription.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public static class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `WhenInit(Action)`
 
@@ -77,7 +236,8 @@ public static FixedTickSubscription WhenFixedTick(this ITickLifecycle source, Ac
 - **Parameters:**
     - `source` — The updatable object.
     - `action` — The callback to invoke on each fixed update.
-- **Returns:** A disposable [FixedTickSubscription](Subscriptions/FixedTickSubscription.md) that unsubscribes when disposed.
+- **Returns:** A disposable [FixedTickSubscription](Subscriptions/FixedTickSubscription.md) that unsubscribes when
+  disposed.
 
 #### `WhenLateTick(Action<float>)`
 
@@ -89,99 +249,5 @@ public static LateTickSubscription WhenLateTick(this ITickLifecycle source, Acti
 - **Parameters:**
     - `source` — The updatable object.
     - `action` — The callback to invoke on each late update.
-- **Returns:** A disposable [LateTickSubscription](Subscriptions/LateTickSubscription.md) that unsubscribes when disposed.
-
----
-
-## 🗂 Examples of Usage
-
-Below are examples of using extension methods for lifecycle events: 
-
-#### `WhenInit` 
-
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to initialization
-InitSubscription initSubscription = entity.WhenInit(() => Console.WriteLine("Initialized!"));
-
-//Unsubscribe from initialization
-initSubscription.Dispose(); 
-```
-
-#### `WhenDispose`
-
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to disposal
-DisposeSubscription disposeSubscription = entity.WhenDispose(() => Console.WriteLine("Disposed!"));
-
-// Unsubscribe from disposal
-disposeSubscription.Dispose(); 
-```
-
-#### `WhenEnable`
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to enabling
-EnableSubscription enableSubscription = entity.WhenEnable(() => Console.WriteLine("Enabled!"));
-
-// Unsubscribe from enabling
-enableSubscription.Dispose();
-```
-
-#### `WhenDisable`
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to disabling
-DisableSubscription disableSubscription = entity.WhenDisable(() => Console.WriteLine("Disabled!"));
-
-// Unsubscribe from disabling 
-disableSubscription.Dispose();
-```
-
-#### `WhenTick`
-
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to frame updates
-TickSubscription tickSubscription = entity.WhenTick(delta => Console.WriteLine($"Tick: {delta}"));
-
-// Unsubscribe from frame updates
-tickSubscription.Dispose();
-```
-
-#### `WhenFixedTick`
-
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to fixed updates
-FixedTickSubscription fixedTickSubscription = entity.WhenFixedTick(delta => Console.WriteLine($"FixedTick: {delta}"));
-
-// Unsubscribe from fixed updates 
-fixedTickSubscription.Dispose();
-```
-
-#### `WhenLateTick`
-
-```csharp
-//Assume we have an instance of entity
-IEntity entity = ...;
-
-// Subscribe to late updates
-LateTickSubscription lateTickSubscription = entity.WhenLateTick(delta => Console.WriteLine($"LateTick: {delta}"));
-
-// Unsubscribe from late updates 
-lateTickSubscription.Dispose();
-```
+- **Returns:** A disposable [LateTickSubscription](Subscriptions/LateTickSubscription.md) that unsubscribes when
+  disposed.
