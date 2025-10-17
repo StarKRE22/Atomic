@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingEntityFilterChaining.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/IEntityTrigger`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,23 +255,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="12987000" />
-    </task>
-    <task id="LOCAL-01556" summary="IEntityInit`1.md">
-      <option name="closed" value="true" />
-      <created>1760605836990</created>
-      <option name="number" value="01556" />
-      <option name="presentableId" value="LOCAL-01556" />
-      <option name="project" value="LOCAL" />
-      <updated>1760605836990</updated>
-    </task>
-    <task id="LOCAL-01557" summary="IEntityInit`1.md">
-      <option name="closed" value="true" />
-      <created>1760605897753</created>
-      <option name="number" value="01557" />
-      <option name="presentableId" value="LOCAL-01557" />
-      <option name="project" value="LOCAL" />
-      <updated>1760605897753</updated>
+      <workItem from="1760693092386" duration="13627000" />
     </task>
     <task id="LOCAL-01558" summary="IEntityLateTick.md">
       <option name="closed" value="true" />
@@ -651,7 +633,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760721643174</updated>
     </task>
-    <option name="localTasksCounter" value="1605" />
+    <task id="LOCAL-01605" summary="EntityTriggers.md">
+      <option name="closed" value="true" />
+      <created>1760722537010</created>
+      <option name="number" value="01605" />
+      <option name="presentableId" value="LOCAL-01605" />
+      <option name="project" value="LOCAL" />
+      <updated>1760722537010</updated>
+    </task>
+    <task id="LOCAL-01606" summary="IEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1760722836184</created>
+      <option name="number" value="01606" />
+      <option name="presentableId" value="LOCAL-01606" />
+      <option name="project" value="LOCAL" />
+      <updated>1760722836184</updated>
+    </task>
+    <option name="localTasksCounter" value="1607" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,8 +676,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IReadOnlyEntityCollection`1.md" />
-    <MESSAGE value="IEntityCollection.md" />
     <MESSAGE value="IEntityCollection`1.md" />
     <MESSAGE value="EntityCollection.md" />
     <MESSAGE value="EntityCollection`1.md" />
@@ -703,7 +699,9 @@
     <MESSAGE value="EntityFilterManual" />
     <MESSAGE value="EntityFilter.md" />
     <MESSAGE value="EntityFilter`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityFilter`1.md" />
+    <MESSAGE value="EntityTriggers.md" />
+    <MESSAGE value="IEntityTrigger.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityTrigger.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
