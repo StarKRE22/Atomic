@@ -58,3 +58,20 @@ var filter = new EntityFilter<GameEntity>(
     trigger
 );
 ```
+
+
+### Generic Usage
+
+```csharp
+var stateTrigger = new StateChangedEntityTrigger<UnitEntity>();
+stateTrigger.SetAction(entity =>
+Console.WriteLine($"State changed on entity: {entity.Name}"));
+
+// Track entities
+stateTrigger.Track(playerEntity);
+stateTrigger.Track(enemyEntity);
+
+// Changing state triggers the action
+playerEntity.ChangeState(UnitState.Moving);
+enemyEntity.ChangeState(UnitState.Attacking);
+```

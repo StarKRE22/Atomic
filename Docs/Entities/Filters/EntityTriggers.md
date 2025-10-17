@@ -121,7 +121,7 @@ Below is a list of available trigger types:
 - [BehaviourTriggers](BehaviourEntityTriggers.md)
     - [BehaviourEntityTrigger](BehaviourEntityTrigger.md) <!-- + -->
     - [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md) <!-- + -->
-- **StateChangeTriggers**
+- [StateChangeTriggers](StateChangedEntityTriggers.md)
     - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
     - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md) <!-- + -->
 - **SubscriptionTriggers**
