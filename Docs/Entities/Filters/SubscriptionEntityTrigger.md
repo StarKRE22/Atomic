@@ -14,10 +14,10 @@ working with the base [IEntity](../Entities/IEntity.md) type. Provides infrastru
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [Track(IEntity, Action<IEntity>)](#trackientity-actionientity)
+        - [Track(IEntity, Action\<IEntity>)](#trackientity-actionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
 
 ## 🗂 Examples of Usage
 

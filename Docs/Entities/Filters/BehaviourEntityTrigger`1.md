@@ -13,7 +13,7 @@ removed.
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<E>)](#setactionactione)
+        - [SetAction(Action\<E>)](#setactionactione)
         - [Track(E)](#tracke)
         - [Untrack(E)](#untracke)
 

@@ -14,7 +14,7 @@ to automatically re-evaluate entities when their state changes.
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactione)
+        - [SetAction(Action\<IEntity>)](#setactionactione)
         - [Track(IEntity)](#tracke)
         - [Untrack(IEntity)](#untracke)
 

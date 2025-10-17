@@ -11,7 +11,7 @@ when the entity should be re-evaluated by an [EntityFilter\<E>](EntityFilter%601
 - [API Reference](#-api-reference)
   - [Type](#-type)
   - [Methods](#-methods)
-    - [SetAction(Action<E>)](#setactionactione)
+    - [SetAction(Action\<E>)](#setactionactione)
     - [Track(E)](#tracke)
     - [Untrack(E)](#untracke)
 

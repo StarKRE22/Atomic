@@ -15,7 +15,7 @@ specifying a generic type parameter.
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
 

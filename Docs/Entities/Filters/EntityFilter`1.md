@@ -22,7 +22,7 @@ happen.
         - [Count](#count)
     - [Methods](#-methods)
         - [Contains(E)](#containse)
-        - [CopyTo(ICollection<E>)](#copytoicollectione)
+        - [CopyTo(ICollection\<E>)](#copytoicollectione)
         - [CopyTo(E[], int)](#copytoe-int)
         - [Dispose()](#dispose)
         - [GetEnumerator()](#getenumerator)

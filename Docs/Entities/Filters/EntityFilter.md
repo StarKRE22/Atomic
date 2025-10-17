@@ -22,7 +22,7 @@ specific entity type.
         - [Count](#count)
     - [Methods](#-methods)
         - [Contains(IEntity)](#containsientity)
-        - [CopyTo(ICollection<IEntity>)](#copytoicollectionientity)
+        - [CopyTo(ICollection\<IEntity>)](#copytoicollectionientity)
         - [CopyTo(IEntity[], int)](#copytoientity-int)
         - [Dispose()](#dispose)
         - [GetEnumerator()](#getenumerator)

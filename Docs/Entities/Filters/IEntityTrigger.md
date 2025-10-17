@@ -12,7 +12,7 @@ this version when you want to create triggers for **general entities** without b
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
 

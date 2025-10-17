@@ -16,7 +16,7 @@ events (`OnTagAdded`, `OnTagDeleted`) on general [IEntity](../Entities/IEntity.m
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
 

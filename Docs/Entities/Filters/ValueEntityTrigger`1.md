@@ -14,7 +14,7 @@ Allows an [EntityFilter\<E>](EntityFilter%601.md) to automatically re-evaluate e
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<E>)](#setactionactione)
+        - [SetAction(Action\<E>)](#setactionactione)
         - [Track(E)](#tracke)
         - [Untrack(E)](#untracke)
 

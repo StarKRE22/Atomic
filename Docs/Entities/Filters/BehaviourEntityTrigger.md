@@ -16,7 +16,7 @@ general [IEntity](../Entities/IEntity.md) instances.
     - [Type](#-type)
     - [Constructor](#-constructor)
     - [Methods](#-methods)
-        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [SetAction(Action\<IEntity>)](#setactionactionientity)
         - [Track(IEntity)](#trackientity)
         - [Untrack(IEntity)](#untrackientity)
 
