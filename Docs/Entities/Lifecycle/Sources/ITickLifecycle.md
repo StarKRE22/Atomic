@@ -110,7 +110,7 @@ public event Action<float> OnLateTicked;
 
 ### 🏹 Methods
 
-#### `Tick`
+#### `Tick()`
 
 ```csharp
 public void Tick(float deltaTime);
@@ -120,7 +120,7 @@ public void Tick(float deltaTime);
 - **Parameter:** `deltaTime` – The time in seconds since the last frame.
 - **Remarks:** Invokes `OnTicked`.
 
-#### `FixedTick`
+#### `FixedTick()`
 
 ```csharp
 public void FixedTick(float deltaTime);
@@ -130,7 +130,7 @@ public void FixedTick(float deltaTime);
 - **Parameter:** `deltaTime` – The fixed time step.
 - **Remarks:** Invokes `OnFixedTicked`.
 
-#### `LateTick`
+#### `LateTick()`
 
 ```csharp
 public void LateTick(float deltaTime);

@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisableSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/DisposeSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/EnableSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/EnableSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/FixedTickSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/FixedTickSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/InitSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/LateTickSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/LateTickSubscription.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/TickSubscription.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions/TickSubscription.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,15 +242,7 @@
       <workItem from="1760510813056" duration="29289000" />
       <workItem from="1760597500762" duration="25416000" />
       <workItem from="1760685802060" duration="129000" />
-      <workItem from="1760685951621" duration="3219000" />
-    </task>
-    <task id="LOCAL-01543" summary="IEntityDisable.md">
-      <option name="closed" value="true" />
-      <created>1760598101182</created>
-      <option name="number" value="01543" />
-      <option name="presentableId" value="LOCAL-01543" />
-      <option name="project" value="LOCAL" />
-      <updated>1760598101182</updated>
+      <workItem from="1760685951621" duration="4700000" />
     </task>
     <task id="LOCAL-01544" summary="IEntityDispose.md">
       <option name="closed" value="true" />
@@ -631,7 +628,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760688912935</updated>
     </task>
-    <option name="localTasksCounter" value="1592" />
+    <task id="LOCAL-01592" summary="ITickLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1760689221790</created>
+      <option name="number" value="01592" />
+      <option name="presentableId" value="LOCAL-01592" />
+      <option name="project" value="LOCAL" />
+      <updated>1760689221790</updated>
+    </task>
+    <option name="localTasksCounter" value="1593" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -658,7 +663,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityLateTick`1.md" />
     <MESSAGE value="IEntityTick.md" />
     <MESSAGE value="IEntityTick`1.md" />
     <MESSAGE value="Сделал раздел с Behaviours!" />
@@ -683,7 +687,8 @@
     <MESSAGE value="LifecycleManual.md" />
     <MESSAGE value="IEnableLifecycle.md" />
     <MESSAGE value="IInitLifecycle.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IInitLifecycle.md" />
+    <MESSAGE value="ITickLifecycle.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ITickLifecycle.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

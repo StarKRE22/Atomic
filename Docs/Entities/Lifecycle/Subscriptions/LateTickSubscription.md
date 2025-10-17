@@ -1,17 +1,73 @@
 # 🧩 LateTickSubscription
 
+Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
+**OnLateTicked** event. Automatically unsubscribes the callback when disposed, ensuring safe handling of late update
+logic.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <a href="#ctor">Constructors</a>
+        <ul>
+          <li><a href="#lateticksubscriptioniticklifecycle-actionfloat">LateTickSubscription(ITickLifecycle, Action&lt;float&gt;)</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-methods">Methods</a>
+        <ul>
+          <li><a href="#dispose">Dispose()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of ITickLifecycle
+ITickLifecycle tickSource = ...;
+
+// Subscribe to the LateUpdate event
+var subscription = new LateTickSubscription(tickSource, deltaTime => 
+    Console.WriteLine($"LateUpdate tick: {deltaTime:F3}s"));
+
+// Trigger a LateUpdate — subscription callback will fire
+tickSource.LateTick(0.016f);
+
+// Later, we can unsubscribe from the source
+subscription.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public readonly struct LateTickSubscription : IDisposable
 ```
 
-- **Description:** Represents a disposable subscription handle for an [ITickLifecycle's](../Sources/ITickLifecycle.md)
-  **OnLateTicked** event. Automatically unsubscribes the callback when disposed, ensuring safe handling of late update
-  logic.
 - **Inheritance:** `IDisposable`
 
 ---
 
-## 🏗️ Constructor
+<div id="ctor"></div>
+
+### 🏗️ Constructors
+
+#### `LateTickSubscription(ITickLifecycle, Action<float>)`
 
 ```csharp
 public LateTickSubscription(ITickLifecycle source, Action<float> callback)
@@ -24,9 +80,9 @@ public LateTickSubscription(ITickLifecycle source, Action<float> callback)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `Dispose`
+#### `Dispose()`
 
 ```csharp
 public void Dispose();

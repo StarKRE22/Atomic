@@ -1,17 +1,73 @@
 # 🧩 InitSubscription
 
+Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md)
+**OnInitialized** event. Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated
+invocations.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <a href="#ctor">Constructors</a>
+        <ul>
+          <li><a href="#initsubscriptioniinitlifecycle-action">InitSubscription(IInitLifecycle, Action)</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-methods">Methods</a>
+        <ul>
+          <li><a href="#dispose">Dispose()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of IInitLifecycle
+IInitLifecycle initSource = ...;
+
+// Subscribe to the initialization event
+var subscription = new InitSubscription(initSource, () => 
+    Console.WriteLine("Source has been initialized"));
+
+// Initializing the source triggers the subscription
+initSource.Init();
+
+// Later, we can unsubscribe from the source
+subscription.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public readonly struct InitSubscription : IDisposable
 ```
 
-- **Description:** Represents a disposable subscription handle for an [IInitLifecycle's](../Sources/IInitLifecycle.md)
-  **OnInitialized** event. Automatically unsubscribes the callback when disposed, preventing memory leaks and repeated
-  invocations.
 - **Inheritance:** `IDisposable`
 
 ---
 
-## 🏗️ Constructor
+<div id="ctor"></div>
+
+### 🏗️ Constructors
+
+#### `InitSubscription(IInitLifecycle, Action)`
 
 ```csharp
 public InitSubscription(IInitLifecycle source, Action callback)
@@ -24,9 +80,9 @@ public InitSubscription(IInitLifecycle source, Action callback)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `Dispose`
+#### `Dispose()`
 
 ```csharp
 public void Dispose();
