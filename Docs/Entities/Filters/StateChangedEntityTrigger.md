@@ -8,7 +8,7 @@ specifying a generic type parameter.
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Examples of Usage](#-examples-of-usage)
     - [Filter Usage](#ex1)
     - [Custom Usage](#ex2)
 - [API Reference](#-api-reference)
@@ -21,7 +21,7 @@ specifying a generic type parameter.
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 <div id="ex1"></div>
 
