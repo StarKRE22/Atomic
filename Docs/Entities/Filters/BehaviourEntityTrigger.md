@@ -1,14 +1,32 @@
 # 🧩 BehaviourEntityTrigger
 
 A non-generic shortcut for [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md).  
-Subscribes to behaviour-related events (`OnBehaviourAdded`, `OnBehaviourRemoved`) on general [IEntity](../Entities/IEntity.md) instances.
+Subscribes to behaviour-related events (`OnBehaviourAdded`, `OnBehaviourRemoved`) on
+general [IEntity](../Entities/IEntity.md) instances.
 
 ---
 
+## 📑 Table of Contents
 
-<div id="ex3"></div>
+- [Examples of Usage](#examples-of-usage)
+    - [Custom Usage](#ex1)
+    - [Only Added Monitoring](#ex2)
+    - [Only Removed Monitoring](#ex3)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [Track(IEntity)](#trackientity)
+        - [Untrack(IEntity)](#untrackientity)
 
-### 3️⃣ Custom Usage
+---
+
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Custom Usage
 
 ```csharp
 var behaviourTrigger = new BehaviourEntityTrigger();
@@ -25,8 +43,9 @@ playerEntity.AddBehaviour(new MovementBehaviour());
 enemyEntity.RemoveBehaviour(new HealthBehaviour());
 ```
 
+<div id="ex2"></div>
 
-### 4️⃣ Only Added Monitoring
+### 2️⃣ Only Added Monitoring
 
 ```csharp
 var addedTrigger = new BehaviourEntityTrigger(added: true, removed: false);
@@ -41,7 +60,9 @@ playerEntity.AddBehaviour(new MovementBehaviour());  // Triggers callback
 playerEntity.RemoveBehaviour(new HealthBehaviour()); // Does NOT trigger
 ```
 
-### 5️⃣ Only Removed Monitoring
+<div id="ex3"></div>
+
+### 3️⃣ Only Removed Monitoring
 
 ```csharp
 var removedTrigger = new BehaviourEntityTrigger(added: false, removed: true);
@@ -56,8 +77,11 @@ enemyEntity.AddBehaviour(new MovementBehaviour());    // Does NOT trigger
 enemyEntity.RemoveBehaviour(new HealthBehaviour());  // Triggers callback
 ```
 
-
 ---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public class BehaviourEntityTrigger : BehaviourEntityTrigger<IEntity>
@@ -66,6 +90,8 @@ public class BehaviourEntityTrigger : BehaviourEntityTrigger<IEntity>
 - **Inheritance:** [BehaviourEntityTrigger\<E>](BehaviourEntityTrigger%601.md)
 
 ---
+
+<div id="-constructor"></div>
 
 ### 🏗️ Constructor
 
@@ -80,7 +106,7 @@ public BehaviourEntityTrigger(bool added = true, bool removed = true)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<IEntity>)`
 
