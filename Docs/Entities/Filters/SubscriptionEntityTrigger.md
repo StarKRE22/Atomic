@@ -84,13 +84,11 @@ public sealed class HealthTrigger : SubscriptionEntityTrigger<Subscription<int>>
 
 # 🧩 SubscriptionEntityTrigger
 
-A base trigger for working with **entities using subscriptions**. Provides infrastructure for tracking entities and managing disposable resources associated with each entity.
 
 ---
 
 ## Overview
 
-`SubscriptionEntityTrigger` is designed for reactive systems where entity changes are tracked via **subscriptions** (`IDisposable`). It automatically manages creation and disposal of subscriptions for each tracked entity.
 
 - **Non-generic version:** `SubscriptionEntityTrigger` — works with plain `IEntity`.
 - **Generic version:** `SubscriptionEntityTrigger<E>` — works with specific entity types.

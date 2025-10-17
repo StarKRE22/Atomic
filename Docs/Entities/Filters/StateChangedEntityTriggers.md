@@ -11,6 +11,7 @@ implement [IEntity](../Entities/IEntity.md). It invokes a configured action when
 - [Examples of Usage](#-examples-of-usage)
     - [Non-generic Usage](#ex1)
     - [Generic Usage](#ex2)
+    - [Custom Monitoring](#ex3)
 - [API Reference](#-api-reference)
 
 ---
@@ -52,6 +53,16 @@ var filter = new EntityFilter<GameEntity>(
     trigger
 );
 ```
+
+<div id="ex3"></div>
+
+### 3️⃣ Custom Monitoring
+
+```csharp
+var stateTrigger = new StateChangedEntityTrigger<GameEntity>();
+stateTrigger.SetAction(e => Console.WriteLine($"State changed: {e.Name}"));
+stateTrigger.Track(someEntity);
+````
 
 ---
 

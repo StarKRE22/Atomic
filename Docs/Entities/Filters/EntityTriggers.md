@@ -124,7 +124,7 @@ Below is a list of available trigger types:
 - [StateChangeTriggers](StateChangedEntityTriggers.md)
     - [StateChangedEntityTrigger](StateChangedEntityTrigger.md)
     - [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md) <!-- + -->
-- **SubscriptionTriggers**
+- [SubscriptionTriggers](SubscriptionEntityTriggers.md)
     - [SubscriptionEntityTrigger\<S>](SubscriptionEntityTrigger.md) <!-- + -->
     - [SubscriptionEntityTrigger\<E, S>](SubscriptionEntityTrigger%601.md) <!-- + -->
 - **InlineTriggers**
@@ -165,17 +165,3 @@ var inlineTrigger = new InlineEntityTrigger<GameEntity>(
 inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
 inlineTrigger.Track(someEntity);
 ```
-
----
-
-### 4️⃣ State Change Trigger
-
-```csharp
-var stateTrigger = new StateChangedEntityTrigger<GameEntity>();
-stateTrigger.SetAction(e => Console.WriteLine($"State changed: {e.Name}"));
-stateTrigger.Track(someEntity);
-````
-
--->
-
-<!--
