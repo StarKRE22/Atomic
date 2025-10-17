@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Extensions.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IEnableLifecycle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/IInitLifecycle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Sources/ITickLifecycle.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Lifecycle/Subscriptions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,15 +235,7 @@
       <workItem from="1760510813056" duration="29289000" />
       <workItem from="1760597500762" duration="25416000" />
       <workItem from="1760685802060" duration="129000" />
-      <workItem from="1760685951621" duration="1959000" />
-    </task>
-    <task id="LOCAL-01540" summary="Вот теперь Atomic.Elements готоф!">
-      <option name="closed" value="true" />
-      <created>1760553109085</created>
-      <option name="number" value="01540" />
-      <option name="presentableId" value="LOCAL-01540" />
-      <option name="project" value="LOCAL" />
-      <updated>1760553109085</updated>
+      <workItem from="1760685951621" duration="2767000" />
     </task>
     <task id="LOCAL-01541" summary="IEntityBehaviour.md">
       <option name="closed" value="true" />
@@ -636,7 +621,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760648011072</updated>
     </task>
-    <option name="localTasksCounter" value="1589" />
+    <task id="LOCAL-01589" summary="LifecycleManual.md">
+      <option name="closed" value="true" />
+      <created>1760687971088</created>
+      <option name="number" value="01589" />
+      <option name="presentableId" value="LOCAL-01589" />
+      <option name="project" value="LOCAL" />
+      <updated>1760687971088</updated>
+    </task>
+    <option name="localTasksCounter" value="1590" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IEntityInit.md" />
     <MESSAGE value="IEntityInit`1.md" />
     <MESSAGE value="IEntityLateTick.md" />
     <MESSAGE value="IEntityLateTick`1.md" />
@@ -688,7 +680,8 @@
     <MESSAGE value="HashEntityNameAlgorithm.md" />
     <MESSAGE value="Сделал раздел с EntityNames!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="LifecycleManual.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="LifecycleManual.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

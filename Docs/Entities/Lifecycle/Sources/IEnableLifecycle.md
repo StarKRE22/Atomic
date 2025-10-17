@@ -1,5 +1,50 @@
 # 🧩 IEnableLifecycle
 
+Represents a **runtime-controllable enable and disable contract** for entities or systems. Provides
+events for enable and disable state changes, as well as methods to programmatically toggle the state.
+
+> [!NOTE]
+> This is a **core framework interface**. You should **not implement it manually** — it is used by the
+> framework infrastructure.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <a href="#-events">Events</a>
+        <ul>
+          <li><a href="#onenabled">OnEnabled</a></li>
+          <li><a href="#ondisabled">OnDisabled</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-properties">Properties</a>
+        <ul>
+          <li><a href="#enabled">Enabled</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#-methods">Methods</a>
+        <ul>
+          <li><a href="#enable">Enable()</a></li>
+          <li><a href="#disable">Disable()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
 ```csharp
 //Assume we have an instance of IEnableLifecycle
 IEnableLifecycle enableSource = ...;
@@ -25,19 +70,17 @@ enableSource.Disable();
 
 ---
 
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
 public interface IEnableLifecycle
 ```
 
-- **Description:** Represents a **runtime-controllable enable and disable contract** for entities or systems. Provides
-  events for enable and disable state changes, as well as methods to programmatically toggle the state.
-- Note: This is an **internal framework interface**. You should **not implement it manually** — it is used by the
-  framework infrastructure.
-
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnEnabled`
 
@@ -57,7 +100,7 @@ public event Action OnDisabled;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Enabled`
 
@@ -69,9 +112,9 @@ public bool Enabled { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
-#### `Enable`
+#### `Enable()`
 
 ```csharp
 public void Enable();
@@ -80,7 +123,7 @@ public void Enable();
 - **Description:** Enables the object, transitioning it into the **enabled state**.
 - **Remarks:** Triggers `OnEnabled`.
 
-#### `Disable`
+#### `Disable()`
 
 ```csharp
 public void Disable();
