@@ -5,12 +5,43 @@ filtering [IEntity](../Entities/IEntity.md) collections based on conditions, tag
 custom logic. Filter provides a **dynamic, observable view** over an existing entity collection, automatically keeping
 track of entities that match a predicate.
 
-- [EntityFilter](EntityFilter.md) <!-- + -->
-- [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
+---
+
+## 📑 Table of Contents
+
+- [Key Features](#-key-features)
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Filter Creation](#ex1)
+    - [Filter with Tag Trigger](#ex2)
+    - [Filter with Value Trigger](#ex3)
+    - [Chained Filtering Example](#ex4)
+    - [Advanced Usage with Events](#ex5)
+- [API Reference](#-api-reference)
+- [Best Practices](#-best-practices)
+- [Performance Considerations](#-performance-considerations)
+
+---
+
+## 💡 Key Features
+
+* **Dynamic Filtering** — automatically updates as entities change
+* **Predicate-Based Filtering** — filters entities using custom logic
+* **Chained Filtering** — can use another [EntityFilter](EntityFilter.md) as a data source for nested or complex
+  filtering scenarios
+* **Trigger System** — reacts to specific entity changes
+* **Observable Events** — provides events for tracking filter changes
+* **Lazy Evaluation** — evaluates only when accessed
+* **Memory Efficiency** — does not duplicate entity storage
+* **Collection support** – Implements [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md)
+  for checking, enumeration and copying.
 
 ---
 
 ## 🗂 Examples of Usage
+
+Below are examples of using the entity filters in different scenarios:
+
+<div id="ex1"></div>
 
 ### 1️⃣ Basic Filter Creation
 
@@ -52,6 +83,8 @@ Assert.IsTrue(unitFilter.Contains(entity2));
 Assert.IsFalse(unitFilter.Contains(entity3));
 ```
 
+<div id="ex2"></div>
+
 ### 2️⃣ Filter with Tag Trigger
 
 ```csharp
@@ -90,6 +123,8 @@ entity3.AddTag("Player");
 //Assert
 Assert.IsTrue(playerFilter.Contains(entity3));
 ```
+
+<div id="ex3"></div>
 
 ### 3️⃣ Filter with Value Trigger
 
@@ -135,6 +170,8 @@ entity3.SetValue("Health", 20);
 Assert.IsTrue(aliveFilter.Contains(entity3));
 ```
 
+<div id="ex4"></div>
+
 ### 4️⃣ Chained Filtering Example
 
 ```csharp
@@ -150,6 +187,8 @@ var buildingsFilter = new EntityFilter(
     entity => entity.HasTag("Building")
 );
 ```
+
+<div id="ex5"></div>
 
 ### 5️⃣ Advanced Usage with Events
 
@@ -169,32 +208,18 @@ eventFilter.OnRemoved += entity => Console.WriteLine($"Removed entity with healt
 
 ```
 
-<!--
+---
 
-# 🧩 EntityFilter
+## 🔍 API Reference
 
-`EntityFilter` provides a dynamic, observable filtered collection over a source entity collection. It automatically
-maintains a subset of entities based on a predicate and optional triggers, updating in real-time as entities change.
+Below is a list of available filter types:
 
-## Key Features
+- [EntityFilter](EntityFilter.md) <!-- + -->
+- [EntityFilter\<E>](EntityFilter%601.md) <!-- + -->
 
-* **Dynamic Filtering** — automatically updates as entities change
-* **Predicate-Based Filtering** — filters entities using custom logic
-* **Chained Filtering** — can use another `EntityFilter` as a data source for nested or complex filtering scenarios
-* **Trigger System** — reacts to specific entity changes
-* **Observable Events** — provides events for tracking filter changes
-* **Lazy Evaluation** — evaluates only when accessed
-* **Memory Efficiency** — does not duplicate entity storage
-* **Collection support** – Implements `IReadOnlyEntityCollection<IEntity>` for checking, enumeration and copying.
+---
 
-## Classes
-
-### `EntityFilter`
-
-A **non-generic version** of [`EntityFilter<E>`](#) specialized for `IEntity`.  
-Use this class when you do not need to specify a particular entity type.
-
-## Best Practices
+## 📌 Best Practices
 
 1. **Reuse Filters** – Create once, use multiple times
 2. **Chain Filters** – Use filtered results as source for other filters
@@ -203,186 +228,12 @@ Use this class when you do not need to specify a particular entity type.
 5. **Dispose Filters** – Call Dispose() to unsubscribe from events
 6. **Cache Results** – Store filter results if used multiple times per frame
 
-## Performance Considerations
+---
+
+## 🔥 Performance Considerations
 
 - **Lazy Evaluation** – Filter only evaluates when accessed
 - **Predicate Cost** – Called for each entity on evaluation
 - **Trigger Overhead** – Each trigger adds event subscriptions
 - **Memory Efficient** – Doesn't duplicate entity references
 - **Re-evaluation Cost** – Full re-filter when triggers fire
-
-## Common Use Cases
-
-- **Combat Targeting** – Find valid targets
-- **AI Decision Making** – Filter relevant entities
-- **UI Display** – Show filtered entity lists
-- **Spatial Queries** – Entities in range
-- **State Queries** – Entities with specific states
-- **Team Management** – Filter by allegiance
-
-## Trigger Types
-
-### TagEntityTrigger
-
-- Fires when specified tag is added/removed
-- Use for state-based filtering
-
-### ValueEntityTrigger
-
-- Fires when specified value changes
-- Use for data-based filtering
-
-### SubscriptionEntityTrigger
-
-- Custom trigger with manual control
-- Use for complex conditions
-
-# 🧩 IEntityTrigger
-
-The `IEntityTrigger` interface defines a mechanism for monitoring specific aspects of an entity's state and signaling
-when an entity should be re-evaluated by a filter. It comes in two forms:
-
-* **Non-generic** version (`IEntityTrigger`) for working with `IEntity`
-* **Generic** version (`IEntityTrigger<E>`) for specific entity types
-
----
-
-## Key Features
-
-### Action-Based Callbacks
-
-- Configurable callback system for re-evaluation notifications
-- Generic action support for type-safe entity handling
-- Flexible trigger response patterns
-
-### Entity Tracking
-
-- Track/untrack lifecycle for entity monitoring
-- Multiple entity support per trigger instance
-- Clean resource management patterns
-
-### Type Safety
-
-- Generic interface for specific entity types
-- Compile-time type checking for callbacks
-- Non-generic convenience interface available
-
----
-
-## IEntityTrigger
-
-**A shorthand interface for `IEntityTrigger<IEntity>`.**
-
-```csharp
-public interface IEntityTrigger : IEntityTrigger<IEntity>
-{
-}
-```
-
-## IEntityTrigger&lt;E&gt;
-
-**A generic interface for tracking specific entity types.**
-
-```csharp
-public interface IEntityTrigger<E> where E : IEntity
-{
-    void SetAction(Action<E> action);
-    void Track(E entity);
-    void Untrack(E entity);
-}
-```
-
----
-
-## Methods
-
-### SetAction
-
-```csharp
-void SetAction(Action<E> action);
-```
-
-- **Purpose**: Sets the callback for re-evaluation
-- **Parameter**:
-    - `action` — The action to invoke when re-evaluation is needed
-- **Usage**: Defines what happens when a tracked condition is met
-
-### Track
-
-```csharp
-void Track(E entity);
-```
-
-- **Purpose**: Begins monitoring the specified entity
-- **Parameter:**
-    - `entity` — The entity to track
-- **Behavior**: Starts observing changes relevant to the trigger
-
-### Untrack
-
-```csharp
-void Untrack(E entity);
-```
-
-- **Purpose:** Stops monitoring the specified entity
-- **Parameter:**
-    - `entity` — The entity to stop tracking
-- **Behavior**: Removes the entity from monitoring
-
----
-
-## Example Usage
-
-```csharp
-//Create a simple tag trigger
-public class TagEntityTrigger : IEntityTrigger
-{
-    private Action<IEntity> _callback;
-
-    public void SetAction(Action<IEntity> action) =>
-        _callback = action ?? throw new ArgumentNullException(nameof(action));
-    
-    public void Track(IEntity entity) => 
-        entity.OnTagAdded += _callback.Invoke;
-    
-    public void Untrack(IEntity entity) =>
-         entity.OnTagAdded -= _callback.Invoke;
-}
-```
-
-## Usage Examples
-
-### Non-Generic Usage
-
-```csharp
-public class PlayerTrigger : EntityTriggerBase
-{
-    public override void Track(IEntity entity)
-    {
-        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
-    }
-
-    public override void Untrack(IEntity entity)
-    {
-        // Unsubscribe from custom events
-    }
-}
-```
-
-### Generic Usage
-
-```csharp
-public class PlayerTrigger : EntityTriggerBase<PlayerEntity>
-{
-    public override void Track(PlayerEntity entity)
-    {
-        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
-    }
-
-    public override void Untrack(PlayerEntity entity)
-    {
-        // Unsubscribe from custom events
-    }
-}
-```
--->

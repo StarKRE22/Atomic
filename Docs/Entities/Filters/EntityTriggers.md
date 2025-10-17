@@ -71,3 +71,114 @@ var stateTrigger = new StateChangedEntityTrigger<GameEntity>();
 stateTrigger.SetAction(e => Console.WriteLine($"State changed: {e.Name}"));
 stateTrigger.Track(someEntity);
 ````
+
+
+
+<!--
+
+## Classes
+
+
+## Trigger Types
+
+### TagEntityTrigger
+
+- Fires when specified tag is added/removed
+- Use for state-based filtering
+
+### ValueEntityTrigger
+
+- Fires when specified value changes
+- Use for data-based filtering
+
+### SubscriptionEntityTrigger
+
+- Custom trigger with manual control
+- Use for complex conditions
+
+# 🧩 IEntityTrigger
+
+The `IEntityTrigger` interface defines a mechanism for monitoring specific aspects of an entity's state and signaling
+when an entity should be re-evaluated by a filter. It comes in two forms:
+
+* **Non-generic** version (`IEntityTrigger`) for working with `IEntity`
+* **Generic** version (`IEntityTrigger<E>`) for specific entity types
+
+---
+
+## Key Features
+
+### Action-Based Callbacks
+
+- Configurable callback system for re-evaluation notifications
+- Generic action support for type-safe entity handling
+- Flexible trigger response patterns
+
+### Entity Tracking
+
+- Track/untrack lifecycle for entity monitoring
+- Multiple entity support per trigger instance
+- Clean resource management patterns
+
+### Type Safety
+
+- Generic interface for specific entity types
+- Compile-time type checking for callbacks
+- Non-generic convenience interface available
+
+
+## Example Usage
+
+```csharp
+//Create a simple tag trigger
+public class TagEntityTrigger : IEntityTrigger
+{
+    private Action<IEntity> _callback;
+
+    public void SetAction(Action<IEntity> action) =>
+        _callback = action ?? throw new ArgumentNullException(nameof(action));
+    
+    public void Track(IEntity entity) => 
+        entity.OnTagAdded += _callback.Invoke;
+    
+    public void Untrack(IEntity entity) =>
+         entity.OnTagAdded -= _callback.Invoke;
+}
+```
+
+## Usage Examples
+
+### Non-Generic Usage
+
+```csharp
+public class PlayerTrigger : EntityTriggerBase
+{
+    public override void Track(IEntity entity)
+    {
+        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
+    }
+
+    public override void Untrack(IEntity entity)
+    {
+        // Unsubscribe from custom events
+    }
+}
+```
+
+### Generic Usage
+
+```csharp
+public class PlayerTrigger : EntityTriggerBase<PlayerEntity>
+{
+    public override void Track(PlayerEntity entity)
+    {
+        // Subscribe to custom events and call "InvokeAction(entity)" in a certain place
+    }
+
+    public override void Untrack(PlayerEntity entity)
+    {
+        // Unsubscribe from custom events
+    }
+}
+```
+-->

@@ -19,8 +19,8 @@ namespace Atomic.Entities
         public EntityFilter(
             IReadOnlyEntityCollection<IEntity> source,
             Predicate<IEntity> predicate,
-            params IEntityTrigger<IEntity>[] triggers)
-            : base(source, predicate, triggers)
+            params IEntityTrigger<IEntity>[] triggers
+        ) : base(source, predicate, triggers)
         {
         }
     }

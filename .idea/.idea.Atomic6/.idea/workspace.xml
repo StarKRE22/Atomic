@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InitTestScenee90878be-50e9-4608-b97d-04c10d11da7b.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InitTestScenee90878be-50e9-4608-b97d-04c10d11da7b.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Registry/EntityRegistry.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/EntityFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Filter/EntityFilter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +61,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/IEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
@@ -255,15 +256,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="10360000" />
-    </task>
-    <task id="LOCAL-01550" summary="IEntityFixedTick`1.md">
-      <option name="closed" value="true" />
-      <created>1760601556763</created>
-      <option name="number" value="01550" />
-      <option name="presentableId" value="LOCAL-01550" />
-      <option name="project" value="LOCAL" />
-      <updated>1760601556763</updated>
+      <workItem from="1760693092386" duration="11228000" />
     </task>
     <task id="LOCAL-01551" summary="IEntityGizmos.md">
       <option name="closed" value="true" />
@@ -649,7 +642,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760719187292</updated>
     </task>
-    <option name="localTasksCounter" value="1599" />
+    <task id="LOCAL-01599" summary="EntityRegistry.md">
+      <option name="closed" value="true" />
+      <created>1760719902199</created>
+      <option name="number" value="01599" />
+      <option name="presentableId" value="LOCAL-01599" />
+      <option name="project" value="LOCAL" />
+      <updated>1760719902199</updated>
+    </task>
+    <option name="localTasksCounter" value="1600" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,10 +699,10 @@
     <MESSAGE value="ITickLifecycle.md" />
     <MESSAGE value="Сделал подписки" />
     <MESSAGE value="Extensions.md" />
-    <MESSAGE value="EntityRegistry.md" />
     <MESSAGE value="Переписал EntityRegistry.cs" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="EntityRegistry.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityRegistry.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
