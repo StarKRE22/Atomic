@@ -16,11 +16,17 @@ namespace Atomic.Entities
         /// <inheritdoc/>
         public event Action<IEntity> OnStateChanged;
 
-        /// <inheritdoc/>
+        /// <inheritdoc cref="IEntity.InstanceID" />
         public int InstanceID => _instanceId;
 
+        /// <inheritdoc/>
+        int IEntity.InstanceID
+        {
+            get => _instanceId;
+            set => _instanceId = value;
+        }
+        
         internal int _instanceId;
-
         /// <inheritdoc/>
         public string Name
         {
@@ -138,7 +144,7 @@ namespace Atomic.Entities
             this.ConstructValues(valueCapacity);
             this.ConstructBehaviours(behaviourCapacity);
 
-            EntityRegistry.Instance.Register(this, out _instanceId);
+            EntityRegistry.Instance.Register(this);
         }
 
         /// <inheritdoc/>

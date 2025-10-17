@@ -19,11 +19,14 @@ namespace Atomic.Entities
         /// <inheritdoc cref="IEntity.OnStateChanged"/>
         public event Action<IEntity> OnStateChanged;
 
+        /// <inheritdoc cref="IEntity.InstanceID" />
+        public int InstanceID => _instanceId;
+
         /// <inheritdoc />
-        public int InstanceID
+        int IEntity.InstanceID
         {
             get => _instanceId;
-            internal set => _instanceId = value;
+            set => _instanceId = value;
         }
 
         /// <inheritdoc />
