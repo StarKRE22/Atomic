@@ -20,7 +20,7 @@ when the entity should be re-evaluated by an [EntityFilter\<E>](EntityFilter%601
 
 ## 🗂 Example of Usage
 
-Assume we have some type derived from [Entity](../Entities/Entity.md):
+Assume we have some entity type derived from [Entity](../Entities/Entity.md)
 
 ```csharp
 public class GameEntity : Entity
@@ -59,7 +59,7 @@ public class HealthChangedTrigger : IEntityTrigger<GameEntity>
 }
 ```
 
-Create a new instance of [EntityFilter<E>](EntityFilter%601.md) with this trigger:
+Create a new instance of [EntityFilter\<E>](EntityFilter%601.md) with this trigger:
 
 ```csharp
 var filter = new EntityFilter<GameEntity>(
