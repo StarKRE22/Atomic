@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTrigger.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Filters/ValueEntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/EntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/TagEntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/ValueEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/ValueEntityTrigger.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,23 +258,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="14987000" />
-    </task>
-    <task id="LOCAL-01561" summary="IEntityTick.md">
-      <option name="closed" value="true" />
-      <created>1760607241766</created>
-      <option name="number" value="01561" />
-      <option name="presentableId" value="LOCAL-01561" />
-      <option name="project" value="LOCAL" />
-      <updated>1760607241766</updated>
-    </task>
-    <task id="LOCAL-01562" summary="IEntityTick`1.md">
-      <option name="closed" value="true" />
-      <created>1760607399910</created>
-      <option name="number" value="01562" />
-      <option name="presentableId" value="LOCAL-01562" />
-      <option name="project" value="LOCAL" />
-      <updated>1760607399911</updated>
+      <workItem from="1760693092386" duration="16024000" />
     </task>
     <task id="LOCAL-01563" summary="Сделал раздел с Behaviours!">
       <option name="closed" value="true" />
@@ -648,7 +636,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760724406170</updated>
     </task>
-    <option name="localTasksCounter" value="1610" />
+    <task id="LOCAL-01610" summary="TagEntityTrigger.md">
+      <option name="closed" value="true" />
+      <created>1760724656596</created>
+      <option name="number" value="01610" />
+      <option name="presentableId" value="LOCAL-01610" />
+      <option name="project" value="LOCAL" />
+      <updated>1760724656596</updated>
+    </task>
+    <task id="LOCAL-01611" summary="TagEntityTrigger`1.md">
+      <option name="closed" value="true" />
+      <created>1760725195297</created>
+      <option name="number" value="01611" />
+      <option name="presentableId" value="LOCAL-01611" />
+      <option name="project" value="LOCAL" />
+      <updated>1760725195297</updated>
+    </task>
+    <option name="localTasksCounter" value="1612" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,8 +679,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityCollection`1.md" />
-    <MESSAGE value="Думаем!" />
     <MESSAGE value="Сделал EntityNames.cs" />
     <MESSAGE value="Начинаем пилить раздел с EntityNames.md" />
     <MESSAGE value="EntityNames.md" />
@@ -700,7 +702,9 @@
     <MESSAGE value="IEntityTrigger.md" />
     <MESSAGE value="IEntityTrigger`1.md" />
     <MESSAGE value="TagEntityTriggers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="TagEntityTriggers.md" />
+    <MESSAGE value="TagEntityTrigger.md" />
+    <MESSAGE value="TagEntityTrigger`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="TagEntityTrigger`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

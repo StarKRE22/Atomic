@@ -10,8 +10,9 @@ changes, role updates, or behavioral flag modifications.
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [Non-generic version](#ex1)
-    - [Generic version](#ex2)
+    - [Non-generic Usage](#ex1)
+    - [Generic Usage](#ex2)
+    - [Custom Usage](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
 
@@ -21,7 +22,7 @@ changes, role updates, or behavioral flag modifications.
 
 <div id="ex1"></div>
 
-### 1️⃣ Non-generic version
+### 1️⃣ Non-generic Usage
 
 ```csharp
 // Track general entities for tag additions/removals
@@ -37,7 +38,7 @@ var filter = new EntityFilter(
 
 <div id="ex2"></div>
 
-### 2️⃣ Generic version
+### 2️⃣ Generic Usage
 
 ```csharp
 // Track entities whose tags change (addition/removal)
@@ -50,6 +51,16 @@ var filter = new EntityFilter<GameEntity>(
     trigger
 );
 ```
+
+<div id="ex2"></div>
+
+### 3️⃣ Custom Usage
+
+```csharp
+var tagTrigger = new TagEntityTrigger<GameEntity>(added: true, deleted: true);
+tagTrigger.SetAction(e => Console.WriteLine($"Tag changed on {e.Name}"));
+tagTrigger.Track(someEntity);
+``` 
 
 ---
 

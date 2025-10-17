@@ -115,7 +115,7 @@ Below is a list of available trigger types:
 - [TagEntityTriggers](TagEntityTriggers.md)
     - [TagEntityTrigger](TagEntityTrigger.md) <!-- + -->
     - [TagEntityTrigger\<E>](TagEntityTrigger%601.md) <!-- + -->
-- **ValueTriggers**
+- [ValueEntityTriggers](ValueEntityTriggers.md)
     - [ValueEntityTrigger](ValueEntityTrigger.md) <!-- + -->
     - [ValueEntityTrigger\<E>](ValueEntityTrigger%601.md) <!-- + -->
 - **BehaviourTriggers**
@@ -155,26 +155,6 @@ Below is a list of available trigger types:
 
 <!--
 
-### 1️⃣ Tag Trigger
-
-```csharp
-var tagTrigger = new TagEntityTrigger<GameEntity>(added: true, deleted: true);
-tagTrigger.SetAction(e => Console.WriteLine($"Tag changed on {e.Name}"));
-tagTrigger.Track(someEntity);
-```
-
----
-
-### 2️⃣ Value Trigger
-
-```csharp
-var valueTrigger = new ValueEntityTrigger<GameEntity>(added: true, deleted: true, changed: true);
-valueTrigger.SetAction(e => Console.WriteLine($"{e.Name}'s value changed"));
-valueTrigger.Track(someEntity);
-```
-
----
-
 ### 3️⃣ Inline Trigger
 
 ```csharp
@@ -199,23 +179,3 @@ stateTrigger.Track(someEntity);
 -->
 
 <!--
-
-
-## Example Usage
-
-```csharp
-//Create a simple tag trigger
-public class TagEntityTrigger : IEntityTrigger
-{
-    private Action<IEntity> _callback;
-
-    public void SetAction(Action<IEntity> action) =>
-        _callback = action ?? throw new ArgumentNullException(nameof(action));
-    
-    public void Track(IEntity entity) => 
-        entity.OnTagAdded += _callback.Invoke;
-    
-    public void Untrack(IEntity entity) =>
-         entity.OnTagAdded -= _callback.Invoke;
-}
-```
