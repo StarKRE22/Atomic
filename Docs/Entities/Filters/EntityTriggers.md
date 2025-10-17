@@ -23,7 +23,7 @@ together with [EntityFilters](Manual.md) to maintain dynamic subsets of entities
 
 ### 1️⃣ Tag Trigger
 
-[TagEntityTrigger](TagEntityTrigger.md) automatically tracks when tags are added to or removed from entities, triggering
+[TagEntityTrigger](TagEntityTriggers.md) automatically tracks when tags are added to or removed from entities, triggering
 callbacks for reactive system updates. Essential for building systems that respond to entity state classification changes, role
 updates, or behavioral flag modifications.
 
@@ -42,6 +42,9 @@ var filter = new EntityFilter(
 <div id="ex2"></div>
 
 ### 2️⃣ Value Trigger
+
+[ValueEntityTrigger](ValueEntityTriggers.md) automatically tracks when values are added, removed, or changed on entities, triggering callbacks
+for reactive system updates.
 
 ```csharp
 // Track general entities for value additions, deletions, and modifications
@@ -62,6 +65,8 @@ var filter = new EntityFilter(
 <div id="ex3"></div>
 
 ### 3️⃣ Custom Trigger
+
+Also, you can implement your own entity trigger and track entity state manually:
 
 ```csharp
 // A simple trigger that fires when an entity's "IsActive" flag changes
@@ -93,7 +98,7 @@ public class ActiveStateTrigger : IEntityTrigger
 }
 ```
 
-Usage with non-generic EntityFilter
+And use it with non-generic [EntityFilter](EntityFilter.md):
 
 ```csharp
 var filter = new EntityFilter(
