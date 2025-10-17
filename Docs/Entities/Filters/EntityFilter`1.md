@@ -1,23 +1,77 @@
 # 🧩 EntityFilter\<E>
 
+Represents a **dynamic, observable, filtered view** over an
+existing [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md). Entities are included based
+on a predicate and automatically synchronized using **state triggers**. Useful for dynamically retrieving subsets of
+entities (e.g., "all alive enemies", "all objects with a specific component") and keeping them synchronized as changes
+happen.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+        - [OnAdded](#onadded)
+        - [OnRemoved](#onremoved)
+    - [Properties](#-properties)
+        - [Count](#count)
+    - [Methods](#-methods)
+        - [Contains(E)](#containse)
+        - [CopyTo(ICollection<E>)](#copytoicollectione)
+        - [CopyTo(E[], int)](#copytoe-int)
+        - [Dispose()](#dispose)
+        - [GetEnumerator()](#getenumerator)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Source of all game entities
+IReadOnlyEntityCollection<GameEntity> allEntities = ...
+
+// Filter: only active enemies
+var filter = new EntityFilter<GameEntity>(
+    source: allEntities,
+    predicate: e => e.GetValue<bool>("IsEnemy") && e.GetValue<bool>("IsAlive"),
+);
+
+// Subscribe to events
+filter.OnAdded += e => Console.WriteLine($"[+] {e.Name}");
+filter.OnRemoved += e => Console.WriteLine($"[-] {e.Name}");
+
+// Use the filter
+foreach (var enemy in filter)
+    Console.WriteLine(enemy.Name);
+
+// Cleanup
+filter.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class EntityFilter<E> : IReadOnlyEntityCollection<E>, IDisposable where E : IEntity
 ```
 
-- **Description:** Represents a **dynamic, observable, filtered view** over an existing
-  `IReadOnlyEntityCollection<E>`. Entities are included based on a predicate and automatically synchronized using
-  **state triggers**.
 - **Type Parameter:** `E` — the type of entity being filtered. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IReadOnlyEntityCollection\<E>](../Collections/IReadOnlyEntityCollection%601.md), `IDisposable`
 - **See also:** [EntityFilter](EntityFilter.md), [IEntityTrigger\<E>](IEntityTrigger%601.md)
 
-> [!NOTE]
-> Useful for dynamically retrieving subsets of entities (e.g., "all alive enemies", "all objects with a
-> specific component") and keeping them synchronized as changes happen.
-
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public EntityFilter(
@@ -36,7 +90,7 @@ public EntityFilter(
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -66,7 +120,7 @@ public event Action<E> OnRemoved;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -79,7 +133,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Contains(E)`
 
@@ -108,8 +162,8 @@ public void CopyTo(E[] array, int arrayIndex);
 
 - **Description:** Copies all entities in the filter into the given array, starting at the specified index.
 - **Parameters:**
-  - `array` — The destination array. Must not be `null`.
-  - `arrayIndex` — The zero-based index in the array at which copying begins.
+    - `array` — The destination array. Must not be `null`.
+    - `arrayIndex` — The zero-based index in the array at which copying begins.
 
 #### `Dispose()`
 
@@ -128,29 +182,3 @@ public EntityCollection<E>.Enumerator GetEnumerator();
 
 - **Description:** Returns an enumerator for iterating over the entities in the filter.
 - **Returns:** A struct-based enumerator that can be used to iterate through the filtered entities.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Source of all game entities
-IReadOnlyEntityCollection<GameEntity> allEntities = ...
-
-// Filter: only active enemies
-var filter = new EntityFilter<GameEntity>(
-    source: allEntities,
-    predicate: e => e.GetValue<bool>("IsEnemy") && e.GetValue<bool>("IsAlive"),
-);
-
-// Subscribe to events
-filter.OnAdded += e => Console.WriteLine($"[+] {e.Name}");
-filter.OnRemoved += e => Console.WriteLine($"[-] {e.Name}");
-
-// Use the filter
-foreach (var enemy in filter)
-    Console.WriteLine(enemy.Name);
-
-// Cleanup
-filter.Dispose();
-```
