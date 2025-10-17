@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Values.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Interface/IEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntityProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntityProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_UnityCallbacks.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,15 +239,7 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="3698000" />
-    </task>
-    <task id="LOCAL-01547" summary="IEntityEnable.md">
-      <option name="closed" value="true" />
-      <created>1760599837799</created>
-      <option name="number" value="01547" />
-      <option name="presentableId" value="LOCAL-01547" />
-      <option name="project" value="LOCAL" />
-      <updated>1760599837799</updated>
+      <workItem from="1760693092386" duration="7580000" />
     </task>
     <task id="LOCAL-01548" summary="IEntityEnable`1.md">
       <option name="closed" value="true" />
@@ -637,7 +625,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760691821089</updated>
     </task>
-    <option name="localTasksCounter" value="1596" />
+    <task id="LOCAL-01596" summary="Переписал EntityRegistry.cs">
+      <option name="closed" value="true" />
+      <created>1760696935960</created>
+      <option name="number" value="01596" />
+      <option name="presentableId" value="LOCAL-01596" />
+      <option name="project" value="LOCAL" />
+      <updated>1760696935960</updated>
+    </task>
+    <option name="localTasksCounter" value="1597" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +660,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Сделал раздел с Behaviours!" />
     <MESSAGE value="Сделал стратегию для EntityNames.cs" />
     <MESSAGE value="EntityCollections Manual!" />
     <MESSAGE value="IReadOnlyEntityCollection.md" />
@@ -689,7 +684,8 @@
     <MESSAGE value="Сделал подписки" />
     <MESSAGE value="Extensions.md" />
     <MESSAGE value="EntityRegistry.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityRegistry.md" />
+    <MESSAGE value="Переписал EntityRegistry.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Переписал EntityRegistry.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

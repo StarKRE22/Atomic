@@ -9,7 +9,7 @@ namespace Atomic.Entities
 
         private protected virtual void Awake()
         {
-            EntityRegistry.Instance.Register(this, out _instanceId);
+            EntityRegistry.Instance.Register(this);
 
             if (this.installOnAwake)
                 this.Install();
@@ -53,7 +53,7 @@ namespace Atomic.Entities
             if (this.uninstallOnDestroy) 
                 this.Uninstall();
             
-            EntityRegistry.Instance.Unregister(ref _instanceId);
+            EntityRegistry.Instance.Unregister(this);
             
         }
 

@@ -3,10 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
-
 namespace Atomic.Entities
 {
     /// <summary>
@@ -65,7 +61,11 @@ namespace Atomic.Entities
             set => _source = value;
         }
 
-        public int InstanceID => _source.InstanceID;
+        int IEntity.InstanceID
+        {
+            get => _source.InstanceID;
+            set => ((IEntity) _source).InstanceID = value;
+        }
 
         public string Name
         {
