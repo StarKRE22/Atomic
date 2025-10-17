@@ -6,9 +6,28 @@ events (`OnTagAdded`, `OnTagDeleted`) on general [IEntity](../Entities/IEntity.m
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [EntityFilter Usage](#ex1)
+    - [Custom Monitoring](#ex2)
+    - [Addition-Only Monitoring](#ex3)
+    - [Deletion-Only Monitoring](#ex4)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [Track(IEntity)](#trackientity)
+        - [Untrack(IEntity)](#untrackientity)
+
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ EntityFilter Usage
 
 ```csharp
 // Track general entities for tag additions / removals
@@ -20,6 +39,57 @@ var filter = new EntityFilter(
     e => e.HasTag("Enemy"),
     trigger
 );
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Custom Monitoring
+
+```csharp
+// Monitor all tag changes (additions and deletions)
+var tagTrigger = new TagEntityTrigger();
+tagTrigger.SetAction(entity => Debug.Log($"Tag change detected on entity: {entity.Name}"));
+
+// Track entities
+tagTrigger.Track(playerEntity);
+tagTrigger.Track(enemyEntity);
+
+// When tags change on entities, the trigger automatically responds
+playerEntity.AddTag("PoweredUp");      // Triggers callback
+enemyEntity.RemoveTag("Aggressive");   // Triggers callback
+```
+
+<div id="ex3"></div>
+
+### 3️⃣ Addition-Only Monitoring
+
+```csharp
+// Monitor only when tags are added
+var additionTrigger = new TagEntityTrigger(added: true, deleted: false);
+additionTrigger.SetAction(entity => 
+    Debug.Log($"New tag added to entity: {entity.Name}"));
+
+// This will only trigger when tags are added, not removed
+additionTrigger.Track(playerEntity);
+
+// When tags added on entities, the trigger automatically responds
+playerEntity.AddTag("PoweredUp");      // Triggers callback
+```
+
+<div id="ex4"></div>
+
+### 4️⃣ Deletion-Only Monitoring
+
+```csharp
+// Monitor only when tags are removed
+var deletionTrigger = new TagEntityTrigger(added: false, deleted: true);
+deletionTrigger.SetAction(entity =>
+    Debug.Log($"Tag removed from entity: {entity.Name}"));
+
+deletionTrigger.Track(npcEntity);
+
+// When tags removed from entities, the trigger automatically responds
+playerEntity.DelTag("PoweredUp");      // Triggers callback
 ```
 
 ---
@@ -82,77 +152,3 @@ public void Untrack(IEntity entity);
 - **Description:** Stops tracking the specified entity for tag changes.
 - **Parameter:** `entity` — The entity to stop monitoring.
 - **Note:** Unsubscribes from previously subscribed tag events.
-
----
-
-## 📝 Notes
-
-### Selective Monitoring
-
-- Configurable tracking of tag additions only
-- Configurable tracking of tag deletions only
-- Full monitoring of both operations by default
-
-### Automatic Event Management
-
-- Automatic subscription to entity tag events
-- Clean unsubscription for resource management
-- Type-safe entity casting in callbacks
-
-### Lightweight Operation
-
-- Minimal overhead per tracked entity
-- Event-driven architecture avoids polling
-- Efficient for high-frequency tag changes
-
-<!--
-
-## Usage Examples
-
-### Basic Tag Change Monitoring
-
-```csharp
-// Monitor all tag changes (additions and deletions)
-var tagTrigger = new TagEntityTrigger();
-tagTrigger.SetAction(entity =>
-    Debug.Log($"Tag change detected on entity: {entity.Name}"));
-
-// Track entities
-tagTrigger.Track(playerEntity);
-tagTrigger.Track(enemyEntity);
-
-// When tags change on entities, the trigger automatically responds
-playerEntity.AddTag("PoweredUp");      // Triggers callback
-enemyEntity.RemoveTag("Aggressive");   // Triggers callback
-```
-
-### Addition-Only Tag Monitoring
-
-```csharp
-// Monitor only when tags are added
-var additionTrigger = new TagEntityTrigger(added: true, deleted: false);
-additionTrigger.SetAction(entity => 
-    Debug.Log($"New tag added to entity: {entity.Name}"));
-
-// This will only trigger when tags are added, not removed
-additionTrigger.Track(playerEntity);
-
-// When tags added on entities, the trigger automatically responds
-playerEntity.AddTag("PoweredUp");      // Triggers callback
-```
-
-### Deletion-Only Tag Monitoring
-
-```csharp
-// Monitor only when tags are removed
-var deletionTrigger = new TagEntityTrigger(added: false, deleted: true);
-deletionTrigger.SetAction(entity =>
-    Debug.Log($"Tag removed from entity: {entity.Name}"));
-
-deletionTrigger.Track(npcEntity);
-
-// When tags removed from entities, the trigger automatically responds
-playerEntity.DelTag("PoweredUp");      // Triggers callback
-```
-
--->
