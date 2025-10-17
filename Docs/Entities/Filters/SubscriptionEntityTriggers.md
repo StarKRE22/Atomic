@@ -28,8 +28,9 @@ public sealed class HealthTrigger : SubscriptionEntityTrigger<Subscription<int>>
 {
     protected override Subscription<int> Track(IEntity entity, Action<IEntity> callback)
     {
-        var health = entity.GetValue<IReactiveValue<int>>("Health");
-        return health.Subscribe(_ => callback.Invoke(entity));
+        IReactiveValue<int> health = entity.GetValue<IReactiveValue<int>>("Health");
+        Subscription<int> handle = health.Subscribe(_ => callback.Invoke(entity)); //IDisposable
+        return handle;
     }
 }
 ```
@@ -52,7 +53,7 @@ public sealed class TeamEntityTrigger : SubscriptionEntityTrigger<IUnitEntity, S
     protected override Subscription<TeamType> Track(IUnitEntity entity, Action<IUnitEntity> callback) 
     {
         IReactiveValue<TeamType> teamType = entity.GetValue<IReactiveValue<TeamType>>("Team");
-        Subscription<TeamType> subscription = teamType.Subscribe(_ => callback.Invoke(entity));
+        Subscription<TeamType> subscription = teamType.Subscribe(_ => callback.Invoke(entity)); //IDisposable
         return subscription;
     } 
 }
