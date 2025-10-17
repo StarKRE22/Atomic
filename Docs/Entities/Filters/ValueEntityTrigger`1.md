@@ -77,3 +77,20 @@ var filter = new EntityFilter<GameEntity>(
     trigger
 );
 ```
+
+### Using Generic Value Change Monitoring
+```csharp
+// Monitor all tag changes (additions and deletions)
+var valueTrigger = new ValueEntityTrigger<UnitEntity>();
+valueTrigger.SetAction(entity =>
+    Debug.Log($"Value change detected on entity: {entity.Name}"));
+
+// Track entities
+valueTrigger.Track(playerEntity);
+valueTrigger.Track(enemyEntity);
+
+// When values change on entities, the trigger automatically responds
+playerEntity.AddValue("Inventory", new Inventory());      // Triggers callback
+enemyEntity.RemoveValue("Inventory");   // Triggers callback
+enemyEntity.SetValue("Health", 25);   // Triggers callback if "Health" value is alreay added!
+```

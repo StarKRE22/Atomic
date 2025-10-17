@@ -3,7 +3,6 @@
 A non-generic shortcut for [TagEntityTrigger\<E>](TagEntityTrigger%601.md). Subscribes to tag-related
 events (`OnTagAdded`, `OnTagDeleted`) on general [IEntity](../Entities/IEntity.md) instances.
 
-
 ---
 
 ## 📑 Table of Contents
