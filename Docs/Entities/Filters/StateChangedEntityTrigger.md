@@ -1,17 +1,79 @@
 # 🧩 StateChangedEntityTrigger
 
+A **non-generic shortcut** for [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md). It allows subscribing
+to **state change events** (`OnStateChanged`) directly for basic [IEntity](../Entities/IEntity.md) objects without
+specifying a generic type parameter.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Filter Usage](#ex1)
+    - [Custom Usage](#ex2)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [Track(IEntity)](#trackientity)
+        - [Untrack(IEntity)](#untrackientity)
+
+---
+
+## 🗂 Example of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Filter Usage
+
+```csharp
+// Track entities for state changes
+var trigger = new StateChangedEntityTrigger();
+
+// Usage with EntityFilter
+var filter = new EntityFilter(
+    allEntities,
+    e => e.GetValue<bool>("IsAlive"),
+    trigger
+);
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Custom Usage
+
+```csharp
+var stateTrigger = new StateChangedEntityTrigger();
+stateTrigger.SetAction(entity =>
+Console.WriteLine($"State changed on entity: {entity.Name}"));
+
+// Track entities
+stateTrigger.Track(playerEntity);
+stateTrigger.Track(enemyEntity);
+
+// Changing state triggers the action
+playerEntity.ChangeState(UnitState.Moving);
+enemyEntity.ChangeState(UnitState.Attacking);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class StateChangedEntityTrigger : StateChangedEntityTrigger<IEntity>
 ```
 
-- **Description:** A **non-generic shortcut** for [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md).  
-  It allows subscribing to **state change events** (`OnStateChanged`) directly for
-  basic [IEntity](../Entities/IEntity.md) objects without specifying a generic type parameter.
 - **Inheritance:** [StateChangedEntityTrigger\<E>](StateChangedEntityTrigger%601.md)
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public StateChangedEntityTrigger();
@@ -22,7 +84,7 @@ public StateChangedEntityTrigger();
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<IEntity>)`
 
@@ -51,36 +113,3 @@ public void Untrack(IEntity entity);
 
 - **Description:** Unsubscribes from the entity’s `OnStateChanged` event.
 - **Parameter:** `entity` — The entity to stop tracking.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Track entities for state changes
-var trigger = new StateChangedEntityTrigger();
-
-// Usage with EntityFilter
-var filter = new EntityFilter(
-    allEntities,
-    e => e.GetValue<bool>("IsAlive"),
-    trigger
-);
-```
-
-
-### Non-Generic Usage
-
-```csharp
-var stateTrigger = new StateChangedEntityTrigger();
-stateTrigger.SetAction(entity =>
-Console.WriteLine($"State changed on entity: {entity.Name}"));
-
-// Track entities
-stateTrigger.Track(playerEntity);
-stateTrigger.Track(enemyEntity);
-
-// Changing state triggers the action
-playerEntity.ChangeState(UnitState.Moving);
-enemyEntity.ChangeState(UnitState.Attacking);
-```
