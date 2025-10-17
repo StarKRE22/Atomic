@@ -53,7 +53,17 @@ namespace Atomic.Entities
         }
 
         public event Action<IEntity> OnStateChanged;
-        public int InstanceID { get; }
+
+        public int InstanceID => _instanceId;
+        
+        int IEntity.InstanceID
+        {
+            get => _instanceId;
+            set => _instanceId = value;
+        }
+
+        private int _instanceId;
+        
         public string Name { get; set; }
         public event Action<IEntity, int> OnTagAdded;
         public event Action<IEntity, int> OnTagDeleted;

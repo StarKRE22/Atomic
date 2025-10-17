@@ -255,7 +255,9 @@ namespace Atomic.Entities
             this.OnStateChanged?.Invoke(this);
 
             this.UnsubscribeEvents();
-            EntityRegistry.Instance.Unregister(this);
+
+            if (_instanceId > 0) 
+                EntityRegistry.Instance.Unregister(this);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

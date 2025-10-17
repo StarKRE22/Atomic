@@ -8,17 +8,17 @@ namespace Atomic.Entities
 {
     [AddComponentMenu("")]
     [DisallowMultipleComponent]
-    internal sealed class UpdateLoop : MonoBehaviour
+    internal sealed class TickManager : MonoBehaviour
     {
         private static readonly IEqualityComparer<ITickLifecycle> s_comparer = EqualityComparer<ITickLifecycle>.Default;
 
-        private static UpdateLoop _instance;
+        private static TickManager _instance;
         private static bool _spawned;
 
         internal ITickLifecycle[] _updatables;
         private int _count;
 
-        internal static UpdateLoop Instance
+        internal static TickManager Instance
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Atomic.Entities
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateLoop instance = Instance;
+            TickManager instance = Instance;
             AddIfAbsent(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
 
@@ -51,7 +51,7 @@ namespace Atomic.Entities
             if (!EditorApplication.isPlaying)
                 return;
 #endif
-            UpdateLoop instance = Instance;
+            TickManager instance = Instance;
             Remove(ref instance._updatables, ref instance._count, tickSource, s_comparer);
         }
 
@@ -76,12 +76,12 @@ namespace Atomic.Entities
                 _updatables[i].LateTick(deltaTime);
         }
 
-        private static UpdateLoop CreateInstance()
+        private static TickManager CreateInstance()
         {
-            GameObject go = new GameObject("Update Manager");
+            GameObject go = new GameObject("Update Loop");
             go.hideFlags = HideFlags.HideAndDontSave;
             DontDestroyOnLoad(go);
-            return go.AddComponent<UpdateLoop>();
+            return go.AddComponent<TickManager>();
         }
 
 #if UNITY_EDITOR

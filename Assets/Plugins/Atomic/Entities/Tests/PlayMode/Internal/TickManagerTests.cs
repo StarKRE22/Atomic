@@ -6,14 +6,14 @@ using UnityEngine.TestTools;
 
 namespace Atomic.Entities
 {
-    public class UpdateLoopTests
+    public class TickManagerTests
     {
         [UnityTest]
         public IEnumerator Should_Invoke_OnUpdate()
         {
             // Arrange
             var updatable = new TickSourceDummy();
-            UpdateLoop.Instance.Register(updatable);
+            TickManager.Instance.Register(updatable);
 
             // Act
             yield return new WaitForSeconds(0.1f); // Wait for a few frames
@@ -27,7 +27,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var updatable = new TickSourceDummy();
-            UpdateLoop.Instance.Register(updatable);
+            TickManager.Instance.Register(updatable);
 
             // Act
             yield return new WaitForFixedUpdate();
@@ -42,7 +42,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var updatable = new TickSourceDummy();
-            UpdateLoop.Instance.Register(updatable);
+            TickManager.Instance.Register(updatable);
 
             // Act
             yield return new WaitForEndOfFrame(); // Triggers LateUpdate
@@ -56,12 +56,12 @@ namespace Atomic.Entities
         {
             // Arrange
             var updatable = new TickSourceDummy();
-            UpdateLoop.Instance.Register(updatable);
+            TickManager.Instance.Register(updatable);
 
             yield return new WaitForSeconds(0.1f);
             int before = updatable.UpdateCount;
 
-            UpdateLoop.Instance.Unregister(updatable);
+            TickManager.Instance.Unregister(updatable);
 
             yield return new WaitForSeconds(0.1f);
             int after = updatable.UpdateCount;
@@ -74,7 +74,7 @@ namespace Atomic.Entities
         public IEnumerator ShouldIgnoreNullAdd()
         {
             // Act — не должно выбросить исключение
-            UpdateLoop.Instance.Register(null);
+            TickManager.Instance.Register(null);
 
             // Wait to allow Unity frame update
             yield return null;
@@ -84,7 +84,7 @@ namespace Atomic.Entities
         [UnityTest]
         public IEnumerator ShouldIgnoreNullDel()
         {
-            UpdateLoop.Instance.Unregister(null);
+            TickManager.Instance.Unregister(null);
             yield return null;
             Assert.Pass();
         }
@@ -94,7 +94,7 @@ namespace Atomic.Entities
         {
             // Arrange
             var updatable = new TickSourceDummy();
-            var manager = UpdateLoop.Instance;
+            var manager = TickManager.Instance;
 
             // Act
             manager.Register(updatable);
@@ -109,7 +109,7 @@ namespace Atomic.Entities
         public IEnumerator ShouldStopCallingUpdate_AfterDel()
         {
             var updatable = new TickSourceDummy();
-            var manager = UpdateLoop.Instance;
+            var manager = TickManager.Instance;
 
             manager.Register(updatable);
 
@@ -129,7 +129,7 @@ namespace Atomic.Entities
         public IEnumerator ShouldCallAllThreeUpdates()
         {
             var updatable = new TickSourceDummy();
-            var manager = UpdateLoop.Instance;
+            var manager = TickManager.Instance;
             manager.Register(updatable);
 
             // Act

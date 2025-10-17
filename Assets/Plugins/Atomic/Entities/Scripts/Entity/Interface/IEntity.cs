@@ -30,7 +30,7 @@ namespace Atomic.Entities
         /// The runtime-generated unique identifier for this entity instance.
         /// This value is valid only during runtime and should not be used for persistence or serialization.
         /// </summary>
-        public int InstanceID { get; internal set; }
+        public int InstanceID { get; protected internal set; }
 
         /// <summary>
         /// Optional user-defined name of the entity.

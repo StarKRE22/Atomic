@@ -20,7 +20,11 @@ namespace Atomic.Entities
         public event Action<IEntity> OnStateChanged;
 
         /// <inheritdoc cref="IEntity.InstanceID" />
-        public int InstanceID => _instanceId;
+        public int InstanceID
+        {
+            get => _instanceId;
+            internal set => _instanceId = value;
+        }
 
         /// <inheritdoc />
         int IEntity.InstanceID
@@ -43,8 +47,8 @@ namespace Atomic.Entities
             }
         }
 
-        private int _instanceId;
-
+        internal int _instanceId;
+        
         /// <inheritdoc/>
         public override string ToString() => $"{nameof(name)}: {name}, {nameof(_instanceId)}: {_instanceId}";
 

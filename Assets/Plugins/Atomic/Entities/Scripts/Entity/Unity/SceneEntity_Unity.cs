@@ -9,18 +9,18 @@ namespace Atomic.Entities
 
         private protected virtual void Awake()
         {
-            EntityRegistry.Instance.Register(this);
+            this.Register();
 
             if (this.installOnAwake)
                 this.Install();
         }
-
+        
         private protected virtual void OnEnable()
         {
             if (this.useUnityLifecycle && _started)
             {
                 this.Enable();
-                UpdateLoop.Instance.Register(this);
+                TickManager.Instance.Register(this);
             }
         }
 
@@ -30,7 +30,7 @@ namespace Atomic.Entities
             {
                 this.Init();
                 this.Enable();
-                UpdateLoop.Instance.Register(this);
+                TickManager.Instance.Register(this);
             }
 
             _started = true;
@@ -41,20 +41,19 @@ namespace Atomic.Entities
             if (this.useUnityLifecycle && _started)
             {
                 this.Disable();
-                UpdateLoop.Instance.Unregister(this);
+                TickManager.Instance.Unregister(this);
             }
         }
 
         private protected virtual void OnDestroy()
         {
-            if (this.useUnityLifecycle && _started) 
+            if (this.useUnityLifecycle && _started)
                 this.Dispose();
 
-            if (this.uninstallOnDestroy) 
+            if (this.uninstallOnDestroy)
                 this.Uninstall();
-            
-            EntityRegistry.Instance.Unregister(this);
-            
+
+            this.Unregister();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()

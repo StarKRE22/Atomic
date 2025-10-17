@@ -18,12 +18,13 @@ namespace Atomic.Entities
         public void Register_Should_AssignUniqueId_And_AddToRegistry()
         {
             // Arrange
-            var entity = new EntityStub();
+            IEntity entity = new EntityStub();
 
             // Act
-            EntityRegistry.Instance.Register(entity, out int id);
+            EntityRegistry.Instance.Register(entity);
 
             // Assert
+            int id = entity.InstanceID;
             Assert.Greater(id, 0);
             Assert.IsTrue(EntityRegistry.Instance.Contains(id));
             Assert.IsTrue(EntityRegistry.Instance.Contains(entity));
@@ -34,13 +35,15 @@ namespace Atomic.Entities
         {
             // Arrange
             var entity = new EntityStub();
-            EntityRegistry.Instance.Register(entity, out int id);
+            EntityRegistry.Instance.Register(entity);
+
+            Assert.Greater(entity.InstanceID, 0);
 
             // Act
-            EntityRegistry.Instance.Unregister(ref id);
+            EntityRegistry.Instance.Unregister(entity);
 
             // Assert
-            Assert.AreEqual(-1, id);
+            Assert.AreEqual(0, entity.InstanceID);
             Assert.IsFalse(EntityRegistry.Instance.Contains(entity));
         }
 
@@ -53,7 +56,7 @@ namespace Atomic.Entities
             EntityRegistry.Instance.OnAdded += e => added = e;
 
             // Act
-            EntityRegistry.Instance.Register(entity, out _);
+            EntityRegistry.Instance.Register(entity);
 
             // Assert
             Assert.AreSame(entity, added);
@@ -64,13 +67,13 @@ namespace Atomic.Entities
         {
             // Arrange
             var entity = new EntityStub();
-            EntityRegistry.Instance.Register(entity, out int id);
+            EntityRegistry.Instance.Register(entity);
 
             IEntity removed = null;
             EntityRegistry.Instance.OnRemoved += e => removed = e;
 
             // Act
-            EntityRegistry.Instance.Unregister(ref id);
+            EntityRegistry.Instance.Unregister(entity);
 
             // Assert
             Assert.AreSame(entity, removed);
@@ -81,10 +84,12 @@ namespace Atomic.Entities
         {
             // Arrange
             var entity = new EntityStub();
-            EntityRegistry.Instance.Register(entity, out int id);
+            EntityRegistry.Instance.Register(entity);
+
+            int id = entity.InstanceID;
 
             // Act
-            bool found = EntityRegistry.Instance.TryGet(id, out var result);
+            bool found = EntityRegistry.Instance.TryGet(id, out IEntity result);
 
             // Assert
             Assert.IsTrue(found);
@@ -104,8 +109,8 @@ namespace Atomic.Entities
             // Arrange
             var e1 = new EntityStub();
             var e2 = new EntityStub();
-            EntityRegistry.Instance.Register(e1, out _);
-            EntityRegistry.Instance.Register(e2, out _);
+            EntityRegistry.Instance.Register(e1);
+            EntityRegistry.Instance.Register(e2);
 
             var list = new List<IEntity>();
 
@@ -122,8 +127,8 @@ namespace Atomic.Entities
         public void Clear_Should_RemoveAllEntities()
         {
             // Arrange
-            EntityRegistry.Instance.Register(new EntityStub(), out _);
-            EntityRegistry.Instance.Register(new EntityStub(), out _);
+            EntityRegistry.Instance.Register(new EntityStub());
+            EntityRegistry.Instance.Register(new EntityStub());
 
             // Act
             EntityRegistry.Instance.Clear();
@@ -148,14 +153,21 @@ namespace Atomic.Entities
             // Arrange
             var e1 = new EntityStub();
             var e2 = new EntityStub();
-            EntityRegistry.Instance.Register(e1, out _);
-            EntityRegistry.Instance.Register(e2, out _);
+
+            EntityRegistry registry = EntityRegistry.Instance;
+            registry.Register(e1);
+            registry.Register(e2);
 
             var seen = new HashSet<IEntity>();
 
+            Debug.Log($"REGISTRY COUNT {registry.Count}");
+            
             // Act
-            foreach (var e in EntityRegistry.Instance)
+            foreach (var e in registry)
+            {
+                Debug.Log($"Entity: {e}");
                 seen.Add(e);
+            }
 
             // Assert
             CollectionAssert.Contains(seen, e1);
@@ -170,8 +182,11 @@ namespace Atomic.Entities
             var e2 = new EntityStub();
 
             // Act
-            EntityRegistry.Instance.Register(e1, out int id1);
-            EntityRegistry.Instance.Register(e2, out int id2);
+            EntityRegistry.Instance.Register(e1);
+            EntityRegistry.Instance.Register(e2);
+
+            int id1 = e1.InstanceID;
+            int id2 = e2.InstanceID;
 
             // Assert
             Assert.AreEqual(id1 + 1, id2);
@@ -180,17 +195,13 @@ namespace Atomic.Entities
         [Test]
         public void CopyTo_Array_Should_CopyEntitiesCorrectly()
         {
-            Debug.Log($"ENTITY COUNTйаййц {EntityRegistry.Instance.Count}");
-            
             // Arrange
             var e1 = new EntityStub();
             var e2 = new EntityStub();
-            EntityRegistry.Instance.Register(e1, out _);
-            EntityRegistry.Instance.Register(e2, out _);
+            EntityRegistry.Instance.Register(e1);
+            EntityRegistry.Instance.Register(e2);
 
             var array = new IEntity[5];
-
-            Debug.Log($"ENTITY COUNT {EntityRegistry.Instance.Count}");
 
             // Act
             EntityRegistry.Instance.CopyTo(array, 2);
@@ -207,7 +218,9 @@ namespace Atomic.Entities
         {
             // Arrange
             var entity = new EntityStub();
-            EntityRegistry.Instance.Register(entity, out int id);
+            EntityRegistry.Instance.Register(entity);
+
+            int id = entity.InstanceID;
 
             // Act
             EntityRegistry.Instance.Clear();
@@ -218,14 +231,10 @@ namespace Atomic.Entities
         }
 
         [Test]
-        public void Unregister_Should_NotThrow_WhenIdInvalid()
+        public void Unregister_Should_NotThrow_WhenEntityIsNotRegistered()
         {
-            // Arrange
-            int id = 999;
-
             // Act & Assert
-            Assert.DoesNotThrow(() => { EntityRegistry.Instance.Unregister(ref id); });
-            Assert.AreEqual(999, id); // id не меняется, так как не найден
+            Assert.DoesNotThrow(() => { EntityRegistry.Instance.Unregister(new EntityStub()); });
         }
 
         [Test]
@@ -233,8 +242,9 @@ namespace Atomic.Entities
         {
             // Arrange
             var entity = new EntityStub();
-            EntityRegistry.Instance.Register(entity, out int id);
-            Assert.IsTrue(EntityRegistry.Instance.Contains(id));
+            EntityRegistry.Instance.Register(entity);
+            
+            Assert.IsTrue(EntityRegistry.Instance.Contains(entity.InstanceID));
 
             EntityRegistry.ResetAll();
 

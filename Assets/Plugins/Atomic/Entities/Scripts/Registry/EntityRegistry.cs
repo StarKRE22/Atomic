@@ -68,7 +68,7 @@ namespace Atomic.Entities
         private int[] _recycledIds;
         private int _recycledCount;
         private int _maxId;
-        
+
         private EntityRegistry()
         {
             _entityCapacity = InternalUtils.CeilToPrime(INITIAL_CAPACITY, out _entityPrimeIndex);
@@ -104,6 +104,31 @@ namespace Atomic.Entities
 
                         index = slot.next;
                     }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines whether the registry contains the specified entity with id.
+        /// </summary>
+        /// <param name="id">The entity id to check for existence.</param>
+        /// <returns>True if the entity is registered; otherwise, false.</returns>
+        public bool Contains(int id)
+        {
+            if (_entityCount > 0 && id > 0)
+            {
+                int bucket = id % _entityCapacity;
+                int index = _entityBuckets[bucket];
+
+                while (index >= 0)
+                {
+                    ref readonly Slot slot = ref _entitySlots[index];
+                    if (slot.id == id)
+                        return true;
+
+                    index = slot.next;
                 }
             }
 
@@ -209,8 +234,7 @@ namespace Atomic.Entities
 
             return false;
         }
-        
-        
+
         /// <summary>
         /// Retrieves an entity by its unique ID using an unsafe cast for maximum performance.
         /// </summary>
@@ -274,7 +298,7 @@ namespace Atomic.Entities
 
             return false;
         }
-        
+
         /// <summary>
         /// Returns an enumerator that iterates through the registered entities.
         /// </summary>
@@ -282,6 +306,51 @@ namespace Atomic.Entities
         public IEnumerator<IEntity> GetEnumerator() => new Enumerator(this);
 
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+
+        public struct Enumerator : IEnumerator<IEntity>
+        {
+            private readonly EntityRegistry _registry;
+
+            private int _index;
+            private IEntity _current;
+
+            public IEntity Current => _current;
+            object IEnumerator.Current => _current;
+
+            public Enumerator(EntityRegistry registry)
+            {
+                _registry = registry;
+                _index = 0;
+                _current = null;
+            }
+
+            public bool MoveNext()
+            {
+                while (_index < _registry._entityLastIndex)
+                {
+                    ref readonly Slot slot = ref _registry._entitySlots[_index++];
+                    if (slot.id == 0)
+                        continue;
+
+                    _current = slot.entity;
+                    return true;
+                }
+
+                _current = null;
+                return false;
+            }
+
+            public void Reset()
+            {
+                _index = 0;
+                _current = null;
+            }
+
+            public void Dispose()
+            {
+                //Do nothing...
+            }
+        }
 
         internal void Register(IEntity entity)
         {
@@ -369,7 +438,7 @@ namespace Atomic.Entities
                     }
 
                     // Reset instance id 
-                    entity.InstanceID = UNDEFINED_INDEX;
+                    entity.InstanceID = 0;
 
                     this.OnRemoved?.Invoke(entity);
                     this.OnStateChanged?.Invoke();
@@ -378,6 +447,46 @@ namespace Atomic.Entities
                 last = index;
                 index = slot.next;
             }
+        }
+
+        internal void Clear()
+        {
+            if (_entityCount == 0)
+                return;
+
+            for (int i = 0; i < _entityLastIndex; i++)
+            {
+                ref Slot slot = ref _entitySlots[i];
+                if (slot is {id: > 0, entity: not null})
+                {
+                    // Reset instance ID
+                    slot.entity.InstanceID = UNDEFINED_INDEX;
+
+                    // Fire OnRemoved event
+                    this.OnRemoved?.Invoke(slot.entity);
+
+                    // Clear slot
+                    slot.id = 0;
+                    slot.entity = null;
+                    slot.next = UNDEFINED_INDEX;
+                }
+            }
+
+            // Reset buckets
+            Array.Fill(_entityBuckets, UNDEFINED_INDEX);
+
+            // Reset counters and free list
+            _entityCount = 0;
+            _entityLastIndex = 0;
+            _entityFreeList = UNDEFINED_INDEX;
+
+            // Reset recycled IDs
+            _recycledIds = null;
+            _recycledCount = 0;
+            _maxId = 0;
+
+            // Fire state changed event
+            this.OnStateChanged?.Invoke();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -403,49 +512,16 @@ namespace Atomic.Entities
             }
         }
 
-        public struct Enumerator : IEnumerator<IEntity>
+#if UNITY_EDITOR
+        /// <summary>
+        /// Resets the registry state in the Unity Editor before entering Play Mode.
+        /// </summary>
+        [InitializeOnEnterPlayMode]
+#endif
+        internal static void ResetAll()
         {
-            private readonly EntityRegistry _registry;
-
-            private int _index;
-            private IEntity _current;
-
-            public IEntity Current => _current;
-            object IEnumerator.Current => _current;
-
-            public Enumerator(EntityRegistry registry)
-            {
-                _registry = registry;
-                _index = 0;
-                _current = null;
-            }
-
-            public bool MoveNext()
-            {
-                while (_index < _registry._entityLastIndex)
-                {
-                    ref readonly Slot slot = ref _registry._entitySlots[_index++];
-                    if (slot.id > 0)
-                        continue;
-
-                    _current = slot.entity;
-                    return true;
-                }
-
-                _current = null;
-                return false;
-            }
-
-            public void Reset()
-            {
-                _index = 0;
-                _current = null;
-            }
-
-            public void Dispose()
-            {
-                //Do nothing...
-            }
+            if (_instance != null)
+                _instance.Clear();
         }
     }
 }

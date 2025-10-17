@@ -56,15 +56,21 @@ namespace Atomic.Entities
         [Test]
         public void Dispose_UnregistersEntity()
         {
+            //Arrange:
             EntityRegistry.Instance.Clear();
 
             var entity = new Entity("Test");
-            int originalId = entity.InstanceID;
-            Assert.Greater(entity.InstanceID, 0);
+            int id = entity.InstanceID;
+            
+            //Check for entity is registered
+            Assert.Greater(id, 0);
 
+            //Act:
             entity.Dispose();
             
-            Assert.IsFalse(EntityRegistry.Instance.Contains(originalId));
+            //Assert:
+            Assert.IsFalse(EntityRegistry.Instance.Contains(entity));
+            Assert.IsFalse(EntityRegistry.Instance.Contains(id));
         }
     }
 }

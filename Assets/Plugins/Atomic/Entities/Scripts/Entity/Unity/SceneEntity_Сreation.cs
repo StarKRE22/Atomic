@@ -46,30 +46,32 @@ namespace Atomic.Entities
             GameObject gameObject = new GameObject();
             gameObject.SetActive(false);
 
-            E sceneEntity = gameObject.AddComponent<E>();
-            sceneEntity.name = args.name;
+            E entity = gameObject.AddComponent<E>();
+            entity.name = args.name;
 
-            sceneEntity.sceneInstallers = args.sceneInstallers;
-            sceneEntity.scriptableInstallers = args.scriptableInstallers;
-            sceneEntity.children = args.children;
+            entity.sceneInstallers = args.sceneInstallers;
+            entity.scriptableInstallers = args.scriptableInstallers;
+            entity.children = args.children;
 
-            sceneEntity.installOnAwake = args.installOnAwake;
-            sceneEntity.uninstallOnDestroy = args.uninstallOnDestroy;
-            sceneEntity.disposeValues = args.disposeValues;
-            sceneEntity.useUnityLifecycle = args.useUnityLifecycle;
+            entity.installOnAwake = args.installOnAwake;
+            entity.uninstallOnDestroy = args.uninstallOnDestroy;
+            entity.disposeValues = args.disposeValues;
+            entity.useUnityLifecycle = args.useUnityLifecycle;
 
-            sceneEntity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
-            sceneEntity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
-            sceneEntity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
+            entity.initialBehaviourCapacity = Mathf.Max(1, args.initialBehaviourCapacity);
+            entity.initialTagCapacity = Mathf.Max(1, args.initialTagCapacity);
+            entity.initialValueCapacity = Mathf.Max(1, args.initialValueCapacity);
 
-            sceneEntity.Construct();
+            entity.Construct();
 
-            sceneEntity.AddTags(args.tags);
-            sceneEntity.AddValues(args.values);
-            sceneEntity.AddBehaviours(args.behaviours);
+            entity.AddTags(args.tags);
+            entity.AddValues(args.values);
+            entity.AddBehaviours(args.behaviours);
 
+            entity.Register();
+            
             gameObject.SetActive(true);
-            return sceneEntity;
+            return entity;
         }
 
         /// <summary>
@@ -203,6 +205,7 @@ namespace Atomic.Entities
         public static E Create<E>(E prefab, Transform point, Transform parent) where E : SceneEntity
         {
             E entity = Instantiate(prefab, point.position, point.rotation, parent);
+            entity.Register();
             entity.Install();
             return entity;
         }
@@ -226,6 +229,7 @@ namespace Atomic.Entities
         ) where E : SceneEntity
         {
             E entity = Instantiate(prefab, position, rotation, parent);
+            entity.Register();
             entity.Install();
             return entity;
         }
