@@ -8,7 +8,7 @@ removed.
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#example-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Constructor](#-constructor)
