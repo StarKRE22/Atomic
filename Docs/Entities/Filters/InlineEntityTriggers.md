@@ -1,4 +1,4 @@
-# 🧩 InlineEntityTrigger
+# 🧩 InlineEntityTriggers
 
 An inline-configurable entity trigger that allows **custom tracking and untracking logic** for entities. Provides both a
 **generic** and a **non-generic** version for flexible use. `InlineEntityTrigger` allows you to define **inline logic**

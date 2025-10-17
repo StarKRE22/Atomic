@@ -1,18 +1,52 @@
 # 🧩 InlineEntityTrigger
 
+A **non-generic shortcut** for [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md). It allows defining **inline
+tracking and untracking logic** directly for basic [IEntity](../Entities/IEntity.md) objects, without needing to specify
+a generic type parameter.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [SetAction(Action<IEntity>)](#setactionactionientity)
+        - [Track(IEntity)](#trackientity)
+        - [Untrack(IEntity)](#untrackientity)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+var inlineTrigger = new InlineEntityTrigger(
+    track: (e, cb) => e.OnTagAdded += _ => cb(e),
+    untrack: (e, cb) => e.OnTagAdded -= _ => cb(e)
+);
+inlineTrigger.SetAction(e => Console.WriteLine($"Custom trigger fired for {e.Name}"));
+inlineTrigger.Track(someEntity);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class InlineEntityTrigger : InlineEntityTrigger<IEntity>
 ```
-
-- **Description:** A **non-generic shortcut** for [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md).  
-  It allows defining **inline tracking and untracking logic** directly for basic [IEntity](../Entities/IEntity.md) objects,  
-  without needing to specify a generic type parameter.
 
 - **Inheritance:** [InlineEntityTrigger\<E>](InlineEntityTrigger%601.md)
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public InlineEntityTrigger(
@@ -23,13 +57,15 @@ public InlineEntityTrigger(
 
 - **Description:** Creates a new `InlineEntityTrigger` with inline tracking and untracking delegates.
 - **Parameters:**
-    - `track` — A delegate that defines how to start tracking the entity (subscribing to events, etc.), given the entity and callback.
-    - `untrack` — A delegate that defines how to stop tracking the entity (unsubscribing from events, etc.), given the entity and callback.
+    - `track` — A delegate that defines how to start tracking the entity (subscribing to events, etc.), given the entity
+      and callback.
+    - `untrack` — A delegate that defines how to stop tracking the entity (unsubscribing from events, etc.), given the
+      entity and callback.
 - **Exception:** `ArgumentNullException` — Thrown if either `track` or `untrack` is `null`.
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `SetAction(Action<IEntity>)`
 
