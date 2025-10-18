@@ -6,7 +6,7 @@ Non-generic factory interface that produces a base [IEntity](../Entities/IEntity
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#example-of-usage)
+- [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)

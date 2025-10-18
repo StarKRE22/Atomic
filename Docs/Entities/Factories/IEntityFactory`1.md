@@ -1,39 +1,31 @@
 # 🧩 IEntityFactory\<E>
 
-```csharp
-public interface IEntityFactory<out E> where E : IEntity
-```
-
-- **Description:** Defines a generic factory interface for creating instances of [IEntity](../Entities/IEntity.md)-based
-  types.
-- **Type Parameter:** `E` — The type of `IEntity` this factory creates.
-- **See also:** [IEntityFactory](IEntityFactory.md)
+Defines a generic factory interface for creating instances of [IEntity](../Entities/IEntity.md)-based
+types.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Create()`
-
-```csharp
-public E Create();
-```
-
-- **Description:** Creates and returns a new instance of the entity type `E`.
-- **Returns:** A new instance of type `E`.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Create()](#create)
 
 ---
 
-## 🗂 Examples of Usage
+## 🗂 Example of Usage
 
-Create a generic factory for a `UnitEntity`:
+Assume we have a `UnitEntity` type derived from [Entity](../Entities/Entity.md)
 
 ```csharp
-//Define UnitEntity
 public UnitEntity : Entity
 {
 }
 ```
+
+Create a generic factory for the `UnitEntity`:
 
 ```csharp
 //Create factory for UnitEntity 
@@ -51,8 +43,35 @@ public sealed class UnitEntityFactory : IEntityFactory<UnitEntity>
 }
 ```
 
+Use this factory in your project:
+
 ```csharp
-//Usage
 IEntityFactory<UnitEntity> factory = new UnitEntityFactory();
 UnitEntity unit = factory.Create();
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityFactory<out E> where E : IEntity
+```
+
+- **Type Parameter:** `E` — The type of `IEntity` this factory creates.
+- **See also:** [IEntityFactory](IEntityFactory.md)
+
+---
+
+### 🏹 Methods
+
+#### `Create()`
+
+```csharp
+public E Create();
+```
+
+- **Description:** Creates and returns a new instance of the entity type `E`.
+- **Returns:** A new instance of type `E`.
