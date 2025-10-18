@@ -28,7 +28,7 @@ public interface IEntityBehaviour
 The following interfaces extend `IEntityBehaviour` and manage different stages of the entity lifecycle.
 
 - [IEntityInit](IEntityInit.md) — handles initialization.
-- [IEntityDispose](IEntityDispose.md) — handles resource cleanup.
+- [IEntityDispose](IEntityDispose.md) — handles resource clean-up.
 - [IEntityEnable](IEntityEnable.md) — handles activation.
 - [IEntityDisable](IEntityDisable.md) — handles deactivation.
 - [IEntityTick](IEntityTick.md) — handles per-frame updates.

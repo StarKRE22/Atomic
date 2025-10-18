@@ -89,7 +89,7 @@ Each behaviour can handle different events of the entity:
 
 ## 🔍 API Reference
 
-There are separate interfaces that handles the corresponding lifecycle events of the entity.
+There are separate interfaces that handle the corresponding lifecycle events of the entity.
 
 - **Common**
     - [IEntityBehaviour](IEntityBehaviour.md)

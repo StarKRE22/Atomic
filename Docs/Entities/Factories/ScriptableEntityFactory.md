@@ -51,6 +51,8 @@ public class PlayerScriptableFactory : ScriptableEntityFactory
 
 ## 🛠 Inspector Settings
 
+<div id="-parameters"></div>
+
 ### 🎛️ Parameters
 
 | Parameter                  | Description                                           | 
@@ -63,6 +65,8 @@ public class PlayerScriptableFactory : ScriptableEntityFactory
 - **Note:** These parameters are primarily used for **Editor optimization** and asset baking workflows.
 
 ---
+
+<div id="-context-menu"></div>
 
 ### ⚙️ Context Menu
 
