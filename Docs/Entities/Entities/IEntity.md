@@ -5,7 +5,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
 - **Description:** Represents the fundamental interface of the entity. It provides a modular container for **dynamic
-  state**, **tags**, **values**, **behaviours** and **lifecycle management**.
+  state**, **tags**, **values**, **behaviors** and **lifecycle management**.
 
 - **Inheritance:**
     - [IInitLifecycle](../Lifecycle/Sources/IInitLifecycle.md) – Supports explicit initialization and disposal.

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -259,15 +261,7 @@
       <workItem from="1760693092386" duration="23321000" />
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
-      <workItem from="1760779388170" duration="331000" />
-    </task>
-    <task id="LOCAL-01584" summary="IEntityNameAlgorithm.md, SequentialEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760645913778</created>
-      <option name="number" value="01584" />
-      <option name="presentableId" value="LOCAL-01584" />
-      <option name="project" value="LOCAL" />
-      <updated>1760645913778</updated>
+      <workItem from="1760779388170" duration="1431000" />
     </task>
     <task id="LOCAL-01585" summary="IEntityNameAlgorithm.md">
       <option name="closed" value="true" />
@@ -653,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760734345193</updated>
     </task>
-    <option name="localTasksCounter" value="1633" />
+    <task id="LOCAL-01633" summary="EntityFactories!">
+      <option name="closed" value="true" />
+      <created>1760779728006</created>
+      <option name="number" value="01633" />
+      <option name="presentableId" value="LOCAL-01633" />
+      <option name="project" value="LOCAL" />
+      <updated>1760779728007</updated>
+    </task>
+    <option name="localTasksCounter" value="1634" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityRegistry.md" />
     <MESSAGE value="EntityFilterManual" />
     <MESSAGE value="EntityFilter.md" />
     <MESSAGE value="EntityFilter`1.md" />
@@ -705,7 +706,8 @@
     <MESSAGE value="InlineEntityTrigger`1.md" />
     <MESSAGE value="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="EntityFactories!" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityFactories!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

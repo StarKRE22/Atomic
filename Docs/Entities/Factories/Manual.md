@@ -9,10 +9,10 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-    - [Inline Entity Factory](#ex1)
-    - [Scene Entity Baker](#ex2)
-    - [Scriptable Entity Factory](#ex3)
-    - [Multi-Entity Factory](#ex4)
+    - [InlineEntityFactory](#ex1)
+    - [SceneEntityBaker](#ex2)
+    - [ScriptableEntityFactory](#ex3)
+    - [MultiEntityFactory](#ex4)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
 
@@ -24,7 +24,7 @@ Below are examples of using factories for different scenarios:
 
 <div id="ex1"></div>
 
-### 1️⃣ Inline Entity Factory
+### 1️⃣ InlineEntityFactory
 
 ```csharp
 var factory = new InlineEntityFactory(() =>
@@ -45,7 +45,7 @@ IEntity myEntity = factory.Create();
 
 <div id="ex2"></div>
 
-### 2️⃣ Scene Entity Baker
+### 2️⃣ SceneEntityBaker
 
 ```csharp
 public class EnemyBaker : SceneEntityBaker<EnemyEntity>
@@ -61,13 +61,14 @@ public class EnemyBaker : SceneEntityBaker<EnemyEntity>
 ```
 
 - **Description:** Scene-based factory using Unity `MonoBehaviour`.
-- **Use Case:** Instantiation tiEnted to scene objects with optional post-creation installation logic.
+- **Use Case:** Used for creating entities directly from scene objects, with the option to run additional setup or
+  installation logic after creation.
 
 ---
 
 <div id="ex3"></div>
 
-### 3️⃣ Scriptable Entity Factory
+### 3️⃣ ScriptableEntityFactory
 
 ```csharp
 public class EnemyScriptableFactory : ScriptableEntityFactory<EnemyEntity>
