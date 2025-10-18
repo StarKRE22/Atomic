@@ -102,4 +102,4 @@ if (factory.TryCreate("Goblin", out IEntity goblin))
 - Uses the **factory asset name** (`ScriptableEntityFactory.name`) as the lookup key.
 - The internal dictionary of factories is initialized lazily on first access.
 - Duplicate keys are overwritten with a warning in the Unity console.
-- Can be used as a **Flyweight** across the project for efficient shared entity creation.
+- It can be used as a **Flyweight** across the project for efficient shared entity creation.

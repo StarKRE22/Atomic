@@ -1,8 +1,9 @@
 # 🧩️ ScriptableEntityFactory
 
 Abstract class for ScriptableObject-based factories that create and
-configure [Entity](../Entities/Entity.md) instances.
+configure [Entity](../Entities/Entity.md) instances. Can be reused across multiple objects without heavy dependencies.
 
+> Provides the [Install(IEntity)](#installientity) method to inject custom configuration logic after entity creation.
 ---
 
 ## 📑 Table of Contents
@@ -19,7 +20,6 @@ configure [Entity](../Entities/Entity.md) instances.
         - [Install(IEntity)](#installientity)
         - [OnValidate()](#onvalidate)
         - [Reset()](#reset)
-- [Notes](#-notes)
 
 ---
 
@@ -163,10 +163,3 @@ protected virtual void Reset();
 
 - **Description:** Resets factory fields to default values.
 - **Remarks:** Only affects editor workflows.
-
----
-
-## 📝 Notes
-
-- Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
-- Can be reused across multiple objects without heavy dependencies.
