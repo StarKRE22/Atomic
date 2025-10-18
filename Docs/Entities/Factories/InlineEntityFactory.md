@@ -1,10 +1,7 @@
 # 🧩️ InlineEntityFactory
 
-A lightweight, inline implementation of the non-generic entity factory.
-
-> [!TIP]
-> **InlineEntityFactory** can be used as a lightweight mock for unit tests, allowing quick creation of test entities
-> without implementing a full factory class.
+A lightweight, inline implementation of the non-generic entity factory. It can be used as a lightweight mock for unit
+tests, allowing quick creation of test entities without implementing a full factory class.
 
 ---
 

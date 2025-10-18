@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,15 +258,7 @@
       <workItem from="1760693092386" duration="23321000" />
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
-      <workItem from="1760779388170" duration="6483000" />
-    </task>
-    <task id="LOCAL-01591" summary="IInitLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1760688912935</created>
-      <option name="number" value="01591" />
-      <option name="presentableId" value="LOCAL-01591" />
-      <option name="project" value="LOCAL" />
-      <updated>1760688912935</updated>
+      <workItem from="1760779388170" duration="6809000" />
     </task>
     <task id="LOCAL-01592" summary="ITickLifecycle.md">
       <option name="closed" value="true" />
@@ -655,7 +644,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760803372185</updated>
     </task>
-    <option name="localTasksCounter" value="1640" />
+    <task id="LOCAL-01640" summary="ScriptableEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760803775365</created>
+      <option name="number" value="01640" />
+      <option name="presentableId" value="LOCAL-01640" />
+      <option name="project" value="LOCAL" />
+      <updated>1760803775365</updated>
+    </task>
+    <option name="localTasksCounter" value="1641" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -704,10 +701,10 @@
     <MESSAGE value="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation" />
     <MESSAGE value="EntityFactories!" />
     <MESSAGE value="IEntityFactory.md" />
-    <MESSAGE value="ScriptableEntityFactory.md" />
     <MESSAGE value="Подвинул Inspector Settings!" />
     <MESSAGE value="Minor Fixes!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
+    <MESSAGE value="ScriptableEntityFactory.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ScriptableEntityFactory.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
