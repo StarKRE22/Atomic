@@ -1,14 +1,15 @@
 # 🧩 SceneActionReference&lt;T1, T2, T3&gt;
 
 A reference wrapper for a [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbstract%603.md) with <b>three parameters</b>.
+Assign a `SceneActionAbstract<T1, T2, T3>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
 ## 📑 Table of Contents
 
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
   - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
   - [Constructors](#-constructors)
     - [Constructor()](#sceneactionreference)
     - [Constructor(SceneActionAbstract\<T1, T2, T3>)](#sceneactionreferencesceneactionabstractt1-t2-t3-action)
@@ -18,6 +19,15 @@ A reference wrapper for a [SceneActionAbstract&lt;T1, T2, T3&gt;](SceneActionAbs
     - [Invoke(T1, T2, T3)](#invoket1-t2-t3)
 
 ---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                           |
+|-----------|---------------------------------------|
+| `action`  | The referenced scene action to invoke |
+
+---
+
 
 ## 🔍 API Reference
 
@@ -35,17 +45,9 @@ public sealed class SceneActionReference<T1, T2, T3> : IAction<T1, T2, T3>
   - `T2` — second argument
   - `T3` — third argument
 - **Notes:** Supports Unity serialization and Odin Inspector
-- **Usage:** Assign a `SceneActionAbstract<T1, T2, T3>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
-### 🛠 Inspector Settings
-
-| Parameter | Description                           |
-|-----------|---------------------------------------|
-| `action`  | The referenced scene action to invoke |
-
----
 
 ### 🏗️ Constructors <div id="-constructors"></div>
 

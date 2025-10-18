@@ -20,6 +20,7 @@ notifications** on changes.
       <li><a href="#ex-6">Initializing from Collections</a></li>
     </ul>
   </li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
@@ -267,6 +268,14 @@ var dictFromTuples = new ReactiveDictionary<string, int>(new (string, int)[]
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter         | Description                                      |
+|-------------------|--------------------------------------------------|
+| `serializedItems` | The initial elements of the reactive dictionary. |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -283,14 +292,6 @@ public class ReactiveDictionary<K, V> : IReactiveDictionary<K, V>, IDisposable, 
     - `K`  — The type of keys in the dictionary. Defines how items are identified and accessed.
     - `V` — The type of values stored in the dictionary. Represents the data associated with each key.
 - **Notes:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter         | Description                                      |
-|-------------------|--------------------------------------------------|
-| `serializedItems` | The initial elements of the reactive dictionary. |
 
 ---
 

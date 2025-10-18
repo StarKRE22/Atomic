@@ -1,15 +1,17 @@
 # 🧩 SceneActionDefault&lt;T&gt;
 
 Represents a scene-based composite action with <b>one parameter</b>.
+Attach to a `GameObject`, assign a list of [IAction\<T>](IAction%601.md) implementations in the Unity Inspector, 
+and they will be invoked sequentially. Supports Odin Inspector.
 
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Quick Start](#-quick-start)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Fields](#-fields)
         - [Actions](#actions)
     - [Methods](#-methods)
@@ -17,7 +19,7 @@ Represents a scene-based composite action with <b>one parameter</b>.
 
 ---
 
-## 🗂 Example of Usage
+## 🚀 Quick Start
 
 #### 1. Create a `GameObjectSceneActionDefault` component
 
@@ -47,6 +49,14 @@ public sealed class DestroyGameObjectAction : IAction<GameObject>
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -58,18 +68,7 @@ public abstract class SceneActionDefault<T> : SceneActionAbstract<T>
 - **Description:** Represents a scene-based composite action with <b>one parameter</b>.
 - **Inheritance:** [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md)
 - **Type parameter:** `T` — the input argument type.
-- **Notes:**
-    - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `IAction<T>` implementations in the `Inspector`, and they will be
-      invoked sequentially.
 
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                              |
-|-----------|------------------------------------------|
-| `actions` | The array of actions to execute in order |
 
 ---
 

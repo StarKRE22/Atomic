@@ -1,15 +1,15 @@
 # 🧩 SceneActionDefault
 
-Represents a <b>parameterless</b> composite scene action that can be invoked.
-
+Represents a <b>parameterless</b> composite scene action that can be invoked. Attach to a `GameObject`, assign a list of
+[IAction](IAction.md) implementations in the Unity Inspector, and they will be invoked sequentially. Supports Odin Inspector.
 ---
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Quick Start](#-quick-start)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Fields](#-fields)
         - [Actions](#actions)
     - [Methods](#-methods)
@@ -17,7 +17,7 @@ Represents a <b>parameterless</b> composite scene action that can be invoked.
 
 ---
 
-## 🗂 Example of Usage
+## 🚀 Quick Start
 
 #### 1. Add the `Atomic/Elements/Action` component.
 
@@ -40,6 +40,14 @@ public sealed class GameStartup : MonoBehaviour
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -49,20 +57,8 @@ public sealed class GameStartup : MonoBehaviour
 public class SceneActionDefault : SceneActionAbstract
 ```
 
-- **Description:**  Represents a <b>parameterless</b> composite scene action that can be invoked.
+- **Description:** Represents a <b>parameterless</b> composite scene action that can be invoked.
 - **Inheritance:** [SceneActionAbstract](SceneActionAbstract.md)
-- **Notes:**
-    - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `IAction` implementations in the `Inspector`, and they will be
-      invoked sequentially.
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                              |
-|-----------|------------------------------------------|
-| `actions` | The array of actions to execute in order |
 
 ---
 

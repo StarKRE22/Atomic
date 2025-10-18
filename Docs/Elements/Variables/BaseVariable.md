@@ -7,9 +7,9 @@ Represents a **simple serialized container** for a value of type `T`.
 ## Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
   - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
   - [Constructors](#-constructors)
     - [BaseVariable()](#basevariable)
     - [BaseVariable(T)](#basevariablet)
@@ -40,6 +40,14 @@ Console.WriteLine(score.Value);  // Output: 20
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                    |
+|-----------|--------------------------------|
+| `value`   | Current value of this variable |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -54,14 +62,6 @@ public class BaseVariable<T> : IVariable<T>
 - **Type Parameter:** `T` – The type of the value to store.
 - **Notes:** Support Unity serialization and Odin Inspector
 - **See also:** [Base Variables](BaseVariables.md), [ProxyVariable&lt;T&gt;](ProxyVariable.md)
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                    |
-|-----------|--------------------------------|
-| `value`   | Current value of this variable |
 
 ---
 

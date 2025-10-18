@@ -11,11 +11,11 @@ simple countdowns, consider [ICooldown](ICooldown.md).
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
       <li><a href="#-type">Type</a></li>
-      <li><a href="#-inspector-settings">Inspector Settings</a></li>
       <li>
         <details>
           <summary><a href="#-constructors">Constructors</a></summary>
@@ -138,6 +138,14 @@ timer.SetProgress(0.5f);   // set progress to 50%
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter  | Description                      |
+|------------|----------------------------------|
+| `duration` | The total duration of the timer. |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -151,15 +159,6 @@ public class UpTimer : ITimer
 - **Notes:**
     - [TimerState](TimerState.md) represents current state of the timer
     - Supports Unity serialization and Odin Inspector
-
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter  | Description                      |
-|------------|----------------------------------|
-| `duration` | The total duration of the timer. |
 
 ---
 

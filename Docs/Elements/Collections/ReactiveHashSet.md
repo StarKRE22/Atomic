@@ -10,11 +10,11 @@ any change.
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
 <ul>
   <li><a href="#-type">Type</a></li>
-  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <details>
     <summary><a href="#-constructors">Constructors</a></summary>
@@ -172,6 +172,15 @@ reactiveSet.Clear();
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter         | Description                      |
+|-------------------|----------------------------------|
+| `serializedItems` | The initial elements of the set. |
+
+---
+
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -187,14 +196,6 @@ public class ReactiveHashSet<T> : IReactiveSet<T>, IDisposable, ISerializationCa
   `IDisposable`, `ISerializationCallbackReceiver`.
 - **Type Parameter:** `T` — The type of elements stored in the set.
 - **Note:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter         | Description                      |
-|-------------------|----------------------------------|
-| `serializedItems` | The initial elements of the set. |
 
 ---
 

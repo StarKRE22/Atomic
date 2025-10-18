@@ -15,11 +15,11 @@ every change
 
 <ul>
   <li><a href="#example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
 <ul>
   <li><a href="#-type">Type</a></li>
-  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
 <details>
 <summary><a href="#-constructors">Constructors</a></summary>
@@ -168,6 +168,14 @@ reactiveList.AddRange(new[] { "Kiwi", "Mango", "Pineapple" });
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter         | Description                              |
+|-------------------|------------------------------------------|
+| `serializedItems` | The initial elements of the linked list. |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -184,14 +192,6 @@ public class ReactiveLinkedList<T> : IReactiveList<T>, IDisposable, ISerializati
 - **Notes:**
     - Insertions and removals are **O(1)** complexity, traversal — **O(N)**
     - Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter         | Description                              |
-|-------------------|------------------------------------------|
-| `serializedItems` | The initial elements of the linked list. |
 
 ---
 

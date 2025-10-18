@@ -1,18 +1,19 @@
 # 🧩 SceneActionReference
 
 A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstract.md).
+Assign a `SceneActionAbstract` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
-      - [Constructor()](#sceneactionreference)
-      - [Constructor(SceneActionAbstract)](#sceneactionreferencesceneactionabstract)
+        - [Constructor()](#sceneactionreference)
+        - [Constructor(SceneActionAbstract)](#sceneactionreferencesceneactionabstract)
     - [Fields](#-fields)
         - [Action](#action)
     - [Methods](#-methods)
@@ -22,7 +23,7 @@ A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstrac
 
 ## 🗂 Example of Usage
 
-Below is an example of referencing a `SceneActionDefault` with a `HelloWorldSceneAction`.
+Below is an example of referencing a [SceneActionDefault](SceneActionDefault.md) with a `HelloWorldSceneAction`.
 
 #### 1. Assume we have a `SceneActionDefault` component on a scene
 
@@ -37,7 +38,17 @@ public sealed class HelloWorldSceneAction : SceneActionAbstract
 }
 ```
 
-#### 3. So we can bind the `HelloWorldSceneAction` to the `SceneActionDefault` via `SceneActionReference` in the Unity Inspector
+#### 3. So we can bind the `HelloWorldSceneAction` to the `SceneActionDefault` via
+
+`SceneActionReference` in the Unity Inspector
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                             |
+|-----------|-----------------------------------------|
+| `action`  | Reference to the scene action to invoke |
 
 ---
 
@@ -53,15 +64,6 @@ public sealed class SceneActionReference : IAction
 - **Description:** A parameterless reference wrapper for a [SceneActionAbstract](SceneActionAbstract.md).
 - **Inheritance:** [IAction](IAction.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
-- **Usage:** Assign a `SceneActionAbstract` component in the Inspector and invoke it using `Invoke()`.
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                             |
-|-----------|-----------------------------------------|
-| `action`  | Reference to the scene action to invoke |
 
 ---
 

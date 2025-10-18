@@ -135,7 +135,7 @@ public Enumerator GetEnumerator();
 
 ---
 
-### ⛔ Unsupported Methods
+### ❌ Unsupported Methods
 
 All modification methods throw `NotSupportedException` because the collection is read-only.
 

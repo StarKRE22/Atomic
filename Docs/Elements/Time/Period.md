@@ -10,11 +10,11 @@ progress tracking, duration management, and state notifications.
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
       <li><a href="#-type">Type</a></li>
-      <li><a href="#-inspector-settings">Inspector Settings</a></li>
       <li>
         <details>
           <summary><a href="#-constructors">Constructors</a></summary>
@@ -127,6 +127,12 @@ period.ResetTime();
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter  | Description                          |
+|------------|--------------------------------------|
+| `duration` | The total duration of the one cycle. |
+
 ---
 
 ## 🔍 API Reference
@@ -142,14 +148,6 @@ public class Period : IPeriod
 - **Notes:**
     - [PeriodState](PeriodState.md) represents current state of a period
     - Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter  | Description                          |
-|------------|--------------------------------------|
-| `duration` | The total duration of the one cycle. |
 
 ---
 

@@ -1,15 +1,16 @@
 # 🧩 SceneActionReference&lt;T&gt;
 
 A reference wrapper for a [SceneActionAbstract&lt;T&gt;](SceneActionAbstract%601.md) with <b>one parameter</b>.
+Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
         - [Constructor()](#sceneactionreference)
         - [Constructor(SceneActionAbstract\<T>)](#sceneactionreferencesceneactionabstractt)
@@ -47,6 +48,14 @@ public sealed class DestroyGameObjectSceneAction : SceneActionAbstract<GameObjec
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                           |
+|-----------|---------------------------------------|
+| `action`  | The referenced scene action to invoke |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -61,15 +70,6 @@ public sealed class SceneActionReference<T> : IAction<T>
 - **Inheritance:** [IAction&lt;T&gt;](IAction%601.md)
 - **Type parameter:** `T` — the argument type.
 - **Notes:** Supports Unity serialization and Odin Inspector
-- **Usage:** Assign a `SceneActionAbstract<T>` component in the Inspector and invoke it using `Invoke()`.
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                           |
-|-----------|---------------------------------------|
-| `action`  | The referenced scene action to invoke |
 
 ---
 

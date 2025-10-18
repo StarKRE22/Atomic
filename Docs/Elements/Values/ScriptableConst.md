@@ -12,9 +12,9 @@ making it perfect for sharing constant values across multiple objects or scenes
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Properties](#-properties)
         - [Value](#value)
     - [Methods](#-methods)
@@ -50,6 +50,16 @@ public sealed class Character : MonoBehaviour
 }
 ```
 
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                |
+|-----------|----------------------------|
+| `value`   | The value of this constant |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -63,14 +73,6 @@ public abstract class ScriptableConst<T> : ScriptableObject, IValue<T>
 - **Inheritance:** `ScriptableObject`, [IValue&lt;T&gt;](IValue.md)
 - **Type Parameter:** `T` – The type of the wrapped constant value.
 - **Notes:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                |
-|-----------|----------------------------|
-| `value`   | The value of this constant |
 
 ---
 

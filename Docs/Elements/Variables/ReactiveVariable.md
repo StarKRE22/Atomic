@@ -7,9 +7,9 @@ Represents a **serialized reactive variable** that raises events whenever its va
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
   - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
   - [Constructors](#-constructors)
     - [ReactiveVariable()](#reactivevariable)
     - [ReactiveVariable(T)](#reactivevariablet)
@@ -45,6 +45,15 @@ score.Dispose();
 
 ---
 
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                    |
+|-----------|--------------------------------|
+| `value`   | Current value of this variable |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -59,14 +68,6 @@ public class ReactiveVariable<T> : IReactiveVariable<T>, IDisposable
 - **Type Parameter:** `T` – The type of the value.
 - **Notes:** Support Unity serialization and Odin Inspector
 - **See also:** [Reactive Variables](ReactiveVariables.md)
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                    |
-|-----------|--------------------------------|
-| `value`   | Current value of this variable |
 
 ---
 

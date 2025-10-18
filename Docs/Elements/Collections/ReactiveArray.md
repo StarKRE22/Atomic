@@ -1,7 +1,8 @@
 # 🧩 ReactiveArray&lt;T&gt;
 
 Represents a **fixed-size reactive array** that emits events when elements change.
-It provides indexed access, supports enumeration. Use this class when you need a read-write reactive array with change notifications and iteration support.
+It provides indexed access, supports enumeration. Use this class when you need a read-write reactive array with change
+notifications and iteration support.
 
 > [!IMPORTANT]
 > For high-performance iterations, it is recommended to use a `for` loop instead of `foreach`.
@@ -12,11 +13,11 @@ It provides indexed access, supports enumeration. Use this class when you need a
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
       <li><a href="#-type">Type</a></li>
-      <li><a href="#-inspector-settings">Inspector Settings</a></li>
       <li>
         <details>
           <summary><a href="#-constructors">Constructors</a></summary>
@@ -147,6 +148,15 @@ reactiveArray.Copy(0, target, 0, reactiveArray.Length);
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                        |
+|-----------|------------------------------------|
+| `items`   | The initial elements of the array. |
+
+---
+
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -161,14 +171,6 @@ public class ReactiveArray<T> : IReactiveArray<T>, IDisposable
 - **Inheritance:** implements [IReactiveArray&lt;T&gt;](IReactiveArray.md) and `IDisposable`
 - **Type Parameter:** `T` — The type of elements stored in the array.
 - **Note:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                        |
-|-----------|------------------------------------|
-| `items`   | The initial elements of the array. |
 
 ---
 

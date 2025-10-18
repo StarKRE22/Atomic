@@ -6,7 +6,7 @@ Represents a scene action with <b>one parameter</b> that can be invoked.
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Quick Start](#-quick-start)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
@@ -14,16 +14,16 @@ Represents a scene action with <b>one parameter</b> that can be invoked.
 
 ---
 
-## 🗂 Example of Usage
+## 🚀 Quick Start
 
 This example shows how to use `SceneActionAbstract<T>` to create an action that destroys objects when they enter a
 trigger.
 
 #### 1. Create `DestroyGameObjectAction`
 
-This action takes a `GameObject` and destroys it:
 
 ```csharp
+// This action takes a `GameObject` and destroys it:
 public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 {
     public override void Invoke(GameObject go) => GameObject.Destroy(go);
@@ -32,9 +32,8 @@ public sealed class DestroyGameObjectAction : SceneActionAbstract<GameObject>
 
 #### 2. Create `ActionTrigger`
 
-This script invokes the action whenever another object enters the trigger collider:
-
 ```csharp
+// This script invokes the action whenever another object enters the trigger collider:
 public sealed class ActionTrigger : MonoBehaviour
 {
     [SerializeField]
@@ -49,7 +48,7 @@ public sealed class ActionTrigger : MonoBehaviour
 
 #### 3. Run the scene
 
-Enter **Play Mode** in Unity and any objects that collide with the trigger will be **destroyed automatically**.
+- Enter **Play Mode** in Unity and any objects that collide with the trigger will be **destroyed automatically**.
 
 ---
 

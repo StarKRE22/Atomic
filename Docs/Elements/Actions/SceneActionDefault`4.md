@@ -1,18 +1,28 @@
 # 🧩 SceneActionDefault&lt;T1, T2, T3, T4&gt;
 
 Represents a scene-based composite action with <b>four parameters</b>.
+Attach to a `GameObject`, assign a list of [IAction\<T1, T2, T3, T4>](IAction%604.md) implementations in the
+Unity Inspector, and they will be invoked sequentially. Supports Odin Inspector.
 
 ---
 
 ## 📑 Table of Contents
 
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
-  - [Fields](#-fields)
-    - [Actions](#actions)
-  - [Methods](#-methods)
-    - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+    - [Type](#-type)
+    - [Fields](#-fields)
+        - [Actions](#actions)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2, T3, T4)](#invoket1-t2-t3-t4)
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                              |
+|-----------|------------------------------------------|
+| `actions` | The array of actions to execute in order |
 
 ---
 
@@ -31,19 +41,6 @@ public abstract class SceneActionDefault<T1, T2, T3, T4> : SceneActionAbstract<T
     - `T2` — the second argument
     - `T3` — the third argument
     - `T4` — the fourth argument
-- **Notes:**
-    - Supports Odin Inspector
-    - Attach to a `GameObject`, assign a list of `IAction<T1, T2, T3, T4>` implementations in the `Inspector`, and they
-      will be
-      invoked sequentially.
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                              |
-|-----------|------------------------------------------|
-| `actions` | The array of actions to execute in order |
 
 ---
 

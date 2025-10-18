@@ -1,21 +1,30 @@
 # 🧩 SceneActionReference&lt;T1, T2&gt;
 
 A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two parameters</b>.
+Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it using `Invoke()`.
 
 ---
 
 ## 📑 Table of Contents
 
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
-  - [Type](#-type)
-  - [Inspector Settings](#-inspector-settings)
-  - [Constructors](#-constructors)
-    - [Constructor()](#sceneactionreference)
-    - [Constructor(SceneActionAbstract\<T1, T2>)](#sceneactionreferencesceneactionabstractt1-t2)
-  - [Fields](#-fields)
-    - [Action](#action)
-  - [Methods](#-methods)
-    - [Invoke(T1, T2)](#invoket1-t2)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Constructor()](#sceneactionreference)
+        - [Constructor(SceneActionAbstract\<T1, T2>)](#sceneactionreferencesceneactionabstractt1-t2)
+    - [Fields](#-fields)
+        - [Action](#action)
+    - [Methods](#-methods)
+        - [Invoke(T1, T2)](#invoket1-t2)
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                           |
+|-----------|---------------------------------------|
+| `action`  | The referenced scene action to invoke |
 
 ---
 
@@ -28,21 +37,14 @@ A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstrac
 public sealed class SceneActionReference<T1, T2> : IAction<T1, T2>
 ```
 
-- **Description:**  A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two parameters</b>.
+- **Description:** A reference wrapper for a [SceneActionAbstract&lt;T1, T2&gt;](SceneActionAbstract%602.md) with <b>two
+  parameters</b>.
 - **Inheritance:** [IAction&lt;T1, T2&gt;](IAction%602.md)
 - **Type parameters:**
     - `T1` — first argument
     - `T2` — second argument
 - **Notes:** Supports Unity serialization and Odin Inspector
-- **Usage:** Assign a `SceneActionAbstract<T1, T2>` component in the Inspector and invoke it using `Invoke()`.
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                           |
-|-----------|---------------------------------------|
-| `action`  | The referenced scene action to invoke |
+- **Usage:**
 
 ---
 

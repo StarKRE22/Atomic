@@ -12,9 +12,9 @@ Represents a **serialized, immutable (read-only) constant value wrapper**.
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
         - [Const()](#const)
         - [Const(T)](#constt)
@@ -58,6 +58,15 @@ public sealed class Character : MonoBehaviour
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                |
+|-----------|----------------------------|
+| `value`   | The value of this constant |
+
+---
+
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -75,14 +84,6 @@ public class Const<T> : IValue<T>
     - Supports Unity serialization
     - Supports Odin Inspector
 - **See also:** [ScriptableConst&lt;T&gt;](ScriptableConst.md)
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                |
-|-----------|----------------------------|
-| `value`   | The value of this constant |
 
 ---
 

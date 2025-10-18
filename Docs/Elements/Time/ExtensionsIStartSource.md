@@ -12,7 +12,7 @@ sources.
   <li><a href="#-examples-of-usage">Examples of Usage</a>
     <ul>
       <li><a href="#ex1">Restart from a specific time</a></li>
-      <li><a href="#ex2">Restart from the default start time</a></li>
+      <li><a href="#ex2">Restart from the default time</a></li>
     </ul>
   </li>
   <li><a href="#-api-reference">API Reference</a>
@@ -40,7 +40,7 @@ sources.
 
 <div id="ex2"></div>
 
-### 1️⃣ Restart from the default start time
+### 1️⃣ Restart from the default time
 
 ```csharp
 // Restart a countdown from its default start time

@@ -9,9 +9,9 @@ or timed delays.
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
         - [Cooldown()](#cooldown)
         - [Cooldown(float)](#cooldownfloat)
@@ -72,6 +72,16 @@ Console.WriteLine($"Cooldown progress set to 50%, time remaining: {cooldown.GetT
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                            |
+|---------------|----------------------------------------|
+| `duration`    | Total duration of the cooldown         |
+| `currentTime` | Current remaining time of the cooldown |
+
+---
+
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -85,15 +95,6 @@ public class Cooldown : ICooldown
   progress, and raises events when its state changes.
 - **Inheritance:** [ICooldown](ICooldown.md)
 - **Notes:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter     | Description                            |
-|---------------|----------------------------------------|
-| `duration`    | Total duration of the cooldown         |
-| `currentTime` | Current remaining time of the cooldown |
 
 ---
 

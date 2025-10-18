@@ -6,7 +6,7 @@ Represents a <b>parameterless</b> scene action that can be invoked.
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Quick Start](#-quick-start)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Methods](#-methods)
@@ -14,16 +14,16 @@ Represents a <b>parameterless</b> scene action that can be invoked.
 
 ---
 
-## 🗂 Example of Usage
+## 🚀 Quick Start
 
 This example demonstrates how to create a simple action based on `SceneActionAbstract` and run it from a `GameStartup`
 script in Unity.
 
 #### 1. Create `HelloWorldAction`
 
-Here we implement a simple action that prints `Hello World!` when invoked:
 
 ```csharp
+// Here we implement a simple action that prints `Hello World!` when invoked:
 public sealed class HelloWorldAction : SceneActionAbstract
 {
     public override void Invoke() => Debug.Log("Hello World!");
@@ -32,9 +32,9 @@ public sealed class HelloWorldAction : SceneActionAbstract
 
 #### 2. Create `GameStartup` Script
 
-This script will call the action on game start:
 
 ```csharp
+// This script will call the action on game start:
 public sealed class GameStartup : MonoBehaviour
 {
     [SerializeField]
@@ -54,7 +54,7 @@ public sealed class GameStartup : MonoBehaviour
 
 #### 4. Run the scene
 
-When you start the game, the action is triggered and **"Hello World!"** is printed to the console.
+- When you start the game, the action is triggered and **"Hello World!"** is printed to the console.
 
 
 ---

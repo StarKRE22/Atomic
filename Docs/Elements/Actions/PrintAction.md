@@ -13,9 +13,9 @@ environments, which is especially useful when debugging or logging events in cro
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
         - [LogAction()](#logaction)
         - [LogAction(string)](#logactionstring)
@@ -46,6 +46,15 @@ logAction.Invoke(); // Logs message to standard console
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter | Description                                      |
+|-----------|--------------------------------------------------|
+| `logType` | The type of the log message in Debug.unityLogger |
+| `message` | The text to log                                  |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -57,15 +66,6 @@ public sealed class LogAction : IAction
 
 - **Inherits:** [IAction](IAction.md)
 - **Remarks:** Allows serialization in Unity and supports Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter | Description                                      |
-|-----------|--------------------------------------------------|
-| `logType` | The type of the log message in Debug.unityLogger |
-| `message` | The text to log                                  |
 
 ---
 

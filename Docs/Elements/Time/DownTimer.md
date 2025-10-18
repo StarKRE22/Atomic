@@ -12,11 +12,11 @@ changes. For simple timers or repeated delays, consider [ICooldown](ICooldown.md
 
 <ul>
   <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li><a href="#-inspector-settings">Inspector Settings</a></li>
   <li>
     <a href="#-api-reference">API Reference</a>
     <ul>
       <li><a href="#-type">Type</a></li>
-      <li><a href="#-inspector-settings">Inspector Settings</a></li>
       <li>
         <details>
           <summary><a href="#-constructors">Constructors</a></summary>
@@ -148,7 +148,7 @@ public class DownTimer : ITimer
 
 ---
 
-### 🛠 Inspector Settings
+## 🛠 Inspector Settings
 
 | Parameter  | Description                      |
 |------------|----------------------------------|

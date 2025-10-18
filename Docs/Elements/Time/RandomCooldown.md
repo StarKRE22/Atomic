@@ -10,9 +10,9 @@ procedural ability cooldowns.
 ## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Inspector Settings](#-inspector-settings)
     - [Constructors](#-constructors)
         - [RandomCooldown(float, float)](#randomcooldownfloat-float)
     - [Events](#-events)
@@ -58,6 +58,16 @@ Console.WriteLine($"Cooldown reset. Duration: {cooldown.GetDuration():F2}s");
 
 ---
 
+## 🛠 Inspector Settings
+
+| Parameter     | Description                           |
+|---------------|---------------------------------------|
+| `minDuration` | The minimum duration of the cooldown. |
+| `maxDuration` | The maximum duration of the cooldown. |
+
+---
+
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -71,15 +81,6 @@ public class RandomCooldown : ICooldown
   the cooldown is reset, it is assigned a new random value between a specified minimum and maximum duration.
 - **Inheritance:** [ICooldown](ICooldown.md)
 - **Note:** Supports Unity serialization and Odin Inspector
-
----
-
-### 🛠 Inspector Settings
-
-| Parameter     | Description                           |
-|---------------|---------------------------------------|
-| `minDuration` | The minimum duration of the cooldown. |
-| `maxDuration` | The maximum duration of the cooldown. |
 
 ---
 
