@@ -24,12 +24,10 @@ public sealed class UnitEntityFactory : IEntityFactory
     public IEntity Create()
     {
         var entity = new Entity();
-        
         entity.AddTag("Unit");
         entity.AddValue<int>("Health", 150);
         entity.AddValue<int>("Damage", 25);
         entity.AddBehaviour<MoveBehaviour>();
-        
         return entity;
     }
 }

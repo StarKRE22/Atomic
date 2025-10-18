@@ -1,33 +1,92 @@
 # 🧩️ ScriptableEntityFactory
 
+Abstract class for ScriptableObject-based factories that create and
+configure [Entity](../Entities/Entity.md) instances.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+    - [Parameters](#-parameters)
+    - [Context Menu](#-context-menu)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Fields](#-fields)
+    - [Methods](#-methods)
+        - [Create()](#create)
+        - [Install(IEntity)](#installientity)
+        - [OnValidate()](#onvalidate)
+        - [Reset()](#reset)
+- [Notes](#-notes)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of a ScriptableObject factory that creates player entities:
+
 ```csharp
-public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+[CreateAssetMenu(
+    fileName = "PlayerFactory",
+    menuName = "Examples/PlayerFactory"
+)]
+public class PlayerScriptableFactory : ScriptableEntityFactory
+{
+    protected override void Install(IEntity entity)
+    {
+        entity.AddTag("Player");
+        entity.AddValue<int>("Health", 200);
+        entity.AddValue<float>("MoveSpeed", 10);
+        entity.AddBehaviour<MoveBehaviour>();
+    }
+}
 ```
 
-- **Description:** Abstract class for ScriptableObject-based factories that create and
-  configure [Entity](../Entities/Entity.md) instances.
-- **Inheritance:** [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md),
-  [IEntityFactory](IEntityFactory.md)
-- **Notes:** 
-  - Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
-  -  Can be reused across multiple objects without heavy dependencies.
+- **Note:** This pattern allows creating a fully configured `Entity` via ScriptableObject-based workflows, combining
+  predefined capacities with custom logic via `Install()`.
 
 ---
 
 ## 🛠 Inspector Settings
 
-| Parameters                 | Description                                          | 
-|----------------------------|------------------------------------------------------|
-| `autoCompile`              | Should precompute capacities when OnValidate happens?       |
-| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
-| `initialValueCapacity`     | Initial number of values to assign to the entity     |
-| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
+### 🎛️ Parameters
 
-> These parameters are primarily used for **Editor optimization** and asset baking workflows.
+| Parameter                  | Description                                           | 
+|----------------------------|-------------------------------------------------------|
+| `autoCompile`              | Should precompute capacities when OnValidate happens? |
+| `initialTagCapacity`       | Initial number of tags to assign to the entity        |
+| `initialValueCapacity`     | Initial number of values to assign to the entity      |
+| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity  |
+
+- **Note:** These parameters are primarily used for **Editor optimization** and asset baking workflows.
 
 ---
 
-## 🧱 Fields
+### ⚙️ Context Menu
+
+| Option       | Description                                                                                                                                                                                                                                                                   | 
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Precompile` | Creates a temporary entity using [Create()](#create) and **precompiles capacities** such as tag count, value count, and behavior count. Useful for editor previews, asset baking, and optimization. Only executed in the Editor. Logs a warning if `Create()` returns `null`. |
+| `Reset`      | Resets factory fields to default values.                                                                                                                                                                                                                                      |
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+```
+
+- **Inheritance:** [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md),
+  [IEntityFactory](IEntityFactory.md)
+
+---
+
+### 🧱 Fields
 
 #### `InitialTagCapacity`
 
@@ -59,7 +118,7 @@ protected int initialBehaviourCount;
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Create()`
 
@@ -92,21 +151,6 @@ protected virtual void OnValidate();
   calling `Precompile()` by default.
 - **Remarks:** Only executed in the Editor outside of Play mode.
 
----
-
-## ▶️ Context Menu
-
-#### `Precompile()`
-
-```csharp
-[ContextMenu(nameof(Precompile))]
-private void Precompile();
-```
-
-- **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
-  count, and behaviour count. Useful for editor previews, asset baking, and optimization.
-- **Remarks:** Only executed in the Editor. Logs a warning if `Create()` returns `null`.
-
 #### `Reset()`
 
 ```csharp
@@ -118,21 +162,7 @@ protected virtual void Reset();
 
 ---
 
-## 🗂 Example of Usage
+## 📝 Notes
 
-```csharp
-[CreateAssetMenu(menuName = "Examples/Player Factory")]
-public class PlayerScriptableFactory : ScriptableEntityFactory
-{
-    protected override void Install(IEntity entity)
-    {
-        entity.AddTag("Player");
-        entity.AddValue<int>("Health", 200);
-        entity.AddValue<string>("Name", "Hero");
-        entity.AddBehaviour<DeathBehaviour>();
-    }
-}
-```
-
-> This pattern allows creating a fully configured `Entity` via ScriptableObject-based workflows, combining predefined
-> capacities with custom logic via `Install()`.
+- Provides the `Install(IEntity)` method to inject custom configuration logic after entity creation.
+- Can be reused across multiple objects without heavy dependencies.

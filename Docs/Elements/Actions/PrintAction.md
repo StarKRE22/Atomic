@@ -28,6 +28,8 @@ environments, which is especially useful when debugging or logging events in cro
 
 ## 🗂 Example of Usage
 
+Below is an example of using `LogAction` in a code:
+
 ```csharp
 #if UNITY_5_3_OR_NEWER
 

@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Actions/PrintAction.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IEntityFactoryCatalog`1.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,23 +263,7 @@
       <workItem from="1760693092386" duration="23321000" />
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
-      <workItem from="1760779388170" duration="1431000" />
-    </task>
-    <task id="LOCAL-01585" summary="IEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760645998712</created>
-      <option name="number" value="01585" />
-      <option name="presentableId" value="LOCAL-01585" />
-      <option name="project" value="LOCAL" />
-      <updated>1760645998712</updated>
-    </task>
-    <task id="LOCAL-01586" summary="HashEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760646341898</created>
-      <option name="number" value="01586" />
-      <option name="presentableId" value="LOCAL-01586" />
-      <option name="project" value="LOCAL" />
-      <updated>1760646341898</updated>
+      <workItem from="1760779388170" duration="3613000" />
     </task>
     <task id="LOCAL-01587" summary="Сделал раздел с EntityNames!">
       <option name="closed" value="true" />
@@ -655,7 +641,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760779728007</updated>
     </task>
-    <option name="localTasksCounter" value="1634" />
+    <task id="LOCAL-01634" summary="IEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760787733337</created>
+      <option name="number" value="01634" />
+      <option name="presentableId" value="LOCAL-01634" />
+      <option name="project" value="LOCAL" />
+      <updated>1760787733337</updated>
+    </task>
+    <task id="LOCAL-01635" summary="IEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760788272430</created>
+      <option name="number" value="01635" />
+      <option name="presentableId" value="LOCAL-01635" />
+      <option name="project" value="LOCAL" />
+      <updated>1760788272430</updated>
+    </task>
+    <option name="localTasksCounter" value="1636" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +684,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityFilterManual" />
     <MESSAGE value="EntityFilter.md" />
     <MESSAGE value="EntityFilter`1.md" />
     <MESSAGE value="EntityTriggers.md" />
@@ -707,7 +708,8 @@
     <MESSAGE value="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="EntityFactories!" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityFactories!" />
+    <MESSAGE value="IEntityFactory.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityFactory.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
