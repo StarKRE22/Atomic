@@ -4,31 +4,25 @@
 provide a structured way to encapsulate entity creation logic, optionally pre-configuring tags, values, and behaviours.
 Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**, or **inline**.
 
-Below is a list of available factory types:
+---
 
-- **EntityFactories**
-    - [IEntityFactory](IEntityFactory.md) <!-- + -->
-    - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
-    - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
-    - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
-    - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
-    - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
-- **MultiEntityFactories**
-    - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
-    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
-    - [MultiEntityFactory](MultiEntityFactory.md) <!-- + -->
-    - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)  <!-- + -->
-    - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
-    - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
-- **SceneEntityBakers**
-    - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
-    - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Inline Entity Factory](#ex1)
+    - [Scene Entity Baker](#ex2)
+    - [Scriptable Entity Factory](#ex3)
+    - [Multi-Entity Factory](#ex4)
+- [API Reference](#-api-reference)
+- [Notes](#-notes)
 
 ---
 
 ## 🗂 Examples of Usage
 
-Below is an examples of using factories for different scenarios:
+Below are examples of using factories for different scenarios:
+
+<div id="ex1"></div>
 
 ### 1️⃣ Inline Entity Factory
 
@@ -49,6 +43,8 @@ IEntity myEntity = factory.Create();
 
 ---
 
+<div id="ex2"></div>
+
 ### 2️⃣ Scene Entity Baker
 
 ```csharp
@@ -65,9 +61,11 @@ public class EnemyBaker : SceneEntityBaker<EnemyEntity>
 ```
 
 - **Description:** Scene-based factory using Unity `MonoBehaviour`.
-- **Use Case:** Instantiation tied to scene objects with optional post-creation installation logic.
+- **Use Case:** Instantiation tiEnted to scene objects with optional post-creation installation logic.
 
 ---
+
+<div id="ex3"></div>
 
 ### 3️⃣ Scriptable Entity Factory
 
@@ -89,6 +87,8 @@ public class EnemyScriptableFactory : ScriptableEntityFactory<EnemyEntity>
 
 ---
 
+<div id="ex4"></div>
+
 ### 4️⃣ Multi-Entity Factory
 
 ```csharp
@@ -101,6 +101,30 @@ IEntity orc = registry.Create("Orc");
 
 - **Description:** Factory registry keyed by string or generic type.
 - **Use Case:** Managing multiple entity factories dynamically at runtime.
+
+---
+
+## 🔍 API Reference
+
+Below is a list of available factory types:
+
+- **EntityFactories**
+    - [IEntityFactory](IEntityFactory.md) <!-- + -->
+    - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
+    - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
+    - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
+    - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
+    - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
+- **MultiEntityFactories**
+    - [IMultiEntityFactory](IMultiEntityFactory.md) <!-- + -->
+    - [IMultiEntityFactory&lt;E&gt;](IMultiEntityFactory%601.md) <!-- + -->
+    - [MultiEntityFactory](MultiEntityFactory.md) <!-- + -->
+    - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md)  <!-- + -->
+    - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
+    - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
+- **SceneEntityBakers**
+    - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
+    - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
 
 ---
 

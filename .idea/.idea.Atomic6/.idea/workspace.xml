@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTrigger`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/InlineEntityTriggers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +128,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -257,31 +256,10 @@
       <workItem from="1760685951621" duration="6766000" />
       <workItem from="1760692745381" duration="249000" />
       <workItem from="1760692997777" duration="79000" />
-      <workItem from="1760693092386" duration="22925000" />
-    </task>
-    <task id="LOCAL-01581" summary="IEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760644776885</created>
-      <option name="number" value="01581" />
-      <option name="presentableId" value="LOCAL-01581" />
-      <option name="project" value="LOCAL" />
-      <updated>1760644776885</updated>
-    </task>
-    <task id="LOCAL-01582" summary="IEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760645106766</created>
-      <option name="number" value="01582" />
-      <option name="presentableId" value="LOCAL-01582" />
-      <option name="project" value="LOCAL" />
-      <updated>1760645106766</updated>
-    </task>
-    <task id="LOCAL-01583" summary="IEntityNameAlgorithm.md">
-      <option name="closed" value="true" />
-      <created>1760645270459</created>
-      <option name="number" value="01583" />
-      <option name="presentableId" value="LOCAL-01583" />
-      <option name="project" value="LOCAL" />
-      <updated>1760645270459</updated>
+      <workItem from="1760693092386" duration="23321000" />
+      <workItem from="1760778386557" duration="125000" />
+      <workItem from="1760779275854" duration="91000" />
+      <workItem from="1760779388170" duration="331000" />
     </task>
     <task id="LOCAL-01584" summary="IEntityNameAlgorithm.md, SequentialEntityNameAlgorithm.md">
       <option name="closed" value="true" />
@@ -651,7 +629,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760733760451</updated>
     </task>
-    <option name="localTasksCounter" value="1630" />
+    <task id="LOCAL-01630" summary="InlineEntityTrigger`1.md">
+      <option name="closed" value="true" />
+      <created>1760734058631</created>
+      <option name="number" value="01630" />
+      <option name="presentableId" value="LOCAL-01630" />
+      <option name="project" value="LOCAL" />
+      <updated>1760734058631</updated>
+    </task>
+    <task id="LOCAL-01631" summary="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation">
+      <option name="closed" value="true" />
+      <created>1760734131342</created>
+      <option name="number" value="01631" />
+      <option name="presentableId" value="LOCAL-01631" />
+      <option name="project" value="LOCAL" />
+      <updated>1760734131342</updated>
+    </task>
+    <task id="LOCAL-01632" summary="Minor Fixes!">
+      <option name="closed" value="true" />
+      <created>1760734345193</created>
+      <option name="number" value="01632" />
+      <option name="presentableId" value="LOCAL-01632" />
+      <option name="project" value="LOCAL" />
+      <updated>1760734345193</updated>
+    </task>
+    <option name="localTasksCounter" value="1633" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,8 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Extensions.md" />
-    <MESSAGE value="Переписал EntityRegistry.cs" />
     <MESSAGE value="EntityRegistry.md" />
     <MESSAGE value="EntityFilterManual" />
     <MESSAGE value="EntityFilter.md" />
@@ -700,10 +700,12 @@
     <MESSAGE value="StateChangedEntityTrigger.md" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
-    <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="InlineEntityTriggers.md" />
     <MESSAGE value="InlineEntityTrigger.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="InlineEntityTrigger.md" />
+    <MESSAGE value="InlineEntityTrigger`1.md" />
+    <MESSAGE value="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation" />
+    <MESSAGE value="Minor Fixes!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Fixes!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
