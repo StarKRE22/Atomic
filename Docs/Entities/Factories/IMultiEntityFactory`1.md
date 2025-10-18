@@ -76,7 +76,7 @@ public interface IMultiEntityFactory<in K, E> where E : IEntity
 #### `Create(K)`
 
 ```csharp
-E Create(K key);
+public E Create(K key);
 ```
 
 - **Description:** Creates a new entity associated with the specified key.
@@ -86,7 +86,7 @@ E Create(K key);
 #### `TryCreate(K, out E)`
 
 ```csharp
-bool TryCreate(K key, out E entity);
+public bool TryCreate(K key, out E entity);
 ```
 
 - **Description:** Attempts to create a new entity associated with the specified key.
@@ -99,7 +99,7 @@ bool TryCreate(K key, out E entity);
 #### `Contains(K)`
 
 ```csharp
-bool Contains(K key);
+public bool Contains(K key);
 ```
 
 - **Description:** Determines whether an entity associated with the specified key exists.
