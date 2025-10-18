@@ -2,6 +2,7 @@
 
 Represents a <b>parameterless</b> composite scene action that can be invoked. Attach to a `GameObject`, assign a list of
 [IAction](IAction.md) implementations in the Unity Inspector, and they will be invoked sequentially. Supports Odin Inspector.
+
 ---
 
 ## 📑 Table of Contents
