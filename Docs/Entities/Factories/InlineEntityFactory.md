@@ -1,11 +1,6 @@
 # 🧩️ InlineEntityFactory
 
-```csharp
-public class InlineEntityFactory : InlineEntityFactory<IEntity>, IEntityFactory
-```
-
-- **Description:** A lightweight, inline implementation of the non-generic entity factory.
-- **Inheritance:** [InlineEntityFactory\<E>](InlineEntityFactory%601.md), [IEntityFactory](IEntityFactory.md)
+A lightweight, inline implementation of the non-generic entity factory.
 
 > [!TIP]
 > **InlineEntityFactory** can be used as a lightweight mock for unit tests, allowing quick creation of test entities
@@ -13,9 +8,49 @@ public class InlineEntityFactory : InlineEntityFactory<IEntity>, IEntityFactory
 
 ---
 
-## 🏗️ Constructor
+## 📑 Table of Contents
 
-#### `InlineEntityFactory(Func<IEntity> createFunc)`
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [Create()](#create)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Create the inline factory
+var factory = new InlineEntityFactory(() =>
+{
+    var entity = new Entity();
+    entity.AddValue<int>("Health", 100);
+    return entity;
+});
+
+//Usage:
+IEntity myEntity = factory.Create();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public class InlineEntityFactory : InlineEntityFactory<IEntity>, IEntityFactory
+```
+
+- **Inheritance:** [InlineEntityFactory\<E>](InlineEntityFactory%601.md), [IEntityFactory](IEntityFactory.md)
+
+---
+
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 ```csharp
 public InlineEntityFactory(Func<IEntity> createFunc);
@@ -27,7 +62,7 @@ public InlineEntityFactory(Func<IEntity> createFunc);
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Create()`
 
@@ -38,20 +73,3 @@ public override IEntity Create();
 - **Description:** Invokes the wrapped creation delegate to produce a new instance of [IEntity](../Entities/IEntity.md).
 - **Returns:** A new [IEntity](../Entities/IEntity.md) instance.
 - **Notes:** Inherited from [InlineEntityFactory\<IEntity>](InlineEntityFactory%601.md).
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Create a factory
-var factory = new InlineEntityFactory(() =>
-{
-    var entity = new Entity();
-    entity.AddValue<int>("Health", 100);
-    return entity;
-});
-
-//Create an entity
-IEntity myEntity = factory.Create();
-```
