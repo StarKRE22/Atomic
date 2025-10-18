@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/InlineEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,31 +259,7 @@
       <workItem from="1760693092386" duration="23321000" />
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
-      <workItem from="1760779388170" duration="6809000" />
-    </task>
-    <task id="LOCAL-01592" summary="ITickLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1760689221790</created>
-      <option name="number" value="01592" />
-      <option name="presentableId" value="LOCAL-01592" />
-      <option name="project" value="LOCAL" />
-      <updated>1760689221790</updated>
-    </task>
-    <task id="LOCAL-01593" summary="Сделал подписки">
-      <option name="closed" value="true" />
-      <created>1760690674659</created>
-      <option name="number" value="01593" />
-      <option name="presentableId" value="LOCAL-01593" />
-      <option name="project" value="LOCAL" />
-      <updated>1760690674659</updated>
-    </task>
-    <task id="LOCAL-01594" summary="Extensions.md">
-      <option name="closed" value="true" />
-      <created>1760691258664</created>
-      <option name="number" value="01594" />
-      <option name="presentableId" value="LOCAL-01594" />
-      <option name="project" value="LOCAL" />
-      <updated>1760691258664</updated>
+      <workItem from="1760779388170" duration="7541000" />
     </task>
     <task id="LOCAL-01595" summary="EntityRegistry.md">
       <option name="closed" value="true" />
@@ -652,7 +629,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760803775365</updated>
     </task>
-    <option name="localTasksCounter" value="1641" />
+    <task id="LOCAL-01641" summary="InlineEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760804007156</created>
+      <option name="number" value="01641" />
+      <option name="presentableId" value="LOCAL-01641" />
+      <option name="project" value="LOCAL" />
+      <updated>1760804007156</updated>
+    </task>
+    <task id="LOCAL-01642" summary="InlineEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760804201170</created>
+      <option name="number" value="01642" />
+      <option name="presentableId" value="LOCAL-01642" />
+      <option name="project" value="LOCAL" />
+      <updated>1760804201170</updated>
+    </task>
+    <task id="LOCAL-01643" summary="InlineEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1760804354709</created>
+      <option name="number" value="01643" />
+      <option name="presentableId" value="LOCAL-01643" />
+      <option name="project" value="LOCAL" />
+      <updated>1760804354709</updated>
+    </task>
+    <option name="localTasksCounter" value="1644" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,8 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityTriggers.md" />
-    <MESSAGE value="IEntityTrigger.md" />
     <MESSAGE value="IEntityTrigger`1.md" />
     <MESSAGE value="TagEntityTriggers.md" />
     <MESSAGE value="TagEntityTrigger.md" />
@@ -704,7 +703,9 @@
     <MESSAGE value="Подвинул Inspector Settings!" />
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="ScriptableEntityFactory.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ScriptableEntityFactory.md" />
+    <MESSAGE value="InlineEntityFactory.md" />
+    <MESSAGE value="InlineEntityFactory`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="InlineEntityFactory`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
