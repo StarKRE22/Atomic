@@ -1,10 +1,68 @@
 # 🧩 IMultiEntityFactory<K, E>
 
+A generic interface for creating and managing multiple entities identified by a key.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Create(K)](#createk)
+        - [TryCreate(K, out E)](#trycreatek-out-e)
+        - [Contains(K)](#containsk)
+---
+
+## 🗂 Example of Usage
+
+Below is an example of creating enemies through the multi-entity factory:
+
+```csharp
+// Assume we have an enum of enemy types
+public enum EnemyType 
+{
+    Orc,
+    Goblin,
+    Troll
+}
+```
+
+```csharp
+// Assume we have a enemy type derived from Entity 
+public class EnemyEntity : Entity
+{
+}
+```
+
+```csharp
+// Assume we have an instance of a multi-entity factory
+IMultiEntityFactory<EnemyType, EnemyEntity> multiFactory = ...
+
+// Check if an entity exists and create it
+if (multiFactory.Contains(EnemyType.Orc))  
+{  
+    EnemyEntity orc = multiFactory.Create(EnemyType.Orc);  
+}
+
+// Try creating an entity safely
+if (multiFactory.TryCreate(EnemyType.Goblin, out EnemyEntity goblin))  
+{  
+    // use goblin
+}
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IMultiEntityFactory<in K, E> where E : IEntity
 ```
 
-- **Description:** A generic interface for creating and managing multiple entities identified by a key.
 - **Type Parameters:**
     - `K` — The type of key used to identify an entity.
     - `E` — The type of entity to create, which must implement [IEntity](../Entities/IEntity.md)
@@ -13,7 +71,7 @@ public interface IMultiEntityFactory<in K, E> where E : IEntity
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Create(K)`
 
@@ -47,36 +105,3 @@ bool Contains(K key);
 - **Description:** Determines whether an entity associated with the specified key exists.
 - **Parameter:** `key` — The key to check.
 - **Returns:** `true` if an entity with the given key exists; otherwise, `false`.
-
----
-
-## 🗂 Example of Usage
-
-Below is example of creating enemies through the multi entity factory:
-
-```csharp
-// Enum of enemy types
-public enum EnemyType 
-{
-    Orc,
-    Goblin,
-    Troll
-}
-```
-
-```csharp
-// Assume we have an instance of a multi-entity factory
-IMultiEntityFactory<EnemyType, EnemyEntity> multiFactory = ...
-
-// Check if an entity exists and create it
-if (multiFactory.Contains(EnemyType.Orc))  
-{  
-    EnemyEntity orc = multiFactory.Create(EnemyType.Orc);  
-}
-
-// Try creating an entity safely
-if (multiFactory.TryCreate(EnemyType.Goblin, out EnemyEntity goblin))  
-{  
-    // use goblin
-}
-```

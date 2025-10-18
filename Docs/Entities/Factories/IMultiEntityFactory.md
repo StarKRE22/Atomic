@@ -2,7 +2,6 @@
 
 A non-generic registry interface for creating and managing entities using string keys.
 
-
 ---
 
 ## 📑 Table of Contents
