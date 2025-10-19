@@ -1,3 +1,199 @@
+# 🧩 SceneEntityBaker
+
+Abstract base class for Unity scene bakers that convert GameObjects into native [IEntity](../Entities/IEntity.md)
+instances. Provides a workflow to convert authored GameObjects into runtime entity representations.
+
+> Derived classes must implement [Install(IEntity)](#installientity) to define entity configuration logic such as adding
+> tags, values, or behaviours.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Baker Implementation](#ex1)
+    - [Bake All](#ex2)
+- [Inspector Settings](#-inspector-settings)
+    - [Parameters](#-parameters)
+    - [Context Menu](#-context-menu)
+    - [Gizmos](#-gizmos)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Fields](#-fields)
+        - [initialTagCapacity](#initialtagcapacity)
+        - [initialValueCapacity](#initialvaluecapacity)
+        - [initialBehaviourCapacity](#initialbehaviourcapacity)
+    - [Methods](#-methods)
+        - [Bake()](#bake)
+        - [Create()](#create)
+        - [Install(IEntity)](#installientity)
+        - [OnValidate()](#onvalidate)
+        - [Reset()](#reset)
+
+---
+
+## 🗂 Example of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Baker Implementation
+
+```csharp
+public class EnemyBaker : SceneEntityBaker
+{
+    protected override void Install(IEntity entity)
+    {
+        entity.AddTag("Enemy");
+        entity.AddValue<int>("Health", 100);
+        entity.AddValue<float>("Speed", 5f);
+        entity.AddBehaviour<PatrolBehaviour>();
+    }
+}
+```
+
+Then at runtime:
+
+```csharp
+IEntity bakedEnemy = GetComponent<EnemyBaker>().Bake();
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Bake All
+
+```csharp
+// Bake all IEntity bakers in all active scenes
+IEntity[] enemies = EnemyBaker.BakeAll();
+
+EntityWorld world = new EntityWorld();
+world.AddRange(enemies);
+```
+
+---
+
+## 🛠 Inspector Settings
+
+### 🎛️ Parameters
+
+| Parameter                  | Description                                                               |
+|----------------------------|---------------------------------------------------------------------------|
+| `autoCompile`              | Automatically precomputes capacities when values change in the Inspector. |
+| `initialTagCapacity`       | Initial number of tags to allocate for the entity.                        |
+| `initialValueCapacity`     | Initial number of values to allocate for the entity.                      |
+| `initialBehaviourCapacity` | Initial number of behaviours to allocate for the entity.                  |
+
+### ⚙️ Context Menu
+
+| Option     | Description                                                  |
+|------------|--------------------------------------------------------------|
+| Precompile | Creates a temporary preview entity to precompute capacities. |
+| Reset      | Resets all optimization parameters to default values.        |
+
+---
+
+### 🎨 Gizmos
+
+| Setting              | Description                                       |
+|----------------------|---------------------------------------------------|
+| `onlySelectedGizmos` | Draw gizmos only when the GameObject is selected. |
+| `onlyEditModeGizmos` | Disable gizmo drawing during Play mode.           |
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type
+
+```csharp
+public abstract class SceneEntityBaker : SceneEntityBaker<IEntity>
+```
+
+- **Inheritance:** [SceneEntityBaker<E>](SceneEntityBaker%601.md)
+- **Description:** Non-generic base class for scene bakers producing [IEntity](../Entities/IEntity.md).
+
+---
+
+### 🧱 Fields
+
+#### `initialTagCapacity`
+
+```csharp
+[SerializeField]
+protected int initialTagCount;
+```
+
+- **Description:** Initial number of tags for the entity. Used for editor optimization.
+
+#### `initialValueCapacity`
+
+```csharp
+[SerializeField]
+protected int initialValueCount;
+```
+
+- **Description:** Initial number of values for the entity.
+
+#### `initialBehaviourCapacity`
+
+```csharp
+[SerializeField]
+protected int initialBehaviourCount;
+```
+
+- **Description:** Initial number of behaviours for the entity.
+
+---
+
+### 🏹 Methods
+
+#### `Bake()`
+
+```csharp
+public IEntity Bake();
+```
+
+- **Description:** Creates a new entity by calling [Create()](#create) and destroys the associated GameObject.
+- **Returns:** New instance of type `IEntity`.
+
+#### `Create()`
+
+```csharp
+protected sealed override IEntity Create();
+```
+
+- **Description:** Creates a new [IEntity](../Entities/IEntity.md) and applies custom logic
+  via [Install(IEntity)](#installientity).
+- **Remarks:** Sealed; cannot be overridden in derived classes.
+
+#### `Install(IEntity)`
+
+```csharp
+protected abstract void Install(IEntity entity);
+```
+
+- **Description:** Applies custom configuration to the newly created entity (tags, values, behaviours).
+- **Parameter:** `entity` — The entity to configure.
+
+#### `OnValidate()`
+
+```csharp
+protected virtual void OnValidate();
+```
+
+- **Description:** Called when the component is loaded or modified in the Inspector. Triggers precompilation if enabled.
+
+#### `Reset()`
+
+```csharp
+protected virtual void Reset();
+```
+
+- **Description:** Resets optimization parameters to default values.
+
+<!--
+
+
+
 # 🧩️ SceneEntityBaker
 
 Represents an abstract Unity component that converts **GameObject** into [IEntity](../Entities/IEntity.md) instance. It

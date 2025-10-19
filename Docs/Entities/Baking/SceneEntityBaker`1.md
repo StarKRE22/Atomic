@@ -14,7 +14,7 @@ are transformed into entities.
 - [Inspector Settings](#-inspector-settings)
     - [Parameters](#-parameters)
     - [Context Menu](#-context-menu)
-- [Gizmos](#-gizmos)
+    - [Gizmos](#-gizmos)
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Fields](#-fields)
@@ -116,7 +116,9 @@ world.AddRange(enemies);
 | **Precompile** | Creates a temporary preview entity to precompute capacity values for tags, values, and behaviours. Useful for previewing and optimizing in the Unity Editor. |
 | **Reset**      | Resets all optimization parameters to default values.                                                                                                        |
 
-## 🎨 Gizmos
+---
+
+### 🎨 Gizmos
 
 The baker supports drawing **preview gizmos** in the Scene view for visual debugging.
 
