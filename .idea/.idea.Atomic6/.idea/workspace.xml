@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableMultiEntityFactory`1.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,15 +262,7 @@
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
       <workItem from="1760779388170" duration="8053000" />
-      <workItem from="1760877817000" duration="3817000" />
-    </task>
-    <task id="LOCAL-01603" summary="EntityFilter.md">
-      <option name="closed" value="true" />
-      <created>1760721433374</created>
-      <option name="number" value="01603" />
-      <option name="presentableId" value="LOCAL-01603" />
-      <option name="project" value="LOCAL" />
-      <updated>1760721433374</updated>
+      <workItem from="1760877817000" duration="5957000" />
     </task>
     <task id="LOCAL-01604" summary="EntityFilter`1.md">
       <option name="closed" value="true" />
@@ -655,7 +648,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760880639698</updated>
     </task>
-    <option name="localTasksCounter" value="1652" />
+    <task id="LOCAL-01652" summary="ScriptableMultiEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1760881650661</created>
+      <option name="number" value="01652" />
+      <option name="presentableId" value="LOCAL-01652" />
+      <option name="project" value="LOCAL" />
+      <updated>1760881650661</updated>
+    </task>
+    <option name="localTasksCounter" value="1653" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ValueEntityTrigger`1.md" />
     <MESSAGE value="BehaviourEntityTriggers.md" />
     <MESSAGE value="BehaviourEntityTrigger.md" />
     <MESSAGE value="BehaviourEntityTrigger`1.md" />
@@ -707,7 +707,8 @@
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ScriptableMultiEntityFactory`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

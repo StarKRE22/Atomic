@@ -31,10 +31,10 @@ public class CharacterBaker : SceneEntityBaker
 // Create all entities associated with SceneEntityBaker including character
 IEntity[] entities = SceneEntityBaker.BakeAll();
 
-//Assume we have the entity world
+// Assume we have the entity world
 EntityWorld world = new EntityWorld();
 
-//Add enemies to entity world
+// Add enemies to entity world
 world.AddRange(enemies);
 ```
 
