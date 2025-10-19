@@ -6,16 +6,44 @@ entity type.
 
 ---
 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Default Constructor](#default-constructor)
+        - [Dictionary Constructor](#dictionary-constructor)
+        - [Enumerable Constructor](#enumerable-constructor)
+        - [Params Constructor](#params-constructor)
+    - [Methods](#-methods)
+        - [Register(string, IEntityFactory\<IEntity>)](#registerstring-ientityfactoryientity)
+        - [Unregister(string)](#unregisterstring)
+        - [Create(string)](#createstring)
+        - [TryCreate(string, out IEntity)](#trycreatestring-out-ientity)
+        - [Contains(string)](#containsstring)
+
+---
+
 ## 🗂 Example of Usage
 
 ```csharp
-IMultiEntityFactory factory = new MultiEntityFactory();
+// Create a new instance of MultiEntityFactory
+var multiFactory = new MultiEntityFactory();
 
-factory.Register("Orc", new InlineEntityFactory<IEntity>(() => new Entity("Orc")));
-factory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new Entity("Goblin")));
+// Assume we have some instances of EntityFactory
+IEntityFactory orcFactory, goblinFactory = ...;
 
-IEntity orc = factory.Create("Orc");
-IEntity goblin = factory.Create("Goblin");
+// Register these factories
+multiFactory.Register("Orc", orcFactory);
+multiFactory.Register("Goblin", goblinFactory);
+
+// Create entities through MultiEntityFactory
+IEntity orc = multiFactory.Create("Orc");
+IEntity goblin = multiFactory.Create("Goblin");
+
+// Unregister these factories
+multiFactory.Unregister("Orc", orcFactory);
+multiFactory.Unregister("Goblin", goblinFactory);
 ```
 
 ---
