@@ -26,7 +26,7 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IGameEntity entity)
         {
-            GameContext gameContext = GameContext.Instance;
+            GameContext.TryGetInstance(out GameContext gameContext);
             
             //Transform:
             entity.AddPosition(new TransformPositionVariable(_transform));

@@ -255,6 +255,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 142823030907993792, guid: 60dfb446adbd8491a9d553fb02950bce, type: 3}
+      propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142823030907993792, guid: 60dfb446adbd8491a9d553fb02950bce, type: 3}
+      propertyPath: initialValueCapacity
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4104232774504360194, guid: 60dfb446adbd8491a9d553fb02950bce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -38,7 +38,8 @@ namespace ShooterGame.Gameplay
         {
             _animator.SetTrigger(Death);
             await UniTask.WaitForSeconds(_deathDuration);
-            _view.SetActive(false);
+            if (_view) 
+                _view.SetActive(false);
         }
     }
 }

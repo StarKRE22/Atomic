@@ -48,20 +48,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6e54b4b20849529268bfc4cd5d5081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
-  installInEditMode: 0
-  disposeValues: 1
   useUnityLifecycle: 1
-  installers:
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
   - {fileID: 5218802606639279471}
   children:
   - {fileID: 6133313424419818546}
   - {fileID: 1338024790304836}
-  _initialBehaviourCapacity: 0
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
-  _initialTagCapacity: 1
-  _initialValueCapacity: 1
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 0
+  initialValueCapacity: 11
+  initialBehaviourCapacity: 2
   _isGlobal: 1
   _dontDestroyOnLoad: 0
 --- !u!114 &5218802606639279471
@@ -141,6 +143,18 @@ PrefabInstance:
     - target: {fileID: 1080935803387390440, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: m_Name
       value: '[PlayerContext] (Red)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialValueCapacity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialBehaviourCapacity
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5092996531583891971, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: _inputMap
@@ -222,6 +236,18 @@ PrefabInstance:
     - target: {fileID: 1080935803387390440, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: m_Name
       value: '[PlayerContext] (Blue)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialTagCapacity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialValueCapacity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060064001895777312, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
+      propertyPath: initialBehaviourCapacity
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5092996531583891971, guid: dfc2719ab8c3b4f01bc0ba657143e3c9, type: 3}
       propertyPath: _teamType.value

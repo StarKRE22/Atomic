@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Atomic.Elements;
 using Atomic.Entities;
 using Cysharp.Threading.Tasks;
@@ -20,12 +21,12 @@ namespace ShooterGame.Gameplay
             entity.GetTeamType().Value = context.GetTeamType().Value;
             return entity;
         }
-        
-        public static async UniTaskVoid RespawnWithDelay(IPlayerContext playerContext, IGameContext gameContext)
+
+        public static IEnumerator RespawnWithDelay(IPlayerContext playerContext, IGameContext gameContext)
         {
             IValue<float> respawnTime = gameContext.GetRespawnDelay();
-            await UniTask.Delay(TimeSpan.FromSeconds(respawnTime.Value));
-            if (GameCycleUseCase.IsPlaying(gameContext)) 
+            yield return new WaitForSeconds(respawnTime.Value);
+            if (GameCycleUseCase.IsPlaying(gameContext))
                 Respawn(playerContext, gameContext);
         }
 
@@ -33,11 +34,11 @@ namespace ShooterGame.Gameplay
         {
             IGameEntity character = playerContext.GetCharacter();
             character.GetHealth().AssignMax();
-           
+
             Transform nextPoint = SpawnPointsUseCase.NextPoint(gameContext);
             character.GetPosition().Value = nextPoint.position;
             character.GetRotation().Value = nextPoint.rotation;
-            
+
             character.GetRespawnEvent().Invoke();
             DebugRespawn(character);
         }

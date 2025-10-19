@@ -21,19 +21,27 @@ namespace ShooterGame.Gameplay
 
         public override void Install(IPlayerContext context)
         {
-            GameContext gameContext = GameContext.Instance;
-            gameContext.GetLeaderboard().TryAdd(_teamType, 0);
-            
-            if (gameContext.TryGetPlayers(out IDictionary<TeamType, IPlayerContext> players)) 
-                players.TryAdd(_teamType, context);
-
-            gameContext.WhenDisable(context.Disable);
+            this.InstallGameContext(context);
 
             context.AddTeamType(_teamType);
             context.AddInputMap(_inputMap);
 
             context.Install(_characterInstaller);
             context.Install(_cameraInstaller);
+        }
+
+        private void InstallGameContext(IPlayerContext context)
+        {
+            if (!GameContext.TryGetInstance(out GameContext gameContext)) 
+                return;
+            
+            if (gameContext.TryGetLeaderboard(out IReactiveDictionary<TeamType, int> leaderboard)) 
+                leaderboard.TryAdd(_teamType, 0);
+            
+            if (gameContext.TryGetPlayers(out IDictionary<TeamType, IPlayerContext> players)) 
+                players.TryAdd(_teamType, context);
+
+            gameContext.WhenDisable(context.Disable);
         }
     }
 }

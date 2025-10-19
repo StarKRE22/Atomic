@@ -6,13 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Coin.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/UI/[UI].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/UI/[UI].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scenes/BeginnerGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scenes/BeginnerGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameContext/[GameContext].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameContext/[GameContext].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Character.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterRespawnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterRespawnController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterUseCase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,15 +262,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="8953000" />
-    </task>
-    <task id="LOCAL-01614" summary="ValueEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1760726556930</created>
-      <option name="number" value="01614" />
-      <option name="presentableId" value="LOCAL-01614" />
-      <option name="project" value="LOCAL" />
-      <updated>1760726556930</updated>
+      <workItem from="1760892887411" duration="10157000" />
     </task>
     <task id="LOCAL-01615" summary="BehaviourEntityTriggers.md">
       <option name="closed" value="true" />
@@ -652,7 +648,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760905981527</updated>
     </task>
-    <option name="localTasksCounter" value="1663" />
+    <task id="LOCAL-01663" summary="Beginner Game починил!">
+      <option name="closed" value="true" />
+      <created>1760906745093</created>
+      <option name="number" value="01663" />
+      <option name="presentableId" value="LOCAL-01663" />
+      <option name="project" value="LOCAL" />
+      <updated>1760906745093</updated>
+    </task>
+    <option name="localTasksCounter" value="1664" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="StateChangedEntityTrigger.md" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
     <MESSAGE value="InlineEntityTriggers.md" />
@@ -704,7 +707,8 @@
     <MESSAGE value="SceneEntityBaker`1.md" />
     <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Сделал Baking!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал Baking!" />
+    <MESSAGE value="Beginner Game починил!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beginner Game починил!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

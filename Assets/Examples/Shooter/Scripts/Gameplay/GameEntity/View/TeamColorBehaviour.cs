@@ -13,8 +13,7 @@ namespace ShooterGame.Gameplay
 
         public void Init(IGameEntity entity)
         {
-            GameContext gameContext = GameContext.Instance;
-            if (gameContext)
+            if (GameContext.TryGetInstance(out GameContext gameContext))
                 gameContext.TryGetTeamCatalog(out _catalog);
 
             _renderer = entity.GetRenderer();

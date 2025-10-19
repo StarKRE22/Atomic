@@ -1,28 +1,31 @@
+using Atomic.Elements;
 using Atomic.Entities;
 
 namespace ShooterGame.Gameplay
 {
     public sealed class CharacterRespawnController : IEntityInit<IPlayerContext>, IEntityDispose
     {
-        private IGameContext _gameContext;
+        private GameContext _gameContext;
 
         private IPlayerContext _playerContext;
+        private Health _characterHealth;
 
         public void Init(IPlayerContext context)
         {
             _gameContext = GameContext.Instance;
             _playerContext = context;
-            _playerContext.GetCharacter().GetHealth().OnHealthEmpty += this.OnHealthEmpty;
+            _characterHealth = _playerContext.GetCharacter().GetHealth();
+            _characterHealth.OnHealthEmpty += this.OnHealthEmpty;
         }
 
         public void Dispose(IEntity entity)
         {
-            _playerContext.GetCharacter().GetHealth().OnHealthEmpty -= this.OnHealthEmpty;
+            _characterHealth.OnHealthEmpty -= this.OnHealthEmpty;
         }
 
         private void OnHealthEmpty()
         {
-            CharacterUseCase.RespawnWithDelay(_playerContext, _gameContext).Forget();
+            _gameContext.StartCoroutine(CharacterUseCase.RespawnWithDelay(_playerContext, _gameContext));
         }
     }
 }

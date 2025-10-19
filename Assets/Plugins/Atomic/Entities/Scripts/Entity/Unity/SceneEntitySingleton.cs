@@ -62,6 +62,24 @@ namespace Atomic.Entities
             }
         }
 
+        public static bool TryGetInstance(out E instance)
+        {
+            if (_instance)
+            {
+                instance = _instance;
+                return true;
+            }
+
+#if UNITY_2023_1_OR_NEWER
+            _instance = FindObjectsByType<E>(FindObjectsSortMode.None).FirstOrDefault(it => it._isGlobal);
+#else
+            _instance = FindObjectsOfType<E>().FirstOrDefault(it => it._isGlobal);
+#endif
+
+            instance = _instance;
+            return instance;
+        }
+
         private static E _instance;
 
         /// <summary>
