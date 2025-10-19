@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/IMultiEntityFactory`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/MultiEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/MultiEntityFactory.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,23 +260,8 @@
       <workItem from="1760693092386" duration="23321000" />
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
-      <workItem from="1760779388170" duration="7863000" />
-    </task>
-    <task id="LOCAL-01596" summary="Переписал EntityRegistry.cs">
-      <option name="closed" value="true" />
-      <created>1760696935960</created>
-      <option name="number" value="01596" />
-      <option name="presentableId" value="LOCAL-01596" />
-      <option name="project" value="LOCAL" />
-      <updated>1760696935960</updated>
-    </task>
-    <task id="LOCAL-01597" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760717120804</created>
-      <option name="number" value="01597" />
-      <option name="presentableId" value="LOCAL-01597" />
-      <option name="project" value="LOCAL" />
-      <updated>1760717120804</updated>
+      <workItem from="1760779388170" duration="8053000" />
+      <workItem from="1760877817000" duration="336000" />
     </task>
     <task id="LOCAL-01598" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -653,7 +639,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760810141680</updated>
     </task>
-    <option name="localTasksCounter" value="1645" />
+    <task id="LOCAL-01645" summary="IMultiEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1760810315674</created>
+      <option name="number" value="01645" />
+      <option name="presentableId" value="LOCAL-01645" />
+      <option name="project" value="LOCAL" />
+      <updated>1760810315674</updated>
+    </task>
+    <task id="LOCAL-01646" summary="IMultiEntityFactory`1.md">
+      <option name="closed" value="true" />
+      <created>1760810356510</created>
+      <option name="number" value="01646" />
+      <option name="presentableId" value="LOCAL-01646" />
+      <option name="project" value="LOCAL" />
+      <updated>1760810356510</updated>
+    </task>
+    <option name="localTasksCounter" value="1647" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TagEntityTriggers.md" />
     <MESSAGE value="TagEntityTrigger.md" />
     <MESSAGE value="TagEntityTrigger`1.md" />
     <MESSAGE value="ValueEntityTriggers.md" />
@@ -705,7 +706,8 @@
     <MESSAGE value="InlineEntityFactory.md" />
     <MESSAGE value="InlineEntityFactory`1.md" />
     <MESSAGE value="IMultiEntityFactory.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IMultiEntityFactory.md" />
+    <MESSAGE value="IMultiEntityFactory`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IMultiEntityFactory`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

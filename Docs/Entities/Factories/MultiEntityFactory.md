@@ -1,18 +1,41 @@
 # 🧩 MultiEntityFactory
 
+А non-generic registry for managing entity factories
+using keys for registration and lookup. Uses `string` as the key type and [IEntity](../Entities/IEntity.md) as the
+entity type.
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IMultiEntityFactory factory = new MultiEntityFactory();
+
+factory.Register("Orc", new InlineEntityFactory<IEntity>(() => new Entity("Orc")));
+factory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new Entity("Goblin")));
+
+IEntity orc = factory.Create("Orc");
+IEntity goblin = factory.Create("Goblin");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class MultiEntityFactory : MultiEntityFactory<string, IEntity>, IMultiEntityFactory
 ```
 
-- **Description:** a non-generic registry for managing entity factories
-  using keys for registration and lookup.
 - **Inheritance:** [MultiEntityFactory<K, E>](MultiEntityFactory%601.md),
   [IMultiEntityFactory](IMultiEntityFactory.md)
-- **Note:** Uses `string` as the key type and [IEntity](../Entities/IEntity.md) as the entity type.
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructors"></div>
+
+### 🏗️ Constructors
 
 #### `Default Constructor`
 
@@ -51,7 +74,7 @@ public MultiEntityFactory(params KeyValuePair<string, IEntityFactory<IEntity>>[]
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Register(string, IEntityFactory<IEntity>)`
 
@@ -101,8 +124,8 @@ public bool TryCreate(string key, out IEntity entity);
 
 - **Description:** Attempts to create a new entity associated with the specified key.
 - **Parameters:**
-  - `key` — The string key identifying the entity to create.
-  - `entity` — When the method returns, contains the created entity if the key exists; otherwise, `null`.
+    - `key` — The string key identifying the entity to create.
+    - `entity` — When the method returns, contains the created entity if the key exists; otherwise, `null`.
 - **Returns:** `true` if the entity was created successfully; otherwise, `false`.
 
 #### `Contains(string)`
@@ -114,18 +137,3 @@ public bool Contains(string key);
 - **Description:** Determines whether an entity associated with the specified key exists.
 - **Parameter:** `key` — The string key to check.
 - **Returns:** `true` if an entity with the given key exists; otherwise, `false`.
-
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IMultiEntityFactory factory = new MultiEntityFactory();
-
-factory.Register("Orc", new InlineEntityFactory<IEntity>(() => new Entity("Orc")));
-factory.Register("Goblin", new InlineEntityFactory<IEntity>(() => new Entity("Goblin")));
-
-IEntity orc = factory.Create("Orc");
-IEntity goblin = factory.Create("Goblin");
-```
