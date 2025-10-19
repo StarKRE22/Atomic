@@ -29,6 +29,19 @@ namespace Atomic.Entities
             return entity;
         }
 
+        /// <summary>
+        /// Applies custom setup logic to the created <see cref="IEntity"/> instance.
+        /// </summary>
+        /// <param name="entity">
+        /// The newly created entity to configure.  
+        /// Called immediately after entity construction inside <see cref="Create"/>.
+        /// </param>
+        /// <remarks>
+        /// Override this method in derived factory classes to define how scene-level data 
+        /// and MonoBehaviour state are mapped into the entity.
+        /// Typical usage includes adding components, tags, values, and behaviors that describe 
+        /// the baked object’s functionality.
+        /// </remarks>
         protected abstract void Install(IEntity entity);
     }
 }

@@ -113,5 +113,34 @@ namespace Atomic.Entities
             foreach (E entity in it)
                 entity.Dispose();
         }
+
+#if UNITY_5_3_OR_NEWER
+        /// <summary>
+        /// Collects all <see cref="SceneEntity"/> instances present in the active scene,
+        /// calls their <see cref="SceneEntity.Install"/> method, and adds them to the given collection.
+        /// </summary>
+        /// <typeparam name="E">Type of scene entity to collect.</typeparam>
+        /// <param name="collection">The target collection where entities will be added.</param>
+        /// <param name="includeInactive">Whether to include inactive GameObjects.</param>
+        public static void CollectAllEntities<E>(this IEntityCollection<E> collection, bool includeInactive = false)
+            where E : SceneEntity
+        {
+#if UNITY_2023_1_OR_NEWER
+            FindObjectsInactive findObjectsInactive = includeInactive
+                ? FindObjectsInactive.Include
+                : FindObjectsInactive.Exclude;
+
+            E[] entities = GameObject.FindObjectsByType<E>(findObjectsInactive, FindObjectsSortMode.None);
+#else
+            E[] entities = GameObject.FindObjectsOfType<E>(includeInactive);
+#endif
+            for (int i = 0, count = entities.Length; i < count; i++)
+            {
+                E entity = entities[i];
+                entity.Install();
+                collection.Add(entity);
+            }
+        }
+#endif
     }
 }

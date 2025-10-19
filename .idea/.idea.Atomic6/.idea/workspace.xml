@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/MultiEntityFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/MultiEntityFactory.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBakers.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,23 +262,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="2553000" />
-    </task>
-    <task id="LOCAL-01607" summary="IEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1760723205140</created>
-      <option name="number" value="01607" />
-      <option name="presentableId" value="LOCAL-01607" />
-      <option name="project" value="LOCAL" />
-      <updated>1760723205140</updated>
-    </task>
-    <task id="LOCAL-01608" summary="IEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1760723290533</created>
-      <option name="number" value="01608" />
-      <option name="presentableId" value="LOCAL-01608" />
-      <option name="project" value="LOCAL" />
-      <updated>1760723290533</updated>
+      <workItem from="1760892887411" duration="5512000" />
     </task>
     <task id="LOCAL-01609" summary="TagEntityTriggers.md">
       <option name="closed" value="true" />
@@ -655,7 +640,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760894482884</updated>
     </task>
-    <option name="localTasksCounter" value="1656" />
+    <task id="LOCAL-01656" summary="SceneEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760895454330</created>
+      <option name="number" value="01656" />
+      <option name="presentableId" value="LOCAL-01656" />
+      <option name="project" value="LOCAL" />
+      <updated>1760895454330</updated>
+    </task>
+    <task id="LOCAL-01657" summary="SceneEntityFactory.md">
+      <option name="closed" value="true" />
+      <created>1760895602575</created>
+      <option name="number" value="01657" />
+      <option name="presentableId" value="LOCAL-01657" />
+      <option name="project" value="LOCAL" />
+      <updated>1760895602575</updated>
+    </task>
+    <option name="localTasksCounter" value="1658" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BehaviourEntityTrigger.md" />
     <MESSAGE value="BehaviourEntityTrigger`1.md" />
     <MESSAGE value="StateChangedEntityTriggers.md" />
     <MESSAGE value="StateChangedEntityTrigger.md" />
@@ -707,7 +707,8 @@
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
     <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="SceneEntityFactory.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

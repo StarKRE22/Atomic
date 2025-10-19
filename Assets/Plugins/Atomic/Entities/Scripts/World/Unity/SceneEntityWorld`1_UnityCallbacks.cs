@@ -4,8 +4,8 @@ namespace Atomic.Entities
     {
         protected virtual void Awake()
         {
-            if (this.registerOnAwake)
-                this.RegisterAllEntities();
+            if (this.collectOnAwake)
+                this.CollectAllEntities(this.includeInactiveOnCollect);
 
             if (this.dontDestroyOnLoad)
                 DontDestroyOnLoad(this.gameObject);

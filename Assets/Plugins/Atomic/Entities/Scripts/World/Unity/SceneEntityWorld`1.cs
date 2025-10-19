@@ -34,25 +34,6 @@ namespace Atomic.Entities
             get => this.name;
             set => this.name = value;
         }
-
-        public void RegisterAllEntities()
-        {
-#if UNITY_2023_1_OR_NEWER
-            FindObjectsInactive includeInactive = this.includeInactiveOnRegister
-                ? FindObjectsInactive.Include
-                : FindObjectsInactive.Exclude;
-
-            E[] entities = FindObjectsByType<E>(includeInactive, FindObjectsSortMode.None);
-#else
-            E[] entities = FindObjectsOfType<E>(this.includeInactiveOnScan);
-#endif
-            for (int i = 0, count = entities.Length; i < count; i++)
-            {
-                E entity = entities[i];
-                entity.Install();
-                this.Add(entity);
-            }
-        }
     }
 }
 #endif

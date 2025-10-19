@@ -34,7 +34,7 @@ namespace Atomic.Entities
                 SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Create();
+                    E entity = baker.Bake();
                     entities[i] = entity;
                 }
             }
@@ -74,10 +74,9 @@ namespace Atomic.Entities
                 ? FindObjectsInactive.Include
                 : FindObjectsInactive.Exclude;
 
-            SceneEntityBaker<E>[] bakers =
-                FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
+            SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
-                SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
+            SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
 
             int count = bakers.Length;
@@ -86,7 +85,7 @@ namespace Atomic.Entities
                 SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Create();
+                    E entity = baker.Bake();
                     destination.Add(entity);
                 }
             }
@@ -111,7 +110,7 @@ namespace Atomic.Entities
                     SceneEntityBaker<E> baker = bakers[j];
                     if (includeInactive || baker.gameObject.activeInHierarchy)
                     {
-                        E entity = baker.Create();
+                        E entity = baker.Bake();
                         result.Add(entity);
                     }
                 }
@@ -142,7 +141,7 @@ namespace Atomic.Entities
                     SceneEntityBaker<E> baker = bakers[j];
                     if (includeInactive || baker.gameObject.activeInHierarchy)
                     {
-                        E entity = baker.Create();
+                        E entity = baker.Bake();
                         results.Add(entity);
                     }
                 }
@@ -167,7 +166,7 @@ namespace Atomic.Entities
                 if (!includeInactive && !baker.gameObject.activeInHierarchy)
                     continue;
 
-                E entity = baker.Create();
+                E entity = baker.Bake();
                 entities[i] = entity;
             }
 
@@ -192,7 +191,7 @@ namespace Atomic.Entities
                 SceneEntityBaker<E> baker = bakers[i];
                 if (includeInactive || baker.gameObject.activeInHierarchy)
                 {
-                    E entity = baker.Create();
+                    E entity = baker.Bake();
                     results.Add(entity);
                 }
             }

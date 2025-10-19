@@ -25,7 +25,7 @@ namespace Atomic.Entities
 
             T world = go.AddComponent<T>();
             world.Name = name;
-            world.registerOnAwake = scanEntities;
+            world.collectOnAwake = scanEntities;
             world.useUnityLifecycle = useUnityLifecycle;
 
             go.SetActive(true);

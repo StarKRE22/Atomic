@@ -21,16 +21,16 @@ namespace Atomic.Entities
         [HideInPlayMode]
         [GUIColor(0f, 0.83f, 1f)]
 #endif
-        [Header("Entity Registration")]
+        [Header("Entity Scan")]
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
         [SerializeField]
-        private protected bool registerOnAwake = true;
+        private protected bool collectOnAwake = true;
 
 #if ODIN_INSPECTOR
-        [ShowIf(nameof(registerOnAwake))]
+        [ShowIf(nameof(collectOnAwake))]
 #endif
         [Tooltip("If this option is enabled then EntityWorld scan inactive Entities on a scene also")]
         [SerializeField]
-        private bool includeInactiveOnRegister = true;
+        private bool includeInactiveOnCollect = true;
     }
 }

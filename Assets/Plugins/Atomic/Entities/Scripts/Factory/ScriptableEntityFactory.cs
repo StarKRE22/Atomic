@@ -27,6 +27,22 @@ namespace Atomic.Entities
             return entity;
         }
 
+        /// <summary>
+        /// Applies custom setup logic to the newly created <see cref="IEntity"/> instance.
+        /// </summary>
+        /// <param name="entity">
+        /// The entity instance to configure.  
+        /// Called immediately after construction within the <see cref="Create"/> method.
+        /// </param>
+        /// <remarks>
+        /// Implement this method in derived classes to define how data from the 
+        /// <see cref="ScriptableObject"/> asset should be applied to the entity.
+        /// 
+        /// This is typically used to:
+        /// <list type="bullet">
+        /// <item><description>Add tags, values, or behaviors</description></item>
+        /// </list>
+        /// </remarks>
         protected abstract void Install(IEntity entity);
     }
 }

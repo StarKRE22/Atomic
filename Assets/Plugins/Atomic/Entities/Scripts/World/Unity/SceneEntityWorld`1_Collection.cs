@@ -16,14 +16,14 @@ namespace Atomic.Entities
             add => _world.OnAdded += value;
             remove => _world.OnAdded -= value;
         }
-        
+
         /// <inheritdoc />
         public event Action<E> OnRemoved
         {
             add => _world.OnRemoved += value;
             remove => _world.OnRemoved -= value;
         }
-     
+
         /// <inheritdoc />
         public bool IsReadOnly => _world.IsReadOnly;
 

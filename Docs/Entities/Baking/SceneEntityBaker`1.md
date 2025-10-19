@@ -1,48 +1,130 @@
-# 🧩️ SceneEntityBaker\<E>
+# 🧩 SceneEntityBaker\<E>
 
-
-Represents an abstract Unity component that converts **GameObject** into entity of `E` type.
-It supports batch baking for entire scenes, GameObjects, or all objects in the scene.
+Abstract base class for MonoBehaviour-based *bakers* that convert a scene **GameObject** into a native
+C# [IEntity](../Entities/IEntity.md) instance. Designed for runtime conversion workflows where scene-authored objects
+are transformed into entities.
 
 ---
 
+---
+
+## 🗂 Example of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Baker Implementation
+
+Below is an example of a MonoBehaviour-based baker that converts a `GameObject` into an `EnemyEntity`:
+
 ```csharp
-public abstract class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
+public class EnemyBaker : SceneEntityBaker<EnemyEntity>
+{
+    protected override EnemyEntity Create()
+    {
+        var enemy = new EnemyEntity(
+            this.name,
+            tagCapacity: this.initialTagCapacity,
+            valueCapacity: this.initialValueCapacity,
+            behaviourCapacity: this.initialBehaviourCapacity
+        );
+
+        enemy.AddTag("Enemy");
+        enemy.AddValue<int>("Health", 100);
+        enemy.AddValue<float>("Speed", 5f);
+        enemy.AddBehaviour<PatrolBehaviour>();
+
+        return enemy;
+    }
+}
 ```
 
-- **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
-- **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
-- **Notes:** Stores initial tag, value, and behaviour capacities for optimization.
-- **See also:** [SceneEntityBaker](SceneEntityBaker.md)
+Then, at runtime:
+
+```csharp
+EnemyEntity bakedEnemy = GetComponent<EnemyBaker>().Bake();
+```
+
+This will create an `EnemyEntity` and automatically **destroy the original GameObject** after conversion.
+
+<div id="ex2"></div>
+
+### 2️⃣ Bake All
+
+```csharp
+// Create all associated enemies by EnemyBakers those found on all active scenes
+EnemyEntity[] enemies = EnemyBaker.BakeAll();
+
+//Assume we have entity world
+EntityWorld world = new EntityWorld();
+
+//Add enemies to entity world
+world.AddRange(enemies);
+```
 
 ---
 
 ## 🛠 Inspector Settings
 
-| Parameters                 | Description                                          | 
-|----------------------------|------------------------------------------------------|
-| `autoCompile`              | Should precompute capacities when OnValidate happens?       |
-| `initialTagCapacity`       | Initial number of tags to assign to the entity       |
-| `initialValueCapacity`     | Initial number of values to assign to the entity     |
-| `initialBehaviourCapacity` | Initial number of behaviours to assign to the entity |
+<div id="-parameters"></div>
 
-> These parameters are primarily used for **Editor optimization** and scene baking workflows.
+### 🎛️ Parameters
+
+| Parameter                  | Description                                                                           |
+|----------------------------|---------------------------------------------------------------------------------------|
+| `autoCompile`              | If enabled, automatically precomputes capacities when values change in the Inspector. |
+| `initialTagCapacity`       | Initial number of tags to allocate for the entity.                                    |
+| `initialValueCapacity`     | Initial number of values to allocate for the entity.                                  |
+| `initialBehaviourCapacity` | Initial number of behaviours to allocate for the entity.                              |
+
+- **Note:** These parameters help optimize entity creation by reducing dynamic resizing during runtime.
 
 ---
 
-## 🧱 Fields
+<div id="-context-menu"></div>
 
-#### `InitialTagCapacity`
+### ⚙️ Context Menu
+
+| Option         | Description                                                                                                                                                  |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Precompile** | Creates a temporary preview entity to precompute capacity values for tags, values, and behaviours. Useful for previewing and optimizing in the Unity Editor. |
+| **Reset**      | Resets all optimization parameters to default values.                                                                                                        |
+
+## 🎨 Gizmos
+
+The baker supports drawing **preview gizmos** in the Scene view for visual debugging.
+
+| Setting              | Description                                                    |
+|----------------------|----------------------------------------------------------------|
+| `onlySelectedGizmos` | If enabled, draws gizmos only when the GameObject is selected. |
+| `onlyEditModeGizmos` | If enabled, disables gizmo drawing while the game is running.  |
+
+Each entity behaviour that implements [IEntityGizmos](../Behaviours/IEntityGizmos.md) will have its gizmos drawn
+automatically during edit mode preview.
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-[SerializeField] 
+public abstract partial class SceneEntityBaker<E> : MonoBehaviour where E : IEntity
+```
+
+- **Generic Parameter:** `E` — Type of entity produced by the baker. Must implement [IEntity](../Entities/IEntity.md).
+- **Usage:** Attach this script to a `GameObject` in the scene to bake it into a pure C# entity at runtime.
+
+### 🧱 Fields
+
+#### `initialTagCapacity`
+
+```csharp
+[SerializeField]
 protected int initialTagCount;
 ```
 
-- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and scene
+- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and asset
   baking.
 
-#### `InitialValueCapacity`
+#### `initialValueCapacity`
 
 ```csharp
 [SerializeField]
@@ -51,10 +133,10 @@ protected int initialValueCount;
 
 - **Description:** Initial number of values to assign to the entity.
 
-#### `InitialBehaviourCapacity`
+#### `initialBehaviourCapacity`
 
 ```csharp
-[SerializeField] 
+[SerializeField]
 protected int initialBehaviourCount;
 ```
 
@@ -62,19 +144,27 @@ protected int initialBehaviourCount;
 
 ---
 
-## 🏹 Public Methods
+### 🏹 Methods
+
+#### `Bake()`
+
+```csharp
+public E Bake();
+```
+
+- **Description:** Creates a new entity by calling [Create()](#create) and destroys the associated GameObject.
+- **Returns:** A new instance of type `E`.
+- **Remarks:** Intended for runtime conversion; removes the authoring GameObject from the scene after baking.
 
 #### `Create()`
 
 ```csharp
-public abstract E Create();
+protected abstract E Create();
 ```
 
-- **Description:** Creates and returns a new instance of the entity type `E`.
-- **Returns:** A new instance of type `E`.
-- **Note:** Override this method to implement custom instantiation logic.
-
----
+- **Description:** Constructs and returns a new entity instance. Must be implemented by derived classes.
+- **Returns:** A newly created entity of type `E`.
+- **Remarks:** Define the entity’s initialization logic here (add tags, values, or behaviours).
 
 #### `OnValidate()`
 
@@ -82,15 +172,16 @@ public abstract E Create();
 protected virtual void OnValidate();
 ```
 
-- **Description:** Unity callback invoked when script values change in the Inspector. Updates cached metadata by calling
-  `Precompile()` by default.
-- **Remarks:** Only executed in the Editor outside of Play mode.
+- **Description:** Called when the component is loaded or modified in the Inspector. Triggers `Precompile()` if
+  automatic compilation is enabled.
 
----
+#### `Reset()`
 
-## 🏹 Static Methods
+```csharp
+protected virtual void Reset();
+```
 
-Represents static methods for baking entities under Unity scenes and GameObject domains.
+- **Description:** Resets optimization parameters to their default values. Useful for clearing editor-side cached data.
 
 #### `BakeAll(bool)`
 
@@ -166,70 +257,6 @@ public static void Bake(GameObject gameObject, ICollection<E> results, bool incl
   - `includeInactive` — Whether to include inactive objects in the search.
 - **Exceptions:** Throws `ArgumentNullException` if `results` is `null`.
 
----
-
-## ▶️ Context Menu
-
-#### `Precompile()`
-
-```csharp
-[ContextMenu(nameof(Precompile))]
-private void Precompile();
-```
-
-- **Description:** Creates a temporary entity using `Create()` and **precompiles capacities** such as tag count, value
-  count, and behaviour count. Useful for editor previews, scene baking, and optimization.
-- **Remarks:** Useful for optimization. Only executed in the Editor. Logs a warning if `Create()` returns `null`.
-
-#### `Reset()`
-
-```csharp
-protected virtual void Reset();
-```
-
-- **Description:** Unity callback that resets factory fields to default values.
-- **Remarks:** Only affects editor workflows.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-public class EnemyBaker : SceneEntityBaker<EnemyEntity>
-{
-    public override EnemyEntity Create()
-    {
-        //Create an instance of entity with precomputed capacities
-        var enemy = new EnemyEntity(
-            this.name,
-            this.initialTagCount,
-            this.initialValueCount,
-            this.initialBehaviourCount
-        );
-        
-        enemy.AddTag("Enemy");
-        enemy.AddValue<int>("Health", 100);
-        enemy.AddValue<int>("Damage", 15);
-        enemy.AddBehaviour<AttackBehaviour>();
-
-        // Destroy unnecessary game object after creation
-        Destroy(this.gameObject);
-        
-        return enemy;
-    }
-}
-```
-
-```csharp
-// Create all associated enemies by EnemyBakers those found on all active scenes
-EnemyEntity[] enemies = EnemyBaker.BakeAll();
-
-//Assume we have entity world
-EntityWorld world = new EntityWorld();
-
-//Add enemies to entity world
-world.AddRange(enemies);
-```
 
 <!--
 
@@ -309,14 +336,5 @@ entity.SetPosition(this.transform.position);
 EnemyBaker baker = FindObjectOfType<EnemyBaker>();
 EnemyEntity enemy = baker.Bake();
 ```
-
----
-
-## 📝 Notes
-
-- The baker uses the assigned `ScriptableEntityFactory<E>` to create entities.
-- If `_destroyAfterBake` is `true`, the GameObject with the baker will be destroyed immediately after baking.
-- Derived classes must implement `Install(E)` to define custom initialization logic for the baked entity.
-- Can be used as a **scene-level factory** to pre-instantiate or configure entities in the Unity Editor.
 
 -->
