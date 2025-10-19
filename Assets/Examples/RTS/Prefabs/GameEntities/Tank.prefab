@@ -367,8 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141069101459334024}
-  - component: {fileID: 8497453259572675288}
-  - component: {fileID: 3652659177915688678}
+  - component: {fileID: -8640557730612936317}
   - component: {fileID: 3806559159976068473}
   - component: {fileID: 6638467102114009318}
   m_Layer: 0
@@ -394,7 +393,7 @@ Transform:
   - {fileID: 7457438267455503145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8497453259572675288
+--- !u!114 &-8640557730612936317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,32 +402,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89cddd8c94f34bb4a1530d0f92e80758, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bb61f36c73346548d53827ada75f50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overrideName: 1
-  _customName: Tank
-  _installers:
-  - {fileID: 3652659177915688678}
+  controlGameObject: 1
+  overrideName: 0
+  customName: 
+  installers:
   - {fileID: 3806559159976068473}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
---- !u!114 &3652659177915688678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258922563122937303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae900cea4ee845228e1128e1d1c132cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 3141069101459334024}
-  _renderers:
-  - {fileID: 4462659273236926685}
-  - {fileID: 2318777210656067590}
 --- !u!114 &3806559159976068473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,8 +424,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8a5af137b54637b7f62702b1f9b32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _root: {fileID: 7457438267455503145}
-  _weapon: {fileID: 1849572026191355283}
+  _takeDamageBehaviour:
+    _visual: {fileID: 7457438267455503145}
+    _originalScale: {x: 1, y: 1, z: 1}
+  _positionBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _rotationBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _teamColorBehaviour:
+    _renderers:
+    - {fileID: 2318777210656067590}
+    - {fileID: 4462659273236926685}
+    _viewConfig: {fileID: 11400000, guid: 092153cc4c1644aa284e47f2e0128f60, type: 2}
+  _weaponRecoilBehaviour:
+    _weapon: {fileID: 2804361175103553226}
+    _originalLocalPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6638467102114009318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1efb1e447144ed5a25cf91712f4e587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyAfterBake: 1
+  autoCompile: 1
+  initialTagCapacity: 0
+  initialValueCapacity: 0
+  initialBehaviourCapacity: 0
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
   _factory: {fileID: 11400000, guid: 806a1fe85759d4df5bf46519fdff9d74, type: 2}
   _lifeBaker:
     _active: 0

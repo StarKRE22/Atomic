@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public sealed class WarriorViewAspect : SceneEntityAspect<IGameEntity>
+    public sealed class TankViewInstaller : SceneEntityInstaller<IGameEntity>
     {
         [SerializeField]
         private TakeDamageViewBehaviour _takeDamageBehaviour;
@@ -19,8 +19,8 @@ namespace RTSGame
 
         [SerializeField]
         private WeaponRecoilViewBehaviour _weaponRecoilBehaviour;
-        
-        public override void Apply(IGameEntity entity)
+
+        public override void Install(IGameEntity entity)
         {
             entity.AddBehaviour(_takeDamageBehaviour);
             entity.AddBehaviour(_positionBehaviour);
@@ -29,7 +29,7 @@ namespace RTSGame
             entity.AddBehaviour(_weaponRecoilBehaviour);
         }
 
-        public override void Discard(IGameEntity entity)
+        public override void Uninstall(IGameEntity entity)
         {
             entity.DelBehaviour(_takeDamageBehaviour);
             entity.DelBehaviour(_positionBehaviour);

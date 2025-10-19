@@ -43,6 +43,7 @@ namespace Atomic.Entities
         /// <summary>
         /// List of installers that provide values and behaviors to the attached entity.
         /// </summary>
+        [Header("Installing")]
         [Tooltip("Specify the installers that will put values and behaviours to an attached entity")]
         [SerializeField]
         internal List<SceneEntityInstaller> installers;

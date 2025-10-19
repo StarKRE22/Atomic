@@ -214,8 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141069101459334024}
-  - component: {fileID: 2263331300892048135}
-  - component: {fileID: 2859853849887445547}
+  - component: {fileID: 6425615338675742216}
   - component: {fileID: 1636457273297419117}
   - component: {fileID: 1072667488915062089}
   m_Layer: 0
@@ -241,7 +240,7 @@ Transform:
   - {fileID: 6643121320980810263}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2263331300892048135
+--- !u!114 &6425615338675742216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,31 +249,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89cddd8c94f34bb4a1530d0f92e80758, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bb61f36c73346548d53827ada75f50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overrideName: 1
-  _customName: Headquarters
-  _installers:
-  - {fileID: 2859853849887445547}
+  controlGameObject: 1
+  overrideName: 0
+  customName: 
+  installers:
   - {fileID: 1636457273297419117}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
---- !u!114 &2859853849887445547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258922563122937303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae900cea4ee845228e1128e1d1c132cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 3141069101459334024}
-  _renderers:
-  - {fileID: 3064850760050433709}
 --- !u!114 &1636457273297419117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +271,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fa99a11ba349148c4cf506ce447b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _root: {fileID: 6643121320980810263}
+  _takeDamageBehaviour:
+    _visual: {fileID: 6643121320980810263}
+    _originalScale: {x: 1, y: 1, z: 1}
+  _positionBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _rotationBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _teamColorBehaviour:
+    _renderers:
+    - {fileID: 3064850760050433709}
+    _viewConfig: {fileID: 11400000, guid: 092153cc4c1644aa284e47f2e0128f60, type: 2}
 --- !u!114 &1072667488915062089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fa34b60f63f46878259d4fde0bfc68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyAfterBake: 1
+  autoCompile: 1
+  initialTagCapacity: 0
+  initialValueCapacity: 0
+  initialBehaviourCapacity: 0
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
   _factory: {fileID: 11400000, guid: 704fa5493ce284dc0ae48cc3d059a5a9, type: 2}
   _lifeBaker:
     _active: 0

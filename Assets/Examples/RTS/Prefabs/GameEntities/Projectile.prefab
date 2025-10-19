@@ -95,8 +95,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3141069101459334024}
-  - component: {fileID: 8497453259572675288}
-  - component: {fileID: 2018461362408615404}
+  - component: {fileID: 6559641928714947471}
+  - component: {fileID: 6668089202329907141}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 5259803064237168197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8497453259572675288
+--- !u!114 &6559641928714947471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,16 +129,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89cddd8c94f34bb4a1530d0f92e80758, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bb61f36c73346548d53827ada75f50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overrideName: 1
-  _customName: Projectile
-  _installers:
-  - {fileID: 2018461362408615404}
+  controlGameObject: 1
+  overrideName: 0
+  customName: 
+  installers:
+  - {fileID: 6668089202329907141}
   _onlySelectedGizmos: 0
   _onlyEditModeGizmos: 0
---- !u!114 &2018461362408615404
+--- !u!114 &6668089202329907141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,9 +148,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae900cea4ee845228e1128e1d1c132cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a67874ab63f4ff2abff2fcb38bae5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 3141069101459334024}
-  _renderers:
-  - {fileID: 3064850760050433709}
+  _positionBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _rotationBehaviour:
+    _transform: {fileID: 3141069101459334024}
+  _teamColorBehaviour:
+    _renderers:
+    - {fileID: 3064850760050433709}
+    _viewConfig: {fileID: 11400000, guid: 092153cc4c1644aa284e47f2e0128f60, type: 2}

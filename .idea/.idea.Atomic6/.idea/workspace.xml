@@ -5,18 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileViewInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileViewInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewPool.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameContext/[GameContext].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameContext/[GameContext].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Bullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Prefabs/Gameplay/GameEntities/Character.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scenes/ShooterGame (Menu).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/Content/Bullet/BulletInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/DeathAnimBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/GameEntity/View/TeamColorBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterRespawnController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterRespawnController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/Character/CharacterUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameContext/GameContextFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameContext/GameContextFactory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameContext/PlayerContextFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameContext/PlayerContextFactory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/EntityViewCatalog.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/EntityViewCatalog.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Headquarters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Headquarters.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Projectile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Warrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewAspect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewAspect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewAspect.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/EntitySingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,15 +275,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="10157000" />
-    </task>
-    <task id="LOCAL-01615" summary="BehaviourEntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760727748146</created>
-      <option name="number" value="01615" />
-      <option name="presentableId" value="LOCAL-01615" />
-      <option name="project" value="LOCAL" />
-      <updated>1760727748146</updated>
+      <workItem from="1760892887411" duration="11999000" />
     </task>
     <task id="LOCAL-01616" summary="BehaviourEntityTrigger.md">
       <option name="closed" value="true" />
@@ -656,7 +661,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760906745093</updated>
     </task>
-    <option name="localTasksCounter" value="1664" />
+    <task id="LOCAL-01664" summary="ShooterGame починил!">
+      <option name="closed" value="true" />
+      <created>1760908089058</created>
+      <option name="number" value="01664" />
+      <option name="presentableId" value="LOCAL-01664" />
+      <option name="project" value="LOCAL" />
+      <updated>1760908089058</updated>
+    </task>
+    <option name="localTasksCounter" value="1665" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
     <MESSAGE value="InlineEntityTriggers.md" />
     <MESSAGE value="InlineEntityTrigger.md" />
@@ -708,7 +720,8 @@
     <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Сделал Baking!" />
     <MESSAGE value="Beginner Game починил!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Beginner Game починил!" />
+    <MESSAGE value="ShooterGame починил!" />
+    <option name="LAST_COMMIT_MESSAGE" value="ShooterGame починил!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

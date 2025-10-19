@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Atomic.Entities
 {
     /// <summary>
@@ -40,7 +44,7 @@ namespace Atomic.Entities
         /// The factory that will be used to create new instances of <typeparamref name="E"/>.
         /// </param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="factory"/> is <c>null</c>.</exception>
-        public static void SetFactory(IEntityFactory<E> factory) => 
+        public static void SetFactory(IEntityFactory<E> factory) =>
             _factory = factory ?? throw new ArgumentNullException(nameof(factory));
 
         /// <summary>
@@ -51,6 +55,9 @@ namespace Atomic.Entities
         /// (using either the registered factory or the default constructor).
         /// </para>
         /// </summary>
+#if UNITY_EDITOR
+        [InitializeOnEnterPlayMode]
+#endif
         public static void DisposeInstance()
         {
             if (_instance != null)

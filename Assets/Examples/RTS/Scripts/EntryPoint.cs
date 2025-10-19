@@ -51,6 +51,7 @@ namespace RTSGame
 
         private void Awake()
         {
+            GameContext.DisposeInstance();
             GameContext.SetFactory(_gameContextFactory);
             _gameContext = GameContext.Instance;
         }

@@ -644,11 +644,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameContextFactory: {fileID: 11400000, guid: c7be78091b4bf46838d8f7bddb63cb21, type: 2}
-  _entityCollectionView: {fileID: 1245728445}
+  _entityWorldView: {fileID: 1245728448}
   _showEntityViews: 1
   _bakeUnits: 1
   _bakeIncludeInactive: 0
   _unitColumns: 10
+  _debugUnitCount: 0
 --- !u!1001 &259684195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3746,8 +3747,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245728444}
-  - component: {fileID: 1245728445}
-  - component: {fileID: 1245728446}
+  - component: {fileID: 1245728448}
+  - component: {fileID: 1245728447}
   m_Layer: 0
   m_Name: '[UI]'
   m_TagString: Untagged
@@ -3772,7 +3773,7 @@ Transform:
   - {fileID: 441292361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1245728445
+--- !u!114 &1245728447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3781,12 +3782,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245728443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c1f26fbfe647abb48a00bd5de63443, type: 3}
+  m_Script: {fileID: 11500000, guid: 15085cd7a11e4cdeb311dc45d053ce7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _viewport: {fileID: 641383930}
-  _viewPool: {fileID: 1245728446}
---- !u!114 &1245728446
+  container: {fileID: 441292361}
+  catalogs:
+  - {fileID: 11400000, guid: c75e65200d32247cfa368cbb0f6fec52, type: 2}
+--- !u!114 &1245728448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3795,12 +3797,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245728443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde6cf906d064190b9ae947e737afa9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 908a45862bb5483d91158ccc79a8dfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 641383930}
-  _catalogs:
-  - {fileID: 11400000, guid: 00ade53090428462fb38026ba9cc2244, type: 2}
+  viewport: {fileID: 641383930}
+  viewPool: {fileID: 1245728447}
 --- !u!1001 &1264792416
 PrefabInstance:
   m_ObjectHideFlags: 0
