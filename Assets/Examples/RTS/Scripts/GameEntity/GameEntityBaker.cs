@@ -8,11 +8,10 @@ namespace RTSGame
         [SerializeField]
         private GameEntityFactory _factory;
 
-        public sealed override IGameEntity Create()
+        protected sealed override IGameEntity Create()
         {
             IGameEntity entity = _factory.Create();
             this.Install(entity);
-            Destroy(this.gameObject);
             return entity;
         }
 

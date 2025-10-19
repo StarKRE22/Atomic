@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakers.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_BakeAll_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_BakeAll_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_GameObject_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_GameObject_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_Scene_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_Scene_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/SceneEntityBakerDummy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/SceneEntityBakerDummy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterFactory.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,33 +74,16 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Entity/Core/Entity_Lifecycle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Unity.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/IEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Plugins/Atomic/Entities/Scripts/Registry/EntityRegistry.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Collection/EntityCollectionView`1.cs.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -119,21 +125,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -171,13 +177,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16754">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="16754" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -262,23 +270,10 @@
       <workItem from="1760778386557" duration="125000" />
       <workItem from="1760779275854" duration="91000" />
       <workItem from="1760779388170" duration="8053000" />
-      <workItem from="1760877817000" duration="5957000" />
-    </task>
-    <task id="LOCAL-01604" summary="EntityFilter`1.md">
-      <option name="closed" value="true" />
-      <created>1760721643174</created>
-      <option name="number" value="01604" />
-      <option name="presentableId" value="LOCAL-01604" />
-      <option name="project" value="LOCAL" />
-      <updated>1760721643174</updated>
-    </task>
-    <task id="LOCAL-01605" summary="EntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760722537010</created>
-      <option name="number" value="01605" />
-      <option name="presentableId" value="LOCAL-01605" />
-      <option name="project" value="LOCAL" />
-      <updated>1760722537010</updated>
+      <workItem from="1760877817000" duration="8047000" />
+      <workItem from="1760891881967" duration="539000" />
+      <workItem from="1760892435581" duration="435000" />
+      <workItem from="1760892887411" duration="1423000" />
     </task>
     <task id="LOCAL-01606" summary="IEntityTrigger.md">
       <option name="closed" value="true" />
@@ -656,7 +651,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760881650661</updated>
     </task>
-    <option name="localTasksCounter" value="1653" />
+    <task id="LOCAL-01653" summary="SceneEntityBaker.md">
+      <option name="closed" value="true" />
+      <created>1760889115509</created>
+      <option name="number" value="01653" />
+      <option name="presentableId" value="LOCAL-01653" />
+      <option name="project" value="LOCAL" />
+      <updated>1760889115509</updated>
+    </task>
+    <task id="LOCAL-01654" summary="SceneEntityBaker.md">
+      <option name="closed" value="true" />
+      <created>1760889247309</created>
+      <option name="number" value="01654" />
+      <option name="presentableId" value="LOCAL-01654" />
+      <option name="project" value="LOCAL" />
+      <updated>1760889247310</updated>
+    </task>
+    <option name="localTasksCounter" value="1655" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BehaviourEntityTriggers.md" />
     <MESSAGE value="BehaviourEntityTrigger.md" />
     <MESSAGE value="BehaviourEntityTrigger`1.md" />
     <MESSAGE value="StateChangedEntityTriggers.md" />
@@ -708,7 +718,8 @@
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ScriptableMultiEntityFactory`1.md" />
+    <MESSAGE value="SceneEntityBaker.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,5 +738,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

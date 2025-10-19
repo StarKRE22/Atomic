@@ -1,34 +1,16 @@
-#if UNITY_5_3_OR_NEWER
 using System;
-using UnityEngine;
-
-#if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
-#endif
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+using UnityEngine;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// Base factory / baker class for creating scene entities.
-    /// </summary>
-    /// <typeparam name="E">The type of entity produced by this factory. Must implement <see cref="IEntity"/>.</typeparam>
-    /// <remarks>
-    /// This class inherits from <see cref="MonoBehaviour"/> and is designed to be used both at runtime
-    /// and in the Unity Editor. Several operations (such as <see cref="Precompile"/>) are editor-only
-    /// and wrapped in <c>UNITY_EDITOR</c> compilation directives.
-    /// 
-    /// Derived classes must implement <see cref="Create"/> to construct new entity instances.
-    /// </remarks>
-    public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
+    public partial class SceneEntityBaker<E>
     {
 #if ODIN_INSPECTOR
         [FoldoutGroup("Optimization")]
 #else
-        [Header("Editor")]
+        [Header("Optimization")]
 #endif
         [Tooltip("Should precompute capacities when OnValidate happens?")]
         [SerializeField]
@@ -61,11 +43,11 @@ namespace Atomic.Entities
         [SerializeField]
         protected int initialBehaviourCapacity;
 
-        /// <summary>
-        /// Creates and returns a new instance of the entity.
-        /// </summary>
-        /// <returns>A new <typeparamref name="E"/> instance.</returns>
-        public abstract E Create();
+#if ODIN_INSPECTOR
+        [Title("Debug")]
+        [ReadOnly]
+#endif
+        private IEntity _previewEntity;
 
         /// <summary>
         /// Unity callback invoked when the script is loaded or a value is changed in the Inspector.
@@ -78,7 +60,7 @@ namespace Atomic.Entities
         }
 
         /// <summary>
-        /// Unity callback used to reset factory fields to their default values.
+        /// Unity callback used to reset baker fields to their default values.
         /// </summary>
         protected virtual void Reset()
         {
@@ -107,25 +89,23 @@ namespace Atomic.Entities
 
             try
             {
-                E entity = this.Create();
-                if (entity == null)
+                _previewEntity = this.Create();
+                if (_previewEntity == null)
                 {
-                    Debug.LogWarning($"{nameof(ScriptableEntityFactory<E>)}: Create() returned null.",
-                        this);
+                    Debug.LogWarning($"{nameof(SceneEntityBaker)}: Create() returned null.", this);
                 }
                 else
                 {
-                    this.initialTagCapacity = entity.TagCount;
-                    this.initialValueCapacity = entity.ValueCount;
-                    this.initialBehaviourCapacity = entity.BehaviourCount;
+                    this.initialTagCapacity = _previewEntity.TagCount;
+                    this.initialValueCapacity = _previewEntity.ValueCount;
+                    this.initialBehaviourCapacity = _previewEntity.BehaviourCount;
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
+                Debug.LogWarning($"[EntityBaker] Precompile failed: {ex.StackTrace}", this);
             }
 #endif
         }
     }
 }
-#endif

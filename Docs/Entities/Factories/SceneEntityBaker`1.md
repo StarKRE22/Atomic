@@ -1,11 +1,15 @@
 # 🧩️ SceneEntityBaker\<E>
 
+
+Represents an abstract Unity component that converts **GameObject** into entity of `E` type.
+It supports batch baking for entire scenes, GameObjects, or all objects in the scene.
+
+---
+
 ```csharp
 public abstract class SceneEntityBaker<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
 ```
 
-- **Description:** Abstract class for Unity-based factories that create
-  entities with customizable initial settings.
 - **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
 - **Notes:** Stores initial tag, value, and behaviour capacities for optimization.
@@ -236,10 +240,7 @@ public abstract partial class SceneEntityBaker<E> : MonoBehaviour, IEntityFactor
     where E : IEntity
 ```
 
-- **Description:** An abstract Unity `MonoBehaviour` that serves as a scene-based entity baker. It creates entities of
-  type `E` using a [ScriptableEntityFactory\<E>](../Factories/ScriptableEntityFactory%601.md) and optionally destroys
-  its GameObject after
-  baking.
+- **Description:** 
 
 - **Type Parameter:** `E` — The type of entity to bake, must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityFactory<E>](../Factories/IEntityFactory%601.md)

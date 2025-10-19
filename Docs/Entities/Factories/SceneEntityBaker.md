@@ -1,7 +1,7 @@
 # 🧩️ SceneEntityBaker
 
-Represents an abstract Unity component that converts **GameObjects** into **entities**. It supports batch baking for
-entire scenes, GameObjects, or all objects in the scene.
+Represents an abstract Unity component that converts **GameObject** into [IEntity](../Entities/IEntity.md) instance. It
+supports batch baking for entire scenes, GameObjects, or all objects in the scene.
 
 ---
 
@@ -154,7 +154,6 @@ protected virtual void Reset();
 
 - **Description:** Unity callback that resets factory fields to default values.
 - **Remarks:** Only affects editor workflows.
-
 
 <!--
 

@@ -6,8 +6,8 @@ namespace Atomic.Entities
     public class SceneEntityBakerDummy : SceneEntityBaker<EntityDummy>
     {
         public static int CreateCallCount;
-        
-        public override EntityDummy Create()
+
+        protected override EntityDummy Create()
         {
             CreateCallCount++;
             return new EntityDummy(); // простая пустая сущность

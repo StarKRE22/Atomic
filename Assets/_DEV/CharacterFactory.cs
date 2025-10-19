@@ -2,7 +2,7 @@ using Atomic.Entities;
 
 namespace _DEV
 {
-    public class CharacterBaker : SceneEntityBaker
+    public class CharacterFactory : SceneEntityFactory
     {
         protected override void Install(IEntity entity)
         {

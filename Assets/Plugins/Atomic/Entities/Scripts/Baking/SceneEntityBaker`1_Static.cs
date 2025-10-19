@@ -1,4 +1,4 @@
-#if UNITY_5_3_OR_NEWER
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Atomic.Entities
 {
-    public abstract partial class SceneEntityBaker<E>
+    public partial class SceneEntityBaker<E>
     {
         /// <summary>
         /// Finds all <see cref="SceneEntityBaker{E}"/> components in the scene and bakes them into entities.
@@ -67,16 +67,17 @@ namespace Atomic.Entities
         public static void BakeAll(ICollection<E> destination, bool includeInactive = true)
         {
             if (destination == null)
-                throw new System.ArgumentNullException(nameof(destination));
+                throw new ArgumentNullException(nameof(destination));
 
 #if UNITY_2023_1_OR_NEWER
             FindObjectsInactive include = includeInactive
                 ? FindObjectsInactive.Include
                 : FindObjectsInactive.Exclude;
 
-            SceneEntityBaker<E>[] bakers = FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
+            SceneEntityBaker<E>[] bakers =
+                FindObjectsByType<SceneEntityBaker<E>>(include, FindObjectsSortMode.None);
 #else
-            SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
+                SceneEntityBaker<E>[] bakers = Object.FindObjectsOfType<SceneEntityBaker<E>>(includeInactive);
 #endif
 
             int count = bakers.Length;
@@ -128,7 +129,7 @@ namespace Atomic.Entities
         public static void Bake(Scene scene, ICollection<E> results, bool includeInactive = true)
         {
             if (results == null)
-                throw new System.ArgumentNullException(nameof(results));
+                throw new ArgumentNullException(nameof(results));
 
             GameObject[] objects = scene.GetRootGameObjects();
             for (int i = 0, objectCount = objects.Length; i < objectCount; i++)
@@ -183,7 +184,7 @@ namespace Atomic.Entities
         public static void Bake(GameObject gameObject, ICollection<E> results, bool includeInactive = true)
         {
             if (results == null)
-                throw new System.ArgumentNullException(nameof(results));
+                throw new ArgumentNullException(nameof(results));
 
             SceneEntityBaker<E>[] bakers = gameObject.GetComponentsInChildren<SceneEntityBaker<E>>(includeInactive);
             for (int i = 0, count = bakers.Length; i < count; i++)
@@ -198,4 +199,3 @@ namespace Atomic.Entities
         }
     }
 }
-#endif

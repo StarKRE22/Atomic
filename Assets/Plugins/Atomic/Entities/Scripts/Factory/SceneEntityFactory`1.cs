@@ -13,15 +13,17 @@ using UnityEditor;
 namespace Atomic.Entities
 {
     /// <summary>
-    /// Abstract base class for creating <see cref="IEntity"/> instances via Unity's <see cref="ScriptableObject"/> system.
-    /// Stores initial parameters used during entity creation and allows previewing entity properties in the Editor.
+    /// Base factory class for creating scene entities.
     /// </summary>
-    /// <typeparam name="E">The type of entity to create. Must implement <see cref="IEntity"/>.</typeparam>
+    /// <typeparam name="E">The type of entity produced by this factory. Must implement <see cref="IEntity"/>.</typeparam>
     /// <remarks>
-    /// This factory can be extended to define custom entity creation logic. The <see cref="Precompile"/> method
-    /// extracts entity metadata (like name, tag count, etc.) and stores it for optimization or display purposes.
+    /// This class inherits from <see cref="MonoBehaviour"/> and is designed to be used both at runtime
+    /// and in the Unity Editor. Several operations (such as <see cref="Precompile"/>) are editor-only
+    /// and wrapped in <c>UNITY_EDITOR</c> compilation directives.
+    /// 
+    /// Derived classes must implement <see cref="Create"/> to construct new entity instances.
     /// </remarks>
-    public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFactory<E> where E : IEntity
+    public abstract partial class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
     {
 #if ODIN_INSPECTOR
         [FoldoutGroup("Optimization")]
@@ -63,7 +65,7 @@ namespace Atomic.Entities
         [Title("Debug")]
         [ReadOnly]
 #endif
-        private protected IEntity _previewEntity;
+        private protected E _previewEntity;
 
         /// <summary>
         /// Creates and returns a new instance of the entity.
