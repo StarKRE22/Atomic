@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBakers.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,15 +252,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="7167000" />
-    </task>
-    <task id="LOCAL-01611" summary="TagEntityTrigger`1.md">
-      <option name="closed" value="true" />
-      <created>1760725195297</created>
-      <option name="number" value="01611" />
-      <option name="presentableId" value="LOCAL-01611" />
-      <option name="project" value="LOCAL" />
-      <updated>1760725195297</updated>
+      <workItem from="1760892887411" duration="7476000" />
     </task>
     <task id="LOCAL-01612" summary="ValueEntityTriggers.md">
       <option name="closed" value="true" />
@@ -647,7 +638,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760902810881</updated>
     </task>
-    <option name="localTasksCounter" value="1660" />
+    <task id="LOCAL-01660" summary="SceneEntityBaker.md">
+      <option name="closed" value="true" />
+      <created>1760904659386</created>
+      <option name="number" value="01660" />
+      <option name="presentableId" value="LOCAL-01660" />
+      <option name="project" value="LOCAL" />
+      <updated>1760904659386</updated>
+    </task>
+    <option name="localTasksCounter" value="1661" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,11 +694,11 @@
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
-    <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="SceneEntityBaker`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker`1.md" />
+    <MESSAGE value="SceneEntityBaker.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
