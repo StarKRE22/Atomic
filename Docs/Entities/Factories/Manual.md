@@ -10,8 +10,8 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
 
 - [Examples of Usage](#-examples-of-usage)
     - [InlineEntityFactory](#ex1)
-    - [SceneEntityBaker](#ex2)
-    - [ScriptableEntityFactory](#ex3)
+    - [SceneEntityFactory\<E>](#ex2)
+    - [ScriptableEntityFactory\<E>](#ex3)
     - [MultiEntityFactory](#ex4)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
@@ -45,10 +45,10 @@ IEntity myEntity = factory.Create();
 
 <div id="ex2"></div>
 
-### 2️⃣ SceneEntityBaker
+### 2️⃣ SceneEntityFactory\<E>
 
 ```csharp
-public class EnemyBaker : SceneEntityBaker<EnemyEntity>
+public class EnemyFactory : SceneEntityFactory<EnemyEntity>
 {
     public override EnemyEntity Create()
     {
@@ -68,10 +68,10 @@ public class EnemyBaker : SceneEntityBaker<EnemyEntity>
 
 <div id="ex3"></div>
 
-### 3️⃣ ScriptableEntityFactory
+### 3️⃣ ScriptableEntityFactory\<E>
 
 ```csharp
-public class EnemyScriptableFactory : ScriptableEntityFactory<EnemyEntity>
+public class EnemyFactory : ScriptableEntityFactory<EnemyEntity>
 {
     public override EnemyEntity Create()
     {
