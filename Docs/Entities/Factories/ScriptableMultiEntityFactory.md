@@ -1,26 +1,81 @@
 # 🧩 ScriptableMultiEntityFactory
 
+A Unity `ScriptableObject`-based concrete implementation of specialized for `string`
+keys, [IEntity](../Entities/IEntity.md) entities and factories of
+type [ScriptableEntityFactory](ScriptableEntityFactory.md).
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Create(string)](#createstring)
+        - [TryCreate(string, out IEntity)](#trycreatestring-out-ientity)
+        - [Contains(string)](#containsstring)
+        - [GetKey(ScriptableEntityFactory)](#getkeyscriptableentityfactory)
+- [Notes](#-notes)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using `ScriptableMultiEntityFactory`
+
+#### 1. Create the multi-factory asset
+
+Right click to the project hierarchy and choose `Create/Atomic/Entities/MultiEntityFactory`
+
+<img width="400" height="" alt="Entity component" src="../../Images/ScriptableMultiEntityFactory%20(Empty).png" />
+
+#### 2. Assume we have some factories derived from [ScriptableEntityFactory](ScriptableEntityFactory.md):
+
 ```csharp
 [CreateAssetMenu(
-    fileName = "MultiEntityFactory",
-    menuName = "Atomic/Entities/MultiEntityFactory"
+    fileName = "OrcEntityFactory",
+    menuName = "Example/New OrcEntityFactory"
 )]
-public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
-    IMultiEntityFactory
+public class OrcEntityFactory : ScriptableEntityFactory
+{
+    protected override void Install(IEntity entity)
+    {
+        // Some code...
+    }
+}
 ```
 
-- **Description:** A Unity `ScriptableObject`-based concrete implementation of
-  specialized for `string` keys , [IEntity](../Entities/IEntity.md)
-  entities and [ScriptableEntityFactory](ScriptableEntityFactory.md) factories.
-- **Inheritance:** [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md),
-  [IMultiEntityFactory](IMultiEntityFactory.md)
-- **Notes:**
-    - Can be used as a Flyweight pattern across the project, sharing a single instance for efficient entity creation.
-    - Designed to serve as a central multi-factory of entity factories in Unity projects.
-    - Can be created as an asset via **Unity Create Menu**:  
-      `Atomic/Entities/New EntityFactoryCatalog`.
+```csharp
+[CreateAssetMenu(
+    fileName = "GnomeEntityFactory",
+    menuName = "Example/New GnomeEntityFactory"
+)]
+public class GnomeEntityFactory : ScriptableEntityFactory
+{
+    protected override void Install(IEntity entity)
+    {
+        // Some code...
+    }
+}
+```
 
-- **See also:** [ScriptableEntityFactory](ScriptableEntityFactory.md)
+#### 3. Drag and drop this entity factories to the multi-factory asset
+
+<img width="400" height="" alt="Entity component" src="../../Images/ScriptableMultiEntityFactory%20(Full).png" />
+
+#### 4. Use the multi-entity factory in your project
+
+```csharp
+ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("Enemies");
+
+if (factory.Contains("Orc"))
+    IEntity orc = factory.Create("Orc");
+
+if (factory.TryCreate("Goblin", out IEntity goblin))
+    // use goblin entity
+```
 
 ---
 
@@ -32,7 +87,27 @@ public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string,
 
 ---
 
-## 🏹 Methods
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[CreateAssetMenu(
+    fileName = "MultiEntityFactory",
+    menuName = "Atomic/Entities/MultiEntityFactory"
+)]
+public class ScriptableMultiEntityFactory : ScriptableMultiEntityFactory<string, IEntity, ScriptableEntityFactory>,
+    IMultiEntityFactory
+```
+
+- **Inheritance:** [ScriptableMultiEntityFactory<K, E, F>](ScriptableMultiEntityFactory%601.md),
+  [IMultiEntityFactory](IMultiEntityFactory.md)
+- **See also:** [ScriptableEntityFactory](ScriptableEntityFactory.md)
+- **Note:** Can be created as an asset via **Unity Create Menu**: `Atomic/Entities/New EntityFactoryCatalog`.
+
+---
+
+### 🏹 Methods
 
 #### `Create(string)`
 
@@ -75,31 +150,12 @@ protected override string GetKey(ScriptableEntityFactory factory);
 - **Description:** Extracts the string key for a given factory.
 - **Parameter:** `factory` — The factory instance.
 - **Returns:** The factory’s Unity asset name.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("EntityFactoryCatalog");
-
-if (factory.Contains("Orc"))
-{
-    IEntity orc = factory.Create("Orc");
-}
-
-if (factory.TryCreate("Goblin", out IEntity goblin))
-{
-    // use goblin entity
-}
-```
+- **Note:** Uses the **factory asset name** (`ScriptableEntityFactory.name`) as the lookup key by default.
 
 ---
 
 ## 📝 Notes
 
-- This is a **concrete Unity ScriptableObject implementation** that can be instantiated as an asset.
-- Uses the **factory asset name** (`ScriptableEntityFactory.name`) as the lookup key.
-- The internal dictionary of factories is initialized lazily on first access.
+- Designed to serve as a central multi-factory of entity factories in Unity projects.
 - Duplicate keys are overwritten with a warning in the Unity console.
-- It can be used as a **Flyweight** across the project for efficient shared entity creation.
+- It can be used as a Flyweight pattern across the project, sharing a single instance for efficient entity creation.
