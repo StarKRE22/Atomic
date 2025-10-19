@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Collection/Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Collection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Static.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_UnityCallbacks.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +47,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
@@ -262,15 +249,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="5512000" />
-    </task>
-    <task id="LOCAL-01609" summary="TagEntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760724406170</created>
-      <option name="number" value="01609" />
-      <option name="presentableId" value="LOCAL-01609" />
-      <option name="project" value="LOCAL" />
-      <updated>1760724406170</updated>
+      <workItem from="1760892887411" duration="5875000" />
     </task>
     <task id="LOCAL-01610" summary="TagEntityTrigger.md">
       <option name="closed" value="true" />
@@ -656,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760895602575</updated>
     </task>
-    <option name="localTasksCounter" value="1658" />
+    <task id="LOCAL-01658" summary="SceneEntityBaker`1.md">
+      <option name="closed" value="true" />
+      <created>1760902468696</created>
+      <option name="number" value="01658" />
+      <option name="presentableId" value="LOCAL-01658" />
+      <option name="project" value="LOCAL" />
+      <updated>1760902468696</updated>
+    </task>
+    <option name="localTasksCounter" value="1659" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +670,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="BehaviourEntityTrigger`1.md" />
     <MESSAGE value="StateChangedEntityTriggers.md" />
     <MESSAGE value="StateChangedEntityTrigger.md" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
@@ -708,7 +694,8 @@
     <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneEntityFactory.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityFactory.md" />
+    <MESSAGE value="SceneEntityBaker`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

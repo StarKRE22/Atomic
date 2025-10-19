@@ -6,6 +6,33 @@ are transformed into entities.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Baker Implementation](#ex1)
+    - [Bake All](#ex2)
+- [Inspector Settings](#-inspector-settings)
+    - [Parameters](#-parameters)
+    - [Context Menu](#-context-menu)
+- [Gizmos](#-gizmos)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Fields](#-fields)
+        - [initialTagCapacity](#initialtagcapacity)
+        - [initialValueCapacity](#initialvaluecapacity)
+        - [initialBehaviourCapacity](#initialbehaviourcapacity)
+    - [Methods](#-methods)
+        - [Bake()](#bake)
+        - [Create()](#create)
+        - [OnValidate()](#onvalidate)
+        - [Reset()](#reset)
+        - [BakeAll(bool)](#bakeallbool)
+        - [BakeAll(ICollection<E>, bool)](#bakeallicollectione-bool)
+        - [Bake(Scene, bool)](#bakescene-bool)
+        - [Bake(Scene, ICollection<E>, bool)](#bakescene-icollectione-bool)
+        - [Bake(GameObject, bool)](#bakegameobject-bool)
+        - [Bake(GameObject, ICollection<E>, bool)](#bakegameobject-icollectione-bool)
+
 ---
 
 ## 🗂 Example of Usage
@@ -194,17 +221,18 @@ public static E[] BakeAll(bool includeInactive = true);
 - **Returns:** An array of baked entities.
 - **Notes:** All corresponding `GameObject`s will be destroyed after baking.
 
-#### `BakeAll(ICollection<E> destination, bool)`
+#### `BakeAll(ICollection<E>, bool)`
 
 ```csharp
 public static void BakeAll(ICollection<E> destination, bool includeInactive = true);
 ```
 
-- **Description:** Collects entities from all `SceneEntityBaker<E>` components in the scene and adds them to the provided collection.
+- **Description:** Collects entities from all `SceneEntityBaker<E>` components in the scene and adds them to the
+  provided collection.
 - **Type Parameter:** `E` — The type of entity created by the bakers.
 - **Parameters:**
-  - `destination` — The collection where baked entities will be stored. Must not be `null`.
-  - `includeInactive` — Whether to include inactive GameObjects.
+    - `destination` — The collection where baked entities will be stored. Must not be `null`.
+    - `includeInactive` — Whether to include inactive GameObjects.
 - **Exceptions:** Throws `ArgumentNullException` if `destination` is `null`.
 
 #### `Bake(Scene, bool)`
@@ -215,8 +243,8 @@ public static List<E> Bake(Scene scene, bool includeInactive = true);
 
 - **Description:** Bakes all `SceneEntityBaker<E>`s in the specified scene and returns them as a list.
 - **Parameters:**
-  - `scene` — The scene whose root objects should be searched.
-  - `includeInactive` — Whether to include inactive objects in the search.
+    - `scene` — The scene whose root objects should be searched.
+    - `includeInactive` — Whether to include inactive objects in the search.
 - **Returns:** A list of baked entities.
 
 #### `Bake(Scene, ICollection<E>, bool)`
@@ -227,9 +255,9 @@ public static void Bake(Scene scene, ICollection<E> results, bool includeInactiv
 
 - **Description:** Bakes all `SceneEntityBaker<E>`s in the specified scene and adds them to the provided collection.
 - **Parameters:**
-  - `scene` — The scene whose root objects should be searched.
-  - `results` — The collection where baked entities will be added. Must not be `null`.
-  - `includeInactive` — Whether to include inactive objects in the search.
+    - `scene` — The scene whose root objects should be searched.
+    - `results` — The collection where baked entities will be added. Must not be `null`.
+    - `includeInactive` — Whether to include inactive objects in the search.
 - **Exceptions:** Throws `ArgumentNullException` if `results` is `null`.
 
 #### `Bake(GameObject, bool)`
@@ -240,8 +268,8 @@ public static E[] Bake(GameObject gameObject, bool includeInactive = true);
 
 - **Description:** Bakes all `SceneEntityBaker<E>` components attached to or under the specified GameObject.
 - **Parameters:**
-  - `gameObject` — The GameObject to search.
-  - `includeInactive` — Whether to include inactive objects in the search.
+    - `gameObject` — The GameObject to search.
+    - `includeInactive` — Whether to include inactive objects in the search.
 - **Returns:** An array of baked entities.
 
 #### `Bake(GameObject, ICollection<E>, bool)`
@@ -250,13 +278,13 @@ public static E[] Bake(GameObject gameObject, bool includeInactive = true);
 public static void Bake(GameObject gameObject, ICollection<E> results, bool includeInactive = true);
 ```
 
-- **Description:** Bakes all `SceneEntityBaker<E>` components attached to or under the specified GameObject and adds them to the provided collection.
+- **Description:** Bakes all `SceneEntityBaker<E>` components attached to or under the specified GameObject and adds
+  them to the provided collection.
 - **Parameters:**
-  - `gameObject` — The GameObject to search.
-  - `results` — The collection where baked entities will be added. Must not be `null`.
-  - `includeInactive` — Whether to include inactive objects in the search.
+    - `gameObject` — The GameObject to search.
+    - `results` — The collection where baked entities will be added. Must not be `null`.
+    - `includeInactive` — Whether to include inactive objects in the search.
 - **Exceptions:** Throws `ArgumentNullException` if `results` is `null`.
-
 
 <!--
 
