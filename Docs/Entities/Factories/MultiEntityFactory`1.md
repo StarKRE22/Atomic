@@ -1,10 +1,77 @@
 # 🧩 MultiEntityFactory<K, E>
 
+A generic implementation for creating multiple entities identified by a key using entity factories.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [Default Constructor](#default-constructor)
+        - [Enumerable Constructor](#enumerable-constructor)
+        - [Dictionary Constructor](#dictionary-constructor)
+        - [Params Constructor](#params-constructor)
+    - [Methods](#-methods)
+        - [Register(K, IEntityFactory\<E>)](#registerk-ientityfactorye)
+        - [Unregister(K)](#unregisterk)
+        - [Create(K)](#createk)
+        - [TryCreate(K, out E)](#trycreatek-out-e)
+        - [Contains(K)](#containsk)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have a specific entity type:
+public class IEnemyEntity : IEntity
+{
+}
+```
+
+```csharp
+// Assume we have an enum of enemy types
+public enum EnemyType 
+{
+    Orc,
+    Goblin,
+    Troll
+}
+```
+
+```csharp
+// Create the generic multi-entity factory 
+var multiFactory = new MultiEntityFactory<EnemyType, IEnemyEntity>();
+
+// Assume we have instances of the enemy factories
+IEntityFactory<IEnemyEntity> orcFactory, goblinFactory 
+
+// Register these factories
+multiFactory.Register(EnemyType.Orc, orcFactory);
+multiFactory.Register(EnemyType.Goblin, goblinFactory);
+
+// Create enemies through the multi-factory
+EnemyEntity orc = multiFactory.Create(EnemyType.Orc);
+EnemyEntity goblin = multiFactory.Create(EnemyType.Goblin);
+
+// Unregister these factories
+multiFactory.Unregister(EnemyType.Orc, orcFactory);
+multiFactory.Unregister(EnemyType.Goblin, goblinFactory);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class MultiEntityFactory<K, E> : IMultiEntityFactory<K, E> where E : IEntity
 ```
 
-- **Description:** A generic implementation for creating multiple entities identified by a key using entity factories.
 - **Inheritance:**  [IMultiEntityFactory\<K, E>](IMultiEntityFactory%601.md)
 - **Type Parameters:**
     - `K` — The type of key used to identify factories.
@@ -13,7 +80,9 @@ public class MultiEntityFactory<K, E> : IMultiEntityFactory<K, E> where E : IEnt
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructors"></div>
+
+### 🏗️ Constructors
 
 #### `Default Constructor`
 
@@ -52,7 +121,7 @@ public MultiEntityFactory(params KeyValuePair<K, IEntityFactory<E>>[] factories)
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Register(K, IEntityFactory<E>)`
 
@@ -108,31 +177,3 @@ public bool Contains(K key)
 - **Description:** Determines whether an entity associated with the specified key exists.
 - **Parameter:** `key` — The key to check.
 - **Returns:** `true` if an entity with the given key exists; otherwise, `false`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Enum of enemy types
-public enum EnemyType 
-{
-    Orc,
-    Goblin,
-    Troll
-}
-```
-
-```csharp
-var factory = new MultiEntityFactory<EnemyType, EnemyEntity>();
-
-factory.Register(EnemyType.Orc, new InlineEntityFactory<EnemyEntity>(
-    () => new EnemyEntity"Orc")
-);
-factory.Register(EnemyType.Goblin, new InlineEntityFactory<EnemyEntity>(
-    () => new EnemyEntity("Goblin"))
-);
-
-EnemyEntity orc = factory.Create(EnemyType.Orc);
-EnemyEntity goblin = factory.Create(EnemyType.Goblin);
-```
