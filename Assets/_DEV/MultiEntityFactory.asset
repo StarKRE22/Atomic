@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301ee498af3b424e91b5af0c73719804, type: 3}
   m_Name: MultiEntityFactory
   m_EditorClassIdentifier: 
-  _factories: []
+  _factories:
+  - {fileID: 11400000, guid: e4adb2dc855d748bfa0e94ceea7d37f0, type: 2}
+  - {fileID: 11400000, guid: 8b2ab9bd385f14fc4b835b220f0193a6, type: 2}

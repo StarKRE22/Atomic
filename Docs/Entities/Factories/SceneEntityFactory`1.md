@@ -1,9 +1,8 @@
-# 🧩️ ScriptableEntityFactory
+# 🧩 SceneEntityFactory\<E>
 
-Abstract class for ScriptableObject-based factories that create and
-configure [Entity](../Entities/Entity.md) instances. Can be reused across multiple objects without heavy dependencies.
+Abstract base class for MonoBehaviour-based factories that create scene entities with customizable initial capacities.
+Can be used both at runtime and in the Unity Editor for asset preview and optimization.
 
-> Provides the [Install(IEntity)](#installientity) method to inject custom configuration logic after entity creation.
 ---
 
 ## 📑 Table of Contents
@@ -20,7 +19,6 @@ configure [Entity](../Entities/Entity.md) instances. Can be reused across multip
         - [initialBehaviourCapacity](#initialbehaviourcapacity)
     - [Methods](#-methods)
         - [Create()](#create)
-        - [Install(IEntity)](#installientity)
         - [OnValidate()](#onvalidate)
         - [Reset()](#reset)
 
@@ -28,27 +26,30 @@ configure [Entity](../Entities/Entity.md) instances. Can be reused across multip
 
 ## 🗂 Example of Usage
 
-Below is an example of a ScriptableObject factory that creates player entities:
+Below is an example of a MonoBehaviour factory that creates enemy entities of an `EnemyEntity` type:
 
 ```csharp
-[CreateAssetMenu(
-    fileName = "PlayerFactory",
-    menuName = "Examples/PlayerFactory"
-)]
-public class PlayerScriptableFactory : ScriptableEntityFactory
+public class EnemySceneFactory : SceneEntityFactory<EnemyEntity>
 {
-    protected override void Install(IEntity entity)
+    public override EnemyEntity Create()
     {
-        entity.AddTag("Player");
-        entity.AddValue<int>("Health", 200);
-        entity.AddValue<float>("MoveSpeed", 10);
-        entity.AddBehaviour<MoveBehaviour>();
+        // Create an instance of the entity with precomputed capacities
+        var enemy = new EnemyEntity(
+            this.name,
+            this.initialTagCapacity,
+            this.initialValueCapacity,
+            this.initialBehaviourCapacity
+        );
+
+        enemy.AddTag("Enemy");
+        enemy.AddValue<int>("Health", 100);
+        enemy.AddValue<int>("Damage", 15);
+        enemy.AddBehaviour<AttackBehaviour>();
+
+        return enemy;
     }
 }
 ```
-
-- **Note:** This pattern allows creating a fully configured `Entity` via ScriptableObject-based workflows, combining
-  predefined capacities with custom logic via `Install()`.
 
 ---
 
@@ -85,31 +86,34 @@ public class PlayerScriptableFactory : ScriptableEntityFactory
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public abstract class ScriptableEntityFactory : ScriptableEntityFactory<IEntity>, IEntityFactory
+public abstract partial class SceneEntityFactory<E> : MonoBehaviour, IEntityFactory<E> where E : IEntity
 ```
 
-- **Inheritance:** [ScriptableEntityFactory\<E>](ScriptableEntityFactory%601.md),
-  [IEntityFactory](IEntityFactory.md)
+- **Type Parameter:** `E` — The type of entity to create. Must implement [IEntity](../Entities/IEntity.md).
+- **Inheritance:** `MonoBehaviour`, [IEntityFactory\<E>](IEntityFactory%601.md)
+- **Notes:** Stores initial tag, value, and behaviour capacities for optimization.
+- **See also:** [SceneEntityFactory](SceneEntityFactory.md)
 
 ---
 
 ### 🧱 Fields
 
+- **Description:** Should precompute capacities when `OnValidate()` happens? Primarily used for **Editor optimization**.
+
 #### `initialTagCapacity`
 
 ```csharp
 [SerializeField]
-protected int initialTagCount;
+protected int initialTagCapacity;
 ```
 
-- **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and asset
-  baking.
+- **Description:** Initial number of tags to assign to the entity. Used for editor previews and optimization.
 
 #### `initialValueCapacity`
 
 ```csharp
 [SerializeField]
-protected int initialValueCount;
+protected int initialValueCapacity;
 ```
 
 - **Description:** Initial number of values to assign to the entity.
@@ -118,7 +122,7 @@ protected int initialValueCount;
 
 ```csharp
 [SerializeField]
-protected int initialBehaviourCount;
+protected int initialBehaviourCapacity;
 ```
 
 - **Description:** Initial number of behaviours to assign to the entity.
@@ -130,23 +134,12 @@ protected int initialBehaviourCount;
 #### `Create()`
 
 ```csharp
-public sealed override IEntity Create();
+public abstract E Create();
 ```
 
-- **Description:** Creates a new [Entity](../Entities/Entity.md) using predefined initialization values and then applies
-  custom logic via the `Install` method.
-- **Returns:** A new instance of [IEntity](../Entities/IEntity.md).
-- **Note:** This method is `sealed`; override `Install(IEntity)` for custom configuration.
-
-#### `Install(IEntity)`
-
-```csharp
-protected abstract void Install(IEntity entity);
-```
-
-- **Description:** Called after entity creation to add tags, values, or behaviours.
-- **Parameter:** `entity` — The [IEntity](../Entities/IEntity.md) instance to configure.
-- **Note:** Must be implemented by derived classes to provide custom setup logic.
+- **Description:** Creates and returns a new instance of the entity type `E`.
+- **Returns:** A new instance of type `E`.
+- **Note:** Override this method to implement custom instantiation logic.
 
 #### `OnValidate()`
 
@@ -154,8 +147,8 @@ protected abstract void Install(IEntity entity);
 protected virtual void OnValidate();
 ```
 
-- **Description:** ScriptableObject callback invoked when values change in the Inspector. Updates cached metadata by
-  calling `Precompile()` by default.
+- **Description:** Unity callback invoked when script values change in the Inspector. Calls `Precompile()` automatically
+  if `autoCompile` is enabled.
 - **Remarks:** Only executed in the Editor outside of Play mode.
 
 #### `Reset()`

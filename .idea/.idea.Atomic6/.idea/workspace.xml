@@ -5,38 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Gizmos.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityFactory`1.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Static.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker_Static.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityBaker`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_BakeAll_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_BakeAll_Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_GameObject_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_GameObject_Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_Scene_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntityBaker/SceneEntityBaker_Bake_Scene_Tests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/SceneEntityBakerDummy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Substitutions/SceneEntityBakerDummy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/CharacterBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/CharacterFactory.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/MultiEntityFactory.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/MultiEntityFactory.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBaker`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBaker`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/SceneEntityBakers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBakers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Factories/ScriptableEntityFactory`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <excluded-from-favorite>
@@ -273,15 +261,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="1423000" />
-    </task>
-    <task id="LOCAL-01606" summary="IEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760722836184</created>
-      <option name="number" value="01606" />
-      <option name="presentableId" value="LOCAL-01606" />
-      <option name="project" value="LOCAL" />
-      <updated>1760722836184</updated>
+      <workItem from="1760892887411" duration="2553000" />
     </task>
     <task id="LOCAL-01607" summary="IEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -667,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760889247310</updated>
     </task>
-    <option name="localTasksCounter" value="1655" />
+    <task id="LOCAL-01655" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1760894482884</created>
+      <option name="number" value="01655" />
+      <option name="presentableId" value="LOCAL-01655" />
+      <option name="project" value="LOCAL" />
+      <updated>1760894482884</updated>
+    </task>
+    <option name="localTasksCounter" value="1656" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -716,10 +704,10 @@
     <MESSAGE value="MultiEntityFactory.md" />
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
     <MESSAGE value="SceneEntityBaker.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

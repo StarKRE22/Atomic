@@ -114,6 +114,8 @@ Below is a list of available factory types:
     - [IEntityFactory&lt;E&gt;](IEntityFactory%601.md) <!-- + -->
     - [ScriptableEntityFactory](ScriptableEntityFactory.md) <!-- + -->
     - [ScriptableEntityFactory&lt;E&gt;](ScriptableEntityFactory%601.md) <!-- + -->
+    - [SceneEntityFactory](SceneEntityFactory.md) <!-- + -->
+    - [SceneEntityFactory&lt;E&gt;](SceneEntityFactory%601.md) <!-- + -->
     - [InlineEntityFactory](InlineEntityFactory.md) <!-- + -->
     - [InlineEntityFactory&lt;E&gt;](InlineEntityFactory%601.md) <!-- + -->
 - **MultiEntityFactories**
@@ -123,9 +125,7 @@ Below is a list of available factory types:
     - [MultiEntityFactory&lt;E&gt;](MultiEntityFactory%601.md) <!-- + -->
     - [ScriptableMultiEntityFactory](ScriptableMultiEntityFactory.md) <!-- + -->
     - [ScriptableMultiEntityFactory&lt;E&gt;](ScriptableMultiEntityFactory%601.md) <!-- + -->
-- **SceneEntityBakers**
-    - [SceneEntityBaker](SceneEntityBaker.md) <!-- + -->
-    - [SceneEntityBaker&lt;E&gt;](SceneEntityBaker%601.md) <!-- + -->
+
 
 ---
 

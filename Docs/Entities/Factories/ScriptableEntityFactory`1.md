@@ -14,6 +14,9 @@ Can be reused across multiple objects without heavy dependencies.
 - [API Reference](#-api-reference)
     - [Type](#-type)
     - [Fields](#-fields)
+        - [initialTagCapacity](#initialtagcapacity)
+        - [initialValueCapacity](#initialvaluecapacity)
+        - [initialBehaviourCapacity](#initialbehaviourcapacity)
     - [Methods](#-methods)
         - [Create()](#create)
         - [OnValidate()](#onvalidate)
@@ -99,7 +102,7 @@ public abstract class ScriptableEntityFactory<E> : ScriptableObject, IEntityFact
 
 ### 🧱 Fields
 
-#### `InitialTagCapacity`
+#### `initialTagCapacity`
 
 ```csharp
 [SerializeField]
@@ -109,7 +112,7 @@ protected int initialTagCount;
 - **Description:** Initial number of tags to assign to the entity. Mainly used for **editor optimization** and asset
   baking.
 
-#### `InitialValueCapacity`
+#### `initialValueCapacity`
 
 ```csharp
 [SerializeField]
@@ -118,7 +121,7 @@ protected int initialValueCount;
 
 - **Description:** Initial number of values to assign to the entity.
 
-#### `InitialBehaviourCapacity`
+#### `initialBehaviourCapacity`
 
 ```csharp
 [SerializeField]
