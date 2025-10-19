@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -28,11 +29,12 @@ namespace BeginnerGame
 
         [SerializeField]
         private Vector3 _cameraOffset;
-        
+
         public override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
-            gameContext.GetPlayers().Add(_teamType, context);
+            if (AtomicUtils.IsPlayMode())
+                gameContext.GetPlayers().Add(_teamType, context);
 
             //Base:
             context.AddTeamType(_teamType);
@@ -50,10 +52,13 @@ namespace BeginnerGame
 
             //Camera:
             context.AddBehaviour(new CameraFollowController(_cameraOffset));
-            
+
             //Inactivate
-            gameContext.WhenDisable(context.Disable);
-            gameContext.WhenDisable(context.GetCharacter().Disable);
+            if (AtomicUtils.IsPlayMode())
+            {
+                gameContext.WhenDisable(context.Disable);
+                gameContext.WhenDisable(context.GetCharacter().Disable);
+            }
         }
     }
 }

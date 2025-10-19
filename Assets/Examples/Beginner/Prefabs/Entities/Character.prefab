@@ -84,19 +84,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7c47f4594c495e9802700cb0c448d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
-  installInEditMode: 0
-  disposeValues: 1
   useUnityLifecycle: 1
-  installers:
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
   - {fileID: 7440937513640963367}
   - {fileID: 5179633123429045676}
   children: []
-  _initialBehaviourCapacity: 0
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
-  _initialTagCapacity: 1
-  _initialValueCapacity: 1
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 1
+  initialValueCapacity: 10
+  initialBehaviourCapacity: 8
 --- !u!114 &5179633123429045676
 MonoBehaviour:
   m_ObjectHideFlags: 0

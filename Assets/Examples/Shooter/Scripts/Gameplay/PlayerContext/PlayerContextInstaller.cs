@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -21,8 +22,11 @@ namespace ShooterGame.Gameplay
         public override void Install(IPlayerContext context)
         {
             GameContext gameContext = GameContext.Instance;
-            gameContext.GetLeaderboard().Add(_teamType, 0);
-            gameContext.GetPlayers().Add(_teamType, context);
+            gameContext.GetLeaderboard().TryAdd(_teamType, 0);
+            
+            if (gameContext.TryGetPlayers(out IDictionary<TeamType, IPlayerContext> players)) 
+                players.TryAdd(_teamType, context);
+
             gameContext.WhenDisable(context.Disable);
 
             context.AddTeamType(_teamType);

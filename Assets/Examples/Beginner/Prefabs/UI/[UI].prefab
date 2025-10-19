@@ -47,18 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d81c35a679e45ad81a7a487dc0164e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  installOnAwake: 1
-  installInEditMode: 0
-  disposeValues: 1
   useUnityLifecycle: 1
-  installers:
+  disposeValues: 1
+  installOnAwake: 1
+  uninstallOnDestroy: 1
+  scriptableInstallers: []
+  sceneInstallers:
   - {fileID: 2920034706118049345}
   children: []
-  _initialBehaviourCapacity: 3
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
-  _initialTagCapacity: 0
-  _initialValueCapacity: 4
+  onlySelectedGizmos: 0
+  onlyEditModeGizmos: 0
+  autoCompile: 0
+  initialTagCapacity: 0
+  initialValueCapacity: 3
+  initialBehaviourCapacity: 2
+  _isGlobal: 1
   _dontDestroyOnLoad: 0
 --- !u!114 &2920034706118049345
 MonoBehaviour:
@@ -268,6 +271,18 @@ PrefabInstance:
     - target: {fileID: 845537814672890939, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
       propertyPath: m_Name
       value: CountdownView
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280220555003200540, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280220555003200540, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
+      propertyPath: _highlightColor.b
+      value: 0.5990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280220555003200540, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
+      propertyPath: _highlightColor.g
+      value: 0.5990566
       objectReference: {fileID: 0}
     - target: {fileID: 5136541209655289177, guid: 604821258e4cd4f93a0bf0fd1b7c4528, type: 3}
       propertyPath: m_text

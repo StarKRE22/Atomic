@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Baking/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Baking/SceneEntityBakers.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Character.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Coin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/Entities/Coin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/UI/[UI].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Prefabs/UI/[UI].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scenes/BeginnerGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scenes/BeginnerGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Beginner/Scripts/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/Shooter/Scripts/Gameplay/PlayerContext/PlayerContextInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/PlayMode/SceneEntity/SceneEntityTests_Install.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,23 +258,7 @@
       <workItem from="1760877817000" duration="8047000" />
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
-      <workItem from="1760892887411" duration="7476000" />
-    </task>
-    <task id="LOCAL-01612" summary="ValueEntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760725663304</created>
-      <option name="number" value="01612" />
-      <option name="presentableId" value="LOCAL-01612" />
-      <option name="project" value="LOCAL" />
-      <updated>1760725663304</updated>
-    </task>
-    <task id="LOCAL-01613" summary="ValueEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760726081060</created>
-      <option name="number" value="01613" />
-      <option name="presentableId" value="LOCAL-01613" />
-      <option name="project" value="LOCAL" />
-      <updated>1760726081060</updated>
+      <workItem from="1760892887411" duration="8953000" />
     </task>
     <task id="LOCAL-01614" summary="ValueEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -646,7 +636,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760904659386</updated>
     </task>
-    <option name="localTasksCounter" value="1661" />
+    <task id="LOCAL-01661" summary="Сделал Baking!">
+      <option name="closed" value="true" />
+      <created>1760905065592</created>
+      <option name="number" value="01661" />
+      <option name="presentableId" value="LOCAL-01661" />
+      <option name="project" value="LOCAL" />
+      <updated>1760905065592</updated>
+    </task>
+    <task id="LOCAL-01662" summary="Сделал Baking!">
+      <option name="closed" value="true" />
+      <created>1760905981527</created>
+      <option name="number" value="01662" />
+      <option name="presentableId" value="LOCAL-01662" />
+      <option name="project" value="LOCAL" />
+      <updated>1760905981527</updated>
+    </task>
+    <option name="localTasksCounter" value="1663" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +679,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="StateChangedEntityTriggers.md" />
     <MESSAGE value="StateChangedEntityTrigger.md" />
     <MESSAGE value="SubscriptionEntityTriggers.md" />
     <MESSAGE value="SubscriptionEntityTrigger.md" />
@@ -698,7 +703,8 @@
     <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="SceneEntityBaker`1.md" />
     <MESSAGE value="SceneEntityBaker.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityBaker.md" />
+    <MESSAGE value="Сделал Baking!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал Baking!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
