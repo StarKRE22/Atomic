@@ -67,8 +67,10 @@ public class GnomeEntityFactory : ScriptableEntityFactory
 
 #### 4. Use the multi-entity factory in your project
 
+
 ```csharp
-ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("Enemies");
+// Load the multi-entity factory asset from Resources, for example:
+ScriptableMultiEntityFactory factory = Resources.Load<ScriptableMultiEntityFactory>("MultiEntityFactory");
 
 if (factory.Contains("Orc"))
     IEntity orc = factory.Create("Orc");
