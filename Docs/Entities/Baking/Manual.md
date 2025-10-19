@@ -12,6 +12,7 @@ behaviours. Bakers can be generic ([SceneEntityBaker\<E>](SceneEntityBaker%601.m
 - [Examples of Usage](#-examples-of-usage)
   - [SceneEntityBaker](#ex1)
   - [SceneEntityBaker\<E>](#ex2)
+  - [Bake All](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
 
@@ -61,6 +62,8 @@ public class EnemyBaker : SceneEntityBaker<EnemyEntity>
     }
 }
 ```
+
+<div id="ex3"></div>
 
 ### 3️⃣ Bake All
 
