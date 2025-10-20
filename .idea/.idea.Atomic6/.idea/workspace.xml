@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,23 +248,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="8272000" />
-    </task>
-    <task id="LOCAL-01638" summary="Подвинул Inspector Settings!">
-      <option name="closed" value="true" />
-      <created>1760803106575</created>
-      <option name="number" value="01638" />
-      <option name="presentableId" value="LOCAL-01638" />
-      <option name="project" value="LOCAL" />
-      <updated>1760803106575</updated>
-    </task>
-    <task id="LOCAL-01639" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760803372185</created>
-      <option name="number" value="01639" />
-      <option name="presentableId" value="LOCAL-01639" />
-      <option name="project" value="LOCAL" />
-      <updated>1760803372185</updated>
+      <workItem from="1760942068732" duration="8925000" />
     </task>
     <task id="LOCAL-01640" summary="ScriptableEntityFactory.md">
       <option name="closed" value="true" />
@@ -642,7 +626,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760950181742</updated>
     </task>
-    <option name="localTasksCounter" value="1687" />
+    <task id="LOCAL-01687" summary="IEntityWorld.md">
+      <option name="closed" value="true" />
+      <created>1760950481886</created>
+      <option name="number" value="01687" />
+      <option name="presentableId" value="LOCAL-01687" />
+      <option name="project" value="LOCAL" />
+      <updated>1760950481886</updated>
+    </task>
+    <task id="LOCAL-01688" summary="IEntityWorld`1.md">
+      <option name="closed" value="true" />
+      <created>1760950749906</created>
+      <option name="number" value="01688" />
+      <option name="presentableId" value="LOCAL-01688" />
+      <option name="project" value="LOCAL" />
+      <updated>1760950749906</updated>
+    </task>
+    <option name="localTasksCounter" value="1689" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,8 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ScriptableMultiEntityFactory.md" />
-    <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
     <MESSAGE value="Пилим!" />
     <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="SceneEntityBaker`1.md" />
@@ -694,7 +692,9 @@
     <MESSAGE value="PrefabEntityPool`1.md" />
     <MESSAGE value="SceneEntityPool`1.md" />
     <MESSAGE value="Entity Worlds Manual.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entity Worlds Manual.md" />
+    <MESSAGE value="IEntityWorld.md" />
+    <MESSAGE value="IEntityWorld`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityWorld`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

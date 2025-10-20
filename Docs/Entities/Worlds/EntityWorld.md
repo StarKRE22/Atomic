@@ -7,7 +7,6 @@ generic parameters.
 
 ---
 
-
 ## 📑 Table of Contents
 
 <ul>
