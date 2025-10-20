@@ -146,7 +146,7 @@ CreateArgs args = new GameEntityView.CreateArgs
 {
     name = "PlayerView",
     controlGameObject = true,
-    aspects = new List<SceneEntityAspect> { jumpAspect, speedAspect },
+    installers = new List<SceneEntityInstaller> { jumpInstaller, speedInstaller },
 };
 
 GameEntityView playerView = GameEntityView.Create(args);

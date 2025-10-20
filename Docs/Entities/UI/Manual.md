@@ -9,6 +9,30 @@ of entities. Components can be **generic** or **non-generic**, depending on the 
 
 <!--
 
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a default entity view without knowing the specific entity type
+var args = new EntityView.CreateArgs
+{
+    name = "GenericEntityView",
+    controlGameObject = true,
+    installers = new List<SceneEntityInstaller>()
+};
+
+EntityView view = EntityView.Create(args);
+
+// Show any IEntity instance
+IEntity entity = new SomeEntity();
+view.Show(entity);
+
+// Later, hide or destroy
+view.Hide();
+EntityView.Destroy(view);
+```
+
+
 ## 🗂 Examples of Usage
 
 Below are examples demonstrating practical usage of the main **Entity UI** components.
