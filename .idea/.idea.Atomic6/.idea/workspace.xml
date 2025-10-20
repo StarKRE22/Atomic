@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViews.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViews.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,15 +253,7 @@
       <workItem from="1760892887411" duration="11999000" />
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
-      <workItem from="1760975339788" duration="1871000" />
-    </task>
-    <task id="LOCAL-01660" summary="SceneEntityBaker.md">
-      <option name="closed" value="true" />
-      <created>1760904659386</created>
-      <option name="number" value="01660" />
-      <option name="presentableId" value="LOCAL-01660" />
-      <option name="project" value="LOCAL" />
-      <updated>1760904659386</updated>
+      <workItem from="1760975339788" duration="3845000" />
     </task>
     <task id="LOCAL-01661" summary="Сделал Baking!">
       <option name="closed" value="true" />
@@ -646,7 +639,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760976415856</updated>
     </task>
-    <option name="localTasksCounter" value="1709" />
+    <task id="LOCAL-01709" summary="EntityViewCatalog`1.md">
+      <option name="closed" value="true" />
+      <created>1760979807983</created>
+      <option name="number" value="01709" />
+      <option name="presentableId" value="LOCAL-01709" />
+      <option name="project" value="LOCAL" />
+      <updated>1760979807983</updated>
+    </task>
+    <option name="localTasksCounter" value="1710" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

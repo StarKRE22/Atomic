@@ -41,16 +41,24 @@ public class UnitView : EntityView<UnitEntity>
 }
 ```
 
-#### 3. Create a catalog class for the unit views
+#### 3. Define a catalog class for the unit views
 
 ```csharp
-[CreateAssetMenu(menuName = "Game/UnitViewCatalog")]
-public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> 
+[CreateAssetMenu(
+    fileName = "UnitViewCatalog", 
+    menuName = "Example/UnitViewCatalog"
+)]
+public class UnitViewCatalog : EntityViewCatalog<string, UnitView> 
 {
 }
 ````
 
-#### 4. Usage in a project
+#### 4. Create the catalog asset in the Project Hierarchy
+
+<img width="400" height="" alt="Entity component" src="../../Images/GameEntityViewCatalog.png" />
+
+
+#### 5. Usage in a project
 
 ```csharp
 // Load the catalog from Resources, for example

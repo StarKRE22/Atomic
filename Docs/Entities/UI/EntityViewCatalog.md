@@ -1,20 +1,33 @@
 # 🧩 EntityViewCatalog
 
-```csharp
-[CreateAssetMenu(
-    fileName = "EntityViewCatalog",
-    menuName = "Atomic/Entities/EntityViewCatalog"
-)]
-public class EntityViewCatalog : EntityViewCatalog<IEntity, EntityView>
-```
+A **non-generic catalog** of [EntityView](EntityView.md) prefabs. This is a concrete version of
+[EntityViewCatalog\<E, V>](EntityViewCatalog%601.md) with [IEntity](../Entities/IEntity.md) fixed
+to `EntityView`. Useful when strong typing for a specific entity type is not required. Ideal for general-purpose prefab
+management.
 
-- **Description:** A **non-generic catalog** of `EntityView` prefabs.  
-  This is a concrete version of `EntityViewCatalog<E, V>` with:
-    - `E` fixed to `IEntity`,
-    - `V` fixed to `EntityView`.
-- **Inheritance:** [EntityViewCatalog<E, V>](EntityViewCatalog%601.md), `ScriptableObject`
-- **Usage:** Useful when strong typing for a specific entity type is not required.  
-  Ideal for general-purpose prefab management.
+---
+
+## 🗂 Example of Usage
+
+#### 1. Creating Catalog Asset
+
+Select in Unity menu: `Assets → Create → Atomic → Entities → New EntityViewCatalog`. Then add prefabs that contain
+`EntityView` component.
+
+<img width="400" height="" alt="Entity component" src="../../Images/EntityViewCatalog.png" />
+
+#### 2. Loading and Accessing Prefabs
+
+```csharp
+// Load catalog from Resources
+EntityViewCatalog catalog = Resources.Load<EntityViewCatalog>("EntityViewCatalog");
+
+// Get prefab by index
+KeyValuePair<string, EntityView> kv = catalog.GetPrefab(0);
+
+// Get prefab by name
+EntityView playerPrefab = catalog.GetPrefab("Player");
+```
 
 ---
 
@@ -26,7 +39,24 @@ public class EntityViewCatalog : EntityViewCatalog<IEntity, EntityView>
 
 ---
 
-## 🔑 Properties
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[CreateAssetMenu(
+    fileName = "EntityViewCatalog",
+    menuName = "Atomic/Entities/EntityViewCatalog"
+)]
+public class EntityViewCatalog : EntityViewCatalog<IEntity, EntityView>
+```
+
+- **Inheritance:** [EntityViewCatalog<E, V>](EntityViewCatalog%601.md), `ScriptableObject`
+- **Usage:**
+
+---
+
+### 🔑 Properties
 
 #### `Count`
 
@@ -38,7 +68,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Public Methods
+### 🏹 Methods
 
 #### `GetPrefab(int)`
 
@@ -64,10 +94,6 @@ public EntityView GetPrefab(string name);
 - **Returns:** The prefab instance of type `EntityView`.
 - **Throws:** `Exception` if no prefab with the given name exists.
 
----
-
-## 🏹 Protected Methods
-
 #### `GetName(EntityView)`
 
 ```csharp
@@ -81,31 +107,7 @@ protected virtual string GetName(EntityView prefab);
 - **Override:** Customize this method to implement alternative naming logic, e.g., using tags, metadata, or
   localization.
 
----
-
-## 🗂 Example of Usage
-
-### 1️⃣ Creating a Catalog Asset
-
-`Assets → Create → Atomic → Entities → New EntityViewCatalog`
-
----
-
-### 2️⃣ Loading and Accessing Prefabs
-
-```csharp
-// Load catalog from Resources
-EntityViewCatalog catalog = Resources.Load<EntityViewCatalog>("EntityViewCatalog");
-
-// Get prefab by index
-var kv = catalog.GetPrefab(0);
-Debug.Log($"Prefab {kv.Key} -> {kv.Value}");
-
-// Get prefab by name
-EntityView playerPrefab = catalog.GetPrefab("Player");
-```
-
-<!--
+t<!--
 
 # 🗂 EntityViewCatalog
 

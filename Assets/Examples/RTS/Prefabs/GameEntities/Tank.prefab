@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: -8640557730612936317}
   - component: {fileID: 3806559159976068473}
   - component: {fileID: 6638467102114009318}
-  - component: {fileID: 8390544853302565235}
+  - component: {fileID: 6758013486230455535}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -487,7 +487,7 @@ MonoBehaviour:
     - {fileID: 4462659273236926685}
   _transformBaker:
     _transform: {fileID: 3141069101459334024}
---- !u!114 &8390544853302565235
+--- !u!114 &6758013486230455535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,12 +496,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8258922563122937303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 244330ad556c44d381887f0bf60639a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 358017e89246422095a1ae7e843ef977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlGameObject: 1
-  overrideName: 0
-  customName: 
-  installers: []
-  _onlySelectedGizmos: 0
-  _onlyEditModeGizmos: 0
+  _takeDamageBehaviour:
+    _visual: {fileID: 0}
+    _originalScale: {x: 1, y: 1, z: 1}
+  _positionBehaviour:
+    _transform: {fileID: 0}
+  _rotationBehaviour:
+    _transform: {fileID: 0}
+  _teamColorBehaviour:
+    _renderers: []
+    _viewConfig: {fileID: 0}
+  _weaponRecoilBehaviour:
+    _weapon: {fileID: 0}
+    _originalLocalPos: {x: 0, y: 0, z: 0}
