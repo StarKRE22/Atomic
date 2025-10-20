@@ -60,7 +60,7 @@ entity.Dispose();
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
+public partial interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 ``` 
 
 - **Inheritance:**
