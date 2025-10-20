@@ -1,17 +1,157 @@
 # 🧩 IEntityWorld
 
+Non-generic version of [IEntityWorld\<E>](IEntityWorld%601.md) specialized for [IEntity](../Entities/IEntity.md). Useful for scenarios where
+managing a collection of heterogeneous entities is sufficient.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onadded">OnAdded</a></li>
+            <li><a href="#onremoved">OnRemoved</a></li>
+            <li><a href="#onenabled">OnEnabled</a></li>
+            <li><a href="#ondisabled">OnDisabled</a></li>
+            <li><a href="#onticked">OnTicked</a></li>
+            <li><a href="#onfixedticked">OnFixedTicked</a></li>
+            <li><a href="#onlateticked">OnLateTicked</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#name">Name</a></li>
+            <li><a href="#enabled">Enabled</a></li>
+            <li><a href="#count">Count</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#enable">Enable()</a></li>
+            <li><a href="#disable">Disable()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+            <li><a href="#fixedtickfloat">FixedTick(float)</a></li>
+            <li><a href="#latetickfloat">LateTick(float)</a></li>
+            <li><a href="#addientity">Add(IEntity)</a></li>
+            <li><a href="#removeientity">Remove(IEntity)</a></li>
+            <li><a href="#containsientity">Contains(IEntity)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#copytoientity-int">CopyTo(IEntity[], int)</a></li>
+            <li><a href="#copytoicollectionientity">CopyTo(ICollection&lt;IEntity&gt;)</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#-notes">Notes</a></li>
+</ul>
+
+<!--
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnStateChanged](#onstatechanged)
+    - [OnAdded](#onadded)
+    - [OnRemoved](#onremoved)
+    - [OnEnabled](#onenabled)
+    - [OnDisabled](#ondisabled)
+    - [OnTicked](#onticked)
+    - [OnFixedTicked](#onfixedticked)
+    - [OnLateTicked](#onlateticked)
+  - [Properties](#-properties)
+    - [Name](#name)
+    - [Enabled](#enabled)
+    - [Count](#count)
+    - [IsReadOnly](#isreadonly)
+  - [Methods](#-methods)
+    - [Enable()](#enable)
+    - [Disable()](#disable)
+    - [Tick(float)](#tickfloat)
+    - [FixedTick(float)](#fixedtickfloat)
+    - [LateTick(float)](#latetickfloat)
+    - [Add(IEntity)](#addientity)
+    - [Remove(IEntity)](#removeientity)
+    - [Contains(IEntity)](#containsientity)
+    - [Clear()](#clear)
+    - [CopyTo(IEntity[], int)](#copytoientity-int)
+    - [CopyTo(ICollection<IEntity>)](#copytoicollectionientity)
+    - [Dispose()](#dispose)
+- [Notes](#-notes)
+
+-->
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+//Assume we have an IEntityWorld instance
+IEntityWorld world = ...
+
+// Subscribe to events
+world.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
+world.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
+world.OnStateChanged += () => Console.WriteLine("World state changed");
+world.OnEnabled += () => Console.WriteLine("World enabled");
+world.OnDisabled += () => Console.WriteLine("World disabled");
+world.OnTicked += dt => Console.WriteLine($"Ticked: {dt} seconds");
+
+// Enable the world
+world.Enable();
+
+// Add entities
+var entity1 = new Entity("Entity1");
+var entity2 = new Entity("Entity2");
+world.Add(entity1);
+world.Add(entity2);
+
+// Tick the world
+world.Tick(0.016f);
+
+// Remove an entity
+world.Remove(entity1);
+
+// Dispose when done
+world.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IEntityWorld : IEntityWorld<IEntity>
 ```
 
-- **Description:** Non-generic version of `IEntityWorld<E>` specialized for [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IEntityWorld\<E>](IEntityWorld%601.md).
-- **Note:** Useful for scenarios where managing a collection of heterogeneous entities is sufficient.
 - **See also:** [EntityWorld](EntityWorld.md)
 
 ---
 
-## ⚡ Events
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -84,7 +224,7 @@ public event Action<float> OnLateTicked;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Name`
 
@@ -121,7 +261,7 @@ public bool IsReadOnly { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Enable()`
 
@@ -238,41 +378,6 @@ public void Dispose();
 
 - **Description:** Disposes the world and its entities.
 - **Remarks:** Unsubscribes all event handlers and clears the collection.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-//Assume we have an IEntityWorld instance
-IEntityWorld world = ...
-
-// Subscribe to events
-world.OnAdded += e => Console.WriteLine($"Added entity: {e.Name}");
-world.OnRemoved += e => Console.WriteLine($"Removed entity: {e.Name}");
-world.OnStateChanged += () => Console.WriteLine("World state changed");
-world.OnEnabled += () => Console.WriteLine("World enabled");
-world.OnDisabled += () => Console.WriteLine("World disabled");
-world.OnTicked += dt => Console.WriteLine($"Ticked: {dt} seconds");
-
-// Enable the world
-world.Enable();
-
-// Add entities
-var entity1 = new Entity("Entity1");
-var entity2 = new Entity("Entity2");
-world.Add(entity1);
-world.Add(entity2);
-
-// Tick the world
-world.Tick(0.016f);
-
-// Remove an entity
-world.Remove(entity1);
-
-// Dispose when done
-world.Dispose();
-```
 
 ---
 
