@@ -1,17 +1,69 @@
 # 🧩 PrefabEntityPool
 
-```csharp
-[AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
-[DisallowMultipleComponent]
-public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
-```
+Default implementation of [PrefabEntityPool\<E>](PrefabEntityPool%601.md) for
+base [SceneEntity](../Entities/SceneEntity.md) types. Provides a convenient non-generic entry point for working with
+pooled [SceneEntity](../Entities/SceneEntity.md) instances across multiple Unity scenes. Use this when generic type
+inference is not needed.
 
-- **Description:** Default implementation of [PrefabEntityPool\<E>](PrefabEntityPool%601.md) for
-  base [SceneEntity](../Entities/SceneEntity.md) types.  
-  Provides a convenient non-generic entry point for working with pooled `SceneEntity` instances across multiple Unity
-  scenes.
-- **Inheritance:** [PrefabEntityPool\<E>](PrefabEntityPool%601.md), [IPrefabEntityPool](IPrefabEntityPool.md)
-- **Note:** Use this when generic type inference is not needed.
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Awake()](#awake)
+    - [Init(SceneEntity, int)](#initsceneentity-int)
+    - [Rent(SceneEntity)](#rentsceneentity)
+    - [Rent(SceneEntity, Transform)](#rentsceneentity-transform)
+    - [Rent(SceneEntity, Vector3, Quaternion, Transform)](#rentsceneentity-vector3-quaternion-transform)
+    - [Return(SceneEntity)](#returnsceneentity)
+    - [Dispose(SceneEntity)](#disposesceneentity)
+    - [Dispose()](#dispose)
+    - [OnCreate(SceneEntity)](#oncreatesceneentity)
+    - [OnRent(SceneEntity)](#onrentsceneentity)
+    - [OnReturn(SceneEntity)](#onreturnsceneentity)
+    - [OnDispose(SceneEntity)](#ondisposesceneentity)
+    - [GetEntityName(SceneEntity)](#getentitynamesceneentity)
+- [Notes](#-notes)
+
+
+---
+
+## 🗂 Example of Usage
+
+#### 1. Add `PrefabEntityPool` component to a GameObject
+
+<img width="400" height="" alt="Entity component" src="../../Images/PrefabEntityPool.png" />
+
+#### 2. Use this pool in your code
+
+```csharp
+// Reference the pool from the scene
+PrefabEntityPool pool = ...;
+
+// Pre-initialize pools
+pool.Init(orcPrefab, 5);
+pool.Init(goblinPrefab, 3);
+
+// Rent entities
+SceneEntity orc = pool.Rent(orcPrefab);
+SceneEntity goblin = pool.Rent(goblinPrefab, parentTransform);
+SceneEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
+
+// Return entities to the pool
+pool.Return(orc);
+pool.Return(goblin);
+pool.Return(troll);
+
+// Clear a specific prefab pool
+pool.Dispose(orcPrefab);
+
+// Clear all pools
+pool.Dispose();
+```
 
 ---
 
@@ -24,7 +76,21 @@ public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
 
 ---
 
-## 🏹 Methods
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[AddComponentMenu("Atomic/Entities/Prefab Entity Pool")]
+[DisallowMultipleComponent]
+public class PrefabEntityPool : PrefabEntityPool<SceneEntity>, IPrefabEntityPool
+```
+
+- **Inheritance:** [PrefabEntityPool\<E>](PrefabEntityPool%601.md), [IPrefabEntityPool](IPrefabEntityPool.md)
+
+---
+
+### 🏹 Methods
 
 #### `Awake()`
 
@@ -168,39 +234,6 @@ protected virtual string GetEntityName(SceneEntity entity);
 - **Description:** Extracts a clean base name from a prefab or entity instance.
 - **Behavior:** Removes Unity-generated numeric suffixes like `(1)`, `(2)` etc.
 - **Returns:** A string used as a key for pooling.
-
----
-
-## 🗂 Example of Usage
-
-#### 1. Add `PrefabEntityPool` component to a GameObject
-
-#### 2. Use `PrefabEntityPool` in your code
-
-```csharp
-// Reference the pool from the scene
-PrefabEntityPool pool = ...;
-
-// Pre-initialize pools
-pool.Init(orcPrefab, 5);
-pool.Init(goblinPrefab, 3);
-
-// Rent entities
-SceneEntity orc = pool.Rent(orcPrefab);
-SceneEntity goblin = pool.Rent(goblinPrefab, parentTransform);
-SceneEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
-
-// Return entities to the pool
-pool.Return(orc);
-pool.Return(goblin);
-pool.Return(troll);
-
-// Clear a specific prefab pool
-pool.Dispose(orcPrefab);
-
-// Clear all pools
-pool.Dispose();
-```
 
 ---
 

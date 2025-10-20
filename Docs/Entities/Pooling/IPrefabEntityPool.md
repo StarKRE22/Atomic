@@ -19,6 +19,7 @@ multiple scenes.
         - [Rent(SceneEntity, Vector3, Quaternion, Transform)](#rentsceneentity-vector3-quaternion-transform)
         - [Return(SceneEntity)](#returnsceneentity)
         - [Dispose(SceneEntity)](#disposesceneentity)
+        - [Dispose()](#dispose)
 
 ---
 
@@ -126,3 +127,11 @@ public void Dispose(SceneEntity prefab);
 
 - **Description:** Clears the pool associated with the given prefab, destroying all pooled instances.
 - **Parameter:** `prefab` — The prefab whose pool should be cleared.
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Clears all prefab pools and destroys all pooled entities.

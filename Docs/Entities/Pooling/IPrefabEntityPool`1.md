@@ -18,6 +18,7 @@ Useful when you want prefab-based pooling with automatic instantiation and reuse
         - [Rent(E, Vector3, Quaternion, Transform)](#rente-vector3-quaternion-transform)
         - [Return(E)](#returne)
         - [Dispose(E)](#disposee)
+        - [Dispose()](#dispose)
 
 ---
 
@@ -133,3 +134,12 @@ public void Dispose(E prefab);
 
 - **Description:** Clears the pool associated with the given prefab, destroying all pooled instances.
 - **Parameter:** `prefab` — The prefab whose pool should be cleared.
+
+
+#### `Dispose()`
+
+```csharp
+public void Dispose();
+```
+
+- **Description:** Clears all prefab pools and destroys all pooled entities.
