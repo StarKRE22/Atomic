@@ -7,6 +7,26 @@ Use for managing general-purpose entity views when you do not need strong typing
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Pool Setup](#ex1)
+    - [Pool Usage](#ex2)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#type)
+    - [Methods](#methods)
+        - [Rent(string)](#rentstring)
+        - [Return(string, EntityView)](#returnstring-entityview)
+        - [Clear()](#clear)
+        - [RegisterPrefab(string, EntityView)](#registerprefabstring-entityview)
+        - [UnregisterPrefab(string)](#unregisterprefabstring)
+        - [RegisterPrefabs(EntityViewCatalog)](#registerprefabsentityviewcatalog)
+        - [UnregisterPrefabs(EntityViewCatalog)](#unregisterprefabsentityviewcatalog)
+        - [Awake()](#awake)
+
+---
+
 ## 🗂 Example of Usage
 
 Below is an example of using non-generic entity view pool:
