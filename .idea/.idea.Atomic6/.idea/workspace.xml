@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/EntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IMultiEntityPool.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,31 +251,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="1597000" />
-    </task>
-    <task id="LOCAL-01619" summary="StateChangedEntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760730535554</created>
-      <option name="number" value="01619" />
-      <option name="presentableId" value="LOCAL-01619" />
-      <option name="project" value="LOCAL" />
-      <updated>1760730535554</updated>
-    </task>
-    <task id="LOCAL-01620" summary="StateChangedEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760730788314</created>
-      <option name="number" value="01620" />
-      <option name="presentableId" value="LOCAL-01620" />
-      <option name="project" value="LOCAL" />
-      <updated>1760730788314</updated>
-    </task>
-    <task id="LOCAL-01621" summary="StateChangedEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760730968317</created>
-      <option name="number" value="01621" />
-      <option name="presentableId" value="LOCAL-01621" />
-      <option name="project" value="LOCAL" />
-      <updated>1760730968317</updated>
+      <workItem from="1760942068732" duration="2843000" />
     </task>
     <task id="LOCAL-01622" summary="Minor Fixes!">
       <option name="closed" value="true" />
@@ -644,7 +621,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760943445593</updated>
     </task>
-    <option name="localTasksCounter" value="1668" />
+    <task id="LOCAL-01668" summary="EntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760943674712</created>
+      <option name="number" value="01668" />
+      <option name="presentableId" value="LOCAL-01668" />
+      <option name="project" value="LOCAL" />
+      <updated>1760943674712</updated>
+    </task>
+    <task id="LOCAL-01669" summary="EntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760943704912</created>
+      <option name="number" value="01669" />
+      <option name="presentableId" value="LOCAL-01669" />
+      <option name="project" value="LOCAL" />
+      <updated>1760943704913</updated>
+    </task>
+    <task id="LOCAL-01670" summary="EntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1760943987067</created>
+      <option name="number" value="01670" />
+      <option name="presentableId" value="LOCAL-01670" />
+      <option name="project" value="LOCAL" />
+      <updated>1760943987067</updated>
+    </task>
+    <option name="localTasksCounter" value="1671" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,8 +672,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="InlineEntityTrigger`1.md" />
-    <MESSAGE value="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation" />
     <MESSAGE value="EntityFactories!" />
     <MESSAGE value="IEntityFactory.md" />
     <MESSAGE value="Подвинул Inspector Settings!" />
@@ -696,7 +695,9 @@
     <MESSAGE value="Сделал Manual для Pools!" />
     <MESSAGE value="IEntityPool.md" />
     <MESSAGE value="IEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityPool`1.md" />
+    <MESSAGE value="EntityPool.md" />
+    <MESSAGE value="EntityPool`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityPool`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
