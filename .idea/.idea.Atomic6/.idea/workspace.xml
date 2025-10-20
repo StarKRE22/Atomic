@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityValues.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityBehaviours.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityBehaviours.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,15 +273,7 @@
       <workItem from="1760892887411" duration="11999000" />
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
-      <workItem from="1760975339788" duration="12634000" />
-    </task>
-    <task id="LOCAL-01677" summary="IPrefabEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1760946015904</created>
-      <option name="number" value="01677" />
-      <option name="presentableId" value="LOCAL-01677" />
-      <option name="project" value="LOCAL" />
-      <updated>1760946015904</updated>
+      <workItem from="1760975339788" duration="12969000" />
     </task>
     <task id="LOCAL-01678" summary="PrefabEntityPool.md">
       <option name="closed" value="true" />
@@ -667,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760991524062</updated>
     </task>
-    <option name="localTasksCounter" value="1726" />
+    <task id="LOCAL-01726" summary="IEntityValues.md">
+      <option name="closed" value="true" />
+      <created>1760991847977</created>
+      <option name="number" value="01726" />
+      <option name="presentableId" value="LOCAL-01726" />
+      <option name="project" value="LOCAL" />
+      <updated>1760991847977</updated>
+    </task>
+    <option name="localTasksCounter" value="1727" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityWorld`1.md" />
     <MESSAGE value="SceneEntityWorld.md" />
     <MESSAGE value="Installers Manual!" />
     <MESSAGE value="IEntityInstaller.md" />
@@ -719,7 +718,8 @@
     <MESSAGE value="Думаем!" />
     <MESSAGE value="IEntityCore.md" />
     <MESSAGE value="IEntityTags.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityTags.md" />
+    <MESSAGE value="IEntityValues.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityValues.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

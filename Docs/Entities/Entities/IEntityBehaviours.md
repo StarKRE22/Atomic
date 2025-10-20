@@ -1,6 +1,7 @@
 # 🧩 IEntity Behaviours
 
-Manage modular logic attached to the entity. Behaviours can be added, removed, queried, or enumerated at runtime. This allows flexible composition of entity
+Manage modular logic attached to the entity. Behaviours can be added, removed, queried, or enumerated at runtime. This
+allows flexible composition of entity
 logic, enabling dynamic functionality without changing the core entity structure.
 
 > [!IMPORTANT]
@@ -11,7 +12,130 @@ logic, enabling dynamic functionality without changing the core entity structure
 
 ---
 
-## ⚡ Events
+# 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+    - [Basic Usage](#ex1)
+    - [Using Extension Methods](#ex2)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnBehaviourAdded](#onbehaviouradded)
+        - [OnBehaviourDeleted](#onbehaviourdeleted)
+    - [Properties](#-properties)
+        - [BehaviourCount](#behaviourcount)
+    - [Methods](#-methods)
+        - [AddBehaviour(IEntityBehaviour)](#addbehaviourientitybehaviour)
+        - [GetBehaviour\<T>()](#getbehaviourt)
+        - [GetBehaviourAt(int)](#getbehaviouratint)
+        - [TryGetBehaviour\<T>(out T)](#trygetbehaviourtout-t)
+        - [HasBehaviour(IEntityBehaviour)](#hasbehaviourientitybehaviour)
+        - [HasBehaviour\<T>()](#hasbehaviourt)
+        - [DelBehaviour(IEntityBehaviour)](#delbehaviourientitybehaviour)
+        - [DelBehaviour\<T>()](#delbehaviourt)
+        - [DelBehaviours\<T>()](#delbehaviourst)
+        - [ClearBehaviours()](#clearbehaviours)
+        - [GetBehaviours()](#getbehaviours)
+        - [GetBehaviours\<T>()](#getbehaviourst)
+        - [CopyBehaviours(IEntityBehaviour[])](#copybehavioursientitybehaviour)
+        - [CopyBehaviours\<T>(T[])](#copybehaviourstt)
+        - [GetBehaviourEnumerator()](#getbehaviourcenumerator)
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of working with behaviours in the entity.
+
+<div id="ex1"></div>
+
+### 1️⃣ Basic Usage
+
+```csharp
+// Assume we have a player entity:
+IEntity player = ...
+
+// Subscribe to events
+player.OnBehaviourAdded += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
+
+player.OnBehaviourDeleted += (e, b) => 
+    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
+
+// Add behaviours
+player.AddBehaviour(new MovementBehaviour());
+player.AddBehaviour(new RotationBehaviour());
+
+// Check count
+Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
+
+// Retrieve behaviour by type
+MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
+
+// Try to retrieve behaviour by type
+if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
+    Console.WriteLine("Found RotationBehaviour");
+
+// Remove behaviour
+player.DelBehaviour<MovementBehaviour>();
+
+// Clear all behaviours
+player.ClearBehaviours();
+
+// Enumerate all behaviours
+foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
+    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
+
+// Get array of behaviours
+IEntityBehaviour[] behaviours = player.GetBehaviours();
+
+// Copy to array
+IEntityBehaviour[] buffer = new IEntityBehaviour[10];
+int copied = player.CopyBehaviours(buffer);
+
+Console.WriteLine($"Copied {copied} behaviours into buffer");
+```
+
+<div id="ex2"></div>
+
+### 2️⃣ Using Extension Methods
+
+The framework also provides [extension methods](ExtensionsBehaviours.md) for convenient handling of behaviours.
+
+```csharp
+// Assume we have a player entity:
+IEntity player = ...
+
+// Add behaviour by type (using new T())
+enemy.AddBehaviour<MoveBehaviour>();
+
+// Add multiple behaviours at once
+var attackBehaviour = new AttackBehaviour();
+var defenseBehaviour = new DefenseBehaviour();
+
+enemy.AddBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+
+// Remove multiple behaviours at once
+enemy.DelBehaviours(new IEntityBehaviour[] {
+    attackBehaviour, defenseBehaviour
+});
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial interface IEntity
+``` 
+
+---
+
+### ⚡ Events
 
 #### `OnBehaviourAdded`
 
@@ -39,7 +163,7 @@ public event Action<IEntity, IEntityBehaviour> OnBehaviourDeleted
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `BehaviourCount`
 
@@ -52,7 +176,7 @@ public int BehaviourCount { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `AddBehaviour(IEntityBehaviour)`
 
@@ -203,81 +327,3 @@ public IEnumerator<IEntityBehaviour> GetBehaviourEnumerator()
 
 - **Description:** Enumerates all behaviours attached to the entity.
 - **Returns:** Enumerator for iterating through behaviours.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of working with behaviours in the entity.
-
-### 1️⃣ Basic Usage
-
-```csharp
-// Assume we have a player entity:
-IEntity player = ...
-
-// Subscribe to events
-player.OnBehaviourAdded += (e, b) => 
-    Console.WriteLine($"Behaviour {b.GetType().Name} added to {e.Id}");
-
-player.OnBehaviourDeleted += (e, b) => 
-    Console.WriteLine($"Behaviour {b.GetType().Name} removed from {e.Id}");
-
-// Add behaviours
-player.AddBehaviour(new MovementBehaviour());
-player.AddBehaviour(new RotationBehaviour());
-
-// Check count
-Console.WriteLine($"Total behaviours: {player.BehaviourCount}");
-
-// Retrieve behaviour by type
-MovementBehaviour movementBehaviour = player.GetBehaviour<MovementBehaviour>();
-
-// Try to retrieve behaviour by type
-if (player.TryGetBehaviour<RotationBehaviour>(out var rotation))
-    Console.WriteLine("Found RotationBehaviour");
-
-// Remove behaviour
-player.DelBehaviour<MovementBehaviour>();
-
-// Clear all behaviours
-player.ClearBehaviours();
-
-// Enumerate all behaviours
-foreach (IEntityBehaviour behaviour in player.GetBehaviourEnumerator())
-    Console.WriteLine($"Behaviour: {behaviour.GetType().Name}");
-
-// Get array of behaviours
-IEntityBehaviour[] behaviours = player.GetBehaviours();
-
-// Copy to array
-IEntityBehaviour[] buffer = new IEntityBehaviour[10];
-int copied = player.CopyBehaviours(buffer);
-
-Console.WriteLine($"Copied {copied} behaviours into buffer");
-```
-
-### 2️⃣ Using Extension Methods
-
-The framework also provides [extension methods](ExtensionsBehaviours.md) for convenient handling of behaviours.
-
-```csharp
-// Assume we have a player entity:
-IEntity player = ...
-
-// Add behaviour by type (using new T())
-enemy.AddBehaviour<MoveBehaviour>();
-
-// Add multiple behaviours at once
-var attackBehaviour = new AttackBehaviour();
-var defenseBehaviour = new DefenseBehaviour();
-
-enemy.AddBehaviours(new IEntityBehaviour[] {
-    attackBehaviour, defenseBehaviour
-});
-
-// Remove multiple behaviours at once
-enemy.DelBehaviours(new IEntityBehaviour[] {
-    attackBehaviour, defenseBehaviour
-});
-```
