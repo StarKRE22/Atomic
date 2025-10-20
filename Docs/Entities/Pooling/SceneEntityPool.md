@@ -37,9 +37,6 @@ pool without specifying a generic type.
 
 Below are examples of using the non-generic `SceneEntityPool` for scene entities:
 
----
-
-
 <div id="ex1"></div>
 
 ### 1️⃣ Basic Usage
