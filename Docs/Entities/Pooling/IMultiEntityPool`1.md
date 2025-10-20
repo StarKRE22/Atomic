@@ -1,8 +1,8 @@
 # 🧩 IMultiEntityPool<K, E>
 
-Represents a **registry of multiple entity pools**, each identified by a key of type `K`.  
-Allows managing different pools in a centralized way, with each pool able to rent and return entities of type `E`.
-Useful when you need multiple distinct pools (e.g., different enemy types) under a single manager.
+Represents a **registry of multiple entity pools**, each identified by a key of type `K`. Allows managing different
+pools in a centralized way, with each pool able to rent and return entities of type `E`. Useful when you need multiple
+distinct pools (e.g., different enemy types) under a single manager.
 
 ---
 
