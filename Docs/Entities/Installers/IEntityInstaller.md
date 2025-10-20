@@ -1,25 +1,16 @@
 # 🧩 IEntityInstaller
 
-```csharp
-public interface IEntityInstaller
-```
+Represents an interface that configures or injects data into an [IEntity](../Entities/IEntity.md) instance.
 
-- **Description:** Represents an interface that configures or injects data into an [IEntity](../Entities/IEntity.md) instance. 
-- **Note:** It allows setting up values, components, or behaviors during initialization or configuration phases.
-- **See also:** [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Install(IEntity)`
-
-```csharp
-public void Install(IEntity entity);
-```
-
-- **Description:** Called to install data or behaviors into the entity.
-- **Parameter:** `entity` – The entity being configured.
-- **Remarks:** Provides a flexible, non-generic entry point for entity configuration.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Install(IEntity)](#installientity)
 
 ---
 
@@ -49,3 +40,30 @@ public sealed class CharacterInstaller : IEntityInstaller
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityInstaller
+```
+
+- **Note:** It allows setting up values, components, or behaviors during initialization or configuration phases.
+- **See also:** [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md)
+
+---
+
+### 🏹 Methods
+
+#### `Install(IEntity)`
+
+```csharp
+public void Install(IEntity entity);
+```
+
+- **Description:** Called to install data or behaviors into the entity.
+- **Parameter:** `entity` – The entity being configured.
+- **Remarks:** Provides a flexible, non-generic entry point for entity configuration.
