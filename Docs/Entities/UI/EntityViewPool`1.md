@@ -1,8 +1,8 @@
 # 🧩 EntityViewPool<E, V>
 
-A pool system for managing reusable [EntityView\<E>](EntityView%601.md) instances.  
-Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime
-allocations. Use for efficient management of frequently spawned or displayed entity views.
+A pool system for managing reusable [EntityView\<E>](EntityView%601.md) instances. Supports preloading from catalogs,
+runtime instantiation, renting, and returning views to minimize runtime allocations. Use for efficient management of
+frequently spawned or displayed entity views.
 
 ---
 
