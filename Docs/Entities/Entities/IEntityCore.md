@@ -5,7 +5,22 @@ debugging or tooling, and the main event for reactive state changes.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+    - [Properties](#-properties)
+        - [InstanceID](#instanceid)
+        - [Name](#name)
+
+---
+
 ## 🗂 Example of Usage
+
+Below is an example of using core members of `IEntity`
 
 ```csharp
 // Assume we have instance of entity
@@ -32,7 +47,7 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 ### 🏛️ Type <div id="-type"></div>
 
 ```csharp
-public partial interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
+public partial interface IEntity
 ``` 
 
 ### ⚡ Events
