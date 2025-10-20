@@ -40,7 +40,7 @@ public virtual void Uninstall(E entity)
 ```csharp
 [CreateAssetMenu(
     fileName = "MoveInstaller",
-    menuName = "SampleGame/New MoveInstaller"
+    menuName = "Example/New MoveInstaller"
 )]
 public sealed class MoveInstaller<UnitEntity> : ScriptableEntityInstaller<UnitEntity>
 {
