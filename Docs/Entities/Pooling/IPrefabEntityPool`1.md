@@ -1,18 +1,73 @@
 # 🧩 IPrefabEntityPool\<E>
 
+Manages **multiple scene entity pools**, each associated with a specific prefab. Provides centralized methods for
+renting and returning entities across those pools.
+Useful when you want prefab-based pooling with automatic instantiation and reuse in a Unity scene.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Init(E, int)](#inite-int)
+        - [Rent(E)](#rente)
+        - [Rent(E, Transform)](#rente-transform)
+        - [Rent(E, Vector3, Quaternion, Transform)](#rente-vector3-quaternion-transform)
+        - [Return(E)](#returne)
+        - [Dispose(E)](#disposee)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have a scene entity prefabs
+public class GameEntity : SceneEntity
+{
+}
+```
+
+```csharp
+// Assume we have an instance of IPrefabEntityPool<GameEntity>
+IPrefabEntityPool<GameEntity> entityPool = ...;
+
+// Initialize pool for a specific prefab
+entityPool.Init(orcPrefab, 5);
+entityPool.Init(goblinPrefab, 2);
+
+GameEntity orc = enemyPool.Rent(orcPrefab);
+GameEntity goblin = enemyPool.Rent(goblinPrefab, parentTransform);
+GameEntity troll = enemyPool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
+
+// Return enemies to the pool when done
+enemyPool.Return(orc);
+enemyPool.Return(goblin);
+enemyPool.Return(troll);
+
+// Optionally clear the pool for this prefab
+enemyPool.Dispose(orc);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public interface IPrefabEntityPool<E> : IDisposable where E : SceneEntity
 ```
 
-- **Description:** Manages **multiple scene entity pools**, each associated with a specific prefab.  
-  Provides centralized methods for renting and returning entities across those pools.
-- **Type Parameter:** `E` — The type of scene entity being pooled. Must inherit from [SceneEntity](../Entities/SceneEntity.md).
+- **Type Parameter:** `E` — The type of scene entity being pooled. Must inherit
+  from [SceneEntity](../Entities/SceneEntity.md).
 - **Inheritance:** `IDisposable`
-- **Note:** Useful when you want prefab-based pooling with automatic instantiation and reuse in a Unity scene.
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Init(E, int)`
 
@@ -78,35 +133,3 @@ public void Dispose(E prefab);
 
 - **Description:** Clears the pool associated with the given prefab, destroying all pooled instances.
 - **Parameter:** `prefab` — The prefab whose pool should be cleared.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Assume we have a scene entity prefabs
-public class GameEntity : SceneEntity
-{
-}
-```
-
-```csharp
-// Assume we have an instance of IPrefabEntityPool<GameEntity>
-IPrefabEntityPool<GameEntity> entityPool = ...;
-
-// Initialize pool for a specific prefab
-entityPool.Init(orcPrefab, 5);
-entityPool.Init(goblinPrefab, 2);
-
-GameEntity orc = enemyPool.Rent(orcPrefab);
-GameEntity goblin = enemyPool.Rent(goblinPrefab, parentTransform);
-GameEntity troll = enemyPool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
-
-// Return enemies to the pool when done
-enemyPool.Return(orc);
-enemyPool.Return(goblin);
-enemyPool.Return(troll);
-
-// Optionally clear the pool for this prefab
-enemyPool.Dispose(orc);
-```
