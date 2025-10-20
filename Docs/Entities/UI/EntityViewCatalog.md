@@ -7,6 +7,21 @@ management.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Count](#count)
+    - [Methods](#-methods)
+        - [GetPrefab(int)](#getprefabint)
+        - [GetPrefab(string)](#getprefabstring)
+        - [GetName(EntityView)](#getnameentityview)
+
+---
+
 ## 🗂 Example of Usage
 
 #### 1. Creating Catalog Asset
@@ -107,7 +122,7 @@ protected virtual string GetName(EntityView prefab);
 - **Override:** Customize this method to implement alternative naming logic, e.g., using tags, metadata, or
   localization.
 
-t<!--
+<!--
 
 # 🗂 EntityViewCatalog
 
