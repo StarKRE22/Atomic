@@ -49,7 +49,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 
 - [Entities](Entities/Manual.md) 
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
-- [Installers](Installers/Manual.md)
+- [Installers](Installers/Manual.md) <!-- + -->
 - [Aspects](Aspects/Manual.md) <!-- + -->
 - [Factories](Factories/Manual.md) <!-- + -->
 - [Baking](Baking/Manual.md) <!-- + -->
@@ -60,7 +60,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Filters](Filters/Manual.md) <!-- + -->
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
-- [UI](UI/Manual.md)
+- [Views](UI/Manual.md) <!-- + -->
 - [Names](Names/Manual.md) <!-- + -->
 - [API Generation](EntityAPI/Manual.md)
 
