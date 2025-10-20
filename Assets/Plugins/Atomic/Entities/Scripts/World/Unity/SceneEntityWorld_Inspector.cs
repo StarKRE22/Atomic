@@ -21,7 +21,7 @@ namespace Atomic.Entities
         [HideInPlayMode]
         [GUIColor(0f, 0.83f, 1f)]
 #endif
-        [Header("Entity Scan")]
+        [Header("Collecting")]
         [Tooltip("If this option is enabled then EntityWorld add all Entities on a scene on Awake()")]
         [SerializeField]
         private protected bool collectOnAwake = true;

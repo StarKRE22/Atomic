@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -45,7 +46,8 @@ namespace Atomic.Entities
 
         /// <inheritdoc />
 #if ODIN_INSPECTOR
-        [ShowInInspector, ReadOnly]
+        [Header("Debug")]
+        [ShowInInspector, ReadOnly, HideInEditorMode]
 #endif
         public bool Enabled => _world.Enabled;
 

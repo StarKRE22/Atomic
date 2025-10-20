@@ -24,6 +24,7 @@ disposing collections.
             <li><a href="#destroyentity">DestroyEntity()</a></li>
             <li><a href="#initentities">InitEntities()</a></li>
             <li><a href="#disposeentities">DisposeEntities()</a></li>
+            <li><a href="#collectallentities">CollectAllEntities()</a></li>
           </ul>
         </details>
       </li>
@@ -157,3 +158,17 @@ public static void DisposeEntities<E>(this IEntityCollection<E> it) where E : IE
 - **Parameters:**
     - `it` — The collection of entities to dispose.
 - **Behavior:** Iterates over the collection and invokes `IDisposable.Dispose` on each entity.
+
+#### `CollectAllEntities()`
+
+```csharp  
+public static void CollectAllEntities<E>(this IEntityCollection<E> collection, bool includeInactive = false)
+```
+
+- **Description:** Scans the scene for all entities of type `E` and adds them to the world.
+- **Type Parameter:** `E` — Type of scene entity to collect.
+- **Parameters:**
+  - `collection` — The target collection where entities will be added
+  - `includeInactive` — Whether to include inactive GameObjects
+- **Behavior:** Automatically calls `Install()` on entities before adding.
+- **Notes:** Honors `includeInactiveOnCollect` to optionally include inactive GameObjects.
