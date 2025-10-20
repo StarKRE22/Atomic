@@ -19,27 +19,39 @@ logic, enabling dynamic functionality without changing the core entity structure
     - [Using Extension Methods](#ex2)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Events](#-events)
+    - <details>
+      <summary><a href="#-events">Events</a></summary>
+
         - [OnBehaviourAdded](#onbehaviouradded)
         - [OnBehaviourDeleted](#onbehaviourdeleted)
-    - [Properties](#-properties)
+
+      </details>
+    - <details>
+      <summary><a href="#-properties">Properties</a></summary>
+
         - [BehaviourCount](#behaviourcount)
-    - [Methods](#-methods)
+
+      </details>
+    - <details>
+      <summary><a href="#-methods">Methods</a></summary>
+
         - [AddBehaviour(IEntityBehaviour)](#addbehaviourientitybehaviour)
-        - [GetBehaviour\<T>()](#getbehaviourt)
+        - [GetBehaviour&lt;T&gt;()](#getbehaviourt)
         - [GetBehaviourAt(int)](#getbehaviouratint)
-        - [TryGetBehaviour\<T>(out T)](#trygetbehaviourtout-t)
+        - [TryGetBehaviour&lt;T&gt;(out T)](#trygetbehaviourtout-t)
         - [HasBehaviour(IEntityBehaviour)](#hasbehaviourientitybehaviour)
-        - [HasBehaviour\<T>()](#hasbehaviourt)
+        - [HasBehaviour&lt;T&gt;()](#hasbehaviourt)
         - [DelBehaviour(IEntityBehaviour)](#delbehaviourientitybehaviour)
-        - [DelBehaviour\<T>()](#delbehaviourt)
-        - [DelBehaviours\<T>()](#delbehaviourst)
+        - [DelBehaviour&lt;T&gt;()](#delbehaviourt)
+        - [DelBehaviours&lt;T&gt;()](#delbehaviourst)
         - [ClearBehaviours()](#clearbehaviours)
         - [GetBehaviours()](#getbehaviours)
-        - [GetBehaviours\<T>()](#getbehaviourst)
+        - [GetBehaviours&lt;T&gt;()](#getbehaviourst)
         - [CopyBehaviours(IEntityBehaviour[])](#copybehavioursientitybehaviour)
-        - [CopyBehaviours\<T>(T[])](#copybehaviourstt)
+        - [CopyBehaviours&lt;T&gt;(T[])](#copybehaviourstt)
         - [GetBehaviourEnumerator()](#getbehaviourcenumerator)
+
+      </details>
 
 ---
 
