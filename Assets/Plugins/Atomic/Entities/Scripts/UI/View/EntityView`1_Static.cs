@@ -21,13 +21,6 @@ namespace Atomic.Entities
             
             [Tooltip("Installers that will configure the EntityView upon creation.")]
             public List<SceneEntityInstaller> installers;
-            
-            [Header("Gizmos")]
-            [Tooltip("If true, gizmos will be drawn only in Edit Mode.")]
-            public bool onlyEditModeGizmos;
-
-            [Tooltip("If true, gizmos will be drawn only when the object is selected.")]
-            public bool onlySelectedGizmos;
         }
 
         /// <summary>
@@ -45,8 +38,6 @@ namespace Atomic.Entities
             
             view.installers = args.installers;
             view.controlGameObject = args.controlGameObject;
-            view._onlyEditModeGizmos = args.onlyEditModeGizmos;
-            view._onlySelectedGizmos = args.onlySelectedGizmos;
 
             gameObject.SetActive(true);
             return view;

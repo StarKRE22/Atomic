@@ -17,6 +17,9 @@ namespace Atomic.Entities
     /// <typeparam name="E">The type of <see cref="IEntity"/> associated with this view.</typeparam>
     public abstract partial class EntityView<E> : MonoBehaviour where E : class, IEntity
     {
+#if ODIN_INSPECTOR
+        [GUIColor(0f, 0.83f, 1f)]
+#endif
         /// <summary>
         /// If true, <see cref="GameObject.SetActive"/> will be called when <see cref="Show(E)"/>
         /// and <see cref="Hide"/> are invoked.
@@ -59,6 +62,7 @@ namespace Atomic.Entities
         /// Gets the entity currently associated with this view.
         /// </summary>
 #if ODIN_INSPECTOR
+        [Header("Debug")]
         [ShowInInspector]
 #endif
         public E Entity => _entity;
