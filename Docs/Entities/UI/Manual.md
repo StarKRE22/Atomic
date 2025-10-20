@@ -253,8 +253,6 @@ Below is a list of available Entity UI modules:
 - **Collections** bind a group of entities to their corresponding views, handling add/remove events automatically.
 - **Generic versions** provide type-safety and avoid casting when working with specific entity types.
 
-
-
 <!--
 
 ## 🗂 Example of Usage
