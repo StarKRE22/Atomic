@@ -1,18 +1,110 @@
 # 🧩 SceneEntityWorld
 
-```csharp
-[DefaultExecutionOrder(-1000)]
-[DisallowMultipleComponent]
-[AddComponentMenu("Atomic/Entities/Entity World")]
-public class SceneEntityWorld : SceneEntityWorld<SceneEntity>  
+A **non-generic** alias for [SceneEntityWorld\<E>](SceneEntityWorld%601.md). Represents a Unity scene-bound entity world
+operating on the base [SceneEntity](../Entities/SceneEntity.md) type. Use this class when you do not need to specialize
+the world with a custom entity type. Ideal for simple scenarios where only [SceneEntity](../Entities/SceneEntity.md) is
+involved.
+
+---
+
+## 📑 Table of Contents
+
+<ul>
+  <li><a href="#-example-of-usage">Example of Usage</a></li>
+  <li>
+    <a href="#-inspector-settings">Inspector Settings</a></li>
+  <li>
+    <a href="#-api-reference">API Reference</a>
+    <ul>
+      <li><a href="#-type">Type</a></li>
+      <li>
+        <details>
+          <summary><a href="#-events">Events</a></summary>
+          <ul>
+            <li><a href="#onstatechanged">OnStateChanged</a></li>
+            <li><a href="#onadded">OnAdded</a></li>
+            <li><a href="#onremoved">OnRemoved</a></li>
+            <li><a href="#onenabled">OnEnabled</a></li>
+            <li><a href="#ondisabled">OnDisabled</a></li>
+            <li><a href="#onticked">OnTicked</a></li>
+            <li><a href="#onfixedticked">OnFixedTicked</a></li>
+            <li><a href="#onlateticked">OnLateTicked</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-properties">Properties</a></summary>
+          <ul>
+            <li><a href="#name">Name</a></li>
+            <li><a href="#enabled">Enabled</a></li>
+            <li><a href="#isreadonly">IsReadOnly</a></li>
+            <li><a href="#count">Count</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary><a href="#-methods">Methods</a></summary>
+          <ul>
+            <li><a href="#addsceneentity">Add(SceneEntity)</a></li>
+            <li><a href="#removesceneentity">Remove(SceneEntity)</a></li>
+            <li><a href="#clear">Clear()</a></li>
+            <li><a href="#containssceneentity">Contains(SceneEntity)</a></li>
+            <li><a href="#copytoicollectionsceneentity">CopyTo(ICollection&lt;SceneEntity&gt;)</a></li>
+            <li><a href="#enable">Enable()</a></li>
+            <li><a href="#disable">Disable()</a></li>
+            <li><a href="#tickfloat">Tick(float)</a></li>
+            <li><a href="#fixedtickfloat">FixedTick(float)</a></li>
+            <li><a href="#latetickfloat">LateTick(float)</a></li>
+            <li><a href="#dispose">Dispose()</a></li>
+            <li><a href="#createstring-bool-bool">Create(string, bool, bool)</a></li>
+            <li><a href="#destroysceneentityworld-float">Destroy(SceneEntityWorld, float)</a></li>
+        </ul>
+        </details>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of creating and using `SceneEntityWorld`
+
+#### 1. Add and configure `Atomic/Entities/EntityWorld` component
+
+<img width="400" height="" alt="Entity component" src="../../Images/EntityWorld.png" />
+
+#### 2. Use `SceneEntityWorld` in runtime
+
+```csharp  
+SceneEntityWorld world = ...
+
+// Subscribe to events
+world.OnAdded += e => Debug.Log($"Added entity: {e.name}");
+world.OnRemoved += e => Debug.Log($"Removed entity: {e.name}");
+world.OnEnabled += () => Debug.Log("World enabled");
+
+// Enable the world
+world.Enable();
+
+// Tick updates
+world.Tick(Time.deltaTime);
+world.FixedTick(Time.fixedDeltaTime);
+world.LateTick(Time.deltaTime);
 ```
 
-- **Description:** A **non-generic alias for `SceneEntityWorld<E>`**.  
-  Represents a Unity scene-bound entity world operating on the base `SceneEntity` type.
-- **Inheritance:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md)
-- **Note:** Use this class when you do not need to specialize the world with a custom entity type.  
-  Ideal for simple scenarios where only `SceneEntity` is involved.
-- **See also:** [SceneEntity](../Entities/SceneEntity.md)
+Also, you can create and destroy an instance of `SceneEntityWorld` dynamically
+
+```csharp
+// Create a SceneEntityWorld
+SceneEntityWorld world = SceneEntityWorld.Create("SceneEntityWorld", scanEntities: true);
+
+// Destroy the world when done
+SceneEntityWorld.Destroy(world);
+```
 
 ---
 
@@ -27,7 +119,23 @@ public class SceneEntityWorld : SceneEntityWorld<SceneEntity>
 
 ---
 
-## ⚡ Events
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[DefaultExecutionOrder(-1000)]
+[DisallowMultipleComponent]
+[AddComponentMenu("Atomic/Entities/Entity World")]
+public class SceneEntityWorld : SceneEntityWorld<SceneEntity>  
+```
+
+- **Inheritance:** [SceneEntityWorld\<E>](SceneEntityWorld%601.md)
+- **See also:** [SceneEntity](../Entities/SceneEntity.md)
+
+---
+
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -100,7 +208,7 @@ public event Action<float> OnLateTicked;
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Name`
 
@@ -137,17 +245,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Public Methods
-
-#### `RegisterAllEntities()`
-
-```csharp  
-public void RegisterAllEntities();  
-```
-
-- **Description:** Scans the scene for all entities of type `SceneEntity` and adds them to the world.
-- **Behavior:** Automatically calls `Install()` on entities before adding.
-- **Notes:** Honors `includeInactiveOnRegister` to optionally include inactive GameObjects.
+### 🏹 Methods
 
 #### `Add(SceneEntity)`
 
@@ -201,7 +299,7 @@ public void Enable();
 
 #### `Disable()`
 
-``` csharp 
+```csharp 
 public void Disable();  
 ```
 
@@ -239,10 +337,6 @@ public void Dispose();
 
 - **Description:** Disposes the world and all entities, unsubscribing events.
 
----
-
-## 🏹 Static Methods
-
 #### `Create(string, bool, bool)`
 
 ```csharp  
@@ -263,40 +357,3 @@ public static void Destroy(SceneEntityWorld world, float t = 0);
 ```
 
 - **Description:** Destroys the world and its GameObject after an optional delay.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of creating and using `SceneEntityWorld`
-
-#### 1. Add and configure `SceneEntityWorld` component
-
-#### 2. Use `SceneEntityWorld` in runtime
-
-```csharp  
-SceneEntityWorld world = ...
-
-// Subscribe to events
-world.OnAdded += e => Debug.Log($"Added entity: {e.name}");
-world.OnRemoved += e => Debug.Log($"Removed entity: {e.name}");
-world.OnEnabled += () => Debug.Log("World enabled");
-
-// Enable the world
-world.Enable();
-
-// Tick updates
-world.Tick(Time.deltaTime);
-world.FixedTick(Time.fixedDeltaTime);
-world.LateTick(Time.deltaTime);
-```
-
-Also, you can create and destroy an instance of `SceneEntityWorld` dynamically
-
-```csharp
-// Create a SceneEntityWorld
-SceneEntityWorld world = SceneEntityWorld.Create("SceneEntityWorld", scanEntities: true);
-
-// Destroy the world when done
-SceneEntityWorld.Destroy(world);
-```
