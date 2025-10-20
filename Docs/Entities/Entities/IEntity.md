@@ -10,7 +10,7 @@ state**, **tags**, **values**, **behaviors** and **lifecycle management**.
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Modules](#-modules)
+- [Modules](#-modules)
 - [Notes](#-notes)
 
 ---
@@ -70,7 +70,7 @@ public interface IEntity : IInitLifecycle, IEnableLifecycle, ITickLifecycle
 
 ---
 
-### 🧩 Modules
+## 🧩 Modules
 
 Each module represents a logical subset of the `IEntity` interface. Click the links to dive deeper into each section:
 
