@@ -9,121 +9,27 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
 
-#### `OnTagAdded`
-
-```csharp
-public event Action<IEntity, int> OnTagAdded
-```
-
-- **Description:** Triggered when a tag is added.
-- **Parameters:**
-    - `IEntity` — This entity.
-    - `int` – The tag that was added.
-- **Note:** Useful for reacting to dynamic tagging of entities.
-
----
-
-#### `OnTagDeleted`
-
-```csharp
-public event Action<IEntity, int> OnTagDeleted
-```
-
-- **Description:** Triggered when a tag is removed.
-- **Parameters:**
-    - `IEntity` — This entity.
-    - `int` – The tag that was removed.
-
-- **Note:** Allows cleanup or logic adjustment when tags are deleted.
-
----
-
-## 🔑 Properties
-
-#### `TagCount`
-
-```csharp
-public int TagCount { get; }
-```
-
-- **Description:** Number of associated tags.
-- **Note:** Reflects how many tags are currently attached to the entity.
-
----
-
-## 🏹 Methods
-
-#### `HasTag`
-
-```csharp
-public bool HasTag(int tag)
-```
-
-- **Description:** Checks if the entity has the given tag.
-- **Parameter:** `tag` – The tag to check for.
-- **Returns:** `true` if the tag exists, otherwise `false`.
-
-#### `AddTag`
-
-```csharp
-public bool AddTag(int tag)
-```
-
-- **Description:** Adds a tag to the entity.
-- **Parameter:** `int tag` – The tag to add.
-- **Returns:** `true` if the tag was added, otherwise `false`.
-- **Triggers:** `OnTagAdded` and `OnStateChanged`
-
-#### `DelTag`
-
-```csharp
-public bool DelTag(int tag)
-```
-
-- **Description:** Removes a tag from the entity.
-- **Parameter:** `tag` – The tag to remove.
-- **Returns:** `true` if the tag was removed, otherwise `false`.
-- **Triggers:** `OnTagDeleted` and `OnStateChanged`
-
-#### `ClearTags`
-
-```csharp
-public void ClearTags()
-```
-
-- **Description:** Removes all tags from the entity.
-- **Triggers:** `OnTagDeleted` and `OnStateChanged`
-
-#### `GetTags`
-
-```csharp
-public int[] GetTags()
-```
-
-- **Description:** Returns all tag keys associated with the entity.
-- **Returns:** Array of tag keys.
-
-#### `CopyTags`
-
-```csharp
-public int CopyTags(int[] results)
-```
-
-- **Description:** Copies tag keys into the provided array.
-- **Parameter:** `results` – Array to copy the tags into.
-- **Returns:** Number of tags copied.
-- **Throws:** `ArgumentNullException` if `results` is null
-
-#### `GetTagEnumerator`
-
-```csharp
-public IEnumerator<int> GetTagEnumerator()
-```
-
-- **Description:** Enumerates all tags of the entity.
-- **Returns:** `IEnumerator<int>` – Enumerator over tag keys.
+- [Example of Usage](#-example-of-usage)
+    - [Using Numeric Keys](#ex1)
+    - [Using String Names](#ex2)
+    - [Using Entity API](#ex3)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnTagAdded](#ontagadded)
+        - [OnTagDeleted](#ontagdeleted)
+    - [Properties](#-properties)
+        - [TagCount](#tagcount)
+    - [Methods](#-methods)
+        - [HasTag(int)](#hastagint)
+        - [AddTag(int)](#addtagint)
+        - [DelTag(int)](#deltagint)
+        - [ClearTags()](#cleartags)
+        - [GetTags()](#gettags)
+        - [CopyTags(int[])](#copytagsint)
+        - [GetTagEnumerator()](#gettagenumerator)
 
 ---
 
@@ -132,11 +38,7 @@ public IEnumerator<int> GetTagEnumerator()
 This example demonstrates how to use tags with entity, including adding, removing, and checking tags. Three
 approaches are shown:
 
-1. Using **numeric keys** for performance
-2. Using **string names** for readability
-3. Using **code generation** for real projects.
-
----
+<div id="ex1"></div>
 
 ### 1️⃣ Using Numeric Keys
 
@@ -179,6 +81,8 @@ foreach (int id in entity.GetTags())
 
 ---
 
+<div id="ex2"></div>
+
 ### 2️⃣ Using String Names
 
 In this example, for convenience, there are [extension methods](ExtensionsTags.md) for the entity. This format is more
@@ -209,6 +113,8 @@ foreach (int id in entity.GetTags())
 
 ---
 
+<div id="ex3"></div>
+
 ### 3️⃣ Using Entity API
 
 Sometimes managing tags by raw `int` keys or `string` names can get messy and error-prone, especially in big projects.
@@ -222,13 +128,141 @@ the [Entity API](../EntityAPI/Manual.md) feature.
 IEntity entity = ...
 
 // Add tags
-entity.AddPlayerTag();
-entity.AddNPCTag();
+entity.AddPlayerTag(); // Extension method
+entity.AddNPCTag(); // Extension method
 
 // Check tag
-if (entity.HasPlayerTag())
+if (entity.HasPlayerTag()) // Extension method
     Console.WriteLine("Entity is a Player");
 
 // Remove a tag
-entity.DelNPCTag();
+entity.DelNPCTag(); // Extension method
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial interface IEntity
+``` 
+
+---
+
+### ⚡ Events
+
+#### `OnTagAdded`
+
+```csharp
+public event Action<IEntity, int> OnTagAdded
+```
+
+- **Description:** Triggered when a tag is added.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was added.
+- **Note:** Useful for reacting to dynamic tagging of entities.
+
+---
+
+#### `OnTagDeleted`
+
+```csharp
+public event Action<IEntity, int> OnTagDeleted
+```
+
+- **Description:** Triggered when a tag is removed.
+- **Parameters:**
+    - `IEntity` — This entity.
+    - `int` – The tag that was removed.
+
+- **Note:** Allows cleanup or logic adjustment when tags are deleted.
+
+---
+
+### 🔑 Properties
+
+#### `TagCount`
+
+```csharp
+public int TagCount { get; }
+```
+
+- **Description:** Number of associated tags.
+- **Note:** Reflects how many tags are currently attached to the entity.
+
+---
+
+### 🏹 Methods
+
+#### `HasTag(int)`
+
+```csharp
+public bool HasTag(int tag)
+```
+
+- **Description:** Checks if the entity has the given tag.
+- **Parameter:** `tag` – The tag to check for.
+- **Returns:** `true` if the tag exists, otherwise `false`.
+
+#### `AddTag(int)`
+
+```csharp
+public bool AddTag(int tag)
+```
+
+- **Description:** Adds a tag to the entity.
+- **Parameter:** `int tag` – The tag to add.
+- **Returns:** `true` if the tag was added, otherwise `false`.
+- **Triggers:** `OnTagAdded` and `OnStateChanged`
+
+#### `DelTag(int)`
+
+```csharp
+public bool DelTag(int tag)
+```
+
+- **Description:** Removes a tag from the entity.
+- **Parameter:** `tag` – The tag to remove.
+- **Returns:** `true` if the tag was removed, otherwise `false`.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `ClearTags()`
+
+```csharp
+public void ClearTags()
+```
+
+- **Description:** Removes all tags from the entity.
+- **Triggers:** `OnTagDeleted` and `OnStateChanged`
+
+#### `GetTags()`
+
+```csharp
+public int[] GetTags()
+```
+
+- **Description:** Returns all tag keys associated with the entity.
+- **Returns:** Array of tag keys.
+
+#### `CopyTags(int[])`
+
+```csharp
+public int CopyTags(int[] results)
+```
+
+- **Description:** Copies tag keys into the provided array.
+- **Parameter:** `results` – Array to copy the tags into.
+- **Returns:** Number of tags copied.
+- **Throws:** `ArgumentNullException` if `results` is null
+
+#### `GetTagEnumerator()`
+
+```csharp
+public IEnumerator<int> GetTagEnumerator()
+```
+
+- **Description:** Enumerates all tags of the entity.
+- **Returns:** `IEnumerator<int>` – Enumerator over tag keys.

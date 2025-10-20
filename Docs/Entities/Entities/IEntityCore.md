@@ -50,6 +50,8 @@ Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
 public partial interface IEntity
 ``` 
 
+
+---
 ### ⚡ Events
 
 #### `OnStateChanged`
