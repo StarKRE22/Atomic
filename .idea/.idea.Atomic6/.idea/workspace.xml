@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/IEntityInstaller`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,31 +248,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="11266000" />
-    </task>
-    <task id="LOCAL-01648" summary="MultiEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760878524423</created>
-      <option name="number" value="01648" />
-      <option name="presentableId" value="LOCAL-01648" />
-      <option name="project" value="LOCAL" />
-      <updated>1760878524423</updated>
-    </task>
-    <task id="LOCAL-01649" summary="MultiEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1760878949832</created>
-      <option name="number" value="01649" />
-      <option name="presentableId" value="LOCAL-01649" />
-      <option name="project" value="LOCAL" />
-      <updated>1760878949832</updated>
-    </task>
-    <task id="LOCAL-01650" summary="ScriptableMultiEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760880446452</created>
-      <option name="number" value="01650" />
-      <option name="presentableId" value="LOCAL-01650" />
-      <option name="project" value="LOCAL" />
-      <updated>1760880446452</updated>
+      <workItem from="1760942068732" duration="11648000" />
     </task>
     <task id="LOCAL-01651" summary="Пилим!">
       <option name="closed" value="true" />
@@ -642,7 +618,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760953365185</updated>
     </task>
-    <option name="localTasksCounter" value="1697" />
+    <task id="LOCAL-01697" summary="IEntityInstaller`1.md">
+      <option name="closed" value="true" />
+      <created>1760953488356</created>
+      <option name="number" value="01697" />
+      <option name="presentableId" value="LOCAL-01697" />
+      <option name="project" value="LOCAL" />
+      <updated>1760953488356</updated>
+    </task>
+    <task id="LOCAL-01698" summary="ScriptableEntityInstaller.md">
+      <option name="closed" value="true" />
+      <created>1760953657014</created>
+      <option name="number" value="01698" />
+      <option name="presentableId" value="LOCAL-01698" />
+      <option name="project" value="LOCAL" />
+      <updated>1760953657014</updated>
+    </task>
+    <task id="LOCAL-01699" summary="ScriptableEntityInstaller`1.md">
+      <option name="closed" value="true" />
+      <created>1760953774408</created>
+      <option name="number" value="01699" />
+      <option name="presentableId" value="LOCAL-01699" />
+      <option name="project" value="LOCAL" />
+      <updated>1760953774408</updated>
+    </task>
+    <option name="localTasksCounter" value="1700" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,9 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ShooterGame починил!" />
-    <MESSAGE value="Сделал Manual для Pools!" />
-    <MESSAGE value="IEntityPool.md" />
     <MESSAGE value="IEntityPool`1.md" />
     <MESSAGE value="EntityPool.md" />
     <MESSAGE value="EntityPool`1.md" />
@@ -694,7 +691,10 @@
     <MESSAGE value="SceneEntityWorld.md" />
     <MESSAGE value="Installers Manual!" />
     <MESSAGE value="IEntityInstaller.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityInstaller.md" />
+    <MESSAGE value="IEntityInstaller`1.md" />
+    <MESSAGE value="ScriptableEntityInstaller.md" />
+    <MESSAGE value="ScriptableEntityInstaller`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ScriptableEntityInstaller`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -4,6 +4,17 @@ Strongly-typed variant of [ScriptableEntityInstaller](ScriptableEntityInstaller.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Install(E)](#installe)
+        - [Uninstall(E)](#uninstalle)
+
+---
+
 ## 🗂 Example of Usage
 
 Assume we have a concrete type of entity:
