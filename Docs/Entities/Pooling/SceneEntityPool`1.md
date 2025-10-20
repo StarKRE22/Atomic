@@ -23,7 +23,7 @@ instantiate entities and manages their reuse via a stack. Entities are activated
     - [OnDispose(E)](#ondisposee)
     - [OnRent(E)](#onrente)
     - [OnReturn(E)](#onreturne)
-    - [Create<T>(in CreateArgs)](#createt-in-createargs)
+    - [Create<T>(in CreateArgs)](#createtcreateargs)
     - [Destroy(SceneEntityPool<E>, float)](#destroysceneentitypoole-float)
   - [Nested Types](#-nested-types)
     - [CreateArgs](#createargs)
@@ -157,7 +157,7 @@ private E CreateEntity();
 - **Description:** Instantiates a new entity from the prefab and calls `OnCreate`.
 - **Returns:** The created entity instance.
 
-#### `OnCreate(E entity)`
+#### `OnCreate(E)`
 
 ```csharp
 protected virtual void OnCreate(E entity);
@@ -166,7 +166,7 @@ protected virtual void OnCreate(E entity);
 - **Description:** Called when a new entity instance is created.
 - **Default Behavior:** Deactivates the entity GameObject.
 
-#### `OnDispose(E entity)`
+#### `OnDispose(E)`
 
 ```csharp
 protected virtual void OnDispose(E entity);
@@ -175,7 +175,7 @@ protected virtual void OnDispose(E entity);
 - **Description:** Called when an entity is permanently destroyed during disposal.
 - **Default Behavior:** Empty. Override for cleanup.
 
-#### `OnRent(E entity)`
+#### `OnRent(E)`
 
 ```csharp
 protected virtual void OnRent(E entity);
@@ -184,7 +184,7 @@ protected virtual void OnRent(E entity);
 - **Description:** Called when an entity is rented from the pool.
 - **Default Behavior:** Activates the entity GameObject.
 
-#### `OnReturn(E entity)`
+#### `OnReturn(E)`
 
 ```csharp
 protected virtual void OnReturn(E entity);
@@ -193,7 +193,7 @@ protected virtual void OnReturn(E entity);
 - **Description:** Called when an entity is returned to the pool.
 - **Default Behavior:** Deactivates the entity and sets its parent to `_container`.
 
-#### `Create<T>(in CreateArgs)`
+#### `Create<T>(CreateArgs)`
 
 ```csharp
 public static T Create<T>(in CreateArgs args) where T : SceneEntityPool<E>;
