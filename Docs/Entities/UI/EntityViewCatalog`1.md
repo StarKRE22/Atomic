@@ -48,7 +48,7 @@ public class UnitView : EntityView<UnitEntity>
     fileName = "UnitViewCatalog", 
     menuName = "Example/UnitViewCatalog"
 )]
-public class UnitViewCatalog : EntityViewCatalog<string, UnitView> 
+public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> 
 {
 }
 ````

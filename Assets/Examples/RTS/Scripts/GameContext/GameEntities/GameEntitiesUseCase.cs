@@ -5,7 +5,7 @@ namespace RTSGame
 {
     public static class GameEntitiesUseCase
     {
-        public static IGameEntity Spawn(
+        public static IUnitEntity Spawn(
             IGameContext context,
             string name,
             Vector3 position,
@@ -13,8 +13,8 @@ namespace RTSGame
             TeamType team
         )
         {
-            IMultiEntityPool<string, IGameEntity> pool = context.GetEntityPool();
-            IGameEntity entity = pool.Rent(name);
+            IMultiEntityPool<string, IUnitEntity> pool = context.GetEntityPool();
+            IUnitEntity entity = pool.Rent(name);
             entity.GetPosition().Value = position;
             entity.GetRotation().Value = rotation;
             entity.GetTeam().Value = team;
@@ -22,7 +22,7 @@ namespace RTSGame
             return entity;
         }
 
-        public static bool Despawn(IGameContext gameContext, IGameEntity entity)
+        public static bool Despawn(IGameContext gameContext, IUnitEntity entity)
         {
             if (!gameContext.GetEntityWorld().Remove(entity))
                 return false;
@@ -31,20 +31,20 @@ namespace RTSGame
             return true;
         }
 
-        public static IGameEntity FindFreeEnemyFor(IGameContext context, IGameEntity entity)
+        public static IUnitEntity FindFreeEnemyFor(IGameContext context, IUnitEntity entity)
         {
             IPlayerContext playerContext = PlayersUseCase.GetPlayerFor(context, entity);
-            EntityFilter<IGameEntity> enemyFilter = playerContext.GetFreeEnemyFilter();
+            EntityFilter<IUnitEntity> enemyFilter = playerContext.GetFreeEnemyFilter();
             Vector3 center = entity.GetPosition().Value;
             return FindClosest(enemyFilter, center);
         }
 
-        public static IGameEntity FindClosest(EntityFilter<IGameEntity> entities, Vector3 center)
+        public static IUnitEntity FindClosest(EntityFilter<IUnitEntity> entities, Vector3 center)
         {
-            IGameEntity result = null;
+            IUnitEntity result = null;
         
             float minDistance = float.MaxValue;
-            foreach (IGameEntity entity in entities)
+            foreach (IUnitEntity entity in entities)
             {
                 Vector3 position = entity.GetPosition().Value;
                 float distance = Vector3.SqrMagnitude(position - center);

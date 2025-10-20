@@ -8,13 +8,13 @@ namespace RTSGame
     public sealed class GameEntitiesSystemInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
-        private GameEntityMultiFactory factoryCatalog;
+        private UnitMultiFactory factoryCatalog;
 
         public void Install(IGameContext context)
         {
-            context.AddEntityPool(new MultiEntityPool<string, IGameEntity>(factoryCatalog));
+            context.AddEntityPool(new MultiEntityPool<string, IUnitEntity>(factoryCatalog));
 
-            EntityWorld<IGameEntity> entityWorld = new EntityWorld<IGameEntity>();
+            EntityWorld<IUnitEntity> entityWorld = new EntityWorld<IUnitEntity>();
             context.AddEntityWorld(entityWorld);
 
             context.WhenInit(entityWorld.InitEntities);

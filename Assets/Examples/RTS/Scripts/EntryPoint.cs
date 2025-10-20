@@ -22,7 +22,7 @@ namespace RTSGame
 
         [FormerlySerializedAs("_entityCollectionView")]
         [SerializeField]
-        private GameEntityCollectionView _entityWorldView;
+        private UnitCollectionView _entityWorldView;
 
         [Header("Visualization")]
         [SerializeField]
@@ -70,7 +70,7 @@ namespace RTSGame
         private void SpawnUnits()
         {
             if (_bakeUnits)
-                GameEntityBaker.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
+                UnitBaker.BakeAll(_gameContext.GetEntityWorld(), _bakeIncludeInactive);
             else
                 InitGameCase.SpawnUnits(_gameContext, _unitColumns);
         }

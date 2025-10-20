@@ -13,10 +13,10 @@ namespace RTSGame
     {
         private const string PLAYER_CONTEXT_NAME_FORMAT = "PlayerContext {0}";
 
-        private EntityWorld<IGameEntity> _entityWorld;
+        private EntityWorld<IUnitEntity> _entityWorld;
         private TeamType _teamType;
 
-        public PlayerContextBuilder SetEntityWorld(EntityWorld<IGameEntity> entityWorld)
+        public PlayerContextBuilder SetEntityWorld(EntityWorld<IUnitEntity> entityWorld)
         {
             _entityWorld = entityWorld;
             return this;
@@ -45,10 +45,10 @@ namespace RTSGame
             return playerContext;
         }
 
-        private EntityFilter<IGameEntity> CreateFreeEnemyFilter(IPlayerContext playerContext) => new(
+        private EntityFilter<IUnitEntity> CreateFreeEnemyFilter(IPlayerContext playerContext) => new(
             _entityWorld,
             entity => TeamUseCase.IsFreeEnemyUnit(playerContext, entity),
-            new TeamEntityTrigger(), new TagEntityTrigger<IGameEntity>()
+            new TeamEntityTrigger(), new TagEntityTrigger<IUnitEntity>()
         );
     }
 }

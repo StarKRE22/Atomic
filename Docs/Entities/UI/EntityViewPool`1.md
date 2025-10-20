@@ -1,19 +1,25 @@
 # 🧩 EntityViewPool<E, V>
 
+A pool system for managing reusable [EntityView\<E>](EntityView%601.md) instances.  
+Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime
+allocations. Use for efficient management of frequently spawned or displayed entity views.
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class EntityViewPool<E, V> : MonoBehaviour
     where E : class, IEntity
     where V : EntityView<E>
 ```
 
-- **Description:** A pool system for managing reusable [EntityView\<E>](EntityView%601.md) instances.  
-  Supports preloading from catalogs, runtime instantiation, renting, and returning views to minimize runtime
-  allocations.
 - **Type Parameters:**
     - `E` — The type of entity associated with the views. Must implement [IEntity](../Entities/IEntity.md).
     - `V` — The type of entity view stored in the pool.
 - **Inheritance:** `MonoBehaviour`
-- **Usage:** Use for efficient management of frequently spawned or displayed entity views.
 
 ---
 
@@ -26,7 +32,7 @@ public abstract class EntityViewPool<E, V> : MonoBehaviour
 
 ---
 
-## 🏹 Public Methods
+## 🏹 Methods
 
 #### `Rent(string name)`
 
@@ -97,10 +103,6 @@ public void UnregisterPrefabs(EntityViewCatalog<E, V> catalog);
 - **Description:** Removes all prefabs from the specified catalog from the registry.
 - **Parameter:** `catalog` — The catalog containing prefabs to unregister.
 
----
-
-## 🏹 Protected Methods
-
 #### `Awake()`
 
 ```csharp
@@ -112,6 +114,40 @@ protected virtual void Awake();
 ---
 
 ## 🗂 Examples of Usage
+
+Below is an example of using generic entity view pool:
+
+#### 1. Assume we have a concrete entity type
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
+#### 2. Assume we have a concrete entity view type
+
+```csharp
+public class UnitView : EntityView<UnitEntity>
+{
+}
+```
+
+#### 3. Assume we have a catalog for the unit views
+
+```csharp
+[CreateAssetMenu(
+    fileName = "UnitViewCatalog", 
+    menuName = "Example/UnitViewCatalog"
+)]
+public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> 
+{
+}
+```
+
+#### 4. Create a specific entity view pool for `UnitView`
+
+
 
 ### 1️⃣ Setup in Inspector
 

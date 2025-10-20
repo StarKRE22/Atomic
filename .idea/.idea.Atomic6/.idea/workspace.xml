@@ -5,10 +5,147 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCollectionView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitMultiFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewCatalog.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Players/PlayersUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Players/PlayersUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileLifetimeBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileLifetimeBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileLifetimeBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileMoveBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileMoveBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileMoveBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Projectile/ProjectileViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Projectile/ProjectileViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Headquarters/HeadquartersViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorViewInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Warrior/WarriorViewInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorViewInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIAttackTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIAttackTargetBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIAttackTargetBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIAttackTargetBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIDetectTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIDetectTargetBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/AI/AIEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatEntityBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/CombatUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/CombatUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/MeleeCombatEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/MeleeCombatEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/MeleeCombatEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/MeleeCombatEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/RangeCombatEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/RangeCombatEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Combat/RangeCombatEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Combat/RangeCombatEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Damage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Damage/DamageUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage/DamageUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Damage/DamageUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Damage/DamageUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Life/LifeUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Life/LifeUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Move/MoveUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Move/MoveUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate/RotateUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate/RotateUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Rotate/RotateUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Rotate/RotateUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamEntityTrigger.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamEntityTrigger.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Team/TeamUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Team/TeamUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformEntityBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityBaker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformEntityInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformEntityInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformEntityInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformGizmos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformGizmos.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformGizmos.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/Transform/TransformUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityAPI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityAPI.yml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.yml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityBaker.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityCollectionView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityCollectionView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCollectionView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityMultiFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityMultiFactory.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitMultiFactory.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityView.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewCatalog.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewCatalog.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewCatalog.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/GameEntityViewPool.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/IGameEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/IUnitEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/IGameEntity.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/IUnitEntity.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/PositionViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/PositionViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/PositionViewBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/PositionViewBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/RendererUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RendererUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/RendererUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RendererUseCase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/RotationViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RotationViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/RotationViewBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/RotationViewBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TakeDamageViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TakeDamageViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TakeDamageViewBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TakeDamageViewBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TeamColorViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TeamColorViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/TeamColorViewBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/TeamColorViewBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/WeaponRecoilViewBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/WeaponRecoilViewBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/View/WeaponRecoilViewBehaviour.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/View/WeaponRecoilViewBehaviour.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextAPI.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/PlayerContext/PlayerContextBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewCatalog`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +190,13 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesUseCase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/GameEntity/Core/Transform/TransformGizmos.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorViewInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
@@ -253,23 +397,7 @@
       <workItem from="1760892887411" duration="11999000" />
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
-      <workItem from="1760975339788" duration="3845000" />
-    </task>
-    <task id="LOCAL-01661" summary="Сделал Baking!">
-      <option name="closed" value="true" />
-      <created>1760905065592</created>
-      <option name="number" value="01661" />
-      <option name="presentableId" value="LOCAL-01661" />
-      <option name="project" value="LOCAL" />
-      <updated>1760905065592</updated>
-    </task>
-    <task id="LOCAL-01662" summary="Сделал Baking!">
-      <option name="closed" value="true" />
-      <created>1760905981527</created>
-      <option name="number" value="01662" />
-      <option name="presentableId" value="LOCAL-01662" />
-      <option name="project" value="LOCAL" />
-      <updated>1760905981527</updated>
+      <workItem from="1760975339788" duration="5153000" />
     </task>
     <task id="LOCAL-01663" summary="Beginner Game починил!">
       <option name="closed" value="true" />
@@ -647,7 +775,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760979807983</updated>
     </task>
-    <option name="localTasksCounter" value="1710" />
+    <task id="LOCAL-01710" summary="EntityViewCatalog.md">
+      <option name="closed" value="true" />
+      <created>1760981719041</created>
+      <option name="number" value="01710" />
+      <option name="presentableId" value="LOCAL-01710" />
+      <option name="project" value="LOCAL" />
+      <updated>1760981719041</updated>
+    </task>
+    <task id="LOCAL-01711" summary="EntityViewCatalog.md">
+      <option name="closed" value="true" />
+      <created>1760981805915</created>
+      <option name="number" value="01711" />
+      <option name="presentableId" value="LOCAL-01711" />
+      <option name="project" value="LOCAL" />
+      <updated>1760981805915</updated>
+    </task>
+    <option name="localTasksCounter" value="1712" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +818,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="MultiEntityPool.md" />
     <MESSAGE value="MultiEntityPool`1.md" />
     <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="IPrefabEntityPool`1.md" />
@@ -699,7 +842,8 @@
     <MESSAGE value="EntityView" />
     <MESSAGE value="EntityView.md" />
     <MESSAGE value="EntityViewCatalog`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityViewCatalog`1.md" />
+    <MESSAGE value="EntityViewCatalog.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityViewCatalog.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
