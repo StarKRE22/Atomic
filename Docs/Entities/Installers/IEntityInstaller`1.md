@@ -1,26 +1,17 @@
-#  🧩 IEntityInstaller&lt;E&gt;
+# 🧩 IEntityInstaller&lt;E&gt;
 
-```csharp
-public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
-```
-
-- **Description:** Provides a strongly-typed mechanism for installing entity configuration.
-- **Type Parameter:** `E` – The specific entity type this installer targets.
-- **Inheritance:** [IEntityInstaller](IEntityInstaller.md)
-- **Remarks:** Automatically implements the base `Install(IEntity)` by casting the entity to `E`.
+Provides a strongly-typed mechanism for installing entity configuration. Automatically implements the base
+`Install(IEntity)` by casting the entity to `E`.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Install(E)`
-
-```csharp
-public void Install(E entity);
-```
-
-- **Description:** Called when the typed entity is configured.
-- **Parameter:** `entity` – The entity instance of type `E`.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Install(E)](#installe)
 
 ---
 
@@ -56,3 +47,29 @@ public sealed class CharacterInstaller : IEntityInstaller<ICharacterEntity>
     }
 }
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public interface IEntityInstaller<in E> : IEntityInstaller where E : IEntity
+```
+
+- **Type Parameter:** `E` – The specific entity type this installer targets.
+- **Inheritance:** [IEntityInstaller](IEntityInstaller.md)
+
+---
+
+### 🏹 Methods
+
+#### `Install(E)`
+
+```csharp
+public void Install(E entity);
+```
+
+- **Description:** Called when the typed entity is configured.
+- **Parameter:** `entity` – The entity instance of type `E`.
