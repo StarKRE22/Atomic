@@ -55,7 +55,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Baking](Baking/Manual.md) <!-- + -->
 - [Pooling](Pooling/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
-- [Worlds](Worlds/Manual.md)
+- [Worlds](Worlds/Manual.md) <!-- + -->
 - [Registry](Registry/EntityRegistry.md) <!-- + -->
 - [Filters](Filters/Manual.md) <!-- + -->
 - [Triggers](Filters/EntityTriggers.md) <!-- + -->
