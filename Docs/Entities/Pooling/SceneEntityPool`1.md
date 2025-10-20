@@ -3,6 +3,31 @@
 A Unity **MonoBehaviour-based entity pool** for scene-bound entities of type `E`. Uses a prefab to
 instantiate entities and manages their reuse via a stack. Entities are activated / deactivated on rent / return.
 
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Inspector Settings](#-inspector-settings)
+  - [Methods](#-methods)
+    - [Awake()](#awake)
+    - [Reset()](#reset)
+    - [Init(int)](#initint)
+    - [Rent()](#rent)
+    - [Return(E)](#returne)
+    - [Dispose()](#dispose)
+    - [CreateEntity()](#createentity)
+    - [OnCreate(E)](#oncreatee)
+    - [OnDispose(E)](#ondisposee)
+    - [OnRent(E)](#onrente)
+    - [OnReturn(E)](#onreturne)
+    - [Create<T>(in CreateArgs)](#createt-in-createargs)
+    - [Destroy(SceneEntityPool<E>, float)](#destroysceneentitypoole-float)
+  - [Nested Types](#-nested-types)
+    - [CreateArgs](#createargs)
+
 
 ---
 

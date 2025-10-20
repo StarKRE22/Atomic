@@ -6,6 +6,30 @@ pre-warming via `Init`.
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Methods](#-methods)
+    - [Awake()](#awake)
+    - [Init(E, int)](#inite-int)
+    - [Rent(E)](#rente)
+    - [Rent(E, Transform)](#rente-transform)
+    - [Rent(E, Vector3, Quaternion, Transform)](#rente-vector3-quaternion-transform)
+    - [Return(E)](#returne)
+    - [Dispose(E)](#disposee)
+    - [Dispose()](#dispose)
+    - [OnCreate(E)](#oncreatee)
+    - [OnRent(E)](#onrente)
+    - [OnReturn(E)](#onreturne)
+    - [OnDispose(E)](#ondisposee)
+    - [GetEntityName(E)](#getentitynamee)
+
+
+---
+
 ## 🗂 Example of Usage
 
 #### 1. Assume we have `EnemyEntity` type

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,23 +250,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="6783000" />
-    </task>
-    <task id="LOCAL-01631" summary="Прошурудил фильтры! Осталось Factories, Pooling, Entities, Installers, Worlds, UI, API Generation">
-      <option name="closed" value="true" />
-      <created>1760734131342</created>
-      <option name="number" value="01631" />
-      <option name="presentableId" value="LOCAL-01631" />
-      <option name="project" value="LOCAL" />
-      <updated>1760734131342</updated>
-    </task>
-    <task id="LOCAL-01632" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760734345193</created>
-      <option name="number" value="01632" />
-      <option name="presentableId" value="LOCAL-01632" />
-      <option name="project" value="LOCAL" />
-      <updated>1760734345193</updated>
+      <workItem from="1760942068732" duration="7108000" />
     </task>
     <task id="LOCAL-01633" summary="EntityFactories!">
       <option name="closed" value="true" />
@@ -643,7 +628,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760948504163</updated>
     </task>
-    <option name="localTasksCounter" value="1680" />
+    <task id="LOCAL-01680" summary="SceneEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760948990068</created>
+      <option name="number" value="01680" />
+      <option name="presentableId" value="LOCAL-01680" />
+      <option name="project" value="LOCAL" />
+      <updated>1760948990068</updated>
+    </task>
+    <task id="LOCAL-01681" summary="SceneEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760949017772</created>
+      <option name="number" value="01681" />
+      <option name="presentableId" value="LOCAL-01681" />
+      <option name="project" value="LOCAL" />
+      <updated>1760949017772</updated>
+    </task>
+    <option name="localTasksCounter" value="1682" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IMultiEntityFactory`1.md" />
     <MESSAGE value="MultiEntityFactory.md" />
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
@@ -695,7 +695,8 @@
     <MESSAGE value="IPrefabEntityPool`1.md" />
     <MESSAGE value="PrefabEntityPool.md" />
     <MESSAGE value="PrefabEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="PrefabEntityPool`1.md" />
+    <MESSAGE value="SceneEntityPool.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
