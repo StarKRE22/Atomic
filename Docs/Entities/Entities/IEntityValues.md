@@ -20,29 +20,41 @@ identified by integer keys. This allows flexible runtime data storage, reactive 
     - [Using Entity API](#ex3)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Events](#-events)
+    - <details>
+      <summary><a href="#-events">Events</a></summary>
+
         - [OnValueAdded](#onvalueadded)
         - [OnValueDeleted](#onvaluedeleted)
         - [OnValueChanged](#onvaluechanged)
-    - [Properties](#-properties)
+
+      </details>
+    - <details>
+      <summary><a href="#-properties">Properties</a></summary>
+
         - [ValueCount](#valuecount)
-    - [Methods](#-methods)
-        - [GetValue\<T>(int)](#getvaluetint)
-        - [GetValueUnsafe\<T>(int)](#getvalueunsafetint)
+
+      </details>
+    - <details>
+      <summary><a href="#-methods">Methods</a></summary>
+
+        - [GetValue&lt;T&gt;(int)](#getvaluetint)
+        - [GetValueUnsafe&lt;T&gt;(int)](#getvalueunsafetint)
         - [GetValue(int)](#getvalueint)
-        - [TryGetValue\<T>(int, out T)](#trygetvaluetint-out-t)
-        - [TryGetValueUnsafe\<T>(int, out T)](#trygetvalueunsafetint-out-t)
+        - [TryGetValue&lt;T&gt;(int, out T)](#trygetvaluetint-out-t)
+        - [TryGetValueUnsafe&lt;T&gt;(int, out T)](#trygetvalueunsafetint-out-t)
         - [TryGetValue(int, out object)](#trygetvalueint-out-object)
-        - [SetValue\<T>(int, T)](#setvaluetint-t)
+        - [SetValue&lt;T&gt;(int, T)](#setvaluetint-t)
         - [SetValue(int, object)](#setvalueint-object)
         - [HasValue(int)](#hasvalueint)
-        - [AddValue\<T>(int, T)](#addvaluetint-t)
+        - [AddValue&lt;T&gt;(int, T)](#addvaluetint-t)
         - [AddValue(int, object)](#addvalueint-object)
         - [DelValue(int)](#delvalueint)
         - [ClearValues()](#clearvalues)
         - [GetValues()](#getvalues)
-        - [CopyValues(KeyValuePair<int, object>[])](#copyvalueskeyvaluepairint-object)
+        - [CopyValues(KeyValuePair&lt;int, object&gt;[])](#copyvalueskeyvaluepairint-object)
         - [GetValueEnumerator()](#getvalueenumerator)
+
+      </details>
 
 ---
 

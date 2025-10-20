@@ -42,7 +42,6 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
         - [GetTagEnumerator()](#gettagenumerator)
 
       </details>
-    
 ---
 
 ## 🗂 Example of Usage
