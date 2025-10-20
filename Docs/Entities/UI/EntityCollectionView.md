@@ -44,6 +44,8 @@ Below is an example of using non-generic entity view collection:
 
 ### 1️⃣ Collection Setup
 
+Attach `Atomic/Entities/Entity Coollection View` to an GameObject
+
 <img width="450" height="" alt="Entity component" src="../../Images/EntityCollectionView.png" />
 
 - Assign a `Transform` to `Viewport` field.
@@ -65,7 +67,7 @@ IReadOnlyEntityCollection collection = ...;
 // Assume we have a single entity
 IEntity someEntity = ...;
 
-// ===== 🟢 Basic Usage =====
+// ===== Basic Usage =====
 
 // Bind this entity collection to the view collection 
 collectionView.Show(collection);
@@ -73,7 +75,7 @@ collectionView.Show(collection);
 // Unbind the current entity collection
 collectionView.Hide();
 
-// ===== 🟠 Manual View Management =====
+// ===== Manual View Management =====
 
 // Add a single entity view manually
 collectionView.Add(someEntity);
@@ -84,7 +86,7 @@ collectionView.Remove(someEntity);
 // Clear all active entity views manually
 collectionView.Clear();
 
-// ===== 🔵 Querying and Accessing =====
+// ===== Querying and Accessing =====
 
 // Check if a view exists for a specific entity
 bool exists = collectionView.Contains(someEntity);
@@ -98,7 +100,7 @@ if (collectionView.TryGet(someEntity, out EntityView view))
 // Or get it directly (throws if not found)
 EntityView directView = collectionView.Get(someEntity);
 
-// ===== 🟣 Iterating Through All Views =====
+// ===== Iterating Through All Views =====
 
 // Iterate over all entity-view pairs
 foreach (KeyValuePair<IEntity, EntityView> pair in collectionView)

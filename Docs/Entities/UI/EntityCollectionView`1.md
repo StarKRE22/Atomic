@@ -98,7 +98,7 @@ IReadOnlyEntityCollection<IUnitEntity> collection = ...;
 // Assume we have a single entity
 IUnitEntity someEntity = ...;
 
-// ===== 🟢 Basic Usage =====
+// ===== Basic Usage =====
 
 // Bind this entity collection to the view collection 
 collectionView.Show(collection);
@@ -106,7 +106,7 @@ collectionView.Show(collection);
 // Unbind the current entity collection
 collectionView.Hide();
 
-// ===== 🟠 Manual View Management =====
+// ===== Manual View Management =====
 
 // Add a single entity view manually
 collectionView.Add(someEntity);
@@ -117,7 +117,7 @@ collectionView.Remove(someEntity);
 // Clear all active entity views manually
 collectionView.Clear();
 
-// ===== 🔵 Querying and Accessing =====
+// ===== Querying and Accessing =====
 
 // Check if a view exists for a specific entity
 bool exists = collectionView.Contains(someEntity);
@@ -131,7 +131,7 @@ if (collectionView.TryGet(someEntity, out UnitView view))
 // Or get it directly (throws if not found)
 UnitView directView = collectionView.Get(someEntity);
 
-// ===== 🟣 Iterating Through All Views =====
+// ===== Iterating Through All Views =====
 
 // Iterate over all entity-view pairs
 foreach (KeyValuePair<IUnitEntity, UnitView> pair in collectionView)
