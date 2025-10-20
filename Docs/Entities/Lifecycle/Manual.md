@@ -1,6 +1,6 @@
-# 🧩 Lifecycle Contracts & Subscriptions
+# 🧩 Lifecycle System
 
-Define standardized interfaces and subscriptions for different stages of an entity or world lifecycle, such as
+Defines standardized interfaces and subscriptions for different stages of an entity or world lifecycle, such as
 initialization, enabling, and ticking. **Subscriptions** provide a declarative mechanism to register actions that
 execute automatically at specific lifecycle events. Lifecycle contracts serve as parent interfaces
 for [IEntity](../Entities/IEntity.md) and [IEntityWorld](../Worlds/IEntityWorld.md).
