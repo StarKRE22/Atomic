@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/EntityWorld.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameEntityWorld.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/GameEntityWorld.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld_Inspector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Lifecycle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Unity/SceneEntityWorld`1_Lifecycle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Extensions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Extensions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/SceneEntityWorld`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,23 +253,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="8925000" />
-    </task>
-    <task id="LOCAL-01640" summary="ScriptableEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760803775365</created>
-      <option name="number" value="01640" />
-      <option name="presentableId" value="LOCAL-01640" />
-      <option name="project" value="LOCAL" />
-      <updated>1760803775365</updated>
-    </task>
-    <task id="LOCAL-01641" summary="InlineEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760804007156</created>
-      <option name="number" value="01641" />
-      <option name="presentableId" value="LOCAL-01641" />
-      <option name="project" value="LOCAL" />
-      <updated>1760804007156</updated>
+      <workItem from="1760942068732" duration="10083000" />
     </task>
     <task id="LOCAL-01642" summary="InlineEntityFactory.md">
       <option name="closed" value="true" />
@@ -642,7 +631,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760950749906</updated>
     </task>
-    <option name="localTasksCounter" value="1689" />
+    <task id="LOCAL-01689" summary="EntityWorld.md">
+      <option name="closed" value="true" />
+      <created>1760951137728</created>
+      <option name="number" value="01689" />
+      <option name="presentableId" value="LOCAL-01689" />
+      <option name="project" value="LOCAL" />
+      <updated>1760951137728</updated>
+    </task>
+    <task id="LOCAL-01690" summary="EntityWorld`1.md">
+      <option name="closed" value="true" />
+      <created>1760951391294</created>
+      <option name="number" value="01690" />
+      <option name="presentableId" value="LOCAL-01690" />
+      <option name="project" value="LOCAL" />
+      <updated>1760951391294</updated>
+    </task>
+    <option name="localTasksCounter" value="1691" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,8 +674,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Пилим!" />
-    <MESSAGE value="SceneEntityFactory.md" />
     <MESSAGE value="SceneEntityBaker`1.md" />
     <MESSAGE value="SceneEntityBaker.md" />
     <MESSAGE value="Сделал Baking!" />
@@ -694,7 +697,9 @@
     <MESSAGE value="Entity Worlds Manual.md" />
     <MESSAGE value="IEntityWorld.md" />
     <MESSAGE value="IEntityWorld`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityWorld`1.md" />
+    <MESSAGE value="EntityWorld.md" />
+    <MESSAGE value="EntityWorld`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityWorld`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
