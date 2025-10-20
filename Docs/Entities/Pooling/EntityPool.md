@@ -1,8 +1,8 @@
 # 🧩 EntityPool
 
-A **non-generic version** of [EntityPool\<E>](EntityPool%601.md) that operates on base [IEntity](../Entities/IEntity.md) types.  
-Use this when pooling a variety of entities that share a common interface but do not require type-specific access.
-Ideal for scenarios where you want a simple pool for any entity without specifying a type parameter.
+A **non-generic version** of [EntityPool\<E>](EntityPool%601.md) that operates on base [IEntity](../Entities/IEntity.md)
+types. Use this when pooling a variety of entities that share a common interface but do not require type-specific
+access. Ideal for scenarios where you want a simple pool for any entity without specifying a type parameter.
 
 ---
 
