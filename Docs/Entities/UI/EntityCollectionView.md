@@ -1,9 +1,128 @@
 # 🧩 EntityCollectionView
 
-A concrete, non-generic version of `EntityCollectionView<E, V>` that manages collections of `EntityView` instances in a Unity scene.  
-Provides functionality to show, hide, add, remove, and clear entity views using a pool of reusable instances.
+A concrete, non-generic version of [EntityCollectionView\<E, V>](EntityCollectionView%601.md) that manages collections
+of [EntityView](EntityView.md) instances in a Unity scene. Provides functionality to show, hide, add, remove, and clear
+entity views using a pool of reusable instances. Use when you do not need a custom entity type and want a ready-to-use
+collection of generic [EntityViews](EntityView.md).
 
 ---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+  - [Collection Setup](#1️⃣-collection-setup)
+  - [Collection Usage](#2️⃣-collection-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Events](#-events)
+    - [OnAdded](#onadded)
+    - [OnRemoved](#onremoved)
+  - [Properties](#-properties)
+    - [Count](#count)
+    - [IsVisible](#isvisible)
+  - [Methods](#-methods)
+    - [Show(IReadOnlyEntityCollection\<IEntity>)](#showireadonlyentitycollectionientity)
+    - [Hide()](#hide)
+    - [Get(IEntity)](#getientity)
+    - [TryGet(IEntity, out EntityView)](#trygetientity-out-entityview)
+    - [Contains(IEntity)](#containsientity)
+    - [Add(IEntity)](#addientity)
+    - [Remove(IEntity)](#removeientity)
+    - [Clear()](#clear)
+    - [GetEnumerator()](#getenumerator)
+    - [GetName(IEntity)](#getnameientity)
+
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using non-generic entity view collection:
+
+<div id="ex1"></div>
+
+### 1️⃣ Collection Setup
+
+<img width="450" height="" alt="Entity component" src="../../Images/EntityCollectionView.png" />
+
+- Assign a `Transform` to `Viewport` field.
+- Assign the [EntityViewPool](EntityViewPool.md) to `ViewPool` field.
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Collection Usage
+
+```csharp
+// Assume we have an instance of EntityCollectionView
+EntityCollectionView collectionView = ...;
+
+// Assume we have an instance of IReadOnlyEntityCollection
+IReadOnlyEntityCollection collection = ...;
+
+// Assume we have a single entity
+IEntity someEntity = ...;
+
+// ===== 🟢 Basic Usage =====
+
+// Bind this entity collection to the view collection 
+collectionView.Show(collection);
+
+// Unbind the current entity collection
+collectionView.Hide();
+
+// ===== 🟠 Manual View Management =====
+
+// Add a single entity view manually
+collectionView.Add(someEntity);
+
+// Remove a specific entity view manually
+collectionView.Remove(someEntity);
+
+// Clear all active entity views manually
+collectionView.Clear();
+
+// ===== 🔵 Querying and Accessing =====
+
+// Check if a view exists for a specific entity
+bool exists = collectionView.Contains(someEntity);
+
+// Try to get the view safely
+if (collectionView.TryGet(someEntity, out EntityView view))
+{
+    Debug.Log($"Found view for {someEntity}: {view.name}");
+}
+
+// Or get it directly (throws if not found)
+EntityView directView = collectionView.Get(someEntity);
+
+// ===== 🟣 Iterating Through All Views =====
+
+// Iterate over all entity-view pairs
+foreach (KeyValuePair<IEntity, EntityView> pair in collectionView)
+{
+    IEntity entity = pair.Key;
+    EntityView unitView = pair.Value;
+    Debug.Log($"Entity: {entity}, View: {unitView.name}");
+}
+```
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter  | Description                                                                              |
+|------------|------------------------------------------------------------------------------------------|
+| `viewport` | The Transform under which all entity views will be parented in the hierarchy.            |
+| `viewPool` | The [EntityViewPool](EntityViewPool.md) responsible for instantiating and reusing views. |
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
 
 ```csharp  
 [AddComponentMenu("Atomic/Entities/Entity Collection View")]
@@ -11,23 +130,12 @@ Provides functionality to show, hide, add, remove, and clear entity views using 
 public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
 ```
 
-- **Description:** 
 - **Inheritance:** [EntityCollectionView<E, V>](EntityCollectionView%601.md)
-- **Usage:** Use when you do not need a custom entity type and want a ready-to-use collection of generic [EntityView](EntityView.md)s.
-- **See also:** [EntityViewPool<E, V>](EntityViewPool%601.md)
+- **See also:** [EntityViewPool](EntityViewPool.md), [EntityViewPool<E, V>](EntityViewPool%601.md)
 
 ---
 
-## 🛠 Inspector Settings
-
-| Parameter  | Description                                                                   |
-|------------|-------------------------------------------------------------------------------|
-| `viewport` | The Transform under which all entity views will be parented in the hierarchy. |
-| `viewPool` | The `EntityViewPool<IEntity, EntityView>` responsible for instantiating and reusing views.   |
-
----
-
-## ⚡ Events
+### ⚡ Events
 
 #### `OnAdded`
 
@@ -41,8 +149,8 @@ public event Action<IEntity, EntityView> OnAdded;
     - When manually calling `Add(entity)` for a new entity.
 
 - **Parameters:**
-    - `IEntity entity` — The entity for which the view was created.
-    - `EntityView view` — The created view instance now tracked by the collection.
+    - `IEntity` — The entity for which the view was created.
+    - `EntityView` — The created view instance now tracked by the collection.
 - **Note:** The event **does not fire** if the entity is already displayed in the collection (duplicates are ignored).
 
 #### `OnRemoved`
@@ -57,15 +165,15 @@ public event Action<IEntity, EntityView> OnRemoved;
     - When calling `Clear()` (removes all entities).
 
 - **Parameters:**
-    - `IEntity entity` — The entity whose view was removed.
-    - `EntityView view` — The view that was hidden and returned to the pool.
+    - `IEntity` — The entity whose view was removed.
+    - `EntityView` — The view that was hidden and returned to the pool.
 
 - **Note:** The event is called **before** the view is actually returned to the pool, giving you a chance to temporarily
   use it (e.g., play an animation).
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -85,7 +193,7 @@ public bool IsVisible { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Show(IReadOnlyEntityCollection<IEntity>)`
 
@@ -105,7 +213,7 @@ public void Hide();
 
 - **Description:** Unbinds the collection from the source and removes all active views.
 
-#### `Get(IEntity entity)`
+#### `Get(IEntity)`
 
 ```csharp  
 public EntityView Get(IEntity entity);  
@@ -116,7 +224,7 @@ public EntityView Get(IEntity entity);
 - **Returns:** The active view instance.
 - **Throws:** `KeyNotFoundException` if the entity is not in the collection.
 
-#### `TryGet(IEntity entity, out EntityView view)`
+#### `TryGet(IEntity, out EntityView)`
 
 ```csharp  
 public bool TryGet(IEntity entity, out EntityView view);  
@@ -125,7 +233,7 @@ public bool TryGet(IEntity entity, out EntityView view);
 - **Description:** Tries to retrieve the view for a given entity.
 - **Returns:** `true` if a view exists, `false` otherwise.
 
-#### `Contains(IEntity entity)`
+#### `Contains(IEntity)`
 
 ```csharp  
 public bool Contains(IEntity entity);  
@@ -133,7 +241,7 @@ public bool Contains(IEntity entity);
 
 - **Description:** Checks whether a view exists for the specified entity.
 
-#### `Add(IEntity entity)`
+#### `Add(IEntity)`
 
 ```csharp  
 public void Add(IEntity entity);  
@@ -142,7 +250,7 @@ public void Add(IEntity entity);
 - **Description:** Creates and shows a view for the specified entity if it does not already exist.
 - **Parameter:** `entity` — The entity to visualize.
 
-#### `Remove(IEntity entity)`
+#### `Remove(IEntity)`
 
 ```csharp  
 public void Remove(IEntity entity);  
@@ -169,7 +277,7 @@ public IEnumerator<KeyValuePair<IEntity, EntityView>> GetEnumerator();
   This allows you to use `foreach` to iterate over each entity and its associated view.
 - **Returns:** `IEnumerator<KeyValuePair<IEntity, EntityView>>` — An enumerator for the entity-view pairs.
 
-#### `GetName(IEntity entity)`
+#### `GetName(IEntity)`
 
 ```csharp  
 protected virtual string GetName(IEntity entity);  
@@ -181,34 +289,8 @@ protected virtual string GetName(IEntity entity);
 - **Default Behavior:** Returns `entity.Name`.
 - **Override:** Can be overridden to provide custom logic for prefab selection, grouping, or localization.
 
----
-
-## 🗂 Example of Usage
-
-### 1️⃣ Binding a Collection
-
-```csharp  
-var collection = ... // IReadOnlyEntityCollection<IEntity>
-myCollectionView.Show(collection);  
-```
-
-### 2️⃣ Adding/Removing Views Manually
-
-```csharp  
-myCollectionView.Add(entity);
-myCollectionView.Remove(entity);  
-``
-
-### 3️⃣ Clearing All Views
-
-```csharp  
-myCollectionView.Clear();  
-```
-
-
-
-
 <!--
+
 
 # 🧩 EntityCollectionView
 
@@ -252,7 +334,6 @@ This system comes in two forms:
 public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
 {
 }
-```
 
 ## EntityCollectionView<E, V>
 **Generic version for managing entity-specific views.**

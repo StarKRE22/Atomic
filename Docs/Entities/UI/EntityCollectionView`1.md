@@ -80,7 +80,7 @@ public sealed class UnitCollectionView : EntityCollectionView<IUnitEntity, UnitV
 <img width="450" height="" alt="Entity component" src="../../Images/UnitCollectionView.png" />
 
 - Assign a `Transform` to `Viewport` field.
-- Assign the `UnityViewPool` to `ViewPooll` field.
+- Assign the `UnityViewPool` to `ViewPool` field.
 
 ---
 
