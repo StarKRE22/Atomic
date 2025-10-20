@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/GameEntityViewCatalog.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/GameEntityViewCatalog.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Headquarters.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Headquarters.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Projectile.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Projectile.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Tank.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Warrior.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/GameEntities/Warrior.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/EntityViewCatalog.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/EntityViewCatalog.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/EntityViewPool.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitCollectionView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Scripts/UnitEntities/UnitEntityAPI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitMultiFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitView.cs" root0="FORCE_HIGHLIGHTING" />
@@ -99,6 +87,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Utils/InternalUtils.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Common.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Tests/Performance/Entity/EntityPerformance_Values.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/_DEV/EntityViewCatalog.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.mathematics@8017b507cc74/Unity.Mathematics/float2.gen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@c58b4ee65782/Editor/CustomEditors/CustomTimelineEditorCache.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/26/cb522a47/IDisposable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -285,23 +274,7 @@
       <workItem from="1760892887411" duration="11999000" />
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
-      <workItem from="1760975339788" duration="5584000" />
-    </task>
-    <task id="LOCAL-01664" summary="ShooterGame починил!">
-      <option name="closed" value="true" />
-      <created>1760908089058</created>
-      <option name="number" value="01664" />
-      <option name="presentableId" value="LOCAL-01664" />
-      <option name="project" value="LOCAL" />
-      <updated>1760908089058</updated>
-    </task>
-    <task id="LOCAL-01665" summary="Сделал Manual для Pools!">
-      <option name="closed" value="true" />
-      <created>1760942818010</created>
-      <option name="number" value="01665" />
-      <option name="presentableId" value="LOCAL-01665" />
-      <option name="project" value="LOCAL" />
-      <updated>1760942818010</updated>
+      <workItem from="1760975339788" duration="6259000" />
     </task>
     <task id="LOCAL-01666" summary="IEntityPool.md">
       <option name="closed" value="true" />
@@ -679,7 +652,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760983036151</updated>
     </task>
-    <option name="localTasksCounter" value="1713" />
+    <task id="LOCAL-01713" summary="EntityViewPool">
+      <option name="closed" value="true" />
+      <created>1760983707777</created>
+      <option name="number" value="01713" />
+      <option name="presentableId" value="LOCAL-01713" />
+      <option name="project" value="LOCAL" />
+      <updated>1760983707777</updated>
+    </task>
+    <task id="LOCAL-01714" summary="EntityViewPool">
+      <option name="closed" value="true" />
+      <created>1760983760762</created>
+      <option name="number" value="01714" />
+      <option name="presentableId" value="LOCAL-01714" />
+      <option name="project" value="LOCAL" />
+      <updated>1760983760762</updated>
+    </task>
+    <option name="localTasksCounter" value="1715" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,7 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="IPrefabEntityPool`1.md" />
     <MESSAGE value="PrefabEntityPool.md" />
     <MESSAGE value="SceneEntityPool.md" />
@@ -731,7 +719,8 @@
     <MESSAGE value="EntityViewCatalog`1.md" />
     <MESSAGE value="EntityViewCatalog.md" />
     <MESSAGE value="Переименовал с GameEntity на UnitEntity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переименовал с GameEntity на UnitEntity" />
+    <MESSAGE value="EntityViewPool" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityViewPool" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -84,6 +84,9 @@ public sealed class UnitViewPool : EntityViewPool<IUnitEntity, UnitView>
 ### 2️⃣ Pool Usage
 
 ```csharp
+// Assume we have an instance of UnitViewPool
+UnitViewPool pool = ...;
+
 // Rent a view by name
 UnitView playerView = pool.Rent("Player");
 
