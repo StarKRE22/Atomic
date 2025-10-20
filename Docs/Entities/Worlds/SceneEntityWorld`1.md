@@ -1,10 +1,8 @@
 # 🧩 SceneEntityWorld\<E>
 
-A **Unity-compatible world manager for scene-based entities** of type `E`.  
-Integrates with Unity lifecycle events (`Awake`, `Start`, `OnEnable`, etc.) to manage entity enabling, updating, and
-cleanup. Ideal for managing scene entities dynamically, supporting both runtime and editor workflows, including
-automatic scanning and registration.
-
+A **Unity-compatible world manager for scene-based entities** of type `E`.Integrates with Unity lifecycle events (
+`Awake`, `Start`, `OnEnable`, etc.) to manage entity enabling, updating, and cleanup. Ideal for managing scene entities
+dynamically, supporting both runtime and editor workflows, including automatic scanning and registration.
 
 ---
 
