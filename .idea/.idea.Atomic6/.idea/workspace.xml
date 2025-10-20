@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityBehaviours.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityBehaviours.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityLifecycle.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityLifecycle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityTags.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/IEntityTags.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,15 +273,7 @@
       <workItem from="1760892887411" duration="11999000" />
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
-      <workItem from="1760975339788" duration="13301000" />
-    </task>
-    <task id="LOCAL-01679" summary="PrefabEntityPool`1.md">
-      <option name="closed" value="true" />
-      <created>1760948504163</created>
-      <option name="number" value="01679" />
-      <option name="presentableId" value="LOCAL-01679" />
-      <option name="project" value="LOCAL" />
-      <updated>1760948504163</updated>
+      <workItem from="1760975339788" duration="13603000" />
     </task>
     <task id="LOCAL-01680" summary="SceneEntityPool.md">
       <option name="closed" value="true" />
@@ -668,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760992277165</updated>
     </task>
-    <option name="localTasksCounter" value="1728" />
+    <task id="LOCAL-01728" summary="IEntityLifecycle.md">
+      <option name="closed" value="true" />
+      <created>1760992510152</created>
+      <option name="number" value="01728" />
+      <option name="presentableId" value="LOCAL-01728" />
+      <option name="project" value="LOCAL" />
+      <updated>1760992510152</updated>
+    </task>
+    <option name="localTasksCounter" value="1729" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Installers Manual!" />
     <MESSAGE value="IEntityInstaller.md" />
     <MESSAGE value="IEntityInstaller`1.md" />
     <MESSAGE value="ScriptableEntityInstaller.md" />
@@ -720,7 +718,8 @@
     <MESSAGE value="IEntityTags.md" />
     <MESSAGE value="IEntityValues.md" />
     <MESSAGE value="IEntityBehaviours.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="IEntityBehaviours.md" />
+    <MESSAGE value="IEntityLifecycle.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IEntityLifecycle.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

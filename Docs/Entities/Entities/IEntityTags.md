@@ -17,12 +17,22 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
     - [Using Entity API](#ex3)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Events](#-events)
+    - <details>
+      <summary><a href="#-events">Events</a></summary>
+
         - [OnTagAdded](#ontagadded)
         - [OnTagDeleted](#ontagdeleted)
-    - [Properties](#-properties)
+
+      </details>
+    - <details>
+      <summary><a href="#-properties">Properties</a></summary>
+
         - [TagCount](#tagcount)
-    - [Methods](#-methods)
+
+      </details>
+    - <details>
+      <summary><a href="#-methods">Methods</a></summary>
+
         - [HasTag(int)](#hastagint)
         - [AddTag(int)](#addtagint)
         - [DelTag(int)](#deltagint)
@@ -31,6 +41,8 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
         - [CopyTags(int[])](#copytagsint)
         - [GetTagEnumerator()](#gettagenumerator)
 
+      </details>
+    
 ---
 
 ## 🗂 Example of Usage
