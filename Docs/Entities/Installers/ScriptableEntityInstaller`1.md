@@ -6,12 +6,22 @@ Strongly-typed variant of [ScriptableEntityInstaller](ScriptableEntityInstaller.
 
 ## 🗂 Example of Usage
 
+Assume we have a concrete type of entity:
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
+Create a `ScriptableObject` installer for `UnitEntity`
+
 ```csharp
 [CreateAssetMenu(
     fileName = "MoveInstaller",
     menuName = "Example/New MoveInstaller"
 )]
-public sealed class MoveInstaller<UnitEntity> : ScriptableEntityInstaller<UnitEntity>
+public sealed class MoveInstaller : ScriptableEntityInstaller<UnitEntity>
 {
     [SerializeField] private Const<float> _moveSpeed = 5.0f; 
 
