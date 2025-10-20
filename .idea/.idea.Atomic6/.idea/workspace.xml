@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IEntityPool.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,15 +250,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="637000" />
-    </task>
-    <task id="LOCAL-01616" summary="BehaviourEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760729828499</created>
-      <option name="number" value="01616" />
-      <option name="presentableId" value="LOCAL-01616" />
-      <option name="project" value="LOCAL" />
-      <updated>1760729828499</updated>
+      <workItem from="1760942068732" duration="1178000" />
     </task>
     <task id="LOCAL-01617" summary="BehaviourEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -644,7 +636,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760908089058</updated>
     </task>
-    <option name="localTasksCounter" value="1665" />
+    <task id="LOCAL-01665" summary="Сделал Manual для Pools!">
+      <option name="closed" value="true" />
+      <created>1760942818010</created>
+      <option name="number" value="01665" />
+      <option name="presentableId" value="LOCAL-01665" />
+      <option name="project" value="LOCAL" />
+      <updated>1760942818010</updated>
+    </task>
+    <option name="localTasksCounter" value="1666" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SubscriptionEntityTrigger.md" />
     <MESSAGE value="InlineEntityTriggers.md" />
     <MESSAGE value="InlineEntityTrigger.md" />
     <MESSAGE value="InlineEntityTrigger`1.md" />
@@ -696,7 +695,8 @@
     <MESSAGE value="Сделал Baking!" />
     <MESSAGE value="Beginner Game починил!" />
     <MESSAGE value="ShooterGame починил!" />
-    <option name="LAST_COMMIT_MESSAGE" value="ShooterGame починил!" />
+    <MESSAGE value="Сделал Manual для Pools!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал Manual для Pools!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
