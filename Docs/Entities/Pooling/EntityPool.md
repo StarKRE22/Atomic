@@ -1,17 +1,67 @@
 # 🧩 EntityPool
 
+A **non-generic version** of [EntityPool\<E>](EntityPool%601.md) that operates on base [IEntity](../Entities/IEntity.md) types.  
+Use this when pooling a variety of entities that share a common interface but do not require type-specific access.
+Ideal for scenarios where you want a simple pool for any entity without specifying a type parameter.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructor](#-constructor)
+    - [Methods](#-methods)
+        - [Init(int)](#initint)
+        - [Rent()](#rent)
+        - [Return(IEntity)](#returnientity)
+        - [Dispose()](#dispose)
+        - [OnCreate(IEntity)](#oncreateientity)
+        - [OnDispose(IEntity)](#ondisposeientity)
+        - [OnRent(IEntity)](#onrentientity)
+        - [OnReturn(IEntity)](#onreturnientity)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+IEntityFactory factory = ...
+EntityPool pool = new(factory);
+
+// Initialize pool
+pool.Init(5);
+
+// Rent entities
+var entity1 = pool.Rent();
+var entity2 = pool.Rent();
+
+// Return entities to the pool
+pool.Return(entity1);
+pool.Return(entity2);
+
+// Dispose pool when done
+pool.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class EntityPool : EntityPool<IEntity>, IEntityPool
 ```
 
-- **Description:** A **non-generic version** of `EntityPool<E>` that operates on base [IEntity](../Entities/IEntity.md) types.  
-  Use this when pooling a variety of entities that share a common interface but do not require type-specific access.
 - **Inheritance:** [EntityPool\<E>](EntityPool%601.md), [IEntityPool](IEntityPool.md)
-- **Note:** Ideal for scenarios where you want a simple pool for any entity without specifying a type parameter.
 
 ---
 
-## 🏗️ Constructor
+<div id="-constructor"></div>
+
+### 🏗️ Constructor
 
 #### `EntityPool(IEntityFactory<IEntity>)`
 
@@ -25,7 +75,7 @@ public EntityPool(IEntityFactory<IEntity> factory);
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Init(int)`
 
@@ -105,26 +155,3 @@ protected virtual void OnReturn(IEntity entity);
 - **Description:** Called when an entity is returned to the pool.
 - **Parameter:** `entity` — The entity being returned.
 - **Note:** Override to reset or deactivate the entity before it goes back into the pool.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-IEntityFactory factory = ...
-EntityPool pool = new(factory);
-
-// Initialize pool
-pool.Init(5);
-
-// Rent entities
-var entity1 = pool.Rent();
-var entity2 = pool.Rent();
-
-// Return entities to the pool
-pool.Return(entity1);
-pool.Return(entity2);
-
-// Dispose pool when done
-pool.Dispose();
-```
