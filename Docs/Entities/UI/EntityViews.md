@@ -1,33 +1,15 @@
+<!--
+
+# 🧩 EntityViews
 
 A visual representation of an entity in the Unity scene. It provides a complete system for showing / hiding entities,
 installing, editor gizmos, custom naming, and safe creation / destruction. Use as a foundation for UI or game objects
-that visually represent entity data.
-
-<!--
-# 🧩 EntityView
-
-`EntityView<E>` represents a visual representation of an entity in the Unity scene.  
-It provides a complete system for showing / hiding entities, applying / discarding aspects, editor gizmos, custom naming, and safe creation/destruction.
-
-It comes in two forms:
-
-* **Non-generic** (`EntityView`) for `IEntity`
-* **Generic** (`EntityView<E>`) for specific entity types
-
-## 📚 Content
-
-- [Key Features](#key-features)
-- [Properties](#properties)
-- [Methods](#methods)
-- [Inspector Settings](#inspector-settings)
-- [Installing](#installing)
-- [Gizmos Support](#gizmos-support)
-- [Creation & Destruction](#creation--destruction)
-- [Example Usage](#example-usage)
+that visually represent entity data. 
 
 ---
 
-## Key Features
+
+## 💡 Key Features
 
 ### Visibility Management
 - Show and hide entities dynamically using `Show(E)` and `Hide()`
@@ -53,3 +35,21 @@ It comes in two forms:
 ### Type Safety
 - Generic interface allows compile-time type checking
 - Non-generic interface provides convenience for general `IEntity` usage
+
+
+
+
+## 📚 Content
+
+- [Key Features](#key-features)
+- [Properties](#properties)
+- [Methods](#methods)
+- [Inspector Settings](#inspector-settings)
+- [Installing](#installing)
+- [Gizmos Support](#gizmos-support)
+- [Creation & Destruction](#creation--destruction)
+- [Example Usage](#example-usage)
+
+---
+
+-->

@@ -7,6 +7,7 @@ of entities. Components can be **generic** or **non-generic**, depending on the 
 
 ---
 
+//TODO Сделать просто гайд по EntityView, EntityCollectionView, EntityViewCatalog, EntityViewPool
 <!--
 
 

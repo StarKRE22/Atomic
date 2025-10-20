@@ -6,6 +6,21 @@ elements, game units).
 
 ---
 
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Properties](#-properties)
+        - [Count](#count)
+    - [Methods](#-methods)
+        - [GetPrefab(int)](#getprefabint)
+        - [GetPrefab(string)](#getprefabstring)
+        - [GetName(V)](#getnamev)
+
+---
+
 ## 🗂 Example of Usage
 
 Below is an example of using the catalog for entity view prefabs
