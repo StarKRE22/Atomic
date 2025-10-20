@@ -1,12 +1,53 @@
 # 🧩 SceneEntityPool\<E>
 
+A Unity **MonoBehaviour-based entity pool** for scene-bound entities of type `E`. Uses a prefab to
+instantiate entities and manages their reuse via a stack. Entities are activated / deactivated on rent / return.
+
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using `SceneEntityPool<E>` for enemy entities:
+
+#### 1. Create `EnemyPool` for enemy entities
+
+```csharp
+public class EnemyPool : SceneEntityPool<EnemyEntity>
+{
+}
+```
+
+#### 2. Add `EnemyPool` component to GameObject and configure it
+
+<img width="400" height="" alt="Entity component" src="../../Images/EnemyPool.png" />
+
+
+#### 3. Use `EnemyPool` in your project
+
+```csharp
+EnemyPool enemyPool = ...
+
+// Rent an enemy from the pool
+EnemyEntity enemy1 = enemyPool.Rent();
+EnemyEntity enemy2 = enemyPool.Rent();
+
+// Return enemies to the pool when done
+enemyPool.Return(enemy1);
+enemyPool.Return(enemy2);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E>
     where E : SceneEntity
 ```
 
-- **Description:** A Unity **MonoBehaviour-based entity pool** for scene-bound entities of type `E`. Uses a prefab to
-  instantiate entities and manages their reuse via a stack. Entities are activated / deactivated on rent / return.
 - **Type Parameter:** `E` — The type of entity managed by this pool. Must inherit
   from [SceneEntity](../Entities/SceneEntity.md).
 - **Inheritance:** `MonoBehaviour`, [IEntityPool\<E>](IEntityPool%601.md)
@@ -25,7 +66,7 @@ public abstract class SceneEntityPool<E> : MonoBehaviour, IEntityPool<E>
 
 ---
 
-## 🏹 Public Methods
+## 🏹 Methods
 
 #### `Awake()`
 
@@ -36,8 +77,6 @@ protected virtual void Awake();
 - **Description:** Called by Unity when the GameObject is activated.
 - **Note:** Initializes the pool automatically if `_initOnAwake` is true and assigns `_container` if null.
 
----
-
 #### `Reset()`
 
 ```csharp
@@ -47,8 +86,6 @@ protected virtual void Reset();
 - **Description:** Resets the container to the pool's GameObject transform.
 - **Note:** Called by Unity in the Editor.
 
----
-
 #### `Init(int)`
 
 ```csharp
@@ -57,8 +94,6 @@ public void Init(int initialCount);
 
 - **Description:** Pre-instantiates the specified number of entities into the pool.
 - **Parameter:** `initialCount` — Number of entities to create.
-
----
 
 #### `Rent()`
 
@@ -133,10 +168,6 @@ protected virtual void OnReturn(E entity);
 - **Description:** Called when an entity is returned to the pool.
 - **Default Behavior:** Deactivates the entity and sets its parent to `_container`.
 
----
-
-## 🏹 Static Methods
-
 #### `Create<T>(in CreateArgs)`
 
 ```csharp
@@ -146,8 +177,6 @@ public static T Create<T>(in CreateArgs args) where T : SceneEntityPool<E>;
 - **Description:** Creates a new instance of a scene entity pool in the scene.
 - **Parameter:** `args` — Initialization parameters encapsulated in `CreateArgs`.
 - **Returns:** A new instance of the pool attached to a new GameObject.
-
----
 
 #### `Destroy(SceneEntityPool<E>, float)`
 
@@ -161,7 +190,7 @@ public static void Destroy(SceneEntityPool<E> pool, float t = 0);
 
 ---
 
-## 🧩 Nested Types
+### 🧩 Nested Types
 
 #### `CreateArgs`
 
@@ -177,33 +206,3 @@ public struct CreateArgs
     - `container` — Optional parent transform.
     - `initOnAwake` — Whether to auto-initialize in `Awake()`.
     - `initialCount` — Number of entities to pre-instantiate.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example of using `SceneEntityPool<E>` for enemy entities:
-
-#### 1. Create `EnemyPool` for enemy entities
-
-```csharp
-public class EnemyPool : SceneEntityPool<EnemyEntity>
-{
-}
-```
-
-#### 2. Add `EnemyPool` component to GameObject and configure it
-
-#### 3. Use `EnemyPool` in your code
-
-```csharp
-EnemyPool enemyPool = ...
-
-// Rent an enemy from the pool
-EnemyEntity enemy1 = enemyPool.Rent();
-EnemyEntity enemy2 = enemyPool.Rent();
-
-// Return enemies to the pool when done
-enemyPool.Return(enemy1);
-enemyPool.Return(enemy2);
-```
