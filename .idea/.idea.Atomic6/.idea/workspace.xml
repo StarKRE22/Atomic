@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/IEntityWorld.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,23 +248,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="7853000" />
-    </task>
-    <task id="LOCAL-01636" summary="ScriptableEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760794806100</created>
-      <option name="number" value="01636" />
-      <option name="presentableId" value="LOCAL-01636" />
-      <option name="project" value="LOCAL" />
-      <updated>1760794806100</updated>
-    </task>
-    <task id="LOCAL-01637" summary="Подвинул Inspector Settings!">
-      <option name="closed" value="true" />
-      <created>1760803056891</created>
-      <option name="number" value="01637" />
-      <option name="presentableId" value="LOCAL-01637" />
-      <option name="project" value="LOCAL" />
-      <updated>1760803056891</updated>
+      <workItem from="1760942068732" duration="8272000" />
     </task>
     <task id="LOCAL-01638" summary="Подвинул Inspector Settings!">
       <option name="closed" value="true" />
@@ -644,7 +626,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760949715781</updated>
     </task>
-    <option name="localTasksCounter" value="1685" />
+    <task id="LOCAL-01685" summary="Entity Worlds Manual.md">
+      <option name="closed" value="true" />
+      <created>1760950065064</created>
+      <option name="number" value="01685" />
+      <option name="presentableId" value="LOCAL-01685" />
+      <option name="project" value="LOCAL" />
+      <updated>1760950065064</updated>
+    </task>
+    <task id="LOCAL-01686" summary="Entity Worlds Manual.md">
+      <option name="closed" value="true" />
+      <created>1760950181742</created>
+      <option name="number" value="01686" />
+      <option name="presentableId" value="LOCAL-01686" />
+      <option name="project" value="LOCAL" />
+      <updated>1760950181742</updated>
+    </task>
+    <option name="localTasksCounter" value="1687" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
     <MESSAGE value="Пилим!" />
@@ -696,7 +693,8 @@
     <MESSAGE value="SceneEntityPool.md" />
     <MESSAGE value="PrefabEntityPool`1.md" />
     <MESSAGE value="SceneEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool`1.md" />
+    <MESSAGE value="Entity Worlds Manual.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Entity Worlds Manual.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
