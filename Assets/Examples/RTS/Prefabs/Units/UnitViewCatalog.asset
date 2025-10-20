@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49dc888d15c84dd0b70889ca9c12d08e, type: 3}
-  m_Name: GameEntityViewCatalog
+  m_Name: UnitViewCatalog
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 6425615338675742216, guid: 42259186f365e4d42bea89ea7f465798, type: 3}

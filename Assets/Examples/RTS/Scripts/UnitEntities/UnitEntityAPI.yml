@@ -46,11 +46,11 @@ values:
 
 #Combat
 - Damage: IValue<int>
-- Target: IReactiveVariable<IGameEntity>
+- Target: IReactiveVariable<IUnitEntity>
   
 #Fire
 - FireDistance: IValue<float>
-- FireRequest: IRequest<IGameEntity>
-- FireEvent: IEvent<IGameEntity>
+- FireRequest: IRequest<IUnitEntity>
+- FireEvent: IEvent<IUnitEntity>
 - FireCooldown: Cooldown
 - FirePoint: IValue<Vector3>

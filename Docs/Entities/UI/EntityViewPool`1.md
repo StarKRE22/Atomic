@@ -6,6 +6,108 @@ allocations. Use for efficient management of frequently spawned or displayed ent
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Pool Setup](#ex1)
+    - [Pool Usage](#ex2)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#type)
+    - [Methods](#methods)
+        - [Rent(string)](#rentstring)
+        - [Return(string, V)](#returnstring-v)
+        - [Clear()](#clear)
+        - [RegisterPrefab(string, V)](#registerprefabstring-v)
+        - [UnregisterPrefab(string)](#unregisterprefabstring)
+        - [RegisterPrefabs(EntityViewCatalog<E, V>)](#registerprefabsentityviewcataloge-v)
+        - [UnregisterPrefabs(EntityViewCatalog<E, V>)](#unregisterprefabsentityviewcataloge-v)
+        - [Awake()](#awake)
+
+---
+
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Pool Setup
+
+Below is an example of using generic entity view pool:
+
+#### 1. Assume we have a concrete entity type
+
+```csharp
+public class IUnitEntity : IEntity
+{
+}
+```
+
+#### 2. Assume we have a concrete entity view type
+
+```csharp
+public class UnitView : EntityView<IUnitEntity>
+{
+}
+```
+
+#### 3. Assume we have a catalog for the unit views
+
+```csharp
+[CreateAssetMenu(
+    fileName = "UnitViewCatalog", 
+    menuName = "Example/UnitViewCatalog"
+)]
+public class UnitViewCatalog : EntityViewCatalog<IUnitEntity, UnitView> 
+{
+}
+```
+
+#### 4. Create a specific entity view pool for `UnitView`
+
+```csharp
+public sealed class UnitViewPool : EntityViewPool<IUnitEntity, UnitView>
+{
+}
+```
+
+#### 5. Attach this pool to an GameObject on a scene
+
+<img width="450" height="" alt="Entity component" src="../../Images/UnitViewPool.png" />
+
+- Assign a `Transform` to `container` to parent pooled views.
+- Add one or more `UnitViewCatalog` assets to `catalogs` to preload prefabs.
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Pool Usage
+
+```csharp
+// Rent a view by name
+UnitView playerView = pool.Rent("Player");
+
+// Use the view
+playerView.Show(playerEntity);
+
+// Return view to the pool
+pool.Return("Player", playerView);
+
+// Destroy all pooled instances
+pool.Clear();
+```
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter   | Description                                                                               |
+|-------------|-------------------------------------------------------------------------------------------|
+| `container` | The parent transform under which all pooled views will be stored.                         |
+| `catalogs`  | A list of `EntityViewCatalog<E, V>` assets to preload view prefabs from during `Awake()`. |
+
+---
+
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
@@ -23,18 +125,9 @@ public abstract class EntityViewPool<E, V> : MonoBehaviour
 
 ---
 
-## 🛠 Inspector Settings
+### 🏹 Methods
 
-| Parameter   | Description                                                                               |
-|-------------|-------------------------------------------------------------------------------------------|
-| `container` | The parent transform under which all pooled views will be stored.                         |
-| `catalogs`  | A list of `EntityViewCatalog<E, V>` assets to preload view prefabs from during `Awake()`. |
-
----
-
-## 🏹 Methods
-
-#### `Rent(string name)`
+#### `Rent(string)`
 
 ```csharp
 public V Rent(string name);
@@ -45,7 +138,7 @@ public V Rent(string name);
 - **Returns:** A `EntityView` instance of type `V`.
 - **Throws:** `KeyNotFoundException` if no prefab with the specified name was registered.
 
-#### `Return(string name, V view)`
+#### `Return(string, V)`
 
 ```csharp
 public void Return(string name, V view);
@@ -64,7 +157,7 @@ public void Clear();
 
 - **Description:** Clears all pooled instances and destroys their GameObjects.
 
-#### `RegisterPrefab(string entityName, V prefab)`
+#### `RegisterPrefab(string, V)`
 
 ```csharp
 public void RegisterPrefab(string entityName, V prefab);
@@ -76,7 +169,7 @@ public void RegisterPrefab(string entityName, V prefab);
     - `prefab` — The prefab instance to register.
 - **Throws:** `ArgumentException` if a prefab with the same name already exists in the dictionary.
 
-#### `UnregisterPrefab(string entityName)`
+#### `UnregisterPrefab(string)`
 
 ```csharp
 public void UnregisterPrefab(string entityName);
@@ -85,7 +178,7 @@ public void UnregisterPrefab(string entityName);
 - **Description:** Removes a previously registered prefab from the pool.
 - **Parameter:** `entityName` — The name key of the prefab to remove.
 
-#### `RegisterPrefabs(EntityViewCatalog<E, V> catalog)`
+#### `RegisterPrefabs(EntityViewCatalog<E, V>)`
 
 ```csharp
 public void RegisterPrefabs(EntityViewCatalog<E, V> catalog);
@@ -94,7 +187,7 @@ public void RegisterPrefabs(EntityViewCatalog<E, V> catalog);
 - **Description:** Registers all prefabs from the specified catalog.
 - **Parameter:** `catalog` — The catalog containing prefabs to register.
 
-#### `UnregisterPrefabs(EntityViewCatalog<E, V> catalog)`
+#### `UnregisterPrefabs(EntityViewCatalog<E, V>)`
 
 ```csharp
 public void UnregisterPrefabs(EntityViewCatalog<E, V> catalog);
@@ -109,71 +202,5 @@ public void UnregisterPrefabs(EntityViewCatalog<E, V> catalog);
 protected virtual void Awake();
 ```
 
-- **Description:** Unity lifecycle callback invoked when the component is initialized.
-
----
-
-## 🗂 Examples of Usage
-
-Below is an example of using generic entity view pool:
-
-#### 1. Assume we have a concrete entity type
-
-```csharp
-public class UnitEntity : Entity
-{
-}
-```
-
-#### 2. Assume we have a concrete entity view type
-
-```csharp
-public class UnitView : EntityView<UnitEntity>
-{
-}
-```
-
-#### 3. Assume we have a catalog for the unit views
-
-```csharp
-[CreateAssetMenu(
-    fileName = "UnitViewCatalog", 
-    menuName = "Example/UnitViewCatalog"
-)]
-public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> 
-{
-}
-```
-
-#### 4. Create a specific entity view pool for `UnitView`
-
-
-
-### 1️⃣ Setup in Inspector
-
-- Assign a `Transform` to `container` to parent pooled views.
-- Add one or more `EntityViewCatalog` assets to `catalogs` to preload prefabs.
-
----
-
-### 2️⃣ Renting and Returning Views
-
-```csharp
-// Rent a view by name
-UnitView playerView = pool.Rent("Player");
-
-// Use the view
-playerView.Show(playerEntity);
-
-// Return view to the pool
-pool.Return("Player", playerView);
-```
-
----
-
-### 3️⃣ Clearing All Pooled Views
-
-```csharp
-// Destroy all pooled instances
-pool.Clear();
-```
+- **Description:** Unity lifecycle callback invoked when the component is initialized. Loads prefabs from the assigned
+  catalogs.

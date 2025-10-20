@@ -18,7 +18,7 @@ namespace RTSGame
 #if UNITY_EDITOR
 	[InitializeOnLoad]
 #endif
-	public static class GameEntityAPI
+	public static class UnitEntityAPI
 	{
 
 		///Tags
@@ -49,7 +49,7 @@ namespace RTSGame
 		public static readonly int FireCooldown; // Cooldown
 		public static readonly int FirePoint; // IValue<Vector3>
 
-		static GameEntityAPI()
+		static UnitEntityAPI()
 		{
 			//Tags
 			Damageable = NameToId(nameof(Damageable));
