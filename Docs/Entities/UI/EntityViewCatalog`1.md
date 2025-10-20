@@ -1,30 +1,81 @@
 # 🧩 EntityViewCatalog<E, V>
 
+A `ScriptableObject` that serves as a centralized catalog of [EntityView\<E>](EntityView%601.md) prefabs. Provides
+storage and retrieval of prefabs by index or by name. Use for managing and reusing collections of prefabs (e.g., UI
+elements, game units).
+
+---
+
+## 🗂 Example of Usage
+
+Below is an example of using the catalog for entity view prefabs
+
+#### 1. Assume we have a concrete entity type
+
+```csharp
+public class UnitEntity : Entity
+{
+}
+```
+
+#### 2. Assume we have a concrete entity view type
+
+```csharp
+public class UnitView : EntityView<UnitEntity>
+{
+}
+```
+
+#### 3. Create a catalog class for the unit views
+
+```csharp
+[CreateAssetMenu(menuName = "Game/UnitViewCatalog")]
+public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> 
+{
+}
+````
+
+#### 4. Usage in a project
+
+```csharp
+// Load the catalog from Resources, for example
+UnitViewCatalog catalog = Resources.Load<UnitViewCatalog>("UnitViewCatalog");
+
+// Get a prefab by index
+KeyValuePair<string, UnitView> viewPrefabKV = catalog.GetPrefab(0);
+
+// Get by name
+UnitView viewPrefab = catalog.GetPrefab("Player");
+```
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter | Description                                                                                      |
+|-----------|--------------------------------------------------------------------------------------------------|
+| `prefabs` | List of `EntityView` prefabs available in the catalog. Serialized and editable in the inspector. |
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class EntityViewCatalog<E, V> : ScriptableObject
     where E : class, IEntity
     where V : EntityView<E>
 ```
 
-- **Description:** A `ScriptableObject` that serves as a centralized **catalog of EntityView prefabs**.  
-  Provides storage and retrieval of prefabs by index or by name.
 - **Type Parameters:**
     - `E` — The type of entity associated with the views. Must implement `IEntity`.
     - `V` — The type of entity view (`EntityView<E>`) stored in the catalog.
 - **Inheritance:** `ScriptableObject`
-- **Usage:** Use for managing and reusing collections of prefabs (e.g., UI elements, game units).
 
 ---
 
-## 🛠 Inspector Settings
-
-| Parameter  | Description                                          |
-|------------|------------------------------------------------------|
-| `prefabs`  | List of `EntityView` prefabs available in the catalog. Serialized and editable in the inspector. |
-
----
-
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Count`
 
@@ -36,7 +87,7 @@ public int Count { get; }
 
 ---
 
-## 🏹 Public Methods
+### 🏹 Methods
 
 #### `GetPrefab(int)`
 
@@ -62,10 +113,6 @@ public V GetPrefab(string name);
 - **Returns:** A prefab of type `V`.
 - **Throws:** `Exception` if no prefab with the given name exists.
 
----
-
-## 🏹 Protected Methods
-
 #### `GetName(V)`
 
 ```csharp
@@ -77,30 +124,3 @@ protected virtual string GetName(V prefab);
 - **Returns:** The prefab name.
 - **Default Implementation:** Returns `EntityView<E>.Name`.
 - **Override:** Customize to use tags, metadata, or localization for prefab naming.
-
----
-
-## 🗂 Example of Usage
-
-### 1️⃣ Creating a Catalog
-
-```csharp
-[CreateAssetMenu(menuName = "Game/UnitViewCatalog")]
-public class UnitViewCatalog : EntityViewCatalog<UnitEntity, UnitView> { }
-````
-
----
-
-### 2️⃣ Loading and Using the Catalog
-
-```csharp
-// Load from Resources
-UnitViewCatalog catalog = Resources.Load<UnitViewCatalog>("UnitViewCatalog");
-
-// Get by index
-var kv = catalog.GetPrefab(0);
-Debug.Log($"Prefab {kv.Key} -> {kv.Value}");
-
-// Get by name
-UnitView playerPrefab = catalog.GetPrefab("Player");
-````

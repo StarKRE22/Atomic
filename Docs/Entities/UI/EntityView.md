@@ -222,8 +222,6 @@ public sealed class CharacterViewInstaller : SceneEntityInstaller
 
 ---
 
----
-
 ## 🔍 API Reference
 
 ### 🏛️ Type <div id="-type"></div>
