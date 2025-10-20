@@ -5,7 +5,77 @@ per-frame updates, disabling, and disposal.
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnInitialized](#oninitialized)
+        - [OnDisposed](#ondisposed)
+        - [OnEnabled](#onenabled)
+        - [OnDisabled](#ondisabled)
+        - [OnTicked](#onticked)
+        - [OnFixedTicked](#onfixedticked)
+        - [OnLateTicked](#onlateticked)
+    - [Properties](#-properties)
+        - [Initialized](#initialized)
+        - [Enabled](#enabled)
+    - [Methods](#-methods)
+        - [Init()](#init)
+        - [Enable()](#enable)
+        - [Tick(float)](#tickfloat)
+        - [FixedTick(float)](#fixedtickfloat)
+        - [LateTick(float)](#latetickfloat)
+        - [Disable()](#disable)
+        - [Dispose()](#dispose)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of entity
+IEntity player = ...
+
+// Subscribe to lifecycle events
+player.OnInitialized += () => Console.WriteLine("Entity initialized");
+player.OnDisposed += () => Console.WriteLine("Entity disposed");
+player.OnEnabled += () => Console.WriteLine("Entity enabled");
+player.OnDisabled += () => Console.WriteLine("Entity disabled");
+player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+
+// Initialize and enable the entity
+player.Init();
+player.Enable();
+
+// Simulate game loop updates
+player.Tick(0.016f);       // Update (frame)
+player.FixedTick(0.02f);   // Physics update
+player.LateTick(0.016f);   // Late update
+
+// Disable the entity
+player.Disable();
+
+// Dispose the entity
+player.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial interface IEntity
+``` 
+
+---
+
+### ⚡ Events
 
 #### `OnInitialized`
 
@@ -76,7 +146,7 @@ public event Action<float> OnLateTicked
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Initialized`
 
@@ -98,7 +168,7 @@ public bool Enabled { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Init()`
 
@@ -195,36 +265,3 @@ public void Dispose()
     - Disposes stored values if `Settings.disposeValues` is `true`.
     - If the entity is enabled, calls `Disable()` automatically.
     - If the entity is not initialized yet, does not call `IEntityDispose.Dispose` or trigger `OnDisposed`.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Assume we have an instance of entity
-IEntity player = ...
-
-// Subscribe to lifecycle events
-player.OnInitialized += () => Console.WriteLine("Entity initialized");
-player.OnDisposed += () => Console.WriteLine("Entity disposed");
-player.OnEnabled += () => Console.WriteLine("Entity enabled");
-player.OnDisabled += () => Console.WriteLine("Entity disabled");
-player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
-player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
-player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
-
-// Initialize and enable the entity
-player.Init();
-player.Enable();
-
-// Simulate game loop updates
-player.Tick(0.016f);       // Update (frame)
-player.FixedTick(0.02f);   // Physics update
-player.LateTick(0.016f);   // Late update
-
-// Disable the entity
-player.Disable();
-
-// Dispose the entity
-player.Dispose();
-```

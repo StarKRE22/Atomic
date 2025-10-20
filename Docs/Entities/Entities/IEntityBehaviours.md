@@ -12,7 +12,7 @@ logic, enabling dynamic functionality without changing the core entity structure
 
 ---
 
-# 📑 Table of Contents
+## 📑 Table of Contents
 
 - [Example of Usage](#-example-of-usage)
     - [Basic Usage](#ex1)
