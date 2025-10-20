@@ -1,20 +1,87 @@
 # 🧩 MultiEntityPool<K, E>
 
+A registry that manages **multiple pools of entities**, each identified by a unique key of type
+`K`. Each pool can rent and return entities of type `E`. Useful for managing multiple types or categories of entities in
+a single centralized system.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructor)
+    - [Methods](#-methods)
+        - [Init(K, int)](#initk-int)
+        - [Rent(K)](#rentk)
+        - [Return(E)](#returne)
+        - [Dispose()](#dispose)
+        - [OnCreate(E)](#oncreatee)
+        - [OnDispose(E)](#ondisposee)
+        - [OnRent(E)](#onrente)
+        - [OnReturn(E)](#onreturne)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have two types of enemies, identified by an enum
+public enum EnemyType
+{
+    Goblin,
+    Orc
+}
+```
+
+```csharp
+// Define enemy entity type
+public interface IEnemyEntity : IEntity
+{
+}
+```
+
+```csharp
+//Assume we have an instance of IMultiEntityFactory
+IMultiEntityFactory<EnemyType, IEnemyEntity> enemyFactory = ...
+
+// Create a multi-entity pool
+var enemyPool = new MultiEntityPool<EnemyType, IEnemyEntity>(factory);
+
+// Initialize pools for each enemy type
+enemyPool.Init(EnemyType.Goblin, 5);
+enemyPool.Init(EnemyType.Orc, 3);
+
+// Rent entities from pools
+IEnemyEntity goblin = enemyPool.Rent(EnemyType.Goblin);
+IEnemyEntity orc = enemyPool.Rent(EnemyType.Orc);
+
+// Return entities to the pool when done
+enemyPool.Return(goblin);
+enemyPool.Return(orc);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public class MultiEntityPool<K, E> : IMultiEntityPool<K, E> where E : IEntity
 ```
 
-- **Description:** A registry that manages **multiple pools of entities**, each identified by a unique key of type
-  `K`. Each pool can rent and return entities of type `E`.
 - **Type Parameters:**
     - `K` — The key type used to identify individual pools.
     - `E` — The entity type managed by the pools. Must implement [IEntity](../Entities/IEntity.md).
 - **Inheritance:** [IMultiEntityPool\<K, E>](IMultiEntityPool%601.md), IDisposable
-- **Note:** Useful for managing multiple types or categories of entities in a single centralized system.
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructor"></div>
+
+### 🏗️ Constructors
 
 #### `MultiEntityPool(IMultiEntityFactory<K, E>)`
 
@@ -30,7 +97,7 @@ public MultiEntityPool(IMultiEntityFactory<K, E> factory);
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Init(K, int)`
 
@@ -104,43 +171,3 @@ protected virtual void OnReturn(E entity);
 ```
 
 - **Description:** Called when an entity is returned to its pool.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Assume we have two types of enemies, identified by an enum
-public enum EnemyType
-{
-    Goblin,
-    Orc
-}
-```
-
-```csharp
-// Define enemy entity type
-public interface IEnemyEntity : IEntity
-{
-}
-```
-
-```csharp
-//Assume we have an instance of IMultiEntityFactory
-IMultiEntityFactory<EnemyType, IEnemyEntity> enemyFactory = ...
-
-// Create a multi-entity pool
-var enemyPool = new MultiEntityPool<EnemyType, IEnemyEntity>(factory);
-
-// Initialize pools for each enemy type
-enemyPool.Init(EnemyType.Goblin, 5);
-enemyPool.Init(EnemyType.Orc, 3);
-
-// Rent entities from pools
-IEnemyEntity goblin = enemyPool.Rent(EnemyType.Goblin);
-IEnemyEntity orc = enemyPool.Rent(EnemyType.Orc);
-
-// Return entities to the pool when done
-enemyPool.Return(goblin);
-enemyPool.Return(orc);
-```
