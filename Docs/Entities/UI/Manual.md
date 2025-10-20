@@ -246,7 +246,7 @@ Below is a list of available Entity UI modules:
 
 ## 📝 Notes
 
-- **Views** represent the visual element for an entity and can be generic ([EntityView\<E>](EntityView%601.md)
+- **Views** represent the visual element for an entity and can be generic ([EntityView\<E>](EntityView%601.md))
   or non-generic ([EntityView](EntityView.md)).
 - **Catalogs** provide a registry for prefabs to select the correct view for an entity.
 - **Pools** manage instantiation and recycling of views for performance.
