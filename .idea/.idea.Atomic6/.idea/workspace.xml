@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/ScriptableEntityInstaller`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Installers/SceneEntityInstaller.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,23 +248,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="11648000" />
-    </task>
-    <task id="LOCAL-01651" summary="Пилим!">
-      <option name="closed" value="true" />
-      <created>1760880639698</created>
-      <option name="number" value="01651" />
-      <option name="presentableId" value="LOCAL-01651" />
-      <option name="project" value="LOCAL" />
-      <updated>1760880639698</updated>
-    </task>
-    <task id="LOCAL-01652" summary="ScriptableMultiEntityFactory`1.md">
-      <option name="closed" value="true" />
-      <created>1760881650661</created>
-      <option name="number" value="01652" />
-      <option name="presentableId" value="LOCAL-01652" />
-      <option name="project" value="LOCAL" />
-      <updated>1760881650661</updated>
+      <workItem from="1760942068732" duration="12014000" />
     </task>
     <task id="LOCAL-01653" summary="SceneEntityBaker.md">
       <option name="closed" value="true" />
@@ -642,7 +626,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760953774408</updated>
     </task>
-    <option name="localTasksCounter" value="1700" />
+    <task id="LOCAL-01700" summary="ScriptableEntityInstaller`1.md">
+      <option name="closed" value="true" />
+      <created>1760953872267</created>
+      <option name="number" value="01700" />
+      <option name="presentableId" value="LOCAL-01700" />
+      <option name="project" value="LOCAL" />
+      <updated>1760953872267</updated>
+    </task>
+    <task id="LOCAL-01701" summary="ScriptableEntityInstaller`1.md">
+      <option name="closed" value="true" />
+      <created>1760953962550</created>
+      <option name="number" value="01701" />
+      <option name="presentableId" value="LOCAL-01701" />
+      <option name="project" value="LOCAL" />
+      <updated>1760953962550</updated>
+    </task>
+    <option name="localTasksCounter" value="1702" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

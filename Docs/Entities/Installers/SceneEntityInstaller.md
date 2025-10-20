@@ -2,11 +2,9 @@
 
 Represents a Unity `MonoBehaviour` that can be attached to a GameObject to
 perform **installation logic** on an [IEntity](../Entities/IEntity.md) during runtime or initialization. It allows
-declarative configuration of entities placed in a scene.
-
-> [!TIP]
-> Use `SceneEntityInstaller` only if there are scene dependencies or if entity instances in the scene need to differ. In
-> other cases, use [ScriptableEntityInstaller](ScriptableEntityInstaller.md) as a shared installer.
+declarative configuration of entities placed in a scene. Use `SceneEntityInstaller` only if there are scene dependencies
+or if entity instances in the scene need to differ. In other cases, use
+[ScriptableEntityInstaller](ScriptableEntityInstaller.md) as a shared installer.
 
 ---
 
