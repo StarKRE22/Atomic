@@ -1,13 +1,17 @@
 # 🧩 EntityCollectionView
 
+A concrete, non-generic version of `EntityCollectionView<E, V>` that manages collections of `EntityView` instances in a Unity scene.  
+Provides functionality to show, hide, add, remove, and clear entity views using a pool of reusable instances.
+
+---
+
 ```csharp  
 [AddComponentMenu("Atomic/Entities/Entity Collection View")]
 [DisallowMultipleComponent]
 public class EntityCollectionView : EntityCollectionView<IEntity, EntityView>
 ```
 
-- **Description:** A concrete, non-generic version of `EntityCollectionView<E, V>` that manages collections of `EntityView` instances in a Unity scene.  
-  Provides functionality to show, hide, add, remove, and clear entity views using a pool of reusable instances.
+- **Description:** 
 - **Inheritance:** [EntityCollectionView<E, V>](EntityCollectionView%601.md)
 - **Usage:** Use when you do not need a custom entity type and want a ready-to-use collection of generic [EntityView](EntityView.md)s.
 - **See also:** [EntityViewPool<E, V>](EntityViewPool%601.md)

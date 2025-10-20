@@ -60,6 +60,15 @@ pool.Return("Player", view);
 
 // Destroy all pooled views
 pool.Clear();
+
+// Register prefabs manually
+EntityView orcPrefab, magePrefab = ...;
+pool.RegisterPrefab("Orc", orcPrefab);
+pool.RegisterPrefab("Mage", magePrefab);
+
+// Unregister prefabs manually
+pool.UnregisterPrefab("Orc");
+pool.UnregisterPrefab("Mage");
 ```
 
 ---
