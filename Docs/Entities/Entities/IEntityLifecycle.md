@@ -10,7 +10,9 @@ per-frame updates, disabling, and disposal.
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
     - [Type](#-type)
-    - [Events](#-events)
+    - <details>
+      <summary><a href="#-events">Events</a></summary>
+
         - [OnInitialized](#oninitialized)
         - [OnDisposed](#ondisposed)
         - [OnEnabled](#onenabled)
@@ -18,10 +20,18 @@ per-frame updates, disabling, and disposal.
         - [OnTicked](#onticked)
         - [OnFixedTicked](#onfixedticked)
         - [OnLateTicked](#onlateticked)
-    - [Properties](#-properties)
+
+      </details>
+    - <details>
+      <summary><a href="#-properties">Properties</a></summary>
+
         - [Initialized](#initialized)
         - [Enabled](#enabled)
-    - [Methods](#-methods)
+
+      </details>
+    - <details>
+      <summary><a href="#-methods">Methods</a></summary>
+
         - [Init()](#init)
         - [Enable()](#enable)
         - [Tick(float)](#tickfloat)
@@ -29,6 +39,9 @@ per-frame updates, disabling, and disposal.
         - [LateTick(float)](#latetickfloat)
         - [Disable()](#disable)
         - [Dispose()](#dispose)
+      
+      </details>
+       
 
 ---
 
