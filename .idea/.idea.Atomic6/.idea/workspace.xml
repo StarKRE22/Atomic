@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPool.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/SceneEntityPool`1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,31 +250,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="7108000" />
-    </task>
-    <task id="LOCAL-01633" summary="EntityFactories!">
-      <option name="closed" value="true" />
-      <created>1760779728006</created>
-      <option name="number" value="01633" />
-      <option name="presentableId" value="LOCAL-01633" />
-      <option name="project" value="LOCAL" />
-      <updated>1760779728007</updated>
-    </task>
-    <task id="LOCAL-01634" summary="IEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760787733337</created>
-      <option name="number" value="01634" />
-      <option name="presentableId" value="LOCAL-01634" />
-      <option name="project" value="LOCAL" />
-      <updated>1760787733337</updated>
-    </task>
-    <task id="LOCAL-01635" summary="IEntityFactory.md">
-      <option name="closed" value="true" />
-      <created>1760788272430</created>
-      <option name="number" value="01635" />
-      <option name="presentableId" value="LOCAL-01635" />
-      <option name="project" value="LOCAL" />
-      <updated>1760788272430</updated>
+      <workItem from="1760942068732" duration="7853000" />
     </task>
     <task id="LOCAL-01636" summary="ScriptableEntityFactory.md">
       <option name="closed" value="true" />
@@ -644,7 +620,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760949017772</updated>
     </task>
-    <option name="localTasksCounter" value="1682" />
+    <task id="LOCAL-01682" summary="SceneEntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1760949317942</created>
+      <option name="number" value="01682" />
+      <option name="presentableId" value="LOCAL-01682" />
+      <option name="project" value="LOCAL" />
+      <updated>1760949317942</updated>
+    </task>
+    <task id="LOCAL-01683" summary="PrefabEntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1760949589897</created>
+      <option name="number" value="01683" />
+      <option name="presentableId" value="LOCAL-01683" />
+      <option name="project" value="LOCAL" />
+      <updated>1760949589897</updated>
+    </task>
+    <task id="LOCAL-01684" summary="SceneEntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1760949715781</created>
+      <option name="number" value="01684" />
+      <option name="presentableId" value="LOCAL-01684" />
+      <option name="project" value="LOCAL" />
+      <updated>1760949715781</updated>
+    </task>
+    <option name="localTasksCounter" value="1685" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +671,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="MultiEntityFactory.md" />
     <MESSAGE value="MultiEntityFactory`1.md" />
     <MESSAGE value="ScriptableMultiEntityFactory.md" />
     <MESSAGE value="ScriptableMultiEntityFactory`1.md" />
@@ -694,9 +693,10 @@
     <MESSAGE value="IPrefabEntityPool.md" />
     <MESSAGE value="IPrefabEntityPool`1.md" />
     <MESSAGE value="PrefabEntityPool.md" />
-    <MESSAGE value="PrefabEntityPool`1.md" />
     <MESSAGE value="SceneEntityPool.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool.md" />
+    <MESSAGE value="PrefabEntityPool`1.md" />
+    <MESSAGE value="SceneEntityPool`1.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="SceneEntityPool`1.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
