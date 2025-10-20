@@ -33,7 +33,7 @@ inference is not needed.
 
 ## 🗂 Example of Usage
 
-#### 1. Add `PrefabEntityPool` component to a GameObject
+#### 1. Add `Atomic/Entities/PrefabEntityPool` component to a GameObject
 
 <img width="400" height="" alt="Entity component" src="../../Images/PrefabEntityPool.png" />
 

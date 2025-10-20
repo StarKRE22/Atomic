@@ -1,18 +1,89 @@
 # 🧩 SceneEntityPool
 
+A non-generic version of [SceneEntityPool\<E>](SceneEntityPool%601.md) that operates on
+base [SceneEntity](../Entities/SceneEntity.md) types. They are designed to **pre-instantiate entities**, **reuse them
+efficiently**, and handle **activation / deactivation** automatically. Useful when you want a simple scene-bound entity
+pool without specifying a generic type.
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Usage](#ex1)
+    - [Runtime Creation](#ex2)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Rent()](#rent)
+        - [Return(IEntity)](#returnientity)
+        - [Init(int)](#initint)
+        - [Dispose()](#dispose)
+        - [OnCreate(SceneEntity)](#oncreatesceneentity)
+        - [OnDispose(SceneEntity)](#ondisposesceneentity)
+        - [OnRent(SceneEntity)](#onrentsceneentity)
+        - [OnReturn(SceneEntity)](#onreturnsceneentity)
+        - [Awake()](#awake)
+        - [Reset()](#reset)
+        - [Create(CreateArgs)](#createcreateargs)
+        - [Destroy(SceneEntityPool, float)](#destroysceneentitypool-float)
+    - [Nested Types](#-nested-types)
+        - [CreateArgs](#createargs)
+
+---
+
+## 🗂 Examples of Usage
+
+Below are examples of using the non-generic `SceneEntityPool` for scene entities:
+
+---
+
+
+<div id="ex1"></div>
+
+### 1️⃣ Basic Usage
+
+#### 1. Add `Atomic/Entities/EntityPool` component to GameObject and configure it
+
+<img width="400" height="" alt="Entity component" src="../../Images/EntityPool.png" />
+
+#### 2. Usage in a project
+
 ```csharp
-[AddComponentMenu("Atomic/Entities/Entity Pool")]
-[DisallowMultipleComponent]
-public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
+SceneEntity enemyPool = ...;
+
+ // Rent entities
+SceneEntity enemy1 = enemyPool.Rent();
+SceneEntity enemy2 = enemyPool.Rent();
+
+// Return entities to the pool
+enemyPool.Return(enemy1);
+enemyPool.Return(enemy2);
 ```
 
-- **Description:** A non-generic version of `SceneEntityPool<E>` that operates on
-  base [SceneEntity](../Entities/SceneEntity.md) types. They are designed to **pre-instantiate entities**, **reuse them
-  efficiently**, and handle **activation / deactivation**
-  automatically.
-- **Inheritance:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [IEntityPool](IEntityPool.md)
-- **Note:** Useful when you want a simple scene-bound entity pool without specifying a generic type.
-- **See also:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [SceneEntity](../Entities/SceneEntity.md)
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Runtime Creation
+
+```csharp
+var poolArgs = new SceneEntityPool.CreateArgs
+{
+    name = "EnemyPool",
+    prefab = enemyPrefab,
+    container = parentTransform,
+    initOnAwake = true,
+    initialCount = 10
+};
+
+// Create a new pool
+var enemyPool = SceneEntityPool.Create(in poolArgs);
+
+// Destroy pool
+SceneEntityPool.Destroy(enemyPool);
+```
 
 ---
 
@@ -27,7 +98,22 @@ public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
 
 ---
 
-## 🏹 Public Methods
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[AddComponentMenu("Atomic/Entities/Entity Pool")]
+[DisallowMultipleComponent]
+public class SceneEntityPool : SceneEntityPool<SceneEntity>, IEntityPool
+```
+
+- **Inheritance:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [IEntityPool](IEntityPool.md)
+- **See also:** [SceneEntityPool\<E>](SceneEntityPool%601.md), [SceneEntity](../Entities/SceneEntity.md)
+
+---
+
+### 🏹 Methods
 
 #### `Rent()`
 
@@ -48,7 +134,7 @@ public void Return(IEntity entity);
 - **Parameter:** `entity` — Must be castable to `SceneEntity`.
 - **Note:** Wraps the generic `Return(SceneEntity)` method.
 
-#### `Init(int initialCount)`
+#### `Init(int)`
 
 ```csharp
 public void Init(int initialCount);
@@ -67,7 +153,7 @@ public virtual void Dispose();
 - **Description:** Disposes all pooled and rented entities, destroying their GameObjects and clearing internal
   collections.
 
-#### `OnCreate(SceneEntity entity)`
+#### `OnCreate(SceneEntity)`
 
 ```csharp
 protected virtual void OnCreate(SceneEntity entity);
@@ -76,7 +162,7 @@ protected virtual void OnCreate(SceneEntity entity);
 - **Description:** Called when a new entity instance is created.
 - **Default Behavior:** Deactivates the entity GameObject.
 
-#### `OnDispose(SceneEntity entity)`
+#### `OnDispose(SceneEntity)`
 
 ```csharp
 protected virtual void OnDispose(SceneEntity entity);
@@ -85,7 +171,7 @@ protected virtual void OnDispose(SceneEntity entity);
 - **Description:** Called when an entity is permanently destroyed during disposal.
 - **Default Behavior:** Empty; override for cleanup.
 
-#### `OnRent(SceneEntity entity)`
+#### `OnRent(SceneEntity)`
 
 ```csharp
 protected virtual void OnRent(SceneEntity entity);
@@ -94,7 +180,7 @@ protected virtual void OnRent(SceneEntity entity);
 - **Description:** Called when an entity is rented from the pool.
 - **Default Behavior:** Activates the entity GameObject.
 
-#### `OnReturn(SceneEntity entity)`
+#### `OnReturn(SceneEntity)`
 
 ```csharp
 protected virtual void OnReturn(SceneEntity entity);
@@ -120,10 +206,6 @@ protected virtual void Reset();
 
 - **Description:** Unity callback in the Editor to reset the `_container` to the pool's GameObject transform.
 
----
-
-## 🏹 Static Methods
-
 #### `Create(CreateArgs)`
 
 ```csharp
@@ -134,7 +216,7 @@ public static SceneEntityPool Create(in CreateArgs args) => Create<SceneEntityPo
 - **Parameter:** `args` — Initialization parameters encapsulated in `CreateArgs`.
 - **Returns:** A newly created `SceneEntityPool` attached to a new GameObject.
 
-#### `Destroy(SceneEntityPool, float t = 0)`
+#### `Destroy(SceneEntityPool, float)`
 
 ```csharp
 public static void Destroy(SceneEntityPool pool, float t = 0);
@@ -146,7 +228,7 @@ public static void Destroy(SceneEntityPool pool, float t = 0);
 
 ---
 
-## 🧩 Nested Types
+### 🧩 Nested Types
 
 #### `CreateArgs`
 
@@ -157,55 +239,8 @@ public struct CreateArgs
 
 - **Description:** Arguments for creating a new `SceneEntityPool<E>`.
 - **Fields:**
-  - `name` — Name of the GameObject hosting the pool.
-  - `prefab` — Prefab used to instantiate entities.
-  - `container` — Optional parent transform.
-  - `initOnAwake` — Whether to auto-initialize in `Awake()`.
-  - `initialCount` — Number of entities to pre-instantiate.
-
----
-
-## 🗂 Examples of Usage
-
-Below are examples of using the non-generic `SceneEntityPool` for scene entities:
-
----
-
-### 1️⃣ Basic Usage
-
-#### 1. Add `SceneEntityPool` component to GameObject and configure it
-
-#### 2. Use `SceneEntityPool`
-
-```csharp
-SceneEntity enemyPool = ...;
-
- // Rent entities
-SceneEntity enemy1 = enemyPool.Rent();
-SceneEntity enemy2 = enemyPool.Rent();
-
-// Return entities to the pool
-enemyPool.Return(enemy1);
-enemyPool.Return(enemy2);
-```
-
----
-
-### 2️⃣ Dynamic Usage
-
-```csharp
-var poolArgs = new SceneEntityPool.CreateArgs
-{
-    name = "EnemyPool",
-    prefab = enemyPrefab,
-    container = parentTransform,
-    initOnAwake = true,
-    initialCount = 10
-};
-
-// Create a new pool
-var enemyPool = SceneEntityPool.Create(in poolArgs);
-
-// Destroy pool
-SceneEntityPool.Destroy(enemyPool);
-```
+    - `name` — Name of the GameObject hosting the pool.
+    - `prefab` — Prefab used to instantiate entities.
+    - `container` — Optional parent transform.
+    - `initOnAwake` — Whether to auto-initialize in `Awake()`.
+    - `initialCount` — Number of entities to pre-instantiate.
