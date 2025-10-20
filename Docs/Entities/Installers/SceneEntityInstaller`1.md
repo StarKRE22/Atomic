@@ -1,58 +1,33 @@
-#  🧩 SceneEntityInstaller&lt;E&gt;
+# 🧩 SceneEntityInstaller&lt;E&gt;
 
-```csharp
-public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> 
-    where E : class, IEntity
-```
-
-- **Description:** Strongly-typed variant of `SceneEntityInstaller`
-- **Type Parameter:** `E` – The specific type of [IEntity](../Entities/IEntity.md) this installer operates on.
-- **Inheritance:** [SceneEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
-- **Notes:** Eliminates the need for manual casting in derived installer classes.
-- **See also:** [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md)
+Strongly-typed variant of [SceneEntityInstaller](SceneEntityInstaller.md). Eliminates the need for manual casting in
+derived installer classes.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
 
-#### `Install(E entity)`
-
-```csharp
-public abstract void Install(E entity);
-```
-
-- **Description:** Installs data, values, or behaviors into the strongly-typed entity.
-- **Parameters:** `entity` – The entity of type `E` to install configuration or components into.
-- **Remarks:** Must be implemented by derived classes.
-
-#### `Uninstall(E entity)`
-
-```csharp
-public virtual void Uninstall(E entity);
-```
-
-- **Description:** Removes previously installed data or behavior from the strongly-typed entity.
-- **Parameters:** `entity` – The entity of type `E` to uninstall configuration, components, or behavior from.
-- **Remarks:** Default implementation does nothing. Override to provide custom uninstall behavior.
-
-#### `OnValidate()`
-
-```csharp
-protected virtual void OnValidate();
-```
-
-- **Description:** Called by Unity when the component is modified in the Inspector.
-- **Note:** Runs only in the Unity Editor; does not execute at runtime.
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Install(E)](#installe)
+        - [Uninstall(E)](#uninstalle)
+        - [OnValidate()](#onvalidate)
 
 ---
 
 ## 🗂 Example of Usage
+
+Assume we have a concrete type of entity
 
 ```csharp
 public sealed class UnitEntity : SceneEntity
 {
 }
 ```
+
+Create a `MonoBehaviour` installer for `UnitEntity`
 
 ```csharp
 public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
@@ -74,4 +49,51 @@ public sealed class CharacterInstaller : SceneEntityInstaller<UnitEntity>
 }
 ```
 
-> Note: Using the generic `UnitEntity` version allows type-safe access to entity-specific properties without casting.
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class SceneEntityInstaller<E> : SceneEntityInstaller, IEntityInstaller<E> 
+    where E : class, IEntity
+```
+
+- **Type Parameter:** `E` – The specific type of [IEntity](../Entities/IEntity.md) this installer operates on.
+- **Inheritance:
+  ** [SceneEntityInstaller](SceneEntityInstaller.md), [IEntityInstaller&lt;E&gt;](IEntityInstaller%601.md).
+- **See also:** [ScriptableEntityInstaller&lt;E&gt;](ScriptableEntityInstaller%601.md)
+
+---
+
+### 🏹 Methods
+
+#### `Install(E)`
+
+```csharp
+public abstract void Install(E entity);
+```
+
+- **Description:** Installs data, values, or behaviors into the strongly-typed entity.
+- **Parameters:** `entity` – The entity of type `E` to install configuration or components into.
+- **Remarks:** Must be implemented by derived classes.
+
+#### `Uninstall(E)`
+
+```csharp
+public virtual void Uninstall(E entity);
+```
+
+- **Description:** Removes previously installed data or behavior from the strongly-typed entity.
+- **Parameters:** `entity` – The entity of type `E` to uninstall configuration, components, or behavior from.
+- **Remarks:** Default implementation does nothing. Override to provide custom uninstall behavior.
+
+#### `OnValidate()`
+
+```csharp
+protected virtual void OnValidate();
+```
+
+- **Description:** Called by Unity when the component is modified in the Inspector.
+- **Note:** Runs only in the Unity Editor; does not execute at runtime.
