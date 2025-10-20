@@ -1,14 +1,60 @@
 # 🧩 PrefabEntityPool\<E>
 
+A **multi-prefab object pool** for scene-based entities of type `E`. Allows renting and returning multiple different
+entity prefabs, each tracked by its own internal pool. Pools are created lazily and managed by prefab name. Supports
+pre-warming via `Init`.
+
+---
+
+## 🗂 Example of Usage
+
+#### 1. Assume we have `EnemyEntity` type
+
 ```csharp
-public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
+public class EnemyEntity : SceneEntity
+{
+}
 ```
 
-- **Description:** A **multi-prefab object pool** for scene-based entities of type `E`.  
-  Allows renting and returning multiple different entity prefabs, each tracked by its own internal pool.  
-  Pools are created lazily and managed by prefab name. Supports pre-warming via `Init`.
-- **Type Parameter:** `E` — The type of [SceneEntity](../Entities/SceneEntity.md) managed by the pool.
-- **Inheritance:** `MonoBehaviour`, [IPrefabEntityPool\<E>](IPrefabEntityPool%601.md)
+#### 2. Create `EnemyPrefabPool`
+
+```csharp
+public sealed class EnemyPrefabPool : PrefabEntityPool<EnemyEntity> 
+{
+}
+```
+
+#### 3. Add `EnemyPrefabPool` component to a GameObject and configure it
+
+<img width="400" height="" alt="Entity component" src="../../Images/EnemyPrefabPool.png" />
+
+
+#### 4. Use `EnemyPrefabPool` in your code
+
+```csharp
+// Assume we have a PrefabEntityPool instance
+EnemyPrefabPool pool = ...;
+
+// Pre-initialize pools
+pool.Init(orcPrefab, 5);
+pool.Init(goblinPrefab, 3);
+
+// Rent entities
+EnemyEntity orc = pool.Rent(orcPrefab);
+EnemyEntity goblin = pool.Rent(goblinPrefab, parentTransform);
+EnemyEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
+
+// Return entities to the pool
+pool.Return(orc);
+pool.Return(goblin);
+pool.Return(troll);
+
+// Clear a specific prefab pool
+pool.Dispose(orcPrefab);
+
+// Clear all pools
+pool.Dispose();
+```
 
 ---
 
@@ -21,7 +67,20 @@ public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> 
 
 ---
 
-## 🏹 Methods
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class PrefabEntityPool<E> : MonoBehaviour, IPrefabEntityPool<E> where E : SceneEntity
+```
+
+- **Type Parameter:** `E` — The type of [SceneEntity](../Entities/SceneEntity.md) managed by the pool.
+- **Inheritance:** `MonoBehaviour`, [IPrefabEntityPool\<E>](IPrefabEntityPool%601.md)
+
+---
+
+### 🏹 Methods
 
 #### `Awake()`
 
@@ -30,8 +89,6 @@ protected virtual void Awake();
 ```
 
 - **Description:** Initializes `container` if null and applies `DontDestroyOnLoad` if `dontDestroyOnLoad` is true.
-
----
 
 #### `Init(E, int)`
 
@@ -145,51 +202,3 @@ protected virtual string GetEntityName(E entity);
 
 - **Description:** Extracts a clean name from a prefab or entity, stripping Unity-generated suffixes like `(1)`.
 - **Returns:** The cleaned name used as a key for pooling.
-
----
-
-## 🗂 Example of Usage
-
-#### 1. Assume we have `EnemyEntity` type
-
-```csharp
-public class EnemyEntity : SceneEntity
-{
-}
-```
-
-#### 2. Create `EnemyPrefabPool`
-```csharp
-public sealed class EnemyPrefabPool : PrefabEntityPool<EnemyEntity> 
-{
-}
-```
-
-#### 3. Add `EnemyPrefabPool` component to a GameObject and configure it
-
-#### 4. Use `EnemyPrefabPool` in your code
-
-```csharp
-// Assume we have a PrefabEntityPool instance
-EnemyPrefabPool pool = ...;
-
-// Pre-initialize pools
-pool.Init(orcPrefab, 5);
-pool.Init(goblinPrefab, 3);
-
-// Rent entities
-EnemyEntity orc = pool.Rent(orcPrefab);
-EnemyEntity goblin = pool.Rent(goblinPrefab, parentTransform);
-EnemyEntity troll = pool.Rent(trollPrefab, new Vector3(0,0,0), Quaternion.identity, parentTransform);
-
-// Return entities to the pool
-pool.Return(orc);
-pool.Return(goblin);
-pool.Return(troll);
-
-// Clear a specific prefab pool
-pool.Dispose(orcPrefab);
-
-// Clear all pools
-pool.Dispose();
-```

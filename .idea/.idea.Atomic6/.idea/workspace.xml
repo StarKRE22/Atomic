@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/IPrefabEntityPool.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPrefabPool.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/EnemyPrefabPool.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool`1.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Pooling/PrefabEntityPool`1.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,9 +53,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameEntity/Content/Units/Tank/TankViewAspect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Array/IReadOnlyReactiveArray.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Collections/Dictionary/ReactiveDictionary.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
@@ -250,31 +252,7 @@
       <workItem from="1760891881967" duration="539000" />
       <workItem from="1760892435581" duration="435000" />
       <workItem from="1760892887411" duration="11999000" />
-      <workItem from="1760942068732" duration="3599000" />
-    </task>
-    <task id="LOCAL-01627" summary="Minor Fixes!">
-      <option name="closed" value="true" />
-      <created>1760733182033</created>
-      <option name="number" value="01627" />
-      <option name="presentableId" value="LOCAL-01627" />
-      <option name="project" value="LOCAL" />
-      <updated>1760733182033</updated>
-    </task>
-    <task id="LOCAL-01628" summary="InlineEntityTriggers.md">
-      <option name="closed" value="true" />
-      <created>1760733543169</created>
-      <option name="number" value="01628" />
-      <option name="presentableId" value="LOCAL-01628" />
-      <option name="project" value="LOCAL" />
-      <updated>1760733543169</updated>
-    </task>
-    <task id="LOCAL-01629" summary="InlineEntityTrigger.md">
-      <option name="closed" value="true" />
-      <created>1760733760450</created>
-      <option name="number" value="01629" />
-      <option name="presentableId" value="LOCAL-01629" />
-      <option name="project" value="LOCAL" />
-      <updated>1760733760451</updated>
+      <workItem from="1760942068732" duration="6298000" />
     </task>
     <task id="LOCAL-01630" summary="InlineEntityTrigger`1.md">
       <option name="closed" value="true" />
@@ -644,7 +622,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760945624856</updated>
     </task>
-    <option name="localTasksCounter" value="1676" />
+    <task id="LOCAL-01676" summary="IPrefabEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760945791134</created>
+      <option name="number" value="01676" />
+      <option name="presentableId" value="LOCAL-01676" />
+      <option name="project" value="LOCAL" />
+      <updated>1760945791134</updated>
+    </task>
+    <task id="LOCAL-01677" summary="IPrefabEntityPool`1.md">
+      <option name="closed" value="true" />
+      <created>1760946015904</created>
+      <option name="number" value="01677" />
+      <option name="presentableId" value="LOCAL-01677" />
+      <option name="project" value="LOCAL" />
+      <updated>1760946015904</updated>
+    </task>
+    <task id="LOCAL-01678" summary="PrefabEntityPool.md">
+      <option name="closed" value="true" />
+      <created>1760947267412</created>
+      <option name="number" value="01678" />
+      <option name="presentableId" value="LOCAL-01678" />
+      <option name="project" value="LOCAL" />
+      <updated>1760947267412</updated>
+    </task>
+    <option name="localTasksCounter" value="1679" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,9 +673,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ScriptableEntityFactory.md" />
-    <MESSAGE value="InlineEntityFactory.md" />
-    <MESSAGE value="InlineEntityFactory`1.md" />
     <MESSAGE value="IMultiEntityFactory.md" />
     <MESSAGE value="IMultiEntityFactory`1.md" />
     <MESSAGE value="MultiEntityFactory.md" />
@@ -696,7 +695,10 @@
     <MESSAGE value="IMultiEntityPool`1.md" />
     <MESSAGE value="MultiEntityPool.md" />
     <MESSAGE value="MultiEntityPool`1.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="MultiEntityPool`1.md" />
+    <MESSAGE value="IPrefabEntityPool.md" />
+    <MESSAGE value="IPrefabEntityPool`1.md" />
+    <MESSAGE value="PrefabEntityPool.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="PrefabEntityPool.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
