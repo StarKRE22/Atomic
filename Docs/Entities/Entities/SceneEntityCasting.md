@@ -1,10 +1,95 @@
 # 🧩 SceneEntity Casting
 
-Provides methods for safe casting between <code>IEntity</code> and <code>SceneEntity</code>.
+Provides methods for safe casting between [IEntity](IEntity.md) and [SceneEntity](SceneEntity.md).
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+  - [Simple cast to SceneEntity](#ex1)
+  - [Generic cast to a specific SceneEntity type](#ex2)
+  - [Safe cast using TryCast](#ex3)
+  - [Safe generic cast using TryCast\<E>](#ex4)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Static Methods](#-static-methods)
+    - [Cast(IEntity)](#castientity)
+    - [Cast<E>(IEntity)](#casteientity)
+    - [TryCast(IEntity, out SceneEntity)](#trycastientity-out-sceneentity)
+    - [TryCast<E>(IEntity, out E)](#trycasteientity-out-e)
+
+
+---
+
+## 🗂 Examples of Usage
+
+<div id="ex1"></div>
+
+### 1️⃣ Simple cast to SceneEntity
+
+```csharp
+IEntity entity = GetEntityFromRegistry();
+SceneEntity sceneEntity = SceneEntity.Cast(entity);
+```
+
+> Throws an exception if `entity` is not a `SceneEntity`.
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Generic cast to a specific SceneEntity type
+
+```csharp
+IEntity entity = GetEntityFromRegistry();
+EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
+```
+
+> Throws an exception if entity is not of type `EnemyEntity` or a proxy of it.
+
+---
+
+<div id="ex3"></div>
+
+### 3️⃣ Safe cast using TryCast
+
+```csharp
+IEntity entity = GetEntityFromRegistry();
+if (SceneEntity.TryCast(entity, out SceneEntity sceneEntity))
+    Debug.Log($"Successfully casted to SceneEntity: {sceneEntity.Name}");
+else
+    Debug.LogWarning("Entity is not a SceneEntity");
+```
+
+---
+
+<div id="ex4"></div>
+
+### 4️⃣ Safe generic cast using TryCast\<E>
+
+```csharp
+IEntity entity = GetEntityFromRegistry();
+if (SceneEntity.TryCast<EnemyEntity>(entity, out EnemyEntity enemy))
+    Debug.Log($"Successfully casted to EnemyEntity: {enemy.Name}");
+else
+    Debug.LogWarning("Entity is not of type EnemyEntity");
+```
+
+---
+
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class SceneEntity
+```
+
+---
+
+### 🏹 Static Methods
 
 #### `Cast(IEntity)`
 
@@ -56,52 +141,3 @@ public static bool TryCast<E>(IEntity entity, out E result) where E : SceneEntit
     - `entity` – The entity to cast.
     - `result` – The cast result if successful; otherwise, `null`.
 - **Returns:** `true` if the cast was successful; otherwise, `false`.
-
----
-
-## 🗂 Examples of Usage
-
-### 1️⃣ Simple cast to `SceneEntity`
-
-```csharp
-IEntity entity = GetEntityFromRegistry();
-SceneEntity sceneEntity = SceneEntity.Cast(entity);
-```
-
-> Throws an exception if `entity` is not a `SceneEntity`.
-
----
-
-### 2️⃣ Generic cast to a specific `SceneEntity` type
-
-```csharp
-IEntity entity = GetEntityFromRegistry();
-EnemyEntity enemy = SceneEntity.Cast<EnemyEntity>(entity);
-```
-
-> Throws an exception if entity is not of type `EnemyEntity` or a proxy of it.
-
----
-
-### 3️⃣ Safe cast using `TryCast`
-
-```csharp
-IEntity entity = GetEntityFromRegistry();
-if (SceneEntity.TryCast(entity, out SceneEntity sceneEntity))
-    Debug.Log($"Successfully casted to SceneEntity: {sceneEntity.Name}");
-else
-    Debug.LogWarning("Entity is not a SceneEntity");
-```
-
----
-
-### 4️⃣ Safe generic cast using TryCast<E>
-
-```csharp
-IEntity entity = GetEntityFromRegistry();
-if (SceneEntity.TryCast<EnemyEntity>(entity, out EnemyEntity enemy))
-    Debug.Log($"Successfully casted to EnemyEntity: {enemy.Name}");
-else
-    Debug.LogWarning("Entity is not of type EnemyEntity");
-```
-
