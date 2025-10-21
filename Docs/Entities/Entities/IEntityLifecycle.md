@@ -39,9 +39,8 @@ per-frame updates, disabling, and disposal.
         - [LateTick(float)](#latetickfloat)
         - [Disable()](#disable)
         - [Dispose()](#dispose)
-      
+
       </details>
-       
 
 ---
 
@@ -49,31 +48,31 @@ per-frame updates, disabling, and disposal.
 
 ```csharp
 // Assume we have an instance of entity
-IEntity player = ...
+IEntity entity = ...
 
 // Subscribe to lifecycle events
-player.OnInitialized += () => Console.WriteLine("Entity initialized");
-player.OnDisposed += () => Console.WriteLine("Entity disposed");
-player.OnEnabled += () => Console.WriteLine("Entity enabled");
-player.OnDisabled += () => Console.WriteLine("Entity disabled");
-player.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
-player.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
-player.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
+entity.OnInitialized += () => Console.WriteLine("Entity initialized");
+entity.OnDisposed += () => Console.WriteLine("Entity disposed");
+entity.OnEnabled += () => Console.WriteLine("Entity enabled");
+entity.OnDisabled += () => Console.WriteLine("Entity disabled");
+entity.OnTicked += deltaTime => Console.WriteLine($"Tick: {deltaTime}");
+entity.OnFixedTicked += deltaTime => Console.WriteLine($"FixedTick: {deltaTime}");
+entity.OnLateTicked += deltaTime => Console.WriteLine($"LateTick: {deltaTime}");
 
 // Initialize and enable the entity
-player.Init();
-player.Enable();
+entity.Init();
+entity.Enable();
 
 // Simulate game loop updates
-player.Tick(0.016f);       // Update (frame)
-player.FixedTick(0.02f);   // Physics update
-player.LateTick(0.016f);   // Late update
+entity.Tick(0.016f);       // Update (frame)
+entity.FixedTick(0.02f);   // Physics update
+entity.LateTick(0.016f);   // Late update
 
 // Disable the entity
-player.Disable();
+entity.Disable();
 
 // Dispose the entity
-player.Dispose();
+entity.Dispose();
 ```
 
 ---
