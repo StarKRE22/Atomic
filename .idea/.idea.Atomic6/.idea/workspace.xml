@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,21 +125,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -275,23 +275,7 @@
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
-      <workItem from="1761030416639" duration="23563000" />
-    </task>
-    <task id="LOCAL-01732" summary="IEntityLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1760993286448</created>
-      <option name="number" value="01732" />
-      <option name="presentableId" value="LOCAL-01732" />
-      <option name="project" value="LOCAL" />
-      <updated>1760993286448</updated>
-    </task>
-    <task id="LOCAL-01733" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1761032202608</created>
-      <option name="number" value="01733" />
-      <option name="presentableId" value="LOCAL-01733" />
-      <option name="project" value="LOCAL" />
-      <updated>1761032202608</updated>
+      <workItem from="1761030416639" duration="31011000" />
     </task>
     <task id="LOCAL-01734" summary="Entity.md">
       <option name="closed" value="true" />
@@ -669,7 +653,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761057126779</updated>
     </task>
-    <option name="localTasksCounter" value="1781" />
+    <task id="LOCAL-01781" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1761065404729</created>
+      <option name="number" value="01781" />
+      <option name="presentableId" value="LOCAL-01781" />
+      <option name="project" value="LOCAL" />
+      <updated>1761065404729</updated>
+    </task>
+    <task id="LOCAL-01782" summary="EntityAPI">
+      <option name="closed" value="true" />
+      <created>1761079112027</created>
+      <option name="number" value="01782" />
+      <option name="presentableId" value="LOCAL-01782" />
+      <option name="project" value="LOCAL" />
+      <updated>1761079112027</updated>
+    </task>
+    <option name="localTasksCounter" value="1783" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,8 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityTags.md" />
-    <MESSAGE value="SceneEntityValues.md" />
     <MESSAGE value="SceneEntityBehaviours.md" />
     <MESSAGE value="SceneEntityLifecycle.md" />
     <MESSAGE value="SceneEntityInstalling.md" />
@@ -721,7 +719,9 @@
     <MESSAGE value="ExtensionsInstalling.md" />
     <MESSAGE value="ExtensionsRetrieval.mds" />
     <MESSAGE value="Done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done!" />
+    <MESSAGE value="Manual.md" />
+    <MESSAGE value="EntityAPI" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntityAPI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

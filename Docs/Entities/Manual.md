@@ -47,7 +47,7 @@ smoother and more powerful than in Unity.
 This section provides a complete reference to all major subsystems of the framework. Each module is documented with
 usage examples, lifecycle details, and integration notes to help you build, extend, and optimize your architecture.
 
-- [Entities](Entities/Manual.md) 
+- [Entities](Entities/Manual.md) <!-- + -->
 - [Behaviours](Behaviours/Manual.md) <!-- + -->
 - [Installers](Installers/Manual.md) <!-- + -->
 - [Aspects](Aspects/Manual.md) <!-- + -->
