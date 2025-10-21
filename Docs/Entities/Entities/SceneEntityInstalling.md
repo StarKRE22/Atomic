@@ -1,7 +1,68 @@
 # 🧩 SceneEntity Installing
 
-Provides API for `SceneEntity` configuration  with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
+Provides configuration for `SceneEntity` with <b>tags</b>, <b>values</b>, and <b>behaviours</b> at
 runtime or in the editor. It also manages child entities through installers, ensuring that all dependencies are properly configured and applied.
+
+---
+
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Properties](#-properties)
+    - [Installed](#installed)
+  - [Public Methods](#-public-methods)
+    - [Install()](#install)
+    - [Uninstall()](#uninstall)
+  - [Protected Methods](#-protected-methods)
+    - [OnInstall()](#oninstall)
+    - [OnUninstall()](#onuninstall)
+  - [Static Methods](#-static-methods)
+    - [InstallAll(Scene)](#installallscene)
+    - [InstallAll\<E>(Scene)](#installallescene)
+
+
+---
+
+
+## 🗂 Example of Usage
+
+Below is an example how to install `SceneEntity` and populate it wit **tags** and **values**:
+
+#### 1. Create a script that populates the entity with tags, values and behaviours
+
+ ```csharp
+public sealed class CharacterInstaller : SceneEntityInstaller
+{
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
+    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
+
+    public override void Install(IEntity entity)
+    {
+        //Add tags to a character
+        entity.AddTag("Character");
+        entity.AddTag("Moveable");
+
+        //Add properties to a character
+        entity.AddValue("Transform", _transform);
+        entity.AddValue("MoveSpeed", _moveSpeed);
+        entity.AddValue("MoveDirection", _moveDirection);
+    }
+}
+```
+
+#### 2. Attach `CharacterInstaller` script to the GameObject
+
+<img width="450" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+
+#### 3. Drag & drop `CharacterInstaller` into `installers` field of the entity
+
+<img width="450" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+
+#### 4. Now your `SceneEntity` has tags and properties.
 
 ---
 
@@ -17,7 +78,18 @@ runtime or in the editor. It also manages child entities through installers, ens
 
 ---
 
-## 🔑 Properties
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class SceneEntity
+```
+
+---
+
+### 🔑 Properties
 
 #### `Installed`
 
@@ -29,7 +101,7 @@ public bool Installed { get; }
 
 ---
 
-## 🏹 Public Methods
+### 🏹 Public Methods
 
 #### `Install()`
 
@@ -42,16 +114,6 @@ public void Install()
 - **Warnings:** Logs warnings when null references are found.
 - **Notes:** Skips null installers and null children.
 
-#### `OnInstall()`
-
-```csharp
-protected virtual void OnInstall()  
-```
-
-- **Description:** Called during the installation process of a `SceneEntity`. Provides a hook for derived classes to
-  execute custom logic when the entity is being installed.
-- **Notes:** This method is invoked by `Install()` before processing installers and child entities.
-
 #### `Uninstall()`
 
 ```csharp
@@ -62,6 +124,21 @@ public void Uninstall()
   not installed, allowing it to be reinstalled.
 - **Warnings:** Warnings are logged for null references to help debugging.
 - **Notes:** Null installers and null children are safely skipped.
+
+---
+
+### 🏹 Protected Methods
+
+#### `OnInstall()`
+
+```csharp
+protected virtual void OnInstall()  
+```
+
+- **Description:** Called during the installation process of a `SceneEntity`. Provides a hook for derived classes to
+  execute custom logic when the entity is being installed.
+- **Notes:** This method is invoked by `Install()` before processing installers and child entities.
+
 
 #### `OnUninstall()`
 
@@ -75,7 +152,7 @@ protected virtual void OnUninstall()
 
 ---
 
-## 🏹 Static Methods
+### 🏹 Static Methods
 
 There are also static methods that allow installing entities globally in a scene.
 
@@ -109,43 +186,3 @@ public static void InstallAll<E>(Scene scene) where E : SceneEntity
     - Skips entities that are already installed.
     - Null GameObjects are skipped.
     - Entities that are already installed are ignored.
-
----
-
-## 🗂 Example of Usage
-
-Below is an example how to install `SceneEntity` and populate it wit **tags** and **values**:
-
-#### 1. Create `CharacterInstaller` script
-
- ```csharp
-//Populates entity with tags, values and behaviours
-public sealed class CharacterInstaller : SceneEntityInstaller
-{
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Const<float> _moveSpeed = 5.0f; //Immutable variable
-    [SerializeField] private ReactiveVariable<Vector3> _moveDirection; //Mutable variable with subscription
-
-    public override void Install(IEntity entity)
-    {
-        //Add tags to a character
-        entity.AddTag("Character");
-        entity.AddTag("Moveable");
-
-        //Add properties to a character
-        entity.AddValue("Transform", _transform);
-        entity.AddValue("MoveSpeed", _moveSpeed);
-        entity.AddValue("MoveDirection", _moveDirection);
-    }
-}
-```
-
-#### 2. Attach `CharacterInstaller` script to the GameObject
-
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
-
-#### 3. Drag & drop `CharacterInstaller` into `installers` field of the entity
-
-<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
-
-#### 4. Now your `SceneEntity` has tags and properties.

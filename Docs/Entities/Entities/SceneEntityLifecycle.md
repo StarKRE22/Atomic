@@ -76,7 +76,7 @@ if (entity.Enabled)
 }
 ```
 
-Control if `useUnityLifecycle` toggle is disabled
+Control the `SceneEntity` manually if `useUnityLifecycle` toggle is disabled
 
 ```csharp
 // Initialize and enable the entity 
