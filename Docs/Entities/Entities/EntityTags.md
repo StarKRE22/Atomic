@@ -207,7 +207,7 @@ public int TagCount { get; }
 
 ### 🏹 Methods
 
-#### `HasTag()`
+#### `HasTag(int)`
 
 ```csharp
 public bool HasTag(int tag)
@@ -217,7 +217,7 @@ public bool HasTag(int tag)
 - **Parameter:** `tag` – The tag to check for.
 - **Returns:** `true` if the tag exists, otherwise `false`.
 
-#### `AddTag()`
+#### `AddTag(int)`
 
 ```csharp
 public bool AddTag(int tag)
@@ -228,7 +228,7 @@ public bool AddTag(int tag)
 - **Returns:** `true` if the tag was added, otherwise `false`.
 - **Triggers:** `OnTagAdded` and `OnStateChanged`
 
-#### `DelTag()`
+#### `DelTag(int)`
 
 ```csharp
 public bool DelTag(int tag)
@@ -257,7 +257,7 @@ public int[] GetTags()
 - **Description:** Returns all tag keys associated with the entity.
 - **Returns:** Array of tag keys.
 
-#### `CopyTags(int)`
+#### `CopyTags(int[])`
 
 ```csharp
 public int CopyTags(int[] results)
