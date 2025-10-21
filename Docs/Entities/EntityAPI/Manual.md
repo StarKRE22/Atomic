@@ -227,6 +227,8 @@ values:
   - Speed: float
 ```
 
+<div id="-configuration-options"></div>
+
 ### ⚙️ Configuration Options
 
 | Option                 | Description                                               | Default   |
@@ -247,6 +249,8 @@ Once ready, run
 `Tools → Atomic → Entities → Compile Entity API` to generate the extension class automatically.
 
 <img width="400" height="" alt="GameObject creation" src="../../Images/CompileEntityAPI.png" />
+
+<div id="-using-the-generated-extensions"></div>
 
 ### 🧩 Using the Generated Extensions
 
@@ -363,6 +367,8 @@ values:
 
 ---
 
+<div id="-configuration-options-1"></div>
+
 ### ⚙️ Configuration Options
 
 | Option                 | Description                                                                                   | Default   |
@@ -393,6 +399,7 @@ values:
 
 ---
 
+<div id="-using-the-generated-extensions-1"></div>
 
 ### 🧩 Using the Generated Extensions
 
