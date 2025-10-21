@@ -54,7 +54,11 @@ Below are the interfaces and classes for working with entities.
   <li><a href="SceneEntityGizmos.md">Gizmos</a></li>
   <li><a href="SceneEntityDebug.md">Debug</a></li>
   <li><a href="SceneEntityEditor.md">Editor</a></li>
-  <li><a href="SceneEntityCreation.md">Creation</a></li>
+  <li><details><summary><a href="SceneEntityCreation.md">Creation</a></summary>
+    <ul>
+        <li><a href="SceneEntityCreateArgs.md">CreateArgs</a></li>
+    </ul></details>
+  </li>
   <li><a href="SceneEntityDestruction.md">Destruction</a></li>
   <li><a href="SceneEntityCasting.md">Casting</a></li>
 </ul>
