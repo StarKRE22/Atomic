@@ -227,6 +227,8 @@ values:
   - Speed: float
 ```
 
+---
+
 <div id="-configuration-options"></div>
 
 ### ⚙️ Configuration Options
@@ -252,6 +254,8 @@ Once ready, run
 
 <div id="-using-the-generated-extensions"></div>
 
+---
+
 ### 🧩 Using the Generated Extensions
 
 After generation, you can use your strongly typed extensions like this:
@@ -275,6 +279,8 @@ entity.DelHealth();
 if (entity.TryGetHealth(out int currentHealth))
 entity.SetHealth(30);
 ```
+
+---
 
 ### 🔁 Refreshing and Configuring API Generation
 
@@ -302,13 +308,10 @@ This gives you full control over **when** and **how often** your Entity API rege
 
 This section explains how to generate **Entity extension methods** using the **Atomic Rider Plugin**.
 
----
 
 ### 📦 Installation
 
 You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
-
----
 
 #### 🛒 From JetBrains Marketplace
 
@@ -318,8 +321,6 @@ You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
 <img width="600" alt="Marketplace Plugin" src="../../Images/MarketplacePlugin.png" />
 
 > 💡 **Tip:** Restart Rider after installation to activate the plugin.
-
----
 
 #### 💾 From GitHub Repository
 
