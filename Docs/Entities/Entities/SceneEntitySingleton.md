@@ -11,7 +11,7 @@ Supports Odin Inspector
 
 - [Examples of Usage](#-examples-of-usage)
     - [Using Global Singleton](#ex1)
-    - [Resolving Singletons](ex2)
+    - [Resolving Singletons](#ex2)
 - [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
     - [Type](#-type)

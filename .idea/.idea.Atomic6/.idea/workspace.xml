@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/EntitySingleton.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxies.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntityProxies.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntitySingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/SceneEntitySingleton.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,23 +275,7 @@
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
-      <workItem from="1761030416639" duration="17438000" />
-    </task>
-    <task id="LOCAL-01719" summary="EntityView Manual">
-      <option name="closed" value="true" />
-      <created>1760989737808</created>
-      <option name="number" value="01719" />
-      <option name="presentableId" value="LOCAL-01719" />
-      <option name="project" value="LOCAL" />
-      <updated>1760989737808</updated>
-    </task>
-    <task id="LOCAL-01720" summary="Manual.md">
-      <option name="closed" value="true" />
-      <created>1760989837872</created>
-      <option name="number" value="01720" />
-      <option name="presentableId" value="LOCAL-01720" />
-      <option name="project" value="LOCAL" />
-      <updated>1760989837872</updated>
+      <workItem from="1761030416639" duration="18143000" />
     </task>
     <task id="LOCAL-01721" summary="IEntity.md">
       <option name="closed" value="true" />
@@ -670,7 +653,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761052981801</updated>
     </task>
-    <option name="localTasksCounter" value="1768" />
+    <task id="LOCAL-01768" summary="EntitySingleton.md">
+      <option name="closed" value="true" />
+      <created>1761054270992</created>
+      <option name="number" value="01768" />
+      <option name="presentableId" value="LOCAL-01768" />
+      <option name="project" value="LOCAL" />
+      <updated>1761054270992</updated>
+    </task>
+    <task id="LOCAL-01769" summary="EntitySingleton.md">
+      <option name="closed" value="true" />
+      <created>1761054335271</created>
+      <option name="number" value="01769" />
+      <option name="presentableId" value="LOCAL-01769" />
+      <option name="project" value="LOCAL" />
+      <updated>1761054335271</updated>
+    </task>
+    <option name="localTasksCounter" value="1770" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -697,7 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Entity.md" />
     <MESSAGE value="EntityCore.md" />
     <MESSAGE value="EntityTags.md" />
     <MESSAGE value="EntityValues.md" />
@@ -722,7 +720,8 @@
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="SceneEntityProxies.md" />
     <MESSAGE value="Entities Manual.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Entities Manual.md" />
+    <MESSAGE value="EntitySingleton.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="EntitySingleton.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
