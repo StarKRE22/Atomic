@@ -348,6 +348,8 @@ in microseconds (μs).
 
 ---
 
+<div id="-tags"></div>
+
 ### 🏷️ Tags
 
 Tags are implemented as a **HashSet of integers**, optimized for fast lookups, additions, and removals.
@@ -363,6 +365,8 @@ Tags are implemented as a **HashSet of integers**, optimized for fast lookups, a
 > Tags are extremely lightweight and provide **O(1) average time complexity** for key operations.
 
 ---
+
+<div id="-values"></div>
 
 ### 🔑 Values
 
@@ -387,6 +391,8 @@ unsafe references for high performance.
 > Values provide flexible access patterns with **minimal overhead**, especially for primitives and unsafe references.
 
 ---
+
+<div id="-behaviours"></div>
 
 ### ⚙️ Behaviours
 

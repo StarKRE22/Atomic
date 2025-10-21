@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsInstalling.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsInstalling.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/Manual.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,39 +275,7 @@
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
-      <workItem from="1761030416639" duration="18877000" />
-    </task>
-    <task id="LOCAL-01728" summary="IEntityLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1760992510152</created>
-      <option name="number" value="01728" />
-      <option name="presentableId" value="LOCAL-01728" />
-      <option name="project" value="LOCAL" />
-      <updated>1760992510152</updated>
-    </task>
-    <task id="LOCAL-01729" summary="IEntityTags.md">
-      <option name="closed" value="true" />
-      <created>1760992778372</created>
-      <option name="number" value="01729" />
-      <option name="presentableId" value="LOCAL-01729" />
-      <option name="project" value="LOCAL" />
-      <updated>1760992778372</updated>
-    </task>
-    <task id="LOCAL-01730" summary="IEntityValues.md">
-      <option name="closed" value="true" />
-      <created>1760992994792</created>
-      <option name="number" value="01730" />
-      <option name="presentableId" value="LOCAL-01730" />
-      <option name="project" value="LOCAL" />
-      <updated>1760992994792</updated>
-    </task>
-    <task id="LOCAL-01731" summary="IEntityBehaviours.md">
-      <option name="closed" value="true" />
-      <created>1760993136413</created>
-      <option name="number" value="01731" />
-      <option name="presentableId" value="LOCAL-01731" />
-      <option name="project" value="LOCAL" />
-      <updated>1760993136413</updated>
+      <workItem from="1761030416639" duration="23563000" />
     </task>
     <task id="LOCAL-01732" summary="IEntityLifecycle.md">
       <option name="closed" value="true" />
@@ -668,7 +637,39 @@
       <option name="project" value="LOCAL" />
       <updated>1761055598444</updated>
     </task>
-    <option name="localTasksCounter" value="1777" />
+    <task id="LOCAL-01777" summary="ExtensionsInstalling.md">
+      <option name="closed" value="true" />
+      <created>1761055716899</created>
+      <option name="number" value="01777" />
+      <option name="presentableId" value="LOCAL-01777" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055716899</updated>
+    </task>
+    <task id="LOCAL-01778" summary="ExtensionsInstalling.md">
+      <option name="closed" value="true" />
+      <created>1761055754399</created>
+      <option name="number" value="01778" />
+      <option name="presentableId" value="LOCAL-01778" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055754399</updated>
+    </task>
+    <task id="LOCAL-01779" summary="ExtensionsRetrieval.mds">
+      <option name="closed" value="true" />
+      <created>1761055859297</created>
+      <option name="number" value="01779" />
+      <option name="presentableId" value="LOCAL-01779" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055859297</updated>
+    </task>
+    <task id="LOCAL-01780" summary="Done!">
+      <option name="closed" value="true" />
+      <created>1761057126779</created>
+      <option name="number" value="01780" />
+      <option name="presentableId" value="LOCAL-01780" />
+      <option name="project" value="LOCAL" />
+      <updated>1761057126779</updated>
+    </task>
+    <option name="localTasksCounter" value="1781" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,9 +696,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityDebug.md" />
-    <MESSAGE value="SceneEntity.md" />
-    <MESSAGE value="SceneEntityCore.md" />
     <MESSAGE value="SceneEntityTags.md" />
     <MESSAGE value="SceneEntityValues.md" />
     <MESSAGE value="SceneEntityBehaviours.md" />
@@ -720,7 +718,10 @@
     <MESSAGE value="ExtensionsTags.md" />
     <MESSAGE value="ExtensionsValues.md" />
     <MESSAGE value="ExtensionsBehaviours.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsBehaviours.md" />
+    <MESSAGE value="ExtensionsInstalling.md" />
+    <MESSAGE value="ExtensionsRetrieval.mds" />
+    <MESSAGE value="Done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
