@@ -105,6 +105,8 @@ entity.Dispose();
 
 <div id="ex2"></div>
 
+---
+
 ### 2️⃣ SceneEntity
 
 Below is the process for quickly creating a character entity in Unity
@@ -184,6 +186,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 <div id="ex3"></div>
 
+---
+
 ### 3️⃣ SceneEntityProxy
 
 1. Add a **Collider** component to the **child GameObject**.  
@@ -198,6 +202,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 
 4. Now, whenever another collider interacts with this child collider, you can easily retrieve the parent entity.
+
+---
 
 <div id="ex4"></div>
 
