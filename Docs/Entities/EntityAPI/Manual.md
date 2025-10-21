@@ -338,6 +338,9 @@ You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
 1. Right-click on your **project folder** in Rider
 2. Select `New → Atomic File`
 
+<img width="400" alt="Manual Install Plugin" src="../../Images/CreateAtomicFile.png" />
+
+
 This creates an `.atomic` configuration file for **Entity API generation**:
 
 ```yaml
@@ -432,6 +435,8 @@ entity.SetHealth(30);
 
 Access plugin settings via:  
 `File → Settings → Tools → Atomic Plugin`
+
+<img width="800" alt="Manual Install Plugin" src="../../Images/AtomicPluginSettings.png" />
 
 - **Auto-generate:** Enable/disable automatic regeneration
 - **Debounce delay:** Set delay before auto-generation (ms)

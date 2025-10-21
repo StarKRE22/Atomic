@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/ApiGeneration.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_ApiGeneration.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Codegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Codegen.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_PluginCodegen.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Problem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Problem.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/UnityCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_UnityCodegen.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,21 +124,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.rider.plugins.atomic.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -282,39 +275,8 @@
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
       <workItem from="1761030416639" duration="31525000" />
-      <workItem from="1761080165376" duration="1341000" />
-    </task>
-    <task id="LOCAL-01735" summary="EntityCore.md">
-      <option name="closed" value="true" />
-      <created>1761032868996</created>
-      <option name="number" value="01735" />
-      <option name="presentableId" value="LOCAL-01735" />
-      <option name="project" value="LOCAL" />
-      <updated>1761032868996</updated>
-    </task>
-    <task id="LOCAL-01736" summary="EntityCore.md">
-      <option name="closed" value="true" />
-      <created>1761032941949</created>
-      <option name="number" value="01736" />
-      <option name="presentableId" value="LOCAL-01736" />
-      <option name="project" value="LOCAL" />
-      <updated>1761032941949</updated>
-    </task>
-    <task id="LOCAL-01737" summary="EntityCore.md">
-      <option name="closed" value="true" />
-      <created>1761033011169</created>
-      <option name="number" value="01737" />
-      <option name="presentableId" value="LOCAL-01737" />
-      <option name="project" value="LOCAL" />
-      <updated>1761033011169</updated>
-    </task>
-    <task id="LOCAL-01738" summary="EntityTags.md">
-      <option name="closed" value="true" />
-      <created>1761033287284</created>
-      <option name="number" value="01738" />
-      <option name="presentableId" value="LOCAL-01738" />
-      <option name="project" value="LOCAL" />
-      <updated>1761033287284</updated>
+      <workItem from="1761080165376" duration="1800000" />
+      <workItem from="1761081982604" duration="56000" />
     </task>
     <task id="LOCAL-01739" summary="EntityTags.md">
       <option name="closed" value="true" />
@@ -676,7 +638,39 @@
       <option name="project" value="LOCAL" />
       <updated>1761079651100</updated>
     </task>
-    <option name="localTasksCounter" value="1784" />
+    <task id="LOCAL-01784" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1761081515812</created>
+      <option name="number" value="01784" />
+      <option name="presentableId" value="LOCAL-01784" />
+      <option name="project" value="LOCAL" />
+      <updated>1761081515812</updated>
+    </task>
+    <task id="LOCAL-01785" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1761081605535</created>
+      <option name="number" value="01785" />
+      <option name="presentableId" value="LOCAL-01785" />
+      <option name="project" value="LOCAL" />
+      <updated>1761081605535</updated>
+    </task>
+    <task id="LOCAL-01786" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1761081735043</created>
+      <option name="number" value="01786" />
+      <option name="presentableId" value="LOCAL-01786" />
+      <option name="project" value="LOCAL" />
+      <updated>1761081735043</updated>
+    </task>
+    <task id="LOCAL-01787" summary="Manual.md">
+      <option name="closed" value="true" />
+      <created>1761081862751</created>
+      <option name="number" value="01787" />
+      <option name="presentableId" value="LOCAL-01787" />
+      <option name="project" value="LOCAL" />
+      <updated>1761081862751</updated>
+    </task>
+    <option name="localTasksCounter" value="1788" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,10 +719,10 @@
     <MESSAGE value="ExtensionsInstalling.md" />
     <MESSAGE value="ExtensionsRetrieval.mds" />
     <MESSAGE value="Done!" />
-    <MESSAGE value="Manual.md" />
     <MESSAGE value="EntityAPI" />
     <MESSAGE value="API Generation!" />
-    <option name="LAST_COMMIT_MESSAGE" value="API Generation!" />
+    <MESSAGE value="Manual.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Manual.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

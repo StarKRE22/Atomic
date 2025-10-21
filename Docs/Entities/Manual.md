@@ -62,7 +62,7 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 - [Lifecycle](Lifecycle/Manual.md) <!-- + -->
 - [Views](UI/Manual.md) <!-- + -->
 - [Names](Names/Manual.md) <!-- + -->
-- [API Generation](EntityAPI/Manual.md)
+- [API Generation](EntityAPI/Manual.md) <!-- + -->
 
 ---
 
