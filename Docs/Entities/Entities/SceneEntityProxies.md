@@ -77,7 +77,7 @@ public class SomeTrigger : MonoBehaviour
 There are both generic and non-generic versions of proxies.
 
 - [SceneEntityProxy](SceneEntityProxy.md)
-- [SceneEntityProxy&lt;T&gt;](SceneEntityProxy%601.md)
+- [SceneEntityProxy&lt;E&gt;](SceneEntityProxy%601.md)
 
 ---
 

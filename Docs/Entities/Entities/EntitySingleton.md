@@ -1,23 +1,193 @@
 # 🧩 EntitySingleton&lt;E&gt;
 
+Represents an abstract class for **singleton entities**. Ensures a single globally accessible entity
+of type `E`. Combines two patterns — **Entity-State-Behaviour**
+and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
+
+---
+
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Basic Usage](#ex1)
+    - [Using entity factory](#ex2)
+    - [Resetting singleton](#ex3)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Constructors](#-constructors)
+        - [String-keyed Constructor](#string-keyed-constructor)
+        - [Int-keyed Constructor](#int-keyed-constructor)
+        - [Capacity-based Constructor](#capacity-based-constructor)
+    - [Static Properties](#-static-properties)
+        - [Instance](#instance)
+    - [Static Methods](#-static-methods)
+        - [SetFactory(IEntityFactory<E>)](#setfactoryientityfactorye)
+        - [DisposeInstance()](#disposeinstance)
+        - [ResetInstance()](#resetinstance)
+- [Notes](#-notes)
+
+---
+
+## 🗂 Examples of Usage
+
+Below are examples of using `EntitySingleton`:
+
+<div id="ex1"></div>
+
+### 1️⃣ Basic Usage
+
+1. Create a specific type of singleton entity
+
+```csharp
+public class GameContext : EntitySingleton<GameContext>
+{
+}
+```
+
+2. Use singleton in your project
+
+```csharp
+// Get global instance
+GameContext context = GameContext.Instance;
+
+// Use as usual entity
+context.AddValue("Score", 42);
+context.AddBehaviour<EnemySpawnBehaviour>();
+context.Init();
+```
+
+---
+
+<div id="ex2"></div>
+
+### 2️⃣ Using entity factory
+
+Also, you may want to create a custom instantiation logic for your singleton. For this, use the special factory api.
+
+1. Create a specific type of singleton entity with the default and your custom constructors.
+
+```csharp
+public sealed class GameContext : EntitySingleton<GameContext>
+{
+    //Constructor with precompiles memory
+    public GameContext(
+        string name = null,
+        int tagCapacity = 0,
+        int valueCapacity = 0,
+        int behaviourCapacity = 0
+    ) : base(name, tagCapacity, valueCapacity, behaviourCapacity)
+    {
+    }
+
+    //Default constructor needed also for fallback
+    public GameContext()
+    {
+    }
+}
+```
+
+2. Create specific factory for your singleton implementing [IEntityFactory\<E>](../Factories/IEntityFactory%601.md)
+
+```csharp
+public class GameContextFactory : IEntityFactory<GameContext>
+{
+    private readonly string _name;
+    private readonly int _tagCapacity;
+    private readonly int _valueCapacity;
+    private readonly int _behaviourCapacity;
+
+    public GameContextFactory(
+        string name = "DefaultGame",
+        int tagCapacity = 4,
+        int valueCapacity = 8,
+        int behaviourCapacity = 4
+    )
+    {
+        _name = name;
+        _tagCapacity = tagCapacity;
+        _valueCapacity = valueCapacity;
+        _behaviourCapacity = behaviourCapacity;
+    }
+
+    public GameContext Create()
+    {
+        return new GameContext(_name, _tagCapacity, _valueCapacity, _behaviourCapacity);
+    }
+}
+```
+
+3. Register this factory before the first access to the `Instance` property of the entity singleton:
+
+```csharp
+var factory = new GameContextFactory("GameContext", tagCapacity: 16, valueCapacity: 32, behaviourCapacity: 8);
+GameContext.SetFactory(factory);
+```
+
+4. Usage in a project
+
+```csharp
+// GameContextFactory is invoked under the hood
+GameContext context = GameContext.Instance;
+
+// Use as usual entity
+context.AddValue("Score", 42);
+context.AddBehaviour<EnemySpawnBehaviour>();
+context.Init();
+```
+
+> [!NOTE]
+> Also, you can upgrade factory to the builder pattern. Read more
+> in [best practices](../../BestPractices/UpgradingEntityFactoryToBuilder.md).
+
+<div id="ex3"></div>
+
+### 3️⃣ Resetting singleton
+
+If current instance is not valid you can drop or recreate this instance
+
+```csharp
+var oldContext = GameContext.Instance;
+
+// Dispose 
+GameContext.DisposeInstance();
+
+// Create new instance immediately
+var newContext = GameContext.Instance;
+```
+
+```csharp
+//Or just invoke ResetInstance()
+var oldContext = GameContext.Instance;
+var newContext = GameContext.ResetInstance();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
 ```csharp
 public abstract class EntitySingleton<E> : Entity 
     where E : EntitySingleton<E>, new()
 ```
 
-- **Description:** Represents an abstract class for **singleton entities**. Ensures a single globally accessible entity
-  of type `E`.
 - **Type Parameter:** `E` — The concrete entity singleton type.
 - **Inheritance:** [Entity](Entity.md)
 - **Notes:**
     - Subclass must inherit from `EntitySingleton<E>`
-    - Combines the patterns: **ESB** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
     - Supports both **default constructor** and **[factory-based creation](../Factories/IEntityFactory.md)**
       via [SetFactory()](#setfactoryientityfactorye).
 
 ---
 
-## 🏗️ Constructors
+<div id="-constructors"></div>
+
+### 🏗️ Constructors
+
+Below are represent three ways of creating entity. When an entity is created through its constructor, it automatically
+registers itself in a special registry that stores
+all entities — [EntityRegistry](../Registry/EntityRegistry.md)
 
 #### `String-keyed Constructor`
 
@@ -74,8 +244,7 @@ protected Entity(
 ```
 
 - **Description:** Creates a new entity with the specified name and initial capacities for tags, values, and behaviours.
-  Initializes internal structures efficiently and registers the entity
-  in [EntityRegistry](../Registry/EntityRegistry.md).
+  Initializes internal structures efficiently.
 - **Parameters:**
     - `name` – The name of the entity. If `null`, an empty string is used.
     - `tagCapacity` – Initial capacity for tag storage to minimize memory allocations.
@@ -85,7 +254,7 @@ protected Entity(
 
 ---
 
-## 🔑 Static Properties
+### 🔑 Static Properties
 
 #### `Instance`
 
@@ -101,7 +270,7 @@ public static E Instance { get; }
 
 ---
 
-## 🏹 Static Methods
+### 🏹 Static Methods
 
 #### `SetFactory(IEntityFactory<E>)`
 
@@ -131,117 +300,6 @@ public static E ResetInstance()
 
 - **Description:** Disposes the current singleton instance (if any) and **immediately creates a new one**.
 - **Returns** New singleton instance via **factory** or **default constructor**
-
----
-
-## 🗂 Examples of Usage
-
-Below are examples of using `EntitySingleton`:
-
-### 1️⃣ Using default constructor
-
-```csharp
-public class GameContext : EntitySingleton<GameContext>
-{
-}
-```
-
-```csharp
-// Usage
-GameContext context = GameContext.Instance;
-context.AddValue("Score", 42);
-context.AddBehaviour<EnemySpawnBehaviour>();
-context.Init();
-```
-
----
-
-### 2️⃣ Using entity factory
-
-```csharp
-//Custom entity
-public sealed class GameContext : EntitySingleton<GameContext>
-{
-    //Constructor with precompiles memory
-    public GameContext(
-        string name = null,
-        int tagCapacity = 0,
-        int valueCapacity = 0,
-        int behaviourCapacity = 0
-    ) : base(name, tagCapacity, valueCapacity, behaviourCapacity)
-    {
-    }
-
-    //Default constructor needed also for fallback
-    public GameContext()
-    {
-    }
-}
-```
-
-```csharp
-// Factory implementation
-public class GameContextFactory : IEntityFactory<GameContext>
-{
-    private readonly string _name;
-    private readonly int _tagCapacity;
-    private readonly int _valueCapacity;
-    private readonly int _behaviourCapacity;
-
-    public GameContextFactory(
-        string name = "DefaultGame",
-        int tagCapacity = 4,
-        int valueCapacity = 8,
-        int behaviourCapacity = 4
-    )
-    {
-        _name = name;
-        _tagCapacity = tagCapacity;
-        _valueCapacity = valueCapacity;
-        _behaviourCapacity = behaviourCapacity;
-    }
-
-    public GameContext Create()
-    {
-        return new GameContext(_name, _tagCapacity, _valueCapacity, _behaviourCapacity);
-    }
-}
-```
-
-```csharp
-// Register before usage
-var factory = new GameContextFactory("GameContext", tagCapacity: 16, valueCapacity: 32, behaviourCapacity: 8);
-GameContext.SetFactory(factory);
-```
-
-```csharp
-// Usage
-GameContext context = GameContext.Instance;
-context.AddValue("Score", 42);
-context.AddBehaviour<EnemySpawnBehaviour>();
-context.Init();
-```
-
-Also, you can [upgrade factory to builder](../../BestPractices/UpgradingEntityFactoryToBuilder.md).
-
-### 3️⃣  Resetting singleton
-
-```csharp
-// Get current instance
-var oldContext = GameContext.Instance;
-
-// Dispose 
-GameContext.DisposeInstance();
-
-// Create new instance immediately
-var newContext = GameContext.Instance;
-```
-
-```csharp
-//Or just invoke ResetInstance()
-var oldContext = GameContext.Instance;
-var newContext = GameContext.ResetInstance();
-```
 
 ---
 

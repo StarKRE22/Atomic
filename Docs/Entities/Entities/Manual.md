@@ -286,7 +286,7 @@ Below are the interfaces and classes for working with entities.
 <summary><a href="SceneEntityProxies.md"><strong>SceneEntityProxies</strong></a></summary>
     <ul>
       <li><a href="SceneEntityProxy.md">SceneEntityProxy</a></li>
-      <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;T&gt;</a></li>
+      <li><a href="SceneEntityProxy.md">SceneEntityProxy&lt;E&gt;</a></li>
     </ul>
 </details>
 
