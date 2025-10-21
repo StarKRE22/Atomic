@@ -139,6 +139,8 @@ context.Init();
 > Also, you can upgrade factory to the builder pattern. Read more
 > in [best practices](../../BestPractices/UpgradingEntityFactoryToBuilder.md).
 
+---
+
 <div id="ex3"></div>
 
 ### 3️⃣ Resetting singleton
