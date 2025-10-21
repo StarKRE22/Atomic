@@ -311,8 +311,8 @@ Below are the interfaces and classes for working with entities.
 <details>
 <summary><strong>Singletons</strong></summary>
     <ul>
-      <li><a href="EntitySingleton.md">EntitySingleton</a></li>
-      <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
+      <li><a href="EntitySingleton.md">EntitySingleton&lt;E&gt;</a></li>
+      <li><a href="SceneEntitySingleton.md">SceneEntitySingleton&lt;E&gt;</a></li>
     </ul>
 </details>
 
