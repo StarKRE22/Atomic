@@ -39,6 +39,7 @@ per-frame updates, disabling, and disposal.
         - [LateTick(float)](#latetickfloat)
         - [Disable()](#disable)
         - [Dispose()](#dispose)
+        - [OnDispose()](#ondispose)
 
       </details>
 
