@@ -4,15 +4,15 @@ Provides visual debugging support through Unity Gizmos in the Scene view.
 
 ---
 
-## 🛠 Inspector Settings
+## 📑 Table of Contents
 
-| Parameter            | Description                                                           |
-|----------------------|-----------------------------------------------------------------------|
-| `onlySelectedGizmos` | Draw gizmos only when this GameObject is selected. Default is `false` |
-| `onlyEditModeGizmos` | Draw gizmos only when Unity is not in Play mode. Default is `false`   |
+- [Example of Usage](#-example-of-usage)
+- [Inspector Settings](#-inspector-settings)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+
 
 ---
-
 
 ## 🗂 Example of Usage
 
@@ -51,4 +51,23 @@ public sealed class TransformEntityInstaller : SceneEntityInstaller<IGameEntity>
         entity.AddBehaviour<TransformGizmos>();
     }
 }
+```
+
+---
+
+## 🛠 Inspector Settings
+
+| Parameter            | Description                                                           |
+|----------------------|-----------------------------------------------------------------------|
+| `onlySelectedGizmos` | Draw gizmos only when this GameObject is selected. Default is `false` |
+| `onlyEditModeGizmos` | Draw gizmos only when Unity is not in Play mode. Default is `false`   |
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class SceneEntity
 ```
