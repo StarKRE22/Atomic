@@ -4,10 +4,31 @@ The following methods allow you to create entities at runtime, for example from 
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+  - [Using Create Args](#ex1)
+  - [Prefab Instantiation](#ex2)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+  - [Static Methods](#-static-methods)
+    - [Create(in CreateArgs)](#createin-createargs)
+    - [Create<E>(in CreateArgs)](#createe-in-createargs)
+    - [Create<E>(...)](#createe)
+    - [Create(SceneEntity, Transform)](#createsceneentity-transform)
+    - [Create<E>(E, Transform)](#createe-e-transform)
+    - [Create(SceneEntity, Vector3, Quaternion, Transform)](#createsceneentity-vector3-quaternion-transform)
+    - [Create<E>(E, Vector3, Quaternion, Transform)](#createe-e-vector3-quaternion-transform)
+    - [Create<E>(E, Transform, Transform)](#createe-e-transform-transform)
+
+
+---
 
 ## 🗂 Examples of Usage
 
 There are two ways of entity creation:
+
+<div id="ex1"></div>
 
 ### 1️⃣ Using Create Args
 
@@ -40,6 +61,8 @@ WeaponEntity enemy = SceneEntity.Create<WeaponEntity>(
 ```
 
 ---
+
+<div id="ex2"></div>
 
 ### 2️⃣ Prefab Instantiation
 
