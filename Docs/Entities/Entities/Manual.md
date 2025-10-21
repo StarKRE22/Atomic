@@ -16,9 +16,9 @@ system is a **composition**.
     - [SceneEntitySingleton](#ex4)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
-  - [Tags](#-tags)
-  - [Values](#-values)
-  - [Behaviours](#-behaviours)
+    - [Tags](#-tags)
+    - [Values](#-values)
+    - [Behaviours](#-behaviours)
 
 ---
 
@@ -230,6 +230,8 @@ Debug.Log(score); // 42
 
 Below are the interfaces and classes for working with entities.
 
+<ul>
+<li>
 
 <details>
 <summary><a href="IEntity.md"><strong>IEntity</strong></a></summary>
@@ -243,6 +245,9 @@ Below are the interfaces and classes for working with entities.
 </ul>
 
 </details>
+</li>
+
+<li>
 
 <details>
 <summary><a href="Entity.md"><strong>Entity</strong></a></summary>
@@ -257,6 +262,9 @@ Below are the interfaces and classes for working with entities.
 </ul>
 
 </details>
+</li>
+
+<li>
 
 <details>
 <summary><a href="SceneEntity.md"><strong>SceneEntity</strong></a></summary>
@@ -282,6 +290,11 @@ Below are the interfaces and classes for working with entities.
 
 </details>
 
+</li>
+
+
+<li>
+
 <details>
 <summary><a href="SceneEntityProxies.md"><strong>SceneEntityProxies</strong></a></summary>
     <ul>
@@ -290,6 +303,11 @@ Below are the interfaces and classes for working with entities.
     </ul>
 </details>
 
+</li>
+
+<li>
+
+
 <details>
 <summary><strong>Singletons</strong></summary>
     <ul>
@@ -297,6 +315,8 @@ Below are the interfaces and classes for working with entities.
       <li><a href="SceneEntitySingleton.md">SceneEntitySingleton</a></li>
     </ul>
 </details>
+
+</li>
 
 <details>
 <summary><strong>Extensions</strong></summary>
@@ -309,6 +329,14 @@ Below are the interfaces and classes for working with entities.
       <li><a href="ExtensionsRetrieval.md">Retrieval</a></li>
     </ul>
 </details>
+
+</ul>
+
+
+
+
+
+
 
 ---
 
