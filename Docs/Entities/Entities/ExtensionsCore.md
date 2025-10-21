@@ -1,10 +1,29 @@
-# 🧩 Core Extensions
+# 🧩 IEntity Core Extensions
 
-Provide extension methods for [IEntity](IEntity.md) to simplify core operations. 
+Provide extension methods for [IEntity](IEntity.md) to simplify core operations.
 
 ---
 
-## 🏹 Methods 
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Clear()](#clear)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `Clear()`
 
