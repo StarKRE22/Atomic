@@ -62,6 +62,13 @@ namespace Atomic.Entities
             }
         }
 
+        private static E _instance;
+        
+        /// <summary>
+        /// Tries to get the singleton instance of type <typeparamref name="E"/> in the current scene or globally.
+        /// </summary>
+        /// <param name="instance">The retrieved singleton instance</param>
+        /// <returns>True if the instance was retrieved</returns>
         public static bool TryGetInstance(out E instance)
         {
             if (_instance)
@@ -79,9 +86,11 @@ namespace Atomic.Entities
             instance = _instance;
             return instance;
         }
+        
+        #endregion
 
-        private static E _instance;
-
+        #region UnityLifecycle
+        
         /// <summary>
         /// Assigns the singleton instance and optionally makes it persistent across scenes.
         /// </summary>
@@ -115,7 +124,7 @@ namespace Atomic.Entities
         }
 
         #endregion
-
+        
         #region Resolve
 
         private static readonly Dictionary<Scene, E> _singletons = new();
