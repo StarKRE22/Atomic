@@ -1,7 +1,7 @@
 # 🧩 SceneEntitySingleton&lt;E&gt;
 
-Represents a specialized `SceneEntity` that ensures only one instance exists per scene or globally.
-It provides easy access via a static `Instance` property and optional persistence across scenes.
+Represents a specialized [SceneEntity](SceneEntity.md) that ensures only one instance exists per scene or globally.
+It provides easy access via a static [Instance](#instance) property and optional persistence across scenes.
 Combines two patterns — **Entity-State-Behaviour** and [Singleton](https://en.wikipedia.org/wiki/Singleton_pattern).
 Supports Odin Inspector
 
