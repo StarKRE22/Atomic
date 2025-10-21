@@ -5,7 +5,52 @@ debugging or tooling, and the main event for reactive state changes.
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Events](#-events)
+        - [OnStateChanged](#onstatechanged)
+    - [Properties](#-properties)
+        - [InstanceID](#instanceid)
+        - [Name](#name)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Assume we have an instance of SceneEntity
+SceneEntity entity = ...
+
+// Subscribe to the OnStateChanged event
+entity.OnStateChanged += (IEntity e) =>
+{
+    Debug.Log($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
+};
+
+// Change name
+entity.Name = "Hero"; //Triggers state changed
+
+// Read the unique runtime identifier
+int id = entity.InstanceID;
+Debug.Log($"Created entity '{entity.Name}' with ID: {id}");
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class SceneEntity
+```
+
+---
+
+### ⚡ Events
 
 #### `OnStateChanged`
 
@@ -19,7 +64,7 @@ public event Action<IEntity> OnStateChanged
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `InstanceID`
 
@@ -40,25 +85,3 @@ public string Name { get; set; }
 
 - **Description:** Optional user-defined name for debugging or tooling.
 - **Note:** Equals `GameObject` name
-
----
-
-## 🗂 Examples of Usage
-
-```csharp
-// Assume we have an instance of SceneEntity
-SceneEntity entity = ...
-
-// Subscribe to the OnStateChanged event
-entity.OnStateChanged += (IEntity e) =>
-{
-    Console.WriteLine($"Entity {e.Name} (ID: {e.InstanceID}) changed state!");
-};
-
-// Change name
-entity.Name = "Hero"; //Triggers state changed
-
-// Read the unique runtime identifier
-int id = entity.InstanceID;
-Console.WriteLine($"Created entity '{entity.Name}' with ID: {id}");
-```

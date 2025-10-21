@@ -103,7 +103,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 [AddComponentMenu("Atomic/Entities/Entity")]
 [DisallowMultipleComponent]
 [DefaultExecutionOrder(-1000)]
-public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+public partial class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
 ```
 
 - **Inheritance:** [IEntity](IEntity.md), `MonoBehaviour`, `ISerializationCallbackReceiver`
