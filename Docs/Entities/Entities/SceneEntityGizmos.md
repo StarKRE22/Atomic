@@ -9,8 +9,7 @@ Provides visual debugging support through Unity Gizmos in the Scene view.
 - [Example of Usage](#-example-of-usage)
 - [Inspector Settings](#-inspector-settings)
 - [API Reference](#-api-reference)
-    - [Type](#-type)
-
+  - [Type](#-type)
 
 ---
 
