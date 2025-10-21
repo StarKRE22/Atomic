@@ -23,11 +23,16 @@ entity.  Supports Odin Inspector
 
 <img width="150" height="" alt="GameObject creation" src="../../Images/ChildCollider.png" />
 
-
-2. Assume we have a specific type of the [SceneEntity](SceneEntity.md)
+2. Assume we have a specific interface and implementation of the entity
 
 ```csharp
-public class GameEntity : SceneEntity 
+public interface IGameEntity : IEntity
+{
+}
+```
+
+```csharp
+public class GameEntity : SceneEntity, IGameEntity
 {
 }
 ```
