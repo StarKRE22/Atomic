@@ -7,6 +7,19 @@ system is a **composition**.
 
 ---
 
+## 🗂 Examples of Usage
+
+### Entity
+
+
+### SceneEntity
+
+### SceneEntityProxy
+
+### EntitySingleton
+
+### SceneEntitySingleton
+
 ---
 
 ## 🔍 API Reference

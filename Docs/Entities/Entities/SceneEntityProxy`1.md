@@ -1,15 +1,7 @@
 # 🧩 SceneEntityProxy&lt;E&gt;
 
-```csharp
-public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
-    where E : SceneEntity
-```
-
-- **Description:** Represents a generic proxy components that forwards calls to an underlying <code>E</code> source
-  entity
-- **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
-- **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
-- **Note:** Supports Odin Inspector
+Represents a generic proxy components that forwards calls to an underlying <code>E</code> source
+entity.  Supports Odin Inspector
 
 ---
 
@@ -21,7 +13,21 @@ public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
 
 ---
 
-## 🔑 Properties
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public abstract class SceneEntityProxy<E> : MonoBehaviour, IEntity
+    where E : SceneEntity
+```
+
+- **Type Parameter:** `E` — The type of the source entity, must inherit from [SceneEntity](SceneEntity.md)
+- **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
+
+---
+
+### 🔑 Properties
 
 #### `Source`
 
