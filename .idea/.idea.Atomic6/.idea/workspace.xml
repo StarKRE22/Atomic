@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/ApiGeneration.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_ApiGeneration.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Codegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Codegen.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/PluginCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_PluginCodegen.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Problem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_Problem.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/EntityAPI/UnityCodegen.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/EntityAPI/Obsolete_UnityCodegen.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,21 +131,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="/Applications/Unity/Hub/Editor/6000.0.41f1/Unity.app/Contents/MacOS/Unity" />
@@ -275,15 +281,8 @@
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
-      <workItem from="1761030416639" duration="31011000" />
-    </task>
-    <task id="LOCAL-01734" summary="Entity.md">
-      <option name="closed" value="true" />
-      <created>1761032288358</created>
-      <option name="number" value="01734" />
-      <option name="presentableId" value="LOCAL-01734" />
-      <option name="project" value="LOCAL" />
-      <updated>1761032288358</updated>
+      <workItem from="1761030416639" duration="31525000" />
+      <workItem from="1761080165376" duration="1341000" />
     </task>
     <task id="LOCAL-01735" summary="EntityCore.md">
       <option name="closed" value="true" />
@@ -669,7 +668,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761079112027</updated>
     </task>
-    <option name="localTasksCounter" value="1783" />
+    <task id="LOCAL-01783" summary="API Generation!">
+      <option name="closed" value="true" />
+      <created>1761079651100</created>
+      <option name="number" value="01783" />
+      <option name="presentableId" value="LOCAL-01783" />
+      <option name="project" value="LOCAL" />
+      <updated>1761079651100</updated>
+    </task>
+    <option name="localTasksCounter" value="1784" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -696,7 +703,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityBehaviours.md" />
     <MESSAGE value="SceneEntityLifecycle.md" />
     <MESSAGE value="SceneEntityInstalling.md" />
     <MESSAGE value="SceneEntityGizmos.md" />
@@ -721,7 +727,8 @@
     <MESSAGE value="Done!" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="EntityAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="EntityAPI" />
+    <MESSAGE value="API Generation!" />
+    <option name="LAST_COMMIT_MESSAGE" value="API Generation!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
