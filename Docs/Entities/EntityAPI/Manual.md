@@ -10,11 +10,11 @@ improving **readability**, **type safety**, **refactoring safety**, and **IDE au
 
 - [The Problem](#the-problem)
 - [Entity API Generation](#entity-api-generation)
-- [Generating API via Unity Editor](#generating-api-via-unity-editor)
+- [Generating via Unity Editor](#generating-api-via-unity-editor)
     - [Configuration Options](#-configuration-options)
     - [Using the Generated Extensions](#-using-the-generated-extensions)
     - [Refreshing and Configuring API Generation](#-refreshing-and-configuring-api-generation)
-- [Generating API via Rider Plugin](#generating-api-via-rider-plugin)
+- [Generating via Rider Plugin](#generating-api-via-rider-plugin)
   - [Installation](#-installation)
   - [Plugin Usage](#-plugin-usage)
   - [Configuration Options](#-configuration-options-1)
