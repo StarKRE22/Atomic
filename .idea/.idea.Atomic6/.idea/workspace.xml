@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsTags.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsTags.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsInstalling.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Entities/ExtensionsInstalling.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,31 +274,7 @@
       <workItem from="1760942068732" duration="18080000" />
       <workItem from="1760974720673" duration="597000" />
       <workItem from="1760975339788" duration="15024000" />
-      <workItem from="1761030416639" duration="18532000" />
-    </task>
-    <task id="LOCAL-01725" summary="IEntityTags.md">
-      <option name="closed" value="true" />
-      <created>1760991524062</created>
-      <option name="number" value="01725" />
-      <option name="presentableId" value="LOCAL-01725" />
-      <option name="project" value="LOCAL" />
-      <updated>1760991524062</updated>
-    </task>
-    <task id="LOCAL-01726" summary="IEntityValues.md">
-      <option name="closed" value="true" />
-      <created>1760991847977</created>
-      <option name="number" value="01726" />
-      <option name="presentableId" value="LOCAL-01726" />
-      <option name="project" value="LOCAL" />
-      <updated>1760991847977</updated>
-    </task>
-    <task id="LOCAL-01727" summary="IEntityBehaviours.md">
-      <option name="closed" value="true" />
-      <created>1760992277164</created>
-      <option name="number" value="01727" />
-      <option name="presentableId" value="LOCAL-01727" />
-      <option name="project" value="LOCAL" />
-      <updated>1760992277165</updated>
+      <workItem from="1761030416639" duration="18877000" />
     </task>
     <task id="LOCAL-01728" summary="IEntityLifecycle.md">
       <option name="closed" value="true" />
@@ -668,7 +644,31 @@
       <option name="project" value="LOCAL" />
       <updated>1761055232371</updated>
     </task>
-    <option name="localTasksCounter" value="1774" />
+    <task id="LOCAL-01774" summary="ExtensionsTags.md">
+      <option name="closed" value="true" />
+      <created>1761055377205</created>
+      <option name="number" value="01774" />
+      <option name="presentableId" value="LOCAL-01774" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055377205</updated>
+    </task>
+    <task id="LOCAL-01775" summary="ExtensionsValues.md">
+      <option name="closed" value="true" />
+      <created>1761055494793</created>
+      <option name="number" value="01775" />
+      <option name="presentableId" value="LOCAL-01775" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055494793</updated>
+    </task>
+    <task id="LOCAL-01776" summary="ExtensionsBehaviours.md">
+      <option name="closed" value="true" />
+      <created>1761055598444</created>
+      <option name="number" value="01776" />
+      <option name="presentableId" value="LOCAL-01776" />
+      <option name="project" value="LOCAL" />
+      <updated>1761055598444</updated>
+    </task>
+    <option name="localTasksCounter" value="1777" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,9 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityValues.md" />
-    <MESSAGE value="EntityBehaviours.md" />
-    <MESSAGE value="EntityLifecycle.md" />
     <MESSAGE value="EntityDebug.md" />
     <MESSAGE value="SceneEntity.md" />
     <MESSAGE value="SceneEntityCore.md" />
@@ -720,7 +717,10 @@
     <MESSAGE value="EntitySingleton.md" />
     <MESSAGE value="SceneEntitySingleton.md" />
     <MESSAGE value="ExtensionsCore.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsCore.md" />
+    <MESSAGE value="ExtensionsTags.md" />
+    <MESSAGE value="ExtensionsValues.md" />
+    <MESSAGE value="ExtensionsBehaviours.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ExtensionsBehaviours.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

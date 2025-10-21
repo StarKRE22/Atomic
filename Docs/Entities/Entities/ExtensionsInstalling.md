@@ -10,7 +10,7 @@ Provide extension methods for [IEntity](IEntity.md) to simplify operations with 
     - [Type](#-type)
     - [Methods](#-methods)
         - [Install(IEntityInstaller)](#installientityinstaller)
-        - [Install(IEnumerable<IEntityInstaller>)](#installeenumerableientityinstaller)
+        - [Install(IEnumerable\<IEntityInstaller>)](#installienumerableientityinstaller)
         - [InstallFromScene(Scene, bool)](#installfromscenescene-bool)
         - [InstallFromScene\<T>(Scene, bool)](#installfromscenetscene-bool)
 
