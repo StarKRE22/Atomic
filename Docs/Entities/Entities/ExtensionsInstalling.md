@@ -1,10 +1,32 @@
-# 🧩 Installing Extensions
+# 🧩 IEntity Installing Extensions
 
 Provide extension methods for [IEntity](IEntity.md) to simplify operations with entity configuration.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [Install(IEntityInstaller)](#installientityinstaller)
+        - [Install(IEnumerable<IEntityInstaller>)](#installeenumerableientityinstaller)
+        - [InstallFromScene(Scene, bool)](#installfromscenescene-bool)
+        - [InstallFromScene\<T>(Scene, bool)](#installfromscenetscene-bool)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `Install(IEntityInstaller)`
 
