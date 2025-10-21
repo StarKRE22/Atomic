@@ -212,7 +212,7 @@ public int TagCount { get; }
 
 ### 🏹 Methods
 
-#### `HasTag`
+#### `HasTag(int)`
 
 ```csharp
 public bool HasTag(int tag)
@@ -222,7 +222,7 @@ public bool HasTag(int tag)
 - **Parameter:** `tag` – The tag to check for.
 - **Returns:** `true` if the tag exists, otherwise `false`.
 
-#### `AddTag`
+#### `AddTag(int)`
 
 ```csharp
 public bool AddTag(int tag)
@@ -233,7 +233,7 @@ public bool AddTag(int tag)
 - **Returns:** `true` if the tag was added, otherwise `false`.
 - **Triggers:** `OnTagAdded` and `OnStateChanged`
 
-#### `DelTag`
+#### `DelTag(int)`
 
 ```csharp
 public bool DelTag(int tag)
@@ -244,7 +244,7 @@ public bool DelTag(int tag)
 - **Returns:** `true` if the tag was removed, otherwise `false`.
 - **Triggers:** `OnTagDeleted` and `OnStateChanged`
 
-#### `ClearTags`
+#### `ClearTags()`
 
 ```csharp
 public void ClearTags()
@@ -253,7 +253,7 @@ public void ClearTags()
 - **Description:** Removes all tags from the entity.
 - **Triggers:** `OnTagDeleted` and `OnStateChanged`
 
-#### `GetTags`
+#### `GetTags()`
 
 ```csharp
 public int[] GetTags()
@@ -262,7 +262,7 @@ public int[] GetTags()
 - **Description:** Returns all tag keys associated with the entity.
 - **Returns:** Array of tag keys.
 
-#### `CopyTags`
+#### `CopyTags(int[])`
 
 ```csharp
 public int CopyTags(int[] results)
@@ -273,7 +273,7 @@ public int CopyTags(int[] results)
 - **Returns:** Number of tags copied.
 - **Throws:** `ArgumentNullException` if `results` is null
 
-#### `GetTagEnumerator`
+#### `GetTagEnumerator()`
 
 ```csharp
 public TagEnumerator GetTagEnumerator()
