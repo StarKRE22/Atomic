@@ -5,7 +5,85 @@ per-frame updates, disabling, and disposal.
 
 ---
 
-## ⚡ Events
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - <details>
+      <summary><a href="#-events">Events</a></summary>
+
+        - [OnInitialized](#oninitialized)
+        - [OnDisposed](#ondisposed)
+        - [OnEnabled](#onenabled)
+        - [OnDisabled](#ondisabled)
+        - [OnTicked](#onticked)
+        - [OnFixedTicked](#onfixedticked)
+        - [OnLateTicked](#onlateticked)
+
+      </details>
+    - <details>
+      <summary><a href="#-properties">Properties</a></summary>
+
+        - [Initialized](#initialized)
+        - [Enabled](#enabled)
+
+      </details>
+    - <details>
+      <summary><a href="#-methods">Methods</a></summary>
+
+        - [Init()](#init)
+        - [Enable()](#enable)
+        - [Tick(float)](#tickfloat)
+        - [FixedTick(float)](#fixedtickfloat)
+        - [LateTick(float)](#latetickfloat)
+        - [Disable()](#disable)
+        - [Dispose()](#dispose)
+
+      </details>
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Create a new entity
+var entity = new Entity("Enemy");
+
+// Initialize the entity and attached behaviours
+entity.Init();
+
+// Enable the entity (registers update behaviours)
+entity.Enable();
+
+// Simulate game loop updates
+const float deltaTime = 0.016f; // Example: 60 FPS
+const float fixedDeltaTime = 0.016f; // Example: 60 FPS
+
+entity.Tick(deltaTime);       // Calls Tick on all IEntityTick behaviours
+entity.FixedTick(fixedDeltaTime);  // Calls FixedTick on all IEntityFixedTick behaviours
+entity.LateTick(deltaTime);   // Calls LateTick on all IEntityLateTick behaviours
+
+// Disable the entity (unregisters update behaviours)
+entity.Disable();
+
+// Dispose the entity when it is no longer needed
+entity.Dispose();
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Entity
+```
+
+---
+
+### ⚡ Events
 
 #### `OnInitialized`
 
@@ -76,7 +154,7 @@ public event Action<float> OnLateTicked
 
 ---
 
-## 🔑 Properties
+### 🔑 Properties
 
 #### `Initialized`
 
@@ -98,7 +176,7 @@ public bool Enabled { get; }
 
 ---
 
-## 🏹 Methods
+### 🏹 Methods
 
 #### `Init()`
 
@@ -205,32 +283,3 @@ protected virtual void OnDispose()
 - **Description:**  Called during the disposal process of a `Entity`. Provides a hook for derived classes to execute
   custom cleanup logic when the entity is being disposed.
 - **Notes:** This method is invoked by `Dispose()`
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Create a new entity
-var entity = new Entity("Enemy");
-
-// Initialize the entity and attached behaviours
-entity.Init();
-
-// Enable the entity (registers update behaviours)
-entity.Enable();
-
-// Simulate game loop updates
-const float deltaTime = 0.016f; // Example: 60 FPS
-const float fixedDeltaTime = 0.016f; // Example: 60 FPS
-
-entity.Tick(deltaTime);       // Calls Tick on all IEntityTick behaviours
-entity.FixedTick(fixedDeltaTime);  // Calls FixedTick on all IEntityFixedTick behaviours
-entity.LateTick(deltaTime);   // Calls LateTick on all IEntityLateTick behaviours
-
-// Disable the entity (unregisters update behaviours)
-entity.Disable();
-
-// Dispose the entity when it is no longer needed
-entity.Dispose();
-```
