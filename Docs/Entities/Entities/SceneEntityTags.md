@@ -51,6 +51,8 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
 This example demonstrates how to use tags with entity, including adding, removing, and checking tags. Three
 approaches are shown:
 
+<div id="ex1"></div>
+
 ### 1️⃣ Using Numeric Keys
 
 By default, all tags use `int` keys because this avoids computing hash codes and is very fast; therefore, the example
@@ -92,6 +94,8 @@ foreach (int id in entity.GetTags())
 
 ---
 
+<div id="ex2"></div>
+
 ### 2️⃣ Using String Names
 
 In this example, for convenience, there are [extension methods](ExtensionsTags.md) for the entity. This format is more
@@ -121,6 +125,8 @@ foreach (int id in entity.GetTags())
 ```
 
 ---
+
+<div id="ex3"></div>
 
 ### 3️⃣ Using Entity API
 
