@@ -1,10 +1,39 @@
-# 🧩 Tag Extensions
+# 🧩 IEntity Tag Extensions
 
 Provide extension methods for [IEntity](IEntity.md) to simplify operations with tags.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+        - [Extensions](#extensions)
+    - [Methods](#-methods)
+        - [AddTag(string)](#addtagstring)
+        - [AddTag(string, out int)](#addtagstring-out-int)
+        - [AddTags(IEnumerable<int>)](#addtagsienumerableint)
+        - [AddTags(IEnumerable<string>)](#addtagsienumerablestring)
+        - [DelTag(string)](#deltagstring)
+        - [HasTag(string)](#hastagstring)
+        - [HasAllTags(params int[])](#hasalltagsparams-int)
+        - [HasAllTags(params string[])](#hasalltagsparams-string)
+        - [HasAnyTag(params string[])](#hasanytagparams-string)
+        - [HasAnyTag(params int[])](#hasanytagparams-int)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `AddTag(string)`
 
