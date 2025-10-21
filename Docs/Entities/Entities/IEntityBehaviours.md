@@ -14,7 +14,7 @@ logic, enabling dynamic functionality without changing the core entity structure
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Examples of Usage](#-examples-of-usage)
     - [Basic Usage](#ex1)
     - [Using Extension Methods](#ex2)
 - [API Reference](#-api-reference)
@@ -55,9 +55,9 @@ logic, enabling dynamic functionality without changing the core entity structure
 
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
-Below is an example of working with behaviours in the entity.
+Below are examples of working with behaviours in the entity.
 
 <div id="ex1"></div>
 

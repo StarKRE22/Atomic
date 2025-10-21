@@ -165,6 +165,16 @@ entity.DelInventory();
 
 ---
 
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Entity
+```
+
+---
+
 ### ⚡ Events
 
 #### `OnValueAdded`
