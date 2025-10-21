@@ -1,10 +1,33 @@
-# 🧩 Behaviour Extensions
+# 🧩 IEntity Behaviour Extensions
 
 Provide extension methods for [IEntity](IEntity.md) to simplify operations with behaviours.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [AddBehaviour<T>()](#addbehaviourt)
+        - [AddBehaviours(IEntityBehaviour[], int, int)](#addbehavioursientitybehaviour-int-int)
+        - [AddBehaviours(IEnumerable<IEntityBehaviour>)](#addbehavioursienumerableientitybehaviour)
+        - [DelBehaviours(IEnumerable<IEntityBehaviour>)](#delbehavioursienumerableientitybehaviour)
+        - [DelBehaviours(IEntityBehaviour[], int, int)](#delbehavioursientitybehaviour-int-int)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `AddBehaviour<T>()`
 
