@@ -6,6 +6,16 @@ Represents the base implementation of the [IEntity](IEntity.md). It provides a m
 
 ---
 
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [API Reference](#-api-reference)
+  - [Type](#-type)
+- [Modules](#-modules)
+- [Notes](#-notes)
+
+---
+
 ## 🚀 Quick Start
 
 Below is the process for quickly creating an entity in plain C#
@@ -76,10 +86,10 @@ while(isGameRunning)
    System.Threading.Thread.Sleep(16); // deltaTime * 1000 
 }
 
-//Disable entity for updates -> Calls IEntityDisable
+// Disable entity for updates -> Calls IEntityDisable
 character.Disable();
 
-//Dispose entity resources -> Calls IEntityDispose
+// Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
 ```
 

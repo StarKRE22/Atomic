@@ -259,10 +259,10 @@ while(isGameRunning)
    System.Threading.Thread.Sleep(16); // deltaTime * 1000 
 }
 
-//Disable entity for updates -> Calls IEntityDisable
+// Disable entity for updates -> Calls IEntityDisable
 character.Disable();
 
-//Dispose entity resources -> Calls IEntityDispose
+// Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
 ```
 
