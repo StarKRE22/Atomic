@@ -1,46 +1,34 @@
 # 🧩️ SceneEntity
 
-```csharp
-[AddComponentMenu("Atomic/Entities/Entity")]
-[DisallowMultipleComponent]
-[DefaultExecutionOrder(-1000)]
-public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
-```
+Represents Unity implementation of the entity. It allows installation from the Unity
+Scene and composition through the Inspector or installers. Supports Unity serialization and Odin Inspector.
 
-- **Description:** Represents Unity implementation of the entity. It allows installation from the Unity
-  Scene and composition through the Inspector or installers.
-
-- **Inheritance:** `MonoBehaviour`, [IEntity](IEntity.md)
-- **Notes:** Supports Unity serialization and Odin Inspector
-- **Modules:**
-  - [Core](SceneEntityCore.md) — Represents the fundamental identity and state of the entity
-  - [Tags](SceneEntityTags.md) — Manage lightweight categorization and filtering of entities
-  - [Values](SceneEntityValues.md) — Manage dynamic key-value storage for the entity
-  - [Behaviours](SceneEntityBehaviours.md) — Manage modular logic attached to the entity
-  - [Lifecycle](SceneEntityLifecycle.md) — Manages the entity's state transitions and update phases
-  - [Installing](SceneEntityInstalling.md) — Provides entity configuration with tags, values and behaviours
-  - [Gizmos](SceneEntityGizmos.md) —  Provides gizmo drawing functionality
-  - [Debug](SceneEntityDebug.md) — Represents debug properties
-  - [Editor](SceneEntityEditor.md) — Provides editor-time lifecycle support
-  - [Creation](SceneEntityCreation.md) — Allows you to create entities at runtime
-  - [Destruction](SceneEntityDestruction.md) — Destroys the game objects with entities
-  - [Casting](SceneEntityCasting.md) — Provides safe casting between `IEntity` to `SceneEntity`
 
 ---
 
-## 🗂 Example Usage
+## 📑 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+- [Modules](#-modules)
+- [Notes](#-notes)
+
+---
+
+## 🚀 Quick Start
 
 Below is the process for quickly creating a character entity in Unity
 
-#### 1. Create a new `GameObject`
+#### 1. Create a new `GameObject` on a scene
 
-<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+<img width="400" height="" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
 #### 2. Add `Entity` Component to the GameObject
 
-<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
+<img width="400" height="" alt="Entity component" src="../../Images/EntityComponent.png" />
 
-#### 3. Create `MoveBehaviour` for your entity
+#### 3. Create a movement mechanics for the entity
 
 ```csharp
 // Controller that moves entity by its direction
@@ -68,7 +56,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-#### 4. Create `CharacterInstaller` script
+#### 4. Create a script that populates the entity with tags, values and behaviours
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -97,13 +85,47 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 #### 5. Attach `CharacterInstaller` script to the GameObject
 
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+<img width="400" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
 #### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
-<img width="464" height="" alt="изображение" src="../../Images/SceneEntity%20Attach%20Installer.png" />
+<img width="400" height="" alt="изображение" src="../../Images/EntityInstalling.png" />
 
 #### 7. Enter `PlayMode` and check your character movement!
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+[AddComponentMenu("Atomic/Entities/Entity")]
+[DisallowMultipleComponent]
+[DefaultExecutionOrder(-1000)]
+public class SceneEntity : MonoBehaviour, IEntity, ISerializationCallbackReceiver
+```
+
+- **Inheritance:** [IEntity](IEntity.md), `MonoBehaviour`, `ISerializationCallbackReceiver`
+
+---
+
+## 🧩 Modules
+
+Each module represents a logical subset of the `SceneEntity` class. Click the links to dive deeper into each section:
+
+- [Core](SceneEntityCore.md) — Represents the fundamental identity and state of the entity
+- [Tags](SceneEntityTags.md) — Manage lightweight categorization and filtering of entities
+- [Values](SceneEntityValues.md) — Manage dynamic key-value storage for the entity
+- [Behaviours](SceneEntityBehaviours.md) — Manage modular logic attached to the entity
+- [Lifecycle](SceneEntityLifecycle.md) — Manages the entity's state transitions and update phases
+- [Installing](SceneEntityInstalling.md) — Provides entity configuration with tags, values and behaviours
+- [Gizmos](SceneEntityGizmos.md) — Provides gizmo drawing functionality
+- [Debug](SceneEntityDebug.md) — Represents debug properties
+- [Editor](SceneEntityEditor.md) — Provides editor-time lifecycle support
+- [Creation](SceneEntityCreation.md) — Allows you to create entities at runtime
+- [Destruction](SceneEntityDestruction.md) — Destroys the game objects with entities
+- [Casting](SceneEntityCasting.md) — Provides safe casting between `IEntity` to `SceneEntity`
 
 ---
 
@@ -122,7 +144,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 - **Unity Lifecycle Integration** – Hooks into Awake, Start, OnEnable, OnDisable, and OnDestroy.
 - **Gizmos Support** – Conditional drawing in Scene view.
 - **Prefab & Factory Support** – Creation, instantiation, and destruction of entities.
-- **Casting & Proxies** – Safe conversion between `IEntity`, `SceneEntity` and `SceneEntityProxy`.
+- **Casting & Proxies** – Safe conversion between [IEntity](IEntity.md), `SceneEntity`
+  and [SceneEntityProxy](SceneEntityProxies.md).
 - **Scene-Wide Installation** – Can install all SceneEntities in a scene.
 - **Odin Inspector Support** – Optional editor enhancements for configuration and debug.
 - **Not Thread Safe** — All operations should be performed on the main Unity thread.

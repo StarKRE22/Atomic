@@ -35,7 +35,7 @@ entity.AddValue("MoveSpeed", new Const<float>(3.5f));
 entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 ```
 
-#### 2. Create `MoveBehaviour` for the entity
+#### 2. Create a movement mechanics for the entity
 
 ```csharp
 //Controller that moves entity by its direction
@@ -63,7 +63,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityTick
 }
 ```
 
-#### 3. Add `MoveBehaviour` instance to the entity
+#### 3. Attach `MoveBehaviour` instance to the entity
 
 ```csharp
 entity.AddBehaviour<MoveBehaviour>();
@@ -109,7 +109,7 @@ public partial class Entity : IEntity
 
 ## 🧩 Modules
 
-Each module represents a logical subset of the `IEntity` interface. Click the links to dive deeper into each section:
+Each module represents a logical subset of the `Entity` class. Click the links to dive deeper into each section:
 
 - [Core](EntityCore.md) — Represents the fundamental identity and state of the entity
 - [Tags](EntityTags.md) — Manage lightweight categorization and filtering of entities

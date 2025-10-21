@@ -114,15 +114,16 @@ as the presentation layer.
 
 **Below is the process for quickly creating a character entity in Unity**
 
-#### 1. Create a new `GameObject`
 
-<img width="360" height="255" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
+#### 1. Create a new `GameObject` on a scene
+
+<img width="400" height="" alt="GameObject creation" src="https://github.com/user-attachments/assets/463a721f-e50d-4cb7-86be-a5d50a6bfa17" />
 
 #### 2. Add `Entity` Component to the GameObject
 
-<img width="464" height="346" alt="Entity component" src="https://github.com/user-attachments/assets/f74644ba-5858-4857-816e-ea47eed0e913" />
+<img width="400" height="" alt="Entity component" src="Docs/Images/EntityComponent.png" />
 
-#### 3. Create `MoveBehaviour` for your entity
+#### 3. Create a movement mechanics for the entity
 
 ```csharp
 // Controller that moves entity by its direction
@@ -150,7 +151,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 }
 ```
 
-#### 4. Create `CharacterInstaller` script
+#### 4. Create a script that populates the entity with tags, values and behaviours
 
  ```csharp
 //Populates entity with tags, values and behaviours
@@ -179,11 +180,11 @@ public sealed class CharacterInstaller : SceneEntityInstaller
 
 #### 5. Attach `CharacterInstaller` script to the GameObject
 
-<img width="464" height="153" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
+<img width="400" height="" alt="изображение" src="https://github.com/user-attachments/assets/1967b1d8-b6b7-41c7-85db-5d6935f6443e" />
 
 #### 6. Drag & drop `CharacterInstaller` into `installers` field of the entity
 
-<img width="464" height="" alt="изображение" src="Docs/Images/SceneEntity%20Attach%20Installer.png" />
+<img width="400" height="" alt="изображение" src="Docs/Images/EntityInstalling.png" />
 
 #### 7. Enter `PlayMode` and check your character movement!
 
@@ -208,7 +209,7 @@ entity.AddValue("MoveSpeed", new Const<float>(3.5f));
 entity.AddValue("MoveDirection", new ReactiveVariable<Vector3>());
 ```
 
-#### 2. Create `MoveBehaviour` for your entity
+#### 2. Create a movement mechanics for the entity
 
 ```csharp
 //Controller that moves entity by its direction
@@ -236,7 +237,7 @@ public sealed class MoveBehaviour : IEntityInit, IEntityTick
 }
 ```
 
-#### 3. Add `MoveBehaviour` to the entity
+#### 3. Attach `MoveBehaviour` to the entity
 
 ```csharp
 entity.AddBehaviour<MoveBehaviour>();

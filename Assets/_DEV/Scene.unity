@@ -958,8 +958,7 @@ MonoBehaviour:
   installOnAwake: 1
   uninstallOnDestroy: 1
   scriptableInstallers: []
-  sceneInstallers:
-  - {fileID: 0}
+  sceneInstallers: []
   children: []
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
