@@ -11,7 +11,7 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
 
 ## 📑 Table of Contents
 
-- [Example of Usage](#-example-of-usage)
+- [Example of Usage](#-examples-of-usage)
     - [Using Numeric Keys](#ex1)
     - [Using String Names](#ex2)
     - [Using Entity API](#ex3)
@@ -44,7 +44,7 @@ enumerated, or checked. They are useful for grouping entities, querying, and dri
       </details>
 ---
 
-## 🗂 Example of Usage
+## 🗂 Examples of Usage
 
 This example demonstrates how to use tags with entity, including adding, removing, and checking tags. Three
 approaches are shown:
@@ -175,8 +175,6 @@ public event Action<IEntity, int> OnTagAdded
     - `IEntity` — This entity.
     - `int` – The tag that was added.
 - **Note:** Useful for reacting to dynamic tagging of entities.
-
----
 
 #### `OnTagDeleted`
 
