@@ -1,10 +1,36 @@
-# 🧩 Retrieval Extensions
+# 🧩 IEntity Retrieval Extensions
 
 Provides extension methods for [IEntity](IEntity.md) searching and retrieving.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [TryGetEntity(GameObject, out IEntity)](#trygetentitygameobject-out-ientity)
+        - [TryGetEntity(Component, out IEntity)](#trygetentitycomponent-out-ientity)
+        - [TryGetEntity(Collision2D, out IEntity)](#trygetentitycollision2d-out-ientity)
+        - [TryGetEntity(Collision, out IEntity)](#trygetentitycollision-out-ientity)
+        - [FindEntityInParent(GameObject, out IEntity)](#findentityinparentgameobject-out-ientity)
+        - [FindEntityInParent(Component, out IEntity)](#findentityinparentcomponent-out-ientity)
+        - [FindEntityInParent(Collision2D, out IEntity)](#findentityinparentcollision2d-out-ientity)
+        - [FindEntityInParent(Collision, out IEntity)](#findentityinparentcollision-out-ientity)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `TryGetEntity(GameObject, out IEntity)`
 
