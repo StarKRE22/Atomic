@@ -1,10 +1,41 @@
-# 🧩 Value Extensions
+# 🧩 IEntity Value Extensions
 
 Provide extension methods for [IEntity](IEntity.md) to simplify operations with values.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Methods](#-methods)
+        - [AddValue(string, object)](#addvaluestring-object)
+        - [AddValue(string, object, out int)](#addvaluestring-object-out-int)
+        - [AddValue<T>(string, T)](#addvaluetstring-t)
+        - [AddValue<T>(string, T, out int)](#addvaluetstring-t-out-int)
+        - [AddValues(IEnumerable<KeyValuePair<int, object>>)](#addvaluesienumerablekeyvaluepairint-object)
+        - [AddValues(IEnumerable<KeyValuePair<string, object>>)](#addvaluesienumerablekeyvaluepairstring-object)
+        - [DelValue(string)](#delvaluestring)
+        - [GetValue<T>(string)](#getvaluetstring)
+        - [TryGetValue<T>(string, out T)](#trygetvaluetstring-out-t)
+        - [SetValue(string, object)](#setvaluestring-object)
+        - [SetValue<T>(string, T)](#setvaluetstring-t)
+        - [HasValue(string)](#hasvaluestring)
+        - [DisposeValues()](#disposevalues)
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Extensions
+```
+
+---
+
+### 🏹 Methods
 
 #### `AddValue(string, object)`
 

@@ -8,7 +8,6 @@ Provide extension methods for [IEntity](IEntity.md) to simplify operations with 
 
 - [API Reference](#-api-reference)
     - [Type](#-type)
-        - [Extensions](#extensions)
     - [Methods](#-methods)
         - [AddTag(string)](#addtagstring)
         - [AddTag(string, out int)](#addtagstring-out-int)
