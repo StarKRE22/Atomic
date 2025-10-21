@@ -1,30 +1,16 @@
 # 🧩️ Entity
 
-```csharp
-public class Entity : IEntity
-```
-
-- **Description:** Represents the base implementation of the entity.
-  It provides a modular container for **dynamic state**, **tags**, **values**,
-  **behaviours**, and **lifecycle management**.
-
-- **Inheritance:** [IEntity](IEntity.md)
-
-- **Modules:**
-    - [Core](EntityCore.md) — Represents the fundamental identity and state of the entity
-    - [Tags](EntityTags.md) — Manage lightweight categorization and filtering of entities
-    - [Values](EntityValues.md) — Manage dynamic key-value storage for the entity
-    - [Behaviours](EntityBehaviours.md) — Manage modular logic attached to the entity
-    - [Lifecycle](EntityLifecycle.md) — Manages the entity's state transitions and update phases
-    - [Debug](EntityDebug.md) — Represents debug properties
+Represents the base implementation of the [IEntity](IEntity.md). It provides a modular container for **dynamic state**,
+**tags**,
+**values**, **behaviours**, and **lifecycle management**.
 
 ---
 
-## 🗂 Example of Usage
+## 🚀 Quick Start
 
 Below is the process for quickly creating an entity in plain C#
 
-#### 1. Create a new entity
+#### 1. Create a new instance of the entity
 
 ```csharp
 //Create a new entity
@@ -67,54 +53,60 @@ public sealed class MoveBehaviour : IEntityInit, IEntityTick
 }
 ```
 
-#### 3. Add `MoveBehaviour` to the entity
+#### 3. Add `MoveBehaviour` instance to the entity
 
 ```csharp
 entity.AddBehaviour<MoveBehaviour>();
 ```
 
-#### 4. Initialize the entity when game is loading
+#### 4. Control lifecycle of your entity
 
 ```csharp
-//Calls IEntityInit
+// Initialize the entity -> Calls IEntityInit
 entity.Init();
-```
 
-#### 5. Enable the entity when game is started
-
-```csharp
-//Enable entity for updates
-//Calls IEntityEnable
+// Enable the entity for updates -> Calls IEntityEnable 
 entity.Enable(); 
-```
 
-#### 6. Update the entity while a game is running
-
-```csharp
-const float deltaTime = 0.02f;
-
-while(_isGameRunning)
-{ 
-   //Calls IEntityTick
-   entity.Tick(deltaTime); 
+// Update your entity while game is running
+const float deltaTime = 0.016f; // 60 FPS
+while(isGameRunning)
+{
+   entity.Tick(deltaTime); // Calls IEntityTick
+   System.Threading.Thread.Sleep(16); // deltaTime * 1000 
 }
-```
 
-#### 7. When game is finished disable the entity
-
-```csharp
-//Disable entity for updates
-//Calls IEntityDisable
+//Disable entity for updates -> Calls IEntityDisable
 character.Disable();
-```
 
-#### 8. Dispose the entity when unloading game resources
-
-```csharp
-//Dispose entity resources
-//Calls IEntityDispose
+//Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
 ```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class Entity : IEntity
+```
+
+- **Inheritance:** [IEntity](IEntity.md)
+
+---
+
+## 🧩 Modules
+
+Each module represents a logical subset of the `IEntity` interface. Click the links to dive deeper into each section:
+
+- [Core](EntityCore.md) — Represents the fundamental identity and state of the entity
+- [Tags](EntityTags.md) — Manage lightweight categorization and filtering of entities
+- [Values](EntityValues.md) — Manage dynamic key-value storage for the entity
+- [Behaviours](EntityBehaviours.md) — Manage modular logic attached to the entity
+- [Lifecycle](EntityLifecycle.md) — Manages the entity's state transitions and update phases
+- [Debug](EntityDebug.md) — Represents debug properties
 
 ---
 

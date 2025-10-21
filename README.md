@@ -242,46 +242,27 @@ public sealed class MoveBehaviour : IEntityInit, IEntityTick
 entity.AddBehaviour<MoveBehaviour>();
 ```
 
-#### 4. Initialize the entity when game is loading
+#### 4. Control lifecycle of your entity
 
 ```csharp
-//Calls IEntityInit
+// Initialize the entity -> Calls IEntityInit
 entity.Init();
-```
 
-#### 5. Enable the entity when game is started
-
-```csharp
-//Enable entity for updates
-//Calls IEntityEnable
+// Enable the entity for updates -> Calls IEntityEnable 
 entity.Enable(); 
-```
 
-#### 6. Update the entity while a game is running
-
-```csharp
-const float deltaTime = 0.02f;
-
-while(_isGameRunning)
-{ 
-   //Calls IEntityTick
-   entity.Tick(deltaTime); 
+// Update your entity while game is running
+const float deltaTime = 0.016f; // 60 FPS
+while(isGameRunning)
+{
+   entity.Tick(deltaTime); // Calls IEntityTick
+   System.Threading.Thread.Sleep(16); // deltaTime * 1000 
 }
-```
 
-#### 7. When game is finished disable the entity
-
-```csharp
-//Disable entity for updates
-//Calls IEntityDisable
+//Disable entity for updates -> Calls IEntityDisable
 character.Disable();
-```
 
-#### 8. Dispose the entity when unloading game resources
-
-```csharp
-//Dispose entity resources
-//Calls IEntityDispose
+//Dispose entity resources -> Calls IEntityDispose
 entity.Dispose();
 ```
 
