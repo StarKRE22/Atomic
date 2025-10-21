@@ -112,7 +112,6 @@ public partial class Entity
 
 ### 🏗️ Constructors
 
-> [!NOTE]
 > When an entity is created through its constructor, it automatically registers itself in a special registry that stores
 > all entities — [EntityRegistry](../Registry/EntityRegistry.md)
 
