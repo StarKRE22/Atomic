@@ -92,7 +92,6 @@ SceneEntity bossInstance = SceneEntity.Create(enemyPrefab, spawnPos, rotation);
 public partial class SceneEntity
 ```
 
-
 ---
 
 ### 🏹 Static Methods

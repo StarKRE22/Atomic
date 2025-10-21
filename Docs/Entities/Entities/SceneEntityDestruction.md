@@ -4,7 +4,37 @@ Provides methods of how to destroy entities at runtime.
 
 ---
 
-## 🏹 Methods
+## 📑 Table of Contents
+
+- [Example of Usage](#-example-of-usage)
+- [API Reference](#-api-reference)
+    - [Type](#-type)
+    - [Static Methods](#-static-methods)
+        - [Destroy(IEntity, float)](#destroyientity-float)
+        - [Destroy(SceneEntity, float)](#destroysceneentity-float)
+
+---
+
+## 🗂 Example of Usage
+
+```csharp
+// Destroys entity after 3 seconds
+SceneEntity.Destroy(sceneEntity, 3f);
+```
+
+---
+
+## 🔍 API Reference
+
+### 🏛️ Type <div id="-type"></div>
+
+```csharp
+public partial class SceneEntity
+```
+
+---
+
+### 🏹 Static Methods
 
 #### `Destroy(IEntity, float)`
 
@@ -29,12 +59,3 @@ public static void Destroy(SceneEntity entity, float t = 0)
     - `entity` – The `SceneEntity` to destroy.
     - `t` – Optional delay in seconds before destruction. Defaults to `0`.
 - **Note:** If `entity` is `null`, no action is taken.
-
----
-
-## 🗂 Example of Usage
-
-```csharp
-// Destroys entity after 3 seconds
-SceneEntity.Destroy(sceneEntity, 3f);
-```
