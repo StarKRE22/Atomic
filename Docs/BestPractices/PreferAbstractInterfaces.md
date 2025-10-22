@@ -1,33 +1,67 @@
-# 📌 Prefer Interfaces to Concrete Classes 
-
-Always use atomic interfaces such as `IValue`, `IVariable`, `ISignal`, etc., instead of concrete classes. This significantly improves the **maintainability** and **testability** of your project.
-
-Following the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) is especially important in multiplayer games, allowing developers to focus on **game logic** rather than networking code.
+# 📌 Prefer Atomic Interfaces to Concrete Classes
 
 ---
 
-## 🗂 Example Usage
+## 📑 Table of Contents
+- [Overview](#-overview)
+- [Example of Usage](#-example-of-usage)
+- [Why This Matters](#why-this-matters)
+- [Notes](#-notes)
 
-### ❌ Bad Usage
+
+---
+
+## 📖 Overview
+
+When developing with [Atomic.Elements](../Elements/Manual.md), always prefer using **atomic interfaces** such
+as [IValue](../Elements/Values/IValue.md), [IVariable](../Elements/Variables/IVariable.md), [ISignal](../Elements/Events/ISignal.md),
+etc., instead of concrete implementations. This practice greatly enhances **maintainability**, **testability**, and **scalability** of your project.
+
+Following
+the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) is
+especially crucial in **multiplayer environments**, allowing developers to focus on **game logic** rather than low-level
+networking details.
+
+---
+
+## 🗂 Example of Usage
+
+### ❌ Incorrect
+
 ```csharp
-ReactiveVariable<Vector3> position = entity.GetPosition();
-ReactiveVariable<Vector3> moveDirection = entity.GetMoveDirection();
-Const<float> speed = entity.GetMoveSpeed();
-position.Value += speed.Value * moveDirection.Value;
+ReactiveVariable<Vector3> position = ...;
+ReactiveVariable<Vector3> moveDirection = ...;
+Const<float> speed = ...;
 ```
 
-### ✅ Good Usage
+### ✅ Correct
+
 ```csharp
-IVariable<Vector3> position = entity.GetPosition();
-IValue<Vector3> moveDirection = entity.GetMoveDirection();
-IValue<float> speed = entity.GetMoveSpeed();
-position.Value += speed.Value * moveDirection.Value;
+IVariable<Vector3> position = ...;
+IValue<Vector3> moveDirection = ...;
+IValue<float> speed = ...;
 ```
 
 ---
 
-## 📝 Notes 
+## Why This Matters
 
-Using `Atomic.Elements` allows you to **abstract away from specific dependencies** like Unity and multiplayer frameworks such as Photon Fusion 2 or Mirror. This approach significantly improves **maintainability**, **testability**, and makes it easier to **port your project to other engines**.
+By programming against **interfaces**, you achieve:
 
-We strongly recommend **maximizing abstraction from Unity wherever possible** to keep your game logic engine-agnostic.
+- **Flexibility** – easy to swap implementations without touching game logic.
+- **Testability** – simple to mock or stub dependencies during unit testing.
+- **Decoupling** – your logic becomes independent of Unity or specific networking frameworks.
+- **Portability** – easier to migrate to other engines or platforms.
+
+---
+
+## 📝 Notes
+
+Using [Atomic.Elements](../Elements/Manual.md) allows you to **abstract away from Unity dependencies** 
+and external multiplayer frameworks like **Photon Fusion 2** or **Mirror**.
+
+This approach significantly improves **code longevity** and **cross-platform flexibility**, 
+keeping your **game logic engine-agnostic** and future-proof.
+
+> 💡 **Tip:** Always maximize abstraction from Unity-specific classes whenever possible — 
+> it keeps your systems cleaner, modular, and ready for reuse in any context.
