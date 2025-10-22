@@ -23,7 +23,7 @@ you can use pre-defined boolean constants from [DefaultConstants](../Elements/Va
 
 ---
 
-## 🗂  Example of Usage
+## 🗂 Example of Usage
 
 ```csharp
 IExpression<bool> condition = new AndExpression(cond1, cond2, cond3);
