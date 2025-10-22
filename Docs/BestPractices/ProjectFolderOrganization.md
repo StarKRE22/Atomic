@@ -1,116 +1,203 @@
 # 📌 File System Organization
-Here, I would like to share how I organize my project file system using the `Atomic Framework`, so they can be easily scaled, and the file structure remains as intuitive as possible.
+
+In this guide, I’ll share how I organize my project’s file system when working with the **Atomic Framework**.
+This approach keeps the project **scalable**, **clean**, and **intuitive**, even as it grows in complexity.
 
 > [!TIP]
-> **As an example, you can check out the prototype game `Top Down Shooter` in the [Game Examples](../../README.md/#-game-examples) section**
+> 💡 As an example, check out the prototype game **Top Down Shooter** in
+> the [Game Examples](../../README.md/#-game-examples) section.
 
-## 📂 1. Organize Assets Folder
 
-Usually, at the project level inside the `Assets` folder, I create a separate `Game` folder. This helps keep the `Assets` folder from becoming cluttered when adding various plugins.
+---
+
+## 📑 Table of Contents
+
+- [Organize Assets Folder](#-organizing-the-assets-folder)
+- [Organize Game Folder](#-organizing-the-game-folder)
+- [Organize Scripts Folder](#-organizing-the-scripts-folder)
+- [Organize GameEntities Folder](#-organizing-the-gameentities-folder)
+- [Organize GameContext & PlayerContext Folders](#-organizing-the-gamecontext--playercontext-folders)
+- [Organize Modules Folders](#-organizing-the-gamecontext--playercontext-folders)
+- [Summary](#-summary)
+
+---
+
+## 📂 Organizing the Assets Folder
+
+At the root of the project, inside the `Assets` folder, create a separate **Game** directory.  
+This keeps the main `Assets` folder tidy and prevents clutter when adding plugins or tools.
 
 ```
 Assets/
 │
-├─ 3rdParty/                 # Third-party libraries and plugins                 
-├─ Game/                     # Game-specific scenes, scripts, and assets             
-├─ Modules/                  # Reusable features not tied to a specific game
-├─ Plugins/                  # DLLs and plugins
-├─ Settings/                 # Project configurations, settings ScriptableObjects
-├─ Tools/                    # Internal tools and editor scripts
+├─ 3rdParty/ # Third-party libraries and plugins                 
+├─ Game/ # Game-specific scenes, scripts, and assets             
+├─ Modules/ # Reusable systems shared across projects
+├─ Plugins/ # DLLs and external plugins
+├─ Settings/ # Project settings, ScriptableObjects, configurations
+├─ Tools/ # Editor tools and internal utilities
 ```
 
-## 📂 2. Organize Game Folder
+---
 
-Inside the `Game` folder, I create subfolders like `Scripts`, `Materials`, `Prefabs`, `Animations`, `Scenes`, `Configs`, and `Audio`. This is important because, when working in a team with artists, they can intuitively place their assets in the appropriate folders.
+## 📂 Organizing the Game Folder
+
+Inside the `Game` folder, group assets by type — `Scripts`, `Prefabs`, `Materials`, `Animations`, etc.
+This ensures that artists and developers can intuitively find where each type of asset belongs. For tests, we recommend
+creating a separate folder.
 
 ```
 Game/
 │
 ├─ Animations/            
+├─ Audio/                 
 ├─ Configs/               
 ├─ Materials/             
 ├─ Prefabs/               
 ├─ Scenes/                
-├─ Scripts/     
+├─ Scripts/
+├─ Tests/ 
 ```
 
-## 📂 3. Organize Scripts Folder
+This clear separation helps teams work together without confusion about where to place or find assets.
 
-Regarding the `Scripts` folder, I usually create a `.asmdef` file so that the code can later be covered with tests. Inside `Scripts`, I create two subfolders: `App` and `Gameplay`.
+---
+
+## 📂 Organizing the Scripts Folder
+
+Inside the `Scripts` folder, create an **Assembly Definition (`.asmdef`)** file to make your code modular and easily testable. 
+Then, organize your scripts into three main areas: `App`, `Gameplay`, and `UI`.
 
 ```
- Assets/
-│ 
-├─ Game/                     # Game-specific scenes, scripts, and assets
-│  ├─ Scripts/               
-│  │  ├─ App/                
-│  │  │  ├─ Core/            # Core application system features
-│  │  │  └─ UI/              # Menu user interface
-│  │  └─ Gameplay/           
-│  │     ├─ Common/          # Common utilities and components for gameplay 
-│  │     ├─ GameContext/     # Game system features
-│  │     ├─ GameEntity/      # Game Objects (NPC, объекты)
-│  │     ├─ PlayerContext/   # Player system features
-│  │     ├─ UI/              # Game UI context features
+Assets/
+│
+├─ Game/
+│ ├─ Scripts/
+│ │ ├─ App/                    # Application-level systems
+│ │ │ ├─ Bootstrap/            # Initialization and startup logic
+│ │ │ ├─ SaveSystem/           # Save/load game data
+│ │ │ ├─ LevelSystem/          # Level management and progression
+│ │ │ ├─ Authorization/        # Login, authentication, permissions
+│ │ │ └─ Quit/                 # Application quit/exit logic
+│ │
+│ │ ├─ Gameplay/               # All gameplay systems and mechanics
+│ │ │ ├─ Common/               # Shared utilities and gameplay components
+│ │ │ ├─ GameEntities/         # NPCs, items, objects, and other entities
+│ │ │ ├─ GameContext/          # Core game rules and state management
+│ │ │ ├─ PlayerContext/        # Player-related systems and mechanics
+│ │ │ ├─ Weapons/              # Weapon scripts and logic
+│ │ │ ├─ Abilities/            # Player and entity abilities
+│ │ │ └─ Level/                # Level scripts, triggers, props, and interactive elements
+│ │
+│ │ └─ UI/                     # All UI elements for the project
+│ │   ├─ MenuUI/               # Main menu, loading screens, settings
+│ │   ├─ GameplayUI/           # In-game HUD, pop-ups, and in-game menus
+│ │   └─ Common/               # Reusable UI elements (buttons, panels, fonts)
 ```
 
-The `App` folder contains the entire system, divided into `Core` and `UI` (for menus), while the `Gameplay` folder is organized by game features and mechanics.
+### Folder Roles
 
-Since the `Gameplay` folder contains different entity contexts—`GameContext`, `PlayerContext`, `GameEntity`, `GameUIContext`—it's better to create a separate folder for each type of entity. This makes it more intuitive to understand which layer a mechanic belongs to.
+- **App** – Handles application-level systems such as bootstrapping, menu navigation, save/load, and other global services.
+- **Gameplay** – Contains all gameplay-related logic, including entities, player systems, abilities, weapons, levels, and shared utilities.
+- **UI** – Keeps all user interface elements in one place, separating menu screens from in-game HUD and common reusable components.
 
-Within each folder, you can then organize content further by features.
+Structuring `Gameplay` this way ensures each domain (e.g., `PlayerContext`, `GameEntities`, `GameContext`) has its own folder, making it easier to locate and maintain specific systems or mechanics.
 
-## 📂 4. Organize Game Entity Folder
+### Why This Structure Works
 
-When it comes to **game entities**, I organize them into three main folders: `Core`, `View`, and `Content`.
+1. **Clear separation of concerns** – App, Gameplay, and UI are fully separated.
+2. **Modular and scalable** – Easy to add new mechanics, weapons, levels, or UI without clutter.
+3. **Supports testing and assembly definitions** – `.asmdef` files allow modular builds and unit tests.
+4. **Reusability** – Common utilities and UI components can be reused across systems.
 
-- **Core** – contains reusable mechanics like `Move`, `Rotation`, and `Jump` that can be attached to any entity.
-- **View** – holds visual mechanics and components, such as animations, effects, or UI related to the entity.
-- **Content** – represents high-level implementations of specific game objects, such as `Character`, `PickUpItem`, `Enemy`, and so on.
+---
 
-This separation helps to keep **logic, visuals, and concrete entities** clearly organized and makes the system scalable and easy to maintain.
+## 📂 Organizing the GameEntities Folder
+
+For **game entities**, organize them into three main domains: `Core`, `View`, and `Content`. This separation ensures clean architecture, scalability, and easier maintenance.
+
+- **Core** → Contains reusable gameplay mechanics and logic, such as movement, rotation, and jumping. This is independent of visuals.
+- **View** → Handles all visual representation, including animations, effects, and UI elements that reflect Core mechanics.
+- **Content** → Holds concrete game entities like characters, enemies, weapons, items, and projectiles, combining Core logic with View components.
 
 ```
 GameEntities/
 │
-├─ Core/                 # Core mechanics that can be attached to any entity
-│  ├─ Move/              # Movement logic
-│  ├─ Rotation/          # Rotation logic
-│  └─ Jump/              # Jump logic
+├─ Core/                   # Core gameplay mechanics
+│ ├─ Move/                 # Movement logic
+│ ├─ Rotation/             # Rotation logic
+│ └─ Jump/                 # Jump logic
 │
-├─ View/                 # Visual mechanics and components
-│  ├─ Move/              # Movement visualization
-│  ├─ Rotation/          # Rotation visualization
-│  └─ Jump/              # Jump visualization
+├─ View/                   # Visuals and presentation
+│ ├─ Move/                 # Movement visuals
+│ ├─ Rotation/             # Rotation visuals
+│ └─ Jump/                 # Jump visuals
 │
-└─ Content/              # High-level implementation of game objects
-   ├─ Character/         # Specific character implementations
-   ├─ PickUps/           # Pick-up items
-   ├─ Enemies/           # Enemy entities
-   ├─ Projectiles/       # Projectiles
-   ├─ Weapons/           # Weapons
+└─ Content/                # Concrete game entities
+  ├─ Character/            # Player characters
+  ├─ PickUps/              # Pick-up items
+  ├─ Enemies/              # Enemy units
+  ├─ Projectiles/          # Bullets, missiles, etc.
+  └─ Weapons/              # Weapon implementations
 ```
 
-## 📂 5*. Organize Modules Folder
+### Benefits of This Structure
 
-The `Modules` folder is where developers can place **universal features** that are not tightly tied to a specific project. These modules can be reused across multiple projects, making development more efficient and reducing duplicated work. 
+1. **Separation of concerns** – Core logic is independent of visuals, and Content only combines them.
+2. **Scalable** – New mechanics, visual effects, or entities can be added without breaking existing systems.
+3. **Easy to maintain** – Each layer has a clear responsibility, making debugging and testing simpler.
+4. **Reusable** – Core mechanics can be reused across different entities or projects without duplication.
 
-Examples include dialogue systems, pathfinding, upgrade systems, grid-based inventories, and so on.
+## 📂 Organizing the GameContext & PlayerContext Folders
+
+Both `GameContext` and `PlayerContext` should be organized by **feature**. 
+This makes it easier to locate, maintain, and expand individual systems.
+
+Examples of features you might include:
+
+- **Inventory** – Handles player items, pickups, equipment, and item management.
+- **Score** – Tracks player progress, points, achievements, and leaderboards.
+- **Controllers/** – Manages inputs of movement, jumping, rotation, and physics interactions.
+- **Abilities/** – Manages player abilities and their cooldowns.
+
+This **feature-based organization** ensures each system has a clear responsibility and makes the codebase modular and scalable.
+
+---
+
+## 📂 Organizing the Modules Folder
+
+The **Modules** folder stores universal features and systems that can be reused across multiple projects. 
+This prevents code duplication and speeds up future development.
 
 ```
 Assets/
 │
 ├─ Modules/              
-   ├─ DialogueSystem/    # Dialogue and conversation system
-   ├─ UpgradeFeature/    # Character/item upgrade system
-   ├─ BehaviourTree/     # AI behavior trees
-   ├─ GridInventory/     # Grid-based inventory system
-
+│ ├─ DialogueSystem/ # Dialogue and conversation system
+│ ├─ UpgradeFeature/ # Character/item upgrade system
+│ ├─ BehaviourTree/ # AI behavior trees
+│ ├─ GridInventory/ # Grid-based inventory system
 ```
 
-This approach ensures that **reusable systems are separated from project-specific content**, making it easier to maintain, test, and extend them across different games.
+Modules are designed to be **independent of specific game logic**,  
+allowing you to easily plug them into any new project built on the same framework.
 
-<!---
-TODO: простые правила, что делает механика, в том домене она и лежит
-TODO: Как папка называется, то такой же UseCase
---->
+---
+
+## ✅ Summary
+
+| Folder      | Purpose                            |
+|-------------|------------------------------------|
+| **3rdParty** | External libraries and assets      |
+| **Game**    | Project-specific assets and code   |
+| **Modules** | Reusable, game-agnostic systems    |
+| **Plugins** | DLLs and third-party plugins       |
+| **Settings** | Configurations and global settings |
+| **Tools**  | Internal and editor utilities      |
+
+---
+
+> [!NOTE]
+> 🧩 Keep a simple rule in mind:  
+> *A mechanic should always live in the domain it belongs to.* 
+> The folder name should directly reflect the **use case** or **system** it represents.

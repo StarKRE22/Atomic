@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,31 +274,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="8028000" />
-    </task>
-    <task id="LOCAL-01749" summary="SceneEntityTags.md">
-      <option name="closed" value="true" />
-      <created>1761042855394</created>
-      <option name="number" value="01749" />
-      <option name="presentableId" value="LOCAL-01749" />
-      <option name="project" value="LOCAL" />
-      <updated>1761042855394</updated>
-    </task>
-    <task id="LOCAL-01750" summary="SceneEntityValues.md">
-      <option name="closed" value="true" />
-      <created>1761043073586</created>
-      <option name="number" value="01750" />
-      <option name="presentableId" value="LOCAL-01750" />
-      <option name="project" value="LOCAL" />
-      <updated>1761043073586</updated>
-    </task>
-    <task id="LOCAL-01751" summary="SceneEntityBehaviours.md">
-      <option name="closed" value="true" />
-      <created>1761043285844</created>
-      <option name="number" value="01751" />
-      <option name="presentableId" value="LOCAL-01751" />
-      <option name="project" value="LOCAL" />
-      <updated>1761043285844</updated>
+      <workItem from="1761120599533" duration="12257000" />
     </task>
     <task id="LOCAL-01752" summary="SceneEntityLifecycle.md">
       <option name="closed" value="true" />
@@ -667,7 +644,31 @@
       <option name="project" value="LOCAL" />
       <updated>1761128239714</updated>
     </task>
-    <option name="localTasksCounter" value="1798" />
+    <task id="LOCAL-01798" summary="OverrideEntityFactoriesWithBakers.md">
+      <option name="closed" value="true" />
+      <created>1761128762443</created>
+      <option name="number" value="01798" />
+      <option name="presentableId" value="LOCAL-01798" />
+      <option name="project" value="LOCAL" />
+      <updated>1761128762443</updated>
+    </task>
+    <task id="LOCAL-01799" summary="OverrideEntityFactoriesWithBakers.md">
+      <option name="closed" value="true" />
+      <created>1761128878238</created>
+      <option name="number" value="01799" />
+      <option name="presentableId" value="LOCAL-01799" />
+      <option name="project" value="LOCAL" />
+      <updated>1761128878238</updated>
+    </task>
+    <task id="LOCAL-01800" summary="PreferAbstractInterfaces.md">
+      <option name="closed" value="true" />
+      <created>1761149104109</created>
+      <option name="number" value="01800" />
+      <option name="presentableId" value="LOCAL-01800" />
+      <option name="project" value="LOCAL" />
+      <updated>1761149104109</updated>
+    </task>
+    <option name="localTasksCounter" value="1801" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,8 +695,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityDestruction.md" />
-    <MESSAGE value="SceneEntityCasting.md" />
     <MESSAGE value="SceneEntityProxy`1.md" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="SceneEntityProxies.md" />
@@ -719,7 +718,9 @@
     <MESSAGE value="IteratingReactiveCollections.md" />
     <MESSAGE value="ModularEntityInstallers.md" />
     <MESSAGE value="Пилим OverrideEntityFactoriesWithBakers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим OverrideEntityFactoriesWithBakers.md" />
+    <MESSAGE value="OverrideEntityFactoriesWithBakers.md" />
+    <MESSAGE value="PreferAbstractInterfaces.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="PreferAbstractInterfaces.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
