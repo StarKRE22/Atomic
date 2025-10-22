@@ -2,14 +2,29 @@
 
 ---
 
+## 📑 Table of Contents
+
+- [Overview](#overview)
+- [Why Use This Approach](#why-use-this-approach)
+- [Overriding the Factory](#overriding-the-factory)
+- [Example of Usage](#example-of-usage)
+- [Installer vs Baker](#installer-vs-baker)
+- [Summary](#summary)
+    - [Conclusion](#conclusion)
+
+---
+
 ## Overview
 
-When developing games in **C#** using **Unity**, it’s common to need **base entity creation via factories** while allowing **designers to tweak entity parameters directly in the scene**.
+When developing games in **C#** using **Unity**, it’s common to need **base entity creation via factories** while
+allowing **designers to tweak entity parameters directly in the scene**.
 
 Two main tools are used for this:
 
-- [ScriptableEntityFactory](../Entities/Factories/ScriptableEntityFactory.md) — creates new entities in memory based on a template.
-- [SceneEntityBaker](../Entities/Baking/Manual.md) — allows “baking” or overriding entity parameters directly in the Unity scene.
+- [ScriptableEntityFactory](../Entities/Factories/ScriptableEntityFactory.md) — creates new entities in memory based on
+  a template.
+- [SceneEntityBaker](../Entities/Baking/Manual.md) — allows “baking” or overriding entity parameters directly in the
+  Unity scene.
 
 ---
 
@@ -86,7 +101,7 @@ public abstract class UnitBaker : SceneEntityBaker<IUnitEntity>
 
 ---
 
-## Example Usage
+## Example of Usage
 
 Example implementation of `UnitFactory` and `UnitBaker` for a tank:
 
@@ -191,7 +206,8 @@ public sealed class LifeEntityBaker : IEntityInstaller<IUnitEntity>
 }
 ```
 
-In **Atomic.Elements**, there’s also an [Optional](../Elements/Utils/Optional.md) component, which allows overriding values directly in the inspector:
+In **Atomic.Elements**, there’s also an [Optional](../Elements/Utils/Optional.md) component, which allows overriding
+values directly in the inspector:
 
 ```csharp
 [Serializable]
@@ -215,11 +231,11 @@ public sealed class MoveEntityBaker : IEntityInstaller<IUnitEntity>
 
 ## Summary
 
-| Component                    | Where used | Purpose |
-|------------------------------|------------|---------|
-| **ScriptableEntityFactory**   | Code / ScriptableObject | Creates entities based on a base template |
-| **SceneEntityBaker**          | Unity scene | Overrides entity parameters |
-| **EntityInstaller**     | Part of Baker | Sets specific entity parameters and behaviors |
+| Component                   | Where used              | Purpose                                       |
+|-----------------------------|-------------------------|-----------------------------------------------|
+| **ScriptableEntityFactory** | Code / ScriptableObject | Creates entities based on a base template     |
+| **SceneEntityBaker**        | Unity scene             | Overrides entity parameters                   |
+| **EntityInstaller**         | Part of Baker           | Sets specific entity parameters and behaviors |
 
 ---
 

@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Headquarters/HeadquartersBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/OverrideEntityFactoriesWithBakers.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -277,15 +273,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="7532000" />
-    </task>
-    <task id="LOCAL-01748" summary="SceneEntityTags.md">
-      <option name="closed" value="true" />
-      <created>1761042775131</created>
-      <option name="number" value="01748" />
-      <option name="presentableId" value="LOCAL-01748" />
-      <option name="project" value="LOCAL" />
-      <updated>1761042775131</updated>
+      <workItem from="1761120599533" duration="8028000" />
     </task>
     <task id="LOCAL-01749" summary="SceneEntityTags.md">
       <option name="closed" value="true" />
@@ -671,7 +659,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761126143686</updated>
     </task>
-    <option name="localTasksCounter" value="1797" />
+    <task id="LOCAL-01797" summary="Пилим OverrideEntityFactoriesWithBakers.md">
+      <option name="closed" value="true" />
+      <created>1761128239714</created>
+      <option name="number" value="01797" />
+      <option name="presentableId" value="LOCAL-01797" />
+      <option name="project" value="LOCAL" />
+      <updated>1761128239714</updated>
+    </task>
+    <option name="localTasksCounter" value="1798" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityCreation.md" />
     <MESSAGE value="SceneEntityDestruction.md" />
     <MESSAGE value="SceneEntityCasting.md" />
     <MESSAGE value="SceneEntityProxy`1.md" />
@@ -723,7 +718,8 @@
     <MESSAGE value="IteratingOverEntity.md" />
     <MESSAGE value="IteratingReactiveCollections.md" />
     <MESSAGE value="ModularEntityInstallers.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ModularEntityInstallers.md" />
+    <MESSAGE value="Пилим OverrideEntityFactoriesWithBakers.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим OverrideEntityFactoriesWithBakers.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
