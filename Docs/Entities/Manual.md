@@ -71,8 +71,8 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 This section focuses on **runtime efficiency** within the framework. It provides detailed benchmarks, comparisons, and
 implementation notes that highlight how different systems and data structures perform under real-world conditions.
 
-- [Entities](Entities/EntityPerformance.md)
-- [Collections](Collections/EntityCollectionPerformance.md)
+- [Entities](Entities/Manual.md#-performance)
+- [Collections](Collections/Manual.md#-performance)
 
 ---
 

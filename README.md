@@ -424,6 +424,8 @@ The RTS Sample is designed to demonstrate **high-performance entity management**
 
 ---
 
+<!--
+
 ## 📌 Best Practices
 
 This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these
@@ -447,9 +449,7 @@ or multiplayer games.
 - [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-best-practice)
 
 
-
-
-
+-->
 
 
 ## 📌 Best Practices
@@ -457,6 +457,7 @@ or multiplayer games.
 This section outlines **recommended approaches and patterns** when working with the library. Following these
 practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
 or multiplayer games.
+
 - [Choosing Between Timer and Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
 - [Iterating over Entity](Docs/BestPractices/IteratingOverEntity.md)
 - [Iterating over EntityCollections](Docs/BestPractices/IteratingOverEntityCollections.md)
@@ -477,6 +478,7 @@ or multiplayer games.
 - [Using [SerializeReference] for Composite Actions](../BestPractices/UsingSerializeReferenceForCompositeActions.md)
 - [Using [SerializeReference] for PrintAction](../BestPractices/UsingSerializeReferenceForPrintActions.md)
 -
+
 
 ---
 
