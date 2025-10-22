@@ -5,24 +5,16 @@ functions, but they serve different purposes depending on your
 gameplay or system requirements. This document explains the distinction between them and provides guidelines for when to
 use each.
 
-<!--
 ## 📑 Table of Contents
 
-- [Overview](#overview)
 - [When to Use](#when-to-use)
 - [Key Differences](#key-differences)
 - [Summary](#summary)
 - [Example Scenarios](#example-scenarios)
----
-
-## Overview
--->
-
-
 
 ---
 
-## ⚙️ When to Use
+## When to Use
 
 | Use Case                                                                | Recommended Element                         | Description                                            |
 |-------------------------------------------------------------------------|---------------------------------------------|--------------------------------------------------------|
@@ -31,7 +23,7 @@ use each.
 
 ---
 
-## 🔍 Key Differences
+## Key Differences
 
 | Feature           | **Timer**                                                                                                                | **Cooldown**                                                                   |
 |-------------------|--------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
@@ -42,7 +34,7 @@ use each.
 
 ---
 
-## 🧭 Summary
+## Summary
 
 | If you need...                                              | Use          |
 |-------------------------------------------------------------|--------------|
@@ -51,7 +43,7 @@ use each.
 
 ---
 
-## 🧪 Example Scenarios
+## Example Scenarios
 
 - **Cooldown** — ideal for:
     - Weapon reload times

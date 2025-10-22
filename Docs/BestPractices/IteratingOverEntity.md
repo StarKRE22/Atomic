@@ -8,7 +8,14 @@ large number of elements.
 
 ---
 
-## ⚙️ Prefer Concrete Types
+## 📑 Table of Contents
+
+- [Prefer Concrete Types](#prefer-concrete-types)
+- [Summary](#-summary)
+
+---
+
+## Prefer Concrete Types
 
 When iterating via interfaces using [IEntity](../Entities/Entities/IEntity.md), the iterator may **box**, causing **heap
 allocations** and **GC pressure**. To avoid this, use the **concrete implementation type** whenever possible.
@@ -57,7 +64,7 @@ SceneEntity.BehaviourEnumerator behaviours = entity.GetBehaviourEnumerator();
 
 ---
 
-## 🧠 Summary
+## Summary
 
 | Use Case                                         | Recommendation                      |
 |--------------------------------------------------|-------------------------------------|

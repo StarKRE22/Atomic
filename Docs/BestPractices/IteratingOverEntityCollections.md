@@ -7,7 +7,14 @@ of elements.
 
 ---
 
-## ⚙️ Prefer Concrete Types
+## 📑 Table of Contents
+
+- [Prefer Concrete Types](#prefer-concrete-types)
+- [Summary](#summary)
+
+---
+
+## Prefer Concrete Types
 
 When iterating via interfaces such
 as [IReadOnlyEntityCollection\<E>](../Entities/Collections/IReadOnlyEntityCollection%601.md)
@@ -89,7 +96,7 @@ foreach (IEntity entity in filter)
 
 ---
 
-## 🧠 Summary
+## Summary
 
 | Use Case                                                                       | Recommendation                      |
 |--------------------------------------------------------------------------------|-------------------------------------|
