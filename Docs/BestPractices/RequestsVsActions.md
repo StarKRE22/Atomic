@@ -1,21 +1,36 @@
 # 📌 Requests vs Actions
 
-When designing game mechanics, you may often wonder **what the difference is between `Requests` and `Actions`**, since both perform operations. Which one should you choose in a given situation?
+When designing game mechanics, you might wonder **what the difference is
+between [Requests](../Elements/Requests/Manual.md) and [Actions](../Elements/Actions/Manual.md)**, since both
+perform operations.
+This section explains when to use each and how they behave in practice.
+
+---
+
+## 📑 Table of Contents
+
+- [Actions](#-actions)
+- [Requests](#-requests)
+- [Multiplayer Considerations](#-multiplayer-considerations)
+- [Conclusion](#-conclusion)
 
 ---
 
 ## 🏹 Actions
 
-An **Action** executes immediately. For example, if a character triggers a shooting action or interact with pick up, it is performed instantly:
+An **Action** executes **immediately**.  
+For example, if a character fires a weapon or interacts with a pick-up, it happens instantly.
 
-### 1. Shooting weapon
+### 1. Shooting a weapon
+
 ```csharp
 IEntity character = ...
 IAction fireAction = character.GetFireAction();
 fireAction.Invoke(); // Executes immediately!
 ```
 
-### 2. Interacting with item
+### 2. Interacting with an item
+
 ```csharp
 IEntity character = ...
 IEntity pickUp = ...
@@ -28,17 +43,22 @@ interactAction.Invoke(character); // Executes immediately!
 
 ## ⏳ Requests
 
-A **Request** has a slightly different nature: it represents a deferred action that can be executed later. This is particularly useful when **player input occurs in `Update`**, but the request is processed in `FixedUpdate`. Requests also prevent **duplicate commands** if the same request is already active.
+A **Request** represents a **deferred action** that can be executed later.  
+This is useful when:
+
+- Player input happens in `Update`, but execution occurs in `FixedUpdate`.
+- You want to **prevent duplicate commands** if the same request is already active.
 
 ### 1. Move Input Using Requests
-This example demonstrates how a `MoveController` can **produce a request in update**, and `MoveBehaviour` can **consume it later in fixed update**:
+
+**MoveController** produces a request in `Tick`, and **MoveBehaviour** consumes it in `FixedTick`:
 
 ```csharp
 // MoveController produces the request
 public sealed class MoveController : IEntityInit, IEntityTick
 {
     private IRequest<Vector3> _moveRequest;
-    
+
     public void Init(IEntity entity)
     {
         _moveRequest = entity.GetMoveRequest();    
@@ -76,7 +96,8 @@ public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
 ```
 
 ### 2. Target Following Using Requests
-In this example, a `AIFollowBehaviour` triggers a movement request, which is later processed by `MoveBehaviour`:
+
+An AI system can produce a movement request, which is later processed by `MoveBehaviour`:
 
 ```csharp
 // AIFollowBehaviour produces the request
@@ -86,7 +107,7 @@ public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
     private IValue<Vector3> _position;
     private IRequest<Vector3> _moveRequest;
     private IValue<float> _stoppingDistance;
-    
+
     public void Init(IEntity entity)
     {
         _target = entity.GetTarget();
@@ -110,37 +131,30 @@ public sealed class AIFollowBehaviour : IEntityInit, IEntityTick
     }
 }
 
-// MoveBehaviour consumes the request
-public sealed class MoveBehaviour : IEntityInit, IEntityFixedTick
-{
-    //Same code 
-}
+// Same MoveBehaviour consumes the request (same as above)
 ```
 
 ---
 
-## 🕹 About Multiplayer
+## 🕹 Multiplayer Considerations
 
-In multiplayer games, **Actions are generally preferred over Requests** because:
+In multiplayer games:
 
-- The client's **tick-rate is synchronized and re-simulated**, making immediate execution more reliable.
-- Using Requests would require **additional network synchronization** for request flags, which adds unnecessary complexity.
+- **Actions** are generally preferred because client tick-rates are synchronized and re-simulated, making immediate
+  execution reliable.
+- Using **Requests** would require additional network synchronization for request flags, adding complexity.
 
 ---
 
-
 ## 🏁 Conclusion
+
 **Choose Requests for deferred logic, Actions for immediate execution.**
 
 - **Single-player games**  
-  Use **Requests** in systems like `InputControllers` or `AI`.  
-  Requests allow **deferred execution**, ensuring actions are handled cleanly in the next frame without duplication.
+  Use **Requests** for systems like `InputControllers` or AI.  
+  They allow deferred execution, preventing duplicates and keeping input handling clean.
 
 
 - **Multiplayer / networked games**  
-  Use **Actions** to propagate events and commands across clients.  
-  Actions are better for **decoupling and broadcasting behavior**.
-
----
-
-
+  Use **Actions** to propagate events across clients.  
+  Actions are better for broadcasting behavior and decoupling systems.

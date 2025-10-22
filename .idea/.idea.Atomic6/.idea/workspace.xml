@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ProjectFolderOrganization.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/RequestConditionActionEvent.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/RequestConditionActionEvent.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,23 +273,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="12257000" />
-    </task>
-    <task id="LOCAL-01752" summary="SceneEntityLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1761044281699</created>
-      <option name="number" value="01752" />
-      <option name="presentableId" value="LOCAL-01752" />
-      <option name="project" value="LOCAL" />
-      <updated>1761044281699</updated>
-    </task>
-    <task id="LOCAL-01753" summary="SceneEntityLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1761044376642</created>
-      <option name="number" value="01753" />
-      <option name="presentableId" value="LOCAL-01753" />
-      <option name="project" value="LOCAL" />
-      <updated>1761044376642</updated>
+      <workItem from="1761120599533" duration="12708000" />
     </task>
     <task id="LOCAL-01754" summary="SceneEntityInstalling.md">
       <option name="closed" value="true" />
@@ -668,7 +651,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761149104109</updated>
     </task>
-    <option name="localTasksCounter" value="1801" />
+    <task id="LOCAL-01801" summary="ProjectFolderOrganization.md">
+      <option name="closed" value="true" />
+      <created>1761152012581</created>
+      <option name="number" value="01801" />
+      <option name="presentableId" value="LOCAL-01801" />
+      <option name="project" value="LOCAL" />
+      <updated>1761152012581</updated>
+    </task>
+    <task id="LOCAL-01802" summary="ProjectFolderOrganization.md">
+      <option name="closed" value="true" />
+      <created>1761152057868</created>
+      <option name="number" value="01802" />
+      <option name="presentableId" value="LOCAL-01802" />
+      <option name="project" value="LOCAL" />
+      <updated>1761152057868</updated>
+    </task>
+    <option name="localTasksCounter" value="1803" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,7 +694,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityProxy`1.md" />
     <MESSAGE value="SceneEntityProxy.md" />
     <MESSAGE value="SceneEntityProxies.md" />
     <MESSAGE value="Entities Manual.md" />
@@ -720,7 +718,8 @@
     <MESSAGE value="Пилим OverrideEntityFactoriesWithBakers.md" />
     <MESSAGE value="OverrideEntityFactoriesWithBakers.md" />
     <MESSAGE value="PreferAbstractInterfaces.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="PreferAbstractInterfaces.md" />
+    <MESSAGE value="ProjectFolderOrganization.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ProjectFolderOrganization.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
