@@ -2,9 +2,9 @@
 
 When using entities such
 as [Entity](../Entities/Entities/Entity.md), [SceneEntity](../Entities/Entities/SceneEntity.md),
-or [IEntity](../Entities/Entities/IEntity.md), it is important to understand that  
-**each iteration over tags, values and behaviours introduces a small overhead**. Knowing how to **optimize performance**
-becomes crucial when working with a large number of elements.
+or [IEntity](../Entities/Entities/IEntity.md), it is important to understand that **each iteration over tags, values and
+behaviours introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working with a
+large number of elements.
 
 ---
 
