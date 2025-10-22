@@ -12,7 +12,8 @@ with a large number of elements.
 
 - [Prefer Concrete Types](#prefer-concrete-types)
 - [Iterating over ReactiveArray & ReactiveList](#iterating-over-reactivearray--reactivelist)
-- [Summary](#-summary)
+- [Iterating over ReactiveLinkedList, ReactiveDictionary, ReactiveHashSet](#iterating-over-reactivelinkedlist-reactivedictionary-reactivehashset)
+- [Summary](#summary)
 
 ---
 
@@ -106,7 +107,7 @@ for (int i = 0, count = items.Count; i < count; i++)
 
 ---
 
-## 3️⃣ Iterating over ReactiveLinkedList, ReactiveDictionary, ReactiveHashSet
+## Iterating over ReactiveLinkedList, ReactiveDictionary, ReactiveHashSet
 
 In contrast to arrays and lists, **always prefer `foreach` over `for`**  
 when iterating
@@ -153,7 +154,7 @@ foreach (string item in items)
 
 ---
 
-## 🧠 Summary
+## Summary
 
 | Case                                                                | Recommendation                    |
 |---------------------------------------------------------------------|-----------------------------------|

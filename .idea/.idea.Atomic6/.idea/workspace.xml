@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollections.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingReactiveCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingReactiveCollections.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,23 +280,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="3772000" />
-    </task>
-    <task id="LOCAL-01743" summary="EntityLifecycle.md">
-      <option name="closed" value="true" />
-      <created>1761034095283</created>
-      <option name="number" value="01743" />
-      <option name="presentableId" value="LOCAL-01743" />
-      <option name="project" value="LOCAL" />
-      <updated>1761034095283</updated>
-    </task>
-    <task id="LOCAL-01744" summary="EntityDebug.md">
-      <option name="closed" value="true" />
-      <created>1761035076392</created>
-      <option name="number" value="01744" />
-      <option name="presentableId" value="LOCAL-01744" />
-      <option name="project" value="LOCAL" />
-      <updated>1761035076392</updated>
+      <workItem from="1761120599533" duration="4851000" />
     </task>
     <task id="LOCAL-01745" summary="SceneEntity.md">
       <option name="closed" value="true" />
@@ -678,7 +658,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761122932076</updated>
     </task>
-    <option name="localTasksCounter" value="1792" />
+    <task id="LOCAL-01792" summary="IteratingOverEntityCollections.md">
+      <option name="closed" value="true" />
+      <created>1761124465287</created>
+      <option name="number" value="01792" />
+      <option name="presentableId" value="LOCAL-01792" />
+      <option name="project" value="LOCAL" />
+      <updated>1761124465287</updated>
+    </task>
+    <task id="LOCAL-01793" summary="IteratingOverEntity.md">
+      <option name="closed" value="true" />
+      <created>1761124643256</created>
+      <option name="number" value="01793" />
+      <option name="presentableId" value="LOCAL-01793" />
+      <option name="project" value="LOCAL" />
+      <updated>1761124643256</updated>
+    </task>
+    <option name="localTasksCounter" value="1794" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +701,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityDebug.md" />
     <MESSAGE value="SceneEntityEditor.md" />
     <MESSAGE value="CreateArgs" />
     <MESSAGE value="SceneEntityCreation.md" />
@@ -729,6 +724,7 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал AtomicAPI" />
     <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
+    <MESSAGE value="IteratingOverEntityCollections.md" />
     <MESSAGE value="IteratingOverEntity.md" />
     <option name="LAST_COMMIT_MESSAGE" value="IteratingOverEntity.md" />
   </component>
