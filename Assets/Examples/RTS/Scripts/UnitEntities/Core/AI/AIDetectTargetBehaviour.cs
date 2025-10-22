@@ -40,7 +40,7 @@ namespace RTSGame
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void AssignTarget()
         {
-            IUnitEntity enemy = GameEntitiesUseCase.FindFreeEnemyFor(_gameContext, _entity);
+            IUnitEntity enemy = UnitsUseCase.FindFreeEnemyFor(_gameContext, _entity);
             if (enemy != null) 
                 enemy.AddTargetedTag();
             

@@ -27,6 +27,6 @@ namespace RTSGame
             _health.OnHealthEmpty -= this.OnHealthEmpty;
         }
 
-        private void OnHealthEmpty() => GameEntitiesUseCase.Despawn(_gameContext, _entity);
+        private void OnHealthEmpty() => UnitsUseCase.Despawn(_gameContext, _entity);
     }
 }

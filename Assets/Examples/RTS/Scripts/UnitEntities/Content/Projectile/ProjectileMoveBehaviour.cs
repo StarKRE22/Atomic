@@ -45,7 +45,7 @@ namespace RTSGame
             }
             else if (DamageUseCase.DealDamage(_entity, target))
             {
-                GameEntitiesUseCase.Despawn(_gameContext, _entity);
+                UnitsUseCase.Despawn(_gameContext, _entity);
             }
         }
     }

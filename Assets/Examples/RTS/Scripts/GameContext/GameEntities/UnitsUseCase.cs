@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTSGame
 {
-    public static class GameEntitiesUseCase
+    public static class UnitsUseCase
     {
         public static IUnitEntity Spawn(
             IGameContext context,

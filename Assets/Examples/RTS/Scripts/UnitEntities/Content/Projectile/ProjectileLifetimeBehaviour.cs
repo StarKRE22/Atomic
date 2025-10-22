@@ -29,7 +29,7 @@ namespace RTSGame
         {
             _lifetime.Tick(deltaTime);
             if (_lifetime.IsCompleted())
-                GameEntitiesUseCase.Despawn(_gameContext, _entity);
+                UnitsUseCase.Despawn(_gameContext, _entity);
         }
     }
 }
