@@ -1,21 +1,21 @@
-# 📌 Override Entity Factories With Bakers
+# 📌 Overriding Entity Factories With Bakers
 
 ---
 
 ## Overview
 
-When developing games in **C#** using **Unity**, it’s common to need **base entity creation via factories** while allowing game designers to **tweak entity parameters directly in the scene**.
+When developing games in **C#** using **Unity**, it’s common to need **base entity creation via factories** while allowing **designers to tweak entity parameters directly in the scene**.
 
-To achieve this, two main tools are used:
+Two main tools are used for this:
 
 - [ScriptableEntityFactory](../Entities/Factories/ScriptableEntityFactory.md) — creates new entities in memory based on a template.
 - [SceneEntityBaker](../Entities/Baking/Manual.md) — allows “baking” or overriding entity parameters directly in the Unity scene.
 
 ---
 
-## Why use this approach
+## Why Use This Approach
 
-Factories create entities with predefined configurations, e.g.:
+Factories create entities with predefined configurations, for example:
 
 - A tank with 10 health points
 - A unit with base damage and movement
@@ -27,24 +27,24 @@ However, designers often need to **modify parameters directly in the scene**:
 - Set color or team
 - Enable/disable specific components
 
-**SceneEntityBakers** allow you to layer overrides on top of the factory-created entities.
+**SceneEntityBakers** allow you to layer overrides on top of factory-created entities.
 
 ---
 
-## Overriding Factory
+## Overriding the Factory
 
 The **base factory** is responsible for creating entities in memory with a predefined structure.  
 It separates **entity creation** from **entity configuration**, allowing Scene Bakers to later override specific parts.
 
 ```csharp
-// Assume we have a specific type of IEntity
+// Interface for a specific type of IEntity
 public interface IUnitEntity : IEntity
 {
 }
 ```
 
 ```csharp
-// Factory that create a new Unit Entities
+// Factory for creating new Unit Entities
 public abstract class UnitFactory : ScriptableEntityFactory<IUnitEntity>
 {
     public string Name => this.name;
@@ -65,15 +65,14 @@ public abstract class UnitFactory : ScriptableEntityFactory<IUnitEntity>
 }
 ```
 
-To override unit configuration on a scene we can define a specific type of the baker 
+To override unit configuration in a scene, a specific type of Baker can be defined:
 
 ```csharp
-
 public abstract class UnitBaker : SceneEntityBaker<IUnitEntity>
 {
     [SerializeField]
     private UnitFactory _factory;
-    
+
     protected sealed override IUnitEntity Create()
     {
         IUnitEntity entity = _factory.Create();
@@ -87,14 +86,14 @@ public abstract class UnitBaker : SceneEntityBaker<IUnitEntity>
 
 ---
 
-## Example of Usage
+## Example Usage
 
-Below is an example of implementation `UnitFactory` & `UnitBaker` как танк 
+Example implementation of `UnitFactory` and `UnitBaker` for a tank:
 
 ```csharp
 [CreateAssetMenu(
     fileName = "TankFactory",
-    menuName = "RTSGame/GameEntities/New TankFactory"
+    menuName = "Example/New TankFactory"
 )]
 public sealed class TankFactory : UnitFactory
 {
@@ -116,7 +115,6 @@ public sealed class TankFactory : UnitFactory
         entity.Install(_aiInstaller);
     }
 }
-
 ```
 
 ```csharp
@@ -145,9 +143,11 @@ public sealed class TankBaker : UnitBaker
 }
 ```
 
-Ниже приведены примеры в чем отличие Installer и Baker
+---
 
+## Installer vs Baker
 
+The difference between Installer and Baker is shown below.
 
 ```csharp
 [Serializable]
@@ -170,18 +170,15 @@ public sealed class LifeEntityInstaller : IEntityInstaller<IUnitEntity>
 [Serializable]
 public sealed class LifeEntityBaker : IEntityInstaller<IUnitEntity>
 {
-[SerializeField] private bool _active;
+    [SerializeField] 
+    private bool _active;
 
     [Space]
-#if ODIN_INSPECTOR
-    [EnableIf(nameof(_active))]
-#endif
-    [SerializeField] private int _current;
+    [SerializeField] 
+    private int _current;
 
-#if ODIN_INSPECTOR
-    [EnableIf(nameof(_active))]
-#endif
-    [SerializeField] private int _max;
+    [SerializeField] 
+    private int _max;
 
     public void Install(IUnitEntity entity)
     {
@@ -194,7 +191,7 @@ public sealed class LifeEntityBaker : IEntityInstaller<IUnitEntity>
 }
 ```
 
-Также в Atomic.Elements есть компонент `Optional`, который позволяет переопределять по необходимости галочки в инспекторе
+In **Atomic.Elements**, there’s also an [Optional](../Elements/Utils/Optional.md) component, which allows overriding values directly in the inspector:
 
 ```csharp
 [Serializable]
@@ -203,7 +200,7 @@ public sealed class MoveEntityBaker : IEntityInstaller<IUnitEntity>
     [SerializeField]
     private Optional<float> _moveSpeed;
 
-    [SerializeField]
+    [SerializeField] 
     private Optional<float> _rotationSpeed;
 
     public void Install(IUnitEntity entity)
@@ -218,12 +215,11 @@ public sealed class MoveEntityBaker : IEntityInstaller<IUnitEntity>
 
 ## Summary
 
-| Component                        | Where used | Purpose |
-|----------------------------------|------------|---------|
-| **ScriptableEntityFactory**      | In code / ScriptableObject | Creates entities based on a base template |
+| Component                    | Where used | Purpose |
+|------------------------------|------------|---------|
+| **ScriptableEntityFactory**   | Code / ScriptableObject | Creates entities based on a base template |
 | **SceneEntityBaker**          | Unity scene | Overrides entity parameters |
-| **IEntityInstaller / Bakers** | Part of Baker | Sets specific entity parameters and behaviors |
-| **Scene configuration**       | Unity Inspector | Allows designers to tweak entity characteristics |
+| **EntityInstaller**     | Part of Baker | Sets specific entity parameters and behaviors |
 
 ---
 
