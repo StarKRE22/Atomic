@@ -1,6 +1,6 @@
 # 📌 Choosing Between Timer and Cooldown
 
-## 📑Table of Contents
+## 📑 Table of Contents
 
 - [Overview](#overview)
 - [When to Use](#when-to-use)
