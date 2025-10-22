@@ -19,6 +19,7 @@ system is a **composition**.
     - [Tags](#-tags)
     - [Values](#-values)
     - [Behaviours](#-behaviours)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -410,3 +411,9 @@ include addition, removal, and indexed access.
 
 > Behaviours combine fast index access with flexibility to store duplicate references, though some operations are
 > **O(n)** in the worst case.
+
+---
+
+## 📌 Best Practices
+
+- [Iterating over Entity Tags, Values and Behaviours](../../BestPractices/IteratingOverEntity.md) <!-- + -->

@@ -83,7 +83,7 @@ Below are references to best practices for using `Atomic.Elements` with the [Ato
 - [Requests vs Actions](../BestPractices/RequestsVsActions.md)
 - [Request-Condition-Action-Event Flow](../BestPractices/RequestConditionActionEvent.md)
 - [Using Cooldown with Entities](../BestPractices/UsingCooldownInGameMechanics.md)
-- [Timers vs Cooldowns](../BestPractices/ChosingBetweenTimerAndCooldown.md)
+- [Timers vs Cooldowns](../BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
 - [DisposeComposite in EntityInstallers](../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
 - [PlayMode & EditMode for EntityInstallers](../BestPractices/UsingUtilsForEntityInstallers.md)
 - [Iterating over ReactiveCollections](../BestPractices/IteratingReactiveCollections.md)

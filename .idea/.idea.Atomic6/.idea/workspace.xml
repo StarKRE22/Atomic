@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_DEV/Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,23 +279,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="679000" />
-    </task>
-    <task id="LOCAL-01740" summary="EntityTags.md">
-      <option name="closed" value="true" />
-      <created>1761033412400</created>
-      <option name="number" value="01740" />
-      <option name="presentableId" value="LOCAL-01740" />
-      <option name="project" value="LOCAL" />
-      <updated>1761033412400</updated>
-    </task>
-    <task id="LOCAL-01741" summary="EntityValues.md">
-      <option name="closed" value="true" />
-      <created>1761033573864</created>
-      <option name="number" value="01741" />
-      <option name="presentableId" value="LOCAL-01741" />
-      <option name="project" value="LOCAL" />
-      <updated>1761033573864</updated>
+      <workItem from="1761120599533" duration="2112000" />
     </task>
     <task id="LOCAL-01742" summary="EntityBehaviours.md">
       <option name="closed" value="true" />
@@ -675,7 +657,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761082225550</updated>
     </task>
-    <option name="localTasksCounter" value="1789" />
+    <task id="LOCAL-01789" summary="ChoosingBetweenTimerAndCooldown.md">
+      <option name="closed" value="true" />
+      <created>1761121299530</created>
+      <option name="number" value="01789" />
+      <option name="presentableId" value="LOCAL-01789" />
+      <option name="project" value="LOCAL" />
+      <updated>1761121299530</updated>
+    </task>
+    <task id="LOCAL-01790" summary="ChoosingBetweenTimerAndCooldown.md">
+      <option name="closed" value="true" />
+      <created>1761121308063</created>
+      <option name="number" value="01790" />
+      <option name="presentableId" value="LOCAL-01790" />
+      <option name="project" value="LOCAL" />
+      <updated>1761121308063</updated>
+    </task>
+    <option name="localTasksCounter" value="1791" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -702,7 +700,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityInstalling.md" />
     <MESSAGE value="SceneEntityGizmos.md" />
     <MESSAGE value="SceneEntityDebug.md" />
     <MESSAGE value="SceneEntityEditor.md" />
@@ -727,7 +724,8 @@
     <MESSAGE value="API Generation!" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал AtomicAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал AtomicAPI" />
+    <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChoosingBetweenTimerAndCooldown.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

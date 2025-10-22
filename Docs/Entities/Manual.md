@@ -71,11 +71,11 @@ usage examples, lifecycle details, and integration notes to help you build, exte
 This section focuses on **runtime efficiency** within the framework. It provides detailed benchmarks, comparisons, and
 implementation notes that highlight how different systems and data structures perform under real-world conditions.
 
-- [Entities](Entities/Manual.md#-performance)
-- [Collections](Collections/Manual.md#-performance)
+- [Entity](Entities/Manual.md#-performance)
+- [EntityCollection](Collections/Manual.md#-performance)
 
 ---
 
 ## 📌 Best Practices
 
-TO BE ADDED
+- [Iterating over Entity Tags, Values and Behaviours](../BestPractices/IteratingOverEntity.md) <!-- + -->
