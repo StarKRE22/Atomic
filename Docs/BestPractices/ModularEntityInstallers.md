@@ -1,12 +1,26 @@
-# 📌 Modular Entity Installers
+# 📌 Modular EntityInstallers
 
-When developing game entities, a common question arises: **how to organize [EntityInstallers](../Entities/Installers/IEntityInstaller.md) for maintainability and scalability**? Here are several approaches.
+When developing game [entities](../Entities/Entities/Manual.md), a common question arises: **how to
+organize [EntityInstallers](../Entities/Installers/IEntityInstaller.md) for maintainability and scalability**? Here are
+several approaches.
 
 ---
+
+## 📑 Table of Contents
+
+- [Method 1: Split by Comments](#ex1)
+- [Method 2: Split by Methods](#ex2)
+- [Method 3: Modular Installers](#ex3)
+- [Summary](#summary)
+
+---
+
+<div id="ex1"></div>
 
 ## 🧩 Method 1: Split by Comments
 
 **This approach organizes installation by logical sections within a single installer.**
+
 ```csharp
 public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 {
@@ -40,9 +54,12 @@ public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 
 ---
 
+<div id="ex2"></div>
+
 ## 🧩 Method 2: Split by Methods
 
 **You can split installation into multiple methods for clarity:**
+
 ```csharp
 public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 {
@@ -86,6 +103,8 @@ public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 
 ---
 
+<div id="ex3"></div>
+
 ## 🧩 Method 3: Modular Installers
 
 **For entities that share mechanics (e.g., characters and enemies), create **modular installers**:**
@@ -115,6 +134,7 @@ public class TeamEntityInstaller : IEntityInstaller<IGameEntity>
     }
 }
 ```
+
 ```csharp
 [Serializable]
 public class MovementEntityInstaller : IEntityInstaller<IGameEntity>
@@ -144,9 +164,10 @@ public class RotationEntityInstaller : IEntityInstaller<IGameEntity>
     }
 }
 ```
-  
 
-### Example: Character Installation
+Below are examples of using modular installers
+
+### 🗂 Example #1: Character Installation
 
 ```csharp
 public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
@@ -170,7 +191,7 @@ public sealed class CharacterInstaller : SceneEntityInstaller<IGameEntity>
 }
 ```
 
-### Example: Enemy Installation
+### 🗂 Example #2: Enemy Installation
 
 ```csharp
 public sealed class EnemyInstaller : SceneEntityInstaller<IGameEntity>
@@ -195,3 +216,19 @@ public sealed class EnemyInstaller : SceneEntityInstaller<IGameEntity>
 ```
 
 > Modular installers allow **reuse of mechanics** across many entities while keeping code clean and scalable.
+
+---
+
+## Summary
+
+| Approach               | Description                               | Best For                       |
+|------------------------|-------------------------------------------|--------------------------------|
+| **Split by Comments**  | Organize by code regions in one installer | Small, unique entities         |
+| **Split by Methods**   | Improves readability and structure        | Mid-size entities              |
+| **Modular Installers** | Reusable, composable features             | Large or shared entity systems |
+
+---
+
+**In short:**
+> Use **modular installers** to maximize code reuse and maintainability while keeping your entity setup clean and
+> scalable.
