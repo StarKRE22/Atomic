@@ -22,8 +22,9 @@ namespace RTSGame
             entity.Install(_transformBaker);
         }
 
-        private void OnValidate()
+        protected override void OnValidate()
         {
+            base.OnValidate();
             _teamBaker.OnValidate();
         }
     }
