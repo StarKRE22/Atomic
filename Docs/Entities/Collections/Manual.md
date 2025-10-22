@@ -178,7 +178,7 @@ are essential.
 
 ## 📌 Best Practices
 
-- [Iterating over EntityCollections](../../BestPractices/IteratingOverEntityCollections.md)
+- [Iterating over EntityCollections, Worlds and Filters.](../../BestPractices/IteratingOverEntityCollections.md)  <!-- + -->
 
 ---
 

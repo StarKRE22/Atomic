@@ -17,6 +17,7 @@ track of entities that match a predicate.
     - [Chained Filtering Example](#ex4)
     - [Advanced Usage with Events](#ex5)
 - [API Reference](#-api-reference)
+- [Notes](#-notes)
 - [Best Practices](#-best-practices)
 - [Performance Considerations](#-performance-considerations)
 
@@ -219,7 +220,7 @@ Below is a list of available filter types:
 
 ---
 
-## 📌 Best Practices
+## 📝 Notes
 
 1. **Reuse Filters** – Create once, use multiple times
 2. **Chain Filters** – Use filtered results as source for other filters
@@ -227,6 +228,12 @@ Below is a list of available filter types:
 4. **Appropriate Triggers** – Only use triggers for values that affect filter
 5. **Dispose Filters** – Call Dispose() to unsubscribe from events
 6. **Cache Results** – Store filter results if used multiple times per frame
+
+---
+
+## 📌 Best Practices
+
+- [Iterating over EntityCollections, Worlds and Filters.](../../BestPractices/IteratingOverEntityCollections.md)  <!-- + -->
 
 ---
 

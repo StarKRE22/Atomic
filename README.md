@@ -460,6 +460,7 @@ or multiplayer games.
 
 - [Timer vs Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
 - [Iterating over Entity Tags, Values and Behaviours](Docs/BestPractices/IteratingOverEntity.md) <!-- + -->
+- [Iterating over EntityCollections, Worlds and Filters.](Docs/BestPractices/IteratingOverEntityCollections.md) <!-- + -->
 
 
 
@@ -472,7 +473,6 @@ or multiplayer games.
 
 - 
 - 
-- [Iterating over EntityCollections](Docs/BestPractices/IteratingOverEntityCollections.md)
 - [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)  <!-- + -->
 - [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)  <!-- + -->
 - [Overr]

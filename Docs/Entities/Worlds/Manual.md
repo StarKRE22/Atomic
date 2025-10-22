@@ -9,11 +9,24 @@ collection operations and high-level control over entity behavior.
 
 ---
 
+## 📑 Table of Contents
+
+- [Examples of Usage](#-examples-of-usage)
+    - [Generic EntityWorld](#ex1)
+    - [Non-Generic EntityWorld](#ex2)
+    - [Unity-Specific EntityWorld](#ex3)
+    - [Auto-Scanning Entities](#ex4)
+- [API Reference](#-api-reference)
+- [Notes](#-notes)
+- [Best Practices](#-best-practices)
+
+---
+
 ## 🗂 Examples of Usage
 
 <div id="ex1"></div>
 
-### 1️⃣ Generic World
+### 1️⃣ Generic EntityWorld
 
 ```csharp
 IEntityWorld<GameEntity> world = new EntityWorld<GameEntity>("GameWorld");
@@ -27,7 +40,7 @@ world.Tick(0.016f);
 
 <div id="ex2"></div>
 
-### 2️⃣ Non-Generic World
+### 2️⃣ Non-Generic EntityWorld
 
 ```csharp
 IEntityWorld world = new EntityWorld("GeneralWorld");
@@ -40,7 +53,7 @@ world.Add(new Entity("Prop"));
 
 <div id="ex3"></div>
 
-### 3️⃣ Unity-Specific World
+### 3️⃣ Unity-Specific EntityWorld
 
 ```csharp
 SceneEntityWorld sceneWorld = SceneEntityWorld.Create("LevelWorld", scanEntities: true);
@@ -89,3 +102,9 @@ There are available interfaces and implementations of the entity world:
 - Event system (`OnAdded`, `OnRemoved`, `OnEnabled`, `OnTicked`) supports **reactive architectures**.
 - Worlds support **enable/disable** and a full update cycle (`Tick`, `FixedTick`, `LateTick`).
 - All worlds are compatible with **IEntityCollection** and inherit its base functionality.
+
+---
+
+## 📌 Best Practices
+
+- [Iterating over EntityCollections, Worlds and Filters.](../../BestPractices/IteratingOverEntityCollections.md)  <!-- + -->

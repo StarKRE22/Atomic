@@ -1,128 +1,176 @@
-# 📌 Iterating over Entity Collections
+# 📌 Iterating over EntityCollections, Worlds and Filters.
 
-When using reactive collections such
-as [ReactiveArray](../Elements/Collections/ReactiveArray.md), [ReactiveList](../Elements/Collections/ReactiveList.md), [ReactiveLinkedList](../Elements/Collections/ReactiveLinkedList.md), [ReactiveHashSet](../Elements/Collections/ReactiveHashSet.md),
-and [ReactiveDictionary](../Elements/Collections/ReactiveDictionary.md), it is important to understand that **each
-reactive wrapper introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working
+When using [EntityCollections](../Entities/Collections/Manual.md), [EntityWorlds](../Entities/Worlds/Manual.md)
+or [EntityFilters](../Entities/Filters/Manual.md), it is important to understand that **each iteration over entities
+introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when working with a large number
+of elements.
+
+---
+
+## ⚙️ Prefer Concrete Types
+
+When iterating via interfaces such
+as [IReadOnlyEntityCollection\<E>](../Entities/Collections/IReadOnlyEntityCollection%601.md)
+or [IEntityWorld](../Entities/Worlds/IEntityWorld.md), the iterator may **box**, causing **heap allocations** and **GC
+pressure**. To avoid this, use the **concrete collection type** whenever possible.
+
+---
+
+### ❌ Has Boxing (IEntityCollection)
+
+```csharp
+// Assume we have an instance of IEntityCollection
+IEntityCollection collection = ...;
+
+// Reference type of "IEnumerator<IEntity>"
+foreach (IEntity entity in collection)
+{
+    ...
+}
+```
+
+---
+
+### ❌ Has Boxing (IEntityWorld)
+
+```csharp
+// Assume we have an instance of IEntityWorld
+IEntityWorld world = ...;
+
+// Reference type of "IEnumerator<IEntity>"
+foreach (IEntity entity in world)
+{
+    ...
+}
+```
+
+---
+
+### ✅ No Boxing (EntityCollection)
+
+```csharp
+// Assume we have an instance of EntityCollection
+EntityCollection collection = ...;
+
+// Value type of "EntityCollection.Enumerator"
+foreach (IEntity entity in collection)
+{
+    ...
+}
+```
+
+---
+
+### ✅ No Boxing (EntityWorld)
+
+```csharp
+// Assume we have an instance of EntityWorld
+EntityWorld world = ...;
+
+// Value type of "EntityCollection.Enumerator"
+foreach (IEntity entity in world)
+{
+    ...
+}
+```
+
+### ✅ No Boxing (EntityFilter)
+
+```csharp
+// Assume we have an instance of EntityFilter
+EntityFilter filter = ...;
+
+// Value type of "EntityCollection.Enumerator"
+foreach (IEntity entity in filter)
+{
+    ...
+}
+```
+
+---
+
+## 🧠 Summary
+
+| Use Case                                                                       | Recommendation                      |
+|--------------------------------------------------------------------------------|-------------------------------------|
+| Iterating via `IEntityCollection` or `IEntityWorld` interfaces                 | ⚠️ Causes boxing and GC allocations |
+| Iterating via concrete types (`EntityCollection`, `EntityWorld`, `EntityFilter`) | ✅ No boxing, zero allocations       |
+| Working with large collections of entities                                     | 🚀 Always prefer concrete types     |
+
+---
+
+**In short:**
+> When iterating entities, use concrete collection types (`EntityCollection`, `EntityWorld`) to avoid boxing and
+> unnecessary allocations.
+
+
+<!--
+
+When
+using [EntityCollections](../Entities/Collections/Manual.md), [EntityWorlds](../Entities/Worlds/Manual.md), [EntityFilters](../Entities/Filters/Manual.md)
+it is important to understand that **each
+iteration over entities introduces a small overhead**. Knowing how to **optimize performance** becomes crucial when
+working
 with a large number of elements.
 
 ---
 
-### 1. Prefer concrete types
+### Prefer concrete types
 
-When iterating via interfaces using `IEnumerator<T>`, the iterator may **box**, causing **heap allocations** and **GC
+When iterating via interfaces such
+as [IReadOnlyEntityCollection\<E>](../Entities/Collections/IReadOnlyEntityCollection%601.md)
+or [IEntityWorld](../Entities/Worlds/IEntityWorld.md), the iterator may **box**, causing **heap allocations** and **GC
 pressure**. To avoid this, use the **concrete collection type** whenever possible.
 
-#### ❌ Has Boxing
+#### ❌ Has Boxing (IEntityCollection)
 
 ```csharp
-IReactiveList<string> items = new ReactiveList<string>
-{
-    "Axe", 
-    "Helmet",
-    "Potion",
-    "Sword"
-} 
+// Assume we have an instance of IEntityCollection
+IEntityCollection collection = ...;
 
-//Reference type of "IEnumerator<string>"
-foreach(string item in items)
+//Reference type of "IEnumerator<IEntity>"
+foreach(IEntity entity in collection)
 {
     ...
 }
 ```
 
-#### ✅ No Boxing
+#### ❌ Has Boxing (IEntityWorld)
 
 ```csharp
-ReactiveList<string> items = new ReactiveList<string>
-{
-    "Axe", 
-    "Helmet",
-    "Potion",
-    "Sword"
-} 
+// Assume we have an instance of IEntityCollection
+IEntityWorld world = ...;
 
-//Value type of "ReactiveList.Enumerator<string>"
-foreach(string item in items) 
+//Reference type of "IEnumerator<IEntity>"
+foreach(IEntity entity in world)
 {
     ...
 }
 ```
 
----
-
-### 2. Iterating over `ReactiveArray` & `ReactiveList`
-
-When iterating over a large number of elements in a `ReactiveArray` or `ReactiveList`, **always prefer a `for` loop
-over `foreach`**. Using `foreach` involves additional operations, including **struct enumerator allocation on the
-stack**, which can slightly slow down iteration.
-
-> [!NOTE]  
-> Performance tests confirm this behavior for both [ReactiveList](../Elements/Performance/ReactiveListPerformance.md)
-> and [ReactiveArray](../Elements/Performance/ReactiveArrayPerformance.md).
-
-#### ❌ Bad Practice
+#### ✅ No Boxing (EntityCollection)
 
 ```csharp
-ReactiveList<string> items = ... //1000+ elements
+// Assume we have an instance of EntityCollection
+EntityCollection collection = ...;
 
-foreach(string item in items)
+//Value type of "EntityCollection.Enumerator"
+foreach(string item in collection) 
 {
     ...
 }
 ```
 
-#### ✅ Good Practice
+#### ✅ No Boxing (EntityWorld)
 
 ```csharp
-ReactiveList<string> items = ... //1000+ elements
+// Assume we have an instance of EntityWorld
+EntityWorld world = ...;
 
-for (int i = 0, count = items.Count; i < count; i++)
-{
-    string item = items[i];
-    ...
-}
-```
-
-> [!TIP]
-> It's also recommended to **cache the `Count` property** to avoid repeatedly calling the getter during iteration.
-
----
-
-### 3. Iterating over `ReactiveLinkedList`, `ReactiveDictionary`, `ReactiveHashSet`
-
-In contrast to arrays and lists, **always prefer `foreach` over `for`** when iterating over `ReactiveLinkedList`,
-`ReactiveDictionary`, or `ReactiveHashSet`. This is especially important for `ReactiveLinkedList`, which is
-a **doubly-linked list** where accessing elements by index has **O(N) complexity**. Using a `for` loop with indexing would
-therefore be very inefficient.
-
-#### ❌ Bad Practice
-
-```csharp
-ReactiveLinkedList<string> items = ... //1000+ elements
-
-for (int i = 0, count = items.Count; i < count; i++)
-{
-    string item = items[i];
-    ...
-}
-```
-
-CollectionsWorldsAndFilters
-
-#### ✅ Good Practice
-
-```csharp
-ReactiveLinkedList<string> items = ... //1000+ elements
-
-foreach(string item in items)
+//Value type of "EntityCollection.Enumerator"
+foreach(string item in world) 
 {
     ...
 }
 ```
-
-> [!NOTE]  
-> For detailed `performance` analysis, see the following sections:
-> - [ReactiveLinkedList](../Elements/Performance/ReactiveLinkedListPerformance.md)
-> - [ReactiveDictionary](../Elements/Performance/ReactiveDictionaryPerformance.md)
-> - [ReactiveHashSet](../Elements/Performance/ReactiveHashSetPerformance.md)
+-->

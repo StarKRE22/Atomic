@@ -79,3 +79,4 @@ implementation notes that highlight how different systems and data structures pe
 ## 📌 Best Practices
 
 - [Iterating over Entity Tags, Values and Behaviours](../BestPractices/IteratingOverEntity.md) <!-- + -->
+- [Iterating over EntityCollections, Worlds and Filters.](../BestPractices/IteratingOverEntityCollections.md) <!-- + -->

@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntity.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/Elements/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Elements/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/ChosingBetweenTimerAndCooldown.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollections.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/IteratingOverEntityCollections.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Collections/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Filters/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Manual.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/Worlds/Manual.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -279,15 +284,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="2112000" />
-    </task>
-    <task id="LOCAL-01742" summary="EntityBehaviours.md">
-      <option name="closed" value="true" />
-      <created>1761033796501</created>
-      <option name="number" value="01742" />
-      <option name="presentableId" value="LOCAL-01742" />
-      <option name="project" value="LOCAL" />
-      <updated>1761033796501</updated>
+      <workItem from="1761120599533" duration="3772000" />
     </task>
     <task id="LOCAL-01743" summary="EntityLifecycle.md">
       <option name="closed" value="true" />
@@ -673,7 +670,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761121308063</updated>
     </task>
-    <option name="localTasksCounter" value="1791" />
+    <task id="LOCAL-01791" summary="IteratingOverEntity.md">
+      <option name="closed" value="true" />
+      <created>1761122932076</created>
+      <option name="number" value="01791" />
+      <option name="presentableId" value="LOCAL-01791" />
+      <option name="project" value="LOCAL" />
+      <updated>1761122932076</updated>
+    </task>
+    <option name="localTasksCounter" value="1792" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -700,7 +705,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SceneEntityGizmos.md" />
     <MESSAGE value="SceneEntityDebug.md" />
     <MESSAGE value="SceneEntityEditor.md" />
     <MESSAGE value="CreateArgs" />
@@ -725,7 +729,8 @@
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал AtomicAPI" />
     <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChoosingBetweenTimerAndCooldown.md" />
+    <MESSAGE value="IteratingOverEntity.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="IteratingOverEntity.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
