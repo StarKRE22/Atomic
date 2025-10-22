@@ -1,7 +1,5 @@
 # 📌 Prefer Atomic Interfaces to Concrete Classes
 
----
-
 ## 📑 Table of Contents
 - [Overview](#-overview)
 - [Example of Usage](#-example-of-usage)

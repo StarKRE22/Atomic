@@ -5,6 +5,8 @@ extremely useful.
 It separates **intent**, **validation**, **execution**, and **notification**, making mechanics **modular, flexible,
 observable, and safe**.
 
+---
+
 ## 📑 Table of Contents
 
 - [Key Components](#-key-components)
