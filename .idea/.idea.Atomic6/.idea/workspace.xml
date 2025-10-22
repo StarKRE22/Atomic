@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/PreferAbstractInterfaces.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UninstallEntityInstaller.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UninstallEntityInstaller.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/DefaultConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Constants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/DefaultConstants.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Values/Constants.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Expressions/AndExpressionTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/EditMode/Expressions/AndExpressionTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/UsingConstantsWithAndExpressions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,23 +277,7 @@
       <workItem from="1761030416639" duration="31525000" />
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
-      <workItem from="1761120599533" duration="13972000" />
-    </task>
-    <task id="LOCAL-01758" summary="CreateArgs">
-      <option name="closed" value="true" />
-      <created>1761047872976</created>
-      <option name="number" value="01758" />
-      <option name="presentableId" value="LOCAL-01758" />
-      <option name="project" value="LOCAL" />
-      <updated>1761047872976</updated>
-    </task>
-    <task id="LOCAL-01759" summary="SceneEntityCreation.md">
-      <option name="closed" value="true" />
-      <created>1761047944481</created>
-      <option name="number" value="01759" />
-      <option name="presentableId" value="LOCAL-01759" />
-      <option name="project" value="LOCAL" />
-      <updated>1761047944481</updated>
+      <workItem from="1761120599533" duration="15513000" />
     </task>
     <task id="LOCAL-01760" summary="SceneEntityDestruction.md">
       <option name="closed" value="true" />
@@ -668,7 +655,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761153297856</updated>
     </task>
-    <option name="localTasksCounter" value="1807" />
+    <task id="LOCAL-01807" summary="UninstallEntityInstaller.md">
+      <option name="closed" value="true" />
+      <created>1761153812656</created>
+      <option name="number" value="01807" />
+      <option name="presentableId" value="LOCAL-01807" />
+      <option name="project" value="LOCAL" />
+      <updated>1761153812657</updated>
+    </task>
+    <task id="LOCAL-01808" summary="UpgradingEntityFactoryToBuilder.md">
+      <option name="closed" value="true" />
+      <created>1761154754946</created>
+      <option name="number" value="01808" />
+      <option name="presentableId" value="LOCAL-01808" />
+      <option name="project" value="LOCAL" />
+      <updated>1761154754946</updated>
+    </task>
+    <option name="localTasksCounter" value="1809" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -695,8 +698,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntitySingleton.md" />
-    <MESSAGE value="SceneEntitySingleton.md" />
     <MESSAGE value="ExtensionsCore.md" />
     <MESSAGE value="ExtensionsTags.md" />
     <MESSAGE value="ExtensionsValues.md" />
@@ -720,7 +721,9 @@
     <MESSAGE value="RequestConditionActionEvent.md" />
     <MESSAGE value="RequestsVsActions.md" />
     <MESSAGE value="SharedConstants.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="SharedConstants.md" />
+    <MESSAGE value="UninstallEntityInstaller.md" />
+    <MESSAGE value="UpgradingEntityFactoryToBuilder.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="UpgradingEntityFactoryToBuilder.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
