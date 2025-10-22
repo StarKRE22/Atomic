@@ -1,11 +1,11 @@
 # 📌 Prefer Atomic Interfaces to Concrete Classes
 
 ## 📑 Table of Contents
+
 - [Overview](#-overview)
 - [Example of Usage](#-example-of-usage)
 - [Why This Matters](#why-this-matters)
 - [Notes](#-notes)
-
 
 ---
 
@@ -13,7 +13,8 @@
 
 When developing with [Atomic.Elements](../Elements/Manual.md), always prefer using **atomic interfaces** such
 as [IValue](../Elements/Values/IValue.md), [IVariable](../Elements/Variables/IVariable.md), [ISignal](../Elements/Events/ISignal.md),
-etc., instead of concrete implementations. This practice greatly enhances **maintainability**, **testability**, and **scalability** of your project.
+etc., instead of concrete implementations. This practice greatly enhances **maintainability**, **testability**, and *
+*scalability** of your project.
 
 Following
 the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) is
@@ -55,11 +56,11 @@ By programming against **interfaces**, you achieve:
 
 ## 📝 Notes
 
-Using [Atomic.Elements](../Elements/Manual.md) allows you to **abstract away from Unity dependencies** 
+Using [Atomic.Elements](../Elements/Manual.md) allows you to **abstract away from Unity dependencies**
 and external multiplayer frameworks like **Photon Fusion 2** or **Mirror**.
 
-This approach significantly improves **code longevity** and **cross-platform flexibility**, 
+This approach significantly improves **code longevity** and **cross-platform flexibility**,
 keeping your **game logic engine-agnostic** and future-proof.
 
-> 💡 **Tip:** Always maximize abstraction from Unity-specific classes whenever possible — 
+> 💡 **Tip:** Always maximize abstraction from Unity-specific classes whenever possible —
 > it keeps your systems cleaner, modular, and ready for reuse in any context.

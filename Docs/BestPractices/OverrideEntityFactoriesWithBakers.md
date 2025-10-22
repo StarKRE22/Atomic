@@ -1,4 +1,4 @@
-# 📌 Overriding Entity Factories With Bakers
+# 📌 Overriding EntityFactories With EntityBakers
 
 ---
 

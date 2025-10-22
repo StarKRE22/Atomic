@@ -1,4 +1,4 @@
-# 📌 Choosing Between Timer and Cooldown
+# 📌 Timers vs Cooldowns
 
 Both **[Timer](../Elements/Time/Timers.md)** and **[Cooldown](../Elements/Time/Cooldowns.md)** perform countdown-related
 functions, but they serve different purposes depending on your

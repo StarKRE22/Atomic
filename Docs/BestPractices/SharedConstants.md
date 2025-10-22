@@ -1,4 +1,4 @@
-# 📌 Using Flyweight Pattern for Constants
+# 📌 Flyweight Pattern for Constants
 
 ## 📑 Table of Contents
 
