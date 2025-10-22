@@ -3,11 +3,6 @@
 In this guide, I’ll share how I organize my project’s file system when working with the **Atomic Framework**.
 This approach keeps the project **scalable**, **clean**, and **intuitive**, even as it grows in complexity.
 
-> [!TIP]
-> 💡 As an example, check out the prototype game **Top Down Shooter** in
-> the [Game Examples](../../README.md/#-game-examples) section.
-
-
 ---
 
 ## 📑 Table of Contents
