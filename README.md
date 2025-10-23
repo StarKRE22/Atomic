@@ -113,7 +113,7 @@ game:
 
 <div id="atomic-elements"></div>
 
-### Atomic.Elements [(Read More)](Docs/Elements/Manual.md)
+### ⚛️ Atomic.Elements [(Read More)](Docs/Elements/Manual.md)
 
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**
 The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling
@@ -135,7 +135,7 @@ developers to quickly assemble any game entity **like a LEGO constructor**.
 
 ---
 
-### Atomic.Entities [(Read More)](Docs/Entities/Manual.md)
+### 🧩 Atomic.Entities [(Read More)](Docs/Entities/Manual.md)
 
 **A framework implementing the `Entity–State–Behaviour` pattern in `Unity` and `C#`.** In addition to basic entities and
 behaviours, the solution provides **factories, pools, worlds, filters**, and a separate **UI layer** if `Unity` is used
