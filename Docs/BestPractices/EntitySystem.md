@@ -1,7 +1,5 @@
 # 📌 Entity System with Model & View Separation
 
----
-
 ## 📑 Table of Contents
 
 - [Overview](#-overview)

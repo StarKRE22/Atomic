@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/EntitySystemOLD.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystemOLD.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/Entities/UI/EntityViews.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/Entities/UI/ObsoleteEntityViews.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,15 +277,7 @@
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
-      <workItem from="1761217932574" duration="1224000" />
-    </task>
-    <task id="LOCAL-01770" summary="SceneEntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1761054979586</created>
-      <option name="number" value="01770" />
-      <option name="presentableId" value="LOCAL-01770" />
-      <option name="project" value="LOCAL" />
-      <updated>1761054979586</updated>
+      <workItem from="1761217932574" duration="6359000" />
     </task>
     <task id="LOCAL-01771" summary="SceneEntitySingleton.md">
       <option name="closed" value="true" />
@@ -672,7 +663,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761217923183</updated>
     </task>
-    <option name="localTasksCounter" value="1819" />
+    <task id="LOCAL-01819" summary="Сделал EntitySystem.md на русском!">
+      <option name="closed" value="true" />
+      <created>1761219169700</created>
+      <option name="number" value="01819" />
+      <option name="presentableId" value="LOCAL-01819" />
+      <option name="project" value="LOCAL" />
+      <updated>1761219169700</updated>
+    </task>
+    <option name="localTasksCounter" value="1820" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -699,7 +698,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал AtomicAPI" />
     <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
     <MESSAGE value="IteratingOverEntityCollections.md" />
@@ -724,7 +722,8 @@
     <MESSAGE value="Прошурудил Best practices!" />
     <MESSAGE value="Пилим статью для EntitySystem.md" />
     <MESSAGE value="Пилим!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
+    <MESSAGE value="Сделал EntitySystem.md на русском!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал EntitySystem.md на русском!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
