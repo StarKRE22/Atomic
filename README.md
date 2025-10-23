@@ -20,17 +20,19 @@ pattern and using `Atomic` elements for data organization.
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concepts)
 - [Documentation](#-documentation)
-  - [Atomic.Elements](#atomic-elements)
-  - [Atomic.Entities](#atomic-entities)
+    - [Atomic.Elements](#atomic-elements)
+    - [Atomic.Entities](#atomic-entities)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
 - [Game Examples](#-game-examples)
-  - [Beginner Sample](#ex1)
-  - [Top-Down Shooter Sample](#ex2)
-  - [RTS Sample](#ex3)
+    - [Beginner Sample](#ex1)
+    - [Top-Down Shooter Sample](#ex2)
+    - [RTS Sample](#ex3)
 - [Best Practices](#-best-practices)
+- [Performance](#-performance)
 - [License](#-license)
 - [Contacts](#-contacts)
+
 <!-- - [Tutorials](#-tutorials) -->
 
 ---
@@ -66,7 +68,8 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
-or [GitHub Repository](https://github.com/Prylor/atomic-rider-plugin) . By default, the code generation works with Unity,
+or [GitHub Repository](https://github.com/Prylor/atomic-rider-plugin) . By default, the code generation works with
+Unity,
 but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
@@ -480,6 +483,25 @@ or multiplayer games.
     - [Constants with AndExpressions](Docs/BestPractices/UsingConstantsWithAndExpressions.md) <!-- + -->
     - [[SerializeReference] for CompositeActions](Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md) <!-- + -->
     - [[SerializeReference] for LogAction](Docs/BestPractices/UsingSerializeReferenceForPrintActions.md) <!-- + -->
+
+---
+
+## 🔥 Performance
+
+This section focuses on **runtime efficiency** within the framework. It provides detailed benchmarks, comparisons, and
+implementation notes that highlight how different systems and data structures perform under real-world conditions.
+
+- **Atomic.Elements**
+  - [ReactiveArray](Performance/ReactiveArrayPerformance.md)
+  - [ReactiveList](Performance/ReactiveListPerformance.md)
+  - [ReactiveLinkedList](Performance/ReactiveLinkedListPerformance.md)
+  - [ReactiveDictionary](Performance/ReactiveDictionaryPerformance.md)
+  - [ReactiveHashSet](Performance/ReactiveHashSetPerformance.md)
+
+- **Atomic.Entities**
+    - [Entity](Entities/Manual.md#-performance)
+    - [EntityCollection](Collections/Manual.md#-performance)
+
 
 ---
 
