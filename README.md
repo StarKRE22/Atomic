@@ -24,7 +24,6 @@ pattern and using `Atomic` elements for data organization.
   - [Atomic.Entities](#atomic-entities)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
-- [Tutorials](#-tutorials)
 - [Game Examples](#-game-examples)
   - [Beginner Sample](#ex1)
   - [Top-Down Shooter Sample](#ex2)
@@ -32,6 +31,7 @@ pattern and using `Atomic` elements for data organization.
 - [Best Practices](#-best-practices)
 - [License](#-license)
 - [Contacts](#-contacts)
+<!-- - [Tutorials](#-tutorials) -->
 
 ---
 
@@ -284,11 +284,12 @@ entity.Dispose();
 
 ---
 
+<!-- 
+
 ## 📖 Tutorials
 
 To be added...
 
-<!-- 
 - **What is Entity**
 - **Create an Entity**
     - **CSharp Guide**
@@ -303,9 +304,10 @@ To be added...
 - **Using Code generation**
     - **Unity Guide**
     - **Rider Plugin Guide**
--->
 
 ---
+
+-->
 
 ## 🗂 Game Examples
 
