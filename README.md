@@ -472,7 +472,7 @@ with minimal overhead.
 
 ---
 
-> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations —  
+> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations — 
 > helping you master **Atomic.Entities** from small prototypes to high-performance real-world projects.
 
 
