@@ -4,8 +4,8 @@ using UnityEngine;
 namespace RTSGame
 {
     [CreateAssetMenu(
-        fileName = "UnitMultiFactory",
-        menuName = "RTSGame/Units/New UnitMultiFactory"
+        fileName = "UnitCatalog",
+        menuName = "RTSGame/Units/New UnitCatalog"
     )]
     public sealed class UnitMultiFactory : ScriptableMultiEntityFactory<string, IUnitEntity, UnitFactory>
     {

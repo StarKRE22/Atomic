@@ -7,9 +7,9 @@ namespace RTSGame
     public sealed class AIDetectTargetBehaviour : IEntityInit<IUnitEntity>, IEntityFixedTick, IEntityDisable
     {
         private readonly IGameContext _gameContext;
-        private readonly IEntityWorld<IUnitEntity> _entityWorld;
         private readonly ICooldown _cooldown;
 
+        private IEntityWorld<IUnitEntity> _entityWorld;
         private IVariable<IUnitEntity> _target;
         private IUnitEntity _entity;
 
@@ -17,13 +17,13 @@ namespace RTSGame
         {
             _cooldown = cooldown;
             _gameContext = context;
-            _entityWorld = context.GetEntityWorld();
         }
 
         public void Init(IUnitEntity entity)
         {
             _entity = entity;
             _target = entity.GetTarget();
+            _entityWorld = _gameContext.GetEntityWorld();
         }
 
         public void FixedTick(IEntity entity, float deltaTime)

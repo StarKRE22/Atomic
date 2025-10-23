@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RTSGame
 {
     [Serializable]
-    public sealed class GameEntitiesSystemInstaller : IEntityInstaller<IGameContext>
+    public sealed class UnitsSystemInstaller : IEntityInstaller<IGameContext>
     {
         [SerializeField]
         private UnitMultiFactory factoryCatalog;

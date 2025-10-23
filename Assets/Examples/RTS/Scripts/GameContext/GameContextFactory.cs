@@ -10,7 +10,7 @@ namespace RTSGame
     public sealed class GameContextFactory : ScriptableEntityFactory<GameContext>
     {
         [SerializeField]
-        private GameEntitiesSystemInstaller _gameEntityInstaller;
+        private UnitsSystemInstaller _gameEntityInstaller;
 
         [SerializeField]
         private PlayerSystemInstaller _playerSystemInstaller;
