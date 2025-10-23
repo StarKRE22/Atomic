@@ -1,19 +1,8 @@
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A non-generic base class for scene-based entity aspects.
-    /// </summary>
-    /// <remarks>
-    /// This class is a concrete specialization of <see cref="SceneEntityAspect{E}"/> 
-    /// with <typeparamref name="E"/> fixed to <see cref="IEntity"/>. 
-    /// It implements <see cref="IEntityAspect"/> and can be added to GameObjects in a Unity scene.
-    /// </remarks>
-    public abstract class SceneEntityAspect : SceneEntityAspect<IEntity>, IEntityAspect
-    {
-    }
-
     /// <summary>
     /// Represents a scene-based entity aspect that can be applied or discarded on a specific entity type.
     /// </summary>
@@ -38,3 +27,4 @@ namespace Atomic.Entities
         public abstract void Discard(E entity);
     }
 }
+#endif

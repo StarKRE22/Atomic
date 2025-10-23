@@ -1,19 +1,8 @@
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 namespace Atomic.Entities
 {
-    /// <summary>
-    /// A non-generic base class for scriptable entity aspects.
-    /// </summary>
-    /// <remarks>
-    /// This class is a concrete specialization of <see cref="ScriptableEntityAspect{E}"/> 
-    /// with <typeparamref name="E"/> fixed to <see cref="IEntity"/>. 
-    /// It implements <see cref="IEntityAspect"/> and can be used as a ScriptableObject asset.
-    /// </remarks>
-    public abstract class ScriptableEntityAspect : ScriptableEntityAspect<IEntity>, IEntityAspect
-    {
-    }
-
     /// <summary>
     /// Represents a scriptable entity aspect that can be applied or discarded on a specific entity type.
     /// </summary>
@@ -37,3 +26,4 @@ namespace Atomic.Entities
         public abstract void Discard(E entity);
     }
 }
+#endif
