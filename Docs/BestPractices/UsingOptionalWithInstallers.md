@@ -1,4 +1,4 @@
-# 📌 Using Optional with Entity Installers
+# 📌 Using Optional with EntityInstallers
 
 [Optional\<T>](../Elements/Utils/Optional.md) can be used to define **optional settings** in Unity components or installers, allowing for **flexible entity configuration**. 
 This approach makes it easy to **enable or disable features dynamically** without changing the core logic of your entities.

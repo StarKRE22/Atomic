@@ -56,7 +56,8 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 ## 🔌 Using Plugin for Rider
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
-the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic) or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
+the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
+or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
 but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
@@ -113,7 +114,6 @@ as the presentation layer.
 ## 🚀 Unity Quick Start
 
 **Below is the process for quickly creating a character entity in Unity**
-
 
 #### 1. Create a new `GameObject` on a scene
 
@@ -292,7 +292,7 @@ To be added...
 
 ---
 
-## 🗂 Game Examples
+## 🗂 Game Samples
 
 This section includes **three sample projects** demonstrating different use cases of the framework.
 <br> All examples are located in the **[Assets/Examples](Assets/Examples)** folder.
@@ -362,7 +362,9 @@ The Top-Down Shooter Sample demonstrates a more **complex game architecture**, s
 
 > - **Respawning:** Units respawn at random point dynamically after being defeated.
     >
+
 - **Limited Time:**  The game ends when the time limit is reached.
+
 > - **Visualization**
     >
 
@@ -451,50 +453,48 @@ or multiplayer games.
 
 -->
 
-
 ## 📌 Best Practices
 
 This section outlines **recommended approaches and patterns** when working with the library. Following these
 practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
 or multiplayer games.
 
-- [Timer vs Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
-- [Iterating over Entity Tags, Values and Behaviours](Docs/BestPractices/IteratingOverEntity.md) <!-- + -->
-- [Iterating over EntityCollections, Worlds and Filters.](Docs/BestPractices/IteratingOverEntityCollections.md) <!-- + -->
+- **Architecture**
+    - [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md) <!-- + -->
+    - [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md) <!-- + -->
+    - [Flyweight Pattern for Constants](Docs/BestPractices/SharedConstants.md) <!-- + -->
+    - [Request-Condition-Action-Event (RCAE) Flow](Docs/BestPractices/RequestConditionActionEvent.md) <!-- + -->
+    - [Modular EntityInstallers](Docs/BestPractices/ModularEntityInstallers.md) <!-- + -->
+    - [Upgrading EntityFactory to the Builder](Docs/BestPractices/UpgradingEntityFactoryToBuilder.md) <!-- + -->
+    - [Combine EntityPool with EntityFactory](Docs/BestPractices/UsingEntityPoolWithFactories.md) <!-- + -->
+    - [Building Entity System with Model & View Separation](Docs/BestPractices/EntitySystem.md) <!-- + -->
+    - [Overriding EntityFactories with EntityBakers](Docs/BestPractices/OverrideEntityFactoriesWithBakers.md) <!-- + -->
 
+- **Optimization**
+    - [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md) <!-- + -->
+    - [Iterating over Entity Tags, Values and Behaviours](Docs/BestPractices/IteratingOverEntity.md) <!-- + -->
+    - [Iterating over EntityCollections, Worlds and Filters.](Docs/BestPractices/IteratingOverEntityCollections.md) <!-- + -->
 
+- **Features**
+    - [InlineActions with Entities](Docs/BestPractices/UsingInlineActions.md) <!-- + -->
+    - [InlineFunctions with Entities](Docs/BestPractices/UsingInlineFunctions.md) <!-- + -->
+    - [Events with Entities](Docs/BestPractices/UsingEvents.md) <!-- + -->
+    - [Requests with Entities](Docs/BestPractices/UsingRequests.md) <!-- + -->
+    - [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md) <!-- + -->
+    - [Cooldown with Entities](Docs/BestPractices/UsingCooldownInGameMechanics.md) <!-- + -->
+    - [Timer vs Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
+    - [Expressions with Entities](Docs/BestPractices/UsingExpressions.md) <!-- + -->
+    - [Setters with Entities](Docs/BestPractices/UsingSetters.md) <!-- + -->
+    - [Uninstall Method for EntityInstallers](Docs/BestPractices/UninstallEntityInstaller.md) <!-- + -->
+    - [DisposeComposite in EntityInstallers](Docs/BestPractices/UsingSubscriptionsWithDisposeComposite.md) <!-- + -->
+    - [PlayMode & EditMode for EntityInstallers](Docs/BestPractices/UsingUtilsForEntityInstallers.md) <!-- + -->
+    - [Optional with EntityInstallers](Docs/BestPractices/UsingOptionalWithInstallers.md) <!-- + -->
 
-
-
-
-
-
-
-
-- 
-- 
-- [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)  <!-- + -->
-- [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)  <!-- + -->
-- [Overr]
-- [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
-- [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
-- [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
-- [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
-- [Using InlineActions](Docs/BestPractices/UsingInlineActions.md)
-- [Using InlineFunctions](Docs/BestPractices/UsingInlineFunctions.md)
-- [Using Cooldown in Game Mechanics](Docs/BestPractices/UsingCooldownInGameMechanics.md)
-- [Using Constants with AndExpressions](Docs/BestPractices/UsingConstantsWithAndExpressions.md)
-- [Using Observe Extension Method](Docs/BestPractices/UsingObserveWithReactiveValues.md)
-- [Using Entity Installers with DisposeComposite](../BestPractices/UsingSubscriptionsWitDisposeComposite.md)
-- [Using Optional Wrappers](Utils/Optional.md/#-best-practice)
-- [Using [SerializeReference] for Composite Actions](../BestPractices/UsingSerializeReferenceForCompositeActions.md)
-- [Using [SerializeReference] for PrintAction](../BestPractices/UsingSerializeReferenceForPrintActions.md)
--
-
-
----
-
-
+- **Extensions**
+    - [Observe Extension Method](Docs/BestPractices/UsingObserveWithReactiveValues.md) <!-- + -->
+    - [Constants with AndExpressions](Docs/BestPractices/UsingConstantsWithAndExpressions.md) <!-- + -->
+    - [[SerializeReference] for CompositeActions](Docs/BestPractices/UsingSerializeReferenceForCompositeActions.md) <!-- + -->
+    - [[SerializeReference] for LogAction](Docs/BestPractices/UsingSerializeReferenceForPrintActions.md) <!-- + -->
 
 ---
 

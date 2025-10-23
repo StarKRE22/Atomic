@@ -1,4 +1,4 @@
-# 📌 Upgrading EntityFactory to the Builder Pattern
+# 📌 Upgrading EntityFactory to the Builder
 
 Entity Factories can also act as **builders**, allowing step-by-step configuration before creation.
 This approach is especially useful when entities require **external dependencies** or **custom initialization**.

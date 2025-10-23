@@ -12,7 +12,7 @@ developers to quickly assemble any game entity like a **LEGO**.
 - [Using Odin Inspector](#-using-odin-inspector)
 - [API Reference](#-api-reference)
 - [Performance](#-performance)
-- [Best Practices](#-best-practices) 
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -48,7 +48,7 @@ patterns, composable structures, and modular design**.
 - [Time](Time/Manual.md) <!-- + -->
 - [Collections](Collections/Manual.md) <!-- + -->
 - [Expressions](Expressions/Manual.md) <!-- + -->
-- [Utilities](Utils/Manual.md) 
+- [Utilities](Utils/Manual.md)
 
 ---
 
@@ -69,25 +69,30 @@ of type `object`**.
 
 ## 📌 Best Practices
 
-Below are references to best practices for using `Atomic.Elements` with the [Atomic.Entities](../Entities/Manual.md) framework:
+Below are references to best practices for using `Atomic.Elements` with the [Atomic.Entities](../Entities/Manual.md)
+framework:
 
-- [Prefer Interfaces to Concrete Classes](../BestPractices/PreferAbstractInterfaces.md)
-- [Using Constants for Expressions](../BestPractices/UsingConstantsWithAndExpressions.md)
-- [Using Observe Extension for ReactiveValues](../BestPractices/UsingObserveWithReactiveValues.md)
-- [Using Flyweight Pattern for Constants](../BestPractices/SharedConstants.md)
-- [Using InlineActions with Entities](../BestPractices/UsingInlineActions.md)
-- [Using InlineFunctions with Entities](../BestPractices/UsingInlineFunctions.md)
-- [Using Requests with Entities](../BestPractices/UsingRequests.md)
-- [Using Events with Entities](../BestPractices/UsingEvents.md)
-- [Using Expressions with Entities](../BestPractices/UsingExpressions.md)
-- [Requests vs Actions](../BestPractices/RequestsVsActions.md)
-- [Request-Condition-Action-Event Flow](../BestPractices/RequestConditionActionEvent.md)
-- [Using Cooldown with Entities](../BestPractices/UsingCooldownInGameMechanics.md)
-- [Timers vs Cooldowns](../BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
-- [DisposeComposite in EntityInstallers](../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
-- [PlayMode & EditMode for EntityInstallers](../BestPractices/UsingUtilsForEntityInstallers.md)
-- [Iterating over ReactiveCollections](../BestPractices/IteratingReactiveCollections.md)
-- [Using Optional with EntityInstallers](../BestPractices/UsingOptionalWithInstallers.md)
-- [Using SerializeReference for CompositeActions](../BestPractices/UsingSerializeReferenceForCompositeActions.md)
-- [Using SerializeReference for LogActions](../BestPractices/UsingSerializeReferenceForPrintActions.md)
-- [Using Setters with Entities](../BestPractices/UsingSetters.md)
+- **Concepts**
+    - [Prefer Atomic Interfaces to Concrete Classes](../BestPractices/PreferAbstractInterfaces.md)
+    - [Flyweight Pattern for Constants](../BestPractices/SharedConstants.md)
+    - [Request-Condition-Action-Event Flow](../BestPractices/RequestConditionActionEvent.md)
+    - [Timers vs Cooldowns](../BestPractices/ChosingBetweenTimerAndCooldown.md) <!-- + -->
+- **Optimization**
+    - [Iterating over ReactiveCollections](../BestPractices/IteratingReactiveCollections.md)
+- **Extensions**
+    - [Constants for Expressions](../BestPractices/UsingConstantsWithAndExpressions.md)
+    - [Observe Extension for ReactiveValues](../BestPractices/UsingObserveWithReactiveValues.md)
+- **Features**
+    - [InlineActions with Entities](../BestPractices/UsingInlineActions.md)
+    - [InlineFunctions with Entities](../BestPractices/UsingInlineFunctions.md)
+    - [Requests with Entities](../BestPractices/UsingRequests.md)
+    - [Events with Entities](../BestPractices/UsingEvents.md)
+    - [Expressions with Entities](../BestPractices/UsingExpressions.md)
+    - [Requests vs Actions](../BestPractices/RequestsVsActions.md)
+    - [Cooldown with Entities](../BestPractices/UsingCooldownInGameMechanics.md)
+    - [Setters with Entities](../BestPractices/UsingSetters.md)
+    - [DisposeComposite in EntityInstallers](../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
+    - [PlayMode & EditMode for EntityInstallers](../BestPractices/UsingUtilsForEntityInstallers.md)
+    - [Optional with EntityInstallers](../BestPractices/UsingOptionalWithInstallers.md)
+    - [[SerializeReference] for CompositeActions](../BestPractices/UsingSerializeReferenceForCompositeActions.md)
+    - [[SerializeReference] for LogActions](../BestPractices/UsingSerializeReferenceForPrintActions.md)

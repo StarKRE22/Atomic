@@ -1,4 +1,4 @@
-# 📌 Entity System with Model & View Separation
+# 📌 Building Entity System with Model & View Separation
 
 ## 📑 Table of Contents
 

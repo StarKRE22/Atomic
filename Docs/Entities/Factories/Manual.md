@@ -15,6 +15,7 @@ Factories can be **generic** or **non-generic**, **scene-based**, **scriptable**
     - [MultiEntityFactory](#ex4)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -136,3 +137,12 @@ Below is a list of available factory types:
 - Use **`SceneEntityBaker`** or **`ScriptableEntityFactory`** when integrating with Unity workflows.
 - Use **`InlineEntityFactory`** for lightweight, temporary, or lambda-based entity creation.
 - **Generic versions** provide type-safety and avoid unnecessary casting.
+
+---
+
+## 📌 Best Practices
+
+- [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
+- [Overriding EntityFactories with EntityBakers](../../BestPractices/OverrideEntityFactoriesWithBakers.md) <!-- + -->
+- [Upgrading EntityFactory to the Builder](../../BestPractices/UpgradingEntityFactoryToBuilder.md) <!-- + -->
+- [Combine EntityPool with EntityFactory](../../BestPractices/UsingEntityPoolWithFactories.md) <!-- + -->

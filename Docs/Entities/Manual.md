@@ -78,5 +78,30 @@ implementation notes that highlight how different systems and data structures pe
 
 ## 📌 Best Practices
 
-- [Iterating over Entity Tags, Values and Behaviours](../BestPractices/IteratingOverEntity.md) <!-- + -->
-- [Iterating over EntityCollections, Worlds and Filters.](../BestPractices/IteratingOverEntityCollections.md) <!-- + -->
+This section provides recommended approaches, patterns, and techniques for building efficient, scalable, and
+maintainable systems. Each guide focuses on solving common architectural and performance challenges, helping you write
+clean and modular
+entity-based code.
+
+- **Architecture**
+    - [Upgrading EntityFactory to the Builder](../BestPractices/UpgradingEntityFactoryToBuilder.md) <!-- + -->
+    - [Combine EntityPool with EntityFactory](../BestPractices/UsingEntityPoolWithFactories.md) <!-- + -->
+    - [Overriding EntityFactories with EntityBakers](../BestPractices/OverrideEntityFactoriesWithBakers.md) <!-- + -->
+    - [Building Entity System with Model & View Separation](../BestPractices/EntitySystem.md)  <!-- + -->
+- **Optimization**
+    - [Iterating over Entity Tags, Values and Behaviours](../BestPractices/IteratingOverEntity.md) <!-- + -->
+    - [Iterating over EntityCollections, Worlds and Filters.](../BestPractices/IteratingOverEntityCollections.md) <!-- + -->
+- **Installing**
+    - [Modular EntityInstallers](../BestPractices/ModularEntityInstallers.md)  <!-- + -->
+    - [Uninstall Method for EntityInstallers](../BestPractices/UninstallEntityInstaller.md)
+    - [DisposeComposite in EntityInstallers](../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
+    - [PlayMode & EditMode for EntityInstallers](../BestPractices/UsingUtilsForEntityInstallers.md) <!-- + -->
+    - [Optional with EntityInstallers](../BestPractices/UsingOptionalWithInstallers.md)
+- **Features**
+    - [InlineActions with Entities](../BestPractices/UsingInlineActions.md) <!-- + -->
+    - [InlineFunctions with Entities](../BestPractices/UsingInlineFunctions.md) <!-- + -->
+    - [Events with Entities](../BestPractices/UsingEvents.md)
+    - [Requests with Entities](../BestPractices/UsingRequests.md) <!-- + -->
+    - [Cooldown with Entities](../BestPractices/UsingCooldownInGameMechanics.md) <!-- + -->
+    - [Expressions with Entities](../BestPractices/UsingExpressions.md) <!-- + -->
+    - [Setters with Entities](../BestPractices/UsingSetters.md) <!-- + -->

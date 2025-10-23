@@ -15,6 +15,7 @@ pools keyed by a string or type, or prefab-specific pooling in Unity scenes.
   - [Prefab Entity Pool](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -136,3 +137,10 @@ There are interfaces and implementations of pool depending on scenario:
 - **All pools** provide `Rent()` and `Return()` methods, reducing GC overhead and improving runtime performance.
 - **Prefab and Scene pools** additionally support `Init()` for pre-warming, and `Dispose()` for cleanup.
 - **Generic versions** provide type safety; non-generic versions work with [IEntity](../Entities/IEntity.md) and allow heterogeneous usage.
+
+---
+
+## 📌 Best Practices
+
+- [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
+- [Combine EntityPool with EntityFactory](../../BestPractices/UsingEntityPoolWithFactories.md) <!-- + -->

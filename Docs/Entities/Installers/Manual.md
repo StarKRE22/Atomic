@@ -10,6 +10,7 @@
 - [Example of Usage](#-example-of-usage)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -78,3 +79,13 @@ Below are the different types of installers depending on the usage scenario:
 - **Generic Installers** — strongly typed variant for improved safety and readability.
 - Keep installers focused on **entity configuration only**; avoid embedding business logic.
 - Always override `Uninstall` when working with subscriptions or `IDisposable` objects to ensure proper cleanup.  
+
+---
+
+## 📌 Best Practices
+
+- [Modular EntityInstallers](../../BestPractices/ModularEntityInstallers.md)  <!-- + -->
+- [Uninstall Method for EntityInstallers](../../BestPractices/UninstallEntityInstaller.md)
+- [Optional with EntityInstallers](../../BestPractices/UsingOptionalWithInstallers.md)
+- [DisposeComposite in EntityInstallers](../../BestPractices/UsingSubscriptionsWithDisposeComposite.md)
+- [PlayMode & EditMode for EntityInstallers](../../BestPractices/UsingUtilsForEntityInstallers.md) <!-- + -->

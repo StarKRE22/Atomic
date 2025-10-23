@@ -1,7 +1,7 @@
 # 📌 Using  InlineActions with Entities
 
 [InlineAction](../Elements/Actions/InlineActions.md) is ideal for creating **inline gameplay logic** using **lambda
-expressions**.  
+expressions**. 
 It allows developers to define **custom, context-specific behaviors** directly within entity setup — perfect for events,
 commands, or reactive systems.
 

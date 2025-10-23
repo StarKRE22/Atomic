@@ -253,6 +253,6 @@ throughout your projects.
 ## 📌 Best Practices
 
 - [Prefer Interfaces to Concrete Classes](../../BestPractices/PreferAbstractInterfaces.md)
-- [Using Flyweight Pattern for Constants](../../BestPractices/SharedConstants.md)
-- [Using Constants for Boolean Expressions](../../BestPractices/UsingConstantsWithAndExpressions.md)
-- [Using Observe Extension for Reactive Values](../../BestPractices/UsingObserveWithReactiveValues.md)
+- [Flyweight Pattern for Constants](../../BestPractices/SharedConstants.md)
+- [Constants for Boolean Expressions](../../BestPractices/UsingConstantsWithAndExpressions.md)
+- [Observe Extension for Reactive Values](../../BestPractices/UsingObserveWithReactiveValues.md)

@@ -15,6 +15,7 @@ UI representations of entities. Components can be **generic** or **non-generic**
   - [EntityCollectionView](#ex4)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -252,6 +253,13 @@ Below is a list of available Entity UI modules:
 - **Pools** manage instantiation and recycling of views for performance.
 - **Collections** bind a group of entities to their corresponding views, handling add/remove events automatically.
 - **Generic versions** provide type-safety and avoid casting when working with specific entity types.
+
+---
+
+## 📌 Best Practices
+
+- [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
+
 
 <!--
 

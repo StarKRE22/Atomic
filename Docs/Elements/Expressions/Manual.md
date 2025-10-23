@@ -267,3 +267,4 @@ arguments the expression take:
 ## 📌 Best Practices
 
 - [Using Expressions for Entities](../../BestPractices/UsingExpressions.md)
+- [Constants with AndExpressions](../../BestPractices/UsingConstantsWithAndExpressions.md) <!-- + -->

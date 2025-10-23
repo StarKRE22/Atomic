@@ -417,3 +417,5 @@ include addition, removal, and indexed access.
 ## 📌 Best Practices
 
 - [Iterating over Entity Tags, Values and Behaviours](../../BestPractices/IteratingOverEntity.md) <!-- + -->
+- [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
+- [Modular EntityInstallers](../BestPractices/ModularEntityInstallers.md)  <!-- + -->

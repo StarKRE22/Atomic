@@ -1,4 +1,4 @@
-# 📌 Overriding EntityFactories With EntityBakers
+# 📌 Overriding EntityFactories with EntityBakers
 
 ---
 

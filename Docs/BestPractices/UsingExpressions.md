@@ -103,14 +103,14 @@ dependencies or state checks.
 
 ## 🏁 Conclusion
 
-- [`OrExpression`](../Elements/Expressions/OrExpression.md) and [
-  `AndExpression`](../Elements/Expressions/AndExpression.md) allow entities to **evaluate multiple logical conditions**
+- [OrExpression](../Elements/Expressions/OrExpression.md) and [
+  AndExpression](../Elements/Expressions/AndExpression.md) allow entities to **evaluate multiple logical conditions**
   dynamically.
 - Expressions are fully **reactive** — when underlying variables change, the logic automatically reflects the new state.
 - These tools enable **modular gameplay logic**, allowing you to compose conditions from independent sources.
 - This pattern encourages **cleaner, declarative code**, making behaviors easier to extend or modify.
-- Integrated with the [Atomic.Entities](../Entities/Manual.md) framework, expressions serve as the foundation for *
-  *conditional actions, AI decisions, and reactive gameplay systems**.
+- Integrated with the [Atomic.Entities](../Entities/Manual.md) framework, expressions serve as the foundation for 
+  **conditional actions, AI decisions, and reactive gameplay systems**.
 
 ---
 

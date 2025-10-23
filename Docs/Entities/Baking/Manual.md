@@ -10,11 +10,12 @@ behaviours. Bakers can be generic ([SceneEntityBaker\<E>](SceneEntityBaker%601.m
 ## 📑 Table of Contents
 
 - [Examples of Usage](#-examples-of-usage)
-  - [SceneEntityBaker](#ex1)
-  - [SceneEntityBaker\<E>](#ex2)
-  - [Bake All](#ex3)
+    - [SceneEntityBaker](#ex1)
+    - [SceneEntityBaker\<E>](#ex2)
+    - [Bake All](#ex3)
 - [API Reference](#-api-reference)
 - [Notes](#-notes)
+- [Best Practices](#-best-practices)
 
 ---
 
@@ -94,7 +95,11 @@ world.AddRange(enemies);
 - Parameters like `initialTagCapacity` and `initialValueCapacity` help **optimize entity creation** and reduce runtime
   overhead.
 
+---
 
+## 📌 Best Practices
+
+- [Overriding EntityFactories with EntityBakers](../../BestPractices/OverrideEntityFactoriesWithBakers.md) <!-- + -->
 
 <!--
 

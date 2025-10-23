@@ -108,3 +108,4 @@ There are available interfaces and implementations of the entity world:
 ## 📌 Best Practices
 
 - [Iterating over EntityCollections, Worlds and Filters.](../../BestPractices/IteratingOverEntityCollections.md)  <!-- + -->
+- [Building Entity System with Model & View Separation](../../BestPractices/EntitySystem.md)  <!-- + -->
