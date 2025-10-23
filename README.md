@@ -59,12 +59,11 @@ requirements before using the framework.
 ## 🎛 Using Odin Inspector
 
 For better **debugging**, **configuration**, and **visualization** of game state, we **optionally recommend**
-using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The
-framework **works without Odin**, but Odin makes inspection and tweaking much easier.
+using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041). The framework **works without Odin**, but Odin makes inspection and tweaking much easier.
 
 ---
 
-## 🔌 Using Plugin for Rider
+## 🔌 Using Plugin for Rider [(Read More)](Docs/Entities/EntityAPI#generating-api-via-rider-plugin)
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)

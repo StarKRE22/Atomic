@@ -308,7 +308,6 @@ This gives you full control over **when** and **how often** your Entity API rege
 
 This section explains how to generate **Entity extension methods** using the **Atomic Rider Plugin**.
 
-
 ### 📦 Installation
 
 You can install the plugin either from **JetBrains Marketplace** or **GitHub**.
