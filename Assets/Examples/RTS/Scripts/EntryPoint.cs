@@ -45,10 +45,6 @@ namespace RTSGame
         [SerializeField]
         private int _unitColumns = 100;
 
-        [Header("Debug")]
-        [SerializeField]
-        private float _debugUnitCount; //See entity count changes in the world
-
         private void Awake()
         {
             GameContext.DropInstance();
@@ -82,7 +78,6 @@ namespace RTSGame
         private void LateUpdate()
         {
             _gameContext.LateTick(Time.deltaTime);
-            _debugUnitCount = _gameContext.GetEntityWorld().Count;
         }
 
         private void OnDestroy()

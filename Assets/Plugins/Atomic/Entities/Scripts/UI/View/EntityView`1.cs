@@ -99,7 +99,7 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Install(entity);
                     else
-                        Debug.LogWarning($"EntityView {name}: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {this.name}: Oops! Detected null installer!", this);
                 }
             }
         }
@@ -130,7 +130,7 @@ namespace Atomic.Entities
                     if (installer)
                         installer.Uninstall(_entity);
                     else
-                        Debug.LogWarning($"EntityView {name}: Oops! Detected null installer!", this);
+                        Debug.LogWarning($"EntityView {this.name}: Oops! Detected null installer!", this);
                 }
             }
 

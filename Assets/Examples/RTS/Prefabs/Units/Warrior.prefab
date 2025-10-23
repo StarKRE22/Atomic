@@ -319,10 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5882a153db4848a09e0a2a81db9958c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoCompile: 1
   initialTagCapacity: 3
   initialValueCapacity: 16
   initialBehaviourCapacity: 4
+  autoCompile: 1
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
   _factory: {fileID: 11400000, guid: bff4f710d3b704ac7a6438e12d0bcf57, type: 2}

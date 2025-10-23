@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/SceneFactorySample.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_DEV/SceneFactorySample.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/CameraController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/CameraController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/GUIEntityCounter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UI/GUIEntityCounter.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (10000+ Units — No Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (10000+ Units — No Visualization).unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +63,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/starkre/Desktop/Atomic6/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,8 +89,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Time/Timestamp/FixedTimestamp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Scripts/Utils/AtomicUtils.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Elements/Tests/Performance/ReactiveListPerformance.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entity/Unity/SceneEntity_Unity.cs.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory.cs.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Entitities/Unity/SceneEntity_Unity.cs.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factories/Unity/SceneEntityFactory.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/IEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Names/Algorithms/SequentialEntityNameAlgorithm.cs.meta" root0="FORCE_HIGHLIGHTING" />
@@ -114,7 +111,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b8/d3b9e340/IEnumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f2/c7924853/IReadOnlyDictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/f4/dd213227/MethodImplOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/18/73be7056/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/28/2023ba66/LogType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/91/8d44f40c/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/a9/4957b382/Scene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/c1/92091dc6/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/df8254f095d741a6a89af5f4a92f75e81df200/d0/3f501741/SpaceAttribute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -304,23 +303,7 @@
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
-      <workItem from="1761217932574" duration="18779000" />
-    </task>
-    <task id="LOCAL-01787" summary="Manual.md">
-      <option name="closed" value="true" />
-      <created>1761081862751</created>
-      <option name="number" value="01787" />
-      <option name="presentableId" value="LOCAL-01787" />
-      <option name="project" value="LOCAL" />
-      <updated>1761081862751</updated>
-    </task>
-    <task id="LOCAL-01788" summary="Сделал AtomicAPI">
-      <option name="closed" value="true" />
-      <created>1761082225550</created>
-      <option name="number" value="01788" />
-      <option name="presentableId" value="LOCAL-01788" />
-      <option name="project" value="LOCAL" />
-      <updated>1761082225550</updated>
+      <workItem from="1761217932574" duration="20331000" />
     </task>
     <task id="LOCAL-01789" summary="ChoosingBetweenTimerAndCooldown.md">
       <option name="closed" value="true" />
@@ -698,7 +681,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761241221857</updated>
     </task>
-    <option name="localTasksCounter" value="1836" />
+    <task id="LOCAL-01836" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1761242113805</created>
+      <option name="number" value="01836" />
+      <option name="presentableId" value="LOCAL-01836" />
+      <option name="project" value="LOCAL" />
+      <updated>1761242113805</updated>
+    </task>
+    <task id="LOCAL-01837" summary="Поправил папочки!">
+      <option name="closed" value="true" />
+      <created>1761242438946</created>
+      <option name="number" value="01837" />
+      <option name="presentableId" value="LOCAL-01837" />
+      <option name="project" value="LOCAL" />
+      <updated>1761242438946</updated>
+    </task>
+    <option name="localTasksCounter" value="1838" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -725,7 +724,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="ProjectFolderOrganization.md" />
     <MESSAGE value="RequestConditionActionEvent.md" />
     <MESSAGE value="RequestsVsActions.md" />
     <MESSAGE value="SharedConstants.md" />
@@ -744,13 +742,14 @@
     <MESSAGE value="Minor Fixes!" />
     <MESSAGE value="Раскидал Best Practices" />
     <MESSAGE value="Документалка готова!" />
-    <MESSAGE value="Пилим!" />
     <MESSAGE value="Обновил Shooter" />
     <MESSAGE value="Обновил папки в Shooter Samples!" />
     <MESSAGE value="Сделал Sample Shooter!" />
     <MESSAGE value="Сделал сэмпл-проекты!" />
     <MESSAGE value="Обновил ScriptableEntityFactory`1.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновил ScriptableEntityFactory`1.cs" />
+    <MESSAGE value="Пилим!" />
+    <MESSAGE value="Поправил папочки!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Поправил папочки!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

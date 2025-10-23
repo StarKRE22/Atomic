@@ -452,10 +452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1efb1e447144ed5a25cf91712f4e587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoCompile: 1
   initialTagCapacity: 3
   initialValueCapacity: 16
   initialBehaviourCapacity: 4
+  autoCompile: 1
   onlySelectedGizmos: 0
   onlyEditModeGizmos: 0
   _factory: {fileID: 11400000, guid: 806a1fe85759d4df5bf46519fdff9d74, type: 2}
