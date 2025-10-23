@@ -68,8 +68,7 @@ using [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odi
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
 or [GitHub Repository](https://github.com/Prylor/atomic-rider-plugin) . By default, the code generation works with
-Unity,
-but with the plugin, development experience in `Rider IDE` become
+Unity, but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
 ---
