@@ -54,7 +54,7 @@ namespace Atomic.Elements
             _logType = logType;
         }
 #else
-        public PrintAction(string message)
+        public LogAction(string message)
         {
             _message = message;
         }

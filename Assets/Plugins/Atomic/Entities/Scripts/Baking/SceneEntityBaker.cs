@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
     /// <summary>
@@ -54,3 +55,4 @@ namespace Atomic.Entities
         protected abstract void Install(IEntity entity);
     }
 }
+#endif

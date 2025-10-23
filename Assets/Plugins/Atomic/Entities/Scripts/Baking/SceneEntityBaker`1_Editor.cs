@@ -1,10 +1,14 @@
+#if UNITY_5_3_OR_NEWER
 using System;
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
-
 
 namespace Atomic.Entities
 {
@@ -93,9 +97,10 @@ namespace Atomic.Entities
             }
             catch (Exception ex)
             {
-                    Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {ex.Message}</color>\n{ex.StackTrace}", this);
+                Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {ex.Message}</color>\n{ex.StackTrace}",
+                    this);
             }
-            
+
             Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
 #endif
         }
@@ -120,3 +125,4 @@ namespace Atomic.Entities
         }
     }
 }
+#endif

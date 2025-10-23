@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 
 #if UNITY_5_3_OR_NEWER
@@ -58,3 +59,4 @@ namespace Atomic.Elements
         public override string ToString() => this.value.ToString();
     }
 }
+#endif

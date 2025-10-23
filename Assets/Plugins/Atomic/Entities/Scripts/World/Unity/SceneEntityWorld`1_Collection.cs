@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -79,3 +80,4 @@ namespace Atomic.Entities
         IEnumerator IEnumerable.GetEnumerator() => _world.GetEnumerator();
     }
 }
+#endif

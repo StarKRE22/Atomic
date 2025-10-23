@@ -1,4 +1,4 @@
-using System;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
 
 namespace Atomic.Entities
@@ -24,7 +24,7 @@ namespace Atomic.Entities
             this.Release();
             return entity;
         }
-        
+
         /// <summary>
         /// Handles cleanup after the entity has been created.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Atomic.Entities
         {
             Destroy(this.gameObject);
         }
-        
+
         /// <summary>
         /// Constructs a new entity instance of type <typeparamref name="E"/>.
         /// </summary>
@@ -48,3 +48,4 @@ namespace Atomic.Entities
         protected abstract E Create();
     }
 }
+#endif

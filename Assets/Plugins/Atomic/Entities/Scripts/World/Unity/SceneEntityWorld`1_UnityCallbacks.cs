@@ -1,3 +1,4 @@
+#if UNITY_5_3_OR_NEWER
 namespace Atomic.Entities
 {
     public partial class SceneEntityWorld<E>
@@ -46,3 +47,4 @@ namespace Atomic.Entities
         }
     }
 }
+#endif
