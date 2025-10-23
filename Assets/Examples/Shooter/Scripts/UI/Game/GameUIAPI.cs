@@ -14,10 +14,10 @@ namespace ShooterGame.UI
 #if UNITY_EDITOR
 	[InitializeOnLoad]
 #endif
-	public static class GameUIContextAPI
+	public static class GameUIAPI
 	{
 
-		static GameUIContextAPI()
+		static GameUIAPI()
 		{
 		}
     }

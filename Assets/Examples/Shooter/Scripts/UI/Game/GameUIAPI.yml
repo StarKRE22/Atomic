@@ -3,7 +3,7 @@ entityType: IGameUI
 aggressiveInlining: true
 
 namespace: ShooterGame.UI
-className: GameUIContextAPI
+className: GameUIAPI
 directory: Assets/Examples/Shooter/Scripts/UI/Game
 
 imports:
