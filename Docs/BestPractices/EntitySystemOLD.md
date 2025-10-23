@@ -270,24 +270,14 @@ public sealed class UnitViewCatalog : EntityViewCatalog<IUnitEntity, UnitView>
 ```
 
 ```csharp
-using Atomic.Entities;
-
-namespace RTSGame
-{
-    public sealed class UnitViewPool : EntityViewPool<IUnitEntity, UnitView>
+  public sealed class UnitViewPool : EntityViewPool<IUnitEntity, UnitView>
     {
     }
-}
 ```
 
 ```csharp
-using Atomic.Entities;
-
-namespace RTSGame
+public sealed class UnitCollectionView : EntityCollectionView<IUnitEntity, UnitView>
 {
-    public sealed class UnitCollectionView : EntityCollectionView<IUnitEntity, UnitView>
-    {
-    }
 }
 ```
 

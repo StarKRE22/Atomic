@@ -5,28 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystemOLD.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/GameEntityCatalog.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/GameEntityCatalog.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Headquarters.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Headquarters.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Projectile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Projectile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Tank.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Tank.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Warrior.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Configs/GameEntities/Warrior.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsSystemInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/GameEntitiesSystemInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsSystemInstaller.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/UnitsUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/GameEntities/UnitsUseCase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/GameContext/Units/UnitsUseCase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Core/AI/AIDetectTargetBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitMultiFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitMultiFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystem.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/BestPractices/EntitySystemOLD.md" beforeDir="false" afterPath="$PROJECT_DIR$/Docs/BestPractices/EntitySystemOLD.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +52,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Archive/BehaviourEntityView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Tank/TankViewInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorBaker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/Content/Units/Warrior/WarriorFactory.cs" root0="FORCE_HIGHLIGHTING" />
@@ -295,23 +277,8 @@
       <workItem from="1761080165376" duration="1800000" />
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
-      <workItem from="1761201425513" duration="8374000" />
-    </task>
-    <task id="LOCAL-01768" summary="EntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1761054270992</created>
-      <option name="number" value="01768" />
-      <option name="presentableId" value="LOCAL-01768" />
-      <option name="project" value="LOCAL" />
-      <updated>1761054270992</updated>
-    </task>
-    <task id="LOCAL-01769" summary="EntitySingleton.md">
-      <option name="closed" value="true" />
-      <created>1761054335271</created>
-      <option name="number" value="01769" />
-      <option name="presentableId" value="LOCAL-01769" />
-      <option name="project" value="LOCAL" />
-      <updated>1761054335271</updated>
+      <workItem from="1761201425513" duration="8409000" />
+      <workItem from="1761217932574" duration="1224000" />
     </task>
     <task id="LOCAL-01770" summary="SceneEntitySingleton.md">
       <option name="closed" value="true" />
@@ -689,7 +656,23 @@
       <option name="project" value="LOCAL" />
       <updated>1761213867078</updated>
     </task>
-    <option name="localTasksCounter" value="1817" />
+    <task id="LOCAL-01817" summary="Пилим статью для EntitySystem.md">
+      <option name="closed" value="true" />
+      <created>1761217901858</created>
+      <option name="number" value="01817" />
+      <option name="presentableId" value="LOCAL-01817" />
+      <option name="project" value="LOCAL" />
+      <updated>1761217901858</updated>
+    </task>
+    <task id="LOCAL-01818" summary="Пилим!">
+      <option name="closed" value="true" />
+      <created>1761217923183</created>
+      <option name="number" value="01818" />
+      <option name="presentableId" value="LOCAL-01818" />
+      <option name="project" value="LOCAL" />
+      <updated>1761217923183</updated>
+    </task>
+    <option name="localTasksCounter" value="1819" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -716,8 +699,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="EntityAPI" />
-    <MESSAGE value="API Generation!" />
     <MESSAGE value="Manual.md" />
     <MESSAGE value="Сделал AtomicAPI" />
     <MESSAGE value="ChoosingBetweenTimerAndCooldown.md" />
@@ -741,7 +722,9 @@
     <MESSAGE value="UsingEvents.md" />
     <MESSAGE value="UsingExpressions.md" />
     <MESSAGE value="Прошурудил Best practices!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Прошурудил Best practices!" />
+    <MESSAGE value="Пилим статью для EntitySystem.md" />
+    <MESSAGE value="Пилим!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пилим!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
