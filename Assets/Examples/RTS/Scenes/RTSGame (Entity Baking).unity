@@ -5097,6 +5097,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6425615338675742216, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
+      propertyPath: overrideName
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8258922563122937303, guid: 42259186f365e4d42bea89ea7f465798, type: 3}
       propertyPath: m_Name
       value: Headquarters

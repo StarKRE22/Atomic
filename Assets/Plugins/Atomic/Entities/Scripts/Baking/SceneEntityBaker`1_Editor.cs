@@ -8,67 +8,53 @@ namespace Atomic.Entities
     public partial class SceneEntityBaker<E>
     {
 #if ODIN_INSPECTOR
+        [PropertyOrder(1200)]
         [FoldoutGroup("Optimization")]
-#else
+#endif
         [Header("Optimization")]
-#endif
-        [Tooltip("Should precompute capacities when OnValidate happens?")]
-        [SerializeField]
-        private bool autoCompile = true;
-
-#if ODIN_INSPECTOR
-        [ReadOnly]
-        [FoldoutGroup("Optimization")]
-        [PropertyOrder(1000)]
-#endif
         [Tooltip("Initial number of tags to assign to the entity")]
         [SerializeField]
         protected int initialTagCapacity;
 
 #if ODIN_INSPECTOR
-        [ReadOnly]
+        [PropertyOrder(1200)]
         [FoldoutGroup("Optimization")]
-        [PropertyOrder(1000)]
 #endif
         [Tooltip("Initial number of values to assign to the entity")]
         [SerializeField]
         protected int initialValueCapacity;
 
 #if ODIN_INSPECTOR
-        [ReadOnly]
+        [PropertyOrder(1200)]
         [FoldoutGroup("Optimization")]
-        [PropertyOrder(1000)]
 #endif
         [Tooltip("Initial number of behaviours to assign to the entity")]
         [SerializeField]
         protected int initialBehaviourCapacity;
 
+        [Header("Editor")]
+#if ODIN_INSPECTOR
+        [PropertyOrder(900)]
+#endif
+        [Tooltip("Should precompute capacities when OnValidate happens?")]
+        [SerializeField]
+        private bool autoCompile = true;
+
 #if ODIN_INSPECTOR
         [Title("Debug")]
-        [ReadOnly]
+        [PropertyOrder(2000)]
+        [ShowInInspector, ReadOnly]
 #endif
-        private IEntity _previewEntity;
+        private protected IEntity _previewEntity;
 
         /// <summary>
         /// Unity callback invoked when the script is loaded or a value is changed in the Inspector.
-        /// Used here to update cached metadata via <see cref="Precompile"/>.
+        /// Used here to update cached metadata via <see cref="Compile"/>.
         /// </summary>
         protected virtual void OnValidate()
         {
             if (this.autoCompile)
-                this.Precompile();
-        }
-
-        /// <summary>
-        /// Unity callback used to reset baker fields to their default values.
-        /// </summary>
-        protected virtual void Reset()
-        {
-#if UNITY_EDITOR
-            this.initialTagCapacity = 0;
-            this.initialValueCapacity = 0;
-            this.initialBehaviourCapacity = 0;
-#endif
+                this.Compile();
         }
 
         /// <summary>
@@ -77,11 +63,11 @@ namespace Atomic.Entities
         /// </summary>
 #if ODIN_INSPECTOR
         [Button]
-        [FoldoutGroup("Optimization")]
-        [PropertyOrder(1000)]
+        [PropertyOrder(900)]
+        [GUIColor(0f, 0.83f, 1f)]
 #endif
-        [ContextMenu(nameof(Precompile))]
-        private protected virtual void Precompile()
+        [ContextMenu(nameof(Compile))]
+        private protected virtual void Compile()
         {
 #if UNITY_EDITOR
             if (EditorApplication.isPlaying)
@@ -92,7 +78,8 @@ namespace Atomic.Entities
                 _previewEntity = this.Create();
                 if (_previewEntity == null)
                 {
-                    Debug.LogWarning($"{nameof(SceneEntityBaker)}: Create() returned null.", this);
+                    Debug.LogWarning($"{nameof(SceneEntityFactory<E>)}: Create() returned null.",
+                        this);
                 }
                 else
                 {
@@ -103,8 +90,29 @@ namespace Atomic.Entities
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[EntityBaker] Precompile failed: {ex.StackTrace}", this);
+                    Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {ex.Message}</color>\n{ex.StackTrace}", this);
             }
+            
+            Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
+#endif
+        }
+
+        /// <summary>
+        /// Unity callback used to reset factory fields to their default values.
+        /// </summary>
+#if ODIN_INSPECTOR
+        [Button]
+        [PropertyOrder(900)]
+        [GUIColor(1f, 0.92f, 0.02f)]
+        [PropertySpace(SpaceBefore = 4, SpaceAfter = 4)]
+#endif
+        protected virtual void Reset()
+        {
+#if UNITY_EDITOR
+            this.initialTagCapacity = 0;
+            this.initialValueCapacity = 0;
+            this.initialBehaviourCapacity = 0;
+            Debug.Log($"<color=#FFEB04>{this.name} Reset completed successfully!</color>", this);
 #endif
         }
     }

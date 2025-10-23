@@ -78,7 +78,7 @@ namespace Atomic.Entities
 
         private static TickManager CreateInstance()
         {
-            GameObject go = new GameObject("Update Loop");
+            GameObject go = new GameObject(nameof(TickManager));
             go.hideFlags = HideFlags.HideAndDontSave;
             DontDestroyOnLoad(go);
             return go.AddComponent<TickManager>();

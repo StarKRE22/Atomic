@@ -36,6 +36,9 @@ namespace Atomic.Entities
         [SerializeField]
         internal bool overrideName;
 
+#if ODIN_INSPECTOR
+        [ShowIf(nameof(overrideName))]
+#endif
         /// <summary>
         /// Custom display name for the view, used only if <see cref="overrideName"/> is enabled.
         /// </summary>
@@ -62,7 +65,7 @@ namespace Atomic.Entities
         /// Gets the entity currently associated with this view.
         /// </summary>
 #if ODIN_INSPECTOR
-        [Header("Debug")]
+        [Title("Debug")]
         [ShowInInspector]
 #endif
         public E Entity => _entity;

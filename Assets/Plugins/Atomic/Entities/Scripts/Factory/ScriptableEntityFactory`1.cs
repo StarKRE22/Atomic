@@ -113,9 +113,10 @@ namespace Atomic.Entities
             }
             catch (Exception ex)
             {
-                Debug.LogWarning($"[ScriptableEntityFactory] Precompile failed: {ex.StackTrace}", this);
+                Debug.LogError($"<color=#FF3C3C>{this.name} Compilation failed: {ex.Message}</color>\n{ex.StackTrace}", this);
             }
 #endif
+            Debug.Log($"<color=#00D4FF>{this.name} Compilation completed successfully!</color>", this);
         }
 
         /// <summary>
@@ -133,6 +134,7 @@ namespace Atomic.Entities
             this.initialTagCapacity = 0;
             this.initialValueCapacity = 0;
             this.initialBehaviourCapacity = 0;
+            Debug.Log($"<color=#FFEB04>{this.name} Reset completed successfully!</color>", this);
 #endif
         }
     }

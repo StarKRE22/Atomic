@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/SceneFactorySample.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_DEV/SceneFactorySample.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1_Editor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/SceneEntityFactory`1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Factory/ScriptableEntityFactory`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/View/EntityView`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/EntityWorld`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Core/EntityWorld`1.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/IEntityWorld`1.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/World/Interface/IEntityWorld`1.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,15 +304,7 @@
       <workItem from="1761081982604" duration="314000" />
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
-      <workItem from="1761217932574" duration="17866000" />
-    </task>
-    <task id="LOCAL-01786" summary="Manual.md">
-      <option name="closed" value="true" />
-      <created>1761081735043</created>
-      <option name="number" value="01786" />
-      <option name="presentableId" value="LOCAL-01786" />
-      <option name="project" value="LOCAL" />
-      <updated>1761081735043</updated>
+      <workItem from="1761217932574" duration="18779000" />
     </task>
     <task id="LOCAL-01787" summary="Manual.md">
       <option name="closed" value="true" />
@@ -682,7 +690,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761240131818</updated>
     </task>
-    <option name="localTasksCounter" value="1835" />
+    <task id="LOCAL-01835" summary="Обновил ScriptableEntityFactory`1.cs">
+      <option name="closed" value="true" />
+      <created>1761241221857</created>
+      <option name="number" value="01835" />
+      <option name="presentableId" value="LOCAL-01835" />
+      <option name="project" value="LOCAL" />
+      <updated>1761241221857</updated>
+    </task>
+    <option name="localTasksCounter" value="1836" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -709,7 +725,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="PreferAbstractInterfaces.md" />
     <MESSAGE value="ProjectFolderOrganization.md" />
     <MESSAGE value="RequestConditionActionEvent.md" />
     <MESSAGE value="RequestsVsActions.md" />
@@ -734,7 +749,8 @@
     <MESSAGE value="Обновил папки в Shooter Samples!" />
     <MESSAGE value="Сделал Sample Shooter!" />
     <MESSAGE value="Сделал сэмпл-проекты!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал сэмпл-проекты!" />
+    <MESSAGE value="Обновил ScriptableEntityFactory`1.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновил ScriptableEntityFactory`1.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
