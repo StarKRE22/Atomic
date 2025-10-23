@@ -18,10 +18,15 @@ pattern and using `Atomic` elements for data organization.
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concepts)
 - [Documentation](#-documentation)
+  - [Atomic.Elements](#atomicelements--read-more-)
+  - [Atomic.Entities](#atomicentities--read-more-)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
 - [Tutorials](#-tutorials)
 - [Game Examples](#-game-examples)
+  - [Beginner Sample](#ex1)
+  - [Top-Down Shooter Sample](#ex2)
+  - [RTS Sample](#ex3)
 - [Best Practices](#-best-practices)
 - [License](#-license)
 - [Contacts](#-contacts)
@@ -57,7 +62,7 @@ framework **works without Odin**, but Odin makes inspection and tweaking much ea
 
 For better **code generation** and more convenient workflow in `Rider IDE`, we **highly recommend** installing
 the Atomic Rider Plugin from [Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/28321-atomic)
-or  [GitHub](https://github.com/Prylor/atomic-rider-plugin). By default, the code generation works with Unity,
+or [GitHub Repository](https://github.com/Prylor/atomic-rider-plugin) . By default, the code generation works with Unity,
 but with the plugin, development experience in `Rider IDE` become
 smoother and more powerful than in Unity.
 
@@ -67,28 +72,30 @@ smoother and more powerful than in Unity.
 
 ### 1️⃣ Entity–State–Behaviour Pattern
 
-- **Entity** — a **container** that contains set of **data** (`State`) and **logic** (`Behaviour`), strictly separated
-  from each other.
-- **State** — a set of `atomic` components that define the parameters of an entity.
-- **Behaviour** — a set of controllers that operate on the entity’s `State` they are attached to.
+- **Entity** — a **container** holding a set of **data** (`State`) and **logic** (`Behaviour`), kept strictly separate.
+- **State** — a collection of `atomic` components defining the entity's parameters.
+- **Behaviour** — controllers that operate on the entity’s `State` they are attached to.
 
-> Thus, any game object, system, AI or UI can be described as a `composition` of data and logic.
+> Any game object, system, AI, or UI can be represented as a **composition of data and logic**, making systems modular
+> and predictable.
 
 ### 2️⃣ Atomic Elements instead of Components
 
-Complex systems should be built from `atomic elements`.  
-Instead of creating large, monolithic objects and components, you can compose entity’s `State` from **simple, reusable
-atomic elements**.
+Complex systems should be built from **atomic elements**.
+Instead of creating large, monolithic objects, entities’ `State` can be composed of **small, reusable atomic elements**.
 
-> Thus ensures that data remains modular, predictable, and reusable, while behaviours operate on these atomic building
+> This ensures data remains modular, predictable, and reusable, while behaviours act on these well-defined building
 > blocks.
 
 ### 3️⃣ Procedural Programming over OOP
 
-Game development differs from traditional software development because of the **high number of interactions** between
-systems. Object-Oriented Programming (OOP) often struggles to model these interactions effectively, leading to
-unnecessary complexity. **Atomic Framework** encourages a **procedural approach**, promoting the use of `static methods`
-and a `centralized data registry` instead of decentralized objects.
+Game development often involves **highly interactive systems**. Traditional Object-Oriented Programming (OOP) can
+struggle to model these interactions cleanly, creating unnecessary complexity.
+
+**Atomic Framework** encourages a **procedural approach**, leveraging `static methods` and a `centralized data registry`
+instead of tightly coupled objects.
+
+> This approach simplifies interactions, improves maintainability, and scales well for large entity-driven projects.
 
 ---
 
@@ -99,7 +106,7 @@ game:
 
 ### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)
 
-**A library of atomic elements for constructing complex game objects and systems in Unity and C#.**  
+**A library of atomic elements for constructing complex game objects and systems in Unity and C#.**
 The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling
 developers to quickly assemble any game entity **like a LEGO constructor**.
 
@@ -292,166 +299,137 @@ To be added...
 
 ---
 
-## 🗂 Game Samples
+## 🗂 Game Examples
 
-This section includes **three sample projects** demonstrating different use cases of the framework.
-<br> All examples are located in the **[Assets/Examples](Assets/Examples)** folder.
+This section presents **three sample projects**, each demonstrating a different level of complexity and use case of the
+framework.  
+All examples are available inside **[Assets/Examples](Assets/Examples)**.
 
-- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game designed to introduce the core concepts
-  of the framework
-- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** — a more **complex game architecture**, suitable for mid-sized
-  games.
-- **[RTS Sample](Assets/Examples/RTS)** — **high-performance entity management** with a large number of units.
+- **[Beginner Sample](Assets/Examples/Beginner)** — a simple 2-player mini-game showcasing the core principles of the
+  framework.
+- **[Top-Down Shooter Sample](Assets/Examples/Shooter)** — a more advanced, modular game architecture suitable for
+  mid-sized projects.
+- **[RTS Sample](Assets/Examples/RTS)** — a large-scale simulation demonstrating high-performance entity management with
+  thousands of units.
 
 ---
+
+<div id="ex1"></div>
 
 ### 1️⃣ Beginner Sample
 
-<img width="347" height="267" alt="изображение" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
+A **simple 2-player mini-game** designed to introduce the fundamental ideas behind the Atomic framework.
 
-**Simple 2-player mini-game** designed to introduce the core concepts of the framework
+<img width="400" height="" alt="Beginner sample preview" src="https://github.com/user-attachments/assets/99a64dce-557c-4008-bcc8-f7ce9aba9893" />
 
-> **Gameplay:**
-> - **Players:** Two players share the same scene.
-> - **Objective:** Collect more coins than the opponent within a **limited time**.
-> - **Controls:**
-    >
+#### 🕹 Gameplay Overview
 
-- Player (Blue): Arrow keys
+- **Players:** Two players share a single arena.
+- **Goal:** Collect more coins than your opponent within a **limited time**.
+- **Controls:**
+    - Player (Blue): Arrow keys
+    - Player (Red): `W`, `A`, `S`, `D`
+- **UI Feedback:** A victory screen displays the winning player.
+- **Restart:** Players can restart and compete again instantly.
 
-> - Player (Red): `W`, `A`, `S`, `D`
-> - **UI Feedback:** Victory screen appears showing the winning player.
-> - **Restart:** Players can restart the game to try again.
+#### 💡 This Sample Demonstrates
 
-#### This Sample Demonstrates
-
-1. How to create and configure **SceneEntity** in Unity.
-2. Demonstrates project architecture based on the **Entity–State–Behaviour** pattern.
-3. Usage of **atomic properties** and **events**.
-4. **Entity pooling** of coins.
-5. Applying **procedural programming** and **static methods** for game logic.
-6. Developing **Atomic UI** using the **MVP-Passive View** pattern.
-7. Writing **Unit tests** to validate entity logic and behaviors.
+1. Creating and configuring **SceneEntity** objects in Unity.
+2. Structuring a project using the **Entity–State–Behaviour** pattern.
+3. Using **atomic values** and **reactive events**.
+4. Implementing **entity pooling** for coins.
+5. Writing **procedural gameplay logic** via static use-case methods.
+6. Building an **Atomic UI** using the **MVP (Passive View)** pattern.
+7. Creating **unit tests** to verify entity logic and behavior consistency.
 
 ---
+
+<div id="ex2"></div>
 
 ### 2️⃣ Top-Down Shooter Sample
 
-<img width="357" height="188" alt="изображение" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
+The **Top-Down Shooter** demonstrates a more sophisticated and scalable game architecture, suitable for **mid-size
+projects**.
 
-The Top-Down Shooter Sample demonstrates a more **complex game architecture**, suitable for mid-sized games.
+<img width="400" height="" alt="Shooter sample preview" src="https://github.com/user-attachments/assets/30ce41ab-2958-4979-b7cb-7d124cb1b791" />
 
-> **Gameplay**
-> - **Players:** Two players share the same scene.
-> - **Objective:** Kill your opponent more times than he does within a **limited time**.
-> - **Controls:**
-    >
+#### 🕹 Gameplay Overview
 
-- Player (Blue): Arrow keys to move, `Space` to shoot
+- **Players:** Two players in a shared arena.
+- **Objective:** Eliminate your opponent more times than they eliminate you, within a **time limit**.
+- **Controls:**
+    - Player (Blue): Arrow keys to move, `Space` to shoot
+    - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
+- **Mechanics:**
+    - **Movement:** Kinematic character movement with `Rigidbody.SweepTest` collision handling.
+    - **Combat:** Independent weapon entities firing physical projectiles.
+    - **Projectile:** Kinematic object with trigger collisions and limited lifetime.
+    - **Respawn:** Units reappear at random points after death.
+    - **Time Limit:** The match ends when the timer expires.
+- **Visualization:**
+    - Animated characters with sound and VFX.
+    - UI displays kills and time remaining.
 
-> - Player (Red): `W`, `A`, `S`, `D` to move, `Q` to shoot
-> - **Mechanics**
-    >
+#### 🧩 Application Structure
 
-- **Character Movement:** Kinematic movement using `Transform`, with collision handling using `Rigidbody.SweepTest`.
+- **Scenes:**
+    - `Bootstrap` — initializes and loads the game.
+    - `Menu` — the main navigation scene.
+    - **Levels:** three stages featuring player and enemy spawning.
+- **Save System:** Remembers the last completed level.
+- **Loading Tree:** Hierarchical scene-loading sequence for structured bootstrapping.
 
-> - **Combat:** Characters use weapon, which are separate entities, and these weapons fire physical projectiles.
-    >
+#### 💡 This Sample Demonstrates
 
-- **Projectile:** A kinematic object that interacts via trigger collisions and has a limited lifetime.
-
-> - **Respawning:** Units respawn at random point dynamically after being defeated.
-    >
-
-- **Limited Time:**  The game ends when the time limit is reached.
-
-> - **Visualization**
-    >
-
-- **Character:** Equipped with canvas, animations, VFX, and sound effects.
-
-> - **UI:** Displays the kill count for each player and a session timer.
-
-> **Application**
-> - **Scenes:**
-    >
-
-- `Bootstrap` — starting scene that initializes the game.
-
-> - `Menu` — separate scene for main menu and navigation.
-> - **Start:** Game is launched through the `Bootstrap` scene.
-> - **Levels:** Three separate levels where players and enemies spawn.
-> - **Save System:** Stores the last completed level.
-> - **Game Load Flow:** Hierarchical structure of game loading sequence.
-
-#### This Sample Demonstrates
-
-1. How to structure a full-fledged **game architecture** for seamless scalability
-2. How to build an **application context** leveraging the `Entity-State-Behaviour` pattern
-3. How to design a **menu interface** in a procedural style
-4. How to orchestrate scene loading using a `Loading Tree`
-5. How to persist and manage **game data**
-6. How to transform an entity into a fully-featured **game object with animations, VFX, and audio**
-7. How to create and manage a **projectile pool** efficiently
-8. How to organize scalable file system for your project
+1. Designing a complete, **scalable game architecture**.
+2. Implementing an **application context** using the Entity–State–Behaviour pattern.
+3. Building procedural **menu systems**.
+4. Managing complex loading flows with a **Loading Tree**.
+5. Saving and restoring **persistent game data**.
+6. Turning entities into fully featured **game objects** with animation, VFX, and audio.
+7. Managing **projectile pools** efficiently.
+8. Structuring a **modular project file system**.
 
 ---
+
+<div id="ex3"></div>
 
 ### 3️⃣ RTS Sample
 
-<img width="416" height="192" alt="изображение" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
+<img width="400" height="" alt="RTS sample preview" src="https://github.com/user-attachments/assets/92d471ac-374a-4fc2-9bb6-86603107f16e" />
 
-The RTS Sample is designed to demonstrate **high-performance entity management** with a large number of units.
+The **RTS Sample** showcases **high-performance entity management** — running thousands of active units in real time
+with minimal overhead.
 
-> **Gameplay**
-> - **Armies:** Two large armies are placed on the scene and attack each other automatically. Each army consists of
-    infantry, tanks, and buildings.
-> - **Building:** Has health points.
-> - **Infantry:** Has health, performs melee attacks, and can detect the nearest available enemy.
-> - **Tank:** Has health, fires projectiles, and can detect the nearest available enemy.
-> - **Projectile:** Moves toward its target and has a limited lifetime.
+#### 🕹 Gameplay Overview
 
-> **Scenes:**
-> - **5000 Units Scene** — 5,000 game objects with full Unity visualization.
-> - **10000 Units Scene** — 10,000 game objects running without visualization for maximum performance testing.
-> - **Entity Baking Scene** — converts Unity objects into pure C# entities for the game simulation.
+- **Armies:** Two large armies automatically engage in battle — each consisting of infantry, tanks, and buildings.
+- **Buildings:** Have health points and serve as static defense or production units.
+- **Infantry:** Possesses health, performs melee attacks, and seeks the nearest enemy.
+- **Tanks:** Fire projectiles and detect enemies within range.
+- **Projectiles:** Travel toward targets with limited lifetime and cause impact damage.
 
-#### This Sample Demonstrates
+#### 🧩 Scenes
 
-1. An architecture where the game logic runs purely in C#, with Unity serving as the presentation layer
-2. The use of `EntityWorld`, `EntityFactory`, `EntityPools`, `EntityFilter`, and `EntityTriggers`
-3. How to use `EntityView`, `EntityCollectView`, `EntityViewPool` to represent game objects in Unity
-4. Handling 5,000 to 10,000 game objects on a single thread
-5. Baking Unity scene objects into a C# game system
+- **5000 Units Scene** — 5,000 visualized GameObjects for real-time simulation.
+- **10000 Units Scene** — 10,000 entities simulated **without visualization** for performance benchmarking.
+- **Entity Baking Scene** — demonstrates converting Unity scene objects into pure C# entities for simulation.
+
+#### 💡 This Sample Demonstrates
+
+1. Running complete **game logic in pure C#**, using Unity solely for visualization.
+2. Employing `EntityWorld`, `EntityFactory`, `EntityPool`, `EntityFilter`, and `EntityTriggers`.
+3. Using `EntityView`, `EntityViewPool`, and `EntityCollectionView` for rendering and synchronization.
+4. Managing **5,000–10,000 active objects** efficiently on a single thread.
+5. Baking Unity objects into a **pure data-driven simulation** architecture.
 
 ---
 
-<!--
-
-## 📌 Best Practices
-
-This section outlines **recommended approaches and patterns** when working with the `Atomic` framework. Following these
-practices will help you write **modular, testable, and high-performance code**, whether you’re developing single-player
-or multiplayer games.
-
-- [Prefer Atomic Interfaces to Concrete Classes](Docs/BestPractices/PreferAbstractInterfaces.md)
-- [Use Shared Constants](Docs/BestPractices/SharedConstants.md)
-- [Iterating over Reactive Collections](Docs/BestPractices/IteratingReactiveCollections.md)
-- [Requests vs Actions](Docs/BestPractices/RequestsVsActions.md)
-- [Request-Condition-Action-Event Flow](Docs/BestPractices/RequestConditionActionEvent.md)
-- [Modular Entity Installers](Docs/BestPractices/ModularEntityInstallers.md)
-- [File System Organization](Docs/BestPractices/ProjectFolderOrganization.md)
-- [Using InlineActions](Docs/Elements/Actions/InlineActions.md/#-best-practice)
-- [Using InlineFunctions](Docs/Elements/Functions/InlineFunctions.md/#-best-practice)
-- [Using Cooldowns](Docs/Elements/Time/Cooldowns.md/#-best-practice)
-- [Insert Constant to AndExpression](Docs/Elements/Expressions/AndExpressions.md/#-best-practice)
-- [Choosing Between Timer and Cooldown](Docs/BestPractices/ChosingBetweenTimerAndCooldown.md)
-- [Using Observe Extension Method](Docs/Elements/Values/IReactiveValue.md/#-best-practice)
-- [Using Subscriptions with DisposeComposite](Docs/Elements/Events/Subscriptions.md/#-best-practice)
-- [Using Optional Wrappers](Docs/Elements/Utils/Optional.md/#-best-practice)
+> 💡 These samples progressively guide you from basic gameplay architecture to advanced large-scale simulations —  
+> helping you master **Atomic.Entities** from small prototypes to high-performance real-world projects.
 
 
--->
+---
 
 ## 📌 Best Practices
 
@@ -528,5 +506,5 @@ SOFTWARE.
 ## 📧 Contacts
 
 **Author:** Igor Gulkin  
-**Telegram:** [@starkre22](https://t.me/starkre22)  
+**Telegram:** [t.me/starkre22](https://t.me/starkre22)  
 **Email:** [gulkin.igor.developer@gmail.com](mailto:gulkin.igor.developer@gmail.com)
