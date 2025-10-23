@@ -491,17 +491,15 @@ or multiplayer games.
 This section focuses on **runtime efficiency** within the framework. It provides detailed benchmarks, comparisons, and
 implementation notes that highlight how different systems and data structures perform under real-world conditions.
 
-- **Atomic.Elements**
-  - [ReactiveArray](Performance/ReactiveArrayPerformance.md)
-  - [ReactiveList](Performance/ReactiveListPerformance.md)
-  - [ReactiveLinkedList](Performance/ReactiveLinkedListPerformance.md)
-  - [ReactiveDictionary](Performance/ReactiveDictionaryPerformance.md)
-  - [ReactiveHashSet](Performance/ReactiveHashSetPerformance.md)
-
 - **Atomic.Entities**
-    - [Entity](Entities/Manual.md#-performance)
-    - [EntityCollection](Collections/Manual.md#-performance)
-
+    - [Entity](Docs/Entities/Entities/Manual.md#-performance)
+    - [EntityCollection](Docs/Entities/Collections/Manual.md#-performance)
+- **Atomic.Elements**
+    - [ReactiveArray](Docs/Elements/Performance/ReactiveArrayPerformance.md)
+    - [ReactiveList](Docs/Elements/Performance/ReactiveListPerformance.md)
+    - [ReactiveLinkedList](Docs/Elements/Performance/ReactiveLinkedListPerformance.md)
+    - [ReactiveDictionary](Docs/Elements/Performance/ReactiveDictionaryPerformance.md)
+    - [ReactiveHashSet](Docs/Elements/Performance/ReactiveHashSetPerformance.md)
 
 ---
 
