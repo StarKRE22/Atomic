@@ -19,13 +19,13 @@ namespace ShooterGame.UI
 #if UNITY_EDITOR
 	[InitializeOnLoad]
 #endif
-	public static class MenuUIContextAPI
+	public static class MenuUIAPI
 	{
 		///Values
 		public static readonly int Screens; // IDictionary<Type, (ScreenView, IEntityBehaviour)>
 		public static readonly int CurrentScreen; // IReactiveVariable<ScreenView>
 
-		static MenuUIContextAPI()
+		static MenuUIAPI()
 		{
 			//Values
 			Screens = NameToId(nameof(Screens));
