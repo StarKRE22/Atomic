@@ -18,8 +18,8 @@ pattern and using `Atomic` elements for data organization.
 - [Using Atomic Plugin for Rider](#-using-atomic-plugin-for-rider)
 - [Key Concepts](#-key-concepts)
 - [Documentation](#-documentation)
-  - [Atomic.Elements](#atomicelements--read-more-)
-  - [Atomic.Entities](#atomicentities--read-more-)
+  - [Atomic.Elements](#atomic-elements)
+  - [Atomic.Entities](#atomic-entities)
 - [Unity Quick Start](#-unity-quick-start)
 - [CSharp Quick Start](#-csharp-quick-start)
 - [Tutorials](#-tutorials)
@@ -104,11 +104,15 @@ instead of tightly coupled objects.
 Atomic Framework consists of two main modules, each serving a distinct role in how you structure and build your
 game:
 
+<div id="atomic-elements"></div>
+
 ### `Atomic.Elements` [(Read More)](Docs/Elements/Manual.md)
 
 **A library of atomic elements for constructing complex game objects and systems in Unity and C#.**
 The solution includes **constants, variables, reactive properties, collections, events, and actions**, enabling
 developers to quickly assemble any game entity **like a LEGO constructor**.
+
+<div id="atomic-entities"></div>
 
 ### `Atomic.Entities` [(Read More)](Docs/Entities/Manual.md)
 
