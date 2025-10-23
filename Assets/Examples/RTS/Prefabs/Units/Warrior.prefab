@@ -275,8 +275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlGameObject: 1
-  overrideName: 0
-  customName: 
+  overrideName: 1
+  customName: Warrior
   installers:
   - {fileID: 7218851486221765621}
   _onlySelectedGizmos: 0

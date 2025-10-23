@@ -24,6 +24,7 @@ are transformed into entities.
     - [Methods](#-methods)
         - [Bake()](#bake)
         - [Create()](#create)
+        - [Release()](#release)
         - [OnValidate()](#onvalidate)
         - [Reset()](#reset)
         - [BakeAll(bool)](#bakeallbool)
@@ -194,6 +195,17 @@ protected abstract E Create();
 - **Description:** Constructs and returns a new entity instance. Must be implemented by derived classes.
 - **Returns:** A newly created entity of type `E`.
 - **Remarks:** Define the entity’s initialization logic here (add tags, values, or behaviours).
+
+#### `Release()`
+
+```csharp
+protected virtual void Release()
+```
+- **Description:** Handles cleanup after the entity has been created.
+- **Remarks:**
+  The default implementation destroys the GameObject this baker is attached to.
+  Override this method if you need to preserve the GameObject
+  or perform additional teardown logic.
 
 #### `OnValidate()`
 

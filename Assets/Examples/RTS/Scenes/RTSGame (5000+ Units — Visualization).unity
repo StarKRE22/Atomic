@@ -196,7 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameContextFactory: {fileID: 11400000, guid: c7be78091b4bf46838d8f7bddb63cb21, type: 2}
-  _entityWorldView: {fileID: 555379162}
+  _entityCollectionView: {fileID: 555379162}
+  _unitViewPool: {fileID: 555379161}
   _showEntityViews: 1
   _bakeUnits: 0
   _bakeIncludeInactive: 0

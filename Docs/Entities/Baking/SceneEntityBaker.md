@@ -26,6 +26,7 @@ instances. Provides a workflow to convert authored GameObjects into runtime enti
     - [Methods](#-methods)
         - [Bake()](#bake)
         - [Create()](#create)
+        - [Release()](#release)
         - [Install(IEntity)](#installientity)
         - [OnValidate()](#onvalidate)
         - [Reset()](#reset)
@@ -164,6 +165,17 @@ protected sealed override IEntity Create();
 - **Description:** Creates a new [IEntity](../Entities/IEntity.md) and applies custom logic
   via [Install(IEntity)](#installientity).
 - **Remarks:** Sealed; cannot be overridden in derived classes.
+
+#### `Release()`
+
+```csharp
+protected virtual void Release()
+```
+- **Description:** Handles cleanup after the entity has been created.
+- **Remarks:**
+  The default implementation destroys the GameObject this baker is attached to.
+  Override this method if you need to preserve the GameObject
+  or perform additional teardown logic.
 
 #### `Install(IEntity)`
 
@@ -351,7 +363,6 @@ protected virtual void Reset();
 - **Description:** Unity callback that resets factory fields to default values.
 - **Remarks:** Only affects editor workflows.
 
-<!--
 
 # 🧩️ SceneEntityBaker
 

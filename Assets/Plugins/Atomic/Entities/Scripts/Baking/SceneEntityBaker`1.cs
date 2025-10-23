@@ -21,8 +21,21 @@ namespace Atomic.Entities
         public E Bake()
         {
             E entity = this.Create();
-            Destroy(this.gameObject);
+            this.Release();
             return entity;
+        }
+        
+        /// <summary>
+        /// Handles cleanup after the entity has been created.
+        /// </summary>
+        /// <remarks>
+        /// The default implementation destroys the GameObject this baker is attached to.
+        /// Override this method if you need to preserve the GameObject 
+        /// or perform additional teardown logic.
+        /// </remarks>
+        protected virtual void Release()
+        {
+            Destroy(this.gameObject);
         }
         
         /// <summary>

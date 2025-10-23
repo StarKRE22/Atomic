@@ -1,5 +1,3 @@
-using System;
-using Atomic.Entities;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,6 +10,8 @@ namespace RTSGame
     [DefaultExecutionOrder(-1000)]
     public sealed class EntryPoint : MonoBehaviour
     {
+        public static EntryPoint Instance { get; private set; }
+        
 #if ODIN_INSPECTOR
         [ShowInInspector, HideInEditorMode]
 #endif
@@ -20,9 +20,11 @@ namespace RTSGame
         [SerializeField]
         private GameContextFactory _gameContextFactory;
 
-        [FormerlySerializedAs("_entityCollectionView")]
         [SerializeField]
-        private UnitCollectionView _entityWorldView;
+        private UnitCollectionView _entityCollectionView;
+
+        [SerializeField]
+        private UnitViewPool _unitViewPool;
 
         [Header("Visualization")]
         [SerializeField]
@@ -44,9 +46,13 @@ namespace RTSGame
         [FormerlySerializedAs("_spawnUnits")]
         [SerializeField]
         private int _unitColumns = 100;
-
+        
+        public UnitViewPool ViewPool => _unitViewPool;
+        
         private void Awake()
         {
+            Instance = this;
+            
             GameContext.DropInstance();
             GameContext.SetFactory(_gameContextFactory);
             _gameContext = GameContext.Instance;
@@ -60,7 +66,7 @@ namespace RTSGame
             _gameContext.Enable();
             
             if (_showEntityViews)
-                _entityWorldView.Show(_gameContext.GetEntityWorld());
+                _entityCollectionView.Show(_gameContext.GetEntityWorld());
         }
         
         private void SpawnUnits()
@@ -82,8 +88,11 @@ namespace RTSGame
 
         private void OnDestroy()
         {
+            if (Instance == this) 
+                Instance = null;
+            
             if (_showEntityViews)
-                _entityWorldView.Hide();
+                _entityCollectionView.Hide();
             
             GameContext.DropInstance();
         }

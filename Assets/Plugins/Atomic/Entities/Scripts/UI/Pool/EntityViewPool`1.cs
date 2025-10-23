@@ -78,8 +78,7 @@ namespace Atomic.Entities
             if (view)
                 view.transform.parent = this.container;
         }
-
-
+        
         /// <summary>
         /// Clears all pooled instances and destroys their GameObjects.
         /// </summary>

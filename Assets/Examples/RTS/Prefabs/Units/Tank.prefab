@@ -406,8 +406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlGameObject: 1
-  overrideName: 0
-  customName: 
+  overrideName: 1
+  customName: Tank
   installers:
   - {fileID: 3806559159976068473}
   _onlySelectedGizmos: 0

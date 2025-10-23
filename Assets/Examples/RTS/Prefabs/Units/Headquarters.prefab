@@ -253,8 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlGameObject: 1
-  overrideName: 0
-  customName: 
+  overrideName: 1
+  customName: Headquarters
   installers:
   - {fileID: 1636457273297419117}
   _onlySelectedGizmos: 0

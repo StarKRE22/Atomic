@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlGameObject: 1
-  overrideName: 0
-  customName: 
+  overrideName: 1
+  customName: Projectile
   installers:
   - {fileID: 6668089202329907141}
   _onlySelectedGizmos: 0
