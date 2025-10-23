@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Atomic6/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Headquarters.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Tank.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Prefabs/Units/Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (5000+ Units — Visualization).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scenes/RTSGame (Entity Baking).unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/EntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitBaker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Examples/RTS/Scripts/UnitEntities/UnitViewPool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/Baking/SceneEntityBaker`1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool`1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Atomic/Entities/Scripts/UI/Pool/EntityViewPool`1.cs" afterDir="false" />
-    </list>
+    <list default="true" id="abd33bb4-757d-489b-b208-e71049da9a18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -330,14 +317,6 @@
       <workItem from="1761120599533" duration="21262000" />
       <workItem from="1761201425513" duration="8409000" />
       <workItem from="1761217932574" duration="20331000" />
-    </task>
-    <task id="LOCAL-01792" summary="IteratingOverEntityCollections.md">
-      <option name="closed" value="true" />
-      <created>1761124465287</created>
-      <option name="number" value="01792" />
-      <option name="presentableId" value="LOCAL-01792" />
-      <option name="project" value="LOCAL" />
-      <updated>1761124465287</updated>
     </task>
     <task id="LOCAL-01793" summary="IteratingOverEntity.md">
       <option name="closed" value="true" />
@@ -723,7 +702,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761245984363</updated>
     </task>
-    <option name="localTasksCounter" value="1841" />
+    <task id="LOCAL-01841" summary="Ну вот, почти все готово к релизу!">
+      <option name="closed" value="true" />
+      <created>1761247181472</created>
+      <option name="number" value="01841" />
+      <option name="presentableId" value="LOCAL-01841" />
+      <option name="project" value="LOCAL" />
+      <updated>1761247181472</updated>
+    </task>
+    <option name="localTasksCounter" value="1842" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +737,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SharedConstants.md" />
     <MESSAGE value="UninstallEntityInstaller.md" />
     <MESSAGE value="UpgradingEntityFactoryToBuilder.md" />
     <MESSAGE value="UsingConstantsWithAndExpressions.md" />
@@ -775,7 +761,8 @@
     <MESSAGE value="Поправил папочки!" />
     <MESSAGE value="Удаляем ненужные наработки!" />
     <MESSAGE value="Убрали ODIN!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Убрали ODIN!" />
+    <MESSAGE value="Ну вот, почти все готово к релизу!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ну вот, почти все готово к релизу!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
